@@ -19,6 +19,7 @@ Safety rails:
 - `src/db/environments.ts` knows each branch's Neon endpoint. The app and the migration script refuse to connect if `DATABASE_URL` doesn't match the environment they run in. A preview can't reach production, a laptop can't reach production, and production can't be pointed at staging or dev by mistake.
 - Migrations are SQL files in `drizzle/`, generated from `src/db/schema.ts` and committed. There is no `db:push`; every schema change goes through a reviewed migration.
 - A schema change reaches production only after it has run on dev (locally) and then staging (merge to `staging`).
+- Push `staging` and `main` separately. Vercel treats a deployment as production when its commit is also the head of `main`, so pushing both branches at the same commit in one go gives two production deployments instead of a preview. The normal order (commit to `staging`, check the preview, then merge to `main` and push `main`) never does that.
 
 ## Local setup
 
