@@ -74,6 +74,10 @@ export const builds = pgTable(
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
     name: text("name").notNull(),
+    /** One or two lines in the author's words, shown under the name. */
+    description: text("description").notNull().default(""),
+    /** Link to the author's written guide, usually a Discord post. */
+    writeupUrl: text("writeup_url"),
     /** LoreRim version the build was planned against, e.g. 5.0.4.8. */
     gameVersion: text("game_version").notNull(),
     /** The author's choices only. Numbers are recomputed on read. */

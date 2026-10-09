@@ -38,8 +38,6 @@ export interface GearItem {
 export interface BuildPlan {
   schema: 1;
   gameVersion: string;
-  name: string;
-  description: string;
   race: string;
   birthsign: string;
   mode: GameMode;

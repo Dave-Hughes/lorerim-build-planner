@@ -1,0 +1,17 @@
+.avatar {
+  flex: none;
+  border-radius: 50%;
+  background: var(--panel-raised);
+  border: 1px solid var(--rule-strong);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--ember);
+  overflow: hidden;
+}
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

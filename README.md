@@ -46,7 +46,8 @@ To refresh dev or staging with production data, reset the branch from its parent
 | Script | Does |
 |---|---|
 | `npm run dev` | Local dev server |
-| `npm test` | Rules engine and environment guard tests |
+| `npm test` | Unit tests: rules engine, derived views, tree layouts, environment guard |
+| `npm run test:e2e` | Playwright tests against a production build (run `npm run build` first). Seeds a test author and session in the dev database and removes them after |
 | `npm run typecheck` | TypeScript |
 | `npm run lint` | ESLint |
 | `npm run db:generate` | New migration from schema changes |
@@ -56,11 +57,27 @@ To refresh dev or staging with production data, reset the branch from its parent
 
 ## Code map
 
-- `src/lib/rules/` rules engine. A saved build stores choices only (`BuildPlan`); `computeBuild` replays them level by level to get skills, points, Health/Magicka/Stamina, carry weight and problems.
-- `src/data/lorerim-5.0.4.8/` game data as JSON, versioned by LoreRim release.
+- `src/app/(site)/` pages with the site header: Browse builds `/`, My builds `/me`, shared build `/b/[id]`.
+- `src/app/(focus)/` pages with the compact header: creation flow `/new`, level-up editor `/b/[id]/edit`, setup changes `/b/[id]/setup`.
+- `src/components/build/` the shared build page and the pieces the editor reuses (constellation `Tree`, tree tabs, level ruler and row, cards).
+- `src/components/creation/` the six-step creation flow. A new build lives in the browser (`localStorage`) until it is saved, so sign-in can happen at the end.
+- `src/components/editor/` the level-up editor: pure plan edits in `plan-ops.ts`, autosave in `use-autosave.ts`.
+- `src/lib/rules/` rules engine. A saved build stores choices only (`BuildPlan`); `computeBuild` replays them level by level to get skills, points, Health/Magicka/Stamina, carry weight and problems. `derive.ts` turns that into what screens show (changes at a level, perk availability, ruler marks); `layout.ts` places perks as constellations.
+- `src/lib/builds/` server actions, queries, validation (zod), ids, the example build.
+- `src/data/lorerim-5.0.4.8/` game data as JSON, versioned by LoreRim release. Perk descriptions and trait artwork are still to come from the game files.
 - `src/db/` schema, client, environment guard.
 - `src/auth.ts` Discord sign-in (identify scope only, no email).
+- `scripts/shot.mjs` screenshots a screen for checking against the design canvas.
 - Design rules: project doc `lorerim/planner/design-rules.md`.
+
+## Who can do what
+
+| | Visitor | Signed in | Author |
+|---|---|---|---|
+| See public and link-only builds, step through levels, open perk trees | yes | yes | yes |
+| See a private build | no | no | yes |
+| Copy a build into their own | sign in first | yes | yes |
+| Create, edit, set visibility, delete | no | yes (own builds) | yes |
 
 ## Vercel environment variables
 

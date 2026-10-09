@@ -1,0 +1,23 @@
+.header {
+  border-bottom: 1px solid var(--rule);
+}
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 32px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.right {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.status {
+  white-space: nowrap;
+}

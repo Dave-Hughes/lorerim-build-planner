@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Alegreya, Sofia_Sans, Sofia_Sans_Extra_Condensed } from "next/font/google";
-import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 const sofia = Sofia_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-sofia" });
@@ -19,10 +18,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${sofia.variable} ${sofiaCondensed.variable} ${alegreya.variable}`}>
-      <body>
-        <SiteHeader />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

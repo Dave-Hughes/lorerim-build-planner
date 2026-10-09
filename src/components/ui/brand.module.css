@@ -1,0 +1,36 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  text-decoration: none;
+  font-family: var(--font-title);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.brand svg {
+  color: var(--ember);
+  flex: none;
+}
+.brand:hover {
+  color: var(--text);
+}
+.context {
+  color: var(--muted);
+  font-size: 14px;
+  padding-left: 12px;
+  border-left: 1px solid var(--rule);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

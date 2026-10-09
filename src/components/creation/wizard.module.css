@@ -1,0 +1,363 @@
+.layout {
+  padding-top: 36px;
+  padding-bottom: 48px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+}
+.aside {
+  flex: 1 1 260px;
+  max-width: 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.main {
+  flex: 999 1 640px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.h1 {
+  font-size: 48px;
+  letter-spacing: 0.04em;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.stepRow {
+  width: 100%;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 14px 0;
+  border: 0;
+  border-bottom: 1px solid #1c2430;
+  background: transparent;
+  font: inherit;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+.next {
+  color: var(--muted);
+}
+.stepMark {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(45deg);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 15px;
+  box-sizing: border-box;
+  border: 1px solid var(--rule-strong);
+  color: var(--muted);
+}
+.stepMark > span {
+  transform: rotate(-45deg);
+}
+.now .stepMark {
+  background: var(--ember);
+  border-color: var(--ember);
+  color: var(--on-ember);
+}
+.done .stepMark {
+  border-color: var(--brass);
+  color: var(--brass);
+}
+.stepText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.stepName {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 17px;
+  font-weight: 600;
+}
+.stepVal {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.startPanel {
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.hms {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  text-align: center;
+}
+.hms > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 6px;
+  border-top: 2px solid;
+  font-size: 12px;
+  color: var(--muted);
+}
+.hms .big-num,
+.hms > div > span:first-child {
+  font-size: 26px;
+  color: var(--text);
+}
+.health {
+  border-color: var(--health);
+  color: var(--health);
+}
+.magicka {
+  border-color: var(--magicka);
+  color: var(--magicka);
+}
+.stamina {
+  border-color: var(--stamina);
+  color: var(--stamina);
+}
+.topSkills {
+  display: flex;
+  flex-direction: column;
+}
+.topSkills > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #1c2430;
+  font-size: 14px;
+}
+.topVal {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.startNote {
+  font-size: 14px;
+  color: var(--muted);
+}
+.startOver {
+  align-self: flex-start;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+.card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 18px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+}
+.cardOn {
+  border-color: var(--ember);
+}
+.cardOff {
+  opacity: 0.5;
+}
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+.cardName {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+.chosen {
+  font-size: 11px;
+  color: var(--ember);
+  white-space: nowrap;
+}
+.math {
+  font-size: 11px;
+  white-space: nowrap;
+}
+.cardText {
+  margin: 0;
+  font-size: 14px;
+  color: #c3cdd6;
+}
+.cardBtn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+.raceSkills {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+.bonus {
+  color: var(--stamina);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.raceHms {
+  display: flex;
+  gap: 14px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.raceHms span {
+  border: 0;
+}
+
+.notice {
+  margin: 0;
+  color: var(--muted);
+}
+.count {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.search {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.skillGroups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px 32px;
+}
+.skillGroup {
+  display: flex;
+  flex-direction: column;
+}
+.skillGroupName {
+  padding: 14px 0 6px;
+  border-bottom: 1px solid var(--rule);
+}
+.skillRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid #1c2430;
+}
+.skillOn {
+  font-weight: 600;
+}
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--rule-strong);
+}
+.seg button {
+  font: inherit;
+  font-size: 13px;
+  min-width: 44px;
+  height: 36px;
+  padding: 0 10px;
+  border: 0;
+  border-right: 1px solid var(--rule-strong);
+  background: transparent;
+  color: #c3cdd6;
+  cursor: pointer;
+}
+.seg button:last-child {
+  border-right: 0;
+}
+.seg button:disabled {
+  color: #4a5668;
+  cursor: not-allowed;
+}
+.seg button[aria-pressed="true"] {
+  background: var(--ember);
+  color: var(--on-ember);
+  font-weight: 600;
+}
+.seg button:first-child[aria-pressed="true"] {
+  background: var(--rule);
+  color: var(--text);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 640px;
+}
+.radios {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.radios legend {
+  margin-bottom: 8px;
+}
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.radio input {
+  accent-color: var(--ember);
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+.navRight {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.signIn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 720px) {
+  .aside {
+    max-width: none;
+  }
+  .h1 {
+    font-size: 36px;
+  }
+}

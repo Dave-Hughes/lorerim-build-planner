@@ -1,0 +1,12 @@
+{
+  "Argonian": ["The Hist", "Sithis"],
+  "Breton": ["Akatosh", "Arkay", "Dibella", "Magnus", "Mara", "Phynaster", "Stendarr", "Xarxes", "Zenithar"],
+  "Dunmer": ["Azura", "Boethiah", "Malacath", "Mehrunes Dagon", "Mephala", "Molag Bal", "Sheogorath"],
+  "Altmer": ["Auriel", "Jephre", "Magnus", "Phynaster", "Stendarr", "Syrabane", "Trinimac", "Xarxes"],
+  "Imperial": ["Akatosh", "Arkay", "Dibella", "Julianos", "Kynareth", "Mara", "Stendarr", "Talos", "Zenithar"],
+  "Khajiit": ["Akatosh", "Azura", "Kynareth", "Mephala", "Mehrunes Dagon", "Rajhin", "Riddle'Thar", "Sheogorath"],
+  "Nord": ["Akatosh", "Arkay", "Dibella", "Kynareth", "Mara", "Shor", "Stendarr", "Talos", "Zenithar"],
+  "Orsimer": ["Malacath", "Trinimac"],
+  "Redguard": ["Leki", "Morwha", "Satakal", "Tall Papa", "The HoonDing"],
+  "Bosmer": ["Arkay", "Auriel", "Hircine", "Jephre", "Magnus", "Mara", "Stendarr", "Xarxes", "Z'en"]
+}

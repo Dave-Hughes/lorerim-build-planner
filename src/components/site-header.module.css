@@ -10,24 +10,6 @@
   padding-top: 14px;
   padding-bottom: 14px;
 }
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--text);
-  text-decoration: none;
-  font-family: var(--font-title);
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-.brand svg {
-  color: var(--ember);
-}
-.brand:hover {
-  color: var(--text);
-}
 .nav {
   display: flex;
   flex-wrap: wrap;
@@ -45,4 +27,11 @@
   align-items: center;
   gap: 16px;
   color: var(--muted);
+}
+.who {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-weight: 500;
 }

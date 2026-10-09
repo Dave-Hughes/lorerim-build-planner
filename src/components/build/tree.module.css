@@ -1,0 +1,130 @@
+.scroller {
+  overflow-x: auto;
+  padding: 18px;
+}
+.canvas {
+  position: relative;
+  margin: 0 auto;
+}
+.edges {
+  position: absolute;
+  inset: 0;
+}
+.edge {
+  stroke: #2f3a4a;
+  stroke-width: 1;
+}
+.edgeEither {
+  stroke: #2f3a4a;
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+}
+.edgeLit {
+  stroke: var(--ember);
+  stroke-width: 1.6;
+}
+.edgePreview {
+  stroke: var(--ember);
+  stroke-width: 1.6;
+  stroke-dasharray: 4 4;
+}
+
+.node {
+  position: absolute;
+  width: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--text);
+  text-align: center;
+}
+button.node {
+  cursor: pointer;
+}
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  flex: none;
+}
+.taken .dot {
+  background: var(--ember);
+  box-shadow: 0 0 0 4px rgba(240, 145, 63, 0.14);
+}
+.open .dot {
+  border: 1.5px solid var(--ember);
+  background: #10161e;
+}
+.locked .dot {
+  width: 8px;
+  height: 8px;
+  margin: 4px;
+  background: #4a5668;
+}
+.partial .dot {
+  background: linear-gradient(90deg, var(--ember) 50%, #10161e 50%);
+  border: 1.5px solid var(--ember);
+}
+.selected .dot {
+  box-shadow:
+    0 0 0 5px #10161e,
+    0 0 0 6px var(--brass);
+}
+.name {
+  font-size: 13px;
+  line-height: 1.15;
+}
+.locked .name {
+  color: #7d8a9a;
+}
+.selected .name {
+  color: #fff;
+  font-weight: 600;
+}
+.req {
+  font-size: 11px;
+  color: #7d8a9a;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 13px;
+  color: var(--muted);
+  margin: 14px auto 0;
+  max-width: 600px;
+}
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend i {
+  display: inline-block;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+.keyTaken {
+  width: 10px;
+  height: 10px;
+  background: var(--ember);
+}
+.keyOpen {
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--ember);
+}
+.keyLocked {
+  width: 6px;
+  height: 6px;
+  background: #4a5668;
+}

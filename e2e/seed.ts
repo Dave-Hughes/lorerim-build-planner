@@ -1,0 +1,94 @@
+/**
+ * Test data for the end-to-end tests: a user, a signed-in session for that
+ * user, and a build they own. Runs against the dev database only; the
+ * environment guard refuses anything else.
+ */
+import { config } from "dotenv";
+import { and, eq, like } from "drizzle-orm";
+import { Pool } from "@neondatabase/serverless";
+import { drizzle } from "drizzle-orm/neon-serverless";
+import { assertDatabaseMatchesEnvironment } from "../src/db/environments";
+import * as schema from "../src/db/schema";
+import sample from "../src/lib/rules/__fixtures__/sample-build.json";
+import type { BuildPlan } from "../src/lib/rules/types";
+
+config({ path: ".env.local", quiet: true });
+
+export const TEST_USER_ID = "e2e-user-0001";
+export const TEST_USER_NAME = "Test Author";
+export const TEST_SESSION_TOKEN = "e2e-session-token-0001";
+export const TEST_BUILD_ID = "e2eqq2e2eq";
+export const OTHER_USER_ID = "e2e-user-0002";
+export const OTHER_BUILD_ID = "e2eqq2e2e2";
+
+export function samplePlan(): BuildPlan {
+  const { name: _n, description: _d, ...plan } = sample as unknown as BuildPlan & { name: string; description: string };
+  void _n;
+  void _d;
+  return plan;
+}
+
+export async function seed() {
+  const url = assertDatabaseMatchesEnvironment();
+  const pool = new Pool({ connectionString: url });
+  const db = drizzle(pool, { schema });
+  try {
+    await db.delete(schema.builds).where(like(schema.builds.id, "e2e%"));
+    await db.delete(schema.users).where(like(schema.users.id, "e2e-%"));
+    await db.insert(schema.users).values([
+      { id: TEST_USER_ID, name: TEST_USER_NAME, email: null, image: null },
+      { id: OTHER_USER_ID, name: "Someone Else", email: null, image: null },
+    ]);
+    await db.insert(schema.sessions).values({
+      sessionToken: TEST_SESSION_TOKEN,
+      userId: TEST_USER_ID,
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+    });
+    await db.insert(schema.builds).values([
+      {
+        id: TEST_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        name: "Test Shield-Wall",
+        description: "A build owned by the test author.",
+        visibility: "public",
+        gameVersion: "5.0.4.8",
+        plan: samplePlan(),
+      },
+      {
+        id: OTHER_BUILD_ID,
+        ownerId: OTHER_USER_ID,
+        name: "Private Elsewhere",
+        description: "A private build owned by someone else.",
+        visibility: "private",
+        gameVersion: "5.0.4.8",
+        plan: samplePlan(),
+      },
+    ]);
+  } finally {
+    await pool.end();
+  }
+}
+
+export async function cleanup() {
+  const url = assertDatabaseMatchesEnvironment();
+  const pool = new Pool({ connectionString: url });
+  const db = drizzle(pool, { schema });
+  try {
+    await db.delete(schema.builds).where(and(like(schema.builds.id, "e2e%")));
+    await db.delete(schema.builds).where(eq(schema.builds.ownerId, TEST_USER_ID));
+    await db.delete(schema.users).where(like(schema.users.id, "e2e-%"));
+  } finally {
+    await pool.end();
+  }
+}
+
+if (process.argv[1]?.endsWith("seed.ts")) {
+  const task = process.argv[2] === "cleanup" ? cleanup : seed;
+  task().then(
+    () => console.log(process.argv[2] === "cleanup" ? "Test data removed." : "Test data ready."),
+    (e) => {
+      console.error(e);
+      process.exit(1);
+    },
+  );
+}

@@ -4,6 +4,8 @@ import birthsigns from "@/data/lorerim-5.0.4.8/birthsigns.json";
 import stones from "@/data/lorerim-5.0.4.8/stones.json";
 import traits from "@/data/lorerim-5.0.4.8/traits.json";
 import perks from "@/data/lorerim-5.0.4.8/perks.json";
+import starts from "@/data/lorerim-5.0.4.8/starts.json";
+import deities from "@/data/lorerim-5.0.4.8/deities.json";
 
 export const GAME_VERSION = "5.0.4.8";
 
@@ -91,3 +93,13 @@ export const PERKS_BY_TREE = PERKS.reduce<Map<string, Perk[]>>((m, p) => {
 export function rankCount(p: Perk): number {
   return p.rankSkills?.length ?? p.rankLevels?.length ?? 1;
 }
+
+/** Starts the Helgen statue offers in this LoreRim version. */
+export const STARTS = starts as string[];
+/** Gods offered free at the start, by race. Any god can still be joined at a shrine. */
+export const STARTING_DEITIES = deities as Record<string, string[]>;
+
+export const GAME_MODES: { name: "Naaktiid" | "Konahrik"; text: string }[] = [
+  { name: "Naaktiid", text: "New to LoreRim: +3 perk points, Requiem Lite (+100 carry weight, gentler combat), free respec." },
+  { name: "Konahrik", text: "Classic LoreRim: no extra points, respec once for 100,000 gold." },
+];

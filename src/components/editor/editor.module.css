@@ -1,0 +1,542 @@
+.layout {
+  padding-top: 28px;
+  padding-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.errorBar {
+  padding-top: 12px;
+  color: var(--health);
+}
+.linkButton {
+  font: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--ember);
+  cursor: pointer;
+}
+.hint {
+  font-size: 13px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Level bar ---------- */
+.levelBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px 32px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--rule);
+}
+.levelRow {
+  flex-basis: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.levelNav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.levelArrow {
+  font: inherit;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--rule-strong);
+  min-width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  font-variant-numeric: tabular-nums;
+}
+.levelArrow:hover:not(:disabled) {
+  color: var(--text);
+  border-color: var(--muted);
+}
+.levelArrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.levelTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.levelNum {
+  font-family: var(--font-title);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 0.95;
+}
+.pools {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.pool {
+  padding: 4px 22px;
+  border-left: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.pool:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+.poolLabel {
+  color: var(--muted);
+}
+.poolVal {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.poolNum {
+  font-size: 30px;
+}
+
+/* ---------- Columns ---------- */
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: flex-start;
+}
+.left {
+  flex: 1 1 360px;
+  max-width: 440px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.right {
+  flex: 999 1 640px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.blockHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+.maxSkill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Attribute cards */
+.attrs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.attr {
+  font: inherit;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  overflow: hidden;
+  min-height: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 14px 0;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+}
+.attrOn {
+  background: #18212c;
+  border-width: 2px;
+  padding: 11px 13px 0;
+}
+.health {
+  --c: var(--health);
+}
+.magicka {
+  --c: var(--magicka);
+}
+.stamina {
+  --c: var(--stamina);
+}
+.attrOn {
+  border-color: var(--c);
+}
+.attrTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #c3cdd6;
+}
+.radio {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #4a5668;
+}
+.attrOn .radio {
+  border-color: var(--c);
+}
+.radio > span {
+  display: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c);
+}
+.attrOn .radio > span {
+  display: block;
+}
+.attrVal {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.attrVal .big-num {
+  font-size: 32px;
+}
+.plus {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c);
+}
+.attrBar {
+  display: block;
+  height: 4px;
+  margin: 0 -14px;
+  background: var(--c);
+  opacity: 0.3;
+}
+.attrOn .attrBar {
+  opacity: 1;
+  margin: 0 -13px;
+}
+
+/* Skills */
+.pointsBar {
+  height: 4px;
+  background: #222b38;
+  margin: 6px 0 4px;
+}
+.pointsBar > div {
+  height: 100%;
+  background: var(--ember);
+}
+.pointsOver {
+  background: var(--health) !important;
+}
+.skillGroup {
+  display: flex;
+  flex-direction: column;
+}
+.skillGroupName {
+  padding: 14px 0 6px;
+  border-bottom: 1px solid var(--rule);
+}
+.skillRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 72px auto 74px;
+  gap: 10px;
+  align-items: center;
+  padding: 5px 8px;
+  margin: 0 -8px;
+  border-bottom: 1px solid #1c2430;
+}
+.skillRowOn {
+  background: #18212c;
+  box-shadow: inset 0 0 0 1px var(--rule-strong);
+}
+.skillName {
+  font: inherit;
+  color: var(--text);
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  min-width: 0;
+}
+.skillName:hover {
+  color: var(--ember);
+}
+.skillVals {
+  text-align: right;
+}
+.skillTo {
+  color: var(--ember);
+  font-weight: 600;
+}
+.stepper {
+  display: inline-flex;
+  border: 1px solid var(--rule-strong);
+}
+.stepper > button {
+  font: inherit;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: #c3cdd6;
+  cursor: pointer;
+}
+.stepper > button:hover:not(:disabled) {
+  background: var(--panel-raised);
+  color: var(--text);
+}
+.stepper > button:disabled {
+  color: #4a5668;
+  cursor: not-allowed;
+}
+.stepper > span {
+  width: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.stepOn {
+  color: var(--ember);
+}
+.stepOff {
+  color: #7d8a9a;
+}
+.next {
+  font-size: 13px;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* ---------- Trees ---------- */
+.treeBox {
+  border: 1px solid var(--rule);
+  background: #10161e;
+  display: flex;
+  flex-wrap: wrap;
+}
+.treeArea {
+  flex: 999 1 600px;
+  min-width: 0;
+}
+.panel {
+  flex: 1 1 260px;
+  min-width: 0;
+  border-left: 1px solid var(--rule);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--panel);
+}
+.panelName {
+  font-size: 34px;
+  letter-spacing: 0.03em;
+}
+.panelText {
+  margin: 0;
+  font-size: 17px;
+  color: #c3cdd6;
+}
+.panelLine {
+  margin: 0;
+  font-size: 14px;
+}
+.panelActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* ---------- Also at this level ---------- */
+.also {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
+}
+.alsoCol {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.alsoWide {
+  flex: 2 1 380px;
+  min-width: 0;
+}
+.extras {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.extras li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0 6px 10px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  font-size: 14px;
+}
+.x {
+  font: inherit;
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.x:hover {
+  color: var(--text);
+}
+.extraForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.extraForm .select {
+  width: auto;
+  flex: 1 1 160px;
+}
+
+/* ---------- Bottom bar ---------- */
+.bottomBar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+}
+.verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.problems {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.diamondGood,
+.diamondBad {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  background: var(--stamina);
+}
+.diamondBad {
+  background: var(--health);
+  margin-top: 7px;
+}
+.bottomActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ---------- Gear and notes ---------- */
+.gearNotes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
+}
+.gear {
+  flex: 3 1 520px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.notes {
+  flex: 2 1 340px;
+}
+.gearRows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.gearRow {
+  display: grid;
+  grid-template-columns: minmax(90px, 1fr) minmax(120px, 2fr) 92px minmax(120px, 2fr) 36px;
+  gap: 6px;
+  align-items: center;
+}
+.gearHead {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 0 12px;
+}
+.gearRow .input {
+  min-height: 40px;
+  padding: 8px 10px;
+}
+
+@media (max-width: 720px) {
+  .left {
+    max-width: none;
+  }
+  .skillRow {
+    grid-template-columns: minmax(0, 1fr) 64px auto;
+  }
+  .next {
+    display: none;
+  }
+  .gearRow {
+    grid-template-columns: 1fr 1fr;
+  }
+  .gearHead {
+    display: none;
+  }
+  .panel {
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+  }
+}

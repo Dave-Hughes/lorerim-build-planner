@@ -1,0 +1,35 @@
+import type { Metadata } from "next";
+import { notFound, redirect } from "next/navigation";
+import { auth } from "@/auth";
+import { WizardLoader as Wizard } from "@/components/creation/wizard-loader";
+import { SignInButton } from "@/components/site-header";
+import { getBuild } from "@/lib/builds/queries";
+
+type Params = Promise<{ id: string }>;
+
+export const metadata: Metadata = { title: "Set up build" };
+export const dynamic = "force-dynamic";
+
+export default async function SetupPage({ params }: { params: Params }) {
+  const [{ id }, session] = await Promise.all([params, auth()]);
+  const userId = session?.user?.id ?? null;
+  const build = await getBuild(id, userId);
+  if (!build) notFound();
+  if (build.isSample || build.ownerId !== userId) redirect(`/b/${id}`);
+  return (
+    <Wizard
+      mode="edit"
+      buildId={id}
+      initialPlan={build.plan}
+      initialDetails={{
+        name: build.name,
+        description: build.description,
+        coverImageUrl: build.coverImageUrl ?? "",
+        writeupUrl: build.writeupUrl ?? "",
+        visibility: build.visibility,
+      }}
+      signedIn
+      signIn={<SignInButton redirectTo={`/b/${id}/setup`} className="btn btn-primary" />}
+    />
+  );
+}
