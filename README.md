@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LoreRim Build Planner
 
-## Getting Started
+Plan and share LoreRim character builds level by level. Rules and game data are for LoreRim 5.0.4.8.
 
-First, run the development server:
+Next.js (App Router) on Vercel, Postgres on Neon, Drizzle ORM, Auth.js with Discord sign-in.
+
+## Environments
+
+Three separate databases, one per environment. Each is a branch of the Neon project `lorerim-build-planner`.
+
+| Environment | Runs where | Git branch | Neon branch | Migrations applied by |
+|---|---|---|---|---|
+| Production | Vercel Production | `main` | `production` | Every production build |
+| Staging | Vercel Preview | `staging` (and other previews, read only) | `staging` | Preview builds of `staging` only |
+| Local | Your machine | any | `dev` | `npm run db:migrate` |
+
+Safety rails:
+
+- `src/db/environments.ts` knows each branch's Neon endpoint. The app and the migration script refuse to connect if `DATABASE_URL` doesn't match the environment they run in. A preview can't reach production, a laptop can't reach production, and production can't be pointed at staging or dev by mistake.
+- Migrations are SQL files in `drizzle/`, generated from `src/db/schema.ts` and committed. There is no `db:push`; every schema change goes through a reviewed migration.
+- A schema change reaches production only after it has run on dev (locally) and then staging (merge to `staging`).
+
+## Local setup
 
 ```bash
+npm install
+cp .env.example .env.local   # fill in the dev DATABASE_URL, AUTH_SECRET, Discord keys
+npm run db:migrate           # applies migrations to the dev branch
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Changing the schema
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# 1. edit src/db/schema.ts
+npm run db:generate -- --name short_description   # writes drizzle/NNNN_short_description.sql
+# 2. read the SQL, then apply to dev
+npm run db:migrate
+# 3. commit, merge to staging (Vercel migrates staging), check it, merge to main (Vercel migrates production)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To refresh dev or staging with production data, reset the branch from its parent in the Neon console.
 
-## Learn More
+## Scripts
 
-To learn more about Next.js, take a look at the following resources:
+| Script | Does |
+|---|---|
+| `npm run dev` | Local dev server |
+| `npm test` | Rules engine and environment guard tests |
+| `npm run typecheck` | TypeScript |
+| `npm run lint` | ESLint |
+| `npm run db:generate` | New migration from schema changes |
+| `npm run db:migrate` | Apply migrations (guarded) |
+| `npm run db:studio` | Drizzle Studio on the dev database |
+| `vercel-build` | What Vercel runs: guarded migrate, then `next build` |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Code map
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `src/lib/rules/` rules engine. A saved build stores choices only (`BuildPlan`); `computeBuild` replays them level by level to get skills, points, Health/Magicka/Stamina, carry weight and problems.
+- `src/data/lorerim-5.0.4.8/` game data as JSON, versioned by LoreRim release.
+- `src/db/` schema, client, environment guard.
+- `src/auth.ts` Discord sign-in (identify scope only, no email).
+- Design rules: project doc `lorerim/planner/design-rules.md`.
 
-## Deploy on Vercel
+## Vercel environment variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Key | Production | Preview | Development |
+|---|---|---|---|
+| `DATABASE_URL` | production branch | staging branch | dev branch |
+| `AUTH_SECRET` | own value | own value | own value |
+| `AUTH_DISCORD_ID` / `AUTH_DISCORD_SECRET` | Discord app | Discord app | Discord app |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Discord redirect URLs to register: `https://<production domain>/api/auth/callback/discord`, the staging preview domain, and `http://localhost:3000/api/auth/callback/discord`.

@@ -1,0 +1,143 @@
+{
+  "schema": 1,
+  "gameVersion": "5.0.4.8",
+  "name": "Falkreath Shield-Wall",
+  "description": "Heavy-armor shield warrior, no magic, leans on potions",
+  "race": "Nord",
+  "birthsign": "Lord",
+  "mode": "Konahrik",
+  "deity": "",
+  "start": "Falkreath",
+  "majors": [
+    "Heavy Armor",
+    "Block",
+    "One-Handed"
+  ],
+  "minors": [
+    "Smithing",
+    "Alchemy",
+    "Wayfarer",
+    "Speech"
+  ],
+  "traits": [
+    "Bulwark",
+    "Witcher"
+  ],
+  "levels": [
+    {
+      "skillPoints": {},
+      "perks": [
+        "Heavy Armor:Conditioning",
+        "Block:Improved Blocking",
+        "One-Handed:Weapon Mastery"
+      ],
+      "destiny": [
+        "Destiny:Destiny"
+      ],
+      "extras": [],
+      "note": "Start in Falkreath with sword, shield and the starter heavy armor."
+    },
+    {
+      "attribute": "health",
+      "skillPoints": {
+        "Heavy Armor": 5,
+        "Block": 5,
+        "One-Handed": 5
+      },
+      "perks": [
+        "Block:Experienced Blocking"
+      ],
+      "destiny": [],
+      "extras": [],
+      "note": "Wolves and bandits on the roads around Falkreath."
+    },
+    {
+      "attribute": "health",
+      "skillPoints": {
+        "Alchemy": 5,
+        "Wayfarer": 5,
+        "Heavy Armor": 5,
+        "Block": 5
+      },
+      "perks": [
+        "Heavy Armor:Combat Training"
+      ],
+      "destiny": [],
+      "extras": [],
+      "stone": "Lover",
+      "note": "Touch the Lover stone for +100 armor."
+    },
+    {
+      "attribute": "stamina",
+      "skillPoints": {
+        "One-Handed": 5,
+        "Heavy Armor": 5,
+        "Smithing": 5
+      },
+      "perks": [
+        "Alchemy:Alchemical Lore",
+        "Smithing:Craftsmanship"
+      ],
+      "destiny": [],
+      "extras": [
+        {
+          "kind": "trainer",
+          "skill": "Block"
+        }
+      ],
+      "note": "Read The Armorer's Encyclopedia for Craftsmanship (no perk point)."
+    },
+    {
+      "attribute": "health",
+      "skillPoints": {
+        "Block": 5,
+        "Heavy Armor": 5,
+        "Speech": 5,
+        "Wayfarer": 5
+      },
+      "perks": [
+        "Wayfarer:Cheap Tricks"
+      ],
+      "destiny": [
+        "Destiny:Constitution"
+      ],
+      "extras": [],
+      "note": "First Destiny point after the starting one."
+    },
+    {
+      "attribute": "health",
+      "skillPoints": {
+        "One-Handed": 5,
+        "Alchemy": 5,
+        "Evasion": 5
+      },
+      "perks": [
+        "Block:Powerful Bashes"
+      ],
+      "destiny": [],
+      "extras": [],
+      "note": "Banking 10 skill points for Heavy Armor 50+ next level."
+    }
+  ],
+  "gear": [
+    {
+      "slot": "Weapon",
+      "name": "Steel sword",
+      "fromLevel": 1,
+      "note": "Example entry"
+    },
+    {
+      "slot": "Off-hand",
+      "name": "Banded iron shield",
+      "fromLevel": 1,
+      "note": "Example entry"
+    },
+    {
+      "slot": "Chest",
+      "name": "Steel plate armor",
+      "fromLevel": 6,
+      "note": "Example entry"
+    }
+  ],
+  "notes": "Example build to show how the planner works. Replace any of it."
+}

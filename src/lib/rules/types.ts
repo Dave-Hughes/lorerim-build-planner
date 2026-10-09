@@ -1,0 +1,109 @@
+/**
+ * A saved build stores only the author's choices. Every number shown on a
+ * build page (skill values, points left, Health, carry weight, problems) is
+ * recomputed from these choices by `computeBuild`, so a rules fix updates
+ * every build without touching the database.
+ */
+
+export type Attribute = "health" | "magicka" | "stamina";
+export type GameMode = "Naaktiid" | "Konahrik";
+
+export type Extra =
+  | { kind: "trainer"; skill: string }
+  | { kind: "book"; skill: string };
+
+export interface LevelPlan {
+  /** Attribute raised at this level-up. Not used at level 1. */
+  attribute?: Attribute;
+  /** Skill points spent at this level-up, as +N per skill. */
+  skillPoints: Record<string, number>;
+  /** Perk ids taken this level ("Tree:Name"). Repeat an id for extra ranks. */
+  perks: string[];
+  /** Destiny perk ids taken this level. */
+  destiny: string[];
+  /** Trainer sessions and skill books read since the last level-up. */
+  extras: Extra[];
+  /** Standing stone change: undefined = keep, "none" = clear, otherwise the stone name. */
+  stone?: string;
+  note: string;
+}
+
+export interface GearItem {
+  slot: string;
+  name: string;
+  fromLevel: number;
+  note: string;
+}
+
+export interface BuildPlan {
+  schema: 1;
+  gameVersion: string;
+  name: string;
+  description: string;
+  race: string;
+  birthsign: string;
+  mode: GameMode;
+  deity: string;
+  start: string;
+  majors: string[];
+  minors: string[];
+  traits: string[];
+  masterOfOneSkill?: string;
+  levels: LevelPlan[];
+  gear: GearItem[];
+  notes: string;
+}
+
+export type IssueCode =
+  | "attribute-missing"
+  | "skill-over-five"
+  | "skill-over-max"
+  | "skill-points-over"
+  | "trainer-limit"
+  | "trainer-over-max"
+  | "book-wasted"
+  | "perk-unknown"
+  | "perk-granted"
+  | "perk-ranks"
+  | "perk-skill"
+  | "perk-level"
+  | "perk-prerequisite"
+  | "perk-points-over"
+  | "destiny-unknown"
+  | "destiny-repeat"
+  | "destiny-prerequisite"
+  | "destiny-points-over"
+  | "creation";
+
+export interface Issue {
+  code: IssueCode;
+  message: string;
+}
+
+export interface LevelState {
+  level: number;
+  /** Highest a skill can be at this level: min(100, 50 + level). */
+  maxSkill: number;
+  skillsBefore: Record<string, number>;
+  skills: Record<string, number>;
+  skillPointsAvailable: number;
+  skillPointsSpent: number;
+  skillPointsBanked: number;
+  perkPoints: number;
+  perkPointsSpent: number;
+  trainerSessionsUsed: number;
+  stone: string;
+  destinyPoints: number;
+  destinyPointsSpent: number;
+  health: number;
+  magicka: number;
+  stamina: number;
+  carryWeight: number;
+  /** Perk id -> levels at which each rank was taken. */
+  perksTaken: Record<string, number[]>;
+  /** Destiny perk id -> level taken. */
+  destinyTaken: Record<string, number>;
+  /** Perks granted for free by Master of One. */
+  grantedTree: string | null;
+  issues: Issue[];
+}

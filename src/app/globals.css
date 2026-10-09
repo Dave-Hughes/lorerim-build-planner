@@ -1,42 +1,154 @@
+/* Design tokens. Source of truth: lorerim/planner/design-rules.md */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ground: #0e1319;
+  --panel: #141b23;
+  --panel-raised: #1a2230;
+  --rule: #2a3442;
+  --rule-strong: #3a4658;
+  --text: #e4ebf0;
+  --muted: #8e9bab;
+  --ember: #f0913f;
+  --on-ember: #0e1319;
+  --brass: #b9a173;
+  --health: #d07a6a;
+  --magicka: #7d9fd6;
+  --stamina: #86b47f;
+
+  --font-title: var(--font-sofia-condensed), "Arial Narrow", sans-serif;
+  --font-body: var(--font-sofia), "Segoe UI", sans-serif;
+  --font-flavor: var(--font-alegreya), Georgia, serif;
+
+  --page-max: 1360px;
+  --gutter: 40px;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (max-width: 720px) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --gutter: 16px;
   }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color: var(--ember);
+}
+a:hover {
+  color: #fff;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+button {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+}
+
+/* Titles and labels: condensed, uppercase, tracked */
+.title {
+  font-family: var(--font-title);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.05;
+  margin: 0;
+}
+
+/* Section labels are brass ornament, never an eyebrow above a page title */
+.label {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--brass);
+}
+
+.flavor {
+  font-family: var(--font-flavor);
+  font-style: italic;
+}
+
+/* Brass corner marks on key panels */
+.frame {
+  position: relative;
+}
+.frame::before,
+.frame::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+}
+.frame::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1px solid var(--brass);
+  border-left: 1px solid var(--brass);
+}
+.frame::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1px solid var(--brass);
+  border-right: 1px solid var(--brass);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 18px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid var(--rule-strong);
+  background: transparent;
+  color: var(--text);
+}
+.btn:hover {
+  border-color: var(--muted);
+  color: var(--text);
+}
+.btn-primary {
+  background: var(--ember);
+  border-color: var(--ember);
+  color: var(--on-ember);
+}
+.btn-primary:hover {
+  background: #f5a35e;
+  border-color: #f5a35e;
+  color: var(--on-ember);
+}
+
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
 }

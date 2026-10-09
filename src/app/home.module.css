@@ -1,0 +1,23 @@
+.main {
+  padding-top: 56px;
+  padding-bottom: 64px;
+}
+.main h1 {
+  font-size: 44px;
+}
+.tag {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 2px 8px;
+  border: 1px solid var(--rule-strong);
+  color: var(--muted);
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.empty {
+  margin-top: 40px;
+  color: var(--muted);
+}

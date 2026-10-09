@@ -1,0 +1,342 @@
+[
+  {
+    "name": "Adrenaline Rush",
+    "text": "Below 50% Health: 20% faster and +1 Stamina per second, but 30% less damage.",
+    "simulated": false
+  },
+  {
+    "name": "Angler",
+    "text": "Mudcrabs and slaughterfish turn friendly; better catches; fishing rods hit twice as hard and can summon a mudcrab. 10% weaker to shock.",
+    "simulated": false
+  },
+  {
+    "name": "Au Naturel",
+    "text": "+100 Health, Magicka and Stamina, minus 40 each per worn piece. +1 each per level per empty slot.",
+    "simulated": false
+  },
+  {
+    "name": "Autodidact",
+    "text": "Learn every spell of a school at 25/50/75/100. Spells cost 30% more; magic vendors charge 35% more.",
+    "simulated": false
+  },
+  {
+    "name": "Bad Natured",
+    "text": "+20% damage while crouched and better pickpocketing. −20% damage standing; Divines amulets hurt you.",
+    "simulated": false
+  },
+  {
+    "name": "Bane of the Wicked",
+    "text": "+20% damage to undead, daedra and werewolves; −10% to everything else.",
+    "simulated": false
+  },
+  {
+    "name": "Bulwark",
+    "text": "Standing still: +200 armor and reflect 10% physical damage. Extra Stamina drain while running and sprinting.",
+    "simulated": false
+  },
+  {
+    "name": "Defiler",
+    "text": "+20% damage to playable races; −10% to everything else.",
+    "simulated": false
+  },
+  {
+    "name": "Disbeliever",
+    "text": "Dwemer armor and weapons 40% stronger. No blessings.",
+    "simulated": false
+  },
+  {
+    "name": "Disciplined",
+    "text": "Bows and crossbows +20% damage; draw and reload 40% slower.",
+    "simulated": false
+  },
+  {
+    "name": "Dovah Tinvaak",
+    "text": "Shout 20% more often at 30% less effect.",
+    "simulated": false
+  },
+  {
+    "name": "Druid",
+    "text": "Spriggans friendly, druidic spells +30%, craft Lifebloom Essence. 25% weaker to fire and axes.",
+    "simulated": false
+  },
+  {
+    "name": "Elemental Conduit",
+    "text": "Fire, shock and frost spells rise and fall with the weather.",
+    "simulated": false
+  },
+  {
+    "name": "Fast Shot",
+    "text": "Bows draw and crossbows reload 40% faster; 30% less damage.",
+    "simulated": false
+  },
+  {
+    "name": "Focused",
+    "text": "Below 50% Health: +5 Magicka per second and absorb 10% of spells, but take 10% more damage.",
+    "simulated": false
+  },
+  {
+    "name": "Gambler",
+    "text": "+30% critical chance, −40% weapon damage; each critical stacks +10% damage for 30 seconds.",
+    "simulated": false
+  },
+  {
+    "name": "Giantkin",
+    "text": "+10% magic resistance and blunt damage. Cannot read skill books or use scrolls and staves.",
+    "simulated": false
+  },
+  {
+    "name": "Glutton",
+    "text": "Food 25% stronger; potions half as effective.",
+    "simulated": false
+  },
+  {
+    "name": "Lurker",
+    "text": "Naked: sneak attacks ×2.5, sneak 25% better, immune to disease. Armor gives nothing, cooked food does nothing, weapons over weight 10 deal no damage.",
+    "simulated": false
+  },
+  {
+    "name": "Good Natured",
+    "text": "−20% weapon and Destruction damage. With a Divines amulet: beneficial magic +20% and 20% less damage taken.",
+    "simulated": false
+  },
+  {
+    "name": "Hoarder",
+    "text": "+200 carry weight; selling prices 50% worse.",
+    "simulated": true
+  },
+  {
+    "name": "Introvert",
+    "text": "+15% damage against three or fewer enemies; −10% against four or more.",
+    "simulated": false
+  },
+  {
+    "name": "Jack of All Spells",
+    "text": "Novice to Adept spells 20% stronger; Expert and Master 20% weaker.",
+    "simulated": false
+  },
+  {
+    "name": "King of Worms",
+    "text": "+1 summon or thrall; summons and raised dead last 33% shorter.",
+    "simulated": false
+  },
+  {
+    "name": "Light Foot",
+    "text": "Barefoot: muffled steps, 10% faster, no fall damage. In boots: 10% slower.",
+    "simulated": false
+  },
+  {
+    "name": "Marathon Runner",
+    "text": "Sprinting restores 5 Stamina and 1 Health per second; no Stamina regeneration while running or standing.",
+    "simulated": false
+  },
+  {
+    "name": "Master of Destiny",
+    "text": "No birthsign. +5 perk points and +5 to every skill.",
+    "simulated": true
+  },
+  {
+    "name": "Master of One",
+    "text": "One skill set to 100 with all its perks. No perk points from levels.",
+    "simulated": true
+  },
+  {
+    "name": "Nosferatu",
+    "text": "−50 Speech, no regeneration outdoors. Skeever meat grants speed and fast regeneration.",
+    "simulated": false
+  },
+  {
+    "name": "Old Fashioned",
+    "text": "Iron, steel, wood, leather, hide, fur, scaled and Forsworn gear 15% stronger; everything else 10% weaker.",
+    "simulated": false
+  },
+  {
+    "name": "Pacifist",
+    "text": "Hands lowered: +2 Magicka and Stamina per second. Hands raised in combat: the reverse.",
+    "simulated": false
+  },
+  {
+    "name": "Rage",
+    "text": "Below 50% Health: +10% damage and 10% less damage taken, but 30% slower.",
+    "simulated": false
+  },
+  {
+    "name": "Skilled",
+    "text": "Skill books give +1 extra and trainers cost half. No perk point every 5th level.",
+    "simulated": true
+  },
+  {
+    "name": "Soul Reaver",
+    "text": "Enchantments 15% stronger and cheaper to run; armor and weapon damage −20%.",
+    "simulated": false
+  },
+  {
+    "name": "Swimmer",
+    "text": "Swim faster, breathe underwater, regenerate when wet. 50% less regeneration on dry land.",
+    "simulated": false
+  },
+  {
+    "name": "Unbound Hands",
+    "text": "No gloves: spells +15%, unarmed +30. Wearing gloves: the reverse.",
+    "simulated": false
+  },
+  {
+    "name": "Way of the Voice",
+    "text": "Hostile shouts 30% weaker; non-hostile shouts have a 20% chance to reset their cooldown.",
+    "simulated": false
+  },
+  {
+    "name": "Witcher",
+    "text": "Potions and ingredients 25% stronger and longer. Only four potion effects at a time.",
+    "simulated": false
+  },
+  {
+    "name": "Addict",
+    "text": "Skooma and alcohol last twice as long; craft skooma at a cooking pot. Sober: 25% chance to stagger when hit.",
+    "simulated": false
+  },
+  {
+    "name": "Phalanx",
+    "text": "Spears, javelins, pikes and halberds +15% damage; take 50% more from behind. Unique pike.",
+    "simulated": false
+  },
+  {
+    "name": "Wizard's Wardrobe",
+    "text": "Wands 30% stronger with a wizard hat; without one, all spells 10% weaker.",
+    "simulated": false
+  },
+  {
+    "name": "Touch of the Arcane",
+    "text": "Touch and cloak spells +20%; other spells 10% weaker.",
+    "simulated": false
+  },
+  {
+    "name": "Silent Dovah",
+    "text": "+5 Health, Magicka and Stamina per unspent dragon soul (not as a werewolf or vampire). Persuade and intimidate almost never work.",
+    "simulated": false
+  },
+  {
+    "name": "Serene Presence",
+    "text": "Persuasion almost always works, pacify spells +20%. Intimidation half as likely, frenzy spells 20% weaker.",
+    "simulated": false
+  },
+  {
+    "name": "Dominating Will",
+    "text": "Intimidation almost always works, frenzy spells +20%. Persuasion harder, pacify spells 20% weaker.",
+    "simulated": false
+  },
+  {
+    "name": "Fatal Attraction",
+    "text": "Pick a gender: +20% physical damage to it, 20% more damage taken from the other.",
+    "simulated": false
+  },
+  {
+    "name": "Blighted Fists",
+    "text": "Unarmed +10 disease damage per disease you carry, diseases affect you half as much. Disease resistance −200%.",
+    "simulated": false
+  },
+  {
+    "name": "Acoustic Arcanist",
+    "text": "Sonic spells +20% after playing an instrument at an inn. Followers cost more; physical attacks 15% weaker.",
+    "simulated": false
+  },
+  {
+    "name": "Unshakable",
+    "text": "Shield bashes +50% damage and 20% cheaper; 20% slower when not blocking.",
+    "simulated": false
+  },
+  {
+    "name": "Focused Precision",
+    "text": "Arrows and bolts 15% weaker but 20% chance to push targets back, scaling with Marksman.",
+    "simulated": false
+  },
+  {
+    "name": "Soul Embed",
+    "text": "Spend a dragon soul: shouts 50% stronger for an hour.",
+    "simulated": false
+  },
+  {
+    "name": "Blood Warrior",
+    "text": "+50 Health and +5 Health per level. Take 50% more physical damage; 100% weakness to poison.",
+    "simulated": true
+  },
+  {
+    "name": "Sunkissed",
+    "text": "Sun spells +15%. 25% weaker to frost, 50% at night.",
+    "simulated": false
+  },
+  {
+    "name": "Monk",
+    "text": "Quarterstaff power attacks disarm while you wear no armor. Unique battlestaff.",
+    "simulated": false
+  },
+  {
+    "name": "Shehai",
+    "text": "Bound weapons +15% damage; 25% more damage from undead.",
+    "simulated": false
+  },
+  {
+    "name": "Balanced Casting",
+    "text": "Pick a resistance: yours and every enemy within 200 feet drop by 25%.",
+    "simulated": false
+  },
+  {
+    "name": "Plagued Mind",
+    "text": "Undead summons last 200% longer; your Magicka is 0 while a summon is up.",
+    "simulated": false
+  },
+  {
+    "name": "Self-Taught",
+    "text": "−100 Magicka at start; +1 Magicka per 5 books or notes read (max +300).",
+    "simulated": true
+  },
+  {
+    "name": "Focused Magic",
+    "text": "One school 25% stronger and 10% costlier; the other four 50% weaker.",
+    "simulated": false
+  },
+  {
+    "name": "Focused Combat",
+    "text": "One of One-Handed, Two-Handed or Marksman: +10% damage, 10% less taken. The other two: the reverse.",
+    "simulated": false
+  },
+  {
+    "name": "Iron Knees",
+    "text": "Arrows and bolts do 50% less and restore 20 Stamina on hit; 15% slower.",
+    "simulated": false
+  },
+  {
+    "name": "Quester",
+    "text": "−50 Health, Magicka and Stamina at start; +2 each per quest completed (max +200).",
+    "simulated": true
+  },
+  {
+    "name": "The True Apprentice",
+    "text": "Spells cost 60% less but are 40% weaker.",
+    "simulated": false
+  },
+  {
+    "name": "Big Swing",
+    "text": "Power attacks +20%; light attacks 25% weaker.",
+    "simulated": false
+  },
+  {
+    "name": "Fencer",
+    "text": "Light attacks +30%; power attacks 25% weaker.",
+    "simulated": false
+  },
+  {
+    "name": "Blood Mage",
+    "text": "Blood and absorb spells +20%; Health reduced by 2 × your level.",
+    "simulated": true
+  },
+  {
+    "name": "Wanderer",
+    "text": "−50 Stamina and −50% Stamina regeneration at start; +1 Stamina and +1% regeneration per 2 locations found (max +200).",
+    "simulated": true
+  },
+  {
+    "name": "Drunken Mage",
+    "text": "No Magicka regeneration while sober. Drinking: +100% Stamina and Magicka regeneration and a stronger next spell.",
+    "simulated": false
+  }
+]

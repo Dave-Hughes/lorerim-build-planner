@@ -1,0 +1,106 @@
+[
+  {
+    "name": "Warrior",
+    "text": "+60 Health. Weapons deal 10% more damage with +10 armor penetration; unarmed +10 damage.",
+    "health": 60,
+    "magicka": 0,
+    "stamina": 0,
+    "carryWeight": 0
+  },
+  {
+    "name": "Thief",
+    "text": "Pickpocketing 50% easier, 40% harder to detect, +20% sneaking speed, sneak without the perk. 20% chance to avoid physical damage, 1% chance to take 50% more.",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0,
+    "carryWeight": 0
+  },
+  {
+    "name": "Mage",
+    "text": "+150 Magicka. Spells 30% stronger and longer while above 25% Magicka.",
+    "health": 0,
+    "magicka": 150,
+    "stamina": 0,
+    "carryWeight": 0
+  },
+  {
+    "name": "Apprentice",
+    "text": "+5 Magicka regeneration per second, spells 20% cheaper. 25% weakness to magic.",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0,
+    "carryWeight": 0
+  },
+  {
+    "name": "Atronach",
+    "text": "+300 Magicka, 25% chance to absorb spells, no Magicka loss when hit. No natural Magicka regeneration.",
+    "health": 0,
+    "magicka": 300,
+    "stamina": 0,
+    "carryWeight": 0
+  },
+  {
+    "name": "Lady",
+    "text": "+40 Health and Magicka, both regenerate 80% faster. Run and swim without exertion.",
+    "health": 40,
+    "magicka": 40,
+    "stamina": 0,
+    "carryWeight": 0
+  },
+  {
+    "name": "Lord",
+    "text": "+150 armor, +15% magic resistance, restore 1.5 Health per second. 30% weakness to fire.",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0,
+    "carryWeight": 0
+  },
+  {
+    "name": "Lover",
+    "text": "25% chance to take half physical and magic damage. Prices 15% better, shouts 20% stronger.",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0,
+    "carryWeight": 0
+  },
+  {
+    "name": "Ritual",
+    "text": "Soul gems restore 50% more, blessings 50% stronger, Ritual powers. Its \"stones 200% stronger\" line is untested with LoreRim's stones.",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0,
+    "carryWeight": 0
+  },
+  {
+    "name": "Serpent",
+    "text": "+15 armor penetration. Poison does 50% less to you; most paralysis does not affect you. Serpent's Curse power.",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0,
+    "carryWeight": 0
+  },
+  {
+    "name": "Shadow",
+    "text": "50% harder to detect, sneak without the perk, 30% quieter. Moonshadow power.",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0,
+    "carryWeight": 0
+  },
+  {
+    "name": "Steed",
+    "text": "+60 Stamina, +10% move and sprint speed, restore 1 Stamina per second. Most slows do not affect you.",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 60,
+    "carryWeight": 0
+  },
+  {
+    "name": "Tower",
+    "text": "+50 carry weight, +4 lockpicking expertise, reflect 15% physical damage, +10% block, more gold from kills.",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0,
+    "carryWeight": 50
+  }
+]

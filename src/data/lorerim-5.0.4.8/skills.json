@@ -1,0 +1,35 @@
+[
+  {
+    "group": "Warrior",
+    "skills": [
+      "One-Handed",
+      "Two-Handed",
+      "Marksman",
+      "Block",
+      "Heavy Armor",
+      "Smithing"
+    ]
+  },
+  {
+    "group": "Thief",
+    "skills": [
+      "Evasion",
+      "Sneak",
+      "Finesse",
+      "Wayfarer",
+      "Speech",
+      "Alchemy"
+    ]
+  },
+  {
+    "group": "Mage",
+    "skills": [
+      "Alteration",
+      "Conjuration",
+      "Destruction",
+      "Enchanting",
+      "Illusion",
+      "Restoration"
+    ]
+  }
+]

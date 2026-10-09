@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Warrior",
+    "text": "+25 Health",
+    "health": 25,
+    "magicka": 0,
+    "stamina": 0
+  },
+  {
+    "name": "Mage",
+    "text": "+25 Magicka",
+    "health": 0,
+    "magicka": 25,
+    "stamina": 0
+  },
+  {
+    "name": "Thief",
+    "text": "+25 Stamina",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 25
+  },
+  {
+    "name": "Apprentice",
+    "text": "+0.3 Magicka per second",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0
+  },
+  {
+    "name": "Lord",
+    "text": "+0.3 Health per second",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0
+  },
+  {
+    "name": "Steed",
+    "text": "+0.3 Stamina per second",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0
+  },
+  {
+    "name": "Lady",
+    "text": "Prices 10% better",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0
+  },
+  {
+    "name": "Atronach",
+    "text": "+5% magic resistance",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0
+  },
+  {
+    "name": "Lover",
+    "text": "+100 armor",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0
+  },
+  {
+    "name": "Tower",
+    "text": "Reflect 5% of physical damage",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0
+  },
+  {
+    "name": "Ritual",
+    "text": "Conjuration spells 10% cheaper",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0
+  },
+  {
+    "name": "Serpent",
+    "text": "Crafted potions and poisons 10% stronger",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0
+  },
+  {
+    "name": "Shadow",
+    "text": "Sneaking 10% better, steps 10% quieter",
+    "health": 0,
+    "magicka": 0,
+    "stamina": 0
+  }
+]

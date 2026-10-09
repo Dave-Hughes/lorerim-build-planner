@@ -1,0 +1,4353 @@
+[
+  {
+    "id": "One-Handed:Hand to Hand",
+    "tree": "One-Handed",
+    "name": "Hand to Hand",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Weapon Mastery",
+    "tree": "One-Handed",
+    "name": "Weapon Mastery",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Penetrating Strikes",
+    "tree": "One-Handed",
+    "name": "Penetrating Strikes",
+    "requires": [
+      "One-Handed:Weapon Mastery"
+    ],
+    "anyOf": false,
+    "skill": 20,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Flurry",
+    "tree": "One-Handed",
+    "name": "Flurry",
+    "requires": [
+      "One-Handed:Weapon Mastery"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Grappling",
+    "tree": "One-Handed",
+    "name": "Grappling",
+    "requires": [
+      "One-Handed:Hand to Hand"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Mace Focus",
+    "tree": "One-Handed",
+    "name": "Mace Focus",
+    "requires": [
+      "One-Handed:Penetrating Strikes"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Powerful Charge",
+    "tree": "One-Handed",
+    "name": "Powerful Charge",
+    "requires": [
+      "One-Handed:Penetrating Strikes"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Short Blade Focus",
+    "tree": "One-Handed",
+    "name": "Short Blade Focus",
+    "requires": [
+      "One-Handed:Penetrating Strikes"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Sword & Spear Focus",
+    "tree": "One-Handed",
+    "name": "Sword & Spear Focus",
+    "requires": [
+      "One-Handed:Penetrating Strikes"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Unarmed Defense",
+    "tree": "One-Handed",
+    "name": "Unarmed Defense",
+    "requires": [
+      "One-Handed:Hand to Hand"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:War Axe Focus",
+    "tree": "One-Handed",
+    "name": "War Axe Focus",
+    "requires": [
+      "One-Handed:Penetrating Strikes"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Armed Spellcasting",
+    "tree": "One-Handed",
+    "name": "Armed Spellcasting",
+    "requires": [
+      "One-Handed:Weapon Mastery"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "F"
+  },
+  {
+    "id": "One-Handed:Armsbreaker",
+    "tree": "One-Handed",
+    "name": "Armsbreaker",
+    "requires": [
+      "One-Handed:War Axe Focus"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Balanced Wielding",
+    "tree": "One-Handed",
+    "name": "Balanced Wielding",
+    "requires": [
+      "One-Handed:Weapon Mastery"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "F"
+  },
+  {
+    "id": "One-Handed:Piercing Strike",
+    "tree": "One-Handed",
+    "name": "Piercing Strike",
+    "requires": [
+      "One-Handed:Sword & Spear Focus"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Powerful Strike",
+    "tree": "One-Handed",
+    "name": "Powerful Strike",
+    "requires": [
+      "One-Handed:Penetrating Strikes"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Puncture",
+    "tree": "One-Handed",
+    "name": "Puncture",
+    "requires": [
+      "One-Handed:Short Blade Focus"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Storm of Steel",
+    "tree": "One-Handed",
+    "name": "Storm of Steel",
+    "requires": [
+      "One-Handed:Flurry"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Stunning Blow",
+    "tree": "One-Handed",
+    "name": "Stunning Blow",
+    "requires": [
+      "One-Handed:Mace Focus"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Takedown",
+    "tree": "One-Handed",
+    "name": "Takedown",
+    "requires": [
+      "One-Handed:Grappling"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Unarmed Stance",
+    "tree": "One-Handed",
+    "name": "Unarmed Stance",
+    "requires": [
+      "One-Handed:Unarmed Defense"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Death Adder",
+    "tree": "One-Handed",
+    "name": "Death Adder",
+    "requires": [
+      "One-Handed:Puncture"
+    ],
+    "anyOf": false,
+    "skill": 80,
+    "source": "O"
+  },
+  {
+    "id": "One-Handed:Final Stand",
+    "tree": "One-Handed",
+    "name": "Final Stand",
+    "requires": [
+      "One-Handed:Piercing Strike"
+    ],
+    "anyOf": false,
+    "skill": 80,
+    "source": "O"
+  },
+  {
+    "id": "One-Handed:Guillotine",
+    "tree": "One-Handed",
+    "name": "Guillotine",
+    "requires": [
+      "One-Handed:Armsbreaker"
+    ],
+    "anyOf": false,
+    "skill": 80,
+    "source": "O"
+  },
+  {
+    "id": "One-Handed:Heavy Slam",
+    "tree": "One-Handed",
+    "name": "Heavy Slam",
+    "requires": [
+      "One-Handed:Stunning Blow"
+    ],
+    "anyOf": false,
+    "skill": 80,
+    "source": "O"
+  },
+  {
+    "id": "One-Handed:Relentless Onslaught",
+    "tree": "One-Handed",
+    "name": "Relentless Onslaught",
+    "requires": [
+      "One-Handed:Powerful Charge",
+      "One-Handed:Powerful Strike"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "One-Handed:Deathbringer",
+    "tree": "One-Handed",
+    "name": "Deathbringer",
+    "requires": [
+      "One-Handed:Relentless Onslaught"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Two-Handed:Great Weapon Mastery",
+    "tree": "Two-Handed",
+    "name": "Great Weapon Mastery",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R",
+    "rankSkills": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": "Two-Handed:Barbaric Might",
+    "tree": "Two-Handed",
+    "name": "Barbaric Might",
+    "requires": [
+      "Two-Handed:Great Weapon Mastery"
+    ],
+    "anyOf": false,
+    "skill": 20,
+    "source": "R"
+  },
+  {
+    "id": "Two-Handed:Devastating Charge",
+    "tree": "Two-Handed",
+    "name": "Devastating Charge",
+    "requires": [
+      "Two-Handed:Barbaric Might"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Two-Handed:Hafted Blade Focus",
+    "tree": "Two-Handed",
+    "name": "Hafted Blade Focus",
+    "requires": [
+      "Two-Handed:Barbaric Might"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Two-Handed:Longweapon Focus",
+    "tree": "Two-Handed",
+    "name": "Longweapon Focus",
+    "requires": [
+      "Two-Handed:Barbaric Might"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Two-Handed:Quarterstaff & Battlestaff Focus",
+    "tree": "Two-Handed",
+    "name": "Quarterstaff & Battlestaff Focus",
+    "requires": [
+      "Two-Handed:Barbaric Might"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R",
+    "rankSkills": [
+      25,
+      50,
+      75
+    ]
+  },
+  {
+    "id": "Two-Handed:Warhammer Focus",
+    "tree": "Two-Handed",
+    "name": "Warhammer Focus",
+    "requires": [
+      "Two-Handed:Barbaric Might"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Two-Handed:Defensive Strike",
+    "tree": "Two-Handed",
+    "name": "Defensive Strike",
+    "requires": [
+      "Two-Handed:Quarterstaff & Battlestaff Focus"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Two-Handed:Devastating Strike",
+    "tree": "Two-Handed",
+    "name": "Devastating Strike",
+    "requires": [
+      "Two-Handed:Barbaric Might"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Two-Handed:Onslaught",
+    "tree": "Two-Handed",
+    "name": "Onslaught",
+    "requires": [
+      "Two-Handed:Warhammer Focus"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Two-Handed:Reversal",
+    "tree": "Two-Handed",
+    "name": "Reversal",
+    "requires": [
+      "Two-Handed:Longweapon Focus"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Two-Handed:Shield Breaker",
+    "tree": "Two-Handed",
+    "name": "Shield Breaker",
+    "requires": [
+      "Two-Handed:Hafted Blade Focus"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Two-Handed:Hyper Armor",
+    "tree": "Two-Handed",
+    "name": "Hyper Armor",
+    "requires": [
+      "Two-Handed:Devastating Charge",
+      "Two-Handed:Devastating Strike"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Two-Handed:Battle Hide",
+    "tree": "Two-Handed",
+    "name": "Battle Hide",
+    "requires": [
+      "Two-Handed:Defensive Strike"
+    ],
+    "anyOf": false,
+    "skill": 80,
+    "source": "O"
+  },
+  {
+    "id": "Two-Handed:Critical Slam",
+    "tree": "Two-Handed",
+    "name": "Critical Slam",
+    "requires": [
+      "Two-Handed:Onslaught"
+    ],
+    "anyOf": false,
+    "skill": 80,
+    "source": "O"
+  },
+  {
+    "id": "Two-Handed:Death or Glory",
+    "tree": "Two-Handed",
+    "name": "Death or Glory",
+    "requires": [
+      "Two-Handed:Reversal"
+    ],
+    "anyOf": false,
+    "skill": 80,
+    "source": "O"
+  },
+  {
+    "id": "Two-Handed:Execute",
+    "tree": "Two-Handed",
+    "name": "Execute",
+    "requires": [
+      "Two-Handed:Shield Breaker"
+    ],
+    "anyOf": false,
+    "skill": 80,
+    "source": "O"
+  },
+  {
+    "id": "Two-Handed:Mighty Strike",
+    "tree": "Two-Handed",
+    "name": "Mighty Strike",
+    "requires": [
+      "Two-Handed:Hyper Armor"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Two-Handed:Warbringer",
+    "tree": "Two-Handed",
+    "name": "Warbringer",
+    "requires": [
+      "Two-Handed:Mighty Strike"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Marksman:Ranged Combat Training",
+    "tree": "Marksman",
+    "name": "Ranged Combat Training",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Marksman:Hunter",
+    "tree": "Marksman",
+    "name": "Hunter",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "F",
+    "rankLevels": [
+      10,
+      20
+    ]
+  },
+  {
+    "id": "Marksman:Ranger",
+    "tree": "Marksman",
+    "name": "Ranger",
+    "requires": [
+      "Marksman:Ranged Combat Training"
+    ],
+    "anyOf": false,
+    "skill": 15,
+    "source": "R"
+  },
+  {
+    "id": "Marksman:Sniper",
+    "tree": "Marksman",
+    "name": "Sniper",
+    "requires": [
+      "Marksman:Ranged Combat Training"
+    ],
+    "anyOf": false,
+    "skill": 15,
+    "source": "R"
+  },
+  {
+    "id": "Marksman:Hidden Blade",
+    "tree": "Marksman",
+    "name": "Hidden Blade",
+    "requires": [
+      "Marksman:Ranged Combat Training"
+    ],
+    "anyOf": false,
+    "skill": 20,
+    "source": "R"
+  },
+  {
+    "id": "Marksman:Precise Aim",
+    "tree": "Marksman",
+    "name": "Precise Aim",
+    "requires": [
+      "Marksman:Ranged Combat Training"
+    ],
+    "anyOf": false,
+    "skill": 20,
+    "source": "R"
+  },
+  {
+    "id": "Marksman:Bow Strike",
+    "tree": "Marksman",
+    "name": "Bow Strike",
+    "requires": [
+      "Marksman:Ranged Combat Training"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "F"
+  },
+  {
+    "id": "Marksman:Eagle Eye",
+    "tree": "Marksman",
+    "name": "Eagle Eye",
+    "requires": [
+      "Marksman:Ranged Combat Training"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Marksman:Focus on the Prey",
+    "tree": "Marksman",
+    "name": "Focus on the Prey",
+    "requires": [
+      "Marksman:Precise Aim"
+    ],
+    "anyOf": false,
+    "skill": 30,
+    "source": "O"
+  },
+  {
+    "id": "Marksman:Piercing Shot",
+    "tree": "Marksman",
+    "name": "Piercing Shot",
+    "requires": [
+      "Marksman:Precise Aim"
+    ],
+    "anyOf": false,
+    "skill": 30,
+    "source": "R"
+  },
+  {
+    "id": "Marksman:Marksman's Focus",
+    "tree": "Marksman",
+    "name": "Marksman's Focus",
+    "requires": [
+      "Marksman:Eagle Eye"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Marksman:Penetrating Shot",
+    "tree": "Marksman",
+    "name": "Penetrating Shot",
+    "requires": [
+      "Marksman:Piercing Shot"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "L"
+  },
+  {
+    "id": "Marksman:Power Shot",
+    "tree": "Marksman",
+    "name": "Power Shot",
+    "requires": [
+      "Marksman:Eagle Eye"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Marksman:Quick Shot",
+    "tree": "Marksman",
+    "name": "Quick Shot",
+    "requires": [
+      "Marksman:Eagle Eye"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Marksman:Rapid Reload",
+    "tree": "Marksman",
+    "name": "Rapid Reload",
+    "requires": [
+      "Marksman:Eagle Eye"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Marksman:Sharp Throw",
+    "tree": "Marksman",
+    "name": "Sharp Throw",
+    "requires": [
+      "Marksman:Eagle Eye"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Marksman:Lion's Arrow",
+    "tree": "Marksman",
+    "name": "Lion's Arrow",
+    "requires": [
+      "Marksman:Penetrating Shot",
+      "Marksman:Power Shot"
+    ],
+    "anyOf": false,
+    "skill": 60,
+    "source": "O"
+  },
+  {
+    "id": "Marksman:Stunning Precision",
+    "tree": "Marksman",
+    "name": "Stunning Precision",
+    "requires": [
+      "Marksman:Penetrating Shot",
+      "Marksman:Power Shot"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Marksman:Three Crows",
+    "tree": "Marksman",
+    "name": "Three Crows",
+    "requires": [
+      "Marksman:Piercing Shot"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "O"
+  },
+  {
+    "id": "Block:Improved Blocking",
+    "tree": "Block",
+    "name": "Improved Blocking",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Block:Weapons Master",
+    "tree": "Block",
+    "name": "Weapons Master",
+    "requires": [
+      "Block:Improved Blocking"
+    ],
+    "anyOf": false,
+    "skill": 10,
+    "source": "L"
+  },
+  {
+    "id": "Block:Strong Grip",
+    "tree": "Block",
+    "name": "Strong Grip",
+    "requires": [
+      "Block:Improved Blocking"
+    ],
+    "anyOf": false,
+    "skill": 15,
+    "source": "R"
+  },
+  {
+    "id": "Block:Experienced Blocking",
+    "tree": "Block",
+    "name": "Experienced Blocking",
+    "requires": [
+      "Block:Improved Blocking"
+    ],
+    "anyOf": false,
+    "skill": 20,
+    "source": "R"
+  },
+  {
+    "id": "Block:Powerful Bashes",
+    "tree": "Block",
+    "name": "Powerful Bashes",
+    "requires": [
+      "Block:Improved Blocking"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Block:Shield Strike",
+    "tree": "Block",
+    "name": "Shield Strike",
+    "requires": [
+      "Block:Powerful Bashes"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "F"
+  },
+  {
+    "id": "Block:Torch Combat",
+    "tree": "Block",
+    "name": "Torch Combat",
+    "requires": [
+      "Block:Improved Blocking"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "F"
+  },
+  {
+    "id": "Block:Shield's Best Friend",
+    "tree": "Block",
+    "name": "Shield's Best Friend",
+    "requires": [
+      "Block:Improved Blocking"
+    ],
+    "anyOf": false,
+    "skill": 30,
+    "source": "L"
+  },
+  {
+    "id": "Block:Masterly Strike",
+    "tree": "Block",
+    "name": "Masterly Strike",
+    "requires": [
+      "Block:Weapons Master"
+    ],
+    "anyOf": false,
+    "skill": 35,
+    "source": "L"
+  },
+  {
+    "id": "Block:Elemental Protection",
+    "tree": "Block",
+    "name": "Elemental Protection",
+    "requires": [
+      "Block:Strong Grip"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Block:Overpowering Bashes",
+    "tree": "Block",
+    "name": "Overpowering Bashes",
+    "requires": [
+      "Block:Powerful Bashes"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Block:Surprise Attack",
+    "tree": "Block",
+    "name": "Surprise Attack",
+    "requires": [
+      "Block:Masterly Strike"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "L"
+  },
+  {
+    "id": "Block:Defensive Stance",
+    "tree": "Block",
+    "name": "Defensive Stance",
+    "requires": [
+      "Block:Elemental Protection"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Block:Disarming Bash",
+    "tree": "Block",
+    "name": "Disarming Bash",
+    "requires": [
+      "Block:Overpowering Bashes"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Block:Strike the Jugular",
+    "tree": "Block",
+    "name": "Strike the Jugular",
+    "requires": [
+      "Block:Surprise Attack"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "L"
+  },
+  {
+    "id": "Block:Master of All",
+    "tree": "Block",
+    "name": "Master of All",
+    "requires": [
+      "Block:Strike the Jugular"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "L"
+  },
+  {
+    "id": "Block:Unstoppable Charge",
+    "tree": "Block",
+    "name": "Unstoppable Charge",
+    "requires": [
+      "Block:Disarming Bash",
+      "Block:Defensive Stance"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Heavy Armor:Conditioning",
+    "tree": "Heavy Armor",
+    "name": "Conditioning",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Heavy Armor:Mounted Combat",
+    "tree": "Heavy Armor",
+    "name": "Mounted Combat",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "F",
+    "rankLevels": [
+      10
+    ]
+  },
+  {
+    "id": "Heavy Armor:Relentless Onslaught",
+    "tree": "Heavy Armor",
+    "name": "Relentless Onslaught",
+    "requires": [
+      "Heavy Armor:Conditioning"
+    ],
+    "anyOf": false,
+    "skill": 20,
+    "source": "R"
+  },
+  {
+    "id": "Heavy Armor:Combat Casting",
+    "tree": "Heavy Armor",
+    "name": "Combat Casting",
+    "requires": [
+      "Heavy Armor:Conditioning"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Heavy Armor:Combat Training",
+    "tree": "Heavy Armor",
+    "name": "Combat Training",
+    "requires": [
+      "Heavy Armor:Conditioning"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Heavy Armor:Cushioned",
+    "tree": "Heavy Armor",
+    "name": "Cushioned",
+    "requires": [
+      "Heavy Armor:Relentless Onslaught"
+    ],
+    "anyOf": false,
+    "skill": 30,
+    "source": "O"
+  },
+  {
+    "id": "Heavy Armor:Combat Trance",
+    "tree": "Heavy Armor",
+    "name": "Combat Trance",
+    "requires": [
+      "Heavy Armor:Combat Casting"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Heavy Armor:Defiance",
+    "tree": "Heavy Armor",
+    "name": "Defiance",
+    "requires": [
+      "Heavy Armor:Cushioned"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "O"
+  },
+  {
+    "id": "Heavy Armor:Devastating Tackle",
+    "tree": "Heavy Armor",
+    "name": "Devastating Tackle",
+    "requires": [
+      "Heavy Armor:Relentless Onslaught"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "F"
+  },
+  {
+    "id": "Heavy Armor:Fortitude",
+    "tree": "Heavy Armor",
+    "name": "Fortitude",
+    "requires": [
+      "Heavy Armor:Combat Training"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R",
+    "carryWeight": 20
+  },
+  {
+    "id": "Heavy Armor:Immovable",
+    "tree": "Heavy Armor",
+    "name": "Immovable",
+    "requires": [
+      "Heavy Armor:Combat Training"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "F"
+  },
+  {
+    "id": "Heavy Armor:Combat Meditation",
+    "tree": "Heavy Armor",
+    "name": "Combat Meditation",
+    "requires": [
+      "Heavy Armor:Combat Trance"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Heavy Armor:Never Kneel",
+    "tree": "Heavy Armor",
+    "name": "Never Kneel",
+    "requires": [
+      "Heavy Armor:Defiance"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "O"
+  },
+  {
+    "id": "Heavy Armor:Power of the Combatant",
+    "tree": "Heavy Armor",
+    "name": "Power of the Combatant",
+    "requires": [
+      "Heavy Armor:Fortitude"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Heavy Armor:Juggernaut",
+    "tree": "Heavy Armor",
+    "name": "Juggernaut",
+    "requires": [
+      "Heavy Armor:Power of the Combatant"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Heavy Armor:Reap the Whirlwind",
+    "tree": "Heavy Armor",
+    "name": "Reap the Whirlwind",
+    "requires": [
+      "Heavy Armor:Never Kneel"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "O"
+  },
+  {
+    "id": "Heavy Armor:War Mage",
+    "tree": "Heavy Armor",
+    "name": "War Mage",
+    "requires": [
+      "Heavy Armor:Combat Meditation"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Evasion:Agility",
+    "tree": "Evasion",
+    "name": "Agility",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Evasion:Light Armor Training",
+    "tree": "Evasion",
+    "name": "Light Armor Training",
+    "requires": [
+      "Evasion:Agility"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Evasion:Agile Spellcasting",
+    "tree": "Evasion",
+    "name": "Agile Spellcasting",
+    "requires": [
+      "Evasion:Agility"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Evasion:Athletics",
+    "tree": "Evasion",
+    "name": "Athletics",
+    "requires": [
+      "Evasion:Light Armor Training"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "F"
+  },
+  {
+    "id": "Evasion:Dodge",
+    "tree": "Evasion",
+    "name": "Dodge",
+    "requires": [
+      "Evasion:Agility",
+      "Heavy Armor:Conditioning"
+    ],
+    "anyOf": true,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Evasion:Unarmored",
+    "tree": "Evasion",
+    "name": "Unarmored",
+    "requires": [
+      "Evasion:Agility"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "F",
+    "rankSkills": [
+      25,
+      50
+    ]
+  },
+  {
+    "id": "Evasion:Annoying Mosquitoes",
+    "tree": "Evasion",
+    "name": "Annoying Mosquitoes",
+    "requires": [
+      "Evasion:Athletics"
+    ],
+    "anyOf": false,
+    "skill": 40,
+    "source": "O"
+  },
+  {
+    "id": "Evasion:As a Leaf",
+    "tree": "Evasion",
+    "name": "As a Leaf",
+    "requires": [
+      "Evasion:Dodge"
+    ],
+    "anyOf": false,
+    "skill": 40,
+    "source": "O"
+  },
+  {
+    "id": "Evasion:Dexterity",
+    "tree": "Evasion",
+    "name": "Dexterity",
+    "requires": [
+      "Evasion:Light Armor Training"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Evasion:Vexing Flanker",
+    "tree": "Evasion",
+    "name": "Vexing Flanker",
+    "requires": [
+      "Evasion:Light Armor Training"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Evasion:Evasive Leap",
+    "tree": "Evasion",
+    "name": "Evasive Leap",
+    "requires": [
+      "Evasion:Dodge"
+    ],
+    "anyOf": false,
+    "skill": 60,
+    "source": "O"
+  },
+  {
+    "id": "Evasion:Combat Reflexes",
+    "tree": "Evasion",
+    "name": "Combat Reflexes",
+    "requires": [
+      "Evasion:Light Armor Training",
+      "Evasion:Vexing Flanker"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Evasion:Wind Walker",
+    "tree": "Evasion",
+    "name": "Wind Walker",
+    "requires": [
+      "Evasion:Dexterity"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Evasion:Meteoric Reflexes",
+    "tree": "Evasion",
+    "name": "Meteoric Reflexes",
+    "requires": [
+      "Evasion:Wind Walker",
+      "Evasion:Combat Reflexes"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Smithing:Craftsmanship",
+    "tree": "Smithing",
+    "name": "Craftsmanship",
+    "requires": [],
+    "anyOf": false,
+    "skill": 10,
+    "source": "R",
+    "book": "The Armorer's Encyclopedia"
+  },
+  {
+    "id": "Smithing:Tailoring & Polishing",
+    "tree": "Smithing",
+    "name": "Tailoring & Polishing",
+    "requires": [],
+    "anyOf": false,
+    "skill": 10,
+    "source": "L",
+    "book": "The Complete History of the Radiant Raiment"
+  },
+  {
+    "id": "Smithing:Advanced Blacksmithing",
+    "tree": "Smithing",
+    "name": "Advanced Blacksmithing",
+    "requires": [
+      "Smithing:Craftsmanship",
+      "Smithing:Tailoring & Polishing"
+    ],
+    "anyOf": false,
+    "skill": 30,
+    "source": "R",
+    "book": null
+  },
+  {
+    "id": "Smithing:Advanced Light Armors",
+    "tree": "Smithing",
+    "name": "Advanced Light Armors",
+    "requires": [
+      "Smithing:Craftsmanship"
+    ],
+    "anyOf": false,
+    "skill": 30,
+    "source": "R",
+    "book": null
+  },
+  {
+    "id": "Smithing:Dwarven Smithing",
+    "tree": "Smithing",
+    "name": "Dwarven Smithing",
+    "requires": [
+      "Smithing:Craftsmanship"
+    ],
+    "anyOf": false,
+    "skill": 30,
+    "source": "R",
+    "book": null
+  },
+  {
+    "id": "Smithing:Arcane Craftsmanship",
+    "tree": "Smithing",
+    "name": "Arcane Craftsmanship",
+    "requires": [
+      "Smithing:Advanced Blacksmithing"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R",
+    "book": null
+  },
+  {
+    "id": "Smithing:Elven Smithing",
+    "tree": "Smithing",
+    "name": "Elven Smithing",
+    "requires": [
+      "Smithing:Dwarven Smithing",
+      "Smithing:Advanced Light Armors"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R",
+    "book": null
+  },
+  {
+    "id": "Smithing:Orcish Smithing",
+    "tree": "Smithing",
+    "name": "Orcish Smithing",
+    "requires": [
+      "Smithing:Dwarven Smithing",
+      "Smithing:Advanced Light Armors"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R",
+    "book": null
+  },
+  {
+    "id": "Smithing:Smithing Specialization",
+    "tree": "Smithing",
+    "name": "Smithing Specialization",
+    "requires": [
+      "Smithing:Advanced Blacksmithing"
+    ],
+    "anyOf": false,
+    "skill": 60,
+    "source": "O"
+  },
+  {
+    "id": "Smithing:Ebony Smithing",
+    "tree": "Smithing",
+    "name": "Ebony Smithing",
+    "requires": [
+      "Smithing:Orcish Smithing",
+      "Smithing:Elven Smithing"
+    ],
+    "anyOf": false,
+    "skill": 70,
+    "source": "R",
+    "book": null
+  },
+  {
+    "id": "Smithing:Glass Smithing",
+    "tree": "Smithing",
+    "name": "Glass Smithing",
+    "requires": [
+      "Smithing:Orcish Smithing",
+      "Smithing:Elven Smithing"
+    ],
+    "anyOf": false,
+    "skill": 70,
+    "source": "R",
+    "book": null
+  },
+  {
+    "id": "Smithing:Iron Lore",
+    "tree": "Smithing",
+    "name": "Iron Lore",
+    "requires": [
+      "Smithing:Smithing Specialization"
+    ],
+    "anyOf": false,
+    "skill": 80,
+    "source": "O"
+  },
+  {
+    "id": "Smithing:Daedric Smithing",
+    "tree": "Smithing",
+    "name": "Daedric Smithing",
+    "requires": [
+      "Smithing:Glass Smithing",
+      "Smithing:Ebony Smithing"
+    ],
+    "anyOf": false,
+    "skill": 90,
+    "source": "R",
+    "book": null
+  },
+  {
+    "id": "Smithing:Draconic Blacksmithing",
+    "tree": "Smithing",
+    "name": "Draconic Blacksmithing",
+    "requires": [
+      "Smithing:Glass Smithing",
+      "Smithing:Ebony Smithing"
+    ],
+    "anyOf": false,
+    "skill": 90,
+    "source": "R",
+    "book": null
+  },
+  {
+    "id": "Smithing:Legendary Blacksmithing",
+    "tree": "Smithing",
+    "name": "Legendary Blacksmithing",
+    "requires": [
+      "Smithing:Advanced Blacksmithing"
+    ],
+    "anyOf": false,
+    "skill": 90,
+    "source": "R",
+    "book": null
+  },
+  {
+    "id": "Alchemy:Alchemical Lore",
+    "tree": "Alchemy",
+    "name": "Alchemical Lore",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Alchemy:Drunken Combat",
+    "tree": "Alchemy",
+    "name": "Drunken Combat",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "F",
+    "rankLevels": [
+      10
+    ]
+  },
+  {
+    "id": "Alchemy:Gourmet",
+    "tree": "Alchemy",
+    "name": "Gourmet",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "F",
+    "rankLevels": [
+      10
+    ]
+  },
+  {
+    "id": "Alchemy:Herbalist",
+    "tree": "Alchemy",
+    "name": "Herbalist",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "F",
+    "rankLevels": [
+      10
+    ]
+  },
+  {
+    "id": "Alchemy:Concentrated Poisons",
+    "tree": "Alchemy",
+    "name": "Concentrated Poisons",
+    "requires": [
+      "Alchemy:Alchemical Lore"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Alchemy:Improved Elixirs",
+    "tree": "Alchemy",
+    "name": "Improved Elixirs",
+    "requires": [
+      "Alchemy:Alchemical Lore"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Alchemy:Night Vision",
+    "tree": "Alchemy",
+    "name": "Night Vision",
+    "requires": [
+      "Alchemy:Improved Elixirs"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R",
+    "carryItems": "Sabre Cat Eye"
+  },
+  {
+    "id": "Alchemy:Catalysis",
+    "tree": "Alchemy",
+    "name": "Catalysis",
+    "requires": [
+      "Alchemy:Improved Elixirs"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Alchemy:Improved Poisons",
+    "tree": "Alchemy",
+    "name": "Improved Poisons",
+    "requires": [
+      "Alchemy:Concentrated Poisons"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Alchemy:Regeneration",
+    "tree": "Alchemy",
+    "name": "Regeneration",
+    "requires": [
+      "Alchemy:Improved Elixirs"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R",
+    "carryItems": "Slaughterfish Egg; Spriggan Sap; Troll Fat"
+  },
+  {
+    "id": "Alchemy:Alkahest",
+    "tree": "Alchemy",
+    "name": "Alkahest",
+    "requires": [
+      "Alchemy:Improved Poisons"
+    ],
+    "anyOf": false,
+    "skill": 60,
+    "source": "O"
+  },
+  {
+    "id": "Alchemy:Immunization",
+    "tree": "Alchemy",
+    "name": "Immunization",
+    "requires": [
+      "Alchemy:Catalysis",
+      "Alchemy:Improved Poisons"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Alchemy:Fortified Muscles",
+    "tree": "Alchemy",
+    "name": "Fortified Muscles",
+    "requires": [
+      "Alchemy:Immunization"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R",
+    "carryItems": "Mammoth Heart Muscle; Troll Fat"
+  },
+  {
+    "id": "Alchemy:World Serpent",
+    "tree": "Alchemy",
+    "name": "World Serpent",
+    "requires": [
+      "Alchemy:Alkahest"
+    ],
+    "anyOf": false,
+    "skill": 90,
+    "source": "O"
+  },
+  {
+    "id": "Alchemy:Alchemical Intellect",
+    "tree": "Alchemy",
+    "name": "Alchemical Intellect",
+    "requires": [
+      "Alchemy:Immunization"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R",
+    "carryItems": "Daedra Heart; Ectoplasm"
+  },
+  {
+    "id": "Alchemy:Purification Process",
+    "tree": "Alchemy",
+    "name": "Purification Process",
+    "requires": [
+      "Alchemy:Immunization"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Enchanting:Enchanter's Insight",
+    "tree": "Enchanting",
+    "name": "Enchanter's Insight",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Enchanting:Arcane Artificery",
+    "tree": "Enchanting",
+    "name": "Arcane Artificery",
+    "requires": [
+      "Enchanting:Enchanter's Insight"
+    ],
+    "anyOf": false,
+    "skill": 20,
+    "source": "F"
+  },
+  {
+    "id": "Enchanting:Elemental Lore",
+    "tree": "Enchanting",
+    "name": "Elemental Lore",
+    "requires": [
+      "Enchanting:Enchanter's Insight"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Enchanting:Soul Gem Mastery",
+    "tree": "Enchanting",
+    "name": "Soul Gem Mastery",
+    "requires": [
+      "Enchanting:Enchanter's Insight"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Enchanting:Staff Channeling",
+    "tree": "Enchanting",
+    "name": "Staff Channeling",
+    "requires": [
+      "Enchanting:Arcane Artificery"
+    ],
+    "anyOf": false,
+    "skill": 30,
+    "source": "F"
+  },
+  {
+    "id": "Enchanting:Arcane Experimentation",
+    "tree": "Enchanting",
+    "name": "Arcane Experimentation",
+    "requires": [
+      "Enchanting:Soul Gem Mastery"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Enchanting:Corpus Lore",
+    "tree": "Enchanting",
+    "name": "Corpus Lore",
+    "requires": [
+      "Enchanting:Elemental Lore"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Enchanting:Wand Mastery",
+    "tree": "Enchanting",
+    "name": "Wand Mastery",
+    "requires": [
+      "Enchanting:Staff Channeling"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "L"
+  },
+  {
+    "id": "Enchanting:Charge Tap",
+    "tree": "Enchanting",
+    "name": "Charge Tap",
+    "requires": [
+      "Enchanting:Staff Channeling"
+    ],
+    "anyOf": false,
+    "skill": 60,
+    "source": "O"
+  },
+  {
+    "id": "Enchanting:Artificer's Insight",
+    "tree": "Enchanting",
+    "name": "Artificer's Insight",
+    "requires": [
+      "Enchanting:Arcane Experimentation"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Enchanting:Skill Lore",
+    "tree": "Enchanting",
+    "name": "Skill Lore",
+    "requires": [
+      "Enchanting:Corpus Lore"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Enchanting:You Shall Not Pass",
+    "tree": "Enchanting",
+    "name": "You Shall Not Pass",
+    "requires": [
+      "Enchanting:Charge Tap",
+      "Enchanting:Wand Mastery"
+    ],
+    "anyOf": false,
+    "skill": 80,
+    "source": "O"
+  },
+  {
+    "id": "Enchanting:Enchantment Mastery",
+    "tree": "Enchanting",
+    "name": "Enchantment Mastery",
+    "requires": [
+      "Enchanting:Artificer's Insight",
+      "Enchanting:Skill Lore"
+    ],
+    "anyOf": false,
+    "skill": 90,
+    "source": "R"
+  },
+  {
+    "id": "Enchanting:Artifact Enchanter",
+    "tree": "Enchanting",
+    "name": "Artifact Enchanter",
+    "requires": [
+      "Enchanting:Enchantment Mastery"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Sneak:Stealth",
+    "tree": "Sneak",
+    "name": "Stealth",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Sneak:Tripwire",
+    "tree": "Sneak",
+    "name": "Tripwire",
+    "requires": [
+      "Sneak:Stealth"
+    ],
+    "anyOf": false,
+    "skill": 20,
+    "source": "O"
+  },
+  {
+    "id": "Sneak:Arcane Assassin",
+    "tree": "Sneak",
+    "name": "Arcane Assassin",
+    "requires": [
+      "Sneak:Stealth"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "F"
+  },
+  {
+    "id": "Sneak:Deft Strike",
+    "tree": "Sneak",
+    "name": "Deft Strike",
+    "requires": [
+      "Sneak:Stealth"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Sneak:Muffled Movement",
+    "tree": "Sneak",
+    "name": "Muffled Movement",
+    "requires": [
+      "Sneak:Stealth"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Sneak:Fog of War",
+    "tree": "Sneak",
+    "name": "Fog of War",
+    "requires": [
+      "Sneak:Stealth"
+    ],
+    "anyOf": false,
+    "skill": 40,
+    "source": "O"
+  },
+  {
+    "id": "Sneak:Anatomical Lore",
+    "tree": "Sneak",
+    "name": "Anatomical Lore",
+    "requires": [
+      "Sneak:Deft Strike"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Sneak:Light Steps",
+    "tree": "Sneak",
+    "name": "Light Steps",
+    "requires": [
+      "Sneak:Muffled Movement"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Sneak:Whiplash",
+    "tree": "Sneak",
+    "name": "Whiplash",
+    "requires": [
+      "Sneak:Tripwire"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "O"
+  },
+  {
+    "id": "Sneak:Cloak and Dagger",
+    "tree": "Sneak",
+    "name": "Cloak and Dagger",
+    "requires": [
+      "Sneak:Fog of War"
+    ],
+    "anyOf": false,
+    "skill": 70,
+    "source": "O"
+  },
+  {
+    "id": "Sneak:Acrobatics",
+    "tree": "Sneak",
+    "name": "Acrobatics",
+    "requires": [
+      "Sneak:Light Steps"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Sneak:Advanced Anatomical Lore",
+    "tree": "Sneak",
+    "name": "Advanced Anatomical Lore",
+    "requires": [
+      "Sneak:Anatomical Lore"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Sneak:Problem Solver",
+    "tree": "Sneak",
+    "name": "Problem Solver",
+    "requires": [
+      "Sneak:Anatomical Lore"
+    ],
+    "anyOf": false,
+    "skill": 80,
+    "source": "O"
+  },
+  {
+    "id": "Sneak:Shadow Opportunist",
+    "tree": "Sneak",
+    "name": "Shadow Opportunist",
+    "requires": [
+      "Sneak:Light Steps"
+    ],
+    "anyOf": false,
+    "skill": 80,
+    "source": "L"
+  },
+  {
+    "id": "Sneak:Shadowrunner",
+    "tree": "Sneak",
+    "name": "Shadowrunner",
+    "requires": [
+      "Sneak:Acrobatics"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Finesse:Nimble Fingers",
+    "tree": "Finesse",
+    "name": "Nimble Fingers",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Finesse:Trapper",
+    "tree": "Finesse",
+    "name": "Trapper",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "L"
+  },
+  {
+    "id": "Finesse:Outlaw",
+    "tree": "Finesse",
+    "name": "Outlaw",
+    "requires": [
+      "Finesse:Nimble Fingers"
+    ],
+    "anyOf": false,
+    "skill": 20,
+    "source": "R"
+  },
+  {
+    "id": "Finesse:Pocket Sand",
+    "tree": "Finesse",
+    "name": "Pocket Sand",
+    "requires": [
+      "Finesse:Trapper"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "L"
+  },
+  {
+    "id": "Finesse:Poisoned Clamps",
+    "tree": "Finesse",
+    "name": "Poisoned Clamps",
+    "requires": [
+      "Finesse:Trapper"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "L"
+  },
+  {
+    "id": "Finesse:Cutpurse",
+    "tree": "Finesse",
+    "name": "Cutpurse",
+    "requires": [
+      "Finesse:Nimble Fingers"
+    ],
+    "anyOf": false,
+    "skill": 30,
+    "source": "R"
+  },
+  {
+    "id": "Finesse:Sound Body",
+    "tree": "Finesse",
+    "name": "Sound Body",
+    "requires": [
+      "Finesse:Nimble Fingers",
+      "Finesse:Trapper"
+    ],
+    "anyOf": true,
+    "skill": 30,
+    "source": "R"
+  },
+  {
+    "id": "Finesse:Lawless World",
+    "tree": "Finesse",
+    "name": "Lawless World",
+    "requires": [
+      "Finesse:Outlaw"
+    ],
+    "anyOf": false,
+    "skill": 40,
+    "source": "O"
+  },
+  {
+    "id": "Finesse:Poisoner",
+    "tree": "Finesse",
+    "name": "Poisoner",
+    "requires": [
+      "Finesse:Cutpurse"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Finesse:Quick Sand",
+    "tree": "Finesse",
+    "name": "Quick Sand",
+    "requires": [
+      "Finesse:Pocket Sand"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "L"
+  },
+  {
+    "id": "Finesse:Salt on the Wound",
+    "tree": "Finesse",
+    "name": "Salt on the Wound",
+    "requires": [
+      "Finesse:Poisoned Clamps"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "L"
+  },
+  {
+    "id": "Finesse:Thief",
+    "tree": "Finesse",
+    "name": "Thief",
+    "requires": [
+      "Finesse:Outlaw"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Finesse:Sound Mind",
+    "tree": "Finesse",
+    "name": "Sound Mind",
+    "requires": [
+      "Finesse:Sound Body"
+    ],
+    "anyOf": false,
+    "skill": 60,
+    "source": "R"
+  },
+  {
+    "id": "Finesse:Death's Emperor",
+    "tree": "Finesse",
+    "name": "Death's Emperor",
+    "requires": [
+      "Finesse:Thief",
+      "Finesse:Poisoner"
+    ],
+    "anyOf": false,
+    "skill": 70,
+    "source": "O",
+    "carryItems": "Death's Emperor coin"
+  },
+  {
+    "id": "Finesse:Misdirection",
+    "tree": "Finesse",
+    "name": "Misdirection",
+    "requires": [
+      "Finesse:Poisoner"
+    ],
+    "anyOf": false,
+    "skill": 70,
+    "source": "R"
+  },
+  {
+    "id": "Finesse:Lucky 7",
+    "tree": "Finesse",
+    "name": "Lucky 7",
+    "requires": [
+      "Finesse:Thief"
+    ],
+    "anyOf": false,
+    "skill": 77,
+    "source": "R"
+  },
+  {
+    "id": "Finesse:Sound Spirit",
+    "tree": "Finesse",
+    "name": "Sound Spirit",
+    "requires": [
+      "Finesse:Sound Mind"
+    ],
+    "anyOf": false,
+    "skill": 80,
+    "source": "R"
+  },
+  {
+    "id": "Finesse:Mutiny",
+    "tree": "Finesse",
+    "name": "Mutiny",
+    "requires": [
+      "Finesse:Death's Emperor"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "O"
+  },
+  {
+    "id": "Finesse:Perfected Art",
+    "tree": "Finesse",
+    "name": "Perfected Art",
+    "requires": [
+      "Finesse:Misdirection"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Wayfarer:Cheap Tricks",
+    "tree": "Wayfarer",
+    "name": "Cheap Tricks",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R",
+    "carryWeight": 25
+  },
+  {
+    "id": "Wayfarer:Hunter",
+    "tree": "Wayfarer",
+    "name": "Hunter",
+    "requires": [
+      "Wayfarer:Cheap Tricks"
+    ],
+    "anyOf": false,
+    "skill": 10,
+    "source": "L"
+  },
+  {
+    "id": "Wayfarer:Animal Taming",
+    "tree": "Wayfarer",
+    "name": "Animal Taming",
+    "requires": [
+      "Wayfarer:Hunter"
+    ],
+    "anyOf": false,
+    "skill": 10,
+    "source": "L"
+  },
+  {
+    "id": "Wayfarer:Advanced Lockpicking",
+    "tree": "Wayfarer",
+    "name": "Advanced Lockpicking",
+    "requires": [
+      "Wayfarer:Cheap Tricks"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R",
+    "carryWeight": 25
+  },
+  {
+    "id": "Wayfarer:Leader",
+    "tree": "Wayfarer",
+    "name": "Leader",
+    "requires": [
+      "Wayfarer:Cheap Tricks"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Wayfarer:Lone Wolf",
+    "tree": "Wayfarer",
+    "name": "Lone Wolf",
+    "requires": [
+      "Wayfarer:Cheap Tricks"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Wayfarer:Survival Instincts",
+    "tree": "Wayfarer",
+    "name": "Survival Instincts",
+    "requires": [
+      "Wayfarer:Hunter"
+    ],
+    "anyOf": false,
+    "skill": 30,
+    "source": "L"
+  },
+  {
+    "id": "Wayfarer:Captain",
+    "tree": "Wayfarer",
+    "name": "Captain",
+    "requires": [
+      "Wayfarer:Leader"
+    ],
+    "anyOf": false,
+    "skill": 40,
+    "source": "R"
+  },
+  {
+    "id": "Wayfarer:Lockdown",
+    "tree": "Wayfarer",
+    "name": "Lockdown",
+    "requires": [
+      "Wayfarer:Advanced Lockpicking"
+    ],
+    "anyOf": false,
+    "skill": 40,
+    "source": "O"
+  },
+  {
+    "id": "Wayfarer:Solo",
+    "tree": "Wayfarer",
+    "name": "Solo",
+    "requires": [
+      "Wayfarer:Lone Wolf"
+    ],
+    "anyOf": false,
+    "skill": 40,
+    "source": "R"
+  },
+  {
+    "id": "Wayfarer:Treasure Hunter",
+    "tree": "Wayfarer",
+    "name": "Treasure Hunter",
+    "requires": [
+      "Wayfarer:Advanced Lockpicking"
+    ],
+    "anyOf": false,
+    "skill": 40,
+    "source": "R"
+  },
+  {
+    "id": "Wayfarer:Animal Riding",
+    "tree": "Wayfarer",
+    "name": "Animal Riding",
+    "requires": [
+      "Wayfarer:Animal Taming"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "L"
+  },
+  {
+    "id": "Wayfarer:Pacification",
+    "tree": "Wayfarer",
+    "name": "Pacification",
+    "requires": [
+      "Wayfarer:Survival Instincts"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "L"
+  },
+  {
+    "id": "Wayfarer:Commander",
+    "tree": "Wayfarer",
+    "name": "Commander",
+    "requires": [
+      "Wayfarer:Captain"
+    ],
+    "anyOf": false,
+    "skill": 60,
+    "source": "R"
+  },
+  {
+    "id": "Wayfarer:Hotwire",
+    "tree": "Wayfarer",
+    "name": "Hotwire",
+    "requires": [
+      "Wayfarer:Lockdown"
+    ],
+    "anyOf": false,
+    "skill": 60,
+    "source": "O"
+  },
+  {
+    "id": "Wayfarer:Maverick",
+    "tree": "Wayfarer",
+    "name": "Maverick",
+    "requires": [
+      "Wayfarer:Solo"
+    ],
+    "anyOf": false,
+    "skill": 60,
+    "source": "R"
+  },
+  {
+    "id": "Wayfarer:Sophisticated Lockpicking",
+    "tree": "Wayfarer",
+    "name": "Sophisticated Lockpicking",
+    "requires": [
+      "Wayfarer:Treasure Hunter"
+    ],
+    "anyOf": false,
+    "skill": 60,
+    "source": "R",
+    "carryWeight": 25
+  },
+  {
+    "id": "Wayfarer:Beastmaster",
+    "tree": "Wayfarer",
+    "name": "Beastmaster",
+    "requires": [
+      "Wayfarer:Animal Riding"
+    ],
+    "anyOf": false,
+    "skill": 80,
+    "source": "L"
+  },
+  {
+    "id": "Wayfarer:Masterly Lockpicking",
+    "tree": "Wayfarer",
+    "name": "Masterly Lockpicking",
+    "requires": [
+      "Wayfarer:Sophisticated Lockpicking"
+    ],
+    "anyOf": false,
+    "skill": 90,
+    "source": "R",
+    "carryWeight": 25
+  },
+  {
+    "id": "Wayfarer:Legion",
+    "tree": "Wayfarer",
+    "name": "Legion",
+    "requires": [
+      "Wayfarer:Commander"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Wayfarer:One Man Legion",
+    "tree": "Wayfarer",
+    "name": "One Man Legion",
+    "requires": [
+      "Wayfarer:Maverick"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Wayfarer:Percussive Maintenance",
+    "tree": "Wayfarer",
+    "name": "Percussive Maintenance",
+    "requires": [
+      "Wayfarer:Hotwire"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "O"
+  },
+  {
+    "id": "Speech:Haggling",
+    "tree": "Speech",
+    "name": "Haggling",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Speech:Lore of the Thu'um",
+    "tree": "Speech",
+    "name": "Lore of the Thu'um",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Speech:Shout Focus",
+    "tree": "Speech",
+    "name": "Shout Focus",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "F",
+    "rankLevels": [
+      10
+    ]
+  },
+  {
+    "id": "Speech:Destructive Urge",
+    "tree": "Speech",
+    "name": "Destructive Urge",
+    "requires": [
+      "Speech:Lore of the Thu'um"
+    ],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Speech:Indomitable Force",
+    "tree": "Speech",
+    "name": "Indomitable Force",
+    "requires": [
+      "Speech:Lore of the Thu'um"
+    ],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Speech:Spiritual Equilibrium",
+    "tree": "Speech",
+    "name": "Spiritual Equilibrium",
+    "requires": [
+      "Speech:Lore of the Thu'um"
+    ],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Speech:The Way of the Voice",
+    "tree": "Speech",
+    "name": "The Way of the Voice",
+    "requires": [
+      "Speech:Lore of the Thu'um"
+    ],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R",
+    "quest": "Needs The Throat of the World finished"
+  },
+  {
+    "id": "Speech:Tongue's Insight",
+    "tree": "Speech",
+    "name": "Tongue's Insight",
+    "requires": [
+      "Speech:Lore of the Thu'um"
+    ],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R",
+    "quest": "Needs the main quest past the Greybeards; trades the perk point for a dragon soul"
+  },
+  {
+    "id": "Speech:Commander",
+    "tree": "Speech",
+    "name": "Commander",
+    "requires": [
+      "Speech:Haggling"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "F"
+  },
+  {
+    "id": "Speech:Silver Tongue",
+    "tree": "Speech",
+    "name": "Silver Tongue",
+    "requires": [
+      "Speech:Haggling"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Speech:Masquerade",
+    "tree": "Speech",
+    "name": "Masquerade",
+    "requires": [
+      "Speech:Silver Tongue"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Speech:Merchant",
+    "tree": "Speech",
+    "name": "Merchant",
+    "requires": [
+      "Speech:Haggling"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Speech:War Cry",
+    "tree": "Speech",
+    "name": "War Cry",
+    "requires": [
+      "Speech:Silver Tongue"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "F"
+  },
+  {
+    "id": "Speech:Leadership",
+    "tree": "Speech",
+    "name": "Leadership",
+    "requires": [
+      "Speech:Silver Tongue"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Speech:Fencing",
+    "tree": "Speech",
+    "name": "Fencing",
+    "requires": [
+      "Speech:Merchant"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Novice Alteration",
+    "tree": "Alteration",
+    "name": "Novice Alteration",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Unskilled Spellcasting",
+    "tree": "Alteration",
+    "name": "Unskilled Spellcasting",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "F"
+  },
+  {
+    "id": "Alteration:Metamagic",
+    "tree": "Alteration",
+    "name": "Metamagic",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "F",
+    "rankLevels": [
+      10
+    ]
+  },
+  {
+    "id": "Alteration:Philosopher's Stone",
+    "tree": "Alteration",
+    "name": "Philosopher's Stone",
+    "requires": [],
+    "anyOf": false,
+    "skill": 10,
+    "source": "O"
+  },
+  {
+    "id": "Alteration:Apprentice Alteration",
+    "tree": "Alteration",
+    "name": "Apprentice Alteration",
+    "requires": [
+      "Alteration:Novice Alteration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Empowered Alteration",
+    "tree": "Alteration",
+    "name": "Empowered Alteration",
+    "requires": [
+      "Alteration:Novice Alteration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Transmutation",
+    "tree": "Alteration",
+    "name": "Transmutation",
+    "requires": [
+      "Alteration:Novice Alteration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Improved Mage Armor",
+    "tree": "Alteration",
+    "name": "Improved Mage Armor",
+    "requires": [
+      "Alteration:Apprentice Alteration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Kinetomancy",
+    "tree": "Alteration",
+    "name": "Kinetomancy",
+    "requires": [
+      "Alteration:Apprentice Alteration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Geomancer",
+    "tree": "Alteration",
+    "name": "Geomancer",
+    "requires": [
+      "Alteration:Apprentice Alteration"
+    ],
+    "anyOf": false,
+    "skill": 30,
+    "source": "O"
+  },
+  {
+    "id": "Alteration:Adept Alteration",
+    "tree": "Alteration",
+    "name": "Adept Alteration",
+    "requires": [
+      "Alteration:Apprentice Alteration"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Versatile Armor",
+    "tree": "Alteration",
+    "name": "Versatile Armor",
+    "requires": [
+      "Alteration:Improved Mage Armor"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Stability",
+    "tree": "Alteration",
+    "name": "Stability",
+    "requires": [
+      "Alteration:Adept Alteration"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Weather Magic",
+    "tree": "Alteration",
+    "name": "Weather Magic",
+    "requires": [
+      "Alteration:Adept Alteration"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Expert Alteration",
+    "tree": "Alteration",
+    "name": "Expert Alteration",
+    "requires": [
+      "Alteration:Adept Alteration"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Master of Storms",
+    "tree": "Alteration",
+    "name": "Master of Storms",
+    "requires": [
+      "Alteration:Weather Magic"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Metamagical Thesis",
+    "tree": "Alteration",
+    "name": "Metamagical Thesis",
+    "requires": [
+      "Alteration:Stability"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Power of the Force",
+    "tree": "Alteration",
+    "name": "Power of the Force",
+    "requires": [
+      "Alteration:Kinetomancy"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Transmutational Mending",
+    "tree": "Alteration",
+    "name": "Transmutational Mending",
+    "requires": [
+      "Alteration:Transmutation"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Magical Absorption",
+    "tree": "Alteration",
+    "name": "Magical Absorption",
+    "requires": [
+      "Alteration:Expert Alteration"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Master Alteration",
+    "tree": "Alteration",
+    "name": "Master Alteration",
+    "requires": [
+      "Alteration:Expert Alteration"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Alteration:Metamagical Empowerment",
+    "tree": "Alteration",
+    "name": "Metamagical Empowerment",
+    "requires": [
+      "Alteration:Metamagical Thesis"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Novice Conjuration",
+    "tree": "Conjuration",
+    "name": "Novice Conjuration",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Apprentice Conjuration",
+    "tree": "Conjuration",
+    "name": "Apprentice Conjuration",
+    "requires": [
+      "Conjuration:Novice Conjuration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Daedric Binding",
+    "tree": "Conjuration",
+    "name": "Daedric Binding",
+    "requires": [
+      "Conjuration:Novice Conjuration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Empowered Conjuration",
+    "tree": "Conjuration",
+    "name": "Empowered Conjuration",
+    "requires": [
+      "Conjuration:Novice Conjuration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Mystic Binding",
+    "tree": "Conjuration",
+    "name": "Mystic Binding",
+    "requires": [
+      "Conjuration:Novice Conjuration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Necromancy",
+    "tree": "Conjuration",
+    "name": "Necromancy",
+    "requires": [
+      "Conjuration:Novice Conjuration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Spirit Calling",
+    "tree": "Conjuration",
+    "name": "Spirit Calling",
+    "requires": [
+      "Conjuration:Novice Conjuration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Adept Conjuration",
+    "tree": "Conjuration",
+    "name": "Adept Conjuration",
+    "requires": [
+      "Conjuration:Apprentice Conjuration"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Cognitive Flexibility",
+    "tree": "Conjuration",
+    "name": "Cognitive Flexibility",
+    "requires": [
+      "Conjuration:Empowered Conjuration"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Gates of Oblivion",
+    "tree": "Conjuration",
+    "name": "Gates of Oblivion",
+    "requires": [
+      "Conjuration:Daedric Binding"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Dark Channeling",
+    "tree": "Conjuration",
+    "name": "Dark Channeling",
+    "requires": [
+      "Conjuration:Gates of Oblivion"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Mystic Infusion",
+    "tree": "Conjuration",
+    "name": "Mystic Infusion",
+    "requires": [
+      "Conjuration:Mystic Binding"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Ritualism",
+    "tree": "Conjuration",
+    "name": "Ritualism",
+    "requires": [
+      "Conjuration:Necromancy"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Siphon Corpse",
+    "tree": "Conjuration",
+    "name": "Siphon Corpse",
+    "requires": [
+      "Conjuration:Ritualism"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Soul Magic",
+    "tree": "Conjuration",
+    "name": "Soul Magic",
+    "requires": [
+      "Conjuration:Adept Conjuration"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Spiritual Bond",
+    "tree": "Conjuration",
+    "name": "Spiritual Bond",
+    "requires": [
+      "Conjuration:Spirit Calling"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Spirit Guardian",
+    "tree": "Conjuration",
+    "name": "Spirit Guardian",
+    "requires": [
+      "Conjuration:Spiritual Bond"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Ancient Spirits",
+    "tree": "Conjuration",
+    "name": "Ancient Spirits",
+    "requires": [
+      "Conjuration:Spiritual Bond"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Dark Infusion",
+    "tree": "Conjuration",
+    "name": "Dark Infusion",
+    "requires": [
+      "Conjuration:Ritualism"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Expert Conjuration",
+    "tree": "Conjuration",
+    "name": "Expert Conjuration",
+    "requires": [
+      "Conjuration:Adept Conjuration"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Mystic Empowerment",
+    "tree": "Conjuration",
+    "name": "Mystic Empowerment",
+    "requires": [
+      "Conjuration:Mystic Infusion"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Necropotence",
+    "tree": "Conjuration",
+    "name": "Necropotence",
+    "requires": [
+      "Conjuration:Soul Magic"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Waters of Oblivion",
+    "tree": "Conjuration",
+    "name": "Waters of Oblivion",
+    "requires": [
+      "Conjuration:Gates of Oblivion"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Master Conjuration",
+    "tree": "Conjuration",
+    "name": "Master Conjuration",
+    "requires": [
+      "Conjuration:Expert Conjuration"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Conjuration:Mystic Disruption",
+    "tree": "Conjuration",
+    "name": "Mystic Disruption",
+    "requires": [
+      "Conjuration:Mystic Empowerment"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Novice Destruction",
+    "tree": "Destruction",
+    "name": "Novice Destruction",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Apprentice Destruction",
+    "tree": "Destruction",
+    "name": "Apprentice Destruction",
+    "requires": [
+      "Destruction:Novice Destruction"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Arcane Focus",
+    "tree": "Destruction",
+    "name": "Arcane Focus",
+    "requires": [
+      "Destruction:Novice Destruction"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Blood Magic",
+    "tree": "Destruction",
+    "name": "Blood Magic",
+    "requires": [
+      "Destruction:Novice Destruction"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Cryomancy",
+    "tree": "Destruction",
+    "name": "Cryomancy",
+    "requires": [
+      "Destruction:Novice Destruction"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Electromancy",
+    "tree": "Destruction",
+    "name": "Electromancy",
+    "requires": [
+      "Destruction:Novice Destruction"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Empowered Destruction",
+    "tree": "Destruction",
+    "name": "Empowered Destruction",
+    "requires": [
+      "Destruction:Novice Destruction"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Entropic Focus",
+    "tree": "Destruction",
+    "name": "Entropic Focus",
+    "requires": [
+      "Destruction:Novice Destruction"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Pyromancy",
+    "tree": "Destruction",
+    "name": "Pyromancy",
+    "requires": [
+      "Destruction:Novice Destruction"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Adept Destruction",
+    "tree": "Destruction",
+    "name": "Adept Destruction",
+    "requires": [
+      "Destruction:Apprentice Destruction"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Destructive Blow",
+    "tree": "Destruction",
+    "name": "Destructive Blow",
+    "requires": [
+      "Destruction:Apprentice Destruction"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Elemental Mastery",
+    "tree": "Destruction",
+    "name": "Elemental Mastery",
+    "requires": [
+      "Destruction:Apprentice Destruction"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Impact",
+    "tree": "Destruction",
+    "name": "Impact",
+    "requires": [
+      "Destruction:Empowered Destruction"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Arcane Disruption",
+    "tree": "Destruction",
+    "name": "Arcane Disruption",
+    "requires": [
+      "Destruction:Arcane Focus"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Consume Life",
+    "tree": "Destruction",
+    "name": "Consume Life",
+    "requires": [
+      "Destruction:Blood Magic"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Cremation",
+    "tree": "Destruction",
+    "name": "Cremation",
+    "requires": [
+      "Destruction:Pyromancy"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Deep Freeze",
+    "tree": "Destruction",
+    "name": "Deep Freeze",
+    "requires": [
+      "Destruction:Cryomancy"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Electrostatic Discharge",
+    "tree": "Destruction",
+    "name": "Electrostatic Discharge",
+    "requires": [
+      "Destruction:Electromancy"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Entropic Disarray",
+    "tree": "Destruction",
+    "name": "Entropic Disarray",
+    "requires": [
+      "Destruction:Entropic Focus"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Expert Destruction",
+    "tree": "Destruction",
+    "name": "Expert Destruction",
+    "requires": [
+      "Destruction:Adept Destruction"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Improved Cloaks",
+    "tree": "Destruction",
+    "name": "Improved Cloaks",
+    "requires": [
+      "Destruction:Apprentice Destruction"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Blood Glutton",
+    "tree": "Destruction",
+    "name": "Blood Glutton",
+    "requires": [
+      "Destruction:Consume Life"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "L"
+  },
+  {
+    "id": "Destruction:Disciple of the Mystics",
+    "tree": "Destruction",
+    "name": "Disciple of the Mystics",
+    "requires": [
+      "Destruction:Arcane Disruption"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "L"
+  },
+  {
+    "id": "Destruction:Eldritch Artist",
+    "tree": "Destruction",
+    "name": "Eldritch Artist",
+    "requires": [
+      "Destruction:Entropic Disarray"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "L"
+  },
+  {
+    "id": "Destruction:Fire Mastery",
+    "tree": "Destruction",
+    "name": "Fire Mastery",
+    "requires": [
+      "Destruction:Cremation"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Frost Mastery",
+    "tree": "Destruction",
+    "name": "Frost Mastery",
+    "requires": [
+      "Destruction:Deep Freeze"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Lightning Mastery",
+    "tree": "Destruction",
+    "name": "Lightning Mastery",
+    "requires": [
+      "Destruction:Electrostatic Discharge"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Destruction:Master Destruction",
+    "tree": "Destruction",
+    "name": "Master Destruction",
+    "requires": [
+      "Destruction:Expert Destruction"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Novice Illusion",
+    "tree": "Illusion",
+    "name": "Novice Illusion",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Apprentice Illusion",
+    "tree": "Illusion",
+    "name": "Apprentice Illusion",
+    "requires": [
+      "Illusion:Novice Illusion"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Emotional Illusions",
+    "tree": "Illusion",
+    "name": "Emotional Illusions",
+    "requires": [
+      "Illusion:Novice Illusion"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Empowered Illusion",
+    "tree": "Illusion",
+    "name": "Empowered Illusion",
+    "requires": [
+      "Illusion:Novice Illusion"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Perceptual Illusions",
+    "tree": "Illusion",
+    "name": "Perceptual Illusions",
+    "requires": [
+      "Illusion:Novice Illusion"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Adept Illusion",
+    "tree": "Illusion",
+    "name": "Adept Illusion",
+    "requires": [
+      "Illusion:Apprentice Illusion"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Deceptive Image",
+    "tree": "Illusion",
+    "name": "Deceptive Image",
+    "requires": [
+      "Illusion:Perceptual Illusions"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Delusive Illusions",
+    "tree": "Illusion",
+    "name": "Delusive Illusions",
+    "requires": [
+      "Illusion:Adept Illusion"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Domination",
+    "tree": "Illusion",
+    "name": "Domination",
+    "requires": [
+      "Illusion:Emotional Illusions"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Environmental Manipulation",
+    "tree": "Illusion",
+    "name": "Environmental Manipulation",
+    "requires": [
+      "Illusion:Perceptual Illusions"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Mesmerize",
+    "tree": "Illusion",
+    "name": "Mesmerize",
+    "requires": [
+      "Illusion:Emotional Illusions"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Shadow Shaping",
+    "tree": "Illusion",
+    "name": "Shadow Shaping",
+    "requires": [
+      "Illusion:Adept Illusion"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Curse",
+    "tree": "Illusion",
+    "name": "Curse",
+    "requires": [
+      "Illusion:Delusive Illusions"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Expert Illusion",
+    "tree": "Illusion",
+    "name": "Expert Illusion",
+    "requires": [
+      "Illusion:Adept Illusion"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Master of Shadows",
+    "tree": "Illusion",
+    "name": "Master of Shadows",
+    "requires": [
+      "Illusion:Shadow Shaping"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Obliterate the Mind",
+    "tree": "Illusion",
+    "name": "Obliterate the Mind",
+    "requires": [
+      "Illusion:Delusive Illusions"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Shadows of Conflict",
+    "tree": "Illusion",
+    "name": "Shadows of Conflict",
+    "requires": [
+      "Illusion:Shadow Shaping"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Illusion:Master Illusion",
+    "tree": "Illusion",
+    "name": "Master Illusion",
+    "requires": [
+      "Illusion:Expert Illusion"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Novice Restoration",
+    "tree": "Restoration",
+    "name": "Novice Restoration",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Painful Regrets",
+    "tree": "Restoration",
+    "name": "Painful Regrets",
+    "requires": [],
+    "anyOf": false,
+    "skill": 0,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Apprentice Restoration",
+    "tree": "Restoration",
+    "name": "Apprentice Restoration",
+    "requires": [
+      "Restoration:Novice Restoration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Empowered Restoration",
+    "tree": "Restoration",
+    "name": "Empowered Restoration",
+    "requires": [
+      "Restoration:Novice Restoration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Heliomancy",
+    "tree": "Restoration",
+    "name": "Heliomancy",
+    "requires": [
+      "Restoration:Novice Restoration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Improved Healing",
+    "tree": "Restoration",
+    "name": "Improved Healing",
+    "requires": [
+      "Restoration:Novice Restoration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Improved Protection",
+    "tree": "Restoration",
+    "name": "Improved Protection",
+    "requires": [
+      "Restoration:Novice Restoration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Improved Turning",
+    "tree": "Restoration",
+    "name": "Improved Turning",
+    "requires": [
+      "Restoration:Novice Restoration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Mental Acuity",
+    "tree": "Restoration",
+    "name": "Mental Acuity",
+    "requires": [
+      "Restoration:Apprentice Restoration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Venomancy",
+    "tree": "Restoration",
+    "name": "Venomancy",
+    "requires": [
+      "Restoration:Novice Restoration"
+    ],
+    "anyOf": false,
+    "skill": 25,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Adept Restoration",
+    "tree": "Restoration",
+    "name": "Adept Restoration",
+    "requires": [
+      "Restoration:Apprentice Restoration"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Power of Life",
+    "tree": "Restoration",
+    "name": "Power of Life",
+    "requires": [
+      "Restoration:Mental Acuity"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Ward Mastery",
+    "tree": "Restoration",
+    "name": "Ward Mastery",
+    "requires": [
+      "Restoration:Novice Restoration"
+    ],
+    "anyOf": false,
+    "skill": 50,
+    "source": "F"
+  },
+  {
+    "id": "Restoration:Essence of Life",
+    "tree": "Restoration",
+    "name": "Essence of Life",
+    "requires": [
+      "Restoration:Power of Life"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Expert Restoration",
+    "tree": "Restoration",
+    "name": "Expert Restoration",
+    "requires": [
+      "Restoration:Adept Restoration"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Improved Wards",
+    "tree": "Restoration",
+    "name": "Improved Wards",
+    "requires": [
+      "Restoration:Improved Protection"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Mystic Turning",
+    "tree": "Restoration",
+    "name": "Mystic Turning",
+    "requires": [
+      "Restoration:Improved Turning"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Paralyzing Poison",
+    "tree": "Restoration",
+    "name": "Paralyzing Poison",
+    "requires": [
+      "Restoration:Venomancy"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Respite",
+    "tree": "Restoration",
+    "name": "Respite",
+    "requires": [
+      "Restoration:Improved Healing"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Scorching Light",
+    "tree": "Restoration",
+    "name": "Scorching Light",
+    "requires": [
+      "Restoration:Heliomancy"
+    ],
+    "anyOf": false,
+    "skill": 75,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Greater Vitality",
+    "tree": "Restoration",
+    "name": "Greater Vitality",
+    "requires": [
+      "Restoration:Respite"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "L"
+  },
+  {
+    "id": "Restoration:Heliomaster",
+    "tree": "Restoration",
+    "name": "Heliomaster",
+    "requires": [
+      "Restoration:Scorching Light"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "L"
+  },
+  {
+    "id": "Restoration:Master Restoration",
+    "tree": "Restoration",
+    "name": "Master Restoration",
+    "requires": [
+      "Restoration:Expert Restoration"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "R"
+  },
+  {
+    "id": "Restoration:Masterly Wards",
+    "tree": "Restoration",
+    "name": "Masterly Wards",
+    "requires": [
+      "Restoration:Improved Wards"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "L"
+  },
+  {
+    "id": "Restoration:Venomaster",
+    "tree": "Restoration",
+    "name": "Venomaster",
+    "requires": [
+      "Restoration:Paralyzing Poison"
+    ],
+    "anyOf": false,
+    "skill": 100,
+    "source": "L"
+  },
+  {
+    "id": "Destiny:Destiny",
+    "tree": "Destiny",
+    "name": "Destiny",
+    "requires": [],
+    "anyOf": false,
+    "text": "Carry weight +25.",
+    "carryWeight": 25
+  },
+  {
+    "id": "Destiny:Focus",
+    "tree": "Destiny",
+    "name": "Focus",
+    "requires": [
+      "Destiny:Destiny"
+    ],
+    "anyOf": false,
+    "text": "Magicka regeneration +50%."
+  },
+  {
+    "id": "Destiny:Constitution",
+    "tree": "Destiny",
+    "name": "Constitution",
+    "requires": [
+      "Destiny:Destiny"
+    ],
+    "anyOf": false,
+    "text": "Health regeneration +50%."
+  },
+  {
+    "id": "Destiny:Endurance",
+    "tree": "Destiny",
+    "name": "Endurance",
+    "requires": [
+      "Destiny:Destiny"
+    ],
+    "anyOf": false,
+    "text": "Stamina regeneration +50%."
+  },
+  {
+    "id": "Destiny:Mage",
+    "tree": "Destiny",
+    "name": "Mage",
+    "requires": [
+      "Destiny:Focus"
+    ],
+    "anyOf": false,
+    "text": "Spells 5% stronger or 10% longer."
+  },
+  {
+    "id": "Destiny:Warrior",
+    "tree": "Destiny",
+    "name": "Warrior",
+    "requires": [
+      "Destiny:Constitution"
+    ],
+    "anyOf": false,
+    "text": "Weapon damage +5%."
+  },
+  {
+    "id": "Destiny:Thief",
+    "tree": "Destiny",
+    "name": "Thief",
+    "requires": [
+      "Destiny:Endurance"
+    ],
+    "anyOf": false,
+    "text": "20% harder to detect."
+  },
+  {
+    "id": "Destiny:Fortification",
+    "tree": "Destiny",
+    "name": "Fortification",
+    "requires": [
+      "Destiny:Mage"
+    ],
+    "anyOf": false,
+    "text": "+10 Health, Magicka and Stamina.",
+    "allAttributes": 10
+  },
+  {
+    "id": "Destiny:Magicka Surge",
+    "tree": "Destiny",
+    "name": "Magicka Surge",
+    "requires": [
+      "Destiny:Mage"
+    ],
+    "anyOf": false,
+    "text": "Magicka regeneration +400% below 25% Magicka."
+  },
+  {
+    "id": "Destiny:Magic Shell",
+    "tree": "Destiny",
+    "name": "Magic Shell",
+    "requires": [
+      "Destiny:Mage",
+      "Destiny:Warrior"
+    ],
+    "anyOf": true,
+    "text": "Magic resistance +10%."
+  },
+  {
+    "id": "Destiny:Iron Skin",
+    "tree": "Destiny",
+    "name": "Iron Skin",
+    "requires": [
+      "Destiny:Warrior"
+    ],
+    "anyOf": false,
+    "text": "Taking damage gives +150 armor for 6 seconds (every 10 seconds)."
+  },
+  {
+    "id": "Destiny:Battle Spirit",
+    "tree": "Destiny",
+    "name": "Battle Spirit",
+    "requires": [
+      "Destiny:Warrior",
+      "Destiny:Thief"
+    ],
+    "anyOf": true,
+    "text": "Power attacks give +10% damage for 6 seconds."
+  },
+  {
+    "id": "Destiny:Adrenaline",
+    "tree": "Destiny",
+    "name": "Adrenaline",
+    "requires": [
+      "Destiny:Thief"
+    ],
+    "anyOf": false,
+    "text": "Stamina regeneration +200% below 25% Stamina."
+  },
+  {
+    "id": "Destiny:Swiftness",
+    "tree": "Destiny",
+    "name": "Swiftness",
+    "requires": [
+      "Destiny:Thief"
+    ],
+    "anyOf": false,
+    "text": "Taking damage gives +20% speed for 6 seconds (every 10 seconds)."
+  },
+  {
+    "id": "Destiny:Agent",
+    "tree": "Destiny",
+    "name": "Agent",
+    "requires": [
+      "Destiny:Fortification"
+    ],
+    "anyOf": false,
+    "text": "Enemies attacking you are slowed 25% for 5 seconds."
+  },
+  {
+    "id": "Destiny:Sorcerer",
+    "tree": "Destiny",
+    "name": "Sorcerer",
+    "requires": [
+      "Destiny:Magicka Surge"
+    ],
+    "anyOf": false,
+    "text": "10% less damage taken while casting."
+  },
+  {
+    "id": "Destiny:Spellsword",
+    "tree": "Destiny",
+    "name": "Spellsword",
+    "requires": [
+      "Destiny:Magic Shell"
+    ],
+    "anyOf": false,
+    "text": "Restore 15 Magicka per weapon attack."
+  },
+  {
+    "id": "Destiny:Knight",
+    "tree": "Destiny",
+    "name": "Knight",
+    "requires": [
+      "Destiny:Iron Skin"
+    ],
+    "anyOf": false,
+    "text": "10% less damage while power attacking, drawing a bow or blocking."
+  },
+  {
+    "id": "Destiny:Acrobat",
+    "tree": "Destiny",
+    "name": "Acrobat",
+    "requires": [
+      "Destiny:Battle Spirit"
+    ],
+    "anyOf": false,
+    "text": "Stamina regeneration +100%. Shows as \"Endurance\" in the game's menu."
+  },
+  {
+    "id": "Destiny:Scout",
+    "tree": "Destiny",
+    "name": "Scout",
+    "requires": [
+      "Destiny:Adrenaline"
+    ],
+    "anyOf": false,
+    "text": "Bows, crossbows and throwing knives +10% damage."
+  },
+  {
+    "id": "Destiny:Spellblade",
+    "tree": "Destiny",
+    "name": "Spellblade",
+    "requires": [
+      "Destiny:Swiftness"
+    ],
+    "anyOf": false,
+    "text": "Weapon hits have a 30% chance to interrupt casters."
+  },
+  {
+    "id": "Destiny:Leadership",
+    "tree": "Destiny",
+    "name": "Leadership",
+    "requires": [
+      "Destiny:Agent"
+    ],
+    "anyOf": false,
+    "text": "Nearby allies move 15% faster in combat."
+  },
+  {
+    "id": "Destiny:Hard Skin",
+    "tree": "Destiny",
+    "name": "Hard Skin",
+    "requires": [
+      "Destiny:Agent"
+    ],
+    "anyOf": false,
+    "text": "Armor +100."
+  },
+  {
+    "id": "Destiny:Healing Presence",
+    "tree": "Destiny",
+    "name": "Healing Presence",
+    "requires": [
+      "Destiny:Agent",
+      "Destiny:Sorcerer"
+    ],
+    "anyOf": true,
+    "text": "Heal yourself and nearby allies 10 Health every 10 seconds."
+  },
+  {
+    "id": "Destiny:Absorbtion",
+    "tree": "Destiny",
+    "name": "Absorbtion",
+    "requires": [
+      "Destiny:Sorcerer"
+    ],
+    "anyOf": false,
+    "text": "10% chance to absorb Magicka from incoming spells."
+  },
+  {
+    "id": "Destiny:Conjuring Presence",
+    "tree": "Destiny",
+    "name": "Conjuring Presence",
+    "requires": [
+      "Destiny:Sorcerer",
+      "Destiny:Spellsword"
+    ],
+    "anyOf": true,
+    "text": "Summons get +50 Health, +50 armor and reflect 15% physical damage."
+  },
+  {
+    "id": "Destiny:Corrosive Weapon",
+    "tree": "Destiny",
+    "name": "Corrosive Weapon",
+    "requires": [
+      "Destiny:Spellsword"
+    ],
+    "anyOf": false,
+    "text": "Power attacks cut enemy magic resistance 15% and armor 75 for 10 seconds."
+  },
+  {
+    "id": "Destiny:Leeching Spikes",
+    "tree": "Destiny",
+    "name": "Leeching Spikes",
+    "requires": [
+      "Destiny:Spellsword",
+      "Destiny:Knight"
+    ],
+    "anyOf": true,
+    "text": "Absorb 15 Health from each attacker (every 10 seconds); doubled below 33% Health."
+  },
+  {
+    "id": "Destiny:Unyielding",
+    "tree": "Destiny",
+    "name": "Unyielding",
+    "requires": [
+      "Destiny:Knight"
+    ],
+    "anyOf": false,
+    "text": "While blocking: +50% regeneration and 25% less poise damage taken."
+  },
+  {
+    "id": "Destiny:Overwhelming Presence",
+    "tree": "Destiny",
+    "name": "Overwhelming Presence",
+    "requires": [
+      "Destiny:Knight",
+      "Destiny:Acrobat"
+    ],
+    "anyOf": true,
+    "text": "Nearby enemies lose 100 armor and 10% elemental resistance."
+  },
+  {
+    "id": "Destiny:Smash",
+    "tree": "Destiny",
+    "name": "Smash",
+    "requires": [
+      "Destiny:Acrobat"
+    ],
+    "anyOf": false,
+    "text": "Bashes +20% damage, power attacks +10%."
+  },
+  {
+    "id": "Destiny:Trickster",
+    "tree": "Destiny",
+    "name": "Trickster",
+    "requires": [
+      "Destiny:Acrobat",
+      "Destiny:Scout"
+    ],
+    "anyOf": true,
+    "text": "10% chance to evade weapon attacks."
+  },
+  {
+    "id": "Destiny:Swift Shadow",
+    "tree": "Destiny",
+    "name": "Swift Shadow",
+    "requires": [
+      "Destiny:Scout"
+    ],
+    "anyOf": false,
+    "text": "25% faster while sneaking; critical damage +10%."
+  },
+  {
+    "id": "Destiny:Viper's Blade",
+    "tree": "Destiny",
+    "name": "Viper's Blade",
+    "requires": [
+      "Destiny:Scout",
+      "Destiny:Spellblade"
+    ],
+    "anyOf": true,
+    "text": "Attacks cut enemy poison resistance 25% for 10 seconds."
+  },
+  {
+    "id": "Destiny:Evasion",
+    "tree": "Destiny",
+    "name": "Evasion",
+    "requires": [
+      "Destiny:Spellblade"
+    ],
+    "anyOf": false,
+    "text": "10% chance to evade spells and attacks."
+  },
+  {
+    "id": "Destiny:Silent Blade",
+    "tree": "Destiny",
+    "name": "Silent Blade",
+    "requires": [
+      "Destiny:Spellblade"
+    ],
+    "anyOf": false,
+    "text": "Attacks deal 25 damage to Magicka and Stamina."
+  },
+  {
+    "id": "Destiny:Bard",
+    "tree": "Destiny",
+    "name": "Bard",
+    "requires": [
+      "Destiny:Leadership"
+    ],
+    "anyOf": false,
+    "text": "Nearby allies +15% physical damage and 15% magic resistance in combat; prices 10% better."
+  },
+  {
+    "id": "Destiny:Shaman",
+    "tree": "Destiny",
+    "name": "Shaman",
+    "requires": [
+      "Destiny:Hard Skin"
+    ],
+    "anyOf": false,
+    "text": "Weapons and spells up to 34% stronger as Health, Magicka and Stamina fall."
+  },
+  {
+    "id": "Destiny:Templar",
+    "tree": "Destiny",
+    "name": "Templar",
+    "requires": [
+      "Destiny:Healing Presence"
+    ],
+    "anyOf": false,
+    "text": "Falling below 25% Health: immune for 3 seconds, then heal 200 (every 60 seconds)."
+  },
+  {
+    "id": "Destiny:Archmage",
+    "tree": "Destiny",
+    "name": "Archmage",
+    "requires": [
+      "Destiny:Absorbtion"
+    ],
+    "anyOf": false,
+    "text": "Spells 15% stronger or 30% longer."
+  },
+  {
+    "id": "Destiny:Summoner",
+    "tree": "Destiny",
+    "name": "Summoner",
+    "requires": [
+      "Destiny:Conjuring Presence"
+    ],
+    "anyOf": false,
+    "text": "One more summon or raised dead."
+  },
+  {
+    "id": "Destiny:Battlemage",
+    "tree": "Destiny",
+    "name": "Battlemage",
+    "requires": [
+      "Destiny:Corrosive Weapon"
+    ],
+    "anyOf": false,
+    "text": "Spell in the left hand: power attacks cost 25% less. Weapon in the right: spells 15% stronger."
+  },
+  {
+    "id": "Destiny:Blood Knight",
+    "tree": "Destiny",
+    "name": "Blood Knight",
+    "requires": [
+      "Destiny:Leeching Spikes"
+    ],
+    "anyOf": false,
+    "text": "Above 50% Health: +15% weapon damage. Below: 25% less magic damage."
+  },
+  {
+    "id": "Destiny:General",
+    "tree": "Destiny",
+    "name": "General",
+    "requires": [
+      "Destiny:Unyielding"
+    ],
+    "anyOf": false,
+    "text": "Tempering, weapon damage and armor +10%."
+  },
+  {
+    "id": "Destiny:Monk",
+    "tree": "Destiny",
+    "name": "Monk",
+    "requires": [
+      "Destiny:Overwhelming Presence"
+    ],
+    "anyOf": false,
+    "text": "Attacks absorb 60 Health, Magicka and Stamina over 60 seconds."
+  },
+  {
+    "id": "Destiny:Berserker",
+    "tree": "Destiny",
+    "name": "Berserker",
+    "requires": [
+      "Destiny:Smash"
+    ],
+    "anyOf": false,
+    "text": "Power attacks: 25% less damage taken and 25% less Stamina."
+  },
+  {
+    "id": "Destiny:Saboteur",
+    "tree": "Destiny",
+    "name": "Saboteur",
+    "requires": [
+      "Destiny:Trickster"
+    ],
+    "anyOf": false,
+    "text": "Poise damage +25%; +25% damage to staggered enemies."
+  },
+  {
+    "id": "Destiny:Assassin",
+    "tree": "Destiny",
+    "name": "Assassin",
+    "requires": [
+      "Destiny:Swift Shadow"
+    ],
+    "anyOf": false,
+    "text": "Next sneak attack deals double damage (every 60 seconds)."
+  },
+  {
+    "id": "Destiny:Rogue",
+    "tree": "Destiny",
+    "name": "Rogue",
+    "requires": [
+      "Destiny:Viper's Blade"
+    ],
+    "anyOf": false,
+    "text": "Attacks deal 150 irresistible damage over 60 seconds."
+  },
+  {
+    "id": "Destiny:Stalker",
+    "tree": "Destiny",
+    "name": "Stalker",
+    "requires": [
+      "Destiny:Evasion"
+    ],
+    "anyOf": false,
+    "text": "Attacks slow enemies 50% and cut magic resistance 25% for 5 seconds."
+  },
+  {
+    "id": "Destiny:Nightblade",
+    "tree": "Destiny",
+    "name": "Nightblade",
+    "requires": [
+      "Destiny:Silent Blade"
+    ],
+    "anyOf": false,
+    "text": "+20% damage against enemies out of Magicka or Stamina."
+  }
+]

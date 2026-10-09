@@ -1,0 +1,48 @@
+.header {
+  border-bottom: 1px solid var(--rule);
+}
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 32px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  text-decoration: none;
+  font-family: var(--font-title);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.brand svg {
+  color: var(--ember);
+}
+.brand:hover {
+  color: var(--text);
+}
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.nav a:hover {
+  color: var(--text);
+}
+.account {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--muted);
+}

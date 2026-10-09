@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Altmer",
+    "primary": "Alteration",
+    "secondary": [
+      "Conjuration",
+      "Destruction",
+      "Illusion",
+      "Restoration",
+      "Enchanting"
+    ],
+    "health": 100,
+    "magicka": 160,
+    "stamina": 100
+  },
+  {
+    "name": "Argonian",
+    "primary": "Alchemy",
+    "secondary": [
+      "One-Handed",
+      "Evasion",
+      "Wayfarer",
+      "Sneak",
+      "Restoration"
+    ],
+    "health": 140,
+    "magicka": 120,
+    "stamina": 100
+  },
+  {
+    "name": "Bosmer",
+    "primary": "Marksman",
+    "secondary": [
+      "Evasion",
+      "Finesse",
+      "Sneak",
+      "Alchemy",
+      "Alteration"
+    ],
+    "health": 100,
+    "magicka": 120,
+    "stamina": 140
+  },
+  {
+    "name": "Breton",
+    "primary": "Conjuration",
+    "secondary": [
+      "Alchemy",
+      "Speech",
+      "Illusion",
+      "Restoration",
+      "Enchanting"
+    ],
+    "health": 120,
+    "magicka": 140,
+    "stamina": 100
+  },
+  {
+    "name": "Dunmer",
+    "primary": "Destruction",
+    "secondary": [
+      "One-Handed",
+      "Evasion",
+      "Sneak",
+      "Conjuration",
+      "Illusion"
+    ],
+    "health": 100,
+    "magicka": 140,
+    "stamina": 120
+  },
+  {
+    "name": "Imperial",
+    "primary": "Speech",
+    "secondary": [
+      "One-Handed",
+      "Block",
+      "Heavy Armor",
+      "Destruction",
+      "Restoration"
+    ],
+    "health": 120,
+    "magicka": 120,
+    "stamina": 120
+  },
+  {
+    "name": "Khajiit",
+    "primary": "Sneak",
+    "secondary": [
+      "One-Handed",
+      "Evasion",
+      "Finesse",
+      "Wayfarer",
+      "Alchemy"
+    ],
+    "health": 100,
+    "magicka": 100,
+    "stamina": 160
+  },
+  {
+    "name": "Nord",
+    "primary": "Two-Handed",
+    "secondary": [
+      "One-Handed",
+      "Block",
+      "Smithing",
+      "Heavy Armor",
+      "Evasion"
+    ],
+    "health": 140,
+    "magicka": 100,
+    "stamina": 120
+  },
+  {
+    "name": "Orsimer",
+    "primary": "Heavy Armor",
+    "secondary": [
+      "One-Handed",
+      "Two-Handed",
+      "Block",
+      "Smithing",
+      "Destruction"
+    ],
+    "health": 160,
+    "magicka": 100,
+    "stamina": 100
+  },
+  {
+    "name": "Redguard",
+    "primary": "One-Handed",
+    "secondary": [
+      "Two-Handed",
+      "Marksman",
+      "Block",
+      "Smithing",
+      "Evasion"
+    ],
+    "health": 120,
+    "magicka": 100,
+    "stamina": 140
+  }
+]
