@@ -2,10 +2,10 @@ import { describe, expect, it } from "vitest";
 import { assertDatabaseMatchesEnvironment, environmentOfUrl } from "./environments";
 
 const url = (endpoint: string, pooled = true) =>
-  `postgresql://user:pw@${endpoint}${pooled ? "-pooler" : ""}.c-13.us-east-1.aws.neon.tech/lorerim?sslmode=require`;
-const PROD = url("ep-polished-snow-b7a1ykkv");
-const STAGING = url("ep-billowing-heart-b713fgc4");
-const DEV = url("ep-rapid-wildflower-b7xg0gjd", false);
+  `postgresql://user:pw@${endpoint}${pooled ? "-pooler" : ""}.c-14.us-east-1.aws.neon.tech/neondb?sslmode=require`;
+const PROD = url("ep-curly-dust-b8hk08m6");
+const STAGING = url("ep-summer-darkness-b8k8re4t");
+const DEV = url("ep-lucky-night-b85dscp1", false);
 
 describe("environmentOfUrl", () => {
   it("recognizes each branch, pooled or direct", () => {

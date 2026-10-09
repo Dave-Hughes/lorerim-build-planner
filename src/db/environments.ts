@@ -3,12 +3,13 @@
  * (they carry no password); they let the app and the migration script refuse
  * to run against the wrong database.
  *
- * Neon project: lorerim-build-planner (dawn-credit-59867906)
+ * Neon project: lorerim-build-planner (weathered-bonus-08840193), in the
+ * Vercel-managed Launch org. Created from Vercel > Storage.
  */
 export const DATABASES = {
-  production: { branch: "production", endpoint: "ep-polished-snow-b7a1ykkv" },
-  staging: { branch: "staging", endpoint: "ep-billowing-heart-b713fgc4" },
-  development: { branch: "dev", endpoint: "ep-rapid-wildflower-b7xg0gjd" },
+  production: { branch: "production", endpoint: "ep-curly-dust-b8hk08m6" },
+  staging: { branch: "staging", endpoint: "ep-summer-darkness-b8k8re4t" },
+  development: { branch: "dev", endpoint: "ep-lucky-night-b85dscp1" },
 } as const;
 
 export type AppEnvironment = keyof typeof DATABASES;

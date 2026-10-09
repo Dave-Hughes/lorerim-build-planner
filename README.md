@@ -6,7 +6,7 @@ Next.js (App Router) on Vercel, Postgres on Neon, Drizzle ORM, Auth.js with Disc
 
 ## Environments
 
-Three separate databases, one per environment. Each is a branch of the Neon project `lorerim-build-planner`.
+Three separate databases, one per environment. Each is a branch of the Neon project `lorerim-build-planner` (Launch plan, in the Vercel-managed Neon org; create or manage it from Vercel > Storage). Production is a protected branch, and each branch has its own password.
 
 | Environment | Runs where | Git branch | Neon branch | Migrations applied by |
 |---|---|---|---|---|
