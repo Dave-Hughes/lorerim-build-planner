@@ -202,7 +202,7 @@ Tiptap (ProseMirror) with the React bindings: StarterKit, Link, Placeholder, Typ
 - Removing levels from the end of a build asks to confirm when those levels have notes, and deletes the notes with them.
 
 ### 7c  Images
-- Upload by `/image`, drag-and-drop or paste. PNG, JPEG, WebP or GIF, up to 4 MB each, at most 40 images per build. Stored in Vercel Blob (store `lorerim-planner-images`; the chat session creates the store and the env var), path `builds/<buildId>/<random>.<ext>`, uploaded through a server route that checks the signed-in user owns the build.
+- Upload by `/image`, drag-and-drop or paste. PNG, JPEG, WebP or GIF, up to 4 MB each, at most 40 images per build. Stored in Vercel Blob: store `lorerim-planner-images` (public, iad1) is created and `BLOB_READ_WRITE_TOKEN` is set in Vercel for all three environments, so `vercel env pull` brings it locally. One store serves every environment, so paths start with the environment: `<production|staging|dev>/builds/<buildId>/<random>.<ext>` (use `currentEnvironment()` from `src/db/environments.ts`), uploaded through a server route that checks the signed-in user owns the build.
 - While uploading, the image shows as a placeholder with progress; on failure it says why and can be retried or removed.
 - Images can have a caption (shown in Alegreya italic under the image) and alt text (asked for in a small field after upload; optional but prompted).
 - Images display at the column width, never wider than their real size, with `loading="lazy"` and explicit width/height to avoid layout shift. Clicking opens the full image.
