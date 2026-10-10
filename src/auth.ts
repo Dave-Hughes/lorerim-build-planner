@@ -17,7 +17,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth(() => ({
     sessionsTable: schema.sessions,
     verificationTokensTable: schema.verificationTokens,
   }),
-  providers: [Discord({ authorization: { params: { scope: "identify" } } })],
+  providers: [
+    Discord({
+      authorization: { params: { scope: "identify" } },
+      // Discord now sends `iss=https://discord.com` back with the code (RFC 9207). Without this
+      // the library compares it against its placeholder issuer and refuses the sign-in.
+      issuer: "https://discord.com",
+    }),
+  ],
   callbacks: {
     session({ session, user }) {
       session.user.id = user.id;
