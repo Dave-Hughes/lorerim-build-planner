@@ -29,6 +29,18 @@ These rules come from Dave's review of those screens (9 Oct 2026). The LoreRim c
 15. **Selected states must be unmistakable.** Attribute choice = three cards in the attribute's own color; the chosen one gets a thick colored border, a filled round marker and the new value with "+5".
 16. **Trait cards use the trait's in-game artwork** as the card background, fading to dark under the text. If an author objects, remove it. (Done: `public/traits/*.webp`, converted from the Biggie Traits / LoreRim Traits thumbnail DDS files; the numbers the game highlights in a trait's text are set in a brighter weight.)
 
+## Pixel icons
+
+The skill icons (approved 10 Oct 2026, second pass) are the bar for every icon set that follows. They are drawn in `scripts/icons/pixels.py`, never by hand-editing SVGs, and follow these rules:
+
+- 16×16, shown at 16 px (or an exact multiple), `image-rendering: pixelated`.
+- A 1 px near-black outline (#06080b) around every shape, added by the script, so all icons share one edge. Thin details (a bow string, sparks) skip the outline.
+- Light from the top left: a highlight on the upper and left parts, a shadow lower and right. Three tones per material plus the outline.
+- The silhouette fills most of the 14×14 inside the outline and reads at 16 px on both the dark ground and an ember (selected) background.
+- The planner's palette only: steel, brass/wood, ember/fire, magicka blue, health red, stamina green.
+- One clear object per icon, the one a player would name ("a bow", "a skull"), never an abstract symbol or a letter.
+- Decorative only: the name always sits beside the icon.
+
 ## Visual system
 
 - Ground #0e1319, panels #141b23, rules #2a3442, text #e4ebf0, muted #8e9bab.
