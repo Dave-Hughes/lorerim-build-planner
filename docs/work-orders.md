@@ -308,6 +308,82 @@ Done when
 
 ---
 
+## WO-11  Perk trees: see at a glance what you have
+
+Dave (10 Oct 2026), on the Destruction tree with Novice taken and Electromancy at 1 of 2: "Hard to see what perks here I have, the path connecting them isn't different from other paths."
+
+What's wrong in `src/components/build/tree.tsx` and `tree.module.css` now:
+- Taken (filled ember dot) and can-take (ember ring) are the same colour and size; at a glance they read as one state.
+- A line lights only when both ends are fully taken, so Novice → Electromancy (1 of 2) stays grey: the path you are on doesn't show.
+- `.edgeLit` sets `stroke-width: 1.6` in CSS, which overrides the `strokeWidth` the tree scales with, so a lit line is barely thicker than a grey one, and at 2560 thinner than the base.
+- The half-filled partial star is the same for 1 of 2 and 1 of 5.
+
+### Stars: four states, each a different shape, not only a different colour
+- **Taken** (all ranks): solid ember star, 1.3× the base size, soft ember glow (`0 0 0 4px` at about 25%, plus a 10 px blur at about 35%). Its label name in the bright text colour, weight 600.
+- **Some ranks** (1 of 2, 2 of 5): same size and glow as taken; the ring is split into one arc per rank with the taken arcs filled ember and the rest dark (conic gradient, 2 px gaps between arcs). The label says the ranks after the name: `Electromancy 1/2`.
+- **Can take now**: hollow ring in brass (`--brass`), base size, no glow. Label in the normal text colour.
+- **Not yet**: small grey dot (as now). Label dim (as now).
+- Selected keeps its brass halo around whatever state it is in.
+- Check in greyscale: the four states must still be told apart (fill, segmented ring, hollow ring, small dot).
+
+### Lines: your path stands out
+A star counts as **held** when it has at least one rank.
+- Held → held: ember, 2.5× the base line width, with a faint ember glow (an SVG blur filter or a wider 20%-opacity line underneath).
+- Held → can take now: brass, base width, solid. These show where you can go next.
+- Everything else: the current grey, base width, at 60% opacity. "Either of" lines keep their dashes.
+- Selected star that isn't held: the lines from it back down to the nearest held stars (its prerequisite chain) in dashed brass, so you see what it needs. (Replaces `edgePreview`.)
+- Widths come from the tree's scaled line size (`size.line`), never a fixed CSS `stroke-width`; draw held lines last so they sit on top.
+
+### Finding your perks across trees
+- Each tree tab shows how many perks you hold in it, in ember after the name (`Destruction 2`); none shows nothing.
+- The legend matches the new drawings: Taken, Some ranks, Can take now, Not yet. On small screens it is a 2 × 2 grid, not a wrapped line.
+
+### Done when
+- [ ] Unit test for line state: held→held, held→open and other, including a star with 1 of 2 ranks counting as held, and an "either of" line.
+- [ ] Destruction at 1440 with Novice taken and Electromancy 1/2: screenshot before and after, side by side, for Dave; plus One-Handed and Restoration with a longer path (four or more held perks) at 1920 and 2560.
+- [ ] Greyscale screenshot of the same tree showing all four star states told apart.
+- [ ] Tabs show held counts in the editor and on the shared build page.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-12  QA pass fixes (10 Oct 2026)
+
+From a pass over staging at 390, 1440 and 1920. Each is small; do them in this order.
+
+### Copy that breaks the rules
+1. **Birthsign texts are ours, not the game's.** `src/data/lorerim-5.0.4.8/birthsigns.json` is hand-written and includes our commentary (for example "Its 'stones 200% stronger' line is untested with LoreRim's stones."). Generate it like traits: read each birthsign's ability and effect descriptions from the records in `scripts/gamedata/` (extend `extract.py`/`build.py`, raw input under `gamedata/5.0.4.8/`), write the game's text, and drop every sentence that isn't from the records. A sign whose text can't be found shows no text, and goes in the build output as a warning, not in our words.
+2. **Example build** (`src/lib/rules/__fixtures__/sample-build.json`; check no test leans on the old text). The guide reads "Example build to show how the planner works. Replace any of it." and every gear note reads "Example entry": both are how-it-works filler. Give the example a real build guide, short and in a player's voice:
+   > Sword and shield in heavy armor, starting in Falkreath. No spells: potions do the healing, so Alchemy comes up alongside the armor. Block and Heavy Armor first, One-Handed after.
+
+   Gear notes: leave them empty.
+3. **"Destiny  Destiny".** In "At level", Destiny perks have their own row labelled Destiny, and the first perk is named Destiny, so it stutters. List Destiny perks in the Perks list like every other perk (Destiny icon, then the name), and drop the tree name in brackets when it is the same as the perk name.
+
+### Build page
+4. **Gear table.** "From level" header is left-aligned while its numbers are right-aligned under the far end of the column. Align both left, next to each other. The table spans the full content width (it stops short at 1920).
+
+### Creation flow
+5. **One "Chosen", the same on every step.** The chosen race card shows "✓ Chosen" as a tag and "Chosen" on its button; the chosen birthsign card says "Remove". Use one pattern for race, birthsign and traits: the tag goes; the button reads `Chosen` in the selected style. Traits keep their own toggle since several can be held (clicking a chosen trait removes it, as now). For birthsign, choosing another sign replaces it; if a build may have no sign, that is its own card, `No birthsign yet`.
+6. **Race icons at 32 px** on race cards (the 16 px pixel art at 2×, `image-rendering: pixelated`); 16 px stays everywhere else.
+7. **Skills step:** the Major/Minor tag on a skill row repeats what the segmented control already shows. Remove the tag.
+
+### Editor
+8. **Detail panel out of sight.** At 1456 wide the perk detail panel drops below the tree, so picking a star shows nothing until you scroll. When there isn't room beside the tree, show the panel as a card pinned to the bottom of the window over the page (non-modal, same content and buttons as the panel, closes with Esc or ×), like the bottom sheet on phones.
+
+### Phones (390 wide)
+9. **Header** wraps to three rows. One row: the star mark (links home), `Builds`, `New build`, and `Sign in` as the button text; the wordmark shows from 600 px up.
+10. **Level row** shows three levels and cuts the fourth in half. Make it a horizontal scroller with scroll snap, the current level scrolled into view, and a fade on the edge that has more.
+11. **Tree tabs** stack 19 buttons about 380 px tall before the tree. Under 900 px, one horizontally scrolling row (icon + name, current tab scrolled into view), with the List toggle at its end.
+12. **Tree box height** leaves a large empty band under the tree. At fit zoom the box is as tall as the fitted tree plus its label padding.
+
+### Done when
+- [ ] `birthsigns.json` is generated (no hand edits), and no birthsign text contains words that aren't in the records; diff of old and new texts for Dave.
+- [ ] Screenshots for Dave: shared example build at 1920 (guide, At level, gear), race and birthsign steps at 1440 with a chosen card, editor at 1456 with a star selected, and at 390 the header, level row and tree tabs.
+- [ ] e2e: on 390, the tree tabs are one row and the selected tab is in view; in the editor at 1456, selecting a star shows its name in the pinned panel without scrolling.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
