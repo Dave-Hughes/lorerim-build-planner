@@ -222,6 +222,73 @@ Done when (each part)
 
 ---
 
+## WO-8  Perk trees laid out like the game
+
+Dave (10 Oct 2026): "In some instances it's a tangled mess and should never be laid out like this. In game it's much more structured. I think we're breaking it to make it fit in a small box."
+
+Cause: `src/lib/rules/layout.ts` invents a layout (rows by prerequisite depth, then squeezes, staggers and reorders them to fit the box). The game already has a designed layout for every tree, and we extracted it: each node's grid position and offset (`x`, `y`, `hx`, `vy`) and the lines the game draws between stars (`linksTo`) are in `gamedata/5.0.4.8/planner_data.json`. Drawn from those, every tree is as clean as the game's: see [docs/reference/perk-trees-game-layout.png](reference/perk-trees-game-layout.png) (all 18 trees plotted straight from the game data, no adjustments).
+
+### Data
+- `scripts/gamedata/build.py` writes, for every skill-tree perk, `pos: [x + hx, y + vy]` (the game's coordinates, y up), and for every tree a `links` list of `[fromId, toId]` from the game's `linksTo` (the constellation lines). Destiny perks already carry `x`, `y` from the Custom Skills config; add Destiny's `links` from its config the same way (`Links` per node in `CustomSkill.destiny.config.txt`, already in `planner_data.json` as `links`).
+- Lines on screen come from the game's `links`, not from `requires`. Rules keep using `requires`/`anyOf`/`excludes`. (They mostly match; where they don't, the game's picture wins on screen and the rules win in the engine.)
+- Rebuild `perks.json` with `python3 scripts/gamedata/build.py`; never hand-edit it.
+
+### Layout
+- Replace the invented layout in `layout.ts` with one that only scales the game's coordinates into the box: one uniform scale for x and y (never stretch one axis), y flipped so the tree grows upward, padding for labels. No reordering, staggering or nudging of stars, ever.
+- The box size comes from the room available (ResizeObserver, as now), and the scale is chosen so the tree fills the box's width or height, whichever binds first.
+- Destiny: same treatment from its own `x`, `y` (no more invented radial layout).
+- Stars that sit very close in the game (One-Handed's unarmed cluster, Smithing's book perks, Restoration's centre) stay close; the label rules below handle them.
+
+### Labels (the real source of the clutter)
+In the game, a star's name shows when you point at it. Here:
+- Every star always shows; its name and requirement show when there is room.
+- Place labels greedily in priority order: the selected star, then taken, then can-take-now, then not-yet; within a priority, stars lower in the tree first. Try below the star, then above, right, left. A label that would overlap another label, a star or a line's end is not shown.
+- A star without a visible label shows it on hover and on keyboard focus (a small dark tag beside the star, same text), and its `aria-label` always carries the full name and state.
+- Labels never shrink below 12 px and never wrap to more than two lines.
+- The selected star's label always shows, even if that means hiding a neighbour's.
+
+### Size: use the screen
+Most players are on large monitors. The tree should be big:
+- The perk area (tree plus detail panel) takes the full width of the main column; the tree box is at least as tall as it is wide at 1440 and up, capped so the whole tree and its tabs fit in the window without scrolling (`min(window height - header - tabs, width)`).
+- At 1440 the tree box is about 900 px wide; at 1920 about 1200; at 2560 about 1600 (see WO-9 for the page widths). Stars and lines scale with the box (star 16 px at 900, up to 22 px at 1600; lines 1 → 1.5 px), labels stay 13–15 px.
+- The detail panel sits to the right at 1100 px and up (fixed 340 px), below the tree under that.
+
+### Small screens (under 900 px wide)
+Don't squash the tree. Make it behave like the game's sky:
+- The tree opens fitted to the width, labels shown only for taken and selected stars.
+- Pinch or Ctrl+wheel to zoom (1× to 3×), drag to pan, double-tap to zoom in on a point; `+`, `−` and "Fit" buttons in the corner. Labels appear as zoom makes room for them (same placement rules).
+- Tapping a star selects it and opens its details in a bottom sheet (the same content as the detail panel) with Confirm/Remove; dismiss by swipe down or tapping outside.
+- A "List" toggle next to the tree tabs switches to a plain list of the tree's perks grouped by required skill (25, 50, 75, 100, then level and book perks), each row with its state, for anyone who prefers it. The list is also what screen readers get first.
+
+### Done when
+- [ ] Every one of the 19 trees on screen matches its plot in `docs/reference/perk-trees-game-layout.png` (same shape, same lines); screenshots of all 19 at 1920 wide in one sheet for Dave.
+- [ ] No label overlaps another label or a star in any tree at 1440, 1920 and 2560 (add a unit test that runs the placement for every tree at those widths and asserts no rectangle overlaps).
+- [ ] Unit test: layout preserves the game's relative positions (for every pair of stars, left/right and above/below order is unchanged).
+- [ ] At 390 wide: pinch-zoom, pan, Fit, tap-to-select with the bottom sheet, and the List toggle all work (e2e for tap-select and List; zoom checked by hand and noted).
+- [ ] Editor and shared build page both use it; existing tree e2e still pass.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-9  Large screens
+
+Dave: most users are on large gaming monitors; the site should support very large breakpoints and use the space.
+
+- Page width: `--page-max` goes from a fixed 1360 px to steps: 1360 under 1600, 1600 at 1600–2199, 2080 at 2200–2879, 2560 at 2880 and up. Side gutters 40 px (24 under 900, 16 under 480).
+- Body text measure: paragraphs of running text (build description, guide, notes) stay at a comfortable measure of the column they sit in; never a narrow `ch` cap next to wider controls (Dave's rule on ragged early line breaks). Where text and its controls share a column, they share its width.
+- Shared build page at 1920+: attributes, skills and "this level" columns become 1 : 1.4 : 1.6 instead of stacking early; the perk trees section uses the full width (WO-8).
+- Editor at 1920+: left column (attribute, skills) fixed 440 px, the perks area takes the rest.
+- Browse: cards in a grid of `minmax(320px, 1fr)` so a 2560 screen shows 6 to 7 per row, not 4 big ones.
+- Type scales a little with the page: titles +10% at 2200 and up, body stays 15–16 px.
+- Check nothing stretches into long thin lines: tables, the level row (12 levels still, wider cells), stat lists.
+
+Done when
+- [ ] Screenshots of home, a shared build page, the editor and the race step at 1440, 1920, 2560 and 3440 (ultrawide), for Dave.
+- [ ] No horizontal scroll at any width from 360 to 3840.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
