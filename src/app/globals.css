@@ -18,11 +18,35 @@
   --font-body: var(--font-sofia), "Segoe UI", sans-serif;
   --font-flavor: var(--font-alegreya), Georgia, serif;
 
+  /* The page grows in steps on large screens (most players are on big gaming monitors). */
   --page-max: 1360px;
   --gutter: 40px;
+  /* Titles grow a little with the page. */
+  --title-scale: 1;
 }
 
-@media (max-width: 720px) {
+@media (min-width: 1600px) {
+  :root {
+    --page-max: 1600px;
+  }
+}
+@media (min-width: 2200px) {
+  :root {
+    --page-max: 2080px;
+    --title-scale: 1.1;
+  }
+}
+@media (min-width: 2880px) {
+  :root {
+    --page-max: 2560px;
+  }
+}
+@media (max-width: 899px) {
+  :root {
+    --gutter: 24px;
+  }
+}
+@media (max-width: 479px) {
   :root {
     --gutter: 16px;
   }

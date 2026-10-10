@@ -22,7 +22,7 @@
   gap: 26px;
 }
 .h1 {
-  font-size: 48px;
+  font-size: calc(48px * var(--title-scale));
   letter-spacing: 0.04em;
 }
 

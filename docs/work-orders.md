@@ -283,9 +283,9 @@ Dave: most users are on large gaming monitors; the site should support very larg
 - Check nothing stretches into long thin lines: tables, the level row (12 levels still, wider cells), stat lists.
 
 Done when
-- [ ] Screenshots of home, a shared build page, the editor and the race step at 1440, 1920, 2560 and 3440 (ultrawide), for Dave.
-- [ ] No horizontal scroll at any width from 360 to 3840.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Screenshots of home, a shared build page, the editor and the race step at 1440, 1920, 2560 and 3440 (ultrawide), for Dave.
+- [x] No horizontal scroll at any width from 360 to 3840.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

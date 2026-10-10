@@ -12,7 +12,7 @@
   gap: 16px;
 }
 .head h1 {
-  font-size: 44px;
+  font-size: calc(44px * var(--title-scale));
 }
 .filter {
   margin-left: auto;
@@ -36,4 +36,8 @@
 }
 .empty p {
   margin: 0;
+}
+
+.h1 {
+  font-size: calc(44px * var(--title-scale));
 }

@@ -121,6 +121,16 @@
   flex-direction: column;
   gap: 16px;
 }
+/* Large screens: attribute and skills a fixed 440px; the perks take the rest. */
+@media (min-width: 1920px) {
+  .columns {
+    flex-wrap: nowrap;
+  }
+  .left {
+    flex: none;
+    width: 440px;
+  }
+}
 .block {
   display: flex;
   flex-direction: column;

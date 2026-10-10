@@ -40,7 +40,7 @@
   flex: 1 1 560px;
 }
 .h1 {
-  font-size: clamp(44px, 7vw, 76px);
+  font-size: calc(clamp(44px, 7vw, 76px) * var(--title-scale));
   line-height: 0.92;
   letter-spacing: 0.04em;
   text-wrap: balance;
@@ -158,6 +158,22 @@
   display: flex;
   flex-direction: column;
   gap: 22px;
+}
+/* Large screens: attributes, skills and this level side by side, 1 : 1.4 : 1.6. */
+@media (min-width: 1920px) {
+  .columns {
+    flex-wrap: nowrap;
+    gap: 36px;
+  }
+  .colStats {
+    flex: 1 1 0;
+  }
+  .colSkills {
+    flex: 1.4 1 0;
+  }
+  .colPerks {
+    flex: 1.6 1 0;
+  }
 }
 
 .panel {
@@ -353,6 +369,8 @@
 }
 .gear {
   flex: 3 1 520px;
+  /* A table this short reads badly stretched across a 2560 page. */
+  max-width: 1360px;
   min-width: 0;
   display: flex;
   flex-direction: column;

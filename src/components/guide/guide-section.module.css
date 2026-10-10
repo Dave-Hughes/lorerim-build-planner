@@ -3,6 +3,34 @@
   flex-direction: column;
   gap: 14px;
 }
+/* Wide screens: the guide's text keeps a readable measure, with its contents beside it. */
+@media (min-width: 1600px) {
+  .section {
+    display: grid;
+    grid-template-columns: minmax(0, 1100px) minmax(220px, 300px);
+    grid-template-areas: "label label" "body contents" "more contents";
+    column-gap: 56px;
+    align-items: start;
+  }
+  .section > :global(.label) {
+    grid-area: label;
+  }
+  .contents {
+    grid-area: contents;
+    position: sticky;
+    top: 24px;
+  }
+  .contents ol {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .body {
+    grid-area: body;
+  }
+  .more {
+    grid-area: more;
+  }
+}
 .contents ol {
   margin: 0;
   padding: 0;

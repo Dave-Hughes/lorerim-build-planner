@@ -15,7 +15,7 @@ export default async function MyBuilds() {
   if (!userId) {
     return (
       <main className={`page ${styles.main}`}>
-        <h1 className="title" style={{ fontSize: 44 }}>
+        <h1 className={`title ${styles.h1}`}>
           My builds
         </h1>
         <p className="muted">Sign in to see the builds you have made.</p>
@@ -27,7 +27,7 @@ export default async function MyBuilds() {
   return (
     <main className={`page ${styles.main}`}>
       <div className={styles.head}>
-        <h1 className="title" style={{ fontSize: 44 }}>
+        <h1 className={`title ${styles.h1}`}>
           My builds
         </h1>
         <Link href="/new" className="btn btn-primary btn-sm">
