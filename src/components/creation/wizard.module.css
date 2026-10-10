@@ -119,6 +119,10 @@
   font-size: 12px;
   color: var(--muted);
 }
+.hmsName {
+  align-self: center;
+  gap: 5px;
+}
 .hms .big-num,
 .hms > div > span:first-child {
   font-size: 26px;

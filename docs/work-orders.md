@@ -117,9 +117,9 @@ Rules
 - Don't redraw icons. Note anything that looks wrong in a new spot in the commit message.
 
 Done when
-- [ ] Every place listed shows its icon.
-- [ ] Screenshots of the race step, birthsign step, the editor (attribute cards and stone select) and the shared build page at 1440 and 390.
-- [ ] `npm run typecheck`, `npm run lint`, `npm test`, `npm run build`, `npm run test:e2e` pass.
+- [x] Every place listed shows its icon.
+- [x] Screenshots of the race step, birthsign step, the editor (attribute cards and stone select) and the shared build page at 1440 and 390.
+- [x] `npm run typecheck`, `npm run lint`, `npm test`, `npm run build`, `npm run test:e2e` pass.
 
 ---
 

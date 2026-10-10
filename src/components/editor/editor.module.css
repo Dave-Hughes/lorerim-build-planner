@@ -550,3 +550,19 @@
     border-top: 1px solid var(--rule);
   }
 }
+
+/* Standing stone: the stone's icon in a fixed 16px slot beside the select, so nothing moves when it changes. */
+.stoneRow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.stoneIcon {
+  display: inline-flex;
+  flex: none;
+  width: 16px;
+}
+.stoneRow .select {
+  flex: 1;
+  min-width: 0;
+}

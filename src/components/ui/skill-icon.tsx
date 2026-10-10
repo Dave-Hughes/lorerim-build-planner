@@ -1,22 +1,58 @@
 import styles from "./skill-icon.module.css";
 
 function slug(name: string): string {
-  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  return name
+    .toLowerCase()
+    .replace(/^the\s+/, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 }
 
-/** Pixel icon for a skill tree or Destiny, drawn by scripts/icons/pixels.py. Decorative: the name always sits beside it. */
-export function SkillIcon({ name, size = 16 }: { name: string; size?: number }) {
-  // A 16px SVG: nothing for next/image to optimise.
+/**
+ * A pixel icon from public/icons, drawn by scripts/icons/pixels.py. Decorative: the name always
+ * sits beside it. `file` is the icon's file name without ".svg". 16px, or an exact multiple.
+ */
+export function GameIcon({ file, size = 16, className }: { file: string; size?: 16 | 32; className?: string }) {
+  // A small SVG: nothing for next/image to optimise.
   // eslint-disable-next-line @next/next/no-img-element
-  return <img src={`/icons/${slug(name)}.svg`} width={size} height={size} alt="" aria-hidden="true" className={styles.icon} />;
+  return <img src={`/icons/${file}.svg`} width={size} height={size} alt="" aria-hidden="true" className={`${styles.icon} ${size === 32 ? styles.big : ""} ${className ?? ""}`} />;
 }
 
-/** A skill tree's icon, then its name (or `children` when the line says more), centred on one line. */
-export function SkillLabel({ name, className, children }: { name: string; className?: string; children?: React.ReactNode }) {
+/** A skill tree or Destiny. */
+export function SkillIcon({ name, size = 16 }: { name: string; size?: 16 | 32 }) {
+  return <GameIcon file={slug(name)} size={size} />;
+}
+
+/** Health, Magicka or Stamina. */
+export function AttributeIcon({ name, size = 16 }: { name: string; size?: 16 | 32 }) {
+  return <GameIcon file={`attr-${slug(name)}`} size={size} />;
+}
+
+/** A birthsign or standing stone ("Lord" or "The Lord"); the stones share the signs' constellations. */
+export function SignIcon({ name, size = 16, className }: { name: string; size?: 16 | 32; className?: string }) {
+  return <GameIcon file={`sign-${slug(name)}`} size={size} className={className} />;
+}
+
+/** One of the ten races. */
+export function RaceIcon({ name, size = 16, className }: { name: string; size?: 16 | 32; className?: string }) {
+  return <GameIcon file={`race-${slug(name)}`} size={size} className={className} />;
+}
+
+/** An icon, then its text, centred on one line with a 7px gap. */
+export function IconLabel({ icon, className, children }: { icon: React.ReactNode; className?: string; children: React.ReactNode }) {
   return (
     <span className={`${styles.label} ${className ?? ""}`}>
-      <SkillIcon name={name} />
-      <span>{children ?? name}</span>
+      {icon}
+      <span>{children}</span>
     </span>
+  );
+}
+
+/** A skill tree's icon, then its name (or `children` when the line says more). */
+export function SkillLabel({ name, className, children }: { name: string; className?: string; children?: React.ReactNode }) {
+  return (
+    <IconLabel icon={<SkillIcon name={name} />} className={className}>
+      {children ?? name}
+    </IconLabel>
   );
 }

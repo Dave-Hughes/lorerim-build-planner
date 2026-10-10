@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { FocusHeader } from "@/components/ui/focus-header";
-import { SkillLabel } from "@/components/ui/skill-icon";
+import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel } from "@/components/ui/skill-icon";
 import { createBuild, saveBuildDetails, saveBuildPlan } from "@/lib/builds/actions";
 import { STEPS, STEP_NAMES, clearDraft, emptyDetails, emptyPlan, loadDraft, saveDraft, type Step } from "@/lib/builds/draft";
 import type { BuildDetails } from "@/lib/builds/validate";
@@ -189,15 +189,21 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
               <div className={styles.hms}>
                 <div className={styles.health}>
                   <span className="big-num">{startState.health}</span>
-                  <span>Health</span>
+                  <IconLabel icon={<AttributeIcon name="Health" />} className={styles.hmsName}>
+                    Health
+                  </IconLabel>
                 </div>
                 <div className={styles.magicka}>
                   <span className="big-num">{startState.magicka}</span>
-                  <span>Magicka</span>
+                  <IconLabel icon={<AttributeIcon name="Magicka" />} className={styles.hmsName}>
+                    Magicka
+                  </IconLabel>
                 </div>
                 <div className={styles.stamina}>
                   <span className="big-num">{startState.stamina}</span>
-                  <span>Stamina</span>
+                  <IconLabel icon={<AttributeIcon name="Stamina" />} className={styles.hmsName}>
+                    Stamina
+                  </IconLabel>
                 </div>
               </div>
               <div className={styles.topSkills}>
@@ -303,7 +309,9 @@ function RaceStep({ plan, update }: StepProps) {
           return (
             <ChoiceCard key={r.name} className={`${styles.card} ${on ? styles.cardOn : ""}`} onChoose={choose}>
               <div className={styles.cardHead}>
-                <h2 className={styles.cardName}>{r.name}</h2>
+                <h2 className={styles.cardName}>
+                  <IconLabel icon={<RaceIcon name={r.name} size={32} />}>{r.name}</IconLabel>
+                </h2>
                 {on && <Chosen />}
               </div>
               <div className={styles.raceSkills}>
@@ -351,7 +359,7 @@ function BirthsignStep({ plan, update }: StepProps) {
           return (
             <ChoiceCard key={b.name} className={`${styles.card} ${on ? styles.cardOn : ""} ${removed ? styles.cardOff : ""}`} onChoose={removed ? undefined : choose}>
               <div className={styles.cardHead}>
-                <h2 className={styles.cardName}>The {b.name}</h2>
+                <h2 className={styles.cardName}>{removed ? `The ${b.name}` : <IconLabel icon={<SignIcon name={b.name} size={32} />}>The {b.name}</IconLabel>}</h2>
                 {on && !removed && <Chosen />}
               </div>
               <p className={styles.cardText}>{b.text}</p>

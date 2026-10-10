@@ -11,3 +11,7 @@
   /* Sit in a line of text without making the line taller. */
   vertical-align: top;
 }
+/* A 32px icon beside a heading: overhangs the line instead of making it taller. */
+.big {
+  margin: -6px 0;
+}

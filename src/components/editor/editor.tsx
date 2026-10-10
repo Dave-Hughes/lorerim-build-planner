@@ -13,7 +13,7 @@ import { ATTRIBUTE_NAMES, levelMarks, nextDestinyLevel, skillStepInfo } from "@/
 import { computeBuild } from "@/lib/rules/engine";
 import type { Attribute, BuildPlan, GearItem } from "@/lib/rules/types";
 import { PerkPanel } from "./perk-panel";
-import { SkillIcon } from "@/components/ui/skill-icon";
+import { AttributeIcon, IconLabel, SignIcon, SkillIcon } from "@/components/ui/skill-icon";
 import * as ops from "./plan-ops";
 import { useAutosave } from "./use-autosave";
 import styles from "./editor.module.css";
@@ -158,7 +158,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel }: Props) {
                     return (
                       <button key={a} type="button" aria-pressed={on} className={`${styles.attr} ${styles[a]} ${on ? styles.attrOn : ""}`} onClick={() => setPlan(ops.setAttribute(plan, level, a))}>
                         <span className={styles.attrTop}>
-                          <span>{ATTRIBUTE_NAMES[a]}</span>
+                          <IconLabel icon={<AttributeIcon name={a} />}>{ATTRIBUTE_NAMES[a]}</IconLabel>
                           <span className={styles.radio}>
                             <span />
                           </span>
@@ -303,15 +303,19 @@ export function Editor({ buildId, name, initialPlan, initialLevel }: Props) {
           </div>
           <label className={`field ${styles.alsoCol}`}>
             <span className="label">Standing stone</span>
-            <select className="select" value={lv.stone ?? ""} onChange={(e) => setPlan(ops.setStone(plan, level, e.target.value))}>
-              <option value="">{prevStone ? `Keep The ${prevStone}` : level === 1 ? "No stone yet" : "No stone yet"}</option>
-              {prevStone && <option value="none">Leave The {prevStone}</option>}
-              {STONES.map((st) => (
-                <option key={st.name} value={st.name}>
-                  The {st.name} ({st.text})
-                </option>
-              ))}
-            </select>
+            <span className={styles.stoneRow}>
+              {/* A native select can't show images: the stone in effect at this level sits beside it. */}
+              <span className={styles.stoneIcon}>{s.stone ? <SignIcon name={s.stone} /> : null}</span>
+              <select className="select" value={lv.stone ?? ""} onChange={(e) => setPlan(ops.setStone(plan, level, e.target.value))}>
+                <option value="">{prevStone ? `Keep The ${prevStone}` : level === 1 ? "No stone yet" : "No stone yet"}</option>
+                {prevStone && <option value="none">Leave The {prevStone}</option>}
+                {STONES.map((st) => (
+                  <option key={st.name} value={st.name}>
+                    The {st.name} ({st.text})
+                  </option>
+                ))}
+              </select>
+            </span>
           </label>
           <label className={`field ${styles.alsoWide}`}>
             <span className="label">Note for this level</span>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Avatar } from "@/components/ui/avatar";
+import { IconLabel, RaceIcon } from "@/components/ui/skill-icon";
 import { DeleteBuildButton } from "./delete-build-button";
 import type { BuildSummary } from "@/lib/builds/types";
 import { formatDate } from "@/lib/format/date";
@@ -17,7 +18,7 @@ export function BuildCard({ build, mine }: { build: BuildSummary; mine?: boolean
         </h2>
         {build.description && <p className={`flavor ${styles.description}`}>{build.description}</p>}
         <p className={styles.facts}>
-          {build.race}
+          {build.race ? <IconLabel icon={<RaceIcon name={build.race} />}>{build.race}</IconLabel> : null}
           {build.traits.length ? ` with ${build.traits.join(" and ")}` : ""}, to level {build.levels}
         </p>
         <div className={styles.foot}>

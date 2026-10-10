@@ -10,7 +10,7 @@ import { ATTRIBUTE_NAMES, levelChanges, levelMarks, perksByLevel } from "@/lib/r
 import { computeBuild } from "@/lib/rules/engine";
 import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
-import { SkillLabel } from "@/components/ui/skill-icon";
+import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel } from "@/components/ui/skill-icon";
 import { LevelLegend, LevelRow, LevelRuler, LevelStepper, WINDOW } from "./level-nav";
 import { Tree } from "./tree";
 import { TreeTabs } from "./tree-tabs";
@@ -65,11 +65,15 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
   const [treesOpen, setTreesOpen] = useState(false);
   const [tree, setTree] = useState<string>(() => plan.majors[0] ?? "One-Handed");
 
-  const identity = [
-    ["Race", plan.race],
-    ["Birthsign", plan.traits.includes("Master of Destiny") ? "None (Master of Destiny)" : plan.birthsign ? `The ${plan.birthsign}` : "Not chosen yet"],
+  const noSign = plan.traits.includes("Master of Destiny");
+  const identity: [string, React.ReactNode][] = [
+    ["Race", plan.race ? <IconLabel icon={<RaceIcon name={plan.race} />}>{plan.race}</IconLabel> : plan.race],
+    [
+      "Birthsign",
+      noSign ? "None (Master of Destiny)" : plan.birthsign ? <IconLabel icon={<SignIcon name={plan.birthsign} />}>The {plan.birthsign}</IconLabel> : "Not chosen yet",
+    ],
     ["Traits", plan.traits.length ? plan.traits.join(", ") : "None"],
-    ...(plan.masterOfOneSkill ? [["Master of One", plan.masterOfOneSkill]] : []),
+    ...(plan.masterOfOneSkill ? [["Master of One", plan.masterOfOneSkill] as [string, React.ReactNode]] : []),
     ["Game mode", plan.mode],
     ["Start", plan.start || "Not chosen yet"],
     ["Deity", plan.deity || "Not chosen yet"],
@@ -107,7 +111,10 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
               {(["health", "magicka", "stamina"] as const).map((a) => (
                 <div key={a} className={styles.attr}>
                   <div className={styles.attrHead}>
-                    <span>{ATTRIBUTE_NAMES[a]}</span>
+                    {/* Wrapped so the row's baseline alignment (and height) is the text's, as before. */}
+                    <span>
+                      <IconLabel icon={<AttributeIcon name={a} />}>{ATTRIBUTE_NAMES[a]}</IconLabel>
+                    </span>
                     <span className={styles.attrNum}>{s[a]}</span>
                   </div>
                   <div className={styles.bar}>
@@ -128,7 +135,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
                 {s.destinyPoints - s.destinyPointsSpent} of {s.destinyPoints}
               </dd>
               <dt>Standing stone</dt>
-              <dd>{s.stone ? `The ${s.stone}` : "None"}</dd>
+              <dd>{s.stone ? <IconLabel icon={<SignIcon name={s.stone} />}>The {s.stone}</IconLabel> : "None"}</dd>
               <dt>Trainer sessions used</dt>
               <dd>{s.trainerSessionsUsed}</dd>
             </dl>
@@ -255,7 +262,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
 
 function ChangesGrid({ changes, level }: { changes: ReturnType<typeof levelChanges>; level: number }) {
   const rows: [string, React.ReactNode][] = [];
-  if (changes.attribute) rows.push(["Attribute", `+5 ${ATTRIBUTE_NAMES[changes.attribute]}`]);
+  if (changes.attribute) rows.push(["Attribute", <IconLabel key="a" icon={<AttributeIcon name={changes.attribute} />}>+5 {ATTRIBUTE_NAMES[changes.attribute]}</IconLabel>]);
   if (changes.skills.length)
     rows.push([
       "Skills",
@@ -281,7 +288,8 @@ function ChangesGrid({ changes, level }: { changes: ReturnType<typeof levelChang
       </span>,
     ]);
   if (changes.destiny.length) rows.push(["Destiny", changes.destiny.map((d) => d.name).join(", ")]);
-  if (changes.stone) rows.push(["Stone", changes.stone === "none" ? "No stone" : `The ${changes.stone}`]);
+  if (changes.stone)
+    rows.push(["Stone", changes.stone === "none" ? "No stone" : <IconLabel key="st" icon={<SignIcon name={changes.stone} />}>The {changes.stone}</IconLabel>]);
   if (changes.trainer.length) rows.push(["Trainer", changes.trainer.map((t) => `${t.skill} +${t.count}`).join(", ")]);
   if (changes.books.length) rows.push(["Skill books", changes.books.join(", ")]);
   if (changes.banked > 0) rows.push(["Banked", `${changes.banked} skill points`]);
