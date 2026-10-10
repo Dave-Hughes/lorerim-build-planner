@@ -6,6 +6,7 @@ import { perkText, type GameData, type Perk } from "@/lib/rules/data";
 import { perkRequirementText, perkStatus, type PerkStatus } from "@/lib/rules/derive";
 import { labelSizes, placeLabels, type LabelRequest } from "@/lib/rules/labels";
 import { treeLayout, type LayoutPadding } from "@/lib/rules/layout";
+import { isHeld, lineLook, lineState, prerequisiteLines } from "@/lib/rules/tree-states";
 import type { LevelState } from "@/lib/rules/types";
 import styles from "./tree.module.css";
 
@@ -38,8 +39,28 @@ function requirementLine(d: GameData, p: Perk, st: PerkStatus): string {
   if (p.tree === "Destiny") return st.state === "taken" ? `Level ${st.takenAt[0]}` : "";
   const rank = Math.min(st.ranksTaken, st.ranks - 1);
   let req = perkRequirementText(p, rank) || (p.book ? "Book" : "No requirement");
-  if (st.ranks > 1) req += ` (${st.ranksTaken}/${st.ranks})`;
+  // Ranks taken so far; a star with some of them says so after its name instead.
+  if (st.ranks > 1 && (st.ranksTaken === 0 || st.ranksTaken >= st.ranks)) req += ` (${st.ranksTaken}/${st.ranks})`;
   return req;
+}
+
+/** "Electromancy 1/2" for a star with some of its ranks; the name alone otherwise. */
+function nameLine(p: Perk, st: PerkStatus): string {
+  return st.ranks > 1 && st.ranksTaken > 0 && st.ranksTaken < st.ranks ? `${p.name} ${st.ranksTaken}/${st.ranks}` : p.name;
+}
+
+/** A ring split into one arc per rank, taken arcs in ember, 2px gaps between arcs. */
+function rankRing(st: PerkStatus, sizePx: number): string {
+  const n = st.ranks;
+  const gap = (2 / (Math.PI * sizePx)) * 360; // 2px of the ring's circumference, in degrees
+  const stops: string[] = [];
+  for (let i = 0; i < n; i++) {
+    const a = (i * 360) / n;
+    const b = ((i + 1) * 360) / n;
+    const c = i < st.ranksTaken ? "var(--ember)" : "#2f3a4a";
+    stops.push(`transparent ${a}deg ${a + gap / 2}deg`, `${c} ${a + gap / 2}deg ${b - gap / 2}deg`, `transparent ${b - gap / 2}deg ${b}deg`);
+  }
+  return `conic-gradient(${stops.join(", ")})`;
 }
 
 function stateWords(st: PerkStatus): string {
@@ -223,11 +244,12 @@ export function Tree({ tree, states, level, selectedId, onSelect, details }: Tre
       const p = d.perkById.get(n.id)!;
       const st = status.get(n.id)!;
       const req = requirementLine(d, p, st);
+      const name = nameLine(p, st);
       return {
         id: n.id,
         x: n.x,
         y: n.y,
-        lines: req ? [p.name, req] : [p.name],
+        lines: req ? [name, req] : [name],
         // A star with ranks already taken counts as taken.
         priority: n.id === selected ? 0 : st.state === "taken" || st.ranksTaken > 0 ? 1 : st.state === "open" ? 2 : 3,
       };
@@ -320,6 +342,14 @@ export function Tree({ tree, states, level, selectedId, onSelect, details }: Tre
     : {};
 
   const pos = useMemo(() => new Map(layout?.nodes.map((n) => [n.id, n]) ?? []), [layout]);
+  const chain = useMemo(() => (layout ? prerequisiteLines(d, layout.edges, status, selected) : new Set<string>()), [d, layout, status, selected]);
+  // Grey lines first, then where you can go, then the selected star's needs, then your path on top.
+  const lines = useMemo(() => {
+    const order = { other: 0, next: 1, chain: 2, held: 3 };
+    return (layout?.edges ?? [])
+      .map((e) => ({ e, look: lineLook(lineState(status.get(e.from), status.get(e.to)), e.anyOf, chain.has(`${e.from}>${e.to}`)) }))
+      .sort((a, b) => order[a.look.kind] - order[b.look.kind]);
+  }, [layout, status, chain]);
   const sheetStatus = sheet ? status.get(sheet) : undefined;
 
   return (
@@ -363,16 +393,30 @@ export function Tree({ tree, states, level, selectedId, onSelect, details }: Tre
             {layout && (
               <div className={styles.canvas} style={{ width: W, height: H, transform: small ? `translate(${pan.x}px, ${pan.y}px)` : undefined, ["--star" as string]: `${size.star * 2}px`, ["--label" as string]: `${labelSizes(size.font).name}px`, ["--sub" as string]: `${labelSizes(size.font).sub}px` }}>
                 <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} aria-hidden="true" className={styles.edges}>
-                  <g fill="none" strokeWidth={size.line}>
-                    {layout.edges.map((e) => {
+                  <g fill="none">
+                    {lines.map(({ e, look }) => {
                       const a = pos.get(e.from)!;
                       const b = pos.get(e.to)!;
-                      const child = status.get(e.to)!;
-                      const parent = status.get(e.from)!;
-                      const lit = child.state === "taken" && parent.state === "taken";
-                      const preview = e.to === selected && child.state === "open" && parent.state === "taken";
-                      const cls = lit ? styles.edgeLit : preview ? styles.edgePreview : e.anyOf ? styles.edgeEither : styles.edge;
-                      return <line key={`${e.from}>${e.to}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} className={cls} />;
+                      const w = size.line * look.width;
+                      const key = `${e.from}>${e.to}`;
+                      return look.kind === "held" ? (
+                        <g key={key}>
+                          {/* A faint wider line under the path, instead of a blur. */}
+                          <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} className={styles.edgeHalo} strokeWidth={w * 2.6} strokeLinecap="round" />
+                          <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} className={styles.edgeHeld} strokeWidth={w} strokeLinecap="round" />
+                        </g>
+                      ) : (
+                        <line
+                          key={key}
+                          x1={a.x}
+                          y1={a.y}
+                          x2={b.x}
+                          y2={b.y}
+                          className={styles[`edge_${look.kind}`]}
+                          strokeWidth={w}
+                          strokeDasharray={look.dashed ? (look.kind === "chain" ? `${4 * w} ${4 * w}` : `${2 * w} ${4 * w}`) : undefined}
+                        />
+                      );
                     })}
                   </g>
                 </svg>
@@ -390,12 +434,15 @@ export function Tree({ tree, states, level, selectedId, onSelect, details }: Tre
                     }),
                   ];
                   const label = labels.get(n.id);
-                  const cls = [styles.star, styles[st.state], isSel ? styles.selected : "", st.ranksTaken > 0 && st.state !== "taken" ? styles.partial : "", label ? "" : styles.unlabelled].join(" ");
-                  const style = { left: n.x, top: n.y };
+                  const partial = st.ranksTaken > 0 && st.ranksTaken < st.ranks && !st.granted;
+                  const held = isHeld(st);
+                  const look = held ? (partial ? styles.partial : styles.taken) : st.state === "open" ? styles.open : styles.locked;
+                  const cls = [styles.star, look, isSel ? styles.selected : "", label ? "" : styles.unlabelled].join(" ");
+                  const style = { left: n.x, top: n.y, ...(partial ? { ["--ring" as string]: rankRing(st, size.star * 2 * 1.3) } : {}) };
                   // Shown on hover and focus when there was no room for the label, or when it says more than the label.
                   const tag = (!label || extra.length > 0) && (
                     <span className={styles.tag} aria-hidden="true">
-                      <b>{p.name}</b>
+                      <b>{nameLine(p, st)}</b>
                       {req && <span>{req}</span>}
                       {extra.map((x) => (
                         <span key={x}>{x}</span>
@@ -416,12 +463,12 @@ export function Tree({ tree, states, level, selectedId, onSelect, details }: Tre
                       )}
                       {label && (
                         <span
-                          className={`${styles.label} ${styles[`side_${label.side}`]} ${isSel ? styles.labelSelected : ""} ${st.state === "locked" ? styles.labelLocked : ""}`}
+                          className={`${styles.label} ${styles[`side_${label.side}`]} ${isSel ? styles.labelSelected : ""} ${held ? styles.labelHeld : st.state === "locked" ? styles.labelLocked : ""}`}
                           style={{ left: label.x, top: label.y, width: label.w }}
                           aria-hidden="true"
                           onClick={() => (onSelect || small ? select(n.id) : setLocalSelected(n.id))}
                         >
-                          <span className={styles.labelName}>{p.name}</span>
+                          <span className={styles.labelName}>{nameLine(p, st)}</span>
                           {req && <span className={styles.labelReq}>{req}</span>}
                         </span>
                       )}
@@ -440,12 +487,16 @@ export function Tree({ tree, states, level, selectedId, onSelect, details }: Tre
           Taken
         </span>
         <span>
+          <i className={styles.keyPartial} style={{ ["--ring" as string]: rankRing({ ranks: 2, ranksTaken: 1, state: "open", takenAt: [], granted: false, reasons: [] }, 13) }} />
+          Some ranks
+        </span>
+        <span>
           <i className={styles.keyOpen} />
           Can take now
         </span>
         <span>
           <i className={styles.keyLocked} />
-          Not available yet
+          Not yet
         </span>
       </div>
 

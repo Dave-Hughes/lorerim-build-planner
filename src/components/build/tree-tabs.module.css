@@ -41,3 +41,13 @@
   font-variant-numeric: tabular-nums;
   opacity: 0.75;
 }
+
+.held {
+  color: var(--ember);
+  font-weight: 700;
+}
+.tab[aria-selected="true"] .held {
+  color: var(--on-ember);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

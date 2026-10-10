@@ -4,6 +4,8 @@ import { computeBuild } from "./engine";
 import { levelChanges, levelMarks, perkStatus, perksByLevel, skillStepInfo } from "./derive";
 import { treeLayout } from "./layout";
 import { overlaps, placeLabels, starRect } from "./labels";
+import { heldCount, isHeld, lineLook, lineState, prerequisiteLines } from "./tree-states";
+import type { PerkStatus } from "./derive";
 import { requireGameData } from "./data";
 import type { BuildPlan } from "./types";
 
@@ -200,5 +202,51 @@ describe("placeLabels", () => {
     const l = treeLayout(d, "Block", 1200, 880);
     const stars = l.nodes.map((n) => ({ id: n.id, x: n.x, y: n.y, lines: [d.perkById.get(n.id)!.name, req(n.id)] as [string, string], priority: 3 }));
     expect(placeLabels(stars, boxes[1]).size).toBeGreaterThanOrEqual(stars.length * 0.7);
+  });
+});
+
+describe("tree states", () => {
+  const st = (state: PerkStatus["state"], ranksTaken = 0, ranks = 1): PerkStatus => ({ state, ranksTaken, ranks, takenAt: [], granted: false, reasons: [] });
+
+  it("lines: held to held, held to can-take, and everything else", () => {
+    expect(lineState(st("taken", 1), st("taken", 1))).toBe("held");
+    expect(lineState(st("taken", 1), st("open"))).toBe("next");
+    expect(lineState(st("open"), st("taken", 1))).toBe("next");
+    expect(lineState(st("taken", 1), st("locked"))).toBe("other");
+    expect(lineState(st("open"), st("open"))).toBe("other");
+    expect(lineState(st("locked"), st("locked"))).toBe("other");
+  });
+
+  it("a star with 1 of 2 ranks counts as held", () => {
+    const partial = st("open", 1, 2);
+    expect(isHeld(partial)).toBe(true);
+    expect(lineState(st("taken", 1), partial)).toBe("held");
+    expect(lineState(partial, st("open"))).toBe("next");
+  });
+
+  it("on the sample build: Block's path is held, and an either-of line keeps its own flag", () => {
+    const l = treeLayout(d, "Block", 900, 700);
+    const status = new Map(l.nodes.map((n) => [n.id, perkStatus(d, states, 6, n.id)]));
+    const line = (a: string, b: string) => l.edges.find((e) => (e.from === a && e.to === b) || (e.from === b && e.to === a))!;
+    const e1 = line("Block:Improved Blocking", "Block:Powerful Bashes");
+    expect(lineState(status.get(e1.from), status.get(e1.to))).toBe("held");
+    // "Either of" lines keep their dashes when they aren't on the path; on the path they are solid.
+    const either = [...d.skills].flatMap((t) => treeLayout(d, t, 900, 700).edges).find((e) => e.anyOf);
+    expect(either).toBeDefined();
+    expect(lineLook("other", true, false)).toEqual({ kind: "other", width: 1, dashed: true });
+    expect(lineLook("held", true, false)).toEqual({ kind: "held", width: 2.5, dashed: false });
+    expect(lineLook("next", false, false).kind).toBe("next");
+    expect(lineLook("other", false, true)).toEqual({ kind: "chain", width: 1.2, dashed: true });
+    // Overpowering Bashes isn't held: its line back to Powerful Bashes (held) is its chain.
+    const chain = prerequisiteLines(d, l.edges, status, "Block:Overpowering Bashes");
+    expect(chain.size).toBeGreaterThan(0);
+    expect(prerequisiteLines(d, l.edges, status, "Block:Powerful Bashes").size).toBe(0);
+  });
+
+  it("counts held perks per tree", () => {
+    const s6 = states[5];
+    expect(heldCount(d, "Block", s6)).toBe(3);
+    expect(heldCount(d, "Destruction", s6)).toBe(0);
+    expect(heldCount(d, "Destiny", s6)).toBe(Object.keys(s6.destinyTaken).length);
   });
 });

@@ -339,11 +339,11 @@ A star counts as **held** when it has at least one rank.
 - The legend matches the new drawings: Taken, Some ranks, Can take now, Not yet. On small screens it is a 2 × 2 grid, not a wrapped line.
 
 ### Done when
-- [ ] Unit test for line state: held→held, held→open and other, including a star with 1 of 2 ranks counting as held, and an "either of" line.
-- [ ] Destruction at 1440 with Novice taken and Electromancy 1/2: screenshot before and after, side by side, for Dave; plus One-Handed and Restoration with a longer path (four or more held perks) at 1920 and 2560.
-- [ ] Greyscale screenshot of the same tree showing all four star states told apart.
-- [ ] Tabs show held counts in the editor and on the shared build page.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Unit test for line state: held→held, held→open and other, including a star with 1 of 2 ranks counting as held, and an "either of" line.
+- [x] Destruction at 1440 with Novice taken and Electromancy 1/2: screenshot before and after, side by side, for Dave; plus One-Handed and Restoration with a longer path (four or more held perks) at 1920 and 2560.
+- [x] Greyscale screenshot of the same tree showing all four star states told apart.
+- [x] Tabs show held counts in the editor and on the shared build page.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 
