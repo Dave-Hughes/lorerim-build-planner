@@ -25,10 +25,10 @@ test.describe("creating a build", () => {
     await page.getByRole("button", { name: "Next: Traits" }).click();
 
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Choose up to two traits");
-    await page.getByLabel("Search 68 traits").fill("standing still");
+    await page.getByLabel("Search 69 traits").fill("standing still");
     await page.getByRole("article").filter({ hasText: "Bulwark" }).getByRole("button", { name: "Choose" }).click();
     await expect(page.getByRole("main").getByText("1 of 2 chosen")).toBeVisible();
-    await page.getByLabel("Search 68 traits").fill("");
+    await page.getByLabel("Search 69 traits").fill("");
     await page.getByRole("article").filter({ hasText: "Witcher" }).getByRole("button", { name: "Choose" }).click();
     await expect(page.getByRole("main").getByText("2 of 2 chosen")).toBeVisible();
     await expect(page.getByRole("article").filter({ hasText: "Hoarder" }).getByRole("button", { name: "Choose" })).toBeDisabled();

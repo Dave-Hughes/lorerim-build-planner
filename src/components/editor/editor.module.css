@@ -369,6 +369,10 @@
   font-size: 17px;
   color: #c3cdd6;
 }
+.panelEffect {
+  margin: 0;
+  font-size: 15px;
+}
 .panelLine {
   margin: 0;
   font-size: 14px;

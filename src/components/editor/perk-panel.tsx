@@ -1,6 +1,6 @@
 "use client";
 
-import { PERK_BY_ID } from "@/lib/rules/data";
+import { PERK_BY_ID, perkText } from "@/lib/rules/data";
 import { perkStatus } from "@/lib/rules/derive";
 import type { BuildPlan, LevelState } from "@/lib/rules/types";
 import styles from "./editor.module.css";
@@ -33,13 +33,17 @@ export function PerkPanel({ plan, states, level, selectedId, onTake, onRemove, o
   if (p.carryItems) exceptions.push(`Carry ${p.carryItems} when you take it.`);
   if (p.quest) exceptions.push(`${p.quest}.`);
   if (p.carryWeight) exceptions.push(`+${p.carryWeight} carry weight.`);
-  const rankLine = st.ranks > 1 ? `Rank ${Math.min(st.ranksTaken + 1, st.ranks)} of ${st.ranks}` : null;
+  // The rank in play: the next one to take, or the last one once all are taken.
+  const rank = Math.min(st.ranksTaken + 1, st.ranks);
+  const rankLine = st.ranks > 1 ? `Rank ${rank} of ${st.ranks}` : null;
+  const { text, effect } = perkText(p, rank - 1);
 
   return (
     <aside aria-label="Perk details" className={styles.panel}>
       <h2 className={`title ${styles.panelName}`}>{p.name}</h2>
-      {p.text && <p className={`flavor ${styles.panelText}`}>{p.text}</p>}
       {rankLine && <p className={styles.panelLine}>{rankLine}</p>}
+      {text && <p className={`flavor ${styles.panelText}`}>{text}</p>}
+      {effect && <p className={styles.panelEffect}>{effect}</p>}
       {st.granted && <p className={styles.panelLine}>Comes with Master of One.</p>}
       {st.state === "taken" && !st.granted && lastTaken && (
         <p className={styles.panelLine}>

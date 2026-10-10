@@ -65,11 +65,27 @@ To refresh dev or staging with production data, reset the branch from its parent
 - `src/components/editor/` the level-up editor: pure plan edits in `plan-ops.ts`, autosave in `use-autosave.ts`.
 - `src/lib/rules/` rules engine. A saved build stores choices only (`BuildPlan`); `computeBuild` replays them level by level to get skills, points, Health/Magicka/Stamina, carry weight and problems. `derive.ts` turns that into what screens show (changes at a level, perk availability, ruler marks); `layout.ts` places perks as constellations.
 - `src/lib/builds/` server actions, queries, validation (zod), ids, the example build.
-- `src/data/lorerim-5.0.4.8/` game data as JSON, versioned by LoreRim release. Perk descriptions and trait artwork are still to come from the game files.
+- `src/data/lorerim-5.0.4.8/` game data as JSON, versioned by LoreRim release. Built from the game files; see below.
+- `public/traits/` trait pictures from the game, converted to WebP.
 - `src/db/` schema, client, environment guard.
 - `src/auth.ts` Discord sign-in (identify scope only, no email).
 - `scripts/shot.mjs` screenshots a screen for checking against the design canvas.
 - Design rules: project doc `lorerim/planner/design-rules.md`.
+
+## Game data
+
+`src/data/lorerim-<version>/perks.json` and `traits.json` are generated, not hand-edited. The raw extract and the hand-kept facts live in `gamedata/<version>/`:
+
+| File | From |
+|---|---|
+| `planner_data.json` | `scripts/gamedata/extract.py`, run on a PC with LoreRim installed. Reads the winning PERK, AVIF, SPEL, FLST, QUST, INGR, MISC and ALCH records in the Ultra load order, the Destiny wheel from the Custom Skills config and the trait list. Reads only. |
+| `books.json` | `scripts/gamedata/books.py`: which book scripts grant the perks that can't be taken from the menu (the Smithing books). |
+| `traitpics.json` | `scripts/gamedata/traitpics.py`: converts each trait's DDS thumbnail to `public/traits/<name>.webp`. |
+| `overrides.json` | Hand-kept: quest wording, carry weight bonuses, which traits the numbers simulate, and perk records that stand in for a tree node. |
+
+Then, from the repo root: `python3 scripts/gamedata/build.py`. It decodes every perk's conditions (skill, level, prerequisites, "any of" groups, exclusions, items to carry, quests) and prints a note for anything it couldn't place. `skills.json`, `races.json`, `birthsigns.json`, `stones.json`, `starts.json` and `deities.json` are still kept by hand.
+
+The three Python scripts expect `esp.py` beside them and a LoreRim install at `~/mnt/LoreRim` (the Claude desktop app's mount of `C:\LoreRim`); change `ROOT` in `esp.py` for another path.
 
 ## Who can do what
 

@@ -29,11 +29,15 @@ export interface TreeLayout {
 }
 
 /** Horizontal spacing between nodes in a row: never closer than COL_MIN, no wider than COL_MAX. */
-const COL_MIN = 92;
+const COL_MIN = 44;
 const COL_MAX = 118;
 const ROW = 92;
 const PAD_X = 50;
-const PAD_Y = 36;
+const PAD_TOP = 36;
+const PAD_BOTTOM = 64;
+/** A node's name is this wide; closer neighbours step down so names don't touch. */
+const LABEL = 110;
+const STAGGER = 46;
 
 function depths(perks: Perk[]): Map<string, number> {
   const ids = new Set(perks.map((p) => p.id));
@@ -71,14 +75,20 @@ function layered(perks: Perk[], minWidth: number): TreeLayout {
   });
   const widest = Math.max(...rows.map((r) => r.length));
   const width = Math.max(minWidth, PAD_X * 2 + (widest - 1) * COL_MIN);
-  const height = PAD_Y * 2 + (rows.length - 1) * ROW;
+  const gaps = rows.map((row) => Math.max(COL_MIN, Math.min(COL_MAX, (width - PAD_X * 2) / Math.max(1, row.length - 1))));
+  // Nodes in a crowded row take turns stepping down, so that any two names at the same height are LABEL apart.
+  const levels = rows.map((row, ri) => (row.length > 1 ? Math.min(3, Math.ceil(LABEL / gaps[ri])) : 1));
+  const height = PAD_TOP + PAD_BOTTOM + (rows.length - 1) * ROW + levels.reduce((a, k) => a + (k - 1) * STAGGER, 0);
   const nodes: TreeNode[] = [];
+  let cursor = height - PAD_BOTTOM;
   rows.forEach((row, ri) => {
-    const y = height - PAD_Y - ri * ROW;
-    const gap = Math.max(COL_MIN, Math.min(COL_MAX, (width - PAD_X * 2) / Math.max(1, row.length - 1)));
+    const k = levels[ri];
+    const top = cursor - (k - 1) * STAGGER;
+    const gap = gaps[ri];
     const span = (row.length - 1) * gap;
     const left = (width - span) / 2;
-    row.forEach((p, i) => nodes.push({ id: p.id, x: row.length > 1 ? left + i * (span / (row.length - 1)) : width / 2, y }));
+    row.forEach((p, i) => nodes.push({ id: p.id, x: row.length > 1 ? left + i * gap : width / 2, y: top + (i % k) * STAGGER }));
+    cursor = top - ROW;
   });
   return finish(perks, nodes, width, height);
 }

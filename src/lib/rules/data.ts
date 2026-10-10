@@ -38,7 +38,10 @@ export interface Stone {
 }
 export interface Trait {
   name: string;
+  /** In-game description. Numbers the game highlights are wrapped in <...>. */
   text: string;
+  /** The trait's in-game picture, under /public. */
+  image: string | null;
   /** True when the planner's numbers account for this trait. */
   simulated: boolean;
 }
@@ -47,11 +50,13 @@ export interface Perk {
   tree: string;
   name: string;
   requires: string[];
-  /** True when any one of `requires` is enough (Dodge, Sound Body). */
+  /** True when any one of `requires` is enough. */
   anyOf: boolean;
+  /** Perks that can't be held together with this one (Weapons Master vs Weapon Mastery). */
+  excludes?: string[];
+  ranks: number;
   /** Skill needed for rank 1. Destiny perks have none. */
   skill?: number;
-  source?: string;
   /** Skill needed for each rank, when the perk has ranks. */
   rankSkills?: number[];
   /** Character level needed for each rank (Special Feats). */
@@ -63,10 +68,18 @@ export interface Perk {
   /** Quest progress needed to take the perk. */
   quest?: string;
   carryWeight?: number;
-  /** Destiny perks: in-game description. */
+  /** In-game description (single-rank perks and Destiny). */
   text?: string;
+  /** The bracketed summary that follows the description in the game, when there is one. */
+  effect?: string;
+  /** Per-rank description and summary for perks with ranks. */
+  rankTexts?: string[];
+  rankEffects?: string[];
   /** Destiny perks: added to Health, Magicka and Stamina. */
   allAttributes?: number;
+  /** Destiny perks: position in the game's wheel. */
+  x?: number;
+  y?: number;
 }
 
 export const SKILL_GROUPS = skillGroups as SkillGroup[];
@@ -91,7 +104,13 @@ export const PERKS_BY_TREE = PERKS.reduce<Map<string, Perk[]>>((m, p) => {
 }, new Map());
 
 export function rankCount(p: Perk): number {
-  return p.rankSkills?.length ?? p.rankLevels?.length ?? 1;
+  return p.ranks;
+}
+
+/** What the game says about a perk at a given rank (0-based). */
+export function perkText(p: Perk, rank = 0): { text: string; effect: string } {
+  const i = Math.max(0, Math.min(rank, p.ranks - 1));
+  return { text: p.rankTexts?.[i] ?? p.text ?? "", effect: p.rankEffects?.[i] ?? p.effect ?? "" };
 }
 
 /** Starts the Helgen statue offers in this LoreRim version. */

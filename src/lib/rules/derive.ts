@@ -241,6 +241,8 @@ export function perkStatus(states: LevelState[], level: number, id: string): Per
     reasons.push(
       `Needs ${p.requires.map((r) => (PERK_BY_ID.get(r)?.tree === p.tree ? perkName(r) : `${PERK_BY_ID.get(r)?.tree}: ${perkName(r)}`)).join(p.anyOf ? " or " : " and ")} first.`,
     );
+  const held = (p.excludes ?? []).filter(has);
+  if (held.length) reasons.push(`Can't be held with ${held.map((x) => `${PERK_BY_ID.get(x)?.tree}: ${perkName(x)}`).join(" or ")}.`);
   if (!p.book && s.perkPoints - s.perkPointsSpent < 1) reasons.push("No perk point to spend at this level.");
 
   let openedThisLevel: string | undefined;

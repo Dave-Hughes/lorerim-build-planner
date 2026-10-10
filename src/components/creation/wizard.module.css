@@ -177,6 +177,31 @@
 .cardOn {
   border-color: var(--ember);
 }
+.traitCard {
+  min-height: 150px;
+}
+.traitArt {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 25%;
+}
+.traitFade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(20, 27, 35, 0) 8%, rgba(20, 27, 35, 0.8) 46%, var(--panel) 66%);
+}
+.traitBand {
+  height: 92px;
+  flex: none;
+}
+.over {
+  position: relative;
+}
+.cardText b {
+  font-weight: 600;
+  color: var(--text);
+}
 .cardOff {
   opacity: 0.5;
 }

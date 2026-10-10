@@ -141,7 +141,12 @@ export function computeBuild(b: BuildPlan): LevelState[] {
     for (const id of lv.perks) if (!(id in ranksBefore)) ranksBefore[id] = taken[id]?.length ?? 0;
     for (const id of lv.perks) (taken[id] ??= []).push(L);
     const seen: Record<string, number> = {};
-    for (const id of lv.perks) {
+    // Held before this pick: taken at an earlier level, granted, or listed earlier this level.
+    const heldBefore = (x: string, i: number) => {
+      const j = lv.perks.indexOf(x);
+      return granted(x) || (ranksBefore[x] ?? 0) > 0 || (j !== -1 && j < i);
+    };
+    for (const [i, id] of lv.perks.entries()) {
       const p = PERK_BY_ID.get(id);
       if (!p || p.tree === "Destiny") {
         issues.push(issue("perk-unknown", `Unknown perk "${id}".`));
@@ -172,6 +177,8 @@ export function computeBuild(b: BuildPlan): LevelState[] {
             `${p.name} needs ${p.requires.map((r) => perkLabel(r, p.tree)).join(p.anyOf ? " or " : " and ")} first.`,
           ),
         );
+      for (const x of (p.excludes ?? []).filter((x) => heldBefore(x, i)))
+        issues.push(issue("perk-excluded", `${p.name} can't be held with ${perkLabel(x, p.tree)}.`));
       if (!p.book) perkPointsSpent++;
     }
     if (perkPointsSpent > perkPoints)

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { PERK_BY_ID } from "@/lib/rules/data";
+import { PERK_BY_ID, perkText } from "@/lib/rules/data";
 import { perkRequirementText, perkStatus, type PerkStatus } from "@/lib/rules/derive";
 import { treeLayout } from "@/lib/rules/layout";
 import type { LevelState } from "@/lib/rules/types";
@@ -60,7 +60,7 @@ export function Tree({ tree, states, level, selectedId, onSelect }: TreeProps) {
           const rank = Math.min(st.ranksTaken, st.ranks - 1);
           let req = isDestiny ? "" : perkRequirementText(p, rank);
           if (!isDestiny && !req) req = p.book ? "Book" : "No requirement";
-          if (st.ranks > 1) req += ` (${st.ranksTaken} of ${st.ranks})`;
+          if (st.ranks > 1) req += ` (${st.ranksTaken}/${st.ranks})`;
           if (isDestiny && st.state === "taken") req = `Level ${st.takenAt[0]}`;
           const aria = `${p.name}${req ? `, ${req}` : ""}, ${st.state === "taken" ? "taken" : st.state === "open" ? "can take now" : "not available yet"}`;
           const cls = [styles.node, styles[st.state], selected ? styles.selected : "", st.ranksTaken > 0 && st.state !== "taken" ? styles.partial : ""].join(" ");
@@ -74,15 +74,26 @@ export function Tree({ tree, states, level, selectedId, onSelect }: TreeProps) {
                   {p.anyOf ? "or" : "and"} {x.tree}: {x.name}
                 </span>
               ))}
+              {(p.excludes ?? []).map((x) => {
+                const other = PERK_BY_ID.get(x);
+                return (
+                  <span key={x} className={styles.req}>
+                    Not with {other && other.tree !== p.tree ? `${other.tree}: ` : ""}
+                    {other?.name ?? x}
+                  </span>
+                );
+              })}
             </>
           );
           const style = { left: n.x - 55, top: n.y - 8 };
+          const words = perkText(p, Math.max(0, st.ranksTaken - 1));
+          const title = [words.text, words.effect].filter(Boolean).join("\n");
           return onSelect ? (
             <button key={n.id} type="button" className={cls} style={style} aria-label={aria} aria-pressed={selected} onClick={() => onSelect(n.id)}>
               {inner}
             </button>
           ) : (
-            <div key={n.id} className={cls} style={style} aria-label={aria} role="img">
+            <div key={n.id} className={cls} style={style} aria-label={aria} role="img" title={title || undefined}>
               {inner}
             </div>
           );

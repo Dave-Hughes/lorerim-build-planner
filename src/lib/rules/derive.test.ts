@@ -70,6 +70,20 @@ describe("perkStatus", () => {
     expect(s.openedThisLevel).toBe("Opened this level: raising Block from 46 to 50 met its requirement.");
   });
 
+  it("locks a perk the held ones rule out", () => {
+    // The sample build holds Weapon Mastery from level 1.
+    const s = perkStatus(states, 6, "Block:Weapons Master");
+    expect(s.state).toBe("locked");
+    expect(s.reasons).toContain("Can't be held with One-Handed: Weapon Mastery.");
+  });
+
+  it("counts ranks and their requirements", () => {
+    const s = perkStatus(states, 6, "One-Handed:Weapon Mastery");
+    expect([s.ranksTaken, s.ranks]).toEqual([1, 2]);
+    // Rank 2 needs One-Handed 20 (it is 45); only the spent perk point stands in the way.
+    expect(s.reasons).toEqual(["No perk point to spend at this level."]);
+  });
+
   it("knows Destiny points", () => {
     const s = perkStatus(states, 6, "Destiny:Focus");
     expect(s.state).toBe("locked");

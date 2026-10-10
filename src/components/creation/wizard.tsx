@@ -26,6 +26,20 @@ interface WizardProps {
 
 const MATH_TRAITS = new Set(TRAITS.filter((t) => t.simulated).map((t) => t.name));
 
+function plainTraitText(text: string): string {
+  return text.replace(/<([^<>]*)>/g, "$1");
+}
+
+/** The game's description, with the numbers it highlights set in a brighter weight. */
+function TraitText({ text }: { text: string }) {
+  const parts = text.split(/<([^<>]*)>/);
+  return (
+    <>
+      {parts.map((part, i) => (i % 2 ? <b key={i}>{part}</b> : part))}
+    </>
+  );
+}
+
 export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, signIn }: WizardProps) {
   const router = useRouter();
   // Rendered on the client only (see wizard-loader.tsx), so the draft in this
@@ -38,7 +52,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
     if (fromUrl && STEPS.includes(fromUrl)) return fromUrl;
     return draft?.step ?? "race";
   });
-  const [draftStatus, setDraftStatus] = useState<"none" | "saved" | "failed">(draft ? "saved" : "none");
+  const [draftStatus, setDraftStatus] = useState<"none" | "saving" | "saved" | "failed">(draft ? "saved" : "none");
   const [error, setError] = useState<string | null>(null);
   const [pending, start] = useTransition();
   const dirty = useRef(false);
@@ -50,22 +64,33 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
     return () => clearTimeout(t);
   }, [mode, plan, details, step]);
 
-  const update = useCallback((fn: (p: BuildPlan) => BuildPlan) => {
+  // "Draft saved" means the latest change is in the browser, so a change clears it until the save runs.
+  const touch = useCallback(() => {
     dirty.current = true;
-    setPlan((p) => fn(p));
+    setDraftStatus((st) => (st === "failed" ? st : "saving"));
   }, []);
-  const updateDetails = useCallback((patch: Partial<BuildDetails>) => {
-    dirty.current = true;
-    setDetails((d) => ({ ...d, ...patch }));
-  }, []);
+  const update = useCallback(
+    (fn: (p: BuildPlan) => BuildPlan) => {
+      touch();
+      setPlan((p) => fn(p));
+    },
+    [touch],
+  );
+  const updateDetails = useCallback(
+    (patch: Partial<BuildDetails>) => {
+      touch();
+      setDetails((d) => ({ ...d, ...patch }));
+    },
+    [touch],
+  );
   const setStep = useCallback((s: Step) => {
-    dirty.current = true;
+    touch();
     setStepState(s);
     const url = new URL(window.location.href);
     url.searchParams.set("step", s);
     window.history.replaceState(null, "", url);
     window.scrollTo({ top: 0 });
-  }, []);
+  }, [touch]);
 
   const stepIndex = STEPS.indexOf(step);
   const masterOfDestiny = plan.traits.includes("Master of Destiny");
@@ -370,7 +395,7 @@ function TraitsStep({ plan, update }: StepProps) {
   const chosen = new Set(plan.traits);
   const full = plan.traits.length >= RULES.maxTraits;
   const query = q.trim().toLowerCase();
-  const list = TRAITS.filter((t) => chosen.has(t.name) || !query || t.name.toLowerCase().includes(query) || t.text.toLowerCase().includes(query)).sort(
+  const list = TRAITS.filter((t) => chosen.has(t.name) || !query || t.name.toLowerCase().includes(query) || plainTraitText(t.text).toLowerCase().includes(query)).sort(
     (a, b) => Number(chosen.has(b.name)) - Number(chosen.has(a.name)) || a.name.localeCompare(b.name),
   );
   const toggle = (name: string) =>
@@ -397,12 +422,21 @@ function TraitsStep({ plan, update }: StepProps) {
         {list.map((t) => {
           const on = chosen.has(t.name);
           return (
-            <article key={t.name} className={`${styles.card} ${on ? styles.cardOn : ""}`}>
-              <div className={styles.cardHead}>
+            <article key={t.name} className={`${styles.card} ${styles.traitCard} ${on ? styles.cardOn : ""}`}>
+              {t.image && (
+                <>
+                  <div className={styles.traitArt} style={{ backgroundImage: `url(${t.image})` }} aria-hidden="true" />
+                  <div className={styles.traitFade} aria-hidden="true" />
+                  <div className={styles.traitBand} aria-hidden="true" />
+                </>
+              )}
+              <div className={`${styles.cardHead} ${styles.over}`}>
                 <h2 className={styles.cardName}>{t.name}</h2>
                 {on ? <Chosen /> : MATH_TRAITS.has(t.name) ? <span className={`label ${styles.math}`}>Changes your numbers</span> : null}
               </div>
-              <p className={styles.cardText}>{t.text}</p>
+              <p className={`${styles.cardText} ${styles.over}`}>
+                <TraitText text={t.text} />
+              </p>
               {on && t.name === "Master of One" && (
                 <label className="field">
                   <span className="field-hint">Which skill?</span>
@@ -416,7 +450,7 @@ function TraitsStep({ plan, update }: StepProps) {
                   </select>
                 </label>
               )}
-              <button type="button" className={`btn btn-sm ${on ? "btn-ember" : ""} ${styles.cardBtn}`} aria-pressed={on} disabled={!on && full} onClick={() => toggle(t.name)}>
+              <button type="button" className={`btn btn-sm ${on ? "btn-ember" : ""} ${styles.cardBtn} ${styles.over}`} aria-pressed={on} disabled={!on && full} onClick={() => toggle(t.name)}>
                 {on ? "Remove" : "Choose"}
               </button>
             </article>

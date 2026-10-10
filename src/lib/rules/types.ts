@@ -66,6 +66,7 @@ export type IssueCode =
   | "perk-skill"
   | "perk-level"
   | "perk-prerequisite"
+  | "perk-excluded"
   | "perk-points-over"
   | "destiny-unknown"
   | "destiny-repeat"

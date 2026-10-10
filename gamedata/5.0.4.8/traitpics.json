@@ -1,0 +1,623 @@
+{
+ "Adrenaline Rush": {
+  "file": "adrenaline-rush.webp",
+  "edid": "Traits_AdrenalineRushAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Angler": {
+  "file": "angler.webp",
+  "edid": "Traits_AnglerAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Au Naturel": {
+  "file": "au-naturel.webp",
+  "edid": "Traits_AuNaturelAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Autodidact": {
+  "file": "autodidact.webp",
+  "edid": "Traits_AutodidactAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Bad Natured": {
+  "file": "bad-natured.webp",
+  "edid": "Traits_BadNaturedAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Bane of the Wicked": {
+  "file": "bane-of-the-wicked.webp",
+  "edid": "Traits_BaneoftheWickedAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Bulwark": {
+  "file": "bulwark.webp",
+  "edid": "Traits_BulwarkAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Defiler": {
+  "file": "defiler.webp",
+  "edid": "Traits_DefilerAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Disbeliever": {
+  "file": "disbeliever.webp",
+  "edid": "Traits_DisbelieverAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Disciplined": {
+  "file": "disciplined.webp",
+  "edid": "Traits_DisciplinedAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Dovah Tinvaak": {
+  "file": "dovah-tinvaak.webp",
+  "edid": "Traits_DovahTinvaakAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Druid": {
+  "file": "druid.webp",
+  "edid": "Traits_DruidAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Elemental Conduit": {
+  "file": "elemental-conduit.webp",
+  "edid": "Traits_ElementalConduitAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Fast Shot": {
+  "file": "fast-shot.webp",
+  "edid": "Traits_FastShotAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Focused": {
+  "file": "focused.webp",
+  "edid": "Traits_FocusedAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Gambler": {
+  "file": "gambler.webp",
+  "edid": "Traits_GamblerAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Giantkin": {
+  "file": "giantkin.webp",
+  "edid": "Traits_GiantkinAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Glutton": {
+  "file": "glutton.webp",
+  "edid": "Traits_GluttonAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Lurker": {
+  "file": "lurker.webp",
+  "edid": "Traits_GollumAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Good Natured": {
+  "file": "good-natured.webp",
+  "edid": "Traits_GoodNaturedAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Hoarder": {
+  "file": "hoarder.webp",
+  "edid": "Traits_HoarderAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Introvert": {
+  "file": "introvert.webp",
+  "edid": "Traits_IntrovertAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Jack of All Spells": {
+  "file": "jack-of-all-spells.webp",
+  "edid": "Traits_JackofAllSpellsAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "King of Worms": {
+  "file": "king-of-worms.webp",
+  "edid": "Traits_KingofWormsAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Light Foot": {
+  "file": "light-foot.webp",
+  "edid": "Traits_LightFootAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Marathon Runner": {
+  "file": "marathon-runner.webp",
+  "edid": "Traits_MarathonRunnerAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Master of Destiny": {
+  "file": "master-of-destiny.webp",
+  "edid": "Traits_MasterofDestinyAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Master of One": {
+  "file": "master-of-one.webp",
+  "edid": "Traits_MasterofOneAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Nosferatu": {
+  "file": "nosferatu.webp",
+  "edid": "Traits_NosferatuAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Old Fashioned": {
+  "file": "old-fashioned.webp",
+  "edid": "Traits_OldFashionedAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Pacifist": {
+  "file": "pacifist.webp",
+  "edid": "Traits_PacifistAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Rage": {
+  "file": "rage.webp",
+  "edid": "Traits_RageAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Skilled": {
+  "file": "skilled.webp",
+  "edid": "Traits_SkilledAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Soul Reaver": {
+  "file": "soul-reaver.webp",
+  "edid": "Traits_SoulReaverAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Swimmer": {
+  "file": "swimmer.webp",
+  "edid": "Traits_SwimmerAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Unbound Hands": {
+  "file": "unbound-hands.webp",
+  "edid": "Traits_UnboundHandsAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Way of the Voice": {
+  "file": "way-of-the-voice.webp",
+  "edid": "Traits_WayoftheVoiceAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Witcher": {
+  "file": "witcher.webp",
+  "edid": "Traits_WitcherAb",
+  "mod": "Biggie Traits - Thumbnail Overhaul",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Addict": {
+  "file": "addict.webp",
+  "edid": "Traits_AddictAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Heir to the Relic": {
+  "file": "heir-to-the-relic.webp",
+  "edid": "LoreRim_HeirloomTraitAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Phalanx": {
+  "file": "phalanx.webp",
+  "edid": "LoreTraits_PhalanxAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Wizard's Wardrobe": {
+  "file": "wizard-s-wardrobe.webp",
+  "edid": "LoreTraits_WizardsWardrobeAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Touch of the Arcane": {
+  "file": "touch-of-the-arcane.webp",
+  "edid": "LoreTraits_TouchoftheArcaneAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Silent Dovah": {
+  "file": "silent-dovah.webp",
+  "edid": "LoreTraits_SilentDovahAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Serene Presence": {
+  "file": "serene-presence.webp",
+  "edid": "LoreTraits_SerenePresenceAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Dominating Will": {
+  "file": "dominating-will.webp",
+  "edid": "LoreTraits_DominatingWillAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Fatal Attraction": {
+  "file": "fatal-attraction.webp",
+  "edid": "LoreTraits_FatalAttractionAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Blighted Fists": {
+  "file": "blighted-fists.webp",
+  "edid": "LoreTraits_BlightedFistsAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Acoustic Arcanist": {
+  "file": "acoustic-arcanist.webp",
+  "edid": "LoreTraits_AcousticArcanistAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Unshakable": {
+  "file": "unshakable.webp",
+  "edid": "LoreTraits_UnshakableAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Focused Precision": {
+  "file": "focused-precision.webp",
+  "edid": "LoreTraits_FocusedPrecisionAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Soul Embed": {
+  "file": "soul-embed.webp",
+  "edid": "LoreTraits_SoulEmbedAb",
+  "mod": "LoreRim - MCM and INI Settings",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Blood Warrior": {
+  "file": "blood-warrior.webp",
+  "edid": "LoreTraits_BloodWarriorAb",
+  "mod": "LoreRim - MCM and INI Settings",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Sunkissed": {
+  "file": "sunkissed.webp",
+  "edid": "LoreTraits_SunkissedAb",
+  "mod": "LoreRim - MCM and INI Settings",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Monk": {
+  "file": "monk.webp",
+  "edid": "LoreTraits_WanderingMonkAb",
+  "mod": "LoreRim - MCM and INI Settings",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Shehai": {
+  "file": "shehai.webp",
+  "edid": "LoreTraits_ShehaiAb",
+  "mod": "LoreRim - MCM and INI Settings",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Balanced Casting": {
+  "file": "balanced-casting.webp",
+  "edid": "LoreTraits_BalacedCastingAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Plagued Mind": {
+  "file": "plagued-mind.webp",
+  "edid": "LoreTraits_PlaguedMindAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Self-Taught": {
+  "file": "self-taught.webp",
+  "edid": "LoreTraits_SelfTaughtAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Focused Magic": {
+  "file": "focused-magic.webp",
+  "edid": "LoreTraits_FocusedMagicAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Focused Combat": {
+  "file": "focused-combat.webp",
+  "edid": "LoreTraits_FocusedCombatAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Iron Knees": {
+  "file": "iron-knees.webp",
+  "edid": "LoreTraits_IronKneesAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Quester": {
+  "file": "quester.webp",
+  "edid": "LoreTraits_QuesterAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "The True Apprentice": {
+  "file": "the-true-apprentice.webp",
+  "edid": "LoreTraits_TrueApprenticeAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Big Swing": {
+  "file": "big-swing.webp",
+  "edid": "LoreTraits_BigSwingAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Fencer": {
+  "file": "fencer.webp",
+  "edid": "LoreTraits_FencerAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Blood Mage": {
+  "file": "blood-mage.webp",
+  "edid": "LoreTraits_BloodMageAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Wanderer": {
+  "file": "wanderer.webp",
+  "edid": "LoreTraits_WandererAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ },
+ "Drunken Mage": {
+  "file": "drunken-mage.webp",
+  "edid": "LoreTraits_DrunkenMageAb",
+  "mod": "Lorerim Traits - Thumbnails",
+  "size": [
+   640,
+   440
+  ]
+ }
+}

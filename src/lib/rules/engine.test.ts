@@ -37,9 +37,40 @@ describe("game data", () => {
   it("every perk tree is a skill or Destiny", () => {
     for (const p of PERKS) expect(SKILLS.includes(p.tree) || p.tree === "Destiny", p.id).toBe(true);
   });
-  it("in skill trees, only Dodge and Sound Body take either prerequisite", () => {
+  it("perks that take either prerequisite match the game's records", () => {
     const either = PERKS.filter((p) => p.anyOf && p.tree !== "Destiny").map((p) => p.name).sort();
-    expect(either).toEqual(["Dodge", "Sound Body"]);
+    expect(either).toEqual([
+      "Advanced Blacksmithing",
+      "Daedric Smithing",
+      "Death's Emperor",
+      "Dodge",
+      "Draconic Blacksmithing",
+      "Ebony Smithing",
+      "Elven Smithing",
+      "Glass Smithing",
+      "Lion's Arrow",
+      "Orcish Smithing",
+      "Sound Body",
+      "You Shall Not Pass",
+    ]);
+  });
+  it("every perk has the game's words", () => {
+    for (const p of PERKS) {
+      if (p.ranks > 1) expect(p.rankTexts?.length, p.id).toBe(p.ranks);
+      else expect(p.text, p.id).toBeTruthy();
+    }
+  });
+  it("exclusions go both ways", () => {
+    for (const p of PERKS) for (const x of p.excludes ?? []) expect(PERK_BY_ID.get(x)?.excludes, `${p.id} <-> ${x}`).toContain(p.id);
+  });
+  it("the smithing book perks name their book", () => {
+    expect(PERK_BY_ID.get("Smithing:Orcish Smithing")?.book).toBe("The Almanac of Orcish Blacksmithing");
+    expect(PERK_BY_ID.get("Smithing:Legendary Blacksmithing")?.book).toBe("Saint Jiub's Opus");
+    expect(PERKS.filter((p) => p.book).length).toBe(13);
+  });
+  it("ingredient perks list what to carry", () => {
+    expect(PERK_BY_ID.get("Alchemy:Regeneration")?.carryItems).toBe("Troll Fat; Slaughterfish Egg; Spriggan Sap");
+    expect(PERK_BY_ID.get("Finesse:Death's Emperor")?.carryItems).toBeUndefined();
   });
 });
 
@@ -129,6 +160,23 @@ describe("perks", () => {
       }),
     );
     expect(states[0].issues.map((i) => i.code)).not.toContain("perk-prerequisite");
+  });
+
+  it("a second rank needs its own skill level", () => {
+    // One-Handed is 30 at level 1 for the sample build (Nord, major).
+    const two = build({ levels: [blank({ ...base.levels[0], perks: ["One-Handed:Weapon Mastery", "One-Handed:Weapon Mastery"] })] });
+    expect(codes(two, 1)).not.toContain("perk-skill");
+    const three = build({ levels: [blank({ ...base.levels[0], perks: ["One-Handed:Weapon Mastery", "One-Handed:Weapon Mastery", "One-Handed:Weapon Mastery"] })] });
+    expect(codes(three, 1)).toContain("perk-ranks");
+    const flurry = build({ levels: [blank({ ...base.levels[0], perks: ["One-Handed:Weapon Mastery", "One-Handed:Flurry", "One-Handed:Flurry"] })] });
+    const msgs = computeBuild(flurry)[0].issues.filter((i) => i.code === "perk-skill").map((i) => i.message);
+    expect(msgs).toEqual(["Flurry rank 2 needs One-Handed 50; it is 30."]);
+  });
+
+  it("Weapons Master can't be held with Weapon Mastery", () => {
+    const b = build({ levels: [blank({ ...base.levels[0], perks: [...base.levels[0].perks, "Block:Weapons Master"] })] });
+    const msgs = computeBuild(b)[0].issues.filter((i) => i.code === "perk-excluded").map((i) => i.message);
+    expect(msgs).toEqual(["Weapons Master can't be held with One-Handed: Weapon Mastery."]);
   });
 
   it("book perks cost no perk point", () => {

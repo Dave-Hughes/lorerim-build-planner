@@ -1,0 +1,298 @@
+{
+ "Smithing:Advanced Blacksmithing": [
+  {
+   "book": "Saint Jiub's Opus",
+   "edid": "DLC1VQSaintFinalBook",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Dawnguard.esm",
+    16249
+   ]
+  },
+  {
+   "book": "Arcane Craftsmanship",
+   "edid": "REQ_Book_Recipe_ExplosiveAmmo",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    11351880
+   ]
+  },
+  {
+   "book": "Art of the Advanced Nordic Blacksmiths",
+   "edid": "FZR_Book_Recipe_Nordic",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Fozars_Dragonborn_-_Requiem_Patch.esp",
+    2263124
+   ]
+  }
+ ],
+ "Smithing:Legendary Blacksmithing": [
+  {
+   "book": "Saint Jiub's Opus",
+   "edid": "DLC1VQSaintFinalBook",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Dawnguard.esm",
+    16249
+   ]
+  }
+ ],
+ "Smithing:Craftsmanship": [
+  {
+   "book": "The Art of Dwarven Blacksmithing",
+   "edid": "REQ_Book_Recipe_Dwarven",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379847
+   ]
+  },
+  {
+   "book": "An Introduction to Scale Armors",
+   "edid": "REQ_Book_Recipe_AdvLightArmor",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379860
+   ]
+  },
+  {
+   "book": "The Armorer's Encyclopedia",
+   "edid": "REQ_Book_Recipe_Steel",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    3520919
+   ]
+  },
+  {
+   "book": "Art of the Advanced Nordic Blacksmiths",
+   "edid": "FZR_Book_Recipe_Nordic",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Fozars_Dragonborn_-_Requiem_Patch.esp",
+    2263124
+   ]
+  }
+ ],
+ "Smithing:Dwarven Smithing": [
+  {
+   "book": "The Art of Dwarven Blacksmithing",
+   "edid": "REQ_Book_Recipe_Dwarven",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379847
+   ]
+  },
+  {
+   "book": "The Almanac of Orcish Blacksmithing",
+   "edid": "REQ_Book_Recipe_Orcish",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379850
+   ]
+  },
+  {
+   "book": "About Elven Craftsmanship",
+   "edid": "REQ_Book_Recipe_Elven",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379863
+   ]
+  }
+ ],
+ "Smithing:Advanced Light Armors": [
+  {
+   "book": "The Almanac of Orcish Blacksmithing",
+   "edid": "REQ_Book_Recipe_Orcish",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379850
+   ]
+  },
+  {
+   "book": "An Introduction to Scale Armors",
+   "edid": "REQ_Book_Recipe_AdvLightArmor",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379860
+   ]
+  },
+  {
+   "book": "About Elven Craftsmanship",
+   "edid": "REQ_Book_Recipe_Elven",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379863
+   ]
+  }
+ ],
+ "Smithing:Orcish Smithing": [
+  {
+   "book": "The Almanac of Orcish Blacksmithing",
+   "edid": "REQ_Book_Recipe_Orcish",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379850
+   ]
+  },
+  {
+   "book": "An Introduction to Malachite",
+   "edid": "REQ_Book_Recipe_Glass",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379868
+   ]
+  },
+  {
+   "book": "Harder than Steel - How to work with Ebony",
+   "edid": "REQ_Book_Recipe_Ebony",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379872
+   ]
+  }
+ ],
+ "Smithing:Elven Smithing": [
+  {
+   "book": "About Elven Craftsmanship",
+   "edid": "REQ_Book_Recipe_Elven",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379863
+   ]
+  },
+  {
+   "book": "An Introduction to Malachite",
+   "edid": "REQ_Book_Recipe_Glass",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379868
+   ]
+  },
+  {
+   "book": "Harder than Steel - How to work with Ebony",
+   "edid": "REQ_Book_Recipe_Ebony",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379872
+   ]
+  }
+ ],
+ "Smithing:Draconic Blacksmithing": [
+  {
+   "book": "The Compendium of Draconic Armor",
+   "edid": "REQ_Book_Recipe_Dragon",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379866
+   ]
+  }
+ ],
+ "Smithing:Glass Smithing": [
+  {
+   "book": "The Compendium of Draconic Armor",
+   "edid": "REQ_Book_Recipe_Dragon",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379866
+   ]
+  },
+  {
+   "book": "An Introduction to Malachite",
+   "edid": "REQ_Book_Recipe_Glass",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379868
+   ]
+  },
+  {
+   "book": "Daedric Craftsmanship",
+   "edid": "REQ_Book_Recipe_Daedric",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379870
+   ]
+  }
+ ],
+ "Smithing:Ebony Smithing": [
+  {
+   "book": "The Compendium of Draconic Armor",
+   "edid": "REQ_Book_Recipe_Dragon",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379866
+   ]
+  },
+  {
+   "book": "Daedric Craftsmanship",
+   "edid": "REQ_Book_Recipe_Daedric",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379870
+   ]
+  },
+  {
+   "book": "Harder than Steel - How to work with Ebony",
+   "edid": "REQ_Book_Recipe_Ebony",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379872
+   ]
+  }
+ ],
+ "Smithing:Daedric Smithing": [
+  {
+   "book": "Daedric Craftsmanship",
+   "edid": "REQ_Book_Recipe_Daedric",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    379870
+   ]
+  }
+ ],
+ "Smithing:Arcane Craftsmanship": [
+  {
+   "book": "Arcane Craftsmanship",
+   "edid": "REQ_Book_Recipe_ExplosiveAmmo",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem.esp",
+    11351880
+   ]
+  }
+ ],
+ "Smithing:Tailoring & Polishing": [
+  {
+   "book": "Complete History of the Radiant Raiment",
+   "edid": "REQ_Book_Recipe_Tailoring",
+   "plugin": "Requiem Smithing Books Give Perks.esp",
+   "key": [
+    "Requiem Smithing Books Give Perks.esp",
+    2307
+   ]
+  }
+ ]
+}
