@@ -289,6 +289,25 @@ Done when
 
 ---
 
+## WO-10  The LoreRim version can't be missed
+
+Dave (10 Oct 2026): the version select on the Race step is very easy to overlook. Don't block anyone (it defaults to the newest version the planner supports), just make sure nobody misses it.
+
+- Move it out of the Race step's form area into a band across the top of the creation flow's main column, above the step title, on every step: `Building for LoreRim 5.0.4.8` in the title face, the version in ember, then `Latest` as a tag when it is the current version, and a `Change` button on the right that opens the version list in place (a small panel under the band, one row per version with its release date; choosing one runs the same "won't carry over" check WO-6 added).
+- The band has the brass corner marks (`.frame`) so it reads as part of the build, not a notice.
+- With one version only, `Change` still shows and the panel lists the one version, so players learn where it lives.
+- The creation sidebar keeps the version line under Race (from WO-6).
+- The Name step (last) repeats it in the summary of what is being created, next to race and birthsign.
+- Setup page (changing an existing build) shows the same band; `Change` there offers "Copy for [version]" rather than changing the build in place, since other people may have the link.
+- Remove the old select from the Race step.
+
+Done when
+- [ ] The band shows on all six steps and the setup page, at 1440 and 390 (at 390 the band wraps to two lines: version on the first, `Change` on the second, full width).
+- [ ] e2e: the band reads `Building for LoreRim 5.0.4.8` on the Race step and the Name step; `Change` opens the list.
+- [ ] All checks in CLAUDE.md pass; screenshots of the Race step and Name step at 1440 and 390.
+
+---
+
 ## Parked (not ordered yet)
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
