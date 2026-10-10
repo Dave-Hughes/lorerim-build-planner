@@ -16,10 +16,12 @@ Behaviour
 - Keyboard users already have the button; the card itself is not a focusable control (no nested buttons, no `role="button"` on the article).
 - The Master of One skill `<select>` inside its trait card must keep working: clicks and changes on it do not toggle the card.
 
-Look
-- Hover (pointer devices only, `@media (hover: hover)`): border steps from `--rule` to `--rule-strong`, name goes to `#fff`, cursor pointer. On trait cards the artwork fade eases slightly so a little more of the picture shows (shift the gradient stops, roughly 8/46/66 % → 12/52/72 %). 120 ms transition on border and the fade only.
-- Chosen cards (`.cardOn`, ember border) do not change on hover beyond the cursor.
-- No shadows, glows, lifts or scale changes.
+Look (revised 10 Oct 2026: Dave found the first pass too weak, "go harder")
+- Hover (pointer devices only, `@media (hover: hover)`), unchosen cards: background to `--panel-raised`, border to `--muted`, name to `#fff`, cursor pointer, brass corner marks (2 px, as on the key panels) draw in at top-left and bottom-right, and the card's Choose button fills ember so the whole card reads as the button. Trait art zooms 6 % and brightens while the fade pulls back (8/46/66 % → 20/58/76 %).
+- Chosen (`.cardOn`): 2 px ember border, a faint ember wash, ember corner marks, white name, filled ember Chosen / Remove button. Visible without hover, so phones get it too. Hover on a chosen card changes only the cursor and the art.
+- Pressed: the border flashes ember.
+- Transitions 150 ms on colour, border and background; corners 180 ms; art 400 ms.
+- No shadows, glows or gradients (beyond the existing fade over the art); the card itself never lifts or scales.
 
 Done when
 - [x] Clicking a race, birthsign, mode and trait card chooses it; clicking a chosen card's Remove button removes it; the Choose button alone still works.

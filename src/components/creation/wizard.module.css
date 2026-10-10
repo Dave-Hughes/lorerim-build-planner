@@ -173,10 +173,63 @@
   padding: 16px 18px;
   background: var(--panel);
   border: 1px solid var(--rule);
-  transition: border-color 120ms;
+  transition:
+    border-color 150ms,
+    background-color 150ms;
 }
+/* Corner marks, as on the key panels: brass when hovered, ember when chosen. */
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  border: 0 solid var(--brass);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    width 180ms ease-out,
+    height 180ms ease-out,
+    opacity 180ms,
+    border-color 150ms;
+}
+.card::before {
+  top: 4px;
+  left: 4px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+.card::after {
+  bottom: 4px;
+  right: 4px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+/* Chosen: double ember rule, ember wash, ember corners, filled button. */
 .cardOn {
+  border: 2px solid var(--ember);
+  padding: 15px 17px;
+  background-color: rgba(240, 145, 63, 0.07);
+}
+.cardOn::before,
+.cardOn::after {
+  width: 18px;
+  height: 18px;
   border-color: var(--ember);
+  opacity: 1;
+}
+.cardOn .cardName {
+  color: #fff;
+}
+.cardOn .cardBtn {
+  background: var(--ember);
+  color: var(--on-ember);
+}
+.cardOn .cardBtn:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--on-ember);
 }
 .traitCard {
   min-height: 150px;
@@ -186,6 +239,10 @@
   inset: 0;
   background-size: cover;
   background-position: center 25%;
+  filter: brightness(0.85);
+  transition:
+    transform 400ms ease-out,
+    filter 400ms ease-out;
 }
 /* Registered so the fade's stops can ease on hover (a gradient itself can't transition). */
 @property --fade-a {
@@ -208,26 +265,46 @@
   inset: 0;
   background: linear-gradient(to bottom, rgba(20, 27, 35, 0) var(--fade-a), rgba(20, 27, 35, 0.8) var(--fade-b), var(--panel) var(--fade-c));
   transition:
-    --fade-a 120ms,
-    --fade-b 120ms,
-    --fade-c 120ms;
+    --fade-a 250ms ease-out,
+    --fade-b 250ms ease-out,
+    --fade-c 250ms ease-out;
 }
-/* Cards that choose on click. Chosen cards only take the cursor. */
+/* Cards that choose on click. Hover says the whole card is the button. */
 @media (hover: hover) {
   .cardPick {
     cursor: pointer;
   }
   .cardPick:not(.cardOn):hover {
-    border-color: var(--rule-strong);
+    border-color: var(--muted);
+    background-color: var(--panel-raised);
+  }
+  .cardPick:not(.cardOn):hover::before,
+  .cardPick:not(.cardOn):hover::after {
+    width: 14px;
+    height: 14px;
+    opacity: 1;
   }
   .cardPick:not(.cardOn):hover .cardName {
     color: #fff;
   }
-  .cardPick:not(.cardOn):hover .traitFade {
-    --fade-a: 12%;
-    --fade-b: 52%;
-    --fade-c: 72%;
+  .cardPick:not(.cardOn):hover .cardBtn {
+    background: var(--ember);
+    border-color: var(--ember);
+    color: var(--on-ember);
   }
+  .cardPick:hover .traitArt {
+    transform: scale(1.06);
+    filter: brightness(1.05);
+  }
+  .cardPick:hover .traitFade {
+    --fade-a: 20%;
+    --fade-b: 58%;
+    --fade-c: 76%;
+  }
+}
+/* Pressed: the rule flashes ember before the choice lands. */
+.cardPick:active {
+  border-color: var(--ember);
 }
 .traitBand {
   height: 92px;
@@ -271,6 +348,10 @@
 .cardBtn {
   align-self: flex-start;
   margin-top: auto;
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    color 150ms;
 }
 .raceSkills {
   display: flex;
