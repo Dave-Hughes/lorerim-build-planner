@@ -123,6 +123,105 @@ Done when
 
 ---
 
+## WO-6  LoreRim version for each build
+
+Why: LoreRim changes a lot between major releases (perks, traits, stones, rules). A build has to say which release it is for, and be checked against that release's data, not whatever is newest.
+
+Decided (10 Oct 2026): ship with 5.0.4.8 only; the picker exists from day one and new releases are added by re-running the extractor (README, "Game data") on Dave's updated install. Builds keep the version they were made for.
+
+### Data, per version
+- `src/data/lorerim-<version>/` already holds one version. Add `src/lib/rules/versions.ts`: the list of versions the planner knows, each with `id` ("5.0.4.8"), `label`, `released` (date) and which one is current. Exactly one is current.
+- Replace the module-level constants in `src/lib/rules/data.ts` (`PERKS`, `TRAITS`, `PERK_BY_ID`, ... and `GAME_VERSION`) with `gameData(version)`, returning one object with everything for that version (memoised; data for a version is loaded once). Keep `RULES`/constants per version too (`constants.ts` becomes part of the version's data), since point costs and limits can change between releases.
+- `computeBuild`, `derive.ts`, `layout.ts` and `validate.ts` take the version's data (or the plan, and look up `plan.gameVersion`). No code path may read another version's data than the plan's.
+- Client components get the data from a `GameDataProvider` set at the page level from `plan.gameVersion`. Pages that show many builds (Browse, My builds) only need names and icons, which are stable across versions; read them from each build's own version.
+- `validate.ts`: `gameVersion` is one of the known version ids (not a literal); every other check uses that version's data.
+- Unknown version in a stored build (say a version was removed): the build page still loads, shows the plan as stored, and says "[Version] is no longer in the planner." with no numbers computed. Never crash.
+
+### Creation
+- Step 1 (Race) gets a "LoreRim version" select at the top of the step, above the race cards, defaulting to the current version. With one version in the list it still shows (so players see what the build is for) but there is nothing else to pick.
+- Changing the version after later steps are filled re-checks the draft against the new version: anything that no longer exists (a trait, a perk, a stone) is listed in a notice under the select ("Not in 5.1: Bulwark (trait), Weapons Master (perk). They'll be removed.") with Confirm / Cancel. Nothing is removed silently.
+- The sidebar step list shows the version under "Race" (`Nord`, then `LoreRim 5.0.4.8` on its own line).
+
+### Viewing and editing
+- The build page keeps the version tag in the byline (already there).
+- If a build is for an older version than the current one: a one-line notice under the cover, "Made for LoreRim 5.0.4.8. The current version is 5.1." with a button "Copy for 5.1" (signed-in viewers) that makes a copy, converts it, and opens the editor with the conversion notice (same list of what didn't carry over). The original is never changed.
+- The editor and setup page check against the build's own version only.
+- Browse: a version filter (select, defaulting to the current version, with "All versions"). My builds: show each build's version tag on its card.
+
+### Database
+- `builds.game_version` already exists. Add an index on it (migration through `npm run db:generate`). No data change: every existing build is 5.0.4.8.
+
+Done when
+- [ ] No module outside `src/lib/rules/` imports version data directly; everything goes through `gameData(version)` or the provider. (`grep` for the old constant names returns nothing.)
+- [ ] Unit tests: `computeBuild` on the sample build gives the same results as before; a plan with an unknown version is rejected by `validate.ts`; a plan whose version is in `versions.ts` but with an item missing from that version reports it.
+- [ ] Add a throwaway test-only second version (a copy of 5.0.4.8 with one trait removed, under `src/lib/rules/__fixtures__/`, never shipped) and use it to test the switch-version notice and the "Copy for" conversion.
+- [ ] e2e: creation shows the version select with 5.0.4.8 chosen; an old-version build shows the notice (use the fixture version).
+- [ ] README "Game data" section explains how to add a version (extract, build, register in `versions.ts`, mark current).
+- [ ] All checks in CLAUDE.md pass; screenshots of the race step and an old-version build page at 1440 and 390.
+
+---
+
+## WO-7  The written guide
+
+Dave (10 Oct 2026): builds get a written guide, "SUPER user friendly, full rich text editing, the best experience possible". One guide for the whole build, plus notes for each level. Decided: image uploads yes; @-mentions of game things yes.
+
+This replaces the plain "Notes from the author" textarea (`plan.notes`) and the per-level note textarea (`levels[].note`). Build it in four parts, in order, one commit each, stopping for Dave after each: **7a** editor and overall guide, **7b** level notes, **7c** images, **7d** @-mentions.
+
+### What "best experience possible" means here
+Writing should feel like Notion or a good Discord message, not a form:
+- Type and format as you go: markdown shortcuts (`## ` heading, `- ` list, `1. ` numbered, `> ` quote, `**bold**`, `*italic*`, `---` divider).
+- Select text and a small toolbar appears over it: Bold, Italic, Strike, Link, Heading 2, Heading 3, Quote. (Bubble menu.)
+- Type `/` at the start of an empty line for the block menu: Heading, Bulleted list, Numbered list, Quote, Divider, Tip, Warning, Spoiler, Image, YouTube video. Arrow keys and Enter to choose; filters as you type.
+- Paste from Google Docs, Word, Discord or a web page keeps headings, lists, bold, italic and links, and drops everything else (fonts, colours, sizes, tables).
+- Undo/redo (Ctrl/Cmd+Z, Shift+Z), and the usual shortcuts (Ctrl/Cmd+B, I, K for link).
+- Autosaves, like the rest of the editor (`use-autosave.ts`), with the header's "Saved" status. If a save fails, the text is kept in the browser and retried; nothing typed is ever lost on a refresh.
+- Empty state is the placeholder in square brackets per design rule 7: "[Write the guide: how to play this build, what to prioritise, where to go]". No how-to copy.
+- Works with a keyboard alone and with a screen reader (the editor is a labelled textbox; menus are proper listboxes).
+- Works on a phone: the toolbar sits above the keyboard rather than over the selection on touch devices.
+
+### Library
+Tiptap (ProseMirror) with the React bindings: StarterKit, Link, Placeholder, Typography, BubbleMenu, Image, YouTube, Mention, plus a small custom node each for Tip, Warning and Spoiler and a custom suggestion for the `/` menu. Pin exact versions. No other editor libraries.
+
+### Storage
+- New table `build_guides`: `build_id` (FK to builds, cascade delete), `key` text (`overview` or `level:<n>`), `doc` jsonb (Tiptap JSON), `text_length` int, `updated_at`. Primary key (`build_id`, `key`). Migration through `npm run db:generate`.
+- Never store or render raw HTML. Rendering on the build page is from the JSON with a fixed set of node and mark types; anything else is dropped. Links: `http`/`https` only, `rel="nofollow ugc noopener"`, open in a new tab.
+- Limits: overview 60,000 characters of text, each level 6,000; enforced on the server with a clear message in the editor ("Too long to save: 61,200 of 60,000 characters"), not by truncating.
+- Server actions in `src/lib/builds/actions.ts`: `saveGuideSection(buildId, key, doc)`, owner only, validated with zod (node types, link protocols, lengths, image URLs must be our Blob store's).
+- Existing text: on first load, if a build has `plan.notes` or a level `note` and no guide row, show it as the starting paragraph(s) of that section; the first save writes the row and clears the old field. Remove the old textareas.
+- Copying a build copies its guide rows (and images keep pointing at the same files).
+
+### 7a  Editor and the overall guide
+- Owner: a "Guide" link in the editor's header next to "Set up" opens `/b/[id]/guide` (focus layout): the build name as the title, the editor below it filling the page width of the main column (same measure as the cards; no narrow text column, per Dave's rule on ragged line breaks), autosave status in the header.
+- Viewer, on the shared build page: a "Guide" section under the summary row and above the level stepper, showing the overall guide with a contents list built from its H2s (only when there are 3 or more) that jumps to each heading. Long guides show the first ~600 px with a fade and "Read the guide" to expand; the expanded state is remembered for the session.
+- Rendering uses the design system: body in Sofia Sans at 16 px/1.6, headings in the title face, quotes in Alegreya italic, Tip / Warning as framed panels with the brass corner marks (`.frame`), Spoiler as a closed panel "Spoiler, tap to show", links in ember.
+
+### 7b  Level notes
+- In the level-up editor, the "Notes for level N" box becomes the same editor (compact: bubble menu and `/` menu, no headings above H3), under "Also at this level".
+- On the build page, the level's notes show in the "Changes at level N" panel where the quoted note is today, rendered rich; over ~200 px they collapse with "Read more".
+- The level ruler and level row show a small mark for levels that have notes (add "Notes" to the legend).
+- Removing levels from the end of a build asks to confirm when those levels have notes, and deletes the notes with them.
+
+### 7c  Images
+- Upload by `/image`, drag-and-drop or paste. PNG, JPEG, WebP or GIF, up to 4 MB each, at most 40 images per build. Stored in Vercel Blob (store `lorerim-planner-images`; the chat session creates the store and the env var), path `builds/<buildId>/<random>.<ext>`, uploaded through a server route that checks the signed-in user owns the build.
+- While uploading, the image shows as a placeholder with progress; on failure it says why and can be retried or removed.
+- Images can have a caption (shown in Alegreya italic under the image) and alt text (asked for in a small field after upload; optional but prompted).
+- Images display at the column width, never wider than their real size, with `loading="lazy"` and explicit width/height to avoid layout shift. Clicking opens the full image.
+- Images removed from a guide are deleted from Blob on the next save (compare before and after). Deleting a build deletes its images.
+
+### 7d  @-mentions
+- Typing `@` opens a search over the build's own version: perks (with their tree), skills, traits, birthsigns, standing stones, races, Destiny perks. Shows the icon, name and kind; Enter inserts a chip.
+- A chip shows the icon and name. Hover or tap shows the game's own text (`perkText`, trait text, stone text) and, for perks, where this build takes it ("Taken at level 6" or "Not taken in this build").
+- Chips store `{ kind, id }`, never the text, so they stay correct when the game data is rebuilt. A chip whose id no longer exists renders as plain text with a dotted underline and the tooltip "Not in LoreRim [version]".
+
+Done when (each part)
+- [ ] 7a: an owner can write, format, paste and autosave the overall guide; a visitor sees it rendered with contents; e2e covers typing a heading and a list, reloading, and seeing them on the build page; a pasted page with fonts and colours comes through clean; a `javascript:` link is refused.
+- [ ] 7b: level notes edit and render; old notes migrate on first open; the ruler marks levels with notes; e2e covers one level note.
+- [ ] 7c: upload, caption, alt text, delete-on-remove all work against the staging Blob store; a 5 MB file and a .svg are refused with a clear message.
+- [ ] 7d: mention search, chip, hover text and the missing-id case work; unit test for the chip renderer.
+- [ ] All checks in CLAUDE.md pass at each part; screenshots of the guide page, the build page's guide section and a level note, at 1440 and 390, for Dave.
+
+---
+
 ## Parked (not ordered yet)
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
