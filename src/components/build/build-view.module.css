@@ -298,13 +298,6 @@
   gap: 2px;
   font-variant-numeric: tabular-nums;
 }
-.note {
-  margin: 0;
-  padding-top: 12px;
-  border-top: 1px solid var(--rule);
-  font-size: 17px;
-  color: #c3cdd6;
-}
 
 .perkList {
   display: flex;

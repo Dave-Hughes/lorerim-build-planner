@@ -21,6 +21,8 @@ export interface GuideEditorProps {
   headingLevels?: (2 | 3)[];
   compact?: boolean;
   onStatus?: (status: GuideSaveStatus, error: string | null, retry: () => void) => void;
+  /** Every change, as it happens. */
+  onChange?: (doc: GuideDoc) => void;
 }
 
 type Rect = { left: number; top: number; bottom: number };
@@ -256,7 +258,7 @@ function SlashMenu({ state, onPick, id }: { state: SlashState; onPick: (i: numbe
   );
 }
 
-export function GuideEditor({ buildId, sectionKey, initial, label, placeholder, headingLevels = [2, 3], compact, onStatus }: GuideEditorProps) {
+export function GuideEditor({ buildId, sectionKey, initial, label, placeholder, headingLevels = [2, 3], compact, onStatus, onChange }: GuideEditorProps) {
   const { status, error, change, retry } = useGuideAutosave(buildId, sectionKey);
   useEffect(() => onStatus?.(status, error, retry), [status, error, retry, onStatus]);
 
@@ -360,7 +362,11 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder, 
       },
       transformPastedHTML,
     },
-    onUpdate: ({ editor }) => change(editor.getJSON() as GuideDoc),
+    onUpdate: ({ editor }) => {
+      const doc = editor.getJSON() as GuideDoc;
+      change(doc);
+      onChange?.(doc);
+    },
     onFocus: () => setFocused(true),
     onBlur: () => setFocused(false),
   });

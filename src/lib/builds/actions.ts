@@ -1,6 +1,6 @@
 "use server";
 
-import { and, eq } from "drizzle-orm";
+import { and, eq, like, sql } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
@@ -9,7 +9,7 @@ import { newBuildId, isValidBuildId } from "./ids";
 import { getBuild } from "./queries";
 import { buildDetailsSchema, parseBuildPlan, type BuildDetails } from "./validate";
 import { convertPlan, droppedSentence } from "@/lib/rules/convert";
-import { guideDocSchema, isGuideKey, limitFor, textLength, tooLongMessage } from "@/lib/guide/doc";
+import { guideDocSchema, isGuideKey, levelOfKey, limitFor, textLength, tooLongMessage } from "@/lib/guide/doc";
 import { copyGuide } from "@/lib/guide/queries";
 import { currentVersion, isKnownVersion, requireGameData } from "@/lib/rules/server";
 
@@ -72,6 +72,16 @@ export async function saveBuildPlan(id: string, input: unknown): Promise<ActionR
     .where(and(eq(schema.builds.id, id), eq(schema.builds.ownerId, userId)))
     .returning({ updatedAt: schema.builds.updatedAt });
   if (!rows[0]) return { ok: false, error: "Only the build's author can change it." };
+  // Notes for levels the build no longer has go with them.
+  await db()
+    .delete(schema.buildGuides)
+    .where(
+      and(
+        eq(schema.buildGuides.buildId, id),
+        like(schema.buildGuides.key, "level:%"),
+        sql`substring(${schema.buildGuides.key} from 7)::int > ${plan.levels.length}`,
+      ),
+    );
   revalidatePath(`/b/${id}`);
   return { ok: true, value: { updatedAt: rows[0].updatedAt.toISOString() } };
 }
@@ -174,12 +184,14 @@ export async function saveGuideSection(buildId: string, key: string, input: unkn
   const limit = limitFor(key);
   if (length > limit) return { ok: false, error: tooLongMessage(length, limit) };
 
+  const level = levelOfKey(key);
   const owned = await db()
     .select({ plan: schema.builds.plan })
     .from(schema.builds)
     .where(and(eq(schema.builds.id, buildId), eq(schema.builds.ownerId, userId)))
     .limit(1);
   if (!owned[0]) return { ok: false, error: "Only the build's author can change it." };
+  if (level && level > owned[0].plan.levels.length) return { ok: false, error: `The build has no level ${level}.` };
 
   const rows = await db()
     .insert(schema.buildGuides)
@@ -194,6 +206,10 @@ export async function saveGuideSection(buildId: string, key: string, input: unkn
   const plan = owned[0].plan;
   if (key === "overview" && plan.notes) {
     await db().update(schema.builds).set({ plan: { ...plan, notes: "" } }).where(eq(schema.builds.id, buildId));
+  }
+  if (level && plan.levels[level - 1]?.note) {
+    const levels = plan.levels.map((lv, i) => (i === level - 1 ? { ...lv, note: "" } : lv));
+    await db().update(schema.builds).set({ plan: { ...plan, levels } }).where(eq(schema.builds.id, buildId));
   }
   revalidatePath(`/b/${buildId}`);
   return { ok: true, value: { updatedAt: rows[0].updatedAt.toISOString() } };

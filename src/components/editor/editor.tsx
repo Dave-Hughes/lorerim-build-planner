@@ -13,6 +13,9 @@ import { computeBuild } from "@/lib/rules/engine";
 import type { Attribute, BuildPlan, GearItem } from "@/lib/rules/types";
 import { PerkPanel } from "./perk-panel";
 import { AttributeIcon, IconLabel, SignIcon, SkillIcon } from "@/components/ui/skill-icon";
+import { GuideEditor, guideSaveLabel } from "@/components/guide/guide-editor";
+import type { GuideSaveStatus } from "@/components/guide/use-guide-autosave";
+import { emptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import * as ops from "./plan-ops";
 import { useAutosave } from "./use-autosave";
 import styles from "./editor.module.css";
@@ -24,11 +27,13 @@ interface Props {
   initialLevel: number;
   /** Set when this build was just copied from an older LoreRim version. */
   converted?: { from: string; dropped: string };
+  /** The build's guide sections by key (`level:<n>` for level notes). */
+  guide: Record<string, GuideDoc>;
 }
 
 const ATTRS: Attribute[] = ["health", "magicka", "stamina"];
 
-export function Editor({ buildId, name, initialPlan, initialLevel, converted }: Props) {
+export function Editor({ buildId, name, initialPlan, initialLevel, converted, guide }: Props) {
   const d = useGameData();
   const [plan, setPlan] = useState(initialPlan);
   const states = useMemo(() => computeBuild(plan, d), [plan, d]);
@@ -36,6 +41,9 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted }: 
   const [level, setLevelState] = useState(() => Math.min(total, Math.max(1, initialLevel || total)));
   const { status, error, retry } = useAutosave(buildId, plan, initialPlan);
   const [confirmRemove, setConfirmRemove] = useState(false);
+  // Level notes as edited here, so going back to a level shows the latest text.
+  const [notes, setNotes] = useState<Record<string, GuideDoc>>(guide);
+  const noted = useMemo(() => notedLevels(notes), [notes]);
 
   const setLevel = useCallback(
     (n: number, max = total) => {
@@ -57,7 +65,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted }: 
   const [extraSkill, setExtraSkill] = useState<string>(() => initialPlan.majors[0] ?? d.skills[0]);
 
   const steps = useMemo(() => skillStepInfo(d, plan, states, level), [d, plan, states, level]);
-  const marks = useMemo(() => levelMarks(d, plan, states), [d, plan, states]);
+  const marks = useMemo(() => levelMarks(d, plan, states, noted), [d, plan, states, noted]);
   const left = s.skillPointsAvailable - s.skillPointsSpent;
   const carriedIn = s.skillPointsAvailable - d.rules.skillPointsPerLevel;
   const perkLeft = s.perkPoints - s.perkPointsSpent;
@@ -327,11 +335,19 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted }: 
               </select>
             </span>
           </label>
-          <label className={`field ${styles.alsoWide}`}>
-            <span className="label">Note for this level</span>
-            <textarea className="textarea" value={lv.note} maxLength={2000} onChange={(e) => setPlan(ops.setNote(plan, level, e.target.value))} placeholder="How you got here: quests, places cleared, where you trained" />
-          </label>
         </section>
+
+        <LevelNotes
+          key={level}
+          buildId={buildId}
+          level={level}
+          initial={notes[`level:${level}`] ?? emptyDoc()}
+          onChange={(doc) => {
+            setNotes((n) => ({ ...n, [`level:${level}`]: doc }));
+            // The level's old plain-text note now lives in the notes; clear it from the plan too.
+            if (lv.note) setPlan(ops.setNote(plan, level, ""));
+          }}
+        />
 
         <div className={styles.bottomBar}>
           <span className={styles.verdict}>
@@ -354,7 +370,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted }: 
           <span className={styles.bottomActions}>
             {level === total && total > 1 && (
               <button type="button" className="btn btn-quiet" onClick={removeLevel}>
-                {confirmRemove ? `Confirm: remove level ${total}` : `Remove level ${total}`}
+                {confirmRemove ? `Confirm: remove level ${total}${noted.has(total) ? " and its notes" : ""}` : `Remove level ${total}`}
               </button>
             )}
             {level === total ? (
@@ -384,6 +400,36 @@ function Pool({ label, value, of }: { label: string; value: number; of: string }
         <span className={styles.hint}>{of}</span>
       </dd>
     </div>
+  );
+}
+
+/** The level's notes: the guide editor, compact (H3 the only heading). */
+function LevelNotes({ buildId, level, initial, onChange }: { buildId: string; level: number; initial: GuideDoc; onChange: (doc: GuideDoc) => void }) {
+  const [save, setSave] = useState<{ status: GuideSaveStatus; error: string | null }>({ status: "idle", error: null });
+  const onStatus = useCallback((status: GuideSaveStatus, error: string | null) => setSave({ status, error }), []);
+  const label = guideSaveLabel(save.status, save.error);
+  return (
+    <section aria-label={`Notes for level ${level}`} className={styles.levelNotes}>
+      <div className={styles.blockHead}>
+        <span className="label">Notes for level {level}</span>
+        {label && (
+          <span role="status" className={save.status === "failed" ? styles.notesFailed : styles.hint}>
+            {label}
+          </span>
+        )}
+      </div>
+      <GuideEditor
+        buildId={buildId}
+        sectionKey={`level:${level}`}
+        initial={initial}
+        label={`Notes for level ${level}`}
+        placeholder="[Notes for this level: quests, places cleared, where you trained]"
+        headingLevels={[3]}
+        compact
+        onStatus={onStatus}
+        onChange={onChange}
+      />
+    </section>
   );
 }
 

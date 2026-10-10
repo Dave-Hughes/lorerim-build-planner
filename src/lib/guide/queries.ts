@@ -14,12 +14,19 @@ export interface GuideSection {
 export async function getGuide(buildId: string, plan: BuildPlan, fromDb = true): Promise<Record<string, GuideSection>> {
   const out: Record<string, GuideSection> = {};
   if (plan.notes.trim()) out.overview = { doc: notesToDoc(plan.notes), saved: false };
+  plan.levels.forEach((lv, i) => {
+    if (lv.note.trim()) out[`level:${i + 1}`] = { doc: notesToDoc(lv.note), saved: false };
+  });
   if (fromDb) {
     const rows = await db()
       .select({ key: schema.buildGuides.key, doc: schema.buildGuides.doc })
       .from(schema.buildGuides)
       .where(eq(schema.buildGuides.buildId, buildId));
-    for (const r of rows) out[r.key] = { doc: r.doc, saved: true };
+    for (const r of rows) {
+      const level = r.key.startsWith("level:") ? Number(r.key.slice(6)) : 0;
+      if (level > plan.levels.length) continue;
+      out[r.key] = { doc: r.doc, saved: true };
+    }
   }
   return out;
 }

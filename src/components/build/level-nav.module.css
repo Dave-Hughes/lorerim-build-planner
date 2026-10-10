@@ -230,3 +230,27 @@
   border-radius: 50%;
   background: var(--health);
 }
+
+/* Notes: a small open square, like a page. */
+.keyNotes,
+.cellNotes,
+.markNotes {
+  width: 7px;
+  height: 7px;
+  border: 1px solid #c3cdd6;
+  background: transparent;
+}
+.cellNotes {
+  margin-left: 2px;
+}
+.cellOn .cellNotes {
+  border-color: var(--on-ember);
+}
+.cellFuture .cellNotes {
+  border-color: #4a5668;
+}
+.markNotes {
+  position: absolute;
+  top: 30px;
+  margin-left: -3.5px;
+}

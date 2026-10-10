@@ -7,7 +7,8 @@ import { copyBuild, copyBuildForVersion } from "@/lib/builds/actions";
 import type { BuildRecord } from "@/lib/builds/types";
 import { useGameData } from "@/components/game-data";
 import { GuideSection } from "@/components/guide/guide-section";
-import { isEmptyDoc, type GuideDoc } from "@/lib/guide/doc";
+import { LevelNote } from "@/components/guide/level-note";
+import { isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import { currentVersion, isOlderThanCurrent } from "@/lib/rules/versions";
 import { ATTRIBUTE_NAMES, levelChanges, levelMarks, perksByLevel } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
@@ -31,16 +32,17 @@ interface Props {
   signInToCopy: React.ReactNode;
   /** True when the visitor signed in from "Copy to my builds"; the copy runs on load. */
   autoCopy?: boolean;
-  /** The build's overall guide, when it has one. */
-  guide?: GuideDoc | null;
+  /** The build's guide sections by key: `overview`, and `level:<n>` for level notes. */
+  guide?: Record<string, GuideDoc>;
 }
 
-export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel, signInToCopy, autoCopy, guide }: Props) {
+export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel, signInToCopy, autoCopy, guide = {} }: Props) {
   const d = useGameData();
+  const noted = useMemo(() => notedLevels(guide), [guide]);
   const { plan } = build;
   const total = plan.levels.length;
   const states = useMemo(() => computeBuild(plan, d), [plan, d]);
-  const marks = useMemo(() => levelMarks(d, plan, states), [d, plan, states]);
+  const marks = useMemo(() => levelMarks(d, plan, states, noted), [d, plan, states, noted]);
   const [level, setLevelState] = useState(() => Math.min(total, Math.max(1, initialLevel)));
   const setLevel = useCallback(
     (n: number) => {
@@ -102,7 +104,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
           ))}
         </section>
 
-        {guide && !isEmptyDoc(guide) && <GuideSection buildId={build.id} doc={guide} />}
+        {guide.overview && !isEmptyDoc(guide.overview) && <GuideSection buildId={build.id} doc={guide.overview} />}
 
         <section aria-label="Level" className={styles.levelSection}>
           <div className={styles.levelHead}>
@@ -190,7 +192,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
             <div className={`frame ${styles.panel}`}>
               <span className="label">{level === 1 ? "At level 1" : `Changes at level ${level}`}</span>
               <ChangesGrid changes={changes} level={level} />
-              {changes.note && <p className={`flavor ${styles.note}`}>“{changes.note}”</p>}
+              {noted.has(level) && <LevelNote key={level} doc={guide[`level:${level}`]} level={level} />}
             </div>
             <div className={styles.perkList}>
               <div className={styles.sectionHead}>

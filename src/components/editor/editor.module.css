@@ -570,3 +570,13 @@
   background: rgba(240, 145, 63, 0.07);
   font-size: 15px;
 }
+
+.levelNotes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.notesFailed {
+  font-size: 13px;
+  color: var(--health);
+}

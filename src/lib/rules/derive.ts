@@ -126,11 +126,13 @@ export interface LevelMark {
   destiny: boolean;
   stone: boolean;
   skill100: boolean;
+  /** The author wrote notes for this level. */
+  notes: boolean;
   problems: number;
 }
 
 /** Per-level marks for the ruler and the level row. */
-export function levelMarks(d: GameData, plan: BuildPlan, states: LevelState[]): LevelMark[] {
+export function levelMarks(d: GameData, plan: BuildPlan, states: LevelState[], noted: ReadonlySet<number> = new Set()): LevelMark[] {
   return plan.levels.map((lv, i) => {
     const s = states[i];
     const skill100 = lv.perks.some((id) => {
@@ -145,6 +147,7 @@ export function levelMarks(d: GameData, plan: BuildPlan, states: LevelState[]): 
       destiny: lv.destiny.length > 0,
       stone: !!lv.stone,
       skill100,
+      notes: noted.has(i + 1),
       problems: s.issues.length,
     };
   });

@@ -5,6 +5,7 @@ import { Editor } from "@/components/editor/editor";
 import { GameDataProvider } from "@/components/game-data";
 import { getBuild } from "@/lib/builds/queries";
 import { clientVersion, isKnownVersion } from "@/lib/rules/server";
+import { getGuide } from "@/lib/guide/queries";
 
 type Params = Promise<{ id: string }>;
 type Search = Promise<{ level?: string; from?: string; dropped?: string }>;
@@ -20,6 +21,7 @@ export default async function EditPage({ params, searchParams }: { params: Param
   if (build.isSample || build.ownerId !== userId) redirect(`/b/${id}`);
   // The editor only works against the build's own version; one the planner no longer has can only be viewed.
   if (!isKnownVersion(build.gameVersion)) redirect(`/b/${id}`);
+  const guide = await getGuide(id, build.plan);
   return (
     <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
       <Editor
@@ -28,6 +30,7 @@ export default async function EditPage({ params, searchParams }: { params: Param
         initialPlan={build.plan}
         initialLevel={Number(level) || 0}
         converted={from ? { from: from.slice(0, 40), dropped: (dropped ?? "").slice(0, 600) } : undefined}
+        guide={Object.fromEntries(Object.entries(guide).map(([k, v]) => [k, v.doc]))}
       />
     </GameDataProvider>
   );

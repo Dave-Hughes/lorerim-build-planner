@@ -39,3 +39,20 @@
 .more {
   align-self: flex-start;
 }
+
+.levelNote {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+}
+.levelNote :global(p),
+.levelNote :global(li) {
+  font-size: 15px;
+}
+/* Fading to the panel colour inside the "Changes" panel. */
+.fadePanel {
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(20, 27, 35, 0), var(--panel));
+}

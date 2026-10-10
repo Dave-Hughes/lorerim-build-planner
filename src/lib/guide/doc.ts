@@ -32,6 +32,22 @@ export function limitFor(key: string): number {
   return key === "overview" ? GUIDE_LIMITS.overview : GUIDE_LIMITS.level;
 }
 
+/** The level a `level:<n>` key is for, or null. */
+export function levelOfKey(key: string): number | null {
+  const m = /^level:(\d+)$/.exec(key);
+  return m ? Number(m[1]) : null;
+}
+
+/** Levels whose notes have something in them. */
+export function notedLevels(sections: Record<string, GuideDoc>): Set<number> {
+  const out = new Set<number>();
+  for (const [key, doc] of Object.entries(sections)) {
+    const level = levelOfKey(key);
+    if (level && !isEmptyDoc(doc)) out.add(level);
+  }
+  return out;
+}
+
 export function isGuideKey(key: string): key is GuideKey {
   return key === "overview" || /^level:([1-9]\d?|100)$/.test(key);
 }

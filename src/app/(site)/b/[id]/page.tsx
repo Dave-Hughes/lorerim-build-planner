@@ -40,7 +40,7 @@ export default async function BuildPage({ params, searchParams }: { params: Para
         initialLevel={Number(level) || 1}
         signInToCopy={<SignInButton redirectTo={`/b/${id}?copy=1`} className="btn btn-primary" label="Copy to my builds" />}
         autoCopy={copy === "1"}
-        guide={guide.overview?.doc ?? null}
+        guide={Object.fromEntries(Object.entries(guide).map(([k, v]) => [k, v.doc]))}
       />
     </GameDataProvider>
   );

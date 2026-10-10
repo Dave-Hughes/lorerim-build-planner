@@ -37,6 +37,10 @@ export function LevelLegend() {
         <Star />
         Skill 100 perk
       </span>
+      <span>
+        <i className={styles.keyNotes} />
+        Notes
+      </span>
     </div>
   );
 }
@@ -59,7 +63,7 @@ export function LevelStepper({ level, total, onChange }: { level: number; total:
   );
 }
 
-/** The whole build on one line. Only marks that matter: Destiny, stones, Skill 100 perks. */
+/** The whole build on one line. Only marks that matter: Destiny, stones, Skill 100 perks, notes. */
 export function LevelRuler({ marks, level, onChange }: { marks: LevelMark[]; level: number; onChange: (level: number) => void }) {
   const total = marks.length;
   const start = windowStart(level, total);
@@ -92,6 +96,7 @@ export function LevelRuler({ marks, level, onChange }: { marks: LevelMark[]; lev
                   <Star size={12} />
                 </span>
               )}
+              {m.notes && <span className={styles.markNotes} style={{ left: x(m.level) }} />}
             </span>
           );
         })}
@@ -120,7 +125,7 @@ export function LevelRow({ marks, level, onChange }: { marks: LevelMark[]; level
               key={m.level}
               type="button"
               className={cls}
-              aria-label={`Level ${m.level}${m.problems ? `, ${m.problems} problem${m.problems > 1 ? "s" : ""}` : ""}`}
+              aria-label={`Level ${m.level}${m.notes ? ", notes" : ""}${m.problems ? `, ${m.problems} problem${m.problems > 1 ? "s" : ""}` : ""}`}
               aria-current={on ? "true" : undefined}
               onClick={() => onChange(m.level)}
             >
@@ -131,6 +136,7 @@ export function LevelRow({ marks, level, onChange }: { marks: LevelMark[]; level
                 ))}
                 {m.destiny && <i className={styles.cellDestiny} />}
                 {m.stone && <i className={styles.cellStone} />}
+                {m.notes && <i className={styles.cellNotes} />}
               </span>
               {m.problems > 0 && <i className={styles.cellProblem} />}
             </button>

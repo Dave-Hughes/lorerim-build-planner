@@ -88,4 +88,27 @@ test.describe("the written guide", () => {
     await expect(page.getByRole("alert").filter({ hasText: "Links must start with http:// or https://" })).toBeVisible();
     await expect(editor.locator("a")).toHaveCount(0);
   });
+
+  test("level notes: the old note opens in the editor, edits save, and show on the build page", async ({ page, context }) => {
+    await signIn(context);
+    await page.goto(`/b/${TEST_BUILD_ID}/edit?level=2`);
+    const notes = page.getByRole("textbox", { name: "Notes for level 2" });
+    // The level's old plain-text note is the starting text.
+    await expect(notes).toHaveText("Wolves and bandits on the roads around Falkreath.");
+    await notes.click();
+    await page.keyboard.press("ControlOrMeta+a");
+    await page.keyboard.type("Cleared **Embershard Mine** for the ore.");
+    const box = page.getByRole("region", { name: "Notes for level 2" });
+    await expect(box.getByRole("status")).toHaveText("Saved");
+
+    await page.reload();
+    await expect(notes.locator("strong")).toHaveText("Embershard Mine");
+    await expect(notes).toHaveText("Cleared Embershard Mine for the ore.");
+
+    await page.goto(`/b/${TEST_BUILD_ID}?level=2`);
+    await expect(page.getByRole("region", { name: "Notes for level 2" })).toHaveText("Cleared Embershard Mine for the ore.");
+    await expect(page.getByRole("region", { name: "Notes for level 2" }).locator("strong")).toHaveText("Embershard Mine");
+    await expect(page.getByRole("button", { name: /^Level 2, notes/ })).toBeVisible();
+    await expect(page.getByText("Notes", { exact: true })).toBeVisible();
+  });
 });
