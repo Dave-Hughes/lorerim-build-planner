@@ -1,0 +1,24 @@
+# LoreRim Build Planner — backlog
+
+What is queued, in the order it was raised. Rules for the look live in [design-rules.md](design-rules.md).
+
+## UX feedback from Dave, 10 Oct 2026
+
+1. **Cards select on click.** Race, birthsign, traits, game mode and every other card list: clicking anywhere on the card chooses it. Keep the Choose button. Cards need a hover state.
+2. **Buttons feel bland and basic, "not fun".** Every button across the app. Needs a design pass that stays inside the visual system (square corners, no glows) but gives them some character.
+3. **Skills step (step 3): how many majors and minors are chosen isn't obvious** at any moment. Make the counts unmissable while picking.
+
+## Decisions pending
+
+- **Pixel icons** for the 18 skills and Destiny: trial on `staging` (branch `icons-trial`, `scripts/icons/pixels.py`, `public/icons/`). Dave to judge in the app. If kept: redraw Two-Handed, Evasion, Alteration, Heavy Armor, then decide where else they appear (shared build page skill list, build cards). If dropped: remove `src/components/ui/skill-icon.tsx`, its uses in `tree-tabs.tsx` and `editor.tsx`, `public/icons/`, `public/icon-sheet.html` and `scripts/icons/`.
+- **Domain:** lorerimplanner.com is free at $11.25/yr (checked 10 Oct 2026). Buy on Dave's say-so, then add `https://lorerimplanner.com/api/auth/callback/discord` to the Discord app's redirects (Discord developer portal, app "LoreRim Build Planner").
+
+## Done
+
+- Discord sign-in live on production and staging (10 Oct 2026). `identify` scope only. Discord now sends `iss` with the code, so the provider sets `issuer: "https://discord.com"`.
+- Game data read from the 5.0.4.8 records: perk words, ranks, exclusions, books, trait art (10 Oct 2026).
+
+## Still to check in game
+
+- Stunning Precision and Lion's Arrow check the original Requiem Penetrating Shot record, while the Marksman tree offers Big Tweaks' player version. Is Stunning Precision selectable with Penetrating Shot + Power Shot at Marksman 75? The planner treats the two records as one perk (`gamedata/5.0.4.8/overrides.json`, `aliases`).
+- Painful Regrets is gated on three player stats (≥5000 / ≥25 / >3) the extractor can't name. The in-game tooltip may say.
