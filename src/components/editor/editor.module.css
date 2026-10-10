@@ -343,20 +343,44 @@
 }
 
 /* ---------- Trees ---------- */
+/* The perk area: tree, then its detail panel beside it at 1100px and up (fixed 340px), under it below that. */
 .treeBox {
   border: 1px solid var(--rule);
   background: #10161e;
+  container-type: inline-size;
+}
+.treeRow {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 .treeArea {
-  flex: 999 1 600px;
   min-width: 0;
 }
+.panelSlot {
+  border-top: 1px solid var(--rule);
+}
+@container (min-width: 1100px) {
+  .treeRow {
+    flex-direction: row;
+  }
+  .treeArea {
+    flex: 1 1 auto;
+  }
+  .panelSlot {
+    flex: none;
+    width: 340px;
+    border-top: 0;
+    border-left: 1px solid var(--rule);
+  }
+}
+@media (max-width: 899px) {
+  /* Small screens: the details open in a bottom sheet from the tree. */
+  .panelSlot {
+    display: none;
+  }
+}
 .panel {
-  flex: 1 1 260px;
   min-width: 0;
-  border-left: 1px solid var(--rule);
   padding: 22px;
   display: flex;
   flex-direction: column;

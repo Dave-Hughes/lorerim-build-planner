@@ -261,12 +261,12 @@ Don't squash the tree. Make it behave like the game's sky:
 - A "List" toggle next to the tree tabs switches to a plain list of the tree's perks grouped by required skill (25, 50, 75, 100, then level and book perks), each row with its state, for anyone who prefers it. The list is also what screen readers get first.
 
 ### Done when
-- [ ] Every one of the 19 trees on screen matches its plot in `docs/reference/perk-trees-game-layout.png` (same shape, same lines); screenshots of all 19 at 1920 wide in one sheet for Dave.
-- [ ] No label overlaps another label or a star in any tree at 1440, 1920 and 2560 (add a unit test that runs the placement for every tree at those widths and asserts no rectangle overlaps).
-- [ ] Unit test: layout preserves the game's relative positions (for every pair of stars, left/right and above/below order is unchanged).
-- [ ] At 390 wide: pinch-zoom, pan, Fit, tap-to-select with the bottom sheet, and the List toggle all work (e2e for tap-select and List; zoom checked by hand and noted).
-- [ ] Editor and shared build page both use it; existing tree e2e still pass.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Every one of the 19 trees on screen matches its plot in `docs/reference/perk-trees-game-layout.png` (same shape, same lines); screenshots of all 19 at 1920 wide in one sheet for Dave.
+- [x] No label overlaps another label or a star in any tree at 1440, 1920 and 2560 (add a unit test that runs the placement for every tree at those widths and asserts no rectangle overlaps).
+- [x] Unit test: layout preserves the game's relative positions (for every pair of stars, left/right and above/below order is unchanged).
+- [x] At 390 wide: pinch-zoom, pan, Fit, tap-to-select with the bottom sheet, and the List toggle all work (e2e for tap-select and List; zoom checked by hand and noted).
+- [x] Editor and shared build page both use it; existing tree e2e still pass.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

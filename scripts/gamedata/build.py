@@ -1,6 +1,11 @@
 """
-Builds the planner's game data (src/data/lorerim-<version>/perks.json and
-traits.json) from the raw extract of the game files.
+Builds the planner's game data (src/data/lorerim-<version>/perks.json,
+trees.json and traits.json) from the raw extract of the game files.
+
+Perk trees are drawn exactly as the game lays them out: every perk gets the
+game's position (`pos`, y up), and trees.json holds the lines the game draws
+between stars (`links`). Lines come from the game's picture; prerequisites
+(`requires`) stay the rules.
 
 Inputs, under gamedata/<version>/:
   planner_data.json  what extract.py pulled from the winning records (trees,
@@ -58,6 +63,18 @@ def main():
     overrides = load("overrides.json")
     pics = load("traitpics.json")
 
+    # Destiny ids: "Destiny:<name>", but two Destiny perks share the name Endurance in the
+    # game (the second is the record DAR_Perk19Acrobat); a repeated name takes its record's
+    # name for the id, and keeps the game's name for display.
+    destiny_ids = {}
+    for n in data["destiny"]:
+        if "key" not in n:
+            continue
+        pid = f"Destiny:{n['name']}"
+        if pid in destiny_ids.values():
+            pid = "Destiny:" + re.sub(r"^DAR_Perk\d+", "", n["edid"])
+        destiny_ids[n["node"]] = pid
+
     # (plugin, form id) -> planner id, for every node of every skill tree
     ids = {}
     for tree, t in data["trees"].items():
@@ -65,7 +82,7 @@ def main():
             ids[tuple(n["key"])] = f"{tree}:{n['name']}"
     for n in data["destiny"]:
         if "key" in n:
-            ids[tuple(n["key"])] = f"Destiny:{n['name']}"
+            ids[tuple(n["key"])] = destiny_ids[n["node"]]
     for key, pid in overrides.get("aliases", {}).items():
         plugin, form = key.rsplit(":", 1)
         ids[(plugin, int(form))] = pid
@@ -152,6 +169,8 @@ def main():
             text, effect = split_desc(ranks[0]["desc"])
             rank_texts = [split_desc(r["desc"]) for r in ranks]
             out = {"id": pid, "tree": tree, "name": node["name"], "requires": requires, "anyOf": any_of}
+            # The game's own position in the tree: grid cell plus its offset, y up.
+            out["pos"] = [round(node["x"] + node["hx"], 4), round(node["y"] + node["vy"], 4)]
             if excludes:
                 out["excludes"] = excludes
             out["ranks"] = len(ranks)
@@ -193,7 +212,7 @@ def main():
     for n in data["destiny"]:
         if "key" not in n:
             continue
-        pid = f"Destiny:{n['name']}"
+        pid = destiny_ids[n["node"]]
         requires, any_of = [], False
         conds = n["conditions"]
         for ci, c in enumerate(conds):
@@ -214,9 +233,32 @@ def main():
             if k in ov:
                 out[k] = ov[k]
         out["text"] = unmark(clean(n["desc"]))
-        out["x"] = n["x"]
-        out["y"] = n["y"]
+        out["pos"] = [n["x"], n["y"]]
         perks.append(out)
+
+    # The lines the game draws between stars: linksTo for skill trees, Links for Destiny.
+    trees = {}
+    for tree, t in data["trees"].items():
+        links = []
+        for node in t["nodes"]:
+            src = f"{tree}:{node['name']}"
+            for k in node.get("linksTo", []):
+                dst = ids.get(tuple(k))
+                if not dst or not dst.startswith(tree + ":"):
+                    problems.append(f"{src}: line to {k} outside the tree")
+                elif [src, dst] not in links:
+                    links.append([src, dst])
+        trees[tree] = {"links": links}
+    by_node = destiny_ids
+    destiny_links = []
+    for n in data["destiny"]:
+        src = by_node.get(n["node"])
+        if not src:
+            continue  # the wheel's centre, not a perk
+        for m in n.get("links", []):
+            if m in by_node and [src, by_node[m]] not in destiny_links:
+                destiny_links.append([src, by_node[m]])
+    trees["Destiny"] = {"links": destiny_links}
 
     traits = []
     for t in data["traits"]:
@@ -234,6 +276,11 @@ def main():
         })
     traits.sort(key=lambda t: t["name"].lower())
 
+    seen = set()
+    for p in perks:
+        if p["id"] in seen:
+            problems.append(f"{p['id']}: two perks with this id")
+        seen.add(p["id"])
     known = {p["id"] for p in perks}
     for p in perks:
         for r in p["requires"] + p.get("excludes", []):
@@ -243,6 +290,9 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     with open(os.path.join(OUT, "perks.json"), "w", encoding="utf-8") as f:
         json.dump(perks, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    with open(os.path.join(OUT, "trees.json"), "w", encoding="utf-8") as f:
+        json.dump(trees, f, indent=2, ensure_ascii=False)
         f.write("\n")
     with open(os.path.join(OUT, "traits.json"), "w", encoding="utf-8") as f:
         json.dump(traits, f, indent=2, ensure_ascii=False)

@@ -14,8 +14,9 @@ import traits5048 from "@/data/lorerim-5.0.4.8/traits.json";
 import perks5048 from "@/data/lorerim-5.0.4.8/perks.json";
 import starts5048 from "@/data/lorerim-5.0.4.8/starts.json";
 import deities5048 from "@/data/lorerim-5.0.4.8/deities.json";
+import trees5048 from "@/data/lorerim-5.0.4.8/trees.json";
 import { RULES_5_0_4_8 } from "./constants";
-import type { Birthsign, Perk, Race, SkillGroup, Stone, Trait, VersionSource } from "./data";
+import type { Birthsign, Perk, Race, SkillGroup, Stone, Trait, TreeLink, VersionSource } from "./data";
 
 export interface GameVersion {
   /** "5.0.4.8" */
@@ -49,6 +50,7 @@ const registry: Entry[] = [
       perks: perks5048 as Perk[],
       starts: starts5048 as string[],
       startingDeities: deities5048 as Record<string, string[]>,
+      trees: trees5048 as unknown as Record<string, { links: TreeLink[] }>,
       gameModes: [
         { name: "Naaktiid", text: "New to LoreRim: +3 perk points, Requiem Lite (+100 carry weight, gentler combat), free respec." },
         { name: "Konahrik", text: "Classic LoreRim: no extra points, respec once for 100,000 gold." },

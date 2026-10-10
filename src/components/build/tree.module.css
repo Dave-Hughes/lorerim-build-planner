@@ -1,22 +1,81 @@
-.scroller {
-  overflow-x: auto;
-  padding: 18px;
+/*
+ * Perk trees as the game draws them. Stars sit at the game's own positions
+ * (centred on them); labels sit where placeLabels put them; a star without a
+ * label shows a small tag on hover and focus.
+ */
+.box {
+  position: relative;
+  min-width: 0;
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px 0;
+}
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--rule-strong);
+}
+.seg button {
+  font-family: var(--font-title);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 0;
+  border-right: 1px solid var(--rule-strong);
+  background: transparent;
+  color: #c3cdd6;
+  cursor: pointer;
+  transition:
+    color 120ms,
+    background-color 120ms;
+}
+.seg button:last-child {
+  border-right: 0;
+}
+.seg button:hover:not([aria-pressed="true"]) {
+  background: rgba(240, 145, 63, 0.08);
+  color: var(--ember);
+}
+.seg button[aria-pressed="true"] {
+  background: var(--ember);
+  color: var(--on-ember);
+}
+.zoom {
+  display: inline-flex;
+  gap: 6px;
+}
+.zoom :global(.btn-icon) {
+  width: 40px;
+}
+
+.sky {
+  position: relative;
+  overflow: hidden;
+}
+.skySmall {
+  cursor: grab;
+  user-select: none;
 }
 .canvas {
   position: relative;
-  margin: 0 auto;
+  transform-origin: 0 0;
 }
 .edges {
   position: absolute;
   inset: 0;
 }
 .edge {
-  stroke: #2f3a4a;
-  stroke-width: 1;
+  stroke: #33404f;
 }
 .edgeEither {
-  stroke: #2f3a4a;
-  stroke-width: 1;
+  stroke: #33404f;
   stroke-dasharray: 2 4;
 }
 .edgeLit {
@@ -25,73 +84,259 @@
 }
 .edgePreview {
   stroke: var(--ember);
-  stroke-width: 1.6;
   stroke-dasharray: 4 4;
 }
 
-.node {
+/* Stars */
+.star {
   position: absolute;
-  width: 110px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  background: transparent;
-  border: 0;
+  width: var(--star);
+  height: var(--star);
+  margin: 0;
   padding: 0;
-  font: inherit;
-  color: var(--text);
-  text-align: center;
-}
-button.node {
+  border: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
   cursor: pointer;
+  outline-offset: 3px;
 }
-.dot {
-  width: 16px;
-  height: 16px;
+.star::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   border-radius: 50%;
   box-sizing: border-box;
-  flex: none;
 }
-.taken .dot {
+.taken::before {
   background: var(--ember);
   box-shadow: 0 0 0 4px rgba(240, 145, 63, 0.14);
 }
-.open .dot {
+.open::before {
   border: 1.5px solid var(--ember);
   background: #10161e;
 }
-.locked .dot {
-  width: 8px;
-  height: 8px;
-  margin: 4px;
+.locked::before {
+  inset: 25%;
   background: #4a5668;
 }
-.partial .dot {
+.partial::before {
   background: linear-gradient(90deg, var(--ember) 50%, #10161e 50%);
   border: 1.5px solid var(--ember);
 }
-.selected .dot {
+.selected::before {
   box-shadow:
     0 0 0 5px #10161e,
     0 0 0 6px var(--brass);
 }
-.name {
-  font-size: 13px;
-  line-height: 1.15;
+.star:focus-visible {
+  outline: 2px solid var(--brass);
 }
-.locked .name {
+
+/* Labels */
+.label {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--text);
+}
+.side_below,
+.side_above {
+  align-items: center;
+  text-align: center;
+}
+.side_right {
+  align-items: flex-start;
+}
+.side_left {
+  align-items: flex-end;
+  text-align: right;
+}
+.labelName {
+  font-size: var(--label);
+}
+.labelReq {
+  font-size: var(--sub);
   color: #7d8a9a;
+  font-variant-numeric: tabular-nums;
 }
-.selected .name {
+.labelLocked .labelName {
+  color: #8e9bab;
+}
+.labelSelected .labelName {
   color: #fff;
   font-weight: 600;
 }
-.req {
-  font-size: 11px;
+
+/* The name of a star without a label: on hover and keyboard focus. */
+.tag {
+  display: none;
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  flex-direction: column;
+  gap: 2px;
+  padding: 5px 8px;
+  background: var(--panel-raised);
+  border: 1px solid var(--rule-strong);
+  white-space: nowrap;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(--text);
+  pointer-events: none;
+}
+.tag b {
+  font-weight: 600;
+}
+.tag span {
+  font-size: 12px;
+  color: #8e9bab;
+}
+.star:hover .tag,
+.star:focus-visible .tag {
+  display: flex;
+}
+
+/* List view */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 16px 18px 6px;
+}
+.listGroup ul {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+}
+.listHead {
+  display: block;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+.listRow {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr) auto;
+  grid-template-areas: "dot name state" ". req state";
+  align-items: center;
+  column-gap: 10px;
+  padding: 8px 6px;
+  border: 0;
+  border-bottom: 1px solid #1c2430;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+}
+button.listRow {
+  cursor: pointer;
+}
+button.listRow:hover {
+  background: rgba(240, 145, 63, 0.06);
+}
+button.listRow[aria-pressed="true"] {
+  background: rgba(240, 145, 63, 0.12);
+}
+.listDot {
+  grid-area: dot;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+.listDot.taken {
+  background: var(--ember);
+}
+.listDot.open {
+  border: 1.5px solid var(--ember);
+}
+.listDot.locked {
+  width: 6px;
+  height: 6px;
+  margin: 2px;
+  background: #4a5668;
+}
+.listName {
+  grid-area: name;
+}
+.listReq {
+  grid-area: req;
+  font-size: 13px;
   color: #7d8a9a;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.1;
+}
+.listState {
+  grid-area: state;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.state_taken {
+  color: var(--ember);
+}
+.state_open {
+  color: var(--text);
+}
+.state_locked {
+  color: #7d8a9a;
+}
+
+/* Bottom sheet (small screens) */
+.sheetBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(8, 11, 15, 0.6);
+  display: flex;
+  align-items: flex-end;
+}
+.sheet {
+  position: relative;
+  width: 100%;
+  max-height: 75vh;
+  overflow-y: auto;
+  background: var(--panel);
+  border-top: 1px solid var(--rule-strong);
+  padding: 0 0 18px;
+}
+.sheetHandle {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 6px;
+  touch-action: none;
+  cursor: grab;
+}
+.sheetHandle span {
+  width: 44px;
+  height: 4px;
+  background: var(--rule-strong);
+}
+.sheetClose {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+}
+.sheetBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 6px 18px 0;
+}
+.sheetBody p {
+  margin: 0;
+}
+.sheetTitle {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: 26px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .legend {
@@ -100,8 +345,7 @@ button.node {
   gap: 18px;
   font-size: 13px;
   color: var(--muted);
-  margin: 14px auto 0;
-  max-width: 600px;
+  padding: 4px 18px 16px;
 }
 .legend span {
   display: inline-flex;

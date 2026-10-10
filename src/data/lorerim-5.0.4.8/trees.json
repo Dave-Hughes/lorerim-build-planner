@@ -1,0 +1,1642 @@
+{
+  "Enchanting": {
+    "links": [
+      [
+        "Enchanting:Enchanter's Insight",
+        "Enchanting:Elemental Lore"
+      ],
+      [
+        "Enchanting:Enchanter's Insight",
+        "Enchanting:Soul Gem Mastery"
+      ],
+      [
+        "Enchanting:Enchanter's Insight",
+        "Enchanting:Arcane Artificery"
+      ],
+      [
+        "Enchanting:Elemental Lore",
+        "Enchanting:Corpus Lore"
+      ],
+      [
+        "Enchanting:Corpus Lore",
+        "Enchanting:Skill Lore"
+      ],
+      [
+        "Enchanting:Skill Lore",
+        "Enchanting:Enchantment Mastery"
+      ],
+      [
+        "Enchanting:Enchantment Mastery",
+        "Enchanting:Artifact Enchanter"
+      ],
+      [
+        "Enchanting:Soul Gem Mastery",
+        "Enchanting:Arcane Experimentation"
+      ],
+      [
+        "Enchanting:Arcane Experimentation",
+        "Enchanting:Artificer's Insight"
+      ],
+      [
+        "Enchanting:Artificer's Insight",
+        "Enchanting:Enchantment Mastery"
+      ],
+      [
+        "Enchanting:Arcane Artificery",
+        "Enchanting:Staff Channeling"
+      ],
+      [
+        "Enchanting:Staff Channeling",
+        "Enchanting:Wand Mastery"
+      ],
+      [
+        "Enchanting:Staff Channeling",
+        "Enchanting:Charge Tap"
+      ],
+      [
+        "Enchanting:Wand Mastery",
+        "Enchanting:You Shall Not Pass"
+      ]
+    ]
+  },
+  "Restoration": {
+    "links": [
+      [
+        "Restoration:Novice Restoration",
+        "Restoration:Apprentice Restoration"
+      ],
+      [
+        "Restoration:Novice Restoration",
+        "Restoration:Improved Healing"
+      ],
+      [
+        "Restoration:Novice Restoration",
+        "Restoration:Venomancy"
+      ],
+      [
+        "Restoration:Novice Restoration",
+        "Restoration:Heliomancy"
+      ],
+      [
+        "Restoration:Novice Restoration",
+        "Restoration:Improved Turning"
+      ],
+      [
+        "Restoration:Novice Restoration",
+        "Restoration:Improved Protection"
+      ],
+      [
+        "Restoration:Novice Restoration",
+        "Restoration:Ward Mastery"
+      ],
+      [
+        "Restoration:Apprentice Restoration",
+        "Restoration:Adept Restoration"
+      ],
+      [
+        "Restoration:Adept Restoration",
+        "Restoration:Expert Restoration"
+      ],
+      [
+        "Restoration:Expert Restoration",
+        "Restoration:Master Restoration"
+      ],
+      [
+        "Restoration:Improved Healing",
+        "Restoration:Respite"
+      ],
+      [
+        "Restoration:Respite",
+        "Restoration:Greater Vitality"
+      ],
+      [
+        "Restoration:Improved Wards",
+        "Restoration:Masterly Wards"
+      ],
+      [
+        "Restoration:Empowered Restoration",
+        "Restoration:Novice Restoration"
+      ],
+      [
+        "Restoration:Mental Acuity",
+        "Restoration:Power of Life"
+      ],
+      [
+        "Restoration:Mental Acuity",
+        "Restoration:Apprentice Restoration"
+      ],
+      [
+        "Restoration:Power of Life",
+        "Restoration:Essence of Life"
+      ],
+      [
+        "Restoration:Venomancy",
+        "Restoration:Paralyzing Poison"
+      ],
+      [
+        "Restoration:Paralyzing Poison",
+        "Restoration:Venomaster"
+      ],
+      [
+        "Restoration:Heliomancy",
+        "Restoration:Scorching Light"
+      ],
+      [
+        "Restoration:Scorching Light",
+        "Restoration:Heliomaster"
+      ],
+      [
+        "Restoration:Improved Turning",
+        "Restoration:Mystic Turning"
+      ],
+      [
+        "Restoration:Improved Protection",
+        "Restoration:Improved Wards"
+      ]
+    ]
+  },
+  "Illusion": {
+    "links": [
+      [
+        "Illusion:Novice Illusion",
+        "Illusion:Perceptual Illusions"
+      ],
+      [
+        "Illusion:Novice Illusion",
+        "Illusion:Emotional Illusions"
+      ],
+      [
+        "Illusion:Novice Illusion",
+        "Illusion:Apprentice Illusion"
+      ],
+      [
+        "Illusion:Novice Illusion",
+        "Illusion:Empowered Illusion"
+      ],
+      [
+        "Illusion:Perceptual Illusions",
+        "Illusion:Environmental Manipulation"
+      ],
+      [
+        "Illusion:Perceptual Illusions",
+        "Illusion:Deceptive Image"
+      ],
+      [
+        "Illusion:Shadow Shaping",
+        "Illusion:Master of Shadows"
+      ],
+      [
+        "Illusion:Shadow Shaping",
+        "Illusion:Shadows of Conflict"
+      ],
+      [
+        "Illusion:Emotional Illusions",
+        "Illusion:Domination"
+      ],
+      [
+        "Illusion:Emotional Illusions",
+        "Illusion:Mesmerize"
+      ],
+      [
+        "Illusion:Delusive Illusions",
+        "Illusion:Obliterate the Mind"
+      ],
+      [
+        "Illusion:Delusive Illusions",
+        "Illusion:Curse"
+      ],
+      [
+        "Illusion:Apprentice Illusion",
+        "Illusion:Adept Illusion"
+      ],
+      [
+        "Illusion:Adept Illusion",
+        "Illusion:Expert Illusion"
+      ],
+      [
+        "Illusion:Adept Illusion",
+        "Illusion:Delusive Illusions"
+      ],
+      [
+        "Illusion:Adept Illusion",
+        "Illusion:Shadow Shaping"
+      ],
+      [
+        "Illusion:Expert Illusion",
+        "Illusion:Master Illusion"
+      ]
+    ]
+  },
+  "Destruction": {
+    "links": [
+      [
+        "Destruction:Novice Destruction",
+        "Destruction:Apprentice Destruction"
+      ],
+      [
+        "Destruction:Novice Destruction",
+        "Destruction:Pyromancy"
+      ],
+      [
+        "Destruction:Novice Destruction",
+        "Destruction:Cryomancy"
+      ],
+      [
+        "Destruction:Novice Destruction",
+        "Destruction:Electromancy"
+      ],
+      [
+        "Destruction:Novice Destruction",
+        "Destruction:Empowered Destruction"
+      ],
+      [
+        "Destruction:Novice Destruction",
+        "Destruction:Arcane Focus"
+      ],
+      [
+        "Destruction:Novice Destruction",
+        "Destruction:Entropic Focus"
+      ],
+      [
+        "Destruction:Novice Destruction",
+        "Destruction:Blood Magic"
+      ],
+      [
+        "Destruction:Apprentice Destruction",
+        "Destruction:Adept Destruction"
+      ],
+      [
+        "Destruction:Apprentice Destruction",
+        "Destruction:Elemental Mastery"
+      ],
+      [
+        "Destruction:Apprentice Destruction",
+        "Destruction:Destructive Blow"
+      ],
+      [
+        "Destruction:Apprentice Destruction",
+        "Destruction:Improved Cloaks"
+      ],
+      [
+        "Destruction:Adept Destruction",
+        "Destruction:Expert Destruction"
+      ],
+      [
+        "Destruction:Expert Destruction",
+        "Destruction:Master Destruction"
+      ],
+      [
+        "Destruction:Pyromancy",
+        "Destruction:Cremation"
+      ],
+      [
+        "Destruction:Cremation",
+        "Destruction:Fire Mastery"
+      ],
+      [
+        "Destruction:Cryomancy",
+        "Destruction:Deep Freeze"
+      ],
+      [
+        "Destruction:Deep Freeze",
+        "Destruction:Frost Mastery"
+      ],
+      [
+        "Destruction:Electromancy",
+        "Destruction:Electrostatic Discharge"
+      ],
+      [
+        "Destruction:Electrostatic Discharge",
+        "Destruction:Lightning Mastery"
+      ],
+      [
+        "Destruction:Empowered Destruction",
+        "Destruction:Impact"
+      ],
+      [
+        "Destruction:Arcane Focus",
+        "Destruction:Arcane Disruption"
+      ],
+      [
+        "Destruction:Arcane Disruption",
+        "Destruction:Disciple of the Mystics"
+      ],
+      [
+        "Destruction:Entropic Focus",
+        "Destruction:Entropic Disarray"
+      ],
+      [
+        "Destruction:Entropic Disarray",
+        "Destruction:Eldritch Artist"
+      ],
+      [
+        "Destruction:Blood Magic",
+        "Destruction:Consume Life"
+      ],
+      [
+        "Destruction:Consume Life",
+        "Destruction:Blood Glutton"
+      ]
+    ]
+  },
+  "Conjuration": {
+    "links": [
+      [
+        "Conjuration:Novice Conjuration",
+        "Conjuration:Apprentice Conjuration"
+      ],
+      [
+        "Conjuration:Novice Conjuration",
+        "Conjuration:Empowered Conjuration"
+      ],
+      [
+        "Conjuration:Novice Conjuration",
+        "Conjuration:Necromancy"
+      ],
+      [
+        "Conjuration:Novice Conjuration",
+        "Conjuration:Mystic Binding"
+      ],
+      [
+        "Conjuration:Novice Conjuration",
+        "Conjuration:Daedric Binding"
+      ],
+      [
+        "Conjuration:Novice Conjuration",
+        "Conjuration:Spirit Calling"
+      ],
+      [
+        "Conjuration:Apprentice Conjuration",
+        "Conjuration:Adept Conjuration"
+      ],
+      [
+        "Conjuration:Adept Conjuration",
+        "Conjuration:Expert Conjuration"
+      ],
+      [
+        "Conjuration:Adept Conjuration",
+        "Conjuration:Soul Magic"
+      ],
+      [
+        "Conjuration:Expert Conjuration",
+        "Conjuration:Master Conjuration"
+      ],
+      [
+        "Conjuration:Empowered Conjuration",
+        "Conjuration:Cognitive Flexibility"
+      ],
+      [
+        "Conjuration:Necromancy",
+        "Conjuration:Ritualism"
+      ],
+      [
+        "Conjuration:Ritualism",
+        "Conjuration:Dark Infusion"
+      ],
+      [
+        "Conjuration:Ritualism",
+        "Conjuration:Siphon Corpse"
+      ],
+      [
+        "Conjuration:Mystic Binding",
+        "Conjuration:Mystic Infusion"
+      ],
+      [
+        "Conjuration:Mystic Infusion",
+        "Conjuration:Mystic Empowerment"
+      ],
+      [
+        "Conjuration:Mystic Empowerment",
+        "Conjuration:Mystic Disruption"
+      ],
+      [
+        "Conjuration:Daedric Binding",
+        "Conjuration:Gates of Oblivion"
+      ],
+      [
+        "Conjuration:Gates of Oblivion",
+        "Conjuration:Waters of Oblivion"
+      ],
+      [
+        "Conjuration:Gates of Oblivion",
+        "Conjuration:Dark Channeling"
+      ],
+      [
+        "Conjuration:Spirit Calling",
+        "Conjuration:Spiritual Bond"
+      ],
+      [
+        "Conjuration:Spiritual Bond",
+        "Conjuration:Ancient Spirits"
+      ],
+      [
+        "Conjuration:Spiritual Bond",
+        "Conjuration:Spirit Guardian"
+      ],
+      [
+        "Conjuration:Soul Magic",
+        "Conjuration:Necropotence"
+      ]
+    ]
+  },
+  "Alteration": {
+    "links": [
+      [
+        "Alteration:Novice Alteration",
+        "Alteration:Apprentice Alteration"
+      ],
+      [
+        "Alteration:Novice Alteration",
+        "Alteration:Empowered Alteration"
+      ],
+      [
+        "Alteration:Novice Alteration",
+        "Alteration:Transmutation"
+      ],
+      [
+        "Alteration:Apprentice Alteration",
+        "Alteration:Adept Alteration"
+      ],
+      [
+        "Alteration:Apprentice Alteration",
+        "Alteration:Improved Mage Armor"
+      ],
+      [
+        "Alteration:Apprentice Alteration",
+        "Alteration:Kinetomancy"
+      ],
+      [
+        "Alteration:Adept Alteration",
+        "Alteration:Expert Alteration"
+      ],
+      [
+        "Alteration:Adept Alteration",
+        "Alteration:Stability"
+      ],
+      [
+        "Alteration:Adept Alteration",
+        "Alteration:Weather Magic"
+      ],
+      [
+        "Alteration:Expert Alteration",
+        "Alteration:Master Alteration"
+      ],
+      [
+        "Alteration:Expert Alteration",
+        "Alteration:Magical Absorption"
+      ],
+      [
+        "Alteration:Stability",
+        "Alteration:Metamagical Thesis"
+      ],
+      [
+        "Alteration:Metamagical Thesis",
+        "Alteration:Metamagical Empowerment"
+      ],
+      [
+        "Alteration:Improved Mage Armor",
+        "Alteration:Versatile Armor"
+      ],
+      [
+        "Alteration:Geomancer",
+        "Alteration:Apprentice Alteration"
+      ],
+      [
+        "Alteration:Transmutation",
+        "Alteration:Transmutational Mending"
+      ],
+      [
+        "Alteration:Kinetomancy",
+        "Alteration:Power of the Force"
+      ],
+      [
+        "Alteration:Weather Magic",
+        "Alteration:Master of Storms"
+      ]
+    ]
+  },
+  "Speech": {
+    "links": [
+      [
+        "Speech:Haggling",
+        "Speech:Merchant"
+      ],
+      [
+        "Speech:Haggling",
+        "Speech:Silver Tongue"
+      ],
+      [
+        "Speech:Haggling",
+        "Speech:Commander"
+      ],
+      [
+        "Speech:Merchant",
+        "Speech:Fencing"
+      ],
+      [
+        "Speech:Silver Tongue",
+        "Speech:Masquerade"
+      ],
+      [
+        "Speech:Silver Tongue",
+        "Speech:Leadership"
+      ],
+      [
+        "Speech:Silver Tongue",
+        "Speech:War Cry"
+      ],
+      [
+        "Speech:Lore of the Thu'um",
+        "Speech:Tongue's Insight"
+      ],
+      [
+        "Speech:Lore of the Thu'um",
+        "Speech:Spiritual Equilibrium"
+      ],
+      [
+        "Speech:Lore of the Thu'um",
+        "Speech:Indomitable Force"
+      ],
+      [
+        "Speech:Lore of the Thu'um",
+        "Speech:Destructive Urge"
+      ],
+      [
+        "Speech:Lore of the Thu'um",
+        "Speech:The Way of the Voice"
+      ]
+    ]
+  },
+  "Alchemy": {
+    "links": [
+      [
+        "Alchemy:Alchemical Lore",
+        "Alchemy:Improved Elixirs"
+      ],
+      [
+        "Alchemy:Alchemical Lore",
+        "Alchemy:Concentrated Poisons"
+      ],
+      [
+        "Alchemy:Improved Elixirs",
+        "Alchemy:Catalysis"
+      ],
+      [
+        "Alchemy:Improved Elixirs",
+        "Alchemy:Night Vision"
+      ],
+      [
+        "Alchemy:Improved Elixirs",
+        "Alchemy:Regeneration"
+      ],
+      [
+        "Alchemy:Catalysis",
+        "Alchemy:Immunization"
+      ],
+      [
+        "Alchemy:Immunization",
+        "Alchemy:Purification Process"
+      ],
+      [
+        "Alchemy:Immunization",
+        "Alchemy:Fortified Muscles"
+      ],
+      [
+        "Alchemy:Immunization",
+        "Alchemy:Alchemical Intellect"
+      ],
+      [
+        "Alchemy:Concentrated Poisons",
+        "Alchemy:Improved Poisons"
+      ],
+      [
+        "Alchemy:Improved Poisons",
+        "Alchemy:Immunization"
+      ],
+      [
+        "Alchemy:Improved Poisons",
+        "Alchemy:Alkahest"
+      ],
+      [
+        "Alchemy:Alkahest",
+        "Alchemy:World Serpent"
+      ]
+    ]
+  },
+  "Sneak": {
+    "links": [
+      [
+        "Sneak:Stealth",
+        "Sneak:Deft Strike"
+      ],
+      [
+        "Sneak:Stealth",
+        "Sneak:Muffled Movement"
+      ],
+      [
+        "Sneak:Stealth",
+        "Sneak:Arcane Assassin"
+      ],
+      [
+        "Sneak:Stealth",
+        "Sneak:Tripwire"
+      ],
+      [
+        "Sneak:Stealth",
+        "Sneak:Fog of War"
+      ],
+      [
+        "Sneak:Deft Strike",
+        "Sneak:Anatomical Lore"
+      ],
+      [
+        "Sneak:Anatomical Lore",
+        "Sneak:Advanced Anatomical Lore"
+      ],
+      [
+        "Sneak:Anatomical Lore",
+        "Sneak:Problem Solver"
+      ],
+      [
+        "Sneak:Muffled Movement",
+        "Sneak:Light Steps"
+      ],
+      [
+        "Sneak:Light Steps",
+        "Sneak:Acrobatics"
+      ],
+      [
+        "Sneak:Light Steps",
+        "Sneak:Shadow Opportunist"
+      ],
+      [
+        "Sneak:Acrobatics",
+        "Sneak:Shadowrunner"
+      ],
+      [
+        "Sneak:Fog of War",
+        "Sneak:Cloak and Dagger"
+      ],
+      [
+        "Sneak:Tripwire",
+        "Sneak:Whiplash"
+      ]
+    ]
+  },
+  "Wayfarer": {
+    "links": [
+      [
+        "Wayfarer:Cheap Tricks",
+        "Wayfarer:Lone Wolf"
+      ],
+      [
+        "Wayfarer:Cheap Tricks",
+        "Wayfarer:Advanced Lockpicking"
+      ],
+      [
+        "Wayfarer:Cheap Tricks",
+        "Wayfarer:Leader"
+      ],
+      [
+        "Wayfarer:Cheap Tricks",
+        "Wayfarer:Hunter"
+      ],
+      [
+        "Wayfarer:Lone Wolf",
+        "Wayfarer:Solo"
+      ],
+      [
+        "Wayfarer:Solo",
+        "Wayfarer:Maverick"
+      ],
+      [
+        "Wayfarer:Maverick",
+        "Wayfarer:One Man Legion"
+      ],
+      [
+        "Wayfarer:Advanced Lockpicking",
+        "Wayfarer:Treasure Hunter"
+      ],
+      [
+        "Wayfarer:Advanced Lockpicking",
+        "Wayfarer:Lockdown"
+      ],
+      [
+        "Wayfarer:Treasure Hunter",
+        "Wayfarer:Sophisticated Lockpicking"
+      ],
+      [
+        "Wayfarer:Sophisticated Lockpicking",
+        "Wayfarer:Masterly Lockpicking"
+      ],
+      [
+        "Wayfarer:Leader",
+        "Wayfarer:Captain"
+      ],
+      [
+        "Wayfarer:Captain",
+        "Wayfarer:Commander"
+      ],
+      [
+        "Wayfarer:Commander",
+        "Wayfarer:Legion"
+      ],
+      [
+        "Wayfarer:Survival Instincts",
+        "Wayfarer:Pacification"
+      ],
+      [
+        "Wayfarer:Hunter",
+        "Wayfarer:Survival Instincts"
+      ],
+      [
+        "Wayfarer:Hunter",
+        "Wayfarer:Animal Taming"
+      ],
+      [
+        "Wayfarer:Lockdown",
+        "Wayfarer:Hotwire"
+      ],
+      [
+        "Wayfarer:Hotwire",
+        "Wayfarer:Percussive Maintenance"
+      ],
+      [
+        "Wayfarer:Animal Riding",
+        "Wayfarer:Beastmaster"
+      ],
+      [
+        "Wayfarer:Animal Taming",
+        "Wayfarer:Animal Riding"
+      ]
+    ]
+  },
+  "Finesse": {
+    "links": [
+      [
+        "Finesse:Nimble Fingers",
+        "Finesse:Outlaw"
+      ],
+      [
+        "Finesse:Nimble Fingers",
+        "Finesse:Cutpurse"
+      ],
+      [
+        "Finesse:Nimble Fingers",
+        "Finesse:Sound Body"
+      ],
+      [
+        "Finesse:Outlaw",
+        "Finesse:Thief"
+      ],
+      [
+        "Finesse:Outlaw",
+        "Finesse:Lawless World"
+      ],
+      [
+        "Finesse:Thief",
+        "Finesse:Lucky 7"
+      ],
+      [
+        "Finesse:Thief",
+        "Finesse:Death's Emperor"
+      ],
+      [
+        "Finesse:Cutpurse",
+        "Finesse:Poisoner"
+      ],
+      [
+        "Finesse:Poisoner",
+        "Finesse:Misdirection"
+      ],
+      [
+        "Finesse:Poisoner",
+        "Finesse:Death's Emperor"
+      ],
+      [
+        "Finesse:Misdirection",
+        "Finesse:Perfected Art"
+      ],
+      [
+        "Finesse:Sound Body",
+        "Finesse:Sound Mind"
+      ],
+      [
+        "Finesse:Sound Mind",
+        "Finesse:Sound Spirit"
+      ],
+      [
+        "Finesse:Trapper",
+        "Finesse:Poisoned Clamps"
+      ],
+      [
+        "Finesse:Trapper",
+        "Finesse:Sound Body"
+      ],
+      [
+        "Finesse:Trapper",
+        "Finesse:Pocket Sand"
+      ],
+      [
+        "Finesse:Poisoned Clamps",
+        "Finesse:Salt on the Wound"
+      ],
+      [
+        "Finesse:Pocket Sand",
+        "Finesse:Quick Sand"
+      ],
+      [
+        "Finesse:Death's Emperor",
+        "Finesse:Mutiny"
+      ]
+    ]
+  },
+  "Evasion": {
+    "links": [
+      [
+        "Evasion:Agility",
+        "Evasion:Light Armor Training"
+      ],
+      [
+        "Evasion:Agility",
+        "Evasion:Dodge"
+      ],
+      [
+        "Evasion:Agility",
+        "Evasion:Agile Spellcasting"
+      ],
+      [
+        "Evasion:Agility",
+        "Evasion:Unarmored"
+      ],
+      [
+        "Evasion:Light Armor Training",
+        "Evasion:Combat Reflexes"
+      ],
+      [
+        "Evasion:Light Armor Training",
+        "Evasion:Dexterity"
+      ],
+      [
+        "Evasion:Light Armor Training",
+        "Evasion:Vexing Flanker"
+      ],
+      [
+        "Evasion:Light Armor Training",
+        "Evasion:Athletics"
+      ],
+      [
+        "Evasion:Combat Reflexes",
+        "Evasion:Meteoric Reflexes"
+      ],
+      [
+        "Evasion:Dexterity",
+        "Evasion:Wind Walker"
+      ],
+      [
+        "Evasion:Wind Walker",
+        "Evasion:Meteoric Reflexes"
+      ],
+      [
+        "Evasion:Vexing Flanker",
+        "Evasion:Combat Reflexes"
+      ],
+      [
+        "Evasion:Dodge",
+        "Evasion:Evasive Leap"
+      ],
+      [
+        "Evasion:Dodge",
+        "Evasion:As a Leaf"
+      ],
+      [
+        "Evasion:Athletics",
+        "Evasion:Annoying Mosquitoes"
+      ]
+    ]
+  },
+  "Heavy Armor": {
+    "links": [
+      [
+        "Heavy Armor:Conditioning",
+        "Heavy Armor:Combat Casting"
+      ],
+      [
+        "Heavy Armor:Conditioning",
+        "Heavy Armor:Combat Training"
+      ],
+      [
+        "Heavy Armor:Conditioning",
+        "Heavy Armor:Relentless Onslaught"
+      ],
+      [
+        "Heavy Armor:Combat Casting",
+        "Heavy Armor:Combat Trance"
+      ],
+      [
+        "Heavy Armor:Combat Trance",
+        "Heavy Armor:Combat Meditation"
+      ],
+      [
+        "Heavy Armor:Combat Meditation",
+        "Heavy Armor:War Mage"
+      ],
+      [
+        "Heavy Armor:Combat Training",
+        "Heavy Armor:Fortitude"
+      ],
+      [
+        "Heavy Armor:Combat Training",
+        "Heavy Armor:Immovable"
+      ],
+      [
+        "Heavy Armor:Fortitude",
+        "Heavy Armor:Power of the Combatant"
+      ],
+      [
+        "Heavy Armor:Power of the Combatant",
+        "Heavy Armor:Juggernaut"
+      ],
+      [
+        "Heavy Armor:Relentless Onslaught",
+        "Heavy Armor:Devastating Tackle"
+      ],
+      [
+        "Heavy Armor:Relentless Onslaught",
+        "Heavy Armor:Cushioned"
+      ],
+      [
+        "Heavy Armor:Cushioned",
+        "Heavy Armor:Defiance"
+      ],
+      [
+        "Heavy Armor:Defiance",
+        "Heavy Armor:Never Kneel"
+      ],
+      [
+        "Heavy Armor:Never Kneel",
+        "Heavy Armor:Reap the Whirlwind"
+      ]
+    ]
+  },
+  "Smithing": {
+    "links": [
+      [
+        "Smithing:Craftsmanship",
+        "Smithing:Dwarven Smithing"
+      ],
+      [
+        "Smithing:Craftsmanship",
+        "Smithing:Advanced Blacksmithing"
+      ],
+      [
+        "Smithing:Craftsmanship",
+        "Smithing:Advanced Light Armors"
+      ],
+      [
+        "Smithing:Dwarven Smithing",
+        "Smithing:Orcish Smithing"
+      ],
+      [
+        "Smithing:Dwarven Smithing",
+        "Smithing:Elven Smithing"
+      ],
+      [
+        "Smithing:Orcish Smithing",
+        "Smithing:Ebony Smithing"
+      ],
+      [
+        "Smithing:Orcish Smithing",
+        "Smithing:Glass Smithing"
+      ],
+      [
+        "Smithing:Ebony Smithing",
+        "Smithing:Daedric Smithing"
+      ],
+      [
+        "Smithing:Ebony Smithing",
+        "Smithing:Draconic Blacksmithing"
+      ],
+      [
+        "Smithing:Advanced Blacksmithing",
+        "Smithing:Legendary Blacksmithing"
+      ],
+      [
+        "Smithing:Advanced Blacksmithing",
+        "Smithing:Arcane Craftsmanship"
+      ],
+      [
+        "Smithing:Advanced Blacksmithing",
+        "Smithing:Tailoring & Polishing"
+      ],
+      [
+        "Smithing:Advanced Blacksmithing",
+        "Smithing:Smithing Specialization"
+      ],
+      [
+        "Smithing:Advanced Light Armors",
+        "Smithing:Elven Smithing"
+      ],
+      [
+        "Smithing:Advanced Light Armors",
+        "Smithing:Orcish Smithing"
+      ],
+      [
+        "Smithing:Elven Smithing",
+        "Smithing:Glass Smithing"
+      ],
+      [
+        "Smithing:Elven Smithing",
+        "Smithing:Ebony Smithing"
+      ],
+      [
+        "Smithing:Glass Smithing",
+        "Smithing:Draconic Blacksmithing"
+      ],
+      [
+        "Smithing:Glass Smithing",
+        "Smithing:Daedric Smithing"
+      ],
+      [
+        "Smithing:Smithing Specialization",
+        "Smithing:Iron Lore"
+      ]
+    ]
+  },
+  "Block": {
+    "links": [
+      [
+        "Block:Improved Blocking",
+        "Block:Strong Grip"
+      ],
+      [
+        "Block:Improved Blocking",
+        "Block:Powerful Bashes"
+      ],
+      [
+        "Block:Improved Blocking",
+        "Block:Experienced Blocking"
+      ],
+      [
+        "Block:Improved Blocking",
+        "Block:Torch Combat"
+      ],
+      [
+        "Block:Improved Blocking",
+        "Block:Weapons Master"
+      ],
+      [
+        "Block:Improved Blocking",
+        "Block:Shield's Best Friend"
+      ],
+      [
+        "Block:Strong Grip",
+        "Block:Elemental Protection"
+      ],
+      [
+        "Block:Elemental Protection",
+        "Block:Defensive Stance"
+      ],
+      [
+        "Block:Defensive Stance",
+        "Block:Unstoppable Charge"
+      ],
+      [
+        "Block:Powerful Bashes",
+        "Block:Overpowering Bashes"
+      ],
+      [
+        "Block:Powerful Bashes",
+        "Block:Shield Strike"
+      ],
+      [
+        "Block:Overpowering Bashes",
+        "Block:Disarming Bash"
+      ],
+      [
+        "Block:Disarming Bash",
+        "Block:Unstoppable Charge"
+      ],
+      [
+        "Block:Weapons Master",
+        "Block:Masterly Strike"
+      ],
+      [
+        "Block:Masterly Strike",
+        "Block:Surprise Attack"
+      ],
+      [
+        "Block:Surprise Attack",
+        "Block:Strike the Jugular"
+      ],
+      [
+        "Block:Strike the Jugular",
+        "Block:Master of All"
+      ]
+    ]
+  },
+  "Marksman": {
+    "links": [
+      [
+        "Marksman:Ranged Combat Training",
+        "Marksman:Eagle Eye"
+      ],
+      [
+        "Marksman:Ranged Combat Training",
+        "Marksman:Precise Aim"
+      ],
+      [
+        "Marksman:Ranged Combat Training",
+        "Marksman:Ranger"
+      ],
+      [
+        "Marksman:Ranged Combat Training",
+        "Marksman:Sniper"
+      ],
+      [
+        "Marksman:Ranged Combat Training",
+        "Marksman:Hidden Blade"
+      ],
+      [
+        "Marksman:Ranged Combat Training",
+        "Marksman:Bow Strike"
+      ],
+      [
+        "Marksman:Eagle Eye",
+        "Marksman:Marksman's Focus"
+      ],
+      [
+        "Marksman:Eagle Eye",
+        "Marksman:Quick Shot"
+      ],
+      [
+        "Marksman:Eagle Eye",
+        "Marksman:Rapid Reload"
+      ],
+      [
+        "Marksman:Eagle Eye",
+        "Marksman:Power Shot"
+      ],
+      [
+        "Marksman:Eagle Eye",
+        "Marksman:Sharp Throw"
+      ],
+      [
+        "Marksman:Power Shot",
+        "Marksman:Stunning Precision"
+      ],
+      [
+        "Marksman:Power Shot",
+        "Marksman:Lion's Arrow"
+      ],
+      [
+        "Marksman:Precise Aim",
+        "Marksman:Piercing Shot"
+      ],
+      [
+        "Marksman:Precise Aim",
+        "Marksman:Focus on the Prey"
+      ],
+      [
+        "Marksman:Piercing Shot",
+        "Marksman:Penetrating Shot"
+      ],
+      [
+        "Marksman:Piercing Shot",
+        "Marksman:Three Crows"
+      ],
+      [
+        "Marksman:Penetrating Shot",
+        "Marksman:Stunning Precision"
+      ],
+      [
+        "Marksman:Penetrating Shot",
+        "Marksman:Lion's Arrow"
+      ]
+    ]
+  },
+  "Two-Handed": {
+    "links": [
+      [
+        "Two-Handed:Great Weapon Mastery",
+        "Two-Handed:Barbaric Might"
+      ],
+      [
+        "Two-Handed:Barbaric Might",
+        "Two-Handed:Devastating Strike"
+      ],
+      [
+        "Two-Handed:Barbaric Might",
+        "Two-Handed:Devastating Charge"
+      ],
+      [
+        "Two-Handed:Barbaric Might",
+        "Two-Handed:Hafted Blade Focus"
+      ],
+      [
+        "Two-Handed:Barbaric Might",
+        "Two-Handed:Longweapon Focus"
+      ],
+      [
+        "Two-Handed:Barbaric Might",
+        "Two-Handed:Warhammer Focus"
+      ],
+      [
+        "Two-Handed:Barbaric Might",
+        "Two-Handed:Quarterstaff & Battlestaff Focus"
+      ],
+      [
+        "Two-Handed:Devastating Strike",
+        "Two-Handed:Hyper Armor"
+      ],
+      [
+        "Two-Handed:Hyper Armor",
+        "Two-Handed:Mighty Strike"
+      ],
+      [
+        "Two-Handed:Mighty Strike",
+        "Two-Handed:Warbringer"
+      ],
+      [
+        "Two-Handed:Devastating Charge",
+        "Two-Handed:Hyper Armor"
+      ],
+      [
+        "Two-Handed:Hafted Blade Focus",
+        "Two-Handed:Shield Breaker"
+      ],
+      [
+        "Two-Handed:Longweapon Focus",
+        "Two-Handed:Reversal"
+      ],
+      [
+        "Two-Handed:Warhammer Focus",
+        "Two-Handed:Onslaught"
+      ],
+      [
+        "Two-Handed:Quarterstaff & Battlestaff Focus",
+        "Two-Handed:Defensive Strike"
+      ],
+      [
+        "Two-Handed:Reversal",
+        "Two-Handed:Death or Glory"
+      ],
+      [
+        "Two-Handed:Onslaught",
+        "Two-Handed:Critical Slam"
+      ],
+      [
+        "Two-Handed:Shield Breaker",
+        "Two-Handed:Execute"
+      ],
+      [
+        "Two-Handed:Defensive Strike",
+        "Two-Handed:Battle Hide"
+      ]
+    ]
+  },
+  "One-Handed": {
+    "links": [
+      [
+        "One-Handed:Weapon Mastery",
+        "One-Handed:Penetrating Strikes"
+      ],
+      [
+        "One-Handed:Weapon Mastery",
+        "One-Handed:Flurry"
+      ],
+      [
+        "One-Handed:Weapon Mastery",
+        "One-Handed:Balanced Wielding"
+      ],
+      [
+        "One-Handed:Weapon Mastery",
+        "One-Handed:Armed Spellcasting"
+      ],
+      [
+        "One-Handed:Penetrating Strikes",
+        "One-Handed:Powerful Strike"
+      ],
+      [
+        "One-Handed:Penetrating Strikes",
+        "One-Handed:Powerful Charge"
+      ],
+      [
+        "One-Handed:Penetrating Strikes",
+        "One-Handed:War Axe Focus"
+      ],
+      [
+        "One-Handed:Penetrating Strikes",
+        "One-Handed:Mace Focus"
+      ],
+      [
+        "One-Handed:Penetrating Strikes",
+        "One-Handed:Sword & Spear Focus"
+      ],
+      [
+        "One-Handed:Powerful Strike",
+        "One-Handed:Relentless Onslaught"
+      ],
+      [
+        "One-Handed:Relentless Onslaught",
+        "One-Handed:Deathbringer"
+      ],
+      [
+        "One-Handed:Powerful Charge",
+        "One-Handed:Relentless Onslaught"
+      ],
+      [
+        "One-Handed:War Axe Focus",
+        "One-Handed:Armsbreaker"
+      ],
+      [
+        "One-Handed:Mace Focus",
+        "One-Handed:Stunning Blow"
+      ],
+      [
+        "One-Handed:Sword & Spear Focus",
+        "One-Handed:Piercing Strike"
+      ],
+      [
+        "One-Handed:Flurry",
+        "One-Handed:Storm of Steel"
+      ],
+      [
+        "One-Handed:Hand to Hand",
+        "One-Handed:Grappling"
+      ],
+      [
+        "One-Handed:Hand to Hand",
+        "One-Handed:Unarmed Defense"
+      ],
+      [
+        "One-Handed:Short Blade Focus",
+        "One-Handed:Penetrating Strikes"
+      ],
+      [
+        "One-Handed:Short Blade Focus",
+        "One-Handed:Puncture"
+      ],
+      [
+        "One-Handed:Piercing Strike",
+        "One-Handed:Final Stand"
+      ],
+      [
+        "One-Handed:Stunning Blow",
+        "One-Handed:Heavy Slam"
+      ],
+      [
+        "One-Handed:Armsbreaker",
+        "One-Handed:Guillotine"
+      ],
+      [
+        "One-Handed:Puncture",
+        "One-Handed:Death Adder"
+      ],
+      [
+        "One-Handed:Grappling",
+        "One-Handed:Takedown"
+      ],
+      [
+        "One-Handed:Unarmed Defense",
+        "One-Handed:Unarmed Stance"
+      ]
+    ]
+  },
+  "Destiny": {
+    "links": [
+      [
+        "Destiny:Destiny",
+        "Destiny:Focus"
+      ],
+      [
+        "Destiny:Destiny",
+        "Destiny:Constitution"
+      ],
+      [
+        "Destiny:Destiny",
+        "Destiny:Endurance"
+      ],
+      [
+        "Destiny:Focus",
+        "Destiny:Mage"
+      ],
+      [
+        "Destiny:Constitution",
+        "Destiny:Warrior"
+      ],
+      [
+        "Destiny:Endurance",
+        "Destiny:Thief"
+      ],
+      [
+        "Destiny:Mage",
+        "Destiny:Fortification"
+      ],
+      [
+        "Destiny:Mage",
+        "Destiny:Magicka Surge"
+      ],
+      [
+        "Destiny:Mage",
+        "Destiny:Magic Shell"
+      ],
+      [
+        "Destiny:Warrior",
+        "Destiny:Magic Shell"
+      ],
+      [
+        "Destiny:Warrior",
+        "Destiny:Iron Skin"
+      ],
+      [
+        "Destiny:Warrior",
+        "Destiny:Battle Spirit"
+      ],
+      [
+        "Destiny:Thief",
+        "Destiny:Battle Spirit"
+      ],
+      [
+        "Destiny:Thief",
+        "Destiny:Adrenaline"
+      ],
+      [
+        "Destiny:Thief",
+        "Destiny:Swiftness"
+      ],
+      [
+        "Destiny:Fortification",
+        "Destiny:Agent"
+      ],
+      [
+        "Destiny:Magicka Surge",
+        "Destiny:Sorcerer"
+      ],
+      [
+        "Destiny:Magic Shell",
+        "Destiny:Spellsword"
+      ],
+      [
+        "Destiny:Iron Skin",
+        "Destiny:Knight"
+      ],
+      [
+        "Destiny:Battle Spirit",
+        "Destiny:Acrobat"
+      ],
+      [
+        "Destiny:Adrenaline",
+        "Destiny:Scout"
+      ],
+      [
+        "Destiny:Swiftness",
+        "Destiny:Spellblade"
+      ],
+      [
+        "Destiny:Agent",
+        "Destiny:Leadership"
+      ],
+      [
+        "Destiny:Agent",
+        "Destiny:Hard Skin"
+      ],
+      [
+        "Destiny:Agent",
+        "Destiny:Healing Presence"
+      ],
+      [
+        "Destiny:Sorcerer",
+        "Destiny:Healing Presence"
+      ],
+      [
+        "Destiny:Sorcerer",
+        "Destiny:Absorbtion"
+      ],
+      [
+        "Destiny:Sorcerer",
+        "Destiny:Conjuring Presence"
+      ],
+      [
+        "Destiny:Spellsword",
+        "Destiny:Conjuring Presence"
+      ],
+      [
+        "Destiny:Spellsword",
+        "Destiny:Corrosive Weapon"
+      ],
+      [
+        "Destiny:Spellsword",
+        "Destiny:Leeching Spikes"
+      ],
+      [
+        "Destiny:Knight",
+        "Destiny:Leeching Spikes"
+      ],
+      [
+        "Destiny:Knight",
+        "Destiny:Unyielding"
+      ],
+      [
+        "Destiny:Knight",
+        "Destiny:Overwhelming Presence"
+      ],
+      [
+        "Destiny:Acrobat",
+        "Destiny:Overwhelming Presence"
+      ],
+      [
+        "Destiny:Acrobat",
+        "Destiny:Smash"
+      ],
+      [
+        "Destiny:Acrobat",
+        "Destiny:Trickster"
+      ],
+      [
+        "Destiny:Scout",
+        "Destiny:Trickster"
+      ],
+      [
+        "Destiny:Scout",
+        "Destiny:Swift Shadow"
+      ],
+      [
+        "Destiny:Scout",
+        "Destiny:Viper's Blade"
+      ],
+      [
+        "Destiny:Spellblade",
+        "Destiny:Viper's Blade"
+      ],
+      [
+        "Destiny:Spellblade",
+        "Destiny:Evasion"
+      ],
+      [
+        "Destiny:Spellblade",
+        "Destiny:Silent Blade"
+      ],
+      [
+        "Destiny:Leadership",
+        "Destiny:Bard"
+      ],
+      [
+        "Destiny:Hard Skin",
+        "Destiny:Shaman"
+      ],
+      [
+        "Destiny:Healing Presence",
+        "Destiny:Templar"
+      ],
+      [
+        "Destiny:Absorbtion",
+        "Destiny:Archmage"
+      ],
+      [
+        "Destiny:Conjuring Presence",
+        "Destiny:Summoner"
+      ],
+      [
+        "Destiny:Corrosive Weapon",
+        "Destiny:Battlemage"
+      ],
+      [
+        "Destiny:Leeching Spikes",
+        "Destiny:Blood Knight"
+      ],
+      [
+        "Destiny:Unyielding",
+        "Destiny:General"
+      ],
+      [
+        "Destiny:Overwhelming Presence",
+        "Destiny:Monk"
+      ],
+      [
+        "Destiny:Smash",
+        "Destiny:Berserker"
+      ],
+      [
+        "Destiny:Trickster",
+        "Destiny:Saboteur"
+      ],
+      [
+        "Destiny:Swift Shadow",
+        "Destiny:Assassin"
+      ],
+      [
+        "Destiny:Viper's Blade",
+        "Destiny:Rogue"
+      ],
+      [
+        "Destiny:Evasion",
+        "Destiny:Stalker"
+      ],
+      [
+        "Destiny:Silent Blade",
+        "Destiny:Nightblade"
+      ]
+    ]
+  }
+}

@@ -75,10 +75,12 @@ export interface Perk {
   rankEffects?: string[];
   /** Destiny perks: added to Health, Magicka and Stamina. */
   allAttributes?: number;
-  /** Destiny perks: position in the game's wheel. */
-  x?: number;
-  y?: number;
+  /** Where the game puts the star in its tree, in the game's units, y up. */
+  pos?: [number, number];
 }
+
+/** The lines the game draws between a tree's stars. Drawing only; the rules use `requires`. */
+export type TreeLink = [from: string, to: string];
 
 export interface GameMode {
   name: "Naaktiid" | "Konahrik";
@@ -99,6 +101,8 @@ export interface VersionSource {
   /** Gods offered free at the start, by race. Any god can still be joined at a shrine. */
   startingDeities: Record<string, string[]>;
   gameModes: GameMode[];
+  /** Per tree, the lines the game draws between its stars. */
+  trees: Record<string, { links: TreeLink[] }>;
 }
 
 /** Everything the planner knows about one LoreRim version. */
@@ -121,6 +125,7 @@ export interface GameData {
   traitByName: Map<string, Trait>;
   perkById: Map<string, Perk>;
   perksByTree: Map<string, Perk[]>;
+  linksByTree: Map<string, TreeLink[]>;
   skillPointCost(current: number): number;
   maxSkillAt(level: number): number;
   destinyPointsAt(level: number): number;
@@ -152,6 +157,7 @@ function build(version: GameVersion, src: VersionSource): GameData {
     traitByName: new Map(src.traits.map((t) => [t.name, t])),
     perkById: new Map(src.perks.map((p) => [p.id, p])),
     perksByTree,
+    linksByTree: new Map(Object.entries(src.trees).map(([tree, t]) => [tree, t.links])),
     skillPointCost: (current) => skillPointCost(src.rules, current),
     maxSkillAt: (level) => maxSkillAt(src.rules, level),
     destinyPointsAt: (level) => destinyPointsAt(src.rules, level),

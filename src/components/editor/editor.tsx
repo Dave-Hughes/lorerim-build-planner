@@ -63,6 +63,26 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
   const lv = plan.levels[level - 1];
   const [tree, setTree] = useState<string>(() => initialPlan.majors[0] ?? "One-Handed");
   const [selected, setSelected] = useState<string | null>(null);
+  const [panelEl, setPanelEl] = useState<HTMLDivElement | null>(null);
+  // When the panel sits under the tree, bring it into view on a pick so Confirm is in reach.
+  const pickPerk = (id: string) => {
+    setSelected(id);
+    requestAnimationFrame(() => {
+      const r = panelEl?.getBoundingClientRect();
+      if (r && r.height && (r.top > window.innerHeight - 120 || r.bottom < 0)) panelEl?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    });
+  };
+  const panel = (id: string | null) => (
+    <PerkPanel
+      plan={plan}
+      states={states}
+      level={level}
+      selectedId={id}
+      onTake={(pid) => setPlan(ops.takePerk(plan, level, pid))}
+      onRemove={(pid) => setPlan(ops.removePerk(plan, level, pid))}
+      onGoToLevel={(n) => setLevel(n)}
+    />
+  );
   const [extraSkill, setExtraSkill] = useState<string>(() => initialPlan.majors[0] ?? d.skills[0]);
 
   const steps = useMemo(() => skillStepInfo(d, plan, states, level), [d, plan, states, level]);
@@ -271,18 +291,15 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
               }}
             />
             <div className={`frame ${styles.treeBox}`}>
-              <div className={styles.treeArea}>
-                <Tree tree={tree} states={states} level={level} selectedId={selected} onSelect={setSelected} />
+              <div className={styles.treeRow}>
+                <div className={styles.treeArea}>
+                  <Tree tree={tree} states={states} level={level} selectedId={selected} onSelect={pickPerk} details={(id) => panel(id)} />
+                </div>
+                {/* Beside the tree when there is room, under it otherwise; on small screens it opens as a sheet instead. */}
+                <div ref={setPanelEl} className={styles.panelSlot}>
+                  {panel(selected)}
+                </div>
               </div>
-              <PerkPanel
-                plan={plan}
-                states={states}
-                level={level}
-                selectedId={selected}
-                onTake={(id) => setPlan(ops.takePerk(plan, level, id))}
-                onRemove={(id) => setPlan(ops.removePerk(plan, level, id))}
-                onGoToLevel={(n) => setLevel(n)}
-              />
             </div>
           </section>
         </div>

@@ -3,6 +3,7 @@ import sample from "./__fixtures__/sample-build.json";
 import { computeBuild } from "./engine";
 import { levelChanges, levelMarks, perkStatus, perksByLevel, skillStepInfo } from "./derive";
 import { treeLayout } from "./layout";
+import { overlaps, placeLabels, starRect } from "./labels";
 import { requireGameData } from "./data";
 import type { BuildPlan } from "./types";
 
@@ -106,23 +107,98 @@ describe("skillStepInfo", () => {
 });
 
 describe("treeLayout", () => {
-  it("places every perk of every tree inside its canvas with no overlaps in a row", () => {
-    for (const tree of [...d.skills, "Destiny"]) {
-      const l = treeLayout(d, tree);
-      expect(l.nodes.length).toBe(d.perksByTree.get(tree)!.length);
+  const trees = [...d.skills, "Destiny"];
+
+  it("draws every star of every tree inside its box", () => {
+    for (const tree of trees) {
+      const l = treeLayout(d, tree, 900, 700);
+      expect(l.nodes.length, tree).toBe(d.perksByTree.get(tree)!.length);
       for (const n of l.nodes) {
         expect(n.x).toBeGreaterThanOrEqual(0);
         expect(n.x).toBeLessThanOrEqual(l.width);
         expect(n.y).toBeGreaterThanOrEqual(0);
         expect(n.y).toBeLessThanOrEqual(l.height);
       }
-      const seen = new Set(l.nodes.map((n) => `${n.x},${n.y}`));
-      expect(seen.size).toBe(l.nodes.length);
+    }
+  });
+
+  it("keeps the game's relative positions: left/right and above/below never change", () => {
+    for (const tree of trees) {
+      for (const [w, h] of [[400, 700], [900, 700], [1600, 1240]]) {
+        const l = treeLayout(d, tree, w, h);
+        const at = new Map(l.nodes.map((n) => [n.id, n]));
+        const perks = d.perksByTree.get(tree)!;
+        for (const a of perks)
+          for (const b of perks) {
+            if (a === b) continue;
+            const [ax, ay] = a.pos!;
+            const [bx, by] = b.pos!;
+            const pa = at.get(a.id)!;
+            const pb = at.get(b.id)!;
+            // Same order across, and the game's y up is the screen's y down.
+            const sign = (v: number) => (Math.abs(v) < 1e-6 ? 0 : Math.sign(v));
+            expect(sign(bx - ax), `${tree}: ${a.name} / ${b.name} across`).toBe(sign((pb.x - pa.x) / l.scale));
+            expect(sign(by - ay), `${tree}: ${a.name} / ${b.name} up`).toBe(sign((pa.y - pb.y) / l.scale));
+          }
+        // One scale for both axes: distances keep their proportions.
+        const [a, b] = perks;
+        const game = Math.hypot(b.pos![0] - a.pos![0], b.pos![1] - a.pos![1]);
+        const screen = Math.hypot(at.get(b.id)!.x - at.get(a.id)!.x, at.get(b.id)!.y - at.get(a.id)!.y);
+        expect(screen).toBeCloseTo(game * l.scale, 6);
+      }
+    }
+  });
+
+  it("draws the game's own lines", () => {
+    for (const tree of trees) {
+      const l = treeLayout(d, tree, 900, 700);
+      expect(l.edges.map((e) => [e.from, e.to]), tree).toEqual(d.linksByTree.get(tree));
     }
   });
 
   it("notes prerequisites from other trees", () => {
-    const l = treeLayout(d, "Evasion");
+    const l = treeLayout(d, "Evasion", 900, 700);
     expect(l.external).toEqual([{ id: "Heavy Armor:Conditioning", tree: "Heavy Armor", name: "Conditioning", forId: "Evasion:Dodge" }]);
+  });
+});
+
+describe("placeLabels", () => {
+  // Tree boxes at 1440, 1920 and 2560 wide: width, then the window height less header and tabs.
+  const boxes = [
+    { width: 900, height: 700, star: 8, font: 13 },
+    { width: 1200, height: 880, star: 9.5, font: 14 },
+    { width: 1600, height: 1240, star: 11, font: 15 },
+  ];
+  const req = (id: string) => {
+    const p = d.perkById.get(id)!;
+    return p.tree === "Destiny" ? "" : p.skill ? `${p.tree} ${p.skill}` : "No requirement";
+  };
+
+  it("never lets a label overlap another label or a star, in any tree", () => {
+    for (const tree of [...d.skills, "Destiny"])
+      for (const box of boxes)
+        for (const states of ["none", "mixed"] as const) {
+          const l = treeLayout(d, tree, box.width, box.height);
+          const stars = l.nodes.map((n, i) => ({
+            id: n.id,
+            x: n.x,
+            y: n.y,
+            lines: (req(n.id) ? [d.perkById.get(n.id)!.name, req(n.id)] : [d.perkById.get(n.id)!.name]) as [string] | [string, string],
+            priority: states === "none" ? 3 : i === 0 ? 0 : (i % 3) + 1,
+          }));
+          const placed = [...placeLabels(stars, box).values()];
+          for (const a of placed) {
+            expect(a.x >= 0 && a.y >= 0 && a.x + a.w <= box.width && a.y + a.h <= box.height, `${tree} ${box.width}: ${a.id} in the box`).toBe(true);
+            for (const b of placed) if (a !== b) expect(overlaps(a, b), `${tree} ${box.width}: ${a.id} / ${b.id}`).toBe(false);
+            for (const s of stars) expect(overlaps(a, starRect(s.x, s.y, box.star)), `${tree} ${box.width}: ${a.id} over ${s.id}`).toBe(false);
+          }
+          if (states === "mixed") expect(placed.some((p) => p.id === stars[0].id), `${tree}: the selected star is labelled`).toBe(true);
+        }
+  });
+
+  it("labels most stars of a tree at 1920", () => {
+    const l = treeLayout(d, "Block", 1200, 880);
+    const stars = l.nodes.map((n) => ({ id: n.id, x: n.x, y: n.y, lines: [d.perkById.get(n.id)!.name, req(n.id)] as [string, string], priority: 3 }));
+    expect(placeLabels(stars, boxes[1]).size).toBeGreaterThanOrEqual(stars.length * 0.7);
   });
 });

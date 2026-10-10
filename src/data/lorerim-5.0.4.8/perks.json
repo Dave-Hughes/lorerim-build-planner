@@ -5,6 +5,10 @@
     "name": "Enchanter's Insight",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      2.0,
+      0.0
+    ],
     "ranks": 2,
     "skill": 0,
     "rankSkills": [
@@ -28,6 +32,10 @@
       "Enchanting:Enchanter's Insight"
     ],
     "anyOf": false,
+    "pos": [
+      2.7857,
+      1.2
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You've learned how to tame the elements most efficiently. Thus, all elemental enchantments are stronger.",
@@ -41,6 +49,10 @@
       "Enchanting:Elemental Lore"
     ],
     "anyOf": false,
+    "pos": [
+      2.7857,
+      2.1
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You've become skilled in using enchantments to strengthen mind and body. Thus, all such enchantments are stronger.",
@@ -54,6 +66,10 @@
       "Enchanting:Corpus Lore"
     ],
     "anyOf": false,
+    "pos": [
+      2.1857,
+      3.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You've become a master of infusing enchantments that transfer knowledge and skill to the user, making all such ones stronger.",
@@ -68,6 +84,10 @@
       "Enchanting:Skill Lore"
     ],
     "anyOf": false,
+    "pos": [
+      0.8429,
+      4.0
+    ],
     "ranks": 1,
     "skill": 90,
     "text": "You've found a way to bind even more energy into inanimate matter.",
@@ -81,6 +101,10 @@
       "Enchanting:Enchanter's Insight"
     ],
     "anyOf": false,
+    "pos": [
+      1.1714,
+      1.24
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You've learned how to draw more energy from soul gems and are now able to craft them at a smelter by transmuting and melting certain minerals.",
@@ -94,6 +118,10 @@
       "Enchanting:Soul Gem Mastery"
     ],
     "anyOf": false,
+    "pos": [
+      0.9571,
+      1.8
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Your studies have enabled you to research unique enchantments of your own and to craft better staves at the forge.",
@@ -107,6 +135,10 @@
       "Enchanting:Arcane Experimentation"
     ],
     "anyOf": false,
+    "pos": [
+      0.7571,
+      3.36
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You could fill grimoires with your newfound knowledge that allows you to create even better enchantments and staves.",
@@ -120,6 +152,10 @@
       "Enchanting:Enchantment Mastery"
     ],
     "anyOf": false,
+    "pos": [
+      1.5,
+      4.5
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "With great skill and dedication, you get a chance to enchant an item with extraordinary strength.",
@@ -133,6 +169,10 @@
       "Enchanting:Enchanter's Insight"
     ],
     "anyOf": false,
+    "pos": [
+      0.9714,
+      0.5286
+    ],
     "ranks": 3,
     "skill": 20,
     "rankSkills": [
@@ -159,6 +199,10 @@
       "Enchanting:Arcane Artificery"
     ],
     "anyOf": false,
+    "pos": [
+      0.5571,
+      1.2
+    ],
     "ranks": 2,
     "skill": 30,
     "rankSkills": [
@@ -182,6 +226,10 @@
       "Enchanting:Staff Channeling"
     ],
     "anyOf": false,
+    "pos": [
+      0.2571,
+      2.3571
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You have learned to use your wand's innate mystical properties to focus your thoughts.",
@@ -195,6 +243,10 @@
       "Enchanting:Staff Channeling"
     ],
     "anyOf": false,
+    "pos": [
+      -0.3,
+      2.1571
+    ],
     "ranks": 1,
     "skill": 60,
     "text": "Grants the \"Charge Tap\" power. At will, drains a quarter of your current weapon charge to restore Health by 15% of the amount drained and Magicka and Stamina by 25% of the amount drained. (If you have two enchanted weapons equipped, the drain is split.)"
@@ -208,6 +260,10 @@
       "Enchanting:Wand Mastery"
     ],
     "anyOf": true,
+    "pos": [
+      -0.1714,
+      3.1571
+    ],
     "ranks": 1,
     "skill": 80,
     "text": "Simultaneously (within 1 second) using an enchanted staff or wand in your left hand and striking with an enchanted weapon in your right hand releases a flash of light that staggers enemies and deals damage equal to half your Enchanting skill level."
@@ -218,6 +274,10 @@
     "name": "Novice Restoration",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      3.1,
+      0.0
+    ],
     "ranks": 1,
     "skill": 0,
     "text": "You've taught yourself a few Novice level spells and learned how to cast them with decreased effort while your newfound knowledge also allows you to augment all Restoration spells."
@@ -230,6 +290,10 @@
       "Restoration:Novice Restoration"
     ],
     "anyOf": false,
+    "pos": [
+      2.7867,
+      0.9
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "By pursuing your apprenticeship in Restoration, you've gained knowledge of Apprentice level spells which you now augment while casting them with less effort."
@@ -242,6 +306,10 @@
       "Restoration:Apprentice Restoration"
     ],
     "anyOf": false,
+    "pos": [
+      3.2,
+      2.12
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "By advancing further into the school of Restoration, you've gained some Adept level spells and learned how to augment and cast spells of this rank more easily."
@@ -254,6 +322,10 @@
       "Restoration:Adept Restoration"
     ],
     "anyOf": false,
+    "pos": [
+      2.9933,
+      3.72
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You've unlocked almost every secret in the school of Restoration and you've acquired some Expert level spells. You can now cast spells of this level easier and augment them to an almost otherworldly extent."
@@ -266,6 +338,10 @@
       "Restoration:Expert Restoration"
     ],
     "anyOf": false,
+    "pos": [
+      4.0133,
+      4.32
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Your knowledge of Restoration has become all-encompassing. You taught yourself a Master level spell and you can cast the most complex spells from this school with less effort while augmenting them beyond mortal limits."
@@ -278,6 +354,10 @@
       "Restoration:Novice Restoration"
     ],
     "anyOf": false,
+    "pos": [
+      4.5,
+      0.5
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You've gained more knowledge about healing spells, allowing you to heal wounds more efficiently.",
@@ -291,6 +371,10 @@
       "Restoration:Improved Turning"
     ],
     "anyOf": false,
+    "pos": [
+      6.44,
+      2.48
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You've learned the art of weaving mystical energies into your spells, making all of them more effective against the undead and Daedra.",
@@ -304,6 +388,10 @@
       "Restoration:Improved Healing"
     ],
     "anyOf": false,
+    "pos": [
+      6.44,
+      1.2
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "In addition to curing wounds, your healing spells now reinvigorate the body itself, restoring subject's stamina.",
@@ -317,6 +405,10 @@
       "Restoration:Improved Protection"
     ],
     "anyOf": false,
+    "pos": [
+      0.5,
+      2.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your arcane wards now absorb magicka from incoming spells and have improved efficiency.",
@@ -330,6 +422,10 @@
       "Restoration:Novice Restoration"
     ],
     "anyOf": false,
+    "pos": [
+      1.25,
+      0.25
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Dual casting a Restoration spell overcharges the effects into an even more powerful version."
@@ -342,6 +438,10 @@
       "Restoration:Apprentice Restoration"
     ],
     "anyOf": false,
+    "pos": [
+      2.25,
+      2.0
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You've learned to focus your thoughts. Thus, you can keep your concentration even in stressful situations and regenerate your magicka faster.",
@@ -355,6 +455,10 @@
       "Restoration:Mental Acuity"
     ],
     "anyOf": false,
+    "pos": [
+      2.0,
+      3.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Your studies of healing magic now grant you the power of making yourself almost invulnerable for a short duration once a day."
@@ -367,6 +471,10 @@
       "Restoration:Power of Life"
     ],
     "anyOf": false,
+    "pos": [
+      1.0,
+      4.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your understanding of healing and how magic and life are intertwined allows you to call upon your newfound power more often."
@@ -377,6 +485,10 @@
     "name": "Painful Regrets",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      0.5,
+      0.0
+    ],
     "ranks": 1,
     "skill": 0,
     "quest": "Needs sins on your record (a bounty, murders or the like) to reflect on",
@@ -390,6 +502,10 @@
       "Restoration:Novice Restoration"
     ],
     "anyOf": false,
+    "pos": [
+      4.0,
+      2.0
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You now are able to improve your poison spells and thereby increase their effectiveness.",
@@ -403,6 +519,10 @@
       "Restoration:Venomancy"
     ],
     "anyOf": false,
+    "pos": [
+      4.25,
+      3.5
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your poison spells are much more potent, rendering targets more susceptible to poison and paralyzing those with low resistance to poison or magic.",
@@ -416,6 +536,10 @@
       "Restoration:Novice Restoration"
     ],
     "anyOf": false,
+    "pos": [
+      4.5,
+      1.75
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You now are able to improve your sun spells and thereby increase their effectiveness.",
@@ -429,6 +553,10 @@
       "Restoration:Heliomancy"
     ],
     "anyOf": false,
+    "pos": [
+      5.5,
+      3.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your sun spells are infused with radiant energy, dealing more damage to undead and even damage the living.",
@@ -442,6 +570,10 @@
       "Restoration:Novice Restoration"
     ],
     "anyOf": false,
+    "pos": [
+      5.0,
+      1.25
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Turn, Purify, and Abjuration spells are stonger and more efficient.",
@@ -455,6 +587,10 @@
       "Restoration:Novice Restoration"
     ],
     "anyOf": false,
+    "pos": [
+      2.0,
+      1.0
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Ward, Fortify, and Resist spells are stonger and more efficient.",
@@ -468,6 +604,10 @@
       "Restoration:Novice Restoration"
     ],
     "anyOf": false,
+    "pos": [
+      0.5,
+      1.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You are more proficient with ward spells, using them more efficiently to block magic.",
@@ -481,6 +621,10 @@
       "Restoration:Improved Wards"
     ],
     "anyOf": false,
+    "pos": [
+      -0.1143,
+      2.7714
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Your mastery of wards has allowed you to gain anti-elemental prowess.",
@@ -494,6 +638,10 @@
       "Restoration:Paralyzing Poison"
     ],
     "anyOf": false,
+    "pos": [
+      5.1429,
+      4.2
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "You have used poison magic for so long that it courses through you.",
@@ -507,6 +655,10 @@
       "Restoration:Scorching Light"
     ],
     "anyOf": false,
+    "pos": [
+      5.9714,
+      3.8
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "You have purged undead for so long that you are more attuned to holy magic and immune to disease.",
@@ -520,6 +672,10 @@
       "Restoration:Respite"
     ],
     "anyOf": false,
+    "pos": [
+      7.0714,
+      1.9286
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "In a pinch, you can restore your vitals with ease.",
@@ -531,6 +687,10 @@
     "name": "Novice Illusion",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      2.5,
+      0.0
+    ],
     "ranks": 1,
     "skill": 0,
     "text": "You've taught yourself a few Novice level spells and learned how to cast them with decreased effort while your newfound knowledge also allows you to augment the strength and duration of all Illusion spells."
@@ -543,6 +703,10 @@
       "Illusion:Novice Illusion"
     ],
     "anyOf": false,
+    "pos": [
+      5.0,
+      1.0
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Perceptual illusion effects such as chameleon, dampen, hallucination, invisibility, muffle, night-eye, and sound are more effective and easier to cast.",
@@ -556,6 +720,10 @@
       "Illusion:Perceptual Illusions"
     ],
     "anyOf": false,
+    "pos": [
+      4.5,
+      2.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Perceptual illusion spells are improved with additional effects.",
@@ -569,6 +737,10 @@
       "Illusion:Adept Illusion"
     ],
     "anyOf": false,
+    "pos": [
+      4.0,
+      3.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Shadow magic effects such as sanctuary, shadow drain, shadow step, shadow stride, and shadow summon are more effective and easier to cast.",
@@ -582,6 +754,10 @@
       "Illusion:Delusive Illusions"
     ],
     "anyOf": false,
+    "pos": [
+      1.5,
+      4.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Delusive illusion spells are improved with additional effects.",
@@ -595,6 +771,10 @@
       "Illusion:Novice Illusion"
     ],
     "anyOf": false,
+    "pos": [
+      0.0,
+      1.0
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Emotional illusion effects such as calm, charm, command, fear, frenzy, and rally are more effective and easier to cast.",
@@ -608,6 +788,10 @@
       "Illusion:Emotional Illusions"
     ],
     "anyOf": false,
+    "pos": [
+      0.5,
+      2.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Emotional illusion spells are improved with additional effects.",
@@ -621,6 +805,10 @@
       "Illusion:Adept Illusion"
     ],
     "anyOf": false,
+    "pos": [
+      1.0,
+      3.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Delusive illusion effects such as blind, death, nightmare, noise, pain, silence, and sleep are more effective and easier to cast.",
@@ -634,6 +822,10 @@
       "Illusion:Novice Illusion"
     ],
     "anyOf": false,
+    "pos": [
+      2.5,
+      1.0
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "By pursuing your apprenticeship in Illusion, you've gained knowledge of Apprentice level spells which you now augment while casting them with less effort."
@@ -646,6 +838,10 @@
       "Illusion:Apprentice Illusion"
     ],
     "anyOf": false,
+    "pos": [
+      2.5,
+      2.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "By advancing further into the school of Illusion, you've gained some Adept level spells and learned how to augment and cast spells of this rank more easily."
@@ -658,6 +854,10 @@
       "Illusion:Adept Illusion"
     ],
     "anyOf": false,
+    "pos": [
+      2.5,
+      3.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You've unlocked almost every secret in the school of Illusion and you've acquired some Expert level spells. You can now cast spells of this level easier and augment them to an almost otherworldly extent."
@@ -670,6 +870,10 @@
       "Illusion:Expert Illusion"
     ],
     "anyOf": false,
+    "pos": [
+      2.5,
+      4.0
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Your knowledge of Illusion has become all-encompassing. You taught yourself a Master level spell and you can cast the most complex spells from this school with less effort while augmenting them beyond mortal limits."
@@ -682,6 +886,10 @@
       "Illusion:Novice Illusion"
     ],
     "anyOf": false,
+    "pos": [
+      4.0,
+      0.0
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Dual casting an Illusion spell overcharges the effects into an even more powerful version."
@@ -694,6 +902,10 @@
       "Illusion:Shadow Shaping"
     ],
     "anyOf": false,
+    "pos": [
+      3.5,
+      4.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Shadow illusion spells are improved with additional effects. Shadow summons last longer.",
@@ -707,6 +919,10 @@
       "Illusion:Emotional Illusions"
     ],
     "anyOf": false,
+    "pos": [
+      1.0,
+      1.5
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Your emotional illusion spells seep deep into the targets' mind, further reducing their chance to break free.",
@@ -720,6 +936,10 @@
       "Illusion:Perceptual Illusions"
     ],
     "anyOf": false,
+    "pos": [
+      4.0,
+      1.5
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You can stack illusory image on yourself to deceive your enemies, making their attacks miss and expose their weak spots.",
@@ -733,6 +953,10 @@
       "Illusion:Delusive Illusions"
     ],
     "anyOf": false,
+    "pos": [
+      2.0,
+      3.5
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Curse your enemies with dark magic, weakening their body and soul.",
@@ -746,6 +970,10 @@
       "Illusion:Shadow Shaping"
     ],
     "anyOf": false,
+    "pos": [
+      3.0,
+      3.5
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Draw power from forces in conflict, absorbing energy from nearby enemies and creating another reflection of shadow.",
@@ -757,6 +985,10 @@
     "name": "Novice Destruction",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      2.7867,
+      0.0
+    ],
     "ranks": 1,
     "skill": 0,
     "text": "You've taught yourself a few Novice level spells and learned how to cast them with decreased effort while your newfound knowledge also allows you to augment all Destruction spells."
@@ -769,6 +1001,10 @@
       "Destruction:Novice Destruction"
     ],
     "anyOf": false,
+    "pos": [
+      1.66,
+      0.9
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "By pursuing your apprenticeship in Destruction, you've gained knowledge of Apprentice level spells which you now augment while casting them with less effort."
@@ -781,6 +1017,10 @@
       "Destruction:Apprentice Destruction"
     ],
     "anyOf": false,
+    "pos": [
+      1.66,
+      2.1
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "By advancing further into the school of Destruction, you've gained some Adept level spells and learned how to augment and cast spells of this rank more easily."
@@ -793,6 +1033,10 @@
       "Destruction:Adept Destruction"
     ],
     "anyOf": false,
+    "pos": [
+      1.0533,
+      3.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You've unlocked almost every secret in the school of Destruction and you've acquired some Expert level spells. You can now cast spells of this level easier and augment them to an almost otherworldly extent."
@@ -805,6 +1049,10 @@
       "Destruction:Expert Destruction"
     ],
     "anyOf": false,
+    "pos": [
+      0.8467,
+      4.62
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Your knowledge of Destruction has become all-encompassing. You taught yourself a Master level spell and you can cast the most complex spells from this school with less effort while augmenting them beyond mortal limits."
@@ -817,6 +1065,10 @@
       "Destruction:Apprentice Destruction"
     ],
     "anyOf": false,
+    "pos": [
+      0.5,
+      2.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Unlock the power of elemental seals. Cast Fire, Frost, and Lightning Seals at your feet, each creating a deadly trap that triggers when enemies approach. All three seals can be active simultaneously."
@@ -829,6 +1081,10 @@
       "Destruction:Novice Destruction"
     ],
     "anyOf": false,
+    "pos": [
+      3.0,
+      1.5
+    ],
     "ranks": 2,
     "skill": 25,
     "rankSkills": [
@@ -852,6 +1108,10 @@
       "Destruction:Pyromancy"
     ],
     "anyOf": false,
+    "pos": [
+      3.5,
+      2.5
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Enemies are set on fire for extended duration, taking extra damage over time.",
@@ -865,6 +1125,10 @@
       "Destruction:Cremation"
     ],
     "anyOf": false,
+    "pos": [
+      3.75,
+      4.0
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Your mastery of fire element grants you resistance to fire and increased efficiency of fire spells.",
@@ -878,6 +1142,10 @@
       "Destruction:Novice Destruction"
     ],
     "anyOf": false,
+    "pos": [
+      2.5,
+      1.5
+    ],
     "ranks": 2,
     "skill": 25,
     "rankSkills": [
@@ -901,6 +1169,10 @@
       "Destruction:Cryomancy"
     ],
     "anyOf": false,
+    "pos": [
+      3.0,
+      3.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your frost spells render targets more susceptible to frost, and freezes enemies with low resistance to frost or magic.",
@@ -914,6 +1186,10 @@
       "Destruction:Deep Freeze"
     ],
     "anyOf": false,
+    "pos": [
+      2.5,
+      4.5
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Your mastery of frost element grants you resistance to frost and increased efficiency of frost spells.",
@@ -927,6 +1203,10 @@
       "Destruction:Novice Destruction"
     ],
     "anyOf": false,
+    "pos": [
+      2.0,
+      1.5
+    ],
     "ranks": 2,
     "skill": 25,
     "rankSkills": [
@@ -950,6 +1230,10 @@
       "Destruction:Electromancy"
     ],
     "anyOf": false,
+    "pos": [
+      2.0,
+      3.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Lightning spells deplete targets' magicka and staggers enemies with low resistance to shock or magic.",
@@ -963,6 +1247,10 @@
       "Destruction:Electrostatic Discharge"
     ],
     "anyOf": false,
+    "pos": [
+      1.5,
+      4.5
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Your mastery of lightning element grants you resistance to shock and increased efficiency of lightning spells.",
@@ -976,6 +1264,10 @@
       "Destruction:Novice Destruction"
     ],
     "anyOf": false,
+    "pos": [
+      1.1667,
+      0.28
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Dual casting a Destruction spell overcharges the effects into an even more powerful version."
@@ -988,6 +1280,10 @@
       "Destruction:Empowered Destruction"
     ],
     "anyOf": false,
+    "pos": [
+      0.6333,
+      0.9
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "By intensifying the force of most of your overcharged Destruction spells, you're now capable of staggering your foes.",
@@ -1001,6 +1297,10 @@
       "Destruction:Novice Destruction"
     ],
     "anyOf": false,
+    "pos": [
+      3.5,
+      1.25
+    ],
     "ranks": 2,
     "skill": 25,
     "rankSkills": [
@@ -1024,6 +1324,10 @@
       "Destruction:Arcane Focus"
     ],
     "anyOf": false,
+    "pos": [
+      4.25,
+      3.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You can imbue more magical energy to arcane spells, dealing more damage to enemies that are not resistant to magic.",
@@ -1037,6 +1341,10 @@
       "Destruction:Novice Destruction"
     ],
     "anyOf": false,
+    "pos": [
+      4.0,
+      1.0
+    ],
     "ranks": 2,
     "skill": 25,
     "rankSkills": [
@@ -1060,6 +1368,10 @@
       "Destruction:Entropic Focus"
     ],
     "anyOf": false,
+    "pos": [
+      4.75,
+      2.5
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your Entropic spells drain all energy from targets, damaging Magicka and Stamina by same amount.",
@@ -1073,6 +1385,10 @@
       "Destruction:Apprentice Destruction"
     ],
     "anyOf": false,
+    "pos": [
+      1.0,
+      2.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You can deliver powerful force with touch and nova spells, causing more damage and staggering targets.",
@@ -1086,6 +1402,10 @@
       "Destruction:Apprentice Destruction"
     ],
     "anyOf": false,
+    "pos": [
+      0.5,
+      1.5
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You can radiate more energy with cloak spells, increasing their damage greatly.",
@@ -1099,6 +1419,10 @@
       "Destruction:Novice Destruction"
     ],
     "anyOf": false,
+    "pos": [
+      4.25,
+      0.5
+    ],
     "ranks": 2,
     "skill": 25,
     "rankSkills": [
@@ -1122,6 +1446,10 @@
       "Destruction:Blood Magic"
     ],
     "anyOf": false,
+    "pos": [
+      5.0,
+      1.75
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You can absorb much more health from living targets.",
@@ -1135,6 +1463,10 @@
       "Destruction:Consume Life"
     ],
     "anyOf": false,
+    "pos": [
+      5.3286,
+      2.7143
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Taking health from your foes is feeds your vitals to extreme levels.",
@@ -1148,6 +1480,10 @@
       "Destruction:Entropic Disarray"
     ],
     "anyOf": false,
+    "pos": [
+      4.9571,
+      3.2857
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "You have mastered the Elderitch Arts and now Aetherial Energy bends to your will.",
@@ -1161,6 +1497,10 @@
       "Destruction:Arcane Disruption"
     ],
     "anyOf": false,
+    "pos": [
+      4.4286,
+      3.7857
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Having mastered the use of Magicka, it now surges through your body.",
@@ -1172,6 +1512,10 @@
     "name": "Novice Conjuration",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      2.1867,
+      0.0
+    ],
     "ranks": 1,
     "skill": 0,
     "text": "You've taught yourself a few Novice level spells and learned how to cast them with decreased effort while your newfound knowledge also allows you to augment all Conjuration spells."
@@ -1184,6 +1528,10 @@
       "Conjuration:Novice Conjuration"
     ],
     "anyOf": false,
+    "pos": [
+      0.8467,
+      1.2
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "By pursuing your apprenticeship in Conjuration, you've gained knowledge of Apprentice level spells which you now augment while casting them with less effort."
@@ -1196,6 +1544,10 @@
       "Conjuration:Apprentice Conjuration"
     ],
     "anyOf": false,
+    "pos": [
+      0.44,
+      2.1
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "By advancing further into the school of Conjuration, you've gained some Adept level spells and learned how to augment and cast spells of this rank more easily."
@@ -1208,6 +1560,10 @@
       "Conjuration:Adept Conjuration"
     ],
     "anyOf": false,
+    "pos": [
+      0.44,
+      3.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You've unlocked almost every secret in the school of Conjuration and you've acquired some Expert level spells. You can now cast spells of this level easier and augment them to an almost otherworldly extent."
@@ -1220,6 +1576,10 @@
       "Conjuration:Expert Conjuration"
     ],
     "anyOf": false,
+    "pos": [
+      1.1667,
+      4.28
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Your knowledge of Conjuration has become all-encompassing. You taught yourself a Master level spell and you can cast the most complex spells from this school with less effort while augmenting them beyond mortal limits."
@@ -1232,6 +1592,10 @@
       "Conjuration:Novice Conjuration"
     ],
     "anyOf": false,
+    "pos": [
+      2.9933,
+      0.9
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Dual casting a Conjuration spell overcharges the spell, allowing it to last longer."
@@ -1244,6 +1608,10 @@
       "Conjuration:Empowered Conjuration"
     ],
     "anyOf": false,
+    "pos": [
+      3.6933,
+      2.48
+    ],
     "ranks": 2,
     "skill": 50,
     "rankSkills": [
@@ -1263,6 +1631,10 @@
       "Conjuration:Novice Conjuration"
     ],
     "anyOf": false,
+    "pos": [
+      3.1,
+      1.8
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You've developed your skill for summoning undead and rasing the dead, improving their potency and duration.",
@@ -1276,6 +1648,10 @@
       "Conjuration:Necromancy"
     ],
     "anyOf": false,
+    "pos": [
+      3.1,
+      2.4
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Your knowledge of the realms of the dead surpasses that of many. You can raise stronger entities and they last much longer.",
@@ -1289,6 +1665,10 @@
       "Conjuration:Ritualism"
     ],
     "anyOf": false,
+    "pos": [
+      3.5,
+      3.72
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "By infusing your undead creations with dark energies, you can make them stronger and prevent them from decaying to dust.",
@@ -1302,6 +1682,10 @@
       "Conjuration:Novice Conjuration"
     ],
     "anyOf": false,
+    "pos": [
+      1.8667,
+      0.9
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You've become skilled in binding daedra in shape of weapons and armors. Bound weapons and armors are stronger longer-lasting, and easier to cast.",
@@ -1315,6 +1699,10 @@
       "Conjuration:Mystic Binding"
     ],
     "anyOf": false,
+    "pos": [
+      1.5467,
+      2.48
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You can infuse bound weapons and armors with additional effects of your choice. Bound weapons and armors are easier to cast.",
@@ -1328,6 +1716,10 @@
       "Conjuration:Mystic Infusion"
     ],
     "anyOf": false,
+    "pos": [
+      1.66,
+      3.36
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You can bind stronger or additional effects to your bound weapons and armors. Bound weapons and armors are more easier to cast and last longer.",
@@ -1341,6 +1733,10 @@
       "Conjuration:Mystic Empowerment"
     ],
     "anyOf": false,
+    "pos": [
+      1.9733,
+      4.32
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "You've perfected your invocations of summoning bound weapons and armors. Your bound weapons and armors are much stronger.",
@@ -1354,6 +1750,10 @@
       "Conjuration:Novice Conjuration"
     ],
     "anyOf": false,
+    "pos": [
+      4.2267,
+      1.2
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Having studied the barriers that divide the planes of existence, you can make your summoned daedra last longer in this realm.",
@@ -1367,6 +1767,10 @@
       "Conjuration:Daedric Binding"
     ],
     "anyOf": false,
+    "pos": [
+      4.82,
+      2.74
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You've perfected your spells' formulae to summon the daedra, maintaining them longer and can cast them further away.",
@@ -1380,6 +1784,10 @@
       "Conjuration:Gates of Oblivion"
     ],
     "anyOf": false,
+    "pos": [
+      4.82,
+      4.64
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your knowledge of Oblivion's elemental aspects increases the strength of all your summoned Atronachs. Other daedra summons last longer.",
@@ -1393,6 +1801,10 @@
       "Conjuration:Spiritual Bond"
     ],
     "anyOf": false,
+    "pos": [
+      2.5,
+      3.5
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You can call upon the ancient spirits for your aid. Summoned spirits are faster and stronger.",
@@ -1406,6 +1818,10 @@
       "Conjuration:Novice Conjuration"
     ],
     "anyOf": false,
+    "pos": [
+      2.25,
+      1.5
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You've learned to commune with the spirits, summoning them for extended duration.",
@@ -1419,6 +1835,10 @@
       "Conjuration:Spirit Calling"
     ],
     "anyOf": false,
+    "pos": [
+      2.5,
+      2.5
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You've strengthened your bond with the spirits. They can be summoned with much more ease and will last longer.",
@@ -1432,6 +1852,10 @@
       "Conjuration:Spiritual Bond"
     ],
     "anyOf": false,
+    "pos": [
+      2.0,
+      3.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You can call upon the spirits to protect you, increasing your resistance to physical and magical attacks.",
@@ -1445,6 +1869,10 @@
       "Conjuration:Ritualism"
     ],
     "anyOf": false,
+    "pos": [
+      3.0,
+      3.25
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You can violently drain remaining energy from corpses, destoying them in the process to damage nearby enemies.",
@@ -1458,6 +1886,10 @@
       "Conjuration:Gates of Oblivion"
     ],
     "anyOf": false,
+    "pos": [
+      4.0,
+      4.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You draw dark energy from the Oblivion realm while maintaining a connection to it, boosting your magicka regeneration.",
@@ -1471,6 +1903,10 @@
       "Conjuration:Adept Conjuration"
     ],
     "anyOf": false,
+    "pos": [
+      1.0,
+      2.75
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Your training on Soul Magic allows you to channel more strength with higher efficiency.",
@@ -1484,6 +1920,10 @@
       "Conjuration:Soul Magic"
     ],
     "anyOf": false,
+    "pos": [
+      1.25,
+      3.5
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your necrotic spell consumes all, burning the soul of the living and damaging even the non-living.",
@@ -1495,6 +1935,10 @@
     "name": "Novice Alteration",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      2.6933,
+      0.0
+    ],
     "ranks": 1,
     "skill": 0,
     "text": "You've taught yourself a few Novice level spells and learned how to cast them with decreased effort while your newfound knowledge also allows you to augment all Alteration spells."
@@ -1507,6 +1951,10 @@
       "Alteration:Novice Alteration"
     ],
     "anyOf": false,
+    "pos": [
+      2.46,
+      1.2
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "By pursuing your apprenticeship in Alteration, you've gained knowledge of Apprentice level spells which you now augment while casting them with less effort."
@@ -1519,6 +1967,10 @@
       "Alteration:Apprentice Alteration"
     ],
     "anyOf": false,
+    "pos": [
+      2.46,
+      2.74
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "By advancing further into the school of Alteration, you've gained some Adept level spells and learned how to augment and cast spells of this rank more easily."
@@ -1531,6 +1983,10 @@
       "Alteration:Adept Alteration"
     ],
     "anyOf": false,
+    "pos": [
+      1.66,
+      3.68
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You've unlocked almost every secret in the school of Alteration and you've acquired some Expert level spells. You can now cast spells of this level easier and augment them to an almost otherworldly extent."
@@ -1543,6 +1999,10 @@
       "Alteration:Expert Alteration"
     ],
     "anyOf": false,
+    "pos": [
+      -0.28,
+      5.24
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Your knowledge of Alteration has become all-encompassing. You taught yourself a Master level spell and you can cast the most complex spells from this school with less effort while augmenting them beyond mortal limits."
@@ -1555,6 +2015,10 @@
       "Alteration:Expert Alteration"
     ],
     "anyOf": false,
+    "pos": [
+      2.8867,
+      5.24
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "You've mastered the art of absorbing Magicka from incoming spells, and are now able to fully absorb their power from time to time.",
@@ -1568,6 +2032,10 @@
       "Alteration:Improved Mage Armor"
     ],
     "anyOf": false,
+    "pos": [
+      4.25,
+      3.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You've expanded the versatility of your Armor and Shield spells, enabling them to decrease incoming elemental and physical damage.",
@@ -1581,6 +2049,10 @@
       "Alteration:Adept Alteration"
     ],
     "anyOf": false,
+    "pos": [
+      3.5,
+      3.72
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You've become exceptionally good at making your alteration spells more stable. Thus, they now last longer.",
@@ -1594,6 +2066,10 @@
       "Alteration:Stability"
     ],
     "anyOf": false,
+    "pos": [
+      5.14,
+      3.36
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your knowledge of the very fabric of magic itself allows you to cast any spell of any school with decreased effort.",
@@ -1607,6 +2083,10 @@
       "Alteration:Metamagical Thesis"
     ],
     "anyOf": false,
+    "pos": [
+      5.2467,
+      4.92
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Having delved even deeper in metamagical lore, you can cast any spell more effectively and augment all other magical effects.",
@@ -1620,6 +2100,10 @@
       "Alteration:Apprentice Alteration"
     ],
     "anyOf": false,
+    "pos": [
+      3.4867,
+      2.48
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You've mastered the art of casting armor spells. Their effect is maximized when you don't wear any distracting armor.",
@@ -1633,6 +2117,10 @@
       "Alteration:Novice Alteration"
     ],
     "anyOf": false,
+    "pos": [
+      3.5,
+      1.0
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Dual casting an Alteration spell overcharges the effects into an even more powerful version."
@@ -1645,6 +2133,10 @@
       "Alteration:Apprentice Alteration"
     ],
     "anyOf": false,
+    "pos": [
+      1.0533,
+      2.48
+    ],
     "ranks": 1,
     "skill": 30,
     "text": "If wearing no light or heavy armor, you take 20% less physical damage from attacks while charging or concentrating on a spell."
@@ -1657,6 +2149,10 @@
       "Alteration:Novice Alteration"
     ],
     "anyOf": false,
+    "pos": [
+      1.5,
+      0.5
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Transmutation, size-shifting, shape-shifting spells are stonger and more efficient.",
@@ -1670,6 +2166,10 @@
       "Alteration:Transmutation"
     ],
     "anyOf": false,
+    "pos": [
+      0.5,
+      1.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Health is increased and regenerates while transmutation spell is active.",
@@ -1683,6 +2183,10 @@
       "Alteration:Apprentice Alteration"
     ],
     "anyOf": false,
+    "pos": [
+      1.0,
+      1.5
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You can more easily handle telekinetic spells, increasing their power and efficiency.",
@@ -1696,6 +2200,10 @@
       "Alteration:Kinetomancy"
     ],
     "anyOf": false,
+    "pos": [
+      0.0,
+      2.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your telekinetic spells cause devastating impact, dealing more damage and knocking off stronger targets.",
@@ -1709,6 +2217,10 @@
       "Alteration:Adept Alteration"
     ],
     "anyOf": false,
+    "pos": [
+      2.75,
+      4.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Wind spells are stronger and more efficient.",
@@ -1722,6 +2234,10 @@
       "Alteration:Weather Magic"
     ],
     "anyOf": false,
+    "pos": [
+      4.0,
+      5.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Wind spells are more devastating at exteriors, and you can summon a thunderstorm with Control Weather spell.",
@@ -1733,6 +2249,10 @@
     "name": "Unskilled Spellcasting",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      4.0,
+      0.0
+    ],
     "ranks": 3,
     "skill": 0,
     "rankSkills": [
@@ -1762,6 +2282,10 @@
     "name": "Metamagic",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      1.0,
+      0.0
+    ],
     "ranks": 1,
     "skill": 0,
     "rankLevels": [
@@ -1776,6 +2300,10 @@
     "name": "Philosopher's Stone",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      0.0,
+      0.0
+    ],
     "ranks": 1,
     "skill": 10,
     "text": "Once a day, generates gold equal to ten times your Alteration skill level."
@@ -1786,6 +2314,10 @@
     "name": "Haggling",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      4.0133,
+      0.0
+    ],
     "ranks": 1,
     "skill": 0,
     "text": "You've learned how to deal with Skyrim's greedy merchants Prices are 1% better per level in speech."
@@ -1798,6 +2330,10 @@
       "Speech:Haggling"
     ],
     "anyOf": false,
+    "pos": [
+      4.5,
+      0.6
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You can invest 250 gold to permanently increase the amount of gold that merchants have by 100, merchants will buy any non-stolen item, prices are 20% better."
@@ -1810,6 +2346,10 @@
       "Speech:Merchant"
     ],
     "anyOf": false,
+    "pos": [
+      3.9067,
+      0.9
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "You've become so persuasive that you could make almost anyone believe that your goods are of a legal origin."
@@ -1822,6 +2362,10 @@
       "Speech:Haggling"
     ],
     "anyOf": false,
+    "pos": [
+      4.9333,
+      0.0
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You've spent quite some time improving your rhetorical skills, intimidation is much more likely to succeed and you gain 10% better prices."
@@ -1834,6 +2378,10 @@
       "Speech:Silver Tongue"
     ],
     "anyOf": false,
+    "pos": [
+      5.14,
+      3.08
+    ],
     "ranks": 2,
     "skill": 50,
     "rankSkills": [
@@ -1853,6 +2401,10 @@
       "Speech:Silver Tongue"
     ],
     "anyOf": false,
+    "pos": [
+      4.5,
+      1.8
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your rhetorical skill makes you the perfect leader. By inspiring all those who fight by your side, followers gain 20% damage, -15% spell cost, +75% block, +100 magicka and stamina, 50 carry weight."
@@ -1863,6 +2415,10 @@
     "name": "Lore of the Thu'um",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      0.6333,
+      0.0
+    ],
     "ranks": 1,
     "skill": 0,
     "quest": "Needs The Way of the Voice finished",
@@ -1876,6 +2432,10 @@
       "Speech:Lore of the Thu'um"
     ],
     "anyOf": false,
+    "pos": [
+      -0.1667,
+      4.0
+    ],
     "ranks": 1,
     "skill": 0,
     "quest": "Needs The Way of the Voice past the Greybeards' lessons; trades the perk point for a dragon soul",
@@ -1889,6 +2449,10 @@
       "Speech:Lore of the Thu'um"
     ],
     "anyOf": false,
+    "pos": [
+      1.7667,
+      2.14
+    ],
     "ranks": 1,
     "skill": 0,
     "quest": "Needs The Throat of the World finished",
@@ -1902,6 +2466,10 @@
       "Speech:Lore of the Thu'um"
     ],
     "anyOf": false,
+    "pos": [
+      1.9733,
+      0.88
+    ],
     "ranks": 1,
     "skill": 0,
     "quest": "Needs The Horn of Jurgen Windcaller finished",
@@ -1915,6 +2483,10 @@
       "Speech:Lore of the Thu'um"
     ],
     "anyOf": false,
+    "pos": [
+      1.66,
+      0.0
+    ],
     "ranks": 1,
     "skill": 0,
     "quest": "Needs Alduin's Wall finished",
@@ -1928,6 +2500,10 @@
       "Speech:Lore of the Thu'um"
     ],
     "anyOf": false,
+    "pos": [
+      1.1667,
+      3.36
+    ],
     "ranks": 1,
     "skill": 0,
     "quest": "Needs The Throat of the World finished",
@@ -1941,6 +2517,10 @@
       "Speech:Haggling"
     ],
     "anyOf": false,
+    "pos": [
+      3.5,
+      0.5
+    ],
     "ranks": 3,
     "skill": 25,
     "rankSkills": [
@@ -1965,6 +2545,10 @@
     "name": "Shout Focus",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      2.5,
+      0.0
+    ],
     "ranks": 3,
     "skill": 0,
     "rankSkills": [
@@ -1996,6 +2580,10 @@
       "Speech:Silver Tongue"
     ],
     "anyOf": false,
+    "pos": [
+      5.5,
+      1.5
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Overwhelm your enemies with a roaring shout, striking fear into their hearts and sending weakner enemies fleeing.",
@@ -2007,6 +2595,10 @@
     "name": "Alchemical Lore",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      2.8867,
+      0.0
+    ],
     "ranks": 2,
     "skill": 0,
     "rankSkills": [
@@ -2026,6 +2618,10 @@
       "Alchemy:Alchemical Lore"
     ],
     "anyOf": false,
+    "pos": [
+      0.14,
+      0.28
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Having refinined the brewing process, your potions are now 25% stronger."
@@ -2038,6 +2634,10 @@
       "Alchemy:Improved Elixirs"
     ],
     "anyOf": false,
+    "pos": [
+      0.8467,
+      2.1
+    ],
     "ranks": 2,
     "skill": 50,
     "rankSkills": [
@@ -2058,6 +2658,10 @@
       "Alchemy:Improved Poisons"
     ],
     "anyOf": false,
+    "pos": [
+      0.9533,
+      4.32
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You've discovered a way to make your body more resiliant to disease and poison (50% and 25% respectively)"
@@ -2070,6 +2674,10 @@
       "Alchemy:Immunization"
     ],
     "anyOf": false,
+    "pos": [
+      1.44,
+      6.2
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "You've found a method to eliminate disadvantages from your mixtures and to make all of them even more potent."
@@ -2082,6 +2690,10 @@
       "Alchemy:Immunization"
     ],
     "anyOf": false,
+    "pos": [
+      1.5467,
+      2.1
+    ],
     "ranks": 1,
     "skill": 75,
     "carryItems": "Troll Fat; Mammoth Heart Muscle",
@@ -2095,6 +2707,10 @@
       "Alchemy:Immunization"
     ],
     "anyOf": false,
+    "pos": [
+      0.14,
+      5.24
+    ],
     "ranks": 1,
     "skill": 100,
     "carryItems": "Daedra Heart; Ectoplasm",
@@ -2108,6 +2724,10 @@
       "Alchemy:Improved Elixirs"
     ],
     "anyOf": false,
+    "pos": [
+      -0.0667,
+      1.2
+    ],
     "ranks": 1,
     "skill": 25,
     "carryItems": "Sabre Cat Eye",
@@ -2121,6 +2741,10 @@
       "Alchemy:Improved Elixirs"
     ],
     "anyOf": false,
+    "pos": [
+      0.44,
+      2.74
+    ],
     "ranks": 1,
     "skill": 50,
     "carryItems": "Troll Fat; Slaughterfish Egg; Spriggan Sap",
@@ -2134,6 +2758,10 @@
       "Alchemy:Alchemical Lore"
     ],
     "anyOf": false,
+    "pos": [
+      2.5667,
+      1.2
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Your experience in the obscure alchemical arts allows you to concentrate your poisons. Thus, you can make most of them last longer before they need to be reapplied."
@@ -2146,6 +2774,10 @@
       "Alchemy:Concentrated Poisons"
     ],
     "anyOf": false,
+    "pos": [
+      2.5667,
+      2.76
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "By adding small amounts of truly horrifying ingredients, you are able to make your poisons 25% more potent."
@@ -2156,6 +2788,10 @@
     "name": "Drunken Combat",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      4.0,
+      0.0
+    ],
     "ranks": 2,
     "skill": 0,
     "rankSkills": [
@@ -2181,6 +2817,10 @@
     "name": "Gourmet",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      4.0,
+      1.0
+    ],
     "ranks": 1,
     "skill": 0,
     "rankLevels": [
@@ -2195,6 +2835,10 @@
     "name": "Herbalist",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      4.0,
+      2.0
+    ],
     "ranks": 2,
     "skill": 0,
     "rankSkills": [
@@ -2222,6 +2866,10 @@
       "Alchemy:Improved Poisons"
     ],
     "anyOf": false,
+    "pos": [
+      2.9714,
+      3.8143
+    ],
     "ranks": 1,
     "skill": 60,
     "text": "Your poisons are highly corrosive, enabling you to ignore 20% of the armor rating of an affected target for their duration."
@@ -2234,6 +2882,10 @@
       "Alchemy:Alkahest"
     ],
     "anyOf": false,
+    "pos": [
+      2.1429,
+      4.7286
+    ],
     "ranks": 1,
     "skill": 90,
     "text": "When you shout, your blood turns poisonous for 15 seconds. The next time you get hit with a weapon, retaliate with a powerful poisonous strike that deals 50 points of poison damage per second for 10 seconds."
@@ -2244,6 +2896,10 @@
     "name": "Stealth",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      2.5667,
+      -0.02
+    ],
     "ranks": 2,
     "skill": 0,
     "rankSkills": [
@@ -2263,6 +2919,10 @@
       "Sneak:Stealth"
     ],
     "anyOf": false,
+    "pos": [
+      1.44,
+      0.9
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You've learned to exploit weaknesses in your foes' armor when sneak attacking with daggers, bows or swords."
@@ -2275,6 +2935,10 @@
       "Sneak:Deft Strike"
     ],
     "anyOf": false,
+    "pos": [
+      1.1667,
+      2.14
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Newfound knowledge of humanoid anatomy allows you to slay almost any human-like creature outright with sneak attacks.",
@@ -2288,6 +2952,10 @@
       "Sneak:Anatomical Lore"
     ],
     "anyOf": false,
+    "pos": [
+      1.8667,
+      2.42
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your vast knowledge of anatomy allows you to perform devastating sneak attacks on almost any target.",
@@ -2301,6 +2969,10 @@
       "Sneak:Stealth"
     ],
     "anyOf": false,
+    "pos": [
+      4.1133,
+      0.9
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Your newfound finesse allows you to move more quietly while not wearing any heavy armor."
@@ -2313,6 +2985,10 @@
       "Sneak:Muffled Movement"
     ],
     "anyOf": false,
+    "pos": [
+      3.8,
+      2.14
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "By distributing your weight more consciously, you're able to move more freely while sneaking and avoid triggering pressure plates or similar mechanisms."
@@ -2325,6 +3001,10 @@
       "Sneak:Light Steps"
     ],
     "anyOf": false,
+    "pos": [
+      2.1867,
+      3.36
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your improved balance allows you to silently roll forward, avoid getting knocked down except through magic and move even more quietly."
@@ -2337,6 +3017,10 @@
       "Sneak:Acrobatics"
     ],
     "anyOf": false,
+    "pos": [
+      0.14,
+      4.28
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "There's almost nothing you cannot evade. You are even harder to detect, more silent and all falling damage is decreased."
@@ -2349,6 +3033,10 @@
       "Sneak:Stealth"
     ],
     "anyOf": false,
+    "pos": [
+      2.0,
+      1.5
+    ],
     "ranks": 3,
     "skill": 25,
     "rankSkills": [
@@ -2375,6 +3063,10 @@
       "Sneak:Anatomical Lore"
     ],
     "anyOf": false,
+    "pos": [
+      0.5857,
+      2.6
+    ],
     "ranks": 1,
     "skill": 80,
     "text": "Sneak attacks deal 10% more damage for each 200 points of Health the target has, up to 50% more damage."
@@ -2387,6 +3079,10 @@
       "Sneak:Stealth"
     ],
     "anyOf": false,
+    "pos": [
+      0.8714,
+      0.3571
+    ],
     "ranks": 1,
     "skill": 40,
     "text": "Sneaking is 15% more effective against targets that are in combat with you, or 30% if they are in combat with someone else."
@@ -2399,6 +3095,10 @@
       "Sneak:Stealth"
     ],
     "anyOf": false,
+    "pos": [
+      2.9857,
+      1.0143
+    ],
     "ranks": 1,
     "skill": 20,
     "text": "Grants the \"Tripwire\" power. At will, places a tripwire in front of you for 120 seconds. It snaps when tripped, knocking all targets hit by it to the floor."
@@ -2411,6 +3111,10 @@
       "Sneak:Tripwire"
     ],
     "anyOf": false,
+    "pos": [
+      2.9571,
+      1.8571
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Tripwire also reduces armor rating by 250 points for 10 seconds."
@@ -2423,6 +3127,10 @@
       "Sneak:Fog of War"
     ],
     "anyOf": false,
+    "pos": [
+      0.6429,
+      1.3286
+    ],
     "ranks": 1,
     "skill": 70,
     "text": "Breaking invisibility with a power attack is a guaranteed critical strike that deals 50% more critical damage."
@@ -2435,6 +3143,10 @@
       "Sneak:Light Steps"
     ],
     "anyOf": false,
+    "pos": [
+      3.2429,
+      3.6286
+    ],
     "ranks": 1,
     "skill": 80,
     "text": "Upon being detected in combat, time slows briefly."
@@ -2445,6 +3157,10 @@
     "name": "Cheap Tricks",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      3.6429,
+      -0.0571
+    ],
     "ranks": 1,
     "skill": 0,
     "carryWeight": 25,
@@ -2459,6 +3175,10 @@
       "Wayfarer:Cheap Tricks"
     ],
     "anyOf": false,
+    "pos": [
+      2.1429,
+      1.2
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Gain 15% magic resistance and 150 armor rating when fighting alone."
@@ -2471,6 +3191,10 @@
       "Wayfarer:Lone Wolf"
     ],
     "anyOf": false,
+    "pos": [
+      2.1429,
+      2.16
+    ],
     "ranks": 1,
     "skill": 40,
     "text": "Regenerate health, stamina and magicka 50% faster when you are fighting alone."
@@ -2483,6 +3207,10 @@
       "Wayfarer:Solo"
     ],
     "anyOf": false,
+    "pos": [
+      2.1429,
+      2.76
+    ],
     "ranks": 1,
     "skill": 60,
     "text": "You resist 10% fire, frost and shock damage when fighting alone."
@@ -2495,6 +3223,10 @@
       "Wayfarer:Maverick"
     ],
     "anyOf": false,
+    "pos": [
+      2.1429,
+      3.68
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Deal 10% more damage when you are fighting alone."
@@ -2507,6 +3239,10 @@
       "Wayfarer:Cheap Tricks"
     ],
     "anyOf": false,
+    "pos": [
+      3.6571,
+      0.92
+    ],
     "ranks": 1,
     "skill": 25,
     "carryWeight": 25,
@@ -2521,6 +3257,10 @@
       "Wayfarer:Advanced Lockpicking"
     ],
     "anyOf": false,
+    "pos": [
+      3.6571,
+      2.48
+    ],
     "ranks": 1,
     "skill": 40,
     "text": "You are able to locate secret spaces in containers when you search them.",
@@ -2534,6 +3274,10 @@
       "Wayfarer:Treasure Hunter"
     ],
     "anyOf": false,
+    "pos": [
+      3.6571,
+      3.4
+    ],
     "ranks": 1,
     "skill": 60,
     "carryWeight": 25,
@@ -2548,6 +3292,10 @@
       "Wayfarer:Sophisticated Lockpicking"
     ],
     "anyOf": false,
+    "pos": [
+      3.6571,
+      4.28
+    ],
     "ranks": 1,
     "skill": 90,
     "carryWeight": 25,
@@ -2562,6 +3310,10 @@
       "Wayfarer:Cheap Tricks"
     ],
     "anyOf": false,
+    "pos": [
+      5.0,
+      1.2
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Nearby allies, but not the player, gain 150 armor rating and 15% magical resistance."
@@ -2574,6 +3326,10 @@
       "Wayfarer:Leader"
     ],
     "anyOf": false,
+    "pos": [
+      5.0,
+      2.16
+    ],
     "ranks": 1,
     "skill": 40,
     "text": "Allies, but not the player, regenerate health, stamina and magicka 50% faster."
@@ -2586,6 +3342,10 @@
       "Wayfarer:Captain"
     ],
     "anyOf": false,
+    "pos": [
+      5.0,
+      2.76
+    ],
     "ranks": 1,
     "skill": 60,
     "text": "Nearby allies, but not the player, gain 10% resist to fire, frost and shock."
@@ -2598,6 +3358,10 @@
       "Wayfarer:Commander"
     ],
     "anyOf": false,
+    "pos": [
+      5.0,
+      3.68
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Deal 10% more damage when you are fighting with allies."
@@ -2610,6 +3374,10 @@
       "Wayfarer:Survival Instincts"
     ],
     "anyOf": false,
+    "pos": [
+      1.3,
+      4.2
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You have mastered the outdoors and all of Skyrim's fauna. Gain an expert illusion spell to pacify nearby animals. Also move 20% faster outdoors and 10% faster indoors."
@@ -2622,6 +3390,10 @@
       "Wayfarer:Hunter"
     ],
     "anyOf": false,
+    "pos": [
+      1.3,
+      2.6
+    ],
     "ranks": 1,
     "skill": 30,
     "text": "While others would ignore the threats of the elements, you understand the danger. Regenerate health, stamina and magicka 100% faster when outdoors or out of combat."
@@ -2634,6 +3406,10 @@
       "Wayfarer:Cheap Tricks"
     ],
     "anyOf": false,
+    "pos": [
+      1.3,
+      1.1571
+    ],
     "ranks": 2,
     "skill": 10,
     "rankSkills": [
@@ -2653,6 +3429,10 @@
       "Wayfarer:Advanced Lockpicking"
     ],
     "anyOf": false,
+    "pos": [
+      2.9714,
+      2.4571
+    ],
     "ranks": 1,
     "skill": 40,
     "text": "Activate a hostile automaton to lockpick your way into its engine. Lock difficulty is based on its current Health. Pick its lock within 15 seconds to reduce its Health to 1 and shut it down for 60 seconds. If you fail, you can't try again for 30 seconds."
@@ -2665,6 +3445,10 @@
       "Wayfarer:Lockdown"
     ],
     "anyOf": false,
+    "pos": [
+      2.9429,
+      3.3714
+    ],
     "ranks": 1,
     "skill": 60,
     "text": "Activate an automaton under Lockdown to lockpick its brain. Succeed within 15 seconds to hack the automaton, forcing it to follow you and fight for you. If you fail, you can't try again for 30 seconds. You can only have one Hotwired Automaton at a time."
@@ -2677,6 +3461,10 @@
       "Wayfarer:Hotwire"
     ],
     "anyOf": false,
+    "pos": [
+      2.9286,
+      4.3
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Your Hotwired Automaton moves 30% faster and attacks 20% faster. Hitting your Hotwired Automaton with a mace or warhammer repairs it 150 points (or 300 points on a power attack) and further increases attack speed by 50% for 10 seconds."
@@ -2689,6 +3477,10 @@
       "Wayfarer:Animal Riding"
     ],
     "anyOf": false,
+    "pos": [
+      0.4286,
+      3.9571
+    ],
     "ranks": 1,
     "skill": 80,
     "text": "Increases the total size limit of your tamed animals by 1, enabling you to tame more and bigger animals."
@@ -2701,6 +3493,10 @@
       "Wayfarer:Animal Taming"
     ],
     "anyOf": false,
+    "pos": [
+      0.4286,
+      2.9571
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Able to ride tamed animals with size 5 or up."
@@ -2713,6 +3509,10 @@
       "Wayfarer:Hunter"
     ],
     "anyOf": false,
+    "pos": [
+      0.4286,
+      1.9714
+    ],
     "ranks": 1,
     "skill": 10,
     "text": "Able to tame animals. Aggressive animals must be reduced to 25% health first. Total size of your tamed animals is limited by Wayfarer skill."
@@ -2723,6 +3523,10 @@
     "name": "Nimble Fingers",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      2.9429,
+      -0.0286
+    ],
     "ranks": 2,
     "skill": 0,
     "rankSkills": [
@@ -2742,6 +3546,10 @@
       "Finesse:Nimble Fingers"
     ],
     "anyOf": false,
+    "pos": [
+      2.9571,
+      0.9714
+    ],
     "ranks": 1,
     "skill": 20,
     "text": "You've been in and out of jail, where most people wither away you've used the time to reflect and train Gain 5 Health, Magicka and Stamina per Jail Escapes, Up To 5 Times."
@@ -2754,6 +3562,10 @@
       "Finesse:Outlaw"
     ],
     "anyOf": false,
+    "pos": [
+      2.9857,
+      1.9429
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Gain carry weight, light armor rating and sneak ability per pocket picked, 10 carry weight, 2% light armor rating and 3% sneak ability per 20 pockets picked, maxing out at 100."
@@ -2766,6 +3578,10 @@
       "Finesse:Thief"
     ],
     "anyOf": false,
+    "pos": [
+      2.5857,
+      2.8143
+    ],
     "ranks": 1,
     "skill": 77,
     "text": "You gain elemental resist based on how much gold you are currently carrying",
@@ -2779,6 +3595,10 @@
       "Finesse:Nimble Fingers"
     ],
     "anyOf": false,
+    "pos": [
+      3.9143,
+      0.9286
+    ],
     "ranks": 1,
     "skill": 30,
     "text": "Pickpocketing gold, keys, gems and jewelry is 50% easier. Pickpocketing sleeping targets is much easier."
@@ -2791,6 +3611,10 @@
       "Finesse:Cutpurse"
     ],
     "anyOf": false,
+    "pos": [
+      3.9143,
+      1.9286
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Poisons placed in targets' pockets are 50% stronger when target is not detecting you."
@@ -2803,6 +3627,10 @@
       "Finesse:Poisoner"
     ],
     "anyOf": false,
+    "pos": [
+      3.9143,
+      2.9286
+    ],
     "ranks": 1,
     "skill": 70,
     "text": "Can pickpocket equipped weapons, arrows and staves."
@@ -2815,6 +3643,10 @@
       "Finesse:Misdirection"
     ],
     "anyOf": false,
+    "pos": [
+      2.9143,
+      3.9571
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Your legendary skill means you almost never get caught. Poisons placed in pockets are 50% stronger on already poisoned targets."
@@ -2828,6 +3660,10 @@
       "Finesse:Trapper"
     ],
     "anyOf": true,
+    "pos": [
+      1.9286,
+      0.9571
+    ],
     "ranks": 2,
     "skill": 30,
     "rankSkills": [
@@ -2847,6 +3683,10 @@
       "Finesse:Sound Body"
     ],
     "anyOf": false,
+    "pos": [
+      1.9571,
+      1.9857
+    ],
     "ranks": 1,
     "skill": 60,
     "text": "You've unburdened your inner thoughts, gaining 75% greater health, stamina and magicka regen."
@@ -2859,6 +3699,10 @@
       "Finesse:Sound Mind"
     ],
     "anyOf": false,
+    "pos": [
+      1.9429,
+      2.9286
+    ],
     "ranks": 1,
     "skill": 80,
     "text": "You have unburdened your spirit and now shouts are 10% stronger and last 10% longer also you are 10% more resistant to elements and magic."
@@ -2869,6 +3713,10 @@
     "name": "Trapper",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      0.9143,
+      -0.0571
+    ],
     "ranks": 1,
     "skill": 0,
     "text": "You can now pickup and deploy Bear Traps, and craft them yourself at the forge. Bear Traps deal extra damage based on your Finesse skill."
@@ -2881,6 +3729,10 @@
       "Finesse:Trapper"
     ],
     "anyOf": false,
+    "pos": [
+      0.9286,
+      1.9
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Traps can now be poisoned."
@@ -2893,6 +3745,10 @@
       "Finesse:Poisoned Clamps"
     ],
     "anyOf": false,
+    "pos": [
+      0.9286,
+      2.9143
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "When deploying a trap, you can consume elemental salt to coat it. Affected enemies take minor elemental damage, and on death, summon an atronach."
@@ -2905,6 +3761,10 @@
       "Finesse:Trapper"
     ],
     "anyOf": false,
+    "pos": [
+      -0.1286,
+      1.9429
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You're quick thinking and even quicker with your hands Can now create pocket sand at a forge and use it to impair enemies."
@@ -2917,6 +3777,10 @@
       "Finesse:Pocket Sand"
     ],
     "anyOf": false,
+    "pos": [
+      -0.0571,
+      2.9143
+    ],
     "ranks": 2,
     "skill": 50,
     "rankSkills": [
@@ -2936,6 +3800,10 @@
       "Finesse:Death's Emperor"
     ],
     "anyOf": false,
+    "pos": [
+      2.8286,
+      3.3714
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Grants the \"Mutiny\" power. At will, activates the curse of the Death's Emperor, causing whoever is in possession of the coin to attack randomly for 30 seconds. Any deaths resulting from this can't be traced back to you."
@@ -2949,6 +3817,10 @@
       "Finesse:Poisoner"
     ],
     "anyOf": true,
+    "pos": [
+      3.5,
+      2.5714
+    ],
     "ranks": 1,
     "skill": 70,
     "text": "A cursed septim appears in your inventory. When someone else is in possession of the coin, your attacks deal 25% more damage and critical damage to them."
@@ -2961,6 +3833,10 @@
       "Finesse:Outlaw"
     ],
     "anyOf": false,
+    "pos": [
+      2.4143,
+      1.5857
+    ],
     "ranks": 1,
     "skill": 40,
     "text": "Petty crimes are slowly forgotten, allowing your bounties for non-violent crimes to decay at a rate of 50% of your Pickpocket skill level each day."
@@ -2971,6 +3847,10 @@
     "name": "Agility",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      0.6333,
+      0.0
+    ],
     "ranks": 1,
     "skill": 0,
     "text": "After some training you are now much more confident in your evasive movements.",
@@ -2984,6 +3864,10 @@
       "Evasion:Agility"
     ],
     "anyOf": false,
+    "pos": [
+      1.0,
+      1.0
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Up to 12% more power attack and ranged weapon damage when wearing no heavy armor. 25% more armor rating when wearing a low-tier light chestpiece (fur, hide, leather, etc) and no heavy armor."
@@ -2997,6 +3881,10 @@
       "Evasion:Vexing Flanker"
     ],
     "anyOf": false,
+    "pos": [
+      0.14,
+      3.36
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You've gained the ability to act faster in combat, though doing so will quickly exhaust you.",
@@ -3011,6 +3899,10 @@
       "Evasion:Combat Reflexes"
     ],
     "anyOf": false,
+    "pos": [
+      1.0,
+      4.0
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Your reflexes are so fast that enemies struggle to even graze you.",
@@ -3024,6 +3916,10 @@
       "Evasion:Light Armor Training"
     ],
     "anyOf": false,
+    "pos": [
+      2.0667,
+      2.1
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You can balance your weapon and have unlocked dynamic bow dodging.",
@@ -3037,6 +3933,10 @@
       "Evasion:Dexterity"
     ],
     "anyOf": false,
+    "pos": [
+      1.9733,
+      3.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your light armor and clothes have become your second skin.",
@@ -3050,6 +3950,10 @@
       "Evasion:Light Armor Training"
     ],
     "anyOf": false,
+    "pos": [
+      -0.28,
+      2.1
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You have learned to flank your enemies with ease.",
@@ -3064,6 +3968,10 @@
       "Evasion:Agility"
     ],
     "anyOf": true,
+    "pos": [
+      -0.28,
+      0.88
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "Your trained reflexes allow you to dodge incoming blows.",
@@ -3077,6 +3985,10 @@
       "Evasion:Agility"
     ],
     "anyOf": false,
+    "pos": [
+      2.1867,
+      1.52
+    ],
     "ranks": 2,
     "skill": 25,
     "rankSkills": [
@@ -3100,6 +4012,10 @@
       "Evasion:Agility"
     ],
     "anyOf": false,
+    "pos": [
+      2.0,
+      0.5
+    ],
     "ranks": 2,
     "skill": 25,
     "rankSkills": [
@@ -3123,6 +4039,10 @@
       "Evasion:Light Armor Training"
     ],
     "anyOf": false,
+    "pos": [
+      1.25,
+      2.0
+    ],
     "ranks": 2,
     "skill": 25,
     "rankSkills": [
@@ -3146,6 +4066,10 @@
       "Evasion:Athletics"
     ],
     "anyOf": false,
+    "pos": [
+      1.1429,
+      2.8143
+    ],
     "ranks": 2,
     "skill": 40,
     "rankSkills": [
@@ -3165,6 +4089,10 @@
       "Evasion:Dodge"
     ],
     "anyOf": false,
+    "pos": [
+      -0.3286,
+      1.5
+    ],
     "ranks": 1,
     "skill": 60,
     "text": "If not wearing heavy armor, jump in combat to cause all incoming attacks and spells to miss for 1 second. This effect has a 10 second cooldown."
@@ -3177,6 +4105,10 @@
       "Evasion:Dodge"
     ],
     "anyOf": false,
+    "pos": [
+      0.1714,
+      1.3571
+    ],
     "ranks": 1,
     "skill": 40,
     "text": "While sprinting in Light Armor or while Unarmored, you cannot be staggered and take 50% less damage from power attacks."
@@ -3187,6 +4119,10 @@
     "name": "Conditioning",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      2.9933,
+      -0.04
+    ],
     "ranks": 1,
     "skill": 0,
     "text": "You've accustomed yourself to using heavy armor.",
@@ -3200,6 +4136,10 @@
       "Heavy Armor:Conditioning"
     ],
     "anyOf": false,
+    "pos": [
+      4.5,
+      0.9
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You are able to keep concentrated enough in heavy armor.",
@@ -3213,6 +4153,10 @@
       "Heavy Armor:Combat Casting"
     ],
     "anyOf": false,
+    "pos": [
+      5.7333,
+      2.1
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Your heavy armor distracts you even less.",
@@ -3226,6 +4170,10 @@
       "Heavy Armor:Combat Trance"
     ],
     "anyOf": false,
+    "pos": [
+      6.1533,
+      4.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You're accustomed to your heavy armor so much that you can now cast even sophisticated spells with relative ease.",
@@ -3239,6 +4187,10 @@
       "Heavy Armor:Combat Meditation"
     ],
     "anyOf": false,
+    "pos": [
+      6.1533,
+      5.24
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "You have mastered spellcasting while wearing heavy armor.",
@@ -3252,6 +4204,10 @@
       "Heavy Armor:Conditioning"
     ],
     "anyOf": false,
+    "pos": [
+      1.5467,
+      0.9
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You are less hindered by your armor and can attack with ease.",
@@ -3265,6 +4221,10 @@
       "Heavy Armor:Combat Training"
     ],
     "anyOf": false,
+    "pos": [
+      0.7533,
+      2.1
+    ],
     "ranks": 1,
     "skill": 50,
     "carryWeight": 20,
@@ -3279,6 +4239,10 @@
       "Heavy Armor:Fortitude"
     ],
     "anyOf": false,
+    "pos": [
+      0.0333,
+      3.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Taking hits gives you a rush of adrenaline.",
@@ -3292,6 +4256,10 @@
       "Heavy Armor:Power of the Combatant"
     ],
     "anyOf": false,
+    "pos": [
+      0.0333,
+      5.24
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "You've reached perfection in the skill of wearing heavy armor and are now significantly more maneuverable in it.",
@@ -3305,6 +4273,10 @@
       "Heavy Armor:Conditioning"
     ],
     "anyOf": false,
+    "pos": [
+      2.9933,
+      0.92
+    ],
     "ranks": 1,
     "skill": 20,
     "text": "After extensive training you now can sprint in heavy armor without problems.",
@@ -3318,6 +4290,10 @@
       "Heavy Armor:Relentless Onslaught"
     ],
     "anyOf": false,
+    "pos": [
+      4.0,
+      2.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "When in full heavy armor, you can cause devastating impact when bull-rushing.",
@@ -3331,6 +4307,10 @@
       "Heavy Armor:Combat Training"
     ],
     "anyOf": false,
+    "pos": [
+      2.0,
+      2.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "When in full heavy armor, you can pose a defensive stance to reduce incoming impact.",
@@ -3342,6 +4322,10 @@
     "name": "Mounted Combat",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      1.0,
+      0.0
+    ],
     "ranks": 1,
     "skill": 0,
     "rankLevels": [
@@ -3358,6 +4342,10 @@
       "Heavy Armor:Relentless Onslaught"
     ],
     "anyOf": false,
+    "pos": [
+      3.0,
+      1.9857
+    ],
     "ranks": 1,
     "skill": 30,
     "text": "You take no damage from falling if wearing all Heavy Armor."
@@ -3370,6 +4358,10 @@
       "Heavy Armor:Cushioned"
     ],
     "anyOf": false,
+    "pos": [
+      3.0,
+      3.1143
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You are trained to deflect incoming attacks while wearing all Heavy Armor. Whenever an enemy attacks you, you gain 30 points of armor rating for 10 seconds. This effect stacks."
@@ -3382,6 +4374,10 @@
       "Heavy Armor:Defiance"
     ],
     "anyOf": false,
+    "pos": [
+      3.0,
+      4.2
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "If wearing all Heavy Armor, take 30% less attack damage from power attacks."
@@ -3394,6 +4390,10 @@
       "Heavy Armor:Never Kneel"
     ],
     "anyOf": false,
+    "pos": [
+      3.0,
+      5.2
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "When struck by a power attack or power bash, your attacks deal 50% more damage to the attacker for 5 seconds if wearing all Heavy Armor."
@@ -3404,6 +4404,10 @@
     "name": "Craftsmanship",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      3.9143,
+      1.9143
+    ],
     "ranks": 1,
     "skill": 10,
     "book": "The Armorer's Encyclopedia",
@@ -3417,6 +4421,10 @@
       "Smithing:Craftsmanship"
     ],
     "anyOf": false,
+    "pos": [
+      1.9286,
+      1.9429
+    ],
     "ranks": 1,
     "skill": 30,
     "book": "The Art of Dwarven Blacksmithing",
@@ -3431,6 +4439,10 @@
       "Smithing:Advanced Light Armors"
     ],
     "anyOf": true,
+    "pos": [
+      1.9571,
+      2.9286
+    ],
     "ranks": 1,
     "skill": 50,
     "book": "The Almanac of Orcish Blacksmithing",
@@ -3445,6 +4457,10 @@
       "Smithing:Elven Smithing"
     ],
     "anyOf": true,
+    "pos": [
+      0.1429,
+      3.7
+    ],
     "ranks": 1,
     "skill": 70,
     "book": "Harder than Steel - How to work with Ebony",
@@ -3459,6 +4475,10 @@
       "Smithing:Ebony Smithing"
     ],
     "anyOf": true,
+    "pos": [
+      3.9143,
+      3.4
+    ],
     "ranks": 1,
     "skill": 90,
     "book": "Daedric Craftsmanship",
@@ -3473,6 +4493,10 @@
       "Smithing:Ebony Smithing"
     ],
     "anyOf": true,
+    "pos": [
+      3.9286,
+      3.7571
+    ],
     "ranks": 1,
     "skill": 90,
     "book": "The Compendium of Draconic Armor",
@@ -3487,6 +4511,10 @@
       "Smithing:Tailoring & Polishing"
     ],
     "anyOf": true,
+    "pos": [
+      3.9143,
+      0.9429
+    ],
     "ranks": 1,
     "skill": 30,
     "book": "Art of the Advanced Nordic Blacksmiths",
@@ -3500,6 +4528,10 @@
       "Smithing:Advanced Blacksmithing"
     ],
     "anyOf": false,
+    "pos": [
+      2.9,
+      0.9429
+    ],
     "ranks": 1,
     "skill": 90,
     "book": "Saint Jiub's Opus",
@@ -3513,6 +4545,10 @@
       "Smithing:Advanced Blacksmithing"
     ],
     "anyOf": false,
+    "pos": [
+      4.9286,
+      0.9429
+    ],
     "ranks": 1,
     "skill": 50,
     "book": "Arcane Craftsmanship",
@@ -3526,6 +4562,10 @@
       "Smithing:Craftsmanship"
     ],
     "anyOf": false,
+    "pos": [
+      5.9429,
+      1.9429
+    ],
     "ranks": 1,
     "skill": 30,
     "book": "An Introduction to Scale Armors",
@@ -3540,6 +4580,10 @@
       "Smithing:Advanced Light Armors"
     ],
     "anyOf": true,
+    "pos": [
+      5.9429,
+      2.9143
+    ],
     "ranks": 1,
     "skill": 50,
     "book": "About Elven Craftsmanship",
@@ -3554,6 +4598,10 @@
       "Smithing:Elven Smithing"
     ],
     "anyOf": true,
+    "pos": [
+      7.7571,
+      3.7143
+    ],
     "ranks": 1,
     "skill": 70,
     "book": "An Introduction to Malachite",
@@ -3565,6 +4613,10 @@
     "name": "Tailoring & Polishing",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      4.6,
+      1.4714
+    ],
     "ranks": 1,
     "skill": 10,
     "book": "Complete History of the Radiant Raiment",
@@ -3578,6 +4630,10 @@
       "Smithing:Advanced Blacksmithing"
     ],
     "anyOf": false,
+    "pos": [
+      3.3,
+      1.4714
+    ],
     "ranks": 1,
     "skill": 60,
     "text": "You may choose an item type: One-Handed, Two-Handed, Light Armor, Heavy Armor or Archery. Items of the chosen type can be improved 10% better at a grindstone or workbench."
@@ -3590,6 +4646,10 @@
       "Smithing:Smithing Specialization"
     ],
     "anyOf": false,
+    "pos": [
+      2.5,
+      1.4714
+    ],
     "ranks": 1,
     "skill": 80,
     "text": "If you Specialized in an armor type, your attacks ignore 15% of the armor rating of enemies wearing items of the chosen type. If you Specialized in a weapon type, you take 10% less damage from weapons of the chosen type."
@@ -3600,6 +4660,10 @@
     "name": "Improved Blocking",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      3.0,
+      0.0
+    ],
     "ranks": 1,
     "skill": 0,
     "text": "You strengthened your shield arm and trained to parry blows a little.",
@@ -3613,6 +4677,10 @@
       "Block:Improved Blocking"
     ],
     "anyOf": false,
+    "pos": [
+      5.8467,
+      0.9
+    ],
     "ranks": 1,
     "skill": 15,
     "text": "You hold on to your shield like you would hold on to your life.",
@@ -3626,6 +4694,10 @@
       "Block:Strong Grip"
     ],
     "anyOf": false,
+    "pos": [
+      5.5333,
+      2.74
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You've learned how to block damaging spells more efficiently.",
@@ -3639,6 +4711,10 @@
       "Block:Elemental Protection"
     ],
     "anyOf": false,
+    "pos": [
+      4.6067,
+      3.36
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You have honed your defensive movements to perfection.",
@@ -3653,6 +4729,10 @@
       "Block:Defensive Stance"
     ],
     "anyOf": false,
+    "pos": [
+      3.0,
+      4.0
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "When bull rushing with your shield raised, you are a tremendous force to deal with.",
@@ -3666,6 +4746,10 @@
       "Block:Improved Blocking"
     ],
     "anyOf": false,
+    "pos": [
+      0.6333,
+      0.92
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "By gathering your strength for a short while, you can perform a much more powerful bash.",
@@ -3679,6 +4763,10 @@
       "Block:Powerful Bashes"
     ],
     "anyOf": false,
+    "pos": [
+      0.44,
+      2.12
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "When you put all of your power into your shield bashes, you will often overpower your foes.",
@@ -3692,6 +4780,10 @@
       "Block:Overpowering Bashes"
     ],
     "anyOf": false,
+    "pos": [
+      0.7533,
+      3.36
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "You've trained in the art of disarming foes mid-combat.",
@@ -3705,6 +4797,10 @@
       "Block:Improved Blocking"
     ],
     "anyOf": false,
+    "pos": [
+      2.9933,
+      1.24
+    ],
     "ranks": 1,
     "skill": 20,
     "text": "With weapon or shield you can block almost any blow with rock-solid confidence.",
@@ -3718,6 +4814,10 @@
       "Block:Powerful Bashes"
     ],
     "anyOf": false,
+    "pos": [
+      2.0,
+      2.0
+    ],
     "ranks": 2,
     "skill": 25,
     "rankSkills": [
@@ -3741,6 +4841,10 @@
       "Block:Improved Blocking"
     ],
     "anyOf": false,
+    "pos": [
+      2.0,
+      1.0
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You can use your torch more effectively in combat, causing painful burns.",
@@ -3754,6 +4858,10 @@
       "Block:Improved Blocking"
     ],
     "anyOf": false,
+    "pos": [
+      3.8143,
+      0.8857
+    ],
     "excludes": [
       "One-Handed:Weapon Mastery",
       "Two-Handed:Great Weapon Mastery"
@@ -3781,6 +4889,10 @@
       "Block:Weapons Master"
     ],
     "anyOf": false,
+    "pos": [
+      4.7857,
+      1.3429
+    ],
     "ranks": 1,
     "skill": 35,
     "text": "Your power attacks are now devastating enough to penetrate enemy armor and less exhausting.",
@@ -3794,6 +4906,10 @@
       "Block:Improved Blocking"
     ],
     "anyOf": false,
+    "pos": [
+      2.5143,
+      1.2
+    ],
     "ranks": 1,
     "skill": 30,
     "text": "Like the Imperial Legions of old, you understand the advantage of shortswords in combat.",
@@ -3807,6 +4923,10 @@
       "Block:Masterly Strike"
     ],
     "anyOf": false,
+    "pos": [
+      4.4143,
+      2.1571
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "When fighting with melee weapons, you are able to hit enemy weak points better.",
@@ -3820,6 +4940,10 @@
       "Block:Surprise Attack"
     ],
     "anyOf": false,
+    "pos": [
+      3.8143,
+      2.9286
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your knowledge of all weapon types allows you to target the weak points of enemies.",
@@ -3833,6 +4957,10 @@
       "Block:Strike the Jugular"
     ],
     "anyOf": false,
+    "pos": [
+      2.9857,
+      3.2857
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "You have proven that versatility can overcome specialization.",
@@ -3844,6 +4972,10 @@
     "name": "Ranged Combat Training",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      0.0,
+      0.0
+    ],
     "ranks": 1,
     "skill": 0,
     "text": "After some training at the shooting range you can deal more damage with ranged weapons.",
@@ -3857,6 +4989,10 @@
       "Marksman:Ranged Combat Training"
     ],
     "anyOf": false,
+    "pos": [
+      1.7667,
+      0.9
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "By concentrating only on your target and holding your breath, you can now aim much more precisely.",
@@ -3870,6 +5006,10 @@
       "Marksman:Eagle Eye"
     ],
     "anyOf": false,
+    "pos": [
+      3.1,
+      1.84
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "When fully focusing on your target, everything around you seems to slow down remarkably.",
@@ -3883,6 +5023,10 @@
       "Marksman:Eagle Eye"
     ],
     "anyOf": false,
+    "pos": [
+      1.7667,
+      2.4
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You have learned to draw and fire in one single movement.",
@@ -3896,6 +5040,10 @@
       "Marksman:Eagle Eye"
     ],
     "anyOf": false,
+    "pos": [
+      3.1,
+      2.4
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Your have familiarized yourself with the mechanics of your crossbow.",
@@ -3909,6 +5057,10 @@
       "Marksman:Eagle Eye"
     ],
     "anyOf": false,
+    "pos": [
+      3.1,
+      3.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You have discovered the art of aiming at tendons and joints.",
@@ -3923,6 +5075,10 @@
       "Marksman:Power Shot"
     ],
     "anyOf": false,
+    "pos": [
+      1.8667,
+      4.0
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Any successful staggering shot will almost always stun the target momentarily.",
@@ -3936,6 +5092,10 @@
       "Marksman:Ranged Combat Training"
     ],
     "anyOf": false,
+    "pos": [
+      -0.0429,
+      1.0714
+    ],
     "ranks": 1,
     "skill": 20,
     "text": "Your aim is now precise enough to target weak spots in the enemy's defenses.",
@@ -3949,6 +5109,10 @@
       "Marksman:Precise Aim"
     ],
     "anyOf": false,
+    "pos": [
+      0.1857,
+      2.1
+    ],
     "ranks": 1,
     "skill": 30,
     "text": "You've learned how to hit the weakest parts of armor.",
@@ -3962,6 +5126,10 @@
       "Marksman:Piercing Shot"
     ],
     "anyOf": false,
+    "pos": [
+      0.8714,
+      3.2714
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You've mastered the technique of hitting weak armor parts.",
@@ -3975,6 +5143,10 @@
       "Marksman:Ranged Combat Training"
     ],
     "anyOf": false,
+    "pos": [
+      1.4,
+      0.4
+    ],
     "ranks": 1,
     "skill": 15,
     "text": "You improved your footwork when engaging in ranged combat with light weapons.",
@@ -3988,6 +5160,10 @@
       "Marksman:Ranged Combat Training"
     ],
     "anyOf": false,
+    "pos": [
+      2.0,
+      0.2
+    ],
     "ranks": 1,
     "skill": 15,
     "text": "You can keep steady aim with heavy ranged weapons, dealing more damage with sneak attacks.",
@@ -4001,6 +5177,10 @@
       "Marksman:Ranged Combat Training"
     ],
     "anyOf": false,
+    "pos": [
+      0.5,
+      1.0
+    ],
     "ranks": 1,
     "skill": 20,
     "text": "Throwing knives penetrate the flesh, interrupting the target.",
@@ -4014,6 +5194,10 @@
       "Marksman:Eagle Eye"
     ],
     "anyOf": false,
+    "pos": [
+      2.25,
+      2.5
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You can throw knives more precisely.",
@@ -4025,6 +5209,10 @@
     "name": "Hunter",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      3.0,
+      0.0
+    ],
     "ranks": 2,
     "skill": 0,
     "rankSkills": [
@@ -4052,6 +5240,10 @@
       "Marksman:Ranged Combat Training"
     ],
     "anyOf": false,
+    "pos": [
+      1.0,
+      1.0
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You can use your bow or crossbow as a melee weapon in close combat.",
@@ -4065,6 +5257,10 @@
       "Marksman:Precise Aim"
     ],
     "anyOf": false,
+    "pos": [
+      0.6857,
+      1.6286
+    ],
     "ranks": 1,
     "skill": 30,
     "text": "Cannot be staggered while holding a drawn bow or reloading a crossbow."
@@ -4077,6 +5273,10 @@
       "Marksman:Piercing Shot"
     ],
     "anyOf": false,
+    "pos": [
+      0.9714,
+      2.3
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Shooting a target beyond 25 feet three times in rapid succession, leaving less than 2.75 seconds between each hit, deals bonus damage equal to 15% of the target's current Health (max. 150 damage) and knocks the target to the ground."
@@ -4090,6 +5290,10 @@
       "Marksman:Power Shot"
     ],
     "anyOf": true,
+    "pos": [
+      1.8143,
+      3.1714
+    ],
     "ranks": 1,
     "skill": 60,
     "text": "Grants power to store your currently dual-cast spell. Shooting a fully drawn bow releases at a lower strength, scaling with archery skill, toward the crosshair, costing 50 Magicka. Only works with spells that target others."
@@ -4100,6 +5304,10 @@
     "name": "Great Weapon Mastery",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      1.8867,
+      -0.1
+    ],
     "excludes": [
       "Block:Weapons Master"
     ],
@@ -4126,6 +5334,10 @@
       "Two-Handed:Great Weapon Mastery"
     ],
     "anyOf": false,
+    "pos": [
+      1.8667,
+      0.9
+    ],
     "ranks": 1,
     "skill": 20,
     "text": "Your power attacks become mighty blows that will penetrate armor and are less tiring.",
@@ -4139,6 +5351,10 @@
       "Two-Handed:Barbaric Might"
     ],
     "anyOf": false,
+    "pos": [
+      1.44,
+      2.4
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Your two-handed combat style has improved so much that all power attacks have become devastating.",
@@ -4153,6 +5369,10 @@
       "Two-Handed:Devastating Strike"
     ],
     "anyOf": false,
+    "pos": [
+      1.8667,
+      4.62
+    ],
     "ranks": 1,
     "skill": 75,
     "text": "Your power attacks are almost unstoppable.",
@@ -4166,6 +5386,10 @@
       "Two-Handed:Hyper Armor"
     ],
     "anyOf": false,
+    "pos": [
+      1.8667,
+      5.7
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "You can fell almost any foe with a single strike of your two-hander.",
@@ -4179,6 +5403,10 @@
       "Two-Handed:Mighty Strike"
     ],
     "anyOf": false,
+    "pos": [
+      1.8667,
+      6.5
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Your barbaric instincts strengthen as you or your foe meet their end.",
@@ -4192,6 +5420,10 @@
       "Two-Handed:Barbaric Might"
     ],
     "anyOf": false,
+    "pos": [
+      2.46,
+      2.4
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You've learned to perform a leaping power attack while sprinting, reducing your enemies to smithereens.",
@@ -4205,6 +5437,10 @@
       "Two-Handed:Barbaric Might"
     ],
     "anyOf": false,
+    "pos": [
+      2.9286,
+      1.9143
+    ],
     "ranks": 3,
     "skill": 25,
     "rankSkills": [
@@ -4231,6 +5467,10 @@
       "Two-Handed:Barbaric Might"
     ],
     "anyOf": false,
+    "pos": [
+      0.9143,
+      1.9286
+    ],
     "ranks": 3,
     "skill": 25,
     "rankSkills": [
@@ -4257,6 +5497,10 @@
       "Two-Handed:Barbaric Might"
     ],
     "anyOf": false,
+    "pos": [
+      -0.0714,
+      1.9
+    ],
     "ranks": 3,
     "skill": 25,
     "rankSkills": [
@@ -4283,6 +5527,10 @@
       "Two-Handed:Barbaric Might"
     ],
     "anyOf": false,
+    "pos": [
+      3.9143,
+      1.9286
+    ],
     "ranks": 3,
     "skill": 25,
     "rankSkills": [
@@ -4309,6 +5557,10 @@
       "Two-Handed:Longweapon Focus"
     ],
     "anyOf": false,
+    "pos": [
+      0.8857,
+      2.4571
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "With enough momentum, you can slash deeper into targets with power attacks.",
@@ -4322,6 +5574,10 @@
       "Two-Handed:Warhammer Focus"
     ],
     "anyOf": false,
+    "pos": [
+      -0.0714,
+      2.3857
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You can deliver maximum force with your warhammer to knock off targets that fail to resist.",
@@ -4335,6 +5591,10 @@
       "Two-Handed:Hafted Blade Focus"
     ],
     "anyOf": false,
+    "pos": [
+      2.9429,
+      2.3571
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Mighty swing with a battleaxe can cleave through target's defense, hindering them from blocking next attacks.",
@@ -4348,6 +5608,10 @@
       "Two-Handed:Defensive Strike"
     ],
     "anyOf": false,
+    "pos": [
+      3.9143,
+      2.9286
+    ],
     "ranks": 1,
     "skill": 80,
     "text": "You take half damage from enemy attacks while power attacking or blocking with quarterstaves and battlestaves."
@@ -4360,6 +5624,10 @@
       "Two-Handed:Shield Breaker"
     ],
     "anyOf": false,
+    "pos": [
+      2.9429,
+      2.9143
+    ],
     "ranks": 1,
     "skill": 80,
     "text": "Standing power attacks with battleaxes and halberds execute targets below 25% Health, delivering a critical strike that deals twenty times critical damage."
@@ -4372,6 +5640,10 @@
       "Two-Handed:Quarterstaff & Battlestaff Focus"
     ],
     "anyOf": false,
+    "pos": [
+      3.9143,
+      2.4714
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You can more efficiently block and counterattack with quarterstaves.",
@@ -4385,6 +5657,10 @@
       "Two-Handed:Onslaught"
     ],
     "anyOf": false,
+    "pos": [
+      -0.0571,
+      2.8571
+    ],
     "ranks": 1,
     "skill": 80,
     "text": "Whenever a standing power attack with a warhammer inflicts a critical strike, it deals 3% more critical damage per point of Stamina."
@@ -4397,6 +5673,10 @@
       "Two-Handed:Reversal"
     ],
     "anyOf": false,
+    "pos": [
+      0.9,
+      2.9429
+    ],
     "ranks": 1,
     "skill": 80,
     "text": "Two-handed attacks with greatswords and pikes deal up to 200% more damage below 90% Health. The damage bonus increases as your Health decreases."
@@ -4407,6 +5687,10 @@
     "name": "Weapon Mastery",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      2.1867,
+      0.0
+    ],
     "excludes": [
       "Block:Weapons Master"
     ],
@@ -4433,6 +5717,10 @@
       "One-Handed:Weapon Mastery"
     ],
     "anyOf": false,
+    "pos": [
+      2.1867,
+      0.9
+    ],
     "ranks": 1,
     "skill": 20,
     "text": "Your power attacks with one-handed weapons or fists are now devastating enough to penetrate enemy armor and less exhausting.",
@@ -4446,6 +5734,10 @@
       "One-Handed:Penetrating Strikes"
     ],
     "anyOf": false,
+    "pos": [
+      2.8867,
+      2.4
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You know how to put the maximum force into your power attacks.",
@@ -4460,6 +5752,10 @@
       "One-Handed:Powerful Strike"
     ],
     "anyOf": false,
+    "pos": [
+      2.3286,
+      5.1429
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "While attacking a target, build up momentum for a decisive strike.",
@@ -4473,6 +5769,10 @@
       "One-Handed:Penetrating Strikes"
     ],
     "anyOf": false,
+    "pos": [
+      1.7667,
+      2.4
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You have learned to perform a leaping power attack while sprinting.",
@@ -4486,6 +5786,10 @@
       "One-Handed:Penetrating Strikes"
     ],
     "anyOf": false,
+    "pos": [
+      2.9933,
+      1.52
+    ],
     "ranks": 3,
     "skill": 25,
     "rankSkills": [
@@ -4512,6 +5816,10 @@
       "One-Handed:Penetrating Strikes"
     ],
     "anyOf": false,
+    "pos": [
+      1.5467,
+      1.5
+    ],
     "ranks": 3,
     "skill": 25,
     "rankSkills": [
@@ -4538,6 +5846,10 @@
       "One-Handed:Penetrating Strikes"
     ],
     "anyOf": false,
+    "pos": [
+      0.8467,
+      1.5
+    ],
     "ranks": 3,
     "skill": 25,
     "rankSkills": [
@@ -4564,6 +5876,10 @@
       "One-Handed:Weapon Mastery"
     ],
     "anyOf": false,
+    "pos": [
+      -0.1667,
+      0.6
+    ],
     "ranks": 2,
     "skill": 25,
     "rankSkills": [
@@ -4587,6 +5903,10 @@
       "One-Handed:Flurry"
     ],
     "anyOf": false,
+    "pos": [
+      -0.0667,
+      3.72
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You've mastered the art of using multiple weapons in combat.",
@@ -4598,6 +5918,10 @@
     "name": "Hand to Hand",
     "requires": [],
     "anyOf": false,
+    "pos": [
+      3.0,
+      0.25
+    ],
     "ranks": 1,
     "skill": 0,
     "text": "You are trained in hand to hand combat, and can effectively disable opponents with bare hands.",
@@ -4611,6 +5935,10 @@
       "One-Handed:Penetrating Strikes"
     ],
     "anyOf": false,
+    "pos": [
+      3.6933,
+      1.52
+    ],
     "ranks": 3,
     "skill": 25,
     "rankSkills": [
@@ -4637,6 +5965,10 @@
       "One-Handed:Sword & Spear Focus"
     ],
     "anyOf": false,
+    "pos": [
+      0.25,
+      2.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Your well placed strikes allow you to find the weak points of enemy defenses.",
@@ -4650,6 +5982,10 @@
       "One-Handed:Mace Focus"
     ],
     "anyOf": false,
+    "pos": [
+      1.0,
+      2.25
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You can cause stunning impact to targets that fail to block, knocking them down to the ground.",
@@ -4663,6 +5999,10 @@
       "One-Handed:War Axe Focus"
     ],
     "anyOf": false,
+    "pos": [
+      3.5,
+      2.25
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "Blade of your war axe can carve into target's weapons and shields, weakening their damage and protection.",
@@ -4676,6 +6016,10 @@
       "One-Handed:Short Blade Focus"
     ],
     "anyOf": false,
+    "pos": [
+      4.25,
+      2.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You can aim for critical weak points, dealing even more damage.",
@@ -4689,6 +6033,10 @@
       "One-Handed:Hand to Hand"
     ],
     "anyOf": false,
+    "pos": [
+      3.75,
+      0.25
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You can grapple opponents to disarm or immobilize them.",
@@ -4702,6 +6050,10 @@
       "One-Handed:Grappling"
     ],
     "anyOf": false,
+    "pos": [
+      3.5,
+      0.75
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You can knock down enemies by grappling.",
@@ -4715,6 +6067,10 @@
       "One-Handed:Hand to Hand"
     ],
     "anyOf": false,
+    "pos": [
+      3.75,
+      0.75
+    ],
     "ranks": 1,
     "skill": 25,
     "text": "You can defend yourself better even without weapons or shields.",
@@ -4728,6 +6084,10 @@
       "One-Handed:Unarmed Defense"
     ],
     "anyOf": false,
+    "pos": [
+      4.25,
+      1.25
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "While unarmed, you can maneuver more freely and resist physical force.",
@@ -4741,6 +6101,10 @@
       "One-Handed:Weapon Mastery"
     ],
     "anyOf": false,
+    "pos": [
+      1.5,
+      0.5
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You can balance your weapon better when wielding it in a single hand, delivering quick and precise attacks.",
@@ -4754,6 +6118,10 @@
       "One-Handed:Weapon Mastery"
     ],
     "anyOf": false,
+    "pos": [
+      1.0,
+      0.0
+    ],
     "ranks": 1,
     "skill": 50,
     "text": "You can balance your weapon well with single hand, and can use it to cast magic.",
@@ -4767,6 +6135,10 @@
       "One-Handed:Piercing Strike"
     ],
     "anyOf": false,
+    "pos": [
+      0.2,
+      2.7429
+    ],
     "ranks": 1,
     "skill": 80,
     "text": "Attacks deal up to 200% more damage below 90% Health. The damage bonus increases as your Health decreases."
@@ -4779,6 +6151,10 @@
       "One-Handed:Stunning Blow"
     ],
     "anyOf": false,
+    "pos": [
+      1.0,
+      2.8
+    ],
     "ranks": 1,
     "skill": 80,
     "text": "Whenever a standing power attack with a mace inflicts a critical strike, it deals 3% more critical damage per point of Stamina."
@@ -4791,6 +6167,10 @@
       "One-Handed:Armsbreaker"
     ],
     "anyOf": false,
+    "pos": [
+      3.5714,
+      2.8429
+    ],
     "ranks": 1,
     "skill": 80,
     "text": "Standing power attacks with war axes execute targets below 25% Health, delivering a critical strike that deals twenty times critical damage."
@@ -4803,6 +6183,10 @@
       "One-Handed:Puncture"
     ],
     "anyOf": false,
+    "pos": [
+      4.3286,
+      2.6429
+    ],
     "ranks": 1,
     "skill": 80,
     "text": "Forward power attacks with a dagger ignore 25% of armor."
@@ -4815,6 +6199,10 @@
       "One-Handed:Relentless Onslaught"
     ],
     "anyOf": false,
+    "pos": [
+      2.3286,
+      6.2286
+    ],
     "ranks": 1,
     "skill": 100,
     "text": "Your barbaric instincts strengthen as you or your foe meet their end.",
@@ -4829,8 +6217,10 @@
     "ranks": 1,
     "carryWeight": 25,
     "text": "Increases carry weight by 25.",
-    "x": 1.47,
-    "y": -0.4
+    "pos": [
+      1.47,
+      -0.4
+    ]
   },
   {
     "id": "Destiny:Focus",
@@ -4842,8 +6232,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Your Magicka Regeneration is increased by 50%.",
-    "x": 3.87,
-    "y": 0.6
+    "pos": [
+      3.87,
+      0.6
+    ]
   },
   {
     "id": "Destiny:Constitution",
@@ -4855,8 +6247,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Your Health Regeneration is increased by 50%.",
-    "x": 1.47,
-    "y": 0.6
+    "pos": [
+      1.47,
+      0.6
+    ]
   },
   {
     "id": "Destiny:Endurance",
@@ -4868,8 +6262,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Your Stamina Regeneration is increased by 50%.",
-    "x": -0.93,
-    "y": 0.6
+    "pos": [
+      -0.93,
+      0.6
+    ]
   },
   {
     "id": "Destiny:Mage",
@@ -4881,8 +6277,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Your spells are 5% stronger or last 10% longer.",
-    "x": 6.27,
-    "y": 1.6
+    "pos": [
+      6.27,
+      1.6
+    ]
   },
   {
     "id": "Destiny:Warrior",
@@ -4894,8 +6292,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "You deal 5% more weapon damage.",
-    "x": 1.47,
-    "y": 1.6
+    "pos": [
+      1.47,
+      1.6
+    ]
   },
   {
     "id": "Destiny:Thief",
@@ -4907,8 +6307,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "You are 20% harder to detect.",
-    "x": -3.33,
-    "y": 1.6
+    "pos": [
+      -3.33,
+      1.6
+    ]
   },
   {
     "id": "Destiny:Fortification",
@@ -4921,8 +6323,10 @@
     "ranks": 1,
     "allAttributes": 10,
     "text": "Your Health, Magicka and Stamina are increased by 10 each.",
-    "x": 8.67,
-    "y": 2.6
+    "pos": [
+      8.67,
+      2.6
+    ]
   },
   {
     "id": "Destiny:Magicka Surge",
@@ -4934,8 +6338,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Your Magicka Regeneration is increased by 400% when your Magicka falls below 25%.",
-    "x": 6.27,
-    "y": 2.6
+    "pos": [
+      6.27,
+      2.6
+    ]
   },
   {
     "id": "Destiny:Magic Shell",
@@ -4948,8 +6354,10 @@
     "anyOf": true,
     "ranks": 1,
     "text": "Your magic resistance is increased by 10%.",
-    "x": 3.87,
-    "y": 2.6
+    "pos": [
+      3.87,
+      2.6
+    ]
   },
   {
     "id": "Destiny:Iron Skin",
@@ -4961,8 +6369,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Every 10 seconds, taking damage increases your Armor Rating by 150 for 6 seconds.",
-    "x": 1.47,
-    "y": 2.6
+    "pos": [
+      1.47,
+      2.6
+    ]
   },
   {
     "id": "Destiny:Battle Spirit",
@@ -4975,8 +6385,10 @@
     "anyOf": true,
     "ranks": 1,
     "text": "Power attacks increase your attack damage by 10% for 6 seconds.",
-    "x": -0.93,
-    "y": 2.6
+    "pos": [
+      -0.93,
+      2.6
+    ]
   },
   {
     "id": "Destiny:Adrenaline",
@@ -4988,8 +6400,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Your Stamina Regeneration is increased by 200% when your Stamina falls below 25%.",
-    "x": -3.33,
-    "y": 2.6
+    "pos": [
+      -3.33,
+      2.6
+    ]
   },
   {
     "id": "Destiny:Swiftness",
@@ -5001,8 +6415,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Every 10 seconds, taking damage increases your movement speed by 20% for 6 seconds.",
-    "x": -5.73,
-    "y": 2.6
+    "pos": [
+      -5.73,
+      2.6
+    ]
   },
   {
     "id": "Destiny:Agent",
@@ -5014,8 +6430,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Enemy attacks against you slows them by 25% for 5 seconds.",
-    "x": 8.67,
-    "y": 3.6
+    "pos": [
+      8.67,
+      3.6
+    ]
   },
   {
     "id": "Destiny:Sorcerer",
@@ -5027,8 +6445,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "You take 10% less damage while casting spells.",
-    "x": 6.27,
-    "y": 3.6
+    "pos": [
+      6.27,
+      3.6
+    ]
   },
   {
     "id": "Destiny:Spellsword",
@@ -5040,8 +6460,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "You restore 15 magicka per weapon attack.",
-    "x": 3.87,
-    "y": 3.6
+    "pos": [
+      3.87,
+      3.6
+    ]
   },
   {
     "id": "Destiny:Knight",
@@ -5053,11 +6475,13 @@
     "anyOf": false,
     "ranks": 1,
     "text": "You take 10% less damage while power attacking, drawing a bow, or blocking.",
-    "x": 1.47,
-    "y": 3.6
+    "pos": [
+      1.47,
+      3.6
+    ]
   },
   {
-    "id": "Destiny:Endurance",
+    "id": "Destiny:Acrobat",
     "tree": "Destiny",
     "name": "Endurance",
     "requires": [
@@ -5066,8 +6490,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "You regenerate stamina 100% faster.",
-    "x": -0.93,
-    "y": 3.6
+    "pos": [
+      -0.93,
+      3.6
+    ]
   },
   {
     "id": "Destiny:Scout",
@@ -5079,8 +6505,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Your bows, crossbows and throwing knives do 10% more damage.",
-    "x": -3.33,
-    "y": 3.6
+    "pos": [
+      -3.33,
+      3.6
+    ]
   },
   {
     "id": "Destiny:Spellblade",
@@ -5092,8 +6520,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Attacks with weapons have a 30% chance to interupt casting enemies.",
-    "x": -5.73,
-    "y": 3.6
+    "pos": [
+      -5.73,
+      3.6
+    ]
   },
   {
     "id": "Destiny:Leadership",
@@ -5105,8 +6535,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Nearby allies move 15% faster during combat.",
-    "x": 9.87,
-    "y": 4.6
+    "pos": [
+      9.87,
+      4.6
+    ]
   },
   {
     "id": "Destiny:Hard Skin",
@@ -5118,8 +6550,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Your Armor Rating is increased by 100.",
-    "x": 8.67,
-    "y": 4.6
+    "pos": [
+      8.67,
+      4.6
+    ]
   },
   {
     "id": "Destiny:Healing Presence",
@@ -5132,8 +6566,10 @@
     "anyOf": true,
     "ranks": 1,
     "text": "You heal yourself and nearby allies for 10 Health every 10 seconds.",
-    "x": 7.47,
-    "y": 4.6
+    "pos": [
+      7.47,
+      4.6
+    ]
   },
   {
     "id": "Destiny:Absorbtion",
@@ -5145,8 +6581,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "You have a 10% chance to absorb the Magicka from incoming spells.",
-    "x": 6.27,
-    "y": 4.6
+    "pos": [
+      6.27,
+      4.6
+    ]
   },
   {
     "id": "Destiny:Conjuring Presence",
@@ -5159,8 +6597,10 @@
     "anyOf": true,
     "ranks": 1,
     "text": "Nearby summoned or reanimated allies have 50 increased Health, 50 increased Armor Rating and reflect 15% physical damage.",
-    "x": 5.07,
-    "y": 4.6
+    "pos": [
+      5.07,
+      4.6
+    ]
   },
   {
     "id": "Destiny:Corrosive Weapon",
@@ -5172,8 +6612,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Power attacks reduces enemies magic resistance by 15% and Armor Rating by 75 for 10 seconds.",
-    "x": 3.87,
-    "y": 4.6
+    "pos": [
+      3.87,
+      4.6
+    ]
   },
   {
     "id": "Destiny:Leeching Spikes",
@@ -5186,8 +6628,10 @@
     "anyOf": true,
     "ranks": 1,
     "text": "You absorb 15 Health over 5 seconds from enemies attacking you once every 10 seconds for each enemy. While below 33% Health, absorbed Health is doubled.",
-    "x": 2.67,
-    "y": 4.6
+    "pos": [
+      2.67,
+      4.6
+    ]
   },
   {
     "id": "Destiny:Unyielding",
@@ -5199,8 +6643,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "While blocking, your health, magicka, stamina regeneration is increased by 50% and take 25% less poise damage.",
-    "x": 1.47,
-    "y": 4.6
+    "pos": [
+      1.47,
+      4.6
+    ]
   },
   {
     "id": "Destiny:Overwhelming Presence",
@@ -5208,40 +6654,46 @@
     "name": "Overwhelming Presence",
     "requires": [
       "Destiny:Knight",
-      "Destiny:Endurance"
+      "Destiny:Acrobat"
     ],
     "anyOf": true,
     "ranks": 1,
     "text": "Close enemies have 100 reduced Armor Rating and 10% reduced elemental resist.",
-    "x": 0.27,
-    "y": 4.6
+    "pos": [
+      0.27,
+      4.6
+    ]
   },
   {
     "id": "Destiny:Smash",
     "tree": "Destiny",
     "name": "Smash",
     "requires": [
-      "Destiny:Endurance"
+      "Destiny:Acrobat"
     ],
     "anyOf": false,
     "ranks": 1,
     "text": "Bashing does 20% more damage and power attacks deal 10% more damage.",
-    "x": -0.93,
-    "y": 4.6
+    "pos": [
+      -0.93,
+      4.6
+    ]
   },
   {
     "id": "Destiny:Trickster",
     "tree": "Destiny",
     "name": "Trickster",
     "requires": [
-      "Destiny:Endurance",
+      "Destiny:Acrobat",
       "Destiny:Scout"
     ],
     "anyOf": true,
     "ranks": 1,
     "text": "You have a 10% chance to evade enemy weapon attacks.",
-    "x": -2.13,
-    "y": 4.6
+    "pos": [
+      -2.13,
+      4.6
+    ]
   },
   {
     "id": "Destiny:Swift Shadow",
@@ -5253,8 +6705,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "You move 25% faster while sneaking and deal 10% more crtitical damage.",
-    "x": -3.33,
-    "y": 4.6
+    "pos": [
+      -3.33,
+      4.6
+    ]
   },
   {
     "id": "Destiny:Viper's Blade",
@@ -5267,8 +6721,10 @@
     "anyOf": true,
     "ranks": 1,
     "text": "Attacks reduces enemies poison resistance by 25% for 10 seconds.",
-    "x": -4.53,
-    "y": 4.6
+    "pos": [
+      -4.53,
+      4.6
+    ]
   },
   {
     "id": "Destiny:Evasion",
@@ -5280,8 +6736,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "You have a 10% chance to evade spells and attacks.",
-    "x": -5.73,
-    "y": 4.6
+    "pos": [
+      -5.73,
+      4.6
+    ]
   },
   {
     "id": "Destiny:Silent Blade",
@@ -5293,8 +6751,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Your attacks deal 25 damage to Magicka and Stamina.",
-    "x": -6.93,
-    "y": 4.6
+    "pos": [
+      -6.93,
+      4.6
+    ]
   },
   {
     "id": "Destiny:Bard",
@@ -5306,8 +6766,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Nearby allies deal 15% more physical damage and have 15% magic resistance during combat. Prices are 10% better.",
-    "x": 9.87,
-    "y": 5.6
+    "pos": [
+      9.87,
+      5.6
+    ]
   },
   {
     "id": "Destiny:Shaman",
@@ -5319,8 +6781,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "If health, magicka or stamina are under 75%, weapons and spells are 5% better and an additional 5% when under 50% (stack up to 34% with all 3 under 50%)",
-    "x": 8.67,
-    "y": 5.6
+    "pos": [
+      8.67,
+      5.6
+    ]
   },
   {
     "id": "Destiny:Templar",
@@ -5332,8 +6796,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Every 60 seconds, falling below 25% Health, you are immune to any damage for 3 seconds and heal yourself afterwards for 200 Health.",
-    "x": 7.47,
-    "y": 5.6
+    "pos": [
+      7.47,
+      5.6
+    ]
   },
   {
     "id": "Destiny:Archmage",
@@ -5345,8 +6811,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Your Spells are 15% stronger or last 30% longer.",
-    "x": 6.27,
-    "y": 5.6
+    "pos": [
+      6.27,
+      5.6
+    ]
   },
   {
     "id": "Destiny:Summoner",
@@ -5358,8 +6826,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "You can summon or reanimate one additional minion.",
-    "x": 5.07,
-    "y": 5.6
+    "pos": [
+      5.07,
+      5.6
+    ]
   },
   {
     "id": "Destiny:Battlemage",
@@ -5371,8 +6841,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Power attacks cost 25% less stamina if you have a spell in your left hand. Spells are 15% stronger if you have a weapon in your right hand.",
-    "x": 3.87,
-    "y": 5.6
+    "pos": [
+      3.87,
+      5.6
+    ]
   },
   {
     "id": "Destiny:Blood Knight",
@@ -5384,8 +6856,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "While above 50% Health you deal 15% more weapon damage and while below 50% Health, you take 25% less magic damage.",
-    "x": 2.67,
-    "y": 5.6
+    "pos": [
+      2.67,
+      5.6
+    ]
   },
   {
     "id": "Destiny:General",
@@ -5397,8 +6871,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Your tempering ability, weapon damage and Armor Rating is increased by 10%.",
-    "x": 1.47,
-    "y": 5.6
+    "pos": [
+      1.47,
+      5.6
+    ]
   },
   {
     "id": "Destiny:Monk",
@@ -5410,8 +6886,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Your attacks absorb 60 health, magicka and stamina over 60 seconds.",
-    "x": 0.27,
-    "y": 5.6
+    "pos": [
+      0.27,
+      5.6
+    ]
   },
   {
     "id": "Destiny:Berserker",
@@ -5423,8 +6901,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "You take 25% less damage while power attacking and power attack stamina usage is reduced by 25%.",
-    "x": -0.93,
-    "y": 5.6
+    "pos": [
+      -0.93,
+      5.6
+    ]
   },
   {
     "id": "Destiny:Saboteur",
@@ -5436,8 +6916,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Your deal 25% more poise damage and deal 25% more damage against staggered enemies.",
-    "x": -2.13,
-    "y": 5.6
+    "pos": [
+      -2.13,
+      5.6
+    ]
   },
   {
     "id": "Destiny:Assassin",
@@ -5449,8 +6931,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Every 60 seconds, your next sneak attack deals 100% more damage.",
-    "x": -3.33,
-    "y": 5.6
+    "pos": [
+      -3.33,
+      5.6
+    ]
   },
   {
     "id": "Destiny:Rogue",
@@ -5462,8 +6946,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Your attacks deal an additional 150 irresistible damage over 60 seconds.",
-    "x": -4.53,
-    "y": 5.6
+    "pos": [
+      -4.53,
+      5.6
+    ]
   },
   {
     "id": "Destiny:Stalker",
@@ -5475,8 +6961,10 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Your attacks slows enemies by 50% and reduce magic resistance by 25% for 5 seconds.",
-    "x": -5.73,
-    "y": 5.6
+    "pos": [
+      -5.73,
+      5.6
+    ]
   },
   {
     "id": "Destiny:Nightblade",
@@ -5488,7 +6976,9 @@
     "anyOf": false,
     "ranks": 1,
     "text": "Against enemies that are out of Magicka or Stamina, your attacks deal 20% more damage.",
-    "x": -6.93,
-    "y": 5.6
+    "pos": [
+      -6.93,
+      5.6
+    ]
   }
 ]

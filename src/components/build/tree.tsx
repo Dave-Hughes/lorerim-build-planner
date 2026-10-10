@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useGameData } from "@/components/game-data";
-import { perkText } from "@/lib/rules/data";
+import { perkText, type GameData, type Perk } from "@/lib/rules/data";
 import { perkRequirementText, perkStatus, type PerkStatus } from "@/lib/rules/derive";
-import { treeLayout } from "@/lib/rules/layout";
+import { labelSizes, placeLabels, type LabelRequest } from "@/lib/rules/labels";
+import { treeLayout, type LayoutPadding } from "@/lib/rules/layout";
 import type { LevelState } from "@/lib/rules/types";
 import styles from "./tree.module.css";
 
@@ -13,94 +14,426 @@ export interface TreeProps {
   states: LevelState[];
   level: number;
   selectedId?: string | null;
-  /** When given, nodes are buttons; otherwise the tree is read-only. */
+  /** When given, stars are buttons that select; otherwise the tree is read-only. */
   onSelect?: (id: string) => void;
+  /** On small screens, what the bottom sheet shows for a tapped star (defaults to the perk's own words). */
+  details?: (id: string) => React.ReactNode;
 }
 
-export function Tree({ tree, states, level, selectedId, onSelect }: TreeProps) {
-  const d = useGameData();
-  const scroller = useRef<HTMLDivElement>(null);
-  const [room, setRoom] = useState(600);
+/** Below this window width the tree is a pan-and-zoom sky with a bottom sheet. */
+const SMALL = 900;
+const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
+
+/** Star radius, line width and label size scale with the drawing: 16px stars at 900 wide, 22px at 1600. */
+function sizesFor(width: number) {
+  const t = clamp((width - 900) / 700, 0, 1);
+  return { star: width < 600 ? 7 : 8 + 3 * t, line: 1 + 0.5 * t, font: Math.round(13 + 2 * t) };
+}
+
+function padFor(width: number): LayoutPadding {
+  return width < 600 ? { x: 40, top: 22, bottom: 40 } : { x: 70, top: 30, bottom: 58 };
+}
+
+function requirementLine(d: GameData, p: Perk, st: PerkStatus): string {
+  if (p.tree === "Destiny") return st.state === "taken" ? `Level ${st.takenAt[0]}` : "";
+  const rank = Math.min(st.ranksTaken, st.ranks - 1);
+  let req = perkRequirementText(p, rank) || (p.book ? "Book" : "No requirement");
+  if (st.ranks > 1) req += ` (${st.ranksTaken}/${st.ranks})`;
+  return req;
+}
+
+function stateWords(st: PerkStatus): string {
+  return st.state === "taken" ? "taken" : st.state === "open" ? "can take now" : "not available yet";
+}
+
+/** Width of text in the page's body face, measured once the fonts are in. */
+function useMeasure(el: HTMLElement | null) {
+  return useMemo(() => {
+    if (!el || typeof document === "undefined") return undefined;
+    const ctx = document.createElement("canvas").getContext("2d");
+    const family = getComputedStyle(el).fontFamily;
+    if (!ctx) return undefined;
+    return (text: string, size: number) => {
+      ctx.font = `${size}px ${family}`;
+      return ctx.measureText(text).width;
+    };
+  }, [el]);
+}
+
+/** The perks of a tree as a plain list, grouped by the skill they need, then level and book perks. */
+function PerkList({ d, tree, status, onSelect, selectedId, hidden }: { d: GameData; tree: string; status: Map<string, PerkStatus>; onSelect?: (id: string) => void; selectedId?: string | null; hidden?: boolean }) {
+  const perks = d.perksByTree.get(tree) ?? [];
+  const groups: { label: string; perks: Perk[] }[] = [];
+  const add = (label: string, p: Perk) => {
+    const g = groups.find((x) => x.label === label) ?? (groups.push({ label, perks: [] }), groups[groups.length - 1]);
+    g.perks.push(p);
+  };
+  const order = [`Up to ${tree} 25`, `${tree} 26 to 50`, `${tree} 51 to 75`, `${tree} 76 to 100`, "Character level", "Book"];
+  for (const p of perks) {
+    if (tree === "Destiny") add("Destiny", p);
+    else if (p.book) add("Book", p);
+    else if (p.rankLevels?.some((l) => l > 0)) add("Character level", p);
+    else {
+      const s = p.rankSkills?.[0] ?? p.skill ?? 0;
+      add(s <= 25 ? order[0] : s <= 50 ? order[1] : s <= 75 ? order[2] : order[3], p);
+    }
+  }
+  groups.sort((a, b) => order.indexOf(a.label) - order.indexOf(b.label));
+  for (const g of groups) g.perks.sort((a, b) => (a.rankSkills?.[0] ?? a.skill ?? 0) - (b.rankSkills?.[0] ?? b.skill ?? 0) || a.name.localeCompare(b.name));
+  return (
+    <div className={hidden ? "sr-only" : styles.list} aria-label={`${tree} perks`} role="group">
+      {groups.map((g) => (
+        <section key={g.label} className={styles.listGroup} aria-label={g.label}>
+          <span className={`sub-label ${styles.listHead}`}>{g.label}</span>
+          <ul>
+            {g.perks.map((p) => {
+              const st = status.get(p.id)!;
+              const req = requirementLine(d, p, st);
+              const where = st.state === "taken" && st.takenAt.length ? `Taken at level ${st.takenAt.join(", ")}` : st.state === "taken" ? "Taken" : st.state === "open" ? "Can take now" : "Not available yet";
+              const body = (
+                <>
+                  <i className={`${styles.listDot} ${styles[st.state]}`} />
+                  <span className={styles.listName}>{p.name}</span>
+                  {req && <span className={styles.listReq}>{req}</span>}
+                  <span className={`${styles.listState} ${styles[`state_${st.state}`]}`}>{where}</span>
+                </>
+              );
+              return (
+                <li key={p.id}>
+                  {onSelect && !hidden ? (
+                    <button type="button" className={styles.listRow} aria-pressed={p.id === selectedId} onClick={() => onSelect(p.id)}>
+                      {body}
+                    </button>
+                  ) : (
+                    <span className={styles.listRow}>{body}</span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function ReadOnlyDetails({ d, id, st }: { d: GameData; id: string; st: PerkStatus }) {
+  const p = d.perkById.get(id)!;
+  const words = perkText(p, Math.max(0, st.ranksTaken - 1));
+  return (
+    <div className={styles.sheetBody}>
+      <h2 className={styles.sheetTitle}>{p.name}</h2>
+      {requirementLine(d, p, st) && <span className={styles.listReq}>{requirementLine(d, p, st)}</span>}
+      {words.text && <p className="flavor">{words.text}</p>}
+      {words.effect && <p>{words.effect}</p>}
+      <span className={styles[`state_${st.state}`]}>{st.state === "taken" ? `Taken${st.takenAt.length ? ` at level ${st.takenAt.join(", ")}` : ""}` : st.state === "open" ? "Can take now" : "Not available yet"}</span>
+    </div>
+  );
+}
+
+/** A sheet from the bottom of the screen; tap outside, swipe it down or press Escape to close. */
+function BottomSheet({ label, onClose, children }: { label: string; onClose: () => void; children: React.ReactNode }) {
+  const [drag, setDrag] = useState(0);
+  const start = useRef<number | null>(null);
   useEffect(() => {
-    const el = scroller.current;
-    if (!el) return;
-    const ro = new ResizeObserver(([entry]) => setRoom(Math.floor(entry.contentRect.width)));
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
-  const layout = useMemo(() => treeLayout(d, tree, room), [d, tree, room]);
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+  return (
+    <div className={styles.sheetBackdrop} onClick={onClose}>
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={label}
+        className={styles.sheet}
+        style={drag ? { transform: `translateY(${drag}px)` } : undefined}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div
+          className={styles.sheetHandle}
+          onPointerDown={(e) => {
+            start.current = e.clientY;
+            e.currentTarget.setPointerCapture(e.pointerId);
+          }}
+          onPointerMove={(e) => start.current !== null && setDrag(Math.max(0, e.clientY - start.current))}
+          onPointerUp={() => {
+            if (drag > 60) onClose();
+            setDrag(0);
+            start.current = null;
+          }}
+        >
+          <span />
+        </div>
+        <button type="button" className={`btn btn-sm btn-quiet ${styles.sheetClose}`} onClick={onClose}>
+          Close
+        </button>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+export function Tree({ tree, states, level, selectedId, onSelect, details }: TreeProps) {
+  const d = useGameData();
+  const [wrap, setWrap] = useState<HTMLDivElement | null>(null);
+  const [room, setRoom] = useState({ w: 0, vw: 1440, vh: 900 });
+  useLayoutEffect(() => {
+    if (!wrap) return;
+    const set = () => setRoom({ w: Math.floor(wrap.clientWidth), vw: window.innerWidth, vh: window.innerHeight });
+    set();
+    const ro = new ResizeObserver(set);
+    ro.observe(wrap);
+    window.addEventListener("resize", set);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", set);
+    };
+  }, [wrap]);
+  const measure = useMeasure(wrap);
+
+  const small = room.vw < SMALL;
+  const [view, setView] = useState<"tree" | "list">("tree");
+  const [localSelected, setLocalSelected] = useState<string | null>(null);
+  const selected = selectedId ?? localSelected;
+  const [sheet, setSheet] = useState<string | null>(null);
+
+  // The visible frame, and the drawing inside it (bigger when zoomed on a small screen).
+  const w0 = room.w;
+  const h0 = small ? Math.round(w0 * 1.2) : Math.max(380, Math.min(room.vh - 240, w0));
+  // Zoom and pan change together, in one update.
+  const [view2d, setView2d] = useState({ z: 1, x: 0, y: 0 });
+  const zoom = view2d.z;
+  const pan = view2d;
+  const z = small ? zoom : 1;
+  const W = Math.round(w0 * z);
+  const H = Math.round(h0 * z);
+  const size = sizesFor(W);
+
+  const layout = useMemo(() => (w0 > 0 ? treeLayout(d, tree, W, H, padFor(W)) : null), [d, tree, W, H, w0]);
   const status = useMemo(() => {
     const m = new Map<string, PerkStatus>();
-    for (const n of layout.nodes) m.set(n.id, perkStatus(d, states, level, n.id));
+    for (const p of d.perksByTree.get(tree) ?? []) m.set(p.id, perkStatus(d, states, level, p.id));
     return m;
-  }, [d, layout, states, level]);
-  const pos = useMemo(() => new Map(layout.nodes.map((n) => [n.id, n])), [layout]);
-  const isDestiny = tree === "Destiny";
+  }, [d, tree, states, level]);
+
+  const labels = useMemo(() => {
+    if (!layout) return new Map();
+    const requests: LabelRequest[] = layout.nodes.map((n) => {
+      const p = d.perkById.get(n.id)!;
+      const st = status.get(n.id)!;
+      const req = requirementLine(d, p, st);
+      return {
+        id: n.id,
+        x: n.x,
+        y: n.y,
+        lines: req ? [p.name, req] : [p.name],
+        // A star with ranks already taken counts as taken.
+        priority: n.id === selected ? 0 : st.state === "taken" || st.ranksTaken > 0 ? 1 : st.state === "open" ? 2 : 3,
+      };
+    });
+    // A small screen at fit size labels only taken and selected stars; zooming in makes room for the rest.
+    const pos = new Map(layout.nodes.map((n) => [n.id, n]));
+    const lines = layout.edges.map((e) => ({ x1: pos.get(e.from)!.x, y1: pos.get(e.from)!.y, x2: pos.get(e.to)!.x, y2: pos.get(e.to)!.y }));
+    return placeLabels(requests, { width: W, height: H, star: size.star, font: size.font, measure, lines, maxPriority: small && z < 1.2 ? 1 : 3 });
+  }, [layout, d, status, selected, W, H, size.star, size.font, measure, small, z]);
+
+  const select = useCallback(
+    (id: string) => {
+      if (onSelect) onSelect(id);
+      else setLocalSelected(id);
+      if (small) setSheet(id);
+    },
+    [onSelect, small],
+  );
+
+  // ---- pan and zoom (small screens) ----
+  const pointers = useRef(new Map<number, { x: number; y: number }>());
+  const gesture = useRef<{ moved: boolean; dist: number; lastTap: number; tapX: number; tapY: number }>({ moved: false, dist: 0, lastTap: 0, tapX: 0, tapY: 0 });
+  const sky = useRef<HTMLDivElement>(null);
+  const clampTo = useCallback((v: { z: number; x: number; y: number }) => ({ z: v.z, x: clamp(v.x, w0 - w0 * v.z, 0), y: clamp(v.y, h0 - h0 * v.z, 0) }), [w0, h0]);
+  /** Zoom by `factor` keeping the point (px, py) of the frame where it is. */
+  const zoomAt = useCallback(
+    (px: number, py: number, factor: number) =>
+      setView2d((v) => {
+        const next = clamp(v.z * factor, 1, 3);
+        return clampTo({ z: next, x: px - ((px - v.x) / v.z) * next, y: py - ((py - v.y) / v.z) * next });
+      }),
+    [clampTo],
+  );
+  const fit = () => setView2d({ z: 1, x: 0, y: 0 });
+  useEffect(() => {
+    const el = sky.current;
+    if (!el || !small) return;
+    const onWheel = (e: WheelEvent) => {
+      if (!e.ctrlKey) return;
+      e.preventDefault();
+      const r = el.getBoundingClientRect();
+      zoomAt(e.clientX - r.left, e.clientY - r.top, Math.exp(-e.deltaY * 0.01));
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, [small, zoomAt]);
+  const local = (e: React.PointerEvent) => {
+    const r = sky.current!.getBoundingClientRect();
+    return { x: e.clientX - r.left, y: e.clientY - r.top };
+  };
+  const gestures = small
+    ? {
+        onPointerDown: (e: React.PointerEvent) => {
+          pointers.current.set(e.pointerId, local(e));
+          gesture.current.moved = false;
+          if (pointers.current.size === 2) {
+            const [a, b] = [...pointers.current.values()];
+            gesture.current.dist = Math.hypot(a.x - b.x, a.y - b.y);
+          }
+        },
+        onPointerMove: (e: React.PointerEvent) => {
+          const prev = pointers.current.get(e.pointerId);
+          if (!prev) return;
+          const now = local(e);
+          pointers.current.set(e.pointerId, now);
+          if (pointers.current.size === 2) {
+            const [a, b] = [...pointers.current.values()];
+            const dist = Math.hypot(a.x - b.x, a.y - b.y);
+            if (gesture.current.dist > 0) zoomAt((a.x + b.x) / 2, (a.y + b.y) / 2, dist / gesture.current.dist);
+            gesture.current.dist = dist;
+            gesture.current.moved = true;
+          } else if (Math.hypot(now.x - prev.x, now.y - prev.y) > 0 && (gesture.current.moved || Math.abs(now.x - prev.x) + Math.abs(now.y - prev.y) > 3)) {
+            gesture.current.moved = true;
+            setView2d((v) => clampTo({ ...v, x: v.x + now.x - prev.x, y: v.y + now.y - prev.y }));
+          }
+        },
+        onPointerUp: (e: React.PointerEvent) => {
+          const at = local(e);
+          pointers.current.delete(e.pointerId);
+          if (gesture.current.moved || pointers.current.size) return;
+          const g = gesture.current;
+          const t = e.timeStamp;
+          if (t - g.lastTap < 300 && Math.hypot(at.x - g.tapX, at.y - g.tapY) < 30) {
+            zoomAt(at.x, at.y, 1.6);
+            g.lastTap = 0;
+          } else Object.assign(g, { lastTap: t, tapX: at.x, tapY: at.y });
+        },
+        onPointerCancel: (e: React.PointerEvent) => pointers.current.delete(e.pointerId),
+      }
+    : {};
+
+  const pos = useMemo(() => new Map(layout?.nodes.map((n) => [n.id, n]) ?? []), [layout]);
+  const sheetStatus = sheet ? status.get(sheet) : undefined;
 
   return (
-    <div className={styles.scroller} ref={scroller}>
-      <div className={styles.canvas} style={{ width: layout.width, height: layout.height }}>
-        <svg width={layout.width} height={layout.height} viewBox={`0 0 ${layout.width} ${layout.height}`} aria-hidden="true" className={styles.edges}>
-          <g fill="none">
-            {layout.edges.map((e) => {
-              const a = pos.get(e.from)!;
-              const b = pos.get(e.to)!;
-              const child = status.get(e.to)!;
-              const parent = status.get(e.from)!;
-              const lit = child.state === "taken" && parent.state === "taken";
-              const preview = e.to === selectedId && child.state === "open" && parent.state === "taken";
-              const cls = lit ? styles.edgeLit : preview ? styles.edgePreview : e.anyOf ? styles.edgeEither : styles.edge;
-              return <line key={`${e.from}>${e.to}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} className={cls} />;
-            })}
-          </g>
-        </svg>
-        {layout.nodes.map((n) => {
-          const p = d.perkById.get(n.id)!;
-          const st = status.get(n.id)!;
-          const selected = n.id === selectedId;
-          const ext = layout.external.filter((x) => x.forId === n.id);
-          const rank = Math.min(st.ranksTaken, st.ranks - 1);
-          let req = isDestiny ? "" : perkRequirementText(p, rank);
-          if (!isDestiny && !req) req = p.book ? "Book" : "No requirement";
-          if (st.ranks > 1) req += ` (${st.ranksTaken}/${st.ranks})`;
-          if (isDestiny && st.state === "taken") req = `Level ${st.takenAt[0]}`;
-          const aria = `${p.name}${req ? `, ${req}` : ""}, ${st.state === "taken" ? "taken" : st.state === "open" ? "can take now" : "not available yet"}`;
-          const cls = [styles.node, styles[st.state], selected ? styles.selected : "", st.ranksTaken > 0 && st.state !== "taken" ? styles.partial : ""].join(" ");
-          const inner = (
-            <>
-              <span className={styles.dot} />
-              <span className={styles.name}>{p.name}</span>
-              {req && <span className={styles.req}>{req}</span>}
-              {ext.map((x) => (
-                <span key={x.id} className={styles.req}>
-                  {p.anyOf ? "or" : "and"} {x.tree}: {x.name}
-                </span>
-              ))}
-              {(p.excludes ?? []).map((x) => {
-                const other = d.perkById.get(x);
-                return (
-                  <span key={x} className={styles.req}>
-                    Not with {other && other.tree !== p.tree ? `${other.tree}: ` : ""}
-                    {other?.name ?? x}
-                  </span>
-                );
-              })}
-            </>
-          );
-          const style = { left: n.x - 55, top: n.y - 8 };
-          const words = perkText(p, Math.max(0, st.ranksTaken - 1));
-          const title = [words.text, words.effect].filter(Boolean).join("\n");
-          return onSelect ? (
-            <button key={n.id} type="button" className={cls} style={style} aria-label={aria} aria-pressed={selected} onClick={() => onSelect(n.id)}>
-              {inner}
+    <div className={styles.box} ref={setWrap}>
+      <div className={styles.toolbar}>
+        <span className={styles.seg} role="group" aria-label="Show the tree as">
+          <button type="button" aria-pressed={view === "tree"} onClick={() => setView("tree")}>
+            Tree
+          </button>
+          <button type="button" aria-pressed={view === "list"} onClick={() => setView("list")}>
+            List
+          </button>
+        </span>
+        {small && view === "tree" && (
+          <span className={styles.zoom}>
+            <button type="button" className="btn btn-sm btn-icon" aria-label="Zoom in" onClick={() => zoomAt(w0 / 2, h0 / 2, 1.4)} disabled={zoom >= 3}>
+              +
             </button>
-          ) : (
-            <div key={n.id} className={cls} style={style} aria-label={aria} role="img" title={title || undefined}>
-              {inner}
-            </div>
-          );
-        })}
+            <button type="button" className="btn btn-sm btn-icon" aria-label="Zoom out" onClick={() => zoomAt(w0 / 2, h0 / 2, 1 / 1.4)} disabled={zoom <= 1}>
+              −
+            </button>
+            <button type="button" className="btn btn-sm" onClick={fit} disabled={zoom === 1}>
+              Fit
+            </button>
+          </span>
+        )}
       </div>
+
+      {view === "list" ? (
+        <PerkList d={d} tree={tree} status={status} onSelect={select} selectedId={selected} />
+      ) : (
+        <>
+          {/* Screen readers get the list first. */}
+          <PerkList d={d} tree={tree} status={status} hidden />
+          <div
+            ref={sky}
+            className={`${styles.sky} ${small ? styles.skySmall : ""}`}
+            style={{ height: h0, touchAction: small ? (z > 1 ? "none" : "pan-y") : undefined }}
+            {...gestures}
+          >
+            {layout && (
+              <div className={styles.canvas} style={{ width: W, height: H, transform: small ? `translate(${pan.x}px, ${pan.y}px)` : undefined, ["--star" as string]: `${size.star * 2}px`, ["--label" as string]: `${labelSizes(size.font).name}px`, ["--sub" as string]: `${labelSizes(size.font).sub}px` }}>
+                <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} aria-hidden="true" className={styles.edges}>
+                  <g fill="none" strokeWidth={size.line}>
+                    {layout.edges.map((e) => {
+                      const a = pos.get(e.from)!;
+                      const b = pos.get(e.to)!;
+                      const child = status.get(e.to)!;
+                      const parent = status.get(e.from)!;
+                      const lit = child.state === "taken" && parent.state === "taken";
+                      const preview = e.to === selected && child.state === "open" && parent.state === "taken";
+                      const cls = lit ? styles.edgeLit : preview ? styles.edgePreview : e.anyOf ? styles.edgeEither : styles.edge;
+                      return <line key={`${e.from}>${e.to}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} className={cls} />;
+                    })}
+                  </g>
+                </svg>
+                {layout.nodes.map((n) => {
+                  const p = d.perkById.get(n.id)!;
+                  const st = status.get(n.id)!;
+                  const isSel = n.id === selected;
+                  const req = requirementLine(d, p, st);
+                  const aria = `${p.name}${req ? `, ${req}` : ""}, ${stateWords(st)}`;
+                  const extra = [
+                    ...layout.external.filter((x) => x.forId === n.id).map((x) => `${p.anyOf ? "or" : "and"} ${x.tree}: ${x.name}`),
+                    ...(p.excludes ?? []).map((x) => {
+                      const o = d.perkById.get(x);
+                      return `Not with ${o && o.tree !== p.tree ? `${o.tree}: ` : ""}${o?.name ?? x}`;
+                    }),
+                  ];
+                  const label = labels.get(n.id);
+                  const cls = [styles.star, styles[st.state], isSel ? styles.selected : "", st.ranksTaken > 0 && st.state !== "taken" ? styles.partial : "", label ? "" : styles.unlabelled].join(" ");
+                  const style = { left: n.x, top: n.y };
+                  // Shown on hover and focus when there was no room for the label, or when it says more than the label.
+                  const tag = (!label || extra.length > 0) && (
+                    <span className={styles.tag} aria-hidden="true">
+                      <b>{p.name}</b>
+                      {req && <span>{req}</span>}
+                      {extra.map((x) => (
+                        <span key={x}>{x}</span>
+                      ))}
+                    </span>
+                  );
+                  const title = [perkText(p, Math.max(0, st.ranksTaken - 1)).text, ...extra].filter(Boolean).join("\n");
+                  return (
+                    <span key={n.id}>
+                      {onSelect || small ? (
+                        <button type="button" className={cls} style={style} aria-label={aria} aria-pressed={onSelect ? isSel : undefined} onClick={() => select(n.id)}>
+                          {tag}
+                        </button>
+                      ) : (
+                        <span className={cls} style={style} aria-label={aria} role="img" tabIndex={0} title={title || undefined} onClick={() => setLocalSelected(n.id)}>
+                          {tag}
+                        </span>
+                      )}
+                      {label && (
+                        <span
+                          className={`${styles.label} ${styles[`side_${label.side}`]} ${isSel ? styles.labelSelected : ""} ${st.state === "locked" ? styles.labelLocked : ""}`}
+                          style={{ left: label.x, top: label.y, width: label.w }}
+                          aria-hidden="true"
+                          onClick={() => (onSelect || small ? select(n.id) : setLocalSelected(n.id))}
+                        >
+                          <span className={styles.labelName}>{p.name}</span>
+                          {req && <span className={styles.labelReq}>{req}</span>}
+                        </span>
+                      )}
+                    </span>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        </>
+      )}
+
       <div className={styles.legend}>
         <span>
           <i className={styles.keyTaken} />
@@ -115,6 +448,12 @@ export function Tree({ tree, states, level, selectedId, onSelect }: TreeProps) {
           Not available yet
         </span>
       </div>
+
+      {small && sheet && sheetStatus && (
+        <BottomSheet label={d.perkById.get(sheet)?.name ?? "Perk"} onClose={() => setSheet(null)}>
+          {details ? details(sheet) : <ReadOnlyDetails d={d} id={sheet} st={sheetStatus} />}
+        </BottomSheet>
+      )}
     </div>
   );
 }
