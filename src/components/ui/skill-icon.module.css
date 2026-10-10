@@ -1,0 +1,5 @@
+.icon {
+  image-rendering: pixelated;
+  flex: none;
+  vertical-align: -3px;
+}

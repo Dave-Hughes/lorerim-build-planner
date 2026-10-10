@@ -267,8 +267,8 @@
 }
 .skillRow {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 72px auto 74px;
-  gap: 10px;
+  grid-template-columns: minmax(0, 1fr) 70px auto 70px;
+  gap: 8px;
   align-items: center;
   padding: 5px 8px;
   margin: 0 -8px;
@@ -287,6 +287,10 @@
   text-align: left;
   cursor: pointer;
   min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
 }
 .skillName:hover {
   color: var(--ember);

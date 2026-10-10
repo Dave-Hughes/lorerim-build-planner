@@ -13,6 +13,7 @@ import { ATTRIBUTE_NAMES, levelMarks, nextDestinyLevel, skillStepInfo } from "@/
 import { computeBuild } from "@/lib/rules/engine";
 import type { Attribute, BuildPlan, GearItem } from "@/lib/rules/types";
 import { PerkPanel } from "./perk-panel";
+import { SkillIcon } from "@/components/ui/skill-icon";
 import * as ops from "./plan-ops";
 import { useAutosave } from "./use-autosave";
 import styles from "./editor.module.css";
@@ -202,7 +203,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel }: Props) {
                     return (
                       <div key={sk} className={`${styles.skillRow} ${active ? styles.skillRowOn : ""}`}>
                         <button type="button" className={styles.skillName} onClick={() => setTree(sk)} aria-pressed={active}>
-                          {sk}
+                          <SkillIcon name={sk} /> {sk}
                         </button>
                         <span className={`num ${styles.skillVals}`}>
                           {info.added > 0 ? (
