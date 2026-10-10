@@ -11,7 +11,9 @@ import StarterKit from "@tiptap/starter-kit";
 import Suggestion, { type SuggestionProps } from "@tiptap/suggestion";
 import { PluginKey } from "@tiptap/pm/state";
 import { isSafeHref } from "@/lib/guide/doc";
+import type { MentionInfo } from "@/lib/guide/mention";
 import { GuideImage } from "./image-node";
+import { guideMention } from "./mention-node";
 
 export type CalloutName = "tip" | "warning" | "spoiler";
 
@@ -59,13 +61,24 @@ export interface SlashItem {
   run: (editor: Editor, range: Range) => void;
 }
 
-/** Connects the "/" menu's suggestion plugin to the React component that draws the menu. */
-export interface SlashBridge {
-  items: (query: string) => SlashItem[];
-  onStart: (props: SuggestionProps<SlashItem>) => void;
-  onUpdate: (props: SuggestionProps<SlashItem>) => void;
+/** Connects a suggestion plugin ("/" blocks, "@" mentions) to the React component that draws its menu. */
+export interface MenuBridge<T> {
+  items: (query: string) => T[];
+  onStart: (props: SuggestionProps<T>) => void;
+  onUpdate: (props: SuggestionProps<T>) => void;
   onExit: () => void;
   onKeyDown: (event: KeyboardEvent) => boolean;
+}
+export type SlashBridge = MenuBridge<SlashItem>;
+
+function forwardMenu<T>(get: () => MenuBridge<T> | null): MenuBridge<T> {
+  return {
+    items: (q) => get()?.items(q) ?? [],
+    onStart: (p) => get()?.onStart(p),
+    onUpdate: (p) => get()?.onUpdate(p),
+    onExit: () => get()?.onExit(),
+    onKeyDown: (e) => get()?.onKeyDown(e) ?? false,
+  };
 }
 
 /**
@@ -73,24 +86,20 @@ export interface SlashBridge {
  * These forwarders are what the extensions hold; `set` swaps in the latest handlers.
  */
 export function createEditorHandlers() {
-  let slash: SlashBridge | null = null;
-  let link: (() => void) | null = null;
-  let files: ((files: File[], pos?: number) => void) | null = null;
+  let current: {
+    slash: SlashBridge;
+    mention: MenuBridge<MentionInfo>;
+    link: () => void;
+    files: (files: File[], pos?: number) => void;
+  } | null = null;
   return {
-    slash: {
-      items: (q: string) => slash?.items(q) ?? [],
-      onStart: (p: SuggestionProps<SlashItem>) => slash?.onStart(p),
-      onUpdate: (p: SuggestionProps<SlashItem>) => slash?.onUpdate(p),
-      onExit: () => slash?.onExit(),
-      onKeyDown: (e: KeyboardEvent) => slash?.onKeyDown(e) ?? false,
-    } satisfies SlashBridge,
-    onLink: () => link?.(),
+    slash: forwardMenu(() => current?.slash ?? null),
+    mention: forwardMenu(() => current?.mention ?? null),
+    onLink: () => current?.link(),
     /** Image files dropped or pasted into the editor. */
-    onFiles: (f: File[], pos?: number) => files?.(f, pos),
-    set(s: SlashBridge, l: () => void, f: (files: File[], pos?: number) => void) {
-      slash = s;
-      link = l;
-      files = f;
+    onFiles: (f: File[], pos?: number) => current?.files(f, pos),
+    set(next: NonNullable<typeof current>) {
+      current = next;
     },
   };
 }
@@ -145,11 +154,13 @@ export function guideExtensions({
   placeholder,
   headingLevels,
   slash,
+  mention,
   onLink,
 }: {
   placeholder: string;
   headingLevels: (2 | 3)[];
   slash: SlashBridge;
+  mention: MenuBridge<MentionInfo>;
   onLink: () => void;
 }) {
   return [
@@ -171,6 +182,15 @@ export function guideExtensions({
     Typography.configure({ emDash: false }),
     Youtube.configure({ nocookie: true, inline: false, width: 640, height: 360 }),
     GuideImage,
+    guideMention({
+      items: ({ query }) => mention.items(query),
+      render: () => ({
+        onStart: (p) => mention.onStart(p),
+        onUpdate: (p) => mention.onUpdate(p),
+        onExit: () => mention.onExit(),
+        onKeyDown: ({ event }) => mention.onKeyDown(event),
+      }),
+    }),
     callout("tip"),
     callout("warning"),
     callout("spoiler"),

@@ -14,6 +14,7 @@ import type { Attribute, BuildPlan, GearItem } from "@/lib/rules/types";
 import { PerkPanel } from "./perk-panel";
 import { AttributeIcon, IconLabel, SignIcon, SkillIcon } from "@/components/ui/skill-icon";
 import { GuideEditor, guideSaveLabel } from "@/components/guide/guide-editor";
+import { GuideFactsProvider } from "@/components/guide/guide-facts";
 import type { GuideSaveStatus } from "@/components/guide/use-guide-autosave";
 import { emptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import * as ops from "./plan-ops";
@@ -337,17 +338,19 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
           </label>
         </section>
 
-        <LevelNotes
-          key={level}
-          buildId={buildId}
-          level={level}
-          initial={notes[`level:${level}`] ?? emptyDoc()}
-          onChange={(doc) => {
-            setNotes((n) => ({ ...n, [`level:${level}`]: doc }));
-            // The level's old plain-text note now lives in the notes; clear it from the plan too.
-            if (lv.note) setPlan(ops.setNote(plan, level, ""));
-          }}
-        />
+        <GuideFactsProvider plan={plan} states={states}>
+          <LevelNotes
+            key={level}
+            buildId={buildId}
+            level={level}
+            initial={notes[`level:${level}`] ?? emptyDoc()}
+            onChange={(doc) => {
+              setNotes((n) => ({ ...n, [`level:${level}`]: doc }));
+              // The level's old plain-text note now lives in the notes; clear it from the plan too.
+              if (lv.note) setPlan(ops.setNote(plan, level, ""));
+            }}
+          />
+        </GuideFactsProvider>
 
         <div className={styles.bottomBar}>
           <span className={styles.verdict}>

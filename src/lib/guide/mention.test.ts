@@ -1,0 +1,69 @@
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { describe, expect, it } from "vitest";
+import { MentionChip } from "@/components/guide/mention-chip";
+import { requireGameData } from "@/lib/rules/data";
+import { guideDocSchema } from "./doc";
+import { mentionFallbackLabel, resolveMention, searchMentions } from "./mention";
+
+const d = requireGameData("5.0.4.8");
+const chip = (kind: string, id: string, takenAt?: number[] | null) =>
+  renderToStaticMarkup(createElement(MentionChip, { info: resolveMention(d, kind, id), missingLabel: mentionFallbackLabel(id), version: d.version.id, takenAt }));
+
+describe("mentions", () => {
+  it("resolve against the build's version, from kind and id only", () => {
+    const p = resolveMention(d, "perk", "Block:Powerful Bashes");
+    expect(p?.name).toBe("Powerful Bashes");
+    expect(p?.kindLabel).toBe("Perk, Block");
+    expect(p?.text.length).toBeGreaterThan(10);
+    expect(resolveMention(d, "trait", "Bulwark")?.kindLabel).toBe("Trait");
+    expect(resolveMention(d, "stone", "Lover")?.name).toBe("The Lover Stone");
+    expect(resolveMention(d, "race", "Nord")?.icon).toEqual({ type: "race", name: "Nord" });
+    // A Destiny perk is only a "destiny" mention, a skill perk only a "perk" one.
+    expect(resolveMention(d, "destiny", "Block:Powerful Bashes")).toBeNull();
+    expect(resolveMention(d, "perk", "Block:No Such Perk")).toBeNull();
+  });
+
+  it("search: names that start with the query come first", () => {
+    const r = searchMentions(d, "bul");
+    expect(r[0].name.toLowerCase().startsWith("bul")).toBe(true);
+    expect(r.some((m) => m.kind === "trait" && m.id === "Bulwark")).toBe(true);
+    expect(searchMentions(d, "lord").map((m) => m.kindLabel)).toEqual(expect.arrayContaining(["Birthsign", "Standing stone"]));
+  });
+
+  it("store only kind and id", () => {
+    const doc = { type: "doc", content: [{ type: "paragraph", content: [{ type: "mention", attrs: { kind: "trait", id: "Bulwark", label: "Bulwark" } }] }] };
+    const r = guideDocSchema.safeParse(doc);
+    expect(r.success).toBe(true);
+    expect(JSON.stringify(r.data)).not.toContain("label");
+    expect(guideDocSchema.safeParse({ type: "doc", content: [{ type: "paragraph", content: [{ type: "mention", attrs: { kind: "spell", id: "x" } }] }] }).success).toBe(false);
+  });
+});
+
+describe("chip renderer", () => {
+  it("draws a perk with its icon, name, the game's text and where the build takes it", () => {
+    const html = chip("perk", "Block:Powerful Bashes", [6]);
+    expect(html).toContain("/icons/block.svg");
+    expect(html).toContain("Powerful Bashes");
+    expect(html).toContain("Perk, Block");
+    expect(html).toContain("Taken at level 6");
+    expect(html).toContain('role="tooltip"');
+  });
+
+  it("says when the build doesn't take a perk", () => {
+    expect(chip("perk", "Block:Overpowering Bashes", [])).toContain("Not taken in this build");
+  });
+
+  it("draws a trait with its picture and its text, no level line", () => {
+    const html = chip("trait", "Bulwark", null);
+    expect(html).toContain("/traits/");
+    expect(html).not.toContain("Taken at level");
+  });
+
+  it("draws a thing this version doesn't have as plain text with a dotted underline", () => {
+    const html = chip("perk", "Block:Shield of the Old Kings");
+    expect(html).toContain("Shield of the Old Kings");
+    expect(html).toContain("Not in LoreRim 5.0.4.8");
+    expect(html).not.toContain("/icons/");
+  });
+});

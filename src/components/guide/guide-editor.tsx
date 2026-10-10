@@ -5,7 +5,10 @@ import { BubbleMenu } from "@tiptap/react/menus";
 import { TextSelection } from "@tiptap/pm/state";
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import { LINK_ERROR, isSafeHref, isYoutubeUrl, type GuideDoc } from "@/lib/guide/doc";
-import { createEditorHandlers, guideExtensions, transformPastedHTML, type SlashItem } from "./extensions";
+import { createEditorHandlers, guideExtensions, transformPastedHTML, type MenuBridge, type SlashItem } from "./extensions";
+import { useGameData } from "@/components/game-data";
+import { searchMentions, type MentionInfo } from "@/lib/guide/mention";
+import { MentionChipIcon } from "./mention-chip";
 import { unsavedGuide, useGuideAutosave, type GuideSaveStatus } from "./use-guide-autosave";
 import { insertImages } from "./image-upload";
 import prose from "./prose.module.css";
@@ -32,6 +35,10 @@ type Rect = { left: number; top: number; bottom: number };
 // and every such update re-renders this component: they must be stable.
 const BUBBLE_OPTIONS = { placement: "top", offset: 8, flip: true, shift: { padding: 8 } } as const;
 const BUBBLE_KEY = "guideBubbleMenu";
+
+const MENU_WIDTH = 320;
+/** A floating menu's left edge: at the caret, but kept inside the screen. */
+const menuLeft = (left: number) => Math.max(16, Math.min(left, window.innerWidth - Math.min(MENU_WIDTH, window.innerWidth - 32) - 16));
 
 /** "example.com/x" becomes "https://example.com/x"; anything else is left as typed. */
 function normaliseHref(raw: string): string {
@@ -186,7 +193,7 @@ function YoutubePrompt({ editor, rect, onDone }: { editor: Editor; rect: Rect; o
     onDone();
   };
   return (
-    <div className={styles.floating} style={{ left: rect.left, top: rect.bottom + 6 }}>
+    <div className={styles.floating} style={{ left: menuLeft(rect.left), top: rect.bottom + 6 }}>
       <div className={styles.linkForm}>
         <label className={styles.linkField}>
           <span className="sr-only">YouTube link</span>
@@ -227,21 +234,60 @@ function YoutubePrompt({ editor, rect, onDone }: { editor: Editor; rect: Rect; o
   );
 }
 
-interface SlashState {
-  items: SlashItem[];
+interface MenuState<T> {
+  items: T[];
   index: number;
   rect: Rect;
-  command: (item: SlashItem) => void;
+  command: (item: T) => void;
 }
 
-function SlashMenu({ state, onPick, id }: { state: SlashState; onPick: (i: number) => void; id: string }) {
+const NO_RECT: Rect = { left: 0, top: 0, bottom: 0 };
+const toRect = (r: DOMRect): Rect => ({ left: r.left, top: r.top, bottom: r.bottom });
+
+/** State and keyboard handling for a suggestion menu ("/" blocks or "@" mentions). */
+function useMenu<T>() {
+  const [menu, setMenu] = useState<MenuState<T> | null>(null);
+  const bridge = (items: (q: string) => T[]): MenuBridge<T> => ({
+    items,
+    onStart: (p) => {
+      const r = p.clientRect?.();
+      if (r) setMenu({ items: p.items, index: 0, rect: toRect(r), command: p.command });
+    },
+    onUpdate: (p) => {
+      const r = p.clientRect?.();
+      setMenu((m) => ({ items: p.items, index: Math.min(m?.index ?? 0, Math.max(0, p.items.length - 1)), rect: r ? toRect(r) : (m?.rect ?? NO_RECT), command: p.command }));
+    },
+    onExit: () => setMenu(null),
+    onKeyDown: (event) => {
+      const m = menu;
+      if (!m || !m.items.length) return false;
+      if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+        const step = event.key === "ArrowDown" ? 1 : -1;
+        setMenu({ ...m, index: (m.index + step + m.items.length) % m.items.length });
+        return true;
+      }
+      if (event.key === "Enter" || event.key === "Tab") {
+        m.command(m.items[m.index]);
+        return true;
+      }
+      if (event.key === "Escape") {
+        setMenu(null);
+        return true;
+      }
+      return false;
+    },
+  });
+  return { menu, bridge };
+}
+
+function Menu<T>({ state, id, label, onPick, render }: { state: MenuState<T>; id: string; label: string; onPick: (i: number) => void; render: (item: T) => React.ReactNode }) {
   if (!state.items.length) return null;
   return (
-    <div className={styles.floating} style={{ left: state.rect.left, top: state.rect.bottom + 6 }}>
-      <ul role="listbox" id={id} aria-label="Blocks" className={styles.menu}>
+    <div className={styles.floating} style={{ left: menuLeft(state.rect.left), top: state.rect.bottom + 6 }}>
+      <ul role="listbox" id={id} aria-label={label} className={styles.menu}>
         {state.items.map((item, i) => (
           <li
-            key={item.title}
+            key={i}
             id={`${id}-${i}`}
             role="option"
             aria-selected={i === state.index}
@@ -251,7 +297,7 @@ function SlashMenu({ state, onPick, id }: { state: SlashState; onPick: (i: numbe
               onPick(i);
             }}
           >
-            {item.title}
+            {render(item)}
           </li>
         ))}
       </ul>
@@ -268,7 +314,9 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder, 
   const inset = useKeyboardInset(coarse && focused);
   const [linking, setLinking] = useState(false);
   const [youtube, setYoutube] = useState<Rect | null>(null);
-  const [slash, setSlash] = useState<SlashState | null>(null);
+  const d = useGameData();
+  const { menu: slash, bridge: slashBridge } = useMenu<SlashItem>();
+  const { menu: mention, bridge: mentionBridge } = useMenu<MentionInfo>();
   const [handlers] = useState(createEditorHandlers);
   const [filePicker, setFilePicker] = useState<HTMLInputElement | null>(null);
   const menuId = `guide-blocks-${sectionKey.replace(":", "-")}`;
@@ -312,7 +360,7 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder, 
 
 
   // Created once; the extensions read the latest handlers through the boxes above.
-  const [extensions] = useState(() => guideExtensions({ placeholder, headingLevels, slash: handlers.slash, onLink: handlers.onLink }));
+  const [extensions] = useState(() => guideExtensions({ placeholder, headingLevels, slash: handlers.slash, mention: handlers.mention, onLink: handlers.onLink }));
 
   const [startDoc] = useState<{ doc: GuideDoc; unsaved: boolean }>(() => {
     const kept = unsavedGuide(buildId, sectionKey);
@@ -358,43 +406,13 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder, 
 
   // Give the editor's extensions this render's handlers.
   useLayoutEffect(() => {
-    handlers.set(
-      {
-        items,
-        onStart: (p) => {
-          const r = p.clientRect?.();
-          if (r) setSlash({ items: p.items, index: 0, rect: { left: r.left, top: r.top, bottom: r.bottom }, command: p.command });
-        },
-        onUpdate: (p) => {
-          const r = p.clientRect?.();
-          setSlash((s) => ({ items: p.items, index: Math.min(s?.index ?? 0, Math.max(0, p.items.length - 1)), rect: r ? { left: r.left, top: r.top, bottom: r.bottom } : (s?.rect ?? { left: 0, top: 0, bottom: 0 }), command: p.command }));
-        },
-        onExit: () => setSlash(null),
-        onKeyDown: (event) => {
-          const s = slash;
-          if (!s || !s.items.length) return false;
-          if (event.key === "ArrowDown") {
-            setSlash({ ...s, index: (s.index + 1) % s.items.length });
-            return true;
-          }
-          if (event.key === "ArrowUp") {
-            setSlash({ ...s, index: (s.index - 1 + s.items.length) % s.items.length });
-            return true;
-          }
-          if (event.key === "Enter") {
-            s.command(s.items[s.index]);
-            return true;
-          }
-          if (event.key === "Escape") {
-            setSlash(null);
-            return true;
-          }
-          return false;
-        },
-      },
-      () => setLinking(true),
-      (files, pos) => editor && void insertImages(editor, buildId, files, pos),
-    );
+    handlers.set({
+      slash: slashBridge(items),
+      // "@" searches the build's own LoreRim version.
+      mention: mentionBridge((q) => searchMentions(d, q)),
+      link: () => setLinking(true),
+      files: (files, pos) => editor && void insertImages(editor, buildId, files, pos),
+    });
   });
 
   // Text kept in this browser from a save that didn't finish: save it now.
@@ -406,14 +424,15 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder, 
   useEffect(() => {
     const dom = editor?.view.dom;
     if (!dom) return;
-    if (slash?.items.length) {
-      dom.setAttribute("aria-controls", menuId);
-      dom.setAttribute("aria-activedescendant", `${menuId}-${slash.index}`);
+    const open = slash?.items.length ? { id: menuId, index: slash.index } : mention?.items.length ? { id: `${menuId}-at`, index: mention.index } : null;
+    if (open) {
+      dom.setAttribute("aria-controls", open.id);
+      dom.setAttribute("aria-activedescendant", `${open.id}-${open.index}`);
     } else {
       dom.removeAttribute("aria-controls");
       dom.removeAttribute("aria-activedescendant");
     }
-  }, [editor, slash, menuId]);
+  }, [editor, slash, mention, menuId]);
 
   // Close the link form when the selection collapses.
   useEffect(() => {
@@ -446,7 +465,22 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder, 
         </BubbleMenu>
       )}
       <EditorContent editor={editor} />
-      {slash && <SlashMenu state={slash} id={menuId} onPick={(i) => slash.command(slash.items[i])} />}
+      {slash && <Menu state={slash} id={menuId} label="Blocks" onPick={(i) => slash.command(slash.items[i])} render={(item) => item.title} />}
+      {mention && (
+        <Menu
+          state={mention}
+          id={`${menuId}-at`}
+          label="Game things"
+          onPick={(i) => mention.command(mention.items[i])}
+          render={(m) => (
+            <span className={styles.mentionItem}>
+              <MentionChipIcon info={m} />
+              <span>{m.name}</span>
+              <span className={styles.mentionKind}>{m.kindLabel}</span>
+            </span>
+          )}
+        />
+      )}
       <input
         ref={setFilePicker}
         type="file"

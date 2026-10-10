@@ -167,6 +167,34 @@ test.describe("the written guide", () => {
     expect(huge.status()).toBe(413);
     expect((await huge.json()).error).toBe("Too big: 5.0 MB. Images can be up to 4 MB.");
   });
+
+  test("@-mentions: search the build's version, insert a chip, and show the game's text on the build page", async ({ page, context }) => {
+    await signIn(context);
+    const editor = await openGuide(page);
+    await editor.click();
+    await page.keyboard.press("ControlOrMeta+a");
+    await page.keyboard.press("Delete");
+    await page.keyboard.type("Open with @powerful ba");
+    const menu = page.getByRole("listbox", { name: "Game things" });
+    await expect(menu.getByRole("option").first()).toContainText("Powerful Bashes");
+    await expect(menu.getByRole("option").first()).toContainText("Perk, Block");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("and take @bulw");
+    await expect(menu.getByRole("option").first()).toContainText("Bulwark");
+    await page.keyboard.press("Enter");
+    await expect(editor.getByRole("button", { name: "Powerful Bashes" })).toBeVisible();
+    await expect(editor.getByRole("button", { name: "Bulwark" })).toBeVisible();
+    await expect(page.getByRole("status")).toHaveText("Saved");
+
+    await page.goto(`/b/${TEST_BUILD_ID}`);
+    const guide = page.getByRole("region", { name: "Guide" });
+    await expect(guide).toContainText("Open with Powerful Bashes and take Bulwark", { useInnerText: true });
+    const perk = guide.getByRole("button", { name: "Powerful Bashes" });
+    await perk.hover();
+    await expect(page.getByRole("tooltip").filter({ hasText: "Taken at level 6" })).toBeVisible();
+    await guide.getByRole("button", { name: "Bulwark" }).focus();
+    await expect(page.getByRole("tooltip").filter({ hasText: "Trait" })).toBeVisible();
+  });
 });
 
 /** A 4x3 PNG. */

@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useState, useTransition } from "react"
 import { copyBuild, copyBuildForVersion } from "@/lib/builds/actions";
 import type { BuildRecord } from "@/lib/builds/types";
 import { useGameData } from "@/components/game-data";
+import { GuideFactsProvider } from "@/components/guide/guide-facts";
 import { GuideSection } from "@/components/guide/guide-section";
 import { LevelNote } from "@/components/guide/level-note";
 import { isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
@@ -90,180 +91,182 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
   const attrScale = Math.max(300, s.health, s.magicka, s.stamina);
 
   return (
-    <main className={styles.main}>
-      <Cover build={build} updatedLabel={updatedLabel} isOwner={isOwner} signedIn={signedIn} signInToCopy={signInToCopy} autoCopy={!!autoCopy} />
+    <GuideFactsProvider plan={plan} states={states}>
+      <main className={styles.main}>
+        <Cover build={build} updatedLabel={updatedLabel} isOwner={isOwner} signedIn={signedIn} signInToCopy={signInToCopy} autoCopy={!!autoCopy} />
 
-      <div className={`page ${styles.body}`}>
-        <OldVersionNotice buildId={build.id} signedIn={signedIn} />
-        <section aria-label="Character" className={styles.identity}>
-          {identity.map(([l, v]) => (
-            <div key={l} className={styles.identityItem}>
-              <span className="label">{l}</span>
-              <span className={styles.identityValue}>{v}</span>
-            </div>
-          ))}
-        </section>
-
-        {guide.overview && !isEmptyDoc(guide.overview) && <GuideSection buildId={build.id} doc={guide.overview} />}
-
-        <section aria-label="Level" className={styles.levelSection}>
-          <div className={styles.levelHead}>
-            <LevelStepper level={level} total={total} onChange={setLevel} />
-            <LevelLegend />
-          </div>
-          {total > WINDOW && <LevelRuler marks={marks} level={level} onChange={setLevel} />}
-          <LevelRow marks={marks} level={level} onChange={setLevel} />
-        </section>
-
-        <div className={styles.columns}>
-          <section aria-label={`At level ${level}`} className={styles.colStats}>
-            <div className={`frame ${styles.panel}`}>
-              <span className="label">Attributes</span>
-              {(["health", "magicka", "stamina"] as const).map((a) => (
-                <div key={a} className={styles.attr}>
-                  <div className={styles.attrHead}>
-                    {/* Wrapped so the row's baseline alignment (and height) is the text's, as before. */}
-                    <span>
-                      <IconLabel icon={<AttributeIcon name={a} />}>{ATTRIBUTE_NAMES[a]}</IconLabel>
-                    </span>
-                    <span className={styles.attrNum}>{s[a]}</span>
-                  </div>
-                  <div className={styles.bar}>
-                    <div className={`${styles.barFill} ${styles[a]}`} style={{ width: `${(s[a] / attrScale) * 100}%` }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-            <dl className={styles.stats}>
-              <dt>Carry weight</dt>
-              <dd>{s.carryWeight}</dd>
-              <dt>Skill points carried over</dt>
-              <dd>{level === 1 ? "0" : s.skillPointsBanked}</dd>
-              <dt>Perk points left</dt>
-              <dd>{s.perkPoints - s.perkPointsSpent}</dd>
-              <dt>Destiny points left</dt>
-              <dd>
-                {s.destinyPoints - s.destinyPointsSpent} of {s.destinyPoints}
-              </dd>
-              <dt>Standing stone</dt>
-              <dd>{s.stone ? <IconLabel icon={<SignIcon name={s.stone} />}>The {s.stone}</IconLabel> : "None"}</dd>
-              <dt>Trainer sessions used</dt>
-              <dd>{s.trainerSessionsUsed}</dd>
-            </dl>
-            {s.issues.length > 0 && (
-              <ul className={styles.issues} aria-label="Problems at this level">
-                {s.issues.map((i, n) => (
-                  <li key={n}>{i.message}</li>
-                ))}
-              </ul>
-            )}
-          </section>
-
-          <section aria-label={`Skills at level ${level}`} className={styles.colSkills}>
-            <div className={styles.sectionHead}>
-              <span className="label">Skills</span>
-              <span className={styles.maxSkill}>
-                Max skill {s.maxSkill} at level {level}
-                <InfoTip label="About the skill limit" text="No skill can go above 50 plus your character level. Skills can reach 100 from level 50." />
-              </span>
-            </div>
-            {d.skillGroups.map((g) => (
-              <div key={g.group} className={styles.group}>
-                <span className={`sub-label ${styles.groupName}`}>{g.group}</span>
-                {g.skills.map((sk) => {
-                  const v = s.skills[sk];
-                  const d = v - s.skillsBefore[sk];
-                  return (
-                    <div key={sk} className={styles.skillRow}>
-                      <SkillLabel name={sk} />
-                      <span className={styles.skillVal}>{v}</span>
-                      <div className={styles.bar3}>
-                        <div className={`${styles.barFill} ${d > 0 ? styles.barChanged : styles.barPlain}`} style={{ width: `${Math.min(100, v)}%` }} />
-                      </div>
-                      <span className={styles.skillDelta}>{d > 0 ? `+${d}` : ""}</span>
-                    </div>
-                  );
-                })}
+        <div className={`page ${styles.body}`}>
+          <OldVersionNotice buildId={build.id} signedIn={signedIn} />
+          <section aria-label="Character" className={styles.identity}>
+            {identity.map(([l, v]) => (
+              <div key={l} className={styles.identityItem}>
+                <span className="label">{l}</span>
+                <span className={styles.identityValue}>{v}</span>
               </div>
             ))}
           </section>
 
-          <section aria-label="This level and perks" className={styles.colPerks}>
-            <div className={`frame ${styles.panel}`}>
-              <span className="label">{level === 1 ? "At level 1" : `Changes at level ${level}`}</span>
-              <ChangesGrid changes={changes} level={level} />
-              {noted.has(level) && <LevelNote key={level} doc={guide[`level:${level}`]} level={level} />}
+          {guide.overview && !isEmptyDoc(guide.overview) && <GuideSection buildId={build.id} doc={guide.overview} />}
+
+          <section aria-label="Level" className={styles.levelSection}>
+            <div className={styles.levelHead}>
+              <LevelStepper level={level} total={total} onChange={setLevel} />
+              <LevelLegend />
             </div>
-            <div className={styles.perkList}>
-              <div className={styles.sectionHead}>
-                <span className="label">Perks by level {level}</span>
-                <button type="button" className={styles.linkButton} onClick={() => setTreesOpen((o) => !o)} aria-expanded={treesOpen}>
-                  {treesOpen ? "Close perk trees" : "Open perk trees"}
-                </button>
-              </div>
-              {perks.length === 0 && <p className="muted">None yet.</p>}
-              {perks.map((g) => (
-                <div key={g.tree} className={styles.perkGroup}>
-                  <SkillLabel name={g.tree} className="muted" />
-                  <span className={styles.perkNames}>
-                    {g.perks.length === 0 && s.grantedTree === g.tree && <span className="soft">Every perk (Master of One)</span>}
-                    {g.perks.map((p, i) => (
-                      <span key={`${p.id}-${i}`} className={styles.perk}>
-                        {p.name}
-                        {p.rank ? ` ${p.rank}` : ""}
-                        {p.book ? " (book)" : ""}
-                        <span className="tag tag-sm num">Lv {p.level}</span>
+            {total > WINDOW && <LevelRuler marks={marks} level={level} onChange={setLevel} />}
+            <LevelRow marks={marks} level={level} onChange={setLevel} />
+          </section>
+
+          <div className={styles.columns}>
+            <section aria-label={`At level ${level}`} className={styles.colStats}>
+              <div className={`frame ${styles.panel}`}>
+                <span className="label">Attributes</span>
+                {(["health", "magicka", "stamina"] as const).map((a) => (
+                  <div key={a} className={styles.attr}>
+                    <div className={styles.attrHead}>
+                      {/* Wrapped so the row's baseline alignment (and height) is the text's, as before. */}
+                      <span>
+                        <IconLabel icon={<AttributeIcon name={a} />}>{ATTRIBUTE_NAMES[a]}</IconLabel>
                       </span>
-                    ))}
-                  </span>
+                      <span className={styles.attrNum}>{s[a]}</span>
+                    </div>
+                    <div className={styles.bar}>
+                      <div className={`${styles.barFill} ${styles[a]}`} style={{ width: `${(s[a] / attrScale) * 100}%` }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <dl className={styles.stats}>
+                <dt>Carry weight</dt>
+                <dd>{s.carryWeight}</dd>
+                <dt>Skill points carried over</dt>
+                <dd>{level === 1 ? "0" : s.skillPointsBanked}</dd>
+                <dt>Perk points left</dt>
+                <dd>{s.perkPoints - s.perkPointsSpent}</dd>
+                <dt>Destiny points left</dt>
+                <dd>
+                  {s.destinyPoints - s.destinyPointsSpent} of {s.destinyPoints}
+                </dd>
+                <dt>Standing stone</dt>
+                <dd>{s.stone ? <IconLabel icon={<SignIcon name={s.stone} />}>The {s.stone}</IconLabel> : "None"}</dd>
+                <dt>Trainer sessions used</dt>
+                <dd>{s.trainerSessionsUsed}</dd>
+              </dl>
+              {s.issues.length > 0 && (
+                <ul className={styles.issues} aria-label="Problems at this level">
+                  {s.issues.map((i, n) => (
+                    <li key={n}>{i.message}</li>
+                  ))}
+                </ul>
+              )}
+            </section>
+
+            <section aria-label={`Skills at level ${level}`} className={styles.colSkills}>
+              <div className={styles.sectionHead}>
+                <span className="label">Skills</span>
+                <span className={styles.maxSkill}>
+                  Max skill {s.maxSkill} at level {level}
+                  <InfoTip label="About the skill limit" text="No skill can go above 50 plus your character level. Skills can reach 100 from level 50." />
+                </span>
+              </div>
+              {d.skillGroups.map((g) => (
+                <div key={g.group} className={styles.group}>
+                  <span className={`sub-label ${styles.groupName}`}>{g.group}</span>
+                  {g.skills.map((sk) => {
+                    const v = s.skills[sk];
+                    const d = v - s.skillsBefore[sk];
+                    return (
+                      <div key={sk} className={styles.skillRow}>
+                        <SkillLabel name={sk} />
+                        <span className={styles.skillVal}>{v}</span>
+                        <div className={styles.bar3}>
+                          <div className={`${styles.barFill} ${d > 0 ? styles.barChanged : styles.barPlain}`} style={{ width: `${Math.min(100, v)}%` }} />
+                        </div>
+                        <span className={styles.skillDelta}>{d > 0 ? `+${d}` : ""}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               ))}
-            </div>
-          </section>
-        </div>
+            </section>
 
-        {treesOpen && (
-          <section aria-label="Perk trees" className={styles.trees}>
-            <TreeTabs state={s} active={tree} onChange={setTree} />
-            <div className={`frame ${styles.treeBox}`}>
-              <Tree tree={tree} states={states} level={level} />
-            </div>
-          </section>
-        )}
-
-        <div className={styles.bottom}>
-          <section aria-label="Gear" className={styles.gear}>
-            <span className="label">Gear</span>
-            {plan.gear.length === 0 ? (
-              <p className="muted">None listed.</p>
-            ) : (
-              <div className={styles.scroller}>
-                <table className={styles.table}>
-                  <thead>
-                    <tr>
-                      <th>Slot</th>
-                      <th>Item</th>
-                      <th className={styles.right}>From level</th>
-                      <th>Note</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {plan.gear.map((g, i) => (
-                      <tr key={i}>
-                        <td className="muted">{g.slot}</td>
-                        <td>{g.name}</td>
-                        <td className={`${styles.right} num`}>{g.fromLevel}</td>
-                        <td className="soft">{g.note}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+            <section aria-label="This level and perks" className={styles.colPerks}>
+              <div className={`frame ${styles.panel}`}>
+                <span className="label">{level === 1 ? "At level 1" : `Changes at level ${level}`}</span>
+                <ChangesGrid changes={changes} level={level} />
+                {noted.has(level) && <LevelNote key={level} doc={guide[`level:${level}`]} level={level} />}
               </div>
-            )}
-          </section>
+              <div className={styles.perkList}>
+                <div className={styles.sectionHead}>
+                  <span className="label">Perks by level {level}</span>
+                  <button type="button" className={styles.linkButton} onClick={() => setTreesOpen((o) => !o)} aria-expanded={treesOpen}>
+                    {treesOpen ? "Close perk trees" : "Open perk trees"}
+                  </button>
+                </div>
+                {perks.length === 0 && <p className="muted">None yet.</p>}
+                {perks.map((g) => (
+                  <div key={g.tree} className={styles.perkGroup}>
+                    <SkillLabel name={g.tree} className="muted" />
+                    <span className={styles.perkNames}>
+                      {g.perks.length === 0 && s.grantedTree === g.tree && <span className="soft">Every perk (Master of One)</span>}
+                      {g.perks.map((p, i) => (
+                        <span key={`${p.id}-${i}`} className={styles.perk}>
+                          {p.name}
+                          {p.rank ? ` ${p.rank}` : ""}
+                          {p.book ? " (book)" : ""}
+                          <span className="tag tag-sm num">Lv {p.level}</span>
+                        </span>
+                      ))}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+
+          {treesOpen && (
+            <section aria-label="Perk trees" className={styles.trees}>
+              <TreeTabs state={s} active={tree} onChange={setTree} />
+              <div className={`frame ${styles.treeBox}`}>
+                <Tree tree={tree} states={states} level={level} />
+              </div>
+            </section>
+          )}
+
+          <div className={styles.bottom}>
+            <section aria-label="Gear" className={styles.gear}>
+              <span className="label">Gear</span>
+              {plan.gear.length === 0 ? (
+                <p className="muted">None listed.</p>
+              ) : (
+                <div className={styles.scroller}>
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <th>Slot</th>
+                        <th>Item</th>
+                        <th className={styles.right}>From level</th>
+                        <th>Note</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {plan.gear.map((g, i) => (
+                        <tr key={i}>
+                          <td className="muted">{g.slot}</td>
+                          <td>{g.name}</td>
+                          <td className={`${styles.right} num`}>{g.fromLevel}</td>
+                          <td className="soft">{g.note}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </section>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </GuideFactsProvider>
   );
 }
 

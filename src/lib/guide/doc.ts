@@ -135,6 +135,11 @@ const node: z.ZodType<GuideNode> = z.lazy(() =>
         height: z.number().int().min(1).max(20_000).nullish(),
       }),
     }),
+    z.object({
+      type: z.literal("mention"),
+      // Only what the chip refers to: never its text, which comes from the game data.
+      attrs: z.object({ kind: z.enum(["perk", "destiny", "skill", "trait", "birthsign", "stone", "race"]), id: z.string().min(1).max(200) }),
+    }),
     z.object({ type: z.literal("text"), text: z.string().min(1).max(60_000), marks: z.array(mark).max(4).optional() }),
   ]),
 );
@@ -167,7 +172,7 @@ export function notesToDoc(text: string): GuideDoc {
 }
 
 export function isEmptyDoc(doc: GuideDoc | null | undefined): boolean {
-  return !doc || (textLength(doc) === 0 && !/"type":"(youtube|image)"/.test(JSON.stringify(doc)));
+  return !doc || (textLength(doc) === 0 && !/"type":"(youtube|image|mention)"/.test(JSON.stringify(doc)));
 }
 
 /** "Too long to save: 61,200 of 60,000 characters" */

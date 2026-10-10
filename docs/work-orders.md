@@ -217,8 +217,8 @@ Done when (each part)
 - [x] 7a: an owner can write, format, paste and autosave the overall guide; a visitor sees it rendered with contents; e2e covers typing a heading and a list, reloading, and seeing them on the build page; a pasted page with fonts and colours comes through clean; a `javascript:` link is refused.
 - [x] 7b: level notes edit and render; old notes migrate on first open; the ruler marks levels with notes; e2e covers one level note.
 - [x] 7c: upload, caption, alt text, delete-on-remove all work against the staging Blob store; a 5 MB file and a .svg are refused with a clear message.
-- [ ] 7d: mention search, chip, hover text and the missing-id case work; unit test for the chip renderer.
-- [ ] All checks in CLAUDE.md pass at each part; screenshots of the guide page, the build page's guide section and a level note, at 1440 and 390, for Dave.
+- [x] 7d: mention search, chip, hover text and the missing-id case work; unit test for the chip renderer.
+- [x] All checks in CLAUDE.md pass at each part; screenshots of the guide page, the build page's guide section and a level note, at 1440 and 390, for Dave.
 
 ---
 
