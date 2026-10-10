@@ -10,10 +10,11 @@ What is queued, in the order it was raised. Rules for the look live in [design-r
 
 ## Decisions pending
 
-- **Pixel icons** for the 18 skills and Destiny: trial on `staging` (branch `icons-trial`, `scripts/icons/pixels.py`, `public/icons/`). Dave to judge in the app. If kept: redraw Two-Handed, Evasion, Alteration, Heavy Armor, then decide where else they appear (shared build page skill list, build cards). If dropped: remove `src/components/ui/skill-icon.tsx`, its uses in `tree-tabs.tsx` and `editor.tsx`, `public/icons/`, `public/icon-sheet.html` and `scripts/icons/`.
 - **Domain:** lorerimplanner.com is free at $11.25/yr (checked 10 Oct 2026). Buy on Dave's say-so, then add `https://lorerimplanner.com/api/auth/callback/discord` to the Discord app's redirects (Discord developer portal, app "LoreRim Build Planner").
 
 ## Done
+
+- Pixel icons for the 18 skills and Destiny, approved 10 Oct 2026 (second pass: shared outline, top-left light). Rolled out everywhere by WO-4.
 
 - Discord sign-in live on production and staging (10 Oct 2026). `identify` scope only. Discord now sends `iss` with the code, so the provider sets `issuer: "https://discord.com"`.
 - Game data read from the 5.0.4.8 records: perk words, ranks, exclusions, books, trait art (10 Oct 2026).

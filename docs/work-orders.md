@@ -72,7 +72,31 @@ Done when
 
 ---
 
+## WO-4  Skill icons everywhere a skill is named
+
+The 19 pixel icons (`public/icons/*.svg`, drawn by `scripts/icons/pixels.py`, shown through `src/components/ui/skill-icon.tsx`) are approved. They already appear in the perk-tree tabs and the editor's skill rows. Put them everywhere else a skill tree is named, so the app uses them consistently:
+
+- Shared build page (`src/components/build/build-view.tsx`): each skill row in the Skills column, and each tree name in "Perks by level".
+- Creation flow, skills step (`SkillsStep` in `wizard.tsx`): each skill row, before the name.
+- Creation sidebar "Starting point" panel: each of the top-skills rows.
+- Race step cards: the race's primary and secondary skills, where they are listed.
+- "Changes at level N" panel: skill lines (`One-Handed 40 → 45`) and perk lines show the tree's icon.
+- The Master of One skill `<select>` cannot hold images; leave it.
+
+Rules
+- Always 16 px (`<SkillIcon name=... />` default), never scaled to odd sizes; `image-rendering: pixelated` stays.
+- Decorative only: the skill's name is always next to it, `alt=""`, `aria-hidden`.
+- Icon then a 7 px gap then the name, vertically centred. No change to row heights or column widths; check nothing wraps that didn't before, at 1440 and 390.
+- Delete `public/icon-sheet.html` (it was only for the review).
+- Do not redraw or recolour icons here. If one looks wrong in a new spot, note it in the commit message and leave it; icon drawing is done in the chat session.
+
+Done when
+- [ ] Icons appear in every place listed above and nowhere a skill isn't named.
+- [ ] No layout shift: screenshots of the shared build page, the skills step and the editor at 1440 and 390, compared against before.
+- [ ] `npm run typecheck`, `npm run lint`, `npm test`, `npm run build`, `npm run test:e2e` pass.
+
+---
+
 ## Parked (not ordered yet)
 
-- Pixel icons for the skill trees: on `staging` for Dave to judge. See `docs/backlog.md`.
 - Custom domain: lorerimplanner.com, on Dave's say-so.
