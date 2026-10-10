@@ -3,3 +3,11 @@
   flex: none;
   vertical-align: -3px;
 }
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  /* Sit in a line of text without making the line taller. */
+  vertical-align: top;
+}

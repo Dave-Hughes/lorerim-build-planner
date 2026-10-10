@@ -10,6 +10,7 @@ import { ATTRIBUTE_NAMES, levelChanges, levelMarks, perksByLevel } from "@/lib/r
 import { computeBuild } from "@/lib/rules/engine";
 import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
+import { SkillLabel } from "@/components/ui/skill-icon";
 import { LevelLegend, LevelRow, LevelRuler, LevelStepper, WINDOW } from "./level-nav";
 import { Tree } from "./tree";
 import { TreeTabs } from "./tree-tabs";
@@ -156,7 +157,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
                   const d = v - s.skillsBefore[sk];
                   return (
                     <div key={sk} className={styles.skillRow}>
-                      <span>{sk}</span>
+                      <SkillLabel name={sk} />
                       <span className={styles.skillVal}>{v}</span>
                       <div className={styles.bar3}>
                         <div className={`${styles.barFill} ${d > 0 ? styles.barChanged : styles.barPlain}`} style={{ width: `${Math.min(100, v)}%` }} />
@@ -185,7 +186,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
               {perks.length === 0 && <p className="muted">None yet.</p>}
               {perks.map((g) => (
                 <div key={g.tree} className={styles.perkGroup}>
-                  <span className="muted">{g.tree}</span>
+                  <SkillLabel name={g.tree} className="muted" />
                   <span className={styles.perkNames}>
                     {g.perks.length === 0 && s.grantedTree === g.tree && <span className="soft">Every perk (Master of One)</span>}
                     {g.perks.map((p, i) => (
@@ -260,9 +261,9 @@ function ChangesGrid({ changes, level }: { changes: ReturnType<typeof levelChang
       "Skills",
       <span key="s" className={styles.stack}>
         {changes.skills.map((c) => (
-          <span key={c.skill}>
+          <SkillLabel key={c.skill} name={c.skill}>
             {c.skill} {c.from} → {c.to}
-          </span>
+          </SkillLabel>
         ))}
       </span>,
     ]);
@@ -271,11 +272,11 @@ function ChangesGrid({ changes, level }: { changes: ReturnType<typeof levelChang
       changes.perks.length > 1 ? "Perks" : "Perk",
       <span key="p" className={styles.stack}>
         {changes.perks.map((p, i) => (
-          <span key={`${p.id}-${i}`}>
+          <SkillLabel key={`${p.id}-${i}`} name={p.tree}>
             {p.name}
             {p.rank ? ` ${p.rank}` : ""}{" "}
             <span className="muted">{p.book ? "(book)" : p.requirement ? `(${p.requirement})` : `(${p.tree})`}</span>
-          </span>
+          </SkillLabel>
         ))}
       </span>,
     ]);

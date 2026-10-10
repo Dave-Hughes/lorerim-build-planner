@@ -91,9 +91,9 @@ Rules
 - Do not redraw or recolour icons here. If one looks wrong in a new spot, note it in the commit message and leave it; icon drawing is done in the chat session.
 
 Done when
-- [ ] Icons appear in every place listed above and nowhere a skill isn't named.
-- [ ] No layout shift: screenshots of the shared build page, the skills step and the editor at 1440 and 390, compared against before.
-- [ ] `npm run typecheck`, `npm run lint`, `npm test`, `npm run build`, `npm run test:e2e` pass.
+- [x] Icons appear in every place listed above and nowhere a skill isn't named.
+- [x] No layout shift: screenshots of the shared build page, the skills step and the editor at 1440 and 390, compared against before.
+- [x] `npm run typecheck`, `npm run lint`, `npm test`, `npm run build`, `npm run test:e2e` pass.
 
 ---
 

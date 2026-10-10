@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { FocusHeader } from "@/components/ui/focus-header";
+import { SkillLabel } from "@/components/ui/skill-icon";
 import { createBuild, saveBuildDetails, saveBuildPlan } from "@/lib/builds/actions";
 import { STEPS, STEP_NAMES, clearDraft, emptyDetails, emptyPlan, loadDraft, saveDraft, type Step } from "@/lib/builds/draft";
 import type { BuildDetails } from "@/lib/builds/validate";
@@ -205,7 +206,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
                   .slice(0, 6)
                   .map(({ s, v }) => (
                     <div key={s}>
-                      <span>{s}</span>
+                      <SkillLabel name={s} />
                       <span className={styles.topVal}>{v}</span>
                     </div>
                   ))}
@@ -307,10 +308,18 @@ function RaceStep({ plan, update }: StepProps) {
               </div>
               <div className={styles.raceSkills}>
                 <span>
-                  <span className={styles.bonus}>+15</span> {r.primary}
+                  <span className={styles.bonus}>+15</span> <SkillLabel name={r.primary} />
                 </span>
                 <span>
-                  <span className={styles.bonus}>+10</span> {r.secondary.join(", ")}
+                  <span className={styles.bonus}>+10</span>{" "}
+                  {r.secondary.map((sk, i) => (
+                    <span key={sk}>
+                      <SkillLabel name={sk}>
+                        {sk}
+                        {i < r.secondary.length - 1 ? "," : ""}
+                      </SkillLabel>{" "}
+                    </span>
+                  ))}
                 </span>
               </div>
               <div className={styles.raceHms}>
@@ -388,7 +397,7 @@ function SkillsStep({ plan, update }: StepProps) {
               const kind = plan.majors.includes(s) ? "major" : plan.minors.includes(s) ? "minor" : "none";
               return (
                 <div key={s} className={styles.skillRow}>
-                  <span className={kind !== "none" ? styles.skillOn : ""}>{s}</span>
+                  <SkillLabel name={s} className={kind !== "none" ? styles.skillOn : ""} />
                   <span className={styles.seg} role="group" aria-label={s}>
                     <button type="button" aria-pressed={kind === "none"} onClick={() => set(s, "none")}>
                       —

@@ -10,3 +10,13 @@ export function SkillIcon({ name, size = 16 }: { name: string; size?: number }) 
   // eslint-disable-next-line @next/next/no-img-element
   return <img src={`/icons/${slug(name)}.svg`} width={size} height={size} alt="" aria-hidden="true" className={styles.icon} />;
 }
+
+/** A skill tree's icon, then its name (or `children` when the line says more), centred on one line. */
+export function SkillLabel({ name, className, children }: { name: string; className?: string; children?: React.ReactNode }) {
+  return (
+    <span className={`${styles.label} ${className ?? ""}`}>
+      <SkillIcon name={name} />
+      <span>{children ?? name}</span>
+    </span>
+  );
+}

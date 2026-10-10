@@ -407,6 +407,8 @@
     gap: 10px;
   }
   .perkGroup {
-    grid-template-columns: 90px minmax(0, 1fr);
+    /* Room for the widest tree name with its icon (One-Handed, Heavy Armor: 106px). */
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 10px;
   }
 }
