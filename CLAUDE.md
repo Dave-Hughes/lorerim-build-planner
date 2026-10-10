@@ -4,6 +4,7 @@ Read `README.md` first (environments, scripts, code map, game-data pipeline). Th
 
 - `docs/design-rules.md`: the look and the copy rules. The LoreRim community is quick to call out anything that looks AI-made; every screen must read as hand-built for this game. The design canvas linked there is the source of truth for layout.
 - `docs/backlog.md`: what is queued and what is decided.
+- `docs/work-orders.md`: the orders to build, each with "Done when" boxes. Work one order at a time on `staging`, tick its boxes in the same commit, and stop when its screenshots are ready for Dave. Dave reviews in the app; the chat session writes and revises the orders.
 
 ## Rules
 
