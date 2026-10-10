@@ -384,6 +384,64 @@ From a pass over staging at 390, 1440 and 1920. Each is small; do them in this o
 
 ---
 
+## WO-13  Test drive fixes (10 Oct 2026)
+
+From building "QA Breton Spellsword" (`/b/btab4t9t6c`) through all six steps and levels 1 to 5 in Chrome at 1512 × 806 (a MacBook window), plus the shared page at 390. Do after WO-12. The rules held up everywhere: skill costs, banking, trainer carry-over, the stone at level 2, exclusions, Destiny at 5. What follows is the interface.
+
+### Things that move under you
+1. **Page jumps after Confirm and Remove.** Every Confirm or Remove in the perk panel scrolls the page 300 to 400 px, so the tree leaves the screen. Keep the scroll position; when focus moves to the new button, use `focus({ preventScroll: true })`.
+2. **Page jumps when changing level.** Clicking a level in the level row (editor and shared page) scrolls the page. Changing level keeps the level row where it is on screen.
+3. **Trait cards reorder when chosen.** On the Traits step a chosen trait jumps to the front of the grid, so the card under the pointer changes between two clicks (Focused, third in the grid, moved to first; the next clicks landed on other traits than the ones aimed at). Keep the order fixed while the step is open; chosen traits sort to the front only when the step is opened.
+4. **Tree labels reshuffle on every selection.** Selecting a star moves other stars' labels (Destruction: selecting Electromancy hid Arcane Focus and showed Cryomancy and Pyromancy). Place labels once for a tree and level; selecting only adds the selected star's label, hiding the fewest others, and never moves a label.
+
+### Breaking an earlier level
+5. Removing Novice Destruction at level 1 gave no warning, though Apprentice Destruction and Electromancy at level 2 need it. The only sign afterwards was a 5 px red dot on level 2 and a line at the bottom of level 2.
+   - Before removing, the panel lists what depends on it: `Apprentice Destruction (level 2) and Electromancy (level 2) need this.` with `Remove all three` and `Keep`.
+   - While any level has a problem, a bar under the level row names each one with a link: `Level 2: Apprentice Destruction needs Novice Destruction.` `Go to level 2`.
+   - The dot on a level with a problem is 8 px, in the error colour, with a `title` giving the count.
+
+### Placeholders in square brackets
+6. `[Release date]` (version list), `[Build name]` (Name step), `[Notes for this level: quests, places cleared, where you trained]` (level notes) and `[Write the guide: how to play this build, what to prioritise, where to go]` (guide) read as an unfinished template. Remove all four. The release date shows when `versions.ts` has it and is left out when it doesn't; the fields have no placeholder; the label above each field says what it is.
+
+### Perk tree and panel
+7. **Can take, with no points left.** When the level has no perk points left, every star whose requirements are met turns into a grey dot (Improved Blocking at Block 20 looked locked). Requirements met = can take, whatever the points; the points counter and the panel line `No perk point to spend at this level.` say the rest.
+8. **Labels that are missing or point at the wrong star.** In Destruction at 1512 wide, Cryomancy and Pyromancy (both can take) had no label while not-yet labels nearby were shown, and Arcane Focus's label sat nearer Pyromancy's star than its own. Placement rules: a not-yet label is never shown if a taken or can-take label it overlaps would be hidden; a label must be nearer its own star than any other star, or it isn't shown.
+9. **The tree doesn't fit a laptop screen.** At 1512 × 806 the bottom row (where every tree starts) and the detail panel are below the fold, so each pick needs a scroll. When the window is under 900 px tall: the tree tabs become one row of icon + skill level chips (name on hover and in `aria-label`), the level header shrinks to one line, and the tree box takes the height left (the WO-8 rule).
+10. **Hover tag shows what's under it.** The tag for Weapon Mastery let the Grappling label show through. Opaque background, drawn above every label.
+11. **Rank 1 of 2 looks untaken.** After confirming Electromancy rank 1, the panel shows only rank 2 (`Needs Destruction 50…`). Show `Rank 1 of 2, taken at level 2.`, then rank 2's text and what it needs.
+12. **Exclusions only show when they bite.** Weapon Mastery's panel doesn't mention Block: Weapons Master until both are in play (the hover tag does). Always list `Can't be held with …` in the panel.
+13. **Said twice.** Destiny's panel says `Increases carry weight by 25.` then `+25 carry weight.` Show the effect line only when it says something the text doesn't.
+
+### Editor
+14. **Between level-ups** is a skill select with two buttons under it, which reads as unrelated controls. Make two rows: `Trainer session` [skill] `Add`, and `Skill book` [skill] `Add`. The shared page writes books like trainers: `Skill book: Destruction +1`.
+15. **Gear** sits inside each level's editor though it belongs to the whole build (it has its own "From level"). Move it out of the level: a `Gear` button in the editor header next to `Guide`, opening its own page like the guide.
+16. **Said twice:** `30 this level-up` under the skills bar repeats the Skill points counter at the top. Remove it.
+17. **Attribute cards at 1512:** the choice circle covers the end of "Magicka" and "Stamina". Put the circle on its own line or shrink it so it never overlaps the name.
+18. **Rich text toolbar stays up.** After selecting text in level notes, the Bold/Italic toolbar stays on screen (covering the "Notes for level 1" label) after you click elsewhere and scroll. Hide it on blur, and place it so it doesn't cover the field's label.
+19. **Slash menu cuts off.** `/` shows eight items; Image is hidden below with no sign there are more. Show every item, or scroll with a visible scrollbar.
+
+### Creation flow
+20. **Starting point** (sidebar) shows the six highest skills, so the majors Destruction and Alteration (20) were left out while Speech (20) showed. List every major and minor first, then other raised skills.
+21. **Standing stone names come with our summaries** (`The Lady (Prices 10% better)`, `src/data/lorerim-5.0.4.8/stones.json`). Same rule as birthsigns in WO-12: text from the records, or the name alone.
+22. **Cover image** on the Name step is still a link field. Offer upload (the Blob store from WO-7c) with the link as the alternative.
+
+### Shared page
+23. **Hero without a cover** is about 200 px of stripes. Without a cover image, the hero is only as tall as its text.
+24. **Headings:** `At level 1` on level 1 but `Changes at level 5` on later levels; `Perks by level 5` reads as "perks grouped by level". Use `At level N` everywhere and `Perks held at level N`.
+25. **`1 skill points`**: singular when 1 (check every count that can be 1).
+26. **Phones:** `Changes at level N` comes after the 18-row skills list, so what happened at a level is buried. Under 900 px put it straight after the level row. The hero title touches the header (needs the same top padding as at 1440), and the meta line ends with a dangling `|` when it wraps.
+
+### Done when
+- [ ] e2e: Confirm and Remove keep `window.scrollY` unchanged (±2 px); changing level keeps the level row's on-screen position.
+- [ ] e2e: on the Traits step, the second card's name is the same before and after choosing the first card.
+- [ ] e2e: removing a perk that a later level needs shows the dependants and `Keep` leaves the build unchanged; `Remove all three` removes them; the problem bar appears when a later level breaks.
+- [ ] Unit test: label placement keeps every taken and can-take label that has room, never shows a label nearer another star than its own, and selecting a star doesn't move any other label.
+- [ ] No `[` placeholder left in the app (`grep -rn 'placeholder="\[' src` and the guide placeholder constant).
+- [ ] Screenshots for Dave at 1512 × 806: editor with a tree in view showing the bottom row and the panel without scrolling; Destruction with every can-take star labelled; perk panel for a 1-of-2 perk; the gear page; shared page level 5 at 390.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
