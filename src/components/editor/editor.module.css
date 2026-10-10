@@ -389,6 +389,29 @@
     display: none;
   }
 }
+@container (max-width: 1099px) {
+  .panelSlot {
+    display: none;
+  }
+}
+/* No room beside the tree: the details as a card pinned to the bottom of the window, over the page. */
+.pinned {
+  position: fixed;
+  z-index: 50;
+  right: 24px;
+  bottom: 24px;
+  width: min(420px, calc(100vw - 48px));
+  max-height: min(60vh, 560px);
+  overflow-y: auto;
+  border: 1px solid var(--rule-strong);
+  background: var(--panel);
+}
+.pinnedClose {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+}
 .panel {
   min-width: 0;
   padding: 22px;

@@ -17,7 +17,7 @@ test.describe("the written guide", () => {
     await signIn(context);
     const editor = await openGuide(page);
     // The old plain-text notes are the starting text.
-    await expect(editor).toContainText("Example build to show how the planner works.");
+    await expect(editor).toContainText("Sword and shield in heavy armor, starting in Falkreath.");
 
     await editor.click();
     await page.keyboard.press("ControlOrMeta+a");

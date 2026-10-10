@@ -1,81 +1,230 @@
 {
- "perks": {
-  "Heavy Armor:Fortitude": {
-   "carryWeight": 20
+  "perks": {
+    "Heavy Armor:Fortitude": {
+      "carryWeight": 20
+    },
+    "Wayfarer:Cheap Tricks": {
+      "carryWeight": 25
+    },
+    "Wayfarer:Advanced Lockpicking": {
+      "carryWeight": 25
+    },
+    "Wayfarer:Sophisticated Lockpicking": {
+      "carryWeight": 25
+    },
+    "Wayfarer:Masterly Lockpicking": {
+      "carryWeight": 25
+    },
+    "Speech:The Way of the Voice": {
+      "quest": "Needs The Throat of the World finished"
+    },
+    "Speech:Tongue's Insight": {
+      "quest": "Needs The Way of the Voice past the Greybeards' lessons; trades the perk point for a dragon soul"
+    },
+    "Destiny:Destiny": {
+      "carryWeight": 25
+    },
+    "Destiny:Fortification": {
+      "allAttributes": 10
+    },
+    "Speech:Lore of the Thu'um": {
+      "quest": "Needs The Way of the Voice finished"
+    },
+    "Speech:Spiritual Equilibrium": {
+      "quest": "Needs The Throat of the World finished"
+    },
+    "Speech:Indomitable Force": {
+      "quest": "Needs The Horn of Jurgen Windcaller finished"
+    },
+    "Speech:Destructive Urge": {
+      "quest": "Needs Alduin's Wall finished"
+    },
+    "Restoration:Painful Regrets": {
+      "quest": "Needs sins on your record (a bounty, murders or the like) to reflect on"
+    }
   },
-  "Wayfarer:Cheap Tricks": {
-   "carryWeight": 25
+  "traits": {
+    "Hoarder": {
+      "simulated": true
+    },
+    "Master of Destiny": {
+      "simulated": true
+    },
+    "Master of One": {
+      "simulated": true
+    },
+    "Skilled": {
+      "simulated": true
+    },
+    "Blood Warrior": {
+      "simulated": true
+    },
+    "Self-Taught": {
+      "simulated": true
+    },
+    "Quester": {
+      "simulated": true
+    },
+    "Blood Mage": {
+      "simulated": true
+    },
+    "Wanderer": {
+      "simulated": true
+    }
   },
-  "Wayfarer:Advanced Lockpicking": {
-   "carryWeight": 25
+  "aliases": {
+    "Skyrim.esm:1072926": "Marksman:Penetrating Shot"
   },
-  "Wayfarer:Sophisticated Lockpicking": {
-   "carryWeight": 25
+  "notes": {
+    "aliases": "Stunning Precision and Lion's Arrow check the Requiem Penetrating Shot record (Skyrim.esm 1072926); the Marksman tree offers Big Tweaks' player version of it instead. The planner treats them as the same perk.",
+    "birthsigns": "Rule numbers for each birthsign (Health, Magicka, Stamina, carry weight). The text comes from the records (planner_data.json 'signs'), never from here.",
+    "stones": "Rule numbers for each standing stone. The text comes from the records, never from here."
   },
-  "Wayfarer:Masterly Lockpicking": {
-   "carryWeight": 25
+  "birthsigns": {
+    "Warrior": {
+      "health": 60,
+      "magicka": 0,
+      "stamina": 0,
+      "carryWeight": 0
+    },
+    "Thief": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0,
+      "carryWeight": 0
+    },
+    "Mage": {
+      "health": 0,
+      "magicka": 150,
+      "stamina": 0,
+      "carryWeight": 0
+    },
+    "Apprentice": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0,
+      "carryWeight": 0
+    },
+    "Atronach": {
+      "health": 0,
+      "magicka": 300,
+      "stamina": 0,
+      "carryWeight": 0
+    },
+    "Lady": {
+      "health": 40,
+      "magicka": 40,
+      "stamina": 0,
+      "carryWeight": 0
+    },
+    "Lord": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0,
+      "carryWeight": 0
+    },
+    "Lover": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0,
+      "carryWeight": 0
+    },
+    "Ritual": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0,
+      "carryWeight": 0
+    },
+    "Serpent": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0,
+      "carryWeight": 0
+    },
+    "Shadow": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0,
+      "carryWeight": 0
+    },
+    "Steed": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 60,
+      "carryWeight": 0
+    },
+    "Tower": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0,
+      "carryWeight": 50
+    }
   },
-  "Speech:The Way of the Voice": {
-   "quest": "Needs The Throat of the World finished"
-  },
-  "Speech:Tongue's Insight": {
-   "quest": "Needs The Way of the Voice past the Greybeards' lessons; trades the perk point for a dragon soul"
-  },
-  "Destiny:Destiny": {
-   "carryWeight": 25
-  },
-  "Destiny:Fortification": {
-   "allAttributes": 10
-  },
-  "Speech:Lore of the Thu'um": {
-   "quest": "Needs The Way of the Voice finished"
-  },
-  "Speech:Spiritual Equilibrium": {
-   "quest": "Needs The Throat of the World finished"
-  },
-  "Speech:Indomitable Force": {
-   "quest": "Needs The Horn of Jurgen Windcaller finished"
-  },
-  "Speech:Destructive Urge": {
-   "quest": "Needs Alduin's Wall finished"
-  },
-  "Restoration:Painful Regrets": {
-   "quest": "Needs sins on your record (a bounty, murders or the like) to reflect on"
+  "stones": {
+    "Warrior": {
+      "health": 25,
+      "magicka": 0,
+      "stamina": 0
+    },
+    "Mage": {
+      "health": 0,
+      "magicka": 25,
+      "stamina": 0
+    },
+    "Thief": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 25
+    },
+    "Apprentice": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0
+    },
+    "Lord": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0
+    },
+    "Steed": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0
+    },
+    "Lady": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0
+    },
+    "Atronach": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0
+    },
+    "Lover": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0
+    },
+    "Tower": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0
+    },
+    "Ritual": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0
+    },
+    "Serpent": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0
+    },
+    "Shadow": {
+      "health": 0,
+      "magicka": 0,
+      "stamina": 0
+    }
   }
- },
- "traits": {
-  "Hoarder": {
-   "simulated": true
-  },
-  "Master of Destiny": {
-   "simulated": true
-  },
-  "Master of One": {
-   "simulated": true
-  },
-  "Skilled": {
-   "simulated": true
-  },
-  "Blood Warrior": {
-   "simulated": true
-  },
-  "Self-Taught": {
-   "simulated": true
-  },
-  "Quester": {
-   "simulated": true
-  },
-  "Blood Mage": {
-   "simulated": true
-  },
-  "Wanderer": {
-   "simulated": true
-  }
- },
- "aliases": {
-  "Skyrim.esm:1072926": "Marksman:Penetrating Shot"
- },
- "notes": {
-  "aliases": "Stunning Precision and Lion's Arrow check the Requiem Penetrating Shot record (Skyrim.esm 1072926); the Marksman tree offers Big Tweaks' player version of it instead. The planner treats them as the same perk."
- }
 }

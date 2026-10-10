@@ -13,8 +13,15 @@ export async function SiteHeader() {
       <div className={`page ${styles.inner}`}>
         <Brand />
         <nav aria-label="Main" className={styles.nav}>
-          <Link href="/">Browse builds</Link>
-          {user && <Link href="/me">My builds</Link>}
+          <Link href="/">
+            <span className={styles.wide}>Browse builds</span>
+            <span className={styles.narrow}>Builds</span>
+          </Link>
+          {user && (
+            <Link href="/me" className={styles.wideOnly}>
+              My builds
+            </Link>
+          )}
           <Link href="/new">New build</Link>
         </nav>
         {user ? (
@@ -25,10 +32,10 @@ export async function SiteHeader() {
               await signOut({ redirectTo: "/" });
             }}
           >
-            <span className={styles.who}>
+            <Link href="/me" className={styles.who} aria-label={`${user.name ?? "You"}: my builds`}>
               <Avatar name={user.name ?? ""} image={user.image ?? null} />
-              <span>{user.name}</span>
-            </span>
+              <span className={styles.wideOnly}>{user.name}</span>
+            </Link>
             <button className="btn btn-sm" type="submit">
               Sign out
             </button>
@@ -41,7 +48,7 @@ export async function SiteHeader() {
   );
 }
 
-export function SignInButton({ redirectTo, className = "btn", label = "Sign in with Discord" }: { redirectTo?: string; className?: string; label?: string }) {
+export function SignInButton({ redirectTo, className = "btn", label }: { redirectTo?: string; className?: string; label?: string }) {
   return (
     <form
       action={async (formData: FormData) => {
@@ -52,7 +59,12 @@ export function SignInButton({ redirectTo, className = "btn", label = "Sign in w
     >
       <input type="hidden" name="redirectTo" value={redirectTo ?? "/"} />
       <button className={className} type="submit">
-        {label}
+        {label ?? (
+          <>
+            <span className={styles.wide}>Sign in with Discord</span>
+            <span className={styles.narrow}>Sign in</span>
+          </>
+        )}
       </button>
     </form>
   );

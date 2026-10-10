@@ -34,4 +34,31 @@
   gap: 10px;
   color: var(--text);
   font-weight: 500;
+  text-decoration: none;
+}
+.narrow {
+  display: none;
+}
+/* Phones: one row. The star mark, Builds, New build, and Sign in (or the avatar and Sign out). */
+@media (max-width: 599px) {
+  .inner {
+    flex-wrap: nowrap;
+    gap: 14px;
+  }
+  .nav {
+    flex-wrap: nowrap;
+    gap: 16px;
+    margin-right: auto;
+    white-space: nowrap;
+  }
+  .wide,
+  .wideOnly {
+    display: none;
+  }
+  .narrow {
+    display: inline;
+  }
+  .account {
+    gap: 10px;
+  }
 }

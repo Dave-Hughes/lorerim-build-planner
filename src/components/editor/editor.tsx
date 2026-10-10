@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { FocusHeader } from "@/components/ui/focus-header";
 import { InfoTip } from "@/components/ui/info-tip";
 import { LevelRow, LevelRuler, WINDOW } from "@/components/build/level-nav";
-import { Tree } from "@/components/build/tree";
+import { Tree, type TreeView } from "@/components/build/tree";
 import { TreeTabs } from "@/components/build/tree-tabs";
 import { useGameData } from "@/components/game-data";
 import { ATTRIBUTE_NAMES, levelMarks, nextDestinyLevel, skillStepInfo } from "@/lib/rules/derive";
@@ -62,16 +63,36 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
   const s = states[level - 1];
   const lv = plan.levels[level - 1];
   const [tree, setTree] = useState<string>(() => initialPlan.majors[0] ?? "One-Handed");
+  const [treeView, setTreeView] = useState<TreeView>("tree");
   const [selected, setSelected] = useState<string | null>(null);
-  const [panelEl, setPanelEl] = useState<HTMLDivElement | null>(null);
-  // When the panel sits under the tree, bring it into view on a pick so Confirm is in reach.
-  const pickPerk = (id: string) => {
-    setSelected(id);
-    requestAnimationFrame(() => {
-      const r = panelEl?.getBoundingClientRect();
-      if (r && r.height && (r.top > window.innerHeight - 120 || r.bottom < 0)) panelEl?.scrollIntoView({ block: "nearest", behavior: "smooth" });
-    });
-  };
+  // The perk area's width decides where the details go: beside the tree at 1100px and up,
+  // otherwise a card pinned to the bottom of the window (phones use the tree's bottom sheet).
+  const [perkArea, setPerkArea] = useState<HTMLDivElement | null>(null);
+  const [areaWidth, setAreaWidth] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(1440);
+  useEffect(() => {
+    if (!perkArea) return;
+    const set = () => {
+      setAreaWidth(perkArea.clientWidth);
+      setWindowWidth(window.innerWidth);
+    };
+    set();
+    const ro = new ResizeObserver(set);
+    ro.observe(perkArea);
+    window.addEventListener("resize", set);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", set);
+    };
+  }, [perkArea]);
+  const pinned = windowWidth >= 900 && areaWidth > 0 && areaWidth < 1100;
+  const pickPerk = (id: string) => setSelected(id);
+  useEffect(() => {
+    if (!pinned || !selected) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setSelected(null);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [pinned, selected]);
   const panel = (id: string | null) => (
     <PerkPanel
       plan={plan}
@@ -289,20 +310,32 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
                 setTree(t);
                 setSelected(null);
               }}
+              view={treeView}
+              onView={setTreeView}
             />
-            <div className={`frame ${styles.treeBox}`}>
+            <div ref={setPerkArea} className={`frame ${styles.treeBox}`}>
               <div className={styles.treeRow}>
                 <div className={styles.treeArea}>
-                  <Tree tree={tree} states={states} level={level} selectedId={selected} onSelect={pickPerk} details={(id) => panel(id)} />
+                  <Tree tree={tree} states={states} level={level} selectedId={selected} onSelect={pickPerk} details={(id) => panel(id)} view={treeView} onView={setTreeView} />
                 </div>
-                {/* Beside the tree when there is room, under it otherwise; on small screens it opens as a sheet instead. */}
-                <div ref={setPanelEl} className={styles.panelSlot}>
-                  {panel(selected)}
-                </div>
+                {/* Beside the tree when there is room; pinned over the page otherwise; a sheet on phones. */}
+                {!pinned && <div className={styles.panelSlot}>{panel(selected)}</div>}
               </div>
             </div>
           </section>
         </div>
+
+        {pinned &&
+          selected &&
+          createPortal(
+            <div className={styles.pinned}>
+              <button type="button" className={`btn btn-sm btn-icon ${styles.pinnedClose}`} aria-label="Close perk details" onClick={() => setSelected(null)}>
+                ×
+              </button>
+              {panel(selected)}
+            </div>,
+            document.body,
+          )}
 
         <section aria-label="Also at this level" className={styles.also}>
           <div className={styles.alsoCol}>

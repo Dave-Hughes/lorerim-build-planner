@@ -47,6 +47,11 @@
   background: var(--ember);
   color: var(--on-ember);
 }
+@media (max-width: 899px) {
+  .segWide {
+    display: none;
+  }
+}
 .zoom {
   display: inline-flex;
   gap: 6px;

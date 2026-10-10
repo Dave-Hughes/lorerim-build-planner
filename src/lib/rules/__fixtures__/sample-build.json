@@ -124,20 +124,20 @@
       "slot": "Weapon",
       "name": "Steel sword",
       "fromLevel": 1,
-      "note": "Example entry"
+      "note": ""
     },
     {
       "slot": "Off-hand",
       "name": "Banded iron shield",
       "fromLevel": 1,
-      "note": "Example entry"
+      "note": ""
     },
     {
       "slot": "Chest",
       "name": "Steel plate armor",
       "fromLevel": 6,
-      "note": "Example entry"
+      "note": ""
     }
   ],
-  "notes": "Example build to show how the planner works. Replace any of it."
+  "notes": "Sword and shield in heavy armor, starting in Falkreath. No spells: potions do the healing, so Alchemy comes up alongside the armor. Block and Heavy Armor first, One-Handed after."
 }

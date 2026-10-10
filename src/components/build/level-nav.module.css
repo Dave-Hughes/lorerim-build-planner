@@ -131,10 +131,56 @@
   box-shadow: 0 0 0 3px var(--ground);
 }
 
+.rowWrap {
+  position: relative;
+}
+.rowScroller {
+  overflow-x: auto;
+}
 .row {
   display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(56px, 1fr));
   min-width: 700px;
   border: 1px solid var(--rule);
+}
+/* Phones: the levels scroll sideways, snapping to a level, with a fade on the edge that has more. */
+@media (max-width: 899px) {
+  .rowScroller {
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .row {
+    grid-template-columns: repeat(var(--cols), 72px);
+    min-width: 0;
+    width: max-content;
+  }
+  .cell {
+    scroll-snap-align: start;
+  }
+  .rowWrap::before,
+  .rowWrap::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    width: 36px;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 120ms;
+  }
+  .rowWrap::before {
+    left: 0;
+    background: linear-gradient(to right, var(--ground), rgba(14, 19, 25, 0));
+  }
+  .rowWrap::after {
+    right: 0;
+    background: linear-gradient(to left, var(--ground), rgba(14, 19, 25, 0));
+  }
+  .moreBefore::before,
+  .moreAfter::after {
+    opacity: 1;
+  }
 }
 .cell {
   position: relative;

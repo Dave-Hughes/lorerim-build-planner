@@ -17,7 +17,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
 import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel } from "@/components/ui/skill-icon";
 import { LevelLegend, LevelRow, LevelRuler, LevelStepper, WINDOW } from "./level-nav";
-import { Tree } from "./tree";
+import { Tree, type TreeView } from "./tree";
 import { TreeTabs } from "./tree-tabs";
 import styles from "./build-view.module.css";
 
@@ -73,6 +73,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
   const perks = useMemo(() => perksByLevel(d, plan, states, level), [d, plan, states, level]);
   const [treesOpen, setTreesOpen] = useState(false);
   const [tree, setTree] = useState<string>(() => plan.majors[0] ?? "One-Handed");
+  const [treeView, setTreeView] = useState<TreeView>("tree");
 
   const noSign = plan.traits.includes("Master of Destiny");
   const identity: [string, React.ReactNode][] = [
@@ -226,9 +227,9 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
 
           {treesOpen && (
             <section aria-label="Perk trees" className={styles.trees}>
-              <TreeTabs state={s} active={tree} onChange={setTree} />
+              <TreeTabs state={s} active={tree} onChange={setTree} view={treeView} onView={setTreeView} />
               <div className={`frame ${styles.treeBox}`}>
-                <Tree tree={tree} states={states} level={level} />
+                <Tree tree={tree} states={states} level={level} view={treeView} onView={setTreeView} />
               </div>
             </section>
           )}
@@ -245,7 +246,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
                       <tr>
                         <th>Slot</th>
                         <th>Item</th>
-                        <th className={styles.right}>From level</th>
+                        <th>From level</th>
                         <th>Note</th>
                       </tr>
                     </thead>
@@ -254,7 +255,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
                         <tr key={i}>
                           <td className="muted">{g.slot}</td>
                           <td>{g.name}</td>
-                          <td className={`${styles.right} num`}>{g.fromLevel}</td>
+                          <td className="num">{g.fromLevel}</td>
                           <td className="soft">{g.note}</td>
                         </tr>
                       ))}
@@ -284,20 +285,29 @@ function ChangesGrid({ changes, level }: { changes: ReturnType<typeof levelChang
         ))}
       </span>,
     ]);
-  if (changes.perks.length)
+  // Destiny perks are listed with the rest; the tree in brackets is left out when it is the perk's own name.
+  const perkLines = [
+    ...changes.perks.map((p, i) => (
+      <SkillLabel key={`${p.id}-${i}`} name={p.tree}>
+        {p.name}
+        {p.rank ? ` ${p.rank}` : ""}{" "}
+        <span className="muted">{p.book ? "(book)" : p.requirement ? `(${p.requirement})` : p.tree !== p.name ? `(${p.tree})` : ""}</span>
+      </SkillLabel>
+    )),
+    ...changes.destiny.map((p) => (
+      <SkillLabel key={p.id} name="Destiny">
+        {p.name}
+        {p.name !== "Destiny" && <span className="muted"> (Destiny)</span>}
+      </SkillLabel>
+    )),
+  ];
+  if (perkLines.length)
     rows.push([
-      changes.perks.length > 1 ? "Perks" : "Perk",
+      perkLines.length > 1 ? "Perks" : "Perk",
       <span key="p" className={styles.stack}>
-        {changes.perks.map((p, i) => (
-          <SkillLabel key={`${p.id}-${i}`} name={p.tree}>
-            {p.name}
-            {p.rank ? ` ${p.rank}` : ""}{" "}
-            <span className="muted">{p.book ? "(book)" : p.requirement ? `(${p.requirement})` : `(${p.tree})`}</span>
-          </SkillLabel>
-        ))}
+        {perkLines}
       </span>,
     ]);
-  if (changes.destiny.length) rows.push(["Destiny", changes.destiny.map((d) => d.name).join(", ")]);
   if (changes.stone)
     rows.push(["Stone", changes.stone === "none" ? "No stone" : <IconLabel key="st" icon={<SignIcon name={changes.stone} />}>The {changes.stone}</IconLabel>]);
   if (changes.trainer.length) rows.push(["Trainer", changes.trainer.map((t) => `${t.skill} +${t.count}`).join(", ")]);

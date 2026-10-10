@@ -41,6 +41,17 @@ export interface LayoutPadding {
 /** Room around the stars for their labels. */
 export const DEFAULT_PADDING: LayoutPadding = { x: 70, top: 30, bottom: 58 };
 
+/** How tall a tree drawn `width` wide stands when its width binds: the stars' span plus the label padding. */
+export function fitHeight(d: GameData, tree: string, width: number, pad: LayoutPadding = DEFAULT_PADDING): number {
+  const ys = (d.perksByTree.get(tree) ?? []).filter((p) => p.pos).map((p) => p.pos![1]);
+  const xs = (d.perksByTree.get(tree) ?? []).filter((p) => p.pos).map((p) => p.pos![0]);
+  if (!ys.length) return pad.top + pad.bottom;
+  const spanX = Math.max(Math.max(...xs) - Math.min(...xs), 1e-6);
+  const spanY = Math.max(...ys) - Math.min(...ys);
+  const scale = Math.max(1, width - 2 * pad.x) / spanX;
+  return Math.ceil(spanY * scale + pad.top + pad.bottom);
+}
+
 export function treeLayout(d: GameData, tree: string, width: number, height: number, pad: LayoutPadding = DEFAULT_PADDING): TreeLayout {
   const perks = (d.perksByTree.get(tree) ?? []).filter((p) => p.pos);
   const xs = perks.map((p) => p.pos![0]);

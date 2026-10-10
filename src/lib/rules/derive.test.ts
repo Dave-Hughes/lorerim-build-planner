@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import sample from "./__fixtures__/sample-build.json";
 import { computeBuild } from "./engine";
 import { levelChanges, levelMarks, perkStatus, perksByLevel, skillStepInfo } from "./derive";
-import { treeLayout } from "./layout";
+import { fitHeight, treeLayout } from "./layout";
 import { overlaps, placeLabels, starRect } from "./labels";
 import { heldCount, isHeld, lineLook, lineState, prerequisiteLines } from "./tree-states";
 import type { PerkStatus } from "./derive";
@@ -155,6 +155,20 @@ describe("treeLayout", () => {
     for (const tree of trees) {
       const l = treeLayout(d, tree, 900, 700);
       expect(l.edges.map((e) => [e.from, e.to]), tree).toEqual(d.linksByTree.get(tree));
+    }
+  });
+
+  it("fits a box to the tree: at the fitted height the width binds and nothing is left over", () => {
+    const pad = { x: 40, top: 22, bottom: 40 };
+    for (const tree of trees) {
+      const h = fitHeight(d, tree, 390, pad);
+      const l = treeLayout(d, tree, 390, h, pad);
+      const ys = l.nodes.map((n) => n.y);
+      const xs = l.nodes.map((n) => n.x);
+      expect(Math.min(...xs), tree).toBeCloseTo(pad.x, 4);
+      expect(Math.min(...ys), tree).toBeGreaterThanOrEqual(pad.top - 0.5);
+      expect(Math.min(...ys), tree).toBeLessThanOrEqual(pad.top + 1);
+      expect(Math.max(...ys), tree).toBeGreaterThanOrEqual(h - pad.bottom - 1);
     }
   });
 

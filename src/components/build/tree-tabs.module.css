@@ -3,6 +3,33 @@
   flex-wrap: wrap;
   gap: 6px;
 }
+.toggle {
+  display: none;
+}
+/* Phones: one sideways row of tabs, the Tree / List switch at its end. */
+@media (max-width: 899px) {
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tabs {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tab {
+    flex: none;
+    white-space: nowrap;
+  }
+  .toggle {
+    display: inline-flex;
+    flex: none;
+  }
+}
 .tab {
   display: inline-flex;
   align-items: center;

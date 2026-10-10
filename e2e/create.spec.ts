@@ -16,10 +16,12 @@ test.describe("creating a build", () => {
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Choose a birthsign");
     const lord = page.getByRole("article").filter({ hasText: "The Lord" });
     await lord.getByRole("button", { name: "Choose" }).click();
-    await lord.getByRole("button", { name: "Remove" }).click();
+    await expect(lord.getByRole("button", { name: "Chosen" })).toHaveAttribute("aria-pressed", "true");
+    // No sign is its own card; choosing it (or another sign) replaces the chosen one.
+    await page.getByRole("heading", { name: "No birthsign yet" }).click();
     await expect(lord.getByRole("button", { name: "Choose" })).toHaveAttribute("aria-pressed", "false");
     await lord.getByRole("heading", { name: "The Lord" }).click();
-    await expect(lord.getByRole("button", { name: "Remove" })).toHaveAttribute("aria-pressed", "true");
+    await expect(lord.getByRole("button", { name: "Chosen" })).toHaveAttribute("aria-pressed", "true");
     await page.getByRole("button", { name: "Next: Skills" }).click();
 
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Choose major and minor skills");
@@ -30,8 +32,6 @@ test.describe("creating a build", () => {
     await expect(tiles).toHaveText(["Majors +10, full", "Minors +5"]);
     await expect(page.getByRole("main").getByText("3 of 3")).toBeVisible();
     await expect(page.getByRole("main").getByText("2 of 6")).toBeVisible();
-    await expect(page.getByRole("group", { name: "Smithing" }).locator("..").locator(".tag")).toHaveText("Minor");
-    await expect(page.getByRole("group", { name: "Heavy Armor" }).locator("..").locator(".tag")).toHaveText("Major");
     // Heavy Armor: 10 base + 10 Nord + 10 major = 30
     await expect(page.getByRole("complementary", { name: "Setup steps" })).toContainText("Heavy Armor30");
     await page.getByRole("button", { name: "Next: Traits" }).click();
@@ -87,10 +87,10 @@ test.describe("creating a build", () => {
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Choose up to two traits");
     const card = page.getByRole("article").filter({ has: page.getByRole("heading", { name: "Master of One", exact: true }) });
     await card.getByRole("heading", { name: "Master of One", exact: true }).click();
-    await expect(card.getByRole("button", { name: "Remove" })).toBeVisible();
+    await expect(card.getByRole("button", { name: "Chosen" })).toBeVisible();
     await card.getByText("Which skill?").click();
     await card.getByRole("combobox").selectOption("Alchemy");
     await expect(card.getByRole("combobox")).toHaveValue("Alchemy");
-    await expect(card.getByRole("button", { name: "Remove" })).toHaveAttribute("aria-pressed", "true");
+    await expect(card.getByRole("button", { name: "Chosen" })).toHaveAttribute("aria-pressed", "true");
   });
 });

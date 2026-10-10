@@ -1,6 +1,7 @@
 """
 Builds the planner's game data (src/data/lorerim-<version>/perks.json,
-trees.json and traits.json) from the raw extract of the game files.
+trees.json, traits.json, and birthsigns.json and stones.json once the extract
+has their records) from the raw extract of the game files.
 
 Perk trees are drawn exactly as the game lays them out: every perk gets the
 game's position (`pos`, y up), and trees.json holds the lines the game draws
@@ -287,6 +288,42 @@ def main():
             if r not in known:
                 problems.append(f"{p['id']}: unknown prerequisite {r}")
 
+    # Birthsigns and standing stones: the game's words from their spells' records, the rule
+    # numbers from overrides.json. A sign the extract has no record for gets no text, and a note.
+    def sign_text(cands, prefer):
+        if not cands:
+            return None
+        best = next((c for c in cands if re.search(prefer, c["edid"] or "", re.I)), cands[0])
+        if best["desc"].strip():
+            return unmark(clean(best["desc"]))
+        parts = []
+        for e in best["effects"]:
+            d = e["desc"] or ""
+            if e.get("mag") is not None:
+                d = d.replace("<mag>", f"{e['mag']:g}")
+            if e.get("dur") is not None:
+                d = d.replace("<dur>", str(e["dur"]))
+            d = unmark(clean(d))
+            if d and d not in parts:
+                parts.append(d)
+        return " ".join(parts) or None
+
+    signs_out = stones_out = None
+    if "signs" in data:
+        signs_out, stones_out = [], []
+        for name, nums in overrides["birthsigns"].items():
+            t = sign_text(data["signs"].get(name, []), r"birthsign")
+            if t is None:
+                problems.append(f"birthsign {name}: no text in the records; shown without one")
+            signs_out.append({"name": name, "text": t or "", **nums})
+        for name, nums in overrides["stones"].items():
+            t = sign_text(data["signs"].get(name, []), r"doom|stone")
+            if t is None:
+                problems.append(f"standing stone {name}: no text in the records; shown without one")
+            stones_out.append({"name": name, "text": t or "", **nums})
+    else:
+        problems.append("birthsigns and stones: the extract has no 'signs' yet (re-run extract.py); birthsigns.json and stones.json left as they are")
+
     os.makedirs(OUT, exist_ok=True)
     with open(os.path.join(OUT, "perks.json"), "w", encoding="utf-8") as f:
         json.dump(perks, f, indent=2, ensure_ascii=False)
@@ -294,6 +331,11 @@ def main():
     with open(os.path.join(OUT, "trees.json"), "w", encoding="utf-8") as f:
         json.dump(trees, f, indent=2, ensure_ascii=False)
         f.write("\n")
+    for fname, rows in (("birthsigns.json", signs_out), ("stones.json", stones_out)):
+        if rows is not None:
+            with open(os.path.join(OUT, fname), "w", encoding="utf-8") as f:
+                json.dump(rows, f, indent=2, ensure_ascii=False)
+                f.write("\n")
     with open(os.path.join(OUT, "traits.json"), "w", encoding="utf-8") as f:
         json.dump(traits, f, indent=2, ensure_ascii=False)
         f.write("\n")

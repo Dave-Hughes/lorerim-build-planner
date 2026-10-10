@@ -5,7 +5,7 @@ import { useGameData } from "@/components/game-data";
 import { perkText, type GameData, type Perk } from "@/lib/rules/data";
 import { perkRequirementText, perkStatus, type PerkStatus } from "@/lib/rules/derive";
 import { labelSizes, placeLabels, type LabelRequest } from "@/lib/rules/labels";
-import { treeLayout, type LayoutPadding } from "@/lib/rules/layout";
+import { fitHeight, treeLayout, type LayoutPadding } from "@/lib/rules/layout";
 import { isHeld, lineLook, lineState, prerequisiteLines } from "@/lib/rules/tree-states";
 import type { LevelState } from "@/lib/rules/types";
 import styles from "./tree.module.css";
@@ -19,6 +19,25 @@ export interface TreeProps {
   onSelect?: (id: string) => void;
   /** On small screens, what the bottom sheet shows for a tapped star (defaults to the perk's own words). */
   details?: (id: string) => React.ReactNode;
+  /** Tree or list, when the page holds it (the tabs carry the toggle on phones). */
+  view?: TreeView;
+  onView?: (view: TreeView) => void;
+}
+
+export type TreeView = "tree" | "list";
+
+/** The Tree / List switch. */
+export function ViewToggle({ view, onView, className }: { view: TreeView; onView: (view: TreeView) => void; className?: string }) {
+  return (
+    <span className={`${styles.seg} ${className ?? ""}`} role="group" aria-label="Show the tree as">
+      <button type="button" aria-pressed={view === "tree"} onClick={() => onView("tree")}>
+        Tree
+      </button>
+      <button type="button" aria-pressed={view === "list"} onClick={() => onView("list")}>
+        List
+      </button>
+    </span>
+  );
 }
 
 /** Below this window width the tree is a pan-and-zoom sky with a bottom sheet. */
@@ -195,7 +214,7 @@ function BottomSheet({ label, onClose, children }: { label: string; onClose: () 
   );
 }
 
-export function Tree({ tree, states, level, selectedId, onSelect, details }: TreeProps) {
+export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView }: TreeProps) {
   const d = useGameData();
   const [wrap, setWrap] = useState<HTMLDivElement | null>(null);
   const [room, setRoom] = useState({ w: 0, vw: 1440, vh: 900 });
@@ -214,14 +233,18 @@ export function Tree({ tree, states, level, selectedId, onSelect, details }: Tre
   const measure = useMeasure(wrap);
 
   const small = room.vw < SMALL;
-  const [view, setView] = useState<"tree" | "list">("tree");
+  const [localView, setLocalView] = useState<TreeView>("tree");
+  const view = heldView ?? localView;
+  const setView = onView ?? setLocalView;
   const [localSelected, setLocalSelected] = useState<string | null>(null);
   const selected = selectedId ?? localSelected;
   const [sheet, setSheet] = useState<string | null>(null);
 
   // The visible frame, and the drawing inside it (bigger when zoomed on a small screen).
   const w0 = room.w;
-  const h0 = small ? Math.round(w0 * 1.2) : Math.max(380, Math.min(room.vh - 240, w0));
+  // No taller than the tree needs at fit size, so no empty band sits under it.
+  const fitted = w0 > 0 ? fitHeight(d, tree, w0, padFor(w0)) : Infinity;
+  const h0 = Math.max(220, Math.min(fitted, small ? Math.round(w0 * 1.2) : Math.max(380, Math.min(room.vh - 240, w0))));
   // Zoom and pan change together, in one update.
   const [view2d, setView2d] = useState({ z: 1, x: 0, y: 0 });
   const zoom = view2d.z;
@@ -355,14 +378,8 @@ export function Tree({ tree, states, level, selectedId, onSelect, details }: Tre
   return (
     <div className={styles.box} ref={setWrap}>
       <div className={styles.toolbar}>
-        <span className={styles.seg} role="group" aria-label="Show the tree as">
-          <button type="button" aria-pressed={view === "tree"} onClick={() => setView("tree")}>
-            Tree
-          </button>
-          <button type="button" aria-pressed={view === "list"} onClick={() => setView("list")}>
-            List
-          </button>
-        </span>
+        {/* On phones the tabs carry the switch, at the end of their row. */}
+        <ViewToggle view={view} onView={setView} className={onView ? styles.segWide : undefined} />
         {small && view === "tree" && (
           <span className={styles.zoom}>
             <button type="button" className="btn btn-sm btn-icon" aria-label="Zoom in" onClick={() => zoomAt(w0 / 2, h0 / 2, 1.4)} disabled={zoom >= 3}>

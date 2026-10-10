@@ -70,12 +70,12 @@ def ctda(v, masters, name):
 
 def main():
     pp = plugin_paths(); lo = load_order()
-    perks, avifs, spells, flsts, quests, items_, names = {}, {}, {}, {}, {}, {}, {}
+    perks, avifs, spells, flsts, quests, items_, names, mgefs = {}, {}, {}, {}, {}, {}, {}, {}
     for n in lo:
         p = pp.get(n.lower())
         if not p: continue
         b = open(p, 'rb').read()
-        if not any(t in b for t in (b'PERK', b'AVIF', b'SPEL', b'FLST', b'QUST', b'INGR', b'MISC', b'ALCH')): continue
+        if not any(t in b for t in (b'PERK', b'AVIF', b'SPEL', b'FLST', b'QUST', b'INGR', b'MISC', b'ALCH', b'MGEF')): continue
         masters = header(b)
         loc = bool(struct.unpack_from('<I', b, 8)[0] & 0x80)
         strings = localized_strings(p, n) if loc else {}
@@ -83,7 +83,7 @@ def main():
             if loc and len(v) == 4:
                 return strings.get(struct.unpack_from('<I', v)[0], '')
             return text(v)
-        for grp, store in (('PERK', perks), ('AVIF', avifs), ('SPEL', spells), ('FLST', flsts), ('QUST', quests), ('INGR', items_), ('MISC', items_), ('ALCH', items_)):
+        for grp, store in (('PERK', perks), ('AVIF', avifs), ('SPEL', spells), ('FLST', flsts), ('QUST', quests), ('INGR', items_), ('MISC', items_), ('ALCH', items_), ('MGEF', mgefs)):
             if grp.encode() not in b: continue
             try:
                 for o in iter_group(b, grp):
@@ -111,9 +111,16 @@ def main():
                             elif s == 'CNAM': cur['links'].append(struct.unpack_from('<I', v)[0])
                             elif s == 'INAM': cur['index'] = struct.unpack_from('<I', v)[0]
                         elif grp == 'FLST' and s == 'LNAM': items.append(resolve(struct.unpack_from('<I', v)[0], masters, n))
+                        # Spell effects (birthsigns, standing stones): the effect, then its magnitude and duration.
+                        elif grp == 'SPEL' and s == 'EFID': items.append({'effect': resolve(struct.unpack_from('<I', v)[0], masters, n)})
+                        elif grp == 'SPEL' and s == 'EFIT' and items and len(v) >= 12:
+                            items[-1]['mag'], items[-1]['area'], items[-1]['dur'] = struct.unpack_from('<fII', v)
+                        # A magic effect's description, with <mag> and <dur> where the spell's numbers go.
+                        elif grp == 'MGEF' and s == 'DNAM': rec['desc'] = txt(v)
                     if grp == 'PERK': rec['conditions'] = conds
                     if grp == 'AVIF': rec['sections'] = sections
                     if grp == 'FLST': rec['items'] = items
+                    if grp == 'SPEL': rec['effects'] = items
                     store[key] = rec  # later plugins win
             except Exception as e:
                 print('skip', n, grp, e, file=sys.stderr)
@@ -203,13 +210,31 @@ def main():
         if not s: continue
         traits.append({'key': list(k), 'edid': s['edid'], 'name': s['full'], 'desc': s['desc'], 'plugin': s['plugin']})
 
+    # Birthsigns and standing stones: their spells, with each effect's description from its
+    # magic effect, for build.py to write the game's own words. Candidates by the sign's name
+    # ("The Warrior") or by EDID; build.py picks one per sign and says which.
+    SIGNS = ['Warrior', 'Thief', 'Mage', 'Apprentice', 'Atronach', 'Lady', 'Lord', 'Lover', 'Ritual', 'Serpent', 'Shadow', 'Steed', 'Tower']
+    def spell_out(k, s):
+        effs = []
+        for e in s.get('effects', []):
+            m = mgefs.get(e['effect'], {})
+            effs.append({'edid': m.get('edid', ''), 'name': m.get('full', ''), 'desc': m.get('desc', ''), 'mag': e.get('mag'), 'dur': e.get('dur')})
+        return {'key': list(k), 'edid': s['edid'], 'name': s['full'], 'desc': s['desc'], 'plugin': s['plugin'], 'effects': effs}
+    signs = {}
+    for k, s in spells.items():
+        for sign in SIGNS:
+            named = s['full'] in (f'The {sign}', f'{sign}', f'The {sign} Stone')
+            by_id = re.search(rf'(?i)(birthsign|doom|stone).*{sign}|{sign}.*(birthsign|doom|stone)', s['edid'] or '')
+            if named or by_id:
+                signs.setdefault(sign, []).append(spell_out(k, s))
+
     enabled = {}
     for l in open(ROOT + '/profiles/Ultra/modlist.txt', encoding='utf-8', errors='ignore'):
         if l.startswith('+'): enabled[l.strip()[1:]] = True
-    out = {'trees': trees, 'perks': skill_perks, 'destiny': destiny, 'traits': traits,
+    out = {'trees': trees, 'perks': skill_perks, 'destiny': destiny, 'traits': traits, 'signs': signs,
            'avifNames': {SKILL_AVIF[a['edid']]: a['full'] for a in avifs.values() if a['edid'] in SKILL_AVIF}}
     json.dump(out, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'planner_data.json'), 'w'), indent=1)
-    print('trees', len(trees), 'perks', len(skill_perks), 'destiny nodes', len(destiny), 'traits', len(traits))
+    print('trees', len(trees), 'perks', len(skill_perks), 'destiny nodes', len(destiny), 'traits', len(traits), 'signs', len(signs))
     for t, v in trees.items(): print(f"  {t:12} {v['full']:14} {len(v['nodes'])} nodes  ({v['plugin']})")
 
 main()

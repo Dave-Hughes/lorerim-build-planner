@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import type { LevelMark } from "@/lib/rules/derive";
 import styles from "./level-nav.module.css";
 
@@ -113,9 +114,29 @@ export function LevelRow({ marks, level, onChange }: { marks: LevelMark[]; level
   const start = windowStart(level, total);
   const size = Math.min(WINDOW, total);
   const shown = marks.slice(start - 1, start - 1 + size);
+  // On phones the row scrolls sideways: keep the current level in view (moving the row, never
+  // the page) and fade the edge that has more.
+  const scroller = useRef<HTMLDivElement>(null);
+  const [edges, setEdges] = useState({ start: false, end: false });
+  useEffect(() => {
+    const el = scroller.current;
+    if (!el) return;
+    const measure = () => setEdges({ start: el.scrollLeft > 2, end: el.scrollLeft + el.clientWidth < el.scrollWidth - 2 });
+    const cell = el.querySelector<HTMLElement>('[aria-current="true"]');
+    if (cell && el.scrollWidth > el.clientWidth) el.scrollTo({ left: cell.offsetLeft - (el.clientWidth - cell.offsetWidth) / 2 });
+    const frame = requestAnimationFrame(measure);
+    el.addEventListener("scroll", measure, { passive: true });
+    window.addEventListener("resize", measure);
+    return () => {
+      cancelAnimationFrame(frame);
+      el.removeEventListener("scroll", measure);
+      window.removeEventListener("resize", measure);
+    };
+  }, [level]);
   return (
-    <div className={styles.scroller}>
-      <div className={styles.row} style={{ gridTemplateColumns: `repeat(${size}, minmax(56px, 1fr))` }}>
+    <div className={`${styles.rowWrap} ${edges.start ? styles.moreBefore : ""} ${edges.end ? styles.moreAfter : ""}`}>
+      <div ref={scroller} className={styles.rowScroller}>
+      <div className={styles.row} style={{ ["--cols" as string]: size }}>
         {shown.map((m) => {
           const on = m.level === level;
           const past = m.level <= level;
@@ -142,6 +163,7 @@ export function LevelRow({ marks, level, onChange }: { marks: LevelMark[]; level
             </button>
           );
         })}
+      </div>
       </div>
     </div>
   );

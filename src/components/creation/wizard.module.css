@@ -336,11 +336,6 @@
   font-size: 18px;
   font-weight: 600;
 }
-.chosen {
-  font-size: 11px;
-  color: var(--ember);
-  white-space: nowrap;
-}
 .math {
   font-size: 11px;
   white-space: nowrap;
@@ -451,10 +446,6 @@
   gap: 6px;
   min-width: 0;
   white-space: nowrap;
-}
-.kindTag {
-  color: var(--ember);
-  border-color: rgba(240, 145, 63, 0.45);
 }
 .seg {
   display: inline-flex;

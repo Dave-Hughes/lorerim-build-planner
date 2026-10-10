@@ -34,3 +34,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+@media (max-width: 599px) {
+  .word {
+    display: none;
+  }
+}
