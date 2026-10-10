@@ -65,10 +65,10 @@ Change the skills step (`SkillsStep` in `wizard.tsx`):
 - The segmented control stays; the disabled state of Major/Minor when full stays.
 
 Done when
-- [ ] The two tiles update as skills are set and un-set; they stay visible when the Mage group is scrolled into view at 1440×900.
-- [ ] At 390 wide the tiles sit side by side without wrapping their numbers and the row below them is not hidden.
-- [ ] `e2e/create.spec.ts` still passes (it asserts the sidebar summary `3 of 3 majors (+10), 2 of 6 minors (+5)`; update that assertion if the summary wording changes, otherwise leave it).
-- [ ] Screenshots at 1440 and 390 wide.
+- [x] The two tiles update as skills are set and un-set; they stay visible when the Mage group is scrolled into view at 1440×900.
+- [x] At 390 wide the tiles sit side by side without wrapping their numbers and the row below them is not hidden.
+- [x] `e2e/create.spec.ts` still passes (it asserts the sidebar summary `3 of 3 majors (+10), 2 of 6 minors (+5)`; update that assertion if the summary wording changes, otherwise leave it).
+- [x] Screenshots at 1440 and 390 wide.
 
 ---
 

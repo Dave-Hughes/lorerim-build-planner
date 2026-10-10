@@ -386,9 +386,10 @@ function SkillsStep({ plan, update }: StepProps) {
   return (
     <>
       <h1 className={`title ${styles.h1}`}>Choose major and minor skills</h1>
-      <p className={styles.count}>
-        {plan.majors.length} of {RULES.majorCount} majors (+{RULES.majorBonus}), {plan.minors.length} of {RULES.minorCount} minors (+{RULES.minorBonus})
-      </p>
+      <div className={styles.tiles} aria-live="polite">
+        <CountTile chosen={plan.majors.length} of={RULES.majorCount} label={`Majors +${RULES.majorBonus}`} />
+        <CountTile chosen={plan.minors.length} of={RULES.minorCount} label={`Minors +${RULES.minorBonus}`} />
+      </div>
       <div className={styles.skillGroups}>
         {SKILL_GROUPS.map((g) => (
           <div key={g.group} className={styles.skillGroup}>
@@ -397,7 +398,10 @@ function SkillsStep({ plan, update }: StepProps) {
               const kind = plan.majors.includes(s) ? "major" : plan.minors.includes(s) ? "minor" : "none";
               return (
                 <div key={s} className={styles.skillRow}>
-                  <SkillLabel name={s} className={kind !== "none" ? styles.skillOn : ""} />
+                  <span className={styles.skillName}>
+                    <SkillLabel name={s} className={kind !== "none" ? styles.skillOn : ""} />
+                    {kind !== "none" && <span className={`tag tag-sm ${styles.kindTag}`}>{kind === "major" ? "Major" : "Minor"}</span>}
+                  </span>
                   <span className={styles.seg} role="group" aria-label={s}>
                     <button type="button" aria-pressed={kind === "none"} onClick={() => set(s, "none")}>
                       —
@@ -416,6 +420,22 @@ function SkillsStep({ plan, update }: StepProps) {
         ))}
       </div>
     </>
+  );
+}
+
+/** How many majors or minors are chosen: ember while short of the count, plain once full. */
+function CountTile({ chosen, of, label }: { chosen: number; of: number; label: string }) {
+  const full = chosen >= of;
+  return (
+    <div className={`${styles.tile} ${full ? styles.tileFull : ""}`}>
+      <span className={`big-num ${styles.tileNum}`}>
+        {chosen} of {of}
+      </span>
+      <span className={`label ${styles.tileLabel}`}>
+        {label}
+        {full ? ", full" : ""}
+      </span>
+    </div>
   );
 }
 

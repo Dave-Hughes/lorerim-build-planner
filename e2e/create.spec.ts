@@ -26,7 +26,12 @@ test.describe("creating a build", () => {
     for (const s of ["Heavy Armor", "Block", "One-Handed"]) await page.getByRole("group", { name: s }).getByRole("button", { name: "Major" }).click();
     await expect(page.getByRole("group", { name: "Smithing" }).getByRole("button", { name: "Major" })).toBeDisabled();
     for (const s of ["Smithing", "Alchemy"]) await page.getByRole("group", { name: s }).getByRole("button", { name: "Minor" }).click();
-    await expect(page.getByText("3 of 3 majors (+10), 2 of 6 minors (+5)")).toBeVisible();
+    const tiles = page.getByRole("main").getByText(/^(Majors|Minors) \+\d+/);
+    await expect(tiles).toHaveText(["Majors +10, full", "Minors +5"]);
+    await expect(page.getByRole("main").getByText("3 of 3")).toBeVisible();
+    await expect(page.getByRole("main").getByText("2 of 6")).toBeVisible();
+    await expect(page.getByRole("group", { name: "Smithing" }).locator("..").locator(".tag")).toHaveText("Minor");
+    await expect(page.getByRole("group", { name: "Heavy Armor" }).locator("..").locator(".tag")).toHaveText("Major");
     // Heavy Armor: 10 base + 10 Nord + 10 major = 30
     await expect(page.getByRole("complementary", { name: "Setup steps" })).toContainText("Heavy Armor30");
     await page.getByRole("button", { name: "Next: Traits" }).click();

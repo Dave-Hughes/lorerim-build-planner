@@ -410,6 +410,48 @@
 .skillOn {
   font-weight: 600;
 }
+/* Majors and minors chosen, sticky while the lists scroll under them. */
+.tiles {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: -12px 0;
+  padding: 12px 0;
+  background: var(--ground);
+}
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 16px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+}
+.tileNum {
+  font-size: 34px;
+  color: var(--ember);
+  white-space: nowrap;
+}
+.tileFull .tileNum {
+  color: var(--text);
+}
+.tileLabel {
+  white-space: nowrap;
+}
+.skillName {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  white-space: nowrap;
+}
+.kindTag {
+  color: var(--ember);
+  border-color: rgba(240, 145, 63, 0.45);
+}
 .seg {
   display: inline-flex;
   border: 1px solid var(--rule-strong);
@@ -420,9 +462,9 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  min-width: 44px;
+  min-width: 40px;
   height: 36px;
-  padding: 0 10px;
+  padding: 0 8px;
   border: 0;
   border-right: 1px solid var(--rule-strong);
   background: transparent;
