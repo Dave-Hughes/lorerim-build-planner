@@ -119,14 +119,14 @@ export function Editor({ buildId, name, initialPlan, initialLevel }: Props) {
       <div className={`page ${styles.layout}`}>
         <section aria-label="Level" className={styles.levelBar}>
           <div className={styles.levelNav}>
-            <button type="button" className={styles.levelArrow} aria-label="Previous level" disabled={level <= 1} onClick={() => setLevel(level - 1)}>
+            <button type="button" className={`btn ${styles.levelArrow}`} aria-label="Previous level" disabled={level <= 1} onClick={() => setLevel(level - 1)}>
               ‹ {level > 1 ? level - 1 : ""}
             </button>
             <div className={styles.levelTitle}>
               <span className="label">{level === 1 ? "Level" : "Level up to"}</span>
               <span className={styles.levelNum}>{level}</span>
             </div>
-            <button type="button" className={styles.levelArrow} aria-label="Next level" disabled={level >= total} onClick={() => setLevel(level + 1)}>
+            <button type="button" className={`btn ${styles.levelArrow}`} aria-label="Next level" disabled={level >= total} onClick={() => setLevel(level + 1)}>
               {level < total ? level + 1 : ""} ›
             </button>
           </div>

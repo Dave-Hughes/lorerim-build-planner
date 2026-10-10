@@ -164,10 +164,19 @@
   background: transparent;
   color: #6b7889;
 }
+.cell {
+  transition:
+    color 120ms,
+    background-color 120ms;
+}
 .cellPast:hover,
 .cellFuture:hover {
-  background: var(--panel-raised);
-  color: var(--text);
+  background: rgba(240, 145, 63, 0.08);
+  color: var(--ember);
+}
+.cellPast:active,
+.cellFuture:active {
+  background: rgba(240, 145, 63, 0.14);
 }
 .cellNum {
   font-family: var(--font-title);

@@ -45,28 +45,19 @@
   align-items: center;
   gap: 18px;
 }
+/* Level arrows: the shared .btn, square like .btn-icon, with the level number beside the arrow. */
 .levelArrow {
-  font: inherit;
-  color: var(--muted);
-  background: transparent;
-  border: 1px solid var(--rule-strong);
+  --btn-cut: 0px;
+  --btn-pad-y: 0px;
   min-width: 44px;
   height: 44px;
   padding: 0 10px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   gap: 6px;
-  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 16px;
+  letter-spacing: 0;
+  color: var(--muted);
   font-variant-numeric: tabular-nums;
-}
-.levelArrow:hover:not(:disabled) {
-  color: var(--text);
-  border-color: var(--muted);
-}
-.levelArrow:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
 }
 .levelTitle {
   display: flex;
@@ -315,9 +306,17 @@
   color: #c3cdd6;
   cursor: pointer;
 }
+.stepper > button {
+  transition:
+    color 120ms,
+    background-color 120ms;
+}
 .stepper > button:hover:not(:disabled) {
-  background: var(--panel-raised);
-  color: var(--text);
+  background: rgba(240, 145, 63, 0.08);
+  color: var(--ember);
+}
+.stepper > button:active:not(:disabled) {
+  background: rgba(240, 145, 63, 0.14);
 }
 .stepper > button:disabled {
   color: #4a5668;
@@ -435,8 +434,11 @@
   color: var(--muted);
   cursor: pointer;
 }
+.x {
+  transition: color 120ms;
+}
 .x:hover {
-  color: var(--text);
+  color: var(--ember);
 }
 .extraForm {
   display: flex;

@@ -46,10 +46,10 @@ Dave: "All the buttons across the app feel very bland and basic, not fun." Direc
 Scope: all buttons in `src/app/globals.css` plus any component with its own button styling (tree tabs, level row, segmented Major/Minor control, card buttons). The segmented control keeps its shape but takes the label face and the hover colours.
 
 Done when
-- [ ] Every button in the app goes through the shared classes or matches them exactly; no stray default-styled buttons (search `<button` and check each one).
-- [ ] Nothing rounded, no shadows, glows or gradients added; chamfer is the only new shape.
-- [ ] `npm run build`, `npm run test:e2e` pass (button names unchanged, so tests should not need edits).
-- [ ] Before/after screenshots of: the home page, the race step, the traits step, the editor (perk panel with Confirm visible), the shared build page, at 1440 and 390 wide, for Dave to judge.
+- [x] Every button in the app goes through the shared classes or matches them exactly; no stray default-styled buttons (search `<button` and check each one).
+- [x] Nothing rounded, no shadows, glows or gradients added; chamfer is the only new shape.
+- [x] `npm run build`, `npm run test:e2e` pass (button names unchanged, so tests should not need edits).
+- [x] Before/after screenshots of: the home page, the race step, the traits step, the editor (perk panel with Confirm visible), the shared build page, at 1440 and 390 wide, for Dave to judge.
 
 ---
 

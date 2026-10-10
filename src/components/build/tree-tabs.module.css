@@ -7,18 +7,29 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  font: inherit;
-  font-size: 14px;
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   cursor: pointer;
   padding: 6px 11px;
   min-height: 36px;
   border: 1px solid var(--rule);
   background: transparent;
   color: #c3cdd6;
+  transition:
+    color 120ms,
+    background-color 120ms,
+    border-color 120ms;
 }
-.tab:hover {
-  border-color: var(--rule-strong);
-  color: var(--text);
+.tab:hover:not([aria-selected="true"]) {
+  border-color: var(--ember);
+  background: rgba(240, 145, 63, 0.08);
+  color: var(--ember);
+}
+.tab:active:not([aria-selected="true"]) {
+  background: rgba(240, 145, 63, 0.14);
 }
 .tab[aria-selected="true"] {
   border-color: var(--ember);

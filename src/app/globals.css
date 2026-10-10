@@ -115,32 +115,102 @@ textarea:focus-visible {
   border-right: 1px solid var(--brass);
 }
 
+/*
+ * Buttons. Labels in the title face; a 45 degree chamfer on the top-left and
+ * bottom-right corners, echoing the diamond step markers. The fill (::before)
+ * and the 1px outline (::after) are pseudo-elements clipped to the chamfer, so
+ * the outline follows the cut and the focus outline on the button isn't
+ * clipped. Colour comes from three variables: --btn-bg, --btn-line, color.
+ */
 .btn {
+  --btn-cut: 5px;
+  --btn-bg: transparent;
+  --btn-line: var(--rule-strong);
+  --btn-pad-y: 10px;
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 44px;
-  padding: 10px 18px;
+  padding: var(--btn-pad-y) 18px;
+  font-family: var(--font-title);
+  font-size: 16px;
   font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  border: 1px solid var(--rule-strong);
-  background: transparent;
+  border: 0;
+  background: none;
   color: var(--text);
+  transition: color 120ms;
 }
-.btn:hover {
-  border-color: var(--muted);
-  color: var(--text);
+.btn::before,
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
+.btn::before {
+  z-index: -1;
+  background: var(--btn-bg);
+  clip-path: polygon(var(--btn-cut) 0, 100% 0, 100% calc(100% - var(--btn-cut)), calc(100% - var(--btn-cut)) 100%, 0 100%, 0 var(--btn-cut));
+  transition: background-color 120ms;
+}
+/* A 1px ring: the chamfered outline minus the same shape inset by 1px (0.41px keeps the diagonal 1px thick). */
+.btn::after {
+  background: var(--btn-line);
+  clip-path: polygon(
+    evenodd,
+    var(--btn-cut) 0,
+    100% 0,
+    100% calc(100% - var(--btn-cut)),
+    calc(100% - var(--btn-cut)) 100%,
+    0 100%,
+    0 var(--btn-cut),
+    var(--btn-cut) 0,
+    calc(var(--btn-cut) + 0.41px) 1px,
+    1px calc(var(--btn-cut) + 0.41px),
+    1px calc(100% - 1px),
+    calc(100% - var(--btn-cut) - 0.41px) calc(100% - 1px),
+    calc(100% - 1px) calc(100% - var(--btn-cut) - 0.41px),
+    calc(100% - 1px) 1px,
+    calc(var(--btn-cut) + 0.41px) 1px
+  );
+  transition: background-color 120ms;
+}
+.btn:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+/* Secondary (outline) */
+.btn:hover:not(:disabled) {
+  --btn-line: var(--ember);
+  --btn-bg: rgba(240, 145, 63, 0.08);
+  color: var(--ember);
+}
+.btn:active:not(:disabled) {
+  --btn-bg: rgba(240, 145, 63, 0.14);
+}
+/* Primary: ember fill, dark label */
 .btn-primary {
-  background: var(--ember);
-  border-color: var(--ember);
+  --btn-bg: var(--ember);
+  --btn-line: var(--ember);
   color: var(--on-ember);
 }
-.btn-primary:hover {
-  background: #f5a35e;
-  border-color: #f5a35e;
+.btn-primary:hover:not(:disabled) {
+  --btn-bg: #f5a55a;
+  --btn-line: #f5a55a;
   color: var(--on-ember);
+}
+.btn-primary:active:not(:disabled) {
+  --btn-bg: #d97f33;
+  --btn-line: #d97f33;
+  padding-top: calc(var(--btn-pad-y) + 1px);
+  padding-bottom: calc(var(--btn-pad-y) - 1px);
 }
 
 .page {
@@ -155,36 +225,52 @@ textarea:focus-visible {
 
 /* ---------- Shared pieces ---------- */
 
-.btn-primary:disabled,
 .btn:disabled {
   opacity: 0.45;
   cursor: not-allowed;
 }
+/* Quiet: text only, ember underline on hover */
+.btn-quiet,
+.btn-quiet:hover:not(:disabled),
+.btn-quiet:active:not(:disabled) {
+  --btn-bg: transparent;
+  --btn-line: transparent;
+}
 .btn-quiet {
-  border-color: transparent;
   color: #c3cdd6;
 }
-.btn-quiet:hover {
-  border-color: transparent;
+.btn-quiet:hover:not(:disabled) {
   color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--ember);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
+/* Ember outline: a chosen or armed state */
 .btn-ember {
-  border-color: var(--ember);
+  --btn-line: var(--ember);
   color: var(--ember);
 }
-.btn-ember:hover {
+.btn-ember:hover:not(:disabled) {
+  --btn-line: #fff;
   color: #fff;
-  border-color: #fff;
 }
 .btn-sm {
+  --btn-cut: 3px;
+  --btn-pad-y: 8px;
   min-height: 40px;
-  padding: 8px 14px;
+  padding: var(--btn-pad-y) 14px;
   font-size: 14px;
 }
+/* Icon buttons (the level steppers) keep their square shape. */
 .btn-icon {
+  --btn-cut: 0px;
+  --btn-pad-y: 0px;
   width: 44px;
   padding: 0;
+  font-family: var(--font-body);
   font-size: 20px;
+  letter-spacing: 0;
 }
 
 .tag {

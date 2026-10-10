@@ -223,12 +223,13 @@
   color: #fff;
 }
 .cardOn .cardBtn {
-  background: var(--ember);
+  --btn-bg: var(--ember);
+  --btn-line: var(--ember);
   color: var(--on-ember);
 }
-.cardOn .cardBtn:hover {
-  background: #fff;
-  border-color: #fff;
+.cardOn .cardBtn:hover:not(:disabled) {
+  --btn-bg: #fff;
+  --btn-line: #fff;
   color: var(--on-ember);
 }
 .traitCard {
@@ -288,8 +289,8 @@
     color: #fff;
   }
   .cardPick:not(.cardOn):hover .cardBtn {
-    background: var(--ember);
-    border-color: var(--ember);
+    --btn-bg: var(--ember);
+    --btn-line: var(--ember);
     color: var(--on-ember);
   }
   .cardPick:hover .traitArt {
@@ -348,10 +349,6 @@
 .cardBtn {
   align-self: flex-start;
   margin-top: auto;
-  transition:
-    background-color 150ms,
-    border-color 150ms,
-    color 150ms;
 }
 .raceSkills {
   display: flex;
@@ -418,8 +415,11 @@
   border: 1px solid var(--rule-strong);
 }
 .seg button {
-  font: inherit;
-  font-size: 13px;
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   min-width: 44px;
   height: 36px;
   padding: 0 10px;
@@ -428,6 +428,16 @@
   background: transparent;
   color: #c3cdd6;
   cursor: pointer;
+  transition:
+    color 120ms,
+    background-color 120ms;
+}
+.seg button:hover:not(:disabled):not([aria-pressed="true"]) {
+  background: rgba(240, 145, 63, 0.08);
+  color: var(--ember);
+}
+.seg button:active:not(:disabled):not([aria-pressed="true"]) {
+  background: rgba(240, 145, 63, 0.14);
 }
 .seg button:last-child {
   border-right: 0;
