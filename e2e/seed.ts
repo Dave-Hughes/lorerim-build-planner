@@ -4,6 +4,7 @@
  * environment guard refuses anything else.
  */
 import { config } from "dotenv";
+import { del, list } from "@vercel/blob";
 import { and, eq, like } from "drizzle-orm";
 import { Pool } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-serverless";
@@ -92,7 +93,19 @@ export async function seed() {
   }
 }
 
+/** Images the tests uploaded (dev/builds/e2e…). */
+async function cleanupImages() {
+  if (!process.env.BLOB_READ_WRITE_TOKEN) return;
+  let cursor: string | undefined;
+  do {
+    const page = await list({ prefix: "dev/builds/e2e", cursor, limit: 1000 });
+    if (page.blobs.length) await del(page.blobs.map((b) => b.url));
+    cursor = page.hasMore ? page.cursor : undefined;
+  } while (cursor);
+}
+
 export async function cleanup() {
+  await cleanupImages();
   const url = assertDatabaseMatchesEnvironment();
   const pool = new Pool({ connectionString: url });
   const db = drizzle(pool, { schema });

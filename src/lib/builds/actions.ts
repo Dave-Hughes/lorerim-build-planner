@@ -9,7 +9,8 @@ import { newBuildId, isValidBuildId } from "./ids";
 import { getBuild } from "./queries";
 import { buildDetailsSchema, parseBuildPlan, type BuildDetails } from "./validate";
 import { convertPlan, droppedSentence } from "@/lib/rules/convert";
-import { guideDocSchema, isGuideKey, levelOfKey, limitFor, textLength, tooLongMessage } from "@/lib/guide/doc";
+import { guideDocSchema, imageUrls, isGuideKey, levelOfKey, limitFor, textLength, tooLongMessage } from "@/lib/guide/doc";
+import { deleteBuildImages, deleteImagesIfUnused, isOurImage } from "@/lib/guide/images";
 import { copyGuide } from "@/lib/guide/queries";
 import { currentVersion, isKnownVersion, requireGameData } from "@/lib/rules/server";
 
@@ -183,6 +184,8 @@ export async function saveGuideSection(buildId: string, key: string, input: unkn
   const length = textLength(doc);
   const limit = limitFor(key);
   if (length > limit) return { ok: false, error: tooLongMessage(length, limit) };
+  const images = imageUrls(doc);
+  if ([...images].some((u) => !isOurImage(u))) return { ok: false, error: "Images must be uploaded to the guide." };
 
   const level = levelOfKey(key);
   const owned = await db()
@@ -192,6 +195,12 @@ export async function saveGuideSection(buildId: string, key: string, input: unkn
     .limit(1);
   if (!owned[0]) return { ok: false, error: "Only the build's author can change it." };
   if (level && level > owned[0].plan.levels.length) return { ok: false, error: `The build has no level ${level}.` };
+
+  const before = await db()
+    .select({ doc: schema.buildGuides.doc })
+    .from(schema.buildGuides)
+    .where(and(eq(schema.buildGuides.buildId, buildId), eq(schema.buildGuides.key, key)))
+    .limit(1);
 
   const rows = await db()
     .insert(schema.buildGuides)
@@ -207,6 +216,11 @@ export async function saveGuideSection(buildId: string, key: string, input: unkn
   if (key === "overview" && plan.notes) {
     await db().update(schema.builds).set({ plan: { ...plan, notes: "" } }).where(eq(schema.builds.id, buildId));
   }
+  // Images taken out of this section are deleted, unless a guide still shows them.
+  if (before[0]) {
+    const removed = [...imageUrls(before[0].doc)].filter((u) => !images.has(u));
+    if (removed.length) await deleteImagesIfUnused(removed);
+  }
   if (level && plan.levels[level - 1]?.note) {
     const levels = plan.levels.map((lv, i) => (i === level - 1 ? { ...lv, note: "" } : lv));
     await db().update(schema.builds).set({ plan: { ...plan, levels } }).where(eq(schema.builds.id, buildId));
@@ -218,9 +232,12 @@ export async function saveGuideSection(buildId: string, key: string, input: unkn
 export async function deleteBuild(id: string): Promise<void> {
   const userId = await requireUser();
   if (!userId || !isValidBuildId(id)) return;
-  await db()
+  const gone = await db()
     .delete(schema.builds)
-    .where(and(eq(schema.builds.id, id), eq(schema.builds.ownerId, userId)));
+    .where(and(eq(schema.builds.id, id), eq(schema.builds.ownerId, userId)))
+    .returning({ id: schema.builds.id });
+  // Its guide rows went with it; now its images, unless a copy's guide still shows them.
+  if (gone[0]) await deleteBuildImages(id);
   revalidatePath("/");
   revalidatePath("/me");
   redirect("/me");

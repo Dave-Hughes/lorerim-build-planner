@@ -69,6 +69,29 @@ export function isYoutubeUrl(src: string): boolean {
 
 export const LINK_ERROR = "Links must start with http:// or https://";
 
+/** Guide images: kinds, size and count. */
+export const IMAGE_LIMITS = { bytes: 4 * 1024 * 1024, perBuild: 40 } as const;
+export const IMAGE_TYPES = ["image/png", "image/jpeg", "image/webp", "image/gif"] as const;
+export const IMAGE_TYPE_ERROR = "Only PNG, JPEG, WebP or GIF images.";
+export const IMAGE_COUNT_ERROR = `This build already has ${IMAGE_LIMITS.perBuild} images, the most it can have.`;
+
+/** "Too big: 5.0 MB. Images can be up to 4 MB." */
+export function imageTooBigMessage(bytes: number): string {
+  return `Too big: ${(bytes / 1024 / 1024).toFixed(1)} MB. Images can be up to ${IMAGE_LIMITS.bytes / 1024 / 1024} MB.`;
+}
+
+/** An image in our Blob store, under a build's folder: <env>/builds/<buildId>/<name>.<ext> */
+export function isGuideImageUrl(src: string): boolean {
+  return /^https:\/\/[a-z0-9]+\.public\.blob\.vercel-storage\.com\/(production|staging|dev)\/builds\/[23456789abcdefghjkmnpqrstuvwxyz]{10}\/[\w-]{8,64}\.(png|jpg|webp|gif)$/.test(src);
+}
+
+/** Every image a document shows. */
+export function imageUrls(n: GuideNode, out: Set<string> = new Set()): Set<string> {
+  if (n.type === "image" && typeof n.attrs?.src === "string") out.add(n.attrs.src);
+  for (const c of n.content ?? []) imageUrls(c, out);
+  return out;
+}
+
 const mark = z.discriminatedUnion("type", [
   z.object({ type: z.literal("bold") }),
   z.object({ type: z.literal("italic") }),
@@ -102,6 +125,16 @@ const node: z.ZodType<GuideNode> = z.lazy(() =>
       type: z.literal("youtube"),
       attrs: z.object({ src: z.string().max(500).refine(isYoutubeUrl, "Only YouTube videos can be embedded"), start: z.number().int().min(0).optional() }),
     }),
+    z.object({
+      type: z.literal("image"),
+      attrs: z.object({
+        src: z.string().max(300).refine(isGuideImageUrl, "Images must be uploaded to the guide"),
+        alt: z.string().max(300).nullish(),
+        caption: z.string().max(300).nullish(),
+        width: z.number().int().min(1).max(20_000).nullish(),
+        height: z.number().int().min(1).max(20_000).nullish(),
+      }),
+    }),
     z.object({ type: z.literal("text"), text: z.string().min(1).max(60_000), marks: z.array(mark).max(4).optional() }),
   ]),
 );
@@ -134,7 +167,7 @@ export function notesToDoc(text: string): GuideDoc {
 }
 
 export function isEmptyDoc(doc: GuideDoc | null | undefined): boolean {
-  return !doc || (textLength(doc) === 0 && !JSON.stringify(doc).includes('"youtube"'));
+  return !doc || (textLength(doc) === 0 && !/"type":"(youtube|image)"/.test(JSON.stringify(doc)));
 }
 
 /** "Too long to save: 61,200 of 60,000 characters" */

@@ -7,6 +7,7 @@ import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import { LINK_ERROR, isSafeHref, isYoutubeUrl, type GuideDoc } from "@/lib/guide/doc";
 import { createEditorHandlers, guideExtensions, transformPastedHTML, type SlashItem } from "./extensions";
 import { unsavedGuide, useGuideAutosave, type GuideSaveStatus } from "./use-guide-autosave";
+import { insertImages } from "./image-upload";
 import prose from "./prose.module.css";
 import styles from "./guide-editor.module.css";
 
@@ -269,6 +270,7 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder, 
   const [youtube, setYoutube] = useState<Rect | null>(null);
   const [slash, setSlash] = useState<SlashState | null>(null);
   const [handlers] = useState(createEditorHandlers);
+  const [filePicker, setFilePicker] = useState<HTMLInputElement | null>(null);
   const menuId = `guide-blocks-${sectionKey.replace(":", "-")}`;
 
   const items = useCallback(
@@ -286,6 +288,14 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder, 
         { title: "Warning", keywords: "warning caution", run: (e, r) => e.chain().focus().deleteRange(r).wrapIn("warning").run() },
         { title: "Spoiler", keywords: "spoiler hidden", run: (e, r) => e.chain().focus().deleteRange(r).wrapIn("spoiler").run() },
         {
+          title: "Image",
+          keywords: "image picture screenshot photo",
+          run: (e, r) => {
+            e.chain().focus().deleteRange(r).run();
+            filePicker?.click();
+          },
+        },
+        {
           title: "YouTube video",
           keywords: "youtube video embed",
           run: (e, r) => {
@@ -297,8 +307,54 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder, 
       ];
       return all.filter((i) => !q || i.title.toLowerCase().includes(q) || i.keywords.includes(q));
     },
-    [headingLevels],
+    [headingLevels, filePicker],
   );
+
+
+  // Created once; the extensions read the latest handlers through the boxes above.
+  const [extensions] = useState(() => guideExtensions({ placeholder, headingLevels, slash: handlers.slash, onLink: handlers.onLink }));
+
+  const [startDoc] = useState<{ doc: GuideDoc; unsaved: boolean }>(() => {
+    const kept = unsavedGuide(buildId, sectionKey);
+    return kept ? { doc: kept, unsaved: true } : { doc: initial, unsaved: false };
+  });
+
+  const editor = useEditor({
+    extensions,
+    content: startDoc.doc,
+    immediatelyRender: false,
+    shouldRerenderOnTransaction: true,
+    editorProps: {
+      attributes: {
+        "aria-label": label,
+        "aria-multiline": "true",
+        role: "textbox",
+        class: `${prose.prose} ${styles.content} ${compact ? styles.compact : ""}`,
+      },
+      transformPastedHTML,
+      // Images dropped or pasted in are uploaded where they land.
+      handleDrop: (view, event, _slice, moved) => {
+        const files = Array.from(event.dataTransfer?.files ?? []).filter((f) => f.type.startsWith("image/") || f.name.includes("."));
+        if (moved || !files.length) return false;
+        event.preventDefault();
+        handlers.onFiles(files, view.posAtCoords({ left: event.clientX, top: event.clientY })?.pos);
+        return true;
+      },
+      handlePaste: (_view, event) => {
+        const files = Array.from(event.clipboardData?.files ?? []);
+        if (!files.length) return false;
+        handlers.onFiles(files);
+        return true;
+      },
+    },
+    onUpdate: ({ editor }) => {
+      const doc = editor.getJSON() as GuideDoc;
+      change(doc);
+      onChange?.(doc);
+    },
+    onFocus: () => setFocused(true),
+    onBlur: () => setFocused(false),
+  });
 
   // Give the editor's extensions this render's handlers.
   useLayoutEffect(() => {
@@ -337,38 +393,8 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder, 
         },
       },
       () => setLinking(true),
+      (files, pos) => editor && void insertImages(editor, buildId, files, pos),
     );
-  });
-
-  // Created once; the extensions read the latest handlers through the boxes above.
-  const [extensions] = useState(() => guideExtensions({ placeholder, headingLevels, slash: handlers.slash, onLink: handlers.onLink }));
-
-  const [startDoc] = useState<{ doc: GuideDoc; unsaved: boolean }>(() => {
-    const kept = unsavedGuide(buildId, sectionKey);
-    return kept ? { doc: kept, unsaved: true } : { doc: initial, unsaved: false };
-  });
-
-  const editor = useEditor({
-    extensions,
-    content: startDoc.doc,
-    immediatelyRender: false,
-    shouldRerenderOnTransaction: true,
-    editorProps: {
-      attributes: {
-        "aria-label": label,
-        "aria-multiline": "true",
-        role: "textbox",
-        class: `${prose.prose} ${styles.content} ${compact ? styles.compact : ""}`,
-      },
-      transformPastedHTML,
-    },
-    onUpdate: ({ editor }) => {
-      const doc = editor.getJSON() as GuideDoc;
-      change(doc);
-      onChange?.(doc);
-    },
-    onFocus: () => setFocused(true),
-    onBlur: () => setFocused(false),
   });
 
   // Text kept in this browser from a save that didn't finish: save it now.
@@ -421,6 +447,19 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder, 
       )}
       <EditorContent editor={editor} />
       {slash && <SlashMenu state={slash} id={menuId} onPick={(i) => slash.command(slash.items[i])} />}
+      <input
+        ref={setFilePicker}
+        type="file"
+        accept="image/png,image/jpeg,image/webp,image/gif"
+        multiple
+        hidden
+        aria-label="Add images"
+        onChange={(e) => {
+          const files = Array.from(e.target.files ?? []);
+          e.target.value = "";
+          if (files.length) void insertImages(editor, buildId, files);
+        }}
+      />
       {youtube && <YoutubePrompt editor={editor} rect={youtube} onDone={() => setYoutube(null)} />}
       {coarse && focused && (
         // On touch devices the toolbar sits above the keyboard, not over the selection.

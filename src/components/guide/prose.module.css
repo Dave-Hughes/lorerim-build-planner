@@ -199,3 +199,25 @@
   margin: 0 0 16px;
   background: #000;
 }
+
+/* Images: the column width at most, never wider than the image itself. */
+.prose figure {
+  margin: 0 0 18px;
+}
+.prose figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  background: var(--panel);
+}
+.prose figure a {
+  display: inline-block;
+  max-width: 100%;
+}
+.prose figcaption {
+  margin-top: 8px;
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 16px;
+  color: #c3cdd6;
+}

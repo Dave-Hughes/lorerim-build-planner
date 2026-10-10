@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { saveGuideSection } from "@/lib/builds/actions";
 import type { GuideDoc } from "@/lib/guide/doc";
+import { withoutUnfinishedImages } from "./image-upload";
 
 export type GuideSaveStatus = "idle" | "saving" | "saved" | "failed";
 
@@ -79,7 +80,9 @@ export function useGuideAutosave(buildId: string, key: string) {
   }, [buildId, key, schedule]);
 
   const change = useCallback(
-    (doc: GuideDoc) => {
+    (edited: GuideDoc) => {
+      // Images still uploading (or failed) are never saved, here or in the browser copy.
+      const doc = withoutUnfinishedImages(edited);
       latest.current = doc;
       keep(buildId, key, doc);
       setStatus((s) => (s === "failed" ? s : "saving"));

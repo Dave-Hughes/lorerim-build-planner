@@ -4,7 +4,7 @@
  * open in a new tab with rel="nofollow ugc noopener".
  */
 import { Fragment } from "react";
-import { isSafeHref, isYoutubeUrl, type GuideDoc, type GuideMark, type GuideNode } from "@/lib/guide/doc";
+import { isGuideImageUrl, isSafeHref, isYoutubeUrl, type GuideDoc, type GuideMark, type GuideNode } from "@/lib/guide/doc";
 import prose from "./prose.module.css";
 
 export interface GuideHeading {
@@ -105,6 +105,23 @@ function draw(n: GuideNode, key: string, headingIds: Map<number, string>, index?
     case "youtube": {
       const src = typeof n.attrs?.src === "string" ? youtubeEmbed(n.attrs.src, n.attrs.start) : null;
       return src ? <iframe key={key} src={src} title="YouTube video" loading="lazy" allow="encrypted-media; picture-in-picture" allowFullScreen /> : null;
+    }
+    case "image": {
+      const a = n.attrs ?? {};
+      if (typeof a.src !== "string" || !isGuideImageUrl(a.src)) return null;
+      const w = typeof a.width === "number" ? a.width : undefined;
+      const h = typeof a.height === "number" ? a.height : undefined;
+      const caption = typeof a.caption === "string" && a.caption.trim() ? a.caption : null;
+      return (
+        <figure key={key}>
+          {/* Column width at most, never wider than the image itself; explicit size so nothing shifts. */}
+          <a href={a.src} target="_blank" rel="noopener">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={a.src} alt={typeof a.alt === "string" ? a.alt : ""} width={w} height={h} loading="lazy" decoding="async" />
+          </a>
+          {caption && <figcaption>{caption}</figcaption>}
+        </figure>
+      );
     }
     case "text":
       return n.text ? withMarks(n.text, n.marks, key) : null;

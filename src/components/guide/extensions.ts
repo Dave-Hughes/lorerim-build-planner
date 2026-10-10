@@ -11,6 +11,7 @@ import StarterKit from "@tiptap/starter-kit";
 import Suggestion, { type SuggestionProps } from "@tiptap/suggestion";
 import { PluginKey } from "@tiptap/pm/state";
 import { isSafeHref } from "@/lib/guide/doc";
+import { GuideImage } from "./image-node";
 
 export type CalloutName = "tip" | "warning" | "spoiler";
 
@@ -74,6 +75,7 @@ export interface SlashBridge {
 export function createEditorHandlers() {
   let slash: SlashBridge | null = null;
   let link: (() => void) | null = null;
+  let files: ((files: File[], pos?: number) => void) | null = null;
   return {
     slash: {
       items: (q: string) => slash?.items(q) ?? [],
@@ -83,9 +85,12 @@ export function createEditorHandlers() {
       onKeyDown: (e: KeyboardEvent) => slash?.onKeyDown(e) ?? false,
     } satisfies SlashBridge,
     onLink: () => link?.(),
-    set(s: SlashBridge, l: () => void) {
+    /** Image files dropped or pasted into the editor. */
+    onFiles: (f: File[], pos?: number) => files?.(f, pos),
+    set(s: SlashBridge, l: () => void, f: (files: File[], pos?: number) => void) {
       slash = s;
       link = l;
+      files = f;
     },
   };
 }
@@ -165,6 +170,7 @@ export function guideExtensions({
     // No em dashes (design rule 2): "--" stays as typed.
     Typography.configure({ emDash: false }),
     Youtube.configure({ nocookie: true, inline: false, width: 640, height: 360 }),
+    GuideImage,
     callout("tip"),
     callout("warning"),
     callout("spoiler"),

@@ -134,3 +134,74 @@
   min-height: 44px;
   white-space: nowrap;
 }
+
+/* Images in the editor: the image, then caption and alt text fields. */
+.image {
+  margin: 0 0 18px;
+}
+.image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.imageSelected img {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+}
+.imageFields {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  margin-top: 8px;
+}
+.imageField {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+.caption,
+.alt {
+  width: 100%;
+  padding: 4px 0;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  color: #c3cdd6;
+  outline: none;
+}
+.caption {
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 16px;
+}
+.alt {
+  font-size: 13px;
+}
+.caption:focus,
+.alt:focus {
+  border-bottom-color: var(--ember);
+}
+.imageBox {
+  position: relative;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  border: 1px dashed var(--rule-strong);
+  background: var(--panel-raised);
+}
+.imagePending {
+  opacity: 0.35;
+}
+.imageStatus {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 14px;
+  padding: 10px 14px;
+  font-size: 14px;
+}
+.imageActions {
+  display: inline-flex;
+  gap: 8px;
+}

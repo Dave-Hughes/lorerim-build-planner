@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { head } from "@vercel/blob";
 import { signIn } from "./helpers";
 import { TEST_BUILD_ID } from "./seed";
 
@@ -111,4 +112,66 @@ test.describe("the written guide", () => {
     await expect(page.getByRole("button", { name: /^Level 2, notes/ })).toBeVisible();
     await expect(page.getByText("Notes", { exact: true })).toBeVisible();
   });
+
+  test("images: upload, caption and alt text, shown on the build page, and deleted from the store when removed", async ({ page, context }) => {
+    await signIn(context);
+    const editor = await openGuide(page);
+    await editor.click();
+    await page.keyboard.press("ControlOrMeta+a");
+    await page.keyboard.press("Delete");
+    await page.keyboard.type("Riverwood at dusk.");
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("/image");
+    const chooser = page.waitForEvent("filechooser");
+    await page.keyboard.press("Enter");
+    await (await chooser).setFiles({ name: "riverwood.png", mimeType: "image/png", buffer: PNG });
+    const img = editor.locator('img[src*=".public.blob.vercel-storage.com/dev/builds/"]');
+    await expect(img).toHaveCount(1, { timeout: 20_000 });
+    await page.getByRole("textbox", { name: "Alt text" }).fill("A wooden mill by a river");
+    await page.getByRole("textbox", { name: "Caption" }).fill("The mill at Riverwood");
+    await expect(page.getByRole("status")).toHaveText("Saved");
+    const url = (await img.getAttribute("src"))!;
+
+    await page.goto(`/b/${TEST_BUILD_ID}`);
+    const figure = page.getByRole("region", { name: "Guide" }).locator("figure");
+    await expect(figure.locator("img")).toHaveAttribute("alt", "A wooden mill by a river");
+    await expect(figure.locator("img")).toHaveAttribute("loading", "lazy");
+    await expect(figure.locator("figcaption")).toHaveText("The mill at Riverwood");
+
+    // Taken out of the guide: deleted from the store on the next save.
+    await openGuide(page);
+    await page.getByRole("textbox", { name: "Guide" }).getByRole("button", { name: "Remove" }).click();
+    await expect(page.getByRole("status")).toHaveText("Saved");
+    await expect
+      .poll(async () => head(url).then(() => "there", () => "gone"), { timeout: 15_000 })
+      .toBe("gone");
+  });
+
+  test("a 5 MB image and an SVG are refused with a clear message", async ({ page, context }) => {
+    await signIn(context);
+    const editor = await openGuide(page);
+    await editor.click();
+    await page.keyboard.press("ControlOrMeta+a");
+    await page.keyboard.press("Delete");
+    const big = Buffer.concat([PNG, Buffer.alloc(5 * 1024 * 1024 - PNG.length)]);
+    await page.getByLabel("Add images").setInputFiles({ name: "huge.png", mimeType: "image/png", buffer: big });
+    await expect(page.getByRole("alert").filter({ hasText: "Too big: 5.0 MB. Images can be up to 4 MB." })).toBeVisible();
+    await page.getByLabel("Add images").setInputFiles({ name: "map.svg", mimeType: "image/svg+xml", buffer: SVG });
+    await expect(page.getByRole("alert").filter({ hasText: "Only PNG, JPEG, WebP or GIF images." })).toBeVisible();
+
+    // The server refuses them too, whatever the browser says the file is.
+    const svg = await page.request.post(`/api/builds/${TEST_BUILD_ID}/images`, { multipart: { file: { name: "map.png", mimeType: "image/png", buffer: SVG } } });
+    expect(svg.status()).toBe(415);
+    expect((await svg.json()).error).toBe("Only PNG, JPEG, WebP or GIF images.");
+    const huge = await page.request.post(`/api/builds/${TEST_BUILD_ID}/images`, { multipart: { file: { name: "huge.png", mimeType: "image/png", buffer: big } } });
+    expect(huge.status()).toBe(413);
+    expect((await huge.json()).error).toBe("Too big: 5.0 MB. Images can be up to 4 MB.");
+  });
 });
+
+/** A 4x3 PNG. */
+const PNG = Buffer.from(
+  "iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAIAAAA7ljmRAAAAGElEQVR42mP4z8DwH4wZGBj+M2AFDAwMAPI0BP0ZpIb9AAAAAElFTkSuQmCC",
+  "base64",
+);
+const SVG = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><rect width="10" height="10"/></svg>');
