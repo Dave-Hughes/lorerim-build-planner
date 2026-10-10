@@ -6,6 +6,7 @@ import { RetiredBuild } from "@/components/build/retired-build";
 import { GameDataProvider } from "@/components/game-data";
 import { SignInButton } from "@/components/site-header";
 import { getBuild } from "@/lib/builds/queries";
+import { getGuide } from "@/lib/guide/queries";
 import { formatDate } from "@/lib/format/date";
 import { clientVersion, isKnownVersion } from "@/lib/rules/server";
 
@@ -27,6 +28,7 @@ export default async function BuildPage({ params, searchParams }: { params: Para
   const { createdAt: _createdAt, updatedAt, ...rest } = build;
   void _createdAt;
   const isOwner = !!viewerId && viewerId === build.ownerId;
+  const guide = await getGuide(build.id, build.plan, !build.isSample);
   if (!isKnownVersion(build.gameVersion)) return <RetiredBuild build={{ ...rest, updatedAt: updatedAt.toISOString() }} isOwner={isOwner} />;
   return (
     <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
@@ -38,6 +40,7 @@ export default async function BuildPage({ params, searchParams }: { params: Para
         initialLevel={Number(level) || 1}
         signInToCopy={<SignInButton redirectTo={`/b/${id}?copy=1`} className="btn btn-primary" label="Copy to my builds" />}
         autoCopy={copy === "1"}
+        guide={guide.overview?.doc ?? null}
       />
     </GameDataProvider>
   );

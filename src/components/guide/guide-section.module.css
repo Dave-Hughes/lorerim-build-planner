@@ -1,0 +1,41 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.contents ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+}
+.contents a {
+  color: var(--ember);
+  text-decoration: none;
+  font-size: 15px;
+}
+.contents a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.body {
+  position: relative;
+}
+.collapsed {
+  overflow: hidden;
+}
+/* The functional fade over cut-off text (as over images). */
+.fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 140px;
+  background: linear-gradient(to bottom, rgba(14, 19, 25, 0), var(--ground));
+  pointer-events: none;
+}
+.more {
+  align-self: flex-start;
+}

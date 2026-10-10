@@ -1,0 +1,136 @@
+.wrap {
+  position: relative;
+}
+
+/* The editable text: page width of the main column, same measure as the cards. */
+.content {
+  min-height: 55vh;
+  padding: 18px 20px 28px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  outline: none;
+  transition: border-color 120ms;
+}
+.content:focus-visible,
+.content:focus {
+  border-color: var(--rule-strong);
+}
+.compact {
+  min-height: 140px;
+  padding: 12px 14px 16px;
+}
+.content :global(p.is-editor-empty:first-child)::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  color: var(--muted);
+  pointer-events: none;
+}
+.content :global(.ProseMirror-selectednode) {
+  outline: 1px solid var(--ember);
+}
+
+/* Bubble toolbar over a selection (pointer devices) */
+.bubble {
+  z-index: 30;
+  background: var(--panel-raised);
+  border: 1px solid var(--rule-strong);
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tool {
+  min-height: 36px;
+  padding: 0 11px;
+  border: 0;
+  border-right: 1px solid var(--rule);
+  background: transparent;
+  color: #c3cdd6;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color 120ms,
+    background-color 120ms;
+}
+.tool:last-child {
+  border-right: 0;
+}
+.tool:hover {
+  background: rgba(240, 145, 63, 0.08);
+  color: var(--ember);
+}
+.tool[aria-pressed="true"] {
+  background: var(--ember);
+  color: var(--on-ember);
+}
+
+.linkForm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: var(--panel-raised);
+  border: 1px solid var(--rule-strong);
+}
+.linkField {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+.linkField :global(.input) {
+  min-height: 36px;
+  padding: 6px 10px;
+}
+.linkError {
+  flex-basis: 100%;
+}
+
+/* "/" block menu and the YouTube link prompt */
+.floating {
+  position: fixed;
+  z-index: 40;
+  width: min(320px, calc(100vw - 32px));
+}
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--panel-raised);
+  border: 1px solid var(--rule-strong);
+}
+.menuItem {
+  padding: 8px 14px;
+  font-size: 15px;
+  cursor: pointer;
+  color: #c3cdd6;
+}
+.menuItem[aria-selected="true"],
+.menuItem:hover {
+  background: rgba(240, 145, 63, 0.12);
+  color: var(--ember);
+}
+
+/* Touch devices: the toolbar sits above the keyboard. */
+.touchBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background: var(--panel-raised);
+  border-top: 1px solid var(--rule-strong);
+  overflow-x: auto;
+}
+.touchBar .toolbar {
+  flex-wrap: nowrap;
+}
+.touchBar .tool {
+  min-height: 44px;
+  white-space: nowrap;
+}

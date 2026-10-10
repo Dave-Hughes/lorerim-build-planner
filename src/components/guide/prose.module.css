@@ -1,0 +1,201 @@
+/*
+ * The guide's text, the same in the editor and on the build page: body in
+ * Sofia Sans 16/1.6, headings in the title face, quotes in Alegreya italic,
+ * Tip and Warning framed with the brass corner marks, links in ember.
+ */
+.prose {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+.prose > :first-child,
+.prose [data-callout] > :first-child,
+.prose details > :nth-child(2) {
+  margin-top: 0;
+}
+.prose > :last-child,
+.prose [data-callout] > :last-child,
+.prose details > :last-child {
+  margin-bottom: 0;
+}
+.prose p {
+  margin: 0 0 14px;
+}
+.prose h2,
+.prose h3 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  color: #fff;
+  scroll-margin-top: 24px;
+}
+.prose h2 {
+  font-size: 30px;
+  margin: 34px 0 12px;
+}
+.prose h3 {
+  font-size: 22px;
+  margin: 26px 0 10px;
+}
+.prose ul,
+.prose ol {
+  margin: 0 0 14px;
+  padding-left: 24px;
+}
+.prose li {
+  margin: 4px 0;
+}
+.prose li > p {
+  margin: 0;
+}
+.prose li::marker {
+  color: var(--ember);
+}
+.prose blockquote {
+  margin: 0 0 14px;
+  padding: 2px 0 2px 18px;
+  border-left: 2px solid var(--brass);
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 18px;
+  color: #c3cdd6;
+}
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--rule-strong);
+  margin: 26px 0;
+}
+.prose a {
+  color: var(--ember);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose strong {
+  font-weight: 700;
+  color: #fff;
+}
+
+/*
+ * Tip and Warning: framed panels. On the build page they are <aside class="frame">,
+ * so they get the brass corner marks, with the label as a real element; in the editor
+ * the label is drawn by ::before (a node's content can't hold it).
+ */
+.prose [data-callout="tip"],
+.prose [data-callout="warning"],
+.callout {
+  position: relative;
+  margin: 0 0 16px;
+  padding: 14px 18px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+}
+.prose [data-callout="tip"],
+.prose [data-callout="warning"] {
+  padding-top: 34px;
+}
+.prose [data-callout="warning"],
+.warning {
+  border-color: rgba(208, 122, 106, 0.55);
+}
+.prose [data-callout="tip"]::before,
+.prose [data-callout="warning"]::before,
+.calloutLabel {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+.prose [data-callout="tip"]::before,
+.prose [data-callout="warning"]::before {
+  position: absolute;
+  top: 12px;
+  left: 18px;
+}
+.calloutLabel {
+  display: block;
+  margin-bottom: 8px;
+}
+.prose [data-callout="tip"]::before {
+  content: "Tip";
+}
+.prose [data-callout="warning"]::before {
+  content: "Warning";
+  color: var(--health);
+}
+.warning .calloutLabel {
+  color: var(--health);
+}
+.callout > :nth-child(2) {
+  margin-top: 0;
+}
+.callout > :last-child {
+  margin-bottom: 0;
+}
+
+/* Spoiler: closed until tapped. In the editor it shows open, labelled. */
+.prose details,
+.prose [data-callout="spoiler"] {
+  margin: 0 0 16px;
+  border: 1px dashed var(--rule-strong);
+  background: var(--panel);
+}
+.prose details > summary {
+  cursor: pointer;
+  padding: 12px 18px;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c3cdd6;
+}
+.prose details > summary:hover {
+  color: var(--ember);
+}
+.prose details[open] > summary {
+  border-bottom: 1px dashed var(--rule-strong);
+}
+.prose details > :not(summary) {
+  margin-left: 18px;
+  margin-right: 18px;
+}
+.prose details > :nth-child(2) {
+  margin-top: 14px;
+}
+.prose details > :last-child {
+  margin-bottom: 14px;
+}
+.prose [data-callout="spoiler"] {
+  position: relative;
+  padding: 34px 18px 14px;
+}
+.prose [data-callout="spoiler"]::before {
+  content: "Spoiler";
+  position: absolute;
+  top: 12px;
+  left: 18px;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* YouTube */
+.prose iframe,
+.prose [data-youtube-video] iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  margin: 0 0 16px;
+  background: #000;
+}

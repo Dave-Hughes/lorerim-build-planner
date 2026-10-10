@@ -110,6 +110,9 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted }: 
             <Link href={`/b/${buildId}/setup`} className="btn btn-sm">
               Set up
             </Link>
+            <Link href={`/b/${buildId}/guide`} className="btn btn-sm">
+              Guide
+            </Link>
             <Link href={`/b/${buildId}?level=${level}`} className="btn btn-sm">
               See it as a visitor
             </Link>
@@ -366,7 +369,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted }: 
           </span>
         </div>
 
-        <GearAndNotes plan={plan} setPlan={setPlan} />
+        <Gear plan={plan} setPlan={setPlan} />
       </div>
     </>
   );
@@ -384,13 +387,13 @@ function Pool({ label, value, of }: { label: string; value: number; of: string }
   );
 }
 
-function GearAndNotes({ plan, setPlan }: { plan: BuildPlan; setPlan: (p: BuildPlan) => void }) {
+function Gear({ plan, setPlan }: { plan: BuildPlan; setPlan: (p: BuildPlan) => void }) {
   const gear = plan.gear;
   const update = (i: number, patch: Partial<GearItem>) => setPlan(ops.setGear(plan, gear.map((g, n) => (n === i ? { ...g, ...patch } : g))));
   const add = () => setPlan(ops.setGear(plan, [...gear, { slot: "", name: "", fromLevel: 1, note: "" }]));
   const remove = (i: number) => setPlan(ops.setGear(plan, gear.filter((_, n) => n !== i)));
   return (
-    <section aria-label="Gear and notes" className={styles.gearNotes}>
+    <section aria-label="Gear" className={styles.gearNotes}>
       <div className={styles.gear}>
         <span className="label">Gear</span>
         {gear.length > 0 && (
@@ -427,10 +430,6 @@ function GearAndNotes({ plan, setPlan }: { plan: BuildPlan; setPlan: (p: BuildPl
           Add gear
         </button>
       </div>
-      <label className={`field ${styles.notes}`}>
-        <span className="label">Notes from the author</span>
-        <textarea className="textarea" rows={6} value={plan.notes} maxLength={6000} onChange={(e) => setPlan(ops.setNotes(plan, e.target.value))} placeholder="Shown under the build. The full route and quest order can stay in your Discord write-up." />
-      </label>
     </section>
   );
 }

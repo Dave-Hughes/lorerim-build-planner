@@ -505,9 +505,6 @@
   flex-direction: column;
   gap: 12px;
 }
-.notes {
-  flex: 2 1 340px;
-}
 .gearRows {
   display: flex;
   flex-direction: column;

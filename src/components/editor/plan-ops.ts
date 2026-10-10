@@ -71,6 +71,3 @@ export function setGear(plan: BuildPlan, gear: GearItem[]): BuildPlan {
   return { ...plan, gear };
 }
 
-export function setNotes(plan: BuildPlan, notes: string): BuildPlan {
-  return { ...plan, notes };
-}

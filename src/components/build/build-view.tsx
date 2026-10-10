@@ -6,6 +6,8 @@ import { useCallback, useEffect, useMemo, useState, useTransition } from "react"
 import { copyBuild, copyBuildForVersion } from "@/lib/builds/actions";
 import type { BuildRecord } from "@/lib/builds/types";
 import { useGameData } from "@/components/game-data";
+import { GuideSection } from "@/components/guide/guide-section";
+import { isEmptyDoc, type GuideDoc } from "@/lib/guide/doc";
 import { currentVersion, isOlderThanCurrent } from "@/lib/rules/versions";
 import { ATTRIBUTE_NAMES, levelChanges, levelMarks, perksByLevel } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
@@ -29,9 +31,11 @@ interface Props {
   signInToCopy: React.ReactNode;
   /** True when the visitor signed in from "Copy to my builds"; the copy runs on load. */
   autoCopy?: boolean;
+  /** The build's overall guide, when it has one. */
+  guide?: GuideDoc | null;
 }
 
-export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel, signInToCopy, autoCopy }: Props) {
+export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel, signInToCopy, autoCopy, guide }: Props) {
   const d = useGameData();
   const { plan } = build;
   const total = plan.levels.length;
@@ -97,6 +101,8 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
             </div>
           ))}
         </section>
+
+        {guide && !isEmptyDoc(guide) && <GuideSection buildId={build.id} doc={guide} />}
 
         <section aria-label="Level" className={styles.levelSection}>
           <div className={styles.levelHead}>
@@ -252,10 +258,6 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
                 </table>
               </div>
             )}
-          </section>
-          <section aria-label="Notes" className={styles.notes}>
-            <span className="label">Notes from the author</span>
-            {plan.notes ? <p className={`soft ${styles.notesText}`}>{plan.notes}</p> : <p className="muted">None yet.</p>}
           </section>
         </div>
       </div>

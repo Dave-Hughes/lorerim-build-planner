@@ -9,6 +9,7 @@ import {
   timestamp,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccountType } from "next-auth/adapters";
+import type { GuideDoc } from "@/lib/guide/doc";
 import type { BuildPlan } from "@/lib/rules/types";
 
 /* ---------- Auth.js tables (shape required by @auth/drizzle-adapter) ---------- */
@@ -96,4 +97,24 @@ export const builds = pgTable(
     /** Browse filters by LoreRim version. */
     index("build_game_version_idx").on(t.gameVersion),
   ],
+);
+
+/** The written guide: one row for the whole build (`overview`) and one per level with notes (`level:<n>`). */
+export const buildGuides = pgTable(
+  "build_guides",
+  {
+    buildId: text("build_id")
+      .notNull()
+      .references(() => builds.id, { onDelete: "cascade" }),
+    /** `overview` or `level:<n>` */
+    key: text("key").notNull(),
+    /** Tiptap JSON, validated against src/lib/guide/doc.ts on every save. Never HTML. */
+    doc: jsonb("doc").$type<GuideDoc>().notNull(),
+    textLength: integer("text_length").notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow()
+      .$onUpdate(() => new Date()),
+  },
+  (t) => [primaryKey({ columns: [t.buildId, t.key] })],
 );

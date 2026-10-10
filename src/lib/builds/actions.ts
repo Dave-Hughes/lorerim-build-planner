@@ -9,6 +9,8 @@ import { newBuildId, isValidBuildId } from "./ids";
 import { getBuild } from "./queries";
 import { buildDetailsSchema, parseBuildPlan, type BuildDetails } from "./validate";
 import { convertPlan, droppedSentence } from "@/lib/rules/convert";
+import { guideDocSchema, isGuideKey, limitFor, textLength, tooLongMessage } from "@/lib/guide/doc";
+import { copyGuide } from "@/lib/guide/queries";
 import { currentVersion, isKnownVersion, requireGameData } from "@/lib/rules/server";
 
 export type ActionResult<T = undefined> = { ok: true; value: T } | { ok: false; error: string };
@@ -118,6 +120,7 @@ export async function copyBuild(id: string): Promise<ActionResult<{ id: string }
       gameVersion: source.gameVersion,
       plan: source.plan,
     });
+  if (!source.isSample) await copyGuide(source.id, newId);
   revalidatePath("/me");
   return { ok: true, value: { id: newId } };
 }
@@ -149,8 +152,51 @@ export async function copyBuildForVersion(id: string): Promise<ActionResult<{ id
       gameVersion: current.id,
       plan,
     });
+  if (!source.isSample) await copyGuide(source.id, newId);
   revalidatePath("/me");
   return { ok: true, value: { id: newId, dropped: dropped.length ? droppedSentence(current.id, dropped) : "" } };
+}
+
+/**
+ * Saves one section of the written guide (`overview` or `level:<n>`). Only the owner can.
+ * The document is checked against the guide's node and mark types (links http/https only)
+ * and its length limit; it is never truncated. The first save of a section clears the old
+ * plain-text note it replaces.
+ */
+export async function saveGuideSection(buildId: string, key: string, input: unknown): Promise<ActionResult<{ updatedAt: string }>> {
+  const userId = await requireUser();
+  if (!userId) return { ok: false, error: "Your sign-in expired. Sign in again to keep saving." };
+  if (!isValidBuildId(buildId) || !isGuideKey(key)) return { ok: false, error: "Unknown guide section." };
+  const parsed = guideDocSchema.safeParse(input);
+  if (!parsed.success) return { ok: false, error: parsed.error.issues[0]?.message ?? "The guide has something it can't save." };
+  const doc = parsed.data as typeof parsed.data & { type: "doc" };
+  const length = textLength(doc);
+  const limit = limitFor(key);
+  if (length > limit) return { ok: false, error: tooLongMessage(length, limit) };
+
+  const owned = await db()
+    .select({ plan: schema.builds.plan })
+    .from(schema.builds)
+    .where(and(eq(schema.builds.id, buildId), eq(schema.builds.ownerId, userId)))
+    .limit(1);
+  if (!owned[0]) return { ok: false, error: "Only the build's author can change it." };
+
+  const rows = await db()
+    .insert(schema.buildGuides)
+    .values({ buildId, key, doc, textLength: length })
+    .onConflictDoUpdate({
+      target: [schema.buildGuides.buildId, schema.buildGuides.key],
+      set: { doc, textLength: length, updatedAt: new Date() },
+    })
+    .returning({ updatedAt: schema.buildGuides.updatedAt });
+
+  // The section now lives in the guide; clear the old plain-text note it replaces.
+  const plan = owned[0].plan;
+  if (key === "overview" && plan.notes) {
+    await db().update(schema.builds).set({ plan: { ...plan, notes: "" } }).where(eq(schema.builds.id, buildId));
+  }
+  revalidatePath(`/b/${buildId}`);
+  return { ok: true, value: { updatedAt: rows[0].updatedAt.toISOString() } };
 }
 
 export async function deleteBuild(id: string): Promise<void> {

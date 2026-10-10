@@ -214,7 +214,7 @@ Tiptap (ProseMirror) with the React bindings: StarterKit, Link, Placeholder, Typ
 - Chips store `{ kind, id }`, never the text, so they stay correct when the game data is rebuilt. A chip whose id no longer exists renders as plain text with a dotted underline and the tooltip "Not in LoreRim [version]".
 
 Done when (each part)
-- [ ] 7a: an owner can write, format, paste and autosave the overall guide; a visitor sees it rendered with contents; e2e covers typing a heading and a list, reloading, and seeing them on the build page; a pasted page with fonts and colours comes through clean; a `javascript:` link is refused.
+- [x] 7a: an owner can write, format, paste and autosave the overall guide; a visitor sees it rendered with contents; e2e covers typing a heading and a list, reloading, and seeing them on the build page; a pasted page with fonts and colours comes through clean; a `javascript:` link is refused.
 - [ ] 7b: level notes edit and render; old notes migrate on first open; the ruler marks levels with notes; e2e covers one level note.
 - [ ] 7c: upload, caption, alt text, delete-on-remove all work against the staging Blob store; a 5 MB file and a .svg are refused with a clear message.
 - [ ] 7d: mention search, chip, hover text and the missing-id case work; unit test for the chip renderer.

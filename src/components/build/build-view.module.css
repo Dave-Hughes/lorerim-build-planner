@@ -365,17 +365,6 @@
   flex-direction: column;
   gap: 12px;
 }
-.notes {
-  flex: 2 1 340px;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.notesText {
-  margin: 0;
-  white-space: pre-line;
-}
 .scroller {
   overflow-x: auto;
 }
