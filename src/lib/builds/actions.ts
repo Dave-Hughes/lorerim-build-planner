@@ -137,17 +137,18 @@ export async function copyBuild(id: string): Promise<ActionResult<{ id: string }
 }
 
 /**
- * Copies a build made for an older LoreRim version into the signed-in user's builds,
- * moved to the current version. The original is never changed. `dropped` lists what
+ * Copies a build into the signed-in user's builds, moved to another LoreRim version (the
+ * current one unless `toVersion` says otherwise). The original is never changed. `dropped` lists what
  * the current version doesn't have (empty when everything carried over).
  */
-export async function copyBuildForVersion(id: string): Promise<ActionResult<{ id: string; dropped: string }>> {
+export async function copyBuildForVersion(id: string, toVersion?: string): Promise<ActionResult<{ id: string; dropped: string }>> {
   const userId = await requireUser();
   if (!userId) return { ok: false, error: "Sign in with Discord to copy a build." };
   const source = await getBuild(id, userId);
   if (!source) return { ok: false, error: "Unknown build." };
   if (!isKnownVersion(source.gameVersion)) return { ok: false, error: `LoreRim ${source.gameVersion} is no longer in the planner.` };
-  const current = currentVersion();
+  if (toVersion !== undefined && !isKnownVersion(toVersion)) return { ok: false, error: `LoreRim ${toVersion} is not in the planner.` };
+  const current = toVersion ? { id: toVersion } : currentVersion();
   const { plan, dropped } = convertPlan(requireGameData(current.id), source.plan);
   const newId = newBuildId();
   await db()

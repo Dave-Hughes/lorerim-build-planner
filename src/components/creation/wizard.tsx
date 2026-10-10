@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { FocusHeader } from "@/components/ui/focus-header";
 import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel } from "@/components/ui/skill-icon";
-import { createBuild, saveBuildDetails, saveBuildPlan } from "@/lib/builds/actions";
+import { copyBuildForVersion, createBuild, saveBuildDetails, saveBuildPlan } from "@/lib/builds/actions";
 import { STEPS, STEP_NAMES, clearDraft, emptyDetails, emptyPlan, loadDraft, saveDraft, type Step } from "@/lib/builds/draft";
 import type { BuildDetails } from "@/lib/builds/validate";
 import { GameDataProvider, useGameData } from "@/components/game-data";
@@ -235,12 +235,13 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
 
         <main className={styles.main}>
           <GameDataProvider version={plan.gameVersion}>
-            {step === "race" && <RaceStep plan={plan} update={update} chooseVersion={mode === "create"} />}
+            <VersionBand plan={plan} update={update} mode={mode} buildId={buildId} />
+            {step === "race" && <RaceStep plan={plan} update={update} />}
             {step === "birthsign" && <BirthsignStep plan={plan} update={update} />}
             {step === "skills" && <SkillsStep plan={plan} update={update} />}
             {step === "traits" && <TraitsStep plan={plan} update={update} />}
             {step === "mode" && <ModeStep plan={plan} update={update} />}
-            {step === "name" && <NameStep details={details} updateDetails={updateDetails} mode={mode} />}
+            {step === "name" && <NameStep details={details} updateDetails={updateDetails} mode={mode} plan={plan} />}
           </GameDataProvider>
 
           <div className={styles.nav}>
@@ -305,65 +306,112 @@ function ChoiceCard({ className, onChoose, children }: { className: string; onCh
 }
 
 /**
- * The LoreRim version a new build is for. Switching re-checks the draft against the
- * other version and lists anything that would be removed before removing it.
+ * The LoreRim version the build is for, across the top of every step: hard to miss, never in
+ * the way. "Change" opens the list in place. A new build switches version after the same
+ * "won't carry over" check as before; an existing build (setup page) is copied for the other
+ * version instead, since other people may have its link.
  */
-function VersionPicker({ plan, update }: StepProps) {
+function VersionBand({ plan, update, mode, buildId }: StepProps & { mode: "create" | "edit"; buildId?: string }) {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
   const [pending, setPending] = useState<string | null>(null);
+  const [copying, startCopy] = useTransition();
+  const [error, setError] = useState<string | null>(null);
   const versions = shippedVersions();
+  const current = versions.find((v) => v.current);
+  const d = requireGameData(plan.gameVersion);
   const target = pending ? requireGameData(pending) : null;
   const dropped = target ? missingIn(target, plan) : [];
   const choose = (id: string) => {
     if (id === plan.gameVersion) return setPending(null);
-    const d = requireGameData(id);
-    if (missingIn(d, plan).length) return setPending(id);
+    const to = requireGameData(id);
+    if (missingIn(to, plan).length) return setPending(id);
     setPending(null);
-    update((p) => convertPlan(d, p).plan);
+    setOpen(false);
+    update((p) => convertPlan(to, p).plan);
   };
+  const copyFor = (id: string) =>
+    startCopy(async () => {
+      if (!buildId) return;
+      const r = await copyBuildForVersion(buildId, id);
+      if (!r.ok) return setError(r.error);
+      const q = new URLSearchParams({ from: plan.gameVersion });
+      if (r.value.dropped) q.set("dropped", r.value.dropped);
+      router.push(`/b/${r.value.id}/edit?${q}`);
+    });
   return (
-    <div className={styles.version}>
-      <label className="field">
-        <span className="label">LoreRim version</span>
-        <select className="select" value={pending ?? plan.gameVersion} onChange={(e) => choose(e.target.value)}>
-          {versions.map((v) => (
-            <option key={v.id} value={v.id}>
-              {v.id}
-            </option>
-          ))}
-        </select>
-      </label>
-      {target && (
-        <div className={styles.versionNotice} role="alert">
-          <p>
-            {droppedSentence(target.version.id, dropped)} {dropped.length === 1 ? "It'll be removed." : "They'll be removed."}
-          </p>
-          <span className={styles.versionActions}>
-            <button type="button" className="btn btn-sm" onClick={() => setPending(null)}>
-              Cancel
-            </button>
-            <button
-              type="button"
-              className="btn btn-primary btn-sm"
-              onClick={() => {
-                update((p) => convertPlan(target, p).plan);
-                setPending(null);
-              }}
-            >
-              Confirm
-            </button>
-          </span>
+    <section aria-label="LoreRim version" className={`frame ${styles.band}`}>
+      <div className={styles.bandRow}>
+        <span className={styles.bandText}>
+          Building for LoreRim <span className={styles.bandVersion}>{d.version.id}</span>
+          {d.version.current && <span className={`tag ${styles.bandTag}`}>Latest</span>}
+        </span>
+        <button type="button" className={`btn btn-sm ${styles.bandChange}`} aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+          Change
+        </button>
+      </div>
+      {open && (
+        <div className={styles.bandPanel}>
+          <ul className={styles.versionList} aria-label="LoreRim versions">
+            {versions.map((v) => {
+              const here = v.id === plan.gameVersion;
+              return (
+                <li key={v.id} className={styles.versionRow}>
+                  <span className={styles.versionName}>
+                    LoreRim {v.id}
+                    {v.id === current?.id && <span className={`tag tag-sm ${styles.bandTag}`}>Latest</span>}
+                  </span>
+                  <span className="muted">{v.released ?? "[Release date]"}</span>
+                  {here ? (
+                    <span className={styles.versionHere}>{mode === "create" ? "Chosen" : "This build"}</span>
+                  ) : mode === "create" ? (
+                    <button type="button" className="btn btn-sm" onClick={() => choose(v.id)}>
+                      Choose
+                    </button>
+                  ) : (
+                    <button type="button" className="btn btn-sm" onClick={() => copyFor(v.id)} disabled={copying}>
+                      {copying ? "Copying…" : `Copy for ${v.id}`}
+                    </button>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+          {error && <span className="field-error">{error}</span>}
+          {target && (
+            <div className={styles.versionNotice} role="alert">
+              <p>
+                {droppedSentence(target.version.id, dropped)} {dropped.length === 1 ? "It'll be removed." : "They'll be removed."}
+              </p>
+              <span className={styles.versionActions}>
+                <button type="button" className="btn btn-sm" onClick={() => setPending(null)}>
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-sm"
+                  onClick={() => {
+                    update((p) => convertPlan(target, p).plan);
+                    setPending(null);
+                    setOpen(false);
+                  }}
+                >
+                  Confirm
+                </button>
+              </span>
+            </div>
+          )}
         </div>
       )}
-    </div>
+    </section>
   );
 }
 
-function RaceStep({ plan, update, chooseVersion }: StepProps & { chooseVersion: boolean }) {
+function RaceStep({ plan, update }: StepProps) {
   const d = useGameData();
   return (
     <>
       <h1 className={`title ${styles.h1}`}>Choose a race</h1>
-      {chooseVersion && <VersionPicker plan={plan} update={update} />}
       <div className={styles.cards}>
         {d.races.map((r) => {
           const on = plan.race === r.name;
@@ -635,10 +683,27 @@ function ModeStep({ plan, update }: StepProps) {
   );
 }
 
-function NameStep({ details, updateDetails, mode }: { details: BuildDetails; updateDetails: (p: Partial<BuildDetails>) => void; mode: "create" | "edit" }) {
+function NameStep({ details, updateDetails, mode, plan }: { details: BuildDetails; updateDetails: (p: Partial<BuildDetails>) => void; mode: "create" | "edit"; plan: BuildPlan }) {
+  const d = useGameData();
+  const noSign = plan.traits.includes("Master of Destiny");
   return (
     <>
       <h1 className={`title ${styles.h1}`}>{mode === "create" ? "Name the build" : "Name and sharing"}</h1>
+      {/* What is being created. */}
+      <dl className={styles.summary}>
+        <div>
+          <dt className="label">Race</dt>
+          <dd>{plan.race ? <IconLabel icon={<RaceIcon name={plan.race} />}>{plan.race}</IconLabel> : "Not chosen"}</dd>
+        </div>
+        <div>
+          <dt className="label">Birthsign</dt>
+          <dd>{noSign ? "None (Master of Destiny)" : plan.birthsign ? <IconLabel icon={<SignIcon name={plan.birthsign} />}>The {plan.birthsign}</IconLabel> : "Not chosen"}</dd>
+        </div>
+        <div>
+          <dt className="label">LoreRim version</dt>
+          <dd>{d.version.label}</dd>
+        </div>
+      </dl>
       <div className={styles.fields}>
         <label className="field">
           <span className="label">Build name</span>

@@ -1,12 +1,32 @@
 import { expect, test } from "@playwright/test";
 import { signIn } from "./helpers";
-import { OLD_BUILD_ID, OLD_VERSION, RETIRED_BUILD_ID } from "./seed";
+import { OLD_BUILD_ID, OLD_VERSION, RETIRED_BUILD_ID, TEST_BUILD_ID } from "./seed";
 
 test.describe("LoreRim versions", () => {
-  test("creation starts on the current version and says so", async ({ page }) => {
+  test("creation says which version it is for on every step, and Change opens the list", async ({ page }) => {
     await page.goto("/new?step=race");
-    await expect(page.getByLabel("LoreRim version")).toHaveValue("5.0.4.8");
+    const band = page.getByRole("region", { name: "LoreRim version" });
+    await expect(band).toContainText("Building for LoreRim 5.0.4.8");
+    await expect(band).toContainText("Latest");
     await expect(page.getByRole("complementary", { name: "Setup steps" })).toContainText("LoreRim 5.0.4.8");
+    await band.getByRole("button", { name: "Change" }).click();
+    const list = band.getByRole("list", { name: "LoreRim versions" });
+    await expect(list.getByRole("listitem")).toHaveCount(1);
+    await expect(list.getByRole("listitem").first()).toContainText("LoreRim 5.0.4.8");
+    await expect(list.getByRole("listitem").first()).toContainText("Chosen");
+
+    await page.goto("/new?step=name");
+    await expect(page.getByRole("region", { name: "LoreRim version" })).toContainText("Building for LoreRim 5.0.4.8");
+    await expect(page.getByRole("main")).toContainText("LoreRim 5.0.4.8");
+  });
+
+  test("the setup page shows the band too, and offers a copy rather than a change", async ({ page, context }) => {
+    await signIn(context);
+    await page.goto(`/b/${TEST_BUILD_ID}/setup`);
+    const band = page.getByRole("region", { name: "LoreRim version" });
+    await expect(band).toContainText("Building for LoreRim 5.0.4.8");
+    await band.getByRole("button", { name: "Change" }).click();
+    await expect(band.getByRole("listitem").first()).toContainText("This build");
   });
 
   test("an old-version build says so and can be copied for the current version", async ({ page, context }) => {

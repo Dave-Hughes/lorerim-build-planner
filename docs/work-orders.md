@@ -302,9 +302,9 @@ Dave (10 Oct 2026): the version select on the Race step is very easy to overlook
 - Remove the old select from the Race step.
 
 Done when
-- [ ] The band shows on all six steps and the setup page, at 1440 and 390 (at 390 the band wraps to two lines: version on the first, `Change` on the second, full width).
-- [ ] e2e: the band reads `Building for LoreRim 5.0.4.8` on the Race step and the Name step; `Change` opens the list.
-- [ ] All checks in CLAUDE.md pass; screenshots of the Race step and Name step at 1440 and 390.
+- [x] The band shows on all six steps and the setup page, at 1440 and 390 (at 390 the band wraps to two lines: version on the first, `Change` on the second, full width).
+- [x] e2e: the band reads `Building for LoreRim 5.0.4.8` on the Race step and the Name step; `Change` opens the list.
+- [x] All checks in CLAUDE.md pass; screenshots of the Race step and Name step at 1440 and 390.
 
 ---
 
