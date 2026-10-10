@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { auth } from "@/auth";
 import { BuildView } from "@/components/build/build-view";
+import { RetiredBuild } from "@/components/build/retired-build";
+import { GameDataProvider } from "@/components/game-data";
 import { SignInButton } from "@/components/site-header";
 import { getBuild } from "@/lib/builds/queries";
 import { formatDate } from "@/lib/format/date";
+import { clientVersion, isKnownVersion } from "@/lib/rules/server";
 
 type Params = Promise<{ id: string }>;
 type Search = Promise<{ level?: string; copy?: string }>;
@@ -23,15 +26,19 @@ export default async function BuildPage({ params, searchParams }: { params: Para
   if (!build) notFound();
   const { createdAt: _createdAt, updatedAt, ...rest } = build;
   void _createdAt;
+  const isOwner = !!viewerId && viewerId === build.ownerId;
+  if (!isKnownVersion(build.gameVersion)) return <RetiredBuild build={{ ...rest, updatedAt: updatedAt.toISOString() }} isOwner={isOwner} />;
   return (
-    <BuildView
-      build={{ ...rest, updatedAt: updatedAt.toISOString() }}
-      updatedLabel={formatDate(updatedAt)}
-      isOwner={!!viewerId && viewerId === build.ownerId}
-      signedIn={!!viewerId}
-      initialLevel={Number(level) || 1}
-      signInToCopy={<SignInButton redirectTo={`/b/${id}?copy=1`} className="btn btn-primary" label="Copy to my builds" />}
-      autoCopy={copy === "1"}
-    />
+    <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
+      <BuildView
+        build={{ ...rest, updatedAt: updatedAt.toISOString() }}
+        updatedLabel={formatDate(updatedAt)}
+        isOwner={isOwner}
+        signedIn={!!viewerId}
+        initialLevel={Number(level) || 1}
+        signInToCopy={<SignInButton redirectTo={`/b/${id}?copy=1`} className="btn btn-primary" label="Copy to my builds" />}
+        autoCopy={copy === "1"}
+      />
+    </GameDataProvider>
   );
 }

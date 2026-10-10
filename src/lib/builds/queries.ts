@@ -1,5 +1,5 @@
 import "server-only";
-import { desc, eq, sql } from "drizzle-orm";
+import { and, desc, eq, sql } from "drizzle-orm";
 import { db, schema } from "@/db";
 import type { BuildPlan } from "@/lib/rules/types";
 import { SAMPLE_BUILD_ID, isValidBuildId } from "./ids";
@@ -65,9 +65,14 @@ export async function getBuild(id: string, viewerId: string | null): Promise<Bui
   };
 }
 
-export async function listPublicBuilds(limit = 60): Promise<BuildSummary[]> {
+/** Public builds, newest first; only those for `gameVersion` when one is given. */
+export async function listPublicBuilds(gameVersion?: string, limit = 60): Promise<BuildSummary[]> {
   const rows = await summaries()
-    .where(eq(schema.builds.visibility, "public"))
+    .where(
+      gameVersion
+        ? and(eq(schema.builds.visibility, "public"), eq(schema.builds.gameVersion, gameVersion))
+        : eq(schema.builds.visibility, "public"),
+    )
     .orderBy(desc(schema.builds.updatedAt))
     .limit(limit);
   return rows.map(toSummary);

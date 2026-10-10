@@ -63,7 +63,7 @@ To refresh dev or staging with production data, reset the branch from its parent
 - `src/components/build/` the shared build page and the pieces the editor reuses (constellation `Tree`, tree tabs, level ruler and row, cards).
 - `src/components/creation/` the six-step creation flow. A new build lives in the browser (`localStorage`) until it is saved, so sign-in can happen at the end.
 - `src/components/editor/` the level-up editor: pure plan edits in `plan-ops.ts`, autosave in `use-autosave.ts`.
-- `src/lib/rules/` rules engine. A saved build stores choices only (`BuildPlan`); `computeBuild` replays them level by level to get skills, points, Health/Magicka/Stamina, carry weight and problems. `derive.ts` turns that into what screens show (changes at a level, perk availability, ruler marks); `layout.ts` places perks as constellations.
+- `src/lib/rules/` rules engine. `versions.ts` lists the LoreRim versions and which is current; `gameData(version)` in `data.ts` loads one version's data and rules; `convert.ts` moves a plan to another version. A saved build stores choices only (`BuildPlan`); `computeBuild` replays them level by level to get skills, points, Health/Magicka/Stamina, carry weight and problems. `derive.ts` turns that into what screens show (changes at a level, perk availability, ruler marks); `layout.ts` places perks as constellations.
 - `src/lib/builds/` server actions, queries, validation (zod), ids, the example build.
 - `src/data/lorerim-5.0.4.8/` game data as JSON, versioned by LoreRim release. Built from the game files; see below.
 - `public/traits/` trait pictures from the game, converted to WebP.
@@ -86,6 +86,17 @@ To refresh dev or staging with production data, reset the branch from its parent
 Then, from the repo root: `python3 scripts/gamedata/build.py`. It decodes every perk's conditions (skill, level, prerequisites, "any of" groups, exclusions, items to carry, quests) and prints a note for anything it couldn't place. `skills.json`, `races.json`, `birthsigns.json`, `stones.json`, `starts.json` and `deities.json` are still kept by hand.
 
 The three Python scripts expect `esp.py` beside them and a LoreRim install at `~/mnt/LoreRim` (the Claude desktop app's mount of `C:\LoreRim`); change `ROOT` in `esp.py` for another path.
+
+### Adding a LoreRim version
+
+Every build records the LoreRim version it was made for and is only ever checked against that version's data. To add a release:
+
+1. On a PC with the new release installed, run the extractor into `gamedata/<version>/` (`scripts/gamedata/extract.py`, then `books.py` and `traitpics.py`), and copy over or update `overrides.json` and the hand-kept files.
+2. Build it into `src/data/lorerim-<version>/`: `python3 scripts/gamedata/build.py`, and read the notes it prints for anything it couldn't place.
+3. Register it in `src/lib/rules/versions.ts`: import its JSON files, add an entry (`id`, `label`, `released`) with its `Rules` (`src/lib/rules/constants.ts`; copy the previous version's and change what the release changed), and keep the list oldest first.
+4. Move `current: true` to it. Exactly one version is current: new builds default to it, Browse shows it first, and builds for older versions get a "Copy for <version>" that converts a copy and lists what didn't carry over.
+
+Nothing in the app reads a version's data except through `gameData(version)` (server and rules code) or `useGameData()` (client components, under a `GameDataProvider` set from the build's version). A version removed from `versions.ts` still opens: its builds show the plan as stored with "LoreRim <version> is no longer in the planner."
 
 ## Who can do what
 

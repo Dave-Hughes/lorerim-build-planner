@@ -90,5 +90,10 @@ export const builds = pgTable(
       .defaultNow()
       .$onUpdate(() => new Date()),
   },
-  (t) => [index("build_owner_idx").on(t.ownerId), index("build_visibility_updated_idx").on(t.visibility, t.updatedAt)],
+  (t) => [
+    index("build_owner_idx").on(t.ownerId),
+    index("build_visibility_updated_idx").on(t.visibility, t.updatedAt),
+    /** Browse filters by LoreRim version. */
+    index("build_game_version_idx").on(t.gameVersion),
+  ],
 );

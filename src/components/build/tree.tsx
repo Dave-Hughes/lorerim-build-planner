@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { PERK_BY_ID, perkText } from "@/lib/rules/data";
+import { useGameData } from "@/components/game-data";
+import { perkText } from "@/lib/rules/data";
 import { perkRequirementText, perkStatus, type PerkStatus } from "@/lib/rules/derive";
 import { treeLayout } from "@/lib/rules/layout";
 import type { LevelState } from "@/lib/rules/types";
@@ -17,6 +18,7 @@ export interface TreeProps {
 }
 
 export function Tree({ tree, states, level, selectedId, onSelect }: TreeProps) {
+  const d = useGameData();
   const scroller = useRef<HTMLDivElement>(null);
   const [room, setRoom] = useState(600);
   useEffect(() => {
@@ -26,12 +28,12 @@ export function Tree({ tree, states, level, selectedId, onSelect }: TreeProps) {
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
-  const layout = useMemo(() => treeLayout(tree, room), [tree, room]);
+  const layout = useMemo(() => treeLayout(d, tree, room), [d, tree, room]);
   const status = useMemo(() => {
     const m = new Map<string, PerkStatus>();
-    for (const n of layout.nodes) m.set(n.id, perkStatus(states, level, n.id));
+    for (const n of layout.nodes) m.set(n.id, perkStatus(d, states, level, n.id));
     return m;
-  }, [layout, states, level]);
+  }, [d, layout, states, level]);
   const pos = useMemo(() => new Map(layout.nodes.map((n) => [n.id, n])), [layout]);
   const isDestiny = tree === "Destiny";
 
@@ -53,7 +55,7 @@ export function Tree({ tree, states, level, selectedId, onSelect }: TreeProps) {
           </g>
         </svg>
         {layout.nodes.map((n) => {
-          const p = PERK_BY_ID.get(n.id)!;
+          const p = d.perkById.get(n.id)!;
           const st = status.get(n.id)!;
           const selected = n.id === selectedId;
           const ext = layout.external.filter((x) => x.forId === n.id);
@@ -75,7 +77,7 @@ export function Tree({ tree, states, level, selectedId, onSelect }: TreeProps) {
                 </span>
               ))}
               {(p.excludes ?? []).map((x) => {
-                const other = PERK_BY_ID.get(x);
+                const other = d.perkById.get(x);
                 return (
                   <span key={x} className={styles.req}>
                     Not with {other && other.tree !== p.tree ? `${other.tree}: ` : ""}

@@ -20,6 +20,11 @@ export const TEST_SESSION_TOKEN = "e2e-session-token-0001";
 export const TEST_BUILD_ID = "e2eqq2e2eq";
 export const OTHER_USER_ID = "e2e-user-0002";
 export const OTHER_BUILD_ID = "e2eqq2e2e2";
+/** Made for the test-only older version (src/lib/rules/__fixtures__/test-version.ts). */
+export const OLD_BUILD_ID = "e2eqq2e2e3";
+export const OLD_VERSION = "0.0.0-test";
+/** Made for a version the planner no longer has. */
+export const RETIRED_BUILD_ID = "e2eqq2e2e4";
 
 export function samplePlan(): BuildPlan {
   const { name: _n, description: _d, ...plan } = sample as unknown as BuildPlan & { name: string; description: string };
@@ -53,6 +58,24 @@ export async function seed() {
         visibility: "public",
         gameVersion: "5.0.4.8",
         plan: samplePlan(),
+      },
+      {
+        id: OLD_BUILD_ID,
+        ownerId: OTHER_USER_ID,
+        name: "Old Version Shield-Wall",
+        description: "A build made for an older LoreRim version.",
+        visibility: "public",
+        gameVersion: OLD_VERSION,
+        plan: { ...samplePlan(), gameVersion: OLD_VERSION, traits: ["Witcher"] },
+      },
+      {
+        id: RETIRED_BUILD_ID,
+        ownerId: OTHER_USER_ID,
+        name: "Retired Version Build",
+        description: "A build for a version the planner no longer has.",
+        visibility: "unlisted",
+        gameVersion: "4.0.0-retired",
+        plan: { ...samplePlan(), gameVersion: "4.0.0-retired" },
       },
       {
         id: OTHER_BUILD_ID,

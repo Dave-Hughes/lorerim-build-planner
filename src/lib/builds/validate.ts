@@ -1,53 +1,60 @@
 import { z } from "zod";
-import { BIRTHSIGNS, GAME_VERSION, PERK_BY_ID, RACES, SKILLS, STONE_BY_NAME, TRAITS } from "@/lib/rules/data";
+import { gameData, isKnownVersion, type GameData } from "@/lib/rules/server";
 import type { BuildPlan } from "@/lib/rules/types";
 
 export const MAX_LEVELS = 100;
 
-const skillName = z.string().refine((s) => SKILLS.includes(s), "Unknown skill");
-const perkId = z.string().refine((id) => PERK_BY_ID.has(id), "Unknown perk");
+/** The plan schema for one LoreRim version: every name and id must exist in that version. */
+function planSchema(d: GameData) {
+  const skillName = z.string().refine((s) => d.skills.includes(s), "Unknown skill");
+  const perkId = z.string().refine((id) => d.perkById.has(id), "Unknown perk");
 
-const levelSchema = z.object({
-  attribute: z.enum(["health", "magicka", "stamina"]).optional(),
-  skillPoints: z.record(skillName, z.number().int().min(0).max(5)),
-  perks: z.array(perkId).max(40),
-  destiny: z.array(perkId).max(7),
-  extras: z
-    .array(z.object({ kind: z.enum(["trainer", "book"]), skill: skillName }))
-    .max(200),
-  stone: z
-    .string()
-    .max(40)
-    .refine((s) => s === "" || s === "none" || STONE_BY_NAME.has(s), "Unknown stone")
-    .optional(),
-  note: z.string().max(2000),
+  const levelSchema = z.object({
+    attribute: z.enum(["health", "magicka", "stamina"]).optional(),
+    skillPoints: z.record(skillName, z.number().int().min(0).max(5)),
+    perks: z.array(perkId).max(40),
+    destiny: z.array(perkId).max(7),
+    extras: z
+      .array(z.object({ kind: z.enum(["trainer", "book"]), skill: skillName }))
+      .max(200),
+    stone: z
+      .string()
+      .max(40)
+      .refine((s) => s === "" || s === "none" || d.stoneByName.has(s), "Unknown stone")
+      .optional(),
+    note: z.string().max(2000),
+  });
+
+  return z.object({
+    schema: z.literal(1),
+    gameVersion: z.literal(d.version.id),
+    race: z.string().refine((r) => d.raceByName.has(r), "Unknown race"),
+    birthsign: z.string().refine((b) => b === "" || d.signByName.has(b), "Unknown birthsign"),
+    mode: z.enum(["Naaktiid", "Konahrik"]),
+    deity: z.string().max(80),
+    start: z.string().max(120),
+    majors: z.array(skillName).max(d.rules.majorCount),
+    minors: z.array(skillName).max(d.rules.minorCount),
+    traits: z.array(z.string().refine((t) => d.traitByName.has(t), "Unknown trait")).max(d.rules.maxTraits),
+    masterOfOneSkill: skillName.optional(),
+    levels: z.array(levelSchema).min(1).max(MAX_LEVELS),
+    gear: z
+      .array(
+        z.object({
+          slot: z.string().max(40),
+          name: z.string().max(120),
+          fromLevel: z.number().int().min(1).max(MAX_LEVELS),
+          note: z.string().max(300),
+        }),
+      )
+      .max(60),
+    notes: z.string().max(6000),
+  }) satisfies z.ZodType<BuildPlan>;
+}
+
+const versionOnly = z.object({
+  gameVersion: z.string().refine(isKnownVersion, "Unknown LoreRim version"),
 });
-
-export const buildPlanSchema = z.object({
-  schema: z.literal(1),
-  gameVersion: z.literal(GAME_VERSION),
-  race: z.string().refine((r) => RACES.some((x) => x.name === r), "Unknown race"),
-  birthsign: z.string().refine((b) => b === "" || BIRTHSIGNS.some((x) => x.name === b), "Unknown birthsign"),
-  mode: z.enum(["Naaktiid", "Konahrik"]),
-  deity: z.string().max(80),
-  start: z.string().max(120),
-  majors: z.array(skillName).max(3),
-  minors: z.array(skillName).max(6),
-  traits: z.array(z.string().refine((t) => TRAITS.some((x) => x.name === t), "Unknown trait")).max(2),
-  masterOfOneSkill: skillName.optional(),
-  levels: z.array(levelSchema).min(1).max(MAX_LEVELS),
-  gear: z
-    .array(
-      z.object({
-        slot: z.string().max(40),
-        name: z.string().max(120),
-        fromLevel: z.number().int().min(1).max(MAX_LEVELS),
-        note: z.string().max(300),
-      }),
-    )
-    .max(60),
-  notes: z.string().max(6000),
-}) satisfies z.ZodType<BuildPlan>;
 
 export const buildVisibilitySchema = z.enum(["public", "unlisted", "private"]);
 export type BuildVisibility = z.infer<typeof buildVisibilitySchema>;
@@ -67,6 +74,11 @@ export const buildDetailsSchema = z.object({
 });
 export type BuildDetails = z.infer<typeof buildDetailsSchema>;
 
+/**
+ * Checks a plan against its own LoreRim version: the version must be one the planner
+ * knows, and every name and id in the plan must exist in that version. Throws a ZodError.
+ */
 export function parseBuildPlan(input: unknown): BuildPlan {
-  return buildPlanSchema.parse(input) as BuildPlan;
+  const { gameVersion } = versionOnly.parse(input);
+  return planSchema(gameData(gameVersion)!).parse(input) as BuildPlan;
 }

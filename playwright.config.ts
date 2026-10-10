@@ -27,6 +27,7 @@ export default defineConfig({
     url: `http://localhost:${port}/b/sample`,
     reuseExistingServer: true,
     timeout: 60_000,
-    env: { AUTH_TRUST_HOST: "true" },
+    // PLANNER_TEST_VERSIONS registers the test-only older LoreRim version (src/lib/rules/__fixtures__/test-version.ts).
+    env: { AUTH_TRUST_HOST: "true", PLANNER_TEST_VERSIONS: "1" },
   },
 });

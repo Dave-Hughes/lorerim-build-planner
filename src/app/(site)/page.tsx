@@ -2,19 +2,28 @@ import Link from "next/link";
 import { BuildCard, BuildGrid } from "@/components/build/build-card";
 import { listPublicBuilds } from "@/lib/builds/queries";
 import { sampleBuild } from "@/lib/builds/sample";
-import { GAME_VERSION } from "@/lib/rules/data";
+import { VersionFilter } from "@/components/build/version-filter";
+import { currentVersion, knownVersions } from "@/lib/rules/server";
 import styles from "./home.module.css";
 
 export const dynamic = "force-dynamic";
 
-export default async function Home() {
-  const builds = await listPublicBuilds();
+type Search = Promise<{ version?: string }>;
+
+export default async function Home({ searchParams }: { searchParams: Search }) {
+  const { version } = await searchParams;
+  const versions = knownVersions().map((v) => v.id).reverse();
+  // Defaults to the current version; "all" shows every version.
+  const chosen = version === "all" || (version && versions.includes(version)) ? version : currentVersion().id;
+  const builds = await listPublicBuilds(chosen === "all" ? undefined : chosen);
   const sample = sampleBuild();
   return (
     <main className={`page ${styles.main}`}>
       <div className={styles.head}>
         <h1 className="title">Builds</h1>
-        <span className={styles.tag}>LoreRim {GAME_VERSION}</span>
+        <div className={styles.filter}>
+          <VersionFilter versions={versions} value={chosen} />
+        </div>
       </div>
       {builds.length === 0 ? (
         <div className={styles.empty}>

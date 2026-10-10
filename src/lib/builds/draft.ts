@@ -1,6 +1,6 @@
-import { GAME_VERSION } from "@/lib/rules/data";
 import { emptyLevel } from "@/lib/rules/derive";
 import type { BuildPlan } from "@/lib/rules/types";
+import { currentVersion } from "@/lib/rules/versions";
 import type { BuildDetails } from "./validate";
 
 export const STEPS = ["race", "birthsign", "skills", "traits", "mode", "name"] as const;
@@ -21,10 +21,11 @@ export interface Draft {
   step: Step;
 }
 
-export function emptyPlan(): BuildPlan {
+/** A blank plan, for the current LoreRim version unless another is given. */
+export function emptyPlan(gameVersion: string = currentVersion().id): BuildPlan {
   return {
     schema: 1,
-    gameVersion: GAME_VERSION,
+    gameVersion,
     race: "",
     birthsign: "",
     mode: "Naaktiid",

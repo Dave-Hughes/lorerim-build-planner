@@ -1,6 +1,7 @@
 "use client";
 
-import { PERK_BY_ID, perkText } from "@/lib/rules/data";
+import { useGameData } from "@/components/game-data";
+import { perkText } from "@/lib/rules/data";
 import { perkStatus } from "@/lib/rules/derive";
 import type { BuildPlan, LevelState } from "@/lib/rules/types";
 import styles from "./editor.module.css";
@@ -16,7 +17,8 @@ interface Props {
 }
 
 export function PerkPanel({ plan, states, level, selectedId, onTake, onRemove, onGoToLevel }: Props) {
-  const p = selectedId ? PERK_BY_ID.get(selectedId) : undefined;
+  const d = useGameData();
+  const p = selectedId ? d.perkById.get(selectedId) : undefined;
   if (!p) {
     return (
       <aside aria-label="Perk details" className={styles.panel}>
@@ -24,7 +26,7 @@ export function PerkPanel({ plan, states, level, selectedId, onTake, onRemove, o
       </aside>
     );
   }
-  const st = perkStatus(states, level, p.id);
+  const st = perkStatus(d, states, level, p.id);
   const lv = plan.levels[level - 1];
   const takenHere = (p.tree === "Destiny" ? lv.destiny : lv.perks).includes(p.id);
   const lastTaken = st.takenAt.length ? st.takenAt[st.takenAt.length - 1] : null;

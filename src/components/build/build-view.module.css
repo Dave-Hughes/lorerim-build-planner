@@ -88,6 +88,20 @@
   gap: 32px;
 }
 
+.versionNotice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+  padding: 10px 16px;
+  border: 1px solid var(--ember);
+  background: rgba(240, 145, 63, 0.07);
+}
+.versionNotice p {
+  margin: 0;
+  font-size: 15px;
+}
+
 .identity {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));

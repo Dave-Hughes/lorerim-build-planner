@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
-import { copyBuild } from "@/lib/builds/actions";
+import { copyBuild, copyBuildForVersion } from "@/lib/builds/actions";
 import type { BuildRecord } from "@/lib/builds/types";
-import { SKILL_GROUPS } from "@/lib/rules/data";
+import { useGameData } from "@/components/game-data";
+import { currentVersion, isOlderThanCurrent } from "@/lib/rules/versions";
 import { ATTRIBUTE_NAMES, levelChanges, levelMarks, perksByLevel } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
 import { Avatar } from "@/components/ui/avatar";
@@ -31,10 +32,11 @@ interface Props {
 }
 
 export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel, signInToCopy, autoCopy }: Props) {
+  const d = useGameData();
   const { plan } = build;
   const total = plan.levels.length;
-  const states = useMemo(() => computeBuild(plan), [plan]);
-  const marks = useMemo(() => levelMarks(plan, states), [plan, states]);
+  const states = useMemo(() => computeBuild(plan, d), [plan, d]);
+  const marks = useMemo(() => levelMarks(d, plan, states), [d, plan, states]);
   const [level, setLevelState] = useState(() => Math.min(total, Math.max(1, initialLevel)));
   const setLevel = useCallback(
     (n: number) => {
@@ -60,8 +62,8 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
   }, [level, setLevel]);
 
   const s = states[level - 1];
-  const changes = useMemo(() => levelChanges(plan, states, level), [plan, states, level]);
-  const perks = useMemo(() => perksByLevel(plan, states, level), [plan, states, level]);
+  const changes = useMemo(() => levelChanges(d, plan, states, level), [d, plan, states, level]);
+  const perks = useMemo(() => perksByLevel(d, plan, states, level), [d, plan, states, level]);
   const [treesOpen, setTreesOpen] = useState(false);
   const [tree, setTree] = useState<string>(() => plan.majors[0] ?? "One-Handed");
 
@@ -86,6 +88,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
       <Cover build={build} updatedLabel={updatedLabel} isOwner={isOwner} signedIn={signedIn} signInToCopy={signInToCopy} autoCopy={!!autoCopy} />
 
       <div className={`page ${styles.body}`}>
+        <OldVersionNotice buildId={build.id} signedIn={signedIn} />
         <section aria-label="Character" className={styles.identity}>
           {identity.map(([l, v]) => (
             <div key={l} className={styles.identityItem}>
@@ -156,7 +159,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
                 <InfoTip label="About the skill limit" text="No skill can go above 50 plus your character level. Skills can reach 100 from level 50." />
               </span>
             </div>
-            {SKILL_GROUPS.map((g) => (
+            {d.skillGroups.map((g) => (
               <div key={g.group} className={styles.group}>
                 <span className={`sub-label ${styles.groupName}`}>{g.group}</span>
                 {g.skills.map((sk) => {
@@ -303,6 +306,37 @@ function ChangesGrid({ changes, level }: { changes: ReturnType<typeof levelChang
         </div>
       ))}
     </div>
+  );
+}
+
+/** For a build made for an older LoreRim version: says so, and offers a converted copy. */
+function OldVersionNotice({ buildId, signedIn }: { buildId: string; signedIn: boolean }) {
+  const d = useGameData();
+  const router = useRouter();
+  const [pending, start] = useTransition();
+  const [error, setError] = useState<string | null>(null);
+  if (!isOlderThanCurrent(d.version.id)) return null;
+  const current = currentVersion();
+  const copy = () =>
+    start(async () => {
+      const r = await copyBuildForVersion(buildId);
+      if (!r.ok) return setError(r.error);
+      const q = new URLSearchParams({ from: d.version.id });
+      if (r.value.dropped) q.set("dropped", r.value.dropped);
+      router.push(`/b/${r.value.id}/edit?${q}`);
+    });
+  return (
+    <section aria-label="LoreRim version" className={styles.versionNotice}>
+      <p>
+        Made for {d.version.label}. The current version is {current.id}.
+      </p>
+      {signedIn && (
+        <button type="button" className="btn btn-sm" onClick={copy} disabled={pending}>
+          {pending ? "Copying…" : `Copy for ${current.id}`}
+        </button>
+      )}
+      {error && <span className="field-error">{error}</span>}
+    </section>
   );
 }
 

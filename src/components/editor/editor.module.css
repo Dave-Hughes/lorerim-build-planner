@@ -562,7 +562,14 @@
   flex: none;
   width: 16px;
 }
-.stoneRow .select {
+.stoneRow :global(.select) {
   flex: 1;
   min-width: 0;
+}
+
+.converted {
+  padding: 10px 16px;
+  border: 1px solid var(--ember);
+  background: rgba(240, 145, 63, 0.07);
+  font-size: 15px;
 }

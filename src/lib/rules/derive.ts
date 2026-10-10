@@ -1,9 +1,9 @@
 /**
  * Read-side helpers: everything a screen needs that is derived from a plan
- * and its computed states, but isn't a rule check itself.
+ * and its computed states, but isn't a rule check itself. Each takes the
+ * data of the build's own LoreRim version.
  */
-import { PERK_BY_ID, SKILLS, STONE_BY_NAME, rankCount, type Perk } from "./data";
-import { RULES, destinyPointsAt, skillPointCost } from "./constants";
+import { rankCount, type GameData, type Perk } from "./data";
 import type { Attribute, BuildPlan, LevelPlan, LevelState } from "./types";
 
 export const ATTRIBUTE_NAMES: Record<Attribute, string> = {
@@ -16,8 +16,8 @@ export function emptyLevel(): LevelPlan {
   return { skillPoints: {}, perks: [], destiny: [], extras: [], note: "" };
 }
 
-export function perkName(id: string): string {
-  return PERK_BY_ID.get(id)?.name ?? id;
+export function perkName(d: GameData, id: string): string {
+  return d.perkById.get(id)?.name ?? id;
 }
 
 /** "Block 25", "Level 10", "Book", or "" when there is no requirement. */
@@ -68,17 +68,17 @@ export interface LevelChanges {
 }
 
 /** What happened at one level, for the "Changes at level N" panel. */
-export function levelChanges(plan: BuildPlan, states: LevelState[], level: number): LevelChanges {
+export function levelChanges(d: GameData, plan: BuildPlan, states: LevelState[], level: number): LevelChanges {
   const lv = plan.levels[level - 1];
   const s = states[level - 1];
-  const skills: SkillChange[] = SKILLS.filter((k) => s.skills[k] !== s.skillsBefore[k]).map((k) => ({
+  const skills: SkillChange[] = d.skills.filter((k) => s.skills[k] !== s.skillsBefore[k]).map((k) => ({
     skill: k,
     from: s.skillsBefore[k],
     to: s.skills[k],
   }));
   const seen: Record<string, number> = {};
   const perks: PerkChange[] = lv.perks.flatMap((id) => {
-    const p = PERK_BY_ID.get(id);
+    const p = d.perkById.get(id);
     if (!p) return [];
     const ranks = rankCount(p);
     const before = (s.perksTaken[id] ?? []).filter((l) => l < level).length;
@@ -97,7 +97,7 @@ export function levelChanges(plan: BuildPlan, states: LevelState[], level: numbe
     ];
   });
   const destiny = lv.destiny.flatMap((id) => {
-    const p = PERK_BY_ID.get(id);
+    const p = d.perkById.get(id);
     return p ? [{ id, name: p.name, text: p.text }] : [];
   });
   const trainerCounts: Record<string, number> = {};
@@ -130,11 +130,11 @@ export interface LevelMark {
 }
 
 /** Per-level marks for the ruler and the level row. */
-export function levelMarks(plan: BuildPlan, states: LevelState[]): LevelMark[] {
+export function levelMarks(d: GameData, plan: BuildPlan, states: LevelState[]): LevelMark[] {
   return plan.levels.map((lv, i) => {
     const s = states[i];
     const skill100 = lv.perks.some((id) => {
-      const p = PERK_BY_ID.get(id);
+      const p = d.perkById.get(id);
       if (!p) return false;
       const rank = (s.perksTaken[id] ?? []).filter((l) => l <= i + 1).length - 1;
       return isSkill100Perk(p, Math.max(0, rank));
@@ -156,7 +156,7 @@ export interface PerkListGroup {
 }
 
 /** Perks taken by a level, grouped by tree in the order the trees were first used. */
-export function perksByLevel(plan: BuildPlan, states: LevelState[], level: number): PerkListGroup[] {
+export function perksByLevel(d: GameData, plan: BuildPlan, states: LevelState[], level: number): PerkListGroup[] {
   const s = states[level - 1];
   const groups = new Map<string, PerkListGroup>();
   const add = (tree: string, perk: PerkListGroup["perks"][number]) => {
@@ -167,7 +167,7 @@ export function perksByLevel(plan: BuildPlan, states: LevelState[], level: numbe
   for (let L = 1; L <= level; L++) {
     const seen: Record<string, number> = {};
     for (const id of plan.levels[L - 1].perks) {
-      const p = PERK_BY_ID.get(id);
+      const p = d.perkById.get(id);
       if (!p) continue;
       const ranks = rankCount(p);
       const before = (s.perksTaken[id] ?? []).filter((l) => l < L).length;
@@ -175,7 +175,7 @@ export function perksByLevel(plan: BuildPlan, states: LevelState[], level: numbe
       add(p.tree, { id, name: p.name, level: L, rank: ranks > 1 ? before + seen[id] : undefined, ranks, book: !!p.book });
     }
     for (const id of plan.levels[L - 1].destiny) {
-      const p = PERK_BY_ID.get(id);
+      const p = d.perkById.get(id);
       if (p) add("Destiny", { id, name: p.name, level: L, ranks: 1, book: false });
     }
   }
@@ -205,8 +205,8 @@ export interface PerkStatus {
 }
 
 /** Whether a perk can be taken at `level`, given the state at that level. */
-export function perkStatus(states: LevelState[], level: number, id: string): PerkStatus {
-  const p = PERK_BY_ID.get(id);
+export function perkStatus(d: GameData, states: LevelState[], level: number, id: string): PerkStatus {
+  const p = d.perkById.get(id);
   const s = states[level - 1];
   if (!p) return { state: "locked", ranksTaken: 0, ranks: 1, takenAt: [], granted: false, reasons: ["Unknown perk."] };
 
@@ -216,9 +216,9 @@ export function perkStatus(states: LevelState[], level: number, id: string): Per
     const reasons: string[] = [];
     const hasD = (x: string) => x in s.destinyTaken;
     if (p.requires.length && !(p.anyOf ? p.requires.some(hasD) : p.requires.every(hasD)))
-      reasons.push(`Needs ${p.requires.map(perkName).join(p.anyOf ? " or " : " and ")} first.`);
+      reasons.push(`Needs ${p.requires.map((x) => perkName(d, x)).join(p.anyOf ? " or " : " and ")} first.`);
     if (s.destinyPoints - s.destinyPointsSpent < 1) {
-      const next = RULES.destinyPointLevels.find((l) => l > level);
+      const next = d.rules.destinyPointLevels.find((l) => l > level);
       reasons.push(next ? `No Destiny point to spend. The next one comes at level ${next}.` : "No Destiny point to spend.");
     }
     return { state: reasons.length ? "locked" : "open", ranksTaken: 0, ranks: 1, takenAt: [], granted: false, reasons };
@@ -236,13 +236,13 @@ export function perkStatus(states: LevelState[], level: number, id: string): Per
   const levelNeeded = p.rankLevels?.[k] ?? 0;
   if (s.skills[p.tree] < skillNeeded) reasons.push(`Needs ${p.tree} ${skillNeeded}. It is ${s.skills[p.tree]} at level ${level}.`);
   if (level < levelNeeded) reasons.push(`Needs level ${levelNeeded}.`);
-  const has = (x: string) => (s.perksTaken[x]?.length ?? 0) > 0 || (!!s.grantedTree && PERK_BY_ID.get(x)?.tree === s.grantedTree);
+  const has = (x: string) => (s.perksTaken[x]?.length ?? 0) > 0 || (!!s.grantedTree && d.perkById.get(x)?.tree === s.grantedTree);
   if (p.requires.length && !(p.anyOf ? p.requires.some(has) : p.requires.every(has)))
     reasons.push(
-      `Needs ${p.requires.map((r) => (PERK_BY_ID.get(r)?.tree === p.tree ? perkName(r) : `${PERK_BY_ID.get(r)?.tree}: ${perkName(r)}`)).join(p.anyOf ? " or " : " and ")} first.`,
+      `Needs ${p.requires.map((r) => (d.perkById.get(r)?.tree === p.tree ? perkName(d, r) : `${d.perkById.get(r)?.tree}: ${perkName(d, r)}`)).join(p.anyOf ? " or " : " and ")} first.`,
     );
   const held = (p.excludes ?? []).filter(has);
-  if (held.length) reasons.push(`Can't be held with ${held.map((x) => `${PERK_BY_ID.get(x)?.tree}: ${perkName(x)}`).join(" or ")}.`);
+  if (held.length) reasons.push(`Can't be held with ${held.map((x) => `${d.perkById.get(x)?.tree}: ${perkName(d, x)}`).join(" or ")}.`);
   if (!p.book && s.perkPoints - s.perkPointsSpent < 1) reasons.push("No perk point to spend at this level.");
 
   let openedThisLevel: string | undefined;
@@ -254,7 +254,7 @@ export function perkStatus(states: LevelState[], level: number, id: string): Per
       const prevState = states[level - 2];
       const hadBefore = (x: string) => !!prevState && (prevState.perksTaken[x]?.length ?? 0) > 0;
       const newPre = p.requires.find((x) => has(x) && !hadBefore(x) && (s.perksTaken[x] ?? []).includes(level));
-      if (newPre) openedThisLevel = `Opened this level: ${perkName(newPre)} was taken.`;
+      if (newPre) openedThisLevel = `Opened this level: ${perkName(d, newPre)} was taken.`;
     }
   }
   return { state: reasons.length ? "locked" : "open", ranksTaken: k, ranks, takenAt, granted: false, reasons, openedThisLevel };
@@ -274,18 +274,18 @@ export interface SkillStepInfo {
   atFive: boolean;
 }
 
-export function skillStepInfo(plan: BuildPlan, states: LevelState[], level: number): SkillStepInfo[] {
+export function skillStepInfo(d: GameData, plan: BuildPlan, states: LevelState[], level: number): SkillStepInfo[] {
   const lv = plan.levels[level - 1];
   const s = states[level - 1];
   const left = s.skillPointsAvailable - s.skillPointsSpent;
-  return SKILLS.map((skill) => {
+  return d.skills.map((skill) => {
     const added = lv.skillPoints[skill] ?? 0;
     const from = s.skillsBefore[skill];
     const to = from + added;
     const granted = s.grantedTree === skill;
     const atMax = to >= s.maxSkill || granted;
-    const atFive = added >= RULES.maxRaisePerSkillPerLevel;
-    const nextCost = atMax || atFive ? null : skillPointCost(to);
+    const atFive = added >= d.rules.maxRaisePerSkillPerLevel;
+    const nextCost = atMax || atFive ? null : d.skillPointCost(to);
     return {
       skill,
       from,
@@ -301,13 +301,12 @@ export function skillStepInfo(plan: BuildPlan, states: LevelState[], level: numb
 }
 
 /** Text for the standing stone select: what the level's choice means. */
-export function stoneLabel(name: string): string {
-  const st = STONE_BY_NAME.get(name);
+export function stoneLabel(d: GameData, name: string): string {
+  const st = d.stoneByName.get(name);
   return st ? `The ${st.name} (${st.text})` : name;
 }
 
-export function nextDestinyLevel(level: number): number | null {
-  return RULES.destinyPointLevels.find((l) => l > level) ?? null;
+export function nextDestinyLevel(d: GameData, level: number): number | null {
+  return d.rules.destinyPointLevels.find((l) => l > level) ?? null;
 }
 
-export { destinyPointsAt };

@@ -561,3 +561,32 @@
     font-size: 36px;
   }
 }
+
+/* LoreRim version, above the race cards */
+.version {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 640px;
+}
+.version :global(.select) {
+  max-width: 240px;
+}
+.versionNotice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 18px;
+  padding: 12px 16px;
+  border: 1px solid var(--ember);
+  background: rgba(240, 145, 63, 0.07);
+}
+.versionNotice p {
+  margin: 0;
+  font-size: 14px;
+}
+.versionActions {
+  display: inline-flex;
+  gap: 8px;
+}

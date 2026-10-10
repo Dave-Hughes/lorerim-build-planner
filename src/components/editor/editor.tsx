@@ -7,8 +7,7 @@ import { InfoTip } from "@/components/ui/info-tip";
 import { LevelRow, LevelRuler, WINDOW } from "@/components/build/level-nav";
 import { Tree } from "@/components/build/tree";
 import { TreeTabs } from "@/components/build/tree-tabs";
-import { SKILLS, SKILL_GROUPS, STONES } from "@/lib/rules/data";
-import { RULES } from "@/lib/rules/constants";
+import { useGameData } from "@/components/game-data";
 import { ATTRIBUTE_NAMES, levelMarks, nextDestinyLevel, skillStepInfo } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
 import type { Attribute, BuildPlan, GearItem } from "@/lib/rules/types";
@@ -23,13 +22,16 @@ interface Props {
   name: string;
   initialPlan: BuildPlan;
   initialLevel: number;
+  /** Set when this build was just copied from an older LoreRim version. */
+  converted?: { from: string; dropped: string };
 }
 
 const ATTRS: Attribute[] = ["health", "magicka", "stamina"];
 
-export function Editor({ buildId, name, initialPlan, initialLevel }: Props) {
+export function Editor({ buildId, name, initialPlan, initialLevel, converted }: Props) {
+  const d = useGameData();
   const [plan, setPlan] = useState(initialPlan);
-  const states = useMemo(() => computeBuild(plan), [plan]);
+  const states = useMemo(() => computeBuild(plan, d), [plan, d]);
   const total = plan.levels.length;
   const [level, setLevelState] = useState(() => Math.min(total, Math.max(1, initialLevel || total)));
   const { status, error, retry } = useAutosave(buildId, plan, initialPlan);
@@ -52,16 +54,16 @@ export function Editor({ buildId, name, initialPlan, initialLevel }: Props) {
   const lv = plan.levels[level - 1];
   const [tree, setTree] = useState<string>(() => initialPlan.majors[0] ?? "One-Handed");
   const [selected, setSelected] = useState<string | null>(null);
-  const [extraSkill, setExtraSkill] = useState<string>(() => initialPlan.majors[0] ?? SKILLS[0]);
+  const [extraSkill, setExtraSkill] = useState<string>(() => initialPlan.majors[0] ?? d.skills[0]);
 
-  const steps = useMemo(() => skillStepInfo(plan, states, level), [plan, states, level]);
-  const marks = useMemo(() => levelMarks(plan, states), [plan, states]);
+  const steps = useMemo(() => skillStepInfo(d, plan, states, level), [d, plan, states, level]);
+  const marks = useMemo(() => levelMarks(d, plan, states), [d, plan, states]);
   const left = s.skillPointsAvailable - s.skillPointsSpent;
-  const carriedIn = s.skillPointsAvailable - RULES.skillPointsPerLevel;
+  const carriedIn = s.skillPointsAvailable - d.rules.skillPointsPerLevel;
   const perkLeft = s.perkPoints - s.perkPointsSpent;
   const destinyLeft = s.destinyPoints - s.destinyPointsSpent;
-  const nextDestiny = nextDestinyLevel(level);
-  const trainerLeft = RULES.trainerSessionsPerLevel * level - s.trainerSessionsUsed;
+  const nextDestiny = nextDestinyLevel(d, level);
+  const trainerLeft = d.rules.trainerSessionsPerLevel * level - s.trainerSessionsUsed;
   const prevStone = level > 1 ? states[level - 2].stone : "";
 
   const summary = (() => {
@@ -117,6 +119,11 @@ export function Editor({ buildId, name, initialPlan, initialLevel }: Props) {
       {error && status === "failed" && <div className={`page ${styles.errorBar}`}>{error}</div>}
 
       <div className={`page ${styles.layout}`}>
+        {converted && (
+          <section aria-label="Copied from an older version" className={styles.converted}>
+            Copied from LoreRim {converted.from} to {d.version.id}. {converted.dropped ? `${converted.dropped} Removed from the copy.` : "Everything carried over."}
+          </section>
+        )}
         <section aria-label="Level" className={styles.levelBar}>
           <div className={styles.levelNav}>
             <button type="button" className={`btn ${styles.levelArrow}`} aria-label="Previous level" disabled={level <= 1} onClick={() => setLevel(level - 1)}>
@@ -179,7 +186,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel }: Props) {
               <div className={styles.blockHead}>
                 <span className="label">{level === 1 ? "Starting skills" : "Skills"}</span>
                 <span className={styles.maxSkill}>
-                  {level === 1 ? `Max skill ${s.maxSkill} at level 1` : `Up to +${RULES.maxRaisePerSkillPerLevel} each, max skill ${s.maxSkill}`}
+                  {level === 1 ? `Max skill ${s.maxSkill} at level 1` : `Up to +${d.rules.maxRaisePerSkillPerLevel} each, max skill ${s.maxSkill}`}
                   <InfoTip
                     label="About the skill limit"
                     text={`No skill can go above 50 plus your character level. At level ${level} that's ${s.maxSkill}; skills can reach 100 from level 50.`}
@@ -191,10 +198,10 @@ export function Editor({ buildId, name, initialPlan, initialLevel }: Props) {
                   <div className={styles.pointsBar}>
                     <div style={{ width: `${Math.min(100, (s.skillPointsSpent / s.skillPointsAvailable) * 100)}%` }} className={left < 0 ? styles.pointsOver : ""} />
                   </div>
-                  <span className={styles.hint}>{carriedIn > 0 ? `Includes ${carriedIn} carried in from level ${level - 1}` : `${RULES.skillPointsPerLevel} this level-up`}</span>
+                  <span className={styles.hint}>{carriedIn > 0 ? `Includes ${carriedIn} carried in from level ${level - 1}` : `${d.rules.skillPointsPerLevel} this level-up`}</span>
                 </>
               )}
-              {SKILL_GROUPS.map((g) => (
+              {d.skillGroups.map((g) => (
                 <div key={g.group} className={styles.skillGroup}>
                   <span className={`sub-label ${styles.skillGroupName}`}>{g.group}</span>
                   {g.skills.map((sk) => {
@@ -287,7 +294,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel }: Props) {
             )}
             <div className={styles.extraForm}>
               <select className="select" aria-label="Skill" value={extraSkill} onChange={(e) => setExtraSkill(e.target.value)}>
-                {SKILLS.map((sk) => (
+                {d.skills.map((sk) => (
                   <option key={sk} value={sk}>
                     {sk}
                   </option>
@@ -309,7 +316,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel }: Props) {
               <select className="select" value={lv.stone ?? ""} onChange={(e) => setPlan(ops.setStone(plan, level, e.target.value))}>
                 <option value="">{prevStone ? `Keep The ${prevStone}` : level === 1 ? "No stone yet" : "No stone yet"}</option>
                 {prevStone && <option value="none">Leave The {prevStone}</option>}
-                {STONES.map((st) => (
+                {d.stones.map((st) => (
                   <option key={st.name} value={st.name}>
                     The {st.name} ({st.text})
                   </option>

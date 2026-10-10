@@ -8,8 +8,10 @@ import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel } from "@/comp
 import { createBuild, saveBuildDetails, saveBuildPlan } from "@/lib/builds/actions";
 import { STEPS, STEP_NAMES, clearDraft, emptyDetails, emptyPlan, loadDraft, saveDraft, type Step } from "@/lib/builds/draft";
 import type { BuildDetails } from "@/lib/builds/validate";
-import { BIRTHSIGNS, GAME_MODES, RACES, SKILLS, SKILL_GROUPS, STARTING_DEITIES, STARTS, TRAITS } from "@/lib/rules/data";
-import { RULES } from "@/lib/rules/constants";
+import { GameDataProvider, useGameData } from "@/components/game-data";
+import { convertPlan, droppedSentence, missingIn } from "@/lib/rules/convert";
+import { gameData, requireGameData } from "@/lib/rules/data";
+import { shippedVersions } from "@/lib/rules/versions";
 import { emptyLevel } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
 import type { BuildPlan } from "@/lib/rules/types";
@@ -24,8 +26,6 @@ interface WizardProps {
   /** Sign-in button for the last step, rendered by the server. */
   signIn: React.ReactNode;
 }
-
-const MATH_TRAITS = new Set(TRAITS.filter((t) => t.simulated).map((t) => t.name));
 
 function plainTraitText(text: string): string {
   return text.replace(/<([^<>]*)>/g, "$1");
@@ -46,7 +46,10 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
   // Rendered on the client only (see wizard-loader.tsx), so the draft in this
   // browser can seed the state directly.
   const [draft] = useState(() => (mode === "create" ? loadDraft() : null));
-  const [plan, setPlan] = useState<BuildPlan>(() => initialPlan ?? draft?.plan ?? emptyPlan());
+  // A draft for a version the planner no longer has starts over.
+  const [plan, setPlan] = useState<BuildPlan>(() => initialPlan ?? (draft && gameData(draft.plan.gameVersion) ? draft.plan : null) ?? emptyPlan());
+  // The wizard holds the plan, so it reads the plan's version directly and provides it to the steps.
+  const d = requireGameData(plan.gameVersion);
   const [details, setDetails] = useState<BuildDetails>(() => initialDetails ?? draft?.details ?? emptyDetails());
   const [step, setStepState] = useState<Step>(() => {
     const fromUrl = new URLSearchParams(window.location.search).get("step") as Step | null;
@@ -98,8 +101,8 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
 
   const startState = useMemo(() => {
     if (!plan.race) return null;
-    return computeBuild({ ...plan, levels: [emptyLevel()] })[0];
-  }, [plan]);
+    return computeBuild({ ...plan, levels: [emptyLevel()] }, d)[0];
+  }, [plan, d]);
 
   const filled: Record<Step, boolean> = {
     race: !!plan.race,
@@ -113,7 +116,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
     race: plan.race || "Not chosen",
     birthsign: masterOfDestiny ? "Removed by Master of Destiny" : plan.birthsign ? `The ${plan.birthsign}` : "Not chosen",
     skills: `${plan.majors.length} major${plan.majors.length === 1 ? "" : "s"}, ${plan.minors.length} minor${plan.minors.length === 1 ? "" : "s"}`,
-    traits: `${plan.traits.length} of ${RULES.maxTraits} chosen`,
+    traits: `${plan.traits.length} of ${d.rules.maxTraits} chosen`,
     mode: `${plan.mode}${plan.start ? `, ${plan.start}` : ""}`,
     name: details.name || "Not named",
   };
@@ -177,6 +180,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
                     <span className={styles.stepText}>
                       <span className={styles.stepName}>{STEP_NAMES[s]}</span>
                       <span className={styles.stepVal}>{summaries[s]}</span>
+                      {s === "race" && <span className={styles.stepVal}>{d.version.label}</span>}
                     </span>
                   </button>
                 </li>
@@ -207,7 +211,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
                 </div>
               </div>
               <div className={styles.topSkills}>
-                {SKILLS.map((s) => ({ s, v: startState.skills[s] }))
+                {d.skills.map((s) => ({ s, v: startState.skills[s] }))
                   .sort((a, b) => b.v - a.v)
                   .slice(0, 6)
                   .map(({ s, v }) => (
@@ -230,12 +234,14 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
         </aside>
 
         <main className={styles.main}>
-          {step === "race" && <RaceStep plan={plan} update={update} />}
-          {step === "birthsign" && <BirthsignStep plan={plan} update={update} />}
-          {step === "skills" && <SkillsStep plan={plan} update={update} />}
-          {step === "traits" && <TraitsStep plan={plan} update={update} />}
-          {step === "mode" && <ModeStep plan={plan} update={update} />}
-          {step === "name" && <NameStep details={details} updateDetails={updateDetails} mode={mode} />}
+          <GameDataProvider version={plan.gameVersion}>
+            {step === "race" && <RaceStep plan={plan} update={update} chooseVersion={mode === "create"} />}
+            {step === "birthsign" && <BirthsignStep plan={plan} update={update} />}
+            {step === "skills" && <SkillsStep plan={plan} update={update} />}
+            {step === "traits" && <TraitsStep plan={plan} update={update} />}
+            {step === "mode" && <ModeStep plan={plan} update={update} />}
+            {step === "name" && <NameStep details={details} updateDetails={updateDetails} mode={mode} />}
+          </GameDataProvider>
 
           <div className={styles.nav}>
             {stepIndex > 0 ? (
@@ -298,12 +304,68 @@ function ChoiceCard({ className, onChoose, children }: { className: string; onCh
   );
 }
 
-function RaceStep({ plan, update }: StepProps) {
+/**
+ * The LoreRim version a new build is for. Switching re-checks the draft against the
+ * other version and lists anything that would be removed before removing it.
+ */
+function VersionPicker({ plan, update }: StepProps) {
+  const [pending, setPending] = useState<string | null>(null);
+  const versions = shippedVersions();
+  const target = pending ? requireGameData(pending) : null;
+  const dropped = target ? missingIn(target, plan) : [];
+  const choose = (id: string) => {
+    if (id === plan.gameVersion) return setPending(null);
+    const d = requireGameData(id);
+    if (missingIn(d, plan).length) return setPending(id);
+    setPending(null);
+    update((p) => convertPlan(d, p).plan);
+  };
+  return (
+    <div className={styles.version}>
+      <label className="field">
+        <span className="label">LoreRim version</span>
+        <select className="select" value={pending ?? plan.gameVersion} onChange={(e) => choose(e.target.value)}>
+          {versions.map((v) => (
+            <option key={v.id} value={v.id}>
+              {v.id}
+            </option>
+          ))}
+        </select>
+      </label>
+      {target && (
+        <div className={styles.versionNotice} role="alert">
+          <p>
+            {droppedSentence(target.version.id, dropped)} {dropped.length === 1 ? "It'll be removed." : "They'll be removed."}
+          </p>
+          <span className={styles.versionActions}>
+            <button type="button" className="btn btn-sm" onClick={() => setPending(null)}>
+              Cancel
+            </button>
+            <button
+              type="button"
+              className="btn btn-primary btn-sm"
+              onClick={() => {
+                update((p) => convertPlan(target, p).plan);
+                setPending(null);
+              }}
+            >
+              Confirm
+            </button>
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function RaceStep({ plan, update, chooseVersion }: StepProps & { chooseVersion: boolean }) {
+  const d = useGameData();
   return (
     <>
       <h1 className={`title ${styles.h1}`}>Choose a race</h1>
+      {chooseVersion && <VersionPicker plan={plan} update={update} />}
       <div className={styles.cards}>
-        {RACES.map((r) => {
+        {d.races.map((r) => {
           const on = plan.race === r.name;
           const choose = () => update((p) => ({ ...p, race: r.name }));
           return (
@@ -347,13 +409,14 @@ function RaceStep({ plan, update }: StepProps) {
 }
 
 function BirthsignStep({ plan, update }: StepProps) {
+  const d = useGameData();
   const removed = plan.traits.includes("Master of Destiny");
   return (
     <>
       <h1 className={`title ${styles.h1}`}>Choose a birthsign</h1>
       {removed && <p className={styles.notice}>Master of Destiny removes the birthsign. Remove that trait to choose one.</p>}
       <div className={styles.cards}>
-        {BIRTHSIGNS.map((b) => {
+        {d.birthsigns.map((b) => {
           const on = plan.birthsign === b.name;
           const choose = () => update((p) => ({ ...p, birthsign: on ? "" : b.name }));
           return (
@@ -381,6 +444,7 @@ function BirthsignStep({ plan, update }: StepProps) {
 }
 
 function SkillsStep({ plan, update }: StepProps) {
+  const d = useGameData();
   const set = (skill: string, kind: "none" | "major" | "minor") =>
     update((p) => {
       const majors = p.majors.filter((s) => s !== skill);
@@ -389,17 +453,17 @@ function SkillsStep({ plan, update }: StepProps) {
       if (kind === "minor") minors.push(skill);
       return { ...p, majors, minors };
     });
-  const majorsFull = plan.majors.length >= RULES.majorCount;
-  const minorsFull = plan.minors.length >= RULES.minorCount;
+  const majorsFull = plan.majors.length >= d.rules.majorCount;
+  const minorsFull = plan.minors.length >= d.rules.minorCount;
   return (
     <>
       <h1 className={`title ${styles.h1}`}>Choose major and minor skills</h1>
       <div className={styles.tiles} aria-live="polite">
-        <CountTile chosen={plan.majors.length} of={RULES.majorCount} label={`Majors +${RULES.majorBonus}`} />
-        <CountTile chosen={plan.minors.length} of={RULES.minorCount} label={`Minors +${RULES.minorBonus}`} />
+        <CountTile chosen={plan.majors.length} of={d.rules.majorCount} label={`Majors +${d.rules.majorBonus}`} />
+        <CountTile chosen={plan.minors.length} of={d.rules.minorCount} label={`Minors +${d.rules.minorBonus}`} />
       </div>
       <div className={styles.skillGroups}>
-        {SKILL_GROUPS.map((g) => (
+        {d.skillGroups.map((g) => (
           <div key={g.group} className={styles.skillGroup}>
             <span className={`sub-label ${styles.skillGroupName}`}>{g.group}</span>
             {g.skills.map((s) => {
@@ -448,11 +512,13 @@ function CountTile({ chosen, of, label }: { chosen: number; of: number; label: s
 }
 
 function TraitsStep({ plan, update }: StepProps) {
+  const d = useGameData();
+  const math = new Set(d.traits.filter((t) => t.simulated).map((t) => t.name));
   const [q, setQ] = useState("");
   const chosen = new Set(plan.traits);
-  const full = plan.traits.length >= RULES.maxTraits;
+  const full = plan.traits.length >= d.rules.maxTraits;
   const query = q.trim().toLowerCase();
-  const list = TRAITS.filter((t) => chosen.has(t.name) || !query || t.name.toLowerCase().includes(query) || plainTraitText(t.text).toLowerCase().includes(query)).sort(
+  const list = d.traits.filter((t) => chosen.has(t.name) || !query || t.name.toLowerCase().includes(query) || plainTraitText(t.text).toLowerCase().includes(query)).sort(
     (a, b) => Number(chosen.has(b.name)) - Number(chosen.has(a.name)) || a.name.localeCompare(b.name),
   );
   const toggle = (name: string) =>
@@ -468,11 +534,11 @@ function TraitsStep({ plan, update }: StepProps) {
       <h1 className={`title ${styles.h1}`}>Choose up to two traits</h1>
       <section aria-label="Find a trait" className={styles.search}>
         <label className="field">
-          <span className="label">Search {TRAITS.length} traits</span>
+          <span className="label">Search {d.traits.length} traits</span>
           <input type="search" className="input" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Try “potion”, “shield” or “dragon soul”" />
         </label>
         <span className={styles.count}>
-          {plan.traits.length} of {RULES.maxTraits} chosen
+          {plan.traits.length} of {d.rules.maxTraits} chosen
         </span>
       </section>
       <section aria-label="Traits" className={styles.cards}>
@@ -490,7 +556,7 @@ function TraitsStep({ plan, update }: StepProps) {
               )}
               <div className={`${styles.cardHead} ${styles.over}`}>
                 <h2 className={styles.cardName}>{t.name}</h2>
-                {on ? <Chosen /> : MATH_TRAITS.has(t.name) ? <span className={`label ${styles.math}`}>Changes your numbers</span> : null}
+                {on ? <Chosen /> : math.has(t.name) ? <span className={`label ${styles.math}`}>Changes your numbers</span> : null}
               </div>
               <p className={`${styles.cardText} ${styles.over}`}>
                 <TraitText text={t.text} />
@@ -500,7 +566,7 @@ function TraitsStep({ plan, update }: StepProps) {
                   <span className="field-hint">Which skill?</span>
                   <select className="select" value={plan.masterOfOneSkill ?? ""} onChange={(e) => update((p) => ({ ...p, masterOfOneSkill: e.target.value || undefined }))}>
                     <option value="">Choose a skill</option>
-                    {SKILLS.map((s) => (
+                    {d.skills.map((s) => (
                       <option key={s} value={s}>
                         {s}
                       </option>
@@ -521,12 +587,13 @@ function TraitsStep({ plan, update }: StepProps) {
 }
 
 function ModeStep({ plan, update }: StepProps) {
-  const deities = STARTING_DEITIES[plan.race] ?? [];
+  const d = useGameData();
+  const deities = d.startingDeities[plan.race] ?? [];
   return (
     <>
       <h1 className={`title ${styles.h1}`}>Game mode and start</h1>
       <section aria-label="Game mode" className={styles.cards}>
-        {GAME_MODES.map((m) => {
+        {d.gameModes.map((m) => {
           const on = plan.mode === m.name;
           const choose = () => update((p) => ({ ...p, mode: m.name }));
           return (
@@ -548,7 +615,7 @@ function ModeStep({ plan, update }: StepProps) {
           <span className="label">Start</span>
           <input className="input" list="starts" value={plan.start} maxLength={120} onChange={(e) => update((p) => ({ ...p, start: e.target.value }))} placeholder="Where the build begins" />
           <datalist id="starts">
-            {STARTS.map((s) => (
+            {d.starts.map((s) => (
               <option key={s} value={s} />
             ))}
           </datalist>

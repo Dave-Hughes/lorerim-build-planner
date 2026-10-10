@@ -2,7 +2,7 @@
  * Constellation layouts for perk trees. Skill trees grow upward from the
  * first perk; the Destiny tree radiates out from its centre.
  */
-import { PERKS_BY_TREE, type Perk } from "./data";
+import type { GameData, Perk } from "./data";
 
 export interface TreeNode {
   id: string;
@@ -161,11 +161,11 @@ const cache = new Map<string, TreeLayout>();
  * Layout for a tree. `width` is the room available; a tree spreads into it
  * and grows wider (scrolling) only when its widest row needs more.
  */
-export function treeLayout(tree: string, width = 600): TreeLayout {
+export function treeLayout(d: GameData, tree: string, width = 600): TreeLayout {
   const key = `${tree}:${width}`;
   const hit = cache.get(key);
   if (hit) return hit;
-  const perks = PERKS_BY_TREE.get(tree) ?? [];
+  const perks = d.perksByTree.get(tree) ?? [];
   const out = tree === "Destiny" ? radial(perks, width) : layered(perks, Math.max(320, width));
   cache.set(key, out);
   return out;

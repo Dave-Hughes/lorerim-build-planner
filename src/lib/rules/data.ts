@@ -1,13 +1,11 @@
-import skillGroups from "@/data/lorerim-5.0.4.8/skills.json";
-import races from "@/data/lorerim-5.0.4.8/races.json";
-import birthsigns from "@/data/lorerim-5.0.4.8/birthsigns.json";
-import stones from "@/data/lorerim-5.0.4.8/stones.json";
-import traits from "@/data/lorerim-5.0.4.8/traits.json";
-import perks from "@/data/lorerim-5.0.4.8/perks.json";
-import starts from "@/data/lorerim-5.0.4.8/starts.json";
-import deities from "@/data/lorerim-5.0.4.8/deities.json";
-
-export const GAME_VERSION = "5.0.4.8";
+/**
+ * Game data for one LoreRim version. Nothing here is module-level: every
+ * screen and rule check asks `gameData(plan.gameVersion)` (or, in client
+ * components, `useGameData()`), so a build is only ever read against the
+ * version it was made for.
+ */
+import { destinyPointsAt, maxSkillAt, skillPointCost, type Rules } from "./constants";
+import { versionInfo, versionSource, type GameVersion } from "./versions";
 
 export interface SkillGroup {
   group: string;
@@ -82,26 +80,104 @@ export interface Perk {
   y?: number;
 }
 
-export const SKILL_GROUPS = skillGroups as SkillGroup[];
-export const SKILLS: string[] = SKILL_GROUPS.flatMap((g) => g.skills);
-export const RACES = races as Race[];
-export const BIRTHSIGNS = birthsigns as Birthsign[];
-export const STONES = stones as Stone[];
-export const TRAITS = traits as Trait[];
-export const PERKS = perks as Perk[];
+export interface GameMode {
+  name: "Naaktiid" | "Konahrik";
+  text: string;
+}
 
-export const RACE_BY_NAME = new Map(RACES.map((r) => [r.name, r]));
-export const SIGN_BY_NAME = new Map(BIRTHSIGNS.map((s) => [s.name, s]));
-export const STONE_BY_NAME = new Map(STONES.map((s) => [s.name, s]));
-export const TRAIT_BY_NAME = new Map(TRAITS.map((t) => [t.name, t]));
-export const PERK_BY_ID = new Map(PERKS.map((p) => [p.id, p]));
+/** A version's raw data, as built from the game files plus its rules. */
+export interface VersionSource {
+  rules: Rules;
+  skillGroups: SkillGroup[];
+  races: Race[];
+  birthsigns: Birthsign[];
+  stones: Stone[];
+  traits: Trait[];
+  perks: Perk[];
+  /** Starts the Helgen statue offers in this version. */
+  starts: string[];
+  /** Gods offered free at the start, by race. Any god can still be joined at a shrine. */
+  startingDeities: Record<string, string[]>;
+  gameModes: GameMode[];
+}
 
-export const PERKS_BY_TREE = PERKS.reduce<Map<string, Perk[]>>((m, p) => {
-  const list = m.get(p.tree) ?? [];
-  list.push(p);
-  m.set(p.tree, list);
-  return m;
-}, new Map());
+/** Everything the planner knows about one LoreRim version. */
+export interface GameData {
+  version: GameVersion;
+  rules: Rules;
+  skillGroups: SkillGroup[];
+  skills: string[];
+  races: Race[];
+  birthsigns: Birthsign[];
+  stones: Stone[];
+  traits: Trait[];
+  perks: Perk[];
+  starts: string[];
+  startingDeities: Record<string, string[]>;
+  gameModes: GameMode[];
+  raceByName: Map<string, Race>;
+  signByName: Map<string, Birthsign>;
+  stoneByName: Map<string, Stone>;
+  traitByName: Map<string, Trait>;
+  perkById: Map<string, Perk>;
+  perksByTree: Map<string, Perk[]>;
+  skillPointCost(current: number): number;
+  maxSkillAt(level: number): number;
+  destinyPointsAt(level: number): number;
+}
+
+function build(version: GameVersion, src: VersionSource): GameData {
+  const perksByTree = src.perks.reduce<Map<string, Perk[]>>((m, p) => {
+    const list = m.get(p.tree) ?? [];
+    list.push(p);
+    m.set(p.tree, list);
+    return m;
+  }, new Map());
+  return {
+    version,
+    rules: src.rules,
+    skillGroups: src.skillGroups,
+    skills: src.skillGroups.flatMap((g) => g.skills),
+    races: src.races,
+    birthsigns: src.birthsigns,
+    stones: src.stones,
+    traits: src.traits,
+    perks: src.perks,
+    starts: src.starts,
+    startingDeities: src.startingDeities,
+    gameModes: src.gameModes,
+    raceByName: new Map(src.races.map((r) => [r.name, r])),
+    signByName: new Map(src.birthsigns.map((s) => [s.name, s])),
+    stoneByName: new Map(src.stones.map((s) => [s.name, s])),
+    traitByName: new Map(src.traits.map((t) => [t.name, t])),
+    perkById: new Map(src.perks.map((p) => [p.id, p])),
+    perksByTree,
+    skillPointCost: (current) => skillPointCost(src.rules, current),
+    maxSkillAt: (level) => maxSkillAt(src.rules, level),
+    destinyPointsAt: (level) => destinyPointsAt(src.rules, level),
+  };
+}
+
+const loaded = new Map<string, GameData>();
+
+/** A version's data, loaded once. Undefined when the planner doesn't know the version. */
+export function gameData(version: string): GameData | undefined {
+  const hit = loaded.get(version);
+  if (hit) return hit;
+  const meta = versionInfo(version);
+  const src = versionSource(version);
+  if (!meta || !src) return undefined;
+  const d = build(meta, src);
+  loaded.set(version, d);
+  return d;
+}
+
+/** A version's data; throws for a version the planner doesn't know. */
+export function requireGameData(version: string): GameData {
+  const d = gameData(version);
+  if (!d) throw new Error(`LoreRim ${version} is no longer in the planner.`);
+  return d;
+}
 
 export function rankCount(p: Perk): number {
   return p.ranks;
@@ -112,13 +188,3 @@ export function perkText(p: Perk, rank = 0): { text: string; effect: string } {
   const i = Math.max(0, Math.min(rank, p.ranks - 1));
   return { text: p.rankTexts?.[i] ?? p.text ?? "", effect: p.rankEffects?.[i] ?? p.effect ?? "" };
 }
-
-/** Starts the Helgen statue offers in this LoreRim version. */
-export const STARTS = starts as string[];
-/** Gods offered free at the start, by race. Any god can still be joined at a shrine. */
-export const STARTING_DEITIES = deities as Record<string, string[]>;
-
-export const GAME_MODES: { name: "Naaktiid" | "Konahrik"; text: string }[] = [
-  { name: "Naaktiid", text: "New to LoreRim: +3 perk points, Requiem Lite (+100 carry weight, gentler combat), free respec." },
-  { name: "Konahrik", text: "Classic LoreRim: no extra points, respec once for 100,000 gold." },
-];

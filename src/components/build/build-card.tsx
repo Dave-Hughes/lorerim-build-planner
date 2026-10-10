@@ -30,7 +30,10 @@ export function BuildCard({ build, mine }: { build: BuildSummary; mine?: boolean
         </div>
         {mine && (
           <div className={styles.mine}>
-            <span className="tag tag-sm">{build.visibility === "public" ? "Listed" : build.visibility === "unlisted" ? "Link only" : "Only you"}</span>
+            <span className={styles.tags}>
+              <span className="tag tag-sm">{build.visibility === "public" ? "Listed" : build.visibility === "unlisted" ? "Link only" : "Only you"}</span>
+              <span className="tag tag-sm">LoreRim {build.gameVersion}</span>
+            </span>
             <span className={styles.mineActions}>
               <DeleteBuildButton id={build.id} name={build.name} />
               <Link href={`/b/${build.id}/edit`} className="btn btn-sm">

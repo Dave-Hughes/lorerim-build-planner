@@ -152,12 +152,12 @@ Decided (10 Oct 2026): ship with 5.0.4.8 only; the picker exists from day one an
 - `builds.game_version` already exists. Add an index on it (migration through `npm run db:generate`). No data change: every existing build is 5.0.4.8.
 
 Done when
-- [ ] No module outside `src/lib/rules/` imports version data directly; everything goes through `gameData(version)` or the provider. (`grep` for the old constant names returns nothing.)
-- [ ] Unit tests: `computeBuild` on the sample build gives the same results as before; a plan with an unknown version is rejected by `validate.ts`; a plan whose version is in `versions.ts` but with an item missing from that version reports it.
-- [ ] Add a throwaway test-only second version (a copy of 5.0.4.8 with one trait removed, under `src/lib/rules/__fixtures__/`, never shipped) and use it to test the switch-version notice and the "Copy for" conversion.
-- [ ] e2e: creation shows the version select with 5.0.4.8 chosen; an old-version build shows the notice (use the fixture version).
-- [ ] README "Game data" section explains how to add a version (extract, build, register in `versions.ts`, mark current).
-- [ ] All checks in CLAUDE.md pass; screenshots of the race step and an old-version build page at 1440 and 390.
+- [x] No module outside `src/lib/rules/` imports version data directly; everything goes through `gameData(version)` or the provider. (`grep` for the old constant names returns nothing.)
+- [x] Unit tests: `computeBuild` on the sample build gives the same results as before; a plan with an unknown version is rejected by `validate.ts`; a plan whose version is in `versions.ts` but with an item missing from that version reports it.
+- [x] Add a throwaway test-only second version (a copy of 5.0.4.8 with one trait removed, under `src/lib/rules/__fixtures__/`, never shipped) and use it to test the switch-version notice and the "Copy for" conversion.
+- [x] e2e: creation shows the version select with 5.0.4.8 chosen; an old-version build shows the notice (use the fixture version).
+- [x] README "Game data" section explains how to add a version (extract, build, register in `versions.ts`, mark current).
+- [x] All checks in CLAUDE.md pass; screenshots of the race step and an old-version build page at 1440 and 390.
 
 ---
 

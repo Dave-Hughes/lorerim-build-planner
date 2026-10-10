@@ -1,0 +1,1 @@
+CREATE INDEX "build_game_version_idx" ON "build" USING btree ("game_version");

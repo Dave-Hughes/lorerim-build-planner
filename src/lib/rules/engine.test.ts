@@ -2,11 +2,11 @@ import { describe, expect, it } from "vitest";
 import sample from "./__fixtures__/sample-build.json";
 import expected from "./__fixtures__/sample-build.expected.json";
 import { computeBuild } from "./engine";
-import { destinyPointsAt, maxSkillAt, skillPointCost } from "./constants";
-import { PERKS, PERK_BY_ID, SKILLS } from "./data";
+import { requireGameData } from "./data";
 import type { BuildPlan, LevelPlan } from "./types";
 
 const base = sample as unknown as BuildPlan;
+const d = requireGameData("5.0.4.8");
 const blank = (over: Partial<LevelPlan> = {}): LevelPlan => ({
   skillPoints: {},
   perks: [],
@@ -20,25 +20,25 @@ const codes = (b: BuildPlan, level: number) => computeBuild(b)[level - 1].issues
 
 describe("constants", () => {
   it("skill point cost by band", () => {
-    expect([10, 24, 25, 49, 50, 74, 75, 99].map(skillPointCost)).toEqual([1, 1, 2, 2, 3, 3, 6, 6]);
+    expect([10, 24, 25, 49, 50, 74, 75, 99].map((v) => d.skillPointCost(v))).toEqual([1, 1, 2, 2, 3, 3, 6, 6]);
   });
   it("max skill is 50 + level, up to 100", () => {
-    expect([1, 6, 50, 60].map(maxSkillAt)).toEqual([51, 56, 100, 100]);
+    expect([1, 6, 50, 60].map((v) => d.maxSkillAt(v))).toEqual([51, 56, 100, 100]);
   });
   it("Destiny points: 1 at start, then every 5 levels to 30", () => {
-    expect([1, 4, 5, 10, 30, 60].map(destinyPointsAt)).toEqual([1, 1, 2, 3, 7, 7]);
+    expect([1, 4, 5, 10, 30, 60].map((v) => d.destinyPointsAt(v))).toEqual([1, 1, 2, 3, 7, 7]);
   });
 });
 
 describe("game data", () => {
   it("every perk prerequisite exists", () => {
-    for (const p of PERKS) for (const r of p.requires) expect(PERK_BY_ID.has(r), `${p.id} -> ${r}`).toBe(true);
+    for (const p of d.perks) for (const r of p.requires) expect(d.perkById.has(r), `${p.id} -> ${r}`).toBe(true);
   });
   it("every perk tree is a skill or Destiny", () => {
-    for (const p of PERKS) expect(SKILLS.includes(p.tree) || p.tree === "Destiny", p.id).toBe(true);
+    for (const p of d.perks) expect(d.skills.includes(p.tree) || p.tree === "Destiny", p.id).toBe(true);
   });
   it("perks that take either prerequisite match the game's records", () => {
-    const either = PERKS.filter((p) => p.anyOf && p.tree !== "Destiny").map((p) => p.name).sort();
+    const either = d.perks.filter((p) => p.anyOf && p.tree !== "Destiny").map((p) => p.name).sort();
     expect(either).toEqual([
       "Advanced Blacksmithing",
       "Daedric Smithing",
@@ -55,22 +55,22 @@ describe("game data", () => {
     ]);
   });
   it("every perk has the game's words", () => {
-    for (const p of PERKS) {
+    for (const p of d.perks) {
       if (p.ranks > 1) expect(p.rankTexts?.length, p.id).toBe(p.ranks);
       else expect(p.text, p.id).toBeTruthy();
     }
   });
   it("exclusions go both ways", () => {
-    for (const p of PERKS) for (const x of p.excludes ?? []) expect(PERK_BY_ID.get(x)?.excludes, `${p.id} <-> ${x}`).toContain(p.id);
+    for (const p of d.perks) for (const x of p.excludes ?? []) expect(d.perkById.get(x)?.excludes, `${p.id} <-> ${x}`).toContain(p.id);
   });
   it("the smithing book perks name their book", () => {
-    expect(PERK_BY_ID.get("Smithing:Orcish Smithing")?.book).toBe("The Almanac of Orcish Blacksmithing");
-    expect(PERK_BY_ID.get("Smithing:Legendary Blacksmithing")?.book).toBe("Saint Jiub's Opus");
-    expect(PERKS.filter((p) => p.book).length).toBe(13);
+    expect(d.perkById.get("Smithing:Orcish Smithing")?.book).toBe("The Almanac of Orcish Blacksmithing");
+    expect(d.perkById.get("Smithing:Legendary Blacksmithing")?.book).toBe("Saint Jiub's Opus");
+    expect(d.perks.filter((p) => p.book).length).toBe(13);
   });
   it("ingredient perks list what to carry", () => {
-    expect(PERK_BY_ID.get("Alchemy:Regeneration")?.carryItems).toBe("Troll Fat; Slaughterfish Egg; Spriggan Sap");
-    expect(PERK_BY_ID.get("Finesse:Death's Emperor")?.carryItems).toBeUndefined();
+    expect(d.perkById.get("Alchemy:Regeneration")?.carryItems).toBe("Troll Fat; Slaughterfish Egg; Spriggan Sap");
+    expect(d.perkById.get("Finesse:Death's Emperor")?.carryItems).toBeUndefined();
   });
 });
 

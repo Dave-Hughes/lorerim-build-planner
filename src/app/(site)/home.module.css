@@ -14,6 +14,10 @@
 .head h1 {
   font-size: 44px;
 }
+.filter {
+  margin-left: auto;
+  min-width: 200px;
+}
 .tag {
   display: inline-block;
   padding: 2px 8px;

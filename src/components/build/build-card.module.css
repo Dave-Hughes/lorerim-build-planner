@@ -88,3 +88,9 @@
   display: inline-flex;
   gap: 8px;
 }
+
+.tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
