@@ -97,6 +97,32 @@ Done when
 
 ---
 
+## WO-5  Attribute, birthsign and race icons
+
+Three new icon sets, drawn by `scripts/icons/pixels.py` and already in `public/icons/` (approved 10 Oct 2026):
+- `attr-health.svg`, `attr-magicka.svg`, `attr-stamina.svg`
+- `sign-<name>.svg` for the 13 birthsigns. The standing stones use the same 13 files (same constellations).
+- `race-<name>.svg` for the 10 races (`altmer`, `argonian`, `bosmer`, `breton`, `dunmer`, `imperial`, `khajiit`, `nord`, `orsimer`, `redguard`).
+
+Generalise `src/components/ui/skill-icon.tsx` into one `GameIcon` (or add `AttributeIcon`, `SignIcon`, `RaceIcon` beside it) that maps a name to its file with the same slug rule; keep `SkillIcon` working.
+
+Where they go
+- Attributes: the three attribute cards on the level-up editor, the attribute bars on the shared build page, the creation sidebar's Starting point numbers, and the "Attribute +5 Health" line in "Changes at level N".
+- Birthsigns and stones: each birthsign card (creation and setup), the Birthsign entry in the build page's summary row, the "Standing stone" row on the build page, the stone line in "Changes at level N", and next to the standing-stone select in the editor (a native select can't show images; put the chosen stone's icon beside it).
+- Races: each race card, the Race entry in the summary row, and the race on build cards (Browse and My builds).
+
+Rules
+- The same as WO-4: 16 px or an exact multiple (race cards and birthsign cards may use 32 px, `image-rendering: pixelated`), decorative (`alt=""`, `aria-hidden`), icon + 7 px gap + text, no layout shift, nothing wraps that didn't before at 1440 and 390.
+- Master of Destiny removes the birthsign: show no sign icon then.
+- Don't redraw icons. Note anything that looks wrong in a new spot in the commit message.
+
+Done when
+- [ ] Every place listed shows its icon.
+- [ ] Screenshots of the race step, birthsign step, the editor (attribute cards and stone select) and the shared build page at 1440 and 390.
+- [ ] `npm run typecheck`, `npm run lint`, `npm test`, `npm run build`, `npm run test:e2e` pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.

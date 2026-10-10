@@ -25,6 +25,14 @@ PALETTE = {
     "p": "#f1b3a6", "r": "#d07a6a", "q": "#9c4a3e",                  # health
     "e": "#cfe8c6", "s": "#86b47f", "S": "#527a4d",                  # stamina
     "k": "#141b23",                                                  # inner dark
+    # skin and fur, for the race portraits only
+    "F": "#f2cfb0", "f": "#d9a07e", "v": "#a5694c",                  # fair
+    "T": "#d9ab7c", "t": "#b07e52", "U": "#7a5232",                  # tan (Bosmer)
+    "j": "#9a6444", "J": "#6e4128", "D": "#4a2a18",                  # dark (Redguard)
+    "A": "#ecd28c", "a": "#c9a85a", "i": "#8f7236",                  # gold (Altmer)
+    "H": "#aab3c4", "h": "#7f899d", "l": "#565f72",                  # ash (Dunmer)
+    "E": "#a6c47e", "n": "#729553", "u": "#4b6634",                  # green (Orsimer)
+    "K": "#ecc07a", "Q": "#c48e46", "V": "#83592a",                  # fur (Khajiit)
     "L": "#c9d2da",                                                  # thin line, no outline
     "z": "#ffe3a3",                                                  # spark, no outline
 }
@@ -350,6 +358,360 @@ def destiny():
         i.px(x, y, "z")
     return i.outline()
 
+# ---------------------------------------------------------------- attributes
+
+def health():
+    i = Icon()
+    i.disc(8, 10.2, 4.7, "r")
+    i.poly([(8, 0.6), (12.3, 8.6), (3.7, 8.6)], "r")          # blood drop
+    i.recolor({"r"}, "p", lambda x, y: x + y < 13 and x <= 7)
+    i.recolor({"r"}, "q", lambda x, y: x + y > 20 or y >= 14)
+    i.px(5, 10, "W"); i.px(5, 11, "W"); i.px(6, 8, "p")       # glint
+    return i.outline()
+
+
+def magicka():
+    i = Icon()
+    i.disc(8, 8, 6.4, "m")                                    # orb
+    i.recolor({"m"}, "c", lambda x, y: (x - 5.5) ** 2 + (y - 5.5) ** 2 < 9)
+    i.recolor({"m"}, "M", lambda x, y: x + y > 18)
+    i.recolor({"M"}, "N", lambda x, y: x + y > 22)
+    i.px(5, 4, "W"); i.px(4, 5, "W"); i.px(5, 5, "W")         # glint
+    i.px(10, 9, "c"); i.px(9, 10, "c"); i.px(11, 10, "c"); i.px(10, 11, "c"); i.px(10, 10, "W")  # spark inside
+    return i.outline()
+
+
+def stamina():
+    i = Icon()
+    i.poly([(9.6, 0.4), (2.4, 9.4), (7, 9.4), (4.6, 15.6), (13.6, 6.2), (9, 6.2), (12.4, 0.4)], "s")   # bolt
+    i.recolor({"s"}, "e", lambda x, y: x + y < 11 or (x <= 5 and y <= 9))
+    i.recolor({"s"}, "S", lambda x, y: x + y > 17)
+    return i.outline()
+
+
+# ---------------------------------------------------------------- birthsigns and standing stones
+# One medallion for all thirteen: a brass rim around a night sky, the sign's
+# figure drawn in starlight. The rim gets the shared outline; the figure,
+# drawn inside the sky, does not need one.
+
+def medallion():
+    i = Icon()
+    i.disc(8, 8, 7.7, "b")
+    i.recolor({"b"}, "Y", lambda x, y: x + y < 11)
+    i.recolor({"b"}, "B", lambda x, y: x + y > 19)
+    i.disc(8, 8, 6.75, "N")
+    i.recolor({"N"}, "M", lambda x, y: (x - 4.6) ** 2 + (y - 4.4) ** 2 < 5)   # a little sky glow, top left
+    return i
+
+
+def stars(i, pts, c="c"):
+    for x, y in pts:
+        i.px(x, y, c)
+
+
+def sign_warrior():
+    i = medallion()
+    i.rect(7, 3, 7, 9, "W"); i.rect(8, 3, 8, 9, "c"); i.px(7, 2, "W")     # blade
+    i.rect(4, 10, 11, 10, "c"); i.px(4, 9, "c"); i.px(11, 9, "c")         # guard
+    i.rect(7, 11, 8, 12, "b"); i.rect(7, 13, 8, 13, "Y")                  # grip, pommel
+    stars(i, [(4, 6), (11, 5), (12, 8)])
+    return i.outline()
+
+
+def sign_mage():
+    i = medallion()
+    i.line(3, 13, 8, 8, "c"); i.line(4, 13, 9, 8, "m")                    # staff
+    i.disc(10.4, 5.6, 2.3, "W")                                           # orb
+    i.px(11, 6, "c"); i.px(10, 7, "c"); i.px(9, 4, "y")
+    stars(i, [(13, 8), (7, 3), (12, 2)], "W")
+    stars(i, [(4, 6), (12, 11)])
+    return i.outline()
+
+
+def sign_thief():
+    i = medallion()
+    i.poly([(2.4, 6.2), (7.2, 7), (8.8, 7), (13.6, 6.2), (12.6, 10.4), (9.4, 10.4), (8, 9.2), (6.6, 10.4), (3.4, 10.4)], "W")   # mask
+    i.recolor({"W"}, "c", lambda x, y: y >= 9)
+    i.poly([(4.2, 7.6), (6.8, 8.1), (6.2, 9.4), (4.6, 9.2)], "N")         # eye holes
+    i.poly([(11.8, 7.6), (9.2, 8.1), (9.8, 9.4), (11.4, 9.2)], "N")
+    i.px(2, 7, "c"); i.px(13, 7, "c")                                     # ties
+    stars(i, [(8, 12), (5, 4), (11, 4)])
+    return i.outline()
+
+
+def sign_apprentice():
+    i = medallion()
+    i.rect(3, 6, 7, 11, "W"); i.rect(8, 6, 12, 11, "c")                   # pages
+    i.rect(4, 5, 6, 5, "W"); i.rect(9, 5, 11, 5, "c")                     # curled tops
+    i.rect(7, 6, 8, 12, "m")                                              # spine
+    for y in (7, 9):
+        i.rect(4, y, 6, y, "m"); i.rect(9, y, 11, y, "M")                 # lines of text
+    stars(i, [(8, 3), (11, 3), (5, 3)], "W")
+    return i.outline()
+
+
+def sign_atronach():
+    i = medallion()
+    i.rect(6, 3, 9, 5, "W")                                               # head
+    i.px(7, 4, "y"); i.px(8, 4, "y")                                      # glowing eyes
+    i.rect(4, 6, 11, 9, "W")                                              # shoulders and chest
+    i.rect(3, 6, 3, 10, "c"); i.rect(12, 6, 12, 10, "c")                  # arms
+    i.rect(5, 10, 10, 10, "c")
+    i.rect(5, 11, 6, 13, "c"); i.rect(9, 11, 10, 13, "c")                 # legs
+    i.rect(7, 7, 8, 8, "o")                                               # heart stone
+    i.recolor({"W"}, "c", lambda x, y: x >= 10)
+    return i.outline()
+
+
+def sign_lady():
+    i = medallion()
+    for cx, cy in ((8, 5.2), (10.8, 8), (8, 10.8), (5.2, 8)):
+        i.disc(cx, cy, 1.6, "W")                                          # petals
+    for cx, cy in ((10, 6), (10, 10), (6, 10), (6, 6)):
+        i.px(cx, cy, "c")
+    i.rect(7, 7, 8, 8, "y")                                               # heart of the flower
+    stars(i, [(4, 4), (12, 12), (12, 4)])
+    return i.outline()
+
+
+def sign_lord():
+    i = medallion()
+    for x in (4, 11):
+        i.rect(x, 5, x, 7, "W")
+    i.rect(7, 4, 8, 7, "W")                                               # crown points
+    i.px(5, 7, "W"); i.px(10, 7, "W")
+    i.rect(4, 8, 11, 9, "W")
+    i.rect(4, 10, 11, 10, "c")                                            # band
+    i.px(6, 10, "o"); i.px(9, 10, "o")                                    # gems
+    i.px(7, 3, "y"); i.px(8, 3, "y")
+    stars(i, [(5, 12), (10, 12)])
+    return i.outline()
+
+
+def sign_lover():
+    i = medallion()
+    i.disc(5.9, 6.4, 2.3, "W"); i.disc(10.1, 6.4, 2.3, "W")
+    i.poly([(3.6, 7.4), (12.4, 7.4), (8, 12.6)], "W")                     # heart
+    i.px(7, 4, "N"); i.px(8, 4, "N"); i.px(7, 5, "N"); i.px(8, 5, "N")    # the notch between the lobes
+    i.recolor({"W"}, "c", lambda x, y: x >= 9 and y >= 8)
+    i.px(5, 5, "p")
+    stars(i, [(3, 11), (12, 11), (8, 2)])
+    return i.outline()
+
+
+def sign_ritual():
+    i = medallion()
+    for k in range(32):                                                   # the summoning circle
+        a = k * math.pi / 16
+        i.px(int(round(7.5 + 4.6 * math.cos(a))), int(round(7.5 + 4.6 * math.sin(a))), "c")
+    for x, y in ((8, 4), (11, 8), (8, 11), (4, 8)):
+        i.px(x if x != 8 else 7, y if y != 8 else 7, "W")
+    i.rect(7, 5, 8, 10, "W"); i.rect(5, 7, 10, 8, "W")                    # star at its heart
+    i.rect(7, 7, 8, 8, "y")
+    return i.outline()
+
+
+def sign_serpent():
+    i = medallion()
+    body = [(10, 4), (9, 4), (8, 4), (7, 4), (6, 5), (5, 6), (6, 7), (7, 7), (8, 7), (9, 8), (10, 9),
+            (10, 10), (9, 11), (8, 11), (7, 11), (6, 11), (5, 10)]
+    for n, (x, y) in enumerate(body):
+        i.px(x, y, "W" if n < 9 else "c")
+    i.rect(10, 4, 11, 5, "W"); i.px(11, 4, "N")                           # head and eye
+    i.px(12, 5, "o")                                                      # tongue
+    stars(i, [(4, 9), (12, 9)])
+    return i.outline()
+
+
+def sign_shadow():
+    i = medallion()
+    i.poly([(2.6, 8), (5.5, 5.4), (10.5, 5.4), (13.4, 8), (10.5, 10.6), (5.5, 10.6)], "c")   # eye
+    i.recolor({"c"}, "W", lambda x, y: y <= 7)
+    i.disc(8, 8, 2.2, "N"); i.px(7, 7, "m")                               # dark iris
+    stars(i, [(5, 3), (11, 12), (12, 4)])
+    return i.outline()
+
+
+def sign_steed():
+    i = medallion()
+    rows = {3: (8, 8), 4: (7, 9), 5: (6, 10), 6: (5, 10), 7: (4, 10), 8: (4, 10), 9: (7, 10), 10: (7, 11), 11: (6, 11), 12: (5, 11)}
+    for y, (a, b) in rows.items():
+        i.rect(a, y, b, y, "W")
+    i.px(10, 3, "W")                                                      # second ear
+    i.rect(4, 8, 6, 8, "c"); i.px(6, 9, "N")                              # muzzle
+    i.px(8, 5, "N")                                                       # eye
+    i.line(10, 5, 11, 9, "c")                                             # mane
+    i.rect(5, 12, 11, 12, "c")
+    stars(i, [(3, 5), (12, 4)])
+    return i.outline()
+
+
+def sign_tower():
+    i = medallion()
+    i.px(5, 3, "W"); i.rect(7, 3, 8, 3, "W"); i.px(10, 3, "W")           # battlements
+    i.rect(5, 4, 10, 4, "W")
+    i.rect(6, 5, 9, 12, "W"); i.rect(9, 5, 9, 12, "c")                    # tower
+    i.rect(7, 7, 8, 7, "y")                                               # lit window
+    i.rect(7, 11, 8, 12, "N")                                             # door
+    i.rect(4, 12, 11, 12, "c")
+    stars(i, [(3, 8), (12, 7), (12, 10)])
+    return i.outline()
+
+
+# ---------------------------------------------------------------- races
+# Head-and-shoulders portraits, front on. Same rules as everything else:
+# shared outline, light from the top left, one tone up and one down per skin.
+
+def ellipse(i, cx, cy, rx, ry, c, where=None):
+    for y in range(16):
+        for x in range(16):
+            if ((x + 0.5 - cx) / rx) ** 2 + ((y + 0.5 - cy) / ry) ** 2 <= 1 and (where is None or where(x, y)):
+                i.px(x, y, c)
+
+
+def face(i, ramp, eyes="k", ears=False, cy=7.6, ry=5.0):
+    hi, base, lo = ramp
+    i.rect(6, 12, 9, 13, base); i.rect(9, 12, 9, 13, lo)       # neck
+    if ears:                                                   # pointed elf ears
+        for (x, y) in ((2, 5), (2, 6), (3, 6), (3, 7), (3, 8)):
+            i.px(x, y, base)
+        for (x, y) in ((13, 5), (13, 6), (12, 6), (12, 7), (12, 8)):
+            i.px(x, y, lo)
+    ellipse(i, 8, cy, 4.3, ry, base)
+    i.recolor({base}, hi, lambda x, y: x <= 5 and y <= 8)
+    i.recolor({base}, lo, lambda x, y: x >= 11 or (y >= 11 and not (6 <= x <= 8 and y >= 12)))
+    i.px(6, 8, eyes); i.px(9, 8, eyes)
+    i.px(8, 9, lo)                                             # nose, lit from the left
+    return i
+
+
+def shoulders(i, c, lo, skin=None):
+    i.rect(2, 14, 13, 15, c)
+    i.rect(10, 14, 13, 15, lo)
+    if skin:
+        i.rect(6, 12, 9, 13, skin)                             # neck
+
+
+def race_nord():
+    i = Icon()
+    shoulders(i, "G", "G"); i.rect(2, 14, 5, 14, "g")            # fur-trimmed armour
+    face(i, ("F", "f", "v"), eyes="N")
+    i.rect(4, 2, 11, 3, "b"); i.rect(3, 3, 4, 10, "b"); i.rect(11, 3, 12, 10, "B")   # long fair hair
+    i.rect(4, 2, 8, 2, "Y"); i.rect(3, 4, 3, 7, "Y")
+    i.rect(5, 10, 10, 13, "b"); i.rect(6, 13, 9, 14, "b")        # beard
+    i.rect(5, 10, 7, 11, "Y"); i.px(7, 11, "v"); i.px(8, 11, "v")  # beard light, mouth
+    i.rect(10, 11, 10, 13, "B")
+    return i.outline()
+
+
+def race_breton():
+    i = Icon()
+    shoulders(i, "M", "N")                                       # mage's robe
+    face(i, ("F", "f", "v"), eyes="d")
+    i.rect(4, 2, 11, 4, "d"); i.rect(3, 3, 3, 8, "d"); i.rect(12, 3, 12, 8, "d")      # dark brown hair
+    i.rect(5, 2, 8, 2, "B")
+    i.px(7, 11, "v"); i.px(8, 11, "v")
+    return i.outline()
+
+
+def race_imperial():
+    i = Icon()
+    shoulders(i, "q", "R"); i.rect(6, 14, 9, 14, "b")            # red cloak, brass clasp
+    face(i, ("F", "f", "v"), eyes="d")
+    i.rect(4, 2, 11, 3, "d"); i.px(3, 4, "d"); i.px(12, 4, "d")  # short cropped hair
+    i.px(3, 5, "s"); i.px(12, 5, "S"); i.rect(4, 3, 11, 3, "s"); i.px(5, 2, "e"); i.px(10, 2, "s")   # laurel
+    i.rect(6, 11, 9, 11, "v")
+    return i.outline()
+
+
+def race_redguard():
+    i = Icon()
+    shoulders(i, "Y", "b")                                       # desert cloth
+    face(i, ("j", "J", "D"), eyes="k")
+    i.rect(3, 1, 12, 4, "w"); i.rect(3, 1, 7, 2, "W"); i.rect(10, 3, 12, 4, "g")      # headwrap
+    i.rect(3, 5, 3, 8, "w"); i.rect(12, 5, 12, 8, "g")
+    i.rect(11, 4, 13, 6, "g")                                    # its tail
+    i.rect(6, 11, 9, 11, "D")
+    return i.outline()
+
+
+def race_altmer():
+    i = Icon()
+    shoulders(i, "y", "b")                                       # gold robes
+    face(i, ("A", "a", "i"), eyes="o", ears=True, cy=7.2, ry=5.4)
+    i.rect(5, 1, 10, 3, "w"); i.rect(4, 2, 4, 6, "w"); i.rect(11, 2, 11, 6, "g")     # slicked platinum hair
+    i.rect(5, 1, 8, 1, "W"); i.rect(9, 3, 10, 3, "g")
+    i.px(7, 11, "i"); i.px(8, 11, "i")
+    return i.outline()
+
+
+def race_bosmer():
+    i = Icon()
+    shoulders(i, "S", "S"); i.rect(2, 14, 6, 14, "s")
+    face(i, ("T", "t", "U"), eyes="k", ears=True)
+    i.poly([(8, 0.2), (13.2, 4), (12.4, 8.4), (3.6, 8.4), (2.8, 4)], "s")            # leaf-green hood
+    ellipse(i, 8, 7.6, 3.6, 4.4, "T", where=lambda x, y: y >= 4 and 4 <= x <= 11)   # face inside it
+    i.recolor({"T"}, "t", lambda x, y: x >= 10 or y >= 11)
+    i.recolor({"s"}, "S", lambda x, y: x >= 10 or y >= 6)
+    i.recolor({"s"}, "e", lambda x, y: x + y < 7)
+    i.px(6, 8, "k"); i.px(9, 8, "k"); i.px(8, 9, "U"); i.px(7, 11, "U"); i.px(8, 11, "U")
+    return i.outline()
+
+
+def race_dunmer():
+    i = Icon()
+    shoulders(i, "d", "d"); i.rect(2, 14, 5, 14, "B")           # chitin
+    face(i, ("H", "h", "l"), eyes="r", ears=True)
+    i.rect(4, 2, 11, 3, "k"); i.px(5, 1, "k"); i.px(8, 1, "k"); i.px(10, 1, "k")     # spiky black hair
+    i.px(3, 3, "k"); i.px(12, 3, "k"); i.rect(4, 4, 4, 5, "k")
+    i.px(6, 8, "o"); i.px(7, 11, "l"); i.px(8, 11, "l")
+    return i.outline()
+
+
+def race_orsimer():
+    i = Icon()
+    shoulders(i, "G", "G"); i.rect(2, 14, 5, 14, "g")           # iron
+    face(i, ("E", "n", "u"), eyes="k", cy=8, ry=4.8)
+    ellipse(i, 8, 9.4, 5.2, 3.4, "n", where=lambda x, y: y >= 9)  # broad jaw
+    i.recolor({"n"}, "u", lambda x, y: x >= 11 and y >= 9)
+    i.rect(6, 1, 9, 3, "k"); i.rect(7, 0, 8, 0, "k")            # topknot
+    i.rect(5, 7, 10, 7, "u")                                    # heavy brow
+    i.px(5, 11, "W"); i.px(5, 10, "W"); i.px(10, 11, "W"); i.px(10, 10, "w")         # tusks
+    i.rect(6, 12, 9, 12, "u")
+    return i.outline()
+
+
+def race_khajiit():
+    i = Icon()
+    shoulders(i, "B", "d")
+    i.poly([(2.2, 0.8), (6.4, 4), (3, 6.6)], "Q"); i.poly([(13.8, 0.8), (9.6, 4), (13, 6.6)], "V")   # ears
+    i.px(3, 3, "p"); i.px(12, 3, "q")
+    ellipse(i, 8, 8, 5.4, 5.0, "Q")
+    i.recolor({"Q"}, "K", lambda x, y: x <= 6 and y <= 8)
+    i.recolor({"Q"}, "V", lambda x, y: x >= 12 or y >= 12)
+    ellipse(i, 8, 10.6, 2.6, 1.8, "K")                          # muzzle
+    i.px(5, 4, "V"); i.px(8, 4, "V"); i.px(7, 3, "V"); i.px(10, 4, "V")             # stripes
+    i.px(3, 9, "V"); i.px(12, 9, "d")
+    i.px(5, 8, "y"); i.px(6, 8, "s"); i.px(9, 8, "y"); i.px(10, 8, "s")             # cat eyes
+    i.px(7, 10, "q"); i.px(8, 10, "q")                          # nose
+    return i.outline()
+
+
+def race_argonian():
+    i = Icon()
+    shoulders(i, "d", "d")
+    ellipse(i, 8, 7.4, 4.8, 4.6, "s")                           # skull
+    i.poly([(4, 8), (12, 8), (11.4, 13), (4.6, 13)], "s")        # long snout
+    i.recolor({"s"}, "e", lambda x, y: x <= 6 and y <= 8)
+    i.recolor({"s"}, "S", lambda x, y: x >= 11 or y >= 12)
+    for (x, y) in ((4, 2), (3, 1), (11, 2), (12, 1), (6, 2), (9, 2)):
+        i.px(x, y, "b")                                         # horns
+    i.px(3, 0, "Y"); i.px(12, 0, "B")
+    i.px(5, 7, "y"); i.px(10, 7, "y"); i.px(5, 8, "k"); i.px(10, 8, "k")             # reptile eyes
+    i.px(6, 12, "S"); i.px(9, 12, "S")                          # nostrils
+    i.rect(5, 10, 10, 10, "S")
+    return i.outline()
+
 
 ICONS = {
     "One-Handed": one_handed, "Two-Handed": two_handed, "Marksman": marksman, "Block": block,
@@ -358,6 +720,24 @@ ICONS = {
     "Alteration": alteration, "Conjuration": conjuration, "Destruction": destruction,
     "Enchanting": enchanting, "Illusion": illusion, "Restoration": restoration, "Destiny": destiny,
 }
+
+ATTRIBUTES = {"Health": health, "Magicka": magicka, "Stamina": stamina}
+
+SIGNS = {
+    "Warrior": sign_warrior, "Mage": sign_mage, "Thief": sign_thief, "Apprentice": sign_apprentice,
+    "Atronach": sign_atronach, "Lady": sign_lady, "Lord": sign_lord, "Lover": sign_lover,
+    "Ritual": sign_ritual, "Serpent": sign_serpent, "Shadow": sign_shadow, "Steed": sign_steed,
+    "Tower": sign_tower,
+}
+
+RACES = {
+    "Altmer": race_altmer, "Argonian": race_argonian, "Bosmer": race_bosmer, "Breton": race_breton,
+    "Dunmer": race_dunmer, "Imperial": race_imperial, "Khajiit": race_khajiit, "Nord": race_nord,
+    "Orsimer": race_orsimer, "Redguard": race_redguard,
+}
+
+# Every set and the file-name prefix it is written under.
+SETS = {"": ICONS, "attr-": ATTRIBUTES, "sign-": SIGNS, "race-": RACES}
 
 
 def slug(name):
@@ -386,10 +766,13 @@ def main():
     root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     out = os.path.join(root, "public", "icons")
     os.makedirs(out, exist_ok=True)
-    for name, draw in ICONS.items():
-        with open(os.path.join(out, slug(name) + ".svg"), "w") as f:
-            f.write(svg(draw()))
-    print(len(ICONS), "icons ->", os.path.relpath(out, root))
+    n = 0
+    for prefix, icons in SETS.items():
+        for name, draw in icons.items():
+            with open(os.path.join(out, prefix + slug(name) + ".svg"), "w") as f:
+                f.write(svg(draw()))
+            n += 1
+    print(n, "icons ->", os.path.relpath(out, root))
 
 
 if __name__ == "__main__":
