@@ -173,6 +173,7 @@
   padding: 16px 18px;
   background: var(--panel);
   border: 1px solid var(--rule);
+  transition: border-color 120ms;
 }
 .cardOn {
   border-color: var(--ember);
@@ -186,10 +187,47 @@
   background-size: cover;
   background-position: center 25%;
 }
+/* Registered so the fade's stops can ease on hover (a gradient itself can't transition). */
+@property --fade-a {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 8%;
+}
+@property --fade-b {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 46%;
+}
+@property --fade-c {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 66%;
+}
 .traitFade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(20, 27, 35, 0) 8%, rgba(20, 27, 35, 0.8) 46%, var(--panel) 66%);
+  background: linear-gradient(to bottom, rgba(20, 27, 35, 0) var(--fade-a), rgba(20, 27, 35, 0.8) var(--fade-b), var(--panel) var(--fade-c));
+  transition:
+    --fade-a 120ms,
+    --fade-b 120ms,
+    --fade-c 120ms;
+}
+/* Cards that choose on click. Chosen cards only take the cursor. */
+@media (hover: hover) {
+  .cardPick {
+    cursor: pointer;
+  }
+  .cardPick:not(.cardOn):hover {
+    border-color: var(--rule-strong);
+  }
+  .cardPick:not(.cardOn):hover .cardName {
+    color: #fff;
+  }
+  .cardPick:not(.cardOn):hover .traitFade {
+    --fade-a: 12%;
+    --fade-b: 52%;
+    --fade-c: 72%;
+  }
 }
 .traitBand {
   height: 92px;

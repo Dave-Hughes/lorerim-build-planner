@@ -6,13 +6,20 @@ test.describe("creating a build", () => {
     await page.goto("/new");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Choose a race");
     await expect(page.getByRole("button", { name: "Next: Birthsign" })).toBeDisabled();
-    await page.getByRole("article").filter({ hasText: "Nord" }).getByRole("button", { name: "Choose" }).click();
+    // Clicking anywhere on a card chooses it, not just its button.
+    await page.getByRole("article").filter({ hasText: "Nord" }).getByText("+15").click();
+    await expect(page.getByRole("article").filter({ hasText: "Nord" }).getByRole("button", { name: "Chosen" })).toHaveAttribute("aria-pressed", "true");
     await expect(page.getByRole("complementary", { name: "Setup steps" }).getByText("Nord")).toBeVisible();
     await expect(page.getByText("Starting point")).toBeVisible();
     await page.getByRole("button", { name: "Next: Birthsign" }).click();
 
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Choose a birthsign");
-    await page.getByRole("article").filter({ hasText: "The Lord" }).getByRole("button", { name: "Choose" }).click();
+    const lord = page.getByRole("article").filter({ hasText: "The Lord" });
+    await lord.getByRole("button", { name: "Choose" }).click();
+    await lord.getByRole("button", { name: "Remove" }).click();
+    await expect(lord.getByRole("button", { name: "Choose" })).toHaveAttribute("aria-pressed", "false");
+    await lord.getByRole("heading", { name: "The Lord" }).click();
+    await expect(lord.getByRole("button", { name: "Remove" })).toHaveAttribute("aria-pressed", "true");
     await page.getByRole("button", { name: "Next: Skills" }).click();
 
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Choose major and minor skills");
@@ -29,13 +36,17 @@ test.describe("creating a build", () => {
     await page.getByRole("article").filter({ hasText: "Bulwark" }).getByRole("button", { name: "Choose" }).click();
     await expect(page.getByRole("main").getByText("1 of 2 chosen")).toBeVisible();
     await page.getByLabel("Search 69 traits").fill("");
-    await page.getByRole("article").filter({ hasText: "Witcher" }).getByRole("button", { name: "Choose" }).click();
+    await page.getByRole("article").filter({ hasText: "Witcher" }).getByRole("heading", { name: "Witcher" }).click();
     await expect(page.getByRole("main").getByText("2 of 2 chosen")).toBeVisible();
-    await expect(page.getByRole("article").filter({ hasText: "Hoarder" }).getByRole("button", { name: "Choose" })).toBeDisabled();
+    const hoarder = page.getByRole("article").filter({ hasText: "Hoarder" });
+    await expect(hoarder.getByRole("button", { name: "Choose" })).toBeDisabled();
+    await hoarder.getByRole("heading", { name: "Hoarder" }).click();
+    await expect(page.getByRole("main").getByText("2 of 2 chosen")).toBeVisible();
     await page.getByRole("button", { name: "Next: Mode and start" }).click();
 
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Game mode and start");
-    await page.getByRole("article").filter({ hasText: "Konahrik" }).getByRole("button", { name: "Choose" }).click();
+    await page.getByRole("article").filter({ hasText: "Konahrik" }).getByRole("heading", { name: "Konahrik" }).click();
+    await expect(page.getByRole("article").filter({ hasText: "Konahrik" }).getByRole("button", { name: "Chosen" })).toBeVisible();
     await page.getByLabel("Start", { exact: true }).fill("Falkreath");
     await page.getByRole("button", { name: "Next: Name" }).click();
 
@@ -64,5 +75,17 @@ test.describe("creating a build", () => {
     await expect(page.getByText("Link only")).toBeVisible();
     await page.goto("/new");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Choose a race");
+  });
+
+  test("the Master of One skill select works inside its card without toggling it", async ({ page }) => {
+    await page.goto("/new?step=traits");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Choose up to two traits");
+    const card = page.getByRole("article").filter({ has: page.getByRole("heading", { name: "Master of One", exact: true }) });
+    await card.getByRole("heading", { name: "Master of One", exact: true }).click();
+    await expect(card.getByRole("button", { name: "Remove" })).toBeVisible();
+    await card.getByText("Which skill?").click();
+    await card.getByRole("combobox").selectOption("Alchemy");
+    await expect(card.getByRole("combobox")).toHaveValue("Alchemy");
+    await expect(card.getByRole("button", { name: "Remove" })).toHaveAttribute("aria-pressed", "true");
   });
 });

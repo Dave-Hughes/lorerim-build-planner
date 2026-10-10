@@ -273,6 +273,24 @@ function Chosen() {
   return <span className={`label ${styles.chosen}`}>✓ Chosen</span>;
 }
 
+/**
+ * A choice card. Clicking anywhere on it does what its Choose / Remove button does; the
+ * button stays the keyboard control. Clicks on the card's own controls (the button, the
+ * Master of One select) are left to them. No `onChoose` when the button is disabled.
+ */
+function ChoiceCard({ className, onChoose, children }: { className: string; onChoose?: () => void; children: React.ReactNode }) {
+  const onClick = (e: React.MouseEvent) => {
+    if ((e.target as Element).closest("button, select, input, textarea, label, a")) return;
+    if (window.getSelection()?.toString()) return;
+    onChoose?.();
+  };
+  return (
+    <article className={`${className} ${onChoose ? styles.cardPick : ""}`} onClick={onChoose ? onClick : undefined}>
+      {children}
+    </article>
+  );
+}
+
 function RaceStep({ plan, update }: StepProps) {
   return (
     <>
@@ -280,8 +298,9 @@ function RaceStep({ plan, update }: StepProps) {
       <div className={styles.cards}>
         {RACES.map((r) => {
           const on = plan.race === r.name;
+          const choose = () => update((p) => ({ ...p, race: r.name }));
           return (
-            <article key={r.name} className={`${styles.card} ${on ? styles.cardOn : ""}`}>
+            <ChoiceCard key={r.name} className={`${styles.card} ${on ? styles.cardOn : ""}`} onChoose={choose}>
               <div className={styles.cardHead}>
                 <h2 className={styles.cardName}>{r.name}</h2>
                 {on && <Chosen />}
@@ -299,10 +318,10 @@ function RaceStep({ plan, update }: StepProps) {
                 <span className={styles.magicka}>{r.magicka} Magicka</span>
                 <span className={styles.stamina}>{r.stamina} Stamina</span>
               </div>
-              <button type="button" className={`btn btn-sm ${on ? "btn-ember" : ""} ${styles.cardBtn}`} aria-pressed={on} onClick={() => update((p) => ({ ...p, race: r.name }))}>
+              <button type="button" className={`btn btn-sm ${on ? "btn-ember" : ""} ${styles.cardBtn}`} aria-pressed={on} onClick={choose}>
                 {on ? "Chosen" : "Choose"}
               </button>
-            </article>
+            </ChoiceCard>
           );
         })}
       </div>
@@ -319,8 +338,9 @@ function BirthsignStep({ plan, update }: StepProps) {
       <div className={styles.cards}>
         {BIRTHSIGNS.map((b) => {
           const on = plan.birthsign === b.name;
+          const choose = () => update((p) => ({ ...p, birthsign: on ? "" : b.name }));
           return (
-            <article key={b.name} className={`${styles.card} ${on ? styles.cardOn : ""} ${removed ? styles.cardOff : ""}`}>
+            <ChoiceCard key={b.name} className={`${styles.card} ${on ? styles.cardOn : ""} ${removed ? styles.cardOff : ""}`} onChoose={removed ? undefined : choose}>
               <div className={styles.cardHead}>
                 <h2 className={styles.cardName}>The {b.name}</h2>
                 {on && !removed && <Chosen />}
@@ -331,11 +351,11 @@ function BirthsignStep({ plan, update }: StepProps) {
                 className={`btn btn-sm ${on ? "btn-ember" : ""} ${styles.cardBtn}`}
                 aria-pressed={on}
                 disabled={removed}
-                onClick={() => update((p) => ({ ...p, birthsign: on ? "" : b.name }))}
+                onClick={choose}
               >
                 {on ? "Remove" : "Choose"}
               </button>
-            </article>
+            </ChoiceCard>
           );
         })}
       </div>
@@ -421,8 +441,9 @@ function TraitsStep({ plan, update }: StepProps) {
       <section aria-label="Traits" className={styles.cards}>
         {list.map((t) => {
           const on = chosen.has(t.name);
+          const disabled = !on && full;
           return (
-            <article key={t.name} className={`${styles.card} ${styles.traitCard} ${on ? styles.cardOn : ""}`}>
+            <ChoiceCard key={t.name} className={`${styles.card} ${styles.traitCard} ${on ? styles.cardOn : ""}`} onChoose={disabled ? undefined : () => toggle(t.name)}>
               {t.image && (
                 <>
                   <div className={styles.traitArt} style={{ backgroundImage: `url(${t.image})` }} aria-hidden="true" />
@@ -438,7 +459,7 @@ function TraitsStep({ plan, update }: StepProps) {
                 <TraitText text={t.text} />
               </p>
               {on && t.name === "Master of One" && (
-                <label className="field">
+                <label className={`field ${styles.over}`}>
                   <span className="field-hint">Which skill?</span>
                   <select className="select" value={plan.masterOfOneSkill ?? ""} onChange={(e) => update((p) => ({ ...p, masterOfOneSkill: e.target.value || undefined }))}>
                     <option value="">Choose a skill</option>
@@ -450,10 +471,10 @@ function TraitsStep({ plan, update }: StepProps) {
                   </select>
                 </label>
               )}
-              <button type="button" className={`btn btn-sm ${on ? "btn-ember" : ""} ${styles.cardBtn} ${styles.over}`} aria-pressed={on} disabled={!on && full} onClick={() => toggle(t.name)}>
+              <button type="button" className={`btn btn-sm ${on ? "btn-ember" : ""} ${styles.cardBtn} ${styles.over}`} aria-pressed={on} disabled={disabled} onClick={() => toggle(t.name)}>
                 {on ? "Remove" : "Choose"}
               </button>
-            </article>
+            </ChoiceCard>
           );
         })}
         {list.length === 0 && <p className="muted">No trait matches that.</p>}
@@ -470,17 +491,18 @@ function ModeStep({ plan, update }: StepProps) {
       <section aria-label="Game mode" className={styles.cards}>
         {GAME_MODES.map((m) => {
           const on = plan.mode === m.name;
+          const choose = () => update((p) => ({ ...p, mode: m.name }));
           return (
-            <article key={m.name} className={`${styles.card} ${on ? styles.cardOn : ""}`}>
+            <ChoiceCard key={m.name} className={`${styles.card} ${on ? styles.cardOn : ""}`} onChoose={choose}>
               <div className={styles.cardHead}>
                 <h2 className={styles.cardName}>{m.name}</h2>
                 {on && <Chosen />}
               </div>
               <p className={styles.cardText}>{m.text}</p>
-              <button type="button" className={`btn btn-sm ${on ? "btn-ember" : ""} ${styles.cardBtn}`} aria-pressed={on} onClick={() => update((p) => ({ ...p, mode: m.name }))}>
+              <button type="button" className={`btn btn-sm ${on ? "btn-ember" : ""} ${styles.cardBtn}`} aria-pressed={on} onClick={choose}>
                 {on ? "Chosen" : "Choose"}
               </button>
-            </article>
+            </ChoiceCard>
           );
         })}
       </section>
