@@ -492,6 +492,36 @@ From building Jo'Vashar (`/b/2b3t3uvceq`), Ushnar gro-Mazgar (`/b/xdz7uwjx2f`) a
 
 ---
 
+## WO-16  A public page for each player's builds (11 Oct 2026)
+
+Dave's idea: one link that shows all of a player's builds, for a Discord bio or a post. `/me` stays the private working list; the new page is what other people see.
+
+### The page
+1. **Address:** `/u/<handle>`, e.g. `/u/tapps`. Add a `handle` column to `user` (text, unique, nullable) through `npm run db:generate` and a committed migration. It's additive, so no data is touched.
+   - Make the handle from the Discord name: lowercase, letters, digits and `-` only, 3 to 30 characters. Fall back to `player` if nothing is left, and add `-2`, `-3` and so on when it's taken. Put this in one function with unit tests.
+   - Set it at sign-in when it's empty. Once set, it never changes, even if the Discord name does, so shared links keep working.
+   - `scripts/backfill-handles.ts` fills empty handles for existing users. It only writes to rows where the handle is empty. Run it on dev and staging; production gets it when staging is published.
+2. **What it shows:** only **Listed** builds, newest first, using the same `BuildCard` as Browse builds (not the `mine` variant). Link-only and Only-you builds never appear here, not even to the owner, so the page always shows what a visitor sees.
+3. **Header:** the avatar and Discord name as the `h1`, then one line: `3 builds`, or `1 build`. There's no bio and no join date.
+4. **Empty:** `No listed builds yet.` If the owner is viewing their own page, add a second line, `Only listed builds show here.`, with a link to `My builds`.
+5. **Unknown handle:** the site's normal 404.
+6. **Metadata:** title `Builds by Tapps`. The social image is the cover of the newest listed build that has a cover, otherwise the site default. Never put the email in the page, its props or the metadata.
+
+### Getting to it
+7. **Author names link to the page:** the name and avatar on build cards (Browse builds, the profile page) and on the shared build page link to `/u/<handle>`. A user with no handle yet shows the name as plain text.
+8. **`/me`:** add a `My page` button next to `New build`, linking to `/u/<handle>`.
+9. **Owner on their own page:** add a `Copy link` button next to the header. When clicked, it says `Copied` for two seconds.
+
+### Done when
+- [ ] Unit tests for making handles: Discord names with spaces, capitals, accents, emoji, only symbols (`player`), too long, and a name that's already taken (`-2`).
+- [ ] e2e: a visitor to `/u/<handle>` sees the owner's listed builds and none of their link-only or private ones. `/u/nobody-here` returns 404.
+- [ ] e2e: clicking the author name on a build card and on a shared build page opens that author's page.
+- [ ] Migration committed in `drizzle/`. The backfill script has been run on dev and staging, and a second run changes nothing.
+- [ ] Screenshots for Dave at 1512 × 806 and 390: Tapps's page with listed builds, the same page empty as the owner, and `/me` showing `My page`.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
