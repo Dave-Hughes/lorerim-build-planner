@@ -691,6 +691,60 @@ Source of truth: the canvas artboards **Shared build, reworked (proposal, level 
 
 ---
 
+## WO-20  Perk trees: what a perk does, and room to breathe (11 Oct 2026)
+
+From Dave's look at WO-19. Two problems:
+
+- **Clicking a perk on the shared page shows nothing.** WO-19 passes `onSelect` to `Tree`, which turns the stars into select buttons. On desktop that drops the tooltip, and the details only open on phones (the `ReadOnlyDetails` bottom sheet, `src/components/build/tree.tsx`).
+- **Dense trees are crowded.** Every tree is scaled to fit the box, so One-Handed and Block squash together. Labels sit on lines and on each other (`Balanced Wielding` over `Penetrating Strikes`, `War Axe Focus` across a line). Pan and zoom only exist under 900 px.
+
+Do after WO-19. This applies to the shared page and the editor alike, since both use `Tree`.
+
+### What a perk does
+1. **Shared page, 1100 px and up:** selecting a perk opens a details panel at the top of the right column, above `Held`. You can select it from the tree, from `Held`, or from the level card. The panel is `ReadOnlyDetails`, extended to show:
+   - the name with its rank, and the tree;
+   - the game's text for each rank (`perkText`), with the ranks taken marked;
+   - what it needs (skill level and perks), and `Can't be held with …`, as in the editor's panel;
+   - one status line:
+     - `Taken at level 4`, or `Rank 1 taken at level 1, rank 2 at level 5`;
+     - `Can be taken at level 6` when the build could take it at the level being viewed;
+     - `Not taken by level 6` otherwise.
+   - A close button (`×`) and Esc clear the selection. Changing level keeps the selected perk and updates its status line.
+2. **Under 1100 px:** the details open in the bottom sheet, as phones do now.
+3. **Hover** (any width, mouse only): the existing hover tag shows the name and requirement at once (WO-17 tooltip rules). The full text stays in the panel, so the tag stays small.
+
+### Room to breathe
+4. **Draw trees at a readable size, not at fit size:**
+   - **Scale:** the drawing's scale is the larger of the fit-to-box scale and the scale at which the two closest stars are 88 px apart, capped at 2.5× fit. Simple trees still fit the box; dense ones grow past it.
+   - **Labels:** star, line and label sizes keep their current values at that scale; they don't grow with it.
+   - **Placing:** labels are placed on the larger drawing.
+5. **Pan and zoom at every width**, not only under 900 px:
+   - drag the empty sky to pan, with a 4 px threshold so a click on a star is still a click;
+   - Ctrl/⌘ + wheel or a pinch zooms; a plain wheel scrolls the page, never the tree;
+   - `+`, `−` and `Fit` buttons in the tree's toolbar, where `Fit` shows the whole tree in the box. The zoom range runs from Fit up to 2× the readable size.
+   - Arrow keys pan while the tree box has focus. Tabbing to a star pans just enough to bring it into view.
+6. **Where the view starts:**
+   - The view centres on the selected star if there is one.
+   - Otherwise it centres on this level's newest perk in the tree.
+   - Otherwise it shows the tree's bottom row, centred, where every tree starts.
+   - Switching tree tabs starts the same way. Selecting a star from the level card or `Held` pans to it.
+7. **Signs there's more:** a 32 px fade on each edge where the drawing runs past the box, and the cursor shows grab / grabbing over empty sky.
+8. **Height:** the box keeps WO-19's height rule. Width is the column; the drawing pans inside it.
+9. **Labels never overlap:**
+   - A label must not overlap another label or another star.
+   - A label must not sit on a line if a free position exists.
+   - A label that can't be placed is left out, and that star keeps its hover tag.
+   - Fix whatever lets `Balanced Wielding` and `Penetrating Strikes` overlap today.
+
+### Done when
+- [ ] e2e (shared page, 1440 × 900): clicking a star in Block shows its game text and a status line in the right column. `×` clears it. Clicking `Dodge` in Azrem's level-6 card selects it in Evasion and shows its details.
+- [ ] e2e: dragging the One-Handed tree pans it, and the star clicked afterwards is selected. A plain wheel over the tree scrolls the page. `Fit` shows every star.
+- [ ] Unit test: at 1000 × 560, no two placed labels in One-Handed, Block or Destiny overlap, and no label overlaps a star. The closest two stars are at least 88 px apart unless the 2.5× cap applies.
+- [ ] Screenshots for Dave at 1440 × 900: One-Handed and Block on the shared page at the readable size with a perk's details open; Fit on One-Handed; the editor's One-Handed tree at 1512 × 806. Also 390 with the bottom sheet open.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
