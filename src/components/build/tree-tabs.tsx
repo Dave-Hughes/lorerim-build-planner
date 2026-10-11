@@ -47,13 +47,27 @@ export function TreeTabs({
       </span>
     ) : null;
   };
+  // The icon; on short-screen chips the held count is a badge on its corner instead.
+  const icon = (tree: string) => {
+    const n = heldCount(d, tree, state);
+    return (
+      <span className={styles.icon}>
+        <SkillIcon name={tree} />
+        {n > 0 && (
+          <span className={styles.badge} aria-hidden="true">
+            {n}
+          </span>
+        )}
+      </span>
+    );
+  };
   return (
     <div className={styles.bar}>
       <div ref={row} role="tablist" aria-label="Perk trees" className={styles.tabs}>
         {/* On short laptop windows the tabs are chips (icon and value): the name is in the tooltip and label. */}
         {d.skills.map((s) => (
           <button key={s} role="tab" type="button" aria-selected={active === s} aria-label={tabLabel(s, `${state.skills[s]}`)} title={s} className={styles.tab} onClick={() => onChange(s)}>
-            <SkillIcon name={s} /> <span className={styles.name}>{s}</span> {held(s)} <span className={styles.val}>{state.skills[s]}</span>
+            {icon(s)} <span className={styles.name}>{s}</span> {held(s)} <span className={styles.val}>{state.skills[s]}</span>
           </button>
         ))}
         <button
@@ -65,7 +79,7 @@ export function TreeTabs({
           className={styles.tab}
           onClick={() => onChange("Destiny")}
         >
-          <SkillIcon name="Destiny" /> <span className={styles.name}>Destiny</span> {held("Destiny")} <span className={styles.val}>{destinyLeft} <span className={styles.name}>left</span></span>
+          {icon("Destiny")} <span className={styles.name}>Destiny</span> {held("Destiny")} <span className={styles.val}>{destinyLeft} <span className={styles.name}>left</span></span>
         </button>
       </div>
       {view && onView && <ViewToggle view={view} onView={onView} className={styles.toggle} />}

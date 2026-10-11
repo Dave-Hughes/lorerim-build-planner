@@ -310,7 +310,8 @@ export function skillStepInfo(d: GameData, plan: BuildPlan, states: LevelState[]
 /** Text for the standing stone select: what the level's choice means. */
 export function stoneLabel(d: GameData, name: string): string {
   const st = d.stoneByName.get(name);
-  return st ? (st.fromRecords && st.text ? `The ${st.name} (${st.text})` : `The ${st.name}`) : name;
+  // The game's sentence, in brackets without its closing full stop.
+  return st ? (st.fromRecords && st.text ? `The ${st.name} (${st.text.replace(/\.\s*$/, "")})` : `The ${st.name}`) : name;
 }
 
 export function nextDestinyLevel(d: GameData, level: number): number | null {

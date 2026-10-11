@@ -452,8 +452,8 @@ From checking WO-12 and WO-13 on staging. Small; one commit.
 4. **Legend on phones** wraps so `Notes` sits alone on a second line. Use the 2 × 2 grid from WO-11, or let it scroll in one row.
 
 ### Done when
-- [ ] Screenshots for Dave: tree tabs at 1568 × 772 in the editor; shared page after Open perk trees at 1568 × 772 with the whole tree in view; legend at 390.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Screenshots for Dave: tree tabs at 1568 × 772 in the editor; shared page after Open perk trees at 1568 × 772 with the whole tree in view; legend at 390.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

@@ -223,7 +223,11 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
     if (!wrap) return;
     const set = () => {
       const bar = wrap.firstElementChild as HTMLElement | null;
-      const top = Math.round(wrap.getBoundingClientRect().top + window.scrollY + (bar?.offsetHeight ?? 0));
+      // Where the drawing starts: on the page, or below a [data-tree-anchor] that is scrolled to the
+      // window's top when it opens (the shared page's perk trees).
+      const anchor = wrap.closest<HTMLElement>("[data-tree-anchor]");
+      const from = anchor ? anchor.getBoundingClientRect().top : -window.scrollY;
+      const top = Math.round(wrap.getBoundingClientRect().top - from + (bar?.offsetHeight ?? 0));
       setRoom({ w: Math.floor(wrap.clientWidth), vw: window.innerWidth, vh: window.innerHeight, top });
     };
     set();

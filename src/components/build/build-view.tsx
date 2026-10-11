@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { copyBuild, copyBuildForVersion } from "@/lib/builds/actions";
 import type { BuildRecord } from "@/lib/builds/types";
 import { useGameData } from "@/components/game-data";
@@ -75,6 +75,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
   const changes = useMemo(() => levelChanges(d, plan, states, level), [d, plan, states, level]);
   const perks = useMemo(() => perksByLevel(d, plan, states, level), [d, plan, states, level]);
   const [treesOpen, setTreesOpen] = useState(false);
+  const scrollToTrees = useRef(false);
   const [tree, setTree] = useState<string>(() => plan.majors[0] ?? "One-Handed");
   const [treeView, setTreeView] = useState<TreeView>("tree");
 
@@ -203,7 +204,10 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
               <div className={styles.perkList}>
                 <div className={styles.sectionHead}>
                   <span className="label">Perks held at level {level}</span>
-                  <button type="button" className={styles.linkButton} onClick={() => setTreesOpen((o) => !o)} aria-expanded={treesOpen}>
+                  <button type="button" className={styles.linkButton} onClick={() => {
+                      scrollToTrees.current = !treesOpen;
+                      setTreesOpen((o) => !o);
+                    }} aria-expanded={treesOpen}>
                     {treesOpen ? "Close perk trees" : "Open perk trees"}
                   </button>
                 </div>
@@ -229,7 +233,18 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
           </div>
 
           {treesOpen && (
-            <section aria-label="Perk trees" className={styles.trees}>
+            // Opening puts the tab row at the top of the window, the tree under it.
+            <section
+              ref={(el) => {
+                if (el && scrollToTrees.current) {
+                  scrollToTrees.current = false;
+                  el.scrollIntoView({ block: "start" });
+                }
+              }}
+              data-tree-anchor=""
+              aria-label="Perk trees"
+              className={styles.trees}
+            >
               <TreeTabs state={s} active={tree} onChange={setTree} view={treeView} onView={setTreeView} />
               <div className={`frame ${styles.treeBox}`}>
                 <Tree tree={tree} states={states} level={level} view={treeView} onView={setTreeView} />
