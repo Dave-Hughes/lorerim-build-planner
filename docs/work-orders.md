@@ -377,7 +377,7 @@ From a pass over staging at 390, 1440 and 1920. Each is small; do them in this o
 12. **Tree box height** leaves a large empty band under the tree. At fit zoom the box is as tall as the fitted tree plus its label padding.
 
 ### Done when
-- [ ] `birthsigns.json` is generated (no hand edits), and no birthsign text contains words that aren't in the records; diff of old and new texts for Dave.
+- [x] `birthsigns.json` is generated (no hand edits), and no birthsign text contains words that aren't in the records; diff of old and new texts for Dave. (Extract run on Dave's PC 11 Oct; stones too, see commit 997daaf.)
 - [x] Screenshots for Dave: shared example build at 1920 (guide, At level, gear), race and birthsign steps at 1440 with a chosen card, editor at 1456 with a star selected, and at 390 the header, level row and tree tabs.
 - [x] e2e: on 390, the tree tabs are one row and the selected tab is in view; in the editor at 1456, selecting a star shows its name in the pinned panel without scrolling.
 - [x] All checks in CLAUDE.md pass.
@@ -439,6 +439,21 @@ From building "QA Breton Spellsword" (`/b/btab4t9t6c`) through all six steps and
 - [x] No `[` placeholder left in the app (`grep -rn 'placeholder="\[' src` and the guide placeholder constant).
 - [x] Screenshots for Dave at 1512 × 806: editor with a tree in view showing the bottom row and the panel without scrolling; Destruction with every can-take star labelled; perk panel for a 1-of-2 perk; the gear page; shared page level 5 at 390.
 - [x] All checks in CLAUDE.md pass.
+
+---
+
+## WO-14  Small follow-ups (11 Oct 2026)
+
+From checking WO-12 and WO-13 on staging. Small; one commit.
+
+1. **Tree tab chips on short screens** read `3 27` for "3 perks held, skill 27": two bare numbers side by side. Show the held count as a small ember badge on the icon's corner and the skill level after the icon, so the chip reads `[icon with 3] 27`.
+2. **Open perk trees** on the shared page scrolls the tab row to about the middle of the window, so most of the tree is below the fold at 1568 × 772. Scroll so the tab row sits at the top of the window, and give the shared page's tree box the same height rule as the editor (window height left under the tabs).
+3. **Standing stone select** now shows the game's sentence in brackets (`The Mage (Magicka is increased by 25.)`). Drop the trailing full stop inside the brackets.
+4. **Legend on phones** wraps so `Notes` sits alone on a second line. Use the 2 × 2 grid from WO-11, or let it scroll in one row.
+
+### Done when
+- [ ] Screenshots for Dave: tree tabs at 1568 × 772 in the editor; shared page after Open perk trees at 1568 × 772 with the whole tree in view; legend at 390.
+- [ ] All checks in CLAUDE.md pass.
 
 ---
 
