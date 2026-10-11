@@ -170,6 +170,12 @@ export function textLength(n: GuideNode): number {
   return (n.text?.length ?? 0) + (n.content ?? []).reduce((sum, c) => sum + textLength(c), 0);
 }
 
+/** Words in a document, for "6 min read". */
+export function docWords(n: GuideNode): number {
+  const own = n.text ? n.text.split(/\s+/).filter(Boolean).length : 0;
+  return own + (n.content ?? []).reduce((sum, c) => sum + docWords(c), 0);
+}
+
 export function emptyDoc(): GuideDoc {
   return { type: "doc", content: [{ type: "paragraph" }] };
 }

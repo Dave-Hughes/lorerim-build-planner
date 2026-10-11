@@ -38,3 +38,169 @@
   color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
+
+/* From 1100 wide: the fields on the left, a sticky miniature of the build page on the right. */
+.columns {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.fields {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.guideField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+/* The intro is 4 lines tall; the guide starts at 12 lines and grows with its text. */
+.intro [contenteditable] {
+  min-height: calc(4 * 1.6em + 46px);
+}
+.guideField [contenteditable] {
+  min-height: calc(12 * 1.6em + 46px);
+}
+.mini {
+  display: none;
+}
+@media (min-width: 1100px) {
+  .columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    align-items: start;
+  }
+  .mini {
+    position: sticky;
+    top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+.miniPage {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--rule);
+  background: #0b1016;
+}
+.miniHero {
+  height: 54px;
+  background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0 2px, transparent 2px 10px), #1a2230;
+}
+.miniBlock,
+.miniTab,
+.miniNote {
+  position: relative;
+  border: 1px solid var(--rule-strong);
+  transition:
+    border-color 150ms,
+    background-color 150ms;
+}
+.miniIntro {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 8px 8px;
+}
+.miniIntro i,
+.miniRows i {
+  display: block;
+  height: 4px;
+  background: #2a3442;
+}
+.miniIntro i:last-child {
+  width: 70%;
+}
+.miniLabel {
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.miniAbout {
+  height: 16px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.miniTabs {
+  display: flex;
+  gap: 4px;
+}
+.miniTabOn,
+.miniTab {
+  font-family: var(--font-title);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+}
+.miniTabOn {
+  border: 1px solid var(--rule);
+  box-shadow: inset 0 2px 0 #5f6d80;
+  color: var(--muted);
+}
+.miniTab {
+  color: var(--muted);
+}
+.miniCard {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+}
+.miniRows {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 4px;
+}
+.miniNote {
+  display: flex;
+  align-items: flex-start;
+  padding: 4px 6px;
+  min-height: 42px;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+}
+.miniNote:hover,
+.miniNote:focus-visible {
+  border-color: var(--ember);
+  color: var(--ember);
+}
+/* The field with focus, in ember; both softly when neither has it. */
+.miniOn {
+  border-color: var(--ember);
+  background: rgba(240, 145, 63, 0.18);
+}
+.miniOn .miniLabel,
+.miniTab.miniOn {
+  color: var(--ember);
+}
+.miniSoft {
+  border-color: rgba(240, 145, 63, 0.45);
+  background: rgba(240, 145, 63, 0.06);
+}
+.miniLink {
+  font-size: 14px;
+  color: var(--ember);
+}
+@media (prefers-reduced-motion: reduce) {
+  .miniBlock,
+  .miniTab,
+  .miniNote {
+    transition: none;
+  }
+}

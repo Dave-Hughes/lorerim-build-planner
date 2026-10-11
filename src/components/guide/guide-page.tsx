@@ -17,6 +17,8 @@ export function GuidePage({ buildId, name, plan, initial, intro }: { buildId: st
   const onStatus = useCallback((status: GuideSaveStatus, error: string | null, retry: () => void) => setSave({ status, error, retry }), []);
   const label = guideSaveLabel(save.status, save.error);
   useEffect(() => saveKeptGuides(buildId), [buildId]);
+  // Which field has focus, so the miniature can show where it lands on the build page.
+  const [focus, setFocus] = useState<"intro" | "guide" | null>(null);
   return (
     <>
       <FocusHeader
@@ -52,10 +54,20 @@ export function GuidePage({ buildId, name, plan, initial, intro }: { buildId: st
       />
       <main className={`page ${styles.main}`}>
         <h1 className={`title ${styles.h1}`}>Guide</h1>
-        <GuideFactsProvider plan={plan}>
-          <IntroField buildId={buildId} initial={intro} />
-          <GuideEditor buildId={buildId} sectionKey="overview" initial={initial} label="Guide" onStatus={onStatus} />
-        </GuideFactsProvider>
+        <div className={styles.columns}>
+          <div className={styles.fields}>
+            <GuideFactsProvider plan={plan}>
+              <div onFocus={() => setFocus("intro")} onBlur={() => setFocus(null)}>
+                <IntroField buildId={buildId} initial={intro} />
+              </div>
+              <section aria-label="Guide" className={styles.guideField} onFocus={() => setFocus("guide")} onBlur={() => setFocus(null)}>
+                <span className="label">Guide</span>
+                <GuideEditor buildId={buildId} sectionKey="overview" initial={initial} label="Guide" onStatus={onStatus} />
+              </section>
+            </GuideFactsProvider>
+          </div>
+          <Miniature buildId={buildId} focus={focus} />
+        </div>
       </main>
     </>
   );
@@ -83,5 +95,45 @@ function IntroField({ buildId, initial }: { buildId: string; initial: GuideDoc }
       </div>
       <GuideEditor buildId={buildId} sectionKey="intro" initial={initial} label="Intro" inline onStatus={onStatus} onChange={(doc) => setLength(textLength(doc))} />
     </section>
+  );
+}
+
+/**
+ * A miniature of the shared build page in plain blocks, showing where each field lands: the field
+ * with focus is lit in ember (both softly when neither has it). Level notes are written in the editor.
+ */
+function Miniature({ buildId, focus }: { buildId: string; focus: "intro" | "guide" | null }) {
+  const lit = (f: "intro" | "guide") => (focus === f ? styles.miniOn : focus === null ? styles.miniSoft : "");
+  return (
+    <aside aria-label="Where it shows" className={styles.mini}>
+      <div className={styles.miniPage}>
+        <div className={styles.miniHero} />
+        <div className={`${styles.miniBlock} ${styles.miniIntro} ${lit("intro")}`} data-mini="intro">
+          <span className={styles.miniLabel}>Intro</span>
+          <i />
+          <i />
+        </div>
+        <div className={styles.miniAbout} />
+        <div className={styles.miniTabs}>
+          <span className={styles.miniTabOn}>Levels</span>
+          <span className={`${styles.miniTab} ${lit("guide")}`} data-mini="guide">
+            Guide
+          </span>
+        </div>
+        <div className={styles.miniCard}>
+          <div className={styles.miniRows}>
+            <i />
+            <i />
+            <i />
+          </div>
+          <a href={`/b/${buildId}/edit?level=1`} className={styles.miniNote}>
+            Level notes
+          </a>
+        </div>
+      </div>
+      <a href={`/b/${buildId}?tab=guide`} target="_blank" rel="noopener" className={styles.miniLink}>
+        See it on the build page
+      </a>
+    </aside>
   );
 }

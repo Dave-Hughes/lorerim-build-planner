@@ -27,7 +27,7 @@ test.describe("shared build page", () => {
     await expect(card).toContainText("One-Handed 40 → 45");
     await expect(card).toContainText("Powerful Bashes");
     await expect(card.getByRole("complementary", { name: "Author's note" })).toContainText("Banking 10 skill points");
-    await expect(page.getByRole("region", { name: "Held" })).toContainText("Craftsmanship (book)");
+    await expect(page.getByRole("region", { name: /^Taken by level/ })).toContainText("Craftsmanship (book)");
   });
 
   test("steps through levels with buttons, the row and the keyboard", async ({ page }) => {
@@ -55,7 +55,7 @@ test.describe("shared build page", () => {
     await expect(trees.getByRole("tab", { name: /^Block/ })).toBeVisible();
     await trees.getByRole("tab", { name: /^Block/ }).click();
     await expect(trees.getByRole("button", { name: /Powerful Bashes, Block 25, taken/ })).toBeVisible();
-    await expect(trees.getByRole("region", { name: "Held" })).toContainText("Powerful Bashes");
+    await expect(trees.getByRole("region", { name: /^Taken by level/ })).toContainText("Powerful Bashes");
     await expect(trees.getByText("Can take now", { exact: true }).first()).toBeVisible();
   });
 

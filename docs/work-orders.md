@@ -801,14 +801,14 @@ Do after WO-20. Shared page items are in `src/components/build/build-view.tsx`; 
    - **Under 1100 px:** no miniature; the fields stack as now.
 
 ### Done when
-- [ ] e2e: the author's name in a level card links to `/u/<handle>`. A level with no note shows `No note for level N.`
-- [ ] e2e: hovering `Banked` and `Trainer` in the card shows their tooltips.
-- [ ] e2e: on the guide page, focusing `Intro` lights the miniature's intro block and focusing `Guide` lights its guide block.
-- [ ] e2e: scrolled down to the perk tree on Azrem, `›` in the pinned bar moves to level 7 and the bar's chips change. At level 6, clicking the `Dodge` chip selects Dodge in Evasion, and `window.scrollY` stays the same (±2 px).
-- [ ] The pinned bar is opaque: nothing shows through it (screenshot over the level card).
-- [ ] No `Held` heading left. Only one rule between the heading and the first group (screenshot).
-- [ ] Screenshots for Dave at 1440 × 900: the pinned bar over the perk tree at level 1, 6 and 12 of Azrem, plus at 390; the tab row; the level card with a note and without; attributes; `Taken by level 6`; the guide page with the miniature, `Guide` in focus. Also 390 for the tabs and the card.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: the author's name in a level card links to `/u/<handle>`. A level with no note shows `No note for level N.`
+- [x] e2e: hovering `Banked` and `Trainer` in the card shows their tooltips.
+- [x] e2e: on the guide page, focusing `Intro` lights the miniature's intro block and focusing `Guide` lights its guide block.
+- [x] e2e: scrolled down to the perk tree on Azrem, `›` in the pinned bar moves to level 7 and the bar's chips change. At level 6, clicking the `Dodge` chip selects Dodge in Evasion, and `window.scrollY` stays the same (±2 px).
+- [x] The pinned bar is opaque: nothing shows through it (screenshot over the level card).
+- [x] No `Held` heading left. Only one rule between the heading and the first group (screenshot).
+- [x] Screenshots for Dave at 1440 × 900: the pinned bar over the perk tree at level 1, 6 and 12 of Azrem, plus at 390; the tab row; the level card with a note and without; attributes; `Taken by level 6`; the guide page with the miniature, `Guide` in focus. Also 390 for the tabs and the card.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

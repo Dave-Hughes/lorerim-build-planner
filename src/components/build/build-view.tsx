@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Tooltip } from "@/components/ui/tooltip";
 import { LikeButton } from "./like-button";
 import { TAG_BY_SLUG } from "@/lib/builds/tags";
 import { AuthorLink } from "@/components/ui/author-link";
@@ -13,7 +14,7 @@ import { useGameData } from "@/components/game-data";
 import { GuideFactsProvider } from "@/components/guide/guide-facts";
 import { GuideSection } from "@/components/guide/guide-section";
 import { LevelNote } from "@/components/guide/level-note";
-import { firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
+import { docWords, firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import { GuideView } from "@/components/guide/guide-view";
 import { currentVersion, isOlderThanCurrent } from "@/lib/rules/versions";
 import { ATTRIBUTE_NAMES, levelChanges, levelMarks, perksByLevel, stoneShare, type PerkListGroup } from "@/lib/rules/derive";
@@ -141,6 +142,31 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
   // The intro, else the guide's first paragraph, else nothing.
   const intro = guide.intro && !isEmptyDoc(guide.intro) ? guide.intro : firstParagraph(overview);
   const TAB_NAMES: Record<BuildTab, string> = { levels: "Levels", guide: "Guide", gear: "Gear" };
+  // Each tab's second line: what's in it.
+  const minutes = overview ? Math.max(1, Math.ceil(docWords(overview) / 200)) : 0;
+  const TAB_SUB: Record<BuildTab, string> = {
+    levels: `Levels 1 to ${total}`,
+    guide: `${minutes} min read`,
+    gear: `${plan.gear.length} item${plan.gear.length === 1 ? "" : "s"}`,
+  };
+
+  // The pinned bar: once the tab row (or, with no tabs, the level navigation) scrolls off the top,
+  // a slim bar holds the tabs on the left and, on Levels, the level stepper on the right.
+  const [tabRow, setTabRow] = useState<HTMLDivElement | null>(null);
+  const [pinned, setPinned] = useState(false);
+  useEffect(() => {
+    const check = () => {
+      const el = tabRow ?? levelBarRef.current;
+      setPinned(!!el && el.getBoundingClientRect().bottom < 0);
+    };
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+    return () => {
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
+  }, [tabRow, levelBarRef, tab]);
   const tabRefs = useRef<Partial<Record<BuildTab, HTMLButtonElement | null>>>({});
   const onTabKey = (e: React.KeyboardEvent) => {
     const i = tabs.indexOf(tab);
@@ -178,7 +204,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
           </section>
 
           {tabs.length > 1 && (
-            <div role="tablist" aria-label="Build sections" className={styles.tabs} onKeyDown={onTabKey}>
+            <div ref={setTabRow} role="tablist" aria-label="Build sections" className={styles.tabs} onKeyDown={onTabKey}>
               {tabs.map((t) => (
                 <button
                   key={t}
@@ -194,9 +220,28 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
                   className={styles.tab}
                   onClick={() => setTab(t)}
                 >
-                  {TAB_NAMES[t]}
+                  <span className={styles.tabName}>{TAB_NAMES[t]}</span>
+                  <span className={styles.tabSub}>{TAB_SUB[t]}</span>
                 </button>
               ))}
+            </div>
+          )}
+          {pinned && (
+            <div className={styles.pinnedBar} role="region" aria-label="Pinned bar">
+              <div className={`page ${styles.pinnedInner}`}>
+                {tabs.length > 1 ? (
+                  <span className={styles.pinnedTabs}>
+                    {tabs.map((t) => (
+                      <button key={t} type="button" aria-pressed={tab === t} className={styles.pinnedTab} onClick={() => setTab(t)}>
+                        {TAB_NAMES[t]}
+                      </button>
+                    ))}
+                  </span>
+                ) : (
+                  <span />
+                )}
+                {tab === "levels" && <LevelStepper level={level} total={total} onChange={setLevel} slim />}
+              </div>
             </div>
           )}
 
@@ -282,21 +327,6 @@ function LevelsTab({
   const s = states[level - 1];
   const perks = useMemo(() => perksByLevel(d, plan, states, level), [d, plan, states, level]);
 
-  // The slim bar: shown once the stepper has scrolled off the top of the window.
-  const [stepper, setStepper] = useState<HTMLDivElement | null>(null);
-  const [pinned, setPinned] = useState(false);
-  useEffect(() => {
-    if (!stepper) return;
-    // Measured on scroll (an observer misses a jump straight past it).
-    const check = () => setPinned(stepper.getBoundingClientRect().bottom < 0);
-    check();
-    window.addEventListener("scroll", check, { passive: true });
-    window.addEventListener("resize", check);
-    return () => {
-      window.removeEventListener("scroll", check);
-      window.removeEventListener("resize", check);
-    };
-  }, [stepper]);
 
   // Perks: the tree picked for this level (by the player, a card link or the held list), else
   // the tree of this level's first perk, else the first major.
@@ -333,20 +363,11 @@ function LevelsTab({
     <>
       <section ref={levelBarRef} aria-label="Level" className={styles.levelSection}>
         <div className={styles.levelHead}>
-          <div ref={setStepper}>
-            <LevelStepper level={level} total={total} onChange={setLevel} />
-          </div>
+          <LevelStepper level={level} total={total} onChange={setLevel} />
           <LevelLegend />
         </div>
         <LevelBars marks={marks} level={level} onChange={setLevel} />
       </section>
-      {pinned && (
-        <div className={styles.pinnedBar} role="region" aria-label="Level, pinned">
-          <div className="page">
-            <LevelStepper level={level} total={total} onChange={setLevel} slim />
-          </div>
-        </div>
-      )}
 
       <LevelCard d={d} build={build} states={states} level={level} note={note} onPerk={(id) => showPerk(id, true)} />
 
@@ -445,8 +466,8 @@ function PerkChips({ d, perks, s, active, onChange }: { d: GameData; perks: Perk
 /** The perks held by this level, grouped by tree; this level's in ember. Each opens its star. */
 function HeldList({ perks, s, level, onPick }: { perks: PerkListGroup[]; s: LevelState; level: number; onPick: (id: string) => void }) {
   return (
-    <section aria-label="Held" className={styles.held}>
-      <span className={`sub-label ${styles.heldHead}`}>Held</span>
+    <section aria-label={`Taken by level ${level}`} className={styles.held}>
+      <span className={`sub-label ${styles.heldHead}`}>Taken by level {level}</span>
       {perks.length === 0 && <p className="muted">None yet.</p>}
       {perks.map((g) => (
         <div key={g.tree} className={styles.perkGroup}>
@@ -480,7 +501,7 @@ function AttributesAt({ s, level }: { s: LevelState; level: number }) {
         <div key={a} className={styles.attr}>
           <div className={styles.attrHead}>
             <span>
-              <IconLabel icon={<AttributeIcon name={a} />}>{ATTRIBUTE_NAMES[a]}</IconLabel>
+              <IconLabel icon={<AttributeIcon name={a} size={24} />}>{ATTRIBUTE_NAMES[a]}</IconLabel>
             </span>
             <span className={styles.attrNum}>{s[a]}</span>
           </div>
@@ -574,13 +595,19 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
   const s = states[level - 1];
   const changes = levelChanges(d, plan, states, level);
   const rows: [string, React.ReactNode][] = [];
+  // The rule behind a row, from the engine's own numbers (WO-17's wording in the editor).
+  const tips: Record<string, string> = {
+    Banked: "Skill points not spent at a level carry over to the next level-up.",
+    Trainer: `${d.rules.trainerSessionsPerLevel} trainer sessions a level, +1 to a skill each; unused ones carry over to later levels. A trainer can't raise a skill past the level's max skill.`,
+    "Skill book": `+1 to a skill (+2 with the Skilled trait), never past the level's max skill.`,
+    "Skill books": `+1 to a skill each (+2 with the Skilled trait), never past the level's max skill.`,
+    "Standing stone": "One stone at a time: choosing a new one replaces the old. Its bonus counts from that level on.",
+  };
 
   if (level > 1 && lv.attribute)
     rows.push([
       "Attribute",
-      <span key="a" className={styles.attrLine}>
-        <i className={`${styles.attrDot} ${styles[lv.attribute]}`} aria-hidden="true" />+5 {ATTRIBUTE_NAMES[lv.attribute]}
-      </span>,
+      <IconLabel key="a" icon={<AttributeIcon name={lv.attribute} size={24} />}>+5 {ATTRIBUTE_NAMES[lv.attribute]}</IconLabel>,
     ]);
 
   // Skill points: biggest gain first; the level's limit said once, on the first skill that hit it.
@@ -596,10 +623,10 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
         {raised.map((r, i) => {
           const capped = i === capAt;
           return (
-            <span key={r.sk} className="num">
+            <SkillLabel key={r.sk} name={r.sk} className="num">
               {r.sk} {r.from} → {r.to}
               {capped && <span className="muted"> (max skill {s.maxSkill} at level {level})</span>}
-            </span>
+            </SkillLabel>
           );
         })}
       </span>,
@@ -665,9 +692,9 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       kind === "trainer" ? "Trainer" : m.size > 1 ? "Skill books" : "Skill book",
       <span key={kind} className={styles.stack}>
         {[...m].map(([sk, l]) => (
-          <span key={sk} className="num">
+          <SkillLabel key={sk} name={sk} className="num">
             {sk} +{l.n} <span className="muted">({l.from} → {l.to})</span>
-          </span>
+          </SkillLabel>
         ))}
       </span>,
     ]);
@@ -675,14 +702,22 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
   if (changes.banked > 0) rows.push(["Banked", `${changes.banked} skill point${changes.banked === 1 ? "" : "s"}`]);
 
   return (
-    <section aria-label={`Level ${level}`} className={`frame ${styles.card} ${note ? styles.cardWithNote : ""}`}>
+    <section aria-label={`Level ${level}`} className={`frame ${styles.card} ${styles.cardWithNote}`}>
       <div className={styles.cardMain}>
         <h2 className={styles.cardTitle}>Level {level}</h2>
         {rows.length ? (
           <div className={styles.changes}>
             {rows.map(([k, v]) => (
               <div key={k} className={styles.changeRow}>
-                <span className={styles.changeKey}>{k}</span>
+                {tips[k] ? (
+                  <Tooltip content={tips[k]}>
+                    <span className={`${styles.changeKey} ${styles.ruleTip}`} tabIndex={0}>
+                      {k}
+                    </span>
+                  </Tooltip>
+                ) : (
+                  <span className={styles.changeKey}>{k}</span>
+                )}
                 <span>{v}</span>
               </div>
             ))}
@@ -698,15 +733,11 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
           </ul>
         )}
       </div>
-      {note && (
-        <aside aria-label="Author's note" className={styles.note}>
-          <LevelNote key={level} doc={note} level={level} />
-          <span className={styles.noteBy}>
-            <Avatar name={build.author.name} image={build.author.image} size={24} />
-            {build.author.name}
-          </span>
-        </aside>
-      )}
+      {/* The author's column is always there: their name first, then the note (or that there isn't one). */}
+      <aside aria-label="Author's note" className={styles.note}>
+        <AuthorLink author={build.author} className={styles.noteBy} avatar={<Avatar name={build.author.name} image={build.author.image} size={24} />} />
+        {note ? <LevelNote key={level} doc={note} level={level} /> : <p className={`muted ${styles.noNote}`}>No note for level {level}.</p>}
+      </aside>
     </section>
   );
 }

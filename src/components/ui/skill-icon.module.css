@@ -15,3 +15,8 @@
 .big {
   margin: -6px 0;
 }
+/* A 24px icon in a line of text: overhangs it a little instead of making it taller. */
+.mid {
+  margin: -3px 0;
+  vertical-align: -6px;
+}

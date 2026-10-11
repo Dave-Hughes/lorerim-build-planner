@@ -77,9 +77,9 @@ test("an intro written on the Guide page leads the shared page", async ({ page, 
 
 test("past the stepper a slim bar pinned to the top keeps stepping through levels", async ({ page }) => {
   await page.goto(`/b/${AZREM_BUILD_ID}?level=6`);
-  await expect(page.getByRole("region", { name: "Level, pinned" })).toHaveCount(0);
+  await expect(page.getByRole("region", { name: "Pinned bar" })).toHaveCount(0);
   await page.getByRole("region", { name: "Perks at level 6" }).scrollIntoViewIfNeeded();
-  const bar = page.getByRole("region", { name: "Level, pinned" });
+  const bar = page.getByRole("region", { name: "Pinned bar" });
   await expect(bar).toContainText(/Level\s*6\s*of 20/);
   await bar.getByRole("button", { name: "Next level" }).click();
   await expect(bar).toContainText(/Level\s*7\s*of 20/);

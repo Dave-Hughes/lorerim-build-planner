@@ -30,7 +30,7 @@ test.describe("perk trees on a phone", () => {
 
   test("perks open on the held list, and the Tree switch shows the tree", async ({ page }) => {
     await page.goto("/b/sample?level=6");
-    const held = page.getByRole("region", { name: "Held" });
+    const held = page.getByRole("region", { name: /^Taken by level/ });
     await expect(held).toContainText("Powerful Bashes");
     await expect(page.getByRole("button", { name: "List", exact: true })).toHaveAttribute("aria-pressed", "true");
     await page.getByRole("button", { name: "Tree", exact: true }).tap();
@@ -38,7 +38,7 @@ test.describe("perk trees on a phone", () => {
     await expect(page.getByRole("button", { name: /^Powerful Bashes, Block 25, taken/ })).toBeVisible();
     await expect(held).toHaveCount(0);
     await page.getByRole("button", { name: "List", exact: true }).tap();
-    await expect(page.getByRole("region", { name: "Held" })).toBeVisible();
+    await expect(page.getByRole("region", { name: /^Taken by level/ })).toBeVisible();
   });
 });
 

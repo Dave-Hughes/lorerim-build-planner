@@ -10,31 +10,31 @@ function slug(name: string): string {
 
 /**
  * A pixel icon from public/icons, drawn by scripts/icons/pixels.py. Decorative: the name always
- * sits beside it. `file` is the icon's file name without ".svg". 16px, or an exact multiple.
+ * sits beside it. `file` is the icon's file name without ".svg". 16px, 24px or 32px.
  */
-export function GameIcon({ file, size = 16, className }: { file: string; size?: 16 | 32; className?: string }) {
+export function GameIcon({ file, size = 16, className }: { file: string; size?: 16 | 24 | 32; className?: string }) {
   // A small SVG: nothing for next/image to optimise.
   // eslint-disable-next-line @next/next/no-img-element
-  return <img src={`/icons/${file}.svg`} width={size} height={size} alt="" aria-hidden="true" className={`${styles.icon} ${size === 32 ? styles.big : ""} ${className ?? ""}`} />;
+  return <img src={`/icons/${file}.svg`} width={size} height={size} alt="" aria-hidden="true" className={`${styles.icon} ${size === 32 ? styles.big : size === 24 ? styles.mid : ""} ${className ?? ""}`} />;
 }
 
 /** A skill tree or Destiny. */
-export function SkillIcon({ name, size = 16 }: { name: string; size?: 16 | 32 }) {
+export function SkillIcon({ name, size = 16 }: { name: string; size?: 16 | 24 | 32 }) {
   return <GameIcon file={slug(name)} size={size} />;
 }
 
 /** Health, Magicka or Stamina. */
-export function AttributeIcon({ name, size = 16 }: { name: string; size?: 16 | 32 }) {
+export function AttributeIcon({ name, size = 16 }: { name: string; size?: 16 | 24 | 32 }) {
   return <GameIcon file={`attr-${slug(name)}`} size={size} />;
 }
 
 /** A birthsign or standing stone ("Lord" or "The Lord"); the stones share the signs' constellations. */
-export function SignIcon({ name, size = 16, className }: { name: string; size?: 16 | 32; className?: string }) {
+export function SignIcon({ name, size = 16, className }: { name: string; size?: 16 | 24 | 32; className?: string }) {
   return <GameIcon file={`sign-${slug(name)}`} size={size} className={className} />;
 }
 
 /** One of the ten races. */
-export function RaceIcon({ name, size = 16, className }: { name: string; size?: 16 | 32; className?: string }) {
+export function RaceIcon({ name, size = 16, className }: { name: string; size?: 16 | 24 | 32; className?: string }) {
   return <GameIcon file={`race-${slug(name)}`} size={size} className={className} />;
 }
 
