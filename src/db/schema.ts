@@ -22,6 +22,8 @@ export const users = pgTable("user", {
   email: text("email").unique(),
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
+  /** The public page's address, /u/<handle>. Made from the Discord name once, then never changed. */
+  handle: text("handle").unique(),
 });
 
 export const accounts = pgTable(

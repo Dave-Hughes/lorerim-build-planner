@@ -513,12 +513,12 @@ Dave's idea: one link that shows all of a player's builds, for a Discord bio or 
 9. **Owner on their own page:** add a `Copy link` button next to the header. When clicked, it says `Copied` for two seconds.
 
 ### Done when
-- [ ] Unit tests for making handles: Discord names with spaces, capitals, accents, emoji, only symbols (`player`), too long, and a name that's already taken (`-2`).
-- [ ] e2e: a visitor to `/u/<handle>` sees the owner's listed builds and none of their link-only or private ones. `/u/nobody-here` returns 404.
-- [ ] e2e: clicking the author name on a build card and on a shared build page opens that author's page.
+- [x] Unit tests for making handles: Discord names with spaces, capitals, accents, emoji, only symbols (`player`), too long, and a name that's already taken (`-2`).
+- [x] e2e: a visitor to `/u/<handle>` sees the owner's listed builds and none of their link-only or private ones. `/u/nobody-here` returns 404.
+- [x] e2e: clicking the author name on a build card and on a shared build page opens that author's page.
 - [ ] Migration committed in `drizzle/`. The backfill script has been run on dev and staging, and a second run changes nothing.
-- [ ] Screenshots for Dave at 1512 × 806 and 390: Tapps's page with listed builds, the same page empty as the owner, and `/me` showing `My page`.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Screenshots for Dave at 1512 × 806 and 390: Tapps's page with listed builds, the same page empty as the owner, and `/me` showing `My page`.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

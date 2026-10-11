@@ -3,7 +3,7 @@ import Link from "next/link";
 import { auth } from "@/auth";
 import { BuildCard, BuildGrid } from "@/components/build/build-card";
 import { SignInButton } from "@/components/site-header";
-import { listBuildsByOwner } from "@/lib/builds/queries";
+import { handleFor, listBuildsByOwner } from "@/lib/builds/queries";
 import styles from "../home.module.css";
 
 export const metadata: Metadata = { title: "My builds" };
@@ -23,16 +23,23 @@ export default async function MyBuilds() {
       </main>
     );
   }
-  const builds = await listBuildsByOwner(userId);
+  const [builds, handle] = await Promise.all([listBuildsByOwner(userId), handleFor(userId)]);
   return (
     <main className={`page ${styles.main}`}>
       <div className={styles.head}>
         <h1 className={`title ${styles.h1}`}>
           My builds
         </h1>
-        <Link href="/new" className="btn btn-primary btn-sm">
-          New build
-        </Link>
+        <span className={styles.headActions}>
+          {handle && (
+            <Link href={`/u/${handle}`} className="btn btn-sm">
+              My page
+            </Link>
+          )}
+          <Link href="/new" className="btn btn-primary btn-sm">
+            New build
+          </Link>
+        </span>
       </div>
       {builds.length === 0 ? (
         <p className="muted">None yet.</p>

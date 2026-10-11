@@ -17,6 +17,9 @@ config({ path: ".env.local", quiet: true });
 
 export const TEST_USER_ID = "e2e-user-0001";
 export const TEST_USER_NAME = "Test Author";
+export const TEST_USER_HANDLE = "e2e-test-author";
+/** The test author's link-only build: never on their public page. */
+export const LINK_ONLY_BUILD_ID = "e2eqq2e2e7";
 export const TEST_SESSION_TOKEN = "e2e-session-token-0001";
 export const TEST_BUILD_ID = "e2eqq2e2eq";
 /** A copy of the sample the tests may change freely (remove perks, add levels). */
@@ -44,8 +47,8 @@ export async function seed() {
     await db.delete(schema.builds).where(like(schema.builds.id, "e2e%"));
     await db.delete(schema.users).where(like(schema.users.id, "e2e-%"));
     await db.insert(schema.users).values([
-      { id: TEST_USER_ID, name: TEST_USER_NAME, email: null, image: null },
-      { id: OTHER_USER_ID, name: "Someone Else", email: null, image: null },
+      { id: TEST_USER_ID, name: TEST_USER_NAME, email: null, image: null, handle: TEST_USER_HANDLE },
+      { id: OTHER_USER_ID, name: "Someone Else", email: null, image: null, handle: "e2e-someone-else" },
     ]);
     await db.insert(schema.sessions).values({
       sessionToken: TEST_SESSION_TOKEN,
@@ -68,6 +71,15 @@ export async function seed() {
         name: "Scratch Shield-Wall",
         description: "A build the tests change.",
         visibility: "private",
+        gameVersion: "5.0.4.8",
+        plan: samplePlan(),
+      },
+      {
+        id: LINK_ONLY_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        name: "Link-Only Shield-Wall",
+        description: "Shared by link, not listed.",
+        visibility: "unlisted",
         gameVersion: "5.0.4.8",
         plan: samplePlan(),
       },

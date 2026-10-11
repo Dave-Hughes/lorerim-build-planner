@@ -77,7 +77,7 @@ test.describe("creating a build", () => {
     // It is theirs, and a fresh /new starts clean.
     await page.goto("/me");
     await expect(page.getByRole("heading", { name: "Playwright Shield-Wall" })).toBeVisible();
-    await expect(page.getByText("Link only")).toBeVisible();
+    await expect(page.getByRole("article").filter({ hasText: "Playwright Shield-Wall" }).getByText("Link only")).toBeVisible();
     await page.goto("/new");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Choose a race");
   });

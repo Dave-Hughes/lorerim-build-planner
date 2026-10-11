@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import Discord from "next-auth/providers/discord";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db, schema } from "@/db";
+import { assignHandle } from "@/lib/users/assign-handle";
 
 /**
  * Discord sign-in. Only the "identify" scope is requested: we store the
@@ -25,6 +26,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth(() => ({
       issuer: "https://discord.com",
     }),
   ],
+  events: {
+    // A handle for /u/<handle> on first sign-in (then never changed). A failure here must not
+    // stop the sign-in; the backfill or the next sign-in fills it.
+    async signIn({ user }) {
+      if (user.id) await assignHandle(db(), user.id).catch(() => null);
+    },
+  },
   callbacks: {
     session({ session, user }) {
       session.user.id = user.id;

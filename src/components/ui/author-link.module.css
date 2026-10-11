@@ -1,0 +1,12 @@
+.link {
+  text-decoration: none;
+  transition: color 120ms;
+}
+.link:hover,
+.link:focus-visible {
+  color: var(--ember);
+}
+.link:hover span {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

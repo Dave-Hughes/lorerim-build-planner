@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AuthorLink } from "@/components/ui/author-link";
 import { Avatar } from "@/components/ui/avatar";
 import type { BuildViewData } from "./build-view";
 import styles from "./build-view.module.css";
@@ -26,10 +27,7 @@ export function RetiredBuild({ build, isOwner }: { build: BuildViewData; isOwner
             <h1 className={`title ${styles.h1}`}>{build.name}</h1>
             {build.description && <p className={`flavor ${styles.description}`}>{build.description}</p>}
             <div className={styles.byline}>
-              <span className={styles.author}>
-                <Avatar name={build.author.name} image={build.author.image} />
-                <span className={styles.authorName}>{build.author.name}</span>
-              </span>
+              <AuthorLink author={build.author} className={styles.author} nameClassName={styles.authorName} avatar={<Avatar name={build.author.name} image={build.author.image} />} />
               <span className="tag">LoreRim {build.gameVersion}</span>
               <span>Planned to level {plan.levels.length}</span>
             </div>

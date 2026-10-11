@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { AuthorLink } from "@/components/ui/author-link";
 import { traitWithChoice } from "@/lib/rules/trait-choices";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
@@ -442,10 +443,7 @@ function Cover({
           <h1 className={`title ${styles.h1}`}>{build.name}</h1>
           {build.description && <p className={`flavor ${styles.description}`}>{build.description}</p>}
           <div className={styles.byline}>
-            <span className={styles.author}>
-              <Avatar name={build.author.name} image={build.author.image} />
-              <span className={styles.authorName}>{build.author.name}</span>
-            </span>
+            <AuthorLink author={build.author} className={styles.author} nameClassName={styles.authorName} avatar={<Avatar name={build.author.name} image={build.author.image} />} />
             <span className="tag">LoreRim {build.gameVersion}</span>
             {/* One unit, so a wrap never leaves the bar dangling at a line's end. */}
             <span className={styles.dates}>

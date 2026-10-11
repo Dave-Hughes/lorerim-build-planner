@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AuthorLink } from "@/components/ui/author-link";
 import { Avatar } from "@/components/ui/avatar";
 import { IconLabel, RaceIcon } from "@/components/ui/skill-icon";
 import { DeleteBuildButton } from "./delete-build-button";
@@ -22,10 +23,7 @@ export function BuildCard({ build, mine }: { build: BuildSummary; mine?: boolean
           {build.traits.length ? ` with ${build.traits.join(" and ")}` : ""}, to level {build.levels}
         </p>
         <div className={styles.foot}>
-          <span className={styles.author}>
-            <Avatar name={build.author.name} image={build.author.image} size={24} />
-            <span>{build.author.name}</span>
-          </span>
+          <AuthorLink author={build.author} className={styles.author} avatar={<Avatar name={build.author.name} image={build.author.image} size={24} />} />
           <span className="muted">{formatDate(build.updatedAt)}</span>
         </div>
         {mine && (

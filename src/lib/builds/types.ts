@@ -4,6 +4,8 @@ import type { BuildVisibility } from "./validate";
 export interface BuildAuthor {
   name: string;
   image: string | null;
+  /** Their public page is /u/<handle>; null until one is set (the name is then plain text). */
+  handle: string | null;
 }
 
 export interface BuildRecord {
