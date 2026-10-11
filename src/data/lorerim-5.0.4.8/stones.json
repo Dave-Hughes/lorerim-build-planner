@@ -1,91 +1,104 @@
 [
   {
     "name": "Warrior",
-    "text": "+25 Health",
+    "text": "Health is increased by 25.",
+    "fromRecords": true,
     "health": 25,
     "magicka": 0,
     "stamina": 0
   },
   {
     "name": "Mage",
-    "text": "+25 Magicka",
+    "text": "Magicka is increased by 25.",
+    "fromRecords": true,
     "health": 0,
     "magicka": 25,
     "stamina": 0
   },
   {
     "name": "Thief",
-    "text": "+25 Stamina",
+    "text": "Stamina is increased by 25.",
+    "fromRecords": true,
     "health": 0,
     "magicka": 0,
     "stamina": 25
   },
   {
     "name": "Apprentice",
-    "text": "+0.3 Magicka per second",
+    "text": "Regain 0.3 flat Magicka per second.",
+    "fromRecords": true,
     "health": 0,
     "magicka": 0,
     "stamina": 0
   },
   {
     "name": "Lord",
-    "text": "+0.3 Health per second",
+    "text": "Regain 0.3 flat Health per second.",
+    "fromRecords": true,
     "health": 0,
     "magicka": 0,
     "stamina": 0
   },
   {
     "name": "Steed",
-    "text": "+0.3 Stamina per second",
+    "text": "Regain 0.3 flat Stamina per second.",
+    "fromRecords": true,
     "health": 0,
     "magicka": 0,
     "stamina": 0
   },
   {
     "name": "Lady",
-    "text": "Prices 10% better",
+    "text": "Buying and selling prices are 10% better.",
+    "fromRecords": true,
     "health": 0,
     "magicka": 0,
     "stamina": 0
   },
   {
     "name": "Atronach",
-    "text": "+5% magic resistance",
+    "text": "Your magic resistance is increased by 5%.",
+    "fromRecords": true,
     "health": 0,
     "magicka": 0,
     "stamina": 0
   },
   {
     "name": "Lover",
-    "text": "+100 armor",
+    "text": "Gain 100 armor rating.",
+    "fromRecords": true,
     "health": 0,
     "magicka": 0,
     "stamina": 0
   },
   {
     "name": "Tower",
-    "text": "Reflect 5% of physical damage",
+    "text": "Reflect 5% of physical damage taken.",
+    "fromRecords": true,
     "health": 0,
     "magicka": 0,
     "stamina": 0
   },
   {
     "name": "Ritual",
-    "text": "Conjuration spells 10% cheaper",
+    "text": "Conjuration spells cost 10% less to cast.",
+    "fromRecords": true,
     "health": 0,
     "magicka": 0,
     "stamina": 0
   },
   {
     "name": "Serpent",
-    "text": "Crafted potions and poisons 10% stronger",
+    "text": "Crafted potions and poisons are 10% stronger.",
+    "fromRecords": true,
     "health": 0,
     "magicka": 0,
     "stamina": 0
   },
   {
     "name": "Shadow",
-    "text": "Sneaking 10% better, steps 10% quieter",
+    "text": "Sneaking is 10% more effective and your footsteps are 10% quieter.",
+    "fromRecords": true,
     "health": 0,
     "magicka": 0,
     "stamina": 0

@@ -293,7 +293,10 @@ def main():
     def sign_text(cands, prefer):
         if not cands:
             return None
-        best = next((c for c in cands if re.search(prefer, c["edid"] or "", re.I)), cands[0])
+        # The sign's own ability, not its add-ons (Apprentice_Weakness, Ritual_Turn, Shadow_Moonshadow):
+        # among the preferred records, one with text first, then the shortest EDID.
+        preferred = [c for c in cands if re.search(prefer, c["edid"] or "", re.I)] or cands
+        best = min(preferred, key=lambda c: (not c["desc"].strip(), len(c["edid"] or "")))
         if best["desc"].strip():
             return unmark(clean(best["desc"]))
         parts = []
@@ -317,7 +320,7 @@ def main():
                 problems.append(f"birthsign {name}: no text in the records; shown without one")
             signs_out.append({"name": name, "text": t or "", **nums})
         for name, nums in overrides["stones"].items():
-            t = sign_text(data["signs"].get(name, []), r"doom|stone")
+            t = sign_text(data["signs"].get(name, []), r"doomstones_.*spell")
             if t is None:
                 problems.append(f"standing stone {name}: no text in the records; shown without one")
             stones_out.append({"name": name, "text": t or "", "fromRecords": t is not None, **nums})

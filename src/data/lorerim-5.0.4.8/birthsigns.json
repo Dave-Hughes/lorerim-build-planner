@@ -1,7 +1,7 @@
 [
   {
     "name": "Warrior",
-    "text": "+60 Health. Weapons deal 10% more damage with +10 armor penetration; unarmed +10 damage.",
+    "text": "Those born under the sign of the Warrior are thought to be short-tempered and skilled with weapons. Health increases by 60, all weapons deal 10% more damage, armor penetration with all weapons is increased by 10 unarmed strikes do 10 additional damage.",
     "health": 60,
     "magicka": 0,
     "stamina": 0,
@@ -9,7 +9,7 @@
   },
   {
     "name": "Thief",
-    "text": "Pickpocketing 50% easier, 40% harder to detect, +20% sneaking speed, sneak without the perk. 20% chance to avoid physical damage, 1% chance to take 50% more.",
+    "text": "Those born under the sign of the Thief are thought to take risks and evade harm. Their luck is thought to run out eventually, cutting their lives short. Pickpocketing is 50% easier, you are 40% harder to detect, move 20% faster when sneaking and can sneak without proficiency, 20% chance to avoid physical damage, 1% chance to take 50% more.",
     "health": 0,
     "magicka": 0,
     "stamina": 0,
@@ -17,7 +17,7 @@
   },
   {
     "name": "Mage",
-    "text": "+150 Magicka. Spells 30% stronger and longer while above 25% Magicka.",
+    "text": "Those born under the sign of the Mage are thought to have more magicka and a talent for spellcasting. They are also thought to be arrogant and absent-minded. Magicka increases by 150. Spells are 30% stronger and longer lasting when over 25% magicka.",
     "health": 0,
     "magicka": 150,
     "stamina": 0,
@@ -25,7 +25,7 @@
   },
   {
     "name": "Apprentice",
-    "text": "+5 Magicka regeneration per second, spells 20% cheaper. 25% weakness to magic.",
+    "text": "Those born under the sign of the Apprentice are thought to have an affinity for magic, but also a vulnerability to magic. Magic weakness increased by 25%, magicka regenerates an extra 5 per second, spells are 20% cheaper.",
     "health": 0,
     "magicka": 0,
     "stamina": 0,
@@ -33,7 +33,7 @@
   },
   {
     "name": "Atronach",
-    "text": "+300 Magicka, 25% chance to absorb spells, no Magicka loss when hit. No natural Magicka regeneration.",
+    "text": "Those born under the sign of the Atronach are thought to be natural sorcerers with deep reserves of magicka, but that cannot generate their own magicka. Magicka increases by 300, do not lose magicka when hit, absorb chance increased by 25%, you cannot naturally regenerate magicka.",
     "health": 0,
     "magicka": 300,
     "stamina": 0,
@@ -41,7 +41,7 @@
   },
   {
     "name": "Lady",
-    "text": "+40 Health and Magicka, both regenerate 80% faster. Run and swim without exertion.",
+    "text": "Those born under the sign of the Lady are thought to be kind and tolerant. Health and Magicka increase by 40 and regenerate 80% faster, you can run or swim without exertion.",
     "health": 40,
     "magicka": 40,
     "stamina": 0,
@@ -49,7 +49,7 @@
   },
   {
     "name": "Lord",
-    "text": "+150 armor, +15% magic resistance, restore 1.5 Health per second. 30% weakness to fire.",
+    "text": "Those born under the sign of the Lord are thought to be stronger and healthier, although they are sometimes referred to as Trollkin due to their innate weakness to fire. Gain 15% Magic Resist and 150 armor rating, restore 1.5 health per second, gain 30% Weakness to Fire.",
     "health": 0,
     "magicka": 0,
     "stamina": 0,
@@ -57,7 +57,7 @@
   },
   {
     "name": "Lover",
-    "text": "25% chance to take half physical and magic damage. Prices 15% better, shouts 20% stronger.",
+    "text": "Those under the sign of the Lover have increased agility and natural charm. 25% chance to take half physical and magical damage, prices are 15% better. Shouts are 20% stronger.",
     "health": 0,
     "magicka": 0,
     "stamina": 0,
@@ -65,7 +65,7 @@
   },
   {
     "name": "Ritual",
-    "text": "Soul gems restore 50% more, blessings 50% stronger, Ritual powers. Its \"stones 200% stronger\" line is untested with LoreRim's stones.",
+    "text": "Those born under the sign of the Ritual are thought to have various abilities depending on the aspects of the moons and planets. Soul Gems restore 50% more charge. Daedric and Divine blessings are 50% stronger. Standing Stones effects are 200% stronger.",
     "health": 0,
     "magicka": 0,
     "stamina": 0,
@@ -73,7 +73,7 @@
   },
   {
     "name": "Serpent",
-    "text": "+15 armor penetration. Poison does 50% less to you; most paralysis does not affect you. Serpent's Curse power.",
+    "text": "Those born under the sign of the Serpent are thought to have no characteristics in common except being the most blessed and the most cursed. Armor penetration with all weapons is increased by 15, poison deals 50% less damage to you, most paralysis effects don't adversely affect you, you receive Serpent's Curse power.",
     "health": 0,
     "magicka": 0,
     "stamina": 0,
@@ -81,7 +81,7 @@
   },
   {
     "name": "Shadow",
-    "text": "50% harder to detect, sneak without the perk, 30% quieter. Moonshadow power.",
+    "text": "Those born under the sign of the Shadow are thought to have the ability to hide in shadows. You are 50% harder to detect, you can sneak without proficiency, movement noise is 30% quieter, you receive Moonshadow power.",
     "health": 0,
     "magicka": 0,
     "stamina": 0,
@@ -89,7 +89,7 @@
   },
   {
     "name": "Steed",
-    "text": "+60 Stamina, +10% move and sprint speed, restore 1 Stamina per second. Most slows do not affect you.",
+    "text": "Those born under the sign of the Steed are thought to be impatient and always hurrying from one place to another. Movement is 10% faster, sprinting is 10% faster, stamina increased by 60, restore 1 stamina per second, most slow effects don't affect you.",
     "health": 0,
     "magicka": 0,
     "stamina": 60,
@@ -97,7 +97,7 @@
   },
   {
     "name": "Tower",
-    "text": "+50 carry weight, +4 lockpicking expertise, reflect 15% physical damage, +10% block, more gold from kills.",
+    "text": "Those born under the sign of the Tower are thought to have a knack for finding gold and opening locks. Gain more gold when killing enemies, 50 more carryweight, lockpicking expertise is increased by 4, you can pick effortless locks in plain sight without being noticed, reflect 15% physical damage.",
     "health": 0,
     "magicka": 0,
     "stamina": 0,

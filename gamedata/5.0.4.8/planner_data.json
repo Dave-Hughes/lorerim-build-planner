@@ -23846,6 +23846,1313 @@
    "plugin": "LoreRim Traits.esp"
   }
  ],
+ "signs": {
+  "Apprentice": [
+   {
+    "key": [
+     "Skyrim.esm",
+     1107001
+    ],
+    "edid": "REQ_Ability_Birthsign_Apprentice_Weakness",
+    "name": "Sign of the Apprentice",
+    "desc": "",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "",
+      "name": "",
+      "desc": "",
+      "mag": 25.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "Skyrim.esm",
+     941902
+    ],
+    "edid": "REQ_Ability_Birthsign_Apprentice",
+    "name": "Sign of the Apprentice",
+    "desc": "Those born under the sign of the Apprentice are thought to have an affinity for magic, but also a vulnerability to magic. Magic weakness increased by <25>%, magicka regenerates an extra <5> per second, spells are <20>% cheaper.",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Apprentice",
+      "name": "Sign of the Apprentice",
+      "desc": "",
+      "mag": 5.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_DrainMagicResistance",
+      "name": "Drain Magic Resistance",
+      "desc": "",
+      "mag": 25.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyAlterationModifier",
+      "name": "Fortify Alteration Modifier",
+      "desc": "",
+      "mag": 20.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyConjurationModifier",
+      "name": "Fortify Conjuration Modifier",
+      "desc": "",
+      "mag": 20.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyDestructionModifier",
+      "name": "Fortify Destruction Modifier",
+      "desc": "",
+      "mag": 20.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyIllusionModifier",
+      "name": "Fortify Illusion Modifier",
+      "desc": "",
+      "mag": 20.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyRestorationModifier",
+      "name": "Fortify Restoration Modifier",
+      "desc": "",
+      "mag": 20.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "LoreRim Doomstones.esp",
+     11
+    ],
+    "edid": "LoreRimDoomstones_ApprenticeSpell",
+    "name": "Apprentice Stone",
+    "desc": "Regain 0.3 flat Magicka per second.",
+    "plugin": "LoreRim Doomstones.esp",
+    "effects": [
+     {
+      "edid": "LoreRimDoomstones_ApprenticeEffect",
+      "name": "Apprentice Stone",
+      "desc": "",
+      "mag": 0.30000001192092896,
+      "dur": 86400
+     }
+    ]
+   }
+  ],
+  "Ritual": [
+   {
+    "key": [
+     "Skyrim.esm",
+     1069294
+    ],
+    "edid": "REQ_NULL_doomRitualReanimateSpell",
+    "name": "reanimate spell",
+    "desc": "",
+    "plugin": "Requiem.esp",
+    "effects": [
+     {
+      "edid": "dunReanimateSelfEffect",
+      "name": "Reanimate",
+      "desc": "Reanimate a dead body to fight for you for <dur> seconds.",
+      "mag": 25.0,
+      "dur": 180
+     }
+    ]
+   },
+   {
+    "key": [
+     "Skyrim.esm",
+     946985
+    ],
+    "edid": "REQ_Ability_Birthsign_Ritual",
+    "name": "Sign of the Ritual",
+    "desc": "Those born under the sign of the Ritual are thought to have various abilities depending on the aspects of the moons and planets. Soul Gems restore <50>% more charge. Daedric and Divine blessings are <50>% stronger. Standing Stones effects are <200>% stronger.",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Ritual",
+      "name": "Sign of the Ritual",
+      "desc": "",
+      "mag": 0.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "Requiem - Birthsigns Redone.esp",
+     2048
+    ],
+    "edid": "REQ_Ability_Birthsign_Ritual_Reanimate",
+    "name": "Ritual: Dead Horde",
+    "desc": "",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Ritual_Reanimate",
+      "name": "Ritual: Dead Horde",
+      "desc": "Reanimate all nearby dead bodies up to level <mag> for <dur> seconds.",
+      "mag": 50.0,
+      "dur": 600
+     }
+    ]
+   },
+   {
+    "key": [
+     "Requiem - Birthsigns Redone.esp",
+     2051
+    ],
+    "edid": "REQ_Ability_Birthsign_Ritual_Turn",
+    "name": "Ritual: Blessed Fire",
+    "desc": "",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Ritual_Turn",
+      "name": "Ritual: Blessed Fire",
+      "desc": "Causes all nearby undead up to level <mag> to flee for <dur> seconds.",
+      "mag": 50.0,
+      "dur": 60
+     }
+    ]
+   },
+   {
+    "key": [
+     "Requiem - Birthsigns Redone.esp",
+     2053
+    ],
+    "edid": "REQ_Ability_Birthsign_Ritual_Healing",
+    "name": "Ritual: Salvation",
+    "desc": "",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Ritual_Healing_Area",
+      "name": "Ritual: Salvation",
+      "desc": "Heals all nearby allies and the caster for <mag>, but doesn't affect the undead, atronachs and constructs.",
+      "mag": 999.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Effect_Birthsign_Ritual_Healing_Self",
+      "name": "Ritual: Salvation",
+      "desc": "",
+      "mag": 999.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "LoreRim - Magink Bosses.esp",
+     2191
+    ],
+    "edid": "Mirel_RfaDK_VoiceMassReanimate",
+    "name": "Ritual",
+    "desc": "",
+    "plugin": "LoreRim - Magink Bosses.esp",
+    "effects": [
+     {
+      "edid": "Mirel_RfaDK_EffectMassReanimate",
+      "name": "Ritual Stone",
+      "desc": "Temporarily reanimates corpses in the immediate area.",
+      "mag": 100.0,
+      "dur": 45
+     },
+     {
+      "edid": "Mirel_RfaDK_VoiceAIScript30sFFSelf",
+      "name": "Gives high priority to spells",
+      "desc": "",
+      "mag": 0.0,
+      "dur": 50
+     }
+    ]
+   },
+   {
+    "key": [
+     "LoreRim Doomstones.esp",
+     28
+    ],
+    "edid": "LoreRimDoomstones_RitualSpell",
+    "name": "Ritual Stone",
+    "desc": "Conjuration spells cost 10% less to cast.",
+    "plugin": "LoreRim Doomstones.esp",
+    "effects": [
+     {
+      "edid": "LoreRimDoomstones_RitualEffect",
+      "name": "Ritual Stone",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 86400
+     }
+    ]
+   }
+  ],
+  "Shadow": [
+   {
+    "key": [
+     "Skyrim.esm",
+     946986
+    ],
+    "edid": "REQ_Ability_Birthsign_Shadow",
+    "name": "Sign of the Shadow",
+    "desc": "Those born under the sign of the Shadow are thought to have the ability to hide in shadows. You are <50>% harder to detect, you can sneak without proficiency, movement noise is <30>% quieter, you receive <Moonshadow> power.",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Shadow",
+      "name": "Sign of the Shadow",
+      "desc": "",
+      "mag": 0.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifySneakingModifier",
+      "name": "Fortify Sneaking Modifier",
+      "desc": "",
+      "mag": 50.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyMuffle",
+      "name": "Fortify Muffle",
+      "desc": "",
+      "mag": 30.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "Requiem - Birthsigns Redone.esp",
+     2056
+    ],
+    "edid": "REQ_Ability_Birthsign_Shadow_Moonshadow",
+    "name": "Moonshadow",
+    "desc": "",
+    "plugin": "Requiem - Birthsigns Redone.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Shadow_Moonshadow",
+      "name": "Moonshadow",
+      "desc": "For <dur> seconds you automatically become invisible while sneaking.",
+      "mag": 0.0,
+      "dur": 60
+     }
+    ]
+   },
+   {
+    "key": [
+     "Requiem - Birthsigns Redone.esp",
+     2057
+    ],
+    "edid": "REQ_Ability_Birthsign_Shadow_Moonshadow_Effect",
+    "name": "Moonshadow",
+    "desc": "You are invisible. Activating an object or attacking will break the spell.",
+    "plugin": "Requiem - Birthsigns Redone.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Shadow_Moonshadow_Effect",
+      "name": "Moonshadow",
+      "desc": "When entering sneak mode, you become invisible.",
+      "mag": 0.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "BIG [REDACTED] BOSS (BFB).esp",
+     2340
+    ],
+    "edid": "BFB_Shadow",
+    "name": "Shadow",
+    "desc": "",
+    "plugin": "LoreRim - NPCs and Races.esp",
+    "effects": [
+     {
+      "edid": "BFB_Etherealize",
+      "name": "Etherealize",
+      "desc": "You become invulnerable, but unable to attack. However you recover magicka and stamina.",
+      "mag": 0.0,
+      "dur": 10
+     },
+     {
+      "edid": "BFB_Invisibillity",
+      "name": "Invisibility",
+      "desc": "You can become invisible.",
+      "mag": 0.0,
+      "dur": 10
+     }
+    ]
+   },
+   {
+    "key": [
+     "LoreRim Doomstones.esp",
+     22
+    ],
+    "edid": "LoreRimDoomstones_ShadowSpell",
+    "name": "Shadow Stone",
+    "desc": "Sneaking is 10% more effective and your footsteps are 10% quieter.",
+    "plugin": "LoreRim Doomstones.esp",
+    "effects": [
+     {
+      "edid": "LoreRimDoomstones_ShadowEffect01",
+      "name": "Shadow Stone",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 86400
+     },
+     {
+      "edid": "LoreRimDoomstones_ShadowEffect02",
+      "name": "Shadow Stone",
+      "desc": "",
+      "mag": 0.10000000149011612,
+      "dur": 86400
+     }
+    ]
+   }
+  ],
+  "Tower": [
+   {
+    "key": [
+     "Skyrim.esm",
+     946984
+    ],
+    "edid": "REQ_Ability_Birthsign_Tower",
+    "name": "Sign of the Tower",
+    "desc": "Those born under the sign of the Tower are thought to have a knack for finding gold and opening locks. Gain more gold when killing enemies, <50> more carryweight, lockpicking expertise is increased by <4>, you can pick effortless locks in plain sight without being noticed, reflect <15>% physical damage.",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Tower",
+      "name": "Sign of the Tower",
+      "desc": "",
+      "mag": 0.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyLockpickingPowerModifier",
+      "name": "Fortify Lockpicking Power Modifier",
+      "desc": "",
+      "mag": 50.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyLockpickingModifier",
+      "name": "Fortify Lockpicking",
+      "desc": "",
+      "mag": 4.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Ench_FortifyCarryWeight",
+      "name": "Fortify Carry Weight",
+      "desc": "Carry weight increases by <mag>.",
+      "mag": 50.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_ReflectDamage",
+      "name": "Reflect Damage",
+      "desc": "",
+      "mag": 15.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyBlockModifier",
+      "name": "Fortify Block Modifier",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "LoreRim Doomstones.esp",
+     33
+    ],
+    "edid": "LoreRimDoomstones_TowerSpell",
+    "name": "Tower Stone",
+    "desc": "Reflect 5% of physical damage taken.",
+    "plugin": "LoreRim Doomstones.esp",
+    "effects": [
+     {
+      "edid": "LoreRimDoomstones_TowerEffect",
+      "name": "Tower Stone",
+      "desc": "",
+      "mag": 5.0,
+      "dur": 86400
+     }
+    ]
+   }
+  ],
+  "Serpent": [
+   {
+    "key": [
+     "Skyrim.esm",
+     941921
+    ],
+    "edid": "REQ_Ability_Birthsign_Serpent",
+    "name": "Sign of the Serpent",
+    "desc": "Those born under the sign of the Serpent are thought to have no characteristics in common except being the most blessed and the most cursed. Armor penetration with all weapons is increased by <15>, poison deals <50>% less damage to you, most paralysis effects don't adversely affect you, you receive <Serpent's Curse> power.",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Serpent",
+      "name": "Sign of the Serpent",
+      "desc": "",
+      "mag": 0.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyPoisonResistance",
+      "name": "Fortify Poison Resistance",
+      "desc": "",
+      "mag": 50.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Ability_FortifyArmorPenetration_OneHanded",
+      "name": "Fortify One-Handed Armor Penetration",
+      "desc": "",
+      "mag": 15.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Ability_FortifyArmorPenetration_TwoHanded",
+      "name": "Fortify Two-Handed Armor Penetration",
+      "desc": "",
+      "mag": 15.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Ability_FortifyArmorPenetration_Marksman",
+      "name": "Fortify Marksman Armor Penetration",
+      "desc": "",
+      "mag": 15.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "Requiem - Birthsigns Redone.esp",
+     2060
+    ],
+    "edid": "REQ_Ability_Birthsign_Serpent_SerpentsCurse",
+    "name": "Serpent's Curse",
+    "desc": "Dispels all magical effects and paralyzes the target for <5> seconds. Deals <10> poison damage and <15> magical damage per second for <15> seconds.",
+    "plugin": "Synthesis - Spell Absorption.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Serpent_Paralyze",
+      "name": "Serpent's Curse",
+      "desc": "",
+      "mag": 0.0,
+      "dur": 5
+     },
+     {
+      "edid": "REQ_Effect_Birthsign_Serpent_Stagger",
+      "name": "Serpent's Curse",
+      "desc": "",
+      "mag": 100.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Effect_Birthsign_Serpent_Dispel",
+      "name": "Serpent's Curse",
+      "desc": "",
+      "mag": 100000.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Effect_Birthsign_Serpent_Poison",
+      "name": "Serpent's Curse",
+      "desc": "",
+      "mag": 15.0,
+      "dur": 15
+     },
+     {
+      "edid": "REQ_Effect_Birthsign_Serpent_Magic",
+      "name": "Serpent's Curse",
+      "desc": "",
+      "mag": 15.0,
+      "dur": 15
+     },
+     {
+      "edid": "madAbsorbHit1",
+      "name": "madAbsorbHit1",
+      "desc": "Magic Resistance is reduced by <10>.",
+      "mag": 0.0,
+      "dur": 1
+     },
+     {
+      "edid": "madDummyCombatEffect8_Magic",
+      "name": "",
+      "desc": "Magic Resistance is reduced by <90>.",
+      "mag": 0.0,
+      "dur": 4
+     },
+     {
+      "edid": "madDummyCombatEffect7_Magic",
+      "name": "",
+      "desc": "Magic Resistance is reduced by <70>.",
+      "mag": 0.0,
+      "dur": 4
+     },
+     {
+      "edid": "madDummyCombatEffect6_Magic",
+      "name": "",
+      "desc": "Magic Resistance is reduced by <60>.",
+      "mag": 0.0,
+      "dur": 4
+     },
+     {
+      "edid": "madDummyCombatEffect5_Magic",
+      "name": "",
+      "desc": "Magic Resistance is reduced by <50>.",
+      "mag": 0.0,
+      "dur": 4
+     },
+     {
+      "edid": "madDummyCombatEffect4_Magic",
+      "name": "",
+      "desc": "Magic Resistance is reduced by <50>.",
+      "mag": 0.0,
+      "dur": 4
+     },
+     {
+      "edid": "madDummyCombatEffect3_Magic",
+      "name": "",
+      "desc": "Magic Resistance is reduced by <40>.",
+      "mag": 0.0,
+      "dur": 4
+     },
+     {
+      "edid": "madDummyCombatEffect2_Magic",
+      "name": "",
+      "desc": "Magic Resistance is reduced by <20>.",
+      "mag": 0.0,
+      "dur": 4
+     },
+     {
+      "edid": "madDummyCombatEffect1_Magic",
+      "name": "",
+      "desc": "NOTNULLMagic Resistance is reduced by <10>.",
+      "mag": 0.0,
+      "dur": 4
+     }
+    ]
+   },
+   {
+    "key": [
+     "LoreRim Doomstones.esp",
+     29
+    ],
+    "edid": "LoreRimDoomstones_SerpentSpell",
+    "name": "Serpent Stone",
+    "desc": "Crafted potions and poisons are 10% stronger.",
+    "plugin": "LoreRim Doomstones.esp",
+    "effects": [
+     {
+      "edid": "LoreRimDoomstones_SerpentEffect",
+      "name": "Serpent Stone",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 86400
+     }
+    ]
+   }
+  ],
+  "Steed": [
+   {
+    "key": [
+     "Skyrim.esm",
+     941918
+    ],
+    "edid": "REQ_Ability_Birthsign_Steed",
+    "name": "Sign of the Steed",
+    "desc": "Those born under the sign of the Steed are thought to be impatient and always hurrying from one place to another. Movement is <10>% faster, sprinting is <10>% faster, stamina increased by <60>, restore <1> stamina per second, most slow effects don't affect you.",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Steed",
+      "name": "Sign of the Steed",
+      "desc": "",
+      "mag": 0.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Effect_Permanent_FortifySpeed",
+      "name": "Speed",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Effect_Permanent_FortifySpeed",
+      "name": "Speed",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyStamina",
+      "name": "Fortify Stamina",
+      "desc": "",
+      "mag": 60.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_RestoreStamina",
+      "name": "Restore Stamina",
+      "desc": "",
+      "mag": 1.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "LoreRim Doomstones.esp",
+     30
+    ],
+    "edid": "LoreRimDoomstones_SteedSpell",
+    "name": "Steed Stone",
+    "desc": "Regain 0.3 flat Stamina per second.",
+    "plugin": "LoreRim Doomstones.esp",
+    "effects": [
+     {
+      "edid": "LoreRimDoomstones_SteedEffect",
+      "name": "Lord Stone",
+      "desc": "",
+      "mag": 0.30000001192092896,
+      "dur": 86400
+     }
+    ]
+   }
+  ],
+  "Lover": [
+   {
+    "key": [
+     "Skyrim.esm",
+     941914
+    ],
+    "edid": "REQ_Ability_Birthsign_Lover",
+    "name": "Sign of the Lover",
+    "desc": "Those under the sign of the Lover have increased agility and natural charm. <25>% chance to take half physical and magical damage, prices are <15>% better. Shouts are <20>% stronger.",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Lover",
+      "name": "Sign of the Lover",
+      "desc": "",
+      "mag": 0.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "Requiem.esp",
+     46304
+    ],
+    "edid": "REQ_StandingStone_LoverDummy",
+    "name": "DONT USE",
+    "desc": "This is a dummy ability attached to the PlayerSleepQuest so that the game thinks you don't have the Lover Stone and applies the \"Well Rested\" bonus.",
+    "plugin": "Requiem.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Lover",
+      "name": "Sign of the Lover",
+      "desc": "",
+      "mag": 0.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "LoreRim Doomstones.esp",
+     15
+    ],
+    "edid": "LoreRimDoomstones_LoverSpell",
+    "name": "Lover Stone",
+    "desc": "Gain 100 armor rating.",
+    "plugin": "LoreRim Doomstones.esp",
+    "effects": [
+     {
+      "edid": "LoreRimDoomstones_LoverEffect",
+      "name": "Lover Stone",
+      "desc": "",
+      "mag": 100.0,
+      "dur": 86400
+     }
+    ]
+   }
+  ],
+  "Lord": [
+   {
+    "key": [
+     "Skyrim.esm",
+     941912
+    ],
+    "edid": "REQ_Ability_Birthsign_Lord",
+    "name": "Sign of the Lord",
+    "desc": "Those born under the sign of the Lord are thought to be stronger and healthier, although they are sometimes referred to as Trollkin due to their innate weakness to fire. Gain <15>% Magic Resist and <150> armor rating, restore <1.5> health per second, gain <30>% Weakness to Fire.",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Lord_FortifyArmorRating",
+      "name": "Sign of the Lord",
+      "desc": "",
+      "mag": 150.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_RestoreHealth",
+      "name": "Restore Health",
+      "desc": "",
+      "mag": 1.5,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_DrainFireResistance",
+      "name": "Drain Fire Resistance",
+      "desc": "",
+      "mag": 30.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Effect_Birthsign_Lord_ResistMagic",
+      "name": "Sign of the Lord",
+      "desc": "",
+      "mag": 15.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "LoreRim Doomstones.esp",
+     14
+    ],
+    "edid": "LoreRimDoomstones_LordSpell",
+    "name": "Lord Stone",
+    "desc": "Regain 0.3 flat Health per second.",
+    "plugin": "LoreRim Doomstones.esp",
+    "effects": [
+     {
+      "edid": "LoreRimDoomstones_LordEffect",
+      "name": "Lord Stone",
+      "desc": "",
+      "mag": 0.30000001192092896,
+      "dur": 86400
+     }
+    ]
+   }
+  ],
+  "Lady": [
+   {
+    "key": [
+     "Skyrim.esm",
+     941908
+    ],
+    "edid": "REQ_Ability_Birthsign_Lady",
+    "name": "Sign of the Lady",
+    "desc": "Those born under the sign of the Lady are thought to be kind and tolerant. Health and Magicka increase by <40> and regenerate <80>% faster, you can run or swim without exertion.",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Lady_FortifyHealthRegeneration",
+      "name": "Sign of the Lady",
+      "desc": "",
+      "mag": 80.0,
+      "dur": 0
+     },
+     {
+      "edid": "doomStaminaRecoveryEffect",
+      "name": "Sign of the Lady",
+      "desc": "",
+      "mag": 80.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyHealth",
+      "name": "Fortify Health",
+      "desc": "",
+      "mag": 40.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyMagicka",
+      "name": "Fortify Magicka",
+      "desc": "",
+      "mag": 40.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "LoreRim Doomstones.esp",
+     13
+    ],
+    "edid": "LoreRimDoomstones_LadySpell",
+    "name": "Lady Stone",
+    "desc": "Buying and selling prices are 10% better.",
+    "plugin": "LoreRim Doomstones.esp",
+    "effects": [
+     {
+      "edid": "LoreRimDoomstones_LadyEffect",
+      "name": "Lady Stone",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 86400
+     }
+    ]
+   }
+  ],
+  "Atronach": [
+   {
+    "key": [
+     "Skyrim.esm",
+     941905
+    ],
+    "edid": "REQ_Ability_Birthsign_Atronach",
+    "name": "Sign of the Atronach",
+    "desc": "Those born under the sign of the Atronach are thought to be natural sorcerers with deep reserves of magicka, but that cannot generate their own magicka. Magicka increases by <300>, do not lose magicka when hit, absorb chance increased by <25>%, you cannot naturally regenerate magicka.",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Atronach",
+      "name": "Sign of the Atronach",
+      "desc": "",
+      "mag": 25.0,
+      "dur": 0
+     },
+     {
+      "edid": "AbDamageMagickaRate",
+      "name": "",
+      "desc": "",
+      "mag": 100000.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyMagicka",
+      "name": "Fortify Magicka",
+      "desc": "",
+      "mag": 300.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "Requiem - Minor Arcana - Forsworn.esp",
+     2051
+    ],
+    "edid": "ForswornStonefleshHoundAtronach",
+    "name": "Stoneflesh & Hound & Atronach",
+    "desc": "",
+    "plugin": "Requiem - Minor Arcana - Forsworn.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Alteration1_Armor_Self",
+      "name": "Armor",
+      "desc": "Increases the caster's armor rating by <mag> for <dur> seconds.",
+      "mag": 80.0,
+      "dur": 60
+     },
+     {
+      "edid": "REQ_Effect_Conjuration4_Spirit_Sabrecat_npc",
+      "name": "Conjure Spirit Sabrecat",
+      "desc": "The caster summons the spirit of a vicious sabrecat for <dur> seconds.",
+      "mag": 0.0,
+      "dur": 30
+     },
+     {
+      "edid": "REQ_Effect_Conjuration3_Daedra_FlameAtronach",
+      "name": "Conjure Flame Atronach",
+      "desc": "The caster summons a Flame Atronach for <dur> seconds.",
+      "mag": 0.0,
+      "dur": 30
+     }
+    ]
+   },
+   {
+    "key": [
+     "LoreRim Doomstones.esp",
+     12
+    ],
+    "edid": "LoreRimDoomstones_AtronachSpell",
+    "name": "Atronach Stone",
+    "desc": "Your magic resistance is increased by 5%.",
+    "plugin": "LoreRim Doomstones.esp",
+    "effects": [
+     {
+      "edid": "LoreRimDoomstones_AtronachEffect",
+      "name": "Atronach Stone",
+      "desc": "",
+      "mag": 5.0,
+      "dur": 86400
+     }
+    ]
+   }
+  ],
+  "Warrior": [
+   {
+    "key": [
+     "Skyrim.esm",
+     941900
+    ],
+    "edid": "REQ_Ability_Birthsign_Warrior",
+    "name": "Sign of the Warrior",
+    "desc": "Those born under the sign of the Warrior are thought to be short-tempered and skilled with weapons. Health increases by <60>, all weapons deal <10>% more damage, armor penetration with all weapons is increased by <10> unarmed strikes do <10> additional damage.",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Warrior",
+      "name": "Sign of the Warrior",
+      "desc": "",
+      "mag": 0.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyHealth",
+      "name": "Fortify Health",
+      "desc": "",
+      "mag": 60.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Ability_FortifyDamage_Marksman",
+      "name": "Fortify Marksman",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Ability_FortifyDamage_OneHanded",
+      "name": "Fortify One-Handed",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Ability_FortifyDamage_TwoHanded",
+      "name": "Fortify Two-Handed",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Ability_FortifyArmorPenetration_Marksman",
+      "name": "Fortify Marksman Armor Penetration",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Ability_FortifyArmorPenetration_OneHanded",
+      "name": "Fortify One-Handed Armor Penetration",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Ability_FortifyArmorPenetration_TwoHanded",
+      "name": "Fortify Two-Handed Armor Penetration",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyUnarmedDamage",
+      "name": "Fortify Unarmed Damage",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "SubclassesOfSkyrim.esp",
+     2142
+    ],
+    "edid": "DAR_Spell06Warrior",
+    "name": "Warrior",
+    "desc": "",
+    "plugin": "SubclassesOfSkyrim.esp",
+    "effects": [
+     {
+      "edid": "DAR_SoSArmorRatingConstant",
+      "name": "Fortify Armor Rating",
+      "desc": "",
+      "mag": 50.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "LoreRim Doomstones.esp",
+     32
+    ],
+    "edid": "LoreRimDoomstones_WarriorSpell",
+    "name": "Warrior Stone",
+    "desc": "Health is increased by 25.",
+    "plugin": "LoreRim Doomstones.esp",
+    "effects": [
+     {
+      "edid": "LoreRimDoomstones_WarriorEffect",
+      "name": "Warrior Stone",
+      "desc": "",
+      "mag": 25.0,
+      "dur": 86400
+     }
+    ]
+   }
+  ],
+  "Mage": [
+   {
+    "key": [
+     "Skyrim.esm",
+     941895
+    ],
+    "edid": "REQ_Ability_Birthsign_Mage",
+    "name": "Sign of the Mage",
+    "desc": "Those born under the sign of the Mage are thought to have more magicka and a talent for spellcasting. They are also thought to be arrogant and absent-minded. Magicka increases by <150>. Spells are <30>% stronger and longer lasting when over <25>% magicka.",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Mage",
+      "name": "Sign of the Mage",
+      "desc": "",
+      "mag": 150.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "SubclassesOfSkyrim.esp",
+     3556
+    ],
+    "edid": "DAR_Spell05Mage",
+    "name": "Mage",
+    "desc": "",
+    "plugin": "SubclassesOfSkyrim.esp",
+    "effects": [
+     {
+      "edid": "DAR_SoSMagickaRegenerationConstant",
+      "name": "Fortify Magicka Regeneration",
+      "desc": "",
+      "mag": 25.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "LoreRim Doomstones.esp",
+     27
+    ],
+    "edid": "LoreRimDoomstones_MageSpell",
+    "name": "Mage Stone",
+    "desc": "Magicka is increased by 25.",
+    "plugin": "LoreRim Doomstones.esp",
+    "effects": [
+     {
+      "edid": "LoreRimDoomstones_MageEffect",
+      "name": "Mage Stone",
+      "desc": "",
+      "mag": 25.0,
+      "dur": 86400
+     }
+    ]
+   }
+  ],
+  "Thief": [
+   {
+    "key": [
+     "Skyrim.esm",
+     941893
+    ],
+    "edid": "REQ_Ability_Birthsign_Thief",
+    "name": "Sign of the Thief",
+    "desc": "Those born under the sign of the Thief are thought to take risks and evade harm. Their luck is thought to run out eventually, cutting their lives short. Pickpocketing is <50>% easier, you are <40>% harder to detect, move <20%> faster when sneaking and can sneak without proficiency, <20>% chance to avoid physical damage, <1>% chance to take <50%> more.",
+    "plugin": "Big Tweaks.esp",
+    "effects": [
+     {
+      "edid": "REQ_Effect_Birthsign_Thief",
+      "name": "Sign of the Thief",
+      "desc": "",
+      "mag": 0.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyPickpocketModifier",
+      "name": "Fortify Pickpocket Modifier",
+      "desc": "",
+      "mag": 50.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_Effect_Permanent_FortifySpeed",
+      "name": "Speed",
+      "desc": "",
+      "mag": 20.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifySneakingModifier",
+      "name": "Fortify Sneaking Modifier",
+      "desc": "",
+      "mag": 40.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "SubclassesOfSkyrim.esp",
+     2143
+    ],
+    "edid": "DAR_Spell07Thief",
+    "name": "Thief",
+    "desc": "",
+    "plugin": "SubclassesOfSkyrim.esp",
+    "effects": [
+     {
+      "edid": "DAR_SoSMovementSpeedConstant",
+      "name": "Fortify Speed",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     },
+     {
+      "edid": "DAR_SoSMovementSpeedConstantDummy",
+      "name": "Fortify Speed",
+      "desc": "",
+      "mag": 0.009999999776482582,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "Requiem - Pickpocket Rework.esp",
+     2061
+    ],
+    "edid": "Thief",
+    "name": "Thief",
+    "desc": "",
+    "plugin": "Requiem - Pickpocket Rework.esp",
+    "effects": [
+     {
+      "edid": "REQ_AbHide_FortifyCarryWeight",
+      "name": "Fortify Carry Weight",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyCarryWeight",
+      "name": "Fortify Carry Weight",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyCarryWeight",
+      "name": "Fortify Carry Weight",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyCarryWeight",
+      "name": "Fortify Carry Weight",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     },
+     {
+      "edid": "REQ_AbHide_FortifyCarryWeight",
+      "name": "Fortify Carry Weight",
+      "desc": "",
+      "mag": 10.0,
+      "dur": 0
+     }
+    ]
+   },
+   {
+    "key": [
+     "LoreRim Doomstones.esp",
+     31
+    ],
+    "edid": "LoreRimDoomstones_ThiefSpell",
+    "name": "Thief Stone",
+    "desc": "Stamina is increased by 25.",
+    "plugin": "LoreRim Doomstones.esp",
+    "effects": [
+     {
+      "edid": "LoreRimDoomstones_ThiefEffect",
+      "name": "Thief Stone",
+      "desc": "",
+      "mag": 25.0,
+      "dur": 86400
+     }
+    ]
+   },
+   {
+    "key": [
+     "Callings.esp",
+     2107
+    ],
+    "edid": "Callings_Thief_Ability",
+    "name": "Thief",
+    "desc": "You take what isn't yours. Every lock you pick and every pocket you pick earns bonus XP. Harder locks provide more XP.",
+    "plugin": "Callings.esp",
+    "effects": [
+     {
+      "edid": "Callings_Thief_Effect",
+      "name": "Calling: Apprentice Thief",
+      "desc": "You take what isn't yours. Every lock you pick and every pocket you pick earns bonus XP, the same again as LoreRim gives for it: 2 to 32 for a lock, up to 10 for each item you lift. Harder locks provide more XP. Up to 150 XP a day. Today: <mag> of 150 XP.",
+      "mag": 0.0,
+      "dur": 0
+     },
+     {
+      "edid": "Callings_Thief_Effect_Journeyman",
+      "name": "Calling: Journeyman Thief",
+      "desc": "You take what isn't yours. Every lock you pick and every pocket you pick earns bonus XP, the same again as LoreRim gives for it: 2 to 32 for a lock, up to 10 for each item you lift. Harder locks provide more XP. Up to 200 XP a day. Today: <mag> of 200 XP.",
+      "mag": 0.0,
+      "dur": 0
+     },
+     {
+      "edid": "Callings_Thief_Effect_Master",
+      "name": "Calling: Master Thief",
+      "desc": "You take what isn't yours. Every lock you pick and every pocket you pick earns bonus XP, the same again as LoreRim gives for it: 2 to 32 for a lock, up to 10 for each item you lift. Harder locks provide more XP. Up to 250 XP a day. Today: <mag> of 250 XP.",
+      "mag": 0.0,
+      "dur": 0
+     }
+    ]
+   }
+  ]
+ },
  "avifNames": {
   "Enchanting": "Enchanting",
   "Restoration": "Restoration",
