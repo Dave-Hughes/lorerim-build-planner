@@ -621,6 +621,76 @@ From Dave's testing. Do after WO-17. Two migrations through `npm run db:generate
 
 ---
 
+## WO-19  The shared build page, top to bottom (11 Oct 2026)
+
+The shared page is the one people judge the app by, and today it gives every number at every level the same weight. The new order follows the two readers:
+- someone **deciding** whether to play the build: hero, intro, about bar;
+- someone **playing** it, who has just levelled up in game and asks "what do I do now?": the level card.
+
+Everything else is reference, so it comes after the card.
+
+Source of truth: the canvas artboards **Shared build, reworked (proposal, level 6)** and **Shared build, reworked: phone** (https://claude.ai/artifact/48H6v9Q6wFuwhzRqE31uD1). They replace "Shared build (what a visitor sees)" as the reference for this page. Their perk tree is drawn by hand; use the real `Tree` component. Do after WO-18. `src/components/build/build-view.tsx` is the main file.
+
+### Order on the page
+1. **Hero**, as it is now (with WO-18's tags and Like).
+2. **Intro.** A new short guide section, key `intro`:
+   - Add it to `GuideKey`, with a 1,200-character limit and only bold, italic and link.
+   - It shows full width of the content column at 19 px, with `Read the full guide` under it, which opens the Guide tab. Hide that link when there's no guide.
+   - Builds without an intro show the first paragraph of their guide instead. Builds with neither show nothing.
+   - The intro must use the same column width as the about bar below it, never a narrower measure (Dave's rule on early line breaks).
+3. **About bar** (race, birthsign, traits, game mode, start, deity), as now.
+4. **Tabs: `Levels` · `Guide` · `Gear`.**
+   - Levels is the default.
+   - Guide is the full guide; Gear is the gear table, moved off the bottom of the page.
+   - A tab with nothing in it isn't shown. With only Levels, there's no tab row.
+   - The tab is in the URL (`?tab=guide`) alongside `?level=`, changes without a page load, and the arrow keys move between tabs.
+
+### The Levels tab, in this order
+5. **Level navigation:**
+   - The stepper reads `‹ Level 6 of 20 ›`, with no "Viewing" label.
+   - The ruler, lens and row stay as WO-17 built them.
+   - When the stepper scrolls off the top of the window, a slim bar pinned to the top holds `‹ Level 6 of 20 ›`, so you can step through levels while reading the card below.
+6. **The level card**, in a frame. The heading is `Level 6`. Rows go in the order the game asks for them:
+   - `Attribute`: `+5 Health`, with the attribute's dot.
+   - `Skill points`: one line per skill, `Evasion 50 → 55`, biggest gain first. A skill that stopped at the level's limit gets `(max skill 56 at level 6)` after it, once, on the first such skill.
+   - `Perk` / `Perks`, Destiny included: each name is a button. Clicking it selects that tree in the Perks section with the star selected, and scrolls there.
+   - `Standing stone`, when it changes: `The Lover (in place of The Warrior)`. Leave out the brackets when there was no stone before.
+   - `Trainer`: `Wayfarer +2 (16 → 18)`, and `Skill book` the same way.
+   - `Banked`, as now.
+   - The level's problems, if any, at the bottom in the error colour.
+   - **The author's note** sits on the right, about two parts card to one part note. It's in Alegreya italic 21 px with the author's avatar and name under it. Under 900 px wide it goes below the rows. With no note, the rows take the full width and there's no empty box.
+7. **Attributes at level 6:**
+   - The three bars and WO-15's stone line, as now.
+   - Then small print: `Carry weight` and `Skill points carried over`.
+   - `Perk points left` and `Destiny points left` show only when above 0.
+   - `Trainer sessions used` goes; the card shows sessions at the level they're used.
+8. **Skills at level 6:**
+   - Two columns, `Majors` and `Minors`, each skill with its value, bar and this level's gain.
+   - `All 18 skills` opens the full list in the game's groups (Warrior, Thief, Mage), as now.
+   - The max-skill info tip moves next to this heading.
+   - On phones the two columns become one.
+9. **Perks at level 6:**
+   - **Chips:** one per tree the build holds perks in, plus Destiny, each with a held count. `Other trees ▾` opens a menu of the rest.
+   - **Default tree:** the tree of this level's first perk; otherwise the first major.
+   - **Tree and list side by side:** the real `Tree` on the left, a `Held` list on the right, grouped by tree. Use `perksByLevel` with the `Lv N` tags as now, and this level's perks in ember. Clicking a held perk selects its tree and star.
+   - **Tree height:** the same rule as in the editor.
+   - **Under 1100 px:** one column with the existing List | Tree toggle, defaulting to List.
+   - Remove `Open perk trees` / `Close perk trees` and the collapsed state.
+
+### Editor
+10. **The Guide page** gets an `Intro` field above `Guide`. It uses the level notes' toolbar (WO-17) and the same autosave. The field's label and the character count are the only copy.
+
+### Done when
+- [ ] e2e: `?tab=guide&level=6` opens the Guide tab. Switching to Levels shows level 6, and the URL keeps the level.
+- [ ] e2e: on Azrem (`/b/225en4m79k`) at level 6, the card's rows read in this order: Attribute, Skill points, Perk, Standing stone, Trainer. `The Lover (in place of The Warrior)` and `(max skill 56 at level 6)` are shown.
+- [ ] e2e: clicking `Dodge` in the card selects Evasion in the Perks section, with Dodge's star selected.
+- [ ] e2e: a build with no intro shows its guide's first paragraph. A build with no guide has no Guide tab.
+- [ ] No `Open perk trees` text left in `src`.
+- [ ] Screenshots for Dave of Azrem at level 6, compared with the two canvas artboards: 1440 × 900 (the top of the page down to the card, then the Perks section) and 390 (top, card, perks).
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
