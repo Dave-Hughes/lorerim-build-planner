@@ -133,7 +133,24 @@ export interface GameData {
   destinyPointsAt(level: number): number;
 }
 
-function build(version: GameVersion, src: VersionSource): GameData {
+/**
+ * Perks that share a name within a tree (the two Destiny stars both called Endurance) get the
+ * next star on their path in brackets, so lists and labels can tell them apart:
+ * "Endurance (to Thief)". The next star is the one that needs only this one, else the first.
+ */
+export function distinctNames(perks: Perk[]): Perk[] {
+  const count = new Map<string, number>();
+  for (const p of perks) count.set(`${p.tree}|${p.name}`, (count.get(`${p.tree}|${p.name}`) ?? 0) + 1);
+  return perks.map((p) => {
+    if ((count.get(`${p.tree}|${p.name}`) ?? 0) < 2) return p;
+    const next = perks.filter((q) => q.tree === p.tree && q.requires.includes(p.id));
+    const to = next.find((q) => q.requires.length === 1) ?? next[0];
+    return to ? { ...p, name: `${p.name} (to ${to.name})` } : p;
+  });
+}
+
+function build(version: GameVersion, src0: VersionSource): GameData {
+  const src = { ...src0, perks: distinctNames(src0.perks) };
   const perksByTree = src.perks.reduce<Map<string, Perk[]>>((m, p) => {
     const list = m.get(p.tree) ?? [];
     list.push(p);

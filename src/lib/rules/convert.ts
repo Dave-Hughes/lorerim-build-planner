@@ -3,6 +3,7 @@
  * and removed, never silently.
  */
 import type { GameData } from "./data";
+import { keptTraitChoices } from "./trait-choices";
 import type { BuildPlan } from "./types";
 
 export interface Dropped {
@@ -53,6 +54,9 @@ export function convertPlan(d: GameData, plan: BuildPlan): { plan: BuildPlan; dr
     })),
   };
   if (!next.traits.includes("Master of One")) delete next.masterOfOneSkill;
+  const choices = keptTraitChoices(next.traits, plan.traitChoices);
+  if (choices) next.traitChoices = choices;
+  else delete next.traitChoices;
   return { plan: next, dropped: missingIn(d, plan) };
 }
 

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { traitWithChoice } from "@/lib/rules/trait-choices";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { copyBuild, copyBuildForVersion } from "@/lib/builds/actions";
@@ -11,7 +12,7 @@ import { GuideSection } from "@/components/guide/guide-section";
 import { LevelNote } from "@/components/guide/level-note";
 import { isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import { currentVersion, isOlderThanCurrent } from "@/lib/rules/versions";
-import { ATTRIBUTE_NAMES, levelChanges, levelMarks, perksByLevel } from "@/lib/rules/derive";
+import { ATTRIBUTE_NAMES, levelChanges, levelMarks, perksByLevel, stoneShare } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
 import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
@@ -86,7 +87,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
       "Birthsign",
       noSign ? "None (Master of Destiny)" : plan.birthsign ? <IconLabel icon={<SignIcon name={plan.birthsign} />}>The {plan.birthsign}</IconLabel> : "Not chosen yet",
     ],
-    ["Traits", plan.traits.length ? plan.traits.join(", ") : "None"],
+    ["Traits", plan.traits.length ? plan.traits.map((t) => traitWithChoice(t, plan.traitChoices)).join(", ") : "None"],
     ...(plan.masterOfOneSkill ? [["Master of One", plan.masterOfOneSkill] as [string, React.ReactNode]] : []),
     ["Game mode", plan.mode],
     ["Start", plan.start || "Not chosen yet"],
@@ -138,6 +139,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
                     <div className={styles.bar}>
                       <div className={`${styles.barFill} ${styles[a]}`} style={{ width: `${(s[a] / attrScale) * 100}%` }} />
                     </div>
+                    {stoneShare(d, s.stone, a) && <span className={styles.attrNote}>{stoneShare(d, s.stone, a)}</span>}
                   </div>
                 ))}
               </div>
@@ -303,13 +305,14 @@ function ChangesGrid({ changes, level, perBook }: { changes: ReturnType<typeof l
         ))}
       </span>,
     ]);
-  // Destiny perks are listed with the rest; the tree in brackets is left out when it is the perk's own name.
+  // Destiny perks are listed with the rest; the tree in brackets, left out when it is the perk's own name.
   const perkLines = [
     ...changes.perks.map((p, i) => (
       <SkillLabel key={`${p.id}-${i}`} name={p.tree}>
         {p.name}
         {p.rank ? ` ${p.rank}` : ""}{" "}
-        <span className="muted">{p.book ? "(book)" : p.requirement ? `(${p.requirement})` : p.tree !== p.name ? `(${p.tree})` : ""}</span>
+        {/* One rule: the tree in brackets (and "book" when a book gives it). */}
+        <span className="muted">{p.tree !== p.name ? `(${p.tree}${p.book ? ", book" : ""})` : p.book ? "(book)" : ""}</span>
       </SkillLabel>
     )),
     ...changes.destiny.map((p) => (
@@ -428,7 +431,11 @@ function Cover({
   const writeupLabel = writeup && /discord\.(com|gg)/i.test(writeup) ? "Read the write-up on Discord" : "Read the write-up";
 
   return (
-    <section aria-label="Build" className={`${styles.cover} ${build.coverImageUrl ? "" : styles.coverPlain}`} style={build.coverImageUrl ? { backgroundImage: `url("${build.coverImageUrl}")` } : undefined}>
+    <section aria-label="Build" className={`${styles.cover} ${build.coverImageUrl ? "" : styles.coverPlain}`} style={
+        build.coverImageUrl
+          ? { backgroundImage: `url("${build.coverImageUrl}")`, backgroundPosition: build.plan.coverFocus ? `${build.plan.coverFocus.x}% ${build.plan.coverFocus.y}%` : undefined }
+          : undefined
+      }>
       <div className={styles.coverFade} />
       <div className={`page ${styles.coverInner}`}>
         <div className={styles.coverText}>

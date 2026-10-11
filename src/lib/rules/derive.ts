@@ -370,3 +370,10 @@ export function saysNothingNew(line: string, text: string): boolean {
   const words = (line.toLowerCase().match(/[a-z]{4,}/g) ?? []).map((w) => w.replace(/s$/, ""));
   return nums.every((n) => new RegExp(`(^|[^\\d])${n.replace(".", "\\.")}([^\\d]|$)`).test(t)) && words.every((w) => t.includes(w));
 }
+
+/** What the standing stone in effect adds to an attribute ("incl. The Warrior +25"), or null. */
+export function stoneShare(d: GameData, stone: string, attr: Attribute): string | null {
+  const st = stone ? d.stoneByName.get(stone) : undefined;
+  const n = st?.[attr] ?? 0;
+  return st && n ? `incl. The ${st.name} ${n > 0 ? "+" : ""}${n}` : null;
+}

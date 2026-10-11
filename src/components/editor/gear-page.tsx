@@ -61,7 +61,6 @@ function Gear({ plan, setPlan }: { plan: BuildPlan; setPlan: (p: BuildPlan) => v
   return (
     <section aria-label="Gear" className={styles.gearNotes}>
       <div className={styles.gear}>
-        <p className="muted">What the build wears and wields, for the whole build: each row says from which level.</p>
         {gear.length > 0 && (
           <div className={styles.gearRows}>
             <div className={`${styles.gearRow} ${styles.gearHead}`}>

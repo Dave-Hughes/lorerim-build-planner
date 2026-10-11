@@ -223,6 +223,11 @@
 .attrOn .radio > span {
   display: block;
 }
+.attrNote {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.3;
+}
 .attrVal {
   display: flex;
   align-items: baseline;

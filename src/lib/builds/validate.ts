@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
 import { gameData, isKnownVersion, type GameData } from "@/lib/rules/server";
 import type { BuildPlan } from "@/lib/rules/types";
 
@@ -37,6 +38,11 @@ function planSchema(d: GameData) {
     minors: z.array(skillName).max(d.rules.minorCount),
     traits: z.array(z.string().refine((t) => d.traitByName.has(t), "Unknown trait")).max(d.rules.maxTraits),
     masterOfOneSkill: skillName.optional(),
+    coverFocus: z.object({ x: z.number().min(0).max(100), y: z.number().min(0).max(100) }).optional(),
+    traitChoices: z
+      .record(z.string(), z.string().max(40))
+      .refine((c) => Object.entries(c).every(([t, v]) => TRAIT_CHOICES[t]?.options.includes(v)), "Unknown trait choice")
+      .optional(),
     levels: z.array(levelSchema).min(1).max(MAX_LEVELS),
     gear: z
       .array(

@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FocusHeader } from "@/components/ui/focus-header";
 import type { GuideDoc } from "@/lib/guide/doc";
 import type { BuildPlan } from "@/lib/rules/types";
 import { GuideFactsProvider } from "./guide-facts";
 import { GuideEditor, guideSaveLabel } from "./guide-editor";
+import { saveKeptGuides } from "./use-guide-autosave";
 import type { GuideSaveStatus } from "./use-guide-autosave";
 import styles from "./guide-page.module.css";
 
@@ -15,6 +16,7 @@ export function GuidePage({ buildId, name, plan, initial }: { buildId: string; n
   const [save, setSave] = useState<{ status: GuideSaveStatus; error: string | null; retry: () => void }>({ status: "idle", error: null, retry: () => {} });
   const onStatus = useCallback((status: GuideSaveStatus, error: string | null, retry: () => void) => setSave({ status, error, retry }), []);
   const label = guideSaveLabel(save.status, save.error);
+  useEffect(() => saveKeptGuides(buildId), [buildId]);
   return (
     <>
       <FocusHeader
@@ -49,9 +51,8 @@ export function GuidePage({ buildId, name, plan, initial }: { buildId: string; n
         }
       />
       <main className={`page ${styles.main}`}>
-        <h1 className={`title ${styles.h1}`}>{name}</h1>
+        <h1 className={`title ${styles.h1}`}>Guide</h1>
         <GuideFactsProvider plan={plan}>
-          <span className="label">Guide: how to play this build, what to prioritise, where to go</span>
           <GuideEditor buildId={buildId} sectionKey="overview" initial={initial} label="Guide" onStatus={onStatus} />
         </GuideFactsProvider>
       </main>

@@ -9,13 +9,14 @@ import { LevelRow, LevelRuler, WINDOW, useHoldInPlace } from "@/components/build
 import { Tree, type TreeView } from "@/components/build/tree";
 import { TreeTabs } from "@/components/build/tree-tabs";
 import { useGameData } from "@/components/game-data";
-import { ATTRIBUTE_NAMES, levelMarks, nextDestinyLevel, skillStepInfo, stoneLabel } from "@/lib/rules/derive";
+import { ATTRIBUTE_NAMES, levelMarks, nextDestinyLevel, skillStepInfo, stoneLabel, stoneShare } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
 import type { Attribute, BuildPlan } from "@/lib/rules/types";
 import { PerkPanel } from "./perk-panel";
 import { AttributeIcon, IconLabel, SignIcon, SkillIcon } from "@/components/ui/skill-icon";
 import { GuideEditor, guideSaveLabel } from "@/components/guide/guide-editor";
 import { GuideFactsProvider } from "@/components/guide/guide-facts";
+import { saveKeptGuides } from "@/components/guide/use-guide-autosave";
 import type { GuideSaveStatus } from "@/components/guide/use-guide-autosave";
 import { emptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import * as ops from "./plan-ops";
@@ -46,6 +47,8 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
   // Level notes as edited here, so going back to a level shows the latest text.
   const [notes, setNotes] = useState<Record<string, GuideDoc>>(guide);
   const noted = useMemo(() => notedLevels(notes), [notes]);
+  // Notes typed here before but never confirmed by the server (a closed tab, a lost connection).
+  useEffect(() => saveKeptGuides(buildId), [buildId]);
 
   const { ref: levelBarRef, hold: holdLevelBar } = useHoldInPlace<HTMLElement>(level);
   // Changing level keeps the level bar where it is on screen; the buttons at the bottom of the
@@ -74,11 +77,18 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
   const [perkArea, setPerkArea] = useState<HTMLDivElement | null>(null);
   const [areaWidth, setAreaWidth] = useState(0);
   const [windowWidth, setWindowWidth] = useState(1440);
+  // Where the pinned panel goes: over the skills column when it sits beside the tree, so the
+  // panel never covers the tree; otherwise the window's bottom-right corner.
+  const [skillsCol, setSkillsCol] = useState<HTMLElement | null>(null);
+  const [pinOver, setPinOver] = useState<{ left: number; width: number } | null>(null);
   useEffect(() => {
     if (!perkArea) return;
     const set = () => {
       setAreaWidth(perkArea.clientWidth);
       setWindowWidth(window.innerWidth);
+      const col = skillsCol?.getBoundingClientRect();
+      const area = perkArea.getBoundingClientRect();
+      setPinOver(col && col.right <= area.left ? { left: Math.round(col.left), width: Math.round(Math.min(420, col.width)) } : null);
     };
     set();
     const ro = new ResizeObserver(set);
@@ -88,7 +98,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
       ro.disconnect();
       window.removeEventListener("resize", set);
     };
-  }, [perkArea]);
+  }, [perkArea, skillsCol]);
   const pinned = windowWidth >= 900 && areaWidth > 0 && areaWidth < 1100;
   const pickPerk = (id: string) => setSelected(id);
   useEffect(() => {
@@ -126,7 +136,12 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
   const perkLeft = s.perkPoints - s.perkPointsSpent;
   const destinyLeft = s.destinyPoints - s.destinyPointsSpent;
   const nextDestiny = nextDestinyLevel(d, level);
-  const trainerLeft = d.rules.trainerSessionsPerLevel * level - s.trainerSessionsUsed;
+  // Trainer sessions: what is left of this level-up's own (unused ones carry over, but a running
+  // total of 97 at level 20 reads as noise). Never more than the build has left overall.
+  const trainerLeft = Math.max(
+    0,
+    Math.min(d.rules.trainerSessionsPerLevel - lv.extras.filter((x) => x.kind === "trainer").length, d.rules.trainerSessionsPerLevel * level - s.trainerSessionsUsed),
+  );
   const prevStone = level > 1 ? states[level - 2].stone : "";
 
   const summary = (() => {
@@ -210,7 +225,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
             {level > 1 && <Pool label="Skill points" value={left} of={`left of ${s.skillPointsAvailable}`} />}
             <Pool label="Perk points" value={perkLeft} of="to spend" />
             <Pool label="Destiny" value={destinyLeft} of={nextDestiny ? `next at ${nextDestiny}` : "no more"} />
-            <Pool label="Trainer sessions" value={trainerLeft} of="left" />
+            <Pool label="Trainer sessions" value={trainerLeft} of="left this level" />
           </dl>
           {total > 1 && (
             <div className={styles.levelRow}>
@@ -236,7 +251,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
         </section>
 
         <div className={styles.columns}>
-          <section aria-label="Attribute and skills" className={styles.left}>
+          <section ref={setSkillsCol} aria-label="Attribute and skills" className={styles.left}>
             {level > 1 && (
               <div className={styles.block}>
                 <div className={styles.blockHead}>
@@ -259,6 +274,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
                             <span />
                           </span>
                         </span>
+                        {stoneShare(d, s.stone, a) && <span className={styles.attrNote}>{stoneShare(d, s.stone, a)}</span>}
                         <span className={styles.attrBar} />
                       </button>
                     );
@@ -360,7 +376,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
         {pinned &&
           selected &&
           createPortal(
-            <div className={styles.pinned}>
+            <div className={styles.pinned} style={pinOver ? { left: pinOver.left, right: "auto", width: pinOver.width } : undefined}>
               <button type="button" className={`btn btn-sm btn-icon ${styles.pinnedClose}`} aria-label="Close perk details" onClick={() => setSelected(null)}>
                 ×
               </button>

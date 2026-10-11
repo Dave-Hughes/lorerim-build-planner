@@ -88,16 +88,31 @@ function stateWords(st: PerkStatus): string {
 
 /** Width of text in the page's body face, measured once the fonts are in. */
 function useMeasure(el: HTMLElement | null) {
+  // Label widths must be measured in the real face: until the web fonts have loaded, the canvas
+  // measures a fallback, so measure again (and so place labels again) once they are ready.
+  const [fontsReady, setFontsReady] = useState(0);
+  useEffect(() => {
+    if (typeof document === "undefined" || !document.fonts) return;
+    let live = true;
+    void document.fonts.ready.then(() => live && setFontsReady((n) => n + 1));
+    const onDone = () => live && setFontsReady((n) => n + 1);
+    document.fonts.addEventListener("loadingdone", onDone);
+    return () => {
+      live = false;
+      document.fonts.removeEventListener("loadingdone", onDone);
+    };
+  }, []);
   return useMemo(() => {
     if (!el || typeof document === "undefined") return undefined;
     const ctx = document.createElement("canvas").getContext("2d");
     const family = getComputedStyle(el).fontFamily;
     if (!ctx) return undefined;
+    void fontsReady;
     return (text: string, size: number) => {
       ctx.font = `${size}px ${family}`;
       return ctx.measureText(text).width;
     };
-  }, [el]);
+  }, [el, fontsReady]);
 }
 
 /** The perks of a tree as a plain list, grouped by the skill they need, then level and book perks. */

@@ -203,6 +203,12 @@
   justify-content: space-between;
   align-items: baseline;
 }
+.attrNote {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
 .attrNum {
   font-family: var(--font-title);
   font-size: 28px;

@@ -483,12 +483,12 @@ From building Jo'Vashar (`/b/2b3t3uvceq`), Ushnar gro-Mazgar (`/b/xdz7uwjx2f`) a
 13. Covers from in-game screenshots are cut to the hero's band with the centre kept, which cut Ushnar's head off. Add a focal point: after upload, click the image to set where it centres (stored as `coverFocus: {x, y}` in percent, used as `object-position`).
 
 ### Done when
-- [ ] e2e: type a level note, click `Continue to level 2` at once, reload: the note is there. Same for leaving the page within 800 ms.
-- [ ] e2e: a build with both Endurance stars shows them as two different names on the shared page.
-- [ ] e2e: Focused Combat with Two-Handed chosen shows `Focused Combat: Two-Handed` on the shared page.
-- [ ] No eyebrow or how-to line on the Guide and Gear pages.
-- [ ] Screenshots for Dave at 1512 × 806: editor Destiny tree with Constitution taken; Block tree with the panel pinned; sidebar after a stone swap; cover focus set on Ushnar's build.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: type a level note, click `Continue to level 2` at once, reload: the note is there. Same for leaving the page within 800 ms.
+- [x] e2e: a build with both Endurance stars shows them as two different names on the shared page.
+- [x] e2e: Focused Combat with Two-Handed chosen shows `Focused Combat: Two-Handed` on the shared page.
+- [x] No eyebrow or how-to line on the Guide and Gear pages.
+- [x] Screenshots for Dave at 1512 × 806: editor Destiny tree with Constitution taken; Block tree with the panel pinned; sidebar after a stone swap; cover focus set on Ushnar's build.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

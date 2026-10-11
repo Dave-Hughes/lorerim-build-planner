@@ -47,6 +47,10 @@ export interface BuildPlan {
   minors: string[];
   traits: string[];
   masterOfOneSkill?: string;
+  /** The choice a trait asks for in game, by trait (see trait-choices.ts). */
+  traitChoices?: Record<string, string>;
+  /** Where the cover image centres in the hero, in percent of its width and height. */
+  coverFocus?: { x: number; y: number };
   levels: LevelPlan[];
   gear: GearItem[];
   notes: string;

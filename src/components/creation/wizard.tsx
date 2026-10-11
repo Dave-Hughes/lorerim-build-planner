@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { TRAIT_CHOICES, keptTraitChoices } from "@/lib/rules/trait-choices";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { FocusHeader } from "@/components/ui/focus-header";
 import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel } from "@/components/ui/skill-icon";
@@ -241,7 +242,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
             {step === "skills" && <SkillsStep plan={plan} update={update} />}
             {step === "traits" && <TraitsStep plan={plan} update={update} />}
             {step === "mode" && <ModeStep plan={plan} update={update} />}
-            {step === "name" && <NameStep details={details} updateDetails={updateDetails} mode={mode} plan={plan} signedIn={signedIn} />}
+            {step === "name" && <NameStep details={details} updateDetails={updateDetails} mode={mode} plan={plan} update={update} signedIn={signedIn} />}
           </GameDataProvider>
 
           <div className={styles.nav}>
@@ -587,6 +588,9 @@ function TraitsStep({ plan, update }: StepProps) {
       const traits = p.traits.includes(name) ? p.traits.filter((t) => t !== name) : [...p.traits, name];
       const next = { ...p, traits };
       if (!traits.includes("Master of One")) delete next.masterOfOneSkill;
+      const choices = keptTraitChoices(traits, p.traitChoices);
+      if (choices) next.traitChoices = choices;
+      else delete next.traitChoices;
       if (traits.includes("Master of Destiny")) next.birthsign = "";
       return next;
     });
@@ -630,6 +634,30 @@ function TraitsStep({ plan, update }: StepProps) {
                     {d.skills.map((s) => (
                       <option key={s} value={s}>
                         {s}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              )}
+              {on && TRAIT_CHOICES[t.name] && (
+                <label className={`field ${styles.over}`}>
+                  <span className="field-hint">{TRAIT_CHOICES[t.name].question}</span>
+                  <select
+                    className="select"
+                    value={plan.traitChoices?.[t.name] ?? ""}
+                    onChange={(e) =>
+                      update((p) => {
+                        const next = { ...(p.traitChoices ?? {}) };
+                        if (e.target.value) next[t.name] = e.target.value;
+                        else delete next[t.name];
+                        return { ...p, traitChoices: Object.keys(next).length ? next : undefined };
+                      })
+                    }
+                  >
+                    <option value="">Choose</option>
+                    {TRAIT_CHOICES[t.name].options.map((o) => (
+                      <option key={o} value={o}>
+                        {o}
                       </option>
                     ))}
                   </select>
@@ -695,7 +723,7 @@ function ModeStep({ plan, update }: StepProps) {
   );
 }
 
-function NameStep({ details, updateDetails, mode, plan, signedIn }: { details: BuildDetails; updateDetails: (p: Partial<BuildDetails>) => void; mode: "create" | "edit"; plan: BuildPlan; signedIn: boolean }) {
+function NameStep({ details, updateDetails, mode, plan, update, signedIn }: { details: BuildDetails; updateDetails: (p: Partial<BuildDetails>) => void; mode: "create" | "edit"; plan: BuildPlan; update: StepProps["update"]; signedIn: boolean }) {
   const d = useGameData();
   const noSign = plan.traits.includes("Master of Destiny");
   return (
@@ -725,7 +753,21 @@ function NameStep({ details, updateDetails, mode, plan, signedIn }: { details: B
           <span className="label">Description</span>
           <input className="input" value={details.description} maxLength={300} onChange={(e) => updateDetails({ description: e.target.value })} placeholder="One line under the name" />
         </label>
-        <CoverField url={details.coverImageUrl} signedIn={signedIn} onChange={(coverImageUrl) => updateDetails({ coverImageUrl })} />
+        <CoverField
+          url={details.coverImageUrl}
+          signedIn={signedIn}
+          onChange={(coverImageUrl) => {
+            updateDetails({ coverImageUrl });
+            // A new image starts centred.
+            update((p) => {
+              const next = { ...p };
+              delete next.coverFocus;
+              return next;
+            });
+          }}
+          focus={plan.coverFocus}
+          onFocus={(coverFocus) => update((p) => ({ ...p, coverFocus }))}
+        />
         <label className="field">
           <span className="label">Write-up link</span>
           <input className="input" type="url" value={details.writeupUrl} maxLength={500} onChange={(e) => updateDetails({ writeupUrl: e.target.value })} placeholder="https://discord.com/channels/…" />
@@ -752,7 +794,19 @@ function NameStep({ details, updateDetails, mode, plan, signedIn }: { details: B
 }
 
 /** The cover image: upload one (signed in), or paste a link to one already posted. */
-function CoverField({ url, signedIn, onChange }: { url: string; signedIn: boolean; onChange: (url: string) => void }) {
+function CoverField({
+  url,
+  signedIn,
+  onChange,
+  focus,
+  onFocus,
+}: {
+  url: string;
+  signedIn: boolean;
+  onChange: (url: string) => void;
+  focus: { x: number; y: number } | undefined;
+  onFocus: (focus: { x: number; y: number }) => void;
+}) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const upload = async (file: File | undefined) => {
@@ -776,8 +830,24 @@ function CoverField({ url, signedIn, onChange }: { url: string; signedIn: boolea
     <div className={`field ${styles.cover}`}>
       <span className="label">Cover image</span>
       {url && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={url} alt="" className={styles.coverPreview} />
+        <>
+          {/* The whole image: click where the hero should centre it (a face, say). */}
+          <button
+            type="button"
+            className={styles.coverFocusPick}
+            aria-label="Set where the cover centres: click a point on the image"
+            onClick={(e) => {
+              const r = e.currentTarget.getBoundingClientRect();
+              const pct = (v: number) => Math.round(Math.min(100, Math.max(0, v)));
+              onFocus({ x: pct(((e.clientX - r.left) / r.width) * 100), y: pct(((e.clientY - r.top) / r.height) * 100) });
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={url} alt="" className={styles.coverPreview} />
+            <span className={styles.coverFocusMark} style={{ left: `${focus?.x ?? 50}%`, top: `${focus?.y ?? 50}%` }} aria-hidden="true" />
+          </button>
+          <span className="field-hint">Click the image where the build page should centre it. Now {focus ? `${focus.x}% across, ${focus.y}% down` : "the middle"}.</span>
+        </>
       )}
       <div className={styles.coverActions}>
         {signedIn ? (
