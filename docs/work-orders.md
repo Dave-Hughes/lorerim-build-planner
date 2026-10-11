@@ -457,6 +457,47 @@ From checking WO-12 and WO-13 on staging. Small; one commit.
 
 ---
 
+## WO-15  Findings from three 20-level builds (11 Oct 2026)
+
+From building Jo'Vashar (`/b/2b3t3uvceq`), Ushnar gro-Mazgar (`/b/xdz7uwjx2f`) and Azrem (`/b/225en4m79k`) on staging, levels 1 to 20 each, with covers, a note at every level, a guide and gear. The rules engine held up for 60 levels: costs, caps, banking, trainer carry-over, stone swaps and Destiny all matched a plan worked out separately. Do after WO-14.
+
+### Bugs
+1. **Level notes lost on a quick level change.** Typing a note and clicking `Continue to level N` within 800 ms drops the note: `useGuideAutosave` clears its timer on unmount without saving (`src/components/guide/use-guide-autosave.ts`, last `useEffect`). Seven of Jo's twenty notes were lost this way and had to be typed again. On unmount, `pagehide` and `visibilitychange` to hidden, save straight away if a change is waiting. On load, if the browser still holds a copy that the server doesn't have (`unsavedGuide`), save it.
+2. **Two Destiny stars both called "Endurance".** The Destiny tree has two stars with that name; one is the path to Acrobat. Clicking the label picks the wrong one, and `At level` lists `Endurance` with no way to tell which. Give the second one its record's distinguishing name if it has one; if both records say `Endurance`, show the next star on its path in brackets in lists (`Endurance (to Acrobat)`).
+3. **Destiny labels in the editor:** at 1512 × 806 Trickster's label sits over Endurance's star, and Constitution, once taken, has no label. The shared page draws both correctly, so the editor is using different placement inputs.
+4. **Pinned perk panel covers tree labels** on the right edge of the tree (Block and Heavy Armor at 1512). Leave room for the panel, or move labels that would sit under it.
+5. **`At level` brackets mix two things:** some perks show their tree in brackets, others the skill level they need (`Weapon Mastery (One-Handed)` next to `Improved Blocking (Block 20)`). One rule: the tree, always.
+
+### Confusing
+6. **Trait choices have no picker.** Focused Combat, Focused Magic and Fatal Attraction each ask the player to choose a skill or target in game. The planner takes the trait and records nothing, so a reader can't tell which skill Jo focused. Add the choice under the trait card (a skill select for Focused Combat and Focused Magic), shown on the shared page as `Focused Combat: Two-Handed`.
+7. **"Merchant or mercenary"** is one start in the list, but the game gives them as separate choices with different kits. Split it into two, using the game's names for each.
+8. **`Trainer sessions 97 left`** at level 20 is true (5 a level, carried over) but reads as noise. Show it only while the level has unused sessions from this level-up, or as `5 this level`.
+9. **Stone swaps change Health with no reason given.** Moving from the Warrior stone to the Lover stone drops Health by 25 in the sidebar with nothing saying why. Next to the attribute totals, name the stone when it is part of the number (`Health 290, incl. The Warrior +25`).
+10. **Javelins:** nothing says which skill they use. If the records tie javelins to Marksman, Ranged Combat Training's panel should say so; check `perks.json` before writing it.
+
+### Copy (design rules)
+11. **Guide page** has an eyebrow label that explains itself: `Guide: how to play this build, what to prioritise, where to go` (`src/components/guide/guide-page.tsx:54`). Remove it; the page heading says `Guide`.
+12. **Gear page** opens with a how-to line: `What the build wears and wields, for the whole build: each row says from which level.` (`src/components/editor/gear-page.tsx:64`). Remove it.
+
+### Cover image
+13. Covers from in-game screenshots are cut to the hero's band with the centre kept, which cut Ushnar's head off. Add a focal point: after upload, click the image to set where it centres (stored as `coverFocus: {x, y}` in percent, used as `object-position`).
+
+### Done when
+- [ ] e2e: type a level note, click `Continue to level 2` at once, reload: the note is there. Same for leaving the page within 800 ms.
+- [ ] e2e: a build with both Endurance stars shows them as two different names on the shared page.
+- [ ] e2e: Focused Combat with Two-Handed chosen shows `Focused Combat: Two-Handed` on the shared page.
+- [ ] No eyebrow or how-to line on the Guide and Gear pages.
+- [ ] Screenshots for Dave at 1512 × 806: editor Destiny tree with Constitution taken; Block tree with the panel pinned; sidebar after a stone swap; cover focus set on Ushnar's build.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
+- **Repeat last level** (from the three builds): a button that spends this level's skill points like the last one, as far as the rules allow. Most of levels 10 to 20 were the same spread.
+- **Perk wishlist:** list the perks you want in order and let the planner place each at the first level it can be taken.
+- **Destiny target:** pick the Destiny star you're heading for and light the path to it.
+- **Skills over levels:** a small line chart on the shared page of the main skills from level 1 to the last.
+- **Callings:** a field for the build's Calling, once the Callings mod data is in.
+- **Note preview:** hovering a level in the level row shows the start of that level's note.
