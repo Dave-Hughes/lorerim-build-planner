@@ -560,8 +560,98 @@
 .pinnedInner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 16px;
+  min-height: 44px;
+}
+.pinnedTabs {
+  margin-left: auto;
+}
+/* The level's summary: one line of chips, never wrapping; the bar's height never changes. */
+.summary {
+  flex: 1 1 120px;
+  min-width: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: summaryIn 120ms ease-out;
+}
+@keyframes summaryIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Hidden copies of the row, measured to decide what to fold. */
+.sumMeasure {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  gap: 6px;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.summaryCut::after {
+  content: "…";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding-left: 14px;
+  color: var(--muted);
+  background: linear-gradient(to right, rgba(14, 19, 25, 0), #0e1319 40%);
+}
+.sumChip {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 9px;
+  font: inherit;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  border: 1px solid var(--rule-strong);
+  background: transparent;
+  color: #c3cdd6;
+}
+.sumChip:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+.sumPerk {
+  cursor: pointer;
+  color: var(--text);
+}
+.sumPerk:hover {
+  border-color: var(--ember);
+  color: var(--ember);
+}
+.sumNote {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border: 1px solid #c3cdd6;
+}
+@media (prefers-reduced-motion: reduce) {
+  .summary {
+    animation: none;
+  }
+}
+/* Phones: the stepper, then the attribute and the perks only; the tabs go to a second row if they don't fit. */
+@media (max-width: 899px) {
+  .pinnedInner {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+  .sumWide {
+    display: none;
+  }
 }
 .pinnedTabs {
   display: flex;
@@ -599,7 +689,8 @@
   right: 0;
   z-index: 40;
   padding: 6px 0;
-  background: rgba(14, 19, 25, 0.96);
+  /* Opaque: nothing on the page shows through it. */
+  background: #0e1319;
   border-bottom: 1px solid var(--rule);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }

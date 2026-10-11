@@ -7,7 +7,7 @@ import { TAG_BY_SLUG } from "@/lib/builds/tags";
 import { AuthorLink } from "@/components/ui/author-link";
 import { traitWithChoice } from "@/lib/rules/trait-choices";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, useTransition } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, useTransition } from "react";
 import { copyBuild, copyBuildForVersion } from "@/lib/builds/actions";
 import type { BuildRecord } from "@/lib/builds/types";
 import { useGameData } from "@/components/game-data";
@@ -50,6 +50,12 @@ interface Props {
 }
 
 export type BuildTab = "levels" | "guide" | "gear";
+
+/**
+ * The tree and perk picked in the Perks section. A selected perk stays selected across levels (its
+ * status line follows the level); a tree picked without a perk is for its level only.
+ */
+type Picked = { level: number; tree: string; star: string | null } | null;
 
 const ATTR_ORDER = ["health", "magicka", "stamina"] as const;
 
@@ -150,6 +156,8 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
     gear: `${plan.gear.length} item${plan.gear.length === 1 ? "" : "s"}`,
   };
 
+  const [picked, setPicked] = useState<Picked>(null);
+
   // The pinned bar: once the tab row (or, with no tabs, the level navigation) scrolls off the top,
   // a slim bar holds the tabs on the left and, on Levels, the level stepper on the right.
   const [tabRow, setTabRow] = useState<HTMLDivElement | null>(null);
@@ -229,7 +237,25 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
           {pinned && (
             <div className={styles.pinnedBar} role="region" aria-label="Pinned bar">
               <div className={`page ${styles.pinnedInner}`}>
-                {tabs.length > 1 ? (
+                {tab === "levels" && (
+                  <>
+                    <LevelStepper level={level} total={total} onChange={setLevel} slim />
+                    <LevelSummary
+                      key={level}
+                      d={d}
+                      plan={plan}
+                      states={states}
+                      level={level}
+                      noted={noted.has(level)}
+                      onPerk={(id) => {
+                        const p = d.perkById.get(id);
+                        // Selects it in the Perks section, without scrolling the page.
+                        if (p) setPicked({ level, tree: p.tree, star: id });
+                      }}
+                    />
+                  </>
+                )}
+                {tabs.length > 1 && (
                   <span className={styles.pinnedTabs}>
                     {tabs.map((t) => (
                       <button key={t} type="button" aria-pressed={tab === t} className={styles.pinnedTab} onClick={() => setTab(t)}>
@@ -237,10 +263,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
                       </button>
                     ))}
                   </span>
-                ) : (
-                  <span />
                 )}
-                {tab === "levels" && <LevelStepper level={level} total={total} onChange={setLevel} slim />}
               </div>
             </div>
           )}
@@ -255,6 +278,8 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
                 setLevel={setLevel}
                 levelBarRef={levelBarRef}
                 note={noted.has(level) ? guide[`level:${level}`] : null}
+                picked={picked}
+                setPicked={setPicked}
               />
             </div>
           )}
@@ -312,6 +337,8 @@ function LevelsTab({
   setLevel,
   levelBarRef,
   note,
+  picked,
+  setPicked,
 }: {
   build: BuildViewData;
   states: LevelState[];
@@ -320,6 +347,9 @@ function LevelsTab({
   setLevel: (n: number) => void;
   levelBarRef: React.RefObject<HTMLElement | null>;
   note: GuideDoc | null;
+  /** The perk picked in the Perks section (held by the page, so the pinned bar can pick one too). */
+  picked: Picked;
+  setPicked: React.Dispatch<React.SetStateAction<Picked>>;
 }) {
   const d = useGameData();
   const { plan } = build;
@@ -333,9 +363,6 @@ function LevelsTab({
   const lv = plan.levels[level - 1];
   const firstPerk = lv.perks[0] ?? lv.destiny[0];
   const defaultTree = firstPerk ? (d.perkById.get(firstPerk)?.tree ?? plan.majors[0]) : (plan.majors[0] ?? d.skills[0]);
-  // A selected perk stays selected across levels (its status line follows the level); a tree picked
-  // without a perk is for this level only.
-  const [picked, setPicked] = useState<{ level: number; tree: string; star: string | null } | null>(null);
   const tree = picked && (picked.star || picked.level === level) ? picked.tree : defaultTree;
   const selected = picked?.star ?? null;
   const narrow = useNarrower(1100);
@@ -351,7 +378,7 @@ function LevelsTab({
     if (narrow) setSheet(id);
     else if (scroll) perksRef.current?.scrollIntoView({ block: "start" });
   };
-  const clearPick = useCallback(() => setPicked((p) => (p ? { ...p, star: null, level } : p)), [level]);
+  const clearPick = useCallback(() => setPicked((p) => (p ? { ...p, star: null, level } : p)), [level, setPicked]);
   useEffect(() => {
     if (!selected || narrow) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && clearPick();
@@ -586,12 +613,176 @@ function SkillsAt({ d, plan, s, level }: { d: GameData; plan: BuildViewData["pla
 }
 
 /**
+ * The pinned bar's one-line summary of a level, in the card's order: the attribute, the skills raised
+ * (points, trainers, books), the perks (each a button that selects it in the Perks section), the
+ * stone and the gear when they change, and a note mark. Each chip's tooltip is the card's line. When
+ * the chips don't fit, skills collapse first ("3 skills"), then the gear goes, then the stone; perks stay.
+ */
+function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; plan: BuildViewData["plan"]; states: LevelState[]; level: number; noted: boolean; onPerk: (id: string) => void }) {
+  const f = levelFacts(d, plan, states, level);
+  // Every skill this level raised, by points, trainers or books, biggest gain first.
+  const gains = new Map<string, { n: number; lines: string[] }>();
+  const add = (sk: string, n: number, line: string) => {
+    const g = gains.get(sk) ?? { n: 0, lines: [] };
+    g.n += n;
+    g.lines.push(line);
+    gains.set(sk, g);
+  };
+  for (const x of f.raised) add(x.sk, x.n, `${x.sk} ${x.from} → ${x.to}`);
+  for (const [sk, x] of f.extras.trainer) add(sk, x.n, `Trainer: ${sk} +${x.n} (${x.from} → ${x.to})`);
+  for (const [sk, x] of f.extras.book) add(sk, x.n, `Skill book: ${sk} +${x.n} (${x.from} → ${x.to})`);
+  const skills = [...gains].sort((a, b) => b[1].n - a[1].n || a[0].localeCompare(b[0]));
+  // How much to fold away: 0 all, 1 skills as one chip, 2 also no gear, 3 also no stone. Hidden copies of the
+  // row at each fold are measured against the room there is, on every resize.
+  const [fold, setFold] = useState(0);
+  // Still cut off with everything folded: the row ends with "…".
+  const [cut, setCut] = useState(false);
+  const row = useRef<HTMLSpanElement>(null);
+  const measures = useRef<(HTMLSpanElement | null)[]>([]);
+  useLayoutEffect(() => {
+    const el = row.current;
+    if (!el) return;
+    const check = () => {
+      const room = el.clientWidth;
+      const widths = measures.current.map((m) => m?.scrollWidth ?? 0);
+      const f = widths.findIndex((w) => w <= room + 1);
+      setFold(f === -1 ? 3 : f);
+      setCut(f === -1);
+    };
+    const id = requestAnimationFrame(check);
+    const ro = new ResizeObserver(() => requestAnimationFrame(check));
+    ro.observe(el);
+    return () => {
+      cancelAnimationFrame(id);
+      ro.disconnect();
+    };
+  }, [level]);
+  const perkList = [...f.perks, ...f.destiny.map((p) => ({ ...p, tree: "Destiny", rank: undefined, book: undefined }))];
+  // The chips at a fold. `plain` draws them without tooltips or buttons, for measuring.
+  const chips = (at: number, plain: boolean) => {
+    const chip = (key: string, tip: string, body: React.ReactNode, className = "") =>
+      plain ? (
+        <span key={key} className={`${styles.sumChip} ${className}`}>
+          {body}
+        </span>
+      ) : (
+        <Tooltip key={key} content={tip}>
+          <span className={`${styles.sumChip} ${className}`} tabIndex={0}>
+            {body}
+          </span>
+        </Tooltip>
+      );
+    const shownSkills = at === 0 ? skills.slice(0, 3) : [];
+    const moreSkills = at === 0 ? skills.slice(3) : skills;
+    return (
+      <>
+        {f.attribute && chip("attr", `+5 ${ATTRIBUTE_NAMES[f.attribute]}`, <IconLabel icon={<AttributeIcon name={f.attribute} />}>+5</IconLabel>, styles.sumKeep)}
+        {shownSkills.map(([sk, g]) => chip(sk, g.lines.join("\n"), <IconLabel icon={<SkillIcon name={sk} />}>+{g.n}</IconLabel>, styles.sumWide))}
+        {moreSkills.length > 0 &&
+          chip(
+            "more",
+            moreSkills.flatMap(([, g]) => g.lines).join("\n"),
+            at === 0 ? `+${moreSkills.length} more` : `${moreSkills.length} skill${moreSkills.length === 1 ? "" : "s"}`,
+            styles.sumWide,
+          )}
+        {perkList.map((p, i) => {
+          const body = (
+            <IconLabel icon={<SkillIcon name={p.tree} />}>
+              {p.name}
+              {p.rank ? ` ${p.rank}` : ""}
+            </IconLabel>
+          );
+          return plain ? (
+            <span key={`${p.id}-${i}`} className={`${styles.sumChip} ${styles.sumPerk} ${styles.sumKeep}`}>
+              {body}
+            </span>
+          ) : (
+            <Tooltip key={`${p.id}-${i}`} content={`${p.name}${p.rank ? ` ${p.rank}` : ""}${p.tree !== p.name ? ` (${p.tree}${p.book ? ", book" : ""})` : ""}`}>
+              <button type="button" className={`${styles.sumChip} ${styles.sumPerk} ${styles.sumKeep}`} onClick={() => onPerk(p.id)}>
+                {body}
+              </button>
+            </Tooltip>
+          );
+        })}
+        {at < 3 &&
+          f.stone &&
+          chip(
+            "stone",
+            `${f.stone.name === "none" ? "No stone" : `The ${f.stone.name}`}${f.stone.prev ? ` (in place of The ${f.stone.prev})` : ""}`,
+            f.stone.name === "none" ? "No stone" : <IconLabel icon={<SignIcon name={f.stone.name} />}>The {f.stone.name}</IconLabel>,
+            styles.sumWide,
+          )}
+        {at < 2 && f.gear.map((g, i) => chip(`gear-${i}`, `${g.slot ? `${g.slot}: ` : ""}${g.name}`, g.name, styles.sumWide))}
+        {noted && chip("note", "The author left a note for this level", <i className={styles.sumNote} aria-label="Note" />, styles.sumWide)}
+      </>
+    );
+  };
+  return (
+    <span ref={row} className={`${styles.summary} ${cut ? styles.summaryCut : ""}`} aria-label={`What level ${level} changed`}>
+      {chips(fold, false)}
+      {[0, 1, 2, 3].map((at) => (
+        <span
+          key={at}
+          ref={(el) => {
+            measures.current[at] = el;
+          }}
+          className={styles.sumMeasure}
+          aria-hidden="true"
+        >
+          {chips(at, true)}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+/** What a level changed, in the order the game asks: shared by the level card and the pinned bar's chips. */
+function levelFacts(d: GameData, plan: BuildViewData["plan"], states: LevelState[], level: number) {
+  const lv = plan.levels[level - 1];
+  const s = states[level - 1];
+  const changes = levelChanges(d, plan, states, level);
+  // Skill points: biggest gain first.
+  const raised = Object.entries(lv.skillPoints)
+    .filter(([, n]) => n > 0)
+    .map(([sk, n]) => ({ sk, from: s.skillsBefore[sk], to: s.skillsBefore[sk] + n, n }))
+    .sort((a, b) => b.n - a.n || b.to - a.to || a.sk.localeCompare(b.sk));
+  // Trainers and books, replayed in order from where the skill points left each skill.
+  const perBook = plan.traits.includes("Skilled") ? 2 : 1;
+  const at: Record<string, number> = Object.fromEntries(raised.map((x) => [x.sk, x.to]));
+  const cur = (sk: string) => at[sk] ?? s.skillsBefore[sk];
+  const extras: Record<"trainer" | "book", Map<string, { from: number; to: number; n: number }>> = { trainer: new Map(), book: new Map() };
+  for (const ex of lv.extras) {
+    if (!(ex.skill in s.skills)) continue;
+    const from = cur(ex.skill);
+    const to = ex.kind === "trainer" ? from + 1 : Math.min(s.maxSkill, from + perBook);
+    at[ex.skill] = to;
+    const m = extras[ex.kind];
+    const line = m.get(ex.skill);
+    if (line) Object.assign(line, { to, n: line.n + (to - from) });
+    else m.set(ex.skill, { from, to, n: to - from });
+  }
+  // The stone, when it changes.
+  const prevStone = level > 1 ? states[level - 2].stone : "";
+  const stone = lv.stone && (lv.stone === "none" ? prevStone : lv.stone !== prevStone) ? { name: lv.stone, prev: prevStone } : null;
+  return {
+    attribute: level > 1 ? lv.attribute : undefined,
+    raised,
+    capAt: raised.findIndex((x) => x.to >= s.maxSkill),
+    extras,
+    perks: changes.perks,
+    destiny: changes.destiny,
+    stone,
+    gear: plan.gear.filter((g) => g.fromLevel === level && g.name.trim()),
+    banked: changes.banked,
+  };
+}
+
+/**
  * The level card: what to do at this level, in the order the game asks (attribute, skill points,
  * perks, stone, trainers, books), with the author's note beside it.
  */
 function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; build: BuildViewData; states: LevelState[]; level: number; note: GuideDoc | null; onPerk: (id: string) => void }) {
   const { plan } = build;
-  const lv = plan.levels[level - 1];
   const s = states[level - 1];
   const changes = levelChanges(d, plan, states, level);
   const rows: [string, React.ReactNode][] = [];
@@ -604,18 +795,15 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
     "Standing stone": "One stone at a time: choosing a new one replaces the old. Its bonus counts from that level on.",
   };
 
-  if (level > 1 && lv.attribute)
+  const facts = levelFacts(d, plan, states, level);
+  if (facts.attribute)
     rows.push([
       "Attribute",
-      <IconLabel key="a" icon={<AttributeIcon name={lv.attribute} size={24} />}>+5 {ATTRIBUTE_NAMES[lv.attribute]}</IconLabel>,
+      <IconLabel key="a" icon={<AttributeIcon name={facts.attribute} size={24} />}>+5 {ATTRIBUTE_NAMES[facts.attribute]}</IconLabel>,
     ]);
 
   // Skill points: biggest gain first; the level's limit said once, on the first skill that hit it.
-  const raised = Object.entries(lv.skillPoints)
-    .filter(([, n]) => n > 0)
-    .map(([sk, n]) => ({ sk, from: s.skillsBefore[sk], to: s.skillsBefore[sk] + n, n }))
-    .sort((a, b) => b.n - a.n || b.to - a.to || a.sk.localeCompare(b.sk));
-  const capAt = raised.findIndex((r) => r.to >= s.maxSkill);
+  const { raised, capAt } = facts;
   if (raised.length)
     rows.push([
       "Skill points",
@@ -660,31 +848,16 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
     ]);
 
   // The stone, when it changes: "The Lover (in place of The Warrior)".
-  const prevStone = level > 1 ? states[level - 2].stone : "";
-  if (lv.stone && lv.stone !== "" && (lv.stone === "none" ? prevStone : lv.stone !== prevStone))
+  if (facts.stone)
     rows.push([
       "Standing stone",
       <span key="st">
-        {lv.stone === "none" ? "No stone" : `The ${lv.stone}`}
-        {prevStone && <span className="muted"> (in place of The {prevStone})</span>}
+        {facts.stone.name === "none" ? "No stone" : `The ${facts.stone.name}`}
+        {facts.stone.prev && <span className="muted"> (in place of The {facts.stone.prev})</span>}
       </span>,
     ]);
 
-  // Trainers and books, replayed in order from where the skill points left each skill.
-  const perBook = plan.traits.includes("Skilled") ? 2 : 1;
-  const at: Record<string, number> = Object.fromEntries(raised.map((r) => [r.sk, r.to]));
-  const cur = (sk: string) => at[sk] ?? s.skillsBefore[sk];
-  const extraLines: Record<"trainer" | "book", Map<string, { from: number; to: number; n: number }>> = { trainer: new Map(), book: new Map() };
-  for (const ex of lv.extras) {
-    if (!(ex.skill in s.skills)) continue;
-    const from = cur(ex.skill);
-    const to = ex.kind === "trainer" ? from + 1 : Math.min(s.maxSkill, from + perBook);
-    at[ex.skill] = to;
-    const m = extraLines[ex.kind];
-    const line = m.get(ex.skill);
-    if (line) Object.assign(line, { to, n: line.n + (to - from) });
-    else m.set(ex.skill, { from, to, n: to - from });
-  }
+  const extraLines = facts.extras;
   for (const kind of ["trainer", "book"] as const) {
     const m = extraLines[kind];
     if (!m.size) continue;

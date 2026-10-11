@@ -42,3 +42,26 @@ test("on the guide page, focusing a field lights its block in the miniature", as
   await expect(mini.getByRole("link", { name: "See it on the build page" })).toHaveAttribute("href", `/b/${TEST_BUILD_ID}?tab=guide`);
   await expect(mini.getByRole("link", { name: "Level notes" })).toHaveAttribute("href", `/b/${TEST_BUILD_ID}/edit?level=1`);
 });
+
+test("the pinned bar steps through levels over the perk tree, and a perk chip selects it in place", async ({ page }) => {
+  await page.goto(`/b/${AZREM_BUILD_ID}?level=6`);
+  await page.getByRole("region", { name: "Perks at level 6" }).scrollIntoViewIfNeeded();
+  const bar = page.getByRole("region", { name: "Pinned bar" });
+  const summary = bar.getByLabel(/^What level \d+ changed$/);
+  await expect(summary).toHaveAttribute("aria-label", "What level 6 changed");
+  await expect(summary.getByRole("button", { name: "Dodge" })).toBeVisible();
+  const before = await summary.innerText();
+
+  await bar.getByRole("button", { name: "Next level" }).click();
+  await expect(summary).toHaveAttribute("aria-label", "What level 7 changed");
+  await expect.poll(() => summary.innerText()).not.toBe(before);
+
+  await bar.getByRole("button", { name: "Previous level" }).click();
+  await expect(summary).toHaveAttribute("aria-label", "What level 6 changed");
+  const y = await page.evaluate(() => window.scrollY);
+  await summary.getByRole("button", { name: "Dodge" }).click();
+  const perks = page.getByRole("region", { name: "Perks at level 6" });
+  await expect(perks.getByRole("tab", { name: /^Evasion/ })).toHaveAttribute("aria-selected", "true");
+  await expect(perks.getByRole("button", { name: /^Dodge, / })).toHaveAttribute("aria-pressed", "true");
+  expect(Math.abs((await page.evaluate(() => window.scrollY)) - y)).toBeLessThanOrEqual(2);
+});
