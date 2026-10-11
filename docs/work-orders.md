@@ -745,6 +745,131 @@ Do after WO-19. This applies to the shared page and the editor alike, since both
 
 ---
 
+## WO-21  Shared page and guide page: Dave's notes after WO-19 (11 Oct 2026)
+
+Do after WO-20. Shared page items are in `src/components/build/build-view.tsx`; the guide page is `src/components/guide/guide-page.tsx`.
+
+### Level card
+1. **The author's line goes above the note.** Avatar and name sit at the top of the note column and link to the author's page (`AuthorLink`, as in the hero).
+2. **No note:** the note column stays, with the author's line and then `No note for level 6.` in muted text. This replaces WO-19's "no empty box" rule.
+3. **Skill icons** on every skill named in the card: Skill points, Trainer, Skill book (`SkillLabel`). Perk rows keep their tree icons.
+4. **Tooltips** (the WO-17 component) on the `Banked`, `Trainer`, `Skill book` and `Standing stone` labels. Each label gets a dotted underline so it reads as hoverable. Take the wording from `src/lib/rules/constants.ts` and the engine, as WO-17 did in the editor:
+   - Banked: points not spent at a level carry over to the next.
+   - Trainer: 5 sessions per level, and unused ones carry over.
+
+### Attributes
+5. **Bigger icons.** Add a 24 px size to `GameIcon` / `AttributeIcon`. Use it on the three rows in `Attributes at level N` and on the card's `Attribute` row.
+
+### Perks
+6. **`Held` is unclear.** Rename the heading to `Taken by level 6`.
+7. **Double rule:** the heading has a rule under it and the first group has a rule above it. Keep the heading's rule only; groups get a rule under each one, not above.
+
+### Tabs that can't be missed
+8. After WO-22 the tabs are **Levels** and **Guide**:
+   - **Size:** 64 px tall, the condensed face at 28 px uppercase, starting at the left edge of the content column.
+   - **Second line:** each tab has a second line in 14 px muted text: `Levels 1 to 20` and `6 min read` (guide words ÷ 200, rounded up).
+   - **Active tab:** the panel colour (`#141b23`) with a 3 px ember bar on top and no bottom border, so it joins the content below.
+   - **Inactive tab:** outlined, with muted text that turns light on hover.
+   - **A rule** runs the full width under the tab row.
+9. **The pinned bar** from WO-19 holds the tabs on the left at a compact size, plus the level stepper on the right while on Levels, so the tabs stay reachable while scrolling.
+
+### Guide page
+10. Today the page is two big text boxes. **From 1100 px wide it becomes two columns:**
+   - **Left: the fields.**
+     - The `Intro` field is 4 lines tall with a character count (`312 / 1,200`).
+     - The `Guide` field starts at 12 lines and grows with its text.
+   - **Right: a sticky miniature of the shared page**, about 260 px wide, drawn with plain blocks:
+     - The blocks are the hero, the intro's lines, the about bar, the `Levels` and `Guide` tabs, and a level card with its note column.
+     - Each block a field fills is labelled `Intro`, `Guide` or `Level notes`.
+     - The block for the field that has focus is lit in ember. With no focus, both `Intro` and `Guide` are lit softly.
+     - The `Level notes` block links to the editor at level 1, since notes are written there.
+     - Under it, `See it on the build page` opens `/b/<id>?tab=guide` in a new tab.
+   - **Under 1100 px:** no miniature; the fields stack as now.
+
+### Done when
+- [ ] e2e: the author's name in a level card links to `/u/<handle>`. A level with no note shows `No note for level N.`
+- [ ] e2e: hovering `Banked` and `Trainer` in the card shows their tooltips.
+- [ ] e2e: on the guide page, focusing `Intro` lights the miniature's intro block and focusing `Guide` lights its guide block.
+- [ ] No `Held` heading left. Only one rule between the heading and the first group (screenshot).
+- [ ] Screenshots for Dave at 1440 × 900: the tab row; the level card with a note and without; attributes; `Taken by level 6`; the guide page with the miniature, `Guide` in focus. Also 390 for the tabs and the card.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-22  Gear by level (11 Oct 2026)
+
+Dave: gear should change with level, carry over from one level to the next by default, and stay optional. The Gear tab shows a whole-build table that doesn't line up with the level being viewed. Do after WO-21.
+
+### What gear means
+1. **Keep `GearItem` `{ slot, name, fromLevel, note }`.** A row means "from this level on, this slot holds this item", until a later row for the same slot. A row with an empty `name` means the slot is emptied from that level.
+   - Add `gearAt(plan, level)`: the item each slot holds at a level, with the level it was set.
+   - Add `gearChanges(plan, level)`: the rows set at exactly that level.
+   - Unit-test both.
+2. **Fixed slots:** `Main hand`, `Off hand`, `Head`, `Body`, `Hands`, `Feet`, `Ring`, `Amulet`, `Ammo`, `Other`. `Other` may hold several items.
+   - Map the old free-text slots when a plan is read (`src/lib/rules/convert.ts`): Weapon → Main hand, Shield → Off hand, Chest → Body. Anything unknown → Other.
+   - Nothing is lost: existing rows keep their name, level and note.
+
+### Editor
+3. **Remove the separate Gear page** (`/b/<id>/gear`, `gear-page.tsx`) and its header button. Redirect old links to the editor.
+4. **A `Gear` block in each level's editor**, after Between level-ups:
+   - It lists each slot that holds something at this level.
+   - Items carried from earlier levels are shown muted, as `Steel spear, since level 4`.
+   - Each slot has `Change` (an item field: the WO-23 search when it exists, plain text before that, plus an optional note) and `Empty from here`.
+   - A change made at this level is shown in ember with `Undo`.
+   - `Add gear` with a slot select covers empty slots.
+   - A build with no gear shows only `Add gear`. Gear is never required and never raises a problem.
+
+### Shared page
+5. **Remove the Gear tab**, leaving `Levels` and `Guide`. `?tab=gear` opens Levels.
+6. **Level card:** a `Gear` row when something changes at that level, e.g. `Steel spear (Main hand)` or `Off hand emptied`.
+7. **`Gear at level 6`:** a short slot and item list after Skills. Items set at this level are in ember. It's left out when the build has no gear at all.
+
+### Done when
+- [ ] Unit tests: `gearAt` carries an item forward, a later row replaces it, an empty name clears it, and `Other` holds several.
+- [ ] e2e: in the editor, set a Main hand item at level 2, go to level 5 (it shows as carried), change it at level 5, then view the shared page: level 3 shows the first item and level 5 shows the new one in the card.
+- [ ] e2e: `/b/<id>/gear` redirects to the editor, and `?tab=gear` opens Levels.
+- [ ] Ushnar's and Azrem's existing gear still shows, under the new slot names (screenshot).
+- [ ] Screenshots for Dave: the editor's Gear block at 1512 × 806 with one carried item and one changed item; the shared page's level card and `Gear at level N` at 1440 and 390.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-23  An index of the game's items, for gear and @-mentions (11 Oct 2026)
+
+Dave asked whether every item in the game could be indexed. It can: the planner already reads perks and books from the LoreRim load order's own plugin files (`scripts/gamedata/esp.py`, `extract.py`, `books.py`), and items are records in the same files. The work is filtering out the noise. Do after WO-22.
+
+### Extracting
+1. **`scripts/gamedata/items.py`**, on the same reader and read-only like the others. It writes `gamedata/5.0.4.8/items_raw.json` from the winning records of:
+   - **WEAP:** name, weapon type (from the type keywords: Sword, War Axe, Mace, Dagger, Greatsword, Battleaxe, Warhammer, Bow, Crossbow, Staff, plus LoreRim's own such as Spear and Quarterstaff where they have keywords), damage, weight, value.
+   - **ARMO:** name, slot (from the biped flags: Head, Body, Hands, Feet, Shield, Ring, Amulet), Light / Heavy / Clothing (from the armor-type keywords), armor rating, weight, value.
+   - **AMMO:** name, arrow or bolt, damage.
+   - The description text where a record has one (`DESC`).
+2. **Filters** (counts for each step go in the commit message):
+   - **Playable only:** skip records with the non-playable flag, and armor with no biped slot.
+   - **Named:** skip records with no full name, and names that look like debug or deleted records (`zzz`, `DELETED`, `Dummy`, `[` at the start). The pattern list goes in `overrides.json`.
+   - **No enchanted copies:** skip records made from a template (`CNAM` on WEAP, `TNAM` on ARMO), which are the generated "Iron Sword of Frost" copies. Unique named items without a template stay.
+   - **One entry per name:** merge records that share type and name, keeping the winning record's stats.
+3. **Build into the planner:** `build.py` writes `src/data/lorerim-5.0.4.8/items.json` (generated, never hand-edited, like the other data files) with `{ id, name, kind, slot, armorType, weaponType, stats, text }`. `id` is the plugin and form ID.
+4. **Size:** this file must not go into the main bundle. Load it on demand, the first time the gear search or `@` opens, from a static route with long caching. If it is over 1 MB gzipped, report the size and stop for review.
+5. **Running it:** the extract needs the LoreRim files on Dave's PC, so Jeff writes and unit-tests the scripts against a small fixture plugin. The chat session runs `items.py` on the PC and commits `items_raw.json`. Jeff then runs `build.py`.
+
+### Using it
+6. **Gear search:** the WO-22 item field becomes a search box filtered to the slot's items (Main hand: weapons; Body: body armor, and so on). It shows the name with a small line of type and stats (`Heavy armor · 25 armor · 30 weight`). Free text is still allowed for items the index doesn't have.
+7. **`@`-mentions** gain the kind `item`:
+   - The chip shows the name.
+   - The hover card shows the type, stats and game text when there is any.
+   - Search ranks exact name starts first and shows at most 8 results.
+   - Gear rows picked from the index link to the same card.
+
+### Done when
+- [ ] Unit tests for each filter against the fixture plugin: a non-playable armor, a templated enchanted sword, a `zzz` record, two same-name records.
+- [ ] `items.json` built from the real load order. Its item count and gzipped size are in the commit message, and it isn't in the main bundle (`npm run build` output).
+- [ ] e2e: typing `steel sp` in a Main hand gear field offers Steel Spear (or the load order's name for it), and typing `@ebony` in a level note offers Ebony items with their hover card.
+- [ ] Screenshots for Dave: the gear search open at 1512 × 806; an item hover card in a note on the shared page.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
