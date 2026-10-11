@@ -681,13 +681,13 @@ Source of truth: the canvas artboards **Shared build, reworked (proposal, level 
 10. **The Guide page** gets an `Intro` field above `Guide`. It uses the level notes' toolbar (WO-17) and the same autosave. The field's label and the character count are the only copy.
 
 ### Done when
-- [ ] e2e: `?tab=guide&level=6` opens the Guide tab. Switching to Levels shows level 6, and the URL keeps the level.
-- [ ] e2e: on Azrem (`/b/225en4m79k`) at level 6, the card's rows read in this order: Attribute, Skill points, Perk, Standing stone, Trainer. `The Lover (in place of The Warrior)` and `(max skill 56 at level 6)` are shown.
-- [ ] e2e: clicking `Dodge` in the card selects Evasion in the Perks section, with Dodge's star selected.
-- [ ] e2e: a build with no intro shows its guide's first paragraph. A build with no guide has no Guide tab.
-- [ ] No `Open perk trees` text left in `src`.
-- [ ] Screenshots for Dave of Azrem at level 6, compared with the two canvas artboards: 1440 × 900 (the top of the page down to the card, then the Perks section) and 390 (top, card, perks).
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: `?tab=guide&level=6` opens the Guide tab. Switching to Levels shows level 6, and the URL keeps the level.
+- [x] e2e: on Azrem (`/b/225en4m79k`) at level 6, the card's rows read in this order: Attribute, Skill points, Perk, Standing stone, Trainer. `The Lover (in place of The Warrior)` and `(max skill 56 at level 6)` are shown.
+- [x] e2e: clicking `Dodge` in the card selects Evasion in the Perks section, with Dodge's star selected.
+- [x] e2e: a build with no intro shows its guide's first paragraph. A build with no guide has no Guide tab.
+- [x] No `Open perk trees` text left in `src`.
+- [x] Screenshots for Dave of Azrem at level 6, compared with the two canvas artboards: 1440 × 900 (the top of the page down to the card, then the Perks section) and 390 (top, card, perks).
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

@@ -24,6 +24,8 @@ export interface GuideEditorProps {
   /** Overview: H2 and H3. Level notes: H3 only. */
   headingLevels?: (2 | 3)[];
   compact?: boolean;
+  /** The intro: bold, italic and links only (implies compact). */
+  inline?: boolean;
   onStatus?: (status: GuideSaveStatus, error: string | null, retry: () => void) => void;
   /** Every change, as it happens. */
   onChange?: (doc: GuideDoc) => void;
@@ -120,11 +122,33 @@ type Tool = { name: string; keys?: string; on: boolean; run: () => void };
  * The formatting toolbar, always visible at the top of the field (sticky in a long guide). Level
  * notes get the short set; the guide gets the full set and More for the rarer blocks.
  */
-function Toolbar({ editor, full, levels, onLink, onImage, onYoutube }: { editor: Editor; full: boolean; levels: (2 | 3)[]; onLink: () => void; onImage: () => void; onYoutube: () => void }) {
+function Toolbar({
+  editor,
+  inline,
+  full,
+  levels,
+  onLink,
+  onImage,
+  onYoutube,
+}: {
+  editor: Editor;
+  inline: boolean;
+  full: boolean;
+  levels: (2 | 3)[];
+  onLink: () => void;
+  onImage: () => void;
+  onYoutube: () => void;
+}) {
   const [more, setMore] = useState(false);
   const c = () => editor.chain().focus();
   const level = levels[0] ?? 2;
-  const tools: Tool[] = full
+  const tools: Tool[] = inline
+    ? [
+        { name: "Bold", keys: "Mod+B", on: editor.isActive("bold"), run: () => c().toggleBold().run() },
+        { name: "Italic", keys: "Mod+I", on: editor.isActive("italic"), run: () => c().toggleItalic().run() },
+        { name: "Link", on: editor.isActive("link"), run: onLink },
+      ]
+    : full
     ? [
         { name: "Heading", keys: `Mod+Alt+${level}`, on: editor.isActive("heading"), run: () => c().toggleHeading({ level }).run() },
         { name: "Bold", keys: "Mod+B", on: editor.isActive("bold"), run: () => c().toggleBold().run() },
@@ -407,7 +431,8 @@ function Menu<T>({ state, id, label, onPick, render }: { state: MenuState<T>; id
   );
 }
 
-export function GuideEditor({ buildId, sectionKey, initial, label, placeholder = "", headingLevels = [2, 3], compact, onStatus, onChange }: GuideEditorProps) {
+export function GuideEditor({ buildId, sectionKey, initial, label, placeholder = "", headingLevels = [2, 3], compact: compactProp, inline = false, onStatus, onChange }: GuideEditorProps) {
+  const compact = compactProp || inline;
   const { status, error, change, retry } = useGuideAutosave(buildId, sectionKey);
   useEffect(() => onStatus?.(status, error, retry), [status, error, retry, onStatus]);
 
@@ -462,7 +487,7 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
 
 
   // Created once; the extensions read the latest handlers through the boxes above.
-  const [extensions] = useState(() => guideExtensions({ placeholder, headingLevels, slash: handlers.slash, mention: handlers.mention, onLink: handlers.onLink }));
+  const [extensions] = useState(() => guideExtensions({ placeholder, headingLevels, slash: handlers.slash, mention: handlers.mention, onLink: handlers.onLink, inlineOnly: inline }));
 
   const [startDoc] = useState<{ doc: GuideDoc; unsaved: boolean }>(() => {
     const kept = unsavedGuide(buildId, sectionKey);
@@ -487,12 +512,14 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
         const files = Array.from(event.dataTransfer?.files ?? []).filter((f) => f.type.startsWith("image/") || f.name.includes("."));
         if (moved || !files.length) return false;
         event.preventDefault();
+        if (inline) return true; // The intro takes no images.
         handlers.onFiles(files, view.posAtCoords({ left: event.clientX, top: event.clientY })?.pos);
         return true;
       },
       handlePaste: (_view, event) => {
         const files = Array.from(event.clipboardData?.files ?? []);
         if (!files.length) return false;
+        if (inline) return true;
         handlers.onFiles(files);
         return true;
       },
@@ -550,6 +577,7 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
   const toolbar = (
     <Toolbar
       editor={editor}
+      inline={inline}
       full={!compact}
       levels={headingLevels}
       onLink={openLink}
@@ -585,19 +613,22 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
           )}
         />
       )}
-      <input
-        ref={setFilePicker}
-        type="file"
-        accept="image/png,image/jpeg,image/webp,image/gif"
-        multiple
-        hidden
-        aria-label="Add images"
-        onChange={(e) => {
-          const files = Array.from(e.target.files ?? []);
-          e.target.value = "";
-          if (files.length) void insertImages(editor, buildId, files);
-        }}
-      />
+      {/* The intro takes no images. */}
+      {!inline && (
+        <input
+          ref={setFilePicker}
+          type="file"
+          accept="image/png,image/jpeg,image/webp,image/gif"
+          multiple
+          hidden
+          aria-label="Add images"
+          onChange={(e) => {
+            const files = Array.from(e.target.files ?? []);
+            e.target.value = "";
+            if (files.length) void insertImages(editor, buildId, files);
+          }}
+        />
+      )}
       {youtube && <YoutubePrompt editor={editor} rect={youtube} onDone={() => setYoutube(null)} />}
       {coarse && focused && (
         // On touch devices the toolbar sits above the keyboard, not over the selection.

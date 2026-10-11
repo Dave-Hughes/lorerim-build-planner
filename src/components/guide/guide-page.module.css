@@ -21,3 +21,20 @@
   color: var(--ember);
   cursor: pointer;
 }
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.introHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 16px;
+}
+.count {
+  font-size: 13px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}

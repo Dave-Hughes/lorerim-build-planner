@@ -23,7 +23,7 @@ export default async function GuideEditPage({ params }: { params: Params }) {
   const guide = await getGuide(id, build.plan);
   return (
     <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
-      <GuidePage buildId={id} name={build.name} plan={build.plan} initial={guide.overview?.doc ?? emptyDoc()} />
+      <GuidePage buildId={id} name={build.name} plan={build.plan} initial={guide.overview?.doc ?? emptyDoc()} intro={guide.intro?.doc ?? emptyDoc()} />
     </GameDataProvider>
   );
 }

@@ -46,9 +46,9 @@ test.describe("level-up editor", () => {
 
     // The visitor view shows the saved level.
     await page.goto(`/b/${TEST_BUILD_ID}?level=7`);
-    await expect(page.getByText("At level 7", { exact: true })).toBeVisible();
-    await expect(page.getByRole("region", { name: "This level and perks" })).toContainText("Overpowering Bashes");
-    await expect(page.getByRole("region", { name: "This level and perks" })).toContainText("Block 46 → 50");
+    const card = page.getByRole("region", { name: "Level 7", exact: true });
+    await expect(card).toContainText("Overpowering Bashes");
+    await expect(card).toContainText("Block 46 → 50");
     await expect(page.getByText("Planned to level 7")).toBeVisible();
   });
 

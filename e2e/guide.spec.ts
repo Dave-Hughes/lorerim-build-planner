@@ -41,7 +41,7 @@ test.describe("the written guide", () => {
     await expect(editor.locator("li")).toHaveText(["Riverwood", "Whiterun"]);
     await expect(editor.locator('[data-callout="tip"]')).toHaveText("Keep the shield up.");
 
-    await page.goto(`/b/${TEST_BUILD_ID}`);
+    await page.goto(`/b/${TEST_BUILD_ID}?tab=guide`);
     const guide = page.getByRole("region", { name: "Guide" });
     await expect(guide.getByRole("heading", { level: 2, name: "Where to go" })).toBeVisible();
     await expect(guide.getByRole("listitem")).toHaveText(["Riverwood", "Whiterun"]);
@@ -83,7 +83,8 @@ test.describe("the written guide", () => {
     await page.keyboard.press("Delete");
     await page.keyboard.type("Visit here");
     await page.keyboard.press("Shift+Home");
-    await page.getByRole("toolbar", { name: "Format" }).getByRole("button", { name: "Link" }).click();
+    // The guide's own toolbar (the Intro's comes first on the page).
+    await page.getByRole("toolbar", { name: "Format" }).last().getByRole("button", { name: "Link" }).click();
     await page.getByRole("textbox", { name: "Link" }).fill("javascript:alert(1)");
     await page.keyboard.press("Enter");
     await expect(page.getByRole("alert").filter({ hasText: "Links must start with http:// or https://" })).toBeVisible();
@@ -132,7 +133,7 @@ test.describe("the written guide", () => {
     await expect(page.getByRole("status")).toHaveText("Saved");
     const url = (await img.getAttribute("src"))!;
 
-    await page.goto(`/b/${TEST_BUILD_ID}`);
+    await page.goto(`/b/${TEST_BUILD_ID}?tab=guide`);
     const figure = page.getByRole("region", { name: "Guide" }).locator("figure");
     await expect(figure.locator("img")).toHaveAttribute("alt", "A wooden mill by a river");
     await expect(figure.locator("img")).toHaveAttribute("loading", "lazy");
@@ -186,7 +187,7 @@ test.describe("the written guide", () => {
     await expect(editor.getByRole("button", { name: "Bulwark" })).toBeVisible();
     await expect(page.getByRole("status")).toHaveText("Saved");
 
-    await page.goto(`/b/${TEST_BUILD_ID}`);
+    await page.goto(`/b/${TEST_BUILD_ID}?tab=guide`);
     const guide = page.getByRole("region", { name: "Guide" });
     await expect(guide).toContainText("Open with Powerful Bashes and take Bulwark", { useInnerText: true });
     const perk = guide.getByRole("button", { name: "Powerful Bashes" });

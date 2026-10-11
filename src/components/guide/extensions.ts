@@ -156,13 +156,31 @@ export function guideExtensions({
   slash,
   mention,
   onLink,
+  inlineOnly = false,
 }: {
   placeholder: string;
   headingLevels: (2 | 3)[];
   slash: SlashBridge;
   mention: MenuBridge<MentionInfo>;
   onLink: () => void;
+  /** The intro: paragraphs with bold, italic and links, nothing else (no lists, headings, blocks). */
+  inlineOnly?: boolean;
 }) {
+  const kit = StarterKit.configure({
+    code: false,
+    codeBlock: false,
+    underline: false,
+    ...(inlineOnly ? { heading: false, bulletList: false, orderedList: false, listItem: false, listKeymap: false, blockquote: false, horizontalRule: false, strike: false } : { heading: { levels: headingLevels } }),
+    link: {
+      openOnClick: false,
+      autolink: true,
+      defaultProtocol: "https",
+      isAllowedUri: (url) => isSafeHref(url),
+      shouldAutoLink: (url) => isSafeHref(/^https?:\/\//i.test(url) ? url : `https://${url}`),
+    },
+  });
+  if (inlineOnly)
+    return [kit, Placeholder.configure({ placeholder: ({ editor }) => (editor.isEmpty ? placeholder : "") }), Typography.configure({ emDash: false }), LinkShortcut.configure({ onLink })];
   return [
     StarterKit.configure({
       code: false,

@@ -463,9 +463,410 @@
   }
 }
 
-/* Under 900: what happened at the level comes straight after the level row, before the long skills list. */
+/* ---------- Intro: the same measure as the about bar below it ---------- */
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.intro > :first-child {
+  width: 100%;
+  max-width: none;
+  font-size: 19px;
+  line-height: 1.6;
+}
+.intro > :first-child :where(p) {
+  max-width: none;
+}
+.intro .linkButton {
+  font-size: 15px;
+}
+
+/* ---------- Tabs: Levels, Guide, Gear ---------- */
+.tabs {
+  display: flex;
+  gap: 36px;
+  border-bottom: 1px solid var(--rule);
+  margin-top: 4px;
+}
+.tab {
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 0 12px;
+  margin-bottom: -1px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 120ms;
+}
+.tab:hover {
+  color: var(--text);
+}
+.tab[aria-selected="true"] {
+  color: var(--text);
+  border-bottom-color: var(--ember);
+}
+.tab:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+.panelStack {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* The stepper, pinned to the top once it has scrolled away. */
+.pinnedBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  padding: 6px 0;
+  background: rgba(14, 19, 25, 0.96);
+  border-bottom: 1px solid var(--rule);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- The level card ---------- */
+.card {
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+.cardWithNote {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+}
+.cardMain {
+  padding: 26px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.cardTitle {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.card .changes {
+  gap: 14px;
+  font-size: 17px;
+}
+.card .changeRow {
+  grid-template-columns: 136px minmax(0, 1fr);
+  gap: 18px;
+  align-items: baseline;
+}
+.changeKey {
+  color: var(--muted);
+  font-size: 15px;
+}
+.card .stack {
+  gap: 4px;
+}
+.attrLine {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.attrDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.perkLink {
+  font: inherit;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--ember);
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.perkLink:hover {
+  color: var(--ember);
+}
+.card .issues {
+  color: var(--health);
+}
+.note {
+  border-left: 1px solid var(--rule);
+  padding: 26px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #111820;
+}
+.card .note > section {
+  padding-top: 0;
+  border-top: 0;
+}
+.card .note p,
+.card .note li {
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 21px;
+  line-height: 1.5;
+}
+.noteBy {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 14px;
+}
 @media (max-width: 899px) {
-  .colPerks {
-    order: -1;
+  .cardWithNote {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .note {
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .cardMain,
+  .note {
+    padding: 18px 16px;
+  }
+  .card .changeRow {
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+
+/* ---------- Reference: attributes and skills ---------- */
+.reference {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: flex-start;
+}
+.reference .colStats {
+  flex: 1 1 300px;
+  gap: 18px;
+}
+.reference .colSkills {
+  flex: 2 1 560px;
+  gap: 14px;
+}
+.reference .stats {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #c3cdd6;
+  gap: 8px 16px;
+}
+.reference .stats dd {
+  font-weight: 400;
+}
+.skillsTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.skillCols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 0 40px;
+}
+@media (max-width: 899px) {
+  .skillCols {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+}
+
+/* ---------- Perks: chips, then the tree and the held list side by side ---------- */
+.perksSection {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 8px;
+  scroll-margin-top: 64px;
+}
+.chipsRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 14px;
+  font: inherit;
+  font-size: 15px;
+  border: 1px solid var(--rule-strong);
+  background: transparent;
+  color: #c3cdd6;
+  cursor: pointer;
+  transition:
+    color 120ms,
+    border-color 120ms,
+    background-color 120ms;
+}
+.chip:hover:not([aria-selected="true"]) {
+  border-color: var(--ember);
+  color: var(--ember);
+}
+.chip[aria-selected="true"] {
+  background: var(--ember);
+  border-color: var(--ember);
+  color: var(--on-ember);
+}
+.chipCount {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.chip:focus-visible,
+.others:focus-visible,
+.perk:focus-visible,
+.perkLink:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+.othersWrap {
+  position: relative;
+}
+.others {
+  font: inherit;
+  font-size: 15px;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px dashed var(--rule-strong);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.others:hover {
+  color: var(--ember);
+  border-color: var(--ember);
+}
+.othersMenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 30;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0;
+  background: var(--panel-raised);
+  border: 1px solid var(--rule-strong);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+.othersItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: inherit;
+  text-align: left;
+  padding: 8px 14px;
+  border: 0;
+  background: transparent;
+  color: #c3cdd6;
+  cursor: pointer;
+}
+.othersItem:hover,
+.othersItem:focus-visible {
+  background: rgba(240, 145, 63, 0.12);
+  color: var(--ember);
+}
+.perksBody {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-start;
+}
+.perksBody .treeBox {
+  flex: 3 1 640px;
+  min-width: 0;
+  background: #0b1016;
+}
+.held {
+  flex: 1 1 280px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.heldHead {
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+.held .perkGroup {
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 12px;
+}
+.held .perk {
+  font: inherit;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+.held .perk:hover {
+  color: var(--ember);
+}
+.perkNow {
+  color: var(--ember) !important;
+  font-weight: 600;
+}
+@media (max-width: 1099px) {
+  .perksBody .treeBox,
+  .held {
+    flex: 1 1 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tab,
+  .chip {
+    transition: none;
+  }
+}
+
+/* Phones: the tree chips are one sideways row (WO-12), with the Other trees menu after it. */
+@media (max-width: 899px) {
+  .chipsRow {
+    flex-wrap: nowrap;
+  }
+  .chips {
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .chip {
+    flex: none;
+    white-space: nowrap;
+  }
+  .others {
+    white-space: nowrap;
+  }
+  .othersMenu {
+    left: auto;
+    right: 0;
   }
 }

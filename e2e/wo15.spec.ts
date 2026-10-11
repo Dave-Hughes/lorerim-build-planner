@@ -38,12 +38,11 @@ test.describe("level notes are never lost", () => {
 
 test("the two Destiny stars called Endurance have different names", async ({ page }) => {
   await page.goto("/b/sample?level=6");
-  await page.getByRole("button", { name: "Open perk trees" }).click();
-  await page.getByRole("tab", { name: /^Destiny/ }).click();
-  const trees = page.getByRole("region", { name: "Perk trees" });
-  await expect(trees.getByRole("img", { name: /^Endurance \(to Thief\),/ })).toHaveCount(1);
-  await expect(trees.getByRole("img", { name: /^Endurance \(to Smash\),/ })).toHaveCount(1);
-  await expect(trees.getByRole("img", { name: /^Endurance,/ })).toHaveCount(0);
+  const trees = page.getByRole("region", { name: "Perks at level 6" });
+  await trees.getByRole("tab", { name: /^Destiny/ }).click();
+  await expect(trees.getByRole("button", { name: /^Endurance \(to Thief\),/ })).toHaveCount(1);
+  await expect(trees.getByRole("button", { name: /^Endurance \(to Smash\),/ })).toHaveCount(1);
+  await expect(trees.getByRole("button", { name: /^Endurance,/ })).toHaveCount(0);
 });
 
 test("a trait's choice shows on the shared page", async ({ page, context }) => {
@@ -59,7 +58,7 @@ test("a trait's choice shows on the shared page", async ({ page, context }) => {
   await page.getByRole("button", { name: "Save changes" }).click();
   await page.waitForURL(new RegExp(`/b/${SCRATCH_BUILD_ID}/edit`));
   await page.goto(`/b/${SCRATCH_BUILD_ID}`);
-  await expect(page.getByRole("region", { name: "Character" })).toContainText("Focused Combat: Two-Handed");
+  await expect(page.getByRole("region", { name: "Character", exact: true })).toContainText("Focused Combat: Two-Handed");
 });
 
 test("the Guide and Gear pages open straight on their content", async ({ page, context }) => {

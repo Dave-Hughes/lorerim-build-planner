@@ -11,7 +11,7 @@ const COLLAPSED = 600;
  * The build's guide on the shared build page: a contents list when there are three or more
  * H2s, and long guides shown to ~600px with "Read the guide" (remembered for the session).
  */
-export function GuideSection({ buildId, doc }: { buildId: string; doc: GuideDoc }) {
+export function GuideSection({ buildId, doc, full }: { buildId: string; doc: GuideDoc; /** All of it, never collapsed (the Guide tab). */ full?: boolean }) {
   const headings = guideHeadings(doc);
   const body = useRef<HTMLDivElement>(null);
   const storageKey = `lorerim-guide-open:${buildId}`;
@@ -46,7 +46,7 @@ export function GuideSection({ buildId, doc }: { buildId: string; doc: GuideDoc 
       // Remembered for this page view only.
     }
   };
-  const collapsed = long && !open;
+  const collapsed = long && !open && !full;
 
   return (
     <section aria-label="Guide" className={styles.section}>

@@ -9,7 +9,7 @@ import { newBuildId, isValidBuildId } from "./ids";
 import { getBuild } from "./queries";
 import { buildDetailsSchema, parseBuildPlan, type BuildDetails } from "./validate";
 import { convertPlan, droppedSentence } from "@/lib/rules/convert";
-import { guideDocSchema, imageUrls, isGuideKey, levelOfKey, limitFor, textLength, tooLongMessage } from "@/lib/guide/doc";
+import { guideDocSchema, imageUrls, isGuideKey, isInlineOnly, levelOfKey, limitFor, textLength, tooLongMessage } from "@/lib/guide/doc";
 import { deleteBuildImages, deleteImagesIfUnused, isOurImage } from "@/lib/guide/images";
 import { copyGuide } from "@/lib/guide/queries";
 import { currentVersion, isKnownVersion, requireGameData } from "@/lib/rules/server";
@@ -225,6 +225,7 @@ export async function saveGuideSection(buildId: string, key: string, input: unkn
   const length = textLength(doc);
   const limit = limitFor(key);
   if (length > limit) return { ok: false, error: tooLongMessage(length, limit) };
+  if (key === "intro" && !isInlineOnly(doc)) return { ok: false, error: "The intro takes plain paragraphs with bold, italic and links only." };
   const images = imageUrls(doc);
   if ([...images].some((u) => !isOurImage(u))) return { ok: false, error: "Images must be uploaded to the guide." };
 

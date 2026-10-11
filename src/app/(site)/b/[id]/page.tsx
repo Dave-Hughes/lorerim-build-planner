@@ -13,7 +13,7 @@ import { formatDate } from "@/lib/format/date";
 import { clientVersion, isKnownVersion } from "@/lib/rules/server";
 
 type Params = Promise<{ id: string }>;
-type Search = Promise<{ level?: string; copy?: string }>;
+type Search = Promise<{ level?: string; copy?: string; tab?: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { id } = await params;
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function BuildPage({ params, searchParams }: { params: Params; searchParams: Search }) {
-  const [{ id }, { level, copy }, session] = await Promise.all([params, searchParams, auth()]);
+  const [{ id }, { level, copy, tab }, session] = await Promise.all([params, searchParams, auth()]);
   const viewerId = session?.user?.id ?? null;
   const build = await getBuild(id, viewerId);
   if (!build) notFound();
@@ -40,6 +40,7 @@ export default async function BuildPage({ params, searchParams }: { params: Para
         isOwner={isOwner}
         signedIn={!!viewerId}
         initialLevel={Number(level) || 1}
+        initialTab={tab === "guide" || tab === "gear" ? tab : "levels"}
         signInToCopy={<SignInButton redirectTo={`/b/${id}?copy=1`} className="btn btn-primary" label="Copy to my builds" />}
         signInToLike={
           <SignInButton

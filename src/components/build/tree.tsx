@@ -23,6 +23,8 @@ export interface TreeProps {
   /** Tree or list, when the page holds it (the tabs carry the toggle on phones). */
   view?: TreeView;
   onView?: (view: TreeView) => void;
+  /** Leave out the Tree / List switch (the page shows the list beside the tree). */
+  noToggle?: boolean;
 }
 
 export type TreeView = "tree" | "list";
@@ -230,7 +232,7 @@ function BottomSheet({ label, onClose, children }: { label: string; onClose: () 
   );
 }
 
-export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView }: TreeProps) {
+export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView, noToggle }: TreeProps) {
   const d = useGameData();
   const [wrap, setWrap] = useState<HTMLDivElement | null>(null);
   // `top`: where the drawing starts on the page (below the toolbar), for short windows.
@@ -411,7 +413,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
     <div className={styles.box} ref={setWrap}>
       <div className={styles.toolbar}>
         {/* On phones the tabs carry the switch, at the end of their row. */}
-        <ViewToggle view={view} onView={setView} className={onView ? styles.segWide : undefined} />
+        {!noToggle && <ViewToggle view={view} onView={setView} className={onView ? styles.segWide : undefined} />}
         {small && view === "tree" && (
           <span className={styles.zoom}>
             <button type="button" className="btn btn-sm btn-icon" aria-label="Zoom in" onClick={() => zoomAt(w0 / 2, h0 / 2, 1.4)} disabled={zoom >= 3}>

@@ -11,6 +11,8 @@ import { drizzle } from "drizzle-orm/neon-serverless";
 import { assertDatabaseMatchesEnvironment } from "../src/db/environments";
 import * as schema from "../src/db/schema";
 import sample from "../src/lib/rules/__fixtures__/sample-build.json";
+import azrem from "./fixtures/azrem.json";
+import { textLength, type GuideDoc } from "../src/lib/guide/doc";
 import type { BuildPlan } from "../src/lib/rules/types";
 
 config({ path: ".env.local", quiet: true });
@@ -18,6 +20,8 @@ config({ path: ".env.local", quiet: true });
 export const TEST_USER_ID = "e2e-user-0001";
 export const TEST_USER_NAME = "Test Author";
 export const TEST_USER_HANDLE = "e2e-test-author";
+/** A copy of Azrem from staging (e2e/fixtures/azrem.json): a real 20-level build with a guide and a note at every level. */
+export const AZREM_BUILD_ID = "e2eazrem22";
 /** A 20-level build, for the level ruler. */
 export const LONG_BUILD_ID = "e2eqq2e2e8";
 /** The test author's link-only build: never on their public page. */
@@ -77,6 +81,16 @@ export async function seed() {
         plan: samplePlan(),
       },
       {
+        id: AZREM_BUILD_ID,
+        ownerId: OTHER_USER_ID,
+        name: azrem.name,
+        description: azrem.description,
+        coverImageUrl: azrem.coverImageUrl,
+        visibility: "unlisted",
+        gameVersion: "5.0.4.8",
+        plan: azrem.plan as unknown as BuildPlan,
+      },
+      {
         id: LONG_BUILD_ID,
         ownerId: TEST_USER_ID,
         name: "Long Shield-Wall",
@@ -85,6 +99,8 @@ export async function seed() {
         gameVersion: "5.0.4.8",
         plan: {
           ...samplePlan(),
+          // No guide: the shared page has no Guide tab.
+          notes: "",
           levels: [
             ...samplePlan().levels,
             ...Array.from({ length: 14 }, () => ({ attribute: "health" as const, skillPoints: {}, perks: [], destiny: [], extras: [], note: "" })),
@@ -128,6 +144,9 @@ export async function seed() {
         plan: samplePlan(),
       },
     ]);
+    await db.insert(schema.buildGuides).values(
+      Object.entries(azrem.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: AZREM_BUILD_ID, key, doc, textLength: textLength(doc) })),
+    );
   } finally {
     await pool.end();
   }

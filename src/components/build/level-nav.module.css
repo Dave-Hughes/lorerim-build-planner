@@ -8,6 +8,27 @@
   align-items: baseline;
   gap: 12px;
 }
+.viewingWord {
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.stepperSlim {
+  gap: 10px;
+}
+.stepperSlim .viewingWord {
+  font-size: 16px;
+}
+.stepperSlim .viewingNum {
+  font-size: 24px;
+}
+.stepperSlim :global(.btn-icon) {
+  min-height: 36px;
+  width: 36px;
+}
 .viewingNum {
   font-family: var(--font-title);
   font-size: 40px;

@@ -9,52 +9,53 @@ test.describe("shared build page", () => {
     await expect(page.getByText("Planned to level 6")).toBeVisible();
 
     // Identity row
-    const character = page.getByRole("region", { name: "Character" });
+    const character = page.getByRole("region", { name: "Character", exact: true });
     await expect(character).toContainText("Nord");
     await expect(character).toContainText("The Lord");
     await expect(character).toContainText("Bulwark, Witcher");
 
     // Level 6 numbers from the engine
-    const stats = page.getByRole("region", { name: "At level 6", exact: true });
+    const stats = page.getByRole("region", { name: "Attributes at level 6" });
     await expect(stats).toContainText("160");
     await expect(stats).toContainText("Carry weight250");
     await expect(stats).toContainText("Skill points carried over10");
-    await expect(stats).toContainText("The Lover");
 
-    const changes = page.getByRole("region", { name: "This level and perks" });
-    await expect(changes).toContainText("At level 6");
-    await expect(changes).toContainText("+5 Health");
-    await expect(changes).toContainText("One-Handed 40 → 45");
-    await expect(changes).toContainText("Powerful Bashes");
-    await expect(changes).toContainText("Banking 10 skill points");
-    await expect(changes).toContainText("Craftsmanship (book)");
+    // The level card: what to do, and the author's note beside it.
+    const card = page.getByRole("region", { name: "Level 6", exact: true });
+    await expect(card.getByRole("heading", { name: "Level 6" })).toBeVisible();
+    await expect(card).toContainText("+5 Health");
+    await expect(card).toContainText("One-Handed 40 → 45");
+    await expect(card).toContainText("Powerful Bashes");
+    await expect(card.getByRole("complementary", { name: "Author's note" })).toContainText("Banking 10 skill points");
+    await expect(page.getByRole("region", { name: "Held" })).toContainText("Craftsmanship (book)");
   });
 
   test("steps through levels with buttons, the row and the keyboard", async ({ page }) => {
     await page.goto("/b/sample");
-    await expect(page.getByText("At level 1", { exact: true })).toBeVisible();
-    await page.getByRole("button", { name: "Next level" }).click();
-    await expect(page.getByText("At level 2", { exact: true })).toBeVisible();
+    const heading = (n: number) => page.getByRole("heading", { level: 2, name: `Level ${n}`, exact: true });
+    await expect(heading(1)).toBeVisible();
+    await page.getByRole("button", { name: "Next level" }).first().click();
+    await expect(heading(2)).toBeVisible();
     expect(page.url()).toContain("level=2");
 
     await page.getByRole("button", { name: "Level 5" }).click();
-    await expect(page.getByText("At level 5", { exact: true })).toBeVisible();
-    await expect(page.getByRole("region", { name: "This level and perks" })).toContainText("Constitution");
+    await expect(heading(5)).toBeVisible();
+    await expect(page.getByRole("region", { name: "Level 5", exact: true })).toContainText("Constitution");
 
     await page.keyboard.press("ArrowRight");
-    await expect(page.getByText("At level 6", { exact: true })).toBeVisible();
+    await expect(heading(6)).toBeVisible();
     await page.keyboard.press("ArrowLeft");
-    await expect(page.getByText("At level 5", { exact: true })).toBeVisible();
+    await expect(heading(5)).toBeVisible();
     await expect(page.getByRole("button", { name: "Previous level" })).toBeEnabled();
   });
 
-  test("opens read-only perk trees", async ({ page }) => {
+  test("shows the perk tree beside the held list", async ({ page }) => {
     await page.goto("/b/sample?level=6");
-    await page.getByRole("button", { name: "Open perk trees" }).click();
-    const trees = page.getByRole("region", { name: "Perk trees" });
+    const trees = page.getByRole("region", { name: "Perks at level 6" });
     await expect(trees.getByRole("tab", { name: /^Block/ })).toBeVisible();
     await trees.getByRole("tab", { name: /^Block/ }).click();
-    await expect(trees.getByRole("img", { name: /Powerful Bashes, Block 25, taken/ })).toBeVisible();
+    await expect(trees.getByRole("button", { name: /Powerful Bashes, Block 25, taken/ })).toBeVisible();
+    await expect(trees.getByRole("region", { name: "Held" })).toContainText("Powerful Bashes");
     await expect(trees.getByText("Can take now", { exact: true }).first()).toBeVisible();
   });
 

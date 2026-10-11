@@ -1,0 +1,719 @@
+{
+ "_source": "Azrem (/b/225en4m79k) on staging, copied 11 Oct 2026 for the WO-19 tests and screenshots.",
+ "name": "Azrem, Spartan of Hammerfell",
+ "description": "Spear and shield in light armor. Javelins to pull, shouts to break a line.",
+ "coverImageUrl": "https://8j5f16xj6xjj6zsk.public.blob.vercel-storage.com/staging/covers/7a5d29a9-5582-4a57-99af-02e057c2e655/e54f05e006ab45ac8e7a.jpg",
+ "plan": {
+  "gear": [
+   {
+    "name": "Light armor from the start kit",
+    "note": "Mercenary start",
+    "slot": "Body",
+    "fromLevel": 1
+   },
+   {
+    "name": "Leather shield",
+    "note": "Mercenary start",
+    "slot": "Shield",
+    "fromLevel": 1
+   },
+   {
+    "name": "Steel spear",
+    "note": "Bought",
+    "slot": "Weapon",
+    "fromLevel": 4
+   },
+   {
+    "name": "Javelins",
+    "note": "For pulling only",
+    "slot": "Ammo",
+    "fromLevel": 8
+   }
+  ],
+  "mode": "Konahrik",
+  "race": "Redguard",
+  "deity": "The HoonDing",
+  "notes": "",
+  "start": "Merchant or mercenary",
+  "levels": [
+   {
+    "note": "",
+    "perks": [
+     "One-Handed:Weapon Mastery",
+     "Evasion:Agility",
+     "Block:Improved Blocking"
+    ],
+    "stone": "Warrior",
+    "extras": [],
+    "destiny": [
+     "Destiny:Destiny"
+    ],
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Speech:Lore of the Thu'um"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Block": 5,
+     "Evasion": 5,
+     "One-Handed": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Block:Strong Grip"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "health",
+    "skillPoints": {
+     "Block": 5,
+     "Evasion": 5,
+     "One-Handed": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "One-Handed:Penetrating Strikes"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Block": 5,
+     "Evasion": 5,
+     "One-Handed": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "One-Handed:Weapon Mastery"
+    ],
+    "extras": [],
+    "destiny": [
+     "Destiny:Constitution"
+    ],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Block": 2,
+     "Evasion": 5,
+     "Wayfarer": 1,
+     "One-Handed": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Evasion:Dodge"
+    ],
+    "stone": "Lover",
+    "extras": [
+     {
+      "kind": "trainer",
+      "skill": "Wayfarer"
+     },
+     {
+      "kind": "trainer",
+      "skill": "Wayfarer"
+     }
+    ],
+    "destiny": [],
+    "attribute": "health",
+    "skillPoints": {
+     "Block": 5,
+     "Evasion": 5,
+     "One-Handed": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "One-Handed:Sword & Spear Focus"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Block": 5,
+     "Evasion": 2,
+     "Marksman": 3,
+     "One-Handed": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Marksman:Ranged Combat Training"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Block": 1,
+     "Evasion": 1,
+     "Marksman": 5,
+     "Wayfarer": 5,
+     "One-Handed": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Block:Experienced Blocking"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "health",
+    "skillPoints": {
+     "Block": 1,
+     "Evasion": 1,
+     "Marksman": 5,
+     "Smithing": 5,
+     "One-Handed": 1,
+     "Restoration": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Evasion:Light Armor Training"
+    ],
+    "extras": [
+     {
+      "kind": "trainer",
+      "skill": "Speech"
+     }
+    ],
+    "destiny": [
+     "Destiny:Warrior"
+    ],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Block": 1,
+     "Evasion": 1,
+     "Marksman": 5,
+     "Smithing": 5,
+     "One-Handed": 1,
+     "Restoration": 3
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Speech:Shout Focus"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Block": 1,
+     "Evasion": 1,
+     "Marksman": 5,
+     "Smithing": 5,
+     "One-Handed": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Block:Powerful Bashes"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "health",
+    "skillPoints": {
+     "Block": 1,
+     "Evasion": 1,
+     "Marksman": 5,
+     "Smithing": 4,
+     "One-Handed": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Marksman:Eagle Eye"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Block": 1,
+     "Evasion": 1,
+     "Marksman": 5,
+     "Smithing": 3,
+     "One-Handed": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Block:Shield Strike"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Block": 1,
+     "Evasion": 1,
+     "Marksman": 5,
+     "Smithing": 3,
+     "One-Handed": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Evasion:Athletics"
+    ],
+    "extras": [
+     {
+      "kind": "book",
+      "skill": "Restoration"
+     }
+    ],
+    "destiny": [
+     "Destiny:Battle Spirit"
+    ],
+    "attribute": "health",
+    "skillPoints": {
+     "Block": 1,
+     "Evasion": 1,
+     "Marksman": 2,
+     "Smithing": 5,
+     "One-Handed": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Evasion:As a Leaf"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Block": 1,
+     "Evasion": 1,
+     "Marksman": 1,
+     "Smithing": 5,
+     "One-Handed": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "One-Handed:Sword & Spear Focus"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Block": 1,
+     "Evasion": 1,
+     "Marksman": 1,
+     "Smithing": 5,
+     "One-Handed": 1,
+     "Restoration": 2
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "One-Handed:Piercing Strike"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "health",
+    "skillPoints": {
+     "Block": 1,
+     "Evasion": 1,
+     "Marksman": 1,
+     "Smithing": 3,
+     "One-Handed": 1,
+     "Restoration": 4
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Evasion:Dexterity"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Block": 1,
+     "Evasion": 1,
+     "Marksman": 1,
+     "Smithing": 1,
+     "One-Handed": 1,
+     "Restoration": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Block:Elemental Protection"
+    ],
+    "extras": [],
+    "destiny": [
+     "Destiny:Acrobat"
+    ],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Block": 1,
+     "Evasion": 1,
+     "Marksman": 1,
+     "Smithing": 1,
+     "One-Handed": 1,
+     "Restoration": 5
+    }
+   }
+  ],
+  "majors": [
+   "One-Handed",
+   "Evasion",
+   "Block"
+  ],
+  "minors": [
+   "Marksman",
+   "Smithing",
+   "Speech",
+   "Wayfarer",
+   "Restoration",
+   "Sneak"
+  ],
+  "schema": 1,
+  "traits": [
+   "Phalanx",
+   "Focused Combat"
+  ],
+  "birthsign": "Lover",
+  "gameVersion": "5.0.4.8"
+ },
+ "guide": {
+  "level:1": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Mercenary start from Hammerfell. Kept the light armor, leather shield and a one-handed sword; a spear comes first. Warrior stone.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:2": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Lore of the Thu'um. Town work around Falkreath while he heals.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:3": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Strong Grip: arrows on the shield do nothing. Keep a wall at his back (Phalanx).",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:4": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Penetrating Strikes. First spear bought.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:5": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Weapon Mastery rank 2. Destiny: Constitution.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:6": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Dodge. Swap to the Lover stone (+100 armor). Two Wayfarer sessions.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:7": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Sword & Spear Focus.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:8": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Ranged Combat Training, for the javelins. Check in game that javelins use Marksman.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:9": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Experienced Blocking.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:10": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Light Armor Training. One Speech session. Destiny: Warrior.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:11": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Shout Focus.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:12": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Powerful Bashes.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:13": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Eagle Eye.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:14": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Shield Strike.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:15": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Athletics. Read a Restoration book. Destiny: Battle Spirit.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:16": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "As a Leaf.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:17": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Sword & Spear Focus rank 2.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:18": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Piercing Strike.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:19": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Dexterity: cheaper power attacks out of heavy armor.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:20": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Elemental Protection. Destiny: the second Endurance, on the way to Smash and Berserker.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "overview": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Redguard mercenary who fled a lost battle in Hammerfell, dumped his heavy armor and starts again near Falkreath. Spear and shield in light armor: One-Handed (spears use Sword & Spear Focus), Evasion and Block.",
+       "type": "text"
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Javelins only to pull and bait, not for damage. Phalanx adds 15% damage with spears and javelins but 50% more damage taken from behind, so keep a wall at your back and never fight surrounded.",
+       "type": "text"
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Shouts break a shield line: Lore of the Thu'um early, Shout Focus at 11. Agile and tanky, not unkillable.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

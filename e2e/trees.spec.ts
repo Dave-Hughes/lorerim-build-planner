@@ -19,24 +19,24 @@ test.describe("perk trees on a phone", () => {
 
   test("the shared build page's sheet shows the perk's own words", async ({ page }) => {
     await page.goto("/b/sample?level=6");
-    await page.getByRole("button", { name: "Open perk trees" }).tap();
+    await page.getByRole("button", { name: "Tree", exact: true }).tap();
     await page.getByRole("tab", { name: /^Block/ }).tap();
     await page.getByRole("button", { name: /^Powerful Bashes, Block 25, taken/ }).tap();
     const sheet = page.getByRole("dialog", { name: "Powerful Bashes" });
     await expect(sheet).toContainText("Taken at level 6");
   });
 
-  test("the List toggle shows the tree as a plain list", async ({ page }) => {
+  test("perks open on the held list, and the Tree switch shows the tree", async ({ page }) => {
     await page.goto("/b/sample?level=6");
-    await page.getByRole("button", { name: "Open perk trees" }).tap();
-    await page.getByRole("tab", { name: /^Block/ }).tap();
-    await page.getByRole("button", { name: "List", exact: true }).tap();
-    const list = page.getByRole("group", { name: "Block perks" });
-    await expect(list).toBeVisible();
-    await expect(list.getByRole("region", { name: "Up to Block 25" })).toContainText("Powerful Bashes");
-    await expect(list.getByRole("region", { name: "Up to Block 25" })).toContainText("Taken at level 6");
+    const held = page.getByRole("region", { name: "Held" });
+    await expect(held).toContainText("Powerful Bashes");
+    await expect(page.getByRole("button", { name: "List", exact: true })).toHaveAttribute("aria-pressed", "true");
     await page.getByRole("button", { name: "Tree", exact: true }).tap();
+    await page.getByRole("tab", { name: /^Block/ }).tap();
     await expect(page.getByRole("button", { name: /^Powerful Bashes, Block 25, taken/ })).toBeVisible();
+    await expect(held).toHaveCount(0);
+    await page.getByRole("button", { name: "List", exact: true }).tap();
+    await expect(page.getByRole("region", { name: "Held" })).toBeVisible();
   });
 });
 
@@ -45,7 +45,7 @@ test.describe("tree tabs on a phone", () => {
 
   test("the tabs are one row and the selected tab is in view", async ({ page }) => {
     await page.goto("/b/sample?level=6");
-    await page.getByRole("button", { name: "Open perk trees" }).tap();
+    await page.getByRole("button", { name: "Tree", exact: true }).tap();
     const tabs = page.getByRole("tablist", { name: "Perk trees" });
     await tabs.getByRole("tab", { name: /^Destiny/ }).click();
     const boxes = await tabs.getByRole("tab").evaluateAll((els) => els.map((e) => e.getBoundingClientRect().top));
@@ -55,9 +55,9 @@ test.describe("tree tabs on a phone", () => {
     const chosen = (await tabs.getByRole("tab", { name: /^Destiny/ }).boundingBox())!;
     expect(chosen.x).toBeGreaterThanOrEqual(row.x - 1);
     expect(chosen.x + chosen.width).toBeLessThanOrEqual(row.x + row.width + 1);
-    // The Tree / List switch sits at the end of the row.
+    // The Tree / List switch sits beside the section's heading, above the row.
     const list = (await page.getByRole("button", { name: "List", exact: true }).boundingBox())!;
-    expect(Math.abs(list.y + list.height / 2 - (row.y + row.height / 2))).toBeLessThan(8);
+    expect(list.y + list.height).toBeLessThanOrEqual(row.y + 1);
   });
 });
 

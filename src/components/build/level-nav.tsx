@@ -47,14 +47,14 @@ export function LevelLegend() {
   );
 }
 
-export function LevelStepper({ level, total, onChange }: { level: number; total: number; onChange: (level: number) => void }) {
+export function LevelStepper({ level, total, onChange, slim }: { level: number; total: number; onChange: (level: number) => void; slim?: boolean }) {
   return (
-    <div className={styles.stepper}>
+    <div className={`${styles.stepper} ${slim ? styles.stepperSlim : ""}`}>
       <button type="button" className="btn btn-icon" aria-label="Previous level" disabled={level <= 1} onClick={() => onChange(level - 1)}>
         ‹
       </button>
       <span className={styles.viewing}>
-        <span className="label">Viewing level</span>
+        <span className={styles.viewingWord}>Level</span>
         <span className={styles.viewingNum}>{level}</span>
         <span className="muted">of {total}</span>
       </span>

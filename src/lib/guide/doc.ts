@@ -23,13 +23,32 @@ export interface GuideDoc extends GuideNode {
   content: GuideNode[];
 }
 
-/** `overview` for the whole build, `level:<n>` for a level's notes. */
-export type GuideKey = "overview" | `level:${number}`;
+/**
+ * `overview` for the whole build, `intro` for the short lead-in on the shared page, `level:<n>`
+ * for a level's notes.
+ */
+export type GuideKey = "overview" | "intro" | `level:${number}`;
 
-export const GUIDE_LIMITS = { overview: 60_000, level: 6_000 } as const;
+export const GUIDE_LIMITS = { overview: 60_000, intro: 1_200, level: 6_000 } as const;
 
 export function limitFor(key: string): number {
-  return key === "overview" ? GUIDE_LIMITS.overview : GUIDE_LIMITS.level;
+  return key === "overview" ? GUIDE_LIMITS.overview : key === "intro" ? GUIDE_LIMITS.intro : GUIDE_LIMITS.level;
+}
+
+/** The intro holds paragraphs of text with bold, italic and links only. */
+export function isInlineOnly(doc: GuideDoc): boolean {
+  const ok = (n: GuideNode, top: boolean): boolean => {
+    if (top) return n.type === "paragraph" && (n.content ?? []).every((c) => ok(c, false));
+    if (n.type === "hardBreak") return true;
+    return n.type === "text" && (n.marks ?? []).every((m) => m.type === "bold" || m.type === "italic" || m.type === "link");
+  };
+  return doc.content.every((n) => ok(n, true));
+}
+
+/** The first paragraph with text, as a document of its own (the intro for builds without one). */
+export function firstParagraph(doc: GuideDoc | null | undefined): GuideDoc | null {
+  const p = doc?.content.find((n) => n.type === "paragraph" && textLength(n) > 0);
+  return p ? { type: "doc", content: [p] } : null;
 }
 
 /** The level a `level:<n>` key is for, or null. */
@@ -49,7 +68,7 @@ export function notedLevels(sections: Record<string, GuideDoc>): Set<number> {
 }
 
 export function isGuideKey(key: string): key is GuideKey {
-  return key === "overview" || /^level:([1-9]\d?|100)$/.test(key);
+  return key === "overview" || key === "intro" || /^level:([1-9]\d?|100)$/.test(key);
 }
 
 /** Only http and https links, ever. */
