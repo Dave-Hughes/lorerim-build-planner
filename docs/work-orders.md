@@ -612,12 +612,12 @@ From Dave's testing. Do after WO-17. Two migrations through `npm run db:generate
 
 ### Done when
 - [ ] Migrations committed in `drizzle/`, with the 20 tags seeded. Applied to dev and staging.
-- [ ] e2e: tag a build with Necromancy and Heavy Armor; filtering by both finds it; filtering by Necromancy and Marksman doesn't.
-- [ ] e2e: search for part of a build's description finds it; the URL holds the query, and reloading keeps the results.
-- [ ] e2e: like, reload (still liked, count +1), unlike (count back). The owner sees no Like button. A signed-out click goes to sign-in.
-- [ ] Unit test: suggested tags from majors.
-- [ ] Screenshots for Dave at 1512 × 806 and 390: Browse builds with the filter row, filtered by one tag; the Name step's tag chips; the shared page with tags and Like.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: tag a build with Necromancy and Heavy Armor; filtering by both finds it; filtering by Necromancy and Marksman doesn't.
+- [x] e2e: search for part of a build's description finds it; the URL holds the query, and reloading keeps the results.
+- [x] e2e: like, reload (still liked, count +1), unlike (count back). The owner sees no Like button. A signed-out click goes to sign-in.
+- [x] Unit test: suggested tags from majors.
+- [x] Screenshots for Dave at 1512 × 806 and 390: Browse builds with the filter row, filtered by one tag; the Name step's tag chips; the shared page with tags and Like.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

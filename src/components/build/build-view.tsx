@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { LikeButton } from "./like-button";
+import { TAG_BY_SLUG } from "@/lib/builds/tags";
 import { AuthorLink } from "@/components/ui/author-link";
 import { traitWithChoice } from "@/lib/rules/trait-choices";
 import { useRouter } from "next/navigation";
@@ -33,13 +35,15 @@ interface Props {
   initialLevel: number;
   /** Rendered when a visitor who isn't signed in wants to copy the build. */
   signInToCopy: React.ReactNode;
+  /** Shown in place of Like when signed out: signs in, then back to the build. */
+  signInToLike?: React.ReactNode;
   /** True when the visitor signed in from "Copy to my builds"; the copy runs on load. */
   autoCopy?: boolean;
   /** The build's guide sections by key: `overview`, and `level:<n>` for level notes. */
   guide?: Record<string, GuideDoc>;
 }
 
-export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel, signInToCopy, autoCopy, guide = {} }: Props) {
+export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel, signInToCopy, signInToLike, autoCopy, guide = {} }: Props) {
   const d = useGameData();
   const noted = useMemo(() => notedLevels(guide), [guide]);
   const { plan } = build;
@@ -100,7 +104,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
   return (
     <GuideFactsProvider plan={plan} states={states}>
       <main className={styles.main}>
-        <Cover build={build} updatedLabel={updatedLabel} isOwner={isOwner} signedIn={signedIn} signInToCopy={signInToCopy} autoCopy={!!autoCopy} />
+        <Cover build={build} updatedLabel={updatedLabel} isOwner={isOwner} signedIn={signedIn} signInToCopy={signInToCopy} signInToLike={signInToLike} autoCopy={!!autoCopy} />
 
         <div className={`page ${styles.body}`}>
           <OldVersionNotice buildId={build.id} signedIn={signedIn} />
@@ -386,6 +390,7 @@ function Cover({
   isOwner,
   signedIn,
   signInToCopy,
+  signInToLike,
   autoCopy,
 }: {
   build: BuildViewData;
@@ -393,6 +398,7 @@ function Cover({
   isOwner: boolean;
   signedIn: boolean;
   signInToCopy: React.ReactNode;
+  signInToLike?: React.ReactNode;
   autoCopy: boolean;
 }) {
   const router = useRouter();
@@ -443,6 +449,7 @@ function Cover({
           {build.description && <p className={`flavor ${styles.description}`}>{build.description}</p>}
           <div className={styles.byline}>
             <AuthorLink author={build.author} className={styles.author} nameClassName={styles.authorName} avatar={<Avatar name={build.author.name} image={build.author.image} />} />
+            {!build.isSample && <LikeButton buildId={build.id} liked={build.likedByViewer} count={build.likeCount} mode={isOwner ? "owner" : signedIn ? "can" : "signedOut"} signIn={signInToLike} />}
             <span className="tag">LoreRim {build.gameVersion}</span>
             {/* One unit, so a wrap never leaves the bar dangling at a line's end. */}
             <span className={styles.dates}>
@@ -453,6 +460,17 @@ function Cover({
               <span>Updated {updatedLabel}</span>
             </span>
           </div>
+          {build.tags.length > 0 && (
+            <ul className={styles.tagLine} aria-label="Tags">
+              {build.tags.map((t) => (
+                <li key={t}>
+                  <Link href={`/?tags=${t}`} className={styles.tagLink}>
+                    {TAG_BY_SLUG.get(t)?.name ?? t}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
         <div className={styles.actions}>
           <button type="button" className="btn" onClick={copyLink}>

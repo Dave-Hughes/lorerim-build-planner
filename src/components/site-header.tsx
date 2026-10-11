@@ -48,7 +48,7 @@ export async function SiteHeader() {
   );
 }
 
-export function SignInButton({ redirectTo, className = "btn", label }: { redirectTo?: string; className?: string; label?: string }) {
+export function SignInButton({ redirectTo, className = "btn", label }: { redirectTo?: string; className?: string; label?: React.ReactNode }) {
   return (
     <form
       action={async (formData: FormData) => {

@@ -1,31 +1,54 @@
 import Link from "next/link";
 import { BuildCard, BuildGrid } from "@/components/build/build-card";
-import { listPublicBuilds } from "@/lib/builds/queries";
+import { BrowseFilters } from "@/components/build/browse-filters";
+import { browseHref, type BrowseState } from "@/lib/builds/browse";
+import { searchBuilds } from "@/lib/builds/queries";
 import { sampleBuild } from "@/lib/builds/sample";
-import { VersionFilter } from "@/components/build/version-filter";
-import { currentVersion, knownVersions } from "@/lib/rules/server";
+import { TAG_BY_SLUG } from "@/lib/builds/tags";
+import { currentVersion, gameData, knownVersions } from "@/lib/rules/server";
 import styles from "./home.module.css";
 
 export const dynamic = "force-dynamic";
 
-type Search = Promise<{ version?: string }>;
+const PAGE = 24;
+
+type Search = Promise<{ q?: string; tags?: string; race?: string; sort?: string; version?: string; n?: string }>;
 
 export default async function Home({ searchParams }: { searchParams: Search }) {
-  const { version } = await searchParams;
+  const sp = await searchParams;
   const versions = knownVersions().map((v) => v.id).reverse();
+  const defaultVersion = currentVersion().id;
   // Defaults to the current version; "all" shows every version.
-  const chosen = version === "all" || (version && versions.includes(version)) ? version : currentVersion().id;
-  const builds = await listPublicBuilds(chosen === "all" ? undefined : chosen);
+  const version = sp.version === "all" || (sp.version && versions.includes(sp.version)) ? sp.version : defaultVersion;
+  const races = (gameData(defaultVersion)?.races ?? []).map((r) => r.name);
+  const state: BrowseState = {
+    q: (sp.q ?? "").slice(0, 100),
+    tags: (sp.tags ?? "")
+      .split(",")
+      .filter((t) => TAG_BY_SLUG.has(t))
+      .slice(0, 5),
+    race: sp.race && races.includes(sp.race) ? sp.race : "",
+    version,
+    sort: sp.sort === "liked" ? "liked" : "newest",
+  };
+  const shown = Math.min(240, Math.max(PAGE, Number(sp.n) || PAGE));
+  const { builds, more } = await searchBuilds({
+    q: state.q,
+    tags: state.tags,
+    race: state.race,
+    gameVersion: version === "all" ? undefined : version,
+    sort: state.sort,
+    limit: shown,
+  });
+  const filtered = !!(state.q || state.tags.length || state.race);
   const sample = sampleBuild();
   return (
     <main className={`page ${styles.main}`}>
       <div className={styles.head}>
         <h1 className="title">Builds</h1>
-        <div className={styles.filter}>
-          <VersionFilter versions={versions} value={chosen} />
-        </div>
       </div>
-      {builds.length === 0 ? (
+      <BrowseFilters state={state} versions={versions} defaultVersion={defaultVersion} races={races} empty={builds.length === 0} />
+      {builds.length === 0 && !filtered ? (
         <div className={styles.empty}>
           <p className="muted">No builds listed yet. Here is the example build, or start your own.</p>
           <BuildGrid>
@@ -42,6 +65,7 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
                 levels: sample.plan.levels.length,
                 updatedAt: sample.updatedAt,
                 author: sample.author,
+                likeCount: 0,
                 isSample: true,
               }}
             />
@@ -50,13 +74,20 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
             New build
           </Link>
         </div>
-      ) : (
-        <BuildGrid>
-          {builds.map((b) => (
-            <BuildCard key={b.id} build={b} />
-          ))}
-        </BuildGrid>
-      )}
+      ) : builds.length > 0 ? (
+        <>
+          <BuildGrid>
+            {builds.map((b) => (
+              <BuildCard key={b.id} build={b} />
+            ))}
+          </BuildGrid>
+          {more && (
+            <Link href={browseHref(state, defaultVersion, shown + PAGE)} scroll={false} className="btn" style={{ alignSelf: "center" }}>
+              Show more
+            </Link>
+          )}
+        </>
+      ) : null}
     </main>
   );
 }

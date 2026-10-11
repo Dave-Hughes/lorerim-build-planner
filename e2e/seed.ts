@@ -23,6 +23,7 @@ export const LONG_BUILD_ID = "e2eqq2e2e8";
 /** The test author's link-only build: never on their public page. */
 export const LINK_ONLY_BUILD_ID = "e2eqq2e2e7";
 export const TEST_SESSION_TOKEN = "e2e-session-token-0001";
+export const OTHER_SESSION_TOKEN = "e2e-session-token-0002";
 export const TEST_BUILD_ID = "e2eqq2e2eq";
 /** A copy of the sample the tests may change freely (remove perks, add levels). */
 export const SCRATCH_BUILD_ID = "e2eqq2e2e5";
@@ -52,11 +53,10 @@ export async function seed() {
       { id: TEST_USER_ID, name: TEST_USER_NAME, email: null, image: null, handle: TEST_USER_HANDLE },
       { id: OTHER_USER_ID, name: "Someone Else", email: null, image: null, handle: "e2e-someone-else" },
     ]);
-    await db.insert(schema.sessions).values({
-      sessionToken: TEST_SESSION_TOKEN,
-      userId: TEST_USER_ID,
-      expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
-    });
+    await db.insert(schema.sessions).values([
+      { sessionToken: TEST_SESSION_TOKEN, userId: TEST_USER_ID, expires: new Date(Date.now() + 1000 * 60 * 60 * 24) },
+      { sessionToken: OTHER_SESSION_TOKEN, userId: OTHER_USER_ID, expires: new Date(Date.now() + 1000 * 60 * 60 * 24) },
+    ]);
     await db.insert(schema.builds).values([
       {
         id: TEST_BUILD_ID,

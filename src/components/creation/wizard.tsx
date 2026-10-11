@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { MAX_TAGS, TAGS, TAG_GROUPS, suggestedTags } from "@/lib/builds/tags";
 import { useRouter } from "next/navigation";
 import { TRAIT_CHOICES, keptTraitChoices } from "@/lib/rules/trait-choices";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
@@ -126,12 +127,13 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
     start(async () => {
       setError(null);
       if (mode === "create") {
-        const r = await createBuild({ details, plan });
+        // Tags not touched yet are the suggestions the Name step showed.
+        const r = await createBuild({ details: { ...details, tags: details.tags ?? suggestedTags(plan.majors) }, plan });
         if (!r.ok) return setError(r.error);
         clearDraft();
         router.push(`/b/${r.value.id}/edit`);
       } else if (buildId) {
-        const a = await saveBuildDetails(buildId, details);
+        const a = await saveBuildDetails(buildId, { ...details, tags: details.tags ?? suggestedTags(plan.majors) });
         if (!a.ok) return setError(a.error);
         const b = await saveBuildPlan(buildId, plan);
         if (!b.ok) return setError(b.error);
@@ -753,6 +755,7 @@ function NameStep({ details, updateDetails, mode, plan, update, signedIn }: { de
           <span className="label">Description</span>
           <input className="input" value={details.description} maxLength={300} onChange={(e) => updateDetails({ description: e.target.value })} placeholder="One line under the name" />
         </label>
+        <TagPicker chosen={details.tags ?? suggestedTags(plan.majors)} suggested={details.tags == null} onChange={(tags) => updateDetails({ tags })} />
         <CoverField
           url={details.coverImageUrl}
           signedIn={signedIn}
@@ -875,5 +878,44 @@ function CoverField({
       </label>
       <span className="field-hint">Shown full width above the build. PNG, JPEG, WebP or GIF, up to 4 MB.</span>
     </div>
+  );
+}
+
+/**
+ * Up to five tags from the set list, grouped. Before the player has touched them, the tags their
+ * majors suggest are shown chosen, and said to be suggestions; nothing is saved unseen.
+ */
+function TagPicker({ chosen, suggested, onChange }: { chosen: string[]; suggested: boolean; onChange: (tags: string[]) => void }) {
+  const full = chosen.length >= MAX_TAGS;
+  return (
+    <fieldset className={styles.tagPicker}>
+      <legend className="label">Tags</legend>
+      <span className="field-hint">
+        {suggested && chosen.length ? "Suggested from your majors. Remove any that don't fit. " : ""}
+        {chosen.length} of {MAX_TAGS} chosen
+      </span>
+      {TAG_GROUPS.map((g) => (
+        <div key={g} className={styles.tagGroup}>
+          <span className="sub-label">{g}</span>
+          <span className={styles.tagChips}>
+            {TAGS.filter((t) => t.group === g).map((t) => {
+              const on = chosen.includes(t.slug);
+              return (
+                <button
+                  key={t.slug}
+                  type="button"
+                  className={styles.tagChip}
+                  aria-pressed={on}
+                  disabled={!on && full}
+                  onClick={() => onChange(on ? chosen.filter((x) => x !== t.slug) : [...chosen, t.slug])}
+                >
+                  {t.name}
+                </button>
+              );
+            })}
+          </span>
+        </div>
+      ))}
+    </fieldset>
   );
 }

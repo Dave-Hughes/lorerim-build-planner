@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Heart, likesLabel } from "./heart";
 import { AuthorLink } from "@/components/ui/author-link";
 import { Avatar } from "@/components/ui/avatar";
 import { IconLabel, RaceIcon } from "@/components/ui/skill-icon";
@@ -25,7 +26,14 @@ export function BuildCard({ build, mine }: { build: BuildSummary; mine?: boolean
         </p>
         <div className={styles.foot}>
           <AuthorLink author={build.author} className={styles.author} avatar={<Avatar name={build.author.name} image={build.author.image} size={24} />} />
-          <span className="muted">{formatDate(build.updatedAt)}</span>
+          <span className={styles.footRight}>
+            {!build.isSample && (
+              <span className={styles.likes} aria-label={likesLabel(build.likeCount)}>
+                <Heart /> {build.likeCount}
+              </span>
+            )}
+            <span className="muted">{formatDate(build.updatedAt)}</span>
+          </span>
         </div>
         {mine && (
           <div className={styles.mine}>

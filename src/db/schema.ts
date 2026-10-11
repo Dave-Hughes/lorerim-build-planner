@@ -87,6 +87,8 @@ export const builds = pgTable(
     plan: jsonb("plan").$type<BuildPlan>().notNull(),
     coverImageUrl: text("cover_image_url"),
     visibility: buildVisibility("visibility").notNull().default("unlisted"),
+    /** Likes, kept in step with build_like in the same transaction, so sorting never counts rows. */
+    likeCount: integer("like_count").notNull().default(0),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .notNull()
@@ -98,7 +100,47 @@ export const builds = pgTable(
     index("build_visibility_updated_idx").on(t.visibility, t.updatedAt),
     /** Browse filters by LoreRim version. */
     index("build_game_version_idx").on(t.gameVersion),
+    /** Browse sorted by Most liked. */
+    index("build_visibility_likes_idx").on(t.visibility, t.likeCount, t.updatedAt),
   ],
+);
+
+/** The set list of tags a build can carry (seeded by migration 0005; not made by users). */
+export const tags = pgTable("tag", {
+  slug: text("slug").primaryKey(),
+  name: text("name").notNull(),
+  /** Weapons, Armor, Magic, Way of play. */
+  group: text("group").notNull(),
+  sort: integer("sort").notNull(),
+});
+
+/** Who likes which build: one row each; the build keeps the count. */
+export const buildLikes = pgTable(
+  "build_like",
+  {
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    buildId: text("build_id")
+      .notNull()
+      .references(() => builds.id, { onDelete: "cascade" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [primaryKey({ columns: [t.userId, t.buildId] }), index("build_like_build_idx").on(t.buildId)],
+);
+
+/** A build's tags, up to 5. */
+export const buildTags = pgTable(
+  "build_tag",
+  {
+    buildId: text("build_id")
+      .notNull()
+      .references(() => builds.id, { onDelete: "cascade" }),
+    tagSlug: text("tag_slug")
+      .notNull()
+      .references(() => tags.slug),
+  },
+  (t) => [primaryKey({ columns: [t.buildId, t.tagSlug] }), index("build_tag_tag_idx").on(t.tagSlug)],
 );
 
 /** The written guide: one row for the whole build (`overview`) and one per level with notes (`level:<n>`). */

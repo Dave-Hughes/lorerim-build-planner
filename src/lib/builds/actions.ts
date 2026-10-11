@@ -25,6 +25,44 @@ function orNull(s: string): string | null {
   return s.trim() === "" ? null : s.trim();
 }
 
+/** Replaces a build's tags, all at once (one batch). The caller has checked ownership. */
+async function setTags(buildId: string, slugs: string[]) {
+  const unique = [...new Set(slugs)];
+  const del = db().delete(schema.buildTags).where(eq(schema.buildTags.buildId, buildId));
+  if (unique.length) await db().batch([del, db().insert(schema.buildTags).values(unique.map((tagSlug) => ({ buildId, tagSlug })))]);
+  else await del;
+}
+
+/**
+ * Likes or unlikes a build for the signed-in player, keeping the build's like_count in step in the
+ * same statement. Not your own build, and only builds you can see. updated_at is left alone: a like
+ * doesn't make a build newer.
+ */
+export async function setLike(buildId: string, liked: boolean): Promise<ActionResult<{ liked: boolean; count: number }>> {
+  const userId = await requireUser();
+  if (!userId) return { ok: false, error: "Sign in with Discord to like builds." };
+  if (!isValidBuildId(buildId)) return { ok: false, error: "Unknown build." };
+  const [build] = await db().select({ ownerId: schema.builds.ownerId, visibility: schema.builds.visibility }).from(schema.builds).where(eq(schema.builds.id, buildId)).limit(1);
+  if (!build || build.visibility === "private") return { ok: false, error: "Unknown build." };
+  if (build.ownerId === userId) return { ok: false, error: "You can't like your own build." };
+  const result = liked
+    ? await db().execute(sql`
+        WITH changed AS (
+          INSERT INTO build_like (user_id, build_id) VALUES (${userId}, ${buildId}) ON CONFLICT DO NOTHING RETURNING 1
+        )
+        UPDATE build SET like_count = like_count + (SELECT count(*) FROM changed)::int, updated_at = updated_at
+        WHERE id = ${buildId} RETURNING like_count`)
+    : await db().execute(sql`
+        WITH changed AS (
+          DELETE FROM build_like WHERE user_id = ${userId} AND build_id = ${buildId} RETURNING 1
+        )
+        UPDATE build SET like_count = greatest(0, like_count - (SELECT count(*) FROM changed)::int), updated_at = updated_at
+        WHERE id = ${buildId} RETURNING like_count`);
+  const count = Number((result.rows[0] as { like_count?: number } | undefined)?.like_count ?? 0);
+  revalidatePath(`/b/${buildId}`);
+  return { ok: true, value: { liked, count } };
+}
+
 /** Creates a build from the creation flow and returns its id. */
 export async function createBuild(input: { details: BuildDetails; plan: unknown }): Promise<ActionResult<{ id: string }>> {
   const userId = await requireUser();
@@ -51,6 +89,7 @@ export async function createBuild(input: { details: BuildDetails; plan: unknown 
       gameVersion: plan.gameVersion,
       plan,
     });
+  if (details.data.tags) await setTags(id, details.data.tags);
   revalidatePath("/");
   revalidatePath("/me");
   return { ok: true, value: { id } };
@@ -105,6 +144,7 @@ export async function saveBuildDetails(id: string, input: BuildDetails): Promise
     .where(and(eq(schema.builds.id, id), eq(schema.builds.ownerId, userId)))
     .returning({ id: schema.builds.id });
   if (!rows[0]) return { ok: false, error: "Only the build's author can change it." };
+  if (details.data.tags) await setTags(id, details.data.tags);
   revalidatePath(`/b/${id}`);
   revalidatePath("/");
   revalidatePath("/me");

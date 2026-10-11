@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { MAX_TAGS, TAG_BY_SLUG } from "./tags";
 import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
 import { gameData, isKnownVersion, type GameData } from "@/lib/rules/server";
 import type { BuildPlan } from "@/lib/rules/types";
@@ -77,6 +78,12 @@ export const buildDetailsSchema = z.object({
   coverImageUrl: httpUrl,
   writeupUrl: httpUrl,
   visibility: buildVisibilitySchema,
+  /** Tag slugs, up to 5. Null or absent: not chosen yet (the Name step then suggests some). */
+  tags: z
+    .array(z.string().refine((t) => TAG_BY_SLUG.has(t), "Unknown tag"))
+    .max(MAX_TAGS, `Up to ${MAX_TAGS} tags.`)
+    .nullable()
+    .optional(),
 });
 export type BuildDetails = z.infer<typeof buildDetailsSchema>;
 

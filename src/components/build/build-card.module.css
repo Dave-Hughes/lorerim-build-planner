@@ -131,3 +131,16 @@
   flex-wrap: wrap;
   gap: 6px;
 }
+
+.footRight {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.likes {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}

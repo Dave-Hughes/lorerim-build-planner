@@ -36,6 +36,20 @@
       "when": 1791738612694,
       "tag": "0004_user_handles",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1791741454999,
+      "tag": "0005_tags",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1791741484828,
+      "tag": "0006_likes",
+      "breakpoints": true
     }
   ]
 }

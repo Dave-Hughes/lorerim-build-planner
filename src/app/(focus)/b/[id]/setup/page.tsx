@@ -31,6 +31,8 @@ export default async function SetupPage({ params }: { params: Params }) {
           coverImageUrl: build.coverImageUrl ?? "",
           writeupUrl: build.writeupUrl ?? "",
           visibility: build.visibility,
+          // No tags yet: the Name step suggests some from the majors.
+          tags: build.tags.length ? build.tags : null,
         }}
         signedIn
         signIn={<SignInButton redirectTo={`/b/${id}/setup`} className="btn btn-primary" />}

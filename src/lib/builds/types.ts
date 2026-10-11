@@ -21,6 +21,11 @@ export interface BuildRecord {
   createdAt: Date;
   updatedAt: Date;
   author: BuildAuthor;
+  /** Tag slugs (see tags.ts). */
+  tags: string[];
+  likeCount: number;
+  /** Whether the viewer likes it (false when signed out). */
+  likedByViewer: boolean;
   isSample?: boolean;
 }
 
@@ -37,5 +42,6 @@ export interface BuildSummary {
   levels: number;
   updatedAt: Date;
   author: BuildAuthor;
+  likeCount: number;
   isSample?: boolean;
 }

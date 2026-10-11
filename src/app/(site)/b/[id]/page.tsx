@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Heart } from "@/components/build/heart";
+import likeStyles from "@/components/build/like-button.module.css";
 import { notFound } from "next/navigation";
 import { auth } from "@/auth";
 import { BuildView } from "@/components/build/build-view";
@@ -39,6 +41,17 @@ export default async function BuildPage({ params, searchParams }: { params: Para
         signedIn={!!viewerId}
         initialLevel={Number(level) || 1}
         signInToCopy={<SignInButton redirectTo={`/b/${id}?copy=1`} className="btn btn-primary" label="Copy to my builds" />}
+        signInToLike={
+          <SignInButton
+            redirectTo={`/b/${id}`}
+            className={likeStyles.signIn}
+            label={
+              <>
+                <Heart /> Like <span className={likeStyles.n}>{build.likeCount}</span>
+              </>
+            }
+          />
+        }
         autoCopy={copy === "1"}
         guide={Object.fromEntries(Object.entries(guide).map(([k, v]) => [k, v.doc]))}
       />

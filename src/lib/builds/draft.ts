@@ -41,7 +41,7 @@ export function emptyPlan(gameVersion: string = currentVersion().id): BuildPlan 
 }
 
 export function emptyDetails(): BuildDetails {
-  return { name: "", description: "", coverImageUrl: "", writeupUrl: "", visibility: "unlisted" };
+  return { name: "", description: "", coverImageUrl: "", writeupUrl: "", visibility: "unlisted", tags: null };
 }
 
 export const DRAFT_KEY = "lorerim-build-planner-draft-v1";

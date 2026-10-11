@@ -21,6 +21,7 @@ function summaries() {
       traits: sql<string[]>`${schema.builds.plan}->'traits'`,
       levels: sql<number>`jsonb_array_length(${schema.builds.plan}->'levels')`,
       updatedAt: schema.builds.updatedAt,
+      likeCount: schema.builds.likeCount,
       authorName: schema.users.name,
       authorImage: schema.users.image,
       authorHandle: schema.users.handle,
@@ -45,6 +46,7 @@ function toSummary(r: SummaryRow): BuildSummary {
     levels: Number(r.levels),
     updatedAt: r.updatedAt,
     author: { name: r.authorName ?? "Unknown", image: r.authorImage ?? null, handle: r.authorHandle ?? null },
+    likeCount: Number(r.likeCount ?? 0),
   };
 }
 
@@ -53,7 +55,16 @@ export async function getBuild(id: string, viewerId: string | null): Promise<Bui
   if (id === SAMPLE_BUILD_ID) return sampleBuild();
   if (!isValidBuildId(id)) return null;
   const rows = await db()
-    .select({ build: schema.builds, authorName: schema.users.name, authorImage: schema.users.image, authorHandle: schema.users.handle })
+    .select({
+      build: schema.builds,
+      authorName: schema.users.name,
+      authorImage: schema.users.image,
+      authorHandle: schema.users.handle,
+      tags: sql<string[]>`coalesce((select array_agg(bt.tag_slug order by t.sort) from ${schema.buildTags} bt join ${schema.tags} t on t.slug = bt.tag_slug where bt.build_id = ${schema.builds.id}), '{}')`,
+      liked: viewerId
+        ? sql<boolean>`exists(select 1 from ${schema.buildLikes} bl where bl.build_id = ${schema.builds.id} and bl.user_id = ${viewerId})`
+        : sql<boolean>`false`,
+    })
     .from(schema.builds)
     .innerJoin(schema.users, eq(schema.users.id, schema.builds.ownerId))
     .where(eq(schema.builds.id, id))
@@ -65,6 +76,9 @@ export async function getBuild(id: string, viewerId: string | null): Promise<Bui
     ...row.build,
     plan: row.build.plan as BuildPlan,
     author: { name: row.authorName ?? "Unknown", image: row.authorImage ?? null, handle: row.authorHandle ?? null },
+    tags: row.tags ?? [],
+    likeCount: row.build.likeCount,
+    likedByViewer: !!row.liked,
   };
 }
 
@@ -109,4 +123,47 @@ export async function listListedBuildsByOwner(ownerId: string): Promise<BuildSum
 /** The signed-in user's handle, set now if they have none yet (users from before handles). */
 export async function handleFor(userId: string): Promise<string | null> {
   return assignHandle(db(), userId);
+}
+
+export interface BrowseQuery {
+  /** Words to find in the name, description, author, race and traits. */
+  q?: string;
+  /** Tag slugs; a build must have all of them. */
+  tags?: string[];
+  race?: string;
+  gameVersion?: string;
+  sort?: "newest" | "liked";
+  limit?: number;
+}
+
+/** Listed builds for Browse builds, filtered and sorted; `more` when there are more than `limit`. */
+export async function searchBuilds(f: BrowseQuery): Promise<{ builds: BuildSummary[]; more: boolean }> {
+  const limit = f.limit ?? 24;
+  const where = [eq(schema.builds.visibility, "public")];
+  if (f.gameVersion) where.push(eq(schema.builds.gameVersion, f.gameVersion));
+  if (f.race) where.push(sql`${schema.builds.plan}->>'race' = ${f.race}`);
+  const q = f.q?.trim();
+  if (q) {
+    // Every word must appear somewhere: "nord shield" finds a Nord with a shield.
+    for (const word of q.split(/\s+/).slice(0, 8)) {
+      const p = `%${word.replace(/[\\%_]/g, (c) => `\\${c}`)}%`;
+      where.push(
+        sql`(${schema.builds.name} ilike ${p} or ${schema.builds.description} ilike ${p} or ${schema.users.name} ilike ${p} or ${schema.builds.plan}->>'race' ilike ${p} or (${schema.builds.plan}->'traits')::text ilike ${p})`,
+      );
+    }
+  }
+  const tags = [...new Set(f.tags ?? [])];
+  if (tags.length)
+    where.push(
+      sql`(select count(*) from ${schema.buildTags} bt where bt.build_id = ${schema.builds.id} and bt.tag_slug in (${sql.join(
+        tags.map((t) => sql`${t}`),
+        sql`, `,
+      )})) = ${tags.length}`,
+    );
+  const order = f.sort === "liked" ? [desc(schema.builds.likeCount), desc(schema.builds.updatedAt)] : [desc(schema.builds.updatedAt)];
+  const rows = await summaries()
+    .where(and(...where))
+    .orderBy(...order)
+    .limit(limit + 1);
+  return { builds: rows.slice(0, limit).map(toSummary), more: rows.length > limit };
 }

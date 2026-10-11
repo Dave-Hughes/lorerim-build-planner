@@ -729,3 +729,58 @@
   flex-direction: column;
   gap: 6px;
 }
+
+/* Tags on the Name step: chips grouped as on Browse builds. */
+.tagPicker {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tagGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tagChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tagChip {
+  font: inherit;
+  font-size: 14px;
+  padding: 6px 11px;
+  border: 1px solid var(--rule-strong);
+  background: transparent;
+  color: #c3cdd6;
+  cursor: pointer;
+  transition:
+    color 120ms,
+    background-color 120ms,
+    border-color 120ms;
+}
+.tagChip:hover:not(:disabled) {
+  border-color: var(--ember);
+  color: var(--ember);
+}
+.tagChip[aria-pressed="true"] {
+  background: var(--ember);
+  border-color: var(--ember);
+  color: var(--on-ember);
+}
+.tagChip:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.tagChip:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tagChip {
+    transition: none;
+  }
+}

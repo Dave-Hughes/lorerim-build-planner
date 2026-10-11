@@ -1,0 +1,60 @@
+.wrap {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.like,
+.signIn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 10px;
+  font: inherit;
+  font-size: 14px;
+  border: 1px solid var(--rule-strong);
+  background: transparent;
+  color: #c3cdd6;
+  cursor: pointer;
+  transition:
+    color 120ms,
+    border-color 120ms,
+    background-color 120ms;
+}
+.like:hover,
+.signIn:hover {
+  border-color: var(--ember);
+  color: var(--ember);
+}
+.like[aria-pressed="true"] {
+  border-color: var(--ember);
+  color: var(--ember);
+  background: rgba(240, 145, 63, 0.1);
+}
+.like:focus-visible,
+.signIn:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+.n {
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+.count {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.error {
+  color: var(--health);
+  font-size: 13px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .like,
+  .signIn {
+    transition: none;
+  }
+}

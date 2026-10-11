@@ -72,6 +72,30 @@
 .pipe {
   color: var(--rule-strong);
 }
+.tagLine {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tagLink {
+  display: inline-block;
+  padding: 3px 9px;
+  border: 1px solid var(--rule-strong);
+  font-size: 13px;
+  color: #c3cdd6;
+  text-decoration: none;
+  transition:
+    color 120ms,
+    border-color 120ms;
+}
+.tagLink:hover,
+.tagLink:focus-visible {
+  border-color: var(--ember);
+  color: var(--ember);
+}
 .dates {
   display: inline-flex;
   flex-wrap: nowrap;

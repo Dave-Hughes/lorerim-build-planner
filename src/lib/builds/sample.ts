@@ -19,6 +19,9 @@ export function sampleBuild(): BuildRecord {
     createdAt: new Date("2026-10-09T00:00:00Z"),
     updatedAt: new Date("2026-10-09T00:00:00Z"),
     author: { name: "Example build", image: null, handle: null },
+    tags: [],
+    likeCount: 0,
+    likedByViewer: false,
     isSample: true,
   };
 }
