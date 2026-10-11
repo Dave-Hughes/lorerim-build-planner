@@ -16,7 +16,7 @@ import { computeBuild } from "@/lib/rules/engine";
 import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
 import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel } from "@/components/ui/skill-icon";
-import { LevelLegend, LevelRow, LevelRuler, LevelStepper, WINDOW } from "./level-nav";
+import { LevelLegend, LevelRow, LevelRuler, LevelStepper, WINDOW, useHoldInPlace } from "./level-nav";
 import { Tree, type TreeView } from "./tree";
 import { TreeTabs } from "./tree-tabs";
 import styles from "./build-view.module.css";
@@ -45,16 +45,19 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
   const states = useMemo(() => computeBuild(plan, d), [plan, d]);
   const marks = useMemo(() => levelMarks(d, plan, states, noted), [d, plan, states, noted]);
   const [level, setLevelState] = useState(() => Math.min(total, Math.max(1, initialLevel)));
+  // Changing level keeps the level row where it is on screen.
+  const { ref: levelBarRef, hold: holdLevelBar } = useHoldInPlace<HTMLElement>(level);
   const setLevel = useCallback(
     (n: number) => {
       const next = Math.min(total, Math.max(1, n));
+      holdLevelBar();
       setLevelState(next);
       const url = new URL(window.location.href);
       if (next === 1) url.searchParams.delete("level");
       else url.searchParams.set("level", String(next));
       window.history.replaceState(null, "", url);
     },
-    [total],
+    [total, holdLevelBar],
   );
 
   useEffect(() => {
@@ -109,7 +112,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
 
           {guide.overview && !isEmptyDoc(guide.overview) && <GuideSection buildId={build.id} doc={guide.overview} />}
 
-          <section aria-label="Level" className={styles.levelSection}>
+          <section ref={levelBarRef} aria-label="Level" className={styles.levelSection}>
             <div className={styles.levelHead}>
               <LevelStepper level={level} total={total} onChange={setLevel} />
               <LevelLegend />
@@ -193,13 +196,13 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
 
             <section aria-label="This level and perks" className={styles.colPerks}>
               <div className={`frame ${styles.panel}`}>
-                <span className="label">{level === 1 ? "At level 1" : `Changes at level ${level}`}</span>
-                <ChangesGrid changes={changes} level={level} />
+                <span className="label">At level {level}</span>
+                <ChangesGrid changes={changes} level={level} perBook={plan.traits.includes("Skilled") ? 2 : 1} />
                 {noted.has(level) && <LevelNote key={level} doc={guide[`level:${level}`]} level={level} />}
               </div>
               <div className={styles.perkList}>
                 <div className={styles.sectionHead}>
-                  <span className="label">Perks by level {level}</span>
+                  <span className="label">Perks held at level {level}</span>
                   <button type="button" className={styles.linkButton} onClick={() => setTreesOpen((o) => !o)} aria-expanded={treesOpen}>
                     {treesOpen ? "Close perk trees" : "Open perk trees"}
                   </button>
@@ -271,7 +274,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
   );
 }
 
-function ChangesGrid({ changes, level }: { changes: ReturnType<typeof levelChanges>; level: number }) {
+function ChangesGrid({ changes, level, perBook }: { changes: ReturnType<typeof levelChanges>; level: number; perBook: number }) {
   const rows: [string, React.ReactNode][] = [];
   if (changes.attribute) rows.push(["Attribute", <IconLabel key="a" icon={<AttributeIcon name={changes.attribute} />}>+5 {ATTRIBUTE_NAMES[changes.attribute]}</IconLabel>]);
   if (changes.skills.length)
@@ -311,8 +314,10 @@ function ChangesGrid({ changes, level }: { changes: ReturnType<typeof levelChang
   if (changes.stone)
     rows.push(["Stone", changes.stone === "none" ? "No stone" : <IconLabel key="st" icon={<SignIcon name={changes.stone} />}>The {changes.stone}</IconLabel>]);
   if (changes.trainer.length) rows.push(["Trainer", changes.trainer.map((t) => `${t.skill} +${t.count}`).join(", ")]);
-  if (changes.books.length) rows.push(["Skill books", changes.books.join(", ")]);
-  if (changes.banked > 0) rows.push(["Banked", `${changes.banked} skill points`]);
+  if (changes.books.length) {
+    rows.push([changes.books.length > 1 ? "Skill books" : "Skill book", changes.books.map((b) => `${b.skill} +${b.count * perBook}`).join(", ")]);
+  }
+  if (changes.banked > 0) rows.push(["Banked", `${changes.banked} skill point${changes.banked === 1 ? "" : "s"}`]);
   if (!rows.length) return <p className="muted">{level === 1 ? "No starting perks yet." : "Nothing yet."}</p>;
   return (
     <div className={styles.changes}>
@@ -420,11 +425,14 @@ function Cover({
               <span className={styles.authorName}>{build.author.name}</span>
             </span>
             <span className="tag">LoreRim {build.gameVersion}</span>
-            <span>Planned to level {build.plan.levels.length}</span>
-            <span className={styles.pipe} aria-hidden="true">
-              |
+            {/* One unit, so a wrap never leaves the bar dangling at a line's end. */}
+            <span className={styles.dates}>
+              <span>Planned to level {build.plan.levels.length}</span>
+              <span className={styles.pipe} aria-hidden="true">
+                |
+              </span>
+              <span>Updated {updatedLabel}</span>
             </span>
-            <span>Updated {updatedLabel}</span>
           </div>
         </div>
         <div className={styles.actions}>

@@ -19,6 +19,8 @@ export const TEST_USER_ID = "e2e-user-0001";
 export const TEST_USER_NAME = "Test Author";
 export const TEST_SESSION_TOKEN = "e2e-session-token-0001";
 export const TEST_BUILD_ID = "e2eqq2e2eq";
+/** A copy of the sample the tests may change freely (remove perks, add levels). */
+export const SCRATCH_BUILD_ID = "e2eqq2e2e5";
 export const OTHER_USER_ID = "e2e-user-0002";
 export const OTHER_BUILD_ID = "e2eqq2e2e2";
 /** Made for the test-only older version (src/lib/rules/__fixtures__/test-version.ts). */
@@ -57,6 +59,15 @@ export async function seed() {
         name: "Test Shield-Wall",
         description: "A build owned by the test author.",
         visibility: "public",
+        gameVersion: "5.0.4.8",
+        plan: samplePlan(),
+      },
+      {
+        id: SCRATCH_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        name: "Scratch Shield-Wall",
+        description: "A build the tests change.",
+        visibility: "private",
         gameVersion: "5.0.4.8",
         plan: samplePlan(),
       },

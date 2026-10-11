@@ -78,3 +78,27 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+/* Short laptop windows: one sideways row of chips, icon and value (the name is in the tooltip). */
+@media (max-height: 899px) and (min-width: 900px) {
+  .tabs {
+    position: relative;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 4px;
+    scrollbar-width: thin;
+  }
+  .tab {
+    flex: none;
+    gap: 5px;
+    padding: 4px 8px;
+    min-height: 34px;
+    font-size: 14px;
+  }
+  .name {
+    display: none;
+  }
+  .val {
+    opacity: 1;
+  }
+}

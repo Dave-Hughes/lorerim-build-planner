@@ -211,9 +211,9 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
                 </div>
               </div>
               <div className={styles.topSkills}>
-                {d.skills.map((s) => ({ s, v: startState.skills[s] }))
-                  .sort((a, b) => b.v - a.v)
-                  .slice(0, 6)
+                {/* Majors, then minors, then any other skill the race raises. */}
+                {[...plan.majors, ...plan.minors, ...d.skills.filter((s) => !plan.majors.includes(s) && !plan.minors.includes(s) && startState.skills[s] > d.rules.baseSkill).sort((a, b) => startState.skills[b] - startState.skills[a])]
+                  .map((s) => ({ s, v: startState.skills[s] }))
                   .map(({ s, v }) => (
                     <div key={s}>
                       <SkillLabel name={s} />
@@ -241,7 +241,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
             {step === "skills" && <SkillsStep plan={plan} update={update} />}
             {step === "traits" && <TraitsStep plan={plan} update={update} />}
             {step === "mode" && <ModeStep plan={plan} update={update} />}
-            {step === "name" && <NameStep details={details} updateDetails={updateDetails} mode={mode} plan={plan} />}
+            {step === "name" && <NameStep details={details} updateDetails={updateDetails} mode={mode} plan={plan} signedIn={signedIn} />}
           </GameDataProvider>
 
           <div className={styles.nav}>
@@ -358,7 +358,7 @@ function VersionBand({ plan, update, mode, buildId }: StepProps & { mode: "creat
                     LoreRim {v.id}
                     {v.id === current?.id && <span className={`tag tag-sm ${styles.bandTag}`}>Latest</span>}
                   </span>
-                  <span className="muted">{v.released ?? "[Release date]"}</span>
+                  {v.released ? <span className="muted">{v.released}</span> : <span />}
                   {here ? (
                     <span className={styles.versionHere}>{mode === "create" ? "Chosen" : "This build"}</span>
                   ) : mode === "create" ? (
@@ -575,10 +575,12 @@ function TraitsStep({ plan, update }: StepProps) {
   const math = new Set(d.traits.filter((t) => t.simulated).map((t) => t.name));
   const [q, setQ] = useState("");
   const chosen = new Set(plan.traits);
+  // Traits chosen before the step opened sort to the front; the order then holds while it's open.
+  const [front] = useState(() => new Set(plan.traits));
   const full = plan.traits.length >= d.rules.maxTraits;
   const query = q.trim().toLowerCase();
   const list = d.traits.filter((t) => chosen.has(t.name) || !query || t.name.toLowerCase().includes(query) || plainTraitText(t.text).toLowerCase().includes(query)).sort(
-    (a, b) => Number(chosen.has(b.name)) - Number(chosen.has(a.name)) || a.name.localeCompare(b.name),
+    (a, b) => Number(front.has(b.name)) - Number(front.has(a.name)) || a.name.localeCompare(b.name),
   );
   const toggle = (name: string) =>
     update((p) => {
@@ -693,7 +695,7 @@ function ModeStep({ plan, update }: StepProps) {
   );
 }
 
-function NameStep({ details, updateDetails, mode, plan }: { details: BuildDetails; updateDetails: (p: Partial<BuildDetails>) => void; mode: "create" | "edit"; plan: BuildPlan }) {
+function NameStep({ details, updateDetails, mode, plan, signedIn }: { details: BuildDetails; updateDetails: (p: Partial<BuildDetails>) => void; mode: "create" | "edit"; plan: BuildPlan; signedIn: boolean }) {
   const d = useGameData();
   const noSign = plan.traits.includes("Master of Destiny");
   return (
@@ -717,17 +719,13 @@ function NameStep({ details, updateDetails, mode, plan }: { details: BuildDetail
       <div className={styles.fields}>
         <label className="field">
           <span className="label">Build name</span>
-          <input className="input" value={details.name} maxLength={80} onChange={(e) => updateDetails({ name: e.target.value })} placeholder="[Build name]" autoFocus />
+          <input className="input" value={details.name} maxLength={80} onChange={(e) => updateDetails({ name: e.target.value })} autoFocus />
         </label>
         <label className="field">
           <span className="label">Description</span>
           <input className="input" value={details.description} maxLength={300} onChange={(e) => updateDetails({ description: e.target.value })} placeholder="One line under the name" />
         </label>
-        <label className="field">
-          <span className="label">Cover image link</span>
-          <input className="input" type="url" value={details.coverImageUrl} maxLength={500} onChange={(e) => updateDetails({ coverImageUrl: e.target.value })} placeholder="https://" />
-          <span className="field-hint">A screenshot you have already posted. Shown full width above the build.</span>
-        </label>
+        <CoverField url={details.coverImageUrl} signedIn={signedIn} onChange={(coverImageUrl) => updateDetails({ coverImageUrl })} />
         <label className="field">
           <span className="label">Write-up link</span>
           <input className="input" type="url" value={details.writeupUrl} maxLength={500} onChange={(e) => updateDetails({ writeupUrl: e.target.value })} placeholder="https://discord.com/channels/…" />
@@ -750,5 +748,62 @@ function NameStep({ details, updateDetails, mode, plan }: { details: BuildDetail
         </fieldset>
       </div>
     </>
+  );
+}
+
+/** The cover image: upload one (signed in), or paste a link to one already posted. */
+function CoverField({ url, signedIn, onChange }: { url: string; signedIn: boolean; onChange: (url: string) => void }) {
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const upload = async (file: File | undefined) => {
+    if (!file) return;
+    setBusy(true);
+    setError(null);
+    try {
+      const form = new FormData();
+      form.append("file", file);
+      const r = await fetch("/api/covers", { method: "POST", body: form });
+      const body = (await r.json().catch(() => ({}))) as { url?: string; error?: string };
+      if (r.ok && body.url) onChange(body.url);
+      else setError(body.error ?? "The upload didn't finish. Try again.");
+    } catch {
+      setError("Couldn't reach the server. Try again.");
+    } finally {
+      setBusy(false);
+    }
+  };
+  return (
+    <div className={`field ${styles.cover}`}>
+      <span className="label">Cover image</span>
+      {url && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={url} alt="" className={styles.coverPreview} />
+      )}
+      <div className={styles.coverActions}>
+        {signedIn ? (
+          <label className={`btn btn-sm ${busy ? styles.coverBusy : ""}`}>
+            {busy ? "Uploading…" : url ? "Upload another" : "Upload an image"}
+            <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" className="sr-only" disabled={busy} onChange={(e) => void upload(e.target.files?.[0])} />
+          </label>
+        ) : (
+          <span className="field-hint">Sign in to upload one, or paste a link below.</span>
+        )}
+        {url && (
+          <button type="button" className="btn btn-sm btn-quiet" onClick={() => onChange("")}>
+            Remove
+          </button>
+        )}
+      </div>
+      {error && (
+        <span role="alert" className="bad">
+          {error}
+        </span>
+      )}
+      <label className={styles.coverLink}>
+        <span className="field-hint">Or a link to a screenshot you have already posted</span>
+        <input className="input" type="url" aria-label="Cover image link" value={url} maxLength={500} onChange={(e) => onChange(e.target.value)} />
+      </label>
+      <span className="field-hint">Shown full width above the build. PNG, JPEG, WebP or GIF, up to 4 MB.</span>
+    </div>
   );
 }

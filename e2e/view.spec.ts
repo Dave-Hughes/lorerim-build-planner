@@ -22,7 +22,7 @@ test.describe("shared build page", () => {
     await expect(stats).toContainText("The Lover");
 
     const changes = page.getByRole("region", { name: "This level and perks" });
-    await expect(changes).toContainText("Changes at level 6");
+    await expect(changes).toContainText("At level 6");
     await expect(changes).toContainText("+5 Health");
     await expect(changes).toContainText("One-Handed 40 → 45");
     await expect(changes).toContainText("Powerful Bashes");
@@ -34,17 +34,17 @@ test.describe("shared build page", () => {
     await page.goto("/b/sample");
     await expect(page.getByText("At level 1", { exact: true })).toBeVisible();
     await page.getByRole("button", { name: "Next level" }).click();
-    await expect(page.getByText("Changes at level 2")).toBeVisible();
+    await expect(page.getByText("At level 2", { exact: true })).toBeVisible();
     expect(page.url()).toContain("level=2");
 
     await page.getByRole("button", { name: "Level 5" }).click();
-    await expect(page.getByText("Changes at level 5")).toBeVisible();
+    await expect(page.getByText("At level 5", { exact: true })).toBeVisible();
     await expect(page.getByRole("region", { name: "This level and perks" })).toContainText("Constitution");
 
     await page.keyboard.press("ArrowRight");
-    await expect(page.getByText("Changes at level 6")).toBeVisible();
+    await expect(page.getByText("At level 6", { exact: true })).toBeVisible();
     await page.keyboard.press("ArrowLeft");
-    await expect(page.getByText("Changes at level 5")).toBeVisible();
+    await expect(page.getByText("At level 5", { exact: true })).toBeVisible();
     await expect(page.getByRole("button", { name: "Previous level" })).toBeEnabled();
   });
 
@@ -55,7 +55,7 @@ test.describe("shared build page", () => {
     await expect(trees.getByRole("tab", { name: /^Block/ })).toBeVisible();
     await trees.getByRole("tab", { name: /^Block/ }).click();
     await expect(trees.getByRole("img", { name: /Powerful Bashes, Block 25, taken/ })).toBeVisible();
-    await expect(trees.getByText("Can take now")).toBeVisible();
+    await expect(trees.getByText("Can take now", { exact: true }).first()).toBeVisible();
   });
 
   test("keeps private builds private", async ({ page, context }) => {

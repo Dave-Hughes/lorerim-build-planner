@@ -10,8 +10,6 @@ import { GuideEditor, guideSaveLabel } from "./guide-editor";
 import type { GuideSaveStatus } from "./use-guide-autosave";
 import styles from "./guide-page.module.css";
 
-export const GUIDE_PLACEHOLDER = "[Write the guide: how to play this build, what to prioritise, where to go]";
-
 /** The owner's page for the build's overall guide. */
 export function GuidePage({ buildId, name, plan, initial }: { buildId: string; name: string; plan: BuildPlan; initial: GuideDoc }) {
   const [save, setSave] = useState<{ status: GuideSaveStatus; error: string | null; retry: () => void }>({ status: "idle", error: null, retry: () => {} });
@@ -41,6 +39,9 @@ export function GuidePage({ buildId, name, plan, initial }: { buildId: string; n
             <Link href={`/b/${buildId}/edit`} className="btn btn-sm">
               Levels
             </Link>
+            <Link href={`/b/${buildId}/gear`} className="btn btn-sm">
+              Gear
+            </Link>
             <Link href={`/b/${buildId}`} className="btn btn-sm">
               See it as a visitor
             </Link>
@@ -50,7 +51,8 @@ export function GuidePage({ buildId, name, plan, initial }: { buildId: string; n
       <main className={`page ${styles.main}`}>
         <h1 className={`title ${styles.h1}`}>{name}</h1>
         <GuideFactsProvider plan={plan}>
-          <GuideEditor buildId={buildId} sectionKey="overview" initial={initial} label="Guide" placeholder={GUIDE_PLACEHOLDER} onStatus={onStatus} />
+          <span className="label">Guide: how to play this build, what to prioritise, where to go</span>
+          <GuideEditor buildId={buildId} sectionKey="overview" initial={initial} label="Guide" onStatus={onStatus} />
         </GuideFactsProvider>
       </main>
     </>

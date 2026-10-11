@@ -5,13 +5,13 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { FocusHeader } from "@/components/ui/focus-header";
 import { InfoTip } from "@/components/ui/info-tip";
-import { LevelRow, LevelRuler, WINDOW } from "@/components/build/level-nav";
+import { LevelRow, LevelRuler, WINDOW, useHoldInPlace } from "@/components/build/level-nav";
 import { Tree, type TreeView } from "@/components/build/tree";
 import { TreeTabs } from "@/components/build/tree-tabs";
 import { useGameData } from "@/components/game-data";
-import { ATTRIBUTE_NAMES, levelMarks, nextDestinyLevel, skillStepInfo } from "@/lib/rules/derive";
+import { ATTRIBUTE_NAMES, levelMarks, nextDestinyLevel, skillStepInfo, stoneLabel } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
-import type { Attribute, BuildPlan, GearItem } from "@/lib/rules/types";
+import type { Attribute, BuildPlan } from "@/lib/rules/types";
 import { PerkPanel } from "./perk-panel";
 import { AttributeIcon, IconLabel, SignIcon, SkillIcon } from "@/components/ui/skill-icon";
 import { GuideEditor, guideSaveLabel } from "@/components/guide/guide-editor";
@@ -47,17 +47,21 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
   const [notes, setNotes] = useState<Record<string, GuideDoc>>(guide);
   const noted = useMemo(() => notedLevels(notes), [notes]);
 
+  const { ref: levelBarRef, hold: holdLevelBar } = useHoldInPlace<HTMLElement>(level);
+  // Changing level keeps the level bar where it is on screen; the buttons at the bottom of the
+  // page go back to the top, since the next level starts there.
   const setLevel = useCallback(
-    (n: number, max = total) => {
+    (n: number, max = total, toTop = false) => {
       const next = Math.min(max, Math.max(1, n));
+      if (!toTop) holdLevelBar();
       setLevelState(next);
       setConfirmRemove(false);
       const url = new URL(window.location.href);
       url.searchParams.set("level", String(next));
       window.history.replaceState(null, "", url);
-      window.scrollTo({ top: 0 });
+      if (toTop) window.scrollTo({ top: 0 });
     },
-    [total],
+    [total, holdLevelBar],
   );
 
   const s = states[level - 1];
@@ -100,12 +104,21 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
       level={level}
       selectedId={id}
       onTake={(pid) => setPlan(ops.takePerk(plan, level, pid))}
-      onRemove={(pid) => setPlan(ops.removePerk(plan, level, pid))}
+      onRemove={(pid, also) => setPlan(ops.removePerks(plan, [{ id: pid, level }, ...also]))}
       onGoToLevel={(n) => setLevel(n)}
     />
   );
-  const [extraSkill, setExtraSkill] = useState<string>(() => initialPlan.majors[0] ?? d.skills[0]);
+  const [extraSkill, setExtraSkill] = useState(() => {
+    const first = initialPlan.majors[0] ?? d.skills[0];
+    return { trainer: first, book: first };
+  });
 
+  // Other levels' problems, so breaking an earlier level shows wherever you are (this level's own
+  // are in the bar at the bottom).
+  const problems = useMemo(
+    () => states.filter((st) => st.level !== level).flatMap((st) => st.issues.map((i) => ({ level: st.level, message: i.message }))),
+    [states, level],
+  );
   const steps = useMemo(() => skillStepInfo(d, plan, states, level), [d, plan, states, level]);
   const marks = useMemo(() => levelMarks(d, plan, states, noted), [d, plan, states, noted]);
   const left = s.skillPointsAvailable - s.skillPointsSpent;
@@ -128,7 +141,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
   const continueLevel = () => {
     const next = ops.addLevel(plan);
     setPlan(next);
-    setLevel(total + 1, total + 1);
+    setLevel(total + 1, total + 1, true);
   };
   const removeLevel = () => {
     if (!confirmRemove) return setConfirmRemove(true);
@@ -163,6 +176,9 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
             <Link href={`/b/${buildId}/guide`} className="btn btn-sm">
               Guide
             </Link>
+            <Link href={`/b/${buildId}/gear`} className="btn btn-sm">
+              Gear
+            </Link>
             <Link href={`/b/${buildId}?level=${level}`} className="btn btn-sm">
               See it as a visitor
             </Link>
@@ -177,7 +193,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
             Copied from LoreRim {converted.from} to {d.version.id}. {converted.dropped ? `${converted.dropped} Removed from the copy.` : "Everything carried over."}
           </section>
         )}
-        <section aria-label="Level" className={styles.levelBar}>
+        <section ref={levelBarRef} aria-label="Level" className={styles.levelBar}>
           <div className={styles.levelNav}>
             <button type="button" className={`btn ${styles.levelArrow}`} aria-label="Previous level" disabled={level <= 1} onClick={() => setLevel(level - 1)}>
               ‹ {level > 1 ? level - 1 : ""}
@@ -202,6 +218,21 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
               <LevelRow marks={marks} level={level} onChange={(n) => setLevel(n)} />
             </div>
           )}
+          {problems.length > 0 && (
+            <div role="region" aria-label="Problems in this build" className={styles.problemBar}>
+              {problems.map((pr, i) => (
+                <p key={i} className={styles.problemLine}>
+                  <i className={styles.diamondBad} />
+                  <span>
+                    <b>Level {pr.level}:</b> {pr.message}
+                  </span>
+                  <button type="button" className={styles.linkButton} onClick={() => setLevel(pr.level)}>
+                    Go to level {pr.level}
+                  </button>
+                </p>
+              ))}
+            </div>
+          )}
         </section>
 
         <div className={styles.columns}>
@@ -219,13 +250,14 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
                       <button key={a} type="button" aria-pressed={on} className={`${styles.attr} ${styles[a]} ${on ? styles.attrOn : ""}`} onClick={() => setPlan(ops.setAttribute(plan, level, a))}>
                         <span className={styles.attrTop}>
                           <IconLabel icon={<AttributeIcon name={a} />}>{ATTRIBUTE_NAMES[a]}</IconLabel>
-                          <span className={styles.radio}>
-                            <span />
-                          </span>
                         </span>
+                        {/* The choice circle sits on the number's line, so it never covers the name. */}
                         <span className={styles.attrVal}>
                           <span className="big-num">{s[a]}</span>
                           {on && <span className={styles.plus}>+5</span>}
+                          <span className={styles.radio}>
+                            <span />
+                          </span>
                         </span>
                         <span className={styles.attrBar} />
                       </button>
@@ -251,7 +283,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
                   <div className={styles.pointsBar}>
                     <div style={{ width: `${Math.min(100, (s.skillPointsSpent / s.skillPointsAvailable) * 100)}%` }} className={left < 0 ? styles.pointsOver : ""} />
                   </div>
-                  <span className={styles.hint}>{carriedIn > 0 ? `Includes ${carriedIn} carried in from level ${level - 1}` : `${d.rules.skillPointsPerLevel} this level-up`}</span>
+                  {carriedIn > 0 && <span className={styles.hint}>Includes {carriedIn} carried in from level {level - 1}</span>}
                 </>
               )}
               {d.skillGroups.map((g) => (
@@ -354,21 +386,24 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
                 ))}
               </ul>
             )}
-            <div className={styles.extraForm}>
-              <select className="select" aria-label="Skill" value={extraSkill} onChange={(e) => setExtraSkill(e.target.value)}>
-                {d.skills.map((sk) => (
-                  <option key={sk} value={sk}>
-                    {sk}
-                  </option>
-                ))}
-              </select>
-              <button type="button" className="btn btn-sm" onClick={() => setPlan(ops.addExtra(plan, level, { kind: "trainer", skill: extraSkill }))}>
-                Add trainer session
-              </button>
-              <button type="button" className="btn btn-sm" onClick={() => setPlan(ops.addExtra(plan, level, { kind: "book", skill: extraSkill }))}>
-                Add skill book
-              </button>
-            </div>
+            {(["trainer", "book"] as const).map((kind) => {
+              const what = kind === "trainer" ? "Trainer session" : "Skill book";
+              return (
+                <div key={kind} role="group" aria-label={what} className={styles.extraForm}>
+                  <span className={styles.extraKind}>{what}</span>
+                  <select className="select" aria-label={`${what} skill`} value={extraSkill[kind]} onChange={(e) => setExtraSkill((x) => ({ ...x, [kind]: e.target.value }))}>
+                    {d.skills.map((sk) => (
+                      <option key={sk} value={sk}>
+                        {sk}
+                      </option>
+                    ))}
+                  </select>
+                  <button type="button" className="btn btn-sm" onClick={() => setPlan(ops.addExtra(plan, level, { kind, skill: extraSkill[kind] }))}>
+                    Add
+                  </button>
+                </div>
+              );
+            })}
           </div>
           <label className={`field ${styles.alsoCol}`}>
             <span className="label">Standing stone</span>
@@ -380,7 +415,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
                 {prevStone && <option value="none">Leave The {prevStone}</option>}
                 {d.stones.map((st) => (
                   <option key={st.name} value={st.name}>
-                    The {st.name} ({st.text})
+                    {stoneLabel(d, st.name)}
                   </option>
                 ))}
               </select>
@@ -431,14 +466,13 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
                 Continue to level {total + 1}
               </button>
             ) : (
-              <button type="button" className="btn btn-primary" onClick={() => setLevel(level + 1)}>
+              <button type="button" className="btn btn-primary" onClick={() => setLevel(level + 1, total, true)}>
                 Go to level {level + 1}
               </button>
             )}
           </span>
         </div>
 
-        <Gear plan={plan} setPlan={setPlan} />
       </div>
     </>
   );
@@ -476,59 +510,11 @@ function LevelNotes({ buildId, level, initial, onChange }: { buildId: string; le
         sectionKey={`level:${level}`}
         initial={initial}
         label={`Notes for level ${level}`}
-        placeholder="[Notes for this level: quests, places cleared, where you trained]"
         headingLevels={[3]}
         compact
         onStatus={onStatus}
         onChange={onChange}
       />
-    </section>
-  );
-}
-
-function Gear({ plan, setPlan }: { plan: BuildPlan; setPlan: (p: BuildPlan) => void }) {
-  const gear = plan.gear;
-  const update = (i: number, patch: Partial<GearItem>) => setPlan(ops.setGear(plan, gear.map((g, n) => (n === i ? { ...g, ...patch } : g))));
-  const add = () => setPlan(ops.setGear(plan, [...gear, { slot: "", name: "", fromLevel: 1, note: "" }]));
-  const remove = (i: number) => setPlan(ops.setGear(plan, gear.filter((_, n) => n !== i)));
-  return (
-    <section aria-label="Gear" className={styles.gearNotes}>
-      <div className={styles.gear}>
-        <span className="label">Gear</span>
-        {gear.length > 0 && (
-          <div className={styles.gearRows}>
-            <div className={`${styles.gearRow} ${styles.gearHead}`}>
-              <span>Slot</span>
-              <span>Item</span>
-              <span>From level</span>
-              <span>Note</span>
-              <span />
-            </div>
-            {gear.map((g, i) => (
-              <div key={i} className={styles.gearRow}>
-                <input className="input" aria-label="Slot" value={g.slot} maxLength={40} placeholder="Weapon" onChange={(e) => update(i, { slot: e.target.value })} />
-                <input className="input" aria-label="Item" value={g.name} maxLength={120} placeholder="Steel sword" onChange={(e) => update(i, { name: e.target.value })} />
-                <input
-                  className="input num"
-                  aria-label="From level"
-                  type="number"
-                  min={1}
-                  max={plan.levels.length}
-                  value={g.fromLevel}
-                  onChange={(e) => update(i, { fromLevel: Math.max(1, Math.min(100, Number(e.target.value) || 1)) })}
-                />
-                <input className="input" aria-label="Note" value={g.note} maxLength={300} placeholder="Where it comes from" onChange={(e) => update(i, { note: e.target.value })} />
-                <button type="button" className={styles.x} aria-label="Remove gear row" onClick={() => remove(i)}>
-                  ×
-                </button>
-              </div>
-            ))}
-          </div>
-        )}
-        <button type="button" className="btn btn-sm" onClick={add} style={{ alignSelf: "flex-start" }}>
-          Add gear
-        </button>
-      </div>
     </section>
   );
 }

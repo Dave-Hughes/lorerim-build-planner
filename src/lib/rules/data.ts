@@ -29,7 +29,9 @@ export interface Birthsign {
 }
 export interface Stone {
   name: string;
+  /** Shown only when `fromRecords`: the game's own words, never a summary of ours. */
   text: string;
+  fromRecords?: boolean;
   health: number;
   magicka: number;
   stamina: number;

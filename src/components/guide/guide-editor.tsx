@@ -20,7 +20,7 @@ export interface GuideEditorProps {
   initial: GuideDoc;
   /** The textbox's accessible name. */
   label: string;
-  placeholder: string;
+  placeholder?: string;
   /** Overview: H2 and H3. Level notes: H3 only. */
   headingLevels?: (2 | 3)[];
   compact?: boolean;
@@ -33,7 +33,8 @@ type Rect = { left: number; top: number; bottom: number };
 
 // BubbleMenu re-sends its options to the editor whenever these props change identity,
 // and every such update re-renders this component: they must be stable.
-const BUBBLE_OPTIONS = { placement: "top", offset: 8, flip: true, shift: { padding: 8 } } as const;
+// Below the selection, so it never covers the field's label above the first line.
+const BUBBLE_OPTIONS = { placement: "bottom", offset: 8, flip: true, shift: { padding: 8 } } as const;
 const BUBBLE_KEY = "guideBubbleMenu";
 
 const MENU_WIDTH = 320;
@@ -280,10 +281,21 @@ function useMenu<T>() {
   return { menu, bridge };
 }
 
+const MENU_ITEM = 38;
+
 function Menu<T>({ state, id, label, onPick, render }: { state: MenuState<T>; id: string; label: string; onPick: (i: number) => void; render: (item: T) => React.ReactNode }) {
   if (!state.items.length) return null;
+  // Every item shows: open below the caret, or above it when there isn't room below.
+  const height = state.items.length * MENU_ITEM + 10;
+  const below = window.innerHeight - state.rect.bottom - 14;
+  const above = state.rect.top - 14;
+  const up = height > below && above > below;
+  const room = Math.max(160, up ? above : below);
   return (
-    <div className={styles.floating} style={{ left: menuLeft(state.rect.left), top: state.rect.bottom + 6 }}>
+    <div
+      className={styles.floating}
+      style={{ left: menuLeft(state.rect.left), ...(up ? { bottom: window.innerHeight - state.rect.top + 6 } : { top: state.rect.bottom + 6 }), ["--menu-max" as string]: `${room}px` }}
+    >
       <ul role="listbox" id={id} aria-label={label} className={styles.menu}>
         {state.items.map((item, i) => (
           <li
@@ -305,7 +317,7 @@ function Menu<T>({ state, id, label, onPick, render }: { state: MenuState<T>; id
   );
 }
 
-export function GuideEditor({ buildId, sectionKey, initial, label, placeholder, headingLevels = [2, 3], compact, onStatus, onChange }: GuideEditorProps) {
+export function GuideEditor({ buildId, sectionKey, initial, label, placeholder = "", headingLevels = [2, 3], compact, onStatus, onChange }: GuideEditorProps) {
   const { status, error, change, retry } = useGuideAutosave(buildId, sectionKey);
   useEffect(() => onStatus?.(status, error, retry), [status, error, retry, onStatus]);
 
@@ -444,7 +456,9 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder, 
 
   // Stable between renders (see BUBBLE_OPTIONS); changes only when the link form opens or closes.
   const shouldShow = useCallback(
-    ({ editor: e, state }: { editor: Editor; state: Editor["state"] }) => e.isEditable && (!state.selection.empty || (linking && e.isActive("link"))),
+    // Only while the editor has focus (the link form's own field counts), so it goes away on blur.
+    ({ editor: e, state }: { editor: Editor; state: Editor["state"] }) =>
+      e.isEditable && (linking ? e.isActive("link") || !state.selection.empty : e.view.hasFocus() && !state.selection.empty),
     [linking],
   );
 

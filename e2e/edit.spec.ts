@@ -46,7 +46,7 @@ test.describe("level-up editor", () => {
 
     // The visitor view shows the saved level.
     await page.goto(`/b/${TEST_BUILD_ID}?level=7`);
-    await expect(page.getByText("Changes at level 7")).toBeVisible();
+    await expect(page.getByText("At level 7", { exact: true })).toBeVisible();
     await expect(page.getByRole("region", { name: "This level and perks" })).toContainText("Overpowering Bashes");
     await expect(page.getByRole("region", { name: "This level and perks" })).toContainText("Block 46 → 50");
     await expect(page.getByText("Planned to level 7")).toBeVisible();
@@ -55,12 +55,13 @@ test.describe("level-up editor", () => {
   test("refuses rule breaks and shows why", async ({ page, context }) => {
     await signIn(context);
     await page.goto(`/b/${TEST_BUILD_ID}/edit?level=6`);
-    // Level 6 has no perk points left: an open-looking perk is locked for that reason.
-    await page.getByRole("tab", { name: /^Heavy Armor/ }).click();
-    await page.getByRole("button", { name: /Cushioned/ }).click();
+    // Level 6 has no perk points left: a perk whose requirements are met still shows as can take,
+    // and the panel says the point is missing (Confirm waits for one).
+    await page.getByRole("tab", { name: /^One-Handed/ }).click();
+    await page.getByRole("button", { name: /^Weapon Mastery, .*can take now/ }).click();
     const panel = page.getByRole("complementary", { name: "Perk details" });
     await expect(panel).toContainText("No perk point to spend at this level.");
-    await expect(panel.getByRole("button", { name: "Confirm" })).toHaveCount(0);
+    await expect(panel.getByRole("button", { name: "Confirm" })).toBeDisabled();
     // Skill steppers stop at +5 and at the points available.
     await expect(page.getByRole("button", { name: "Raise One-Handed" })).toBeDisabled();
   });

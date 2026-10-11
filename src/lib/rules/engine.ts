@@ -3,6 +3,11 @@ import type { BuildPlan, Issue, IssueCode, LevelState } from "./types";
 
 const issue = (code: IssueCode, message: string): Issue => ({ code, message });
 
+/** "1 skill point", "2 skill points". */
+function count(n: number, one: string): string {
+  return `${n} ${one}${n === 1 ? "" : "s"}`;
+}
+
 function perkLabel(d: GameData, id: string, inTree?: string): string {
   const p = d.perkById.get(id);
   if (!p) return id;
@@ -102,7 +107,7 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
           issues.push(issue("skill-over-max", `${s} reaches ${skills[s]}, over the max skill of ${max} at level ${L}.`));
       }
       if (spent > available)
-        issues.push(issue("skill-points-over", `${spent} skill points spent, ${available} available.`));
+        issues.push(issue("skill-points-over", `${count(spent, "skill point")} spent, ${available} available.`));
       banked = Math.max(0, available - spent);
       if (!masterOfOne && !(skilled && L % 5 === 0)) perkPoints++;
     }
@@ -113,7 +118,7 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
         trainerUsed++;
         skills[ex.skill]++;
         if (trainerUsed > rules.trainerSessionsPerLevel * L)
-          issues.push(issue("trainer-limit", `${trainerUsed} trainer sessions by level ${L}, limit ${rules.trainerSessionsPerLevel * L}.`));
+          issues.push(issue("trainer-limit", `${count(trainerUsed, "trainer session")} by level ${L}, limit ${rules.trainerSessionsPerLevel * L}.`));
         if (skills[ex.skill] > max)
           issues.push(issue("trainer-over-max", `${ex.skill}: trainers can't go past ${max} at level ${L}.`));
       } else {
@@ -173,7 +178,7 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
       if (!p.book) perkPointsSpent++;
     }
     if (perkPointsSpent > perkPoints)
-      issues.push(issue("perk-points-over", `${perkPointsSpent} perk points spent, ${perkPoints} earned by level ${L}.`));
+      issues.push(issue("perk-points-over", `${count(perkPointsSpent, "perk point")} spent, ${perkPoints} earned by level ${L}.`));
 
     const destinyPoints = d.destinyPointsAt(L);
     for (const id of lv.destiny) {
@@ -197,7 +202,7 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
       }
     }
     if (destinySpent > destinyPoints)
-      issues.push(issue("destiny-points-over", `${destinySpent} Destiny points spent, ${destinyPoints} earned by level ${L}.`));
+      issues.push(issue("destiny-points-over", `${count(destinySpent, "Destiny point")} spent, ${destinyPoints} earned by level ${L}.`));
 
     // Health, Magicka, Stamina
     let health = (race?.health ?? 100) + rules.attributePerLevel * attributePicks.health;

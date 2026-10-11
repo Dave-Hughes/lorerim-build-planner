@@ -4,7 +4,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import { useGameData } from "@/components/game-data";
 import { perkText, type GameData, type Perk } from "@/lib/rules/data";
 import { perkRequirementText, perkStatus, type PerkStatus } from "@/lib/rules/derive";
-import { labelSizes, placeLabels, type LabelRequest } from "@/lib/rules/labels";
+import { labelSizes, placeLabels, withSelected, type LabelRequest, type PlacedLabel } from "@/lib/rules/labels";
 import { fitHeight, treeLayout, type LayoutPadding } from "@/lib/rules/layout";
 import { isHeld, lineLook, lineState, prerequisiteLines } from "@/lib/rules/tree-states";
 import type { LevelState } from "@/lib/rules/types";
@@ -217,10 +217,15 @@ function BottomSheet({ label, onClose, children }: { label: string; onClose: () 
 export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView }: TreeProps) {
   const d = useGameData();
   const [wrap, setWrap] = useState<HTMLDivElement | null>(null);
-  const [room, setRoom] = useState({ w: 0, vw: 1440, vh: 900 });
+  // `top`: where the drawing starts on the page (below the toolbar), for short windows.
+  const [room, setRoom] = useState({ w: 0, vw: 1440, vh: 900, top: 0 });
   useLayoutEffect(() => {
     if (!wrap) return;
-    const set = () => setRoom({ w: Math.floor(wrap.clientWidth), vw: window.innerWidth, vh: window.innerHeight });
+    const set = () => {
+      const bar = wrap.firstElementChild as HTMLElement | null;
+      const top = Math.round(wrap.getBoundingClientRect().top + window.scrollY + (bar?.offsetHeight ?? 0));
+      setRoom({ w: Math.floor(wrap.clientWidth), vw: window.innerWidth, vh: window.innerHeight, top });
+    };
     set();
     const ro = new ResizeObserver(set);
     ro.observe(wrap);
@@ -229,7 +234,8 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
       ro.disconnect();
       window.removeEventListener("resize", set);
     };
-  }, [wrap]);
+    // The level (its problems, its header) can move the tree down: measure again on a new level.
+  }, [wrap, level]);
   const measure = useMeasure(wrap);
 
   const small = room.vw < SMALL;
@@ -244,7 +250,10 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   const w0 = room.w;
   // No taller than the tree needs at fit size, so no empty band sits under it.
   const fitted = w0 > 0 ? fitHeight(d, tree, w0, padFor(w0)) : Infinity;
-  const h0 = Math.max(220, Math.min(fitted, small ? Math.round(w0 * 1.2) : Math.max(380, Math.min(room.vh - 240, w0))));
+  // A short laptop window: the tree takes the height left under it, so its bottom row shows unscrolled.
+  const left = room.vh - room.top - 48; // room for the legend under it
+  const short = !small && room.vh < 900 && left >= 300;
+  const h0 = Math.max(220, Math.min(fitted, small ? Math.round(w0 * 1.2) : short ? Math.min(left, w0) : Math.max(380, Math.min(room.vh - 240, w0))));
   // Zoom and pan change together, in one update.
   const [view2d, setView2d] = useState({ z: 1, x: 0, y: 0 });
   const zoom = view2d.z;
@@ -261,8 +270,9 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
     return m;
   }, [d, tree, states, level]);
 
-  const labels = useMemo(() => {
-    if (!layout) return new Map();
+  // Labels are placed once for the tree and level; selecting a star only adds its own label.
+  const placing = useMemo(() => {
+    if (!layout) return null;
     const requests: LabelRequest[] = layout.nodes.map((n) => {
       const p = d.perkById.get(n.id)!;
       const st = status.get(n.id)!;
@@ -274,14 +284,16 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
         y: n.y,
         lines: req ? [name, req] : [name],
         // A star with ranks already taken counts as taken.
-        priority: n.id === selected ? 0 : st.state === "taken" || st.ranksTaken > 0 ? 1 : st.state === "open" ? 2 : 3,
+        priority: st.state === "taken" || st.ranksTaken > 0 ? 1 : st.state === "open" ? 2 : 3,
       };
     });
-    // A small screen at fit size labels only taken and selected stars; zooming in makes room for the rest.
+    // A small screen at fit size labels only taken stars (and the selected one); zooming in makes room for the rest.
     const pos = new Map(layout.nodes.map((n) => [n.id, n]));
     const lines = layout.edges.map((e) => ({ x1: pos.get(e.from)!.x, y1: pos.get(e.from)!.y, x2: pos.get(e.to)!.x, y2: pos.get(e.to)!.y }));
-    return placeLabels(requests, { width: W, height: H, star: size.star, font: size.font, measure, lines, maxPriority: small && z < 1.2 ? 1 : 3 });
-  }, [layout, d, status, selected, W, H, size.star, size.font, measure, small, z]);
+    const opts = { width: W, height: H, star: size.star, font: size.font, measure, lines, maxPriority: small && z < 1.2 ? 1 : 3 };
+    return { requests, opts, base: placeLabels(requests, opts) };
+  }, [layout, d, status, W, H, size.star, size.font, measure, small, z]);
+  const labels = useMemo(() => (placing ? withSelected(placing.base, selected, placing.requests, placing.opts) : new Map<string, PlacedLabel>()), [placing, selected]);
 
   const select = useCallback(
     (id: string) => {
@@ -486,7 +498,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
                           onClick={() => (onSelect || small ? select(n.id) : setLocalSelected(n.id))}
                         >
                           <span className={styles.labelName}>{nameLine(p, st)}</span>
-                          {req && <span className={styles.labelReq}>{req}</span>}
+                          {req && !label.nameOnly && <span className={styles.labelReq}>{req}</span>}
                         </span>
                       )}
                     </span>

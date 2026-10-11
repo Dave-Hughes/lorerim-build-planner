@@ -63,11 +63,11 @@ export interface LevelChanges {
   stone?: string;
   banked: number;
   trainer: { skill: string; count: number }[];
-  books: string[];
+  books: { skill: string; count: number }[];
   note: string;
 }
 
-/** What happened at one level, for the "Changes at level N" panel. */
+/** What happened at one level, for the "At level N" panel. */
 export function levelChanges(d: GameData, plan: BuildPlan, states: LevelState[], level: number): LevelChanges {
   const lv = plan.levels[level - 1];
   const s = states[level - 1];
@@ -101,10 +101,10 @@ export function levelChanges(d: GameData, plan: BuildPlan, states: LevelState[],
     return p ? [{ id, name: p.name, text: p.text }] : [];
   });
   const trainerCounts: Record<string, number> = {};
-  const books: string[] = [];
+  const bookCounts: Record<string, number> = {};
   for (const ex of lv.extras) {
     if (ex.kind === "trainer") trainerCounts[ex.skill] = (trainerCounts[ex.skill] ?? 0) + 1;
-    else books.push(ex.skill);
+    else bookCounts[ex.skill] = (bookCounts[ex.skill] ?? 0) + 1;
   }
   return {
     level,
@@ -115,7 +115,7 @@ export function levelChanges(d: GameData, plan: BuildPlan, states: LevelState[],
     stone: lv.stone || undefined,
     banked: level > 1 ? s.skillPointsBanked : 0,
     trainer: Object.entries(trainerCounts).map(([skill, count]) => ({ skill, count })),
-    books,
+    books: Object.entries(bookCounts).map(([skill, count]) => ({ skill, count })),
     note: lv.note,
   };
 }
@@ -205,6 +205,8 @@ export interface PerkStatus {
   reasons: string[];
   /** Set when a requirement was met by this level's own changes. */
   openedThisLevel?: string;
+  /** Requirements are met but the level has no point to spend on it (still counts as can take). */
+  noPoint?: string;
 }
 
 /** Whether a perk can be taken at `level`, given the state at that level. */
@@ -220,11 +222,12 @@ export function perkStatus(d: GameData, states: LevelState[], level: number, id:
     const hasD = (x: string) => x in s.destinyTaken;
     if (p.requires.length && !(p.anyOf ? p.requires.some(hasD) : p.requires.every(hasD)))
       reasons.push(`Needs ${p.requires.map((x) => perkName(d, x)).join(p.anyOf ? " or " : " and ")} first.`);
+    let noPoint: string | undefined;
     if (s.destinyPoints - s.destinyPointsSpent < 1) {
       const next = d.rules.destinyPointLevels.find((l) => l > level);
-      reasons.push(next ? `No Destiny point to spend. The next one comes at level ${next}.` : "No Destiny point to spend.");
+      noPoint = next ? `No Destiny point to spend. The next one comes at level ${next}.` : "No Destiny point to spend.";
     }
-    return { state: reasons.length ? "locked" : "open", ranksTaken: 0, ranks: 1, takenAt: [], granted: false, reasons };
+    return { state: reasons.length ? "locked" : "open", ranksTaken: 0, ranks: 1, takenAt: [], granted: false, reasons, noPoint };
   }
 
   const ranks = rankCount(p);
@@ -246,7 +249,8 @@ export function perkStatus(d: GameData, states: LevelState[], level: number, id:
     );
   const held = (p.excludes ?? []).filter(has);
   if (held.length) reasons.push(`Can't be held with ${held.map((x) => `${d.perkById.get(x)?.tree}: ${perkName(d, x)}`).join(" or ")}.`);
-  if (!p.book && s.perkPoints - s.perkPointsSpent < 1) reasons.push("No perk point to spend at this level.");
+  // Requirements met is "can take" whatever the points; the missing point is said separately.
+  const noPoint = !p.book && s.perkPoints - s.perkPointsSpent < 1 ? "No perk point to spend at this level." : undefined;
 
   let openedThisLevel: string | undefined;
   if (!reasons.length) {
@@ -260,7 +264,7 @@ export function perkStatus(d: GameData, states: LevelState[], level: number, id:
       if (newPre) openedThisLevel = `Opened this level: ${perkName(d, newPre)} was taken.`;
     }
   }
-  return { state: reasons.length ? "locked" : "open", ranksTaken: k, ranks, takenAt, granted: false, reasons, openedThisLevel };
+  return { state: reasons.length ? "locked" : "open", ranksTaken: k, ranks, takenAt, granted: false, reasons, openedThisLevel, noPoint };
 }
 
 /** Points left and limits for the skill steppers at a level-up. */
@@ -306,10 +310,62 @@ export function skillStepInfo(d: GameData, plan: BuildPlan, states: LevelState[]
 /** Text for the standing stone select: what the level's choice means. */
 export function stoneLabel(d: GameData, name: string): string {
   const st = d.stoneByName.get(name);
-  return st ? `The ${st.name} (${st.text})` : name;
+  return st ? (st.fromRecords && st.text ? `The ${st.name} (${st.text})` : `The ${st.name}`) : name;
 }
 
 export function nextDestinyLevel(d: GameData, level: number): number | null {
   return d.rules.destinyPointLevels.find((l) => l > level) ?? null;
 }
 
+
+export interface Dependant {
+  id: string;
+  level: number;
+}
+
+/**
+ * Perks taken at `level` or later that would lose a requirement if one rank of `id` were
+ * removed from `level`, directly or through each other. Picks already broken are left out.
+ */
+export function dependants(d: GameData, plan: BuildPlan, states: LevelState[], level: number, id: string): Dependant[] {
+  const walk = (remove: boolean) => {
+    const lost: Dependant[] = [];
+    const count: Record<string, number> = {};
+    plan.levels.forEach((lv, i) => {
+      const L = i + 1;
+      let picks = [...lv.perks, ...lv.destiny];
+      if (remove && L === level) {
+        const at = picks.lastIndexOf(id);
+        picks = picks.filter((_, j) => j !== at);
+      }
+      const grantedTree = states[i]?.grantedTree;
+      const has = (x: string) => (count[x] ?? 0) > 0 || (!!grantedTree && d.perkById.get(x)?.tree === grantedTree);
+      const needsMet = (x: string) => {
+        const p = d.perkById.get(x);
+        return !p || !p.requires.length || (p.anyOf ? p.requires.some(has) : p.requires.every(has));
+      };
+      // A level's own picks count for each other; drop the ones left without a need until none are.
+      let kept = picks;
+      for (;;) {
+        for (const x of kept) count[x] = (count[x] ?? 0) + 1;
+        const failing = L >= level ? kept.filter((x) => !needsMet(x)) : [];
+        if (!failing.length) break;
+        for (const x of kept) count[x]--;
+        kept = kept.filter((x) => !failing.includes(x));
+        for (const x of new Set(failing)) lost.push({ id: x, level: L });
+      }
+    });
+    return lost;
+  };
+  const before = new Set(walk(false).map((x) => `${x.id}@${x.level}`));
+  return walk(true).filter((x) => !before.has(`${x.id}@${x.level}`));
+}
+
+/** True when `line` says nothing `text` doesn't: its numbers and longer words are all in the text. */
+export function saysNothingNew(line: string, text: string): boolean {
+  if (!line || !text) return !line;
+  const t = text.toLowerCase();
+  const nums = line.match(/\d+(\.\d+)?/g) ?? [];
+  const words = (line.toLowerCase().match(/[a-z]{4,}/g) ?? []).map((w) => w.replace(/s$/, ""));
+  return nums.every((n) => new RegExp(`(^|[^\\d])${n.replace(".", "\\.")}([^\\d]|$)`).test(t)) && words.every((w) => t.includes(w));
+}

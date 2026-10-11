@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { LevelMark } from "@/lib/rules/derive";
 import styles from "./level-nav.module.css";
 
@@ -159,7 +159,7 @@ export function LevelRow({ marks, level, onChange }: { marks: LevelMark[]; level
                 {m.stone && <i className={styles.cellStone} />}
                 {m.notes && <i className={styles.cellNotes} />}
               </span>
-              {m.problems > 0 && <i className={styles.cellProblem} />}
+              {m.problems > 0 && <i className={styles.cellProblem} title={`${m.problems} problem${m.problems === 1 ? "" : "s"} at level ${m.level}`} />}
             </button>
           );
         })}
@@ -167,4 +167,24 @@ export function LevelRow({ marks, level, onChange }: { marks: LevelMark[]; level
       </div>
     </div>
   );
+}
+
+/**
+ * Keeps an element (the level row) where it is on screen when the level changes: call `hold()`
+ * just before changing level, put `ref` on the element.
+ */
+export function useHoldInPlace<T extends HTMLElement>(level: number) {
+  const ref = useRef<T>(null);
+  const top = useRef<number | null>(null);
+  const hold = useCallback(() => {
+    top.current = ref.current ? ref.current.getBoundingClientRect().top : null;
+  }, []);
+  useLayoutEffect(() => {
+    const was = top.current;
+    top.current = null;
+    if (was === null || !ref.current) return;
+    const moved = ref.current.getBoundingClientRect().top - was;
+    if (Math.abs(moved) > 0.5) window.scrollBy({ top: moved, behavior: "instant" });
+  }, [level]);
+  return { ref, hold };
 }

@@ -55,22 +55,20 @@ function ImageView({ node, editor, updateAttributes, deleteNode, selected }: Nod
       <img src={src} alt={node.attrs.alt ?? ""} width={node.attrs.width ?? undefined} height={node.attrs.height ?? undefined} data-drag-handle="" />
       <div className={styles.imageFields}>
         <label className={styles.imageField}>
-          <span className="sr-only">Caption</span>
+          <span className="label">Caption</span>
           <input
             className={styles.caption}
             value={node.attrs.caption ?? ""}
             maxLength={300}
-            placeholder="[Caption]"
             onChange={(e) => updateAttributes({ caption: e.target.value })}
           />
         </label>
         <label className={styles.imageField}>
-          <span className="sr-only">Alt text</span>
+          <span className="label">Alt text: what the image shows, for screen readers</span>
           <input
             className={styles.alt}
             value={node.attrs.alt ?? ""}
             maxLength={300}
-            placeholder="[Alt text: what the image shows, for screen readers]"
             autoFocus={!node.attrs.alt && !node.attrs.caption}
             onChange={(e) => updateAttributes({ alt: e.target.value })}
           />

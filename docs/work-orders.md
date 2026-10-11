@@ -432,13 +432,13 @@ From building "QA Breton Spellsword" (`/b/btab4t9t6c`) through all six steps and
 26. **Phones:** `Changes at level N` comes after the 18-row skills list, so what happened at a level is buried. Under 900 px put it straight after the level row. The hero title touches the header (needs the same top padding as at 1440), and the meta line ends with a dangling `|` when it wraps.
 
 ### Done when
-- [ ] e2e: Confirm and Remove keep `window.scrollY` unchanged (±2 px); changing level keeps the level row's on-screen position.
-- [ ] e2e: on the Traits step, the second card's name is the same before and after choosing the first card.
-- [ ] e2e: removing a perk that a later level needs shows the dependants and `Keep` leaves the build unchanged; `Remove all three` removes them; the problem bar appears when a later level breaks.
-- [ ] Unit test: label placement keeps every taken and can-take label that has room, never shows a label nearer another star than its own, and selecting a star doesn't move any other label.
-- [ ] No `[` placeholder left in the app (`grep -rn 'placeholder="\[' src` and the guide placeholder constant).
-- [ ] Screenshots for Dave at 1512 × 806: editor with a tree in view showing the bottom row and the panel without scrolling; Destruction with every can-take star labelled; perk panel for a 1-of-2 perk; the gear page; shared page level 5 at 390.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: Confirm and Remove keep `window.scrollY` unchanged (±2 px); changing level keeps the level row's on-screen position.
+- [x] e2e: on the Traits step, the second card's name is the same before and after choosing the first card.
+- [x] e2e: removing a perk that a later level needs shows the dependants and `Keep` leaves the build unchanged; `Remove all three` removes them; the problem bar appears when a later level breaks.
+- [x] Unit test: label placement keeps every taken and can-take label that has room, never shows a label nearer another star than its own, and selecting a star doesn't move any other label.
+- [x] No `[` placeholder left in the app (`grep -rn 'placeholder="\[' src` and the guide placeholder constant).
+- [x] Screenshots for Dave at 1512 × 806: editor with a tree in view showing the bottom row and the panel without scrolling; Destruction with every can-take star labelled; perk panel for a 1-of-2 perk; the gear page; shared page level 5 at 390.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

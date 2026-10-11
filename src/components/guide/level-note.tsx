@@ -7,7 +7,7 @@ import styles from "./guide-section.module.css";
 
 const COLLAPSED = 200;
 
-/** A level's notes in the "Changes at level N" panel; over ~200px they collapse with "Read more". */
+/** A level's notes in the "At level N" panel; over ~200px they collapse with "Read more". */
 export function LevelNote({ doc, level }: { doc: GuideDoc; level: number }) {
   const body = useRef<HTMLDivElement>(null);
   const [long, setLong] = useState(false);

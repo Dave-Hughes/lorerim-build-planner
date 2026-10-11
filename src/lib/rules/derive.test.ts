@@ -3,6 +3,7 @@ import sample from "./__fixtures__/sample-build.json";
 import { computeBuild } from "./engine";
 import { levelChanges, levelMarks, perkStatus, perksByLevel, skillStepInfo } from "./derive";
 import { fitHeight, treeLayout } from "./layout";
+import { labelCandidates, nearerTo, spotAllowed, withSelected } from "./labels";
 import { overlaps, placeLabels, starRect } from "./labels";
 import { heldCount, isHeld, lineLook, lineState, prerequisiteLines } from "./tree-states";
 import type { PerkStatus } from "./derive";
@@ -84,14 +85,15 @@ describe("perkStatus", () => {
   it("counts ranks and their requirements", () => {
     const s = perkStatus(d, states, 6, "One-Handed:Weapon Mastery");
     expect([s.ranksTaken, s.ranks]).toEqual([1, 2]);
-    // Rank 2 needs One-Handed 20 (it is 45); only the spent perk point stands in the way.
-    expect(s.reasons).toEqual(["No perk point to spend at this level."]);
+    // Rank 2 needs One-Handed 20 (it is 45): it can be taken; only the spent perk point stands in the way.
+    expect(s.state).toBe("open");
+    expect(s.reasons).toEqual([]);
+    expect(s.noPoint).toBe("No perk point to spend at this level.");
   });
 
   it("knows Destiny points", () => {
     const s = perkStatus(d, states, 6, "Destiny:Focus");
-    expect(s.state).toBe("locked");
-    expect(s.reasons.join(" ")).toMatch(/next one comes at level 10/);
+    expect(s.noPoint).toMatch(/next one comes at level 10/);
   });
 });
 
@@ -210,6 +212,59 @@ describe("placeLabels", () => {
           }
           if (states === "mixed") expect(placed.some((p) => p.id === stars[0].id), `${tree}: the selected star is labelled`).toBe(true);
         }
+  });
+
+  // The sample build at level 6, each tree as drawn at 1440 and 1920.
+  const treeRequests = (tree: string, box: (typeof boxes)[number]) => {
+    const l = treeLayout(d, tree, box.width, box.height);
+    return l.nodes.map((n) => {
+      const st = perkStatus(d, states, 6, n.id);
+      return {
+        id: n.id,
+        x: n.x,
+        y: n.y,
+        lines: (req(n.id) ? [d.perkById.get(n.id)!.name, req(n.id)] : [d.perkById.get(n.id)!.name]) as [string] | [string, string],
+        priority: st.state === "taken" || st.ranksTaken > 0 ? 1 : st.state === "open" ? 2 : 3,
+      };
+    });
+  };
+
+  it("keeps every taken and can-take label that has room, and puts no label nearer another star", () => {
+    for (const tree of [...d.skills, "Destiny"])
+      for (const box of boxes.slice(0, 2)) {
+        const stars = treeRequests(tree, box);
+        const placed = placeLabels(stars, box);
+        for (const s of stars) {
+          const at = placed.get(s.id);
+          if (at) {
+            for (const o of stars) if (o.id !== s.id) expect(nearerTo(at, o, s), `${tree}: ${s.id} label nearer ${o.id}`).toBe(false);
+          } else if (s.priority <= 2) {
+            // No room: every allowed spot is taken by a label as important or more.
+            for (const c of labelCandidates(s, box).filter((c) => spotAllowed(c, stars, box))) {
+              const blockers = [...placed.values()].filter((p) => overlaps(c, p));
+              expect(blockers.length, `${tree} ${box.width}: ${s.id} had room`).toBeGreaterThan(0);
+              expect(
+                blockers.some((b) => stars.find((x) => x.id === b.id)!.priority <= s.priority),
+                `${tree} ${box.width}: ${s.id} hidden by a less important label`,
+              ).toBe(true);
+            }
+          }
+        }
+      }
+  });
+
+  it("selecting a star adds its label and moves no other", () => {
+    for (const tree of ["Destruction", "Block", "One-Handed", "Restoration"])
+      for (const box of boxes.slice(0, 2)) {
+        const stars = treeRequests(tree, box);
+        const base = placeLabels(stars, box);
+        for (const s of stars) {
+          const sel = withSelected(base, s.id, stars, box);
+          expect(sel.has(s.id), `${tree}: ${s.id} labelled when selected`).toBe(true);
+          for (const [id, p] of sel) if (id !== s.id) expect(p, `${tree}: ${id} moved selecting ${s.id}`).toEqual(base.get(id));
+          for (const a of sel.values()) for (const b of sel.values()) if (a !== b) expect(overlaps(a, b)).toBe(false);
+        }
+      }
   });
 
   it("labels most stars of a tree at 1920", () => {

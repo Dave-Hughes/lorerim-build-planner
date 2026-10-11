@@ -14,6 +14,12 @@ export function imagePrefix(buildId: string): string {
   return `${env === "development" ? "dev" : env}/builds/${buildId}/`;
 }
 
+/** Cover images, by who uploaded them (a new build has no id until it's saved): <env>/covers/<userId>/ */
+export function coverPrefix(userId: string): string {
+  const env = currentEnvironment();
+  return `${env === "development" ? "dev" : env}/covers/${userId.replace(/[^a-zA-Z0-9_-]/g, "")}/`;
+}
+
 /** The store's public host, from its token (vercel_blob_rw_<storeId>_<secret>). */
 function storeHost(): string | null {
   const id = /^vercel_blob_rw_([a-z0-9]+)_/i.exec(process.env.BLOB_READ_WRITE_TOKEN ?? "")?.[1];
@@ -42,20 +48,20 @@ export function sniffImage(b: Uint8Array): ImageKind | null {
   return null;
 }
 
-export async function countImages(buildId: string): Promise<number> {
+export async function countImages(buildId: string, prefix = imagePrefix(buildId)): Promise<number> {
   let n = 0;
   let cursor: string | undefined;
   do {
-    const page = await list({ prefix: imagePrefix(buildId), cursor, limit: 1000 });
+    const page = await list({ prefix, cursor, limit: 1000 });
     n += page.blobs.length;
     cursor = page.hasMore ? page.cursor : undefined;
   } while (cursor && n < IMAGE_LIMITS.perBuild);
   return n;
 }
 
-export async function storeImage(buildId: string, bytes: Uint8Array, kind: ImageKind): Promise<string> {
+export async function storeImage(buildId: string, bytes: Uint8Array, kind: ImageKind, prefix = imagePrefix(buildId)): Promise<string> {
   const name = crypto.randomUUID().replace(/-/g, "").slice(0, 20);
-  const blob = await put(`${imagePrefix(buildId)}${name}.${kind.ext}`, Buffer.from(bytes), {
+  const blob = await put(`${prefix}${name}.${kind.ext}`, Buffer.from(bytes), {
     access: "public",
     contentType: kind.type,
     addRandomSuffix: false,
@@ -64,7 +70,7 @@ export async function storeImage(buildId: string, bytes: Uint8Array, kind: Image
   return blob.url;
 }
 
-/** Of these images, the ones no guide anywhere still shows (copies of a build share files). */
+/** Of these images, the ones no guide or cover anywhere still shows (copies of a build share files). */
 async function unreferenced(urls: Iterable<string>): Promise<string[]> {
   const out: string[] = [];
   for (const url of urls) {
@@ -73,7 +79,8 @@ async function unreferenced(urls: Iterable<string>): Promise<string[]> {
       .from(schema.buildGuides)
       .where(sql`strpos(${schema.buildGuides.doc}::text, ${url}) > 0`)
       .limit(1);
-    if (!rows.length) out.push(url);
+    const covers = rows.length ? [] : await db().select({ id: schema.builds.id }).from(schema.builds).where(sql`${schema.builds.coverImageUrl} = ${url}`).limit(1);
+    if (!rows.length && !covers.length) out.push(url);
   }
   return out;
 }

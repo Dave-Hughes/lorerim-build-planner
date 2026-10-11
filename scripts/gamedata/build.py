@@ -320,7 +320,7 @@ def main():
             t = sign_text(data["signs"].get(name, []), r"doom|stone")
             if t is None:
                 problems.append(f"standing stone {name}: no text in the records; shown without one")
-            stones_out.append({"name": name, "text": t or "", **nums})
+            stones_out.append({"name": name, "text": t or "", "fromRecords": t is not None, **nums})
     else:
         problems.append("birthsigns and stones: the extract has no 'signs' yet (re-run extract.py); birthsigns.json and stones.json left as they are")
 

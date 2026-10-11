@@ -1,12 +1,17 @@
 /**
  * Star labels for the perk trees. In the game a star's name shows when you
- * point at it; here each name shows when there is room. Labels are placed
- * greedily in priority order (the selected star, then taken, can take now, not
+ * point at it; here each name shows when there is room. Labels are placed once
+ * for a tree and level, greedily in priority order (taken, can take now, not
  * yet; within a priority, stars lower in the tree first), trying below the
- * star, then above, right, left. A label that would overlap another label or a
- * star (lines end at stars), or leave the box, is not shown; that star shows
- * its name on hover and focus instead. Among the spots that fit, one clear of
- * every line is preferred; a label only sits across a line when nothing else fits.
+ * star, then above, right, left, then below and above shifted sideways. A spot
+ * that would overlap another label or a star (lines end at stars), leave the
+ * box, or sit nearer another star than its own is not used; a star without a
+ * spot shows its name on hover and focus instead. "Nearer another star" means that star is at least
+ * as near both to the label's edge and to its centre. Among the spots that fit, one
+ * clear of every line is preferred.
+ *
+ * Selecting a star never moves a label: if it has none, its label is added in
+ * the spot that hides the fewest others (see withSelected).
  */
 
 export interface LabelRequest {
@@ -15,7 +20,7 @@ export interface LabelRequest {
   y: number;
   /** The name, then at most one more line (its requirement). */
   lines: [string] | [string, string];
-  /** 0 selected, 1 taken, 2 can take now, 3 not yet. */
+  /** 1 taken, 2 can take now, 3 not yet (0, an older "selected", counts as 1). */
   priority: number;
 }
 
@@ -29,6 +34,8 @@ export interface Rect {
 export interface PlacedLabel extends Rect {
   id: string;
   side: "below" | "above" | "right" | "left";
+  /** Crowded: the name alone, without its requirement line. */
+  nameOnly?: boolean;
 }
 
 export interface LabelOptions {
@@ -90,49 +97,149 @@ export function starRect(x: number, y: number, r: number): Rect {
   return { x: x - r - 1, y: y - r - 1, w: 2 * r + 2, h: 2 * r + 2 };
 }
 
-export function placeLabels(stars: LabelRequest[], o: LabelOptions): Map<string, PlacedLabel> {
+/** Distance from a point to the nearest point of a rectangle. */
+function distTo(r: Rect, x: number, y: number): number {
+  const dx = Math.max(r.x - x, 0, x - (r.x + r.w));
+  const dy = Math.max(r.y - y, 0, y - (r.y + r.h));
+  return Math.hypot(dx, dy);
+}
+
+/**
+ * Whether label `c` reads as belonging to star `other` rather than `own`: `other` is at least as
+ * near both to the label's nearest edge and to its centre.
+ */
+export function nearerTo(c: Rect, other: { x: number; y: number }, own: { x: number; y: number }): boolean {
+  const cx = c.x + c.w / 2;
+  const cy = c.y + c.h / 2;
+  return distTo(c, other.x, other.y) <= distTo(c, own.x, own.y) && Math.hypot(other.x - cx, other.y - cy) <= Math.hypot(own.x - cx, own.y - cy);
+}
+
+/**
+ * The spots a star's label may take, in order of preference: the full label, then (taken and
+ * can-take stars, where they are crowded) the name alone.
+ */
+export function labelCandidates(s: LabelRequest, o: LabelOptions): PlacedLabel[] {
+  const full = spots(s, o, false);
+  return s.lines[1] && Math.max(1, s.priority) <= 2 ? [...full, ...spots(s, o, true)] : full;
+}
+
+function spots(s: LabelRequest, o: LabelOptions, nameOnly: boolean): PlacedLabel[] {
   const measure = o.measure ?? estimateWidth;
   const sz = labelSizes(o.font);
-  const starRects = new Map(stars.map((s) => [s.id, starRect(s.x, s.y, o.star)]));
+  const two = !!s.lines[1] && !nameOnly;
+  const w = Math.ceil(Math.max(measure(s.lines[0], sz.name), two ? measure(s.lines[1]!, sz.sub) : 0)) + 2;
+  const h = sz.lineName + (two ? sz.lineSub : 0);
+  const r = o.star;
+  const below = s.y + r + GAP;
+  const above = s.y - r - GAP - h;
+  const shift = Math.round(w * 0.35);
+  return [
+    { id: s.id, nameOnly, side: "below", x: s.x - w / 2, y: below, w, h },
+    { id: s.id, nameOnly, side: "above", x: s.x - w / 2, y: above, w, h },
+    { id: s.id, nameOnly, side: "right", x: s.x + r + GAP + 2, y: s.y - h / 2, w, h },
+    { id: s.id, nameOnly, side: "left", x: s.x - r - GAP - 2 - w, y: s.y - h / 2, w, h },
+    { id: s.id, nameOnly, side: "below", x: s.x - w / 2 + shift, y: below, w, h },
+    { id: s.id, nameOnly, side: "below", x: s.x - w / 2 - shift, y: below, w, h },
+    { id: s.id, nameOnly, side: "above", x: s.x - w / 2 + shift, y: above, w, h },
+    { id: s.id, nameOnly, side: "above", x: s.x - w / 2 - shift, y: above, w, h },
+    // Crowded: one row further out, over a neighbour's label row.
+    ...(nameOnly
+      ? ([
+          { id: s.id, nameOnly, side: "above", x: s.x - w / 2, y: above - h, w, h },
+          { id: s.id, nameOnly, side: "below", x: s.x - w / 2, y: below + h, w, h },
+          { id: s.id, nameOnly, side: "above", x: s.x - w / 2 + shift, y: above - h, w, h },
+          { id: s.id, nameOnly, side: "above", x: s.x - w / 2 - shift, y: above - h, w, h },
+          { id: s.id, nameOnly, side: "below", x: s.x - w / 2 + shift, y: below + h, w, h },
+          { id: s.id, nameOnly, side: "below", x: s.x - w / 2 - shift, y: below + h, w, h },
+        ] as PlacedLabel[])
+      : []),
+  ];
+}
+
+/**
+ * Whether a spot can hold its star's label at all, ignoring other labels: inside the box, over no
+ * star, and nearer its own star than any other.
+ */
+export function spotAllowed(c: PlacedLabel, stars: LabelRequest[], o: LabelOptions): boolean {
+  if (c.x < 0 || c.y < 0 || c.x + c.w > o.width || c.y + c.h > o.height) return false;
+  const own = stars.find((s) => s.id === c.id);
+  for (const s of stars) {
+    if (overlaps(c, starRect(s.x, s.y, o.star))) return false;
+    if (own && s.id !== c.id && nearerTo(c, s, own)) return false;
+  }
+  return true;
+}
+
+const clearOfLines = (c: Rect, o: LabelOptions) => !(o.lines ?? []).some((l) => crosses({ x: c.x - 1, y: c.y - 1, w: c.w + 2, h: c.h + 2 }, l));
+
+/** Labels for a tree at a level, with no star selected. */
+export function placeLabels(stars: LabelRequest[], o: LabelOptions): Map<string, PlacedLabel> {
   const placed: PlacedLabel[] = [];
   const out = new Map<string, PlacedLabel>();
-  const order = [...stars]
-    .filter((s) => s.priority <= (o.maxPriority ?? 3))
-    .sort((a, b) => a.priority - b.priority || b.y - a.y || a.x - b.x);
+  const rank = (s: LabelRequest) => Math.max(1, s.priority);
+  const order = [...stars].filter((s) => rank(s) <= (o.maxPriority ?? 3)).sort((a, b) => rank(a) - rank(b) || b.y - a.y || a.x - b.x);
+  const byId = new Map(stars.map((s) => [s.id, s]));
+  const put = (c: PlacedLabel) => {
+    placed.push(c);
+    out.set(c.id, c);
+  };
+  const take = (c: PlacedLabel) => {
+    placed.splice(placed.indexOf(c), 1);
+    out.delete(c.id);
+  };
+  const tryPlace = (s: LabelRequest) => {
+    const fits = labelCandidates(s, o).filter((c) => spotAllowed(c, stars, o) && !placed.some((p) => overlaps(c, p)));
+    const hit = fits.find((c) => clearOfLines(c, o)) ?? fits[0];
+    if (hit) put(hit);
+    else if (rank(s) <= 2) squeeze(s);
+  };
+  // Rank by rank; a second pass per rank, since making room for one star can free a spot for another.
+  for (const r of [1, 2, 3]) {
+    const group = order.filter((s) => rank(s) === r);
+    group.forEach(tryPlace);
+    if (r <= 2) group.filter((s) => !out.has(s.id)).forEach(tryPlace);
+  }
+  return out;
 
-  for (const s of order) {
-    const w = Math.ceil(Math.max(measure(s.lines[0], sz.name), s.lines[1] ? measure(s.lines[1], sz.sub) : 0)) + 2;
-    const h = sz.lineName + (s.lines[1] ? sz.lineSub : 0);
-    const r = o.star;
-    const candidates: PlacedLabel[] = [
-      { id: s.id, side: "below", x: s.x - w / 2, y: s.y + r + GAP, w, h },
-      { id: s.id, side: "above", x: s.x - w / 2, y: s.y - r - GAP - h, w, h },
-      { id: s.id, side: "right", x: s.x + r + GAP + 2, y: s.y - h / 2, w, h },
-      { id: s.id, side: "left", x: s.x - r - GAP - 2 - w, y: s.y - h / 2, w, h },
-    ];
-    const fits = (c: PlacedLabel) =>
-      c.x >= 0 &&
-      c.y >= 0 &&
-      c.x + c.w <= o.width &&
-      c.y + c.h <= o.height &&
-      !placed.some((p) => overlaps(c, p)) &&
-      ![...starRects.values()].some((sr) => overlaps(c, sr));
-    const clear = (c: PlacedLabel) => !(o.lines ?? []).some((l) => crosses({ x: c.x - 1, y: c.y - 1, w: c.w + 2, h: c.h + 2 }, l));
-    const hit = candidates.find((c) => fits(c) && clear(c)) ?? candidates.find(fits);
-    if (hit) {
-      placed.push(hit);
-      out.set(s.id, hit);
-    } else if (s.priority === 0) {
-      // The selected star's label always shows: take the first spot in the box, and hide
-      // any neighbour labels it covers.
-      const c = candidates.find((c) => c.x >= 0 && c.y >= 0 && c.x + c.w <= o.width && c.y + c.h <= o.height && ![...starRects.values()].some((sr) => overlaps(c, sr))) ?? candidates[0];
-      for (const p of placed.filter((p) => overlaps(c, p))) {
-        placed.splice(placed.indexOf(p), 1);
-        out.delete(p.id);
+  // A taken or can-take star with no room: move the labels in its way (as important) to a spot of
+  // their own with the name alone, if that makes room for its name.
+  function squeeze(s: LabelRequest) {
+    for (const c of labelCandidates(s, o).filter((c) => c.nameOnly && spotAllowed(c, stars, o))) {
+      const blockers = placed.filter((p) => overlaps(c, p));
+      if (!blockers.length || !blockers.every((b) => rank(byId.get(b.id)!) === rank(s))) continue;
+      blockers.forEach(take);
+      const moved: PlacedLabel[] = [];
+      for (const b of blockers) {
+        const alt = labelCandidates(byId.get(b.id)!, o).find(
+          (x) => x.nameOnly && !(x.x === b.x && x.y === b.y) && spotAllowed(x, stars, o) && !overlaps(x, c) && !placed.some((p) => overlaps(x, p)),
+        );
+        if (!alt) break;
+        put(alt);
+        moved.push(alt);
       }
-      placed.push(c);
-      out.set(s.id, c);
+      if (moved.length === blockers.length) return put(c);
+      moved.forEach(take);
+      blockers.forEach(put);
     }
   }
+}
+
+/**
+ * The labels with `id` selected: unchanged if it already has one; otherwise its label goes in the
+ * allowed spot that hides the fewest others, and only those are hidden. Nothing else moves.
+ */
+export function withSelected(base: Map<string, PlacedLabel>, id: string | null | undefined, stars: LabelRequest[], o: LabelOptions): Map<string, PlacedLabel> {
+  if (!id || base.has(id)) return base;
+  const s = stars.find((x) => x.id === id);
+  if (!s) return base;
+  const all = labelCandidates(s, o);
+  const allowed = all.filter((c) => spotAllowed(c, stars, o));
+  const inBox = all.filter((c) => c.x >= 0 && c.y >= 0 && c.x + c.w <= o.width && c.y + c.h <= o.height);
+  const pool = allowed.length ? allowed : inBox.length ? inBox : all.slice(0, 1);
+  const others = [...base.values()];
+  const cost = (c: PlacedLabel) => others.filter((p) => overlaps(c, p)).length * 2 + (clearOfLines(c, o) ? 0 : 1);
+  const best = pool.reduce((a, b) => (cost(b) < cost(a) ? b : a));
+  const out = new Map([...base].filter(([, p]) => !overlaps(best, p)));
+  out.set(id, best);
   return out;
 }

@@ -238,6 +238,11 @@
 .star:focus-visible .tag {
   display: flex;
 }
+/* The star with its tag open draws above every label (its transform makes it its own layer). */
+.star:hover,
+.star:focus-visible {
+  z-index: 30;
+}
 
 /* List view */
 .list {

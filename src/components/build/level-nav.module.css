@@ -271,8 +271,9 @@
   position: absolute;
   top: 6px;
   right: 6px;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
+  box-shadow: 0 0 0 2px var(--ground);
   border-radius: 50%;
   background: var(--health);
 }
@@ -299,4 +300,15 @@
   position: absolute;
   top: 30px;
   margin-left: -3.5px;
+}
+
+/* Short laptop windows: a lower row of levels. */
+@media (max-height: 899px) and (min-width: 900px) {
+  .cell {
+    min-height: 48px;
+    gap: 4px;
+  }
+  .cellNum {
+    font-size: 18px;
+  }
 }

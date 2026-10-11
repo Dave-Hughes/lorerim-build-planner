@@ -37,6 +37,11 @@ export function removePerk(plan: BuildPlan, level: number, id: string): BuildPla
   });
 }
 
+/** Removes one rank of each pick, from its own level. */
+export function removePerks(plan: BuildPlan, picks: { id: string; level: number }[]): BuildPlan {
+  return picks.reduce((p, x) => removePerk(p, x.level, x.id), plan);
+}
+
 export function addExtra(plan: BuildPlan, level: number, extra: Extra): BuildPlan {
   return withLevel(plan, level, (lv) => ({ ...lv, extras: [...lv.extras, extra] }));
 }

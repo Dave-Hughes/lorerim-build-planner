@@ -670,3 +670,38 @@
   display: inline-flex;
   gap: 8px;
 }
+
+/* Cover image on the Name step: upload, or a link. */
+.cover {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.coverPreview {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+}
+.coverActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.coverActions label {
+  cursor: pointer;
+}
+.coverActions label:focus-within {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+}
+.coverBusy {
+  opacity: 0.7;
+  cursor: progress;
+}
+.coverLink {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
