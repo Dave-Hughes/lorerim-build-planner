@@ -91,3 +91,50 @@ export function treeLayout(d: GameData, tree: string, width: number, height: num
 
   return { width, height, scale, nodes, edges, external };
 }
+
+/** The span of a tree's stars in game units, and the distance between its two closest stars. */
+export function treeMetrics(d: GameData, tree: string): { spanX: number; spanY: number; minDist: number } {
+  const pts = (d.perksByTree.get(tree) ?? []).filter((p) => p.pos).map((p) => p.pos!);
+  const xs = pts.map((p) => p[0]);
+  const ys = pts.map((p) => p[1]);
+  let minDist = Infinity;
+  for (let i = 0; i < pts.length; i++)
+    for (let j = i + 1; j < pts.length; j++) minDist = Math.min(minDist, Math.hypot(pts[i][0] - pts[j][0], pts[i][1] - pts[j][1]));
+  return {
+    spanX: Math.max(Math.max(...xs) - Math.min(...xs), 1e-6),
+    spanY: Math.max(Math.max(...ys) - Math.min(...ys), 1e-6),
+    minDist: Number.isFinite(minDist) && minDist > 0 ? minDist : 1,
+  };
+}
+
+/** Closest two stars this far apart at the readable size. */
+export const READABLE_GAP = 88;
+/** The readable size is at most this many times the fit size. */
+export const READABLE_CAP = 2.5;
+
+/**
+ * The drawing's size for a box: at `scale` px per game unit (the readable scale when not given),
+ * never smaller than the box. Readable = the larger of the fit-to-box scale and the scale at which
+ * the two closest stars are READABLE_GAP apart, capped at READABLE_CAP times fit. Simple trees still
+ * fit the box; dense ones grow past it, and the page pans inside the box.
+ */
+export function drawingSize(
+  d: GameData,
+  tree: string,
+  boxW: number,
+  boxH: number,
+  pad: LayoutPadding = DEFAULT_PADDING,
+  scale?: number,
+): { width: number; height: number; scale: number; fitScale: number; readableScale: number } {
+  const m = treeMetrics(d, tree);
+  const fitScale = Math.min(Math.max(1, boxW - 2 * pad.x) / m.spanX, Math.max(1, boxH - pad.top - pad.bottom) / m.spanY);
+  const readableScale = Math.max(fitScale, Math.min(READABLE_GAP / m.minDist, READABLE_CAP * fitScale));
+  const s = scale ?? readableScale;
+  return {
+    width: Math.max(boxW, Math.ceil(s * m.spanX + 2 * pad.x)),
+    height: Math.max(boxH, Math.ceil(s * m.spanY + pad.top + pad.bottom)),
+    scale: s,
+    fitScale,
+    readableScale,
+  };
+}

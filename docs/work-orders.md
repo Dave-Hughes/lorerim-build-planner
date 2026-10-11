@@ -737,11 +737,11 @@ Do after WO-19. This applies to the shared page and the editor alike, since both
    - Fix whatever lets `Balanced Wielding` and `Penetrating Strikes` overlap today.
 
 ### Done when
-- [ ] e2e (shared page, 1440 × 900): clicking a star in Block shows its game text and a status line in the right column. `×` clears it. Clicking `Dodge` in Azrem's level-6 card selects it in Evasion and shows its details.
-- [ ] e2e: dragging the One-Handed tree pans it, and the star clicked afterwards is selected. A plain wheel over the tree scrolls the page. `Fit` shows every star.
-- [ ] Unit test: at 1000 × 560, no two placed labels in One-Handed, Block or Destiny overlap, and no label overlaps a star. The closest two stars are at least 88 px apart unless the 2.5× cap applies.
-- [ ] Screenshots for Dave at 1440 × 900: One-Handed and Block on the shared page at the readable size with a perk's details open; Fit on One-Handed; the editor's One-Handed tree at 1512 × 806. Also 390 with the bottom sheet open.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e (shared page, 1440 × 900): clicking a star in Block shows its game text and a status line in the right column. `×` clears it. Clicking `Dodge` in Azrem's level-6 card selects it in Evasion and shows its details.
+- [x] e2e: dragging the One-Handed tree pans it, and the star clicked afterwards is selected. A plain wheel over the tree scrolls the page. `Fit` shows every star.
+- [x] Unit test: at 1000 × 560, no two placed labels in One-Handed, Block or Destiny overlap, and no label overlaps a star. The closest two stars are at least 88 px apart unless the 2.5× cap applies.
+- [x] Screenshots for Dave at 1440 × 900: One-Handed and Block on the shared page at the readable size with a perk's details open; Fit on One-Handed; the editor's One-Handed tree at 1512 × 806. Also 390 with the bottom sheet open.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

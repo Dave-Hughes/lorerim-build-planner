@@ -63,10 +63,50 @@
 .sky {
   position: relative;
   overflow: hidden;
-}
-.skySmall {
+  /* Drag the empty sky to pan, at every width. */
   cursor: grab;
   user-select: none;
+}
+.dragging {
+  cursor: grabbing;
+}
+.sky:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: -2px;
+}
+/* 32px fades on the edges where the drawing runs on past the box. */
+.fade {
+  position: absolute;
+  z-index: 35;
+  pointer-events: none;
+}
+.fadeLeft,
+.fadeRight {
+  top: 0;
+  bottom: 0;
+  width: 32px;
+}
+.fadeTop,
+.fadeBottom {
+  left: 0;
+  right: 0;
+  height: 32px;
+}
+.fadeLeft {
+  left: 0;
+  background: linear-gradient(to right, #0b1016, rgba(11, 16, 22, 0));
+}
+.fadeRight {
+  right: 0;
+  background: linear-gradient(to left, #0b1016, rgba(11, 16, 22, 0));
+}
+.fadeTop {
+  top: 0;
+  background: linear-gradient(to bottom, #0b1016, rgba(11, 16, 22, 0));
+}
+.fadeBottom {
+  bottom: 0;
+  background: linear-gradient(to top, #0b1016, rgba(11, 16, 22, 0));
 }
 .canvas {
   position: relative;
@@ -234,12 +274,19 @@
   font-size: 12px;
   color: #8e9bab;
 }
-.star:hover .tag,
+/* The tag: on hover with a mouse (a tap on a phone opens the sheet instead) and on keyboard focus. */
+@media (hover: hover) {
+  .star:hover .tag {
+    display: flex;
+  }
+  .star:hover {
+    z-index: 30;
+  }
+}
 .star:focus-visible .tag {
   display: flex;
 }
 /* The star with its tag open draws above every label (its transform makes it its own layer). */
-.star:hover,
 .star:focus-visible {
   z-index: 30;
 }
@@ -428,4 +475,58 @@ button.listRow[aria-pressed="true"] {
   height: 6px;
   margin: 0 2px;
   background: #4a5668;
+}
+
+/* ---------- What a perk does: the shared page's panel and the phones' sheet ---------- */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 6px 18px 0;
+}
+.details p {
+  margin: 0;
+}
+.detailsHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.detailsTree {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.detailsClose {
+  flex: none;
+}
+.detailsRank {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.detailsRankHead {
+  font-family: var(--font-title);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.detailsRankTaken {
+  color: var(--ember);
+}
+.detailsEffect {
+  font-size: 14px;
+  color: #c3cdd6;
+}
+.detailsLine {
+  font-size: 14px;
+  color: #c3cdd6;
+}
+.detailsStatus {
+  font-size: 15px;
+  font-weight: 600;
 }

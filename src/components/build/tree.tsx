@@ -1,12 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { Tooltip } from "@/components/ui/tooltip";
 import { useGameData } from "@/components/game-data";
 import { perkText, type GameData, type Perk } from "@/lib/rules/data";
 import { perkRequirementText, perkStatus, type PerkStatus } from "@/lib/rules/derive";
 import { labelSizes, placeLabels, withSelected, type LabelRequest, type PlacedLabel } from "@/lib/rules/labels";
-import { fitHeight, treeLayout, type LayoutPadding } from "@/lib/rules/layout";
+import { drawingSize, fitHeight, treeLayout, type LayoutPadding } from "@/lib/rules/layout";
 import { isHeld, lineLook, lineState, prerequisiteLines } from "@/lib/rules/tree-states";
 import type { LevelState } from "@/lib/rules/types";
 import styles from "./tree.module.css";
@@ -25,6 +24,8 @@ export interface TreeProps {
   onView?: (view: TreeView) => void;
   /** Leave out the Tree / List switch (the page shows the list beside the tree). */
   noToggle?: boolean;
+  /** Below this window width a tapped star opens a bottom sheet (the shared page: 1100). */
+  sheetBelow?: number;
 }
 
 export type TreeView = "tree" | "list";
@@ -111,8 +112,9 @@ function useMeasure(el: HTMLElement | null) {
     const family = getComputedStyle(el).fontFamily;
     if (!ctx) return undefined;
     void fontsReady;
+    // Measured at the bold weight held and selected labels use, so no label is ever wider than its box.
     return (text: string, size: number) => {
-      ctx.font = `${size}px ${family}`;
+      ctx.font = `600 ${size}px ${family}`;
       return ctx.measureText(text).width;
     };
   }, [el, fontsReady]);
@@ -175,22 +177,76 @@ function PerkList({ d, tree, status, onSelect, selectedId, hidden }: { d: GameDa
   );
 }
 
-function ReadOnlyDetails({ d, id, st }: { d: GameData; id: string; st: PerkStatus }) {
-  const p = d.perkById.get(id)!;
-  const words = perkText(p, Math.max(0, st.ranksTaken - 1));
+/**
+ * What a perk does, for the shared page's details panel and the phones' bottom sheet: its name and
+ * tree, the game's text for each rank (ranks taken marked), what it needs, what it can't be held
+ * with, and where the build stands with it at `level`.
+ */
+export function PerkDetails({ id, states, level, onClose }: { id: string; states: LevelState[]; level: number; onClose?: () => void }) {
+  const d = useGameData();
+  const p = d.perkById.get(id);
+  if (!p) return null;
+  const st = perkStatus(d, states, level, id);
+  const ranks = st.ranks;
+  // Where it stands: taken (and when), can be taken now, or not by this level.
+  const status = st.granted
+    ? "Comes with Master of One"
+    : st.takenAt.length
+      ? ranks > 1
+        ? st.takenAt.map((L, i) => (i === 0 ? `Rank ${i + 1} taken at level ${L}` : `rank ${i + 1} at level ${L}`)).join(", ")
+        : `Taken at level ${st.takenAt[0]}`
+      : st.state === "open" && !st.noPoint
+        ? `Can be taken at level ${level}`
+        : `Not taken by level ${level}`;
+  const needs = [
+    ...(p.tree === "Destiny" ? [] : Array.from({ length: ranks }, (_, i) => perkRequirementText(p, i)).filter((x, i, all) => x && all.indexOf(x) === i)),
+    ...(p.requires.length ? [p.requires.map((r) => { const o = d.perkById.get(r); return o && o.tree !== p.tree ? `${o.tree}: ${o.name}` : (o?.name ?? r); }).join(p.anyOf ? " or " : " and ")] : []),
+  ];
+  const excludes = (p.excludes ?? []).map((x) => {
+    const o = d.perkById.get(x);
+    return o && o.tree !== p.tree ? `${o.tree}: ${o.name}` : (o?.name ?? x);
+  });
   return (
-    <div className={styles.sheetBody}>
-      <h2 className={styles.sheetTitle}>{p.name}</h2>
-      {requirementLine(d, p, st) && <span className={styles.listReq}>{requirementLine(d, p, st)}</span>}
-      {words.text && <p className="flavor">{words.text}</p>}
-      {words.effect && <p>{words.effect}</p>}
-      <span className={styles[`state_${st.state}`]}>{st.state === "taken" ? `Taken${st.takenAt.length ? ` at level ${st.takenAt.join(", ")}` : ""}` : st.state === "open" ? "Can take now" : "Not available yet"}</span>
-    </div>
+    <section aria-label="Perk details" className={styles.details}>
+      <div className={styles.detailsHead}>
+        <div>
+          <h2 className={styles.sheetTitle}>{nameLine(p, st)}</h2>
+          <span className={styles.detailsTree}>
+            {p.tree}
+            {ranks > 1 ? ` · ${ranks} ranks` : ""}
+          </span>
+        </div>
+        {onClose && (
+          <button type="button" className={`btn btn-sm btn-icon ${styles.detailsClose}`} aria-label="Close perk details" onClick={onClose}>
+            ×
+          </button>
+        )}
+      </div>
+      {Array.from({ length: ranks }, (_, i) => {
+        const words = perkText(p, i);
+        const taken = i < st.ranksTaken;
+        return (
+          <div key={i} className={styles.detailsRank}>
+            {ranks > 1 && (
+              <span className={`${styles.detailsRankHead} ${taken ? styles.detailsRankTaken : ""}`}>
+                Rank {i + 1}
+                {taken ? `, taken at level ${st.takenAt[i]}` : ""}
+              </span>
+            )}
+            {words.text && <p className="flavor">{words.text}</p>}
+            {words.effect && words.effect !== words.text && <p className={styles.detailsEffect}>{words.effect}</p>}
+          </div>
+        );
+      })}
+      {needs.length > 0 && <p className={styles.detailsLine}>Needs {needs.join("; ")}.</p>}
+      {excludes.length > 0 && <p className={styles.detailsLine}>Can&apos;t be held with {excludes.join(" or ")}.</p>}
+      <p className={`${styles.detailsStatus} ${styles[`state_${st.state}`]}`}>{status}.</p>
+    </section>
   );
 }
 
 /** A sheet from the bottom of the screen; tap outside, swipe it down or press Escape to close. */
-function BottomSheet({ label, onClose, children }: { label: string; onClose: () => void; children: React.ReactNode }) {
+export function BottomSheet({ label, onClose, children }: { label: string; onClose: () => void; children: React.ReactNode }) {
   const [drag, setDrag] = useState(0);
   const start = useRef<number | null>(null);
   useEffect(() => {
@@ -232,7 +288,7 @@ function BottomSheet({ label, onClose, children }: { label: string; onClose: () 
   );
 }
 
-export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView, noToggle }: TreeProps) {
+export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView, noToggle, sheetBelow = SMALL }: TreeProps) {
   const d = useGameData();
   const [wrap, setWrap] = useState<HTMLDivElement | null>(null);
   // `top`: where the drawing starts on the page (below the toolbar), for short windows.
@@ -261,39 +317,79 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   const measure = useMeasure(wrap);
 
   const small = room.vw < SMALL;
+  const sheetMode = room.vw < sheetBelow;
   const [localView, setLocalView] = useState<TreeView>("tree");
   const view = heldView ?? localView;
   const setView = onView ?? setLocalView;
   const [localSelected, setLocalSelected] = useState<string | null>(null);
   const selected = selectedId ?? localSelected;
   const [sheet, setSheet] = useState<string | null>(null);
+  // The star last picked in this tree itself: picking one here never moves the view.
+  const [ownPick, setOwnPick] = useState<string | null>(null);
 
-  // The visible frame, and the drawing inside it (bigger when zoomed on a small screen).
+  // The box: the column's width, and WO-8/WO-19's height rule.
   const w0 = room.w;
+  const pad = padFor(w0);
   // No taller than the tree needs at fit size, so no empty band sits under it.
-  const fitted = w0 > 0 ? fitHeight(d, tree, w0, padFor(w0)) : Infinity;
+  const fitted = w0 > 0 ? fitHeight(d, tree, w0, pad) : Infinity;
   // A short laptop window: the tree takes the height left under it, so its bottom row shows unscrolled.
   const left = room.vh - room.top - 48; // room for the legend under it
   const short = !small && room.vh < 900 && left >= 300;
   const h0 = Math.max(220, Math.min(fitted, small ? Math.round(w0 * 1.2) : short ? Math.min(left, w0) : Math.max(380, Math.min(room.vh - 240, w0))));
-  // Zoom and pan change together, in one update.
-  const [view2d, setView2d] = useState({ z: 1, x: 0, y: 0 });
-  const zoom = view2d.z;
-  const pan = view2d;
-  const z = small ? zoom : 1;
-  const W = Math.round(w0 * z);
-  const H = Math.round(h0 * z);
-  const size = sizesFor(W);
+  // Stars, lines and labels keep the box's sizes; only the drawing grows.
+  const size = sizesFor(w0);
 
-  const layout = useMemo(() => (w0 > 0 ? treeLayout(d, tree, W, H, padFor(W)) : null), [d, tree, W, H, w0]);
+  // ---- the view: zoom (px per game unit) and the centre, as fractions of the drawing ----
+  const base = w0 > 0 ? drawingSize(d, tree, w0, h0, pad) : null;
+  const fitScale = base?.fitScale ?? 1;
+  const readable = base?.readableScale ?? 1;
+  const maxScale = readable * 2;
+  // A star picked outside the tree (the level card, the held list) moves the view to it; so does a new tree.
+  const viewKey = `${tree}|${selected && selected !== ownPick ? selected : ""}`;
+  const [manual, setManual] = useState<{ key: string; t: number; fx: number; fy: number } | null>(null);
+  const t = clamp(manual?.key === viewKey ? manual.t : readable, fitScale, maxScale);
+  const dims = w0 > 0 ? drawingSize(d, tree, w0, h0, pad, t) : null;
+  const W = dims?.width ?? 0;
+  const H = dims?.height ?? 0;
+  // (The React Compiler memoizes these.)
+  const layout = W > 0 ? treeLayout(d, tree, W, H, padFor(w0)) : null;
+  const pos = new Map(layout?.nodes.map((n) => [n.id, n]) ?? []);
+
+  // Where the view starts: the selected star; else this level's newest perk in the tree; else the
+  // tree's bottom row, centred (where every tree starts).
+  const lv = states[level - 1];
+  const newest = (d.perksByTree.get(tree) ?? [])
+    .map((p) => ({ id: p.id, at: tree === "Destiny" ? (lv?.destinyTaken[p.id] ?? 0) : Math.max(0, ...(lv?.perksTaken[p.id] ?? [0]).filter((L) => L <= level)) }))
+    .filter((x) => x.at > 0)
+    .sort((a, b) => b.at - a.at)[0]?.id;
+  const focus = (selected && pos.get(selected)) || (newest && pos.get(newest)) || null;
+  const centre = manual?.key === viewKey ? { fx: manual.fx, fy: manual.fy } : focus && W ? { fx: focus.x / W, fy: focus.y / H } : { fx: 0.5, fy: 1 };
+  const panX = W ? clamp(w0 / 2 - centre.fx * W, Math.min(0, w0 - W), 0) : 0;
+  const panY = H ? clamp(h0 / 2 - centre.fy * H, Math.min(0, h0 - H), 0) : 0;
+  const setCentre = useCallback((next: { t: number; panX: number; panY: number; W: number; H: number }) => {
+    setManual({ key: viewKey, t: next.t, fx: (w0 / 2 - next.panX) / next.W, fy: (h0 / 2 - next.panY) / next.H });
+  }, [viewKey, w0, h0]);
+  /** Zoom by `factor`, keeping the point (px, py) of the box where it is. */
+  const zoomAt = (px: number, py: number, factor: number) => {
+    const t2 = clamp(t * factor, fitScale, maxScale);
+    const next = drawingSize(d, tree, w0, h0, pad, t2);
+    const ux = (px - panX) / W;
+    const uy = (py - panY) / H;
+    setCentre({ t: t2, panX: px - ux * next.width, panY: py - uy * next.height, W: next.width, H: next.height });
+  };
+  const panBy = (dx: number, dy: number) =>
+    setCentre({ t, panX: clamp(panX + dx, Math.min(0, w0 - W), 0), panY: clamp(panY + dy, Math.min(0, h0 - H), 0), W, H });
+  const fit = () => setManual({ key: viewKey, t: fitScale, fx: 0.5, fy: 0.5 });
+  const atFit = t <= fitScale + 1e-6;
+
   const status = useMemo(() => {
     const m = new Map<string, PerkStatus>();
     for (const p of d.perksByTree.get(tree) ?? []) m.set(p.id, perkStatus(d, states, level, p.id));
     return m;
   }, [d, tree, states, level]);
 
-  // Labels are placed once for the tree and level; selecting a star only adds its own label.
-  const placing = useMemo(() => {
+  // Labels are placed once for the tree, level and size; selecting a star only adds its own label.
+  const placing = (() => {
     if (!layout) return null;
     const requests: LabelRequest[] = layout.nodes.map((n) => {
       const p = d.perkById.get(n.id)!;
@@ -309,120 +405,144 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
         priority: st.state === "taken" || st.ranksTaken > 0 ? 1 : st.state === "open" ? 2 : 3,
       };
     });
-    // A small screen at fit size labels only taken stars (and the selected one); zooming in makes room for the rest.
-    const pos = new Map(layout.nodes.map((n) => [n.id, n]));
-    const lines = layout.edges.map((e) => ({ x1: pos.get(e.from)!.x, y1: pos.get(e.from)!.y, x2: pos.get(e.to)!.x, y2: pos.get(e.to)!.y }));
-    const opts = { width: W, height: H, star: size.star, font: size.font, measure, lines, maxPriority: small && z < 1.2 ? 1 : 3 };
+    const lines = layout.edges.map((e) => {
+      const a = layout.nodes.find((n) => n.id === e.from)!;
+      const b = layout.nodes.find((n) => n.id === e.to)!;
+      return { x1: a.x, y1: a.y, x2: b.x, y2: b.y };
+    });
+    const opts = { width: layout.width, height: layout.height, star: size.star, font: size.font, measure, lines };
     return { requests, opts, base: placeLabels(requests, opts) };
-  }, [layout, d, status, W, H, size.star, size.font, measure, small, z]);
-  const labels = useMemo(() => (placing ? withSelected(placing.base, selected, placing.requests, placing.opts) : new Map<string, PlacedLabel>()), [placing, selected]);
+  })();
+  const labels = (placing ? withSelected(placing.base, selected, placing.requests, placing.opts) : new Map<string, PlacedLabel>());
 
-  const select = useCallback(
-    (id: string) => {
-      if (onSelect) onSelect(id);
-      else setLocalSelected(id);
-      if (small) setSheet(id);
-    },
-    [onSelect, small],
-  );
+  const select = (id: string) => {
+    setOwnPick(id);
+    if (onSelect) onSelect(id);
+    else setLocalSelected(id);
+    if (sheetMode) setSheet(id);
+  };
 
-  // ---- pan and zoom (small screens) ----
-  const pointers = useRef(new Map<number, { x: number; y: number }>());
-  const gesture = useRef<{ moved: boolean; dist: number; lastTap: number; tapX: number; tapY: number }>({ moved: false, dist: 0, lastTap: 0, tapX: 0, tapY: 0 });
+  // ---- pan and zoom, at every width ----
   const sky = useRef<HTMLDivElement>(null);
-  const clampTo = useCallback((v: { z: number; x: number; y: number }) => ({ z: v.z, x: clamp(v.x, w0 - w0 * v.z, 0), y: clamp(v.y, h0 - h0 * v.z, 0) }), [w0, h0]);
-  /** Zoom by `factor` keeping the point (px, py) of the frame where it is. */
-  const zoomAt = useCallback(
-    (px: number, py: number, factor: number) =>
-      setView2d((v) => {
-        const next = clamp(v.z * factor, 1, 3);
-        return clampTo({ z: next, x: px - ((px - v.x) / v.z) * next, y: py - ((py - v.y) / v.z) * next });
-      }),
-    [clampTo],
-  );
-  const fit = () => setView2d({ z: 1, x: 0, y: 0 });
+  const pointers = useRef(new Map<number, { x: number; y: number }>());
+  const gesture = useRef({ moved: false, dist: 0, sx: 0, sy: 0 });
+  const [dragging, setDragging] = useState(false);
+  // Ctrl/⌘ + wheel (and a trackpad pinch) zooms; a plain wheel is left to scroll the page.
+  // (Attached by hand: React's wheel handler is passive and can't stop the page zooming.)
   useEffect(() => {
     const el = sky.current;
-    if (!el || !small) return;
+    if (!el) return;
     const onWheel = (e: WheelEvent) => {
-      if (!e.ctrlKey) return;
+      if (!e.ctrlKey && !e.metaKey) return;
       e.preventDefault();
       const r = el.getBoundingClientRect();
       zoomAt(e.clientX - r.left, e.clientY - r.top, Math.exp(-e.deltaY * 0.01));
     };
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => el.removeEventListener("wheel", onWheel);
-  }, [small, zoomAt]);
+  });
   const local = (e: React.PointerEvent) => {
     const r = sky.current!.getBoundingClientRect();
     return { x: e.clientX - r.left, y: e.clientY - r.top };
   };
-  const gestures = small
-    ? {
-        onPointerDown: (e: React.PointerEvent) => {
-          pointers.current.set(e.pointerId, local(e));
-          gesture.current.moved = false;
-          if (pointers.current.size === 2) {
-            const [a, b] = [...pointers.current.values()];
-            gesture.current.dist = Math.hypot(a.x - b.x, a.y - b.y);
-          }
-        },
-        onPointerMove: (e: React.PointerEvent) => {
-          const prev = pointers.current.get(e.pointerId);
-          if (!prev) return;
-          const now = local(e);
-          pointers.current.set(e.pointerId, now);
-          if (pointers.current.size === 2) {
-            const [a, b] = [...pointers.current.values()];
-            const dist = Math.hypot(a.x - b.x, a.y - b.y);
-            if (gesture.current.dist > 0) zoomAt((a.x + b.x) / 2, (a.y + b.y) / 2, dist / gesture.current.dist);
-            gesture.current.dist = dist;
-            gesture.current.moved = true;
-          } else if (Math.hypot(now.x - prev.x, now.y - prev.y) > 0 && (gesture.current.moved || Math.abs(now.x - prev.x) + Math.abs(now.y - prev.y) > 3)) {
-            gesture.current.moved = true;
-            setView2d((v) => clampTo({ ...v, x: v.x + now.x - prev.x, y: v.y + now.y - prev.y }));
-          }
-        },
-        onPointerUp: (e: React.PointerEvent) => {
-          const at = local(e);
-          pointers.current.delete(e.pointerId);
-          if (gesture.current.moved || pointers.current.size) return;
-          const g = gesture.current;
-          const t = e.timeStamp;
-          if (t - g.lastTap < 300 && Math.hypot(at.x - g.tapX, at.y - g.tapY) < 30) {
-            zoomAt(at.x, at.y, 1.6);
-            g.lastTap = 0;
-          } else Object.assign(g, { lastTap: t, tapX: at.x, tapY: at.y });
-        },
-        onPointerCancel: (e: React.PointerEvent) => pointers.current.delete(e.pointerId),
+  const gestures = {
+    onPointerDown: (e: React.PointerEvent) => {
+      if (e.button !== 0) return;
+      const at = local(e);
+      pointers.current.set(e.pointerId, at);
+      gesture.current = { ...gesture.current, moved: false, sx: at.x, sy: at.y };
+      if (pointers.current.size === 2) {
+        const [a, b] = [...pointers.current.values()];
+        gesture.current.dist = Math.hypot(a.x - b.x, a.y - b.y);
       }
-    : {};
+    },
+    onPointerMove: (e: React.PointerEvent) => {
+      const prev = pointers.current.get(e.pointerId);
+      if (!prev) return;
+      const now = local(e);
+      pointers.current.set(e.pointerId, now);
+      const g = gesture.current;
+      if (pointers.current.size === 2) {
+        const [a, b] = [...pointers.current.values()];
+        const dist = Math.hypot(a.x - b.x, a.y - b.y);
+        if (g.dist > 0) zoomAt((a.x + b.x) / 2, (a.y + b.y) / 2, dist / g.dist);
+        g.dist = dist;
+        g.moved = true;
+        return;
+      }
+      // A 4px threshold, so a click on a star is still a click.
+      if (!g.moved && Math.hypot(now.x - g.sx, now.y - g.sy) < 4) return;
+      if (!g.moved) {
+        g.moved = true;
+        setDragging(true);
+        sky.current?.setPointerCapture(e.pointerId);
+      }
+      panBy(now.x - prev.x, now.y - prev.y);
+    },
+    onPointerUp: (e: React.PointerEvent) => {
+      pointers.current.delete(e.pointerId);
+      if (!pointers.current.size) setDragging(false);
+    },
+    onPointerCancel: (e: React.PointerEvent) => {
+      pointers.current.delete(e.pointerId);
+      setDragging(false);
+    },
+    // A drag ends without selecting the star it started on.
+    onClickCapture: (e: React.MouseEvent) => {
+      if (gesture.current.moved) {
+        e.stopPropagation();
+        e.preventDefault();
+        gesture.current.moved = false;
+      }
+    },
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (e.target !== sky.current) return;
+      const step = 48;
+      const moves: Record<string, [number, number]> = { ArrowLeft: [step, 0], ArrowRight: [-step, 0], ArrowUp: [0, step], ArrowDown: [0, -step] };
+      const m = moves[e.key];
+      if (!m) return;
+      e.preventDefault();
+      panBy(m[0], m[1]);
+    },
+  };
+  // Tabbing to a star pans just enough to bring it into view.
+  const reveal = (id: string, e: React.FocusEvent<HTMLElement>) => {
+    if (!e.currentTarget.matches(":focus-visible")) return;
+    const n = pos.get(id);
+    if (!n) return;
+    const m = 40;
+    const x = n.x + panX;
+    const y = n.y + panY;
+    const dx = x < m ? m - x : x > w0 - m ? w0 - m - x : 0;
+    const dy = y < m ? m - y : y > h0 - m ? h0 - m - y : 0;
+    if (dx || dy) panBy(dx, dy);
+  };
 
-  const pos = useMemo(() => new Map(layout?.nodes.map((n) => [n.id, n]) ?? []), [layout]);
-  const chain = useMemo(() => (layout ? prerequisiteLines(d, layout.edges, status, selected) : new Set<string>()), [d, layout, status, selected]);
+  const chain = (layout ? prerequisiteLines(d, layout.edges, status, selected) : new Set<string>());
   // Grey lines first, then where you can go, then the selected star's needs, then your path on top.
-  const lines = useMemo(() => {
+  const lines = (() => {
     const order = { other: 0, next: 1, chain: 2, held: 3 };
     return (layout?.edges ?? [])
       .map((e) => ({ e, look: lineLook(lineState(status.get(e.from), status.get(e.to)), e.anyOf, chain.has(`${e.from}>${e.to}`)) }))
       .sort((a, b) => order[a.look.kind] - order[b.look.kind]);
-  }, [layout, status, chain]);
+  })();
   const sheetStatus = sheet ? status.get(sheet) : undefined;
+  const bigger = W > w0 + 1 || H > h0 + 1;
 
   return (
     <div className={styles.box} ref={setWrap}>
       <div className={styles.toolbar}>
         {/* On phones the tabs carry the switch, at the end of their row. */}
         {!noToggle && <ViewToggle view={view} onView={setView} className={onView ? styles.segWide : undefined} />}
-        {small && view === "tree" && (
+        {view === "tree" && (
           <span className={styles.zoom}>
-            <button type="button" className="btn btn-sm btn-icon" aria-label="Zoom in" onClick={() => zoomAt(w0 / 2, h0 / 2, 1.4)} disabled={zoom >= 3}>
+            <button type="button" className="btn btn-sm btn-icon" aria-label="Zoom in" onClick={() => zoomAt(w0 / 2, h0 / 2, 1.3)} disabled={t >= maxScale - 1e-6}>
               +
             </button>
-            <button type="button" className="btn btn-sm btn-icon" aria-label="Zoom out" onClick={() => zoomAt(w0 / 2, h0 / 2, 1 / 1.4)} disabled={zoom <= 1}>
+            <button type="button" className="btn btn-sm btn-icon" aria-label="Zoom out" onClick={() => zoomAt(w0 / 2, h0 / 2, 1 / 1.3)} disabled={atFit}>
               −
             </button>
-            <button type="button" className="btn btn-sm" onClick={fit} disabled={zoom === 1}>
+            <button type="button" className="btn btn-sm" onClick={fit} disabled={atFit}>
               Fit
             </button>
           </span>
@@ -437,12 +557,14 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
           <PerkList d={d} tree={tree} status={status} hidden />
           <div
             ref={sky}
-            className={`${styles.sky} ${small ? styles.skySmall : ""}`}
-            style={{ height: h0, touchAction: small ? (z > 1 ? "none" : "pan-y") : undefined }}
+            tabIndex={0}
+            aria-label={`${tree} tree: drag or use the arrow keys to move around, Ctrl and the wheel to zoom`}
+            className={`${styles.sky} ${small ? styles.skySmall : ""} ${dragging ? styles.dragging : ""}`}
+            style={{ height: h0, touchAction: bigger ? "none" : "pan-y" }}
             {...gestures}
           >
             {layout && (
-              <div className={styles.canvas} style={{ width: W, height: H, transform: small ? `translate(${pan.x}px, ${pan.y}px)` : undefined, ["--star" as string]: `${size.star * 2}px`, ["--label" as string]: `${labelSizes(size.font).name}px`, ["--sub" as string]: `${labelSizes(size.font).sub}px` }}>
+              <div className={styles.canvas} style={{ width: W, height: H, transform: `translate(${panX}px, ${panY}px)`, ["--star" as string]: `${size.star * 2}px`, ["--label" as string]: `${labelSizes(size.font).name}px`, ["--sub" as string]: `${labelSizes(size.font).sub}px` }}>
                 <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} aria-hidden="true" className={styles.edges}>
                   <g fill="none">
                     {lines.map(({ e, look }) => {
@@ -490,36 +612,24 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
                   const look = held ? (partial ? styles.partial : styles.taken) : st.state === "open" ? styles.open : styles.locked;
                   const cls = [styles.star, look, isSel ? styles.selected : "", label ? "" : styles.unlabelled].join(" ");
                   const style = { left: n.x, top: n.y, ...(partial ? { ["--ring" as string]: rankRing(st, size.star * 2 * 1.3) } : {}) };
-                  // Shown on hover and focus when there was no room for the label, or when it says more than the label.
-                  const tag = (!label || extra.length > 0) && (
-                    <span className={styles.tag} aria-hidden="true">
-                      <b>{nameLine(p, st)}</b>
-                      {req && <span>{req}</span>}
-                      {extra.map((x) => (
-                        <span key={x}>{x}</span>
-                      ))}
-                    </span>
-                  );
-                  const title = [perkText(p, Math.max(0, st.ranksTaken - 1)).text, ...extra].filter(Boolean).join("\n");
                   return (
                     <span key={n.id}>
-                      {onSelect || small ? (
-                        <button type="button" className={cls} style={style} aria-label={aria} aria-pressed={onSelect ? isSel : undefined} onClick={() => select(n.id)}>
-                          {tag}
-                        </button>
-                      ) : (
-                        <Tooltip content={title || nameLine(p, st)}>
-                          <span className={cls} style={style} aria-label={aria} role="img" tabIndex={0} onClick={() => setLocalSelected(n.id)}>
-                            {tag}
-                          </span>
-                        </Tooltip>
-                      )}
+                      <button type="button" className={cls} style={style} aria-label={aria} aria-pressed={isSel} onClick={() => select(n.id)} onFocus={(e) => reveal(n.id, e)}>
+                        {/* On hover (mouse) or keyboard focus: the name and what it needs, at once. */}
+                        <span className={styles.tag} aria-hidden="true">
+                          <b>{nameLine(p, st)}</b>
+                          {req && <span>{req}</span>}
+                          {extra.map((x) => (
+                            <span key={x}>{x}</span>
+                          ))}
+                        </span>
+                      </button>
                       {label && (
                         <span
                           className={`${styles.label} ${styles[`side_${label.side}`]} ${isSel ? styles.labelSelected : ""} ${held ? styles.labelHeld : st.state === "locked" ? styles.labelLocked : ""}`}
-                          style={{ left: label.x, top: label.y, width: label.w }}
+                          style={{ left: label.x, top: label.y, width: label.w, height: label.h }}
                           aria-hidden="true"
-                          onClick={() => (onSelect || small ? select(n.id) : setLocalSelected(n.id))}
+                          onClick={() => select(n.id)}
                         >
                           <span className={styles.labelName}>{nameLine(p, st)}</span>
                           {req && !label.nameOnly && <span className={styles.labelReq}>{req}</span>}
@@ -530,6 +640,11 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
                 })}
               </div>
             )}
+            {/* Signs there's more beyond each edge. */}
+            {panX < -1 && <span className={`${styles.fade} ${styles.fadeLeft}`} aria-hidden="true" />}
+            {panX + W > w0 + 1 && <span className={`${styles.fade} ${styles.fadeRight}`} aria-hidden="true" />}
+            {panY < -1 && <span className={`${styles.fade} ${styles.fadeTop}`} aria-hidden="true" />}
+            {panY + H > h0 + 1 && <span className={`${styles.fade} ${styles.fadeBottom}`} aria-hidden="true" />}
           </div>
         </>
       )}
@@ -553,9 +668,9 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
         </span>
       </div>
 
-      {small && sheet && sheetStatus && (
+      {sheetMode && sheet && sheetStatus && (
         <BottomSheet label={d.perkById.get(sheet)?.name ?? "Perk"} onClose={() => setSheet(null)}>
-          {details ? details(sheet) : <ReadOnlyDetails d={d} id={sheet} st={sheetStatus} />}
+          {details ? details(sheet) : <PerkDetails id={sheet} states={states} level={level} />}
         </BottomSheet>
       )}
     </div>

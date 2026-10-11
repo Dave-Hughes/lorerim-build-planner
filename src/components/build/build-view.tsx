@@ -25,7 +25,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
 import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillIcon, SkillLabel } from "@/components/ui/skill-icon";
 import { LevelBars, LevelLegend, LevelStepper, useHoldInPlace } from "./level-nav";
-import { Tree, ViewToggle, type TreeView } from "./tree";
+import { BottomSheet, PerkDetails, Tree, ViewToggle, type TreeView } from "./tree";
 import styles from "./build-view.module.css";
 
 export type BuildViewData = Omit<BuildRecord, "createdAt" | "updatedAt"> & { updatedAt: string };
@@ -303,20 +303,31 @@ function LevelsTab({
   const lv = plan.levels[level - 1];
   const firstPerk = lv.perks[0] ?? lv.destiny[0];
   const defaultTree = firstPerk ? (d.perkById.get(firstPerk)?.tree ?? plan.majors[0]) : (plan.majors[0] ?? d.skills[0]);
+  // A selected perk stays selected across levels (its status line follows the level); a tree picked
+  // without a perk is for this level only.
   const [picked, setPicked] = useState<{ level: number; tree: string; star: string | null } | null>(null);
-  const tree = picked?.level === level ? picked.tree : defaultTree;
-  const selected = picked?.level === level ? picked.star : null;
+  const tree = picked && (picked.star || picked.level === level) ? picked.tree : defaultTree;
+  const selected = picked?.star ?? null;
   const narrow = useNarrower(1100);
   const [viewChoice, setViewChoice] = useState<TreeView | null>(null);
   const view: TreeView = viewChoice ?? (narrow ? "list" : "tree");
   const perksRef = useRef<HTMLElement>(null);
+  // Under 1100px a perk picked from the card or the held list opens in the bottom sheet.
+  const [sheet, setSheet] = useState<string | null>(null);
   const showPerk = (id: string, scroll: boolean) => {
     const p = d.perkById.get(id);
     if (!p) return;
     setPicked({ level, tree: p.tree, star: id });
-    if (narrow) setViewChoice("tree");
-    if (scroll) perksRef.current?.scrollIntoView({ block: "start" });
+    if (narrow) setSheet(id);
+    else if (scroll) perksRef.current?.scrollIntoView({ block: "start" });
   };
+  const clearPick = useCallback(() => setPicked((p) => (p ? { ...p, star: null, level } : p)), [level]);
+  useEffect(() => {
+    if (!selected || narrow) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && clearPick();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selected, narrow, clearPick]);
 
   return (
     <>
@@ -354,11 +365,22 @@ function LevelsTab({
         <div className={styles.perksBody}>
           {(!narrow || view === "tree") && (
             <div className={`frame ${styles.treeBox}`}>
-              <Tree tree={tree} states={states} level={level} selectedId={selected} onSelect={(id) => setPicked({ level, tree, star: id })} view="tree" noToggle />
+              <Tree tree={tree} states={states} level={level} selectedId={selected} onSelect={(id) => setPicked({ level, tree, star: id })} view="tree" noToggle sheetBelow={1100} />
             </div>
           )}
-          {(!narrow || view === "list") && <HeldList perks={perks} s={s} level={level} onPick={(id) => showPerk(id, false)} />}
+          {(!narrow || view === "list") && (
+            <div className={styles.side}>
+              {/* What the selected perk does, above the held list (wide screens; phones use the sheet). */}
+              {!narrow && selected && <PerkDetails id={selected} states={states} level={level} onClose={clearPick} />}
+              <HeldList perks={perks} s={s} level={level} onPick={(id) => showPerk(id, false)} />
+            </div>
+          )}
         </div>
+        {narrow && sheet && (
+          <BottomSheet label={d.perkById.get(sheet)?.name ?? "Perk"} onClose={() => setSheet(null)}>
+            <PerkDetails id={sheet} states={states} level={level} />
+          </BottomSheet>
+        )}
       </section>
     </>
   );

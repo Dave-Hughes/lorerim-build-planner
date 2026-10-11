@@ -9,6 +9,8 @@ test.describe("perk trees on a phone", () => {
     await signIn(context);
     await page.goto(`/b/${TEST_BUILD_ID}/edit?level=6`);
     await page.getByRole("tab", { name: /^Block/ }).click();
+    // The tree opens at a readable size on its bottom row; Fit shows all of it.
+    await page.getByRole("button", { name: "Fit", exact: true }).tap();
     await page.getByRole("button", { name: /^Overpowering Bashes, Block 50/ }).tap();
     const sheet = page.getByRole("dialog", { name: "Overpowering Bashes" });
     await expect(sheet).toBeVisible();

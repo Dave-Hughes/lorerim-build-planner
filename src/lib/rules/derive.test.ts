@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import sample from "./__fixtures__/sample-build.json";
 import { computeBuild } from "./engine";
 import { levelChanges, levelMarks, perkStatus, perksByLevel, skillStepInfo } from "./derive";
-import { fitHeight, treeLayout } from "./layout";
+import { READABLE_CAP, READABLE_GAP, drawingSize, fitHeight, treeLayout } from "./layout";
 import { labelCandidates, nearerTo, spotAllowed, withSelected } from "./labels";
 import { overlaps, placeLabels, starRect } from "./labels";
 import { heldCount, isHeld, lineLook, lineState, prerequisiteLines } from "./tree-states";
@@ -272,6 +272,44 @@ describe("placeLabels", () => {
     const stars = l.nodes.map((n) => ({ id: n.id, x: n.x, y: n.y, lines: [d.perkById.get(n.id)!.name, req(n.id)] as [string, string], priority: 3 }));
     expect(placeLabels(stars, boxes[1]).size).toBeGreaterThanOrEqual(stars.length * 0.7);
   });
+});
+
+describe("readable trees", () => {
+  // A 1000 x 560 tree box, as on a laptop: star, line and label sizes stay as they are at that width.
+  const box = { width: 1000, height: 560, star: 8.4, font: 13 };
+  const req = (id: string) => {
+    const p = d.perkById.get(id)!;
+    return p.tree === "Destiny" ? "" : p.skill ? `${p.tree} ${p.skill}` : "No requirement";
+  };
+
+  for (const tree of ["One-Handed", "Block", "Destiny"])
+    it(`${tree}: stars at least 88px apart (or the 2.5x cap), and no label over a label or a star`, () => {
+      const size = drawingSize(d, tree, box.width, box.height);
+      const l = treeLayout(d, tree, size.width, size.height);
+      let min = Infinity;
+      for (const a of l.nodes) for (const b of l.nodes) if (a !== b) min = Math.min(min, Math.hypot(a.x - b.x, a.y - b.y));
+      if (size.readableScale < READABLE_CAP * size.fitScale - 1e-9) expect(min).toBeGreaterThanOrEqual(READABLE_GAP - 0.5);
+      else expect(size.readableScale).toBeCloseTo(READABLE_CAP * size.fitScale, 6);
+
+      const stars = l.nodes.map((n) => {
+        const st = perkStatus(d, states, 6, n.id);
+        return {
+          id: n.id,
+          x: n.x,
+          y: n.y,
+          lines: (req(n.id) ? [d.perkById.get(n.id)!.name, req(n.id)] : [d.perkById.get(n.id)!.name]) as [string] | [string, string],
+          priority: st.state === "taken" || st.ranksTaken > 0 ? 1 : st.state === "open" ? 2 : 3,
+        };
+      });
+      const pos = new Map(l.nodes.map((n) => [n.id, n]));
+      const lines = l.edges.map((e) => ({ x1: pos.get(e.from)!.x, y1: pos.get(e.from)!.y, x2: pos.get(e.to)!.x, y2: pos.get(e.to)!.y }));
+      const placed = [...placeLabels(stars, { ...box, width: size.width, height: size.height, lines }).values()];
+      expect(placed.length).toBeGreaterThan(stars.length * 0.6);
+      for (const a of placed) {
+        for (const b of placed) if (a !== b) expect(overlaps(a, b), `${a.id} / ${b.id}`).toBe(false);
+        for (const s of stars) expect(overlaps(a, starRect(s.x, s.y, box.star)), `${a.id} over ${s.id}`).toBe(false);
+      }
+    });
 });
 
 describe("tree states", () => {
