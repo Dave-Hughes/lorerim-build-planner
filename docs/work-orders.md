@@ -771,7 +771,21 @@ Do after WO-20. Shared page items are in `src/components/build/build-view.tsx`; 
    - **Active tab:** the panel colour (`#141b23`) with a 3 px ember bar on top and no bottom border, so it joins the content below.
    - **Inactive tab:** outlined, with muted text that turns light on hover.
    - **A rule** runs the full width under the tab row.
-9. **The pinned bar** from WO-19 holds the tabs on the left at a compact size, plus the level stepper on the right while on Levels, so the tabs stay reachable while scrolling.
+9. **The pinned bar** (Dave: "brilliant"; he wants it to say what changed). Left to right: the level stepper, then a one-line summary of the level, then the tabs at a compact size on the right. Stepping with it while scrolled down to the perk tree should show what each level brought without scrolling up.
+   - **Opaque background.** It is `rgba(14,19,25,.96)` now, and the card text shows through it (Dave's screenshot). Make it solid `#0e1319`.
+   - **The summary is a row of small chips, in the card's order:**
+     - **Attribute:** its icon (16 px) and `+5`.
+     - **Skills:** for each skill raised by points, a trainer or a book, the skill icon and `+5`, biggest gain first. After 3 skills, `+2 more`, with a tooltip listing them.
+     - **Perks and Destiny:** the tree icon and the perk name (`Dodge`, `Constitution`).
+     - **Standing stone** when it changes: the stone icon and `The Lover`.
+     - **Gear** when it changes (WO-22): `Steel spear`.
+     - **Note:** a small note mark when the level has one.
+   - **Each chip has a tooltip** with the full line from the card (`Evasion 50 → 55`, `Dodge (Evasion)`).
+   - **A perk chip is a button.** It selects that perk in the Perks section (tree tab, star and details, per WO-20) without scrolling the page, so it works while you're looking at the tree.
+   - **Changing level** swaps the chips with a 120 ms fade (none with reduced motion), and the bar's height doesn't change.
+   - **Level 1** shows the starting picks the same way, perks and stone included.
+   - **Fit:** one line, never wrapping. When chips don't fit, skills collapse first (`3 skills`, tooltip), then the stone and gear chips. Perk chips stay as long as possible.
+   - **Under 900 px:** the stepper, then the attribute chip and the perk names only, ending with `…` when cut off. The tabs move to the bar's second row only if they don't fit; check at 390.
 
 ### Guide page
 10. Today the page is two big text boxes. **From 1100 px wide it becomes two columns:**
@@ -790,8 +804,10 @@ Do after WO-20. Shared page items are in `src/components/build/build-view.tsx`; 
 - [ ] e2e: the author's name in a level card links to `/u/<handle>`. A level with no note shows `No note for level N.`
 - [ ] e2e: hovering `Banked` and `Trainer` in the card shows their tooltips.
 - [ ] e2e: on the guide page, focusing `Intro` lights the miniature's intro block and focusing `Guide` lights its guide block.
+- [ ] e2e: scrolled down to the perk tree on Azrem, `›` in the pinned bar moves to level 7 and the bar's chips change. At level 6, clicking the `Dodge` chip selects Dodge in Evasion, and `window.scrollY` stays the same (±2 px).
+- [ ] The pinned bar is opaque: nothing shows through it (screenshot over the level card).
 - [ ] No `Held` heading left. Only one rule between the heading and the first group (screenshot).
-- [ ] Screenshots for Dave at 1440 × 900: the tab row; the level card with a note and without; attributes; `Taken by level 6`; the guide page with the miniature, `Guide` in focus. Also 390 for the tabs and the card.
+- [ ] Screenshots for Dave at 1440 × 900: the pinned bar over the perk tree at level 1, 6 and 12 of Azrem, plus at 390; the tab row; the level card with a note and without; attributes; `Taken by level 6`; the guide page with the miniature, `Guide` in focus. Also 390 for the tabs and the card.
 - [ ] All checks in CLAUDE.md pass.
 
 ---
