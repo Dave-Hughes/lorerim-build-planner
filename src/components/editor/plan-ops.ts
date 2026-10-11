@@ -1,5 +1,6 @@
 /** Pure edits to a build plan. Each returns a new plan. */
 import { emptyLevel } from "@/lib/rules/derive";
+import { gearAt } from "@/lib/rules/gear";
 import type { Attribute, BuildPlan, Extra, GearItem, LevelPlan } from "@/lib/rules/types";
 
 function withLevel(plan: BuildPlan, level: number, fn: (lv: LevelPlan) => LevelPlan): BuildPlan {
@@ -72,7 +73,48 @@ export function removeLastLevel(plan: BuildPlan): BuildPlan {
   return { ...plan, levels: plan.levels.slice(0, -1) };
 }
 
-export function setGear(plan: BuildPlan, gear: GearItem[]): BuildPlan {
-  return { ...plan, gear };
+/**
+ * The rows set at `level` for one held entry: a slot, or in `Other` one item, by its name at
+ * that level (a row that adds or replaces it, or one that takes it away).
+ */
+function isEntryRow(g: GearItem, level: number, slot: string, item?: string): boolean {
+  if (g.fromLevel !== level || g.slot !== slot) return false;
+  if (slot !== "Other") return true;
+  return g.name === item || (!g.name && g.replaces === item);
+}
+
+/**
+ * Sets what a slot holds from `level` on. In `Other`, `item` is the item being changed (one set
+ * at this level is edited in place, one carried from earlier is replaced); without it, an item is added.
+ */
+export function setGearAt(plan: BuildPlan, level: number, slot: string, name: string, note: string, item?: string): BuildPlan {
+  name = name.trim();
+  note = note.trim();
+  if (!name) return emptyGearAt(plan, level, slot, item);
+  if (slot !== "Other") return { ...plan, gear: [...plan.gear.filter((g) => !isEntryRow(g, level, slot)), { slot, name, fromLevel: level, note }] };
+  const here = item === undefined ? -1 : plan.gear.findIndex((g) => g.fromLevel === level && g.slot === "Other" && g.name === item);
+  if (here >= 0) return { ...plan, gear: plan.gear.map((g, i) => (i === here ? { ...g, name, note } : g)) };
+  return { ...plan, gear: [...plan.gear, { slot, name, fromLevel: level, note, ...(item !== undefined ? { replaces: item } : {}) }] };
+}
+
+/** Empties a slot (or, in `Other`, takes `item` away) from `level` on. */
+export function emptyGearAt(plan: BuildPlan, level: number, slot: string, item?: string): BuildPlan {
+  if (slot !== "Other") {
+    const gear = plan.gear.filter((g) => !isEntryRow(g, level, slot));
+    const held = gearAt({ ...plan, gear }, level).some((g) => g.slot === slot);
+    return { ...plan, gear: held ? [...gear, { slot, name: "", fromLevel: level, note: "" }] : gear };
+  }
+  const here = plan.gear.findIndex((g) => g.fromLevel === level && g.slot === "Other" && g.name === item);
+  if (here < 0) return { ...plan, gear: [...plan.gear, { slot, name: "", fromLevel: level, note: "", replaces: item }] };
+  const r = plan.gear[here];
+  return {
+    ...plan,
+    gear: r.replaces ? plan.gear.map((g, i) => (i === here ? { ...g, name: "", note: "" } : g)) : plan.gear.filter((_, i) => i !== here),
+  };
+}
+
+/** Takes back the change made at `level` to a slot (or to one `Other` item). */
+export function undoGearAt(plan: BuildPlan, level: number, slot: string, item?: string): BuildPlan {
+  return { ...plan, gear: plan.gear.filter((g) => !isEntryRow(g, level, slot, item)) };
 }
 

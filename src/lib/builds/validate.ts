@@ -2,6 +2,7 @@ import { z } from "zod";
 import { MAX_TAGS, TAG_BY_SLUG } from "./tags";
 import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
 import { gameData, isKnownVersion, type GameData } from "@/lib/rules/server";
+import { withGearSlots } from "@/lib/rules/convert";
 import type { BuildPlan } from "@/lib/rules/types";
 
 export const MAX_LEVELS = 100;
@@ -52,6 +53,7 @@ function planSchema(d: GameData) {
           name: z.string().max(120),
           fromLevel: z.number().int().min(1).max(MAX_LEVELS),
           note: z.string().max(300),
+          replaces: z.string().max(120).optional(),
         }),
       )
       .max(60),
@@ -93,5 +95,5 @@ export type BuildDetails = z.infer<typeof buildDetailsSchema>;
  */
 export function parseBuildPlan(input: unknown): BuildPlan {
   const { gameVersion } = versionOnly.parse(input);
-  return planSchema(gameData(gameVersion)!).parse(input) as BuildPlan;
+  return withGearSlots(planSchema(gameData(gameVersion)!).parse(input) as BuildPlan);
 }

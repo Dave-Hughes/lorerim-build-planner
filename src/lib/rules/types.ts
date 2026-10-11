@@ -28,11 +28,17 @@ export interface LevelPlan {
   note: string;
 }
 
+/**
+ * From `fromLevel` on, `slot` holds `name`, until a later row for the same slot. An empty name
+ * empties the slot. See gear.ts.
+ */
 export interface GearItem {
   slot: string;
   name: string;
   fromLevel: number;
   note: string;
+  /** `Other` only: the item this row replaces, or with an empty name takes away. */
+  replaces?: string;
 }
 
 export interface BuildPlan {

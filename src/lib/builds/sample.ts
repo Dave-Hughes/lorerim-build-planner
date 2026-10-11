@@ -1,4 +1,5 @@
 import sample from "@/lib/rules/__fixtures__/sample-build.json";
+import { withGearSlots } from "@/lib/rules/convert";
 import type { BuildPlan } from "@/lib/rules/types";
 import { SAMPLE_BUILD_ID } from "./ids";
 import type { BuildRecord } from "./types";
@@ -15,7 +16,7 @@ export function sampleBuild(): BuildRecord {
     writeupUrl: null,
     visibility: "public",
     gameVersion: plan.gameVersion,
-    plan,
+    plan: withGearSlots(plan),
     createdAt: new Date("2026-10-09T00:00:00Z"),
     updatedAt: new Date("2026-10-09T00:00:00Z"),
     author: { name: "Example build", image: null, handle: null },

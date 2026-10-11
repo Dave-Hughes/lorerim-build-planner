@@ -405,42 +405,6 @@
   align-items: flex-start;
   padding-top: 8px;
 }
-.gear {
-  flex: 1 1 100%;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.scroller {
-  overflow-x: auto;
-}
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 15px;
-  min-width: 520px;
-}
-.table th {
-  text-align: left;
-  font-weight: 500;
-  color: var(--muted);
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--rule);
-}
-.table td {
-  padding: 10px 12px;
-  border-bottom: 1px solid #1c2430;
-  vertical-align: top;
-}
-.table th:first-child,
-.table td:first-child {
-  padding-left: 0;
-}
-.table th:last-child,
-.table td:last-child {
-  padding-right: 0;
-}
 .right {
   text-align: right;
 }
@@ -821,6 +785,40 @@
 .reference .colSkills {
   flex: 2 1 560px;
   gap: 14px;
+}
+/* Gear at this level: slot and item, two to four across. */
+.gearAt {
+  flex: 1 1 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.gearList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 6px 28px;
+  margin: 0;
+}
+.gearRow {
+  display: grid;
+  grid-template-columns: 6.5em minmax(0, 1fr);
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid #1c2430;
+  font-size: 15px;
+}
+.gearRow dt {
+  color: var(--muted);
+  font-size: 13px;
+  padding-top: 2px;
+}
+.gearRow dd {
+  margin: 0;
+}
+.gearNow {
+  color: var(--ember);
+  font-weight: 600;
 }
 .reference .stats {
   margin-top: 4px;

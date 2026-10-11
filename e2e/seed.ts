@@ -31,6 +31,8 @@ export const OTHER_SESSION_TOKEN = "e2e-session-token-0002";
 export const TEST_BUILD_ID = "e2eqq2e2eq";
 /** A copy of the sample the tests may change freely (remove perks, add levels). */
 export const SCRATCH_BUILD_ID = "e2eqq2e2e5";
+/** A copy of the sample with no gear, for setting gear level by level. */
+export const GEAR_BUILD_ID = "e2egearnew";
 export const OTHER_USER_ID = "e2e-user-0002";
 export const OTHER_BUILD_ID = "e2eqq2e2e2";
 /** Made for the test-only older version (src/lib/rules/__fixtures__/test-version.ts). */
@@ -79,6 +81,15 @@ export async function seed() {
         visibility: "private",
         gameVersion: "5.0.4.8",
         plan: samplePlan(),
+      },
+      {
+        id: GEAR_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        name: "Gearless Shield-Wall",
+        description: "No gear yet.",
+        visibility: "unlisted",
+        gameVersion: "5.0.4.8",
+        plan: { ...samplePlan(), gear: [] },
       },
       {
         id: AZREM_BUILD_ID,

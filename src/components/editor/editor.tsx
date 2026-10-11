@@ -13,6 +13,7 @@ import { useGameData } from "@/components/game-data";
 import { ATTRIBUTE_NAMES, levelMarks, nextDestinyLevel, skillStepInfo, stoneLabel, stoneShare } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
 import type { Attribute, BuildPlan } from "@/lib/rules/types";
+import { GearBlock } from "./gear-block";
 import { PerkPanel } from "./perk-panel";
 import { AttributeIcon, IconLabel, SignIcon, SkillIcon } from "@/components/ui/skill-icon";
 import { GuideEditor, guideSaveLabel } from "@/components/guide/guide-editor";
@@ -194,9 +195,6 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
             </Link>
             <Link href={`/b/${buildId}/guide`} className="btn btn-sm">
               Guide
-            </Link>
-            <Link href={`/b/${buildId}/gear`} className="btn btn-sm">
-              Gear
             </Link>
             <Link href={`/b/${buildId}?level=${level}`} className="btn btn-sm">
               See it as a visitor
@@ -451,6 +449,8 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
             </span>
           </label>
         </section>
+
+        <GearBlock key={level} plan={plan} level={level} setPlan={setPlan} />
 
         <GuideFactsProvider plan={plan} states={states}>
           <LevelNotes

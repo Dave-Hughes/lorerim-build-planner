@@ -841,12 +841,12 @@ Dave: gear should change with level, carry over from one level to the next by de
 7. **`Gear at level 6`:** a short slot and item list after Skills. Items set at this level are in ember. It's left out when the build has no gear at all.
 
 ### Done when
-- [ ] Unit tests: `gearAt` carries an item forward, a later row replaces it, an empty name clears it, and `Other` holds several.
-- [ ] e2e: in the editor, set a Main hand item at level 2, go to level 5 (it shows as carried), change it at level 5, then view the shared page: level 3 shows the first item and level 5 shows the new one in the card.
-- [ ] e2e: `/b/<id>/gear` redirects to the editor, and `?tab=gear` opens Levels.
-- [ ] Ushnar's and Azrem's existing gear still shows, under the new slot names (screenshot).
-- [ ] Screenshots for Dave: the editor's Gear block at 1512 × 806 with one carried item and one changed item; the shared page's level card and `Gear at level N` at 1440 and 390.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Unit tests: `gearAt` carries an item forward, a later row replaces it, an empty name clears it, and `Other` holds several.
+- [x] e2e: in the editor, set a Main hand item at level 2, go to level 5 (it shows as carried), change it at level 5, then view the shared page: level 3 shows the first item and level 5 shows the new one in the card.
+- [x] e2e: `/b/<id>/gear` redirects to the editor, and `?tab=gear` opens Levels.
+- [x] Ushnar's and Azrem's existing gear still shows, under the new slot names (screenshot).
+- [x] Screenshots for Dave: the editor's Gear block at 1512 × 806 with one carried item and one changed item; the shared page's level card and `Gear at level N` at 1440 and 390.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

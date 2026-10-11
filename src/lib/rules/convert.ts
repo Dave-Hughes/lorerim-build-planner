@@ -3,6 +3,7 @@
  * and removed, never silently.
  */
 import type { GameData } from "./data";
+import { gearSlot } from "./gear";
 import { keptTraitChoices } from "./trait-choices";
 import type { BuildPlan } from "./types";
 
@@ -63,4 +64,13 @@ export function convertPlan(d: GameData, plan: BuildPlan): { plan: BuildPlan; dr
 /** "Not in 5.1: Bulwark (trait), Weapons Master (perk)." */
 export function droppedSentence(versionId: string, dropped: Dropped[]): string {
   return `Not in ${versionId}: ${dropped.map((x) => `${x.name} (${x.kind})`).join(", ")}.`;
+}
+
+/**
+ * A saved plan with its gear in the fixed slots (Weapon → Main hand, Shield → Off hand, Chest →
+ * Body, anything unknown → Other). Every row keeps its name, level and note.
+ */
+export function withGearSlots(plan: BuildPlan): BuildPlan {
+  if (plan.gear.every((g) => gearSlot(g.slot) === g.slot)) return plan;
+  return { ...plan, gear: plan.gear.map((g) => ({ ...g, slot: gearSlot(g.slot) })) };
 }

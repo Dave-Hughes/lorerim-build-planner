@@ -100,12 +100,12 @@ test.describe("breaking an earlier level", () => {
 });
 
 test.describe("gear", () => {
-  test("has its own page, linked from the editor", async ({ page, context }) => {
+  test("is set in each level's editor, under the new slot names", async ({ page, context }) => {
     await signIn(context);
     await page.goto(`/b/${SCRATCH_BUILD_ID}/edit?level=1`);
-    await expect(page.getByRole("region", { name: "Gear" })).toHaveCount(0);
-    await page.getByRole("link", { name: "Gear" }).click();
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Gear");
-    await expect(page.getByRole("textbox", { name: "Item" }).first()).toHaveValue("Steel sword");
+    await expect(page.getByRole("link", { name: "Gear" })).toHaveCount(0);
+    const gear = page.getByRole("region", { name: "Gear" });
+    await expect(gear).toContainText("Main hand");
+    await expect(gear).toContainText("Steel sword");
   });
 });

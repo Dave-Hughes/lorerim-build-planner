@@ -18,6 +18,7 @@ import { docWords, firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from
 import { GuideView } from "@/components/guide/guide-view";
 import { currentVersion, isOlderThanCurrent } from "@/lib/rules/versions";
 import { ATTRIBUTE_NAMES, levelChanges, levelMarks, perksByLevel, stoneShare, type PerkListGroup } from "@/lib/rules/derive";
+import { gearAt, gearChangeText, gearChanges } from "@/lib/rules/gear";
 import { heldCount } from "@/lib/rules/tree-states";
 import type { GameData } from "@/lib/rules/data";
 import type { LevelState } from "@/lib/rules/types";
@@ -49,7 +50,7 @@ interface Props {
   guide?: Record<string, GuideDoc>;
 }
 
-export type BuildTab = "levels" | "guide" | "gear";
+export type BuildTab = "levels" | "guide";
 
 /**
  * The tree and perk picked in the Perks section. A selected perk stays selected across levels (its
@@ -74,7 +75,7 @@ function useNarrower(px: number): boolean {
 
 /**
  * The shared build page. Top to bottom: the hero; the intro; the about bar; then tabs (Levels,
- * Guide, Gear). Levels is for someone playing the build who has just levelled up: the level
+ * Guide). Levels is for someone playing the build who has just levelled up: the level
  * navigation, then the level card (what to do, in the order the game asks, with the author's
  * note), then the reference (attributes, skills, perks).
  */
@@ -88,7 +89,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
 
   // Tabs: one with nothing in it isn't shown; with only Levels there's no tab row.
   const overview = guide.overview && !isEmptyDoc(guide.overview) ? guide.overview : null;
-  const tabs: BuildTab[] = ["levels", ...(overview ? (["guide"] as const) : []), ...(plan.gear.length ? (["gear"] as const) : [])];
+  const tabs: BuildTab[] = ["levels", ...(overview ? (["guide"] as const) : [])];
   const [tabState, setTabState] = useState<BuildTab>(initialTab);
   const tab = tabs.includes(tabState) ? tabState : "levels";
   const setUrl = (key: string, value: string | null) => {
@@ -147,13 +148,12 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
 
   // The intro, else the guide's first paragraph, else nothing.
   const intro = guide.intro && !isEmptyDoc(guide.intro) ? guide.intro : firstParagraph(overview);
-  const TAB_NAMES: Record<BuildTab, string> = { levels: "Levels", guide: "Guide", gear: "Gear" };
+  const TAB_NAMES: Record<BuildTab, string> = { levels: "Levels", guide: "Guide" };
   // Each tab's second line: what's in it.
   const minutes = overview ? Math.max(1, Math.ceil(docWords(overview) / 200)) : 0;
   const TAB_SUB: Record<BuildTab, string> = {
     levels: `Levels 1 to ${total}`,
     guide: `${minutes} min read`,
-    gear: `${plan.gear.length} item${plan.gear.length === 1 ? "" : "s"}`,
   };
 
   const [picked, setPicked] = useState<Picked>(null);
@@ -288,42 +288,30 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
               <GuideSection buildId={build.id} doc={overview} full />
             </div>
           )}
-          {tab === "gear" && (
-            <div id="panel-gear" role="tabpanel" aria-labelledby="tab-gear">
-              <GearTable gear={plan.gear} />
-            </div>
-          )}
         </div>
       </main>
     </GuideFactsProvider>
   );
 }
 
-function GearTable({ gear }: { gear: BuildViewData["plan"]["gear"] }) {
+/** What each slot holds at this level, after Skills; items set at this level in ember. */
+function GearAt({ plan, level }: { plan: BuildViewData["plan"]; level: number }) {
+  const held = gearAt(plan, level);
   return (
-    <section aria-label="Gear" className={styles.gear}>
-      <div className={styles.scroller}>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Slot</th>
-              <th>Item</th>
-              <th>From level</th>
-              <th>Note</th>
-            </tr>
-          </thead>
-          <tbody>
-            {gear.map((g, i) => (
-              <tr key={i}>
-                <td className="muted">{g.slot}</td>
-                <td>{g.name}</td>
-                <td className="num">{g.fromLevel}</td>
-                <td className="soft">{g.note}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <section aria-label={`Gear at level ${level}`} className={styles.gearAt}>
+      <span className="label">Gear at level {level}</span>
+      {held.length ? (
+        <dl className={styles.gearList}>
+          {held.map((g, i) => (
+            <div key={i} className={styles.gearRow}>
+              <dt>{g.slot}</dt>
+              <dd className={g.since === level ? styles.gearNow : undefined}>{g.name}</dd>
+            </div>
+          ))}
+        </dl>
+      ) : (
+        <p className="muted">Nothing yet.</p>
+      )}
     </section>
   );
 }
@@ -401,6 +389,7 @@ function LevelsTab({
       <div className={styles.reference}>
         <AttributesAt s={s} level={level} />
         <SkillsAt d={d} plan={plan} s={s} level={level} />
+        {plan.gear.length > 0 && <GearAt plan={plan} level={level} />}
       </div>
 
       <section ref={perksRef} id="perks" data-tree-anchor="" aria-label={`Perks at level ${level}`} className={styles.perksSection}>
@@ -712,7 +701,7 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
             f.stone.name === "none" ? "No stone" : <IconLabel icon={<SignIcon name={f.stone.name} />}>The {f.stone.name}</IconLabel>,
             styles.sumWide,
           )}
-        {at < 2 && f.gear.map((g, i) => chip(`gear-${i}`, `${g.slot ? `${g.slot}: ` : ""}${g.name}`, g.name, styles.sumWide))}
+        {at < 2 && f.gear.map((g, i) => chip(`gear-${i}`, gearChangeText(g), g.name.trim() || gearChangeText(g), styles.sumWide))}
         {noted && chip("note", "The author left a note for this level", <i className={styles.sumNote} aria-label="Note" />, styles.sumWide)}
       </>
     );
@@ -772,7 +761,7 @@ function levelFacts(d: GameData, plan: BuildViewData["plan"], states: LevelState
     perks: changes.perks,
     destiny: changes.destiny,
     stone,
-    gear: plan.gear.filter((g) => g.fromLevel === level && g.name.trim()),
+    gear: gearChanges(plan, level),
     banked: changes.banked,
   };
 }
@@ -872,6 +861,19 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       </span>,
     ]);
   }
+  // Gear, when something changes: "Steel spear (Main hand)", "Off hand emptied".
+  if (facts.gear.length)
+    rows.push([
+      "Gear",
+      <span key="g" className={styles.stack}>
+        {facts.gear.map((g, i) => (
+          <span key={i}>
+            {gearChangeText(g)}
+            {g.note && <span className="muted"> {g.note}</span>}
+          </span>
+        ))}
+      </span>,
+    ]);
   if (changes.banked > 0) rows.push(["Banked", `${changes.banked} skill point${changes.banked === 1 ? "" : "s"}`]);
 
   return (

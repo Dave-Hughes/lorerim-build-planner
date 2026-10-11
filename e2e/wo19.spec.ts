@@ -52,7 +52,7 @@ test("without an intro the guide's first paragraph shows; without a guide there'
   await page.goto(`/b/${LONG_BUILD_ID}`);
   await expect(page.getByRole("region", { name: "Intro" })).toHaveCount(0);
   await expect(page.getByRole("tab", { name: "Guide" })).toHaveCount(0);
-  await expect(page.getByRole("tab", { name: "Gear" })).toBeVisible();
+  await expect(page.getByRole("tablist", { name: "Build sections" })).toHaveCount(0);
 });
 
 test("an intro written on the Guide page leads the shared page", async ({ page, context }) => {

@@ -61,11 +61,9 @@ test("a trait's choice shows on the shared page", async ({ page, context }) => {
   await expect(page.getByRole("region", { name: "Character", exact: true })).toContainText("Focused Combat: Two-Handed");
 });
 
-test("the Guide and Gear pages open straight on their content", async ({ page, context }) => {
+test("the Guide page opens straight on its content", async ({ page, context }) => {
   await signIn(context);
-  for (const [path, heading] of [["guide", "Guide"], ["gear", "Gear"]]) {
-    await page.goto(`/b/${SCRATCH_BUILD_ID}/${path}`);
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText(heading);
-    await expect(page.getByText(/how to play this build|wears and wields/)).toHaveCount(0);
-  }
+  await page.goto(`/b/${SCRATCH_BUILD_ID}/guide`);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Guide");
+  await expect(page.getByText(/how to play this build/)).toHaveCount(0);
 });

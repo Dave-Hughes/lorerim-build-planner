@@ -1,6 +1,7 @@
 import "server-only";
 import { and, desc, eq, sql } from "drizzle-orm";
 import { db, schema } from "@/db";
+import { withGearSlots } from "@/lib/rules/convert";
 import type { BuildPlan } from "@/lib/rules/types";
 import { SAMPLE_BUILD_ID, isValidBuildId } from "./ids";
 import { sampleBuild } from "./sample";
@@ -74,7 +75,7 @@ export async function getBuild(id: string, viewerId: string | null): Promise<Bui
   if (row.build.visibility === "private" && row.build.ownerId !== viewerId) return null;
   return {
     ...row.build,
-    plan: row.build.plan as BuildPlan,
+    plan: withGearSlots(row.build.plan as BuildPlan),
     author: { name: row.authorName ?? "Unknown", image: row.authorImage ?? null, handle: row.authorHandle ?? null },
     tags: row.tags ?? [],
     likeCount: row.build.likeCount,

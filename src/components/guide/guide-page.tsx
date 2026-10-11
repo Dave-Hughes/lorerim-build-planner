@@ -43,9 +43,6 @@ export function GuidePage({ buildId, name, plan, initial, intro }: { buildId: st
             <Link href={`/b/${buildId}/edit`} className="btn btn-sm">
               Levels
             </Link>
-            <Link href={`/b/${buildId}/gear`} className="btn btn-sm">
-              Gear
-            </Link>
             <Link href={`/b/${buildId}`} className="btn btn-sm">
               See it as a visitor
             </Link>

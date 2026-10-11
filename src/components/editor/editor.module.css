@@ -569,50 +569,83 @@
   gap: 10px;
 }
 
-/* ---------- Gear and notes ---------- */
-.gearPage {
-  padding-top: 32px;
-  padding-bottom: 96px;
+/* ---------- Gear at this level ---------- */
+.gearBlock {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 10px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
 }
-.gearTitle {
-  font-size: calc(clamp(36px, 6vw, 56px) * var(--title-scale));
-  letter-spacing: 0.04em;
-  line-height: 0.95;
-}
-.gearNotes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
-}
-.gear {
-  flex: 3 1 520px;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.gearRows {
+.gearList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-.gearRow {
+.gearItem {
   display: grid;
-  grid-template-columns: minmax(90px, 1fr) minmax(120px, 2fr) 92px minmax(120px, 2fr) 36px;
-  gap: 6px;
+  grid-template-columns: 7.5em minmax(0, 1fr) auto;
   align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 6px 8px 6px 12px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  font-size: 14px;
 }
-.gearHead {
+/* Set at this level: an ember edge and an ember name. */
+.gearItemHere {
+  border-left: 3px solid var(--ember);
+  padding-left: 10px;
+}
+.gearSlot {
   font-size: 13px;
   color: var(--muted);
-  padding: 0 12px;
 }
-.gearRow .input {
+.gearWhat {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  min-width: 0;
+}
+.gearCarried {
+  color: #8e9bab;
+}
+.gearSet {
+  color: var(--ember);
+  font-weight: 600;
+}
+.gearNote {
+  font-size: 13px;
+  color: var(--muted);
+}
+.gearActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+.gearForm {
+  display: grid;
+  grid-template-columns: 7.5em minmax(0, 2fr) minmax(0, 2fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--rule-strong);
+  background: var(--panel);
+}
+.gearForm .input,
+.gearForm .select {
+  width: 100%;
   min-height: 40px;
-  padding: 8px 10px;
+}
+.gearFormActions {
+  display: flex;
+  gap: 6px;
 }
 
 @media (max-width: 720px) {
@@ -625,11 +658,14 @@
   .next {
     display: none;
   }
-  .gearRow {
-    grid-template-columns: 1fr 1fr;
+  .gearItem {
+    grid-template-columns: minmax(0, 1fr) auto;
   }
-  .gearHead {
-    display: none;
+  .gearItem .gearSlot {
+    grid-column: 1 / -1;
+  }
+  .gearForm {
+    grid-template-columns: minmax(0, 1fr);
   }
   .panel {
     border-left: 0;
