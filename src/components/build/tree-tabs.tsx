@@ -6,6 +6,7 @@ import { heldCount } from "@/lib/rules/tree-states";
 import type { LevelState } from "@/lib/rules/types";
 import { SkillIcon } from "@/components/ui/skill-icon";
 import { ViewToggle, type TreeView } from "./tree";
+import { Tooltip } from "@/components/ui/tooltip";
 import styles from "./tree-tabs.module.css";
 
 export function TreeTabs({
@@ -33,6 +34,11 @@ export function TreeTabs({
     const left = tab.offsetLeft - el.offsetLeft;
     if (left < el.scrollLeft || left + tab.offsetWidth > el.scrollLeft + el.clientWidth) el.scrollTo({ left: left - (el.clientWidth - tab.offsetWidth) / 2 });
   }, [active]);
+  // The chip's tooltip: "Two-Handed 27, 3 perks", "Destiny, 2 left".
+  const tipFor = (tree: string, head: string) => {
+    const n = heldCount(d, tree, state);
+    return n ? `${head}, ${n} perk${n === 1 ? "" : "s"}` : head;
+  };
   const tabLabel = (tree: string, value: string) => {
     const n = heldCount(d, tree, state);
     return `${tree} ${value}${n ? `, ${n} held` : ""}`;
@@ -66,21 +72,17 @@ export function TreeTabs({
       <div ref={row} role="tablist" aria-label="Perk trees" className={styles.tabs}>
         {/* On short laptop windows the tabs are chips (icon and value): the name is in the tooltip and label. */}
         {d.skills.map((s) => (
-          <button key={s} role="tab" type="button" aria-selected={active === s} aria-label={tabLabel(s, `${state.skills[s]}`)} title={s} className={styles.tab} onClick={() => onChange(s)}>
-            {icon(s)} <span className={styles.name}>{s}</span> {held(s)} <span className={styles.val}>{state.skills[s]}</span>
-          </button>
+          <Tooltip key={s} content={tipFor(s, `${s} ${state.skills[s]}`)}>
+            <button role="tab" type="button" aria-selected={active === s} aria-label={tabLabel(s, `${state.skills[s]}`)} className={styles.tab} onClick={() => onChange(s)}>
+              {icon(s)} <span className={styles.name}>{s}</span> {held(s)} <span className={styles.val}>{state.skills[s]}</span>
+            </button>
+          </Tooltip>
         ))}
-        <button
-          role="tab"
-          type="button"
-          aria-selected={active === "Destiny"}
-          aria-label={tabLabel("Destiny", `${destinyLeft} left`)}
-          title="Destiny"
-          className={styles.tab}
-          onClick={() => onChange("Destiny")}
-        >
-          {icon("Destiny")} <span className={styles.name}>Destiny</span> {held("Destiny")} <span className={styles.val}>{destinyLeft} <span className={styles.name}>left</span></span>
-        </button>
+        <Tooltip content={tipFor("Destiny", `Destiny, ${destinyLeft} left`)}>
+          <button role="tab" type="button" aria-selected={active === "Destiny"} aria-label={tabLabel("Destiny", `${destinyLeft} left`)} className={styles.tab} onClick={() => onChange("Destiny")}>
+            {icon("Destiny")} <span className={styles.name}>Destiny</span> {held("Destiny")} <span className={styles.val}>{destinyLeft} <span className={styles.name}>left</span></span>
+          </button>
+        </Tooltip>
       </div>
       {view && onView && <ViewToggle view={view} onView={onView} className={styles.toggle} />}
     </div>

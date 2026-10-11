@@ -19,8 +19,21 @@
   color: var(--muted);
   text-decoration: none;
 }
+.nav a {
+  transition: color 120ms;
+}
 .nav a:hover {
-  color: var(--text);
+  color: var(--ember);
+}
+.nav a:focus-visible {
+  color: var(--ember);
+  outline: 2px solid var(--brass);
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav a {
+    transition: none;
+  }
 }
 .account {
   display: flex;

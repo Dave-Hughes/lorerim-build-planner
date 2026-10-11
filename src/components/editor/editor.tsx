@@ -5,7 +5,8 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { FocusHeader } from "@/components/ui/focus-header";
 import { InfoTip } from "@/components/ui/info-tip";
-import { LevelRow, LevelRuler, WINDOW, useHoldInPlace } from "@/components/build/level-nav";
+import { Tooltip } from "@/components/ui/tooltip";
+import { LevelBars, useHoldInPlace } from "@/components/build/level-nav";
 import { Tree, type TreeView } from "@/components/build/tree";
 import { TreeTabs } from "@/components/build/tree-tabs";
 import { useGameData } from "@/components/game-data";
@@ -143,6 +144,9 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
     Math.min(d.rules.trainerSessionsPerLevel - lv.extras.filter((x) => x.kind === "trainer").length, d.rules.trainerSessionsPerLevel * level - s.trainerSessionsUsed),
   );
   const prevStone = level > 1 ? states[level - 2].stone : "";
+  // The rules the planner applies (the engine's own numbers), for the labels' tooltips.
+  const trainerRule = `+1 to a skill. ${d.rules.trainerSessionsPerLevel} sessions a level; unused ones carry over to later levels. A trainer can't raise a skill past the level's max skill.`;
+  const bookRule = `+1 to a skill (+2 with the Skilled trait), never past the level's max skill.`;
 
   const summary = (() => {
     if (s.issues.length) return null;
@@ -229,8 +233,7 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
           </dl>
           {total > 1 && (
             <div className={styles.levelRow}>
-              {total > WINDOW && <LevelRuler marks={marks} level={level} onChange={(n) => setLevel(n)} />}
-              <LevelRow marks={marks} level={level} onChange={(n) => setLevel(n)} />
+              <LevelBars marks={marks} level={level} onChange={(n) => setLevel(n)} />
             </div>
           )}
           {problems.length > 0 && (
@@ -325,15 +328,17 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
                         </span>
                         {level > 1 ? (
                           <>
-                            <span className={styles.stepper}>
-                              <button type="button" aria-label={`Lower ${sk}`} disabled={!info.canRemove} onClick={() => setPlan(ops.addSkillPoint(plan, level, sk, -1))}>
-                                −
-                              </button>
-                              <span className={info.added ? styles.stepOn : styles.stepOff}>{info.added ? `+${info.added}` : "0"}</span>
-                              <button type="button" aria-label={`Raise ${sk}`} disabled={!info.canAdd} onClick={() => setPlan(ops.addSkillPoint(plan, level, sk, 1))}>
-                                +
-                              </button>
-                            </span>
+                            <Tooltip content={info.atMax ? `${sk} is at the max skill for this level.` : info.atFive ? "+5 reached: the most one skill can rise in a level-up." : `${info.nextCost} skill point${info.nextCost === 1 ? "" : "s"} for the next +1.`}>
+                              <span className={styles.stepper}>
+                                <button type="button" aria-label={`Lower ${sk}`} disabled={!info.canRemove} onClick={() => setPlan(ops.addSkillPoint(plan, level, sk, -1))}>
+                                  −
+                                </button>
+                                <span className={info.added ? styles.stepOn : styles.stepOff}>{info.added ? `+${info.added}` : "0"}</span>
+                                <button type="button" aria-label={`Raise ${sk}`} disabled={!info.canAdd} onClick={() => setPlan(ops.addSkillPoint(plan, level, sk, 1))}>
+                                  +
+                                </button>
+                              </span>
+                            </Tooltip>
                             <span className={styles.next}>
                               {info.atMax ? "at max" : info.atFive ? "+5 reached" : `${info.nextCost} pt${info.nextCost === 1 ? "" : "s"} next`}
                             </span>
@@ -406,7 +411,11 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
               const what = kind === "trainer" ? "Trainer session" : "Skill book";
               return (
                 <div key={kind} role="group" aria-label={what} className={styles.extraForm}>
-                  <span className={styles.extraKind}>{what}</span>
+                  <Tooltip content={kind === "trainer" ? trainerRule : bookRule}>
+                    <span className={`${styles.extraKind} ${styles.ruleTip}`} tabIndex={0}>
+                      {what}
+                    </span>
+                  </Tooltip>
                   <select className="select" aria-label={`${what} skill`} value={extraSkill[kind]} onChange={(e) => setExtraSkill((x) => ({ ...x, [kind]: e.target.value }))}>
                     {d.skills.map((sk) => (
                       <option key={sk} value={sk}>
@@ -422,7 +431,11 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
             })}
           </div>
           <label className={`field ${styles.alsoCol}`}>
-            <span className="label">Standing stone</span>
+            <Tooltip content="One stone at a time: choosing a new one replaces the old. Its bonus counts from that level on.">
+              <span className={`label ${styles.ruleTip}`} tabIndex={0}>
+                Standing stone
+              </span>
+            </Tooltip>
             <span className={styles.stoneRow}>
               {/* A native select can't show images: the stone in effect at this level sits beside it. */}
               <span className={styles.stoneIcon}>{s.stone ? <SignIcon name={s.stone} /> : null}</span>

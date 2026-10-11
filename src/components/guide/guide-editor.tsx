@@ -1,7 +1,6 @@
 "use client";
 
 import { EditorContent, useEditor, type Editor } from "@tiptap/react";
-import { BubbleMenu } from "@tiptap/react/menus";
 import { TextSelection } from "@tiptap/pm/state";
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import { LINK_ERROR, isSafeHref, isYoutubeUrl, type GuideDoc } from "@/lib/guide/doc";
@@ -10,6 +9,7 @@ import { useGameData } from "@/components/game-data";
 import { searchMentions, type MentionInfo } from "@/lib/guide/mention";
 import { MentionChipIcon } from "./mention-chip";
 import { unsavedGuide, useGuideAutosave, type GuideSaveStatus } from "./use-guide-autosave";
+import { Tooltip } from "@/components/ui/tooltip";
 import { insertImages } from "./image-upload";
 import prose from "./prose.module.css";
 import styles from "./guide-editor.module.css";
@@ -31,11 +31,6 @@ export interface GuideEditorProps {
 
 type Rect = { left: number; top: number; bottom: number };
 
-// BubbleMenu re-sends its options to the editor whenever these props change identity,
-// and every such update re-renders this component: they must be stable.
-// Below the selection, so it never covers the field's label above the first line.
-const BUBBLE_OPTIONS = { placement: "bottom", offset: 8, flip: true, shift: { padding: 8 } } as const;
-const BUBBLE_KEY = "guideBubbleMenu";
 
 const MENU_WIDTH = 320;
 /** A floating menu's left edge: at the caret, but kept inside the screen. */
@@ -79,29 +74,124 @@ function useKeyboardInset(active: boolean): number {
   return inset;
 }
 
-function Toolbar({ editor, levels, onLink }: { editor: Editor; levels: (2 | 3)[]; onLink: () => void }) {
-  const b = (label: string, active: boolean, run: () => void) => (
-    <button
-      key={label}
-      type="button"
-      className={styles.tool}
-      aria-pressed={active}
-      // Keep the selection: act on mousedown without taking focus from the editor.
-      onMouseDown={(e) => e.preventDefault()}
-      onClick={run}
-    >
-      {label}
-    </button>
+/** Small line icons for the toolbar, drawn on a 16px grid in the text colour. */
+const ICONS: Record<string, React.ReactNode> = {
+  Heading: <path d="M3 3v10M11 3v10M3 8h8" />,
+  Bold: <path d="M4 3h5a2.5 2.5 0 0 1 0 5H4zM4 8h6a2.5 2.5 0 0 1 0 5H4z" />,
+  Italic: <path d="M7 3h6M3 13h6M10 3 6 13" />,
+  "Bulleted list": (
+    <>
+      <path d="M6 4h8M6 8h8M6 12h8" />
+      <circle cx="2.5" cy="4" r="1" fill="currentColor" stroke="none" />
+      <circle cx="2.5" cy="8" r="1" fill="currentColor" stroke="none" />
+      <circle cx="2.5" cy="12" r="1" fill="currentColor" stroke="none" />
+    </>
+  ),
+  "Numbered list": <path d="M6 4h8M6 8h8M6 12h8M2 3h1v3M1.5 6h2M1.5 10.5c.5-1 2-1 2 0s-2 1.5-2 2.5h2" />,
+  Quote: <path d="M3 4v8M6 5h7M6 8h7M6 11h5" />,
+  Divider: <path d="M1 8h14M4 4h8M4 12h8" strokeDasharray="0" />,
+  Link: <path d="M7 9a3 3 0 0 0 4.2 0l2-2a3 3 0 0 0-4.2-4.2l-.8.8M9 7a3 3 0 0 0-4.2 0l-2 2a3 3 0 0 0 4.2 4.2l.8-.8" />,
+  Image: (
+    <>
+      <rect x="1.5" y="2.5" width="13" height="11" />
+      <path d="m2 12 4-4 3 3 2-2 3 3" />
+      <circle cx="11" cy="5.5" r="1" />
+    </>
+  ),
+};
+
+function ToolIcon({ name }: { name: string }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {ICONS[name]}
+    </svg>
   );
+}
+
+/** "Bold  ⌘B" on a Mac, "Bold  Ctrl+B" elsewhere. */
+function shortcut(keys: string): string {
+  const mac = typeof navigator !== "undefined" && /Mac|iPhone|iPad/.test(navigator.platform);
+  return mac ? keys.replace("Mod+Shift+", "⌘⇧").replace("Mod+Alt+", "⌘⌥").replace("Mod+", "⌘") : keys.replace("Mod+", "Ctrl+");
+}
+
+type Tool = { name: string; keys?: string; on: boolean; run: () => void };
+
+/**
+ * The formatting toolbar, always visible at the top of the field (sticky in a long guide). Level
+ * notes get the short set; the guide gets the full set and More for the rarer blocks.
+ */
+function Toolbar({ editor, full, levels, onLink, onImage, onYoutube }: { editor: Editor; full: boolean; levels: (2 | 3)[]; onLink: () => void; onImage: () => void; onYoutube: () => void }) {
+  const [more, setMore] = useState(false);
+  const c = () => editor.chain().focus();
+  const level = levels[0] ?? 2;
+  const tools: Tool[] = full
+    ? [
+        { name: "Heading", keys: `Mod+Alt+${level}`, on: editor.isActive("heading"), run: () => c().toggleHeading({ level }).run() },
+        { name: "Bold", keys: "Mod+B", on: editor.isActive("bold"), run: () => c().toggleBold().run() },
+        { name: "Italic", keys: "Mod+I", on: editor.isActive("italic"), run: () => c().toggleItalic().run() },
+        { name: "Bulleted list", keys: "Mod+Shift+8", on: editor.isActive("bulletList"), run: () => c().toggleBulletList().run() },
+        { name: "Numbered list", keys: "Mod+Shift+7", on: editor.isActive("orderedList"), run: () => c().toggleOrderedList().run() },
+        { name: "Quote", keys: "Mod+Shift+B", on: editor.isActive("blockquote"), run: () => c().toggleBlockquote().run() },
+        { name: "Divider", on: false, run: () => c().setHorizontalRule().run() },
+        { name: "Link", on: editor.isActive("link"), run: onLink },
+        { name: "Image", on: false, run: onImage },
+      ]
+    : [
+        { name: "Bold", keys: "Mod+B", on: editor.isActive("bold"), run: () => c().toggleBold().run() },
+        { name: "Italic", keys: "Mod+I", on: editor.isActive("italic"), run: () => c().toggleItalic().run() },
+        { name: "Bulleted list", keys: "Mod+Shift+8", on: editor.isActive("bulletList"), run: () => c().toggleBulletList().run() },
+        { name: "Divider", on: false, run: () => c().setHorizontalRule().run() },
+        { name: "Link", on: editor.isActive("link"), run: onLink },
+      ];
+  const moreItems: { name: string; on: boolean; run: () => void }[] = [
+    { name: "Tip", on: editor.isActive("tip"), run: () => c().wrapIn("tip").run() },
+    { name: "Warning", on: editor.isActive("warning"), run: () => c().wrapIn("warning").run() },
+    { name: "Spoiler", on: editor.isActive("spoiler"), run: () => c().wrapIn("spoiler").run() },
+    { name: "YouTube video", on: false, run: onYoutube },
+  ];
   return (
     <div role="toolbar" aria-label="Format" className={styles.toolbar}>
-      {b("Bold", editor.isActive("bold"), () => editor.chain().focus().toggleBold().run())}
-      {b("Italic", editor.isActive("italic"), () => editor.chain().focus().toggleItalic().run())}
-      {b("Strike", editor.isActive("strike"), () => editor.chain().focus().toggleStrike().run())}
-      {b("Link", editor.isActive("link"), onLink)}
-      {levels.includes(2) && b("Heading 2", editor.isActive("heading", { level: 2 }), () => editor.chain().focus().toggleHeading({ level: 2 }).run())}
-      {levels.includes(3) && b("Heading 3", editor.isActive("heading", { level: 3 }), () => editor.chain().focus().toggleHeading({ level: 3 }).run())}
-      {b("Quote", editor.isActive("blockquote"), () => editor.chain().focus().toggleBlockquote().run())}
+      {tools.map((t) => (
+        <Tooltip key={t.name} content={t.keys ? `${t.name}  ${shortcut(t.keys)}` : t.name}>
+          <button
+            type="button"
+            className={styles.tool}
+            aria-label={t.name}
+            aria-pressed={t.on}
+            // Keep the selection: act on mousedown without taking focus from the editor.
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={t.run}
+          >
+            <ToolIcon name={t.name} />
+          </button>
+        </Tooltip>
+      ))}
+      {full && (
+        <span className={styles.moreWrap}>
+          <button type="button" className={`${styles.tool} ${styles.toolText}`} aria-haspopup="menu" aria-expanded={more} onMouseDown={(e) => e.preventDefault()} onClick={() => setMore((m) => !m)}>
+            More
+          </button>
+          {more && (
+            <span role="menu" aria-label="More blocks" className={styles.moreMenu}>
+              {moreItems.map((m) => (
+                <button
+                  key={m.name}
+                  type="button"
+                  role="menuitem"
+                  className={styles.moreItem}
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={() => {
+                    setMore(false);
+                    m.run();
+                  }}
+                >
+                  {m.name}
+                </button>
+              ))}
+            </span>
+          )}
+        </span>
+      )}
     </div>
   );
 }
@@ -454,29 +544,29 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
     return () => void editor.off("selectionUpdate", off);
   }, [editor]);
 
-  // Stable between renders (see BUBBLE_OPTIONS); changes only when the link form opens or closes.
-  const shouldShow = useCallback(
-    // Only while the editor has focus (the link form's own field counts), so it goes away on blur.
-    ({ editor: e, state }: { editor: Editor; state: Editor["state"] }) =>
-      e.isEditable && (linking ? e.isActive("link") || !state.selection.empty : e.view.hasFocus() && !state.selection.empty),
-    [linking],
-  );
-
   if (!editor) return <div className={`${prose.prose} ${styles.content} ${compact ? styles.compact : ""}`} aria-busy="true" />;
 
   const openLink = () => setLinking(true);
+  const toolbar = (
+    <Toolbar
+      editor={editor}
+      full={!compact}
+      levels={headingLevels}
+      onLink={openLink}
+      onImage={() => filePicker?.click()}
+      onYoutube={() => {
+        const c = editor.view.coordsAtPos(editor.state.selection.from);
+        setYoutube({ left: c.left, top: c.top, bottom: c.bottom });
+      }}
+    />
+  );
   return (
     <div className={styles.wrap}>
       {!coarse && (
-        <BubbleMenu
-          editor={editor}
-          pluginKey={BUBBLE_KEY}
-          shouldShow={shouldShow}
-          options={BUBBLE_OPTIONS}
-          className={styles.bubble}
-        >
-          {linking ? <LinkForm editor={editor} onDone={() => setLinking(false)} /> : <Toolbar editor={editor} levels={headingLevels} onLink={openLink} />}
-        </BubbleMenu>
+        <div className={styles.toolbarBar}>
+          {toolbar}
+          {linking && <LinkForm editor={editor} onDone={() => setLinking(false)} />}
+        </div>
       )}
       <EditorContent editor={editor} />
       {slash && <Menu state={slash} id={menuId} label="Blocks" onPick={(i) => slash.command(slash.items[i])} render={(item) => item.title} />}
@@ -512,7 +602,7 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
       {coarse && focused && (
         // On touch devices the toolbar sits above the keyboard, not over the selection.
         <div className={styles.touchBar} style={{ bottom: inset }}>
-          {linking ? <LinkForm editor={editor} onDone={() => setLinking(false)} /> : <Toolbar editor={editor} levels={headingLevels} onLink={openLink} />}
+          {linking ? <LinkForm editor={editor} onDone={() => setLinking(false)} /> : toolbar}
         </div>
       )}
     </div>

@@ -18,7 +18,7 @@ import { computeBuild } from "@/lib/rules/engine";
 import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
 import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel } from "@/components/ui/skill-icon";
-import { LevelLegend, LevelRow, LevelRuler, LevelStepper, WINDOW, useHoldInPlace } from "./level-nav";
+import { LevelBars, LevelLegend, LevelStepper, useHoldInPlace } from "./level-nav";
 import { Tree, type TreeView } from "./tree";
 import { TreeTabs } from "./tree-tabs";
 import styles from "./build-view.module.css";
@@ -120,8 +120,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
               <LevelStepper level={level} total={total} onChange={setLevel} />
               <LevelLegend />
             </div>
-            {total > WINDOW && <LevelRuler marks={marks} level={level} onChange={setLevel} />}
-            <LevelRow marks={marks} level={level} onChange={setLevel} />
+            <LevelBars marks={marks} level={level} onChange={setLevel} />
           </section>
 
           <div className={styles.columns}>

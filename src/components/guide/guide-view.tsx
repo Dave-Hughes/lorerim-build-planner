@@ -105,6 +105,7 @@ function draw(n: GuideNode, key: string, headingIds: Map<number, string>, index?
       );
     case "youtube": {
       const src = typeof n.attrs?.src === "string" ? youtubeEmbed(n.attrs.src, n.attrs.start) : null;
+      // The frame's accessible name (required for iframes), not a tooltip.
       return src ? <iframe key={key} src={src} title="YouTube video" loading="lazy" allow="encrypted-media; picture-in-picture" allowFullScreen /> : null;
     }
     case "image": {

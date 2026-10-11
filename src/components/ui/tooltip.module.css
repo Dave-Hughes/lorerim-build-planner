@@ -1,0 +1,24 @@
+/* Opaque, above everything, never in the way of the pointer. */
+.tip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  max-width: min(320px, calc(100vw - 16px));
+  padding: 6px 10px;
+  background: var(--panel-raised);
+  border: 1px solid var(--rule-strong);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.35;
+  text-transform: none;
+  white-space: pre-line;
+  pointer-events: none;
+}
+.tip[hidden] {
+  display: none;
+}

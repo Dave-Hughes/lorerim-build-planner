@@ -18,6 +18,8 @@ config({ path: ".env.local", quiet: true });
 export const TEST_USER_ID = "e2e-user-0001";
 export const TEST_USER_NAME = "Test Author";
 export const TEST_USER_HANDLE = "e2e-test-author";
+/** A 20-level build, for the level ruler. */
+export const LONG_BUILD_ID = "e2eqq2e2e8";
 /** The test author's link-only build: never on their public page. */
 export const LINK_ONLY_BUILD_ID = "e2eqq2e2e7";
 export const TEST_SESSION_TOKEN = "e2e-session-token-0001";
@@ -73,6 +75,21 @@ export async function seed() {
         visibility: "private",
         gameVersion: "5.0.4.8",
         plan: samplePlan(),
+      },
+      {
+        id: LONG_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        name: "Long Shield-Wall",
+        description: "Twenty levels.",
+        visibility: "unlisted",
+        gameVersion: "5.0.4.8",
+        plan: {
+          ...samplePlan(),
+          levels: [
+            ...samplePlan().levels,
+            ...Array.from({ length: 14 }, () => ({ attribute: "health" as const, skillPoints: {}, perks: [], destiny: [], extras: [], note: "" })),
+          ],
+        },
       },
       {
         id: LINK_ONLY_BUILD_ID,

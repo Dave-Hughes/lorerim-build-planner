@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { Tooltip } from "@/components/ui/tooltip";
 import { useGameData } from "@/components/game-data";
 import { perkText, type GameData, type Perk } from "@/lib/rules/data";
 import { perkRequirementText, perkStatus, type PerkStatus } from "@/lib/rules/derive";
@@ -505,9 +506,11 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
                           {tag}
                         </button>
                       ) : (
-                        <span className={cls} style={style} aria-label={aria} role="img" tabIndex={0} title={title || undefined} onClick={() => setLocalSelected(n.id)}>
-                          {tag}
-                        </span>
+                        <Tooltip content={title || nameLine(p, st)}>
+                          <span className={cls} style={style} aria-label={aria} role="img" tabIndex={0} onClick={() => setLocalSelected(n.id)}>
+                            {tag}
+                          </span>
+                        </Tooltip>
                       )}
                       {label && (
                         <span

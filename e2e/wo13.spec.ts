@@ -94,8 +94,8 @@ test.describe("breaking an earlier level", () => {
     await expect(bar).toContainText(`Level ${last}: Pick Health, Magicka or Stamina.`);
     await bar.getByRole("button", { name: `Go to level ${last}` }).click();
     await expect(page.getByText("Level up to").locator("..")).toContainText(String(last));
-    const dot = page.getByRole("button", { name: new RegExp(`^Level ${last}`) }).locator("i[title]");
-    await expect(dot).toHaveAttribute("title", `1 problem at level ${last}`);
+    await page.getByRole("button", { name: new RegExp(`^Level ${last}`) }).hover();
+    await expect(page.getByRole("tooltip")).toHaveText(`1 problem at level ${last}`);
   });
 });
 

@@ -568,12 +568,12 @@ From Dave's testing. Do after WO-16.
    - **Both places:** this applies in the editor and on the shared page, including phones.
 
 ### Done when
-- [ ] e2e: hovering a tree chip shows its tooltip within 50 ms, and focusing it with Tab shows it too.
-- [ ] e2e: in level notes, the toolbar's Bulleted list and Divider buttons produce a list and a rule that are there after a reload.
-- [ ] e2e: dragging the ruler window from level 1 to level 15 brings level 15 into the row.
-- [ ] No `title=` left as a tooltip in `src/components` (`grep -rn ' title=' src/components`; any left gets a comment saying why).
-- [ ] Screenshots for Dave at 1512 × 806: editor with the narrower column and a chip tooltip showing; level notes with the toolbar; the Guide page with the toolbar; the level bars with the connector lines at level 12 of 20; Browse builds with one card hovered. Also the level bars at 390.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: hovering a tree chip shows its tooltip within 50 ms, and focusing it with Tab shows it too.
+- [x] e2e: in level notes, the toolbar's Bulleted list and Divider buttons produce a list and a rule that are there after a reload.
+- [x] e2e: dragging the ruler window from level 1 to level 15 brings level 15 into the row.
+- [x] No `title=` left as a tooltip in `src/components` (`grep -rn ' title=' src/components`; any left gets a comment saying why).
+- [x] Screenshots for Dave at 1512 × 806: editor with the narrower column and a chip tooltip showing; level notes with the toolbar; the Guide page with the toolbar; the level bars with the connector lines at level 12 of 20; Browse builds with one card hovered. Also the level bars at 390.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

@@ -122,15 +122,6 @@
   gap: 16px;
 }
 /* Large screens: attribute and skills a fixed 440px; the perks take the rest. */
-@media (min-width: 1920px) {
-  .columns {
-    flex-wrap: nowrap;
-  }
-  .left {
-    flex: none;
-    width: 440px;
-  }
-}
 .block {
   display: flex;
   flex-direction: column;
@@ -725,5 +716,39 @@
   }
   .levelRow {
     gap: 8px;
+  }
+}
+
+/* A label with a tooltip giving the rule: dotted underline, focusable. */
+.ruleTip {
+  cursor: help;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--rule-strong);
+}
+
+/* (Last in the file, so it wins over the base rules above.) From 1280 wide the skills column is a narrow 300px and the perk trees take the rest; the
+   "pts next" column moves into the + button's tooltip so names keep their room. */
+@media (min-width: 1280px) {
+  .columns {
+    flex-wrap: nowrap;
+  }
+  .left {
+    flex: none;
+    width: 300px;
+    max-width: 300px;
+  }
+  .skillRow {
+    grid-template-columns: minmax(0, 1fr) 72px auto;
+    gap: 6px;
+  }
+  .skillRow .next {
+    display: none;
+  }
+  .stepper > button {
+    width: 28px;
+  }
+  .stepper > span {
+    min-width: 30px;
   }
 }

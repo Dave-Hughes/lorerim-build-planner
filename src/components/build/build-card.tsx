@@ -10,9 +10,10 @@ import styles from "./build-card.module.css";
 export function BuildCard({ build, mine }: { build: BuildSummary; mine?: boolean }) {
   return (
     <article className={styles.card}>
-      <Link href={`/b/${build.id}`} className={`${styles.band} ${build.coverImageUrl ? "" : styles.bandPlain}`} style={build.coverImageUrl ? { backgroundImage: `url("${build.coverImageUrl}")` } : undefined} aria-label={build.name}>
+      {/* The whole card opens the build: the name's link stretches over it (see .name a::after). */}
+      <div className={`${styles.band} ${build.coverImageUrl ? "" : styles.bandPlain}`} style={build.coverImageUrl ? { backgroundImage: `url("${build.coverImageUrl}")` } : undefined} aria-hidden="true">
         <span className={styles.bandFade} />
-      </Link>
+      </div>
       <div className={styles.body}>
         <h2 className={styles.name}>
           <Link href={`/b/${build.id}`}>{build.name}</Link>

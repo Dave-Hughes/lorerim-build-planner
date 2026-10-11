@@ -5,15 +5,26 @@
   gap: 20px;
 }
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: var(--panel);
   border: 1px solid var(--rule);
+  transition: border-color 150ms;
+}
+/* One target: hovering anywhere lifts the border to ember and brightens the cover a little. */
+.card:hover,
+.card:focus-within {
+  border-color: var(--ember);
+}
+.card:hover .band {
+  filter: brightness(1.12);
 }
 .band {
   position: relative;
   display: block;
   height: 150px;
+  transition: filter 150ms;
   background-color: var(--panel-raised);
   background-size: cover;
   background-position: center;
@@ -44,9 +55,34 @@
 .name a {
   color: var(--text);
   text-decoration: none;
+  transition: color 150ms;
 }
-.name a:hover {
+.name a:focus-visible {
+  outline: none;
+}
+.name a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.card:hover .name a,
+.name a:focus-visible {
   color: var(--ember);
+}
+/* Anything else that can be clicked sits above the stretched link. */
+.author,
+.mine a,
+.mine button {
+  position: relative;
+  z-index: 2;
+}
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .band,
+  .name a {
+    transition: none;
+  }
 }
 .description {
   margin: 0;

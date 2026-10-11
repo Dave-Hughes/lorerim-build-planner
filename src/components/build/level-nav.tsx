@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { LevelMark } from "@/lib/rules/derive";
+import { Tooltip } from "@/components/ui/tooltip";
 import styles from "./level-nav.module.css";
 
 export const WINDOW = 12;
@@ -70,22 +71,53 @@ export function LevelRuler({ marks, level, onChange }: { marks: LevelMark[]; lev
   const start = windowStart(level, total);
   const size = Math.min(WINDOW, total);
   const x = (n: number) => `${(((n - 0.5) / total) * 100).toFixed(4)}%`;
-  const pick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const at = (e: React.PointerEvent<HTMLDivElement>) => {
     const r = e.currentTarget.getBoundingClientRect();
-    const n = Math.min(total, Math.max(1, Math.ceil(((e.clientX - r.left) / r.width) * total)));
-    onChange(n);
+    return Math.min(total, Math.max(1, Math.ceil(((e.clientX - r.left) / r.width) * total)));
   };
+  // A click jumps to the level under the pointer; dragging (the window or anywhere on the ruler)
+  // moves the level, and so the row, as the pointer goes.
+  const drag = useRef<{ x: number; moved: boolean; last: number } | null>(null);
   return (
-    <div className={styles.scroller}>
-      <div className={styles.ruler} aria-label={`Whole build, levels 1 to ${total}`} onClick={pick} role="presentation">
-        <div className={styles.window} style={{ left: `${((start - 1) / total) * 100}%`, width: `${(size / total) * 100}%` }} />
+    <div className={styles.rulerWrap}>
+      <div
+        className={styles.ruler}
+        aria-label={`Whole build, levels 1 to ${total}`}
+        role="presentation"
+        onPointerDown={(e) => {
+          e.currentTarget.setPointerCapture?.(e.pointerId);
+          drag.current = { x: e.clientX, moved: false, last: level };
+        }}
+        onPointerMove={(e) => {
+          const d = drag.current;
+          if (!d) return;
+          if (!d.moved && Math.abs(e.clientX - d.x) < 4) return;
+          d.moved = true;
+          const n = at(e);
+          if (n !== d.last) {
+            d.last = n;
+            onChange(n);
+          }
+        }}
+        onPointerUp={(e) => {
+          const d = drag.current;
+          drag.current = null;
+          if (d && !d.moved) onChange(at(e));
+        }}
+        onPointerCancel={() => {
+          drag.current = null;
+        }}
+      >
+        <div data-window="" className={styles.window} style={{ left: `${((start - 1) / total) * 100}%`, width: `${(size / total) * 100}%` }} />
         {marks.map((m) => {
-          const five = m.level % 5 === 0 || m.level === 1;
+          // The ends always say where the build starts and stops; every fifth level between.
+          const five = m.level % 5 === 0 || m.level === 1 || m.level === total;
           const inWindow = m.level >= start && m.level < start + size;
           return (
             <span key={m.level}>
               <span className={`${styles.tick} ${five ? styles.tickFive : ""} ${inWindow ? styles.tickNear : ""}`} style={{ left: x(m.level) }} />
-              {five && (
+              {/* Skip a fifth-level label crowding the last one (e.g. 20 next to 21). */}
+              {five && !(m.level !== total && m.level !== 1 && total - m.level < 3) && (
                 <span className={styles.tickLabel} style={{ left: x(m.level) }}>
                   {m.level}
                 </span>
@@ -135,13 +167,13 @@ export function LevelRow({ marks, level, onChange }: { marks: LevelMark[]; level
   }, [level]);
   return (
     <div className={`${styles.rowWrap} ${edges.start ? styles.moreBefore : ""} ${edges.end ? styles.moreAfter : ""}`}>
-      <div ref={scroller} className={styles.rowScroller}>
+      <div ref={scroller} data-row-frame="" className={styles.rowScroller}>
       <div className={styles.row} style={{ ["--cols" as string]: size }}>
         {shown.map((m) => {
           const on = m.level === level;
           const past = m.level <= level;
           const cls = [styles.cell, on ? styles.cellOn : past ? styles.cellPast : styles.cellFuture].join(" ");
-          return (
+          const cell = (
             <button
               key={m.level}
               type="button"
@@ -159,8 +191,16 @@ export function LevelRow({ marks, level, onChange }: { marks: LevelMark[]; level
                 {m.stone && <i className={styles.cellStone} />}
                 {m.notes && <i className={styles.cellNotes} />}
               </span>
-              {m.problems > 0 && <i className={styles.cellProblem} title={`${m.problems} problem${m.problems === 1 ? "" : "s"} at level ${m.level}`} />}
+              {m.problems > 0 && <i className={styles.cellProblem} />}
             </button>
+          );
+          // A level with problems says how many on hover and focus.
+          return m.problems > 0 ? (
+            <Tooltip key={m.level} content={`${m.problems} problem${m.problems === 1 ? "" : "s"} at level ${m.level}`}>
+              {cell}
+            </Tooltip>
+          ) : (
+            cell
           );
         })}
       </div>
@@ -187,4 +227,64 @@ export function useHoldInPlace<T extends HTMLElement>(level: number) {
     if (Math.abs(moved) > 0.5) window.scrollBy({ top: moved, behavior: "instant" });
   }, [level]);
   return { ref, hold };
+}
+
+/**
+ * The ruler (the whole build) over the row (a close-up of twelve levels), joined by two thin lines
+ * from the window's edges to the row's, like a zoom. The lines are measured from where the window
+ * and row really are, every frame while the window moves (150 ms), and on any resize.
+ */
+export function LevelBars({ marks, level, onChange }: { marks: LevelMark[]; level: number; onChange: (level: number) => void }) {
+  const box = useRef<HTMLDivElement>(null);
+  const left = useRef<SVGLineElement>(null);
+  const right = useRef<SVGLineElement>(null);
+  const ruler = marks.length > WINDOW;
+  useLayoutEffect(() => {
+    const el = box.current;
+    if (!el || !ruler) return;
+    const draw = () => {
+      const win = el.querySelector<HTMLElement>("[data-window]");
+      const row = el.querySelector<HTMLElement>("[data-row-frame]");
+      if (!win || !row || !left.current || !right.current) return;
+      const b = el.getBoundingClientRect();
+      const w = win.getBoundingClientRect();
+      const r = row.getBoundingClientRect();
+      const set = (line: SVGLineElement, x1: number, x2: number) => {
+        line.setAttribute("x1", String(x1 - b.left));
+        line.setAttribute("y1", String(w.bottom - b.top));
+        line.setAttribute("x2", String(x2 - b.left));
+        line.setAttribute("y2", String(r.top - b.top));
+      };
+      set(left.current, w.left, r.left);
+      set(right.current, w.right, r.right);
+    };
+    // Follow the window while it moves, then settle.
+    let frame = 0;
+    const until = performance.now() + 220;
+    const follow = () => {
+      draw();
+      if (performance.now() < until) frame = requestAnimationFrame(follow);
+    };
+    follow();
+    const ro = new ResizeObserver(draw);
+    ro.observe(el);
+    window.addEventListener("resize", draw);
+    return () => {
+      cancelAnimationFrame(frame);
+      ro.disconnect();
+      window.removeEventListener("resize", draw);
+    };
+  }, [level, ruler, marks.length]);
+  return (
+    <div ref={box} className={styles.bars}>
+      {ruler && <LevelRuler marks={marks} level={level} onChange={onChange} />}
+      {ruler && (
+        <svg className={styles.connectors} aria-hidden="true">
+          <line ref={left} />
+          <line ref={right} />
+        </svg>
+      )}
+      <LevelRow marks={marks} level={level} onChange={onChange} />
+    </div>
+  );
 }
