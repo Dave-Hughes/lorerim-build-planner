@@ -522,6 +522,105 @@ Dave's idea: one link that shows all of a player's builds, for a Discord bio or 
 
 ---
 
+## WO-17  Dave's test notes: editor and browse polish (11 Oct 2026)
+
+From Dave's testing. Do after WO-16.
+
+### Tooltips
+1. **One tooltip component, shown at once.** The tree chips use `title` (`tree-tabs.tsx`), which the browser shows after about a second and only on hover. Make a `Tooltip` in `src/components/ui/`:
+   - It shows with no delay on hover and on keyboard focus, and hides on leave, blur and Esc.
+   - It sits above its trigger and flips below when there's no room.
+   - It has an opaque background (as in WO-13 #10) and is linked by `aria-describedby`.
+   - On touch, a tap on the trigger shows it until the next tap elsewhere.
+   - Replace every `title=` used as a tooltip in the editor and on the shared page with it.
+2. **Tree chips:** the tooltip says the tree, the skill level and the perks held, e.g. `Two-Handed 27, 3 perks` or `Destiny, 2 left`. This applies in both the editor and the shared page.
+3. **Trainer session, Skill book, Standing stone:** each label in the editor gets a tooltip giving the rule the planner applies. Take the wording from `src/lib/rules/constants.ts` and the engine, not from memory:
+   - Trainer session: sessions per level, and that unused ones carry over.
+   - Skill book: +1 to the skill, +2 with Skilled.
+   - Standing stone: one at a time, and a new stone replaces the old.
+
+### Editor layout
+4. **Narrower skills column.** The left column (`.left` in `editor.module.css`) is 360 to 440 px wide. Make it 300 px from 1280 px wide and up, so the tree gets the room. Skill rows must still fit on one line with no names cut short (check `Restoration`, `Conjuration` and `Heavy Armor` at their longest values, `100 +5`).
+
+### Rich text you can see
+5. Level notes and the Guide already support bold, italic, lists and dividers, but only through the selection bubble and the `/` menu, so both look like plain text boxes. Replace the bubble with a **toolbar that is always visible** at the top of each field. It stays in view when scrolling a long guide.
+   - **Level notes:** Bold, Italic, Bulleted list, Divider, Link.
+   - **Guide:** Heading, Bold, Italic, Bulleted list, Numbered list, Quote, Divider, Link, Image, then `More` (Tip, Warning, Spoiler, YouTube video).
+   - Buttons are icons with the tooltip from #1, giving the name and shortcut (`Bold  Ctrl+B`, or `⌘B` on a Mac). They show when they're on (bold text selected, cursor in a list).
+   - Keep the `/` menu and the typed shortcuts (`- `, `---`, `**`) as they are.
+   - On phones the toolbar sits above the keyboard, as the bubble does now.
+
+### Browse builds
+6. **Card hover:**
+   - The whole card is one target: hovering anywhere lifts the border to ember and brightens the cover a little.
+   - Clicking anywhere outside the buttons opens the build. Use a stretched link on the name so there are no nested links.
+   - With `prefers-reduced-motion`, there's no transition.
+   - `Edit` and `Delete` on your own cards keep working and don't open the build.
+7. **`New build` button:** it gets the same hover and focus states as the other primary buttons. Check every `btn-primary` while you're there.
+
+### Level bars
+8. The ruler (the whole build) and the row (a window of levels) don't read as connected. Make it plain that the row is a close-up of the ruler:
+   - **The window on the ruler** gets an ember outline, the same as the row's frame.
+   - **Two thin connector lines** run from the window's left and right edges down to the row's left and right edges, like a zoom. Draw them in one SVG that redraws on resize and whenever the window moves.
+   - **The ruler's ends** show `1` and the last level.
+   - **Drag:** you can drag the window along the ruler, and the row follows. Clicking the ruler still jumps.
+   - **When the row moves**, the window on the ruler moves with it in the same 150 ms. With reduced motion it moves instantly.
+   - **Both places:** this applies in the editor and on the shared page, including phones.
+
+### Done when
+- [ ] e2e: hovering a tree chip shows its tooltip within 50 ms, and focusing it with Tab shows it too.
+- [ ] e2e: in level notes, the toolbar's Bulleted list and Divider buttons produce a list and a rule that are there after a reload.
+- [ ] e2e: dragging the ruler window from level 1 to level 15 brings level 15 into the row.
+- [ ] No `title=` left as a tooltip in `src/components` (`grep -rn ' title=' src/components`; any left gets a comment saying why).
+- [ ] Screenshots for Dave at 1512 × 806: editor with the narrower column and a chip tooltip showing; level notes with the toolbar; the Guide page with the toolbar; the level bars with the connector lines at level 12 of 20; Browse builds with one card hovered. Also the level bars at 390.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-18  Tags, search and likes on Browse builds (11 Oct 2026)
+
+From Dave's testing. Do after WO-17. Two migrations through `npm run db:generate`. Both are additive, so no existing data changes.
+
+### Tags
+1. **Set list, not user-made.** Add a `tag` table (`slug`, `name`, `group`, `sort`) seeded by the migration, and a `build_tag` table (`build_id`, `tag_slug`, primary key on both, cascade on build delete). The 20 starting tags, by group:
+   - **Weapons:** One-Handed, Two-Handed, Marksman, Shield
+   - **Armor:** Heavy Armor, Light Armor, Unarmored
+   - **Magic:** Destruction, Conjuration, Necromancy, Illusion, Alteration, Restoration, Spellsword
+   - **Way of play:** Stealth, Thief, Crafter, Shouts, Tank, Beginner-friendly
+2. **Choosing tags:** on the Set up Name step, under the description, show chips grouped as above. Up to 5 per build. The shared page shows them under the meta line, and each one links to Browse builds filtered by it.
+3. **Suggested tags:** pre-select the tags that match the build's majors on first save (One-Handed major gives One-Handed, and so on), shown as suggestions the player can remove. Nothing is ever added without them seeing it.
+
+### Search and filters
+4. **Browse builds** gets one row above the grid:
+   - a search box, matching the name, description, author, race and traits;
+   - `Tags` (multi-select; a build must have all the chosen tags);
+   - `Race`;
+   - the existing version filter;
+   - `Sort`: Newest, Most liked.
+5. **State lives in the URL** (`?q=&tags=necromancy,heavy-armor&race=&sort=liked&version=`), so a filtered list can be shared. Typing updates the results after 300 ms without a full page load. Show 24 builds, then a `Show more` button.
+6. **No results:** `No builds match.`, with a `Clear filters` button.
+7. Only Listed builds appear, as now. Add whatever indexes the queries need, in the migration.
+
+### Likes
+8. **Table:** `build_like` (`user_id`, `build_id`, `created_at`, primary key on both, cascade on build or user delete), and a `like_count` column on `build` that is updated in the same transaction as each like or unlike, so sorting doesn't count rows.
+9. **Liking:**
+   - A `Like` toggle on the shared page next to the author, and the count on each card.
+   - Signed-in players only. A signed-out click opens sign-in and returns to the build.
+   - You can't like your own build: the button doesn't show to the owner, but the count does.
+   - The count changes as soon as you click, and goes back with an error line if the save fails.
+10. **`Most liked`** sorts by `like_count`, then newest.
+
+### Done when
+- [ ] Migrations committed in `drizzle/`, with the 20 tags seeded. Applied to dev and staging.
+- [ ] e2e: tag a build with Necromancy and Heavy Armor; filtering by both finds it; filtering by Necromancy and Marksman doesn't.
+- [ ] e2e: search for part of a build's description finds it; the URL holds the query, and reloading keeps the results.
+- [ ] e2e: like, reload (still liked, count +1), unlike (count back). The owner sees no Like button. A signed-out click goes to sign-in.
+- [ ] Unit test: suggested tags from majors.
+- [ ] Screenshots for Dave at 1512 × 806 and 390: Browse builds with the filter row, filtered by one tag; the Name step's tag chips; the shared page with tags and Like.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
