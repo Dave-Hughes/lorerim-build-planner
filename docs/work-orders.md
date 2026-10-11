@@ -611,7 +611,7 @@ From Dave's testing. Do after WO-17. Two migrations through `npm run db:generate
 10. **`Most liked`** sorts by `like_count`, then newest.
 
 ### Done when
-- [ ] Migrations committed in `drizzle/`, with the 20 tags seeded. Applied to dev and staging.
+- [x] Migrations committed in `drizzle/`, with the 20 tags seeded. Applied to dev and staging.
 - [x] e2e: tag a build with Necromancy and Heavy Armor; filtering by both finds it; filtering by Necromancy and Marksman doesn't.
 - [x] e2e: search for part of a build's description finds it; the URL holds the query, and reloading keeps the results.
 - [x] e2e: like, reload (still liked, count +1), unlike (count back). The owner sees no Like button. A signed-out click goes to sign-in.
