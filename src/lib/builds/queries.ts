@@ -9,27 +9,25 @@ import type { BuildRecord, BuildSummary } from "./types";
 import { isHandle } from "@/lib/users/handles";
 import { assignHandle } from "@/lib/users/assign-handle";
 
+const summaryFields = {
+  id: schema.builds.id,
+  name: schema.builds.name,
+  description: schema.builds.description,
+  coverImageUrl: schema.builds.coverImageUrl,
+  visibility: schema.builds.visibility,
+  gameVersion: schema.builds.gameVersion,
+  race: sql<string>`${schema.builds.plan}->>'race'`,
+  traits: sql<string[]>`${schema.builds.plan}->'traits'`,
+  levels: sql<number>`jsonb_array_length(${schema.builds.plan}->'levels')`,
+  updatedAt: schema.builds.updatedAt,
+  likeCount: schema.builds.likeCount,
+  authorName: schema.users.name,
+  authorImage: schema.users.image,
+  authorHandle: schema.users.handle,
+};
+
 function summaries() {
-  return db()
-    .select({
-      id: schema.builds.id,
-      name: schema.builds.name,
-      description: schema.builds.description,
-      coverImageUrl: schema.builds.coverImageUrl,
-      visibility: schema.builds.visibility,
-      gameVersion: schema.builds.gameVersion,
-      race: sql<string>`${schema.builds.plan}->>'race'`,
-      traits: sql<string[]>`${schema.builds.plan}->'traits'`,
-      levels: sql<number>`jsonb_array_length(${schema.builds.plan}->'levels')`,
-      updatedAt: schema.builds.updatedAt,
-      likeCount: schema.builds.likeCount,
-      authorName: schema.users.name,
-      authorImage: schema.users.image,
-      authorHandle: schema.users.handle,
-    })
-    .from(schema.builds)
-    .innerJoin(schema.users, eq(schema.users.id, schema.builds.ownerId))
-    .$dynamic();
+  return db().select(summaryFields).from(schema.builds).innerJoin(schema.users, eq(schema.users.id, schema.builds.ownerId)).$dynamic();
 }
 
 type SummaryRow = Awaited<ReturnType<typeof summaries>>[number];
@@ -119,6 +117,22 @@ export async function listListedBuildsByOwner(ownerId: string): Promise<BuildSum
     .where(and(eq(schema.builds.ownerId, ownerId), eq(schema.builds.visibility, "public")))
     .orderBy(desc(schema.builds.updatedAt));
   return rows.map(toSummary);
+}
+
+/**
+ * The Listed builds a player has liked, newest like first, with when they liked each. Link-only and
+ * private builds never show, even when liked.
+ */
+export async function listLikedBuilds(userId: string, limit = 60): Promise<(BuildSummary & { likedAt: Date })[]> {
+  const rows = await db()
+    .select({ ...summaryFields, likedAt: schema.buildLikes.createdAt })
+    .from(schema.buildLikes)
+    .innerJoin(schema.builds, eq(schema.builds.id, schema.buildLikes.buildId))
+    .innerJoin(schema.users, eq(schema.users.id, schema.builds.ownerId))
+    .where(and(eq(schema.buildLikes.userId, userId), eq(schema.builds.visibility, "public")))
+    .orderBy(desc(schema.buildLikes.createdAt))
+    .limit(limit);
+  return rows.map((r) => ({ ...toSummary(r), likedAt: r.likedAt }));
 }
 
 /** The signed-in user's handle, set now if they have none yet (users from before handles). */

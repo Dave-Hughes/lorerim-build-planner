@@ -910,10 +910,10 @@ From Dave's notes. Do after WO-23. Dave has since reshaped the tabs and pinned b
 5. **The header line** reads `2 builds · 5 liked`.
 
 ### Done when
-- [ ] e2e: the header has no nav links. `New build` is a button, and the avatar menu reaches My page, My builds and Sign out by keyboard.
-- [ ] e2e: like a Listed build and a Link-only build as a second user; that user's `Liked` shows only the Listed one.
-- [ ] Screenshots for Dave at 1440 and 390: the header signed in and signed out, the menu open, and a profile on `Liked`.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: the header has no nav links. `New build` is a button, and the avatar menu reaches My page, My builds and Sign out by keyboard.
+- [x] e2e: like a Listed build and a Link-only build as a second user; that user's `Liked` shows only the Listed one.
+- [x] Screenshots for Dave at 1440 and 390: the header signed in and signed out, the menu open, and a profile on `Liked`.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

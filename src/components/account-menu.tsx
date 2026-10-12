@@ -1,0 +1,115 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useId, useRef, useState } from "react";
+import { Avatar } from "@/components/ui/avatar";
+import styles from "./site-header.module.css";
+
+/**
+ * The avatar's menu: My page, My builds, Sign out. A real menu button: Enter, Space or the down
+ * arrow opens it on the first item, arrows move, Esc closes and returns to the button, a click
+ * outside closes it. The page you're on is marked.
+ */
+export function AccountMenu({ name, image, handle, signOut }: { name: string; image: string | null; handle: string | null; signOut: () => Promise<void> }) {
+  const pathname = usePathname();
+  const id = useId();
+  const [open, setOpen] = useState(false);
+  const wrap = useRef<HTMLDivElement>(null);
+  const button = useRef<HTMLButtonElement>(null);
+  const items = useRef<(HTMLElement | null)[]>([]);
+  const links = [...(handle ? [{ href: `/u/${handle}`, label: "My page" }] : []), { href: "/me", label: "My builds" }];
+  const count = links.length + 1;
+
+  const focusItem = (i: number) => items.current[(i + count) % count]?.focus();
+  const close = (refocus = false) => {
+    setOpen(false);
+    if (refocus) button.current?.focus();
+  };
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: PointerEvent) => {
+      if (!wrap.current?.contains(e.target as Node)) setOpen(false);
+    };
+    window.addEventListener("pointerdown", onDown);
+    return () => window.removeEventListener("pointerdown", onDown);
+  }, [open]);
+
+  const onMenuKey = (e: React.KeyboardEvent) => {
+    const i = items.current.findIndex((el) => el === document.activeElement);
+    if (e.key === "ArrowDown") focusItem(i + 1);
+    else if (e.key === "ArrowUp") focusItem(i - 1);
+    else if (e.key === "Home") focusItem(0);
+    else if (e.key === "End") focusItem(count - 1);
+    else if (e.key === "Escape") close(true);
+    else if (e.key === "Tab") close();
+    else return;
+    if (e.key !== "Tab") e.preventDefault();
+  };
+
+  return (
+    <div ref={wrap} className={styles.menuWrap}>
+      <button
+        ref={button}
+        type="button"
+        className={styles.who}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-controls={id}
+        aria-label={`${name || "You"}: account menu`}
+        onClick={() => {
+          const next = !open;
+          setOpen(next);
+          if (next) requestAnimationFrame(() => focusItem(0));
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+            e.preventDefault();
+            setOpen(true);
+            requestAnimationFrame(() => focusItem(e.key === "ArrowDown" ? 0 : count - 1));
+          }
+        }}
+      >
+        <Avatar name={name} image={image} />
+        <span className={styles.whoName}>{name}</span>
+        <span className={styles.caret} aria-hidden="true">
+          ▾
+        </span>
+      </button>
+      {open && (
+        <div id={id} role="menu" aria-label="Account" className={styles.menu} onKeyDown={onMenuKey}>
+          {links.map((l, i) => (
+            <Link
+              key={l.href}
+              ref={(el) => {
+                items.current[i] = el;
+              }}
+              href={l.href}
+              role="menuitem"
+              tabIndex={-1}
+              aria-current={pathname === l.href ? "page" : undefined}
+              className={styles.menuItem}
+              onClick={() => close()}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <form action={signOut} className={styles.menuForm}>
+            <button
+              ref={(el) => {
+                items.current[links.length] = el;
+              }}
+              type="submit"
+              role="menuitem"
+              tabIndex={-1}
+              className={styles.menuItem}
+            >
+              Sign out
+            </button>
+          </form>
+        </div>
+      )}
+    </div>
+  );
+}

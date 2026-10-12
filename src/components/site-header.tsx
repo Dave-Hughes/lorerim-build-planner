@@ -1,48 +1,44 @@
 import Link from "next/link";
 import { auth, signIn, signOut } from "@/auth";
-import { Avatar } from "@/components/ui/avatar";
 import { Brand } from "@/components/ui/brand";
+import { handleFor } from "@/lib/builds/queries";
+import { AccountMenu } from "./account-menu";
 import styles from "./site-header.module.css";
 
+/**
+ * The site's header: the brand (to Browse builds), New build, and the account menu, or Sign in.
+ * No nav: Browse builds is the brand, My builds and My page are in the avatar's menu.
+ */
 export async function SiteHeader() {
   const session = await auth();
   const user = session?.user;
+  const handle = user?.id ? await handleFor(user.id).catch(() => null) : null;
 
   return (
     <header className={styles.header}>
       <div className={`page ${styles.inner}`}>
         <Brand />
-        <nav aria-label="Main" className={styles.nav}>
-          <Link href="/">
-            <span className={styles.wide}>Browse builds</span>
-            <span className={styles.narrow}>Builds</span>
+        <div className={styles.actions}>
+          <Link href="/new" className={`btn btn-primary ${styles.newBuild}`} aria-label="New build">
+            <span className={styles.newIcon} aria-hidden="true">
+              +
+            </span>
+            <span className={styles.newLabel}>New build</span>
           </Link>
-          {user && (
-            <Link href="/me" className={styles.wideOnly}>
-              My builds
-            </Link>
+          {user ? (
+            <AccountMenu
+              name={user.name ?? ""}
+              image={user.image ?? null}
+              handle={handle}
+              signOut={async () => {
+                "use server";
+                await signOut({ redirectTo: "/" });
+              }}
+            />
+          ) : (
+            <SignInButton />
           )}
-          <Link href="/new">New build</Link>
-        </nav>
-        {user ? (
-          <form
-            className={styles.account}
-            action={async () => {
-              "use server";
-              await signOut({ redirectTo: "/" });
-            }}
-          >
-            <Link href="/me" className={styles.who} aria-label={`${user.name ?? "You"}: my builds`}>
-              <Avatar name={user.name ?? ""} image={user.image ?? null} />
-              <span className={styles.wideOnly}>{user.name}</span>
-            </Link>
-            <button className="btn btn-sm" type="submit">
-              Sign out
-            </button>
-          </form>
-        ) : (
-          <SignInButton />
-        )}
+        </div>
       </div>
     </header>
   );

@@ -1,0 +1,65 @@
+/* Open tabs on one rule: the condensed face at 28px with a line saying what's in each; the open one
+   in full white over a 3px ember underline. No boxes. */
+.tabs {
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid var(--rule);
+  margin-top: 4px;
+}
+.tab {
+  min-height: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 8px 0 12px;
+  margin-bottom: -1px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    color 120ms,
+    border-color 120ms;
+}
+.tab:hover {
+  color: #c3cdd6;
+  border-bottom-color: var(--rule-strong);
+}
+.tabName {
+  font-family: var(--font-title);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.tabSub {
+  font-size: 14px;
+  color: var(--muted);
+}
+.tab[aria-selected="true"] {
+  color: var(--text);
+  border-bottom-color: var(--ember);
+}
+.tab[aria-selected="true"] .tabSub {
+  color: #c3cdd6;
+}
+.tab:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 4px;
+}
+@media (max-width: 599px) {
+  .tabs {
+    gap: 28px;
+  }
+  .tabName {
+    font-size: 22px;
+  }
+  .tabSub {
+    font-size: 12px;
+  }
+}

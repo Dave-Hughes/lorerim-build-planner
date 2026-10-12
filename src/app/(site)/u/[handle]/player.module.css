@@ -45,3 +45,11 @@
 .empty a {
   color: var(--ember);
 }
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.sections [role="tabpanel"] {
+  padding-top: 24px;
+}
