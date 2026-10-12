@@ -1190,6 +1190,8 @@ These show on the tag chips in Set up and Browse builds, and on the build page u
 
 ## Parked (not ordered yet)
 
+- **Set up loses changes silently (found 11 Oct).** Changes on a Set up step are kept only until `Save changes` on the Name step. Reloading, or leaving through the edit bar (`Levels`, `Guide`), drops them with no warning: a Focused Combat choice was lost this way. Either save each step as it changes, like the editor does, or warn before leaving with unsaved changes.
+
 - Custom domain: lorerimplanner.com, on Dave's say-so.
 - **Repeat last level** (from the three builds): a button that spends this level's skill points like the last one, as far as the rules allow. Most of levels 10 to 20 were the same spread.
 - **Perk wishlist:** list the perks you want in order and let the planner place each at the first level it can be taken.
