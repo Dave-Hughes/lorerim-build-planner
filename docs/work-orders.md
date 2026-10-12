@@ -1188,6 +1188,89 @@ These show on the tag chips in Set up and Browse builds, and on the build page u
 
 ---
 
+## WO-31  Findings from a 30-level build (11 Oct 2026)
+
+The chat session built **Iriel Thornwhisper, Green Pact Hunter** (`/b/7h38zdhjnu`) on staging, levels 1 to 30, through the editor:
+- Bosmer, The Shadow, Jephre, Naaktiid, Pilgrim (Shrine) · The Eldergleam Sanctuary.
+- 37 perks and 7 Destiny stars, two standing stones, six trainer sessions and two skill books.
+- 26 gear changes, including one item emptied, and a note at every level.
+- An intro, and a guide with headings, both list kinds, bold, italic, a dividing line and three @-mentions (two items, one perk).
+
+Every level on the shared page matches the plan: perks, Destiny, stones, trainers, books, gear and notes. The build has no problems, and autosave kept up throughout. At 390 px the page has no sideways scroll.
+
+What went wrong or read badly is below, most serious first. Do after WO-30.
+
+### Bugs
+1. **A dividing line in the guide editor is 12 lines tall.**
+   - In `guide-page.module.css`, `.guideField [contenteditable]` and `.intro [contenteditable]` also match ProseMirror's `contenteditable="false"` nodes: the line, mention chips and images.
+   - The line gets the field's `min-height` (353 px), and text typed after it lands at the bottom of the field.
+   - Target the editor root only (`[contenteditable="true"]`). Remove the `min-height: 0` in `mention.module.css` if it was only working around this.
+2. **`Gear at level N` overlaps at 1440.** Item chips don't wrap in the 220 px grid cells:
+   - `Elven Hunter Helmet` runs over Body's icon;
+   - `Elven Hunter Gauntlets` runs over Feet;
+   - `Elven Hunter Boots` runs past the column's right edge.
+   Long names wrap inside their cell. Nothing overlaps at 1440, 1100 or 390.
+3. **Item data reaches browsers up to a day late.** `/api/items/5.0.4.8` is served with `max-age=86400`. After the Polearm follow-up (b250ed5), Chrome still listed `Imperial Pike` as a Greatsword in the @-menu, while the server already says Polearm.
+   - Put a hash of `items.json` in the URL, set at build time (`/api/items/5.0.4.8?v=<hash>`), so a rebuilt index is fetched at once.
+   - Keep the long cache.
+4. **12 weapons are still typed by their animation**, because the type word isn't the name's last word:
+   - `Spear of the Hunter` is a Greatsword;
+   - `Daedric Pike of the Inferno` is a Greatsword;
+   - `Paladin Halberd (Rusty)` and `Knight of Kynareth Halberd (Tarnished Silver)` are Battleaxes;
+   - `Daedric Halberd of the Inferno` is a Battleaxe;
+   - `Daedric Quarterstaff of the Inferno` is a Warhammer.
+   In `items.py`, match Spear, Pike, Halberd, Glaive, Quarterstaff and Javelin as a whole word anywhere in the name.
+   - Leave the four `Staff` weapons as they are (`Coldflame Staff`, `Heretic's Staff`, `Pope Megus' Staff`, `Staff of Wandering Stars`), and list them in the commit message for Dave.
+5. **Dates are in UTC.** `src/lib/format/date.ts` formats with `timeZone: "UTC"`, so builds saved on the evening of 11 Oct in Denver show `12 Oct 2026` on cards, `My builds` and the build page.
+   - Show dates in the viewer's time zone, in a `<time datetime>`, on the client.
+6. **Tag suggestions miss three majors.** `suggestedTags` maps only Block and Evasion, so Iriel (Marksman, Sneak, Alchemy) was offered only Marksman. Add the same pairs WO-30 uses for icons:
+   - Sneak → Stealth
+   - Finesse → Thief
+   - Smithing → Crafter
+7. **Search doesn't find the deity, birthsign or start.** `Jephre` finds nothing.
+   - Add `plan->>'deity'`, `plan->>'birthsign'`, `plan->>'start'` and `plan->>'startOption'` to the search in `queries.ts`.
+   - The placeholder names what it searches: `Name, author, race, deity, trait`.
+
+### Editor
+8. **Deity is a text box.** Set up offers a datalist, so any typing is accepted.
+   - Make it a select of the deities in `deities.json`: `None` first, then the ones offered to the race, then the rest, as two groups.
+   - Once a deity is chosen, show its text under the select (follower, devotee, tenets, from `deity-text.json`), as the birthsign step does.
+   - A saved value that matches none (old free text) is matched by letters only, as in WO-29. When there is still no match, it shows as a problem line on that step.
+9. **Set up's summary** (left column) doesn't mention the deity. It goes on the line with the mode and start.
+10. **The cover focus hint is how-to copy:** `Click the image where the build page should centre it. Now 54% across, 18% down.` Drop the sentence. Show the focus as a small marker on the image instead, and the crop it gives as the hero will show it.
+11. **The perk card covers the editor.** After `Confirm`, the card stays open at the bottom left of the window, over the skill list (Wayfarer to Destruction). Further down the page it covers the Gear block and the note.
+    - Close it on `Confirm`: the star's new state shows the perk was taken.
+    - Opening a taken perk still shows `Taken at level N` and `Remove`.
+
+### Shared page
+12. **Copy link and Edit appear twice for the owner**, once in the edit bar and once in the hero. When the edit bar shows, the hero has neither. Visitors keep the hero's `Copy link` and `Copy to my builds`.
+13. **The Guide tab has an eyebrow label.** A `GUIDE` label sits above the guide, under a tab that already says Guide (`guide-section.tsx:53`). Remove it.
+14. **Item hover text is thin.** Hovering an item mention shows only `BOW · 50 DAMAGE · 8 WEIGHT`, while perks show their name and text.
+    - Show the item's name with its slot icon, then the stats line.
+    - Item chips in the guide carry the slot icon, as perk chips carry their skill's.
+15. **The level legend:**
+    - It lists `Skill 100 perk` when the build has none. Show only the marks that occur.
+    - At 390, its last item is cut to `N`. Let it wrap.
+16. **The deity tooltip and the Start popover set the game's text differently.** The tooltip uses small sans text; the popover uses Alegreya italic. Use the popover's style for the game's own words in both.
+
+### Done when
+- [ ] e2e: a guide with a dividing line between two paragraphs. The line's box is under 60 px tall, and the second paragraph sits directly below it.
+- [ ] Screenshot at 1440 and 390: Iriel's `Gear at level 22` with no overlaps.
+- [ ] The items URL changes when `items.json` changes (unit test on the hash helper).
+- [ ] `items.json` rebuilt: the six named weapons in #4 are typed Spear, Polearm or Quarterstaff. The four Staffs are listed in the commit message.
+- [ ] Unit test: `formatDate` of `2026-10-12T02:00:00Z` in `America/Denver` gives `11 Oct 2026`.
+- [ ] Unit test: `suggestedTags(["Marksman", "Sneak", "Alchemy"])` gives Marksman and Stealth.
+- [ ] e2e: searching `Jephre` on Browse finds Iriel.
+- [ ] Screenshots of Set up's deity step: no deity, then Jephre chosen with its text.
+- [ ] e2e: after `Confirm`, the perk card is closed.
+- [ ] Screenshot of the owner's build page at 1440: one Copy link and one Edit. The Guide tab has no `GUIDE` label.
+- [ ] Screenshot of an item mention's hover text and of the legend at 390.
+- [ ] All checks in CLAUDE.md pass.
+
+**For Dave, not Jeff:** `My builds` on staging still has three test builds: `iuguyg`, `QA Breton Spellsword` and `Test Build 1`. Delete them or keep them as you like.
+
+---
+
 ## Parked (not ordered yet)
 
 - **Set up loses changes silently (found 11 Oct).** Changes on a Set up step are kept only until `Save changes` on the Name step. Reloading, or leaving through the edit bar (`Levels`, `Guide`), drops them with no warning: a Focused Combat choice was lost this way. Either save each step as it changes, like the editor does, or warn before leaving with unsaved changes.
@@ -1199,3 +1282,5 @@ These show on the tag chips in Set up and Browse builds, and on the build page u
 - **Skills over levels:** a small line chart on the shared page of the main skills from level 1 to the last.
 - **Callings:** a field for the build's Calling, once the Callings mod data is in.
 - **Note preview:** hovering a level in the level row shows the start of that level's note.
+- **Gear over levels** (from Iriel's 30 levels): on the shared page, one row per slot showing what was held when, e.g. `Hunting Light Bow 1–5 · Imperial Bow 6–13 · Elven Light Bow 14–25 · Glass Light Bow 26–30`. Readers asked "what bow when" more than "what at level 17".
+- **Search by perk or item:** "builds that take Lone Wolf", "builds that use a Glass Light Bow", from the plan's perks and gear item ids.
