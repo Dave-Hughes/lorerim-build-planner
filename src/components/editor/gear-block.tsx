@@ -3,6 +3,7 @@
 import { useId, useState } from "react";
 import { useGameData } from "@/components/game-data";
 import { fitsSlot, searchItems, useItems, type GameItem } from "@/lib/items/items";
+import { IconLabel, SlotIcon } from "@/components/ui/skill-icon";
 import { GEAR_SLOTS, gearAt, gearChangeText, gearChanges, type GearSlot, type HeldGear } from "@/lib/rules/gear";
 import type { BuildPlan } from "@/lib/rules/types";
 import * as ops from "./plan-ops";
@@ -56,7 +57,9 @@ export function GearBlock({ plan, level, setPlan }: { plan: BuildPlan; level: nu
               );
             return (
               <li key={`${h.slot}-${h.name}`} className={`${styles.gearItem} ${here ? styles.gearItemHere : ""}`}>
-                <span className={styles.gearSlot}>{h.slot}</span>
+                <span className={styles.gearSlot}>
+                  <IconLabel icon={<SlotIcon slot={h.slot} />}>{h.slot}</IconLabel>
+                </span>
                 <span className={styles.gearWhat}>
                   {here ? <span className={styles.gearSet}>{h.name}</span> : <span className={styles.gearCarried}>{`${h.name}, since level ${h.since}`}</span>}
                   {h.note && <span className={styles.gearNote}>{h.note}</span>}
@@ -81,7 +84,9 @@ export function GearBlock({ plan, level, setPlan }: { plan: BuildPlan; level: nu
             const item = g.slot === "Other" ? (g.replaces ?? "") : undefined;
             return (
               <li key={`emptied-${g.slot}-${item ?? ""}`} className={`${styles.gearItem} ${styles.gearItemHere}`}>
-                <span className={styles.gearSlot}>{g.slot}</span>
+                <span className={styles.gearSlot}>
+                  <IconLabel icon={<SlotIcon slot={g.slot} />}>{g.slot}</IconLabel>
+                </span>
                 <span className={styles.gearWhat}>
                   <span className={styles.gearSet}>{gearChangeText(g)}</span>
                 </span>
@@ -164,15 +169,20 @@ function GearForm({
       }}
     >
       {slots ? (
-        <select className="select" aria-label="Slot" value={pick} onChange={(e) => setPick(e.target.value as GearSlot)}>
-          {slots.map((s) => (
-            <option key={s} value={s}>
-              {s}
-            </option>
-          ))}
-        </select>
+        <span className={styles.gearSlotPick}>
+          <SlotIcon slot={pick} />
+          <select className="select" aria-label="Slot" value={pick} onChange={(e) => setPick(e.target.value as GearSlot)}>
+            {slots.map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
+        </span>
       ) : (
-        <span className={styles.gearSlot}>{slot}</span>
+        <span className={styles.gearSlot}>
+          <IconLabel icon={<SlotIcon slot={slot!} />}>{slot}</IconLabel>
+        </span>
       )}
       <span className={styles.gearSearch}>
         <input

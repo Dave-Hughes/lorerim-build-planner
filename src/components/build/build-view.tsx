@@ -27,7 +27,7 @@ import type { LevelState } from "@/lib/rules/types";
 import { computeBuild } from "@/lib/rules/engine";
 import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
-import { AttributeIcon, IconLabel, SignIcon, SkillIcon, SkillLabel } from "@/components/ui/skill-icon";
+import { AttributeIcon, IconLabel, SignIcon, SkillIcon, SkillLabel, MarkIcon, SlotIcon, TagIcon } from "@/components/ui/skill-icon";
 import { LevelBars, LevelLegend, LevelStepper, useHoldInPlace } from "./level-nav";
 import { BottomSheet, PerkDetails, Tree, ViewToggle, type TreeView } from "./tree";
 import styles from "./build-view.module.css";
@@ -281,7 +281,9 @@ function GearAt({ plan, level }: { plan: BuildViewData["plan"]; level: number })
         <dl className={styles.gearList}>
           {held.map((g, i) => (
             <div key={i} className={styles.gearRow}>
-              <dt>{g.slot}</dt>
+              <dt>
+                <IconLabel icon={<SlotIcon slot={g.slot} />}>{g.slot}</IconLabel>
+              </dt>
               <dd className={g.since === level ? styles.gearNow : undefined}>{g.itemId ? <GuideMention kind="item" id={g.itemId} label={g.name} /> : g.name}</dd>
             </div>
           ))}
@@ -624,7 +626,9 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
     <span className={styles.gainTip}>
       {lines.map((l, i) => (
         <span key={i} className={styles.gainTipLine}>
-          <span className={styles.gainTipLabel}>{l.label}</span>
+          <span className={styles.gainTipLabel}>
+            {l.label === "Trainer" ? <IconLabel icon={<MarkIcon name="trainer" />}>Trainer</IconLabel> : l.label === "Skill book" ? <IconLabel icon={<MarkIcon name="skill-book" />}>Skill book</IconLabel> : l.label}
+          </span>
           <SkillGains rows={[l.row]} />
         </span>
       ))}
@@ -727,7 +731,7 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
             styles.sumWide,
           )}
         {at < 2 && f.gear.map((g, i) => chip(`gear-${i}`, gearChangeText(g), g.name.trim() || gearChangeText(g), styles.sumWide))}
-        {noted && chip("note", "The author left a note for this level", <i className={styles.sumNote} aria-label="Note" />, styles.sumWide)}
+        {noted && chip("note", "The author left a note for this level", <IconLabel icon={<MarkIcon name="note" />}>Note</IconLabel>, styles.sumWide)}
       </>
     );
   };
@@ -749,6 +753,9 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
     </span>
   );
 }
+
+/** The level card's labels that have a marker icon (WO-30). */
+const KEY_MARKS: Record<string, "trainer" | "skill-book" | "banked"> = { Trainer: "trainer", "Skill book": "skill-book", "Skill books": "skill-book", Banked: "banked" };
 
 /**
  * The level card: what to do at this level, in the order the game asks (attribute, skill points,
@@ -850,7 +857,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       "Gear",
       <span key="g" className={styles.stack}>
         {facts.gear.map((g, i) => (
-          <span key={i}>
+          <IconLabel key={i} icon={<SlotIcon slot={g.slot} />}>
             {g.itemId && g.name.trim() ? (
               <>
                 <GuideMention kind="item" id={g.itemId} label={g.name.trim()} /> ({g.slot})
@@ -859,7 +866,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
               gearChangeText(g)
             )}
             {g.note && <span className="muted"> {g.note}</span>}
-          </span>
+          </IconLabel>
         ))}
       </span>,
     ]);
@@ -876,7 +883,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
                 {tips[k] ? (
                   <Tooltip content={tips[k]}>
                     <span className={`${styles.changeKey} ${styles.ruleTip}`} tabIndex={0}>
-                      {k}
+                      {KEY_MARKS[k] ? <IconLabel icon={<MarkIcon name={KEY_MARKS[k]} />}>{k}</IconLabel> : k}
                     </span>
                   </Tooltip>
                 ) : k === "Destiny" ? (
@@ -1083,7 +1090,7 @@ function Cover({
               {build.tags.map((t) => (
                 <li key={t}>
                   <Link href={`/?tags=${t}`} className={styles.tagLink}>
-                    {TAG_BY_SLUG.get(t)?.name ?? t}
+                    <IconLabel icon={<TagIcon tag={t} />}>{TAG_BY_SLUG.get(t)?.name ?? t}</IconLabel>
                   </Link>
                 </li>
               ))}

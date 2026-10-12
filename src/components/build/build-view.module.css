@@ -739,12 +739,6 @@
   font-size: 12px;
   color: var(--muted);
 }
-.sumNote {
-  display: inline-block;
-  width: 9px;
-  height: 9px;
-  border: 1px solid #c3cdd6;
-}
 @media (prefers-reduced-motion: reduce) {
   .summary {
     animation: none;
@@ -930,7 +924,7 @@
 }
 .gearRow {
   display: grid;
-  grid-template-columns: 6.5em minmax(0, 1fr);
+  grid-template-columns: 8.5em minmax(0, 1fr);
   gap: 10px;
   padding: 6px 0;
   border-bottom: 1px solid #1c2430;

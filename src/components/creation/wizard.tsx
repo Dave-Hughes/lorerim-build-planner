@@ -7,7 +7,7 @@ import { TRAIT_CHOICES, keptTraitChoices } from "@/lib/rules/trait-choices";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { FocusHeader } from "@/components/ui/focus-header";
 import { EditBar } from "@/components/editor/edit-bar";
-import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel } from "@/components/ui/skill-icon";
+import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel, ModeIcon, TagIcon } from "@/components/ui/skill-icon";
 import { copyBuildForVersion, createBuild, saveBuildDetails, saveBuildPlan } from "@/lib/builds/actions";
 import { STEPS, STEP_NAMES, clearDraft, emptyDetails, emptyPlan, loadDraft, saveDraft, type Step } from "@/lib/builds/draft";
 import type { BuildDetails } from "@/lib/builds/validate";
@@ -689,7 +689,9 @@ function ModeStep({ plan, update }: StepProps) {
           return (
             <ChoiceCard key={m.name} className={`${styles.card} ${on ? styles.cardOn : ""}`} onChoose={choose}>
               <div className={styles.cardHead}>
-                <h2 className={styles.cardName}>{m.name}</h2>
+                <h2 className={styles.cardName}>
+                  <IconLabel icon={<ModeIcon mode={m.name} size={24} />}>{m.name}</IconLabel>
+                </h2>
               </div>
               <p className={styles.cardText}>{m.text}</p>
               <button type="button" className={`btn btn-sm ${on ? "btn-ember" : ""} ${styles.cardBtn}`} aria-pressed={on} onClick={choose}>
@@ -971,7 +973,7 @@ function TagPicker({ chosen, suggested, onChange }: { chosen: string[]; suggeste
                   disabled={!on && full}
                   onClick={() => onChange(on ? chosen.filter((x) => x !== t.slug) : [...chosen, t.slug])}
                 >
-                  {t.name}
+                  <IconLabel icon={<TagIcon tag={t.slug} />}>{t.name}</IconLabel>
                 </button>
               );
             })}

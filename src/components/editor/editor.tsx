@@ -16,7 +16,7 @@ import type { Attribute, BuildPlan } from "@/lib/rules/types";
 import { GearBlock } from "./gear-block";
 import { PerkPanel } from "./perk-panel";
 import { SkillGains } from "@/components/build/skill-gains";
-import { AttributeIcon, IconLabel, SignIcon, SkillIcon } from "@/components/ui/skill-icon";
+import { AttributeIcon, IconLabel, SignIcon, SkillIcon, MarkIcon } from "@/components/ui/skill-icon";
 import { GuideEditor, guideSaveLabel } from "@/components/guide/guide-editor";
 import { GuideFactsProvider } from "@/components/guide/guide-facts";
 import { saveKeptGuides } from "@/components/guide/use-guide-autosave";
@@ -249,7 +249,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
           </div>
           <dl className={styles.pools}>
             {level > 1 && <Pool label="Skill points" value={left} of={`left of ${s.skillPointsAvailable}`} />}
-            <Pool label="Perk points" value={perkLeft} of="to spend" />
+            <Pool label="Perk points" icon={<MarkIcon name="perk-points" />} value={perkLeft} of="to spend" />
             <Pool label="Destiny points" value={destinyLeft} of={nextDestiny ? `next at ${nextDestiny}` : "no more"} destiny />
             <Pool label="Trainer sessions" value={trainerLeft} of="left this level" />
           </dl>
@@ -422,7 +422,9 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                 {lv.extras.map((ex, i) => (
                   <li key={i}>
                     <span className={styles.extraRow}>
-                      <span className={styles.extraKind}>{ex.kind === "trainer" ? "Trainer session" : "Skill book"}</span>
+                      <span className={styles.extraKind}>
+                        <IconLabel icon={<MarkIcon name={ex.kind === "trainer" ? "trainer" : "skill-book"} />}>{ex.kind === "trainer" ? "Trainer session" : "Skill book"}</IconLabel>
+                      </span>
                       <SkillGains rows={[{ skill: ex.skill, gain: extraSteps[i].to - extraSteps[i].from, from: extraSteps[i].from, to: extraSteps[i].to }]} />
                     </span>
                     <button type="button" className={styles.x} aria-label={`Remove ${ex.kind === "trainer" ? "trainer session" : "skill book"} for ${ex.skill}`} onClick={() => setPlan(ops.removeExtra(plan, level, i))}>
@@ -438,7 +440,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                 <div key={kind} role="group" aria-label={what} className={styles.extraForm}>
                   <Tooltip content={kind === "trainer" ? trainerRule : bookRule}>
                     <span className={`${styles.extraKind} ${styles.ruleTip}`} tabIndex={0}>
-                      {what}
+                      <IconLabel icon={<MarkIcon name={kind === "trainer" ? "trainer" : "skill-book"} />}>{what}</IconLabel>
                     </span>
                   </Tooltip>
                   <select className="select" aria-label={`${what} skill`} value={extraSkill[kind]} onChange={(e) => setExtraSkill((x) => ({ ...x, [kind]: e.target.value }))}>
@@ -534,10 +536,10 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   );
 }
 
-function Pool({ label, value, of, destiny }: { label: string; value: number; of: string; destiny?: boolean }) {
+function Pool({ label, icon, value, of, destiny }: { label: string; icon?: React.ReactNode; value: number; of: string; destiny?: boolean }) {
   return (
     <div className={`${styles.pool} ${destiny ? styles.poolDestiny : ""}`}>
-      <dt className={`label ${styles.poolLabel}`}>{label}</dt>
+      <dt className={`label ${styles.poolLabel}`}>{icon ? <IconLabel icon={icon}>{label}</IconLabel> : label}</dt>
       <dd className={styles.poolVal}>
         <span className={`big-num ${styles.poolNum} ${value < 0 ? "bad" : ""}`}>{value}</span>
         <span className={styles.hint}>{of}</span>

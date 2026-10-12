@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { useGameData } from "@/components/game-data";
 import { Tooltip } from "@/components/ui/tooltip";
-import { IconLabel, RaceIcon, SignIcon } from "@/components/ui/skill-icon";
+import { IconLabel, RaceIcon, SignIcon, ModeIcon } from "@/components/ui/skill-icon";
 import { traitWithChoice } from "@/lib/rules/trait-choices";
 import type { BuildPlan } from "@/lib/rules/types";
 import styles from "./about-bar.module.css";
@@ -127,7 +127,7 @@ export function AboutBar({ plan }: { plan: BuildPlan }) {
             : "The classic rules: no extra perk points or carry weight."
         }
       >
-        {plan.mode}
+        <IconLabel icon={<ModeIcon mode={plan.mode} />}>{plan.mode}</IconLabel>
       </Tip>,
     ],
     ["Start", <StartValue key="start" plan={plan} />],

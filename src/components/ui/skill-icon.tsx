@@ -38,6 +38,43 @@ export function RaceIcon({ name, size = 16, className }: { name: string; size?: 
   return <GameIcon file={`race-${slug(name)}`} size={size} className={className} />;
 }
 
+/** A level marker (WO-30): trainer, skill book, banked points, perk points, a note. */
+export function MarkIcon({ name, size = 16 }: { name: "trainer" | "skill-book" | "banked" | "perk-points" | "note"; size?: 16 | 24 | 32 }) {
+  return <GameIcon file={`mark-${name}`} size={size} />;
+}
+
+/** A gear slot (WO-22's ten: Main hand ... Other). */
+export function SlotIcon({ slot, size = 16 }: { slot: string; size?: 16 | 24 | 32 }) {
+  return <GameIcon file={`slot-${slug(slot)}`} size={size} />;
+}
+
+/** A game mode: Konahrik's mask, Naaktiid's seedling. */
+export function ModeIcon({ mode, size = 16 }: { mode: string; size?: 16 | 24 | 32 }) {
+  return <GameIcon file={`mode-${slug(mode)}`} size={size} />;
+}
+
+/** Tags that are a skill reuse its icon; the seven without one have their own (tag-*.svg). */
+const TAG_SKILL_ICON: Record<string, string> = {
+  "one-handed": "one-handed",
+  "two-handed": "two-handed",
+  marksman: "marksman",
+  "heavy-armor": "heavy-armor",
+  destruction: "destruction",
+  conjuration: "conjuration",
+  illusion: "illusion",
+  alteration: "alteration",
+  restoration: "restoration",
+  "light-armor": "evasion",
+  stealth: "sneak",
+  thief: "finesse",
+  crafter: "smithing",
+};
+
+/** A build tag, by its slug. */
+export function TagIcon({ tag, size = 16 }: { tag: string; size?: 16 | 24 | 32 }) {
+  return <GameIcon file={TAG_SKILL_ICON[tag] ?? `tag-${tag}`} size={size} />;
+}
+
 /** An icon, then its text, centred on one line with a 7px gap. */
 export function IconLabel({ icon, className, children }: { icon: React.ReactNode; className?: string; children: React.ReactNode }) {
   return (

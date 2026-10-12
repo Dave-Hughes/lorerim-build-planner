@@ -1,5 +1,6 @@
 "use client";
 
+import { IconLabel, TagIcon } from "@/components/ui/skill-icon";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { TAGS, TAG_GROUPS, TAG_BY_SLUG } from "@/lib/builds/tags";
@@ -63,7 +64,7 @@ export function BrowseFilters({ state, versions, defaultVersion, races, empty }:
                   <span className={styles.chips}>
                     {TAGS.filter((t) => t.group === g).map((t) => (
                       <button key={t.slug} type="button" className={styles.chip} aria-pressed={state.tags.includes(t.slug)} onClick={() => toggleTag(t.slug)}>
-                        {t.name}
+                        <IconLabel icon={<TagIcon tag={t.slug} />}>{t.name}</IconLabel>
                       </button>
                     ))}
                   </span>
@@ -109,7 +110,7 @@ export function BrowseFilters({ state, versions, defaultVersion, races, empty }:
         <p className={styles.chosen}>
           {state.tags.map((t) => (
             <button key={t} type="button" className={styles.chosenTag} aria-label={`Remove the ${TAG_BY_SLUG.get(t)?.name ?? t} tag`} onClick={() => toggleTag(t)}>
-              {TAG_BY_SLUG.get(t)?.name ?? t} <span aria-hidden="true">×</span>
+              <IconLabel icon={<TagIcon tag={t} />}>{TAG_BY_SLUG.get(t)?.name ?? t}</IconLabel> <span aria-hidden="true">×</span>
             </button>
           ))}
         </p>

@@ -594,7 +594,7 @@
 }
 .gearItem {
   display: grid;
-  grid-template-columns: 7.5em minmax(0, 1fr) auto;
+  grid-template-columns: 9em minmax(0, 1fr) auto;
   align-items: center;
   gap: 12px;
   min-height: 44px;
@@ -638,7 +638,7 @@
 }
 .gearForm {
   display: grid;
-  grid-template-columns: 7.5em minmax(0, 2fr) minmax(0, 2fr) auto;
+  grid-template-columns: 11em minmax(0, 2fr) minmax(0, 2fr) auto;
   align-items: center;
   gap: 8px;
   padding: 8px;
@@ -657,7 +657,8 @@
 }
 .gearOptions {
   position: absolute;
-  z-index: 20;
+  /* Above the notes' sticky toolbar (25) just below it. */
+  z-index: 30;
   top: calc(100% + 4px);
   left: 0;
   right: 0;
@@ -686,6 +687,12 @@
 .gearOptionStats {
   font-size: 13px;
   color: var(--muted);
+}
+.gearSlotPick {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
 }
 .gearFormActions {
   display: flex;

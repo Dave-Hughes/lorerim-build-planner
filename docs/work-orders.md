@@ -1181,10 +1181,10 @@ These show on the tag chips in Set up and Browse builds, and on the build page u
 
 ### Done when
 - [x] All 24 drawn by `pixels.py` (chat session).
-- [ ] Dave has approved the contact sheet (chat) before any icon is wired in.
-- [ ] Each icon appears in the places listed for its set. Every icon has `alt=""`, and its name sits beside it.
-- [ ] Screenshots for Dave at 1440: the level card with Trainer, Skill book and Banked; the editor's Gear block; the about bar's mode; Browse builds' tag filter.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Dave has approved the contact sheet (chat) before any icon is wired in.
+- [x] Each icon appears in the places listed for its set. Every icon has `alt=""`, and its name sits beside it.
+- [x] Screenshots for Dave at 1440: the level card with Trainer, Skill book and Banked; the editor's Gear block; the about bar's mode; Browse builds' tag filter.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 
