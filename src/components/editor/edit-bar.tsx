@@ -47,7 +47,7 @@ function VisibilityIcon({ v }: { v: BuildVisibility }) {
  * A menu button: Enter, Space or the arrows open it on an item, arrows move, Esc closes and returns
  * to the button, a click outside or Tab away closes it. `children` gets `close` for its items.
  */
-function MenuButton({
+export function MenuButton({
   className,
   buttonClassName,
   buttonLabel,

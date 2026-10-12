@@ -6,22 +6,38 @@ import { IconLabel, RaceIcon } from "@/components/ui/skill-icon";
 import { DeleteBuildButton } from "./delete-build-button";
 import type { BuildSummary } from "@/lib/builds/types";
 import { LocalDate } from "@/components/ui/local-date";
+import { PlayMark } from "./play-mark";
 import styles from "./build-card.module.css";
 
-/** A build in a grid. `likedAt` (a player's Liked list) shows when they liked it in place of the date. */
-export function BuildCard({ build, mine, likedAt }: { build: BuildSummary; mine?: boolean; likedAt?: Date }) {
+/**
+ * A build in a grid. `likedAt` (a player's Liked list) shows when they liked it in place of the date.
+ * `featured` (WO-39) makes it Browse's featured card: two columns wide, a taller cover with the gold
+ * Featured mark, and the first lines of its intro.
+ */
+export function BuildCard({ build, mine, likedAt, featured }: { build: BuildSummary; mine?: boolean; likedAt?: Date; featured?: { intro: string } }) {
   return (
-    <article className={styles.card}>
+    <article className={`${styles.card} ${featured ? styles.featured : ""}`} aria-label={featured ? `Featured: ${build.name}` : undefined}>
       {/* The whole card opens the build: the name's link stretches over it (see .name a::after). */}
       <div className={`${styles.band} ${build.coverImageUrl ? "" : styles.bandPlain}`} aria-hidden="true">
         {build.coverImageUrl && <span className={styles.bandImage} style={{ backgroundImage: `url("${build.coverImageUrl}")` }} />}
         <span className={styles.bandFade} />
+        {featured && (
+          <span className={styles.featuredMark}>
+            <DestinyStar /> Featured
+          </span>
+        )}
+        {build.videoId && (
+          <span className={styles.videoBadge}>
+            <PlayMark size={featured ? 16 : 12} /> Video
+          </span>
+        )}
       </div>
       <div className={styles.body}>
         <h2 className={styles.name}>
           <Link href={`/b/${build.id}`}>{build.name}</Link>
         </h2>
         {build.description && <p className={`flavor ${styles.description}`}>{build.description}</p>}
+        {featured?.intro && <p className={styles.intro}>{featured.intro}</p>}
         <p className={styles.facts}>
           {build.race ? <IconLabel icon={<RaceIcon name={build.race} />}>{build.race}</IconLabel> : null}
           {build.traits.length ? ` with ${build.traits.join(" and ")}` : ""}, to level {build.levels}
@@ -53,6 +69,15 @@ export function BuildCard({ build, mine, likedAt }: { build: BuildSummary; mine?
         )}
       </div>
     </article>
+  );
+}
+
+/** The Destiny star, for the Featured mark. */
+function DestinyStar() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 22 22" aria-hidden="true">
+      <path d="M11 1 L13 9 L21 11 L13 13 L11 21 L9 13 L1 11 L9 9 Z" fill="currentColor" />
+    </svg>
   );
 }
 

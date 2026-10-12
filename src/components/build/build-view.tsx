@@ -7,12 +7,15 @@ import { TAG_BY_SLUG } from "@/lib/builds/tags";
 import { AuthorLink } from "@/components/ui/author-link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, useTransition } from "react";
-import { copyBuild, copyBuildForVersion } from "@/lib/builds/actions";
+import { copyBuild, copyBuildForVersion, setFeatured } from "@/lib/builds/actions";
 import type { BuildRecord } from "@/lib/builds/types";
 import { useGameData } from "@/components/game-data";
 import { GuideFactsProvider } from "@/components/guide/guide-facts";
 import { SkillGains, type SkillGain } from "./skill-gains";
-import { EditBar } from "@/components/editor/edit-bar";
+import { EditBar, MenuButton } from "@/components/editor/edit-bar";
+import menuStyles from "@/components/editor/edit-bar.module.css";
+import { PlayMark } from "./play-mark";
+import { VideoGuide } from "./video-guide";
 import { AboutBar } from "./about-bar";
 import { GearView } from "./gear-view";
 import { ContentsRail, type RailItem } from "./contents-rail";
@@ -39,7 +42,7 @@ import { pageZoom } from "@/lib/zoom";
 import { themeOf, themeStyle } from "@/lib/themes";
 import { useDismiss } from "@/lib/use-dismiss";
 
-export type BuildViewData = Omit<BuildRecord, "createdAt" | "updatedAt"> & { updatedAt: string };
+export type BuildViewData = Omit<BuildRecord, "createdAt" | "updatedAt" | "featuredAt"> & { updatedAt: string };
 
 interface Props {
   build: BuildViewData;
@@ -56,6 +59,8 @@ interface Props {
   autoCopy?: boolean;
   /** The build's guide sections by key: `overview`, and `level:<n>` for level notes. */
   guide?: Record<string, GuideDoc>;
+  /** Set for admins (WO-39): whether this build is the featured one, for the More menu. */
+  admin?: { featured: boolean } | null;
 }
 
 export type BuildTab = "levels" | "guide";
@@ -87,7 +92,7 @@ function useNarrower(px: number): boolean {
  * navigation, then the level card (what to do, in the order the game asks, with the author's
  * note), then the reference (attributes, skills, perks).
  */
-export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab = "levels", signInToCopy, signInToLike, autoCopy, guide = {} }: Props) {
+export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab = "levels", signInToCopy, signInToLike, autoCopy, guide = {}, admin = null }: Props) {
   const d = useGameData();
   const noted = useMemo(() => notedLevels(guide), [guide]);
   const { plan } = build;
@@ -97,7 +102,10 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
 
   // Tabs: one with nothing in it isn't shown; with only Levels there's no tab row.
   const overview = guide.overview && !isEmptyDoc(guide.overview) ? guide.overview : null;
-  const tabs: BuildTab[] = ["levels", ...(overview ? (["guide"] as const) : [])];
+  // The Guide tab holds the guide and the video guide (WO-39), either or both.
+  const tabs: BuildTab[] = ["levels", ...(overview || plan.videoId ? (["guide"] as const) : [])];
+  // "Watch the video guide" in the hero: opens the Guide tab at the video and starts it.
+  const [play, setPlay] = useState(0);
   const [tabState, setTabState] = useState<BuildTab>(initialTab);
   const tab = tabs.includes(tabState) ? tabState : "levels";
   const setUrl = (key: string, value: string | null) => {
@@ -147,7 +155,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   const minutes = overview ? Math.max(1, Math.ceil(docWords(overview) / 200)) : 0;
   const TAB_SUB: Record<BuildTab, string> = {
     levels: `Levels 1 to ${total}`,
-    guide: `${minutes} min read`,
+    guide: overview ? `${minutes} min read${plan.videoId ? " · Video" : ""}` : "Video",
   };
 
   const [picked, setPicked] = useState<Picked>(null);
@@ -222,7 +230,19 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
         {isOwner && !build.isSample && <EditBar buildId={build.id} name={build.name} current={null} visibility={build.visibility} />}
         {/* The build's guide theme (WO-37): everything below the edit bar takes its colours. */}
         <div className={styles.themed} data-theme={themeOf(plan.theme).id} style={themeStyle(plan.theme)}>
-        <Cover build={build} isOwner={isOwner} signedIn={signedIn} signInToCopy={signInToCopy} signInToLike={signInToLike} autoCopy={!!autoCopy} />
+        <Cover
+          build={build}
+          isOwner={isOwner}
+          signedIn={signedIn}
+          signInToCopy={signInToCopy}
+          signInToLike={signInToLike}
+          autoCopy={!!autoCopy}
+          admin={admin}
+          onWatch={() => {
+            setTab("guide");
+            setPlay((n) => n + 1);
+          }}
+        />
 
         <div className={`page ${styles.body}`}>
           <OldVersionNotice buildId={build.id} signedIn={signedIn} />
@@ -307,9 +327,10 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
               />
             </div>
           )}
-          {tab === "guide" && overview && (
-            <div id="panel-guide" role="tabpanel" aria-labelledby="tab-guide">
-              <GuideSection buildId={build.id} doc={overview} full />
+          {tab === "guide" && (overview || plan.videoId) && (
+            <div id="panel-guide" role="tabpanel" aria-labelledby="tab-guide" className={styles.guidePanel}>
+              {plan.videoId && <VideoGuide videoId={plan.videoId} title={build.name} play={play} />}
+              {overview && <GuideSection buildId={build.id} doc={overview} full />}
             </div>
           )}
           </div>
@@ -1095,6 +1116,8 @@ function Cover({
   signInToCopy,
   signInToLike,
   autoCopy,
+  admin,
+  onWatch,
 }: {
   build: BuildViewData;
   isOwner: boolean;
@@ -1102,6 +1125,8 @@ function Cover({
   signInToCopy: React.ReactNode;
   signInToLike?: React.ReactNode;
   autoCopy: boolean;
+  admin: { featured: boolean } | null;
+  onWatch: () => void;
 }) {
   const router = useRouter();
   const [copied, setCopied] = useState(false);
@@ -1137,6 +1162,7 @@ function Cover({
   }, []);
   // The owner's edit bar shows on their own builds (not the sample).
   const ownerBar = isOwner && !build.isSample;
+  const video = build.plan.videoId;
   const writeup = build.writeupUrl;
   const writeupLabel = writeup && /discord\.(com|gg)/i.test(writeup) ? "Read the write-up on Discord" : "Read the write-up";
 
@@ -1223,6 +1249,12 @@ function Cover({
           )}
         </div>
         <div className={`${styles.actions} ${styles.heroIn} ${styles.heroIn4}`}>
+          {/* A video guide comes first, and largest (WO-39): a creator's video is front and centre. */}
+          {video && (
+            <button type="button" className={`btn btn-primary ${styles.watch}`} onClick={onWatch}>
+              <PlayMark size={18} /> Watch the video guide
+            </button>
+          )}
           {/* The owner has Copy link and Edit in the edit bar; the hero doesn't repeat them. */}
           {!ownerBar && (
             <button type="button" className="btn" onClick={copyLink}>
@@ -1241,15 +1273,49 @@ function Cover({
               </Link>
             )
           ) : signedIn ? (
-            <button type="button" className="btn btn-primary" onClick={copyToMine} disabled={pending}>
+            <button type="button" className={video ? "btn" : "btn btn-primary"} onClick={copyToMine} disabled={pending}>
               {pending ? "Copying…" : "Copy to my builds"}
             </button>
           ) : (
             signInToCopy
           )}
+          {admin && <AdminMenu buildId={build.id} featured={admin.featured} listed={build.visibility === "public"} onError={setError} />}
           {error && <span className={`field-error ${styles.actionError}`}>{error}</span>}
         </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * The admin's More menu on a build page (WO-39): feature the build on Browse, or stop. Only Listed
+ * builds can be featured; featuring one replaces the last.
+ */
+function AdminMenu({ buildId, featured: initial, listed, onError }: { buildId: string; featured: boolean; listed: boolean; onError: (e: string | null) => void }) {
+  const router = useRouter();
+  const [featured, setFeaturedState] = useState(initial);
+  const [pending, start] = useTransition();
+  const toggle = (close: (refocus?: boolean) => void) => {
+    close(true);
+    const next = !featured;
+    onError(null);
+    start(async () => {
+      const r = await setFeatured(buildId, next);
+      if (!r.ok) return onError(r.error);
+      setFeaturedState(next);
+      router.refresh();
+    });
+  };
+  return (
+    <MenuButton buttonClassName="btn btn-icon" buttonLabel="More" menuLabel="More" button="⋯">
+      {(close) => (
+        <button type="button" role="menuitem" tabIndex={-1} className={menuStyles.menuItem} onClick={() => toggle(close)} disabled={pending || (!featured && !listed)}>
+          <span className={menuStyles.menuText}>
+            <span className={menuStyles.menuLabel}>{featured ? "Stop featuring" : "Feature this build"}</span>
+            <span className={menuStyles.menuSub}>{featured ? "Browse goes back to its usual order." : listed ? "First on Browse, and larger." : "Only Listed builds can be featured."}</span>
+          </span>
+        </button>
+      )}
+    </MenuButton>
   );
 }

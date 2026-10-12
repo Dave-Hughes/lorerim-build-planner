@@ -21,6 +21,7 @@ import type { BuildPlan } from "@/lib/rules/types";
 import { ThemePicker } from "./theme-picker";
 import { themeOf } from "@/lib/themes";
 import { useDismiss } from "@/lib/use-dismiss";
+import { YOUTUBE_ERROR, youtubeVideoId } from "@/lib/builds/youtube";
 import styles from "./wizard.module.css";
 
 interface WizardProps {
@@ -916,6 +917,17 @@ function NameStep({ details, updateDetails, plan, update, signedIn, introStart }
           focus={plan.coverFocus}
           onFocus={(coverFocus) => update((p) => ({ ...p, coverFocus }))}
         />
+        <VideoField
+          videoId={plan.videoId}
+          onChange={(videoId) =>
+            update((p) => {
+              const next = { ...p };
+              if (videoId) next.videoId = videoId;
+              else delete next.videoId;
+              return next;
+            })
+          }
+        />
         <label className="field">
           <span className="label">Write-up link</span>
           <input className="input" type="url" value={details.writeupUrl} maxLength={500} onChange={(e) => updateDetails({ writeupUrl: e.target.value })} placeholder="https://discord.com/channels/…" />
@@ -946,6 +958,42 @@ function NameStep({ details, updateDetails, plan, update, signedIn, introStart }
         introStart={introStart}
       />
     </>
+  );
+}
+
+/**
+ * The video guide (WO-39): a YouTube link in any common form. Only the video's id is kept; anything
+ * that isn't a YouTube link says so and isn't kept.
+ */
+function VideoField({ videoId, onChange }: { videoId: string | undefined; onChange: (id: string | undefined) => void }) {
+  const [text, setText] = useState(() => (videoId ? `https://youtu.be/${videoId}` : ""));
+  const bad = text.trim() !== "" && !youtubeVideoId(text);
+  return (
+    <label className="field">
+      <span className="label">Video guide (optional)</span>
+      <input
+        className="input"
+        type="url"
+        value={text}
+        maxLength={300}
+        placeholder="https://www.youtube.com/watch?v=…"
+        aria-invalid={bad || undefined}
+        aria-describedby="video-guide-hint"
+        onChange={(e) => {
+          setText(e.target.value);
+          onChange(youtubeVideoId(e.target.value) ?? undefined);
+        }}
+      />
+      {bad ? (
+        <span id="video-guide-hint" className="field-error" role="alert">
+          {YOUTUBE_ERROR}
+        </span>
+      ) : (
+        <span id="video-guide-hint" className="field-hint">
+          A YouTube video. It opens the build page and the Guide tab.
+        </span>
+      )}
+    </label>
   );
 }
 

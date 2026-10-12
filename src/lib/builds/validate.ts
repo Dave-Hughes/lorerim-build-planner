@@ -45,6 +45,7 @@ function planSchema(d: GameData) {
     masterOfOneSkill: skillName.optional(),
     coverFocus: z.object({ x: z.number().min(0).max(100), y: z.number().min(0).max(100) }).optional(),
     theme: z.enum(THEME_IDS).optional(),
+    videoId: z.string().regex(/^[\w-]{11}$/, "That isn't a YouTube link.").optional(),
     traitChoices: z
       .record(z.string(), z.string().max(40))
       .refine((c) => Object.entries(c).every(([t, v]) => TRAIT_CHOICES[t]?.options.includes(v)), "Unknown trait choice")

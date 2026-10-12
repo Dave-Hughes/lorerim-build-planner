@@ -89,6 +89,8 @@ export const builds = pgTable(
     visibility: buildVisibility("visibility").notNull().default("unlisted"),
     /** Likes, kept in step with build_like in the same transaction, so sorting never counts rows. */
     likeCount: integer("like_count").notNull().default(0),
+    /** When an admin featured it on Browse (WO-39). At most one build has it; only Listed builds. */
+    featuredAt: timestamp("featured_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .notNull()

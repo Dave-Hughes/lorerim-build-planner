@@ -1,6 +1,6 @@
 "use server";
 
-import { and, eq, like, sql } from "drizzle-orm";
+import { and, eq, isNotNull, like, ne, sql } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
@@ -13,6 +13,7 @@ import { guideDocSchema, imageUrls, isGuideKey, isInlineOnly, levelOfKey, limitF
 import { deleteBuildImages, deleteImagesIfUnused, isOurImage } from "@/lib/guide/images";
 import { copyGuide } from "@/lib/guide/queries";
 import { currentVersion, isKnownVersion, requireGameData } from "@/lib/rules/server";
+import { isAdmin } from "@/lib/users/admin";
 
 export type ActionResult<T = undefined> = { ok: true; value: T } | { ok: false; error: string };
 
@@ -139,6 +140,8 @@ export async function saveBuildDetails(id: string, input: BuildDetails): Promise
       coverImageUrl: orNull(details.data.coverImageUrl),
       writeupUrl: orNull(details.data.writeupUrl),
       visibility: details.data.visibility,
+      // Only Listed builds can be featured (WO-39).
+      ...(details.data.visibility === "public" ? {} : { featuredAt: null }),
     })
     .where(and(eq(schema.builds.id, id), eq(schema.builds.ownerId, userId)))
     .returning({ id: schema.builds.id });
@@ -158,13 +161,35 @@ export async function setBuildVisibility(id: string, visibility: unknown): Promi
   if (!v.success) return { ok: false, error: "Choose Listed, Link only or Only you." };
   const rows = await db()
     .update(schema.builds)
-    .set({ visibility: v.data })
+    .set({ visibility: v.data, ...(v.data === "public" ? {} : { featuredAt: null }) })
     .where(and(eq(schema.builds.id, id), eq(schema.builds.ownerId, userId)))
     .returning({ id: schema.builds.id });
   if (!rows[0]) return { ok: false, error: "Only the build's author can change it." };
   revalidatePath(`/b/${id}`);
   revalidatePath("/");
   revalidatePath("/me");
+  return { ok: true, value: undefined };
+}
+
+/**
+ * Features a build on Browse, or stops featuring it (WO-39). Admins only. One build at a time:
+ * featuring one unfeatures the rest. Only Listed builds.
+ */
+export async function setFeatured(id: string, featured: boolean): Promise<ActionResult> {
+  const userId = await requireUser();
+  if (!(await isAdmin(userId))) return { ok: false, error: "Only admins can feature builds." };
+  if (!isValidBuildId(id)) return { ok: false, error: "Unknown build." };
+  const [build] = await db().select({ visibility: schema.builds.visibility }).from(schema.builds).where(eq(schema.builds.id, id)).limit(1);
+  if (!build) return { ok: false, error: "Unknown build." };
+  if (featured && build.visibility !== "public") return { ok: false, error: "Only Listed builds can be featured." };
+  if (featured) {
+    await db().batch([
+      db().update(schema.builds).set({ featuredAt: null }).where(and(isNotNull(schema.builds.featuredAt), ne(schema.builds.id, id))),
+      db().update(schema.builds).set({ featuredAt: new Date(), updatedAt: sql`${schema.builds.updatedAt}` }).where(eq(schema.builds.id, id)),
+    ]);
+  } else await db().update(schema.builds).set({ featuredAt: null, updatedAt: sql`${schema.builds.updatedAt}` }).where(eq(schema.builds.id, id));
+  revalidatePath(`/b/${id}`);
+  revalidatePath("/");
   return { ok: true, value: undefined };
 }
 

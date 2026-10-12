@@ -28,6 +28,7 @@ export default defineConfig({
     reuseExistingServer: true,
     timeout: 60_000,
     // PLANNER_TEST_VERSIONS registers the test-only older LoreRim version (src/lib/rules/__fixtures__/test-version.ts).
-    env: { AUTH_TRUST_HOST: "true", PLANNER_TEST_VERSIONS: "1" },
+    // ADMIN_DISCORD_IDS: the seeded test author is an admin (e2e/seed.ts, WO-39).
+    env: { AUTH_TRUST_HOST: "true", PLANNER_TEST_VERSIONS: "1", ADMIN_DISCORD_IDS: "e2e-discord-admin-0001" },
   },
 });

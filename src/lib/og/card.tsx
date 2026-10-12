@@ -56,6 +56,18 @@ function StarMark({ size, stroke }: { size: number; stroke: number }) {
   );
 }
 
+/** A build with a video guide (WO-39): a small play badge in the card's top-right corner. */
+function VideoBadge() {
+  return (
+    <div style={{ position: "absolute", top: 52, left: CARD.width - 64 - 150, width: 150, height: 44, display: "flex", alignItems: "center", justifyContent: "center", gap: 10, backgroundColor: "rgba(0,0,0,0.66)", border: `1px solid ${C.ember}`, color: "#ffffff", fontFamily: "Title", fontSize: 22, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+      <svg width="20" height="20" viewBox="0 0 24 24">
+        <path d="M7 4.5v15l12.5-7.5z" fill={C.ember} />
+      </svg>
+      Video
+    </div>
+  );
+}
+
 /** Cut text to `lines` lines of about `perLine` characters, ending in "…" (the renderer has no line clamp). */
 function clampText(text: string, perLine: number, lines: number): string {
   const words = text.trim().split(/\s+/);
@@ -75,7 +87,7 @@ function clampText(text: string, perLine: number, lines: number): string {
 }
 
 /** The site's card: the mark, the name (or a build's name, for a build with no cover), the line, the version, the 18 skills. */
-export async function siteCard({ title = SITE_NAME, version, skills }: { title?: string; version: string; skills: string[] }) {
+export async function siteCard({ title = SITE_NAME, version, skills, video = false }: { title?: string; version: string; skills: string[]; video?: boolean }) {
   const icons = await Promise.all(skills.map((s) => icon(slug(s))));
   return new ImageResponse(
     (
@@ -117,6 +129,7 @@ export async function siteCard({ title = SITE_NAME, version, skills }: { title?:
         >
           {icons.map((src, i) => (src ? <img key={i} src={src} width={48} height={48} style={{ opacity: 0.9 }} alt="" /> : <div key={i} style={{ width: 48, height: 48 }} />))}
         </div>
+        {video && <VideoBadge />}
       </div>
     ),
     { ...CARD, fonts: await fonts() },
@@ -135,6 +148,7 @@ export async function buildCard(b: {
   author: string;
   levels: number;
   version: string;
+  video?: boolean;
 }) {
   const [race, sign, mode] = await Promise.all([icon(`race-${slug(b.race)}`), b.birthsign ? icon(`sign-${slug(b.birthsign)}`) : null, icon(`mode-${slug(b.mode)}`)]);
   const facts: [string | null, string][] = [
@@ -170,6 +184,7 @@ export async function buildCard(b: {
             <div style={{ border: `1px solid ${C.ruleStrong}`, padding: "2px 10px", fontSize: 16, letterSpacing: "0.06em", color: C.soft }}>{`LoreRim ${b.version}`}</div>
           </div>
         </div>
+        {b.video && <VideoBadge />}
       </div>
     ),
     { ...CARD, fonts: await fonts() },

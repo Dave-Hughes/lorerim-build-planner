@@ -1,0 +1,1 @@
+ALTER TABLE "build" ADD COLUMN "featured_at" timestamp with time zone;

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { BuildCard, BuildGrid } from "@/components/build/build-card";
 import { BrowseFilters } from "@/components/build/browse-filters";
 import { browseHref, type BrowseState } from "@/lib/builds/browse";
-import { searchBuilds } from "@/lib/builds/queries";
+import { getFeaturedBuild, searchBuilds } from "@/lib/builds/queries";
 import { sampleBuild } from "@/lib/builds/sample";
 import { TAG_BY_SLUG } from "@/lib/builds/tags";
 import { currentVersion, gameData, knownVersions } from "@/lib/rules/server";
@@ -41,6 +41,10 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
     limit: shown,
   });
   const filtered = !!(state.q || state.tags.length || state.race);
+  // The featured build comes first, and larger, when nothing narrows the list (WO-39); with a search
+  // or filter it sits in the grid like any other card.
+  const featured = !filtered && version === defaultVersion ? await getFeaturedBuild() : null;
+  const rest = featured ? builds.filter((b) => b.id !== featured.id) : builds;
   const sample = sampleBuild();
   return (
     <main className={`page ${styles.main}`}>
@@ -74,10 +78,11 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
             New build
           </Link>
         </div>
-      ) : builds.length > 0 ? (
+      ) : builds.length > 0 || featured ? (
         <>
           <BuildGrid>
-            {builds.map((b) => (
+            {featured && <BuildCard key={featured.id} build={featured} featured={{ intro: featured.intro }} />}
+            {rest.map((b) => (
               <BuildCard key={b.id} build={b} />
             ))}
           </BuildGrid>

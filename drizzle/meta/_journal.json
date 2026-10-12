@@ -57,6 +57,13 @@
       "when": 1791809761161,
       "tag": "0007_roleplay_tag",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1791814080471,
+      "tag": "0008_featured_build",
+      "breakpoints": true
     }
   ]
 }

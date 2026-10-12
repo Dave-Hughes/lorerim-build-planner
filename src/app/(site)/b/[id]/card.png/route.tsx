@@ -25,8 +25,9 @@ export async function GET(_req: Request, { params }: { params: Params }) {
         author: build.author.name,
         levels: build.plan.levels.length,
         version: build.gameVersion,
+        video: !!build.plan.videoId,
       })
-    : await siteCard({ title: build.name, version: build.gameVersion, skills: gameData(build.gameVersion)?.skills ?? [] });
+    : await siteCard({ title: build.name, version: build.gameVersion, skills: gameData(build.gameVersion)?.skills ?? [], video: !!build.plan.videoId });
   res.headers.set("cache-control", "public, max-age=31536000, immutable");
   return res;
 }

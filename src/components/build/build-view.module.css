@@ -194,6 +194,20 @@
 .actionError {
   flex-basis: 100%;
 }
+/* "Watch the video guide" (WO-39): first, and the largest button in the hero. */
+.watch {
+  --btn-pad-y: 14px;
+  gap: 10px;
+  padding-left: 26px;
+  padding-right: 26px;
+  font-size: 18px;
+}
+/* The Guide tab: the video guide on top, then the guide. */
+.guidePanel {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
 
 /* ---------- Body ---------- */
 .body {

@@ -1691,11 +1691,11 @@ From Dave's notes, 12 Oct. Dave hopes to partner with Zenematics (`https://www.y
    With a search or filter, it sits in the grid like any other card. At 390, it's full width and first.
 
 ### Done when
-- [ ] Unit tests: the YouTube link forms above give the right id; a Vimeo link and plain text are refused.
-- [ ] e2e: add a video to Iriel. The hero shows `Watch the video guide`; clicking it opens the Guide tab with the player; no request goes to youtube.com before the click.
-- [ ] e2e: as an admin (a test id), feature Iriel. Browse shows her first and two columns wide; a non-admin doesn't see the menu item.
-- [ ] Screenshots: Browse at 1440 and 390 with Iriel featured and a video; Iriel's Guide tab with the video at the top.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Unit tests: the YouTube link forms above give the right id; a Vimeo link and plain text are refused.
+- [x] e2e: add a video to Iriel. The hero shows `Watch the video guide`; clicking it opens the Guide tab with the player; no request goes to youtube.com before the click.
+- [x] e2e: as an admin (a test id), feature Iriel. Browse shows her first and two columns wide; a non-admin doesn't see the menu item.
+- [x] Screenshots: Browse at 1440 and 390 with Iriel featured and a video; Iriel's Guide tab with the video at the top.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

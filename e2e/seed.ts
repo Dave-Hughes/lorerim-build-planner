@@ -29,6 +29,8 @@ export const LONG_BUILD_ID = "e2eqq2e2e8";
 export const LINK_ONLY_BUILD_ID = "e2eqq2e2e7";
 export const TEST_SESSION_TOKEN = "e2e-session-token-0001";
 export const OTHER_SESSION_TOKEN = "e2e-session-token-0002";
+/** The test author's Discord id; playwright.config.ts gives it to the server as ADMIN_DISCORD_IDS. */
+export const E2E_ADMIN_DISCORD_ID = "e2e-discord-admin-0001";
 export const TEST_BUILD_ID = "e2eqq2e2eq";
 /** A copy of the sample the tests may change freely (remove perks, add levels). */
 export const SCRATCH_BUILD_ID = "e2eqq2e2e5";
@@ -64,6 +66,8 @@ export async function seed() {
       { id: TEST_USER_ID, name: TEST_USER_NAME, email: null, image: null, handle: TEST_USER_HANDLE },
       { id: OTHER_USER_ID, name: "Someone Else", email: null, image: null, handle: "e2e-someone-else" },
     ]);
+    // The test author signs in with a Discord account the e2e server lists as an admin (WO-39).
+    await db.insert(schema.accounts).values([{ userId: TEST_USER_ID, type: "oauth", provider: "discord", providerAccountId: E2E_ADMIN_DISCORD_ID }]);
     await db.insert(schema.sessions).values([
       { sessionToken: TEST_SESSION_TOKEN, userId: TEST_USER_ID, expires: new Date(Date.now() + 1000 * 60 * 60 * 24) },
       { sessionToken: OTHER_SESSION_TOKEN, userId: OTHER_USER_ID, expires: new Date(Date.now() + 1000 * 60 * 60 * 24) },

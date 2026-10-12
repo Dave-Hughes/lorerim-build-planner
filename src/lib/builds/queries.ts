@@ -1,5 +1,6 @@
 import "server-only";
-import { and, desc, eq, sql } from "drizzle-orm";
+import { and, desc, eq, inArray, isNotNull, sql } from "drizzle-orm";
+import { docText, firstParagraph, isEmptyDoc } from "@/lib/guide/doc";
 import { db, schema } from "@/db";
 import { readPlan } from "@/lib/rules/convert";
 import type { BuildPlan } from "@/lib/rules/types";
@@ -19,6 +20,7 @@ const summaryFields = {
   race: sql<string>`${schema.builds.plan}->>'race'`,
   traits: sql<string[]>`${schema.builds.plan}->'traits'`,
   levels: sql<number>`jsonb_array_length(${schema.builds.plan}->'levels')`,
+  videoId: sql<string | null>`${schema.builds.plan}->>'videoId'`,
   updatedAt: schema.builds.updatedAt,
   likeCount: schema.builds.likeCount,
   authorName: schema.users.name,
@@ -46,7 +48,27 @@ function toSummary(r: SummaryRow): BuildSummary {
     updatedAt: r.updatedAt,
     author: { name: r.authorName ?? "Unknown", image: r.authorImage ?? null, handle: r.authorHandle ?? null },
     likeCount: Number(r.likeCount ?? 0),
+    videoId: r.videoId ?? null,
   };
+}
+
+/**
+ * The build featured on Browse (WO-39), with the start of its intro (the intro, else the guide's
+ * first paragraph), or null. Only a Listed build counts.
+ */
+export async function getFeaturedBuild(): Promise<(BuildSummary & { intro: string }) | null> {
+  const rows = await summaries()
+    .where(and(eq(schema.builds.visibility, "public"), isNotNull(schema.builds.featuredAt)))
+    .orderBy(desc(schema.builds.featuredAt))
+    .limit(1);
+  const build = rows[0] && toSummary(rows[0]);
+  if (!build) return null;
+  const guide = await db()
+    .select({ key: schema.buildGuides.key, doc: schema.buildGuides.doc })
+    .from(schema.buildGuides)
+    .where(and(eq(schema.buildGuides.buildId, build.id), inArray(schema.buildGuides.key, ["intro", "overview"])));
+  const intro = guide.find((g) => g.key === "intro" && !isEmptyDoc(g.doc))?.doc ?? firstParagraph(guide.find((g) => g.key === "overview")?.doc);
+  return { ...build, intro: docText(intro).slice(0, 400) };
 }
 
 /** A build the viewer may see: public or unlisted for anyone, private only for its owner. */
