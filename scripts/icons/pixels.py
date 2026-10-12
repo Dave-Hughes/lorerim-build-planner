@@ -1041,6 +1041,23 @@ def tag_beginner():
     return i.outline()
 
 
+def tag_roleplay():
+    i = Icon()
+    ellipse(i, 10.6, 6, 4.2, 4.8, "g")                             # the sad mask, behind
+    i.recolor({"g"}, "w", lambda x, y: x <= 9 and y <= 4)
+    i.recolor({"g"}, "G", lambda x, y: x >= 13)
+    i.rect(9, 4, 10, 5, "k"); i.rect(12, 4, 13, 5, "k")
+    i.rect(10, 8, 12, 8, "k"); i.px(9, 9, "k"); i.px(13, 9, "k"); i.px(11, 7, "G")   # down-turned mouth
+    ellipse(i, 5.8, 9.6, 4.4, 5.2, "a")                            # the merry mask, in front
+    i.recolor({"a"}, "A", lambda x, y: x <= 4 and y <= 9)
+    i.recolor({"a"}, "i", lambda x, y: x >= 9 or y >= 14)
+    i.px(2, 7, "k"); i.rect(3, 8, 4, 8, "k"); i.px(9, 7, "k"); i.rect(7, 8, 8, 8, "k")   # slanted eye holes
+    i.px(3, 10, "k"); i.rect(4, 11, 7, 11, "k"); i.px(8, 10, "k"); i.rect(5, 12, 6, 12, "k")   # open grin
+    i.px(5, 14, "."); i.px(6, 14, "a")
+    i.line(1, 9, 0, 13, "r"); i.px(1, 14, "q")                     # ribbon
+    return i.outline()
+
+
 
 # ---------------------------------------------------------------- deities (Wintersun)
 def ring(i, cx, cy, ro, ri, c, where=None):
@@ -1786,6 +1803,7 @@ MODES = {"Konahrik": mode_konahrik, "Naaktiid": mode_naaktiid}
 TAGS = {
     "Shield": tag_shield, "Unarmored": tag_unarmored, "Spellsword": tag_spellsword,
     "Necromancy": tag_necromancy, "Shouts": tag_shouts, "Tank": tag_tank, "Beginner-friendly": tag_beginner,
+    "Roleplay": tag_roleplay,
 }
 
 # Every set and the file-name prefix it is written under.

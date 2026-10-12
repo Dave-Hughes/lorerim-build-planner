@@ -1483,12 +1483,100 @@ Most players are on big gaming monitors.
 
 ---
 
+## WO-36  Set up fixes, a Roleplay tag, and a Like that feels good (12 Oct 2026)
+
+From Dave's notes, 12 Oct. Do after WO-35.
+
+### Set up
+1. **Hovering a chosen tag hides its name.** `.tagChip:hover:not(:disabled)` sets the text to ember, and it outranks `[aria-pressed="true"]`, so on hover a chosen chip is ember on ember (`wizard.module.css`).
+   - A chosen chip keeps its dark text on hover, its background a shade darker (`#d97f33`, as `.btn-primary:active` uses).
+   - Check every chip-like toggle in Set up for the same clash.
+2. **The LoreRim version goes on the first screen.** The `Building for LoreRim 5.0.4.8 · Latest · Change` band moves from the Name step to the top of the Race step, the first thing a new build sees. The sidebar's version line under Race stays.
+3. **The last step is `Details`.** It now holds the name, description, cover, tags and who can see it, and the theme will join them in WO-37.
+   - Rename it in `STEP_NAMES`; the step key stays `name`, so saved drafts keep working.
+   - The `Next:` button before it reads `Next: Details`.
+
+### A Roleplay tag
+4. Add `Roleplay` to `Way of play`, after `Beginner-friendly`.
+   - Tags are seeded by migration (see `tags.ts`), so it needs one: `npm run db:generate`, with the SQL committed.
+   - Its icon is already drawn: `public/icons/tag-roleplay.svg`, two theatre masks, from `tag_roleplay` in `pixels.py` (chat session, 12 Oct).
+
+### Like
+5. Dave wants players to feel amazing for clicking Like. When a player likes a build (not when they unlike), `like-button.tsx` plays this:
+   - **The heart pops:** it fills, scales 1 → 1.35 → 0.95 → 1 over about 350 ms, and goes from ember to a warm rose (`#f1b3a6` on `#d07a6a`).
+   - **A burst of pixel hearts:** 12 small hearts and 6 sparks fly out from the heart, 30–70 px, in ember, rose and gold. Each turns a little and fades out by about 750 ms.
+     - Draw the hearts as a 7×6 pixel grid in the icons' style, rows `.XX.XX.`, `XXXXXXX`, `XXXXXXX`, `.XXXXX.`, `..XXX..`, `...X...`, with the dark outline.
+     - The sparks are the Destiny four-point star, small.
+   - **A soft ring pulses** once behind the button.
+   - **The count rolls:** the old number slides up and out, the new one slides in.
+   - The burst is an overlay that takes no clicks and can spill outside the button. Nothing on the page moves.
+   - Unliking is quiet: the fill drains and the count rolls down.
+   - With `prefers-reduced-motion`, there's no burst, ring or roll: just the fill and the new number.
+
+### Done when
+- [ ] e2e: hovering a chosen tag in Set up keeps its name readable (text colour differs from the background).
+- [ ] Screenshot: the Race step with the version band at the top. The sidebar's last step reads `Details`.
+- [ ] `Roleplay` shows under `Way of play` in Set up and on Browse builds, with its icon. The migration is committed.
+- [ ] A short screen recording (GIF) of the Like burst for Dave, and a frame with reduced motion on.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-37  The Details step: guide themes, and an About note (12 Oct 2026)
+
+**Waiting on Dave's OK** of the canvas row **"Proposal: themes, the Details step, and an About note"**: `DetailsThemes.dc.html` and `AboutNote.dc.html`. Don't start until this line says approved. Do after WO-36.
+
+### Guide themes
+1. A build has a theme, picked in Set up's `Details` step. It sets the look of that build's page below the site header: the hero's tint, the page ground, panels, rules, accent, the drop cap and dividers, and the guide's text colours. Fonts and layout don't change.
+2. **The five themes**, colours from the artboard:
+
+   | Theme | Line under its name | Ground / panel / text / accent / ornament |
+   |---|---|---|
+   | Ember (default) | Night and forge-light. The default. | `#0e1319` / `#121922` / `#e4ebf0` / `#f0913f` / `#b9a173` |
+   | Parchment | A note left on a table. | `#ebe1c8` / `#f4edda` / `#2b2116` / `#8c2f1c` / `#8a6d3b` |
+   | Frost | Snow light over the Throat. | `#0f1a24` / `#142330` / `#eaf2f8` / `#8ecae6` / `#c9d6df` |
+   | Daedric | Black iron and old blood. | `#120a0b` / `#1b0f10` / `#f0e4e2` / `#d8432f` / `#b8862f` |
+   | Dwemer | Bronze, steam and verdigris. | `#10181a` / `#162224` / `#e8e2d4` / `#d39b4a` / `#6fae9c` |
+
+   - Set each theme as CSS custom properties on the build page's root, overriding the existing tokens, so components need no theme logic of their own.
+   - Every text and accent pair must meet WCAG AA (4.5:1 for body text, 3:1 for large text and icons). Adjust a shade if one fails, and say which in the commit.
+3. **The picker:** five cards in a row, each with a small diagram of the build page drawn in that theme (hero block, title line, drop cap and text lines, divider, chips, a panel), its name and its line.
+   - They are real toggle buttons with `aria-pressed`.
+   - Under them, a larger preview of the top of this build's own page (its name, description, intro start and a level panel) in the chosen theme, changing as the player picks.
+4. **Data:** `BuildPlan` or the build row gains `theme`, default `ember`. Existing builds are Ember. The link preview card (WO-33) stays as it is for every theme.
+
+### An About note
+5. A short note from Dave, shown as an in-game note: torn-edged parchment, tilted a degree, a wax seal, Alegreya.
+   - It's reached from a quiet `About` link at the foot of every page; WO-24 removed the nav, so it's the one link there.
+   - The page is `/about`, with the site's link card.
+   - The text, as on the artboard, until Dave edits it:
+
+   > **To whoever finds this,**
+   >
+   > We came to LoreRim the way most do: died in the first cave, came back, died a little later. Somewhere between the third bandit camp and the hundredth perk, we fell for it.
+   >
+   > This planner is our way of paying that back. Plan a character one level at a time, share it, and learn from the ones who walked the road before you. If it gets one new player through their first winter, it was worth the ink.
+   >
+   > Walk well. Mind the frostbite spiders.
+   >
+   > *— Tapps, by candlelight*
+
+### Done when
+- [ ] Screenshots of the Details step with each of the five themes picked. They match the artboard.
+- [ ] Screenshots of Iriel's page at 1440 in all five themes, and in Parchment at 390.
+- [ ] A contrast check of every theme's pairs, in the commit message.
+- [ ] e2e: picking Frost and saving shows Iriel's page in Frost; an existing build with no theme shows Ember.
+- [ ] Screenshot of `/about` at 1440 and 390. The foot link appears on the home page, a build page and a profile.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **Set up loses changes silently (found 11 Oct).** Changes on a Set up step are kept only until `Save changes` on the Name step. Reloading, or leaving through the edit bar (`Levels`, `Guide`), drops them with no warning: a Focused Combat choice was lost this way. Either save each step as it changes, like the editor does, or warn before leaving with unsaved changes.
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
-- **More gear slots (waiting on Dave's in-game check, 12 Oct).** The chat session read LoreRim's game files, and 451 wearable pieces use body slots the planner doesn't know. The item index drops them all today. They sort into these groups:
+- **More gear slots (pinned: Dave checks in game later on 12 Oct, then we pick the slots).** The chat session read LoreRim's game files, and 451 wearable pieces use body slots the planner doesn't know. The item index drops them all today. They sort into these groups:
   - cloaks and capes: about 270 pieces, on slots 40, 45, 46 and 57;
   - backpacks and bags: 67, on slot 47;
   - scarves, collars and sashes: on slots 45 and 46;
