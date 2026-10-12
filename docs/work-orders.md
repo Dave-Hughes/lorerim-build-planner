@@ -1271,6 +1271,70 @@ What went wrong or read badly is below, most serious first. Do after WO-30.
 
 ---
 
+## WO-32  Gear you can follow, and Destiny folded (11 Oct 2026)
+
+Dave approved the mockup: the design canvas's **"Levels tab: perks, Destiny folded, then gear"** artboard (`LevelGear.dc.html`, Iriel at level 22). Build it to match. Do after WO-31.
+
+**Dave's notes.** Gear was easy to miss. It was hard to see what was new at a level, and hard to make sense of it all together. Perks and Destiny should come before gear, and Destiny should stay out of the way unless a star was taken at this level.
+
+### Order of the Levels tab
+1. Below the level card, the order becomes:
+   - attributes and skills, as now;
+   - `Perks at level N`;
+   - Destiny;
+   - `Gear at level N`, as its own section, last.
+   The pinned bar's chips still scroll to the right section.
+
+### Destiny folded
+2. Destiny is one line, as on the artboard:
+   - the Destiny mark and name in gold;
+   - the stars taken so far, in order;
+   - `Next star at level N` (or nothing after the last one);
+   - a `Show the tree` / `Hide the tree` button with `aria-expanded`.
+3. It opens by itself on a level where a Destiny star is taken. It also opens when the pinned bar's Destiny chip, or a Destiny star in the level card, is clicked.
+   - Otherwise it stays as the viewer left it while they move between levels.
+   - Open, it is the WO-27 section as now.
+
+### Gear at a level
+4. **In the level card**, the Gear row is renamed `New gear`. Each item at the level is shown as:
+   - its slot icon;
+   - the item, in an ember chip;
+   - `Body, replaces Leather Scout Armor` muted beside it;
+   - `replaces nothing` when the slot was empty;
+   - an emptied slot as `Poison vials (Other) removed`, as now.
+5. **`Gear at level N`** becomes slot cards, in the fixed slot order, four to a row at 1440 and one column at 390. Each card has:
+   - the slot icon and name;
+   - the item name, wrapping as needed;
+   - the item's stats line from the item index, or the note for free-text items;
+   - a status line. New at this level: an ember border and `New at level 22, was Bosmeri Hood`. Otherwise: `Since level 14`, muted.
+   This replaces WO-31's wrapped list.
+6. **The gear timeline** sits under the cards, with every slot across the whole build:
+   - one row per slot the build ever uses, levels 1 to the last across;
+   - each item is a bar over the levels it's held, with its name in the bar, cut with `…` when narrow, and the full name and levels in its hover text;
+   - bars that start at this level are ember, the held ones light, the rest muted, and this level's column is marked;
+   - an emptied slot's bar just ends.
+   Clicking a bar goes to the level it starts at. The bars are links, reachable by Tab, labelled e.g. `Elven Light Bow, levels 14 to 25`. At 390, the timeline scrolls sideways in its own box; the page doesn't.
+7. **Marks on the level row:**
+   - the ruler and the level tiles get a gear mark at levels with a gear change, using `slot-other`'s satchel, and the legend gets `Gear`;
+   - the pinned bar gets a `Gear` chip at those levels, which scrolls to `Gear at level N`.
+
+### Check the arrow numbers
+8. Iriel's item cards show `Iron Arrow · 54 damage` and `Steel Arrow · 40 damage`.
+   - Check `items.py`'s AMMO reading against the winning records. It reads DATA as projectile, flags, then damage; make sure it reads the right plugin's record when several items share a name.
+   - Report what the records say in the commit message. If the numbers are the game's, leave them.
+   - Light bows doing less damage than the Imperial Bow is probably real (they're faster); leave those.
+
+### Done when
+- [ ] Screenshots at 1440 of Iriel at level 22 match the artboard: the order, Destiny folded, `New gear` in the card, the slot cards and the timeline.
+- [ ] Screenshots of Iriel at 25 (Destiny open by itself, Glass not yet) and at 26 (Glass Light Bow and Glass Arrow new), and of level 22 at 390.
+- [ ] e2e: on a level with no Destiny star, the Destiny section is one line. On level 25 it is open. `Show the tree` opens it.
+- [ ] e2e: clicking `Elven Light Bow` in the timeline goes to level 14.
+- [ ] The ruler, level tiles and pinned bar show the gear mark at 1, 6, 10, 14, 18, 20, 22, 26 and 30 on Iriel, and nowhere else.
+- [ ] The arrow numbers checked, and the commit message says what the records hold.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **Set up loses changes silently (found 11 Oct).** Changes on a Set up step are kept only until `Save changes` on the Name step. Reloading, or leaving through the edit bar (`Levels`, `Guide`), drops them with no warning: a Focused Combat choice was lost this way. Either save each step as it changes, like the editor does, or warn before leaving with unsaved changes.
@@ -1282,5 +1346,4 @@ What went wrong or read badly is below, most serious first. Do after WO-30.
 - **Skills over levels:** a small line chart on the shared page of the main skills from level 1 to the last.
 - **Callings:** a field for the build's Calling, once the Callings mod data is in.
 - **Note preview:** hovering a level in the level row shows the start of that level's note.
-- **Gear over levels** (from Iriel's 30 levels): on the shared page, one row per slot showing what was held when, e.g. `Hunting Light Bow 1–5 · Imperial Bow 6–13 · Elven Light Bow 14–25 · Glass Light Bow 26–30`. Readers asked "what bow when" more than "what at level 17".
 - **Search by perk or item:** "builds that take Lone Wolf", "builds that use a Glass Light Bow", from the plan's perks and gear item ids.
