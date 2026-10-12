@@ -247,7 +247,8 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
 
         <main className={styles.main}>
           <GameDataProvider version={plan.gameVersion}>
-            <VersionBand plan={plan} update={update} mode={mode} buildId={buildId} />
+            {/* The version, the first thing a new build sees (WO-36); the sidebar keeps its line. */}
+            {step === "race" && <VersionBand plan={plan} update={update} mode={mode} buildId={buildId} />}
             {step === "race" && <RaceStep plan={plan} update={update} />}
             {step === "birthsign" && <BirthsignStep plan={plan} update={update} />}
             {step === "skills" && <SkillsStep plan={plan} update={update} />}
@@ -315,7 +316,7 @@ function ChoiceCard({ className, onChoose, children }: { className: string; onCh
 }
 
 /**
- * The LoreRim version the build is for, across the top of every step: hard to miss, never in
+ * The LoreRim version the build is for, at the top of the Race step: hard to miss, never in
  * the way. "Change" opens the list in place. A new build switches version after the same
  * "won't carry over" check as before; an existing build (setup page) is copied for the other
  * version instead, since other people may have its link.

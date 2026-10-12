@@ -70,6 +70,10 @@
   border-color: var(--ember);
   color: var(--on-ember);
 }
+.chip[aria-pressed="true"]:hover {
+  background: #d97f33;
+  border-color: #d97f33;
+}
 .chip:focus-visible,
 .chosenTag:focus-visible {
   outline: 2px solid var(--brass);

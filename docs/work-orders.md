@@ -1514,11 +1514,11 @@ From Dave's notes, 12 Oct. Do after WO-35.
    - With `prefers-reduced-motion`, there's no burst, ring or roll: just the fill and the new number.
 
 ### Done when
-- [ ] e2e: hovering a chosen tag in Set up keeps its name readable (text colour differs from the background).
-- [ ] Screenshot: the Race step with the version band at the top. The sidebar's last step reads `Details`.
-- [ ] `Roleplay` shows under `Way of play` in Set up and on Browse builds, with its icon. The migration is committed.
-- [ ] A short screen recording (GIF) of the Like burst for Dave, and a frame with reduced motion on.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: hovering a chosen tag in Set up keeps its name readable (text colour differs from the background).
+- [x] Screenshot: the Race step with the version band at the top. The sidebar's last step reads `Details`.
+- [x] `Roleplay` shows under `Way of play` in Set up and on Browse builds, with its icon. The migration is committed.
+- [x] A short screen recording (GIF) of the Like burst for Dave, and a frame with reduced motion on.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

@@ -553,7 +553,7 @@
   }
 }
 
-/* The LoreRim version band, across the top of every step. */
+/* The LoreRim version band, at the top of the Race step. */
 .band {
   display: flex;
   flex-direction: column;
@@ -783,6 +783,13 @@
 .tagChip[aria-pressed="true"] {
   background: var(--ember);
   border-color: var(--ember);
+  color: var(--on-ember);
+}
+/* A chosen chip keeps its dark text on hover (the plain hover's ember text would vanish on ember),
+   its fill a shade darker, as .btn-primary:active. */
+.tagChip[aria-pressed="true"]:hover:not(:disabled) {
+  background: #d97f33;
+  border-color: #d97f33;
   color: var(--on-ember);
 }
 .tagChip:disabled {

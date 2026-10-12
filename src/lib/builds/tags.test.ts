@@ -3,9 +3,13 @@ import fs from "node:fs";
 import { MAX_TAGS, TAGS, suggestedTags } from "./tags";
 
 describe("tags", () => {
-  it("has the 20 starting tags, and migration 0005 seeds exactly these", () => {
-    expect(TAGS).toHaveLength(20);
-    const sql = fs.readFileSync("drizzle/0005_tags.sql", "utf8");
+  it("has the 21 tags, and the migrations seed exactly these", () => {
+    expect(TAGS).toHaveLength(21);
+    const sql = fs
+      .readdirSync("drizzle")
+      .filter((f) => f.endsWith(".sql"))
+      .map((f) => fs.readFileSync(`drizzle/${f}`, "utf8"))
+      .join("\n");
     for (const t of TAGS) expect(sql, t.slug).toContain(`('${t.slug}', '${t.name}', '${t.group}'`);
   });
 

@@ -1,5 +1,5 @@
 /**
- * The set list of build tags, by group. Migration 0005 seeds the `tag` table with exactly these;
+ * The set list of build tags, by group. Migrations 0005 and 0007 (Roleplay) seed the `tag` table with exactly these;
  * a new tag needs a migration too.
  */
 export const TAG_GROUPS = ["Weapons", "Armor", "Magic", "Way of play"] as const;
@@ -15,7 +15,7 @@ const list: [TagGroup, string[]][] = [
   ["Weapons", ["One-Handed", "Two-Handed", "Marksman", "Shield"]],
   ["Armor", ["Heavy Armor", "Light Armor", "Unarmored"]],
   ["Magic", ["Destruction", "Conjuration", "Necromancy", "Illusion", "Alteration", "Restoration", "Spellsword"]],
-  ["Way of play", ["Stealth", "Thief", "Crafter", "Shouts", "Tank", "Beginner-friendly"]],
+  ["Way of play", ["Stealth", "Thief", "Crafter", "Shouts", "Tank", "Beginner-friendly", "Roleplay"]],
 ];
 
 export const tagSlug = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, "-");

@@ -3,7 +3,7 @@ import { signIn } from "./helpers";
 import { OLD_BUILD_ID, OLD_VERSION, RETIRED_BUILD_ID, TEST_BUILD_ID } from "./seed";
 
 test.describe("LoreRim versions", () => {
-  test("creation says which version it is for on every step, and Change opens the list", async ({ page }) => {
+  test("creation says which version it is for on the first step, and Change opens the list", async ({ page }) => {
     await page.goto("/new?step=race");
     const band = page.getByRole("region", { name: "LoreRim version" });
     await expect(band).toContainText("Building for LoreRim 5.0.4.8");
@@ -15,14 +15,16 @@ test.describe("LoreRim versions", () => {
     await expect(list.getByRole("listitem").first()).toContainText("LoreRim 5.0.4.8");
     await expect(list.getByRole("listitem").first()).toContainText("Chosen");
 
+    // WO-36: the band is on the Race step only; the sidebar and the Details step still say the version.
     await page.goto("/new?step=name");
-    await expect(page.getByRole("region", { name: "LoreRim version" })).toContainText("Building for LoreRim 5.0.4.8");
+    await expect(page.getByRole("region", { name: "LoreRim version" })).toHaveCount(0);
+    await expect(page.getByRole("complementary", { name: "Setup steps" })).toContainText("LoreRim 5.0.4.8");
     await expect(page.getByRole("main")).toContainText("LoreRim 5.0.4.8");
   });
 
   test("the setup page shows the band too, and offers a copy rather than a change", async ({ page, context }) => {
     await signIn(context);
-    await page.goto(`/b/${TEST_BUILD_ID}/setup`);
+    await page.goto(`/b/${TEST_BUILD_ID}/setup?step=race`);
     const band = page.getByRole("region", { name: "LoreRim version" });
     await expect(band).toContainText("Building for LoreRim 5.0.4.8");
     await band.getByRole("button", { name: "Change" }).click();

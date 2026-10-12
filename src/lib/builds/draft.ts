@@ -12,7 +12,8 @@ export const STEP_NAMES: Record<Step, string> = {
   skills: "Skills",
   traits: "Traits",
   mode: "Mode and start",
-  name: "Name",
+  // The step key stays "name" so saved drafts keep working (WO-36).
+  name: "Details",
 };
 
 export interface Draft {

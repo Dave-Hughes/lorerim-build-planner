@@ -41,6 +41,152 @@
   font-variant-numeric: tabular-nums;
   color: var(--text);
 }
+
+/* ---------- A like that feels good (WO-36) ---------- */
+.heartBox {
+  position: relative;
+  display: inline-flex;
+}
+/* Liked: the heart fills warm rose. */
+.heart {
+  display: inline-flex;
+}
+.isLiked .heart svg {
+  color: #d07a6a;
+  stroke: #f1b3a6;
+}
+.pop {
+  display: inline-flex;
+  animation: likePop 350ms cubic-bezier(0.2, 0.9, 0.3, 1.3) both;
+}
+@keyframes likePop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.35);
+  }
+  75% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* Unliking: the fill drains. */
+.drain {
+  display: inline-flex;
+  animation: likeDrain 260ms ease-out both;
+}
+@keyframes likeDrain {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* The burst: an overlay on the heart that takes no clicks and spills outside the button. */
+.burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+.piece {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  line-height: 0;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: likePiece 750ms cubic-bezier(0.15, 0.7, 0.3, 1) both;
+}
+@keyframes likePiece {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1) rotate(var(--turn));
+  }
+}
+.ring {
+  position: absolute;
+  left: -22px;
+  top: -22px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(240, 145, 63, 0.6);
+  opacity: 0;
+  animation: likeRing 500ms ease-out both;
+}
+@keyframes likeRing {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+/* The count rolls: the old number (drawn from data-from) slides out, the new one in. */
+.roll {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.roll::before {
+  content: attr(data-from);
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: rollOutUp 260ms ease-in both;
+}
+.down {
+  animation-name: rollInDown;
+}
+.down::before {
+  animation-name: rollOutDown;
+}
+.up {
+  animation-name: rollInUp;
+}
+@keyframes rollOutUp {
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+@keyframes rollOutDown {
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+@keyframes rollInUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+@keyframes rollInDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
 .count {
   display: inline-flex;
   align-items: center;
@@ -56,5 +202,15 @@
   .like,
   .signIn {
     transition: none;
+  }
+  /* Just the fill and the new number. */
+  .burst,
+  .roll::before {
+    display: none;
+  }
+  .pop,
+  .drain,
+  .roll {
+    animation: none;
   }
 }

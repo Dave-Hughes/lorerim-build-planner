@@ -56,7 +56,7 @@ test("a trait's choice shows on the shared page", async ({ page, context }) => {
   await focused.getByRole("heading", { name: "Focused Combat" }).click();
   await focused.getByRole("combobox").selectOption("Two-Handed");
   await expect(focused.getByRole("button", { name: "Chosen" })).toHaveAttribute("aria-pressed", "true");
-  await page.getByRole("complementary", { name: "Setup steps" }).getByRole("button", { name: /Name/ }).click();
+  await page.getByRole("complementary", { name: "Setup steps" }).getByRole("button", { name: /Details/ }).click();
   await page.getByRole("button", { name: "Save changes" }).click();
   await page.waitForURL(new RegExp(`/b/${SCRATCH_BUILD_ID}/edit`));
   await page.goto(`/b/${SCRATCH_BUILD_ID}`);

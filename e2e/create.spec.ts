@@ -55,7 +55,7 @@ test.describe("creating a build", () => {
     // The game's starts (WO-29): pick one, then its hold.
     await page.getByLabel("Out in the Wilderness").check();
     await page.getByLabel("Hold").selectOption("Falkreath");
-    await page.getByRole("button", { name: "Next: Name" }).click();
+    await page.getByRole("button", { name: "Next: Details" }).click();
 
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Name the build");
     await page.getByLabel("Build name").fill("Playwright Shield-Wall");
