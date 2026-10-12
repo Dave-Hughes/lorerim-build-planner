@@ -1335,6 +1335,58 @@ Dave approved the mockup: the design canvas's **"Levels tab: perks, Destiny fold
 
 ---
 
+## WO-33  Link preview cards (11 Oct 2026)
+
+When a link is pasted into Messages, Discord or Slack, the app fetches the page and reads its Open Graph tags: a title, a description and one image (1200×630). Build pages send no image today, so a build link shows as a plain grey bubble.
+
+Dave approved the canvas row **"Proposal: link preview cards"**. Build to match. Do after WO-32.
+- `ShareBuild.dc.html`: a build's card.
+- `ShareSite.dc.html`: one card for every other page.
+- `ShareInMessages.dc.html`: how a build link looks in Messages.
+
+### The two cards
+1. **A build's card**, 1200×630, made per build with Next's `opengraph-image` (`ImageResponse`) under `src/app/(site)/b/[id]/`:
+   - The build's cover image fills the card, cropped at its `coverFocus` the same way the hero is. Darken it from the left and the bottom as on the artboard.
+   - The LoreRim Build Planner wordmark top left, and the gold corner brackets.
+   - Bottom left, in this order:
+     - the build's name, in Sofia Sans Extra Condensed caps, at most two lines, cut with `…`;
+     - its description, in Alegreya italic, at most two lines;
+     - race, birthsign and game mode, each with its icon;
+     - the author, `Levels 1 to N`, and the LoreRim version.
+   - Keep text 60 px clear of every edge; Messages crops a little.
+2. **The site's card**, 1200×630, one static image for every page that isn't a build (home, Browse, profiles, `My builds`, the guide and Set up pages):
+   - the star mark, `LoreRim Build Planner`, the site's own line (`Plan and share LoreRim character builds level by level.`) and the version tag;
+   - the 18 skill icons in a framed grid on the right.
+   Set it once in the root layout's metadata.
+3. **When a build has no card of its own:**
+   - A build with no cover gets the site's card, with the build's name in place of `LoreRim Build Planner`.
+   - A private build gets the site's card exactly as it is. Its title tag is the site name only, so nothing about it shows to someone without access.
+   - Unlisted (link-only) builds get their full card: whoever has the link may see it.
+4. **Profiles** (`/u/[handle]`) use the site's card for now, in place of the newest build's raw cover image. That image was uncropped, and could be any size.
+
+### Tags and plumbing
+5. Every page sets:
+   - `og:title`, `og:description`, `og:image` with width and height, and `og:url`;
+   - `og:site_name` = `LoreRim Build Planner`;
+   - `twitter:card` = `summary_large_image`.
+   Set `metadataBase` so image URLs are absolute on staging (its own host) and on production.
+6. **Fonts:** `ImageResponse` can't read the woff2 that `next/font` serves.
+   - Commit TTFs of Sofia Sans Extra Condensed Bold, Sofia Sans Medium and Alegreya Italic, with their OFL licence files, next to the image code.
+   - Load only those three.
+7. **Icons:** draw the pixel icons from `public/icons/` as data-URI SVGs, at whole-number sizes so they stay crisp.
+8. **Caching:**
+   - A build's card URL carries the build's `updatedAt`, so an edit gives a new image.
+   - The site card can be cached for good.
+
+### Done when
+- [ ] Unit test: the metadata for a private build has no build name, description or cover anywhere in it.
+- [ ] PNGs for Dave of Iriel's card, Azrem's card, a build with no cover, and the site card. Each is 1200×630 and matches the artboards.
+- [ ] e2e: Iriel's page has `og:image` pointing at her card, which returns a 1200×630 PNG. The home page's `og:image` is the site card.
+- [ ] Checked by pasting the staging links into a link-preview checker, e.g. opengraph.xyz (it reads the tags the way Messages does). Screenshots for Dave.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **Set up loses changes silently (found 11 Oct).** Changes on a Set up step are kept only until `Save changes` on the Name step. Reloading, or leaving through the edit bar (`Levels`, `Guide`), drops them with no warning: a Focused Combat choice was lost this way. Either save each step as it changes, like the editor does, or warn before leaving with unsaved changes.
