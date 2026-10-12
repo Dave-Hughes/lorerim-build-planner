@@ -145,5 +145,21 @@ class ItemsTest(unittest.TestCase):
         self.assertEqual(rows["Iron Arrow"]["stats"], "Arrow · 8 damage · 0.1 weight")
 
 
+class LabelTest(unittest.TestCase):
+    def test_labels_read_as_players_say_them(self):
+        self.assertEqual(items.weapon_label("Steel Quarterstaff", "Warhammer"), "Quarterstaff")
+        self.assertEqual(items.weapon_label("Ebony Battlestaff", "Warhammer"), "Quarterstaff")
+        self.assertEqual(items.weapon_label("Iron Spear", "Sword"), "Spear")
+        self.assertEqual(items.weapon_label("Ebony Javelin", "Sword"), "Javelin")
+        self.assertEqual(items.weapon_label("Oak Staff", "Qtr Staff"), "Quarterstaff")
+        self.assertEqual(items.weapon_label("Spear of Bitter Mercy", "Pole2H_Thrust"), "Spear")
+        self.assertEqual(items.weapon_label("Iron Sword", "Sword"), "Sword")
+
+    def test_build_skips_names_again(self):
+        raw = {"items": [{"id": "A:000001", "name": "Unarmed", "kind": "weapon", "weaponType": "Claw"}, {"id": "A:000002", "name": "Iron Spear", "kind": "weapon", "weaponType": "Sword", "damage": 9}]}
+        rows = items.build_items(raw, ["^Unarmed$"])
+        self.assertEqual([(r["name"], r["weaponType"]) for r in rows], [("Iron Spear", "Spear")])
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -349,7 +349,7 @@ def main():
     if os.path.exists(os.path.join(RAW, "items_raw.json")):
         from items import build_items
 
-        rows = build_items(load("items_raw.json"))
+        rows = build_items(load("items_raw.json"), load("overrides.json").get("items", {}).get("skipNames", []))
         with open(os.path.join(OUT, "items.json"), "w", encoding="utf-8") as f:
             json.dump(rows, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")

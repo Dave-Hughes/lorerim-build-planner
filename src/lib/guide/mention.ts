@@ -3,7 +3,7 @@
  * icon and text are looked up in the build's own LoreRim version every time it is
  * drawn, so chips stay right when the game data is rebuilt.
  */
-import { itemById, loadedItems, type GameItem } from "@/lib/items/items";
+import { itemById, loadedItems, searchItems, type GameItem } from "@/lib/items/items";
 import { perkText, type GameData } from "@/lib/rules/data";
 
 export const MENTION_KINDS = ["perk", "destiny", "skill", "trait", "birthsign", "stone", "race", "item"] as const;
@@ -109,8 +109,8 @@ export function searchMentions(d: GameData, query: string, limit = 8): MentionIn
   const name = (m: MentionInfo) => m.name.toLowerCase().replace(/^the /, "");
   const starts = all.filter((m) => name(m).startsWith(q) || m.name.toLowerCase().startsWith(q));
   const contains = all.filter((m) => !starts.includes(m) && m.name.toLowerCase().includes(q));
-  const items = loadedItems(d.version.id) ?? [];
-  const itemStarts = starts.length < limit ? items.filter((i) => i.name.toLowerCase().startsWith(q)).sort((a, b) => a.name.length - b.name.length || a.name.localeCompare(b.name)) : [];
-  const itemContains = starts.length + itemStarts.length < limit ? items.filter((i) => !i.name.toLowerCase().startsWith(q) && i.name.toLowerCase().includes(q)) : [];
-  return [...starts, ...itemStarts.map(itemMention), ...contains, ...itemContains.map(itemMention)].slice(0, limit);
+  const items = searchItems(loadedItems(d.version.id) ?? [], q, limit);
+  const itemStarts = items.filter((i) => i.name.toLowerCase().startsWith(q));
+  const itemRest = items.filter((i) => !itemStarts.includes(i));
+  return [...starts, ...itemStarts.map(itemMention), ...contains, ...itemRest.map(itemMention)].slice(0, limit);
 }

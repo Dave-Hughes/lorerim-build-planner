@@ -232,7 +232,9 @@
       "^zzz",
       "DELETED",
       "Dummy",
-      "^\\["
+      "^\\[",
+      "^FXdustDropWEP$",
+      "^Unarmed$"
     ]
   }
 }

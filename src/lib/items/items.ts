@@ -90,17 +90,24 @@ export function fitsSlot(item: GameItem, slot: string): boolean {
   }
 }
 
-/** Names that start with the query first, then names that contain it; at most `limit`. */
+/**
+ * The item search, at most `limit`: names that start with the query first, then names that contain
+ * it, then names with every word of it anywhere, then every word in the name or the type line.
+ * LoreRim renames many things ("Iron Cuirass", not Iron Armor), so "iron armor" still finds it.
+ */
 export function searchItems(items: GameItem[], query: string, limit = 8, keep: (i: GameItem) => boolean = () => true): GameItem[] {
-  const q = query.trim().toLowerCase();
+  const q = query.trim().toLowerCase().replace(/\s+/g, " ");
   if (!q) return [];
-  const starts: GameItem[] = [];
-  const contains: GameItem[] = [];
+  const words = q.split(" ");
+  const ranked: { i: GameItem; rank: number }[] = [];
   for (const i of items) {
     if (!keep(i)) continue;
     const n = i.name.toLowerCase();
-    if (n.startsWith(q)) starts.push(i);
-    else if (contains.length < limit && n.includes(q)) contains.push(i);
+    const rank = n.startsWith(q) ? 0 : n.includes(q) ? 1 : words.every((w) => n.includes(w)) ? 2 : words.every((w) => n.includes(w) || i.stats.toLowerCase().includes(w)) ? 3 : -1;
+    if (rank >= 0) ranked.push({ i, rank });
   }
-  return [...starts.sort((a, b) => a.name.length - b.name.length || a.name.localeCompare(b.name)), ...contains].slice(0, limit);
+  return ranked
+    .sort((a, b) => a.rank - b.rank || a.i.name.length - b.i.name.length || a.i.name.localeCompare(b.i.name))
+    .slice(0, limit)
+    .map((r) => r.i);
 }

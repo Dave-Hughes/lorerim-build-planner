@@ -73,6 +73,22 @@ def weapon_type(keywords, anim):
     return ANIM_TYPES.get(anim)
 
 
+# Labels that read badly or say the same thing twice (first run on the PC, 11 Oct).
+TYPE_LABELS = {"Qtr Staff": "Quarterstaff", "QtrStaff": "Quarterstaff", "Pole2H_Thrust": "Spear"}
+# The name beats the animation keyword: SkyrimSpearMechanic's spears carry a sword keyword, some
+# quarterstaffs only a warhammer one.
+NAME_TYPES = [("quarterstaff", "Quarterstaff"), ("battlestaff", "Quarterstaff"), ("spear", "Spear"), ("javelin", "Javelin")]
+
+
+def weapon_label(name, weapon_type):
+    """The weapon type a player would call it: from the name's last word when it says, else the type label."""
+    low = (name or "").lower()
+    for ending, label in NAME_TYPES:
+        if low.endswith(ending):
+            return label
+    return TYPE_LABELS.get(weapon_type, weapon_type)
+
+
 def armor_slot(biped):
     for bit, slot in BIPED:
         if biped & (1 << bit):
@@ -164,7 +180,7 @@ def describe(rec, kw_names):
     # The id is the plugin that made the record and its form ID there: "Skyrim.esm:012EB7".
     out = {"id": f"{rec['key'][0]}:{rec['key'][1]:06X}", "name": rec["name"], "edid": rec["edid"], "plugin": rec["plugin"]}
     if rec["group"] == "WEAP":
-        out.update(kind="weapon", weaponType=weapon_type(kws, rec.get("anim")), damage=rec.get("damage"))
+        out.update(kind="weapon", weaponType=weapon_label(rec["name"], weapon_type(kws, rec.get("anim"))), damage=rec.get("damage"))
     elif rec["group"] == "ARMO":
         armor_type = next((ARMOR_KEYWORDS[k] for k in kws if k in ARMOR_KEYWORDS), None) or ARMOR_TYPES.get(rec.get("bodyType"))
         out.update(kind="armor", slot=armor_slot(rec.get("biped", 0)), armorType=armor_type, armor=rec.get("armor"))
@@ -260,10 +276,18 @@ def stats_line(e):
     return " · ".join(parts)
 
 
-def build_items(raw):
-    """items_raw.json -> the planner's items.json rows: { id, name, kind, slot, armorType, weaponType, stats, text }."""
+def build_items(raw, skip=()):
+    """
+    items_raw.json -> the planner's items.json rows: { id, name, kind, slot, armorType, weaponType,
+    stats, text }. The name filter and the weapon labels run again here, so a fix to either needs
+    no new extract.
+    """
     rows = []
     for e in raw["items"]:
+        if any(re.search(p, e["name"], re.IGNORECASE) for p in skip):
+            continue
+        if e["kind"] == "weapon":
+            e = {**e, "weaponType": weapon_label(e["name"], e.get("weaponType"))}
         row = {"id": e["id"], "name": e["name"], "kind": e["kind"]}
         if e["kind"] == "armor":
             row["slot"] = e.get("slot")
