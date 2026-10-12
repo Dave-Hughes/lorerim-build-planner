@@ -8,6 +8,7 @@ export function MentionChipIcon({ info }: { info: MentionInfo }) {
   if (i.type === "trait")
     // eslint-disable-next-line @next/next/no-img-element
     return i.image ? <img src={i.image} alt="" aria-hidden="true" width={16} height={16} className={styles.traitIcon} /> : null;
+  if (i.type === "none") return null;
   if (i.type === "sign") return <SignIcon name={i.name} />;
   if (i.type === "race") return <RaceIcon name={i.name} />;
   return <SkillIcon name={i.name} />;

@@ -643,6 +643,43 @@
   width: 100%;
   min-height: 40px;
 }
+/* The item search: its matches drop below the field. */
+.gearSearch {
+  position: relative;
+  min-width: 0;
+}
+.gearOptions {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  background: var(--panel-raised);
+  border: 1px solid var(--rule-strong);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+.gearOption {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+.gearOption[aria-selected="true"],
+.gearOption:hover {
+  background: rgba(240, 145, 63, 0.12);
+}
+.gearOptionName {
+  font-size: 15px;
+  color: var(--text);
+}
+.gearOptionStats {
+  font-size: 13px;
+  color: var(--muted);
+}
 .gearFormActions {
   display: flex;
   gap: 6px;

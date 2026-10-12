@@ -39,6 +39,8 @@ export interface GearItem {
   note: string;
   /** `Other` only: the item this row replaces, or with an empty name takes away. */
   replaces?: string;
+  /** The item picked from the game's item index (WO-23): "Skyrim.esm:012EB7". */
+  itemId?: string;
 }
 
 export interface BuildPlan {

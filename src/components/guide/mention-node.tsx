@@ -10,7 +10,7 @@ import { GuideMention } from "./guide-facts";
 function MentionView({ node }: NodeViewProps) {
   return (
     <NodeViewWrapper as="span">
-      <GuideMention kind={node.attrs.kind} id={node.attrs.id} />
+      <GuideMention kind={node.attrs.kind} id={node.attrs.id} label={node.attrs.label} />
     </NodeViewWrapper>
   );
 }
@@ -22,16 +22,18 @@ export function guideMention(suggestion: Pick<SuggestionOptions<MentionInfo>, "i
       return {
         kind: { default: null, parseHTML: (el) => el.getAttribute("data-kind"), renderHTML: (a) => ({ "data-kind": a.kind }) },
         id: { default: null, parseHTML: (el) => el.getAttribute("data-id"), renderHTML: (a) => ({ "data-id": a.id }) },
+        // Items only: the name, shown until the item index is fetched (and if the item ever leaves it).
+        label: { default: null, parseHTML: (el) => el.getAttribute("data-label"), renderHTML: (a) => (a.label ? { "data-label": a.label } : {}) },
       };
     },
     parseHTML() {
       return [{ tag: "span[data-mention]" }];
     },
     renderHTML({ node, HTMLAttributes }) {
-      return ["span", mergeAttributes({ "data-mention": "" }, HTMLAttributes), mentionFallbackLabel(node.attrs.id ?? "")];
+      return ["span", mergeAttributes({ "data-mention": "" }, HTMLAttributes), mentionFallbackLabel(node.attrs.id ?? "", node.attrs.label)];
     },
     renderText({ node }) {
-      return mentionFallbackLabel(node.attrs.id ?? "");
+      return mentionFallbackLabel(node.attrs.id ?? "", node.attrs.label);
     },
     addNodeView() {
       return ReactNodeViewRenderer(MentionView, { as: "span" });
@@ -50,7 +52,7 @@ export function guideMention(suggestion: Pick<SuggestionOptions<MentionInfo>, "i
           .chain()
           .focus()
           .insertContentAt(range, [
-            { type: "mention", attrs: { kind: m.kind, id: m.id } },
+            { type: "mention", attrs: { kind: m.kind, id: m.id, ...(m.kind === "item" ? { label: m.name } : {}) } },
             { type: "text", text: " " },
           ])
           .run();

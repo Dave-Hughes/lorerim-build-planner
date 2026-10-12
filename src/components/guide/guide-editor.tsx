@@ -7,6 +7,7 @@ import { LINK_ERROR, isSafeHref, isYoutubeUrl, type GuideDoc } from "@/lib/guide
 import { createEditorHandlers, guideExtensions, transformPastedHTML, type MenuBridge, type SlashItem } from "./extensions";
 import { useGameData } from "@/components/game-data";
 import { searchMentions, type MentionInfo } from "@/lib/guide/mention";
+import { loadItems, loadedItems } from "@/lib/items/items";
 import { MentionChipIcon } from "./mention-chip";
 import { unsavedGuide, useGuideAutosave, type GuideSaveStatus } from "./use-guide-autosave";
 import { Tooltip } from "@/components/ui/tooltip";
@@ -362,7 +363,7 @@ const toRect = (r: DOMRect): Rect => ({ left: r.left, top: r.top, bottom: r.bott
 /** State and keyboard handling for a suggestion menu ("/" blocks or "@" mentions). */
 function useMenu<T>() {
   const [menu, setMenu] = useState<MenuState<T> | null>(null);
-  const bridge = (items: (q: string) => T[]): MenuBridge<T> => ({
+  const bridge = (items: (q: string) => T[] | Promise<T[]>): MenuBridge<T> => ({
     items,
     onStart: (p) => {
       const r = p.clientRect?.();
@@ -537,8 +538,16 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
   useLayoutEffect(() => {
     handlers.set({
       slash: slashBridge(items),
-      // "@" searches the build's own LoreRim version.
-      mention: mentionBridge((q) => searchMentions(d, q)),
+      // "@" searches the build's own LoreRim version, items included once their index is fetched
+      // (the first "@" fetches it; until then the game's other things show).
+      mention: mentionBridge((q) => {
+        const now = searchMentions(d, q);
+        if (loadedItems(d.version.id) || !q.trim()) {
+          if (!q.trim()) void loadItems(d.version.id);
+          return now;
+        }
+        return loadItems(d.version.id).then(() => searchMentions(d, q));
+      }),
       link: () => setLinking(true),
       files: (files, pos) => editor && void insertImages(editor, buildId, files, pos),
     });

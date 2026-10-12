@@ -3,12 +3,13 @@
  * icon and text are looked up in the build's own LoreRim version every time it is
  * drawn, so chips stay right when the game data is rebuilt.
  */
+import { itemById, loadedItems, type GameItem } from "@/lib/items/items";
 import { perkText, type GameData } from "@/lib/rules/data";
 
-export const MENTION_KINDS = ["perk", "destiny", "skill", "trait", "birthsign", "stone", "race"] as const;
+export const MENTION_KINDS = ["perk", "destiny", "skill", "trait", "birthsign", "stone", "race", "item"] as const;
 export type MentionKind = (typeof MENTION_KINDS)[number];
 
-export type MentionIcon = { type: "skill" | "sign" | "race"; name: string } | { type: "trait"; image: string | null };
+export type MentionIcon = { type: "skill" | "sign" | "race"; name: string } | { type: "trait"; image: string | null } | { type: "none" };
 
 export interface MentionInfo {
   kind: MentionKind;
@@ -23,9 +24,15 @@ export interface MentionInfo {
 
 const plain = (s: string) => s.replace(/<([^<>]*)>/g, "$1");
 
-/** What a chip whose thing no longer exists shows: the name part of its id. */
-export function mentionFallbackLabel(id: string): string {
+/** What a chip whose thing no longer exists shows: the name it was given (items), else the name part of its id. */
+export function mentionFallbackLabel(id: string, label?: string | null): string {
+  if (label) return label;
   return id.includes(":") ? id.split(":").slice(1).join(":") : id;
+}
+
+/** An item from the index as a mention: the chip shows its name; the card its type, stats and the game's text. */
+export function itemMention(i: GameItem): MentionInfo {
+  return { kind: "item", id: i.id, name: i.name, kindLabel: i.stats, icon: { type: "none" }, text: i.text ?? "" };
 }
 
 export function resolveMention(d: GameData, kind: string, id: string): MentionInfo | null {
@@ -64,6 +71,11 @@ export function resolveMention(d: GameData, kind: string, id: string): MentionIn
         ? { kind, id, name: r.name, kindLabel: "Race", icon: { type: "race", name: r.name }, text: `+15 ${r.primary}. +10 ${r.secondary.join(", ")}.` }
         : null;
     }
+    case "item": {
+      // Only once the version's items are fetched (see useItems).
+      const i = itemById(d.version.id, id);
+      return i ? itemMention(i) : null;
+    }
     default:
       return null;
   }
@@ -86,7 +98,10 @@ function index(d: GameData): MentionInfo[] {
   return all;
 }
 
-/** The @ search: names that start with the query first, then names that contain it. */
+/**
+ * The @ search: names that start with the query first, then names that contain it; game things
+ * before items of the same rank, and items only once they are fetched. At most `limit`.
+ */
 export function searchMentions(d: GameData, query: string, limit = 8): MentionInfo[] {
   const q = query.trim().toLowerCase();
   const all = index(d);
@@ -94,5 +109,8 @@ export function searchMentions(d: GameData, query: string, limit = 8): MentionIn
   const name = (m: MentionInfo) => m.name.toLowerCase().replace(/^the /, "");
   const starts = all.filter((m) => name(m).startsWith(q) || m.name.toLowerCase().startsWith(q));
   const contains = all.filter((m) => !starts.includes(m) && m.name.toLowerCase().includes(q));
-  return [...starts, ...contains].slice(0, limit);
+  const items = loadedItems(d.version.id) ?? [];
+  const itemStarts = starts.length < limit ? items.filter((i) => i.name.toLowerCase().startsWith(q)).sort((a, b) => a.name.length - b.name.length || a.name.localeCompare(b.name)) : [];
+  const itemContains = starts.length + itemStarts.length < limit ? items.filter((i) => !i.name.toLowerCase().startsWith(q) && i.name.toLowerCase().includes(q)) : [];
+  return [...starts, ...itemStarts.map(itemMention), ...contains, ...itemContains.map(itemMention)].slice(0, limit);
 }

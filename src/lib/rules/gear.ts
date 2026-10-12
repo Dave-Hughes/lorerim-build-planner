@@ -15,6 +15,8 @@ export interface HeldGear {
   name: string;
   note: string;
   since: number;
+  /** Set when the item was picked from the game's item index. */
+  itemId?: string;
 }
 
 const slotOrder = (slot: string) => GEAR_SLOTS.indexOf(slot as GearSlot);
@@ -34,7 +36,7 @@ export function gearAt(plan: BuildPlan, level: number): HeldGear[] {
   let other: HeldGear[] = [];
   for (const g of rowsTo(plan, level)) {
     const name = g.name.trim();
-    const item: HeldGear = { slot: g.slot as GearSlot, name, note: g.note, since: g.fromLevel };
+    const item: HeldGear = { slot: g.slot as GearSlot, name, note: g.note, since: g.fromLevel, ...(g.itemId ? { itemId: g.itemId } : {}) };
     if (g.slot !== "Other") {
       if (name) slots.set(item.slot, item);
       else slots.delete(item.slot);

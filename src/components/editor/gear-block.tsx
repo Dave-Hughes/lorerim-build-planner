@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
+import { useGameData } from "@/components/game-data";
+import { fitsSlot, searchItems, useItems, type GameItem } from "@/lib/items/items";
 import { GEAR_SLOTS, gearAt, gearChangeText, gearChanges, type GearSlot, type HeldGear } from "@/lib/rules/gear";
 import type { BuildPlan } from "@/lib/rules/types";
 import * as ops from "./plan-ops";
@@ -42,11 +44,11 @@ export function GearBlock({ plan, level, setPlan }: { plan: BuildPlan; level: nu
                 <li key={`${h.slot}-${h.name}`}>
                   <GearForm
                     slot={h.slot}
-                    initial={{ name: h.name, note: h.note }}
+                    initial={{ name: h.name, note: h.note, itemId: h.itemId }}
                     submit="Save"
                     // Saving a carried item unchanged changes nothing.
-                    onSubmit={(name, note) =>
-                      !here && name.trim() === h.name && note.trim() === h.note ? setEditing(null) : done(ops.setGearAt(plan, level, h.slot, name, note, item))
+                    onSubmit={(set) =>
+                      !here && set.name.trim() === h.name && set.note.trim() === h.note ? setEditing(null) : done(ops.setGearAt(plan, level, h.slot, set, item))
                     }
                     onCancel={() => setEditing(null)}
                   />
@@ -98,7 +100,7 @@ export function GearBlock({ plan, level, setPlan }: { plan: BuildPlan; level: nu
           slots={free}
           initial={{ name: "", note: "" }}
           submit="Add"
-          onSubmit={(name, note, slot) => done(ops.setGearAt(plan, level, slot, name, note))}
+          onSubmit={(set, slot) => done(ops.setGearAt(plan, level, slot, set))}
           onCancel={() => setEditing(null)}
         />
       ) : (
@@ -110,7 +112,12 @@ export function GearBlock({ plan, level, setPlan }: { plan: BuildPlan; level: nu
   );
 }
 
-/** An item field (plain text until the item index exists) and an optional note; a slot select when adding. */
+type GearSet = { name: string; note: string; itemId?: string };
+
+/**
+ * The item field (a search of the game's items that fit the slot, WO-23; free text is fine for
+ * anything the index doesn't have) and an optional note; a slot select when adding.
+ */
 function GearForm({
   slot,
   slots,
@@ -121,23 +128,40 @@ function GearForm({
 }: {
   slot?: GearSlot;
   slots?: GearSlot[];
-  initial: { name: string; note: string };
+  initial: GearSet;
   submit: string;
-  onSubmit: (name: string, note: string, slot: GearSlot) => void;
+  onSubmit: (set: GearSet, slot: GearSlot) => void;
   onCancel: () => void;
 }) {
+  const d = useGameData();
+  const listId = useId();
   const [pick, setPick] = useState<GearSlot>(slot ?? slots?.[0] ?? "Other");
   const [name, setName] = useState(initial.name);
+  const [itemId, setItemId] = useState(initial.itemId);
   const [note, setNote] = useState(initial.note);
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+  // The index loads the first time the field is used.
+  const items = useItems(d.version.id, open);
+  const found = open && items && !itemId ? searchItems(items, name, 8, (i) => fitsSlot(i, pick)) : [];
+  const choose = (i: GameItem) => {
+    setName(i.name);
+    setItemId(i.id);
+    setOpen(false);
+  };
   return (
     <form
       className={styles.gearForm}
       aria-label={slot ? `Change ${slot}` : "Add gear"}
       onSubmit={(e) => {
         e.preventDefault();
-        if (name.trim()) onSubmit(name, note, pick);
+        if (name.trim()) onSubmit({ name, note, itemId }, pick);
       }}
-      onKeyDown={(e) => e.key === "Escape" && onCancel()}
+      onKeyDown={(e) => {
+        if (e.key !== "Escape") return;
+        if (open && found.length) setOpen(false);
+        else onCancel();
+      }}
     >
       {slots ? (
         <select className="select" aria-label="Slot" value={pick} onChange={(e) => setPick(e.target.value as GearSlot)}>
@@ -150,7 +174,60 @@ function GearForm({
       ) : (
         <span className={styles.gearSlot}>{slot}</span>
       )}
-      <input className="input" aria-label="Item" value={name} maxLength={120} placeholder="Steel sword" autoFocus onChange={(e) => setName(e.target.value)} />
+      <span className={styles.gearSearch}>
+        <input
+          className="input"
+          role="combobox"
+          aria-label="Item"
+          aria-autocomplete="list"
+          aria-expanded={found.length > 0}
+          aria-controls={listId}
+          aria-activedescendant={found.length ? `${listId}-${index}` : undefined}
+          value={name}
+          maxLength={120}
+          placeholder="Search the game's items, or type one"
+          autoFocus
+          autoComplete="off"
+          onFocus={() => setOpen(true)}
+          onBlur={() => setOpen(false)}
+          onChange={(e) => {
+            setName(e.target.value);
+            setItemId(undefined);
+            setIndex(0);
+            setOpen(true);
+          }}
+          onKeyDown={(e) => {
+            if (!found.length) return;
+            if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+              e.preventDefault();
+              setIndex((i) => (i + (e.key === "ArrowDown" ? 1 : -1) + found.length) % found.length);
+            } else if (e.key === "Enter") {
+              e.preventDefault();
+              choose(found[Math.min(index, found.length - 1)]);
+            }
+          }}
+        />
+        {found.length > 0 && (
+          <ul role="listbox" id={listId} aria-label="Items" className={styles.gearOptions}>
+            {found.map((i, n) => (
+              <li
+                key={i.id}
+                id={`${listId}-${n}`}
+                role="option"
+                aria-selected={n === index}
+                className={styles.gearOption}
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  choose(i);
+                }}
+              >
+                <span className={styles.gearOptionName}>{i.name}</span>
+                <span className={styles.gearOptionStats}>{i.stats}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </span>
       <input className="input" aria-label="Note (optional)" value={note} maxLength={300} placeholder="Note (optional)" onChange={(e) => setNote(e.target.value)} />
       <span className={styles.gearFormActions}>
         <button type="submit" className="btn btn-sm btn-primary" disabled={!name.trim()}>

@@ -12,7 +12,7 @@ test("gear set at one level carries on, and a later change shows from its own le
   await expect(gear.getByRole("listitem")).toHaveCount(0);
   await gear.getByRole("button", { name: "Add gear" }).click();
   await gear.getByRole("combobox", { name: "Slot" }).selectOption("Main hand");
-  await gear.getByRole("textbox", { name: "Item" }).fill("Iron sword");
+  await gear.getByRole("combobox", { name: "Item" }).fill("Iron sword");
   await gear.getByRole("button", { name: "Add", exact: true }).click();
   await expect(gear.getByRole("listitem")).toContainText("Iron sword");
   await expect(gear.getByRole("button", { name: "Undo Main hand" })).toBeVisible();
@@ -20,7 +20,7 @@ test("gear set at one level carries on, and a later change shows from its own le
   await page.getByRole("button", { name: "Level 5" }).click();
   await expect(gear).toContainText("Iron sword, since level 2");
   await gear.getByRole("button", { name: "Change Main hand" }).click();
-  await gear.getByRole("textbox", { name: "Item" }).fill("Steel spear");
+  await gear.getByRole("combobox", { name: "Item" }).fill("Steel spear");
   await gear.getByRole("textbox", { name: "Note (optional)" }).fill("Bought in Whiterun");
   await gear.getByRole("button", { name: "Save" }).click();
   await expect(gear).toContainText("Steel spear");

@@ -126,7 +126,7 @@ function draw(n: GuideNode, key: string, headingIds: Map<number, string>, index?
       );
     }
     case "mention":
-      return typeof n.attrs?.kind === "string" && typeof n.attrs?.id === "string" ? <GuideMention key={key} kind={n.attrs.kind} id={n.attrs.id} /> : null;
+      return typeof n.attrs?.kind === "string" && typeof n.attrs?.id === "string" ? <GuideMention key={key} kind={n.attrs.kind} id={n.attrs.id} label={typeof n.attrs.label === "string" ? n.attrs.label : null} /> : null;
     case "text":
       return n.text ? withMarks(n.text, n.marks, key) : null;
     default:

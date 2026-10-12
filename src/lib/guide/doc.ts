@@ -156,8 +156,15 @@ const node: z.ZodType<GuideNode> = z.lazy(() =>
     }),
     z.object({
       type: z.literal("mention"),
-      // Only what the chip refers to: never its text, which comes from the game data.
-      attrs: z.object({ kind: z.enum(["perk", "destiny", "skill", "trait", "birthsign", "stone", "race"]), id: z.string().min(1).max(200) }),
+      // Only what the chip refers to: never its text, which comes from the game data. Items keep their
+      // name too, shown until the item index is fetched.
+      attrs: z
+        .object({
+          kind: z.enum(["perk", "destiny", "skill", "trait", "birthsign", "stone", "race", "item"]),
+          id: z.string().min(1).max(200),
+          label: z.string().max(200).nullish(),
+        })
+        .transform(({ kind, id, label }) => (kind === "item" && label ? { kind, id, label } : { kind, id })),
     }),
     z.object({ type: z.literal("text"), text: z.string().min(1).max(60_000), marks: z.array(mark).max(4).optional() }),
   ]),

@@ -63,7 +63,7 @@ export interface SlashItem {
 
 /** Connects a suggestion plugin ("/" blocks, "@" mentions) to the React component that draws its menu. */
 export interface MenuBridge<T> {
-  items: (query: string) => T[];
+  items: (query: string) => T[] | Promise<T[]>;
   onStart: (props: SuggestionProps<T>) => void;
   onUpdate: (props: SuggestionProps<T>) => void;
   onExit: () => void;

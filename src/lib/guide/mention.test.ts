@@ -37,6 +37,9 @@ describe("mentions", () => {
     expect(r.success).toBe(true);
     expect(JSON.stringify(r.data)).not.toContain("label");
     expect(guideDocSchema.safeParse({ type: "doc", content: [{ type: "paragraph", content: [{ type: "mention", attrs: { kind: "spell", id: "x" } }] }] }).success).toBe(false);
+    // Items keep their name, shown until the item index is fetched.
+    const item = guideDocSchema.safeParse({ type: "doc", content: [{ type: "paragraph", content: [{ type: "mention", attrs: { kind: "item", id: "Skyrim.esm:012EB7", label: "Iron Dagger" } }] }] });
+    expect(JSON.stringify(item.data)).toContain('"label":"Iron Dagger"');
   });
 });
 

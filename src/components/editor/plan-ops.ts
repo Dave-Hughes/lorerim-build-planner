@@ -87,14 +87,16 @@ function isEntryRow(g: GearItem, level: number, slot: string, item?: string): bo
  * Sets what a slot holds from `level` on. In `Other`, `item` is the item being changed (one set
  * at this level is edited in place, one carried from earlier is replaced); without it, an item is added.
  */
-export function setGearAt(plan: BuildPlan, level: number, slot: string, name: string, note: string, item?: string): BuildPlan {
-  name = name.trim();
-  note = note.trim();
+export function setGearAt(plan: BuildPlan, level: number, slot: string, set: { name: string; note: string; itemId?: string }, item?: string): BuildPlan {
+  const name = set.name.trim();
+  const note = set.note.trim();
   if (!name) return emptyGearAt(plan, level, slot, item);
-  if (slot !== "Other") return { ...plan, gear: [...plan.gear.filter((g) => !isEntryRow(g, level, slot)), { slot, name, fromLevel: level, note }] };
+  // An item from the index keeps its id, so it links to its card.
+  const picked = set.itemId ? { itemId: set.itemId } : {};
+  if (slot !== "Other") return { ...plan, gear: [...plan.gear.filter((g) => !isEntryRow(g, level, slot)), { slot, name, fromLevel: level, note, ...picked }] };
   const here = item === undefined ? -1 : plan.gear.findIndex((g) => g.fromLevel === level && g.slot === "Other" && g.name === item);
-  if (here >= 0) return { ...plan, gear: plan.gear.map((g, i) => (i === here ? { ...g, name, note } : g)) };
-  return { ...plan, gear: [...plan.gear, { slot, name, fromLevel: level, note, ...(item !== undefined ? { replaces: item } : {}) }] };
+  if (here >= 0) return { ...plan, gear: plan.gear.map((g, i) => (i === here ? { slot: g.slot, fromLevel: g.fromLevel, name, note, ...(g.replaces ? { replaces: g.replaces } : {}), ...picked } : g)) };
+  return { ...plan, gear: [...plan.gear, { slot, name, fromLevel: level, note, ...(item !== undefined ? { replaces: item } : {}), ...picked }] };
 }
 
 /** Empties a slot (or, in `Other`, takes `item` away) from `level` on. */

@@ -11,7 +11,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, use
 import { copyBuild, copyBuildForVersion } from "@/lib/builds/actions";
 import type { BuildRecord } from "@/lib/builds/types";
 import { useGameData } from "@/components/game-data";
-import { GuideFactsProvider } from "@/components/guide/guide-facts";
+import { GuideFactsProvider, GuideMention } from "@/components/guide/guide-facts";
 import { GuideSection } from "@/components/guide/guide-section";
 import { LevelNote } from "@/components/guide/level-note";
 import { docWords, firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
@@ -292,7 +292,7 @@ function GearAt({ plan, level }: { plan: BuildViewData["plan"]; level: number })
           {held.map((g, i) => (
             <div key={i} className={styles.gearRow}>
               <dt>{g.slot}</dt>
-              <dd className={g.since === level ? styles.gearNow : undefined}>{g.name}</dd>
+              <dd className={g.since === level ? styles.gearNow : undefined}>{g.itemId ? <GuideMention kind="item" id={g.itemId} label={g.name} /> : g.name}</dd>
             </div>
           ))}
         </dl>
@@ -859,7 +859,13 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       <span key="g" className={styles.stack}>
         {facts.gear.map((g, i) => (
           <span key={i}>
-            {gearChangeText(g)}
+            {g.itemId && g.name.trim() ? (
+              <>
+                <GuideMention kind="item" id={g.itemId} label={g.name.trim()} /> ({g.slot})
+              </>
+            ) : (
+              gearChangeText(g)
+            )}
             {g.note && <span className="muted"> {g.note}</span>}
           </span>
         ))}

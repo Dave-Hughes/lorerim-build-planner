@@ -3,6 +3,7 @@
 import { createContext, useContext, useMemo } from "react";
 import { useGameData } from "@/components/game-data";
 import { mentionFallbackLabel, resolveMention } from "@/lib/guide/mention";
+import { useItems } from "@/lib/items/items";
 import type { GameData } from "@/lib/rules/data";
 import { computeBuild } from "@/lib/rules/engine";
 import type { BuildPlan, LevelState } from "@/lib/rules/types";
@@ -35,9 +36,14 @@ export function GuideFactsProvider({ plan, states, children }: { plan: BuildPlan
   return <GuideFactsContext.Provider value={facts}>{children}</GuideFactsContext.Provider>;
 }
 
-/** A mention as drawn in the guide: a chip, or plain text when nothing tells us what it is. */
-export function GuideMention({ kind, id }: { kind: string; id: string }) {
+/**
+ * A mention as drawn in the guide: a chip, or plain text when nothing tells us what it is. An item
+ * fetches the version's item index first, showing its saved name until then.
+ */
+export function GuideMention({ kind, id, label }: { kind: string; id: string; label?: string | null }) {
   const facts = useContext(GuideFactsContext);
-  if (!facts) return <>{mentionFallbackLabel(id)}</>;
-  return <MentionChip info={resolveMention(facts.d, kind, id)} missingLabel={mentionFallbackLabel(id)} version={facts.d.version.id} takenAt={facts.takenAt(kind, id)} />;
+  const items = useItems(facts?.d.version.id ?? "", !!facts && kind === "item");
+  if (!facts) return <>{mentionFallbackLabel(id, label)}</>;
+  if (kind === "item" && !items) return <>{mentionFallbackLabel(id, label)}</>;
+  return <MentionChip info={resolveMention(facts.d, kind, id)} missingLabel={mentionFallbackLabel(id, label)} version={facts.d.version.id} takenAt={facts.takenAt(kind, id)} />;
 }

@@ -54,6 +54,7 @@ function planSchema(d: GameData) {
           fromLevel: z.number().int().min(1).max(MAX_LEVELS),
           note: z.string().max(300),
           replaces: z.string().max(120).optional(),
+          itemId: z.string().max(200).optional(),
         }),
       )
       .max(60),
