@@ -12,8 +12,9 @@ describe("tags", () => {
   it("suggests the tags that match the majors", () => {
     expect(suggestedTags(["One-Handed", "Heavy Armor", "Block"])).toEqual(["one-handed", "heavy-armor", "shield"]);
     expect(suggestedTags(["Destruction", "Alteration", "Conjuration"])).toEqual(["destruction", "alteration", "conjuration"]);
-    expect(suggestedTags(["Evasion", "Sneak", "Speech"])).toEqual(["light-armor"]);
-    expect(suggestedTags(["Smithing", "Speech", "Wayfarer"])).toEqual([]);
+    expect(suggestedTags(["Evasion", "Sneak", "Speech"])).toEqual(["light-armor", "stealth"]);
+    expect(suggestedTags(["Smithing", "Speech", "Wayfarer"])).toEqual(["crafter"]);
+    expect(suggestedTags(["Speech", "Wayfarer", "Alchemy"])).toEqual([]);
     expect(suggestedTags([])).toEqual([]);
   });
 
@@ -21,5 +22,10 @@ describe("tags", () => {
     const s = suggestedTags(["One-Handed", "One-Handed", "Two-Handed", "Marksman", "Heavy Armor", "Destruction", "Illusion"]);
     expect(new Set(s).size).toBe(s.length);
     expect(s.length).toBeLessThanOrEqual(MAX_TAGS);
+  });
+
+  it("suggests Stealth for Sneak, Thief for Finesse and Crafter for Smithing", () => {
+    expect(suggestedTags(["Marksman", "Sneak", "Alchemy"])).toEqual(["marksman", "stealth"]);
+    expect(suggestedTags(["Finesse", "Smithing"])).toEqual(["thief", "crafter"]);
   });
 });

@@ -159,6 +159,15 @@ class LabelTest(unittest.TestCase):
         self.assertEqual(items.weapon_label("Pike", "Greatsword"), "Polearm")
         self.assertEqual(items.weapon_label("Molag Bal Spike", "Sword"), "Sword")
         self.assertEqual(items.weapon_label("Staff of Ice Spike", "Staff"), "Staff")
+        self.assertEqual(items.weapon_label("Spear of the Hunter", "Greatsword"), "Spear")
+        self.assertEqual(items.weapon_label("Daedric Pike of the Inferno", "Greatsword"), "Polearm")
+        self.assertEqual(items.weapon_label("Paladin Halberd (Rusty)", "Battleaxe"), "Polearm")
+        self.assertEqual(items.weapon_label("Daedric Quarterstaff of the Inferno", "Warhammer"), "Quarterstaff")
+        self.assertEqual(items.weapon_label("Wooden Battlestaff of Flames", "Staff"), "Staff")
+        self.assertEqual(items.weapon_label("Glass Battlestaff of Icy Spear", "Staff"), "Staff")
+        self.assertEqual(items.weapon_label("Knight of Kynareth Halberd", "Battleaxe"), "Polearm")
+        self.assertEqual(items.weapon_label("Knight of Kynareth Halberd (Tarnished Silver)", "Battleaxe"), "Polearm")
+        self.assertEqual(items.weapon_label("Staff of Icy Spear", "Staff"), "Staff")
         self.assertEqual(items.weapon_label("Iron Sword", "Sword"), "Sword")
 
     def test_build_skips_names_again(self):

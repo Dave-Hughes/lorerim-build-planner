@@ -22,7 +22,9 @@ test.describe("nothing moves under you", () => {
     await expect(panel.getByRole("button", { name: "Confirm" })).toBeFocused();
     expect(Math.abs((await page.evaluate(() => window.scrollY)) - y)).toBeLessThanOrEqual(2);
     await panel.getByRole("button", { name: "Confirm" }).click();
-    await expect(panel.getByRole("button", { name: "Remove" })).toBeFocused();
+    // Taking it closes the card (WO-31); the star says it's taken, and the page hasn't moved.
+    await expect(page.getByRole("complementary", { name: "Perk details" }).filter({ hasText: "Powerful Bashes" })).toHaveCount(0);
+    await expect(star).toBeVisible();
     expect(Math.abs((await page.evaluate(() => window.scrollY)) - y)).toBeLessThanOrEqual(2);
   });
 

@@ -707,6 +707,20 @@
   box-shadow: 0 0 0 2px rgba(14, 19, 25, 0.8);
   pointer-events: none;
 }
+.coverCropWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 420px;
+}
+/* The hero's band: about 2.4 wide to 1 tall (the page's width over the hero's 560px). */
+.coverCrop {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2.4;
+  background-size: cover;
+  border: 1px solid var(--rule);
+}
 .coverActions {
   display: flex;
   flex-wrap: wrap;
@@ -832,4 +846,34 @@
 }
 .startOption {
   max-width: 320px;
+}
+
+/* The deity: the select, then the god's own words (Wintersun), set like the start popover's. */
+.deity {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.deityText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px;
+  border-left: 2px solid var(--rule-strong);
+}
+.deityText p {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.deityHead {
+  font-weight: 600;
+  font-size: 15px;
+}
+.deityWords {
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 16px;
+  color: #c3cdd6;
 }

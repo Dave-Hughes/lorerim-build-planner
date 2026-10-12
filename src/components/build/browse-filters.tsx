@@ -42,7 +42,7 @@ export function BrowseFilters({ state, versions, defaultVersion, races, empty }:
             type="search"
             className="input"
             value={q}
-            placeholder="Name, author, race, trait"
+            placeholder="Name, author, race, deity, trait"
             onChange={(e) => {
               typed.current = true;
               setQ(e.target.value);

@@ -138,7 +138,11 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
       states={states}
       level={level}
       selectedId={id}
-      onTake={(pid) => setPlan(ops.takePerk(plan, level, pid))}
+      onTake={(pid) => {
+        setPlan(ops.takePerk(plan, level, pid));
+        // The star's new state says it was taken: the card closes, so it never covers the page.
+        setSelected(null);
+      }}
       onRemove={(pid, also) => setPlan(ops.removePerks(plan, [{ id: pid, level }, ...also]))}
       onGoToLevel={(n) => setLevel(n)}
     />

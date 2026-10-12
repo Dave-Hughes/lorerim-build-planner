@@ -26,10 +26,11 @@ export const MAX_TAGS = 5;
 
 /**
  * Tags a build's majors suggest, offered (never added unseen) on the first save: a major whose
- * skill has a tag of the same name, plus Shield for Block and Light Armor for Evasion.
+ * skill has a tag of the same name, plus the pairs the tag icons use: Shield for Block, Light Armor for Evasion, Stealth for
+ * Sneak, Thief for Finesse, Crafter for Smithing.
  */
 export function suggestedTags(majors: string[]): string[] {
-  const alias: Record<string, string> = { Block: "shield", Evasion: "light-armor" };
+  const alias: Record<string, string> = { Block: "shield", Evasion: "light-armor", Sneak: "stealth", Finesse: "thief", Smithing: "crafter" };
   const out: string[] = [];
   for (const m of majors) {
     const slug = alias[m] ?? tagSlug(m);

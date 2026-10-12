@@ -35,6 +35,8 @@ export const SCRATCH_BUILD_ID = "e2eqq2e2e5";
 export const GEAR_BUILD_ID = "e2egearnew";
 /** The sample with level 5's Destiny point unspent (Konahrik), for the editor's Destiny control. */
 export const DESTINY_BUILD_ID = "e2edstnyaa";
+/** A listed Bosmer hunter who follows Jephre, like Iriel on staging: for searching by deity. */
+export const IRIEL_BUILD_ID = "e2eyrye7q2";
 export const OTHER_USER_ID = "e2e-user-0002";
 export const OTHER_BUILD_ID = "e2eqq2e2e2";
 /** Made for the test-only older version (src/lib/rules/__fixtures__/test-version.ts). */
@@ -101,6 +103,15 @@ export async function seed() {
         visibility: "private",
         gameVersion: "5.0.4.8",
         plan: { ...samplePlan(), mode: "Konahrik" as const, levels: samplePlan().levels.map((lv, i) => (i === 4 ? { ...lv, destiny: [] } : lv)) },
+      },
+      {
+        id: IRIEL_BUILD_ID,
+        ownerId: OTHER_USER_ID,
+        name: "Iriel Thornwhisper, Green Pact Hunter",
+        description: "A Bosmer archer of the Green Pact.",
+        visibility: "public",
+        gameVersion: "5.0.4.8",
+        plan: { ...samplePlan(), race: "Bosmer", birthsign: "Shadow", deity: "Jephre", mode: "Naaktiid" as const, start: "Pilgrim (Shrine)", startOption: undefined, majors: ["Marksman", "Sneak", "Alchemy"] },
       },
       {
         id: AZREM_BUILD_ID,

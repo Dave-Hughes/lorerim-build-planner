@@ -38,7 +38,10 @@ test.describe("level-up editor", () => {
     await expect(panel).toContainText("Overpowering Bashes");
     await expect(panel).toContainText("Opened this level: raising Block from 46 to 50 met its requirement.");
     await panel.getByRole("button", { name: "Confirm" }).click();
-    await expect(page.getByRole("button", { name: /Overpowering Bashes, Block 50, taken/ })).toBeVisible();
+    // The card closes on Confirm (WO-31); opening the taken star shows Remove.
+    await expect(page.getByRole("complementary", { name: "Perk details" }).filter({ hasText: "Overpowering Bashes" })).toHaveCount(0);
+    await page.getByRole("button", { name: /Overpowering Bashes, Block 50, taken/ }).click();
+    await expect(panel).toContainText("Taken at level 7");
     await expect(panel.getByRole("button", { name: "Remove" })).toBeVisible();
     await expect(page.getByText("Level 7 follows every rule.")).toBeVisible();
 

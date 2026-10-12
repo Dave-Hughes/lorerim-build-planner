@@ -116,6 +116,14 @@ export function withGearSlots(plan: BuildPlan): BuildPlan {
   return { ...plan, gear: plan.gear.map((g) => ({ ...g, slot: gearSlot(g.slot) })) };
 }
 
+/** A deity typed into the old free field, matched to the planner's by letters only ("riddlethar"). */
+export function withGameDeity(plan: BuildPlan, deities: readonly string[]): BuildPlan {
+  if (!plan.deity || deities.includes(plan.deity)) return plan;
+  const letters = (s: string) => s.toLowerCase().replace(/^the\s+/, "").replace(/[^a-z]/g, "");
+  const match = deities.find((g) => letters(g) === letters(plan.deity));
+  return match ? { ...plan, deity: match } : plan;
+}
+
 /**
  * A saved plan as the planner reads it: gear in the fixed slots, the start one of its version's.
  * (A version the planner no longer has keeps its start as saved.)
@@ -123,5 +131,5 @@ export function withGearSlots(plan: BuildPlan): BuildPlan {
 export function readPlan(plan: BuildPlan): BuildPlan {
   const d = gameData(plan.gameVersion);
   const geared = withGearSlots(plan);
-  return d ? withGameStart(geared, d.starts.map((s) => s.name)) : geared;
+  return d ? withGameDeity(withGameStart(geared, d.starts.map((s) => s.name)), d.deities) : geared;
 }

@@ -77,3 +77,13 @@
 .where {
   color: var(--ember);
 }
+
+/* An item's card: its name and slot icon first. */
+.itemName {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
+}

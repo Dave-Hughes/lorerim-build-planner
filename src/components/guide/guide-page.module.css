@@ -56,11 +56,12 @@
   flex-direction: column;
   gap: 8px;
 }
-/* The intro is 4 lines tall; the guide starts at 12 lines and grows with its text. */
-.intro [contenteditable] {
+/* The intro is 4 lines tall; the guide starts at 12 lines and grows with its text. The editor's root
+   only: a dividing line, a mention chip or an image inside is contenteditable="false". */
+.intro [contenteditable="true"] {
   min-height: calc(4 * 1.6em + 46px);
 }
-.guideField [contenteditable] {
+.guideField [contenteditable="true"] {
   min-height: calc(12 * 1.6em + 46px);
 }
 .mini {

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import sample from "./__fixtures__/sample-build.json";
 import raw from "../../../gamedata/5.0.4.8/starts_raw.json";
-import { readPlan, withGameStart } from "./convert";
+import { readPlan, withGameDeity, withGameStart } from "./convert";
 import { requireGameData } from "./data";
 import type { BuildPlan } from "./types";
 
@@ -59,5 +59,15 @@ describe("starts.json", () => {
     expect(d.starts.map((s) => [s.name, s.options])).toEqual(raw.starts.map((s) => [s.name, s.options.map((o) => o.name)]));
     // Eight have no choice; Dragonborn's (Helgen Keep, start or end) has no Random.
     expect(d.starts.filter((s) => s.options.length === 0)).toHaveLength(8);
+  });
+});
+
+describe("old deity text", () => {
+  const deities = requireGameData(base.gameVersion).deities;
+  it("matches the planner's deities by letters only", () => {
+    expect(withGameDeity({ ...base, deity: "riddlethar" }, deities).deity).toBe("Riddle'Thar");
+    expect(withGameDeity({ ...base, deity: "Hoonding" }, deities).deity).toBe("The HoonDing");
+    expect(withGameDeity({ ...base, deity: "Jephre" }, deities).deity).toBe("Jephre");
+    expect(withGameDeity({ ...base, deity: "The Ideal Masters" }, deities).deity).toBe("The Ideal Masters");
   });
 });

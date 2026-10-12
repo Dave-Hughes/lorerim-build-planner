@@ -5,7 +5,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { IconLabel, RaceIcon } from "@/components/ui/skill-icon";
 import { DeleteBuildButton } from "./delete-build-button";
 import type { BuildSummary } from "@/lib/builds/types";
-import { formatDate, formatDayMonth } from "@/lib/format/date";
+import { LocalDate } from "@/components/ui/local-date";
 import styles from "./build-card.module.css";
 
 /** A build in a grid. `likedAt` (a player's Liked list) shows when they liked it in place of the date. */
@@ -33,7 +33,7 @@ export function BuildCard({ build, mine, likedAt }: { build: BuildSummary; mine?
                 <Heart /> {build.likeCount}
               </span>
             )}
-            <span className="muted">{likedAt ? `Liked ${formatDayMonth(likedAt)}` : formatDate(build.updatedAt)}</span>
+            <span className="muted">{likedAt ? <LocalDate date={likedAt} short prefix="Liked " /> : <LocalDate date={build.updatedAt} />}</span>
           </span>
         </div>
         {mine && (

@@ -9,7 +9,6 @@ import { GameDataProvider } from "@/components/game-data";
 import { SignInButton } from "@/components/site-header";
 import { getBuild } from "@/lib/builds/queries";
 import { getGuide } from "@/lib/guide/queries";
-import { formatDate } from "@/lib/format/date";
 import { clientVersion, isKnownVersion } from "@/lib/rules/server";
 
 type Params = Promise<{ id: string }>;
@@ -36,7 +35,6 @@ export default async function BuildPage({ params, searchParams }: { params: Para
     <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
       <BuildView
         build={{ ...rest, updatedAt: updatedAt.toISOString() }}
-        updatedLabel={formatDate(updatedAt)}
         isOwner={isOwner}
         signedIn={!!viewerId}
         initialLevel={Number(level) || 1}

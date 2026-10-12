@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { RaceIcon, SignIcon, SkillIcon } from "@/components/ui/skill-icon";
+import { RaceIcon, SignIcon, SkillIcon, SlotIcon } from "@/components/ui/skill-icon";
 import type { MentionInfo } from "@/lib/guide/mention";
 import styles from "./mention.module.css";
 
@@ -9,6 +9,7 @@ export function MentionChipIcon({ info }: { info: MentionInfo }) {
     // eslint-disable-next-line @next/next/no-img-element
     return i.image ? <img src={i.image} alt="" aria-hidden="true" width={16} height={16} className={styles.traitIcon} /> : null;
   if (i.type === "none") return null;
+  if (i.type === "slot") return <SlotIcon slot={i.name} />;
   if (i.type === "sign") return <SignIcon name={i.name} />;
   if (i.type === "race") return <RaceIcon name={i.name} />;
   return <SkillIcon name={i.name} />;
@@ -53,6 +54,13 @@ export function MentionChip({
         <span>{info.name}</span>
       </button>
       <span role="tooltip" id={id} className={styles.tooltip}>
+        {/* An item: its name with its slot's icon, then its type and stats (perks name themselves in the chip). */}
+        {info.kind === "item" && (
+          <span className={styles.itemName}>
+            <MentionChipIcon info={info} />
+            {info.name}
+          </span>
+        )}
         <span className={styles.kind}>{info.kindLabel}</span>
         {info.text && <span className={styles.text}>{info.text}</span>}
         {where && <span className={styles.where}>{where}</span>}

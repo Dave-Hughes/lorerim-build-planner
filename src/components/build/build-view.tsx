@@ -14,6 +14,7 @@ import { GuideFactsProvider, GuideMention } from "@/components/guide/guide-facts
 import { SkillGains, type SkillGain } from "./skill-gains";
 import { EditBar } from "@/components/editor/edit-bar";
 import { AboutBar } from "./about-bar";
+import { LocalDate } from "@/components/ui/local-date";
 import { GuideSection } from "@/components/guide/guide-section";
 import { LevelNote } from "@/components/guide/level-note";
 import { docWords, firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
@@ -36,7 +37,6 @@ export type BuildViewData = Omit<BuildRecord, "createdAt" | "updatedAt"> & { upd
 
 interface Props {
   build: BuildViewData;
-  updatedLabel: string;
   isOwner: boolean;
   signedIn: boolean;
   initialLevel: number;
@@ -81,7 +81,7 @@ function useNarrower(px: number): boolean {
  * navigation, then the level card (what to do, in the order the game asks, with the author's
  * note), then the reference (attributes, skills, perks).
  */
-export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel, initialTab = "levels", signInToCopy, signInToLike, autoCopy, guide = {} }: Props) {
+export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab = "levels", signInToCopy, signInToLike, autoCopy, guide = {} }: Props) {
   const d = useGameData();
   const noted = useMemo(() => notedLevels(guide), [guide]);
   const { plan } = build;
@@ -180,7 +180,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
       <main className={styles.main}>
         {/* The owner's edit bar: one click to edit, as View build is one click back. */}
         {isOwner && !build.isSample && <EditBar buildId={build.id} name={build.name} current={null} visibility={build.visibility} />}
-        <Cover build={build} updatedLabel={updatedLabel} isOwner={isOwner} signedIn={signedIn} signInToCopy={signInToCopy} signInToLike={signInToLike} autoCopy={!!autoCopy} />
+        <Cover build={build} isOwner={isOwner} signedIn={signedIn} signInToCopy={signInToCopy} signInToLike={signInToLike} autoCopy={!!autoCopy} />
 
         <div className={`page ${styles.body}`}>
           <OldVersionNotice buildId={build.id} signedIn={signedIn} />
@@ -365,7 +365,7 @@ function LevelsTab({
       <section ref={levelBarRef} aria-label="Level" className={styles.levelSection}>
         <div className={styles.levelHead}>
           <LevelStepper level={level} total={total} onChange={setLevel} />
-          <LevelLegend />
+          <LevelLegend marks={marks} />
         </div>
         <LevelBars marks={marks} level={level} onChange={setLevel} />
       </section>
@@ -969,7 +969,6 @@ function Ornament() {
 
 function Cover({
   build,
-  updatedLabel,
   isOwner,
   signedIn,
   signInToCopy,
@@ -977,7 +976,6 @@ function Cover({
   autoCopy,
 }: {
   build: BuildViewData;
-  updatedLabel: string;
   isOwner: boolean;
   signedIn: boolean;
   signInToCopy: React.ReactNode;
@@ -1016,6 +1014,8 @@ function Cover({
     // Runs once on load.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  // The owner's edit bar shows on their own builds (not the sample).
+  const ownerBar = isOwner && !build.isSample;
   const writeup = build.writeupUrl;
   const writeupLabel = writeup && /discord\.(com|gg)/i.test(writeup) ? "Read the write-up on Discord" : "Read the write-up";
 
@@ -1082,7 +1082,9 @@ function Cover({
               <span className={styles.pipe} aria-hidden="true">
                 |
               </span>
-              <span>Updated {updatedLabel}</span>
+              <span>
+                Updated <LocalDate date={build.updatedAt} />
+              </span>
             </span>
           </div>
           {build.tags.length > 0 && (
@@ -1098,18 +1100,23 @@ function Cover({
           )}
         </div>
         <div className={`${styles.actions} ${styles.heroIn} ${styles.heroIn4}`}>
-          <button type="button" className="btn" onClick={copyLink}>
-            {copied ? "Copied" : "Copy link"}
-          </button>
+          {/* The owner has Copy link and Edit in the edit bar; the hero doesn't repeat them. */}
+          {!ownerBar && (
+            <button type="button" className="btn" onClick={copyLink}>
+              {copied ? "Copied" : "Copy link"}
+            </button>
+          )}
           {writeup && (
             <a className="btn" href={writeup} target="_blank" rel="noopener noreferrer">
               {writeupLabel}
             </a>
           )}
           {isOwner ? (
-            <Link className="btn btn-primary" href={`/b/${build.id}/edit`}>
-              Edit build
-            </Link>
+            ownerBar ? null : (
+              <Link className="btn btn-primary" href={`/b/${build.id}/edit`}>
+                Edit build
+              </Link>
+            )
           ) : signedIn ? (
             <button type="button" className="btn btn-primary" onClick={copyToMine} disabled={pending}>
               {pending ? "Copying…" : "Copy to my builds"}

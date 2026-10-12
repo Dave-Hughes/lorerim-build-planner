@@ -371,18 +371,14 @@
   }
 }
 
-/* Phones: the legend is one row that scrolls sideways, rather than leaving Notes alone on a second line. */
+/* Phones: the legend wraps, so its last item is never cut off (WO-31). */
 @media (max-width: 599px) {
   .legend {
-    flex-wrap: nowrap;
-    gap: 14px;
+    gap: 6px 14px;
     min-width: 0;
-    max-width: 100%;
-    overflow-x: auto;
-    scrollbar-width: none;
-    white-space: nowrap;
   }
   .legend span {
     flex: none;
+    white-space: nowrap;
   }
 }

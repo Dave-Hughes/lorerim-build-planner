@@ -59,7 +59,7 @@ export function AboutBar({ plan }: { plan: BuildPlan }) {
       noSign ? (
         "None (Master of Destiny)"
       ) : sign ? (
-        <Tip tip={sign.text}>
+        <Tip tip={<span className={styles.gameWords}>{sign.text}</span>}>
           <IconLabel icon={<SignIcon name={sign.name} />}>The {sign.name}</IconLabel>
         </Tip>
       ) : (
@@ -78,14 +78,14 @@ export function AboutBar({ plan }: { plan: BuildPlan }) {
                     <span className={styles.tipHead}>
                       {part === "follower" ? "Follower" : "Devotee"}: {deity[part]!.name}
                     </span>
-                    <span>{plain(deity[part]!.text)}</span>
+                    <span className={styles.gameWords}>{plain(deity[part]!.text)}</span>
                   </span>
                 ) : null,
               )}
               {deity.tenets && (
                 <span className={styles.tipPart}>
                   <span className={styles.tipHead}>{deity.tenets.name}</span>
-                  <span>{plain(deity.tenets.text)}</span>
+                  <span className={styles.gameWords}>{plain(deity.tenets.text)}</span>
                 </span>
               )}
             </>
@@ -106,7 +106,7 @@ export function AboutBar({ plan }: { plan: BuildPlan }) {
             const label = traitWithChoice(t, plan.traitChoices);
             return (
               <span key={t}>
-                {trait ? <Tip tip={plain(trait.text)}>{label}</Tip> : label}
+                {trait ? <Tip tip={<span className={styles.gameWords}>{plain(trait.text)}</span>}>{label}</Tip> : label}
                 {i < plan.traits.length - 1 ? ", " : ""}
               </span>
             );
@@ -195,7 +195,7 @@ function StartValue({ plan }: { plan: BuildPlan }) {
               {start.optionLabel ?? "Choice"}: {plan.startOption}
             </span>
           )}
-          <span className={styles.popText}>{start.text}</span>
+          <span className={`${styles.popText} ${styles.gameWords}`}>{start.text}</span>
           <span className={styles.popSource}>{start.source}</span>
         </span>
       )}

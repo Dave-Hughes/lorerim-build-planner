@@ -141,7 +141,7 @@ export async function handleFor(userId: string): Promise<string | null> {
 }
 
 export interface BrowseQuery {
-  /** Words to find in the name, description, author, race and traits. */
+  /** Words to find in the name, description, author, race, traits, deity, birthsign and start. */
   q?: string;
   /** Tag slugs; a build must have all of them. */
   tags?: string[];
@@ -163,7 +163,7 @@ export async function searchBuilds(f: BrowseQuery): Promise<{ builds: BuildSumma
     for (const word of q.split(/\s+/).slice(0, 8)) {
       const p = `%${word.replace(/[\\%_]/g, (c) => `\\${c}`)}%`;
       where.push(
-        sql`(${schema.builds.name} ilike ${p} or ${schema.builds.description} ilike ${p} or ${schema.users.name} ilike ${p} or ${schema.builds.plan}->>'race' ilike ${p} or (${schema.builds.plan}->'traits')::text ilike ${p})`,
+        sql`(${schema.builds.name} ilike ${p} or ${schema.builds.description} ilike ${p} or ${schema.users.name} ilike ${p} or ${schema.builds.plan}->>'race' ilike ${p} or (${schema.builds.plan}->'traits')::text ilike ${p} or ${schema.builds.plan}->>'deity' ilike ${p} or ${schema.builds.plan}->>'birthsign' ilike ${p} or ${schema.builds.plan}->>'start' ilike ${p} or ${schema.builds.plan}->>'startOption' ilike ${p})`,
       );
     }
   }

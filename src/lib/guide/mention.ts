@@ -9,7 +9,7 @@ import { perkText, type GameData } from "@/lib/rules/data";
 export const MENTION_KINDS = ["perk", "destiny", "skill", "trait", "birthsign", "stone", "race", "item"] as const;
 export type MentionKind = (typeof MENTION_KINDS)[number];
 
-export type MentionIcon = { type: "skill" | "sign" | "race"; name: string } | { type: "trait"; image: string | null } | { type: "none" };
+export type MentionIcon = { type: "skill" | "sign" | "race" | "slot"; name: string } | { type: "trait"; image: string | null } | { type: "none" };
 
 export interface MentionInfo {
   kind: MentionKind;
@@ -32,7 +32,14 @@ export function mentionFallbackLabel(id: string, label?: string | null): string 
 
 /** An item from the index as a mention: the chip shows its name; the card its type, stats and the game's text. */
 export function itemMention(i: GameItem): MentionInfo {
-  return { kind: "item", id: i.id, name: i.name, kindLabel: i.stats, icon: { type: "none" }, text: i.text ?? "" };
+  return { kind: "item", id: i.id, name: i.name, kindLabel: i.stats, icon: { type: "slot", name: itemSlot(i) }, text: i.text ?? "" };
+}
+
+/** The gear slot an item goes in, for its icon: weapons the main hand, a shield the off hand. */
+export function itemSlot(i: GameItem): string {
+  if (i.kind === "weapon") return "Main hand";
+  if (i.kind === "ammo") return "Ammo";
+  return i.slot === "Shield" ? "Off hand" : (i.slot ?? "Other");
 }
 
 export function resolveMention(d: GameData, kind: string, id: string): MentionInfo | null {

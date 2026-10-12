@@ -47,6 +47,14 @@
   font-weight: 600;
   color: var(--text);
 }
+/* The game's own words (signs, deities, traits, starts): Alegreya italic, as the Start popover sets them. */
+.gameWords {
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #c3cdd6;
+}
 .list {
   display: inline;
 }

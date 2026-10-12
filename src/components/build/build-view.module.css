@@ -918,7 +918,7 @@
 }
 .gearList {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: 6px 28px;
   margin: 0;
 }
@@ -937,6 +937,13 @@
 }
 .gearRow dd {
   margin: 0;
+  min-width: 0;
+}
+/* An item chip's long name wraps inside its cell rather than running over the next one. */
+.gearRow dd :global(button) {
+  white-space: normal;
+  text-align: left;
+  max-width: 100%;
 }
 .gearNow {
   color: var(--ember);

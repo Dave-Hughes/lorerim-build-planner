@@ -48,9 +48,9 @@ export function GuideSection({ buildId, doc, full }: { buildId: string; doc: Gui
   };
   const collapsed = long && !open && !full;
 
+  // No "Guide" label: the tab above already says it (WO-31).
   return (
     <section aria-label="Guide" className={styles.section}>
-      <span className="label">Guide</span>
       {headings.length >= 3 && (
         <nav aria-label="Contents" className={styles.contents}>
           <ol>

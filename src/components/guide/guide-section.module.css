@@ -8,12 +8,9 @@
   .section {
     display: grid;
     grid-template-columns: minmax(0, 1100px) minmax(220px, 300px);
-    grid-template-areas: "label label" "body contents" "more contents";
+    grid-template-areas: "body contents" "more contents";
     column-gap: 56px;
     align-items: start;
-  }
-  .section > :global(.label) {
-    grid-area: label;
   }
   .contents {
     grid-area: contents;

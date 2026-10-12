@@ -76,25 +76,31 @@ def weapon_type(keywords, anim):
 # Labels that read badly or say the same thing twice (first run on the PC, 11 Oct).
 TYPE_LABELS = {"Qtr Staff": "Quarterstaff", "QtrStaff": "Quarterstaff", "Pole2H_Thrust": "Spear"}
 # The name beats the animation keyword: SkyrimSpearMechanic's spears carry a sword keyword, some
-# quarterstaffs only a warhammer one.
-NAME_TYPES = [
-    ("quarterstaff", "Quarterstaff"),
-    ("battlestaff", "Quarterstaff"),
-    ("spear", "Spear"),
-    ("javelin", "Javelin"),
-    # Follow-up (11 Oct): Ebony Pike was a Greatsword. Whole last words only, so a Spike stays itself.
-    (" pike", "Polearm"),
-    (" halberd", "Polearm"),
-    (" glaive", "Polearm"),
-]
+# quarterstaffs only a warhammer one. A staff named for its spell ("Wooden Battlestaff of Flames",
+# "Staff of Icy Spear") keeps its own type. Otherwise the name's last word decides, a trailing
+# "(Rusty)" aside; failing that, a type word before an "of" ("Spear of the Hunter"). Whole words
+# only, so a Spike stays itself.
+NAME_TYPES = {
+    "quarterstaff": "Quarterstaff",
+    "battlestaff": "Quarterstaff",
+    "spear": "Spear",
+    "javelin": "Javelin",
+    "pike": "Polearm",
+    "halberd": "Polearm",
+    "glaive": "Polearm",
+}
 
 
 def weapon_label(name, weapon_type):
-    """The weapon type a player would call it: from the name's last word when it says, else the type label."""
-    low = " " + (name or "").lower()
-    for ending, label in NAME_TYPES:
-        if low.endswith(ending):
-            return label
+    """The weapon type a player would call it: from a type word in the name when it has one, else the type label."""
+    base = re.sub(r"\s*\([^)]*\)\s*$", "", (name or "").lower())
+    words = re.findall(r"[a-z]+", base)
+    if not re.search(r"\bstaff of\b|battlestaff of\b", base):
+        if words and words[-1] in NAME_TYPES:
+            return NAME_TYPES[words[-1]]
+        for word in re.findall(r"[a-z]+", re.split(r"\bof\b", base)[0]):
+            if word in NAME_TYPES and word != "battlestaff":
+                return NAME_TYPES[word]
     return TYPE_LABELS.get(weapon_type, weapon_type)
 
 

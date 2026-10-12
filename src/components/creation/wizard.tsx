@@ -120,7 +120,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
     birthsign: masterOfDestiny ? "Removed by Master of Destiny" : plan.birthsign ? `The ${plan.birthsign}` : "Not chosen",
     skills: `${plan.majors.length} major${plan.majors.length === 1 ? "" : "s"}, ${plan.minors.length} minor${plan.minors.length === 1 ? "" : "s"}`,
     traits: `${plan.traits.length} of ${d.rules.maxTraits} chosen`,
-    mode: `${plan.mode}${plan.start ? `, ${plan.start}${plan.startOption && plan.startOption !== "Random" ? ` · ${plan.startOption}` : ""}` : ""}`,
+    mode: `${plan.mode}${plan.start ? `, ${plan.start}${plan.startOption && plan.startOption !== "Random" ? ` · ${plan.startOption}` : ""}` : ""}${plan.deity ? `, ${plan.deity}` : ""}`,
     name: details.name || "Not named",
   };
 
@@ -703,18 +703,73 @@ function ModeStep({ plan, update }: StepProps) {
       </section>
       <div className={styles.fields}>
         <StartPicker plan={plan} update={update} />
-        <label className="field">
-          <span className="label">Deity</span>
-          <input className="input" list="deities" value={plan.deity} maxLength={80} onChange={(e) => update((p) => ({ ...p, deity: e.target.value }))} placeholder="Optional" />
-          <datalist id="deities">
-            {deities.map((d) => (
-              <option key={d} value={d} />
-            ))}
-          </datalist>
-          {deities.length > 0 && <span className="field-hint">Offered to a {plan.race} at the start: {deities.join(", ")}. Any god can be joined at a shrine.</span>}
-        </label>
+        <DeityField plan={plan} update={update} offered={deities} />
       </div>
     </>
+  );
+}
+
+/**
+ * The deity: None, then the gods offered to the race at the start, then the rest (any god can be
+ * joined at a shrine). The chosen one's Wintersun text shows under it, as the birthsign step does.
+ * A saved name that matches none (old free text) shows as a problem line.
+ */
+function DeityField({ plan, update, offered }: StepProps & { offered: string[] }) {
+  const d = useGameData();
+  const rest = d.deities.filter((g) => !offered.includes(g));
+  const known = !plan.deity || d.deities.includes(plan.deity);
+  const text = d.deityText[plan.deity];
+  const plainText = (s: string) => s.replace(/<([^<>]*)>/g, "$1");
+  return (
+    <div className={styles.deity}>
+      <label className="field">
+        <span className="label">Deity</span>
+        <select className="select" value={known ? plan.deity : ""} onChange={(e) => update((p) => ({ ...p, deity: e.target.value }))}>
+          <option value="">None</option>
+          {offered.length > 0 && (
+            <optgroup label={`Offered to a ${plan.race} at the start`}>
+              {offered.map((g) => (
+                <option key={g} value={g}>
+                  {g}
+                </option>
+              ))}
+            </optgroup>
+          )}
+          <optgroup label={offered.length ? "Any other god, at a shrine" : "At a shrine"}>
+            {rest.map((g) => (
+              <option key={g} value={g}>
+                {g}
+              </option>
+            ))}
+          </optgroup>
+        </select>
+      </label>
+      {!known && (
+        <p role="alert" className={styles.startProblem}>
+          This build&apos;s deity was “{plan.deity}”, which isn&apos;t one the planner knows. Pick one, or None.
+        </p>
+      )}
+      {text && (
+        <div className={styles.deityText}>
+          {(["follower", "devotee"] as const).map((part) =>
+            text[part] ? (
+              <p key={part}>
+                <span className={styles.deityHead}>
+                  {part === "follower" ? "Follower" : "Devotee"}: {text[part]!.name}
+                </span>
+                <span className={styles.deityWords}>{plainText(text[part]!.text)}</span>
+              </p>
+            ) : null,
+          )}
+          {text.tenets && (
+            <p>
+              <span className={styles.deityHead}>{text.tenets.name}</span>
+              <span className={styles.deityWords}>{plainText(text.tenets.text)}</span>
+            </p>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -913,7 +968,15 @@ function CoverField({
             <img src={url} alt="" className={styles.coverPreview} />
             <span className={styles.coverFocusMark} style={{ left: `${focus?.x ?? 50}%`, top: `${focus?.y ?? 50}%` }} aria-hidden="true" />
           </button>
-          <span className="field-hint">Click the image where the build page should centre it. Now {focus ? `${focus.x}% across, ${focus.y}% down` : "the middle"}.</span>
+          {/* The crop the hero shows: its band's proportions, centred on the marker. */}
+          <span className={styles.coverCropWrap}>
+            <span className="sub-label">On the build page</span>
+            <span
+              className={styles.coverCrop}
+              style={{ backgroundImage: `url("${url}")`, backgroundPosition: `${focus?.x ?? 50}% ${focus?.y ?? 50}%` }}
+              aria-hidden="true"
+            />
+          </span>
         </>
       )}
       <div className={styles.coverActions}>

@@ -20,29 +20,41 @@ function Star({ size = 10 }: { size?: number }) {
   );
 }
 
-export function LevelLegend() {
+/** What the level marks mean: only the marks this build has (WO-31). */
+export function LevelLegend({ marks }: { marks: LevelMark[] }) {
+  const has = (k: "perks" | "destiny" | "stone" | "skill100" | "notes") => marks.some((m) => (k === "perks" ? m.perks > 0 : m[k]));
   return (
     <div className={styles.legend}>
-      <span>
-        <i className={styles.keyPerk} />
-        Perk
-      </span>
-      <span>
-        <i className={styles.keyDestiny} />
-        Destiny
-      </span>
-      <span>
-        <i className={styles.keyStone} />
-        Standing stone
-      </span>
-      <span>
-        <Star />
-        Skill 100 perk
-      </span>
-      <span>
-        <i className={styles.keyNotes} />
-        Notes
-      </span>
+      {has("perks") && (
+        <span>
+          <i className={styles.keyPerk} />
+          Perk
+        </span>
+      )}
+      {has("destiny") && (
+        <span>
+          <i className={styles.keyDestiny} />
+          Destiny
+        </span>
+      )}
+      {has("stone") && (
+        <span>
+          <i className={styles.keyStone} />
+          Standing stone
+        </span>
+      )}
+      {has("skill100") && (
+        <span>
+          <Star />
+          Skill 100 perk
+        </span>
+      )}
+      {has("notes") && (
+        <span>
+          <i className={styles.keyNotes} />
+          Notes
+        </span>
+      )}
     </div>
   );
 }
