@@ -1699,6 +1699,67 @@ From Dave's notes, 12 Oct. Dave hopes to partner with Zenematics (`https://www.y
 
 ---
 
+## WO-40  Safety: image checks, reports, and bot limits (12 Oct 2026)
+
+Dave's call, 12 Oct: use Sightengine's free plan (2,000 images a month, at most 500 a day), and tune it so LoreRim's weapons, gore and near-nudity pass while porn doesn't. Do after WO-39.
+
+**Waiting on Dave for one thing.** He signs up at sightengine.com and adds the keys in Vercel as `SIGHTENGINE_API_USER` and `SIGHTENGINE_API_SECRET`, for Production and Preview. Build and test everything with the API mocked; don't wait for the keys.
+
+### 1. Every uploaded image is checked before it's stored
+- **Where:** both upload routes, `src/app/api/covers/route.ts` and `src/app/api/builds/[id]/images/route.ts`.
+- **When:** after the existing size and type checks, before `storeImage`.
+- **What's sent:** the bytes go to Sightengine's check endpoint with `models=nudity-2.1` only. Weapons, gore and the rest are never requested.
+- **The rule**, with scores from 0 to 1 and the cut-offs in environment variables so Dave can loosen them without a release:
+
+  | Sightengine class | Default cut-off | What happens |
+  |---|---|---|
+  | `sexual_activity` | `MOD_REFUSE_AT` = 0.8 | refused |
+  | `sexual_display` | `MOD_REFUSE_AT` = 0.8 | refused |
+  | `erotica` | `MOD_REVIEW_AT` = 0.85 | stored and shown, and added to the review list |
+  | `very_suggestive`, `suggestive`, `mildly_suggestive` | none | stored, nothing flagged |
+
+- **A refused upload** gets `This image can't be used here. Covers and guide images can't show sexual content.` Nothing is stored.
+- **When the check can't be run** (no keys, a timeout after 8 seconds, an error, or over the free plan's limits), the image is stored and put on the review list marked `not checked`. Never block a player because Sightengine is down.
+- **Logging:** for the first 30 days, write every check's class scores to `image_checks` (image URL, uploader, scores, outcome, time), so Dave and the chat session can see where real LoreRim covers land and tune the cut-offs. After that, keep only refused and listed ones.
+
+### 2. Reports
+- A quiet `Report` link at the foot of a build page (not shown to its owner) asks `What's wrong?` with `Sexual content`, `Hateful content`, `Spam` and `Something else`, and an optional line.
+- One report per signed-in player per build.
+- At 3 reports, the build's cover and guide images are hidden behind a plain panel (`This image is waiting for a look.`) until an admin decides.
+
+### 3. The review list, for admins
+- **Where:** `/admin/review`, for the admins from WO-39 (`ADMIN_DISCORD_IDS`); everyone else gets a 404.
+- **What it lists:** images marked by the check (`erotica`, `not checked`) and builds with reports, newest first. Each shows the image, its scores, the uploader, the reports, and three actions:
+  - `Keep` clears it;
+  - `Hide image` takes the image down and puts the panel in its place;
+  - `Remove image` deletes it from the store.
+- A small count shows on the admin's account menu when the list isn't empty.
+
+### 4. Bot limits
+- **Rate limits per account**, counted in the database:
+  - 10 new builds a day;
+  - 20 image uploads a day;
+  - 60 likes an hour;
+  - 10 reports a day.
+
+  Over a limit, the player sees `That's a lot for one day. Try again tomorrow.` (or `in an hour` for likes).
+- **Account age:** a Discord account under 7 days old (from the snowflake in its id) can make Link-only and Private builds, but can't set Listed or upload images until it's 7 days old. The message says when.
+- **Vercel's bot protection:** turn on Vercel BotID for sign-in and the server actions that write (create, save, like, report, upload). If it needs a project setting or a paid plan, write down what's needed for Dave instead of changing it.
+
+### Done when
+- [ ] Unit tests with the check mocked:
+  - `sexual_display` 0.9 is refused;
+  - `erotica` 0.9 is stored and listed;
+  - `mildly_suggestive` 0.95 is stored and not listed;
+  - a timeout is stored as `not checked`.
+- [ ] Unit test: the only model requested is `nudity-2.1`.
+- [ ] e2e: three different test accounts report a build; its cover hides; an admin presses `Keep` on `/admin/review`; the cover is back.
+- [ ] e2e: the 11th build in a day is refused with the message. An account 2 days old can't set Listed.
+- [ ] A note for Dave in the commit on Vercel BotID: on or not, and what it needs.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
@@ -1706,19 +1767,6 @@ From Dave's notes, 12 Oct. Dave hopes to partner with Zenematics (`https://www.y
   - What it covers: which mods run which systems and how to set them; the most important differences from vanilla; how to earn XP early (a plug for Callings); and Dave's list of about 20 "game changers once you know they exist".
   - It's a page of its own on the site, not a build.
   - The field guide (`lorerim/systems/*`, `lorerim/meta/mod-systems-map.md`) already holds most of the checked facts. Careful not to step on anyone else's guides.
-
-- **Bots and image safety (Dave's question, 12 Oct; waiting on his pick).** Recommended plan:
-  - **Bots:** Discord sign-in (already needed to create, like or upload) is most of it. Add:
-    - rate limits per account: 10 new builds a day, 10 image uploads a day, 30 likes a minute;
-    - a minimum Discord account age, read from the id, of 7 days to publish Listed or upload a cover;
-    - Vercel's bot protection on sign-in and the server actions.
-  - **Images:**
-    - an automatic nudity check on every cover upload, before it's saved;
-    - a `Report` link on build pages: at 3 reports the cover is hidden until an admin looks;
-    - an admin list to restore or remove.
-  - **For the check, Dave picks:**
-    - **(a) A free open-source model run on the server.** No account needed; it catches the obvious cases.
-    - **(b) A paid moderation service** (Sightengine, Google Cloud Vision SafeSearch, or AWS Rekognition), which is more accurate. It needs an account and an API key that Dave sets up; about $1–2 per 1,000 images.
 
 - **Set up loses changes silently (found 11 Oct).** Changes on a Set up step are kept only until `Save changes` on the Name step. Reloading, or leaving through the edit bar (`Levels`, `Guide`), drops them with no warning: a Focused Combat choice was lost this way. Either save each step as it changes, like the editor does, or warn before leaving with unsaved changes.
 
