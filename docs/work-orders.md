@@ -1964,6 +1964,29 @@ Dave, 12 Oct: the note an author writes on a gear row ("On the Altar of Magnus",
 
 ---
 
+## WO-48  Build page section titles you can't miss (12 Oct 2026)
+
+Dave, 12 Oct: "Gear at level 11" and the other section titles are too small and easy to miss. They're the shared 13 px brass `.label`, which is meant for small ornament labels, not the titles of the page's main sections.
+
+1. **Which titles:** the build page's section titles. These are `Attributes at level N`, `Skills at level N`, `Perks at level N`, `Gear at level N` and `Spells at level N` (`build-view.tsx`, `gear-view.tsx`, `spell-view.tsx`). The editor's small labels (`Gear`, `Spells` in the editor blocks) and other `.label` uses stay as they are.
+2. **Make each a real heading** (`h2`), styled once as a shared class:
+   - Sofia Sans Extra Condensed 700, uppercase, letter-spacing .06em;
+   - 26 px at desktop, 22 px at 390;
+   - the theme's text colour, not brass;
+   - `at level N` in the same face at weight 500 in the muted colour, so the section name leads;
+   - a 1 px rule in the theme's rule colour under the title, 10 px below it, running the section's full width.
+3. **Space:** 40 px above each title, so a section starts clearly; 16 px between the rule and the content.
+4. **Destiny** keeps its gold bar, with its title at the same 26/22 px so it matches the others.
+5. **Hierarchy check:** the level card's `Level N` (34 px) stays the largest title on the page.
+6. **Themes:** check all five (Ember, Parchment, Frost, Daedric, Dwemer). The title must read clearly on each.
+
+### Done when
+- [ ] Screenshots of Pure Mage (`/b/5pjwcg252f?level=11`) at 1440 and 390, scrolled through Attributes, Skills, Perks, Destiny, Gear and Spells, in Frost and Ember. Each section title is visible at a glance.
+- [ ] The section titles are `h2` elements (check them with an accessibility snapshot).
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
