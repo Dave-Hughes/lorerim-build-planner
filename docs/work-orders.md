@@ -886,6 +886,140 @@ Dave asked whether every item in the game could be indexed. It can: the planner 
 
 ---
 
+## WO-24  Header without a nav, and liked builds on profiles (11 Oct 2026)
+
+From Dave's notes. Do after WO-23. Dave has since reshaped the tabs and pinned bar himself (b496af7); leave those as they are.
+
+### Header (`src/components/site-header.tsx`)
+1. **Remove the nav** (`Browse builds`, `My builds`, `New build`).
+   - The brand links to `/`, which is Browse builds.
+   - On the right: a `New build` primary button (ember, `btn-primary`), then the avatar and name.
+   - The avatar opens a menu: `My page` (`/u/<handle>`), `My builds` (`/me`), `Sign out`.
+   - Signed out, there's `Sign in with Discord` in place of the avatar. `New build` stays, and leads to sign-in.
+2. **The menu** is a real menu button:
+   - `aria-haspopup`, arrow keys, and Esc closes it.
+   - It also closes on a click outside.
+   - The current page's item is marked with `aria-current` and shown in ember.
+3. **Phones:** the brand, `New build` as an icon button with `aria-label="New build"`, and the avatar menu.
+
+### Profile (`/u/<handle>`)
+4. **Two sections:** `Builds` and `Liked`, switched with the same open-text tabs Dave chose for the build page.
+   - `Liked` lists the Listed builds this player has liked, newest like first. It uses the usual cards with a `Liked 11 Oct` line in place of the date.
+   - Link-only and private builds never show here, even if they were liked.
+   - Empty: `No liked builds yet.`
+5. **The header line** reads `2 builds · 5 liked`.
+
+### Done when
+- [ ] e2e: the header has no nav links. `New build` is a button, and the avatar menu reaches My page, My builds and Sign out by keyboard.
+- [ ] e2e: like a Listed build and a Link-only build as a second user; that user's `Liked` shows only the Listed one.
+- [ ] Screenshots for Dave at 1440 and 390: the header signed in and signed out, the menu open, and a profile on `Liked`.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-25  The build page's hero and intro, dressed up (11 Oct 2026)
+
+From Dave's notes. Do after WO-24. Every motion here is off under `prefers-reduced-motion`. It uses transforms and opacity only, with no layout changes and nothing that moves the page under the reader.
+
+### Hero
+1. **Loading in**, once per page load:
+   - The cover fades in from `scale(1.06)` to `1` over 900 ms (ease-out).
+   - Then the title rises 16 px and fades in, at 250 ms.
+   - Then the description at 350 ms, the meta line at 450 ms, and the buttons at 550 ms, each over 500 ms.
+   - Nothing waits on the image: if the cover is slow, the text still comes in on time over the plain band.
+2. **On scroll**, while the hero is in view:
+   - the cover moves at half the scroll speed (parallax, `translateY`);
+   - the text block rises a little faster and fades to 0 by the time the hero's bottom reaches the top of the window;
+   - the dark fade at the hero's foot deepens as you go.
+   - Use one `requestAnimationFrame` loop or `animation-timeline: scroll()` where supported. No scroll-jacking.
+
+### Intro, in the manner of Skyrim's books
+3. In-game books open with a large decorated first letter.
+   - **Drop cap:** the intro's first letter is 4 lines tall in Alegreya, bold, gold (`#b9a173`). It sits in a square frame with the same corner marks as `.frame`, with a faint ember wash behind it. Use `initial-letter: 4` where supported, with a float fallback that lines up with the 4 lines.
+   - **The first line** of the intro is in small caps. Load Alegreya SC 500 for this alone.
+   - **The text:** Alegreya, roman not italic, 20 px, line height 1.65. It runs the full content width, as WO-19 set (Dave's line-length rule).
+   - **Ornament:** above and below the intro, a thin rule with a small diamond in the middle. Draw it as SVG in the gold at 60%, never an emoji or font glyph.
+   - **No intro:** with only the guide's first paragraph shown (WO-19 fallback), it gets the same treatment.
+
+### Done when
+- [ ] e2e: with `prefers-reduced-motion: reduce`, the hero's title has no transform after load and scrolling doesn't change the cover's transform.
+- [ ] A screen recording (GIF) for Dave of loading Azrem's page and scrolling past the hero, at 1440 × 900.
+- [ ] Screenshots: the intro with its drop cap at 1440 and 390, and in Safari (float fallback) if `initial-letter` behaves differently there.
+- [ ] Lighthouse performance on the build page doesn't drop by more than 3 points (before and after numbers in the commit).
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-26  Editing as a first-class place (11 Oct 2026)
+
+Dave: the editing experience feels second class.
+- The share settings took him "forever" to find (they're on the last step of Set up).
+- Going from the editor into the Guide and back is awkward.
+- The perk tree is too short, so he keeps panning to find perks.
+- The tree chips are icon-only and should show their names.
+
+Do after WO-25.
+
+### An edit bar
+1. **Every owner's editing page** (Levels, which is the editor; Set up; Guide) gets the normal site header (WO-24) and, under it, an **edit bar**. Replace `FocusHeader` on these pages. The edit bar is sticky under the header, 56 px tall, on the panel colour with a rule under it. Left to right:
+   - The build's name, in the condensed face, truncating with `…`.
+   - Three page links: `Levels`, `Set up`, `Guide`. They're open-text links with the ember underline on the current one, matching the build page's tabs.
+   - The save status (`Saved`, `Saving…`, `Couldn't save, Try again`), as now.
+   - **Who can see it**, always shown: a select-style button reading `Listed`, `Link only` or `Only you` with an icon. It opens the three choices with their current descriptions and saves on choosing. This is the same setting as Set up's Name step, which keeps its fieldset.
+   - `Copy link`, which says `Copied` for 2 seconds.
+   - `View build`, which opens the shared page in the same tab. A primary button.
+2. **On the shared page**, the owner sees the same edit bar with no page link underlined and `Edit` in place of `View build`, so moving between viewing and editing is one click either way.
+3. **Phones:** the bar holds the name, the visibility button and a `⋯` menu with the page links, Copy link and View build.
+
+### The perk tree in the editor
+4. **Taller.** The tree box's height is the window height minus the site header, the edit bar, the tree chip rows and the legend, less 16 px. Its minimum is 520 px, and it has no maximum. The level header scrolls away above it.
+   - At 1512 × 806 the tree box should be at least 520 px tall, against about 300 px in Dave's screenshot.
+   - The perk panel pins beside the tree as now.
+5. **Chips with names.** Remove the compact icon-only chips (WO-13 #9, WO-14 #1) from the editor.
+   - The chips sit in three rows, one per game group (`Warrior`, `Thief`, `Mage`), each row headed by its group name in the small label style.
+   - Each chip shows the icon, the skill name, its level and the held-count badge.
+   - No horizontal scroll at 1280 and up. Under 1280 the rows may wrap.
+   - Destiny is not in these rows; see WO-27.
+
+### Done when
+- [ ] e2e: from the editor, `Guide` in the edit bar opens the guide page and `Levels` comes back, with no other step. The visibility button changes a build from Link only to Listed, and Set up's Name step shows the change.
+- [ ] e2e: the owner on the shared page sees `Edit`; a visitor sees no edit bar.
+- [ ] At 1512 × 806 the editor's tree box measures at least 520 px tall, and all 18 chips with names are visible without scrolling sideways.
+- [ ] Screenshots for Dave at 1512 × 806: the editor with the edit bar, the visibility menu open; Set up and Guide with the edit bar; the shared page as owner. Also the editor at 390.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-27  Destiny, its own thing (11 Oct 2026)
+
+Dave: Destiny feels invisible because it lives among the perks. In the game it is a separate menu (Custom Skills) with its own points, earned at levels 1, 5, 10 and so on. Give it its own colour and its own place everywhere it appears. Do after WO-26.
+
+### Its look
+1. **Colour:** Destiny's colour is the gold already used for its marks (`#b9a173`), with a lighter tint for text on dark (`#d9c491`) and a 10% wash for backgrounds. Add these as CSS tokens. Perks stay ember. Check text contrast at 4.5:1.
+2. **Mark:** Destiny's mark is the diamond the level bars already use, wherever Destiny is named.
+3. **The Destiny tree** draws its taken stars in gold with gold lines, and its can-take stars with a gold outline. Its box gets a faint gold wash, so it can't be mistaken for a skill tree.
+
+### Where it shows
+4. **The editor:**
+   - Destiny leaves the skill chip rows (WO-26).
+   - It becomes its own control beside them: a gold-outlined button with the diamond, `Destiny`, and `2 left` or `0 left`. When there's a point to spend, it has a gold fill.
+   - Choosing it shows the Destiny tree in the same tree box, and the box's frame turns gold.
+5. **The shared page:**
+   - The level card lists Destiny on its own row, `Destiny`, with the diamond, after `Perk`.
+   - The pinned bar's Destiny chip is gold.
+   - Perks: Destiny is no longer a chip among the trees. After the Perks section comes its own section, `Destiny at level 6`, with the Destiny tree and a `Taken by level 6` list for Destiny only, both in gold. The section is left out when the build has no Destiny perks.
+6. **The editor's level header and the build page's attributes:** a `Destiny points` count sits next to `Perk points`, in gold.
+7. **The level bars:** the gold diamonds are already there. Make the diamond 2 px bigger on the ruler and in the row, so a Destiny level reads at a glance.
+
+### Done when
+- [ ] e2e: in the editor, the Destiny button shows `1 left` at level 5 of a fresh Konahrik build, and taking a Destiny perk sets it to `0 left`.
+- [ ] e2e: Azrem's level 5 card has a `Destiny` row reading `Constitution`, and the shared page has a `Destiny at level 5` section.
+- [ ] Contrast check: the gold text on panel and page backgrounds passes 4.5:1 (numbers in the commit).
+- [ ] Screenshots for Dave: the editor with the Destiny tree open at 1512 × 806; the shared page's level card and Destiny section at 1440; both at 390.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
