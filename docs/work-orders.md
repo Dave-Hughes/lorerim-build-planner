@@ -1045,7 +1045,13 @@ Dave: in the level card, each skill row reads `Marksman 43 → 48`, so the gain 
 
 From Dave's notes. Do after WO-28.
 
-**A correction to WO-15 #7.** It split "Merchant or mercenary" into two starts. LoreRim's own start list has it as **one** start (New Beginnings), and inside it you choose merchant or mercenary and a homeland (`lorerim/starts/alternate-starts.md` in the project docs, read from Dave's files). Most other starts have a choice too: which inn, which port, which hold, which temple or shrine. So a start is a start plus its choices.
+**Starts, checked against the game files (11 Oct).** LoreRim's start list is in `LoreRim - MCM and INI Settings/SKSE/AlternatePerspective/` (three JSON files). They win over the three start mods' own lists in every profile. The display names come from Alternate Perspective's English translation file.
+- There are **25 starts**. `Merchant` and `Mercenary` are separate starts, so WO-15 #7 was right to split them.
+- A start has **at most one choice**: an inn, a port, a hold, a city, a homeland, a guild, a shrine, a temple, or the Helgen Keep start or end.
+- Most choices include `Random`. Nine starts have no choice.
+- The extracted list is committed as `gamedata/5.0.4.8/starts_raw.json`. It holds each start's name, its source mod, its own description text and its options, in the game's order and spelling.
+- The game's own spelling is kept, typos included (`Haarfinger`, `Hjaalmach` in Jailed; `At Angis Camp`).
+- Our current `starts.json` uses our own names and splits Guilds and Dragonborn into several starts; this replaces it.
 
 ### Order
 1. The about bar reads **Race, Birthsign, Deity, Traits, Game mode, Start**: on the build page, in Set up's summary, and anywhere else these six appear together.
@@ -1054,22 +1060,25 @@ From Dave's notes. Do after WO-28.
 2. Each value gets the WO-17 tooltip on hover and focus, with a dotted underline. Every tooltip uses only facts the planner already holds or the game's own words:
    - **Race:** the starting Health, Magicka and Stamina, and the primary and secondary skills (`races.json`).
    - **Birthsign:** the sign's text from the records (`birthsigns.json`), as in Set up.
-   - **Deity:** the deity's blessing text from the records once #4 has it. Until then, the races that can worship it (`deities.json`).
+   - **Deity:** the deity's blessing text from the records, once the PC run (#4) has it. Until then, the races that can worship it (`deities.json`).
    - **Traits:** each trait is its own hover target, not one for the list, with the trait's text from `traits.json`. A trait choice shows as `Focused Combat: One-Handed` (WO-15).
    - **Game mode:** what the mode changes in the planner's rules, from `src/lib/rules/constants.ts`, e.g. Konahrik's 3 perk points at level 1. It must not be wording invented for the tooltip.
-   - **Start:** a popover rather than a tooltip, since it holds more: the start's name, then each choice made with its label, e.g. `Role: Mercenary` and `Homeland: Hammerfell`. It opens on hover and on click (tap on phones), and closes on Esc or a click outside.
-3. **The bar's value for Start** is the start's name followed by the choices in muted text: `Merchant or mercenary · Mercenary, Hammerfell`. It truncates with `…` on narrow screens, and the popover has the rest.
+   - **Start:** a popover rather than a tooltip, since it holds more: the start's name, the choice made (`Hammerfell`), and the start's own text from `starts_raw.json`. It opens on hover and on click (tap on phones), and closes on Esc or a click outside.
+3. **The bar's value for Start** is the start's name with the choice in muted text: `Mercenary · Hammerfell`. With no choice, or `Random`, it's the name alone. It truncates with `…` on narrow screens, and the popover has the rest.
 
 ### Starts and their choices
 4. **Data:**
-   - `starts.json` becomes `[{ name, choices: [{ label, options: [...] }] }]`, generated from the game records by a new `scripts/gamedata/starts.py`. The script reads the start quests' menu messages (MESG records with buttons) that the statue's starts use.
-   - A start whose choices can't be found in the records gets `choices: []`, and the commit lists those starts.
-   - The same script reads each Wintersun deity's blessing text for #2.
-   - Jeff writes and tests it against a fixture; the chat session runs it on Dave's PC, as in WO-23.
-5. **The plan:** `startChoices: Record<string, string>`, keyed by the choice label.
-   - Builds that saved `Merchant` or `Mercenary` (after WO-15) read back as `Merchant or mercenary` with `Role` set.
-   - Builds with the old `Merchant or mercenary` keep it with no choices.
-6. **Set up:** after picking a start, its choices appear under it as selects, each optional. Leaving a choice empty is fine and shows nothing for it on the build page.
+   - `build.py` writes `src/data/lorerim-5.0.4.8/starts.json` from `gamedata/5.0.4.8/starts_raw.json` as `[{ name, source, text, options: [name, ...] }]`.
+   - The game's names, order and options stay as they are.
+   - There's no PC step for starts. The deity blessing text for #2 still needs one, so add it to WO-23's run on the PC or show the fallback until then.
+5. **The plan:** add `startOption?: string`. Map old saved `start` values to the game's names on read (`convert.ts`):
+   - `Regular at an inn` → `Regular (Inn)`; `Arriving from overseas` → `From Overseas`; `Wanted criminal` → `Wanted Criminal`; `Left for dead` → `Left for Dead`.
+   - `Guild member: X` → `Guilds` with option `X`.
+   - `The Dragonborn (Helgen Keep)` → `Dragonborn`, no option.
+   - `Temple pilgrim` → `Pilgrim (Temple)`; `Shrine pilgrim` → `Pilgrim (Shrine)`; `Thalmor prisoner` → `Thalmor Prisoner`.
+   - `At Angi's camp` → `At Angis Camp`; `Dwemer ruin` → `Dwemer Ruin`; `Bounty hunter` → `Bounty Hunter`; `Roadside ambush` → `Roadside Ambush`; `Prisoner in a bandit fort` → `Prisoner in a Bandit Fort`; `Fell in a spike pit` → `Fell in a Spike Pit`; `Out in the wilderness` → `Out in the Wilderness`.
+   - The old `Merchant or mercenary` → no start, with a problem line on Set up's start step asking to pick Merchant or Mercenary. (Jo'Vashar and Azrem on staging have it; the chat session sets them to Merchant · Cyrodiil and Mercenary · Hammerfell after this ships.)
+6. **Set up:** the start step lists the 25 starts in the game's order, grouped by source mod. Each start shows its own text when chosen. A start with options shows them as a select under it (`Inn`, `Port`, `Hold`, `City`, `Homeland`, `Guild`, `Shrine`, `Temple`, `Helgen Keep`; the label is per start, set in `overrides.json`). The option is optional, and `Random` is a choice like any other.
 
 ### Level note size
 7. Level notes can run long. The note text in the level card goes from Alegreya italic 21 px to 17 px, line height 1.55. The author's line above it stays.
@@ -1078,8 +1087,8 @@ From Dave's notes. Do after WO-28.
 ### Done when
 - [ ] e2e: the about bar's labels read in the order above on Azrem's page.
 - [ ] e2e: hovering each item shows its tooltip; `Phalanx` and `Focused Combat` are separate targets. Clicking Start opens the popover with the choices, and Esc closes it.
-- [ ] Unit test: a plan with `start: "Mercenary"` reads back as `Merchant or mercenary` with `Role: Mercenary`.
-- [ ] `starts.json` built from the real load order, with the starts that have no choices listed in the commit message.
+- [ ] Unit tests for the old-name mapping in #5, including `Guild member: Companions` → `Guilds` / `Companions`.
+- [ ] `starts.json` built from `starts_raw.json`: 25 starts, and the option lists match it exactly.
 - [ ] Screenshots for Dave at 1440 and 390: the about bar with a tooltip open and with the Start popover open; Set up's start step with a start's choices; a long level note clamped.
 - [ ] All checks in CLAUDE.md pass.
 

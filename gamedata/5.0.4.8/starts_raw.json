@@ -1,0 +1,702 @@
+{
+ "source": "LoreRim - MCM and INI Settings/SKSE/AlternatePerspective (wins over the three start mods in every profile); names from Alternate Perspective english translation",
+ "starts": [
+  {
+   "name": "Regular (Inn)",
+   "from": "Alternate Perspective",
+   "plugin": "AlternatePerspective.esp",
+   "id": null,
+   "text": "You're a Regular at an Inn somewhere in Skyrim or Solstheim.",
+   "options": [
+    {
+     "name": "Random",
+     "id": "0"
+    },
+    {
+     "name": "The Bannered Mare",
+     "id": "0x3271C8"
+    },
+    {
+     "name": "The Bee and Barb",
+     "id": "0x3457D0"
+    },
+    {
+     "name": "The Winking Skeever",
+     "id": "0x3457D2"
+    },
+    {
+     "name": "Silver-Blood Inn",
+     "id": "0x3457D4"
+    },
+    {
+     "name": "Candlehearth Hall",
+     "id": "0x3457D6"
+    },
+    {
+     "name": "Dead Man's Drink",
+     "id": "0x3457D9"
+    },
+    {
+     "name": "Moorside Inn",
+     "id": "0x3457DD"
+    },
+    {
+     "name": "The Frozen Hearth",
+     "id": "0x3457DF"
+    },
+    {
+     "name": "Windpeak Inn",
+     "id": "0x3457E0"
+    },
+    {
+     "name": "The Retching Netch",
+     "id": "0x34A8E2"
+    },
+    {
+     "name": "The Sleeping Giant Inn",
+     "id": "0x34A8E3"
+    },
+    {
+     "name": "Frostfruit Inn",
+     "id": "0x34A8E4"
+    },
+    {
+     "name": "Vilemyr Inn",
+     "id": "0x34A8E5"
+    },
+    {
+     "name": "Old Hroldan Inn",
+     "id": "0x34A8E6"
+    },
+    {
+     "name": "Four Shields Tavern",
+     "id": "0x34A8E7"
+    },
+    {
+     "name": "Nightgate Inn",
+     "id": "0x34A8E8"
+    },
+    {
+     "name": "Braidwood Inn",
+     "id": "0x34A8E9"
+    }
+   ]
+  },
+  {
+   "name": "From Overseas",
+   "from": "Alternate Perspective",
+   "plugin": "AlternatePerspective.esp",
+   "id": null,
+   "text": "You arrived in Skyrim by ship.",
+   "options": [
+    {
+     "name": "Random",
+     "id": "0"
+    },
+    {
+     "name": "East Empire Trading Company",
+     "id": "0x34F9EC"
+    },
+    {
+     "name": "Windhelm Docks",
+     "id": "0x34F9EE"
+    },
+    {
+     "name": "Dawnstar's Shore",
+     "id": "0x34F9ED"
+    },
+    {
+     "name": "Raven Rock Docks",
+     "id": "0x34F9F0"
+    }
+   ]
+  },
+  {
+   "name": "Wanted Criminal",
+   "from": "Alternate Perspective",
+   "plugin": "AlternatePerspective.esp",
+   "id": null,
+   "text": "You are a criminal with high bounties in multiple holds, taking shelter at a nearby camp.",
+   "options": [
+    {
+     "name": "Random",
+     "id": "0"
+    },
+    {
+     "name": "Whiterun",
+     "id": "0x34FA14"
+    },
+    {
+     "name": "The Rift",
+     "id": "0x34FA15"
+    },
+    {
+     "name": "The Pale",
+     "id": "0x34FA1B"
+    },
+    {
+     "name": "Winterhold",
+     "id": "0x34FA25"
+    }
+   ]
+  },
+  {
+   "name": "Left for Dead",
+   "from": "Alternate Perspective",
+   "plugin": "AlternatePerspective.esp",
+   "id": null,
+   "text": "You've been attacked and barely managed to survive. Wounded and taken by disease you try to find a way back to civilization.",
+   "options": [
+    {
+     "name": "Random",
+     "id": "0"
+    },
+    {
+     "name": "The Rift",
+     "id": "0x34FA27"
+    },
+    {
+     "name": "The Reach",
+     "id": "0x34FA29"
+    },
+    {
+     "name": "Winterhold",
+     "id": "0x34FA20"
+    }
+   ]
+  },
+  {
+   "name": "Forsworn",
+   "from": "Alternate Perspective",
+   "plugin": "AlternatePerspective.esp",
+   "id": "0x46649F",
+   "text": "You are a member of the Forsworn at Druadach Redoubt.",
+   "options": []
+  },
+  {
+   "name": "Guilds",
+   "from": "Alternate Perspective",
+   "plugin": "AlternatePerspective.esp",
+   "id": null,
+   "text": "You are a member of one of the Guilds in Skyrim.",
+   "options": [
+    {
+     "name": "Random",
+     "id": "0"
+    },
+    {
+     "name": "College of Winterhold",
+     "id": "0x3D36E6"
+    },
+    {
+     "name": "Thieves Guild",
+     "id": "0x3CE5E5"
+    },
+    {
+     "name": "Dark Brotherhood",
+     "id": "0x3D36E7"
+    },
+    {
+     "name": "Companions",
+     "id": "0x3D36E8"
+    }
+   ]
+  },
+  {
+   "name": "Dragonborn",
+   "from": "Alternate Perspective",
+   "plugin": "AlternatePerspective.esp",
+   "id": null,
+   "text": "You are the Dragonborn of legend, saving the world from Alduin.",
+   "options": [
+    {
+     "name": "Helgen Keep (Start)",
+     "id": "0x47F943"
+    },
+    {
+     "name": "Helgen Keep (End)",
+     "id": "0x484A45"
+    }
+   ]
+  },
+  {
+   "name": "Addict",
+   "from": "New Beginnings",
+   "plugin": "Alternate Perspective -- New Beginnings.esp",
+   "id": "0x800",
+   "text": "I can't believe I've finally found the den! The shaking has gotten worse ever since I left home, but now my suffering is at an end. I do have a strange feeling about this den, though...",
+   "options": []
+  },
+  {
+   "name": "Dwemer Ruin",
+   "from": "New Beginnings",
+   "plugin": "Alternate Perspective -- New Beginnings.esp",
+   "id": "0x81C",
+   "text": "I knew I shouldn't have touched that orb, but my curiosity got the better of me. I pray to the Gods that there's a way out of here...",
+   "options": []
+  },
+  {
+   "name": "Alchemist",
+   "from": "New Beginnings",
+   "plugin": "Alternate Perspective -- New Beginnings.esp",
+   "id": "0x80A",
+   "text": "It's been a while since I left home to become an alchemist, and I can't help but long for something more exciting to do than picking flowers. Maybe it's time I left this grove behind...",
+   "options": []
+  },
+  {
+   "name": "At Angis Camp",
+   "from": "New Beginnings",
+   "plugin": "Alternate Perspective -- New Beginnings.esp",
+   "id": "0x858",
+   "text": "I have come across the camp of a markswoman named Angi. Maybe I should ask her to train me.",
+   "options": []
+  },
+  {
+   "name": "Beggar",
+   "from": "New Beginnings",
+   "plugin": "Alternate Perspective -- New Beginnings.esp",
+   "id": null,
+   "text": "I don't even remember how long I've been living here in this gods-forsaken place. It's time I got out of here and became an adventurer or joined the Thieves' Guild or the Forsworn or something along those lines. Gods know anything would be better than continuing to rot away in this dump.",
+   "options": [
+    {
+     "name": "Random",
+     "id": "0x0"
+    },
+    {
+     "name": "Riften",
+     "id": "0x85F"
+    },
+    {
+     "name": "Markarth",
+     "id": "0x860"
+    }
+   ]
+  },
+  {
+   "name": "Jailed",
+   "from": "New Beginnings",
+   "plugin": "Alternate Perspective -- New Beginnings.esp",
+   "id": null,
+   "text": "Well, here I am... I can't believe those imbecile guards actually caught me. If I don't want to serve my time in here, I better start looking for a way out.",
+   "options": [
+    {
+     "name": "Random",
+     "id": "0x0"
+    },
+    {
+     "name": "Whiterun",
+     "id": "0x861"
+    },
+    {
+     "name": "The Rift",
+     "id": "0x869"
+    },
+    {
+     "name": "Eastmarch",
+     "id": "0x862"
+    },
+    {
+     "name": "Haarfinger",
+     "id": "0x864"
+    },
+    {
+     "name": "The Reach",
+     "id": "0x868"
+    },
+    {
+     "name": "Falkreath",
+     "id": "0x863"
+    },
+    {
+     "name": "Hjaalmach",
+     "id": "0x865"
+    },
+    {
+     "name": "The Pale",
+     "id": "0x866"
+    },
+    {
+     "name": "Winterhold",
+     "id": "0x86A"
+    },
+    {
+     "name": "Raven Rock",
+     "id": "0x867"
+    }
+   ]
+  },
+  {
+   "name": "Mercenary",
+   "from": "New Beginnings",
+   "plugin": "Alternate Perspective -- New Beginnings.esp",
+   "id": null,
+   "text": "There's an old Cyrodiilic proverb: \"The riskier the road, the greater the profit.\" This civil war in Skyrim is bound to be good for business. I'd be a fool if I didn't take this opportunity. After all, I can hardly make less money than back home...",
+   "options": [
+    {
+     "name": "Random",
+     "id": "0x0"
+    },
+    {
+     "name": "Cyrodiil",
+     "id": "0x86B"
+    },
+    {
+     "name": "Hammerfell",
+     "id": "0x86C"
+    },
+    {
+     "name": "High Rock",
+     "id": "0x86D"
+    },
+    {
+     "name": "Northern Morrowind",
+     "id": "0x86E"
+    },
+    {
+     "name": "Southern Morrowind",
+     "id": "0x86F"
+    }
+   ]
+  },
+  {
+   "name": "Merchant",
+   "from": "New Beginnings",
+   "plugin": "Alternate Perspective -- New Beginnings.esp",
+   "id": null,
+   "text": "There's an old Cyrodiilic proverb: \"The riskier the road, the greater the profit.\" This civil war in Skyrim is bound to be good for business. I'd be a fool if I didn't take this opportunity. After all, I can hardly make less money than back home...",
+   "options": [
+    {
+     "name": "Random",
+     "id": "0x0"
+    },
+    {
+     "name": "Cyrodiil",
+     "id": "0x870"
+    },
+    {
+     "name": "Hammerfell",
+     "id": "0x871"
+    },
+    {
+     "name": "High Rock",
+     "id": "0x872"
+    },
+    {
+     "name": "Northern Morrowind",
+     "id": "0x873"
+    },
+    {
+     "name": "Southern Morrowind",
+     "id": "0x874"
+    }
+   ]
+  },
+  {
+   "name": "Pilgrim (Shrine)",
+   "from": "New Beginnings",
+   "plugin": "Alternate Perspective -- New Beginnings.esp",
+   "id": null,
+   "text": "Depending on your choice, you spawn at the Shrine of Azura, the Sacellum of Boethiah, the Shrine of Mehrunes Dagon, the Eldergleam Sanctuary, the Statue to Meridia, the Shrine of Peryite, Stendarr's Beacon, or the Hall of the Vigilant with appropriate equipment and enough provisions to continue your travels.",
+   "options": [
+    {
+     "name": "Random",
+     "id": "0x0"
+    },
+    {
+     "name": "Shrine of Azura",
+     "id": "0x83C"
+    },
+    {
+     "name": "Shrine of Boethiah",
+     "id": "0x83A"
+    },
+    {
+     "name": "Shrine of Mehrunes Dagon",
+     "id": "0x842"
+    },
+    {
+     "name": "The Eldergleam Sanctuary",
+     "id": "0x838"
+    },
+    {
+     "name": "Statue of Meridia",
+     "id": "0x840"
+    },
+    {
+     "name": "Shrine of Peryite",
+     "id": "0x83E"
+    },
+    {
+     "name": "Stendarr's Beacon",
+     "id": "0x835"
+    },
+    {
+     "name": "Hall of the Vigilant",
+     "id": "0x881"
+    }
+   ]
+  },
+  {
+   "name": "Pilgrim (Temple)",
+   "from": "New Beginnings",
+   "plugin": "Alternate Perspective -- New Beginnings.esp",
+   "id": null,
+   "text": "I have finally arrived at the temple. Now that I have received the blessings of the Divines, I should start looking for work in town. I can't go back home after all...",
+   "options": [
+    {
+     "name": "Random",
+     "id": "0x0"
+    },
+    {
+     "name": "Temple of the Divines",
+     "id": "0x876"
+    },
+    {
+     "name": "Temple of Dibella",
+     "id": "0x875"
+    },
+    {
+     "name": "Temple of Kynareth",
+     "id": "0x877"
+    },
+    {
+     "name": "Temple of Mara",
+     "id": "0x878"
+    },
+    {
+     "name": "Temple of Talos",
+     "id": "0x879"
+    }
+   ]
+  },
+  {
+   "name": "Thalmor Prisoner",
+   "from": "New Beginnings",
+   "plugin": "Alternate Perspective -- New Beginnings.esp",
+   "id": "0x829",
+   "text": "I've actually been imprisoned by those gods-damn Thalmor! If I don't want to be tortured until I renounce my faith in Talos, now is the time to get out of here. Those guards don't seem particularly attentive...",
+   "options": []
+  },
+  {
+   "name": "Vampire",
+   "from": "New Beginnings",
+   "plugin": "Alternate Perspective -- New Beginnings.esp",
+   "id": null,
+   "text": "A few days ago I was struck down by an intense fever. Luckily, none of the fools that are my family seem to have recognized my symptoms for what they were, so they entombed me here after my death. Now I'm finally free to leave them behind and start a new life.",
+   "options": [
+    {
+     "name": "Random",
+     "id": "0x0"
+    },
+    {
+     "name": "Solitude",
+     "id": "0x87D"
+    },
+    {
+     "name": "Falkreath",
+     "id": "0x87A"
+    },
+    {
+     "name": "Whiterun",
+     "id": "0x87E"
+    },
+    {
+     "name": "Riften",
+     "id": "0x87C"
+    },
+    {
+     "name": "Windhelm",
+     "id": "0x87F"
+    },
+    {
+     "name": "Markarth",
+     "id": "0x87B"
+    }
+   ]
+  },
+  {
+   "name": "Werewolf",
+   "from": "New Beginnings",
+   "plugin": "Alternate Perspective -- New Beginnings.esp",
+   "id": "0x81F",
+   "text": "I've now been staying with Majni's pack for quite a while, but the others still regard me as a stranger. I've got enough gold to pay for passage to Skyrim, so maybe I should leave and start traveling again...",
+   "options": []
+  },
+  {
+   "name": "Roadside Ambush",
+   "from": "Adventurer's Start",
+   "plugin": "AP - Missile Additional Starts.esp",
+   "id": null,
+   "text": "Ambushed along the road by a small group of bandits. Fight for your life.",
+   "options": [
+    {
+     "name": "Random",
+     "id": 0
+    },
+    {
+     "name": "Eastmarch",
+     "id": "0x18"
+    },
+    {
+     "name": "Haafingar",
+     "id": "0x21"
+    },
+    {
+     "name": "Hjaalmarch",
+     "id": "0x1B"
+    },
+    {
+     "name": "Falkreath",
+     "id": "0x1A"
+    },
+    {
+     "name": "The Pale",
+     "id": "0x2D"
+    },
+    {
+     "name": "The Reach",
+     "id": "0x33"
+    },
+    {
+     "name": "The Rift",
+     "id": "0x27"
+    },
+    {
+     "name": "Whiterun",
+     "id": "0x19"
+    }
+   ]
+  },
+  {
+   "name": "Fell in a Spike Pit",
+   "from": "Adventurer's Start",
+   "plugin": "AP - Missile Additional Starts.esp",
+   "id": "0x39",
+   "text": "I've fallen in a bandit's spike pit. I'm hurt and all hope seems lost.",
+   "options": []
+  },
+  {
+   "name": "Bounty Hunter",
+   "from": "Adventurer's Start",
+   "plugin": "AP - Missile Additional Starts.esp",
+   "id": null,
+   "text": "I'm a Bounty Hunter approaching a bandit camp.",
+   "options": [
+    {
+     "name": "Random",
+     "id": 0
+    },
+    {
+     "name": "Eastmarch",
+     "id": "0x4c"
+    },
+    {
+     "name": "Falkreath",
+     "id": "0x58"
+    },
+    {
+     "name": "Haafingar",
+     "id": "0x5c"
+    },
+    {
+     "name": "Hjaalmarch",
+     "id": "0x48"
+    },
+    {
+     "name": "The Rift",
+     "id": "0x50"
+    },
+    {
+     "name": "Whiterun",
+     "id": "0x3f"
+    },
+    {
+     "name": "Winterhold",
+     "id": "0x54"
+    }
+   ]
+  },
+  {
+   "name": "Prisoner in a Bandit Fort",
+   "from": "Adventurer's Start",
+   "plugin": "AP - Missile Additional Starts.esp",
+   "id": null,
+   "text": "I've been imprisoned by bandits in an old fort. How can I get out of this...",
+   "options": [
+    {
+     "name": "Random",
+     "id": 0
+    },
+    {
+     "name": "Haafingar",
+     "id": "0x86"
+    },
+    {
+     "name": "The Pale",
+     "id": "0x7B"
+    },
+    {
+     "name": "The Reach",
+     "id": "0x8D"
+    },
+    {
+     "name": "The Rift",
+     "id": "0x81"
+    },
+    {
+     "name": "Whiterun",
+     "id": "0x73"
+    }
+   ]
+  },
+  {
+   "name": "Out in the Wilderness",
+   "from": "Adventurer's Start",
+   "plugin": "AP - Missile Additional Starts.esp",
+   "id": null,
+   "text": "I'm out in the wilderness, but I'm not sure where I am. How did I end up here?",
+   "options": [
+    {
+     "name": "Random",
+     "id": 0
+    },
+    {
+     "name": "Eastmarch",
+     "id": "0xD8"
+    },
+    {
+     "name": "Falkreath",
+     "id": "0xCE"
+    },
+    {
+     "name": "Haafingar",
+     "id": "0xD2"
+    },
+    {
+     "name": "Hjaalmarch",
+     "id": "0xD4"
+    },
+    {
+     "name": "The Pale",
+     "id": "0xDA"
+    },
+    {
+     "name": "The Reach",
+     "id": "0xD0"
+    },
+    {
+     "name": "The Rift",
+     "id": "0xCB"
+    },
+    {
+     "name": "Whiterun",
+     "id": "0xC8"
+    },
+    {
+     "name": "Winterhold",
+     "id": "0xD6"
+    }
+   ]
+  }
+ ]
+}
