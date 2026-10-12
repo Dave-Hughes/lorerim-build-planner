@@ -1987,6 +1987,47 @@ Dave, 12 Oct: "Gear at level 11" and the other section titles are too small and 
 
 ---
 
+## WO-49  Reading a build: the guide link, the pinned level, arrow keys, and no jumping (12 Oct 2026)
+
+From Dave's review, 12 Oct. Four fixes to how the build page behaves; no layout changes beyond what's said here. Do after WO-48.
+
+### 1. `Read the full guide` goes to the guide
+Today it only switches to the Guide tab (`build-view.tsx`, the intro block). If the tab row is below the fold, nothing visible happens.
+- After switching, scroll so the tab row sits just under the pinned bars (`--sticky-top`), smoothly, unless it's already fully on screen.
+- With reduced motion, jump instead of scrolling smoothly.
+
+### 2. The pinned bar's level stands out
+In the slim stepper (`LevelStepper` with `slim`), the number is the only thing that changes, and it's hard to find at a glance.
+- Set the number in an ember box: ember background, dark text (#0e1319), Sofia Sans Extra Condensed 700, 22 px, 2 px by 10 px padding, no rounding.
+- `Lvl` and `/ 57` stay muted, outside the box.
+- When the level changes, the box flashes brighter for 200 ms. With reduced motion, no flash.
+- The full stepper on the page stays as it is.
+
+### 3. Teach the arrow keys
+Left and right already step through levels on the Levels tab. Players don't know.
+- **The ‹ and › buttons:** their tooltips and `aria-label`s become `Previous level (←)` and `Next level (→)`, in the pinned bar and on the page.
+- **A one-time hint** on pointer devices with a keyboard (`(hover: hover) and (pointer: fine)`):
+  - a small panel by the stepper says `Tip: ← and → step through levels`, with key caps;
+  - it shows after the second time the player clicks ‹ or › on any build;
+  - it goes away after 6 seconds, on the first arrow key press, or on its ×;
+  - it's never shown again once dismissed or once an arrow key has been used, remembered in `localStorage` (`lbp.arrowTip`), with reads and writes in try/catch.
+  - Nothing on phones.
+
+### 4. The page stops jumping when you change level
+`useHoldInPlace` keeps the level row still when the level changes. When the reader is further down (Gear, Spells), the level card above changes height with each level, so the part they're reading jumps.
+- **On a level change, hold whatever the reader is looking at:** the first section (`#perks`, `#destiny`, `#gear-at-level`, `#spells`, the stats columns, or the level card) whose top is at or below the bottom of the pinned bars. Record its top before the change and restore it after, as the hook does now for the level row.
+- If the level row itself is on screen, hold the level row as today.
+- Set `overflow-anchor: none` on the Levels tab's container so the browser's own scroll anchoring doesn't fight the hold.
+
+### Done when
+- [ ] e2e: on Pure Mage, scroll to the hero's bottom, click `Read the full guide`; the Guide tab's row is in view.
+- [ ] e2e: scroll so `Gear at level 20` is just under the pinned bars, press → three times; the gear section's top stays within 4 px of where it was each time. Same for Spells.
+- [ ] e2e: the hint shows after two clicks on ›, and not again after reload once an arrow key was pressed.
+- [ ] Screenshots at 1440: the pinned bar with the ember level box; the hint showing.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
