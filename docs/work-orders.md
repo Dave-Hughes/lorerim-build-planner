@@ -1948,6 +1948,22 @@ The rules engine finds no problems on any level. The perks were placed by a scri
 
 ---
 
+## WO-47  Gear notes show on the build page (12 Oct 2026)
+
+Dave, 12 Oct: the note an author writes on a gear row ("On the Altar of Magnus", "Make two") shows nowhere on the build page. The chat session checked the code: the `New gear` row never renders `note`; the `Gear at level N` cards show it only when the item has no stats line (`item?.stats ?? g.note`), so an indexed item's note is lost; the timeline bars' `title` has only the name and levels. The note is usually where to get the item, which is the thing a reader wants.
+
+1. **`New gear` on the level card:** the note goes on its own line under the chip, after `Body, replaces College Robes`, in the muted colour, the same way a new spell shows its `where`. No note, no line.
+2. **`Gear at level N` cards:** the stats line stays; the note goes on a line of its own below it. Long notes wrap; the card grows rather than truncating.
+3. **The gear timeline:** a bar's tooltip reads `Staff of Fireball, levels 5 to 29. On the Altar of Magnus.` (the note added after the levels). Same for the bar's `aria-label`.
+4. **Made items:** the hammer mark's tooltip keeps the base item and spell or enchantments; the note shows as above, not inside that tooltip.
+
+### Done when
+- [ ] e2e: on Pure Mage's level 5 (`/b/5pjwcg252f?level=5` on staging; copy it to a fixture as Iriel was), `New gear` shows `On the Altar of Magnus.` and `Leaning on a tree above the sabre cat cave near the Thalmor Embassy.`; the level-5 card for the main hand shows its stats and the note; the timeline bar's title includes the note.
+- [ ] Screenshots at 1440 and 390: Pure Mage level 5, the level card and the gear section.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
