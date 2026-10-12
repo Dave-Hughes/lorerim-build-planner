@@ -1760,6 +1760,167 @@ Dave's call, 12 Oct: use Sightengine's free plan (2,000 images a month, at most 
 
 ---
 
+## WO-41  Spells: the game data (12 Oct 2026)
+
+Dave, 12 Oct: builds cover gear but never spells, and a mage guide is mostly spells: which to get, when, and where. Zenematics' "How to Mage" (`https://www.youtube.com/watch?v=ajiLsFhYn4I`) is the test case. This order is the data only; WO-42 puts it on screen. Do after WO-40.
+
+### What the chat session already read (12 Oct, Dave's PC, read only)
+- **`scripts/gamedata/spells.py`** (new, committed) reads the winning BOOK, SPEL, MGEF, LVLI, GLOB and QUST records. It runs on Dave's PC like `items.py`. Its output, **`gamedata/5.0.4.8/spells_raw.json`**, is committed, so you don't need the game files.
+- **1,117 spells** are taught by a spell tome: Conjuration 295, Destruction 245, Alteration 198, Restoration 182, Illusion 160, plus 37 whose main effect has no school (Wintersun's Eldritch Tomes, a few creature powers).
+- **Each spell carries:**
+  - its form key, name, base cost and cast type;
+  - its effects in record order, each with the game's text (`<mag>`, `<dur>`, `<area>` tokens) and the values that fill them;
+  - its school (from the first effect's magic skill) and tier (from the highest minimum skill among its effects: 0 Novice, 25 Apprentice, 50 Adept, 75 Expert, 100 Master);
+  - the tomes that teach it.
+- **Tier perks give free spells.** Requiem - Customizable Spells Per Perk hands you tomes to pick from whenever you take a school's tier perk (`Destruction:Novice Destruction` and so on). LoreRim's numbers are **2 picks per Novice, Apprentice, Adept and Expert perk, and 1 per Master perk**; that's `picksPerPerk` in the raw file. Each school and tier has its own pool (`perkPicks`, 25 pools, 543 spells in all), read from the leveled lists the mod's quest uses. Example: `Destruction Novice` holds 14 spells (Flames, Frostbite, Sparks, Fiery Touch...). Spells that aren't in a pool still exist; you buy or find them (Eldritch Blast is a Novice spell sold by Wuunferth, not a perk pick).
+
+### Build it
+1. **`build.py` writes `src/data/lorerim-5.0.4.8/spells.json`**, one entry per spell:
+   - `id` (the form key, as `items.json` writes them: `Skyrim.esm:01C789`), `name`, `school`, `tier`, `cost`, `cast`;
+   - `text`: the main effect's game text with its tokens filled, the same way perk text is filled today;
+   - `also`: the names of the other effects that have text, for a second line;
+   - `tomes`: the tome names.
+2. **Leave out:**
+   - spells with no name or no school;
+   - repeats with the same name, school and tier: keep the one later in the load order, the way items are merged.
+3. **Write `spellPicks`** into the same file: `{ "perTier": {"Novice": 2, ...}, "pools": {"Destruction:Novice Destruction": [spell ids], ...} }`, keyed by the tier perk's id in `perks.json`.
+4. **Load it** through the same game-data loader as perks and items, versioned with the rules (`src/lib/rules/versions.ts`), so a build on another version gets that version's spells.
+5. **Use the game's words.** Names and text come from the records; don't tidy them. `Oakflesh on Self` stays `Oakflesh on Self`.
+
+### Done when
+- [ ] `python3 scripts/gamedata/build.py` writes `spells.json` from the committed raw file, and the generated file is committed.
+- [ ] Unit tests on the built data:
+  - Fireball is Destruction, Adept, cost 240, and its text reads `deals 40 fire damage`.
+  - Cloudkill is Destruction, Expert; Forbidden Sun is Destruction, Master; Shadow Clone on Self is Illusion, Master.
+  - The Destruction Novice pool has 14 spells, including Flames and Sparks, and not Eldritch Blast.
+  - `perTier` is 2, 2, 2, 2, 1.
+  - No two entries share a name, school and tier.
+- [ ] `python3 -m pytest scripts/gamedata` passes, with a test for `spells.py`'s school and tier rule.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-42  Spells in builds (12 Oct 2026)
+
+Do after WO-41. Layout follows the design canvas's **"Spells"** artboard (the chat session adds it before you start; wait for it if it's not there). Where the artboard and this order disagree, the artboard wins on looks and this order wins on rules.
+
+### 1. The plan
+- **A level can list spells learned at that level:** `LevelPlan.spells?: { id: string; where?: string }[]`. `where` is the author's short line ("Wuunferth, Windhelm", "Faralda's lesson").
+- **Main spells:** `BuildPlan.mainSpells?: string[]`, up to 8 spell ids: the ones the build actually casts. An author can only star a spell the build learns.
+- Older builds have neither field and need no migration.
+
+### 2. Rules (`computeBuild`)
+- **Free picks:** taking a tier perk gives that many picks at that level (2, or 1 for Master), from that perk's pool. A pick is a spell row whose id is in the pool of a tier perk taken that level; the first picks up to the count are free, and the rest count as learned another way.
+- **New problems:**
+  - `spell-repeat`: the same spell learned twice. Message: `Already learned at level N.`
+  - `spell-unknown`: an id not in this version's spells (from a version change). Message: `Not in LoreRim N.`
+- **No tier rule.** Requiem lets you try any tome; Rite of Arcana drains you while you learn. Don't block a high-tier spell at low skill (rule 9: show the exception, not the default).
+
+### 3. The editor
+- **On the Perks step,** when a level takes a tier perk, the perk gets a `Choose 2 spells` list under it, from its pool:
+  - search plus A to Z, as traits have;
+  - each row shows the name, the cast type, and the game text on hover or tap;
+  - chosen spells pin to the top with `1 of 2 chosen`, as traits do (rule 11);
+  - spells the build already knows are left out.
+
+  Picks made here save as spell rows with `where` set to the perk's name.
+- **A Spells section on each level,** next to Gear, adds a spell learned any other way:
+  - search all spells by name, with the school and tier beside each;
+  - an optional `Where` line.
+
+  Rows can be removed, and starred as a main spell.
+- **The guide editor's @-mentions** find spells too, as they find perks and items.
+
+### 4. The build page
+- **Level detail** gets a `New spells` row after `New gear`: each spell as a chip with its school's icon. The tooltip shows tier, cast type, the game text and `where`.
+- **A Spells section** after Gear, and in the contents rail:
+  - `Main spells` first: the starred ones, in the author's order, each with its text;
+  - then every spell learned by the level being viewed, grouped by school in the game's order (Alteration, Conjuration, Destruction, Illusion, Restoration);
+  - each spell shows its tier, the level it was learned at and `where`.
+
+  Spells learned after the viewed level stay hidden, the same as perks.
+- **Search** on Browse matches spell names, as it matches perks and items.
+
+### Done when
+- [ ] Unit tests:
+  - two picks from the Destruction Novice pool at the level that takes Novice Destruction are free, and a third is "learned another way";
+  - learning Fireball twice raises `spell-repeat`;
+  - `mainSpells` keeps only spells the build learns.
+- [ ] e2e: on a test build, take Novice Destruction and Novice Conjuration at level 1, choose 2 spells under each, add Eldritch Blast at level 4 with `Where` = `Wuunferth, Windhelm`, and star it. The shared page shows them in `New spells` at the right levels and in the Spells section, with Eldritch Blast under Main spells.
+- [ ] Screenshots at 1440 and 390: the Perks step with a pick list open; a level with `New spells`; the Spells section. Check them against the canvas.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-43  Changing deity later (12 Oct 2026)
+
+Dave, 12 Oct: keep the deity in Set up and the top bar as the start, but let a build switch later. Zen's mage starts with Syrabane (an Altmer can't start with the Magna-Ge) and switches to the Magna-Ge early. Do after WO-42, or before it if it's quicker.
+
+1. **The plan:** `LevelPlan.deity?: string`. Undefined keeps the current one; a name switches to it from that level on. It works like the standing stone field.
+2. **The editor:** each level gets a `Deity` control next to the standing stone, `Keep` or a deity. It lists every deity in `deity-text.json`, not just the race's starting list, because a shrine takes anyone later.
+3. **The build page:**
+   - The top bar still shows the starting deity. When the build switches, a small `i` after it says `Changes to The Magna-Ge at level 3` (rule 4); with several changes, one line each.
+   - Level detail shows `Deity: The Magna-Ge (was Syrabane)` on the level it changes.
+   - The whole-build ruler marks a deity change the same way it marks a stone change.
+4. **Search:** a build matches every deity it follows, not only the first.
+
+### Done when
+- [ ] Unit test: Syrabane at level 1, the Magna-Ge from level 3; level 2 is Syrabane and level 3 on is the Magna-Ge.
+- [ ] e2e: switch a test build's deity at level 3; the top bar's `i` and level 3's detail say so; searching `Magna-Ge` finds the build.
+- [ ] Screenshot at 1440: the top bar tooltip open, and level 3.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-44  The Oghma Infinium (12 Oct 2026)
+
+The Oghma Infinium is a Daedric book, the reward of Septimus Signus' quest *Discerning the Transmundane*. LoreRim replaces its reward (`LoreRim Oghma Reward.esp`, read 12 Oct):
+- reading it opens the Starting Skills menu with **6 skill picks at +5 each**, set straight onto the skills, up to 100;
+- then `Hermaeus Mora has blessed you with 3 perk points.`
+
+It can be read once per character. Zen's mage uses it at the end. Do after WO-43.
+
+1. **The plan:** a new extra, `{ kind: "oghma"; skills: string[] }`, with 6 different skills. At most one per build.
+2. **Rules:**
+   - Each chosen skill goes up 5, capped at 100.
+   - This may take a skill past the level's max skill. That's not a problem: the book sets the skill directly. Later skill points still obey the max.
+   - The level gets 3 more perk points.
+   - New problem `oghma-repeat`: `The Oghma Infinium can only be read once.`
+3. **The editor:** in the extras where trainers and skill books go, add `Oghma Infinium`. It asks for 6 skills (chips, `3 of 6 chosen`).
+4. **The build page:** that level's detail shows `Oghma Infinium` with the six `+5` skills and `+3 perk points`. Skill gains show the +5 like a book's.
+
+### Done when
+- [ ] Unit tests:
+  - Oghma at level 30 with Alteration 78: Alteration is 83 at level 30, even though max skill is 80;
+  - the level has 3 more perk points;
+  - a second Oghma raises `oghma-repeat`.
+- [ ] e2e: add it to a test build; the level detail shows the six skills and `+3 perk points`.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-45  Gear you make yourself (12 Oct 2026, Dave to confirm the shape)
+
+Most gear is found or bought, and the item index covers it. Some is made by the player, so no record names it until it's made:
+- **Enchanted by you:** any item plus enchantments you put on it at an Arcane Enchanter. The game names it ("Glass Sword of Fiery Souls").
+- **Spell staffs:** a staff made at a Staff Enchanter, from a spell you know, a heart stone and a soul gem. Zen's mage makes two Cloudkill staffs and a Forbidden Sun staff.
+- **Improved at a forge:** tempering (Fine, Superior, and so on) doesn't change what the item is, so it stays a note.
+
+Do after WO-42 (it uses spells).
+
+1. **A gear row can be `Made by you`.** It keeps a base item from the index and adds:
+   - for a staff, `Spell` (one spell from `spells.json`): the row reads `Staff of Forbidden Sun`;
+   - for anything else, `Enchantments`: up to two lines of free text.
+2. **The build page** shows a small hammer mark on made items. The tooltip shows the base item, then the spell or enchantments.
+3. **Elemental Padding** (a crafted LoreRim item) and backpacks wait for the gear-slot work below. They're real records, just on slots the planner doesn't show yet.
+
+### Done when
+- [ ] Unit test: a made staff with Forbidden Sun reads `Staff of Forbidden Sun`.
+- [ ] e2e: add a made staff from level 40; the shared page shows the mark and the tooltip.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
