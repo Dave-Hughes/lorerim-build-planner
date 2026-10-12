@@ -27,7 +27,7 @@ test("Azrem's level 6 card reads in the order the game asks", async ({ page }) =
   expect(keys).toEqual(["Attribute", "Skill points", "Perk", "Standing stone", "Trainer"]);
   await expect(card).toContainText("The Lover (in place of The Warrior)");
   await expect(card).toContainText("(max skill 56 at level 6)");
-  await expect(card).toContainText("Wayfarer +2 (16 → 18)");
+  await expect(card).toContainText("Wayfarer+216 → 18");
   // Biggest gain first; the limit said once.
   await expect(card.getByText(/max skill 56/)).toHaveCount(1);
   await expect(card.getByRole("complementary", { name: "Author's note" })).toBeVisible();

@@ -614,6 +614,21 @@
   background: rgba(240, 145, 63, 0.2);
   color: #fff;
 }
+/* A skill chip's tooltip: the card's rows for that skill, each under its label. */
+.gainTip {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.gainTipLine {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.gainTipLabel {
+  font-size: 12px;
+  color: var(--muted);
+}
 .sumNote {
   display: inline-block;
   width: 9px;
@@ -760,6 +775,13 @@
   .card .changeRow {
     grid-template-columns: 96px minmax(0, 1fr);
     gap: 12px;
+  }
+}
+/* Phones: each label above its lines, so skill names have the width to show. */
+@media (max-width: 599px) {
+  .card .changeRow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
   }
 }
 

@@ -1,0 +1,40 @@
+/* Fixed columns, so the gains line up down a list and across the lists under one another. */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.row {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 7.6em) 2.4em auto;
+  column-gap: 10px;
+  align-items: baseline;
+  min-width: 0;
+}
+.row > :first-child {
+  align-self: center;
+}
+.name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.gain {
+  font-size: 1.25em;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--ember);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.fromTo {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.note {
+  grid-column: 2 / -1;
+  font-size: 0.85em;
+  color: var(--muted);
+}

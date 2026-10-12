@@ -4,6 +4,7 @@
  * data of the build's own LoreRim version.
  */
 import { rankCount, type GameData, type Perk } from "./data";
+import { gearChanges } from "./gear";
 import type { Attribute, BuildPlan, LevelPlan, LevelState } from "./types";
 
 export const ATTRIBUTE_NAMES: Record<Attribute, string> = {
@@ -376,4 +377,45 @@ export function stoneShare(d: GameData, stone: string, attr: Attribute): string 
   const st = stone ? d.stoneByName.get(stone) : undefined;
   const n = st?.[attr] ?? 0;
   return st && n ? `incl. The ${st.name} ${n > 0 ? "+" : ""}${n}` : null;
+}
+
+/** What a level changed, in the order the game asks: shared by the level card, the pinned bar's chips and the editor. */
+export function levelFacts(d: GameData, plan: BuildPlan, states: LevelState[], level: number) {
+  const lv = plan.levels[level - 1];
+  const s = states[level - 1];
+  const changes = levelChanges(d, plan, states, level);
+  // Skill points: biggest gain first.
+  const raised = Object.entries(lv.skillPoints)
+    .filter(([, n]) => n > 0)
+    .map(([sk, n]) => ({ sk, from: s.skillsBefore[sk], to: s.skillsBefore[sk] + n, n }))
+    .sort((a, b) => b.n - a.n || b.to - a.to || a.sk.localeCompare(b.sk));
+  // Trainers and books, replayed in order from where the skill points left each skill.
+  const perBook = plan.traits.includes("Skilled") ? 2 : 1;
+  const at: Record<string, number> = Object.fromEntries(raised.map((x) => [x.sk, x.to]));
+  const cur = (sk: string) => at[sk] ?? s.skillsBefore[sk];
+  const extras: Record<"trainer" | "book", Map<string, { from: number; to: number; n: number }>> = { trainer: new Map(), book: new Map() };
+  for (const ex of lv.extras) {
+    if (!(ex.skill in s.skills)) continue;
+    const from = cur(ex.skill);
+    const to = ex.kind === "trainer" ? from + 1 : Math.min(s.maxSkill, from + perBook);
+    at[ex.skill] = to;
+    const m = extras[ex.kind];
+    const line = m.get(ex.skill);
+    if (line) Object.assign(line, { to, n: line.n + (to - from) });
+    else m.set(ex.skill, { from, to, n: to - from });
+  }
+  // The stone, when it changes.
+  const prevStone = level > 1 ? states[level - 2].stone : "";
+  const stone = lv.stone && (lv.stone === "none" ? prevStone : lv.stone !== prevStone) ? { name: lv.stone, prev: prevStone } : null;
+  return {
+    attribute: level > 1 ? lv.attribute : undefined,
+    raised,
+    capAt: raised.findIndex((x) => x.to >= s.maxSkill),
+    extras,
+    perks: changes.perks,
+    destiny: changes.destiny,
+    stone,
+    gear: gearChanges(plan, level),
+    banked: changes.banked,
+  };
 }

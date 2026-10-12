@@ -496,6 +496,13 @@
   background: var(--panel);
   font-size: 14px;
 }
+.extraRow {
+  display: grid;
+  grid-template-columns: 8.5em minmax(0, 1fr);
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
 .x {
   font: inherit;
   font-size: 18px;

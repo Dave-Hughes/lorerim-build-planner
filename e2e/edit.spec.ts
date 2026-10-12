@@ -48,7 +48,7 @@ test.describe("level-up editor", () => {
     await page.goto(`/b/${TEST_BUILD_ID}?level=7`);
     const card = page.getByRole("region", { name: "Level 7", exact: true });
     await expect(card).toContainText("Overpowering Bashes");
-    await expect(card).toContainText("Block 46 → 50");
+    await expect(card).toContainText("Block+446 → 50");
     await expect(page.getByText("Planned to level 7")).toBeVisible();
   });
 

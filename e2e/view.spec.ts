@@ -24,7 +24,7 @@ test.describe("shared build page", () => {
     const card = page.getByRole("region", { name: "Level 6", exact: true });
     await expect(card.getByRole("heading", { name: "Level 6" })).toBeVisible();
     await expect(card).toContainText("+5 Health");
-    await expect(card).toContainText("One-Handed 40 → 45");
+    await expect(card).toContainText("One-Handed+540 → 45");
     await expect(card).toContainText("Powerful Bashes");
     await expect(card.getByRole("complementary", { name: "Author's note" })).toContainText("Banking 10 skill points");
     await expect(page.getByRole("region", { name: /^Taken by level/ })).toContainText("Craftsmanship (book)");

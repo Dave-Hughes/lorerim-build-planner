@@ -12,13 +12,14 @@ import { copyBuild, copyBuildForVersion } from "@/lib/builds/actions";
 import type { BuildRecord } from "@/lib/builds/types";
 import { useGameData } from "@/components/game-data";
 import { GuideFactsProvider, GuideMention } from "@/components/guide/guide-facts";
+import { SkillGains, type SkillGain } from "./skill-gains";
 import { GuideSection } from "@/components/guide/guide-section";
 import { LevelNote } from "@/components/guide/level-note";
 import { docWords, firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import { GuideView } from "@/components/guide/guide-view";
 import { currentVersion, isOlderThanCurrent } from "@/lib/rules/versions";
-import { ATTRIBUTE_NAMES, levelChanges, levelMarks, perksByLevel, stoneShare, type PerkListGroup } from "@/lib/rules/derive";
-import { gearAt, gearChangeText, gearChanges } from "@/lib/rules/gear";
+import { ATTRIBUTE_NAMES, levelChanges, levelFacts, levelMarks, perksByLevel, stoneShare, type PerkListGroup } from "@/lib/rules/derive";
+import { gearAt, gearChangeText } from "@/lib/rules/gear";
 import { heldCount } from "@/lib/rules/tree-states";
 import type { GameData } from "@/lib/rules/data";
 import type { LevelState } from "@/lib/rules/types";
@@ -597,16 +598,27 @@ function SkillsAt({ d, plan, s, level }: { d: GameData; plan: BuildViewData["pla
 function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; plan: BuildViewData["plan"]; states: LevelState[]; level: number; noted: boolean; onPerk: (id: string) => void }) {
   const f = levelFacts(d, plan, states, level);
   // Every skill this level raised, by points, trainers or books, biggest gain first.
-  const gains = new Map<string, { n: number; lines: string[] }>();
-  const add = (sk: string, n: number, line: string) => {
+  // Each skill's tooltip: the card's rows for it, under their labels (Skill points, Trainer, Skill book).
+  const gains = new Map<string, { n: number; lines: { label: string; row: SkillGain }[] }>();
+  const add = (sk: string, label: string, x: { n: number; from: number; to: number }) => {
     const g = gains.get(sk) ?? { n: 0, lines: [] };
-    g.n += n;
-    g.lines.push(line);
+    g.n += x.n;
+    g.lines.push({ label, row: { skill: sk, gain: x.n, from: x.from, to: x.to } });
     gains.set(sk, g);
   };
-  for (const x of f.raised) add(x.sk, x.n, `${x.sk} ${x.from} → ${x.to}`);
-  for (const [sk, x] of f.extras.trainer) add(sk, x.n, `Trainer: ${sk} +${x.n} (${x.from} → ${x.to})`);
-  for (const [sk, x] of f.extras.book) add(sk, x.n, `Skill book: ${sk} +${x.n} (${x.from} → ${x.to})`);
+  for (const x of f.raised) add(x.sk, "Skill points", x);
+  for (const [sk, x] of f.extras.trainer) add(sk, "Trainer", x);
+  for (const [sk, x] of f.extras.book) add(sk, "Skill book", x);
+  const tip = (lines: { label: string; row: SkillGain }[]) => (
+    <span className={styles.gainTip}>
+      {lines.map((l, i) => (
+        <span key={i} className={styles.gainTipLine}>
+          <span className={styles.gainTipLabel}>{l.label}</span>
+          <SkillGains rows={[l.row]} />
+        </span>
+      ))}
+    </span>
+  );
   const skills = [...gains].sort((a, b) => b[1].n - a[1].n || a[0].localeCompare(b[0]));
   // How much to fold away: 0 all, 1 skills without their names, 2 also no gear, 3 also no stone. Hidden
   // copies of the row at each fold are measured against the room there is, on every resize.
@@ -636,7 +648,7 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
   const perkList = [...f.perks, ...f.destiny.map((p) => ({ ...p, tree: "Destiny", rank: undefined, book: undefined }))];
   // The chips at a fold. `plain` draws them without tooltips or buttons, for measuring.
   const chips = (at: number, plain: boolean) => {
-    const chip = (key: string, tip: string, body: React.ReactNode, className = "") =>
+    const chip = (key: string, tip: React.ReactNode, body: React.ReactNode, className = "") =>
       plain ? (
         <span key={key} className={`${styles.sumChip} ${className}`}>
           {body}
@@ -662,7 +674,7 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
           )}
         {/* Every skill raised, named until there's no room for the names. */}
         {skills.map(([sk, g]) =>
-          chip(sk, g.lines.join("\n"), <IconLabel icon={<SkillIcon name={sk} />}>{at === 0 ? `${sk} +${g.n}` : `+${g.n}`}</IconLabel>, styles.sumWide),
+          chip(sk, tip(g.lines), <IconLabel icon={<SkillIcon name={sk} />}>{at === 0 ? `${sk} +${g.n}` : `+${g.n}`}</IconLabel>, styles.sumWide),
         )}
         {/* Perks: ember, and each a button that selects it in the Perks section. */}
         {perkList.map((p, i) => {
@@ -716,47 +728,6 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
   );
 }
 
-/** What a level changed, in the order the game asks: shared by the level card and the pinned bar's chips. */
-function levelFacts(d: GameData, plan: BuildViewData["plan"], states: LevelState[], level: number) {
-  const lv = plan.levels[level - 1];
-  const s = states[level - 1];
-  const changes = levelChanges(d, plan, states, level);
-  // Skill points: biggest gain first.
-  const raised = Object.entries(lv.skillPoints)
-    .filter(([, n]) => n > 0)
-    .map(([sk, n]) => ({ sk, from: s.skillsBefore[sk], to: s.skillsBefore[sk] + n, n }))
-    .sort((a, b) => b.n - a.n || b.to - a.to || a.sk.localeCompare(b.sk));
-  // Trainers and books, replayed in order from where the skill points left each skill.
-  const perBook = plan.traits.includes("Skilled") ? 2 : 1;
-  const at: Record<string, number> = Object.fromEntries(raised.map((x) => [x.sk, x.to]));
-  const cur = (sk: string) => at[sk] ?? s.skillsBefore[sk];
-  const extras: Record<"trainer" | "book", Map<string, { from: number; to: number; n: number }>> = { trainer: new Map(), book: new Map() };
-  for (const ex of lv.extras) {
-    if (!(ex.skill in s.skills)) continue;
-    const from = cur(ex.skill);
-    const to = ex.kind === "trainer" ? from + 1 : Math.min(s.maxSkill, from + perBook);
-    at[ex.skill] = to;
-    const m = extras[ex.kind];
-    const line = m.get(ex.skill);
-    if (line) Object.assign(line, { to, n: line.n + (to - from) });
-    else m.set(ex.skill, { from, to, n: to - from });
-  }
-  // The stone, when it changes.
-  const prevStone = level > 1 ? states[level - 2].stone : "";
-  const stone = lv.stone && (lv.stone === "none" ? prevStone : lv.stone !== prevStone) ? { name: lv.stone, prev: prevStone } : null;
-  return {
-    attribute: level > 1 ? lv.attribute : undefined,
-    raised,
-    capAt: raised.findIndex((x) => x.to >= s.maxSkill),
-    extras,
-    perks: changes.perks,
-    destiny: changes.destiny,
-    stone,
-    gear: gearChanges(plan, level),
-    banked: changes.banked,
-  };
-}
-
 /**
  * The level card: what to do at this level, in the order the game asks (attribute, skill points,
  * perks, stone, trainers, books), with the author's note beside it.
@@ -787,17 +758,16 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
   if (raised.length)
     rows.push([
       "Skill points",
-      <span key="s" className={styles.stack}>
-        {raised.map((r, i) => {
-          const capped = i === capAt;
-          return (
-            <SkillLabel key={r.sk} name={r.sk} className="num">
-              {r.sk} {r.from} → {r.to}
-              {capped && <span className="muted"> (max skill {s.maxSkill} at level {level})</span>}
-            </SkillLabel>
-          );
-        })}
-      </span>,
+      <SkillGains
+        key="s"
+        rows={raised.map((r, i) => ({
+          skill: r.sk,
+          gain: r.n,
+          from: r.from,
+          to: r.to,
+          note: i === capAt ? `(max skill ${s.maxSkill} at level ${level})` : undefined,
+        }))}
+      />,
     ]);
 
   const perkLines = [
@@ -843,13 +813,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
     if (!m.size) continue;
     rows.push([
       kind === "trainer" ? "Trainer" : m.size > 1 ? "Skill books" : "Skill book",
-      <span key={kind} className={styles.stack}>
-        {[...m].map(([sk, l]) => (
-          <SkillLabel key={sk} name={sk} className="num">
-            {sk} +{l.n} <span className="muted">({l.from} → {l.to})</span>
-          </SkillLabel>
-        ))}
-      </span>,
+      <SkillGains key={kind} rows={[...m].map(([sk, l]) => ({ skill: sk, gain: l.n, from: l.from, to: l.to }))} />,
     ]);
   }
   // Gear, when something changes: "Steel spear (Main hand)", "Off hand emptied".

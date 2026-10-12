@@ -1036,8 +1036,8 @@ Dave: in the level card, each skill row reads `Marksman 43 → 48`, so the gain 
 5. **On phones** the four columns stay on one line; the name truncates with `…` before the gain or the numbers do.
 
 ### Done when
-- [ ] Screenshot for Dave of Azrem's level 11 card at 1440 and 390, with the `+` signs lined up.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Screenshot for Dave of Azrem's level 11 card at 1440 and 390, with the `+` signs lined up.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

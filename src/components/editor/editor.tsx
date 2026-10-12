@@ -15,6 +15,7 @@ import { computeBuild } from "@/lib/rules/engine";
 import type { Attribute, BuildPlan } from "@/lib/rules/types";
 import { GearBlock } from "./gear-block";
 import { PerkPanel } from "./perk-panel";
+import { SkillGains } from "@/components/build/skill-gains";
 import { AttributeIcon, IconLabel, SignIcon, SkillIcon } from "@/components/ui/skill-icon";
 import { GuideEditor, guideSaveLabel } from "@/components/guide/guide-editor";
 import { GuideFactsProvider } from "@/components/guide/guide-facts";
@@ -144,6 +145,17 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
     0,
     Math.min(d.rules.trainerSessionsPerLevel - lv.extras.filter((x) => x.kind === "trainer").length, d.rules.trainerSessionsPerLevel * level - s.trainerSessionsUsed),
   );
+  // Each trainer session and book, replayed from where this level's skill points left the skill.
+  const extraSteps = (() => {
+    const at: Record<string, number> = {};
+    const perBook = plan.traits.includes("Skilled") ? 2 : 1;
+    return lv.extras.map((ex) => {
+      const from = at[ex.skill] ?? (s.skillsBefore[ex.skill] ?? 0) + (lv.skillPoints[ex.skill] ?? 0);
+      const to = ex.kind === "trainer" ? from + 1 : Math.min(s.maxSkill, from + perBook);
+      at[ex.skill] = to;
+      return { from, to };
+    });
+  })();
   const prevStone = level > 1 ? states[level - 2].stone : "";
   // The rules the planner applies (the engine's own numbers), for the labels' tooltips.
   const trainerRule = `+1 to a skill. ${d.rules.trainerSessionsPerLevel} sessions a level; unused ones carry over to later levels. A trainer can't raise a skill past the level's max skill.`;
@@ -395,8 +407,9 @@ export function Editor({ buildId, name, initialPlan, initialLevel, converted, gu
               <ul className={styles.extras}>
                 {lv.extras.map((ex, i) => (
                   <li key={i}>
-                    <span>
-                      {ex.kind === "trainer" ? "Trainer session" : "Skill book"}: <b>{ex.skill}</b> +{ex.kind === "book" && plan.traits.includes("Skilled") ? 2 : 1}
+                    <span className={styles.extraRow}>
+                      <span className={styles.extraKind}>{ex.kind === "trainer" ? "Trainer session" : "Skill book"}</span>
+                      <SkillGains rows={[{ skill: ex.skill, gain: extraSteps[i].to - extraSteps[i].from, from: extraSteps[i].from, to: extraSteps[i].to }]} />
                     </span>
                     <button type="button" className={styles.x} aria-label={`Remove ${ex.kind === "trainer" ? "trainer session" : "skill book"} for ${ex.skill}`} onClick={() => setPlan(ops.removeExtra(plan, level, i))}>
                       ×
