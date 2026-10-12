@@ -15,8 +15,9 @@ import { SkillGains, type SkillGain } from "./skill-gains";
 import { EditBar, MenuButton } from "@/components/editor/edit-bar";
 import menuStyles from "@/components/editor/edit-bar.module.css";
 import { PlayMark } from "./play-mark";
-import { spellsAt, spellsLearned } from "@/lib/rules/spells";
-import { SpellView } from "./spell-view";
+import { spellsAt } from "@/lib/rules/spells";
+import { abilitiesAt, shoutsKnown } from "@/lib/rules/powers";
+import { AbilityTip, ShoutTip, SpellView, spellsAndAbilities } from "./spell-view";
 import { VideoGuide } from "./video-guide";
 import { ReportBuild } from "./report-build";
 import { AboutBar } from "./about-bar";
@@ -180,6 +181,8 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   const railState = states[level - 1];
   const skillGroups = railPerks.filter((g) => g.tree !== "Destiny");
   const destinyCount = railPerks.filter((g) => g.tree === "Destiny").reduce((n, g) => n + g.perks.length, 0);
+  const railSpells = spellsAndAbilities(d, plan, level);
+  const spellsCount = railSpells.spells.length + railSpells.abilities.length + railSpells.shouts.length;
   const railItems: RailItem[] =
     tab === "guide" && overview
       ? [
@@ -204,7 +207,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
             ? [{ key: "destiny", label: "Destiny", count: destinyCount, destiny: true, target: "destiny", onGo: () => setDestinyOpenChoice(true) }]
             : []),
           ...(plan.gear.length ? [{ key: "gear", label: "Gear", count: gearAt(plan, level).length, target: "gear-at-level" }] : []),
-          ...(spellsLearned(d, plan, level).some((x) => x.spell) ? [{ key: "spells", label: "Spells", count: spellsLearned(d, plan, level).filter((x) => x.spell).length, target: "spells" }] : []),
+          ...(spellsCount ? [{ key: "spells", label: "Spells and abilities", count: spellsCount, target: "spells" }] : []),
           ...(tabs.includes("guide") ? [{ key: "guide", label: "Guide", onGo: () => setTab("guide") }] : []),
         ];
 
@@ -1117,6 +1120,45 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
               </span>
             </Tooltip>
             {x.where && <span className="muted">{x.where}</span>}
+          </span>
+        ))}
+      </span>,
+    ]);
+  // New abilities and shouts (WO-52), built the same way; a perk's ability shows at the perk's level.
+  const newAbilities = abilitiesAt(d, plan, level).filter((x) => x.ability);
+  if (newAbilities.length)
+    rows.push([
+      "New abilities",
+      <span key="ab" className={styles.newSpells}>
+        {newAbilities.map((x) => (
+          <span key={`${x.fromPerk ?? "row"}-${x.id}`} className={styles.newSpell}>
+            <MarkIcon name="power" size={24} />
+            <Tooltip content={<AbilityTip a={x} d={d} />}>
+              <span className={styles.newSpellChip} tabIndex={0}>
+                {x.ability!.name}
+              </span>
+            </Tooltip>
+            <span className="muted">{x.fromPerk ? `from the ${d.perkById.get(x.fromPerk)?.name ?? x.fromPerk} perk` : x.where}</span>
+          </span>
+        ))}
+      </span>,
+    ]);
+  const newShouts = shoutsKnown(d, plan, level).filter((x) => x.shout && x.level === level);
+  if (newShouts.length)
+    rows.push([
+      "New shouts",
+      <span key="sh" className={styles.newSpells}>
+        {newShouts.map((x) => (
+          <span key={x.id} className={styles.newSpell}>
+            <MarkIcon name="shout" size={24} />
+            <Tooltip content={<ShoutTip s={x} />}>
+              <span className={styles.newSpellChip} tabIndex={0}>
+                {x.shout!.name}
+              </span>
+            </Tooltip>
+            <span className="muted">
+              {x.words} of 3 words{x.where ? `, ${x.where}` : ""}
+            </span>
           </span>
         ))}
       </span>,

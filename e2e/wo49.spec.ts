@@ -20,7 +20,7 @@ test("Read the full guide brings the Guide tab's row into view", async ({ page }
   await expect(page.getByRole("tablist", { name: "Build sections" })).toBeInViewport({ ratio: 1 });
 });
 
-for (const section of ["Gear", "Spells"])
+for (const section of ["Gear", "Spells and abilities"])
   test(`→ keeps ${section} still while the level changes`, async ({ page }) => {
     await page.goto(`/b/${PURE_MAGE_BUILD_ID}?level=20`);
     const name = (n: number) => `${section} at level ${n}`;

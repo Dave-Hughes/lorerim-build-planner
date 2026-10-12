@@ -2117,10 +2117,10 @@ Dave, 12 Oct: the Spells section gets very tall on big builds. Layout follows th
 8. **At 390:** the school name sits above its chips; chips wrap.
 
 ### Done when
-- [ ] Screenshots at 1440 and 390 of Pure Mage at level 32 (spells, Artificer's Insight from its perk) and of a test build with War Cry and Slow Time; compare with the artboard.
-- [ ] The section for Pure Mage at level 57 is at most half the height it was before this order (measure both in the e2e and log the numbers).
-- [ ] e2e: a chip's tooltip opens on focus and shows `where`.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Screenshots at 1440 and 390 of Pure Mage at level 32 (spells, Artificer's Insight from its perk) and of a test build with War Cry and Slow Time; compare with the artboard.
+- [x] The section for Pure Mage at level 57 is at most half the height it was before this order (measure both in the e2e and log the numbers).
+- [x] e2e: a chip's tooltip opens on focus and shows `where`.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

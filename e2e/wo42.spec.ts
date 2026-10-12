@@ -67,13 +67,15 @@ test("tier perks give spell picks; a spell learned elsewhere, starred, shows on 
   const card4 = page.getByRole("region", { name: "Level 4", exact: true });
   await expect(card4.getByText("Eldritch Blast", { exact: true })).toBeVisible();
   await expect(card4).toContainText("Wuunferth, Windhelm");
-  const section = page.getByRole("region", { name: "Spells at level 4" });
+  const section = page.getByRole("region", { name: "Spells and abilities at level 4" });
   await expect(section.getByRole("group", { name: "Main spells" })).toContainText("Eldritch Blast");
   await expect(section.getByRole("group", { name: "Destruction" })).toContainText("Flames");
-  await expect(section.getByRole("group", { name: "Destruction" })).toContainText("Lv 4");
+  // Since WO-52 a main spell isn't a chip as well; the others are, with the level learned.
+  await expect(section.getByRole("group", { name: "Destruction" })).toContainText("Lv 1");
+  await expect(section.getByRole("group", { name: "Destruction" })).not.toContainText("Eldritch Blast");
   await expect(section.getByRole("group", { name: "Conjuration" })).toBeVisible();
 
   // Before level 4, Eldritch Blast isn't learned yet.
   await page.goto(`/b/${SPELLS_BUILD_ID}?level=3`);
-  await expect(page.getByRole("region", { name: "Spells at level 3" })).not.toContainText("Eldritch Blast");
+  await expect(page.getByRole("region", { name: "Spells and abilities at level 3" })).not.toContainText("Eldritch Blast");
 });

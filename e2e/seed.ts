@@ -39,6 +39,8 @@ export const NEW_ACCOUNT_BUILD_ID = "e2enewacct";
 export const SPELLS_BUILD_ID = "e2espe22ss";
 /** WO-45: forty levels, for gear made late in a build. */
 export const FORTY_BUILD_ID = "e2emadesta";
+/** WO-52: forty levels with War Cry from its perk at 12, a quest ability, Unrelenting Force and Slow Time. */
+export const POWERS_BUILD_ID = "e2ewarcrya";
 export const AT_LIMIT_TOKEN = "e2e-session-token-0007";
 /** The test author's Discord id; playwright.config.ts gives it to the server as ADMIN_DISCORD_IDS. */
 export const E2E_ADMIN_DISCORD_ID = "e2e-discord-admin-0001";
@@ -61,7 +63,21 @@ export const OLD_VERSION = "0.0.0-test";
 /** Made for a version the planner no longer has. */
 export const RETIRED_BUILD_ID = "e2eqq2e2e4";
 
-export function samplePlan(): BuildPlan {
+export /** WO-52's build: the sample stretched to 40 levels, with spells, War Cry (from its perk), an ability and two shouts. */
+function powersPlan(): BuildPlan {
+  const base = samplePlan();
+  const levels = [...base.levels, ...Array.from({ length: 34 }, () => ({ skillPoints: {}, perks: [] as string[], destiny: [] as string[], extras: [], note: "", attribute: "stamina" as const }))];
+  const at = (n: number, more: Partial<BuildPlan["levels"][number]>) => (levels[n - 1] = { ...levels[n - 1], ...more });
+  at(1, { spells: [{ id: "Skyrim.esm:012FCD", where: "Known at the start" }] });
+  at(3, { spells: [{ id: "Skyrim.esm:012FCC", where: "Known at the start" }], abilities: [{ id: "Tools of Kagrenac.esp:1267AB", where: "Tools of Kagrenac, Aetherium Forge" }] });
+  at(5, { shouts: [{ id: "Skyrim.esm:013E07", words: 1, where: "Bleak Falls Barrow" }] });
+  at(12, { perks: [...levels[11].perks, "Speech:War Cry"], spells: [{ id: "Skyrim.esm:04DEEB", where: "Farengar, Dragonsreach" }] });
+  at(20, { shouts: [{ id: "Skyrim.esm:013E07", words: 3, where: "High Hrothgar" }] });
+  at(25, { shouts: [{ id: "Skyrim.esm:048AC9", words: 2, where: "Deepwood Redoubt" }] });
+  return { ...base, levels, mainSpells: ["Skyrim.esm:012FCD"] };
+}
+
+function samplePlan(): BuildPlan {
   const { name: _n, description: _d, ...plan } = sample as unknown as BuildPlan & { name: string; description: string };
   void _n;
   void _d;
@@ -232,6 +248,17 @@ export async function seed() {
         visibility: "unlisted",
         gameVersion: "5.0.4.8",
         plan: { ...samplePlan(), levels: [...samplePlan().levels, ...Array.from({ length: 34 }, () => ({ skillPoints: {}, perks: [], destiny: [], extras: [], note: "", attribute: "magicka" as const }))] },
+      },
+      {
+        id: POWERS_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        name: "Voice of the Spartan",
+        description: "War Cry, shouts and a few spells.",
+        visibility: "unlisted",
+        gameVersion: "5.0.4.8",
+        plan: powersPlan(),
+        // Made two days ago, so it doesn't count toward the test author's builds for the day (WO-40's limit).
+        createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
       },
       {
         id: NEW_ACCOUNT_BUILD_ID,

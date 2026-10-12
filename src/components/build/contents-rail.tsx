@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { pageZoom } from "@/lib/zoom";
 import styles from "./contents-rail.module.css";
 
@@ -30,6 +30,9 @@ const LINE = 96;
  */
 export function ContentsRail({ items }: { items: RailItem[] }) {
   const [current, setCurrent] = useState<string | null>(null);
+  // The section last gone to from the rail: at the foot of the page it stays marked, though a
+  // shorter one below it is in view too, until the reader scrolls on their own.
+  const chosen = useRef<string | null>(null);
   const targets = items.filter((i) => i.target && !i.sub).map((i) => `${i.key}|${i.target}`).join(",");
   useEffect(() => {
     const list = targets ? targets.split(",").map((t) => t.split("|") as [string, string]) : [];
@@ -49,25 +52,38 @@ export function ContentsRail({ items }: { items: RailItem[] }) {
           const el = document.getElementById(id);
           if (el && el.getBoundingClientRect().top < window.innerHeight) found = key;
         }
+        const pick = list.find(([key]) => key === chosen.current);
+        const el = pick && document.getElementById(pick[1]);
+        if (el && el.getBoundingClientRect().top < window.innerHeight) found = pick[0];
       }
       setCurrent(found ?? list[0]?.[0] ?? null);
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(check);
     };
+    const own = () => {
+      chosen.current = null;
+    };
     check();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+    window.addEventListener("wheel", own, { passive: true });
+    window.addEventListener("touchstart", own, { passive: true });
+    window.addEventListener("keydown", own);
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      window.removeEventListener("wheel", own);
+      window.removeEventListener("touchstart", own);
+      window.removeEventListener("keydown", own);
     };
   }, [targets]);
 
   const go = (item: RailItem) => {
     item.onGo?.();
     if (!item.target) return;
+    chosen.current = item.sub ? null : item.key;
     // After the section has opened (a tree, Destiny) or the tab has switched.
     requestAnimationFrame(() => requestAnimationFrame(() => document.getElementById(item.target!)?.scrollIntoView({ block: "start" })));
   };

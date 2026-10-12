@@ -1,22 +1,21 @@
-/* The Spells section (WO-42), to the canvas artboard "Spells". */
+/* Spells and abilities (WO-52), to the canvas artboard "Leaner…", part 2. */
 .section {
   --head-gap: 22px;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 18px;
   scroll-margin-top: calc(80px + var(--sticky-top));
 }
 .main {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 20px 24px;
+  gap: 12px;
+  padding: 16px 20px;
   border: 1px solid var(--rule);
   background: var(--panel);
 }
 .mainTitle {
   font-weight: 700;
-  font-size: 17px;
 }
 .mainList {
   list-style: none;
@@ -24,82 +23,99 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px 28px;
+  gap: 12px 32px;
 }
 .mainItem {
   display: grid;
   grid-template-columns: 24px minmax(0, 1fr);
-  gap: 4px 10px;
+  gap: 10px;
   align-items: start;
 }
-.text {
-  color: var(--soft);
-  font-size: 14px;
+.mainLine {
+  cursor: help;
 }
 .meta {
   color: var(--muted);
+  font-size: 13px;
+}
+.lead {
+  color: var(--soft);
   font-size: 14px;
 }
-.schools {
+
+/* One row per school, then Abilities and Shouts: the name on the left, chips on the right. */
+.rowsGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px 28px;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 12px 16px;
+  align-items: start;
 }
-.school {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
+.group {
+  display: contents;
 }
-.schoolHead {
-  display: flex;
+.groupHead {
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--rule);
+  gap: 8px;
+  padding-top: 3px;
 }
-.schoolName {
+.groupName {
   font-family: var(--font-title);
   font-weight: 700;
-  font-size: 18px;
+  font-size: 17px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-.rows {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
-.row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 2px 12px;
-  padding: 9px 0;
-  border-bottom: 1px solid var(--rule-soft);
+.chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 3px 10px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 14px;
+  cursor: help;
 }
-.rowName {
+.chip small {
+  color: var(--dim);
+  font-size: 12px;
+}
+/* Learned at the level being viewed: Magicka blue. */
+.chipNew {
+  border-color: var(--magicka);
+  color: color-mix(in srgb, var(--magicka) 45%, var(--text));
   font-weight: 600;
 }
-.star {
-  color: var(--ember);
-}
-.lvl {
-  color: var(--dim);
-  font-size: 13px;
-}
-.row .meta {
+.rule {
   grid-column: 1 / -1;
+  border-top: 1px solid var(--rule);
+  margin-top: 2px;
 }
-@media (max-width: 900px) {
-  .schools {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.tip {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 380px;
 }
 @media (max-width: 640px) {
-  .mainList,
-  .schools {
+  .mainList {
     grid-template-columns: minmax(0, 1fr);
   }
   .main {
     padding: 16px;
+  }
+  /* The school's name above its chips. */
+  .rowsGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .groupHead {
+    padding-top: 8px;
   }
 }
