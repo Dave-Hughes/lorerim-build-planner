@@ -10,7 +10,7 @@ test("Destiny is one line without a star at the level, open at 25, and Show the 
   const destiny = page.getByRole("region", { name: "Destiny at level 22" });
   const toggle = destiny.getByRole("button", { name: "Show the tree" });
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
-  await expect(destiny).toContainText("Destiny · Endurance (to Thief) · Thief · Adrenaline · Scout");
+  await expect(destiny).toContainText("Destiny, Endurance (to Thief), Thief, Adrenaline, Scout");
   await expect(destiny).toContainText("Next star at level 25");
   await expect(destiny.getByRole("region", { name: /taken by level/i })).toHaveCount(0);
   await toggle.click();

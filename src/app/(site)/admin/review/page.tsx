@@ -78,7 +78,7 @@ export default async function ReviewPage() {
                     {item.reports.map((r, i) => (
                       <li key={i}>
                         <strong>{r.reason}</strong>
-                        {r.note && <> · {r.note}</>} <span className="muted">· {r.by}</span>
+                        {r.note && <>: {r.note}</>} <span className="muted">by {r.by}</span>
                       </li>
                     ))}
                   </ul>

@@ -49,7 +49,7 @@ test.describe("at 1440", () => {
     await page.goto(`/b/${IRIEL_BUILD_ID}?level=30`);
     await expect(page.getByRole("navigation", { name: "On this page" })).toBeHidden();
     const taken = page.getByRole("region", { name: "Taken by level 30", exact: true });
-    await expect(taken).toContainText("Taken by level 30 · 33");
+    await expect(taken).toContainText(/Taken by level 30\s*33/);
     await taken.getByRole("button", { name: "Marksman 11 ▸" }).click();
     await expect(page.getByRole("region", { name: "Perks at level 30" }).getByRole("tab", { name: /^Marksman/ })).toHaveAttribute("aria-selected", "true");
     await expect(taken.getByRole("button", { name: /^Ranged Combat Training/ })).toBeVisible();

@@ -278,7 +278,7 @@ def main():
 
 
 def stats_line(e):
-    """'Heavy armor · 25 armor · 30 weight', 'Sword · 7 damage · 10 weight', 'Arrow · 12 damage'."""
+    """'Heavy armor, 25 armor, 30 weight', 'Sword, 7 damage, 10 weight', 'Arrow, 12 damage'."""
     def num(x):
         return f"{x:g}"
     parts = []
@@ -296,7 +296,7 @@ def stats_line(e):
             parts.append(f"{num(e['damage'])} damage")
     if e.get("weight"):
         parts.append(f"{num(e['weight'])} weight")
-    return " · ".join(parts)
+    return ", ".join(parts)
 
 
 def build_items(raw, skip=()):

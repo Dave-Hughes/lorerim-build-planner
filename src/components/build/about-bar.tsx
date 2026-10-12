@@ -175,7 +175,7 @@ export function AboutBar({ plan }: { plan: BuildPlan }) {
 }
 
 /**
- * The start: its name with the choice muted ("Mercenary · Hammerfell"; the name alone with no
+ * The start: its name with the choice muted ("Mercenary, Hammerfell"; the name alone with no
  * choice or Random). A popover with the start's own text opens on hover and on click or tap, and
  * closes on Esc or a click outside.
  */
@@ -203,7 +203,7 @@ function StartValue({ plan }: { plan: BuildPlan }) {
     <span ref={wrap} className={styles.startWrap} onPointerEnter={(e) => e.pointerType === "mouse" && setHover(true)} onPointerLeave={(e) => e.pointerType === "mouse" && setHover(false)}>
       <button ref={button} type="button" className={styles.startButton} aria-expanded={open} aria-controls={id} aria-haspopup="dialog" onClick={() => setPinned((p) => !p)}>
         <span className={styles.startName}>{start.name}</span>
-        {option && <span className={styles.startOption}> · {option}</span>}
+        {option && <span className={styles.startOption}>, {option}</span>}
       </button>
       {open && (
         <span id={id} role="dialog" aria-label={`Start: ${start.name}`} className={styles.popover}>

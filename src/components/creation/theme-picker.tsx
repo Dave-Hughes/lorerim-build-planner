@@ -84,7 +84,7 @@ function ThemePreview({ plan, name, description, coverImageUrl, introStart }: { 
   // About four lines: cut at a word.
   const full = introStart || SAMPLE_INTRO;
   const intro = full.length > 320 ? `${full.slice(0, 320).replace(/[\s,.;:]+\S*$/, "")}…` : full;
-  const chips = [plan.race, plan.birthsign && `The ${plan.birthsign}`, plan.deity].filter(Boolean).join(" · ");
+  const chips = [plan.race, plan.birthsign && `The ${plan.birthsign}`, plan.deity].filter(Boolean).join(", ");
   return (
     <div className={styles.preview} style={themeStyle(theme.id)} data-theme={theme.id} aria-label={`Preview in ${theme.name}`} role="img">
       <div className={styles.hero}>

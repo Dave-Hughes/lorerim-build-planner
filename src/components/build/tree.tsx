@@ -216,7 +216,7 @@ export function PerkDetails({ id, states, level, onClose }: { id: string; states
           <h2 className={styles.sheetTitle}>{nameLine(p, st)}</h2>
           <span className={styles.detailsTree}>
             {p.tree}
-            {ranks > 1 ? ` · ${ranks} ranks` : ""}
+            {ranks > 1 ? `, ${ranks} ranks` : ""}
           </span>
         </div>
         {onClose && (

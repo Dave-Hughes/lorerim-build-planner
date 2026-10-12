@@ -35,8 +35,10 @@ test("gear slots in the editor, the card and Gear at level N", async ({ page, co
   await iconWithName(gear, "slot-main-hand", "Main hand");
   await iconWithName(gear, "slot-body", "Body");
   await page.goto(`/b/${TEST_BUILD_ID}?level=6`);
-  await iconWithName(page.getByRole("region", { name: "Level 6", exact: true }), "slot-body", "Steel plate armor");
-  await iconWithName(page.getByRole("region", { name: "Gear at level 6" }), "slot-off-hand", "Off hand");
+  // The seeded gear is free text, with no item behind it: the plain Other icon (WO-46).
+  await iconWithName(page.getByRole("region", { name: "Level 6", exact: true }), "slot-other", "Steel plate armor");
+  const offHand = page.getByRole("region", { name: "Gear at level 6" }).getByRole("listitem").filter({ hasText: "Off hand" });
+  await expect(offHand.locator('img[src="/icons/slot-other.svg"]')).toBeVisible();
 });
 
 test("game modes in the about bar and Set up; tags in Set up, Browse and the build page", async ({ page, context }) => {

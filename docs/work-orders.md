@@ -1942,9 +1942,9 @@ The rules engine finds no problems on any level. The perks were placed by a scri
 2. **Free-text gear looks like indexed gear.** `Staff of Forbidden Sun` and `Backpack` have no item behind them but show the same chip and icon. Until WO-45 lands, give a row without `itemId` the `Other` icon and no stats line.
 
 ### Done when
-- [ ] `grep -rn " · " src scripts/gamedata` finds nothing a player sees, and items.json is rebuilt.
-- [ ] Screenshot of Pure Mage at level 55 at 1440: the free-text rows read as such.
-- [ ] All checks in CLAUDE.md pass.
+- [x] `grep -rn " · " src scripts/gamedata` finds nothing a player sees, and items.json is rebuilt.
+- [x] Screenshot of Pure Mage at level 55 at 1440: the free-text rows read as such.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

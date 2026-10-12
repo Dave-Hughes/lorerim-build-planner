@@ -159,7 +159,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   const minutes = overview ? Math.max(1, Math.ceil(docWords(overview) / 200)) : 0;
   const TAB_SUB: Record<BuildTab, string> = {
     levels: `Levels 1 to ${total}`,
-    guide: overview ? `${minutes} min read${plan.videoId ? " · Video" : ""}` : "Video",
+    guide: overview ? `${minutes} min read${plan.videoId ? " | Video" : ""}` : "Video",
   };
 
   const [picked, setPicked] = useState<Picked>(null);
@@ -494,7 +494,7 @@ function LevelsTab({
               <i className={styles.destinyMark} aria-hidden="true" />
               Destiny
             </span>
-            <span className={styles.destinyStars}>{starsSoFar.length ? starsSoFar.join(" · ") : "No stars yet"}</span>
+            <span className={styles.destinyStars}>{starsSoFar.length ? starsSoFar.join(", ") : "No stars yet"}</span>
             {nextStar && <span className={styles.destinyNext}>Next star at level {nextStar}</span>}
             <button type="button" className={styles.destinyToggle} aria-expanded={destinyOpen} aria-controls="destiny-tree" onClick={toggleDestiny}>
               {destinyOpen ? "Hide the tree" : "Show the tree"}
@@ -611,7 +611,7 @@ function HeldList({
     <section aria-label={`${destiny ? "Destiny taken" : "Taken"} by level ${level}`} className={`${styles.held} ${destiny ? styles.heldDestiny : ""}`}>
       <span className={`sub-label ${styles.heldHead}`}>
         Taken by level {level}
-        {onOpen && total > 0 ? ` · ${total}` : ""}
+        {onOpen && total > 0 && <span className={styles.heldTotal}>{total}</span>}
       </span>
       {perks.length === 0 && <p className="muted">None yet.</p>}
       {perks.map((g) =>
@@ -1024,7 +1024,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
           const was = g.slot === "Other" ? g.replaces : before.find((b) => b.slot === g.slot)?.name;
           return (
             <span key={i} className={styles.newGearRow}>
-              <SlotIcon slot={g.slot} size={24} />
+              <SlotIcon slot={g.itemId || g.made ? g.slot : "Other"} size={24} />
               {name ? (
                 <span className={styles.newGearWhat}>
                   <span className={styles.newGearChip}>{name}</span>

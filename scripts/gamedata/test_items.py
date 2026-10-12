@@ -149,9 +149,9 @@ class ItemsTest(unittest.TestCase):
 
     def test_builds_the_planner_rows(self):
         rows = {r["name"]: r for r in items.build_items({"items": self.entries})}
-        self.assertEqual(rows["Steel Armor"], {"id": "Fixture.esp:000820", "name": "Steel Armor", "kind": "armor", "slot": "Body", "armorType": "Heavy", "stats": "Heavy armor · 24 armor · 35 weight", "text": "Old steel."})
-        self.assertEqual(rows["Steel Spear"]["stats"], "Spear · 11 damage · 14 weight")
-        self.assertEqual(rows["Iron Arrow"]["stats"], "Arrow · 8 damage · 0.1 weight")
+        self.assertEqual(rows["Steel Armor"], {"id": "Fixture.esp:000820", "name": "Steel Armor", "kind": "armor", "slot": "Body", "armorType": "Heavy", "stats": "Heavy armor, 24 armor, 35 weight", "text": "Old steel."})
+        self.assertEqual(rows["Steel Spear"]["stats"], "Spear, 11 damage, 14 weight")
+        self.assertEqual(rows["Iron Arrow"]["stats"], "Arrow, 8 damage, 0.1 weight")
 
 
 class LabelTest(unittest.TestCase):

@@ -128,7 +128,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
     traits: `${plan.traits.length} of ${d.rules.maxTraits} chosen`,
     mode: (
       <>
-        {`${plan.mode}${plan.start ? `, ${plan.start}${plan.startOption && plan.startOption !== "Random" ? ` · ${plan.startOption}` : ""}` : ""}`}
+        {`${plan.mode}${plan.start ? `, ${plan.start}${plan.startOption && plan.startOption !== "Random" ? `, ${plan.startOption}` : ""}` : ""}`}
         {plan.deity && (
           <>
             {", "}

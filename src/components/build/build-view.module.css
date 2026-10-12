@@ -1451,3 +1451,10 @@
   gap: 6px;
   max-width: 380px;
 }
+
+/* The held list's count, as a small number after its heading (no middle dot, rule 2). */
+.heldTotal {
+  margin-left: 8px;
+  color: var(--dim);
+  font-variant-numeric: tabular-nums;
+}

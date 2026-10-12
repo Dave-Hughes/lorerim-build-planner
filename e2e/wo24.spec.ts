@@ -56,7 +56,7 @@ test("a player's Liked shows only the Listed builds they liked", async ({ page, 
     await expect(page.getByRole("button", { name: /^Liked/ })).toHaveAttribute("aria-busy", "false");
   }
   await page.goto("/u/e2e-someone-else");
-  await expect(page.getByText(/\d+ builds? · 1 liked/)).toBeVisible();
+  await expect(page.getByText(/\d+ builds? \| 1 liked/)).toBeVisible();
   await page.getByRole("tab", { name: /^Liked/ }).click();
   const liked = page.getByRole("tabpanel");
   await expect(liked.getByRole("article")).toHaveCount(1);

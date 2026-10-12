@@ -16,7 +16,7 @@ export function RetiredBuild({ build, isOwner }: { build: BuildViewData; isOwner
     ["Deity", plan.deity || "Not chosen yet"],
     ["Traits", plan.traits.length ? plan.traits.join(", ") : "None"],
     ["Game mode", plan.mode],
-    ["Start", plan.start ? `${plan.start}${plan.startOption && plan.startOption !== "Random" ? ` · ${plan.startOption}` : ""}` : "Not chosen yet"],
+    ["Start", plan.start ? `${plan.start}${plan.startOption && plan.startOption !== "Random" ? `, ${plan.startOption}` : ""}` : "Not chosen yet"],
   ];
   return (
     <main className={styles.main}>

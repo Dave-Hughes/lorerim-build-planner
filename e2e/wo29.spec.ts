@@ -36,7 +36,7 @@ test("every value explains itself; each trait on its own; Start opens a popover"
 
   await page.goto("/b/sample");
   const start = page.getByRole("region", { name: "Character", exact: true }).getByRole("button", { name: /Out in the Wilderness/ });
-  await expect(start).toHaveText("Out in the Wilderness · Falkreath");
+  await expect(start).toHaveText("Out in the Wilderness, Falkreath");
   await start.click();
   const pop = page.getByRole("dialog", { name: "Start: Out in the Wilderness" });
   await expect(pop).toContainText("Hold: Falkreath");

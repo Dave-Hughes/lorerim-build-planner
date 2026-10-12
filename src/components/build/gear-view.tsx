@@ -88,7 +88,8 @@ export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: num
             return (
               <li key={`${g.slot}-${g.name}`} className={`${styles.card} ${isNew ? styles.cardNew : ""}`}>
                 <span className={styles.slot}>
-                  <IconLabel icon={<SlotIcon slot={g.slot} size={24} />}>{g.slot}</IconLabel>
+                  {/* Free text with no item behind it (WO-46) takes the plain Other icon, so it doesn't pass for an indexed item. */}
+                  <IconLabel icon={<SlotIcon slot={g.itemId || g.made ? g.slot : "Other"} size={24} />}>{g.slot}</IconLabel>
                 </span>
                 <span className={styles.name}>
                   {g.name}

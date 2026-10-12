@@ -3,7 +3,7 @@ import { fitsSlot, searchItems, type GameItem } from "./items";
 
 const item = (name: string, kind: GameItem["kind"], extra: Partial<GameItem> = {}): GameItem => ({ id: `Test.esp:${name}`, name, kind, stats: "", ...extra });
 const ITEMS: GameItem[] = [
-  item("Iron Cuirass", "armor", { slot: "Body", armorType: "Heavy", stats: "Heavy armor · 25 armor · 30 weight" }),
+  item("Iron Cuirass", "armor", { slot: "Body", armorType: "Heavy", stats: "Heavy armor, 25 armor, 30 weight" }),
   item("Steel Spear", "weapon", { weaponType: "Spear" }),
   item("Steel Sword", "weapon", { weaponType: "Sword" }),
   item("Steel Greatsword", "weapon", { weaponType: "Greatsword" }),

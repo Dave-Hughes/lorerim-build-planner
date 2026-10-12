@@ -15,7 +15,7 @@ export interface GameItem {
   armorType?: string | null;
   /** Weapons: Sword, Bow, Spear...; ammunition: Arrow or Bolt. */
   weaponType?: string | null;
-  /** "Heavy armor · 25 armor · 30 weight" */
+  /** "Heavy armor, 25 armor, 30 weight" */
   stats: string;
   text?: string;
 }

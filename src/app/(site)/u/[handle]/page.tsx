@@ -43,7 +43,7 @@ export default async function PlayerPage({ params, searchParams }: { params: Par
           <div className={styles.whoText}>
             <h1 className={`title ${styles.h1}`}>{player.name}</h1>
             <p className={styles.count}>
-              {buildsLabel} · {liked.length} liked
+              {buildsLabel} | {liked.length} liked
             </p>
           </div>
         </div>
