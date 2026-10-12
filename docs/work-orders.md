@@ -1062,7 +1062,7 @@ From Dave's notes. Do after WO-28.
    - **Birthsign:** the sign's text from the records (`birthsigns.json`), as in Set up.
    - **Deity:** the deity's blessing text from the records, once the PC run (#4) has it. Until then, the races that can worship it (`deities.json`).
    - **Traits:** each trait is its own hover target, not one for the list, with the trait's text from `traits.json`. A trait choice shows as `Focused Combat: One-Handed` (WO-15).
-   - **Game mode:** what the mode changes in the planner's rules, from `src/lib/rules/constants.ts`, e.g. Konahrik's 3 perk points at level 1. It must not be wording invented for the tooltip.
+   - **Game mode:** what the mode changes in the planner's rules, from `src/lib/rules/constants.ts`, e.g. Naaktiid's 3 extra perk points at level 1 and +100 carry weight (`naaktiidBonusPerkPoints`, `naaktiidCarryWeight`); Konahrik is the classic rules with neither. It must not be wording invented for the tooltip.
    - **Start:** a popover rather than a tooltip, since it holds more: the start's name, the choice made (`Hammerfell`), and the start's own text from `starts_raw.json`. It opens on hover and on click (tap on phones), and closes on Esc or a click outside.
 3. **The bar's value for Start** is the start's name with the choice in muted text: `Mercenary · Hammerfell`. With no choice, or `Random`, it's the name alone. It truncates with `…` on narrow screens, and the popover has the rest.
 
@@ -1090,6 +1090,80 @@ From Dave's notes. Do after WO-28.
 - [ ] Unit tests for the old-name mapping in #5, including `Guild member: Companions` → `Guilds` / `Companions`.
 - [ ] `starts.json` built from `starts_raw.json`: 25 starts, and the option lists match it exactly.
 - [ ] Screenshots for Dave at 1440 and 390: the about bar with a tooltip open and with the Start popover open; Set up's start step with a start's choices; a long level note clamped.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-30  Icons: level markers, gear slots, game modes, tags (11 Oct 2026)
+
+Dave approved four sets, 24 icons in all. Deities (35) are not in this order. Do after WO-29.
+
+**How:** every icon is drawn in `scripts/icons/pixels.py` to the rules in `docs/design-rules.md` (Pixel icons), the same as the skill icons: 16×16, the shared outline, top-left light, the planner's palette, and one object a player would name. Never hand-edit an SVG.
+
+**Contact sheet first:**
+- Before wiring any icon in, render a contact sheet: each new icon at 16 px and 48 px, on the dark ground and on ember, next to the 18 skill icons.
+- Push it to staging and stop for Dave's approval, as with the skill icons.
+- At 16 px, no new icon may be mistakable for an existing one. Where the obvious object is taken (a sword is One-Handed, a shield is Block, a cuirass is Heavy Armor), pick another object and say which on the sheet.
+
+### 1. Level markers (5)
+| Icon | Object |
+|---|---|
+| Trainer | A straw training dummy on a post |
+| Skill book | A closed book with a brass clasp |
+| Banked | A small iron-bound strongbox |
+| Perk points | A single four-point star, ember, the same shape as a taken star in the trees |
+| Note | A quill |
+
+These go beside the labels in the level card (`Trainer`, `Skill book`, `Banked`) and in the pinned bar's chips (WO-21). They also go in the editor's Between level-ups rows and next to `Perk points` in the level header. Destiny points keep the existing Destiny icon.
+
+### 2. Gear slots (10, WO-22)
+| Slot | Object |
+|---|---|
+| Main hand | A weapon that isn't One-Handed's (e.g. a mace) |
+| Off hand | Something that isn't Block's shield (e.g. a torch) |
+| Head | A helmet |
+| Body | A cuirass, drawn so it differs from Heavy Armor's |
+| Hands | A pair of gauntlets |
+| Feet | A pair of boots |
+| Ring | A gold ring with a stone |
+| Amulet | An amulet on a chain |
+| Ammo | A quiver of arrows |
+| Other | A satchel |
+
+These are used in the editor's Gear block, `Gear at level N`, the level card's Gear row and the WO-23 gear search.
+
+### 3. Game modes (2)
+| Mode | Object |
+|---|---|
+| Konahrik (Classic LoreRim Experience) | Konahrik's gold dragon priest mask |
+| Naaktiid (New to LoreRim) | A lit lantern |
+
+These go next to the mode in the about bar, in Set up's mode step, and on cards if the mode shows there.
+
+### 4. Tags (7 new, WO-18)
+Tags that match a skill reuse its icon:
+- One-Handed, Two-Handed, Marksman, Heavy Armor, Destruction, Conjuration, Illusion, Alteration and Restoration use their own skill's icon.
+- Light Armor uses Evasion; Stealth uses Sneak; Thief uses Finesse; Crafter uses Smithing.
+
+The seven tags with no skill icon get new ones:
+
+| Tag | Object |
+|---|---|
+| Shield | A kite shield, distinct from Block's |
+| Unarmored | Monk's robes |
+| Spellsword | A sword with a blue flame along the blade |
+| Necromancy | A skull with a violet-blue glow (magicka blue) |
+| Shouts | A dragon's head in profile |
+| Tank | A tower shield planted in the ground |
+| Beginner-friendly | A signpost |
+
+These show on the tag chips in Set up and Browse builds, and on the build page under the meta line.
+
+### Done when
+- [ ] The contact sheet is pushed to staging and approved by Dave before any icon is wired in.
+- [ ] All 24 drawn by `pixels.py`, with no hand-edited SVGs (`git log` on `public/icons` shows only script output).
+- [ ] Each icon appears in the places listed for its set. Every icon has `alt=""`, and its name sits beside it.
+- [ ] Screenshots for Dave at 1440: the level card with Trainer, Skill book and Banked; the editor's Gear block; the about bar's mode; Browse builds' tag filter.
 - [ ] All checks in CLAUDE.md pass.
 
 ---
