@@ -1397,7 +1397,7 @@ Dave approved the deity contact sheet (chat, 11 Oct). This is the set WO-30 left
 1. The planner lists only the 35 deities offered to the races at the start. Wintersun has 55, and any of them can be joined at a shrine. Add the other 20 to the list:
    - Almalexia, Baan Dar, Clavicus Vile, Ebonarm, Hermaeus Mora, Jyggalag, Mannimarco, Meridia, Namira, Nocturnal;
    - Peryite, Sanguine, Sai, Sotha Sil, St. Alessia, The All-Maker, The Magna-Ge, The Old Ways, Vaermina, Vivec.
-2. **Their names** come from Wintersun's own text: the tenets record's name with `Tenets of ` taken off and a leading `the` capitalised (`Tenets of the All-Maker` → `The All-Maker`). The one exception is `Totems`, whose tenets are `Tenets of the Old Ways`: its name is `The Old Ways`.
+2. **Their names** come from Wintersun's own text: the tenets record's name with `Tenets of ` taken off and a leading `the` capitalised (`Tenets of the All-Maker` → `The All-Maker`). This gives all 55 the names on the contact sheet. Note that Wintersun's key `Totems` comes out as `The Old Ways`.
 3. **Data:**
    - `build.py` writes `deity-text.json` for all 55 from `deities_raw.json`.
    - The planner's deity list (`deities` in `data.ts`) comes from `deity-text.json`, not only from the races' starting lists.
@@ -1414,7 +1414,7 @@ Dave approved the deity contact sheet (chat, 11 Oct). This is the set WO-30 left
 
 ### Done when
 - [ ] `deity-text.json` has 55 deities. Unit test: every name in the planner's deity list has a `public/icons/deity-<slug>.svg`.
-- [ ] Unit test: `Tenets of the All-Maker` becomes `The All-Maker`, and `Totems` becomes `The Old Ways`.
+- [ ] Unit test: `Tenets of the All-Maker` becomes `The All-Maker`, and the key `Totems` is named `The Old Ways`.
 - [ ] Screenshots for Dave at 1440: Iriel's about bar with Jephre's icon and its hover text open; Set up's deity step with Hermaeus Mora chosen.
 - [ ] All checks in CLAUDE.md pass.
 
