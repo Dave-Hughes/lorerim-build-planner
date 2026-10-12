@@ -32,17 +32,3 @@ test("an existing build with no theme shows Ember", async ({ page }) => {
   await expect(themed(page)).toHaveAttribute("data-theme", "ember");
   await expect(themed(page)).toHaveCSS("background-color", "rgb(14, 19, 25)");
 });
-
-test("the About link is at the foot of the home page, a build page and a profile", async ({ page }) => {
-  for (const url of ["/", `/b/${TEST_BUILD_ID}`, "/u/e2e-someone-else"]) {
-    await page.goto(url);
-    await expect(page.getByRole("contentinfo").getByRole("link", { name: "About" })).toBeVisible();
-  }
-  await page.getByRole("contentinfo").getByRole("link", { name: "About" }).click();
-  await page.waitForURL(/\/about$/);
-  const note = page.getByRole("article", { name: "About" });
-  await expect(note.getByRole("heading", { level: 1 })).toHaveText("To whoever finds this,");
-  await expect(note).toContainText("Mind the frostbite spiders.");
-  await expect(note).toContainText("— Tapps, by candlelight");
-  await expect(page.locator('meta[property="og:image"]').first()).toHaveAttribute("content", /\/og\/site\.png/);
-});

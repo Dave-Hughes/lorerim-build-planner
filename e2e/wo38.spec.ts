@@ -31,14 +31,15 @@ test("the account menu, the Tags filter and Other trees close outside and on Esc
   await closesOutsideAndOnEsc(page, others, page.getByRole("menu", { name: "Other trees" }));
 });
 
-test("the footer: logo, a tip, the Discord link and About", async ({ page }) => {
-  for (const url of ["/", `/b/${IRIEL_BUILD_ID}`]) {
+test("the footer: who made it, the community, and the fan-made line; no About page", async ({ page }) => {
+  for (const url of ["/", `/b/${IRIEL_BUILD_ID}`, "/u/e2e-someone-else"]) {
     await page.goto(url);
     const foot = page.getByRole("contentinfo");
-    await expect(foot.getByRole("link", { name: "Made by Tapps" })).toHaveAttribute("href", "/about");
-    await expect(foot.getByText("Tip", { exact: true })).toBeVisible();
-    await expect(foot.getByRole("link", { name: /The Modding Bungalo Discord/ })).toHaveAttribute("href", "https://discord.gg/bungalo");
-    await expect(foot.getByRole("link", { name: "About", exact: true })).toHaveAttribute("href", "/about");
+    await expect(foot).toContainText("Made by Tapps");
+    await expect(foot.getByRole("link", { name: "LoreRim (Modding Bungalo) Community" })).toHaveAttribute("href", "https://discord.gg/bungalo");
     await expect(foot).toContainText("Fan-made. Not affiliated with Bethesda or the LoreRim team.");
+    await expect(foot.getByText("Tip", { exact: true })).toHaveCount(0);
+    await expect(foot.getByRole("link", { name: "About", exact: true })).toHaveCount(0);
   }
+  expect((await page.goto("/about"))?.status()).toBe(404);
 });
