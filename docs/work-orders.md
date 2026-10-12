@@ -880,7 +880,7 @@ Dave asked whether every item in the game could be indexed. It can: the planner 
 ### First run on the PC (chat session, 11 Oct)
 `items.py` ran against the Ultra load order in 30 s:
 - **Counts:** records 25,137 → playable 21,208 → named 20,593 → untemplated 6,354 → merged **5,113** (3,407 armor, 1,537 weapons, 169 ammo).
-- **Size:** `items_raw.json` is 1.48 MB raw. It's on Dave's PC at `_fieldguide/planner-extract/items_raw.json`; the chat session copies it into the repo when the PC is back online.
+- **Size:** `items_raw.json` is 1.48 MB raw. It's committed at `gamedata/5.0.4.8/items_raw.json`.
 
 Fix these in `items.py` / `build.py` before building `items.json`:
 - **Weapon type labels.** `Qtr Staff` (9) and `Quarterstaff` (9) are the same type, so use `Quarterstaff`. `Pole2H_Thrust` (Spear of Bitter Mercy) is a raw animation name, so map it to `Spear`.
@@ -1074,7 +1074,11 @@ From Dave's notes. Do after WO-28.
 2. Each value gets the WO-17 tooltip on hover and focus, with a dotted underline. Every tooltip uses only facts the planner already holds or the game's own words:
    - **Race:** the starting Health, Magicka and Stamina, and the primary and secondary skills (`races.json`).
    - **Birthsign:** the sign's text from the records (`birthsigns.json`), as in Set up.
-   - **Deity:** the deity's blessing text from the records, once the PC run (#4) has it. Until then, the races that can worship it (`deities.json`).
+   - **Deity:** the deity's own text from `gamedata/5.0.4.8/deities_raw.json`. It was read from the winning Wintersun records by `scripts/gamedata/deities.py`: 55 deities, each with `tenets`, `follower` and `devotee`.
+     - Show the follower and devotee boons under those two words, then the tenets.
+     - The text marks numbers as `<20>%`. Strip the angle brackets (as `plain` in `mention.ts` does).
+     - Match planner names to the file's `key` by letters only, ignoring a leading `The` (`Riddle'Thar` → `RiddleThar`, `The HoonDing` → `HoonDing`). The one exception is `Mehrunes Dagon` → `Mehrunes`; put it in `overrides.json`.
+     - `build.py` writes the result into `deities.json` alongside the race lists.
    - **Traits:** each trait is its own hover target, not one for the list, with the trait's text from `traits.json`. A trait choice shows as `Focused Combat: One-Handed` (WO-15).
    - **Game mode:** what the mode changes in the planner's rules, from `src/lib/rules/constants.ts`, e.g. Naaktiid's 3 extra perk points at level 1 and +100 carry weight (`naaktiidBonusPerkPoints`, `naaktiidCarryWeight`); Konahrik is the classic rules with neither. It must not be wording invented for the tooltip.
    - **Start:** a popover rather than a tooltip, since it holds more: the start's name, the choice made (`Hammerfell`), and the start's own text from `starts_raw.json`. It opens on hover and on click (tap on phones), and closes on Esc or a click outside.
@@ -1084,7 +1088,7 @@ From Dave's notes. Do after WO-28.
 4. **Data:**
    - `build.py` writes `src/data/lorerim-5.0.4.8/starts.json` from `gamedata/5.0.4.8/starts_raw.json` as `[{ name, source, text, options: [name, ...] }]`.
    - The game's names, order and options stay as they are.
-   - There's no PC step for starts. The deity blessing text for #2 still needs one, so add it to WO-23's run on the PC or show the fallback until then.
+   - There's no PC step left: starts and deity text are both committed (`starts_raw.json`, `deities_raw.json`).
 5. **The plan:** add `startOption?: string`. Map old saved `start` values to the game's names on read (`convert.ts`):
    - `Regular at an inn` → `Regular (Inn)`; `Arriving from overseas` → `From Overseas`; `Wanted criminal` → `Wanted Criminal`; `Left for dead` → `Left for Dead`.
    - `Guild member: X` → `Guilds` with option `X`.

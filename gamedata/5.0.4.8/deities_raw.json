@@ -1,0 +1,1214 @@
+{
+ "deities": [
+  {
+   "key": "Akatosh",
+   "group": "Divine",
+   "follower": {
+    "name": "Father of Dragons",
+    "text": "Attacks, spells, scrolls, shouts and enchantments are up to <30>% better against dragons (based on favor with Akatosh). Able to craft a powerful amulet by using amulets of the Eight Divines.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0517A7"
+   },
+   "devotee": {
+    "name": "Turn the Hourglass",
+    "text": "Praying to Akatosh resets the cooldown of your most recently used shout and power. Craft a powerful amulet with 5 of each of the nine divines amulets.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:08E48B"
+   },
+   "tenets": {
+    "name": "Tenets of Akatosh",
+    "text": "Fulfill your destiny by saving Tamriel. Raise your character level. Absorb dragon souls. Never openly break the laws of Skyrim.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A5200"
+   }
+  },
+  {
+   "key": "Almalexia",
+   "group": "Tribunal",
+   "tenets": {
+    "name": "Tenets of Almalexia",
+    "text": "Vanquish the threats facing Solstheim. Be generous to beggars and children. Receive the blessing of Lover's Comfort. Dark Elves are most deserving of my favor.",
+    "source": "Wintersun - GotT Patch.esp",
+    "id": "Wintersun - GotT Patch.esp:00080D"
+   },
+   "follower": {
+    "name": "Face-Snaked Queen",
+    "text": "Attacks deal up to <20>% more damage to enemies who are facing you and take up to <20>% less damage while blocking (based on favor with Almalexia).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - GotT Patch.esp:000877"
+   },
+   "devotee": {
+    "name": "Ayem's Mercy",
+    "text": "Healing from most spells and potions is up to <20>% better and wards are up to <30>% cheaper to cast. (based on favor with Almalexia)",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - GotT Patch.esp:000878"
+   }
+  },
+  {
+   "key": "Arkay",
+   "group": "Divine",
+   "follower": {
+    "name": "Chalice of Life",
+    "text": "Regenerate up to <5>% of your maximum Health per second based on missing Health. Can perform <Arkay's> <Rites>.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0517AA"
+   },
+   "devotee": {
+    "name": "Arkayn Cycle",
+    "text": "Revive with full Health upon taking fatal damage. Must pray to use this ability again. Costs <50>% favor. Attribute fortifying spells are up to <20>% stronger.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0517AE"
+   },
+   "tenets": {
+    "name": "Tenets of Arkay",
+    "text": "Slay the undead and their summoners. Perform <Arkay's> <Rites>. Never openly break the laws of Skyrim. Never summon the undead or become one of them.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A51F6"
+   }
+  },
+  {
+   "key": "Auriel",
+   "group": "Misc",
+   "devotee": {
+    "name": "Path to Alaxon",
+    "text": "Sun spells and bows are up to <20%> stronger. Wearing Elven, Glass or Ancient Falmer armor set increases Glass and Elven damage by up to <20>% (based on favor with Auriel).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1308FB"
+   },
+   "follower": {
+    "name": "The Eternal Sun",
+    "text": "Deal up to <20%> more damage to vampires and take up to <20%> less damage from vampires. Auriel's bow uses up to <80>% less charge (based on favor with Auriel).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1308FD"
+   },
+   "tenets": {
+    "name": "Tenets of Auriel",
+    "text": "Fulfill your destiny by saving Tamriel. Master all skills. Become my Champion at my sacred Chantry. High Elves are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A00E4"
+   }
+  },
+  {
+   "key": "Azura",
+   "group": "Daedra",
+   "devotee": {
+    "name": "Perfume of Moonshadow",
+    "text": "Activate a target below <30>% - <60>% health (based on favor) to paralyze them with <1> Health. Soul trapping spells cost up to <40>% less to cast.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:04C67E"
+   },
+   "follower": {
+    "name": "Twilight Shroud",
+    "text": "Foes within <mag> feet can absorb spells and suffer up to <20>% reduced magic resistance, chameleon and blind spells are up to <25>% cheaper (based on favor with Azura)",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:07F15A"
+   },
+   "tenets": {
+    "name": "Tenets of Azura",
+    "text": "Trap souls in my name. Explore new locations. Pray only at twilight, preferably outside. Dark Elves and those skilled in Illusion are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A00EF"
+   }
+  },
+  {
+   "key": "BaanDar",
+   "group": "Misc",
+   "follower": {
+    "name": "Pariah",
+    "text": "Pickpocketing and selling to fences is up to <50>% better. Alchemical powders deal up to <30>% more damage and oils gain <2> extra uses.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1C38A2"
+   },
+   "devotee": {
+    "name": "Skooma Trick",
+    "text": "Pray to ignite skooma in people's inventory within <250> feet doing massive damage (based on favor with Baan Dar). Throwing knives do up to <50>% more damage. Skooma no longer can kill you.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1C89B4"
+   },
+   "tenets": {
+    "name": "Tenets of Baan Dar",
+    "text": "Pick locks and pockets successfully. Khajiit and those skilled in Archery are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1E7059"
+   }
+  },
+  {
+   "key": "Boethiah",
+   "group": "Daedra",
+   "devotee": {
+    "name": "Assassinate",
+    "text": "During prayer, you may invoke superior Daedric Invisibility for <90> seconds. If broken by a sneak attack, it deals <25>% more damage. Costs <10>% favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:038210"
+   },
+   "follower": {
+    "name": "Blood Throne",
+    "text": "Your attacks deal up to <30>% more damage when fighting only one opponent (based on favor with Boethiah).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:04C690"
+   },
+   "tenets": {
+    "name": "Tenets of Boethiah",
+    "text": "Murder the innocent. Slay people who stand in your way. Strike unseen with sneak attacks. Dark Elves are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:14EF9A"
+   }
+  },
+  {
+   "key": "Clavicus",
+   "group": "Daedra",
+   "follower": {
+    "name": "Pactmaker",
+    "text": "Conjuration spells and effects are up to <20>% stronger. Pray to make a <Pact> to gain favor with Clavicus Vile.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0E475F"
+   },
+   "devotee": {
+    "name": "Wishmaster",
+    "text": "Pray to make a <Wish>, permanently gaining an additional perk point. Costs <99>% favor. Most teleporting and traversal spells are up to <50>% cheaper to cast.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0E4761"
+   },
+   "tenets": {
+    "name": "Tenets of Clavicus Vile",
+    "text": "Pray to accept a Pact and complete it as written within the allotted time. Never break or ignore my Pacts.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:14EFA9"
+   }
+  },
+  {
+   "key": "Dibella",
+   "group": "Divine",
+   "devotee": {
+    "name": "Dibellan Arts",
+    "text": "Activate a person in combat to make them unequip their items and follow you for <90> seconds. Costs <5>% favor. Illusion spells are up to <15%> stronger or longer lasting, twice that for charm, rally and command spells.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:038218"
+   },
+   "follower": {
+    "name": "Afterglow",
+    "text": "Take up to <20>% less physical and magical damage while you have 2 or more allies in combat or 1 ally and have lover's comfort.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0517BC"
+   },
+   "tenets": {
+    "name": "Tenets of Dibella",
+    "text": "Persuade others. Receive the blessing of Lover's Comfort. Find a new Sybil for my Temple. Pray only in the nude. Never openly break the laws of Skyrim.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A51FC"
+   }
+  },
+  {
+   "key": "Ebonarm",
+   "group": "Misc",
+   "follower": {
+    "name": "Enemy of the Daedra",
+    "text": "One Handed raises damage blocked, Block raises armor rating and Heavy Armor raises attack damage. <15>% at 100 of the corresponding skill level. These bonuses are doubled in an Oblivion Realm.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1B9665"
+   },
+   "devotee": {
+    "name": "Raven's Harvest",
+    "text": "Transfer armor of enemies within <mag> feet by up to <200> (based on favor with Ebonarm). Doubled against daedra. Bonus to frost and shock resist when wearing Ebony Armor.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1C389E"
+   },
+   "tenets": {
+    "name": "Tenets of Ebonarm",
+    "text": "Slay daedra. Defeat epic foes. Complete miscellaneous quests for the people of Skyrim. Those skilled in Block are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1E704E"
+   }
+  },
+  {
+   "key": "Herma",
+   "group": "Daedra",
+   "devotee": {
+    "name": "Omniscience",
+    "text": "Pray to permanently raise a skill of your choice by one level. Costs <10>% favor. Entropic spells are up to <20>% stronger based on favor.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1777F7"
+   },
+   "follower": {
+    "name": "Demon of Knowledge",
+    "text": "Find <Eldritch> <Pages> on corpses. Similar <Eldritch> <Pages> can be bound at a tanning rack to create <Eldritch> <Tomes> that improve magic and shouts.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:17C92C"
+   },
+   "tenets": {
+    "name": "Tenets of Hermaeus Mora",
+    "text": "Read <Eldritch> <Pages> and bind them into <Eldritch> <Tomes>. Read books that teach new skills. Become my Champion at the Summit of Apocrypha.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:19AFBE"
+   }
+  },
+  {
+   "key": "Hircine",
+   "group": "Daedra",
+   "follower": {
+    "name": "Bitter Mercy",
+    "text": "Deal up to <60>% more attack damage to living targets with down to <50>% or less Health (based on favor with Hircine).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0DF63A"
+   },
+   "devotee": {
+    "name": "Posting of the Hunt",
+    "text": "Pray to invoke a <Hunt> within <500> feet, revealing the living and exposing them to <Bitter> <Mercy>. Costs <10>% favor. Werebeasts can now deal up to <30>% more damage to undead under half health.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1633CF"
+   },
+   "tenets": {
+    "name": "Tenets of Hircine",
+    "text": "Slay the living in open combat, especially those stronger than you. Live as a werewolf. Pray in the wild. Those skilled in Light Armor are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:181A34"
+   }
+  },
+  {
+   "key": "HoonDing",
+   "group": "Redguard",
+   "follower": {
+    "name": "Make Way",
+    "text": "Staggering an opponent reduces armor by up to <300> points for <60> seconds (based on favor with the HoonDing).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1BE76E"
+   },
+   "devotee": {
+    "name": "Perseverance",
+    "text": "The Hoonding gives you <25%> chance to take no poise damage, take <25%> less physical damage when not staggered, <25%> more when staggered and deal <25%> more weapon damage to staggered enemies.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1C3888"
+   },
+   "tenets": {
+    "name": "Tenets of the HoonDing",
+    "text": "Slay your foes in open combat, especially those stronger than you. Those skilled in One-Handed are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1E1F2F"
+   }
+  },
+  {
+   "key": "Jephre",
+   "group": "Misc",
+   "follower": {
+    "name": "Forest Stride",
+    "text": "Take up to <20>% less physical damage from non-animals or up to <50>% less from animals when unarmored (Based on favor with Jephre). Eating meat is twice as strong, plant based food gives no benefit.",
+    "source": "LoreRim - Food Tweaks.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:01ECBB"
+   },
+   "devotee": {
+    "name": "The Eternal Song",
+    "text": "Health and stamina quickly restores outdoors and out of combat. Deal up to <20>% more damage when unarmored. Praying to Jephre brings clear weather.",
+    "source": "LoreRim - Food Tweaks.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:01ECBD"
+   },
+   "tenets": {
+    "name": "Tenets of Jephre",
+    "text": "Explore new locations. Read the stories of others. Hunt animals. Wood Elves are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A00DE"
+   }
+  },
+  {
+   "key": "Julianos",
+   "group": "Divine",
+   "follower": {
+    "name": "Divine Scholar",
+    "text": "Spells last up to <25>% longer and hostile spells are up to <20>% weaker (based on favor with Julianos).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:00F93B"
+   },
+   "devotee": {
+    "name": "Temple of Logic",
+    "text": "Spells have up to <25>% more magnitude (based on favor with Julianos).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:00F941"
+   },
+   "tenets": {
+    "name": "Tenets of Julianos",
+    "text": "Master the skills of the Mage. Strive to raise your Magicka. Never openly break the laws of Skyrim.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A00DB"
+   }
+  },
+  {
+   "key": "Jyggalag",
+   "group": "Daedra",
+   "follower": {
+    "name": "Obelisks of Order",
+    "text": "Generates <8> <Obelisks> <of> <Order> in Skyrim. Activating one grants <20> points of Health, Magicka and Stamina.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:149E87"
+   },
+   "devotee": {
+    "name": "Stasis",
+    "text": "Activate an opponent in combat to trap them in an inert but invulnerable state for <3> seconds. Costs <2>% favor. Take no physical damage while staggered.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:177806"
+   },
+   "tenets": {
+    "name": "Tenets of Jyggalag",
+    "text": "Activate my Obelisks of Order. Clear dungeons of evil. Slay daedra. Never serve Sheogorath. Those skilled in Heavy Armor are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:177818"
+   }
+  },
+  {
+   "key": "Kynareth",
+   "group": "Divine",
+   "follower": {
+    "name": "Windspeaker",
+    "text": "Plant-based food is <50>% stronger and longer lasting. When not sneaking, gain up to <25>% more damage and critical damage with bows and daggers.",
+    "source": "LoreRim - Food Tweaks.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:038234"
+   },
+   "devotee": {
+    "name": "Kynareth's Emissary",
+    "text": "Pray to summon a Sabre Cat mount. Friendly creatures and spirit summons are healed. Gain <10>% critical hit chance with bows and dagger while not sneaking.",
+    "source": "LoreRim - Food Tweaks.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0B1C70"
+   },
+   "tenets": {
+    "name": "Tenets of Kynareth",
+    "text": "Explore new locations. Strive to raise your Stamina. Receive the Voice of the Sky. Pray only outdoors. Never openly break the laws of Skyrim.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A00EA"
+   }
+  },
+  {
+   "key": "Leki",
+   "group": "Redguard",
+   "tenets": {
+    "name": "Tenets of Leki",
+    "text": "Bring the Civil War to a conclusion. Make and improve weapons. Master the skills of the Warrior.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:26FD39"
+   },
+   "devotee": {
+    "name": "Battle Meditation",
+    "text": "During prayer, you may spend <5>% favor to gain up to <50>% melee damage against targets at full hp (based on favor with Leki) for <60> minutes or <10> battles. Costs <5>% favor.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:26FD3B"
+   },
+   "follower": {
+    "name": "Spirit Sword",
+    "text": "All melee attacks ignore up to <30>% of an opponent's armor (based on favor with Leki).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:26FD3C"
+   }
+  },
+  {
+   "key": "Magnus",
+   "group": "Misc",
+   "follower": {
+    "name": "Sight, Light and Insight",
+    "text": "Magicka does not regenerate. While holding a staff or wand, touch and rune spells are up to <20%> stronger or longer lasting and enchantments use <50%> less charge.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:01ECAE"
+   },
+   "devotee": {
+    "name": "Architect's Gift",
+    "text": "Potions and ingredients restore up to <50>% more magicka. When under the effects of a magicka potion, soul gems provide up to <50>% more charge.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:028EE6"
+   },
+   "tenets": {
+    "name": "Tenets of Magnus",
+    "text": "Practice magic successfully while praying. Safeguard the Eye of Magnus. Create enchanted items.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A520A"
+   }
+  },
+  {
+   "key": "Malacath",
+   "group": "Daedra",
+   "devotee": {
+    "name": "Bloodsoaked Triumph",
+    "text": "When an enemy dies within <mag> feet, their killer is healed based on the amount of overkill damage dealt (scaling with favor with Malacath).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0CB1D5"
+   },
+   "follower": {
+    "name": "Deathbringer",
+    "text": "Your power attacks are up to <15>% stronger and cost up to <15>% less stamina (based on favor with Malacath).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0CB1D7"
+   },
+   "tenets": {
+    "name": "Tenets of Malacath",
+    "text": "Defeat epic foes. Improve weapons and armor. Never commit a crime against the strongholds. Orcs and those skilled in Smithing are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:14EFA5"
+   }
+  },
+  {
+   "key": "Mannimarco",
+   "group": "Misc",
+   "tenets": {
+    "name": "Tenets of Mannimarco",
+    "text": "Trap souls in my name. Pray only at night. Never accept Arkay's blessing. Those skilled in Conjuration are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:3CD71D"
+   },
+   "follower": {
+    "name": "Dark Moon",
+    "text": "Undead Conjurations last up to <20>% longer and necrotic spells are up to <10>% more powerful (based on favor with Mannimarco).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:3CD721"
+   },
+   "devotee": {
+    "name": "Nocturne",
+    "text": "Undead Conjurations deal up to <20%> more physical damage (based on favor with Mannimarco).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:3D2826"
+   }
+  },
+  {
+   "key": "Mara",
+   "group": "Divine",
+   "devotee": {
+    "name": "Aura of Peace",
+    "text": "Living allies within <mag> feet are healed up to <20> points of magicka and health per second (based on favor with Mara). Take <25>% less physical damage when your hands are lowered.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:03D345"
+   },
+   "follower": {
+    "name": "Cleansing",
+    "text": "While your hands are lowered, restore attributes <0.5> per second. Restoration spells are up to <20>% stronger based on favor. Praying cures all diseases.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:03D354"
+   },
+   "tenets": {
+    "name": "Tenets of Mara",
+    "text": "Be married. Own one or more houses. Be generous to beggars and children. Receive the blessing of Lover's Comfort. Never openly break the laws of Skyrim.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A5206"
+   }
+  },
+  {
+   "key": "Mehrunes",
+   "group": "Daedra",
+   "follower": {
+    "name": "Self-Immolation",
+    "text": "Drain magicka when praying. Stop praying at <20>% or less to gain more favor and <Burning Path> activations. Craft potions of immolation using potions of magicka restore at the cooking pot.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:060AD4"
+   },
+   "devotee": {
+    "name": "Burning Path",
+    "text": "Nearby foes burn for up to <40> damage and explode on death (based on favor with Mehrunes Dagon). Pray to recharge. Nearby friendly Daedra have their attributes healed.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0986BF"
+   },
+   "tenets": {
+    "name": "Tenets of Mehrunes Dagon",
+    "text": "Slay people who stand in your way. Defile the shrines of my enemies. Those skilled in Destruction are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:190D83"
+   }
+  },
+  {
+   "key": "Mephala",
+   "group": "Daedra",
+   "devotee": {
+    "name": "Whispers of Betrayal",
+    "text": "During prayer, seize control of the nearest person within <75> feet to fight for you. Costs <5>% favor. Follower ability buffed to up to <30%> sneak damage.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:03D34A"
+   },
+   "follower": {
+    "name": "Secret Murder",
+    "text": "Sneak attacks deal up to <20>% more damage from behind when not wearing heavy armor (based on favor with Mephala).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:04C694"
+   },
+   "tenets": {
+    "name": "Tenets of Mephala",
+    "text": "Poison your weapons. Strike unseen with sneak attacks. Intimidate the weak. Dark Elves are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:14EF97"
+   }
+  },
+  {
+   "key": "Meridia",
+   "group": "Daedra",
+   "devotee": {
+    "name": "Supreme Light",
+    "text": "Activate an undead opponent in combat to call down a solar strike to deal massive damage to undead in a wide area. Costs <50>% favor.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:042465"
+   },
+   "follower": {
+    "name": "Purification",
+    "text": "Fire, Turning and Sun spells are up to <20>% better. Physical attacks are up to <30>% better against undead. (based on favor with Meridia).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:060AE5"
+   },
+   "tenets": {
+    "name": "Tenets of Meridia",
+    "text": "Slay the undead. Never summon the undead or become one of them. High Elves and those skilled in Restoration are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:14EF9F"
+   }
+  },
+  {
+   "key": "MolagBal",
+   "group": "Daedra",
+   "devotee": {
+    "name": "Dragged to Oblivion",
+    "text": "Activate a hostile below level 50 in combat to banish them to Coldharbour. Pray to request the items. Costs <25>% favor. Blood magic is up to <20%> stronger.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:038222"
+   },
+   "follower": {
+    "name": "Eye of the Storm",
+    "text": "Absorbs up to <10> Magicka and Stamina per second (based on favor with Molag Bal) from nearby enemies in combat.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:04C698"
+   },
+   "tenets": {
+    "name": "Tenets of Molag Bal",
+    "text": "Slay people who stand in your way. Trap souls in my name. Live as a vampire and never seek a cure. Those skilled in Destruction are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:16D5EC"
+   }
+  },
+  {
+   "key": "Morwha",
+   "group": "Redguard",
+   "follower": {
+    "name": "Healer of the Sands",
+    "text": "Meditation restores up to <200> Health for you and allies out of combat (based on favor with Morwha). Some enemies can drop milk or honey. This can be used to create a curative potion.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1C89C9"
+   },
+   "tenets": {
+    "name": "Tenets of Morwha",
+    "text": "Be married. Receive the blessing of Lover's Comfort. Harvest the fruits of nature. Eat as much food as you want.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1CDAE1"
+   },
+   "devotee": {
+    "name": "Fertile Growth",
+    "text": "Praying to Morwha blesses you with enchanted fruit that restores or fortifies an attribute. These fruits can be further improved using milk and honey.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:20A7F6"
+   }
+  },
+  {
+   "key": "Namira",
+   "group": "Daedra",
+   "follower": {
+    "name": "Creeping Decay",
+    "text": "Reduces Poison Resist of all within <mag> feet by up to <40>% (based on favor with Namira). Grants strong stomach and strange meat on kills.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:130909"
+   },
+   "devotee": {
+    "name": "Necrophages",
+    "text": "Poisoning a person or putting a Human Heart, Flesh or Strange Meat into their inventory attracts insects, reducing armor by  up to 20 and dealing up to 40 disease damage (based on favor with Namira).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:135A1C"
+   },
+   "tenets": {
+    "name": "Tenets of Namira",
+    "text": "Murder the innocent. Poison your weapons. Eat the corpses of the dead with my Ring. Be generous to beggars.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:18BC67"
+   }
+  },
+  {
+   "key": "Nocturnal",
+   "group": "Daedra",
+   "devotee": {
+    "name": "Raven's Watch",
+    "text": "During the night, you are much less likely to be detected and are more proficient with picking pockets. During prayer, you may astrally observe the nearest person within <300> feet.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:04C67F"
+   },
+   "follower": {
+    "name": "Vanish in the Night",
+    "text": "Praying clears non-violent crime bounties up to up to 5000 gold. Shadow spells are up to <30>% better and <50>% at night (based on favor with Nocturnal).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0A2910"
+   },
+   "tenets": {
+    "name": "Tenets of Nocturnal",
+    "text": "Pickpocket <Mysterious> <Coinpurses>. Pick locks successfully. Pray only at night, preferably in darkness. Those skilled in Sneak are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:190D70"
+   }
+  },
+  {
+   "key": "Peryite",
+   "group": "Daedra",
+   "follower": {
+    "name": "Taskmaster",
+    "text": "Poison spells are up to <20%> stronger or longer lasting (based on favor with Peryite). Pray for <Peryite's> <Gifts> to gain favor.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0F8BE7"
+   },
+   "devotee": {
+    "name": "Green Dragon's Breath",
+    "text": "Activate a living opponent in combat to inflict all of <Peryite's> <Gifts> you have on the target, plus <20> disease damage per second for each gift. Pray to recharge.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0FDD32"
+   },
+   "tenets": {
+    "name": "Tenets of Peryite",
+    "text": "Catch as many diseases as you can. Accept my Gifts of pestilence. Pray only while diseased. Never accept a cure for your afflictions.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1540B0"
+   }
+  },
+  {
+   "key": "Phynaster",
+   "group": "Misc",
+   "devotee": {
+    "name": "Elvenpath",
+    "text": "During prayer, you may teleport back to the last location where you prayed. Gain to <25>% absorb chance and <100>% poison and disease resist while not moving.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:033105"
+   },
+   "follower": {
+    "name": "Shorter Strides",
+    "text": "Take up to <20>% less damage based on favor, immunity to stagger and <50>% attribute regeneration while standing still.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0935A1"
+   },
+   "tenets": {
+    "name": "Tenets of Phynaster",
+    "text": "Explore new locations. Find the standing stones of Skyrim. Harvest the fruits of nature. Bretons are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A00E1"
+   }
+  },
+  {
+   "key": "Rajhin",
+   "group": "Khajiit",
+   "follower": {
+    "name": "Rajhin's Tales",
+    "text": "Chance to find a large amount of additional gold in containers. Most sneak or thieving related potions and spells last up to twice as long.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1C38A3"
+   },
+   "devotee": {
+    "name": "Prayer of Unlocking",
+    "text": "Pray to Rajhin to break a pickable lock within <20> feet. No fall damage if not wearing heavy armor and chance to gain valuable loot on slain enemies while tresspassing.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1C89AE"
+   },
+   "tenets": {
+    "name": "Tenets of Rajhin",
+    "text": "Explore new locations. Bribe people as needed. Pick locks successfully. Those skilled in Lockpicking are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1CDB02"
+   }
+  },
+  {
+   "key": "RiddleThar",
+   "group": "Khajiit",
+   "tenets": {
+    "name": "Tenets of Riddle'Thar",
+    "text": "Master the skills of the Warrior, Thief and Mage. Strive to raise your Health, Magicka and Stamina. Each is as important as the others. Pray only at night.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1CDAF4"
+   },
+   "devotee": {
+    "name": "Beseech the Manes",
+    "text": "During prayer, an ancient Mane will grant a blessing they believe to be appropriate. Double bonus from day cycles.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1E705F"
+   },
+   "follower": {
+    "name": "Path to Llesw'er",
+    "text": "Gain bonuses based on day of the week ranging from attribute boosts, attribute regeneration and resistances.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1EC192"
+   }
+  },
+  {
+   "key": "Sai",
+   "group": "Misc",
+   "follower": {
+    "name": "Dancing Step",
+    "text": "Pray to bet gold on a game of dice. When sprinting, move <10>% faster and restore <1> Health and Stamina per second. When not sprinting, move <10>% slower and lose <100>% health and stamina regeneration.",
+    "source": "Wintersun - Sai Addon.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1BE77D"
+   },
+   "devotee": {
+    "name": "High Stakes",
+    "text": "Staking <1000> gold or more on a game of dice also adds <1> point of Stamina to your wager.",
+    "source": "Wintersun - Sai Addon.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1BE77E"
+   },
+   "tenets": {
+    "name": "Tenets of Sai",
+    "text": "Gamble while meditating and win.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1CDB0B"
+   }
+  },
+  {
+   "key": "Sanguine",
+   "group": "Daedra",
+   "follower": {
+    "name": "Be Merry",
+    "text": "Regeneration is increaesed by <100>% while alcohol, skooma or any other harmful alchemy effects are active. Alcohol is up to <100>% stronger based on favor with Sanguine.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0D02F9"
+   },
+   "devotee": {
+    "name": "Pandemonium",
+    "text": "Can pray in combat, forcing the <5> nearest hostile people to dance for <20> seconds. Dancing targets take up to <20>% more damage. Costs <10>% favor. ",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1633D4"
+   },
+   "tenets": {
+    "name": "Tenets of Sanguine",
+    "text": "Make mischief and commit misdemeanors and crimes worthy of a bounty. Indulge in mead, wine and ale. Find your own way out of jail.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:16D5E9"
+   }
+  },
+  {
+   "key": "Satakal",
+   "group": "Redguard",
+   "follower": {
+    "name": "World Egg",
+    "text": "Shrine blessings from any other gods are up to <75>% more effective and last longer (based on favor with Satakal).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1C89D3"
+   },
+   "devotee": {
+    "name": "Ouroboros",
+    "text": "Pray to become reborn as a different person, moving points between your attributes. Costs <15>% favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1E1F21"
+   },
+   "tenets": {
+    "name": "Tenets of Satakal",
+    "text": "Fulfill your destiny by saving Tamriel. Strive to raise your Health. Absorb dragon souls.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1E1F27"
+   }
+  },
+  {
+   "key": "Sheogorath",
+   "group": "Daedra",
+   "devotee": {
+    "name": "Lost to Madness",
+    "text": "Receive a <Touch> <of> <Madness> whenever you enter combat. All skills level <25> or below are <20>% better.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:2516F5"
+   },
+   "follower": {
+    "name": "Touch of Madness",
+    "text": "Praying grants a random <Touch> <of> <Madness>. High favor with Sheogorath yields more beneficial effects. Cheese is <200>% stronger.",
+    "source": "LoreRim - Food Tweaks.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:2516F7"
+   },
+   "tenets": {
+    "name": "Tenets of Sheogorath",
+    "text": "Pray often and receive Sheogorath's <Touch> <of> <Madness>. Never disrespect cheese.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:25B90B"
+   }
+  },
+  {
+   "key": "Shor",
+   "group": "Divine",
+   "follower": {
+    "name": "Another Name for Freedom",
+    "text": "Take almost no poise damage, deal up to <15>% more and take up to <15>% less physical damage against non-humans or animals (based on favor with Shor).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0DF646"
+   },
+   "devotee": {
+    "name": "Destiny",
+    "text": "When in combat with a mighty foe, Shor sends a Shield-Thane to assist. Pray to recharge. Elemental resistance increased by <15>%.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:102E80"
+   },
+   "tenets": {
+    "name": "Tenets of Shor",
+    "text": "Fulfill your destiny by saving Tamriel. Master the skills of the Warrior. Slay elves. Defeat epic foes.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:19AFCA"
+   }
+  },
+  {
+   "key": "Sithis",
+   "group": "Misc",
+   "devotee": {
+    "name": "Call of the Void",
+    "text": "While sneaking, activate a door to briefly turn it into a Void portal. Targets within <60> feet who are not detecting you are pulled in and killed. Costs <5>% favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0FDD55"
+   },
+   "follower": {
+    "name": "Primal Darkness",
+    "text": "Up to <25>% harder to detect by those within <30> feet. Chance to find Human Hearts on people you kill.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:107FD9"
+   },
+   "tenets": {
+    "name": "Tenets of Sithis",
+    "text": "Murder the innocent. Pray while sacrificing a Human Heart or Human Flesh. Send your victims to the Void. Argonians are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A00E7"
+   }
+  },
+  {
+   "key": "SothaSil",
+   "group": "Tribunal",
+   "tenets": {
+    "name": "Tenets of Sotha Sil",
+    "text": "Uncover the secrets of Dwemer ruins. Create enchanted items. Master the skills of the Mage. Dark Elves and those skilled in Enchanting are most deserving of my favor.",
+    "source": "Wintersun - GotT Patch.esp",
+    "id": "Wintersun - GotT Patch.esp:000825"
+   },
+   "devotee": {
+    "name": "Seht's Brilliance",
+    "text": "Using a filled soul gem or dynamo core, permanently summon a Dwarven automaton to fight for you (Max 1). Shock spells are up to <20>% stronger based on favor.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - GotT Patch.esp:000847"
+   },
+   "follower": {
+    "name": "Seht's Guidance",
+    "text": "Items are enchanted up to <15>% stronger and telekentic and wind spells are up to <20>% better (based on favor with Sotha Sil).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - GotT Patch.esp:000849"
+   }
+  },
+  {
+   "key": "StAlessia",
+   "group": "Misc",
+   "follower": {
+    "name": "Covenant of Man",
+    "text": "Pray for a Divine blessing of your choice. Divine blessings are up to <100>% better. Take up to <20>% less damage from humans (based on favor with St. Alessia).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:302DC1"
+   },
+   "devotee": {
+    "name": "Dragonblood Empress",
+    "text": "While under the effects of a Divine blessing, can talk to most non-hostile humans to make them a friend and potential follower. Costs <10>% favor.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:302DC7"
+   },
+   "tenets": {
+    "name": "Tenets of St. Alessia",
+    "text": "Have a follower at your side. Slay elves. Receive the blessing of a Divine.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:36D3B4"
+   }
+  },
+  {
+   "key": "Stendarr",
+   "group": "Divine",
+   "devotee": {
+    "name": "Channel Divinity",
+    "text": "During prayer, you may spend <10>% favor to gain up to <40>% improved attack, defense and healing (based on favor with Stendarr) for <120> seconds or <3> battles.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0FDD5D"
+   },
+   "follower": {
+    "name": "Sacred Resolve",
+    "text": "Physical attacks against undead slowly restore your health. Take up to <50>% less attack damage from all attacks as your health decreases. (based on favor with Stendarr).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:102E6C"
+   },
+   "tenets": {
+    "name": "Tenets of Stendarr",
+    "text": "Clear dungeons of evil. Slay daedra and the undead. Complete side quests. Never openly break the laws of Skyrim. Never practice the foul summoning arts.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A51F3"
+   }
+  },
+  {
+   "key": "Syrabane",
+   "group": "Misc",
+   "follower": {
+    "name": "Knowledge Seeker",
+    "text": "You are more likely to find spell tomes, staves and scrolls on enemies you kill. Arcane spells are up to <20>% stronger based on favor.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:019B62"
+   },
+   "devotee": {
+    "name": "Reach for the Stars",
+    "text": "All spells cost up to <20>% less to cast (based on favor with Syrabane).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:019B66"
+   },
+   "tenets": {
+    "name": "Tenets of Syrabane",
+    "text": "Read books that teach new skills. Study a wide variety of spells. High Elves are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A00D7"
+   }
+  },
+  {
+   "key": "TallPapa",
+   "group": "Redguard",
+   "follower": {
+    "name": "Metaphysical Insight",
+    "text": "Bound weapons deal up to <20>% more base damage and bound armor provides <30>% more armor rating (based on favor with Tall Papa).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:149E7B"
+   },
+   "devotee": {
+    "name": "Glimpse the Shores",
+    "text": "On death, become ethereal for a time period based on favor. If combat ends while ethereal, brings you back to life <10>% favor. Pray to reset. Ghosts deal up to <50>% less damage to you.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1C3889"
+   },
+   "tenets": {
+    "name": "Tenets of Tall Papa",
+    "text": "Touch the <Fractures> scattered around Skyrim. Create enchanted items. Those skilled in Enchanting are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1E1F39"
+   }
+  },
+  {
+   "key": "Talos",
+   "group": "Divine",
+   "devotee": {
+    "name": "Dragon of the North",
+    "text": "Your remaining shout cooldown is halved whenever an enemy dies within <mag> feet.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:047570"
+   },
+   "follower": {
+    "name": "Stormlord",
+    "text": "Attacks and shouts against playable races, Snow Elves and Falmer are increased by up to <20>% (based on favor with Talos).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:047572"
+   },
+   "tenets": {
+    "name": "Tenets of Talos",
+    "text": "Bring the Civil War to a conclusion. Learn the dragon tongue. Absorb dragon souls. Slay elves and the Thalmor. Never openly break the laws of Skyrim.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A5203"
+   }
+  },
+  {
+   "key": "TheAllMaker",
+   "group": "Misc",
+   "follower": {
+    "name": "Wellspring of Life",
+    "text": "Bonuses from The All Maker Stones are doubled. Gain up to <10>% weapon damage while having an unused All Maker Stone Power.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:3F0E95"
+   },
+   "devotee": {
+    "name": "World Shaman",
+    "text": "After using an All-Maker Stone power, pray to the All-Maker to have it restored to you. Doomstone effects are doubled (Stacks with Aetherial Crown)",
+    "source": "LoreRim Doomstones.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:3F0E97"
+   },
+   "tenets": {
+    "name": "Tenets of the All-Maker",
+    "text": "Cleanse the All-Maker Stones. Hunt animals. Explore new locations. Pray only outdoors. Nords are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:3F0E9A"
+   }
+  },
+  {
+   "key": "TheHist",
+   "group": "Misc",
+   "follower": {
+    "name": "Symbiosis",
+    "text": "Pray to gain up and to <50> point bonus to all attributes for up to <1000> seconds (based on favor with the Hist). Up to <100> when under the influence of Sleeping Tree Sap.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:368298"
+   },
+   "devotee": {
+    "name": "Deep Roots",
+    "text": "Absorb up to <40>% stamina and magicka from nearby dead creatures and people. Sleeping tree sap lasts up to <20> times longer and is up to <100>% stronger.(based on favor with the Hist).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:36829A"
+   },
+   "tenets": {
+    "name": "Tenets of the Hist",
+    "text": "Explore new locations. Slay daedra. Pray only outdoors. Never summon a daedra.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:36D3A4"
+   }
+  },
+  {
+   "key": "TheMagnaGe",
+   "group": "Misc",
+   "follower": {
+    "name": "Shimmering Light",
+    "text": "Out of combat, gain <50> points of weapon charge per second and <5> while in combat, up to their charge level when last equipped or recharged.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:3F0E94"
+   },
+   "devotee": {
+    "name": "Starlit Path",
+    "text": "During prayer, you may let the Magna-Ge carry you to a location within line of sight. Costs <4>% favor. Up to <10>% better Cloak and Alteration spells (based on favor with The Magne Ge)",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:3F0E96"
+   },
+   "tenets": {
+    "name": "Tenets of the Magna-Ge",
+    "text": "Create enchanted items. Explore new locations. Pray only outdoors at night. High Elves and those skilled in Alteration are most deserving of our favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:3F0E9D"
+   }
+  },
+  {
+   "key": "Totems",
+   "group": "Misc",
+   "follower": {
+    "name": "Totem Worship",
+    "text": "Pray while sacrificing <100> gold worth of gemstones to assume the powers of an <animal> <god>. Deal & up to <15>% more or less damage when wearing full Forsworn, Fur, Leather or Hide.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1F12B9"
+   },
+   "devotee": {
+    "name": "Dragon Cult",
+    "text": "Able to assume the powers of the <Dragon>. Costs <2>% favor per hour. Frost spells are up to <20>% stronger based on favor.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1F12BA"
+   },
+   "tenets": {
+    "name": "Tenets of the Old Ways",
+    "text": "Slay people who stand in your way. Absorb dragon souls. Assume our powers through prayer. Nords are most deserving of our favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:386905"
+   }
+  },
+  {
+   "key": "Trinimac",
+   "group": "Misc",
+   "follower": {
+    "name": "Tears of Man",
+    "text": "Gain <20>% attack damage if health is above <90>% and <20>% if stamina is above <90>% (based on favor with Trinimac).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0DF642"
+   },
+   "devotee": {
+    "name": "Manifest Divinity",
+    "text": "When praying, you may become ethereal and invulnerable until your next attack. Costs <5>% favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1266E6"
+   },
+   "tenets": {
+    "name": "Tenets of Trinimac",
+    "text": "Slay humans. Defeat epic foes. Never accept Boethiah's blessing or serve her. Those skilled in Two-Handed are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:19AFCD"
+   }
+  },
+  {
+   "key": "Vaermina",
+   "group": "Daedra",
+   "follower": {
+    "name": "Night Terrors",
+    "text": "Mind affecting illusion spells are up to <20>% more effective and cost up to <50>% less magicka while out of combat (based on favor with Vaermina).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:0517C1"
+   },
+   "devotee": {
+    "name": "Phantasmagoria",
+    "text": "Activate a sleeping person to summon an illusion to accompany you for ten hours. Costs <20>% favor. Illusion spells are up to <10>% stronger when not rested.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:060ADE"
+   },
+   "tenets": {
+    "name": "Tenets of Vaermina",
+    "text": "Witness the death of those under your mind affecting spells. Kill people in their sleep. Sleep to pray. Those skilled in Illusion are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:14EFA2"
+   }
+  },
+  {
+   "key": "Vivec",
+   "group": "Tribunal",
+   "tenets": {
+    "name": "Tenets of Vivec",
+    "text": "Fulfill your destiny by saving Tamriel. Read the stories of others. Defeat epic foes. Dark Elves and those skilled in Speechcraft are most deserving of my favor.",
+    "source": "Wintersun - GotT Patch.esp",
+    "id": "Wintersun - GotT Patch.esp:000816"
+   },
+   "devotee": {
+    "name": "Might of the Armiger",
+    "text": "Critical hits chance and damage is increased by up to <20>% when not power attacking. (based on favor with Vivec). Your health, stamina and magicka attempt to reach equilibrium.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - GotT Patch.esp:00084E"
+   },
+   "follower": {
+    "name": "Vehk's Guile",
+    "text": "Speech and intimidate checks are up to <60>% easier and light attacks deal up to <30>% more damage (per favor with Vivec)",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - GotT Patch.esp:000871"
+   }
+  },
+  {
+   "key": "Xarxes",
+   "group": "Misc",
+   "devotee": {
+    "name": "Panopticon",
+    "text": "Pray to ascend in a trance, revealing all characters in a very large radius. Scrolls scale based on you magic skill level of the scroll type <20>% at 100 skill level.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1215BF"
+   },
+   "follower": {
+    "name": "Scribe's Insight",
+    "text": "2 additional skill point from skill books. Scrolls scale based on enchanting skill <20>% at level 100 enchanting.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1215C0"
+   },
+   "tenets": {
+    "name": "Tenets of Xarxes",
+    "text": "Explore new locations. Read the stories of others. Study a wide variety of spells. Bretons are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:19AFD0"
+   }
+  },
+  {
+   "key": "Zen",
+   "group": "Misc",
+   "devotee": {
+    "name": "Merchant's Knapsack",
+    "text": "Pray to open and trade with an unlimited extradimensional storage space which has 5000 gold. Gain 2 more poison doses before needing to re-apply the poison.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:02DFF7"
+   },
+   "follower": {
+    "name": "Traveler's Break",
+    "text": "Alchemy is up to <15>% more effective (based on favor with Z'en). Gain <1> extra potion crafted.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1266D5"
+   },
+   "tenets": {
+    "name": "Tenets of Z'en",
+    "text": "Bribe people as needed. Harvest the fruits of nature. Eat as much food as you want. Those skilled in Speech are most deserving of my favor.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A00D4"
+   }
+  },
+  {
+   "key": "Zenithar",
+   "group": "Divine",
+   "devotee": {
+    "name": "Invisible Hand",
+    "text": "Pray to Zenithar to buy and sell items directly. Gain a very difficult crafting recipe. This recipe allows you to create perk potions at the Aetherium Forge.",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:03820F"
+   },
+   "follower": {
+    "name": "Work Ethic",
+    "text": "Tempering weapons or armor is up to <15>% better and unenchanted weapons deal up to <10>% more damage (based on favor with Zenithar).",
+    "source": "Wintersun - Reqtificated.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:09D7D7"
+   },
+   "tenets": {
+    "name": "Tenets of Zenithar",
+    "text": "Invest in stores and merchants. Seek out skill training. Make weapons and armor. Never openly break the laws of Skyrim.",
+    "source": "Wintersun - Faiths of Skyrim.esp",
+    "id": "Wintersun - Faiths of Skyrim.esp:1A51F9"
+   }
+  }
+ ]
+}
