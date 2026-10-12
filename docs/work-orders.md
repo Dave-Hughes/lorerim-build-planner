@@ -2020,11 +2020,11 @@ Left and right already step through levels on the Levels tab. Players don't know
 - Set `overflow-anchor: none` on the Levels tab's container so the browser's own scroll anchoring doesn't fight the hold.
 
 ### Done when
-- [ ] e2e: on Pure Mage, scroll to the hero's bottom, click `Read the full guide`; the Guide tab's row is in view.
-- [ ] e2e: scroll so `Gear at level 20` is just under the pinned bars, press → three times; the gear section's top stays within 4 px of where it was each time. Same for Spells.
-- [ ] e2e: the hint shows after two clicks on ›, and not again after reload once an arrow key was pressed.
-- [ ] Screenshots at 1440: the pinned bar with the ember level box; the hint showing.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: on Pure Mage, scroll to the hero's bottom, click `Read the full guide`; the Guide tab's row is in view.
+- [x] e2e: scroll so `Gear at level 20` is just under the pinned bars, press → three times; the gear section's top stays within 4 px of where it was each time. Same for Spells.
+- [x] e2e: the hint shows after two clicks on ›, and not again after reload once an arrow key was pressed.
+- [x] Screenshots at 1440: the pinned bar with the ember level box; the hint showing.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

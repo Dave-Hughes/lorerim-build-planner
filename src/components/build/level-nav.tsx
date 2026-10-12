@@ -78,23 +78,54 @@ export function LevelLegend({ marks }: { marks: LevelMark[] }) {
   );
 }
 
-export function LevelStepper({ level, total, onChange, slim }: { level: number; total: number; onChange: (level: number) => void; slim?: boolean }) {
+export function LevelStepper({
+  level,
+  total,
+  onChange,
+  slim,
+  onStep,
+  tip,
+}: {
+  level: number;
+  total: number;
+  onChange: (level: number) => void;
+  slim?: boolean;
+  /** Told when ‹ or › is clicked (the arrow-key hint counts them, WO-49). */
+  onStep?: () => void;
+  /** Shown by the stepper: the arrow-key hint. */
+  tip?: React.ReactNode;
+}) {
+  const step = (n: number) => {
+    onStep?.();
+    onChange(n);
+  };
   return (
     <div className={`${styles.stepper} ${slim ? styles.stepperSlim : ""}`}>
-      <button type="button" className="btn btn-icon" aria-label="Previous level" disabled={level <= 1} onClick={() => onChange(level - 1)}>
-        ‹
-      </button>
-      {/* Slim (the pinned bar): "LVL 12 / 20", to save room for the level's chips. */}
+      <Tooltip content="Previous level (←)">
+        <button type="button" className="btn btn-icon" aria-label="Previous level (←)" disabled={level <= 1} onClick={() => step(level - 1)}>
+          ‹
+        </button>
+      </Tooltip>
+      {/* Slim (the pinned bar): "LVL 12 / 20", the number in an ember box that flashes when it changes (WO-49). */}
       <span className={styles.viewing}>
         <span className={styles.viewingWord}>{slim ? "Lvl" : "Level"}</span>
-        <span className={styles.viewingNum}>{level}</span>
+        {slim ? (
+          <span key={level} className={styles.levelBox}>
+            {level}
+          </span>
+        ) : (
+          <span className={styles.viewingNum}>{level}</span>
+        )}
         <span className="muted">
           {slim ? "/" : "of"} {total}
         </span>
       </span>
-      <button type="button" className="btn btn-icon" aria-label="Next level" disabled={level >= total} onClick={() => onChange(level + 1)}>
-        ›
-      </button>
+      <Tooltip content="Next level (→)">
+        <button type="button" className="btn btn-icon" aria-label="Next level (→)" disabled={level >= total} onClick={() => step(level + 1)}>
+          ›
+        </button>
+      </Tooltip>
+      {tip}
     </div>
   );
 }
@@ -248,20 +279,39 @@ export function LevelRow({ marks, level, onChange }: { marks: LevelMark[]; level
 }
 
 /**
- * Keeps an element (the level row) where it is on screen when the level changes: call `hold()`
- * just before changing level, put `ref` on the element.
+ * Keeps what the reader is looking at where it is on screen when the level changes: call `hold()`
+ * just before changing level, put `ref` on the level row. With `sections` (ids, top to bottom,
+ * WO-49): when the level row is off screen, the first of them whose top is at or below the pinned
+ * bars is held instead, so a reader down at Gear or Spells doesn't jump when the level card above
+ * changes height.
  */
-export function useHoldInPlace<T extends HTMLElement>(level: number) {
+const NO_SECTIONS: readonly string[] = [];
+
+export function useHoldInPlace<T extends HTMLElement>(level: number, sections: readonly string[] = NO_SECTIONS) {
   const ref = useRef<T>(null);
-  const top = useRef<number | null>(null);
+  const held = useRef<{ id: string | null; top: number } | null>(null);
   const hold = useCallback(() => {
-    top.current = ref.current ? ref.current.getBoundingClientRect().top : null;
-  }, []);
+    const row = ref.current;
+    // The bottom of whatever is pinned over the page (the edit bar, the pinned bar).
+    let pinned = 0;
+    for (const el of document.querySelectorAll<HTMLElement>("[data-pinned-bar], [data-edit-bar]")) pinned = Math.max(pinned, el.getBoundingClientRect().bottom);
+    const rowBox = row?.getBoundingClientRect();
+    if (rowBox && rowBox.bottom > pinned && rowBox.top < window.innerHeight) {
+      held.current = { id: null, top: rowBox.top };
+      return;
+    }
+    const els = sections.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => !!el);
+    const below = els.find((el) => el.getBoundingClientRect().top >= pinned - 1);
+    const target = below ?? els[els.length - 1];
+    held.current = target ? { id: target.id, top: target.getBoundingClientRect().top } : rowBox ? { id: null, top: rowBox.top } : null;
+  }, [sections]);
   useLayoutEffect(() => {
-    const was = top.current;
-    top.current = null;
-    if (was === null || !ref.current) return;
-    const moved = ref.current.getBoundingClientRect().top - was;
+    const was = held.current;
+    held.current = null;
+    if (!was) return;
+    const el = was.id ? document.getElementById(was.id) : ref.current;
+    if (!el) return;
+    const moved = el.getBoundingClientRect().top - was.top;
     if (Math.abs(moved) > 0.5) window.scrollBy({ top: moved, behavior: "instant" });
   }, [level]);
   return { ref, hold };
@@ -328,3 +378,63 @@ export function LevelBars({ marks, level, onChange }: { marks: LevelMark[]; leve
     </div>
   );
 }
+
+const ARROW_TIP_KEY = "lbp.arrowTip";
+type ArrowTipStore = { clicks: number; done?: boolean };
+
+function readArrowTip(): ArrowTipStore {
+  try {
+    const v = JSON.parse(window.localStorage.getItem(ARROW_TIP_KEY) ?? "null") as ArrowTipStore | null;
+    return v && typeof v.clicks === "number" ? v : { clicks: 0 };
+  } catch {
+    return { clicks: 0 };
+  }
+}
+function writeArrowTip(v: ArrowTipStore) {
+  try {
+    window.localStorage.setItem(ARROW_TIP_KEY, JSON.stringify(v));
+  } catch {
+    // No storage: the hint may show again, nothing worse.
+  }
+}
+
+/**
+ * The one-time arrow-key hint (WO-49), on devices with a mouse and keyboard: it shows after the
+ * player's second click on ‹ or › (on any build), goes after 6 seconds, on the first arrow key or
+ * on its ×, and once dismissed or once an arrow key has been used it never shows again.
+ */
+export function useArrowTip() {
+  const [open, setOpen] = useState<"pinned" | "page" | null>(null);
+  useEffect(() => {
+    if (!open) return;
+    const t = window.setTimeout(() => setOpen(null), 6000);
+    return () => window.clearTimeout(t);
+  }, [open]);
+  const done = useCallback(() => {
+    writeArrowTip({ ...readArrowTip(), done: true });
+    setOpen(null);
+  }, []);
+  const stepped = useCallback((where: "pinned" | "page") => {
+    const v = readArrowTip();
+    if (v.done) return;
+    const clicks = v.clicks + 1;
+    writeArrowTip({ clicks });
+    if (clicks >= 2 && window.matchMedia("(hover: hover) and (pointer: fine)").matches) setOpen(where);
+  }, []);
+  return { open, stepped, done };
+}
+
+/** The hint's panel: "Tip: ← and → step through levels", with key caps and a ×. */
+export function ArrowTip({ onClose }: { onClose: () => void }) {
+  return (
+    <div className={styles.arrowTip} role="status">
+      <span>
+        Tip: <kbd className={styles.key}>←</kbd> and <kbd className={styles.key}>→</kbd> step through levels
+      </span>
+      <button type="button" className={styles.arrowTipClose} aria-label="Close the tip" onClick={onClose}>
+        ×
+      </button>
+    </div>
+  );
+}
+

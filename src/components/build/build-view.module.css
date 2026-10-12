@@ -660,6 +660,8 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  /* The level-change hold keeps the reader's place (WO-49); the browser's own anchoring would fight it. */
+  overflow-anchor: none;
 }
 
 /* The stepper, pinned to the top once it has scrolled away. */

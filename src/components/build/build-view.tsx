@@ -38,7 +38,7 @@ import { computeBuild } from "@/lib/rules/engine";
 import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
 import { AttributeIcon, DeityIcon, IconLabel, SignIcon, SkillIcon, SkillLabel, MarkIcon, SlotIcon, TagIcon } from "@/components/ui/skill-icon";
-import { LevelBars, LevelLegend, LevelStepper, useHoldInPlace } from "./level-nav";
+import { ArrowTip, LevelBars, LevelLegend, LevelStepper, useArrowTip, useHoldInPlace } from "./level-nav";
 import { BottomSheet, PerkDetails, Tree, ViewToggle, type TreeView } from "./tree";
 import styles from "./build-view.module.css";
 import { pageZoom } from "@/lib/zoom";
@@ -68,6 +68,9 @@ interface Props {
 }
 
 export type BuildTab = "levels" | "guide";
+
+/** What the reader may be looking at on the Levels tab, top to bottom: held still when the level changes (WO-49). */
+const HELD_SECTIONS = ["level-card", "attributes-skills", "perks", "destiny", "gear-at-level", "spells"] as const;
 
 /**
  * The tree and perk picked in the Perks section. A selected perk stays selected across levels (its
@@ -125,7 +128,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
 
   const [level, setLevelState] = useState(() => Math.min(total, Math.max(1, initialLevel)));
   // Changing level keeps the level row where it is on screen.
-  const { ref: levelBarRef, hold: holdLevelBar } = useHoldInPlace<HTMLElement>(level);
+  const { ref: levelBarRef, hold: holdLevelBar } = useHoldInPlace<HTMLElement>(level, HELD_SECTIONS);
   const setLevel = useCallback(
     (n: number) => {
       const next = Math.min(total, Math.max(1, n));
@@ -139,18 +142,24 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
     [total, holdLevelBar],
   );
 
+  // The one-time hint that the arrow keys step through levels (WO-49).
+  const arrowTip = useArrowTip();
+  const doneTip = arrowTip.done;
+
   // Left and right step through levels on the Levels tab (not inside a field or a tab row).
   useEffect(() => {
     if (tab !== "levels") return;
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement | null;
       if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable || t.closest('[role="tablist"]'))) return;
-      if (e.key === "ArrowLeft") setLevel(level - 1);
-      if (e.key === "ArrowRight") setLevel(level + 1);
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      setLevel(level + (e.key === "ArrowRight" ? 1 : -1));
+      // Using the keys means the hint has done its job: it never shows again.
+      doneTip();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [level, setLevel, tab]);
+  }, [level, setLevel, tab, doneTip]);
 
   // The intro, else the guide's first paragraph, else nothing.
   const intro = guide.intro && !isEmptyDoc(guide.intro) ? guide.intro : firstParagraph(overview);
@@ -219,6 +228,22 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
     };
   }, [tabRow, levelBarRef, tab]);
   const tabRefs = useRef<Partial<Record<BuildTab, HTMLButtonElement | null>>>({});
+  // "Read the full guide" (WO-49): open the Guide tab and bring its tab row up under the pinned
+  // bars, unless it's already wholly on screen. Smoothly, or at once with reduced motion.
+  const readGuide = () => {
+    setTab("guide");
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        if (!tabRow) return;
+        const z = pageZoom();
+        const sticky = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--sticky-top")) || 0) * z;
+        const r = tabRow.getBoundingClientRect();
+        if (r.top >= sticky && r.bottom <= window.innerHeight) return;
+        const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top: window.scrollY + r.top - sticky - 12 * z, behavior: still ? "instant" : "smooth" });
+      }),
+    );
+  };
   const onTabKey = (e: React.KeyboardEvent) => {
     const i = tabs.indexOf(tab);
     const next = e.key === "ArrowRight" ? tabs[(i + 1) % tabs.length] : e.key === "ArrowLeft" ? tabs[(i - 1 + tabs.length) % tabs.length] : null;
@@ -260,7 +285,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
               </div>
               <Ornament />
               {overview && (
-                <button type="button" className={styles.linkButton} onClick={() => setTab("guide")}>
+                <button type="button" className={styles.linkButton} onClick={readGuide}>
                   Read the full guide
                 </button>
               )}
@@ -292,9 +317,16 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
             </div>
           )}
           {pinned && tab === "levels" && (
-            <div className={styles.pinnedBar} role="region" aria-label="Pinned bar">
+            <div className={styles.pinnedBar} role="region" aria-label="Pinned bar" data-pinned-bar="">
               <div className={`page ${styles.pinnedInner}`}>
-                <LevelStepper level={level} total={total} onChange={setLevel} slim />
+                <LevelStepper
+                  level={level}
+                  total={total}
+                  onChange={setLevel}
+                  slim
+                  onStep={() => arrowTip.stepped("pinned")}
+                  tip={arrowTip.open === "pinned" ? <ArrowTip onClose={arrowTip.done} /> : null}
+                />
                 <LevelSummary
                   key={level}
                   d={d}
@@ -324,6 +356,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
                 level={level}
                 setLevel={setLevel}
                 levelBarRef={levelBarRef}
+                arrowTip={arrowTip}
                 note={noted.has(level) ? guide[`level:${level}`] : null}
                 picked={picked}
                 setPicked={setPicked}
@@ -365,6 +398,7 @@ function LevelsTab({
   level,
   setLevel,
   levelBarRef,
+  arrowTip,
   note,
   picked,
   setPicked,
@@ -377,6 +411,7 @@ function LevelsTab({
   level: number;
   setLevel: (n: number) => void;
   levelBarRef: React.RefObject<HTMLElement | null>;
+  arrowTip: ReturnType<typeof useArrowTip>;
   note: GuideDoc | null;
   /** The perk picked in the Perks section (held by the page, so the pinned bar can pick one too). */
   picked: Picked;
@@ -443,7 +478,13 @@ function LevelsTab({
     <>
       <section ref={levelBarRef} aria-label="Level" className={styles.levelSection}>
         <div className={styles.levelHead}>
-          <LevelStepper level={level} total={total} onChange={setLevel} />
+          <LevelStepper
+            level={level}
+            total={total}
+            onChange={setLevel}
+            onStep={() => arrowTip.stepped("page")}
+            tip={arrowTip.open === "page" ? <ArrowTip onClose={arrowTip.done} /> : null}
+          />
           <LevelLegend marks={marks} />
         </div>
         <LevelBars marks={marks} level={level} onChange={setLevel} />
