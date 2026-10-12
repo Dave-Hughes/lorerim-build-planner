@@ -18,6 +18,8 @@ import { shippedVersions } from "@/lib/rules/versions";
 import { emptyLevel } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
 import type { BuildPlan } from "@/lib/rules/types";
+import { ThemePicker } from "./theme-picker";
+import { themeOf } from "@/lib/themes";
 import styles from "./wizard.module.css";
 
 interface WizardProps {
@@ -28,6 +30,8 @@ interface WizardProps {
   signedIn: boolean;
   /** Sign-in button for the last step, rendered by the server. */
   signIn: React.ReactNode;
+  /** The start of the build's guide intro, for the theme preview (edit only). */
+  introStart?: string;
 }
 
 function plainTraitText(text: string): string {
@@ -44,7 +48,7 @@ function TraitText({ text }: { text: string }) {
   );
 }
 
-export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, signIn }: WizardProps) {
+export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, signIn, introStart }: WizardProps) {
   const router = useRouter();
   // Rendered on the client only (see wizard-loader.tsx), so the draft in this
   // browser can seed the state directly.
@@ -131,7 +135,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
         )}
       </>
     ),
-    name: details.name || "Not named",
+    name: `${themeOf(plan.theme).name} theme`,
   };
 
   const finish = () =>
@@ -254,7 +258,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
             {step === "skills" && <SkillsStep plan={plan} update={update} />}
             {step === "traits" && <TraitsStep plan={plan} update={update} />}
             {step === "mode" && <ModeStep plan={plan} update={update} />}
-            {step === "name" && <NameStep details={details} updateDetails={updateDetails} mode={mode} plan={plan} update={update} signedIn={signedIn} />}
+            {step === "name" && <NameStep details={details} updateDetails={updateDetails} plan={plan} update={update} signedIn={signedIn} introStart={introStart} />}
           </GameDataProvider>
 
           <div className={styles.nav}>
@@ -862,12 +866,12 @@ function StartPicker({ plan, update }: StepProps) {
   );
 }
 
-function NameStep({ details, updateDetails, mode, plan, update, signedIn }: { details: BuildDetails; updateDetails: (p: Partial<BuildDetails>) => void; mode: "create" | "edit"; plan: BuildPlan; update: StepProps["update"]; signedIn: boolean }) {
+function NameStep({ details, updateDetails, plan, update, signedIn, introStart }: { details: BuildDetails; updateDetails: (p: Partial<BuildDetails>) => void; plan: BuildPlan; update: StepProps["update"]; signedIn: boolean; introStart?: string }) {
   const d = useGameData();
   const noSign = plan.traits.includes("Master of Destiny");
   return (
     <>
-      <h1 className={`title ${styles.h1}`}>{mode === "create" ? "Name the build" : "Name and sharing"}</h1>
+      <h1 className={`title ${styles.h1}`}>Details</h1>
       {/* What is being created. */}
       <dl className={styles.summary}>
         <div>
@@ -929,6 +933,14 @@ function NameStep({ details, updateDetails, mode, plan, update, signedIn }: { de
           ))}
         </fieldset>
       </div>
+      <ThemePicker
+        plan={plan}
+        onPick={(theme) => update((p) => ({ ...p, theme }))}
+        name={details.name}
+        description={details.description}
+        coverImageUrl={details.coverImageUrl}
+        introStart={introStart}
+      />
     </>
   );
 }

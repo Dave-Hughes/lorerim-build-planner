@@ -21,7 +21,7 @@ test.describe("an author's builds", () => {
   test("changes the setup of an existing build", async ({ page, context }) => {
     await signIn(context);
     await page.goto(`/b/${TEST_BUILD_ID}/setup?step=name`);
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Name and sharing");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Details");
     await page.getByLabel("Description").fill("Now with a new description.");
     await page.getByLabel("Listed on Browse builds").check();
     await page.getByRole("button", { name: "Save changes" }).click();

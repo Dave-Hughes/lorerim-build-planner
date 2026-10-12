@@ -36,6 +36,7 @@ import { LevelBars, LevelLegend, LevelStepper, useHoldInPlace } from "./level-na
 import { BottomSheet, PerkDetails, Tree, ViewToggle, type TreeView } from "./tree";
 import styles from "./build-view.module.css";
 import { pageZoom } from "@/lib/zoom";
+import { themeOf, themeStyle } from "@/lib/themes";
 
 export type BuildViewData = Omit<BuildRecord, "createdAt" | "updatedAt"> & { updatedAt: string };
 
@@ -218,6 +219,8 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
       <main className={styles.main}>
         {/* The owner's edit bar: one click to edit, as View build is one click back. */}
         {isOwner && !build.isSample && <EditBar buildId={build.id} name={build.name} current={null} visibility={build.visibility} />}
+        {/* The build's guide theme (WO-37): everything below the edit bar takes its colours. */}
+        <div className={styles.themed} data-theme={themeOf(plan.theme).id} style={themeStyle(plan.theme)}>
         <Cover build={build} isOwner={isOwner} signedIn={signedIn} signInToCopy={signInToCopy} signInToLike={signInToLike} autoCopy={!!autoCopy} />
 
         <div className={`page ${styles.body}`}>
@@ -310,6 +313,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           )}
           </div>
           </div>
+        </div>
         </div>
       </main>
     </GuideFactsProvider>
@@ -1178,6 +1182,8 @@ function Cover({
             className={styles.coverImage}
             style={{ backgroundImage: `url("${build.coverImageUrl}")`, backgroundPosition: build.plan.coverFocus ? `${build.plan.coverFocus.x}% ${build.plan.coverFocus.y}%` : undefined }}
           />
+          {/* The theme's tint over the image (none for Ember). */}
+          <div className={styles.coverTint} />
         </div>
       )}
       <div className={styles.coverFade} />

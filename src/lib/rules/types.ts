@@ -5,6 +5,8 @@
  * every build without touching the database.
  */
 
+import type { ThemeId } from "@/lib/themes";
+
 export type Attribute = "health" | "magicka" | "stamina";
 export type GameMode = "Naaktiid" | "Konahrik";
 
@@ -64,6 +66,8 @@ export interface BuildPlan {
   traitChoices?: Record<string, string>;
   /** Where the cover image centres in the hero, in percent of its width and height. */
   coverFocus?: { x: number; y: number };
+  /** The guide theme of the build's page (WO-37, src/lib/themes.ts). Absent means Ember. */
+  theme?: ThemeId;
   levels: LevelPlan[];
   gear: GearItem[];
   notes: string;

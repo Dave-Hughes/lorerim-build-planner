@@ -2,21 +2,41 @@
 :root {
   /* What sticks at the top of the window: the owner's edit bar, when there is one. */
   --sticky-top: 0px;
+  /* The site's look, Ember. A build's page can take another guide theme (WO-37, src/lib/themes.ts),
+     which overrides these on its root: keep the two lists in step. */
   --ground: #0e1319;
   --panel: #141b23;
   --panel-raised: #1a2230;
+  --panel-high: #222b38;
+  --sunk: #10161e;
+  --sunk-deep: #0b1016;
   --rule: #2a3442;
+  --rule-soft: #1c2430;
   --rule-strong: #3a4658;
+  --line-bright: #4a5668;
   --text: #e4ebf0;
+  --soft: #c3cdd6;
   --muted: #8e9bab;
+  --faint: #7d8a9a;
+  --dim: #6f7c8c;
+  --bright: #ffffff;
   --ember: #f0913f;
+  --ember-text: #f6c08f;
+  --ember-hover: #f5a55a;
+  --ember-press: #d97f33;
   --on-ember: #0e1319;
   --brass: #b9a173;
+  --stripe: rgba(255, 255, 255, 0.035);
+  --hero-tint: transparent;
+  --hero-veil: 0%;
+  --hero-plain: none;
   /* Destiny (WO-27): its own colour everywhere it shows. Text on dark passes 4.5:1 (#d9c491: 9.3 to
      10.9; #b9a173: 6.4 to 7.5). Perks stay ember. */
   --destiny: #b9a173;
   --destiny-text: #d9c491;
-  --destiny-wash: rgba(185, 161, 115, 0.1);
+  --destiny-wash: color-mix(in srgb, var(--destiny) 10%, transparent);
+  --destiny-line: #5a4b2c;
+  --destiny-ground: #15140f;
   --health: #d07a6a;
   --magicka: #7d9fd6;
   --stamina: #86b47f;
@@ -99,11 +119,26 @@ a {
   color: var(--ember);
 }
 a:hover {
-  color: #fff;
+  color: var(--bright);
 }
 
 button {
   font: inherit;
+}
+
+/* Site pages: the footer sits at the window's foot on short pages, and a page's <main> fills down to
+   it. The height is divided by the page zoom, since the zoom scales it again. */
+.site {
+  min-height: calc(100dvh / var(--page-zoom));
+  display: flex;
+  flex-direction: column;
+}
+.site > main {
+  flex: 1 0 auto;
+}
+/* Its centring margins would stop a .page stretching across the column: give it the width back. */
+.site > .page {
+  width: calc(100% - 2 * var(--gutter));
 }
 
 button:focus-visible,
@@ -239,11 +274,11 @@ textarea:focus-visible {
 /* Secondary (outline) */
 .btn:hover:not(:disabled) {
   --btn-line: var(--ember);
-  --btn-bg: rgba(240, 145, 63, 0.08);
+  --btn-bg: color-mix(in srgb, var(--ember) 8%, transparent);
   color: var(--ember);
 }
 .btn:active:not(:disabled) {
-  --btn-bg: rgba(240, 145, 63, 0.14);
+  --btn-bg: color-mix(in srgb, var(--ember) 14%, transparent);
 }
 /* Primary: ember fill, dark label */
 .btn-primary {
@@ -252,13 +287,13 @@ textarea:focus-visible {
   color: var(--on-ember);
 }
 .btn-primary:hover:not(:disabled) {
-  --btn-bg: #f5a55a;
-  --btn-line: #f5a55a;
+  --btn-bg: var(--ember-hover);
+  --btn-line: var(--ember-hover);
   color: var(--on-ember);
 }
 .btn-primary:active:not(:disabled) {
-  --btn-bg: #d97f33;
-  --btn-line: #d97f33;
+  --btn-bg: var(--ember-press);
+  --btn-line: var(--ember-press);
   padding-top: calc(var(--btn-pad-y) + 1px);
   padding-bottom: calc(var(--btn-pad-y) - 1px);
 }
@@ -287,7 +322,7 @@ textarea:focus-visible {
   --btn-line: transparent;
 }
 .btn-quiet {
-  color: #c3cdd6;
+  color: var(--soft);
 }
 .btn-quiet:hover:not(:disabled) {
   color: var(--text);
@@ -302,8 +337,8 @@ textarea:focus-visible {
   color: var(--ember);
 }
 .btn-ember:hover:not(:disabled) {
-  --btn-line: #fff;
-  color: #fff;
+  --btn-line: var(--bright);
+  color: var(--bright);
 }
 .btn-sm {
   --btn-cut: 3px;
@@ -329,7 +364,7 @@ textarea:focus-visible {
   padding: 1px 8px;
   font-size: 12px;
   letter-spacing: 0.06em;
-  color: #c3cdd6;
+  color: var(--soft);
   white-space: nowrap;
 }
 .tag-sm {
@@ -357,7 +392,7 @@ textarea:focus-visible {
 }
 .input::placeholder,
 .textarea::placeholder {
-  color: #7d8a9a;
+  color: var(--faint);
 }
 .select {
   appearance: none;
@@ -413,7 +448,7 @@ textarea:focus-visible {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  border: 1px solid #4a5668;
+  border: 1px solid var(--line-bright);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -446,7 +481,7 @@ textarea:focus-visible {
   color: var(--muted);
 }
 .soft {
-  color: #c3cdd6;
+  color: var(--soft);
 }
 .ember {
   color: var(--ember);
@@ -502,6 +537,11 @@ textarea:focus-visible {
 }
 
 /* The owner's edit bar (56px and its rule) is sticky: other sticky bars sit below it. */
+/* A guide theme's root (WO-37): tokens made from other tokens are worked out where they're declared,
+   so they're declared again here to follow the theme's colours. */
+[data-theme] {
+  --destiny-wash: color-mix(in srgb, var(--destiny) 10%, transparent);
+}
 :root:has([data-edit-bar]) {
   --sticky-top: 57px;
 }

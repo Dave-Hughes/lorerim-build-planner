@@ -47,7 +47,7 @@
   overflow-wrap: anywhere;
 }
 .cardNew .name {
-  color: #f6c08f;
+  color: var(--ember-text);
 }
 .stats {
   font-size: 13px;
@@ -56,9 +56,9 @@
 .status {
   margin-top: 2px;
   padding-top: 6px;
-  border-top: 1px solid #1f2834;
+  border-top: 1px solid var(--rule-soft);
   font-size: 13px;
-  color: #6f7c8c;
+  color: var(--dim);
 }
 .cardNew .status {
   color: var(--ember);
@@ -68,7 +68,7 @@
    sideways in its own box on narrow screens; the page never does. */
 .timelineBox {
   border: 1px solid var(--rule);
-  background: #10161e;
+  background: var(--sunk);
   padding: 18px 20px 16px;
   overflow-x: auto;
 }
@@ -86,7 +86,7 @@
 .ticks span {
   text-align: center;
   font-size: 12px;
-  color: #6f7c8c;
+  color: var(--dim);
   font-variant-numeric: tabular-nums;
 }
 .ticks .tickNow {
@@ -104,11 +104,11 @@
 .track {
   position: relative;
   height: 30px;
-  background: #0c1117;
+  background: var(--sunk-deep);
 }
 .now {
   grid-row: 1;
-  background: rgba(240, 145, 63, 0.12);
+  background: color-mix(in srgb, var(--ember) 12%, transparent);
   border-left: 1px solid var(--ember);
   border-right: 1px solid var(--ember);
 }
@@ -132,22 +132,22 @@
   outline-offset: 1px;
 }
 .barNew {
-  background: rgba(240, 145, 63, 0.18);
+  background: color-mix(in srgb, var(--ember) 18%, transparent);
   border-color: var(--ember);
-  color: #f6c08f;
+  color: var(--ember-text);
 }
 .barHeld {
-  background: #1d2735;
-  border-color: #4a5a70;
+  background: var(--panel-high);
+  border-color: var(--line-bright);
   color: var(--text);
 }
 .barOther {
-  background: #151c26;
-  border-color: #232d3a;
+  background: var(--sunk);
+  border-color: var(--rule-soft);
   color: var(--muted);
 }
 .bar:hover {
-  color: #fff;
+  color: var(--bright);
   border-color: var(--ember);
 }
 @media (max-width: 599px) {

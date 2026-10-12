@@ -58,7 +58,7 @@
   right: 0;
   bottom: 0;
   height: 140px;
-  background: linear-gradient(to bottom, rgba(14, 19, 25, 0), var(--ground));
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--ground) 0%, transparent), var(--ground));
   pointer-events: none;
 }
 .more {
@@ -79,5 +79,5 @@
 /* Fading to the panel colour inside the "Changes" panel. */
 .fadePanel {
   height: 80px;
-  background: linear-gradient(to bottom, rgba(20, 27, 35, 0), var(--panel));
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--panel) 0%, transparent), var(--panel));
 }

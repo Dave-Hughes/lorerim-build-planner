@@ -57,14 +57,14 @@ test.describe("creating a build", () => {
     await page.getByLabel("Hold").selectOption("Falkreath");
     await page.getByRole("button", { name: "Next: Details" }).click();
 
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Name the build");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Details");
     await page.getByLabel("Build name").fill("Playwright Shield-Wall");
     await expect(page.getByText("Sign in to save it")).toBeVisible();
     await expect(page.getByText("Draft saved")).toBeVisible();
 
     // The draft survives a reload, on the same step.
     await page.reload();
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Name the build");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Details");
     await expect(page.getByLabel("Build name")).toHaveValue("Playwright Shield-Wall");
     await expect(page.getByRole("complementary", { name: "Setup steps" })).toContainText("2 of 2 chosen");
 

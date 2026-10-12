@@ -15,7 +15,7 @@
   font-size: 14px;
   border: 1px solid var(--rule-strong);
   background: transparent;
-  color: #c3cdd6;
+  color: var(--soft);
   cursor: pointer;
   transition:
     color 120ms,
@@ -30,7 +30,7 @@
 .like[aria-pressed="true"] {
   border-color: var(--ember);
   color: var(--ember);
-  background: rgba(240, 145, 63, 0.1);
+  background: color-mix(in srgb, var(--ember) 10%, transparent);
 }
 .like:focus-visible,
 .signIn:focus-visible {
@@ -126,7 +126,7 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 2px solid rgba(240, 145, 63, 0.6);
+  border: 2px solid color-mix(in srgb, var(--ember) 60%, transparent);
   opacity: 0;
   animation: likeRing 500ms ease-out both;
 }

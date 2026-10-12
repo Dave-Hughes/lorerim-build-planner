@@ -1,5 +1,14 @@
 .main {
+  /* The theme fills the page to the footer. */
+  display: flex;
+  flex-direction: column;
+}
+/* The guide theme's root (WO-37): its ground and text, to the page's foot. */
+.themed {
+  flex: 1;
   padding-bottom: 64px;
+  background: var(--ground);
+  color: var(--text);
 }
 
 /* ---------- Cover ---------- */
@@ -25,12 +34,21 @@
   background-position: center;
   animation: heroCover 900ms ease-out both;
 }
+/* The theme's tint over the cover image. */
+.coverTint {
+  position: absolute;
+  inset: 0;
+  background: var(--hero-tint);
+  mix-blend-mode: color;
+  opacity: 0.55;
+  pointer-events: none;
+}
 /* Deepens the foot's fade as the hero scrolls away (opacity set on scroll). */
 .coverDeepen {
   position: absolute;
   inset: 0;
   opacity: 0;
-  background: linear-gradient(to bottom, rgba(14, 19, 25, 0.35), var(--ground) 85%);
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--ground) 35%, transparent), var(--ground) 85%);
   pointer-events: none;
 }
 /* Loading in, once: title, description, meta line, buttons, each rising 16px. Never waits on the image. */
@@ -78,12 +96,15 @@
 /* Without a cover image the hero is only as tall as its text. */
 .coverPlain {
   min-height: 0;
-  background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0 2px, transparent 2px 16px);
+  background-image: repeating-linear-gradient(135deg, var(--stripe) 0 2px, transparent 2px 16px), var(--hero-plain);
 }
 .coverFade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(14, 19, 25, 0) 35%, rgba(14, 19, 25, 0.82) 72%, var(--ground) 100%);
+  background:
+    linear-gradient(to bottom, color-mix(in srgb, var(--ground) 0%, transparent) 35%, color-mix(in srgb, var(--ground) 82%, transparent) 72%, var(--ground) 100%),
+    /* Light themes wash the whole image, so dark text reads anywhere on it. */
+    color-mix(in srgb, var(--ground) var(--hero-veil), transparent);
 }
 .coverInner {
   position: relative;
@@ -112,7 +133,7 @@
 .description {
   margin: 0;
   font-size: 21px;
-  color: #c3cdd6;
+  color: var(--soft);
 }
 .byline {
   display: flex;
@@ -147,7 +168,7 @@
   padding: 3px 9px;
   border: 1px solid var(--rule-strong);
   font-size: 13px;
-  color: #c3cdd6;
+  color: var(--soft);
   text-decoration: none;
   transition:
     color 120ms,
@@ -189,7 +210,7 @@
   gap: 10px 18px;
   padding: 10px 16px;
   border: 1px solid var(--ember);
-  background: rgba(240, 145, 63, 0.07);
+  background: color-mix(in srgb, var(--ember) 7%, transparent);
 }
 .versionNotice p {
   margin: 0;
@@ -287,11 +308,11 @@
 }
 .bar {
   height: 4px;
-  background: #222b38;
+  background: var(--panel-high);
 }
 .bar3 {
   height: 3px;
-  background: #222b38;
+  background: var(--panel-high);
 }
 .barFill {
   height: 100%;
@@ -306,7 +327,7 @@
   background: var(--stamina);
 }
 .barPlain {
-  background: #5f6d80;
+  background: var(--line-bright);
 }
 .barChanged {
   background: var(--ember);
@@ -368,7 +389,7 @@
   gap: 14px;
   align-items: center;
   padding: 6px 0;
-  border-bottom: 1px solid #1c2430;
+  border-bottom: 1px solid var(--rule-soft);
 }
 .skillVal {
   text-align: right;
@@ -408,7 +429,7 @@
   grid-template-columns: 110px minmax(0, 1fr);
   gap: 14px;
   padding: 8px 0;
-  border-top: 1px solid #1c2430;
+  border-top: 1px solid var(--rule-soft);
 }
 .perkNames {
   display: flex;
@@ -430,7 +451,7 @@
   cursor: pointer;
 }
 .linkButton:hover {
-  color: #fff;
+  color: var(--bright);
 }
 
 .trees {
@@ -440,7 +461,7 @@
 }
 .treeBox {
   border: 1px solid var(--rule);
-  background: #10161e;
+  background: var(--sunk);
 }
 
 .bottom {
@@ -506,13 +527,13 @@
   font-family: var(--font-alegreya), Georgia, serif;
   font-weight: 700;
   font-style: normal;
-  color: #b9a173;
+  color: var(--brass);
   background:
     linear-gradient(var(--brass), var(--brass)) top left / 12px 1px no-repeat,
     linear-gradient(var(--brass), var(--brass)) top left / 1px 12px no-repeat,
     linear-gradient(var(--brass), var(--brass)) bottom right / 12px 1px no-repeat,
     linear-gradient(var(--brass), var(--brass)) bottom right / 1px 12px no-repeat,
-    rgba(240, 145, 63, 0.08);
+    color-mix(in srgb, var(--ember) 8%, transparent);
 }
 @supports (initial-letter: 4) or (-webkit-initial-letter: 4) {
   .introBook > :first-child > p:first-child::first-letter {
@@ -539,7 +560,7 @@
   align-items: center;
   gap: 10px;
   width: 100%;
-  color: rgba(185, 161, 115, 0.6);
+  color: color-mix(in srgb, var(--brass) 60%, transparent);
 }
 .ornamentRule {
   flex: 1 1 0;
@@ -586,7 +607,7 @@
     border-color 120ms;
 }
 .tab:hover {
-  color: #c3cdd6;
+  color: var(--soft);
   border-bottom-color: var(--rule-strong);
 }
 .tabName {
@@ -606,7 +627,7 @@
   border-bottom-color: var(--ember);
 }
 .tab[aria-selected="true"] .tabSub {
-  color: #c3cdd6;
+  color: var(--soft);
 }
 .tab:focus-visible {
   outline: 2px solid var(--brass);
@@ -675,7 +696,7 @@
   transform: translateY(-50%);
   padding-left: 14px;
   color: var(--muted);
-  background: linear-gradient(to right, rgba(14, 19, 25, 0), #0e1319 40%);
+  background: linear-gradient(to right, color-mix(in srgb, var(--ground) 0%, transparent), var(--ground) 40%);
 }
 .sumChip {
   flex: none;
@@ -688,7 +709,7 @@
   font-variant-numeric: tabular-nums;
   border: 1px solid var(--rule-strong);
   background: transparent;
-  color: #c3cdd6;
+  color: var(--soft);
 }
 .sumChip:focus-visible {
   outline: 2px solid var(--brass);
@@ -701,28 +722,28 @@
   border-color: transparent;
 }
 .sumAttr_health {
-  background: rgba(208, 122, 106, 0.2);
+  background: color-mix(in srgb, var(--health) 20%, transparent);
   box-shadow: inset 3px 0 0 var(--health);
 }
 .sumAttr_magicka {
-  background: rgba(125, 159, 214, 0.2);
+  background: color-mix(in srgb, var(--magicka) 20%, transparent);
   box-shadow: inset 3px 0 0 var(--magicka);
 }
 .sumAttr_stamina {
-  background: rgba(134, 180, 127, 0.2);
+  background: color-mix(in srgb, var(--stamina) 20%, transparent);
   box-shadow: inset 3px 0 0 var(--stamina);
 }
 /* Perks taken: ember, the colour of a taken star; buttons. */
 .sumPerk {
   cursor: pointer;
-  color: #f6d2b0;
-  border-color: rgba(240, 145, 63, 0.6);
-  background: rgba(240, 145, 63, 0.12);
+  color: var(--ember-text);
+  border-color: color-mix(in srgb, var(--ember) 60%, transparent);
+  background: color-mix(in srgb, var(--ember) 12%, transparent);
 }
 .sumPerk:hover {
   border-color: var(--ember);
-  background: rgba(240, 145, 63, 0.2);
-  color: #fff;
+  background: color-mix(in srgb, var(--ember) 20%, transparent);
+  color: var(--bright);
 }
 /* A skill chip's tooltip: the card's rows for that skill, each under its label. */
 .gainTip {
@@ -765,7 +786,7 @@
   z-index: 40;
   padding: 6px 0;
   /* Opaque: nothing on the page shows through it. */
-  background: #0e1319;
+  background: var(--ground);
   border-bottom: 1px solid var(--rule);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
@@ -844,7 +865,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background: #111820;
+  background: var(--sunk);
 }
 .card .note > section {
   padding-top: 0;
@@ -859,7 +880,7 @@
   line-height: 1.55;
 }
 .card .note [class*="fadePanel"] {
-  background: linear-gradient(to bottom, rgba(17, 24, 32, 0), #111820);
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--sunk) 0%, transparent), var(--sunk));
 }
 .noteBy {
   display: inline-flex;
@@ -927,7 +948,7 @@
   grid-template-columns: 8.5em minmax(0, 1fr);
   gap: 10px;
   padding: 6px 0;
-  border-bottom: 1px solid #1c2430;
+  border-bottom: 1px solid var(--rule-soft);
   font-size: 15px;
 }
 .gearRow dt {
@@ -952,7 +973,7 @@
 .reference .stats {
   margin-top: 4px;
   font-size: 14px;
-  color: #c3cdd6;
+  color: var(--soft);
   gap: 8px 16px;
 }
 .reference .stats dd {
@@ -1004,7 +1025,7 @@
   font-size: 15px;
   border: 1px solid var(--rule-strong);
   background: transparent;
-  color: #c3cdd6;
+  color: var(--soft);
   cursor: pointer;
   transition:
     color 120ms,
@@ -1070,12 +1091,12 @@
   padding: 8px 14px;
   border: 0;
   background: transparent;
-  color: #c3cdd6;
+  color: var(--soft);
   cursor: pointer;
 }
 .othersItem:hover,
 .othersItem:focus-visible {
-  background: rgba(240, 145, 63, 0.12);
+  background: color-mix(in srgb, var(--ember) 12%, transparent);
   color: var(--ember);
 }
 .perksBody {
@@ -1087,7 +1108,7 @@
 .perksBody .treeBox {
   flex: 3 1 640px;
   min-width: 0;
-  background: #0b1016;
+  background: var(--sunk-deep);
 }
 .side {
   flex: 1 1 280px;
@@ -1117,7 +1138,7 @@
   gap: 12px;
   /* One rule under each group; the heading's rule is the only one above the first. */
   border-top: 0;
-  border-bottom: 1px solid #1c2430;
+  border-bottom: 1px solid var(--rule-soft);
 }
 .held .perk {
   font: inherit;
@@ -1217,7 +1238,7 @@
   text-decoration-color: var(--destiny);
 }
 .destinyLink:hover {
-  color: #fff;
+  color: var(--bright);
 }
 .sumDestiny {
   cursor: pointer;
@@ -1226,8 +1247,8 @@
   background: var(--destiny-wash);
 }
 .sumDestiny:hover {
-  background: rgba(185, 161, 115, 0.2);
-  color: #fff;
+  background: color-mix(in srgb, var(--brass) 20%, transparent);
+  color: var(--bright);
 }
 .sumDestinyBody {
   display: inline-flex;
@@ -1263,9 +1284,9 @@
   align-items: center;
   gap: 10px 24px;
   padding: 14px 20px;
-  border-top: 1px solid #5a4b2c;
-  border-bottom: 1px solid #5a4b2c;
-  background: #15140f;
+  border-top: 1px solid var(--destiny-line);
+  border-bottom: 1px solid var(--destiny-line);
+  background: var(--destiny-ground);
 }
 .destinyTitle {
   display: inline-flex;
@@ -1285,7 +1306,7 @@
 .destinyStars {
   flex: 1 1 420px;
   min-width: 0;
-  color: #c3cdd6;
+  color: var(--soft);
 }
 .destinyNext {
   font-size: 14px;
@@ -1296,7 +1317,7 @@
   font-weight: 600;
   min-height: 44px;
   padding: 8px 16px;
-  border: 1px solid #5a4b2c;
+  border: 1px solid var(--destiny-line);
   background: transparent;
   color: var(--destiny-text);
   cursor: pointer;
@@ -1337,7 +1358,7 @@
 .newGearChip {
   padding: 1px 8px;
   border: 1px solid var(--ember);
-  color: #f6c08f;
+  color: var(--ember-text);
   font-weight: 600;
 }
 .sumGear {
@@ -1354,7 +1375,7 @@
   border: 0;
   border-bottom: 1px solid var(--rule);
   background: none;
-  color: #c3cdd6;
+  color: var(--soft);
   font: inherit;
   text-align: left;
   cursor: pointer;

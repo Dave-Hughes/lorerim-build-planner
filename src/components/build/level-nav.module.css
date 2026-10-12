@@ -87,7 +87,7 @@
   position: absolute;
   top: 4px;
   height: 44px;
-  background: rgba(240, 145, 63, 0.07);
+  background: color-mix(in srgb, var(--ember) 7%, transparent);
   /* Ember, like the row it stands for. */
   border: 1px solid var(--ember);
   box-sizing: border-box;
@@ -137,7 +137,7 @@
   height: 18px;
 }
 .tickNear {
-  background: #6b7889;
+  background: var(--dim);
 }
 .tickLabel {
   position: absolute;
@@ -229,11 +229,11 @@
   }
   .rowWrap::before {
     left: 0;
-    background: linear-gradient(to right, var(--ground), rgba(14, 19, 25, 0));
+    background: linear-gradient(to right, var(--ground), color-mix(in srgb, var(--ground) 0%, transparent));
   }
   .rowWrap::after {
     right: 0;
-    background: linear-gradient(to left, var(--ground), rgba(14, 19, 25, 0));
+    background: linear-gradient(to left, var(--ground), color-mix(in srgb, var(--ground) 0%, transparent));
   }
   .moreBefore::before,
   .moreAfter::after {
@@ -266,7 +266,7 @@
 }
 .cellFuture {
   background: transparent;
-  color: #6b7889;
+  color: var(--dim);
 }
 .cell {
   transition:
@@ -275,12 +275,12 @@
 }
 .cellPast:hover,
 .cellFuture:hover {
-  background: rgba(240, 145, 63, 0.08);
+  background: color-mix(in srgb, var(--ember) 8%, transparent);
   color: var(--ember);
 }
 .cellPast:active,
 .cellFuture:active {
-  background: rgba(240, 145, 63, 0.14);
+  background: color-mix(in srgb, var(--ember) 14%, transparent);
 }
 .cellNum {
   font-family: var(--font-title);
@@ -304,7 +304,7 @@
   background: var(--on-ember);
 }
 .cellFuture .cellPerk {
-  background: #4a5668;
+  background: var(--line-bright);
 }
 .cellDestiny {
   width: 8px;
@@ -342,7 +342,7 @@
 .markNotes {
   width: 7px;
   height: 7px;
-  border: 1px solid #c3cdd6;
+  border: 1px solid var(--soft);
   background: transparent;
 }
 .cellNotes {
@@ -352,7 +352,7 @@
   border-color: var(--on-ember);
 }
 .cellFuture .cellNotes {
-  border-color: #4a5668;
+  border-color: var(--line-bright);
 }
 .markNotes {
   position: absolute;

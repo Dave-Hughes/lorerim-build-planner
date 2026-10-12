@@ -177,6 +177,17 @@ export function textLength(n: GuideNode): number {
   return (n.text?.length ?? 0) + (n.content ?? []).reduce((sum, c) => sum + textLength(c), 0);
 }
 
+/** A document's text with its paragraphs joined by spaces (the Set up theme preview's intro). */
+export function docText(n: GuideNode | null | undefined): string {
+  if (!n) return "";
+  if (n.text) return n.text;
+  return (n.content ?? [])
+    .map(docText)
+    .join(n.type === "doc" ? " " : "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 /** Words in a document, for "6 min read". */
 export function docWords(n: GuideNode): number {
   const own = n.text ? n.text.split(/\s+/).filter(Boolean).length : 0;

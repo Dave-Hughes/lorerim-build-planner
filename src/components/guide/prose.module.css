@@ -30,7 +30,7 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
   line-height: 1.1;
-  color: #fff;
+  color: var(--bright);
   scroll-margin-top: 24px;
 }
 .prose h2 {
@@ -62,7 +62,7 @@
   font-family: var(--font-flavor);
   font-style: italic;
   font-size: 18px;
-  color: #c3cdd6;
+  color: var(--soft);
 }
 .prose hr {
   border: 0;
@@ -76,7 +76,7 @@
 }
 .prose strong {
   font-weight: 700;
-  color: #fff;
+  color: var(--bright);
 }
 
 /*
@@ -99,7 +99,7 @@
 }
 .prose [data-callout="warning"],
 .warning {
-  border-color: rgba(208, 122, 106, 0.55);
+  border-color: color-mix(in srgb, var(--health) 55%, transparent);
 }
 .prose [data-callout="tip"]::before,
 .prose [data-callout="warning"]::before,
@@ -153,7 +153,7 @@
   font-size: 14px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #c3cdd6;
+  color: var(--soft);
 }
 .prose details > summary:hover {
   color: var(--ember);
@@ -219,5 +219,5 @@
   font-family: var(--font-flavor);
   font-style: italic;
   font-size: 16px;
-  color: #c3cdd6;
+  color: var(--soft);
 }

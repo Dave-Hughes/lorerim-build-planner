@@ -1562,12 +1562,12 @@ Dave approved the canvas row **"Proposal: themes, the Details step, and an About
    > *— Tapps, by candlelight*
 
 ### Done when
-- [ ] Screenshots of the Details step with each of the five themes picked. They match the artboard.
-- [ ] Screenshots of Iriel's page at 1440 in all five themes, and in Parchment at 390.
-- [ ] A contrast check of every theme's pairs, in the commit message.
-- [ ] e2e: picking Frost and saving shows Iriel's page in Frost; an existing build with no theme shows Ember.
-- [ ] Screenshot of `/about` at 1440 and 390. The foot link appears on the home page, a build page and a profile.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Screenshots of the Details step with each of the five themes picked. They match the artboard.
+- [x] Screenshots of Iriel's page at 1440 in all five themes, and in Parchment at 390.
+- [x] A contrast check of every theme's pairs, in the commit message.
+- [x] e2e: picking Frost and saving shows Iriel's page in Frost; an existing build with no theme shows Ember.
+- [x] Screenshot of `/about` at 1440 and 390. The foot link appears on the home page, a build page and a profile.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

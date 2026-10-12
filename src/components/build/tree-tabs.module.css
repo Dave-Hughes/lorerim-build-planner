@@ -106,7 +106,7 @@
   min-height: 34px;
   border: 1px solid var(--rule);
   background: transparent;
-  color: #c3cdd6;
+  color: var(--soft);
   transition:
     color 120ms,
     background-color 120ms,
@@ -114,11 +114,11 @@
 }
 .tab:hover:not([aria-selected="true"]) {
   border-color: var(--ember);
-  background: rgba(240, 145, 63, 0.08);
+  background: color-mix(in srgb, var(--ember) 8%, transparent);
   color: var(--ember);
 }
 .tab:active:not([aria-selected="true"]) {
-  background: rgba(240, 145, 63, 0.14);
+  background: color-mix(in srgb, var(--ember) 14%, transparent);
 }
 .tab[aria-selected="true"] {
   border-color: var(--ember);

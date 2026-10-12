@@ -8,11 +8,11 @@
   min-width: 0;
   /* Taken stars, held lines and their halo: ember for skill trees, gold for Destiny (WO-27). */
   --perk: var(--ember);
-  --perk-halo: rgba(240, 145, 63, 0.25);
+  --perk-halo: color-mix(in srgb, var(--ember) 25%, transparent);
 }
 .destinyTree {
   --perk: var(--destiny);
-  --perk-halo: rgba(185, 161, 115, 0.3);
+  --perk-halo: color-mix(in srgb, var(--brass) 30%, transparent);
   background: var(--destiny-wash);
 }
 /* Destiny's can-take stars: a gold outline. */
@@ -45,7 +45,7 @@
   border: 0;
   border-right: 1px solid var(--rule-strong);
   background: transparent;
-  color: #c3cdd6;
+  color: var(--soft);
   cursor: pointer;
   transition:
     color 120ms,
@@ -55,7 +55,7 @@
   border-right: 0;
 }
 .seg button:hover:not([aria-pressed="true"]) {
-  background: rgba(240, 145, 63, 0.08);
+  background: color-mix(in srgb, var(--ember) 8%, transparent);
   color: var(--ember);
 }
 .seg button[aria-pressed="true"] {
@@ -109,19 +109,19 @@
 }
 .fadeLeft {
   left: 0;
-  background: linear-gradient(to right, #0b1016, rgba(11, 16, 22, 0));
+  background: linear-gradient(to right, var(--sunk-deep), color-mix(in srgb, var(--sunk-deep) 0%, transparent));
 }
 .fadeRight {
   right: 0;
-  background: linear-gradient(to left, #0b1016, rgba(11, 16, 22, 0));
+  background: linear-gradient(to left, var(--sunk-deep), color-mix(in srgb, var(--sunk-deep) 0%, transparent));
 }
 .fadeTop {
   top: 0;
-  background: linear-gradient(to bottom, #0b1016, rgba(11, 16, 22, 0));
+  background: linear-gradient(to bottom, var(--sunk-deep), color-mix(in srgb, var(--sunk-deep) 0%, transparent));
 }
 .fadeBottom {
   bottom: 0;
-  background: linear-gradient(to top, #0b1016, rgba(11, 16, 22, 0));
+  background: linear-gradient(to top, var(--sunk-deep), color-mix(in srgb, var(--sunk-deep) 0%, transparent));
 }
 .canvas {
   position: relative;
@@ -133,7 +133,7 @@
 }
 /* Lines. Widths come from the tree's scaled line size (set on each line), never from here. */
 .edge_other {
-  stroke: #33404f;
+  stroke: var(--rule-strong);
   opacity: 0.6;
 }
 .edge_next {
@@ -186,7 +186,7 @@
 .partial::before {
   /* A dark centre over the segmented ring (the lines run under the star, not through it). */
   background:
-    radial-gradient(circle, #10161e 0 46%, transparent 47%),
+    radial-gradient(circle, var(--sunk) 0 46%, transparent 47%),
     var(--ring);
 }
 .partial::after {
@@ -199,21 +199,21 @@
 }
 .open::before {
   border: 1.5px solid var(--brass);
-  background: #10161e;
+  background: var(--sunk);
 }
 .locked::before {
   inset: 25%;
-  background: #4a5668;
+  background: var(--line-bright);
 }
 .selected::before {
   box-shadow:
-    0 0 0 5px #10161e,
+    0 0 0 5px var(--sunk),
     0 0 0 6px var(--brass);
 }
 .taken.selected::before {
   box-shadow:
     0 0 0 4px var(--perk-halo),
-    0 0 0 6px #10161e,
+    0 0 0 6px var(--sunk),
     0 0 0 7px var(--brass);
 }
 .star:focus-visible {
@@ -247,18 +247,18 @@
 }
 .labelReq {
   font-size: var(--sub);
-  color: #7d8a9a;
+  color: var(--faint);
   font-variant-numeric: tabular-nums;
 }
 .labelLocked .labelName {
-  color: #8e9bab;
+  color: var(--muted);
 }
 .labelHeld .labelName {
-  color: #fff;
+  color: var(--bright);
   font-weight: 600;
 }
 .labelSelected .labelName {
-  color: #fff;
+  color: var(--bright);
   font-weight: 600;
 }
 
@@ -287,7 +287,7 @@
 }
 .tag span {
   font-size: 12px;
-  color: #8e9bab;
+  color: var(--muted);
 }
 /* The tag: on hover with a mouse (a tap on a phone opens the sheet instead) and on keyboard focus. */
 @media (hover: hover) {
@@ -332,7 +332,7 @@
   column-gap: 10px;
   padding: 8px 6px;
   border: 0;
-  border-bottom: 1px solid #1c2430;
+  border-bottom: 1px solid var(--rule-soft);
   background: transparent;
   color: var(--text);
   font: inherit;
@@ -342,10 +342,10 @@ button.listRow {
   cursor: pointer;
 }
 button.listRow:hover {
-  background: rgba(240, 145, 63, 0.06);
+  background: color-mix(in srgb, var(--ember) 6%, transparent);
 }
 button.listRow[aria-pressed="true"] {
-  background: rgba(240, 145, 63, 0.12);
+  background: color-mix(in srgb, var(--ember) 12%, transparent);
 }
 .listDot {
   grid-area: dot;
@@ -364,7 +364,7 @@ button.listRow[aria-pressed="true"] {
   width: 6px;
   height: 6px;
   margin: 2px;
-  background: #4a5668;
+  background: var(--line-bright);
 }
 .listName {
   grid-area: name;
@@ -372,7 +372,7 @@ button.listRow[aria-pressed="true"] {
 .listReq {
   grid-area: req;
   font-size: 13px;
-  color: #7d8a9a;
+  color: var(--faint);
 }
 .listState {
   grid-area: state;
@@ -386,7 +386,7 @@ button.listRow[aria-pressed="true"] {
   color: var(--text);
 }
 .state_locked {
-  color: #7d8a9a;
+  color: var(--faint);
 }
 
 /* Bottom sheet (small screens) */
@@ -489,7 +489,7 @@ button.listRow[aria-pressed="true"] {
   width: 6px;
   height: 6px;
   margin: 0 2px;
-  background: #4a5668;
+  background: var(--line-bright);
 }
 
 /* ---------- What a perk does: the shared page's panel and the phones' sheet ---------- */
@@ -535,11 +535,11 @@ button.listRow[aria-pressed="true"] {
 }
 .detailsEffect {
   font-size: 14px;
-  color: #c3cdd6;
+  color: var(--soft);
 }
 .detailsLine {
   font-size: 14px;
-  color: #c3cdd6;
+  color: var(--soft);
 }
 .detailsStatus {
   font-size: 15px;

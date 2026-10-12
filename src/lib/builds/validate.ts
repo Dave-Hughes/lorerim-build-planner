@@ -1,3 +1,4 @@
+import { THEME_IDS } from "@/lib/themes";
 import { z } from "zod";
 import { MAX_TAGS, TAG_BY_SLUG } from "./tags";
 import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
@@ -43,6 +44,7 @@ function planSchema(d: GameData) {
     traits: z.array(z.string().refine((t) => d.traitByName.has(t), "Unknown trait")).max(d.rules.maxTraits),
     masterOfOneSkill: skillName.optional(),
     coverFocus: z.object({ x: z.number().min(0).max(100), y: z.number().min(0).max(100) }).optional(),
+    theme: z.enum(THEME_IDS).optional(),
     traitChoices: z
       .record(z.string(), z.string().max(40))
       .refine((c) => Object.entries(c).every(([t, v]) => TRAIT_CHOICES[t]?.options.includes(v)), "Unknown trait choice")

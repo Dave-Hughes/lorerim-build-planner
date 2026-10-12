@@ -12,7 +12,7 @@ const sofiaCondensed = Sofia_Sans_Extra_Condensed({
 // Italic for flavour lines; roman and bold for the build page's intro and its drop cap (WO-25).
 const alegreya = Alegreya({ subsets: ["latin"], style: ["normal", "italic"], weight: ["400", "700"], variable: "--font-alegreya" });
 // Only the intro's first line, in small caps: not preloaded on every page.
-const alegreyaSC = Alegreya_SC({ subsets: ["latin"], weight: ["500"], variable: "--font-alegreya-sc", preload: false });
+const alegreyaSC = Alegreya_SC({ subsets: ["latin"], weight: ["500", "700"], variable: "--font-alegreya-sc", preload: false });
 
 // Link previews (WO-33): absolute image URLs on staging and production, and the site's card on
 // every page that doesn't set its own. "./" is each page's own address.

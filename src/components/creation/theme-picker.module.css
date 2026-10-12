@@ -1,0 +1,282 @@
+/* The guide theme picker and preview (WO-37), to the canvas artboard "DetailsThemes". The cards and
+   the preview set their theme's tokens inline, so everything below reads var(--…). */
+.fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 32px;
+}
+.fieldset > legend {
+  padding: 0;
+  margin-bottom: 6px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+@media (max-width: 1100px) {
+  .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.card {
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  padding: 10px;
+  background: #121922;
+  border: 1px solid #2a3442;
+  color: #e4ebf0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 120ms;
+}
+.card:hover {
+  border-color: #4a5668;
+}
+.card[aria-pressed="true"] {
+  border-color: #f0913f;
+  box-shadow: inset 0 0 0 1px #f0913f;
+}
+.card:focus-visible {
+  outline: 2px solid #f0913f;
+  outline-offset: 2px;
+}
+.cardName {
+  margin-top: 6px;
+  font-weight: 600;
+}
+.cardLine {
+  color: #8e9bab;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+/* The small drawing of the page. */
+.mini {
+  display: flex;
+  flex-direction: column;
+  height: 132px;
+  background: var(--ground);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+}
+.miniHero {
+  flex: none;
+  height: 46px;
+  background: var(--hero-plain), linear-gradient(180deg, var(--panel-high), var(--ground));
+  display: flex;
+  align-items: flex-end;
+  padding: 6px 8px;
+}
+.miniTitle {
+  display: block;
+  width: 70%;
+  height: 8px;
+  background: var(--text);
+}
+.miniIntro {
+  display: flex;
+  gap: 6px;
+  padding: 8px 8px 4px;
+  align-items: center;
+}
+.miniCap {
+  display: block;
+  flex: none;
+  width: 14px;
+  height: 16px;
+  background: var(--ember);
+}
+.miniLines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.miniLines > span {
+  display: block;
+  height: 3px;
+  background: var(--muted);
+}
+.miniLines > span + span {
+  width: 80%;
+}
+.miniRule {
+  display: block;
+  margin: 4px 8px;
+  height: 1px;
+  background: var(--brass);
+}
+.miniChips {
+  display: flex;
+  gap: 4px;
+  padding: 4px 8px;
+}
+.miniChips > span {
+  display: block;
+  width: 22px;
+  height: 8px;
+  border: 1px solid var(--rule);
+}
+.miniChips > span:first-child {
+  background: var(--ember);
+  border-color: var(--ember);
+}
+.miniPanel {
+  display: block;
+  margin: 6px 8px 0;
+  height: 18px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+}
+
+/* The larger preview: the top of this build's page. */
+.preview {
+  border: 1px solid var(--rule);
+  background: var(--ground);
+  color: var(--text);
+  overflow: hidden;
+}
+.hero {
+  position: relative;
+  min-height: 220px;
+  display: flex;
+  align-items: flex-end;
+  background: var(--hero-plain), linear-gradient(180deg, var(--panel-high), var(--ground));
+}
+.heroImage,
+.heroTint,
+.heroFade {
+  position: absolute;
+  inset: 0;
+}
+.heroImage {
+  background-size: cover;
+  background-position: center;
+}
+.heroTint {
+  background: var(--hero-tint);
+  mix-blend-mode: color;
+  opacity: 0.55;
+}
+.heroFade {
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--ground) 0%, transparent) 25%, color-mix(in srgb, var(--ground) 82%, transparent) 70%, var(--ground) 100%),
+    color-mix(in srgb, var(--ground) var(--hero-veil), transparent);
+}
+.heroText {
+  position: relative;
+  padding: 24px 32px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.name {
+  font-size: 48px;
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  color: var(--bright);
+}
+.description {
+  font-size: 19px;
+  color: var(--soft);
+}
+.body {
+  padding: 22px 32px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ornament > span:not(.diamond) {
+  flex: 1;
+  height: 1px;
+  background: var(--brass);
+}
+.diamond {
+  width: 7px;
+  height: 7px;
+  transform: rotate(45deg);
+  background: var(--brass);
+}
+.intro {
+  margin: 0;
+  font-family: var(--font-flavor);
+  font-size: 19px;
+  line-height: 1.6;
+}
+.cap {
+  float: left;
+  font-family: var(--font-alegreya-sc), var(--font-flavor);
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 0.8;
+  padding: 4px 10px 0 0;
+  color: var(--ember);
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip,
+.chipOn {
+  padding: 4px 12px;
+  border: 1px solid var(--rule);
+}
+.chipOn {
+  background: var(--ember);
+  border-color: var(--ember);
+  color: var(--on-ember);
+  font-weight: 600;
+}
+.chipMuted {
+  color: var(--muted);
+}
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  padding: 14px 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 30px;
+  align-items: baseline;
+}
+.level {
+  font-size: 26px;
+}
+.accent {
+  color: var(--ember);
+}
+.muted {
+  color: var(--muted);
+}
+.gear {
+  border: 1px solid var(--ember);
+  padding: 1px 8px;
+}
+@media (max-width: 640px) {
+  .heroText,
+  .body {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .name {
+    font-size: 34px;
+  }
+}

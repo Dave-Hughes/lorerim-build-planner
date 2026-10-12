@@ -1,0 +1,20 @@
+.footer {
+  margin-top: auto;
+  border-top: 1px solid var(--rule);
+}
+.inner {
+  display: flex;
+  justify-content: center;
+  padding-top: 18px;
+  padding-bottom: 22px;
+}
+.link {
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+.link:hover {
+  color: var(--ember);
+  text-decoration: underline;
+}
