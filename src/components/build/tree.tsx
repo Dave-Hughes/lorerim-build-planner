@@ -26,6 +26,8 @@ export interface TreeProps {
   noToggle?: boolean;
   /** Below this window width a tapped star opens a bottom sheet (the shared page: 1100). */
   sheetBelow?: number;
+  /** The box's height, when the page decides it (the editor's tall tree, WO-26). */
+  height?: number;
 }
 
 export type TreeView = "tree" | "list";
@@ -288,7 +290,7 @@ export function BottomSheet({ label, onClose, children }: { label: string; onClo
   );
 }
 
-export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView, noToggle, sheetBelow = SMALL }: TreeProps) {
+export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView, noToggle, sheetBelow = SMALL, height }: TreeProps) {
   const d = useGameData();
   const [wrap, setWrap] = useState<HTMLDivElement | null>(null);
   // `top`: where the drawing starts on the page (below the toolbar), for short windows.
@@ -335,7 +337,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   // A short laptop window: the tree takes the height left under it, so its bottom row shows unscrolled.
   const left = room.vh - room.top - 48; // room for the legend under it
   const short = !small && room.vh < 900 && left >= 300;
-  const h0 = Math.max(220, Math.min(fitted, small ? Math.round(w0 * 1.2) : short ? Math.min(left, w0) : Math.max(380, Math.min(room.vh - 240, w0))));
+  const h0 = height && !small ? height : Math.max(220, Math.min(fitted, small ? Math.round(w0 * 1.2) : short ? Math.min(left, w0) : Math.max(380, Math.min(room.vh - 240, w0))));
   // Stars, lines and labels keep the box's sizes; only the drawing grows.
   const size = sizesFor(w0);
 

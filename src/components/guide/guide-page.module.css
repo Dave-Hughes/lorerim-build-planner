@@ -74,7 +74,7 @@
   }
   .mini {
     position: sticky;
-    top: 24px;
+    top: calc(24px + var(--sticky-top));
     display: flex;
     flex-direction: column;
     gap: 12px;

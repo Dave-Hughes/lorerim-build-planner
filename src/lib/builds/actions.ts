@@ -7,7 +7,7 @@ import { auth } from "@/auth";
 import { db, schema } from "@/db";
 import { newBuildId, isValidBuildId } from "./ids";
 import { getBuild } from "./queries";
-import { buildDetailsSchema, parseBuildPlan, type BuildDetails } from "./validate";
+import { buildDetailsSchema, buildVisibilitySchema, parseBuildPlan, type BuildDetails } from "./validate";
 import { convertPlan, droppedSentence } from "@/lib/rules/convert";
 import { guideDocSchema, imageUrls, isGuideKey, isInlineOnly, levelOfKey, limitFor, textLength, tooLongMessage } from "@/lib/guide/doc";
 import { deleteBuildImages, deleteImagesIfUnused, isOurImage } from "@/lib/guide/images";
@@ -145,6 +145,24 @@ export async function saveBuildDetails(id: string, input: BuildDetails): Promise
     .returning({ id: schema.builds.id });
   if (!rows[0]) return { ok: false, error: "Only the build's author can change it." };
   if (details.data.tags) await setTags(id, details.data.tags);
+  revalidatePath(`/b/${id}`);
+  revalidatePath("/");
+  revalidatePath("/me");
+  return { ok: true, value: undefined };
+}
+
+/** Changes who can see a build (the edit bar's control). Only the owner can. */
+export async function setBuildVisibility(id: string, visibility: unknown): Promise<ActionResult> {
+  const userId = await requireUser();
+  if (!userId) return { ok: false, error: "Your sign-in expired. Sign in again to keep saving." };
+  const v = buildVisibilitySchema.safeParse(visibility);
+  if (!v.success) return { ok: false, error: "Choose Listed, Link only or Only you." };
+  const rows = await db()
+    .update(schema.builds)
+    .set({ visibility: v.data })
+    .where(and(eq(schema.builds.id, id), eq(schema.builds.ownerId, userId)))
+    .returning({ id: schema.builds.id });
+  if (!rows[0]) return { ok: false, error: "Only the build's author can change it." };
   revalidatePath(`/b/${id}`);
   revalidatePath("/");
   revalidatePath("/me");

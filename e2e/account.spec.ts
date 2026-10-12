@@ -8,7 +8,7 @@ test.describe("an author's builds", () => {
     await page.goto("/b/sample");
     await page.getByRole("button", { name: "Copy to my builds" }).click();
     await page.waitForURL(/\/b\/[23456789abcdefghjkmnpqrstuvwxyz]{10}\/edit/);
-    await expect(page.getByText("Editing Falkreath Shield-Wall")).toBeVisible();
+    await expect(page.getByRole("region", { name: "Edit bar" }).getByText("Falkreath Shield-Wall")).toBeVisible();
 
     await page.goto("/me");
     const card = page.getByRole("article").filter({ hasText: "Falkreath Shield-Wall" });

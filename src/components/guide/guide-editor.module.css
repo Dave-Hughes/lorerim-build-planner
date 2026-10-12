@@ -39,7 +39,7 @@
 /* Always visible at the top of the field; sticks to the window's top in a long guide. */
 .toolbarBar {
   position: sticky;
-  top: 0;
+  top: var(--sticky-top);
   z-index: 25;
   background: var(--panel-raised);
   border: 1px solid var(--rule-strong);

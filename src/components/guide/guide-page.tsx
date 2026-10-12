@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { FocusHeader } from "@/components/ui/focus-header";
+import { EditBar } from "@/components/editor/edit-bar";
+import type { BuildVisibility } from "@/lib/builds/validate";
 import { GUIDE_LIMITS, textLength, type GuideDoc } from "@/lib/guide/doc";
 import type { BuildPlan } from "@/lib/rules/types";
 import { GuideFactsProvider } from "./guide-facts";
@@ -12,7 +12,7 @@ import type { GuideSaveStatus } from "./use-guide-autosave";
 import styles from "./guide-page.module.css";
 
 /** The owner's page for the build's overall guide. */
-export function GuidePage({ buildId, name, plan, initial, intro }: { buildId: string; name: string; plan: BuildPlan; initial: GuideDoc; intro: GuideDoc }) {
+export function GuidePage({ buildId, name, visibility, plan, initial, intro }: { buildId: string; name: string; visibility: BuildVisibility; plan: BuildPlan; initial: GuideDoc; intro: GuideDoc }) {
   const [save, setSave] = useState<{ status: GuideSaveStatus; error: string | null; retry: () => void }>({ status: "idle", error: null, retry: () => {} });
   const onStatus = useCallback((status: GuideSaveStatus, error: string | null, retry: () => void) => setSave({ status, error, retry }), []);
   const label = guideSaveLabel(save.status, save.error);
@@ -21,11 +21,14 @@ export function GuidePage({ buildId, name, plan, initial, intro }: { buildId: st
   const [focus, setFocus] = useState<"intro" | "guide" | null>(null);
   return (
     <>
-      <FocusHeader
-        context={`Guide for ${name}`}
+      <EditBar
+        buildId={buildId}
+        name={name}
+        current="guide"
+        visibility={visibility}
         status={
           label && (
-            <span role="status" className={save.status === "failed" ? styles.failed : undefined}>
+            <span className={save.status === "failed" ? styles.failed : undefined}>
               {label}
               {save.status === "failed" && !save.error?.startsWith("Too long") && (
                 <>
@@ -37,16 +40,6 @@ export function GuidePage({ buildId, name, plan, initial, intro }: { buildId: st
               )}
             </span>
           )
-        }
-        actions={
-          <>
-            <Link href={`/b/${buildId}/edit`} className="btn btn-sm">
-              Levels
-            </Link>
-            <Link href={`/b/${buildId}`} className="btn btn-sm">
-              See it as a visitor
-            </Link>
-          </>
         }
       />
       <main className={`page ${styles.main}`}>

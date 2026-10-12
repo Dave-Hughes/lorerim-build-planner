@@ -18,7 +18,7 @@
   .contents {
     grid-area: contents;
     position: sticky;
-    top: 24px;
+    top: calc(24px + var(--sticky-top));
   }
   .contents ol {
     flex-direction: column;

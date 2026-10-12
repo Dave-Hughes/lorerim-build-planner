@@ -71,7 +71,7 @@ test.describe("creating a build", () => {
     await page.goto("/new?step=name");
     await page.getByRole("button", { name: "Create build" }).click();
     await page.waitForURL(/\/b\/[23456789abcdefghjkmnpqrstuvwxyz]{10}\/edit/);
-    await expect(page.getByText("Editing Playwright Shield-Wall")).toBeVisible();
+    await expect(page.getByRole("region", { name: "Edit bar" }).getByText("Playwright Shield-Wall")).toBeVisible();
     await expect(page.getByText("Level", { exact: true })).toBeVisible();
 
     // It is theirs, and a fresh /new starts clean.

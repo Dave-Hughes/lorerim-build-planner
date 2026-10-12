@@ -982,11 +982,11 @@ Do after WO-25.
    - Destiny is not in these rows; see WO-27.
 
 ### Done when
-- [ ] e2e: from the editor, `Guide` in the edit bar opens the guide page and `Levels` comes back, with no other step. The visibility button changes a build from Link only to Listed, and Set up's Name step shows the change.
-- [ ] e2e: the owner on the shared page sees `Edit`; a visitor sees no edit bar.
-- [ ] At 1512 × 806 the editor's tree box measures at least 520 px tall, and all 18 chips with names are visible without scrolling sideways.
-- [ ] Screenshots for Dave at 1512 × 806: the editor with the edit bar, the visibility menu open; Set up and Guide with the edit bar; the shared page as owner. Also the editor at 390.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: from the editor, `Guide` in the edit bar opens the guide page and `Levels` comes back, with no other step. The visibility button changes a build from Link only to Listed, and Set up's Name step shows the change.
+- [x] e2e: the owner on the shared page sees `Edit`; a visitor sees no edit bar.
+- [x] At 1512 × 806 the editor's tree box measures at least 520 px tall, and all 18 chips with names are visible without scrolling sideways.
+- [x] Screenshots for Dave at 1512 × 806: the editor with the edit bar, the visibility menu open; Set up and Guide with the edit bar; the shared page as owner. Also the editor at 390.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

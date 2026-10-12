@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { GameDataProvider } from "@/components/game-data";
+import { SiteHeader } from "@/components/site-header";
 import { GuidePage } from "@/components/guide/guide-page";
 import { clientVersion, isKnownVersion } from "@/lib/rules/server";
 import { getBuild } from "@/lib/builds/queries";
@@ -22,8 +23,21 @@ export default async function GuideEditPage({ params }: { params: Params }) {
   if (!isKnownVersion(build.gameVersion)) redirect(`/b/${id}`);
   const guide = await getGuide(id, build.plan);
   return (
-    <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
-      <GuidePage buildId={id} name={build.name} plan={build.plan} initial={guide.overview?.doc ?? emptyDoc()} intro={guide.intro?.doc ?? emptyDoc()} />
-    </GameDataProvider>
+    <>
+      <SiteHeader />
+      <GameDataProvider
+        version={build.gameVersion}
+        serverVersion={clientVersion(build.gameVersion)}
+      >
+        <GuidePage
+          buildId={id}
+          name={build.name}
+          visibility={build.visibility}
+          plan={build.plan}
+          initial={guide.overview?.doc ?? emptyDoc()}
+          intro={guide.intro?.doc ?? emptyDoc()}
+        />
+      </GameDataProvider>
+    </>
   );
 }

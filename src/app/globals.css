@@ -1,5 +1,7 @@
 /* Design tokens. Source of truth: lorerim/planner/design-rules.md */
 :root {
+  /* What sticks at the top of the window: the owner's edit bar, when there is one. */
+  --sticky-top: 0px;
   --ground: #0e1319;
   --panel: #141b23;
   --panel-raised: #1a2230;
@@ -473,4 +475,9 @@ textarea:focus-visible {
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
+}
+
+/* The owner's edit bar (56px and its rule) is sticky: other sticky bars sit below it. */
+:root:has([data-edit-bar]) {
+  --sticky-top: 57px;
 }

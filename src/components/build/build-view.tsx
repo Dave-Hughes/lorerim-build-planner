@@ -13,6 +13,7 @@ import type { BuildRecord } from "@/lib/builds/types";
 import { useGameData } from "@/components/game-data";
 import { GuideFactsProvider, GuideMention } from "@/components/guide/guide-facts";
 import { SkillGains, type SkillGain } from "./skill-gains";
+import { EditBar } from "@/components/editor/edit-bar";
 import { GuideSection } from "@/components/guide/guide-section";
 import { LevelNote } from "@/components/guide/level-note";
 import { docWords, firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
@@ -166,7 +167,9 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
   useEffect(() => {
     const check = () => {
       const el = tabRow ?? levelBarRef.current;
-      setPinned(!!el && el.getBoundingClientRect().bottom < 0);
+      // Under the owner's edit bar, when there is one.
+      const top = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--sticky-top")) || 0;
+      setPinned(!!el && el.getBoundingClientRect().bottom < top);
     };
     check();
     window.addEventListener("scroll", check, { passive: true });
@@ -189,6 +192,8 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
   return (
     <GuideFactsProvider plan={plan} states={states}>
       <main className={styles.main}>
+        {/* The owner's edit bar: one click to edit, as View build is one click back. */}
+        {isOwner && !build.isSample && <EditBar buildId={build.id} name={build.name} current={null} visibility={build.visibility} />}
         <Cover build={build} updatedLabel={updatedLabel} isOwner={isOwner} signedIn={signedIn} signInToCopy={signInToCopy} signInToLike={signInToLike} autoCopy={!!autoCopy} />
 
         <div className={`page ${styles.body}`}>

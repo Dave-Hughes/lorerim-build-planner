@@ -4,20 +4,13 @@ import { LONG_BUILD_ID, SCRATCH_BUILD_ID, TEST_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1512, height: 806 } });
 
-test("a tree chip's tooltip shows at once on hover and on Tab", async ({ page, context }) => {
+// WO-26 replaced the icon-only chips (whose names were in tooltips) with named chips.
+test("the tree chips show their names, levels and held counts", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${TEST_BUILD_ID}/edit?level=6`);
-  const tabs = page.getByRole("tablist", { name: "Perk trees" });
-  await tabs.getByRole("tab", { name: /^Block/ }).hover();
-  await expect(page.getByRole("tooltip").filter({ hasText: "Block 46, 3 perks" })).toBeVisible({ timeout: 50 });
-  await page.mouse.move(0, 0);
-  await expect(page.getByRole("tooltip").filter({ hasText: "Block 46" })).toBeHidden();
-  // Keyboard: Tab from Block to the next chip.
-  await tabs.getByRole("tab", { name: /^Block/ }).click();
-  await page.keyboard.press("Tab");
-  await expect(page.getByRole("tooltip").filter({ hasText: /^Heavy Armor 50/ })).toBeVisible({ timeout: 50 });
-  await page.keyboard.press("Escape");
-  await expect(page.getByRole("tooltip").filter({ hasText: /^Heavy Armor 50/ })).toBeHidden();
+  const block = page.getByRole("tablist", { name: "Perk trees" }).getByRole("tab", { name: /^Block/ });
+  await expect(block).toHaveText(/Block\s*46\s*3/);
+  await expect(block).toHaveAccessibleName("Block 46, 3 held");
 });
 
 test("the notes toolbar's Bulleted list and Divider are there after a reload", async ({ page, context }) => {

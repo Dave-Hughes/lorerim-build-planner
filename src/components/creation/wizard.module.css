@@ -412,7 +412,7 @@
 /* Majors and minors chosen, sticky while the lists scroll under them. */
 .tiles {
   position: sticky;
-  top: 0;
+  top: var(--sticky-top);
   z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;

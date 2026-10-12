@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { TRAIT_CHOICES, keptTraitChoices } from "@/lib/rules/trait-choices";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { FocusHeader } from "@/components/ui/focus-header";
+import { EditBar } from "@/components/editor/edit-bar";
 import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel } from "@/components/ui/skill-icon";
 import { copyBuildForVersion, createBuild, saveBuildDetails, saveBuildPlan } from "@/lib/builds/actions";
 import { STEPS, STEP_NAMES, clearDraft, emptyDetails, emptyPlan, loadDraft, saveDraft, type Step } from "@/lib/builds/draft";
@@ -154,21 +155,19 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
 
   return (
     <>
-      <FocusHeader
-        context={mode === "create" ? "New build" : `Setting up ${details.name || "this build"}`}
-        status={headerStatus}
-        actions={
-          mode === "create" ? (
+      {mode === "edit" && buildId ? (
+        <EditBar buildId={buildId} name={details.name || "This build"} current="setup" visibility={details.visibility} onVisibility={(visibility) => updateDetails({ visibility })} />
+      ) : (
+        <FocusHeader
+          context="New build"
+          status={headerStatus}
+          actions={
             <Link href="/" className="btn btn-sm">
               Exit
             </Link>
-          ) : (
-            <Link href={`/b/${buildId}/edit`} className="btn btn-sm">
-              Back to levels
-            </Link>
-          )
-        }
-      />
+          }
+        />
+      )}
       <div className={`page ${styles.layout}`}>
         <aside aria-label="Setup steps" className={styles.aside}>
           <ol className={styles.steps}>

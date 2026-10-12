@@ -16,7 +16,7 @@ test.describe("level-up editor", () => {
   test("adds a level, spends points, takes a perk that just opened, and saves", async ({ page, context }) => {
     await signIn(context);
     await page.goto(`/b/${TEST_BUILD_ID}/edit?level=6`);
-    await expect(page.getByText("Editing Test Shield-Wall")).toBeVisible();
+    await expect(page.getByRole("region", { name: "Edit bar" }).getByText("Test Shield-Wall")).toBeVisible();
     await expect(page.getByText("Level 6 follows every rule. 10 skill points will carry over.")).toBeVisible();
 
     await page.getByRole("button", { name: "Continue to level 7" }).click();

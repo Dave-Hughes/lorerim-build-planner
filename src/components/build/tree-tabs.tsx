@@ -6,7 +6,6 @@ import { heldCount } from "@/lib/rules/tree-states";
 import type { LevelState } from "@/lib/rules/types";
 import { SkillIcon } from "@/components/ui/skill-icon";
 import { ViewToggle, type TreeView } from "./tree";
-import { Tooltip } from "@/components/ui/tooltip";
 import styles from "./tree-tabs.module.css";
 
 export function TreeTabs({
@@ -25,64 +24,51 @@ export function TreeTabs({
 }) {
   const d = useGameData();
   const destinyLeft = state.destinyPoints - state.destinyPointsSpent;
-  // On phones the tabs are one sideways row: keep the current one in view, moving the row only.
+  // On phones each group is one sideways row: keep the current chip in view, moving its row only.
   const row = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const el = row.current;
-    const tab = el?.querySelector<HTMLElement>('[aria-selected="true"]');
+    const tab = row.current?.querySelector<HTMLElement>('[aria-selected="true"]');
+    const el = tab?.parentElement;
     if (!el || !tab || el.scrollWidth <= el.clientWidth) return;
     const left = tab.offsetLeft - el.offsetLeft;
     if (left < el.scrollLeft || left + tab.offsetWidth > el.scrollLeft + el.clientWidth) el.scrollTo({ left: left - (el.clientWidth - tab.offsetWidth) / 2 });
   }, [active]);
-  // The chip's tooltip: "Two-Handed 27, 3 perks", "Destiny, 2 left".
-  const tipFor = (tree: string, head: string) => {
-    const n = heldCount(d, tree, state);
-    return n ? `${head}, ${n} perk${n === 1 ? "" : "s"}` : head;
-  };
   const tabLabel = (tree: string, value: string) => {
     const n = heldCount(d, tree, state);
     return `${tree} ${value}${n ? `, ${n} held` : ""}`;
   };
-  // How many perks the build holds in a tree, in ember after its name; nothing when none.
+  // How many perks the build holds in a tree: a badge after the level; nothing when none.
   const held = (tree: string) => {
     const n = heldCount(d, tree, state);
     return n ? (
-      <span className={styles.held}>
+      <span className={styles.held} aria-hidden="true">
         {n}
-        <span className="sr-only"> held</span>
       </span>
     ) : null;
   };
-  // The icon; on short-screen chips the held count is a badge on its corner instead.
-  const icon = (tree: string) => {
-    const n = heldCount(d, tree, state);
-    return (
-      <span className={styles.icon}>
-        <SkillIcon name={tree} />
-        {n > 0 && (
-          <span className={styles.badge} aria-hidden="true">
-            {n}
-          </span>
-        )}
-      </span>
-    );
-  };
+  const chip = (tree: string, value: React.ReactNode, label: string) => (
+    <button key={tree} role="tab" type="button" aria-selected={active === tree} aria-label={label} className={styles.tab} onClick={() => onChange(tree)}>
+      <SkillIcon name={tree} />
+      <span className={styles.name}>{tree}</span>
+      <span className={styles.val}>{value}</span>
+      {held(tree)}
+    </button>
+  );
+  // One row per game group (Warrior, Thief, Mage), each chip with its icon, name, level and held
+  // count; Destiny after them, on its own.
   return (
     <div className={styles.bar}>
-      <div ref={row} role="tablist" aria-label="Perk trees" className={styles.tabs}>
-        {/* On short laptop windows the tabs are chips (icon and value): the name is in the tooltip and label. */}
-        {d.skills.map((s) => (
-          <Tooltip key={s} content={tipFor(s, `${s} ${state.skills[s]}`)}>
-            <button role="tab" type="button" aria-selected={active === s} aria-label={tabLabel(s, `${state.skills[s]}`)} className={styles.tab} onClick={() => onChange(s)}>
-              {icon(s)} <span className={styles.name}>{s}</span> {held(s)} <span className={styles.val}>{state.skills[s]}</span>
-            </button>
-          </Tooltip>
+      <div ref={row} role="tablist" aria-label="Perk trees" className={styles.groups}>
+        {d.skillGroups.map((g) => (
+          <div key={g.group} className={styles.group}>
+            <span className={`sub-label ${styles.groupName}`}>{g.group}</span>
+            <div className={styles.tabs}>{g.skills.map((s) => chip(s, state.skills[s], tabLabel(s, `${state.skills[s]}`)))}</div>
+          </div>
         ))}
-        <Tooltip content={tipFor("Destiny", `Destiny, ${destinyLeft} left`)}>
-          <button role="tab" type="button" aria-selected={active === "Destiny"} aria-label={tabLabel("Destiny", `${destinyLeft} left`)} className={styles.tab} onClick={() => onChange("Destiny")}>
-            {icon("Destiny")} <span className={styles.name}>Destiny</span> {held("Destiny")} <span className={styles.val}>{destinyLeft} <span className={styles.name}>left</span></span>
-          </button>
-        </Tooltip>
+        <div className={styles.group}>
+          <span className={`sub-label ${styles.groupName}`}>Destiny</span>
+          <div className={styles.tabs}>{chip("Destiny", `${destinyLeft} left`, tabLabel("Destiny", `${destinyLeft} left`))}</div>
+        </div>
       </div>
       {view && onView && <ViewToggle view={view} onView={onView} className={styles.toggle} />}
     </div>

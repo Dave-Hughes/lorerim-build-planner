@@ -1,3 +1,25 @@
+/* The editor's perk trees: three rows of named chips, one per game group, then Destiny. */
+.bar {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.groups {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.group {
+  display: grid;
+  grid-template-columns: 5.5em minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+.groupName {
+  color: var(--muted);
+}
 .tabs {
   display: flex;
   flex-wrap: wrap;
@@ -6,30 +28,6 @@
 .toggle {
   display: none;
 }
-/* Phones: one sideways row of tabs, the Tree / List switch at its end. */
-@media (max-width: 899px) {
-  .bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .tabs {
-    position: relative;
-    flex: 1 1 auto;
-    min-width: 0;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .tab {
-    flex: none;
-    white-space: nowrap;
-  }
-  .toggle {
-    display: inline-flex;
-    flex: none;
-  }
-}
 .tab {
   display: inline-flex;
   align-items: center;
@@ -37,11 +35,12 @@
   font-family: var(--font-title);
   font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
   cursor: pointer;
-  padding: 6px 11px;
-  min-height: 36px;
+  padding: 4px 10px;
+  min-height: 34px;
   border: 1px solid var(--rule);
   background: transparent;
   color: #c3cdd6;
@@ -62,82 +61,52 @@
   border-color: var(--ember);
   background: var(--ember);
   color: var(--on-ember);
-  font-weight: 600;
 }
 .val {
   font-variant-numeric: tabular-nums;
   opacity: 0.75;
 }
-
-.icon {
-  position: relative;
+/* Perks held in the tree: a small ember badge. */
+.held {
   display: inline-flex;
-}
-/* The held count on the icon's corner: chips on short screens only. */
-.badge {
-  display: none;
-  position: absolute;
-  top: -7px;
-  right: -9px;
-  min-width: 14px;
-  height: 14px;
-  padding: 0 3px;
-  box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  border-radius: 7px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  box-sizing: border-box;
   background: var(--ember);
   color: var(--on-ember);
   font-family: var(--font-body);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0;
-  line-height: 1;
-  box-shadow: 0 0 0 2px var(--ground);
-}
-.tab[aria-selected="true"] .badge {
-  background: var(--on-ember);
-  color: var(--ember);
-  box-shadow: 0 0 0 2px var(--ember);
-}
-.held {
-  color: var(--ember);
-  font-weight: 700;
 }
 .tab[aria-selected="true"] .held {
-  color: var(--on-ember);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  background: var(--on-ember);
+  color: var(--ember);
 }
-
-/* Short laptop windows: one sideways row of chips, icon and value (the name is in the tooltip). */
-@media (max-height: 899px) and (min-width: 900px) {
+@media (prefers-reduced-motion: reduce) {
+  .tab {
+    transition: none;
+  }
+}
+/* Phones: each group is one sideways row; the Tree / List switch at the end. */
+@media (max-width: 899px) {
+  .group {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
   .tabs {
-    padding-top: 8px;
-    position: relative;
     flex-wrap: nowrap;
     overflow-x: auto;
-    gap: 4px;
-    scrollbar-width: thin;
+    scrollbar-width: none;
   }
   .tab {
     flex: none;
-    gap: 5px;
-    padding: 4px 8px;
-    min-height: 34px;
-    font-size: 14px;
   }
-  .name,
-  .held {
-    display: none;
-  }
-  .val {
-    opacity: 1;
-  }
-  .badge {
+  .toggle {
     display: inline-flex;
-  }
-  .icon {
-    margin-right: 6px;
+    flex: none;
   }
 }
