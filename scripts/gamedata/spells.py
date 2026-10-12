@@ -21,6 +21,7 @@ Tomes whose spell no record defines are counted and left out.
 """
 import json
 import os
+import re
 import struct
 import sys
 import time
@@ -42,6 +43,14 @@ DELETED = 0x20
 
 def tier(level):
     return TIERS[min(4, max(0, level // 25))]
+
+
+def school_and_tier(effects):
+    """A spell's school is its first (main) effect's magic skill; its tier is the highest minimum
+    skill among all its effects (0 Novice, 25 Apprentice, 50 Adept, 75 Expert, 100 Master)."""
+    school = effects[0]["skill"] if effects else None
+    top = max([e["minSkill"] for e in effects] or [0])
+    return school, tier(top), top
 
 
 def _lower(key):
@@ -199,6 +208,8 @@ def main():
         e = spells.setdefault(b["spell"], {"spell": s, "tomes": []})
         e["tomes"].append({"id": fk(b["key"]), "name": b["name"], "plugin": b["plugin"]})
 
+    # The winning record's place in the load order: build.py keeps the later of two same-named spells.
+    rank = {n.lower(): i for i, n in enumerate(lo)}
     rows = []
     for key, v in spells.items():
         s = v["spell"]
@@ -207,9 +218,8 @@ def main():
             m = mgefs.get(ef["mgef"], {})
             effects.append({"id": fk(ef["mgef"]), "name": m.get("name", ""), "text": m.get("text", ""), "skill": SKILLS.get(m.get("skill")),
                             "minSkill": m.get("minSkill", 0), "mag": ef.get("mag"), "area": ef.get("area"), "dur": ef.get("dur")})
-        school = effects[0]["skill"] if effects else None
-        top = max([e["minSkill"] for e in effects] or [0])
-        rows.append({"id": fk(key), "name": s["name"], "edid": s["edid"], "plugin": s["plugin"], "school": school, "tier": tier(top), "minSkill": top,
+        school, tr, top = school_and_tier(effects)
+        rows.append({"id": fk(key), "name": s["name"], "edid": s["edid"], "plugin": s["plugin"], "order": rank.get(s["plugin"].lower()), "school": school, "tier": tr, "minSkill": top,
                      "cost": s.get("cost"), "cast": CAST.get(s.get("cast")), "desc": s.get("desc", ""), "effects": effects, "tomes": v["tomes"]})
     rows.sort(key=lambda r: (r["school"] or "~", TIERS.index(r["tier"]), r["name"].lower()))
 
@@ -235,14 +245,107 @@ def main():
                 picks[f"{school.title()} {t}"] = {"list": lvli.get(k, {}).get("edid", ""), "spells": ids}
     per_perk = {t: int(globs[(PICK_PLUGIN, fid)]["value"]) for fid, t in PICK_GLOBALS.items() if (PICK_PLUGIN, fid) in globs}
 
+    # Globals that spell text shows as <Global=EDID>, by editor id, so build.py can fill them.
+    named = {r["edid"]: r["value"] for r in globs.values() if r.get("edid") and "value" in r}
+    wanted = {m for row in rows for e in row["effects"] for m in re.findall(r"<Global=([^<>]+)>", e["text"] or "")}
+    glob_values = {k: named[k] for k in sorted(wanted) if k in named}
+
     counts = {"tomes": len(tomes), "tomesWithoutSpell": missing, "spells": len(rows), "pickPools": len(picks)}
     out = os.path.join(REPO, "gamedata", VERSION, "spells_raw.json")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "w", encoding="utf-8") as f:
-        json.dump({"counts": counts, "picksPerPerk": per_perk, "perkPicks": picks, "spells": rows}, f, indent=1, ensure_ascii=False)
+        json.dump({"counts": counts, "picksPerPerk": per_perk, "perkPicks": picks, "globals": glob_values, "spells": rows}, f, indent=1, ensure_ascii=False)
         f.write("\n")
     print(counts, "picks per perk", per_perk, f"{time.time() - t0:.0f}s")
     print("wrote", os.path.relpath(out, REPO))
+
+
+# ---- Building spells.json (build.py), from the committed raw file ----------------------------
+
+SCHOOL_ORDER = ["Alteration", "Conjuration", "Destruction", "Illusion", "Restoration"]
+EDITOR_ID = re.compile(r"^[a-z]+[A-Z0-9_]|^[A-Za-z0-9]+_[A-Za-z0-9_]+$")
+
+
+def _num(x):
+    """40.0 -> '40', 0.3499999940395355 -> '0.35'."""
+    return f"{round(float(x), 2):g}"
+
+
+def fill_text(text, effect, glob_values, unmark):
+    """The game's text with <mag>, <dur>, <area> and <Global=X> filled. A sentence whose global
+    isn't known is left out (spells.py writes their values from the next run). Other <...>
+    markers (<20>, <Spirit>) lose their brackets, as trait text does. Returns (text, unknown globals)."""
+    unknown = []
+    t = text.replace("<mag>", _num(effect.get("mag") or 0)).replace("<dur>", str(int(effect.get("dur") or 0))).replace("<area>", str(int(effect.get("area") or 0)))
+
+    def glob(m):
+        k = m.group(1)
+        if k in glob_values:
+            return _num(glob_values[k])
+        unknown.append(k)
+        return "\0"
+
+    t = re.sub(r"<Global=([^<>]+)>", glob, t)
+    if "\0" in t:
+        t = re.sub(r"\s*\([^()]*\0[^()]*\)", "", t)
+        t = " ".join(p for p in re.split(r"(?<=[.!?])\s+", t) if "\0" not in p)
+    return unmark(t).strip(), unknown
+
+
+def build_spells(raw, perk_ids, unmark, clean):
+    """spells.json: the spells a tome teaches, one per name, school and tier, with the game's text
+    filled in, and the tier perks' picks keyed by the perk's id (WO-41). Returns (data, notes)."""
+    notes = []
+    pooled = {i for p in raw.get("perkPicks", {}).values() for i in p["spells"]}
+    glob_values = raw.get("globals", {})
+    keep = {}
+    for s in raw["spells"]:
+        if not s.get("name") or not s.get("school"):
+            continue
+        k = (s["name"], s["school"], s["tier"])
+        old = keep.get(k)
+        if old is None:
+            keep[k] = s
+            continue
+        # The later one in the load order; without the order (an older raw file), the one a tier
+        # perk hands out, then the one with more tomes.
+        if s.get("order") is not None and old.get("order") is not None:
+            if s["order"] > old["order"]:
+                keep[k] = s
+        elif (s["id"] in pooled, len(s["tomes"])) > (old["id"] in pooled, len(old["tomes"])):
+            keep[k] = s
+        elif (s["id"] in pooled, len(s["tomes"])) == (old["id"] in pooled, len(old["tomes"])):
+            notes.append(f"spell {s['name']} ({s['school']} {s['tier']}): two records and no load order, kept {old['id']}")
+    rows = []
+    for s in keep.values():
+        effects = s["effects"]
+        main = next((e for e in effects if e.get("text")), None)
+        text, unknown = fill_text(clean(main["text"]), main, glob_values, unmark) if main else (clean(s.get("desc", "")), [])
+        if unknown:
+            notes.append(f"spell {s['name']}: left out a sentence with {', '.join(unknown)} (not in spells_raw.json)")
+        also = []
+        for e in effects:
+            n = (e.get("name") or "").strip()
+            if e is main or not e.get("text") or not n or EDITOR_ID.match(n) or n == s["name"] or n in also:
+                continue
+            also.append(n)
+        row = {"id": s["id"], "name": s["name"], "school": s["school"], "tier": s["tier"], "cost": s.get("cost"), "cast": s.get("cast"), "text": text}
+        if also:
+            row["also"] = also
+        row["tomes"] = sorted({t["name"] for t in s["tomes"]})
+        rows.append(row)
+    rows.sort(key=lambda r: (SCHOOL_ORDER.index(r["school"]) if r["school"] in SCHOOL_ORDER else 9, TIERS.index(r["tier"]), r["name"].lower()))
+    ids = {r["id"] for r in rows}
+    pools = {}
+    for key, p in raw.get("perkPicks", {}).items():
+        school, t = key.split(" ", 1)
+        pid = f"{school}:{t} {school}"
+        if pid not in perk_ids:
+            notes.append(f"spell picks {key}: no perk {pid}")
+            continue
+        pools[pid] = [i for i in p["spells"] if i in ids]
+    per = raw.get("picksPerPerk", {})
+    return {"spells": rows, "spellPicks": {"perTier": {t: per[t] for t in TIERS if t in per}, "pools": pools}}, notes
 
 
 if __name__ == "__main__":

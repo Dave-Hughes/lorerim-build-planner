@@ -15,6 +15,8 @@ Inputs, under gamedata/<version>/:
   traitpics.json     trait artwork converted by traitpics.py
   items_raw.json     the game's weapons, armor and ammunition (items.py);
                      optional, builds items.json when present
+  spells_raw.json    the spells tomes teach and the tier perks' picks
+                     (spells.py); optional, builds spells.json when present
   overrides.json     hand-kept facts the records don't carry in a readable
                      form (quest wording, carry weight, which traits the
                      numbers simulate, perk records that stand in for a
@@ -388,6 +390,17 @@ def main():
             json.dump(rows, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")
         print(f"{len(rows)} items -> items.json")
+    # Spells (WO-41): the tomes' spells and the tier perks' picks, from spells.py's raw file.
+    if os.path.exists(os.path.join(RAW, "spells_raw.json")):
+        from spells import build_spells
+
+        perk_ids = {p["id"] for p in json.load(open(os.path.join(OUT, "perks.json"), encoding="utf-8"))}
+        data, notes = build_spells(load("spells_raw.json"), perk_ids, unmark, clean)
+        problems += notes
+        with open(os.path.join(OUT, "spells.json"), "w", encoding="utf-8") as f:
+            json.dump(data, f, separators=(",", ":"), ensure_ascii=False)
+            f.write("\n")
+        print(f"{len(data['spells'])} spells, {len(data['spellPicks']['pools'])} pick pools -> spells.json")
     for p in problems:
         print("note:", p)
 
@@ -404,4 +417,5 @@ def _grants(book, pid, data, ids):
     return others <= prereqs
 
 
-main()
+if __name__ == "__main__":
+    main()

@@ -105,6 +105,33 @@ export interface GameMode {
 }
 
 /** A version's raw data, as built from the game files plus its rules. */
+export type SpellTier = "Novice" | "Apprentice" | "Adept" | "Expert" | "Master";
+
+/** A spell a tome teaches (WO-41), from spells.json. The game's own name and text. */
+export interface Spell {
+  /** Plugin and form ID: "Skyrim.esm:01C789". */
+  id: string;
+  name: string;
+  school: string;
+  tier: SpellTier;
+  cost: number | null;
+  /** "Fire and forget", "Concentration"... */
+  cast: string | null;
+  /** The main effect's game text, numbers filled in. */
+  text: string;
+  /** The other effects' names, when they have text. */
+  also?: string[];
+  /** The tomes that teach it. */
+  tomes: string[];
+}
+
+/** The tier perks' free spells: how many per perk, and each perk's pool of spell ids. */
+export interface SpellPicks {
+  perTier: Partial<Record<SpellTier, number>>;
+  /** By tier perk id ("Destruction:Novice Destruction"). */
+  pools: Record<string, string[]>;
+}
+
 export interface VersionSource {
   rules: Rules;
   skillGroups: SkillGroup[];
@@ -122,6 +149,8 @@ export interface VersionSource {
   gameModes: GameMode[];
   /** Per tree, the lines the game draws between its stars. */
   trees: Record<string, { links: TreeLink[] }>;
+  /** Spells and the tier perks' picks (WO-41); a version without them has none. */
+  spells?: { spells: Spell[]; spellPicks: SpellPicks };
 }
 
 /** Everything the planner knows about one LoreRim version. */
@@ -149,6 +178,9 @@ export interface GameData {
   perkById: Map<string, Perk>;
   perksByTree: Map<string, Perk[]>;
   linksByTree: Map<string, TreeLink[]>;
+  spells: Spell[];
+  spellById: Map<string, Spell>;
+  spellPicks: SpellPicks;
   skillPointCost(current: number): number;
   maxSkillAt(level: number): number;
   destinyPointsAt(level: number): number;
@@ -201,6 +233,9 @@ function build(version: GameVersion, src0: VersionSource): GameData {
     perkById: new Map(src.perks.map((p) => [p.id, p])),
     perksByTree,
     linksByTree: new Map(Object.entries(src.trees).map(([tree, t]) => [tree, t.links])),
+    spells: src.spells?.spells ?? [],
+    spellById: new Map((src.spells?.spells ?? []).map((s) => [s.id, s])),
+    spellPicks: src.spells?.spellPicks ?? { perTier: {}, pools: {} },
     skillPointCost: (current) => skillPointCost(src.rules, current),
     maxSkillAt: (level) => maxSkillAt(src.rules, level),
     destinyPointsAt: (level) => destinyPointsAt(src.rules, level),

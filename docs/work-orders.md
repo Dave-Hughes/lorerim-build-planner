@@ -1788,15 +1788,15 @@ Dave, 12 Oct: builds cover gear but never spells, and a mage guide is mostly spe
 5. **Use the game's words.** Names and text come from the records; don't tidy them. `Oakflesh on Self` stays `Oakflesh on Self`.
 
 ### Done when
-- [ ] `python3 scripts/gamedata/build.py` writes `spells.json` from the committed raw file, and the generated file is committed.
-- [ ] Unit tests on the built data:
+- [x] `python3 scripts/gamedata/build.py` writes `spells.json` from the committed raw file, and the generated file is committed.
+- [x] Unit tests on the built data:
   - Fireball is Destruction, Adept, cost 240, and its text reads `deals 40 fire damage`.
   - Cloudkill is Destruction, Expert; Forbidden Sun is Destruction, Master; Shadow Clone on Self is Illusion, Master.
   - The Destruction Novice pool has 14 spells, including Flames and Sparks, and not Eldritch Blast.
   - `perTier` is 2, 2, 2, 2, 1.
   - No two entries share a name, school and tier.
-- [ ] `python3 -m pytest scripts/gamedata` passes, with a test for `spells.py`'s school and tier rule.
-- [ ] All checks in CLAUDE.md pass.
+- [x] `python3 -m pytest scripts/gamedata` passes, with a test for `spells.py`'s school and tier rule.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 
