@@ -17,7 +17,7 @@ import { GearBlock } from "./gear-block";
 import { SpellBlock, SpellPicks } from "./spell-block";
 import { PerkPanel } from "./perk-panel";
 import { SkillGains } from "@/components/build/skill-gains";
-import { AttributeIcon, IconLabel, SignIcon, SkillIcon, MarkIcon } from "@/components/ui/skill-icon";
+import { AttributeIcon, DeityIcon, IconLabel, SignIcon, SkillIcon, MarkIcon } from "@/components/ui/skill-icon";
 import { GuideEditor, guideSaveLabel } from "@/components/guide/guide-editor";
 import { GuideFactsProvider } from "@/components/guide/guide-facts";
 import { saveKeptGuides } from "@/components/guide/use-guide-autosave";
@@ -187,6 +187,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
     });
   })();
   const prevStone = level > 1 ? states[level - 2].stone : "";
+  const prevDeity = level > 1 ? states[level - 2].deity : plan.deity;
   // The rules the planner applies (the engine's own numbers), for the labels' tooltips.
   const trainerRule = `+1 to a skill. ${d.rules.trainerSessionsPerLevel} sessions a level; unused ones carry over to later levels. A trainer can't raise a skill past the level's max skill.`;
   const bookRule = `+1 to a skill (+2 with the Skilled trait), never past the level's max skill.`;
@@ -488,6 +489,25 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
               </select>
             </span>
           </label>
+          {/* A deity change from this level on (WO-43): any deity, since a shrine takes anyone later. The starting one is set in Set up. */}
+          {level > 1 && (
+            <label className={`field ${styles.alsoCol}`}>
+              <span className="label">Deity</span>
+              <span className={styles.stoneRow}>
+                <span className={styles.stoneIcon}>{s.deity ? <DeityIcon name={s.deity} /> : null}</span>
+                <select className="select" value={lv.deity ?? ""} onChange={(e) => setPlan(ops.setDeity(plan, level, e.target.value))}>
+                  <option value="">{prevDeity ? `Keep ${prevDeity}` : "No deity yet"}</option>
+                  {d.deities
+                    .filter((g) => g !== prevDeity)
+                    .map((g) => (
+                      <option key={g} value={g}>
+                        {g}
+                      </option>
+                    ))}
+                </select>
+              </span>
+            </label>
+          )}
         </section>
 
         <GearBlock key={level} plan={plan} level={level} setPlan={setPlan} />

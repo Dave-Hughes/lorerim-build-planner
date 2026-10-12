@@ -221,7 +221,7 @@ export async function searchBuilds(f: BrowseQuery): Promise<{ builds: BuildSumma
           )}))`
         : sql``;
       where.push(
-        sql`(${schema.builds.name} ilike ${p} or ${schema.builds.description} ilike ${p} or ${schema.users.name} ilike ${p} or ${schema.builds.plan}->>'race' ilike ${p} or (${schema.builds.plan}->'traits')::text ilike ${p} or ${schema.builds.plan}->>'deity' ilike ${p} or ${schema.builds.plan}->>'birthsign' ilike ${p} or ${schema.builds.plan}->>'start' ilike ${p} or ${schema.builds.plan}->>'startOption' ilike ${p}${learns})`,
+        sql`(${schema.builds.name} ilike ${p} or ${schema.builds.description} ilike ${p} or ${schema.users.name} ilike ${p} or ${schema.builds.plan}->>'race' ilike ${p} or (${schema.builds.plan}->'traits')::text ilike ${p} or ${schema.builds.plan}->>'deity' ilike ${p} or ${schema.builds.plan}->>'birthsign' ilike ${p} or ${schema.builds.plan}->>'start' ilike ${p} or ${schema.builds.plan}->>'startOption' ilike ${p} or exists(select 1 from jsonb_array_elements(${schema.builds.plan}->'levels') dl where dl->>'deity' ilike ${p})${learns})`,
       );
     }
   }

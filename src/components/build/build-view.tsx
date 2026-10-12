@@ -37,7 +37,7 @@ import type { LevelState } from "@/lib/rules/types";
 import { computeBuild } from "@/lib/rules/engine";
 import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
-import { AttributeIcon, IconLabel, SignIcon, SkillIcon, SkillLabel, MarkIcon, SlotIcon, TagIcon } from "@/components/ui/skill-icon";
+import { AttributeIcon, DeityIcon, IconLabel, SignIcon, SkillIcon, SkillLabel, MarkIcon, SlotIcon, TagIcon } from "@/components/ui/skill-icon";
 import { LevelBars, LevelLegend, LevelStepper, useHoldInPlace } from "./level-nav";
 import { BottomSheet, PerkDetails, Tree, ViewToggle, type TreeView } from "./tree";
 import styles from "./build-view.module.css";
@@ -980,6 +980,16 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       <span key="st">
         {facts.stone.name === "none" ? "No stone" : `The ${facts.stone.name}`}
         {facts.stone.prev && <span className="muted"> (in place of The {facts.stone.prev})</span>}
+      </span>,
+    ]);
+
+  // The deity, when it changes (WO-43): "The Magna-Ge (was Syrabane)".
+  if (facts.deity)
+    rows.push([
+      "Deity",
+      <span key="dy">
+        <IconLabel icon={<DeityIcon name={facts.deity.name} />}>{facts.deity.name}</IconLabel>
+        {facts.deity.prev && <span className="muted"> (was {facts.deity.prev})</span>}
       </span>,
     ]);
 

@@ -131,6 +131,8 @@ export interface LevelMark {
   notes: boolean;
   /** Gear changes at this level (WO-32). */
   gear: boolean;
+  /** The deity changes at this level (WO-43). */
+  deity: boolean;
   problems: number;
 }
 
@@ -152,6 +154,7 @@ export function levelMarks(d: GameData, plan: BuildPlan, states: LevelState[], n
       skill100,
       notes: noted.has(i + 1),
       gear: gearChanges(plan, i + 1).length > 0,
+      deity: i > 0 && s.deity !== states[i - 1].deity,
       problems: s.issues.length,
     };
   });
@@ -410,6 +413,9 @@ export function levelFacts(d: GameData, plan: BuildPlan, states: LevelState[], l
   // The stone, when it changes.
   const prevStone = level > 1 ? states[level - 2].stone : "";
   const stone = lv.stone && (lv.stone === "none" ? prevStone : lv.stone !== prevStone) ? { name: lv.stone, prev: prevStone } : null;
+  // The deity, when it changes (WO-43).
+  const prevDeity = level > 1 ? states[level - 2].deity : plan.deity;
+  const deity = level > 1 && s.deity !== prevDeity ? { name: s.deity, prev: prevDeity } : null;
   return {
     attribute: level > 1 ? lv.attribute : undefined,
     raised,
@@ -418,7 +424,26 @@ export function levelFacts(d: GameData, plan: BuildPlan, states: LevelState[], l
     perks: changes.perks,
     destiny: changes.destiny,
     stone,
+    deity,
     gear: gearChanges(plan, level),
     banked: changes.banked,
   };
+}
+
+/** Where the build changes deity (WO-43), in level order: "Changes to The Magna-Ge at level 3". */
+export function deityChanges(plan: BuildPlan): { level: number; name: string; prev: string }[] {
+  const out: { level: number; name: string; prev: string }[] = [];
+  let current = plan.deity;
+  plan.levels.forEach((lv, i) => {
+    if (i > 0 && lv.deity && lv.deity !== current) {
+      out.push({ level: i + 1, name: lv.deity, prev: current });
+      current = lv.deity;
+    }
+  });
+  return out;
+}
+
+/** Every deity a build follows, the starting one first (for search). */
+export function deitiesFollowed(plan: BuildPlan): string[] {
+  return [...new Set([plan.deity, ...plan.levels.map((l) => l.deity ?? "")].filter(Boolean))];
 }

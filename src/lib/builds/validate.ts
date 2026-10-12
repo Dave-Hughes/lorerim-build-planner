@@ -26,6 +26,11 @@ function planSchema(d: GameData) {
       .max(40)
       .refine((s) => s === "" || s === "none" || d.stoneByName.has(s), "Unknown stone")
       .optional(),
+    deity: z
+      .string()
+      .max(80)
+      .refine((g) => d.deities.includes(g), "Unknown deity")
+      .optional(),
     // Any id: one this version lacks (after a version change) shows as a problem, not a refusal.
     spells: z
       .array(z.object({ id: z.string().min(1).max(200), where: z.string().max(80).optional() }))

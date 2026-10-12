@@ -402,3 +402,27 @@
     white-space: nowrap;
   }
 }
+
+/* A deity change (WO-43): the stone's short bar, in the deity's own light. */
+.keyDeity {
+  width: 8px;
+  height: 2px;
+  background: var(--soft);
+}
+.markDeity {
+  position: absolute;
+  top: 26px;
+  width: 10px;
+  height: 2px;
+  margin-left: -5px;
+  background: var(--soft);
+}
+.cellDeity {
+  width: 8px;
+  height: 2px;
+  background: var(--soft);
+  margin-left: 2px;
+}
+.cellOn .cellDeity {
+  background: var(--on-ember);
+}

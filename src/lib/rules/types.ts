@@ -27,6 +27,8 @@ export interface LevelPlan {
   extras: Extra[];
   /** Standing stone change: undefined = keep, "none" = clear, otherwise the stone name. */
   stone?: string;
+  /** Deity change (WO-43): undefined keeps the one followed; a name switches to it from this level on. */
+  deity?: string;
   /** Spells learned at this level (WO-42), in the order added. `where`: the author's short line. */
   spells?: SpellRow[];
   note: string;
@@ -127,6 +129,8 @@ export interface LevelState {
   perkPointsSpent: number;
   trainerSessionsUsed: number;
   stone: string;
+  /** The deity followed at this level: the plan's starting one until a level changes it (WO-43). */
+  deity: string;
   destinyPoints: number;
   destinyPointsSpent: number;
   health: number;

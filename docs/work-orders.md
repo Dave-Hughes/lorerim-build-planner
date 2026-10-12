@@ -1865,10 +1865,10 @@ Dave, 12 Oct: keep the deity in Set up and the top bar as the start, but let a b
 4. **Search:** a build matches every deity it follows, not only the first.
 
 ### Done when
-- [ ] Unit test: Syrabane at level 1, the Magna-Ge from level 3; level 2 is Syrabane and level 3 on is the Magna-Ge.
-- [ ] e2e: switch a test build's deity at level 3; the top bar's `i` and level 3's detail say so; searching `Magna-Ge` finds the build.
-- [ ] Screenshot at 1440: the top bar tooltip open, and level 3.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Unit test: Syrabane at level 1, the Magna-Ge from level 3; level 2 is Syrabane and level 3 on is the Magna-Ge.
+- [x] e2e: switch a test build's deity at level 3; the top bar's `i` and level 3's detail say so; searching `Magna-Ge` finds the build.
+- [x] Screenshot at 1440: the top bar tooltip open, and level 3.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

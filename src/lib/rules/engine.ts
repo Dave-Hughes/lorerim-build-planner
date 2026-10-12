@@ -73,6 +73,7 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
   let banked = 0;
   let trainerUsed = 0;
   let stone = "";
+  let deity = b.deity;
   let destinySpent = 0;
   const attributePicks = { health: 0, magicka: 0, stamina: 0 };
   const taken: Record<string, number[]> = {};
@@ -133,6 +134,7 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
     }
 
     if (lv.stone !== undefined && lv.stone !== "") stone = lv.stone === "none" ? "" : lv.stone;
+    if (lv.deity) deity = lv.deity;
 
     // Count this level's picks first so prerequisites taken the same level work in any order.
     const ranksBefore: Record<string, number> = {};
@@ -275,6 +277,7 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
       perkPointsSpent,
       trainerSessionsUsed: trainerUsed,
       stone,
+      deity,
       destinyPoints,
       destinyPointsSpent: destinySpent,
       health,

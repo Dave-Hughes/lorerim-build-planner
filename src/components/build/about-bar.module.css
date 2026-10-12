@@ -143,3 +143,16 @@
     width: auto;
   }
 }
+
+/* The deity and, when the build changes deity later, its "i" (WO-43). */
+.deityValue {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.changeLines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

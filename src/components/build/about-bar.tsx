@@ -2,6 +2,7 @@
 
 import { useId, useRef, useState } from "react";
 import { useGameData } from "@/components/game-data";
+import { deityChanges } from "@/lib/rules/derive";
 import { Tooltip } from "@/components/ui/tooltip";
 import { IconLabel, RaceIcon, SignIcon, ModeIcon, DeityIcon } from "@/components/ui/skill-icon";
 import { traitWithChoice } from "@/lib/rules/trait-choices";
@@ -32,6 +33,7 @@ export function AboutBar({ plan }: { plan: BuildPlan }) {
   const sign = d.signByName.get(plan.birthsign);
   const deity = d.deityText[plan.deity];
   const noSign = plan.traits.includes("Master of Destiny");
+  const changes = deityChanges(plan);
 
   const items: [string, React.ReactNode][] = [
     [
@@ -69,7 +71,8 @@ export function AboutBar({ plan }: { plan: BuildPlan }) {
     ],
     [
       "Deity",
-      plan.deity && deity ? (
+      <span key="deity" className={styles.deityValue}>
+        {plan.deity && deity ? (
         <Tip
           tip={
             <>
@@ -98,9 +101,30 @@ export function AboutBar({ plan }: { plan: BuildPlan }) {
         >
           <IconLabel icon={<DeityIcon name={plan.deity} />}>{plan.deity}</IconLabel>
         </Tip>
-      ) : (
-        plan.deity || "Not chosen yet"
-      ),
+        ) : (
+          plan.deity || "Not chosen yet"
+        )}
+        {/* Later changes (WO-43): the starting deity stays; an "i" says when it changes. */}
+        {changes.length > 0 && (
+          <span className="tip">
+            <Tooltip
+              content={
+                <span className={styles.changeLines}>
+                  {changes.map((c) => (
+                    <span key={c.level}>
+                      Changes to {c.name} at level {c.level}.
+                    </span>
+                  ))}
+                </span>
+              }
+            >
+              <button type="button" aria-label="Deity changes">
+                <span>i</span>
+              </button>
+            </Tooltip>
+          </span>
+        )}
+      </span>,
     ],
     [
       "Traits",

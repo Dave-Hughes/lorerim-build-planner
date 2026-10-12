@@ -61,6 +61,16 @@ export function setStone(plan: BuildPlan, level: number, stone: string): BuildPl
   });
 }
 
+/** A deity change from this level on (WO-43); "" keeps the one followed. */
+export function setDeity(plan: BuildPlan, level: number, deity: string): BuildPlan {
+  return withLevel(plan, level, (lv) => {
+    const next = { ...lv };
+    if (deity === "") delete next.deity;
+    else next.deity = deity;
+    return next;
+  });
+}
+
 export function setNote(plan: BuildPlan, level: number, note: string): BuildPlan {
   return withLevel(plan, level, (lv) => ({ ...lv, note }));
 }

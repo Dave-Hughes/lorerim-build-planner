@@ -29,7 +29,7 @@ function Star({ size = 10 }: { size?: number }) {
 
 /** What the level marks mean: only the marks this build has (WO-31). */
 export function LevelLegend({ marks }: { marks: LevelMark[] }) {
-  const has = (k: "perks" | "destiny" | "stone" | "skill100" | "notes" | "gear") => marks.some((m) => (k === "perks" ? m.perks > 0 : m[k]));
+  const has = (k: "perks" | "destiny" | "stone" | "deity" | "skill100" | "notes" | "gear") => marks.some((m) => (k === "perks" ? m.perks > 0 : m[k]));
   return (
     <div className={styles.legend}>
       {has("perks") && (
@@ -48,6 +48,12 @@ export function LevelLegend({ marks }: { marks: LevelMark[] }) {
         <span>
           <i className={styles.keyStone} />
           Standing stone
+        </span>
+      )}
+      {has("deity") && (
+        <span>
+          <i className={styles.keyDeity} />
+          Deity
         </span>
       )}
       {has("skill100") && (
@@ -152,6 +158,7 @@ export function LevelRuler({ marks, level, onChange }: { marks: LevelMark[]; lev
               )}
               {m.destiny && <span className={styles.markDestiny} style={{ left: x(m.level) }} />}
               {m.stone && <span className={styles.markStone} style={{ left: x(m.level) }} />}
+              {m.deity && <span className={styles.markDeity} style={{ left: x(m.level) }} />}
               {m.skill100 && (
                 <span className={styles.markStar} style={{ left: x(m.level) }}>
                   <Star size={12} />
@@ -218,6 +225,7 @@ export function LevelRow({ marks, level, onChange }: { marks: LevelMark[]; level
                 ))}
                 {m.destiny && <i className={styles.cellDestiny} />}
                 {m.stone && <i className={styles.cellStone} />}
+                {m.deity && <i className={styles.cellDeity} />}
                 {m.notes && <i className={styles.cellNotes} />}
                 {m.gear && <GearMark className={styles.cellGear} />}
               </span>
