@@ -877,6 +877,20 @@ Dave asked whether every item in the game could be indexed. It can: the planner 
    - Search ranks exact name starts first and shows at most 8 results.
    - Gear rows picked from the index link to the same card.
 
+### First run on the PC (chat session, 11 Oct)
+`items.py` ran against the Ultra load order in 30 s:
+- **Counts:** records 25,137 → playable 21,208 → named 20,593 → untemplated 6,354 → merged **5,113** (3,407 armor, 1,537 weapons, 169 ammo).
+- **Size:** `items_raw.json` is 1.48 MB raw. It's on Dave's PC at `_fieldguide/planner-extract/items_raw.json`; the chat session copies it into the repo when the PC is back online.
+
+Fix these in `items.py` / `build.py` before building `items.json`:
+- **Weapon type labels.** `Qtr Staff` (9) and `Quarterstaff` (9) are the same type, so use `Quarterstaff`. `Pole2H_Thrust` (Spear of Bitter Mercy) is a raw animation name, so map it to `Spear`.
+- **Types taken from the animation, not what the item is.**
+  - Quarterstaffs that have only a warhammer keyword come out as `Warhammer` (Steel Quarterstaff, the Staff of Wandering Stars).
+  - SkyrimSpearMechanic's spears and javelins with a sword keyword come out as `Sword` (Iron Spear, Ebony Javelin).
+  - Prefer the name and the mod's own keywords: a name ending in Quarterstaff, Battlestaff, Spear or Javelin wins over the animation keyword.
+- **Not items:** `FXdustDropWEP` (a debug record with a name) and `Unarmed` (`Claw`). Add both to `skipNames`.
+- **Not a problem:** LoreRim renames many vanilla items, e.g. `Iron Cuirass` rather than Iron Armor and `Orcish Heavy Cuirass` rather than Orcish Armor. Search should match on any word, not just the start, so "iron armor" still finds Iron Cuirass.
+
 ### Done when
 - [x] Unit tests for each filter against the fixture plugin: a non-playable armor, a templated enchanted sword, a `zzz` record, two same-name records.
 - [ ] `items.json` built from the real load order. Its item count and gzipped size are in the commit message, and it isn't in the main bundle (`npm run build` output).
