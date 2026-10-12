@@ -153,6 +153,12 @@ class LabelTest(unittest.TestCase):
         self.assertEqual(items.weapon_label("Ebony Javelin", "Sword"), "Javelin")
         self.assertEqual(items.weapon_label("Oak Staff", "Qtr Staff"), "Quarterstaff")
         self.assertEqual(items.weapon_label("Spear of Bitter Mercy", "Pole2H_Thrust"), "Spear")
+        self.assertEqual(items.weapon_label("Ebony Pike", "Greatsword"), "Polearm")
+        self.assertEqual(items.weapon_label("Steel Halberd", "Battleaxe"), "Polearm")
+        self.assertEqual(items.weapon_label("Iron Glaive", "Greatsword"), "Polearm")
+        self.assertEqual(items.weapon_label("Pike", "Greatsword"), "Polearm")
+        self.assertEqual(items.weapon_label("Molag Bal Spike", "Sword"), "Sword")
+        self.assertEqual(items.weapon_label("Staff of Ice Spike", "Staff"), "Staff")
         self.assertEqual(items.weapon_label("Iron Sword", "Sword"), "Sword")
 
     def test_build_skips_names_again(self):

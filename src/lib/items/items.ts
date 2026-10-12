@@ -72,7 +72,7 @@ export function useItems(version: string, wanted: boolean): GameItem[] | null {
 }
 
 /** Weapons that take both hands, so never in the off hand. */
-const TWO_HANDED = new Set(["Greatsword", "Battleaxe", "Warhammer", "Bow", "Crossbow", "Staff"]);
+const TWO_HANDED = new Set(["Greatsword", "Battleaxe", "Warhammer", "Bow", "Crossbow", "Staff", "Polearm"]);
 
 /** Which items a gear slot can hold: Main hand any weapon; Off hand one-handed weapons and shields; armor by its slot. */
 export function fitsSlot(item: GameItem, slot: string): boolean {

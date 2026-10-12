@@ -77,12 +77,21 @@ def weapon_type(keywords, anim):
 TYPE_LABELS = {"Qtr Staff": "Quarterstaff", "QtrStaff": "Quarterstaff", "Pole2H_Thrust": "Spear"}
 # The name beats the animation keyword: SkyrimSpearMechanic's spears carry a sword keyword, some
 # quarterstaffs only a warhammer one.
-NAME_TYPES = [("quarterstaff", "Quarterstaff"), ("battlestaff", "Quarterstaff"), ("spear", "Spear"), ("javelin", "Javelin")]
+NAME_TYPES = [
+    ("quarterstaff", "Quarterstaff"),
+    ("battlestaff", "Quarterstaff"),
+    ("spear", "Spear"),
+    ("javelin", "Javelin"),
+    # Follow-up (11 Oct): Ebony Pike was a Greatsword. Whole last words only, so a Spike stays itself.
+    (" pike", "Polearm"),
+    (" halberd", "Polearm"),
+    (" glaive", "Polearm"),
+]
 
 
 def weapon_label(name, weapon_type):
     """The weapon type a player would call it: from the name's last word when it says, else the type label."""
-    low = (name or "").lower()
+    low = " " + (name or "").lower()
     for ending, label in NAME_TYPES:
         if low.endswith(ending):
             return label
