@@ -199,6 +199,30 @@
   display: flex;
   gap: 6px;
 }
+/* Abilities and shouts (WO-51): built like the spell rows. */
+.rowPower {
+  border-left-color: var(--ember);
+}
+.rowShout {
+  border-left-color: var(--stamina);
+}
+.addFormWords {
+  grid-template-columns: minmax(0, 2fr) auto minmax(0, 1.2fr) auto;
+}
+.words {
+  display: inline-flex;
+  gap: 2px;
+}
+.word {
+  min-width: 30px;
+  justify-content: center;
+  font-weight: 400;
+}
+.word.wordOn {
+  border-color: var(--ember);
+  background: color-mix(in srgb, var(--ember) 14%, transparent);
+  color: var(--text);
+}
 @media (max-width: 720px) {
   .pickRow {
     grid-template-columns: minmax(0, 1fr) auto;
@@ -211,7 +235,8 @@
     width: 100%;
   }
   .row,
-  .addForm {
+  .addForm,
+  .addFormWords {
     grid-template-columns: minmax(0, 1fr);
   }
   .rowActions {

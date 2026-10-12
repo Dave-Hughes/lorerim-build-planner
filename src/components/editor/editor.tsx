@@ -15,6 +15,7 @@ import { computeBuild } from "@/lib/rules/engine";
 import type { Attribute, BuildPlan } from "@/lib/rules/types";
 import { GearBlock } from "./gear-block";
 import { SpellBlock, SpellPicks } from "./spell-block";
+import { AbilityBlock, ShoutBlock } from "./powers-block";
 import { PerkPanel } from "./perk-panel";
 import { SkillGains } from "@/components/build/skill-gains";
 import { AttributeIcon, DeityIcon, IconLabel, SignIcon, SkillIcon, MarkIcon } from "@/components/ui/skill-icon";
@@ -546,6 +547,8 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
 
         <GearBlock key={level} plan={plan} level={level} setPlan={setPlan} />
         <SpellBlock key={`spells-${level}`} plan={plan} level={level} setPlan={setPlan} />
+        <AbilityBlock key={`abilities-${level}`} plan={plan} level={level} setPlan={setPlan} />
+        <ShoutBlock key={`shouts-${level}`} plan={plan} level={level} setPlan={setPlan} />
 
         <GuideFactsProvider plan={plan} states={states}>
           <LevelNotes

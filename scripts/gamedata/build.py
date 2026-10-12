@@ -15,6 +15,8 @@ Inputs, under gamedata/<version>/:
   traitpics.json     trait artwork converted by traitpics.py
   items_raw.json     the game's weapons, armor and ammunition (items.py);
                      optional, builds items.json when present
+  powers_raw.json    abilities (powers, lesser powers), the perks that grant
+                     them, and shouts (powers.py); builds powers.json
   spells_raw.json    the spells tomes teach and the tier perks' picks
                      (spells.py); optional, builds spells.json when present
   overrides.json     hand-kept facts the records don't carry in a readable
@@ -390,6 +392,24 @@ def main():
             json.dump(rows, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")
         print(f"{len(rows)} items -> items.json")
+    # Abilities and shouts (WO-51), from powers.py's raw file.
+    if os.path.exists(os.path.join(RAW, "powers_raw.json")):
+        from powers import build_powers
+
+        tree_ids = {p["id"] for p in json.load(open(os.path.join(OUT, "perks.json"), encoding="utf-8"))}
+        perk_by_edid = {}
+        for edid, pk in data["perks"].items():
+            pid = f"{pk['tree']}:{pk['ranks'][0]['name']}"
+            if pid in tree_ids:
+                for rk in pk["ranks"]:
+                    perk_by_edid[rk["edid"]] = pid
+                perk_by_edid[edid] = pid
+        pw, notes = build_powers(load("powers_raw.json"), perk_by_edid, load("overrides.json").get("powers", {}).get("skipNames", []))
+        problems += notes
+        with open(os.path.join(OUT, "powers.json"), "w", encoding="utf-8") as f:
+            json.dump(pw, f, separators=(",", ":"), ensure_ascii=False)
+            f.write("\n")
+        print(f"{len(pw['abilities'])} abilities, {len(pw['fromPerks'])} from perks, {len(pw['shouts'])} shouts -> powers.json")
     # Spells (WO-41): the tomes' spells and the tier perks' picks, from spells.py's raw file.
     if os.path.exists(os.path.join(RAW, "spells_raw.json")):
         from spells import build_spells

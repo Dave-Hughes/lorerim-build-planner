@@ -52,7 +52,7 @@ export function DeityIcon({ name, size = 16 }: { name: string; size?: 16 | 24 | 
 }
 
 /** A level marker (WO-30): trainer, skill book, banked points, perk points, a note. */
-export function MarkIcon({ name, size = 16 }: { name: "trainer" | "skill-book" | "banked" | "perk-points" | "note"; size?: 16 | 24 | 32 }) {
+export function MarkIcon({ name, size = 16 }: { name: "trainer" | "skill-book" | "banked" | "perk-points" | "note" | "power" | "shout"; size?: 16 | 24 | 32 }) {
   return <GameIcon file={`mark-${name}`} size={size} />;
 }
 

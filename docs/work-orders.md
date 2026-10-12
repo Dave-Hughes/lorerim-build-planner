@@ -2085,16 +2085,16 @@ Dave, 12 Oct: builds need active abilities (powers and lesser powers, from any s
    - Abilities granted by a perk taken at that level show as a read-only line: `War Cry, from the War Cry perk`.
 
 ### Done when
-- [ ] `python3 scripts/gamedata/build.py` writes `powers.json`, committed.
-- [ ] Unit tests:
+- [x] `python3 scripts/gamedata/build.py` writes `powers.json`, committed.
+- [x] Unit tests:
   - War Cry is a Lesser power, and `fromPerks` links it to `Speech:War Cry`;
   - Unrelenting Force's words read `Fus Ro Dah`;
   - no ability name matches the skip list;
   - taking `Speech:War Cry` at level 12 gives the build War Cry from level 12;
   - adding War Cry by hand raises `ability-repeat`;
   - two Unrelenting Force rows (1 word at 5, 3 words at 20) give 3 words from 20.
-- [ ] e2e: add Slow Time (2 words, `Deepwood Redoubt`) at level 25 to a test build; it saves and reloads.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: add Slow Time (2 words, `Deepwood Redoubt`) at level 25 to a test build; it saves and reloads.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

@@ -36,7 +36,24 @@ export interface LevelPlan {
   deity?: string;
   /** Spells learned at this level (WO-42), in the order added. `where`: the author's short line. */
   spells?: SpellRow[];
+  /** Abilities the author adds here (WO-51): racial, stone, god, quest. A perk's abilities are automatic. */
+  abilities?: AbilityRow[];
+  /** Shouts (WO-51): how many words are known from this level. A later row for the same shout raises it. */
+  shouts?: ShoutRow[];
   note: string;
+}
+
+/** An ability gained at a level: its id in powers.json, and where. */
+export interface AbilityRow {
+  id: string;
+  where?: string;
+}
+
+/** A shout at a level: its id in powers.json, the words known from here, and where. */
+export interface ShoutRow {
+  id: string;
+  words: 1 | 2 | 3;
+  where?: string;
 }
 
 /** A spell learned at a level: its id in spells.json, and where ("Wuunferth, Windhelm"; a tier perk's name for its free picks). */
@@ -127,6 +144,9 @@ export type IssueCode =
   | "oghma-repeat"
   | "spell-repeat"
   | "spell-unknown"
+  | "ability-repeat"
+  | "ability-unknown"
+  | "shout-words"
   | "creation";
 
 export interface Issue {

@@ -2,7 +2,7 @@
 import { emptyLevel } from "@/lib/rules/derive";
 import { gearAt } from "@/lib/rules/gear";
 import { keptMainSpells, MAX_MAIN_SPELLS } from "@/lib/rules/spells";
-import type { Attribute, BuildPlan, Extra, GearItem, LevelPlan, MadeGear, SpellRow } from "@/lib/rules/types";
+import type { AbilityRow, Attribute, BuildPlan, Extra, GearItem, LevelPlan, MadeGear, ShoutRow, SpellRow } from "@/lib/rules/types";
 
 function withLevel(plan: BuildPlan, level: number, fn: (lv: LevelPlan) => LevelPlan): BuildPlan {
   return { ...plan, levels: plan.levels.map((lv, i) => (i === level - 1 ? fn(lv) : lv)) };
@@ -117,6 +117,49 @@ export function removeSpell(plan: BuildPlan, level: number, index: number): Buil
 
 export function setSpellWhere(plan: BuildPlan, level: number, index: number, where: string): BuildPlan {
   return withSpells(plan, level, (rows) => rows.map((r, i) => (i !== index ? r : where.trim() ? { ...r, where: where.slice(0, 80) } : { id: r.id })));
+}
+
+const whereOf = (where?: string) => (where?.trim() ? { where: where.slice(0, 80) } : {});
+
+/** A level's own ability or shout rows, changed by `fn`; no field when there are none (WO-51). */
+function withRows<K extends "abilities" | "shouts">(plan: BuildPlan, level: number, key: K, fn: (rows: NonNullable<LevelPlan[K]>) => NonNullable<LevelPlan[K]>): BuildPlan {
+  return withLevel(plan, level, (lv) => {
+    const rows = fn((lv[key] ?? []) as NonNullable<LevelPlan[K]>);
+    const next = { ...lv };
+    if (rows.length) next[key] = rows;
+    else delete next[key];
+    return next;
+  });
+}
+
+/** An ability the author adds at a level (WO-51): racial, stone, god, quest. */
+export function addAbility(plan: BuildPlan, level: number, row: AbilityRow): BuildPlan {
+  return withRows(plan, level, "abilities", (rows) => [...rows, { id: row.id, ...whereOf(row.where?.trim()) }]);
+}
+
+export function removeAbility(plan: BuildPlan, level: number, index: number): BuildPlan {
+  return withRows(plan, level, "abilities", (rows) => rows.filter((_, i) => i !== index));
+}
+
+export function setAbilityWhere(plan: BuildPlan, level: number, index: number, where: string): BuildPlan {
+  return withRows(plan, level, "abilities", (rows) => rows.map((r, i) => (i !== index ? r : { id: r.id, ...whereOf(where) })));
+}
+
+/** A shout row at a level (WO-51): how many words are known from here. */
+export function addShout(plan: BuildPlan, level: number, row: ShoutRow): BuildPlan {
+  return withRows(plan, level, "shouts", (rows) => [...rows, { id: row.id, words: row.words, ...whereOf(row.where?.trim()) }]);
+}
+
+export function removeShout(plan: BuildPlan, level: number, index: number): BuildPlan {
+  return withRows(plan, level, "shouts", (rows) => rows.filter((_, i) => i !== index));
+}
+
+export function setShoutWhere(plan: BuildPlan, level: number, index: number, where: string): BuildPlan {
+  return withRows(plan, level, "shouts", (rows) => rows.map((r, i) => (i !== index ? r : { id: r.id, words: r.words, ...whereOf(where) })));
+}
+
+export function setShoutWords(plan: BuildPlan, level: number, index: number, words: 1 | 2 | 3): BuildPlan {
+  return withRows(plan, level, "shouts", (rows) => rows.map((r, i) => (i !== index ? r : { ...r, words })));
 }
 
 /** Stars or unstars a spell as a main spell, up to 8, in the order starred. */

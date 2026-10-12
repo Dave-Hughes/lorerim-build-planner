@@ -132,6 +132,31 @@ export interface SpellPicks {
   pools: Record<string, string[]>;
 }
 
+/** An active ability (WO-51): a power or lesser power, from any source. The game's own name and text. */
+export interface Ability {
+  id: string;
+  name: string;
+  kind: "Power" | "Lesser power";
+  text: string;
+}
+
+/** A shout (WO-51): three words in the dragon tongue, each with its meaning. */
+export interface Shout {
+  id: string;
+  name: string;
+  /** "Fus", "Ro", "Dah". */
+  words: string[];
+  translations: string[];
+  text: string;
+}
+
+/** powers.json (WO-51). `fromPerks`: perk id -> the abilities that perk grants. */
+export interface Powers {
+  abilities: Ability[];
+  fromPerks: Record<string, string[]>;
+  shouts: Shout[];
+}
+
 export interface VersionSource {
   rules: Rules;
   skillGroups: SkillGroup[];
@@ -151,6 +176,8 @@ export interface VersionSource {
   trees: Record<string, { links: TreeLink[] }>;
   /** Spells and the tier perks' picks (WO-41); a version without them has none. */
   spells?: { spells: Spell[]; spellPicks: SpellPicks };
+  /** Abilities and shouts (WO-51); a version without them has none. */
+  powers?: Powers;
 }
 
 /** Everything the planner knows about one LoreRim version. */
@@ -181,6 +208,12 @@ export interface GameData {
   spells: Spell[];
   spellById: Map<string, Spell>;
   spellPicks: SpellPicks;
+  abilities: Ability[];
+  abilityById: Map<string, Ability>;
+  /** Perk id -> the ability ids it grants. */
+  abilityFromPerks: Record<string, string[]>;
+  shouts: Shout[];
+  shoutById: Map<string, Shout>;
   skillPointCost(current: number): number;
   maxSkillAt(level: number): number;
   destinyPointsAt(level: number): number;
@@ -236,6 +269,11 @@ function build(version: GameVersion, src0: VersionSource): GameData {
     spells: src.spells?.spells ?? [],
     spellById: new Map((src.spells?.spells ?? []).map((s) => [s.id, s])),
     spellPicks: src.spells?.spellPicks ?? { perTier: {}, pools: {} },
+    abilities: src.powers?.abilities ?? [],
+    abilityById: new Map((src.powers?.abilities ?? []).map((a) => [a.id, a])),
+    abilityFromPerks: src.powers?.fromPerks ?? {},
+    shouts: src.powers?.shouts ?? [],
+    shoutById: new Map((src.powers?.shouts ?? []).map((x) => [x.id, x])),
     skillPointCost: (current) => skillPointCost(src.rules, current),
     maxSkillAt: (level) => maxSkillAt(src.rules, level),
     destinyPointsAt: (level) => destinyPointsAt(src.rules, level),

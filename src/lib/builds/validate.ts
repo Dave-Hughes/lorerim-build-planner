@@ -42,6 +42,14 @@ function planSchema(d: GameData) {
       .array(z.object({ id: z.string().min(1).max(200), where: z.string().max(80).optional() }))
       .max(60)
       .optional(),
+    abilities: z
+      .array(z.object({ id: z.string().min(1).max(200), where: z.string().max(80).optional() }))
+      .max(40)
+      .optional(),
+    shouts: z
+      .array(z.object({ id: z.string().min(1).max(200), words: z.union([z.literal(1), z.literal(2), z.literal(3)]), where: z.string().max(80).optional() }))
+      .max(40)
+      .optional(),
     note: z.string().max(2000),
   });
 

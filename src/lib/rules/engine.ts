@@ -87,6 +87,10 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
   const destinyTaken: Record<string, number> = {};
   /** Spell id -> the level it was learned (WO-42). */
   const spellsLearned: Record<string, number> = {};
+  /** Ability id -> the level it was gained, and the perk that gave it (WO-51). */
+  const abilitiesGained: Record<string, { level: number; perk?: string }> = {};
+  /** Shout id -> the words known (WO-51). */
+  const shoutWords: Record<string, number> = {};
   const states: LevelState[] = [];
 
   const has = (id: string) => granted(id) || (taken[id]?.length ?? 0) > 0 || id in destinyTaken;
@@ -238,6 +242,35 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
         continue;
       }
       spellsLearned[row.id] = L;
+    }
+
+    // Abilities (WO-51): a perk's are automatic; one added by hand that a perk already gives, or added twice, is a repeat.
+    for (const perk of [...lv.perks, ...lv.destiny])
+      for (const id of d.abilityFromPerks[perk] ?? []) if (!(id in abilitiesGained)) abilitiesGained[id] = { level: L, perk };
+    for (const row of lv.abilities ?? []) {
+      const ab = d.abilityById.get(row.id);
+      if (!ab) {
+        issues.push(issue("ability-unknown", `An ability is not in LoreRim ${d.version.id}.`));
+        continue;
+      }
+      const had = abilitiesGained[row.id];
+      if (had) {
+        const perk = had.perk ? d.perkById.get(had.perk) : undefined;
+        issues.push(issue("ability-repeat", perk ? `${ab.name} comes from the ${perk.name} perk, taken at level ${had.level}.` : `${ab.name} was already gained at level ${had.level}.`));
+        continue;
+      }
+      abilitiesGained[row.id] = { level: L };
+    }
+    // Shouts (WO-51): a shout's word count only goes up.
+    for (const row of lv.shouts ?? []) {
+      const sh = d.shoutById.get(row.id);
+      if (!sh) {
+        issues.push(issue("ability-unknown", `A shout is not in LoreRim ${d.version.id}.`));
+        continue;
+      }
+      const had = shoutWords[row.id] ?? 0;
+      if (row.words < had) issues.push(issue("shout-words", `${sh.name} drops to ${count(row.words, "word")}; ${had} were already known.`));
+      else shoutWords[row.id] = row.words;
     }
 
     // Health, Magicka, Stamina

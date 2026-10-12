@@ -169,5 +169,73 @@ def main():
     print("wrote", os.path.relpath(out, REPO))
 
 
+# ---- Building powers.json (build.py), from the committed raw file ------------------------------
+
+# The dragon font's digits stand for long vowels (WO-51).
+DRAGON_VOWELS = {"1": "aa", "2": "ei", "3": "ii", "4": "ah", "5": "uu", "6": "ur", "7": "ir", "8": "oo", "9": "ey"}
+
+
+def dragon_word(word):
+    """'D4' -> 'Dah', 'T3d' -> 'Tiid', 'L1s' -> 'Laas'."""
+    w = "".join(DRAGON_VOWELS.get(c, c) for c in word.lower())
+    return w[:1].upper() + w[1:]
+
+
+def skipped(name, skip):
+    """True for a name on the skip list: exact, or a prefix ending in "…" ("Dismiss …")."""
+    for s in skip:
+        if s.endswith("…") and name.startswith(s[:-1].rstrip()):
+            return True
+        if name == s:
+            return True
+    return False
+
+
+def build_powers(raw, perk_by_edid, skip):
+    """powers.json (WO-51): the abilities (powers and lesser powers) by name, the abilities a perk
+    in a tree grants (a list: Metamagic grants three), and the shouts with their words in the Latin spelling. Returns (data, notes)."""
+    notes = []
+    linked = {f["power"] for f in raw.get("fromPerks", [])}
+    keep = {}
+    dropped = set()
+    for p in raw["powers"]:
+        name = (p.get("name") or "").strip()
+        if not name or skipped(name, skip):
+            dropped.add(name)
+            continue
+        k = (name, p["kind"])
+        # One per name and kind: the one a perk grants, else the later one.
+        if k in keep and keep[k]["id"] in linked and p["id"] not in linked:
+            continue
+        keep[k] = p
+    abilities = sorted(({"id": p["id"], "name": p["name"].strip(), "kind": p["kind"], "text": p.get("text", "")} for p in keep.values()), key=lambda a: a["name"].lower())
+    ids = {a["id"] for a in abilities}
+    # Repeats folded into one: a perk link to a folded record goes to the kept one.
+    by_name = {(p["name"].strip(), p["kind"]): p["id"] for p in keep.values()}
+    raw_by_id = {p["id"]: p for p in raw["powers"]}
+    from_perks = {}
+    for f in raw.get("fromPerks", []):
+        perk = perk_by_edid.get(f["perkEdid"])
+        if not perk:
+            continue
+        power = f["power"]
+        if power not in ids and power in raw_by_id:
+            r = raw_by_id[power]
+            power = by_name.get(((r.get("name") or "").strip(), r["kind"]), power)
+        if power in ids and power not in from_perks.setdefault(perk, []):
+            from_perks[perk].append(power)
+    shouts = {}
+    for s in raw.get("shouts", []):
+        shouts[s["name"]] = {
+            "id": s["id"],
+            "name": s["name"],
+            "words": [dragon_word(w) for w in s["words"]],
+            "translations": s["translations"],
+            "text": s.get("text", ""),
+        }
+    notes.append("abilities left out: " + ", ".join(sorted(n for n in dropped if n)))
+    return {"abilities": abilities, "fromPerks": {k: v for k, v in sorted(from_perks.items()) if v}, "shouts": sorted(shouts.values(), key=lambda x: x["name"])}, notes
+
+
 if __name__ == "__main__":
     main()

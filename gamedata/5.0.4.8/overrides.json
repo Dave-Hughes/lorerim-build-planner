@@ -257,5 +257,41 @@
       "Prisoner in a Bandit Fort": "Hold",
       "Out in the Wilderness": "Hold"
     }
+  },
+  "powers": {
+    "_note": "WO-51: abilities that are mod switches, menus, debug tools or follower commands, not abilities a build takes. A name ending in … matches any name it starts.",
+    "skipNames": [
+      "3BBB Physics Toggle …",
+      "Debug Gore",
+      "Journey in the Shadows Debug",
+      "Examine",
+      "Choose Birthsign",
+      "Select Standing Stone",
+      "Select Traits",
+      "Destiny",
+      "Katana Affinity Check",
+      "Katana Relationship Major Inc Spell",
+      "BowRapidSwitchPower",
+      "HKSSwitchPower",
+      "Cancel Morph",
+      "Call Remi",
+      "Dismiss …",
+      "Disassemble …",
+      "[Forgotten City Music Fixer]",
+      "Manage Helmet",
+      "Move To Camp",
+      "Reset Megara Pose",
+      "Reset Shale Pose",
+      "Stop Performing",
+      "Interact From Afar",
+      "Shadow Clone on Self - Select Shout",
+      "Whistle at Aela to Transform",
+      "Whistle to Inigo",
+      "Wild Companion Release",
+      "Dream Thrall Release",
+      "Heal Downed Follower",
+      "Stand Down",
+      "Time to go"
+    ]
   }
 }
