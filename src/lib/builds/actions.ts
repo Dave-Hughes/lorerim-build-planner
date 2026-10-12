@@ -35,16 +35,15 @@ async function setTags(buildId: string, slugs: string[]) {
 
 /**
  * Likes or unlikes a build for the signed-in player, keeping the build's like_count in step in the
- * same statement. Not your own build, and only builds you can see. updated_at is left alone: a like
+ * same statement. Your own build counts too; only builds you can see. updated_at is left alone: a like
  * doesn't make a build newer.
  */
 export async function setLike(buildId: string, liked: boolean): Promise<ActionResult<{ liked: boolean; count: number }>> {
   const userId = await requireUser();
   if (!userId) return { ok: false, error: "Sign in with Discord to like builds." };
   if (!isValidBuildId(buildId)) return { ok: false, error: "Unknown build." };
-  const [build] = await db().select({ ownerId: schema.builds.ownerId, visibility: schema.builds.visibility }).from(schema.builds).where(eq(schema.builds.id, buildId)).limit(1);
+  const [build] = await db().select({ visibility: schema.builds.visibility }).from(schema.builds).where(eq(schema.builds.id, buildId)).limit(1);
   if (!build || build.visibility === "private") return { ok: false, error: "Unknown build." };
-  if (build.ownerId === userId) return { ok: false, error: "You can't like your own build." };
   const result = liked
     ? await db().execute(sql`
         WITH changed AS (

@@ -1188,7 +1188,7 @@ function Cover({
           {build.description && <p className={`flavor ${styles.description} ${styles.heroIn} ${styles.heroIn2}`}>{build.description}</p>}
           <div className={`${styles.byline} ${styles.heroIn} ${styles.heroIn3}`}>
             <AuthorLink author={build.author} className={styles.author} nameClassName={styles.authorName} avatar={<Avatar name={build.author.name} image={build.author.image} />} />
-            {!build.isSample && <LikeButton buildId={build.id} liked={build.likedByViewer} count={build.likeCount} mode={isOwner ? "owner" : signedIn ? "can" : "signedOut"} signIn={signInToLike} />}
+            {!build.isSample && <LikeButton buildId={build.id} liked={build.likedByViewer} count={build.likeCount} mode={isOwner && build.visibility === "private" ? "owner" : signedIn ? "can" : "signedOut"} signIn={signInToLike} />}
             <span className="tag">LoreRim {build.gameVersion}</span>
             {/* One unit, so a wrap never leaves the bar dangling at a line's end. */}
             <span className={styles.dates}>

@@ -53,7 +53,8 @@ const PIECES = Array.from({ length: 18 }, (_, i) => {
 
 /**
  * The Like toggle on a shared build. The count changes at once; if the save fails it goes back
- * and a line says why. `signIn` replaces it when signed out; the owner sees only the count.
+ * and a line says why. `signIn` replaces it when signed out. Owners can like their own build; on a private one
+ * (which nobody else can see or like) they see only the count.
  *
  * Liking should feel good (WO-36): the heart pops and turns rose, a burst of pixel hearts and
  * sparks flies out (an overlay that takes no clicks and moves nothing), a ring pulses, and the count

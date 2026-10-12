@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { signIn } from "./helpers";
-import { LONG_BUILD_ID, TEST_BUILD_ID } from "./seed";
+import { LONG_BUILD_ID, SCRATCH_BUILD_ID, TEST_BUILD_ID } from "./seed";
 
 test.describe("tags", () => {
   test("a build tagged Necromancy and Heavy Armor is found by both, not by Necromancy and Marksman", async ({ page, context }) => {
@@ -73,9 +73,21 @@ test.describe("likes", () => {
     await expect(page.getByRole("button", { name: /^Like/ })).toHaveText(/Like\s*0/);
   });
 
-  test("the owner sees the count but no Like button", async ({ page, context }) => {
+  test("the owner can like their own build", async ({ page, context }) => {
     await signIn(context);
     await page.goto(`/b/${TEST_BUILD_ID}`);
+    await page.getByRole("button", { name: /^Like/ }).click();
+    await expect(page.getByRole("button", { name: /^Liked/ })).toHaveText(/Liked\s*1/);
+    await expect(page.getByRole("button", { name: /^Liked/ })).toHaveAttribute("aria-busy", "false");
+    await page.reload();
+    await page.getByRole("button", { name: /^Liked/ }).click();
+    await expect(page.getByRole("button", { name: /^Like\b/ })).toHaveAttribute("aria-busy", "false");
+    await expect(page.getByRole("button", { name: /^Like/ })).toHaveText(/Like\s*0/);
+  });
+
+  test("on a private build the owner sees the count but no Like button", async ({ page, context }) => {
+    await signIn(context);
+    await page.goto(`/b/${SCRATCH_BUILD_ID}`);
     await expect(page.getByRole("region", { name: "Build" }).getByLabel(/^\d+ likes?$/)).toBeVisible();
     await expect(page.getByRole("button", { name: /^Like/ })).toHaveCount(0);
   });
