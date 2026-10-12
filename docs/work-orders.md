@@ -1915,9 +1915,9 @@ Do after WO-42 (it uses spells).
 3. **Elemental Padding** (a crafted LoreRim item) and backpacks wait for the gear-slot work below. They're real records, just on slots the planner doesn't show yet.
 
 ### Done when
-- [ ] Unit test: a made staff with Forbidden Sun reads `Staff of Forbidden Sun`.
-- [ ] e2e: add a made staff from level 40; the shared page shows the mark and the tooltip.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Unit test: a made staff with Forbidden Sun reads `Staff of Forbidden Sun`.
+- [x] e2e: add a made staff from level 40; the shared page shows the mark and the tooltip.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

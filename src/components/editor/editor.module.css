@@ -881,3 +881,25 @@
   display: flex;
   gap: 6px;
 }
+
+/* Made by you (WO-45): under the gear form's fields. */
+.gearMade {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+.gearMade .input {
+  flex: 1 1 220px;
+  max-width: 340px;
+}
+.gearMadeCheck {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+.gearMadeCheck input {
+  accent-color: var(--ember);
+}

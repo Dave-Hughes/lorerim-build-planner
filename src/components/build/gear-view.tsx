@@ -4,7 +4,8 @@ import { useGameData } from "@/components/game-data";
 import { IconLabel, SlotIcon } from "@/components/ui/skill-icon";
 import { itemById, useItems } from "@/lib/items/items";
 import { GEAR_SLOTS, gearAt, type GearSlot } from "@/lib/rules/gear";
-import type { BuildPlan } from "@/lib/rules/types";
+import type { BuildPlan, MadeGear } from "@/lib/rules/types";
+import { Tooltip } from "@/components/ui/tooltip";
 import styles from "./gear-view.module.css";
 
 /** One stretch of levels an item is held for, in one slot (Other can hold several: one lane each). */
@@ -89,7 +90,15 @@ export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: num
                 <span className={styles.slot}>
                   <IconLabel icon={<SlotIcon slot={g.slot} size={24} />}>{g.slot}</IconLabel>
                 </span>
-                <span className={styles.name}>{g.name}</span>
+                <span className={styles.name}>
+                  {g.name}
+                  {g.made && (
+                    <>
+                      {" "}
+                      <MadeMark made={g.made} />
+                    </>
+                  )}
+                </span>
                 <span className={styles.stats}>{item?.stats ?? g.note}</span>
                 <span className={styles.status}>{isNew ? `New at level ${level}${replaced ? `, was ${replaced}` : ""}` : `Since level ${g.since}`}</span>
               </li>
@@ -145,5 +154,40 @@ export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: num
         </div>
       )}
     </section>
+  );
+}
+
+/** A small hammer: an item the player made (WO-45). */
+function Hammer() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" shapeRendering="crispEdges">
+      <rect x="2" y="2" width="8" height="4" fill="currentColor" />
+      <rect x="9" y="3" width="2" height="2" fill="currentColor" />
+      <rect x="5" y="6" width="2" height="8" fill="currentColor" />
+    </svg>
+  );
+}
+
+/** The made mark (WO-45): the hammer, and on hover or tap the base item, then the spell or enchantments. */
+export function MadeMark({ made }: { made: MadeGear }) {
+  const d = useGameData();
+  const spell = made.spell ? d.spellById.get(made.spell) : undefined;
+  return (
+    <Tooltip
+      content={
+        <span className={styles.madeTip}>
+          <span className="muted">Made by you</span>
+          <span>{made.base}</span>
+          {spell && <span>Spell: {spell.name}</span>}
+          {(made.enchantments ?? []).map((e, i) => (
+            <span key={i}>{e}</span>
+          ))}
+        </span>
+      }
+    >
+      <span className={styles.made} tabIndex={0} aria-label="Made by you">
+        <Hammer />
+      </span>
+    </Tooltip>
   );
 }

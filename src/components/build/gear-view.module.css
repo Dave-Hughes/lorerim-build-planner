@@ -155,3 +155,16 @@
     grid-template-columns: 96px minmax(760px, 1fr);
   }
 }
+
+/* Made by you (WO-45): a small hammer after the name, its tooltip the base item and what was put on it. */
+.made {
+  display: inline-flex;
+  vertical-align: middle;
+  color: var(--brass);
+  cursor: help;
+}
+.madeTip {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

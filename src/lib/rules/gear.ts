@@ -4,7 +4,7 @@
  * several items: a row there adds one, or replaces (or, with an empty name, takes away) the item
  * named in `replaces`. Gear is optional and never a problem.
  */
-import type { BuildPlan, GearItem } from "./types";
+import type { BuildPlan, GearItem, MadeGear } from "./types";
 
 export const GEAR_SLOTS = ["Main hand", "Off hand", "Head", "Body", "Hands", "Feet", "Ring", "Amulet", "Ammo", "Other"] as const;
 export type GearSlot = (typeof GEAR_SLOTS)[number];
@@ -17,6 +17,13 @@ export interface HeldGear {
   since: number;
   /** Set when the item was picked from the game's item index. */
   itemId?: string;
+  /** Made by the player (WO-45). */
+  made?: MadeGear;
+}
+
+/** A made staff's name, as the game gives it: "Staff of Forbidden Sun". */
+export function madeStaffName(spellName: string): string {
+  return `Staff of ${spellName}`;
 }
 
 const slotOrder = (slot: string) => GEAR_SLOTS.indexOf(slot as GearSlot);
@@ -36,7 +43,7 @@ export function gearAt(plan: BuildPlan, level: number): HeldGear[] {
   let other: HeldGear[] = [];
   for (const g of rowsTo(plan, level)) {
     const name = g.name.trim();
-    const item: HeldGear = { slot: g.slot as GearSlot, name, note: g.note, since: g.fromLevel, ...(g.itemId ? { itemId: g.itemId } : {}) };
+    const item: HeldGear = { slot: g.slot as GearSlot, name, note: g.note, since: g.fromLevel, ...(g.itemId ? { itemId: g.itemId } : {}), ...(g.made ? { made: g.made } : {}) };
     if (g.slot !== "Other") {
       if (name) slots.set(item.slot, item);
       else slots.delete(item.slot);

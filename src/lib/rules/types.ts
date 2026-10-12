@@ -58,6 +58,18 @@ export interface GearItem {
   replaces?: string;
   /** The item picked from the game's item index (WO-23): "Skyrim.esm:012EB7". */
   itemId?: string;
+  /** Made by the player (WO-45): enchanted at an Arcane Enchanter, or a staff made at a Staff Enchanter. */
+  made?: MadeGear;
+}
+
+/** What a made item is: its base item, then the staff's spell or the enchantments put on it. */
+export interface MadeGear {
+  /** The base item's name, as picked ("Apprentice's Staff", "Glass Sword"). */
+  base: string;
+  /** A staff's spell: an id in spells.json. The row reads "Staff of <spell>". */
+  spell?: string;
+  /** Up to two lines, in the author's words. */
+  enchantments?: string[];
 }
 
 export interface BuildPlan {

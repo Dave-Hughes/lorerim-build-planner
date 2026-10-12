@@ -2,10 +2,10 @@
 
 import { useId, useState } from "react";
 import { useGameData } from "@/components/game-data";
-import { fitsSlot, searchItems, useItems, type GameItem } from "@/lib/items/items";
+import { fitsSlot, itemById, searchItems, useItems, type GameItem } from "@/lib/items/items";
 import { IconLabel, SlotIcon } from "@/components/ui/skill-icon";
-import { GEAR_SLOTS, gearAt, gearChangeText, gearChanges, type GearSlot, type HeldGear } from "@/lib/rules/gear";
-import type { BuildPlan } from "@/lib/rules/types";
+import { GEAR_SLOTS, gearAt, gearChangeText, gearChanges, madeStaffName, type GearSlot, type HeldGear } from "@/lib/rules/gear";
+import type { BuildPlan, MadeGear } from "@/lib/rules/types";
 import * as ops from "./plan-ops";
 import styles from "./editor.module.css";
 
@@ -45,7 +45,7 @@ export function GearBlock({ plan, level, setPlan }: { plan: BuildPlan; level: nu
                 <li key={`${h.slot}-${h.name}`}>
                   <GearForm
                     slot={h.slot}
-                    initial={{ name: h.name, note: h.note, itemId: h.itemId }}
+                    initial={{ name: h.name, note: h.note, itemId: h.itemId, made: h.made }}
                     submit="Save"
                     // Saving a carried item unchanged changes nothing.
                     onSubmit={(set) =>
@@ -117,7 +117,7 @@ export function GearBlock({ plan, level, setPlan }: { plan: BuildPlan; level: nu
   );
 }
 
-type GearSet = { name: string; note: string; itemId?: string };
+type GearSet = { name: string; note: string; itemId?: string; made?: MadeGear };
 
 /**
  * The item field (a search of the game's items that fit the slot, WO-23; free text is fine for
@@ -141,7 +141,11 @@ function GearForm({
   const d = useGameData();
   const listId = useId();
   const [pick, setPick] = useState<GearSlot>(slot ?? slots?.[0] ?? "Other");
-  const [name, setName] = useState(initial.name);
+  // A made item edits its base item; its name is the game's ("Staff of Forbidden Sun").
+  const [name, setName] = useState(initial.made?.base ?? initial.name);
+  const [made, setMade] = useState(!!initial.made);
+  const [spellName, setSpellName] = useState(() => (initial.made?.spell ? (d.spellById.get(initial.made.spell)?.name ?? "") : ""));
+  const [enchant, setEnchant] = useState<[string, string]>([initial.made?.enchantments?.[0] ?? "", initial.made?.enchantments?.[1] ?? ""]);
   const [itemId, setItemId] = useState(initial.itemId);
   const [note, setNote] = useState(initial.note);
   const [open, setOpen] = useState(false);
@@ -154,13 +158,24 @@ function GearForm({
     setItemId(i.id);
     setOpen(false);
   };
+  // Made by you (WO-45): a staff takes one spell; anything else up to two enchantment lines.
+  const base = itemId && items ? itemById(d.version.id, itemId) : undefined;
+  const isStaff = base?.weaponType === "Staff" || /\bstaff\b/i.test(name);
+  const spell = d.spells.find((sp) => sp.name.toLowerCase() === spellName.trim().toLowerCase());
+  const madeSet = (): GearSet => {
+    if (!made) return { name, note, itemId };
+    if (isStaff && spell) return { name: madeStaffName(spell.name), note, itemId, made: { base: name.trim(), spell: spell.id } };
+    const lines = enchant.map((l) => l.trim()).filter(Boolean);
+    return { name, note, itemId, made: { base: name.trim(), ...(lines.length ? { enchantments: lines } : {}) } };
+  };
+  const spellsList = `${listId}-spells`;
   return (
     <form
       className={styles.gearForm}
       aria-label={slot ? `Change ${slot}` : "Add gear"}
       onSubmit={(e) => {
         e.preventDefault();
-        if (name.trim()) onSubmit({ name, note, itemId }, pick);
+        if (name.trim() && !(made && isStaff && !spell)) onSubmit(madeSet(), pick);
       }}
       onKeyDown={(e) => {
         if (e.key !== "Escape") return;
@@ -239,8 +254,45 @@ function GearForm({
         )}
       </span>
       <input className="input" aria-label="Note (optional)" value={note} maxLength={300} placeholder="Note (optional)" onChange={(e) => setNote(e.target.value)} />
+      <span className={styles.gearMade}>
+        <label className={styles.gearMadeCheck}>
+          <input type="checkbox" checked={made} onChange={(e) => setMade(e.target.checked)} />
+          <span>Made by you</span>
+        </label>
+        {made &&
+          (isStaff ? (
+            <>
+              <input
+                className="input"
+                aria-label="Spell"
+                placeholder="Spell"
+                list={spellsList}
+                value={spellName}
+                onChange={(e) => setSpellName(e.target.value)}
+              />
+              <datalist id={spellsList}>
+                {d.spells.map((sp) => (
+                  <option key={sp.id} value={sp.name} />
+                ))}
+              </datalist>
+              {spell && <span className="muted">{madeStaffName(spell.name)}</span>}
+            </>
+          ) : (
+            [0, 1].map((i) => (
+              <input
+                key={i}
+                className="input"
+                aria-label={`Enchantment ${i + 1}`}
+                placeholder="Enchantment"
+                maxLength={120}
+                value={enchant[i]}
+                onChange={(e) => setEnchant((x) => (i === 0 ? [e.target.value, x[1]] : [x[0], e.target.value]))}
+              />
+            ))
+          ))}
+      </span>
       <span className={styles.gearFormActions}>
-        <button type="submit" className="btn btn-sm btn-primary" disabled={!name.trim()}>
+        <button type="submit" className="btn btn-sm btn-primary" disabled={!name.trim() || (made && isStaff && !spell)}>
           {submit}
         </button>
         <button type="button" className="btn btn-sm btn-quiet" onClick={onCancel}>

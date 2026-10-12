@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import sample from "./__fixtures__/sample-build.json";
 import { withGearSlots } from "./convert";
-import { gearAt, gearChangeText, gearChanges, gearSlot } from "./gear";
+import { requireGameData } from "./data";
+import { setGearAt } from "@/components/editor/plan-ops";
+import { gearAt, gearChangeText, gearChanges, gearSlot, madeStaffName } from "./gear";
 import type { BuildPlan, GearItem } from "./types";
 
 const base = sample as unknown as BuildPlan;
@@ -71,5 +73,16 @@ describe("old gear slots", () => {
     const plan = withGearSlots(withGear([row("Body", "Iron armor", 1), row("Shield", "Hide shield", 1), row("Weapon", "Orcish war axe", 9), row("Body", "Orcish armor", 14)]));
     expect(names(plan, 9)).toEqual(["Main hand: Orcish war axe (9)", "Off hand: Hide shield (1)", "Body: Iron armor (1)"]);
     expect(names(plan, 14)).toEqual(["Main hand: Orcish war axe (9)", "Off hand: Hide shield (1)", "Body: Orcish armor (14)"]);
+  });
+});
+
+describe("gear you make yourself (WO-45)", () => {
+  it("a made staff with Forbidden Sun reads Staff of Forbidden Sun, and keeps what it's made of", () => {
+    const d = requireGameData("5.0.4.8");
+    const sun = d.spells.find((s) => s.name === "Forbidden Sun")!;
+    expect(madeStaffName(sun.name)).toBe("Staff of Forbidden Sun");
+    const made = { base: "Apprentice's Staff", spell: sun.id };
+    const plan = setGearAt(withGear([]), 4, "Main hand", { name: madeStaffName(sun.name), note: "", made });
+    expect(gearAt(plan, 5)).toEqual([{ slot: "Main hand", name: "Staff of Forbidden Sun", note: "", since: 4, made }]);
   });
 });

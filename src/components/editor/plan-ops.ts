@@ -2,7 +2,7 @@
 import { emptyLevel } from "@/lib/rules/derive";
 import { gearAt } from "@/lib/rules/gear";
 import { keptMainSpells, MAX_MAIN_SPELLS } from "@/lib/rules/spells";
-import type { Attribute, BuildPlan, Extra, GearItem, LevelPlan, SpellRow } from "@/lib/rules/types";
+import type { Attribute, BuildPlan, Extra, GearItem, LevelPlan, MadeGear, SpellRow } from "@/lib/rules/types";
 
 function withLevel(plan: BuildPlan, level: number, fn: (lv: LevelPlan) => LevelPlan): BuildPlan {
   return { ...plan, levels: plan.levels.map((lv, i) => (i === level - 1 ? fn(lv) : lv)) };
@@ -140,12 +140,12 @@ function isEntryRow(g: GearItem, level: number, slot: string, item?: string): bo
  * Sets what a slot holds from `level` on. In `Other`, `item` is the item being changed (one set
  * at this level is edited in place, one carried from earlier is replaced); without it, an item is added.
  */
-export function setGearAt(plan: BuildPlan, level: number, slot: string, set: { name: string; note: string; itemId?: string }, item?: string): BuildPlan {
+export function setGearAt(plan: BuildPlan, level: number, slot: string, set: { name: string; note: string; itemId?: string; made?: MadeGear }, item?: string): BuildPlan {
   const name = set.name.trim();
   const note = set.note.trim();
   if (!name) return emptyGearAt(plan, level, slot, item);
   // An item from the index keeps its id, so it links to its card.
-  const picked = set.itemId ? { itemId: set.itemId } : {};
+  const picked = { ...(set.itemId ? { itemId: set.itemId } : {}), ...(set.made ? { made: set.made } : {}) };
   if (slot !== "Other") return { ...plan, gear: [...plan.gear.filter((g) => !isEntryRow(g, level, slot)), { slot, name, fromLevel: level, note, ...picked }] };
   const here = item === undefined ? -1 : plan.gear.findIndex((g) => g.fromLevel === level && g.slot === "Other" && g.name === item);
   if (here >= 0) return { ...plan, gear: plan.gear.map((g, i) => (i === here ? { slot: g.slot, fromLevel: g.fromLevel, name, note, ...(g.replaces ? { replaces: g.replaces } : {}), ...picked } : g)) };

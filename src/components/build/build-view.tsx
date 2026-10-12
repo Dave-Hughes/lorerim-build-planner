@@ -20,7 +20,7 @@ import { SpellView } from "./spell-view";
 import { VideoGuide } from "./video-guide";
 import { ReportBuild } from "./report-build";
 import { AboutBar } from "./about-bar";
-import { GearView } from "./gear-view";
+import { GearView, MadeMark } from "./gear-view";
 import { ContentsRail, type RailItem } from "./contents-rail";
 import { guideHeadings } from "@/components/guide/guide-view";
 import { LocalDate } from "@/components/ui/local-date";
@@ -1028,6 +1028,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
               {name ? (
                 <span className={styles.newGearWhat}>
                   <span className={styles.newGearChip}>{name}</span>
+                  {g.made && <MadeMark made={g.made} />}
                   <span className="muted">
                     {g.slot}, replaces {was ?? "nothing"}
                   </span>
