@@ -1777,7 +1777,7 @@ Dave, 12 Oct: builds cover gear but never spells, and a mage guide is mostly spe
 ### Build it
 1. **`build.py` writes `src/data/lorerim-5.0.4.8/spells.json`**, one entry per spell:
    - `id` (the form key, as `items.json` writes them: `Skyrim.esm:01C789`), `name`, `school`, `tier`, `cost`, `cast`;
-   - `text`: the main effect's game text with its tokens filled, the same way perk text is filled today;
+   - `text`: the main effect's game text with its tokens filled, the same way perk text is filled today. Some spell text marks numbers as `<20>`; drop the markers with `unmark`, as trait text does;
    - `also`: the names of the other effects that have text, for a second line;
    - `tomes`: the tome names.
 2. **Leave out:**
@@ -1802,7 +1802,7 @@ Dave, 12 Oct: builds cover gear but never spells, and a mage guide is mostly spe
 
 ## WO-42  Spells in builds (12 Oct 2026)
 
-Do after WO-41. Layout follows the design canvas's **"Spells"** artboard (the chat session adds it before you start; wait for it if it's not there). Where the artboard and this order disagree, the artboard wins on looks and this order wins on rules.
+Do after WO-41. Layout follows the design canvas's **"Spells"** artboard (`Spells.dc.html`, added 12 Oct): the pick list under a tier perk, `New spells` on a level, and the Spells section. Where the artboard and this order disagree, the artboard wins on looks and this order wins on rules.
 
 ### 1. The plan
 - **A level can list spells learned at that level:** `LevelPlan.spells?: { id: string; where?: string }[]`. `where` is the author's short line ("Wuunferth, Windhelm", "Faralda's lesson").
