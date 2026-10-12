@@ -7,6 +7,7 @@ import { DeleteBuildButton } from "./delete-build-button";
 import type { BuildSummary } from "@/lib/builds/types";
 import { LocalDate } from "@/components/ui/local-date";
 import { PlayMark } from "./play-mark";
+import { HIDDEN_IMAGE_TEXT } from "@/lib/moderation/reports";
 import styles from "./build-card.module.css";
 
 /**
@@ -21,6 +22,7 @@ export function BuildCard({ build, mine, likedAt, featured }: { build: BuildSumm
       <div className={`${styles.band} ${build.coverImageUrl ? "" : styles.bandPlain}`} aria-hidden="true">
         {build.coverImageUrl && <span className={styles.bandImage} style={{ backgroundImage: `url("${build.coverImageUrl}")` }} />}
         <span className={styles.bandFade} />
+        {build.coverHeld && <span className={styles.bandHeld}>{HIDDEN_IMAGE_TEXT}</span>}
         {featured && (
           <span className={styles.featuredMark}>
             <DestinyStar /> Featured

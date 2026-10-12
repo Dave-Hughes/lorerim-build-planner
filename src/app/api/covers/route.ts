@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { IMAGE_LIMITS, IMAGE_TYPE_ERROR, imageTooBigMessage } from "@/lib/guide/doc";
 import { countImages, coverPrefix, sniffImage, storeImage } from "@/lib/guide/images";
+import { screenUpload } from "@/lib/moderation/uploads";
 
 const fail = (status: number, error: string) => NextResponse.json({ error }, { status });
 
@@ -26,9 +27,15 @@ export async function POST(req: Request) {
   if (!kind) return fail(415, IMAGE_TYPE_ERROR);
   const prefix = coverPrefix(userId);
   if ((await countImages("", prefix)) >= IMAGE_LIMITS.perBuild) return fail(409, `You have uploaded ${IMAGE_LIMITS.perBuild} cover images, the most there can be.`);
+  // New accounts, the upload limit, and the nudity check (WO-40), before anything is stored.
+  const gate = await screenUpload({ bytes, type: kind.type, userId, buildId: null, kind: "cover" });
+  if (!gate.ok) return fail(gate.status, gate.error);
+  let url: string;
   try {
-    return NextResponse.json({ url: await storeImage("", bytes, kind, prefix) });
+    url = await storeImage("", bytes, kind, prefix);
   } catch {
     return fail(502, "The image store didn't take it. Try again.");
   }
+  await gate.stored(url);
+  return NextResponse.json({ url });
 }

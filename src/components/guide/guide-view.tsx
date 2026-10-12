@@ -6,6 +6,7 @@
 import { Fragment } from "react";
 import { isGuideImageUrl, isSafeHref, isYoutubeUrl, type GuideDoc, type GuideMark, type GuideNode } from "@/lib/guide/doc";
 import { GuideMention } from "./guide-facts";
+import { HIDDEN_IMAGE_TEXT } from "@/lib/moderation/reports";
 import prose from "./prose.module.css";
 
 export interface GuideHeading {
@@ -125,6 +126,12 @@ function draw(n: GuideNode, key: string, headingIds: Map<number, string>, index?
         </figure>
       );
     }
+    case "hiddenImage":
+      return (
+        <figure key={key} className={prose.hiddenImage}>
+          <span>{HIDDEN_IMAGE_TEXT}</span>
+        </figure>
+      );
     case "mention":
       return typeof n.attrs?.kind === "string" && typeof n.attrs?.id === "string" ? <GuideMention key={key} kind={n.attrs.kind} id={n.attrs.id} label={typeof n.attrs.label === "string" ? n.attrs.label : null} /> : null;
     case "text":

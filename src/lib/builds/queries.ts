@@ -1,5 +1,6 @@
 import "server-only";
-import { and, desc, eq, inArray, isNotNull, sql } from "drizzle-orm";
+import { and, desc, eq, inArray, isNotNull, isNull, sql } from "drizzle-orm";
+import { REPORTS_TO_HIDE } from "@/lib/moderation/reports";
 import { docText, firstParagraph, isEmptyDoc } from "@/lib/guide/doc";
 import { db, schema } from "@/db";
 import { readPlan } from "@/lib/rules/convert";
@@ -21,6 +22,8 @@ const summaryFields = {
   traits: sql<string[]>`${schema.builds.plan}->'traits'`,
   levels: sql<number>`jsonb_array_length(${schema.builds.plan}->'levels')`,
   videoId: sql<string | null>`${schema.builds.plan}->>'videoId'`,
+  // Held back (WO-40): an admin hid it, or the build has enough open reports.
+  coverHeld: sql<boolean>`(exists(select 1 from ${schema.hiddenImages} h where h.url = ${schema.builds.coverImageUrl}) or (select count(*) from ${schema.buildReports} r where r.build_id = ${schema.builds.id} and r.cleared_at is null) >= ${REPORTS_TO_HIDE})`,
   updatedAt: schema.builds.updatedAt,
   likeCount: schema.builds.likeCount,
   authorName: schema.users.name,
@@ -39,7 +42,8 @@ function toSummary(r: SummaryRow): BuildSummary {
     id: r.id,
     name: r.name,
     description: r.description,
-    coverImageUrl: r.coverImageUrl,
+    coverImageUrl: r.coverHeld ? null : r.coverImageUrl,
+    coverHeld: !!(r.coverHeld && r.coverImageUrl),
     visibility: r.visibility,
     gameVersion: r.gameVersion,
     race: r.race,
@@ -101,6 +105,21 @@ export async function getBuild(id: string, viewerId: string | null): Promise<Bui
     likeCount: row.build.likeCount,
     likedByViewer: !!row.liked,
   };
+}
+
+/**
+ * Which of a build's images are held back (WO-40): all of them while it has 3 or more open reports,
+ * else those an admin hid or removed.
+ */
+export async function imageHold(buildId: string, urls: string[]): Promise<{ all: boolean; hidden: Set<string> }> {
+  const [reports, hidden] = await Promise.all([
+    db()
+      .select({ n: sql<number>`count(*)::int` })
+      .from(schema.buildReports)
+      .where(and(eq(schema.buildReports.buildId, buildId), isNull(schema.buildReports.clearedAt))),
+    urls.length ? db().select({ url: schema.hiddenImages.url }).from(schema.hiddenImages).where(inArray(schema.hiddenImages.url, urls)) : Promise.resolve([]),
+  ]);
+  return { all: (reports[0]?.n ?? 0) >= REPORTS_TO_HIDE, hidden: new Set(hidden.map((h) => h.url)) };
 }
 
 /** Public builds, newest first; only those for `gameVersion` when one is given. */

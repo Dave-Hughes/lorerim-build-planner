@@ -1747,16 +1747,16 @@ Dave's call, 12 Oct: use Sightengine's free plan (2,000 images a month, at most 
 - **Vercel's bot protection:** turn on Vercel BotID for sign-in and the server actions that write (create, save, like, report, upload). If it needs a project setting or a paid plan, write down what's needed for Dave instead of changing it.
 
 ### Done when
-- [ ] Unit tests with the check mocked:
+- [x] Unit tests with the check mocked:
   - `sexual_display` 0.9 is refused;
   - `erotica` 0.9 is stored and listed;
   - `mildly_suggestive` 0.95 is stored and not listed;
   - a timeout is stored as `not checked`.
-- [ ] Unit test: the only model requested is `nudity-2.1`.
-- [ ] e2e: three different test accounts report a build; its cover hides; an admin presses `Keep` on `/admin/review`; the cover is back.
-- [ ] e2e: the 11th build in a day is refused with the message. An account 2 days old can't set Listed.
-- [ ] A note for Dave in the commit on Vercel BotID: on or not, and what it needs.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Unit test: the only model requested is `nudity-2.1`.
+- [x] e2e: three different test accounts report a build; its cover hides; an admin presses `Keep` on `/admin/review`; the cover is back.
+- [x] e2e: the 11th build in a day is refused with the message. An account 2 days old can't set Listed.
+- [x] A note for Dave in the commit on Vercel BotID: on or not, and what it needs.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

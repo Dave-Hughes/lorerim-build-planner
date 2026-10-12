@@ -14,12 +14,23 @@ import { deleteBuildImages, deleteImagesIfUnused, isOurImage } from "@/lib/guide
 import { copyGuide } from "@/lib/guide/queries";
 import { currentVersion, isKnownVersion, requireGameData } from "@/lib/rules/server";
 import { isAdmin } from "@/lib/users/admin";
+import { BOT_MESSAGE, looksLikeBot } from "@/lib/moderation/bot";
+import { newAccountHold, overLimit, recordEvent, type LimitKind } from "@/lib/moderation/limits";
 
 export type ActionResult<T = undefined> = { ok: true; value: T } | { ok: false; error: string };
 
 async function requireUser(): Promise<string | null> {
   const session = await auth();
   return session?.user?.id ?? null;
+}
+
+/**
+ * The guards a write passes first (WO-40): Vercel BotID, then this account's limit for `kind` when
+ * it makes something new. Null to go ahead, else the message to show.
+ */
+async function guard(userId: string, kind?: LimitKind): Promise<string | null> {
+  if (await looksLikeBot()) return BOT_MESSAGE;
+  return kind ? overLimit(userId, kind) : null;
 }
 
 function orNull(s: string): string | null {
@@ -43,6 +54,8 @@ export async function setLike(buildId: string, liked: boolean): Promise<ActionRe
   const userId = await requireUser();
   if (!userId) return { ok: false, error: "Sign in with Discord to like builds." };
   if (!isValidBuildId(buildId)) return { ok: false, error: "Unknown build." };
+  const stop = await guard(userId, liked ? "like" : undefined);
+  if (stop) return { ok: false, error: stop };
   const [build] = await db().select({ visibility: schema.builds.visibility }).from(schema.builds).where(eq(schema.builds.id, buildId)).limit(1);
   if (!build || build.visibility === "private") return { ok: false, error: "Unknown build." };
   const result = liked
@@ -59,6 +72,7 @@ export async function setLike(buildId: string, liked: boolean): Promise<ActionRe
         UPDATE build SET like_count = greatest(0, like_count - (SELECT count(*) FROM changed)::int), updated_at = updated_at
         WHERE id = ${buildId} RETURNING like_count`);
   const count = Number((result.rows[0] as { like_count?: number } | undefined)?.like_count ?? 0);
+  if (liked) await recordEvent(userId, "like");
   revalidatePath(`/b/${buildId}`);
   return { ok: true, value: { liked, count } };
 }
@@ -67,8 +81,14 @@ export async function setLike(buildId: string, liked: boolean): Promise<ActionRe
 export async function createBuild(input: { details: BuildDetails; plan: unknown }): Promise<ActionResult<{ id: string }>> {
   const userId = await requireUser();
   if (!userId) return { ok: false, error: "Sign in with Discord to save a build." };
+  const stop = await guard(userId, "build");
+  if (stop) return { ok: false, error: stop };
   const details = buildDetailsSchema.safeParse(input.details);
   if (!details.success) return { ok: false, error: details.error.issues[0]?.message ?? "Check the build details." };
+  if (details.data.visibility === "public") {
+    const hold = await newAccountHold(userId);
+    if (hold) return { ok: false, error: hold };
+  }
   let plan;
   try {
     plan = parseBuildPlan(input.plan);
@@ -100,6 +120,8 @@ export async function saveBuildPlan(id: string, input: unknown): Promise<ActionR
   const userId = await requireUser();
   if (!userId) return { ok: false, error: "Your sign-in expired. Sign in again to keep saving." };
   if (!isValidBuildId(id)) return { ok: false, error: "Unknown build." };
+  const stop = await guard(userId);
+  if (stop) return { ok: false, error: stop };
   let plan;
   try {
     plan = parseBuildPlan(input);
@@ -130,8 +152,14 @@ export async function saveBuildPlan(id: string, input: unknown): Promise<ActionR
 export async function saveBuildDetails(id: string, input: BuildDetails): Promise<ActionResult> {
   const userId = await requireUser();
   if (!userId) return { ok: false, error: "Your sign-in expired. Sign in again to keep saving." };
+  const stop = await guard(userId);
+  if (stop) return { ok: false, error: stop };
   const details = buildDetailsSchema.safeParse(input);
   if (!details.success) return { ok: false, error: details.error.issues[0]?.message ?? "Check the build details." };
+  if (details.data.visibility === "public") {
+    const hold = await newAccountHold(userId);
+    if (hold) return { ok: false, error: hold };
+  }
   const rows = await db()
     .update(schema.builds)
     .set({
@@ -159,6 +187,12 @@ export async function setBuildVisibility(id: string, visibility: unknown): Promi
   if (!userId) return { ok: false, error: "Your sign-in expired. Sign in again to keep saving." };
   const v = buildVisibilitySchema.safeParse(visibility);
   if (!v.success) return { ok: false, error: "Choose Listed, Link only or Only you." };
+  const stop = await guard(userId);
+  if (stop) return { ok: false, error: stop };
+  if (v.data === "public") {
+    const hold = await newAccountHold(userId);
+    if (hold) return { ok: false, error: hold };
+  }
   const rows = await db()
     .update(schema.builds)
     .set({ visibility: v.data, ...(v.data === "public" ? {} : { featuredAt: null }) })
@@ -197,6 +231,8 @@ export async function setFeatured(id: string, featured: boolean): Promise<Action
 export async function copyBuild(id: string): Promise<ActionResult<{ id: string }>> {
   const userId = await requireUser();
   if (!userId) return { ok: false, error: "Sign in with Discord to copy a build." };
+  const stop = await guard(userId, "build");
+  if (stop) return { ok: false, error: stop };
   const source = await getBuild(id, userId);
   if (!source) return { ok: false, error: "Unknown build." };
   const newId = newBuildId();
@@ -226,6 +262,8 @@ export async function copyBuild(id: string): Promise<ActionResult<{ id: string }
 export async function copyBuildForVersion(id: string, toVersion?: string): Promise<ActionResult<{ id: string; dropped: string }>> {
   const userId = await requireUser();
   if (!userId) return { ok: false, error: "Sign in with Discord to copy a build." };
+  const stop = await guard(userId, "build");
+  if (stop) return { ok: false, error: stop };
   const source = await getBuild(id, userId);
   if (!source) return { ok: false, error: "Unknown build." };
   if (!isKnownVersion(source.gameVersion)) return { ok: false, error: `LoreRim ${source.gameVersion} is no longer in the planner.` };
@@ -260,6 +298,8 @@ export async function copyBuildForVersion(id: string, toVersion?: string): Promi
 export async function saveGuideSection(buildId: string, key: string, input: unknown): Promise<ActionResult<{ updatedAt: string }>> {
   const userId = await requireUser();
   if (!userId) return { ok: false, error: "Your sign-in expired. Sign in again to keep saving." };
+  // No BotID here: guide saves also arrive as keepalive requests while the page closes (see
+  // api/builds/[id]/guide), which BotID's client can't sign in time. Only the owner can save anyway.
   if (!isValidBuildId(buildId) || !isGuideKey(key)) return { ok: false, error: "Unknown guide section." };
   const parsed = guideDocSchema.safeParse(input);
   if (!parsed.success) return { ok: false, error: parsed.error.issues[0]?.message ?? "The guide has something it can't save." };

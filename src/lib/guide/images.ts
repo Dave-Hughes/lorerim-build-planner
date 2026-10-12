@@ -86,6 +86,12 @@ async function unreferenced(urls: Iterable<string>): Promise<string[]> {
 }
 
 /** Deletes images no guide shows any more. Only this planner's own store is ever touched. */
+/** Deletes these images from the store whatever still shows them (an admin's Remove image, WO-40). */
+export async function removeImages(urls: Iterable<string>): Promise<void> {
+  const ours = [...urls].filter(isOurImage);
+  if (ours.length) await del(ours);
+}
+
 export async function deleteImagesIfUnused(urls: Iterable<string>): Promise<void> {
   const gone = await unreferenced([...urls].filter(isOurImage));
   if (gone.length) await del(gone);

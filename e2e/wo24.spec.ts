@@ -22,6 +22,9 @@ test("the header has no nav; New build is a button; the avatar menu works by key
   const myBuilds = menu.getByRole("menuitem", { name: "My builds" });
   await expect(myBuilds).toBeFocused();
   await expect(myBuilds).toHaveAttribute("aria-current", "page");
+  // The test author is an admin (WO-40): the review list comes next.
+  await page.keyboard.press("ArrowDown");
+  await expect(menu.getByRole("menuitem", { name: /^Review/ })).toBeFocused();
   await page.keyboard.press("ArrowDown");
   await expect(menu.getByRole("menuitem", { name: "Sign out" })).toBeFocused();
   await page.keyboard.press("Escape");

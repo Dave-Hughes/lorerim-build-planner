@@ -14,6 +14,7 @@ import sample from "../src/lib/rules/__fixtures__/sample-build.json";
 import azrem from "./fixtures/azrem.json";
 import iriel from "./fixtures/iriel.json";
 import { textLength, type GuideDoc } from "../src/lib/guide/doc";
+import { snowflakeAt } from "../src/lib/moderation/age";
 import type { BuildPlan } from "../src/lib/rules/types";
 
 config({ path: ".env.local", quiet: true });
@@ -29,6 +30,11 @@ export const LONG_BUILD_ID = "e2eqq2e2e8";
 export const LINK_ONLY_BUILD_ID = "e2eqq2e2e7";
 export const TEST_SESSION_TOKEN = "e2e-session-token-0001";
 export const OTHER_SESSION_TOKEN = "e2e-session-token-0002";
+/** WO-40: three players who report a build, an account made 2 days ago, and one already at its daily build limit. */
+export const REPORTER_TOKENS = ["e2e-session-token-0003", "e2e-session-token-0004", "e2e-session-token-0005"];
+export const NEW_ACCOUNT_TOKEN = "e2e-session-token-0006";
+export const NEW_ACCOUNT_BUILD_ID = "e2enewacct";
+export const AT_LIMIT_TOKEN = "e2e-session-token-0007";
 /** The test author's Discord id; playwright.config.ts gives it to the server as ADMIN_DISCORD_IDS. */
 export const E2E_ADMIN_DISCORD_ID = "e2e-discord-admin-0001";
 export const TEST_BUILD_ID = "e2eqq2e2eq";
@@ -60,17 +66,27 @@ export async function seed() {
   const pool = new Pool({ connectionString: url });
   const db = drizzle(pool, { schema });
   try {
+    // The test players' image checks (WO-40) would outlive them with no uploader.
+    await db.delete(schema.imageChecks).where(like(schema.imageChecks.uploaderId, "e2e-%"));
     await db.delete(schema.builds).where(like(schema.builds.id, "e2e%"));
     await db.delete(schema.users).where(like(schema.users.id, "e2e-%"));
     await db.insert(schema.users).values([
       { id: TEST_USER_ID, name: TEST_USER_NAME, email: null, image: null, handle: TEST_USER_HANDLE },
       { id: OTHER_USER_ID, name: "Someone Else", email: null, image: null, handle: "e2e-someone-else" },
+      ...[3, 4, 5].map((n) => ({ id: `e2e-user-000${n}`, name: `Reporter ${n - 2}`, email: null, image: null, handle: `e2e-reporter-${n - 2}` })),
+      { id: "e2e-user-0006", name: "New Account", email: null, image: null, handle: "e2e-new-account" },
+      { id: "e2e-user-0007", name: "Busy Builder", email: null, image: null, handle: "e2e-busy-builder" },
     ]);
     // The test author signs in with a Discord account the e2e server lists as an admin (WO-39).
-    await db.insert(schema.accounts).values([{ userId: TEST_USER_ID, type: "oauth", provider: "discord", providerAccountId: E2E_ADMIN_DISCORD_ID }]);
+    await db.insert(schema.accounts).values([
+      { userId: TEST_USER_ID, type: "oauth", provider: "discord", providerAccountId: E2E_ADMIN_DISCORD_ID },
+      // A Discord account made 2 days ago (its id is a snowflake of that time), for the 7-day rule (WO-40).
+      { userId: "e2e-user-0006", type: "oauth", provider: "discord", providerAccountId: snowflakeAt(new Date(Date.now() - 2 * 86_400_000)) },
+    ]);
     await db.insert(schema.sessions).values([
       { sessionToken: TEST_SESSION_TOKEN, userId: TEST_USER_ID, expires: new Date(Date.now() + 1000 * 60 * 60 * 24) },
       { sessionToken: OTHER_SESSION_TOKEN, userId: OTHER_USER_ID, expires: new Date(Date.now() + 1000 * 60 * 60 * 24) },
+      ...[...REPORTER_TOKENS, NEW_ACCOUNT_TOKEN, AT_LIMIT_TOKEN].map((sessionToken, i) => ({ sessionToken, userId: `e2e-user-000${i + 3}`, expires: new Date(Date.now() + 1000 * 60 * 60 * 24) })),
     ]);
     await db.insert(schema.builds).values([
       {
@@ -182,6 +198,25 @@ export async function seed() {
         gameVersion: "5.0.4.8",
         plan: samplePlan(),
       },
+      {
+        id: NEW_ACCOUNT_BUILD_ID,
+        ownerId: "e2e-user-0006",
+        name: "Brand New Build",
+        description: "Made by a 2-day-old account.",
+        visibility: "unlisted",
+        gameVersion: "5.0.4.8",
+        plan: samplePlan(),
+      },
+      // Ten builds made today: the next is over the daily limit (WO-40).
+      ..."23456789ab".split("").map((c, i) => ({
+        id: `e2ecapaax${c}`,
+        ownerId: "e2e-user-0007",
+        name: `Busy Build ${i + 1}`,
+        description: "",
+        visibility: "private" as const,
+        gameVersion: "5.0.4.8",
+        plan: samplePlan(),
+      })),
     ]);
     await db.insert(schema.buildGuides).values(
       [
@@ -211,6 +246,7 @@ export async function cleanup() {
   const pool = new Pool({ connectionString: url });
   const db = drizzle(pool, { schema });
   try {
+    await db.delete(schema.imageChecks).where(like(schema.imageChecks.uploaderId, "e2e-%"));
     await db.delete(schema.builds).where(and(like(schema.builds.id, "e2e%")));
     await db.delete(schema.builds).where(eq(schema.builds.ownerId, TEST_USER_ID));
     await db.delete(schema.users).where(like(schema.users.id, "e2e-%"));

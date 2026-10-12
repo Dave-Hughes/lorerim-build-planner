@@ -1,5 +1,5 @@
 import { buildCard, siteCard } from "@/lib/og/card";
-import { getBuild } from "@/lib/builds/queries";
+import { getBuild, imageHold } from "@/lib/builds/queries";
 import { gameData } from "@/lib/rules/server";
 
 type Params = Promise<{ id: string }>;
@@ -13,7 +13,10 @@ export async function GET(_req: Request, { params }: { params: Params }) {
   const { id } = await params;
   const build = await getBuild(id, null);
   if (!build || build.visibility === "private") return new Response("Not found", { status: 404 });
-  const res = build.coverImageUrl
+  // A cover waiting on an admin (WO-40) isn't drawn; that card is cached only briefly.
+  const hold = build.coverImageUrl ? await imageHold(build.id, [build.coverImageUrl]) : null;
+  const coverHeld = !!hold && (hold.all || hold.hidden.size > 0);
+  const res = build.coverImageUrl && !coverHeld
     ? await buildCard({
         name: build.name,
         description: build.description,
@@ -28,6 +31,6 @@ export async function GET(_req: Request, { params }: { params: Params }) {
         video: !!build.plan.videoId,
       })
     : await siteCard({ title: build.name, version: build.gameVersion, skills: gameData(build.gameVersion)?.skills ?? [], video: !!build.plan.videoId });
-  res.headers.set("cache-control", "public, max-age=31536000, immutable");
+  res.headers.set("cache-control", coverHeld ? "public, max-age=300" : "public, max-age=31536000, immutable");
   return res;
 }

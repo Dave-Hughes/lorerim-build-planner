@@ -285,3 +285,17 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* A cover waiting on an admin (WO-40). */
+.bandHeld {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  padding: 4px 10px;
+  border: 1px dashed var(--rule-strong);
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+}

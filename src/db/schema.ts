@@ -5,8 +5,10 @@ import {
   pgEnum,
   pgTable,
   primaryKey,
+  serial,
   text,
   timestamp,
+  uniqueIndex,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccountType } from "next-auth/adapters";
 import type { GuideDoc } from "@/lib/guide/doc";
@@ -163,4 +165,73 @@ export const buildGuides = pgTable(
       .$onUpdate(() => new Date()),
   },
   (t) => [primaryKey({ columns: [t.buildId, t.key] })],
+);
+
+/**
+ * Image checks (WO-40): one row per uploaded image's nudity check (Sightengine), with its scores and
+ * outcome. Refused images were never stored, so they have no URL. Images the check flagged or
+ * couldn't check wait on the admins' review list (`review` open until decided).
+ */
+export const imageChecks = pgTable(
+  "image_check",
+  {
+    id: serial("id").primaryKey(),
+    /** The stored image; null when refused (nothing was stored). */
+    url: text("url"),
+    uploaderId: text("uploader_id").references(() => users.id, { onDelete: "set null" }),
+    /** The build a guide image belongs to; null for covers (uploaded before a build may exist). */
+    buildId: text("build_id").references(() => builds.id, { onDelete: "set null" }),
+    /** `cover` or `guide`. */
+    kind: text("kind").notNull(),
+    /** Sightengine's nudity-2.1 class scores, 0 to 1; null when the check couldn't run. */
+    scores: jsonb("scores").$type<Record<string, number> | null>(),
+    /** `passed`, `listed` (stored and on the review list), `refused` or `unchecked`. */
+    outcome: text("outcome").notNull(),
+    /** For listed and unchecked images: `open` until an admin keeps, hides or removes it. */
+    review: text("review"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("image_check_review_idx").on(t.review, t.createdAt), index("image_check_url_idx").on(t.url)],
+);
+
+/** Reports on a build (WO-40): one per signed-in player per build. Cleared when an admin decides. */
+export const buildReports = pgTable(
+  "build_report",
+  {
+    id: serial("id").primaryKey(),
+    buildId: text("build_id")
+      .notNull()
+      .references(() => builds.id, { onDelete: "cascade" }),
+    reporterId: text("reporter_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    /** `sexual`, `hateful`, `spam` or `other`. */
+    reason: text("reason").notNull(),
+    note: text("note").notNull().default(""),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    /** Set when an admin decided (Keep, Hide image or Remove image); open reports have none. */
+    clearedAt: timestamp("cleared_at", { withTimezone: true }),
+  },
+  (t) => [uniqueIndex("build_report_once_idx").on(t.buildId, t.reporterId), index("build_report_reporter_idx").on(t.reporterId, t.createdAt)],
+);
+
+/** Images an admin hid or removed (WO-40): each shows as a plain panel wherever it's used. */
+export const hiddenImages = pgTable("hidden_image", {
+  url: text("url").primaryKey(),
+  hiddenAt: timestamp("hidden_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+/** What the per-account rate limits count (WO-40): image uploads and likes. Builds and reports count their own rows. */
+export const rateEvents = pgTable(
+  "rate_event",
+  {
+    id: serial("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    /** `upload` or `like`. */
+    kind: text("kind").notNull(),
+    at: timestamp("at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("rate_event_user_idx").on(t.userId, t.kind, t.at)],
 );

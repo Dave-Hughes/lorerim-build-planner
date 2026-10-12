@@ -221,3 +221,14 @@
   font-size: 16px;
   color: var(--soft);
 }
+
+/* An image waiting on an admin (WO-40): a plain panel in its place. */
+.hiddenImage {
+  display: grid;
+  place-items: center;
+  min-height: 160px;
+  border: 1px dashed var(--rule-strong);
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 15px;
+}

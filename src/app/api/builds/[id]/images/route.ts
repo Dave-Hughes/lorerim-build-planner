@@ -5,6 +5,7 @@ import { db, schema } from "@/db";
 import { isValidBuildId } from "@/lib/builds/ids";
 import { IMAGE_COUNT_ERROR, IMAGE_LIMITS, IMAGE_TYPE_ERROR, imageTooBigMessage } from "@/lib/guide/doc";
 import { countImages, sniffImage, storeImage } from "@/lib/guide/images";
+import { screenUpload } from "@/lib/moderation/uploads";
 
 const fail = (status: number, error: string) => NextResponse.json({ error }, { status });
 
@@ -37,9 +38,15 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   if (!kind) return fail(415, IMAGE_TYPE_ERROR);
   if ((await countImages(id)) >= IMAGE_LIMITS.perBuild) return fail(409, IMAGE_COUNT_ERROR);
 
+  // New accounts, the upload limit, and the nudity check (WO-40), before anything is stored.
+  const gate = await screenUpload({ bytes, type: kind.type, userId, buildId: id, kind: "guide" });
+  if (!gate.ok) return fail(gate.status, gate.error);
+  let url: string;
   try {
-    return NextResponse.json({ url: await storeImage(id, bytes, kind) });
+    url = await storeImage(id, bytes, kind);
   } catch {
     return fail(502, "The image store didn't take it. Try again.");
   }
+  await gate.stored(url);
+  return NextResponse.json({ url });
 }

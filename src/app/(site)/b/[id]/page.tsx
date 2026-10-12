@@ -8,7 +8,8 @@ import { RetiredBuild } from "@/components/build/retired-build";
 import { GameDataProvider } from "@/components/game-data";
 import { SignInButton } from "@/components/site-header";
 import { isAdmin } from "@/lib/users/admin";
-import { getBuild } from "@/lib/builds/queries";
+import { getBuild, imageHold } from "@/lib/builds/queries";
+import { imageUrls, withHiddenImages } from "@/lib/guide/doc";
 import { buildMetadata } from "@/lib/og/metadata";
 import { getGuide } from "@/lib/guide/queries";
 import { clientVersion, isKnownVersion } from "@/lib/rules/server";
@@ -31,11 +32,17 @@ export default async function BuildPage({ params, searchParams }: { params: Para
   void _createdAt;
   const isOwner = !!viewerId && viewerId === build.ownerId;
   const [guide, admin] = await Promise.all([getGuide(build.id, build.plan, !build.isSample), build.isSample ? false : isAdmin(viewerId)]);
+  // Images waiting on an admin (WO-40) never reach the page: the cover becomes a plain hero, guide images a panel.
+  const docs = Object.fromEntries(Object.entries(guide).map(([k, v]) => [k, v.doc]));
+  const urls = [...(build.coverImageUrl ? [build.coverImageUrl] : []), ...Object.values(docs).flatMap((d) => [...imageUrls(d)])];
+  const hold = build.isSample || !urls.length ? null : await imageHold(build.id, urls);
+  const held = (src: string) => !!hold && (hold.all || hold.hidden.has(src));
+  const coverHeld = !!build.coverImageUrl && held(build.coverImageUrl);
   if (!isKnownVersion(build.gameVersion)) return <RetiredBuild build={{ ...rest, updatedAt: updatedAt.toISOString() }} isOwner={isOwner} />;
   return (
     <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
       <BuildView
-        build={{ ...rest, updatedAt: updatedAt.toISOString() }}
+        build={{ ...rest, coverImageUrl: coverHeld ? null : rest.coverImageUrl, coverHeld, updatedAt: updatedAt.toISOString() }}
         isOwner={isOwner}
         signedIn={!!viewerId}
         initialLevel={Number(level) || 1}
@@ -54,7 +61,7 @@ export default async function BuildPage({ params, searchParams }: { params: Para
         }
         autoCopy={copy === "1"}
         admin={admin ? { featured: !!featuredAt } : null}
-        guide={Object.fromEntries(Object.entries(guide).map(([k, v]) => [k, v.doc]))}
+        guide={hold ? Object.fromEntries(Object.entries(docs).map(([k, d]) => [k, withHiddenImages(d, held)])) : docs}
       />
     </GameDataProvider>
   );

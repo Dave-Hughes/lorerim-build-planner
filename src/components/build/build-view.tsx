@@ -16,6 +16,7 @@ import { EditBar, MenuButton } from "@/components/editor/edit-bar";
 import menuStyles from "@/components/editor/edit-bar.module.css";
 import { PlayMark } from "./play-mark";
 import { VideoGuide } from "./video-guide";
+import { ReportBuild } from "./report-build";
 import { AboutBar } from "./about-bar";
 import { GearView } from "./gear-view";
 import { ContentsRail, type RailItem } from "./contents-rail";
@@ -41,6 +42,7 @@ import styles from "./build-view.module.css";
 import { pageZoom } from "@/lib/zoom";
 import { themeOf, themeStyle } from "@/lib/themes";
 import { useDismiss } from "@/lib/use-dismiss";
+import { HIDDEN_IMAGE_TEXT } from "@/lib/moderation/reports";
 
 export type BuildViewData = Omit<BuildRecord, "createdAt" | "updatedAt" | "featuredAt"> & { updatedAt: string };
 
@@ -335,6 +337,8 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           )}
           </div>
           </div>
+          {/* Report, quietly, at the foot (WO-40): signed-in players, not the owner. */}
+          {signedIn && !isOwner && !build.isSample && <ReportBuild buildId={build.id} />}
         </div>
         </div>
       </main>
@@ -1215,6 +1219,7 @@ function Cover({
           <div className={styles.coverTint} />
         </div>
       )}
+      {build.coverHeld && <span className={styles.coverHeld}>{HIDDEN_IMAGE_TEXT}</span>}
       <div className={styles.coverFade} />
       <div ref={deepen} className={styles.coverDeepen} />
       <div ref={textLayer} className={`page ${styles.coverInner}`}>

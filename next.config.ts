@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withBotId } from "botid/next/config";
 import { itemsHashes } from "./src/lib/items/hash";
 
 const nextConfig: NextConfig = {
@@ -9,4 +10,5 @@ const nextConfig: NextConfig = {
   env: { NEXT_PUBLIC_ITEMS_HASHES: JSON.stringify(itemsHashes()) },
 };
 
-export default nextConfig;
+// Vercel BotID (WO-40): its proxy rewrites, so ad-blockers don't get in the way of the check.
+export default withBotId(nextConfig);

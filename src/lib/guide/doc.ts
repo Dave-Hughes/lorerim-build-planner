@@ -188,6 +188,16 @@ export function docText(n: GuideNode | null | undefined): string {
     .trim();
 }
 
+/**
+ * The document with each image `hidden` says is waiting on an admin replaced by a `hiddenImage`
+ * placeholder (WO-40), so the image itself never reaches the page.
+ */
+export function withHiddenImages(doc: GuideDoc, hidden: (src: string) => boolean): GuideDoc {
+  const walk = (n: GuideNode): GuideNode =>
+    n.type === "image" && typeof n.attrs?.src === "string" && hidden(n.attrs.src) ? { type: "hiddenImage" } : n.content ? { ...n, content: n.content.map(walk) } : n;
+  return walk(doc) as GuideDoc;
+}
+
 /** Words in a document, for "6 min read". */
 export function docWords(n: GuideNode): number {
   const own = n.text ? n.text.split(/\s+/).filter(Boolean).length : 0;

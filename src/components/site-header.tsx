@@ -2,6 +2,9 @@ import Link from "next/link";
 import { auth, signIn, signOut } from "@/auth";
 import { Brand } from "@/components/ui/brand";
 import { handleFor } from "@/lib/builds/queries";
+import { isAdmin } from "@/lib/users/admin";
+import { looksLikeBot } from "@/lib/moderation/bot";
+import { countOpenReview } from "@/lib/moderation/review";
 import { AccountMenu } from "./account-menu";
 import styles from "./site-header.module.css";
 
@@ -13,6 +16,8 @@ export async function SiteHeader() {
   const session = await auth();
   const user = session?.user;
   const handle = user?.id ? await handleFor(user.id).catch(() => null) : null;
+  // Admins see how much waits on the review list (WO-40).
+  const review = user?.id && (await isAdmin(user.id).catch(() => false)) ? await countOpenReview().catch(() => 0) : null;
 
   return (
     <header className={styles.header}>
@@ -30,6 +35,7 @@ export async function SiteHeader() {
               name={user.name ?? ""}
               image={user.image ?? null}
               handle={handle}
+              review={review}
               signOut={async () => {
                 "use server";
                 await signOut({ redirectTo: "/" });
@@ -49,6 +55,8 @@ export function SignInButton({ redirectTo, className = "btn", label }: { redirec
     <form
       action={async (formData: FormData) => {
         "use server";
+        // Vercel BotID on sign-in (WO-40).
+        if (await looksLikeBot()) return;
         const to = String(formData.get("redirectTo") ?? "/");
         await signIn("discord", { redirectTo: to.startsWith("/") ? to : "/" });
       }}

@@ -43,6 +43,18 @@
   opacity: 0.55;
   pointer-events: none;
 }
+/* The cover waiting on an admin (WO-40): a note where the image was. */
+.coverHeld {
+  position: absolute;
+  top: 24px;
+  right: var(--gutter);
+  z-index: 1;
+  padding: 6px 12px;
+  border: 1px dashed var(--rule-strong);
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 14px;
+}
 /* Deepens the foot's fade as the hero scrolls away (opacity set on scroll). */
 .coverDeepen {
   position: absolute;

@@ -26,6 +26,8 @@ export interface BuildRecord {
   likeCount: number;
   /** Whether the viewer likes it (false when signed out). */
   likedByViewer: boolean;
+  /** Its cover is waiting on an admin (WO-40): the page shows a plain hero with a note. */
+  coverHeld?: boolean;
   /** When an admin featured it on Browse (WO-39); null when not featured. */
   featuredAt?: Date | null;
   isSample?: boolean;
@@ -45,6 +47,8 @@ export interface BuildSummary {
   updatedAt: Date;
   author: BuildAuthor;
   likeCount: number;
+  /** Its cover is waiting on an admin (WO-40): the card shows a plain panel. */
+  coverHeld?: boolean;
   /** Its video guide's YouTube id, when it has one (WO-39): cards show a Video badge. */
   videoId?: string | null;
   isSample?: boolean;

@@ -12,14 +12,18 @@ import styles from "./site-header.module.css";
  * arrow opens it on the first item, arrows move, Esc closes and returns to the button, a click
  * outside closes it. The page you're on is marked.
  */
-export function AccountMenu({ name, image, handle, signOut }: { name: string; image: string | null; handle: string | null; signOut: () => Promise<void> }) {
+export function AccountMenu({ name, image, handle, review = null, signOut }: { name: string; image: string | null; handle: string | null; /** Admins: how much waits on the review list (WO-40). */ review?: number | null; signOut: () => Promise<void> }) {
   const pathname = usePathname();
   const id = useId();
   const [open, setOpen] = useState(false);
   const wrap = useRef<HTMLDivElement>(null);
   const button = useRef<HTMLButtonElement>(null);
   const items = useRef<(HTMLElement | null)[]>([]);
-  const links = [...(handle ? [{ href: `/u/${handle}`, label: "My page" }] : []), { href: "/me", label: "My builds" }];
+  const links = [
+    ...(handle ? [{ href: `/u/${handle}`, label: "My page" }] : []),
+    { href: "/me", label: "My builds" },
+    ...(review !== null ? [{ href: "/admin/review", label: review ? `Review (${review})` : "Review" }] : []),
+  ];
   const count = links.length + 1;
 
   const focusItem = (i: number) => items.current[(i + count) % count]?.focus();
@@ -67,6 +71,11 @@ export function AccountMenu({ name, image, handle, signOut }: { name: string; im
       >
         <Avatar name={name} image={image} />
         <span className={styles.whoName}>{name}</span>
+        {!!review && (
+          <span className={styles.reviewCount} aria-label={`${review} to review`}>
+            {review}
+          </span>
+        )}
         <span className={styles.caret} aria-hidden="true">
           ▾
         </span>
