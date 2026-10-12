@@ -6,6 +6,7 @@ import { perkText, type GameData, type Perk } from "@/lib/rules/data";
 import { perkRequirementText, perkStatus, type PerkStatus } from "@/lib/rules/derive";
 import { labelSizes, placeLabels, withSelected, type LabelRequest, type PlacedLabel } from "@/lib/rules/labels";
 import { drawingSize, fitHeight, treeLayout, type LayoutPadding } from "@/lib/rules/layout";
+import { pageZoom } from "@/lib/zoom";
 import { isHeld, lineLook, lineState, prerequisiteLines } from "@/lib/rules/tree-states";
 import type { LevelState } from "@/lib/rules/types";
 import styles from "./tree.module.css";
@@ -438,14 +439,17 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
       if (!e.ctrlKey && !e.metaKey) return;
       e.preventDefault();
       const r = el.getBoundingClientRect();
-      zoomAt(e.clientX - r.left, e.clientY - r.top, Math.exp(-e.deltaY * 0.01));
+      const z = pageZoom();
+      zoomAt((e.clientX - r.left) / z, (e.clientY - r.top) / z, Math.exp(-e.deltaY * 0.01));
     };
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => el.removeEventListener("wheel", onWheel);
   });
+  // The pointer in the drawing's own pixels (the page may be scaled up on a big monitor).
   const local = (e: React.PointerEvent) => {
     const r = sky.current!.getBoundingClientRect();
-    return { x: e.clientX - r.left, y: e.clientY - r.top };
+    const z = pageZoom();
+    return { x: (e.clientX - r.left) / z, y: (e.clientY - r.top) / z };
   };
   const gestures = {
     onPointerDown: (e: React.PointerEvent) => {

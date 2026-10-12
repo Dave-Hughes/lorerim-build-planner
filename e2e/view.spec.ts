@@ -27,7 +27,10 @@ test.describe("shared build page", () => {
     await expect(card).toContainText("One-Handed+540 → 45");
     await expect(card).toContainText("Powerful Bashes");
     await expect(card.getByRole("complementary", { name: "Author's note" })).toContainText("Banking 10 skill points");
-    await expect(page.getByRole("region", { name: /^Taken by level/ })).toContainText("Craftsmanship (book)");
+    // Beside the tree only the open tree is listed in full (WO-35): open Smithing.
+    const taken = page.getByRole("region", { name: /^Taken by level/ });
+    await taken.getByRole("button", { name: /^Smithing \d+ ▸$/ }).click();
+    await expect(taken).toContainText("Craftsmanship (book)");
   });
 
   test("steps through levels with buttons, the row and the keyboard", async ({ page }) => {

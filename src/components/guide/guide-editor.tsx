@@ -14,6 +14,7 @@ import { Tooltip } from "@/components/ui/tooltip";
 import { insertImages } from "./image-upload";
 import prose from "./prose.module.css";
 import styles from "./guide-editor.module.css";
+import { pageZoom } from "@/lib/zoom";
 
 export interface GuideEditorProps {
   buildId: string;
@@ -402,6 +403,8 @@ function Menu<T>({ state, id, label, onPick, render }: { state: MenuState<T>; id
   if (!state.items.length) return null;
   // Every item shows: open below the caret, or above it when there isn't room below.
   const height = state.items.length * MENU_ITEM + 10;
+  // Measured in screen pixels, placed in the page's (scaled up on a big monitor, WO-35).
+  const z = pageZoom();
   const below = window.innerHeight - state.rect.bottom - 14;
   const above = state.rect.top - 14;
   const up = height > below && above > below;
@@ -409,7 +412,7 @@ function Menu<T>({ state, id, label, onPick, render }: { state: MenuState<T>; id
   return (
     <div
       className={styles.floating}
-      style={{ left: menuLeft(state.rect.left), ...(up ? { bottom: window.innerHeight - state.rect.top + 6 } : { top: state.rect.bottom + 6 }), ["--menu-max" as string]: `${room}px` }}
+      style={{ left: menuLeft(state.rect.left) / z, ...(up ? { bottom: (window.innerHeight - state.rect.top + 6) / z } : { top: (state.rect.bottom + 6) / z }), ["--menu-max" as string]: `${room / z}px` }}
     >
       <ul role="listbox" id={id} aria-label={label} className={styles.menu}>
         {state.items.map((item, i) => (

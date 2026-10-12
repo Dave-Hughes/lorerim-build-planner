@@ -2,6 +2,7 @@
 
 import { cloneElement, useCallback, useEffect, useId, useLayoutEffect, useRef, useState, useSyncExternalStore, type ReactElement } from "react";
 import { createPortal } from "react-dom";
+import { pageZoom } from "@/lib/zoom";
 import styles from "./tooltip.module.css";
 
 type TriggerProps = {
@@ -38,8 +39,10 @@ export function Tooltip({ content, children }: { content: React.ReactNode; child
     const above = a.top - GAP - t.height;
     const top = above >= GAP ? above : a.bottom + GAP;
     const left = Math.min(Math.max(GAP, a.left + a.width / 2 - t.width / 2), window.innerWidth - t.width - GAP);
-    el.style.top = `${Math.round(top)}px`;
-    el.style.left = `${Math.round(left)}px`;
+    // Measured in screen pixels; set in the page's, which a big monitor scales up (WO-35).
+    const z = pageZoom();
+    el.style.top = `${Math.round(top / z)}px`;
+    el.style.left = `${Math.round(left / z)}px`;
     el.dataset.side = above >= GAP ? "top" : "bottom";
   }, [anchor]);
 

@@ -25,6 +25,7 @@ import { emptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import * as ops from "./plan-ops";
 import { useAutosave } from "./use-autosave";
 import styles from "./editor.module.css";
+import { pageZoom } from "@/lib/zoom";
 
 interface Props {
   buildId: string;
@@ -89,10 +90,12 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
     if (!perkArea) return;
     const set = () => {
       setAreaWidth(perkArea.clientWidth);
-      setWindowWidth(window.innerWidth);
+      // In the page's own pixels (it may be scaled up on a big monitor).
+      const z = pageZoom();
+      setWindowWidth(window.innerWidth / z);
       const col = skillsCol?.getBoundingClientRect();
       const area = perkArea.getBoundingClientRect();
-      setPinOver(col && col.right <= area.left ? { left: Math.round(col.left), width: Math.round(Math.min(420, col.width)) } : null);
+      setPinOver(col && col.right <= area.left ? { left: Math.round(col.left / z), width: Math.round(Math.min(420, col.width / z)) } : null);
     };
     set();
     const ro = new ResizeObserver(set);
@@ -114,7 +117,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
       const header = document.querySelector<HTMLElement>("body > header, header")?.offsetHeight ?? 0;
       const bar = document.querySelector<HTMLElement>("[data-edit-bar]")?.offsetHeight ?? 0;
       const legend = 48;
-      setTreeHeight(Math.max(520, Math.round(window.innerHeight - header - bar - chipsEl.offsetHeight - legend - 16)));
+      setTreeHeight(Math.max(520, Math.round(window.innerHeight / pageZoom() - header - bar - chipsEl.offsetHeight - legend - 16)));
     };
     set();
     const ro = new ResizeObserver(set);

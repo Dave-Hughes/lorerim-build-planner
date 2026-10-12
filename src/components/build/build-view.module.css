@@ -1343,3 +1343,50 @@
 .sumGear {
   cursor: pointer;
 }
+
+/* ---------- The taken list folded to the open tree (WO-35) ---------- */
+.heldFolded {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  background: none;
+  color: #c3cdd6;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.heldFolded:hover {
+  color: var(--ember);
+}
+.heldFolded:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+.heldFoldedCount {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- The contents rail's column (WO-35): only from 1600 wide ---------- */
+.withRail {
+  display: flex;
+  flex-direction: column;
+}
+.railMain {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+}
+@media (min-width: 1600px) {
+  .withRail {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+  }
+}

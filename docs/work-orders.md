@@ -1475,11 +1475,11 @@ Most players are on big gaming monitors.
 - The Destiny section's list and the phone list view stay as they are.
 
 ### Done when
-- [ ] Screenshots of Iriel at level 30 at 1440, 1920, 2560×1440 and 3440×1440. At 2560 it matches the artboard. At 1440 it looks as it does today, with no rail.
-- [ ] e2e at 2560: the rail is shown. Clicking `Gear` scrolls to `Gear at level 30` and marks `Gear` current. Clicking `Sneak` under Perks opens the Sneak tree.
-- [ ] e2e at 2560: dragging the perk tree pans it by the distance dragged, and clicking a star opens that star's details.
-- [ ] e2e: clicking `Marksman 11 ▸` in the taken list opens the Marksman tree, and its perks are listed in full.
-- [ ] All checks in CLAUDE.md pass, and the screenshots are checked in Chrome and Firefox. Safari is Dave's.
+- [x] Screenshots of Iriel at level 30 at 1440, 1920, 2560×1440 and 3440×1440. At 2560 it matches the artboard. At 1440 it looks as it does today, with no rail.
+- [x] e2e at 2560: the rail is shown. Clicking `Gear` scrolls to `Gear at level 30` and marks `Gear` current. Clicking `Sneak` under Perks opens the Sneak tree.
+- [x] e2e at 2560: dragging the perk tree pans it by the distance dragged, and clicking a star opens that star's details.
+- [x] e2e: clicking `Marksman 11 ▸` in the taken list opens the Marksman tree, and its perks are listed in full.
+- [x] All checks in CLAUDE.md pass, and the screenshots are checked in Chrome and Firefox. Safari is Dave's.
 
 ---
 

@@ -25,8 +25,9 @@
   --font-body: var(--font-sofia), "Segoe UI", sans-serif;
   --font-flavor: var(--font-alegreya), Georgia, serif;
 
-  /* The page grows in steps on large screens (most players are on big gaming monitors). */
+  /* The page grows to 1600; past 1920 it's scaled instead (below). */
   --page-max: 1360px;
+  --page-zoom: 1;
   --gutter: 40px;
   /* Titles grow a little with the page. */
   --title-scale: 1;
@@ -37,15 +38,33 @@
     --page-max: 1600px;
   }
 }
-@media (min-width: 2200px) {
+/*
+ * Big monitors (WO-35): from 1920 wide the whole page is drawn larger, laid out as at about 1600,
+ * rather than stretched. --page-zoom is read by the code that measures the pointer.
+ */
+@media (min-width: 1920px) {
   :root {
-    --page-max: 2080px;
-    --title-scale: 1.1;
+    --page-zoom: 1.125;
   }
 }
-@media (min-width: 2880px) {
+@media (min-width: 2240px) {
   :root {
-    --page-max: 2560px;
+    --page-zoom: 1.25;
+  }
+}
+@media (min-width: 2560px) {
+  :root {
+    --page-zoom: 1.5;
+  }
+}
+@media (min-width: 3600px) and (min-height: 1900px) {
+  :root {
+    --page-zoom: 2;
+  }
+}
+@media (min-width: 1920px) {
+  html {
+    zoom: var(--page-zoom);
   }
 }
 @media (max-width: 899px) {
@@ -485,4 +504,14 @@ textarea:focus-visible {
 /* The owner's edit bar (56px and its rule) is sticky: other sticky bars sit below it. */
 :root:has([data-edit-bar]) {
   --sticky-top: 57px;
+}
+
+/* Sections the contents rail scrolls to land below the pinned bar (WO-35). */
+#level-card,
+#attributes-skills,
+#perks,
+#destiny,
+#gear-at-level,
+[id^="guide-"] {
+  scroll-margin-top: calc(84px + var(--sticky-top));
 }

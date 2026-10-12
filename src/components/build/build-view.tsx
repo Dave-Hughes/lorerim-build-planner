@@ -15,6 +15,8 @@ import { SkillGains, type SkillGain } from "./skill-gains";
 import { EditBar } from "@/components/editor/edit-bar";
 import { AboutBar } from "./about-bar";
 import { GearView } from "./gear-view";
+import { ContentsRail, type RailItem } from "./contents-rail";
+import { guideHeadings } from "@/components/guide/guide-view";
 import { LocalDate } from "@/components/ui/local-date";
 import { GuideSection } from "@/components/guide/guide-section";
 import { LevelNote } from "@/components/guide/level-note";
@@ -33,6 +35,7 @@ import { AttributeIcon, IconLabel, SignIcon, SkillIcon, SkillLabel, MarkIcon, Sl
 import { LevelBars, LevelLegend, LevelStepper, useHoldInPlace } from "./level-nav";
 import { BottomSheet, PerkDetails, Tree, ViewToggle, type TreeView } from "./tree";
 import styles from "./build-view.module.css";
+import { pageZoom } from "@/lib/zoom";
 
 export type BuildViewData = Omit<BuildRecord, "createdAt" | "updatedAt"> & { updatedAt: string };
 
@@ -146,6 +149,40 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   };
 
   const [picked, setPicked] = useState<Picked>(null);
+  const [destinyOpenChoice, setDestinyOpenChoice] = useState(false);
+
+  // The contents rail on wide screens (WO-35): the Levels tab's sections, or the guide's headings.
+  const railPerks = useMemo(() => perksByLevel(d, plan, states, level), [d, plan, states, level]);
+  const railTree = openTreeFor(d, plan, level, picked);
+  const railState = states[level - 1];
+  const skillGroups = railPerks.filter((g) => g.tree !== "Destiny");
+  const destinyCount = railPerks.filter((g) => g.tree === "Destiny").reduce((n, g) => n + g.perks.length, 0);
+  const railItems: RailItem[] =
+    tab === "guide" && overview
+      ? [
+          ...guideHeadings(overview, "guide").map((h) => ({ key: h.id, label: h.text, target: h.id })),
+          { key: "levels", label: "Levels", onGo: () => setTab("levels") },
+        ]
+      : [
+          { key: "level", label: `Level ${level}`, target: "level-card" },
+          { key: "attributes", label: "Attributes and skills", target: "attributes-skills" },
+          // Counts as the tree chips count them: perks held, a perk's ranks as one.
+          { key: "perks", label: "Perks", count: skillGroups.reduce((n, g) => n + heldCount(d, g.tree, railState), 0), target: "perks" },
+          ...skillGroups.map((g) => ({
+            key: `tree-${g.tree}`,
+            label: g.tree,
+            count: heldCount(d, g.tree, railState),
+            sub: true,
+            marked: g.tree === railTree,
+            target: "perks",
+            onGo: () => setPicked({ level, tree: g.tree, star: null }),
+          })),
+          ...(plan.levels.some((l) => l.destiny.length > 0)
+            ? [{ key: "destiny", label: "Destiny", count: destinyCount, destiny: true, target: "destiny", onGo: () => setDestinyOpenChoice(true) }]
+            : []),
+          ...(plan.gear.length ? [{ key: "gear", label: "Gear", count: gearAt(plan, level).length, target: "gear-at-level" }] : []),
+          ...(tabs.includes("guide") ? [{ key: "guide", label: "Guide", onGo: () => setTab("guide") }] : []),
+        ];
 
   // The pinned bar: once the tab row (or, with no tabs, the level navigation) scrolls off the top,
   // a slim bar on Levels holds the level stepper and what the level changed.
@@ -156,7 +193,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
       const el = tabRow ?? levelBarRef.current;
       // Under the owner's edit bar, when there is one.
       const top = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--sticky-top")) || 0;
-      setPinned(!!el && el.getBoundingClientRect().bottom < top);
+      setPinned(!!el && el.getBoundingClientRect().bottom < top * pageZoom());
     };
     check();
     window.addEventListener("scroll", check, { passive: true });
@@ -246,6 +283,9 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
             </div>
           )}
 
+          <div className={styles.withRail}>
+          <ContentsRail items={railItems} />
+          <div className={styles.railMain}>
           {tab === "levels" && (
             <div id="panel-levels" role={tabs.length > 1 ? "tabpanel" : undefined} aria-labelledby={tabs.length > 1 ? "tab-levels" : undefined} className={styles.panelStack}>
               <LevelsTab
@@ -258,6 +298,8 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
                 note={noted.has(level) ? guide[`level:${level}`] : null}
                 picked={picked}
                 setPicked={setPicked}
+                destinyOpenChoice={destinyOpenChoice}
+                setDestinyOpenChoice={setDestinyOpenChoice}
               />
             </div>
           )}
@@ -266,10 +308,20 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
               <GuideSection buildId={build.id} doc={overview} full />
             </div>
           )}
+          </div>
+          </div>
         </div>
       </main>
     </GuideFactsProvider>
   );
+}
+
+/** The skill tree open in the Perks section: the one picked, else this level's first perk's, else the first major. */
+function openTreeFor(d: GameData, plan: BuildViewData["plan"], level: number, picked: Picked): string {
+  const pickedSkill = picked && picked.tree !== "Destiny" ? picked : null;
+  if (pickedSkill && (pickedSkill.star || pickedSkill.level === level)) return pickedSkill.tree;
+  const firstPerk = plan.levels[level - 1].perks[0];
+  return firstPerk ? (d.perkById.get(firstPerk)?.tree ?? plan.majors[0]) : (plan.majors[0] ?? d.skills[0]);
 }
 
 /** The Levels tab: navigation, the level card, then where the build stands. */
@@ -283,6 +335,8 @@ function LevelsTab({
   note,
   picked,
   setPicked,
+  destinyOpenChoice,
+  setDestinyOpenChoice,
 }: {
   build: BuildViewData;
   states: LevelState[];
@@ -294,6 +348,9 @@ function LevelsTab({
   /** The perk picked in the Perks section (held by the page, so the pinned bar can pick one too). */
   picked: Picked;
   setPicked: React.Dispatch<React.SetStateAction<Picked>>;
+  /** Destiny unfolded by the viewer (or the rail), kept as they move between levels. */
+  destinyOpenChoice: boolean;
+  setDestinyOpenChoice: (open: boolean) => void;
 }) {
   const d = useGameData();
   const { plan } = build;
@@ -310,15 +367,12 @@ function LevelsTab({
   const destinyPerks = perks.filter((g) => g.tree === "Destiny");
   const hasDestiny = plan.levels.some((l) => l.destiny.length > 0);
   const pickedSkill = picked && picked.tree !== "Destiny" ? picked : null;
-  const firstPerk = lv.perks[0];
-  const defaultTree = firstPerk ? (d.perkById.get(firstPerk)?.tree ?? plan.majors[0]) : (plan.majors[0] ?? d.skills[0]);
-  const tree = pickedSkill && (pickedSkill.star || pickedSkill.level === level) ? pickedSkill.tree : defaultTree;
+  const tree = openTreeFor(d, plan, level, picked);
   const selected = pickedSkill?.star ?? null;
   const destinySelected = picked?.tree === "Destiny" ? picked.star : null;
   const destinyRef = useRef<HTMLElement>(null);
   // Destiny folds to one line (WO-32). It opens by itself where a star is taken, or when a Destiny
   // star is picked (the card, the pinned bar); otherwise it stays as the viewer left it.
-  const [destinyOpenChoice, setDestinyOpenChoice] = useState(false);
   const [closedAt, setClosedAt] = useState<ReadonlySet<number>>(new Set());
   const takenHere = lv.destiny.length > 0;
   const destinyOpen = destinyOpenChoice || (takenHere && !closedAt.has(level)) || !!destinySelected;
@@ -364,7 +418,7 @@ function LevelsTab({
 
       <LevelCard d={d} build={build} states={states} level={level} note={note} onPerk={(id) => showPerk(id, true)} />
 
-      <div className={styles.reference}>
+      <div id="attributes-skills" className={styles.reference}>
         <AttributesAt s={s} level={level} />
         <SkillsAt d={d} plan={plan} s={s} level={level} />
       </div>
@@ -386,7 +440,8 @@ function LevelsTab({
             <div className={styles.side}>
               {/* What the selected perk does, above the held list (wide screens; phones use the sheet). */}
               {!narrow && selected && <PerkDetails id={selected} states={states} level={level} onClose={clearPick} />}
-              <HeldList perks={skillPerks} s={s} level={level} onPick={(id) => showPerk(id, false)} />
+              {/* Beside the tree, the open tree's perks in full and the rest folded (WO-35); the phone list view lists them all. */}
+              <HeldList perks={skillPerks} s={s} level={level} onPick={(id) => showPerk(id, false)} {...(narrow ? {} : { open: tree, onOpen: (t: string) => setPicked({ level, tree: t, star: null }) })} />
             </div>
           )}
         </div>
@@ -400,7 +455,7 @@ function LevelsTab({
       {/* Destiny, its own thing (WO-27), folded to one line unless it's open (WO-32). Left out when
           the build takes no Destiny perks. */}
       {hasDestiny && (
-        <section ref={destinyRef} data-tree-anchor="" aria-label={`Destiny at level ${level}`} className={styles.destinySection}>
+        <section ref={destinyRef} id="destiny" data-tree-anchor="" aria-label={`Destiny at level ${level}`} className={styles.destinySection}>
           <div className={styles.destinyLine}>
             <span className={styles.destinyTitle}>
               <i className={styles.destinyMark} aria-hidden="true" />
@@ -489,12 +544,46 @@ function PerkChips({ d, perks, s, active, onChange }: { d: GameData; perks: Perk
 }
 
 /** The perks held by this level, grouped by tree; this level's in ember. Each opens its star. */
-function HeldList({ perks, s, level, onPick, destiny }: { perks: PerkListGroup[]; s: LevelState; level: number; onPick: (id: string) => void; destiny?: boolean }) {
+/**
+ * The perks held by this level, grouped by tree; this level's in ember. Each opens its star. With
+ * `open` (beside the tree, WO-35) only the open tree is listed in full; the rest are one line each,
+ * name and count, which open that tree.
+ */
+function HeldList({
+  perks,
+  s,
+  level,
+  onPick,
+  destiny,
+  open,
+  onOpen,
+}: {
+  perks: PerkListGroup[];
+  s: LevelState;
+  level: number;
+  onPick: (id: string) => void;
+  destiny?: boolean;
+  open?: string;
+  onOpen?: (tree: string) => void;
+}) {
+  const d = useGameData();
+  // As the tree chips count: perks held, a perk's ranks as one.
+  const count = (tree: string) => heldCount(d, tree, s);
+  const total = perks.reduce((n, g) => n + count(g.tree), 0);
   return (
     <section aria-label={`${destiny ? "Destiny taken" : "Taken"} by level ${level}`} className={`${styles.held} ${destiny ? styles.heldDestiny : ""}`}>
-      <span className={`sub-label ${styles.heldHead}`}>Taken by level {level}</span>
+      <span className={`sub-label ${styles.heldHead}`}>
+        Taken by level {level}
+        {onOpen && total > 0 ? ` · ${total}` : ""}
+      </span>
       {perks.length === 0 && <p className="muted">None yet.</p>}
-      {perks.map((g) => (
+      {perks.map((g) =>
+        onOpen && g.tree !== open ? (
+          <button key={g.tree} type="button" className={styles.heldFolded} onClick={() => onOpen(g.tree)}>
+            <SkillLabel name={g.tree} />
+            <span className={styles.heldFoldedCount}>{`${count(g.tree)} ▸`}</span>
+          </button>
+        ) : (
         <div key={g.tree} className={styles.perkGroup}>
           <SkillLabel name={g.tree} className="muted" />
           <span className={styles.perkNames}>
@@ -509,7 +598,8 @@ function HeldList({ perks, s, level, onPick, destiny }: { perks: PerkListGroup[]
             ))}
           </span>
         </div>
-      ))}
+        ),
+      )}
     </section>
   );
 }
@@ -897,7 +987,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
   if (changes.banked > 0) rows.push(["Banked", `${changes.banked} skill point${changes.banked === 1 ? "" : "s"}`]);
 
   return (
-    <section aria-label={`Level ${level}`} className={`frame ${styles.card} ${styles.cardWithNote}`}>
+    <section id="level-card" aria-label={`Level ${level}`} className={`frame ${styles.card} ${styles.cardWithNote}`}>
       <div className={styles.cardMain}>
         <h2 className={styles.cardTitle}>Level {level}</h2>
         {rows.length ? (

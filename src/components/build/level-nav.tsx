@@ -4,6 +4,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import type { LevelMark } from "@/lib/rules/derive";
 import { Tooltip } from "@/components/ui/tooltip";
 import styles from "./level-nav.module.css";
+import { pageZoom } from "@/lib/zoom";
 
 export const WINDOW = 12;
 
@@ -278,11 +279,13 @@ export function LevelBars({ marks, level, onChange }: { marks: LevelMark[]; leve
       const b = el.getBoundingClientRect();
       const w = win.getBoundingClientRect();
       const r = row.getBoundingClientRect();
+      // Screen pixels to the drawing's own (the page may be scaled up on a big monitor).
+      const z = pageZoom();
       const set = (line: SVGLineElement, x1: number, x2: number) => {
-        line.setAttribute("x1", String(x1 - b.left));
-        line.setAttribute("y1", String(w.bottom - b.top));
-        line.setAttribute("x2", String(x2 - b.left));
-        line.setAttribute("y2", String(r.top - b.top));
+        line.setAttribute("x1", String((x1 - b.left) / z));
+        line.setAttribute("y1", String((w.bottom - b.top) / z));
+        line.setAttribute("x2", String((x2 - b.left) / z));
+        line.setAttribute("y2", String((r.top - b.top) / z));
       };
       set(left.current, w.left, r.left);
       set(right.current, w.right, r.right);
