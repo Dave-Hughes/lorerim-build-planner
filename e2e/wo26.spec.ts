@@ -57,7 +57,7 @@ test("the editor's tree is at least 520px tall and all 18 named chips show witho
   expect((await box.boundingBox())!.height).toBeGreaterThanOrEqual(520);
   const tabs = page.getByRole("tablist", { name: "Perk trees" });
   for (const name of ["One-Handed", "Heavy Armor", "Wayfarer", "Enchanting"]) await expect(tabs.getByRole("tab", { name: new RegExp(`^${name} `) })).toBeVisible();
-  expect(await tabs.getByRole("tab").count()).toBe(19);
+  expect(await tabs.getByRole("tab").count()).toBe(18);
   const scrolls = await tabs.evaluate((el) => [...el.querySelectorAll<HTMLElement>("div")].some((d) => d.scrollWidth > d.clientWidth + 1));
   expect(scrolls).toBe(false);
   for (const t of await tabs.getByRole("tab").all()) await expect(t).toBeInViewport();

@@ -6,6 +6,21 @@
 .box {
   position: relative;
   min-width: 0;
+  /* Taken stars, held lines and their halo: ember for skill trees, gold for Destiny (WO-27). */
+  --perk: var(--ember);
+  --perk-halo: rgba(240, 145, 63, 0.25);
+}
+.destinyTree {
+  --perk: var(--destiny);
+  --perk-halo: rgba(185, 161, 115, 0.3);
+  background: var(--destiny-wash);
+}
+/* Destiny's can-take stars: a gold outline. */
+.destinyTree .open::before {
+  border-color: var(--destiny);
+}
+.destinyTree .labelHeld .labelName {
+  color: var(--destiny-text);
 }
 .toolbar {
   display: flex;
@@ -128,11 +143,11 @@
   stroke: var(--brass);
 }
 .edgeHeld {
-  stroke: var(--ember);
+  stroke: var(--perk);
 }
 /* Under the path: a faint wider line in place of a glow (design rules: no glows). */
 .edgeHalo {
-  stroke: var(--ember);
+  stroke: var(--perk);
   opacity: 0.2;
 }
 
@@ -164,8 +179,8 @@
   height: calc(var(--star) * 1.3);
 }
 .taken::before {
-  background: var(--ember);
-  box-shadow: 0 0 0 4px rgba(240, 145, 63, 0.25);
+  background: var(--perk);
+  box-shadow: 0 0 0 4px var(--perk-halo);
 }
 /* Some ranks: a ring split into one arc per rank, taken arcs ember. */
 .partial::before {
@@ -179,7 +194,7 @@
   position: absolute;
   inset: -4px;
   border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(240, 145, 63, 0.25) inset;
+  box-shadow: 0 0 0 4px var(--perk-halo) inset;
   pointer-events: none;
 }
 .open::before {
@@ -197,7 +212,7 @@
 }
 .taken.selected::before {
   box-shadow:
-    0 0 0 4px rgba(240, 145, 63, 0.25),
+    0 0 0 4px var(--perk-halo),
     0 0 0 6px #10161e,
     0 0 0 7px var(--brass);
 }
@@ -340,10 +355,10 @@ button.listRow[aria-pressed="true"] {
   box-sizing: border-box;
 }
 .listDot.taken {
-  background: var(--ember);
+  background: var(--perk);
 }
 .listDot.open {
-  border: 1.5px solid var(--ember);
+  border: 1.5px solid var(--perk);
 }
 .listDot.locked {
   width: 6px;
@@ -365,7 +380,7 @@ button.listRow[aria-pressed="true"] {
   white-space: nowrap;
 }
 .state_taken {
-  color: var(--ember);
+  color: var(--perk);
 }
 .state_open {
   color: var(--text);
@@ -455,8 +470,8 @@ button.listRow[aria-pressed="true"] {
 .keyTaken {
   width: 13px;
   height: 13px;
-  background: var(--ember);
-  box-shadow: 0 0 0 3px rgba(240, 145, 63, 0.25);
+  background: var(--perk);
+  box-shadow: 0 0 0 3px var(--perk-halo);
 }
 .keyPartial {
   width: 13px;
@@ -516,7 +531,7 @@ button.listRow[aria-pressed="true"] {
   color: var(--muted);
 }
 .detailsRankTaken {
-  color: var(--ember);
+  color: var(--perk);
 }
 .detailsEffect {
   font-size: 14px;

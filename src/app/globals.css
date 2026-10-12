@@ -12,6 +12,11 @@
   --ember: #f0913f;
   --on-ember: #0e1319;
   --brass: #b9a173;
+  /* Destiny (WO-27): its own colour everywhere it shows. Text on dark passes 4.5:1 (#d9c491: 9.3 to
+     10.9; #b9a173: 6.4 to 7.5). Perks stay ember. */
+  --destiny: #b9a173;
+  --destiny-text: #d9c491;
+  --destiny-wash: rgba(185, 161, 115, 0.1);
   --health: #d07a6a;
   --magicka: #7d9fd6;
   --stamina: #86b47f;

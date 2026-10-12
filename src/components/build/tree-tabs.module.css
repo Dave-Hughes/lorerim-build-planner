@@ -28,6 +28,69 @@
 .toggle {
   display: none;
 }
+/* Destiny: a gold-outlined button with the diamond; gold fill while a point waits to be spent. */
+.destinyWrap {
+  flex: none;
+  display: flex;
+}
+.destiny {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 112px;
+  padding: 8px 14px;
+  border: 1px solid var(--destiny);
+  background: transparent;
+  color: var(--destiny-text);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background-color 120ms,
+    color 120ms;
+}
+.destiny:hover {
+  background: var(--destiny-wash);
+}
+.destinyToSpend {
+  background: var(--destiny);
+  color: var(--on-ember);
+}
+.destinyToSpend:hover {
+  background: var(--destiny-text);
+}
+.destiny[aria-selected="true"] {
+  box-shadow:
+    0 0 0 2px var(--ground),
+    0 0 0 3px var(--destiny);
+}
+.destiny:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 4px;
+}
+.diamond {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  background: currentColor;
+  margin: 2px 0 2px 2px;
+}
+.destinyName {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-title);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.destinyLeft {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
 .tab {
   display: inline-flex;
   align-items: center;
@@ -91,8 +154,11 @@
     transition: none;
   }
 }
-/* Phones: each group is one sideways row; the Tree / List switch at the end. */
+/* Phones: each group is one sideways row, Destiny under them; the Tree / List switch at the end. */
 @media (max-width: 899px) {
+  .bar {
+    flex-wrap: wrap;
+  }
   .group {
     grid-template-columns: minmax(0, 1fr);
     gap: 4px;

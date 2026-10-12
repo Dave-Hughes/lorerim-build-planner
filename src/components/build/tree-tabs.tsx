@@ -55,7 +55,7 @@ export function TreeTabs({
     </button>
   );
   // One row per game group (Warrior, Thief, Mage), each chip with its icon, name, level and held
-  // count; Destiny after them, on its own.
+  // count; Destiny beside them, its own control.
   return (
     <div className={styles.bar}>
       <div ref={row} role="tablist" aria-label="Perk trees" className={styles.groups}>
@@ -65,10 +65,23 @@ export function TreeTabs({
             <div className={styles.tabs}>{g.skills.map((s) => chip(s, state.skills[s], tabLabel(s, `${state.skills[s]}`)))}</div>
           </div>
         ))}
-        <div className={styles.group}>
-          <span className={`sub-label ${styles.groupName}`}>Destiny</span>
-          <div className={styles.tabs}>{chip("Destiny", `${destinyLeft} left`, tabLabel("Destiny", `${destinyLeft} left`))}</div>
-        </div>
+      </div>
+      {/* Destiny: its own control in its own colour, gold-filled while there's a point to spend. */}
+      <div role="tablist" aria-label="Destiny" className={styles.destinyWrap}>
+        <button
+          role="tab"
+          type="button"
+          aria-selected={active === "Destiny"}
+          aria-label={tabLabel("Destiny", `${destinyLeft} left`)}
+          className={`${styles.destiny} ${destinyLeft > 0 ? styles.destinyToSpend : ""}`}
+          onClick={() => onChange("Destiny")}
+        >
+          <span className={styles.destinyName}>
+            <i className={styles.diamond} aria-hidden="true" />
+            Destiny
+          </span>
+          <span className={styles.destinyLeft}>{destinyLeft} left</span>
+        </button>
       </div>
       {view && onView && <ViewToggle view={view} onView={onView} className={styles.toggle} />}
     </div>

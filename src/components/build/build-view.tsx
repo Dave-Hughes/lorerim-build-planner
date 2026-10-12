@@ -347,10 +347,17 @@ function LevelsTab({
   // Perks: the tree picked for this level (by the player, a card link or the held list), else
   // the tree of this level's first perk, else the first major.
   const lv = plan.levels[level - 1];
-  const firstPerk = lv.perks[0] ?? lv.destiny[0];
+  // Destiny has its own section (WO-27): the Perks section is the skill trees only.
+  const skillPerks = perks.filter((g) => g.tree !== "Destiny");
+  const destinyPerks = perks.filter((g) => g.tree === "Destiny");
+  const hasDestiny = plan.levels.some((l) => l.destiny.length > 0);
+  const pickedSkill = picked && picked.tree !== "Destiny" ? picked : null;
+  const firstPerk = lv.perks[0];
   const defaultTree = firstPerk ? (d.perkById.get(firstPerk)?.tree ?? plan.majors[0]) : (plan.majors[0] ?? d.skills[0]);
-  const tree = picked && (picked.star || picked.level === level) ? picked.tree : defaultTree;
-  const selected = picked?.star ?? null;
+  const tree = pickedSkill && (pickedSkill.star || pickedSkill.level === level) ? pickedSkill.tree : defaultTree;
+  const selected = pickedSkill?.star ?? null;
+  const destinySelected = picked?.tree === "Destiny" ? picked.star : null;
+  const destinyRef = useRef<HTMLElement>(null);
   const narrow = useNarrower(1100);
   const [viewChoice, setViewChoice] = useState<TreeView | null>(null);
   const view: TreeView = viewChoice ?? (narrow ? "list" : "tree");
@@ -362,15 +369,15 @@ function LevelsTab({
     if (!p) return;
     setPicked({ level, tree: p.tree, star: id });
     if (narrow) setSheet(id);
-    else if (scroll) perksRef.current?.scrollIntoView({ block: "start" });
+    else if (scroll) (p.tree === "Destiny" ? destinyRef : perksRef).current?.scrollIntoView({ block: "start" });
   };
   const clearPick = useCallback(() => setPicked((p) => (p ? { ...p, star: null, level } : p)), [level, setPicked]);
   useEffect(() => {
-    if (!selected || narrow) return;
+    if (!(selected || destinySelected) || narrow) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && clearPick();
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [selected, narrow, clearPick]);
+  }, [selected, destinySelected, narrow, clearPick]);
 
   return (
     <>
@@ -396,7 +403,7 @@ function LevelsTab({
           {narrow && <ViewToggle view={view} onView={setViewChoice} />}
         </div>
         {/* Phones in List view show the held list alone; the chips go with the tree. */}
-        {(!narrow || view === "tree") && <PerkChips d={d} perks={perks} s={s} active={tree} onChange={(t) => setPicked({ level, tree: t, star: null })} />}
+        {(!narrow || view === "tree") && <PerkChips d={d} perks={skillPerks} s={s} active={tree} onChange={(t) => setPicked({ level, tree: t, star: null })} />}
         <div className={styles.perksBody}>
           {(!narrow || view === "tree") && (
             <div className={`frame ${styles.treeBox}`}>
@@ -407,7 +414,7 @@ function LevelsTab({
             <div className={styles.side}>
               {/* What the selected perk does, above the held list (wide screens; phones use the sheet). */}
               {!narrow && selected && <PerkDetails id={selected} states={states} level={level} onClose={clearPick} />}
-              <HeldList perks={perks} s={s} level={level} onPick={(id) => showPerk(id, false)} />
+              <HeldList perks={skillPerks} s={s} level={level} onPick={(id) => showPerk(id, false)} />
             </div>
           )}
         </div>
@@ -417,15 +424,37 @@ function LevelsTab({
           </BottomSheet>
         )}
       </section>
+
+      {/* Destiny, its own thing (WO-27): the Destiny tree and what's taken there, in gold. Left out
+          when the build takes no Destiny perks. */}
+      {hasDestiny && (
+        <section ref={destinyRef} data-tree-anchor="" aria-label={`Destiny at level ${level}`} className={`${styles.perksSection} ${styles.destinySection}`}>
+          <div className={styles.sectionHead}>
+            <span className={`label ${styles.destinyLabel}`}>
+              <i className={styles.destinyMark} aria-hidden="true" />
+              Destiny at level {level}
+            </span>
+          </div>
+          <div className={styles.perksBody}>
+            <div className={`frame ${styles.treeBox} ${styles.destinyBox}`}>
+              <Tree tree="Destiny" states={states} level={level} selectedId={destinySelected} onSelect={(id) => setPicked({ level, tree: "Destiny", star: id })} view="tree" noToggle sheetBelow={1100} />
+            </div>
+            <div className={styles.side}>
+              {!narrow && destinySelected && <PerkDetails id={destinySelected} states={states} level={level} onClose={clearPick} />}
+              <HeldList perks={destinyPerks} s={s} level={level} onPick={(id) => showPerk(id, false)} destiny />
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }
 
-/** One chip per tree the build holds perks in, plus Destiny; the rest in a menu. */
+/** One chip per skill tree the build holds perks in; the rest in a menu. Destiny has its own section. */
 function PerkChips({ d, perks, s, active, onChange }: { d: GameData; perks: PerkListGroup[]; s: LevelState; active: string; onChange: (tree: string) => void }) {
   const [open, setOpen] = useState(false);
-  const shown = [...perks.map((g) => g.tree).filter((t) => t !== "Destiny"), "Destiny"];
-  if (!shown.includes(active)) shown.splice(shown.length - 1, 0, active);
+  const shown = perks.map((g) => g.tree).filter((t) => t !== "Destiny");
+  if (!shown.includes(active)) shown.push(active);
   const others = d.skills.filter((t) => !shown.includes(t));
   // On phones the chips are one sideways row: keep the current one in view, moving the row only.
   const row = useRef<HTMLDivElement>(null);
@@ -478,9 +507,9 @@ function PerkChips({ d, perks, s, active, onChange }: { d: GameData; perks: Perk
 }
 
 /** The perks held by this level, grouped by tree; this level's in ember. Each opens its star. */
-function HeldList({ perks, s, level, onPick }: { perks: PerkListGroup[]; s: LevelState; level: number; onPick: (id: string) => void }) {
+function HeldList({ perks, s, level, onPick, destiny }: { perks: PerkListGroup[]; s: LevelState; level: number; onPick: (id: string) => void; destiny?: boolean }) {
   return (
-    <section aria-label={`Taken by level ${level}`} className={styles.held}>
+    <section aria-label={`${destiny ? "Destiny taken" : "Taken"} by level ${level}`} className={`${styles.held} ${destiny ? styles.heldDestiny : ""}`}>
       <span className={`sub-label ${styles.heldHead}`}>Taken by level {level}</span>
       {perks.length === 0 && <p className="muted">None yet.</p>}
       {perks.map((g) => (
@@ -530,18 +559,11 @@ function AttributesAt({ s, level }: { s: LevelState; level: number }) {
         <dd>{s.carryWeight}</dd>
         <dt>Skill points carried over</dt>
         <dd>{level === 1 ? "0" : s.skillPointsBanked}</dd>
-        {perkLeft > 0 && (
-          <>
-            <dt>Perk points left</dt>
-            <dd>{perkLeft}</dd>
-          </>
-        )}
-        {destinyLeft > 0 && (
-          <>
-            <dt>Destiny points left</dt>
-            <dd>{destinyLeft}</dd>
-          </>
-        )}
+        <dt>Perk points left</dt>
+        <dd>{perkLeft}</dd>
+        {/* Destiny's own points, in its gold, next to the perk points (WO-27). */}
+        <dt className={styles.destinyText}>Destiny points left</dt>
+        <dd className={styles.destinyText}>{destinyLeft}</dd>
       </dl>
     </section>
   );
@@ -688,19 +710,30 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
         )}
         {/* Perks: ember, and each a button that selects it in the Perks section. */}
         {perkList.map((p, i) => {
-          const body = (
+          // Destiny's chip is gold, with the diamond (WO-27); perks stay ember.
+          const destiny = p.tree === "Destiny";
+          const body = destiny ? (
+            <span className={styles.sumDestinyBody}>
+              <i className={styles.destinyMark} aria-hidden="true" />
+              {p.name}
+            </span>
+          ) : (
             <IconLabel icon={<SkillIcon name={p.tree} />}>
               {p.name}
               {p.rank ? ` ${p.rank}` : ""}
             </IconLabel>
           );
+          const cls = `${styles.sumChip} ${destiny ? styles.sumDestiny : styles.sumPerk} ${styles.sumKeep}`;
           return plain ? (
-            <span key={`${p.id}-${i}`} className={`${styles.sumChip} ${styles.sumPerk} ${styles.sumKeep}`}>
+            <span key={`${p.id}-${i}`} className={cls}>
               {body}
             </span>
           ) : (
-            <Tooltip key={`${p.id}-${i}`} content={`Perk: ${p.name}${p.rank ? ` ${p.rank}` : ""}${p.tree !== p.name ? ` (${p.tree}${p.book ? ", book" : ""})` : ""}`}>
-              <button type="button" className={`${styles.sumChip} ${styles.sumPerk} ${styles.sumKeep}`} onClick={() => onPerk(p.id)}>
+            <Tooltip
+              key={`${p.id}-${i}`}
+              content={destiny ? `Destiny: ${p.name}` : `Perk: ${p.name}${p.rank ? ` ${p.rank}` : ""}${p.tree !== p.name ? ` (${p.tree}${p.book ? ", book" : ""})` : ""}`}
+            >
+              <button type="button" className={cls} onClick={() => onPerk(p.id)}>
                 {body}
               </button>
             </Tooltip>
@@ -790,20 +823,26 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
         <span className="muted">{p.tree !== p.name ? `(${p.tree}${p.book ? ", book" : ""})` : p.book ? "(book)" : ""}</span>
       </span>
     )),
-    ...changes.destiny.map((p) => (
-      <span key={p.id}>
-        <button type="button" className={styles.perkLink} onClick={() => onPerk(p.id)}>
-          {p.name}
-        </button>
-        {p.name !== "Destiny" && <span className="muted"> (Destiny)</span>}
-      </span>
-    )),
   ];
   if (perkLines.length)
     rows.push([
       perkLines.length > 1 ? "Perks" : "Perk",
       <span key="p" className={styles.stack}>
         {perkLines}
+      </span>,
+    ]);
+  // Destiny: its own row after the perks, in its own colour (WO-27).
+  if (changes.destiny.length)
+    rows.push([
+      "Destiny",
+      <span key="d" className={styles.stack}>
+        {changes.destiny.map((p) => (
+          <span key={p.id}>
+            <button type="button" className={`${styles.perkLink} ${styles.destinyLink}`} onClick={() => onPerk(p.id)}>
+              {p.name}
+            </button>
+          </span>
+        ))}
       </span>,
     ]);
 
@@ -861,6 +900,11 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
                       {k}
                     </span>
                   </Tooltip>
+                ) : k === "Destiny" ? (
+                  <span className={`${styles.changeKey} ${styles.destinyKey}`}>
+                    <i className={styles.destinyMark} aria-hidden="true" />
+                    {k}
+                  </span>
                 ) : (
                   <span className={styles.changeKey}>{k}</span>
                 )}

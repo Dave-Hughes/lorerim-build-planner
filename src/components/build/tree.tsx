@@ -82,7 +82,7 @@ function rankRing(st: PerkStatus, sizePx: number): string {
   for (let i = 0; i < n; i++) {
     const a = (i * 360) / n;
     const b = ((i + 1) * 360) / n;
-    const c = i < st.ranksTaken ? "var(--ember)" : "#2f3a4a";
+    const c = i < st.ranksTaken ? "var(--perk)" : "#2f3a4a";
     stops.push(`transparent ${a}deg ${a + gap / 2}deg`, `${c} ${a + gap / 2}deg ${b - gap / 2}deg`, `transparent ${b - gap / 2}deg ${b}deg`);
   }
   return `conic-gradient(${stops.join(", ")})`;
@@ -532,7 +532,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   const bigger = W > w0 + 1 || H > h0 + 1;
 
   return (
-    <div className={styles.box} ref={setWrap}>
+    <div className={`${styles.box} ${tree === "Destiny" ? styles.destinyTree : ""}`} ref={setWrap} data-tree={tree}>
       <div className={styles.toolbar}>
         {/* On phones the tabs carry the switch, at the end of their row. */}
         {!noToggle && <ViewToggle view={view} onView={setView} className={onView ? styles.segWide : undefined} />}

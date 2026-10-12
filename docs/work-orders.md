@@ -1026,11 +1026,11 @@ Dave: Destiny feels invisible because it lives among the perks. In the game it i
 7. **The level bars:** the gold diamonds are already there. Make the diamond 2 px bigger on the ruler and in the row, so a Destiny level reads at a glance.
 
 ### Done when
-- [ ] e2e: in the editor, the Destiny button shows `1 left` at level 5 of a fresh Konahrik build, and taking a Destiny perk sets it to `0 left`.
-- [ ] e2e: Azrem's level 5 card has a `Destiny` row reading `Constitution`, and the shared page has a `Destiny at level 5` section.
-- [ ] Contrast check: the gold text on panel and page backgrounds passes 4.5:1 (numbers in the commit).
-- [ ] Screenshots for Dave: the editor with the Destiny tree open at 1512 × 806; the shared page's level card and Destiny section at 1440; both at 390.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: in the editor, the Destiny button shows `1 left` at level 5 of a fresh Konahrik build, and taking a Destiny perk sets it to `0 left`.
+- [x] e2e: Azrem's level 5 card has a `Destiny` row reading `Constitution`, and the shared page has a `Destiny at level 5` section.
+- [x] Contrast check: the gold text on panel and page backgrounds passes 4.5:1 (numbers in the commit).
+- [x] Screenshots for Dave: the editor with the Destiny tree open at 1512 × 806; the shared page's level card and Destiny section at 1440; both at 390.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

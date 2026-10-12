@@ -25,18 +25,8 @@ export default async function GuideEditPage({ params }: { params: Params }) {
   return (
     <>
       <SiteHeader />
-      <GameDataProvider
-        version={build.gameVersion}
-        serverVersion={clientVersion(build.gameVersion)}
-      >
-        <GuidePage
-          buildId={id}
-          name={build.name}
-          visibility={build.visibility}
-          plan={build.plan}
-          initial={guide.overview?.doc ?? emptyDoc()}
-          intro={guide.intro?.doc ?? emptyDoc()}
-        />
+      <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
+        <GuidePage buildId={id} name={build.name} visibility={build.visibility} plan={build.plan} initial={guide.overview?.doc ?? emptyDoc()} intro={guide.intro?.doc ?? emptyDoc()} />
       </GameDataProvider>
     </>
   );

@@ -33,6 +33,8 @@ export const TEST_BUILD_ID = "e2eqq2e2eq";
 export const SCRATCH_BUILD_ID = "e2eqq2e2e5";
 /** A copy of the sample with no gear, for setting gear level by level. */
 export const GEAR_BUILD_ID = "e2egearnew";
+/** The sample with level 5's Destiny point unspent (Konahrik), for the editor's Destiny control. */
+export const DESTINY_BUILD_ID = "e2edstnyaa";
 export const OTHER_USER_ID = "e2e-user-0002";
 export const OTHER_BUILD_ID = "e2eqq2e2e2";
 /** Made for the test-only older version (src/lib/rules/__fixtures__/test-version.ts). */
@@ -90,6 +92,15 @@ export async function seed() {
         visibility: "unlisted",
         gameVersion: "5.0.4.8",
         plan: { ...samplePlan(), gear: [] },
+      },
+      {
+        id: DESTINY_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        name: "Destiny Shield-Wall",
+        description: "Level 5's Destiny point unspent.",
+        visibility: "private",
+        gameVersion: "5.0.4.8",
+        plan: { ...samplePlan(), mode: "Konahrik" as const, levels: samplePlan().levels.map((lv, i) => (i === 4 ? { ...lv, destiny: [] } : lv)) },
       },
       {
         id: AZREM_BUILD_ID,

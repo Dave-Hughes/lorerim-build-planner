@@ -49,12 +49,14 @@ test.describe("tree tabs on a phone", () => {
     await page.goto("/b/sample?level=6");
     await page.getByRole("button", { name: "Tree", exact: true }).tap();
     const tabs = page.getByRole("tablist", { name: "Perk trees" });
-    await tabs.getByRole("tab", { name: /^Destiny/ }).click();
+    // The last chip (Destiny has its own section now, WO-27).
+    const last = tabs.getByRole("tab").last();
+    await last.click();
     const boxes = await tabs.getByRole("tab").evaluateAll((els) => els.map((e) => e.getBoundingClientRect().top));
     expect(new Set(boxes.map(Math.round)).size).toBe(1);
     const row = (await tabs.boundingBox())!;
     expect(row.height).toBeLessThan(60);
-    const chosen = (await tabs.getByRole("tab", { name: /^Destiny/ }).boundingBox())!;
+    const chosen = (await last.boundingBox())!;
     expect(chosen.x).toBeGreaterThanOrEqual(row.x - 1);
     expect(chosen.x + chosen.width).toBeLessThanOrEqual(row.x + row.width + 1);
     // The Tree / List switch sits beside the section's heading, above the row.

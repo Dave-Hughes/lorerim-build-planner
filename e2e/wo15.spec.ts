@@ -38,8 +38,8 @@ test.describe("level notes are never lost", () => {
 
 test("the two Destiny stars called Endurance have different names", async ({ page }) => {
   await page.goto("/b/sample?level=6");
-  const trees = page.getByRole("region", { name: "Perks at level 6" });
-  await trees.getByRole("tab", { name: /^Destiny/ }).click();
+  // Destiny's own section (WO-27).
+  const trees = page.getByRole("region", { name: "Destiny at level 6" });
   await expect(trees.getByRole("button", { name: /^Endurance \(to Thief\),/ })).toHaveCount(1);
   await expect(trees.getByRole("button", { name: /^Endurance \(to Smash\),/ })).toHaveCount(1);
   await expect(trees.getByRole("button", { name: /^Endurance,/ })).toHaveCount(0);

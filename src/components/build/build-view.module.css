@@ -1205,3 +1205,60 @@
   font-style: normal;
   font-size: 15px;
 }
+
+/* ---------- Destiny, its own thing (WO-27): gold, with the diamond ---------- */
+.destinyMark {
+  display: inline-block;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  background: var(--destiny);
+}
+.destinyText {
+  color: var(--destiny-text) !important;
+}
+.destinyKey {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--destiny-text);
+}
+.destinyLink {
+  color: var(--destiny-text);
+  text-decoration-color: var(--destiny);
+}
+.destinyLink:hover {
+  color: #fff;
+}
+.sumDestiny {
+  cursor: pointer;
+  color: var(--destiny-text);
+  border-color: var(--destiny);
+  background: var(--destiny-wash);
+}
+.sumDestiny:hover {
+  background: rgba(185, 161, 115, 0.2);
+  color: #fff;
+}
+.sumDestinyBody {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.destinyLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--destiny-text);
+}
+.destinyBox {
+  border-color: var(--destiny);
+}
+.destinyBox::before,
+.destinyBox::after {
+  border-color: var(--destiny-text);
+}
+.heldDestiny .perkNow {
+  color: var(--destiny-text) !important;
+}

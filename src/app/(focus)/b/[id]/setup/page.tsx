@@ -22,10 +22,7 @@ export default async function SetupPage({ params }: { params: Params }) {
   return (
     <>
       <SiteHeader />
-      <GameDataProvider
-        version={build.gameVersion}
-        serverVersion={clientVersion(build.gameVersion)}
-      >
+      <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
         <Wizard
           mode="edit"
           buildId={id}
@@ -40,12 +37,7 @@ export default async function SetupPage({ params }: { params: Params }) {
             tags: build.tags.length ? build.tags : null,
           }}
           signedIn
-          signIn={
-            <SignInButton
-              redirectTo={`/b/${id}/setup`}
-              className="btn btn-primary"
-            />
-          }
+          signIn={<SignInButton redirectTo={`/b/${id}/setup`} className="btn btn-primary" />}
         />
       </GameDataProvider>
     </>
