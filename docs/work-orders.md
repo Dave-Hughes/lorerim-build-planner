@@ -1650,12 +1650,12 @@ The frames are already drawn: `public/icons/logo-0.svg` to `logo-3.svg`, from `l
 - the favicon becomes `logo-0`.
 
 ### Done when
-- [ ] e2e: open the account menu, the Tags filter and `Other trees`; a click outside each closes it, and Esc closes it and returns focus.
-- [ ] Screenshots of the footer at 1440 and 390 on the home page and a build page. The Discord link opens `https://discord.gg/bungalo`.
-- [ ] Unit test: `tips.json` has the 14 tips above, word for word.
-- [ ] Screenshots of the drop cap with `I`, `W` and `A`, in Ember and Parchment.
-- [ ] A short GIF of a card's hover, and of the logo's glint.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: open the account menu, the Tags filter and `Other trees`; a click outside each closes it, and Esc closes it and returns focus.
+- [x] Screenshots of the footer at 1440 and 390 on the home page and a build page. The Discord link opens `https://discord.gg/bungalo`.
+- [x] Unit test: `tips.json` has the 14 tips above, word for word.
+- [x] Screenshots of the drop cap with `I`, `W` and `A`, in Ember and Parchment.
+- [x] A short GIF of a card's hover, and of the logo's glint.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

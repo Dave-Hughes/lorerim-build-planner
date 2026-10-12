@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
+import { useDismiss } from "@/lib/use-dismiss";
 import { Avatar } from "@/components/ui/avatar";
 import styles from "./site-header.module.css";
 
@@ -27,14 +28,7 @@ export function AccountMenu({ name, image, handle, signOut }: { name: string; im
     if (refocus) button.current?.focus();
   };
 
-  useEffect(() => {
-    if (!open) return;
-    const onDown = (e: PointerEvent) => {
-      if (!wrap.current?.contains(e.target as Node)) setOpen(false);
-    };
-    window.addEventListener("pointerdown", onDown);
-    return () => window.removeEventListener("pointerdown", onDown);
-  }, [open]);
+  useDismiss({ open, onClose: () => setOpen(false), inside: [wrap], trigger: button });
 
   const onMenuKey = (e: React.KeyboardEvent) => {
     const i = items.current.findIndex((el) => el === document.activeElement);

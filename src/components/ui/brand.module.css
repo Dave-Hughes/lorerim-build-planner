@@ -17,10 +17,6 @@
   text-transform: uppercase;
   white-space: nowrap;
 }
-.brand svg {
-  color: var(--ember);
-  flex: none;
-}
 .brand:hover {
   color: var(--text);
 }

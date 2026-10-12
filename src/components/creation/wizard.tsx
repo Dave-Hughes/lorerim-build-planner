@@ -20,6 +20,7 @@ import { computeBuild } from "@/lib/rules/engine";
 import type { BuildPlan } from "@/lib/rules/types";
 import { ThemePicker } from "./theme-picker";
 import { themeOf } from "@/lib/themes";
+import { useDismiss } from "@/lib/use-dismiss";
 import styles from "./wizard.module.css";
 
 interface WizardProps {
@@ -344,6 +345,9 @@ function VersionBand({ plan, update, mode, buildId }: StepProps & { mode: "creat
     setOpen(false);
     update((p) => convertPlan(to, p).plan);
   };
+  const band = useRef<HTMLElement>(null);
+  const bandButton = useRef<HTMLButtonElement>(null);
+  useDismiss({ open, onClose: () => setOpen(false), inside: [band], trigger: bandButton });
   const copyFor = (id: string) =>
     startCopy(async () => {
       if (!buildId) return;
@@ -354,13 +358,13 @@ function VersionBand({ plan, update, mode, buildId }: StepProps & { mode: "creat
       router.push(`/b/${r.value.id}/edit?${q}`);
     });
   return (
-    <section aria-label="LoreRim version" className={`frame ${styles.band}`}>
+    <section ref={band} aria-label="LoreRim version" className={`frame ${styles.band}`}>
       <div className={styles.bandRow}>
         <span className={styles.bandText}>
           Building for LoreRim <span className={styles.bandVersion}>{d.version.id}</span>
           {d.version.current && <span className={`tag ${styles.bandTag}`}>Latest</span>}
         </span>
-        <button type="button" className={`btn btn-sm ${styles.bandChange}`} aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+        <button ref={bandButton} type="button" className={`btn btn-sm ${styles.bandChange}`} aria-expanded={open} onClick={() => setOpen((o) => !o)}>
           Change
         </button>
       </div>

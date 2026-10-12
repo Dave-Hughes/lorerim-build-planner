@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
 import { useGameData } from "@/components/game-data";
 import { Tooltip } from "@/components/ui/tooltip";
 import { IconLabel, RaceIcon, SignIcon, ModeIcon, DeityIcon } from "@/components/ui/skill-icon";
 import { traitWithChoice } from "@/lib/rules/trait-choices";
 import type { BuildPlan } from "@/lib/rules/types";
+import { useDismiss } from "@/lib/use-dismiss";
 import styles from "./about-bar.module.css";
 
 const plain = (s: string) => s.replace(/<([^<>]*)>/g, "$1");
@@ -162,32 +163,21 @@ function StartValue({ plan }: { plan: BuildPlan }) {
   const [pinned, setPinned] = useState(false);
   const wrap = useRef<HTMLSpanElement>(null);
   const open = hover || pinned;
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setHover(false);
-        setPinned(false);
-      }
-    };
-    const onDown = (e: PointerEvent) => {
-      if (!wrap.current?.contains(e.target as Node)) {
-        setHover(false);
-        setPinned(false);
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    window.addEventListener("pointerdown", onDown);
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      window.removeEventListener("pointerdown", onDown);
-    };
-  }, [open]);
+  const button = useRef<HTMLButtonElement>(null);
+  useDismiss({
+    open,
+    onClose: () => {
+      setHover(false);
+      setPinned(false);
+    },
+    inside: [wrap],
+    trigger: button,
+  });
   if (!start) return <>{plan.start || "Not chosen yet"}</>;
   const option = plan.startOption && plan.startOption !== "Random" ? plan.startOption : null;
   return (
     <span ref={wrap} className={styles.startWrap} onPointerEnter={(e) => e.pointerType === "mouse" && setHover(true)} onPointerLeave={(e) => e.pointerType === "mouse" && setHover(false)}>
-      <button type="button" className={styles.startButton} aria-expanded={open} aria-controls={id} aria-haspopup="dialog" onClick={() => setPinned((p) => !p)}>
+      <button ref={button} type="button" className={styles.startButton} aria-expanded={open} aria-controls={id} aria-haspopup="dialog" onClick={() => setPinned((p) => !p)}>
         <span className={styles.startName}>{start.name}</span>
         {option && <span className={styles.startOption}> · {option}</span>}
       </button>

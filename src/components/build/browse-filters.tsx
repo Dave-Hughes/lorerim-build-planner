@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { TAGS, TAG_GROUPS, TAG_BY_SLUG } from "@/lib/builds/tags";
 import { browseHref, type BrowseState } from "@/lib/builds/browse";
+import { useDismiss } from "@/lib/use-dismiss";
 import styles from "./browse-filters.module.css";
 
 /**
@@ -27,6 +28,9 @@ export function BrowseFilters({ state, versions, defaultVersion, races, empty }:
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q]);
   const toggleTag = (slug: string) => go({ tags: state.tags.includes(slug) ? state.tags.filter((t) => t !== slug) : [...state.tags, slug] });
+  const tagsWrap = useRef<HTMLDivElement>(null);
+  const tagsButton = useRef<HTMLButtonElement>(null);
+  useDismiss({ open: tagsOpen, onClose: () => setTagsOpen(false), inside: [tagsWrap], trigger: tagsButton });
   const filtered = !!(state.q || state.tags.length || state.race);
   const clear = () => {
     typed.current = false;
@@ -49,11 +53,11 @@ export function BrowseFilters({ state, versions, defaultVersion, races, empty }:
             }}
           />
         </label>
-        <div className={`field ${styles.tags}`}>
+        <div ref={tagsWrap} className={`field ${styles.tags}`}>
           <span className="label" id="browse-tags-label">
             Tags
           </span>
-          <button type="button" className={`select ${styles.tagsButton}`} aria-expanded={tagsOpen} aria-labelledby="browse-tags-label browse-tags-value" onClick={() => setTagsOpen((o) => !o)}>
+          <button ref={tagsButton} type="button" className={`select ${styles.tagsButton}`} aria-expanded={tagsOpen} aria-labelledby="browse-tags-label browse-tags-value" onClick={() => setTagsOpen((o) => !o)}>
             <span id="browse-tags-value">{state.tags.length ? state.tags.map((t) => TAG_BY_SLUG.get(t)?.name ?? t).join(", ") : "Any"}</span>
           </button>
           {tagsOpen && (

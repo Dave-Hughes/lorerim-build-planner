@@ -13,7 +13,8 @@ export function BuildCard({ build, mine, likedAt }: { build: BuildSummary; mine?
   return (
     <article className={styles.card}>
       {/* The whole card opens the build: the name's link stretches over it (see .name a::after). */}
-      <div className={`${styles.band} ${build.coverImageUrl ? "" : styles.bandPlain}`} style={build.coverImageUrl ? { backgroundImage: `url("${build.coverImageUrl}")` } : undefined} aria-hidden="true">
+      <div className={`${styles.band} ${build.coverImageUrl ? "" : styles.bandPlain}`} aria-hidden="true">
+        {build.coverImageUrl && <span className={styles.bandImage} style={{ backgroundImage: `url("${build.coverImageUrl}")` }} />}
         <span className={styles.bandFade} />
       </div>
       <div className={styles.body}>

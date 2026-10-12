@@ -37,6 +37,7 @@ import { BottomSheet, PerkDetails, Tree, ViewToggle, type TreeView } from "./tre
 import styles from "./build-view.module.css";
 import { pageZoom } from "@/lib/zoom";
 import { themeOf, themeStyle } from "@/lib/themes";
+import { useDismiss } from "@/lib/use-dismiss";
 
 export type BuildViewData = Omit<BuildRecord, "createdAt" | "updatedAt"> & { updatedAt: string };
 
@@ -494,6 +495,9 @@ function LevelsTab({
 /** One chip per skill tree the build holds perks in; the rest in a menu. Destiny has its own section. */
 function PerkChips({ d, perks, s, active, onChange }: { d: GameData; perks: PerkListGroup[]; s: LevelState; active: string; onChange: (tree: string) => void }) {
   const [open, setOpen] = useState(false);
+  const othersWrap = useRef<HTMLSpanElement>(null);
+  const othersButton = useRef<HTMLButtonElement>(null);
+  useDismiss({ open, onClose: () => setOpen(false), inside: [othersWrap], trigger: othersButton });
   const shown = perks.map((g) => g.tree).filter((t) => t !== "Destiny");
   if (!shown.includes(active)) shown.push(active);
   const others = d.skills.filter((t) => !shown.includes(t));
@@ -519,8 +523,8 @@ function PerkChips({ d, perks, s, active, onChange }: { d: GameData; perks: Perk
         })}
       </div>
       {others.length > 0 && (
-        <span className={styles.othersWrap}>
-          <button type="button" className={styles.others} aria-expanded={open} aria-haspopup="menu" onClick={() => setOpen((o) => !o)}>
+        <span ref={othersWrap} className={styles.othersWrap}>
+          <button ref={othersButton} type="button" className={styles.others} aria-expanded={open} aria-haspopup="menu" onClick={() => setOpen((o) => !o)}>
             Other trees ▾
           </button>
           {open && (
@@ -547,7 +551,6 @@ function PerkChips({ d, perks, s, active, onChange }: { d: GameData; perks: Perk
   );
 }
 
-/** The perks held by this level, grouped by tree; this level's in ember. Each opens its star. */
 /**
  * The perks held by this level, grouped by tree; this level's in ember. Each opens its star. With
  * `open` (beside the tree, WO-35) only the open tree is listed in full; the rest are one line each,

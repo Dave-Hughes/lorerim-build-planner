@@ -1,0 +1,13 @@
+.logo {
+  position: relative;
+  display: inline-block;
+  flex: none;
+}
+.logo img {
+  position: absolute;
+  inset: 0;
+  image-rendering: pixelated;
+}
+.off {
+  visibility: hidden;
+}
