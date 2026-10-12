@@ -1498,7 +1498,13 @@ Most players are on big gaming monitors.
 
   Wedding bands (slot 51) are rings. Body-physics objects and `$TNG_` records are junk to skip. Mods put the same kind of item on different slots, so sort by name as well as slot.
 
-  LoreRim's inventory mods label item types `Cloak`, `Backpack` (or `Back`), `Scarf`, `Accessory`, `Face` and `Belt`. Dave will confirm in game which slot names to use, and whether Backpack and the under-layer are slots of their own.
+  **Where the in-game "Type" comes from** (checked 11 Oct, late). The game has no gear slots, only each item's Type, and two mods set it at load time:
+  - Object Categorization Framework tags items with keywords through Keyword Item Distributor ini files, e.g. `OCF_BodyTypeScarf`, `OCF_AccessoryBag_Backpack`.
+  - Inventory Injector rules turn those keywords, plus body slots, into the Type label. LoreRim's main rule file is Aura's Inventory Tweaks' `AIT.json`; there are 142 rule files in all.
+
+  So the full list of Types is in the files: `AIT_english.txt` has Cloak, Backpack, Scarf, Accessory, Face, Belt, Mantle, Pauldron and more.
+
+  Working out each item's Type means doing what Keyword Item Distributor does, since the keywords aren't in the plugins. A first pass that read only the plugins gave wrong answers (robes as Cloak, no scarves). The planner's slots should be a short list picked from these Types; Dave picks which in game.
 - **Repeat last level** (from the three builds): a button that spends this level's skill points like the last one, as far as the rules allow. Most of levels 10 to 20 were the same spread.
 - **Perk wishlist:** list the perks you want in order and let the planner place each at the first level it can be taken.
 - **Destiny target:** pick the Destiny star you're heading for and light the path to it.
