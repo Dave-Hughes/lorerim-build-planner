@@ -1420,11 +1420,85 @@ Dave approved the deity contact sheet (chat, 11 Oct). This is the set WO-30 left
 
 ---
 
+## WO-35  Big monitors and tall pages (11 Oct 2026)
+
+Dave approved the canvas row **"Proposal: big monitors and tall pages"** (`WideRail.dc.html`, Iriel at level 30 on a 2560 screen). Build to match. Do after WO-34.
+
+**What's wrong now.** The chat session screenshotted Iriel at 2560×1440 and 3440×1440. Above 1600 the page only gets wider (`--page-max` 2080, then 2560), and everything in it stays laptop-sized:
+- the intro runs about 200 characters a line at 2560 and 260 on an ultrawide;
+- the level card is mostly empty space;
+- the perk tree box is about one and a half screens tall.
+
+Most players are on big gaming monitors.
+
+### 1. Scale the page, don't stretch it
+- From 1920 wide, the whole page scales up: text, icons, controls, trees and cards, all in proportion. It lays out as it does at 1600 and is drawn larger.
+- Steps:
+
+  | Window width | Scale |
+  |---|---|
+  | 1920 | 1.125 |
+  | 2240 | 1.25 |
+  | 2560 and up | 1.5 |
+  | 3600 and up, and at least 1900 tall (a 4K screen at 100%) | 2 |
+
+- Replace the `--page-max` steps above 1600 with this. CSS `zoom` on the page root is the expected way. Root-size scaling is fine if it gives the same result without touching every px value.
+- Everything that measures the pointer must still work under the scale:
+  - perk tree pan, zoom and clicks;
+  - the pinned bar's appearing point;
+  - tooltips, the Start popover and @-mention hover text, placed next to what they belong to;
+  - the gear timeline's links.
+- The player's own browser zoom (Ctrl + / −) still works on top of this.
+- Phones and laptops are unchanged.
+
+### 2. A contents rail on wide screens
+- When the page has room (a layout width of at least 1600 after scaling), a contents rail sits on the left of the build page. It takes about 220 px plus a gap from the page width, so the main column stays about as wide as at 1440. It is a `nav` labelled `On this page`.
+- **On the Levels tab**, the rail lists:
+  - `Level N`;
+  - `Attributes and skills`;
+  - `Perks`, with the number taken, and under it each tree the build holds perks in, with its count;
+  - `Destiny`, with its count, only when the build takes Destiny perks;
+  - `Gear`, with the number of slots held, only when the build has gear;
+  - `Guide`, which switches tabs.
+- **On the Guide tab**, it lists the guide's headings instead, and `Levels`.
+- **Behaviour:**
+  - Clicking an entry scrolls to its section, below the pinned bar.
+  - A tree entry also opens that tree; `Destiny` also unfolds the Destiny section.
+  - The section in view is marked, in ember with a bar, and has `aria-current`.
+  - The rail sticks below the pinned bar as the page scrolls.
+- Narrower than that, there's no rail, and nothing else changes.
+
+### 3. The taken list follows the open tree
+- Beside the perk tree, `Taken by level N` shows only the open tree's perks in full.
+- Every other tree the build holds perks in is one line, its name and count with `▸`. Clicking the line opens that tree, the same as its chip.
+- The header keeps the total, e.g. `Taken by level 30 · 33`.
+- The Destiny section's list and the phone list view stay as they are.
+
+### Done when
+- [ ] Screenshots of Iriel at level 30 at 1440, 1920, 2560×1440 and 3440×1440. At 2560 it matches the artboard. At 1440 it looks as it does today, with no rail.
+- [ ] e2e at 2560: the rail is shown. Clicking `Gear` scrolls to `Gear at level 30` and marks `Gear` current. Clicking `Sneak` under Perks opens the Sneak tree.
+- [ ] e2e at 2560: dragging the perk tree pans it by the distance dragged, and clicking a star opens that star's details.
+- [ ] e2e: clicking `Marksman 11 ▸` in the taken list opens the Marksman tree, and its perks are listed in full.
+- [ ] All checks in CLAUDE.md pass, and the screenshots are checked in Chrome and Firefox. Safari is Dave's.
+
+---
+
 ## Parked (not ordered yet)
 
 - **Set up loses changes silently (found 11 Oct).** Changes on a Set up step are kept only until `Save changes` on the Name step. Reloading, or leaving through the edit bar (`Levels`, `Guide`), drops them with no warning: a Focused Combat choice was lost this way. Either save each step as it changes, like the editor does, or warn before leaving with unsaved changes.
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
+- **More gear slots (waiting on Dave's in-game check, 12 Oct).** The chat session read LoreRim's game files, and 451 wearable pieces use body slots the planner doesn't know. The item index drops them all today. They sort into these groups:
+  - cloaks and capes: about 270 pieces, on slots 40, 45, 46 and 57;
+  - backpacks and bags: 67, on slot 47;
+  - scarves, collars and sashes: on slots 45 and 46;
+  - masks and eyewear: on slots 43 and 44;
+  - padding, mail and plates under-layers: 27, on slot 56;
+  - small extras: armlets, bracelets, beacons and flasks.
+
+  Wedding bands (slot 51) are rings. Body-physics objects and `$TNG_` records are junk to skip. Mods put the same kind of item on different slots, so sort by name as well as slot.
+
+  LoreRim's inventory mods label item types `Cloak`, `Backpack` (or `Back`), `Scarf`, `Accessory`, `Face` and `Belt`. Dave will confirm in game which slot names to use, and whether Backpack and the under-layer are slots of their own.
 - **Repeat last level** (from the three builds): a button that spends this level's skill points like the last one, as far as the rules allow. Most of levels 10 to 20 were the same spread.
 - **Perk wishlist:** list the perks you want in order and let the planner place each at the first level it can be taken.
 - **Destiny target:** pick the Destiny star you're heading for and light the path to it.
