@@ -786,6 +786,24 @@ def note():
 
 # ---------------------------------------------------------------- gear slots
 
+def power():
+    # An active ability: an open hand with magicka in the palm
+    i = Icon()
+    i.rect(3, 3, 4, 9, "F"); i.rect(6, 2, 7, 9, "F"); i.rect(9, 3, 10, 9, "f"); i.rect(12, 5, 13, 9, "f")
+    i.rect(5, 4, 5, 8, "F"); i.rect(8, 3, 8, 8, "f"); i.rect(11, 4, 11, 8, "f")
+    for x, y0 in ((5, 3), (8, 2), (11, 3)):
+        i.line(x, y0, x, 7, "v")                            # gaps between the fingers
+    i.rect(3, 8, 13, 12, "F")                               # palm
+    i.recolor({"F"}, "f", lambda x, y: x >= 9)
+    i.recolor({"f"}, "v", lambda x, y: x >= 12 and y >= 10)
+    i.px(1, 7, "F"); i.px(2, 8, "F"); i.px(1, 8, "F"); i.px(2, 9, "F"); i.px(2, 10, "F")   # thumb
+    i.rect(5, 13, 11, 14, "f"); i.rect(10, 13, 11, 14, "v")                             # wrist
+    i.disc(8, 10, 2.7, "m"); i.disc(7.6, 9.6, 1.3, "c"); i.px(7, 9, "W"); i.px(9, 11, "M"); i.px(10, 10, "M"); i.px(8, 12, "M")
+    for x, y in ((1, 3), (14, 2), (15, 6), (0, 11)):
+        i.px(x, y, "z")                                     # sparks
+    return i.outline()
+
+
 def slot_main_hand():
     i = Icon()
     i.line(2, 14, 8, 8, "b"); i.line(3, 14, 9, 8, "B")             # haft
@@ -1822,7 +1840,7 @@ RACES = {
     "Orsimer": race_orsimer, "Redguard": race_redguard,
 }
 
-MARKS = {"Trainer": trainer, "Skill book": skill_book, "Banked": banked, "Perk points": perk_point, "Note": note}
+MARKS = {"Trainer": trainer, "Skill book": skill_book, "Banked": banked, "Perk points": perk_point, "Note": note, "Power": power, "Shout": tag_shouts}
 SLOTS = {
     "Main hand": slot_main_hand, "Off hand": slot_off_hand, "Head": slot_head, "Body": slot_body,
     "Hands": slot_hands, "Feet": slot_feet, "Ring": slot_ring, "Amulet": slot_amulet, "Ammo": slot_ammo,

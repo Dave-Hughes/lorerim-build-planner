@@ -2028,6 +2028,102 @@ Left and right already step through levels on the Levels tab. Players don't know
 
 ---
 
+## WO-50  Gear is the timeline; a bar opens its card (12 Oct 2026)
+
+Dave, 12 Oct: the gear section is too much. The slot cards stacked over the timeline repeat it, and the section grows with every row. The timeline stays; the cards go, and each one comes back when you click its bar. Layout follows the design canvas's **"Leaner: gear as the timeline…"** artboard (`GearSpellsLean.dc.html`, part 1). Do after WO-49.
+
+1. **Remove the slot cards** from `Gear at level N` (`gear-view.tsx`). The section is the WO-48 title, then the timeline box.
+2. **The timeline shows the viewed level:**
+   - a faint ember column runs down every row at the viewed level, with the level number in the tick row in ember and bold (it's already drawn; keep it);
+   - a bar held at the viewed level is lit (raised panel, text colour); a bar that starts at the viewed level is ember (`barNew`); every other bar stays muted. Today's three states, kept.
+3. **Click a bar to open its card,** as a popover under the bar, right-aligned to it when it would run off the edge:
+   - the item's name and slot;
+   - its stats line from the item index (none for free text);
+   - the game's text for the item, when it has one, in italic;
+   - the author's note (WO-47);
+   - for a made item, the base item and the spell or enchantments (WO-45);
+   - a last row: `Levels 34 to 57, replaces College Robes` on the left, `Go to level 34` on the right (ember). That link sets the level, as clicking a bar does today.
+4. **Closing:** the card closes on Esc, on a click outside it (WO-38's rule), on clicking the same bar again, or on opening another bar's card. One card open at a time.
+5. **Keyboard:** bars are buttons, Tab reaches them, Enter or Space opens the card, and focus moves into it; Esc returns focus to the bar.
+6. **At 390:** the timeline scrolls sideways inside its box as it does now, and the card opens full width under the row.
+7. **The level card's `New gear` row** is unchanged; it's still the place to read what's new at a level.
+
+### Done when
+- [ ] e2e: on Pure Mage at level 34, the gear section has no slot cards; clicking `Arch-Mage Robes` opens its card with `Clothing, 1 weight`, the note `Finish the College questline.` and `Go to level 34`; Esc closes it; clicking `Go to level 32` on Morokei's card moves to level 32.
+- [ ] Screenshots at 1440 and 390: level 34 with the Arch-Mage Robes card open; compare with the artboard.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-51  Abilities and shouts: the game data, and in builds (12 Oct 2026)
+
+Dave, 12 Oct: builds need active abilities (powers and lesser powers, from any source) and shouts, not only spells. His Spartan leans on War Cry, from the Speech perk of that name. Icons are done: `public/icons/mark-power.svg` (an open hand with magicka in the palm) and `mark-shout.svg` (the Shouts tag's dragon head). Do after WO-50.
+
+### What the chat session already read (12 Oct, Dave's PC, read only)
+- **`scripts/gamedata/powers.py`** (new) writes **`gamedata/5.0.4.8/powers_raw.json`**, committed:
+  - **378 abilities:** every named, playable SPEL of type Power (79) or Lesser power (299), with the game's text from its first effect, tokens filled.
+  - **46 links from perks:** a perk whose "Ability" entry grants one of them. `War Cry` (Speech) grants War Cry; `Artificer's Insight` grants Artificer's Insight.
+  - **32 shouts:** SHOU records with three translated words, minus enemy shouts (generic undead words, dragon, boss and NPC EDIDs).
+- **`scripts/gamedata/bsa.py`** (new) reads the base game's English string tables out of `Skyrim - Interface.bsa`. Without it every Skyrim.esm name was blank, which is why the first pass found almost no vanilla shouts.
+
+### Build it
+1. **`build.py` writes `src/data/lorerim-5.0.4.8/powers.json`:**
+   - **`abilities`:** `id`, `name`, `kind` (`Power` / `Lesser power`) and `text`. Leave out junk with an `overrides.json` → `powers.skipNames` list: physics toggles, `Debug`, `Examine`, `Choose Birthsign`, `Katana Affinity Check`, `BowRapidSwitchPower`, `HKSSwitchPower`, `Cancel Morph`, `Call Remi`, `Dismiss …`, `Disassemble …`. Read the full list once and add anything else that is plainly a mod switch rather than an ability; say what you dropped in the commit.
+   - **`fromPerks`:** perk id (`Tree:Name` in `perks.json`, matched by name) → ability id. Drop links whose perk isn't in a tree.
+   - **`shouts`:** `id`, `name`, `words` (three), `translations` (three) and `text`. One entry per name: two Phantom Form records, keep the later one.
+   - **Shout words** are in the game's dragon font spelling, where digits stand for long vowels. Convert them for display: 1 aa, 2 ei, 3 ii, 4 ah, 5 uu, 6 ur, 7 ir, 8 oo, 9 ey. `Fus Ro D4` becomes `Fus Ro Dah`; `T3d Klo Ul` becomes `Tiid Klo Ul`.
+2. **The plan:**
+   - `LevelPlan.abilities?: { id: string; where?: string }[]`: abilities the author adds (racial, stone, god, quest);
+   - `LevelPlan.shouts?: { id: string; words: 1 | 2 | 3; where?: string }[]`: a shout row with how many words are known from that level. A later row for the same shout raises the count.
+3. **Rules:**
+   - **Abilities from perks are automatic:** a build has every ability in `fromPerks` whose perk it has taken, from that level. The author never adds those.
+   - **New problem `ability-repeat`:** an ability added that a perk already grants, or added twice.
+   - **New problem `shout-words`:** a shout's word count going down.
+4. **The editor:**
+   - **Abilities** and **Shouts** blocks sit next to Spells on each level, built the same way (search, `Where`, remove).
+   - A shout row also has a 1 / 2 / 3 words control.
+   - Abilities granted by a perk taken at that level show as a read-only line: `War Cry, from the War Cry perk`.
+
+### Done when
+- [ ] `python3 scripts/gamedata/build.py` writes `powers.json`, committed.
+- [ ] Unit tests:
+  - War Cry is a Lesser power, and `fromPerks` links it to `Speech:War Cry`;
+  - Unrelenting Force's words read `Fus Ro Dah`;
+  - no ability name matches the skip list;
+  - taking `Speech:War Cry` at level 12 gives the build War Cry from level 12;
+  - adding War Cry by hand raises `ability-repeat`;
+  - two Unrelenting Force rows (1 word at 5, 3 words at 20) give 3 words from 20.
+- [ ] e2e: add Slow Time (2 words, `Deepwood Redoubt`) at level 25 to a test build; it saves and reloads.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-52  Spells, abilities and shouts, leaner (12 Oct 2026)
+
+Dave, 12 Oct: the Spells section gets very tall on big builds. Layout follows the design canvas's **"Leaner…"** artboard (`GearSpellsLean.dc.html`, part 2). It replaces WO-42's section layout; WO-42's rules stay. Do after WO-51.
+
+1. **One section, `Spells and abilities at level N`** (WO-48 title style), in the contents rail as `Spells and abilities`.
+2. **Main spells** stay first, in a panel, two columns at desktop:
+   - each is one row with the school icon, the name in bold, the tier in muted text, and the first sentence of the game's text;
+   - the full text and `where` are in the tooltip.
+3. **Every other spell is a chip,** in one row per school, with the school's icon and name on the left. Schools follow the game's order; a school with no spells has no row.
+   - A chip shows the name and `Lv 12` in small muted text.
+   - Hover, focus or tap shows tier, cast type, `where` and the game's text.
+   - Chips for spells learned at the viewed level are blue-bordered (magicka).
+4. **Abilities:** a row below the schools, with `mark-power.svg`. Each chip shows the ability's name; the tooltip shows its kind, its text and where it comes from: `from the War Cry perk`, or the author's `where`.
+5. **Shouts:** a row with `mark-shout.svg`. Each chip reads like `Slow Time` with `2 of 3 words` in small muted text; the tooltip has the words with their meanings (`Tiid Klo Ul: Time, Sand, Eternity`), the game's text and `where`.
+6. **Order of rows:** schools, then Abilities, then Shouts, with a thin rule above Abilities. Rows only appear when they have something.
+7. **The level card** gets `New abilities` and `New shouts` rows after `New spells`, built the same way as `New spells` (chips with icons). An ability from a perk shows there at the perk's level.
+8. **At 390:** the school name sits above its chips; chips wrap.
+
+### Done when
+- [ ] Screenshots at 1440 and 390 of Pure Mage at level 32 (spells, Artificer's Insight from its perk) and of a test build with War Cry and Slow Time; compare with the artboard.
+- [ ] The section for Pure Mage at level 57 is at most half the height it was before this order (measure both in the e2e and log the numbers).
+- [ ] e2e: a chip's tooltip opens on focus and shows `where`.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**

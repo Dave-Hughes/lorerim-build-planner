@@ -1,0 +1,3811 @@
+{
+ "counts": {
+  "powers": 378,
+  "fromPerks": 46,
+  "shouts": 32
+ },
+ "powers": [
+  {
+   "id": "3BBB.esp:00080D",
+   "name": "3BBB Physics Toggle - NPC",
+   "edid": "3BSMPTOGGLE_A",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "3BBB.esp"
+  },
+  {
+   "id": "3BBB.esp:00084C",
+   "name": "3BBB Physics Toggle - NPC Multiple",
+   "edid": "3BSMPTOGGLE_Multiple",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "3BBB.esp"
+  },
+  {
+   "id": "3BBB.esp:000807",
+   "name": "3BBB Physics Toggle - Player",
+   "edid": "3BSMPTOGGLE_PowerSelf",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "3BBB.esp"
+  },
+  {
+   "id": "Forgotten City Music Fix.esp:000D64",
+   "name": "[Forgotten City Music Fixer]",
+   "edid": "aaa_ForgottenCityMusicFixerSpell",
+   "kind": "Lesser power",
+   "text": "Obsolete spell from an earlier version. The process is handled automatically now.",
+   "plugin": "Forgotten City Music Fix.esp"
+  },
+  {
+   "id": "Tools of Kagrenac.esp:1267AB",
+   "name": "Aetherial Cloak",
+   "edid": "TOK_SPEL_Chameleon_Spell_PC",
+   "kind": "Lesser power",
+   "text": "Toggle to grant unbreakable invisibility for 30 seconds, but drain 20 Stamina per second.",
+   "plugin": "Tools of Kagrenac.esp"
+  },
+  {
+   "id": "FGCGleamstrike-ESL-AAVersion.esp:000806",
+   "name": "Aetherium Bane",
+   "edid": "FGCGleamstrikeLVL2SpellCast",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Kofi - Combined Patch.esp"
+  },
+  {
+   "id": "FGCGleamstrike-ESL-AAVersion.esp:00081B",
+   "name": "Aetherius Vitality",
+   "edid": "FGCGleamstrikeLVL3SpellCast",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Kofi - Combined Patch.esp"
+  },
+  {
+   "id": "RunemasterMagic.esl:00085A",
+   "name": "Almighty Bolt",
+   "edid": "_RM_AlmightyBolt",
+   "kind": "Lesser power",
+   "text": "A powerful bolt of arcane energy that does 160 damage to health, Magicka, and Stamina.\r\n3 Arcane Runestone for a single use enchantment.",
+   "plugin": "RunemasterMagic.esl"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:03E17C",
+   "name": "Amplify Lethality",
+   "edid": "ORD_Alc_AmplifyLethality_Spell",
+   "kind": "Power",
+   "text": "Point at a victim to silently reduce their poison resistance by 250% for 10 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Aqua.esl:000818",
+   "name": "Apocryphal Gates",
+   "edid": "_AQ_ApocryphalGates_Power",
+   "kind": "Lesser power",
+   "text": "Creates Daedric Portals to teleport a long distance in front of you.",
+   "plugin": "Requiem - Abyssal Tides - Magic Redone Patch.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:184E58",
+   "name": "Apotheosis",
+   "edid": "ORD_Res_Apotheosis_Spell",
+   "kind": "Power",
+   "text": "Casts Warrior's Flame on all nearby for 20 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "WizardingTraversal.esl:00080B",
+   "name": "Apparition",
+   "edid": "_PU_Apparition",
+   "kind": "Lesser power",
+   "text": "Teleports to where the caster is looking.",
+   "plugin": "Requiem - Wizarding Traversal - Magic Redone Patch.esp"
+  },
+  {
+   "id": "WizardingTraversal.esl:000810",
+   "name": "Apparition Travel",
+   "edid": "_PU_FastTravelApparitionHolder",
+   "kind": "Lesser power",
+   "text": "Allows instantaneous Fast Travel. Cast the spell again to dispel this effect.",
+   "plugin": "WizardingTraversal.esl"
+  },
+  {
+   "id": "WizardingTraversal.esl:00080E",
+   "name": "Apparition Travel",
+   "edid": "_PU_FastTravelApparition",
+   "kind": "Lesser power",
+   "text": "Allows instantaneous Fast Travel. Cast the spell again to dispel this effect.",
+   "plugin": "Requiem - Wizarding Traversal - Magic Redone Patch.esp"
+  },
+  {
+   "id": "Requiem.esp:03F03D",
+   "name": "Arcane Experimentation",
+   "edid": "REQ_Perk_Enchanting_ArcaneExperimentation",
+   "kind": "Lesser power",
+   "text": "The caster experiments with arcane energies to create new enchanted objects that can be disenchanted afterwards. Three grand filled soul gems and five iron daggers are needed for that.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:09E33D",
+   "name": "Arcane Thesis",
+   "edid": "ORD_Alt_ArcaneThesis_Spell_Power_Learn",
+   "kind": "Lesser power",
+   "text": "Out of combat, master the spell you are currently dual casting. A mastered spell is 20% more powerful or lasts 40% longer.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005C0F",
+   "name": "Arcane Weapon",
+   "edid": "REQ_Destruction2_Arcane_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 7 damage penetrating magic resistance for 15 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Requiem.esp:03F041",
+   "name": "Artificer's Insight",
+   "edid": "REQ_Perk_Enchanting_ArtifiersInsight",
+   "kind": "Lesser power",
+   "text": "The caster experiments with even more exotic energies to create new enchanted objects that can be disenchanted afterwards. Three grand filled soul gems and five iron daggers are needed for that.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Undeath.esp:00A444",
+   "name": "Assume Lich Form",
+   "edid": "LichTransform",
+   "kind": "Lesser power",
+   "text": "Assume your true Lich form.",
+   "plugin": "UndeathFixes.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:03173C",
+   "name": "Bait",
+   "edid": "ORD_Loc_Bait_Spell",
+   "kind": "Lesser power",
+   "text": "Lures the nearest hostile target within 75 feet to the location of the nearest Bear Trap placed within 50 feet (not during combat or conversation). Lasts 30 seconds",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "RunemasterMagic.esl:00084E",
+   "name": "Baleful Glow",
+   "edid": "_RM_BalefulGlow",
+   "kind": "Lesser power",
+   "text": "A powerful nether shockwave dealing 80 points of damage. Targets flee from combat for 5 seconds.\r\n2 Tenebrous Runestone for a 30 seconds enchantment.",
+   "plugin": "RunemasterMagic.esl"
+  },
+  {
+   "id": "Dragonborn.esm:029F12",
+   "name": "Bardic Knowledge",
+   "edid": "DLC2ConjureBardInstruments",
+   "kind": "Power",
+   "text": "Summons spectral instruments that play for you for 300 seconds.",
+   "plugin": "Fozars_Dragonborn_-_Requiem_Patch.esp"
+  },
+  {
+   "id": "Dragonborn.esm:02BD26",
+   "name": "Bardic Knowledge",
+   "edid": "DLC2BardInstrumentalBuffSpell",
+   "kind": "Power",
+   "text": "Increases Stamina Regeneration by 3 points per second.",
+   "plugin": "Fozars_Dragonborn_-_Requiem_Patch.esp"
+  },
+  {
+   "id": "Dawnguard.esm:011996",
+   "name": "Bats",
+   "edid": "DLC1VQ08SwapBats",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Dawnguard.esm"
+  },
+  {
+   "id": "Dawnguard.esm:00E653",
+   "name": "Bats",
+   "edid": "DLC1VQ08Bats",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Dawnguard.esm"
+  },
+  {
+   "id": "Dawnguard.esm:0068B1",
+   "name": "Bats",
+   "edid": "DLC1nVampireBatsSpell",
+   "kind": "Lesser power",
+   "text": "Transform into a swarm of bats and dash a short distance.",
+   "plugin": "Dawnguard.esm"
+  },
+  {
+   "id": "Dawnguard.esm:0038B9",
+   "name": "Bats",
+   "edid": "SQL_VampireLord_Spell_Power_Bats",
+   "kind": "Lesser power",
+   "text": "Transform into a swarm of bats and dash a short distance.",
+   "plugin": "Sacrilege - Minimalistic Vampires of Skyrim.esp"
+  },
+  {
+   "id": "AncientBloodII.esl:000818",
+   "name": "Bats Form",
+   "edid": "_AII_Power_BatWarp",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Ancient Blood - Magic Redone Patch.esp"
+  },
+  {
+   "id": "Growl - Werebeasts of Skyrim.esp:0569C3",
+   "name": "Beast Form",
+   "edid": "HRI_Lycan_Spell_BeastForm_ReplacerOnCooldown",
+   "kind": "Lesser power",
+   "text": "Take on the form of the beast for Global=HRI_Lycan_Global_BeastForm_Duration seconds.",
+   "plugin": "Growl - Werebeasts of Skyrim.esp"
+  },
+  {
+   "id": "Skyrim.esm:092C48",
+   "name": "Beast Form",
+   "edid": "HRI_Lycan_Spell_BeastForm",
+   "kind": "Lesser power",
+   "text": "Take on the form of the beast for Global=HRI_Lycan_Global_BeastForm_Duration seconds.",
+   "plugin": "Growl - Reqtificated.esp"
+  },
+  {
+   "id": "ArteFake.esp:244A8E",
+   "name": "Berserk - Dragon Slayer",
+   "edid": "RPC_NULL_Berserk_Spell",
+   "kind": "Power",
+   "text": "Without releasing the sword, for 120 seconds you attack twice as fast, do double damage and take half damage.",
+   "plugin": "LoreRim - Spells and Magic Effects.esp"
+  },
+  {
+   "id": "Dragonborn.esm:01EEC6",
+   "name": "Black Market",
+   "edid": "DLC2ConjureDremoraMerchant",
+   "kind": "Lesser power",
+   "text": "The caster summons a Dremora merchant for 15 seconds.",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp"
+  },
+  {
+   "id": "FGCGreatmaceOfBlasphemy.esp:000803",
+   "name": "Blasphemous Flame",
+   "edid": "FGCBlasphemousFlameEnchArt",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Kofi - Combined Patch.esp"
+  },
+  {
+   "id": "Dragonborn.esm:018CD8",
+   "name": "Blessing Of The Fox",
+   "edid": "testPhilFox",
+   "kind": "Lesser power",
+   "text": "Fires a Spectral Arrow at the target doing 70 points of damage and staggering the target.",
+   "plugin": "Dragonborn.esm"
+  },
+  {
+   "id": "Requiem - More Unique Enemies.esp:0008F6",
+   "name": "Blood Trasmutation: Detect Life and Death",
+   "edid": "GS_Spell_BloodDetection",
+   "kind": "Lesser power",
+   "text": "Reveals nearby living and undead for 0 seconds.",
+   "plugin": "Requiem - More Unique Enemies.esp"
+  },
+  {
+   "id": "Dragonborn.esm:01DF9F",
+   "name": "Bones of the Earth",
+   "edid": "DLC2StandingStoneEarthSpell",
+   "kind": "Power",
+   "text": "Caster ignores 80% of all physical damage for 30 seconds. Single use, then must be reacquired at the Earth Stone.",
+   "plugin": "Wintersun - Reqtificated.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005F9D",
+   "name": "Bound Arrows",
+   "edid": "REQ_Conjuration2_Bound_Arrows",
+   "kind": "Lesser power",
+   "text": "The caster binds a quiver of spectral arrows for 60 seconds.",
+   "plugin": "LoreRim - Spells and Magic Effects.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005FA1",
+   "name": "Bound Bolts",
+   "edid": "REQ_Conjuration2_Bound_Bolts",
+   "kind": "Lesser power",
+   "text": "The caster binds a quiver of spectral bolts for 60 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "ccbgssse002-exoticarrows.esl:00080C",
+   "name": "Bound Quiver",
+   "edid": "ccBGSSSE002_BoundQuiver",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "LoreRim - Spells and Magic Effects.esp"
+  },
+  {
+   "id": "BowRapidCombo.esp:000891",
+   "name": "BowRapidSwitchPower",
+   "edid": "BowRapidOnOffSP",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "BowRapidCombo.esp"
+  },
+  {
+   "id": "Requiem.esp:3FF1EB",
+   "name": "Break Concentration",
+   "edid": "REQ_Illusion_BreakConcentration",
+   "kind": "Lesser power",
+   "text": "End your concentration for your active invisibility spell to release the spell.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Dragonborn.esm:03B00D",
+   "name": "Breath of Nchauk",
+   "edid": "DLC2dunFahlbtharzSteamBreathPower",
+   "kind": "Lesser power",
+   "text": "Draws upon stamina to release a scorching blast of steam that deals MAG points of damage per second.",
+   "plugin": "Fozars_Dragonborn_-_Requiem_Patch.esp"
+  },
+  {
+   "id": "HLIORemi.esp:18BBC6",
+   "name": "Call Remi",
+   "edid": "HLIOCallRemiSpell",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "LoreRim - Remi Patch.esp"
+  },
+  {
+   "id": "Callings.esp:000917",
+   "name": "Calling: Acolyte",
+   "edid": "Callings_PilgrimPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Callings.esp"
+  },
+  {
+   "id": "Callings.esp:0008DB",
+   "name": "Calling: Alchemist",
+   "edid": "Callings_AlchemistPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Callings.esp"
+  },
+  {
+   "id": "Callings.esp:00093C",
+   "name": "Calling: Bard",
+   "edid": "Callings_BardPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Callings.esp"
+  },
+  {
+   "id": "Callings.esp:0008CF",
+   "name": "Calling: Cook",
+   "edid": "Callings_CookPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Callings.esp"
+  },
+  {
+   "id": "Callings.esp:000901",
+   "name": "Calling: Fisher",
+   "edid": "Callings_FisherPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Callings.esp"
+  },
+  {
+   "id": "Callings.esp:000878",
+   "name": "Calling: Gatherer",
+   "edid": "Callings_GathererPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Callings.esp"
+  },
+  {
+   "id": "Callings.esp:000923",
+   "name": "Calling: Helper",
+   "edid": "Callings_HelperPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Callings.esp"
+  },
+  {
+   "id": "Callings.esp:0008F4",
+   "name": "Calling: Hunter",
+   "edid": "Callings_HunterPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Callings.esp"
+  },
+  {
+   "id": "Callings.esp:0008E7",
+   "name": "Calling: Laborer",
+   "edid": "Callings_LaborerPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Callings.esp"
+  },
+  {
+   "id": "Callings.esp:00092F",
+   "name": "Calling: Scholar",
+   "edid": "Callings_ScholarPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Callings.esp"
+  },
+  {
+   "id": "Callings.esp:000876",
+   "name": "Calling: Smith",
+   "edid": "Callings_SmithPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Callings.esp"
+  },
+  {
+   "id": "Callings.esp:000948",
+   "name": "Calling: Thief",
+   "edid": "Callings_ThiefPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Callings.esp"
+  },
+  {
+   "id": "Callings.esp:00090B",
+   "name": "Calling: Wanderer",
+   "edid": "Callings_WandererPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Callings.esp"
+  },
+  {
+   "id": "Callings.esp:000860",
+   "name": "Callings",
+   "edid": "Callings_MenuPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Callings.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:058D22",
+   "name": "Calming Oil",
+   "edid": "ORD_Alc_ElementalOil_Spell_Power_CalmingOil",
+   "kind": "Lesser power",
+   "text": "Create a pool of oil for 20 seconds. When struck, calms creatures and people up to level 50 for 20 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Tools of Kagrenac.esp:438A2C",
+   "name": "Cancel Morph",
+   "edid": "TOK_SPEL_CancelMorph_Spell_PC",
+   "kind": "Lesser power",
+   "text": "Cancels an ongoing morph.",
+   "plugin": "Tools of Kagrenac.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:039FD8",
+   "name": "Ceremony!",
+   "edid": "ORD_Enc_Ceremony_Spell",
+   "kind": "Lesser power",
+   "text": "Ceremony!",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Requiem - More Unique Enemies.esp:0008D0",
+   "name": "Channel Element: Fire",
+   "edid": "GS_Spell_Channel_Fire_UI",
+   "kind": "Lesser power",
+   "text": "Allows the user to imbue their weapon with fire damage, at the cost of magicka, for 30 seconds.",
+   "plugin": "Requiem - More Unique Enemies.esp"
+  },
+  {
+   "id": "Requiem - More Unique Enemies.esp:0008DE",
+   "name": "Channel Element: Frost",
+   "edid": "GS_Spell_Channel_Frost_UI",
+   "kind": "Lesser power",
+   "text": "Allows the user to imbue their weapon with frost damage, at the cost of magicka, for 30 seconds.",
+   "plugin": "Requiem - More Unique Enemies.esp"
+  },
+  {
+   "id": "Requiem - More Unique Enemies.esp:0008DF",
+   "name": "Channel Element: Shock",
+   "edid": "GS_Spell_Channel_Shock_UI",
+   "kind": "Lesser power",
+   "text": "Allows the user to imbue their weapon with shock damage, at the cost of magicka, for 30 seconds.",
+   "plugin": "Requiem - More Unique Enemies.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:03ECBB",
+   "name": "Charge Tap",
+   "edid": "ORD_Enc_ChargeTap_Spell",
+   "kind": "Lesser power",
+   "text": "Drains a quarter of your current weapon charge to restore Health by 15% of the amount drained and Magicka and Stamina by 25% of the amount drained.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "SkySigns.esp:000D64",
+   "name": "Choose Birthsign",
+   "edid": "SkySigns_Ab",
+   "kind": "Power",
+   "text": "",
+   "plugin": "SkySigns.esp"
+  },
+  {
+   "id": "Requiem - Birthsigns Redone.esp:000813",
+   "name": "Choose Birthsign",
+   "edid": "REQ_Ability_Birthsign_ChooseBirthsign",
+   "kind": "Lesser power",
+   "text": "Choose a Birthsign",
+   "plugin": "Requiem - Birthsigns Redone.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:036EA8",
+   "name": "Cloud Vision",
+   "edid": "ORD_Sne_CloudVision_Spell",
+   "kind": "Power",
+   "text": "A living target cannot detect sneaking units by vision for 60 seconds. Does not prevent the target from detecting sneaking units by other means.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Requiem.esp:07CB8A",
+   "name": "Combat Reflexes",
+   "edid": "REQ_Perk_Evasion_CombatReflexes",
+   "kind": "Lesser power",
+   "text": "The fighter enters a battletrance that allows much faster reactions in combat for 10 seconds. This ability cannot be used while wearing heavy armor or being exhausted.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0749C0",
+   "name": "Conjure Altar",
+   "edid": "ORD_Con_ConjureAltar_Spell",
+   "kind": "Lesser power",
+   "text": "Summons a Bone Altar for 60 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Dragonborn.esm:0322B2",
+   "name": "Conjure Werebear",
+   "edid": "DLC2ConjureWerebear",
+   "kind": "Power",
+   "text": "Summons a Werebear for 60 seconds wherever the caster is pointing. Single use, then must be reacquired at the Beast Stone.",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp"
+  },
+  {
+   "id": "Dragonborn.esm:01DFA4",
+   "name": "Conjure Werebear",
+   "edid": "DLC2StandingStoneBeastSpell",
+   "kind": "Power",
+   "text": "Summons a Werebear for 300 seconds wherever the caster is pointing. Single use, then must be reacquired at the Beast Stone.",
+   "plugin": "Wintersun - Reqtificated.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:084849",
+   "name": "Cryptic Gaze",
+   "edid": "ORD_Ill_CrypticGaze_Spell_Subspell_Calm",
+   "kind": "Power",
+   "text": "Creatures and people up to level 40 won't fight for 300 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:03CB6F",
+   "name": "Daughter of the Forge",
+   "edid": "ORD_Smh_DaughterOfTheForge_Spell",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "GORE.esp:01205A",
+   "name": "Debug Gore",
+   "edid": "HD1GoreDebugSpell",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "GORE.esp"
+  },
+  {
+   "id": "ForgottenCity.esp:0AABC0",
+   "name": "Decree of the Arbiter",
+   "edid": "000FCArbiterDecree",
+   "kind": "Power",
+   "text": "",
+   "plugin": "ForgottenCity.esp"
+  },
+  {
+   "id": "LoreRim Trapper.esp:00001D",
+   "name": "Deploy Bear Trap",
+   "edid": "LoreRimTrapper_DeployTrapPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "LoreRim Trapper.esp"
+  },
+  {
+   "id": "SubclassesOfSkyrim.esp:000807",
+   "name": "Destiny",
+   "edid": "DAR_Destiny",
+   "kind": "Lesser power",
+   "text": "Path to your Destiny.",
+   "plugin": "SubclassesOfSkyrim.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005B99",
+   "name": "Devouring Weapon",
+   "edid": "REQ_Destruction4_AbsorbHealth_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, absorbing 15 health for 30 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:02BAD4",
+   "name": "Dimension Door",
+   "edid": "ORD_Alt_DimensionDoor_Spell",
+   "kind": "Lesser power",
+   "text": "Creates a magical doorway that teleports you to the location of your Home Mythal. Lasts 20 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0BFB0F",
+   "name": "Disassemble Advanced Workshop",
+   "edid": "ORD_Smh_AdvancedWorkshop_Spell_DisassemblePower",
+   "kind": "Lesser power",
+   "text": "Disassembles your Advanced Workshop.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:036EA1",
+   "name": "Disengage",
+   "edid": "ORD_Sne_Disengage_Spell",
+   "kind": "Power",
+   "text": "All enemies within 100 feet who are attacking you or searching for you instantly stop and resume their normal activities.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Wintersun - GotT Patch.esp:000866",
+   "name": "Dismiss Dwarven Automaton",
+   "edid": "WSN_Tribunal_SothaSil_Boon2_DismissDwemerAutomaton",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Wintersun - GotT Patch.esp"
+  },
+  {
+   "id": "Triumvirate - Mage Archetypes.esp:2B6F39",
+   "name": "Dispel Force of Nature",
+   "edid": "TVR_Druid_Spell_ForceOfNature_Dispel",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Triumvirate - Mage Archetypes.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:006299",
+   "name": "Dispel Jump",
+   "edid": "REQ_AlterationGM_Dispel_Jump",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:00602A",
+   "name": "Dispel Waterwalking",
+   "edid": "REQ_AlterationGM_Dispel_Waterwalking",
+   "kind": "Lesser power",
+   "text": "Dispel waterwalking spell on self.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Trad_AE_CC_Collection_Requiem_Patch.esp:648FC5",
+   "name": "Divine Power",
+   "edid": "Trad_001_DivinePower3Left",
+   "kind": "Power",
+   "text": "Increases your health by 500 points.",
+   "plugin": "Trad_AE_CC_Collection_Requiem_Patch.esp"
+  },
+  {
+   "id": "Trad_AE_CC_Collection_Requiem_Patch.esp:648FC6",
+   "name": "Divine Power",
+   "edid": "Trad_001_DivinePower2Left",
+   "kind": "Power",
+   "text": "Increases your health by 500 points.",
+   "plugin": "Trad_AE_CC_Collection_Requiem_Patch.esp"
+  },
+  {
+   "id": "Trad_AE_CC_Collection_Requiem_Patch.esp:648FC8",
+   "name": "Divine Power",
+   "edid": "Trad_001_DivinePower1Left",
+   "kind": "Power",
+   "text": "Increases your health by 500 points.",
+   "plugin": "Trad_AE_CC_Collection_Requiem_Patch.esp"
+  },
+  {
+   "id": "Requiem.esp:4BB5EE",
+   "name": "Double Enchanting",
+   "edid": "REQ_Power_Enchanting_DoubleEnchanting",
+   "kind": "Lesser power",
+   "text": "Imbue two enchantments into one item with 60% strength each.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "PrvtIRoyalArmory.esp:07A07C",
+   "name": "Dragon's Command",
+   "edid": "RPC_NULL_PITulliusRally",
+   "kind": "Power",
+   "text": "Targets won't flee for 120 seconds and get extra health and stamina.",
+   "plugin": "Requiem - Royal Armory.esp"
+  },
+  {
+   "id": "FGCDrakeKnightSwordReborn.esp:000825",
+   "name": "Drake Knight Swipe",
+   "edid": "FGCDrakeSwordArt",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "FGCDrakeKnightSwordReborn.esp"
+  },
+  {
+   "id": "Skyrim.esm:0ED0A9",
+   "name": "Dread Cloak",
+   "edid": "SQL_Mortal_Spell_Power_DreadCloak",
+   "kind": "Power",
+   "text": "For 60 seconds, opponents in melee range take 20 frost damage to health and stamina per second.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:01E14D",
+   "name": "Dream Thrall Release",
+   "edid": "ORD_Ill_DreamGeas_Spell_DispelPower",
+   "kind": "Lesser power",
+   "text": "Releases a Dream Thrall from your command.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "RuneDreamstrides.esp:2A3835",
+   "name": "Dreamstride (Courier)",
+   "edid": "NTMRReturnToDreamPathPower",
+   "kind": "Power",
+   "text": "Return to the memory of the courier's dream. Leaving through the exit opened through your previous journey will return you to the location the dreamer was found on Tamriel.",
+   "plugin": "RuneDreamstrides.esp"
+  },
+  {
+   "id": "RuneDreamstrides.esp:2A3830",
+   "name": "Dreamstride (Hroldar)",
+   "edid": "NTMRReturnToDreamCastlePower",
+   "kind": "Power",
+   "text": "Return to the memory of Hroldar's dream. Leaving through the exit opened through your previous journey will return you to the location the dreamer was found on Tamriel.",
+   "plugin": "RuneDreamstrides.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0D23DC",
+   "name": "Drop Bear Trap",
+   "edid": "ORD_Loc_BearTraps_Spell_Power",
+   "kind": "Lesser power",
+   "text": "Drops a Bear Trap from your inventory.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:056C83",
+   "name": "Dwarven Autocannon",
+   "edid": "ORD_Smh_DwarvenAutocannon_Spell",
+   "kind": "Lesser power",
+   "text": "Deploy a Dwemer Autocannon from your inventory. It tracks your line of sight for 30 seconds, firing shells that deal 0 magic damage.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:022811",
+   "name": "Earthquake Drum",
+   "edid": "ORD_Spe_EarthquakeDrum_Spell_Proc",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Dawnguard.esm:0038B8",
+   "name": "Echo Scream",
+   "edid": "SQL_VampireLord_Spell_Power_EchoScream",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Sacrilege - Minimalistic Vampires of Skyrim.esp"
+  },
+  {
+   "id": "Skyrim.esm:088821",
+   "name": "Embrace of Shadows",
+   "edid": "SQL_Legacy_Nightwalk",
+   "kind": "Power",
+   "text": "Turn into mist, becoming invisible and sneaking 25% better for 0 seconds. Increases Vampiric hunger.",
+   "plugin": "Sacrilege - Minimalistic Vampires of Skyrim.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:000882",
+   "name": "Empowered Weapon",
+   "edid": "REQ_Alteration2_Physical_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 15 physical damage for 15 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Wintersun - Faiths of Skyrim.esp:0D5403",
+   "name": "End the Betrayal",
+   "edid": "WSN_Daedra_Mephala_Boon2_Spell_CancelPower",
+   "kind": "Lesser power",
+   "text": "Cancels Whispers of Betrayal.",
+   "plugin": "Wintersun - Faiths of Skyrim.esp"
+  },
+  {
+   "id": "Wintersun - Faiths of Skyrim.esp:0D02EA",
+   "name": "End the Raven's Watch",
+   "edid": "WSN_Daedra_Nocturnal_Boon2_Spell_CancelPower",
+   "kind": "Lesser power",
+   "text": "Cancels Raven's Watch.",
+   "plugin": "Wintersun - Faiths of Skyrim.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005C10",
+   "name": "Entropic Weapon",
+   "edid": "REQ_Destruction2_Entropic_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 11 magical damage for 15 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Requiem.esp:0832CC",
+   "name": "Examine",
+   "edid": "RFTI_Player_Examine",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Apocalypse - Magic of Skyrim.esp:00DBD7",
+   "name": "Execute Slave",
+   "edid": "WB_S_I075_EnslaveTheWeak_Spell_PC",
+   "kind": "Lesser power",
+   "text": "Kills your slave.",
+   "plugin": "Apocalypse - Magic of Skyrim.esp"
+  },
+  {
+   "id": "FalkreathShades.esp:49FFEE",
+   "name": "Expel Greater Spirit",
+   "edid": "GRVEExpellGreaterSpirit",
+   "kind": "Power",
+   "text": "Once a day, expel the soul once trapped within the Gravewind Sentinel. Drains target health very slowly over a long period of time.",
+   "plugin": "Synthesis - Spell Absorption.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:04EAA0",
+   "name": "Faerie Fire",
+   "edid": "ORD_Enc_FaerieFire_Spell",
+   "kind": "Lesser power",
+   "text": "Depletes your equipped charged weapons, casting a pulse that drains Magicka equal to 10% of your left charge and Stamina equal to 10% of your right charge,",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:058D0F",
+   "name": "Fire Oil",
+   "edid": "ORD_Alc_ElementalOil_Spell_Power_FireOil",
+   "kind": "Lesser power",
+   "text": "Create a pool of oil for 20 seconds. When struck, deals 100 points of fire damage.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005BB4",
+   "name": "Fire Weapon",
+   "edid": "REQ_Destruction2_Fire_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 15 fire damage for 15 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:058D24",
+   "name": "Frenzy Oil",
+   "edid": "ORD_Alc_ElementalOil_Spell_Power_FrenzyOil",
+   "kind": "Lesser power",
+   "text": "Create a pool of oil for 20 seconds. When struck, enrages creatures and people up to level 50 for 20 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:058D11",
+   "name": "Frost Oil",
+   "edid": "ORD_Alc_ElementalOil_Spell_Power_FrostOil",
+   "kind": "Lesser power",
+   "text": "Create a pool of oil for 20 seconds. When struck, deals 100 points of frost damage to Health and Stamina.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005BB5",
+   "name": "Frost Weapon",
+   "edid": "REQ_Destruction2_Frost_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 15 frost damage to health and stamina for 15 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Dragonborn.esm:035B1B",
+   "name": "Frostmoon Instinct",
+   "edid": "DLC2dunFrostmoonRingInstinctSlowTime",
+   "kind": "Lesser power",
+   "text": "Slows time for 60 seconds.",
+   "plugin": "Fozars_Dragonborn_-_Requiem_Patch.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005C11",
+   "name": "Greater Arcane Weapon",
+   "edid": "REQ_Destruction4_Arcane_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 15 damage penetrating magic resistance for 30 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:000887",
+   "name": "Greater Empowered Weapon",
+   "edid": "REQ_Alteration4_Physical_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 30 physical damage for 30 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005C12",
+   "name": "Greater Entropic Weapon",
+   "edid": "REQ_Destruction4_Entropic_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 22 magical damage for 30 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005BC3",
+   "name": "Greater Fire Weapon",
+   "edid": "REQ_Destruction4_Fire_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 30 fire damage for 30 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005BC4",
+   "name": "Greater Frost Weapon",
+   "edid": "REQ_Destruction4_Frost_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 30 frost damage to health and stamina for 30 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005BC5",
+   "name": "Greater Lightning Weapon",
+   "edid": "REQ_Destruction4_Shock_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 30 shock damage to health and half that to magicka for 30 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005C46",
+   "name": "Greater Poison Weapon",
+   "edid": "REQ_Restoration4_Poison_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 6 poison damage over 5 seconds to health and stamina for 60 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005CCD",
+   "name": "Greater Radiant Weapon",
+   "edid": "REQ_Restoration4_Sun_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 30 sun damage to undead.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:058D26",
+   "name": "Hallowed Oil",
+   "edid": "ORD_Alc_ElementalOil_Spell_Power_HallowedOil",
+   "kind": "Lesser power",
+   "text": "Create a pool of oil for 20 seconds. When struck, bursts into holy energy for 150 points of damage to undead.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "AncientBloodII.esl:000819",
+   "name": "Harvest of Bats",
+   "edid": "_AII_Power_BatWarpHarvest",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Ancient Blood - Magic Redone Patch.esp"
+  },
+  {
+   "id": "RunemasterMagic.esl:000846",
+   "name": "Havoc",
+   "edid": "_RM_Havoc",
+   "kind": "Lesser power",
+   "text": "A powerful kinetic shockwave dealing 80 points of damage. Pushes, disarms, and staggers nearby targets.\r\n2 Arcane Runestone for a single use enchantment.",
+   "plugin": "RunemasterMagic.esl"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0D23EF",
+   "name": "Hawkeye",
+   "edid": "ORD_Arc_DeadeyeNew_Spell",
+   "kind": "Power",
+   "text": "Focus for 10 seconds, looking for opportunities for a killing shot. Finding their vulnerability takes 1 second per 125 Health. Then shoot them for an instant kill.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Press E To Heal Followers.esp:000800",
+   "name": "Heal Downed Follower",
+   "edid": "HealFollowers_Spell",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Press E To Heal Followers.esp"
+  },
+  {
+   "id": "HotKeySkill.esp:008EEA",
+   "name": "HKSSwitchPower",
+   "edid": "HKS_ON/OFF_SP",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "HotKeySkill.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:021260",
+   "name": "Horn of Sovngarde",
+   "edid": "ORD_Spe_HornOfSovngarde_Spell",
+   "kind": "Power",
+   "text": "Blow a horn to call the nearest three friendly people (not in a conversation) within 200 feet. They follow you for 600 seconds. Weapons must be sheathed.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0358CC",
+   "name": "Hotwired Autmaton Self Destruct",
+   "edid": "ORD_Loc_Hotwire_Spell_DispelPower",
+   "kind": "Lesser power",
+   "text": "Destroys your Hotwired Automaton.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Requiem.esp:2B59A5",
+   "name": "Illumination",
+   "edid": "REQ_Ench_Illumination_Power",
+   "kind": "Lesser power",
+   "text": "Creates a hovering light that lasts for 300 seconds.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Dawnguard.esm:0029AC",
+   "name": "Immolate",
+   "edid": "DLC1VampireImmolate",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Dawnguard.esm"
+  },
+  {
+   "id": "Remote Interactions.esp:00080A",
+   "name": "Interact From Afar",
+   "edid": "CTN_Call_NPC_Spell",
+   "kind": "Lesser power",
+   "text": "Shout someone's name to get their attention.",
+   "plugin": "Remote Interactions.esp"
+  },
+  {
+   "id": "Katana.esp:FE7654",
+   "name": "Journey in the Shadows Debug",
+   "edid": "AK69KatanaUnstuckSP",
+   "kind": "Lesser power",
+   "text": "Try this if the Journey in the Shadows companions are sneaking and you're not, or fighting a friendly face.",
+   "plugin": "Katana.esp"
+  },
+  {
+   "id": "Katana.esp:983BA4",
+   "name": "Katana Affinity Check",
+   "edid": "AK69KatanaRelationshipCheckSpell",
+   "kind": "Lesser power",
+   "text": "Use this to check your relationship with Katana.",
+   "plugin": "Katana.esp"
+  },
+  {
+   "id": "Katana.esp:983BA5",
+   "name": "Katana Relationship Major Inc Spell",
+   "edid": "AK69KatanaRelationshipMajorIncSpell",
+   "kind": "Lesser power",
+   "text": "Majorly increases Katana's relationship level. Also, hello, if you are reading this. Take this as a sign to buy pizza.",
+   "plugin": "Katana.esp"
+  },
+  {
+   "id": "Paragliding.esp:010C67",
+   "name": "Kyne's Wind",
+   "edid": "KynesWindSPEL",
+   "kind": "Lesser power",
+   "text": "A gust of wind at your back!",
+   "plugin": "Paragliding.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0BF5A8",
+   "name": "Laughing Ghost",
+   "edid": "ORD_Sne_LaughingGhostNew_Spell",
+   "kind": "Power",
+   "text": "Doubles sneak effectiveness and sneak attack damage for 30 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0BFB18",
+   "name": "Laughing Ghost",
+   "edid": "ORD_Sne_LaughingGhostFinal_Spell",
+   "kind": "Lesser power",
+   "text": "While sneaking, teleport behind a target to attempt a sneak power attack with your right weapon that deals double sneak attack damage. The target must be out of combat.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005B79",
+   "name": "Leeching Weapon",
+   "edid": "REQ_Destruction2_AbsorbHealth_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, absorbing 7 health for 15 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "FalkreathShades.esp:3C0A9A",
+   "name": "Lifesurge",
+   "edid": "GRVELivesurgeHeal",
+   "kind": "Power",
+   "text": "Once a day, use scarlet lightning to completely restore health.",
+   "plugin": "FalkreathShades.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005BB6",
+   "name": "Lightning Weapon",
+   "edid": "REQ_Destruction2_Shock_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 15 shock damage to health and half that to magicka for 15 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:117FFF",
+   "name": "Lion's Arrow",
+   "edid": "ORD_Arc_LionsArrow_Spell_Power_Learn",
+   "kind": "Lesser power",
+   "text": "Out of combat, store the spell you are currently dual casting. It is released with each fully drawn shot in combat.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Wintersun - Faiths of Skyrim.esp:023DD7",
+   "name": "Luminous Infusion",
+   "edid": "WSN_Prayer_Spell_Proc_Misc_Magnus_Boon1",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Wintersun - Faiths of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0FDAD9",
+   "name": "Make Way for Your Lord!",
+   "edid": "ORD_Con_BarrowLord_Spell_Power",
+   "kind": "Lesser power",
+   "text": "Makes your Skeletons within 100 feet disappear for 20 seconds, granting passage.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Helmet Toggle 2.esp:000A5D",
+   "name": "Manage Helmet",
+   "edid": "HT_ManageHelmetPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Helmet Toggle 2.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:070D1C",
+   "name": "March of the Black King",
+   "edid": "ORD_Two_MarchOfTheBlackKing_Spell_Power",
+   "kind": "Lesser power",
+   "text": "For 20 seconds, power attack wildly with your equipped one-handed weapons.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0CC2AF",
+   "name": "Merciful King",
+   "edid": "ORD_Con_RatKing_Spell_TogglePower",
+   "kind": "Lesser power",
+   "text": "Deactivates Rat King, preventing the Skeevers from being summoned. Use again to reactivate Rat King.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:13251B",
+   "name": "Merciful Scribe",
+   "edid": "ORD_Enc_Spellscribe_Spell_TogglePower",
+   "kind": "Lesser power",
+   "text": "Deactivates Spellscribe, preventing it from triggering in combat. Use again to reactivate Spellscribe.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:02388C",
+   "name": "Merciless Storm",
+   "edid": "ORD_Spe_MercilessStorm_Spell",
+   "kind": "Power",
+   "text": "Cancels an active shout cooldown, allowing you to shout again immediately afterwards.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Requiem - Special Feats.esp:000890",
+   "name": "Metamagic : Distant Spell",
+   "edid": "Feat_Spell_Metamagic_Distant",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Requiem - Special Feats.esp:00088F",
+   "name": "Metamagic : Extended Spell",
+   "edid": "Feat_Spell_Metamagic_Extended",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Requiem - Special Feats.esp:00088E",
+   "name": "Metamagic : Overpowered Spell",
+   "edid": "Feat_Spell_Metamagic_Overpowered",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "StormLightning.esp:000D63",
+   "name": "Minty Fork Lightning Spell",
+   "edid": "MintyForkLightningSpell",
+   "kind": "Lesser power",
+   "text": "Minty Fork Effect",
+   "plugin": "StormLightning.esp"
+  },
+  {
+   "id": "WizardingTraversal.esl:00080D",
+   "name": "Mist Apparition",
+   "edid": "_PU_MistApparition",
+   "kind": "Lesser power",
+   "text": "Transforms into a puff of mist to evade incoming attacks. In this form, the caster moves faster and jumps higher.",
+   "plugin": "Requiem - Wizarding Traversal - Magic Redone Patch.esp"
+  },
+  {
+   "id": "Dawnguard.esm:0038BA",
+   "name": "Mist Form",
+   "edid": "SQL_VampireLord_Spell_Power_MistForm",
+   "kind": "Lesser power",
+   "text": "Turn into invisible and invulnerable mist for 10 seconds, regenerating Health, Magicka and Stamina.",
+   "plugin": "Sacrilege - Minimalistic Vampires of Skyrim.esp"
+  },
+  {
+   "id": "Dawnguard.esm:00D650",
+   "name": "Mist Form",
+   "edid": "SQL_VampireLord_Spell_Power_MistForm_NPC",
+   "kind": "Lesser power",
+   "text": "You are invulnerable but unable to attack for 8.64e+06 seconds, recovering Health, Magicka and Stamina.",
+   "plugin": "Sacrilege - Minimalistic Vampires of Skyrim.esp"
+  },
+  {
+   "id": "Requiem - Birthsigns Redone.esp:000808",
+   "name": "Moonshadow",
+   "edid": "REQ_Ability_Birthsign_Shadow_Moonshadow",
+   "kind": "Power",
+   "text": "For 60 seconds you automatically become invisible while sneaking.",
+   "plugin": "Requiem - Birthsigns Redone.esp"
+  },
+  {
+   "id": "Dragonborn.esm:031842",
+   "name": "Mora's Agony",
+   "edid": "DLC2MorasAgony",
+   "kind": "Power",
+   "text": "The caster summons a field of writhing tentacles that lasts 30 seconds and poisons foes who enter it.",
+   "plugin": "Synthesis - Spell Absorption.esp"
+  },
+  {
+   "id": "Dragonborn.esm:01E7F7",
+   "name": "Mora's Boon",
+   "edid": "DLC2BlackBookHealSpell",
+   "kind": "Power",
+   "text": "Heals the caster 1000 points.",
+   "plugin": "Dragonborn.esm"
+  },
+  {
+   "id": "Dragonborn.esm:031844",
+   "name": "Mora's Grasp",
+   "edid": "DLC2MorasGrasp",
+   "kind": "Power",
+   "text": "Targets are frozen between Oblivion and Tamriel for 30 seconds, and immune to all damage.",
+   "plugin": "Dragonborn.esm"
+  },
+  {
+   "id": "GORE.esp:D3558C",
+   "name": "Move To Camp",
+   "edid": "HD1GoreCampsiteSpell",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "GORE.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0342F8",
+   "name": "Mutiny",
+   "edid": "ORD_Pic_Mutiny_Spell",
+   "kind": "Lesser power",
+   "text": "Compels the bearer of the Death's Emperor to attack anyone nearby for 30 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:0061D5",
+   "name": "Mystic Infusion",
+   "edid": "REQ_Power_Conjuration_MysticInfusion",
+   "kind": "Lesser power",
+   "text": "Infuse bound weapons and armors with additional effects of your choice.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:09E8BA",
+   "name": "Natural Magic",
+   "edid": "ORD_Alt_NaturalMagic_Spell_Power_Learn",
+   "kind": "Lesser power",
+   "text": "Out of combat, assimilate the spell you are currently dual casting. You lose the spell, but this power turns into a copy that is 200% more powerful or lasts 400% longer.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:09EE27",
+   "name": "Natural Magic",
+   "edid": "ORD_Alt_NaturalMagic_Spell_Power_Cast",
+   "kind": "Power",
+   "text": "Casts your assimilated spell. It is 200% more powerful or lasts 400% longer.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "FGCGleamstrike-ESL-AAVersion.esp:000834",
+   "name": "Necroburst",
+   "edid": "FGCGleamstrikeLVL3CorruptSpellCast1",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Kofi - Combined Patch.esp"
+  },
+  {
+   "id": "FGCGleamstrike-ESL-AAVersion.esp:000830",
+   "name": "Necroslash",
+   "edid": "FGCGleamstrikeLVL2CorruptSpellCast",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Kofi - Combined Patch.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:006060",
+   "name": "Necrotic Weapon",
+   "edid": "REQ_Conjuration4_Necrotic_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 30 necrotic damage to living targets for 30 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "FGCGleamstrike-ESL-AAVersion.esp:000833",
+   "name": "Necrovigor",
+   "edid": "FGCGleamstrikeLVL3CorruptSpellCast",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Kofi - Combined Patch.esp"
+  },
+  {
+   "id": "Skyrim.esm:0AA01D",
+   "name": "Night Eye",
+   "edid": "REQ_Power_Race_Khajiit_NightEye",
+   "kind": "Lesser power",
+   "text": "Improved night vision for 8.5536e+06 seconds.",
+   "plugin": "Requiem - Races Redone.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0BC4F9",
+   "name": "Night Eye",
+   "edid": "ORD_Ill_NightEye_Spell",
+   "kind": "Lesser power",
+   "text": "Improved night vision for 120 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Requiem.esp:1CD494",
+   "name": "Night Vision",
+   "edid": "REQ_Perk_Alchemy_NightVision",
+   "kind": "Lesser power",
+   "text": "Improved night vision for 86400 seconds.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Skyrim.esm:0F1987",
+   "name": "Nightingale Strife",
+   "edid": "TGNightingaleStrife",
+   "kind": "Power",
+   "text": "Targets hit by the spell are paralyzed for 2 seconds and take Health, Stamina, and Magicka damage equal to the proportion of these attributes missing from the caster. The caster then absorbs half of the damage inflicted.",
+   "plugin": "Synthesis - Spell Absorption.esp"
+  },
+  {
+   "id": "Skyrim.esm:0F1986",
+   "name": "Nightingale Subterfuge",
+   "edid": "TGNightingaleSubterfuge",
+   "kind": "Power",
+   "text": "Targets hit by the spell are frenzied, attacking anyone nearby for 30 seconds. The caster's speed is increased by 20% and they become invulnerable for 30 seconds. Attacking or using a spell breaks the invulnerability.",
+   "plugin": "Synthesis - Spell Absorption.esp"
+  },
+  {
+   "id": "Dragonborn.esm:01DFA5",
+   "name": "North Wind",
+   "edid": "DLC2StandingStoneWindSpell",
+   "kind": "Power",
+   "text": "The caster evokes a ravaging blizzard, causing everything inside it to take 150 points of frost and stamina damage for 15 seconds. Single use, then must be reacquired at the Wind Stone.",
+   "plugin": "Wintersun - Reqtificated.esp"
+  },
+  {
+   "id": "Siege at Icemoth.esp:5AB9C8",
+   "name": "Omen of Gluttony",
+   "edid": "HYORBlackBookFoodBonus",
+   "kind": "Power",
+   "text": "Food is 2 times more effective for 60 seconds.",
+   "plugin": "LoreRim - Spells and Magic Effects.esp"
+  },
+  {
+   "id": "Siege at Icemoth.esp:2C140A",
+   "name": "Omen of Immobility",
+   "edid": "HYORBlackBookStopRuneSpell",
+   "kind": "Power",
+   "text": "Cast on a nearby surface, it explodes for and freezes the target in place for 10 seconds.",
+   "plugin": "Siege at Icemoth.esp"
+  },
+  {
+   "id": "Dragonborn.esm:01E803",
+   "name": "Omen of Warding",
+   "edid": "DLC2BlackBookNoFallingDamageSpell",
+   "kind": "Power",
+   "text": "You take no falling damage for 15 seconds.",
+   "plugin": "Dragonborn.esm"
+  },
+  {
+   "id": "Siege at Icemoth.esp:2C1408",
+   "name": "Omen of Warding",
+   "edid": "HYORBlackBookNoFallingDamageSpell",
+   "kind": "Power",
+   "text": "You take no falling damage for 15 seconds.",
+   "plugin": "Siege at Icemoth.esp"
+  },
+  {
+   "id": "Trad_AE_CC_Collection_Requiem_Patch.esp:1DE210",
+   "name": "Orum's Aquatic Escape",
+   "edid": "Trad_014_Oblivion_OrumsAquaticEscape",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Trad_AE_CC_Collection_Requiem_Patch.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:058D28",
+   "name": "Paralysis Oil",
+   "edid": "ORD_Alc_ElementalOil_Spell_Power_ParalysisOil",
+   "kind": "Lesser power",
+   "text": "Create a pool of oil for 20 seconds. When struck, it paralyzes all nearby enemies for 5 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Trad_AE_CC_Collection_Requiem_Patch.esp:295830",
+   "name": "Passing of the Seasons",
+   "edid": "Trad_001_Power_NewSeason",
+   "kind": "Power",
+   "text": "Stops poison's continuing effects.",
+   "plugin": "Trad_AE_CC_Collection_Requiem_Patch.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:02077E",
+   "name": "Perform",
+   "edid": "ORD_Spe_Perform_Spell",
+   "kind": "Power",
+   "text": "Play a song for 30 seconds and collect a donation from up to five people in the audience. Weapons must be sheathed.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0232F3",
+   "name": "Perform",
+   "edid": "ORD_Spe_Perform_Spell_LesserPower",
+   "kind": "Lesser power",
+   "text": "Play a song for 30 seconds and collect a donation from up to five people in the audience. Weapons must be sheathed.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "StormLightning.esp:00080F",
+   "name": "Player Two Fork Lightning Spell",
+   "edid": "MintyForkLightningSpell2",
+   "kind": "Lesser power",
+   "text": "PlayerTwo Fork Effect",
+   "plugin": "StormLightning.esp"
+  },
+  {
+   "id": "Requiem - Weapons and Armor Redone.esp:000A96",
+   "name": "Poison Throwing Knife",
+   "edid": "REQ_ThrowingKnife_PoisonMenu",
+   "kind": "Lesser power",
+   "text": "Apply poison to throwing knives.",
+   "plugin": "Requiem - Weapons and Armor Redone.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005C39",
+   "name": "Poison Weapon",
+   "edid": "REQ_Restoration2_Poison_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 3 poison damage over 5 seconds to health and stamina for 15 seconds.",
+   "plugin": "Requiem - Abyssal Tides - Magic Redone Patch.esp"
+  },
+  {
+   "id": "Skyrim.esm:06E205",
+   "name": "Polymorph Skeever",
+   "edid": "REQ_NULL_PolymorphSkeever",
+   "kind": "Power",
+   "text": "Take on the form of a skeever.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Requiem.esp:0089CC",
+   "name": "Power of Life",
+   "edid": "REQ_Perk_Restoration_PowerOfLife1",
+   "kind": "Power",
+   "text": "Restores 5000 health per second for 12 seconds.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Requiem.esp:17E061",
+   "name": "Power of Life",
+   "edid": "REQ_Perk_Restoration_PowerOfLife2",
+   "kind": "Power",
+   "text": "Restores 5000 health per second for 12 seconds.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Requiem.esp:17E064",
+   "name": "Power of Life",
+   "edid": "REQ_Perk_Restoration_PowerOfLife3",
+   "kind": "Power",
+   "text": "Restores 5000 health per second for 12 seconds.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Requiem.esp:009F55",
+   "name": "Power of the Combatant",
+   "edid": "REQ_Power_PowerOfTheCombatant",
+   "kind": "Power",
+   "text": "Once a day, you can push yourself to continue fighting. Restores 25 points of stamina per second for 30 seconds.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Wintersun - Faiths of Skyrim.esp:00F945",
+   "name": "Pray",
+   "edid": "WSN_Prayer_Spell",
+   "kind": "Lesser power",
+   "text": "When out of combat, pray to strengthen your bond with your deity.",
+   "plugin": "Wintersun - Reqtificated.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:005CCC",
+   "name": "Radiant Weapon",
+   "edid": "REQ_Restoration2_Sun_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, dealing 15 sun damage to undead.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:06A084",
+   "name": "Rallying Standard",
+   "edid": "ORD_Hea_RallyingStandard_Spell",
+   "kind": "Power",
+   "text": "Grants 150 points of armor and 25% melee damage to allies within 25 feet wearing all Heavy Armor and prevents them from fleeing. Lasts 60 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Callings.esp:000956",
+   "name": "Read the Signs",
+   "edid": "Callings_Hunter_ReadTheSigns",
+   "kind": "Power",
+   "text": "Nearby animals show through walls.",
+   "plugin": "Callings.esp"
+  },
+  {
+   "id": "Katana.esp:1CD741",
+   "name": "Reset Megara Pose",
+   "edid": "AK69MegaraUnstuckSP",
+   "kind": "Lesser power",
+   "text": "Is Megara stuck in T-pose? Is she sneaking and you're not? Is she fighting a friendly face? Try this. Only works if she's in your party.",
+   "plugin": "Katana.esp"
+  },
+  {
+   "id": "Katana.esp:0AAFFF",
+   "name": "Reset Shale Pose",
+   "edid": "AK69ShaleUnstuckSP",
+   "kind": "Lesser power",
+   "text": "Is Shale stuck in T-pose? Is he sneaking and you're not? Is he fighting a friendly face? Try this. Only works if he's in your party.",
+   "plugin": "Katana.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0AC6F2",
+   "name": "Revelation",
+   "edid": "ORD_Res_Revelation_Spell",
+   "kind": "Power",
+   "text": "For the bearer of Warrior's Flame: (Enemy) Deals 750 damage. (Ally) Grants 1000% attack damage for 5 seconds. (You) Grants full Health, Magicka and Stamina.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Dawnguard.esm:00CD5C",
+   "name": "Revert Form",
+   "edid": "DLC1RevertForm",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Dawnguard.esm"
+  },
+  {
+   "id": "Undeath.esp:013F56",
+   "name": "Revert Form",
+   "edid": "NecroRevert",
+   "kind": "Lesser power",
+   "text": "Return to your humanoid form.",
+   "plugin": "UndeathFixes.esp"
+  },
+  {
+   "id": "Requiem - Birthsigns Redone.esp:000803",
+   "name": "Ritual: Blessed Fire",
+   "edid": "REQ_Ability_Birthsign_Ritual_Turn",
+   "kind": "Power",
+   "text": "Causes all nearby undead up to level 50 to flee for 60 seconds.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Requiem - Birthsigns Redone.esp:000800",
+   "name": "Ritual: Dead Horde",
+   "edid": "REQ_Ability_Birthsign_Ritual_Reanimate",
+   "kind": "Power",
+   "text": "Reanimate all nearby dead bodies up to level 50 for 600 seconds.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Requiem - Birthsigns Redone.esp:000805",
+   "name": "Ritual: Salvation",
+   "edid": "REQ_Ability_Birthsign_Ritual_Healing",
+   "kind": "Power",
+   "text": "Heals all nearby allies and the caster for 999, but doesn't affect the undead, atronachs and constructs.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Dragonborn.esm:01DFAB",
+   "name": "Root of Power",
+   "edid": "DLC2StandingStoneTreeSpell",
+   "kind": "Power",
+   "text": "All spells are 50% stronger or longer lasting for 60 seconds. Single use, then must be reacquired at the Tree Stone.",
+   "plugin": "Wintersun - Reqtificated.esp"
+  },
+  {
+   "id": "RunemasterMagic.esl:00085D",
+   "name": "Runestorm",
+   "edid": "_RM_Runestorm",
+   "kind": "Lesser power",
+   "text": "A storm of arcane blades dealing 15 damage, and up to quadruple the amount to those with low Magic Resistance.\r\n2 Arcane Runestone for a single use enchantment.",
+   "plugin": "RunemasterMagic.esl"
+  },
+  {
+   "id": "LoreRim Second Breath.esp:000002",
+   "name": "Second Breath",
+   "edid": "LoreRim_SecondBreathAb",
+   "kind": "Power",
+   "text": "",
+   "plugin": "LoreRim Second Breath.esp"
+  },
+  {
+   "id": "Dragonborn.esm:01E7FD",
+   "name": "Secret of Arcana",
+   "edid": "DLC2BlackBookNoMagickaSpell",
+   "kind": "Power",
+   "text": "Spells are 25% stronger for 30 seconds.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Dragonborn.esm:01E800",
+   "name": "Secret of Protection",
+   "edid": "DLC2BlackBookHalfDamageSpell",
+   "kind": "Power",
+   "text": "You take half damage for 30 seconds from all physical attacks and most magical attacks.",
+   "plugin": "Dragonborn.esm"
+  },
+  {
+   "id": "Dragonborn.esm:01E7FA",
+   "name": "Secret of Strength",
+   "edid": "DLC2BlackBookNoStaminaSpell",
+   "kind": "Power",
+   "text": "Do 25% more damage with weapons for 30 seconds.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Dragonborn.esm:01FF21",
+   "name": "Secret Servant",
+   "edid": "DLC2ConjureDremoraButler",
+   "kind": "Lesser power",
+   "text": "The caster summons a Dremora butler for 15 seconds to carry your excess items.",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp"
+  },
+  {
+   "id": "LoreRim Doomstones.esp:000024",
+   "name": "Select Standing Stone",
+   "edid": "LoreRimDoomstones_DoomSelectionPower",
+   "kind": "Lesser power",
+   "text": "Select an Standing Stone to apply.",
+   "plugin": "LoreRim Doomstones.esp"
+  },
+  {
+   "id": "Biggie Traits.esp:000004",
+   "name": "Select Traits",
+   "edid": "Traits_SelectionSpell",
+   "kind": "Power",
+   "text": "",
+   "plugin": "Biggie Traits.esp"
+  },
+  {
+   "id": "Requiem - Birthsigns Redone.esp:00080C",
+   "name": "Serpent's Curse",
+   "edid": "REQ_Ability_Birthsign_Serpent_SerpentsCurse",
+   "kind": "Power",
+   "text": "Magic Resistance is reduced by 10.",
+   "plugin": "Synthesis - Spell Absorption.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0363B9",
+   "name": "Serpent's Scales",
+   "edid": "ORD_Sne_SerpentsScales_Spell",
+   "kind": "Lesser power",
+   "text": "Sacrifice Global=ORD_Sne_SerpentsBetrayal_Global_Gold gold to make sneaking 50% more effective for 60 seconds. This effect stacks.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Shadow Clone on Self.esp:000806",
+   "name": "Shadow Clone on Self",
+   "edid": "REQ_Spell_Illusion5_ShadowSummon_ShadowCloneSelf",
+   "kind": "Lesser power",
+   "text": "The caster calls upon the power of shadow magic, weaving darkness into a shadowy clone of themselves for 4 seconds. The clone uses the weapons and spells equipped by the caster.",
+   "plugin": "Shadow Clone on Self.esp"
+  },
+  {
+   "id": "Shadow Clone on Self.esp:000843",
+   "name": "Shadow Clone on Self - Select Shout",
+   "edid": "madAddShoutSpell",
+   "kind": "Lesser power",
+   "text": "Sets caster's Shadow Clone to use the caster's equipped shout. To disable shouting, cast with no shout equipped.",
+   "plugin": "Shadow Clone on Self.esp"
+  },
+  {
+   "id": "Skyrim.esm:017122",
+   "name": "Shadowcloak of Nocturnal",
+   "edid": "TGNightingaleShadowPower",
+   "kind": "Power",
+   "text": "Shrouding yourself in a cloak weaved by Nocturnal's darkness, you distort the perception of those around you, causing them to forget any crime committed in the next 10 seconds.",
+   "plugin": "NightingalePowersRedone.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:058D13",
+   "name": "Shock Oil",
+   "edid": "ORD_Alc_ElementalOil_Spell_Power_ShockOil",
+   "kind": "Lesser power",
+   "text": "Create a pool of oil for 20 seconds. When struck, deals 100 points of shock damage to Health and Magicka.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:036EB3",
+   "name": "Smokescreen",
+   "edid": "ORD_Sne_SmokeCurtain_Spell",
+   "kind": "Power",
+   "text": "Creates a 35 foot cloud for 180 seconds that blinds those in the cloud, preventing them from seeing sneaking targets.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "LoreRim Traits.esp:000005",
+   "name": "Soul Embed",
+   "edid": "LoreTraits_SoulEmbedPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "LoreRim Traits.esp"
+  },
+  {
+   "id": "RunemasterMagic.esl:000848",
+   "name": "Spectral Slash",
+   "edid": "_RM_SpectralSlash",
+   "kind": "Lesser power",
+   "text": "A blade of nether energy dealing 20 points of damage. Absorbs 20 points of Health.\r\n1 Tenebrous Runestone for a 30 seconds enchantment.",
+   "plugin": "RunemasterMagic.esl"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:09E331",
+   "name": "Spellscribe",
+   "edid": "ORD_Enc_Spellscribe_Spell_Power_Learn",
+   "kind": "Lesser power",
+   "text": "Out of combat, store the spell you are currently dual casting. It is released each time you power attack in combat.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0363B2",
+   "name": "Spot Detection",
+   "edid": "ORD_Sne_SpotDetection_Spell",
+   "kind": "Lesser power",
+   "text": "Outlines all humanoids within 150 feet that are detecting you with a green glow. Lasts 30 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Skyrim.esm:0F23D1",
+   "name": "Spriggan Heal",
+   "edid": "REQ_Creature_Spriggan_Heal1",
+   "kind": "Power",
+   "text": "Heals the caster by 100 points. The spell does not affect undead, atronachs or constructs.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Skyrim.esm:10EC85",
+   "name": "Spriggan Heal",
+   "edid": "REQ_Creature_Spriggan_Heal2",
+   "kind": "Power",
+   "text": "Heals the caster by 200 points. The spell does not affect undead, atronachs or constructs.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Dawnguard.esm:0145C4",
+   "name": "Spriggan Heal",
+   "edid": "REQ_Creature_Spriggan_Heal3",
+   "kind": "Power",
+   "text": "Heals the caster by 300 points. The spell does not affect undead, atronachs or constructs.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0248D0",
+   "name": "Stand Down",
+   "edid": "ORD_Spe_HornOfSovngarde_Spell_Stop",
+   "kind": "Lesser power",
+   "text": "Orders the people enchanted by Horn of Sovngarde to stop following you.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:020CF5",
+   "name": "Stop Performing",
+   "edid": "ORD_Spe_Perform_Spell_Stop",
+   "kind": "Lesser power",
+   "text": "Stop the racket!",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Dragonborn.esm:01ED9A",
+   "name": "Stop Rune",
+   "edid": "dlc2BBStopRuneSpell",
+   "kind": "Power",
+   "text": "Cast on a nearby surface, it explodes for and freezes the target in place for 10 seconds.",
+   "plugin": "Dragonborn.esm"
+  },
+  {
+   "id": "RunemasterMagic.esl:000856",
+   "name": "Stunning Blast",
+   "edid": "_RM_StunningBlast",
+   "kind": "Lesser power",
+   "text": "Arcane energy leaps between targets, dealing 10 points of damage. Targets periodically stagger.\r\n1 Arcane Runestone for a 30 seconds enchantment.",
+   "plugin": "RunemasterMagic.esl"
+  },
+  {
+   "id": "018Auri.esp:34B542",
+   "name": "Summon Auri",
+   "edid": "018AuriSummonSpellDUPLICATE001",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "018Auri.esp"
+  },
+  {
+   "id": "GORE.esp:2EFEE3",
+   "name": "Summon Count Fleet",
+   "edid": "CountFleetSummonSpell",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "GORE.esp"
+  },
+  {
+   "id": "Wintersun - GotT Patch.esp:00085C",
+   "name": "Summon Dwarven Automaton",
+   "edid": "WSN_Tribunal_SothaSil_Boon2_Effect_Menu_Spell",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Wintersun - GotT Patch.esp"
+  },
+  {
+   "id": "Tools of Kagrenac.esp:2F9177",
+   "name": "Summon Dwemer Animunculi",
+   "edid": "TOK_SPEL_AetherialSummons_Spell_PC",
+   "kind": "Lesser power",
+   "text": "Summons a random Dwarven Automaton for 60 seconds wherever the caster is pointing.",
+   "plugin": "Tools of Kagrenac.esp"
+  },
+  {
+   "id": "GORE.esp:0F9491",
+   "name": "Summon Gore",
+   "edid": "HD1GoreSummonSpell",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "GORE.esp"
+  },
+  {
+   "id": "Dragonborn.esm:024812",
+   "name": "Summon Karstaag",
+   "edid": "DLC2dunSummonKarstaag3Left",
+   "kind": "Power",
+   "text": "Summons Karstaag to fight for you for 120 seconds.",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp"
+  },
+  {
+   "id": "Dragonborn.esm:029709",
+   "name": "Summon Karstaag",
+   "edid": "DLC2dunSummonKarstaag2Left",
+   "kind": "Power",
+   "text": "Summons Karstaag to fight for you for 120 seconds.",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp"
+  },
+  {
+   "id": "Dragonborn.esm:02970A",
+   "name": "Summon Karstaag",
+   "edid": "DLC2dunSummonKarstaag1Left",
+   "kind": "Power",
+   "text": "Summons Karstaag to fight for you for 120 seconds.",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp"
+  },
+  {
+   "id": "Katana.esp:A6283C",
+   "name": "Summon Katana",
+   "edid": "AK69KatanaSummonSP",
+   "kind": "Lesser power",
+   "text": "Get Katana back (only works if she's in your party).",
+   "plugin": "Katana.esp"
+  },
+  {
+   "id": "Katana.esp:1CD73F",
+   "name": "Summon Megara",
+   "edid": "AK69MegaraSummonSP",
+   "kind": "Lesser power",
+   "text": "Get Megara back (only works if she's in your party).",
+   "plugin": "Katana.esp"
+  },
+  {
+   "id": "Katana.esp:0AB001",
+   "name": "Summon Shale",
+   "edid": "AK69ShaleSummonSP",
+   "kind": "Lesser power",
+   "text": "Get Shale back (only works if he's in your party).",
+   "plugin": "Katana.esp"
+  },
+  {
+   "id": "Skyrim.esm:0618C6",
+   "name": "Summon Spectral Assassin",
+   "edid": "REQ_Boon_SummonSpectralAssassin",
+   "kind": "Power",
+   "text": "Summons the ghost of the legendary assassin Lucien Lachance to fight by your side, until he's defeated.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "00Taliesin.esp:91EAAC",
+   "name": "Summon Taliesin",
+   "edid": "VV_TallySpell",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "00Taliesin.esp"
+  },
+  {
+   "id": "Dragonborn.esm:01DF9C",
+   "name": "Sun Flare",
+   "edid": "DLC2StandingStoneSunSpell",
+   "kind": "Power",
+   "text": "A 400 point fiery explosion centered on the caster. Does more damage to closer targets. Single use, then must be reacquired at the Sun Stone.",
+   "plugin": "Wintersun - Reqtificated.esp"
+  },
+  {
+   "id": "RunemasterMagic.esl:000860",
+   "name": "Sundering Inferno",
+   "edid": "_RM_SunderingInferno",
+   "kind": "Lesser power",
+   "text": "An ethereal blaze dealing 80 points of damage. Lowers Magic Resistance by 30 for 30 seconds.\r\n2 Arcane Runestone for a single use enchantment.",
+   "plugin": "RunemasterMagic.esl"
+  },
+  {
+   "id": "Dawnguard.esm:0038BC",
+   "name": "Supernatural Reflexes",
+   "edid": "SQL_VampireLord_Spell_Power_SupernaturalReflexes",
+   "kind": "Lesser power",
+   "text": "Slow time for 10 seconds as you move and attack faster and your power attacks knock targets down.",
+   "plugin": "Sacrilege - Minimalistic Vampires of Skyrim.esp"
+  },
+  {
+   "id": "Paragliding.esp:011754",
+   "name": "Tarhiel's Gale",
+   "edid": "TarhielsGaleSPEL",
+   "kind": "Lesser power",
+   "text": "A gust of wind at your back!",
+   "plugin": "Paragliding.esp"
+  },
+  {
+   "id": "Taunt Your Enemies.esp:000D65",
+   "name": "Taunt Enemies",
+   "edid": "TauntingMatters_PlayerSpell",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "LoreRim - Spells and Magic Effects.esp"
+  },
+  {
+   "id": "Taunt Your Enemies.esp:000D66",
+   "name": "Taunt Enemies",
+   "edid": "TauntingMatters_ActualEffectSpell",
+   "kind": "Lesser power",
+   "text": "Taunting your enemies lowers their confidence, increasing all damage and spell duration by 10% for 30 seconds.",
+   "plugin": "LoreRim - Spells and Magic Effects.esp"
+  },
+  {
+   "id": "ccbgssse002-exoticarrows.esl:000829",
+   "name": "Telekinesis Arrows",
+   "edid": "ccBGSSSE002_LesserPower_TelekinesisArrowLaunch",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "LoreRim - Spells and Magic Effects.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:0060BD",
+   "name": "Telekinetic Weapon",
+   "edid": "REQ_Alteration4_Telekinetic_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, having 10% chance to deal 15 magical damage and knock off targets for 30 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:02A519",
+   "name": "The Power is Mine",
+   "edid": "ORD_Des_ThePowerIsMine_Spell",
+   "kind": "Power",
+   "text": "Channel for 5 seconds, then knock down those nearby and you gain 25% Destruction spell effectiveness per target struck for 20 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Apocalypse - Magic of Skyrim.esp:00CC1B",
+   "name": "The Power of Knowledge",
+   "edid": "WB_S_A075_KnowledgeIsPower_Spell_Power_PC",
+   "kind": "Power",
+   "text": "Casts the spell stored by Knowledge is Power.",
+   "plugin": "Apocalypse - Magic of Skyrim.esp"
+  },
+  {
+   "id": "Biggie Traits.esp:0000C6",
+   "name": "Time to go",
+   "edid": "Traits_HomeownerEndVisitShout",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Biggie Traits.esp"
+  },
+  {
+   "id": "Requiem - Toggle Enchantment.esp:000803",
+   "name": "Toggle Enchantment",
+   "edid": "Nox_ToggleEnchPower",
+   "kind": "Lesser power",
+   "text": "Toggle Enchantment use.",
+   "plugin": "Requiem - Toggle Enchantment.esp"
+  },
+  {
+   "id": "Skyrim.esm:0E40C3",
+   "name": "Tongue's Trance",
+   "edid": "REQ_Trait_Power_NordBattleCry",
+   "kind": "Power",
+   "text": "Your Thu'um can be used more often.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:032D19",
+   "name": "Trained Rabbit",
+   "edid": "ORD_Pic_TrainedRabbit_Spell",
+   "kind": "Lesser power",
+   "text": "Silently sends out a trained rabbit to lead you to the nearest loose valuable item (armor, weapon, key, book, soul gem, ingredient) for 120 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "RunemasterMagic.esl:0008BF",
+   "name": "Transfer Rune",
+   "edid": "_RM_TransferRune",
+   "kind": "Lesser power",
+   "text": "Allows runic enchantments to apply to nearby allies as well when cast.\r\n1 Arcane Runestone for a 360 seconds magic effect.",
+   "plugin": "RunemasterMagic.esl"
+  },
+  {
+   "id": "Transmog.esp:000803",
+   "name": "Transmogrify",
+   "edid": "Transmog_Power",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Transmog.esp"
+  },
+  {
+   "id": "Sacrilege - Minimalistic Vampires of Skyrim.esp:03E7A0",
+   "name": "Tremor",
+   "edid": "SQL_VampireLord_Spell_Power_Tremor",
+   "kind": "Lesser power",
+   "text": "Shake the earth, staggering nearby targets and throwing them into the air.",
+   "plugin": "Sacrilege - Minimalistic Vampires of Skyrim.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:0060E6",
+   "name": "Triple Enchanting",
+   "edid": "REQ_Power_Enchanting_TripleEnchanting",
+   "kind": "Lesser power",
+   "text": "Imbue three enchantments into one item with 50% strength each.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:0379A4",
+   "name": "Tripwire",
+   "edid": "ORD_Sne_Tripwire_Spell",
+   "kind": "Lesser power",
+   "text": "Places a tripwire in front of you for 120 seconds. It snaps when tripped, knocking down all targets around it.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "UndeathFixes.esp:038424",
+   "name": "True Sight",
+   "edid": "NecroUCLLichSight",
+   "kind": "Lesser power",
+   "text": "Improved night vision until turned off.",
+   "plugin": "Requiem - Undeath.esp"
+  },
+  {
+   "id": "Trad_AE_CC_Collection_Requiem_Patch.esp:220585",
+   "name": "Umbra",
+   "edid": "Trad_016_Power_Umbra",
+   "kind": "Lesser power",
+   "text": "Increases Health by 100 points.",
+   "plugin": "Trad_AE_CC_Collection_Requiem_Patch.esp"
+  },
+  {
+   "id": "RunemasterMagic.esl:00084B",
+   "name": "Umbral Veil",
+   "edid": "_RM_UmbralVeil",
+   "kind": "Lesser power",
+   "text": "A veil of shadow dealing 10 points of damage per second for 30 seconds. Reduces Health by 100.\r\n4 Tenebrous Runestone for a single use enchantment.",
+   "plugin": "RunemasterMagic.esl"
+  },
+  {
+   "id": "Dragonborn.esm:01EDA2",
+   "name": "Unlimited Magicka",
+   "edid": "dlc2BBUnlimitedMagickaSpell",
+   "kind": "Power",
+   "text": "Magicka regenerates 1000% faster.",
+   "plugin": "Dragonborn.esm"
+  },
+  {
+   "id": "Dragonborn.esm:01EDA0",
+   "name": "Unlimited Stamina",
+   "edid": "dlc2BBUnlimitedStaminaSpell",
+   "kind": "Power",
+   "text": "Stamina regenerates 1000% faster.",
+   "plugin": "Dragonborn.esm"
+  },
+  {
+   "id": "Dawnguard.esm:00283B",
+   "name": "Vampire Lord Form",
+   "edid": "SQL_VampireLord_Power_Spell_VampireLord",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Dawnguard.esm:005889",
+   "name": "Vampire's Gaze",
+   "edid": "REQ_Vampire_Calm",
+   "kind": "Lesser power",
+   "text": "Targets up to level 4 won't fight for 15 seconds and will stop any hostile actions, as the spell negates their ability to feel pain or hate.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Skyrim.esm:0ED0A4",
+   "name": "Vampire's Scream",
+   "edid": "SQL_Stages_Spell_Stage3_Power",
+   "kind": "Lesser power",
+   "text": "Living targets within range flee for 10 seconds and can be seen through walls. Increases Vampiric hunger.",
+   "plugin": "Sacrilege - Minimalistic Vampires of Skyrim.esp"
+  },
+  {
+   "id": "Skyrim.esm:0C4DE2",
+   "name": "Vampire's Seduction",
+   "edid": "SQL_Mortal_Spell_Power_VampiresSeduction",
+   "kind": "Lesser power",
+   "text": "You feel the hunger, the thirst, the very need for blood. Drawing power from the urge to find someone to feast upon, you can render a weak mortal calmed for 10 seconds and make it bow to you...",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Skyrim.esm:033976",
+   "name": "Vampire's Shadow",
+   "edid": "SQL_Stages_Spell_Stage4_Power",
+   "kind": "Lesser power",
+   "text": "Turn into mist, becoming invisible and sneaking 25% better for 30 seconds. Increases Vampiric hunger.",
+   "plugin": "Sacrilege - Minimalistic Vampires of Skyrim.esp"
+  },
+  {
+   "id": "Sacrilege - Minimalistic Vampires of Skyrim.esp:06B142",
+   "name": "Vampire's Shroud",
+   "edid": "SQL_Stages_Spell_Stage2_Power",
+   "kind": "Lesser power",
+   "text": "Expend some of your blood to protect yourself against Sunlight for 30 seconds. Increases Vampiric hunger.",
+   "plugin": "Sacrilege - Minimalistic Vampires of Skyrim.esp"
+  },
+  {
+   "id": "Skyrim.esm:0C4DE1",
+   "name": "Vampire's Sight",
+   "edid": "SQL_Mortal_Spell_Power_VampiresSight",
+   "kind": "Lesser power",
+   "text": "Improved night vision. Cast again to disable.",
+   "plugin": "Sacrilege - Minimalistic Vampires of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:059D6C",
+   "name": "Walking Disaster",
+   "edid": "ORD_Alc_ElementalOil_Spell_SelfPower_CalmingOil",
+   "kind": "Lesser power",
+   "text": "Spills a pool of oil for 60 seconds. When struck by a Calm spell or effect, nearby creatures and people up to level 50 won't fight for 20 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:059D6E",
+   "name": "Walking Disaster",
+   "edid": "ORD_Alc_ElementalOil_Spell_SelfPower_FireOil",
+   "kind": "Lesser power",
+   "text": "Spills a pool of oil for 60 seconds. When struck by a fire spell or effect, it ignites for 100 points of fire damage. Targets on fire take extra damage.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:059D70",
+   "name": "Walking Disaster",
+   "edid": "ORD_Alc_ElementalOil_Spell_SelfPower_FrenzyOil",
+   "kind": "Lesser power",
+   "text": "Spills a pool of oil for 60 seconds. When struck by a Frenzy spell or effect, nearby creatures and people up to level 50 will attack anything nearby for 20 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:059D72",
+   "name": "Walking Disaster",
+   "edid": "ORD_Alc_ElementalOil_Spell_SelfPower_FrostOil",
+   "kind": "Lesser power",
+   "text": "Spills a pool of oil for 60 seconds. When struck by a frost spell or effect, it rapidly freezes and shatters for 100 points of frost damage to Health and Stamina.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:059D74",
+   "name": "Walking Disaster",
+   "edid": "ORD_Alc_ElementalOil_Spell_SelfPower_HallowedOil",
+   "kind": "Lesser power",
+   "text": "Spills a pool of oil for 60 seconds. When struck by a Turn Undead spell or effect, it bursts into holy energy for 150 points of damage to undead.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:059D76",
+   "name": "Walking Disaster",
+   "edid": "ORD_Alc_ElementalOil_Spell_SelfPower_ParalysisOil",
+   "kind": "Lesser power",
+   "text": "Spills a pool of oil for 60 seconds. When struck by a Paralysis spell or effect, it paralyzes all nearby enemies for 5 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:059D78",
+   "name": "Walking Disaster",
+   "edid": "ORD_Alc_ElementalOil_Spell_SelfPower_ShockOil",
+   "kind": "Lesser power",
+   "text": "Spills a pool of oil for 60 seconds. When struck by a shock spell or effect, it discharges for 100 points of shock damage to Health and Magicka.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Requiem - Special Feats.esp:000806",
+   "name": "War Cry",
+   "edid": "Feat_Spell_WarCry1",
+   "kind": "Lesser power",
+   "text": "Overwhelm your enemies with a roaring shout, striking fear into their hearts. Living enemies up to level 30 do 20% less damage, enemies up to level 20 flee from combat for one minute.",
+   "plugin": "Requiem - Special Feats.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:06A60A",
+   "name": "Warbringer",
+   "edid": "ORD_Hea_Warbringer_Spell_RallyingStandard",
+   "kind": "Lesser power",
+   "text": "Grants 150 points of armor and 25% melee damage to allies within 25 feet wearing all Heavy Armor and prevents them from fleeing. Lasts 120 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Dragonborn.esm:01DFA7",
+   "name": "Waters of Life",
+   "edid": "DLC2StandingStoneWaterSpell",
+   "kind": "Power",
+   "text": "Heals everyone close to the caster by 500 points. The spell does not affect undead, atronachs and automatons. Once used, this power can only be reacquired at the Water Stone.",
+   "plugin": "Wintersun - Reqtificated.esp"
+  },
+  {
+   "id": "Vigilant.esm:3EB971",
+   "name": "Weapon Art: Anti-Magic Field",
+   "edid": "zzzCHWSAntiMagicField",
+   "kind": "Lesser power",
+   "text": "Creates an anti-magic field. Does a large amount of Magicka damage to those in caster's vicinity and dispels cloak and armor spells.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3C0C14",
+   "name": "Weapon Art: Bane of the Undead",
+   "edid": "zzzCHWSBaneUndead",
+   "kind": "Lesser power",
+   "text": "Sets undead on fire and makes them flee.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:537813",
+   "name": "Weapon Art: Bats",
+   "edid": "zzzCHWSStaffBat_Red",
+   "kind": "Lesser power",
+   "text": "Releases bats, dealing 80 points of damage to Health and Stamina.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3C46C9",
+   "name": "Weapon Art: Bed of Corruption",
+   "edid": "zzzCHWSSeedingBed",
+   "kind": "Lesser power",
+   "text": "Turns the caster's body into a nursery for tentacles and grants increased Health regeneration.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3CA88C",
+   "name": "Weapon Art: Berserk",
+   "edid": "zzzCHWSBerserk",
+   "kind": "Lesser power",
+   "text": "Take half damage and do double damage.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3E091B",
+   "name": "Weapon Art: Berserk",
+   "edid": "zzzCHWSBerserk2H",
+   "kind": "Lesser power",
+   "text": "Take half damage and do double damage.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3DF583",
+   "name": "Weapon Art: Black Dragon's Shout",
+   "edid": "zzzCHWSDragonShoutBlack2H",
+   "kind": "Lesser power",
+   "text": "Charge and unleash the roar of a black dragon.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3DF584",
+   "name": "Weapon Art: Black Dragon's Shout",
+   "edid": "zzzCHWSDragonShoutBlack1H",
+   "kind": "Lesser power",
+   "text": "Charge and unleash the roar of a black dragon.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3B4894",
+   "name": "Weapon Art: Blizzard",
+   "edid": "zzzCHWSSwordMaraFrost",
+   "kind": "Lesser power",
+   "text": "Unleashes the might of the frost stored in the sword to create a blizzard.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3CCFB1",
+   "name": "Weapon Art: Blood Curse Wave",
+   "edid": "zzzCHWSBloodcurseWave",
+   "kind": "Lesser power",
+   "text": "Creates a wave of blood curse and absorbs Health from the target.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3E0921",
+   "name": "Weapon Art: Blood Curse Wave",
+   "edid": "zzzCHWSBloodcurseWave2H",
+   "kind": "Lesser power",
+   "text": "Creates a wave of blood curse and absorbs Health from the target.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3C1FA9",
+   "name": "Weapon Art: Circle of Dibella",
+   "edid": "zzzCHWSGuardianCircle2H",
+   "kind": "Lesser power",
+   "text": "Undead entering the circle will flee. While standing inside the circle, the caster heals 20 Health per second.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3E9246",
+   "name": "Weapon Art: Claw of Cruelty",
+   "edid": "zzzCHWSMolagSlash2H",
+   "kind": "Lesser power",
+   "text": "Creates a powerful slash wave of Molag Bal.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3E924B",
+   "name": "Weapon Art: Claw of Cruelty",
+   "edid": "zzzCHWSMolagSlash1H",
+   "kind": "Lesser power",
+   "text": "Creates a slash wave of Molag Bal.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:539C16",
+   "name": "Weapon Art: Cold Eye of Molag",
+   "edid": "zzzCHWSStaffDmn_Blue",
+   "kind": "Lesser power",
+   "text": "Releases a Cold Eye of Molag, dealing 100 points of frost damage.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:55984A",
+   "name": "Weapon Art: Cold Eye of Molag",
+   "edid": "zzzCHWSStaffDmn_Blue1H",
+   "kind": "Lesser power",
+   "text": "Releases a Cold Eye of Molag, dealing 75 points of frost damage.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:539C34",
+   "name": "Weapon Art: Consuming Fire",
+   "edid": "zzzCHWSFlameSplatter1H",
+   "kind": "Lesser power",
+   "text": "Unleashes the might of the flame stored in the sword and burn those in the vicinity.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:539C30",
+   "name": "Weapon Art: Consuming Fire",
+   "edid": "zzzCHWSFlameSplatter2H",
+   "kind": "Lesser power",
+   "text": "Unleashes the might of the flame stored in the sword and burn those in the vicinity.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3D58C4",
+   "name": "Weapon Art: Dance of Bones",
+   "edid": "zzzCHWSBoneDacne",
+   "kind": "Lesser power",
+   "text": "Summons bone spears in the caster's vicinity.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3BAA4A",
+   "name": "Weapon Art: Dawnbreaker Gate",
+   "edid": "zzzCHWSSwordUmaril",
+   "kind": "Lesser power",
+   "text": "Unleashes the power of Meridia. Calls down Dawnbreakers and shoots them at the target.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3BE4F5",
+   "name": "Weapon Art: Dragon Blood",
+   "edid": "zzzCHWSFleshDragon",
+   "kind": "Lesser power",
+   "text": "Awakens the caster's dragon blood and improves armor rating.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3D319D",
+   "name": "Weapon Art: Dragon Fire",
+   "edid": "zzzCHWSDragonfire2H",
+   "kind": "Lesser power",
+   "text": "Creates dragon fire that burns the caster's surroundings. Effective on undead, and also banishes summoned creatures.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3D319E",
+   "name": "Weapon Art: Dragon Fire",
+   "edid": "zzzCHWSDragonfire1H",
+   "kind": "Lesser power",
+   "text": "Creates dragon fire that burns the caster's surroundings. Effective on undead, and also banishes summoned creatures.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3DA718",
+   "name": "Weapon Art: Earth Rumble",
+   "edid": "zzzCHWSStompImpact",
+   "kind": "Lesser power",
+   "text": "Creates an earthquake and staggers those in the vicinity.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3BF884",
+   "name": "Weapon Art: Emperor's Aura",
+   "edid": "zzzCHWSFleshEmperor",
+   "kind": "Lesser power",
+   "text": "Wraps the caster's body in the Emperor's aura and improves armor rating.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:539C17",
+   "name": "Weapon Art: Eye of Molag",
+   "edid": "zzzCHWSStaffDmn_Red",
+   "kind": "Lesser power",
+   "text": "Releases an Eye of Molag, dealing 100 points of fire damage.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:559848",
+   "name": "Weapon Art: Eye of Molag",
+   "edid": "zzzCHWSStaffDmn_Red1H",
+   "kind": "Lesser power",
+   "text": "Releases an Eye of Molag, dealing 75 points of fire damage.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3B4892",
+   "name": "Weapon Art: Fire Storm",
+   "edid": "zzzCHWSSwordMaraFlame",
+   "kind": "Lesser power",
+   "text": "Unleashes the might of the fire stored in the sword to create a fire storm.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3CE347",
+   "name": "Weapon Art: Flame of the Dead",
+   "edid": "zzzCHWSFlameDead",
+   "kind": "Lesser power",
+   "text": "Burns the area around the caster.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3DA721",
+   "name": "Weapon Art: Frost Rumble",
+   "edid": "zzzCHWSStompFrost",
+   "kind": "Lesser power",
+   "text": "Creates an explosion of frost and freezes those in the vicinity.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3C8176",
+   "name": "Weapon Art: Frostwave Charge",
+   "edid": "zzzCHWSChargeFrostwave",
+   "kind": "Lesser power",
+   "text": "Charge and create a wave of frost.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3DBABC",
+   "name": "Weapon Art: Gate of Order",
+   "edid": "zzzCHWSOrderGate2H",
+   "kind": "Lesser power",
+   "text": "Summons and shoots swords at the target.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3DBABD",
+   "name": "Weapon Art: Gate of Order",
+   "edid": "zzzCHWSOrderGate1H",
+   "kind": "Lesser power",
+   "text": "Summons and shoots swords at the target.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3C0C0F",
+   "name": "Weapon Art: Grand Healing",
+   "edid": "zzzCHWSHealGreat",
+   "kind": "Lesser power",
+   "text": "Restores a large amount of Health to the caster and those in the vicinity.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3DE1E3",
+   "name": "Weapon Art: Hail",
+   "edid": "zzzCHWSRainFrost",
+   "kind": "Lesser power",
+   "text": "Calls down a line of hailstones in front of the caster.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3D31A7",
+   "name": "Weapon Art: Headhunt",
+   "edid": "zzzCHWSHeadHunting",
+   "kind": "Lesser power",
+   "text": "Spinning cut creates a powerful Daedric wave.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3CCFBC",
+   "name": "Weapon Art: Healing",
+   "edid": "zzzCHWSHeal",
+   "kind": "Lesser power",
+   "text": "Restores Health to the caster and those in the vicinity.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3C3333",
+   "name": "Weapon Art: Ironflesh",
+   "edid": "zzzCHWSFleshIron",
+   "kind": "Lesser power",
+   "text": "Turns the caster's flesh to iron and improves armor rating.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3EA5E4",
+   "name": "Weapon Art: Late Blessing",
+   "edid": "zzzCHWSCureDisease",
+   "kind": "Lesser power",
+   "text": "Cures all diseases.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3CCFBB",
+   "name": "Weapon Art: Moderate Healing",
+   "edid": "zzzCHWSHealMed",
+   "kind": "Lesser power",
+   "text": "Restores a moderate amount of Health to the caster and those in the vicinity.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:53781F",
+   "name": "Weapon Art: Monkey Lesson",
+   "edid": "zzzCHWSStaffBlood_Silver",
+   "kind": "Lesser power",
+   "text": "Creatures and people up to level 1 flee from combat for 30 seconds.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:53781E",
+   "name": "Weapon Art: Monkey Truth",
+   "edid": "zzzCHWSStaffBlood_Gold",
+   "kind": "Lesser power",
+   "text": "Creatures and people up to level 25 will attack anyone nearby for 60 seconds.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3CF6DB",
+   "name": "Weapon Art: Moonlight Arrow",
+   "edid": "zzzCHWSMoonlightJode",
+   "kind": "Lesser power",
+   "text": "Charge and create Jode's vortex.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3CF6E3",
+   "name": "Weapon Art: Moonlight Arrow",
+   "edid": "zzzCHWSMoonlightJone",
+   "kind": "Lesser power",
+   "text": "Charge and create Jone's vortex.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:546431",
+   "name": "Weapon Art: Necromantic Skull",
+   "edid": "zzzCHWSStaffSkull_Necro",
+   "kind": "Lesser power",
+   "text": "Release a necromantic skull, dealing 80 points of damage to the target's Health and Magicka.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3BBDDA",
+   "name": "Weapon Art: Oakflesh",
+   "edid": "zzzCHWSFleshOak",
+   "kind": "Lesser power",
+   "text": "Covers the caster's body with oak and improves armor rating.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:537812",
+   "name": "Weapon Art: Pale Bats",
+   "edid": "zzzCHWSStaffBat_Blue",
+   "kind": "Lesser power",
+   "text": "Releases pale bats, dealing 80 points of damage to Health and Stamina.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3C5A52",
+   "name": "Weapon Art: Protection of Dibella",
+   "edid": "zzzCHWSGuardianCircle1H",
+   "kind": "Lesser power",
+   "text": "Undead entering the circle will flee. While standing inside the circle, the caster heals 20 Health per second.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3DBAB0",
+   "name": "Weapon Art: Rain of Order",
+   "edid": "zzzCHWSRainOrder",
+   "kind": "Lesser power",
+   "text": "Calls down the rain of Order. Order's prisms skewer those in the caster's vicinity.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3C3337",
+   "name": "Weapon Art: Rapid Fire",
+   "edid": "zzzCHWSRapidFirex3",
+   "kind": "Lesser power",
+   "text": "Equipped weapon swings faster for 15 seconds.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3C333B",
+   "name": "Weapon Art: Rapid Fire",
+   "edid": "zzzCHWSRapidFirex2",
+   "kind": "Lesser power",
+   "text": "Equipped weapon swings faster for 15 seconds.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3DF586",
+   "name": "Weapon Art: Red Dragon's Shout",
+   "edid": "zzzCHWSDragonShoutRed1H",
+   "kind": "Lesser power",
+   "text": "Charge and unleash the roar of a red dragon.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3DF588",
+   "name": "Weapon Art: Red Dragon's Shout",
+   "edid": "zzzCHWSDragonShoutRed2H",
+   "kind": "Lesser power",
+   "text": "Charge and unleash the roar of a red dragon.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:539C25",
+   "name": "Weapon Art: Shard of Londa-Vera",
+   "edid": "zzzCHWSStaffHLL_Green",
+   "kind": "Lesser power",
+   "text": "Releases a shard of the Green Star, dealing 100 points of damage to the target's Health and Stamina.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:559845",
+   "name": "Weapon Art: Shard of Londa-Vera",
+   "edid": "zzzCHWSStaffHLL_Green1H",
+   "kind": "Lesser power",
+   "text": "Releases a shard of the Green Star, dealing 75 points of damage to the target's Health and Stamina.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:539C24",
+   "name": "Weapon Art: Shard of Mnemo-Li",
+   "edid": "zzzCHWSStaffHLL_Blue",
+   "kind": "Lesser power",
+   "text": "Releases a shard of the Blue Star, dealing 100 points of damage to the target's Health and Magicka.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:559846",
+   "name": "Weapon Art: Shard of Mnemo-Li",
+   "edid": "zzzCHWSStaffHLL_Blue1H",
+   "kind": "Lesser power",
+   "text": "Releases a shard of the Blue Star, dealing 75 points of damage to the target's Health and Magicka.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3C6DE6",
+   "name": "Weapon Art: Shockwave Charge",
+   "edid": "zzzCHWSChargeShockwave",
+   "kind": "Lesser power",
+   "text": "Charge and create a shockwave.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3D0A6D",
+   "name": "Weapon Art: Shooting Star",
+   "edid": "zzzCHWSShootingStar",
+   "kind": "Lesser power",
+   "text": "Spinning cut creates a powerful slash wave.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3D0A73",
+   "name": "Weapon Art: Shooting Stardust",
+   "edid": "zzzCHWSShooting",
+   "kind": "Lesser power",
+   "text": "Spinning cut creates a slash wave.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3D0A77",
+   "name": "Weapon Art: Shrink",
+   "edid": "zzzCHWSShukuchi",
+   "kind": "Lesser power",
+   "text": "The caster becomes invisible for 3 seconds. Activating an object or attacking will break the spell, however.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3DA70D",
+   "name": "Weapon Art: Skull Breaker",
+   "edid": "zzzCHWSKabutoWari",
+   "kind": "Lesser power",
+   "text": "A powerful downwards swing that pushes away those in the caster's vicinity.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:50206E",
+   "name": "Weapon Art: Slow Time",
+   "edid": "zzzCHWSSlowTimeDagger",
+   "kind": "Lesser power",
+   "text": "Slows time for 4 seconds.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:50206F",
+   "name": "Weapon Art: Slow Time",
+   "edid": "zzzCHWSSlowTime2H",
+   "kind": "Lesser power",
+   "text": "Slows time for 6 seconds.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3E0917",
+   "name": "Weapon Art: Sman-Sman",
+   "edid": "zzzCHWSSmanSman",
+   "kind": "Lesser power",
+   "text": "A powerful downwards swing that pushes away opponents in the caster's vicinity.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3C6DDF",
+   "name": "Weapon Art: Tailwind",
+   "edid": "zzzCHWSKyneStorm1H",
+   "kind": "Lesser power",
+   "text": "Kyne's Tailwind improves the caster's physical ability.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:5365F5",
+   "name": "Weapon Art: Tailwind",
+   "edid": "zzzCHWSKyneStorm2H",
+   "kind": "Lesser power",
+   "text": "Kyne's Tailwind improves the caster's physical ability.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3E924F",
+   "name": "Weapon Art: Thorns",
+   "edid": "zzzCHWSMolagThronSpread",
+   "kind": "Lesser power",
+   "text": "Create thorns of Molag Bal in the caster's vicinity.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3EA5DE",
+   "name": "Weapon Art: Thorns",
+   "edid": "zzzCHWSMolagThronLinear",
+   "kind": "Lesser power",
+   "text": "Create thorns of Molag Bal in front of the caster.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3DE1E2",
+   "name": "Weapon Art: Thunder",
+   "edid": "zzzCHWSRainThunder",
+   "kind": "Lesser power",
+   "text": "Creates a line of lightning in front of the caster.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3CA8A2",
+   "name": "Weapon Art: Thunder Storm Charge",
+   "edid": "zzzCHWSChargeThunderboltMass",
+   "kind": "Lesser power",
+   "text": "Charge and create a thunder storm.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3CA89C",
+   "name": "Weapon Art: Thunderball",
+   "edid": "zzzCHWSThunderball",
+   "kind": "Lesser power",
+   "text": "Creates a thunderball to attack the caster's surroundings.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3CA896",
+   "name": "Weapon Art: Thunderbolt Charge",
+   "edid": "zzzCHWSChargeThunderbolt",
+   "kind": "Lesser power",
+   "text": "Charge and create a thunderbolt.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3BBDE3",
+   "name": "Weapon Art: Umbra",
+   "edid": "zzzCHWSFleshEbony",
+   "kind": "Lesser power",
+   "text": "Covers the caster's body with shadows of Umbra and improves armor rating.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3D1E06",
+   "name": "Weapon Art: Whirlwind of Ashpit",
+   "edid": "zzzCHWSWhirlwindAhspit2H",
+   "kind": "Lesser power",
+   "text": "Spinning cut creates a powerful whirlwind from the Ashpit.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3D1E0C",
+   "name": "Weapon Art: Whirlwind of Ashpit",
+   "edid": "zzzCHWSWhirlwindAhspit1H",
+   "kind": "Lesser power",
+   "text": "Spinning cut creates a whirlwind from the Ashpit.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3E0913",
+   "name": "Weapon Art: Whisper",
+   "edid": "zzzCHWSRapidThwingWhisper",
+   "kind": "Lesser power",
+   "text": "Equipped weapon swings faster for 15 seconds.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3DF58A",
+   "name": "Weapon Art: White Dragon's Shout",
+   "edid": "zzzCHWSDragonShoutWhite2H",
+   "kind": "Lesser power",
+   "text": "Charge and unleash the roar of a white dragon.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3DF58C",
+   "name": "Weapon Art: White Dragon's Shout",
+   "edid": "zzzCHWSDragonShoutWhite1H",
+   "kind": "Lesser power",
+   "text": "Charge and unleash the roar of a white dragon.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:502066",
+   "name": "Weapon Art: Winds of Tava",
+   "edid": "zzzCHWSRapidThwingTava2H",
+   "kind": "Lesser power",
+   "text": "Equipped weapon swings faster for 15 seconds.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:502065",
+   "name": "Weapon Art: Winds of Tava",
+   "edid": "zzzCHWSRapidThwingTava1H",
+   "kind": "Lesser power",
+   "text": "Equipped weapon swings faster for 15 seconds.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Vigilant.esm:3BAA50",
+   "name": "Weapon Art: Wrath of Stendarr",
+   "edid": "zzzCHWSStendarrMercy",
+   "kind": "Lesser power",
+   "text": "Creates a powerful shockwave and pushes away those in the vicinity.",
+   "plugin": "Vigilant.esm"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:03381A",
+   "name": "Whispering Death",
+   "edid": "ORD_Sne_WhisperingDeath_Spell",
+   "kind": "Power",
+   "text": "Meld into the shadows, doubling sneak effectiveness and sneak attack damage for 30 seconds.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "FDE Aela Part 2.esp:000877",
+   "name": "Whistle at Aela to Transform",
+   "edid": "aaAelaWerewolfSpell",
+   "kind": "Power",
+   "text": "Signal Aela to transform while she is your follower, and you are in a dungeon.",
+   "plugin": "FDE Aela Part 2.esp"
+  },
+  {
+   "id": "Inigo.esp:0AA097",
+   "name": "Whistle to Inigo",
+   "edid": "InigoStopFightingPower",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Inigo.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:023878",
+   "name": "Wild Companion Release",
+   "edid": "ORD_Spe_SpeakWithAnimals_Spell_DispelPower",
+   "kind": "Lesser power",
+   "text": "Releases a Wild Companion from your command.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Requiem - Magic Redone.esp:0060C1",
+   "name": "Wind Weapon",
+   "edid": "REQ_Alteration4_Wind_EnchSelf",
+   "kind": "Lesser power",
+   "text": "The caster's non-enchanted weapons are magically enhanced, attacking 15% faster for 30 seconds.",
+   "plugin": "Requiem - Magic Redone.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:004EF7",
+   "name": "Windmill Attack",
+   "edid": "ORD_One_WindmillAttack_Spell_Power",
+   "kind": "Lesser power",
+   "text": "For 20 seconds, power attack wildly with your equipped one-handed weapons.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:022822",
+   "name": "Witchdrum",
+   "edid": "ORD_Spe_EarthquakeDrum_Spell_Proc_Witchdrum",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  },
+  {
+   "id": "Wintersun - Faiths of Skyrim.esp:214A49",
+   "name": "Worship",
+   "edid": "WSN_Prayer_Spell_AtShrine",
+   "kind": "Lesser power",
+   "text": "When out of combat, pray at a shrine to strengthen your bond with your deity.",
+   "plugin": "Wintersun - Reqtificated.esp"
+  },
+  {
+   "id": "018Auri.esp:34133D",
+   "name": "Y'frre's Lesson",
+   "edid": "018AuriSummonSpell",
+   "kind": "Lesser power",
+   "text": "",
+   "plugin": "018Auri.esp"
+  },
+  {
+   "id": "Ordinator - Perks of Skyrim.esp:03486C",
+   "name": "You Saw Nothing",
+   "edid": "ORD_Pic_YouSawNothing_Spell",
+   "kind": "Power",
+   "text": "Distract the target and others in a 40 foot radius around the target. For 45 seconds, you will not receive a bounty if they are the only witnesses of your crimes.",
+   "plugin": "Ordinator - Perks of Skyrim.esp"
+  }
+ ],
+ "fromPerks": [
+  {
+   "perk": "Night Vision",
+   "perkEdid": "REQ_Alchemy_NightVision",
+   "power": "Requiem.esp:1CD494"
+  },
+  {
+   "perk": "Toggle of Hiding as a lesser power",
+   "perkEdid": "REQ_Spell_ToggleHidingSpells",
+   "power": "Requiem.esp:3FF1EB"
+  },
+  {
+   "perk": "War Cry",
+   "perkEdid": "Feat_Perk_Skill_Speechcraft_WarCry",
+   "power": "Requiem - Special Feats.esp:000806"
+  },
+  {
+   "perk": "Sign of the Shadow",
+   "perkEdid": "REQ_Ability_Birthsign_Shadow_Perk",
+   "power": "Requiem - Birthsigns Redone.esp:000808"
+  },
+  {
+   "perk": "Sign of the Serpent",
+   "perkEdid": "REQ_Ability_Birthsign_Serpent_Perk",
+   "power": "Requiem - Birthsigns Redone.esp:00080C"
+  },
+  {
+   "perk": "Toggle Enchantment Perk",
+   "perkEdid": "Nox_ToggleEnchPerk",
+   "power": "Requiem - Toggle Enchantment.esp:000803"
+  },
+  {
+   "perk": "Turn of the Seasons",
+   "perkEdid": "ccTWBSSE001_SeasonsPerkz",
+   "power": "Trad_AE_CC_Collection_Requiem_Patch.esp:295830"
+  },
+  {
+   "perk": "Artificer's Insight",
+   "perkEdid": "REQ_Enchanting_Artificer_075_ArtificersInsight",
+   "power": "Requiem.esp:03F041"
+  },
+  {
+   "perk": "Arcane Experimentation",
+   "perkEdid": "REQ_Enchanting_Artificer_050_ArcaneExperimentation",
+   "power": "Requiem.esp:03F03D"
+  },
+  {
+   "perk": "Power of Life",
+   "perkEdid": "REQ_Restoration_Recovery_050_PowerOfLife",
+   "power": "Requiem.esp:0089CC"
+  },
+  {
+   "perk": "Mystic Infusion",
+   "perkEdid": "REQ_Conjuration_Bound_050_MysticInfusion",
+   "power": "Requiem - Magic Redone.esp:0061D5"
+  },
+  {
+   "perk": "Essence of Life",
+   "perkEdid": "REQ_Restoration_Recovery_075_EssenceOfLife",
+   "power": "Requiem.esp:17E064"
+  },
+  {
+   "perk": "Essence of Life",
+   "perkEdid": "REQ_Restoration_Recovery_075_EssenceOfLife",
+   "power": "Requiem.esp:17E061"
+  },
+  {
+   "perk": "Dispel Waterwalking",
+   "perkEdid": "REQ_AlterationGM_Dispel_Waterwalking",
+   "power": "Requiem - Magic Redone.esp:00602A"
+  },
+  {
+   "perk": "Artifact Enchanter",
+   "perkEdid": "REQ_Enchanting_Artifact_100_ArtifactEnchanter",
+   "power": "Requiem - Magic Redone.esp:0060E6"
+  },
+  {
+   "perk": "Dispel Jump",
+   "perkEdid": "REQ_AlterationGM_Dispel_Jump",
+   "power": "Requiem - Magic Redone.esp:006299"
+  },
+  {
+   "perk": "Trapper",
+   "perkEdid": "LoreRimTrapper_Rank1",
+   "power": "LoreRim Trapper.esp:00001D"
+  },
+  {
+   "perk": "Combat Reflexes",
+   "perkEdid": "REQ_Evasion_CombatReflexes",
+   "power": "Requiem.esp:07CB8A"
+  },
+  {
+   "perk": "Enchantment Mastery",
+   "perkEdid": "REQ_Enchanting_Enchantment_100_EnchantmentMastery",
+   "power": "Requiem.esp:4BB5EE"
+  },
+  {
+   "perk": "The Way of the Voice",
+   "perkEdid": "REQ_Speech_TheWayOfTheVoice",
+   "power": "Skyrim.esm:0E40C3"
+  },
+  {
+   "perk": "Metamagic",
+   "perkEdid": "Feat_Perk_Char_Alteration_Metamagic1",
+   "power": "Requiem - Special Feats.esp:00088E"
+  },
+  {
+   "perk": "Metamagic",
+   "perkEdid": "Feat_Perk_Char_Alteration_Metamagic1",
+   "power": "Requiem - Special Feats.esp:00088F"
+  },
+  {
+   "perk": "Metamagic",
+   "perkEdid": "Feat_Perk_Char_Alteration_Metamagic1",
+   "power": "Requiem - Special Feats.esp:000890"
+  },
+  {
+   "perk": "Hawkeye",
+   "perkEdid": "ORD_Arc80_Deadeye_Perk_80_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:0D23EF"
+  },
+  {
+   "perk": "Apotheosis",
+   "perkEdid": "ORD_ResMAX_Apotheosis_Perk_MAX_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:184E58"
+  },
+  {
+   "perk": "Rat King",
+   "perkEdid": "ORD_Con40_RatKing_Perk_40_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:0CC2AF"
+  },
+  {
+   "perk": "Night Eye",
+   "perkEdid": "ORD_Ill30_NightEye_Perk_30_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:0BC4F9"
+  },
+  {
+   "perk": "Merciless Storm",
+   "perkEdid": "ORD_Spe80_MercilessStorm_Perk_80_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:02388C"
+  },
+  {
+   "perk": "Horn of Sovngarde",
+   "perkEdid": "ORD_Spe70_HornOfSovngarde_Perk_70_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:021260"
+  },
+  {
+   "perk": "Dimension Door",
+   "perkEdid": "ORD_Alt80_DimensionDoor_Perk_80_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:02BAD4"
+  },
+  {
+   "perk": "Bait",
+   "perkEdid": "ORD_Loc70_Bait_Perk_70_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:03173C"
+  },
+  {
+   "perk": "Trained Rabbit",
+   "perkEdid": "ORD_Pic20_TrainedRabbit_Perk_20_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:032D19"
+  },
+  {
+   "perk": "Mutiny",
+   "perkEdid": "ORD_Pic90_Mutiny_Perk_90_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:0342F8"
+  },
+  {
+   "perk": "You Saw Nothing",
+   "perkEdid": "ORD_Pic80_YouSawNothing_Perk_80_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:03486C"
+  },
+  {
+   "perk": "Spot Detection",
+   "perkEdid": "ORD_Sne30_SpotDetection_Perk_30_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:0363B2"
+  },
+  {
+   "perk": "Laughing Ghost",
+   "perkEdid": "ORD_SneMAX_LaughingGhost_Perk_MAX_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:0BFB18"
+  },
+  {
+   "perk": "Disengage",
+   "perkEdid": "ORD_Sne60_Disengage_Perk_60_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:036EA1"
+  },
+  {
+   "perk": "Smokescreen",
+   "perkEdid": "ORD_Sne60_SmokeCurtain_Perk_60_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:036EB3"
+  },
+  {
+   "perk": "Tripwire",
+   "perkEdid": "ORD_Sne20_Tripwire_Perk_20_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:0379A4"
+  },
+  {
+   "perk": "Amplify Lethality",
+   "perkEdid": "ORD_Alc80_AmplifyLethality_Perk_80",
+   "power": "Ordinator - Perks of Skyrim.esp:03E17C"
+  },
+  {
+   "perk": "Charge Tap",
+   "perkEdid": "ORD_Enc70_ChargeTap_Perk_70_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:03ECBB"
+  },
+  {
+   "perk": "Dwarven Autocannon",
+   "perkEdid": "ORD_Smh20_DwarvenAutocannon_Perk_20_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:056C83"
+  },
+  {
+   "perk": "Spellscribe",
+   "perkEdid": "ORD_Enc40_Spellscribe_Perk_40_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:09E331"
+  },
+  {
+   "perk": "Barrow Lord",
+   "perkEdid": "ORD_Con40_BarrowLord2_Perk_40_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:0FDAD9"
+  },
+  {
+   "perk": "Conjure Altar",
+   "perkEdid": "ORD_Con60_ConjureAltar_Perk_60_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:0749C0"
+  },
+  {
+   "perk": "Lion's Arrow",
+   "perkEdid": "ORD_Arc90_LionsArrow_Perk_90_OrdASISExclude",
+   "power": "Ordinator - Perks of Skyrim.esp:117FFF"
+  }
+ ],
+ "shouts": [
+  {
+   "id": "Skyrim.esm:07097B",
+   "name": "Aura Whisper",
+   "edid": "AuraWhisperShout",
+   "words": [
+    "L1s",
+    "Y4",
+    "N7"
+   ],
+   "translations": [
+    "Life",
+    "Seek",
+    "Hunt"
+   ],
+   "text": "Your Voice is not a Shout, but a whisper, revealing the life forces of any and all.",
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Dragonborn.esm:02AD09",
+   "name": "Battle Fury",
+   "edid": "DLC2BattleFuryShout",
+   "words": [
+    "Mid",
+    "V6",
+    "Sh1n"
+   ],
+   "translations": [
+    "Loyal",
+    "Valor",
+    "Inspire"
+   ],
+   "text": "Your Thu'um enchants your nearby allies' weapons, allowing them to attack faster.",
+   "plugin": "Dragonborn.esm"
+  },
+  {
+   "id": "Skyrim.esm:032920",
+   "name": "Become Ethereal",
+   "edid": "BecomeEtherealShout",
+   "words": [
+    "F2m",
+    "Z3",
+    "Gron"
+   ],
+   "translations": [
+    "Fade",
+    "Spirit",
+    "Bind"
+   ],
+   "text": "Your Thu'um reaches out to the Void, changing your form to one that cannot harm, or be harmed.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Dragonborn.esm:0179D8",
+   "name": "Bend Will",
+   "edid": "DLC2BendWillShout",
+   "words": [
+    "Gol",
+    "H4",
+    "Dov"
+   ],
+   "translations": [
+    "Earth",
+    "Mind",
+    "Dragon"
+   ],
+   "text": "Your Voice bends the very stones to your will. As it gains power, animals, people and even dragons must do your bidding.",
+   "plugin": "Dragonborn.esm"
+  },
+  {
+   "id": "Skyrim.esm:046B8C",
+   "name": "Call Dragon",
+   "edid": "CallDragonShout",
+   "words": [
+    "Od",
+    "4",
+    "V3ng"
+   ],
+   "translations": [
+    "Snow",
+    "Hunter",
+    "Wing"
+   ],
+   "text": "Odahviing! Hear my Voice and come forth. I summon you in my time of need.",
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:05196A",
+   "name": "Call of Valor",
+   "edid": "CallofValorShout",
+   "words": [
+    "Hun",
+    "K1l",
+    "Z8r"
+   ],
+   "translations": [
+    "Hero",
+    "Champion",
+    "Legend"
+   ],
+   "text": "The valiant of Sovngarde hear your Voice, and journey beyond space and time to lend aid.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Skyrim.esm:03CD34",
+   "name": "Clear Skies",
+   "edid": "ClearSkiesShout",
+   "words": [
+    "Lok",
+    "V4",
+    "K8r"
+   ],
+   "translations": [
+    "Sky",
+    "Spring",
+    "Summer"
+   ],
+   "text": "Skyrim itself yields before the Thu'um, as you clear away fog and inclement weather.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Dragonborn.esm:0200C0",
+   "name": "Cyclone",
+   "edid": "DLC2CycloneShout",
+   "words": [
+    "Ven",
+    "G1r",
+    "Nos"
+   ],
+   "translations": [
+    "Wind",
+    "Unleash",
+    "Strike"
+   ],
+   "text": "Your Thu'um creates a whirling cyclone that sows chaos among your enemies.",
+   "plugin": "Dragonborn.esm"
+  },
+  {
+   "id": "Skyrim.esm:070981",
+   "name": "Disarm",
+   "edid": "DisarmShout",
+   "words": [
+    "Zun",
+    "H1l",
+    "V3k"
+   ],
+   "translations": [
+    "Weapon",
+    "Hand",
+    "Defeat"
+   ],
+   "text": "Your Thu'um defies steel, as you rip the weapon from an opponent's grasp.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Skyrim.esm:02395A",
+   "name": "Dismay",
+   "edid": "Dismay",
+   "words": [
+    "F1s",
+    "Ru",
+    "M1r"
+   ],
+   "translations": [
+    "Fear",
+    "Run",
+    "Terror"
+   ],
+   "text": "And the weak shall fear the Thu'um, and flee in terror.",
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Dragonborn.esm:01DF92",
+   "name": "Dragon Aspect",
+   "edid": "DLC2DragonAspectShout",
+   "words": [
+    "Mul",
+    "Q4",
+    "D3v"
+   ],
+   "translations": [
+    "Strength",
+    "Armor",
+    "Wyrm"
+   ],
+   "text": "Once a day, take on the mighty aspect of a dragon, delivering colossal blows, with an armored hide, and more powerful shouts.",
+   "plugin": "Dragonborn.esm"
+  },
+  {
+   "id": "Skyrim.esm:044250",
+   "name": "Dragonrend",
+   "edid": "DragonrendShout",
+   "words": [
+    "J8r",
+    "Z4",
+    "Frul"
+   ],
+   "translations": [
+    "Mortal",
+    "Finite",
+    "Temporary"
+   ],
+   "text": "Your Voice lashes out at a dragon's very soul, forcing the beast to land.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Dawnguard.esm:008A62",
+   "name": "Drain Vitality",
+   "edid": "DLC1DrainVitalityShout",
+   "words": [
+    "G1n",
+    "L4",
+    "H1s"
+   ],
+   "translations": [
+    "Stamina",
+    "Magicka",
+    "Health"
+   ],
+   "text": "Your Thu'um reaches out and steals the very lifeforce of your enemies.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Skyrim.esm:032921",
+   "name": "Elemental Fury",
+   "edid": "ElementalFuryShout",
+   "words": [
+    "Su",
+    "Gr4",
+    "Dun"
+   ],
+   "translations": [
+    "Air",
+    "Battle",
+    "Grace"
+   ],
+   "text": "The Thu'um imbues you with the power of the elements, enhancing melee attacks.",
+   "plugin": "Elemental Fury for MCO ADXP.esp"
+  },
+  {
+   "id": "Skyrim.esm:03F9EA",
+   "name": "Fire Breath",
+   "edid": "FireBreathShout",
+   "words": [
+    "Yol",
+    "T8r",
+    "Shul"
+   ],
+   "translations": [
+    "Fire",
+    "Inferno",
+    "Sun"
+   ],
+   "text": "Inhale air, exhale flame, and behold the Thu'um as a blazing inferno.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Skyrim.esm:05D16B",
+   "name": "Frost Breath",
+   "edid": "FrostBreathShout",
+   "words": [
+    "Fo",
+    "Kr4",
+    "D3n"
+   ],
+   "translations": [
+    "Frost",
+    "Cold",
+    "Freeze"
+   ],
+   "text": "Your breath is winter, your Thu'um a blizzard.",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp"
+  },
+  {
+   "id": "Skyrim.esm:070980",
+   "name": "Ice Form",
+   "edid": "IceFormShout",
+   "words": [
+    "3z",
+    "Slen",
+    "Nus"
+   ],
+   "translations": [
+    "Ice",
+    "Flesh",
+    "Statue"
+   ],
+   "text": "Your Thu'um is ice, and so are those unfortunate ones who tease your wrath.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Skyrim.esm:07097E",
+   "name": "Kyne's Peace",
+   "edid": "KynesPeaceShout",
+   "words": [
+    "K1n",
+    "Drem",
+    "Ov"
+   ],
+   "translations": [
+    "Kyne",
+    "Peace",
+    "Trust"
+   ],
+   "text": "Your Thu'um calls forth the grace of Mother Kyne herself, calming animals and filling your body with strength...",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Skyrim.esm:07097C",
+   "name": "Marked for Death",
+   "edid": "MarkedforDeathShout",
+   "words": [
+    "Kr3",
+    "Lun",
+    "Aus"
+   ],
+   "translations": [
+    "Kill",
+    "Leech",
+    "Suffer"
+   ],
+   "text": "Speak, and let your Voice herald doom, as an opponent's armor and lifeforce wither in a trice.",
+   "plugin": "Requiem.esp"
+  },
+  {
+   "id": "Miasma.esp:00194B",
+   "name": "Miasmic Breath",
+   "edid": "RE01MiasmaBreathShout",
+   "words": [
+    "Dur",
+    "Naak",
+    "Dir"
+   ],
+   "translations": [
+    "Curse",
+    "Eat",
+    "Die"
+   ],
+   "text": "Your voice is death, behold as your opponents decay.",
+   "plugin": "Miasma.esp"
+  },
+  {
+   "id": "Skyrim.esm:02F2DF",
+   "name": "Phantom Form",
+   "edid": "MQ105PhantomFormShout",
+   "words": [
+    "Fiik",
+    "Lo",
+    "Sah"
+   ],
+   "translations": [
+    "Mirror",
+    "Deceive",
+    "Phantom"
+   ],
+   "text": "",
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Wyrmstooth.esp:30C92F",
+   "name": "Phantom Form",
+   "edid": "WTPhantomFormShout",
+   "words": [
+    "Fiik",
+    "Lo",
+    "Sah"
+   ],
+   "translations": [
+    "Mirror",
+    "Deceive",
+    "Phantom"
+   ],
+   "text": "Conjures a spectral facade to act as a decoy.",
+   "plugin": "Wyrmstooth.esp"
+  },
+  {
+   "id": "Siege at Icemoth.esp:012771",
+   "name": "Plague Breath",
+   "edid": "HYORPlagueBreathShout",
+   "words": [
+    "V3r",
+    "Su",
+    "P8k"
+   ],
+   "translations": [
+    "Dying",
+    "Air",
+    "Stink"
+   ],
+   "text": "Your breath is toxic, you Thu'um a plague.",
+   "plugin": "LoreRim - Spells and Magic Effects.esp"
+  },
+  {
+   "id": "Skyrim.esm:05FC77",
+   "name": "Predator's Might",
+   "edid": "animalAllegianceShout",
+   "words": [
+    "R1n",
+    "M7",
+    "T4"
+   ],
+   "translations": [
+    "Animal",
+    "Allegiance",
+    "Pack"
+   ],
+   "text": "Your Thu'um commands nature itself to come to your aid and fills your heart with the power of a dire predator.",
+   "plugin": "LoreRim - Spells and Magic Effects.esp"
+  },
+  {
+   "id": "Skyrim.esm:048AC9",
+   "name": "Slow Time",
+   "edid": "SlowTimeShout",
+   "words": [
+    "T3d",
+    "Klo",
+    "Ul"
+   ],
+   "translations": [
+    "Time",
+    "Sand",
+    "Eternity"
+   ],
+   "text": "Shout at time, and command it to obey, as the world around you stands still.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Dawnguard.esm:007CB6",
+   "name": "Soul Tear",
+   "edid": "DLC1SoulTearShout",
+   "words": [
+    "R3",
+    "V1z",
+    "Zol"
+   ],
+   "translations": [
+    "Essence",
+    "Tear",
+    "Zombie"
+   ],
+   "text": "Your Thu'um cuts through flesh and shatters soul, commanding the will of the fallen.",
+   "plugin": "Dawnguard.esm"
+  },
+  {
+   "id": "Skyrim.esm:07097D",
+   "name": "Static Roar",
+   "edid": "StormCallShout",
+   "words": [
+    "Strun",
+    "B4",
+    "Qo"
+   ],
+   "translations": [
+    "Storm",
+    "Wrath",
+    "Lightning"
+   ],
+   "text": "Your Thu'um projects into a powerful surge of electricity that lingers on damaged foes.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Trad_AE_CC_Collection_Requiem_Patch.esp:01EE05",
+   "name": "Storm Call",
+   "edid": "Trad_007_StormCallShout",
+   "words": [
+    "Strun",
+    "B4",
+    "Qo"
+   ],
+   "translations": [
+    "Storm",
+    "Wrath",
+    "Lightning"
+   ],
+   "text": "A Shout to the skies, a cry to the clouds, that awakens the destructive force of Skyrim's lightning.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Dawnguard.esm:0030D2",
+   "name": "Summon Durnehviir",
+   "edid": "DLC1SummonDragonShout",
+   "words": [
+    "D6",
+    "Neh",
+    "V3r"
+   ],
+   "translations": [
+    "Curse",
+    "Never",
+    "Dying"
+   ],
+   "text": "Durnehviir! Hear my Voice and come forth from the Soul Cairn. I summon you in my time of need.",
+   "plugin": "Dawnguard.esm"
+  },
+  {
+   "id": "Skyrim.esm:07097F",
+   "name": "Throw Voice",
+   "edid": "ThrowVoiceShout",
+   "words": [
+    "Zul",
+    "M9",
+    "Gut"
+   ],
+   "translations": [
+    "Voice",
+    "Fool",
+    "Far"
+   ],
+   "text": "The Thu'um is heard, but its source unknown, fooling those into seeking it out.",
+   "plugin": "Big Tweaks.esp"
+  },
+  {
+   "id": "Skyrim.esm:013E07",
+   "name": "Unrelenting Force",
+   "edid": "UnrelentingForceShout",
+   "words": [
+    "Fus",
+    "Ro",
+    "D4"
+   ],
+   "translations": [
+    "Force",
+    "Balance",
+    "Push"
+   ],
+   "text": "Your Voice is raw power, pushing aside anything - or anyone - who stands in your path.",
+   "plugin": "Skyrim.esm"
+  },
+  {
+   "id": "Skyrim.esm:02F7BA",
+   "name": "Whirlwind Sprint",
+   "edid": "WhirlwindSprintShout",
+   "words": [
+    "Wuld",
+    "N4",
+    "Kest"
+   ],
+   "translations": [
+    "Whirlwind",
+    "Fury",
+    "Tempest"
+   ],
+   "text": "The Thu'um rushes forward, carrying you in its wake with the speed of a tempest.",
+   "plugin": "Skyrim.esm"
+  }
+ ]
+}
