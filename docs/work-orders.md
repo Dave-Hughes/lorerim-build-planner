@@ -1703,7 +1703,7 @@ From Dave's notes, 12 Oct. Dave hopes to partner with Zenematics (`https://www.y
 
 Dave's call, 12 Oct: use Sightengine's free plan (2,000 images a month, at most 500 a day), and tune it so LoreRim's weapons, gore and near-nudity pass while porn doesn't. Do after WO-39.
 
-**Waiting on Dave for one thing.** He signs up at sightengine.com and adds the keys in Vercel as `SIGHTENGINE_API_USER` and `SIGHTENGINE_API_SECRET`, for Production and Preview. Build and test everything with the API mocked; don't wait for the keys.
+**The keys are in** (12 Oct, checked by the chat session): `SIGHTENGINE_API_USER` and `SIGHTENGINE_API_SECRET` are set in Vercel as Sensitive, for Production and Preview, not Development. Unit tests and e2e use a mocked check. Once WO-40 is on staging, upload one real cover there to confirm a live check runs, and say so in the commit. Never print or log the keys. The team is on Vercel Pro, which matters for BotID (§4).
 
 ### 1. Every uploaded image is checked before it's stored
 - **Where:** both upload routes, `src/app/api/covers/route.ts` and `src/app/api/builds/[id]/images/route.ts`.
