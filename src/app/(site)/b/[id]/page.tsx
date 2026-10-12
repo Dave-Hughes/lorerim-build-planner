@@ -8,17 +8,17 @@ import { RetiredBuild } from "@/components/build/retired-build";
 import { GameDataProvider } from "@/components/game-data";
 import { SignInButton } from "@/components/site-header";
 import { getBuild } from "@/lib/builds/queries";
+import { buildMetadata } from "@/lib/og/metadata";
 import { getGuide } from "@/lib/guide/queries";
 import { clientVersion, isKnownVersion } from "@/lib/rules/server";
 
 type Params = Promise<{ id: string }>;
 type Search = Promise<{ level?: string; copy?: string; tab?: string }>;
 
+/** Link previews (WO-33): a listed or link-only build's own card; nothing about a private one. */
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { id } = await params;
-  const build = await getBuild(id, null);
-  if (!build) return { title: "Build not found" };
-  return { title: build.name, description: build.description || `A LoreRim ${build.gameVersion} build by ${build.author.name}.` };
+  return buildMetadata(await getBuild(id, null));
 }
 
 export default async function BuildPage({ params, searchParams }: { params: Params; searchParams: Search }) {

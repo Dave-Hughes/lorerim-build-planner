@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Alegreya, Alegreya_SC, Sofia_Sans, Sofia_Sans_Extra_Condensed } from "next/font/google";
 import "./globals.css";
+import { SITE_LINE, SITE_NAME, siteBase, siteMetadata } from "@/lib/og/metadata";
 
 const sofia = Sofia_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-sofia" });
 const sofiaCondensed = Sofia_Sans_Extra_Condensed({
@@ -13,9 +14,13 @@ const alegreya = Alegreya({ subsets: ["latin"], style: ["normal", "italic"], wei
 // Only the intro's first line, in small caps: not preloaded on every page.
 const alegreyaSC = Alegreya_SC({ subsets: ["latin"], weight: ["500"], variable: "--font-alegreya-sc", preload: false });
 
+// Link previews (WO-33): absolute image URLs on staging and production, and the site's card on
+// every page that doesn't set its own. "./" is each page's own address.
 export const metadata: Metadata = {
-  title: { default: "LoreRim Build Planner", template: "%s | LoreRim Build Planner" },
-  description: "Plan and share LoreRim character builds level by level.",
+  metadataBase: siteBase(),
+  title: { default: SITE_NAME, template: `%s | ${SITE_NAME}` },
+  description: SITE_LINE,
+  ...siteMetadata("./"),
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

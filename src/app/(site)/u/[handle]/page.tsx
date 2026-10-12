@@ -7,6 +7,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { CopyLinkButton } from "@/components/ui/copy-link-button";
 import { TextTabs } from "@/components/ui/text-tabs";
 import { getPlayerByHandle, listLikedBuilds, listListedBuildsByOwner } from "@/lib/builds/queries";
+import { siteMetadata } from "@/lib/og/metadata";
 import styles from "./player.module.css";
 
 type Params = Promise<{ handle: string }>;
@@ -18,11 +19,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { handle } = await params;
   const player = await getPlayerByHandle(handle);
   if (!player) return { title: "Not found" };
-  const builds = await listListedBuildsByOwner(player.id);
-  // The social image: the newest listed build's cover, else the site's default.
-  const cover = builds.find((b) => b.coverImageUrl)?.coverImageUrl;
+  // The site's card for now (WO-33), not a build's raw, uncropped cover.
   const title = `Builds by ${player.name}`;
-  return { title, openGraph: { title, ...(cover ? { images: [cover] } : {}) }, twitter: cover ? { card: "summary_large_image", images: [cover] } : undefined };
+  return { title, ...siteMetadata(`/u/${player.handle}`, title) };
 }
 
 /**
