@@ -1524,7 +1524,7 @@ From Dave's notes, 12 Oct. Do after WO-35.
 
 ## WO-37  The Details step: guide themes, and an About note (12 Oct 2026)
 
-**Waiting on Dave's OK** of the canvas row **"Proposal: themes, the Details step, and an About note"**: `DetailsThemes.dc.html` and `AboutNote.dc.html`. Don't start until this line says approved. Do after WO-36.
+Dave approved the canvas row **"Proposal: themes, the Details step, and an About note"** (12 Oct): `DetailsThemes.dc.html` and `AboutNote.dc.html`. Build to match, with the About text as written below. Do after WO-36.
 
 ### Guide themes
 1. A build has a theme, picked in Set up's `Details` step. It sets the look of that build's page below the site header: the hero's tint, the page ground, panels, rules, accent, the drop cap and dividers, and the guide's text colours. Fonts and layout don't change.
@@ -1549,7 +1549,7 @@ From Dave's notes, 12 Oct. Do after WO-35.
 5. A short note from Dave, shown as an in-game note: torn-edged parchment, tilted a degree, a wax seal, Alegreya.
    - It's reached from a quiet `About` link at the foot of every page; WO-24 removed the nav, so it's the one link there.
    - The page is `/about`, with the site's link card.
-   - The text, as on the artboard, until Dave edits it:
+   - The text, as on the artboard:
 
    > **To whoever finds this,**
    >
