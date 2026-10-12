@@ -5,13 +5,75 @@
 /* ---------- Cover ---------- */
 .cover {
   position: relative;
+  overflow: hidden;
   min-height: 560px;
   display: flex;
   align-items: flex-end;
   background-color: var(--panel-raised);
+  border-bottom: 1px solid var(--rule);
+}
+/* The cover image: its own layer, so it can drift on scroll (parallax) and settle in on load. */
+.coverLayer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+.coverImage {
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center;
-  border-bottom: 1px solid var(--rule);
+  animation: heroCover 900ms ease-out both;
+}
+/* Deepens the foot's fade as the hero scrolls away (opacity set on scroll). */
+.coverDeepen {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(to bottom, rgba(14, 19, 25, 0.35), var(--ground) 85%);
+  pointer-events: none;
+}
+/* Loading in, once: title, description, meta line, buttons, each rising 16px. Never waits on the image. */
+.heroIn {
+  animation: heroRise 500ms ease-out both;
+}
+.heroIn1 {
+  animation-delay: 250ms;
+}
+.heroIn2 {
+  animation-delay: 350ms;
+}
+.heroIn3 {
+  animation-delay: 450ms;
+}
+.heroIn4 {
+  animation-delay: 550ms;
+}
+@keyframes heroCover {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes heroRise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .coverImage,
+  .heroIn {
+    animation: none;
+  }
 }
 /* Without a cover image the hero is only as tall as its text. */
 .coverPlain {
@@ -427,21 +489,86 @@
   }
 }
 
-/* ---------- Intro: the same measure as the about bar below it ---------- */
+/* ---------- Intro: the same measure as the about bar below it, opened like the game's books ---------- */
 .intro {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: 14px;
 }
-.intro > :first-child {
+.introBook {
   width: 100%;
-  max-width: none;
-  font-size: 19px;
-  line-height: 1.6;
 }
-.intro > :first-child :where(p) {
+.introBook > :first-child {
   max-width: none;
+  font-family: var(--font-alegreya), Georgia, serif;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1.65;
+}
+.introBook > :first-child :where(p) {
+  max-width: none;
+}
+/* The first line in small caps (Alegreya SC 500, loaded for this alone). */
+.introBook > :first-child > p:first-child::first-line {
+  font-family: var(--font-alegreya-sc), var(--font-alegreya), Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+/*
+ * The drop cap: four lines tall, bold gold Alegreya in a square with the frame's corner marks
+ * (drawn as backgrounds, since a first letter can't have pseudo-elements) and a faint ember wash.
+ */
+.introBook > :first-child > p:first-child::first-letter {
+  font-family: var(--font-alegreya), Georgia, serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #b9a173;
+  background:
+    linear-gradient(var(--brass), var(--brass)) top left / 12px 1px no-repeat,
+    linear-gradient(var(--brass), var(--brass)) top left / 1px 12px no-repeat,
+    linear-gradient(var(--brass), var(--brass)) bottom right / 12px 1px no-repeat,
+    linear-gradient(var(--brass), var(--brass)) bottom right / 1px 12px no-repeat,
+    rgba(240, 145, 63, 0.08);
+}
+@supports (initial-letter: 4) or (-webkit-initial-letter: 4) {
+  .introBook > :first-child > p:first-child::first-letter {
+    -webkit-initial-letter: 4;
+    initial-letter: 4;
+    padding: 0 0.12em;
+    margin-right: 0.35em;
+  }
+}
+/* Without initial-letter: a floated letter sized to the same four lines (4 x 1.65 x 20px). */
+@supports not ((initial-letter: 4) or (-webkit-initial-letter: 4)) {
+  .introBook > :first-child > p:first-child::first-letter {
+    float: left;
+    font-size: 104px;
+    line-height: 112px;
+    height: 112px;
+    width: 112px;
+    text-align: center;
+    margin: 6px 16px 0 0;
+  }
+}
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  color: rgba(185, 161, 115, 0.6);
+}
+.ornamentRule {
+  flex: 1 1 0;
+  height: 2px;
+  stroke: currentColor;
+  stroke-width: 1;
+}
+.ornamentDiamond {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  fill: currentColor;
 }
 .intro .linkButton {
   font-size: 15px;

@@ -195,7 +195,12 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
           <OldVersionNotice buildId={build.id} signedIn={signedIn} />
           {intro && (
             <section aria-label="Intro" className={styles.intro}>
-              <GuideView doc={intro} idPrefix="intro" />
+              <Ornament />
+              {/* Opens like the game's books: a large framed first letter, the first line in small caps. */}
+              <div className={styles.introBook}>
+                <GuideView doc={intro} idPrefix="intro" />
+              </div>
+              <Ornament />
               {overview && (
                 <button type="button" className={styles.linkButton} onClick={() => setTab("guide")}>
                   Read the full guide
@@ -909,6 +914,24 @@ function OldVersionNotice({ buildId, signedIn }: { buildId: string; signedIn: bo
   );
 }
 
+/** A thin gold rule with a small diamond in the middle, above and below the intro (SVG, gold at 60%). */
+function Ornament() {
+  const rule = (
+    <svg className={styles.ornamentRule} viewBox="0 0 100 2" preserveAspectRatio="none" focusable="false">
+      <line x1="0" y1="1" x2="100" y2="1" vectorEffect="non-scaling-stroke" />
+    </svg>
+  );
+  return (
+    <span className={styles.ornament} aria-hidden="true">
+      {rule}
+      <svg className={styles.ornamentDiamond} viewBox="0 0 12 12" focusable="false">
+        <path d="M6 0.8 L11.2 6 L6 11.2 L0.8 6 Z" />
+      </svg>
+      {rule}
+    </span>
+  );
+}
+
 function Cover({
   build,
   updatedLabel,
@@ -961,18 +984,60 @@ function Cover({
   const writeup = build.writeupUrl;
   const writeupLabel = writeup && /discord\.(com|gg)/i.test(writeup) ? "Read the write-up on Discord" : "Read the write-up";
 
+  // While the hero is in view: the cover at half the scroll speed, the text rising a little faster and
+  // fading out by the time the hero's foot reaches the top, the fade at its foot deepening. Transforms
+  // and opacity only, one frame per scroll; nothing under prefers-reduced-motion.
+  const hero = useRef<HTMLElement>(null);
+  const layer = useRef<HTMLDivElement>(null);
+  const textLayer = useRef<HTMLDivElement>(null);
+  const deepen = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let frame = 0;
+    const apply = () => {
+      frame = 0;
+      const el = hero.current;
+      if (!el) return;
+      const total = el.offsetTop + el.offsetHeight;
+      const y = Math.min(Math.max(window.scrollY, 0), total);
+      const p = total ? y / total : 0;
+      if (layer.current) layer.current.style.transform = `translate3d(0, ${(y * 0.5).toFixed(1)}px, 0)`;
+      if (textLayer.current) {
+        textLayer.current.style.transform = `translate3d(0, ${(-y * 0.25).toFixed(1)}px, 0)`;
+        textLayer.current.style.opacity = (1 - p).toFixed(3);
+      }
+      if (deepen.current) deepen.current.style.opacity = p.toFixed(3);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(apply);
+    };
+    apply();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
   return (
-    <section aria-label="Build" className={`${styles.cover} ${build.coverImageUrl ? "" : styles.coverPlain}`} style={
-        build.coverImageUrl
-          ? { backgroundImage: `url("${build.coverImageUrl}")`, backgroundPosition: build.plan.coverFocus ? `${build.plan.coverFocus.x}% ${build.plan.coverFocus.y}%` : undefined }
-          : undefined
-      }>
+    <section ref={hero} aria-label="Build" className={`${styles.cover} ${build.coverImageUrl ? "" : styles.coverPlain}`}>
+      {build.coverImageUrl && (
+        <div ref={layer} className={styles.coverLayer} aria-hidden="true">
+          <div
+            className={styles.coverImage}
+            style={{ backgroundImage: `url("${build.coverImageUrl}")`, backgroundPosition: build.plan.coverFocus ? `${build.plan.coverFocus.x}% ${build.plan.coverFocus.y}%` : undefined }}
+          />
+        </div>
+      )}
       <div className={styles.coverFade} />
-      <div className={`page ${styles.coverInner}`}>
+      <div ref={deepen} className={styles.coverDeepen} />
+      <div ref={textLayer} className={`page ${styles.coverInner}`}>
         <div className={styles.coverText}>
-          <h1 className={`title ${styles.h1}`}>{build.name}</h1>
-          {build.description && <p className={`flavor ${styles.description}`}>{build.description}</p>}
-          <div className={styles.byline}>
+          <h1 className={`title ${styles.h1} ${styles.heroIn} ${styles.heroIn1}`}>{build.name}</h1>
+          {build.description && <p className={`flavor ${styles.description} ${styles.heroIn} ${styles.heroIn2}`}>{build.description}</p>}
+          <div className={`${styles.byline} ${styles.heroIn} ${styles.heroIn3}`}>
             <AuthorLink author={build.author} className={styles.author} nameClassName={styles.authorName} avatar={<Avatar name={build.author.name} image={build.author.image} />} />
             {!build.isSample && <LikeButton buildId={build.id} liked={build.likedByViewer} count={build.likeCount} mode={isOwner ? "owner" : signedIn ? "can" : "signedOut"} signIn={signInToLike} />}
             <span className="tag">LoreRim {build.gameVersion}</span>
@@ -986,7 +1051,7 @@ function Cover({
             </span>
           </div>
           {build.tags.length > 0 && (
-            <ul className={styles.tagLine} aria-label="Tags">
+            <ul className={`${styles.tagLine} ${styles.heroIn} ${styles.heroIn3}`} aria-label="Tags">
               {build.tags.map((t) => (
                 <li key={t}>
                   <Link href={`/?tags=${t}`} className={styles.tagLink}>
@@ -997,7 +1062,7 @@ function Cover({
             </ul>
           )}
         </div>
-        <div className={styles.actions}>
+        <div className={`${styles.actions} ${styles.heroIn} ${styles.heroIn4}`}>
           <button type="button" className="btn" onClick={copyLink}>
             {copied ? "Copied" : "Copy link"}
           </button>

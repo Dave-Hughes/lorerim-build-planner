@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Alegreya, Sofia_Sans, Sofia_Sans_Extra_Condensed } from "next/font/google";
+import { Alegreya, Alegreya_SC, Sofia_Sans, Sofia_Sans_Extra_Condensed } from "next/font/google";
 import "./globals.css";
 
 const sofia = Sofia_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-sofia" });
@@ -8,7 +8,10 @@ const sofiaCondensed = Sofia_Sans_Extra_Condensed({
   weight: ["500", "600", "700"],
   variable: "--font-sofia-condensed",
 });
-const alegreya = Alegreya({ subsets: ["latin"], style: ["italic"], weight: ["400"], variable: "--font-alegreya" });
+// Italic for flavour lines; roman and bold for the build page's intro and its drop cap (WO-25).
+const alegreya = Alegreya({ subsets: ["latin"], style: ["normal", "italic"], weight: ["400", "700"], variable: "--font-alegreya" });
+// Only the intro's first line, in small caps: not preloaded on every page.
+const alegreyaSC = Alegreya_SC({ subsets: ["latin"], weight: ["500"], variable: "--font-alegreya-sc", preload: false });
 
 export const metadata: Metadata = {
   title: { default: "LoreRim Build Planner", template: "%s | LoreRim Build Planner" },
@@ -17,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${sofia.variable} ${sofiaCondensed.variable} ${alegreya.variable}`}>
+    <html lang="en" className={`${sofia.variable} ${sofiaCondensed.variable} ${alegreya.variable} ${alegreyaSC.variable}`}>
       <body>{children}</body>
     </html>
   );

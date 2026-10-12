@@ -942,11 +942,11 @@ From Dave's notes. Do after WO-24. Every motion here is off under `prefers-reduc
    - **No intro:** with only the guide's first paragraph shown (WO-19 fallback), it gets the same treatment.
 
 ### Done when
-- [ ] e2e: with `prefers-reduced-motion: reduce`, the hero's title has no transform after load and scrolling doesn't change the cover's transform.
-- [ ] A screen recording (GIF) for Dave of loading Azrem's page and scrolling past the hero, at 1440 × 900.
-- [ ] Screenshots: the intro with its drop cap at 1440 and 390, and in Safari (float fallback) if `initial-letter` behaves differently there.
+- [x] e2e: with `prefers-reduced-motion: reduce`, the hero's title has no transform after load and scrolling doesn't change the cover's transform.
+- [x] A screen recording (GIF) for Dave of loading Azrem's page and scrolling past the hero, at 1440 × 900.
+- [x] Screenshots: the intro with its drop cap at 1440 and 390, and in Safari (float fallback) if `initial-letter` behaves differently there.
 - [ ] Lighthouse performance on the build page doesn't drop by more than 3 points (before and after numbers in the commit).
-- [ ] All checks in CLAUDE.md pass.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 
