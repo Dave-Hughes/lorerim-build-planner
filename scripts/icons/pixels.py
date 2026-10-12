@@ -1,5 +1,5 @@
 """
-Pixel icons for the 18 skills and Destiny: 16x16, drawn with a few shape
+Pixel icons for the 18 skills and Destiny, attributes, birthsigns, races, level marks, gear slots, game modes and tags: 16x16, drawn with a few shape
 helpers, then given a 1 px dark outline automatically so every icon shares
 the same edge. Written out as SVG (one rect per run of pixels, crisp at any
 size).
@@ -713,6 +713,334 @@ def race_argonian():
     return i.outline()
 
 
+# ---------------------------------------------------------------- level markers
+# Planner marks in the level card and pinned bar (approved set 11 Oct 2026).
+
+def trainer():
+    i = Icon()
+    i.rect(7, 10, 8, 14, "B"); i.rect(8, 10, 8, 14, "d")          # post
+    i.rect(5, 15, 10, 15, "d")                                     # foot
+    i.rect(1, 6, 14, 7, "B"); i.rect(1, 6, 14, 6, "b")             # crossbar arms
+    i.rect(4, 4, 11, 11, "b")                                      # straw body
+    i.disc(8, 2.6, 2.2, "b")                                       # straw head
+    i.recolor({"b"}, "Y", lambda x, y: x <= 5 or y <= 1)
+    i.recolor({"b"}, "B", lambda x, y: x >= 10 and y >= 5)
+    i.rect(4, 8, 11, 8, "d")                                       # rope band
+    i.disc(8, 9.5, 1.6, "r", where=lambda x, y: y >= 9)            # painted target
+    i.px(7, 9, "p")
+    return i.outline()
+
+
+def skill_book():
+    i = Icon()
+    i.rect(3, 1, 12, 14, "r")                                      # leather cover
+    i.rect(12, 2, 13, 13, "Y"); i.rect(13, 2, 13, 13, "b")         # page edges
+    i.rect(2, 1, 3, 14, "q")                                       # spine
+    i.recolor({"r"}, "p", lambda x, y: x <= 5 and y <= 5)
+    i.recolor({"r"}, "q", lambda x, y: x >= 10 and y >= 10)
+    for (x, y) in ((4, 2), (11, 2), (4, 13), (11, 13)):
+        i.px(x, y, "b")                                            # brass corners
+    i.px(4, 2, "Y")
+    i.rect(11, 7, 14, 8, "b"); i.px(11, 7, "Y"); i.px(14, 8, "B")  # clasp
+    i.poly([(7.5, 4.5), (9.5, 7.5), (7.5, 10.5), (5.5, 7.5)], "y")  # cover emblem
+    return i.outline()
+
+
+def banked():
+    i = Icon()
+    i.poly([(2, 7), (2, 5), (4, 3), (12, 3), (14, 5), (14, 7)], "b")   # lid
+    i.rect(2, 8, 14, 14, "B")                                           # chest
+    i.recolor({"b"}, "Y", lambda x, y: y <= 4 or x <= 3)
+    i.recolor({"B"}, "b", lambda x, y: x <= 4)
+    i.recolor({"B"}, "d", lambda x, y: x >= 12 or y >= 14)
+    i.rect(2, 7, 14, 7, "G")                                            # lid seam band
+    for x in (4, 12):
+        i.rect(x, 3, x, 14, "g")                                        # iron straps
+    i.rect(7, 6, 9, 10, "w"); i.rect(9, 6, 9, 10, "g")                  # lock plate
+    i.px(8, 8, "k")                                                     # keyhole
+    return i.outline()
+
+
+def perk_point():
+    i = Icon()
+    i.disc(8, 8, 7, "R")                                           # glow halo
+    i.disc(8, 8, 5.6, ".")
+    i.disc(8, 8, 4.6, "o")                                         # the star, as taken in the trees
+    i.recolor({"o"}, "y", lambda x, y: (x - 6.5) ** 2 + (y - 6.5) ** 2 < 4)
+    i.recolor({"o"}, "O", lambda x, y: x + y > 18)
+    i.px(6, 6, "W")
+    i.recolor({"R"}, "O", lambda x, y: x + y < 10)
+    return i.outline()
+
+
+def note():
+    i = Icon()
+    i.poly(leaf(7.4, 9, 14.2, 0.8, 2.3, 1.3, 0.7), "W")           # quill feather
+    i.recolor({"W"}, "w", lambda x, y: x + y > 15)
+    i.line(7, 9, 12, 3, "g")                                       # shaft
+    i.disc(6, 11.8, 4, "k", where=lambda x, y: y >= 9)             # inkwell
+    i.rect(3, 8, 9, 9, "g"); i.rect(3, 8, 5, 8, "w")               # its rim
+    i.px(3, 11, "M"); i.px(3, 12, "M"); i.px(4, 10, "N")           # ink sheen
+    return i.outline()
+
+
+# ---------------------------------------------------------------- gear slots
+
+def slot_main_hand():
+    i = Icon()
+    i.line(2, 14, 8, 8, "b"); i.line(3, 14, 9, 8, "B")             # haft
+    i.px(1, 15, "G"); i.px(2, 15, "G")                             # pommel
+    i.disc(10.6, 5.4, 3.2, "w")                                    # mace head
+    for (x, y) in ((10, 0), (11, 0), (15, 5), (15, 6), (6, 4), (6, 5), (10, 10)):
+        i.px(x, y, "g")                                            # flanges
+    i.recolor({"w"}, "W", lambda x, y: x + y < 15)
+    i.recolor({"w"}, "g", lambda x, y: x + y > 17)
+    return i.outline()
+
+
+def slot_off_hand():
+    i = Icon()
+    i.line(4, 15, 9, 7, "B"); i.line(5, 15, 10, 7, "d")            # torch handle
+    i.rect(8, 5, 11, 7, "d"); i.rect(8, 5, 9, 5, "B")              # wrapped head
+    i.poly(leaf(9.6, 5.6, 11.4, 0.2, 2.8, 2.6, 0.6), "o")          # flame
+    i.poly(leaf(9.8, 5.2, 10.8, 2.0, 1.4, 1.2, 0.6), "y")
+    return i.outline()
+
+
+def slot_head():
+    i = Icon()
+    i.disc(8, 8, 6, "w", where=lambda x, y: y <= 9)                # dome
+    i.rect(2, 8, 4, 13, "w"); i.rect(11, 8, 13, 13, "g")           # cheek guards
+    i.recolor({"w"}, "W", lambda x, y: x + y < 10)
+    i.recolor({"w"}, "g", lambda x, y: x >= 11)
+    i.rect(5, 8, 10, 9, "k"); i.rect(7, 8, 8, 12, "g")             # eye slit, nose guard
+    i.px(7, 8, "w")
+    i.rect(7, 2, 8, 6, "G")                                        # crest ridge
+    i.px(1, 3, "Y"); i.px(1, 4, "b"); i.px(2, 5, "b")              # horns
+    i.px(14, 3, "b"); i.px(14, 4, "B"); i.px(13, 5, "B")
+    return i.outline()
+
+
+def slot_body():
+    i = Icon()
+    i.rect(1, 3, 4, 7, "b"); i.rect(11, 3, 14, 7, "B")             # sleeves
+    i.poly([(3.5, 2), (6, 2), (8, 4.5), (10, 2), (12.5, 2), (12.5, 14.5), (3.5, 14.5)], "b")   # leather jerkin
+    i.recolor({"b"}, "Y", lambda x, y: x <= 4 and y <= 7 or (x <= 5 and y <= 3))
+    i.recolor({"b"}, "B", lambda x, y: x >= 11 and y >= 3)
+    i.rect(4, 10, 12, 10, "d"); i.px(8, 10, "Y")                   # belt and buckle
+    for y in (6, 8):
+        i.px(7, y, "d"); i.px(9, y, "d")                           # laces
+    i.px(8, 5, "d"); i.px(8, 7, "d")
+    return i.outline()
+
+
+def slot_hands():
+    i = Icon()
+    i.rect(4, 11, 11, 14, "g"); i.rect(4, 11, 11, 11, "w")         # cuff
+    i.rect(4, 6, 11, 10, "w")                                      # back of the hand
+    for x0, top in ((4, 2), (7, 1), (10, 2)):
+        i.rect(x0, top, x0 + 1, 6, "w")                            # three plated fingers
+        i.px(x0, top + 2, "G"); i.px(x0 + 1, top + 2, "G")         # finger joints
+    i.rect(12, 7, 13, 9, "w"); i.px(14, 6, "w"); i.px(14, 5, "w")  # thumb
+    i.recolor({"w"}, "W", lambda x, y: x in (4, 7, 10) and y <= 6 or x <= 5)
+    i.recolor({"w"}, "g", lambda x, y: x >= 11 and y >= 7)
+    i.rect(4, 13, 11, 13, "b")                                     # cuff trim
+    return i.outline()
+
+
+def slot_feet():
+    i = Icon()
+    i.rect(4, 1, 9, 10, "b")                                       # shaft
+    i.poly([(4, 9), (9.5, 9), (14.5, 11.5), (14.5, 14.5), (4, 14.5)], "b")   # foot
+    i.recolor({"b"}, "Y", lambda x, y: x <= 5 and y <= 10)
+    i.recolor({"b"}, "B", lambda x, y: x >= 8 and y <= 9 or y >= 13)
+    i.rect(4, 14, 14, 14, "d")                                     # sole
+    i.rect(3, 1, 10, 2, "d"); i.rect(3, 1, 6, 1, "B")              # fold-over cuff
+    i.rect(4, 6, 9, 6, "d")                                        # strap
+    return i.outline()
+
+
+def slot_ring():
+    i = Icon()
+    ellipse(i, 8, 9.5, 5.6, 4.8, "a")
+    ellipse(i, 8, 9.8, 3.4, 2.8, ".")
+    i.recolor({"a"}, "A", lambda x, y: x <= 5 and y <= 10)
+    i.recolor({"a"}, "i", lambda x, y: x >= 11 or y >= 13)
+    i.rect(6, 2, 10, 5, "a"); i.rect(6, 2, 7, 3, "A")              # setting
+    i.rect(7, 1, 9, 4, "M"); i.px(7, 1, "c"); i.px(7, 2, "c"); i.px(9, 4, "N")   # gem
+    return i.outline()
+
+
+def slot_amulet():
+    i = Icon()
+    i.line(2, 1, 6, 8, "b"); i.line(13, 1, 9, 8, "B")              # chain
+    i.px(2, 1, "Y")
+    i.disc(8, 11, 3.8, "a")                                        # pendant
+    i.recolor({"a"}, "A", lambda x, y: x + y < 17)
+    i.recolor({"a"}, "i", lambda x, y: x + y > 21)
+    i.disc(8, 11, 1.8, "r"); i.px(7, 10, "p")                      # stone
+    return i.outline()
+
+
+def slot_ammo():
+    i = Icon()
+    i.poly([(3, 6), (7, 4.5), (13, 13.5), (9, 15)], "B")           # quiver
+    i.recolor({"B"}, "b", lambda x, y: x - y > -3)
+    i.recolor({"B"}, "d", lambda x, y: x - y < -5)
+    i.line(4, 7, 8, 6, "d")                                        # rim band
+    for (x, y) in ((3, 2), (5, 1), (7, 2)):                        # three arrows' fletching
+        i.px(x, y, "o"); i.px(x + 1, y + 1, "O"); i.px(x, y + 1, "o")
+        i.line(x + 1, y + 2, x + 2, y + 4, "Y")
+    return i.outline()
+
+
+def slot_other():
+    i = Icon()
+    for (x, y) in ((4, 4), (4, 3), (5, 2), (6, 1), (7, 1), (8, 1), (9, 1), (10, 2), (11, 3), (11, 4)):
+        i.px(x, y, "d")                                            # strap
+    i.rect(2, 5, 13, 14, "b")                                      # satchel
+    i.rect(2, 5, 13, 9, "B"); i.rect(2, 5, 13, 5, "b")             # flap
+    i.recolor({"b"}, "Y", lambda x, y: x <= 3 and y >= 10)
+    i.recolor({"b"}, "B", lambda x, y: x >= 12 and y >= 10)
+    i.rect(7, 8, 8, 11, "Y"); i.px(8, 11, "b")                     # buckle
+    i.rect(2, 14, 13, 14, "d")
+    return i.outline()
+
+
+# ---------------------------------------------------------------- game modes
+
+def mode_konahrik():
+    i = Icon()
+    i.poly([(2, 4), (5, 1), (8, 3), (11, 1), (14, 4), (13.5, 10), (10, 15), (6, 15), (2.5, 10)], "a")   # gold mask
+    i.recolor({"a"}, "A", lambda x, y: x <= 6 and y <= 9)
+    i.recolor({"a"}, "i", lambda x, y: x >= 11 or y >= 13)
+    i.rect(4, 6, 6, 7, "k"); i.rect(9, 6, 11, 7, "k")              # eye slits
+    i.rect(7, 4, 8, 11, "a"); i.px(7, 4, "A")                      # nose ridge
+    i.rect(6, 12, 9, 12, "k")                                      # mouth
+    i.px(5, 2, "y"); i.px(4, 3, "y")                               # shine
+    return i.outline()
+
+
+def mode_naaktiid():
+    i = Icon()
+    ellipse(i, 8, 14, 6.5, 2.4, "d", where=lambda x, y: y >= 12)   # mound of earth
+    i.recolor({"d"}, "B", lambda x, y: x <= 6)
+    i.rect(7, 6, 8, 12, "s"); i.rect(8, 6, 8, 12, "S")             # stem
+    i.poly(leaf(7.5, 7, 1.6, 3.2, 1.8, 1.8, 0.8), "s")             # left leaf
+    i.poly(leaf(8.5, 5.5, 14.4, 1.6, 1.8, 1.8, 0.8), "s")          # right leaf
+    i.recolor({"s"}, "e", lambda x, y: x <= 5 or (x <= 10 and y <= 3))
+    i.recolor({"s"}, "S", lambda x, y: x >= 12)
+    return i.outline()
+
+
+# ---------------------------------------------------------------- tags
+
+def tag_shield():
+    i = Icon()
+    i.poly([(3, 1.5), (13, 1.5), (13, 6), (8, 15.4), (3, 6)], "g")    # steel rim
+    i.poly([(4.2, 2.6), (11.8, 2.6), (11.8, 6), (8, 13.4), (4.2, 6)], "M")   # painted field
+    i.recolor({"M"}, "m", lambda x, y: x <= 6 and y <= 6)
+    i.recolor({"M"}, "N", lambda x, y: x >= 10 or y >= 10)
+    i.recolor({"g"}, "W", lambda x, y: x <= 3 or y <= 1)
+    i.disc(8, 6, 1.7, "w"); i.px(7, 5, "W")                        # boss
+    return i.outline()
+
+
+def tag_unarmored():
+    i = Icon()
+    i.rect(3, 2, 12, 9, "f")                                       # bare fist
+    i.rect(4, 1, 11, 1, "f")
+    i.recolor({"f"}, "F", lambda x, y: x <= 5 or y <= 2)
+    i.recolor({"f"}, "v", lambda x, y: x >= 11)
+    for x in (5, 7, 9):
+        i.rect(x, 2, x, 5, "v")                                    # between the fingers
+    i.rect(3, 6, 9, 7, "F"); i.rect(3, 7, 9, 7, "f")               # thumb folded across
+    i.px(10, 6, "v")
+    i.rect(4, 10, 11, 14, "Y")                                     # cloth hand wraps
+    for (x, y) in ((4, 11), (6, 10), (8, 12), (10, 11), (5, 13), (9, 14), (11, 13)):
+        i.px(x, y, "b")
+    i.recolor({"Y"}, "b", lambda x, y: x >= 11)
+    return i.outline()
+
+
+def tag_spellsword():
+    i = Icon()
+    i.line(13, 2, 6, 9, "c"); i.line(13, 3, 7, 9, "m")             # blade, magicka-lit
+    i.px(14, 1, "W")
+    for (x, y) in ((11, 2), (9, 4), (12, 5), (7, 6), (10, 7)):
+        i.px(x, y, "m")                                            # flame along it
+    i.px(12, 0, "c"); i.px(14, 4, "c")
+    i.line(3, 7, 8, 12, "b"); i.px(3, 7, "Y"); i.px(4, 8, "Y")     # crossguard
+    i.line(5, 11, 3, 13, "d")                                      # grip
+    i.px(2, 14, "M")                                               # pommel stone
+    return i.outline()
+
+
+def tag_necromancy():
+    i = Icon()
+    i.poly([(4, 15), (4, 7), (5, 5), (8, 4), (11, 5), (12, 7), (12, 15)], "g")   # gravestone
+    i.recolor({"g"}, "w", lambda x, y: x <= 6 and y <= 9)
+    i.recolor({"g"}, "G", lambda x, y: x >= 11 or y >= 14)
+    i.rect(7, 7, 8, 12, "G"); i.rect(6, 8, 9, 8, "G")              # carved cross
+    i.px(10, 10, "k"); i.px(9, 11, "k")                            # crack
+    i.rect(2, 15, 14, 15, "S")                                     # grave earth
+    for (x, y) in ((6, 2), (7, 1), (9, 2), (10, 0), (8, 3)):
+        i.px(x, y, "e")                                            # rising wisp
+    return i.outline()
+
+
+def tag_shouts():
+    i = Icon()
+    rows = [
+        "................",
+        "..hh............",
+        "...hhh..........",
+        "....gwwwwg......",
+        "...gwwwwwwwg....",
+        "..gwwwowwwwwwg..",
+        "..gwwwwwwwwwwwwg",
+        "..ggwwwwwgWgWgg.",
+        "...gggcccmm.....",
+        "...gGcccmm.m..m.",
+        "...gGGgcm.m.....",
+        "...gGGGGgWgW....",
+        "....gGGGGGGGGg..",
+        ".....ggGGGGgg...",
+    ]
+    look = {"h": "b", "w": "w", "g": "g", "G": "G", "o": "o", "W": "W", "c": "c", "m": "m"}
+    for y, row in enumerate(rows):
+        for x, c in enumerate(row):
+            if c in look:
+                i.px(x, y, look[c])
+    i.recolor({"w"}, "W", lambda x, y: y <= 4 and x <= 7)
+    return i.outline()
+
+
+def tag_tank():
+    i = Icon()
+    i.rect(3, 1, 12, 13, "g")                                      # tower shield
+    i.rect(4, 2, 11, 12, "w")
+    i.recolor({"w"}, "W", lambda x, y: x <= 5)
+    i.recolor({"w"}, "g", lambda x, y: x >= 10)
+    i.rect(7, 2, 8, 12, "b"); i.rect(7, 2, 7, 12, "Y")             # brass spine
+    for (x, y) in ((4, 2), (11, 2), (4, 12), (11, 12)):
+        i.px(x, y, "G")                                            # rivets
+    i.rect(1, 14, 14, 15, "d"); i.rect(1, 14, 14, 14, "S")         # ground it stands in
+    return i.outline()
+
+
+def tag_beginner():
+    i = Icon()
+    i.rect(7, 2, 8, 15, "B"); i.rect(7, 2, 7, 15, "b")             # post
+    i.poly([(9, 3), (14, 3), (15.5, 4.5), (14, 6), (9, 6)], "b")   # sign to the right
+    i.poly([(7, 8), (2, 8), (0.5, 9.5), (2, 11), (7, 11)], "b")    # sign to the left
+    i.recolor({"b"}, "Y", lambda x, y: y in (3, 8))
+    i.recolor({"b"}, "B", lambda x, y: y in (6, 11))
+    i.rect(10, 4, 12, 4, "d"); i.rect(3, 9, 5, 9, "d")             # carved lettering
+    i.rect(5, 15, 10, 15, "S")
+    return i.outline()
+
+
 ICONS = {
     "One-Handed": one_handed, "Two-Handed": two_handed, "Marksman": marksman, "Block": block,
     "Smithing": smithing, "Heavy Armor": heavy_armor, "Evasion": evasion, "Finesse": finesse,
@@ -736,8 +1064,20 @@ RACES = {
     "Orsimer": race_orsimer, "Redguard": race_redguard,
 }
 
+MARKS = {"Trainer": trainer, "Skill book": skill_book, "Banked": banked, "Perk points": perk_point, "Note": note}
+SLOTS = {
+    "Main hand": slot_main_hand, "Off hand": slot_off_hand, "Head": slot_head, "Body": slot_body,
+    "Hands": slot_hands, "Feet": slot_feet, "Ring": slot_ring, "Amulet": slot_amulet, "Ammo": slot_ammo,
+    "Other": slot_other,
+}
+MODES = {"Konahrik": mode_konahrik, "Naaktiid": mode_naaktiid}
+TAGS = {
+    "Shield": tag_shield, "Unarmored": tag_unarmored, "Spellsword": tag_spellsword,
+    "Necromancy": tag_necromancy, "Shouts": tag_shouts, "Tank": tag_tank, "Beginner-friendly": tag_beginner,
+}
+
 # Every set and the file-name prefix it is written under.
-SETS = {"": ICONS, "attr-": ATTRIBUTES, "sign-": SIGNS, "race-": RACES}
+SETS = {"": ICONS, "attr-": ATTRIBUTES, "sign-": SIGNS, "race-": RACES, "mark-": MARKS, "slot-": SLOTS, "mode-": MODES, "tag-": TAGS}
 
 
 def slug(name):
