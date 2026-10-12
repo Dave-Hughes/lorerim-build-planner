@@ -26,6 +26,11 @@ function planSchema(d: GameData) {
       .max(40)
       .refine((s) => s === "" || s === "none" || d.stoneByName.has(s), "Unknown stone")
       .optional(),
+    // Any id: one this version lacks (after a version change) shows as a problem, not a refusal.
+    spells: z
+      .array(z.object({ id: z.string().min(1).max(200), where: z.string().max(80).optional() }))
+      .max(60)
+      .optional(),
     note: z.string().max(2000),
   });
 
@@ -45,6 +50,7 @@ function planSchema(d: GameData) {
     masterOfOneSkill: skillName.optional(),
     coverFocus: z.object({ x: z.number().min(0).max(100), y: z.number().min(0).max(100) }).optional(),
     theme: z.enum(THEME_IDS).optional(),
+    mainSpells: z.array(z.string().min(1).max(200)).max(8).optional(),
     videoId: z.string().regex(/^[\w-]{11}$/, "That isn't a YouTube link.").optional(),
     traitChoices: z
       .record(z.string(), z.string().max(40))

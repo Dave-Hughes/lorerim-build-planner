@@ -1,6 +1,7 @@
 import "server-only";
 import { and, desc, eq, inArray, isNotNull, isNull, sql } from "drizzle-orm";
 import { REPORTS_TO_HIDE } from "@/lib/moderation/reports";
+import { gameData, knownVersions } from "@/lib/rules/server";
 import { docText, firstParagraph, isEmptyDoc } from "@/lib/guide/doc";
 import { db, schema } from "@/db";
 import { readPlan } from "@/lib/rules/convert";
@@ -193,6 +194,14 @@ export interface BrowseQuery {
 }
 
 /** Listed builds for Browse builds, filtered and sorted; `more` when there are more than `limit`. */
+/** Ids of the spells, in any version the planner knows, whose name holds `word` (at most 300). */
+function spellIdsNamed(word: string): string[] {
+  const w = word.toLowerCase();
+  const ids = new Set<string>();
+  for (const v of knownVersions()) for (const s of gameData(v.id)?.spells ?? []) if (s.name.toLowerCase().includes(w)) ids.add(s.id);
+  return [...ids].slice(0, 300);
+}
+
 export async function searchBuilds(f: BrowseQuery): Promise<{ builds: BuildSummary[]; more: boolean }> {
   const limit = f.limit ?? 24;
   const where = [eq(schema.builds.visibility, "public")];
@@ -203,8 +212,16 @@ export async function searchBuilds(f: BrowseQuery): Promise<{ builds: BuildSumma
     // Every word must appear somewhere: "nord shield" finds a Nord with a shield.
     for (const word of q.split(/\s+/).slice(0, 8)) {
       const p = `%${word.replace(/[\\%_]/g, (c) => `\\${c}`)}%`;
+      // Spell names (WO-42): the plan keeps ids, so the word is matched against the game's spells first.
+      const spellIds = spellIdsNamed(word);
+      const learns = spellIds.length
+        ? sql` or exists(select 1 from jsonb_array_elements(${schema.builds.plan}->'levels') l, jsonb_array_elements(coalesce(l->'spells', '[]'::jsonb)) s where s->>'id' in (${sql.join(
+            spellIds.map((id) => sql`${id}`),
+            sql`, `,
+          )}))`
+        : sql``;
       where.push(
-        sql`(${schema.builds.name} ilike ${p} or ${schema.builds.description} ilike ${p} or ${schema.users.name} ilike ${p} or ${schema.builds.plan}->>'race' ilike ${p} or (${schema.builds.plan}->'traits')::text ilike ${p} or ${schema.builds.plan}->>'deity' ilike ${p} or ${schema.builds.plan}->>'birthsign' ilike ${p} or ${schema.builds.plan}->>'start' ilike ${p} or ${schema.builds.plan}->>'startOption' ilike ${p})`,
+        sql`(${schema.builds.name} ilike ${p} or ${schema.builds.description} ilike ${p} or ${schema.users.name} ilike ${p} or ${schema.builds.plan}->>'race' ilike ${p} or (${schema.builds.plan}->'traits')::text ilike ${p} or ${schema.builds.plan}->>'deity' ilike ${p} or ${schema.builds.plan}->>'birthsign' ilike ${p} or ${schema.builds.plan}->>'start' ilike ${p} or ${schema.builds.plan}->>'startOption' ilike ${p}${learns})`,
       );
     }
   }

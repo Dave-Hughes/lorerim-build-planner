@@ -1,0 +1,220 @@
+/* Spells in the editor (WO-42), to the canvas artboard "Spells". */
+
+/* ---------- Under a tier perk: Choose 2 spells ---------- */
+.picks {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pickCard {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px 24px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+}
+.pickHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pickPerk {
+  font-weight: 700;
+  font-size: 17px;
+}
+.pickBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+}
+.pickTitle {
+  font-weight: 600;
+}
+.pickSearch {
+  margin-left: auto;
+  width: 220px;
+  min-height: 36px;
+}
+.pickChosen {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pickList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+.pickRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px 96px;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 12px;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+}
+.pickRow .pickName {
+  font-weight: 600;
+  color: var(--soft);
+}
+/* Chosen: pinned on top in ember (rule 11). */
+.pickRowOn {
+  border: 2px solid var(--ember);
+  background: color-mix(in srgb, var(--ember) 8%, transparent);
+  color: var(--text);
+}
+.pickRowOn .pickName {
+  color: var(--text);
+}
+.pickCast {
+  font-size: 14px;
+}
+.pickRow .btn {
+  justify-content: center;
+}
+.tip {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 420px;
+}
+
+/* ---------- The level's spells ---------- */
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
+}
+.rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 6px 8px 6px 12px;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--magicka);
+  background: var(--panel);
+  font-size: 14px;
+}
+.rowName {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-weight: 600;
+}
+.rowName .muted {
+  font-weight: 400;
+  font-size: 13px;
+}
+.rowWhere {
+  color: var(--muted);
+}
+.whereInput {
+  min-height: 34px;
+  width: 100%;
+}
+.rowActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+.star {
+  font-size: 15px;
+  color: var(--faint);
+}
+.starOn {
+  color: var(--ember);
+}
+.addForm {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--rule-strong);
+  background: var(--panel);
+}
+.addForm .input {
+  width: 100%;
+  min-height: 40px;
+}
+.addSearch {
+  position: relative;
+}
+.options {
+  position: absolute;
+  /* Above the notes' sticky toolbar (25), as the gear search is. */
+  z-index: 30;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  background: var(--panel-raised);
+  border: 1px solid var(--rule-strong);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.option[aria-selected="true"] {
+  background: color-mix(in srgb, var(--ember) 12%, transparent);
+}
+.optionName {
+  flex: 1;
+  font-weight: 600;
+}
+.addActions {
+  display: flex;
+  gap: 6px;
+}
+@media (max-width: 720px) {
+  .pickRow {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .pickCast {
+    display: none;
+  }
+  .pickSearch {
+    margin-left: 0;
+    width: 100%;
+  }
+  .row,
+  .addForm {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rowActions {
+    justify-content: flex-start;
+  }
+}

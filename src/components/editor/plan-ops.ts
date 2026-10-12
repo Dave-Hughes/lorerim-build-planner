@@ -1,7 +1,8 @@
 /** Pure edits to a build plan. Each returns a new plan. */
 import { emptyLevel } from "@/lib/rules/derive";
 import { gearAt } from "@/lib/rules/gear";
-import type { Attribute, BuildPlan, Extra, GearItem, LevelPlan } from "@/lib/rules/types";
+import { keptMainSpells, MAX_MAIN_SPELLS } from "@/lib/rules/spells";
+import type { Attribute, BuildPlan, Extra, GearItem, LevelPlan, SpellRow } from "@/lib/rules/types";
 
 function withLevel(plan: BuildPlan, level: number, fn: (lv: LevelPlan) => LevelPlan): BuildPlan {
   return { ...plan, levels: plan.levels.map((lv, i) => (i === level - 1 ? fn(lv) : lv)) };
@@ -70,7 +71,49 @@ export function addLevel(plan: BuildPlan): BuildPlan {
 
 export function removeLastLevel(plan: BuildPlan): BuildPlan {
   if (plan.levels.length <= 1) return plan;
-  return { ...plan, levels: plan.levels.slice(0, -1) };
+  return withMainSpells({ ...plan, levels: plan.levels.slice(0, -1) });
+}
+
+/** Main spells only ever list spells the build learns (WO-42); no field when there are none. */
+function withMainSpells(plan: BuildPlan): BuildPlan {
+  const kept = keptMainSpells(plan);
+  const next = { ...plan };
+  if (kept.length) next.mainSpells = kept;
+  else delete next.mainSpells;
+  return next;
+}
+
+function withSpells(plan: BuildPlan, level: number, fn: (rows: SpellRow[]) => SpellRow[]): BuildPlan {
+  return withMainSpells(
+    withLevel(plan, level, (lv) => {
+      const spells = fn(lv.spells ?? []);
+      const next = { ...lv };
+      if (spells.length) next.spells = spells;
+      else delete next.spells;
+      return next;
+    }),
+  );
+}
+
+/** A spell learned at a level (WO-42): a tier perk's pick (`where` = the perk's name) or learned another way. */
+export function addSpell(plan: BuildPlan, level: number, row: SpellRow): BuildPlan {
+  const clean: SpellRow = row.where?.trim() ? { id: row.id, where: row.where.trim().slice(0, 80) } : { id: row.id };
+  return withSpells(plan, level, (rows) => [...rows, clean]);
+}
+
+export function removeSpell(plan: BuildPlan, level: number, index: number): BuildPlan {
+  return withSpells(plan, level, (rows) => rows.filter((_, i) => i !== index));
+}
+
+export function setSpellWhere(plan: BuildPlan, level: number, index: number, where: string): BuildPlan {
+  return withSpells(plan, level, (rows) => rows.map((r, i) => (i !== index ? r : where.trim() ? { ...r, where: where.slice(0, 80) } : { id: r.id })));
+}
+
+/** Stars or unstars a spell as a main spell, up to 8, in the order starred. */
+export function toggleMainSpell(plan: BuildPlan, id: string): BuildPlan {
+  const main = plan.mainSpells ?? [];
+  const next = main.includes(id) ? main.filter((x) => x !== id) : main.length < MAX_MAIN_SPELLS ? [...main, id] : main;
+  return withMainSpells({ ...plan, mainSpells: next });
 }
 
 /**

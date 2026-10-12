@@ -77,6 +77,8 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
   const attributePicks = { health: 0, magicka: 0, stamina: 0 };
   const taken: Record<string, number[]> = {};
   const destinyTaken: Record<string, number> = {};
+  /** Spell id -> the level it was learned (WO-42). */
+  const spellsLearned: Record<string, number> = {};
   const states: LevelState[] = [];
 
   const has = (id: string) => granted(id) || (taken[id]?.length ?? 0) > 0 || id in destinyTaken;
@@ -203,6 +205,20 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
     }
     if (destinySpent > destinyPoints)
       issues.push(issue("destiny-points-over", `${count(destinySpent, "Destiny point")} spent, ${destinyPoints} earned by level ${L}.`));
+
+    // Spells (WO-42): each learned once, and known to this version.
+    for (const row of lv.spells ?? []) {
+      const sp = d.spellById.get(row.id);
+      if (!sp) {
+        issues.push(issue("spell-unknown", `A spell is not in LoreRim ${d.version.id}.`));
+        continue;
+      }
+      if (row.id in spellsLearned) {
+        issues.push(issue("spell-repeat", `${sp.name} was already learned at level ${spellsLearned[row.id]}.`));
+        continue;
+      }
+      spellsLearned[row.id] = L;
+    }
 
     // Health, Magicka, Stamina
     let health = (race?.health ?? 100) + rules.attributePerLevel * attributePicks.health;

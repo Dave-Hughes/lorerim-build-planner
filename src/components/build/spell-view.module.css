@@ -1,0 +1,104 @@
+/* The Spells section (WO-42), to the canvas artboard "Spells". */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  scroll-margin-top: calc(80px + var(--sticky-top));
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px 24px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+}
+.mainTitle {
+  font-weight: 700;
+  font-size: 17px;
+}
+.mainList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 28px;
+}
+.mainItem {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 4px 10px;
+  align-items: start;
+}
+.text {
+  color: var(--soft);
+  font-size: 14px;
+}
+.meta {
+  color: var(--muted);
+  font-size: 14px;
+}
+.schools {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px 28px;
+}
+.school {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.schoolHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+.schoolName {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.rowName {
+  font-weight: 600;
+}
+.star {
+  color: var(--ember);
+}
+.lvl {
+  color: var(--dim);
+  font-size: 13px;
+}
+.row .meta {
+  grid-column: 1 / -1;
+}
+@media (max-width: 900px) {
+  .schools {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .mainList,
+  .schools {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .main {
+    padding: 16px;
+  }
+}

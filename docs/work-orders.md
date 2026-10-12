@@ -1842,13 +1842,13 @@ Do after WO-41. Layout follows the design canvas's **"Spells"** artboard (`Spell
 - **Search** on Browse matches spell names, as it matches perks and items.
 
 ### Done when
-- [ ] Unit tests:
+- [x] Unit tests:
   - two picks from the Destruction Novice pool at the level that takes Novice Destruction are free, and a third is "learned another way";
   - learning Fireball twice raises `spell-repeat`;
   - `mainSpells` keeps only spells the build learns.
-- [ ] e2e: on a test build, take Novice Destruction and Novice Conjuration at level 1, choose 2 spells under each, add Eldritch Blast at level 4 with `Where` = `Wuunferth, Windhelm`, and star it. The shared page shows them in `New spells` at the right levels and in the Spells section, with Eldritch Blast under Main spells.
-- [ ] Screenshots at 1440 and 390: the Perks step with a pick list open; a level with `New spells`; the Spells section. Check them against the canvas.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: on a test build, take Novice Destruction and Novice Conjuration at level 1, choose 2 spells under each, add Eldritch Blast at level 4 with `Where` = `Wuunferth, Windhelm`, and star it. The shared page shows them in `New spells` at the right levels and in the Spells section, with Eldritch Blast under Main spells.
+- [x] Screenshots at 1440 and 390: the Perks step with a pick list open; a level with `New spells`; the Spells section. Check them against the canvas.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

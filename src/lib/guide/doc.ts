@@ -160,7 +160,7 @@ const node: z.ZodType<GuideNode> = z.lazy(() =>
       // name too, shown until the item index is fetched.
       attrs: z
         .object({
-          kind: z.enum(["perk", "destiny", "skill", "trait", "birthsign", "stone", "race", "item"]),
+          kind: z.enum(["perk", "destiny", "skill", "trait", "birthsign", "stone", "race", "item", "spell"]),
           id: z.string().min(1).max(200),
           label: z.string().max(200).nullish(),
         })

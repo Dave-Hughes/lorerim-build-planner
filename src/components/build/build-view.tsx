@@ -15,6 +15,8 @@ import { SkillGains, type SkillGain } from "./skill-gains";
 import { EditBar, MenuButton } from "@/components/editor/edit-bar";
 import menuStyles from "@/components/editor/edit-bar.module.css";
 import { PlayMark } from "./play-mark";
+import { spellsAt, spellsLearned } from "@/lib/rules/spells";
+import { SpellView } from "./spell-view";
 import { VideoGuide } from "./video-guide";
 import { ReportBuild } from "./report-build";
 import { AboutBar } from "./about-bar";
@@ -193,6 +195,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
             ? [{ key: "destiny", label: "Destiny", count: destinyCount, destiny: true, target: "destiny", onGo: () => setDestinyOpenChoice(true) }]
             : []),
           ...(plan.gear.length ? [{ key: "gear", label: "Gear", count: gearAt(plan, level).length, target: "gear-at-level" }] : []),
+          ...(spellsLearned(d, plan, level).some((x) => x.spell) ? [{ key: "spells", label: "Spells", count: spellsLearned(d, plan, level).filter((x) => x.spell).length, target: "spells" }] : []),
           ...(tabs.includes("guide") ? [{ key: "guide", label: "Guide", onGo: () => setTab("guide") }] : []),
         ];
 
@@ -513,6 +516,8 @@ function LevelsTab({
 
       {/* Gear, last and its own section (WO-32): slot cards, then the timeline. */}
       {plan.gear.length > 0 && <GearView plan={plan} level={level} onLevel={setLevel} />}
+      {/* Spells, after Gear (WO-42). */}
+      <SpellView d={d} plan={plan} level={level} />
     </>
   );
 }
@@ -1016,6 +1021,34 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       </span>,
     ]);
   }
+  // New spells (WO-42): each in a chip with its school's icon and where; the tooltip has the tier,
+  // cast type, the game's text and where.
+  const newSpells = spellsAt(d, plan, level).filter((x) => x.spell);
+  if (newSpells.length)
+    rows.push([
+      "New spells",
+      <span key="sp" className={styles.newSpells}>
+        {newSpells.map((x) => (
+          <span key={x.index} className={styles.newSpell}>
+            <SkillIcon name={x.spell!.school} size={24} />
+            <Tooltip
+              content={
+                <span className={styles.spellTip}>
+                  <span className="muted">{[x.spell!.school, x.spell!.tier, x.spell!.cast].filter(Boolean).join(", ")}</span>
+                  <span>{x.spell!.text}</span>
+                  {x.where && <span className="muted">Where: {x.where}</span>}
+                </span>
+              }
+            >
+              <span className={styles.newSpellChip} tabIndex={0}>
+                {x.spell!.name}
+              </span>
+            </Tooltip>
+            {x.where && <span className="muted">{x.where}</span>}
+          </span>
+        ))}
+      </span>,
+    ]);
   if (changes.banked > 0) rows.push(["Banked", `${changes.banked} skill point${changes.banked === 1 ? "" : "s"}`]);
 
   return (

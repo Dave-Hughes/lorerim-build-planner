@@ -34,6 +34,8 @@ export const OTHER_SESSION_TOKEN = "e2e-session-token-0002";
 export const REPORTER_TOKENS = ["e2e-session-token-0003", "e2e-session-token-0004", "e2e-session-token-0005"];
 export const NEW_ACCOUNT_TOKEN = "e2e-session-token-0006";
 export const NEW_ACCOUNT_BUILD_ID = "e2enewacct";
+/** WO-42: the sample build with level 1's perks cleared, so a test can take tier perks there. */
+export const SPELLS_BUILD_ID = "e2espe22ss";
 export const AT_LIMIT_TOKEN = "e2e-session-token-0007";
 /** The test author's Discord id; playwright.config.ts gives it to the server as ADMIN_DISCORD_IDS. */
 export const E2E_ADMIN_DISCORD_ID = "e2e-discord-admin-0001";
@@ -197,6 +199,15 @@ export async function seed() {
         visibility: "private",
         gameVersion: "5.0.4.8",
         plan: samplePlan(),
+      },
+      {
+        id: SPELLS_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        name: "Spellsword Test",
+        description: "Level 1's perks left free for tier perks.",
+        visibility: "unlisted",
+        gameVersion: "5.0.4.8",
+        plan: { ...samplePlan(), levels: samplePlan().levels.map((lv, i) => (i === 0 ? { ...lv, perks: [] } : lv)) },
       },
       {
         id: NEW_ACCOUNT_BUILD_ID,

@@ -14,6 +14,7 @@ import { ATTRIBUTE_NAMES, levelMarks, nextDestinyLevel, skillStepInfo, stoneLabe
 import { computeBuild } from "@/lib/rules/engine";
 import type { Attribute, BuildPlan } from "@/lib/rules/types";
 import { GearBlock } from "./gear-block";
+import { SpellBlock, SpellPicks } from "./spell-block";
 import { PerkPanel } from "./perk-panel";
 import { SkillGains } from "@/components/build/skill-gains";
 import { AttributeIcon, IconLabel, SignIcon, SkillIcon, MarkIcon } from "@/components/ui/skill-icon";
@@ -409,6 +410,9 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
           </section>
         </div>
 
+        {/* A tier perk taken here gives its free spells: pick them under it (WO-42). */}
+        <SpellPicks key={`picks-${level}`} plan={plan} level={level} setPlan={setPlan} />
+
         {pinned &&
           selected &&
           createPortal(
@@ -487,6 +491,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
         </section>
 
         <GearBlock key={level} plan={plan} level={level} setPlan={setPlan} />
+        <SpellBlock key={`spells-${level}`} plan={plan} level={level} setPlan={setPlan} />
 
         <GuideFactsProvider plan={plan} states={states}>
           <LevelNotes

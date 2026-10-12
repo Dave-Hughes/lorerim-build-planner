@@ -27,7 +27,15 @@ export interface LevelPlan {
   extras: Extra[];
   /** Standing stone change: undefined = keep, "none" = clear, otherwise the stone name. */
   stone?: string;
+  /** Spells learned at this level (WO-42), in the order added. `where`: the author's short line. */
+  spells?: SpellRow[];
   note: string;
+}
+
+/** A spell learned at a level: its id in spells.json, and where ("Wuunferth, Windhelm"; a tier perk's name for its free picks). */
+export interface SpellRow {
+  id: string;
+  where?: string;
 }
 
 /**
@@ -71,6 +79,8 @@ export interface BuildPlan {
   /** The build's video guide: a YouTube video id (WO-39, src/lib/builds/youtube.ts). */
   videoId?: string;
   levels: LevelPlan[];
+  /** The spells the build casts most, up to 8 ids, in the author's order (WO-42). Only spells it learns. */
+  mainSpells?: string[];
   gear: GearItem[];
   notes: string;
 }
@@ -95,6 +105,8 @@ export type IssueCode =
   | "destiny-repeat"
   | "destiny-prerequisite"
   | "destiny-points-over"
+  | "spell-repeat"
+  | "spell-unknown"
   | "creation";
 
 export interface Issue {

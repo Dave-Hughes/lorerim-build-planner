@@ -36,7 +36,7 @@ describe("mentions", () => {
     const r = guideDocSchema.safeParse(doc);
     expect(r.success).toBe(true);
     expect(JSON.stringify(r.data)).not.toContain("label");
-    expect(guideDocSchema.safeParse({ type: "doc", content: [{ type: "paragraph", content: [{ type: "mention", attrs: { kind: "spell", id: "x" } }] }] }).success).toBe(false);
+    expect(guideDocSchema.safeParse({ type: "doc", content: [{ type: "paragraph", content: [{ type: "mention", attrs: { kind: "shout", id: "x" } }] }] }).success).toBe(false);
     // Items keep their name, shown until the item index is fetched.
     const item = guideDocSchema.safeParse({ type: "doc", content: [{ type: "paragraph", content: [{ type: "mention", attrs: { kind: "item", id: "Skyrim.esm:012EB7", label: "Iron Dagger" } }] }] });
     expect(JSON.stringify(item.data)).toContain('"label":"Iron Dagger"');
@@ -68,5 +68,14 @@ describe("chip renderer", () => {
     expect(html).toContain("Shield of the Old Kings");
     expect(html).toContain("Not in LoreRim 5.0.4.8");
     expect(html).not.toContain("/icons/");
+  });
+});
+
+describe("spell mentions (WO-42)", () => {
+  it("find spells by name, with the school's icon and the game's text", () => {
+    const d = requireGameData("5.0.4.8");
+    const hit = searchMentions(d, "fireball").find((m) => m.kind === "spell");
+    expect(hit).toMatchObject({ name: "Fireball", kindLabel: "Spell, Destruction, Adept, Fire and forget", icon: { type: "skill", name: "Destruction" } });
+    expect(hit?.text).toContain("deals 40 fire damage");
   });
 });

@@ -6,7 +6,7 @@
 import { itemById, loadedItems, searchItems, type GameItem } from "@/lib/items/items";
 import { perkText, type GameData } from "@/lib/rules/data";
 
-export const MENTION_KINDS = ["perk", "destiny", "skill", "trait", "birthsign", "stone", "race", "item"] as const;
+export const MENTION_KINDS = ["perk", "destiny", "skill", "trait", "birthsign", "stone", "race", "item", "spell"] as const;
 export type MentionKind = (typeof MENTION_KINDS)[number];
 
 export type MentionIcon = { type: "skill" | "sign" | "race" | "slot"; name: string } | { type: "trait"; image: string | null } | { type: "none" };
@@ -78,6 +78,13 @@ export function resolveMention(d: GameData, kind: string, id: string): MentionIn
         ? { kind, id, name: r.name, kindLabel: "Race", icon: { type: "race", name: r.name }, text: `+15 ${r.primary}. +10 ${r.secondary.join(", ")}.` }
         : null;
     }
+    case "spell": {
+      // Spells (WO-42): the school's icon; the card says the school, tier and cast type.
+      const s = d.spellById.get(id);
+      return s
+        ? { kind, id, name: s.name, kindLabel: [`Spell, ${s.school}`, s.tier, s.cast].filter(Boolean).join(", "), icon: { type: "skill", name: s.school }, text: s.text }
+        : null;
+    }
     case "item": {
       // Only once the version's items are fetched (see useItems).
       const i = itemById(d.version.id, id);
@@ -100,6 +107,7 @@ function index(d: GameData): MentionInfo[] {
     ...d.birthsigns.map((b) => resolveMention(d, "birthsign", b.name)),
     ...d.stones.map((s) => resolveMention(d, "stone", s.name)),
     ...d.races.map((r) => resolveMention(d, "race", r.name)),
+    ...d.spells.map((s) => resolveMention(d, "spell", s.id)),
   ].filter((x): x is MentionInfo => !!x);
   indexes.set(d, all);
   return all;
