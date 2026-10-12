@@ -237,11 +237,6 @@
       "^Unarmed$"
     ]
   },
-  "deities": {
-    "keys": {
-      "Mehrunes Dagon": "Mehrunes"
-    }
-  },
   "starts": {
     "optionLabels": {
       "Regular (Inn)": "Inn",

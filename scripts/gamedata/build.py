@@ -359,28 +359,22 @@ def main():
             json.dump(starts, f, indent=2, ensure_ascii=False)
             f.write("\n")
         print(f"{len(starts)} starts -> starts.json")
-    # Deity text (WO-29): follower and devotee boons and tenets from Wintersun, by the planner's
-    # deity names (letters only, a leading "The" dropped; exceptions in overrides.json).
+    # Deity text (WO-29, WO-34): all of Wintersun's deities, each named from its tenets record
+    # ("Tenets of the All-Maker" -> "The All-Maker"; the key Totems comes out as The Old Ways), with
+    # its follower and devotee boons and tenets.
     if os.path.exists(os.path.join(RAW, "deities_raw.json")):
-        raw = {d["key"]: d for d in load("deities_raw.json")["deities"]}
-        names = sorted({g for gods in json.load(open(os.path.join(OUT, "deities.json"), encoding="utf-8")).values() for g in gods})
-        exceptions = overrides.get("deities", {}).get("keys", {})
-
-        def key_for(name):
-            if name in exceptions:
-                return exceptions[name]
-            letters = re.sub(r"[^A-Za-z]", "", name)
-            if letters in raw:
-                return letters
-            return re.sub(r"[^A-Za-z]", "", re.sub(r"^The ", "", name))
+        from names import deity_name
 
         text = {}
-        for name in names:
-            d = raw.get(key_for(name))
-            if not d:
-                problems.append(f"deity {name}: no Wintersun text")
+        for d in load("deities_raw.json")["deities"]:
+            if not d.get("tenets"):
+                problems.append(f"deity {d['key']}: no tenets record to name it by")
                 continue
-            text[name] = {part: {"name": d[part]["name"], "text": unmark(d[part]["text"])} for part in ("follower", "devotee", "tenets") if d.get(part)}
+            text[deity_name(d["tenets"]["name"])] = {part: {"name": d[part]["name"], "text": unmark(d[part]["text"])} for part in ("follower", "devotee", "tenets") if d.get(part)}
+        text = dict(sorted(text.items(), key=lambda kv: re.sub(r"^The ", "", kv[0])))
+        offered = {g for gods in json.load(open(os.path.join(OUT, "deities.json"), encoding="utf-8")).values() for g in gods}
+        for g in sorted(offered - set(text)):
+            problems.append(f"deity {g}: offered to a race but not in Wintersun's list")
         with open(os.path.join(OUT, "deity-text.json"), "w", encoding="utf-8") as f:
             json.dump(text, f, indent=2, ensure_ascii=False)
             f.write("\n")

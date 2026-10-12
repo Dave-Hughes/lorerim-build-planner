@@ -7,7 +7,7 @@ import { TRAIT_CHOICES, keptTraitChoices } from "@/lib/rules/trait-choices";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { FocusHeader } from "@/components/ui/focus-header";
 import { EditBar } from "@/components/editor/edit-bar";
-import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel, ModeIcon, TagIcon } from "@/components/ui/skill-icon";
+import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel, ModeIcon, TagIcon, DeityIcon } from "@/components/ui/skill-icon";
 import { copyBuildForVersion, createBuild, saveBuildDetails, saveBuildPlan } from "@/lib/builds/actions";
 import { STEPS, STEP_NAMES, clearDraft, emptyDetails, emptyPlan, loadDraft, saveDraft, type Step } from "@/lib/builds/draft";
 import type { BuildDetails } from "@/lib/builds/validate";
@@ -115,12 +115,22 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
     mode: true,
     name: !!details.name.trim(),
   };
-  const summaries: Record<Step, string> = {
+  const summaries: Record<Step, React.ReactNode> = {
     race: plan.race || "Not chosen",
     birthsign: masterOfDestiny ? "Removed by Master of Destiny" : plan.birthsign ? `The ${plan.birthsign}` : "Not chosen",
     skills: `${plan.majors.length} major${plan.majors.length === 1 ? "" : "s"}, ${plan.minors.length} minor${plan.minors.length === 1 ? "" : "s"}`,
     traits: `${plan.traits.length} of ${d.rules.maxTraits} chosen`,
-    mode: `${plan.mode}${plan.start ? `, ${plan.start}${plan.startOption && plan.startOption !== "Random" ? ` · ${plan.startOption}` : ""}` : ""}${plan.deity ? `, ${plan.deity}` : ""}`,
+    mode: (
+      <>
+        {`${plan.mode}${plan.start ? `, ${plan.start}${plan.startOption && plan.startOption !== "Random" ? ` · ${plan.startOption}` : ""}` : ""}`}
+        {plan.deity && (
+          <>
+            {", "}
+            {d.deities.includes(plan.deity) ? <IconLabel icon={<DeityIcon name={plan.deity} />}>{plan.deity}</IconLabel> : plan.deity}
+          </>
+        )}
+      </>
+    ),
     name: details.name || "Not named",
   };
 
@@ -724,25 +734,29 @@ function DeityField({ plan, update, offered }: StepProps & { offered: string[] }
     <div className={styles.deity}>
       <label className="field">
         <span className="label">Deity</span>
-        <select className="select" value={known ? plan.deity : ""} onChange={(e) => update((p) => ({ ...p, deity: e.target.value }))}>
-          <option value="">None</option>
-          {offered.length > 0 && (
-            <optgroup label={`Offered to a ${plan.race} at the start`}>
-              {offered.map((g) => (
+        <span className={styles.deityPick}>
+          {/* A native select can't show icons: the chosen god's sits beside it (WO-34). */}
+          <span className={styles.deityPickIcon}>{known && plan.deity ? <DeityIcon name={plan.deity} size={24} /> : null}</span>
+          <select className="select" value={known ? plan.deity : ""} onChange={(e) => update((p) => ({ ...p, deity: e.target.value }))}>
+            <option value="">None</option>
+            {offered.length > 0 && (
+              <optgroup label={`Offered to a ${plan.race} at the start`}>
+                {offered.map((g) => (
+                  <option key={g} value={g}>
+                    {g}
+                  </option>
+                ))}
+              </optgroup>
+            )}
+            <optgroup label={offered.length ? "Any other god, at a shrine" : "At a shrine"}>
+              {rest.map((g) => (
                 <option key={g} value={g}>
                   {g}
                 </option>
               ))}
             </optgroup>
-          )}
-          <optgroup label={offered.length ? "Any other god, at a shrine" : "At a shrine"}>
-            {rest.map((g) => (
-              <option key={g} value={g}>
-                {g}
-              </option>
-            ))}
-          </optgroup>
-        </select>
+          </select>
+        </span>
       </label>
       {!known && (
         <p role="alert" className={styles.startProblem}>
@@ -751,6 +765,9 @@ function DeityField({ plan, update, offered }: StepProps & { offered: string[] }
       )}
       {text && (
         <div className={styles.deityText}>
+          <span className={styles.deityName}>
+            <IconLabel icon={<DeityIcon name={plan.deity} size={24} />}>{plan.deity}</IconLabel>
+          </span>
           {(["follower", "devotee"] as const).map((part) =>
             text[part] ? (
               <p key={part}>

@@ -38,6 +38,19 @@ export function RaceIcon({ name, size = 16, className }: { name: string; size?: 
   return <GameIcon file={`race-${slug(name)}`} size={size} className={className} />;
 }
 
+/**
+ * A deity (WO-34). Its file keeps a leading "the" (deity-the-hoonding), unlike the other icons' slug.
+ */
+export function deityIconFile(name: string): string {
+  return `deity-${name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "")}`;
+}
+export function DeityIcon({ name, size = 16 }: { name: string; size?: 16 | 24 | 32 }) {
+  return <GameIcon file={deityIconFile(name)} size={size} />;
+}
+
 /** A level marker (WO-30): trainer, skill book, banked points, perk points, a note. */
 export function MarkIcon({ name, size = 16 }: { name: "trainer" | "skill-book" | "banked" | "perk-points" | "note"; size?: 16 | 24 | 32 }) {
   return <GameIcon file={`mark-${name}`} size={size} />;

@@ -1413,10 +1413,10 @@ Dave approved the deity contact sheet (chat, 11 Oct). This is the set WO-30 left
 5. A native select can't show icons in its options. Leave the select as it is.
 
 ### Done when
-- [ ] `deity-text.json` has 55 deities. Unit test: every name in the planner's deity list has a `public/icons/deity-<slug>.svg`.
-- [ ] Unit test: `Tenets of the All-Maker` becomes `The All-Maker`, and the key `Totems` is named `The Old Ways`.
-- [ ] Screenshots for Dave at 1440: Iriel's about bar with Jephre's icon and its hover text open; Set up's deity step with Hermaeus Mora chosen.
-- [ ] All checks in CLAUDE.md pass.
+- [x] `deity-text.json` has 55 deities. Unit test: every name in the planner's deity list has a `public/icons/deity-<slug>.svg`.
+- [x] Unit test: `Tenets of the All-Maker` becomes `The All-Maker`, and the key `Totems` is named `The Old Ways`.
+- [x] Screenshots for Dave at 1440: Iriel's about bar with Jephre's icon and its hover text open; Set up's deity step with Hermaeus Mora chosen.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

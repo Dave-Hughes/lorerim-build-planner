@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { useGameData } from "@/components/game-data";
 import { Tooltip } from "@/components/ui/tooltip";
-import { IconLabel, RaceIcon, SignIcon, ModeIcon } from "@/components/ui/skill-icon";
+import { IconLabel, RaceIcon, SignIcon, ModeIcon, DeityIcon } from "@/components/ui/skill-icon";
 import { traitWithChoice } from "@/lib/rules/trait-choices";
 import type { BuildPlan } from "@/lib/rules/types";
 import styles from "./about-bar.module.css";
@@ -72,6 +72,10 @@ export function AboutBar({ plan }: { plan: BuildPlan }) {
         <Tip
           tip={
             <>
+              {/* The head: the deity's icon and name (WO-34). */}
+              <span className={styles.tipDeity}>
+                <IconLabel icon={<DeityIcon name={plan.deity} size={24} />}>{plan.deity}</IconLabel>
+              </span>
               {(["follower", "devotee"] as const).map((part) =>
                 deity[part] ? (
                   <span key={part} className={styles.tipPart}>
@@ -91,7 +95,7 @@ export function AboutBar({ plan }: { plan: BuildPlan }) {
             </>
           }
         >
-          {plan.deity}
+          <IconLabel icon={<DeityIcon name={plan.deity} />}>{plan.deity}</IconLabel>
         </Tip>
       ) : (
         plan.deity || "Not chosen yet"

@@ -877,3 +877,23 @@
   font-size: 16px;
   color: #c3cdd6;
 }
+
+/* The deity's select with the chosen god's icon beside it; its name and icon above its text. */
+.deityPick {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.deityPickIcon {
+  display: inline-flex;
+  flex: none;
+  width: 24px;
+}
+.deityName {
+  font-weight: 600;
+  font-size: 16px;
+}
+.deityPick .select {
+  flex: 1 1 auto;
+  min-width: 0;
+}

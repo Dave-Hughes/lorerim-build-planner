@@ -38,6 +38,11 @@
   gap: 6px;
   max-width: 380px;
 }
+.tipDeity {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
+}
 .tipPart {
   display: flex;
   flex-direction: column;

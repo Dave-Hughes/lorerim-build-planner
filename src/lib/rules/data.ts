@@ -139,7 +139,7 @@ export interface GameData {
   startByName: Map<string, Start>;
   deityText: Record<string, DeityText>;
   startingDeities: Record<string, string[]>;
-  /** Every deity the planner knows, by name. */
+  /** Every deity the planner knows, by name: all of Wintersun's (deity-text.json), and any a race is offered. */
   deities: string[];
   gameModes: GameMode[];
   raceByName: Map<string, Race>;
@@ -192,7 +192,7 @@ function build(version: GameVersion, src0: VersionSource): GameData {
     startByName: new Map(src.starts.map((s) => [s.name, s])),
     deityText: src.deityText,
     startingDeities: src.startingDeities,
-    deities: [...new Set(Object.values(src.startingDeities).flat())].sort((a, b) => a.replace(/^The /, "").localeCompare(b.replace(/^The /, ""))),
+    deities: [...new Set([...Object.keys(src.deityText), ...Object.values(src.startingDeities).flat()])].sort((a, b) => a.replace(/^The /, "").localeCompare(b.replace(/^The /, ""))),
     gameModes: src.gameModes,
     raceByName: new Map(src.races.map((r) => [r.name, r])),
     signByName: new Map(src.birthsigns.map((s) => [s.name, s])),
