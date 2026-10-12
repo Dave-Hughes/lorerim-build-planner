@@ -888,6 +888,8 @@ Fix these in `items.py` / `build.py` before building `items.json`:
   - Quarterstaffs that have only a warhammer keyword come out as `Warhammer` (Steel Quarterstaff, the Staff of Wandering Stars).
   - SkyrimSpearMechanic's spears and javelins with a sword keyword come out as `Sword` (Iron Spear, Ebony Javelin).
   - Prefer the name and the mod's own keywords: a name ending in Quarterstaff, Battlestaff, Spear or Javelin wins over the animation keyword.
+  - Follow-up (11 Oct): Pike, Halberd and Glaive names become `Polearm`, so Ebony Pike is no longer a Greatsword.
+  - Search ranking: `iron armor` putting items literally named "Iron Armor …" above Iron Cuirass is right, so leave it.
 - **Not items:** `FXdustDropWEP` (a debug record with a name) and `Unarmed` (`Claw`). Add both to `skipNames`.
 - **Not a problem:** LoreRim renames many vanilla items, e.g. `Iron Cuirass` rather than Iron Armor and `Orcish Heavy Cuirass` rather than Orcish Armor. Search should match on any word, not just the start, so "iron armor" still finds Iron Cuirass.
 
@@ -959,7 +961,8 @@ From Dave's notes. Do after WO-24. Every motion here is off under `prefers-reduc
 - [x] e2e: with `prefers-reduced-motion: reduce`, the hero's title has no transform after load and scrolling doesn't change the cover's transform.
 - [x] A screen recording (GIF) for Dave of loading Azrem's page and scrolling past the hero, at 1440 × 900.
 - [x] Screenshots: the intro with its drop cap at 1440 and 390, and in Safari (float fallback) if `initial-letter` behaves differently there.
-- [ ] Lighthouse performance on the build page doesn't drop by more than 3 points (before and after numbers in the commit).
+- [x] Performance doesn't get worse. Lighthouse isn't installed, so Jeff measured in Chromium instead, with the CPU slowed 4× and the median of 5 loads: LCP 624 → 600 ms, CLS 0 → 0, blocking time 43 → 50 ms. Accepted.
+- [ ] Safari, which wasn't checked: Dave looks at the intro's drop cap in Safari on the Mac.
 - [x] All checks in CLAUDE.md pass.
 
 ---
@@ -1062,7 +1065,7 @@ From Dave's notes. Do after WO-28.
 **Starts, checked against the game files (11 Oct).** LoreRim's start list is in `LoreRim - MCM and INI Settings/SKSE/AlternatePerspective/` (three JSON files). They win over the three start mods' own lists in every profile. The display names come from Alternate Perspective's English translation file.
 - There are **25 starts**. `Merchant` and `Mercenary` are separate starts, so WO-15 #7 was right to split them.
 - A start has **at most one choice**: an inn, a port, a hold, a city, a homeland, a guild, a shrine, a temple, or the Helgen Keep start or end.
-- Most choices include `Random`. Nine starts have no choice.
+- Most choices include `Random` (Dragonborn doesn't). Eight starts have no choice.
 - The extracted list is committed as `gamedata/5.0.4.8/starts_raw.json`. It holds each start's name, its source mod, its own description text and its options, in the game's order and spelling.
 - The game's own spelling is kept, typos included (`Haarfinger`, `Hjaalmach` in Jailed; `At Angis Camp`).
 - Our current `starts.json` uses our own names and splits Guilds and Dragonborn into several starts; this replaces it.
