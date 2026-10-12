@@ -1250,3 +1250,96 @@
 .heldDestiny .perkNow {
   color: var(--destiny-text) !important;
 }
+
+/* ---------- Destiny folded (WO-32): one gold line unless open ---------- */
+.destinySection {
+  display: flex;
+  flex-direction: column;
+  scroll-margin-top: calc(80px + var(--sticky-top));
+}
+.destinyLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 24px;
+  padding: 14px 20px;
+  border-top: 1px solid #5a4b2c;
+  border-bottom: 1px solid #5a4b2c;
+  background: #15140f;
+}
+.destinyTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-title);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--destiny-text);
+}
+.destinyTitle .destinyMark {
+  width: 11px;
+  height: 11px;
+}
+.destinyStars {
+  flex: 1 1 420px;
+  min-width: 0;
+  color: #c3cdd6;
+}
+.destinyNext {
+  font-size: 14px;
+  color: var(--muted);
+}
+.destinyToggle {
+  font: inherit;
+  font-weight: 600;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid #5a4b2c;
+  background: transparent;
+  color: var(--destiny-text);
+  cursor: pointer;
+}
+.destinyToggle:hover {
+  border-color: var(--destiny);
+}
+.destinyToggle:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+.destinySection .perksBody {
+  padding-top: 16px;
+}
+
+/* ---------- The card's New gear (WO-32) ---------- */
+.newGear {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.newGearRow {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+.newGearWhat {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  min-width: 0;
+}
+.newGearWhat .muted {
+  font-size: 14px;
+}
+.newGearChip {
+  padding: 1px 8px;
+  border: 1px solid var(--ember);
+  color: #f6c08f;
+  font-weight: 600;
+}
+.sumGear {
+  cursor: pointer;
+}

@@ -360,6 +360,26 @@
   margin-left: -3.5px;
 }
 
+/* Gear changes (WO-32): the satchel, in the ruler, the tiles and the legend. */
+.markGear {
+  position: absolute;
+  top: 40px;
+  margin-left: -6px;
+  image-rendering: pixelated;
+}
+.cellGear,
+.keyGear {
+  width: 12px;
+  height: 12px;
+  image-rendering: pixelated;
+}
+.cellGear {
+  margin-left: 2px;
+}
+.cellFuture .cellGear {
+  opacity: 0.5;
+}
+
 /* Short laptop windows: a lower row of levels. */
 @media (max-height: 899px) and (min-width: 900px) {
   .cell {

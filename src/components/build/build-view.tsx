@@ -10,17 +10,18 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, use
 import { copyBuild, copyBuildForVersion } from "@/lib/builds/actions";
 import type { BuildRecord } from "@/lib/builds/types";
 import { useGameData } from "@/components/game-data";
-import { GuideFactsProvider, GuideMention } from "@/components/guide/guide-facts";
+import { GuideFactsProvider } from "@/components/guide/guide-facts";
 import { SkillGains, type SkillGain } from "./skill-gains";
 import { EditBar } from "@/components/editor/edit-bar";
 import { AboutBar } from "./about-bar";
+import { GearView } from "./gear-view";
 import { LocalDate } from "@/components/ui/local-date";
 import { GuideSection } from "@/components/guide/guide-section";
 import { LevelNote } from "@/components/guide/level-note";
 import { docWords, firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import { GuideView } from "@/components/guide/guide-view";
 import { currentVersion, isOlderThanCurrent } from "@/lib/rules/versions";
-import { ATTRIBUTE_NAMES, levelChanges, levelFacts, levelMarks, perksByLevel, stoneShare, type PerkListGroup } from "@/lib/rules/derive";
+import { ATTRIBUTE_NAMES, levelChanges, levelFacts, levelMarks, nextDestinyLevel, perksByLevel, stoneShare, type PerkListGroup } from "@/lib/rules/derive";
 import { gearAt, gearChangeText } from "@/lib/rules/gear";
 import { heldCount } from "@/lib/rules/tree-states";
 import type { GameData } from "@/lib/rules/data";
@@ -271,30 +272,6 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   );
 }
 
-/** What each slot holds at this level, after Skills; items set at this level in ember. */
-function GearAt({ plan, level }: { plan: BuildViewData["plan"]; level: number }) {
-  const held = gearAt(plan, level);
-  return (
-    <section aria-label={`Gear at level ${level}`} className={styles.gearAt}>
-      <span className="label">Gear at level {level}</span>
-      {held.length ? (
-        <dl className={styles.gearList}>
-          {held.map((g, i) => (
-            <div key={i} className={styles.gearRow}>
-              <dt>
-                <IconLabel icon={<SlotIcon slot={g.slot} />}>{g.slot}</IconLabel>
-              </dt>
-              <dd className={g.since === level ? styles.gearNow : undefined}>{g.itemId ? <GuideMention kind="item" id={g.itemId} label={g.name} /> : g.name}</dd>
-            </div>
-          ))}
-        </dl>
-      ) : (
-        <p className="muted">Nothing yet.</p>
-      )}
-    </section>
-  );
-}
-
 /** The Levels tab: navigation, the level card, then where the build stands. */
 function LevelsTab({
   build,
@@ -339,6 +316,21 @@ function LevelsTab({
   const selected = pickedSkill?.star ?? null;
   const destinySelected = picked?.tree === "Destiny" ? picked.star : null;
   const destinyRef = useRef<HTMLElement>(null);
+  // Destiny folds to one line (WO-32). It opens by itself where a star is taken, or when a Destiny
+  // star is picked (the card, the pinned bar); otherwise it stays as the viewer left it.
+  const [destinyOpenChoice, setDestinyOpenChoice] = useState(false);
+  const [closedAt, setClosedAt] = useState<ReadonlySet<number>>(new Set());
+  const takenHere = lv.destiny.length > 0;
+  const destinyOpen = destinyOpenChoice || (takenHere && !closedAt.has(level)) || !!destinySelected;
+  const toggleDestiny = () => {
+    if (destinyOpen) {
+      setDestinyOpenChoice(false);
+      if (takenHere) setClosedAt((c) => new Set(c).add(level));
+      if (destinySelected) clearPick();
+    } else setDestinyOpenChoice(true);
+  };
+  const nextStar = nextDestinyLevel(d, level);
+  const starsSoFar = destinyPerks.flatMap((g) => g.perks.map((p) => p.name));
   const narrow = useNarrower(1100);
   const [viewChoice, setViewChoice] = useState<TreeView | null>(null);
   const view: TreeView = viewChoice ?? (narrow ? "list" : "tree");
@@ -375,7 +367,6 @@ function LevelsTab({
       <div className={styles.reference}>
         <AttributesAt s={s} level={level} />
         <SkillsAt d={d} plan={plan} s={s} level={level} />
-        {plan.gear.length > 0 && <GearAt plan={plan} level={level} />}
       </div>
 
       <section ref={perksRef} id="perks" data-tree-anchor="" aria-label={`Perks at level ${level}`} className={styles.perksSection}>
@@ -406,27 +397,37 @@ function LevelsTab({
         )}
       </section>
 
-      {/* Destiny, its own thing (WO-27): the Destiny tree and what's taken there, in gold. Left out
-          when the build takes no Destiny perks. */}
+      {/* Destiny, its own thing (WO-27), folded to one line unless it's open (WO-32). Left out when
+          the build takes no Destiny perks. */}
       {hasDestiny && (
-        <section ref={destinyRef} data-tree-anchor="" aria-label={`Destiny at level ${level}`} className={`${styles.perksSection} ${styles.destinySection}`}>
-          <div className={styles.sectionHead}>
-            <span className={`label ${styles.destinyLabel}`}>
+        <section ref={destinyRef} data-tree-anchor="" aria-label={`Destiny at level ${level}`} className={styles.destinySection}>
+          <div className={styles.destinyLine}>
+            <span className={styles.destinyTitle}>
               <i className={styles.destinyMark} aria-hidden="true" />
-              Destiny at level {level}
+              Destiny
             </span>
+            <span className={styles.destinyStars}>{starsSoFar.length ? starsSoFar.join(" · ") : "No stars yet"}</span>
+            {nextStar && <span className={styles.destinyNext}>Next star at level {nextStar}</span>}
+            <button type="button" className={styles.destinyToggle} aria-expanded={destinyOpen} aria-controls="destiny-tree" onClick={toggleDestiny}>
+              {destinyOpen ? "Hide the tree" : "Show the tree"}
+            </button>
           </div>
-          <div className={styles.perksBody}>
-            <div className={`frame ${styles.treeBox} ${styles.destinyBox}`}>
-              <Tree tree="Destiny" states={states} level={level} selectedId={destinySelected} onSelect={(id) => setPicked({ level, tree: "Destiny", star: id })} view="tree" noToggle sheetBelow={1100} />
+          {destinyOpen && (
+            <div id="destiny-tree" className={styles.perksBody}>
+              <div className={`frame ${styles.treeBox} ${styles.destinyBox}`}>
+                <Tree tree="Destiny" states={states} level={level} selectedId={destinySelected} onSelect={(id) => setPicked({ level, tree: "Destiny", star: id })} view="tree" noToggle sheetBelow={1100} />
+              </div>
+              <div className={styles.side}>
+                {!narrow && destinySelected && <PerkDetails id={destinySelected} states={states} level={level} onClose={clearPick} />}
+                <HeldList perks={destinyPerks} s={s} level={level} onPick={(id) => showPerk(id, false)} destiny />
+              </div>
             </div>
-            <div className={styles.side}>
-              {!narrow && destinySelected && <PerkDetails id={destinySelected} states={states} level={level} onClose={clearPick} />}
-              <HeldList perks={destinyPerks} s={s} level={level} onPick={(id) => showPerk(id, false)} destiny />
-            </div>
-          </div>
+          )}
         </section>
       )}
+
+      {/* Gear, last and its own section (WO-32): slot cards, then the timeline. */}
+      {plan.gear.length > 0 && <GearView plan={plan} level={level} onLevel={setLevel} />}
     </>
   );
 }
@@ -730,7 +731,20 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
             f.stone.name === "none" ? "No stone" : <IconLabel icon={<SignIcon name={f.stone.name} />}>The {f.stone.name}</IconLabel>,
             styles.sumWide,
           )}
-        {at < 2 && f.gear.map((g, i) => chip(`gear-${i}`, gearChangeText(g), g.name.trim() || gearChangeText(g), styles.sumWide))}
+        {/* One Gear chip at a level with new gear, which goes to Gear at level N (WO-32). */}
+        {at < 2 &&
+          f.gear.length > 0 &&
+          (plain ? (
+            <span key="gear" className={`${styles.sumChip} ${styles.sumWide}`}>
+              <IconLabel icon={<SlotIcon slot="Other" />}>Gear</IconLabel>
+            </span>
+          ) : (
+            <Tooltip key="gear" content={f.gear.map(gearChangeText).join("\n")}>
+              <button type="button" className={`${styles.sumChip} ${styles.sumGear} ${styles.sumWide}`} onClick={() => document.getElementById("gear-at-level")?.scrollIntoView({ block: "start" })}>
+                <IconLabel icon={<SlotIcon slot="Other" />}>Gear</IconLabel>
+              </button>
+            </Tooltip>
+          ))}
         {noted && chip("note", "The author left a note for this level", <IconLabel icon={<MarkIcon name="note" />}>Note</IconLabel>, styles.sumWide)}
       </>
     );
@@ -851,25 +865,35 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       <SkillGains key={kind} rows={[...m].map(([sk, l]) => ({ skill: sk, gain: l.n, from: l.from, to: l.to }))} />,
     ]);
   }
-  // Gear, when something changes: "Steel spear (Main hand)", "Off hand emptied".
-  if (facts.gear.length)
+  // New gear (WO-32): each item in an ember chip with its slot and what it replaces; an emptied
+  // slot as "Off hand emptied", "Poison vials (Other) removed".
+  if (facts.gear.length) {
+    const before = level > 1 ? gearAt(plan, level - 1) : [];
     rows.push([
-      "Gear",
-      <span key="g" className={styles.stack}>
-        {facts.gear.map((g, i) => (
-          <IconLabel key={i} icon={<SlotIcon slot={g.slot} />}>
-            {g.itemId && g.name.trim() ? (
-              <>
-                <GuideMention kind="item" id={g.itemId} label={g.name.trim()} /> ({g.slot})
-              </>
-            ) : (
-              gearChangeText(g)
-            )}
-            {g.note && <span className="muted"> {g.note}</span>}
-          </IconLabel>
-        ))}
+      "New gear",
+      <span key="g" className={styles.newGear}>
+        {facts.gear.map((g, i) => {
+          const name = g.name.trim();
+          const was = g.slot === "Other" ? g.replaces : before.find((b) => b.slot === g.slot)?.name;
+          return (
+            <span key={i} className={styles.newGearRow}>
+              <SlotIcon slot={g.slot} size={24} />
+              {name ? (
+                <span className={styles.newGearWhat}>
+                  <span className={styles.newGearChip}>{name}</span>
+                  <span className="muted">
+                    {g.slot}, replaces {was ?? "nothing"}
+                  </span>
+                </span>
+              ) : (
+                <span>{gearChangeText(g)}</span>
+              )}
+            </span>
+          );
+        })}
       </span>,
     ]);
+  }
   if (changes.banked > 0) rows.push(["Banked", `${changes.banked} skill point${changes.banked === 1 ? "" : "s"}`]);
 
   return (

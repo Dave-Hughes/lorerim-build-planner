@@ -12,6 +12,7 @@ import { assertDatabaseMatchesEnvironment } from "../src/db/environments";
 import * as schema from "../src/db/schema";
 import sample from "../src/lib/rules/__fixtures__/sample-build.json";
 import azrem from "./fixtures/azrem.json";
+import iriel from "./fixtures/iriel.json";
 import { textLength, type GuideDoc } from "../src/lib/guide/doc";
 import type { BuildPlan } from "../src/lib/rules/types";
 
@@ -35,7 +36,7 @@ export const SCRATCH_BUILD_ID = "e2eqq2e2e5";
 export const GEAR_BUILD_ID = "e2egearnew";
 /** The sample with level 5's Destiny point unspent (Konahrik), for the editor's Destiny control. */
 export const DESTINY_BUILD_ID = "e2edstnyaa";
-/** A listed Bosmer hunter who follows Jephre, like Iriel on staging: for searching by deity. */
+/** A copy of Iriel from staging (e2e/fixtures/iriel.json): 30 levels, gear changes, Destiny, a note at every level. Listed. */
 export const IRIEL_BUILD_ID = "e2eyrye7q2";
 export const OTHER_USER_ID = "e2e-user-0002";
 export const OTHER_BUILD_ID = "e2eqq2e2e2";
@@ -107,11 +108,12 @@ export async function seed() {
       {
         id: IRIEL_BUILD_ID,
         ownerId: OTHER_USER_ID,
-        name: "Iriel Thornwhisper, Green Pact Hunter",
-        description: "A Bosmer archer of the Green Pact.",
+        name: iriel.name,
+        description: iriel.description,
+        coverImageUrl: iriel.coverImageUrl,
         visibility: "public",
         gameVersion: "5.0.4.8",
-        plan: { ...samplePlan(), race: "Bosmer", birthsign: "Shadow", deity: "Jephre", mode: "Naaktiid" as const, start: "Pilgrim (Shrine)", startOption: undefined, majors: ["Marksman", "Sneak", "Alchemy"] },
+        plan: iriel.plan as unknown as BuildPlan,
       },
       {
         id: AZREM_BUILD_ID,
@@ -178,7 +180,10 @@ export async function seed() {
       },
     ]);
     await db.insert(schema.buildGuides).values(
-      Object.entries(azrem.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: AZREM_BUILD_ID, key, doc, textLength: textLength(doc) })),
+      [
+        ...Object.entries(azrem.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: AZREM_BUILD_ID, key, doc, textLength: textLength(doc) })),
+        ...Object.entries(iriel.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: IRIEL_BUILD_ID, key, doc, textLength: textLength(doc) })),
+      ],
     );
   } finally {
     await pool.end();

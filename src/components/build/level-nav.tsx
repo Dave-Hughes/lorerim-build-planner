@@ -12,6 +12,12 @@ export function windowStart(level: number, total: number): number {
   return Math.max(1, Math.min(level - Math.floor(size / 2), total - size + 1));
 }
 
+/** The gear mark: the Other slot's satchel (WO-32), decorative. */
+function GearMark({ className, style, level }: { className?: string; style?: React.CSSProperties; level?: number }) {
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src="/icons/slot-other.svg" alt="" aria-hidden="true" width={12} height={12} className={className} style={style} data-gear-level={level} />;
+}
+
 function Star({ size = 10 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 10 10" aria-hidden="true">
@@ -22,7 +28,7 @@ function Star({ size = 10 }: { size?: number }) {
 
 /** What the level marks mean: only the marks this build has (WO-31). */
 export function LevelLegend({ marks }: { marks: LevelMark[] }) {
-  const has = (k: "perks" | "destiny" | "stone" | "skill100" | "notes") => marks.some((m) => (k === "perks" ? m.perks > 0 : m[k]));
+  const has = (k: "perks" | "destiny" | "stone" | "skill100" | "notes" | "gear") => marks.some((m) => (k === "perks" ? m.perks > 0 : m[k]));
   return (
     <div className={styles.legend}>
       {has("perks") && (
@@ -53,6 +59,12 @@ export function LevelLegend({ marks }: { marks: LevelMark[] }) {
         <span>
           <i className={styles.keyNotes} />
           Notes
+        </span>
+      )}
+      {has("gear") && (
+        <span>
+          <GearMark className={styles.keyGear} />
+          Gear
         </span>
       )}
     </div>
@@ -145,6 +157,7 @@ export function LevelRuler({ marks, level, onChange }: { marks: LevelMark[]; lev
                 </span>
               )}
               {m.notes && <span className={styles.markNotes} style={{ left: x(m.level) }} />}
+              {m.gear && <GearMark className={styles.markGear} style={{ left: x(m.level) }} level={m.level} />}
             </span>
           );
         })}
@@ -193,7 +206,7 @@ export function LevelRow({ marks, level, onChange }: { marks: LevelMark[]; level
               key={m.level}
               type="button"
               className={cls}
-              aria-label={`Level ${m.level}${m.notes ? ", notes" : ""}${m.problems ? `, ${m.problems} problem${m.problems > 1 ? "s" : ""}` : ""}`}
+              aria-label={`Level ${m.level}${m.notes ? ", notes" : ""}${m.gear ? ", new gear" : ""}${m.problems ? `, ${m.problems} problem${m.problems > 1 ? "s" : ""}` : ""}`}
               aria-current={on ? "true" : undefined}
               onClick={() => onChange(m.level)}
             >
@@ -205,6 +218,7 @@ export function LevelRow({ marks, level, onChange }: { marks: LevelMark[]; level
                 {m.destiny && <i className={styles.cellDestiny} />}
                 {m.stone && <i className={styles.cellStone} />}
                 {m.notes && <i className={styles.cellNotes} />}
+                {m.gear && <GearMark className={styles.cellGear} />}
               </span>
               {m.problems > 0 && <i className={styles.cellProblem} />}
             </button>

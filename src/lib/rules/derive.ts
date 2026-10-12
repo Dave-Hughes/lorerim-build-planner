@@ -129,6 +129,8 @@ export interface LevelMark {
   skill100: boolean;
   /** The author wrote notes for this level. */
   notes: boolean;
+  /** Gear changes at this level (WO-32). */
+  gear: boolean;
   problems: number;
 }
 
@@ -149,6 +151,7 @@ export function levelMarks(d: GameData, plan: BuildPlan, states: LevelState[], n
       stone: !!lv.stone,
       skill100,
       notes: noted.has(i + 1),
+      gear: gearChanges(plan, i + 1).length > 0,
       problems: s.issues.length,
     };
   });

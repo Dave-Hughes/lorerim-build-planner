@@ -40,6 +40,8 @@ test("the two Destiny stars called Endurance have different names", async ({ pag
   await page.goto("/b/sample?level=6");
   // Destiny's own section (WO-27).
   const trees = page.getByRole("region", { name: "Destiny at level 6" });
+  // Folded at a level without a Destiny star (WO-32).
+  await trees.getByRole("button", { name: "Show the tree" }).click();
   await expect(trees.getByRole("button", { name: /^Endurance \(to Thief\),/ })).toHaveCount(1);
   await expect(trees.getByRole("button", { name: /^Endurance \(to Smash\),/ })).toHaveCount(1);
   await expect(trees.getByRole("button", { name: /^Endurance,/ })).toHaveCount(0);

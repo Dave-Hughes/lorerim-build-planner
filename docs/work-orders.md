@@ -1325,13 +1325,13 @@ Dave approved the mockup: the design canvas's **"Levels tab: perks, Destiny fold
    - Light bows doing less damage than the Imperial Bow is probably real (they're faster); leave those.
 
 ### Done when
-- [ ] Screenshots at 1440 of Iriel at level 22 match the artboard: the order, Destiny folded, `New gear` in the card, the slot cards and the timeline.
-- [ ] Screenshots of Iriel at 25 (Destiny open by itself, Glass not yet) and at 26 (Glass Light Bow and Glass Arrow new), and of level 22 at 390.
-- [ ] e2e: on a level with no Destiny star, the Destiny section is one line. On level 25 it is open. `Show the tree` opens it.
-- [ ] e2e: clicking `Elven Light Bow` in the timeline goes to level 14.
-- [ ] The ruler, level tiles and pinned bar show the gear mark at 1, 6, 10, 14, 18, 20, 22, 26 and 30 on Iriel, and nowhere else.
-- [ ] The arrow numbers checked, and the commit message says what the records hold.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Screenshots at 1440 of Iriel at level 22 match the artboard: the order, Destiny folded, `New gear` in the card, the slot cards and the timeline.
+- [x] Screenshots of Iriel at 25 (Destiny open by itself, Glass not yet) and at 26 (Glass Light Bow and Glass Arrow new), and of level 22 at 390.
+- [x] e2e: on a level with no Destiny star, the Destiny section is one line. On level 25 it is open. `Show the tree` opens it.
+- [x] e2e: clicking `Elven Light Bow` in the timeline goes to level 14.
+- [x] The ruler, level tiles and pinned bar show the gear mark at 1, 6, 10, 14, 18, 20, 22, 26 and 30 on Iriel, and nowhere else.
+- [x] The arrow numbers checked, and the commit message says what the records hold.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

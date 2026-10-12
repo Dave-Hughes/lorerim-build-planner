@@ -123,10 +123,19 @@ class ItemsTest(unittest.TestCase):
         self.assertIn("Iron Sword", self.names)
         self.assertEqual(self.counts["untemplated"], 8)
 
-    def test_merges_same_name_records_keeping_the_winners_stats(self):
+    def test_merges_same_name_records_keeping_the_original(self):
+        # The original is the lower form ID in the earliest plugin: 0x820, with its own stats.
         steel = [e for e in self.entries if e["name"] == "Steel Armor"]
         self.assertEqual(len(steel), 1)
-        self.assertEqual((steel[0]["armor"], steel[0]["weight"], steel[0]["id"]), (25, 30, "Fixture.esp:000821"))
+        self.assertEqual((steel[0]["armor"], steel[0]["weight"], steel[0]["id"]), (24, 35, "Fixture.esp:000820"))
+
+    def test_merge_prefers_the_earliest_plugin_over_a_later_copy(self):
+        early = dict(self.records[0], key=["Skyrim.esm", 0x105EE7], name="Steel Arrow", group="AMMO", flags=0, template=False, keywords=[], ammoFlags=items.AMMO_NON_BOLT, damage=40.0)
+        late = dict(early, key=["Skyrim.esm", 0x01397F], damage=12.0)
+        quest = dict(early, key=["Update.esm", 0x000800], damage=99.0)
+        order = {"skyrim.esm": 0, "update.esm": 1}
+        entries, _ = items.index_items([early, late, quest], {}, items.DEFAULT_SKIP, order)
+        self.assertEqual([(e["id"], e["damage"]) for e in entries], [("Skyrim.esm:01397F", 12.0)])
         self.assertEqual(self.counts["merged"], 7)
 
     def test_describes_types_slots_and_stats(self):
@@ -140,7 +149,7 @@ class ItemsTest(unittest.TestCase):
 
     def test_builds_the_planner_rows(self):
         rows = {r["name"]: r for r in items.build_items({"items": self.entries})}
-        self.assertEqual(rows["Steel Armor"], {"id": "Fixture.esp:000821", "name": "Steel Armor", "kind": "armor", "slot": "Body", "armorType": "Heavy", "stats": "Heavy armor · 25 armor · 30 weight"})
+        self.assertEqual(rows["Steel Armor"], {"id": "Fixture.esp:000820", "name": "Steel Armor", "kind": "armor", "slot": "Body", "armorType": "Heavy", "stats": "Heavy armor · 24 armor · 35 weight", "text": "Old steel."})
         self.assertEqual(rows["Steel Spear"]["stats"], "Spear · 11 damage · 14 weight")
         self.assertEqual(rows["Iron Arrow"]["stats"], "Arrow · 8 damage · 0.1 weight")
 

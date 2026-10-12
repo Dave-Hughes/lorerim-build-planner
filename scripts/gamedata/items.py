@@ -209,10 +209,10 @@ def describe(rec, kw_names):
     return out
 
 
-def index_items(winners, kw_names, skip):
+def index_items(winners, kw_names, skip, order=None):
     """
     The filter steps over the winning records (in load order), with the count after each.
-    Returns (entries, counts).
+    Returns (entries, counts). `order` maps a plugin name to its place in the load order.
     """
     counts = {"records": len(winners)}
     rows = [r for r in winners if playable(r)]
@@ -221,9 +221,17 @@ def index_items(winners, kw_names, skip):
     counts["named"] = len(rows)
     rows = [r for r in rows if not r["template"]]
     counts["untemplated"] = len(rows)
+    # Several records with one name (WO-32): keep the original, the record from the earliest plugin
+    # in the load order, then the lowest form ID: the game's own Steel Arrow, not the Helgen quest's
+    # copy (MQ101SteelArrow) a later merge patch happens to touch last. Each record's stats are its
+    # winning override's.
+    rank = order or {}
     merged = {}
-    for r in rows:  # later in the load order wins
-        merged[(r["group"], r["name"].lower())] = r
+    for r in rows:
+        key = (r["group"], r["name"].lower())
+        mine = (rank.get(r["key"][0].lower(), 1 << 20), r["key"][1])
+        if key not in merged or mine < (rank.get(merged[key]["key"][0].lower(), 1 << 20), merged[key]["key"][1]):
+            merged[key] = r
     counts["merged"] = len(merged)
     entries = sorted((describe(r, kw_names) for r in merged.values()), key=lambda e: (e["kind"], e["name"].lower()))
     return entries, counts
@@ -260,7 +268,7 @@ def main():
         for r in items:
             winners.pop(tuple(r["key"]), None)  # keep load order: the winner goes to the end
             winners[tuple(r["key"])] = r
-    entries, counts = index_items(list(winners.values()), kw_names, skip_patterns())
+    entries, counts = index_items(list(winners.values()), kw_names, skip_patterns(), {n.lower(): i for i, n in enumerate(lo)})
     out = os.path.join(REPO, "gamedata", VERSION, "items_raw.json")
     with open(out, "w", encoding="utf-8") as f:
         json.dump({"counts": counts, "items": entries}, f, indent=1, ensure_ascii=False)

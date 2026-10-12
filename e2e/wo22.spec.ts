@@ -31,7 +31,9 @@ test("gear set at one level carries on, and a later change shows from its own le
   await expect(page.getByRole("region", { name: "Level 3", exact: true })).not.toContainText("Iron sword");
   await page.goto(`/b/${GEAR_BUILD_ID}?level=5`);
   const card = page.getByRole("region", { name: "Level 5", exact: true });
-  await expect(card).toContainText("Steel spear (Main hand)");
+  // WO-32: "New gear", the item in a chip, then its slot and what it replaces.
+  await expect(card).toContainText("Steel spear");
+  await expect(card).toContainText("Main hand, replaces Iron sword");
   await expect(page.getByRole("region", { name: "Gear at level 5" })).toContainText("Steel spear");
 });
 
@@ -61,5 +63,5 @@ test("existing gear shows under the new slot names", async ({ page }) => {
   await expect(at).toContainText("Steel spear");
   await expect(at).toContainText("Off hand");
   await expect(at).toContainText("Leather shield");
-  await expect(page.getByRole("region", { name: "Level 8", exact: true })).toContainText("Javelins (Ammo)");
+  await expect(page.getByRole("region", { name: "Level 8", exact: true })).toContainText("Ammo, replaces nothing");
 });
