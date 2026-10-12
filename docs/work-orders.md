@@ -1254,18 +1254,18 @@ What went wrong or read badly is below, most serious first. Do after WO-30.
 16. **The deity tooltip and the Start popover set the game's text differently.** The tooltip uses small sans text; the popover uses Alegreya italic. Use the popover's style for the game's own words in both.
 
 ### Done when
-- [ ] e2e: a guide with a dividing line between two paragraphs. The line's box is under 60 px tall, and the second paragraph sits directly below it.
-- [ ] Screenshot at 1440 and 390: Iriel's `Gear at level 22` with no overlaps.
-- [ ] The items URL changes when `items.json` changes (unit test on the hash helper).
-- [ ] `items.json` rebuilt: the six named weapons in #4 are typed Spear, Polearm or Quarterstaff. The four Staffs are listed in the commit message.
-- [ ] Unit test: `formatDate` of `2026-10-12T02:00:00Z` in `America/Denver` gives `11 Oct 2026`.
-- [ ] Unit test: `suggestedTags(["Marksman", "Sneak", "Alchemy"])` gives Marksman and Stealth.
-- [ ] e2e: searching `Jephre` on Browse finds Iriel.
-- [ ] Screenshots of Set up's deity step: no deity, then Jephre chosen with its text.
-- [ ] e2e: after `Confirm`, the perk card is closed.
-- [ ] Screenshot of the owner's build page at 1440: one Copy link and one Edit. The Guide tab has no `GUIDE` label.
-- [ ] Screenshot of an item mention's hover text and of the legend at 390.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: a guide with a dividing line between two paragraphs. The line's box is under 60 px tall, and the second paragraph sits directly below it.
+- [x] Screenshot at 1440 and 390: Iriel's `Gear at level 22` with no overlaps.
+- [x] The items URL changes when `items.json` changes (unit test on the hash helper).
+- [x] `items.json` rebuilt: the six named weapons in #4 are typed Spear, Polearm or Quarterstaff. The four Staffs are listed in the commit message.
+- [x] Unit test: `formatDate` of `2026-10-12T02:00:00Z` in `America/Denver` gives `11 Oct 2026`.
+- [x] Unit test: `suggestedTags(["Marksman", "Sneak", "Alchemy"])` gives Marksman and Stealth.
+- [x] e2e: searching `Jephre` on Browse finds Iriel.
+- [x] Screenshots of Set up's deity step: no deity, then Jephre chosen with its text.
+- [x] e2e: after `Confirm`, the perk card is closed.
+- [x] Screenshot of the owner's build page at 1440: one Copy link and one Edit. The Guide tab has no `GUIDE` label.
+- [x] Screenshot of an item mention's hover text and of the legend at 390.
+- [x] All checks in CLAUDE.md pass.
 
 **For Dave, not Jeff:** `My builds` on staging still has three test builds: `iuguyg`, `QA Breton Spellsword` and `Test Build 1`. Delete them or keep them as you like.
 
