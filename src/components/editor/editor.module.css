@@ -839,3 +839,45 @@
     min-width: 30px;
   }
 }
+
+/* The Oghma Infinium (WO-44): six skills as chips, then its gains and +3 perk points. */
+.oghmaGains {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.oghmaForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid var(--rule-strong);
+  background: var(--panel);
+}
+.oghmaChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.oghmaChip {
+  padding: 4px 10px;
+  border: 1px solid var(--rule-strong);
+  background: transparent;
+  color: var(--soft);
+  font-size: 14px;
+  cursor: pointer;
+}
+.oghmaChip[aria-pressed="true"] {
+  border-color: var(--ember);
+  background: var(--ember);
+  color: var(--on-ember);
+}
+.oghmaChip:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.oghmaActions {
+  display: flex;
+  gap: 6px;
+}

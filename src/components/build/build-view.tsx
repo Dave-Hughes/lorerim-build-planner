@@ -750,6 +750,7 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
   for (const x of f.raised) add(x.sk, "Skill points", x);
   for (const [sk, x] of f.extras.trainer) add(sk, "Trainer", x);
   for (const [sk, x] of f.extras.book) add(sk, "Skill book", x);
+  for (const x of f.oghma?.skills ?? []) add(x.sk, "Oghma Infinium", x);
   const tip = (lines: { label: string; row: SkillGain }[]) => (
     <span className={styles.gainTip}>
       {lines.map((l, i) => (
@@ -1002,6 +1003,15 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       <SkillGains key={kind} rows={[...m].map(([sk, l]) => ({ skill: sk, gain: l.n, from: l.from, to: l.to }))} />,
     ]);
   }
+  // The Oghma Infinium (WO-44): its six +5 skills and +3 perk points.
+  if (facts.oghma)
+    rows.push([
+      "Oghma Infinium",
+      <span key="og" className={styles.stack}>
+        <SkillGains rows={facts.oghma.skills.map((x) => ({ skill: x.sk, gain: x.n, from: x.from, to: x.to }))} />
+        <span className="ember">+{facts.oghma.perkPoints} perk points</span>
+      </span>,
+    ]);
   // New gear (WO-32): each item in an ember chip with its slot and what it replaces; an emptied
   // slot as "Off hand emptied", "Poison vials (Other) removed".
   if (facts.gear.length) {

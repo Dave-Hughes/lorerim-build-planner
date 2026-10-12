@@ -10,9 +10,14 @@ import type { ThemeId } from "@/lib/themes";
 export type Attribute = "health" | "magicka" | "stamina";
 export type GameMode = "Naaktiid" | "Konahrik";
 
-export type Extra =
-  | { kind: "trainer"; skill: string }
-  | { kind: "book"; skill: string };
+/** Between level-ups: a trainer session, a skill book, or the Oghma Infinium (WO-44). */
+export type Extra = SkillExtra | OghmaExtra;
+export type SkillExtra = { kind: "trainer"; skill: string } | { kind: "book"; skill: string };
+/** The Oghma Infinium, read once: +5 to six different skills (up to 100, past the max skill) and 3 perk points. */
+export interface OghmaExtra {
+  kind: "oghma";
+  skills: string[];
+}
 
 export interface LevelPlan {
   /** Attribute raised at this level-up. Not used at level 1. */
@@ -107,6 +112,7 @@ export type IssueCode =
   | "destiny-repeat"
   | "destiny-prerequisite"
   | "destiny-points-over"
+  | "oghma-repeat"
   | "spell-repeat"
   | "spell-unknown"
   | "creation";

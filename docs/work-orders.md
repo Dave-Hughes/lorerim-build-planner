@@ -1890,12 +1890,12 @@ It can be read once per character. Zen's mage uses it at the end. Do after WO-43
 4. **The build page:** that level's detail shows `Oghma Infinium` with the six `+5` skills and `+3 perk points`. Skill gains show the +5 like a book's.
 
 ### Done when
-- [ ] Unit tests:
+- [x] Unit tests:
   - Oghma at level 30 with Alteration 78: Alteration is 83 at level 30, even though max skill is 80;
   - the level has 3 more perk points;
   - a second Oghma raises `oghma-repeat`.
-- [ ] e2e: add it to a test build; the level detail shows the six skills and `+3 perk points`.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: add it to a test build; the level detail shows the six skills and `+3 perk points`.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

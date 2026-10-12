@@ -5,7 +5,7 @@
 import { gameData, type GameData } from "./data";
 import { gearSlot } from "./gear";
 import { keptTraitChoices } from "./trait-choices";
-import type { BuildPlan } from "./types";
+import type { BuildPlan, Extra } from "./types";
 
 export interface Dropped {
   kind: "race" | "birthsign" | "trait" | "skill" | "perk" | "Destiny perk" | "stone";
@@ -25,7 +25,7 @@ export function missingIn(d: GameData, plan: BuildPlan): Dropped[] {
   for (const s of [...plan.majors, ...plan.minors, ...(plan.masterOfOneSkill ? [plan.masterOfOneSkill] : [])])
     if (!d.skills.includes(s)) add("skill", s);
   for (const lv of plan.levels) {
-    for (const s of [...Object.keys(lv.skillPoints), ...lv.extras.map((e) => e.skill)]) if (!d.skills.includes(s)) add("skill", s);
+    for (const s of [...Object.keys(lv.skillPoints), ...lv.extras.flatMap((e) => (e.kind === "oghma" ? e.skills : [e.skill]))]) if (!d.skills.includes(s)) add("skill", s);
     for (const id of lv.perks) if (!d.perkById.has(id)) add("perk", perkName(id));
     for (const id of lv.destiny) if (!d.perkById.has(id)) add("Destiny perk", perkName(id));
     if (lv.stone && lv.stone !== "none" && !d.stoneByName.has(lv.stone)) add("stone", lv.stone);
@@ -50,7 +50,7 @@ export function convertPlan(d: GameData, plan: BuildPlan): { plan: BuildPlan; dr
       skillPoints: Object.fromEntries(Object.entries(lv.skillPoints).filter(([s]) => skill(s))),
       perks: lv.perks.filter((id) => d.perkById.has(id)),
       destiny: lv.destiny.filter((id) => d.perkById.has(id)),
-      extras: lv.extras.filter((e) => skill(e.skill)),
+      extras: lv.extras.flatMap<Extra>((e) => (e.kind === "oghma" ? [{ ...e, skills: e.skills.filter(skill) }] : skill(e.skill) ? [e] : [])),
       stone: lv.stone && lv.stone !== "none" && !d.stoneByName.has(lv.stone) ? undefined : lv.stone,
     })),
   };

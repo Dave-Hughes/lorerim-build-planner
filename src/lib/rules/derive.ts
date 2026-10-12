@@ -104,6 +104,7 @@ export function levelChanges(d: GameData, plan: BuildPlan, states: LevelState[],
   const trainerCounts: Record<string, number> = {};
   const bookCounts: Record<string, number> = {};
   for (const ex of lv.extras) {
+    if (ex.kind === "oghma") continue;
     if (ex.kind === "trainer") trainerCounts[ex.skill] = (trainerCounts[ex.skill] ?? 0) + 1;
     else bookCounts[ex.skill] = (bookCounts[ex.skill] ?? 0) + 1;
   }
@@ -400,7 +401,25 @@ export function levelFacts(d: GameData, plan: BuildPlan, states: LevelState[], l
   const at: Record<string, number> = Object.fromEntries(raised.map((x) => [x.sk, x.to]));
   const cur = (sk: string) => at[sk] ?? s.skillsBefore[sk];
   const extras: Record<"trainer" | "book", Map<string, { from: number; to: number; n: number }>> = { trainer: new Map(), book: new Map() };
+  // The Oghma Infinium (WO-44), the first reading only: +5 each, up to 100, and 3 perk points.
+  let oghma: { skills: { sk: string; from: number; to: number; n: number }[]; perkPoints: number } | null = null;
+  const firstOghma = plan.levels.findIndex((l) => l.extras.some((x) => x.kind === "oghma")) + 1;
   for (const ex of lv.extras) {
+    if (ex.kind === "oghma") {
+      if (firstOghma !== level || oghma) continue;
+      oghma = {
+        skills: [...new Set(ex.skills)]
+          .filter((sk) => sk in s.skills)
+          .map((sk) => {
+            const from = cur(sk);
+            const to = Math.min(100, from + 5);
+            at[sk] = to;
+            return { sk, from, to, n: to - from };
+          }),
+        perkPoints: 3,
+      };
+      continue;
+    }
     if (!(ex.skill in s.skills)) continue;
     const from = cur(ex.skill);
     const to = ex.kind === "trainer" ? from + 1 : Math.min(s.maxSkill, from + perBook);
@@ -421,6 +440,7 @@ export function levelFacts(d: GameData, plan: BuildPlan, states: LevelState[], l
     raised,
     capAt: raised.findIndex((x) => x.to >= s.maxSkill),
     extras,
+    oghma,
     perks: changes.perks,
     destiny: changes.destiny,
     stone,

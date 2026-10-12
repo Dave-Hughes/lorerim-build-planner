@@ -179,14 +179,28 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   const extraSteps = (() => {
     const at: Record<string, number> = {};
     const perBook = plan.traits.includes("Skilled") ? 2 : 1;
+    const start = (sk: string) => at[sk] ?? (s.skillsBefore[sk] ?? 0) + (lv.skillPoints[sk] ?? 0);
     return lv.extras.map((ex) => {
-      const from = at[ex.skill] ?? (s.skillsBefore[ex.skill] ?? 0) + (lv.skillPoints[ex.skill] ?? 0);
+      // The Oghma Infinium (WO-44): +5 to each of its skills, up to 100.
+      if (ex.kind === "oghma")
+        return {
+          from: 0,
+          to: 0,
+          oghma: ex.skills.map((sk) => {
+            const from = start(sk);
+            const to = Math.min(100, from + 5);
+            at[sk] = to;
+            return { skill: sk, gain: to - from, from, to };
+          }),
+        };
+      const from = start(ex.skill);
       const to = ex.kind === "trainer" ? from + 1 : Math.min(s.maxSkill, from + perBook);
       at[ex.skill] = to;
-      return { from, to };
+      return { from, to, oghma: undefined };
     });
   })();
   const prevStone = level > 1 ? states[level - 2].stone : "";
+  const oghmaLevel = plan.levels.findIndex((l) => l.extras.some((x) => x.kind === "oghma")) + 1;
   const prevDeity = level > 1 ? states[level - 2].deity : plan.deity;
   // The rules the planner applies (the engine's own numbers), for the labels' tooltips.
   const trainerRule = `+1 to a skill. ${d.rules.trainerSessionsPerLevel} sessions a level; unused ones carry over to later levels. A trainer can't raise a skill past the level's max skill.`;
@@ -431,7 +445,23 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
             <span className="label">Between level-ups</span>
             {lv.extras.length > 0 && (
               <ul className={styles.extras}>
-                {lv.extras.map((ex, i) => (
+                {lv.extras.map((ex, i) =>
+                  ex.kind === "oghma" ? (
+                    <li key={i}>
+                      <span className={styles.extraRow}>
+                        <span className={styles.extraKind}>
+                          <IconLabel icon={<MarkIcon name="skill-book" />}>Oghma Infinium</IconLabel>
+                        </span>
+                        <span className={styles.oghmaGains}>
+                          <SkillGains rows={extraSteps[i].oghma ?? []} />
+                          <span className="ember">+3 perk points</span>
+                        </span>
+                      </span>
+                      <button type="button" className={styles.x} aria-label="Remove the Oghma Infinium" onClick={() => setPlan(ops.removeExtra(plan, level, i))}>
+                        ×
+                      </button>
+                    </li>
+                  ) : (
                   <li key={i}>
                     <span className={styles.extraRow}>
                       <span className={styles.extraKind}>
@@ -443,7 +473,8 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                       ×
                     </button>
                   </li>
-                ))}
+                  ),
+                )}
               </ul>
             )}
             {(["trainer", "book"] as const).map((kind) => {
@@ -468,6 +499,9 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                 </div>
               );
             })}
+            {/* The Oghma Infinium (WO-44): read once, so offered until the build has it. */}
+            {!oghmaLevel && <OghmaForm skills={d.skills} onAdd={(skills) => setPlan(ops.addExtra(plan, level, { kind: "oghma", skills }))} />}
+            {oghmaLevel > 0 && oghmaLevel !== level && <span className={styles.hint}>Oghma Infinium: read at level {oghmaLevel}.</span>}
           </div>
           <label className={`field ${styles.alsoCol}`}>
             <Tooltip content="One stone at a time: choosing a new one replaces the old. Its bonus counts from that level on.">
@@ -606,5 +640,49 @@ function LevelNotes({ buildId, level, initial, onChange }: { buildId: string; le
         onChange={onChange}
       />
     </section>
+  );
+}
+
+/**
+ * The Oghma Infinium (WO-44): six different skills, picked as chips ("3 of 6 chosen"); each gets
+ * +5, up to 100, and the level 3 perk points.
+ */
+function OghmaForm({ skills, onAdd }: { skills: string[]; onAdd: (skills: string[]) => void }) {
+  const [open, setOpen] = useState(false);
+  const [chosen, setChosen] = useState<string[]>([]);
+  if (!open)
+    return (
+      <div role="group" aria-label="Oghma Infinium" className={styles.extraForm}>
+        <span className={styles.extraKind}>
+          <IconLabel icon={<MarkIcon name="skill-book" />}>Oghma Infinium</IconLabel>
+        </span>
+        <button type="button" className="btn btn-sm" onClick={() => setOpen(true)}>
+          Add
+        </button>
+      </div>
+    );
+  const toggle = (sk: string) => setChosen((c) => (c.includes(sk) ? c.filter((x) => x !== sk) : c.length < 6 ? [...c, sk] : c));
+  return (
+    <div role="group" aria-label="Oghma Infinium" className={styles.oghmaForm}>
+      <span className={styles.extraKind}>
+        <IconLabel icon={<MarkIcon name="skill-book" />}>Oghma Infinium</IconLabel>
+      </span>
+      <span className={chosen.length ? "ember" : "muted"}>{chosen.length} of 6 chosen</span>
+      <span className={styles.oghmaChips}>
+        {skills.map((sk) => (
+          <button key={sk} type="button" className={styles.oghmaChip} aria-pressed={chosen.includes(sk)} disabled={!chosen.includes(sk) && chosen.length >= 6} onClick={() => toggle(sk)}>
+            <IconLabel icon={<SkillIcon name={sk} />}>{sk}</IconLabel>
+          </button>
+        ))}
+      </span>
+      <span className={styles.oghmaActions}>
+        <button type="button" className="btn btn-sm btn-primary" disabled={chosen.length !== 6} onClick={() => onAdd(chosen)}>
+          Add
+        </button>
+        <button type="button" className="btn btn-sm btn-quiet" onClick={() => (setOpen(false), setChosen([]))}>
+          Cancel
+        </button>
+      </span>
+    </div>
   );
 }

@@ -19,7 +19,13 @@ function planSchema(d: GameData) {
     perks: z.array(perkId).max(40),
     destiny: z.array(perkId).max(7),
     extras: z
-      .array(z.object({ kind: z.enum(["trainer", "book"]), skill: skillName }))
+      .array(
+        z.union([
+          z.object({ kind: z.enum(["trainer", "book"]), skill: skillName }),
+          // The Oghma Infinium (WO-44): six different skills.
+          z.object({ kind: z.literal("oghma"), skills: z.array(skillName).length(6).refine((s) => new Set(s).size === 6, "Six different skills") }),
+        ]),
+      )
       .max(200),
     stone: z
       .string()

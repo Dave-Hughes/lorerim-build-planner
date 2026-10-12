@@ -1,6 +1,11 @@
 import { rankCount, requireGameData, type GameData, type Perk } from "./data";
 import type { BuildPlan, Issue, IssueCode, LevelState } from "./types";
 
+/** LoreRim's Oghma Infinium reward (LoreRim Oghma Reward.esp): +5 to each of six skills, then 3 perk points. */
+export const OGHMA_SKILLS = 6;
+export const OGHMA_SKILL = 5;
+export const OGHMA_PERK_POINTS = 3;
+
 const issue = (code: IssueCode, message: string): Issue => ({ code, message });
 
 /** "1 skill point", "2 skill points". */
@@ -70,6 +75,8 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
     (naaktiid ? rules.naaktiidBonusPerkPoints : 0) +
     (masterOfDestiny ? rules.masterOfDestinyPerkPoints : 0);
   let perkPointsSpent = 0;
+  /** The level the Oghma Infinium was read at, once read. */
+  let oghmaAt = 0;
   let banked = 0;
   let trainerUsed = 0;
   let stone = "";
@@ -116,6 +123,17 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
     }
 
     for (const ex of lv.extras) {
+      // The Oghma Infinium (WO-44): sets the skills straight, so it may go past the level's max.
+      if (ex.kind === "oghma") {
+        if (oghmaAt) {
+          issues.push(issue("oghma-repeat", "The Oghma Infinium can only be read once."));
+          continue;
+        }
+        oghmaAt = L;
+        for (const sk of new Set(ex.skills)) if (sk in skills) skills[sk] = Math.min(100, skills[sk] + OGHMA_SKILL);
+        perkPoints += OGHMA_PERK_POINTS;
+        continue;
+      }
       if (!(ex.skill in skills)) continue;
       if (ex.kind === "trainer") {
         trainerUsed++;
