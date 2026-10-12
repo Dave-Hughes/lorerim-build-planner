@@ -1041,6 +1041,50 @@ Dave: in the level card, each skill row reads `Marksman 43 → 48`, so the gain 
 
 ---
 
+## WO-29  The about bar: order, hover text, and starts with their choices (11 Oct 2026)
+
+From Dave's notes. Do after WO-28.
+
+**A correction to WO-15 #7.** It split "Merchant or mercenary" into two starts. LoreRim's own start list has it as **one** start (New Beginnings), and inside it you choose merchant or mercenary and a homeland (`lorerim/starts/alternate-starts.md` in the project docs, read from Dave's files). Most other starts have a choice too: which inn, which port, which hold, which temple or shrine. So a start is a start plus its choices.
+
+### Order
+1. The about bar reads **Race, Birthsign, Deity, Traits, Game mode, Start**: on the build page, in Set up's summary, and anywhere else these six appear together.
+
+### Hover text on every item
+2. Each value gets the WO-17 tooltip on hover and focus, with a dotted underline. Every tooltip uses only facts the planner already holds or the game's own words:
+   - **Race:** the starting Health, Magicka and Stamina, and the primary and secondary skills (`races.json`).
+   - **Birthsign:** the sign's text from the records (`birthsigns.json`), as in Set up.
+   - **Deity:** the deity's blessing text from the records once #4 has it. Until then, the races that can worship it (`deities.json`).
+   - **Traits:** each trait is its own hover target, not one for the list, with the trait's text from `traits.json`. A trait choice shows as `Focused Combat: One-Handed` (WO-15).
+   - **Game mode:** what the mode changes in the planner's rules, from `src/lib/rules/constants.ts`, e.g. Konahrik's 3 perk points at level 1. It must not be wording invented for the tooltip.
+   - **Start:** a popover rather than a tooltip, since it holds more: the start's name, then each choice made with its label, e.g. `Role: Mercenary` and `Homeland: Hammerfell`. It opens on hover and on click (tap on phones), and closes on Esc or a click outside.
+3. **The bar's value for Start** is the start's name followed by the choices in muted text: `Merchant or mercenary · Mercenary, Hammerfell`. It truncates with `…` on narrow screens, and the popover has the rest.
+
+### Starts and their choices
+4. **Data:**
+   - `starts.json` becomes `[{ name, choices: [{ label, options: [...] }] }]`, generated from the game records by a new `scripts/gamedata/starts.py`. The script reads the start quests' menu messages (MESG records with buttons) that the statue's starts use.
+   - A start whose choices can't be found in the records gets `choices: []`, and the commit lists those starts.
+   - The same script reads each Wintersun deity's blessing text for #2.
+   - Jeff writes and tests it against a fixture; the chat session runs it on Dave's PC, as in WO-23.
+5. **The plan:** `startChoices: Record<string, string>`, keyed by the choice label.
+   - Builds that saved `Merchant` or `Mercenary` (after WO-15) read back as `Merchant or mercenary` with `Role` set.
+   - Builds with the old `Merchant or mercenary` keep it with no choices.
+6. **Set up:** after picking a start, its choices appear under it as selects, each optional. Leaving a choice empty is fine and shows nothing for it on the build page.
+
+### Level note size
+7. Level notes can run long. The note text in the level card goes from Alegreya italic 21 px to 17 px, line height 1.55. The author's line above it stays.
+   - **Over about 600 characters**, the note is clamped to 12 lines with `Read more` to expand it in place.
+
+### Done when
+- [ ] e2e: the about bar's labels read in the order above on Azrem's page.
+- [ ] e2e: hovering each item shows its tooltip; `Phalanx` and `Focused Combat` are separate targets. Clicking Start opens the popover with the choices, and Esc closes it.
+- [ ] Unit test: a plan with `start: "Mercenary"` reads back as `Merchant or mercenary` with `Role: Mercenary`.
+- [ ] `starts.json` built from the real load order, with the starts that have no choices listed in the commit message.
+- [ ] Screenshots for Dave at 1440 and 390: the about bar with a tooltip open and with the Start popover open; Set up's start step with a start's choices; a long level note clamped.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
