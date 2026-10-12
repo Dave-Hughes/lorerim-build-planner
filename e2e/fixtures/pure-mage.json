@@ -1,0 +1,1542 @@
+{
+ "_source": "Pure Mage, from Zenematics' How to Mage (/b/5pjwcg252f) on staging, copied 12 Oct 2026 from its public page for the WO-47 and WO-48 tests and screenshots.",
+ "name": "Pure Mage, from Zenematics' How to Mage",
+ "description": "Every school of magic on one Altmer: summons and staffs early, Scorching Ray combos mid game, Shadow Clones with Forbidden Sun at the end.",
+ "coverImageUrl": null,
+ "plan": {
+  "gear": [
+   {
+    "name": "College Robes",
+    "note": "From Mirabelle Ervine when you arrive.",
+    "slot": "Body",
+    "itemId": "Skyrim.esm:10D6A5",
+    "fromLevel": 1
+   },
+   {
+    "name": "College Boots",
+    "note": "",
+    "slot": "Feet",
+    "itemId": "Skyrim.esm:10E2DC",
+    "fromLevel": 1
+   },
+   {
+    "name": "Necromancer's Amulet",
+    "note": "Reward for Blood on the Ice, Windhelm. More magicka, cheaper Conjuration.",
+    "slot": "Amulet",
+    "itemId": "Skyrim.esm:0C891D",
+    "fromLevel": 4
+   },
+   {
+    "name": "Staff of Fireball",
+    "note": "On the Altar of Magnus.",
+    "slot": "Main hand",
+    "itemId": "Skyrim.esm:029B82",
+    "fromLevel": 5
+   },
+   {
+    "name": "Staff of Fireball",
+    "note": "Leaning on a tree above the sabre cat cave near the Thalmor Embassy.",
+    "slot": "Off hand",
+    "itemId": "Skyrim.esm:029B82",
+    "fromLevel": 5
+   },
+   {
+    "name": "Mentor's Ring",
+    "note": "From the necromancer at the Ritual Stone. 10% cheaper spells.",
+    "slot": "Ring",
+    "itemId": "ccBGSSSE001-Fish.esm:000B29",
+    "fromLevel": 6
+   },
+   {
+    "name": "Elemental Padding",
+    "note": "Buy Cloth Padding, then forge it with Ulik the troll's hide. Not in the item list yet.",
+    "slot": "Other",
+    "fromLevel": 14
+   },
+   {
+    "name": "Otar",
+    "note": "Otar the Mad, Ragnvald. Big resistance to all three elements.",
+    "slot": "Head",
+    "itemId": "Skyrim.esm:061CC2",
+    "fromLevel": 20
+   },
+   {
+    "name": "Denstagmer's Ring",
+    "note": "The safe in Shriekwind Bastion.",
+    "slot": "Ring",
+    "itemId": "ccBGSSSE001-Fish.esm:000B2B",
+    "fromLevel": 20
+   },
+   {
+    "made": {
+     "base": "Unenchanted Destruction Staff",
+     "spell": "Triumvirate - Mage Archetypes.esp:1A0588"
+    },
+    "name": "Staff of Cloudkill",
+    "note": "Needs Enchanting 75, Artificer's Insight and the Arch-Mage's heart stones.",
+    "slot": "Main hand",
+    "itemId": "Skyrim.esm:0BE11F",
+    "fromLevel": 30
+   },
+   {
+    "made": {
+     "base": "Unenchanted Destruction Staff",
+     "spell": "Triumvirate - Mage Archetypes.esp:1A0588"
+    },
+    "name": "Staff of Cloudkill",
+    "note": "Make two.",
+    "slot": "Off hand",
+    "itemId": "Skyrim.esm:0BE11F",
+    "fromLevel": 30
+   },
+   {
+    "name": "Morokei",
+    "note": "Labyrinthian.",
+    "slot": "Head",
+    "itemId": "Skyrim.esm:061C8B",
+    "fromLevel": 32
+   },
+   {
+    "name": "Staff of Magnus",
+    "note": "Labyrinthian.",
+    "slot": "Main hand",
+    "itemId": "Skyrim.esm:035369",
+    "fromLevel": 32
+   },
+   {
+    "name": "Arch-Mage Robes",
+    "note": "Finish the College questline.",
+    "slot": "Body",
+    "itemId": "Arch-Mage Robes Addon.esp:000801",
+    "fromLevel": 34
+   },
+   {
+    "name": "Arch-Mage Boots",
+    "note": "",
+    "slot": "Feet",
+    "itemId": "Arch-Mage Robes Addon.esp:000800",
+    "fromLevel": 34
+   },
+   {
+    "name": "Ancano's Gloves",
+    "note": "More magicka and spell absorption.",
+    "slot": "Hands",
+    "itemId": "Requiem.esp:45D3AB",
+    "fromLevel": 34
+   },
+   {
+    "name": "Miraak",
+    "note": "Bigger attributes than Morokei.",
+    "slot": "Head",
+    "itemId": "Dragonborn.esm:039FA3",
+    "fromLevel": 55
+   },
+   {
+    "name": "Vengeance",
+    "note": "Extra magic resistance. The Necromancer's Amulet is still fine.",
+    "slot": "Amulet",
+    "itemId": "Requiem_VampireCollection.esp:0008FD",
+    "fromLevel": 55
+   },
+   {
+    "name": "Backpack",
+    "note": "Not in the item list yet.",
+    "slot": "Other",
+    "fromLevel": 55
+   },
+   {
+    "made": {
+     "base": "Unenchanted Destruction Staff",
+     "spell": "Apocalypse - Magic of Skyrim.esp:044264"
+    },
+    "name": "Staff of Forbidden Sun",
+    "note": "Forbidden Sun only casts from the left hand; on a staff you cast it twice, and the clones copy both.",
+    "slot": "Main hand",
+    "itemId": "Skyrim.esm:0BE11F",
+    "fromLevel": 55
+   },
+   {
+    "made": {
+     "base": "Unenchanted Destruction Staff",
+     "spell": "Requiem - Magic Redone.esp:005A58"
+    },
+    "name": "Staff of Flame Sphere",
+    "note": "Looted in Labyrinthian or made.",
+    "slot": "Off hand",
+    "itemId": "Skyrim.esm:0BE11F",
+    "fromLevel": 55
+   }
+  ],
+  "mode": "Konahrik",
+  "race": "Altmer",
+  "deity": "Syrabane",
+  "notes": "Zenematics' pure mage: every school on one character. Summons and fireball staffs early, Scorching Ray with weakness spells in the mid game, and Shadow Clones casting Forbidden Sun at the end.\n\nRecreated level by level from his video guide, How to Mage (LoreRim 5.0). Perks are placed at the first level the rules allow, in the order the video takes them.\n\nThe free spells Zen picks with his first tier perks are shown on screen rather than named, so those picks are left open. Every spell he names is in, at the level he gets it.",
+  "start": "Guilds",
+  "theme": "frost",
+  "levels": [
+   {
+    "note": "Start with Guilds, College of Winterhold. Get College Robes from Mirabelle, skip the tour and loot the Hall of the Elements. Do every lesson with Tolfdir and the other tutors: it's XP you need before going out. Healing and Conjure Spirit Wolf are lying around the College.",
+    "perks": [
+     "Conjuration:Novice Conjuration",
+     "Destruction:Novice Destruction",
+     "Restoration:Novice Restoration"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Skyrim.esm:012FCC",
+      "where": "Looted at the College"
+     },
+     {
+      "id": "Skyrim.esm:0640B6",
+      "where": "Looted at the College"
+     }
+    ],
+    "destiny": [
+     "Destiny:Destiny"
+    ],
+    "skillPoints": {}
+   },
+   {
+    "note": "Tolfdir's extra lesson teaches Waterbreathing, then a dive with Arniel Gane. Keep going through the tutors.",
+    "perks": [
+     "Conjuration:Apprentice Conjuration"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Skyrim.esm:05D175",
+      "where": "Tolfdir's extra lesson"
+     }
+    ],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Alteration": 5,
+     "Conjuration": 5,
+     "Restoration": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Destruction:Apprentice Destruction"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Alteration": 5,
+     "Conjuration": 5,
+     "Restoration": 5
+    }
+   },
+   {
+    "note": "Faralda's lesson gives Fireball, your damage until everything else comes online. Then Windhelm: wait out a night nearby to start Blood on the Ice for the Necromancer's Amulet. Wuunferth the Unliving in the Palace of the Kings sells Eldritch Blast now, and Witch Bolt and Cloudkill later.",
+    "perks": [
+     "Restoration:Apprentice Restoration"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Skyrim.esm:01C789",
+      "where": "Faralda's lesson"
+     },
+     {
+      "id": "Triumvirate - Mage Archetypes.esp:19B465",
+      "where": "Wuunferth, Windhelm"
+     }
+    ],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Alteration": 5,
+     "Conjuration": 5,
+     "Restoration": 5
+    }
+   },
+   {
+    "note": "Take the fireball staff from the Altar of Magnus, and the second one by the Thalmor Embassy. Pray at the Magna-Ge's altar near Bleak Falls at 7 pm and follow the Magna-Ge from here: staff charges refill on their own.",
+    "deity": "The Magna-Ge",
+    "perks": [
+     "Conjuration:Adept Conjuration"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Requiem - Magic Redone.esp:005E71",
+      "where": "Adept Conjuration"
+     }
+    ],
+    "destiny": [
+     "Destiny:Focus"
+    ],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Alteration": 5,
+     "Conjuration": 5,
+     "Restoration": 5
+    }
+   },
+   {
+    "note": "Mentor's Ring at the Ritual Stone. Outside Falkreath's south-east gate, Flying Fred's journal marks the paraglider; a forge can turn it into a levitation gem.",
+    "perks": [
+     "Conjuration:Empowered Conjuration"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Alteration": 1,
+     "Enchanting": 5,
+     "Destruction": 5,
+     "Restoration": 2
+    }
+   },
+   {
+    "note": "Every attribute goes to Magicka: health and stamina come from spells. Skills: Conjuration, Alteration and Restoration to 50 first, then Destruction and Enchanting.",
+    "perks": [
+     "Conjuration:Cognitive Flexibility"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Enchanting": 5,
+     "Destruction": 5,
+     "Restoration": 2
+    }
+   },
+   {
+    "note": "Power-level on the undead werewolf packs: one near the College, one north-west of Stonehills, one by Darkshade. Use the ground, keep your distance, and wait with staffs drawn to recharge them.",
+    "perks": [
+     "Restoration:Adept Restoration"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Requiem - Magic Redone.esp:005CF8",
+      "where": "Adept Restoration"
+     }
+    ],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Alteration": 1,
+     "Enchanting": 5,
+     "Destruction": 5,
+     "Restoration": 2
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Destruction:Adept Destruction"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Requiem - Magic Redone.esp:005A81",
+      "where": "Adept Destruction"
+     },
+     {
+      "id": "Requiem - Magic Redone.esp:005A58",
+      "where": "Adept Destruction"
+     }
+    ],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Enchanting": 5,
+     "Destruction": 5,
+     "Restoration": 2
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Alteration:Novice Alteration"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Skyrim.esm:05AD5C",
+      "where": "Novice Alteration"
+     }
+    ],
+    "destiny": [
+     "Destiny:Mage"
+    ],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 2,
+     "Enchanting": 5,
+     "Destruction": 2,
+     "Restoration": 2
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Alteration:Apprentice Alteration"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Requiem.esp:027FA2",
+      "where": "Apprentice Alteration"
+     },
+     {
+      "id": "Apocalypse - Magic of Skyrim.esp:006FA6",
+      "where": "Apprentice Alteration"
+     }
+    ],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Alteration": 2,
+     "Enchanting": 5,
+     "Destruction": 2,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Enchanting:Enchanter's Insight"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Alteration": 2,
+     "Enchanting": 5,
+     "Destruction": 2,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "The level-12 set is done: Adept Conjuration with Bound Armor, Empowered Conjuration and Cognitive Flexibility for a second summon, Adept Destruction with Flame Sphere and Scorching Ray, Adept Restoration with Resist Poison on Self, Alteration up to Apprentice with Oakflesh, Ocato's Recital and Featherfall, and the first Enchanting perks. Buy Ice Armor, Featherwalking and Visions of Opportunity.",
+    "perks": [
+     "Enchanting:Arcane Artificery"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Requiem - Magic Redone.esp:006222",
+      "where": "Bought"
+     },
+     {
+      "id": "Requiem - Magic Redone.esp:00080D",
+      "where": "Bought"
+     },
+     {
+      "id": "Triumvirate - Mage Archetypes.esp:363496",
+      "where": "Bought"
+     }
+    ],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Alteration": 3,
+     "Enchanting": 3,
+     "Destruction": 3,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "Darkshade: kill Ulik the troll and skin him. In the Arcanaeum, read the Armorer's Encyclopedia without taking it (Smithing 10) for Craftsmanship, buy Cloth Padding and forge Elemental Padding.",
+    "perks": [
+     "Destruction:Empowered Destruction"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 3,
+     "Alteration": 1,
+     "Enchanting": 1,
+     "Destruction": 5,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Destruction:Pyromancy"
+    ],
+    "extras": [],
+    "destiny": [
+     "Destiny:Magicka Surge"
+    ],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 5,
+     "Alteration": 1,
+     "Enchanting": 1,
+     "Conjuration": 2,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "Aim for Enchanting 75 to make expert staffs. Clear Saarthal and push the College quests to Mzulft. Flame Sphere does the work in tight caves.",
+    "perks": [
+     "Destruction:Pyromancy"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 5,
+     "Alteration": 1,
+     "Enchanting": 1,
+     "Conjuration": 3,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Destruction:Entropic Focus"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 5,
+     "Alteration": 1,
+     "Enchanting": 1,
+     "Conjuration": 3,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "Mzulft: Elemental Susceptibility is in a book by the bed on the scaffolding. In the Arch-Mage's Quarters, take the heart stones while he's out, and Race Against Time.",
+    "perks": [
+     "Restoration:Improved Healing"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "KittySpellPack01.esl:000822",
+      "where": "Mzulft, by the bed on the scaffolding"
+     },
+     {
+      "id": "KittySpellPack01.esl:00082F",
+      "where": "Arch-Mage's Quarters"
+     }
+    ],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 5,
+     "Alteration": 1,
+     "Enchanting": 1,
+     "Conjuration": 2,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Restoration:Mental Acuity"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 5,
+     "Alteration": 1,
+     "Enchanting": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "Ragnvald for Otar's mask, Shriekwind Bastion's safe for Denstagmer's Ring. Agent of Mara and Sirenroot add more magic resistance. Dragon priests: Race Against Time, both weakness spells, then Scorching Ray.",
+    "perks": [
+     "Alteration:Improved Mage Armor"
+    ],
+    "extras": [],
+    "destiny": [
+     "Destiny:Sorcerer"
+    ],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 5,
+     "Alteration": 1,
+     "Enchanting": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Alteration:Versatile Armor"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 5,
+     "Alteration": 1,
+     "Enchanting": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Alteration:Adept Alteration"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 5,
+     "Alteration": 1,
+     "Enchanting": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Enchanting:Soul Gem Mastery"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 2,
+     "Alteration": 1,
+     "Enchanting": 1,
+     "Conjuration": 4,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Enchanting:Arcane Experimentation"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Enchanting": 1,
+     "Conjuration": 5,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "The Slow Time shout is in Deepwood Redoubt, reached through the Civil War's Jagged Crown.",
+    "perks": [
+     "Destruction:Expert Destruction"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Triumvirate - Mage Archetypes.esp:1A0588",
+      "where": "Wuunferth, Windhelm"
+     }
+    ],
+    "destiny": [
+     "Destiny:Absorbtion"
+    ],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Enchanting": 1,
+     "Conjuration": 2,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Destruction:Cremation"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Restoration:Respite"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Restoration:Expert Restoration"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Requiem.esp:27CA83",
+      "where": "Expert Restoration"
+     },
+     {
+      "id": "Requiem - Magic Redone.esp:005D07",
+      "where": "Expert Restoration"
+     }
+    ],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Alteration:Expert Alteration"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Skyrim.esm:05AD5E",
+      "where": "Expert Alteration"
+     }
+    ],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "Make two Cloudkill staffs at a Staff Enchanter. They melt dragons, more so after a weakness spell.",
+    "perks": [
+     "Enchanting:Artificer's Insight"
+    ],
+    "extras": [],
+    "destiny": [
+     "Destiny:Archmage"
+    ],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Enchanting:Staff Channeling"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "Labyrinthian. Loot the wisp wrappings from the wispmothers. Morokei: wait on the bridge until his health dips about 10%, then Slow Time, the weakness spells and Scorching Ray. Learn Conjure Ghostly Frost Lich afterwards; no more Conjuration perks from here.",
+    "perks": [
+     "Enchanting:Staff Channeling"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Requiem.esp:06F5CD",
+      "where": "After Morokei, Labyrinthian"
+     }
+    ],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Illusion:Novice Illusion"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "Finish the College: Ancano's Gloves, the Arch-Mage Robes and Boots. Most of the game can be done in this set.",
+    "perks": [
+     "Illusion:Apprentice Illusion"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Illusion:Adept Illusion"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Illusion:Shadow Shaping"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Illusion:Expert Illusion"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Apocalypse - Magic of Skyrim.esp:1274CF",
+      "where": "Expert Illusion"
+     }
+    ],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Illusion:Master of Shadows"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Illusion:Shadows of Conflict"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "Endgame starts. Septimus Signus' quest gives the Oghma Infinium: six skills +5 and 3 perk points. In the Forgotten Vale, the Sapphire Paragon opens the inner sanctum: Arcane Cross needs the wisp wrappings, diamonds and black soul gems. Urag's quest Shalidor's Insight gives Shalidor's Mirror, the best ward.",
+    "perks": [
+     "Destruction:Entropic Focus",
+     "Destruction:Entropic Disarray",
+     "Destruction:Arcane Focus",
+     "Destruction:Arcane Focus"
+    ],
+    "extras": [
+     {
+      "kind": "oghma",
+      "skills": [
+       "Alteration",
+       "Conjuration",
+       "Destruction",
+       "Illusion",
+       "Restoration",
+       "Enchanting"
+      ]
+     }
+    ],
+    "spells": [
+     {
+      "id": "Ghostlight.esl:000820",
+      "where": "Forgotten Vale, inner sanctum"
+     },
+     {
+      "id": "Requiem.esp:30C4C2",
+      "where": "Shalidor's Insight, from Urag"
+     }
+    ],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Destruction:Arcane Disruption"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Restoration:Ward Mastery"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Restoration:Improved Protection"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Restoration:Improved Wards"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Alteration:Stability"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Alteration:Metamagical Thesis"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "Master Illusion for Shadow Clone on Self, with Master of Shadows, Shadow Shaping and Shadows of Conflict for more clones. Each clone casts what you hold when you summon it.",
+    "perks": [
+     "Illusion:Master Illusion",
+     "Destruction:Fire Mastery",
+     "Destruction:Master Destruction",
+     "Destruction:Eldritch Artist"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Shadow Clone on Self.esp:000806",
+      "where": "Master Illusion"
+     },
+     {
+      "id": "Apocalypse - Magic of Skyrim.esp:044264",
+      "where": "Master Destruction"
+     }
+    ],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {
+     "Illusion": 1,
+     "Alteration": 1,
+     "Conjuration": 1,
+     "Destruction": 1,
+     "Restoration": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Destruction:Disciple of the Mystics"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Restoration:Masterly Wards"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Restoration:Master Restoration"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Triumvirate - Mage Archetypes.esp:27F3B6",
+      "where": "Master Restoration"
+     },
+     {
+      "id": "Apocalypse - Magic of Skyrim.esp:086B2E",
+      "where": "Master Restoration"
+     }
+    ],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Restoration:Greater Vitality"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {}
+   },
+   {
+    "note": "Endgame gear. Forbidden Sun only casts from the left hand, so put it on a staff too and the clones copy both.",
+    "perks": [
+     "Alteration:Master Alteration"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Apocalypse - Magic of Skyrim.esp:086B60",
+      "where": "Master Alteration"
+     }
+    ],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Alteration:Magical Absorption"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {}
+   },
+   {
+    "note": "The finished build: clones casting Forbidden Sun to strip fire resistance, Sotha's Maelstrom against magic resistance, Mimic's Cloak to fire spells back out, Godform for magicka and Spirit of the Sun to heal.",
+    "perks": [
+     "Alteration:Metamagical Empowerment"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "magicka",
+    "skillPoints": {}
+   }
+  ],
+  "majors": [
+   "Conjuration",
+   "Destruction",
+   "Restoration"
+  ],
+  "minors": [
+   "Alteration",
+   "Enchanting",
+   "Illusion",
+   "Wayfarer",
+   "Speech",
+   "Smithing"
+  ],
+  "schema": 1,
+  "traits": [
+   "Jack of All Spells",
+   "Soul Reaver"
+  ],
+  "videoId": "ajiLsFhYn4I",
+  "birthsign": "Mage",
+  "mainSpells": [
+   "Apocalypse - Magic of Skyrim.esp:044264",
+   "Shadow Clone on Self.esp:000806",
+   "Apocalypse - Magic of Skyrim.esp:1274CF",
+   "Apocalypse - Magic of Skyrim.esp:086B60",
+   "Apocalypse - Magic of Skyrim.esp:086B2E",
+   "Triumvirate - Mage Archetypes.esp:27F3B6",
+   "Requiem.esp:30C4C2"
+  ],
+  "gameVersion": "5.0.4.8",
+  "startOption": "College of Winterhold"
+ },
+ "guide": {
+  "overview": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Zenematics' pure mage: every school on one character. Summons and fireball staffs early, Scorching Ray with weakness spells in the mid game, and Shadow Clones casting Forbidden Sun at the end."
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Recreated level by level from his video guide, How to Mage (LoreRim 5.0). Perks are placed at the first level the rules allow, in the order the video takes them."
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "The free spells Zen picks with his first tier perks are shown on screen rather than named, so those picks are left open. Every spell he names is in, at the level he gets it."
+      }
+     ]
+    }
+   ]
+  },
+  "level:1": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Start with Guilds, College of Winterhold. Get College Robes from Mirabelle, skip the tour and loot the Hall of the Elements. Do every lesson with Tolfdir and the other tutors: it's XP you need before going out. Healing and Conjure Spirit Wolf are lying around the College."
+      }
+     ]
+    }
+   ]
+  },
+  "level:2": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Tolfdir's extra lesson teaches Waterbreathing, then a dive with Arniel Gane. Keep going through the tutors."
+      }
+     ]
+    }
+   ]
+  },
+  "level:4": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Faralda's lesson gives Fireball, your damage until everything else comes online. Then Windhelm: wait out a night nearby to start Blood on the Ice for the Necromancer's Amulet. Wuunferth the Unliving in the Palace of the Kings sells Eldritch Blast now, and Witch Bolt and Cloudkill later."
+      }
+     ]
+    }
+   ]
+  },
+  "level:5": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Take the fireball staff from the Altar of Magnus, and the second one by the Thalmor Embassy. Pray at the Magna-Ge's altar near Bleak Falls at 7 pm and follow the Magna-Ge from here: staff charges refill on their own."
+      }
+     ]
+    }
+   ]
+  },
+  "level:6": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Mentor's Ring at the Ritual Stone. Outside Falkreath's south-east gate, Flying Fred's journal marks the paraglider; a forge can turn it into a levitation gem."
+      }
+     ]
+    }
+   ]
+  },
+  "level:7": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Every attribute goes to Magicka: health and stamina come from spells. Skills: Conjuration, Alteration and Restoration to 50 first, then Destruction and Enchanting."
+      }
+     ]
+    }
+   ]
+  },
+  "level:8": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Power-level on the undead werewolf packs: one near the College, one north-west of Stonehills, one by Darkshade. Use the ground, keep your distance, and wait with staffs drawn to recharge them."
+      }
+     ]
+    }
+   ]
+  },
+  "level:13": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "The level-12 set is done: Adept Conjuration with Bound Armor, Empowered Conjuration and Cognitive Flexibility for a second summon, Adept Destruction with Flame Sphere and Scorching Ray, Adept Restoration with Resist Poison on Self, Alteration up to Apprentice with Oakflesh, Ocato's Recital and Featherfall, and the first Enchanting perks. Buy Ice Armor, Featherwalking and Visions of Opportunity."
+      }
+     ]
+    }
+   ]
+  },
+  "level:14": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Darkshade: kill Ulik the troll and skin him. In the Arcanaeum, read the Armorer's Encyclopedia without taking it (Smithing 10) for Craftsmanship, buy Cloth Padding and forge Elemental Padding."
+      }
+     ]
+    }
+   ]
+  },
+  "level:16": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Aim for Enchanting 75 to make expert staffs. Clear Saarthal and push the College quests to Mzulft. Flame Sphere does the work in tight caves."
+      }
+     ]
+    }
+   ]
+  },
+  "level:18": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Mzulft: Elemental Susceptibility is in a book by the bed on the scaffolding. In the Arch-Mage's Quarters, take the heart stones while he's out, and Race Against Time."
+      }
+     ]
+    }
+   ]
+  },
+  "level:20": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Ragnvald for Otar's mask, Shriekwind Bastion's safe for Denstagmer's Ring. Agent of Mara and Sirenroot add more magic resistance. Dragon priests: Race Against Time, both weakness spells, then Scorching Ray."
+      }
+     ]
+    }
+   ]
+  },
+  "level:25": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "The Slow Time shout is in Deepwood Redoubt, reached through the Civil War's Jagged Crown."
+      }
+     ]
+    }
+   ]
+  },
+  "level:30": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Make two Cloudkill staffs at a Staff Enchanter. They melt dragons, more so after a weakness spell."
+      }
+     ]
+    }
+   ]
+  },
+  "level:32": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Labyrinthian. Loot the wisp wrappings from the wispmothers. Morokei: wait on the bridge until his health dips about 10%, then Slow Time, the weakness spells and Scorching Ray. Learn Conjure Ghostly Frost Lich afterwards; no more Conjuration perks from here."
+      }
+     ]
+    }
+   ]
+  },
+  "level:34": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Finish the College: Ancano's Gloves, the Arch-Mage Robes and Boots. Most of the game can be done in this set."
+      }
+     ]
+    }
+   ]
+  },
+  "level:40": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Endgame starts. Septimus Signus' quest gives the Oghma Infinium: six skills +5 and 3 perk points. In the Forgotten Vale, the Sapphire Paragon opens the inner sanctum: Arcane Cross needs the wisp wrappings, diamonds and black soul gems. Urag's quest Shalidor's Insight gives Shalidor's Mirror, the best ward."
+      }
+     ]
+    }
+   ]
+  },
+  "level:50": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Master Illusion for Shadow Clone on Self, with Master of Shadows, Shadow Shaping and Shadows of Conflict for more clones. Each clone casts what you hold when you summon it."
+      }
+     ]
+    }
+   ]
+  },
+  "level:55": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Endgame gear. Forbidden Sun only casts from the left hand, so put it on a staff too and the clones copy both."
+      }
+     ]
+    }
+   ]
+  },
+  "level:57": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "The finished build: clones casting Forbidden Sun to strip fire resistance, Sotha's Maelstrom against magic resistance, Mimic's Cloak to fire spells back out, Godform for magicka and Spirit of the Sun to heal."
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

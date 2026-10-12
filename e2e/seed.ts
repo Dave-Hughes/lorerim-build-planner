@@ -13,6 +13,7 @@ import * as schema from "../src/db/schema";
 import sample from "../src/lib/rules/__fixtures__/sample-build.json";
 import azrem from "./fixtures/azrem.json";
 import iriel from "./fixtures/iriel.json";
+import pureMage from "./fixtures/pure-mage.json";
 import { textLength, type GuideDoc } from "../src/lib/guide/doc";
 import { snowflakeAt } from "../src/lib/moderation/age";
 import type { BuildPlan } from "../src/lib/rules/types";
@@ -50,6 +51,8 @@ export const GEAR_BUILD_ID = "e2egearnew";
 export const DESTINY_BUILD_ID = "e2edstnyaa";
 /** A copy of Iriel from staging (e2e/fixtures/iriel.json): 30 levels, gear changes, Destiny, a note at every level. Listed. */
 export const IRIEL_BUILD_ID = "e2eyrye7q2";
+/** A copy of Pure Mage from staging (e2e/fixtures/pure-mage.json): 57 levels, 21 gear rows with notes, Frost. Link only. */
+export const PURE_MAGE_BUILD_ID = "e2epuremag";
 export const OTHER_USER_ID = "e2e-user-0002";
 export const OTHER_BUILD_ID = "e2eqq2e2e2";
 /** Made for the test-only older version (src/lib/rules/__fixtures__/test-version.ts). */
@@ -138,6 +141,16 @@ export async function seed() {
         visibility: "public",
         gameVersion: "5.0.4.8",
         plan: iriel.plan as unknown as BuildPlan,
+      },
+      {
+        id: PURE_MAGE_BUILD_ID,
+        ownerId: OTHER_USER_ID,
+        name: pureMage.name,
+        description: pureMage.description,
+        coverImageUrl: pureMage.coverImageUrl,
+        visibility: "unlisted",
+        gameVersion: "5.0.4.8",
+        plan: pureMage.plan as unknown as BuildPlan,
       },
       {
         id: AZREM_BUILD_ID,
@@ -244,6 +257,7 @@ export async function seed() {
       [
         ...Object.entries(azrem.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: AZREM_BUILD_ID, key, doc, textLength: textLength(doc) })),
         ...Object.entries(iriel.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: IRIEL_BUILD_ID, key, doc, textLength: textLength(doc) })),
+        ...Object.entries(pureMage.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: PURE_MAGE_BUILD_ID, key, doc, textLength: textLength(doc) })),
       ],
     );
   } finally {

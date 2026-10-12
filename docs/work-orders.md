@@ -1958,9 +1958,9 @@ Dave, 12 Oct: the note an author writes on a gear row ("On the Altar of Magnus",
 4. **Made items:** the hammer mark's tooltip keeps the base item and spell or enchantments; the note shows as above, not inside that tooltip.
 
 ### Done when
-- [ ] e2e: on Pure Mage's level 5 (`/b/5pjwcg252f?level=5` on staging; copy it to a fixture as Iriel was), `New gear` shows `On the Altar of Magnus.` and `Leaning on a tree above the sabre cat cave near the Thalmor Embassy.`; the level-5 card for the main hand shows its stats and the note; the timeline bar's title includes the note.
-- [ ] Screenshots at 1440 and 390: Pure Mage level 5, the level card and the gear section.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: on Pure Mage's level 5 (`/b/5pjwcg252f?level=5` on staging; copy it to a fixture as Iriel was), `New gear` shows `On the Altar of Magnus.` and `Leaning on a tree above the sabre cat cave near the Thalmor Embassy.`; the level-5 card for the main hand shows its stats and the note; the timeline bar's title includes the note.
+- [x] Screenshots at 1440 and 390: Pure Mage level 5, the level card and the gear section.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

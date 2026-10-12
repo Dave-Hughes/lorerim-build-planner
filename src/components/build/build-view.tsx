@@ -1032,6 +1032,8 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
                   <span className="muted">
                     {g.slot}, replaces {was ?? "nothing"}
                   </span>
+                  {/* The author's note on its own line (WO-47), as a new spell shows its where. */}
+                  {g.note.trim() && <span className={styles.newGearNote}>{g.note.trim()}</span>}
                 </span>
               ) : (
                 <span>{gearChangeText(g)}</span>

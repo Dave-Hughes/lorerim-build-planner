@@ -15,6 +15,8 @@ interface Segment {
   name: string;
   from: number;
   to: number;
+  /** The author's note on the row (WO-47), for the bar's title. */
+  note: string;
 }
 
 /** Every item the build holds, as runs of levels, by slot; Other's items spread over lanes so none overlap. */
@@ -30,7 +32,7 @@ function timeline(plan: BuildPlan): Segment[] {
       keys.add(key);
       const run = open.get(key);
       if (run) run.to = L;
-      else open.set(key, { slot: g.slot, lane: 0, name: g.name, from: L, to: L });
+      else open.set(key, { slot: g.slot, lane: 0, name: g.name, from: L, to: L, note: g.note.trim() });
     }
     // A run whose item is no longer held ends at the level before.
     for (const [key, run] of open) {
@@ -100,7 +102,9 @@ export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: num
                     </>
                   )}
                 </span>
-                <span className={styles.stats}>{item?.stats ?? g.note}</span>
+                {/* The stats line, then the author's note on its own line (WO-47): it's usually where to get it. */}
+                {item?.stats && <span className={styles.stats}>{item.stats}</span>}
+                {g.note && <span className={styles.note}>{g.note}</span>}
                 <span className={styles.status}>{isNew ? `New at level ${level}${replaced ? `, was ${replaced}` : ""}` : `Since level ${g.since}`}</span>
               </li>
             );
@@ -130,7 +134,8 @@ export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: num
                   <span className={styles.now} style={{ gridColumn: `${level} / ${level + 1}` }} aria-hidden="true" />
                   {r.segs.map((s) => {
                     const state = s.from === level ? styles.barNew : s.from <= level && level <= s.to ? styles.barHeld : styles.barOther;
-                    const label = `${s.name}, ${s.from === s.to ? `level ${s.from}` : `levels ${s.from} to ${s.to}`}`;
+                    // "Staff of Fireball, levels 5 to 29. On the Altar of Magnus." (WO-47)
+                    const label = `${s.name}, ${s.from === s.to ? `level ${s.from}` : `levels ${s.from} to ${s.to}`}.${s.note ? ` ${s.note}` : ""}`;
                     return (
                       <a
                         key={`${s.name}-${s.from}`}

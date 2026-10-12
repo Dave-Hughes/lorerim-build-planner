@@ -1371,6 +1371,11 @@
 .newGearWhat .muted {
   font-size: 14px;
 }
+.newGearNote {
+  flex-basis: 100%;
+  font-size: 14px;
+  color: var(--muted);
+}
 .newGearChip {
   padding: 1px 8px;
   border: 1px solid var(--ember);

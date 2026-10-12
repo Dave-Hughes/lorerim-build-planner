@@ -53,8 +53,14 @@
   font-size: 13px;
   color: var(--muted);
 }
+/* The author's note (WO-47): wraps, and the card grows to fit it. */
+.note {
+  font-size: 13px;
+  color: var(--soft);
+  overflow-wrap: anywhere;
+}
 .status {
-  margin-top: 2px;
+  margin-top: auto;
   padding-top: 6px;
   border-top: 1px solid var(--rule-soft);
   font-size: 13px;
