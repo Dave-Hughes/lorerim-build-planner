@@ -13,6 +13,8 @@ Inputs, under gamedata/<version>/:
                      perks with ranks and conditions, Destiny, traits)
   books.json         which books' scripts reference which perks (books.py)
   traitpics.json     trait artwork converted by traitpics.py
+  items_raw.json     the game's weapons, armor and ammunition (items.py);
+                     optional, builds items.json when present
   overrides.json     hand-kept facts the records don't carry in a readable
                      form (quest wording, carry weight, which traits the
                      numbers simulate, perk records that stand in for a
@@ -343,6 +345,15 @@ def main():
         json.dump(traits, f, indent=2, ensure_ascii=False)
         f.write("\n")
     print(f"{len(perks)} perks, {len(traits)} traits -> {os.path.relpath(OUT, ROOT)}")
+    # The item index (items.py), once its raw extract is in: loaded on demand, never in the main bundle.
+    if os.path.exists(os.path.join(RAW, "items_raw.json")):
+        from items import build_items
+
+        rows = build_items(load("items_raw.json"))
+        with open(os.path.join(OUT, "items.json"), "w", encoding="utf-8") as f:
+            json.dump(rows, f, separators=(",", ":"), ensure_ascii=False)
+            f.write("\n")
+        print(f"{len(rows)} items -> items.json")
     for p in problems:
         print("note:", p)
 

@@ -9,7 +9,7 @@ Reads only. Writes planner_data.json next to this script.
 """
 import os, sys, struct, json, re
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from esp import ROOT, plugin_paths, load_order, rec_data, subrecs, header, iter_group, resolve
+from esp import ROOT, plugin_paths, load_order, rec_data, subrecs, header, iter_group, resolve, localized_strings
 
 SKILL_AVIF = {
     'AVOneHanded': 'One-Handed', 'AVTwoHanded': 'Two-Handed', 'AVMarksman': 'Marksman', 'AVBlock': 'Block',
@@ -25,27 +25,6 @@ CMP = {0: '==', 1: '!=', 2: '>', 3: '>=', 4: '<', 5: '<='}
 
 def text(v):
     return v.rstrip(b'\0').decode('utf-8', 'replace')
-
-def localized_strings(plugin_path, name):
-    """Loose Strings files for a localized plugin, if any."""
-    base = os.path.splitext(name)[0]
-    out = {}
-    for d in [os.path.dirname(plugin_path) + '/Strings', ROOT + '/Stock Game/Data/Strings']:
-        for kind in ('STRINGS', 'DLSTRINGS', 'ILSTRINGS'):
-            p = f'{d}/{base}_english.{kind}'
-            if not os.path.exists(p): continue
-            b = open(p, 'rb').read()
-            n, size = struct.unpack_from('<II', b, 0)
-            table = 8 + n * 8
-            for i in range(n):
-                sid, off = struct.unpack_from('<II', b, 8 + i * 8)
-                o = table + off
-                if kind == 'STRINGS':
-                    e = b.index(b'\0', o); s = b[o:e]
-                else:
-                    ln = struct.unpack_from('<I', b, o)[0]; s = b[o + 4:o + 4 + ln].rstrip(b'\0')
-                out[sid] = s.decode('utf-8', 'replace')
-    return out
 
 def ctda(v, masters, name):
     op = v[0]

@@ -878,7 +878,7 @@ Dave asked whether every item in the game could be indexed. It can: the planner 
    - Gear rows picked from the index link to the same card.
 
 ### Done when
-- [ ] Unit tests for each filter against the fixture plugin: a non-playable armor, a templated enchanted sword, a `zzz` record, two same-name records.
+- [x] Unit tests for each filter against the fixture plugin: a non-playable armor, a templated enchanted sword, a `zzz` record, two same-name records.
 - [ ] `items.json` built from the real load order. Its item count and gzipped size are in the commit message, and it isn't in the main bundle (`npm run build` output).
 - [ ] e2e: typing `steel sp` in a Main hand gear field offers Steel Spear (or the load order's name for it), and typing `@ebony` in a level note offers Ebony items with their hover card.
 - [ ] Screenshots for Dave: the gear search open at 1512 × 806; an item hover card in a note on the shared page.

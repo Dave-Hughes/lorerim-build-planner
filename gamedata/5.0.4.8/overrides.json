@@ -226,5 +226,13 @@
       "magicka": 0,
       "stamina": 0
     }
+  },
+  "items": {
+    "skipNames": [
+      "^zzz",
+      "DELETED",
+      "Dummy",
+      "^\\["
+    ]
   }
 }
