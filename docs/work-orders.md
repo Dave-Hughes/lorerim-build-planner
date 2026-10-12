@@ -1382,7 +1382,7 @@ Dave approved the canvas row **"Proposal: link preview cards"**. Build to match.
 - [x] Unit test: the metadata for a private build has no build name, description or cover anywhere in it.
 - [x] PNGs for Dave of Iriel's card, Azrem's card, a build with no cover, and the site card. Each is 1200×630 and matches the artboards.
 - [x] e2e: Iriel's page has `og:image` pointing at her card, which returns a 1200×630 PNG. The home page's `og:image` is the site card.
-- [ ] Checked by pasting the staging links into a link-preview checker, e.g. opengraph.xyz (it reads the tags the way Messages does). Screenshots for Dave.
+- [x] Checked by pasting the staging links into a link-preview checker, e.g. opengraph.xyz (it reads the tags the way Messages does). Screenshots for Dave.
 - [x] All checks in CLAUDE.md pass.
 
 ---
