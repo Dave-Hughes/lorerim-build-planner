@@ -1921,6 +1921,33 @@ Do after WO-42 (it uses spells).
 
 ---
 
+## WO-46  Findings from Zen's mage (12 Oct 2026)
+
+The chat session recreated Zenematics' "How to Mage" as **Pure Mage, from Zenematics' How to Mage** (`/b/5pjwcg252f`, Link only) on staging:
+- Altmer, The Mage, Syrabane, Konahrik, Guilds (College of Winterhold);
+- 60 levels, 62 perks and the seven Destiny stars to Archmage, every attribute into Magicka;
+- 21 gear rows, five of them free text (made staffs, Elemental Padding, a backpack);
+- a note at the levels where the video says to go somewhere, and the video guide.
+
+The rules engine finds no problems on any level. The perks were placed by a script, at the first level each can be taken in the video's order, because the video gives them in batches ("by level 12", "by level 35"). That's the parked **perk wishlist** idea doing real work: an author copying a video will want it. Do this order after WO-45.
+
+1. **Middle dots are still in the UI.** Rule 2 says never `·`. Twelve places in `src` join with it, for example:
+   - the Start line on the build page (`Guilds · College of Winterhold`);
+   - `Taken by level 1 · 3`;
+   - `1 min read · Video`;
+   - the Destiny line (`Destiny · Focus · Mage`);
+   - profile and admin lines.
+
+   Item stats from `build.py` do too (`Clothing · 1 weight`). Replace each with the rule's options: a comma, its own line, a tag, or `|`.
+2. **Free-text gear looks like indexed gear.** `Staff of Forbidden Sun` and `Backpack` have no item behind them but show the same chip and icon. Until WO-45 lands, give a row without `itemId` the `Other` icon and no stats line.
+
+### Done when
+- [ ] `grep -rn " · " src scripts/gamedata` finds nothing a player sees, and items.json is rebuilt.
+- [ ] Screenshot of Pure Mage at level 55 at 1440: the free-text rows read as such.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
