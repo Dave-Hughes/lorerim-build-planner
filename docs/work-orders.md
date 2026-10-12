@@ -1571,7 +1571,154 @@ Dave approved the canvas row **"Proposal: themes, the Details step, and an About
 
 ---
 
+## WO-38  Menus that close, a footer, the drop cap, card hover, and a pixel logo (12 Oct 2026)
+
+From Dave's notes, 12 Oct. Do after WO-37.
+
+### 1. Every menu closes when you click outside it
+Every dropdown, popover and menu closes on a click or tap outside it, and on Esc, returning focus to the button that opened it. That covers:
+- the account menu;
+- the edit bar's `More` and visibility menus;
+- Browse's Tags filter;
+- `Other trees ▾`;
+- the guide editor's `More` and the @-mention list;
+- the Start popover;
+- the gear item search;
+- anything else with `aria-haspopup` or `aria-expanded`.
+
+Use one shared hook (pointer-down outside plus Esc) rather than a fix per menu. Native `<select>`s already behave.
+
+### 2. A footer
+WO-37's one-link foot becomes a real footer, on theme and quiet, the same on every site page:
+- **Left:** the pixel logo (§5) small, and `Made by Tapps`, linking to `/about`.
+- **Middle:** a loading-screen tip, as Skyrim shows them: `TIP` in the label style, then one line. A new tip on each page load, from `src/data/tips.json` (list below). No arrows or carousel.
+- **Right:**
+  - `The LoreRim community gathers on The Modding Bungalo Discord`, linking to `https://discord.gg/bungalo`. That's the invite in the Wabbajack registry entry; the server's own name is spelled without the w.
+  - `About`.
+- **Under it all, small and muted:** `Fan-made. Not affiliated with Bethesda or the LoreRim team.`
+- At 390, it stacks in that order.
+
+**The tips.** Each one was checked against the game files in the field guide (`lorerim/systems/*`):
+1. Any lit campfire is a place to rest, except a giant's.
+2. Swimming in icy water takes you straight to Numb. Get out and find a fire.
+3. Craft a waterskin at a tanning rack from one leather and one leather strip. Innkeepers refill it for free.
+4. Hot soups and stews warm you as well as feed you.
+5. A lit torch in hand is worth 50 warmth.
+6. You level up when you sleep. Survival Control Panel can change that.
+7. Carry weight doesn't grow with your level. Wayfarer perks and gear raise it.
+8. Arrows and lockpicks weigh nothing.
+9. You come back where you last slept or rested by a campfire.
+10. Shrines no longer cure diseases.
+11. Fast travel is off. Carriages cost 10 to 400 gold, by distance.
+12. You can't save in combat.
+13. Bounties are ten times what they were in vanilla Skyrim.
+14. F11 shows the hotkey list.
+
+### 3. The drop cap
+- **The problem:** the current one is a bold Alegreya capital in a framed square with corner marks and an ember wash. Narrow letters (`I`, `J`, `l`) sit in it like a pillar between two dark bands, and wide ones crowd it.
+- **The fix:** drop the square, the corners and the wash. The first letter stays as is:
+  - 3 lines tall, Alegreya Bold, in the theme's ornament colour (`--brass`, or the WO-37 theme's);
+  - `initial-letter: 3` where supported, else a float sized to three lines;
+  - a little space to its right.
+- Keep the small-caps first line.
+- Screenshot it with `I`, `W` and `A` as the first letter.
+
+### 4. Build cards on hover
+On hover and keyboard focus, a Browse or profile card:
+- lifts 3 px with a soft shadow;
+- its cover zooms slowly to 1.04 and brightens a touch;
+- the gold corner marks (the `.frame` motif) appear at two corners;
+- the name turns ember, as now.
+
+About 200 ms out, 150 ms back. With `prefers-reduced-motion`, there's no lift or zoom: just the corners and the colour.
+
+### 5. A pixel-art logo
+The header's outline star becomes a pixel-art star in the icons' style:
+- a four-point star, gold with an ember heart, drawn 16×16 at 2× (32 px);
+- the wordmark text stays.
+
+Every 10 seconds it glints, four frames at about 90 ms each:
+1. the heart turns white;
+2. the arms stretch a pixel, with diagonal sparkle rays;
+3. the rays shrink to four points;
+4. back to rest.
+
+The frames are already drawn: `public/icons/logo-0.svg` to `logo-3.svg`, from `logo()` in `pixels.py` (chat session, 12 Oct; preview GIF sent to Dave). Jeff wires them in:
+- swap the frames with CSS steps, or a sprite;
+- don't animate while the tab is hidden;
+- no glint with `prefers-reduced-motion`;
+- the favicon becomes `logo-0`.
+
+### Done when
+- [ ] e2e: open the account menu, the Tags filter and `Other trees`; a click outside each closes it, and Esc closes it and returns focus.
+- [ ] Screenshots of the footer at 1440 and 390 on the home page and a build page. The Discord link opens `https://discord.gg/bungalo`.
+- [ ] Unit test: `tips.json` has the 14 tips above, word for word.
+- [ ] Screenshots of the drop cap with `I`, `W` and `A`, in Ember and Parchment.
+- [ ] A short GIF of a card's hover, and of the logo's glint.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-39  Video guides, and a featured build (12 Oct 2026)
+
+From Dave's notes, 12 Oct. Dave hopes to partner with Zenematics (`https://www.youtube.com/@Zenematics`) on the first official character build guide, then feature it. A creator like that must see their video front and centre. Do after WO-38.
+
+### Video guides
+1. **Set up's Details step** gets `Video guide` (optional).
+   - It takes a YouTube link in any common form: `youtube.com/watch?v=`, `youtu.be/`, `youtube.com/shorts/`, `youtube.com/live/`, with or without `www.`, `m.` or extra parameters. Store the video id only.
+   - Anything else gets `That isn't a YouTube link.`
+2. **On the build page, the video comes first:**
+   - **Hero:** a `Watch the video guide` button with a play mark, first and largest among the hero's buttons, in the theme's accent.
+   - **Guide tab:** the video sits at the top, above the guide text, full width at 16:9.
+   - **Levels tab:** clicking the hero button opens the Guide tab at the video and starts it.
+   - Load nothing from YouTube until the player clicks play. Show the video's thumbnail (`i.ytimg.com/vi/<id>/hqdefault.jpg`) with a play button, then swap in a `youtube-nocookie.com` embed.
+3. **Cards** (Browse, profiles, featured) carry a small `▶ Video` badge on the cover when the build has one. The link preview card (WO-33) gets a small play badge in its corner.
+
+### A featured build
+4. **Who can feature:** admins only. Admins are listed by Discord id in a Vercel environment variable, `ADMIN_DISCORD_IDS`, never committed. Dave adds his own.
+5. **Featuring:**
+   - An admin sees `Feature this build` / `Stop featuring` in the build page's `More` menu.
+   - One build is featured at a time; featuring another replaces it.
+   - Store it as `builds.featured_at`, with a migration.
+   - Only Listed builds can be featured. A featured build made Unlisted or Private stops being featured.
+6. **On Browse**, when there's no search and no filter, the featured build comes first, as a larger card:
+   - it spans two columns and is taller;
+   - its cover is about 320 px high;
+   - a gold `Featured` mark with the Destiny star sits on the cover;
+   - the description, and the first two lines of the intro;
+   - the `▶ Video` badge, larger, when it has a video.
+
+   With a search or filter, it sits in the grid like any other card. At 390, it's full width and first.
+
+### Done when
+- [ ] Unit tests: the YouTube link forms above give the right id; a Vimeo link and plain text are refused.
+- [ ] e2e: add a video to Iriel. The hero shows `Watch the video guide`; clicking it opens the Guide tab with the player; no request goes to youtube.com before the click.
+- [ ] e2e: as an admin (a test id), feature Iriel. Browse shows her first and two columns wide; a non-admin doesn't see the menu item.
+- [ ] Screenshots: Browse at 1440 and 390 with Iriel featured and a video; Iriel's Guide tab with the video at the top.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
+
+- **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
+  - It isn't a character guide and isn't about installing. It's the in-game basics a new player wishes they'd known.
+  - What it covers: which mods run which systems and how to set them; the most important differences from vanilla; how to earn XP early (a plug for Callings); and Dave's list of about 20 "game changers once you know they exist".
+  - It's a page of its own on the site, not a build.
+  - The field guide (`lorerim/systems/*`, `lorerim/meta/mod-systems-map.md`) already holds most of the checked facts. Careful not to step on anyone else's guides.
+
+- **Bots and image safety (Dave's question, 12 Oct; waiting on his pick).** Recommended plan:
+  - **Bots:** Discord sign-in (already needed to create, like or upload) is most of it. Add:
+    - rate limits per account: 10 new builds a day, 10 image uploads a day, 30 likes a minute;
+    - a minimum Discord account age, read from the id, of 7 days to publish Listed or upload a cover;
+    - Vercel's bot protection on sign-in and the server actions.
+  - **Images:**
+    - an automatic nudity check on every cover upload, before it's saved;
+    - a `Report` link on build pages: at 3 reports the cover is hidden until an admin looks;
+    - an admin list to restore or remove.
+  - **For the check, Dave picks:**
+    - **(a) A free open-source model run on the server.** No account needed; it catches the obvious cases.
+    - **(b) A paid moderation service** (Sightengine, Google Cloud Vision SafeSearch, or AWS Rekognition), which is more accurate. It needs an account and an API key that Dave sets up; about $1–2 per 1,000 images.
 
 - **Set up loses changes silently (found 11 Oct).** Changes on a Set up step are kept only until `Save changes` on the Name step. Reloading, or leaving through the edit bar (`Levels`, `Guide`), drops them with no warning: a Focused Combat choice was lost this way. Either save each step as it changes, like the editor does, or warn before leaving with unsaved changes.
 

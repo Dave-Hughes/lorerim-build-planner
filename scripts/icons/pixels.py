@@ -1,5 +1,5 @@
 """
-Pixel icons for the 18 skills and Destiny, attributes, birthsigns, races, level marks, gear slots, game modes, tags and deities: 16x16, drawn with a few shape
+Pixel icons for the 18 skills and Destiny, attributes, birthsigns, races, level marks, gear slots, game modes, tags, deities and the logo: 16x16, drawn with a few shape
 helpers, then given a 1 px dark outline automatically so every icon shares
 the same edge. Written out as SVG (one rect per run of pixels, crisp at any
 size).
@@ -1059,6 +1059,35 @@ def tag_roleplay():
 
 
 
+
+# ---------------------------------------------------------------- the logo (WO-38): a four-point star that glints
+
+def logo(frame=0):
+    """Frame 0 is the star at rest; 1 to 3 are the glint played every 10 seconds."""
+    i = Icon()
+    t = {0: 0.0, 1: 0.0, 2: 0.6, 3: 0.3}[frame]
+    i.poly([(8, 0.3 - t), (10.2, 5.8), (15.7 + t, 8), (10.2, 10.2), (8, 15.7 + t), (5.8, 10.2), (0.3 - t, 8), (5.8, 5.8)], "a")
+    i.recolor({"a"}, "A", lambda x, y: x <= 7 and y <= 7)
+    i.recolor({"a"}, "i", lambda x, y: x >= 8 and y >= 8)
+    i.poly([(8, 2.6), (9.4, 6.6), (13.4, 8), (9.4, 9.4), (8, 13.4), (6.6, 9.4), (2.6, 8), (6.6, 6.6)], "o")
+    i.recolor({"o"}, "y", lambda x, y: x <= 7 and y <= 7)
+    i.rect(7, 7, 8, 8, "y")
+    if frame >= 1:
+        i.rect(7, 7, 8, 8, "W")
+    if frame == 2:
+        i.rect(7, 6, 8, 9, "W"); i.rect(6, 7, 9, 8, "W")
+    i.outline()
+    if frame == 2:                                                 # diagonal rays, no outline
+        for d in (2, 3, 4):
+            for (x, y) in ((7 - d, 7 - d), (8 + d, 7 - d), (7 - d, 8 + d), (8 + d, 8 + d)):
+                if i.g[y][x] in (".", "x"):
+                    i.g[y][x] = "z"
+    if frame == 3:
+        for (x, y) in ((4, 4), (11, 4), (4, 11), (11, 11)):
+            if i.g[y][x] in (".", "x"):
+                i.g[y][x] = "z"
+    return i
+
 # ---------------------------------------------------------------- deities (Wintersun)
 def ring(i, cx, cy, ro, ri, c, where=None):
     for y in range(16):
@@ -1865,7 +1894,9 @@ DEITIES = {
     "Vivec": deity_vivec,
 }
 
-SETS = {"": ICONS, "attr-": ATTRIBUTES, "sign-": SIGNS, "race-": RACES, "mark-": MARKS, "slot-": SLOTS, "mode-": MODES, "tag-": TAGS, "deity-": DEITIES}
+LOGO = {str(f): (lambda f=f: logo(f)) for f in range(4)}
+
+SETS = {"": ICONS, "attr-": ATTRIBUTES, "sign-": SIGNS, "race-": RACES, "mark-": MARKS, "slot-": SLOTS, "mode-": MODES, "tag-": TAGS, "deity-": DEITIES, "logo-": LOGO}
 
 
 def slug(name):
