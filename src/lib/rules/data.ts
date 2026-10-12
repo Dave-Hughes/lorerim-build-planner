@@ -84,6 +84,21 @@ export interface Perk {
 /** The lines the game draws between a tree's stars. Drawing only; the rules use `requires`. */
 export type TreeLink = [from: string, to: string];
 
+/** A start from LoreRim's list (Alternate Perspective, New Beginnings, Adventurer's Start), in the game's words. */
+export interface Start {
+  name: string;
+  /** The mod it comes from. */
+  source: string;
+  text: string;
+  /** Its one choice's options, in the game's order; empty when it has none. */
+  options: string[];
+  /** What the choice is (Inn, Port, Hold, City, Homeland, Guild, Shrine, Temple, Helgen Keep). */
+  optionLabel?: string;
+}
+
+/** A deity's Wintersun text: the follower and devotee boons and the tenets, each with its name. */
+export type DeityText = Partial<Record<"follower" | "devotee" | "tenets", { name: string; text: string }>>;
+
 export interface GameMode {
   name: "Naaktiid" | "Konahrik";
   text: string;
@@ -98,8 +113,10 @@ export interface VersionSource {
   stones: Stone[];
   traits: Trait[];
   perks: Perk[];
-  /** Starts the Helgen statue offers in this version. */
-  starts: string[];
+  /** The game's starts, in its order. */
+  starts: Start[];
+  /** Deity text by the planner's deity names. */
+  deityText: Record<string, DeityText>;
   /** Gods offered free at the start, by race. Any god can still be joined at a shrine. */
   startingDeities: Record<string, string[]>;
   gameModes: GameMode[];
@@ -118,7 +135,9 @@ export interface GameData {
   stones: Stone[];
   traits: Trait[];
   perks: Perk[];
-  starts: string[];
+  starts: Start[];
+  startByName: Map<string, Start>;
+  deityText: Record<string, DeityText>;
   startingDeities: Record<string, string[]>;
   gameModes: GameMode[];
   raceByName: Map<string, Race>;
@@ -168,6 +187,8 @@ function build(version: GameVersion, src0: VersionSource): GameData {
     traits: src.traits,
     perks: src.perks,
     starts: src.starts,
+    startByName: new Map(src.starts.map((s) => [s.name, s])),
+    deityText: src.deityText,
     startingDeities: src.startingDeities,
     gameModes: src.gameModes,
     raceByName: new Map(src.races.map((r) => [r.name, r])),

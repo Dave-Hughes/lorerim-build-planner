@@ -15,8 +15,9 @@ import perks5048 from "@/data/lorerim-5.0.4.8/perks.json";
 import starts5048 from "@/data/lorerim-5.0.4.8/starts.json";
 import deities5048 from "@/data/lorerim-5.0.4.8/deities.json";
 import trees5048 from "@/data/lorerim-5.0.4.8/trees.json";
+import deityText5048 from "@/data/lorerim-5.0.4.8/deity-text.json";
 import { RULES_5_0_4_8 } from "./constants";
-import type { Birthsign, Perk, Race, SkillGroup, Stone, Trait, TreeLink, VersionSource } from "./data";
+import type { Birthsign, DeityText, Perk, Race, SkillGroup, Start, Stone, Trait, TreeLink, VersionSource } from "./data";
 
 export interface GameVersion {
   /** "5.0.4.8" */
@@ -48,7 +49,8 @@ const registry: Entry[] = [
       stones: stones5048 as Stone[],
       traits: traits5048 as Trait[],
       perks: perks5048 as Perk[],
-      starts: starts5048 as string[],
+      starts: starts5048 as Start[],
+      deityText: deityText5048 as Record<string, DeityText>,
       startingDeities: deities5048 as Record<string, string[]>,
       trees: trees5048 as unknown as Record<string, { links: TreeLink[] }>,
       gameModes: [

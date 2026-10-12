@@ -784,3 +784,52 @@
     transition: none;
   }
 }
+
+/* The start step: the game's starts grouped by mod; the chosen one opens with its text and choice. */
+.starts {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.startProblem {
+  margin: 0;
+  padding: 10px 14px;
+  border-left: 3px solid var(--health);
+  background: rgba(208, 122, 106, 0.1);
+  color: var(--text);
+}
+.startGroup {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.startGroup legend {
+  margin-bottom: 6px;
+  color: var(--muted);
+}
+.startRow {
+  padding: 6px 10px;
+  border: 1px solid transparent;
+}
+.startOn {
+  border-color: var(--ember);
+  background: rgba(240, 145, 63, 0.06);
+}
+.startMore {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 8px 0 6px 28px;
+}
+.startText {
+  margin: 0;
+  font-family: var(--font-flavor);
+  font-style: italic;
+  color: #c3cdd6;
+}
+.startOption {
+  max-width: 320px;
+}

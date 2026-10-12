@@ -52,7 +52,9 @@ test.describe("creating a build", () => {
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Game mode and start");
     await page.getByRole("article").filter({ hasText: "Konahrik" }).getByRole("heading", { name: "Konahrik" }).click();
     await expect(page.getByRole("article").filter({ hasText: "Konahrik" }).getByRole("button", { name: "Chosen" })).toBeVisible();
-    await page.getByLabel("Start", { exact: true }).fill("Falkreath");
+    // The game's starts (WO-29): pick one, then its hold.
+    await page.getByLabel("Out in the Wilderness").check();
+    await page.getByLabel("Hold").selectOption("Falkreath");
     await page.getByRole("button", { name: "Next: Name" }).click();
 
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Name the build");

@@ -196,23 +196,6 @@
   font-size: 15px;
 }
 
-.identity {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-.identityItem {
-  padding: 14px 18px 14px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.identityValue {
-  font-size: 18px;
-  font-weight: 500;
-}
-
 .levelSection {
   display: flex;
   flex-direction: column;
@@ -873,12 +856,16 @@
   padding-top: 0;
   border-top: 0;
 }
+/* Notes can run long: 17px at 1.55 (WO-29); over about 600 characters they clamp to 12 lines. */
 .card .note p,
 .card .note li {
   font-family: var(--font-flavor);
   font-style: italic;
-  font-size: 21px;
-  line-height: 1.5;
+  font-size: 17px;
+  line-height: 1.55;
+}
+.card .note [class*="fadePanel"] {
+  background: linear-gradient(to bottom, rgba(17, 24, 32, 0), #111820);
 }
 .noteBy {
   display: inline-flex;

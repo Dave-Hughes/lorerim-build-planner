@@ -1,0 +1,492 @@
+{
+  "Akatosh": {
+    "follower": {
+      "name": "Father of Dragons",
+      "text": "Attacks, spells, scrolls, shouts and enchantments are up to 30% better against dragons (based on favor with Akatosh). Able to craft a powerful amulet by using amulets of the Eight Divines."
+    },
+    "devotee": {
+      "name": "Turn the Hourglass",
+      "text": "Praying to Akatosh resets the cooldown of your most recently used shout and power. Craft a powerful amulet with 5 of each of the nine divines amulets."
+    },
+    "tenets": {
+      "name": "Tenets of Akatosh",
+      "text": "Fulfill your destiny by saving Tamriel. Raise your character level. Absorb dragon souls. Never openly break the laws of Skyrim."
+    }
+  },
+  "Arkay": {
+    "follower": {
+      "name": "Chalice of Life",
+      "text": "Regenerate up to 5% of your maximum Health per second based on missing Health. Can perform Arkay's Rites."
+    },
+    "devotee": {
+      "name": "Arkayn Cycle",
+      "text": "Revive with full Health upon taking fatal damage. Must pray to use this ability again. Costs 50% favor. Attribute fortifying spells are up to 20% stronger."
+    },
+    "tenets": {
+      "name": "Tenets of Arkay",
+      "text": "Slay the undead and their summoners. Perform Arkay's Rites. Never openly break the laws of Skyrim. Never summon the undead or become one of them."
+    }
+  },
+  "Auriel": {
+    "follower": {
+      "name": "The Eternal Sun",
+      "text": "Deal up to 20% more damage to vampires and take up to 20% less damage from vampires. Auriel's bow uses up to 80% less charge (based on favor with Auriel)."
+    },
+    "devotee": {
+      "name": "Path to Alaxon",
+      "text": "Sun spells and bows are up to 20% stronger. Wearing Elven, Glass or Ancient Falmer armor set increases Glass and Elven damage by up to 20% (based on favor with Auriel)."
+    },
+    "tenets": {
+      "name": "Tenets of Auriel",
+      "text": "Fulfill your destiny by saving Tamriel. Master all skills. Become my Champion at my sacred Chantry. High Elves are most deserving of my favor."
+    }
+  },
+  "Azura": {
+    "follower": {
+      "name": "Twilight Shroud",
+      "text": "Foes within mag feet can absorb spells and suffer up to 20% reduced magic resistance, chameleon and blind spells are up to 25% cheaper (based on favor with Azura)"
+    },
+    "devotee": {
+      "name": "Perfume of Moonshadow",
+      "text": "Activate a target below 30% - 60% health (based on favor) to paralyze them with 1 Health. Soul trapping spells cost up to 40% less to cast."
+    },
+    "tenets": {
+      "name": "Tenets of Azura",
+      "text": "Trap souls in my name. Explore new locations. Pray only at twilight, preferably outside. Dark Elves and those skilled in Illusion are most deserving of my favor."
+    }
+  },
+  "Boethiah": {
+    "follower": {
+      "name": "Blood Throne",
+      "text": "Your attacks deal up to 30% more damage when fighting only one opponent (based on favor with Boethiah)."
+    },
+    "devotee": {
+      "name": "Assassinate",
+      "text": "During prayer, you may invoke superior Daedric Invisibility for 90 seconds. If broken by a sneak attack, it deals 25% more damage. Costs 10% favor."
+    },
+    "tenets": {
+      "name": "Tenets of Boethiah",
+      "text": "Murder the innocent. Slay people who stand in your way. Strike unseen with sneak attacks. Dark Elves are most deserving of my favor."
+    }
+  },
+  "Dibella": {
+    "follower": {
+      "name": "Afterglow",
+      "text": "Take up to 20% less physical and magical damage while you have 2 or more allies in combat or 1 ally and have lover's comfort."
+    },
+    "devotee": {
+      "name": "Dibellan Arts",
+      "text": "Activate a person in combat to make them unequip their items and follow you for 90 seconds. Costs 5% favor. Illusion spells are up to 15% stronger or longer lasting, twice that for charm, rally and command spells."
+    },
+    "tenets": {
+      "name": "Tenets of Dibella",
+      "text": "Persuade others. Receive the blessing of Lover's Comfort. Find a new Sybil for my Temple. Pray only in the nude. Never openly break the laws of Skyrim."
+    }
+  },
+  "Hircine": {
+    "follower": {
+      "name": "Bitter Mercy",
+      "text": "Deal up to 60% more attack damage to living targets with down to 50% or less Health (based on favor with Hircine)."
+    },
+    "devotee": {
+      "name": "Posting of the Hunt",
+      "text": "Pray to invoke a Hunt within 500 feet, revealing the living and exposing them to Bitter Mercy. Costs 10% favor. Werebeasts can now deal up to 30% more damage to undead under half health."
+    },
+    "tenets": {
+      "name": "Tenets of Hircine",
+      "text": "Slay the living in open combat, especially those stronger than you. Live as a werewolf. Pray in the wild. Those skilled in Light Armor are most deserving of my favor."
+    }
+  },
+  "Jephre": {
+    "follower": {
+      "name": "Forest Stride",
+      "text": "Take up to 20% less physical damage from non-animals or up to 50% less from animals when unarmored (Based on favor with Jephre). Eating meat is twice as strong, plant based food gives no benefit."
+    },
+    "devotee": {
+      "name": "The Eternal Song",
+      "text": "Health and stamina quickly restores outdoors and out of combat. Deal up to 20% more damage when unarmored. Praying to Jephre brings clear weather."
+    },
+    "tenets": {
+      "name": "Tenets of Jephre",
+      "text": "Explore new locations. Read the stories of others. Hunt animals. Wood Elves are most deserving of my favor."
+    }
+  },
+  "Julianos": {
+    "follower": {
+      "name": "Divine Scholar",
+      "text": "Spells last up to 25% longer and hostile spells are up to 20% weaker (based on favor with Julianos)."
+    },
+    "devotee": {
+      "name": "Temple of Logic",
+      "text": "Spells have up to 25% more magnitude (based on favor with Julianos)."
+    },
+    "tenets": {
+      "name": "Tenets of Julianos",
+      "text": "Master the skills of the Mage. Strive to raise your Magicka. Never openly break the laws of Skyrim."
+    }
+  },
+  "Kynareth": {
+    "follower": {
+      "name": "Windspeaker",
+      "text": "Plant-based food is 50% stronger and longer lasting. When not sneaking, gain up to 25% more damage and critical damage with bows and daggers."
+    },
+    "devotee": {
+      "name": "Kynareth's Emissary",
+      "text": "Pray to summon a Sabre Cat mount. Friendly creatures and spirit summons are healed. Gain 10% critical hit chance with bows and dagger while not sneaking."
+    },
+    "tenets": {
+      "name": "Tenets of Kynareth",
+      "text": "Explore new locations. Strive to raise your Stamina. Receive the Voice of the Sky. Pray only outdoors. Never openly break the laws of Skyrim."
+    }
+  },
+  "Leki": {
+    "follower": {
+      "name": "Spirit Sword",
+      "text": "All melee attacks ignore up to 30% of an opponent's armor (based on favor with Leki)."
+    },
+    "devotee": {
+      "name": "Battle Meditation",
+      "text": "During prayer, you may spend 5% favor to gain up to 50% melee damage against targets at full hp (based on favor with Leki) for 60 minutes or 10 battles. Costs 5% favor."
+    },
+    "tenets": {
+      "name": "Tenets of Leki",
+      "text": "Bring the Civil War to a conclusion. Make and improve weapons. Master the skills of the Warrior."
+    }
+  },
+  "Magnus": {
+    "follower": {
+      "name": "Sight, Light and Insight",
+      "text": "Magicka does not regenerate. While holding a staff or wand, touch and rune spells are up to 20% stronger or longer lasting and enchantments use 50% less charge."
+    },
+    "devotee": {
+      "name": "Architect's Gift",
+      "text": "Potions and ingredients restore up to 50% more magicka. When under the effects of a magicka potion, soul gems provide up to 50% more charge."
+    },
+    "tenets": {
+      "name": "Tenets of Magnus",
+      "text": "Practice magic successfully while praying. Safeguard the Eye of Magnus. Create enchanted items."
+    }
+  },
+  "Malacath": {
+    "follower": {
+      "name": "Deathbringer",
+      "text": "Your power attacks are up to 15% stronger and cost up to 15% less stamina (based on favor with Malacath)."
+    },
+    "devotee": {
+      "name": "Bloodsoaked Triumph",
+      "text": "When an enemy dies within mag feet, their killer is healed based on the amount of overkill damage dealt (scaling with favor with Malacath)."
+    },
+    "tenets": {
+      "name": "Tenets of Malacath",
+      "text": "Defeat epic foes. Improve weapons and armor. Never commit a crime against the strongholds. Orcs and those skilled in Smithing are most deserving of my favor."
+    }
+  },
+  "Mara": {
+    "follower": {
+      "name": "Cleansing",
+      "text": "While your hands are lowered, restore attributes 0.5 per second. Restoration spells are up to 20% stronger based on favor. Praying cures all diseases."
+    },
+    "devotee": {
+      "name": "Aura of Peace",
+      "text": "Living allies within mag feet are healed up to 20 points of magicka and health per second (based on favor with Mara). Take 25% less physical damage when your hands are lowered."
+    },
+    "tenets": {
+      "name": "Tenets of Mara",
+      "text": "Be married. Own one or more houses. Be generous to beggars and children. Receive the blessing of Lover's Comfort. Never openly break the laws of Skyrim."
+    }
+  },
+  "Mehrunes Dagon": {
+    "follower": {
+      "name": "Self-Immolation",
+      "text": "Drain magicka when praying. Stop praying at 20% or less to gain more favor and Burning Path activations. Craft potions of immolation using potions of magicka restore at the cooking pot."
+    },
+    "devotee": {
+      "name": "Burning Path",
+      "text": "Nearby foes burn for up to 40 damage and explode on death (based on favor with Mehrunes Dagon). Pray to recharge. Nearby friendly Daedra have their attributes healed."
+    },
+    "tenets": {
+      "name": "Tenets of Mehrunes Dagon",
+      "text": "Slay people who stand in your way. Defile the shrines of my enemies. Those skilled in Destruction are most deserving of my favor."
+    }
+  },
+  "Mephala": {
+    "follower": {
+      "name": "Secret Murder",
+      "text": "Sneak attacks deal up to 20% more damage from behind when not wearing heavy armor (based on favor with Mephala)."
+    },
+    "devotee": {
+      "name": "Whispers of Betrayal",
+      "text": "During prayer, seize control of the nearest person within 75 feet to fight for you. Costs 5% favor. Follower ability buffed to up to 30% sneak damage."
+    },
+    "tenets": {
+      "name": "Tenets of Mephala",
+      "text": "Poison your weapons. Strike unseen with sneak attacks. Intimidate the weak. Dark Elves are most deserving of my favor."
+    }
+  },
+  "Molag Bal": {
+    "follower": {
+      "name": "Eye of the Storm",
+      "text": "Absorbs up to 10 Magicka and Stamina per second (based on favor with Molag Bal) from nearby enemies in combat."
+    },
+    "devotee": {
+      "name": "Dragged to Oblivion",
+      "text": "Activate a hostile below level 50 in combat to banish them to Coldharbour. Pray to request the items. Costs 25% favor. Blood magic is up to 20% stronger."
+    },
+    "tenets": {
+      "name": "Tenets of Molag Bal",
+      "text": "Slay people who stand in your way. Trap souls in my name. Live as a vampire and never seek a cure. Those skilled in Destruction are most deserving of my favor."
+    }
+  },
+  "Morwha": {
+    "follower": {
+      "name": "Healer of the Sands",
+      "text": "Meditation restores up to 200 Health for you and allies out of combat (based on favor with Morwha). Some enemies can drop milk or honey. This can be used to create a curative potion."
+    },
+    "devotee": {
+      "name": "Fertile Growth",
+      "text": "Praying to Morwha blesses you with enchanted fruit that restores or fortifies an attribute. These fruits can be further improved using milk and honey."
+    },
+    "tenets": {
+      "name": "Tenets of Morwha",
+      "text": "Be married. Receive the blessing of Lover's Comfort. Harvest the fruits of nature. Eat as much food as you want."
+    }
+  },
+  "Phynaster": {
+    "follower": {
+      "name": "Shorter Strides",
+      "text": "Take up to 20% less damage based on favor, immunity to stagger and 50% attribute regeneration while standing still."
+    },
+    "devotee": {
+      "name": "Elvenpath",
+      "text": "During prayer, you may teleport back to the last location where you prayed. Gain to 25% absorb chance and 100% poison and disease resist while not moving."
+    },
+    "tenets": {
+      "name": "Tenets of Phynaster",
+      "text": "Explore new locations. Find the standing stones of Skyrim. Harvest the fruits of nature. Bretons are most deserving of my favor."
+    }
+  },
+  "Rajhin": {
+    "follower": {
+      "name": "Rajhin's Tales",
+      "text": "Chance to find a large amount of additional gold in containers. Most sneak or thieving related potions and spells last up to twice as long."
+    },
+    "devotee": {
+      "name": "Prayer of Unlocking",
+      "text": "Pray to Rajhin to break a pickable lock within 20 feet. No fall damage if not wearing heavy armor and chance to gain valuable loot on slain enemies while tresspassing."
+    },
+    "tenets": {
+      "name": "Tenets of Rajhin",
+      "text": "Explore new locations. Bribe people as needed. Pick locks successfully. Those skilled in Lockpicking are most deserving of my favor."
+    }
+  },
+  "Riddle'Thar": {
+    "follower": {
+      "name": "Path to Llesw'er",
+      "text": "Gain bonuses based on day of the week ranging from attribute boosts, attribute regeneration and resistances."
+    },
+    "devotee": {
+      "name": "Beseech the Manes",
+      "text": "During prayer, an ancient Mane will grant a blessing they believe to be appropriate. Double bonus from day cycles."
+    },
+    "tenets": {
+      "name": "Tenets of Riddle'Thar",
+      "text": "Master the skills of the Warrior, Thief and Mage. Strive to raise your Health, Magicka and Stamina. Each is as important as the others. Pray only at night."
+    }
+  },
+  "Satakal": {
+    "follower": {
+      "name": "World Egg",
+      "text": "Shrine blessings from any other gods are up to 75% more effective and last longer (based on favor with Satakal)."
+    },
+    "devotee": {
+      "name": "Ouroboros",
+      "text": "Pray to become reborn as a different person, moving points between your attributes. Costs 15% favor."
+    },
+    "tenets": {
+      "name": "Tenets of Satakal",
+      "text": "Fulfill your destiny by saving Tamriel. Strive to raise your Health. Absorb dragon souls."
+    }
+  },
+  "Sheogorath": {
+    "follower": {
+      "name": "Touch of Madness",
+      "text": "Praying grants a random Touch of Madness. High favor with Sheogorath yields more beneficial effects. Cheese is 200% stronger."
+    },
+    "devotee": {
+      "name": "Lost to Madness",
+      "text": "Receive a Touch of Madness whenever you enter combat. All skills level 25 or below are 20% better."
+    },
+    "tenets": {
+      "name": "Tenets of Sheogorath",
+      "text": "Pray often and receive Sheogorath's Touch of Madness. Never disrespect cheese."
+    }
+  },
+  "Shor": {
+    "follower": {
+      "name": "Another Name for Freedom",
+      "text": "Take almost no poise damage, deal up to 15% more and take up to 15% less physical damage against non-humans or animals (based on favor with Shor)."
+    },
+    "devotee": {
+      "name": "Destiny",
+      "text": "When in combat with a mighty foe, Shor sends a Shield-Thane to assist. Pray to recharge. Elemental resistance increased by 15%."
+    },
+    "tenets": {
+      "name": "Tenets of Shor",
+      "text": "Fulfill your destiny by saving Tamriel. Master the skills of the Warrior. Slay elves. Defeat epic foes."
+    }
+  },
+  "Sithis": {
+    "follower": {
+      "name": "Primal Darkness",
+      "text": "Up to 25% harder to detect by those within 30 feet. Chance to find Human Hearts on people you kill."
+    },
+    "devotee": {
+      "name": "Call of the Void",
+      "text": "While sneaking, activate a door to briefly turn it into a Void portal. Targets within 60 feet who are not detecting you are pulled in and killed. Costs 5% favor."
+    },
+    "tenets": {
+      "name": "Tenets of Sithis",
+      "text": "Murder the innocent. Pray while sacrificing a Human Heart or Human Flesh. Send your victims to the Void. Argonians are most deserving of my favor."
+    }
+  },
+  "Stendarr": {
+    "follower": {
+      "name": "Sacred Resolve",
+      "text": "Physical attacks against undead slowly restore your health. Take up to 50% less attack damage from all attacks as your health decreases. (based on favor with Stendarr)."
+    },
+    "devotee": {
+      "name": "Channel Divinity",
+      "text": "During prayer, you may spend 10% favor to gain up to 40% improved attack, defense and healing (based on favor with Stendarr) for 120 seconds or 3 battles."
+    },
+    "tenets": {
+      "name": "Tenets of Stendarr",
+      "text": "Clear dungeons of evil. Slay daedra and the undead. Complete side quests. Never openly break the laws of Skyrim. Never practice the foul summoning arts."
+    }
+  },
+  "Syrabane": {
+    "follower": {
+      "name": "Knowledge Seeker",
+      "text": "You are more likely to find spell tomes, staves and scrolls on enemies you kill. Arcane spells are up to 20% stronger based on favor."
+    },
+    "devotee": {
+      "name": "Reach for the Stars",
+      "text": "All spells cost up to 20% less to cast (based on favor with Syrabane)."
+    },
+    "tenets": {
+      "name": "Tenets of Syrabane",
+      "text": "Read books that teach new skills. Study a wide variety of spells. High Elves are most deserving of my favor."
+    }
+  },
+  "Tall Papa": {
+    "follower": {
+      "name": "Metaphysical Insight",
+      "text": "Bound weapons deal up to 20% more base damage and bound armor provides 30% more armor rating (based on favor with Tall Papa)."
+    },
+    "devotee": {
+      "name": "Glimpse the Shores",
+      "text": "On death, become ethereal for a time period based on favor. If combat ends while ethereal, brings you back to life 10% favor. Pray to reset. Ghosts deal up to 50% less damage to you."
+    },
+    "tenets": {
+      "name": "Tenets of Tall Papa",
+      "text": "Touch the Fractures scattered around Skyrim. Create enchanted items. Those skilled in Enchanting are most deserving of my favor."
+    }
+  },
+  "Talos": {
+    "follower": {
+      "name": "Stormlord",
+      "text": "Attacks and shouts against playable races, Snow Elves and Falmer are increased by up to 20% (based on favor with Talos)."
+    },
+    "devotee": {
+      "name": "Dragon of the North",
+      "text": "Your remaining shout cooldown is halved whenever an enemy dies within mag feet."
+    },
+    "tenets": {
+      "name": "Tenets of Talos",
+      "text": "Bring the Civil War to a conclusion. Learn the dragon tongue. Absorb dragon souls. Slay elves and the Thalmor. Never openly break the laws of Skyrim."
+    }
+  },
+  "The Hist": {
+    "follower": {
+      "name": "Symbiosis",
+      "text": "Pray to gain up and to 50 point bonus to all attributes for up to 1000 seconds (based on favor with the Hist). Up to 100 when under the influence of Sleeping Tree Sap."
+    },
+    "devotee": {
+      "name": "Deep Roots",
+      "text": "Absorb up to 40% stamina and magicka from nearby dead creatures and people. Sleeping tree sap lasts up to 20 times longer and is up to 100% stronger.(based on favor with the Hist)."
+    },
+    "tenets": {
+      "name": "Tenets of the Hist",
+      "text": "Explore new locations. Slay daedra. Pray only outdoors. Never summon a daedra."
+    }
+  },
+  "The HoonDing": {
+    "follower": {
+      "name": "Make Way",
+      "text": "Staggering an opponent reduces armor by up to 300 points for 60 seconds (based on favor with the HoonDing)."
+    },
+    "devotee": {
+      "name": "Perseverance",
+      "text": "The Hoonding gives you 25% chance to take no poise damage, take 25% less physical damage when not staggered, 25% more when staggered and deal 25% more weapon damage to staggered enemies."
+    },
+    "tenets": {
+      "name": "Tenets of the HoonDing",
+      "text": "Slay your foes in open combat, especially those stronger than you. Those skilled in One-Handed are most deserving of my favor."
+    }
+  },
+  "Trinimac": {
+    "follower": {
+      "name": "Tears of Man",
+      "text": "Gain 20% attack damage if health is above 90% and 20% if stamina is above 90% (based on favor with Trinimac)."
+    },
+    "devotee": {
+      "name": "Manifest Divinity",
+      "text": "When praying, you may become ethereal and invulnerable until your next attack. Costs 5% favor."
+    },
+    "tenets": {
+      "name": "Tenets of Trinimac",
+      "text": "Slay humans. Defeat epic foes. Never accept Boethiah's blessing or serve her. Those skilled in Two-Handed are most deserving of my favor."
+    }
+  },
+  "Xarxes": {
+    "follower": {
+      "name": "Scribe's Insight",
+      "text": "2 additional skill point from skill books. Scrolls scale based on enchanting skill 20% at level 100 enchanting."
+    },
+    "devotee": {
+      "name": "Panopticon",
+      "text": "Pray to ascend in a trance, revealing all characters in a very large radius. Scrolls scale based on you magic skill level of the scroll type 20% at 100 skill level."
+    },
+    "tenets": {
+      "name": "Tenets of Xarxes",
+      "text": "Explore new locations. Read the stories of others. Study a wide variety of spells. Bretons are most deserving of my favor."
+    }
+  },
+  "Z'en": {
+    "follower": {
+      "name": "Traveler's Break",
+      "text": "Alchemy is up to 15% more effective (based on favor with Z'en). Gain 1 extra potion crafted."
+    },
+    "devotee": {
+      "name": "Merchant's Knapsack",
+      "text": "Pray to open and trade with an unlimited extradimensional storage space which has 5000 gold. Gain 2 more poison doses before needing to re-apply the poison."
+    },
+    "tenets": {
+      "name": "Tenets of Z'en",
+      "text": "Bribe people as needed. Harvest the fruits of nature. Eat as much food as you want. Those skilled in Speech are most deserving of my favor."
+    }
+  },
+  "Zenithar": {
+    "follower": {
+      "name": "Work Ethic",
+      "text": "Tempering weapons or armor is up to 15% better and unenchanted weapons deal up to 10% more damage (based on favor with Zenithar)."
+    },
+    "devotee": {
+      "name": "Invisible Hand",
+      "text": "Pray to Zenithar to buy and sell items directly. Gain a very difficult crafting recipe. This recipe allows you to create perk potions at the Aetherium Forge."
+    },
+    "tenets": {
+      "name": "Tenets of Zenithar",
+      "text": "Invest in stores and merchants. Seek out skill training. Make weapons and armor. Never openly break the laws of Skyrim."
+    }
+  }
+}

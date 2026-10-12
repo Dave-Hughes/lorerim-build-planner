@@ -345,6 +345,46 @@ def main():
         json.dump(traits, f, indent=2, ensure_ascii=False)
         f.write("\n")
     print(f"{len(perks)} perks, {len(traits)} traits -> {os.path.relpath(OUT, ROOT)}")
+    # Starts (WO-29): the game's 25, in its order and spelling, each with its own text and options.
+    if os.path.exists(os.path.join(RAW, "starts_raw.json")):
+        labels = overrides.get("starts", {}).get("optionLabels", {})
+        starts = [
+            {"name": s["name"], "source": s["from"], "text": s["text"], "options": [o["name"] for o in s["options"]], **({"optionLabel": labels[s["name"]]} if s["options"] and s["name"] in labels else {})}
+            for s in load("starts_raw.json")["starts"]
+        ]
+        missing = [s["name"] for s in starts if s["options"] and "optionLabel" not in s]
+        if missing:
+            problems.append(f"starts with options but no label in overrides.json: {', '.join(missing)}")
+        with open(os.path.join(OUT, "starts.json"), "w", encoding="utf-8") as f:
+            json.dump(starts, f, indent=2, ensure_ascii=False)
+            f.write("\n")
+        print(f"{len(starts)} starts -> starts.json")
+    # Deity text (WO-29): follower and devotee boons and tenets from Wintersun, by the planner's
+    # deity names (letters only, a leading "The" dropped; exceptions in overrides.json).
+    if os.path.exists(os.path.join(RAW, "deities_raw.json")):
+        raw = {d["key"]: d for d in load("deities_raw.json")["deities"]}
+        names = sorted({g for gods in json.load(open(os.path.join(OUT, "deities.json"), encoding="utf-8")).values() for g in gods})
+        exceptions = overrides.get("deities", {}).get("keys", {})
+
+        def key_for(name):
+            if name in exceptions:
+                return exceptions[name]
+            letters = re.sub(r"[^A-Za-z]", "", name)
+            if letters in raw:
+                return letters
+            return re.sub(r"[^A-Za-z]", "", re.sub(r"^The ", "", name))
+
+        text = {}
+        for name in names:
+            d = raw.get(key_for(name))
+            if not d:
+                problems.append(f"deity {name}: no Wintersun text")
+                continue
+            text[name] = {part: {"name": d[part]["name"], "text": unmark(d[part]["text"])} for part in ("follower", "devotee", "tenets") if d.get(part)}
+        with open(os.path.join(OUT, "deity-text.json"), "w", encoding="utf-8") as f:
+            json.dump(text, f, indent=2, ensure_ascii=False)
+            f.write("\n")
+        print(f"{len(text)} deities -> deity-text.json")
     # The item index (items.py), once its raw extract is in: loaded on demand, never in the main bundle.
     if os.path.exists(os.path.join(RAW, "items_raw.json")):
         from items import build_items

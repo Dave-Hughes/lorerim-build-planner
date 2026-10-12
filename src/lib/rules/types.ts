@@ -50,7 +50,12 @@ export interface BuildPlan {
   birthsign: string;
   mode: GameMode;
   deity: string;
+  /** One of the game's starts by its name (starts.json), or "" for none chosen. */
   start: string;
+  /** The start's one choice (an inn, a hold, a homeland...), when it has one and one is picked. */
+  startOption?: string;
+  /** A start saved before the game's list that matches none of it ("Merchant or mercenary"): Set up asks for a pick. */
+  startWas?: string;
   majors: string[];
   minors: string[];
   traits: string[];

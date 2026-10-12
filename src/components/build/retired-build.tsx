@@ -13,10 +13,10 @@ export function RetiredBuild({ build, isOwner }: { build: BuildViewData; isOwner
   const identity: [string, string][] = [
     ["Race", plan.race || "Not chosen yet"],
     ["Birthsign", plan.traits.includes("Master of Destiny") ? "None (Master of Destiny)" : plan.birthsign ? `The ${plan.birthsign}` : "Not chosen yet"],
+    ["Deity", plan.deity || "Not chosen yet"],
     ["Traits", plan.traits.length ? plan.traits.join(", ") : "None"],
     ["Game mode", plan.mode],
-    ["Start", plan.start || "Not chosen yet"],
-    ["Deity", plan.deity || "Not chosen yet"],
+    ["Start", plan.start ? `${plan.start}${plan.startOption && plan.startOption !== "Random" ? ` · ${plan.startOption}` : ""}` : "Not chosen yet"],
   ];
   return (
     <main className={styles.main}>

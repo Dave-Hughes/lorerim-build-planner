@@ -2,7 +2,7 @@
  * Moving a plan to another LoreRim version: what doesn't exist there is listed
  * and removed, never silently.
  */
-import type { GameData } from "./data";
+import { gameData, type GameData } from "./data";
 import { gearSlot } from "./gear";
 import { keptTraitChoices } from "./trait-choices";
 import type { BuildPlan } from "./types";
@@ -66,6 +66,47 @@ export function droppedSentence(versionId: string, dropped: Dropped[]): string {
   return `Not in ${versionId}: ${dropped.map((x) => `${x.name} (${x.kind})`).join(", ")}.`;
 }
 
+/** Starts saved before WO-29 (our own names), as the game's start and its choice. */
+const OLD_STARTS: Record<string, { start: string; option?: string }> = {
+  "Regular at an inn": { start: "Regular (Inn)" },
+  "Arriving from overseas": { start: "From Overseas" },
+  "Wanted criminal": { start: "Wanted Criminal" },
+  "Left for dead": { start: "Left for Dead" },
+  "The Dragonborn (Helgen Keep)": { start: "Dragonborn" },
+  "Temple pilgrim": { start: "Pilgrim (Temple)" },
+  "Shrine pilgrim": { start: "Pilgrim (Shrine)" },
+  "Thalmor prisoner": { start: "Thalmor Prisoner" },
+  "At Angi's camp": { start: "At Angis Camp" },
+  "Dwemer ruin": { start: "Dwemer Ruin" },
+  "Bounty hunter": { start: "Bounty Hunter" },
+  "Roadside ambush": { start: "Roadside Ambush" },
+  "Prisoner in a bandit fort": { start: "Prisoner in a Bandit Fort" },
+  "Fell in a spike pit": { start: "Fell in a Spike Pit" },
+  "Out in the wilderness": { start: "Out in the Wilderness" },
+};
+
+/**
+ * A saved start as one of the game's: our old names mapped ("Guild member: Companions" is Guilds,
+ * Companions). Anything else that isn't a game start (the old "Merchant or mercenary", or text typed
+ * into the old free field) becomes no start, kept in `startWas` so Set up can ask for one.
+ */
+export function withGameStart(plan: BuildPlan, startNames: readonly string[]): BuildPlan {
+  const s = plan.start ?? "";
+  if (!s || startNames.includes(s)) return plan;
+  const guild = /^Guild member: (.+)$/.exec(s);
+  const mapped = guild ? { start: "Guilds", option: guild[1] } : OLD_STARTS[s];
+  const next: BuildPlan = { ...plan };
+  delete next.startOption;
+  if (mapped && startNames.includes(mapped.start)) {
+    next.start = mapped.start;
+    if (mapped.option) next.startOption = mapped.option;
+    return next;
+  }
+  next.start = "";
+  next.startWas = s;
+  return next;
+}
+
 /**
  * A saved plan with its gear in the fixed slots (Weapon → Main hand, Shield → Off hand, Chest →
  * Body, anything unknown → Other). Every row keeps its name, level and note.
@@ -73,4 +114,14 @@ export function droppedSentence(versionId: string, dropped: Dropped[]): string {
 export function withGearSlots(plan: BuildPlan): BuildPlan {
   if (plan.gear.every((g) => gearSlot(g.slot) === g.slot)) return plan;
   return { ...plan, gear: plan.gear.map((g) => ({ ...g, slot: gearSlot(g.slot) })) };
+}
+
+/**
+ * A saved plan as the planner reads it: gear in the fixed slots, the start one of its version's.
+ * (A version the planner no longer has keeps its start as saved.)
+ */
+export function readPlan(plan: BuildPlan): BuildPlan {
+  const d = gameData(plan.gameVersion);
+  const geared = withGearSlots(plan);
+  return d ? withGameStart(geared, d.starts.map((s) => s.name)) : geared;
 }

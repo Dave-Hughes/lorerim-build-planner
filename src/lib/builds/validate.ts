@@ -2,7 +2,7 @@ import { z } from "zod";
 import { MAX_TAGS, TAG_BY_SLUG } from "./tags";
 import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
 import { gameData, isKnownVersion, type GameData } from "@/lib/rules/server";
-import { withGearSlots } from "@/lib/rules/convert";
+import { readPlan } from "@/lib/rules/convert";
 import type { BuildPlan } from "@/lib/rules/types";
 
 export const MAX_LEVELS = 100;
@@ -35,7 +35,9 @@ function planSchema(d: GameData) {
     birthsign: z.string().refine((b) => b === "" || d.signByName.has(b), "Unknown birthsign"),
     mode: z.enum(["Naaktiid", "Konahrik"]),
     deity: z.string().max(80),
-    start: z.string().max(120),
+    start: z.string().refine((s) => s === "" || d.startByName.has(s), "Unknown start"),
+    startOption: z.string().max(120).optional(),
+    startWas: z.string().max(120).optional(),
     majors: z.array(skillName).max(d.rules.majorCount),
     minors: z.array(skillName).max(d.rules.minorCount),
     traits: z.array(z.string().refine((t) => d.traitByName.has(t), "Unknown trait")).max(d.rules.maxTraits),
@@ -59,7 +61,8 @@ function planSchema(d: GameData) {
       )
       .max(60),
     notes: z.string().max(6000),
-  }) satisfies z.ZodType<BuildPlan>;
+  })
+    .refine((p) => !p.startOption || (d.startByName.get(p.start)?.options.includes(p.startOption) ?? false), "Unknown choice for this start") satisfies z.ZodType<BuildPlan>;
 }
 
 const versionOnly = z.object({
@@ -96,5 +99,7 @@ export type BuildDetails = z.infer<typeof buildDetailsSchema>;
  */
 export function parseBuildPlan(input: unknown): BuildPlan {
   const { gameVersion } = versionOnly.parse(input);
-  return withGearSlots(planSchema(gameData(gameVersion)!).parse(input) as BuildPlan);
+    // Old start names and gear slots are read the planner's way first, as a saved plan would be.
+  const read = input && typeof input === "object" && Array.isArray((input as BuildPlan).gear) ? readPlan(input as BuildPlan) : input;
+  return planSchema(gameData(gameVersion)!).parse(read) as BuildPlan;
 }

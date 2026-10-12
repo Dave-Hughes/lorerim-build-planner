@@ -236,5 +236,31 @@
       "^FXdustDropWEP$",
       "^Unarmed$"
     ]
+  },
+  "deities": {
+    "keys": {
+      "Mehrunes Dagon": "Mehrunes"
+    }
+  },
+  "starts": {
+    "optionLabels": {
+      "Regular (Inn)": "Inn",
+      "From Overseas": "Port",
+      "Wanted Criminal": "Hold",
+      "Left for Dead": "Hold",
+      "Guilds": "Guild",
+      "Dragonborn": "Helgen Keep",
+      "Beggar": "City",
+      "Jailed": "Hold",
+      "Mercenary": "Homeland",
+      "Merchant": "Homeland",
+      "Pilgrim (Shrine)": "Shrine",
+      "Pilgrim (Temple)": "Temple",
+      "Vampire": "City",
+      "Roadside Ambush": "Hold",
+      "Bounty Hunter": "Hold",
+      "Prisoner in a Bandit Fort": "Hold",
+      "Out in the Wilderness": "Hold"
+    }
   }
 }

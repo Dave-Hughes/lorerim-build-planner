@@ -1103,12 +1103,12 @@ From Dave's notes. Do after WO-28.
    - **Over about 600 characters**, the note is clamped to 12 lines with `Read more` to expand it in place.
 
 ### Done when
-- [ ] e2e: the about bar's labels read in the order above on Azrem's page.
-- [ ] e2e: hovering each item shows its tooltip; `Phalanx` and `Focused Combat` are separate targets. Clicking Start opens the popover with the choices, and Esc closes it.
-- [ ] Unit tests for the old-name mapping in #5, including `Guild member: Companions` → `Guilds` / `Companions`.
-- [ ] `starts.json` built from `starts_raw.json`: 25 starts, and the option lists match it exactly.
-- [ ] Screenshots for Dave at 1440 and 390: the about bar with a tooltip open and with the Start popover open; Set up's start step with a start's choices; a long level note clamped.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: the about bar's labels read in the order above on Azrem's page.
+- [x] e2e: hovering each item shows its tooltip; `Phalanx` and `Focused Combat` are separate targets. Clicking Start opens the popover with the choices, and Esc closes it.
+- [x] Unit tests for the old-name mapping in #5, including `Guild member: Companions` → `Guilds` / `Companions`.
+- [x] `starts.json` built from `starts_raw.json`: 25 starts, and the option lists match it exactly.
+- [x] Screenshots for Dave at 1440 and 390: the about bar with a tooltip open and with the Start popover open; Set up's start step with a start's choices; a long level note clamped.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

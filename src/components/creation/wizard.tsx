@@ -120,7 +120,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
     birthsign: masterOfDestiny ? "Removed by Master of Destiny" : plan.birthsign ? `The ${plan.birthsign}` : "Not chosen",
     skills: `${plan.majors.length} major${plan.majors.length === 1 ? "" : "s"}, ${plan.minors.length} minor${plan.minors.length === 1 ? "" : "s"}`,
     traits: `${plan.traits.length} of ${d.rules.maxTraits} chosen`,
-    mode: `${plan.mode}${plan.start ? `, ${plan.start}` : ""}`,
+    mode: `${plan.mode}${plan.start ? `, ${plan.start}${plan.startOption && plan.startOption !== "Random" ? ` · ${plan.startOption}` : ""}` : ""}`,
     name: details.name || "Not named",
   };
 
@@ -700,15 +700,7 @@ function ModeStep({ plan, update }: StepProps) {
         })}
       </section>
       <div className={styles.fields}>
-        <label className="field">
-          <span className="label">Start</span>
-          <input className="input" list="starts" value={plan.start} maxLength={120} onChange={(e) => update((p) => ({ ...p, start: e.target.value }))} placeholder="Where the build begins" />
-          <datalist id="starts">
-            {d.starts.map((s) => (
-              <option key={s} value={s} />
-            ))}
-          </datalist>
-        </label>
+        <StartPicker plan={plan} update={update} />
         <label className="field">
           <span className="label">Deity</span>
           <input className="input" list="deities" value={plan.deity} maxLength={80} onChange={(e) => update((p) => ({ ...p, deity: e.target.value }))} placeholder="Optional" />
@@ -721,6 +713,77 @@ function ModeStep({ plan, update }: StepProps) {
         </label>
       </div>
     </>
+  );
+}
+
+/**
+ * The game's 25 starts in its order, grouped by the mod each comes from. The chosen one shows its
+ * own text and, when it has a choice (an inn, a hold, a homeland...), a select for it: optional,
+ * with Random a choice like any other.
+ */
+function StartPicker({ plan, update }: StepProps) {
+  const d = useGameData();
+  const sources = [...new Set(d.starts.map((s) => s.source))];
+  const chosen = d.startByName.get(plan.start);
+  const choose = (name: string) =>
+    update((p) => {
+      const next = { ...p, start: name };
+      delete next.startOption;
+      delete next.startWas;
+      return next;
+    });
+  return (
+    <div className={styles.starts}>
+      <span className="label">Start</span>
+      {plan.startWas && !plan.start && (
+        <p role="alert" className={styles.startProblem}>
+          {/^merchant or mercenary$/i.test(plan.startWas)
+            ? "This build's start was \u201cMerchant or mercenary\u201d. In LoreRim they're two starts: pick Merchant or Mercenary."
+            : `This build's start was \u201c${plan.startWas}\u201d, which isn't one of LoreRim's starts. Pick the closest one.`}
+        </p>
+      )}
+      {sources.map((src) => (
+        <fieldset key={src} className={styles.startGroup}>
+          <legend className="sub-label">{src}</legend>
+          {d.starts
+            .filter((s) => s.source === src)
+            .map((s) => {
+              const on = plan.start === s.name;
+              return (
+                <div key={s.name} className={`${styles.startRow} ${on ? styles.startOn : ""}`}>
+                  <label className={styles.radio}>
+                    <input type="radio" name="start" value={s.name} checked={on} onChange={() => choose(s.name)} />
+                    <span>{s.name}</span>
+                  </label>
+                  {on && (
+                    <div className={styles.startMore}>
+                      <p className={styles.startText}>{s.text}</p>
+                      {s.options.length > 0 && (
+                        <label className={`field ${styles.startOption}`}>
+                          <span className="label">{s.optionLabel ?? "Choice"}</span>
+                          <select className="select" value={plan.startOption ?? ""} onChange={(e) => update((p) => ({ ...p, startOption: e.target.value || undefined }))}>
+                            <option value="">Not chosen</option>
+                            {s.options.map((o) => (
+                              <option key={o} value={o}>
+                                {o}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+        </fieldset>
+      ))}
+      {chosen && (
+        <button type="button" className="btn btn-sm btn-quiet" style={{ alignSelf: "flex-start" }} onClick={() => choose("")}>
+          No start
+        </button>
+      )}
+    </div>
   );
 }
 

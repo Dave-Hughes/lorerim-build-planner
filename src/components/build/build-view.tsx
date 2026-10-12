@@ -5,7 +5,6 @@ import { Tooltip } from "@/components/ui/tooltip";
 import { LikeButton } from "./like-button";
 import { TAG_BY_SLUG } from "@/lib/builds/tags";
 import { AuthorLink } from "@/components/ui/author-link";
-import { traitWithChoice } from "@/lib/rules/trait-choices";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, useTransition } from "react";
 import { copyBuild, copyBuildForVersion } from "@/lib/builds/actions";
@@ -14,6 +13,7 @@ import { useGameData } from "@/components/game-data";
 import { GuideFactsProvider, GuideMention } from "@/components/guide/guide-facts";
 import { SkillGains, type SkillGain } from "./skill-gains";
 import { EditBar } from "@/components/editor/edit-bar";
+import { AboutBar } from "./about-bar";
 import { GuideSection } from "@/components/guide/guide-section";
 import { LevelNote } from "@/components/guide/level-note";
 import { docWords, firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
@@ -27,7 +27,7 @@ import type { LevelState } from "@/lib/rules/types";
 import { computeBuild } from "@/lib/rules/engine";
 import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
-import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillIcon, SkillLabel } from "@/components/ui/skill-icon";
+import { AttributeIcon, IconLabel, SignIcon, SkillIcon, SkillLabel } from "@/components/ui/skill-icon";
 import { LevelBars, LevelLegend, LevelStepper, useHoldInPlace } from "./level-nav";
 import { BottomSheet, PerkDetails, Tree, ViewToggle, type TreeView } from "./tree";
 import styles from "./build-view.module.css";
@@ -134,20 +134,6 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
     return () => window.removeEventListener("keydown", onKey);
   }, [level, setLevel, tab]);
 
-  const noSign = plan.traits.includes("Master of Destiny");
-  const identity: [string, React.ReactNode][] = [
-    ["Race", plan.race ? <IconLabel icon={<RaceIcon name={plan.race} />}>{plan.race}</IconLabel> : plan.race],
-    [
-      "Birthsign",
-      noSign ? "None (Master of Destiny)" : plan.birthsign ? <IconLabel icon={<SignIcon name={plan.birthsign} />}>The {plan.birthsign}</IconLabel> : "Not chosen yet",
-    ],
-    ["Traits", plan.traits.length ? plan.traits.map((t) => traitWithChoice(t, plan.traitChoices)).join(", ") : "None"],
-    ...(plan.masterOfOneSkill ? [["Master of One", plan.masterOfOneSkill] as [string, React.ReactNode]] : []),
-    ["Game mode", plan.mode],
-    ["Start", plan.start || "Not chosen yet"],
-    ["Deity", plan.deity || "Not chosen yet"],
-  ];
-
   // The intro, else the guide's first paragraph, else nothing.
   const intro = guide.intro && !isEmptyDoc(guide.intro) ? guide.intro : firstParagraph(overview);
   const TAB_NAMES: Record<BuildTab, string> = { levels: "Levels", guide: "Guide" };
@@ -213,14 +199,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
               )}
             </section>
           )}
-          <section aria-label="Character" className={styles.identity}>
-            {identity.map(([l, v]) => (
-              <div key={l} className={styles.identityItem}>
-                <span className="label">{l}</span>
-                <span className={styles.identityValue}>{v}</span>
-              </div>
-            ))}
-          </section>
+          <AboutBar plan={plan} />
 
           {tabs.length > 1 && (
             <div ref={setTabRow} role="tablist" aria-label="Build sections" className={styles.tabs} onKeyDown={onTabKey}>
@@ -926,7 +905,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       {/* The author's column is always there: their name first, then the note (or that there isn't one). */}
       <aside aria-label="Author's note" className={styles.note}>
         <AuthorLink author={build.author} className={styles.noteBy} avatar={<Avatar name={build.author.name} image={build.author.image} size={24} />} />
-        {note ? <LevelNote key={level} doc={note} level={level} /> : <p className={`muted ${styles.noNote}`}>No note for level {level}.</p>}
+        {note ? <LevelNote key={level} doc={note} level={level} lines={12} /> : <p className={`muted ${styles.noNote}`}>No note for level {level}.</p>}
       </aside>
     </section>
   );

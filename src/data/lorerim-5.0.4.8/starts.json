@@ -1,30 +1,306 @@
 [
-  "Regular at an inn",
-  "Arriving from overseas",
-  "Wanted criminal",
-  "Left for dead",
-  "Forsworn",
-  "Guild member: College of Winterhold",
-  "Guild member: Thieves Guild",
-  "Guild member: Dark Brotherhood",
-  "Guild member: Companions",
-  "The Dragonborn (Helgen Keep)",
-  "Merchant",
-  "Mercenary",
-  "Temple pilgrim",
-  "Shrine pilgrim",
-  "Vampire",
-  "Werewolf",
-  "Jailed",
-  "Thalmor prisoner",
-  "Alchemist",
-  "At Angi's camp",
-  "Beggar",
-  "Addict",
-  "Dwemer ruin",
-  "Bounty hunter",
-  "Roadside ambush",
-  "Prisoner in a bandit fort",
-  "Fell in a spike pit",
-  "Out in the wilderness"
+  {
+    "name": "Regular (Inn)",
+    "source": "Alternate Perspective",
+    "text": "You're a Regular at an Inn somewhere in Skyrim or Solstheim.",
+    "options": [
+      "Random",
+      "The Bannered Mare",
+      "The Bee and Barb",
+      "The Winking Skeever",
+      "Silver-Blood Inn",
+      "Candlehearth Hall",
+      "Dead Man's Drink",
+      "Moorside Inn",
+      "The Frozen Hearth",
+      "Windpeak Inn",
+      "The Retching Netch",
+      "The Sleeping Giant Inn",
+      "Frostfruit Inn",
+      "Vilemyr Inn",
+      "Old Hroldan Inn",
+      "Four Shields Tavern",
+      "Nightgate Inn",
+      "Braidwood Inn"
+    ],
+    "optionLabel": "Inn"
+  },
+  {
+    "name": "From Overseas",
+    "source": "Alternate Perspective",
+    "text": "You arrived in Skyrim by ship.",
+    "options": [
+      "Random",
+      "East Empire Trading Company",
+      "Windhelm Docks",
+      "Dawnstar's Shore",
+      "Raven Rock Docks"
+    ],
+    "optionLabel": "Port"
+  },
+  {
+    "name": "Wanted Criminal",
+    "source": "Alternate Perspective",
+    "text": "You are a criminal with high bounties in multiple holds, taking shelter at a nearby camp.",
+    "options": [
+      "Random",
+      "Whiterun",
+      "The Rift",
+      "The Pale",
+      "Winterhold"
+    ],
+    "optionLabel": "Hold"
+  },
+  {
+    "name": "Left for Dead",
+    "source": "Alternate Perspective",
+    "text": "You've been attacked and barely managed to survive. Wounded and taken by disease you try to find a way back to civilization.",
+    "options": [
+      "Random",
+      "The Rift",
+      "The Reach",
+      "Winterhold"
+    ],
+    "optionLabel": "Hold"
+  },
+  {
+    "name": "Forsworn",
+    "source": "Alternate Perspective",
+    "text": "You are a member of the Forsworn at Druadach Redoubt.",
+    "options": []
+  },
+  {
+    "name": "Guilds",
+    "source": "Alternate Perspective",
+    "text": "You are a member of one of the Guilds in Skyrim.",
+    "options": [
+      "Random",
+      "College of Winterhold",
+      "Thieves Guild",
+      "Dark Brotherhood",
+      "Companions"
+    ],
+    "optionLabel": "Guild"
+  },
+  {
+    "name": "Dragonborn",
+    "source": "Alternate Perspective",
+    "text": "You are the Dragonborn of legend, saving the world from Alduin.",
+    "options": [
+      "Helgen Keep (Start)",
+      "Helgen Keep (End)"
+    ],
+    "optionLabel": "Helgen Keep"
+  },
+  {
+    "name": "Addict",
+    "source": "New Beginnings",
+    "text": "I can't believe I've finally found the den! The shaking has gotten worse ever since I left home, but now my suffering is at an end. I do have a strange feeling about this den, though...",
+    "options": []
+  },
+  {
+    "name": "Dwemer Ruin",
+    "source": "New Beginnings",
+    "text": "I knew I shouldn't have touched that orb, but my curiosity got the better of me. I pray to the Gods that there's a way out of here...",
+    "options": []
+  },
+  {
+    "name": "Alchemist",
+    "source": "New Beginnings",
+    "text": "It's been a while since I left home to become an alchemist, and I can't help but long for something more exciting to do than picking flowers. Maybe it's time I left this grove behind...",
+    "options": []
+  },
+  {
+    "name": "At Angis Camp",
+    "source": "New Beginnings",
+    "text": "I have come across the camp of a markswoman named Angi. Maybe I should ask her to train me.",
+    "options": []
+  },
+  {
+    "name": "Beggar",
+    "source": "New Beginnings",
+    "text": "I don't even remember how long I've been living here in this gods-forsaken place. It's time I got out of here and became an adventurer or joined the Thieves' Guild or the Forsworn or something along those lines. Gods know anything would be better than continuing to rot away in this dump.",
+    "options": [
+      "Random",
+      "Riften",
+      "Markarth"
+    ],
+    "optionLabel": "City"
+  },
+  {
+    "name": "Jailed",
+    "source": "New Beginnings",
+    "text": "Well, here I am... I can't believe those imbecile guards actually caught me. If I don't want to serve my time in here, I better start looking for a way out.",
+    "options": [
+      "Random",
+      "Whiterun",
+      "The Rift",
+      "Eastmarch",
+      "Haarfinger",
+      "The Reach",
+      "Falkreath",
+      "Hjaalmach",
+      "The Pale",
+      "Winterhold",
+      "Raven Rock"
+    ],
+    "optionLabel": "Hold"
+  },
+  {
+    "name": "Mercenary",
+    "source": "New Beginnings",
+    "text": "There's an old Cyrodiilic proverb: \"The riskier the road, the greater the profit.\" This civil war in Skyrim is bound to be good for business. I'd be a fool if I didn't take this opportunity. After all, I can hardly make less money than back home...",
+    "options": [
+      "Random",
+      "Cyrodiil",
+      "Hammerfell",
+      "High Rock",
+      "Northern Morrowind",
+      "Southern Morrowind"
+    ],
+    "optionLabel": "Homeland"
+  },
+  {
+    "name": "Merchant",
+    "source": "New Beginnings",
+    "text": "There's an old Cyrodiilic proverb: \"The riskier the road, the greater the profit.\" This civil war in Skyrim is bound to be good for business. I'd be a fool if I didn't take this opportunity. After all, I can hardly make less money than back home...",
+    "options": [
+      "Random",
+      "Cyrodiil",
+      "Hammerfell",
+      "High Rock",
+      "Northern Morrowind",
+      "Southern Morrowind"
+    ],
+    "optionLabel": "Homeland"
+  },
+  {
+    "name": "Pilgrim (Shrine)",
+    "source": "New Beginnings",
+    "text": "Depending on your choice, you spawn at the Shrine of Azura, the Sacellum of Boethiah, the Shrine of Mehrunes Dagon, the Eldergleam Sanctuary, the Statue to Meridia, the Shrine of Peryite, Stendarr's Beacon, or the Hall of the Vigilant with appropriate equipment and enough provisions to continue your travels.",
+    "options": [
+      "Random",
+      "Shrine of Azura",
+      "Shrine of Boethiah",
+      "Shrine of Mehrunes Dagon",
+      "The Eldergleam Sanctuary",
+      "Statue of Meridia",
+      "Shrine of Peryite",
+      "Stendarr's Beacon",
+      "Hall of the Vigilant"
+    ],
+    "optionLabel": "Shrine"
+  },
+  {
+    "name": "Pilgrim (Temple)",
+    "source": "New Beginnings",
+    "text": "I have finally arrived at the temple. Now that I have received the blessings of the Divines, I should start looking for work in town. I can't go back home after all...",
+    "options": [
+      "Random",
+      "Temple of the Divines",
+      "Temple of Dibella",
+      "Temple of Kynareth",
+      "Temple of Mara",
+      "Temple of Talos"
+    ],
+    "optionLabel": "Temple"
+  },
+  {
+    "name": "Thalmor Prisoner",
+    "source": "New Beginnings",
+    "text": "I've actually been imprisoned by those gods-damn Thalmor! If I don't want to be tortured until I renounce my faith in Talos, now is the time to get out of here. Those guards don't seem particularly attentive...",
+    "options": []
+  },
+  {
+    "name": "Vampire",
+    "source": "New Beginnings",
+    "text": "A few days ago I was struck down by an intense fever. Luckily, none of the fools that are my family seem to have recognized my symptoms for what they were, so they entombed me here after my death. Now I'm finally free to leave them behind and start a new life.",
+    "options": [
+      "Random",
+      "Solitude",
+      "Falkreath",
+      "Whiterun",
+      "Riften",
+      "Windhelm",
+      "Markarth"
+    ],
+    "optionLabel": "City"
+  },
+  {
+    "name": "Werewolf",
+    "source": "New Beginnings",
+    "text": "I've now been staying with Majni's pack for quite a while, but the others still regard me as a stranger. I've got enough gold to pay for passage to Skyrim, so maybe I should leave and start traveling again...",
+    "options": []
+  },
+  {
+    "name": "Roadside Ambush",
+    "source": "Adventurer's Start",
+    "text": "Ambushed along the road by a small group of bandits. Fight for your life.",
+    "options": [
+      "Random",
+      "Eastmarch",
+      "Haafingar",
+      "Hjaalmarch",
+      "Falkreath",
+      "The Pale",
+      "The Reach",
+      "The Rift",
+      "Whiterun"
+    ],
+    "optionLabel": "Hold"
+  },
+  {
+    "name": "Fell in a Spike Pit",
+    "source": "Adventurer's Start",
+    "text": "I've fallen in a bandit's spike pit. I'm hurt and all hope seems lost.",
+    "options": []
+  },
+  {
+    "name": "Bounty Hunter",
+    "source": "Adventurer's Start",
+    "text": "I'm a Bounty Hunter approaching a bandit camp.",
+    "options": [
+      "Random",
+      "Eastmarch",
+      "Falkreath",
+      "Haafingar",
+      "Hjaalmarch",
+      "The Rift",
+      "Whiterun",
+      "Winterhold"
+    ],
+    "optionLabel": "Hold"
+  },
+  {
+    "name": "Prisoner in a Bandit Fort",
+    "source": "Adventurer's Start",
+    "text": "I've been imprisoned by bandits in an old fort. How can I get out of this...",
+    "options": [
+      "Random",
+      "Haafingar",
+      "The Pale",
+      "The Reach",
+      "The Rift",
+      "Whiterun"
+    ],
+    "optionLabel": "Hold"
+  },
+  {
+    "name": "Out in the Wilderness",
+    "source": "Adventurer's Start",
+    "text": "I'm out in the wilderness, but I'm not sure where I am. How did I end up here?",
+    "options": [
+      "Random",
+      "Eastmarch",
+      "Falkreath",
+      "Haafingar",
+      "Hjaalmarch",
+      "The Pale",
+      "The Reach",
+      "The Rift",
+      "Whiterun",
+      "Winterhold"
+    ],
+    "optionLabel": "Hold"
+  }
 ]
