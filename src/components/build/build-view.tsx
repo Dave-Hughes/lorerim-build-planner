@@ -457,8 +457,10 @@ function LevelsTab({
       </div>
 
       <section ref={perksRef} id="perks" data-tree-anchor="" aria-label={`Perks at level ${level}`} className={styles.perksSection}>
-        <div className={styles.sectionHead}>
-          <span className="label">Perks at level {level}</span>
+        <div className="section-head">
+          <h2 className="section-title">
+            Perks <span className="section-title-at">at level {level}</span>
+          </h2>
           {narrow && <ViewToggle view={view} onView={setViewChoice} />}
         </div>
         {/* Phones in List view show the held list alone; the chips go with the tree. */}
@@ -490,10 +492,10 @@ function LevelsTab({
       {hasDestiny && (
         <section ref={destinyRef} id="destiny" data-tree-anchor="" aria-label={`Destiny at level ${level}`} className={styles.destinySection}>
           <div className={styles.destinyLine}>
-            <span className={styles.destinyTitle}>
+            <h2 className={styles.destinyTitle}>
               <i className={styles.destinyMark} aria-hidden="true" />
               Destiny
-            </span>
+            </h2>
             <span className={styles.destinyStars}>{starsSoFar.length ? starsSoFar.join(", ") : "No stars yet"}</span>
             {nextStar && <span className={styles.destinyNext}>Next star at level {nextStar}</span>}
             <button type="button" className={styles.destinyToggle} aria-expanded={destinyOpen} aria-controls="destiny-tree" onClick={toggleDestiny}>
@@ -648,7 +650,11 @@ function AttributesAt({ s, level }: { s: LevelState; level: number }) {
   const destinyLeft = s.destinyPoints - s.destinyPointsSpent;
   return (
     <section aria-label={`Attributes at level ${level}`} className={styles.colStats}>
-      <span className="label">Attributes at level {level}</span>
+      <div className="section-head">
+        <h2 className="section-title">
+          Attributes <span className="section-title-at">at level {level}</span>
+        </h2>
+      </div>
       {ATTR_ORDER.map((a) => (
         <div key={a} className={styles.attr}>
           <div className={styles.attrHead}>
@@ -696,9 +702,11 @@ function SkillsAt({ d, plan, s, level }: { d: GameData; plan: BuildViewData["pla
   };
   return (
     <section aria-label={`Skills at level ${level}`} className={styles.colSkills}>
-      <div className={styles.sectionHead}>
+      <div className="section-head">
         <span className={styles.skillsTitle}>
-          <span className="label">Skills at level {level}</span>
+          <h2 className="section-title">
+            Skills <span className="section-title-at">at level {level}</span>
+          </h2>
           <InfoTip label="About the skill limit" text={`No skill can go above 50 plus your character level: ${s.maxSkill} at level ${level}. Skills can reach 100 from level 50.`} />
         </span>
         <button type="button" className={styles.linkButton} aria-expanded={all} onClick={() => setAll((a) => !a)}>

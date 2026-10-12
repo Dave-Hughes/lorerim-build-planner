@@ -1,5 +1,6 @@
 /* Gear at this level (WO-32): slot cards, then the timeline across the build. */
 .section {
+  --head-gap: 18px;
   display: flex;
   flex-direction: column;
   gap: 18px;

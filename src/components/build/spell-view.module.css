@@ -1,5 +1,6 @@
 /* The Spells section (WO-42), to the canvas artboard "Spells". */
 .section {
+  --head-gap: 22px;
   display: flex;
   flex-direction: column;
   gap: 22px;

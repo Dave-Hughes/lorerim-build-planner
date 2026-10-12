@@ -555,3 +555,41 @@ textarea:focus-visible {
 [id^="guide-"] {
   scroll-margin-top: calc(84px + var(--sticky-top));
 }
+
+/*
+ * The build page's section titles (WO-48): a real heading, the section's name leading and "at level
+ * N" lighter, a rule under it across the section. The sections sit 32px apart (.panelStack), so 8px
+ * more makes 40px above the title; --head-gap is the section's own gap, taken off so the content
+ * starts 16px under the rule.
+ */
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-top: 8px;
+  margin-bottom: calc(16px - var(--head-gap, 0px));
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+.section-title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.section-title-at {
+  font-weight: 500;
+  color: var(--muted);
+}
+@media (max-width: 640px) {
+  .section-title {
+    font-size: 22px;
+  }
+}
+

@@ -1981,9 +1981,9 @@ Dave, 12 Oct: "Gear at level 11" and the other section titles are too small and 
 6. **Themes:** check all five (Ember, Parchment, Frost, Daedric, Dwemer). The title must read clearly on each.
 
 ### Done when
-- [ ] Screenshots of Pure Mage (`/b/5pjwcg252f?level=11`) at 1440 and 390, scrolled through Attributes, Skills, Perks, Destiny, Gear and Spells, in Frost and Ember. Each section title is visible at a glance.
-- [ ] The section titles are `h2` elements (check them with an accessibility snapshot).
-- [ ] All checks in CLAUDE.md pass.
+- [x] Screenshots of Pure Mage (`/b/5pjwcg252f?level=11`) at 1440 and 390, scrolled through Attributes, Skills, Perks, Destiny, Gear and Spells, in Frost and Ember. Each section title is visible at a glance.
+- [x] The section titles are `h2` elements (check them with an accessibility snapshot).
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

@@ -23,7 +23,11 @@ export function SpellView({ d, plan, level }: { d: GameData; plan: BuildPlan; le
   const others = learned.filter((s) => !(SCHOOLS as readonly string[]).includes(s.spell!.school));
   return (
     <section id="spells" aria-label={`Spells at level ${level}`} className={styles.section}>
-      <span className="label">Spells at level {level}</span>
+      <div className="section-head">
+        <h2 className="section-title">
+          Spells <span className="section-title-at">at level {level}</span>
+        </h2>
+      </div>
       {main.length > 0 && (
         <div className={`frame ${styles.main}`} role="group" aria-label="Main spells">
           <span className={styles.mainTitle}>Main spells</span>

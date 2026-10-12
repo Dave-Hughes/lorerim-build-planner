@@ -263,6 +263,7 @@
   align-items: flex-start;
 }
 .colStats {
+  --head-gap: 22px;
   flex: 1 1 280px;
   min-width: 0;
   display: flex;
@@ -270,6 +271,7 @@
   gap: 22px;
 }
 .colSkills {
+  --head-gap: 18px;
   flex: 2 1 420px;
   min-width: 0;
   display: flex;
@@ -387,12 +389,6 @@
   font-size: 14px;
 }
 
-.sectionHead {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 12px;
-}
 .maxSkill {
   display: inline-flex;
   align-items: center;
@@ -1014,10 +1010,10 @@
 
 /* ---------- Perks: chips, then the tree and the held list side by side ---------- */
 .perksSection {
+  --head-gap: 14px;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding-top: 8px;
   scroll-margin-top: 64px;
 }
 .chipsRow {
@@ -1308,8 +1304,11 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  margin: 0;
   font-family: var(--font-title);
-  font-size: 20px;
+  /* The same size as the other section titles (WO-48). */
+  font-size: 26px;
+  line-height: 1;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1462,4 +1461,9 @@
   margin-left: 8px;
   color: var(--dim);
   font-variant-numeric: tabular-nums;
+}
+@media (max-width: 640px) {
+  .destinyTitle {
+    font-size: 22px;
+  }
 }
