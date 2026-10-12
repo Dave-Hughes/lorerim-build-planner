@@ -1,78 +1,71 @@
 /* Gear at this level (WO-32): slot cards, then the timeline across the build. */
 .section {
   --head-gap: 18px;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 18px;
   scroll-margin-top: calc(80px + var(--sticky-top));
 }
 
-.cards {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-@media (max-width: 1099px) {
-  .cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (max-width: 599px) {
-  .cards {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
+/* A bar's card (WO-50): under its bar, one at a time. */
 .card {
-  min-width: 0;
+  position: absolute;
+  z-index: 30;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   padding: 14px 16px;
-  background: var(--panel);
-  border: 1px solid var(--rule);
-}
-/* New at this level: an ember border, the name and status in ember. */
-.cardNew {
-  border-color: var(--ember);
-}
-.slot {
-  font-size: 13px;
-  color: var(--muted);
-}
-.name {
-  font-size: 17px;
-  font-weight: 600;
-  overflow-wrap: anywhere;
-}
-.cardNew .name {
-  color: var(--ember-text);
-}
-.stats {
-  font-size: 13px;
-  color: var(--muted);
-}
-/* The author's note (WO-47): wraps, and the card grows to fit it. */
-.note {
-  font-size: 13px;
+  background: var(--panel-raised);
+  border: 1px solid var(--rule-strong);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
   color: var(--soft);
-  overflow-wrap: anywhere;
+  font-size: 14px;
 }
-.status {
-  margin-top: auto;
-  padding-top: 6px;
-  border-top: 1px solid var(--rule-soft);
-  font-size: 13px;
-  color: var(--dim);
+.card:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
 }
-.cardNew .status {
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.cardName {
+  font-size: 16px;
+  color: var(--text);
+}
+.cardText {
+  font-style: italic;
+  color: var(--soft);
+}
+.cardMade {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cardFoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+}
+.cardGo {
+  padding: 0;
+  border: 0;
+  background: none;
   color: var(--ember);
+  font: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.cardGo:hover {
+  text-decoration: underline;
 }
 
-/* The timeline: one row per slot (per lane in Other), levels 1 to the last across. It scrolls
-   sideways in its own box on narrow screens; the page never does. */
 .timelineBox {
   border: 1px solid var(--rule);
   background: var(--sunk);
@@ -130,9 +123,17 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-family: inherit;
   font-size: 12.5px;
+  text-align: left;
   text-decoration: none;
   border: 1px solid;
+  cursor: pointer;
+}
+/* The bar whose card is open. */
+.bar[aria-expanded="true"] {
+  border-color: var(--ember);
+  color: var(--bright);
 }
 .bar:focus-visible {
   outline: 2px solid var(--brass);

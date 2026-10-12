@@ -9,15 +9,17 @@ test("gear notes show on the level, the gear cards and the timeline", async ({ p
   await expect(card.getByText("On the Altar of Magnus.", { exact: true })).toBeVisible();
   await expect(card.getByText("Leaning on a tree above the sabre cat cave near the Thalmor Embassy.", { exact: true })).toBeVisible();
 
-  // The main hand's card: the item's stats, then the note on its own line.
+  // The main hand's card (a bar's card since WO-50): the item's stats, then the note on its own line.
   const gear = page.getByRole("region", { name: "Gear at level 5" });
-  const mainHand = gear.getByRole("listitem").filter({ hasText: "Main hand" });
-  await expect(mainHand).toContainText("Staff of Fireball");
+  await gear.getByRole("button", { name: /^Staff of Fireball, levels 5 to \d+\. On the Altar of Magnus\.$/ }).click();
+  const mainHand = page.getByRole("dialog", { name: "Staff of Fireball" });
+  await expect(mainHand).toContainText("Main hand");
   await expect(mainHand).toContainText(/Staff, [\d.]+ damage, [\d.]+ weight/);
   await expect(mainHand.getByText("On the Altar of Magnus.", { exact: true })).toBeVisible();
+  await page.keyboard.press("Escape");
 
   // The timeline bar's title and label carry the note after the levels.
-  const bar = gear.getByRole("link", { name: /^Staff of Fireball, levels 5 to \d+\. On the Altar of Magnus\.$/ });
+  const bar = gear.getByRole("button", { name: /^Staff of Fireball, levels 5 to \d+\. On the Altar of Magnus\.$/ });
   await expect(bar).toHaveCount(1);
   await expect(bar).toHaveAttribute("title", /^Staff of Fireball, levels 5 to \d+\. On the Altar of Magnus\.$/);
 });

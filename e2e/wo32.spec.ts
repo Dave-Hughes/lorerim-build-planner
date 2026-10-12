@@ -23,12 +23,14 @@ test("Destiny is one line without a star at the level, open at 25, and Show the 
   await expect(at25.getByRole("region", { name: "Destiny taken by level 25" })).toBeVisible();
 });
 
-test("clicking Elven Light Bow in the timeline goes to level 14", async ({ page }) => {
+test("Elven Light Bow in the timeline opens its card, and Go to level 14 goes there", async ({ page }) => {
   await page.goto(`/b/${IRIEL_BUILD_ID}?level=22`);
-  const bar = page.getByRole("link", { name: "Elven Light Bow, levels 14 to 25" });
+  // Since WO-50 a bar opens its card; the card's Go to level moves.
+  const bar = page.getByRole("button", { name: /^Elven Light Bow, levels 14 to 25\./ });
   await bar.focus();
   await expect(bar).toBeFocused();
   await bar.click();
+  await page.getByRole("dialog", { name: "Elven Light Bow" }).getByRole("button", { name: "Go to level 14" }).click();
   await expect(page.getByRole("heading", { level: 2, name: "Level 14", exact: true })).toBeVisible();
   expect(page.url()).toContain("level=14");
 });

@@ -1,11 +1,14 @@
 "use client";
 
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { useGameData } from "@/components/game-data";
 import { IconLabel, SlotIcon } from "@/components/ui/skill-icon";
 import { itemById, useItems } from "@/lib/items/items";
 import { GEAR_SLOTS, gearAt, type GearSlot } from "@/lib/rules/gear";
 import type { BuildPlan, MadeGear } from "@/lib/rules/types";
 import { Tooltip } from "@/components/ui/tooltip";
+import { useDismiss } from "@/lib/use-dismiss";
+import { pageZoom } from "@/lib/zoom";
 import styles from "./gear-view.module.css";
 
 /** One stretch of levels an item is held for, in one slot (Other can hold several: one lane each). */
@@ -15,8 +18,12 @@ interface Segment {
   name: string;
   from: number;
   to: number;
-  /** The author's note on the row (WO-47), for the bar's title. */
+  /** The author's note on the row (WO-47). */
   note: string;
+  itemId?: string;
+  made?: MadeGear;
+  /** What it took the place of, for its card (WO-50). */
+  replaces?: string;
 }
 
 /** Every item the build holds, as runs of levels, by slot; Other's items spread over lanes so none overlap. */
@@ -32,7 +39,7 @@ function timeline(plan: BuildPlan): Segment[] {
       keys.add(key);
       const run = open.get(key);
       if (run) run.to = L;
-      else open.set(key, { slot: g.slot, lane: 0, name: g.name, from: L, to: L, note: g.note.trim() });
+      else open.set(key, { slot: g.slot, lane: 0, name: g.name, from: L, to: L, note: g.note.trim(), ...(g.itemId ? { itemId: g.itemId } : {}), ...(g.made ? { made: g.made } : {}) });
     }
     // A run whose item is no longer held ends at the level before.
     for (const [key, run] of open) {
@@ -43,6 +50,11 @@ function timeline(plan: BuildPlan): Segment[] {
     }
   }
   done.push(...open.values());
+  // What each run replaced: in a slot, the run that ended the level before; in Other, the row's own.
+  for (const s of done) {
+    if (s.slot === "Other") s.replaces = plan.gear.find((r) => r.slot === "Other" && r.fromLevel === s.from && r.name.trim() === s.name)?.replaces;
+    else s.replaces = done.find((o) => o.slot === s.slot && o.to === s.from - 1)?.name;
+  }
   // Lanes: within a slot, the first lane free when a run starts.
   const lanesBySlot = new Map<GearSlot, number[]>();
   for (const s of done.sort((a, b) => a.from - b.from)) {
@@ -56,17 +68,21 @@ function timeline(plan: BuildPlan): Segment[] {
   return done;
 }
 
+const keyOf = (s: Segment) => `${s.slot}|${s.lane}|${s.from}`;
+const CARD_WIDTH = 400;
+
 /**
- * Gear at this level (WO-32): a card per slot in the fixed slot order, what's new at this level in
- * ember with what it replaced, then the timeline of every slot across the whole build.
+ * Gear at this level (WO-50, to the canvas artboard "Leaner: gear as the timeline"): the timeline is
+ * the section. The viewed level is a faint ember column; what's held then is lit, what's new then is
+ * ember. A bar opens its card under it (name and slot, stats, the game's text, the note, how it was
+ * made, its levels and what it replaced, and Go to level); one at a time, closed on Esc, a click
+ * outside, the same bar again, or another bar.
  */
 export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: number; onLevel: (n: number) => void }) {
   const d = useGameData();
-  // The item index, for the stats line of items picked from it.
+  // The item index, for the cards' stats and text.
   const items = useItems(d.version.id, plan.gear.some((g) => g.itemId));
   const total = plan.levels.length;
-  const held = gearAt(plan, level);
-  const before = level > 1 ? gearAt(plan, level - 1) : [];
   const segments = timeline(plan);
   const rows = GEAR_SLOTS.flatMap((slot) => {
     const mine = segments.filter((s) => s.slot === slot);
@@ -74,51 +90,67 @@ export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: num
     return Array.from({ length: lanes }, (_, lane) => ({ slot, lane, segs: mine.filter((s) => s.lane === lane) }));
   });
 
+  // The open card: its bar's key, and where it sits in the section.
+  // Opened at a level: a new level closes it.
+  const [opened, setOpened] = useState<{ key: string; level: number } | null>(null);
+  const openKey = opened && opened.level === level ? opened.key : null;
+  const [pos, setPos] = useState<{ top: number; left: number; width: number } | null>(null);
+  const section = useRef<HTMLElement>(null);
+  const box = useRef<HTMLDivElement>(null);
+  const card = useRef<HTMLDivElement>(null);
+  const bars = useRef(new Map<string, HTMLButtonElement>());
+  const openBar = useRef<HTMLButtonElement | null>(null);
+  const seg = openKey ? segments.find((s) => keyOf(s) === openKey) : undefined;
+  const close = useCallback(() => setOpened(null), []);
+  useDismiss({ open: !!seg, onClose: close, inside: [card, openBar], trigger: openBar });
+
+  // Under its bar, right-aligned to it when it would run off the section; full width on a phone.
+  const place = useCallback(() => {
+    const bar = openKey ? bars.current.get(openKey) : undefined;
+    const sec = section.current;
+    if (!bar || !sec) return;
+    const z = pageZoom();
+    const b = bar.getBoundingClientRect();
+    const sr = sec.getBoundingClientRect();
+    const width = sr.width / z;
+    const top = (b.bottom - sr.top) / z + 8;
+    if (width < 600) return setPos({ top, left: 0, width });
+    let left = (b.left - sr.left) / z;
+    if (left + CARD_WIDTH > width) left = Math.max(0, (b.right - sr.left) / z - CARD_WIDTH);
+    setPos({ top, left, width: CARD_WIDTH });
+  }, [openKey]);
+  useLayoutEffect(() => {
+    if (!openKey) return;
+    place();
+    const el = box.current;
+    el?.addEventListener("scroll", place, { passive: true });
+    window.addEventListener("resize", place);
+    return () => {
+      el?.removeEventListener("scroll", place);
+      window.removeEventListener("resize", place);
+    };
+  }, [openKey, place]);
+
+  // Focus moves into the card once it's placed (a hidden card can't take focus).
+  const placed = !!(openKey && pos);
+  useLayoutEffect(() => {
+    if (placed) card.current?.focus({ preventScroll: true });
+  }, [placed, openKey]);
+
+  const item = seg?.itemId && items ? itemById(d.version.id, seg.itemId) : undefined;
+  const spell = seg?.made?.spell ? d.spellById.get(seg.made.spell) : undefined;
+
   return (
-    <section id="gear-at-level" aria-label={`Gear at level ${level}`} className={styles.section}>
+    <section ref={section} id="gear-at-level" aria-label={`Gear at level ${level}`} className={styles.section}>
       <div className="section-head">
         <h2 className="section-title">
           Gear <span className="section-title-at">at level {level}</span>
         </h2>
       </div>
-      {held.length === 0 ? (
+      {rows.length === 0 ? (
         <p className="muted">Nothing yet.</p>
       ) : (
-        <ul className={styles.cards}>
-          {held.map((g) => {
-            const isNew = g.since === level;
-            const item = g.itemId && items ? itemById(d.version.id, g.itemId) : undefined;
-            const was = isNew ? before.find((b) => b.slot === g.slot && (g.slot !== "Other" || b.name !== g.name))?.name : undefined;
-            const wasOther = isNew && g.slot === "Other" ? plan.gear.find((r) => r.fromLevel === level && r.slot === "Other" && r.name.trim() === g.name)?.replaces : undefined;
-            const replaced = g.slot === "Other" ? wasOther : was;
-            return (
-              <li key={`${g.slot}-${g.name}`} className={`${styles.card} ${isNew ? styles.cardNew : ""}`}>
-                <span className={styles.slot}>
-                  {/* Free text with no item behind it (WO-46) takes the plain Other icon, so it doesn't pass for an indexed item. */}
-                  <IconLabel icon={<SlotIcon slot={g.itemId || g.made ? g.slot : "Other"} size={24} />}>{g.slot}</IconLabel>
-                </span>
-                <span className={styles.name}>
-                  {g.name}
-                  {g.made && (
-                    <>
-                      {" "}
-                      <MadeMark made={g.made} />
-                    </>
-                  )}
-                </span>
-                {/* The stats line, then the author's note on its own line (WO-47): it's usually where to get it. */}
-                {item?.stats && <span className={styles.stats}>{item.stats}</span>}
-                {g.note && <span className={styles.note}>{g.note}</span>}
-                <span className={styles.status}>{isNew ? `New at level ${level}${replaced ? `, was ${replaced}` : ""}` : `Since level ${g.since}`}</span>
-              </li>
-            );
-          })}
-        </ul>
-      )}
-
-      {/* Every slot across the whole build: what was held when. Bars go to the level they start at. */}
-      {rows.length > 0 && (
-        <div className={`frame ${styles.timelineBox}`} role="group" aria-label="Gear over the whole build">
+        <div ref={box} className={`frame ${styles.timelineBox}`} role="group" aria-label="Gear over the whole build">
           <div className={styles.timeline} style={{ ["--levels" as string]: total }}>
             <span />
             <div className={styles.ticks} aria-hidden="true">
@@ -140,27 +172,75 @@ export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: num
                     const state = s.from === level ? styles.barNew : s.from <= level && level <= s.to ? styles.barHeld : styles.barOther;
                     // "Staff of Fireball, levels 5 to 29. On the Altar of Magnus." (WO-47)
                     const label = `${s.name}, ${s.from === s.to ? `level ${s.from}` : `levels ${s.from} to ${s.to}`}.${s.note ? ` ${s.note}` : ""}`;
+                    const k = keyOf(s);
                     return (
-                      <a
-                        key={`${s.name}-${s.from}`}
-                        href={`?level=${s.from}`}
+                      <button
+                        key={k}
+                        ref={(el) => {
+                          if (el) bars.current.set(k, el);
+                          else bars.current.delete(k);
+                        }}
+                        type="button"
                         className={`${styles.bar} ${state}`}
                         style={{ gridColumn: `${s.from} / ${s.to + 1}` }}
                         title={label}
                         aria-label={label}
+                        aria-expanded={openKey === k}
+                        aria-haspopup="dialog"
                         onClick={(e) => {
-                          e.preventDefault();
-                          onLevel(s.from);
+                          openBar.current = e.currentTarget;
+                          setOpened(openKey === k ? null : { key: k, level });
                         }}
                       >
                         {s.name}
-                      </a>
+                      </button>
                     );
                   })}
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      )}
+      {seg && (
+        <div
+          ref={card}
+          role="dialog"
+          aria-label={seg.name}
+          tabIndex={-1}
+          className={styles.card}
+          style={pos ? { top: pos.top, left: pos.left, width: pos.width } : { visibility: "hidden" }}
+        >
+          <span className={styles.cardHead}>
+            <b className={styles.cardName}>{seg.name}</b>
+            <span className="muted">{seg.slot}</span>
+          </span>
+          {item?.stats && <span className="muted">{item.stats}</span>}
+          {item?.text && <span className={styles.cardText}>{item.text}</span>}
+          {seg.note && <span>{seg.note}</span>}
+          {seg.made && (
+            <span className={styles.cardMade}>
+              <MadeMark made={seg.made} /> Made by you from {seg.made.base}
+              {spell ? `, with ${spell.name}` : ""}
+              {seg.made.enchantments?.length ? `: ${seg.made.enchantments.join(", ")}` : ""}
+            </span>
+          )}
+          <span className={styles.cardFoot}>
+            <span className="muted">
+              {seg.from === seg.to ? `Level ${seg.from}` : `Levels ${seg.from} to ${seg.to}`}
+              {seg.replaces ? `, replaces ${seg.replaces}` : ""}
+            </span>
+            <button
+              type="button"
+              className={styles.cardGo}
+              onClick={() => {
+                close();
+                onLevel(seg.from);
+              }}
+            >
+              Go to level {seg.from}
+            </button>
+          </span>
         </div>
       )}
     </section>

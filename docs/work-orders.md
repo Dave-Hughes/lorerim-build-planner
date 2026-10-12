@@ -2049,9 +2049,9 @@ Dave, 12 Oct: the gear section is too much. The slot cards stacked over the time
 7. **The level card's `New gear` row** is unchanged; it's still the place to read what's new at a level.
 
 ### Done when
-- [ ] e2e: on Pure Mage at level 34, the gear section has no slot cards; clicking `Arch-Mage Robes` opens its card with `Clothing, 1 weight`, the note `Finish the College questline.` and `Go to level 34`; Esc closes it; clicking `Go to level 32` on Morokei's card moves to level 32.
-- [ ] Screenshots at 1440 and 390: level 34 with the Arch-Mage Robes card open; compare with the artboard.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: on Pure Mage at level 34, the gear section has no slot cards; clicking `Arch-Mage Robes` opens its card with `Clothing, 1 weight`, the note `Finish the College questline.` and `Go to level 34`; Esc closes it; clicking `Go to level 32` on Morokei's card moves to level 32.
+- [x] Screenshots at 1440 and 390: level 34 with the Arch-Mage Robes card open; compare with the artboard.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

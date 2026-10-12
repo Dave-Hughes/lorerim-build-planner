@@ -26,5 +26,8 @@ test("a staff made by you from level 40: the hammer mark and its tooltip", async
   const tip = page.getByRole("tooltip").filter({ hasText: "Made by you" });
   await expect(tip).toContainText("Apprentice's Staff");
   await expect(tip).toContainText("Spell: Forbidden Sun");
-  await expect(page.getByRole("region", { name: "Gear at level 40" }).getByLabel("Made by you")).toBeVisible();
+  // The bar's card (WO-50) says how it was made.
+  const gearAt40 = page.getByRole("region", { name: "Gear at level 40" });
+  await gearAt40.getByRole("button", { name: /^Staff of Forbidden Sun, level 40/ }).click();
+  await expect(page.getByRole("dialog", { name: "Staff of Forbidden Sun" })).toContainText("Made by you from Apprentice's Staff, with Forbidden Sun");
 });
