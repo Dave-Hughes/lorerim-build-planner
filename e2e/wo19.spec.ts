@@ -80,8 +80,8 @@ test("past the stepper a slim bar pinned to the top keeps stepping through level
   await expect(page.getByRole("region", { name: "Pinned bar" })).toHaveCount(0);
   await page.getByRole("region", { name: "Perks at level 6" }).scrollIntoViewIfNeeded();
   const bar = page.getByRole("region", { name: "Pinned bar" });
-  await expect(bar).toContainText(/Level\s*6\s*of 20/);
+  await expect(bar).toContainText(/Lvl\s*6\s*\/\s*20/);
   await bar.getByRole("button", { name: "Next level" }).click();
-  await expect(bar).toContainText(/Level\s*7\s*of 20/);
+  await expect(bar).toContainText(/Lvl\s*7\s*\/\s*20/);
   await expect(page.getByRole("region", { name: "Level 7", exact: true })).toBeVisible();
 });

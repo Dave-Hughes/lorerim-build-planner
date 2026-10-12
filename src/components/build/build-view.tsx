@@ -159,7 +159,7 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
   const [picked, setPicked] = useState<Picked>(null);
 
   // The pinned bar: once the tab row (or, with no tabs, the level navigation) scrolls off the top,
-  // a slim bar holds the tabs on the left and, on Levels, the level stepper on the right.
+  // a slim bar on Levels holds the level stepper and what the level changed.
   const [tabRow, setTabRow] = useState<HTMLDivElement | null>(null);
   const [pinned, setPinned] = useState(false);
   useEffect(() => {
@@ -234,36 +234,23 @@ export function BuildView({ build, updatedLabel, isOwner, signedIn, initialLevel
               ))}
             </div>
           )}
-          {pinned && (
+          {pinned && tab === "levels" && (
             <div className={styles.pinnedBar} role="region" aria-label="Pinned bar">
               <div className={`page ${styles.pinnedInner}`}>
-                {tab === "levels" && (
-                  <>
-                    <LevelStepper level={level} total={total} onChange={setLevel} slim />
-                    <LevelSummary
-                      key={level}
-                      d={d}
-                      plan={plan}
-                      states={states}
-                      level={level}
-                      noted={noted.has(level)}
-                      onPerk={(id) => {
-                        const p = d.perkById.get(id);
-                        // Selects it in the Perks section, without scrolling the page.
-                        if (p) setPicked({ level, tree: p.tree, star: id });
-                      }}
-                    />
-                  </>
-                )}
-                {tabs.length > 1 && (
-                  <span className={styles.pinnedTabs}>
-                    {tabs.map((t) => (
-                      <button key={t} type="button" aria-pressed={tab === t} className={styles.pinnedTab} onClick={() => setTab(t)}>
-                        {TAB_NAMES[t]}
-                      </button>
-                    ))}
-                  </span>
-                )}
+                <LevelStepper level={level} total={total} onChange={setLevel} slim />
+                <LevelSummary
+                  key={level}
+                  d={d}
+                  plan={plan}
+                  states={states}
+                  level={level}
+                  noted={noted.has(level)}
+                  onPerk={(id) => {
+                    const p = d.perkById.get(id);
+                    // Selects it in the Perks section, without scrolling the page.
+                    if (p) setPicked({ level, tree: p.tree, star: id });
+                  }}
+                />
               </div>
             </div>
           )}
@@ -605,7 +592,7 @@ function SkillsAt({ d, plan, s, level }: { d: GameData; plan: BuildViewData["pla
  * The pinned bar's one-line summary of a level, in the card's order: the attribute, the skills raised
  * (points, trainers, books), the perks (each a button that selects it in the Perks section), the
  * stone and the gear when they change, and a note mark. Each chip's tooltip is the card's line. When
- * the chips don't fit, skills collapse first ("3 skills"), then the gear goes, then the stone; perks stay.
+ * the chips don't fit, the skills lose their names first, then the gear goes, then the stone; perks stay.
  */
 function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; plan: BuildViewData["plan"]; states: LevelState[]; level: number; noted: boolean; onPerk: (id: string) => void }) {
   const f = levelFacts(d, plan, states, level);
@@ -621,8 +608,8 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
   for (const [sk, x] of f.extras.trainer) add(sk, x.n, `Trainer: ${sk} +${x.n} (${x.from} → ${x.to})`);
   for (const [sk, x] of f.extras.book) add(sk, x.n, `Skill book: ${sk} +${x.n} (${x.from} → ${x.to})`);
   const skills = [...gains].sort((a, b) => b[1].n - a[1].n || a[0].localeCompare(b[0]));
-  // How much to fold away: 0 all, 1 skills as one chip, 2 also no gear, 3 also no stone. Hidden copies of the
-  // row at each fold are measured against the room there is, on every resize.
+  // How much to fold away: 0 all, 1 skills without their names, 2 also no gear, 3 also no stone. Hidden
+  // copies of the row at each fold are measured against the room there is, on every resize.
   const [fold, setFold] = useState(0);
   // Still cut off with everything folded: the row ends with "…".
   const [cut, setCut] = useState(false);
@@ -661,19 +648,23 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
           </span>
         </Tooltip>
       );
-    const shownSkills = at === 0 ? skills.slice(0, 3) : [];
-    const moreSkills = at === 0 ? skills.slice(3) : skills;
     return (
       <>
-        {f.attribute && chip("attr", `+5 ${ATTRIBUTE_NAMES[f.attribute]}`, <IconLabel icon={<AttributeIcon name={f.attribute} />}>+5</IconLabel>, styles.sumKeep)}
-        {shownSkills.map(([sk, g]) => chip(sk, g.lines.join("\n"), <IconLabel icon={<SkillIcon name={sk} />}>+{g.n}</IconLabel>, styles.sumWide))}
-        {moreSkills.length > 0 &&
+        {/* The attribute in its own colour, so it never reads as one more skill. */}
+        {f.attribute &&
           chip(
-            "more",
-            moreSkills.flatMap(([, g]) => g.lines).join("\n"),
-            at === 0 ? `+${moreSkills.length} more` : `${moreSkills.length} skill${moreSkills.length === 1 ? "" : "s"}`,
-            styles.sumWide,
+            "attr",
+            `+5 ${ATTRIBUTE_NAMES[f.attribute]}`,
+            <IconLabel icon={<AttributeIcon name={f.attribute} />}>
+              +5<span className={styles.sumAttrName}> {ATTRIBUTE_NAMES[f.attribute]}</span>
+            </IconLabel>,
+            `${styles.sumAttr} ${styles[`sumAttr_${f.attribute}`]} ${styles.sumKeep}`,
           )}
+        {/* Every skill raised, named until there's no room for the names. */}
+        {skills.map(([sk, g]) =>
+          chip(sk, g.lines.join("\n"), <IconLabel icon={<SkillIcon name={sk} />}>{at === 0 ? `${sk} +${g.n}` : `+${g.n}`}</IconLabel>, styles.sumWide),
+        )}
+        {/* Perks: ember, and each a button that selects it in the Perks section. */}
         {perkList.map((p, i) => {
           const body = (
             <IconLabel icon={<SkillIcon name={p.tree} />}>
@@ -686,7 +677,7 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
               {body}
             </span>
           ) : (
-            <Tooltip key={`${p.id}-${i}`} content={`${p.name}${p.rank ? ` ${p.rank}` : ""}${p.tree !== p.name ? ` (${p.tree}${p.book ? ", book" : ""})` : ""}`}>
+            <Tooltip key={`${p.id}-${i}`} content={`Perk: ${p.name}${p.rank ? ` ${p.rank}` : ""}${p.tree !== p.name ? ` (${p.tree}${p.book ? ", book" : ""})` : ""}`}>
               <button type="button" className={`${styles.sumChip} ${styles.sumPerk} ${styles.sumKeep}`} onClick={() => onPerk(p.id)}>
                 {body}
               </button>

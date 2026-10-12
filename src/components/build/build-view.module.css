@@ -447,11 +447,12 @@
   font-size: 15px;
 }
 
-/* ---------- Tabs: Levels, Guide, Gear ---------- */
-/* Tabs that can't be missed: 64px, the condensed face at 28px, a second line saying what's in each. */
+/* ---------- Tabs: Levels, Guide ---------- */
+/* Open tabs on one rule: the condensed face at 28px with a line saying what's in each; the open one
+   in full white over a 3px ember underline. No boxes. */
 .tabs {
   display: flex;
-  gap: 8px;
+  gap: 40px;
   border-bottom: 1px solid var(--rule);
   margin-top: 4px;
 }
@@ -459,23 +460,24 @@
   min-height: 64px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-start;
-  gap: 2px;
-  padding: 8px 24px;
+  gap: 4px;
+  padding: 8px 0 12px;
   margin-bottom: -1px;
-  border: 1px solid var(--rule-strong);
-  border-bottom: 0;
+  border: 0;
+  border-bottom: 3px solid transparent;
   background: transparent;
   color: var(--muted);
   cursor: pointer;
   text-align: left;
   transition:
     color 120ms,
-    background-color 120ms;
+    border-color 120ms;
 }
 .tab:hover {
   color: #c3cdd6;
+  border-bottom-color: var(--rule-strong);
 }
 .tabName {
   font-family: var(--font-title);
@@ -489,23 +491,20 @@
   font-size: 14px;
   color: var(--muted);
 }
-/* The active tab is the panel: panel colour, a 3px ember bar on top, no bottom border. */
 .tab[aria-selected="true"] {
-  background: var(--panel);
   color: var(--text);
-  border-color: var(--rule);
-  box-shadow: inset 0 3px 0 var(--ember);
-  position: relative;
-  z-index: 1;
+  border-bottom-color: var(--ember);
+}
+.tab[aria-selected="true"] .tabSub {
+  color: #c3cdd6;
 }
 .tab:focus-visible {
   outline: 2px solid var(--brass);
-  outline-offset: 2px;
+  outline-offset: 4px;
 }
 @media (max-width: 599px) {
-  .tab {
-    flex: 1 1 0;
-    padding: 8px 14px;
+  .tabs {
+    gap: 28px;
   }
   .tabName {
     font-size: 22px;
@@ -526,9 +525,6 @@
   align-items: center;
   gap: 16px;
   min-height: 44px;
-}
-.pinnedTabs {
-  margin-left: auto;
 }
 /* The level's summary: one line of chips, never wrapping; the bar's height never changes. */
 .summary {
@@ -588,13 +584,35 @@
   outline: 2px solid var(--brass);
   outline-offset: 2px;
 }
+/* The attribute: filled in its own colour, set apart from the skills' plain outlines. */
+.sumAttr {
+  font-weight: 600;
+  color: var(--text);
+  border-color: transparent;
+}
+.sumAttr_health {
+  background: rgba(208, 122, 106, 0.2);
+  box-shadow: inset 3px 0 0 var(--health);
+}
+.sumAttr_magicka {
+  background: rgba(125, 159, 214, 0.2);
+  box-shadow: inset 3px 0 0 var(--magicka);
+}
+.sumAttr_stamina {
+  background: rgba(134, 180, 127, 0.2);
+  box-shadow: inset 3px 0 0 var(--stamina);
+}
+/* Perks taken: ember, the colour of a taken star; buttons. */
 .sumPerk {
   cursor: pointer;
-  color: var(--text);
+  color: #f6d2b0;
+  border-color: rgba(240, 145, 63, 0.6);
+  background: rgba(240, 145, 63, 0.12);
 }
 .sumPerk:hover {
   border-color: var(--ember);
-  color: var(--ember);
+  background: rgba(240, 145, 63, 0.2);
+  color: #fff;
 }
 .sumNote {
   display: inline-block;
@@ -607,7 +625,7 @@
     animation: none;
   }
 }
-/* Phones: the stepper, then the attribute and the perks only; the tabs go to a second row if they don't fit. */
+/* Phones: the stepper, then the attribute and the perks only. */
 @media (max-width: 899px) {
   .pinnedInner {
     flex-wrap: wrap;
@@ -616,35 +634,9 @@
   .sumWide {
     display: none;
   }
-}
-.pinnedTabs {
-  display: flex;
-  gap: 6px;
-}
-.pinnedTab {
-  font-family: var(--font-title);
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  min-height: 36px;
-  padding: 0 14px;
-  border: 1px solid var(--rule-strong);
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-}
-.pinnedTab:hover {
-  color: #c3cdd6;
-}
-.pinnedTab[aria-pressed="true"] {
-  background: var(--panel);
-  color: var(--text);
-  box-shadow: inset 0 2px 0 var(--ember);
-}
-.pinnedTab:focus-visible {
-  outline: 2px solid var(--brass);
-  outline-offset: 2px;
+  .sumAttrName {
+    display: none;
+  }
 }
 .pinnedBar {
   position: fixed;

@@ -19,6 +19,9 @@
 .stepperSlim {
   gap: 10px;
 }
+.stepperSlim .viewing {
+  gap: 7px;
+}
 .stepperSlim .viewingWord {
   font-size: 16px;
 }

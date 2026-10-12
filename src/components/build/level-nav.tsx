@@ -53,10 +53,13 @@ export function LevelStepper({ level, total, onChange, slim }: { level: number; 
       <button type="button" className="btn btn-icon" aria-label="Previous level" disabled={level <= 1} onClick={() => onChange(level - 1)}>
         ‹
       </button>
+      {/* Slim (the pinned bar): "LVL 12 / 20", to save room for the level's chips. */}
       <span className={styles.viewing}>
-        <span className={styles.viewingWord}>Level</span>
+        <span className={styles.viewingWord}>{slim ? "Lvl" : "Level"}</span>
         <span className={styles.viewingNum}>{level}</span>
-        <span className="muted">of {total}</span>
+        <span className="muted">
+          {slim ? "/" : "of"} {total}
+        </span>
       </span>
       <button type="button" className="btn btn-icon" aria-label="Next level" disabled={level >= total} onClick={() => onChange(level + 1)}>
         ›
