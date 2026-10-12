@@ -1117,7 +1117,7 @@ From Dave's notes. Do after WO-28.
 
 ## WO-30  Icons: level markers, gear slots, game modes, tags (11 Oct 2026)
 
-Dave approved four sets, 24 icons in all. Deities (35) are not in this order. Do after WO-29.
+Dave approved four sets, 24 icons in all. Deities are not in this order (they followed in WO-34). Do after WO-29.
 
 **The icons are already drawn** (chat session, 11 Oct): 24 SVGs in `public/icons/` as `mark-*`, `slot-*`, `mode-*` and `tag-*`, drawn by `scripts/icons/pixels.py` (the `MARKS`, `SLOTS`, `MODES` and `TAGS` sets). This order is wiring them in, once Dave has approved the contact sheet. Don't redraw any; if one needs changing, change its function in `pixels.py` and rerun it.
 
@@ -1384,6 +1384,39 @@ Dave approved the canvas row **"Proposal: link preview cards"**. Build to match.
 - [x] e2e: Iriel's page has `og:image` pointing at her card, which returns a 1200×630 PNG. The home page's `og:image` is the site card.
 - [x] Checked by pasting the staging links into a link-preview checker, e.g. opengraph.xyz (it reads the tags the way Messages does). Screenshots for Dave.
 - [x] All checks in CLAUDE.md pass.
+
+---
+
+## WO-34  Deity icons, and every Wintersun deity in the list (11 Oct 2026)
+
+Dave approved the deity contact sheet (chat, 11 Oct). This is the set WO-30 left out. Do after WO-33.
+
+**The icons are already drawn** (chat session): 55 SVGs in `public/icons/` as `deity-*.svg`, drawn by `scripts/icons/pixels.py` (the `DEITIES` set). Don't redraw any; if one needs changing, change its function in `pixels.py` and rerun it. Each file name is `deity-` plus `slug()` of the deity's name, e.g. `deity-riddle-thar`, `deity-z-en`, `deity-the-hoonding`.
+
+### All 55 deities
+1. The planner lists only the 35 deities offered to the races at the start. Wintersun has 55, and any of them can be joined at a shrine. Add the other 20 to the list:
+   - Almalexia, Baan Dar, Clavicus Vile, Ebonarm, Hermaeus Mora, Jyggalag, Mannimarco, Meridia, Namira, Nocturnal;
+   - Peryite, Sanguine, Sai, Sotha Sil, St. Alessia, The All-Maker, The Magna-Ge, The Old Ways, Vaermina, Vivec.
+2. **Their names** come from Wintersun's own text: the tenets record's name with `Tenets of ` taken off and a leading `the` capitalised (`Tenets of the All-Maker` → `The All-Maker`). The one exception is `Totems`, whose tenets are `Tenets of the Old Ways`: its name is `The Old Ways`.
+3. **Data:**
+   - `build.py` writes `deity-text.json` for all 55 from `deities_raw.json`.
+   - The planner's deity list (`deities` in `data.ts`) comes from `deity-text.json`, not only from the races' starting lists.
+   - `deities.json` (who is offered to which race) is unchanged.
+   - In Set up, the 20 join the select's second group, `Any other god, at a shrine`.
+
+### Where the icons show
+4. Next to the deity's name wherever it's named:
+   - the about bar's Deity value, and the head of its hover text;
+   - Set up's deity step: the chosen deity's icon beside the select, and again above its Wintersun text;
+   - the Set up summary line that names the deity (WO-31).
+   Use a `DeityIcon` like `SlotIcon`, with `alt=""` and the name beside it, as WO-30 did.
+5. A native select can't show icons in its options. Leave the select as it is.
+
+### Done when
+- [ ] `deity-text.json` has 55 deities. Unit test: every name in the planner's deity list has a `public/icons/deity-<slug>.svg`.
+- [ ] Unit test: `Tenets of the All-Maker` becomes `The All-Maker`, and `Totems` becomes `The Old Ways`.
+- [ ] Screenshots for Dave at 1440: Iriel's about bar with Jephre's icon and its hover text open; Set up's deity step with Hermaeus Mora chosen.
+- [ ] All checks in CLAUDE.md pass.
 
 ---
 
