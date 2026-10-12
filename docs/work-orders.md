@@ -1020,6 +1020,27 @@ Dave: Destiny feels invisible because it lives among the perks. In the game it i
 
 ---
 
+## WO-28  Skill gains you can read at a glance (11 Oct 2026)
+
+Dave: in the level card, each skill row reads `Marksman 43 → 48`, so the gain has to be worked out. Small; one commit. It can go before WO-24.
+
+1. **Each skill row in the level card** (Skill points, Trainer, Skill book) becomes four aligned columns:
+   - **icon**
+   - **skill name**
+   - **the gain**, e.g. `+5`, as the easiest thing to see: ember, semibold, 1.25× the row's size, tabular figures, right-aligned in a fixed-width column so every `+` lines up down the list.
+   - **from → to** (`43 → 48`) in muted text at the normal size.
+   - Example row: `[icon] Marksman   +5   43 → 48`.
+2. **The max-skill note** stays after the from → to on the first capped skill, muted: `+1   60 → 61 (max skill 61 at level 11)`.
+3. **Trainer and Skill book rows** use the same columns under their own labels: `Wayfarer   +2   16 → 18`.
+4. **The same layout** goes in the editor wherever a level's skill changes are listed, and in the pinned bar's tooltips.
+5. **On phones** the four columns stay on one line; the name truncates with `…` before the gain or the numbers do.
+
+### Done when
+- [ ] Screenshot for Dave of Azrem's level 11 card at 1440 and 390, with the `+` signs lined up.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
