@@ -2381,24 +2381,32 @@ Canvas: `TabsIcons.dc.html`. The two tabs on the build page are plain text today
 
 ---
 
-## WO-61  A first-time guide: Tapps or Pip (13 Oct 2026; build once Dave has picked one on the canvas)
+## WO-61  Tapps, the first-time guide (13 Oct 2026; Dave picked Tapps, the bust with mead)
 
 Canvas: `TourReader.dc.html` and `TourAuthor.dc.html` (row "Proposal: Tapps the goofy barbarian, the first-time guide"). Each card's copy is on the canvas in both voices. Both are clickable on the canvas, so the copy can be read stop by stop.
 
-**Which guide is Dave's pick (13 Oct).** The canvas has two, switched in each tour's Tweaks:
-- **Tapps**, the default: a goofy Nord barbarian with a crooked horned helmet (one horn droops), a braided blond beard, a gap-toothed grin, a red tunic and a tankard of mead. He speaks in short goofy lines. Tapps is Dave's community name. The character is drawn fresh, not after anyone else's artwork, so he takes nothing from another artist's barbarian: no headband, gem, fur shoulders or tooth necklace.
-- **Pip:** a small skeever scribe with a quill and scroll, in plain copy.
-
-Build whichever Dave picks; the steps below say Pip but apply to either.
+**The guide is Tapps** (Dave's pick, 13 Oct): a goofy Nord barbarian.
+- He has a crooked horned helmet with one horn drooping, a braided blond beard with ember beads, a squint and a gap-toothed grin, a red wool tunic, and a tankard of mead.
+- Tapps is Dave's community name. The character is drawn fresh, not after anyone else's artwork: no headband, gem, fur shoulders or tooth necklace.
+- He speaks in short goofy lines; the copy for every stop is on the canvas.
+- The canvas board `TappsStyles.dc.html` shows the other styles that were tried. Pip, the skeever, is shelved.
 
 The design rules forbid how-it-works copy on screens. The tour is the one exception: it shows once, and only then.
 
-1. **The art.** Draw the chosen guide in `scripts/icons/pixels.py` at 24×24 (the canvas has a first draw), by the icon rules: shared outline, light from the top left, the planner's palette. Shown at 72px (3×), pixelated.
-2. **How a stop looks.**
-   - The page dims (`rgba(6,8,11,.74)`) except the part being shown, which gets a 2px ember outline and is scrolled into view.
-   - Pip's card sits beside it: Pip, a short title, one or two sentences, `N of 4`, `Skip` and `Next` (`Done` on the last).
-   - The card has a brass border, like the key panels.
-   - At 390 wide the card docks to the bottom of the screen.
+1. **The art: two poses**, drawn in `scripts/icons/pixels.py` by the icon rules (shared outline, light from the top left, the planner's palette). The canvas has a first draw of each.
+   - `tapps`, 24×24: the bust with the tankard, used on the welcome card at 72px (3×).
+   - `tapps-point`, 30×30: the same bust with his free arm out, pointing left with one finger, used on every stop at 90px (3×). Mirror it with CSS to point right.
+   - Both are pixelated, never smoothed.
+2. **How a stop looks** (click through `TourReader.dc.html` and `TourAuthor.dc.html`):
+   - **The page:** it dims (`rgba(6,8,11,.74)`) except the part being shown, which gets a 2px ember outline and is scrolled into view.
+   - **Tapps points at it:** his pointing pose stands just outside the lit part with his fingertip on its outline. His side is the one with room: usually the page's right margin, where the content is full width.
+   - **He bobs:** 3px up and down, two steps a second; still with `prefers-reduced-motion`.
+   - **His card:** title, one or two sentences, `N of 4`, `Skip` and `Next` (`Done` on the last), with a brass border like the key panels.
+     - It sits next to him, above or below, never over the lit part.
+     - A small tail on the edge facing him shows he's the one talking.
+   - **The welcome:** before the first stop, Tapps (the tankard pose) is inside the card, centered, with nothing lit.
+   - **Placement:** a stop names its target element and a side. The tour measures the target and places Tapps and his card from that, so stops survive layout changes. No fixed pixel positions.
+   - **At 390 wide:** the target is outlined as above; Tapps and the card dock together at the bottom of the screen, Tapps on the card's left edge, and a small ember arrow on the outline points at the target.
 3. **The reader's tour** runs on the first build page someone opens. It opens with a card: `First time here?` / `I'm Pip. Four quick stops and you'll know your way around a build.` with `Show me` and `No thanks`. The four stops:
    1. The level row: `Pick a level to see what was taken there, or step through with the arrows.`
    2. The level card: `Perks, gear and spells on the left, the author's note on the right.`
