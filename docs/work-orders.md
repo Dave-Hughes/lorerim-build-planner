@@ -2239,7 +2239,7 @@ From the builds made so far (Iriel, Azrem, Pure Mage): from about level 10 on, m
    - the skill is at this level's max skill (the Master of One skill excepted, as the rules engine does today);
    - the skill points left don't cover its cost (raises cost more as a skill grows).
    Points left over stay banked, as they do now.
-5. **When something didn't fit,** one muted line under the skills says what, in the rules engine's words: `Illusion +1 didn't fit: 2 skill points left.` or `Destruction stays at 100, the max skill at level 33.` It goes away on the next change. Nothing shows when everything fit.
+5. **When something didn't fit,** one muted line under the skills says what, in the rules engine's words: `Illusion +1 didn't fit: 2 skill points left.` or `Destruction stays at 100, the max skill at level 34.` It goes away on the next change. Nothing shows when everything fit.
 6. **Undo.** After repeating, the button becomes `Undo` until the next change to this level. It puts back exactly what was there before.
 7. **The logic** lives with the other plan operations (`plan-ops.ts`), as a pure function: `repeatLevel(plan, level, data)` returns the new plan and the list of skipped raises. It uses the rules engine's skills before this level and `skillPointCost` / `maxSkillAt`, so it can never make a level the engine flags.
 
