@@ -68,6 +68,12 @@
 }
 .stepMark > span {
   transform: rotate(-45deg);
+  display: inline-flex;
+}
+/* The done check: pixels, sat a touch high so it reads centred in the diamond. */
+.check {
+  display: block;
+  margin-top: -1px;
 }
 .now .stepMark {
   background: var(--ember);

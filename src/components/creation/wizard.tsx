@@ -190,7 +190,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
                     aria-label={`${STEP_NAMES[s]}: ${state === "done" ? "done" : state === "problem" ? check.state === "problem" ? check.problem : "" : state === "now" ? "this step" : "not started"}`}
                   >
                     <span className={styles.stepMark} aria-hidden="true">
-                      <span>{state === "done" ? "✓" : state === "problem" ? "!" : i + 1}</span>
+                      <span>{state === "done" ? <PixelCheck /> : state === "problem" ? "!" : i + 1}</span>
                     </span>
                     <span className={styles.stepText}>
                       <span className={styles.stepName}>{STEP_NAMES[s]}</span>
@@ -1172,5 +1172,14 @@ function TagPicker({ chosen, suggested, onChange }: { chosen: string[]; suggeste
         </div>
       ))}
     </fieldset>
+  );
+}
+
+/** A done step's check (WO-58), drawn in pixels like the planner's icons rather than a font's glyph. */
+function PixelCheck() {
+  return (
+    <svg width="14" height="12" viewBox="0 0 7 6" shapeRendering="crispEdges" aria-hidden="true" className={styles.check}>
+      <path d="M6 0h1v1H6zM5 1h2v1H5zM0 2h1v1H0zM4 2h2v1H4zM0 3h2v1H0zM3 3h2v1H3zM1 4h3v1H1zM2 5h1v1H2z" fill="currentColor" />
+    </svg>
   );
 }
