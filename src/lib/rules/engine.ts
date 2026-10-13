@@ -9,6 +9,9 @@ export const OGHMA_PERK_POINTS = 3;
 const issue = (code: IssueCode, message: string): Issue => ({ code, message });
 
 /** "1 skill point", "2 skill points". */
+const ENCHANTMENT_MASTERY = "Enchanting:Enchantment Mastery";
+const ARTIFACT_ENCHANTER = "Enchanting:Artifact Enchanter";
+
 function count(n: number, one: string): string {
   return `${n} ${one}${n === 1 ? "" : "s"}`;
 }
@@ -260,6 +263,12 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
         continue;
       }
       abilitiesGained[row.id] = { level: L };
+    }
+    // Made gear (WO-53): two enchantments need Enchantment Mastery, three need Artifact Enchanter, by the row's level.
+    for (const g of b.gear) {
+      const n = g.fromLevel === L && g.made && !g.made.spell ? (g.made.enchantments ?? []).length : 0;
+      if (n >= 3 && !has(ARTIFACT_ENCHANTER)) issues.push(issue("enchant-perk", `Three enchantments need Artifact Enchanter, not taken by level ${L}.`));
+      else if (n === 2 && !has(ENCHANTMENT_MASTERY)) issues.push(issue("enchant-perk", `Two enchantments need Enchantment Mastery, not taken by level ${L}.`));
     }
     // Shouts (WO-51): a shout's word count only goes up.
     for (const row of lv.shouts ?? []) {

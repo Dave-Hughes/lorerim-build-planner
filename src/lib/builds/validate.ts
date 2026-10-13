@@ -89,7 +89,7 @@ function planSchema(d: GameData) {
             .object({
               base: z.string().max(120),
               spell: z.string().max(200).optional(),
-              enchantments: z.array(z.string().max(120)).max(2).optional(),
+              enchantments: z.array(z.string().max(120)).max(3).optional(),
             })
             .optional(),
         }),

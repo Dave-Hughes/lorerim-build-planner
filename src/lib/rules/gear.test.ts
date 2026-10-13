@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import sample from "./__fixtures__/sample-build.json";
 import { withGearSlots } from "./convert";
 import { requireGameData } from "./data";
+import { computeBuild } from "./engine";
 import { setGearAt } from "@/components/editor/plan-ops";
 import { gearAt, gearChangeText, gearChanges, gearSlot, madeStaffName } from "./gear";
 import type { BuildPlan, GearItem } from "./types";
@@ -84,5 +85,39 @@ describe("gear you make yourself (WO-45)", () => {
     const made = { base: "Apprentice's Staff", spell: sun.id };
     const plan = setGearAt(withGear([]), 4, "Main hand", { name: madeStaffName(sun.name), note: "", made });
     expect(gearAt(plan, 5)).toEqual([{ slot: "Main hand", name: "Staff of Forbidden Sun", note: "", since: 4, made }]);
+  });
+});
+
+describe("enchantment lines and the Enchanting perks (WO-53)", () => {
+  /** The sample stretched to 40 levels, with perks taken at the levels given and one made ring. */
+  function plan(lines: string[], at: number, perks: Record<number, string[]> = {}, made: Partial<GearItem["made"]> = {}): BuildPlan {
+    const levels = [...base.levels, ...Array.from({ length: 40 - base.levels.length }, () => ({ skillPoints: {}, perks: [] as string[], destiny: [] as string[], extras: [], note: "" }))].map((lv, i) =>
+      perks[i + 1] ? { ...lv, perks: [...lv.perks, ...perks[i + 1]] } : lv,
+    );
+    return { ...base, levels, gear: [row("Ring", "Silver Ring", at, { made: { base: "Silver Ring", enchantments: lines, ...made } })] };
+  }
+  const enchantIssues = (p: BuildPlan) =>
+    computeBuild(p).flatMap((s) => s.issues.filter((i) => i.code === "enchant-perk").map((i) => `${s.level}: ${i.message}`));
+  const MASTERY = "Enchanting:Enchantment Mastery";
+  const ARTIFACT = "Enchanting:Artifact Enchanter";
+
+  it("one line needs no perk", () => {
+    expect(enchantIssues(plan(["Fortify Magicka"], 20))).toEqual([]);
+  });
+  it("two lines at 20 with Enchantment Mastery at 30 is a problem at 20", () => {
+    expect(enchantIssues(plan(["Fortify Magicka", "Fortify Destruction"], 20, { 30: [MASTERY] }))).toEqual(["20: Two enchantments need Enchantment Mastery, not taken by level 20."]);
+  });
+  it("two lines at 30 with Mastery at 30 is fine", () => {
+    expect(enchantIssues(plan(["Fortify Magicka", "Fortify Destruction"], 30, { 30: [MASTERY] }))).toEqual([]);
+  });
+  it("three lines with Mastery only is a problem", () => {
+    expect(enchantIssues(plan(["A", "B", "C"], 34, { 30: [MASTERY] }))).toEqual(["34: Three enchantments need Artifact Enchanter, not taken by level 34."]);
+  });
+  it("three lines with Artifact Enchanter is fine", () => {
+    expect(enchantIssues(plan(["A", "B", "C"], 34, { 30: [MASTERY], 32: [ARTIFACT] }))).toEqual([]);
+  });
+  it("a staff with a spell isn't checked", () => {
+    // Even with lines left over from before it was a staff.
+    expect(enchantIssues(plan(["A", "B"], 20, {}, { spell: requireGameData("5.0.4.8").spells[0].id }))).toEqual([]);
   });
 });

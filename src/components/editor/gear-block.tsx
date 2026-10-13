@@ -145,7 +145,7 @@ function GearForm({
   const [name, setName] = useState(initial.made?.base ?? initial.name);
   const [made, setMade] = useState(!!initial.made);
   const [spellName, setSpellName] = useState(() => (initial.made?.spell ? (d.spellById.get(initial.made.spell)?.name ?? "") : ""));
-  const [enchant, setEnchant] = useState<[string, string]>([initial.made?.enchantments?.[0] ?? "", initial.made?.enchantments?.[1] ?? ""]);
+  const [enchant, setEnchant] = useState<string[]>(() => [0, 1, 2].map((i) => initial.made?.enchantments?.[i] ?? ""));
   const [itemId, setItemId] = useState(initial.itemId);
   const [note, setNote] = useState(initial.note);
   const [open, setOpen] = useState(false);
@@ -158,7 +158,7 @@ function GearForm({
     setItemId(i.id);
     setOpen(false);
   };
-  // Made by you (WO-45): a staff takes one spell; anything else up to two enchantment lines.
+  // Made by you (WO-45): a staff takes one spell; anything else up to three enchantment lines (WO-53).
   const base = itemId && items ? itemById(d.version.id, itemId) : undefined;
   const isStaff = base?.weaponType === "Staff" || /\bstaff\b/i.test(name);
   const spell = d.spells.find((sp) => sp.name.toLowerCase() === spellName.trim().toLowerCase());
@@ -278,17 +278,20 @@ function GearForm({
               {spell && <span className="muted">{madeStaffName(spell.name)}</span>}
             </>
           ) : (
-            [0, 1].map((i) => (
-              <input
-                key={i}
-                className="input"
-                aria-label={`Enchantment ${i + 1}`}
-                placeholder="Enchantment"
-                maxLength={120}
-                value={enchant[i]}
-                onChange={(e) => setEnchant((x) => (i === 0 ? [e.target.value, x[1]] : [x[0], e.target.value]))}
-              />
-            ))
+            // The next line appears once the one before it has text.
+            [0, 1, 2]
+              .filter((i) => i === 0 || enchant[i - 1].trim() || enchant[i].trim())
+              .map((i) => (
+                <input
+                  key={i}
+                  className="input"
+                  aria-label={`Enchantment ${i + 1}`}
+                  placeholder="Enchantment"
+                  maxLength={120}
+                  value={enchant[i]}
+                  onChange={(e) => setEnchant((x) => x.map((l, n) => (n === i ? e.target.value : l)))}
+                />
+              ))
           ))}
       </span>
       <span className={styles.gearFormActions}>

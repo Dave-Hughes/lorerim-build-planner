@@ -2141,16 +2141,16 @@ WO-45 allowed up to two enchantment lines on a made item, which is vanilla Skyri
 5. **Builds already saved** with two lines and no Enchantment Mastery now show the problem. That's correct; don't migrate them.
 
 ### Done when
-- [ ] Unit tests in `gear.test.ts` or `engine.test.ts`:
+- [x] Unit tests in `gear.test.ts` or `engine.test.ts`:
   - one line, no perks: no problem;
   - two lines at level 20, Enchantment Mastery at 30: a problem at 20;
   - two lines at 30, Mastery at 30: none;
   - three lines with Mastery only: a problem;
   - three lines with Artifact Enchanter: none;
   - a staff with a spell: none.
-- [ ] e2e: add a made ring with three lines; the third field appears only after the second has text; the level shows the Artifact Enchanter problem.
-- [ ] Screenshot of the form with three lines at 1440 and 390.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: add a made ring with three lines; the third field appears only after the second has text; the level shows the Artifact Enchanter problem.
+- [x] Screenshot of the form with three lines at 1440 and 390.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 
