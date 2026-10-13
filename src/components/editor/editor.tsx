@@ -24,6 +24,8 @@ import { saveKeptGuides } from "@/components/guide/use-guide-autosave";
 import type { GuideSaveStatus } from "@/components/guide/use-guide-autosave";
 import { emptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import * as ops from "./plan-ops";
+import { Tour } from "@/components/tour/tour";
+import { AUTHOR_TOUR } from "@/lib/tour";
 import { useAutosave } from "./use-autosave";
 import styles from "./editor.module.css";
 import { pageZoom } from "@/lib/zoom";
@@ -297,7 +299,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
               {level < total ? level + 1 : ""} ›
             </button>
           </div>
-          <dl className={styles.pools}>
+          <dl className={styles.pools} data-tour="points">
             {level > 1 && <Pool label="Skill points" value={left} of={`left of ${s.skillPointsAvailable}`} />}
             {/* Flashes ember once when a perk is taken (WO-59). */}
             <Pool label="Perk points" icon={<MarkIcon name="perk-points" />} value={perkLeft} of="to spend" flashKey={taken && taken.after === plan ? taken.key : undefined} />
@@ -326,7 +328,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
           )}
         </section>
 
-        <div className={styles.columns}>
+        <div className={styles.columns} data-tour="skills-tree">
           <section aria-label="Attribute and skills" className={styles.left}>
             {level > 1 && (
               <div className={styles.block}>
@@ -637,7 +639,9 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
           />
         </GuideFactsProvider>
 
-        <div className={styles.bottomBar}>
+        {/* The author's first-time tour (WO-61), on level 1 of a build just made. */}
+        {level === 1 && <Tour kind="author" script={AUTHOR_TOUR} />}
+        <div className={styles.bottomBar} data-tour="footer">
           <span className={styles.verdict}>
             {s.issues.length ? (
               <span className={styles.problems}>
@@ -703,7 +707,7 @@ function LevelNotes({ buildId, level, initial, onChange }: { buildId: string; le
   const onStatus = useCallback((status: GuideSaveStatus, error: string | null) => setSave({ status, error }), []);
   const label = guideSaveLabel(save.status, save.error);
   return (
-    <section aria-label={`Notes for level ${level}`} className={styles.levelNotes}>
+    <section aria-label={`Notes for level ${level}`} className={styles.levelNotes} data-tour="note">
       <div className={styles.blockHead}>
         <span className="label">Notes for level {level}</span>
         {label && (

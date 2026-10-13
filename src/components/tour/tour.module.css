@@ -1,0 +1,152 @@
+/* The first-time tours (WO-61). The one place the design rules allow how-it-works copy: once. */
+.layer {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+}
+/* With nothing lit (the welcome), the whole page dims. */
+.dim {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 8, 11, 0.74);
+}
+/* The lit part: a 2px ember outline, the rest of the page dimmed by a shadow round it. */
+.hole {
+  position: absolute;
+  outline: 2px solid var(--ember);
+  box-shadow: 0 0 0 200vmax rgba(6, 8, 11, 0.74);
+  pointer-events: none;
+}
+/* On a phone, a small ember arrow on the outline points at the part. */
+.arrow {
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  width: 0;
+  height: 0;
+  margin-left: -8px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid var(--ember);
+}
+.tapps {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  image-rendering: pixelated;
+  animation: bob 1s steps(2) infinite;
+}
+.flip {
+  transform: scaleX(-1);
+}
+.tapps.flip {
+  animation-name: bob-flip;
+}
+/* He bobs 3px, two steps a second. */
+@keyframes bob {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -3px;
+  }
+}
+@keyframes bob-flip {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -3px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tapps {
+    animation: none;
+  }
+}
+.card {
+  position: absolute;
+  width: 360px;
+  display: flex;
+  gap: 14px;
+  padding: 16px 18px 14px;
+  border: 1px solid var(--brass);
+  background: var(--panel);
+  color: var(--text);
+}
+/* The welcome: Tapps with his mead, in the middle of the screen. */
+.welcome {
+  left: 50%;
+  top: 50%;
+  width: min(470px, calc(100vw - 32px));
+  transform: translate(-50%, -50%);
+}
+/* On a phone: Tapps and his card dock together at the bottom. */
+.docked {
+  left: 16px;
+  right: 16px;
+  top: auto;
+  bottom: 16px;
+  width: auto;
+}
+.portrait {
+  flex: none;
+  width: 72px;
+  height: 72px;
+  image-rendering: pixelated;
+}
+/* The tail on the edge that faces him: he's the one talking. */
+.tail {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: var(--panel);
+  border-left: 1px solid var(--brass);
+  border-top: 1px solid var(--brass);
+}
+.tail_top {
+  top: -8px;
+  transform: rotate(45deg);
+}
+.tail_bottom {
+  bottom: -8px;
+  transform: rotate(225deg);
+}
+.words {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f6c08f;
+}
+.text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.foot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+.count {
+  color: var(--muted);
+  font-size: 13px;
+}
+.actions {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}

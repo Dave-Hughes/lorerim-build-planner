@@ -43,7 +43,7 @@ export const FORTY_BUILD_ID = "e2emadesta";
 export const POWERS_BUILD_ID = "e2ewarcrya";
 /** WO-55: the sample as a Khajiit, for the race's Night Eye. */
 export const KHAJIIT_BUILD_ID = "e2ekhajeet";
-/** WO-57: the sample cut to 4 levels, so level 4 is the last (Continue and repeat). */
+/** WO-57: the sample cut to 4 levels, so level 4 is the last (Continue and repeat); no guide (WO-61). */
 export const FOUR_BUILD_ID = "e2efa4rtwe";
 /** WO-57: the sample with only Novice Destruction at level 1, for the Add spell starting list. */
 export const NOVICE_DESTRUCTION_BUILD_ID = "e2edestrvc";
@@ -284,7 +284,8 @@ export async function seed() {
         description: "The sample, cut to level 4.",
         visibility: "unlisted",
         gameVersion: "5.0.4.8",
-        plan: { ...samplePlan(), levels: samplePlan().levels.slice(0, 4) },
+        // No notes either, so no guide: the reader's tour has three stops here (WO-61).
+        plan: { ...samplePlan(), levels: samplePlan().levels.slice(0, 4), notes: "" },
         // Made two days ago, so it doesn't count toward the test author's builds for the day (WO-40's limit).
         createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
       },

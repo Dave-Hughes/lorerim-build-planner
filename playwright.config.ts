@@ -5,6 +5,20 @@ import fs from "node:fs";
 const executablePath = fs.existsSync("/opt/pw-browsers/chromium") ? "/opt/pw-browsers/chromium" : undefined;
 const port = 3123;
 
+/** Every test starts with Tapps' tours done (WO-61); the tour tests start from a fresh browser. */
+export const TOURS_DONE = {
+  cookies: [],
+  origins: [
+    {
+      origin: `http://localhost:${port}`,
+      localStorage: [
+        { name: "planner.tour.reader", value: "done" },
+        { name: "planner.tour.author", value: "done" },
+      ],
+    },
+  ],
+};
+
 export default defineConfig({
   testDir: "./e2e",
   globalSetup: "./e2e/global-setup.ts",
@@ -20,6 +34,7 @@ export default defineConfig({
     trace: "retain-on-failure",
     ...devices["Desktop Chrome"],
     launchOptions: { executablePath },
+    storageState: TOURS_DONE,
   },
   webServer: {
     // Run `npm run build` first; this serves the production build.

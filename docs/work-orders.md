@@ -2429,11 +2429,11 @@ The design rules forbid how-it-works copy on screens. The tour is the one except
    - The e2e tests start with both tours marked done, so existing tests are unchanged.
 
 ### Done when
-- [ ] e2e: a fresh browser opening a build sees the welcome; `Show me` goes through 4 stops; reloading doesn't show it again; `Show me around` restarts it.
-- [ ] e2e: creating a build lands on level 1 with the author's welcome; `Later` shows it again on the next visit, `Skip` doesn't.
-- [ ] e2e: a build without a guide has 3 reader stops, and the card says `N of 3`.
-- [ ] Screenshots of each stop at 1440 and 390, and Pip at 72px on the dark ground.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: a fresh browser opening a build sees the welcome; `Show me` goes through 4 stops; reloading doesn't show it again; `Show me around` restarts it.
+- [x] e2e: creating a build lands on level 1 with the author's welcome; `Later` shows it again on the next visit, `Skip` doesn't.
+- [x] e2e: a build without a guide has 3 reader stops, and the card says `N of 3`.
+- [x] Screenshots of each stop at 1440 and 390, and Pip at 72px on the dark ground.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

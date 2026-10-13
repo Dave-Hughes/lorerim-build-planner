@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useId, useRef, useState } from "react";
 import { useDismiss } from "@/lib/use-dismiss";
+import { startTour } from "@/lib/tour";
 import { Avatar } from "@/components/ui/avatar";
 import styles from "./site-header.module.css";
 
@@ -24,7 +25,8 @@ export function AccountMenu({ name, image, handle, review = null, signOut }: { n
     { href: "/me", label: "My builds" },
     ...(review !== null ? [{ href: "/admin/review", label: review ? `Review (${review})` : "Review" }] : []),
   ];
-  const count = links.length + 1;
+  // The links, Show me around (WO-61), then Sign out.
+  const count = links.length + 2;
 
   const focusItem = (i: number) => items.current[(i + count) % count]?.focus();
   const close = (refocus = false) => {
@@ -98,10 +100,25 @@ export function AccountMenu({ name, image, handle, review = null, signOut }: { n
               {l.label}
             </Link>
           ))}
+          <button
+            ref={(el) => {
+              items.current[links.length] = el;
+            }}
+            type="button"
+            role="menuitem"
+            tabIndex={-1}
+            className={styles.menuItem}
+            onClick={() => {
+              close();
+              startTour();
+            }}
+          >
+            Show me around
+          </button>
           <form action={signOut} className={styles.menuForm}>
             <button
               ref={(el) => {
-                items.current[links.length] = el;
+                items.current[links.length + 1] = el;
               }}
               type="submit"
               role="menuitem"

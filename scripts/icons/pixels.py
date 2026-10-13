@@ -784,6 +784,90 @@ def note():
     return i.outline()
 
 
+# ---------------------------------------------------------------- Tapps, the first-time guide (WO-61)
+# A goofy Nord barbarian: crooked horned helmet with one horn drooping, a braided blond beard with
+# ember beads, a squint and a gap-toothed grin, a red wool tunic, a tankard of mead. Drawn by hand
+# pixel by pixel (Dave picked this draw on the canvas, 13 Oct), outline included, light from the
+# top left, the planner's palette. `tapps` is 24x24 with the tankard; `tapps-point` is 30x30 with
+# his free arm out, pointing left (mirrored with CSS to point right).
+
+class Sprite:
+    """A hand-drawn icon of any size, from rows of palette letters ("." is clear)."""
+
+    def __init__(self, rows):
+        self.g = [list(r) for r in rows]
+
+
+TAPPS_ROWS = [
+    "..x.....................",
+    ".xYx....................",
+    ".xYx.....xxxxxxx........",
+    "..xYx...xWWWWwwwx.......",
+    "..xYYx.xWWWWwwwwwxxx....",
+    "..xbYYxWWWWwwwwwggYYx...",
+    "...xbbWWWWwwwwwgggbbYx..",
+    "....xggYggggYggGGYGbbx..",
+    ".....xxxFFFFfffffxxxbbx.",
+    ".......xWxFfffxxfx..xbx.",
+    "......xFFxfFffffvvx..xbx",
+    "......xFFffvvqfvvvx...x.",
+    "......xbYYbbbbbbbbxxxx..",
+    ".....xbYYWWWkWWWbbbWWwx.",
+    ".....xYYYYRRRRRbbBBWWWx.",
+    "...xxpYYYbbbbbbbBBBBBdx.",
+    "..xFfpYYbbbbbbbBBBBgggGx",
+    "..xffppbbbbbbbBBBBbBBdGx",
+    ".xffrrrbbbbbbBBBBBbBBdGx",
+    ".xffrrrrbbBbBBbBBrggggx.",
+    "..xxdddddYbBBBYbddbBBdx.",
+    "...xrrrrrOorrrOorrrqqx..",
+    "...xrrrrrYbrrrYbrrrqqx..",
+    "....xxxxxxxxxxxxxxxxx...",
+]
+
+
+TAPPS_POINT_ROWS = [
+    "..............................",
+    "..............................",
+    "..............................",
+    "..............................",
+    "........x.....................",
+    ".......xYx....................",
+    ".......xYx.....xxxxxxx........",
+    "........xYx...xWWWWwwwx.......",
+    "........xYYx.xWWWWwwwwwxxx....",
+    "........xbYYxWWWWwwwwwggYYx...",
+    ".........xbbWWWWwwwwwgggbbYx..",
+    "..........xggYggggYggGGYGbbx..",
+    "...........xxxFFFFfffffxxxbbx.",
+    ".............xWxFfffxxfx..xbx.",
+    "............xFFxfFffffvvx..xbx",
+    "............xFFffvvqfvvvx...x.",
+    "............xbYYbbbbbbbbxxxx..",
+    "...........xbYYWWWkWWWbbbWWwx.",
+    ".xxxx......xYYYYRRRRRbbBBWWWx.",
+    "xFFFfxxxxxxpYYYbbbbbbbBBBBBdx.",
+    ".xxffFFFfffpYYbbbbbbbBBBBgggGx",
+    "..xffffffvvppbbbbbbbBBBBbBBdGx",
+    "...xxxxxxxrrrbbbbbbBBBBBbBBdGx",
+    ".........xrrrrbbBbBBbBBrggggx.",
+    ".........xrrrrrYbBBBYbddbBBdx.",
+    ".........xrrrrrOorrrOorrrqqx..",
+    ".........xrrrrrYbrrrYbrrrqqx..",
+    "..........xxxxxxxxxxxxxxxxx...",
+    "..............................",
+    "..............................",
+]
+
+
+def tapps():
+    return Sprite(TAPPS_ROWS)
+
+
+def tapps_point():
+    return Sprite(TAPPS_POINT_ROWS)
+
+
 # ---------------------------------------------------------------- build page tabs (WO-60)
 
 def tab_levels():
@@ -1944,7 +2028,8 @@ DEITIES = {
 LOGO = {str(f): (lambda f=f: logo(f)) for f in range(4)}
 
 TABS = {"Levels": tab_levels, "Guide": tab_guide}
-SETS = {"": ICONS, "tab-": TABS, "attr-": ATTRIBUTES, "sign-": SIGNS, "race-": RACES, "mark-": MARKS, "slot-": SLOTS, "mode-": MODES, "tag-": TAGS, "deity-": DEITIES, "logo-": LOGO}
+GUIDE = {"Tapps": tapps, "Tapps point": tapps_point}
+SETS = {"": {**ICONS, **GUIDE}, "tab-": TABS, "attr-": ATTRIBUTES, "sign-": SIGNS, "race-": RACES, "mark-": MARKS, "slot-": SLOTS, "mode-": MODES, "tag-": TAGS, "deity-": DEITIES, "logo-": LOGO}
 
 
 def slug(name):
@@ -1952,16 +2037,17 @@ def slug(name):
 
 
 def svg(icon):
-    out = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">']
+    n = len(icon.g[0])  # 16 for the icons; Tapps is larger (WO-61)
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {n} {len(icon.g)}" shape-rendering="crispEdges">']
     for y, row in enumerate(icon.g):
         x = 0
-        while x < 16:
+        while x < n:
             c = row[x]
             if c == ".":
                 x += 1
                 continue
             run = 1
-            while x + run < 16 and row[x + run] == c:
+            while x + run < n and row[x + run] == c:
                 run += 1
             out.append(f'<rect x="{x}" y="{y}" width="{run}" height="1" fill="{PALETTE[c]}"/>')
             x += run

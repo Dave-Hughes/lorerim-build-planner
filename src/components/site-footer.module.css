@@ -52,3 +52,17 @@ a.made:hover {
     text-align: left;
   }
 }
+
+/* Show me around (WO-61): a quiet link-like button, before the community link. */
+.tour {
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+}
+.tour:hover {
+  color: var(--ember);
+}

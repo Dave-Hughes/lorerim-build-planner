@@ -25,6 +25,9 @@ test("the header has no nav; New build is a button; the avatar menu works by key
   // The test author is an admin (WO-40): the review list comes next.
   await page.keyboard.press("ArrowDown");
   await expect(menu.getByRole("menuitem", { name: /^Review/ })).toBeFocused();
+  // Show me around (WO-61) comes before Sign out.
+  await page.keyboard.press("ArrowDown");
+  await expect(menu.getByRole("menuitem", { name: "Show me around" })).toBeFocused();
   await page.keyboard.press("ArrowDown");
   await expect(menu.getByRole("menuitem", { name: "Sign out" })).toBeFocused();
   await page.keyboard.press("Escape");

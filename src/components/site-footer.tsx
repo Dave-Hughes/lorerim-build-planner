@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Avatar } from "./ui/avatar";
 import { getMaker } from "@/lib/users/maker";
+import { ShowMeAround } from "./tour/show-me-around";
 import styles from "./site-footer.module.css";
 
 const DISCORD = "https://discord.gg/bungalo";
@@ -36,6 +37,7 @@ export async function SiteFooter() {
         ) : (
           <span className={styles.made}>{made}</span>
         )}
+        <ShowMeAround className={styles.tour} />
         <a href={DISCORD} className={styles.link} target="_blank" rel="noopener noreferrer">
           <DiscordIcon />
           <span>LoreRim (Modding Bungalo) Community</span>

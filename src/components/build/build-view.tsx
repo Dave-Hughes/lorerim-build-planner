@@ -15,6 +15,8 @@ import { SkillGains, type SkillGain } from "./skill-gains";
 import { EditBar, MenuButton } from "@/components/editor/edit-bar";
 import menuStyles from "@/components/editor/edit-bar.module.css";
 import { PlayMark } from "./play-mark";
+import { Tour } from "@/components/tour/tour";
+import { READER_TOUR } from "@/lib/tour";
 import { spellsAt } from "@/lib/rules/spells";
 import { abilitiesAt, abilitySource, shoutsKnown } from "@/lib/rules/powers";
 import { AbilityTip, ShoutTip, SpellView, spellsAndAbilities } from "./spell-view";
@@ -172,6 +174,8 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
     guide: overview ? `${minutes} min read${plan.videoId ? " | Video" : ""}` : "Video",
   };
 
+  const hasGuideTab = tabs.includes("guide");
+  const readerTour = useMemo(() => READER_TOUR(hasGuideTab), [hasGuideTab]);
   const [picked, setPicked] = useState<Picked>(null);
   const [destinyOpenChoice, setDestinyOpenChoice] = useState(false);
 
@@ -306,6 +310,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
                   type="button"
                   role="tab"
                   id={`tab-${t}`}
+                  data-tour={`${t}-tab`}
                   aria-selected={tab === t}
                   aria-controls={`panel-${t}`}
                   tabIndex={tab === t ? 0 : -1}
@@ -365,6 +370,8 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
             </div>
           )}
 
+          {/* The reader's first-time tour (WO-61), on the Levels tab where its stops are. */}
+          {tab === "levels" && <Tour kind="reader" script={readerTour} />}
           <div className={styles.withRail}>
           <ContentsRail items={railItems} />
           <div className={styles.railMain}>
@@ -497,7 +504,7 @@ function LevelsTab({
 
   return (
     <>
-      <section ref={levelBarRef} aria-label="Level" className={styles.levelSection}>
+      <section ref={levelBarRef} aria-label="Level" className={styles.levelSection} data-tour="level-row">
         <div className={styles.levelHead}>
           <LevelStepper
             level={level}
@@ -518,7 +525,7 @@ function LevelsTab({
         <SkillsAt d={d} plan={plan} s={s} level={level} />
       </div>
 
-      <section ref={perksRef} id="perks" data-tree-anchor="" aria-label={`Perks at level ${level}`} className={styles.perksSection}>
+      <section ref={perksRef} id="perks" data-tree-anchor="" data-tour="perks" aria-label={`Perks at level ${level}`} className={styles.perksSection}>
         <div className="section-head">
           <h2 className="section-title">
             Perks <span className="section-title-at">at level {level}</span>
@@ -1184,7 +1191,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
   if (changes.banked > 0) rows.push(["Banked", `${changes.banked} skill point${changes.banked === 1 ? "" : "s"}`]);
 
   return (
-    <section id="level-card" aria-label={`Level ${level}`} className={`frame ${styles.card} ${styles.cardWithNote}`}>
+    <section id="level-card" data-tour="level-card" aria-label={`Level ${level}`} className={`frame ${styles.card} ${styles.cardWithNote}`}>
       <div className={styles.cardMain}>
         <h2 className={styles.cardTitle}>Level {level}</h2>
         {rows.length ? (
