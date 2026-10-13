@@ -962,7 +962,7 @@ From Dave's notes. Do after WO-24. Every motion here is off under `prefers-reduc
 - [x] A screen recording (GIF) for Dave of loading Azrem's page and scrolling past the hero, at 1440 × 900.
 - [x] Screenshots: the intro with its drop cap at 1440 and 390, and in Safari (float fallback) if `initial-letter` behaves differently there.
 - [x] Performance doesn't get worse. Lighthouse isn't installed, so Jeff measured in Chromium instead, with the CPU slowed 4× and the median of 5 loads: LCP 624 → 600 ms, CLS 0 → 0, blocking time 43 → 50 ms. Accepted.
-- [ ] Safari, which wasn't checked: Dave looks at the intro's drop cap in Safari on the Mac.
+- [x] Safari, which wasn't checked: Dave looks at the intro's drop cap in Safari on the Mac.
 - [x] All checks in CLAUDE.md pass.
 
 ---
