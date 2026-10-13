@@ -1,0 +1,3770 @@
+{
+ "counts": {
+  "itemsWithEnchantment": 16194,
+  "droppedCantDisenchant": 924,
+  "droppedNotPlayable": 294,
+  "droppedEnchantmentMissing": 10,
+  "droppedUnnamed": 209,
+  "droppedStaff": 1015,
+  "droppedUnnamedEnchantment": 2,
+  "droppedDuplicate": 2,
+  "enchantments": 88,
+  "weapon": 34,
+  "armor": 54,
+  "fromPowers": 10,
+  "runestone": 9
+ },
+ "dropped": [
+  "Absorb Health (EnchWeaponDraugrMagicAxeSpectral, Big Tweaks.esp): same name as REQ_Ench_Weapon_AbsorbHealth0",
+  "DLC1EnchArmorReflectingShield (Dawnguard.esm:00488B): no name, on Reflecting Shield",
+  "DLC2EnchBallistaStagger50 (Dragonborn.esm:0339A6): no name, on Remi's Crossbow, Remiel's Crossbow",
+  "Fortify Armor Penetration (DBEnchantGloves, Requiem.esp): same name as REQ_Ench_FortifyArmorPenetration_Base"
+ ],
+ "enchantments": [
+  {
+   "id": "Skyrim.esm:08850B",
+   "name": "Blessing of Talos",
+   "edid": "EnchReligiousTalos",
+   "plugin": "Requiem.esp",
+   "order": 1603,
+   "on": "armor",
+   "text": "Armor penetration with one-handed and two-handed weapons is increased by 5.",
+   "effects": [
+    {
+     "id": "Requiem.esp:AD3B38",
+     "name": "Fortify Melee Armor Penetration",
+     "text": "Armor penetration with one-handed and two-handed weapons is increased by <mag>.",
+     "mag": 5.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "Greybeard's Robes"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Lock Bashing.esp:000016",
+   "name": "Breaker's Grip",
+   "edid": "LockBashing_GripBaseEnch",
+   "plugin": "Lock Bashing.esp",
+   "order": 286,
+   "on": "armor",
+   "text": "Your strength to bash open locks is increased by 50 points.",
+   "effects": [
+    {
+     "id": "Lock Bashing.esp:000013",
+     "name": "Breaker's Grip",
+     "text": "Your strength to bash open locks is increased by <mag> points.",
+     "mag": 50.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingHands",
+    "ClothingNecklace",
+    "ClothingRing",
+    "ArmorGauntlets"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "Ring of Breaker's Grip"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Faction Ranks.esp:000826",
+   "name": "College of Winterhold Boots",
+   "edid": "FactionRanks_MG_BootsEnch",
+   "plugin": "Faction Ranks.esp",
+   "order": 1912,
+   "on": "armor",
+   "text": "5% chance to absorb hostile spells. While wearing the guild's complete set, an additional 3% is added each time you rank up in the Mages Guild. Current rank: Global=FactionRanks_MagesGuildRank",
+   "effects": [
+    {
+     "id": "Faction Ranks.esp:000823",
+     "name": "College of Winterhold Boots",
+     "text": "5% chance to absorb hostile spells. While wearing the guild's complete set, an additional 3% is added each time you rank up in the Mages Guild. Current rank: <Global=FactionRanks_MagesGuildRank>",
+     "mag": 0.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00082B",
+     "name": "Magicka Shield",
+     "text": "",
+     "mag": 5.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00082B",
+     "name": "Magicka Shield",
+     "text": "",
+     "mag": 3.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00082B",
+     "name": "Magicka Shield",
+     "text": "",
+     "mag": 6.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00082B",
+     "name": "Magicka Shield",
+     "text": "",
+     "mag": 9.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00082B",
+     "name": "Magicka Shield",
+     "text": "",
+     "mag": 12.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00082B",
+     "name": "Magicka Shield",
+     "text": "",
+     "mag": 15.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "College of Winterhold Boots"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Faction Ranks.esp:000829",
+   "name": "College of Winterhold Gloves",
+   "edid": "FactionRanks_MG_GlovesEnch",
+   "plugin": "Faction Ranks.esp",
+   "order": 1912,
+   "on": "armor",
+   "text": "Novice spells are 15% stronger or last longer. This bonus applies to spells of higher level as well when you rank up in the guild and you're wearing the guild's complete set of attire.",
+   "effects": [
+    {
+     "id": "Faction Ranks.esp:000824",
+     "name": "College of Winterhold Gloves",
+     "text": "Novice spells are 15% stronger or last longer. This bonus applies to spells of higher level as well when you rank up in the guild and you're wearing the guild's complete set of attire.",
+     "mag": 0.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "College of Winterhold Gloves"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Faction Ranks.esp:000827",
+   "name": "College of Winterhold Hood",
+   "edid": "FactionRanks_MG_HoodEnch",
+   "plugin": "Faction Ranks.esp",
+   "order": 1912,
+   "on": "armor",
+   "text": "Magicka is increased by 30. Each time you rank up an additional 10 points is added, provided you're wearing the guild's complete set. Current rank: Global=FactionRanks_MagesGuildRank Increases your Magicka by 30 points.",
+   "effects": [
+    {
+     "id": "Faction Ranks.esp:000825",
+     "name": "College of Winterhold Hood",
+     "text": "Magicka is increased by 30. Each time you rank up an additional 10 points is added, provided you're wearing the guild's complete set. Current rank: <Global=FactionRanks_MagesGuildRank>",
+     "mag": 0.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00081C",
+     "name": "Fortify Magicka",
+     "text": "Increases your Magicka by <mag> points.",
+     "mag": 30.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00081C",
+     "name": "Fortify Magicka",
+     "text": "Increases your Magicka by <mag> points.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00081C",
+     "name": "Fortify Magicka",
+     "text": "Increases your Magicka by <mag> points.",
+     "mag": 20.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00081C",
+     "name": "Fortify Magicka",
+     "text": "Increases your Magicka by <mag> points.",
+     "mag": 30.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00081C",
+     "name": "Fortify Magicka",
+     "text": "Increases your Magicka by <mag> points.",
+     "mag": 40.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00081C",
+     "name": "Fortify Magicka",
+     "text": "Increases your Magicka by <mag> points.",
+     "mag": 50.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "College of Winterhold Hood"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Faction Ranks.esp:000828",
+   "name": "College of Winterhold Robes",
+   "edid": "FactionRanks_MG_RobesEnch",
+   "plugin": "Faction Ranks.esp",
+   "order": 1912,
+   "on": "armor",
+   "text": "Magicka regenerates 50% faster. Each time you rank up an additional 10% is added, provided you're wearing the guild's complete set. Current rank: Global=FactionRanks_MagesGuildRank",
+   "effects": [
+    {
+     "id": "Faction Ranks.esp:000822",
+     "name": "College of Winterhold Robes",
+     "text": "Magicka regenerates 50% faster. Each time you rank up an additional 10% is added, provided you're wearing the guild's complete set. Current rank: <Global=FactionRanks_MagesGuildRank>",
+     "mag": 0.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00081D",
+     "name": "Regenerate Magicka",
+     "text": "Magicka regenerates <mag>% faster.",
+     "mag": 50.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00081D",
+     "name": "Regenerate Magicka",
+     "text": "Magicka regenerates <mag>% faster.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00081D",
+     "name": "Regenerate Magicka",
+     "text": "Magicka regenerates <mag>% faster.",
+     "mag": 20.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00081D",
+     "name": "Regenerate Magicka",
+     "text": "Magicka regenerates <mag>% faster.",
+     "mag": 30.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00081D",
+     "name": "Regenerate Magicka",
+     "text": "Magicka regenerates <mag>% faster.",
+     "mag": 40.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:00081D",
+     "name": "Regenerate Magicka",
+     "text": "Magicka regenerates <mag>% faster.",
+     "mag": 50.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000864",
+     "name": "Toggle Mages Guild Boon",
+     "text": "",
+     "mag": 0.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "College of Winterhold Robes"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Faction Ranks.esp:00084F",
+   "name": "Companion Armor",
+   "edid": "FactionRanks_C_ArmorEnch",
+   "plugin": "Faction Ranks.esp",
+   "order": 1912,
+   "on": "armor",
+   "text": "Melee attacks do 15% more damage. While wearing the guild's complete set, an additional 5% is added each time you rank up in The Companions. Current rank: Global=FactionRanks_CompanionsRank",
+   "effects": [
+    {
+     "id": "Faction Ranks.esp:000849",
+     "name": "Companion Armor",
+     "text": "Melee attacks do 15% more damage. While wearing the guild's complete set, an additional 5% is added each time you rank up in The Companions. Current rank: <Global=FactionRanks_CompanionsRank>",
+     "mag": 0.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000847",
+     "name": "Fortify Melee",
+     "text": "Melee attacks do <mag>% more damage.",
+     "mag": 15.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000847",
+     "name": "Fortify Melee",
+     "text": "Melee attacks do <mag>% more damage.",
+     "mag": 5.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000847",
+     "name": "Fortify Melee",
+     "text": "Melee attacks do <mag>% more damage.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000847",
+     "name": "Fortify Melee",
+     "text": "Melee attacks do <mag>% more damage.",
+     "mag": 15.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000847",
+     "name": "Fortify Melee",
+     "text": "Melee attacks do <mag>% more damage.",
+     "mag": 20.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000847",
+     "name": "Fortify Melee",
+     "text": "Melee attacks do <mag>% more damage.",
+     "mag": 25.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000862",
+     "name": "Toggle Companions Boon",
+     "text": "",
+     "mag": 0.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "The Companions Armor"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Faction Ranks.esp:00084D",
+   "name": "Companion Boots",
+   "edid": "FactionRanks_C_BootsEnch",
+   "plugin": "Faction Ranks.esp",
+   "order": 1912,
+   "on": "armor",
+   "text": "Stamina is increased by 40 points. While wearing the guild's complete set, an additional 10 points is added each time you rank up in The Companions. Current rank: Global=FactionRanks_CompanionsRank Increases your stamina by 40 points.",
+   "effects": [
+    {
+     "id": "Faction Ranks.esp:00084A",
+     "name": "Companion Boots",
+     "text": "Stamina is increased by 40 points. While wearing the guild's complete set, an additional 10 points is added each time you rank up in The Companions. Current rank: <Global=FactionRanks_CompanionsRank>",
+     "mag": 0.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000848",
+     "name": "Fortify Stamina",
+     "text": "Increases your stamina by <mag> points.",
+     "mag": 40.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000848",
+     "name": "Fortify Stamina",
+     "text": "Increases your stamina by <mag> points.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000848",
+     "name": "Fortify Stamina",
+     "text": "Increases your stamina by <mag> points.",
+     "mag": 20.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000848",
+     "name": "Fortify Stamina",
+     "text": "Increases your stamina by <mag> points.",
+     "mag": 30.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000848",
+     "name": "Fortify Stamina",
+     "text": "Increases your stamina by <mag> points.",
+     "mag": 40.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000848",
+     "name": "Fortify Stamina",
+     "text": "Increases your stamina by <mag> points.",
+     "mag": 50.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "The Companions Boots"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Faction Ranks.esp:000851",
+   "name": "Companion Guantlets",
+   "edid": "FactionRanks_C_GuantletEnch",
+   "plugin": "Faction Ranks.esp",
+   "order": 1912,
+   "on": "armor",
+   "text": "+10% critical chance. While wearing the guild's complete set, an additional 3% is added each time you rank up in The Companions. Current rank: Global=FactionRanks_CompanionsRank",
+   "effects": [
+    {
+     "id": "Faction Ranks.esp:00084B",
+     "name": "Companion Gauntlets",
+     "text": "+10% critical chance. While wearing the guild's complete set, an additional 3% is added each time you rank up in The Companions. Current rank: <Global=FactionRanks_CompanionsRank>",
+     "mag": 0.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "The Companions Gauntlets"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Faction Ranks.esp:00084E",
+   "name": "Companion Helmet",
+   "edid": "FactionRanks_C_HelmetEnch",
+   "plugin": "Faction Ranks.esp",
+   "order": 1912,
+   "on": "armor",
+   "text": "Bows do 15% more damage. While wearing the guild's complete set, an additional 5% is added each time you rank up in The Companions. Current rank: Global=FactionRanks_CompanionsRank",
+   "effects": [
+    {
+     "id": "Faction Ranks.esp:00084C",
+     "name": "Companion Helmet",
+     "text": "Bows do 15% more damage. While wearing the guild's complete set, an additional 5% is added each time you rank up in The Companions. Current rank: <Global=FactionRanks_CompanionsRank>",
+     "mag": 0.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000832",
+     "name": "Fortify Archery",
+     "text": "Bows do <mag>% more damage.",
+     "mag": 15.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000832",
+     "name": "Fortify Archery",
+     "text": "Bows do <mag>% more damage.",
+     "mag": 5.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000832",
+     "name": "Fortify Archery",
+     "text": "Bows do <mag>% more damage.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000832",
+     "name": "Fortify Archery",
+     "text": "Bows do <mag>% more damage.",
+     "mag": 15.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000832",
+     "name": "Fortify Archery",
+     "text": "Bows do <mag>% more damage.",
+     "mag": 20.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Faction Ranks.esp:000832",
+     "name": "Fortify Archery",
+     "text": "Bows do <mag>% more damage.",
+     "mag": 25.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "The Companions Helmet"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB70",
+   "name": "Fortify Alchemy",
+   "edid": "REQ_Ench_FortifyAlchemy_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Mixing potions and poisons is 2% more effective.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:08B65C",
+     "name": "Fortify Alchemy",
+     "text": "Mixing potions and poisons is <mag>% more effective.",
+     "mag": 2.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingRing",
+    "ClothingHands",
+    "ClothingNecklace",
+    "ClothingHead",
+    "ClothingCirclet",
+    "ArmorGauntlets",
+    "ArmorHelmet"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 180,
+     "examples": [
+      "Amber Gauntlets of Eminent Alchemy",
+      "Amber Gauntlets of Extreme Alchemy",
+      "Amber Gauntlets of Peerless Alchemy",
+      "Amber Helmet of Eminent Alchemy",
+      "Amber Helmet of Extreme Alchemy"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB71",
+   "name": "Fortify Alteration",
+   "edid": "REQ_Ench_FortifyAlteration_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Alteration spells cost 4% less.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A0F2",
+     "name": "Fortify Alteration",
+     "text": "Alteration spells cost <mag>% less.",
+     "mag": 4.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingNecklace",
+    "ClothingRing",
+    "ClothingHead",
+    "ClothingCirclet",
+    "ClothingBody",
+    "ArmorHelmet",
+    "ArmorCuirass"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 193,
+     "examples": [
+      "Amber Armor of Eminent Alteration",
+      "Amber Armor of Extreme Alteration",
+      "Amber Armor of Peerless Alteration",
+      "Amber Helmet of Eminent Alteration",
+      "Amber Helmet of Extreme Alteration"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB7A",
+   "name": "Fortify Armor Penetration",
+   "edid": "REQ_Ench_FortifyArmorPenetration_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Armor penetration with all weapons is increased by 4.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A0FB",
+     "name": "Fortify Armor Penetration",
+     "text": "Armor penetration with all weapons is increased by <mag>.",
+     "mag": 4.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Requiem.esp:AD3989",
+     "name": "Fortify One-Handed Armor Penetration",
+     "text": "",
+     "mag": 4.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Requiem.esp:AD3988",
+     "name": "Fortify Two-Handed Armor Penetration",
+     "text": "",
+     "mag": 4.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Requiem.esp:AD398A",
+     "name": "Fortify Marksman Armor Penetration",
+     "text": "",
+     "mag": 4.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingHands",
+    "ArmorGauntlets",
+    "ClothingBody",
+    "ClothingNecklace",
+    "ClothingRing",
+    "ArmorCuirass"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 79,
+     "examples": [
+      "Amber Armor of the Eminent Squire",
+      "Amber Armor of the Noble Squire",
+      "Amber Armor of the Peerless Squire",
+      "Chitin Light Cuirass of the Eminent Squire",
+      "Chitin Light Cuirass of the Major Squire"
+     ]
+    }
+   ],
+   "sameAs": [
+    "Skyrim.esm:0FF15D"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB78",
+   "name": "Fortify Armor Rating",
+   "edid": "REQ_Ench_FortifyArmorRating_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Armor rating increases by 60.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A0F9",
+     "name": "Fortify Armor Rating",
+     "text": "Armor rating increases by <mag>.",
+     "mag": 60.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingHands",
+    "ArmorGauntlets",
+    "ClothingBody",
+    "ClothingNecklace",
+    "ClothingRing",
+    "ArmorCuirass"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 81,
+     "examples": [
+      "Akaviri Cuirass",
+      "Banded Iron Cuirass of the Knight",
+      "Banded Iron Cuirass of the Major Knight",
+      "Banded Iron Cuirass of the Minor Knight",
+      "Bonemold Cuirass of the Knight"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB84",
+   "name": "Fortify Barter",
+   "edid": "REQ_Ench_FortifyBarter_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Prices are 6% more favorable.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A104",
+     "name": "Fortify Barter",
+     "text": "Prices are <mag>% more favorable.",
+     "mag": 6.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingNecklace",
+    "ClothingHead",
+    "ClothingCirclet",
+    "ArmorHelmet",
+    "ClothingHands",
+    "ArmorGauntlets",
+    "ClothingRing"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 9,
+     "examples": [
+      "Necklace of Dibellan Arts",
+      "Necklace of Eminent Haggling",
+      "Necklace of Extreme Haggling",
+      "Necklace of Haggling",
+      "Necklace of Major Haggling"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB72",
+   "name": "Fortify Block",
+   "edid": "REQ_Ench_FortifyBlock_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Blocking absorbs 8% more damage and bashing does as much as more damage.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A0F3",
+     "name": "Fortify Block",
+     "text": "Blocking absorbs <mag>% more damage and bashing does as much as more damage.",
+     "mag": 8.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorGauntlets",
+    "ClothingHands",
+    "ClothingNecklace",
+    "ClothingRing",
+    "ArmorShield"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 88,
+     "examples": [
+      "Amber Shield of Eminent Blocking",
+      "Amber Shield of Extreme Blocking",
+      "Amber Shield of Peerless Blocking",
+      "Ancient Nord Shield of Blocking",
+      "Ancient Nord Shield of Major Blocking"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB73",
+   "name": "Fortify Carry Weight",
+   "edid": "REQ_Ench_FortifyCarryWeight_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Carry weight increases by 9.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A0F4",
+     "name": "Fortify Carry Weight",
+     "text": "Carry weight increases by <mag>.",
+     "mag": 9.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingHands",
+    "ClothingNecklace",
+    "ClothingRing",
+    "ArmorGauntlets",
+    "ArmorBoots",
+    "ClothingFeet"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 89,
+     "examples": [
+      "Amber Boots of Brawn",
+      "Amber Boots of the Mammoth",
+      "Amber Boots of the Ox",
+      "Ancient Dragonplate Boots",
+      "Bonemold Boots of Hauling"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB74",
+   "name": "Fortify Conjuration",
+   "edid": "REQ_Ench_FortifyConjuration_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Conjuration spells cost 4% less.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A0F5",
+     "name": "Fortify Conjuration",
+     "text": "Conjuration spells cost <mag>% less.",
+     "mag": 4.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingNecklace",
+    "ClothingRing",
+    "ClothingHead",
+    "ClothingCirclet",
+    "ClothingBody",
+    "ArmorHelmet",
+    "ArmorCuirass"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 194,
+     "examples": [
+      "Amber Armor of Eminent Conjuring",
+      "Amber Armor of Extreme Conjuring",
+      "Amber Armor of Peerless Conjuring",
+      "Amber Helmet of Eminent Conjuring",
+      "Amber Helmet of Extreme Conjuring"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB75",
+   "name": "Fortify Destruction",
+   "edid": "REQ_Ench_FortifyDestruction_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Destruction spells cost 4% less.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A0F6",
+     "name": "Fortify Destruction",
+     "text": "Destruction spells cost <mag>% less.",
+     "mag": 4.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingNecklace",
+    "ClothingRing",
+    "ClothingHead",
+    "ClothingCirclet",
+    "ClothingBody",
+    "ArmorHelmet",
+    "ArmorCuirass"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 199,
+     "examples": [
+      "Alik'r Battlemage Gauntlets",
+      "Amber Armor of Extreme Destruction",
+      "Amber Armor of Peerless Destruction",
+      "Amber Helmet of Eminent Destruction",
+      "Amber Helmet of Extreme Destruction"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB77",
+   "name": "Fortify Health (Rank I)",
+   "edid": "REQ_Ench_FortifyHealth_Base1",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Health increases by 20.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:0493AA",
+     "name": "Fortify Health (Rank I)",
+     "text": "Health increases by <mag>.",
+     "mag": 20.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorShield",
+    "ClothingBody",
+    "ClothingNecklace",
+    "ClothingRing",
+    "ArmorCuirass"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 102,
+     "examples": [
+      "Amber Armor of Eminent Health",
+      "Ancient Dragonplate Helmet",
+      "Azure Hinterland Robes of Eminent Health",
+      "Azure Hinterland Robes of Major Health",
+      "Banded Iron Cuirass of Health"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:2EA065",
+   "name": "Fortify Health (Rank II)",
+   "edid": "REQ_Ench_FortifyHealth_Base2",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Health increases by 20. Most paralysis effects don't adversely affect you.",
+   "effects": [
+    {
+     "id": "Requiem.esp:2EA064",
+     "name": "Fortify Health (Rank II)",
+     "text": "Health increases by <mag>. Most paralysis effects don't adversely affect you.",
+     "mag": 20.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorShield",
+    "ClothingBody",
+    "ClothingNecklace",
+    "ClothingRing",
+    "ArmorCuirass"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 32,
+     "examples": [
+      "Amber Armor of Extreme Health",
+      "Amber Armor of Peerless Health",
+      "Azure Hinterland Robes of Extreme Health",
+      "Daedric Cuirass of Extreme Health",
+      "Daedric Cuirass of Peerless Health"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB76",
+   "name": "Fortify Health Regeneration",
+   "edid": "REQ_Ench_FortifyHealthRegeneration_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Health regenerates 80% faster.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A0F8",
+     "name": "Fortify Health Regeneration",
+     "text": "Health regenerates <mag>% faster.",
+     "mag": 80.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingBody",
+    "ClothingNecklace",
+    "ClothingRing",
+    "ArmorCuirass",
+    "ClothingHead",
+    "ClothingCirclet",
+    "ArmorHelmet"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 61,
+     "examples": [
+      "Akaviri Shield",
+      "Amber Armor of Mending",
+      "Amber Armor of Regeneration",
+      "Amber Armor of Revival",
+      "Ancient Dragonplate Helmet"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB79",
+   "name": "Fortify Illusion",
+   "edid": "REQ_Ench_FortifyIllusion_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Illusions spells cost 4% less.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A0FA",
+     "name": "Fortify Illusion",
+     "text": "Illusions spells cost <mag>% less.",
+     "mag": 4.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingNecklace",
+    "ClothingRing",
+    "ClothingHead",
+    "ClothingCirclet",
+    "ClothingBody",
+    "ArmorHelmet",
+    "ArmorCuirass"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 176,
+     "examples": [
+      "Amber Armor of Eminent Illusion",
+      "Amber Armor of Extreme Illusion",
+      "Amber Armor of Peerless Illusion",
+      "Amber Helmet of Eminent Illusion",
+      "Amber Helmet of Extreme Illusion"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:ADE457",
+   "name": "Fortify Lockpicking",
+   "edid": "REQ_Ench_FortifyLockpicking_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Lockpicks are 20% more durable.",
+   "effects": [
+    {
+     "id": "Requiem.esp:ADE45A",
+     "name": "Fortify Lockpicking",
+     "text": "Lockpicks are <mag>% more durable.",
+     "mag": 20.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingCirclet",
+    "ArmorHelmet",
+    "ClothingHead",
+    "ArmorGauntlets",
+    "ClothingHands",
+    "ClothingNecklace",
+    "ClothingRing"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 55,
+     "examples": [
+      "Alain's Helmet",
+      "Amber Gauntlets of Eminent Lockpicking",
+      "Amber Gauntlets of Extreme Lockpicking",
+      "Amber Gauntlets of Peerless Lockpicking",
+      "Bonemold Gauntlets of Lockpicking"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB7C",
+   "name": "Fortify Magicka (Rank I)",
+   "edid": "REQ_Ench_FortifyMagicka_Base1",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Magicka increases by 20.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:049504",
+     "name": "Fortify Magicka (Rank I)",
+     "text": "Magicka increases by <mag>.",
+     "mag": 20.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorGauntlets",
+    "ClothingHands",
+    "ArmorHelmet",
+    "ClothingCirclet",
+    "ClothingHead",
+    "ClothingNecklace",
+    "ClothingRing"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 99,
+     "examples": [
+      "Amber Helmet of Eminent Magicka",
+      "Bonemold Helmet of Magicka",
+      "Bonemold Helmet of Major Magicka",
+      "Bonemold Helmet of Minor Magicka",
+      "Boots"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:35E763",
+   "name": "Fortify Magicka (Rank II)",
+   "edid": "REQ_Ench_FortifyMagicka_Base2",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Magicka increases by 20. Absorb spells deal 35% less damage to you.",
+   "effects": [
+    {
+     "id": "Requiem.esp:35E762",
+     "name": "Fortify Magicka (Rank II)",
+     "text": "Magicka increases by <mag>. Absorb spells deal <35>% less damage to you.",
+     "mag": 20.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorGauntlets",
+    "ClothingHands",
+    "ArmorHelmet",
+    "ClothingCirclet",
+    "ClothingHead",
+    "ClothingNecklace",
+    "ClothingRing"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 32,
+     "examples": [
+      "Alik'r Battlemage Helmet",
+      "Amber Helmet of Extreme Magicka",
+      "Amber Helmet of Peerless Magicka",
+      "Daedric Helmet of Extreme Magicka",
+      "Daedric Helmet of Peerless Magicka"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB7D",
+   "name": "Fortify Magicka Regeneration",
+   "edid": "REQ_Ench_FortifyMagickaRegeneration_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Magicka regenerates 40% faster.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A0FD",
+     "name": "Fortify Magicka Regeneration",
+     "text": "Magicka regenerates <mag>% faster.",
+     "mag": 40.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingCirclet",
+    "ArmorHelmet",
+    "ArmorCuirass",
+    "ClothingRing",
+    "ClothingBody",
+    "ClothingHead",
+    "ClothingNecklace"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 102,
+     "examples": [
+      "Aicantar's Dwarven Cuirass",
+      "Amber Helmet of Recovery",
+      "Amber Helmet of Replenishing",
+      "Amber Helmet of Resurgence",
+      "Azure Hinterland Robes of the Adept"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB7E",
+   "name": "Fortify Marksman",
+   "edid": "REQ_Ench_FortifyMarksman_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Ranged weapons deal 6% more damage.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A0FE",
+     "name": "Fortify Marksman",
+     "text": "Ranged weapons deal <mag>% more damage.",
+     "mag": 6.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingNecklace",
+    "ClothingHead",
+    "ClothingHands",
+    "ArmorGauntlets",
+    "ClothingRing",
+    "ClothingCirclet",
+    "ArmorHelmet"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 186,
+     "examples": [
+      "Akaviri Helmet",
+      "Alik'r Helmet",
+      "Alik'r Hood",
+      "Amber Gauntlets of Eminent Archery",
+      "Amber Gauntlets of Extreme Archery"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB7F",
+   "name": "Fortify One-Handed",
+   "edid": "REQ_Ench_FortifyOneHanded_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "One-handed weapons deal 6% more damage.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A0FF",
+     "name": "Fortify One-Handed",
+     "text": "One-handed weapons deal <mag>% more damage.",
+     "mag": 6.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingFeet",
+    "ArmorBoots",
+    "ClothingHands",
+    "ArmorGauntlets",
+    "ClothingNecklace",
+    "ClothingRing"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 128,
+     "examples": [
+      "Akaviri Gauntlets",
+      "Alik'r Gauntlets",
+      "Amber Gauntlets of Eminent Wielding",
+      "Amber Gauntlets of Extreme Wielding",
+      "Amber Gauntlets of Peerless Wielding"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB80",
+   "name": "Fortify Pickpocket",
+   "edid": "REQ_Ench_FortifyPickpocket_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Pickpocketing is 8% more likely to succeed.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A100",
+     "name": "Fortify Pickpocket",
+     "text": "Pickpocketing is <mag>% more likely to succeed.",
+     "mag": 8.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorBoots",
+    "ClothingFeet",
+    "ArmorGauntlets",
+    "ClothingHands",
+    "ClothingNecklace",
+    "ClothingRing"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 55,
+     "examples": [
+      "Amber Gauntlets of Eminent Deft Hands",
+      "Amber Gauntlets of Extreme Deft Hands",
+      "Amber Gauntlets of Peerless Deft Hands",
+      "Bonemold Gauntlets of Deft Hands",
+      "Bonemold Gauntlets of Major Deft Hands"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB82",
+   "name": "Fortify Reflect",
+   "edid": "REQ_Ench_FortifyReflect_Base",
+   "plugin": "Big Tweaks.esp",
+   "order": 2630,
+   "on": "armor",
+   "text": "Reflect 1% more physical damage.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A102",
+     "name": "Fortify Reflect",
+     "text": "Reflect <mag>% more physical damage.",
+     "mag": 1.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingHands",
+    "ArmorGauntlets",
+    "ClothingNecklace",
+    "ClothingRing"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 95,
+     "examples": [
+      "Amber Gauntlets of Eminent Reflect",
+      "Amber Gauntlets of Extreme Reflect",
+      "Amber Gauntlets of Peerless Reflect",
+      "Bonemold Gauntlets of Major Reflect",
+      "Bonemold Gauntlets of Minor Reflect"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB81",
+   "name": "Fortify Restoration",
+   "edid": "REQ_Ench_FortifyRestoration_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Restoration spells cost 4% less.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A101",
+     "name": "Fortify Restoration",
+     "text": "Restoration spells cost <mag>% less.",
+     "mag": 4.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingNecklace",
+    "ClothingRing",
+    "ClothingHead",
+    "ClothingCirclet",
+    "ClothingBody",
+    "ArmorHelmet",
+    "ArmorCuirass"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 197,
+     "examples": [
+      "Alik'r Battlemage Boots",
+      "Amber Armor of Eminent Restoration",
+      "Amber Armor of Extreme Restoration",
+      "Amber Armor of Peerless Restoration",
+      "Amber Helmet of Eminent Restoration"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB83",
+   "name": "Fortify Sneak",
+   "edid": "REQ_Ench_FortifySneak_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "You are 8% harder to detect and movement noise is decreased by half as much.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A103",
+     "name": "Fortify Sneak",
+     "text": "You are <mag>% harder to detect and movement noise is decreased by half as much.",
+     "mag": 8.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorBoots",
+    "ArmorGauntlets",
+    "ClothingHands",
+    "ClothingNecklace",
+    "ClothingRing",
+    "ClothingFeet"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 71,
+     "examples": [
+      "Amber Boots of Eminent Sneaking",
+      "Amber Boots of Extreme Sneaking",
+      "Amber Boots of Peerless Sneaking",
+      "Bonemold Boots of Major Sneaking",
+      "Bonemold Boots of Minor Sneaking"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB85",
+   "name": "Fortify Stamina (Rank I)",
+   "edid": "REQ_Ench_FortifyStamina_Base1",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Stamina increases by 20.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:049507",
+     "name": "Fortify Stamina (Rank I)",
+     "text": "Stamina increases by <mag>.",
+     "mag": 20.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingBody",
+    "ArmorCuirass",
+    "ClothingNecklace",
+    "ClothingRing",
+    "ClothingFeet",
+    "ArmorBoots"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 84,
+     "examples": [
+      "Amber Boots of Eminent Stamina",
+      "Chitin Heavy Boots of Eminent Stamina",
+      "Chitin Heavy Boots of Major Stamina",
+      "Chitin Heavy Boots of Stamina",
+      "Chitin Light Boots of Eminent Stamina"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:357087",
+   "name": "Fortify Stamina (Rank II)",
+   "edid": "REQ_Ench_FortifyStamina_Base2",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Stamina increases by 20. Most slowing effects don't adversely affect you.",
+   "effects": [
+    {
+     "id": "Requiem.esp:357086",
+     "name": "Fortify Stamina (Rank II)",
+     "text": "Stamina increases by <mag>. Most slowing effects don't adversely affect you.",
+     "mag": 20.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingBody",
+    "ArmorCuirass",
+    "ClothingNecklace",
+    "ClothingRing",
+    "ClothingFeet",
+    "ArmorBoots"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 34,
+     "examples": [
+      "Alain's Elven Boots",
+      "Alik'r Armor",
+      "Alik'r Cuirass",
+      "Amber Boots of Extreme Stamina",
+      "Amber Boots of Peerless Stamina"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB86",
+   "name": "Fortify Stamina Regeneration",
+   "edid": "REQ_Ench_FortifyStaminaRegeneration_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Stamina regenerates 40% faster.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A105",
+     "name": "Fortify Stamina Regeneration",
+     "text": "Stamina regenerates <mag>% faster.",
+     "mag": 40.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorBoots",
+    "ArmorCuirass",
+    "ClothingFeet",
+    "ClothingNecklace",
+    "ClothingBody",
+    "ClothingRing"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 57,
+     "examples": [
+      "Amber Armor of Invigoration",
+      "Amber Armor of Rejuvenation",
+      "Amber Armor of Renewal",
+      "Ancient Redguard Boots",
+      "Azure Hinterland Robes of Invigoration"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB87",
+   "name": "Fortify Two-Handed",
+   "edid": "REQ_Ench_FortifyTwoHanded_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Two-handed weapons deal 6% more damage.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:07A106",
+     "name": "Fortify Two-Handed",
+     "text": "Two-handed weapons deal <mag>% more damage.",
+     "mag": 6.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorBoots",
+    "ClothingFeet",
+    "ArmorGauntlets",
+    "ClothingHands",
+    "ClothingNecklace",
+    "ClothingRing"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 115,
+     "examples": [
+      "Amber Gauntlets of Eminent Sure Grip",
+      "Amber Gauntlets of Extreme Sure Grip",
+      "Amber Gauntlets of Peerless Sure Grip",
+      "Ancient Dragonplate Gauntlets",
+      "Bonemold Gauntlets of Major Sure Grip"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB88",
+   "name": "Fortify Unarmed",
+   "edid": "REQ_Ench_FortifyUnarmed_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Unarmed strikes do 4 additional damage.",
+   "effects": [
+    {
+     "id": "Requiem.esp:64C851",
+     "name": "Fortify Unarmed",
+     "text": "Unarmed strikes do <mag> additional damage.",
+     "mag": 4.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingRing",
+    "ClothingHands",
+    "ArmorGauntlets",
+    "ClothingFeet",
+    "ArmorBoots",
+    "ClothingNecklace"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 21,
+     "examples": [
+      "Alain's Elven Gauntlets",
+      "Brawler's Daedric Gauntlets",
+      "Brawler's Dragonplate Gauntlets",
+      "Brawler's Dragonscale Gauntlets",
+      "Brawler's Dwarven Gauntlets"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:2B59A8",
+   "name": "Illumination",
+   "edid": "REQ_Ench_Armor_Illumination",
+   "plugin": "Requiem.esp",
+   "order": 1603,
+   "on": "armor",
+   "text": "Grants the power to create a hovering light at will.",
+   "effects": [
+    {
+     "id": "Requiem.esp:2B59A6",
+     "name": "Illumination",
+     "text": "Grants the power to create a hovering light at will.",
+     "mag": 1.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingNecklace",
+    "ClothingRing",
+    "ClothingHead",
+    "ClothingCirclet",
+    "ClothingBody",
+    "ArmorHelmet",
+    "ArmorCuirass"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "Ring of Illumination"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB89",
+   "name": "Muffle",
+   "edid": "REQ_Ench_Muffle_Base",
+   "plugin": "Requiem.esp",
+   "order": 1603,
+   "on": "armor",
+   "text": "Wearer is muffled and moves silently.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:092A57",
+     "name": "Muffle",
+     "text": "Wearer is muffled and moves silently.",
+     "mag": 0.15000000596046448,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorBoots",
+    "ClothingFeet"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 11,
+     "examples": [
+      "Chitin Heavy Boots of Muffling",
+      "Daedric Boots of Muffling",
+      "Dragonplate Boots of Muffling",
+      "Golden Saint Boots of Muffling",
+      "Hinterland Ranger Boots of Muffling"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10EAD1",
+   "name": "Potent Alteration",
+   "edid": "EnchRobesAlterationBase",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Alteration spells cost 3% less to cast. Magicka regenerates 30% faster.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:10962E",
+     "name": "Fortify Alteration",
+     "text": "Alteration spells cost <mag>% less to cast.",
+     "mag": 3.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Skyrim.esm:109630",
+     "name": "Regenerate Magicka",
+     "text": "Magicka regenerates <mag>% faster.",
+     "mag": 30.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorCuirass",
+    "ClothingBody"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 36,
+     "examples": [
+      "Adept Robes of Alteration",
+      "Apprentice Robes of Alteration",
+      "Expert Robes of Alteration",
+      "Master Robes of Alteration",
+      "Novice Robes of Alteration"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10EAD2",
+   "name": "Potent Conjuration",
+   "edid": "EnchRobesConjurationBase",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Conjuration spells cost 3% less to cast. Magicka regenerates 30% faster.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:10962F",
+     "name": "Fortify Conjuration",
+     "text": "Conjuration spells cost <mag>% less to cast.",
+     "mag": 3.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Skyrim.esm:109630",
+     "name": "Regenerate Magicka",
+     "text": "Magicka regenerates <mag>% faster.",
+     "mag": 30.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorCuirass",
+    "ClothingBody"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 51,
+     "examples": [
+      "Adept Robes of Conjuration",
+      "Apprentice Robes of Conjuration",
+      "Expert Robes of Conjuration",
+      "Master Robes of Conjuration",
+      "Necromancer Union Robes"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10EAD3",
+   "name": "Potent Destruction",
+   "edid": "EnchRobesDestructionBase",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Destruction spells cost 3% less to cast. Magicka regenerates 30% faster.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:109631",
+     "name": "Fortify Destruction",
+     "text": "Destruction spells cost <mag>% less to cast.",
+     "mag": 3.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Skyrim.esm:109630",
+     "name": "Regenerate Magicka",
+     "text": "Magicka regenerates <mag>% faster.",
+     "mag": 30.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorCuirass",
+    "ClothingBody"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 51,
+     "examples": [
+      "Adept Robes of Destruction",
+      "Apprentice Robes of Destruction",
+      "Dark Witch Robe",
+      "Expert Robes of Destruction",
+      "Langley's Robes"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10EAD4",
+   "name": "Potent Illusion",
+   "edid": "EnchRobesIllusionBase",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Illusion spells cost 3% less to cast. Magicka regenerates 30% faster.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:109633",
+     "name": "Fortify Illusion",
+     "text": "Illusion spells cost <mag>% less to cast.",
+     "mag": 3.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Skyrim.esm:109630",
+     "name": "Regenerate Magicka",
+     "text": "Magicka regenerates <mag>% faster.",
+     "mag": 30.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorCuirass",
+    "ClothingBody"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 35,
+     "examples": [
+      "Adept Robes of Illusion",
+      "Apprentice Robes of Illusion",
+      "Expert Robes of Illusion",
+      "Master Robes of Illusion",
+      "Novice Robes of Illusion"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10EAD5",
+   "name": "Potent Restoration",
+   "edid": "EnchRobesRestorationBase",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Restoration spells cost 3% less to cast. Magicka regenerates 30% faster.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:109634",
+     "name": "Fortify Restoration",
+     "text": "Restoration spells cost <mag>% less to cast.",
+     "mag": 3.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Skyrim.esm:109630",
+     "name": "Regenerate Magicka",
+     "text": "Magicka regenerates <mag>% faster.",
+     "mag": 30.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorCuirass",
+    "ClothingBody"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 35,
+     "examples": [
+      "Adept Robes of Restoration",
+      "Apprentice Robes of Restoration",
+      "Expert Robes of Restoration",
+      "Master Robes of Restoration",
+      "Novice Robes of Restoration"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB8A",
+   "name": "Resist Disease",
+   "edid": "REQ_Ench_ResistDisease_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "You are 24% less likely to contract diseases.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:100E60",
+     "name": "Resist Disease",
+     "text": "You are <mag>% less likely to contract diseases.",
+     "mag": 24.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorShield",
+    "ClothingBody",
+    "ClothingNecklace",
+    "ClothingRing",
+    "ArmorCuirass"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 5,
+     "examples": [
+      "Ancient Fisherman Amulet",
+      "Necklace of Disease Immunity",
+      "Necklace of Disease Resistance",
+      "Pailune Healer Mask"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB8B",
+   "name": "Resist Fire",
+   "edid": "REQ_Ench_ResistFire_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Fire deals 10% less damage to you.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:048C8B",
+     "name": "Resist Fire",
+     "text": "Fire deals <mag>% less damage to you.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingRing",
+    "ArmorShield",
+    "ArmorBoots",
+    "ClothingNecklace",
+    "ClothingFeet"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 181,
+     "examples": [
+      "Akaviri Boots",
+      "Amber Boots of Fire Abatement",
+      "Amber Boots of Fire Suppression",
+      "Amber Boots of the Firewalker",
+      "Amber Shield of Fire Abatement"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB8C",
+   "name": "Resist Frost",
+   "edid": "REQ_Ench_ResistFrost_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Frost deals 10% less damage to you.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:048F45",
+     "name": "Resist Frost",
+     "text": "Frost deals <mag>% less damage to you.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingRing",
+    "ArmorShield",
+    "ArmorBoots",
+    "ClothingNecklace",
+    "ClothingFeet"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 179,
+     "examples": [
+      "Alik'r Boots",
+      "Amber Boots of Frost Abatement",
+      "Amber Boots of Frost Suppression",
+      "Amber Boots of Warmth",
+      "Amber Shield of Frost Abatement"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB8D",
+   "name": "Resist Magic",
+   "edid": "REQ_Ench_ResistMagic_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Magic deals 6% less damage to you.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:0B7A35",
+     "name": "Resist Magic",
+     "text": "Magic deals <mag>% less damage to you.",
+     "mag": 6.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingRing",
+    "ArmorShield",
+    "ClothingNecklace",
+    "ClothingBody",
+    "ArmorCuirass"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 115,
+     "examples": [
+      "Akaviri Shield",
+      "Alain's Elven Cuirass",
+      "Alik'r Buckler",
+      "Alik'r Shield",
+      "Amber Shield of Magic Abatement"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB8E",
+   "name": "Resist Poison",
+   "edid": "REQ_Ench_ResistPoison_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Poison deals 24% less damage to you.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:0FF15E",
+     "name": "Resist Poison",
+     "text": "Poison deals <mag>% less damage to you.",
+     "mag": 24.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ArmorShield",
+    "ClothingBody",
+    "ClothingNecklace",
+    "ClothingRing",
+    "ArmorCuirass"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 7,
+     "examples": [
+      "Dawnguard Armor of Poison Immunity",
+      "Dawnguard Heavy Armor of Poison Immunity",
+      "Dwarven Armor of Poison Immunity",
+      "Necklace of Poison Immunity",
+      "Necklace of Poison Resistance"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB8F",
+   "name": "Resist Shock",
+   "edid": "REQ_Ench_ResistShock_Base",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "armor",
+   "text": "Shock deals 10% less damage to you.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:049295",
+     "name": "Resist Shock",
+     "text": "Shock deals <mag>% less damage to you.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingRing",
+    "ArmorShield",
+    "ArmorBoots",
+    "ClothingNecklace",
+    "ClothingFeet"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 179,
+     "examples": [
+      "Aicantar's Dwarven Boots",
+      "Amber Boots of Grounding",
+      "Amber Boots of Shock Abatement",
+      "Amber Boots of Shock Suppression",
+      "Amber Shield of Grounding"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:98CA5C",
+   "name": "Stability",
+   "edid": "REQ_Ench_Ulfric_Boots",
+   "plugin": "Requiem.esp",
+   "order": 1603,
+   "on": "armor",
+   "text": "Mass increases by the equivalent of worn equipment weighting 200.",
+   "effects": [
+    {
+     "id": "Requiem.esp:98CA5B",
+     "name": "Fortify Mass",
+     "text": "Mass increases by the equivalent of worn equipment weighting <mag>.",
+     "mag": 200.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "Ulfric's Boots"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Artifacts of the Lore(Rim).esp:000BAB",
+   "name": "The Icecap",
+   "edid": "AOA_EnchArmorIcecap",
+   "plugin": "LoreRim - Spells and Magic Effects.esp",
+   "order": 3383,
+   "on": "armor",
+   "text": "Frost deals 75% less damage to you. Health, Magicka and Stamina recover by 0.1 per second.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:048F45",
+     "name": "Resist Frost",
+     "text": "Frost deals <mag>% less damage to you.",
+     "mag": 75.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "LoreRim - Spells and Magic Effects.esp:000810",
+     "name": "Restore Stamina",
+     "text": "Health, Magicka and Stamina recover by <0.1> per second.",
+     "mag": 0.10000000149011612,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "LoreRim - Spells and Magic Effects.esp:000811",
+     "name": "Restore Health",
+     "text": "",
+     "mag": 0.10000000149011612,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "LoreRim - Spells and Magic Effects.esp:000812",
+     "name": "Restore Magicka",
+     "text": "",
+     "mag": 0.10000000149011612,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "The Icecap"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB90",
+   "name": "Waterbreathing",
+   "edid": "REQ_Ench_Waterbreathing_Base",
+   "plugin": "Requiem.esp",
+   "order": 1603,
+   "on": "armor",
+   "text": "You can breathe underwater.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:092A48",
+     "name": "Waterbreathing",
+     "text": "You can breathe underwater.",
+     "mag": 1.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [
+    "ClothingNecklace",
+    "ClothingRing",
+    "ClothingCirclet",
+    "ClothingHead",
+    "ArmorHelmet",
+    "ClothingHands",
+    "ArmorGauntlets"
+   ],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 22,
+     "examples": [
+      "Amber Helmet of Waterbreathing",
+      "Chitin Heavy Helmet of Waterbreathing",
+      "Daedric Helmet of Waterbreathing",
+      "Dark Seducer Helmet of Waterbreathing",
+      "Dragonplate Helmet of Waterbreathing"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB91",
+   "name": "Absorb Health",
+   "edid": "REQ_Ench_Weapon_AbsorbHealth0",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Absorbs 6 health, but doesn't affect constructs or the undead.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:0AA155",
+     "name": "Absorb Health",
+     "text": "Absorbs <mag> health, but doesn't affect constructs or the undead.",
+     "mag": 6.0,
+     "area": 0,
+     "dur": 1
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 623,
+     "examples": [
+      "Amber Battleaxe of Devouring",
+      "Amber Battleaxe of Leeching",
+      "Amber Battleaxe of the Vampire",
+      "Amber Dagger of Devouring",
+      "Amber Dagger of Leeching"
+     ]
+    }
+   ],
+   "sameAs": [
+    "Big Tweaks.esp:000A9B"
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB9D",
+   "name": "Absorb Magicka",
+   "edid": "REQ_Ench_Weapon_AbsorbMagicka0",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Absorbs 6 magicka.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:0AA156",
+     "name": "Absorb Magicka",
+     "text": "Absorbs <mag> magicka.",
+     "mag": 6.0,
+     "area": 0,
+     "dur": 1
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 603,
+     "examples": [
+      "Amber Battleaxe of Evoking",
+      "Amber Battleaxe of the Sorcerer",
+      "Amber Battleaxe of Winnowing",
+      "Amber Dagger of Evoking",
+      "Amber Dagger of the Sorcerer"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB92",
+   "name": "Absorb Stamina",
+   "edid": "REQ_Ench_Weapon_AbsorbStamina0",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Absorbs 6 stamina, but doesn't affect constructs.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:0AA157",
+     "name": "Absorb Stamina",
+     "text": "Absorbs <mag> stamina, but doesn't affect constructs.",
+     "mag": 6.0,
+     "area": 0,
+     "dur": 1
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 603,
+     "examples": [
+      "Amber Battleaxe of Garnering",
+      "Amber Battleaxe of Harvesting",
+      "Amber Battleaxe of Subsuming",
+      "Amber Dagger of Garnering",
+      "Amber Dagger of Harvesting"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:03D4F1",
+   "name": "Annihilation",
+   "edid": "REQ_Ench_Weapon_Annihilation",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Deals 12 unresistable damage and has a small chance to inflict a severe amount of unresistable damage.",
+   "effects": [
+    {
+     "id": "Requiem.esp:1A2B6C",
+     "name": "Health Damage",
+     "text": "Deals <mag> unresistable damage and has a small chance to inflict a severe amount of unresistable damage.",
+     "mag": 12.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "power",
+     "power": "Artificer's Insight",
+     "perk": "Enchanting:Artificer's Insight"
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:03D4E8",
+   "name": "Arcane Power",
+   "edid": "REQ_Ench_Weapon_ArcanePower",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Deals 6 unresistable damage.",
+   "effects": [
+    {
+     "id": "Requiem.esp:184F06",
+     "name": "Arcane Power",
+     "text": "Deals <mag> unresistable damage.",
+     "mag": 6.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "power",
+     "power": "Arcane Experimentation",
+     "perk": "Enchanting:Arcane Experimentation"
+    }
+   ]
+  },
+  {
+   "id": "ForgottenCity.esp:05E755",
+   "name": "Bandit's bane",
+   "edid": "000FCGulvarsAxeEnchA",
+   "plugin": "ForgottenCity.esp",
+   "order": 77,
+   "on": "weapon",
+   "text": "10 points of extra damage to bandits.",
+   "effects": [
+    {
+     "id": "ForgottenCity.esp:05E757",
+     "name": "Bandit's bane",
+     "text": "<mag> points of extra damage to bandits.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "Gulvar's Axe"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB93",
+   "name": "Banish",
+   "edid": "REQ_Ench_Weapon_Banish0",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Summoned Daedra up to level 9 are sent back to Oblivion. If the target is not banished, it will be dealt 18 magical damage.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:0ACBB5",
+     "name": "Banish",
+     "text": "Summoned Daedra up to level <mag> are sent back to Oblivion.",
+     "mag": 9.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Requiem.esp:19DC30",
+     "name": "Banish",
+     "text": "If the target is not banished, it will be dealt <mag> magical damage.",
+     "mag": 18.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 263,
+     "examples": [
+      "Alessandra's Dagger",
+      "Carcette's Warhammer",
+      "Daedric Battleaxe of Annihilating",
+      "Daedric Battleaxe of Banishing",
+      "Daedric Battleaxe of Expelling"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Gray Fox Cowl.esm:05F05F",
+   "name": "Blade of Yokuda",
+   "edid": "manny_GF_Ench_BladeOfYokuda",
+   "plugin": "Gray Fox Cowl.esm",
+   "order": 114,
+   "on": "weapon",
+   "text": "Deals 15 frost damage and twice as much stamina damage.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:04605B",
+     "name": "Frost Damage",
+     "text": "Deals <mag> frost damage and twice as much stamina damage.",
+     "mag": 15.0,
+     "area": 0,
+     "dur": 30
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "Blade of Yokuda"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:0390F5",
+   "name": "Bloodskal Strike",
+   "edid": "DLC2EnchBloodskalDummyEnch",
+   "plugin": "Big Tweaks.esp",
+   "order": 2630,
+   "on": "weapon",
+   "text": "Releases an energy blast when using power attacks that deals damage, which scales with the Destruction skill, starting at 30 points of damage. Deals additional damage to Dragon Priests.",
+   "effects": [
+    {
+     "id": "Dragonborn.esm:0390F6",
+     "name": "Bloodskal Strike",
+     "text": "Releases an energy blast when using power attacks that deals damage, which scales with the Destruction skill, starting at <30> points of damage. Deals additional damage to Dragon Priests.",
+     "mag": 5.0,
+     "area": 0,
+     "dur": 1
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "Bloodskal Blade"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Dragonborn.esm:02C46E",
+   "name": "Chaos",
+   "edid": "REQ_Ench_Weapon_Chaos0",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "50% chance for each element of Fire, Frost and Shock to do 10 points of damage.",
+   "effects": [
+    {
+     "id": "Dragonborn.esm:02C46B",
+     "name": "Fire Damage",
+     "text": "",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 1
+    },
+    {
+     "id": "Dragonborn.esm:02C46D",
+     "name": "Frost Damage",
+     "text": "",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 1
+    },
+    {
+     "id": "Dragonborn.esm:02C46C",
+     "name": "Shock Damage",
+     "text": "<50>% chance for each element of Fire, Frost and Shock to do <mag> points of damage.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 1
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 305,
+     "examples": [
+      "Amber Battleaxe of Extreme Chaos",
+      "Amber Battleaxe of High Chaos",
+      "Amber Battleaxe of Ultimate Chaos",
+      "Amber Bow of Extreme Chaos",
+      "Amber Bow of High Chaos"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim Extended Cut - Saints and Seducers.esp:4E7BF4",
+   "name": "Chaotic Soul Trap",
+   "edid": "EC_SS_EnchWeaponChaosSoulTrapBase",
+   "plugin": "Skyrim Extended Cut - Saints and Seducers.esp",
+   "order": 67,
+   "on": "weapon",
+   "text": "35% chance for each element of fire, frost and shock to do 10 points of damage. Makes the target vulnerable to soul gems for 5 seconds.",
+   "effects": [
+    {
+     "id": "Skyrim Extended Cut - Saints and Seducers.esp:4E7BF6",
+     "name": "Fire Damage",
+     "text": "",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 1
+    },
+    {
+     "id": "Skyrim Extended Cut - Saints and Seducers.esp:4E7BF8",
+     "name": "Frost Damage",
+     "text": "",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 1
+    },
+    {
+     "id": "Skyrim Extended Cut - Saints and Seducers.esp:4E7BF7",
+     "name": "Shock Damage",
+     "text": "35% chance for each element of fire, frost and shock to do <mag> points of damage.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 1
+    },
+    {
+     "id": "Skyrim.esm:05B452",
+     "name": "Soul Trap",
+     "text": "Makes the target vulnerable to soul gems for <dur> seconds.",
+     "mag": 0.0,
+     "area": 0,
+     "dur": 5
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 26,
+     "examples": [
+      "Amber Battleaxe of Chaotic Souls",
+      "Amber Bow of Chaotic Souls",
+      "Amber Dagger of Chaotic Souls",
+      "Amber Greatsword of Chaotic Souls",
+      "Amber Halberd of Chaotic Souls"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB97",
+   "name": "Damage Magicka",
+   "edid": "REQ_Ench_Weapon_Magicka0",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Deals 40 magicka damage.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:05B44F",
+     "name": "Magicka Damage",
+     "text": "Deals <mag> magicka damage.",
+     "mag": 40.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 740,
+     "examples": [
+      "Amber Battleaxe of Depleting",
+      "Amber Battleaxe of Enervating",
+      "Amber Battleaxe of Nullifying",
+      "Amber Bow of Depleting",
+      "Amber Bow of Enervating"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB9B",
+   "name": "Damage Stamina",
+   "edid": "REQ_Ench_Weapon_Stamina0",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Deals 40 stamina damage.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:05B450",
+     "name": "Stamina Damage",
+     "text": "Deals <mag> stamina damage.",
+     "mag": 40.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 756,
+     "examples": [
+      "Amber Battleaxe of Debilitation",
+      "Amber Battleaxe of Exhaustion",
+      "Amber Battleaxe of Lethargy",
+      "Amber Bow of Debilitation",
+      "Amber Bow of Exhaustion"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:03EAC8",
+   "name": "Elemental Fury",
+   "edid": "REQ_Ench_Weapon_ElementalFury0",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Deals 5 fire damage. Deals 5 frost damage and twice as much stamina damage. Deals 5 shock damage and half as much magicka damage.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:04605A",
+     "name": "Fire Damage",
+     "text": "Deals <mag> fire damage.",
+     "mag": 5.0,
+     "area": 0,
+     "dur": 1
+    },
+    {
+     "id": "Skyrim.esm:04605B",
+     "name": "Frost Damage",
+     "text": "Deals <mag> frost damage and twice as much stamina damage.",
+     "mag": 5.0,
+     "area": 0,
+     "dur": 1
+    },
+    {
+     "id": "Skyrim.esm:04605C",
+     "name": "Shock Damage",
+     "text": "Deals <mag> shock damage and half as much magicka damage.",
+     "mag": 5.0,
+     "area": 0,
+     "dur": 1
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 4,
+     "examples": [
+      "Ebony Sword of Elemental Fury",
+      "General Tullius' Sword",
+      "Judgement",
+      "Rikvard"
+     ]
+    },
+    {
+     "kind": "power",
+     "power": "Artificer's Insight",
+     "perk": "Enchanting:Artificer's Insight"
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB94",
+   "name": "Fear",
+   "edid": "REQ_Ench_Weapon_Fear0",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Causes fear in creatures and people up to level 9 for 5 seconds.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:05B451",
+     "name": "Fear",
+     "text": "Causes fear in creatures and people up to level <mag> for <dur> seconds.",
+     "mag": 9.0,
+     "area": 0,
+     "dur": 5
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 575,
+     "examples": [
+      "Ancient Scimitar",
+      "Daedric Battleaxe of Despair",
+      "Daedric Battleaxe of Dread",
+      "Daedric Battleaxe of Terror",
+      "Daedric Bow of Despair"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Big Tweaks.esp:000A9F",
+   "name": "Fiery Soul Trap",
+   "edid": "EnchFierySoulsUnique",
+   "plugin": "Big Tweaks.esp",
+   "order": 2630,
+   "on": "weapon",
+   "text": "Makes the target vulnerable to soul gems for 5 seconds. Deals 3 fire damage for 5 seconds.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:05B452",
+     "name": "Soul Trap",
+     "text": "Makes the target vulnerable to soul gems for <dur> seconds.",
+     "mag": 0.0,
+     "area": 0,
+     "dur": 5
+    },
+    {
+     "id": "Big Tweaks.esp:000AA0",
+     "name": "Fire Damage",
+     "text": "Deals <mag> fire damage for <dur> seconds.",
+     "mag": 3.0,
+     "area": 0,
+     "dur": 5
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "Steel Battleaxe of Fiery Souls"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB95",
+   "name": "Fire",
+   "edid": "REQ_Ench_Weapon_Fire0",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Deals 10 fire damage.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:04605A",
+     "name": "Fire Damage",
+     "text": "Deals <mag> fire damage.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 763,
+     "examples": [
+      "Amber Battleaxe of Fire",
+      "Amber Battleaxe of the Blaze",
+      "Amber Battleaxe of the Inferno",
+      "Amber Bow of Fire",
+      "Amber Bow of the Blaze"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:0F5D17",
+   "name": "Fire Damage",
+   "edid": "dunEnchTrollsBaneFireDamage",
+   "plugin": "Big Tweaks.esp",
+   "order": 2630,
+   "on": "weapon",
+   "text": "Deals 2 fire damage to trolls and half that to non-trolls for 30 seconds.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:0F5D15",
+     "name": "Fire Damage",
+     "text": "Deals <mag> fire damage to trolls and half that to non-trolls for <dur> seconds.",
+     "mag": 2.0,
+     "area": 0,
+     "dur": 30
+    },
+    {
+     "id": "Big Tweaks.esp:000AA3",
+     "name": "Fire Damage",
+     "text": "",
+     "mag": 1.0,
+     "area": 0,
+     "dur": 30
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "Trollsbane"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:03D4F4",
+   "name": "Fireburst",
+   "edid": "REQ_Ench_Weapon_FireBurst",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Causes a fiery explosion when hitting a target, dealing 15 fire damage.",
+   "effects": [
+    {
+     "id": "Requiem.esp:03D4F2",
+     "name": "Flameburst",
+     "text": "Causes a fiery explosion when hitting a target, dealing <mag> fire damage.",
+     "mag": 15.0,
+     "area": 15,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "power",
+     "power": "Arcane Experimentation",
+     "perk": "Enchanting:Arcane Experimentation"
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:03D4EE",
+   "name": "Force (Rank I)",
+   "edid": "REQ_Ench_Weapon_Force1",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Has 10% chance to deal 9 magical damage and send the target flying.",
+   "effects": [
+    {
+     "id": "Requiem.esp:1A2B6A",
+     "name": "Force",
+     "text": "Has <10>% chance to deal <mag> magical damage and send the target flying.",
+     "mag": 9.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Requiem - Magic Redone.esp:0060EE",
+     "name": "Force",
+     "text": "Has <10>% chance to deal <mag> points of magical damage and to send the target flying.",
+     "mag": 5.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Requiem - Magic Redone.esp:0060EF",
+     "name": "Force",
+     "text": "Has <10>% chance to deal <mag> points of magical damage and to send the target flying.",
+     "mag": 0.25,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "power",
+     "power": "Arcane Experimentation",
+     "perk": "Enchanting:Arcane Experimentation"
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:03D500",
+   "name": "Force (Rank II)",
+   "edid": "REQ_Ench_Weapon_Force2",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Has 15% chance to deal 9 magical damage and send the target flying.",
+   "effects": [
+    {
+     "id": "Requiem.esp:1A2B69",
+     "name": "Force",
+     "text": "Has <15>% chance to deal <mag> magical damage and send the target flying.",
+     "mag": 9.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Requiem - Magic Redone.esp:0060F0",
+     "name": "Force",
+     "text": "Has <15>% chance to deal <mag> points of magical damage and to send the target flying.",
+     "mag": 5.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Requiem - Magic Redone.esp:0060F1",
+     "name": "Force",
+     "text": "Has <15>% chance to deal <mag> points of magical damage and to send the target flying.",
+     "mag": 0.25,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "power",
+     "power": "Artificer's Insight",
+     "perk": "Enchanting:Artificer's Insight"
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB96",
+   "name": "Frost",
+   "edid": "REQ_Ench_Weapon_Frost0",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Deals 10 frost damage and twice as much stamina damage.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:04605B",
+     "name": "Frost Damage",
+     "text": "Deals <mag> frost damage and twice as much stamina damage.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Skyrim.esm:0B72A0",
+     "name": "Slow",
+     "text": "",
+     "mag": 20.0,
+     "area": 0,
+     "dur": 3
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 818,
+     "examples": [
+      "Amber Battleaxe of Blizzards",
+      "Amber Battleaxe of Freezing",
+      "Amber Battleaxe of Winter",
+      "Amber Bow of Blizzards",
+      "Amber Bow of Freezing"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:03D4F7",
+   "name": "Frostburst",
+   "edid": "REQ_Ench_Weapon_FrostBurst",
+   "plugin": "Big Tweaks.esp",
+   "order": 2630,
+   "on": "weapon",
+   "text": "Causes an icy explosion when hitting a target, dealing 15 frost damage.",
+   "effects": [
+    {
+     "id": "Requiem.esp:03D4F5",
+     "name": "Frostburst",
+     "text": "Causes an icy explosion when hitting a target, dealing <mag> frost damage.",
+     "mag": 15.0,
+     "area": 15,
+     "dur": 0
+    },
+    {
+     "id": "Skyrim.esm:0B72A0",
+     "name": "Slow",
+     "text": "",
+     "mag": 30.0,
+     "area": 15,
+     "dur": 3
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "power",
+     "power": "Arcane Experimentation",
+     "perk": "Enchanting:Arcane Experimentation"
+    }
+   ]
+  },
+  {
+   "id": "Gray Fox Cowl.esm:02299B",
+   "name": "Ocato's Fear",
+   "edid": "manny_GF_Ench_Ocato",
+   "plugin": "Gray Fox Cowl.esm",
+   "order": 114,
+   "on": "weapon",
+   "text": "Creatures, undead and people up to level 15 flee from combat for 30 seconds.",
+   "effects": [
+    {
+     "id": "Gray Fox Cowl.esm:025966",
+     "name": "Fear",
+     "text": "Creatures, undead and people up to level <mag> flee from combat for <dur> seconds.",
+     "mag": 15.0,
+     "area": 0,
+     "dur": 30
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "Ocato's Dagger"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB98",
+   "name": "Paralyze",
+   "edid": "REQ_Ench_Weapon_Paralysis0",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Has 5% chance to paralyze targets for 2 seconds.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:0ACBB6",
+     "name": "Paralyze",
+     "text": "Has <5>% chance to paralyze targets for <dur> seconds.",
+     "mag": 0.0,
+     "area": 0,
+     "dur": 2
+    },
+    {
+     "id": "Requiem - Magic Redone.esp:0060ED",
+     "name": "Paralyze",
+     "text": "Has <5>% chance to paralyze targets for <dur> seconds.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 390,
+     "examples": [
+      "Amber Battleaxe of Immobilizing",
+      "Amber Battleaxe of Petrifying",
+      "Amber Battleaxe of Stunning",
+      "Amber Bow of Immobilizing",
+      "Amber Bow of Petrifying"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:101932",
+   "name": "Poison Damage",
+   "edid": "TrapDartPoisonWeapEnch01",
+   "plugin": "Requiem.esp",
+   "order": 1603,
+   "on": "weapon",
+   "text": "Inflicts 5 poison damage per second for 7 seconds.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:101931",
+     "name": "Poison Damage",
+     "text": "Inflicts <mag> poison damage per second for <dur> seconds.",
+     "mag": 5.0,
+     "area": 0,
+     "dur": 7
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "Akaviri Snakesword"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB99",
+   "name": "Shock",
+   "edid": "REQ_Ench_Weapon_Shock0",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Deals 10 shock damage and half as much magicka damage. Does triple damage to constructs.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:04605C",
+     "name": "Shock Damage",
+     "text": "Deals <mag> shock damage and half as much magicka damage.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 0
+    },
+    {
+     "id": "Requiem.esp:19DC31",
+     "name": "Shock Damage",
+     "text": "Does triple damage to constructs.",
+     "mag": 20.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 525,
+     "examples": [
+      "Amber Battleaxe of Thunderbolts",
+      "Amber Bow of Thunderbolts",
+      "Amber Dagger of Thunderbolts",
+      "Amber Greatsword of Thunderbolts",
+      "Amber Halberd of Thunderbolts"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:19DC32",
+   "name": "Shock (Rank II)",
+   "edid": "REQ_DEPRECATED_Ench_Weapon_Shock02",
+   "plugin": "Requiem.esp",
+   "order": 1603,
+   "on": "weapon",
+   "text": "Deals 10 shock damage and half as much magicka damage. Does triple damage to constructs.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:04605C",
+     "name": "Shock Damage",
+     "text": "Deals <mag> shock damage and half as much magicka damage.",
+     "mag": 10.0,
+     "area": 0,
+     "dur": 1
+    },
+    {
+     "id": "Requiem.esp:19DC31",
+     "name": "Shock Damage",
+     "text": "Does triple damage to constructs.",
+     "mag": 20.0,
+     "area": 0,
+     "dur": 1
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 245,
+     "examples": [
+      "Amber Battleaxe of Lightning",
+      "Amber Battleaxe of Storms",
+      "Amber Bow of Lightning",
+      "Amber Bow of Storms",
+      "Amber Dagger of Lightning"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:03D4FA",
+   "name": "Shockburst",
+   "edid": "REQ_Ench_Weapon_ShockBurst",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Causes a lightning explosion when hitting a target, dealing 15 shock damage.",
+   "effects": [
+    {
+     "id": "Requiem.esp:03D4F8",
+     "name": "Shockburst",
+     "text": "Causes a lightning explosion when hitting a target, dealing <mag> shock damage.",
+     "mag": 15.0,
+     "area": 15,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "power",
+     "power": "Arcane Experimentation",
+     "perk": "Enchanting:Arcane Experimentation"
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB9A",
+   "name": "Soul Trap",
+   "edid": "REQ_Ench_Weapon_SoulTrap0",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Makes the target vulnerable to soul gems for 9 seconds.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:05B452",
+     "name": "Soul Trap",
+     "text": "Makes the target vulnerable to soul gems for <dur> seconds.",
+     "mag": 0.0,
+     "area": 0,
+     "dur": 9
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 756,
+     "examples": [
+      "Amber Battleaxe of Animus",
+      "Amber Battleaxe of Damnation",
+      "Amber Battleaxe of Malediction",
+      "Amber Bow of Animus",
+      "Amber Bow of Damnation"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:2E2331",
+   "name": "Soulreaping",
+   "edid": "REQ_Ench_Weapon_Soulreaping",
+   "plugin": "Requiem.esp",
+   "order": 1603,
+   "on": "weapon",
+   "text": "If wielded by a denizen of the Soul Cairn, it deals 6 magic damage to any living being and also reduces the potency of all healing effects by 75% for 10 seconds.",
+   "effects": [
+    {
+     "id": "Requiem.esp:2E2334",
+     "name": "Soulreaping",
+     "text": "If wielded by a denizen of the Soul Cairn, it deals <mag> magic damage to any living being and also reduces the potency of all healing effects by <75>% for <dur> seconds.",
+     "mag": 6.0,
+     "area": 0,
+     "dur": 10
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 5,
+     "examples": [
+      "Axe of Soulreaping",
+      "Battle Axe of Soulreaping",
+      "Bow of Soulreaping",
+      "Greatsword of Soulreaping",
+      "Sword of Soulreaping"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:0477F8",
+   "name": "Spellbreaking",
+   "edid": "REQ_Ench_Weapon_Spellbreaking",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Damages magicka by 90 and dispels all active magic effects from the target.",
+   "effects": [
+    {
+     "id": "Requiem.esp:1A2B6B",
+     "name": "Spellbreaking",
+     "text": "Damages magicka by <mag> and dispels all active magic effects from the target.",
+     "mag": 90.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "power",
+     "power": "Artificer's Insight",
+     "perk": "Enchanting:Artificer's Insight"
+    }
+   ]
+  },
+  {
+   "id": "Requiem.esp:03D4E9",
+   "name": "Toxicity",
+   "edid": "REQ_Ench_Weapon_Toxicity",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "The weapon is infused with a magical poison, dealing 6 damage to health and stamina for 5 seconds.",
+   "effects": [
+    {
+     "id": "Requiem.esp:03D4EB",
+     "name": "Toxicity",
+     "text": "The weapon is infused with a magical poison, dealing <mag> damage to health and stamina for <dur> seconds.",
+     "mag": 6.0,
+     "area": 0,
+     "dur": 5
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 1,
+     "examples": [
+      "Axe of Hjaalmarch"
+     ]
+    },
+    {
+     "kind": "power",
+     "power": "Artificer's Insight",
+     "perk": "Enchanting:Artificer's Insight"
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:10FB9C",
+   "name": "Turn Undead",
+   "edid": "REQ_Ench_Weapon_TurnUndead0",
+   "plugin": "Requiem - Magic Redone.esp",
+   "order": 1653,
+   "on": "weapon",
+   "text": "Undead up to level 9 flee for 5 seconds. Additionally, deals 18 magic damage to undead.",
+   "effects": [
+    {
+     "id": "Skyrim.esm:05B46B",
+     "name": "Turn Undead",
+     "text": "Undead up to level <mag> flee for <dur> seconds.",
+     "mag": 9.0,
+     "area": 0,
+     "dur": 5
+    },
+    {
+     "id": "Requiem.esp:17D82B",
+     "name": "Turn Undead",
+     "text": "Additionally, deals <mag> magic damage to undead.",
+     "mag": 18.0,
+     "area": 0,
+     "dur": 0
+    }
+   ],
+   "wornRestrictions": [],
+   "sources": [
+    {
+     "kind": "item",
+     "count": 587,
+     "examples": [
+      "Blessed Iron Claws",
+      "Blessed Iron Halberd",
+      "Blessed Iron Javelin",
+      "Blessed Iron Katana",
+      "Blessed Iron Pike"
+     ]
+    }
+   ]
+  }
+ ],
+ "runestone": [
+  {
+   "power": "RunemasterMagic.esl:00085A",
+   "name": "Almighty Bolt",
+   "tome": "Power Tome: Almighty Bolt",
+   "perks": [
+    "Enchanting:Corpus Lore"
+   ],
+   "cost": {
+    "runestone": "_RM_Runestone_Arcane",
+    "count": 3
+   },
+   "text": "A powerful bolt of arcane energy that does 160 damage to health, Magicka, and Stamina. 3 Arcane Runestone for a single use enchantment.",
+   "enchantment": "RunemasterMagic.esl:000839"
+  },
+  {
+   "power": "RunemasterMagic.esl:00084E",
+   "name": "Baleful Glow",
+   "tome": "Power Tome: Baleful Glow",
+   "perks": [
+    "Enchanting:Corpus Lore"
+   ],
+   "cost": {
+    "runestone": "_RM_Runestone_Tenebrous",
+    "count": 2
+   },
+   "text": "A powerful nether shockwave dealing 80 points of damage. Targets flee from combat for 5 seconds. 2 Tenebrous Runestone for a 30 seconds enchantment.",
+   "enchantment": "RunemasterMagic.esl:000843"
+  },
+  {
+   "power": "RunemasterMagic.esl:000846",
+   "name": "Havoc",
+   "tome": "Power Tome: Havoc",
+   "perks": [
+    "Enchanting:Elemental Lore"
+   ],
+   "cost": {
+    "runestone": "_RM_Runestone_Arcane",
+    "count": 2
+   },
+   "text": "A powerful kinetic shockwave dealing 80 points of damage. Pushes, disarms, and staggers nearby targets. 2 Arcane Runestone for a single use enchantment.",
+   "enchantment": "RunemasterMagic.esl:00083B"
+  },
+  {
+   "power": "RunemasterMagic.esl:00085D",
+   "name": "Runestorm",
+   "tome": "Power Tome: Runestorm",
+   "perks": [
+    "Enchanting:Elemental Lore"
+   ],
+   "cost": {
+    "runestone": "_RM_Runestone_Arcane",
+    "count": 2
+   },
+   "text": "A storm of arcane blades dealing 15 damage, and up to quadruple the amount to those with low Magic Resistance. 2 Arcane Runestone for a single use enchantment.",
+   "enchantment": "RunemasterMagic.esl:000845"
+  },
+  {
+   "power": "RunemasterMagic.esl:000848",
+   "name": "Spectral Slash",
+   "tome": "Power Tome: Spectral Slash",
+   "perks": [
+    "Enchanting:Corpus Lore"
+   ],
+   "cost": {
+    "runestone": "_RM_Runestone_Tenebrous",
+    "count": 1
+   },
+   "text": "A blade of nether energy dealing 20 points of damage. Absorbs 20 points of Health. 1 Tenebrous Runestone for a 30 seconds enchantment.",
+   "enchantment": "RunemasterMagic.esl:00083F"
+  },
+  {
+   "power": "RunemasterMagic.esl:000856",
+   "name": "Stunning Blast",
+   "tome": "Power Tome: Stunning Blast",
+   "perks": [
+    "Enchanting:Elemental Lore"
+   ],
+   "cost": {
+    "runestone": "_RM_Runestone_Arcane",
+    "count": 1
+   },
+   "text": "Arcane energy leaps between targets, dealing 10 points of damage. Targets periodically stagger. 1 Arcane Runestone for a 30 seconds enchantment.",
+   "enchantment": "RunemasterMagic.esl:000841"
+  },
+  {
+   "power": "RunemasterMagic.esl:000860",
+   "name": "Sundering Inferno",
+   "tome": "Power Tome: Sundering Inferno",
+   "perks": [
+    "Enchanting:Elemental Lore"
+   ],
+   "cost": {
+    "runestone": "_RM_Runestone_Arcane",
+    "count": 2
+   },
+   "text": "An ethereal blaze dealing 80 points of damage. Lowers Magic Resistance by 30 for 30 seconds. 2 Arcane Runestone for a single use enchantment.",
+   "enchantment": "RunemasterMagic.esl:000844"
+  },
+  {
+   "power": "RunemasterMagic.esl:0008BF",
+   "name": "Transfer Rune",
+   "tome": "Power Tome: Transfer Rune",
+   "perks": [
+    "Enchanting:Corpus Lore"
+   ],
+   "cost": {
+    "runestone": "_RM_Runestone_Arcane",
+    "count": 1
+   },
+   "text": "Allows runic enchantments to apply to nearby allies as well when cast. 1 Arcane Runestone for a 360 seconds magic effect.",
+   "enchantment": null
+  },
+  {
+   "power": "RunemasterMagic.esl:00084B",
+   "name": "Umbral Veil",
+   "tome": "Power Tome: Umbral Veil",
+   "perks": [
+    "Enchanting:Corpus Lore"
+   ],
+   "cost": {
+    "runestone": "_RM_Runestone_Tenebrous",
+    "count": 4
+   },
+   "text": "A veil of shadow dealing 10 points of damage per second for 30 seconds. Reduces Health by 100. 4 Tenebrous Runestone for a single use enchantment.",
+   "enchantment": "RunemasterMagic.esl:000836"
+  }
+ ]
+}
