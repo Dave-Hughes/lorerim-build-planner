@@ -1,42 +1,13 @@
 {
  "counts": {
-  "powers": 378,
+  "powers": 344,
   "fromPerks": 46,
-  "shouts": 32
+  "shouts": 32,
+  "races": 10,
+  "raceSpells": 30,
+  "raceCopiesSkipped": 10
  },
  "powers": [
-  {
-   "id": "3BBB.esp:00080D",
-   "name": "3BBB Physics Toggle - NPC",
-   "edid": "3BSMPTOGGLE_A",
-   "kind": "Lesser power",
-   "text": "",
-   "plugin": "3BBB.esp"
-  },
-  {
-   "id": "3BBB.esp:00084C",
-   "name": "3BBB Physics Toggle - NPC Multiple",
-   "edid": "3BSMPTOGGLE_Multiple",
-   "kind": "Lesser power",
-   "text": "",
-   "plugin": "3BBB.esp"
-  },
-  {
-   "id": "3BBB.esp:000807",
-   "name": "3BBB Physics Toggle - Player",
-   "edid": "3BSMPTOGGLE_PowerSelf",
-   "kind": "Lesser power",
-   "text": "",
-   "plugin": "3BBB.esp"
-  },
-  {
-   "id": "Forgotten City Music Fix.esp:000D64",
-   "name": "[Forgotten City Music Fixer]",
-   "edid": "aaa_ForgottenCityMusicFixerSpell",
-   "kind": "Lesser power",
-   "text": "Obsolete spell from an earlier version. The process is handled automatically now.",
-   "plugin": "Forgotten City Music Fix.esp"
-  },
   {
    "id": "Tools of Kagrenac.esp:1267AB",
    "name": "Aetherial Cloak",
@@ -318,14 +289,6 @@
    "plugin": "LoreRim - Spells and Magic Effects.esp"
   },
   {
-   "id": "BowRapidCombo.esp:000891",
-   "name": "BowRapidSwitchPower",
-   "edid": "BowRapidOnOffSP",
-   "kind": "Lesser power",
-   "text": "",
-   "plugin": "BowRapidCombo.esp"
-  },
-  {
    "id": "Requiem.esp:3FF1EB",
    "name": "Break Concentration",
    "edid": "REQ_Illusion_BreakConcentration",
@@ -340,14 +303,6 @@
    "kind": "Lesser power",
    "text": "Draws upon stamina to release a scorching blast of steam that deals MAG points of damage per second.",
    "plugin": "Fozars_Dragonborn_-_Requiem_Patch.esp"
-  },
-  {
-   "id": "HLIORemi.esp:18BBC6",
-   "name": "Call Remi",
-   "edid": "HLIOCallRemiSpell",
-   "kind": "Lesser power",
-   "text": "",
-   "plugin": "LoreRim - Remi Patch.esp"
   },
   {
    "id": "Callings.esp:000917",
@@ -470,14 +425,6 @@
    "plugin": "Ordinator - Perks of Skyrim.esp"
   },
   {
-   "id": "Tools of Kagrenac.esp:438A2C",
-   "name": "Cancel Morph",
-   "edid": "TOK_SPEL_CancelMorph_Spell_PC",
-   "kind": "Lesser power",
-   "text": "Cancels an ongoing morph.",
-   "plugin": "Tools of Kagrenac.esp"
-  },
-  {
    "id": "Ordinator - Perks of Skyrim.esp:039FD8",
    "name": "Ceremony!",
    "edid": "ORD_Enc_Ceremony_Spell",
@@ -516,22 +463,6 @@
    "kind": "Lesser power",
    "text": "Drains a quarter of your current weapon charge to restore Health by 15% of the amount drained and Magicka and Stamina by 25% of the amount drained.",
    "plugin": "Ordinator - Perks of Skyrim.esp"
-  },
-  {
-   "id": "SkySigns.esp:000D64",
-   "name": "Choose Birthsign",
-   "edid": "SkySigns_Ab",
-   "kind": "Power",
-   "text": "",
-   "plugin": "SkySigns.esp"
-  },
-  {
-   "id": "Requiem - Birthsigns Redone.esp:000813",
-   "name": "Choose Birthsign",
-   "edid": "REQ_Ability_Birthsign_ChooseBirthsign",
-   "kind": "Lesser power",
-   "text": "Choose a Birthsign",
-   "plugin": "Requiem - Birthsigns Redone.esp"
   },
   {
    "id": "Ordinator - Perks of Skyrim.esp:036EA8",
@@ -590,14 +521,6 @@
    "plugin": "Ordinator - Perks of Skyrim.esp"
   },
   {
-   "id": "GORE.esp:01205A",
-   "name": "Debug Gore",
-   "edid": "HD1GoreDebugSpell",
-   "kind": "Lesser power",
-   "text": "",
-   "plugin": "GORE.esp"
-  },
-  {
    "id": "ForgottenCity.esp:0AABC0",
    "name": "Decree of the Arbiter",
    "edid": "000FCArbiterDecree",
@@ -612,14 +535,6 @@
    "kind": "Lesser power",
    "text": "",
    "plugin": "LoreRim Trapper.esp"
-  },
-  {
-   "id": "SubclassesOfSkyrim.esp:000807",
-   "name": "Destiny",
-   "edid": "DAR_Destiny",
-   "kind": "Lesser power",
-   "text": "Path to your Destiny.",
-   "plugin": "SubclassesOfSkyrim.esp"
   },
   {
    "id": "Requiem - Magic Redone.esp:005B99",
@@ -638,28 +553,12 @@
    "plugin": "Ordinator - Perks of Skyrim.esp"
   },
   {
-   "id": "Ordinator - Perks of Skyrim.esp:0BFB0F",
-   "name": "Disassemble Advanced Workshop",
-   "edid": "ORD_Smh_AdvancedWorkshop_Spell_DisassemblePower",
-   "kind": "Lesser power",
-   "text": "Disassembles your Advanced Workshop.",
-   "plugin": "Ordinator - Perks of Skyrim.esp"
-  },
-  {
    "id": "Ordinator - Perks of Skyrim.esp:036EA1",
    "name": "Disengage",
    "edid": "ORD_Sne_Disengage_Spell",
    "kind": "Power",
    "text": "All enemies within 100 feet who are attacking you or searching for you instantly stop and resume their normal activities.",
    "plugin": "Ordinator - Perks of Skyrim.esp"
-  },
-  {
-   "id": "Wintersun - GotT Patch.esp:000866",
-   "name": "Dismiss Dwarven Automaton",
-   "edid": "WSN_Tribunal_SothaSil_Boon2_DismissDwemerAutomaton",
-   "kind": "Lesser power",
-   "text": "",
-   "plugin": "Wintersun - GotT Patch.esp"
   },
   {
    "id": "Triumvirate - Mage Archetypes.esp:2B6F39",
@@ -740,14 +639,6 @@
    "kind": "Power",
    "text": "For 60 seconds, opponents in melee range take 20 frost damage to health and stamina per second.",
    "plugin": "Big Tweaks.esp"
-  },
-  {
-   "id": "Ordinator - Perks of Skyrim.esp:01E14D",
-   "name": "Dream Thrall Release",
-   "edid": "ORD_Ill_DreamGeas_Spell_DispelPower",
-   "kind": "Lesser power",
-   "text": "Releases a Dream Thrall from your command.",
-   "plugin": "Ordinator - Perks of Skyrim.esp"
   },
   {
    "id": "RuneDreamstrides.esp:2A3835",
@@ -835,14 +726,6 @@
    "edid": "REQ_Destruction2_Entropic_EnchSelf",
    "kind": "Lesser power",
    "text": "The caster's non-enchanted weapons are magically enhanced, dealing 11 magical damage for 15 seconds.",
-   "plugin": "Requiem - Magic Redone.esp"
-  },
-  {
-   "id": "Requiem.esp:0832CC",
-   "name": "Examine",
-   "edid": "RFTI_Player_Examine",
-   "kind": "Lesser power",
-   "text": "",
    "plugin": "Requiem - Magic Redone.esp"
   },
   {
@@ -1014,22 +897,6 @@
    "plugin": "Ordinator - Perks of Skyrim.esp"
   },
   {
-   "id": "Press E To Heal Followers.esp:000800",
-   "name": "Heal Downed Follower",
-   "edid": "HealFollowers_Spell",
-   "kind": "Lesser power",
-   "text": "",
-   "plugin": "Press E To Heal Followers.esp"
-  },
-  {
-   "id": "HotKeySkill.esp:008EEA",
-   "name": "HKSSwitchPower",
-   "edid": "HKS_ON/OFF_SP",
-   "kind": "Lesser power",
-   "text": "",
-   "plugin": "HotKeySkill.esp"
-  },
-  {
    "id": "Ordinator - Perks of Skyrim.esp:021260",
    "name": "Horn of Sovngarde",
    "edid": "ORD_Spe_HornOfSovngarde_Spell",
@@ -1060,38 +927,6 @@
    "kind": "Lesser power",
    "text": "",
    "plugin": "Dawnguard.esm"
-  },
-  {
-   "id": "Remote Interactions.esp:00080A",
-   "name": "Interact From Afar",
-   "edid": "CTN_Call_NPC_Spell",
-   "kind": "Lesser power",
-   "text": "Shout someone's name to get their attention.",
-   "plugin": "Remote Interactions.esp"
-  },
-  {
-   "id": "Katana.esp:FE7654",
-   "name": "Journey in the Shadows Debug",
-   "edid": "AK69KatanaUnstuckSP",
-   "kind": "Lesser power",
-   "text": "Try this if the Journey in the Shadows companions are sneaking and you're not, or fighting a friendly face.",
-   "plugin": "Katana.esp"
-  },
-  {
-   "id": "Katana.esp:983BA4",
-   "name": "Katana Affinity Check",
-   "edid": "AK69KatanaRelationshipCheckSpell",
-   "kind": "Lesser power",
-   "text": "Use this to check your relationship with Katana.",
-   "plugin": "Katana.esp"
-  },
-  {
-   "id": "Katana.esp:983BA5",
-   "name": "Katana Relationship Major Inc Spell",
-   "edid": "AK69KatanaRelationshipMajorIncSpell",
-   "kind": "Lesser power",
-   "text": "Majorly increases Katana's relationship level. Also, hello, if you are reading this. Take this as a sign to buy pizza.",
-   "plugin": "Katana.esp"
   },
   {
    "id": "Paragliding.esp:010C67",
@@ -1164,14 +999,6 @@
    "kind": "Lesser power",
    "text": "Makes your Skeletons within 100 feet disappear for 20 seconds, granting passage.",
    "plugin": "Ordinator - Perks of Skyrim.esp"
-  },
-  {
-   "id": "Helmet Toggle 2.esp:000A5D",
-   "name": "Manage Helmet",
-   "edid": "HT_ManageHelmetPower",
-   "kind": "Lesser power",
-   "text": "",
-   "plugin": "Helmet Toggle 2.esp"
   },
   {
    "id": "Ordinator - Perks of Skyrim.esp:070D1C",
@@ -1292,14 +1119,6 @@
    "kind": "Power",
    "text": "Targets are frozen between Oblivion and Tamriel for 30 seconds, and immune to all damage.",
    "plugin": "Dragonborn.esm"
-  },
-  {
-   "id": "GORE.esp:D3558C",
-   "name": "Move To Camp",
-   "edid": "HD1GoreCampsiteSpell",
-   "kind": "Lesser power",
-   "text": "",
-   "plugin": "GORE.esp"
   },
   {
    "id": "Ordinator - Perks of Skyrim.esp:0342F8",
@@ -1582,22 +1401,6 @@
    "plugin": "Callings.esp"
   },
   {
-   "id": "Katana.esp:1CD741",
-   "name": "Reset Megara Pose",
-   "edid": "AK69MegaraUnstuckSP",
-   "kind": "Lesser power",
-   "text": "Is Megara stuck in T-pose? Is she sneaking and you're not? Is she fighting a friendly face? Try this. Only works if she's in your party.",
-   "plugin": "Katana.esp"
-  },
-  {
-   "id": "Katana.esp:0AAFFF",
-   "name": "Reset Shale Pose",
-   "edid": "AK69ShaleUnstuckSP",
-   "kind": "Lesser power",
-   "text": "Is Shale stuck in T-pose? Is he sneaking and you're not? Is he fighting a friendly face? Try this. Only works if he's in your party.",
-   "plugin": "Katana.esp"
-  },
-  {
    "id": "Ordinator - Perks of Skyrim.esp:0AC6F2",
    "name": "Revelation",
    "edid": "ORD_Res_Revelation_Spell",
@@ -1702,22 +1505,6 @@
    "plugin": "Unofficial Skyrim Special Edition Patch.esp"
   },
   {
-   "id": "LoreRim Doomstones.esp:000024",
-   "name": "Select Standing Stone",
-   "edid": "LoreRimDoomstones_DoomSelectionPower",
-   "kind": "Lesser power",
-   "text": "Select an Standing Stone to apply.",
-   "plugin": "LoreRim Doomstones.esp"
-  },
-  {
-   "id": "Biggie Traits.esp:000004",
-   "name": "Select Traits",
-   "edid": "Traits_SelectionSpell",
-   "kind": "Power",
-   "text": "",
-   "plugin": "Biggie Traits.esp"
-  },
-  {
    "id": "Requiem - Birthsigns Redone.esp:00080C",
    "name": "Serpent's Curse",
    "edid": "REQ_Ability_Birthsign_Serpent_SerpentsCurse",
@@ -1739,14 +1526,6 @@
    "edid": "REQ_Spell_Illusion5_ShadowSummon_ShadowCloneSelf",
    "kind": "Lesser power",
    "text": "The caster calls upon the power of shadow magic, weaving darkness into a shadowy clone of themselves for 4 seconds. The clone uses the weapons and spells equipped by the caster.",
-   "plugin": "Shadow Clone on Self.esp"
-  },
-  {
-   "id": "Shadow Clone on Self.esp:000843",
-   "name": "Shadow Clone on Self - Select Shout",
-   "edid": "madAddShoutSpell",
-   "kind": "Lesser power",
-   "text": "Sets caster's Shadow Clone to use the caster's equipped shout. To disable shouting, cast with no shout equipped.",
    "plugin": "Shadow Clone on Self.esp"
   },
   {
@@ -1828,22 +1607,6 @@
    "kind": "Power",
    "text": "Heals the caster by 300 points. The spell does not affect undead, atronachs or constructs.",
    "plugin": "Requiem.esp"
-  },
-  {
-   "id": "Ordinator - Perks of Skyrim.esp:0248D0",
-   "name": "Stand Down",
-   "edid": "ORD_Spe_HornOfSovngarde_Spell_Stop",
-   "kind": "Lesser power",
-   "text": "Orders the people enchanted by Horn of Sovngarde to stop following you.",
-   "plugin": "Ordinator - Perks of Skyrim.esp"
-  },
-  {
-   "id": "Ordinator - Perks of Skyrim.esp:020CF5",
-   "name": "Stop Performing",
-   "edid": "ORD_Spe_Perform_Spell_Stop",
-   "kind": "Lesser power",
-   "text": "Stop the racket!",
-   "plugin": "Ordinator - Perks of Skyrim.esp"
   },
   {
    "id": "Dragonborn.esm:01ED9A",
@@ -2044,14 +1807,6 @@
    "kind": "Power",
    "text": "Casts the spell stored by Knowledge is Power.",
    "plugin": "Apocalypse - Magic of Skyrim.esp"
-  },
-  {
-   "id": "Biggie Traits.esp:0000C6",
-   "name": "Time to go",
-   "edid": "Traits_HomeownerEndVisitShout",
-   "kind": "Lesser power",
-   "text": "",
-   "plugin": "Biggie Traits.esp"
   },
   {
    "id": "Requiem - Toggle Enchantment.esp:000803",
@@ -2958,30 +2713,6 @@
    "plugin": "Ordinator - Perks of Skyrim.esp"
   },
   {
-   "id": "FDE Aela Part 2.esp:000877",
-   "name": "Whistle at Aela to Transform",
-   "edid": "aaAelaWerewolfSpell",
-   "kind": "Power",
-   "text": "Signal Aela to transform while she is your follower, and you are in a dungeon.",
-   "plugin": "FDE Aela Part 2.esp"
-  },
-  {
-   "id": "Inigo.esp:0AA097",
-   "name": "Whistle to Inigo",
-   "edid": "InigoStopFightingPower",
-   "kind": "Lesser power",
-   "text": "",
-   "plugin": "Inigo.esp"
-  },
-  {
-   "id": "Ordinator - Perks of Skyrim.esp:023878",
-   "name": "Wild Companion Release",
-   "edid": "ORD_Spe_SpeakWithAnimals_Spell_DispelPower",
-   "kind": "Lesser power",
-   "text": "Releases a Wild Companion from your command.",
-   "plugin": "Ordinator - Perks of Skyrim.esp"
-  },
-  {
    "id": "Requiem - Magic Redone.esp:0060C1",
    "name": "Wind Weapon",
    "edid": "REQ_Alteration4_Wind_EnchSelf",
@@ -3806,6 +3537,328 @@
    ],
    "text": "The Thu'um rushes forward, carrying you in its wake with the speed of a tempest.",
    "plugin": "Skyrim.esm"
+  }
+ ],
+ "races": [
+  {
+   "race": "Altmer",
+   "id": "Skyrim.esm:013743",
+   "edid": "HighElfRace",
+   "plugin": "Synthesis - NPC.esp",
+   "spells": [
+    {
+     "id": "Skyrim.esm:0E40C8",
+     "name": "Weakness to Elements",
+     "edid": "REQ_Ability_Race_Altmer_WeaknessElements",
+     "kind": "Ability",
+     "text": "High elves are more resistant to all elements. Fire, frost, and shock deal 10% less damage to you.",
+     "plugin": "Big Tweaks.esp"
+    },
+    {
+     "id": "Skyrim.esm:105F16",
+     "name": "Highborn",
+     "edid": "REQ_Ability_Race_Altmer_Highborn",
+     "kind": "Ability",
+     "text": "High elf blood grants great affinity to magicka. Magicka regenerates 50% faster, spells are 5% more powerful and last longer.",
+     "plugin": "LoreRim - NPCs and Races.esp"
+    }
+   ]
+  },
+  {
+   "race": "Argonian",
+   "id": "Skyrim.esm:013740",
+   "edid": "ArgonianRace",
+   "plugin": "Synthesis - NPC.esp",
+   "spells": [
+    {
+     "id": "Skyrim.esm:0AA01B",
+     "name": "Waterbreathing",
+     "edid": "REQ_Ability_Race_Argonian_Waterbreathing",
+     "kind": "Ability",
+     "text": "Your Argonian lungs can breathe underwater, while you also find it much easier to swim than members of other races. You can breathe underwater, swimming is 20% faster, swimming is 75% less exhausting.",
+     "plugin": "Requiem - Races Redone.esp"
+    },
+    {
+     "id": "Skyrim.esm:0AA01E",
+     "name": "Claws",
+     "edid": "REQ_Trait_PlayableRace_Khajiit",
+     "kind": "Ability",
+     "text": "Bestial claws are extremely sharp - sharp enough to easily shred through flesh, making them much more lethal than normal hands. Unarmed damage is increased by 10.",
+     "plugin": "Big Tweaks.esp"
+    },
+    {
+     "id": "Skyrim.esm:0E40D5",
+     "name": "Histskin",
+     "edid": "REQ_Ability_Race_Argonian_Histskin",
+     "kind": "Ability",
+     "text": "Argonians can nautrally regenerate health faster than others, and their metabolism increases the effect of alchemical substances. Regenerate 1.5 health per second, potions are 10% more effective and last longer.",
+     "plugin": "Big Tweaks.esp"
+    },
+    {
+     "id": "Skyrim.esm:104ACF",
+     "name": "Resist Poison and Disease",
+     "edid": "REQ_Ability_Race_Argonian_ResistPoisonDisease",
+     "kind": "Ability",
+     "text": "Your Argonian blood greatly reduces the effect of poison and disease. Poison deals 75% less damage to you, you are 75% less likely to contract diseases.",
+     "plugin": "Requiem - Races Redone.esp"
+    },
+    {
+     "id": "Requiem - Races Redone.esp:000808",
+     "name": "Strong Stomach",
+     "edid": "REQ_Ability_Race_All_StrongStomach",
+     "kind": "Ability",
+     "text": "Your metabolism can digest raw food without food poisoning.",
+     "plugin": "Requiem - Races Redone.esp"
+    }
+   ]
+  },
+  {
+   "race": "Bosmer",
+   "id": "Skyrim.esm:013749",
+   "edid": "WoodElfRace",
+   "plugin": "Synthesis - NPC.esp",
+   "spells": [
+    {
+     "id": "Skyrim.esm:0AA025",
+     "name": "Resist Poison and Disease",
+     "edid": "REQ_Ability_Race_Bosmer_ResistPoisonDisease",
+     "kind": "Ability",
+     "text": "Your Bosmer blood grants you resistance to poison and diseases. Poison deals 25% less damage to you, you are 50% less likely to contract diseases.",
+     "plugin": "Requiem - Races Redone.esp"
+    },
+    {
+     "id": "Skyrim.esm:0E40CF",
+     "name": "Grounded",
+     "edid": "REQ_Power_Race_Bosmer_ShockResist",
+     "kind": "Ability",
+     "text": "In harmony with nature and the earth, the Bosmer have honed their bodies to be conduits of elemental potential. +25% shock resist",
+     "plugin": "LoreRim - NPCs and Races.esp"
+    },
+    {
+     "id": "Requiem - Races Redone.esp:000801",
+     "name": "Eye of the Hunt",
+     "edid": "REQ_Ability_Race_Bosmer_EyeOfTheHunt",
+     "kind": "Ability",
+     "text": "The Bosmer are naturally skilled in marksmanship, and can aim their bows more precisely. Armor penetration with ranged weapons is increased by 5.",
+     "plugin": "Requiem - Races Redone.esp"
+    },
+    {
+     "id": "Requiem - Races Redone.esp:000808",
+     "name": "Strong Stomach",
+     "edid": "REQ_Ability_Race_All_StrongStomach",
+     "kind": "Ability",
+     "text": "Your metabolism can digest raw food without food poisoning.",
+     "plugin": "Requiem - Races Redone.esp"
+    }
+   ]
+  },
+  {
+   "race": "Breton",
+   "id": "Skyrim.esm:013741",
+   "edid": "BretonRace",
+   "plugin": "Synthesis - NPC.esp",
+   "spells": [
+    {
+     "id": "Skyrim.esm:0AA01F",
+     "name": "Magic Resistance",
+     "edid": "REQ_Ability_Race_Breton_MagicResistance",
+     "kind": "Ability",
+     "text": "Your Breton blood reduces damage taken from all magical sources. Magic deals 15% less damage to you.",
+     "plugin": "LoreRim - NPCs and Races.esp"
+    },
+    {
+     "id": "Skyrim.esm:0AA022",
+     "name": "Dragonskin",
+     "edid": "REQ_Ability_Race_Breton_Dragonskin",
+     "kind": "Ability",
+     "text": "Bretons can naturally absorb harmful magic by chance. Increases chance to absorb the magicka from hostile spells by 10%.",
+     "plugin": "Requiem - Races Redone.esp"
+    }
+   ]
+  },
+  {
+   "race": "Dunmer",
+   "id": "Skyrim.esm:013742",
+   "edid": "DarkElfRace",
+   "plugin": "Synthesis - NPC.esp",
+   "spells": [
+    {
+     "id": "Skyrim.esm:0AA021",
+     "name": "Resist Fire",
+     "edid": "REQ_Ability_Race_Dunmer_ResistFire",
+     "kind": "Ability",
+     "text": "Tempered in the flames of the Red Mountain and the heat of the Ashlands, your Dunmer blood greatly reduces all fire damage dealt to you. Fire deals 50% less damage to you.",
+     "plugin": "Requiem - Races Redone.esp"
+    },
+    {
+     "id": "Skyrim.esm:0E40D4",
+     "name": "Ashlander",
+     "edid": "REQ_Ability_Race_Dunmer_Ashlander",
+     "kind": "Ability",
+     "text": "Dunmer are naturally talented evokers and conjurers. Destruction and Conjuration spells are 10% more powerful and last longer.",
+     "plugin": "Requiem - Races Redone.esp"
+    }
+   ]
+  },
+  {
+   "race": "Imperial",
+   "id": "Skyrim.esm:013744",
+   "edid": "ImperialRace",
+   "plugin": "Synthesis - NPC.esp",
+   "spells": [
+    {
+     "id": "Skyrim.esm:0E40CA",
+     "name": "Voice of the Emperor",
+     "edid": "REQ_Ability_Race_Imperial_VoiceOfTheEmperor",
+     "kind": "Ability",
+     "text": "Imperials are talented leaders and traders among society. Speech skill is 15 higher, prices are 15% more favorable, magicka and stamina of nearby allies increase by 25.",
+     "plugin": "Big Tweaks.esp"
+    },
+    {
+     "id": "Skyrim.esm:0EB7EB",
+     "name": "Imperial Diversity",
+     "edid": "REQ_Ability_Race_Imperial_ImperialDiversity",
+     "kind": "Ability",
+     "text": "Imperial education involves various martial and academical trainings, producing citizens with variety of skills. Health, magicka, and stamina regenerate 25% faster.",
+     "plugin": "LoreRim - NPCs and Races.esp"
+    }
+   ]
+  },
+  {
+   "race": "Khajiit",
+   "id": "Skyrim.esm:013745",
+   "edid": "KhajiitRace",
+   "plugin": "Synthesis - NPC.esp",
+   "spells": [
+    {
+     "id": "Skyrim.esm:0AA01D",
+     "name": "Night Eye",
+     "edid": "REQ_Power_Race_Khajiit_NightEye",
+     "kind": "Lesser power",
+     "text": "Your eyes are exceptionally versatile and can become extremely sensitive to light, allowing a much better sight in dark areas.",
+     "plugin": "Requiem - Races Redone.esp"
+    },
+    {
+     "id": "Skyrim.esm:0AA01E",
+     "name": "Claws",
+     "edid": "REQ_Trait_PlayableRace_Khajiit",
+     "kind": "Ability",
+     "text": "Bestial claws are extremely sharp - sharp enough to easily shred through flesh, making them much more lethal than normal hands. Unarmed damage is increased by 10.",
+     "plugin": "Big Tweaks.esp"
+    },
+    {
+     "id": "Requiem.esp:1AD1B0",
+     "name": "Feline Agility",
+     "edid": "REQ_Ability_Race_Khajiit_FelineAgility",
+     "kind": "Ability",
+     "text": "Khajiits are very agile and can fall long heights without taking critical damage. Movement is 10% faster, sneaking is 20% faster, fall damage is reduced by 75%.",
+     "plugin": "Big Tweaks.esp"
+    },
+    {
+     "id": "Requiem - Races Redone.esp:000808",
+     "name": "Strong Stomach",
+     "edid": "REQ_Ability_Race_All_StrongStomach",
+     "kind": "Ability",
+     "text": "Your metabolism can digest raw food without food poisoning.",
+     "plugin": "Requiem - Races Redone.esp"
+    },
+    {
+     "id": "Requiem - Races Redone.esp:000816",
+     "name": "Fingersmith",
+     "edid": "REQ_Ability_Race_Khajiit_Fingersmith",
+     "kind": "Ability",
+     "text": "Khajiits have keen senses and dexterity, making them much more proficient in thievery. Lockpicking expertise is increased by 2, lockpicks are 20% more durable, pickpocketing is 20% more likely to succeed, you are 20% harder to detect.",
+     "plugin": "Requiem - Races Redone.esp"
+    }
+   ]
+  },
+  {
+   "race": "Nord",
+   "id": "Skyrim.esm:013746",
+   "edid": "NordRace",
+   "plugin": "Synthesis - NPC.esp",
+   "spells": [
+    {
+     "id": "Skyrim.esm:0AA020",
+     "name": "Resist Frost and Shock",
+     "edid": "REQ_Ability_Race_Nord_ResistFrostShock",
+     "kind": "Ability",
+     "text": "Your Nord blood halves all taken frost damage. Frost deals 50% less damage.",
+     "plugin": "LoreRim - NPCs and Races.esp"
+    },
+    {
+     "id": "Requiem - Races Redone.esp:000809",
+     "name": "Ancient Tongues",
+     "edid": "REQ_Ability_Race_Nord_AncientTongues",
+     "kind": "Ability",
+     "text": "Nords have inherent ability to Shout, and can unleash immense power through the Voice. Shouts are 10% more powerful and last longer, Shouts can be used 10% more often.",
+     "plugin": "Requiem - Races Redone.esp"
+    },
+    {
+     "id": "Requiem - Races Redone.esp:00080B",
+     "name": "Barbaric Strength",
+     "edid": "REQ_Ability_Race_Nord_BarbaricStrength",
+     "kind": "Ability",
+     "text": "Nords are fierce and strong, skilled with all melee weapons. Melee weapons deal 5% more damage.",
+     "plugin": "Requiem - Races Redone.esp"
+    }
+   ]
+  },
+  {
+   "race": "Orsimer",
+   "id": "Skyrim.esm:013747",
+   "edid": "OrcRace",
+   "plugin": "Synthesis - NPC.esp",
+   "spells": [
+    {
+     "id": "Skyrim.esm:0AA026",
+     "name": "Bulwark",
+     "edid": "REQ_Ability_Race_Orsimer_Bulwark",
+     "kind": "Ability",
+     "text": "Orcs have incredible strength and endurance, resistant to all types of damage. Armor rating increases by 150, magic deals 10% less damage to you.",
+     "plugin": "LoreRim - NPCs and Races.esp"
+    },
+    {
+     "id": "Requiem - Races Redone.esp:000808",
+     "name": "Strong Stomach",
+     "edid": "REQ_Ability_Race_All_StrongStomach",
+     "kind": "Ability",
+     "text": "Your metabolism can digest raw food without food poisoning.",
+     "plugin": "Requiem - Races Redone.esp"
+    }
+   ]
+  },
+  {
+   "race": "Redguard",
+   "id": "Skyrim.esm:013748",
+   "edid": "RedguardRace",
+   "plugin": "Synthesis - NPC.esp",
+   "spells": [
+    {
+     "id": "Skyrim.esm:0AA023",
+     "name": "Resist Poison and Disease",
+     "edid": "REQ_Ability_Race_Redguard_ResistPoisonDisease",
+     "kind": "Ability",
+     "text": "Your Redguard blood, tempered in the deserts of Hammerfell, grants you a very strong resistance to poisons and diseases. Poison deals 50% less damage to you, you are 50% less likely to contract diseases.",
+     "plugin": "Requiem - Races Redone.esp"
+    },
+    {
+     "id": "Skyrim.esm:0E40CE",
+     "name": "Adrenaline Rush",
+     "edid": "REQ_Ability_Race_Redguard_AdrenalineRush",
+     "kind": "Ability",
+     "text": "Redguards are granted increased stamina, and can sprint much longer without being exhausted. Stamina regenerations is increased, sprinting costs 1 less stamina per second.",
+     "plugin": "LoreRim - NPCs and Races.esp"
+    },
+    {
+     "id": "Requiem - Races Redone.esp:00080E",
+     "name": "Martial Prowess",
+     "edid": "REQ_Ability_Race_Redguard_MartialProwess",
+     "kind": "Ability",
+     "text": "Redguards are naturally skilled in martial arts, and can wield their weapons with great precision. Armor penetration with melee weapons is increased by 5.",
+     "plugin": "Requiem - Races Redone.esp"
+    }
+   ]
   }
  ]
 }

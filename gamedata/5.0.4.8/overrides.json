@@ -296,6 +296,11 @@
       "Heal Downed Follower",
       "Stand Down",
       "Time to go"
-    ]
+    ],
+    "raceSkipEdids": [
+      "^REQ_Trait_NoHealthRegeneration$",
+      "^REQ_Trait_MassEffect"
+    ],
+    "_raceNote": "WO-55: Requiem's engine abilities, on every race; not racial abilities."
   }
 }
