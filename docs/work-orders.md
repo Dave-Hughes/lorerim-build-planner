@@ -2124,6 +2124,36 @@ Dave, 12 Oct: the Spells section gets very tall on big builds. Layout follows th
 
 ---
 
+## WO-53  Enchantment lines follow the Enchanting perks (12 Oct 2026)
+
+WO-45 allowed up to two enchantment lines on a made item, which is vanilla Skyrim. LoreRim's Enchanting tree allows more, and the number depends on perks. From `perks.json`:
+- no perk: one enchantment;
+- **Enchantment Mastery** (Enchanting 90): "can place two enchantments with 60% strength each";
+- **Artifact Enchanter** (Enchanting 100, needs Enchantment Mastery): "can place three enchantments with 50% strength each".
+
+1. **Up to three lines** on a made item that isn't a staff. `validate.ts` allows three; `MadeGear.enchantments` says "Up to three lines".
+2. **The form** shows the first line. The next line's field appears once the one before it has text, up to three.
+3. **The rules engine checks the lines against the build's perks.** The check runs at the gear row's `fromLevel`, against the perks held at that level:
+   - two lines need Enchantment Mastery: `Two enchantments need Enchantment Mastery, not taken by level 34.`
+   - three lines need Artifact Enchanter: `Three enchantments need Artifact Enchanter, not taken by level 34.`
+   - The problem shows on that level like any other (a perk taken too early, for example).
+4. **A staff isn't checked.** It takes a spell, not enchantments.
+5. **Builds already saved** with two lines and no Enchantment Mastery now show the problem. That's correct; don't migrate them.
+
+### Done when
+- [ ] Unit tests in `gear.test.ts` or `engine.test.ts`:
+  - one line, no perks: no problem;
+  - two lines at level 20, Enchantment Mastery at 30: a problem at 20;
+  - two lines at 30, Mastery at 30: none;
+  - three lines with Mastery only: a problem;
+  - three lines with Artifact Enchanter: none;
+  - a staff with a spell: none.
+- [ ] e2e: add a made ring with three lines; the third field appears only after the second has text; the level shows the Artifact Enchanter problem.
+- [ ] Screenshot of the form with three lines at 1440 and 390.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
