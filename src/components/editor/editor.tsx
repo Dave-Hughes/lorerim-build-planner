@@ -46,6 +46,9 @@ const ATTRS: Attribute[] = ["health", "magicka", "stamina"];
 export function Editor({ buildId, name, visibility, initialPlan, initialLevel, converted, guide }: Props) {
   const d = useGameData();
   const [plan, setPlan] = useState(initialPlan);
+  // Repeat last level (WO-56): the plan it made, what the level had before (for Undo) and what
+  // didn't fit. Both show only until the next change.
+  const [repeated, setRepeated] = useState<{ level: number; after: BuildPlan; before: ops.LevelSpend; skipped: string[] } | null>(null);
   const states = useMemo(() => computeBuild(plan, d), [plan, d]);
   const total = plan.levels.length;
   const [level, setLevelState] = useState(() => Math.min(total, Math.max(1, initialLevel || total)));
@@ -166,6 +169,10 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   const steps = useMemo(() => skillStepInfo(d, plan, states, level), [d, plan, states, level]);
   const marks = useMemo(() => levelMarks(d, plan, states, noted), [d, plan, states, noted]);
   const left = s.skillPointsAvailable - s.skillPointsSpent;
+  // From level 3, when the level before spent anything. After a repeat, Undo until the next change.
+  const prevLevel = plan.levels[level - 2];
+  const canRepeat = level >= 3 && !!prevLevel && (!!prevLevel.attribute || Object.values(prevLevel.skillPoints).some((n) => n > 0));
+  const justRepeated = !!repeated && repeated.level === level && repeated.after === plan;
   const carriedIn = s.skillPointsAvailable - d.rules.skillPointsPerLevel;
   const perkLeft = s.perkPoints - s.perkPointsSpent;
   const destinyLeft = s.destinyPoints - s.destinyPointsSpent;
@@ -306,6 +313,32 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                 <div className={styles.blockHead}>
                   <span className="label">Attribute</span>
                   <span className={styles.hint}>+5 to one</span>
+                  {justRepeated ? (
+                    <button
+                      type="button"
+                      className={`btn btn-sm ${styles.repeatBtn}`}
+                      onClick={() => {
+                        setPlan(ops.restoreLevelSpend(plan, level, repeated!.before));
+                        setRepeated(null);
+                      }}
+                    >
+                      Undo
+                    </button>
+                  ) : (
+                    canRepeat && (
+                      <button
+                        type="button"
+                        className={`btn btn-sm ${styles.repeatBtn}`}
+                        onClick={() => {
+                          const r = ops.repeatLevel(plan, level, d);
+                          setPlan(r.plan);
+                          setRepeated({ level, after: r.plan, before: r.before, skipped: r.skipped });
+                        }}
+                      >
+                        Repeat level {level - 1}
+                      </button>
+                    )
+                  )}
                 </div>
                 <div role="group" aria-label="Attribute" className={styles.attrs}>
                   {ATTRS.map((a) => {
@@ -349,6 +382,11 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                     <div style={{ width: `${Math.min(100, (s.skillPointsSpent / s.skillPointsAvailable) * 100)}%` }} className={left < 0 ? styles.pointsOver : ""} />
                   </div>
                   {carriedIn > 0 && <span className={styles.hint}>Includes {carriedIn} carried in from level {level - 1}</span>}
+                  {justRepeated && repeated!.skipped.length > 0 && (
+                    <span className={styles.hint} role="status">
+                      {repeated!.skipped.join(" ")}
+                    </span>
+                  )}
                 </>
               )}
               {d.skillGroups.map((g) => (

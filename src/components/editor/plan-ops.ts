@@ -1,5 +1,7 @@
 /** Pure edits to a build plan. Each returns a new plan. */
+import type { GameData } from "@/lib/rules/data";
 import { emptyLevel } from "@/lib/rules/derive";
+import { computeBuild } from "@/lib/rules/engine";
 import { gearAt } from "@/lib/rules/gear";
 import { keptMainSpells, MAX_MAIN_SPELLS } from "@/lib/rules/spells";
 import type { AbilityRow, Attribute, BuildPlan, Extra, GearItem, LevelPlan, MadeGear, ShoutRow, SpellRow } from "@/lib/rules/types";
@@ -216,3 +218,74 @@ export function undoGearAt(plan: BuildPlan, level: number, slot: string, item?: 
   return { ...plan, gear: plan.gear.filter((g) => !isEntryRow(g, level, slot, item)) };
 }
 
+
+/** What a level's attribute and skill points were, for Undo after Repeat (WO-56). */
+export interface LevelSpend {
+  attribute?: Attribute;
+  skillPoints: Record<string, number>;
+}
+
+/**
+ * Repeat last level (WO-56): this level takes the level before's attribute and skill points, and
+ * nothing else. Skills are raised in the order the level before raised them, one point at a time,
+ * as far as the rules allow: a raise is skipped past +5 for the level, at the max skill (the Master
+ * of One skill excepted, as the rules engine does), or when the points left don't cover its cost.
+ * Returns the new plan, what this level had before (for Undo), and a line for each skipped raise.
+ */
+export function repeatLevel(plan: BuildPlan, level: number, d: GameData): { plan: BuildPlan; before: LevelSpend; skipped: string[] } {
+  const lv = plan.levels[level - 1];
+  const prev = plan.levels[level - 2];
+  const before: LevelSpend = { ...(lv?.attribute ? { attribute: lv.attribute } : {}), skillPoints: { ...(lv?.skillPoints ?? {}) } };
+  if (!lv || !prev || level < 2) return { plan, before, skipped: [] };
+  // What this level starts from doesn't depend on its own spend: the skills before it and the
+  // points it has (its own plus those banked).
+  const state = computeBuild(plan)[level - 1];
+  const skills = { ...state.skillsBefore };
+  const max = d.maxSkillAt(level);
+  const moo = plan.traits.includes("Master of One") ? plan.masterOfOneSkill : undefined;
+  let left = state.skillPointsAvailable;
+  const raised: Record<string, number> = {};
+  const skipped: string[] = [];
+  for (const [skill, want] of Object.entries(prev.skillPoints)) {
+    if (!(skill in skills) || want <= 0) continue;
+    let got = 0;
+    let why = "";
+    while (got < want) {
+      if (got >= d.rules.maxRaisePerSkillPerLevel) {
+        why = `${skill}: +${want} is more than +${d.rules.maxRaisePerSkillPerLevel} in one level-up.`;
+        break;
+      }
+      if (skills[skill] >= max && skill !== moo) {
+        why = `${skill} stays at ${skills[skill]}, the max skill at level ${level}.`;
+        break;
+      }
+      const cost = d.skillPointCost(skills[skill]);
+      if (cost > left) {
+        why = `${skill} +${want - got} didn't fit: ${left} skill point${left === 1 ? "" : "s"} left.`;
+        break;
+      }
+      left -= cost;
+      skills[skill]++;
+      got++;
+    }
+    if (got) raised[skill] = got;
+    if (why) skipped.push(why);
+  }
+  const next = withLevel(plan, level, (l) => {
+    const out: LevelPlan = { ...l, skillPoints: raised };
+    if (prev.attribute) out.attribute = prev.attribute;
+    else delete out.attribute;
+    return out;
+  });
+  return { plan: next, before, skipped };
+}
+
+/** Undo after Repeat (WO-56): puts back exactly the attribute and skill points the level had. */
+export function restoreLevelSpend(plan: BuildPlan, level: number, before: LevelSpend): BuildPlan {
+  return withLevel(plan, level, (l) => {
+    const out: LevelPlan = { ...l, skillPoints: { ...before.skillPoints } };
+    if (before.attribute) out.attribute = before.attribute;
+    else delete out.attribute;
+    return out;
+  });
+}

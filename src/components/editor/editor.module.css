@@ -17,6 +17,11 @@
   color: var(--ember);
   cursor: pointer;
 }
+/* Repeat last level (WO-56), at the end of the column's first heading. */
+.repeatBtn {
+  margin-left: auto;
+  align-self: center;
+}
 .hint {
   font-size: 13px;
   color: var(--muted);

@@ -2244,16 +2244,16 @@ From the builds made so far (Iriel, Azrem, Pure Mage): from about level 10 on, m
 7. **The logic** lives with the other plan operations (`plan-ops.ts`), as a pure function: `repeatLevel(plan, level, data)` returns the new plan and the list of skipped raises. It uses the rules engine's skills before this level and `skillPointCost` / `maxSkillAt`, so it can never make a level the engine flags.
 
 ### Done when
-- [ ] Unit tests for `repeatLevel`:
+- [x] Unit tests for `repeatLevel`:
   - Pure Mage level 34 repeated from 33 gives the same five +1s and Magicka;
   - a raise that would pass +5, one at max skill, and one the points don't cover are each skipped and listed;
   - the Master of One skill can still go past max skill;
   - perks, extras, gear, spells and the note at this level are untouched;
   - repeating then undoing gives back the plan as it was.
-- [ ] A test that runs `repeatLevel` on every level of Pure Mage, Iriel and Azrem: the rules engine finds no new problems.
-- [ ] e2e: at level 12 of a test build, press `Repeat level 11`; the skills and attribute match level 11; `Undo` puts level 12 back.
-- [ ] Screenshots of the button and of the didn't-fit line, at 1440 and 390.
-- [ ] All checks in CLAUDE.md pass.
+- [x] A test that runs `repeatLevel` on every level of Pure Mage, Iriel and Azrem: the rules engine finds no new problems.
+- [x] e2e: at level 12 of a test build, press `Repeat level 11`; the skills and attribute match level 11; `Undo` puts level 12 back.
+- [x] Screenshots of the button and of the didn't-fit line, at 1440 and 390.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 
