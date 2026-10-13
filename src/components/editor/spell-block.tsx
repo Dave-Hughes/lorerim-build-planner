@@ -2,15 +2,19 @@
 
 import { useId, useMemo, useState } from "react";
 import { useGameData } from "@/components/game-data";
+import { keepInView } from "@/lib/keep-in-view";
 import { SkillIcon } from "@/components/ui/skill-icon";
 import { Tooltip } from "@/components/ui/tooltip";
 import type { Spell } from "@/lib/rules/data";
-import { spellsAt, spellsLearned, tierPicksAt } from "@/lib/rules/spells";
+import { MAX_MAIN_SPELLS, spellsAt, spellsLearned, startingSpells, tierPicksAt } from "@/lib/rules/spells";
 import type { BuildPlan } from "@/lib/rules/types";
 import * as ops from "./plan-ops";
 import styles from "./spell-block.module.css";
 
 const byName = (a: Spell, b: Spell) => a.name.localeCompare(b.name);
+
+const STAR_TIP = `Main spell: the spells this build casts most, shown first in its Spells section. Up to ${MAX_MAIN_SPELLS}.`;
+const FULL_TIP = `${MAX_MAIN_SPELLS} main spells already. Unstar one first.`;
 
 /** The game's text for a spell, for its tooltip: the tier (or the perk), the cast type, then the text. */
 function SpellTip({ spell, first }: { spell: Spell; first?: string }) {
@@ -154,16 +158,23 @@ export function SpellBlock({ plan, level, setPlan }: { plan: BuildPlan; level: n
                 )}
                 <span className={styles.rowActions}>
                   {s && (
-                    <button
-                      type="button"
-                      className={`btn btn-sm btn-icon ${styles.star} ${main.has(r.id) ? styles.starOn : ""}`}
-                      aria-pressed={main.has(r.id)}
-                      aria-label={`Main spell: ${s.name}`}
-                      disabled={!main.has(r.id) && main.size >= 8}
-                      onClick={() => setPlan(ops.toggleMainSpell(plan, r.id))}
-                    >
-                      ★
-                    </button>
+                    // A full star list leaves the others aria-disabled, not disabled, so the tooltip
+                    // still shows why on hover and focus (WO-57).
+                    <Tooltip content={!main.has(r.id) && main.size >= MAX_MAIN_SPELLS ? FULL_TIP : STAR_TIP}>
+                      <button
+                        type="button"
+                        className={`btn btn-sm btn-icon ${styles.star} ${main.has(r.id) ? styles.starOn : ""}`}
+                        aria-pressed={main.has(r.id)}
+                        aria-label={`Main spell: ${s.name}`}
+                        aria-disabled={!main.has(r.id) && main.size >= MAX_MAIN_SPELLS}
+                        onClick={() => {
+                          if (!main.has(r.id) && main.size >= MAX_MAIN_SPELLS) return;
+                          setPlan(ops.toggleMainSpell(plan, r.id));
+                        }}
+                      >
+                        ★
+                      </button>
+                    </Tooltip>
                   )}
                   <button type="button" className="btn btn-sm btn-quiet" aria-label={`Remove ${label}`} onClick={() => setPlan(ops.removeSpell(plan, level, r.index))}>
                     Remove
@@ -176,6 +187,7 @@ export function SpellBlock({ plan, level, setPlan }: { plan: BuildPlan; level: n
       )}
       {adding ? (
         <AddSpell
+          start={startingSpells(d, plan, level)}
           onAdd={(id, where) => {
             setPlan(ops.addSpell(plan, level, { id, where }));
             setAdding(false);
@@ -192,24 +204,29 @@ export function SpellBlock({ plan, level, setPlan }: { plan: BuildPlan; level: n
 }
 
 /** Search every spell by name, the school and tier beside each; an optional Where line. */
-function AddSpell({ onAdd, onCancel }: { onAdd: (id: string, where: string) => void; onCancel: () => void }) {
+function AddSpell({ start, onAdd, onCancel }: { start: { list: Spell[]; more: boolean }; onAdd: (id: string, where: string) => void; onCancel: () => void }) {
   const d = useGameData();
   const listId = useId();
   const [q, setQ] = useState("");
   const [picked, setPicked] = useState<Spell | null>(null);
   const [where, setWhere] = useState("");
   const [index, setIndex] = useState(0);
+  // Open from focus (WO-57): with nothing typed, the build's own schools first.
+  const [open, setOpen] = useState(false);
   const found = useMemo(() => {
     const words = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
-    if (!words.length || picked) return [];
+    if (!open || picked) return [];
+    if (!words.length) return start.list;
     return d.spells
       .filter((s) => words.every((w) => s.name.toLowerCase().includes(w)))
       .sort((a, b) => Number(!a.name.toLowerCase().startsWith(words[0])) - Number(!b.name.toLowerCase().startsWith(words[0])) || byName(a, b))
       .slice(0, 10);
-  }, [d, q, picked]);
+  }, [d, q, picked, open, start]);
+  const more = open && !picked && !q.trim() && start.more;
   const choose = (s: Spell) => {
     setPicked(s);
     setQ(s.name);
+    setOpen(false);
   };
   return (
     <form
@@ -219,7 +236,7 @@ function AddSpell({ onAdd, onCancel }: { onAdd: (id: string, where: string) => v
         e.preventDefault();
         if (picked) onAdd(picked.id, where);
       }}
-      onKeyDown={(e) => e.key === "Escape" && (found.length ? setQ("") : onCancel())}
+      onKeyDown={(e) => e.key === "Escape" && (found.length ? (q ? setQ("") : setOpen(false)) : onCancel())}
     >
       <span className={styles.addSearch}>
         <input
@@ -234,16 +251,19 @@ function AddSpell({ onAdd, onCancel }: { onAdd: (id: string, where: string) => v
           autoFocus
           autoComplete="off"
           value={q}
+          onFocus={() => setOpen(true)}
+          onBlur={() => setOpen(false)}
           onChange={(e) => {
             setQ(e.target.value);
             setPicked(null);
             setIndex(0);
+            setOpen(true);
           }}
           onKeyDown={(e) => {
             if (!found.length) return;
             if (e.key === "ArrowDown" || e.key === "ArrowUp") {
               e.preventDefault();
-              setIndex((i) => (i + (e.key === "ArrowDown" ? 1 : -1) + found.length) % found.length);
+              setIndex((i) => keepInView(listId, (i + (e.key === "ArrowDown" ? 1 : -1) + found.length) % found.length));
             } else if (e.key === "Enter") {
               e.preventDefault();
               choose(found[Math.min(index, found.length - 1)]);
@@ -259,6 +279,7 @@ function AddSpell({ onAdd, onCancel }: { onAdd: (id: string, where: string) => v
                 role="option"
                 aria-selected={n === index}
                 className={styles.option}
+                onMouseEnter={() => setIndex(n)}
                 onMouseDown={(e) => {
                   e.preventDefault();
                   choose(s);
@@ -271,6 +292,11 @@ function AddSpell({ onAdd, onCancel }: { onAdd: (id: string, where: string) => v
                 </span>
               </li>
             ))}
+            {more && (
+              <li role="presentation" className={`muted ${styles.optionRest}`}>
+                Search for the rest
+              </li>
+            )}
           </ul>
         )}
       </span>

@@ -398,12 +398,30 @@ function useMenu<T>() {
       return false;
     },
   });
-  return { menu, bridge, close: () => setMenu(null) };
+  // The mouse moves the same highlight the keys do (WO-57), so Enter picks what's lit.
+  const highlight = (i: number) => setMenu((m) => (m && m.index !== i ? { ...m, index: i } : m));
+  return { menu, bridge, close: () => setMenu(null), highlight };
 }
 
 const MENU_ITEM = 38;
 
-function Menu<T>({ state, id, label, onPick, onClose, render }: { state: MenuState<T>; id: string; label: string; onPick: (i: number) => void; onClose: () => void; render: (item: T) => React.ReactNode }) {
+function Menu<T>({
+  state,
+  id,
+  label,
+  onPick,
+  onHighlight,
+  onClose,
+  render,
+}: {
+  state: MenuState<T>;
+  id: string;
+  label: string;
+  onPick: (i: number) => void;
+  onHighlight: (i: number) => void;
+  onClose: () => void;
+  render: (item: T) => React.ReactNode;
+}) {
   // A click outside the list closes it (Esc is the editor's: the suggestion handles it, focus stays in the text).
   const floating = useRef<HTMLDivElement>(null);
   useDismiss({ open: state.items.length > 0, onClose, inside: [floating] });
@@ -430,6 +448,7 @@ function Menu<T>({ state, id, label, onPick, onClose, render }: { state: MenuSta
             role="option"
             aria-selected={i === state.index}
             className={styles.menuItem}
+            onMouseEnter={() => onHighlight(i)}
             onMouseDown={(e) => {
               e.preventDefault();
               onPick(i);
@@ -454,8 +473,8 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
   const [linking, setLinking] = useState(false);
   const [youtube, setYoutube] = useState<Rect | null>(null);
   const d = useGameData();
-  const { menu: slash, bridge: slashBridge, close: closeSlash } = useMenu<SlashItem>();
-  const { menu: mention, bridge: mentionBridge, close: closeMention } = useMenu<MentionInfo>();
+  const { menu: slash, bridge: slashBridge, close: closeSlash, highlight: highlightSlash } = useMenu<SlashItem>();
+  const { menu: mention, bridge: mentionBridge, close: closeMention, highlight: highlightMention } = useMenu<MentionInfo>();
   const [handlers] = useState(createEditorHandlers);
   const [filePicker, setFilePicker] = useState<HTMLInputElement | null>(null);
   const menuId = `guide-blocks-${sectionKey.replace(":", "-")}`;
@@ -617,13 +636,14 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
         </div>
       )}
       <EditorContent editor={editor} />
-      {slash && <Menu state={slash} id={menuId} label="Blocks" onPick={(i) => slash.command(slash.items[i])} onClose={closeSlash} render={(item) => item.title} />}
+      {slash && <Menu state={slash} id={menuId} label="Blocks" onPick={(i) => slash.command(slash.items[i])} onHighlight={highlightSlash} onClose={closeSlash} render={(item) => item.title} />}
       {mention && (
         <Menu
           state={mention}
           id={`${menuId}-at`}
           label="Game things"
           onPick={(i) => mention.command(mention.items[i])}
+          onHighlight={highlightMention}
           onClose={closeMention}
           render={(m) => (
             <span className={styles.mentionItem}>

@@ -186,8 +186,8 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   const railItems: RailItem[] =
     tab === "guide" && overview
       ? [
+          // Only this tab's sections (WO-57): the tabs themselves switch tabs.
           ...guideHeadings(overview, "guide").map((h) => ({ key: h.id, label: h.text, target: h.id })),
-          { key: "levels", label: "Levels", onGo: () => setTab("levels") },
         ]
       : [
           { key: "level", label: `Level ${level}`, target: "level-card" },
@@ -208,7 +208,6 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
             : []),
           ...(plan.gear.length ? [{ key: "gear", label: "Gear", count: gearAt(plan, level).length, target: "gear-at-level" }] : []),
           ...(spellsCount ? [{ key: "spells", label: "Spells and abilities", count: spellsCount, target: "spells" }] : []),
-          ...(tabs.includes("guide") ? [{ key: "guide", label: "Guide", onGo: () => setTab("guide") }] : []),
         ];
 
   // The pinned bar: once the tab row (or, with no tabs, the level navigation) scrolls off the top,

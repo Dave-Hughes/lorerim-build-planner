@@ -2,10 +2,12 @@
 
 import { useId, useMemo, useState } from "react";
 import { useGameData } from "@/components/game-data";
+import { keepInView } from "@/lib/keep-in-view";
 import { MarkIcon } from "@/components/ui/skill-icon";
 import { Tooltip } from "@/components/ui/tooltip";
 import type { Ability, Shout } from "@/lib/rules/data";
 import { abilitySource, addableAbilities, perkAbilitiesAt, raceAbilitiesAt, shoutWordsLine } from "@/lib/rules/powers";
+import { START_LIST_MAX } from "@/lib/rules/spells";
 import type { BuildPlan } from "@/lib/rules/types";
 import * as ops from "./plan-ops";
 import styles from "./spell-block.module.css";
@@ -229,17 +231,22 @@ function AddPower<T extends Ability | Shout>({
   const [where, setWhere] = useState("");
   const [words, setWords] = useState<Words>(1);
   const [index, setIndex] = useState(0);
+  // Open from focus (WO-57): with nothing typed, every one A to Z.
+  const [open, setOpen] = useState(false);
   const found = useMemo(() => {
     const ws = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
-    if (!ws.length || picked) return [];
+    if (!open || picked) return [];
+    if (!ws.length) return [...items].sort((a, b) => a.name.localeCompare(b.name)).slice(0, START_LIST_MAX);
     return items
       .filter((s) => ws.every((w) => s.name.toLowerCase().includes(w)))
       .sort((a, b) => Number(!a.name.toLowerCase().startsWith(ws[0])) - Number(!b.name.toLowerCase().startsWith(ws[0])) || a.name.localeCompare(b.name))
       .slice(0, 10);
-  }, [items, q, picked]);
+  }, [items, q, picked, open]);
+  const more = open && !picked && !q.trim() && items.length > START_LIST_MAX;
   const choose = (s: T) => {
     setPicked(s);
     setQ(s.name);
+    setOpen(false);
   };
   const Name = kind === "ability" ? "Ability" : "Shout";
   return (
@@ -250,7 +257,7 @@ function AddPower<T extends Ability | Shout>({
         e.preventDefault();
         if (picked) onAdd(picked.id, where, words);
       }}
-      onKeyDown={(e) => e.key === "Escape" && (found.length ? setQ("") : onCancel())}
+      onKeyDown={(e) => e.key === "Escape" && (found.length ? (q ? setQ("") : setOpen(false)) : onCancel())}
     >
       <span className={styles.addSearch}>
         <input
@@ -265,16 +272,19 @@ function AddPower<T extends Ability | Shout>({
           autoFocus
           autoComplete="off"
           value={q}
+          onFocus={() => setOpen(true)}
+          onBlur={() => setOpen(false)}
           onChange={(e) => {
             setQ(e.target.value);
             setPicked(null);
             setIndex(0);
+            setOpen(true);
           }}
           onKeyDown={(e) => {
             if (!found.length) return;
             if (e.key === "ArrowDown" || e.key === "ArrowUp") {
               e.preventDefault();
-              setIndex((i) => (i + (e.key === "ArrowDown" ? 1 : -1) + found.length) % found.length);
+              setIndex((i) => keepInView(listId, (i + (e.key === "ArrowDown" ? 1 : -1) + found.length) % found.length));
             } else if (e.key === "Enter") {
               e.preventDefault();
               choose(found[Math.min(index, found.length - 1)]);
@@ -290,6 +300,7 @@ function AddPower<T extends Ability | Shout>({
                 role="option"
                 aria-selected={n === index}
                 className={styles.option}
+                onMouseEnter={() => setIndex(n)}
                 onMouseDown={(e) => {
                   e.preventDefault();
                   choose(s);
@@ -300,6 +311,11 @@ function AddPower<T extends Ability | Shout>({
                 <span className="muted">{detail(s)}</span>
               </li>
             ))}
+            {more && (
+              <li role="presentation" className={`muted ${styles.optionRest}`}>
+                Search for the rest
+              </li>
+            )}
           </ul>
         )}
       </span>

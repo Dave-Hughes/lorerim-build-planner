@@ -2,8 +2,10 @@
 
 import { useId, useState } from "react";
 import { useGameData } from "@/components/game-data";
+import { keepInView } from "@/lib/keep-in-view";
 import { fitsSlot, itemById, searchItems, useItems, type GameItem } from "@/lib/items/items";
 import { enchantTarget, fitsTarget, searchEnchantments } from "@/lib/rules/enchantments";
+import { START_LIST_MAX } from "@/lib/rules/spells";
 import type { Enchantment } from "@/lib/rules/data";
 import { IconLabel, SlotIcon } from "@/components/ui/skill-icon";
 import { GEAR_SLOTS, gearAt, gearChangeText, gearChanges, madeStaffName, type GearSlot, type HeldGear } from "@/lib/rules/gear";
@@ -154,7 +156,10 @@ function GearForm({
   const [index, setIndex] = useState(0);
   // The index loads the first time the field is used.
   const items = useItems(d.version.id, open);
-  const found = open && items && !itemId ? searchItems(items, name, 8, (i) => fitsSlot(i, pick)) : [];
+  // Open from focus (WO-57): with nothing typed, the items that fit the slot, A to Z.
+  const fitting = open && items && !itemId && !name.trim() ? items.filter((i) => fitsSlot(i, pick)).sort((a, b) => a.name.localeCompare(b.name)) : null;
+  const found = !open || !items || itemId ? [] : fitting ? fitting.slice(0, START_LIST_MAX) : searchItems(items, name, 8, (i) => fitsSlot(i, pick));
+  const moreItems = !!fitting && fitting.length > START_LIST_MAX;
   const choose = (i: GameItem) => {
     setName(i.name);
     setItemId(i.id);
@@ -237,7 +242,7 @@ function GearForm({
             if (!found.length) return;
             if (e.key === "ArrowDown" || e.key === "ArrowUp") {
               e.preventDefault();
-              setIndex((i) => (i + (e.key === "ArrowDown" ? 1 : -1) + found.length) % found.length);
+              setIndex((i) => keepInView(listId, (i + (e.key === "ArrowDown" ? 1 : -1) + found.length) % found.length));
             } else if (e.key === "Enter") {
               e.preventDefault();
               choose(found[Math.min(index, found.length - 1)]);
@@ -253,6 +258,7 @@ function GearForm({
                 role="option"
                 aria-selected={n === index}
                 className={styles.gearOption}
+                onMouseEnter={() => setIndex(n)}
                 onMouseDown={(e) => {
                   e.preventDefault();
                   choose(i);
@@ -262,6 +268,11 @@ function GearForm({
                 <span className={styles.gearOptionStats}>{i.stats}</span>
               </li>
             ))}
+            {moreItems && (
+              <li role="presentation" className={`muted ${styles.gearOptionRest}`}>
+                Search for the rest
+              </li>
+            )}
           </ul>
         )}
       </span>
@@ -340,7 +351,8 @@ function EnchantField({
   const picked = d.enchantmentById.get(value);
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
-  const found = open && !picked ? searchEnchantments(d, target, value, 8).filter((e) => !taken.includes(e.id)) : [];
+  // With nothing typed, every one that fits (WO-57); typing narrows it.
+  const found = open && !picked ? searchEnchantments(d, target, value, value.trim() ? 8 : START_LIST_MAX).filter((e) => !taken.includes(e.id)) : [];
   const choose = (e: Enchantment) => {
     onChange(e.id);
     setOpen(false);
@@ -370,7 +382,7 @@ function EnchantField({
           if (e.key === "ArrowDown" || e.key === "ArrowUp") {
             if (!found.length) return;
             e.preventDefault();
-            setIndex((i) => (i + (e.key === "ArrowDown" ? 1 : -1) + found.length) % found.length);
+            setIndex((i) => keepInView(listId, (i + (e.key === "ArrowDown" ? 1 : -1) + found.length) % found.length));
           } else if (e.key === "Escape" && found.length) {
             // Esc closes this list first, not the whole form.
             e.stopPropagation();
@@ -392,6 +404,7 @@ function EnchantField({
               role="option"
               aria-selected={k === index}
               className={styles.gearOption}
+              onMouseEnter={() => setIndex(k)}
               onMouseDown={(ev) => {
                 ev.preventDefault();
                 choose(e);

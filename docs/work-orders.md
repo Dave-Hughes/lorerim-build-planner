@@ -2283,13 +2283,13 @@ Each was checked on staging on 13 Oct. None needs a design.
    - The Repeat button at the top stays.
 
 ### Done when
-- [ ] e2e: on a test build, focus Add shout with nothing typed: the list shows the shouts; hovering one highlights it; Enter adds it.
-- [ ] e2e: focus Add spell at a level with Novice Destruction: the list starts with Destruction spells.
-- [ ] e2e: on level 4 of a test build, `Continue and repeat` makes level 5 with level 4's attribute and skill points.
-- [ ] The star and Oghma tooltips show on hover and on keyboard focus.
-- [ ] The contents rail (1600 wide) on the Levels tab has no `Guide` entry, and on the Guide tab no `Levels` entry.
-- [ ] Screenshots: a hovered card at 1440 (zoomed in on the cover edge), the Details step's Tags heading at 1440 and 390, the open shout list, and the footer with both buttons.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: on a test build, focus Add shout with nothing typed: the list shows the shouts; hovering one highlights it; Enter adds it.
+- [x] e2e: focus Add spell at a level with Novice Destruction: the list starts with Destruction spells.
+- [x] e2e: on level 4 of a test build, `Continue and repeat` makes level 5 with level 4's attribute and skill points.
+- [x] The star and Oghma tooltips show on hover and on keyboard focus.
+- [x] The contents rail (1600 wide) on the Levels tab has no `Guide` entry, and on the Guide tab no `Levels` entry.
+- [x] Screenshots: a hovered card at 1440 (zoomed in on the cover edge), the Details step's Tags heading at 1440 and 390, the open shout list, and the footer with both buttons.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

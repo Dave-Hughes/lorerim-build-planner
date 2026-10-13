@@ -86,6 +86,17 @@
     transform 600ms ease-out,
     filter 200ms;
 }
+/* The band's last 2px are the body's colour (WO-57): with the card lifted and the cover zoomed,
+   the edge rasterises on a sub-pixel and showed a thin seam. Now panel meets panel. */
+.band::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--panel);
+}
 .bandPlain {
   background-image: repeating-linear-gradient(135deg, var(--stripe) 0 2px, transparent 2px 16px);
 }

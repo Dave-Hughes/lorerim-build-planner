@@ -43,6 +43,10 @@ export const FORTY_BUILD_ID = "e2emadesta";
 export const POWERS_BUILD_ID = "e2ewarcrya";
 /** WO-55: the sample as a Khajiit, for the race's Night Eye. */
 export const KHAJIIT_BUILD_ID = "e2ekhajeet";
+/** WO-57: the sample cut to 4 levels, so level 4 is the last (Continue and repeat). */
+export const FOUR_BUILD_ID = "e2efa4rtwe";
+/** WO-57: the sample with only Novice Destruction at level 1, for the Add spell starting list. */
+export const NOVICE_DESTRUCTION_BUILD_ID = "e2edestrvc";
 export const AT_LIMIT_TOKEN = "e2e-session-token-0007";
 /** The test author's Discord id; playwright.config.ts gives it to the server as ADMIN_DISCORD_IDS. */
 export const E2E_ADMIN_DISCORD_ID = "e2e-discord-admin-0001";
@@ -270,6 +274,28 @@ export async function seed() {
         visibility: "unlisted",
         gameVersion: "5.0.4.8",
         plan: { ...samplePlan(), race: "Khajiit" },
+        // Made two days ago, so it doesn't count toward the test author's builds for the day (WO-40's limit).
+        createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
+      },
+      {
+        id: FOUR_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        name: "Four Levels",
+        description: "The sample, cut to level 4.",
+        visibility: "unlisted",
+        gameVersion: "5.0.4.8",
+        plan: { ...samplePlan(), levels: samplePlan().levels.slice(0, 4) },
+        // Made two days ago, so it doesn't count toward the test author's builds for the day (WO-40's limit).
+        createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
+      },
+      {
+        id: NOVICE_DESTRUCTION_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        name: "Novice Destruction",
+        description: "Level 1 takes only Novice Destruction.",
+        visibility: "unlisted",
+        gameVersion: "5.0.4.8",
+        plan: { ...samplePlan(), levels: samplePlan().levels.map((lv, i) => (i === 0 ? { ...lv, perks: ["Destruction:Novice Destruction"] } : lv)) },
         // Made two days ago, so it doesn't count toward the test author's builds for the day (WO-40's limit).
         createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
       },

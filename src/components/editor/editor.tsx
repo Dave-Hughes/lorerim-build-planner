@@ -228,6 +228,16 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
     setPlan(next);
     setLevel(total + 1, total + 1, true);
   };
+  // Continue and repeat (WO-57): add the next level and repeat this one onto it (WO-56), with its
+  // didn't-fit line and Undo there. Shown when Repeat would show on the new level.
+  const lastLevel = plan.levels[total - 1];
+  const canContinueRepeat = total + 1 >= 3 && !!lastLevel && (!!lastLevel.attribute || Object.values(lastLevel.skillPoints).some((n) => n > 0));
+  const continueRepeat = () => {
+    const r = ops.repeatLevel(ops.addLevel(plan), total + 1, d);
+    setPlan(r.plan);
+    setRepeated({ level: total + 1, after: r.plan, before: r.before, skipped: r.skipped });
+    setLevel(total + 1, total + 1, true);
+  };
   const removeLevel = () => {
     if (!confirmRemove) return setConfirmRemove(true);
     setPlan(ops.removeLastLevel(plan));
@@ -489,7 +499,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                     <li key={i}>
                       <span className={styles.extraRow}>
                         <span className={styles.extraKind}>
-                          <IconLabel icon={<MarkIcon name="skill-book" />}>Oghma Infinium</IconLabel>
+                          <OghmaLabel />
                         </span>
                         <span className={styles.oghmaGains}>
                           <SkillGains rows={extraSteps[i].oghma ?? []} />
@@ -627,9 +637,16 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
               </button>
             )}
             {level === total ? (
-              <button type="button" className="btn btn-primary" onClick={continueLevel}>
-                Continue to level {total + 1}
-              </button>
+              <>
+                {canContinueRepeat && (
+                  <button type="button" className="btn" onClick={continueRepeat}>
+                    Continue and repeat
+                  </button>
+                )}
+                <button type="button" className="btn btn-primary" onClick={continueLevel}>
+                  Continue to level {total + 1}
+                </button>
+              </>
             ) : (
               <button type="button" className="btn btn-primary" onClick={() => setLevel(level + 1, total, true)}>
                 Go to level {level + 1}
@@ -684,6 +701,17 @@ function LevelNotes({ buildId, level, initial, onChange }: { buildId: string; le
   );
 }
 
+/** "Oghma Infinium" with what it is on hover and keyboard focus (WO-57). */
+function OghmaLabel() {
+  return (
+    <Tooltip content="Septimus Signus' reward in LoreRim. Read once: six skills of your choice go up 5, up to 100, and Hermaeus Mora gives 3 perk points.">
+      <span tabIndex={0} className={styles.oghmaLabel}>
+        <IconLabel icon={<MarkIcon name="skill-book" />}>Oghma Infinium</IconLabel>
+      </span>
+    </Tooltip>
+  );
+}
+
 /**
  * The Oghma Infinium (WO-44): six different skills, picked as chips ("3 of 6 chosen"); each gets
  * +5, up to 100, and the level 3 perk points.
@@ -695,7 +723,7 @@ function OghmaForm({ skills, onAdd }: { skills: string[]; onAdd: (skills: string
     return (
       <div role="group" aria-label="Oghma Infinium" className={styles.extraForm}>
         <span className={styles.extraKind}>
-          <IconLabel icon={<MarkIcon name="skill-book" />}>Oghma Infinium</IconLabel>
+          <OghmaLabel />
         </span>
         <button type="button" className="btn btn-sm" onClick={() => setOpen(true)}>
           Add
@@ -706,7 +734,7 @@ function OghmaForm({ skills, onAdd }: { skills: string[]; onAdd: (skills: string
   return (
     <div role="group" aria-label="Oghma Infinium" className={styles.oghmaForm}>
       <span className={styles.extraKind}>
-        <IconLabel icon={<MarkIcon name="skill-book" />}>Oghma Infinium</IconLabel>
+        <OghmaLabel />
       </span>
       <span className={chosen.length ? "ember" : "muted"}>{chosen.length} of 6 chosen</span>
       <span className={styles.oghmaChips}>

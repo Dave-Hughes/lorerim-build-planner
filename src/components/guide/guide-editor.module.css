@@ -167,8 +167,8 @@
   cursor: pointer;
   color: #c3cdd6;
 }
-.menuItem[aria-selected="true"],
-.menuItem:hover {
+/* One highlight: the mouse moves it as the keys do (WO-57). */
+.menuItem[aria-selected="true"] {
   background: rgba(240, 145, 63, 0.12);
   color: var(--ember);
 }

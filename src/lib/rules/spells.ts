@@ -68,3 +68,25 @@ export function keptMainSpells(plan: BuildPlan): string[] {
   const learned = new Set(plan.levels.flatMap((l) => (l.spells ?? []).map((s) => s.id)));
   return [...new Set(plan.mainSpells ?? [])].filter((id) => learned.has(id)).slice(0, MAX_MAIN_SPELLS);
 }
+
+const TIER_ORDER: SpellTier[] = ["Novice", "Apprentice", "Adept", "Expert", "Master"];
+export const START_LIST_MAX = 50;
+
+/**
+ * What the Add spell search lists before anything is typed (WO-57): the spells of the schools this
+ * build has perks in by this level, by tier and then A to Z; with no school perks, every spell A to
+ * Z. At most 50; `more` says there are others to search for.
+ */
+export function startingSpells(d: GameData, plan: BuildPlan, level: number): { list: Spell[]; more: boolean } {
+  const schools = new Set(
+    plan.levels
+      .slice(0, level)
+      .flatMap((lv) => lv.perks)
+      .map((id) => id.split(":")[0])
+      .filter((t) => (SCHOOLS as readonly string[]).includes(t)),
+  );
+  const all = schools.size
+    ? d.spells.filter((s) => schools.has(s.school)).sort((a, b) => TIER_ORDER.indexOf(a.tier) - TIER_ORDER.indexOf(b.tier) || a.name.localeCompare(b.name))
+    : [...d.spells].sort((a, b) => a.name.localeCompare(b.name));
+  return { list: all.slice(0, START_LIST_MAX), more: all.length > START_LIST_MAX };
+}

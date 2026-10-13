@@ -1107,12 +1107,17 @@ function CoverField({
 function TagPicker({ chosen, suggested, onChange }: { chosen: string[]; suggested: boolean; onChange: (tags: string[]) => void }) {
   const full = chosen.length >= MAX_TAGS;
   return (
-    <fieldset className={styles.tagPicker}>
-      <legend className="label">Tags</legend>
-      <span className="field-hint">
-        {suggested && chosen.length ? "Suggested from your majors. Remove any that don't fit. " : ""}
-        {chosen.length} of {MAX_TAGS} chosen
-      </span>
+    <fieldset className={styles.tagPicker} aria-label="Tags">
+      {/* A heading with the count beside it, under a rule, so the chips read as their own section (WO-57). */}
+      <legend className={styles.tagsLegend}>
+        <h2 className="section-title">
+          Tags{" "}
+          <span className="section-title-at">
+            {chosen.length} of {MAX_TAGS} chosen
+          </span>
+        </h2>
+      </legend>
+      {suggested && chosen.length > 0 && <span className="field-hint">Suggested from your majors. Remove any that don&apos;t fit.</span>}
       {TAG_GROUPS.map((g) => (
         <div key={g} className={styles.tagGroup}>
           <span className="sub-label">{g}</span>

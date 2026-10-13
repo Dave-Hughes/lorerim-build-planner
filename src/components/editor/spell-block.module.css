@@ -167,6 +167,9 @@
   position: relative;
 }
 .options {
+  /* A starting list can hold 50 (WO-57): it scrolls. */
+  max-height: 340px;
+  overflow-y: auto;
   position: absolute;
   /* Above the notes' sticky toolbar (25), as the gear search is. */
   z-index: 30;
@@ -187,6 +190,12 @@
   padding: 7px 8px;
   cursor: pointer;
   font-size: 14px;
+}
+/* Under a starting list (WO-57): not an option, a hint that typing finds the rest. */
+.optionRest {
+  padding: 7px 8px;
+  font-size: 13px;
+  cursor: default;
 }
 .option[aria-selected="true"] {
   background: color-mix(in srgb, var(--ember) 12%, transparent);

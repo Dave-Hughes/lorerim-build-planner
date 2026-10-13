@@ -761,12 +761,23 @@
 
 /* Tags on the Name step: chips grouped as on Browse builds. */
 .tagPicker {
-  margin: 0;
-  padding: 0;
+  margin: 8px 0 0;
+  padding: 26px 0 0;
   border: 0;
+  border-top: 1px solid var(--rule);
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.tagsLegend {
+  /* A legend sits on the fieldset's border by default; this one sits under the rule. */
+  float: left;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 4px;
+}
+.tagsLegend + * {
+  clear: both;
 }
 .tagGroup {
   display: flex;

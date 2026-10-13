@@ -661,6 +661,9 @@
   min-width: 0;
 }
 .gearOptions {
+  /* A starting list can hold 50 (WO-57): it scrolls. */
+  max-height: 340px;
+  overflow-y: auto;
   position: absolute;
   /* Above the notes' sticky toolbar (25) just below it. */
   z-index: 30;
@@ -681,8 +684,12 @@
   padding: 7px 12px;
   cursor: pointer;
 }
-.gearOption[aria-selected="true"],
-.gearOption:hover {
+.gearOptionRest {
+  padding: 8px 12px;
+  font-size: 13px;
+}
+/* One highlight: the mouse moves it as the keys do (WO-57). */
+.gearOption[aria-selected="true"] {
   background: rgba(240, 145, 63, 0.12);
 }
 .gearOptionName {
@@ -924,4 +931,11 @@
   .gearMade .gearOptions {
     min-width: 0;
   }
+}
+
+/* The Oghma Infinium's name explains itself on hover (WO-57). */
+.oghmaLabel {
+  cursor: help;
+  text-decoration: underline dotted var(--faint);
+  text-underline-offset: 4px;
 }
