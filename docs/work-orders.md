@@ -2381,15 +2381,19 @@ Canvas: `TabsIcons.dc.html`. The two tabs on the build page are plain text today
 
 ---
 
-## WO-61  Pip, the first-time guide (13 Oct 2026; build once Dave has OK'd the canvas and Pip)
+## WO-61  A first-time guide: Tapps or Pip (13 Oct 2026; build once Dave has picked one on the canvas)
 
-Canvas: `TourReader.dc.html` and `TourAuthor.dc.html` (row "Proposal: Pip, the first-time guide"). Both are clickable on the canvas, so the copy can be read stop by stop.
+Canvas: `TourReader.dc.html` and `TourAuthor.dc.html` (row "Proposal: Tapps the goofy barbarian, the first-time guide"). Each card's copy is on the canvas in both voices. Both are clickable on the canvas, so the copy can be read stop by stop.
 
-Pip is the planner's own character: a small skeever scribe with a quill and scroll, in the icon palette. He's original, not any game's character.
+**Which guide is Dave's pick (13 Oct).** The canvas has two, switched in each tour's Tweaks:
+- **Tapps**, the default: a goofy Nord barbarian with a crooked horned helmet (one horn droops), a braided blond beard, a gap-toothed grin, a red tunic and a tankard of mead. He speaks in short goofy lines. Tapps is Dave's community name. The character is drawn fresh, not after anyone else's artwork, so he takes nothing from another artist's barbarian: no headband, gem, fur shoulders or tooth necklace.
+- **Pip:** a small skeever scribe with a quill and scroll, in plain copy.
+
+Build whichever Dave picks; the steps below say Pip but apply to either.
 
 The design rules forbid how-it-works copy on screens. The tour is the one exception: it shows once, and only then.
 
-1. **Pip, the art.** Draw Pip in `scripts/icons/pixels.py` at 24×24 (the canvas has a first draw), by the icon rules: shared outline, light from the top left, the planner's palette. Shown at 72px (3×), pixelated.
+1. **The art.** Draw the chosen guide in `scripts/icons/pixels.py` at 24×24 (the canvas has a first draw), by the icon rules: shared outline, light from the top left, the planner's palette. Shown at 72px (3×), pixelated.
 2. **How a stop looks.**
    - The page dims (`rgba(6,8,11,.74)`) except the part being shown, which gets a 2px ember outline and is scrolled into view.
    - Pip's card sits beside it: Pip, a short title, one or two sentences, `N of 4`, `Skip` and `Next` (`Done` on the last).
