@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { fitsSlot, searchItems, type GameItem } from "./items";
+import { fitsSlot, indexById, searchItems, type GameItem } from "./items";
 
 const item = (name: string, kind: GameItem["kind"], extra: Partial<GameItem> = {}): GameItem => ({ id: `Test.esp:${name}`, name, kind, stats: "", ...extra });
 const ITEMS: GameItem[] = [
@@ -39,5 +39,19 @@ describe("fitsSlot", () => {
     expect(names("Body")).toEqual(["Iron Cuirass", "Steel Armor"]);
     expect(names("Ammo")).toEqual(["Steel Arrow"]);
     expect(names("Other")).toHaveLength(ITEMS.length);
+  });
+});
+
+describe("the item index by id", () => {
+  const arrow: GameItem = { id: "Skyrim.esm:01397F", name: "Steel Arrow", kind: "ammo", weaponType: "Arrow", stats: "Arrow, 60 damage", also: ["Skyrim.esm:105EE7"] };
+  const ring: GameItem = { id: "ccBGSSSE001-Fish.esm:000B29", name: "Mentor's Ring", kind: "armor", slot: "Ring", stats: "Jewelry" };
+  const byId = indexById([arrow, ring]);
+
+  it("finds an item by an id in its also, so an old build's link still works", () => {
+    expect(byId.get("skyrim.esm:105ee7")).toBe(arrow);
+  });
+
+  it("matches ids without case", () => {
+    expect(byId.get("ccbgssse001-fish.esm:000b29")).toBe(ring);
   });
 });

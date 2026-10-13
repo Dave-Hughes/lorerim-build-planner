@@ -228,6 +228,10 @@
     }
   },
   "items": {
+    "_prefer": "Where several records share a name, the one latest in the load order is kept, unless named here (name -> id). Steel Arrow: the game's own, not the Helgen quest's copy MQ101SteelArrow.",
+    "prefer": {
+      "Steel Arrow": "Skyrim.esm:01397F"
+    },
     "skipNames": [
       "^zzz",
       "DELETED",

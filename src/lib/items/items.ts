@@ -18,6 +18,19 @@ export interface GameItem {
   /** "Heavy armor, 25 armor, 30 weight" */
   stats: string;
   text?: string;
+  /** Other records with this name (WO-51 follow-up): a build that saved one of their ids still finds this item. */
+  also?: string[];
+}
+
+/** Ids compare without case: one extract wrote "ccbgssse001-fish.esm", another "ccBGSSSE001-Fish.esm". */
+const idKey = (id: string) => id.toLowerCase();
+
+/** Every item by its id and the ids in its `also`. */
+export function indexById(list: GameItem[]): Map<string, GameItem> {
+  const m = new Map<string, GameItem>();
+  for (const i of list) for (const id of i.also ?? []) m.set(idKey(id), i);
+  for (const i of list) m.set(idKey(i.id), i);
+  return m;
 }
 
 const loaded = new Map<string, { list: GameItem[]; byId: Map<string, GameItem> }>();
@@ -48,7 +61,7 @@ export function loadItems(version: string): Promise<GameItem[]> {
     p = fetch(itemsUrl(version))
       .then((r) => (r.ok ? (r.json() as Promise<GameItem[]>) : Promise.reject(new Error(String(r.status)))))
       .then((list) => {
-        loaded.set(version, { list, byId: new Map(list.map((i) => [i.id, i])) });
+        loaded.set(version, { list, byId: indexById(list) });
         listeners.forEach((l) => l());
         return list;
       })
@@ -65,7 +78,7 @@ export function loadedItems(version: string): GameItem[] | null {
 }
 
 export function itemById(version: string, id: string): GameItem | undefined {
-  return loaded.get(version)?.byId.get(id);
+  return loaded.get(version)?.byId.get(idKey(id));
 }
 
 const subscribe = (l: () => void) => {

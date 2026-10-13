@@ -209,10 +209,12 @@ def describe(rec, kw_names):
     return out
 
 
-def index_items(winners, kw_names, skip, order=None):
+def index_items(winners, kw_names, skip):
     """
     The filter steps over the winning records (in load order), with the count after each.
-    Returns (entries, counts). `order` maps a plugin name to its place in the load order.
+    Returns (entries, counts). Records that share a name are all kept, each with `order`, its
+    place in the load order; build_items picks one per name (see merge), so changing the pick
+    needs no new extract.
     """
     counts = {"records": len(winners)}
     rows = [r for r in winners if playable(r)]
@@ -221,20 +223,33 @@ def index_items(winners, kw_names, skip, order=None):
     counts["named"] = len(rows)
     rows = [r for r in rows if not r["template"]]
     counts["untemplated"] = len(rows)
-    # Several records with one name (WO-32): keep the original, the record from the earliest plugin
-    # in the load order, then the lowest form ID: the game's own Steel Arrow, not the Helgen quest's
-    # copy (MQ101SteelArrow) a later merge patch happens to touch last. Each record's stats are its
-    # winning override's.
-    rank = order or {}
-    merged = {}
-    for r in rows:
-        key = (r["group"], r["name"].lower())
-        mine = (rank.get(r["key"][0].lower(), 1 << 20), r["key"][1])
-        if key not in merged or mine < (rank.get(merged[key]["key"][0].lower(), 1 << 20), merged[key]["key"][1]):
-            merged[key] = r
-    counts["merged"] = len(merged)
-    entries = sorted((describe(r, kw_names) for r in merged.values()), key=lambda e: (e["kind"], e["name"].lower()))
+    entries = [dict(describe(r, kw_names), order=i) for i, r in enumerate(rows)]
+    counts["merged"] = len(merge(entries))
+    entries.sort(key=lambda e: (e["kind"], e["name"].lower(), e["order"]))
     return entries, counts
+
+
+def merge(entries, prefer=None):
+    """
+    One entry per kind and name. The record latest in the load order wins (as the index always
+    had it), unless overrides.json's items.prefer names the one to keep: the game's own Steel
+    Arrow, not the Helgen quest's copy (MQ101SteelArrow) a merge patch touches last. The other
+    records' ids go in the winner's `also`, so a build that saved one of them still finds it.
+    An entry without `order` (an extract from before) counts by its place in the list.
+    """
+    prefer = {k.lower(): v.lower() for k, v in (prefer or {}).items()}
+    groups = {}
+    for i, e in enumerate(entries):
+        groups.setdefault((e["kind"], e["name"].lower()), []).append((e.get("order", i), e))
+    out = []
+    for (_, name), group in groups.items():
+        group.sort(key=lambda t: t[0])
+        want = prefer.get(name)
+        win = next((e for _, e in group if e["id"].lower() == want), None) if want else None
+        win = win or group[-1][1]
+        also = sorted({e["id"] for _, e in group if e["id"].lower() != win["id"].lower()})
+        out.append(dict(win, also=also) if also else win)
+    return sorted(out, key=lambda e: (e["kind"], e["name"].lower()))
 
 
 def skip_patterns():
@@ -268,7 +283,7 @@ def main():
         for r in items:
             winners.pop(tuple(r["key"]), None)  # keep load order: the winner goes to the end
             winners[tuple(r["key"])] = r
-    entries, counts = index_items(list(winners.values()), kw_names, skip_patterns(), {n.lower(): i for i, n in enumerate(lo)})
+    entries, counts = index_items(list(winners.values()), kw_names, skip_patterns())
     out = os.path.join(REPO, "gamedata", VERSION, "items_raw.json")
     with open(out, "w", encoding="utf-8") as f:
         json.dump({"counts": counts, "items": entries}, f, indent=1, ensure_ascii=False)
@@ -299,16 +314,15 @@ def stats_line(e):
     return ", ".join(parts)
 
 
-def build_items(raw, skip=()):
+def build_items(raw, skip=(), prefer=None):
     """
     items_raw.json -> the planner's items.json rows: { id, name, kind, slot, armorType, weaponType,
-    stats, text }. The name filter and the weapon labels run again here, so a fix to either needs
-    no new extract.
+    stats, text, also }. The name filter, the merge and the weapon labels run here, so a fix to any
+    of them needs no new extract.
     """
     rows = []
-    for e in raw["items"]:
-        if any(re.search(p, e["name"], re.IGNORECASE) for p in skip):
-            continue
+    kept = [e for e in raw["items"] if not any(re.search(p, e["name"], re.IGNORECASE) for p in skip)]
+    for e in merge(kept, prefer):
         if e["kind"] == "weapon":
             e = {**e, "weaponType": weapon_label(e["name"], e.get("weaponType"))}
         row = {"id": e["id"], "name": e["name"], "kind": e["kind"]}
@@ -322,6 +336,8 @@ def build_items(raw, skip=()):
         row["stats"] = stats_line(e)
         if e.get("text"):
             row["text"] = e["text"]
+        if e.get("also"):
+            row["also"] = e["also"]
         rows.append(row)
     return rows
 
