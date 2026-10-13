@@ -152,10 +152,18 @@ export interface Shout {
   text: string;
 }
 
-/** powers.json (WO-51). `fromPerks`: perk id -> the abilities that perk grants. */
+/** A race's passive (WO-55): always on, described with the race; not something you use. */
+export interface RacePassive {
+  id: string;
+  name: string;
+  text: string;
+}
+
+/** powers.json (WO-51). `fromPerks`: perk id -> the abilities that perk grants. `fromRaces` (WO-55): by race name. */
 export interface Powers {
   abilities: Ability[];
   fromPerks: Record<string, string[]>;
+  fromRaces?: Record<string, { powers: string[]; passives: RacePassive[] }>;
   shouts: Shout[];
 }
 
@@ -233,6 +241,8 @@ export interface GameData {
   abilityById: Map<string, Ability>;
   /** Perk id -> the ability ids it grants. */
   abilityFromPerks: Record<string, string[]>;
+  /** Race name -> its powers (automatic from level 1) and passives (WO-55). */
+  abilityFromRaces: Record<string, { powers: string[]; passives: RacePassive[] }>;
   shouts: Shout[];
   shoutById: Map<string, Shout>;
   enchantments: Enchantment[];
@@ -295,6 +305,7 @@ function build(version: GameVersion, src0: VersionSource): GameData {
     abilities: src.powers?.abilities ?? [],
     abilityById: new Map((src.powers?.abilities ?? []).map((a) => [a.id, a])),
     abilityFromPerks: src.powers?.fromPerks ?? {},
+    abilityFromRaces: src.powers?.fromRaces ?? {},
     shouts: src.powers?.shouts ?? [],
     shoutById: new Map((src.powers?.shouts ?? []).map((x) => [x.id, x])),
     enchantments: src.enchantments ?? [],

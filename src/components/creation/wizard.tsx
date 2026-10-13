@@ -463,6 +463,16 @@ function RaceStep({ plan, update }: StepProps) {
                 <span className={styles.magicka}>{r.magicka} Magicka</span>
                 <span className={styles.stamina}>{r.stamina} Stamina</span>
               </div>
+              {/* The race's passives (WO-55), in the game's words. */}
+              {(d.abilityFromRaces[r.name]?.passives.length ?? 0) > 0 && (
+                <ul className={styles.racePassives} aria-label={`${r.name} passives`}>
+                  {d.abilityFromRaces[r.name].passives.map((p) => (
+                    <li key={p.id}>
+                      <b>{p.name}</b> {p.text}
+                    </li>
+                  ))}
+                </ul>
+              )}
               <button type="button" className={`btn btn-sm ${on ? "btn-ember" : ""} ${styles.cardBtn}`} aria-pressed={on} onClick={choose}>
                 {on ? "Chosen" : "Choose"}
               </button>

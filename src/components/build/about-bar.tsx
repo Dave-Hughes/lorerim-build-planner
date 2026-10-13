@@ -48,6 +48,12 @@ export function AboutBar({ plan }: { plan: BuildPlan }) {
               <span>
                 +15 {race.primary}. +10 {race.secondary.join(", ")}.
               </span>
+              {/* Its passives (WO-55), in the game's words. */}
+              {(d.abilityFromRaces[race.name]?.passives ?? []).map((p) => (
+                <span key={p.id}>
+                  <b>{p.name}</b> {p.text}
+                </span>
+              ))}
             </>
           }
         >

@@ -3,7 +3,7 @@ import sample from "./__fixtures__/sample-build.json";
 import overrides from "../../../gamedata/5.0.4.8/overrides.json";
 import { computeBuild } from "./engine";
 import { requireGameData } from "./data";
-import { abilitiesKnown, shoutWords, shoutWordsLine } from "./powers";
+import { abilitiesAt, abilitiesKnown, abilitySource, addableAbilities, shoutWords, shoutWordsLine } from "./powers";
 import { addAbility, addShout } from "@/components/editor/plan-ops";
 import type { BuildPlan, LevelPlan } from "./types";
 
@@ -81,5 +81,34 @@ describe("abilities and shouts in a build", () => {
     const id = shout("Unrelenting Force").id;
     const states = computeBuild(addShout(addShout(plan(10), 3, { id, words: 2 }), 9, { id, words: 1 }));
     expect(states[8].issues).toContainEqual({ code: "shout-words", message: "Unrelenting Force drops to 1 word; 2 were already known." });
+  });
+});
+
+describe("a race's powers (WO-55)", () => {
+  const khajiit = (n = 3): BuildPlan => ({ ...plan(n), race: "Khajiit" });
+  const nord = (n = 3): BuildPlan => ({ ...plan(n), race: "Nord" });
+  const khajiitNightEye = "Skyrim.esm:0AA01D";
+  const ordinatorNightEye = "Ordinator - Perks of Skyrim.esp:0BC4F9";
+
+  it("a Khajiit build has Night Eye at level 1, from the Khajiit race", () => {
+    const a = abilitiesAt(d, khajiit(), 1).find((x) => x.id === khajiitNightEye)!;
+    expect(a).toMatchObject({ level: 1, fromRace: "Khajiit" });
+    expect(abilitySource(d, a)).toBe("from the Khajiit race");
+    expect(abilitiesAt(d, khajiit(), 2).map((x) => x.id)).not.toContain(khajiitNightEye);
+  });
+
+  it("adding it by hand raises ability-repeat", () => {
+    const states = computeBuild(addAbility(khajiit(), 2, { id: khajiitNightEye }));
+    expect(states[1].issues).toContainEqual({ code: "ability-repeat", message: "Night Eye comes from the Khajiit race." });
+  });
+
+  it("a Nord build has no race power", () => {
+    expect(abilitiesAt(d, nord(), 1).filter((x) => x.fromRace)).toEqual([]);
+  });
+
+  it("the search offers Ordinator's Night Eye and not the Khajiit one", () => {
+    const ids = addableAbilities(d).map((a) => a.id);
+    expect(ids).toContain(ordinatorNightEye);
+    expect(ids).not.toContain(khajiitNightEye);
   });
 });

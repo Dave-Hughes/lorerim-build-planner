@@ -3,7 +3,7 @@
 import { MarkIcon, SkillIcon } from "@/components/ui/skill-icon";
 import { Tooltip } from "@/components/ui/tooltip";
 import type { GameData } from "@/lib/rules/data";
-import { abilitiesKnown, shoutsKnown, shoutWordsLine, type GainedAbility, type KnownShout } from "@/lib/rules/powers";
+import { abilitiesKnown, abilitySource, shoutsKnown, shoutWordsLine, type GainedAbility, type KnownShout } from "@/lib/rules/powers";
 import { SCHOOLS, spellsLearned, type LearnedSpell } from "@/lib/rules/spells";
 import type { BuildPlan } from "@/lib/rules/types";
 import styles from "./spell-view.module.css";
@@ -36,12 +36,12 @@ function SpellTip({ s, full }: { s: LearnedSpell; full?: boolean }) {
 }
 
 export function AbilityTip({ a, d }: { a: GainedAbility; d: GameData }) {
-  const perk = a.fromPerk ? d.perkById.get(a.fromPerk)?.name ?? a.fromPerk : undefined;
+  const source = abilitySource(d, a);
   return (
     <span className={styles.tip}>
       <span className="muted">{a.ability!.kind}</span>
       {a.ability!.text && <span>{a.ability!.text}</span>}
-      {perk ? <span className="muted">From the {perk} perk</span> : a.where ? <span className="muted">Where: {a.where}</span> : null}
+      {source ? <span className="muted">{source[0].toUpperCase() + source.slice(1)}</span> : a.where ? <span className="muted">Where: {a.where}</span> : null}
     </span>
   );
 }

@@ -91,7 +91,7 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
   /** Spell id -> the level it was learned (WO-42). */
   const spellsLearned: Record<string, number> = {};
   /** Ability id -> the level it was gained, and the perk that gave it (WO-51). */
-  const abilitiesGained: Record<string, { level: number; perk?: string }> = {};
+  const abilitiesGained: Record<string, { level: number; perk?: string; race?: string }> = {};
   /** Shout id -> the words known (WO-51). */
   const shoutWords: Record<string, number> = {};
   const states: LevelState[] = [];
@@ -248,6 +248,7 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
     }
 
     // Abilities (WO-51): a perk's are automatic; one added by hand that a perk already gives, or added twice, is a repeat.
+    if (L === 1) for (const id of d.abilityFromRaces[b.race]?.powers ?? []) abilitiesGained[id] = { level: 1, race: b.race };
     for (const perk of [...lv.perks, ...lv.destiny])
       for (const id of d.abilityFromPerks[perk] ?? []) if (!(id in abilitiesGained)) abilitiesGained[id] = { level: L, perk };
     for (const row of lv.abilities ?? []) {
@@ -259,7 +260,12 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
       const had = abilitiesGained[row.id];
       if (had) {
         const perk = had.perk ? d.perkById.get(had.perk) : undefined;
-        issues.push(issue("ability-repeat", perk ? `${ab.name} comes from the ${perk.name} perk, taken at level ${had.level}.` : `${ab.name} was already gained at level ${had.level}.`));
+        issues.push(
+          issue(
+            "ability-repeat",
+            had.race ? `${ab.name} comes from the ${had.race} race.` : perk ? `${ab.name} comes from the ${perk.name} perk, taken at level ${had.level}.` : `${ab.name} was already gained at level ${had.level}.`,
+          ),
+        );
         continue;
       }
       abilitiesGained[row.id] = { level: L };

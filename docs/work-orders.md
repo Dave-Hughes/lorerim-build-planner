@@ -2219,11 +2219,11 @@ The game files say that in LoreRim only one racial power is left: Khajiit **Nigh
    - They aren't in the Abilities row (that row is for abilities you use) and don't change any of the planner's numbers.
 
 ### Done when
-- [ ] `npm run test:gamedata`: `fromRaces` has all 10 races; Khajiit's powers are `[Skyrim.esm:0AA01D]`; Altmer's passives are Weakness to Elements and Highborn; both Night Eye records are in `abilities`.
-- [ ] Unit tests: a Khajiit build has Night Eye at level 1 `from the Khajiit race`; adding it by hand gives `ability-repeat`; a Nord build has no race power; the search offers Ordinator's Night Eye to a Nord and not the Khajiit one.
-- [ ] e2e: the shared page of a Khajiit build shows Night Eye in Abilities at level 1; an Altmer's race tooltip in the about bar lists Highborn and Weakness to Elements.
-- [ ] Screenshots: Set up's race step at 1440 and 390 with the passives on the cards; the about bar's race tooltip; a Khajiit level 1 Abilities row.
-- [ ] All checks in CLAUDE.md pass.
+- [x] `npm run test:gamedata`: `fromRaces` has all 10 races; Khajiit's powers are `[Skyrim.esm:0AA01D]`; Altmer's passives are Weakness to Elements and Highborn; both Night Eye records are in `abilities`.
+- [x] Unit tests: a Khajiit build has Night Eye at level 1 `from the Khajiit race`; adding it by hand gives `ability-repeat`; a Nord build has no race power; the search offers Ordinator's Night Eye to a Nord and not the Khajiit one.
+- [x] e2e: the shared page of a Khajiit build shows Night Eye in Abilities at level 1; an Altmer's race tooltip in the about bar lists Highborn and Weakness to Elements.
+- [x] Screenshots: Set up's race step at 1440 and 390 with the passives on the cards; the about bar's race tooltip; a Khajiit level 1 Abilities row.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

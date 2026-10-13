@@ -349,6 +349,21 @@
   align-self: flex-start;
   margin-top: auto;
 }
+/* A race's passives (WO-55): name in bold, then the game's text, at the card's width. */
+.racePassives {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--soft);
+}
+.racePassives b {
+  color: var(--text);
+}
 .raceSkills {
   display: flex;
   flex-direction: column;

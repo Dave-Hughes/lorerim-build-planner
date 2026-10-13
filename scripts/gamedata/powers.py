@@ -231,15 +231,33 @@ def skipped(name, skip):
     return False
 
 
+def readable_durations(text):
+    """'for 8.5536e+06 seconds' -> 'for 99 days': a duration of a day or more reads in days
+    (WO-55; the game writes the number as it is, which is a toggle in practice)."""
+    def days(m):
+        n = float(m.group(1))
+        if n < 86400:
+            return m.group(0)
+        d = round(n / 86400)
+        return f"{d} day" if d == 1 else f"{d} days"
+    return re.sub(r"(\d+(?:\.\d+)?(?:e\+\d+)?) seconds", days, text)
+
+
 def build_powers(raw, perk_by_edid, skip):
     """powers.json (WO-51): the abilities (powers and lesser powers) by name, the abilities a perk
-    in a tree grants (a list: Metamagic grants three), and the shouts with their words in the Latin spelling. Returns (data, notes)."""
+    in a tree grants (a list: Metamagic grants three), each race's powers and passives (WO-55), and the shouts with their words in the Latin spelling. Returns (data, notes)."""
     notes = []
     linked = {f["power"] for f in raw.get("fromPerks", [])}
+    # A race's powers (WO-55) always stay, apart from any other record with their name: the
+    # Khajiit's Night Eye beside Ordinator's.
+    race_powers = {sp["id"]: sp for r in raw.get("races", []) for sp in r["spells"] if sp["kind"] in ("Power", "Lesser power")}
     keep = {}
     dropped = set()
-    for p in raw["powers"]:
+    for p in [*raw["powers"], *(sp for sp in race_powers.values() if sp["id"] not in {q["id"] for q in raw["powers"]})]:
         name = (p.get("name") or "").strip()
+        if p["id"] in race_powers:
+            keep[(name, p["kind"], p["id"])] = p
+            continue
         if not name or skipped(name, skip):
             dropped.add(name)
             continue
@@ -248,10 +266,10 @@ def build_powers(raw, perk_by_edid, skip):
         if k in keep and keep[k]["id"] in linked and p["id"] not in linked:
             continue
         keep[k] = p
-    abilities = sorted(({"id": p["id"], "name": p["name"].strip(), "kind": p["kind"], "text": p.get("text", "")} for p in keep.values()), key=lambda a: a["name"].lower())
+    abilities = sorted(({"id": p["id"], "name": p["name"].strip(), "kind": p["kind"], "text": readable_durations(p.get("text", ""))} for p in keep.values()), key=lambda a: a["name"].lower())
     ids = {a["id"] for a in abilities}
     # Repeats folded into one: a perk link to a folded record goes to the kept one.
-    by_name = {(p["name"].strip(), p["kind"]): p["id"] for p in keep.values()}
+    by_name = {(p["name"].strip(), p["kind"]): p["id"] for k, p in keep.items() if len(k) == 2}
     raw_by_id = {p["id"]: p for p in raw["powers"]}
     from_perks = {}
     for f in raw.get("fromPerks", []):
@@ -273,8 +291,18 @@ def build_powers(raw, perk_by_edid, skip):
             "translations": s["translations"],
             "text": s.get("text", ""),
         }
+    # By race (WO-55): its powers, automatic from level 1, and its passives, described with the race.
+    from_races = {}
+    for r in raw.get("races", []):
+        from_races[r["race"]] = {
+            "powers": [sp["id"] for sp in r["spells"] if sp["kind"] in ("Power", "Lesser power") and sp["id"] in ids],
+            "passives": [{"id": sp["id"], "name": sp["name"].strip(), "text": sp.get("text", "")} for sp in r["spells"] if sp["kind"] == "Ability"],
+        }
     notes.append("abilities left out: " + ", ".join(sorted(n for n in dropped if n)))
-    return {"abilities": abilities, "fromPerks": {k: v for k, v in sorted(from_perks.items()) if v}, "shouts": sorted(shouts.values(), key=lambda x: x["name"])}, notes
+    out = {"abilities": abilities, "fromPerks": {k: v for k, v in sorted(from_perks.items()) if v}, "shouts": sorted(shouts.values(), key=lambda x: x["name"])}
+    if from_races:
+        out["fromRaces"] = from_races
+    return out, notes
 
 
 if __name__ == "__main__":

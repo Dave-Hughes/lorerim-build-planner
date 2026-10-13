@@ -13,6 +13,8 @@ export interface GainedAbility {
   ability: Ability | undefined;
   /** The perk that grants it; undefined for one the author added. */
   fromPerk?: string;
+  /** The race that grants it, from level 1 (WO-55). */
+  fromRace?: string;
   where?: string;
   /** Its index in the level's own rows (author-added only). */
   index?: number;
@@ -28,10 +30,34 @@ export function perkAbilitiesAt(d: GameData, plan: BuildPlan, level: number): Ga
   return out;
 }
 
-/** A level's new abilities: those its perks grant, then the author's rows. */
+/** The race's powers (WO-55): automatic from level 1, never stored in the plan. */
+export function raceAbilitiesAt(d: GameData, plan: BuildPlan, level: number): GainedAbility[] {
+  if (level !== 1 || !plan.levels.length) return [];
+  return (d.abilityFromRaces[plan.race]?.powers ?? []).map((id) => ({ id, level: 1, ability: d.abilityById.get(id), fromRace: plan.race }));
+}
+
+/** Every race's powers: no other race can get them, so the add-ability search leaves them out. */
+export function racePowerIds(d: GameData): Set<string> {
+  return new Set(Object.values(d.abilityFromRaces).flatMap((r) => r.powers));
+}
+
+/** The abilities an author can add by hand: every one but a race's power. */
+export function addableAbilities(d: GameData): Ability[] {
+  const racial = racePowerIds(d);
+  return d.abilities.filter((a) => !racial.has(a.id));
+}
+
+/** Where a gained ability comes from, for its line and tooltip: "from the War Cry perk", "from the Khajiit race". */
+export function abilitySource(d: GameData, a: GainedAbility): string | undefined {
+  if (a.fromRace) return `from the ${a.fromRace} race`;
+  if (a.fromPerk) return `from the ${d.perkById.get(a.fromPerk)?.name ?? a.fromPerk} perk`;
+  return undefined;
+}
+
+/** A level's new abilities: the race's (at level 1), those its perks grant, then the author's rows. */
 export function abilitiesAt(d: GameData, plan: BuildPlan, level: number): GainedAbility[] {
   const rows = plan.levels[level - 1]?.abilities ?? [];
-  return [...perkAbilitiesAt(d, plan, level), ...rows.map((r, index) => ({ id: r.id, level, ability: d.abilityById.get(r.id), where: r.where, index }))];
+  return [...raceAbilitiesAt(d, plan, level), ...perkAbilitiesAt(d, plan, level), ...rows.map((r, index) => ({ id: r.id, level, ability: d.abilityById.get(r.id), where: r.where, index }))];
 }
 
 /** Every ability the build has by `upTo`, in level order (the first time only). */

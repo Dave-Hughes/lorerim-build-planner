@@ -35,7 +35,7 @@ test("the version band is on the Race step only, and the last step reads Details
   await signIn(context);
   await page.goto(`/b/${TEST_BUILD_ID}/setup?step=race`);
   await expect(page.getByText(/LoreRim 5\.0/).first()).toBeVisible();
-  await expect(page.getByRole("listitem").last().getByRole("button")).toContainText("Details");
+  await expect(page.getByRole("complementary", { name: "Setup steps" }).getByRole("listitem").last().getByRole("button")).toContainText("Details");
 });
 
 test("liking plays the burst once; reduced motion shows none", async ({ page, context }) => {

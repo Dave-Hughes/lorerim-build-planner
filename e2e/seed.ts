@@ -41,6 +41,8 @@ export const SPELLS_BUILD_ID = "e2espe22ss";
 export const FORTY_BUILD_ID = "e2emadesta";
 /** WO-52: forty levels with War Cry from its perk at 12, a quest ability, Unrelenting Force and Slow Time. */
 export const POWERS_BUILD_ID = "e2ewarcrya";
+/** WO-55: the sample as a Khajiit, for the race's Night Eye. */
+export const KHAJIIT_BUILD_ID = "e2ekhajeet";
 export const AT_LIMIT_TOKEN = "e2e-session-token-0007";
 /** The test author's Discord id; playwright.config.ts gives it to the server as ADMIN_DISCORD_IDS. */
 export const E2E_ADMIN_DISCORD_ID = "e2e-discord-admin-0001";
@@ -257,6 +259,17 @@ export async function seed() {
         visibility: "unlisted",
         gameVersion: "5.0.4.8",
         plan: powersPlan(),
+        // Made two days ago, so it doesn't count toward the test author's builds for the day (WO-40's limit).
+        createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
+      },
+      {
+        id: KHAJIIT_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        name: "Night Prowler",
+        description: "A Khajiit, for the race's Night Eye.",
+        visibility: "unlisted",
+        gameVersion: "5.0.4.8",
+        plan: { ...samplePlan(), race: "Khajiit" },
         // Made two days ago, so it doesn't count toward the test author's builds for the day (WO-40's limit).
         createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
       },

@@ -16,7 +16,7 @@ import { EditBar, MenuButton } from "@/components/editor/edit-bar";
 import menuStyles from "@/components/editor/edit-bar.module.css";
 import { PlayMark } from "./play-mark";
 import { spellsAt } from "@/lib/rules/spells";
-import { abilitiesAt, shoutsKnown } from "@/lib/rules/powers";
+import { abilitiesAt, abilitySource, shoutsKnown } from "@/lib/rules/powers";
 import { AbilityTip, ShoutTip, SpellView, spellsAndAbilities } from "./spell-view";
 import { VideoGuide } from "./video-guide";
 import { ReportBuild } from "./report-build";
@@ -1131,14 +1131,14 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       "New abilities",
       <span key="ab" className={styles.newSpells}>
         {newAbilities.map((x) => (
-          <span key={`${x.fromPerk ?? "row"}-${x.id}`} className={styles.newSpell}>
+          <span key={`${x.fromRace ?? x.fromPerk ?? "row"}-${x.id}`} className={styles.newSpell}>
             <MarkIcon name="power" size={24} />
             <Tooltip content={<AbilityTip a={x} d={d} />}>
               <span className={styles.newSpellChip} tabIndex={0}>
                 {x.ability!.name}
               </span>
             </Tooltip>
-            <span className="muted">{x.fromPerk ? `from the ${d.perkById.get(x.fromPerk)?.name ?? x.fromPerk} perk` : x.where}</span>
+            <span className="muted">{abilitySource(d, x) ?? x.where}</span>
           </span>
         ))}
       </span>,

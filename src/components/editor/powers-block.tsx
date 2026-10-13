@@ -5,7 +5,7 @@ import { useGameData } from "@/components/game-data";
 import { MarkIcon } from "@/components/ui/skill-icon";
 import { Tooltip } from "@/components/ui/tooltip";
 import type { Ability, Shout } from "@/lib/rules/data";
-import { perkAbilitiesAt, shoutWordsLine } from "@/lib/rules/powers";
+import { abilitySource, addableAbilities, perkAbilitiesAt, raceAbilitiesAt, shoutWordsLine } from "@/lib/rules/powers";
 import type { BuildPlan } from "@/lib/rules/types";
 import * as ops from "./plan-ops";
 import styles from "./spell-block.module.css";
@@ -36,9 +36,12 @@ function ShoutTip({ shout, words = 3 }: { shout: Shout; words?: number }) {
  */
 export function AbilityBlock({ plan, level, setPlan }: { plan: BuildPlan; level: number; setPlan: (p: BuildPlan) => void }) {
   const d = useGameData();
-  const fromPerks = perkAbilitiesAt(d, plan, level);
+  // The race's powers at level 1 (WO-55), then the perks', all read-only.
+  const fromPerks = [...raceAbilitiesAt(d, plan, level), ...perkAbilitiesAt(d, plan, level)];
   const rows = plan.levels[level - 1]?.abilities ?? [];
   const [adding, setAdding] = useState(false);
+  // A race's power is never added by hand: its race has it already, and no other race can get it.
+  const addable = useMemo(() => addableAbilities(d), [d]);
   if (!d.abilities.length) return null;
   return (
     <section aria-label="Abilities" className={styles.block}>
@@ -46,7 +49,7 @@ export function AbilityBlock({ plan, level, setPlan }: { plan: BuildPlan; level:
       {(fromPerks.length > 0 || rows.length > 0) && (
         <ul className={styles.rows}>
           {fromPerks.map((a) => (
-            <li key={`${a.fromPerk}-${a.id}`} className={`${styles.row} ${styles.rowPower}`}>
+            <li key={`${a.fromRace ?? a.fromPerk}-${a.id}`} className={`${styles.row} ${styles.rowPower}`}>
               <span className={styles.rowName}>
                 <MarkIcon name="power" />
                 {a.ability ? (
@@ -58,7 +61,7 @@ export function AbilityBlock({ plan, level, setPlan }: { plan: BuildPlan; level:
                 )}
               </span>
               <span className={styles.rowWhere}>
-                {a.ability?.name ?? "It"}, from the {d.perkById.get(a.fromPerk ?? "")?.name ?? a.fromPerk} perk
+                {a.ability?.name ?? "It"}, {abilitySource(d, a)}
               </span>
               <span />
             </li>
@@ -100,7 +103,7 @@ export function AbilityBlock({ plan, level, setPlan }: { plan: BuildPlan; level:
       {adding ? (
         <AddPower
           kind="ability"
-          items={d.abilities}
+          items={addable}
           detail={(a) => a.kind}
           onAdd={(id, where) => {
             setPlan(ops.addAbility(plan, level, { id, where }));
