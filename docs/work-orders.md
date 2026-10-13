@@ -2154,6 +2154,47 @@ WO-45 allowed up to two enchantment lines on a made item, which is vanilla Skyri
 
 ---
 
+## WO-54  Enchantments picked from the game's list (12 Oct 2026)
+
+Do after WO-53. The extract is on staging: `scripts/gamedata/enchantments.py` writes `gamedata/5.0.4.8/enchantments_raw.json`. It holds 88 enchantments a player can learn (34 weapon, 54 armour and jewellery), and its commit message lists what was dropped. Each entry has:
+- the game's name;
+- `on`: `weapon` or `armor`;
+- `text`, with the record's numbers filled in;
+- `wornRestrictions`: the slot keywords it can go on, empty for most unique ones;
+- `sources`: disenchanting items, with a count and examples, or the Arcane Experimentation or Artificer's Insight power.
+
+The file also has `runestone`: 9 powers from Runemaster Magic. Those are temporary weapon runes cast as lesser powers, not enchantments put on at an enchanter, and they're already in `powers.json` as abilities. They stay out of this order.
+
+1. **build.py** writes `src/data/lorerim-5.0.4.8/enchantments.json`. Each entry has `id`, `name`, `on`, `text`, `slots` and `learned`.
+   - `slots` are the planner's gear slots, from the worn restrictions:
+     - `ArmorCuirass`, `ClothingBody`: Body;
+     - `ArmorHelmet`, `ClothingHead`, `ClothingCirclet`: Head;
+     - `ArmorGauntlets`, `ClothingHands`: Hands;
+     - `ArmorBoots`, `ClothingFeet`: Feet;
+     - `ArmorShield`: Shield;
+     - `ClothingRing`: Ring;
+     - `ClothingNecklace`: Amulet.
+   - An armour enchantment with no restrictions gets every armour slot.
+   - `learned` reads like `Disenchant: Ring of Eminent Health, Necklace of Eminent Health and 100 more`, or `The Arcane Experimentation power`.
+   - Keep `sameAs` like spells do. Skip `runestone`.
+2. **The made-gear form**: each enchantment line is a search field, like the item field.
+   - It lists only enchantments that fit the base item: weapon enchantments for a weapon; for armour or jewellery, the ones whose `slots` include the row's slot.
+   - Choosing one saves its id. Typing something that isn't in the list and pressing Enter keeps it as text, as today, so anything the extract missed can still be added.
+   - The same enchantment can't be picked twice on one item; the game doesn't allow it.
+   - A staff still takes a spell.
+3. **Reading a line**: a saved line that is an id in `enchantments.json` shows the game's name. Anything else shows as text, so builds saved before this order read the same.
+4. **Tooltip and bar card** (WO-45, WO-50): each picked enchantment shows its name, the game's text, and `learned` in muted text. After the lines, one muted line: `Numbers are the game's base values. What you make depends on your Enchanting skill, perks and soul gem.`
+5. **The rules engine**: an enchantment learned only from a power needs that power's perk by the gear row's level, for example `Fireburst comes from the Arcane Experimentation power; the perk isn't taken by level 30.` If it can also be disenchanted from items (Elemental Fury, Toxicity), there's no problem.
+
+### Done when
+- [ ] `npm run test:gamedata`: a build test for the slot mapping, and that no runestone power reaches `enchantments.json`.
+- [ ] Unit tests: an armour ring lists Fortify Magicka (Rank I) but not Fire; a sword lists Fire; picking saves the id and the card shows the name; a free-text line still shows as text; Fireburst at level 30 without Arcane Experimentation gives the problem, and Elemental Fury doesn't.
+- [ ] e2e: on a made ring, search `magicka`, pick Fortify Magicka (Rank I), save; the shared page's card shows the name, the game's text and the base-values line.
+- [ ] Screenshots of the form's enchantment search at 1440 and 390, and of the card.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
