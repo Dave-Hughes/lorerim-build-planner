@@ -123,6 +123,8 @@ export interface Spell {
   also?: string[];
   /** The tomes that teach it. */
   tomes: string[];
+  /** Other records with this name, school and tier: a build that saved one of their ids finds this spell. */
+  sameAs?: string[];
 }
 
 /** The tier perks' free spells: how many per perk, and each perk's pool of spell ids. */
@@ -267,7 +269,7 @@ function build(version: GameVersion, src0: VersionSource): GameData {
     perksByTree,
     linksByTree: new Map(Object.entries(src.trees).map(([tree, t]) => [tree, t.links])),
     spells: src.spells?.spells ?? [],
-    spellById: new Map((src.spells?.spells ?? []).map((s) => [s.id, s])),
+    spellById: new Map((src.spells?.spells ?? []).flatMap((s) => [...(s.sameAs ?? []).map((id) => [id, s] as const), [s.id, s] as const])),
     spellPicks: src.spells?.spellPicks ?? { perTier: {}, pools: {} },
     abilities: src.powers?.abilities ?? [],
     abilityById: new Map((src.powers?.abilities ?? []).map((a) => [a.id, a])),

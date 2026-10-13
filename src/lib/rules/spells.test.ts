@@ -45,3 +45,11 @@ describe("spells", () => {
     }
   });
 });
+
+describe("spells that share a name", () => {
+  it("a build that saved the other record's id still finds the spell", () => {
+    const blast = d.spells.find((s) => s.name === "Lightning Blast")!;
+    expect(blast.sameAs).toContain("Apocalypse - Magic of Skyrim.esp:002878");
+    expect(d.spellById.get("Apocalypse - Magic of Skyrim.esp:002878")).toBe(blast);
+  });
+});

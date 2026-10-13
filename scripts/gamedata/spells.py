@@ -273,13 +273,17 @@ def _num(x):
 
 def fill_text(text, effect, glob_values, unmark):
     """The game's text with <mag>, <dur>, <area> and <Global=X> filled. A sentence whose global
-    isn't known is left out (spells.py writes their values from the next run). Other <...>
+    isn't known is left out (spells.py writes their values from the next run), and so is one
+    with a running count (a global named ...Counter). Other <...>
     markers (<20>, <Spirit>) lose their brackets, as trait text does. Returns (text, unknown globals)."""
     unknown = []
     t = text.replace("<mag>", _num(effect.get("mag") or 0)).replace("<dur>", str(int(effect.get("dur") or 0))).replace("<area>", str(int(effect.get("area") or 0)))
 
     def glob(m):
         k = m.group(1)
+        # A running count kept in the save ("Creatures banished: 0") isn't a fact about the spell.
+        if "counter" in k.lower():
+            return "\0"
         if k in glob_values:
             return _num(glob_values[k])
         unknown.append(k)
@@ -307,15 +311,14 @@ def build_spells(raw, perk_ids, unmark, clean):
         if old is None:
             keep[k] = s
             continue
-        # The later one in the load order; without the order (an older raw file), the one a tier
-        # perk hands out, then the one with more tomes.
-        if s.get("order") is not None and old.get("order") is not None:
-            if s["order"] > old["order"]:
-                keep[k] = s
-        elif (s["id"] in pooled, len(s["tomes"])) > (old["id"] in pooled, len(old["tomes"])):
-            keep[k] = s
-        elif (s["id"] in pooled, len(s["tomes"])) == (old["id"] in pooled, len(old["tomes"])):
+        # The one a tier perk hands out, then the later one in the load order, then the one with
+        # more tomes. The other's id is kept in `sameAs`, so a build that saved it still finds it.
+        mine = (s["id"] in pooled, s.get("order") if s.get("order") is not None else -1, len(s["tomes"]))
+        theirs = (old["id"] in pooled, old.get("order") if old.get("order") is not None else -1, len(old["tomes"]))
+        if mine == theirs:
             notes.append(f"spell {s['name']} ({s['school']} {s['tier']}): two records and no load order, kept {old['id']}")
+        win, lose = (s, old) if mine > theirs else (old, s)
+        keep[k] = dict(win, sameAs=sorted({*win.get("sameAs", []), lose["id"], *lose.get("sameAs", [])}))
     rows = []
     for s in keep.values():
         effects = s["effects"]
@@ -333,6 +336,8 @@ def build_spells(raw, perk_ids, unmark, clean):
         if also:
             row["also"] = also
         row["tomes"] = sorted({t["name"] for t in s["tomes"]})
+        if s.get("sameAs"):
+            row["sameAs"] = s["sameAs"]
         rows.append(row)
     rows.sort(key=lambda r: (SCHOOL_ORDER.index(r["school"]) if r["school"] in SCHOOL_ORDER else 9, TIERS.index(r["tier"]), r["name"].lower()))
     ids = {r["id"] for r in rows}

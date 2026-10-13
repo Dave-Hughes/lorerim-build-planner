@@ -48,7 +48,17 @@ class Build(unittest.TestCase):
     def test_repeats_keep_the_later_one_in_the_load_order(self):
         raw = {"spells": [spell("A:1", "Flames", [effect("Destruction", 0, "x")], order=5), spell("B:1", "Flames", [effect("Destruction", 0, "y")], order=9)], "perkPicks": {}}
         data, _ = spells.build_spells(raw, set(), unmark, clean)
-        self.assertEqual([s["id"] for s in data["spells"]], ["B:1"])
+        self.assertEqual([(s["id"], s["sameAs"]) for s in data["spells"]], [("B:1", ["A:1"])])
+
+    def test_repeats_keep_the_one_a_tier_perk_hands_out_first(self):
+        raw = {"spells": [spell("A:1", "Lightning Blast", [effect("Destruction", 75, "x")], order=5), spell("B:1", "Lightning Blast", [effect("Destruction", 75, "y")], order=9)],
+               "perkPicks": {"Destruction Expert": {"spells": ["A:1"]}}}
+        data, _ = spells.build_spells(raw, set(), unmark, clean)
+        self.assertEqual([(s["id"], s["sameAs"]) for s in data["spells"]], [("A:1", ["B:1"])])
+
+    def test_a_running_count_is_left_out_quietly(self):
+        e = effect("Conjuration", 0, "Banish a living creature. (Creatures banished: <Global=WB_BanishLiving_Global_Counter>)")
+        self.assertEqual(spells.fill_text(e["text"], e, {"WB_BanishLiving_Global_Counter": 0.0}, unmark), ("Banish a living creature.", []))
 
     def test_no_name_or_no_school_is_left_out(self):
         raw = {"spells": [spell("A:1", "", [effect("Destruction", 0, "x")]), spell("A:2", "Odd", [effect(None, 0, "x")])], "perkPicks": {}}
