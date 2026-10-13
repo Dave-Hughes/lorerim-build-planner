@@ -6,9 +6,11 @@ import { useRouter } from "next/navigation";
 import { TRAIT_CHOICES, keptTraitChoices } from "@/lib/rules/trait-choices";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { FocusHeader } from "@/components/ui/focus-header";
+import { Tooltip } from "@/components/ui/tooltip";
 import { EditBar } from "@/components/editor/edit-bar";
 import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel, ModeIcon, TagIcon, DeityIcon } from "@/components/ui/skill-icon";
 import { copyBuildForVersion, createBuild, saveBuildDetails, saveBuildPlan } from "@/lib/builds/actions";
+import { checkStep, type StepCheck } from "@/lib/builds/steps";
 import { STEPS, STEP_NAMES, clearDraft, emptyDetails, emptyPlan, loadDraft, saveDraft, type Step } from "@/lib/builds/draft";
 import type { BuildDetails } from "@/lib/builds/validate";
 import { GameDataProvider, useGameData } from "@/components/game-data";
@@ -113,30 +115,15 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
     return computeBuild({ ...plan, levels: [emptyLevel()] }, d)[0];
   }, [plan, d]);
 
-  const filled: Record<Step, boolean> = {
-    race: !!plan.race,
-    birthsign: masterOfDestiny || !!plan.birthsign,
-    skills: plan.majors.length > 0 || plan.minors.length > 0,
-    traits: plan.traits.length > 0,
-    mode: true,
-    name: !!details.name.trim(),
-  };
+  // Each step done, not started or with a problem, from the same checks (WO-58).
+  const checks = Object.fromEntries(STEPS.map((st) => [st, checkStep(d, plan, details.name, st)])) as Record<Step, StepCheck>;
   const summaries: Record<Step, React.ReactNode> = {
     race: plan.race || "Not chosen",
     birthsign: masterOfDestiny ? "Removed by Master of Destiny" : plan.birthsign ? `The ${plan.birthsign}` : "Not chosen",
     skills: `${plan.majors.length} major${plan.majors.length === 1 ? "" : "s"}, ${plan.minors.length} minor${plan.minors.length === 1 ? "" : "s"}`,
     traits: `${plan.traits.length} of ${d.rules.maxTraits} chosen`,
-    mode: (
-      <>
-        {`${plan.mode}${plan.start ? `, ${plan.start}${plan.startOption && plan.startOption !== "Random" ? `, ${plan.startOption}` : ""}` : ""}`}
-        {plan.deity && (
-          <>
-            {", "}
-            {d.deities.includes(plan.deity) ? <IconLabel icon={<DeityIcon name={plan.deity} />}>{plan.deity}</IconLabel> : plan.deity}
-          </>
-        )}
-      </>
-    ),
+    deity: plan.deity ? d.deities.includes(plan.deity) ? <IconLabel icon={<DeityIcon name={plan.deity} />}>{plan.deity}</IconLabel> : plan.deity : "None",
+    mode: `${plan.mode}${plan.start ? `, ${plan.start}${plan.startOption && plan.startOption !== "Random" ? `, ${plan.startOption}` : ""}` : ""}`,
     name: `${themeOf(plan.theme).name} theme`,
   };
 
@@ -188,16 +175,23 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
         <aside aria-label="Setup steps" className={styles.aside}>
           <ol className={styles.steps}>
             {STEPS.map((s, i) => {
-              const state = i === stepIndex ? "now" : filled[s] ? "done" : "next";
+              const check = checks[s];
+              const state = i === stepIndex ? "now" : check.state;
               return (
                 <li key={s}>
-                  <button type="button" className={`${styles.stepRow} ${styles[state]}`} onClick={() => setStep(s)} aria-current={state === "now" ? "step" : undefined}>
-                    <span className={styles.stepMark}>
-                      <span>{i + 1}</span>
+                  <button
+                    type="button"
+                    className={`${styles.stepRow} ${styles[state]}`}
+                    onClick={() => setStep(s)}
+                    aria-current={state === "now" ? "step" : undefined}
+                    aria-label={`${STEP_NAMES[s]}: ${state === "done" ? "done" : state === "problem" ? check.state === "problem" ? check.problem : "" : state === "now" ? "this step" : "not started"}`}
+                  >
+                    <span className={styles.stepMark} aria-hidden="true">
+                      <span>{state === "done" ? "✓" : state === "problem" ? "!" : i + 1}</span>
                     </span>
                     <span className={styles.stepText}>
                       <span className={styles.stepName}>{STEP_NAMES[s]}</span>
-                      <span className={styles.stepVal}>{summaries[s]}</span>
+                      <span className={styles.stepVal}>{state === "problem" && check.state === "problem" ? check.problem : summaries[s]}</span>
                       {s === "race" && <span className={styles.stepVal}>{d.version.label}</span>}
                     </span>
                   </button>
@@ -259,6 +253,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
             {step === "birthsign" && <BirthsignStep plan={plan} update={update} />}
             {step === "skills" && <SkillsStep plan={plan} update={update} />}
             {step === "traits" && <TraitsStep plan={plan} update={update} />}
+            {step === "deity" && <DeityStep plan={plan} update={update} />}
             {step === "mode" && <ModeStep plan={plan} update={update} />}
             {step === "name" && <NameStep details={details} updateDetails={updateDetails} plan={plan} update={update} signedIn={signedIn} introStart={introStart} />}
           </GameDataProvider>
@@ -274,7 +269,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
             <div className={styles.navRight}>
               {error && <span className="field-error">{error}</span>}
               {step === "traits" && plan.traits.length === 0 && (
-                <button type="button" className="btn btn-quiet" onClick={() => setStep("mode")}>
+                <button type="button" className="btn btn-quiet" onClick={() => setStep("deity")}>
                   Skip traits
                 </button>
               )}
@@ -426,36 +421,43 @@ function VersionBand({ plan, update, mode, buildId }: StepProps & { mode: "creat
   );
 }
 
+/** A race's abilities (WO-55): its powers, then its passives, each with the game's text. */
+function raceAbilities(d: ReturnType<typeof useGameData>, race: string): { id: string; name: string; text: string }[] {
+  const r = d.abilityFromRaces[race];
+  if (!r) return [];
+  const powers = r.powers.map((id) => d.abilityById.get(id)).filter((a): a is NonNullable<typeof a> => !!a);
+  return [...powers.map((a) => ({ id: a.id, name: a.name, text: a.text })), ...r.passives];
+}
+
+/**
+ * The Race step (WO-58, to the canvas artboard "Set up: race, folded"): each card is the icon,
+ * name, +15 and +10 skills, Health, Magicka and Stamina, and the racial abilities' names as small
+ * tags (the text on hover or focus). The chosen race's abilities, in full, once, under the grid.
+ */
 function RaceStep({ plan, update }: StepProps) {
   const d = useGameData();
+  const chosen = d.raceByName.get(plan.race);
   return (
     <>
       <h1 className={`title ${styles.h1}`}>Choose a race</h1>
-      <div className={styles.cards}>
+      <div className={styles.raceCards}>
         {d.races.map((r) => {
           const on = plan.race === r.name;
           const choose = () => update((p) => ({ ...p, race: r.name }));
           return (
-            <ChoiceCard key={r.name} className={`${styles.card} ${on ? styles.cardOn : ""}`} onChoose={choose}>
-              <div className={styles.cardHead}>
-                <h2 className={styles.cardName}>
+            <ChoiceCard key={r.name} className={`${styles.card} ${styles.raceCard} ${on ? styles.cardOn : ""}`} onChoose={choose}>
+              {/* The name is the control, as the canvas has it: the whole card chooses on click. */}
+              <h2 className={styles.cardName}>
+                <button type="button" className={styles.raceName} aria-pressed={on} aria-label={`${on ? "Chosen" : "Choose"}: ${r.name}`} onClick={choose}>
                   <IconLabel icon={<RaceIcon name={r.name} size={32} />}>{r.name}</IconLabel>
-                </h2>
-              </div>
+                </button>
+              </h2>
               <div className={styles.raceSkills}>
                 <span>
-                  <span className={styles.bonus}>+15</span> <SkillLabel name={r.primary} />
+                  <span className={styles.bonus}>+15</span> {r.primary}
                 </span>
                 <span>
-                  <span className={styles.bonus}>+10</span>{" "}
-                  {r.secondary.map((sk, i) => (
-                    <span key={sk}>
-                      <SkillLabel name={sk}>
-                        {sk}
-                        {i < r.secondary.length - 1 ? "," : ""}
-                      </SkillLabel>{" "}
-                    </span>
-                  ))}
+                  <span className={styles.bonus}>+10</span> {r.secondary.join(", ")}
                 </span>
               </div>
               <div className={styles.raceHms}>
@@ -463,23 +465,42 @@ function RaceStep({ plan, update }: StepProps) {
                 <span className={styles.magicka}>{r.magicka} Magicka</span>
                 <span className={styles.stamina}>{r.stamina} Stamina</span>
               </div>
-              {/* The race's passives (WO-55), in the game's words. */}
-              {(d.abilityFromRaces[r.name]?.passives.length ?? 0) > 0 && (
-                <ul className={styles.racePassives} aria-label={`${r.name} passives`}>
-                  {d.abilityFromRaces[r.name].passives.map((p) => (
-                    <li key={p.id}>
-                      <b>{p.name}</b> {p.text}
-                    </li>
-                  ))}
-                </ul>
-              )}
-              <button type="button" className={`btn btn-sm ${on ? "btn-ember" : ""} ${styles.cardBtn}`} aria-pressed={on} onClick={choose}>
-                {on ? "Chosen" : "Choose"}
-              </button>
+              <ul className={styles.raceTags} aria-label={`${r.name} abilities`}>
+                {raceAbilities(d, r.name).map((a) => (
+                  <li key={a.id}>
+                    <Tooltip
+                      content={
+                        <span className={styles.raceTip}>
+                          <b>{a.name}</b>
+                          {a.text}
+                        </span>
+                      }
+                    >
+                      <span tabIndex={0} className={styles.raceTag}>
+                        {a.name}
+                      </span>
+                    </Tooltip>
+                  </li>
+                ))}
+              </ul>
             </ChoiceCard>
           );
         })}
       </div>
+      {chosen && (
+        <section aria-labelledby="chosen-race" className={`frame ${styles.raceFull}`}>
+          <h2 id="chosen-race" className={styles.raceFullName}>
+            <IconLabel icon={<RaceIcon name={chosen.name} size={32} />}>{chosen.name}</IconLabel>
+          </h2>
+          <div className={styles.raceFullList}>
+            {raceAbilities(d, chosen.name).map((a) => (
+              <p key={a.id}>
+                <b>{a.name}</b> {a.text}
+              </p>
+            ))}
+          </div>
+        </section>
+      )}
     </>
   );
 }
@@ -708,7 +729,6 @@ function TraitsStep({ plan, update }: StepProps) {
 
 function ModeStep({ plan, update }: StepProps) {
   const d = useGameData();
-  const deities = d.startingDeities[plan.race] ?? [];
   return (
     <>
       <h1 className={`title ${styles.h1}`}>Game mode and start</h1>
@@ -733,80 +753,88 @@ function ModeStep({ plan, update }: StepProps) {
       </section>
       <div className={styles.fields}>
         <StartPicker plan={plan} update={update} />
-        <DeityField plan={plan} update={update} offered={deities} />
       </div>
     </>
   );
 }
 
 /**
- * The deity: None, then the gods offered to the race at the start, then the rest (any god can be
- * joined at a shrine). The chosen one's Wintersun text shows under it, as the birthsign step does.
- * A saved name that matches none (old free text) shows as a problem line.
+ * The Deity step (WO-58): each god a card with its icon and name, grouped as the game offers them
+ * (the race's gods at the start, None first, then any other at a shrine). Click a card to choose
+ * it. The chosen god's Wintersun text sits beside the grid (under it on a phone). A saved name that
+ * matches none (old free text) shows as a problem line.
  */
-function DeityField({ plan, update, offered }: StepProps & { offered: string[] }) {
+/** "an Altmer", "a Nord". */
+const anA = (word: string) => `${/^[AEIOU]/i.test(word) ? "an" : "a"} ${word}`;
+
+function DeityStep({ plan, update }: StepProps) {
   const d = useGameData();
+  const offered = d.startingDeities[plan.race] ?? [];
   const rest = d.deities.filter((g) => !offered.includes(g));
   const known = !plan.deity || d.deities.includes(plan.deity);
   const text = d.deityText[plan.deity];
   const plainText = (s: string) => s.replace(/<([^<>]*)>/g, "$1");
+  const choose = (g: string) => update((p) => ({ ...p, deity: g }));
+  const card = (g: string) => {
+    const on = plan.deity === g;
+    return (
+      <button key={g || "none"} type="button" className={`${styles.god} ${on ? styles.godOn : ""}`} aria-pressed={on} onClick={() => choose(g)}>
+        {g ? <DeityIcon name={g} size={32} /> : <span className={styles.godNone} aria-hidden="true" />}
+        <span className={`${styles.godName} ${g ? "" : "muted"}`}>{g || "None"}</span>
+      </button>
+    );
+  };
   return (
-    <div className={styles.deity}>
-      <label className="field">
-        <span className="label">Deity</span>
-        <span className={styles.deityPick}>
-          {/* A native select can't show icons: the chosen god's sits beside it (WO-34). */}
-          <span className={styles.deityPickIcon}>{known && plan.deity ? <DeityIcon name={plan.deity} size={24} /> : null}</span>
-          <select className="select" value={known ? plan.deity : ""} onChange={(e) => update((p) => ({ ...p, deity: e.target.value }))}>
-            <option value="">None</option>
-            {offered.length > 0 && (
-              <optgroup label={`Offered to a ${plan.race} at the start`}>
-                {offered.map((g) => (
-                  <option key={g} value={g}>
-                    {g}
-                  </option>
-                ))}
-              </optgroup>
-            )}
-            <optgroup label={offered.length ? "Any other god, at a shrine" : "At a shrine"}>
-              {rest.map((g) => (
-                <option key={g} value={g}>
-                  {g}
-                </option>
-              ))}
-            </optgroup>
-          </select>
-        </span>
-      </label>
+    <>
+      <h1 className={`title ${styles.h1}`}>Choose a deity</h1>
       {!known && (
         <p role="alert" className={styles.startProblem}>
           This build&apos;s deity was “{plan.deity}”, which isn&apos;t one the planner knows. Pick one, or None.
         </p>
       )}
-      {text && (
-        <div className={styles.deityText}>
-          <span className={styles.deityName}>
-            <IconLabel icon={<DeityIcon name={plan.deity} size={24} />}>{plan.deity}</IconLabel>
-          </span>
-          {(["follower", "devotee"] as const).map((part) =>
-            text[part] ? (
-              <p key={part}>
-                <span className={styles.deityHead}>
-                  {part === "follower" ? "Follower" : "Devotee"}: {text[part]!.name}
-                </span>
-                <span className={styles.deityWords}>{plainText(text[part]!.text)}</span>
-              </p>
-            ) : null,
-          )}
-          {text.tenets && (
-            <p>
-              <span className={styles.deityHead}>{text.tenets.name}</span>
-              <span className={styles.deityWords}>{plainText(text.tenets.text)}</span>
-            </p>
-          )}
+      <div className={styles.deityLayout}>
+        <div className={styles.deityGroups}>
+          <section aria-label={offered.length ? `Offered to ${anA(plan.race)} at the start` : "No god"} className={styles.deityGroup}>
+            {offered.length > 0 && <h2 className={styles.deityGroupTitle}>Offered to {anA(plan.race)} at the start</h2>}
+            <div className={styles.gods}>
+              {card("")}
+              {offered.map(card)}
+            </div>
+          </section>
+          <section aria-label={offered.length ? "Any other god, at a shrine" : "At a shrine"} className={styles.deityGroup}>
+            <h2 className={styles.deityGroupTitle}>{offered.length ? "Any other god, at a shrine" : "At a shrine"}</h2>
+            <div className={styles.gods}>{rest.map(card)}</div>
+          </section>
         </div>
-      )}
-    </div>
+        <section aria-label="The chosen god" className={`frame ${styles.deityPanel}`}>
+          {text ? (
+            <>
+              <h2 className={styles.deityPanelName}>
+                <IconLabel icon={<DeityIcon name={plan.deity} size={32} />}>{plan.deity}</IconLabel>
+              </h2>
+              {(["follower", "devotee"] as const).map((part) =>
+                text[part] ? (
+                  <p key={part}>
+                    <span className={styles.deityHead}>
+                      {part === "follower" ? "Follower" : "Devotee"}: {text[part]!.name}
+                    </span>
+                    <span className={styles.deityWords}>{plainText(text[part]!.text)}</span>
+                  </p>
+                ) : null,
+              )}
+              {text.tenets && (
+                <p className={styles.deityTenets}>
+                  <span className={styles.deityHead}>{text.tenets.name}</span>
+                  <span className={styles.deityWords}>{plainText(text.tenets.text)}</span>
+                </p>
+              )}
+            </>
+          ) : (
+            <p className="muted">{plan.deity && known ? plan.deity : "No deity at the start."}</p>
+          )}
+        </section>
+      </div>
+    </>
   );
 }
 

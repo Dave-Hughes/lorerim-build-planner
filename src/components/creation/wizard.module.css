@@ -74,9 +74,23 @@
   border-color: var(--ember);
   color: var(--on-ember);
 }
+/* Done and valid (WO-58): a filled Stamina-green diamond with a check, the name in body white. */
 .done .stepMark {
-  border-color: var(--brass);
-  color: var(--brass);
+  background: var(--stamina);
+  border-color: var(--stamina);
+  color: var(--bg, #0e1319);
+}
+/* A problem: a Health-red diamond with "!", the problem as its line. */
+.problem .stepMark {
+  border: 2px solid var(--health);
+  color: color-mix(in srgb, var(--health) 60%, #fff);
+}
+.problem .stepName,
+.problem .stepVal {
+  color: color-mix(in srgb, var(--health) 60%, #fff);
+}
+.now .stepName {
+  color: var(--ember);
 }
 .stepText {
   display: flex;
@@ -349,20 +363,98 @@
   align-self: flex-start;
   margin-top: auto;
 }
-/* A race's passives (WO-55): name in bold, then the game's text, at the card's width. */
-.racePassives {
+/* The Race step (WO-58): folded cards, five across at 1440; the chosen race in full below. */
+.raceCards {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (max-width: 1200px) {
+  .raceCards {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
+.raceCard .raceSkills,
+.raceCard .raceHms {
+  font-size: 13px;
+}
+.raceName {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.raceCard {
+  gap: 10px;
+  padding: 14px;
+}
+.raceCard.cardOn {
+  padding: 13px;
+}
+.raceTags {
   list-style: none;
   margin: 0;
-  padding: 10px 0 0;
-  border-top: 1px solid var(--rule);
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.raceTag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 2px 8px;
+  border: 1px solid var(--rule-strong);
+  font-size: 13px;
+  color: var(--soft);
+  text-decoration: underline dotted var(--faint);
+  text-underline-offset: 3px;
+  cursor: help;
+}
+.raceTip {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  font-size: 14px;
+  gap: 4px;
+  max-width: 300px;
+}
+.raceFull {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px 26px 24px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+}
+.raceFullName {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.raceFullList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 40px;
+}
+.raceFullList p {
+  margin: 0;
+  font-size: 15px;
   color: var(--soft);
 }
-.racePassives b {
+.raceFullList b {
   color: var(--text);
+}
+@media (max-width: 720px) {
+  .raceFullList {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 .raceSkills {
   display: flex;
@@ -881,24 +973,101 @@
   max-width: 320px;
 }
 
-/* The deity: the select, then the god's own words (Wintersun), set like the start popover's. */
-.deity {
+/* The Deity step (WO-58): god cards in groups, the chosen god's own words beside them. */
+.deityLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 28px;
+  align-items: start;
+}
+.deityGroups {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 22px;
 }
-.deityText {
+.deityGroup {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 12px 14px;
-  border-left: 2px solid var(--rule-strong);
+  gap: 12px;
 }
-.deityText p {
+.deityGroupTitle {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.gods {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+.god {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 112px;
+  padding: 14px 8px 12px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+.god:hover {
+  border-color: var(--rule-strong);
+}
+/* Chosen: the ember border, as race cards have. */
+.godOn,
+.godOn:hover {
+  border: 3px solid var(--ember);
+  padding: 12px 6px 10px;
+  background: color-mix(in srgb, var(--ember) 6%, var(--panel));
+}
+.godNone {
+  width: 32px;
+  height: 32px;
+  border: 1px dashed var(--faint);
+}
+.godName {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.1;
+}
+.deityPanel {
+  position: sticky;
+  top: calc(20px + var(--sticky-top, 0px));
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px 22px 22px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+}
+.deityPanel p {
   margin: 0;
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+.deityPanelName {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.deityTenets {
+  border-top: 1px solid var(--rule);
+  padding-top: 12px;
 }
 .deityHead {
   font-weight: 600;
@@ -910,23 +1079,15 @@
   font-size: 16px;
   color: #c3cdd6;
 }
-
-/* The deity's select with the chosen god's icon beside it; its name and icon above its text. */
-.deityPick {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.deityPickIcon {
-  display: inline-flex;
-  flex: none;
-  width: 24px;
-}
-.deityName {
-  font-weight: 600;
-  font-size: 16px;
-}
-.deityPick .select {
-  flex: 1 1 auto;
-  min-width: 0;
+@media (max-width: 900px) {
+  /* The panel goes under the grid. */
+  .deityLayout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .deityPanel {
+    position: static;
+  }
+  .gods {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
 }

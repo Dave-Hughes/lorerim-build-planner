@@ -3,7 +3,8 @@ import type { BuildPlan } from "@/lib/rules/types";
 import { currentVersion } from "@/lib/rules/versions";
 import type { BuildDetails } from "./validate";
 
-export const STEPS = ["race", "birthsign", "skills", "traits", "mode", "name"] as const;
+/** Deity got its own step in WO-58, after Traits. Old links and drafts keep their step keys. */
+export const STEPS = ["race", "birthsign", "skills", "traits", "deity", "mode", "name"] as const;
 export type Step = (typeof STEPS)[number];
 
 export const STEP_NAMES: Record<Step, string> = {
@@ -11,6 +12,7 @@ export const STEP_NAMES: Record<Step, string> = {
   birthsign: "Birthsign",
   skills: "Skills",
   traits: "Traits",
+  deity: "Deity",
   mode: "Mode and start",
   // The step key stays "name" so saved drafts keep working (WO-36).
   name: "Details",

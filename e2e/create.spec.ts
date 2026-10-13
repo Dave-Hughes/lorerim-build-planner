@@ -47,6 +47,9 @@ test.describe("creating a build", () => {
     await expect(hoarder.getByRole("button", { name: "Choose" })).toBeDisabled();
     await hoarder.getByRole("heading", { name: "Hoarder" }).click();
     await expect(page.getByRole("main").getByText("2 of 2 chosen")).toBeVisible();
+    // Deity has its own step since WO-58: None stays chosen.
+    await page.getByRole("button", { name: "Next: Deity" }).click();
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Choose a deity");
     await page.getByRole("button", { name: "Next: Mode and start" }).click();
 
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Game mode and start");

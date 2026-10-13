@@ -2326,11 +2326,11 @@ Canvas: `SetupRace.dc.html` and `SetupDeity.dc.html` (row "Proposal: set up, cle
    - The cards are about half today's height, so all ten fit without scrolling at 1440.
 
 ### Done when
-- [ ] Unit test for the step checks: each step valid and invalid, with the problem line.
-- [ ] e2e: create a build through all 7 steps; choosing Mephala on the Deity step saves `deity: "Mephala"`; the rail shows every step done at the end.
-- [ ] e2e: an existing build with a deity opens on the Deity step with it chosen; `?step=mode` opens Mode and start.
-- [ ] Screenshots at 1440 and 390: the Race step, the Deity step, and the rail with one step showing a problem. Compare with the canvas.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Unit test for the step checks: each step valid and invalid, with the problem line.
+- [x] e2e: create a build through all 7 steps; choosing Mephala on the Deity step saves `deity: "Mephala"`; the rail shows every step done at the end.
+- [x] e2e: an existing build with a deity opens on the Deity step with it chosen; `?step=mode` opens Mode and start.
+- [x] Screenshots at 1440 and 390: the Race step, the Deity step, and the rail with one step showing a problem. Compare with the canvas.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 
