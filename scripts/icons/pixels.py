@@ -1,5 +1,5 @@
 """
-Pixel icons for the 18 skills and Destiny, attributes, birthsigns, races, level marks, gear slots, game modes, tags, deities and the logo: 16x16, drawn with a few shape
+Pixel icons for the 18 skills and Destiny, the build page's tabs, attributes, birthsigns, races, level marks, gear slots, game modes, tags, deities and the logo: 16x16, drawn with a few shape
 helpers, then given a 1 px dark outline automatically so every icon shares
 the same edge. Written out as SVG (one rect per run of pixels, crisp at any
 size).
@@ -781,6 +781,35 @@ def note():
     i.disc(6, 11.8, 4, "k", where=lambda x, y: y >= 9)             # inkwell
     i.rect(3, 8, 9, 9, "g"); i.rect(3, 8, 5, 8, "w")               # its rim
     i.px(3, 11, "M"); i.px(3, 12, "M"); i.px(4, 10, "N")           # ink sheen
+    return i.outline()
+
+
+# ---------------------------------------------------------------- build page tabs (WO-60)
+
+def tab_levels():
+    # A wooden ladder: two rails, five rungs; light from the top left.
+    i = Icon()
+    i.rect(3, 1, 4, 14, "b"); i.rect(11, 1, 12, 14, "B")       # rails
+    i.rect(3, 1, 3, 14, "Y"); i.rect(12, 1, 12, 14, "d")       # lit and shaded edges
+    for y in (2, 5, 8, 11, 14):
+        i.rect(5, y, 10, y, "b")                                # rungs
+        i.rect(5, y, 6, y, "Y")
+        i.px(10, y, "B")
+    return i.outline()
+
+
+def tab_guide():
+    # An open book with an ember ribbon down the middle.
+    i = Icon()
+    i.rect(1, 3, 7, 12, "Y"); i.rect(8, 3, 14, 12, "b")       # pages, left lit, right in shade
+    i.rect(1, 12, 7, 13, "b"); i.rect(8, 12, 14, 13, "B")     # page edges below
+    i.px(1, 3, "W"); i.px(14, 3, "B")
+    for y in (5, 7, 9):
+        i.rect(2, y, 6, y, "g")                                 # lines of text, left
+        i.rect(9, y, 13, y, "G")                                # and right
+    i.rect(7, 2, 8, 13, "d")                                    # spine
+    i.rect(7, 1, 8, 9, "o"); i.px(7, 1, "y")                    # ribbon
+    i.px(7, 10, "O"); i.px(8, 10, "O"); i.px(7, 11, "R")        # its forked end
     return i.outline()
 
 
@@ -1914,7 +1943,8 @@ DEITIES = {
 
 LOGO = {str(f): (lambda f=f: logo(f)) for f in range(4)}
 
-SETS = {"": ICONS, "attr-": ATTRIBUTES, "sign-": SIGNS, "race-": RACES, "mark-": MARKS, "slot-": SLOTS, "mode-": MODES, "tag-": TAGS, "deity-": DEITIES, "logo-": LOGO}
+TABS = {"Levels": tab_levels, "Guide": tab_guide}
+SETS = {"": ICONS, "tab-": TABS, "attr-": ATTRIBUTES, "sign-": SIGNS, "race-": RACES, "mark-": MARKS, "slot-": SLOTS, "mode-": MODES, "tag-": TAGS, "deity-": DEITIES, "logo-": LOGO}
 
 
 def slug(name):

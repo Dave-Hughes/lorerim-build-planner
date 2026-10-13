@@ -38,7 +38,7 @@ import type { LevelState } from "@/lib/rules/types";
 import { computeBuild } from "@/lib/rules/engine";
 import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
-import { AttributeIcon, DeityIcon, IconLabel, SignIcon, SkillIcon, SkillLabel, MarkIcon, SlotIcon, TagIcon } from "@/components/ui/skill-icon";
+import { AttributeIcon, DeityIcon, GameIcon, IconLabel, SignIcon, SkillIcon, SkillLabel, MarkIcon, SlotIcon, TagIcon } from "@/components/ui/skill-icon";
 import { ArrowTip, LevelBars, LevelLegend, LevelStepper, useArrowTip, useHoldInPlace } from "./level-nav";
 import { BottomSheet, PerkDetails, Tree, ViewToggle, type TreeView } from "./tree";
 import styles from "./build-view.module.css";
@@ -312,15 +312,32 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
                   className={styles.tab}
                   onClick={() => setTab(t)}
                 >
-                  <span className={styles.tabName}>{TAB_NAMES[t]}</span>
-                  <span className={styles.tabSub}>{TAB_SUB[t]}</span>
+                  {/* Folder tabs (WO-60): the 32px icon, the name, what's inside. */}
+                  <GameIcon file={`tab-${t}`} size={32} className={styles.tabIcon} />
+                  <span className={styles.tabText}>
+                    <span className={styles.tabName}>{TAB_NAMES[t]}</span>
+                    <span className={styles.tabSub}>{TAB_SUB[t]}</span>
+                  </span>
                 </button>
               ))}
             </div>
           )}
-          {pinned && tab === "levels" && (
+          {pinned && (tab === "levels" || tabs.length > 1) && (
             <div className={styles.pinnedBar} role="region" aria-label="Pinned bar" data-pinned-bar="">
               <div className={`page ${styles.pinnedInner}`}>
+                {/* The tabs, small, once the big ones scroll away (WO-60). */}
+                {tabs.length > 1 && (
+                  <span className={styles.miniTabs}>
+                    {tabs.map((t) => (
+                      <button key={t} type="button" className={styles.miniTab} aria-pressed={tab === t} onClick={() => setTab(t)}>
+                        <GameIcon file={`tab-${t}`} size={16} />
+                        <span>{TAB_NAMES[t]}</span>
+                      </button>
+                    ))}
+                  </span>
+                )}
+                {tab === "levels" && (
+                <>
                 <LevelStepper
                   level={level}
                   total={total}
@@ -342,6 +359,8 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
                     if (p) setPicked({ level, tree: p.tree, star: id });
                   }}
                 />
+                </>
+                )}
               </div>
             </div>
           )}

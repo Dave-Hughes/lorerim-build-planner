@@ -2375,9 +2375,9 @@ Canvas: `TabsIcons.dc.html`. The two tabs on the build page are plain text today
 4. A build with no guide has no tabs, as today.
 
 ### Done when
-- [ ] Screenshots of both tab states at 1440 and 390, and the pinned bar after scrolling.
-- [ ] Keyboard: arrow keys move between the tabs, as they do now.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Screenshots of both tab states at 1440 and 390, and the pinned bar after scrolling.
+- [x] Keyboard: arrow keys move between the tabs, as they do now.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 
