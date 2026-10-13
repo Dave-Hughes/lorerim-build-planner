@@ -2227,6 +2227,36 @@ The game files say that in LoreRim only one racial power is left: Khajiit **Nigh
 
 ---
 
+## WO-56  Repeat last level (13 Oct 2026)
+
+From the builds made so far (Iriel, Azrem, Pure Mage): from about level 10 on, most level-ups spend the skill points and attribute the same way as the one before. Today that's clicked out by hand every level. One button repeats it.
+
+1. **The button.** In the editor's attribute and skills column, next to its heading: `Repeat level 33` (the level before). It shows from level 3 on, when the level before has an attribute or skill points. It is a short verb button like the others.
+2. **What it copies:** the level before's attribute choice and its skill points. Nothing else: perks, Destiny, stones, deity, trainers, books, gear, spells, abilities, shouts and the note stay as they are.
+3. **It replaces** this level's attribute and skill points if any are set.
+4. **As far as the rules allow.** Skills are raised in the order the level before raised them, one point at a time. A raise is skipped when:
+   - it would make this level's raises for that skill more than +5;
+   - the skill is at this level's max skill (the Master of One skill excepted, as the rules engine does today);
+   - the skill points left don't cover its cost (raises cost more as a skill grows).
+   Points left over stay banked, as they do now.
+5. **When something didn't fit,** one muted line under the skills says what, in the rules engine's words: `Illusion +1 didn't fit: 2 skill points left.` or `Destruction stays at 100, the max skill at level 33.` It goes away on the next change. Nothing shows when everything fit.
+6. **Undo.** After repeating, the button becomes `Undo` until the next change to this level. It puts back exactly what was there before.
+7. **The logic** lives with the other plan operations (`plan-ops.ts`), as a pure function: `repeatLevel(plan, level, data)` returns the new plan and the list of skipped raises. It uses the rules engine's skills before this level and `skillPointCost` / `maxSkillAt`, so it can never make a level the engine flags.
+
+### Done when
+- [ ] Unit tests for `repeatLevel`:
+  - Pure Mage level 34 repeated from 33 gives the same five +1s and Magicka;
+  - a raise that would pass +5, one at max skill, and one the points don't cover are each skipped and listed;
+  - the Master of One skill can still go past max skill;
+  - perks, extras, gear, spells and the note at this level are untouched;
+  - repeating then undoing gives back the plan as it was.
+- [ ] A test that runs `repeatLevel` on every level of Pure Mage, Iriel and Azrem: the rules engine finds no new problems.
+- [ ] e2e: at level 12 of a test build, press `Repeat level 11`; the skills and attribute match level 11; `Undo` puts level 12 back.
+- [ ] Screenshots of the button and of the didn't-fit line, at 1440 and 390.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
@@ -2255,7 +2285,6 @@ The game files say that in LoreRim only one racial power is left: Khajiit **Nigh
   So the full list of Types is in the files: `AIT_english.txt` has Cloak, Backpack, Scarf, Accessory, Face, Belt, Mantle, Pauldron and more.
 
   Working out each item's Type means doing what Keyword Item Distributor does, since the keywords aren't in the plugins. A first pass that read only the plugins gave wrong answers (robes as Cloak, no scarves). The planner's slots should be a short list picked from these Types; Dave picks which in game.
-- **Repeat last level** (from the three builds): a button that spends this level's skill points like the last one, as far as the rules allow. Most of levels 10 to 20 were the same spread.
 - **Perk wishlist:** list the perks you want in order and let the planner place each at the first level it can be taken.
 - **Destiny target:** pick the Destiny star you're heading for and light the path to it.
 - **Skills over levels:** a small line chart on the shared page of the main skills from level 1 to the last.
