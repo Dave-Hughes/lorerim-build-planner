@@ -1,7 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { createPortal } from "react-dom";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { EditBar } from "./edit-bar";
 import type { BuildVisibility } from "@/lib/builds/validate";
 import { InfoTip } from "@/components/ui/info-tip";
@@ -82,36 +81,32 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   const [tree, setTree] = useState<string>(() => initialPlan.majors[0] ?? "One-Handed");
   const [treeView, setTreeView] = useState<TreeView>("tree");
   const [selected, setSelected] = useState<string | null>(null);
-  // The perk area's width decides where the details go: beside the tree at 1100px and up,
-  // otherwise a card pinned to the bottom of the window (phones use the tree's bottom sheet).
+  // The perk's card opens beside its star, inside the tree's frame (WO-59); on a phone (under
+  // 900 wide) the tree's own bottom sheet shows it.
   const [perkArea, setPerkArea] = useState<HTMLDivElement | null>(null);
-  const [areaWidth, setAreaWidth] = useState(0);
   const [windowWidth, setWindowWidth] = useState(1440);
-  // Where the pinned panel goes: over the skills column when it sits beside the tree, so the
-  // panel never covers the tree; otherwise the window's bottom-right corner.
-  const [skillsCol, setSkillsCol] = useState<HTMLElement | null>(null);
-  const [pinOver, setPinOver] = useState<{ left: number; width: number } | null>(null);
   useEffect(() => {
-    if (!perkArea) return;
-    const set = () => {
-      setAreaWidth(perkArea.clientWidth);
-      // In the page's own pixels (it may be scaled up on a big monitor).
-      const z = pageZoom();
-      setWindowWidth(window.innerWidth / z);
-      const col = skillsCol?.getBoundingClientRect();
-      const area = perkArea.getBoundingClientRect();
-      setPinOver(col && col.right <= area.left ? { left: Math.round(col.left / z), width: Math.round(Math.min(420, col.width / z)) } : null);
-    };
+    const set = () => setWindowWidth(window.innerWidth / pageZoom());
     set();
-    const ro = new ResizeObserver(set);
-    ro.observe(perkArea);
     window.addEventListener("resize", set);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", set);
-    };
-  }, [perkArea, skillsCol]);
-  const pinned = windowWidth >= 900 && areaWidth > 0 && areaWidth < 1100;
+    return () => window.removeEventListener("resize", set);
+  }, []);
+  const wide = windowWidth >= 900;
+  // A perk just taken (WO-59): the line at the top of the tree with Undo, until the next change or
+  // 6 seconds; the pop and sparks at its star.
+  const [taken, setTaken] = useState<{ id: string; before: BuildPlan; after: BuildPlan; key: number } | null>(null);
+  const [burst, setBurst] = useState<{ x: number; y: number; key: number } | null>(null);
+  useEffect(() => {
+    if (!taken) return;
+    const t = setTimeout(() => setTaken((x) => (x?.key === taken.key ? null : x)), 6000);
+    return () => clearTimeout(t);
+  }, [taken]);
+  useEffect(() => {
+    if (!burst) return;
+    const t = setTimeout(() => setBurst((x) => (x?.key === burst.key ? null : x)), 800);
+    return () => clearTimeout(t);
+  }, [burst]);
+
   // The tree box: the window's height less the site header, the edit bar, the tree chips and the
   // legend, less 16px; never under 520px, no maximum (WO-26).
   const [chipsEl, setChipsEl] = useState<HTMLDivElement | null>(null);
@@ -134,23 +129,37 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
     };
   }, [chipsEl]);
   const pickPerk = (id: string) => setSelected(id);
-  useEffect(() => {
-    if (!pinned || !selected) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setSelected(null);
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [pinned, selected]);
-  const panel = (id: string | null) => (
+  // Closing the card puts focus back on its star.
+  const closeCard = () => {
+    const id = selected;
+    setSelected(null);
+    if (id) requestAnimationFrame(() => perkArea?.querySelector<HTMLElement>(`[data-perk="${CSS.escape(id)}"]`)?.focus({ preventScroll: true }));
+  };
+  const takePerk = (pid: string) => {
+    const next = ops.takePerk(plan, level, pid);
+    setPlan(next);
+    setSelected(null);
+    const key = Date.now();
+    setTaken({ id: pid, before: plan, after: next, key });
+    // The star pops and sparks fly (none with reduced motion: the star just fills).
+    const star = perkArea?.querySelector<HTMLElement>(`[data-perk="${CSS.escape(pid)}"]`);
+    if (star && perkArea && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      star.animate([{ scale: 0.6 }, { scale: 1.25, offset: 0.6 }, { scale: 1 }], { duration: 300, easing: "ease-out" });
+      const z = pageZoom();
+      const a = perkArea.getBoundingClientRect();
+      const b = star.getBoundingClientRect();
+      setBurst({ x: (b.left + b.width / 2 - a.left) / z, y: (b.top + b.height / 2 - a.top) / z, key });
+    }
+    requestAnimationFrame(() => star?.focus({ preventScroll: true }));
+  };
+  const panel = (id: string | null, onCancel?: () => void) => (
     <PerkPanel
+      onCancel={onCancel}
       plan={plan}
       states={states}
       level={level}
       selectedId={id}
-      onTake={(pid) => {
-        setPlan(ops.takePerk(plan, level, pid));
-        // The star's new state says it was taken: the card closes, so it never covers the page.
-        setSelected(null);
-      }}
+      onTake={takePerk}
       onRemove={(pid, also) => setPlan(ops.removePerks(plan, [{ id: pid, level }, ...also]))}
       onGoToLevel={(n) => setLevel(n)}
     />
@@ -290,7 +299,8 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
           </div>
           <dl className={styles.pools}>
             {level > 1 && <Pool label="Skill points" value={left} of={`left of ${s.skillPointsAvailable}`} />}
-            <Pool label="Perk points" icon={<MarkIcon name="perk-points" />} value={perkLeft} of="to spend" />
+            {/* Flashes ember once when a perk is taken (WO-59). */}
+            <Pool label="Perk points" icon={<MarkIcon name="perk-points" />} value={perkLeft} of="to spend" flashKey={taken && taken.after === plan ? taken.key : undefined} />
             <Pool label="Destiny points" value={destinyLeft} of={nextDestiny ? `next at ${nextDestiny}` : "no more"} destiny />
             <Pool label="Trainer sessions" value={trainerLeft} of="left this level" />
           </dl>
@@ -317,7 +327,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
         </section>
 
         <div className={styles.columns}>
-          <section ref={setSkillsCol} aria-label="Attribute and skills" className={styles.left}>
+          <section aria-label="Attribute and skills" className={styles.left}>
             {level > 1 && (
               <div className={styles.block}>
                 <div className={styles.blockHead}>
@@ -463,13 +473,38 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
               />
             </div>
             <div ref={setPerkArea} className={`frame ${styles.treeBox} ${tree === "Destiny" ? styles.treeBoxDestiny : ""}`}>
-              <div className={styles.treeRow}>
-                <div className={styles.treeArea}>
-                  <Tree tree={tree} states={states} level={level} selectedId={selected} onSelect={pickPerk} details={(id) => panel(id)} view={treeView} onView={setTreeView} height={treeHeight} />
+              <Tree tree={tree} states={states} level={level} selectedId={selected} onSelect={pickPerk} details={(id) => panel(id)} view={treeView} onView={setTreeView} height={treeHeight} />
+              {/* Beside the star that was clicked, inside the frame (WO-59); a sheet on phones. */}
+              {wide && selected && perkArea && (
+                <PerkCard box={perkArea} perkId={selected} onClose={closeCard}>
+                  {panel(selected, closeCard)}
+                </PerkCard>
+              )}
+              {taken && taken.after === plan && (
+                <div role="status" className={styles.takenLine}>
+                  <TakenMark />
+                  <span>
+                    <b>{d.perkById.get(taken.id)?.name ?? "Perk"}</b> taken. {perkLeft} perk point{perkLeft === 1 ? "" : "s"} left.
+                  </span>
+                  <button
+                    type="button"
+                    className="btn btn-sm btn-quiet"
+                    onClick={() => {
+                      setPlan(taken.before);
+                      setTaken(null);
+                    }}
+                  >
+                    Undo
+                  </button>
                 </div>
-                {/* Beside the tree when there is room; pinned over the page otherwise; a sheet on phones. */}
-                {!pinned && <div className={styles.panelSlot}>{panel(selected)}</div>}
-              </div>
+              )}
+              {burst && (
+                <span key={burst.key} className={styles.burst} style={{ left: burst.x, top: burst.y }} aria-hidden="true">
+                  {SPARKS.map(([dx, dy], i) => (
+                    <i key={i} style={{ ["--dx" as string]: `${dx}px`, ["--dy" as string]: `${dy}px` }} />
+                  ))}
+                </span>
+              )}
             </div>
           </section>
         </div>
@@ -477,17 +512,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
         {/* A tier perk taken here gives its free spells: pick them under it (WO-42). */}
         <SpellPicks key={`picks-${level}`} plan={plan} level={level} setPlan={setPlan} />
 
-        {pinned &&
-          selected &&
-          createPortal(
-            <div className={styles.pinned} style={pinOver ? { left: pinOver.left, right: "auto", width: pinOver.width } : undefined}>
-              <button type="button" className={`btn btn-sm btn-icon ${styles.pinnedClose}`} aria-label="Close perk details" onClick={() => setSelected(null)}>
-                ×
-              </button>
-              {panel(selected)}
-            </div>,
-            document.body,
-          )}
+
 
         <section aria-label="Also at this level" className={styles.also}>
           <div className={styles.alsoCol}>
@@ -660,11 +685,11 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   );
 }
 
-function Pool({ label, icon, value, of, destiny }: { label: string; icon?: React.ReactNode; value: number; of: string; destiny?: boolean }) {
+function Pool({ label, icon, value, of, destiny, flashKey }: { label: string; icon?: React.ReactNode; value: number; of: string; destiny?: boolean; flashKey?: number }) {
   return (
     <div className={`${styles.pool} ${destiny ? styles.poolDestiny : ""}`}>
       <dt className={`label ${styles.poolLabel}`}>{icon ? <IconLabel icon={icon}>{label}</IconLabel> : label}</dt>
-      <dd className={styles.poolVal}>
+      <dd key={flashKey ?? "still"} className={`${styles.poolVal} ${flashKey ? styles.poolFlash : ""}`}>
         <span className={`big-num ${styles.poolNum} ${value < 0 ? "bad" : ""}`}>{value}</span>
         <span className={styles.hint}>{of}</span>
       </dd>
@@ -752,6 +777,105 @@ function OghmaForm({ skills, onAdd }: { skills: string[]; onAdd: (skills: string
           Cancel
         </button>
       </span>
+    </div>
+  );
+}
+
+/** The eight sparks of a taken perk (WO-59): 4px brass squares that fly out about 30px. */
+const SPARKS: [number, number][] = [
+  [-28, -10],
+  [28, -10],
+  [-20, 22],
+  [20, 22],
+  [0, -30],
+  [-34, 8],
+  [34, 8],
+  [0, 30],
+];
+
+/** A small pixel check for the "taken" line. */
+function TakenMark() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" shapeRendering="crispEdges">
+      <path d="M2 8h2v2h2v2h2v-2h2v-2h2v-2h2v2h-2v2h-2v2h-2v2h-2v-2h-2v-2h-2z" fill="currentColor" />
+    </svg>
+  );
+}
+
+const CARD_WIDTH = 340;
+const CARD_GAP = 16;
+
+/**
+ * The perk's card beside its star, inside the tree's frame (WO-59): to the star's right with a
+ * small pointer; to the left near the right edge; above near the bottom. It follows the star while
+ * the tree pans or zooms. Esc closes it; focus goes to its first action when it opens.
+ */
+function PerkCard({ box, perkId, onClose, children }: { box: HTMLElement; perkId: string; onClose: () => void; children: React.ReactNode }) {
+  const card = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState<{ left: number; top: number; side: "left" | "right"; above: boolean; pointer: number; max: number } | null>(null);
+  useLayoutEffect(() => {
+    let frame = 0;
+    let last = "";
+    const place = () => {
+      frame = requestAnimationFrame(place);
+      const star = box.querySelector<HTMLElement>(`[data-perk="${CSS.escape(perkId)}"]`);
+      const el = card.current;
+      if (!star || !el) return;
+      const z = pageZoom();
+      const a = box.getBoundingClientRect();
+      const b = star.getBoundingClientRect();
+      const w = a.width / z;
+      const h = a.height / z;
+      // (h is the frame's height; the card also keeps to the part of it in the window.)
+      const sx = (b.left - a.left) / z;
+      const sy = (b.top - a.top) / z;
+      const sw = b.width / z;
+      const sh = b.height / z;
+      const lo = Math.max(8, -a.top / z + 8);
+      const hi = Math.min(h, (window.innerHeight - a.top) / z) - 8;
+      const max = Math.max(160, hi - lo);
+      const ch = Math.min(el.scrollHeight, max);
+      let side: "left" | "right" = "right";
+      let left = sx + sw + CARD_GAP;
+      if (left + CARD_WIDTH > w - 8) {
+        side = "left";
+        left = sx - CARD_GAP - CARD_WIDTH;
+      }
+      left = Math.max(8, Math.min(left, w - CARD_WIDTH - 8));
+      // Within the frame, and within the part of it on screen, so it never needs a scroll.
+      let top = sy + sh / 2 - 40;
+      const above = top + ch > hi && sy - ch - CARD_GAP >= lo;
+      if (above) top = sy - ch - CARD_GAP;
+      top = Math.max(lo, Math.min(top, hi - ch));
+      const pointer = Math.max(14, Math.min(sy + sh / 2 - top, ch - 14));
+      const key = `${Math.round(left)}|${Math.round(top)}|${side}|${above}|${Math.round(pointer)}|${Math.round(max)}`;
+      if (key !== last) {
+        last = key;
+        setPos({ left, top, side, above, pointer, max });
+      }
+    };
+    place();
+    return () => cancelAnimationFrame(frame);
+  }, [box, perkId]);
+  // Focus moves to the card's first action once it's placed.
+  const placed = !!pos;
+  useLayoutEffect(() => {
+    if (placed) card.current?.querySelector<HTMLElement>("button:not(:disabled)")?.focus({ preventScroll: true });
+  }, [placed, perkId]);
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+  return (
+    <div
+      ref={card}
+      role="dialog"
+      aria-label="Perk details"
+      className={`${styles.perkCard} ${pos?.side === "left" ? styles.perkCardLeft : ""} ${pos?.above ? styles.perkCardAbove : ""}`}
+      style={pos ? { left: pos.left, top: pos.top, maxHeight: pos.max, ["--pointer" as string]: `${pos.pointer}px` } : { visibility: "hidden" }}
+    >
+      {children}
     </div>
   );
 }

@@ -620,7 +620,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
                   const style = { left: n.x, top: n.y, ...(partial ? { ["--ring" as string]: rankRing(st, size.star * 2 * 1.3) } : {}) };
                   return (
                     <span key={n.id}>
-                      <button type="button" className={cls} style={style} aria-label={aria} aria-pressed={isSel} onClick={() => select(n.id)} onFocus={(e) => reveal(n.id, e)}>
+                      <button type="button" className={cls} style={style} aria-label={aria} aria-pressed={isSel} data-perk={n.id} onClick={() => select(n.id)} onFocus={(e) => reveal(n.id, e)}>
                         {/* On hover (mouse) or keyboard focus: the name and what it needs, at once. */}
                         <span className={styles.tag} aria-hidden="true">
                           <b>{nameLine(p, st)}</b>

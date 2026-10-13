@@ -16,6 +16,8 @@ interface Props {
   /** Removes the perk from this level and any picks (later or here) that need it. */
   onRemove: (id: string, also: Dependant[]) => void;
   onGoToLevel: (level: number) => void;
+  /** The card beside the star (WO-59) has Cancel; the sheet on a phone closes its own way. */
+  onCancel?: () => void;
 }
 
 const COUNT = ["", "", "both", "all three", "all four", "all five", "all six", "all seven", "all eight", "all nine", "all ten"];
@@ -30,7 +32,7 @@ export function PerkPanel(props: Props) {
   return <PerkPanelFor key={`${props.selectedId}@${props.level}`} {...props} />;
 }
 
-function PerkPanelFor({ plan, states, level, selectedId, onTake, onRemove, onGoToLevel }: Props) {
+function PerkPanelFor({ plan, states, level, selectedId, onTake, onRemove, onGoToLevel, onCancel }: Props) {
   const d = useGameData();
   const [asking, setAsking] = useState<Dependant[] | null>(null);
   // After Confirm or Remove the clicked button goes away: keep the page still and move focus to the
@@ -144,6 +146,11 @@ function PerkPanelFor({ plan, states, level, selectedId, onTake, onRemove, onGoT
           {!takenHere && lastTaken && lastTaken !== level && !st.granted && (
             <button type="button" className="btn btn-quiet" onClick={() => onGoToLevel(lastTaken)}>
               Go to level {lastTaken}
+            </button>
+          )}
+          {onCancel && (
+            <button type="button" className="btn btn-quiet" onClick={onCancel}>
+              Cancel
             </button>
           )}
         </div>

@@ -68,7 +68,8 @@ test.describe("tree tabs on a phone", () => {
 test.describe("the editor at 1456", () => {
   test.use({ viewport: { width: 1456, height: 900 } });
 
-  test("selecting a star shows its name in the pinned panel without scrolling", async ({ page, context }) => {
+  // Since WO-59 the details are a card beside the star, inside the tree's frame and the window.
+  test("selecting a star shows its card without scrolling", async ({ page, context }) => {
     await signIn(context);
     await page.goto(`/b/${TEST_BUILD_ID}/edit?level=6`);
     await page.getByRole("tab", { name: /^Block/ }).click();
@@ -79,7 +80,7 @@ test.describe("the editor at 1456", () => {
     const panel = page.getByRole("complementary", { name: "Perk details" });
     await expect(panel).toContainText("Overpowering Bashes");
     expect(await page.evaluate(() => window.scrollY)).toBe(before);
-    const box = (await panel.boundingBox())!;
+    const box = (await page.getByRole("dialog", { name: "Perk details" }).boundingBox())!;
     expect(box.y).toBeGreaterThanOrEqual(0);
     expect(box.y + box.height).toBeLessThanOrEqual(900);
     await page.keyboard.press("Escape");

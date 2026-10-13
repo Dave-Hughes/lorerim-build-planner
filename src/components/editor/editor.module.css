@@ -357,64 +357,115 @@
 }
 
 /* ---------- Trees ---------- */
-/* The perk area: tree, then its detail panel beside it at 1100px and up (fixed 340px), under it below that. */
+/* The perk area (WO-59): the tree fills the frame; the perk's card floats beside its star. */
 .treeBox {
+  position: relative;
   border: 1px solid var(--rule);
   background: #10161e;
-  container-type: inline-size;
 }
-.treeRow {
-  display: flex;
-  flex-direction: column;
-}
-.treeArea {
-  min-width: 0;
-}
-.panelSlot {
-  border-top: 1px solid var(--rule);
-}
-@container (min-width: 1100px) {
-  .treeRow {
-    flex-direction: row;
-  }
-  .treeArea {
-    flex: 1 1 auto;
-  }
-  .panelSlot {
-    flex: none;
-    width: 340px;
-    border-top: 0;
-    border-left: 1px solid var(--rule);
-  }
-}
-@media (max-width: 899px) {
-  /* Small screens: the details open in a bottom sheet from the tree. */
-  .panelSlot {
-    display: none;
-  }
-}
-@container (max-width: 1099px) {
-  .panelSlot {
-    display: none;
-  }
-}
-/* No room beside the tree: the details as a card pinned to the bottom of the window, over the page. */
-.pinned {
-  position: fixed;
-  z-index: 50;
-  right: 24px;
-  bottom: 24px;
-  width: min(420px, calc(100vw - 48px));
-  max-height: min(60vh, 560px);
+.perkCard {
+  position: absolute;
+  z-index: 4;
+  width: 340px;
+  max-height: calc(100% - 16px);
   overflow-y: auto;
   border: 1px solid var(--rule-strong);
   background: var(--panel);
 }
-.pinnedClose {
+/* The pointer to the star: on the card's left edge, or its right when the card is to the star's left. */
+.perkCard::before {
+  content: "";
   position: absolute;
-  top: 8px;
-  right: 8px;
-  z-index: 1;
+  top: calc(var(--pointer, 40px) - 6px);
+  left: -7px;
+  width: 12px;
+  height: 12px;
+  background: var(--panel);
+  border-left: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule-strong);
+  transform: rotate(45deg);
+}
+.perkCardLeft::before {
+  left: auto;
+  right: -7px;
+  transform: rotate(-135deg);
+}
+.perkCardAbove::before {
+  display: none;
+}
+.perkCard .panel {
+  padding: 16px 18px;
+  gap: 10px;
+}
+.perkCard .panelName {
+  font-size: 26px;
+}
+/* "<Perk> taken. N perk points left." with Undo, at the top of the tree frame. */
+.takenLine {
+  position: absolute;
+  /* Above the tree's own top fade and controls. */
+  z-index: 20;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 8px 6px 14px;
+  border: 1px solid var(--ember);
+  background: color-mix(in srgb, var(--ember) 8%, var(--panel));
+  color: var(--text);
+  white-space: nowrap;
+}
+.takenLine svg {
+  color: var(--ember);
+}
+/* Eight square sparks in the brass highlight, out about 30px and gone in 700ms. No glow. */
+.burst {
+  position: absolute;
+  z-index: 3;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.burst i {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  width: 4px;
+  height: 4px;
+  background: #ffe3a3;
+  animation: spark 700ms ease-out forwards;
+}
+@keyframes spark {
+  from {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy));
+  }
+}
+.poolFlash :global(.big-num) {
+  animation: poolFlash 900ms ease-out;
+}
+@keyframes poolFlash {
+  from {
+    color: var(--on-ember);
+    background: var(--ember);
+  }
+  to {
+    background: transparent;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .burst {
+    display: none;
+  }
+  .poolFlash :global(.big-num) {
+    animation: none;
+  }
 }
 .panel {
   min-width: 0;

@@ -2355,10 +2355,10 @@ Canvas: `PerkConfirm.dc.html` (row "Proposal: tabs and taking a perk"). Today cl
 3. No glows or shadows (design rules); the sparks are square pixels in the icon palette.
 
 ### Done when
-- [ ] e2e: click a ring on a test build: the card is inside the tree frame, next to the star; Confirm takes the perk, the line shows, Undo takes it back.
-- [ ] The card stays inside the frame for a star at the far right and one at the top.
-- [ ] Screenshots at 1440 (card open, and just after Confirm) and 390 (the sheet).
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: click a ring on a test build: the card is inside the tree frame, next to the star; Confirm takes the perk, the line shows, Undo takes it back.
+- [x] The card stays inside the frame for a star at the far right and one at the top.
+- [x] Screenshots at 1440 (card open, and just after Confirm) and 390 (the sheet).
+- [x] All checks in CLAUDE.md pass.
 
 ---
 
