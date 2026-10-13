@@ -7,6 +7,8 @@ import { itemById, useItems } from "@/lib/items/items";
 import { GEAR_SLOTS, gearAt, type GearSlot } from "@/lib/rules/gear";
 import type { BuildPlan, MadeGear } from "@/lib/rules/types";
 import { Tooltip } from "@/components/ui/tooltip";
+import type { GameData } from "@/lib/rules/data";
+import { BASE_VALUES_NOTE, readEnchantLine } from "@/lib/rules/enchantments";
 import { useDismiss } from "@/lib/use-dismiss";
 import { pageZoom } from "@/lib/zoom";
 import styles from "./gear-view.module.css";
@@ -222,9 +224,9 @@ export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: num
             <span className={styles.cardMade}>
               <MadeMark made={seg.made} /> Made by you from {seg.made.base}
               {spell ? `, with ${spell.name}` : ""}
-              {seg.made.enchantments?.length ? `: ${seg.made.enchantments.join(", ")}` : ""}
             </span>
           )}
+          {seg.made && !seg.made.spell && <EnchantList d={d} lines={seg.made.enchantments ?? []} />}
           <span className={styles.cardFoot}>
             <span className="muted">
               {seg.from === seg.to ? `Level ${seg.from}` : `Levels ${seg.from} to ${seg.to}`}
@@ -244,6 +246,32 @@ export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: num
         </div>
       )}
     </section>
+  );
+}
+
+/**
+ * A made item's enchantments (WO-54): one picked from the game's list shows its name, the game's
+ * text and where it's learned; the author's own words show as they are. A note on the numbers
+ * follows when any came from the list.
+ */
+function EnchantList({ d, lines }: { d: GameData; lines: string[] }) {
+  if (!lines.length) return null;
+  const read = lines.map((l) => readEnchantLine(d, l));
+  return (
+    <span className={styles.enchantList}>
+      {read.map((r, i) =>
+        r.enchantment ? (
+          <span key={i} className={styles.enchant}>
+            <b>{r.name}</b>
+            <span>{r.enchantment.text}</span>
+            <span className="muted">{r.enchantment.learned}</span>
+          </span>
+        ) : (
+          <span key={i}>{r.name}</span>
+        ),
+      )}
+      {read.some((r) => r.enchantment) && <span className="muted">{BASE_VALUES_NOTE}</span>}
+    </span>
   );
 }
 
@@ -269,9 +297,7 @@ export function MadeMark({ made }: { made: MadeGear }) {
           <span className="muted">Made by you</span>
           <span>{made.base}</span>
           {spell && <span>Spell: {spell.name}</span>}
-          {(made.enchantments ?? []).map((e, i) => (
-            <span key={i}>{e}</span>
-          ))}
+          {!made.spell && <EnchantList d={d} lines={made.enchantments ?? []} />}
         </span>
       }
     >

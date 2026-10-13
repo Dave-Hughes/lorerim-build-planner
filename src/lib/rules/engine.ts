@@ -269,6 +269,14 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
       const n = g.fromLevel === L && g.made && !g.made.spell ? (g.made.enchantments ?? []).length : 0;
       if (n >= 3 && !has(ARTIFACT_ENCHANTER)) issues.push(issue("enchant-perk", `Three enchantments need Artifact Enchanter, not taken by level ${L}.`));
       else if (n === 2 && !has(ENCHANTMENT_MASTERY)) issues.push(issue("enchant-perk", `Two enchantments need Enchantment Mastery, not taken by level ${L}.`));
+      // An enchantment only a perk's power teaches (WO-54) needs that perk by the row's level.
+      if (g.fromLevel !== L || !g.made || g.made.spell) continue;
+      for (const line of g.made.enchantments ?? []) {
+        const e = d.enchantmentById.get(line);
+        if (!e?.powers?.length || e.powers.some(has)) continue;
+        const perk = d.perkById.get(e.powers[0])?.name ?? e.powers[0];
+        issues.push(issue("enchant-power", `${e.name} comes from the ${perk} power; the perk isn't taken by level ${L}.`));
+      }
     }
     // Shouts (WO-51): a shout's word count only goes up.
     for (const row of lv.shouts ?? []) {

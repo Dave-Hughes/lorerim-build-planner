@@ -18,8 +18,9 @@ import trees5048 from "@/data/lorerim-5.0.4.8/trees.json";
 import deityText5048 from "@/data/lorerim-5.0.4.8/deity-text.json";
 import spells5048 from "@/data/lorerim-5.0.4.8/spells.json";
 import powers5048 from "@/data/lorerim-5.0.4.8/powers.json";
+import enchantments5048 from "@/data/lorerim-5.0.4.8/enchantments.json";
 import { RULES_5_0_4_8 } from "./constants";
-import type { Birthsign, DeityText, Perk, Powers, Race, SkillGroup, Spell, SpellPicks, Start, Stone, Trait, TreeLink, VersionSource } from "./data";
+import type { Birthsign, DeityText, Enchantment, Perk, Powers, Race, SkillGroup, Spell, SpellPicks, Start, Stone, Trait, TreeLink, VersionSource } from "./data";
 
 export interface GameVersion {
   /** "5.0.4.8" */
@@ -57,6 +58,7 @@ const registry: Entry[] = [
       trees: trees5048 as unknown as Record<string, { links: TreeLink[] }>,
       spells: spells5048 as unknown as { spells: Spell[]; spellPicks: SpellPicks },
       powers: powers5048 as unknown as Powers,
+      enchantments: enchantments5048 as unknown as Enchantment[],
       gameModes: [
         { name: "Naaktiid", text: "New to LoreRim: +3 perk points, Requiem Lite (+100 carry weight, gentler combat), free respec." },
         { name: "Konahrik", text: "Classic LoreRim: no extra points, respec once for 100,000 gold." },

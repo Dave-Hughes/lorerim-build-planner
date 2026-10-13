@@ -17,6 +17,8 @@ Inputs, under gamedata/<version>/:
                      optional, builds items.json when present
   powers_raw.json    abilities (powers, lesser powers), the perks that grant
                      them, and shouts (powers.py); builds powers.json
+  enchantments_raw.json  the enchantments a player can learn (enchantments.py);
+                     builds enchantments.json
   spells_raw.json    the spells tomes teach and the tier perks' picks
                      (spells.py); optional, builds spells.json when present
   overrides.json     hand-kept facts the records don't carry in a readable
@@ -411,6 +413,20 @@ def main():
             json.dump(pw, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")
         print(f"{len(pw['abilities'])} abilities, {len(pw['fromPerks'])} from perks, {len(pw['shouts'])} shouts -> powers.json")
+    # Enchantments (WO-54), from enchantments.py's raw file. The runestone powers stay out.
+    if os.path.exists(os.path.join(RAW, "enchantments_raw.json")):
+        from enchantments import build_enchantments
+
+        ench = build_enchantments(load("enchantments_raw.json"))
+        tree_ids = {p["id"] for p in json.load(open(os.path.join(OUT, "perks.json"), encoding="utf-8"))}
+        for r in ench:
+            for perk in r.get("powers", []):
+                if perk not in tree_ids:
+                    problems.append(f"enchantment {r['name']}: no perk {perk}")
+        with open(os.path.join(OUT, "enchantments.json"), "w", encoding="utf-8") as f:
+            json.dump(ench, f, separators=(",", ":"), ensure_ascii=False)
+            f.write("\n")
+        print(f"{len(ench)} enchantments ({sum(r['on'] == 'weapon' for r in ench)} weapon) -> enchantments.json")
     # Spells (WO-41): the tomes' spells and the tier perks' picks, from spells.py's raw file.
     if os.path.exists(os.path.join(RAW, "spells_raw.json")):
         from spells import build_spells

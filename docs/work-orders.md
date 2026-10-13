@@ -2187,11 +2187,11 @@ The file also has `runestone`: 9 powers from Runemaster Magic. Those are tempora
 5. **The rules engine**: an enchantment learned only from a power needs that power's perk by the gear row's level, for example `Fireburst comes from the Arcane Experimentation power; the perk isn't taken by level 30.` If it can also be disenchanted from items (Elemental Fury, Toxicity), there's no problem.
 
 ### Done when
-- [ ] `npm run test:gamedata`: a build test for the slot mapping, and that no runestone power reaches `enchantments.json`.
-- [ ] Unit tests: an armour ring lists Fortify Magicka (Rank I) but not Fire; a sword lists Fire; picking saves the id and the card shows the name; a free-text line still shows as text; Fireburst at level 30 without Arcane Experimentation gives the problem, and Elemental Fury doesn't.
-- [ ] e2e: on a made ring, search `magicka`, pick Fortify Magicka (Rank I), save; the shared page's card shows the name, the game's text and the base-values line.
-- [ ] Screenshots of the form's enchantment search at 1440 and 390, and of the card.
-- [ ] All checks in CLAUDE.md pass.
+- [x] `npm run test:gamedata`: a build test for the slot mapping, and that no runestone power reaches `enchantments.json`.
+- [x] Unit tests: an armour ring lists Fortify Magicka (Rank I) but not Fire; a sword lists Fire; picking saves the id and the card shows the name; a free-text line still shows as text; Fireburst at level 30 without Arcane Experimentation gives the problem, and Elemental Fury doesn't.
+- [x] e2e: on a made ring, search `magicka`, pick Fortify Magicka (Rank I), save; the shared page's card shows the name, the game's text and the base-values line.
+- [x] Screenshots of the form's enchantment search at 1440 and 390, and of the card.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

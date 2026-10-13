@@ -176,3 +176,15 @@
   flex-direction: column;
   gap: 4px;
 }
+
+/* A made item's enchantments (WO-54): name, the game's text, where it's learned. */
+.enchantList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.enchant {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}

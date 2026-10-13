@@ -369,5 +369,58 @@ def main():
     print("wrote", os.path.relpath(out, REPO))
 
 
+# The planner's gear slots for each worn-restriction keyword (WO-54).
+SLOT_OF = {
+    "ArmorCuirass": "Body", "ClothingBody": "Body",
+    "ArmorHelmet": "Head", "ClothingHead": "Head", "ClothingCirclet": "Head",
+    "ArmorGauntlets": "Hands", "ClothingHands": "Hands",
+    "ArmorBoots": "Feet", "ClothingFeet": "Feet",
+    "ArmorShield": "Shield",
+    "ClothingRing": "Ring",
+    "ClothingNecklace": "Amulet",
+}
+ARMOR_SLOTS = ["Head", "Body", "Hands", "Feet", "Shield", "Ring", "Amulet"]
+
+
+def learned_line(sources):
+    """'Disenchant: Ring of Eminent Health, Necklace of Eminent Health and 100 more', or 'The Arcane
+    Experimentation power'. Both, when it's learned both ways."""
+    parts = []
+    for src in sources:
+        if src["kind"] == "item":
+            shown = src.get("examples", [])[:2]
+            more = src.get("count", len(shown)) - len(shown)
+            parts.append("Disenchant: " + ", ".join(shown) + (f" and {more} more" if more > 0 else ""))
+        elif src["kind"] == "power":
+            parts.append(f"The {src['power']} power")
+    return "; ".join(parts)
+
+
+def build_enchantments(raw):
+    """
+    enchantments_raw.json -> the planner's enchantments.json rows: { id, name, on, text, slots,
+    learned, powers?, sameAs? }. `slots` are the planner's gear slots for an armour enchantment
+    (every armour slot when it has no restriction; none for a weapon). `powers` lists the perks
+    whose power teaches it, when that's the only way to learn it. The runestone powers stay out:
+    they are temporary runes, already abilities in powers.json.
+    """
+    rows = []
+    for e in raw["enchantments"]:
+        row = {"id": e["id"], "name": e["name"], "on": e["on"], "text": e.get("text", "")}
+        if e["on"] == "armor":
+            slots = {SLOT_OF[k] for k in e.get("wornRestrictions", []) if k in SLOT_OF}
+            row["slots"] = [x for x in ARMOR_SLOTS if x in slots] if slots else list(ARMOR_SLOTS)
+        else:
+            row["slots"] = []
+        row["learned"] = learned_line(e.get("sources", []))
+        if e.get("sources") and all(src["kind"] == "power" for src in e["sources"]):
+            row["powers"] = sorted({src["perk"] for src in e["sources"]})
+        if e.get("sameAs"):
+            row["sameAs"] = e["sameAs"]
+        rows.append(row)
+    rows.sort(key=lambda r: (r["on"], r["name"].lower()))
+    return rows
+
+
 if __name__ == "__main__":
     main()

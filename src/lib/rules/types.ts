@@ -85,7 +85,10 @@ export interface MadeGear {
   base: string;
   /** A staff's spell: an id in spells.json. The row reads "Staff of <spell>". */
   spell?: string;
-  /** Up to three lines, in the author's words (WO-53): two need Enchantment Mastery, three Artifact Enchanter. */
+  /**
+   * Up to three lines (WO-53): two need Enchantment Mastery, three Artifact Enchanter. Each is an
+   * id in enchantments.json when picked from the game's list (WO-54), or the author's own words.
+   */
   enchantments?: string[];
 }
 
@@ -148,6 +151,7 @@ export type IssueCode =
   | "ability-unknown"
   | "shout-words"
   | "enchant-perk"
+  | "enchant-power"
   | "creation";
 
 export interface Issue {

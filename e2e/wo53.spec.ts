@@ -14,7 +14,7 @@ test("a made ring with three enchantments: each field appears after the last, an
   await form.getByRole("combobox", { name: "Item" }).fill("Silver Ring");
   await form.getByLabel("Made by you").check();
 
-  const line = (n: number) => form.getByRole("textbox", { name: `Enchantment ${n}` });
+  const line = (n: number) => form.getByRole("combobox", { name: `Enchantment ${n}` });
   await expect(line(1)).toBeVisible();
   await expect(line(2)).toHaveCount(0);
   await line(1).fill("Fortify Magicka 40");

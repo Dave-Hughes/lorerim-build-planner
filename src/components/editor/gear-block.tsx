@@ -3,6 +3,8 @@
 import { useId, useState } from "react";
 import { useGameData } from "@/components/game-data";
 import { fitsSlot, itemById, searchItems, useItems, type GameItem } from "@/lib/items/items";
+import { enchantTarget, fitsTarget, searchEnchantments } from "@/lib/rules/enchantments";
+import type { Enchantment } from "@/lib/rules/data";
 import { IconLabel, SlotIcon } from "@/components/ui/skill-icon";
 import { GEAR_SLOTS, gearAt, gearChangeText, gearChanges, madeStaffName, type GearSlot, type HeldGear } from "@/lib/rules/gear";
 import type { BuildPlan, MadeGear } from "@/lib/rules/types";
@@ -162,10 +164,20 @@ function GearForm({
   const base = itemId && items ? itemById(d.version.id, itemId) : undefined;
   const isStaff = base?.weaponType === "Staff" || /\bstaff\b/i.test(name);
   const spell = d.spells.find((sp) => sp.name.toLowerCase() === spellName.trim().toLowerCase());
+  // Which enchantments fit (WO-54): from the base item when it's in the index, else the row's slot.
+  const target = enchantTarget(pick, base);
   const madeSet = (): GearSet => {
     if (!made) return { name, note, itemId };
     if (isStaff && spell) return { name: madeStaffName(spell.name), note, itemId, made: { base: name.trim(), spell: spell.id } };
-    const lines = enchant.map((l) => l.trim()).filter(Boolean);
+    // A typed name that is exactly a fitting enchantment's saves as its id; the same one only once.
+    const lines = [
+      ...new Set(
+        enchant
+          .map((l) => l.trim())
+          .filter(Boolean)
+          .map((l) => (d.enchantmentById.has(l) ? l : (d.enchantments.find((e) => fitsTarget(e, target) && e.name.toLowerCase() === l.toLowerCase())?.id ?? l))),
+      ),
+    ];
     return { name, note, itemId, made: { base: name.trim(), ...(lines.length ? { enchantments: lines } : {}) } };
   };
   const spellsList = `${listId}-spells`;
@@ -282,14 +294,13 @@ function GearForm({
             [0, 1, 2]
               .filter((i) => i === 0 || enchant[i - 1].trim() || enchant[i].trim())
               .map((i) => (
-                <input
+                <EnchantField
                   key={i}
-                  className="input"
-                  aria-label={`Enchantment ${i + 1}`}
-                  placeholder="Enchantment"
-                  maxLength={120}
+                  n={i + 1}
                   value={enchant[i]}
-                  onChange={(e) => setEnchant((x) => x.map((l, n) => (n === i ? e.target.value : l)))}
+                  target={target}
+                  taken={enchant.filter((l, k) => k !== i && d.enchantmentById.has(l))}
+                  onChange={(v) => setEnchant((x) => x.map((l, k) => (k === i ? v : l)))}
                 />
               ))
           ))}
@@ -303,5 +314,95 @@ function GearForm({
         </button>
       </span>
     </form>
+  );
+}
+
+/**
+ * One enchantment line (WO-54): a search of the game's enchantments that fit the item. Picking one
+ * saves its id; anything else typed stays as text, for what the list doesn't have. One already on
+ * the item isn't offered again.
+ */
+function EnchantField({
+  n,
+  value,
+  target,
+  taken,
+  onChange,
+}: {
+  n: number;
+  value: string;
+  target: ReturnType<typeof enchantTarget>;
+  taken: string[];
+  onChange: (v: string) => void;
+}) {
+  const d = useGameData();
+  const listId = useId();
+  const picked = d.enchantmentById.get(value);
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+  const found = open && !picked ? searchEnchantments(d, target, value, 8).filter((e) => !taken.includes(e.id)) : [];
+  const choose = (e: Enchantment) => {
+    onChange(e.id);
+    setOpen(false);
+  };
+  return (
+    <span className={styles.gearSearch}>
+      <input
+        className="input"
+        role="combobox"
+        aria-label={`Enchantment ${n}`}
+        aria-autocomplete="list"
+        aria-expanded={found.length > 0}
+        aria-controls={listId}
+        aria-activedescendant={found.length ? `${listId}-${index}` : undefined}
+        placeholder="Search enchantments, or type one"
+        maxLength={120}
+        autoComplete="off"
+        value={picked ? picked.name : value}
+        onFocus={() => setOpen(true)}
+        onBlur={() => setOpen(false)}
+        onChange={(e) => {
+          onChange(e.target.value);
+          setIndex(0);
+          setOpen(true);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+            if (!found.length) return;
+            e.preventDefault();
+            setIndex((i) => (i + (e.key === "ArrowDown" ? 1 : -1) + found.length) % found.length);
+          } else if (e.key === "Escape" && found.length) {
+            // Esc closes this list first, not the whole form.
+            e.stopPropagation();
+            setOpen(false);
+          } else if (e.key === "Enter" && open && !picked) {
+            // Enter picks the one highlighted, or keeps what's typed as text.
+            e.preventDefault();
+            if (found.length) choose(found[Math.min(index, found.length - 1)]);
+            else setOpen(false);
+          }
+        }}
+      />
+      {found.length > 0 && (
+        <ul role="listbox" id={listId} aria-label="Enchantments" className={styles.gearOptions}>
+          {found.map((e, k) => (
+            <li
+              key={e.id}
+              id={`${listId}-${k}`}
+              role="option"
+              aria-selected={k === index}
+              className={styles.gearOption}
+              onMouseDown={(ev) => {
+                ev.preventDefault();
+                choose(e);
+              }}
+            >
+              <span className={styles.gearOptionName}>{e.name}</span>
+              <span className={styles.gearOptionStats}>{e.text}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </span>
   );
 }

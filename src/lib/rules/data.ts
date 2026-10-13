@@ -159,6 +159,23 @@ export interface Powers {
   shouts: Shout[];
 }
 
+/** An enchantment a player can learn (WO-54), from enchantments.json. The game's name and text. */
+export interface Enchantment {
+  id: string;
+  name: string;
+  on: "weapon" | "armor";
+  /** The game's text with the record's (base) numbers. */
+  text: string;
+  /** For armour: the planner's gear slots it can go on. Empty for a weapon enchantment. */
+  slots: string[];
+  /** "Disenchant: Ring of Eminent Health, ... and 100 more", or "The Arcane Experimentation power". */
+  learned: string;
+  /** When a perk's power is the only way to learn it: those perks' ids. */
+  powers?: string[];
+  /** Other records with this name: a line that saved one of their ids finds this one. */
+  sameAs?: string[];
+}
+
 export interface VersionSource {
   rules: Rules;
   skillGroups: SkillGroup[];
@@ -180,6 +197,8 @@ export interface VersionSource {
   spells?: { spells: Spell[]; spellPicks: SpellPicks };
   /** Abilities and shouts (WO-51); a version without them has none. */
   powers?: Powers;
+  /** Enchantments a player can learn (WO-54); a version without them has none. */
+  enchantments?: Enchantment[];
 }
 
 /** Everything the planner knows about one LoreRim version. */
@@ -216,6 +235,8 @@ export interface GameData {
   abilityFromPerks: Record<string, string[]>;
   shouts: Shout[];
   shoutById: Map<string, Shout>;
+  enchantments: Enchantment[];
+  enchantmentById: Map<string, Enchantment>;
   skillPointCost(current: number): number;
   maxSkillAt(level: number): number;
   destinyPointsAt(level: number): number;
@@ -276,6 +297,8 @@ function build(version: GameVersion, src0: VersionSource): GameData {
     abilityFromPerks: src.powers?.fromPerks ?? {},
     shouts: src.powers?.shouts ?? [],
     shoutById: new Map((src.powers?.shouts ?? []).map((x) => [x.id, x])),
+    enchantments: src.enchantments ?? [],
+    enchantmentById: new Map((src.enchantments ?? []).flatMap((e) => [...(e.sameAs ?? []).map((id) => [id, e] as const), [e.id, e] as const])),
     skillPointCost: (current) => skillPointCost(src.rules, current),
     maxSkillAt: (level) => maxSkillAt(src.rules, level),
     destinyPointsAt: (level) => destinyPointsAt(src.rules, level),

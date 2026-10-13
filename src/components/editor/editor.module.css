@@ -894,6 +894,18 @@
   flex: 1 1 220px;
   max-width: 340px;
 }
+/* An enchantment line's search (WO-54): the field grows like the others; its list is wider. */
+.gearMade .gearSearch {
+  flex: 1 1 240px;
+  max-width: 360px;
+}
+.gearMade .gearSearch .input {
+  width: 100%;
+  max-width: none;
+}
+.gearMade .gearOptions {
+  min-width: min(380px, calc(100vw - 32px));
+}
 .gearMadeCheck {
   display: inline-flex;
   align-items: center;
@@ -902,4 +914,9 @@
 }
 .gearMadeCheck input {
   accent-color: var(--ember);
+}
+@media (max-width: 640px) {
+  .gearMade .gearOptions {
+    min-width: 0;
+  }
 }
