@@ -2195,6 +2195,38 @@ The file also has `runestone`: 9 powers from Runemaster Magic. Those are tempora
 
 ---
 
+## WO-55  Racial abilities (13 Oct 2026)
+
+The game files say that in LoreRim only one racial power is left: Khajiit **Night Eye** (`Skyrim.esm:0AA01D`, a lesser power). Requiem's Races Redone turned every other racial power into a passive ability (Highborn, Histskin, Dragonskin, Voice of the Emperor, Adrenaline Rush and so on). Berserker Rage, Command Animal and Ancestor's Wrath are gone from the races.
+
+**The extract is done** (commit 2006f24): `powers_raw.json` has a `races` section. For each of the 10 races it gives the race's powers and passives with `id`, `name`, `kind` (`Power`, `Lesser power` or `Ability`) and the game's `text`: 30 in all. The Tools of Kagrenac race copies and Requiem's engine abilities (No Natural Health Regeneration, Mass Effect; `overrides.json`, `powers` -> `raceSkipEdids`) are left out. That commit also fixed `powers.py` reading `skipNames` as patterns; `powers.json` comes out the same.
+
+1. **build.py** writes `fromRaces` into `powers.json`: race name (as in `races.json`) -> `{ powers: [ids], passives: [{ id, name, text }] }`.
+   - A race's power is also an entry in `abilities`, like a perk's.
+   - A passive isn't in `abilities`: it isn't something you use.
+2. **The Night Eye bug.** WO-51's dedupe keeps one ability per name and kind, so Ordinator's Night Eye (`Ordinator - Perks of Skyrim.esp:0BC4F9`) replaces the Khajiit one.
+   - A record a race grants always survives the dedupe, the same way a perk-linked record wins today.
+   - When two kept records share a name, both stay; the race's is marked by `fromRaces`, not renamed.
+   - Don't dedupe by text: Jeff found that brings back about 17 near-duplicates (Vigilant weapon-art tiers, Walking Disaster variants).
+3. **In a build, a race's powers are automatic from level 1**, like a perk's ability:
+   - Night Eye shows in a Khajiit build's Abilities row at level 1 as `from the Khajiit race`, in the editor and on the build page, with the same chip and tooltip as a perk's ability.
+   - Adding it by hand raises `ability-repeat`: `Night Eye comes from the Khajiit race.`
+   - In the add-ability search, Ordinator's Night Eye stays and can be picked as usual. The Khajiit one isn't offered: a Khajiit already has it, and no other race can get it.
+   - A build that changes race (Set up) loses the old race's powers and gains the new one's. Nothing saved changes, since they're never stored in the plan.
+4. **A race's passives show where the race is described,** in the game's words:
+   - **Set up's race cards:** below the card's numbers, each passive's name in bold and its text. They wrap to the card's width, with no narrow measure (`docs/design-rules.md`).
+   - **The build page's about bar:** the race's tooltip lists the passives the same way, after what it shows today.
+   - They aren't in the Abilities row (that row is for abilities you use) and don't change any of the planner's numbers.
+
+### Done when
+- [ ] `npm run test:gamedata`: `fromRaces` has all 10 races; Khajiit's powers are `[Skyrim.esm:0AA01D]`; Altmer's passives are Weakness to Elements and Highborn; both Night Eye records are in `abilities`.
+- [ ] Unit tests: a Khajiit build has Night Eye at level 1 `from the Khajiit race`; adding it by hand gives `ability-repeat`; a Nord build has no race power; the search offers Ordinator's Night Eye to a Nord and not the Khajiit one.
+- [ ] e2e: the shared page of a Khajiit build shows Night Eye in Abilities at level 1; an Altmer's race tooltip in the about bar lists Highborn and Weakness to Elements.
+- [ ] Screenshots: Set up's race step at 1440 and 390 with the passives on the cards; the about bar's race tooltip; a Khajiit level 1 Abilities row.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
