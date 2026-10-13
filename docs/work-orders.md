@@ -2257,6 +2257,174 @@ From the builds made so far (Iriel, Azrem, Pure Mage): from about level 10 on, m
 
 ---
 
+## WO-57  Small fixes from Dave's 13 Oct review
+
+Each was checked on staging on 13 Oct. None needs a design.
+
+1. **Pickers show a list before you type.** Today the Add spell, Add ability and Add shout searches show nothing until something is typed (`spell-block.tsx` and `powers-block.tsx` return `[]` for an empty search).
+   - On focus with an empty search, the list opens:
+     - shouts: all of them, A to Z;
+     - abilities: all of them, A to Z;
+     - spells: the spells of the schools this build has perks in by this level, by tier and then A to Z; with no school perks, A to Z. At most 50, then a muted last row `Search for the rest`.
+   - Typing filters as today.
+   - The gear and enchantment pickers do the same if they don't already.
+2. **Every option highlights under the mouse.** Spell, ability and shout options only highlight from the keyboard (`aria-selected`); gear's have `:hover`. In every listbox in the editor and the guide editor, moving the mouse over an option makes it the highlighted one, so the mouse and keys share one highlight and Enter picks what's lit.
+3. **Tooltip on the Main spell star** (`spell-block.tsx`, the ★ button). Use the `Tooltip` component: `Main spell: the spells this build casts most, shown first in its Spells section. Up to 8.` When the star is disabled because 8 are starred: `8 main spells already. Unstar one first.`
+4. **Tooltip on the Oghma Infinium** (the label in the extras form and on the added row in `editor.tsx`): `Septimus Signus' reward in LoreRim. Read once: six skills of your choice go up 5, up to 100, and Hermaeus Mora gives 3 perk points.`
+5. **Tab switches leave the contents rail** (`build-view.tsx`, the `railItems`). Remove the `Guide` entry from the Levels tab's rail, and the `Levels` entry from the Guide tab's rail. The rail lists only the sections of the tab you're on; the tabs switch tabs.
+6. **No line between cover and card body on hover** (home page and Browse, `build-card.module.css`). On hover a thin seam shows where the cover band meets the card body: the card's 3px lift with the cover's 1.04 zoom leaves a sub-pixel gap. Fix it so nothing shows at 1x or 2x zoom (for example, let the band's fade overlap the body by 1px, or round the lift). Check a card with a cover and one without.
+7. **Tags are a heading** (the Details step, `TagPicker`). `Tags` is a small legend today and easy to miss above 20-odd chips.
+   - Make it a heading the size of the step's other section headings, with `4 of 5 chosen` beside it.
+   - Put a rule above it so the chips read as their own section.
+   - The group names (Weapons, Armor, Magic, Way of play) stay small.
+8. **Repeat where you add the level.** Dave looked for "copy from previous level" at the foot of the level, by `Continue to level N`. It's at the top of the skills column today, so he didn't see it.
+   - In the footer bar, next to `Continue to level N`, add `Continue and repeat`. It adds level N and runs `repeatLevel` on it from level N-1 (WO-56), with its didn't-fit line and Undo as today.
+   - It shows when the Repeat button would show on the new level, so from level 3 on.
+   - The Repeat button at the top stays.
+
+### Done when
+- [ ] e2e: on a test build, focus Add shout with nothing typed: the list shows the shouts; hovering one highlights it; Enter adds it.
+- [ ] e2e: focus Add spell at a level with Novice Destruction: the list starts with Destruction spells.
+- [ ] e2e: on level 4 of a test build, `Continue and repeat` makes level 5 with level 4's attribute and skill points.
+- [ ] The star and Oghma tooltips show on hover and on keyboard focus.
+- [ ] The contents rail (1600 wide) on the Levels tab has no `Guide` entry, and on the Guide tab no `Levels` entry.
+- [ ] Screenshots: a hovered card at 1440 (zoomed in on the cover edge), the Details step's Tags heading at 1440 and 390, the open shout list, and the footer with both buttons.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-58  Set up: clear steps, a Deity step, races folded (13 Oct 2026; build once Dave has OK'd the canvas)
+
+Canvas: `SetupRace.dc.html` and `SetupDeity.dc.html` (row "Proposal: set up, clearer steps").
+
+1. **Steps show done, now, next or a problem** (the left rail in `wizard.tsx`). Today a finished step looks like one not started.
+   - **Done and valid:** the diamond fills Stamina green with a check; the name in body white; its summary under it.
+   - **Now:** ember diamond with its number, as today.
+   - **Not started:** outlined diamond, muted.
+   - **A problem:** a Health red diamond with `!`, and the problem in a few words as its summary.
+   - What makes each step valid:
+     - Race: a race is chosen.
+     - Birthsign: a birthsign is chosen.
+     - Skills: 3 majors and 6 minors.
+     - Traits: every chosen trait that needs a choice has one (Focused Combat's skill, Master of One's skill). No traits is valid.
+     - Deity: always (None is a choice).
+     - Mode and start: a game mode and a start are chosen, and the start's option if it has one.
+     - Details: a name.
+   - The problem lines come from the same checks, e.g. `Focused Combat needs a skill`, `Choose 2 more minors`.
+2. **Deity gets its own step**, after Traits and before Mode and start, so 7 steps: Race, Birthsign, Skills, Traits, Deity, Mode and start, Details.
+   - **The grid:** each god is a card with its 32px icon (`DeityIcon`) and name.
+     - Grouped as the select is today: `Offered to a <race> at the start`, then `Any other god, at a shrine`.
+     - `None` comes first in the first group.
+   - **Choosing:** click a card to choose it. The chosen card gets the ember border, as race cards do.
+   - **The chosen god's text:** a panel beside the grid shows it in the game's words (`deity-text.json`): Follower, Devotee and Tenets, as the Deity field shows them today. At 390 wide the panel goes under the grid.
+   - **Mode and start** loses its Deity field. Its rail summary drops the deity.
+   - **Old links:** `?step=mode` still opens Mode and start, and saved drafts keep their step (`src/lib/builds/draft.ts`).
+3. **Race cards fold their long text** (Race step).
+   - **Each card shows** the icon, name, the +15 and +10 skills, Health, Magicka and Stamina, and the racial abilities' names as small tags (WO-55's `fromRaces`).
+   - **A tag's text:** hovering a tag, or focusing it, shows that ability's text in a tooltip.
+   - **The chosen race, in full:** a panel under the grid lists every ability with its full text, once.
+   - The cards are about half today's height, so all ten fit without scrolling at 1440.
+
+### Done when
+- [ ] Unit test for the step checks: each step valid and invalid, with the problem line.
+- [ ] e2e: create a build through all 7 steps; choosing Mephala on the Deity step saves `deity: "Mephala"`; the rail shows every step done at the end.
+- [ ] e2e: an existing build with a deity opens on the Deity step with it chosen; `?step=mode` opens Mode and start.
+- [ ] Screenshots at 1440 and 390: the Race step, the Deity step, and the rail with one step showing a problem. Compare with the canvas.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-59  Taking a perk: the card by the star, and a moment when it's taken (13 Oct 2026; build once Dave has OK'd the canvas)
+
+Canvas: `PerkConfirm.dc.html` (row "Proposal: tabs and taking a perk"). Today clicking a star opens the perk's card over the skills column, far from the tree, and Confirm just closes it.
+
+1. **The card opens beside the star that was clicked**, inside the tree's frame.
+   - It sits to the star's right, with a small pointer to it. Near the right edge it goes to the left instead, and near the bottom it goes above.
+   - It holds the name, the game's text (as the card has it today), and `Confirm` and `Cancel`.
+   - At 390 wide it stays as a sheet at the bottom of the screen, as now.
+   - Esc and Cancel close it. Focus goes to Confirm when it opens and back to the star when it closes.
+2. **When a perk is taken:**
+   - the star fills ember with a short pop (scale 0.6 to 1.25 to 1, about 300ms);
+   - eight small pixel sparks (brass highlight `#ffe3a3`, 4px squares) fly out about 30px and fade, about 700ms;
+   - its line to the perk before it turns solid ember;
+   - the level's `Perk points` number flashes ember once and counts down;
+   - the skill's perk count on its chip goes up;
+   - a line shows at the top of the tree frame: `<Perk> taken. N perk points left.` with `Undo`, until the next change or 6 seconds.
+   - With `prefers-reduced-motion`, there's no pop or sparks: the star just fills and the line shows.
+   - Removing a perk gets no animation.
+3. No glows or shadows (design rules); the sparks are square pixels in the icon palette.
+
+### Done when
+- [ ] e2e: click a ring on a test build: the card is inside the tree frame, next to the star; Confirm takes the perk, the line shows, Undo takes it back.
+- [ ] The card stays inside the frame for a star at the far right and one at the top.
+- [ ] Screenshots at 1440 (card open, and just after Confirm) and 390 (the sheet).
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-60  Levels and Guide tabs you can't miss (13 Oct 2026; build once Dave has OK'd the canvas)
+
+Canvas: `TabsIcons.dc.html`. The two tabs on the build page are plain text today and easy to miss.
+
+1. **New pixel icons** in `scripts/icons/pixels.py`, by its rules: `tab-levels` (a ladder) and `tab-guide` (an open book with an ember ribbon). The canvas has a first draw of each; redraw them properly in the script.
+2. **The tabs become folder tabs:**
+   - each is a box with its 32px icon, the name at about 26px, and its line under it (`Levels 1 to 50`, `1 min read`), at least 210px wide;
+   - the open tab joins the panel below it (same fill, no line between them) with a 3px ember line along its top and an ember name;
+   - the other tab is darker with a muted name and icon, and brightens on hover.
+3. **In the pinned bar** once the tabs scroll away: the same two, small (16px icon and name), the open one underlined in ember.
+4. A build with no guide has no tabs, as today.
+
+### Done when
+- [ ] Screenshots of both tab states at 1440 and 390, and the pinned bar after scrolling.
+- [ ] Keyboard: arrow keys move between the tabs, as they do now.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-61  Pip, the first-time guide (13 Oct 2026; build once Dave has OK'd the canvas and Pip)
+
+Canvas: `TourReader.dc.html` and `TourAuthor.dc.html` (row "Proposal: Pip, the first-time guide"). Both are clickable on the canvas, so the copy can be read stop by stop.
+
+Pip is the planner's own character: a small skeever scribe with a quill and scroll, in the icon palette. He's original, not any game's character.
+
+The design rules forbid how-it-works copy on screens. The tour is the one exception: it shows once, and only then.
+
+1. **Pip, the art.** Draw Pip in `scripts/icons/pixels.py` at 24×24 (the canvas has a first draw), by the icon rules: shared outline, light from the top left, the planner's palette. Shown at 72px (3×), pixelated.
+2. **How a stop looks.**
+   - The page dims (`rgba(6,8,11,.74)`) except the part being shown, which gets a 2px ember outline and is scrolled into view.
+   - Pip's card sits beside it: Pip, a short title, one or two sentences, `N of 4`, `Skip` and `Next` (`Done` on the last).
+   - The card has a brass border, like the key panels.
+   - At 390 wide the card docks to the bottom of the screen.
+3. **The reader's tour** runs on the first build page someone opens. It opens with a card: `First time here?` / `I'm Pip. Four quick stops and you'll know your way around a build.` with `Show me` and `No thanks`. The four stops:
+   1. The level row: `Pick a level to see what was taken there, or step through with the arrows.`
+   2. The level card: `Perks, gear and spells on the left, the author's note on the right.`
+   3. Perks: `Every tree as it stands at this level. Open a skill to see its stars.`
+   4. The Guide tab (only when the build has a guide): `The author's write-up. Read it first if you want the story before the numbers.`
+4. **The author's tour** runs the first time someone lands on level 1 of a build they just made. It opens with `Your build is saved` / `Now for level 1. I'll show you the four things you'll use on every level.` with `Show me` and `Later`. The four stops:
+   1. The points row: `What this level gives you. Anything you don't spend carries on to the next level.`
+   2. Skills and the tree: `Pick a skill, then click a ring in its tree and Confirm. Rings are the perks you can take now.`
+   3. The note: `Tell readers what to do at this level: where to go, what to buy, what to watch for.`
+   4. The footer: `Continue when the level is done. From level 3 on, Repeat copies the level before.`
+5. **Once only.**
+   - Each tour remembers it was finished, skipped or declined in `localStorage` (`planner.tour.reader`, `planner.tour.author`), with reads and writes in try/catch.
+   - With storage blocked, the tour simply doesn't show again that visit.
+   - `Later` asks again next time; `No thanks` and `Skip` don't.
+   - A `Show me around` item in the account menu and the site footer restarts the tour for the page you're on.
+6. **Doesn't get in the way.**
+   - Esc skips.
+   - Focus moves into Pip's card and goes back where it was at the end.
+   - Clicks on the dimmed page do nothing.
+   - The e2e tests start with both tours marked done, so existing tests are unchanged.
+
+### Done when
+- [ ] e2e: a fresh browser opening a build sees the welcome; `Show me` goes through 4 stops; reloading doesn't show it again; `Show me around` restarts it.
+- [ ] e2e: creating a build lands on level 1 with the author's welcome; `Later` shows it again on the next visit, `Skip` doesn't.
+- [ ] e2e: a build without a guide has 3 reader stops, and the card says `N of 3`.
+- [ ] Screenshots of each stop at 1440 and 390, and Pip at 72px on the dark ground.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
