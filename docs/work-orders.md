@@ -2437,6 +2437,46 @@ The design rules forbid how-it-works copy on screens. The tour is the one except
 
 ---
 
+## WO-62  Editor: one skill list, the tree pinned beside it (13 Oct 2026)
+
+Canvas: `EditorSticky.dc.html` (desktop, clickable, scroll it) and `EditorStickyPhone.dc.html` (390 wide). Dave: "way better".
+
+Today every skill shows twice in the editor: in the left list, where its points are spent, and in the chips above the tree, which pick the tree. Clicking a name in the list already opens its tree (`editor.tsx`, `skillName`). The chips go; the list does both jobs.
+
+1. **The chips go from the editor.**
+   - Remove `TreeTabs` and the Destiny box above the tree in `editor.tsx`.
+   - The build page keeps its chips: readers have no skill list.
+2. **The skill list picks the tree.**
+   - The section heading becomes `Skills and perks`, with `Up to +5 each, max skill N` and its tooltip as now.
+   - A row's name opens its tree, as today. The open row gets an ember border and a faint ember wash, with its name in light ember.
+   - Each row shows the perks taken in that tree, by this level, as the chips' orange count, after the name. Nothing shows when it's 0.
+   - The stepper and the value stay where they are.
+3. **Destiny is the last row**, under Mage, set off by a rule, in gold: the Destiny icon, `Destiny`, and `N left` while points remain. It opens the Destiny constellation in the tree panel.
+4. **The tree stays in view** (900 wide and up).
+   - The tree panel is `position: sticky`, just under the pinned edit bar.
+   - Its height is the window's less the bars, as `treeHeight` works out now, without the chips.
+   - Scrolling the list leaves the tree where it is. Clicking another row swaps the tree in place, with no scroll jump.
+   - The panel's header shows the open tree's icon, name and skill value, then Tree and List and the zoom buttons.
+   - The perk card (WO-59) opens inside the panel, so it stays in view too.
+   - The level's other sections (gear, spells, notes) follow below, as now; the sticking stops where the two columns end.
+5. **Phones** (under 900 wide), as on `EditorStickyPhone.dc.html`:
+   - The list is the page.
+   - Tapping a skill's name opens its perks in a sheet from the bottom, about 85% of the screen tall, with the tree's name and value, a close button and Tree and List.
+   - The sheet opens on List: perks the build can take now first, then taken, then not yet, each with its skill level and rank. The Tree view stays one tap away.
+   - Taking a perk works from either view.
+   - Esc, the close button or a tap above the sheet closes it; focus goes back to the row.
+   - The steppers stay on the rows, so points can be spent without opening anything.
+
+### Done when
+- [ ] e2e: on a test build, the editor has no tree chips. Clicking `Sneak` in the list opens the Sneak tree, and its row is marked.
+- [ ] e2e at 1440×900: scroll the page to the Mage rows; the tree panel's top is still on screen under the bar. Click `Illusion`; the Illusion tree shows and the scroll position hasn't changed.
+- [ ] A row's count matches the perks taken in that tree; the Destiny row says how many points are left and opens the Destiny tree.
+- [ ] e2e at 390: tapping `Block` opens the sheet on List; taking a perk there takes it; closing it returns focus to the Block row.
+- [ ] Screenshots at 1440 (top of the list, and scrolled to Mage) and at 390 (the list, and the sheet in both views).
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
