@@ -1,0 +1,217 @@
+/* The FAQ page (WO-63). Body text runs the main column's width: no narrow measure. */
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 40px 0 28px;
+  border-bottom: 1px solid var(--rule);
+}
+.title {
+  margin: 0;
+}
+.byline {
+  margin: 0;
+  color: var(--muted);
+}
+.layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+  padding: 28px 0 64px;
+}
+/* The contents, sticky beside the questions. */
+.contents {
+  position: sticky;
+  top: 24px;
+}
+.contentsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.contentsList a {
+  display: block;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--soft);
+  text-decoration: none;
+}
+.contentsList a:hover {
+  color: var(--ember);
+}
+.phoneContents {
+  display: none;
+}
+.main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+.filter .input {
+  width: 100%;
+  min-height: 44px;
+}
+.none {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  scroll-margin-top: 24px;
+}
+.section[hidden] {
+  display: none;
+}
+/* Section names in the title face, as section labels elsewhere. */
+.sectionTitle {
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.question {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-margin-top: 24px;
+}
+/* Questions in the body face at a heading size, white. */
+.q {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--text);
+}
+/* The question's own link: shown on hover or focus. */
+.link {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 28px;
+  padding: 0 6px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  opacity: 0;
+}
+.question:hover .link,
+.link:focus-visible,
+.linkCopied {
+  opacity: 1;
+}
+.link:hover {
+  color: var(--ember);
+}
+.copied {
+  font-size: 13px;
+  color: var(--ember);
+}
+@media (hover: none) {
+  .link {
+    opacity: 1;
+  }
+}
+/* Answers: body text, lists, code and tables in the site's own look. */
+.answer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--soft);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.answer :global(p),
+.answer :global(ul),
+.answer :global(ol) {
+  margin: 0;
+}
+.answer :global(ul),
+.answer :global(ol) {
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.answer :global(strong) {
+  color: var(--text);
+}
+.answer :global(code) {
+  padding: 1px 6px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--text);
+}
+.answer :global(table) {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+  font-size: 15px;
+}
+.answer :global(th),
+.answer :global(td) {
+  padding: 8px 12px;
+  border: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+.answer :global(th) {
+  color: var(--text);
+  font-weight: 600;
+}
+.answer :global(a) {
+  color: var(--ember);
+}
+@media (max-width: 899px) {
+  /* Phones: the contents are a Sections button above the questions. */
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .contents {
+    display: none;
+  }
+  .phoneContents {
+    display: block;
+  }
+  .phoneContents summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  .phoneContents summary::-webkit-details-marker {
+    display: none;
+  }
+  .phoneContents[open] summary {
+    margin-bottom: 8px;
+  }
+  .answer :global(table) {
+    display: block;
+    overflow-x: auto;
+  }
+}

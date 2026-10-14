@@ -2513,16 +2513,16 @@ Players will paste answers into Discord, so every question needs its own link.
 - Add FAQPage structured data (JSON-LD) built from the same file: one `Question` per `###`, its answer as plain text.
 
 ### Done when
-- [ ] `/faq` shows all 9 sections and 44 questions from `content/faq/gameplay.md`, with tables, lists and code rendered.
-- [ ] A test (unit or e2e) counts sections and questions in the rendered page against the file, so the two can't drift.
-- [ ] Editing a question in the file and rebuilding changes the page with no other change.
-- [ ] e2e: open `/faq#why-cant-i-fast-travel`; that question is in view below the header. Copy its link; the clipboard holds the full URL.
-- [ ] e2e: type `vampire` in the filter; only matching questions remain (at least `Do vampires get thirsty?` and `Playing as a vampire`), and empty sections are hidden. Clear brings all 44 back.
-- [ ] The page reads in full with JavaScript disabled (filter and copy buttons may be absent).
+- [x] `/faq` shows all 9 sections and 44 questions from `content/faq/gameplay.md`, with tables, lists and code rendered.
+- [x] A test (unit or e2e) counts sections and questions in the rendered page against the file, so the two can't drift.
+- [x] Editing a question in the file and rebuilding changes the page with no other change.
+- [x] e2e: open `/faq#why-cant-i-fast-travel`; that question is in view below the header. Copy its link; the clipboard holds the full URL.
+- [x] e2e: type `vampire` in the filter; only matching questions remain (at least `Do vampires get thirsty?` and `Playing as a vampire`), and empty sections are hidden. Clear brings all 44 back.
+- [x] The page reads in full with JavaScript disabled (filter and copy buttons may be absent).
 - [ ] The JSON-LD passes Google's Rich Results Test (or schema.org validator) with 44 questions.
-- [ ] Footer link `FAQ` on every site page.
-- [ ] Screenshots at 1440 (top, and scrolled to the Smithing book table) and at 390 (top with `Sections` open, and a table), checked against `docs/design-rules.md`: no eyebrows, no middle dots, no em dashes in the page's own copy.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Footer link `FAQ` on every site page.
+- [x] Screenshots at 1440 (top, and scrolled to the Smithing book table) and at 390 (top with `Sections` open, and a table), checked against `docs/design-rules.md`: no eyebrows, no middle dots, no em dashes in the page's own copy.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 
