@@ -2692,6 +2692,57 @@ Dave's verdict on `/faq`: it reads like a technical document, and it answers que
 
 ---
 
+## WO-67  Auto level, third pass: easy to find, never stuck, a plain tour (14 Oct 2026)
+
+Dave's review of WO-65 on staging: better, but with these changes. Canvas: `StartChoice.dc.html`, in the row "Proposal: Auto level".
+
+1. **Offer it where a new build starts.**
+   - After Set up creates a new build (`wizard.tsx`, the `createBuild` success that pushes to `/edit` today), the author lands on a choice first: `How do you want to build it?` with two cards.
+     - `Level by level`: `Start at level 1 and choose every attribute, skill and perk yourself.` with `Start at level 1`.
+     - `Auto level`: `Pick a level and the perks you want. Every level in between is filled in for you, then you add the details.` with `Auto level`. It carries Tapps' pointing pose.
+   - Either card goes to the editor: level 1, or the Auto level page.
+   - The author's tour (WO-61) starts on level 1 only after `Level by level`.
+   - On a fresh build's level 1, `Auto level` also moves from the footer up into the level bar, next to the level stepper, as a normal button. The footer one stays.
+   - Editing an existing build's Set up doesn't show the choice.
+2. **Level to reach** (the settings line):
+   - Chips `10`, `20`, `30`, `50` and `Max`, plus the number field. `Max` is `MAX_LEVELS` (100), the most the planner allows.
+   - **Never below what the goals need.** The lowest level that every goal can make, worked out the way the preview's "at the earliest" is today, is a floor.
+     - Chips and numbers under it are disabled, with the tooltip `Your goals need level 25.`
+     - Typing a lower number snaps back to the floor.
+3. **Picking a perk the level can't reach raises the level.** It never leaves a goal that can't be met.
+   - The level jumps to the floor, with a line in the settings bar until the next change: `Level raised to 25 for Expert Destruction.` and `Undo`, which puts the level back and drops that goal.
+   - Dropping goals doesn't lower the level; the author does that.
+   - With this, `Not by N` goes from the preview, and Auto level is never disabled for a level problem. (Exclusions, from WO-65, still block.)
+4. **Attributes: always the three numbers.**
+   - Health, Magicka and Stamina counters show at all times, adding up to N−1.
+   - The chips `Health first`, `Magicka first`, `Stamina first` and `Even` fill in the numbers as WO-65 says. The chip whose numbers are showing is lit; after a hand edit, none is.
+   - `Custom` goes.
+   - Order of level-ups: the attribute with the most goes first, then the others in turn; with a tie, in turn from the start.
+   - Changing the level keeps the shares and rounds, so the total still fits.
+5. **Labels.**
+   - `Comes along` becomes `Auto selected` everywhere: the tree legend, the preview's `with …` lines (`Auto selected: Novice Destruction, Apprentice Destruction`), and the perk count line (`N perks, with the auto selected ones`). The legend's `Auto selected` has the tooltip `Needed before a perk you picked, so it's taken for you.`
+   - `Left over at level N: …` becomes `Not spent by level N: 450 skill points and 21 perk points.`, with an "i": `Points the goals didn't need. They stay banked; pick more perks to use them.`
+6. **Tapps gives a tour instead of a joke** (WO-61's tour, kind `autolevel`, pointing pose, plain words). It replaces WO-64's card.
+   1. No highlight, the welcome card: `Auto level` / `Fast-tracks a build. It fills in attributes, skills and perks for every level up to the one you pick.` with `Show me` and `Skip`.
+   2. The level chips: `Pick the level to reach.`
+   3. The attribute counters: `Set how many level-ups go to Health, Magicka and Stamina. The presets fill them in; change any number.`
+   4. The tree: `Pick a perk you want. The perks it needs first are selected for you.`
+   5. The skill list: `Each skill is raised to what your perks need.`
+   6. `Auto level to N`: `When you're done, this saves every level. Then add notes, gear and spells to each one.` with `Done`.
+   - Once only, as now; `Show me around` restarts it.
+
+### Done when
+- [ ] e2e: creating a build lands on the choice. `Auto level` opens the Auto level page; another new build's `Level by level` opens level 1 with the author's tour.
+- [ ] e2e: on the Auto level page at level 10, click Expert Destruction. The level becomes 25 with the `Level raised` line, the chips 10 and 20 are disabled, and `Undo` puts back 10 without the goal.
+- [ ] Unit test for the floor: Expert Destruction alone on the Altmer test build gives 25, the same as the preview's earliest.
+- [ ] The attribute counters always show. `Magicka first` fills them; a hand edit unlights the chip; changing the level keeps the total at N−1.
+- [ ] No `Comes along`, `Custom` or `Left over` anywhere in the app.
+- [ ] e2e: a fresh browser on the Auto level page gets the six-stop tour; skipping it doesn't bring it back; `Show me around` does.
+- [ ] Screenshots at 1440 and 390: the choice, the page with the raised-level line, and each tour stop.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
