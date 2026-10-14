@@ -164,7 +164,11 @@ function spots(s: LabelRequest, o: LabelOptions, nameOnly: boolean): PlacedLabel
     // Crowded (the name alone, or a one-line label): staggered up to three rows deep, over a
     // neighbour's label row (WO-73).
     ...(nameOnly || !s.lines[1]
-      ? [1, 2].flatMap((k) => [0, near, -near, shift, -shift].flatMap((dx) => [at("above", s.x - w / 2 + dx, above - k * h), at("below", s.x - w / 2 + dx, below + k * h)]))
+      ? [
+          ...[1, 2].flatMap((k) => [0, near, -near, shift, -shift].flatMap((dx) => [at("above", s.x - w / 2 + dx, above - k * h), at("below", s.x - w / 2 + dx, below + k * h)])),
+          // Beside the star, a row up or down: still touching it (WO-74).
+          ...[-h / 2, h / 2].flatMap((dy) => [at("right", s.x + r + GAP + 2, s.y - h / 2 + dy), at("left", s.x - r - GAP - 2 - w, s.y - h / 2 + dy)]),
+        ]
       : []),
   ];
 }
