@@ -2526,6 +2526,50 @@ Players will paste answers into Discord, so every question needs its own link.
 
 ---
 
+## WO-64  Fill to a level, on a fresh build (13 Oct 2026)
+
+Canvas: `FillLevels.dc.html` (row "Proposal: fill to a level"). Its preview numbers are a real run of the rules engine on Jo'Vashar's set up.
+
+Dave's idea: say where a character should be at level N and have the planner fill every level up to it. It helps with a quick guide, a one-off for a friend, or checking whether something can be reached by a certain level. This order covers fresh builds only (nothing past level 1). Filling the rest of an existing build comes later.
+
+1. **Where it starts.** On a build with only level 1 and nothing chosen past it, the editor's footer offers `Fill to a level` beside `Continue to level 2`. It opens the Fill page; `‹ Level 1` goes back.
+2. **What the author sets** (left column):
+   - **Fill to level:** a number, 2 to the version's top level, with quick picks 10, 20, 30, 50. Default 20.
+   - **Skill targets:** rows of skill, value now, target, and a live status. The rows start as the build's majors at 100 and minors at 50; rows can be added and removed. The order of the rows is the order points go in when there aren't enough for all.
+   - **Perks, in order:** search to add (the same picker as WO-57's), drag to reorder, × to remove. A ranked perk can be added more than once for more ranks. Destiny stars can be added the same way.
+   - **Attributes:** how many level-ups go to Health, Magicka and Stamina, which must add up to N−1 (`29 of 29 level-ups`). `Take first` decides the order: one attribute first, then the rest in turn, or evenly from the start.
+   - The two "i" marks explain the rules in a tooltip: `Targets rise together, one point at a time, as far as each level's points, +5 and max skill allow.` and `Each perk goes at the first level its skill and earlier perks allow.`
+3. **How it fills** (a pure function next to `repeatLevel` in `plan-ops.ts`: `fillToLevel(plan, settings, data)` returns the new plan and a report):
+   - **Attribute:** each level from 2 to N gets its attribute from the order above.
+   - **Skill points:** they go round the targets in row order, one point at a time. A skill is skipped once it hits its target, the level's max skill, or +5 this level, or when the points left don't cover its cost. Points left over bank, as now.
+   - **Perks:** after the skills, the level's perk points take the first perks on the list the rules engine accepts at that level, without new problems.
+   - **Destiny:** points take the listed Destiny stars the same way.
+   - **What's untouched:** level 1, the setup, and everything else on the levels (gear, spells, notes).
+   - **Checked:** the rules engine checks every level, so the result never has a problem the engine would flag.
+   - The canvas run's script is in [docs/sketches/fill-to-level.md](sketches/fill-to-level.md). It's a sketch of exactly this, and it gave Jo'Vashar's numbers with no problems.
+4. **The preview** (right column, sticky) is worked out again on every change, without saving:
+   - Health, Magicka and Stamina at level N.
+   - Each target, from now to its value at N: green when reached, amber when it can't be, with why. The status in its row says `By level 25`, or `80 at most: the max skill at level 30`.
+   - Each perk's level, or why it doesn't fit, e.g. `Not by level 30: needs Two-Handed 100, level 50 at the earliest` or `needs Alteration 75, above the target`.
+   - A strip of levels 1 to N with a dot per perk taken.
+   - Points left over at N, when there are any: `Left over at level 30: 450 skill points and 21 perk points. Raise a target or add perks.`
+5. **Fill.** `Fill levels 2 to N` writes the levels and goes to level N in the editor, with a line: `Filled levels 2 to N.` and `Undo` (back to the fresh build), until the next change. The fill settings are not saved.
+6. **Phones:** the preview goes under the form, with the Fill button pinned at the bottom.
+
+### Done when
+- [ ] Unit tests for `fillToLevel`:
+  - Jo'Vashar's settings from the canvas give the canvas numbers: Health 135, Magicka 150 and Stamina 220 at 30; Evasion 80; Adept Alteration at level 10; Mighty Strike and Expert Alteration unplaced, each with its reason.
+  - The rules engine finds no problems on any filled level.
+  - Attributes add up and follow `Take first`.
+  - A ranked perk listed twice takes two ranks.
+  - Level 1 and the setup are unchanged.
+- [ ] e2e: a fresh test build, `Fill to a level`, set 20 with two targets and three perks. The preview shows them; `Fill levels 2 to 20` makes 20 levels; `Undo` gives back the one-level build.
+- [ ] `Fill to a level` doesn't show on a build with level 2 or later.
+- [ ] Screenshots at 1440 and 390, compared with the canvas.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
@@ -2554,7 +2598,7 @@ Players will paste answers into Discord, so every question needs its own link.
   So the full list of Types is in the files: `AIT_english.txt` has Cloak, Backpack, Scarf, Accessory, Face, Belt, Mantle, Pauldron and more.
 
   Working out each item's Type means doing what Keyword Item Distributor does, since the keywords aren't in the plugins. A first pass that read only the plugins gave wrong answers (robes as Cloak, no scarves). The planner's slots should be a short list picked from these Types; Dave picks which in game.
-- **Perk wishlist:** list the perks you want in order and let the planner place each at the first level it can be taken.
+- **Fill the rest of an existing build** (after WO-64): keep levels 1 to K, fill K+1 to N with the same page.
 - **Destiny target:** pick the Destiny star you're heading for and light the path to it.
 - **Skills over levels:** a small line chart on the shared page of the main skills from level 1 to the last.
 - **Callings:** a field for the build's Calling, once the Callings mod data is in.
