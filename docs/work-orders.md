@@ -2980,6 +2980,8 @@ Dave on staging: better, but "still a lot of work before it's remotely useful". 
 
 That is the one launch blocker: a long build is exactly what the best authors will write.
 
+**Correction (14 Oct, after the build).** Those toolbar numbers were taken while the chat session's Chrome tab sat in the background, where Chrome holds off painting. The toolbar counts until the next paint, so they overstate the delay. Timed on the real Sevari build afterwards, a skill change settled in 33 to 55 ms, a level change in 58 to 97 ms, a perk star in 49 ms and a keystroke in the notes in 7 to 32 ms. Jeff's fixture numbers agree. The speed-ups in this order still stand.
+
 **Where it isn't.** `computeBuild` on a 100-level plan takes about 2 ms. The time goes into rendering: likely the whole editor re-rendering on every change, the rules being re-run many times per render (per skill row, per star, per level mark), every tree node redrawing, and the notes editor saving or re-rendering on each keystroke. Profile before changing anything; don't guess.
 
 1. **A fixture.** Copy the Sevari plan into `src/lib/rules/__fixtures__/` (export it from the staging database read-only, or rebuild it from the build page). Seed it in the e2e database as a 100-level build.
