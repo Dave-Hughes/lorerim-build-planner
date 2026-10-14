@@ -1,5 +1,8 @@
 "use client";
 
+import { stretches, type Stretch } from "@/lib/rules/stretches";
+import type { BuildPlan } from "@/lib/rules/types";
+import { StretchChips } from "./stretch-chips";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { LevelMark } from "@/lib/rules/derive";
 import { Tooltip } from "@/components/ui/tooltip";
@@ -85,6 +88,9 @@ export function LevelStepper({
   slim,
   onStep,
   tip,
+  from,
+  prev,
+  next,
 }: {
   level: number;
   total: number;
@@ -94,21 +100,28 @@ export function LevelStepper({
   onStep?: () => void;
   /** Shown by the stepper: the arrow-key hint. */
   tip?: React.ReactNode;
+  /** Skip ahead (WO-69): where the open stretch starts, and the stretches either side to step to. */
+  from?: number;
+  prev?: number | null;
+  next?: number | null;
 }) {
   const step = (n: number) => {
     onStep?.();
     onChange(n);
   };
+  const before = prev === undefined ? (level > 1 ? level - 1 : null) : prev;
+  const after = next === undefined ? (level < total ? level + 1 : null) : next;
+  const stretch = from !== undefined && from > 1 && from < level;
   return (
     <div className={`${styles.stepper} ${slim ? styles.stepperSlim : ""}`}>
       <Tooltip content="Previous level (←)">
-        <button type="button" className="btn btn-icon" aria-label="Previous level (←)" disabled={level <= 1} onClick={() => step(level - 1)}>
+        <button type="button" className="btn btn-icon" aria-label="Previous level (←)" disabled={before === null} onClick={() => before !== null && step(before)}>
           ‹
         </button>
       </Tooltip>
       {/* Slim (the pinned bar): "LVL 12 / 20", the number in an ember box that flashes when it changes (WO-49). */}
       <span className={styles.viewing}>
-        <span className={styles.viewingWord}>{slim ? "Lvl" : "Level"}</span>
+        <span className={styles.viewingWord}>{stretch ? (slim ? `Levels ${from} to` : `Levels ${from} to`) : slim ? "Lvl" : "Level"}</span>
         {slim ? (
           <span key={level} className={styles.levelBox}>
             {level}
@@ -121,7 +134,7 @@ export function LevelStepper({
         </span>
       </span>
       <Tooltip content="Next level (→)">
-        <button type="button" className="btn btn-icon" aria-label="Next level (→)" disabled={level >= total} onClick={() => step(level + 1)}>
+        <button type="button" className="btn btn-icon" aria-label="Next level (→)" disabled={after === null} onClick={() => after !== null && step(after)}>
           ›
         </button>
       </Tooltip>
@@ -131,7 +144,7 @@ export function LevelStepper({
 }
 
 /** The whole build on one line. Only marks that matter: Destiny, stones, Skill 100 perks, notes. */
-export function LevelRuler({ marks, level, onChange }: { marks: LevelMark[]; level: number; onChange: (level: number) => void }) {
+export function LevelRuler({ marks, level, onChange, spans }: { marks: LevelMark[]; level: number; onChange: (level: number) => void; spans?: Stretch[] }) {
   const total = marks.length;
   const start = windowStart(level, total);
   const size = Math.min(WINDOW, total);
@@ -173,7 +186,18 @@ export function LevelRuler({ marks, level, onChange }: { marks: LevelMark[]; lev
           drag.current = null;
         }}
       >
-        <div data-window="" className={styles.window} style={{ left: `${((start - 1) / total) * 100}%`, width: `${(size / total) * 100}%` }} />
+        {/* A build that skips ahead (WO-69): each stretch is one box over its levels, the open one in ember. */}
+        {spans ? (
+          spans.map((sp) => (
+            <span
+              key={sp.to}
+              className={`${styles.span} ${level >= sp.from && level <= sp.to ? styles.spanOn : ""}`}
+              style={{ left: `${((sp.from - 1) / total) * 100}%`, width: `${((sp.to - sp.from + 1) / total) * 100}%` }}
+            />
+          ))
+        ) : (
+          <div data-window="" className={styles.window} style={{ left: `${((start - 1) / total) * 100}%`, width: `${(size / total) * 100}%` }} />
+        )}
         {marks.map((m) => {
           // The ends always say where the build starts and stops; every fifth level between.
           const five = m.level % 5 === 0 || m.level === 1 || m.level === total;
@@ -438,3 +462,12 @@ export function ArrowTip({ onClose }: { onClose: () => void }) {
   );
 }
 
+/** A build that skips ahead (WO-69): the ruler with a box per stretch, then a chip per stretch. */
+export function StretchBars({ marks, plan, level, onChange }: { marks: LevelMark[]; plan: Pick<BuildPlan, "levels">; level: number; onChange: (level: number) => void }) {
+  return (
+    <div className={styles.stretchBars}>
+      <LevelRuler marks={marks} level={level} onChange={onChange} spans={stretches(plan)} />
+      <StretchChips plan={plan} level={level} onChange={onChange} />
+    </div>
+  );
+}

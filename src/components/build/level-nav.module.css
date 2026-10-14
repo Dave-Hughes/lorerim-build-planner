@@ -491,3 +491,24 @@
 .arrowTipClose:hover {
   color: var(--ember);
 }
+
+/* Skip ahead (WO-69): a stretch's box on the ruler, and the ruler over the chips. */
+.span {
+  position: absolute;
+  top: 18px;
+  height: 20px;
+  border: 1px solid var(--rule-strong);
+  background: rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+  box-sizing: border-box;
+}
+.spanOn {
+  border-color: var(--ember);
+  background: rgba(240, 145, 63, 0.12);
+  z-index: 1;
+}
+.stretchBars {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}

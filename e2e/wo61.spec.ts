@@ -53,8 +53,6 @@ test("a new build lands on level 1 with the author's welcome; Later asks again, 
   await page.getByLabel("Build name").fill("Tapps' Test");
   await page.getByRole("button", { name: "Create build" }).click();
   await page.waitForURL(/\/b\/\w{10}\/edit/);
-  // How to build it (WO-67): the tour goes round level 1 after Level by level.
-  await page.getByRole("button", { name: /^Level by level/ }).click();
   const welcome = page.getByRole("dialog", { name: "Build saved!" });
   await expect(welcome).toBeVisible();
   await welcome.getByRole("button", { name: "Later" }).click();

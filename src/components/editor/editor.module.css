@@ -1087,73 +1087,58 @@
   min-height: 40px;
 }
 
-/* A new build's first question (WO-67, WO-68): two cards, Level by level and Snapshot. */
-.choice {
-  max-width: 1120px;
-  padding-top: 70px;
-  padding-bottom: 70px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+/* Skip ahead (WO-69): a stretch's attribute cards count level-ups; its raises can be typed. */
+.attrCount {
+  cursor: default;
 }
-.choiceTitle {
-  margin: 0;
-  font-family: var(--font-title);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 700;
-  font-size: 44px;
-  line-height: 1;
-}
-.choiceCards {
+.attrStepper {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
+  grid-template-columns: 32px 1fr 32px;
+  align-items: center;
+  border: 1px solid var(--rule-strong);
+  margin-bottom: 10px;
+  text-align: center;
 }
-.choiceCard {
-  border: 1px solid var(--rule);
-  background: var(--panel);
-  padding: 26px 28px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 14px;
-  text-align: left;
-  color: inherit;
+.attrStepper button {
   font: inherit;
+  font-size: 16px;
+  height: 30px;
+  border: 0;
+  background: transparent;
+  color: #c3cdd6;
   cursor: pointer;
 }
-.choiceCard:hover,
-.choiceCard:focus-visible {
-  border-color: var(--ember);
-  background: #1b1712;
+.attrStepper button:hover:not(:disabled) {
+  background: rgba(240, 145, 63, 0.08);
+  color: var(--ember);
 }
-.choiceCard .btn {
-  margin-top: 8px;
+.attrStepper button:disabled {
+  color: #4a5668;
+  cursor: not-allowed;
 }
-.choiceIcon {
-  image-rendering: pixelated;
+.attrStepper b {
+  font-variant-numeric: tabular-nums;
 }
-.choiceName {
-  font-family: var(--font-title);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 1.1;
+.raiseField {
+  width: 40px;
+  border: 0;
+  border-left: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
+  background: var(--sunk);
+  color: var(--ember);
+  font: inherit;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
 }
-.choiceText {
-  color: var(--soft);
+.raiseField:focus-visible {
+  outline: 2px solid var(--brass);
 }
-@media (max-width: 720px) {
-  .choice {
-    padding-top: 32px;
-    gap: 22px;
-  }
-  .choiceTitle {
-    font-size: 32px;
-  }
-  .choiceCards {
-    grid-template-columns: minmax(0, 1fr);
-  }
+.skipAhead {
+  display: inline-flex;
+  align-items: stretch;
+}
+.skipStep {
+  --btn-pad-x: 10px;
+  min-width: 36px;
 }

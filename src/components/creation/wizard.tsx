@@ -8,6 +8,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from
 import { FocusHeader } from "@/components/ui/focus-header";
 import { Tooltip } from "@/components/ui/tooltip";
 import { EditBar } from "@/components/editor/edit-bar";
+import { authorTourPending } from "@/lib/tour";
 import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel, ModeIcon, TagIcon, DeityIcon } from "@/components/ui/skill-icon";
 import { copyBuildForVersion, createBuild, saveBuildDetails, saveBuildPlan } from "@/lib/builds/actions";
 import { checkStep, type StepCheck } from "@/lib/builds/steps";
@@ -135,8 +136,9 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
         const r = await createBuild({ details: { ...details, tags: details.tags ?? suggestedTags(plan.majors) }, plan });
         if (!r.ok) return setError(r.error);
         clearDraft();
-        // First, how to build it (WO-67); Level by level then starts Tapps' tour of level 1 (WO-61).
-        router.push(`/b/${r.value.id}/edit?start=choose`);
+        // Tapps shows the author round level 1, once (WO-61).
+        authorTourPending();
+        router.push(`/b/${r.value.id}/edit`);
       } else if (buildId) {
         const a = await saveBuildDetails(buildId, { ...details, tags: details.tags ?? suggestedTags(plan.majors) });
         if (!a.ok) return setError(a.error);
@@ -160,7 +162,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
   return (
     <>
       {mode === "edit" && buildId ? (
-        <EditBar buildId={buildId} name={details.name || "This build"} current="setup" snapshot={!!plan.snapshot} visibility={details.visibility} onVisibility={(visibility) => updateDetails({ visibility })} />
+        <EditBar buildId={buildId} name={details.name || "This build"} current="setup" visibility={details.visibility} onVisibility={(visibility) => updateDetails({ visibility })} />
       ) : (
         <FocusHeader
           context="New build"

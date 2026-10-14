@@ -106,16 +106,34 @@ export function computeBuild(b: BuildPlan, d: GameData = requireGameData(b.gameV
     let available = 0;
     let spent = 0;
 
-    if (L > 1) {
-      if (lv.attribute) attributePicks[lv.attribute]++;
+    // Skip ahead (WO-69): a skipped level spends nothing; it banks its skill points and earns its
+    // perk point, and the level that ends its stretch holds the stretch's choices.
+    let ups = 1;
+    while (L - ups > 1 && b.levels[L - 1 - ups]?.skipped) ups++;
+    if (L > 1 && lv.skipped) {
+      banked += rules.skillPointsPerLevel;
+      available = banked;
+      if (!masterOfOne && !(skilled && L % 5 === 0)) perkPoints++;
+    } else if (L > 1) {
+      if (lv.attributes || ups > 1) {
+        const picks = lv.attributes ?? (lv.attribute ? { [lv.attribute]: 1 } : {});
+        let n = 0;
+        for (const a of ["health", "magicka", "stamina"] as const) {
+          attributePicks[a] += picks[a] ?? 0;
+          n += picks[a] ?? 0;
+        }
+        if (n < ups) issues.push(issue("attribute-missing", `Pick ${count(ups - n, "more attribute level-up")}.`));
+        if (n > ups) issues.push(issue("attribute-over", `${count(n - ups, "attribute level-up")} too many.`));
+      } else if (lv.attribute) attributePicks[lv.attribute]++;
       else issues.push(issue("attribute-missing", "Pick Health, Magicka or Stamina."));
 
       available = rules.skillPointsPerLevel + banked;
+      const limit = rules.maxRaisePerSkillPerLevel * ups;
       for (const s of d.skills) {
         const n = lv.skillPoints[s] ?? 0;
         if (!n) continue;
-        if (n > rules.maxRaisePerSkillPerLevel)
-          issues.push(issue("skill-over-five", `${s}: +${n} is more than +${rules.maxRaisePerSkillPerLevel} in one level-up.`));
+        if (n > limit)
+          issues.push(issue("skill-over-five", ups > 1 ? `${s}: +${n} is more than +${limit} in ${ups} level-ups.` : `${s}: +${n} is more than +${limit} in one level-up.`));
         for (let i = 0; i < n; i++) {
           spent += d.skillPointCost(skills[s]);
           skills[s]++;

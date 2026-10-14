@@ -4,10 +4,9 @@ import { MAX_TAGS, TAG_BY_SLUG } from "./tags";
 import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
 import { gameData, isKnownVersion, type GameData } from "@/lib/rules/server";
 import { readPlan } from "@/lib/rules/convert";
-import type { BuildPlan } from "@/lib/rules/types";
-import { MAX_LEVELS } from "./limits";
+import type { BuildPlan, LevelPlan } from "@/lib/rules/types";
 
-export { MAX_LEVELS };
+export const MAX_LEVELS = 100;
 
 /** The plan schema for one LoreRim version: every name and id must exist in that version. */
 function planSchema(d: GameData) {
@@ -15,8 +14,12 @@ function planSchema(d: GameData) {
   const perkId = z.string().refine((id) => d.perkById.has(id), "Unknown perk");
 
   const levelSchema = z.object({
+    // Skip ahead (WO-69): a level inside a stretch, and the level-ups to each attribute on its last level.
+    skipped: z.literal(true).optional(),
     attribute: z.enum(["health", "magicka", "stamina"]).optional(),
-    skillPoints: z.record(skillName, z.number().int().min(0).max(5)),
+    attributes: z.object({ health: z.number().int().min(0).max(MAX_LEVELS), magicka: z.number().int().min(0).max(MAX_LEVELS), stamina: z.number().int().min(0).max(MAX_LEVELS) }).partial().optional(),
+    // Up to +5 a level-up: over a stretch, +5 for each of its levels (the engine checks the stretch's limit).
+    skillPoints: z.record(skillName, z.number().int().min(0).max(5 * MAX_LEVELS)),
     perks: z.array(perkId).max(40),
     destiny: z.array(perkId).max(7),
     extras: z
@@ -97,27 +100,30 @@ function planSchema(d: GameData) {
       )
       .max(60),
     notes: z.string().max(6000),
-    // A snapshot build (WO-68). Its result is worked out again on save (snapshot.ts), never taken as sent.
-    snapshot: z
-      .object({
-        level: z.number().int().min(2).max(MAX_LEVELS),
-        attributes: z.object({ health: z.number().int().min(0), magicka: z.number().int().min(0), stamina: z.number().int().min(0) }),
-        perks: z.array(perkId).max(200),
-        skills: z.record(skillName, z.number().int().min(0).max(100)),
-        result: z
-          .object({
-            skills: z.record(z.string(), z.number()),
-            perks: z.array(z.string()),
-            health: z.number(),
-            magicka: z.number(),
-            stamina: z.number(),
-          })
-          .optional(),
-      })
-      .optional(),
   })
     .refine((p) => !p.startOption || (d.startByName.get(p.start)?.options.includes(p.startOption) ?? false), "Unknown choice for this start")
-    .refine((p) => !p.snapshot || p.levels.length === 1, "A snapshot keeps level 1 only") satisfies z.ZodType<BuildPlan>;
+    // A skipped level holds no choices; level 1 and the last level are never skipped; `attributes` only ends a stretch.
+    .refine((p) => p.levels.every((lv) => !lv.skipped || isEmptyLevel(lv)), "A skipped level can't hold choices")
+    .refine((p) => !p.levels[0]?.skipped && !p.levels[p.levels.length - 1]?.skipped, "Level 1 and the last level can't be skipped")
+    .refine((p) => p.levels.every((lv, i) => !lv.attributes || (!lv.skipped && !!p.levels[i - 1]?.skipped)), "Attribute counts only end a stretch") satisfies z.ZodType<BuildPlan>;
+}
+
+/** A level with no choices of its own: what a skipped level must be. */
+function isEmptyLevel(lv: LevelPlan): boolean {
+  return (
+    !lv.attribute &&
+    !lv.attributes &&
+    Object.keys(lv.skillPoints).length === 0 &&
+    lv.perks.length === 0 &&
+    lv.destiny.length === 0 &&
+    lv.extras.length === 0 &&
+    !lv.spells?.length &&
+    !lv.abilities?.length &&
+    !lv.shouts?.length &&
+    lv.stone === undefined &&
+    lv.deity === undefined &&
+    lv.note === ""
+  );
 }
 
 const versionOnly = z.object({

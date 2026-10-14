@@ -22,7 +22,6 @@ export function GuidePage({ buildId, name, visibility, plan, initial, intro }: {
   return (
     <>
       <EditBar
-        snapshot={!!plan.snapshot}
         buildId={buildId}
         name={name}
         current="guide"

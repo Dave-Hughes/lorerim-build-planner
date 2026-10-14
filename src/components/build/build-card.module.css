@@ -310,3 +310,10 @@
   font-size: 13px;
   white-space: nowrap;
 }
+
+/* Skip ahead (WO-69): the levels a build that skips writes. */
+.written {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}

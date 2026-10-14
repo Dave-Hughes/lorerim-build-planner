@@ -226,48 +226,19 @@
 .star:focus-visible {
   outline: 2px solid var(--brass);
 }
-/* A snapshot's picks (WO-65, WO-68): a pick is ember with a light ember ring; what's auto selected, faint ember. */
-.mark_goal {
-  width: calc(var(--star) * 1.45);
-  height: calc(var(--star) * 1.45);
-}
-.mark_goal::before {
-  background: var(--ember);
-  border: 3px solid #ffe3a3;
-}
-.mark_along {
-  width: calc(var(--star) * 1.15);
-  height: calc(var(--star) * 1.15);
-}
-.mark_along::before {
-  background: color-mix(in srgb, var(--ember) 35%, transparent);
-  border: 2px solid var(--ember);
-}
-/* Ruled out (WO-68): a dashed Health red ring, the name struck through, not clickable. */
-.mark_ruled {
+/* Ruled out (WO-68, WO-69): a dashed Health red ring, the name struck through, not clickable. */
+.ruledStar {
   cursor: not-allowed;
 }
-.mark_ruled::before {
+.ruledStar::before {
   inset: 10%;
   border: 2px dashed #9c4a3e;
   background: var(--sunk);
 }
-.mark_free::before {
-  border: 2px solid #566273;
-  background: var(--sunk);
-}
-.labelMark_goal .labelName {
-  color: var(--ember-text);
-  font-weight: 700;
-}
-.labelMark_along .labelName {
-  color: var(--bright);
-  font-weight: 600;
-}
-.labelMark_ruled {
+.labelRuled {
   cursor: not-allowed;
 }
-.labelMark_ruled .labelName {
+.labelRuled .labelName {
   color: var(--muted);
   text-decoration: line-through;
 }
@@ -412,29 +383,10 @@ button.listRow[aria-pressed="true"] {
 .listDot.open {
   border: 1.5px solid var(--perk);
 }
-.listDot.mark_goal {
-  background: var(--ember);
-  border: 2px solid #ffe3a3;
-  width: 12px;
-  height: 12px;
-}
-.listDot.mark_along {
-  background: color-mix(in srgb, var(--ember) 35%, transparent);
-  border: 1.5px solid var(--ember);
-}
-.listDot.mark_ruled {
+.listDot.ruledDot {
   border: 1.5px dashed #9c4a3e;
 }
-.listDot.mark_free {
-  border: 1.5px solid #566273;
-}
-.markText_goal {
-  color: var(--ember-text);
-}
-.markText_along {
-  color: var(--soft);
-}
-.markText_ruled {
+.ruledText {
   color: #f1b3a6;
 }
 .listRow[aria-disabled="true"] {
@@ -562,32 +514,10 @@ button.listRow[aria-pressed="true"] {
   background: var(--perk);
   box-shadow: 0 0 0 3px var(--perk-halo);
 }
-.legendTip {
-  cursor: help;
-  text-decoration: underline dotted;
-  text-underline-offset: 3px;
-}
-.keyGoal {
-  width: 14px;
-  height: 14px;
-  background: var(--ember);
-  border: 2px solid #ffe3a3;
-}
-.keyAlong {
-  width: 12px;
-  height: 12px;
-  background: color-mix(in srgb, var(--ember) 35%, transparent);
-  border: 2px solid var(--ember);
-}
 .keyRuled {
   width: 12px;
   height: 12px;
   border: 2px dashed #9c4a3e;
-}
-.keyFree {
-  width: 12px;
-  height: 12px;
-  border: 2px solid #566273;
 }
 .keyPartial {
   width: 13px;

@@ -25,9 +25,12 @@ import { saveKeptGuides } from "@/components/guide/use-guide-autosave";
 import type { GuideSaveStatus } from "@/components/guide/use-guide-autosave";
 import { emptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import * as ops from "./plan-ops";
+import { MAX_LEVELS } from "@/lib/builds/validate";
+import { ruledOut } from "@/lib/rules/ruled-out";
+import { levelUps, skips, stretchAt, stretches } from "@/lib/rules/stretches";
+import { StretchChips } from "@/components/build/stretch-chips";
 import { Tour } from "@/components/tour/tour";
-import { SnapshotEditor, newSnapshot } from "./snapshot-editor";
-import { AUTHOR_TOUR, authorTourPending } from "@/lib/tour";
+import { AUTHOR_TOUR } from "@/lib/tour";
 import { useAutosave } from "./use-autosave";
 import styles from "./editor.module.css";
 import { pageZoom } from "@/lib/zoom";
@@ -42,35 +45,28 @@ interface Props {
   converted?: { from: string; dropped: string };
   /** The build's guide sections by key (`level:<n>` for level notes). */
   guide: Record<string, GuideDoc>;
-  /** A build just made by Set up: ask how to build it first (WO-67). */
-  chooseStart?: boolean;
 }
 
 const ATTRS: Attribute[] = ["health", "magicka", "stamina"];
+const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
+/** A stretch's pool (WO-69): "510 of 625 spent, 175 carried in". What it had counts what it carried in. */
+const spentOf = (spent: number, had: number, carried: number, always = false) => `${spent} of ${had} spent${carried > 0 || always ? `, ${carried} carried in` : ""}`;
 
-export function Editor({ buildId, name, visibility, initialPlan, initialLevel, converted, guide, chooseStart }: Props) {
+export function Editor({ buildId, name, visibility, initialPlan, initialLevel, converted, guide }: Props) {
   const d = useGameData();
   const [plan, setPlan] = useState(initialPlan);
   // Repeat last level (WO-56): the plan it made, what the level had before (for Undo) and what
   // didn't fit. Both show only until the next change.
   const [repeated, setRepeated] = useState<{ level: number; after: BuildPlan; before: ops.LevelSpend; skipped: string[] } | null>(null);
-  // How to build it (WO-67, WO-68): level by level, or a snapshot. Only for a build just made, still at level 1.
-  const [choosing, setChoosing] = useState(!!chooseStart && initialPlan.levels.length === 1 && !initialPlan.snapshot);
-  const chose = (snapshot: boolean) => {
-    // The author's tour (WO-61) goes round level 1 only for Level by level.
-    if (snapshot) setPlan({ ...plan, snapshot: newSnapshot(plan, d) });
-    else authorTourPending();
-    setChoosing(false);
-    const url = new URL(window.location.href);
-    url.searchParams.delete("start");
-    window.history.replaceState(null, "", url);
-    window.scrollTo({ top: 0 });
-  };
   const states = useMemo(() => computeBuild(plan, d), [plan, d]);
   const total = plan.levels.length;
-  const [level, setLevelState] = useState(() => Math.min(total, Math.max(1, initialLevel || total)));
+  // The open level is always the one that holds its stretch's choices (WO-69): a skipped level opens its stretch.
+  const [level, setLevelState] = useState(() => stretchAt(initialPlan, Math.min(total, Math.max(1, initialLevel || total))).to);
   const { status, error, retry } = useAutosave(buildId, plan, initialPlan);
   const [confirmRemove, setConfirmRemove] = useState(false);
+  const [confirmReset, setConfirmReset] = useState(false);
+  // Skip ahead (WO-69): the level the footer's button goes to, chosen first; 10 levels on to start.
+  const [skipTo, setSkipTo] = useState<number | null>(null);
   // Level notes as edited here, so going back to a level shows the latest text.
   const [notes, setNotes] = useState<Record<string, GuideDoc>>(guide);
   const noted = useMemo(() => notedLevels(notes), [notes]);
@@ -82,20 +78,35 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   // page go back to the top, since the next level starts there.
   const setLevel = useCallback(
     (n: number, max = total, toTop = false) => {
-      const next = Math.min(max, Math.max(1, n));
+      const next = stretchAt(plan, Math.min(max, Math.max(1, n))).to;
       if (!toTop) holdLevelBar();
       setLevelState(next);
       setConfirmRemove(false);
+      setConfirmReset(false);
       const url = new URL(window.location.href);
       url.searchParams.set("level", String(next));
       window.history.replaceState(null, "", url);
       if (toTop) window.scrollTo({ top: 0 });
     },
-    [total, holdLevelBar],
+    [total, holdLevelBar, plan],
   );
 
   const s = states[level - 1];
   const lv = plan.levels[level - 1];
+  // The open stretch (WO-69): `level` is its last level; a single level is a stretch of one.
+  const st = stretchAt(plan, level);
+  const ups = levelUps(st);
+  const isStretch = st.from > 1 && st.from < st.to;
+  const allStretches = stretches(plan);
+  const at = allStretches.findIndex((x) => x.to === st.to);
+  const prevStretch = allStretches[at - 1];
+  const nextStretch = allStretches[at + 1];
+  /** The state before the stretch: what it carries in. */
+  const before = st.from > 1 ? states[st.from - 2] : null;
+  const stretchLabel = (n: number) => {
+    const x = stretchAt(plan, n);
+    return x.from < x.to ? `levels ${x.from} to ${x.to}` : `level ${x.to}`;
+  };
   const [tree, setTree] = useState<string>(() => initialPlan.majors[0] ?? "One-Handed");
   const [treeView, setTreeView] = useState<TreeView>("tree");
   const [selected, setSelected] = useState<string | null>(null);
@@ -163,7 +174,8 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
     if (id) requestAnimationFrame(() => perkArea?.querySelector<HTMLElement>(`[data-perk="${CSS.escape(id)}"]`)?.focus({ preventScroll: true }));
   };
   const takePerk = (pid: string) => {
-    const next = ops.takePerk(plan, level, pid);
+    // A star whose prerequisites aren't held brings them too, at this level, when the skills reach them (WO-69).
+    const next = ops.takePerks(plan, level, [...ops.missingPrerequisites(d, s, pid), pid]);
     setPlan(next);
     setSelected(null);
     const key = Date.now();
@@ -199,7 +211,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   // Other levels' problems, so breaking an earlier level shows wherever you are (this level's own
   // are in the bar at the bottom).
   const problems = useMemo(
-    () => states.filter((st) => st.level !== level).flatMap((st) => st.issues.map((i) => ({ level: st.level, message: i.message }))),
+    () => states.filter((x) => x.level !== level).flatMap((x) => x.issues.map((i) => ({ level: x.level, message: i.message }))),
     [states, level],
   );
   const steps = useMemo(() => skillStepInfo(d, plan, states, level), [d, plan, states, level]);
@@ -207,9 +219,35 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   const left = s.skillPointsAvailable - s.skillPointsSpent;
   // From level 3, when the level before spent anything. After a repeat, Undo until the next change.
   const prevLevel = plan.levels[level - 2];
-  const canRepeat = level >= 3 && !!prevLevel && (!!prevLevel.attribute || Object.values(prevLevel.skillPoints).some((n) => n > 0));
+  // Only from a single level to a single level (WO-69): a stretch's raises can't be repeated into one level.
+  const prevSingle = level >= 3 && stretchAt(plan, level - 1).from === level - 1;
+  const canRepeat = !isStretch && prevSingle && !!prevLevel && (!!prevLevel.attribute || Object.values(prevLevel.skillPoints).some((n) => n > 0));
   const justRepeated = !!repeated && repeated.level === level && repeated.after === plan;
   const carriedIn = s.skillPointsAvailable - d.rules.skillPointsPerLevel;
+  const attrUsed = ATTRS.reduce((n, a) => n + (lv.attributes?.[a] ?? (lv.attribute === a ? 1 : 0)), 0);
+  /** The most a skill's raise can be typed to here: the stretch's limit, the max skill and the points left (WO-69). */
+  const raiseMax = (sk: string) => {
+    const info = steps.find((i) => i.skill === sk)!;
+    let budget = left;
+    let v = info.to;
+    let raise = info.added;
+    while (raise < info.limit && v < s.maxSkill && d.skillPointCost(v) <= budget) {
+      budget -= d.skillPointCost(v);
+      v++;
+      raise++;
+    }
+    return raise;
+  };
+  // Perks that can't go with what's held at this level (WO-68, WO-69), with the reason.
+  const ruled = (() => {
+    const held = new Set([...Object.entries(s.perksTaken).filter(([, at]) => at.length > 0).map(([id]) => id), ...Object.keys(s.destinyTaken)]);
+    const out = new Map<string, string>();
+    for (const [id, r] of ruledOut(d, held)) {
+      const by = d.perkById.get(r.by);
+      out.set(id, `Not with ${by?.tree}: ${by?.name}, a perk you picked.${r.via !== id ? ` It needs ${d.perkById.get(r.via)?.name}, which that rules out.` : ""}`);
+    }
+    return out;
+  })();
   const perkLeft = s.perkPoints - s.perkPointsSpent;
   const destinyLeft = s.destinyPoints - s.destinyPointsSpent;
   const nextDestiny = nextDestinyLevel(d, level);
@@ -256,7 +294,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
     if (level > 1 && left > 0) notes.push(`${left} skill point${left === 1 ? "" : "s"} will carry over.`);
     if (perkLeft > 0) notes.push(`${perkLeft} perk point${perkLeft === 1 ? "" : "s"} still unspent.`);
     if (destinyLeft > 0) notes.push(`${destinyLeft} Destiny point${destinyLeft === 1 ? "" : "s"} still unspent.`);
-    return `Level ${level} follows every rule.${notes.length ? " " + notes.join(" ") : ""}`;
+    return `${isStretch ? `Levels ${st.from} to ${st.to} follow` : `Level ${level} follows`} every rule.${notes.length ? " " + notes.join(" ") : ""}`;
   })();
 
   const continueLevel = () => {
@@ -267,7 +305,8 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   // Continue and repeat (WO-57): add the next level and repeat this one onto it (WO-56), with its
   // didn't-fit line and Undo there. Shown when Repeat would show on the new level.
   const lastLevel = plan.levels[total - 1];
-  const canContinueRepeat = total + 1 >= 3 && !!lastLevel && (!!lastLevel.attribute || Object.values(lastLevel.skillPoints).some((n) => n > 0));
+  const lastSingle = stretchAt(plan, total).from === total;
+  const canContinueRepeat = total + 1 >= 3 && lastSingle && !!lastLevel && (!!lastLevel.attribute || Object.values(lastLevel.skillPoints).some((n) => n > 0));
   const continueRepeat = () => {
     const r = ops.repeatLevel(ops.addLevel(plan), total + 1, d);
     setPlan(r.plan);
@@ -276,8 +315,21 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   };
   const removeLevel = () => {
     if (!confirmRemove) return setConfirmRemove(true);
-    setPlan(ops.removeLastLevel(plan));
-    setLevel(total - 1, total - 1);
+    const next = ops.removeLastStretch(plan);
+    setPlan(next);
+    setLevel(next.levels.length, next.levels.length);
+  };
+  // Reset (WO-69): the stretch's skill points, attribute picks, perks and Destiny, after a confirm.
+  const resetLevel = () => {
+    if (!confirmReset) return setConfirmReset(true);
+    setPlan(ops.resetLevel(plan, level));
+    setConfirmReset(false);
+  };
+  const skipTarget = Math.min(MAX_LEVELS, Math.max(total + 2, skipTo ?? total + 10));
+  const skipAhead = () => {
+    setPlan(ops.skipAhead(plan, skipTarget));
+    setSkipTo(null);
+    setLevel(skipTarget, skipTarget, true);
   };
 
 
@@ -289,7 +341,6 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
         buildId={buildId}
         name={name}
         current="levels"
-        snapshot={!!plan.snapshot}
         visibility={visibility}
         status={
           <span className={status === "failed" ? "bad" : undefined}>
@@ -307,11 +358,6 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
       />
       {error && status === "failed" && <div className={`page ${styles.errorBar}`}>{error}</div>}
 
-      {choosing ? (
-        <StartChoice onPick={chose} />
-      ) : plan.snapshot ? (
-        <SnapshotEditor buildId={buildId} plan={plan} setPlan={setPlan} />
-      ) : (
       <div className={`page ${styles.layout}`}>
         {converted && (
           <section aria-label="Copied from an older version" className={styles.converted}>
@@ -320,27 +366,47 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
         )}
         <section ref={levelBarRef} aria-label="Level" className={styles.levelBar}>
           <div className={styles.levelNav}>
-            <button type="button" className={`btn ${styles.levelArrow}`} aria-label="Previous level" disabled={level <= 1} onClick={() => setLevel(level - 1)}>
-              ‹ {level > 1 ? level - 1 : ""}
+            {/* The arrows step by stretch (WO-69). */}
+            <button type="button" className={`btn ${styles.levelArrow}`} aria-label="Previous level" disabled={!prevStretch} onClick={() => prevStretch && setLevel(prevStretch.to)}>
+              ‹ {prevStretch ? prevStretch.to : ""}
             </button>
             <div className={styles.levelTitle}>
-              <span className="label">{level === 1 ? "Level" : "Level up to"}</span>
+              <span className="label">{level === 1 ? "Level" : isStretch ? `Levels ${st.from} to` : "Level up to"}</span>
               <span className={styles.levelNum}>{level}</span>
             </div>
-            <button type="button" className={`btn ${styles.levelArrow}`} aria-label="Next level" disabled={level >= total} onClick={() => setLevel(level + 1)}>
-              {level < total ? level + 1 : ""} ›
+            <button type="button" className={`btn ${styles.levelArrow}`} aria-label="Next level" disabled={!nextStretch} onClick={() => nextStretch && setLevel(nextStretch.to)}>
+              {nextStretch ? nextStretch.to : ""} ›
             </button>
           </div>
           <dl className={styles.pools} data-tour="points">
-            {level > 1 && <Pool label="Skill points" value={left} of={`left of ${s.skillPointsAvailable}`} />}
+            {/* A stretch counts its whole run (WO-69): spent of what it had, and what it carried in. */}
+            {level > 1 && (
+              <Pool
+                label="Skill points"
+                value={left}
+                of={isStretch && before ? spentOf(s.skillPointsSpent, s.skillPointsAvailable, before.skillPointsBanked, true) : `left of ${s.skillPointsAvailable}`}
+              />
+            )}
             {/* Flashes ember once when a perk is taken (WO-59). */}
-            <Pool label="Perk points" icon={<MarkIcon name="perk-points" />} value={perkLeft} of="to spend" flashKey={taken && taken.after === plan ? taken.key : undefined} />
-            <Pool label="Destiny points" value={destinyLeft} of={nextDestiny ? `next at ${nextDestiny}` : "no more"} destiny />
+            <Pool
+              label="Perk points"
+              icon={<MarkIcon name="perk-points" />}
+              value={perkLeft}
+              of={isStretch && before ? spentOf(s.perkPointsSpent - before.perkPointsSpent, s.perkPoints - before.perkPointsSpent, before.perkPoints - before.perkPointsSpent) : "to spend"}
+              flashKey={taken && taken.after === plan ? taken.key : undefined}
+            />
+            <Pool
+              label="Destiny points"
+              value={destinyLeft}
+              of={isStretch && before ? spentOf(s.destinyPointsSpent - before.destinyPointsSpent, s.destinyPoints - before.destinyPointsSpent, before.destinyPoints - before.destinyPointsSpent) : nextDestiny ? `next at ${nextDestiny}` : "no more"}
+              destiny
+            />
             <Pool label="Trainer sessions" value={trainerLeft} of="left this level" />
           </dl>
+          {/* A build that skips ahead has a chip per stretch in place of the bars (WO-69). */}
           {total > 1 && (
             <div className={styles.levelRow}>
-              <LevelBars marks={marks} level={level} onChange={(n) => setLevel(n)} />
+              {skips(plan) ? <StretchChips plan={plan} level={level} onChange={(n) => setLevel(n)} /> : <LevelBars marks={marks} level={level} onChange={(n) => setLevel(n)} />}
             </div>
           )}
           {problems.length > 0 && (
@@ -349,10 +415,10 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                 <p key={i} className={styles.problemLine}>
                   <i className={styles.diamondBad} />
                   <span>
-                    <b>Level {pr.level}:</b> {pr.message}
+                    <b>{cap(stretchLabel(pr.level))}:</b> {pr.message}
                   </span>
                   <button type="button" className={styles.linkButton} onClick={() => setLevel(pr.level)}>
-                    Go to level {pr.level}
+                    Go to {stretchLabel(pr.level)}
                   </button>
                 </p>
               ))}
@@ -365,8 +431,8 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
             {level > 1 && (
               <div className={styles.block}>
                 <div className={styles.blockHead}>
-                  <span className="label">Attribute</span>
-                  <span className={styles.hint}>+5 to one</span>
+                  <span className="label">{isStretch ? "Attributes" : "Attribute"}</span>
+                  <span className={styles.hint}>{isStretch ? `${ups} level-ups, ${ups - attrUsed} left` : "+5 to one"}</span>
                   {justRepeated ? (
                     <button
                       type="button"
@@ -394,6 +460,36 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                     )
                   )}
                 </div>
+                {isStretch ? (
+                  // A stretch (WO-69): each attribute's total, what the stretch adds, and its level-ups.
+                  <div role="group" aria-label="Attributes" className={styles.attrs}>
+                    {ATTRS.map((a) => {
+                      const n = lv.attributes?.[a] ?? (lv.attribute === a ? 1 : 0);
+                      return (
+                        <div key={a} className={`${styles.attr} ${styles.attrCount} ${styles[a]} ${n ? styles.attrOn : ""}`}>
+                          <span className={styles.attrTop}>
+                            <IconLabel icon={<AttributeIcon name={a} />}>{ATTRIBUTE_NAMES[a]}</IconLabel>
+                          </span>
+                          <span className={styles.attrVal}>
+                            <span className="big-num">{s[a]}</span>
+                            {n > 0 && <span className={styles.plus}>+{5 * n}</span>}
+                          </span>
+                          <span className={styles.attrStepper}>
+                            <button type="button" aria-label={`Fewer ${ATTRIBUTE_NAMES[a]} level-ups`} disabled={n <= 0} onClick={() => setPlan(ops.setAttributeCount(plan, level, a, n - 1))}>
+                              −
+                            </button>
+                            <b aria-label={`${ATTRIBUTE_NAMES[a]} level-ups`}>{n}</b>
+                            <button type="button" aria-label={`More ${ATTRIBUTE_NAMES[a]} level-ups`} disabled={attrUsed >= ups} onClick={() => setPlan(ops.setAttributeCount(plan, level, a, n + 1))}>
+                              +
+                            </button>
+                          </span>
+                          {stoneShare(d, s.stone, a) && <span className={styles.attrNote}>{stoneShare(d, s.stone, a)}</span>}
+                          <span className={styles.attrBar} />
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
                 <div role="group" aria-label="Attribute" className={styles.attrs}>
                   {ATTRS.map((a) => {
                     const on = lv.attribute === a;
@@ -416,6 +512,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                     );
                   })}
                 </div>
+                )}
               </div>
             )}
 
@@ -423,7 +520,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
               <div className={styles.blockHead}>
                 <span className="label">{level === 1 ? "Starting skills and perks" : "Skills and perks"}</span>
                 <span className={styles.maxSkill}>
-                  {level === 1 ? `Max skill ${s.maxSkill} at level 1` : `Up to +${d.rules.maxRaisePerSkillPerLevel} each, max skill ${s.maxSkill}`}
+                  {level === 1 ? `Max skill ${s.maxSkill} at level 1` : `Up to +${d.rules.maxRaisePerSkillPerLevel * Math.max(1, ups)} each, max skill ${s.maxSkill}`}
                   <InfoTip
                     label="About the skill limit"
                     text={`No skill can go above 50 plus your character level. At level ${level} that's ${s.maxSkill}; skills can reach 100 from level 50.`}
@@ -435,7 +532,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                   <div className={styles.pointsBar}>
                     <div style={{ width: `${Math.min(100, (s.skillPointsSpent / s.skillPointsAvailable) * 100)}%` }} className={left < 0 ? styles.pointsOver : ""} />
                   </div>
-                  {carriedIn > 0 && <span className={styles.hint}>Includes {carriedIn} carried in from level {level - 1}</span>}
+                  {!isStretch && carriedIn > 0 && <span className={styles.hint}>Includes {carriedIn} carried in from level {level - 1}</span>}
                   {justRepeated && repeated!.skipped.length > 0 && (
                     <span className={styles.hint} role="status">
                       {repeated!.skipped.join(" ")}
@@ -481,19 +578,39 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                         </span>
                         {level > 1 ? (
                           <>
-                            <Tooltip content={info.atMax ? `${sk} is at the max skill for this level.` : info.atFive ? "+5 reached: the most one skill can rise in a level-up." : `${info.nextCost} skill point${info.nextCost === 1 ? "" : "s"} for the next +1.`}>
+                            <Tooltip
+                              content={
+                                info.atMax
+                                  ? `${sk} is at the max skill for this level.`
+                                  : info.atFive
+                                    ? isStretch
+                                      ? `+${info.limit} reached: the most one skill can rise in ${ups} level-ups.`
+                                      : "+5 reached: the most one skill can rise in a level-up."
+                                    : `${info.nextCost} skill point${info.nextCost === 1 ? "" : "s"} for the next +1.`
+                              }
+                            >
                               <span className={styles.stepper} data-stepper="">
-                                <button type="button" aria-label={`Lower ${sk}`} disabled={!info.canRemove} onClick={() => setPlan(ops.addSkillPoint(plan, level, sk, -1))}>
+                                <button type="button" aria-label={`Lower ${sk}`} disabled={!info.canRemove} onClick={() => setPlan(ops.addSkillPoint(plan, level, sk, -1, info.limit))}>
                                   −
                                 </button>
-                                <span className={info.added ? styles.stepOn : styles.stepOff}>{info.added ? `+${info.added}` : "0"}</span>
-                                <button type="button" aria-label={`Raise ${sk}`} disabled={!info.canAdd} onClick={() => setPlan(ops.addSkillPoint(plan, level, sk, 1))}>
+                                {/* On a stretch the raise can be typed (WO-69), kept within what the rules allow. */}
+                                {isStretch ? (
+                                  <RaiseField
+                                    key={`${level}-${sk}-${info.added}`}
+                                    skill={sk}
+                                    value={info.added}
+                                    onCommit={(n) => setPlan(ops.setSkillRaise(plan, level, sk, Math.min(n, raiseMax(sk)), info.limit))}
+                                  />
+                                ) : (
+                                  <span className={info.added ? styles.stepOn : styles.stepOff}>{info.added ? `+${info.added}` : "0"}</span>
+                                )}
+                                <button type="button" aria-label={`Raise ${sk}`} disabled={!info.canAdd} onClick={() => setPlan(ops.addSkillPoint(plan, level, sk, 1, info.limit))}>
                                   +
                                 </button>
                               </span>
                             </Tooltip>
                             <span className={styles.next}>
-                              {info.atMax ? "at max" : info.atFive ? "+5 reached" : `${info.nextCost} pt${info.nextCost === 1 ? "" : "s"} next`}
+                              {info.atMax ? "at max" : info.atFive ? `+${info.limit} reached` : `${info.nextCost} pt${info.nextCost === 1 ? "" : "s"} next`}
                             </span>
                           </>
                         ) : (
@@ -534,6 +651,8 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                 onView={setTreeView}
                 height={treeHeight}
                 sheetBelow={0}
+                ruled={ruled}
+                openLabel={isStretch ? `Can take by level ${level}` : undefined}
                 heading={<TreeHeading tree={tree} value={tree === "Destiny" ? `${destinyLeft} left` : `${s.skills[tree] ?? ""}`} />}
               />
               {/* Beside the star that was clicked, inside the frame (WO-59); a sheet on phones. */}
@@ -588,7 +707,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
             </div>
             <ViewToggle view={treeView} onView={setTreeView} className={styles.sheetToggle} />
             {selected && <div className={styles.sheetPerk}>{panel(selected, () => setSelected(null))}</div>}
-            <Tree tree={sheetTree} states={states} level={level} selectedId={selected} onSelect={pickPerk} view={treeView} onView={setTreeView} noToggle sheetBelow={0} listBy="state" height={Math.max(300, Math.round(windowHeight * 0.85 - 250))} />
+            <Tree tree={sheetTree} states={states} level={level} selectedId={selected} onSelect={pickPerk} view={treeView} onView={setTreeView} noToggle sheetBelow={0} ruled={ruled} openLabel={isStretch ? `Can take by level ${level}` : undefined} listBy="state" height={Math.max(300, Math.round(windowHeight * 0.85 - 250))} />
           </BottomSheet>
         )}
 
@@ -741,9 +860,15 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
             )}
           </span>
           <span className={styles.bottomActions}>
+            {/* Reset (WO-69): this stretch's skill points, attribute picks, perks and Destiny; gear, spells and the note stay. */}
+            {level > 1 && (
+              <button type="button" className="btn btn-quiet" onClick={resetLevel}>
+                {confirmReset ? `Confirm: reset ${stretchLabel(level)}` : `Reset ${stretchLabel(level)}`}
+              </button>
+            )}
             {level === total && total > 1 && (
               <button type="button" className="btn btn-quiet" onClick={removeLevel}>
-                {confirmRemove ? `Confirm: remove level ${total}${noted.has(total) ? " and its notes" : ""}` : `Remove level ${total}`}
+                {confirmRemove ? `Confirm: remove ${stretchLabel(total)}${noted.has(total) ? " and its notes" : ""}` : `Remove ${stretchLabel(total)}`}
               </button>
             )}
             {level === total ? (
@@ -753,20 +878,35 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                     Continue and repeat
                   </button>
                 )}
-                <button type="button" className="btn btn-primary" onClick={continueLevel}>
-                  Continue to level {total + 1}
-                </button>
+                {total + 2 <= MAX_LEVELS && (
+                  // Skip ahead (WO-69): the target is chosen first, then the button goes there.
+                  <span className={styles.skipAhead} role="group" aria-label="Skip ahead">
+                    <button type="button" className={`btn ${styles.skipStep}`} aria-label="Skip ahead to an earlier level" disabled={skipTarget <= total + 2} onClick={() => setSkipTo(skipTarget - 1)}>
+                      ‹
+                    </button>
+                    <button type="button" className="btn" onClick={skipAhead}>
+                      Skip ahead to level {skipTarget}
+                    </button>
+                    <button type="button" className={`btn ${styles.skipStep}`} aria-label="Skip ahead to a later level" disabled={skipTarget >= MAX_LEVELS} onClick={() => setSkipTo(skipTarget + 1)}>
+                      ›
+                    </button>
+                  </span>
+                )}
+                {total < MAX_LEVELS && (
+                  <button type="button" className="btn btn-primary" onClick={continueLevel}>
+                    Continue to level {total + 1}
+                  </button>
+                )}
               </>
             ) : (
-              <button type="button" className="btn btn-primary" onClick={() => setLevel(level + 1, total, true)}>
-                Go to level {level + 1}
+              <button type="button" className="btn btn-primary" onClick={() => nextStretch && setLevel(nextStretch.to, total, true)}>
+                Go to {nextStretch ? stretchLabel(nextStretch.to) : ""}
               </button>
             )}
           </span>
         </div>
 
       </div>
-      )}
     </>
   );
 }
@@ -977,31 +1117,24 @@ function TreeHeading({ tree, value }: { tree: string; value: string }) {
   );
 }
 
-/** A new build's first question (WO-67, WO-68): level by level, or a snapshot. */
-function StartChoice({ onPick }: { onPick: (snapshot: boolean) => void }) {
+/** A stretch's raise, typed (WO-69): committed on Enter or leaving the field, kept within the rules by the editor. */
+function RaiseField({ skill, value, onCommit }: { skill: string; value: number; onCommit: (n: number) => void }) {
+  const [text, setText] = useState(String(value));
+  const commit = () => {
+    const n = Math.max(0, Math.round(Number(text.replace(/^\+/, ""))) || 0);
+    if (n !== value) onCommit(n);
+    else setText(String(value));
+  };
   return (
-    <div className={`page ${styles.choice}`}>
-      <h1 className={styles.choiceTitle}>How do you want to build it?</h1>
-      <div className={styles.choiceCards}>
-        <button type="button" className={styles.choiceCard} onClick={() => onPick(false)}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/icons/tab-levels.svg" alt="" width={48} height={48} className={styles.choiceIcon} />
-          <span className={styles.choiceName}>Level by level</span>
-          <span className={styles.choiceText}>Start at level 1 and choose every attribute, skill and perk yourself.</span>
-          <span className="btn" aria-hidden="true">
-            Start at level 1
-          </span>
-        </button>
-        <button type="button" className={styles.choiceCard} onClick={() => onPick(true)}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/icons/destiny.svg" alt="" width={48} height={48} className={styles.choiceIcon} />
-          <span className={styles.choiceName}>Snapshot</span>
-          <span className={styles.choiceText}>The build at one level: skills, attributes and perks at level 50. Pick the perks; the ones they need are selected for you.</span>
-          <span className="btn btn-primary" aria-hidden="true">
-            Make a snapshot
-          </span>
-        </button>
-      </div>
-    </div>
+    <input
+      className={styles.raiseField}
+      inputMode="numeric"
+      aria-label={`${skill} raise`}
+      value={text === "0" ? "0" : text.startsWith("+") ? text : `+${text}`}
+      onChange={(e) => setText(e.target.value.replace(/^\+/, ""))}
+      onFocus={(e) => e.currentTarget.select()}
+      onBlur={commit}
+      onKeyDown={(e) => e.key === "Enter" && e.currentTarget.blur()}
+    />
   );
 }

@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 
 const PAGE = 24;
 
-type Search = Promise<{ q?: string; tags?: string; race?: string; kind?: string; sort?: string; version?: string; n?: string }>;
+type Search = Promise<{ q?: string; tags?: string; race?: string; sort?: string; version?: string; n?: string }>;
 
 export default async function Home({ searchParams }: { searchParams: Search }) {
   const sp = await searchParams;
@@ -28,7 +28,6 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
       .filter((t) => TAG_BY_SLUG.has(t))
       .slice(0, 5),
     race: sp.race && races.includes(sp.race) ? sp.race : "",
-    kind: sp.kind === "levels" || sp.kind === "snapshot" ? sp.kind : "",
     version,
     sort: sp.sort === "liked" ? "liked" : "newest",
   };
@@ -37,12 +36,11 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
     q: state.q,
     tags: state.tags,
     race: state.race,
-    kind: state.kind || undefined,
     gameVersion: version === "all" ? undefined : version,
     sort: state.sort,
     limit: shown,
   });
-  const filtered = !!(state.q || state.tags.length || state.race || state.kind);
+  const filtered = !!(state.q || state.tags.length || state.race);
   // The featured build comes first, and larger, when nothing narrows the list (WO-39); with a search
   // or filter it sits in the grid like any other card.
   const featured = !filtered && version === defaultVersion ? await getFeaturedBuild() : null;

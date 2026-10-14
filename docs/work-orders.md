@@ -2878,7 +2878,7 @@ Canvas: row "Proposal: Skip ahead (in place of snapshots)", with `KeyLevelEditor
 8. **Later, not now** (parked): splitting a stretch (write level 18 inside 11 to 25), and a Browse filter for builds that write every level.
 
 ### Done when
-- [ ] Unit tests:
+- [x] Unit tests:
   - On the canvas Altmer plan, levels 11 to 25: 625 available, 510 spent, 115 carried, 13 of 15 perk points, and no problems.
   - +80 Destruction over 11 to 25 raises the per-skill problem with the message above.
   - Attribute counts that don't add up to 15 raise the attribute problem.
@@ -2886,21 +2886,21 @@ Canvas: row "Proposal: Skip ahead (in place of snapshots)", with `KeyLevelEditor
   - A skipped level with choices is refused by `parseBuildPlan`, and a plan ending on a skipped level is refused.
   - `stretches()` on the Altmer plan gives 1, 2 to 10, 11 to 25, 26 to 50.
   - The version copy keeps `skipped` and `attributes`.
-- [ ] e2e:
+- [x] e2e:
   - New build, level 1, then `Skip ahead to level` 10. The title reads `Levels 2 to 10` and the pools show 270 skill points and 9 perk points.
   - Raise Destruction to +20 by typing, give 9 attribute level-ups, and take Arcane Focus by clicking its star.
   - Skip ahead to 25, raise Destruction to 50, then click Impact: Empowered Destruction comes with it.
   - Reset clears it after the confirm.
   - The build page shows chips `1`, `2 to 10`, `11 to 25`, the card `Levels 11 to 25` with `(Destruction 50)` next to Impact, and the byline `Levels 1, 10, 25`.
-- [ ] e2e: a build that writes every level looks as it does today: bars in the editor, no levels line on the page or card.
-- [ ] Nothing of the snapshot is left: no route, start choice, Kind filter, tour, type or the word `Snapshot` in the UI (`grep -ri snapshot src` finds nothing but the plan loader's line that drops the old field).
-- [ ] Screenshots at 1440 and 390:
+- [x] e2e: a build that writes every level looks as it does today: bars in the editor, no levels line on the page or card.
+- [x] Nothing of the snapshot is left: no route, start choice, Kind filter, tour, type or the word `Snapshot` in the UI (`grep -ri snapshot src` finds nothing but the plan loader's line that drops the old field).
+- [x] Screenshots at 1440 and 390:
   - the editor on a stretch, including the footer and a ruled-out tooltip;
   - the editor right after `Skip ahead`;
   - the build page with the stretch card open.
 
   Compare with the canvas.
-- [ ] All checks in CLAUDE.md pass.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

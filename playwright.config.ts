@@ -14,7 +14,6 @@ export const TOURS_DONE = {
       localStorage: [
         { name: "planner.tour.reader", value: "done" },
         { name: "planner.tour.author", value: "done" },
-        { name: "planner.tour.snapshot", value: "done" },
       ],
     },
   ],

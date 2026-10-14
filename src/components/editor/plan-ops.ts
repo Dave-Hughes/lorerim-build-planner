@@ -1,9 +1,10 @@
 /** Pure edits to a build plan. Each returns a new plan. */
 import type { GameData } from "@/lib/rules/data";
-import { emptyLevel, perkStatus } from "@/lib/rules/derive";
+import { emptyLevel } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
 import { gearAt } from "@/lib/rules/gear";
 import { keptMainSpells, MAX_MAIN_SPELLS } from "@/lib/rules/spells";
+import { skippedLevel, stretchAt } from "@/lib/rules/stretches";
 import type { AbilityRow, Attribute, BuildPlan, Extra, GearItem, LevelPlan, LevelState, MadeGear, ShoutRow, SpellRow } from "@/lib/rules/types";
 
 function withLevel(plan: BuildPlan, level: number, fn: (lv: LevelPlan) => LevelPlan): BuildPlan {
@@ -14,9 +15,15 @@ export function setAttribute(plan: BuildPlan, level: number, attribute: Attribut
   return withLevel(plan, level, (lv) => ({ ...lv, attribute }));
 }
 
-export function addSkillPoint(plan: BuildPlan, level: number, skill: string, delta: 1 | -1): BuildPlan {
+/** One more (or fewer) point in a skill. `max` is the most it may be raised here: +5, or +5 a level over a stretch (WO-69). */
+export function addSkillPoint(plan: BuildPlan, level: number, skill: string, delta: 1 | -1, max = 5): BuildPlan {
+  return setSkillRaise(plan, level, skill, (plan.levels[level - 1]?.skillPoints[skill] ?? 0) + delta, max);
+}
+
+/** A skill's raise at a level, as typed on a stretch (WO-69): kept between 0 and `max`. */
+export function setSkillRaise(plan: BuildPlan, level: number, skill: string, raise: number, max = 5): BuildPlan {
   return withLevel(plan, level, (lv) => {
-    const next = Math.max(0, Math.min(5, (lv.skillPoints[skill] ?? 0) + delta));
+    const next = Math.max(0, Math.min(max, Math.round(raise) || 0));
     const skillPoints = { ...lv.skillPoints };
     if (next === 0) delete skillPoints[skill];
     else skillPoints[skill] = next;
@@ -290,343 +297,84 @@ export function restoreLevelSpend(plan: BuildPlan, level: number, before: LevelS
   });
 }
 
-/** What the fill is told (WO-64): a snapshot's settings (WO-68). */
-export interface FillSettings {
-  /** The level to reach, 2 to the version's top. */
-  to: number;
-  /** [skill, target], in the order points go in when there aren't enough for all. */
-  targets: [string, number][];
-  /** Perk and Destiny star ids, in order; a ranked perk listed twice takes two ranks. */
-  perks: string[];
-  /** Level-ups to each attribute; they add up to `to - 1`. */
-  attributes: Record<Attribute, number>;
-  /** Which attribute takes its level-ups first, or "even" to take them in turn from the start. */
-  first: Attribute | "even";
-}
-
-export interface FillReport {
-  health: number;
-  magicka: number;
-  stamina: number;
-  targets: { skill: string; target: number; now: number; end: number; reachedAt: number | null; reason?: string }[];
-  perks: { id: string; level: number | null; reason?: string }[];
-  /** Perks and Destiny stars taken at each level, 1 to `to`. */
-  perLevel: number[];
-  skillPointsLeft: number;
-  perkPointsLeft: number;
-}
-
-const ATTRIBUTE_TURN: Attribute[] = ["health", "magicka", "stamina"];
-
-/** The attribute for each level-up, 2 to `to`: `first`'s all first, then the rest in turn; or in turn from the start. */
-export function attributeOrder(s: Pick<FillSettings, "to" | "attributes" | "first">): Attribute[] {
-  const left = { ...s.attributes };
-  const out: Attribute[] = [];
-  const take = (a: Attribute) => {
-    out.push(a);
-    left[a]--;
-  };
-  if (s.first !== "even") while (left[s.first] > 0 && out.length < s.to - 1) take(s.first);
-  while (out.length < s.to - 1 && ATTRIBUTE_TURN.some((a) => left[a] > 0))
-    for (const a of ATTRIBUTE_TURN) if (left[a] > 0 && out.length < s.to - 1) take(a);
-  return out;
-}
-
 /**
- * The fill (WO-64): fills levels 2 to `to` of a fresh build (level 1 only) by the rules. Each
- * level gets its attribute from the order; its skill points go round the targets in row order, one
- * point at a time, skipping a skill at its target, the level's max skill, +5 this level, or one the
- * points left don't cover (the rest bank). Then its perk points take the first perks on the list
- * the rules engine accepts there, and its Destiny points the listed stars. Level 1 and the setup
- * are untouched, and no level ends with a problem. Returns the plan and a report for the preview.
+ * Skip ahead (WO-69): adds the levels up to `to` as one stretch, the ones before it skipped and
+ * `to` the level that holds the stretch's choices.
  */
-export function fillToLevel(plan: BuildPlan, s: FillSettings, d: GameData): { plan: BuildPlan; report: FillReport } {
-  const order = attributeOrder(s);
-  const levels: LevelPlan[] = [plan.levels[0]];
-  const at = (L: number) => computeBuild({ ...plan, levels: levels.slice(0, L) }, d)[L - 1];
-  const rankOf = (i: number) => s.perks.slice(0, i + 1).filter((x) => x === s.perks[i]).length;
-  let state = at(1);
-  for (let L = 2; L <= s.to; L++) {
-    const prev = state;
-    const lv: LevelPlan = { ...emptyLevel(), attribute: order[L - 2] ?? "health" };
-    levels.push(lv);
-    // Skill points: round the targets, one point at a time.
-    const skills = { ...prev.skills };
-    let points = d.rules.skillPointsPerLevel + prev.skillPointsBanked;
-    const max = d.maxSkillAt(L);
-    const raised: Record<string, number> = {};
-    for (let moved = true; moved; ) {
-      moved = false;
-      for (const [sk, target] of s.targets) {
-        if (!(sk in skills) || (raised[sk] ?? 0) >= d.rules.maxRaisePerSkillPerLevel || skills[sk] >= Math.min(target, max)) continue;
-        const cost = d.skillPointCost(skills[sk]);
-        if (cost > points) continue;
-        points -= cost;
-        skills[sk]++;
-        raised[sk] = (raised[sk] ?? 0) + 1;
-        moved = true;
-      }
-    }
-    lv.skillPoints = raised;
-    state = at(L);
-    // Perks, then Destiny stars: the first on the list the engine accepts here, while points last.
-    for (const destiny of [false, true]) {
-      for (;;) {
-        const left = destiny ? state.destinyPoints - state.destinyPointsSpent : state.perkPoints - state.perkPointsSpent;
-        if (left <= 0) break;
-        let took = false;
-        for (let i = 0; i < s.perks.length; i++) {
-          const id = s.perks[i];
-          const p = d.perkById.get(id);
-          if (!p || (p.tree === "Destiny") !== destiny) continue;
-          const held = destiny ? (id in state.destinyTaken ? 1 : 0) : (state.perksTaken[id]?.length ?? 0);
-          if (held >= rankOf(i)) continue;
-          // Quick skips before asking the engine: the skill isn't there yet.
-          const need = p.rankSkills?.[held] ?? p.skill ?? 0;
-          if (!destiny && (state.skills[p.tree] ?? 0) < need) continue;
-          (destiny ? lv.destiny : lv.perks).push(id);
-          const next = at(L);
-          if (next.issues.length === 0) {
-            state = next;
-            took = true;
-            break;
-          }
-          (destiny ? lv.destiny : lv.perks).pop();
-        }
-        if (!took) break;
-      }
-    }
-  }
-  const out: BuildPlan = { ...plan, levels };
-  const states = computeBuild(out, d);
-  const last = states[s.to - 1];
-  const first = states[0];
-  const placed: Record<string, number[]> = {};
-  levels.forEach((lv, i) => [...lv.perks, ...lv.destiny].forEach((id) => (placed[id] ??= []).push(i + 1)));
-  const maxAtTo = d.maxSkillAt(s.to);
-  const targets = s.targets.map(([skill, target]) => {
-    const now = first.skills[skill] ?? 0;
-    const end = last.skills[skill] ?? now;
-    const reachedAt = states.find((x) => (x.skills[skill] ?? 0) >= target)?.level ?? null;
-    const reason = reachedAt !== null ? `By level ${reachedAt}` : end >= maxAtTo ? `${end} at most: the max skill at level ${s.to}` : `${end} at most by level ${s.to}`;
-    return { skill, target, now, end, reachedAt, reason };
+export function skipAhead(plan: BuildPlan, to: number): BuildPlan {
+  const total = plan.levels.length;
+  if (to <= total) return plan;
+  const skipped = Array.from({ length: to - total - 1 }, skippedLevel);
+  return { ...plan, levels: [...plan.levels, ...skipped, emptyLevel()] };
+}
+
+/** Removes the last stretch: its level and the skipped levels before it (WO-69). */
+export function removeLastStretch(plan: BuildPlan): BuildPlan {
+  const { from } = stretchAt(plan, plan.levels.length);
+  if (from <= 1) return plan;
+  return withMainSpells({ ...plan, levels: plan.levels.slice(0, from - 1) });
+}
+
+/** Reset (WO-69): clears a level's skill points, attribute picks, perks and Destiny. Gear, spells and the note stay. */
+export function resetLevel(plan: BuildPlan, level: number): BuildPlan {
+  return withLevel(plan, level, (lv) => {
+    const { attribute: _a, attributes: _b, ...rest } = lv;
+    void _a;
+    void _b;
+    return { ...rest, skillPoints: {}, perks: [], destiny: [] };
   });
-  const perks = s.perks.map((id, i) => {
-    const level = placed[id]?.[rankOf(i) - 1] ?? null;
-    return { id, level, ...(level === null ? { reason: whyNotPlaced(d, s, id, rankOf(i), last, placed) } : {}) };
+}
+
+/** A stretch's level-ups to one attribute (WO-69), in place of the single pick. */
+export function setAttributeCount(plan: BuildPlan, level: number, attribute: Attribute, n: number): BuildPlan {
+  return withLevel(plan, level, (lv) => {
+    const { attribute: _single, ...rest } = lv;
+    void _single;
+    const attributes = { ...lv.attributes, [attribute]: Math.max(0, Math.round(n) || 0) };
+    if (!attributes[attribute]) delete attributes[attribute];
+    return { ...rest, attributes };
   });
-  return {
-    plan: out,
-    report: {
-      health: last.health,
-      magicka: last.magicka,
-      stamina: last.stamina,
-      targets,
-      perks,
-      perLevel: levels.map((lv) => lv.perks.length + lv.destiny.length),
-      skillPointsLeft: last.skillPointsBanked,
-      perkPointsLeft: last.perkPoints - last.perkPointsSpent,
-    },
+}
+
+/** Takes several perks at a level, in order: a star and the prerequisites it brings (WO-69). */
+export function takePerks(plan: BuildPlan, level: number, ids: string[]): BuildPlan {
+  return ids.reduce((p, id) => takePerk(p, level, id), plan);
+}
+
+/**
+ * The prerequisites a star needs that aren't held at this level, root first (WO-69, from WO-65's
+ * walk): an "either" takes one already held or already coming, else the one with the lowest skill
+ * requirement (its own tree first on a tie). Empty when one of them is out of the skills' reach,
+ * so only the star is taken and the rules engine says what's missing.
+ */
+export function missingPrerequisites(d: GameData, state: LevelState, id: string): string[] {
+  const held = (x: string) => (state.perksTaken[x]?.length ?? 0) > 0 || x in state.destinyTaken || (!!state.grantedTree && d.perkById.get(x)?.tree === state.grantedTree);
+  const need = (x: string) => {
+    const p = d.perkById.get(x);
+    return p?.rankSkills?.[0] ?? p?.skill ?? 0;
   };
-}
-
-/** Why a listed perk didn't fit by the level to reach, in the planner's words (WO-64). */
-function whyNotPlaced(d: GameData, s: FillSettings, id: string, rank: number, last: LevelState, placed: Record<string, number[]>): string {
-  const p = d.perkById.get(id);
-  const not = `Not by level ${s.to}`;
-  if (!p) return `${not}: not in this version`;
-  if (p.tree !== "Destiny") {
-    const need = p.rankSkills?.[rank - 1] ?? p.skill ?? 0;
-    const have = last.skills[p.tree] ?? 0;
-    if (have < need) {
-      if (need > d.maxSkillAt(s.to)) return `${not}: needs ${p.tree} ${need}, level ${need - d.rules.maxSkillBase} at the earliest`;
-      const target = s.targets.find(([sk]) => sk === p.tree)?.[1];
-      if (target === undefined) return `${not}: needs ${p.tree} ${need}, and ${p.tree} has no target`;
-      if (target < need) return `${not}: needs ${p.tree} ${need}, above the target`;
-      return `${not}: needs ${p.tree} ${need}`;
-    }
-    const lvl = p.rankLevels?.[rank - 1];
-    if (lvl && lvl > s.to) return `${not}: needs character level ${lvl}`;
-  }
-  const missing = p.requires.filter((r) => !placed[r] && !(last.perksTaken[r]?.length || r in last.destinyTaken));
-  if (missing.length && (!p.anyOf || missing.length === p.requires.length))
-    return `${not}: needs ${missing.map((r) => d.perkById.get(r)?.name ?? r).join(p.anyOf ? " or " : " and ")} first`;
-  const clash = (p.excludes ?? []).find((x) => placed[x]);
-  if (clash) return `${not}: can't be held with ${d.perkById.get(clash)?.name ?? clash}`;
-  return `${not}: no ${p.tree === "Destiny" ? "Destiny" : "perk"} points left`;
-}
-
-/** How the fill spends the attribute level-ups (WO-65): a preset (one first, or evenly), or the counts themselves (WO-67). */
-export type AttributeChoice = Attribute | "even" | Record<Attribute, number>;
-
-/** Level-ups shared out evenly, Health first with any left over. */
-export function evenAttributes(n: number): Record<Attribute, number> {
-  const base = Math.floor(n / 3);
-  const rest = n - 3 * base;
-  return { health: base + (rest > 0 ? 1 : 0), magicka: base + (rest > 1 ? 1 : 0), stamina: base };
-}
-
-/** The attribute counts and order for `to - 1` level-ups. "X first": half to X, taken first; the rest to the other two in turn. */
-export function attributeSettings(choice: AttributeChoice, to: number): Pick<FillSettings, "attributes" | "first"> {
-  const n = to - 1;
-  if (choice === "even") return { attributes: evenAttributes(n), first: "even" };
-  if (typeof choice === "object") return { attributes: choice, first: mostFirst(choice) };
-  const half = Math.ceil(n / 2);
-  const [a, b] = ATTRIBUTE_TURN.filter((x) => x !== choice);
-  const rest = n - half;
-  return { attributes: { [choice]: half, [a]: Math.ceil(rest / 2), [b]: Math.floor(rest / 2) } as Record<Attribute, number>, first: choice };
-}
-
-/** The attribute with the most level-ups goes first (WO-67); with a tie for most, they go in turn from the start. */
-export function mostFirst(counts: Record<Attribute, number>): Attribute | "even" {
-  const top = Math.max(...ATTRIBUTE_TURN.map((a) => counts[a]));
-  const at = ATTRIBUTE_TURN.filter((a) => counts[a] === top);
-  return at.length === 1 ? at[0] : "even";
-}
-
-/** The counts for a new number of level-ups, keeping their shares: rounded down, the rest to the largest remainders. */
-export function scaleAttributes(counts: Record<Attribute, number>, n: number): Record<Attribute, number> {
-  const total = ATTRIBUTE_TURN.reduce((t, a) => t + counts[a], 0);
-  if (total === 0) return evenAttributes(n);
-  const exact = ATTRIBUTE_TURN.map((a) => (counts[a] * n) / total);
-  const out = Object.fromEntries(ATTRIBUTE_TURN.map((a, i) => [a, Math.floor(exact[i])])) as Record<Attribute, number>;
-  let left = n - ATTRIBUTE_TURN.reduce((t, a) => t + out[a], 0);
-  for (const i of [0, 1, 2].sort((x, y) => exact[y] - Math.floor(exact[y]) - (exact[x] - Math.floor(exact[x])) || x - y)) if (left-- > 0) out[ATTRIBUTE_TURN[i]]++;
-  return out;
-}
-
-/**
- * One more (or one fewer) level-up to `a`, keeping the total (WO-67): one more comes from the
- * other attribute with the most; one fewer goes to the other with the fewest. Null when it can't.
- */
-export function shiftAttribute(counts: Record<Attribute, number>, a: Attribute, by: 1 | -1): Record<Attribute, number> | null {
-  const others = ATTRIBUTE_TURN.filter((x) => x !== a);
-  if (by === 1) {
-    const from = others.reduce((x, y) => (counts[y] > counts[x] ? y : x));
-    return counts[from] > 0 ? { ...counts, [a]: counts[a] + 1, [from]: counts[from] - 1 } : null;
-  }
-  if (counts[a] <= 0) return null;
-  const to = others.reduce((x, y) => (counts[y] < counts[x] ? y : x));
-  return { ...counts, [a]: counts[a] - 1, [to]: counts[to] + 1 };
-}
-
-/**
- * The lowest level every goal can make (WO-67): the same goals filled to the top level, as the
- * preview's "at the earliest" is, and the latest of their levels. 2 with no goals; the top level
- * when one can't be placed at all.
- */
-export function goalFloor(plan: BuildPlan, goals: string[], d: GameData, top: number): number {
-  if (!goals.length) return 2;
-  const g = goalsToSettings(plan, goals, top, "even", d);
-  if (g.clashes.length) return 2;
-  const { report } = fillToLevel(plan, g.settings, d);
-  return Math.max(2, ...goals.map((id) => report.perks.find((p) => p.id === id)?.level ?? top));
-}
-
-export interface GoalSettings {
-  /** What fillToLevel gets. Empty perks while goals clash. */
-  settings: FillSettings;
-  /** Prerequisites taken without being listed: the goals' paths down to their roots. */
-  along: Set<string>;
-  /** For each goal, its path: the prerequisites it brings, root first (goals among them included). */
-  paths: Record<string, string[]>;
-  /** Goals (or what comes along) that rule each other out, with the game's reason. */
-  clashes: { a: string; b: string; message: string }[];
-}
-
-const skillNeed = (d: GameData, id: string) => {
-  const p = d.perkById.get(id);
-  return p?.rankSkills?.[0] ?? p?.skill ?? 0;
-};
-
-/**
- * Picked perks (WO-65) as fillToLevel's settings. Each goal brings its prerequisites down to
- * the root: an "either" takes one already coming along, else the lowest skill requirement (its own
- * tree first on a tie). Perks the build already holds at level 1 aren't listed. Perks go
- * prerequisites first, then by skill requirement, low first. Targets: each tree's highest need, in
- * that order, then the majors and the minors up to the max skill so spare points go somewhere useful.
- */
-export function goalsToSettings(plan: BuildPlan, goals: string[], to: number, attributes: AttributeChoice, d: GameData, setSkills: Record<string, number> = {}): GoalSettings {
-  const states = computeBuild({ ...plan, levels: plan.levels.slice(0, 1) }, d);
-  const held = (id: string) => {
-    const st = perkStatus(d, states, 1, id);
-    return st.ranksTaken > 0 || st.granted;
-  };
-  const chosen = new Set<string>(goals.filter((g) => d.perkById.has(g) && !held(g)));
-  const paths: Record<string, string[]> = {};
-  // Walk each goal's prerequisites; "either" picks are settled as the walk goes.
-  const pick: Record<string, string[]> = {};
-  const walk = (id: string, path: string[], seen: Set<string>) => {
-    if (seen.has(id)) return;
-    seen.add(id);
-    const p = d.perkById.get(id);
+  const out: string[] = [];
+  const walk = (x: string, seen: Set<string>) => {
+    if (seen.has(x)) return;
+    seen.add(x);
+    const p = d.perkById.get(x);
     if (!p) return;
     let reqs = p.requires.filter((r) => d.perkById.has(r));
     if (p.anyOf && reqs.length > 1) {
-      if (reqs.some(held)) reqs = [];
-      else {
-        const already = reqs.find((r) => chosen.has(r));
-        reqs = [already ?? [...reqs].sort((a, b) => skillNeed(d, a) - skillNeed(d, b) || Number(d.perkById.get(a)!.tree !== p.tree) - Number(d.perkById.get(b)!.tree !== p.tree))[0]];
-      }
+      if (reqs.some(held)) return;
+      const coming = reqs.find((r) => out.includes(r));
+      reqs = [coming ?? [...reqs].sort((a, b) => need(a) - need(b) || Number(d.perkById.get(a)!.tree !== p.tree) - Number(d.perkById.get(b)!.tree !== p.tree))[0]];
     }
-    pick[id] = reqs.filter((r) => !held(r));
-    for (const r of pick[id]) {
-      walk(r, path, seen);
-      if (!path.includes(r)) path.push(r);
-      chosen.add(r);
+    for (const r of reqs) {
+      if (held(r)) continue;
+      walk(r, seen);
+      if (!out.includes(r)) out.push(r);
     }
   };
-  for (const g of goals) {
-    if (!chosen.has(g)) continue;
-    const path: string[] = [];
-    walk(g, path, new Set());
-    paths[g] = path;
-  }
-  const along = new Set([...chosen].filter((id) => !goals.includes(id)));
-
-  // Clashes: anything chosen that rules out something else chosen.
-  const clashes: GoalSettings["clashes"] = [];
-  for (const id of chosen) {
-    const p = d.perkById.get(id)!;
-    for (const x of p.excludes ?? []) {
-      if (!chosen.has(x) || clashes.some((c) => c.a === x && c.b === id)) continue;
-      const o = d.perkById.get(x);
-      clashes.push({ a: id, b: x, message: `${p.name} can't be held with ${o && o.tree !== p.tree ? `${o.tree}: ` : ""}${o?.name ?? x}.` });
-    }
-  }
-
-  // Prerequisites first, then by skill requirement, low first (ties keep the goals' order).
-  const order = [...chosen];
-  const perks: string[] = [];
-  const placed = new Set<string>();
-  while (perks.length < order.length) {
-    const ready = order.filter((id) => !placed.has(id) && (pick[id] ?? []).every((r) => placed.has(r) || !chosen.has(r)));
-    if (!ready.length) break;
-    const next = ready.reduce((best, id) => (skillNeed(d, id) < skillNeed(d, best) ? id : best));
-    perks.push(next);
-    placed.add(next);
-  }
-
-  const targets: [string, number][] = [];
-  for (const id of perks) {
-    const p = d.perkById.get(id)!;
-    if (p.tree === "Destiny" || !(p.tree in states[0].skills)) continue;
-    const need = Math.max(...perks.filter((x) => d.perkById.get(x)!.tree === p.tree).map((x) => skillNeed(d, x)));
-    if (need > 0 && !targets.some(([s]) => s === p.tree)) targets.push([p.tree, need]);
-  }
-  // Values the author set by hand (a snapshot's, WO-68) come next, never under what the perks need.
-  for (const [s, v] of Object.entries(setSkills)) {
-    const at = targets.find(([t]) => t === s);
-    if (at) at[1] = Math.max(at[1], v);
-    else targets.push([s, v]);
-  }
-  for (const s of [...plan.majors, ...plan.minors]) if (!targets.some(([t]) => t === s)) targets.push([s, 100]);
-
-  return { settings: { to, targets, perks: clashes.length ? [] : perks, ...attributeSettings(attributes, to) }, along, paths, clashes };
-}
-
-/** The attribute a build's first major's school leans on: Magicka for a mage school, Stamina otherwise. */
-export function defaultAttribute(plan: BuildPlan, d: GameData): Attribute {
-  const g = d.skillGroups.find((x) => x.skills.includes(plan.majors[0] ?? ""));
-  return g?.group === "Mage" ? "magicka" : "stamina";
+  walk(id, new Set());
+  const reach = out.every((x) => {
+    const p = d.perkById.get(x)!;
+    return p.tree === "Destiny" || (state.skills[p.tree] ?? 0) >= need(x);
+  });
+  return reach ? out : [];
 }

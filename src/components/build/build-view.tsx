@@ -41,10 +41,10 @@ import { computeBuild } from "@/lib/rules/engine";
 import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
 import { AttributeIcon, DeityIcon, GameIcon, IconLabel, SignIcon, SkillIcon, SkillLabel, MarkIcon, SlotIcon, TagIcon } from "@/components/ui/skill-icon";
-import { ArrowTip, LevelBars, LevelLegend, LevelStepper, useArrowTip, useHoldInPlace } from "./level-nav";
+import { ArrowTip, LevelBars, LevelLegend, LevelStepper, StretchBars, useArrowTip, useHoldInPlace } from "./level-nav";
+import { levelsLine, skips, stretchAt, stretches, writtenLevels } from "@/lib/rules/stretches";
 import { BottomSheet, PerkDetails, Tree, ViewToggle, type TreeView } from "./tree";
 import styles from "./build-view.module.css";
-import { SnapshotTab } from "./snapshot-view";
 import { pageZoom } from "@/lib/zoom";
 import { themeOf, themeStyle } from "@/lib/themes";
 import { useDismiss } from "@/lib/use-dismiss";
@@ -130,12 +130,13 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
     setUrl("tab", t === "levels" ? null : t);
   };
 
-  const [level, setLevelState] = useState(() => Math.min(total, Math.max(1, initialLevel)));
+  // The open level is the one that holds its stretch's choices (WO-69): `?level=20` opens the stretch holding 20.
+  const [level, setLevelState] = useState(() => stretchAt(plan, Math.min(total, Math.max(1, initialLevel))).to);
   // Changing level keeps the level row where it is on screen.
   const { ref: levelBarRef, hold: holdLevelBar } = useHoldInPlace<HTMLElement>(level, HELD_SECTIONS);
   const setLevel = useCallback(
     (n: number) => {
-      const next = Math.min(total, Math.max(1, n));
+      const next = stretchAt(plan, Math.min(total, Math.max(1, n))).to;
       holdLevelBar();
       setLevelState(next);
       const url = new URL(window.location.href);
@@ -143,8 +144,14 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
       else url.searchParams.set("level", String(next));
       window.history.replaceState(null, "", url);
     },
-    [total, holdLevelBar],
+    [total, holdLevelBar, plan],
   );
+  // The stretches either side, for the arrows and the arrow keys (WO-69).
+  const allStretches = stretches(plan);
+  const stretchIndex = allStretches.findIndex((x) => x.to === level);
+  const prevTo = allStretches[stretchIndex - 1]?.to ?? null;
+  const nextTo = allStretches[stretchIndex + 1]?.to ?? null;
+  const openFrom = stretchAt(plan, level).from;
 
   // The one-time hint that the arrow keys step through levels (WO-49).
   const arrowTip = useArrowTip();
@@ -157,24 +164,22 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
       const t = e.target as HTMLElement | null;
       if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable || t.closest('[role="tablist"]'))) return;
       if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
-      setLevel(level + (e.key === "ArrowRight" ? 1 : -1));
+      const to = e.key === "ArrowRight" ? nextTo : prevTo;
+      if (to !== null) setLevel(to);
       // Using the keys means the hint has done its job: it never shows again.
       doneTip();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [level, setLevel, tab, doneTip]);
+  }, [level, setLevel, tab, doneTip, prevTo, nextTo]);
 
   // The intro, else the guide's first paragraph, else nothing.
   const intro = guide.intro && !isEmptyDoc(guide.intro) ? guide.intro : firstParagraph(overview);
-  // A snapshot build (WO-68): its first tab is Build, the build at its one level.
-  const snapshot = plan.snapshot;
-  const TAB_NAMES: Record<BuildTab, string> = { levels: snapshot ? "Build" : "Levels", guide: "Guide" };
-  const tabIcon = (t: BuildTab) => (t === "levels" && snapshot ? "destiny" : `tab-${t}`);
+  const TAB_NAMES: Record<BuildTab, string> = { levels: "Levels", guide: "Guide" };
   // Each tab's second line: what's in it.
   const minutes = overview ? Math.max(1, Math.ceil(docWords(overview) / 200)) : 0;
   const TAB_SUB: Record<BuildTab, string> = {
-    levels: snapshot ? `At level ${snapshot.level}` : `Levels 1 to ${total}`,
+    levels: `Levels 1 to ${total}`,
     guide: overview ? `${minutes} min read${plan.videoId ? " | Video" : ""}` : "Video",
   };
 
@@ -192,14 +197,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   const railSpells = spellsAndAbilities(d, plan, level);
   const spellsCount = railSpells.spells.length + railSpells.abilities.length + railSpells.shouts.length;
   const railItems: RailItem[] =
-    tab === "levels" && snapshot
-      ? [
-          { key: "at", label: `At level ${snapshot.level}`, target: "snapshot-top" },
-          { key: "skills", label: "Skills", target: "snapshot-skills" },
-          { key: "perks", label: "Perks", count: snapshot.result?.perks.length, target: "snapshot-perks" },
-          { key: "trees", label: "Perk trees", target: "snapshot-trees" },
-        ]
-      : tab === "guide" && overview
+    tab === "guide" && overview
       ? [
           // Only this tab's sections (WO-57): the tabs themselves switch tabs.
           ...guideHeadings(overview, "guide").map((h) => ({ key: h.id, label: h.text, target: h.id })),
@@ -274,7 +272,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
     <GuideFactsProvider plan={plan} states={states}>
       <main className={styles.main}>
         {/* The owner's edit bar: one click to edit, as View build is one click back. */}
-        {isOwner && !build.isSample && <EditBar buildId={build.id} name={build.name} current={null} visibility={build.visibility} snapshot={!!build.plan.snapshot} />}
+        {isOwner && !build.isSample && <EditBar buildId={build.id} name={build.name} current={null} visibility={build.visibility} />}
         {/* The build's guide theme (WO-37): everything below the edit bar takes its colours. */}
         <div className={styles.themed} data-theme={themeOf(plan.theme).id} style={themeStyle(plan.theme)}>
         <Cover
@@ -329,7 +327,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
                   onClick={() => setTab(t)}
                 >
                   {/* Folder tabs (WO-60): the 32px icon, the name, what's inside. */}
-                  <GameIcon file={tabIcon(t)} size={32} className={styles.tabIcon} />
+                  <GameIcon file={`tab-${t}`} size={32} className={styles.tabIcon} />
                   <span className={styles.tabText}>
                     <span className={styles.tabName}>{TAB_NAMES[t]}</span>
                     <span className={styles.tabSub}>{TAB_SUB[t]}</span>
@@ -338,7 +336,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
               ))}
             </div>
           )}
-          {pinned && ((tab === "levels" && !snapshot) || tabs.length > 1) && (
+          {pinned && (tab === "levels" || tabs.length > 1) && (
             <div className={styles.pinnedBar} role="region" aria-label="Pinned bar" data-pinned-bar="">
               <div className={`page ${styles.pinnedInner}`}>
                 {/* The tabs, small, once the big ones scroll away (WO-60). */}
@@ -346,18 +344,21 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
                   <span className={styles.miniTabs}>
                     {tabs.map((t) => (
                       <button key={t} type="button" className={styles.miniTab} aria-pressed={tab === t} onClick={() => setTab(t)}>
-                        <GameIcon file={tabIcon(t)} size={16} />
+                        <GameIcon file={`tab-${t}`} size={16} />
                         <span>{TAB_NAMES[t]}</span>
                       </button>
                     ))}
                   </span>
                 )}
-                {tab === "levels" && !snapshot && (
+                {tab === "levels" && (
                 <>
                 <LevelStepper
                   level={level}
                   total={total}
                   onChange={setLevel}
+                  from={openFrom}
+                  prev={prevTo}
+                  next={nextTo}
                   slim
                   onStep={() => arrowTip.stepped("pinned")}
                   tip={arrowTip.open === "pinned" ? <ArrowTip onClose={arrowTip.done} /> : null}
@@ -382,15 +383,12 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           )}
 
           {/* The reader's first-time tour (WO-61), on the Levels tab where its stops are. */}
-          {tab === "levels" && !snapshot && <Tour kind="reader" script={readerTour} />}
+          {tab === "levels" && <Tour kind="reader" script={readerTour} />}
           <div className={styles.withRail}>
           <ContentsRail items={railItems} />
           <div className={styles.railMain}>
           {tab === "levels" && (
             <div id="panel-levels" role={tabs.length > 1 ? "tabpanel" : undefined} aria-labelledby={tabs.length > 1 ? "tab-levels" : undefined} className={styles.panelStack}>
-              {snapshot ? (
-                <SnapshotTab plan={plan} />
-              ) : (
               <LevelsTab
                 build={build}
                 states={states}
@@ -405,7 +403,6 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
                 destinyOpenChoice={destinyOpenChoice}
                 setDestinyOpenChoice={setDestinyOpenChoice}
               />
-              )}
             </div>
           )}
           {tab === "guide" && (overview || plan.videoId) && (
@@ -525,12 +522,13 @@ function LevelsTab({
             level={level}
             total={total}
             onChange={setLevel}
+            {...stretchSteps(plan, level)}
             onStep={() => arrowTip.stepped("page")}
             tip={arrowTip.open === "page" ? <ArrowTip onClose={arrowTip.done} /> : null}
           />
           <LevelLegend marks={marks} />
         </div>
-        <LevelBars marks={marks} level={level} onChange={setLevel} />
+        {skips(plan) ? <StretchBars marks={marks} plan={plan} level={level} onChange={setLevel} /> : <LevelBars marks={marks} level={level} onChange={setLevel} />}
       </section>
 
       <LevelCard d={d} build={build} states={states} level={level} note={note} onPerk={(id) => showPerk(id, true)} />
@@ -1010,6 +1008,24 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
   };
 
   const facts = levelFacts(d, plan, states, level);
+  // A stretch (WO-69): its attribute level-ups, most first; each perk with its requirement; long lists in two columns.
+  const span = stretchAt(plan, level);
+  const isStretch = span.from > 1 && span.from < span.to;
+  const title = isStretch ? `Levels ${span.from} to ${span.to}` : `Level ${level}`;
+  const counts = Object.entries(plan.levels[level - 1].attributes ?? {})
+    .filter(([, n]) => (n ?? 0) > 0)
+    .sort((a, b) => (b[1] ?? 0) - (a[1] ?? 0)) as [keyof typeof ATTRIBUTE_NAMES, number][];
+  if (isStretch && counts.length)
+    rows.push([
+      "Attributes",
+      <span key="as" className={styles.attrCounts}>
+        {counts.map(([a, n]) => (
+          <IconLabel key={a} icon={<AttributeIcon name={a} size={24} />}>
+            +{d.rules.attributePerLevel * n} {ATTRIBUTE_NAMES[a]}
+          </IconLabel>
+        ))}
+      </span>,
+    ]);
   if (facts.attribute)
     rows.push([
       "Attribute",
@@ -1021,8 +1037,9 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
   if (raised.length)
     rows.push([
       "Skill points",
-      <SkillGains
+      <GainColumns
         key="s"
+        columns={isStretch && raised.length > 6}
         rows={raised.map((r, i) => ({
           skill: r.sk,
           gain: r.n,
@@ -1040,14 +1057,14 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
           {p.name}
           {p.rank ? ` ${p.rank}` : ""}
         </button>{" "}
-        <span className="muted">{p.tree !== p.name ? `(${p.tree}${p.book ? ", book" : ""})` : p.book ? "(book)" : ""}</span>
+        <span className="muted">{isStretch ? perkRequirement(d, p.id, p.tree) : p.tree !== p.name ? `(${p.tree}${p.book ? ", book" : ""})` : p.book ? "(book)" : ""}</span>
       </span>
     )),
   ];
   if (perkLines.length)
     rows.push([
       perkLines.length > 1 ? "Perks" : "Perk",
-      <span key="p" className={styles.stack}>
+      <span key="p" className={`${styles.stack} ${isStretch && perkLines.length > 6 ? styles.twoCols : ""}`}>
         {perkLines}
       </span>,
     ]);
@@ -1206,9 +1223,9 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
   if (changes.banked > 0) rows.push(["Banked", `${changes.banked} skill point${changes.banked === 1 ? "" : "s"}`]);
 
   return (
-    <section id="level-card" data-tour="level-card" aria-label={`Level ${level}`} className={`frame ${styles.card} ${styles.cardWithNote}`}>
+    <section id="level-card" data-tour="level-card" aria-label={title} className={`frame ${styles.card} ${styles.cardWithNote}`}>
       <div className={styles.cardMain}>
-        <h2 className={styles.cardTitle}>Level {level}</h2>
+        <h2 className={styles.cardTitle}>{title}</h2>
         {rows.length ? (
           <div className={styles.changes}>
             {rows.map(([k, v]) => (
@@ -1245,7 +1262,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       {/* The author's column is always there: their name first, then the note (or that there isn't one). */}
       <aside aria-label="Author's note" className={styles.note}>
         <AuthorLink author={build.author} className={styles.noteBy} avatar={<Avatar name={build.author.name} image={build.author.image} size={24} />} />
-        {note ? <LevelNote key={level} doc={note} level={level} lines={12} /> : <p className={`muted ${styles.noNote}`}>No note for level {level}.</p>}
+        {note ? <LevelNote key={level} doc={note} level={level} lines={12} /> : <p className={`muted ${styles.noNote}`}>No note for {isStretch ? `levels ${span.from} to ${span.to}` : `level ${level}`}.</p>}
       </aside>
     </section>
   );
@@ -1416,18 +1433,15 @@ function Cover({
           <div className={`${styles.byline} ${styles.heroIn} ${styles.heroIn3}`}>
             <AuthorLink author={build.author} className={styles.author} nameClassName={styles.authorName} avatar={<Avatar name={build.author.name} image={build.author.image} />} />
             {!build.isSample && <LikeButton buildId={build.id} liked={build.likedByViewer} count={build.likeCount} mode={isOwner && build.visibility === "private" ? "owner" : signedIn ? "can" : "signedOut"} signIn={signInToLike} />}
-            {build.plan.snapshot && <span className={`tag ${styles.snapshotTag}`}>Snapshot at level {build.plan.snapshot.level}</span>}
             <span className="tag">LoreRim {build.gameVersion}</span>
+            {/* A build that skips ahead (WO-69): the levels written, runs collapsed. */}
+            {skips(build.plan) && <span className={styles.writtenLevels}>{levelsLine(writtenLevels(build.plan))}</span>}
             {/* One unit, so a wrap never leaves the bar dangling at a line's end. */}
             <span className={styles.dates}>
-              {!build.plan.snapshot && (
-                <>
-                  <span>Planned to level {build.plan.levels.length}</span>
-                  <span className={styles.pipe} aria-hidden="true">
-                    |
-                  </span>
-                </>
-              )}
+              <span>Planned to level {build.plan.levels.length}</span>
+              <span className={styles.pipe} aria-hidden="true">
+                |
+              </span>
               <span>
                 Updated <LocalDate date={build.updatedAt} />
               </span>
@@ -1514,5 +1528,31 @@ function AdminMenu({ buildId, featured: initial, listed, onError }: { buildId: s
         </button>
       )}
     </MenuButton>
+  );
+}
+
+/** The stepper's stretch (WO-69): where the open one starts, and the ones either side. */
+function stretchSteps(plan: BuildViewData["plan"], level: number): { from: number; prev: number | null; next: number | null } {
+  const all = stretches(plan);
+  const i = all.findIndex((x) => x.to === level);
+  return { from: all[i]?.from ?? level, prev: all[i - 1]?.to ?? null, next: all[i + 1]?.to ?? null };
+}
+
+/** "(Destruction 50)", or "(Block)" for a perk with no skill requirement (WO-69). */
+function perkRequirement(d: GameData, id: string, tree: string): string {
+  const p = d.perkById.get(id);
+  const need = p?.rankSkills?.[0] ?? p?.skill ?? 0;
+  return need > 0 && tree !== "Destiny" ? `(${tree} ${need})` : `(${tree})`;
+}
+
+/** Skill gains, in two columns when a stretch raises more than 6 skills (WO-69). */
+function GainColumns({ rows, columns }: { rows: React.ComponentProps<typeof SkillGains>["rows"]; columns: boolean }) {
+  if (!columns) return <SkillGains rows={rows} />;
+  const half = Math.ceil(rows.length / 2);
+  return (
+    <span className={styles.twoCols}>
+      <SkillGains rows={rows.slice(0, half)} />
+      <SkillGains rows={rows.slice(half)} />
+    </span>
   );
 }

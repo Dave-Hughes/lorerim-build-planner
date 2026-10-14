@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { levelsLine } from "@/lib/rules/stretches";
 import { Heart, likesLabel } from "./heart";
 import { AuthorLink } from "@/components/ui/author-link";
 import { Avatar } from "@/components/ui/avatar";
@@ -42,8 +43,9 @@ export function BuildCard({ build, mine, likedAt, featured }: { build: BuildSumm
         {featured?.intro && <p className={styles.intro}>{featured.intro}</p>}
         <p className={styles.facts}>
           {build.race ? <IconLabel icon={<RaceIcon name={build.race} />}>{build.race}</IconLabel> : null}
-          {build.traits.length ? ` with ${build.traits.join(" and ")}` : ""}, {build.snapshotLevel ? `Snapshot at level ${build.snapshotLevel}` : `to level ${build.levels}`}
+          {build.traits.length ? ` with ${build.traits.join(" and ")}` : ""}, to level {build.levels}
         </p>
+        {build.writtenLevels && <p className={styles.written}>{levelsLine(build.writtenLevels)}</p>}
         <div className={styles.foot}>
           <AuthorLink author={build.author} className={styles.author} avatar={<Avatar name={build.author.name} image={build.author.image} size={24} />} />
           <span className={styles.footRight}>

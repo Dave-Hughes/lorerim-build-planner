@@ -3,9 +3,9 @@
  * kept in localStorage. Reads and writes never throw: with storage blocked the tour shows at most
  * once a visit (`seen` below remembers it for the page's life).
  */
-export type TourKind = "reader" | "author" | "snapshot";
+export type TourKind = "reader" | "author";
 
-const KEY: Record<TourKind, string> = { reader: "planner.tour.reader", author: "planner.tour.author", snapshot: "planner.tour.snapshot" };
+const KEY: Record<TourKind, string> = { reader: "planner.tour.reader", author: "planner.tour.author" };
 const seen = new Set<TourKind>();
 
 function read(kind: TourKind): string | null {
@@ -24,7 +24,7 @@ function write(kind: TourKind, value: string) {
 }
 
 /**
- * Whether to offer the tour now. The reader's, and the snapshot editor's (WO-68): never done. The
+ * Whether to offer the tour now. The reader's: never done. The
  * author's: a build was just made and it's not done.
  */
 export function tourDue(kind: TourKind): boolean {
@@ -80,21 +80,6 @@ export const AUTHOR_TOUR: TourScript = {
     { target: "points", title: "Points to spend", text: "What this level gives you. Don't spend them all? They wait for the next level. Like leftovers." },
     { target: "skills-tree", title: "Take a perk", text: "Pick a skill. Click a ring in its tree, then Confirm. A ring means you can take it now." },
     { target: "note", title: "Your note", text: "Tell readers what to do here. Where to go, what to buy, what bites." },
-    { target: "footer", title: "On to level 2", text: "Done? Continue. From level 3 on, Repeat copies the level before. Less clicking, more mead." },
+    { target: "footer", title: "On to level 2", text: "Done? Continue to level 2, or Skip ahead and write the levels in between as one. From level 3 on, Repeat copies the level before." },
   ],
 };
-
-/**
- * The snapshot editor's tour (WO-68), in plain words. On a phone the tree opens from the skill
- * list, so the tree's stop points at the list.
- */
-export const SNAPSHOT_TOUR = (wide: boolean): TourScript => ({
-  welcome: { title: "Snapshot", text: "Shows a build at one level: its skills, attributes and perks.", go: "Show me", no: "Skip" },
-  stops: [
-    { target: "sn-level", title: "At level", text: "Pick the level." },
-    { target: "sn-attrs", title: "Attributes", text: "Set how many level-ups go to Health, Magicka and Stamina. The presets fill them in; change any number." },
-    { target: wide ? "sn-tree" : "sn-skills", title: "Pick perks", text: "Pick a perk you want. The perks it needs first are selected for you, and perks that can't go with it are ruled out." },
-    { target: "sn-skills", title: "Skills", text: "Skills are raised to what your perks need. Spare points go to your majors; change any number." },
-    { target: "sn-save", title: "Save snapshot", text: "Save the snapshot, then write the Guide." },
-  ],
-});

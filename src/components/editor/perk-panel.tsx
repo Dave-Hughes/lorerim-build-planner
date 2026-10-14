@@ -5,6 +5,7 @@ import { useGameData } from "@/components/game-data";
 import { perkText } from "@/lib/rules/data";
 import { dependants, perkName, perkStatus, saysNothingNew, type Dependant } from "@/lib/rules/derive";
 import type { BuildPlan, LevelState } from "@/lib/rules/types";
+import { missingPrerequisites } from "./plan-ops";
 import styles from "./editor.module.css";
 
 interface Props {
@@ -78,6 +79,14 @@ function PerkPanelFor({ plan, states, level, selectedId, onTake, onRemove, onGoT
     return o && o.tree !== p.tree ? `${o.tree}: ${o.name}` : perkName(d, x);
   });
   const biting = st.reasons.some((r) => r.startsWith("Can't be held"));
+  // Only its prerequisites missing, and the skills reach them (WO-69): taking it takes them too.
+  const s = states[level - 1];
+  const chain = st.state === "locked" ? missingPrerequisites(d, s, p.id) : [];
+  const pointsFor = chain.filter((x) => !d.perkById.get(x)?.book).length + (p.book ? 0 : 1);
+  const canChain =
+    chain.length > 0 &&
+    st.reasons.every((r) => /^Needs .* first\.$/.test(r) && !/^Needs [^,]+ \d+\./.test(r)) &&
+    (p.tree === "Destiny" ? s.destinyPoints - s.destinyPointsSpent : s.perkPoints - s.perkPointsSpent) >= pointsFor;
   const reasons = st.reasons.filter((r) => !r.startsWith("Can't be held"));
   // Ranks already taken, one line each; then the next rank's own text.
   const multi = st.ranks > 1 && !st.granted;
@@ -110,7 +119,9 @@ function PerkPanelFor({ plan, states, level, selectedId, onTake, onRemove, onGoT
         </p>
       ))}
       {excludes.length > 0 && <p className={`${styles.panelLine} ${biting ? "bad" : "muted"}`}>Can&apos;t be held with {excludes.join(" or ")}.</p>}
+      {canChain && <p className={`ember ${styles.panelLine}`}>Takes {listWithLevels(chain.map((x) => perkName(d, x)))} too.</p>}
       {st.state === "locked" &&
+        !canChain &&
         reasons.map((r) => (
           <p key={r} className={`muted ${styles.panelLine}`}>
             {r}
@@ -133,8 +144,8 @@ function PerkPanelFor({ plan, states, level, selectedId, onTake, onRemove, onGoT
         </div>
       ) : (
         <div ref={actions} className={styles.panelActions}>
-          {st.state === "open" && (
-            <button type="button" className="btn btn-primary" disabled={!!st.noPoint} onClick={() => act(() => onTake(p.id))}>
+          {(st.state === "open" || canChain) && (
+            <button type="button" className="btn btn-primary" disabled={!canChain && !!st.noPoint} onClick={() => act(() => onTake(p.id))}>
               Confirm
             </button>
           )}

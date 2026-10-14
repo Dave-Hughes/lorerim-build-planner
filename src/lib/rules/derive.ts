@@ -3,6 +3,7 @@
  * and its computed states, but isn't a rule check itself. Each takes the
  * data of the build's own LoreRim version.
  */
+import { levelUps, stretchAt } from "./stretches";
 import { rankCount, type GameData, type Perk } from "./data";
 import { gearChanges } from "./gear";
 import type { Attribute, BuildPlan, LevelPlan, LevelState } from "./types";
@@ -287,19 +288,23 @@ export interface SkillStepInfo {
   canRemove: boolean;
   atMax: boolean;
   atFive: boolean;
+  /** The most it may rise here: +5, or +5 a level over a stretch (WO-69). */
+  limit: number;
 }
 
 export function skillStepInfo(d: GameData, plan: BuildPlan, states: LevelState[], level: number): SkillStepInfo[] {
   const lv = plan.levels[level - 1];
   const s = states[level - 1];
   const left = s.skillPointsAvailable - s.skillPointsSpent;
+  // Over a stretch (WO-69), +5 for each of its level-ups.
+  const limit = d.rules.maxRaisePerSkillPerLevel * Math.max(1, levelUps(stretchAt(plan, level)));
   return d.skills.map((skill) => {
     const added = lv.skillPoints[skill] ?? 0;
     const from = s.skillsBefore[skill];
     const to = from + added;
     const granted = s.grantedTree === skill;
     const atMax = to >= s.maxSkill || granted;
-    const atFive = added >= d.rules.maxRaisePerSkillPerLevel;
+    const atFive = added >= limit;
     const nextCost = atMax || atFive ? null : d.skillPointCost(to);
     return {
       skill,
@@ -311,6 +316,7 @@ export function skillStepInfo(d: GameData, plan: BuildPlan, states: LevelState[]
       canRemove: added > 0,
       atMax,
       atFive,
+      limit,
     };
   });
 }

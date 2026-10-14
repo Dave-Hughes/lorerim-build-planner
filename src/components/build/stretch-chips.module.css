@@ -1,0 +1,45 @@
+/* The stretches of a build that skips ahead (WO-69). */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 96px;
+  min-height: 48px;
+  padding: 6px 14px;
+  border: 1px solid var(--rule-strong);
+  background: var(--panel);
+  color: var(--soft);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.chip:hover {
+  border-color: var(--line-bright);
+}
+.on,
+.on:hover {
+  border-color: var(--ember);
+  background: #1b1712;
+}
+.name {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.1;
+  color: var(--text);
+}
+.on .name {
+  color: var(--ember-text);
+}
+.sub {
+  font-size: 13px;
+  color: var(--muted);
+}

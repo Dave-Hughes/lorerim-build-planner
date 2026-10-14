@@ -1530,8 +1530,22 @@
   }
 }
 
-/* "Snapshot at level 50" in the byline (WO-68): a brass tag. */
-.snapshotTag {
-  border-color: var(--brass);
-  color: #e8d3a4;
+/* Skip ahead (WO-69): the levels written in the byline; a stretch's attributes; long lists in two columns. */
+.writtenLevels {
+  color: var(--soft);
+}
+.attrCounts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+}
+.twoCols {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px 24px;
+}
+@media (max-width: 720px) {
+  .twoCols {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

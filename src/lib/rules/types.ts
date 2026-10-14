@@ -20,9 +20,16 @@ export interface OghmaExtra {
 }
 
 export interface LevelPlan {
+  /**
+   * A level inside a stretch (WO-69): the author skipped ahead past it. It holds no choices; the
+   * level after the run holds the stretch's. The last level of a build is never skipped.
+   */
+  skipped?: true;
   /** Attribute raised at this level-up. Not used at level 1. */
   attribute?: Attribute;
-  /** Skill points spent at this level-up, as +N per skill. */
+  /** On the last level of a stretch (WO-69): the level-ups to each attribute, in place of `attribute`. */
+  attributes?: Partial<Record<Attribute, number>>;
+  /** Skill points spent at this level-up, as +N per skill (over the whole stretch on a stretch's last level). */
   skillPoints: Record<string, number>;
   /** Perk ids taken this level ("Tree:Name"). Repeat an id for extra ranks. */
   perks: string[];
@@ -122,35 +129,11 @@ export interface BuildPlan {
   mainSpells?: string[];
   gear: GearItem[];
   notes: string;
-  /** A snapshot build (WO-68): the build at one level, in place of levels 2 and on. Its levels hold level 1 only. */
-  snapshot?: Snapshot;
-}
-
-/**
- * The build at one level (WO-68): the level, the attribute level-ups, the perks the author picked
- * (what they need comes along) and skill values the author set by hand. `result` is what the
- * rules make of it, worked out and stored on save.
- */
-export interface Snapshot {
-  level: number;
-  attributes: Record<Attribute, number>;
-  perks: string[];
-  skills: Record<string, number>;
-  result?: SnapshotResult;
-}
-
-export interface SnapshotResult {
-  /** Every skill's value at the level. */
-  skills: Record<string, number>;
-  /** Every perk and Destiny star held: the picks and the auto selected ones. */
-  perks: string[];
-  health: number;
-  magicka: number;
-  stamina: number;
 }
 
 export type IssueCode =
   | "attribute-missing"
+  | "attribute-over"
   | "skill-over-five"
   | "skill-over-max"
   | "skill-points-over"
