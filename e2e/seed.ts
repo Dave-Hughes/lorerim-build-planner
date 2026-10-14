@@ -72,6 +72,8 @@ export const IRIEL_BUILD_ID = "e2eyrye7q2";
 export const PURE_MAGE_BUILD_ID = "e2epuremag";
 /** WO-71: a copy of Sevari from staging (src/lib/rules/__fixtures__/sevari.json): 100 levels, skipping ahead from 5, about 100 perks. For the speed tests. */
 export const SEVARI_BUILD_ID = "e2esevar22";
+/** WO-72: a Breton poisoner at level 1 (Alchemy 30), two of its three perk points spent: one left. */
+export const ONE_POINT_BUILD_ID = "e2ew72pq2s";
 export const OTHER_USER_ID = "e2e-user-0002";
 export const OTHER_BUILD_ID = "e2eqq2e2e2";
 /** Made for the test-only older version (src/lib/rules/__fixtures__/test-version.ts). */
@@ -219,8 +221,30 @@ export async function seed() {
         plan: pureMage.plan as unknown as BuildPlan,
       },
       {
+        id: ONE_POINT_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        // Made 2 days ago, out of the author's daily build limit (WO-40).
+        createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
+        name: "One Point Left",
+        description: "Level 1, one perk point left.",
+        visibility: "private",
+        gameVersion: "5.0.4.8",
+        plan: {
+          ...freshPlan(),
+          race: "Breton",
+          mode: "Konahrik" as const,
+          majors: ["Alchemy", "Sneak", "Illusion"],
+          minors: ["Evasion", "Finesse", "Speech", "Restoration", "Enchanting", "Destruction"],
+          traits: [],
+          traitChoices: {},
+          levels: [{ ...emptyLevel(), perks: ["Sneak:Stealth", "Illusion:Novice Illusion"] }],
+        } as BuildPlan,
+      },
+      {
         id: SEVARI_BUILD_ID,
         ownerId: TEST_USER_ID,
+        // Made 2 days ago, out of the author's daily build limit (WO-40).
+        createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
         name: sevari.name,
         description: sevari.description,
         visibility: "unlisted",

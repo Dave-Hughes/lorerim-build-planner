@@ -5,6 +5,22 @@
  * jewellery, the ones whose slots include the item's.
  */
 import type { Enchantment, GameData } from "./data";
+import type { LevelState } from "./types";
+
+export const ENCHANTMENT_MASTERY = "Enchanting:Enchantment Mastery";
+export const ARTIFACT_ENCHANTER = "Enchanting:Artifact Enchanter";
+
+/**
+ * How many enchantment lines a made item can have at a level (WO-72): one; two with Enchantment
+ * Mastery; three with Artifact Enchanter. `missing` is the rule for the next line, in the engine's
+ * words, when there is one.
+ */
+export function enchantLines(d: GameData, s: Pick<LevelState, "perksTaken" | "grantedTree">): { allowed: 1 | 2 | 3; missing?: string } {
+  const holds = (id: string) => (s.perksTaken[id]?.length ?? 0) > 0 || (!!s.grantedTree && d.perkById.get(id)?.tree === s.grantedTree);
+  if (holds(ARTIFACT_ENCHANTER)) return { allowed: 3 };
+  if (holds(ENCHANTMENT_MASTERY)) return { allowed: 2, missing: "Three enchantments need Artifact Enchanter." };
+  return { allowed: 1, missing: "Two enchantments need Enchantment Mastery." };
+}
 
 /** What a made item takes enchantments as: a weapon, or armour in a slot. Null for ammo and the unknown. */
 export type EnchantTarget = { on: "weapon" } | { on: "armor"; slot: string } | null;

@@ -17,7 +17,8 @@ test("the card's author line links to their page; a level without a note says so
 });
 
 test("Banked and Trainer in the card explain themselves on hover", async ({ page }) => {
-  await page.goto(`/b/${TEST_BUILD_ID}?level=6`);
+  // Level 6 of the twenty-level copy: not the last, so Banked (the last level says Unspent, WO-72).
+  await page.goto(`/b/${LONG_BUILD_ID}?level=6`);
   await page.getByRole("region", { name: "Level 6", exact: true }).getByText("Banked", { exact: true }).hover();
   await expect(page.getByRole("tooltip").filter({ hasText: "carry over to the next level-up" })).toBeVisible();
   await page.goto(`/b/${AZREM_BUILD_ID}?level=6`);

@@ -32,6 +32,30 @@ export function perkRequirementText(p: Perk, rank = 0): string {
   return "";
 }
 
+/**
+ * A stretch card's requirement (WO-69): "(Destruction 50)", or "(Block)" for a perk with no skill
+ * requirement. A rank's own requirement: Short Blade Focus 3 is "(One-Handed 75)" (WO-72).
+ */
+export function stretchPerkRequirement(d: GameData, id: string, tree: string, rank = 1): string {
+  const p = d.perkById.get(id);
+  const req = p ? perkRequirementText(p, rank - 1) : "";
+  return req && !req.startsWith("Level ") ? `(${req})` : `(${tree})`;
+}
+
+/**
+ * A stretch card's perks (WO-72): by tree (the game's skill order, Destiny last), then the rank's
+ * skill requirement, then name, so the prerequisites the editor took along sit with their tree.
+ */
+export function stretchPerkOrder<P extends { id: string; name: string; tree: string; rank?: number }>(d: GameData, perks: P[]): P[] {
+  const need = (x: P) => {
+    const p = d.perkById.get(x.id);
+    if (!p) return 0;
+    return p.rankSkills ? p.rankSkills[Math.min(x.rank ?? 1, p.rankSkills.length) - 1] : (p.skill ?? 0);
+  };
+  const treeAt = (t: string) => (t === "Destiny" ? d.skills.length : d.skills.indexOf(t));
+  return [...perks].sort((a, b) => treeAt(a.tree) - treeAt(b.tree) || need(a) - need(b) || a.name.localeCompare(b.name) || (a.rank ?? 0) - (b.rank ?? 0));
+}
+
 /** A perk whose last rank needs skill 100 (the "Skill 100 perk" ruler mark). */
 export function isSkill100Perk(p: Perk, rank = 0): boolean {
   const skill = p.rankSkills ? p.rankSkills[Math.min(rank, p.rankSkills.length - 1)] : (p.skill ?? 0);
@@ -444,7 +468,6 @@ export function levelFacts(d: GameData, plan: BuildPlan, states: LevelState[], l
   return {
     attribute: level > 1 ? lv.attribute : undefined,
     raised,
-    capAt: raised.findIndex((x) => x.to >= s.maxSkill),
     extras,
     oghma,
     perks: changes.perks,

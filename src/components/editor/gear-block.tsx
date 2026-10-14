@@ -4,12 +4,13 @@ import { useId, useState } from "react";
 import { useGameData } from "@/components/game-data";
 import { keepInView } from "@/lib/keep-in-view";
 import { fitsSlot, itemById, searchItems, useItems, type GameItem } from "@/lib/items/items";
-import { enchantTarget, fitsTarget, searchEnchantments } from "@/lib/rules/enchantments";
+import { enchantLines, enchantTarget, fitsTarget, searchEnchantments } from "@/lib/rules/enchantments";
 import { START_LIST_MAX } from "@/lib/rules/spells";
 import type { Enchantment } from "@/lib/rules/data";
 import { IconLabel, SlotIcon } from "@/components/ui/skill-icon";
 import { GEAR_SLOTS, gearAt, gearChangeText, gearChanges, madeStaffName, type GearSlot, type HeldGear } from "@/lib/rules/gear";
-import type { BuildPlan, MadeGear } from "@/lib/rules/types";
+import type { BuildPlan, LevelState, MadeGear } from "@/lib/rules/types";
+import { Tooltip } from "@/components/ui/tooltip";
 import * as ops from "./plan-ops";
 import styles from "./editor.module.css";
 
@@ -21,7 +22,9 @@ type Editing = { slot: GearSlot; item?: string } | "add" | null;
  * changes made at this level in ember with Undo. Gear is optional: a build without any shows only
  * Add gear, and nothing here ever raises a problem.
  */
-export function GearBlock({ plan, level, setPlan }: { plan: BuildPlan; level: number; setPlan: (p: BuildPlan) => void }) {
+export function GearBlock({ plan, level, state, setPlan }: { plan: BuildPlan; level: number; state: LevelState; setPlan: (p: BuildPlan) => void }) {
+  // The enchantment lines the build's perks allow by this level (WO-72).
+  const lines = enchantLines(useGameData(), state);
   const [editing, setEditing] = useState<Editing>(null);
   const held = gearAt(plan, level);
   const emptied = gearChanges(plan, level).filter((g) => !g.name.trim());
@@ -48,12 +51,14 @@ export function GearBlock({ plan, level, setPlan }: { plan: BuildPlan; level: nu
               return (
                 <li key={`${h.slot}-${h.name}`}>
                   <GearForm
+                    lines={lines}
                     slot={h.slot}
-                    initial={{ name: h.name, note: h.note, itemId: h.itemId, made: h.made }}
+                    // A note belongs to the row it was written on: a change at a later level starts a new row, with no note (WO-72).
+                    initial={{ name: h.name, note: here ? h.note : "", itemId: h.itemId, made: h.made }}
                     submit="Save"
-                    // Saving a carried item unchanged changes nothing.
+                    // Saving a carried item unchanged (same item, no note of its own) changes nothing.
                     onSubmit={(set) =>
-                      !here && set.name.trim() === h.name && set.note.trim() === h.note ? setEditing(null) : done(ops.setGearAt(plan, level, h.slot, set, item))
+                      !here && set.name.trim() === h.name && !set.note.trim() ? setEditing(null) : done(ops.setGearAt(plan, level, h.slot, set, item))
                     }
                     onCancel={() => setEditing(null)}
                   />
@@ -106,6 +111,7 @@ export function GearBlock({ plan, level, setPlan }: { plan: BuildPlan; level: nu
       )}
       {editing === "add" ? (
         <GearForm
+          lines={lines}
           slots={free}
           initial={{ name: "", note: "" }}
           submit="Add"
@@ -128,6 +134,7 @@ type GearSet = { name: string; note: string; itemId?: string; made?: MadeGear };
  * anything the index doesn't have) and an optional note; a slot select when adding.
  */
 function GearForm({
+  lines,
   slot,
   slots,
   initial,
@@ -136,6 +143,8 @@ function GearForm({
   onCancel,
 }: {
   slot?: GearSlot;
+  /** How many enchantment lines the perks allow, and the rule for the next (WO-72). */
+  lines: { allowed: number; missing?: string };
   slots?: GearSlot[];
   initial: GearSet;
   submit: string;
@@ -301,19 +310,30 @@ function GearForm({
               {spell && <span className="muted">{madeStaffName(spell.name)}</span>}
             </>
           ) : (
-            // The next line appears once the one before it has text.
-            [0, 1, 2]
-              .filter((i) => i === 0 || enchant[i - 1].trim() || enchant[i].trim())
-              .map((i) => (
-                <EnchantField
-                  key={i}
-                  n={i + 1}
-                  value={enchant[i]}
-                  target={target}
-                  taken={enchant.filter((l, k) => k !== i && d.enchantmentById.has(l))}
-                  onChange={(v) => setEnchant((x) => x.map((l, k) => (k === i ? v : l)))}
-                />
-              ))
+            <>
+              {/* The next line appears once the one before it has text, and only as far as the perks
+                  allow (WO-72); a line already written stays, so the rules can say what's wrong. */}
+              {[0, 1, 2]
+                .filter((i) => i === 0 || enchant[i].trim() || (i < lines.allowed && enchant[i - 1].trim()))
+                .map((i) => (
+                  <EnchantField
+                    key={i}
+                    n={i + 1}
+                    value={enchant[i]}
+                    target={target}
+                    taken={enchant.filter((l, k) => k !== i && d.enchantmentById.has(l))}
+                    onChange={(v) => setEnchant((x) => x.map((l, k) => (k === i ? v : l)))}
+                  />
+                ))}
+              {/* The first line the perks don't allow, with the rule. */}
+              {lines.missing && lines.allowed < 3 && enchant[lines.allowed - 1].trim() && !enchant[lines.allowed].trim() && (
+                <Tooltip content={lines.missing}>
+                  <span tabIndex={0} className={`muted ${styles.ruleTip}`}>
+                    Enchantment {lines.allowed + 1}
+                  </span>
+                </Tooltip>
+              )}
+            </>
           ))}
       </span>
       <span className={styles.gearFormActions}>

@@ -89,7 +89,7 @@ test("WO-71: the editor on a 100-level build answers within the targets", async 
   record("Perk Confirm", confirmMs, CLICK);
 
   // 20 characters in the level's notes.
-  const notes = page.getByRole("region", { name: "Notes for level 100" }).locator("[contenteditable=true]");
+  const notes = page.getByRole("region", { name: "Notes for levels 76 to 100" }).locator("[contenteditable=true]");
   await notes.click();
   await page.keyboard.press("ControlOrMeta+End");
   const notesMs = await worst(page, () => page.keyboard.type(" Twenty characters!!", { delay: 60 }));

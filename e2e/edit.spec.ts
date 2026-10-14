@@ -17,7 +17,8 @@ test.describe("level-up editor", () => {
     await signIn(context);
     await page.goto(`/b/${TEST_BUILD_ID}/edit?level=6`);
     await expect(page.getByRole("region", { name: "Edit bar" }).getByText("Test Shield-Wall")).toBeVisible();
-    await expect(page.getByText("Level 6 follows every rule. 10 skill points will carry over.")).toBeVisible();
+    // Level 6 is the build's last: its points are unspent, not carried (WO-72).
+    await expect(page.getByText("Level 6 follows every rule. 10 skill points unspent.")).toBeVisible();
 
     await page.getByRole("button", { name: "Continue to level 7" }).click();
     await expect(page.getByText("Level up to").locator("..")).toContainText("7");

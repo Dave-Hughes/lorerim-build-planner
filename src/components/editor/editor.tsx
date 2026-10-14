@@ -278,9 +278,10 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   const destinyLeft = s.destinyPoints - s.destinyPointsSpent;
   // Trainer sessions: what is left of this level-up's own (unused ones carry over, but a running
   // total of 97 at level 20 reads as noise). Never more than the build has left overall.
+  // A stretch allows them for each of its level-ups (WO-72): 6 to 10 has 25.
   const trainerLeft = Math.max(
     0,
-    Math.min(d.rules.trainerSessionsPerLevel - lv.extras.filter((x) => x.kind === "trainer").length, d.rules.trainerSessionsPerLevel * level - s.trainerSessionsUsed),
+    Math.min(d.rules.trainerSessionsPerLevel * Math.max(1, ups) - lv.extras.filter((x) => x.kind === "trainer").length, d.rules.trainerSessionsPerLevel * level - s.trainerSessionsUsed),
   );
   // Each trainer session and book, replayed from where this level's skill points left the skill.
   const extraSteps = (() => {
@@ -316,7 +317,8 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   const summary = (() => {
     if (s.issues.length) return null;
     const notes: string[] = [];
-    if (level > 1 && left > 0) notes.push(`${left} skill point${left === 1 ? "" : "s"} will carry over.`);
+    // The last level has nothing after it to carry them to (WO-72).
+    if (level > 1 && left > 0) notes.push(`${left} skill point${left === 1 ? "" : "s"} ${level === total ? "unspent" : "will carry over"}.`);
     if (perkLeft > 0) notes.push(`${perkLeft} perk point${perkLeft === 1 ? "" : "s"} still unspent.`);
     if (destinyLeft > 0) notes.push(`${destinyLeft} Destiny point${destinyLeft === 1 ? "" : "s"} still unspent.`);
     return `${isStretch ? `Levels ${st.from} to ${st.to} follow` : `Level ${level} follows`} every rule.${notes.length ? " " + notes.join(" ") : ""}`;
@@ -421,10 +423,11 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
               label="Destiny points"
               value={destinyLeft}
               of=""
-              detail={isStretch && before ? spentOf(s.destinyPointsSpent - before.destinyPointsSpent, s.destinyPoints - before.destinyPointsSpent, before.destinyPoints - before.destinyPointsSpent) : undefined}
+              // No breakdown when the stretch had none to spend, earned or carried in (WO-72): just 0.
+              detail={isStretch && before && s.destinyPoints - before.destinyPointsSpent > 0 ? spentOf(s.destinyPointsSpent - before.destinyPointsSpent, s.destinyPoints - before.destinyPointsSpent, before.destinyPoints - before.destinyPointsSpent) : undefined}
               destiny
             />
-            <Pool label="Trainer sessions" value={trainerLeft} of="left this level" />
+            <Pool label="Trainer sessions" value={trainerLeft} of={isStretch ? "left in these levels" : "left this level"} />
           </dl>
           {/* The same ruler and row as the build page; a build that skips ahead has a cell per stretch (WO-69). */}
           {total > 1 && (
@@ -842,7 +845,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
           )}
         </section>
 
-        <GearBlock key={level} plan={plan} level={level} setPlan={setPlan} />
+        <GearBlock key={level} plan={plan} level={level} state={s} setPlan={setPlan} />
         <SpellBlock key={`spells-${level}`} plan={plan} level={level} setPlan={setPlan} />
         <AbilityBlock key={`abilities-${level}`} plan={plan} level={level} setPlan={setPlan} />
         <ShoutBlock key={`shouts-${level}`} plan={plan} level={level} setPlan={setPlan} />
@@ -852,6 +855,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
             key={level}
             buildId={buildId}
             level={level}
+            from={st.from}
             notes={notes}
             onChange={(doc) => {
               editNotes(level, doc);
@@ -970,11 +974,14 @@ function Pool({ label, icon, value, of, destiny, flashKey, detail }: { label: st
 function LevelNotes({
   buildId,
   level,
+  from,
   notes,
   onChange,
 }: {
   buildId: string;
   level: number;
+  /** Where the open stretch starts: "Notes for levels 6 to 10" (WO-72). */
+  from: number;
   notes: React.RefObject<Record<string, GuideDoc>>;
   onChange: (doc: GuideDoc) => void;
 }) {
@@ -983,10 +990,11 @@ function LevelNotes({
   const [save, setSave] = useState<{ status: GuideSaveStatus; error: string | null }>({ status: "idle", error: null });
   const onStatus = useCallback((status: GuideSaveStatus, error: string | null) => setSave({ status, error }), []);
   const label = guideSaveLabel(save.status, save.error);
+  const title = from < level ? `Notes for levels ${from} to ${level}` : `Notes for level ${level}`;
   return (
-    <section aria-label={`Notes for level ${level}`} className={styles.levelNotes} data-tour="note">
+    <section aria-label={title} className={styles.levelNotes} data-tour="note">
       <div className={styles.blockHead}>
-        <span className="label">Notes for level {level}</span>
+        <span className="label">{title}</span>
         {label && (
           <span role="status" className={save.status === "failed" ? styles.notesFailed : styles.hint}>
             {label}
@@ -997,7 +1005,7 @@ function LevelNotes({
         buildId={buildId}
         sectionKey={`level:${level}`}
         initial={initial}
-        label={`Notes for level ${level}`}
+        label={title}
         headingLevels={[3]}
         compact
         onStatus={onStatus}
@@ -1104,7 +1112,15 @@ function PerkCard({ box, perkId, onClose, children }: { box: HTMLElement; perkId
       if (!star || !el) return;
       const z = pageZoom();
       const a = box.getBoundingClientRect();
-      const b = star.getBoundingClientRect();
+      // A List view row (WO-72) runs the panel's width: the card goes beside its name and requirement.
+      const texts = [...star.querySelectorAll<HTMLElement>("[data-row-text]")].map((t) => {
+        // The text's own extent (the span may be a block as wide as the row).
+        const range = document.createRange();
+        range.selectNodeContents(t);
+        return range.getBoundingClientRect();
+      });
+      const r = star.getBoundingClientRect();
+      const b = texts.length ? { left: r.left, top: r.top, width: Math.max(...texts.map((t) => t.right)) - r.left, height: r.height } : r;
       const w = a.width / z;
       const h = a.height / z;
       // (h is the frame's height; the card also keeps to the part of it in the window.)

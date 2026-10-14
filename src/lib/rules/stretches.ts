@@ -42,12 +42,18 @@ export function skips(plan: Pick<BuildPlan, "levels">): boolean {
   return plan.levels.some((lv) => lv.skipped);
 }
 
-/** "Levels 1 to 10, 25, 50": the levels written, runs collapsed. */
+/**
+ * "Levels 1 to 10, 25, 50": the levels written, runs of single levels collapsed. A stretch's last
+ * level is never merged with single levels after it (WO-72): with 11 to 19 a stretch and 20 a single
+ * level, "19 to 20" would read as two single levels, so it is "19, 20". A written level is a single
+ * level when the level before it is written too (or it is level 1); otherwise it ends a stretch.
+ */
 export function levelsLine(written: number[]): string {
   const parts: string[] = [];
+  const single = (k: number) => written[k] === 1 || (k > 0 && written[k - 1] === written[k] - 1);
   for (let i = 0; i < written.length; ) {
     let j = i;
-    while (j + 1 < written.length && written[j + 1] === written[j] + 1) j++;
+    if (single(i)) while (j + 1 < written.length && written[j + 1] === written[j] + 1) j++;
     parts.push(j > i ? `${written[i]} to ${written[j]}` : `${written[i]}`);
     i = j + 1;
   }

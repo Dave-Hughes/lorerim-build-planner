@@ -191,15 +191,22 @@ function PerkList({
               const body = (
                 <>
                   <i className={`${styles.listDot} ${why ? styles.ruledDot : styles[st.state]}`} />
-                  <span className={styles.listName}>{p.name}</span>
-                  {req && <span className={styles.listReq}>{req}</span>}
+                  <span className={styles.listName} data-row-text="">
+                    {p.name}
+                  </span>
+                  {req && (
+                    <span className={styles.listReq} data-row-text="">
+                      {req}
+                    </span>
+                  )}
                   <span className={`${styles.listState} ${why ? styles.ruledText : styles[`state_${st.state}`]}`}>{where}</span>
                 </>
               );
               return (
                 <li key={p.id}>
                   {onSelect && !hidden ? (
-                    <button type="button" className={styles.listRow} aria-pressed={p.id === selectedId} aria-disabled={why ? true : undefined} title={why} onClick={() => !why && onSelect(p.id)}>
+                    // data-perk as on a star: the editor's perk card opens beside the row (WO-72).
+                    <button type="button" className={styles.listRow} aria-pressed={p.id === selectedId} aria-disabled={why ? true : undefined} title={why} data-perk={p.id} onClick={() => !why && onSelect(p.id)}>
                       {body}
                     </button>
                   ) : (

@@ -83,11 +83,12 @@ function PerkPanelFor({ plan, states, level, selectedId, onTake, onRemove, onGoT
   const s = states[level - 1];
   const chain = st.state === "locked" ? missingPrerequisites(d, s, p.id) : [];
   const pointsFor = chain.filter((x) => !d.perkById.get(x)?.book).length + (p.book ? 0 : 1);
-  const canChain =
-    chain.length > 0 &&
-    st.reasons.every((r) => /^Needs .* first\.$/.test(r) && !/^Needs [^,]+ \d+\./.test(r)) &&
-    (p.tree === "Destiny" ? s.destinyPoints - s.destinyPointsSpent : s.perkPoints - s.perkPointsSpent) >= pointsFor;
-  const reasons = st.reasons.filter((r) => !r.startsWith("Can't be held"));
+  const chainable = chain.length > 0 && st.reasons.every((r) => /^Needs .* first\.$/.test(r) && !/^Needs [^,]+ \d+\./.test(r));
+  const pointsLeft = p.tree === "Destiny" ? s.destinyPoints - s.destinyPointsSpent : s.perkPoints - s.perkPointsSpent;
+  const canChain = chainable && pointsLeft >= pointsFor;
+  // The skills reach the chain but the points don't (WO-72): say so, rather than blame the prerequisite.
+  const short = chainable && !canChain ? `: ${pointsFor} ${p.tree === "Destiny" ? "Destiny" : "perk"} point${pointsFor === 1 ? "" : "s"}, ${pointsLeft} left.` : null;
+  const reasons = st.reasons.filter((r) => !r.startsWith("Can't be held")).map((r) => (short && /^Needs .* first\.$/.test(r) ? r.replace(/\.$/, short) : r));
   // Ranks already taken, one line each; then the next rank's own text.
   const multi = st.ranks > 1 && !st.granted;
   const rankLines = multi ? st.takenAt.map((L, i) => `Rank ${i + 1} of ${st.ranks}, taken at level ${L}.`) : [];

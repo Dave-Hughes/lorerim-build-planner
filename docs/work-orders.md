@@ -3042,13 +3042,13 @@ That is the one launch blocker: a long build is exactly what the best authors wi
 13. **The Destiny pool after 30** reads `0 : 0 of 0 spent`. When the stretch earns no Destiny points and none are left, hide the breakdown and show `0`.
 
 ### Done when
-- [ ] Each point has a unit test or an e2e step, named by its point number.
-- [ ] e2e: in List view, click Weapon Mastery, Confirm, and it's taken.
-- [ ] On the Sevari build, as a reader:
+- [x] Each point has a unit test or an e2e step, named by its point number.
+- [x] e2e: in List view, click Weapon Mastery, Confirm, and it's taken.
+- [x] On the Sevari build, as a reader:
   - the byline matches point 4;
   - the 21 to 30 card shows `Short Blade Focus 3 (One-Handed 75)`;
   - the 76 to 100 card says `Unspent`.
-- [ ] Screenshots at 1440 and 390 of the points that change the screen.
+- [x] Screenshots at 1440 and 390 of the points that change the screen.
 - [ ] All checks in CLAUDE.md pass.
 
 ---

@@ -1,5 +1,6 @@
 import { rankCount, requireGameData, type GameData, type Perk } from "./data";
 import type { BuildPlan, Issue, IssueCode, LevelState } from "./types";
+import { ARTIFACT_ENCHANTER, ENCHANTMENT_MASTERY } from "./enchantments";
 
 /** LoreRim's Oghma Infinium reward (LoreRim Oghma Reward.esp): +5 to each of six skills, then 3 perk points. */
 export const OGHMA_SKILLS = 6;
@@ -9,8 +10,6 @@ export const OGHMA_PERK_POINTS = 3;
 const issue = (code: IssueCode, message: string): Issue => ({ code, message });
 
 /** "1 skill point", "2 skill points". */
-const ENCHANTMENT_MASTERY = "Enchanting:Enchantment Mastery";
-const ARTIFACT_ENCHANTER = "Enchanting:Artifact Enchanter";
 
 function count(n: number, one: string): string {
   return `${n} ${one}${n === 1 ? "" : "s"}`;

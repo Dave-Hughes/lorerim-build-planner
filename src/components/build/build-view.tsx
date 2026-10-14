@@ -32,7 +32,7 @@ import { LevelNote } from "@/components/guide/level-note";
 import { docWords, firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import { GuideView } from "@/components/guide/guide-view";
 import { currentVersion, isOlderThanCurrent } from "@/lib/rules/versions";
-import { ATTRIBUTE_NAMES, levelChanges, levelFacts, levelMarks, nextDestinyLevel, perksByLevel, stoneShare, type PerkListGroup } from "@/lib/rules/derive";
+import { ATTRIBUTE_NAMES, levelChanges, levelFacts, levelMarks, nextDestinyLevel, perksByLevel, stoneShare, stretchPerkOrder, stretchPerkRequirement, type PerkListGroup } from "@/lib/rules/derive";
 import { gearAt, gearChangeText } from "@/lib/rules/gear";
 import { heldCount } from "@/lib/rules/tree-states";
 import type { GameData } from "@/lib/rules/data";
@@ -988,7 +988,7 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
 }
 
 /** The level card's labels that have a marker icon (WO-30). */
-const KEY_MARKS: Record<string, "trainer" | "skill-book" | "banked"> = { Trainer: "trainer", "Skill book": "skill-book", "Skill books": "skill-book", Banked: "banked" };
+const KEY_MARKS: Record<string, "trainer" | "skill-book" | "banked"> = { Trainer: "trainer", "Skill book": "skill-book", "Skill books": "skill-book", Banked: "banked", Unspent: "banked" };
 
 /**
  * The level card: what to do at this level, in the order the game asks (attribute, skill points,
@@ -1002,6 +1002,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
   // The rule behind a row, from the engine's own numbers (WO-17's wording in the editor).
   const tips: Record<string, string> = {
     Banked: "Skill points not spent at a level carry over to the next level-up.",
+    Unspent: "Skill points the build's last level leaves unspent.",
     Trainer: `${d.rules.trainerSessionsPerLevel} trainer sessions a level, +1 to a skill each; unused ones carry over to later levels. A trainer can't raise a skill past the level's max skill.`,
     "Skill book": `+1 to a skill (+2 with the Skilled trait), never past the level's max skill.`,
     "Skill books": `+1 to a skill each (+2 with the Skilled trait), never past the level's max skill.`,
@@ -1033,32 +1034,34 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       <IconLabel key="a" icon={<AttributeIcon name={facts.attribute} size={24} />}>+5 {ATTRIBUTE_NAMES[facts.attribute]}</IconLabel>,
     ]);
 
-  // Skill points: biggest gain first; the level's limit said once, on the first skill that hit it.
-  const { raised, capAt } = facts;
+  // Skill points: biggest gain first; the level's limit under every skill that reached it (WO-72).
+  const { raised } = facts;
   if (raised.length)
     rows.push([
       "Skill points",
       <GainColumns
         key="s"
         columns={isStretch && raised.length > 6}
-        rows={raised.map((r, i) => ({
+        rows={raised.map((r) => ({
           skill: r.sk,
           gain: r.n,
           from: r.from,
           to: r.to,
-          note: i === capAt ? `(max skill ${s.maxSkill} at level ${level})` : undefined,
+          note: r.to >= s.maxSkill ? `(max skill ${s.maxSkill} at level ${level})` : undefined,
         }))}
       />,
     ]);
 
+  // A stretch lists its perks by tree, requirement and name (WO-72).
+  const perksShown = isStretch ? stretchPerkOrder(d, changes.perks) : changes.perks;
   const perkLines = [
-    ...changes.perks.map((p, i) => (
+    ...perksShown.map((p, i) => (
       <span key={`${p.id}-${i}`}>
         <button type="button" className={styles.perkLink} onClick={() => onPerk(p.id)}>
           {p.name}
           {p.rank ? ` ${p.rank}` : ""}
         </button>{" "}
-        <span className="muted">{isStretch ? perkRequirement(d, p.id, p.tree) : p.tree !== p.name ? `(${p.tree}${p.book ? ", book" : ""})` : p.book ? "(book)" : ""}</span>
+        <span className="muted">{isStretch ? stretchPerkRequirement(d, p.id, p.tree, p.rank) : p.tree !== p.name ? `(${p.tree}${p.book ? ", book" : ""})` : p.book ? "(book)" : ""}</span>
       </span>
     )),
   ];
@@ -1221,7 +1224,8 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
         ))}
       </span>,
     ]);
-  if (changes.banked > 0) rows.push(["Banked", `${changes.banked} skill point${changes.banked === 1 ? "" : "s"}`]);
+  // On the build's last level nothing comes after to carry them to (WO-72).
+  if (changes.banked > 0) rows.push([level === plan.levels.length ? "Unspent" : "Banked", `${changes.banked} skill point${changes.banked === 1 ? "" : "s"}`]);
 
   return (
     <section id="level-card" data-tour="level-card" aria-label={title} className={`frame ${styles.card} ${styles.cardWithNote}`}>
@@ -1539,12 +1543,6 @@ function stretchSteps(plan: BuildViewData["plan"], level: number): { from: numbe
   return { from: all[i]?.from ?? level, prev: all[i - 1]?.to ?? null, next: all[i + 1]?.to ?? null };
 }
 
-/** "(Destruction 50)", or "(Block)" for a perk with no skill requirement (WO-69). */
-function perkRequirement(d: GameData, id: string, tree: string): string {
-  const p = d.perkById.get(id);
-  const need = p?.rankSkills?.[0] ?? p?.skill ?? 0;
-  return need > 0 && tree !== "Destiny" ? `(${tree} ${need})` : `(${tree})`;
-}
 
 /** Skill gains, in two columns when a stretch raises more than 6 skills (WO-69). */
 function GainColumns({ rows, columns }: { rows: React.ComponentProps<typeof SkillGains>["rows"]; columns: boolean }) {

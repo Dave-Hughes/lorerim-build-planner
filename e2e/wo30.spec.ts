@@ -1,6 +1,6 @@
 import { expect, test, type Locator } from "@playwright/test";
 import { signIn } from "./helpers";
-import { AZREM_BUILD_ID, TEST_BUILD_ID } from "./seed";
+import { AZREM_BUILD_ID, LONG_BUILD_ID, TEST_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1440, height: 900 } });
 
@@ -16,7 +16,8 @@ test("level markers in the card, the pinned bar and the editor", async ({ page, 
   await page.goto(`/b/${AZREM_BUILD_ID}?level=6`);
   const card = page.getByRole("region", { name: "Level 6", exact: true });
   await iconWithName(card, "mark-trainer", "Trainer");
-  await page.goto(`/b/${TEST_BUILD_ID}?level=6`);
+  // Not the build's last level, which says Unspent (WO-72).
+  await page.goto(`/b/${LONG_BUILD_ID}?level=6`);
   await iconWithName(page.getByRole("region", { name: "Level 6", exact: true }), "mark-banked", "Banked");
   await page.goto(`/b/${AZREM_BUILD_ID}?level=15`);
   await iconWithName(page.getByRole("region", { name: "Level 15", exact: true }), "mark-skill-book", /Skill books?/);
