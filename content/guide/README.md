@@ -9,10 +9,11 @@ One file per chapter, named `NN-slug.md` (`05-fighting.md`). The page is built f
 chapter: 5
 title: Fighting
 subtitle: How combat works in LoreRim, and what is different from Skyrim without mods.
+icon: chapter-fighting
 ---
 ```
 
-`subtitle` is optional. After the front matter comes the chapter's lead: one or two plain paragraphs.
+`subtitle` is optional. `icon` is a file name in `public/icons`, without `.svg`. After the front matter comes the chapter's lead: one or two plain paragraphs.
 
 ## Sections
 
@@ -42,7 +43,15 @@ You don't have the Dodge perk yet. Raise Evasion to 25, take Agility, then take 
 :::
 ```
 
-In `:::mods`, each top-level item is one mod: its name in bold, a colon, then what it does here. Two optional sub-items: `where:` (the settings file or MO2 option) and `tag:` (shown as a small label).
+In `:::mods`, each top-level item is one mod: its name in bold, a colon, then what it does here. Optional sub-items: `where:` (the settings file or MO2 option), `tag:` (shown as a small label) and `nexus:` (the mod's Nexus Mods id; the name then links to `https://www.nexusmods.com/skyrimspecialedition/mods/<id>`). Only use an id read from the installed mod's `meta.ini`. LoreRim's own mods get `tag: LoreRim's own mod` instead.
+
+## Terms
+
+`terms.md` holds every word the guide explains in a tooltip: `## Term {#id}`, optional `- aka:`, `- icon:`, `- nexus:` and `- see:` lines, then one or two plain sentences.
+
+In a chapter, `{{MO2}}` marks a term: the text is shown as written, with the term's icon in front if it has one, and the tooltip shows its definition. The text must match the term's heading or one of its `aka` names (case doesn't matter). For other wording, give the id: `{{Armor spells|flesh-spell}}`.
+
+Mark a term the first time it appears in a chapter, and wherever a table lists it (races, birthsigns, needs). Don't mark it again in running text.
 
 ## Links between chapters
 

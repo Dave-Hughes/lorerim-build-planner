@@ -2,23 +2,26 @@
 chapter: 8
 title: Getting around
 subtitle: Carriages, ferries, horses, the fast travel settings, and locked doors and chests.
+icon: chapter-getting-around
 ---
 
-Fast travel is switched off in LoreRim. You travel on foot, by carriage, by ferry or on a horse, and time passes on the way, so your needs keep rising during long trips.
+{{Fast travel}} is switched off in LoreRim. You travel on foot, by carriage, by ferry or on a horse, and time passes on the way, so your needs keep rising during long trips.
 
 ## Fast travel {#fast-travel}
 
 Fast travel is off by default. Turning it on takes two changes:
 
-1. MCM > Requiem > Atmosphere > Allow fast travel.
+1. {{MCM}} > {{Requiem}} > Atmosphere > Allow fast travel.
 2. In `LoreRim\mods\LoreRim - MCM and INI Settings\SKSE\Plugins\SurvivalModeImproved.ini`, set `bDisableFastTravel=0`.
 
-Hunger, thirst, disease and some quests can still stop you fast travelling.
+{{Hunger}}, {{thirst}}, disease and some quests can still stop you fast travelling.
 
 :::mods
 - **Requiem - The Roleplaying Overhaul**: The first fast travel switch.
+  - nexus: 60888
   - where: MCM > Requiem > Atmosphere
 - **Survival Mode Improved - SKSE**: The second fast travel switch. It has no MCM.
+  - nexus: 78244
   - where: `SKSE/Plugins/SurvivalModeImproved.ini` in LoreRim - MCM and INI Settings
 :::
 
@@ -36,18 +39,21 @@ Carriage drivers wait outside the cities and in more towns than in Skyrim withou
 
 :::mods
 - **Better Carriage Destinations**: Travel to any place on the map, priced by distance.
+  - nexus: 164485
   - where: `MCM/Settings/Better Carriage Destinations.ini`
 - **Carriage and Ferry Travel Overhaul**: More drivers and ferrymen.
+  - nexus: 8379
 - **Wait Carriage in Inns**: Innkeepers call a carriage.
+  - nexus: 83044
 :::
 
 ## Horses {#horses}
 
-Stables sell horses for 1,500 gold. A horse carries 300, and enemies can't kill it. You can also get one through the Running Wild quest in the fields outside Whiterun: catch a wild white horse, then sell it to the stablemaster or give it to Joslin behind the Bannered Mare to keep it.
+Stables sell horses for 1,500 gold. A horse carries 300, and enemies can't kill it. You can also get one through the Running Wild quest in the fields outside Whiterun: catch a wild white horse, then sell it to the stablemaster or give it to Joslin behind the Bannered Mare (Whiterun's inn) to keep it.
 
 The [[H]] key controls your horse:
 
-- Tap [[H]] while looking at it, or while riding: open its saddlebags.
+- Tap [[H]] while looking at it, or while riding: open its {{saddlebags}}.
 - Tap [[H]] anywhere else: whistle. The horse switches between waiting and following.
 - Hold [[H]]: the horse comes to you.
 - Hold [[H]] while looking at it: rename it.
@@ -59,6 +65,7 @@ The [[H]] key controls your horse:
 
 :::mods
 - **Simplest Horses (and other mounts)**: The H key, saddlebags and protected horses.
+  - nexus: 54225
   - where: MCM > Simplest Horses
 - **Animated Whistling**: The whistle.
 :::
@@ -69,9 +76,9 @@ For horse armor, the stablemaster only counts a horse you bought at a stable or 
 
 ## Locks {#locks}
 
-Every lock has a level, and you need enough lockpicking expertise to even try it. Without it, the lock screen closes and tells you how much you need. Perks in the Wayfarer tree, the Tower birthsign and some blessings raise your expertise.
+Every lock has a level, from Novice to Master, and you need enough {{lockpicking expertise}} to even try it. Without it, the lock screen closes and tells you how much you need. Perks in the {{Wayfarer}} tree, the Tower {{birthsign}} and some {{shrine}} blessings raise your expertise.
 
-There are three ways past a lock you can't pick: find its key (many locked chests have a key hidden nearby), bash it open with a weapon, or let a follower with more expertise try.
+There are three ways past a lock you can't pick: find its key (many locked chests have a key hidden nearby), bash it open with a weapon, or let a {{follower}} with more expertise try.
 
 :::more
 | Lock | Expertise needed |
@@ -82,8 +89,8 @@ There are three ways past a lock you can't pick: find its key (many locked chest
 | Expert | 7 |
 | Master | 9 |
 
-- With no bonuses you count as 1. Bonuses add up from 0: Cheap Tricks (Wayfarer, no skill needed) +3, Advanced Lockpicking (25) +2, Sophisticated (60) +2, Masterly (90) +2, Khajiit +2, Tower birthsign +4, the Skeleton Key +10. So an unperked Khajiit has 2, and 5 with Cheap Tricks.
-- Lock bashing: your current Health plus Stamina must reach 150 for a Novice lock, 300 for Apprentice and 450 for Adept. Expert and Master locks can't be bashed. A broken-lock icon shows when a hit will work. Fists don't work, and bashing is a crime if someone sees it.
+- With no bonuses you count as 1. Bonuses add up from 0: Cheap Tricks (Wayfarer, no skill needed) +3, Advanced Lockpicking (25) +2, Sophisticated (60) +2, Masterly (90) +2, {{Khajiit}} +2, {{Tower birthsign}} +4, the Skeleton Key +10. So an unperked Khajiit has 2, and 5 with Cheap Tricks.
+- Lock bashing: your current {{Health}} plus {{Stamina}} must reach 150 for a Novice lock, 300 for Apprentice and 450 for Adept. Expert and Master locks can't be bashed. A broken-lock icon shows when a hit will work. Fists don't work, and bashing is a crime if someone sees it.
 - A key in your inventory opens its lock with no expertise.
 :::
 

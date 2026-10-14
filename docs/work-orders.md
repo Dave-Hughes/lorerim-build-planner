@@ -2904,6 +2904,67 @@ Canvas: row "Proposal: Skip ahead (in place of snapshots)", with `KeyLevelEditor
 
 ---
 
+## WO-70  The guide, second pass: tooltips, icons and Nexus links (14 Oct 2026)
+
+Dave on staging: better, but "still a lot of work before it's remotely useful". Three asks:
+1. Icons, to break up the text.
+2. Mods link to their Nexus pages.
+3. Tooltips on words a newcomer won't know. The reader likely knows nothing about LoreRim: when the guide names a program (MO2), a mod, a mechanic or a system, they may not know what it is.
+
+### Content (supplied with this order)
+- `content/guide/terms.md`: 191 terms, each with a plain definition, and optionally an icon, a Nexus id and a `see` link to the section that explains it. Format in `content/guide/README.md`, "Terms".
+- The chapter files now mark terms as `{{MO2}}` or `{{Armor spells|flesh-spell}}`, have an `icon:` in their front matter, and carry `nexus:` ids in Related Mods. Several passages were rewritten for newcomers. Don't edit the wording; flag anything odd in the commit.
+
+### Tooltips
+- Parse `{{text}}` and `{{text|id}}`. The text must match a term's heading or `aka` (case-insensitive) or the given id must exist; otherwise the build fails with file and line, as the other guide checks do. `terms.md` is parsed with the same rules (each `- see:` link must exist).
+- A term shows its text with a dotted brass underline, and its icon in front at 16px when it has one.
+- The tooltip opens on hover (after about 150 ms), on keyboard focus and on tap. It holds the term name in the title face, the definition, and up to two links: `Read more` (the `see` section) and `Nexus Mods` (opens in a new tab). Panel: `--panel-raised`, 1px `--rule` border, square corners, no shadow, at most 320px wide, kept on screen at 390px. Esc, tapping elsewhere or moving away closes it. One tooltip at a time.
+- Without JavaScript a term is a plain link to `/guide/terms#id`.
+- Terms work everywhere guide text appears: body, tables, More detail, Players ask, and `/guide/questions`. The questions filter matches the shown text, not the markup; the structured data uses plain text.
+- **New page `/guide/terms`**: A to Z, each term with its icon, definition, links, and `Used in` (the chapters and sections that mark it, linked). Add it to the reference links under the chapter list, beside `Which mod runs what` and `All questions`.
+
+### Icons
+- **Term icons** come from `public/icons` (skills, attributes, races, birthsigns, deities, the two game modes, Destiny, perk points, trainer, skill book, power, shout). They sit inline before the term's text at 16px, pixelated, aligned with the text, decorative (`alt=""`).
+- **15 new icons**, drawn in `scripts/icons/pixels.py` by the rules in `docs/design-rules.md`, "Pixel icons" (one object a player would name, no letters):
+
+  | File | Object |
+  | --- | --- |
+  | `chapter-changes` | A rolled scroll with an ember wax seal |
+  | `chapter-character` | A hand mirror |
+  | `chapter-first-days` | A pinned notice-board note |
+  | `chapter-staying-alive` | A campfire |
+  | `chapter-fighting` | A steel sword |
+  | `chapter-magic` | A blue spell tome |
+  | `chapter-crafting` | A smith's hammer |
+  | `chapter-getting-around` | A horseshoe |
+  | `chapter-death` | A skull |
+  | `chapter-followers` | An amulet on a chain |
+  | `chapter-keys` | An iron key |
+  | `need-hunger` | A loaf of bread |
+  | `need-thirst` | A waterskin |
+  | `need-fatigue` | A rolled bedroll |
+  | `need-cold` | An icicle |
+
+- **Chapter icons** show in the chapter list (between the number and the title), at 32px beside `Chapter 5` in the chapter header, on each `/guide` index entry, and in Previous and Next.
+- The race, birthsign and needs tables get their icons through the terms in their first column; no table code needed.
+
+### Nexus links
+- In Related Mods and on `/guide/mods`, a mod with `nexus:` has its name linked to `https://www.nexusmods.com/skyrimspecialedition/mods/<id>`, in a new tab, with a small external-link mark after it. `tag: LoreRim's own mod` shows as the usual label.
+- 16 mods have no id yet (the chat session reads them from the installed list when Dave's PC is linked): Animated Whistling, Complete Controller Setup, Dynamic Activation Key, Engine Fixes, Faster Mining Plus SE, Gamepad++, Lock Bashing, Locked Chests Have Keys, MaxsuBlockOverhaul, Requiem - Lockpicking SKSE, Requiem - Modern Combat Rework, Rest By Campfire - Base Object Swapper, Sanctified Stolen Goods, Simple Outfit System, Take a Nap - Sleep on Chairs, Vampire sun immunity with helmet or hat. Attack MCO is not on Nexus (tagged). Leave these unlinked.
+
+### Done when
+- [ ] Every `{{...}}` in the chapters renders as a term with its tooltip; a test feeds the parser an unknown term and a dead `see` link and expects build errors naming the file and line.
+- [ ] e2e at 1440: hover `MO2` in chapter 1; the tooltip shows the definition and `Read more`; Esc closes it. Tab to a term; the tooltip opens on focus.
+- [ ] e2e at 390: tap a term; the tooltip opens inside the screen; tapping elsewhere closes it.
+- [ ] With JavaScript off, a term is a link to `/guide/terms#id`.
+- [ ] `/guide/terms` lists all 191 terms A to Z with `Used in` links; a test counts them against `terms.md`.
+- [ ] The 15 new icons drawn in `pixels.py`; chapter icons in the list, the header, the index and Previous/Next; term icons inline, including the race and birthsign tables.
+- [ ] Related Mods and `/guide/mods` link every mod that has a `nexus` id; a test checks the count.
+- [ ] Screenshots at 1440: chapter 2 (race and birthsign tables), chapter 4 (needs table), a tooltip open, `/guide/terms`. At 390: a tooltip open, and the chapter list. Checked against `docs/design-rules.md`.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
