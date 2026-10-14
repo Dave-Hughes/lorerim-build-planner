@@ -2561,17 +2561,17 @@ Dave's idea: say where a character should be at level N and have the planner fil
    - If WO-61 isn't built yet, build the card with the same look and storage, and WO-61 picks it up.
 
 ### Done when
-- [ ] Unit tests for `fillToLevel`:
+- [x] Unit tests for `fillToLevel`:
   - Jo'Vashar's settings from the canvas give the canvas numbers: Health 135, Magicka 150 and Stamina 220 at 30; Evasion 80; Adept Alteration at level 10; Mighty Strike and Expert Alteration unplaced, each with its reason.
   - The rules engine finds no problems on any filled level.
   - Attributes add up and follow `Take first`.
   - A ranked perk listed twice takes two ranks.
   - Level 1 and the setup are unchanged.
-- [ ] e2e: a fresh test build, `Auto level`, set 20 with two targets and three perks. The preview shows them; `Auto level to 20` makes 20 levels; `Undo` gives back the one-level build.
-- [ ] `Auto level` doesn't show on a build with level 2 or later.
-- [ ] Tapps' card shows on the first visit only, and `Show me around` brings it back.
-- [ ] Screenshots at 1440 and 390, compared with the canvas.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: a fresh test build, `Auto level`, set 20 with two targets and three perks. The preview shows them; `Auto level to 20` makes 20 levels; `Undo` gives back the one-level build.
+- [x] `Auto level` doesn't show on a build with level 2 or later.
+- [x] Tapps' card shows on the first visit only, and `Show me around` brings it back.
+- [x] Screenshots at 1440 and 390, compared with the canvas.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

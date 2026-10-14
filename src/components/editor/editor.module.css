@@ -915,6 +915,14 @@
   border: 1px solid var(--health);
   background: rgba(214, 92, 77, 0.08);
 }
+/* After Auto level (WO-64): what it did, with Undo until the next change. */
+.filledLine {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 15px;
+}
 .problemLine {
   display: flex;
   flex-wrap: wrap;

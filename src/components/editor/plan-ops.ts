@@ -4,17 +4,44 @@ import { emptyLevel } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
 import { gearAt } from "@/lib/rules/gear";
 import { keptMainSpells, MAX_MAIN_SPELLS } from "@/lib/rules/spells";
-import type { AbilityRow, Attribute, BuildPlan, Extra, GearItem, LevelPlan, MadeGear, ShoutRow, SpellRow } from "@/lib/rules/types";
+import type {
+  AbilityRow,
+  Attribute,
+  BuildPlan,
+  Extra,
+  GearItem,
+  LevelPlan,
+  LevelState,
+  MadeGear,
+  ShoutRow,
+  SpellRow,
+} from "@/lib/rules/types";
 
-function withLevel(plan: BuildPlan, level: number, fn: (lv: LevelPlan) => LevelPlan): BuildPlan {
-  return { ...plan, levels: plan.levels.map((lv, i) => (i === level - 1 ? fn(lv) : lv)) };
+function withLevel(
+  plan: BuildPlan,
+  level: number,
+  fn: (lv: LevelPlan) => LevelPlan,
+): BuildPlan {
+  return {
+    ...plan,
+    levels: plan.levels.map((lv, i) => (i === level - 1 ? fn(lv) : lv)),
+  };
 }
 
-export function setAttribute(plan: BuildPlan, level: number, attribute: Attribute): BuildPlan {
+export function setAttribute(
+  plan: BuildPlan,
+  level: number,
+  attribute: Attribute,
+): BuildPlan {
   return withLevel(plan, level, (lv) => ({ ...lv, attribute }));
 }
 
-export function addSkillPoint(plan: BuildPlan, level: number, skill: string, delta: 1 | -1): BuildPlan {
+export function addSkillPoint(
+  plan: BuildPlan,
+  level: number,
+  skill: string,
+  delta: 1 | -1,
+): BuildPlan {
   return withLevel(plan, level, (lv) => {
     const next = Math.max(0, Math.min(5, (lv.skillPoints[skill] ?? 0) + delta));
     const skillPoints = { ...lv.skillPoints };
@@ -24,13 +51,25 @@ export function addSkillPoint(plan: BuildPlan, level: number, skill: string, del
   });
 }
 
-export function takePerk(plan: BuildPlan, level: number, id: string): BuildPlan {
+export function takePerk(
+  plan: BuildPlan,
+  level: number,
+  id: string,
+): BuildPlan {
   const destiny = id.startsWith("Destiny:");
-  return withLevel(plan, level, (lv) => (destiny ? { ...lv, destiny: [...lv.destiny, id] } : { ...lv, perks: [...lv.perks, id] }));
+  return withLevel(plan, level, (lv) =>
+    destiny
+      ? { ...lv, destiny: [...lv.destiny, id] }
+      : { ...lv, perks: [...lv.perks, id] },
+  );
 }
 
 /** Removes one rank of a perk from a level (the last occurrence). */
-export function removePerk(plan: BuildPlan, level: number, id: string): BuildPlan {
+export function removePerk(
+  plan: BuildPlan,
+  level: number,
+  id: string,
+): BuildPlan {
   const destiny = id.startsWith("Destiny:");
   return withLevel(plan, level, (lv) => {
     const list = destiny ? lv.destiny : lv.perks;
@@ -42,19 +81,40 @@ export function removePerk(plan: BuildPlan, level: number, id: string): BuildPla
 }
 
 /** Removes one rank of each pick, from its own level. */
-export function removePerks(plan: BuildPlan, picks: { id: string; level: number }[]): BuildPlan {
+export function removePerks(
+  plan: BuildPlan,
+  picks: { id: string; level: number }[],
+): BuildPlan {
   return picks.reduce((p, x) => removePerk(p, x.level, x.id), plan);
 }
 
-export function addExtra(plan: BuildPlan, level: number, extra: Extra): BuildPlan {
-  return withLevel(plan, level, (lv) => ({ ...lv, extras: [...lv.extras, extra] }));
+export function addExtra(
+  plan: BuildPlan,
+  level: number,
+  extra: Extra,
+): BuildPlan {
+  return withLevel(plan, level, (lv) => ({
+    ...lv,
+    extras: [...lv.extras, extra],
+  }));
 }
 
-export function removeExtra(plan: BuildPlan, level: number, index: number): BuildPlan {
-  return withLevel(plan, level, (lv) => ({ ...lv, extras: lv.extras.filter((_, i) => i !== index) }));
+export function removeExtra(
+  plan: BuildPlan,
+  level: number,
+  index: number,
+): BuildPlan {
+  return withLevel(plan, level, (lv) => ({
+    ...lv,
+    extras: lv.extras.filter((_, i) => i !== index),
+  }));
 }
 
-export function setStone(plan: BuildPlan, level: number, stone: string): BuildPlan {
+export function setStone(
+  plan: BuildPlan,
+  level: number,
+  stone: string,
+): BuildPlan {
   return withLevel(plan, level, (lv) => {
     const next = { ...lv };
     if (stone === "") delete next.stone;
@@ -64,7 +124,11 @@ export function setStone(plan: BuildPlan, level: number, stone: string): BuildPl
 }
 
 /** A deity change from this level on (WO-43); "" keeps the one followed. */
-export function setDeity(plan: BuildPlan, level: number, deity: string): BuildPlan {
+export function setDeity(
+  plan: BuildPlan,
+  level: number,
+  deity: string,
+): BuildPlan {
   return withLevel(plan, level, (lv) => {
     const next = { ...lv };
     if (deity === "") delete next.deity;
@@ -73,7 +137,11 @@ export function setDeity(plan: BuildPlan, level: number, deity: string): BuildPl
   });
 }
 
-export function setNote(plan: BuildPlan, level: number, note: string): BuildPlan {
+export function setNote(
+  plan: BuildPlan,
+  level: number,
+  note: string,
+): BuildPlan {
   return withLevel(plan, level, (lv) => ({ ...lv, note }));
 }
 
@@ -95,7 +163,11 @@ function withMainSpells(plan: BuildPlan): BuildPlan {
   return next;
 }
 
-function withSpells(plan: BuildPlan, level: number, fn: (rows: SpellRow[]) => SpellRow[]): BuildPlan {
+function withSpells(
+  plan: BuildPlan,
+  level: number,
+  fn: (rows: SpellRow[]) => SpellRow[],
+): BuildPlan {
   return withMainSpells(
     withLevel(plan, level, (lv) => {
       const spells = fn(lv.spells ?? []);
@@ -108,23 +180,52 @@ function withSpells(plan: BuildPlan, level: number, fn: (rows: SpellRow[]) => Sp
 }
 
 /** A spell learned at a level (WO-42): a tier perk's pick (`where` = the perk's name) or learned another way. */
-export function addSpell(plan: BuildPlan, level: number, row: SpellRow): BuildPlan {
-  const clean: SpellRow = row.where?.trim() ? { id: row.id, where: row.where.trim().slice(0, 80) } : { id: row.id };
+export function addSpell(
+  plan: BuildPlan,
+  level: number,
+  row: SpellRow,
+): BuildPlan {
+  const clean: SpellRow = row.where?.trim()
+    ? { id: row.id, where: row.where.trim().slice(0, 80) }
+    : { id: row.id };
   return withSpells(plan, level, (rows) => [...rows, clean]);
 }
 
-export function removeSpell(plan: BuildPlan, level: number, index: number): BuildPlan {
+export function removeSpell(
+  plan: BuildPlan,
+  level: number,
+  index: number,
+): BuildPlan {
   return withSpells(plan, level, (rows) => rows.filter((_, i) => i !== index));
 }
 
-export function setSpellWhere(plan: BuildPlan, level: number, index: number, where: string): BuildPlan {
-  return withSpells(plan, level, (rows) => rows.map((r, i) => (i !== index ? r : where.trim() ? { ...r, where: where.slice(0, 80) } : { id: r.id })));
+export function setSpellWhere(
+  plan: BuildPlan,
+  level: number,
+  index: number,
+  where: string,
+): BuildPlan {
+  return withSpells(plan, level, (rows) =>
+    rows.map((r, i) =>
+      i !== index
+        ? r
+        : where.trim()
+          ? { ...r, where: where.slice(0, 80) }
+          : { id: r.id },
+    ),
+  );
 }
 
-const whereOf = (where?: string) => (where?.trim() ? { where: where.slice(0, 80) } : {});
+const whereOf = (where?: string) =>
+  where?.trim() ? { where: where.slice(0, 80) } : {};
 
 /** A level's own ability or shout rows, changed by `fn`; no field when there are none (WO-51). */
-function withRows<K extends "abilities" | "shouts">(plan: BuildPlan, level: number, key: K, fn: (rows: NonNullable<LevelPlan[K]>) => NonNullable<LevelPlan[K]>): BuildPlan {
+function withRows<K extends "abilities" | "shouts">(
+  plan: BuildPlan,
+  level: number,
+  key: K,
+  fn: (rows: NonNullable<LevelPlan[K]>) => NonNullable<LevelPlan[K]>,
+): BuildPlan {
   return withLevel(plan, level, (lv) => {
     const rows = fn((lv[key] ?? []) as NonNullable<LevelPlan[K]>);
     const next = { ...lv };
@@ -135,39 +236,92 @@ function withRows<K extends "abilities" | "shouts">(plan: BuildPlan, level: numb
 }
 
 /** An ability the author adds at a level (WO-51): racial, stone, god, quest. */
-export function addAbility(plan: BuildPlan, level: number, row: AbilityRow): BuildPlan {
-  return withRows(plan, level, "abilities", (rows) => [...rows, { id: row.id, ...whereOf(row.where?.trim()) }]);
+export function addAbility(
+  plan: BuildPlan,
+  level: number,
+  row: AbilityRow,
+): BuildPlan {
+  return withRows(plan, level, "abilities", (rows) => [
+    ...rows,
+    { id: row.id, ...whereOf(row.where?.trim()) },
+  ]);
 }
 
-export function removeAbility(plan: BuildPlan, level: number, index: number): BuildPlan {
-  return withRows(plan, level, "abilities", (rows) => rows.filter((_, i) => i !== index));
+export function removeAbility(
+  plan: BuildPlan,
+  level: number,
+  index: number,
+): BuildPlan {
+  return withRows(plan, level, "abilities", (rows) =>
+    rows.filter((_, i) => i !== index),
+  );
 }
 
-export function setAbilityWhere(plan: BuildPlan, level: number, index: number, where: string): BuildPlan {
-  return withRows(plan, level, "abilities", (rows) => rows.map((r, i) => (i !== index ? r : { id: r.id, ...whereOf(where) })));
+export function setAbilityWhere(
+  plan: BuildPlan,
+  level: number,
+  index: number,
+  where: string,
+): BuildPlan {
+  return withRows(plan, level, "abilities", (rows) =>
+    rows.map((r, i) => (i !== index ? r : { id: r.id, ...whereOf(where) })),
+  );
 }
 
 /** A shout row at a level (WO-51): how many words are known from here. */
-export function addShout(plan: BuildPlan, level: number, row: ShoutRow): BuildPlan {
-  return withRows(plan, level, "shouts", (rows) => [...rows, { id: row.id, words: row.words, ...whereOf(row.where?.trim()) }]);
+export function addShout(
+  plan: BuildPlan,
+  level: number,
+  row: ShoutRow,
+): BuildPlan {
+  return withRows(plan, level, "shouts", (rows) => [
+    ...rows,
+    { id: row.id, words: row.words, ...whereOf(row.where?.trim()) },
+  ]);
 }
 
-export function removeShout(plan: BuildPlan, level: number, index: number): BuildPlan {
-  return withRows(plan, level, "shouts", (rows) => rows.filter((_, i) => i !== index));
+export function removeShout(
+  plan: BuildPlan,
+  level: number,
+  index: number,
+): BuildPlan {
+  return withRows(plan, level, "shouts", (rows) =>
+    rows.filter((_, i) => i !== index),
+  );
 }
 
-export function setShoutWhere(plan: BuildPlan, level: number, index: number, where: string): BuildPlan {
-  return withRows(plan, level, "shouts", (rows) => rows.map((r, i) => (i !== index ? r : { id: r.id, words: r.words, ...whereOf(where) })));
+export function setShoutWhere(
+  plan: BuildPlan,
+  level: number,
+  index: number,
+  where: string,
+): BuildPlan {
+  return withRows(plan, level, "shouts", (rows) =>
+    rows.map((r, i) =>
+      i !== index ? r : { id: r.id, words: r.words, ...whereOf(where) },
+    ),
+  );
 }
 
-export function setShoutWords(plan: BuildPlan, level: number, index: number, words: 1 | 2 | 3): BuildPlan {
-  return withRows(plan, level, "shouts", (rows) => rows.map((r, i) => (i !== index ? r : { ...r, words })));
+export function setShoutWords(
+  plan: BuildPlan,
+  level: number,
+  index: number,
+  words: 1 | 2 | 3,
+): BuildPlan {
+  return withRows(plan, level, "shouts", (rows) =>
+    rows.map((r, i) => (i !== index ? r : { ...r, words })),
+  );
 }
 
 /** Stars or unstars a spell as a main spell, up to 8, in the order starred. */
 export function toggleMainSpell(plan: BuildPlan, id: string): BuildPlan {
   const main = plan.mainSpells ?? [];
-  const next = main.includes(id) ? main.filter((x) => x !== id) : main.length < MAX_MAIN_SPELLS ? [...main, id] : main;
+  const next = main.includes(id)
+    ? main.filter((x) => x !== id)
+    : main.length < MAX_MAIN_SPELLS
+      ? [...main, id]
+      : main;
   return withMainSpells({ ...plan, mainSpells: next });
 }
 
@@ -175,7 +329,12 @@ export function toggleMainSpell(plan: BuildPlan, id: string): BuildPlan {
  * The rows set at `level` for one held entry: a slot, or in `Other` one item, by its name at
  * that level (a row that adds or replaces it, or one that takes it away).
  */
-function isEntryRow(g: GearItem, level: number, slot: string, item?: string): boolean {
+function isEntryRow(
+  g: GearItem,
+  level: number,
+  slot: string,
+  item?: string,
+): boolean {
   if (g.fromLevel !== level || g.slot !== slot) return false;
   if (slot !== "Other") return true;
   return g.name === item || (!g.name && g.replaces === item);
@@ -185,39 +344,116 @@ function isEntryRow(g: GearItem, level: number, slot: string, item?: string): bo
  * Sets what a slot holds from `level` on. In `Other`, `item` is the item being changed (one set
  * at this level is edited in place, one carried from earlier is replaced); without it, an item is added.
  */
-export function setGearAt(plan: BuildPlan, level: number, slot: string, set: { name: string; note: string; itemId?: string; made?: MadeGear }, item?: string): BuildPlan {
+export function setGearAt(
+  plan: BuildPlan,
+  level: number,
+  slot: string,
+  set: { name: string; note: string; itemId?: string; made?: MadeGear },
+  item?: string,
+): BuildPlan {
   const name = set.name.trim();
   const note = set.note.trim();
   if (!name) return emptyGearAt(plan, level, slot, item);
   // An item from the index keeps its id, so it links to its card.
-  const picked = { ...(set.itemId ? { itemId: set.itemId } : {}), ...(set.made ? { made: set.made } : {}) };
-  if (slot !== "Other") return { ...plan, gear: [...plan.gear.filter((g) => !isEntryRow(g, level, slot)), { slot, name, fromLevel: level, note, ...picked }] };
-  const here = item === undefined ? -1 : plan.gear.findIndex((g) => g.fromLevel === level && g.slot === "Other" && g.name === item);
-  if (here >= 0) return { ...plan, gear: plan.gear.map((g, i) => (i === here ? { slot: g.slot, fromLevel: g.fromLevel, name, note, ...(g.replaces ? { replaces: g.replaces } : {}), ...picked } : g)) };
-  return { ...plan, gear: [...plan.gear, { slot, name, fromLevel: level, note, ...(item !== undefined ? { replaces: item } : {}), ...picked }] };
+  const picked = {
+    ...(set.itemId ? { itemId: set.itemId } : {}),
+    ...(set.made ? { made: set.made } : {}),
+  };
+  if (slot !== "Other")
+    return {
+      ...plan,
+      gear: [
+        ...plan.gear.filter((g) => !isEntryRow(g, level, slot)),
+        { slot, name, fromLevel: level, note, ...picked },
+      ],
+    };
+  const here =
+    item === undefined
+      ? -1
+      : plan.gear.findIndex(
+          (g) => g.fromLevel === level && g.slot === "Other" && g.name === item,
+        );
+  if (here >= 0)
+    return {
+      ...plan,
+      gear: plan.gear.map((g, i) =>
+        i === here
+          ? {
+              slot: g.slot,
+              fromLevel: g.fromLevel,
+              name,
+              note,
+              ...(g.replaces ? { replaces: g.replaces } : {}),
+              ...picked,
+            }
+          : g,
+      ),
+    };
+  return {
+    ...plan,
+    gear: [
+      ...plan.gear,
+      {
+        slot,
+        name,
+        fromLevel: level,
+        note,
+        ...(item !== undefined ? { replaces: item } : {}),
+        ...picked,
+      },
+    ],
+  };
 }
 
 /** Empties a slot (or, in `Other`, takes `item` away) from `level` on. */
-export function emptyGearAt(plan: BuildPlan, level: number, slot: string, item?: string): BuildPlan {
+export function emptyGearAt(
+  plan: BuildPlan,
+  level: number,
+  slot: string,
+  item?: string,
+): BuildPlan {
   if (slot !== "Other") {
     const gear = plan.gear.filter((g) => !isEntryRow(g, level, slot));
     const held = gearAt({ ...plan, gear }, level).some((g) => g.slot === slot);
-    return { ...plan, gear: held ? [...gear, { slot, name: "", fromLevel: level, note: "" }] : gear };
+    return {
+      ...plan,
+      gear: held
+        ? [...gear, { slot, name: "", fromLevel: level, note: "" }]
+        : gear,
+    };
   }
-  const here = plan.gear.findIndex((g) => g.fromLevel === level && g.slot === "Other" && g.name === item);
-  if (here < 0) return { ...plan, gear: [...plan.gear, { slot, name: "", fromLevel: level, note: "", replaces: item }] };
+  const here = plan.gear.findIndex(
+    (g) => g.fromLevel === level && g.slot === "Other" && g.name === item,
+  );
+  if (here < 0)
+    return {
+      ...plan,
+      gear: [
+        ...plan.gear,
+        { slot, name: "", fromLevel: level, note: "", replaces: item },
+      ],
+    };
   const r = plan.gear[here];
   return {
     ...plan,
-    gear: r.replaces ? plan.gear.map((g, i) => (i === here ? { ...g, name: "", note: "" } : g)) : plan.gear.filter((_, i) => i !== here),
+    gear: r.replaces
+      ? plan.gear.map((g, i) => (i === here ? { ...g, name: "", note: "" } : g))
+      : plan.gear.filter((_, i) => i !== here),
   };
 }
 
 /** Takes back the change made at `level` to a slot (or to one `Other` item). */
-export function undoGearAt(plan: BuildPlan, level: number, slot: string, item?: string): BuildPlan {
-  return { ...plan, gear: plan.gear.filter((g) => !isEntryRow(g, level, slot, item)) };
+export function undoGearAt(
+  plan: BuildPlan,
+  level: number,
+  slot: string,
+  item?: string,
+): BuildPlan {
+  return {
+    ...plan,
+    gear: plan.gear.filter((g) => !isEntryRow(g, level, slot, item)),
+  };
 }
-
 
 /** What a level's attribute and skill points were, for Undo after Repeat (WO-56). */
 export interface LevelSpend {
@@ -232,17 +468,26 @@ export interface LevelSpend {
  * of One skill excepted, as the rules engine does), or when the points left don't cover its cost.
  * Returns the new plan, what this level had before (for Undo), and a line for each skipped raise.
  */
-export function repeatLevel(plan: BuildPlan, level: number, d: GameData): { plan: BuildPlan; before: LevelSpend; skipped: string[] } {
+export function repeatLevel(
+  plan: BuildPlan,
+  level: number,
+  d: GameData,
+): { plan: BuildPlan; before: LevelSpend; skipped: string[] } {
   const lv = plan.levels[level - 1];
   const prev = plan.levels[level - 2];
-  const before: LevelSpend = { ...(lv?.attribute ? { attribute: lv.attribute } : {}), skillPoints: { ...(lv?.skillPoints ?? {}) } };
+  const before: LevelSpend = {
+    ...(lv?.attribute ? { attribute: lv.attribute } : {}),
+    skillPoints: { ...(lv?.skillPoints ?? {}) },
+  };
   if (!lv || !prev || level < 2) return { plan, before, skipped: [] };
   // What this level starts from doesn't depend on its own spend: the skills before it and the
   // points it has (its own plus those banked).
   const state = computeBuild(plan)[level - 1];
   const skills = { ...state.skillsBefore };
   const max = d.maxSkillAt(level);
-  const moo = plan.traits.includes("Master of One") ? plan.masterOfOneSkill : undefined;
+  const moo = plan.traits.includes("Master of One")
+    ? plan.masterOfOneSkill
+    : undefined;
   let left = state.skillPointsAvailable;
   const raised: Record<string, number> = {};
   const skipped: string[] = [];
@@ -281,11 +526,242 @@ export function repeatLevel(plan: BuildPlan, level: number, d: GameData): { plan
 }
 
 /** Undo after Repeat (WO-56): puts back exactly the attribute and skill points the level had. */
-export function restoreLevelSpend(plan: BuildPlan, level: number, before: LevelSpend): BuildPlan {
+export function restoreLevelSpend(
+  plan: BuildPlan,
+  level: number,
+  before: LevelSpend,
+): BuildPlan {
   return withLevel(plan, level, (l) => {
     const out: LevelPlan = { ...l, skillPoints: { ...before.skillPoints } };
     if (before.attribute) out.attribute = before.attribute;
     else delete out.attribute;
     return out;
   });
+}
+
+/** What Auto level is told (WO-64). Not saved: the levels it writes are. */
+export interface FillSettings {
+  /** The level to reach, 2 to the version's top. */
+  to: number;
+  /** [skill, target], in the order points go in when there aren't enough for all. */
+  targets: [string, number][];
+  /** Perk and Destiny star ids, in order; a ranked perk listed twice takes two ranks. */
+  perks: string[];
+  /** Level-ups to each attribute; they add up to `to - 1`. */
+  attributes: Record<Attribute, number>;
+  /** Which attribute takes its level-ups first, or "even" to take them in turn from the start. */
+  first: Attribute | "even";
+}
+
+export interface FillReport {
+  health: number;
+  magicka: number;
+  stamina: number;
+  targets: {
+    skill: string;
+    target: number;
+    now: number;
+    end: number;
+    reachedAt: number | null;
+    reason?: string;
+  }[];
+  perks: { id: string; level: number | null; reason?: string }[];
+  /** Perks and Destiny stars taken at each level, 1 to `to`. */
+  perLevel: number[];
+  skillPointsLeft: number;
+  perkPointsLeft: number;
+}
+
+const ATTRIBUTE_TURN: Attribute[] = ["health", "magicka", "stamina"];
+
+/** The attribute for each level-up, 2 to `to`: `first`'s all first, then the rest in turn; or in turn from the start. */
+export function attributeOrder(
+  s: Pick<FillSettings, "to" | "attributes" | "first">,
+): Attribute[] {
+  const left = { ...s.attributes };
+  const out: Attribute[] = [];
+  const take = (a: Attribute) => {
+    out.push(a);
+    left[a]--;
+  };
+  if (s.first !== "even")
+    while (left[s.first] > 0 && out.length < s.to - 1) take(s.first);
+  while (out.length < s.to - 1 && ATTRIBUTE_TURN.some((a) => left[a] > 0))
+    for (const a of ATTRIBUTE_TURN)
+      if (left[a] > 0 && out.length < s.to - 1) take(a);
+  return out;
+}
+
+/**
+ * Auto level (WO-64): fills levels 2 to `to` of a fresh build (level 1 only) by the rules. Each
+ * level gets its attribute from the order; its skill points go round the targets in row order, one
+ * point at a time, skipping a skill at its target, the level's max skill, +5 this level, or one the
+ * points left don't cover (the rest bank). Then its perk points take the first perks on the list
+ * the rules engine accepts there, and its Destiny points the listed stars. Level 1 and the setup
+ * are untouched, and no level ends with a problem. Returns the plan and a report for the preview.
+ */
+export function fillToLevel(
+  plan: BuildPlan,
+  s: FillSettings,
+  d: GameData,
+): { plan: BuildPlan; report: FillReport } {
+  const order = attributeOrder(s);
+  const levels: LevelPlan[] = [plan.levels[0]];
+  const at = (L: number) =>
+    computeBuild({ ...plan, levels: levels.slice(0, L) }, d)[L - 1];
+  const rankOf = (i: number) =>
+    s.perks.slice(0, i + 1).filter((x) => x === s.perks[i]).length;
+  let state = at(1);
+  for (let L = 2; L <= s.to; L++) {
+    const prev = state;
+    const lv: LevelPlan = {
+      ...emptyLevel(),
+      attribute: order[L - 2] ?? "health",
+    };
+    levels.push(lv);
+    // Skill points: round the targets, one point at a time.
+    const skills = { ...prev.skills };
+    let points = d.rules.skillPointsPerLevel + prev.skillPointsBanked;
+    const max = d.maxSkillAt(L);
+    const raised: Record<string, number> = {};
+    for (let moved = true; moved;) {
+      moved = false;
+      for (const [sk, target] of s.targets) {
+        if (
+          !(sk in skills) ||
+          (raised[sk] ?? 0) >= d.rules.maxRaisePerSkillPerLevel ||
+          skills[sk] >= Math.min(target, max)
+        )
+          continue;
+        const cost = d.skillPointCost(skills[sk]);
+        if (cost > points) continue;
+        points -= cost;
+        skills[sk]++;
+        raised[sk] = (raised[sk] ?? 0) + 1;
+        moved = true;
+      }
+    }
+    lv.skillPoints = raised;
+    state = at(L);
+    // Perks, then Destiny stars: the first on the list the engine accepts here, while points last.
+    for (const destiny of [false, true]) {
+      for (;;) {
+        const left = destiny
+          ? state.destinyPoints - state.destinyPointsSpent
+          : state.perkPoints - state.perkPointsSpent;
+        if (left <= 0) break;
+        let took = false;
+        for (let i = 0; i < s.perks.length; i++) {
+          const id = s.perks[i];
+          const p = d.perkById.get(id);
+          if (!p || (p.tree === "Destiny") !== destiny) continue;
+          const held = destiny
+            ? id in state.destinyTaken
+              ? 1
+              : 0
+            : (state.perksTaken[id]?.length ?? 0);
+          if (held >= rankOf(i)) continue;
+          // Quick skips before asking the engine: the skill isn't there yet.
+          const need = p.rankSkills?.[held] ?? p.skill ?? 0;
+          if (!destiny && (state.skills[p.tree] ?? 0) < need) continue;
+          (destiny ? lv.destiny : lv.perks).push(id);
+          const next = at(L);
+          if (next.issues.length === 0) {
+            state = next;
+            took = true;
+            break;
+          }
+          (destiny ? lv.destiny : lv.perks).pop();
+        }
+        if (!took) break;
+      }
+    }
+  }
+  const out: BuildPlan = { ...plan, levels };
+  const states = computeBuild(out, d);
+  const last = states[s.to - 1];
+  const first = states[0];
+  const placed: Record<string, number[]> = {};
+  levels.forEach((lv, i) =>
+    [...lv.perks, ...lv.destiny].forEach((id) =>
+      (placed[id] ??= []).push(i + 1),
+    ),
+  );
+  const maxAtTo = d.maxSkillAt(s.to);
+  const targets = s.targets.map(([skill, target]) => {
+    const now = first.skills[skill] ?? 0;
+    const end = last.skills[skill] ?? now;
+    const reachedAt =
+      states.find((x) => (x.skills[skill] ?? 0) >= target)?.level ?? null;
+    const reason =
+      reachedAt !== null
+        ? `By level ${reachedAt}`
+        : end >= maxAtTo
+          ? `${end} at most: the max skill at level ${s.to}`
+          : `${end} at most by level ${s.to}`;
+    return { skill, target, now, end, reachedAt, reason };
+  });
+  const perks = s.perks.map((id, i) => {
+    const level = placed[id]?.[rankOf(i) - 1] ?? null;
+    return {
+      id,
+      level,
+      ...(level === null
+        ? { reason: whyNotPlaced(d, s, id, rankOf(i), last, placed) }
+        : {}),
+    };
+  });
+  return {
+    plan: out,
+    report: {
+      health: last.health,
+      magicka: last.magicka,
+      stamina: last.stamina,
+      targets,
+      perks,
+      perLevel: levels.map((lv) => lv.perks.length + lv.destiny.length),
+      skillPointsLeft: last.skillPointsBanked,
+      perkPointsLeft: last.perkPoints - last.perkPointsSpent,
+    },
+  };
+}
+
+/** Why a listed perk didn't fit by the level to reach, in the planner's words (WO-64). */
+function whyNotPlaced(
+  d: GameData,
+  s: FillSettings,
+  id: string,
+  rank: number,
+  last: LevelState,
+  placed: Record<string, number[]>,
+): string {
+  const p = d.perkById.get(id);
+  const not = `Not by level ${s.to}`;
+  if (!p) return `${not}: not in this version`;
+  if (p.tree !== "Destiny") {
+    const need = p.rankSkills?.[rank - 1] ?? p.skill ?? 0;
+    const have = last.skills[p.tree] ?? 0;
+    if (have < need) {
+      if (need > d.maxSkillAt(s.to))
+        return `${not}: needs ${p.tree} ${need}, level ${need - d.rules.maxSkillBase} at the earliest`;
+      const target = s.targets.find(([sk]) => sk === p.tree)?.[1];
+      if (target === undefined)
+        return `${not}: needs ${p.tree} ${need}, and ${p.tree} has no target`;
+      if (target < need)
+        return `${not}: needs ${p.tree} ${need}, above the target`;
+      return `${not}: needs ${p.tree} ${need}`;
+    }
+    const lvl = p.rankLevels?.[rank - 1];
+    if (lvl && lvl > s.to) return `${not}: needs character level ${lvl}`;
+  }
+  const missing = p.requires.filter(
+    (r) =>
+      !placed[r] && !(last.perksTaken[r]?.length || r in last.destinyTaken),
+  );
+  if (missing.length && (!p.anyOf || missing.length === p.requires.length))
+    return `${not}: needs ${missing.map((r) => d.perkById.get(r)?.name ?? r).join(p.anyOf ? " or " : " and ")} first`;
+  const clash = (p.excludes ?? []).find((x) => placed[x]);
+  if (clash)
+    return `${not}: can't be held with ${d.perkById.get(clash)?.name ?? clash}`;
+  return `${not}: no ${p.tree === "Destiny" ? "Destiny" : "perk"} points left`;
 }
