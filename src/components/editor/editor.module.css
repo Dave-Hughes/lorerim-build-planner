@@ -1089,18 +1089,28 @@
 .attrCount {
   cursor: default;
 }
+/* The counter fills the card and shares its width, so the buttons never spill past its edge. */
 .attrStepper {
   display: grid;
-  grid-template-columns: 32px 1fr 32px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(20px, auto) minmax(0, 1fr);
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
   border: 1px solid var(--rule-strong);
   margin-bottom: 10px;
   text-align: center;
 }
+.attrStepper b {
+  align-self: center;
+}
 .attrStepper button {
   font: inherit;
   font-size: 16px;
-  height: 30px;
+  height: 32px;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
   border: 0;
   background: transparent;
   color: #c3cdd6;
@@ -1146,10 +1156,4 @@
 .poolDetail .hint {
   text-decoration: underline dotted;
   text-underline-offset: 3px;
-}
-/* Shift and Ctrl/⌘ clicks need a keyboard: no hint on a touch screen. */
-@media (hover: none) {
-  .keyHint {
-    display: none;
-  }
 }

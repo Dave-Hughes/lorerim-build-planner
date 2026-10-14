@@ -10,7 +10,7 @@ import { Tree, type TreeView } from "@/components/build/tree";
 import { heldCount } from "@/lib/rules/tree-states";
 import { BottomSheet, ViewToggle } from "@/components/build/tree";
 import { useGameData } from "@/components/game-data";
-import { ATTRIBUTE_NAMES, levelMarks, nextDestinyLevel, skillStepInfo, stoneLabel, stoneShare } from "@/lib/rules/derive";
+import { ATTRIBUTE_NAMES, levelMarks, skillStepInfo, stoneLabel, stoneShare } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
 import type { Attribute, BuildPlan } from "@/lib/rules/types";
 import { GearBlock } from "./gear-block";
@@ -263,7 +263,6 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   })();
   const perkLeft = s.perkPoints - s.perkPointsSpent;
   const destinyLeft = s.destinyPoints - s.destinyPointsSpent;
-  const nextDestiny = nextDestinyLevel(d, level);
   // Trainer sessions: what is left of this level-up's own (unused ones carry over, but a running
   // total of 97 at level 20 reads as noise). Never more than the build has left overall.
   const trainerLeft = Math.max(
@@ -416,7 +415,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
             <Pool
               label="Destiny points"
               value={destinyLeft}
-              of={nextDestiny ? `next at ${nextDestiny}` : "no more"}
+              of=""
               detail={isStretch && before ? spentOf(s.destinyPointsSpent - before.destinyPointsSpent, s.destinyPoints - before.destinyPointsSpent, before.destinyPoints - before.destinyPointsSpent) : undefined}
               destiny
             />
@@ -550,7 +549,6 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                     <div style={{ width: `${Math.min(100, (s.skillPointsSpent / s.skillPointsAvailable) * 100)}%` }} className={left < 0 ? styles.pointsOver : ""} />
                   </div>
                   {!isStretch && carriedIn > 0 && <span className={styles.hint}>Includes {carriedIn} carried in from level {level - 1}</span>}
-                  {isStretch && <span className={`${styles.hint} ${styles.keyHint}`}>Shift-click + or − for 5 at a time; Ctrl- or ⌘-click to go as far as it can.</span>}
                   {justRepeated && repeated!.skipped.length > 0 && (
                     <span className={styles.hint} role="status">
                       {repeated!.skipped.join(" ")}
@@ -931,13 +929,23 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
 
 /** A pool of points. On a stretch (WO-69), `detail` ("510 of 625 spent, 175 carried in") is its tooltip, and read out. */
 function Pool({ label, icon, value, of, destiny, flashKey, detail }: { label: string; icon?: React.ReactNode; value: number; of: string; destiny?: boolean; flashKey?: number; detail?: string }) {
-  const hint = <span className={styles.hint}>{of}</span>;
+  const hint = of ? <span className={styles.hint}>{of}</span> : null;
   return (
     <div className={`${styles.pool} ${destiny ? styles.poolDestiny : ""}`}>
       <dt className={`label ${styles.poolLabel}`}>{icon ? <IconLabel icon={icon}>{label}</IconLabel> : label}</dt>
       <dd key={flashKey ?? "still"} className={`${styles.poolVal} ${flashKey ? styles.poolFlash : ""}`}>
-        <span className={`big-num ${styles.poolNum} ${value < 0 ? "bad" : ""}`}>{value}</span>
-        {detail ? (
+        {/* On a stretch the breakdown is the hint's tooltip, or the number's when there's no hint. */}
+        {detail && !hint ? (
+          <Tooltip content={detail}>
+            <span tabIndex={0} className={styles.poolDetail}>
+              <span className={`big-num ${styles.poolNum} ${value < 0 ? "bad" : ""}`}>{value}</span>
+              <span className="sr-only">: {detail}</span>
+            </span>
+          </Tooltip>
+        ) : (
+          <span className={`big-num ${styles.poolNum} ${value < 0 ? "bad" : ""}`}>{value}</span>
+        )}
+        {detail && hint ? (
           <Tooltip content={detail}>
             <span tabIndex={0} className={styles.poolDetail}>
               {hint}

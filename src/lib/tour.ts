@@ -80,6 +80,6 @@ export const AUTHOR_TOUR: TourScript = {
     { target: "points", title: "Points to spend", text: "What this level gives you. Don't spend them all? They wait for the next level. Like leftovers." },
     { target: "skills-tree", title: "Take a perk", text: "Pick a skill. Click a ring in its tree, then Confirm. A ring means you can take it now." },
     { target: "note", title: "Your note", text: "Tell readers what to do here. Where to go, what to buy, what bites." },
-    { target: "footer", title: "On to level 2", text: "Done? Continue to level 2, or Skip ahead and write the levels in between as one. From level 3 on, Repeat copies the level before." },
+    { target: "footer", title: "On to level 2", text: "Done? Continue to level 2, or Skip ahead and write the levels in between as one. From level 3 on, Repeat copies the level before. On the skill buttons, Shift-click moves 5 at a time and Ctrl- or ⌘-click goes as far as it can." },
   ],
 };
