@@ -33,7 +33,17 @@ export interface TreeProps {
   heading?: React.ReactNode;
   /** The list grouped by skill needed (default), or by state: can take now, taken, not yet (WO-62's phone sheet). */
   listBy?: "skill" | "state";
+  /**
+   * Auto level's goals (WO-65): stars shown as goals, as coming along, or ruled out, in place of
+   * the build's states; lines between marked stars are lit. A tap picks at once, with no sheet.
+   */
+  marks?: Map<string, GoalMark>;
+  /** Open at Fit, the whole tree in view, rather than at reading size (Auto level, WO-65). */
+  startFit?: boolean;
 }
+
+export type GoalMark = "goal" | "along" | "clash";
+const MARK_WORDS: Record<GoalMark, string> = { goal: "Goal", along: "Comes along", clash: "Ruled out" };
 
 export type TreeView = "tree" | "list";
 
@@ -136,6 +146,7 @@ function PerkList({
   selectedId,
   hidden,
   by = "skill",
+  marks,
 }: {
   d: GameData;
   tree: string;
@@ -144,6 +155,7 @@ function PerkList({
   selectedId?: string | null;
   hidden?: boolean;
   by?: "skill" | "state";
+  marks?: Map<string, GoalMark>;
 }) {
   const perks = d.perksByTree.get(tree) ?? [];
   const groups: { label: string; perks: Perk[] }[] = [];
@@ -177,19 +189,30 @@ function PerkList({
             {g.perks.map((p) => {
               const st = status.get(p.id)!;
               const req = requirementLine(d, p, st);
-              const where = st.state === "taken" && st.takenAt.length ? `Taken at level ${st.takenAt.join(", ")}` : st.state === "taken" ? "Taken" : st.state === "open" ? "Can take now" : "Not available yet";
+              const mark = marks?.get(p.id);
+              const where = marks
+                ? mark
+                  ? MARK_WORDS[mark]
+                  : ""
+                : st.state === "taken" && st.takenAt.length
+                  ? `Taken at level ${st.takenAt.join(", ")}`
+                  : st.state === "taken"
+                    ? "Taken"
+                    : st.state === "open"
+                      ? "Can take now"
+                      : "Not available yet";
               const body = (
                 <>
-                  <i className={`${styles.listDot} ${styles[st.state]}`} />
+                  <i className={`${styles.listDot} ${marks ? styles[`mark_${mark ?? "free"}`] : styles[st.state]}`} />
                   <span className={styles.listName}>{p.name}</span>
                   {req && <span className={styles.listReq}>{req}</span>}
-                  <span className={`${styles.listState} ${styles[`state_${st.state}`]}`}>{where}</span>
+                  <span className={`${styles.listState} ${marks ? styles[`markText_${mark ?? "free"}`] : styles[`state_${st.state}`]}`}>{where}</span>
                 </>
               );
               return (
                 <li key={p.id}>
                   {onSelect && !hidden ? (
-                    <button type="button" className={styles.listRow} aria-pressed={p.id === selectedId} onClick={() => onSelect(p.id)}>
+                    <button type="button" className={styles.listRow} aria-pressed={marks ? mark === "goal" : p.id === selectedId} onClick={() => onSelect(p.id)}>
                       {body}
                     </button>
                   ) : (
@@ -316,7 +339,7 @@ export function BottomSheet({ label, onClose, children, tall }: { label: string;
   );
 }
 
-export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView, noToggle, sheetBelow = SMALL, height, heading, listBy = "skill" }: TreeProps) {
+export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView, noToggle, sheetBelow = SMALL, height, heading, listBy = "skill", marks, startFit }: TreeProps) {
   const d = useGameData();
   const [wrap, setWrap] = useState<HTMLDivElement | null>(null);
   // `top`: where the drawing starts on the page (below the toolbar), for short windows.
@@ -376,7 +399,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   // A star picked outside the tree (the level card, the held list) moves the view to it; so does a new tree.
   const viewKey = `${tree}|${selected && selected !== ownPick ? selected : ""}`;
   const [manual, setManual] = useState<{ key: string; t: number; fx: number; fy: number } | null>(null);
-  const t = clamp(manual?.key === viewKey ? manual.t : readable, fitScale, maxScale);
+  const t = clamp(manual?.key === viewKey ? manual.t : startFit ? fitScale : readable, fitScale, maxScale);
   const dims = w0 > 0 ? drawingSize(d, tree, w0, h0, pad, t) : null;
   const W = dims?.width ?? 0;
   const H = dims?.height ?? 0;
@@ -392,7 +415,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
     .filter((x) => x.at > 0)
     .sort((a, b) => b.at - a.at)[0]?.id;
   const focus = (selected && pos.get(selected)) || (newest && pos.get(newest)) || null;
-  const centre = manual?.key === viewKey ? { fx: manual.fx, fy: manual.fy } : focus && W ? { fx: focus.x / W, fy: focus.y / H } : { fx: 0.5, fy: 1 };
+  const centre = manual?.key === viewKey ? { fx: manual.fx, fy: manual.fy } : startFit ? { fx: 0.5, fy: 0.5 } : focus && W ? { fx: focus.x / W, fy: focus.y / H } : { fx: 0.5, fy: 1 };
   const panX = W ? clamp(w0 / 2 - centre.fx * W, Math.min(0, w0 - W), 0) : 0;
   const panY = H ? clamp(h0 / 2 - centre.fy * H, Math.min(0, h0 - H), 0) : 0;
   const setCentre = useCallback((next: { t: number; panX: number; panY: number; W: number; H: number }) => {
@@ -448,7 +471,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
     setOwnPick(id);
     if (onSelect) onSelect(id);
     else setLocalSelected(id);
-    if (sheetMode) setSheet(id);
+    if (sheetMode && !marks) setSheet(id);
   };
 
   // ---- pan and zoom, at every width ----
@@ -555,7 +578,12 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   const lines = (() => {
     const order = { other: 0, next: 1, chain: 2, held: 3 };
     return (layout?.edges ?? [])
-      .map((e) => ({ e, look: lineLook(lineState(status.get(e.from), status.get(e.to)), e.anyOf, chain.has(`${e.from}>${e.to}`)) }))
+      .map((e) => ({
+        e,
+        look: marks
+          ? lineLook(marks.has(e.from) && marks.has(e.to) ? "held" : "other", e.anyOf, false)
+          : lineLook(lineState(status.get(e.from), status.get(e.to)), e.anyOf, chain.has(`${e.from}>${e.to}`)),
+      }))
       .sort((a, b) => order[a.look.kind] - order[b.look.kind]);
   })();
   const sheetStatus = sheet ? status.get(sheet) : undefined;
@@ -583,11 +611,11 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
       </div>
 
       {view === "list" ? (
-        <PerkList d={d} tree={tree} status={status} onSelect={select} selectedId={selected} by={listBy} />
+        <PerkList d={d} tree={tree} status={status} onSelect={select} selectedId={selected} by={listBy} marks={marks} />
       ) : (
         <>
           {/* Screen readers get the list first. */}
-          <PerkList d={d} tree={tree} status={status} hidden />
+          <PerkList d={d} tree={tree} status={status} hidden marks={marks} />
           <div
             ref={sky}
             tabIndex={0}
@@ -631,7 +659,8 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
                   const st = status.get(n.id)!;
                   const isSel = n.id === selected;
                   const req = requirementLine(d, p, st);
-                  const aria = `${p.name}${req ? `, ${req}` : ""}, ${stateWords(st)}`;
+                  const mark = marks?.get(n.id);
+                  const aria = `${p.name}${req ? `, ${req}` : ""}, ${marks ? (mark ? MARK_WORDS[mark].toLowerCase() : "not chosen") : stateWords(st)}`;
                   const extra = [
                     ...layout.external.filter((x) => x.forId === n.id).map((x) => `${p.anyOf ? "or" : "and"} ${x.tree}: ${x.name}`),
                     ...(p.excludes ?? []).map((x) => {
@@ -642,12 +671,12 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
                   const label = labels.get(n.id);
                   const partial = st.ranksTaken > 0 && st.ranksTaken < st.ranks && !st.granted;
                   const held = isHeld(st);
-                  const look = held ? (partial ? styles.partial : styles.taken) : st.state === "open" ? styles.open : styles.locked;
-                  const cls = [styles.star, look, isSel ? styles.selected : "", label ? "" : styles.unlabelled].join(" ");
+                  const look = marks ? styles[`mark_${mark ?? "free"}`] : held ? (partial ? styles.partial : styles.taken) : st.state === "open" ? styles.open : styles.locked;
+                  const cls = [styles.star, look, isSel && !marks ? styles.selected : "", label ? "" : styles.unlabelled].join(" ");
                   const style = { left: n.x, top: n.y, ...(partial ? { ["--ring" as string]: rankRing(st, size.star * 2 * 1.3) } : {}) };
                   return (
                     <span key={n.id}>
-                      <button type="button" className={cls} style={style} aria-label={aria} aria-pressed={isSel} data-perk={n.id} onClick={() => select(n.id)} onFocus={(e) => reveal(n.id, e)}>
+                      <button type="button" className={cls} style={style} aria-label={aria} aria-pressed={marks ? mark === "goal" : isSel} data-perk={n.id} data-mark={mark} onClick={() => select(n.id)} onFocus={(e) => reveal(n.id, e)}>
                         {/* On hover (mouse) or keyboard focus: the name and what it needs, at once. */}
                         <span className={styles.tag} aria-hidden="true">
                           <b>{nameLine(p, st)}</b>
@@ -659,7 +688,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
                       </button>
                       {label && (
                         <span
-                          className={`${styles.label} ${styles[`side_${label.side}`]} ${isSel ? styles.labelSelected : ""} ${held ? styles.labelHeld : st.state === "locked" ? styles.labelLocked : ""}`}
+                          className={`${styles.label} ${styles[`side_${label.side}`]} ${marks ? (mark ? styles[`labelMark_${mark}`] : "") : `${isSel ? styles.labelSelected : ""} ${held ? styles.labelHeld : st.state === "locked" ? styles.labelLocked : ""}`}`}
                           style={{ left: label.x, top: label.y, width: label.w, height: label.h }}
                           aria-hidden="true"
                           onClick={() => select(n.id)}
@@ -682,6 +711,22 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
         </>
       )}
 
+      {marks ? (
+        <div className={styles.legend}>
+          <span>
+            <i className={styles.keyGoal} />
+            Goal
+          </span>
+          <span>
+            <i className={styles.keyAlong} />
+            Comes along
+          </span>
+          <span>
+            <i className={styles.keyFree} />
+            Not chosen
+          </span>
+        </div>
+      ) : (
       <div className={styles.legend}>
         <span>
           <i className={styles.keyTaken} />
@@ -700,6 +745,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
           Not yet
         </span>
       </div>
+      )}
 
       {sheetMode && sheet && sheetStatus && (
         <BottomSheet label={d.perkById.get(sheet)?.name ?? "Perk"} onClose={() => setSheet(null)}>

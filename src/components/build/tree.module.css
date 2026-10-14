@@ -226,6 +226,47 @@
 .star:focus-visible {
   outline: 2px solid var(--brass);
 }
+/* Auto level's goals (WO-65): a goal is ember with a light ember ring; what comes along, faint ember. */
+.mark_goal {
+  width: calc(var(--star) * 1.45);
+  height: calc(var(--star) * 1.45);
+}
+.mark_goal::before {
+  background: var(--ember);
+  border: 3px solid #ffe3a3;
+}
+.mark_along {
+  width: calc(var(--star) * 1.15);
+  height: calc(var(--star) * 1.15);
+}
+.mark_along::before {
+  background: color-mix(in srgb, var(--ember) 35%, transparent);
+  border: 2px solid var(--ember);
+}
+.mark_clash {
+  width: calc(var(--star) * 1.45);
+  height: calc(var(--star) * 1.45);
+}
+.mark_clash::before {
+  background: var(--health);
+  border: 3px solid #f6c3b8;
+}
+.mark_free::before {
+  border: 2px solid #566273;
+  background: var(--sunk);
+}
+.labelMark_goal .labelName {
+  color: var(--ember-text);
+  font-weight: 700;
+}
+.labelMark_along .labelName {
+  color: var(--bright);
+  font-weight: 600;
+}
+.labelMark_clash .labelName {
+  color: #f1b3a6;
+  font-weight: 700;
+}
 
 /* Labels */
 .label {
@@ -367,6 +408,31 @@ button.listRow[aria-pressed="true"] {
 .listDot.open {
   border: 1.5px solid var(--perk);
 }
+.listDot.mark_goal {
+  background: var(--ember);
+  border: 2px solid #ffe3a3;
+  width: 12px;
+  height: 12px;
+}
+.listDot.mark_along {
+  background: color-mix(in srgb, var(--ember) 35%, transparent);
+  border: 1.5px solid var(--ember);
+}
+.listDot.mark_clash {
+  background: var(--health);
+}
+.listDot.mark_free {
+  border: 1.5px solid #566273;
+}
+.markText_goal {
+  color: var(--ember-text);
+}
+.markText_along {
+  color: var(--soft);
+}
+.markText_clash {
+  color: #f1b3a6;
+}
 .listDot.locked {
   width: 6px;
   height: 6px;
@@ -484,6 +550,23 @@ button.listRow[aria-pressed="true"] {
   height: 13px;
   background: var(--perk);
   box-shadow: 0 0 0 3px var(--perk-halo);
+}
+.keyGoal {
+  width: 14px;
+  height: 14px;
+  background: var(--ember);
+  border: 2px solid #ffe3a3;
+}
+.keyAlong {
+  width: 12px;
+  height: 12px;
+  background: color-mix(in srgb, var(--ember) 35%, transparent);
+  border: 2px solid var(--ember);
+}
+.keyFree {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #566273;
 }
 .keyPartial {
   width: 13px;

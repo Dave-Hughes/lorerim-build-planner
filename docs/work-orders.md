@@ -2621,17 +2621,17 @@ This pass keeps WO-64's engine (`fillToLevel`) and its preview, and replaces how
    - The settings line wraps; the preview goes under the list, with the button pinned at the bottom.
 
 ### Done when
-- [ ] Unit tests for `goalsToSettings`:
+- [x] Unit tests for `goalsToSettings`:
   - Impact alone gives Novice Destruction, Empowered Destruction and Impact, in that order, and a Destruction target of 50.
   - Expert Destruction gives the Novice, Apprentice and Adept path and a target of 75.
   - An `anyOf` perk takes its cheaper prerequisite.
   - A cross-tree prerequisite comes along.
   - Two goals that exclude each other are reported, not filled.
-- [ ] Unit test: the canvas board's goals (Impact, Expert Destruction, Cremation, Adept Alteration) on an Altmer to 30 fill with no problems from the rules engine, and every goal is placed.
-- [ ] e2e: on a fresh test build, open Auto level, click Impact in the Destruction tree. Its path is marked, the Destruction row says `50 by …`, and the preview lists Impact with what comes along. `Auto level to 20` fills 20 levels with Impact taken; `Undo` brings back the fresh build.
-- [ ] e2e: set To level 10 with Expert Destruction as a goal. The preview says it can't make it and gives the earliest level.
-- [ ] Screenshots at 1440 and 390, compared with `AutoLevelGoals.dc.html`.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Unit test: the canvas board's goals (Impact, Expert Destruction, Cremation, Adept Alteration) on an Altmer to 30 fill with no problems from the rules engine, and every goal is placed.
+- [x] e2e: on a fresh test build, open Auto level, click Impact in the Destruction tree. Its path is marked, the Destruction row says `50 by …`, and the preview lists Impact with what comes along. `Auto level to 20` fills 20 levels with Impact taken; `Undo` brings back the fresh build.
+- [x] e2e: set To level 10 with Expert Destruction as a goal. The preview says it can't make it and gives the earliest level.
+- [x] Screenshots at 1440 and 390, compared with `AutoLevelGoals.dc.html`.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

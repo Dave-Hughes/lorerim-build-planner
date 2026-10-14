@@ -33,11 +33,7 @@ export const LINK_ONLY_BUILD_ID = "e2eqq2e2e7";
 export const TEST_SESSION_TOKEN = "e2e-session-token-0001";
 export const OTHER_SESSION_TOKEN = "e2e-session-token-0002";
 /** WO-40: three players who report a build, an account made 2 days ago, and one already at its daily build limit. */
-export const REPORTER_TOKENS = [
-  "e2e-session-token-0003",
-  "e2e-session-token-0004",
-  "e2e-session-token-0005",
-];
+export const REPORTER_TOKENS = ["e2e-session-token-0003", "e2e-session-token-0004", "e2e-session-token-0005"];
 export const NEW_ACCOUNT_TOKEN = "e2e-session-token-0006";
 export const NEW_ACCOUNT_BUILD_ID = "e2enewacct";
 /** WO-42: the sample build with level 1's perks cleared, so a test can take tier perks there. */
@@ -54,6 +50,8 @@ export const FOUR_BUILD_ID = "e2efa4rtwe";
 export const NOVICE_DESTRUCTION_BUILD_ID = "e2edestrvc";
 /** WO-64: Jo'Vashar from the Auto level canvas, fresh (level 1 only, nothing taken), for Auto level. */
 export const FRESH_BUILD_ID = "e2efresh2a";
+/** WO-65: the Auto level canvas's Altmer, fresh (level 1 only), for goals in the trees. */
+export const FRESH_MAGE_BUILD_ID = "e2efreshmg";
 export const AT_LIMIT_TOKEN = "e2e-session-token-0007";
 /** The test author's Discord id; playwright.config.ts gives it to the server as ADMIN_DISCORD_IDS. */
 export const E2E_ADMIN_DISCORD_ID = "e2e-discord-admin-0001";
@@ -79,44 +77,14 @@ export const RETIRED_BUILD_ID = "e2eqq2e2e4";
 export /** WO-52's build: the sample stretched to 40 levels, with spells, War Cry (from its perk), an ability and two shouts. */
 function powersPlan(): BuildPlan {
   const base = samplePlan();
-  const levels = [
-    ...base.levels,
-    ...Array.from({ length: 34 }, () => ({
-      skillPoints: {},
-      perks: [] as string[],
-      destiny: [] as string[],
-      extras: [],
-      note: "",
-      attribute: "stamina" as const,
-    })),
-  ];
-  const at = (n: number, more: Partial<BuildPlan["levels"][number]>) =>
-    (levels[n - 1] = { ...levels[n - 1], ...more });
+  const levels = [...base.levels, ...Array.from({ length: 34 }, () => ({ skillPoints: {}, perks: [] as string[], destiny: [] as string[], extras: [], note: "", attribute: "stamina" as const }))];
+  const at = (n: number, more: Partial<BuildPlan["levels"][number]>) => (levels[n - 1] = { ...levels[n - 1], ...more });
   at(1, { spells: [{ id: "Skyrim.esm:012FCD", where: "Known at the start" }] });
-  at(3, {
-    spells: [{ id: "Skyrim.esm:012FCC", where: "Known at the start" }],
-    abilities: [
-      {
-        id: "Tools of Kagrenac.esp:1267AB",
-        where: "Tools of Kagrenac, Aetherium Forge",
-      },
-    ],
-  });
-  at(5, {
-    shouts: [
-      { id: "Skyrim.esm:013E07", words: 1, where: "Bleak Falls Barrow" },
-    ],
-  });
-  at(12, {
-    perks: [...levels[11].perks, "Speech:War Cry"],
-    spells: [{ id: "Skyrim.esm:04DEEB", where: "Farengar, Dragonsreach" }],
-  });
-  at(20, {
-    shouts: [{ id: "Skyrim.esm:013E07", words: 3, where: "High Hrothgar" }],
-  });
-  at(25, {
-    shouts: [{ id: "Skyrim.esm:048AC9", words: 2, where: "Deepwood Redoubt" }],
-  });
+  at(3, { spells: [{ id: "Skyrim.esm:012FCC", where: "Known at the start" }], abilities: [{ id: "Tools of Kagrenac.esp:1267AB", where: "Tools of Kagrenac, Aetherium Forge" }] });
+  at(5, { shouts: [{ id: "Skyrim.esm:013E07", words: 1, where: "Bleak Falls Barrow" }] });
+  at(12, { perks: [...levels[11].perks, "Speech:War Cry"], spells: [{ id: "Skyrim.esm:04DEEB", where: "Farengar, Dragonsreach" }] });
+  at(20, { shouts: [{ id: "Skyrim.esm:013E07", words: 3, where: "High Hrothgar" }] });
+  at(25, { shouts: [{ id: "Skyrim.esm:048AC9", words: 2, where: "Deepwood Redoubt" }] });
   return { ...base, levels, mainSpells: ["Skyrim.esm:012FCD"] };
 }
 
@@ -140,12 +108,21 @@ function freshPlan(): BuildPlan {
   } as BuildPlan;
 }
 
+/** The WO-65 canvas's Altmer: a fresh mage, Destruction, Alteration and Conjuration majors. */
+function freshMagePlan(): BuildPlan {
+  return {
+    ...freshPlan(),
+    race: "Altmer",
+    birthsign: "Mage",
+    majors: ["Destruction", "Alteration", "Conjuration"],
+    minors: ["Restoration", "Illusion", "Enchanting", "Alchemy", "Speech", "Evasion"],
+    traits: [],
+    traitChoices: {},
+  } as BuildPlan;
+}
+
 function samplePlan(): BuildPlan {
-  const {
-    name: _n,
-    description: _d,
-    ...plan
-  } = sample as unknown as BuildPlan & { name: string; description: string };
+  const { name: _n, description: _d, ...plan } = sample as unknown as BuildPlan & { name: string; description: string };
   void _n;
   void _d;
   return plan;
@@ -157,87 +134,27 @@ export async function seed() {
   const db = drizzle(pool, { schema });
   try {
     // The test players' image checks (WO-40) would outlive them with no uploader.
-    await db
-      .delete(schema.imageChecks)
-      .where(like(schema.imageChecks.uploaderId, "e2e-%"));
+    await db.delete(schema.imageChecks).where(like(schema.imageChecks.uploaderId, "e2e-%"));
     await db.delete(schema.builds).where(like(schema.builds.id, "e2e%"));
     await db.delete(schema.users).where(like(schema.users.id, "e2e-%"));
-    await db
-      .insert(schema.users)
-      .values([
-        {
-          id: TEST_USER_ID,
-          name: TEST_USER_NAME,
-          email: null,
-          image: null,
-          handle: TEST_USER_HANDLE,
-        },
-        {
-          id: OTHER_USER_ID,
-          name: "Someone Else",
-          email: null,
-          image: null,
-          handle: "e2e-someone-else",
-        },
-        ...[3, 4, 5].map((n) => ({
-          id: `e2e-user-000${n}`,
-          name: `Reporter ${n - 2}`,
-          email: null,
-          image: null,
-          handle: `e2e-reporter-${n - 2}`,
-        })),
-        {
-          id: "e2e-user-0006",
-          name: "New Account",
-          email: null,
-          image: null,
-          handle: "e2e-new-account",
-        },
-        {
-          id: "e2e-user-0007",
-          name: "Busy Builder",
-          email: null,
-          image: null,
-          handle: "e2e-busy-builder",
-        },
-      ]);
+    await db.insert(schema.users).values([
+      { id: TEST_USER_ID, name: TEST_USER_NAME, email: null, image: null, handle: TEST_USER_HANDLE },
+      { id: OTHER_USER_ID, name: "Someone Else", email: null, image: null, handle: "e2e-someone-else" },
+      ...[3, 4, 5].map((n) => ({ id: `e2e-user-000${n}`, name: `Reporter ${n - 2}`, email: null, image: null, handle: `e2e-reporter-${n - 2}` })),
+      { id: "e2e-user-0006", name: "New Account", email: null, image: null, handle: "e2e-new-account" },
+      { id: "e2e-user-0007", name: "Busy Builder", email: null, image: null, handle: "e2e-busy-builder" },
+    ]);
     // The test author signs in with a Discord account the e2e server lists as an admin (WO-39).
     await db.insert(schema.accounts).values([
-      {
-        userId: TEST_USER_ID,
-        type: "oauth",
-        provider: "discord",
-        providerAccountId: E2E_ADMIN_DISCORD_ID,
-      },
+      { userId: TEST_USER_ID, type: "oauth", provider: "discord", providerAccountId: E2E_ADMIN_DISCORD_ID },
       // A Discord account made 2 days ago (its id is a snowflake of that time), for the 7-day rule (WO-40).
-      {
-        userId: "e2e-user-0006",
-        type: "oauth",
-        provider: "discord",
-        providerAccountId: snowflakeAt(new Date(Date.now() - 2 * 86_400_000)),
-      },
+      { userId: "e2e-user-0006", type: "oauth", provider: "discord", providerAccountId: snowflakeAt(new Date(Date.now() - 2 * 86_400_000)) },
     ]);
-    await db
-      .insert(schema.sessions)
-      .values([
-        {
-          sessionToken: TEST_SESSION_TOKEN,
-          userId: TEST_USER_ID,
-          expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
-        },
-        {
-          sessionToken: OTHER_SESSION_TOKEN,
-          userId: OTHER_USER_ID,
-          expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
-        },
-        ...[...REPORTER_TOKENS, NEW_ACCOUNT_TOKEN, AT_LIMIT_TOKEN].map(
-          (sessionToken, i) => ({
-            sessionToken,
-            userId: `e2e-user-000${i + 3}`,
-            expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
-          }),
-        ),
-      ]);
+    await db.insert(schema.sessions).values([
+      { sessionToken: TEST_SESSION_TOKEN, userId: TEST_USER_ID, expires: new Date(Date.now() + 1000 * 60 * 60 * 24) },
+      { sessionToken: OTHER_SESSION_TOKEN, userId: OTHER_USER_ID, expires: new Date(Date.now() + 1000 * 60 * 60 * 24) },
+      ...[...REPORTER_TOKENS, NEW_ACCOUNT_TOKEN, AT_LIMIT_TOKEN].map((sessionToken, i) => ({ sessionToken, userId: `e2e-user-000${i + 3}`, expires: new Date(Date.now() + 1000 * 60 * 60 * 24) })),
+    ]);
     await db.insert(schema.builds).values([
       {
         id: TEST_BUILD_ID,
@@ -273,13 +190,7 @@ export async function seed() {
         description: "Level 5's Destiny point unspent.",
         visibility: "private",
         gameVersion: "5.0.4.8",
-        plan: {
-          ...samplePlan(),
-          mode: "Konahrik" as const,
-          levels: samplePlan().levels.map((lv, i) =>
-            i === 4 ? { ...lv, destiny: [] } : lv,
-          ),
-        },
+        plan: { ...samplePlan(), mode: "Konahrik" as const, levels: samplePlan().levels.map((lv, i) => (i === 4 ? { ...lv, destiny: [] } : lv)) },
       },
       {
         id: IRIEL_BUILD_ID,
@@ -324,14 +235,7 @@ export async function seed() {
           notes: "",
           levels: [
             ...samplePlan().levels,
-            ...Array.from({ length: 14 }, () => ({
-              attribute: "health" as const,
-              skillPoints: {},
-              perks: [],
-              destiny: [],
-              extras: [],
-              note: "",
-            })),
+            ...Array.from({ length: 14 }, () => ({ attribute: "health" as const, skillPoints: {}, perks: [], destiny: [], extras: [], note: "" })),
           ],
         },
       },
@@ -351,11 +255,7 @@ export async function seed() {
         description: "A build made for an older LoreRim version.",
         visibility: "public",
         gameVersion: OLD_VERSION,
-        plan: {
-          ...samplePlan(),
-          gameVersion: OLD_VERSION,
-          traits: ["Witcher"],
-        },
+        plan: { ...samplePlan(), gameVersion: OLD_VERSION, traits: ["Witcher"] },
       },
       {
         id: RETIRED_BUILD_ID,
@@ -382,12 +282,7 @@ export async function seed() {
         description: "Level 1's perks left free for tier perks.",
         visibility: "unlisted",
         gameVersion: "5.0.4.8",
-        plan: {
-          ...samplePlan(),
-          levels: samplePlan().levels.map((lv, i) =>
-            i === 0 ? { ...lv, perks: [] } : lv,
-          ),
-        },
+        plan: { ...samplePlan(), levels: samplePlan().levels.map((lv, i) => (i === 0 ? { ...lv, perks: [] } : lv)) },
       },
       {
         id: FORTY_BUILD_ID,
@@ -396,20 +291,7 @@ export async function seed() {
         description: "Gear made late.",
         visibility: "unlisted",
         gameVersion: "5.0.4.8",
-        plan: {
-          ...samplePlan(),
-          levels: [
-            ...samplePlan().levels,
-            ...Array.from({ length: 34 }, () => ({
-              skillPoints: {},
-              perks: [],
-              destiny: [],
-              extras: [],
-              note: "",
-              attribute: "magicka" as const,
-            })),
-          ],
-        },
+        plan: { ...samplePlan(), levels: [...samplePlan().levels, ...Array.from({ length: 34 }, () => ({ skillPoints: {}, perks: [], destiny: [], extras: [], note: "", attribute: "magicka" as const }))] },
       },
       {
         id: POWERS_BUILD_ID,
@@ -441,11 +323,7 @@ export async function seed() {
         visibility: "unlisted",
         gameVersion: "5.0.4.8",
         // No notes either, so no guide: the reader's tour has three stops here (WO-61).
-        plan: {
-          ...samplePlan(),
-          levels: samplePlan().levels.slice(0, 4),
-          notes: "",
-        },
+        plan: { ...samplePlan(), levels: samplePlan().levels.slice(0, 4), notes: "" },
         // Made two days ago, so it doesn't count toward the test author's builds for the day (WO-40's limit).
         createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
       },
@@ -461,18 +339,24 @@ export async function seed() {
         createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
       },
       {
+        id: FRESH_MAGE_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        name: "Auto level test",
+        description: "A fresh Altmer mage: level 1 only.",
+        visibility: "unlisted",
+        gameVersion: "5.0.4.8",
+        plan: freshMagePlan(),
+        // Made two days ago, so it doesn't count toward the test author's builds for the day (WO-40's limit).
+        createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
+      },
+      {
         id: NOVICE_DESTRUCTION_BUILD_ID,
         ownerId: TEST_USER_ID,
         name: "Novice Destruction",
         description: "Level 1 takes only Novice Destruction.",
         visibility: "unlisted",
         gameVersion: "5.0.4.8",
-        plan: {
-          ...samplePlan(),
-          levels: samplePlan().levels.map((lv, i) =>
-            i === 0 ? { ...lv, perks: ["Destruction:Novice Destruction"] } : lv,
-          ),
-        },
+        plan: { ...samplePlan(), levels: samplePlan().levels.map((lv, i) => (i === 0 ? { ...lv, perks: ["Destruction:Novice Destruction"] } : lv)) },
         // Made two days ago, so it doesn't count toward the test author's builds for the day (WO-40's limit).
         createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
       },
@@ -496,34 +380,13 @@ export async function seed() {
         plan: samplePlan(),
       })),
     ]);
-    await db
-      .insert(schema.buildGuides)
-      .values([
-        ...Object.entries(azrem.guide as Record<string, GuideDoc>).map(
-          ([key, doc]) => ({
-            buildId: AZREM_BUILD_ID,
-            key,
-            doc,
-            textLength: textLength(doc),
-          }),
-        ),
-        ...Object.entries(iriel.guide as Record<string, GuideDoc>).map(
-          ([key, doc]) => ({
-            buildId: IRIEL_BUILD_ID,
-            key,
-            doc,
-            textLength: textLength(doc),
-          }),
-        ),
-        ...Object.entries(pureMage.guide as Record<string, GuideDoc>).map(
-          ([key, doc]) => ({
-            buildId: PURE_MAGE_BUILD_ID,
-            key,
-            doc,
-            textLength: textLength(doc),
-          }),
-        ),
-      ]);
+    await db.insert(schema.buildGuides).values(
+      [
+        ...Object.entries(azrem.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: AZREM_BUILD_ID, key, doc, textLength: textLength(doc) })),
+        ...Object.entries(iriel.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: IRIEL_BUILD_ID, key, doc, textLength: textLength(doc) })),
+        ...Object.entries(pureMage.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: PURE_MAGE_BUILD_ID, key, doc, textLength: textLength(doc) })),
+      ],
+    );
   } finally {
     await pool.end();
   }
@@ -546,13 +409,9 @@ export async function cleanup() {
   const pool = new Pool({ connectionString: url });
   const db = drizzle(pool, { schema });
   try {
-    await db
-      .delete(schema.imageChecks)
-      .where(like(schema.imageChecks.uploaderId, "e2e-%"));
+    await db.delete(schema.imageChecks).where(like(schema.imageChecks.uploaderId, "e2e-%"));
     await db.delete(schema.builds).where(and(like(schema.builds.id, "e2e%")));
-    await db
-      .delete(schema.builds)
-      .where(eq(schema.builds.ownerId, TEST_USER_ID));
+    await db.delete(schema.builds).where(eq(schema.builds.ownerId, TEST_USER_ID));
     await db.delete(schema.users).where(like(schema.users.id, "e2e-%"));
   } finally {
     await pool.end();
@@ -562,12 +421,7 @@ export async function cleanup() {
 if (process.argv[1]?.endsWith("seed.ts")) {
   const task = process.argv[2] === "cleanup" ? cleanup : seed;
   task().then(
-    () =>
-      console.log(
-        process.argv[2] === "cleanup"
-          ? "Test data removed."
-          : "Test data ready.",
-      ),
+    () => console.log(process.argv[2] === "cleanup" ? "Test data removed." : "Test data ready."),
     (e) => {
       console.error(e);
       process.exit(1);
