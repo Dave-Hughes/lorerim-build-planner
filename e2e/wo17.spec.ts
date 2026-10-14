@@ -4,13 +4,13 @@ import { LONG_BUILD_ID, SCRATCH_BUILD_ID, TEST_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1512, height: 806 } });
 
-// WO-26 replaced the icon-only chips (whose names were in tooltips) with named chips.
-test("the tree chips show their names, levels and held counts", async ({ page, context }) => {
+// WO-62: the editor has no tree chips; the skill list's rows show the held count after the name.
+test("the skill list's rows show their names, values and held counts", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${TEST_BUILD_ID}/edit?level=6`);
-  const block = page.getByRole("tablist", { name: "Perk trees" }).getByRole("tab", { name: /^Block/ });
-  await expect(block).toHaveText(/Block\s*46\s*3/);
-  await expect(block).toHaveAccessibleName("Block 46, 3 held");
+  const block = page.getByRole("button", { name: "Block", exact: true });
+  await expect(block).toHaveText(/Block\s*3/);
+  await expect(block.locator("xpath=..")).toContainText("46");
 });
 
 test("the notes toolbar's Bulleted list and Divider are there after a reload", async ({ page, context }) => {

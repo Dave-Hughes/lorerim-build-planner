@@ -109,7 +109,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 32px;
-  align-items: flex-start;
+  /* The perks column runs the list's full height, so its tree panel can stick (WO-62). */
+  align-items: stretch;
 }
 .left {
   flex: 1 1 360px;
@@ -125,6 +126,12 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+/* Phones: the list is the page; a skill's perks open in a sheet (WO-62). */
+@media (max-width: 899px) {
+  .right {
+    display: none;
+  }
 }
 /* Large screens: attribute and skills a fixed 440px; the perks take the rest. */
 .block {
@@ -279,9 +286,74 @@
   margin: 0 -8px;
   border-bottom: 1px solid #1c2430;
 }
+/* The row whose tree is open: an ember border, a faint ember wash, its name in light ember (WO-62). */
 .skillRowOn {
-  background: #18212c;
-  box-shadow: inset 0 0 0 1px var(--rule-strong);
+  background: color-mix(in srgb, var(--ember) 7%, transparent);
+  box-shadow: inset 0 0 0 1px var(--ember);
+}
+.skillRowOn .skillName {
+  color: #f6c08f;
+}
+/* Perks taken in the tree by this level, as the chips' count was. */
+.heldCount {
+  display: inline-block;
+  min-width: 18px;
+  padding: 0 5px;
+  background: var(--ember);
+  color: var(--on-ember);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+}
+/* Destiny, last, under a rule, in gold. */
+.destinyRow {
+  margin-top: 6px;
+  border-top: 1px solid var(--rule);
+}
+.destinyRow .skillName {
+  color: var(--brass-light, #e8d3a4);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  min-height: 44px;
+}
+.destinyDiamond {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 3px;
+  transform: rotate(45deg);
+  background: var(--brass);
+}
+.destinyLeft {
+  font-family: var(--font-body, inherit);
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--brass);
+}
+.treeTitle {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.sheetHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 90px 10px 16px;
+}
+.sheetPerk {
+  margin: 0 12px 10px;
+  border: 1px solid var(--rule-strong);
 }
 .skillName {
   font: inherit;
@@ -359,7 +431,9 @@
 /* ---------- Trees ---------- */
 /* The perk area (WO-59): the tree fills the frame; the perk's card floats beside its star. */
 .treeBox {
-  position: relative;
+  /* Pinned just under the edit bar while the skill list scrolls (WO-62). */
+  position: sticky;
+  top: calc(var(--sticky-top, 0px) + 12px);
   border: 1px solid var(--rule);
   background: #10161e;
 }
@@ -989,4 +1063,14 @@
   cursor: help;
   text-decoration: underline dotted var(--faint);
   text-underline-offset: 4px;
+}
+
+/* The sheet's List / Tree switch: full width under its heading. */
+.sheetToggle {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 16px 6px;
+}
+.sheetToggle button {
+  min-height: 40px;
 }

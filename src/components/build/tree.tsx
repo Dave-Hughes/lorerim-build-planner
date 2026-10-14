@@ -29,6 +29,10 @@ export interface TreeProps {
   sheetBelow?: number;
   /** The box's height, when the page decides it (the editor's tall tree, WO-26). */
   height?: number;
+  /** At the start of the toolbar: the open tree's icon, name and value (the editor's panel, WO-62). */
+  heading?: React.ReactNode;
+  /** The list grouped by skill needed (default), or by state: can take now, taken, not yet (WO-62's phone sheet). */
+  listBy?: "skill" | "state";
 }
 
 export type TreeView = "tree" | "list";
@@ -124,16 +128,37 @@ function useMeasure(el: HTMLElement | null) {
 }
 
 /** The perks of a tree as a plain list, grouped by the skill they need, then level and book perks. */
-function PerkList({ d, tree, status, onSelect, selectedId, hidden }: { d: GameData; tree: string; status: Map<string, PerkStatus>; onSelect?: (id: string) => void; selectedId?: string | null; hidden?: boolean }) {
+function PerkList({
+  d,
+  tree,
+  status,
+  onSelect,
+  selectedId,
+  hidden,
+  by = "skill",
+}: {
+  d: GameData;
+  tree: string;
+  status: Map<string, PerkStatus>;
+  onSelect?: (id: string) => void;
+  selectedId?: string | null;
+  hidden?: boolean;
+  by?: "skill" | "state";
+}) {
   const perks = d.perksByTree.get(tree) ?? [];
   const groups: { label: string; perks: Perk[] }[] = [];
   const add = (label: string, p: Perk) => {
     const g = groups.find((x) => x.label === label) ?? (groups.push({ label, perks: [] }), groups[groups.length - 1]);
     g.perks.push(p);
   };
-  const order = [`Up to ${tree} 25`, `${tree} 26 to 50`, `${tree} 51 to 75`, `${tree} 76 to 100`, "Character level", "Book"];
+  // By state (WO-62): what the build can take now first, then what it holds, then the rest.
+  const order =
+    by === "state" ? ["Can take now", "Taken", "Not yet"] : [`Up to ${tree} 25`, `${tree} 26 to 50`, `${tree} 51 to 75`, `${tree} 76 to 100`, "Character level", "Book"];
   for (const p of perks) {
-    if (tree === "Destiny") add("Destiny", p);
+    if (by === "state") {
+      const st = status.get(p.id)!.state;
+      add(st === "open" ? order[0] : st === "taken" ? order[1] : order[2], p);
+    } else if (tree === "Destiny") add("Destiny", p);
     else if (p.book) add("Book", p);
     else if (p.rankLevels?.some((l) => l > 0)) add("Character level", p);
     else {
@@ -249,7 +274,7 @@ export function PerkDetails({ id, states, level, onClose }: { id: string; states
 }
 
 /** A sheet from the bottom of the screen; tap outside, swipe it down or press Escape to close. */
-export function BottomSheet({ label, onClose, children }: { label: string; onClose: () => void; children: React.ReactNode }) {
+export function BottomSheet({ label, onClose, children, tall }: { label: string; onClose: () => void; children: React.ReactNode; tall?: boolean }) {
   const [drag, setDrag] = useState(0);
   const start = useRef<number | null>(null);
   useEffect(() => {
@@ -263,7 +288,7 @@ export function BottomSheet({ label, onClose, children }: { label: string; onClo
         role="dialog"
         aria-modal="true"
         aria-label={label}
-        className={styles.sheet}
+        className={`${styles.sheet} ${tall ? styles.sheetTall : ""}`}
         style={drag ? { transform: `translateY(${drag}px)` } : undefined}
         onClick={(e) => e.stopPropagation()}
       >
@@ -291,7 +316,7 @@ export function BottomSheet({ label, onClose, children }: { label: string; onClo
   );
 }
 
-export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView, noToggle, sheetBelow = SMALL, height }: TreeProps) {
+export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView, noToggle, sheetBelow = SMALL, height, heading, listBy = "skill" }: TreeProps) {
   const d = useGameData();
   const [wrap, setWrap] = useState<HTMLDivElement | null>(null);
   // `top`: where the drawing starts on the page (below the toolbar), for short windows.
@@ -338,7 +363,8 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   // A short laptop window: the tree takes the height left under it, so its bottom row shows unscrolled.
   const left = room.vh - room.top - 48; // room for the legend under it
   const short = !small && room.vh < 900 && left >= 300;
-  const h0 = height && !small ? height : Math.max(220, Math.min(fitted, small ? Math.round(w0 * 1.2) : short ? Math.min(left, w0) : Math.max(380, Math.min(room.vh - 240, w0))));
+  // A height the page decides wins, on phones too when the editor's sheet sets one (WO-62).
+  const h0 = height && (!small || sheetBelow === 0) ? height : Math.max(220, Math.min(fitted, small ? Math.round(w0 * 1.2) : short ? Math.min(left, w0) : Math.max(380, Math.min(room.vh - 240, w0))));
   // Stars, lines and labels keep the box's sizes; only the drawing grows.
   const size = sizesFor(w0);
 
@@ -538,6 +564,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   return (
     <div className={`${styles.box} ${tree === "Destiny" ? styles.destinyTree : ""}`} ref={setWrap} data-tree={tree}>
       <div className={styles.toolbar}>
+        {heading && <span className={styles.heading}>{heading}</span>}
         {/* On phones the tabs carry the switch, at the end of their row. */}
         {!noToggle && <ViewToggle view={view} onView={setView} className={onView ? styles.segWide : undefined} />}
         {view === "tree" && (
@@ -556,7 +583,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
       </div>
 
       {view === "list" ? (
-        <PerkList d={d} tree={tree} status={status} onSelect={select} selectedId={selected} />
+        <PerkList d={d} tree={tree} status={status} onSelect={select} selectedId={selected} by={listBy} />
       ) : (
         <>
           {/* Screen readers get the list first. */}

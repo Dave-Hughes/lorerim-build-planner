@@ -4,14 +4,9 @@ import { SPELLS_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1440, height: 900 } });
 
-/** Opens a tree from the chips or Other trees, takes the perk named, and confirms it. */
+/** Opens a tree from the skill list (WO-62), takes the perk named, and confirms it. */
 async function takePerk(page: Page, tree: string, perk: string) {
-  const chip = page.getByRole("tab", { name: new RegExp(`^${tree}`) });
-  if (await chip.count()) await chip.click();
-  else {
-    await page.getByRole("button", { name: /Other trees/ }).click();
-    await page.getByRole("menuitem", { name: tree }).click();
-  }
+  await page.getByRole("button", { name: tree, exact: true }).click();
   await page.getByRole("button", { name: new RegExp(`^${perk}, No requirement, can take now`) }).click();
   await page.getByRole("complementary", { name: "Perk details" }).getByRole("button", { name: "Confirm" }).click();
 }

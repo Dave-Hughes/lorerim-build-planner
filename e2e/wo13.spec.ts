@@ -11,7 +11,7 @@ test.describe("nothing moves under you", () => {
   test("Confirm and Remove keep the page where it is", async ({ page, context }) => {
     await signIn(context);
     await page.goto(`/b/${SCRATCH_BUILD_ID}/edit?level=6`);
-    await page.getByRole("tab", { name: /^Block/ }).click();
+    await page.getByRole("button", { name: "Block", exact: true }).click();
     const star = page.getByRole("button", { name: /^Powerful Bashes, Block 25, taken/ });
     await star.scrollIntoViewIfNeeded();
     await page.mouse.wheel(0, 120);
@@ -66,7 +66,7 @@ test.describe("breaking an earlier level", () => {
   test("removing a perk a later level needs asks first; Keep keeps, Remove all three removes", async ({ page, context }) => {
     await signIn(context);
     await page.goto(`/b/${SCRATCH_BUILD_ID}/edit?level=1`);
-    await page.getByRole("tab", { name: /^Block/ }).click();
+    await page.getByRole("button", { name: "Block", exact: true }).click();
     await page.getByRole("button", { name: /^Improved Blocking, .*taken/ }).click();
     const panel = page.getByRole("complementary", { name: "Perk details" });
     await panel.getByRole("button", { name: "Remove" }).click();

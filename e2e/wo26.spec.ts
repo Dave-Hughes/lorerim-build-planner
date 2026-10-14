@@ -49,16 +49,13 @@ test("the owner sees Edit on the shared page; a visitor sees no edit bar", async
   await visitor.close();
 });
 
-test("the editor's tree is at least 520px tall and all 18 named chips show without sideways scrolling", async ({ page, context }) => {
+// Since WO-62 the editor has no tree chips: the skill list picks the tree.
+test("the editor's tree is at least 520px tall, with no tree chips", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${TEST_BUILD_ID}/edit?level=3`);
   const box = page.locator('[class*="treeBox"]').first();
   await expect(box).toBeVisible();
   expect((await box.boundingBox())!.height).toBeGreaterThanOrEqual(520);
-  const tabs = page.getByRole("tablist", { name: "Perk trees" });
-  for (const name of ["One-Handed", "Heavy Armor", "Wayfarer", "Enchanting"]) await expect(tabs.getByRole("tab", { name: new RegExp(`^${name} `) })).toBeVisible();
-  expect(await tabs.getByRole("tab").count()).toBe(18);
-  const scrolls = await tabs.evaluate((el) => [...el.querySelectorAll<HTMLElement>("div")].some((d) => d.scrollWidth > d.clientWidth + 1));
-  expect(scrolls).toBe(false);
-  for (const t of await tabs.getByRole("tab").all()) await expect(t).toBeInViewport();
+  await expect(page.getByRole("tablist", { name: "Perk trees" })).toHaveCount(0);
+  for (const name of ["One-Handed", "Heavy Armor", "Wayfarer", "Enchanting"]) await expect(page.getByRole("button", { name, exact: true })).toBeVisible();
 });

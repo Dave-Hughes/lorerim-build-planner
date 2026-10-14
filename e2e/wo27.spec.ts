@@ -7,13 +7,15 @@ test.use({ viewport: { width: 1512, height: 806 } });
 test("the editor's Destiny control counts the points left at level 5, and taking one spends it", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${DESTINY_BUILD_ID}/edit?level=5`);
-  const destiny = page.getByRole("tablist", { name: "Destiny" }).getByRole("tab", { name: /^Destiny/ });
+  // Since WO-62 Destiny is the skill list's last row.
+  const destiny = page.getByRole("button", { name: "Destiny", exact: true });
   await expect(destiny).toContainText("1 left");
   await destiny.click();
-  await expect(destiny).toHaveAttribute("aria-selected", "true");
+  await expect(destiny).toHaveAttribute("aria-pressed", "true");
   await page.getByRole("button", { name: /^Constitution, .*can take now/ }).click();
   await page.getByRole("complementary", { name: "Perk details" }).getByRole("button", { name: "Confirm" }).click();
-  await expect(destiny).toContainText("0 left");
+  // No points left: the row says nothing (WO-62).
+  await expect(destiny).not.toContainText("left");
   await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
 });
 

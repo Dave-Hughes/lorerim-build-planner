@@ -7,7 +7,8 @@ import { InfoTip } from "@/components/ui/info-tip";
 import { Tooltip } from "@/components/ui/tooltip";
 import { LevelBars, useHoldInPlace } from "@/components/build/level-nav";
 import { Tree, type TreeView } from "@/components/build/tree";
-import { TreeTabs } from "@/components/build/tree-tabs";
+import { heldCount } from "@/lib/rules/tree-states";
+import { BottomSheet, ViewToggle } from "@/components/build/tree";
 import { useGameData } from "@/components/game-data";
 import { ATTRIBUTE_NAMES, levelMarks, nextDestinyLevel, skillStepInfo, stoneLabel, stoneShare } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
@@ -87,8 +88,12 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   // 900 wide) the tree's own bottom sheet shows it.
   const [perkArea, setPerkArea] = useState<HTMLDivElement | null>(null);
   const [windowWidth, setWindowWidth] = useState(1440);
+  const [windowHeight, setWindowHeight] = useState(800);
   useEffect(() => {
-    const set = () => setWindowWidth(window.innerWidth / pageZoom());
+    const set = () => {
+      setWindowWidth(window.innerWidth / pageZoom());
+      setWindowHeight(window.innerHeight / pageZoom());
+    };
     set();
     window.addEventListener("resize", set);
     return () => window.removeEventListener("resize", set);
@@ -109,27 +114,32 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
     return () => clearTimeout(t);
   }, [burst]);
 
-  // The tree box: the window's height less the site header, the edit bar, the tree chips and the
-  // legend, less 16px; never under 520px, no maximum (WO-26).
-  const [chipsEl, setChipsEl] = useState<HTMLDivElement | null>(null);
+  // The tree panel (WO-62): the window's height less the site header and the edit bar, less 24px
+  // and the panel's own heading and legend; never under 520px, no maximum (WO-26).
   const [treeHeight, setTreeHeight] = useState(520);
   useEffect(() => {
-    if (!chipsEl) return;
     const set = () => {
-      const header = document.querySelector<HTMLElement>("body > header, header")?.offsetHeight ?? 0;
       const bar = document.querySelector<HTMLElement>("[data-edit-bar]")?.offsetHeight ?? 0;
       const legend = 48;
-      setTreeHeight(Math.max(520, Math.round(window.innerHeight / pageZoom() - header - bar - chipsEl.offsetHeight - legend - 16)));
+      const head = 64;
+      setTreeHeight(Math.max(520, Math.round(window.innerHeight / pageZoom() - bar - head - legend - 32)));
     };
     set();
-    const ro = new ResizeObserver(set);
-    ro.observe(chipsEl);
     window.addEventListener("resize", set);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", set);
-    };
-  }, [chipsEl]);
+    return () => window.removeEventListener("resize", set);
+  }, []);
+  // On a phone a skill's perks open in a sheet from the bottom (WO-62).
+  const [sheetTree, setSheetTree] = useState<string | null>(null);
+  const openTree = (t: string, row?: HTMLElement) => {
+    setTree(t);
+    setSelected(null);
+    if (!wide) {
+      sheetReturn.current = row ?? null;
+      setTreeView("list");
+      setSheetTree(t);
+    }
+  };
+  const sheetReturn = useRef<HTMLElement | null>(null);
   const pickPerk = (id: string) => setSelected(id);
   // Closing the card puts focus back on its star.
   const closeCard = () => {
@@ -389,7 +399,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
 
             <div className={styles.block}>
               <div className={styles.blockHead}>
-                <span className="label">{level === 1 ? "Starting skills" : "Skills"}</span>
+                <span className="label">{level === 1 ? "Starting skills and perks" : "Skills and perks"}</span>
                 <span className={styles.maxSkill}>
                   {level === 1 ? `Max skill ${s.maxSkill} at level 1` : `Up to +${d.rules.maxRaisePerSkillPerLevel} each, max skill ${s.maxSkill}`}
                   <InfoTip
@@ -419,8 +429,14 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                     const active = tree === sk;
                     return (
                       <div key={sk} className={`${styles.skillRow} ${active ? styles.skillRowOn : ""}`}>
-                        <button type="button" className={styles.skillName} onClick={() => setTree(sk)} aria-pressed={active}>
+                        {/* The name opens its tree (WO-62): the list is the editor's one tree picker. */}
+                        <button type="button" className={styles.skillName} onClick={(e) => openTree(sk, e.currentTarget)} aria-pressed={active} aria-label={sk}>
                           <SkillIcon name={sk} /> {sk}
+                          {heldCount(d, sk, s) > 0 && (
+                            <span className={styles.heldCount} aria-hidden="true">
+                              {heldCount(d, sk, s)}
+                            </span>
+                          )}
                         </button>
                         <span className={`num ${styles.skillVals}`}>
                           {info.added > 0 ? (
@@ -457,25 +473,32 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                   })}
                 </div>
               ))}
+              {/* Destiny, the last row, in gold: it opens the constellation in the tree panel. */}
+              <div className={`${styles.skillRow} ${styles.destinyRow} ${tree === "Destiny" ? styles.skillRowOn : ""}`}>
+                <button type="button" className={styles.skillName} onClick={(e) => openTree("Destiny", e.currentTarget)} aria-pressed={tree === "Destiny"} aria-label="Destiny">
+                  <i className={styles.destinyDiamond} aria-hidden="true" /> Destiny
+                  {destinyLeft > 0 && <span className={styles.destinyLeft}>{destinyLeft} left</span>}
+                </button>
+              </div>
             </div>
           </section>
 
           <section aria-label="Perks" className={styles.right}>
-            <span className="label">Perks</span>
-            <div ref={setChipsEl}>
-              <TreeTabs
-                state={s}
-                active={tree}
-                onChange={(t) => {
-                  setTree(t);
-                  setSelected(null);
-                }}
+            {/* The open tree, pinned under the edit bar while the list scrolls (WO-62). */}
+            <div ref={setPerkArea} className={`frame ${styles.treeBox} ${tree === "Destiny" ? styles.treeBoxDestiny : ""}`}>
+              <Tree
+                tree={tree}
+                states={states}
+                level={level}
+                selectedId={selected}
+                onSelect={pickPerk}
+                details={(id) => panel(id)}
                 view={treeView}
                 onView={setTreeView}
+                height={treeHeight}
+                sheetBelow={0}
+                heading={<TreeHeading tree={tree} value={tree === "Destiny" ? `${destinyLeft} left` : `${s.skills[tree] ?? ""}`} />}
               />
-            </div>
-            <div ref={setPerkArea} className={`frame ${styles.treeBox} ${tree === "Destiny" ? styles.treeBoxDestiny : ""}`}>
-              <Tree tree={tree} states={states} level={level} selectedId={selected} onSelect={pickPerk} details={(id) => panel(id)} view={treeView} onView={setTreeView} height={treeHeight} />
               {/* Beside the star that was clicked, inside the frame (WO-59); a sheet on phones. */}
               {wide && selected && perkArea && (
                 <PerkCard box={perkArea} perkId={selected} onClose={closeCard}>
@@ -510,6 +533,27 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
             </div>
           </section>
         </div>
+
+        {/* On a phone, a skill's perks in a sheet from the bottom, opening on List (WO-62). */}
+        {!wide && sheetTree && (
+          <BottomSheet
+            label={`${sheetTree} perks`}
+            tall
+            onClose={() => {
+              setSheetTree(null);
+              setSelected(null);
+              const row = sheetReturn.current;
+              requestAnimationFrame(() => row?.focus({ preventScroll: true }));
+            }}
+          >
+            <div className={styles.sheetHead}>
+              <TreeHeading tree={sheetTree} value={sheetTree === "Destiny" ? `${destinyLeft} left` : `${s.skills[sheetTree] ?? ""}`} />
+            </div>
+            <ViewToggle view={treeView} onView={setTreeView} className={styles.sheetToggle} />
+            {selected && <div className={styles.sheetPerk}>{panel(selected, () => setSelected(null))}</div>}
+            <Tree tree={sheetTree} states={states} level={level} selectedId={selected} onSelect={pickPerk} view={treeView} onView={setTreeView} noToggle sheetBelow={0} listBy="state" height={Math.max(300, Math.round(windowHeight * 0.85 - 250))} />
+          </BottomSheet>
+        )}
 
         {/* A tier perk taken here gives its free spells: pick them under it (WO-42). */}
         <SpellPicks key={`picks-${level}`} plan={plan} level={level} setPlan={setPlan} />
@@ -881,5 +925,16 @@ function PerkCard({ box, perkId, onClose, children }: { box: HTMLElement; perkId
     >
       {children}
     </div>
+  );
+}
+
+/** The open tree's icon, name and skill value (or Destiny points left), heading its panel or sheet (WO-62). */
+function TreeHeading({ tree, value }: { tree: string; value: string }) {
+  return (
+    <>
+      {tree === "Destiny" ? <i className={styles.destinyDiamond} aria-hidden="true" /> : <SkillIcon name={tree} size={32} />}
+      <h2 className={styles.treeTitle}>{tree}</h2>
+      <span className="muted">{value}</span>
+    </>
   );
 }

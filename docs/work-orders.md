@@ -2468,12 +2468,12 @@ Today every skill shows twice in the editor: in the left list, where its points 
    - The steppers stay on the rows, so points can be spent without opening anything.
 
 ### Done when
-- [ ] e2e: on a test build, the editor has no tree chips. Clicking `Sneak` in the list opens the Sneak tree, and its row is marked.
-- [ ] e2e at 1440×900: scroll the page to the Mage rows; the tree panel's top is still on screen under the bar. Click `Illusion`; the Illusion tree shows and the scroll position hasn't changed.
-- [ ] A row's count matches the perks taken in that tree; the Destiny row says how many points are left and opens the Destiny tree.
-- [ ] e2e at 390: tapping `Block` opens the sheet on List; taking a perk there takes it; closing it returns focus to the Block row.
-- [ ] Screenshots at 1440 (top of the list, and scrolled to Mage) and at 390 (the list, and the sheet in both views).
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: on a test build, the editor has no tree chips. Clicking `Sneak` in the list opens the Sneak tree, and its row is marked.
+- [x] e2e at 1440×900: scroll the page to the Mage rows; the tree panel's top is still on screen under the bar. Click `Illusion`; the Illusion tree shows and the scroll position hasn't changed.
+- [x] A row's count matches the perks taken in that tree; the Destiny row says how many points are left and opens the Destiny tree.
+- [x] e2e at 390: tapping `Block` opens the sheet on List; taking a perk there takes it; closing it returns focus to the Block row.
+- [x] Screenshots at 1440 (top of the list, and scrolled to Mage) and at 390 (the list, and the sheet in both views).
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

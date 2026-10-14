@@ -8,14 +8,15 @@ test.describe("perk trees on a phone", () => {
   test("tapping a star opens its details in a bottom sheet", async ({ page, context }) => {
     await signIn(context);
     await page.goto(`/b/${TEST_BUILD_ID}/edit?level=6`);
-    await page.getByRole("tab", { name: /^Block/ }).click();
+    // Since WO-62 a skill's perks open in a sheet, on List; its Tree view is one tap away.
+    await page.getByRole("button", { name: "Block", exact: true }).click();
+    const sheet = page.getByRole("dialog", { name: "Block perks" });
+    await sheet.getByRole("button", { name: "Tree", exact: true }).tap();
     // The tree opens at a readable size on its bottom row; Fit shows all of it.
-    await page.getByRole("button", { name: "Fit", exact: true }).tap();
-    await page.getByRole("button", { name: /^Overpowering Bashes, Block 50/ }).tap();
-    const sheet = page.getByRole("dialog", { name: "Overpowering Bashes" });
-    await expect(sheet).toBeVisible();
+    await sheet.getByRole("button", { name: "Fit", exact: true }).tap();
+    await sheet.getByRole("button", { name: /^Overpowering Bashes, Block 50/ }).tap();
     await expect(sheet.getByRole("complementary", { name: "Perk details" })).toContainText("Overpowering Bashes");
-    await sheet.getByRole("button", { name: "Close" }).tap();
+    await sheet.getByRole("button", { name: "Close", exact: true }).tap();
     await expect(sheet).toBeHidden();
   });
 
@@ -72,7 +73,7 @@ test.describe("the editor at 1456", () => {
   test("selecting a star shows its card without scrolling", async ({ page, context }) => {
     await signIn(context);
     await page.goto(`/b/${TEST_BUILD_ID}/edit?level=6`);
-    await page.getByRole("tab", { name: /^Block/ }).click();
+    await page.getByRole("button", { name: "Block", exact: true }).click();
     const star = page.getByRole("button", { name: /^Overpowering Bashes, Block 50/ });
     await star.scrollIntoViewIfNeeded();
     const before = await page.evaluate(() => window.scrollY);

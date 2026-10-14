@@ -17,7 +17,7 @@ const inside = async (inner: Locator, outer: Locator) => {
 test("a ring's card opens beside it in the tree frame; Confirm takes it, the line shows, Undo takes it back", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${FORTY_BUILD_ID}/edit?level=30`);
-  await page.getByRole("tab", { name: /^Block/ }).click();
+  await page.getByRole("button", { name: "Block", exact: true }).click();
   const ring = page.getByRole("button", { name: /, can take now$/ }).first();
   const label = (await ring.getAttribute("aria-label"))!;
   const name = label.split(",")[0];
@@ -45,7 +45,7 @@ test("a ring's card opens beside it in the tree frame; Confirm takes it, the lin
 test("the card stays inside the frame for the star furthest right and the one at the top", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${FORTY_BUILD_ID}/edit?level=30`);
-  await page.getByRole("tab", { name: /^Block/ }).click();
+  await page.getByRole("button", { name: "Block", exact: true }).click();
   const stars = page.locator("[data-perk]");
   const boxes = await stars.evaluateAll((els) => els.map((e) => ({ id: e.getAttribute("data-perk")!, ...e.getBoundingClientRect().toJSON() })));
   const right = boxes.reduce((a, b) => (b.x > a.x ? b : a));

@@ -36,7 +36,7 @@ test("after Confirm the perk card is closed", async ({ page, context }) => {
   await page.getByRole("button", { name: /^Health/ }).click();
   const raise = page.getByRole("button", { name: "Raise Block" });
   for (let i = 0; i < 4; i++) await raise.click();
-  await page.getByRole("tab", { name: /^Block/ }).click();
+  await page.getByRole("button", { name: "Block", exact: true }).click();
   await page.getByRole("button", { name: /Overpowering Bashes, Block 50, can take now/ }).click();
   const card = page.getByRole("complementary", { name: "Perk details" }).filter({ hasText: "Overpowering Bashes" });
   await card.getByRole("button", { name: "Confirm" }).click();

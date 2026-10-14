@@ -32,7 +32,7 @@ test.describe("level-up editor", () => {
     const raise = page.getByRole("button", { name: "Raise Block" });
     for (let i = 0; i < 4; i++) await raise.click();
     await expect(page.getByRole("button", { name: "Raise Block" })).toBeEnabled();
-    await page.getByRole("tab", { name: /^Block/ }).click();
+    await page.getByRole("button", { name: "Block", exact: true }).click();
     await page.getByRole("button", { name: /Overpowering Bashes, Block 50, can take now/ }).click();
     const panel = page.getByRole("complementary", { name: "Perk details" });
     await expect(panel).toContainText("Overpowering Bashes");
@@ -60,7 +60,7 @@ test.describe("level-up editor", () => {
     await page.goto(`/b/${TEST_BUILD_ID}/edit?level=6`);
     // Level 6 has no perk points left: a perk whose requirements are met still shows as can take,
     // and the panel says the point is missing (Confirm waits for one).
-    await page.getByRole("tab", { name: /^One-Handed/ }).click();
+    await page.getByRole("button", { name: "One-Handed", exact: true }).click();
     await page.getByRole("button", { name: /^Weapon Mastery, .*can take now/ }).click();
     const panel = page.getByRole("complementary", { name: "Perk details" });
     await expect(panel).toContainText("No perk point to spend at this level.");
