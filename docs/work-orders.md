@@ -2955,15 +2955,15 @@ Dave on staging: better, but "still a lot of work before it's remotely useful". 
 - 16 mods have no id yet (the chat session reads them from the installed list when Dave's PC is linked): Animated Whistling, Complete Controller Setup, Dynamic Activation Key, Engine Fixes, Faster Mining Plus SE, Gamepad++, Lock Bashing, Locked Chests Have Keys, MaxsuBlockOverhaul, Requiem - Lockpicking SKSE, Requiem - Modern Combat Rework, Rest By Campfire - Base Object Swapper, Sanctified Stolen Goods, Simple Outfit System, Take a Nap - Sleep on Chairs, Vampire sun immunity with helmet or hat. Attack MCO is not on Nexus (tagged "Not on Nexus"). Leave these unlinked.
 
 ### Done when
-- [ ] Every `{{...}}` in the chapters renders as a term with its tooltip; a test feeds the parser an unknown term and a dead `see` link and expects build errors naming the file and line.
-- [ ] e2e at 1440: hover `MO2` in chapter 1; the tooltip shows the definition and `Read more`; Esc closes it. Tab to a term; the tooltip opens on focus.
-- [ ] e2e at 390: tap a term; the tooltip opens inside the screen; tapping elsewhere closes it.
-- [ ] With JavaScript off, a term is a link to `/guide/terms#id`.
-- [ ] `/guide/terms` lists all 191 terms A to Z with `Used in` links; a test counts them against `terms.md`.
-- [ ] The 15 new icons drawn in `pixels.py`; chapter icons in the list, the header, the index and Previous/Next; term icons inline, including the race and birthsign tables.
-- [ ] Related Mods and `/guide/mods` link every mod that has a `nexus` id; a test checks the count.
-- [ ] Screenshots at 1440: chapter 2 (race and birthsign tables), chapter 4 (needs table), a tooltip open, `/guide/terms`. At 390: a tooltip open, and the chapter list. Checked against `docs/design-rules.md`.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Every `{{...}}` in the chapters renders as a term with its tooltip; a test feeds the parser an unknown term and a dead `see` link and expects build errors naming the file and line.
+- [x] e2e at 1440: hover `MO2` in chapter 1; the tooltip shows the definition and `Read more`; Esc closes it. Tab to a term; the tooltip opens on focus.
+- [x] e2e at 390: tap a term; the tooltip opens inside the screen; tapping elsewhere closes it.
+- [x] With JavaScript off, a term is a link to `/guide/terms#id`.
+- [x] `/guide/terms` lists all 191 terms A to Z with `Used in` links; a test counts them against `terms.md`.
+- [x] The 15 new icons drawn in `pixels.py`; chapter icons in the list, the header, the index and Previous/Next; term icons inline, including the race and birthsign tables.
+- [x] Related Mods and `/guide/mods` link every mod that has a `nexus` id; a test checks the count.
+- [x] Screenshots at 1440: chapter 2 (race and birthsign tables), chapter 4 (needs table), a tooltip open, `/guide/terms`. At 390: a tooltip open, and the chapter list. Checked against `docs/design-rules.md`.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

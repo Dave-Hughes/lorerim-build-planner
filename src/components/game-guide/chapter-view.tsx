@@ -1,5 +1,6 @@
 import Link from "next/link";
-import type { GuideChapter, GuideSection } from "@/lib/game-guide/guide";
+import { nexusUrl, type GuideChapter, type GuideSection } from "@/lib/game-guide/guide";
+import { ChapterIcon } from "./guide-nav";
 import { CopyLink } from "./copy-link";
 import { OpenFromHash } from "./open-from-hash";
 import styles from "./guide.module.css";
@@ -15,7 +16,10 @@ export function ChapterView({ chapter, prev, next }: { chapter: GuideChapter; pr
     <article className={styles.chapter}>
       <OpenFromHash />
       <header className={styles.chapterHead}>
-        <span className={styles.chapterNo}>Chapter {chapter.number}</span>
+        <span className={styles.chapterNo}>
+          {chapter.icon && <ChapterIcon icon={chapter.icon} size={32} />}
+          Chapter {chapter.number}
+        </span>
         <h1 className={styles.h1}>{chapter.title}</h1>
         {chapter.subtitle && <p className={styles.sub}>{chapter.subtitle}</p>}
         <div className={`${styles.lead} ${styles.prose}`} dangerouslySetInnerHTML={{ __html: chapter.lead }} />
@@ -27,7 +31,10 @@ export function ChapterView({ chapter, prev, next }: { chapter: GuideChapter; pr
         {prev ? (
           <Link href={`/guide/${prev.slug}`}>
             <small>Previous</small>
-            <span>{prev.title}</span>
+            <span>
+              {prev.icon && <ChapterIcon icon={prev.icon} />}
+              {prev.title}
+            </span>
           </Link>
         ) : (
           <span />
@@ -35,7 +42,10 @@ export function ChapterView({ chapter, prev, next }: { chapter: GuideChapter; pr
         {next && (
           <Link href={`/guide/${next.slug}`} className={styles.fwd}>
             <small>Next</small>
-            <span>{next.title}</span>
+            <span>
+              {next.icon && <ChapterIcon icon={next.icon} />}
+              {next.title}
+            </span>
           </Link>
         )}
       </nav>
@@ -68,7 +78,9 @@ function Section({ s }: { s: GuideSection }) {
           <dl className={styles.modList}>
             {s.mods.map((m) => (
               <div key={m.name} className={styles.mod}>
-                <dt>{m.name}</dt>
+                <dt>
+                  <ModName name={m.name} nexus={m.nexus} />
+                </dt>
                 <dd>
                   <span dangerouslySetInnerHTML={{ __html: m.html }} />
                   {m.where && <span className={styles.where} dangerouslySetInnerHTML={{ __html: m.where }} />}
@@ -94,5 +106,18 @@ function Section({ s }: { s: GuideSection }) {
         </div>
       )}
     </section>
+  );
+}
+
+/** A mod's name, linked to its Nexus Mods page when its id is known (WO-70). */
+export function ModName({ name, nexus }: { name: string; nexus?: string }) {
+  if (!nexus) return <>{name}</>;
+  return (
+    <a href={nexusUrl(nexus)} target="_blank" rel="noreferrer" className={styles.nexus}>
+      {name}
+      <svg width="10" height="10" viewBox="0 0 10 10" aria-label="(opens Nexus Mods in a new tab)" role="img" shapeRendering="crispEdges">
+        <path d="M4 1h5v5H8V3L4 7 3 6l4-4H4zM1 2h2v1H2v5h5V7h1v2H1z" fill="currentColor" />
+      </svg>
+    </a>
   );
 }

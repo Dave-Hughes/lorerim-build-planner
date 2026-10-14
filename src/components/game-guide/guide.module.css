@@ -36,8 +36,9 @@
 }
 .tocList > li > a {
   display: grid;
-  grid-template-columns: 28px 1fr;
-  gap: 6px;
+  grid-template-columns: 22px 16px 1fr;
+  align-items: center;
+  gap: 8px;
   padding: 7px 10px;
   color: var(--soft);
   text-decoration: none;
@@ -66,7 +67,7 @@
 .tocSections {
   list-style: none;
   margin: 4px 0 8px;
-  padding: 0 0 0 44px;
+  padding: 0 0 0 66px;
   display: grid;
   gap: 2px;
 }
@@ -108,6 +109,9 @@
   border-bottom: 1px solid var(--rule);
 }
 .chapterNo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--font-title);
   font-weight: 600;
   font-size: 18px;
@@ -479,6 +483,9 @@
   font-size: 14px;
 }
 .next a > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-title);
   font-weight: 700;
   font-size: 24px;
@@ -490,6 +497,7 @@
 }
 .fwd {
   text-align: right;
+  justify-items: end;
 }
 
 /* All questions */
@@ -555,6 +563,10 @@
   border-bottom: 1px solid var(--rule-soft);
 }
 .indexNum {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
   font-family: var(--font-title);
   font-weight: 700;
   font-size: 40px;
@@ -666,5 +678,132 @@
   }
   .indexNum {
     font-size: 30px;
+  }
+}
+
+/* WO-70: chapter icons, terms with their tooltips, Nexus links, the terms page */
+.chapterIcon {
+  image-rendering: pixelated;
+  flex: none;
+}
+.layout :global(.guide-term) {
+  color: inherit;
+  text-decoration: underline dotted var(--brass);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  cursor: help;
+}
+.layout :global(.guide-term:hover),
+.layout :global(.guide-term:focus-visible) {
+  color: var(--ember-text);
+}
+.layout :global(.guide-term-icon) {
+  image-rendering: pixelated;
+  width: 16px;
+  height: 16px;
+  vertical-align: -2px;
+  margin-right: 4px;
+}
+.tip {
+  position: fixed;
+  z-index: 90;
+  max-width: 320px;
+  display: grid;
+  gap: 6px;
+  padding: 12px 14px;
+  background: var(--panel-raised);
+  border: 1px solid var(--rule);
+  color: var(--soft);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.tipName {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--bright);
+}
+.tipText :global(a),
+.tipLinks a {
+  color: var(--ember-text);
+  text-underline-offset: 3px;
+}
+.tipLinks {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+.nexus {
+  color: var(--bright);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+}
+.nexus:hover {
+  color: var(--ember-text);
+  text-decoration: underline;
+}
+.nexus svg {
+  color: var(--muted);
+  flex: none;
+}
+.termList {
+  margin: 28px 0 0;
+  display: grid;
+}
+.termEntry {
+  display: grid;
+  grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+  gap: 4px 24px;
+  padding: 14px 0;
+  border-top: 1px solid var(--rule-soft);
+  scroll-margin-top: calc(var(--sticky-top) + 16px);
+}
+.termEntry:target {
+  background: color-mix(in srgb, var(--ember) 6%, transparent);
+}
+.termName {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  font-weight: 600;
+  color: var(--bright);
+}
+.termAka {
+  width: 100%;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--muted);
+}
+.termEntry dd {
+  margin: 0;
+  display: grid;
+  gap: 6px;
+  color: var(--soft);
+  font-size: 15px;
+}
+.termEntry dd :global(a),
+.termLinks a,
+.termUsed a {
+  color: var(--ember-text);
+  text-underline-offset: 3px;
+}
+.termLinks {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+}
+.termUsed {
+  font-size: 13px;
+  color: var(--muted);
+}
+@media (max-width: 899px) {
+  .termEntry {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

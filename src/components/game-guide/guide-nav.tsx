@@ -7,7 +7,7 @@ import styles from "./guide.module.css";
  * sections under it, then the reference pages. Beside the page from 900 wide (sticky); above it,
  * folded into a Chapters button, on phones.
  */
-export function GuideNav({ chapters, current, page }: { chapters: GuideChapter[]; current?: string; page?: "questions" | "mods" }) {
+export function GuideNav({ chapters, current, page }: { chapters: GuideChapter[]; current?: string; page?: "questions" | "mods" | "terms" }) {
   const list = (
     <>
       <p className={styles.tocTitle}>The Guide</p>
@@ -18,7 +18,8 @@ export function GuideNav({ chapters, current, page }: { chapters: GuideChapter[]
             <li key={c.slug} className={on ? styles.tocOn : undefined}>
               <Link href={`/guide/${c.slug}`} aria-current={on ? "page" : undefined}>
                 <span className={styles.tocNum}>{c.number}</span>
-                {c.title}
+                {c.icon ? <ChapterIcon icon={c.icon} /> : <span />}
+                <span>{c.title}</span>
               </Link>
               {on && (
                 <ul className={styles.tocSections}>
@@ -40,6 +41,9 @@ export function GuideNav({ chapters, current, page }: { chapters: GuideChapter[]
         <Link href="/guide/questions" aria-current={page === "questions" ? "page" : undefined}>
           All questions
         </Link>
+        <Link href="/guide/terms" aria-current={page === "terms" ? "page" : undefined}>
+          Terms
+        </Link>
       </div>
     </>
   );
@@ -52,4 +56,10 @@ export function GuideNav({ chapters, current, page }: { chapters: GuideChapter[]
       </details>
     </aside>
   );
+}
+
+/** A chapter's pixel icon (WO-70): decorative, crisp at 16 or 32. */
+export function ChapterIcon({ icon, size = 16 }: { icon: string; size?: 16 | 32 }) {
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src={`/icons/${icon}.svg`} alt="" width={size} height={size} className={styles.chapterIcon} />;
 }

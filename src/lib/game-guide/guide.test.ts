@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { checkGuide, modIndex, parseChapter, readGuide } from "./guide";
+import { checkGuide, modIndex, parseChapter, parseTerms, readGuide } from "./guide";
 
 const dir = path.join(process.cwd(), "content", "guide");
 const files = fs.readdirSync(dir).filter((f) => /^\d+-.+\.md$/.test(f));
@@ -69,5 +69,27 @@ describe("the guide (WO-66)", () => {
     const deadSection = parseChapter(ok.replace("Text with", "See [it](/guide/test#nope). Text with"), "01-test.md");
     expect(() => checkGuide([deadSection])).toThrow(/goes to no chapter or section/);
     expect(() => checkGuide([parseChapter(ok.replace("Text with", "See [it](/guide/test#one). Text with"), "01-test.md")])).not.toThrow();
+  });
+
+  it("reads every term in terms.md, and every mark in the chapters is one of them", () => {
+    const termsMd = fs.readFileSync(path.join(dir, "terms.md"), "utf8");
+    const g = readGuide();
+    expect(g.terms).toHaveLength(termsMd.match(/^## /gm)!.length);
+    expect(g.terms).toHaveLength(191);
+    const marks = all.match(/\{\{[^}]+\}\}/g)!.length;
+    const rendered = g.chapters.flatMap((c) => [c.lead, ...c.sections.flatMap((s) => [s.html, s.more ?? "", ...(s.mods ?? []).flatMap((m) => [m.html, m.where ?? ""]), ...s.asks.map((a) => a.html)])]).join("").match(/class="guide-term"/g)!.length;
+    expect(rendered).toBe(marks);
+    // Mods with a Nexus id, as the files give them.
+    const ids = all.match(/^ {2}- nexus:/gm)!.length;
+    expect(g.chapters.flatMap((c) => c.sections.flatMap((s) => s.mods ?? [])).filter((m) => m.nexus)).toHaveLength(ids);
+  });
+
+  it("fails on an unknown term or a dead see link, naming the file and line", () => {
+    const terms = parseTerms("## Mod Organizer 2 {#mo2}\n- aka: MO2\nThe program.\n");
+    expect(parseChapter(ok.replace("Text with", "Start {{MO2}}. Text with"), "01-test.md", terms).sections[0].html).toContain('data-term="mo2"');
+    expect(() => parseChapter(ok.replace("Text with", "Start {{Nothing Here}}. Text with"), "01-test.md", terms)).toThrow(/content\/guide\/01-test\.md:10: No term is called "Nothing Here"/);
+    expect(() => parseChapter(ok.replace("Text with", "Start {{it|nope}}. Text with"), "01-test.md", terms)).toThrow(/01-test\.md:10: No term has the id "nope"/);
+    const dead = parseTerms("## Thing {#thing}\nA thing.\n- see: /guide/test#nowhere\n");
+    expect(() => checkGuide([parseChapter(ok, "01-test.md")], dead.terms)).toThrow(/content\/guide\/terms\.md:3: The see: link \/guide\/test#nowhere goes to no chapter or section/);
   });
 });

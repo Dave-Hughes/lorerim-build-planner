@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { readGuide } from "@/lib/game-guide/guide";
+import { ChapterIcon } from "@/components/game-guide/guide-nav";
 import styles from "@/components/game-guide/guide.module.css";
 
 export const metadata: Metadata = {
@@ -20,7 +21,10 @@ export default function GuideIndex() {
       <ol className={styles.indexList}>
         {chapters.map((c) => (
           <li key={c.slug} className={styles.indexItem}>
-            <span className={styles.indexNum}>{c.number}</span>
+            <span className={styles.indexNum}>
+              {c.number}
+              {c.icon && <ChapterIcon icon={c.icon} size={32} />}
+            </span>
             <div className={styles.indexText}>
               <h2 className={styles.indexTitle}>
                 <Link href={`/guide/${c.slug}`}>{c.title}</Link>
@@ -40,6 +44,7 @@ export default function GuideIndex() {
       <p className={styles.indexRef}>
         <Link href="/guide/mods">Which mod runs what</Link>
         <Link href="/guide/questions">All questions</Link>
+        <Link href="/guide/terms">Terms</Link>
       </p>
     </main>
   );

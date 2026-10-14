@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ModName } from "@/components/game-guide/chapter-view";
 import { GuideNav } from "@/components/game-guide/guide-nav";
 import { modIndex, readGuide } from "@/lib/game-guide/guide";
 import styles from "@/components/game-guide/guide.module.css";
@@ -24,7 +25,9 @@ export default function ModsPage() {
         <dl className={styles.modIndex}>
           {mods.map((m) => (
             <div key={m.name} className={styles.mod} id={`mod-${m.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
-              <dt>{m.name}</dt>
+              <dt>
+                <ModName name={m.name} nexus={m.nexus} />
+              </dt>
               <dd>
                 {m.places.map((p) => (
                   <span key={`${p.chapter.slug}-${p.section.id}`} className={styles.modPlace}>

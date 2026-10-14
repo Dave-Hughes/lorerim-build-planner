@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { GuideNav } from "@/components/game-guide/guide-nav";
 import { QuestionsView, type QuestionGroup } from "@/components/game-guide/questions-view";
-import { guideJsonLd, readGuide } from "@/lib/game-guide/guide";
+import { TermTips } from "@/components/game-guide/term-tips";
+import { guideJsonLd, readGuide, termTips } from "@/lib/game-guide/guide";
 import styles from "@/components/game-guide/guide.module.css";
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function QuestionsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(guideJsonLd(guide)).replace(/</g, "\\u003c") }} />
       <GuideNav chapters={guide.chapters} page="questions" />
       <QuestionsView groups={groups} total={groups.reduce((n, g) => n + g.asks.length, 0)} />
+      <TermTips terms={termTips(guide)} />
     </main>
   );
 }

@@ -1,5 +1,5 @@
 """
-Pixel icons for the 18 skills and Destiny, the build page's tabs, attributes, birthsigns, races, level marks, gear slots, game modes, tags, deities and the logo: 16x16, drawn with a few shape
+Pixel icons for the 18 skills and Destiny, the build page's tabs, attributes, birthsigns, races, level marks, gear slots, game modes, tags, deities, the logo, and the guide's chapters and needs: 16x16, drawn with a few shape
 helpers, then given a 1 px dark outline automatically so every icon shares
 the same edge. Written out as SVG (one rect per run of pixels, crisp at any
 size).
@@ -2027,9 +2027,214 @@ DEITIES = {
 
 LOGO = {str(f): (lambda f=f: logo(f)) for f in range(4)}
 
+# ---------------------------------------------------------------- the guide's chapters and needs (WO-70)
+
+def chapter_changes():
+    # A rolled scroll with an ember wax seal
+    i = Icon()
+    i.rect(3, 3, 12, 12, "Y")                                      # parchment
+    i.recolor({"Y"}, "b", lambda x, y: x >= 10 or y >= 11)
+    i.rect(2, 2, 13, 3, "b"); i.rect(2, 2, 13, 2, "Y"); i.rect(12, 2, 13, 3, "B")   # top roll
+    i.rect(2, 12, 13, 13, "b"); i.rect(2, 13, 13, 13, "B"); i.rect(12, 12, 13, 13, "d")  # bottom roll
+    for y in (5, 7, 9):
+        i.rect(4, y, 9, y, "B")                                    # lines of text
+    i.disc(10.5, 10.5, 2.4, "o")                                   # wax seal
+    i.recolor({"o"}, "y", lambda x, y: x <= 9 and y <= 9)
+    i.recolor({"o"}, "O", lambda x, y: x + y >= 23)
+    i.px(10, 10, "R")
+    return i.outline()
+
+
+def chapter_character():
+    # A hand mirror
+    i = Icon()
+    ellipse(i, 8.5, 6, 5.2, 5.4, "b")                              # brass frame
+    ellipse(i, 8.5, 6, 3.8, 4.0, "m")                              # glass
+    i.recolor({"m"}, "c", lambda x, y: x + y <= 11)
+    i.recolor({"m"}, "M", lambda x, y: x + y >= 17)
+    i.recolor({"b"}, "Y", lambda x, y: x + y <= 9)
+    i.recolor({"b"}, "B", lambda x, y: x + y >= 19)
+    i.px(6, 4, "W"); i.px(7, 3, "W")                               # shine
+    i.rect(7, 11, 9, 11, "B")                                      # neck
+    i.rect(7, 12, 9, 15, "d"); i.rect(7, 12, 7, 15, "B")           # handle
+    return i.outline()
+
+
+def chapter_first_days():
+    # A pinned notice-board note
+    i = Icon()
+    i.poly([(2, 3), (13, 2), (14, 14), (3, 15)], "W")              # the note, a little askew
+    i.recolor({"W"}, "w", lambda x, y: x >= 11 or y >= 12)
+    for y, x1 in ((6, 11), (8, 10), (10, 11), (12, 8)):
+        i.line(5, y, x1, y, "g")                                   # handwriting
+    i.disc(8, 2.6, 1.8, "r")                                       # the pin
+    i.px(7, 2, "p")
+    return i.outline()
+
+
+def chapter_staying_alive():
+    # A campfire
+    i = Icon()
+    i.poly(leaf(8, 13, 8, 1.5, 3.6, 3.6, 0.9), "o")                # flame
+    i.poly(leaf(8, 13, 8, 5.5, 1.9, 1.9, 0.9), "y")                # its hot core
+    i.recolor({"o"}, "O", lambda x, y: x >= 10)
+    i.line(2, 14, 13, 11, "B"); i.line(2, 15, 13, 12, "d")         # logs, crossed
+    i.line(3, 11, 14, 14, "b"); i.line(3, 12, 14, 15, "B")
+    return i.outline()
+
+
+def chapter_fighting():
+    # A steel sword
+    i = Icon()
+    i.line(4, 11, 13, 2, "w"); i.line(5, 11, 14, 2, "g"); i.line(4, 10, 13, 1, "W")   # blade
+    i.px(14, 1, "W")
+    i.line(2, 9, 6, 13, "b"); i.px(2, 9, "Y"); i.px(6, 13, "B")    # crossguard
+    i.line(1, 14, 3, 12, "d"); i.line(2, 14, 3, 13, "B")           # grip
+    i.px(1, 15, "b"); i.px(0, 15, "Y")                             # pommel
+    return i.outline()
+
+
+def chapter_magic():
+    # A blue spell tome
+    i = Icon()
+    i.rect(3, 1, 12, 14, "m")                                      # cover
+    i.rect(12, 2, 13, 13, "W"); i.rect(13, 2, 13, 13, "w")         # page edges
+    i.rect(2, 1, 3, 14, "N")                                       # spine
+    i.recolor({"m"}, "c", lambda x, y: x <= 5 and y <= 4)
+    i.recolor({"m"}, "M", lambda x, y: x >= 10 and y >= 10)
+    i.disc(7.5, 7.5, 2.6, "y")                                     # glowing rune
+    i.disc(7.5, 7.5, 1.3, "o")
+    for (x, y) in ((4, 2), (11, 2), (4, 13), (11, 13)):
+        i.px(x, y, "b")                                            # brass corners
+    return i.outline()
+
+
+def chapter_crafting():
+    # A smith's hammer
+    i = Icon()
+    i.rect(2, 2, 11, 6, "g")                                       # iron head
+    i.recolor({"g"}, "w", lambda x, y: y <= 3 or x <= 3)
+    i.recolor({"g"}, "G", lambda x, y: y >= 6 and x >= 6)
+    i.rect(1, 3, 1, 5, "w")                                        # striking face
+    i.px(2, 2, "W")
+    i.line(7, 7, 13, 14, "b"); i.line(8, 7, 14, 14, "B"); i.px(7, 7, "Y")   # haft
+    return i.outline()
+
+
+def chapter_getting_around():
+    # A horseshoe: an iron arch open at the bottom, its two heels, nail holes
+    i = Icon()
+    ring(i, 8, 7, 6.6, 3.2, "w", where=lambda x, y: y <= 7)        # the arch
+    i.rect(1, 7, 4, 13, "w"); i.rect(11, 7, 14, 13, "g")            # the two arms
+    i.rect(1, 14, 5, 14, "g"); i.rect(10, 14, 14, 14, "G")          # heels, turned out
+    i.recolor({"w"}, "W", lambda x, y: x + y <= 8)
+    i.recolor({"w"}, "g", lambda x, y: x >= 11)
+    i.recolor({"g"}, "G", lambda x, y: x >= 13 and y >= 9)
+    for (x, y) in ((2, 5), (4, 2), (11, 2), (13, 5), (2, 10), (13, 10)):
+        i.px(x, y, "G")                                            # nail holes
+    return i.outline()
+
+
+def chapter_death():
+    # A skull
+    i = Icon()
+    i.disc(8, 6.5, 5.6, "w")                                       # cranium
+    i.rect(5, 10, 11, 13, "w")                                     # jaw
+    i.recolor({"w"}, "W", lambda x, y: x + y <= 10)
+    i.recolor({"w"}, "g", lambda x, y: x >= 11 and y >= 6)
+    i.rect(4, 7, 6, 9, "k"); i.rect(10, 7, 12, 9, "k")             # eyes
+    i.px(8, 10, "k"); i.px(7, 11, "k"); i.px(9, 11, "k")           # nose
+    for x in (6, 8, 10):
+        i.rect(x, 13, x, 14, "k")                                  # teeth gaps
+    i.rect(5, 14, 11, 14, "w"); i.rect(6, 14, 6, 14, "k"); i.rect(8, 14, 8, 14, "k"); i.rect(10, 14, 10, 14, "k")
+    return i.outline()
+
+
+def chapter_followers():
+    # An amulet on a chain
+    i = Icon()
+    for (x, y) in ((2, 1), (3, 3), (4, 5), (5, 7), (13, 1), (12, 3), (11, 5), (10, 7)):
+        i.px(x, y, "b")                                            # chain links
+    for (x, y) in ((2, 2), (4, 4), (13, 2), (11, 4)):
+        i.px(x, y, "B")
+    i.disc(8, 11, 3.8, "b")                                        # setting
+    i.recolor({"b"}, "Y", lambda x, y: x + y <= 17 and y <= 10)
+    i.disc(8, 11, 2.2, "r")                                        # the stone
+    i.px(7, 10, "p"); i.px(9, 12, "q")
+    return i.outline()
+
+
+def chapter_keys():
+    # An iron key
+    i = Icon()
+    ring(i, 4.5, 5, 3.6, 1.6, "g")                                 # bow
+    i.recolor({"g"}, "w", lambda x, y: x + y <= 7)
+    i.line(7, 7, 14, 14, "g"); i.line(7, 8, 13, 14, "G")           # shank
+    i.rect(12, 10, 13, 11, "g"); i.rect(10, 12, 11, 13, "g")       # bit
+    i.px(13, 10, "G"); i.px(11, 13, "G")
+    return i.outline()
+
+
+def need_hunger():
+    # A loaf of bread
+    i = Icon()
+    ellipse(i, 8, 9, 7, 4.5, "b")
+    i.recolor({"b"}, "Y", lambda x, y: y <= 7 and x <= 9)
+    i.recolor({"b"}, "B", lambda x, y: y >= 11 or x >= 13)
+    for x in (5, 8, 11):
+        i.line(x, 6, x + 1, 9, "d")                                # scored top
+    i.rect(2, 12, 14, 13, "B")
+    return i.outline()
+
+
+def need_thirst():
+    # A waterskin
+    i = Icon()
+    ellipse(i, 8, 10, 5.5, 5, "B")                                 # leather skin
+    i.recolor({"B"}, "b", lambda x, y: x + y <= 14)
+    i.recolor({"B"}, "d", lambda x, y: x + y >= 21)
+    i.rect(7, 2, 9, 5, "B"); i.rect(7, 2, 7, 5, "b")               # neck
+    i.rect(6, 1, 10, 1, "G"); i.rect(6, 1, 7, 1, "g")              # stopper
+    i.line(4, 7, 12, 7, "d")                                       # strap stitch
+    i.px(5, 9, "m"); i.px(5, 10, "c")                              # wet sheen
+    return i.outline()
+
+
+def need_fatigue():
+    # A rolled bedroll
+    i = Icon()
+    i.rect(1, 5, 12, 12, "s")                                      # the roll
+    i.recolor({"s"}, "e", lambda x, y: y <= 6)
+    i.recolor({"s"}, "S", lambda x, y: y >= 11)
+    i.disc(12.5, 8.5, 3.4, "s")                                    # its rolled end
+    i.disc(12.5, 8.5, 2.0, "S"); i.disc(12.5, 8.5, 0.9, "e")
+    for x in (4, 9):
+        i.rect(x, 4, x, 13, "d")                                   # straps
+    return i.outline()
+
+
+def need_cold():
+    # An icicle
+    i = Icon()
+    i.rect(2, 1, 13, 2, "c"); i.rect(2, 1, 13, 1, "W")            # the ledge of ice
+    i.poly([(3, 3), (9, 3), (6, 15)], "c")                         # the long icicle
+    i.poly([(9, 3), (13, 3), (11, 10)], "m")                       # a shorter one
+    i.recolor({"c"}, "W", lambda x, y: x <= 4 and y <= 8)
+    i.recolor({"c"}, "m", lambda x, y: x >= 7 and y >= 5)
+    i.recolor({"m"}, "M", lambda x, y: x >= 12)
+    return i.outline()
+
+
+CHAPTERS = {
+    "Changes": chapter_changes, "Character": chapter_character, "First days": chapter_first_days, "Staying alive": chapter_staying_alive,
+    "Fighting": chapter_fighting, "Magic": chapter_magic, "Crafting": chapter_crafting, "Getting around": chapter_getting_around,
+    "Death": chapter_death, "Followers": chapter_followers, "Keys": chapter_keys,
+}
+NEEDS = {"Hunger": need_hunger, "Thirst": need_thirst, "Fatigue": need_fatigue, "Cold": need_cold}
+
 TABS = {"Levels": tab_levels, "Guide": tab_guide}
 GUIDE = {"Tapps": tapps, "Tapps point": tapps_point}
-SETS = {"": {**ICONS, **GUIDE}, "tab-": TABS, "attr-": ATTRIBUTES, "sign-": SIGNS, "race-": RACES, "mark-": MARKS, "slot-": SLOTS, "mode-": MODES, "tag-": TAGS, "deity-": DEITIES, "logo-": LOGO}
+SETS = {"": {**ICONS, **GUIDE}, "tab-": TABS, "attr-": ATTRIBUTES, "sign-": SIGNS, "race-": RACES, "mark-": MARKS, "slot-": SLOTS, "mode-": MODES, "tag-": TAGS, "deity-": DEITIES, "logo-": LOGO, "chapter-": CHAPTERS, "need-": NEEDS}
 
 
 def slug(name):
