@@ -2743,6 +2743,76 @@ Dave's review of WO-65 on staging: better, but with these changes. Canvas: `Star
 
 ---
 
+## WO-68  Snapshot builds, in place of Auto level (14 Oct 2026)
+
+Canvas: row "Proposal: Snapshot builds (in place of Auto level)", with `SnapshotEditor.dc.html` (click around), `SnapshotPage.dc.html` and `StartChoice.dc.html`.
+
+**Why.** Dave tested WO-67. Auto level's output doesn't read as a guide: +1 to seven skills every level, every perk as early as possible, then dozens of empty levels. Nobody plays like that. The engine is sound, but filling the path is the wrong job for it.
+
+So it becomes a second kind of build: **a snapshot**, the build at one level ("here's the build at level 50"). It's one character sheet: setup, attribute totals, skill values and the perks held. There are no levels, so there are no empty levels. Level-by-level builds are unchanged and stay the main kind.
+
+1. **The plan.** `BuildPlan.snapshot?: { level: number; attributes: { health: number; magicka: number; stamina: number }; perks: string[]; skills: Record<string, number> }`. `perks` are the perks the author picked. `skills` are values the author set by hand.
+   - **Stored on save,** re-checked by the server: `snapshot.result`, holding the skill values, the perk ids held (picks plus auto selected) and the Health, Magicka and Stamina totals at `level`.
+   - A snapshot build has only level 1 in `levels`; Set up still lives there.
+   - **The check:** `goalsToSettings` + `fillToLevel` (WO-65), with the author's skill values as extra targets. Save fails if any pick isn't placed, any set value isn't reached, or the rules engine finds a problem. The editor never lets it get there (points 3 to 5).
+   - `parseBuildPlan` and the version copy (`copyBuildForVersion`) handle `snapshot`.
+2. **Starting one.** The start choice from WO-67 offers `Level by level` and `Snapshot`.
+   - Snapshot's card: the Destiny icon, `Snapshot`, `The build at one level: skills, attributes and perks at level 50. Pick the perks; the ones they need are selected for you.`, and `Make a snapshot`.
+   - **Auto level goes:** its page, its level-1 buttons (bar and footer), its tour and its route. Builds already made with it stay level-by-level builds.
+3. **The snapshot editor** at `/b/[id]/edit` for a snapshot build. It's WO-67's page, renamed and changed:
+   - **The edit bar** reads `Snapshot`, `Set up` and `Guide`.
+   - **Settings line:** `At level` chips 10, 20, 30, 50 and `Max`, with the floor from WO-67. Attribute presets and the three counters, which always show.
+   - **Skill list:** each row has a number field for its value at the level.
+     - Floor: what the picks need, with the tooltip `At least 75 for the perks you picked.`
+     - Cap: the max skill at the level, and what the skill points left allow with the other values. Typing past it snaps back with `Most it can be with the others: 82.`
+     - Values the author hasn't set: majors take the spare points, up to the cap, then minors. A set value is marked, with a small reset.
+   - **The tree:** WO-65's Picked and `Auto selected` stars, plus **Ruled out** (point 4).
+   - **Right panel:** `Level N`, `N perks, with the auto selected ones.`, then each pick with `From level N` and its `Auto selected: …` line, and a ×.
+   - The button `Save snapshot` saves and goes to the build page.
+   - Autosave as in the level editor, once the snapshot passes the check.
+4. **Never pick what can't be had.**
+   - A perk is ruled out when a held perk (pick or auto selected) excludes it, or when its path needs a perk that's excluded. Today that's Block: Weapons Master against One-Handed: Weapon Mastery and Two-Handed: Great Weapon Mastery, and everything in their trees that needs them.
+   - **How it looks:** a dashed Health red ring, the name struck through, not clickable.
+   - **Its tooltip** says why: `Not with Block: Weapons Master, a perk you picked.` and, for a perk further up, `It needs Weapon Mastery, which that rules out.`
+   - The skill row for a tree that's mostly ruled out still works.
+   - The WO-65 message `Drop one of the goals that rule each other out.` goes, since it can't happen any more.
+5. **Level floor.** As WO-67: a pick the level can't reach raises the level, with `Level raised to 25 for Cremation.` and `Undo`.
+6. **The build page** for a snapshot (`SnapshotPage.dc.html`):
+   - **The byline** gains a brass tag: `Snapshot at level 50`.
+   - **The tabs** are `Build` (the Destiny icon, `At level 50`) and `Guide`.
+   - **Build tab:** `At level 50`, then the three totals.
+     - **Skills:** all 18, highest first, each with a bar; the majors' bars in ember.
+     - **Perks:** by tree, with the count. Each tree shows its icon, name and value, then its perks by skill requirement. The picks are **key perks**: ember with a dot, with the legend `Key perks, the ones the build is about`.
+     - Under that, the reader's tree view, with the snapshot's perks taken.
+   - No level stepper, no ruler, no level cards.
+7. **Cards and Browse.**
+   - A snapshot's card says `Snapshot at level 50` where a level build says `to level 30`.
+   - Browse gets a `Kind` filter: `Any`, `Level by level`, `Snapshot`.
+8. **Tapps' tour** for the snapshot editor (WO-67's six stops, reworded):
+   1. `Snapshot` / `Shows a build at one level: its skills, attributes and perks.`
+   2. `Pick the level.`
+   3. `Set how many level-ups go to Health, Magicka and Stamina. The presets fill them in; change any number.`
+   4. `Pick a perk you want. The perks it needs first are selected for you, and perks that can't go with it are ruled out.`
+   5. `Skills are raised to what your perks need. Spare points go to your majors; change any number.`
+   6. `Save the snapshot, then write the Guide.`
+9. **Later, not now** (parked): gear and main spells on a snapshot; `Write it out level by level`, which copies a snapshot into a level-by-level build as a first draft.
+
+### Done when
+- [ ] Unit tests:
+  - a snapshot with Impact and Expert Destruction at 50 on the Altmer test build passes the check and stores its result;
+  - one whose picks need level 25, saved at 20, is refused;
+  - a set skill value past what the points allow is refused;
+  - Weapons Master rules out Weapon Mastery and every perk whose path needs it;
+  - the version copy keeps the snapshot.
+- [ ] e2e: new build, `Snapshot`, pick Expert Destruction at level 20. The level becomes 25 with the line, and `Save snapshot` lands on the build page with `Snapshot at level 25`, the Destruction perks, and Destruction at 75 or more.
+- [ ] e2e: pick Weapons Master; in One-Handed, Weapon Mastery is ruled out with its tooltip and can't be clicked.
+- [ ] e2e: Browse `Kind: Snapshot` lists the snapshot and not the level builds.
+- [ ] Nothing of Auto level is left: no route, button or tour.
+- [ ] Screenshots at 1440 and 390: the choice, the editor (with a ruled-out tooltip), and the build page. Compare with the canvas.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
@@ -2771,7 +2841,7 @@ Dave's review of WO-65 on staging: better, but with these changes. Canvas: `Star
   So the full list of Types is in the files: `AIT_english.txt` has Cloak, Backpack, Scarf, Accessory, Face, Belt, Mantle, Pauldron and more.
 
   Working out each item's Type means doing what Keyword Item Distributor does, since the keywords aren't in the plugins. A first pass that read only the plugins gave wrong answers (robes as Cloak, no scarves). The planner's slots should be a short list picked from these Types; Dave picks which in game.
-- **Auto level the rest of an existing build** (after WO-64): keep levels 1 to K, fill K+1 to N with the same page.
+- **Snapshots, more** (after WO-68): gear and main spells on a snapshot; `Write it out level by level`, a snapshot copied into a level build as a first draft.
 - **Destiny target:** pick the Destiny star you're heading for and light the path to it.
 - **Skills over levels:** a small line chart on the shared page of the main skills from level 1 to the last.
 - **Callings:** a field for the build's Calling, once the Callings mod data is in.
