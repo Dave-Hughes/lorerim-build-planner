@@ -594,3 +594,19 @@ textarea:focus-visible {
   }
 }
 
+/* Key caps (WO-66): one style everywhere. The rule colour border, panel fill, title face, square corners. */
+kbd {
+  display: inline-block;
+  min-width: 1.9em;
+  padding: 1px 7px;
+  border: 1px solid var(--rule);
+  border-bottom-width: 2px;
+  background: var(--panel);
+  color: var(--bright);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-align: center;
+}

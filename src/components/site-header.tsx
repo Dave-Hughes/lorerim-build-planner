@@ -6,11 +6,12 @@ import { isAdmin } from "@/lib/users/admin";
 import { looksLikeBot } from "@/lib/moderation/bot";
 import { countOpenReview } from "@/lib/moderation/review";
 import { AccountMenu } from "./account-menu";
+import { SiteNav } from "./site-nav";
 import styles from "./site-header.module.css";
 
 /**
- * The site's header: the brand (to Browse builds), New build, and the account menu, or Sign in.
- * No nav: Browse builds is the brand, My builds and My page are in the avatar's menu.
+ * The site's header: the brand (to Browse builds), Builds and Guide (WO-66), New build, and the
+ * account menu, or Sign in. My builds and My page are in the avatar's menu.
  */
 export async function SiteHeader() {
   const session = await auth();
@@ -22,7 +23,10 @@ export async function SiteHeader() {
   return (
     <header className={styles.header}>
       <div className={`page ${styles.inner}`}>
-        <Brand />
+        <span className={styles.left}>
+          <Brand />
+          <SiteNav />
+        </span>
         <div className={styles.actions}>
           <Link href="/new" className={`btn btn-primary ${styles.newBuild}`} aria-label="New build">
             <span className={styles.newIcon} aria-hidden="true">

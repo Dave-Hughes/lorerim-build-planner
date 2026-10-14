@@ -136,3 +136,39 @@
   line-height: 18px;
   text-align: center;
 }
+
+/* Builds and Guide (WO-66), after the brand; the current one in ember. */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  min-width: 0;
+}
+.nav {
+  display: flex;
+  gap: 20px;
+  font-family: var(--font-title);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 16px;
+}
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.nav a:hover {
+  color: var(--text);
+}
+.nav a[aria-current="page"] {
+  color: var(--ember-text);
+}
+@media (max-width: 520px) {
+  .left {
+    gap: 14px;
+  }
+  .nav {
+    gap: 12px;
+    font-size: 15px;
+  }
+}

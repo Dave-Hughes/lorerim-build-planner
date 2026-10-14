@@ -5,7 +5,7 @@ import { TEST_BUILD_ID } from "./seed";
 
 async function openGuide(page: Page) {
   await page.goto(`/b/${TEST_BUILD_ID}/edit`);
-  await page.getByRole("link", { name: "Guide" }).click();
+  await page.getByRole("region", { name: "Edit bar" }).getByRole("link", { name: "Guide" }).click();
   await page.waitForURL(`**/b/${TEST_BUILD_ID}/guide`);
   const editor = page.getByRole("textbox", { name: "Guide" });
   await expect(editor).toBeVisible();

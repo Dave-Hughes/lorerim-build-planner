@@ -2677,18 +2677,18 @@ Dave's verdict on `/faq`: it reads like a technical document, and it answers que
 - FAQPage structured data moves to `/guide/questions`, built from the same files.
 
 ### Done when
-- [ ] `/guide` lists 11 chapters; each chapter page renders every section, More detail, Related Mods and question from its file, with tables, lists, code and key caps.
-- [ ] A test counts chapters, sections, mods blocks and questions in the rendered pages against the files.
-- [ ] A test feeds the parser a broken file (unclosed block, wrong order, duplicate id, dead `/guide` link) and expects a build error naming the file.
-- [ ] Editing a sentence in a chapter file and rebuilding changes the page with no other change.
-- [ ] More detail, Related Mods and each question are closed on load and open with a click and with Enter; the pages read in full with JavaScript off (they are `<details>`).
-- [ ] e2e: open `/guide/fighting#stances`; the section is in view below the header. Open `/guide/questions#why-cant-i-fast-travel`; the question is open and in view.
-- [ ] e2e: on `/guide/questions`, type `vampire`; only matching questions remain and empty groups hide; Clear brings all 49 back.
-- [ ] `/faq` and `/faq#anything` redirect to `/guide/questions` with a 308.
-- [ ] `/guide/mods` lists every mod named in the chapters, and each entry links to the sections that name it.
-- [ ] Header `Builds` and `Guide` links and the footer `Guide` link on every site page.
-- [ ] Screenshots at 1440: `/guide`, `/guide/fighting` top, the Stances section with Related Mods open, `/guide/mods`. At 390: a chapter with `Chapters` open, and a table. Checked against the mockup and `docs/design-rules.md`: no eyebrows, no middle dots, no em dashes in the page's own copy.
-- [ ] All checks in CLAUDE.md pass.
+- [x] `/guide` lists 11 chapters; each chapter page renders every section, More detail, Related Mods and question from its file, with tables, lists, code and key caps.
+- [x] A test counts chapters, sections, mods blocks and questions in the rendered pages against the files.
+- [x] A test feeds the parser a broken file (unclosed block, wrong order, duplicate id, dead `/guide` link) and expects a build error naming the file.
+- [x] Editing a sentence in a chapter file and rebuilding changes the page with no other change.
+- [x] More detail, Related Mods and each question are closed on load and open with a click and with Enter; the pages read in full with JavaScript off (they are `<details>`).
+- [x] e2e: open `/guide/fighting#stances`; the section is in view below the header. Open `/guide/questions#why-cant-i-fast-travel`; the question is open and in view.
+- [x] e2e: on `/guide/questions`, type `vampire`; only matching questions remain and empty groups hide; Clear brings all 49 back.
+- [x] `/faq` and `/faq#anything` redirect to `/guide/questions` with a 308.
+- [x] `/guide/mods` lists every mod named in the chapters, and each entry links to the sections that name it.
+- [x] Header `Builds` and `Guide` links and the footer `Guide` link on every site page.
+- [x] Screenshots at 1440: `/guide`, `/guide/fighting` top, the Stances section with Related Mods open, `/guide/mods`. At 390: a chapter with `Chapters` open, and a table. Checked against the mockup and `docs/design-rules.md`: no eyebrows, no middle dots, no em dashes in the page's own copy.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

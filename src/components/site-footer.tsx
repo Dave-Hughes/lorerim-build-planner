@@ -38,9 +38,9 @@ export async function SiteFooter() {
           <span className={styles.made}>{made}</span>
         )}
         <ShowMeAround className={styles.tour} />
-        {/* The FAQ (WO-63), next to the community link. */}
-        <Link href="/faq" className={styles.link}>
-          FAQ
+        {/* The guide (WO-66), next to the community link. */}
+        <Link href="/guide" className={styles.link}>
+          Guide
         </Link>
         <a href={DISCORD} className={styles.link} target="_blank" rel="noopener noreferrer">
           <DiscordIcon />
