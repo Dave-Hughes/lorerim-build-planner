@@ -1,0 +1,365 @@
+<title>LoreRim Guide: Fighting</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@1,400&family=Sofia+Sans:wght@400;500;600&family=Sofia+Sans+Extra+Condensed:wght@600;700&display=swap">
+<style>
+/* Layout: the planner's site frame; chapter list on the left, one chapter on the right. Dark only, as the planner is. */
+:root {
+  color-scheme: dark;
+  --ground: #0e1319;
+  --panel: #141b23;
+  --panel-raised: #1a2230;
+  --sunk: #10161e;
+  --rule: #2a3442;
+  --rule-soft: #1c2430;
+  --text: #e4ebf0;
+  --soft: #c3cdd6;
+  --muted: #8e9bab;
+  --bright: #ffffff;
+  --ember: #f0913f;
+  --ember-text: #f6c08f;
+  --on-ember: #0e1319;
+  --brass: #b9a173;
+  --stamina: #86b47f;
+  --health: #d07a6a;
+  --font-title: "Sofia Sans Extra Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Sofia Sans", "Segoe UI", sans-serif;
+  --font-flavor: "Alegreya", Georgia, serif;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+a { color: var(--ember-text); text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible, button:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
+
+.page {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Site header, as on the planner */
+.site-head { border-bottom: 1px solid var(--rule); background: var(--ground); }
+.site-head .page { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.brand { font-family: var(--font-title); font-weight: 700; font-size: 22px; letter-spacing: .06em; text-transform: uppercase; color: var(--bright); text-decoration: none; }
+.brand span { color: var(--ember); }
+.site-nav { display: flex; gap: 20px; font-family: var(--font-title); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; font-size: 16px; }
+.site-nav a { color: var(--muted); text-decoration: none; }
+.site-nav a[aria-current] { color: var(--ember-text); }
+
+/* Two columns */
+.layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 48px; padding-block: 40px 80px; }
+@media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 24px 64px; } }
+
+/* Chapter list */
+.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; }
+@media (max-width: 900px) { .toc { position: static; } }
+.toc-title { font-family: var(--font-title); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: 15px; color: var(--brass); margin: 0 0 12px; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.toc li a { display: grid; grid-template-columns: 28px 1fr; gap: 6px; padding: 7px 10px; color: var(--soft); text-decoration: none; border-left: 2px solid transparent; font-size: 15px; line-height: 1.35; }
+.toc li a:hover { background: var(--panel); color: var(--bright); }
+.toc .num { font-family: var(--font-title); font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+.toc li.on > a { border-left-color: var(--ember); background: var(--panel); color: var(--bright); }
+.toc li.on > a .num { color: var(--ember); }
+.toc ul { list-style: none; margin: 4px 0 8px; padding: 0 0 0 44px; display: grid; gap: 2px; }
+.toc ul a { display: block; padding: 3px 0; font-size: 14px; color: var(--muted); text-decoration: none; }
+.toc ul a:hover { color: var(--ember-text); }
+.toc-ref { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--rule); display: grid; gap: 6px; font-size: 14px; }
+.toc-ref a { color: var(--muted); text-decoration: none; }
+.toc-ref a:hover { color: var(--ember-text); }
+.toc details summary { display: none; }
+@media (max-width: 900px) {
+  .toc details { border: 1px solid var(--rule); background: var(--panel); }
+  .toc details summary { display: flex; justify-content: space-between; cursor: pointer; padding: 12px 14px; font-family: var(--font-title); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; list-style: none; }
+  .toc details summary::-webkit-details-marker { display: none; }
+  .toc details summary::after { content: "+"; color: var(--ember); }
+  .toc details[open] summary::after { content: "\2212"; }
+  .toc details > .toc-body { padding: 0 8px 12px; }
+  .toc .toc-title { display: none; }
+}
+
+/* Chapter */
+.chapter { min-width: 0; }
+.chapter-head { display: grid; gap: 10px; padding-bottom: 28px; border-bottom: 1px solid var(--rule); }
+.chapter-no { font-family: var(--font-title); font-weight: 600; font-size: 18px; color: var(--muted); letter-spacing: .06em; }
+h1 { font-family: var(--font-title); font-weight: 700; text-transform: uppercase; letter-spacing: .03em; font-size: clamp(44px, 7vw, 72px); line-height: .95; margin: 0; color: var(--bright); text-wrap: balance; }
+.sub { font-size: 19px; color: var(--soft); margin: 0; }
+.lead { font-size: 18px; color: var(--text); margin: 8px 0 0; }
+
+.section { padding-top: 44px; display: grid; gap: 16px; }
+h2 { font-family: var(--font-title); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; font-size: 34px; line-height: 1; margin: 0; color: var(--bright); text-wrap: balance; }
+.section p { margin: 0; }
+.section > p + p { margin-top: -4px; }
+
+kbd { font-family: var(--font-title); font-weight: 700; font-size: 15px; letter-spacing: .04em; display: inline-block; min-width: 1.9em; text-align: center; padding: 1px 7px; border: 1px solid var(--rule); border-bottom-width: 2px; background: var(--panel-raised); color: var(--bright); line-height: 1.4; }
+
+/* Tables */
+.table-wrap { overflow-x: auto; border: 1px solid var(--rule); }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th { text-align: left; font-family: var(--font-title); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: 14px; color: var(--muted); background: var(--sunk); padding: 9px 14px; border-bottom: 1px solid var(--rule); }
+td { padding: 10px 14px; border-top: 1px solid var(--rule-soft); vertical-align: top; }
+td .up { color: var(--stamina); }
+td .down { color: var(--health); }
+
+/* More detail */
+details.more { border: 1px solid var(--rule); background: var(--sunk); }
+details.more > summary { cursor: pointer; list-style: none; padding: 11px 16px; display: flex; align-items: center; gap: 10px; font-family: var(--font-title); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: 16px; color: var(--soft); }
+details.more > summary::-webkit-details-marker { display: none; }
+details.more > summary::before { content: "+"; color: var(--ember); font-size: 20px; line-height: 1; width: 14px; }
+details.more[open] > summary::before { content: "\2212"; }
+details.more > summary:hover { color: var(--bright); }
+details.more > .body { padding: 2px 16px 16px; display: grid; gap: 12px; font-size: 15px; color: var(--soft); }
+details.more ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+
+/* Related Mods: collapsed, set apart by brass corner marks */
+details.mods { position: relative; border: 1px solid var(--rule); background: var(--panel); }
+details.mods::before, details.mods::after { content: ""; position: absolute; width: 10px; height: 10px; border-color: var(--brass); border-style: solid; pointer-events: none; }
+details.mods::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+details.mods::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+details.mods > summary { cursor: pointer; list-style: none; padding: 11px 16px; display: flex; align-items: center; gap: 10px; font-family: var(--font-title); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: 16px; color: var(--brass); }
+details.mods > summary::-webkit-details-marker { display: none; }
+details.mods > summary::before { content: "+"; font-size: 20px; line-height: 1; width: 14px; }
+details.mods[open] > summary::before { content: "\2212"; }
+details.mods > summary .count { font-family: var(--font-body); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 14px; color: var(--muted); }
+details.mods > dl { margin: 0; padding: 2px 16px 16px; display: grid; gap: 12px; }
+.mod { display: grid; grid-template-columns: minmax(180px, 240px) minmax(0, 1fr); gap: 4px 20px; padding-top: 12px; border-top: 1px solid var(--rule-soft); }
+.mod:first-child { padding-top: 4px; border-top: 0; }
+@media (max-width: 640px) { .mod { grid-template-columns: minmax(0, 1fr); } }
+.mod dt { font-weight: 600; color: var(--bright); font-size: 15px; line-height: 1.4; }
+.mod dd { margin: 0; font-size: 15px; color: var(--soft); display: grid; gap: 4px; }
+.mod .where { font-size: 13px; color: var(--muted); }
+.mod .where code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 12.5px; color: var(--soft); background: var(--sunk); padding: 1px 5px; word-break: break-all; }
+.tag { justify-self: start; font-family: var(--font-title); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: 12.5px; padding: 1px 8px; border: 1px solid #3e5a3a; color: var(--stamina); }
+
+/* Players ask */
+.asks { display: grid; gap: 0; border-top: 1px solid var(--rule); }
+.asks h3 { margin: 14px 0 6px; font-family: var(--font-title); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: 15px; color: var(--muted); }
+.asks details { border-bottom: 1px solid var(--rule-soft); }
+.asks summary { cursor: pointer; list-style: none; padding: 10px 0; display: flex; gap: 10px; color: var(--text); font-weight: 500; }
+.asks summary::-webkit-details-marker { display: none; }
+.asks summary::before { content: "\203A"; color: var(--ember); font-weight: 700; width: 10px; transition: transform .15s; }
+.asks details[open] summary::before { transform: rotate(90deg); }
+.asks details p { margin: 0 0 12px 20px; color: var(--soft); font-size: 15px; }
+@media (prefers-reduced-motion: reduce) { .asks summary::before { transition: none; } }
+
+.see { font-size: 15px; color: var(--muted); }
+.next { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.next a { text-decoration: none; display: grid; gap: 2px; }
+.next small { font-family: var(--font-title); font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-size: 14px; }
+.next span { font-family: var(--font-title); font-weight: 700; font-size: 24px; text-transform: uppercase; color: var(--bright); }
+.next a:hover span { color: var(--ember-text); }
+.next .fwd { text-align: right; }
+</style>
+
+<header class="site-head">
+  <div class="page">
+    <a class="brand" href="#">LoreRim <span>Build Planner</span></a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="#">Builds</a>
+      <a href="#" aria-current="page">Guide</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page layout">
+  <aside class="toc" aria-label="Guide chapters">
+    <details open id="toc-details">
+      <summary>Chapters</summary>
+      <div class="toc-body">
+        <p class="toc-title">The Guide</p>
+        <ol>
+          <li><a href="#"><span class="num">1</span>What LoreRim changes</a></li>
+          <li><a href="#"><span class="num">2</span>Making your character</a></li>
+          <li><a href="#"><span class="num">3</span>Your first days</a></li>
+          <li><a href="#"><span class="num">4</span>Staying alive: food, water, sleep, cold</a></li>
+          <li class="on"><a href="#" aria-current="page"><span class="num">5</span>Fighting</a>
+            <ul>
+              <li><a href="#how">Enemy levels and damage</a></li>
+              <li><a href="#stamina">Stamina</a></li>
+              <li><a href="#stances">Stances</a></li>
+              <li><a href="#dodge">Dodging</a></li>
+              <li><a href="#block">Blocking and stagger</a></li>
+            </ul>
+          </li>
+          <li><a href="#"><span class="num">6</span>Magic</a></li>
+          <li><a href="#"><span class="num">7</span>Crafting and money</a></li>
+          <li><a href="#"><span class="num">8</span>Getting around</a></li>
+          <li><a href="#"><span class="num">9</span>Death and saving</a></li>
+          <li><a href="#"><span class="num">10</span>Followers, gods and curses</a></li>
+          <li><a href="#"><span class="num">11</span>Your keys and menus</a></li>
+        </ol>
+        <div class="toc-ref">
+          <a href="#">Every key</a>
+          <a href="#">Which mod runs what</a>
+          <a href="#">All questions</a>
+        </div>
+      </div>
+    </details>
+  </aside>
+
+  <main class="chapter">
+    <header class="chapter-head">
+      <span class="chapter-no">Chapter 5</span>
+      <h1>Fighting</h1>
+      <p class="sub">How combat works in LoreRim, and what is different from Skyrim without mods.</p>
+      <p class="lead">LoreRim's combat comes from Requiem. Enemies have fixed levels, your health does not regenerate, and every swing, block and dodge uses stamina.</p>
+    </header>
+
+    <section class="section" id="how">
+      <h2>Enemy levels and damage</h2>
+      <p>Every enemy has a fixed level that does not change as you level up. An ordinary bandit is anywhere from level 3 to 24, and about one in four is level 12 or higher. A bandit camp's boss is level 19 or 24. A camp is as dangerous on your first day as later on, so check what you are walking into.</p>
+      <p>Armor reduces physical damage by 1% for every 10 points, up to 75% at 750 armor. Your health does not regenerate on its own: use potions, food, healing spells or sleep. The difficulty slider has no effect in LoreRim; leave it on Adept.</p>
+      <p>Hits you don't block also make you bleed and lower your armor for a few seconds.</p>
+      <details class="more">
+        <summary>More detail</summary>
+        <div class="body">
+          <ul>
+            <li>Bandit levels and how often each appears: 3 (29%), 7 (26%), 10 (23%), 12 (14%), 19 (6%), 24 (3%).</li>
+            <li>From level 20, enemies of level 20 to 49 that are below your level gain, for each level of difference, +10 health, +20 armor and higher weapon skills. Enemies below level 20 are never changed.</li>
+            <li>Enemies of level 20 or higher have a 4% chance to be legendary: double health, and they heal once when nearly dead. They have no glow or name tag. They give 50% more XP.</li>
+            <li>Each weapon hit you don't block lowers your armor for 10 seconds and makes you bleed 1% of your health over 5 seconds. Blocking, dodging or a ward prevents it.</li>
+            <li>Enemies can't kill you with a killmove.</li>
+          </ul>
+        </div>
+      </details>
+      <details class="mods">
+        <summary>Related Mods <span class="count">4</span></summary>
+        <dl>
+          <div class="mod"><dt>Requiem</dt><dd>Fixed enemy levels, armor and resistances, no health regeneration, and the difficulty slider.</dd></div>
+          <div class="mod"><dt>[Hard] Dynamic Stat Scaler</dt><dd>Makes enemies of level 20 to 49 tougher when they are below your level.<span class="tag">Optional in MO2, on by default</span></dd></div>
+          <div class="mod"><dt>Engaging Combat</dt><dd>Bleeding and lowered armor from hits you don't block.<span class="where">Turned off by the optional <code>[Easy] Turn Off Engaging Combat</code></span><span class="tag">Optional in MO2</span></dd></div>
+          <div class="mod"><dt>Legendary Enemies</dt><dd>Legendary enemies.<span class="where"><code>MCM/Settings/Legendary Enemies.ini</code></span></dd></div>
+        </dl>
+      </details>
+      <div class="asks">
+        <h3>Players ask</h3>
+        <details><summary>Does the difficulty slider do anything?</summary><p>No. Requiem sets every difficulty to the same damage. For an easier game, choose Naaktiid at character creation, or turn on Requiem Lite in its MCM.</p></details>
+        <details><summary>Why won't this enemy's health bar go down?</summary><p>It is probably a legendary enemy: double health and one heal near death.</p></details>
+      </div>
+    </section>
+
+    <section class="section" id="stamina">
+      <h2>Stamina</h2>
+      <p>Attacks, power attacks, blocking and dodging all use stamina. At 10 stamina or less you deal half damage, block a quarter as well and can't stagger enemies. When stamina is low, step back until it refills.</p>
+      <p>Power attack is the middle mouse button. It costs 40 stamina plus twice the weapon's weight: 74 for a steel greatsword. Perks lower the cost. Once you start a swing, you can't cancel it by moving, and turning is slow until it finishes.</p>
+      <details class="more">
+        <summary>More detail</summary>
+        <div class="body">
+          <ul>
+            <li>Heavier armor raises the stamina each swing costs. Higher weapon skill lowers it.</li>
+            <li>You can power attack with no stamina, but the hit does half damage.</li>
+            <li>Repeated left clicks chain light attacks into a combo. A light attack can lead into a power attack.</li>
+            <li>Without the Heavy Armor perk Conditioning, wearing heavy armor drains stamina.</li>
+          </ul>
+        </div>
+      </details>
+      <details class="mods">
+        <summary>Related Mods <span class="count">3</span></summary>
+        <dl>
+          <div class="mod"><dt>Requiem</dt><dd>Stamina cost of attacking and blocking, and the penalties at low stamina.</dd></div>
+          <div class="mod"><dt>One Click Power Attack NG</dt><dd>Power attack on the middle mouse button.<span class="where"><code>MCM/Settings/OCPA.ini</code> in LoreRim - MCM and INI Settings</span><span class="tag">Key can be changed</span></dd></div>
+          <div class="mod"><dt>Attack MCO</dt><dd>Combos, and being unable to turn mid-swing.<span class="where">The optional <code>[Easy] Remove Attack Commitment</code> lets you turn mid-swing.</span><span class="tag">Optional in MO2</span></dd></div>
+        </dl>
+      </details>
+      <div class="asks">
+        <h3>Players ask</h3>
+        <details><summary>I can't turn while attacking</summary><p>That is attack commitment. Tap block to cancel a swing, or turn on "[Easy] Remove Attack Commitment" in MO2.</p></details>
+      </div>
+    </section>
+
+    <section class="section" id="stances">
+      <h2>Stances</h2>
+      <p>There are four stances. Each changes your attack animations and gives a bonus with a drawback. You can switch at any time, including in the middle of a combo.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Key</th><th>Stance</th><th>Bonus</th><th>Drawback</th></tr></thead>
+          <tbody>
+            <tr><td><kbd>F1</kbd></td><td>High</td><td><span class="up">Attacks ignore 20% of enemy armor</span></td><td><span class="down">You take 20% more physical damage</span></td></tr>
+            <tr><td><kbd>F2</kbd></td><td>Mid</td><td><span class="up">+10% critical chance and critical damage</span></td><td><span class="down">You deal 10% less physical damage</span></td></tr>
+            <tr><td><kbd>F3</kbd></td><td>Low</td><td><span class="up">+30% poise damage, +30% damage to staggered enemies</span></td><td><span class="down">Enemies do 30% more poise damage to you</span></td></tr>
+            <tr><td><kbd>F4</kbd></td><td>Neutral</td><td>Default animations</td><td>None</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <details class="mods">
+        <summary>Related Mods <span class="count">2</span></summary>
+        <dl>
+          <div class="mod"><dt>Stances - Dynamic Animation Sets</dt><dd>The four stances, their animations and their keys.<span class="where"><code>SKSE/Plugins/dtryKeyUtil/config/custom/Stances.ini</code> in LoreRim - MCM and INI Settings</span><span class="tag">Keys can be changed</span></dd></div>
+          <div class="mod"><dt>Requiem - Modern Combat Rework</dt><dd>The bonus and drawback of each stance.</dd></div>
+        </dl>
+      </details>
+    </section>
+
+    <section class="section" id="dodge">
+      <h2>Dodging</h2>
+      <p>Dodge with <kbd>Left Alt</kbd>. It is a quick step with a short moment where you can't be hit, and it costs 10% of your maximum stamina.</p>
+      <p>You can't dodge until you take the Dodge perk in the Evasion tree. It needs Evasion 25, and either the Agility perk (Evasion) or the Conditioning perk (Heavy Armor).</p>
+      <details class="more">
+        <summary>More detail</summary>
+        <div class="body">
+          <ul>
+            <li>The moment where you can't be hit is set to 0.3 seconds; the step animation can change it slightly.</li>
+            <li>A dodge can cancel a light attack, but not a power attack.</li>
+            <li>Enemies dodge too.</li>
+          </ul>
+        </div>
+      </details>
+      <details class="mods">
+        <summary>Related Mods <span class="count">3</span></summary>
+        <dl>
+          <div class="mod"><dt>TK Dodge RE</dt><dd>The dodge, its stamina cost and the perk requirement.<span class="where"><code>SKSE/Plugins/tk-dodge.toml</code> in LoreRim - MCM and INI Settings. Edit this copy; it overrides the mod's own.</span><span class="tag">Key can be changed</span></dd></div>
+          <div class="mod"><dt>TK Dodge RE Addon</dt><dd>The step animations.</dd></div>
+          <div class="mod"><dt>Requiem</dt><dd>The Dodge perk in the Evasion tree.</dd></div>
+        </dl>
+      </details>
+      <div class="asks">
+        <h3>Players ask</h3>
+        <details><summary>Left Alt does nothing</summary><p>You don't have the Dodge perk yet. Raise Evasion to 25, take Agility (or Conditioning in Heavy Armor), then take Dodge.</p></details>
+      </div>
+    </section>
+
+    <section class="section" id="block">
+      <h2>Blocking and stagger</h2>
+      <p>Block with right mouse. A weapon blocks 50% of a hit and a shield 75%, more with Block perks. Once you raise your block it stays up for at least half a second. <kbd>V</kbd> blocks when you hold a weapon in each hand or fight unarmed. You can also block with a spell in your hand.</p>
+      <p>Every character has poise, shown as a bar with their health. Hits lower it, and when it reaches zero the character staggers and can't act for a moment. Heavy weapons and unarmed hits do the most poise damage, arrows the least. After a stagger there is a short period where a character can't be staggered again.</p>
+      <details class="more">
+        <summary>More detail</summary>
+        <div class="body">
+          <ul>
+            <li>Your hits do 20% more poise damage than normal, and enemies' hits on you do 20% less.</li>
+            <li>Poise: human 25, troll 50, bear 87, giant 137, dragon 175. Armor adds very little.</li>
+            <li>When your swing hits an enemy's swing, one of them is parried. Weapon skill, weapon type, race and power attacks decide which.</li>
+            <li>LoreRim has no timed block.</li>
+          </ul>
+        </div>
+      </details>
+      <details class="mods">
+        <summary>Related Mods <span class="count">6</span></summary>
+        <dl>
+          <div class="mod"><dt>Requiem</dt><dd>How much damage a block stops.</dd></div>
+          <div class="mod"><dt>MaxsuBlockOverhaul</dt><dd>Minimum block time and blocking with a spell.<span class="where"><code>SKSE/Plugins/blockOverhaul.ini</code></span></dd></div>
+          <div class="mod"><dt>Dual Wield Parrying SKSE</dt><dd>Blocking with <kbd>V</kbd>.</dd></div>
+          <div class="mod"><dt>Chocolate Poise</dt><dd>Poise and stagger.<span class="where"><code>SKSE/Plugins/ChocolatePoise.ini</code></span></dd></div>
+          <div class="mod"><dt>Parrying RPG</dt><dd>Parrying when two swings meet.</dd></div>
+          <div class="mod"><dt>Break Stagger</dt><dd>The period after a stagger where a character can't be staggered again.</dd></div>
+        </dl>
+      </details>
+      <div class="asks">
+        <h3>Players ask</h3>
+        <details><summary>Is there a timed block or parry button?</summary><p>No. Parries happen automatically when two swings meet. Your active defense is the dodge.</p></details>
+      </div>
+    </section>
+
+    <nav class="next" aria-label="Chapters">
+      <a href="#"><small>Previous</small><span>Staying alive</span></a>
+      <a class="fwd" href="#"><small>Next</small><span>Magic</span></a>
+    </nav>
+  </main>
+</div>

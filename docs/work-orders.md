@@ -2635,6 +2635,63 @@ This pass keeps WO-64's engine (`fillToLevel`) and its preview, and replaces how
 
 ---
 
+## WO-66  The guide: chapters in place of the FAQ (14 Oct 2026)
+
+Mockup: `docs/sketches/guide-chapter.html` (chapter 5 as Dave approved it on 13 Oct; open it in a browser). Its words are older than the content files; where they differ, the files win. Its `Every key` link is dropped: chapter 11 is that page. Rules: `docs/design-rules.md`, "Guide pages" (17 to 21).
+
+Dave's verdict on `/faq`: it reads like a technical document, and it answers questions nobody asks before they know the thing exists ("What do F1 to F4 do?"). The guide replaces it. It teaches the game in the order a player meets it: chapters, then sections, then the questions players ask about each section.
+
+### Content
+- The words are in `content/guide/` (supplied with this order): 11 chapter files, `01-what-lorerim-changes.md` to `11-keys-and-menus.md`, and `README.md`, which defines the format. 67 sections and 49 questions in all. Don't edit the wording; if a line seems wrong, say so in the commit and leave it.
+- The files are the only place the content lives, as with the FAQ: a change to a file must be all it takes to change the page.
+- Parse at build time with `marked` (already installed, see `src/lib/faq/faq.ts`) plus a small pass for the guide's own syntax:
+  - front matter (`chapter`, `title`, `subtitle`), then the lead paragraphs;
+  - `## Heading {#id}` starts a section with that id;
+  - `:::more`, `:::mods` and `:::ask{q="..."}` blocks, each closed by `:::`;
+  - inside `:::mods`, one item per mod: `**Name**: text`, with optional sub-items `where:` and `tag:`;
+  - `[[F1]]` becomes a key cap.
+- The parser fails the build, with the file and line, on: an unclosed block, a block out of order (more, then mods, then asks), two sections with the same id in a chapter, or a `/guide/...` link to a chapter or section that doesn't exist.
+- The slug of a chapter is its file name without the number: `05-fighting.md` is `/guide/fighting`.
+
+### Pages
+1. **`/guide/[slug]`, a chapter** (layout as in the mockup):
+   - `Chapter 5` (title face, muted), the title, the subtitle in body text under it, then the lead.
+   - Each section: its heading, the explanation, then **More detail** (collapsed, sunk panel), **Related Mods** (collapsed, brass corners, the count of mods beside the label, e.g. `4 mods`), then **Players ask** with each question collapsed to its question.
+   - Related Mods rows: the mod name on the left; on the right what it does here, then `where` in code style and `tag` as a small label, as in the mockup.
+   - At the foot: Previous and Next chapter.
+2. **Chapter list on the left** (260px, sticky under the header from 900px up): numbers 1 to 11 and titles, the open chapter in ember with its section names under it, linking to the anchors. Under the list, the reference pages: `Which mod runs what` and `All questions`. Below 900px the list sits above the chapter and is collapsed to a `Chapters` button, as in the mockup.
+3. **`/guide`**: title `Guide`, the byline `For LoreRim 5.0.4.8`, then the 11 chapters, each with its number, title, subtitle and its section names as links. No intro paragraph and no eyebrow (design rules 1 and 3).
+4. **`/guide/questions`, All questions**: every `:::ask` from every chapter, grouped under its chapter and section names, each linking back to its section. The FAQ's filter moves here unchanged: `Filter questions`, the same matching, the same `No questions match "[text]".` and `Clear`.
+5. **`/guide/mods`, Which mod runs what**: every mod named in a `:::mods` block, A to Z, each with the sections that name it (chapter, section, linked) and its `where` lines. Built from the same files.
+6. **`/faq` goes.** It redirects permanently to `/guide/questions`. Remove the FAQ page, `src/lib/faq/`, its components and `content/faq/gameplay.md` (the guide covers every answer). Replace the FAQ tests with guide tests.
+
+### Linking
+- Every section and every question can be linked, as on the FAQ: hover or focus shows the link icon, clicking copies the full URL and shows `Copied` for 2 s. Question ids come from the question text, as before; section ids are the `{#id}` in the file.
+- Opening a link to a section or question scrolls it below the sticky header. A link to a question opens it.
+- Key caps (`[[F1]]`) use one style everywhere: the rule colour border, panel fill, title face, square corners.
+
+### Getting there
+- The header gets two links, `Builds` and `Guide`, as in the mockup, with the current one in ember. This changes the earlier "no nav in the header" decision; Dave approved the mockup that shows it. If it crowds the header on phones, keep the links and shorten nothing else; send a 390 screenshot.
+- The footer's `FAQ` link becomes `Guide`.
+- Metadata: `/guide`, title `Guide | LoreRim Build Planner`, description `How LoreRim 5.0.4.8 plays: character creation, leveling, survival, combat, magic, crafting, travel, death and the keys, checked against the installed files.` Chapters: `[Title] | LoreRim Guide`, description = the subtitle.
+- FAQPage structured data moves to `/guide/questions`, built from the same files.
+
+### Done when
+- [ ] `/guide` lists 11 chapters; each chapter page renders every section, More detail, Related Mods and question from its file, with tables, lists, code and key caps.
+- [ ] A test counts chapters, sections, mods blocks and questions in the rendered pages against the files.
+- [ ] A test feeds the parser a broken file (unclosed block, wrong order, duplicate id, dead `/guide` link) and expects a build error naming the file.
+- [ ] Editing a sentence in a chapter file and rebuilding changes the page with no other change.
+- [ ] More detail, Related Mods and each question are closed on load and open with a click and with Enter; the pages read in full with JavaScript off (they are `<details>`).
+- [ ] e2e: open `/guide/fighting#stances`; the section is in view below the header. Open `/guide/questions#why-cant-i-fast-travel`; the question is open and in view.
+- [ ] e2e: on `/guide/questions`, type `vampire`; only matching questions remain and empty groups hide; Clear brings all 49 back.
+- [ ] `/faq` and `/faq#anything` redirect to `/guide/questions` with a 308.
+- [ ] `/guide/mods` lists every mod named in the chapters, and each entry links to the sections that name it.
+- [ ] Header `Builds` and `Guide` links and the footer `Guide` link on every site page.
+- [ ] Screenshots at 1440: `/guide`, `/guide/fighting` top, the Stances section with Related Mods open, `/guide/mods`. At 390: a chapter with `Chapters` open, and a table. Checked against the mockup and `docs/design-rules.md`: no eyebrows, no middle dots, no em dashes in the page's own copy.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
