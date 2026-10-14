@@ -41,6 +41,16 @@ The skill icons (approved 10 Oct 2026, second pass) are the bar for every icon s
 - One clear object per icon, the one a player would name ("a bow", "a skull"), never an abstract symbol or a letter.
 - Decorative only: the name always sits beside the icon.
 
+## Guide pages
+
+The guide teaches the game in the order a player meets it: chapters, then sections. A question goes under the section that explains its subject; nobody asks about F1 to F4 before they know stances exist. These rules come from Dave's review of the first chapter mockup (13 Oct 2026).
+
+17. **No AI-sounding copy, anywhere.** Plain sentences that state a fact or an instruction. No punchy one-liners, no "X, not Y" framing, no lists of three adjectives, no promises ("learn these five things and..."), no headings that try to be clever ("Stamina runs the fight" became "Stamina").
+18. **Subtitles state a point, plainly.** A chapter may have a subtitle that says what it covers. No flavour lines or in-world quips.
+19. **No stat cards** unless the information can't be shown as a sentence, list or table.
+20. **Each section:** a plain explanation, then a collapsed **More detail** (numbers, edge cases), then a collapsed **Related Mods** (each mod's name, what it does here, where its settings file is, and whether changing it is allowed), then **Players ask** (questions with answers, collapsed).
+21. **Only checked facts.** Every number comes from the installed 5.0.4.8 files or the official site, as the FAQ content does. Use the game's own terms (poise, not balance).
+
 ## Visual system
 
 - Ground #0e1319, panels #141b23, rules #2a3442, text #e4ebf0, muted #8e9bab.
