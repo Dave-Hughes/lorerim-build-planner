@@ -2967,6 +2967,131 @@ Dave on staging: better, but "still a lot of work before it's remotely useful". 
 
 ---
 
+## WO-71  Launch: the editor stays fast on a long build (14 Oct 2026)
+
+**Why.** The chat session built a real 100-level build on staging: Sevari Uvayn, Morag Tong Nightblade, `/b/vhzj9w38n3`. It writes levels 1 to 5, then skips ahead in eight stretches to 100, with about 120 perks, gear, spells and a note on every key level. Vercel's toolbar flagged the editor's interactions:
+
+| Where | Time the page stopped responding |
+| --- | --- |
+| a click on the page | 1.1 s |
+| a keystroke in the gear search | 2.3 s |
+| typing in a level's notes | 3.2 s |
+| the perk tree | 3.2 s |
+
+That is the one launch blocker: a long build is exactly what the best authors will write.
+
+**Where it isn't.** `computeBuild` on a 100-level plan takes about 2 ms. The time goes into rendering: likely the whole editor re-rendering on every change, the rules being re-run many times per render (per skill row, per star, per level mark), every tree node redrawing, and the notes editor saving or re-rendering on each keystroke. Profile before changing anything; don't guess.
+
+1. **A fixture.** Copy the Sevari plan into `src/lib/rules/__fixtures__/` (export it from the staging database read-only, or rebuild it from the build page). Seed it in the e2e database as a 100-level build.
+2. **A measurement.** Add `e2e/perf.spec.ts`. It opens the fixture's editor and the build page on a production build (`npm run build`, then `next start`) and records Event Timing entries (`PerformanceObserver`, `type: "event"`) for:
+   - a skill `+` on levels 76 to 100;
+   - a perk star click and Confirm;
+   - typing 20 characters in the level notes;
+   - typing 10 characters in the gear search;
+   - ‹ › on the level nav, in the editor and on the build page.
+
+   It prints the worst duration for each.
+3. **Profile and fix** with the Chrome profiler on the same steps. Expected kinds of fix:
+   - work out the build once per plan change and pass the result down;
+   - memoize the tree and level row;
+   - keep note and search typing local, with autosave debounced and the save off the typing path.
+
+   Change what the profile shows, not this list.
+4. **Targets** on the fixture, on a mid-range laptop profile (4× CPU slowdown in DevTools is fine as a stand-in):
+   - clicks and stars: under 200 ms;
+   - typing in notes and the search: under 50 ms a keystroke;
+   - level nav: under 100 ms.
+5. **Nothing changes on screen.** This order is speed only.
+
+### Done when
+- [ ] The fixture exists and is seeded for e2e.
+- [ ] `e2e/perf.spec.ts` runs in `npm run test:e2e` and fails above the targets in point 4.
+- [ ] Before and after numbers for each step are in the commit message.
+- [ ] The Sevari build on staging edits without a visible stall: Dave checks it in the app.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-72  Launch: things the app gets wrong (14 Oct 2026)
+
+**Why.** These are the incorrect behaviours found building the Sevari build (`/b/vhzj9w38n3`). Each one is small, but each shows a reader or author something false. Every item has a unit or e2e test.
+
+1. **List view can't take a perk on desktop.** In the editor's perk panel, `List`, clicking a perk opens the perk card with `visibility: hidden`. It only appears after switching back to `Tree`. The card must open in List view, next to the row, as it does by the star.
+2. **Multi-rank perks show the first rank's requirement.**
+   - On a stretch card, `Short Blade Focus 3 (One-Handed 25)` should read `(One-Handed 75)`.
+   - `perkRequirement` in `build-view.tsx` reads `rankSkills[0]`. Use the rank taken (`perkRequirementText(p, rank - 1)`).
+   - Check every other place that prints a rank's requirement.
+3. **The reader is greeted as an author.** `READER_TOUR`'s welcome says `First build?`. Make it `First visit? Tapps shows you around. Four stops. Then mead.` (three stops without a guide). Keep Tapps' voice as it is elsewhere.
+4. **The levels line misleads.** The byline reads `Levels 1 to 5, 10, 19 to 20, 30, 40, 50, 75, 100`. Here "19 to 20" is the end of the 11 to 19 stretch next to the single level 20.
+   - Only merge runs of single levels.
+   - The line becomes `Levels 1 to 5, 10, 19, 20, 30, 40, 50, 75, 100`.
+   - Same on the build card.
+5. **Points at the last level.** On the build's last level:
+   - The footer says `65 skill points will carry over.` Make it `65 skill points unspent.`, and `3 perk points still unspent.` stays.
+   - The level card's `Banked` row reads `Unspent`.
+   - Levels before the last keep `Banked`.
+6. **Changing gear keeps the old item's note.** `Change` on a slot at a later level pre-fills the note with the earlier item's note. The note belongs to the row it was written on, so a new row starts with an empty note.
+7. **Trainer sessions on a stretch** show `5 left this level`. A stretch allows 5 for each of its level-ups, so levels 6 to 10 read `25 left in these levels`, still capped by what the build has left overall.
+8. **The notes heading on a stretch** reads `Notes for level 10`. Make it `Notes for levels 6 to 10`.
+9. **Short of perk points, the card blames a prerequisite.** With 1 point left, Concentrated Poisons says `Needs Alchemical Lore first.` with only Cancel. When the chain fits the skill but not the points, say so: `Needs Alchemical Lore first: 2 perk points, 1 left.` When the prerequisite really can't be had, keep today's line.
+10. **The max-skill note marks only one skill.** `(max skill 80 at level 30)` appears under Illusion, while One-Handed and Sneak are also at 80. Put it under every skill at the cap, or once in the section's heading line (`Skill points (max skill 80)`), whichever reads cleaner on the canvas. Same in the editor.
+11. **Enchantment boxes the perks don't allow.** On a made item, a second line shows without Enchantment Mastery, and a third without Artifact Enchanter. The engine catches it after saving. Show only the lines the build holds the perks for by that level, with the rule's words in a tooltip on the missing one (`Two enchantments need Enchantment Mastery.`).
+12. **Perk order on a stretch card.** Perks the editor took along as prerequisites are listed after the rest (Improved Protection after Ward Mastery). Sort by tree, then requirement, then name.
+13. **The Destiny pool after 30** reads `0 : 0 of 0 spent`. When the stretch earns no Destiny points and none are left, hide the breakdown and show `0`.
+
+### Done when
+- [ ] Each point has a unit test or an e2e step, named by its point number.
+- [ ] e2e: in List view, click Weapon Mastery, Confirm, and it's taken.
+- [ ] On the Sevari build, as a reader:
+  - the byline matches point 4;
+  - the 21 to 30 card shows `Short Blade Focus 3 (One-Handed 75)`;
+  - the 76 to 100 card says `Unspent`.
+- [ ] Screenshots at 1440 and 390 of the points that change the screen.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-73  Launch: layout and polish (14 Oct 2026; footer change for Dave to OK)
+
+**Why.** These are layout problems from the same drive. None is wrong information, but together they make the app look unfinished.
+
+1. **Trees open cropped.** Design rule: crowded rows stagger up to three deep, *every tree fits its box*, and names never touch.
+   - Today the editor and the build page open One-Handed and Destiny zoomed in, with edge labels cut (`Strike / nded 50`, `tness`, `Mage` half off).
+   - At Fit, One-Handed hides the labels for Short Blade Focus and Unarmed Defense.
+   - **Fix:** every tree opens fitted, every star keeps its label, and nothing is cut at the edges. That's in the editor (with the panel at its real height on a 1512×806 laptop window), in the reader, and on phone.
+2. **The perk badge covers the skill value.** At 100 the row reads `[5]90 → 100`. The badge and the values never overlap; drop the `from` value before the badge collides.
+3. **Ragged line breaks** (Dave has raised these before):
+   - `One-/Handed` in the `Taken by level` panel;
+   - `Max skill 51 at level / 1` in the editor's skills header;
+   - `Introvert, Focused / Combat: One- / Handed` in the traits row.
+
+   Fix each so the text uses its column's width, or shortens. Don't hyphenate skill names.
+4. **Phone:**
+   - the ruler's numbers collide (`95100`): at 390, label every 10 or 25;
+   - the start reads `From Overseas, Wi…`: let it wrap.
+5. **`replaces nothing`** on new gear: drop the clause when the slot was empty.
+6. **The editor footer is crowded.** A single level shows six controls: Reset, Remove, Continue and repeat, ‹ Skip ahead to level N ›, and Continue.
+   - **Proposal:** move `Reset` and `Remove` to the level bar, as quiet buttons by the level title, since they act on the level shown.
+   - The footer keeps only the ways forward.
+   - **Dave to OK before building.**
+7. **Two levels fill the row.** With only levels 1 and 2, each cell is half the page wide. Give cells a maximum width and align them left until the row fills.
+8. **The spell picker:**
+   - each spell shows its game description under its name, as perks do;
+   - a search with no match says `No spells match.`;
+   - once the picks are full, the list folds to the chosen spells, with `Change` to open it again.
+9. **`Ruled out` in the legend** only when the open tree has a ruled-out star.
+10. **The hover tooltip and the perk card** both show on a clicked star. Hide the tooltip while the card is open.
+11. **The wizard's Details preview** still shows the old `Levels` and `Guide` pills. Use the WO-60 tabs.
+12. **Level row accessibility:** a cell's `aria-label` lists notes and gear, but not perks, Destiny or spells. Name what the cell's marks show (`Levels 21 to 30, 10 perks, 2 Destiny, notes`).
+
+### Done when
+- [ ] Screenshots at 1512×806, 1440 and 390 for each point, compared with the canvas where a board exists.
+- [ ] e2e: open One-Handed and Destiny in the editor and on the build page. Every star's label is inside the box and none overlap; check it with bounding boxes.
+- [ ] Point 6 waits for Dave's OK; mark it done or dropped.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
