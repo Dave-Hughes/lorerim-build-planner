@@ -312,6 +312,12 @@
   font-weight: 600;
   line-height: 1;
 }
+/* A stretch's cell (WO-69): "12 to 25", smaller so it fits the cell. */
+.cellSpan {
+  font-size: 17px;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
 .cellMarks {
   display: flex;
   gap: 4px;
@@ -492,7 +498,7 @@
   color: var(--ember);
 }
 
-/* Skip ahead (WO-69): a stretch's box on the ruler, and the ruler over the chips. */
+/* Skip ahead (WO-69): a stretch's box on the ruler. */
 .span {
   position: absolute;
   top: 18px;
@@ -506,9 +512,4 @@
   border-color: var(--ember);
   background: rgba(240, 145, 63, 0.12);
   z-index: 1;
-}
-.stretchBars {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
 }

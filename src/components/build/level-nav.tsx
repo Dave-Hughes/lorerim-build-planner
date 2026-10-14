@@ -1,8 +1,6 @@
 "use client";
 
-import { stretches, type Stretch } from "@/lib/rules/stretches";
-import type { BuildPlan } from "@/lib/rules/types";
-import { StretchChips } from "./stretch-chips";
+import type { Stretch } from "@/lib/rules/stretches";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { LevelMark } from "@/lib/rules/derive";
 import { Tooltip } from "@/components/ui/tooltip";
@@ -144,10 +142,11 @@ export function LevelStepper({
 }
 
 /** The whole build on one line. Only marks that matter: Destiny, stones, Skill 100 perks, notes. */
-export function LevelRuler({ marks, level, onChange, spans }: { marks: LevelMark[]; level: number; onChange: (level: number) => void; spans?: Stretch[] }) {
+export function LevelRuler({ marks, level, onChange, spans, win }: { marks: LevelMark[]; level: number; onChange: (level: number) => void; spans?: Stretch[]; win?: Stretch }) {
   const total = marks.length;
-  const start = windowStart(level, total);
-  const size = Math.min(WINDOW, total);
+  // The window over the levels the row shows: twelve levels, or (WO-69) the levels its twelve stretches cover.
+  const start = win ? win.from : windowStart(level, total);
+  const size = win ? win.to - win.from + 1 : Math.min(WINDOW, total);
   const x = (n: number) => `${(((n - 0.5) / total) * 100).toFixed(4)}%`;
   const at = (e: React.PointerEvent<HTMLDivElement>) => {
     const r = e.currentTarget.getBoundingClientRect();
@@ -187,17 +186,16 @@ export function LevelRuler({ marks, level, onChange, spans }: { marks: LevelMark
         }}
       >
         {/* A build that skips ahead (WO-69): each stretch is one box over its levels, the open one in ember. */}
-        {spans ? (
-          spans.map((sp) => (
+        {spans?.map((sp) =>
+          sp.from < sp.to ? (
             <span
               key={sp.to}
               className={`${styles.span} ${level >= sp.from && level <= sp.to ? styles.spanOn : ""}`}
               style={{ left: `${((sp.from - 1) / total) * 100}%`, width: `${((sp.to - sp.from + 1) / total) * 100}%` }}
             />
-          ))
-        ) : (
-          <div data-window="" className={styles.window} style={{ left: `${((start - 1) / total) * 100}%`, width: `${(size / total) * 100}%` }} />
+          ) : null,
         )}
+        <div data-window="" className={styles.window} style={{ left: `${((start - 1) / total) * 100}%`, width: `${(size / total) * 100}%` }} />
         {marks.map((m) => {
           // The ends always say where the build starts and stops; every fifth level between.
           const five = m.level % 5 === 0 || m.level === 1 || m.level === total;
@@ -232,11 +230,39 @@ export function LevelRuler({ marks, level, onChange, spans }: { marks: LevelMark
 }
 
 /** Twelve levels around the one being viewed, each with its marks. */
-export function LevelRow({ marks, level, onChange }: { marks: LevelMark[]; level: number; onChange: (level: number) => void }) {
-  const total = marks.length;
-  const start = windowStart(level, total);
-  const size = Math.min(WINDOW, total);
-  const shown = marks.slice(start - 1, start - 1 + size);
+/** A cell in the level row: one level, or (WO-69) a stretch, `from` to `level`, with its levels' marks together. */
+export type LevelStop = LevelMark & { from: number };
+
+/** The row's stops: every level, or one per stretch with the marks of its levels merged. */
+export function levelStops(marks: LevelMark[], spans?: Stretch[]): LevelStop[] {
+  if (!spans) return marks.map((m) => ({ ...m, from: m.level }));
+  return spans.map((sp) => {
+    const ms = marks.slice(sp.from - 1, sp.to);
+    const last = marks[sp.to - 1];
+    return {
+      ...last,
+      from: sp.from,
+      perks: ms.reduce((n, m) => n + m.perks, 0),
+      destiny: ms.some((m) => m.destiny),
+      stone: ms.some((m) => m.stone),
+      skill100: ms.some((m) => m.skill100),
+      gear: ms.some((m) => m.gear),
+      deity: ms.some((m) => m.deity),
+      problems: ms.reduce((n, m) => n + m.problems, 0),
+    };
+  });
+}
+
+/** The stops the row shows: twelve around the open one. */
+function shownStops(stops: LevelStop[], level: number) {
+  const at = Math.max(0, stops.findIndex((x) => level >= x.from && level <= x.level));
+  const size = Math.min(WINDOW, stops.length);
+  const first = windowStart(at + 1, stops.length) - 1;
+  return { shown: stops.slice(first, first + size), size };
+}
+
+export function LevelRow({ marks, level, onChange, spans }: { marks: LevelMark[]; level: number; onChange: (level: number) => void; spans?: Stretch[] }) {
+  const { shown, size } = shownStops(levelStops(marks, spans), level);
   // On phones the row scrolls sideways: keep the current level in view (moving the row, never
   // the page) and fade the edge that has more.
   const scroller = useRef<HTMLDivElement>(null);
@@ -261,19 +287,21 @@ export function LevelRow({ marks, level, onChange }: { marks: LevelMark[]; level
       <div ref={scroller} data-row-frame="" className={styles.rowScroller}>
       <div className={styles.row} style={{ ["--cols" as string]: size }}>
         {shown.map((m) => {
-          const on = m.level === level;
+          const on = level >= m.from && level <= m.level;
           const past = m.level <= level;
+          const name = m.from < m.level ? `${m.from} to ${m.level}` : `${m.level}`;
           const cls = [styles.cell, on ? styles.cellOn : past ? styles.cellPast : styles.cellFuture].join(" ");
           const cell = (
             <button
               key={m.level}
               type="button"
               className={cls}
-              aria-label={`Level ${m.level}${m.notes ? ", notes" : ""}${m.gear ? ", new gear" : ""}${m.problems ? `, ${m.problems} problem${m.problems > 1 ? "s" : ""}` : ""}`}
+              aria-label={`${m.from < m.level ? "Levels" : "Level"} ${name}${m.notes ? ", notes" : ""}${m.gear ? ", new gear" : ""}${m.problems ? `, ${m.problems} problem${m.problems > 1 ? "s" : ""}` : ""}`}
+              data-stop={name}
               aria-current={on ? "true" : undefined}
               onClick={() => onChange(m.level)}
             >
-              <span className={styles.cellNum}>{m.level}</span>
+              <span className={`${styles.cellNum} ${m.from < m.level ? styles.cellSpan : ""}`}>{name}</span>
               <span className={styles.cellMarks}>
                 {Array.from({ length: Math.min(4, m.perks) }, (_, i) => (
                   <i key={i} className={styles.cellPerk} />
@@ -289,7 +317,7 @@ export function LevelRow({ marks, level, onChange }: { marks: LevelMark[]; level
           );
           // A level with problems says how many on hover and focus.
           return m.problems > 0 ? (
-            <Tooltip key={m.level} content={`${m.problems} problem${m.problems === 1 ? "" : "s"} at level ${m.level}`}>
+            <Tooltip key={m.level} content={`${m.problems} problem${m.problems === 1 ? "" : "s"} at ${m.from < m.level ? "levels" : "level"} ${name}`}>
               {cell}
             </Tooltip>
           ) : (
@@ -346,7 +374,14 @@ export function useHoldInPlace<T extends HTMLElement>(level: number, sections: r
  * from the window's edges to the row's, like a zoom. The lines are measured from where the window
  * and row really are, every frame while the window moves (150 ms), and on any resize.
  */
-export function LevelBars({ marks, level, onChange }: { marks: LevelMark[]; level: number; onChange: (level: number) => void }) {
+/**
+ * The ruler and the level row, for every build. A build that skips ahead (WO-69) passes its
+ * stretches: each is one cell in the row and one box on the ruler, and the ruler's window covers
+ * the levels the row's cells span.
+ */
+export function LevelBars({ marks, level, onChange, spans }: { marks: LevelMark[]; level: number; onChange: (level: number) => void; spans?: Stretch[] }) {
+  const { shown } = shownStops(levelStops(marks, spans), level);
+  const win = spans && shown.length ? { from: shown[0].from, to: shown[shown.length - 1].level } : undefined;
   const box = useRef<HTMLDivElement>(null);
   const left = useRef<SVGLineElement>(null);
   const right = useRef<SVGLineElement>(null);
@@ -391,14 +426,14 @@ export function LevelBars({ marks, level, onChange }: { marks: LevelMark[]; leve
   }, [level, ruler, marks.length]);
   return (
     <div ref={box} className={styles.bars}>
-      {ruler && <LevelRuler marks={marks} level={level} onChange={onChange} />}
+      {ruler && <LevelRuler marks={marks} level={level} onChange={onChange} spans={spans} win={win} />}
       {ruler && (
         <svg className={styles.connectors} aria-hidden="true">
           <line ref={left} />
           <line ref={right} />
         </svg>
       )}
-      <LevelRow marks={marks} level={level} onChange={onChange} />
+      <LevelRow marks={marks} level={level} onChange={onChange} spans={spans} />
     </div>
   );
 }
@@ -462,12 +497,3 @@ export function ArrowTip({ onClose }: { onClose: () => void }) {
   );
 }
 
-/** A build that skips ahead (WO-69): the ruler with a box per stretch, then a chip per stretch. */
-export function StretchBars({ marks, plan, level, onChange }: { marks: LevelMark[]; plan: Pick<BuildPlan, "levels">; level: number; onChange: (level: number) => void }) {
-  return (
-    <div className={styles.stretchBars}>
-      <LevelRuler marks={marks} level={level} onChange={onChange} spans={stretches(plan)} />
-      <StretchChips plan={plan} level={level} onChange={onChange} />
-    </div>
-  );
-}

@@ -28,7 +28,6 @@ import * as ops from "./plan-ops";
 import { MAX_LEVELS } from "@/lib/builds/validate";
 import { ruledOut } from "@/lib/rules/ruled-out";
 import { levelUps, skips, stretchAt, stretches } from "@/lib/rules/stretches";
-import { StretchChips } from "@/components/build/stretch-chips";
 import { Tour } from "@/components/tour/tour";
 import { AUTHOR_TOUR } from "@/lib/tour";
 import { useAutosave } from "./use-autosave";
@@ -99,8 +98,6 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   const isStretch = st.from > 1 && st.from < st.to;
   const allStretches = stretches(plan);
   const skipping = skips(plan);
-  // The stretches with a problem, for the red dot on their tab (WO-69).
-  const problemStretches = new Set(states.filter((x) => x.issues.length).map((x) => stretchAt(plan, x.level).to));
   const at = allStretches.findIndex((x) => x.to === st.to);
   const prevStretch = allStretches[at - 1];
   const nextStretch = allStretches[at + 1];
@@ -377,13 +374,6 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
           </section>
         )}
         <section ref={levelBarRef} aria-label="Level" className={styles.levelBar}>
-          {/* A build that skips ahead: its stretches are the level tabs (no arrows, no separate title). */}
-          {skipping && (
-            <div className={styles.levelRow}>
-              <StretchChips plan={plan} level={level} onChange={(n) => setLevel(n)} tabs problems={problemStretches} />
-            </div>
-          )}
-          {!skipping && (
           <div className={styles.levelNav}>
             {/* The arrows step by stretch (WO-69). */}
             <button type="button" className={`btn ${styles.levelArrow}`} aria-label="Previous level" disabled={!prevStretch} onClick={() => prevStretch && setLevel(prevStretch.to)}>
@@ -397,7 +387,6 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
               {nextStretch ? nextStretch.to : ""} ›
             </button>
           </div>
-          )}
           <dl className={styles.pools} data-tour="points">
             {/* A stretch counts its whole run (WO-69): spent of what it had, and what it carried in. */}
             {level > 1 && (
@@ -421,9 +410,10 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
             />
             <Pool label="Trainer sessions" value={trainerLeft} of="left this level" />
           </dl>
-          {total > 1 && !skipping && (
+          {/* The same ruler and row as the build page; a build that skips ahead has a cell per stretch (WO-69). */}
+          {total > 1 && (
             <div className={styles.levelRow}>
-              <LevelBars marks={marks} level={level} onChange={(n) => setLevel(n)} />
+              <LevelBars marks={marks} level={level} onChange={(n) => setLevel(n)} spans={skipping ? allStretches : undefined} />
             </div>
           )}
           {problems.length > 0 && (

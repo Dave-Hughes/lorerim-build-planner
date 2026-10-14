@@ -42,9 +42,9 @@ test("Skip ahead: write 2 to 10 and 11 to 25 as stretches, reset one, and read t
   // Level 1, then Skip ahead: the target is chosen first (10 levels on, so ‹ once for 10).
   await page.getByRole("button", { name: "Skip ahead to an earlier level" }).click();
   await page.getByRole("button", { name: "Skip ahead to level 10" }).click();
-  // The stretches are the level tabs; the open one is pressed.
-  const tab = (name: string) => page.getByRole("group", { name: "Levels written" }).getByRole("button", { name });
-  await expect(tab("Levels 2 to 10")).toHaveAttribute("aria-pressed", "true");
+  // A stretch is one cell in the level row, the open one current.
+  const cell = (name: string) => page.locator(`[data-stop="${name}"]`);
+  await expect(cell("2 to 10")).toHaveAttribute("aria-current", "true");
   await expect(pool(page, "Skill points")).toContainText("270");
   await expect(pool(page, "Skill points")).toContainText("0 of 270 spent, 0 carried in");
   await expect(pool(page, "Perk points")).toContainText("0 of 9 spent");
@@ -73,7 +73,7 @@ test("Skip ahead: write 2 to 10 and 11 to 25 as stretches, reset one, and read t
   // Skip ahead to 25, Destruction to 50, then Impact: Empowered Destruction comes with it.
   for (let i = 0; i < 5; i++) await page.getByRole("button", { name: "Skip ahead to a later level" }).click();
   await page.getByRole("button", { name: "Skip ahead to level 25" }).click();
-  await expect(tab("Levels 11 to 25")).toHaveAttribute("aria-pressed", "true");
+  await expect(cell("11 to 25")).toHaveAttribute("aria-current", "true");
   const raise2 = page.getByLabel("Destruction raise");
   await raise2.fill("10");
   await raise2.press("Enter");
@@ -93,8 +93,7 @@ test("Skip ahead: write 2 to 10 and 11 to 25 as stretches, reset one, and read t
   await take(page, "Destruction:Impact", "Empowered Destruction");
   await expect(page.getByText("Saved", { exact: true })).toBeVisible();
   await page.goto(`/b/${id}?level=20`);
-  const chips = page.getByRole("group", { name: "Levels written" });
-  for (const c of ["1", "2 to 10", "11 to 25"]) await expect(chips.locator(`[data-stretch="${c}"]`)).toBeVisible();
+  for (const c of ["1", "2 to 10", "11 to 25"]) await expect(page.locator(`[data-stop="${c}"]`)).toBeVisible();
   const card = page.locator("#level-card");
   await expect(card.getByRole("heading", { name: "Levels 11 to 25" })).toBeVisible();
   await expect(card.getByText("Impact").locator("xpath=..")).toContainText("(Destruction 50)");
@@ -105,9 +104,9 @@ test("a build that writes every level looks as it does today", async ({ page, co
   await signIn(context);
   await page.goto(`/b/${TEST_BUILD_ID}/edit?level=2`);
   await expect(page.getByRole("button", { name: /^Level 2/ }).first()).toBeVisible();
-  await expect(page.getByRole("group", { name: "Levels written" })).toHaveCount(0);
+  await expect(page.locator('[data-stop*=" to "]')).toHaveCount(0);
   await page.goto(`/b/${TEST_BUILD_ID}`);
-  await expect(page.getByRole("group", { name: "Levels written" })).toHaveCount(0);
+  await expect(page.locator('[data-stop*=" to "]')).toHaveCount(0);
   // No levels line in the byline: the hero says "Planned to level N" as before.
   await expect(page.locator("[class*=byline]")).not.toContainText(/Levels \d/);
   await page.goto("/?version=all");

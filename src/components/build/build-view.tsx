@@ -41,7 +41,7 @@ import { computeBuild } from "@/lib/rules/engine";
 import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
 import { AttributeIcon, DeityIcon, GameIcon, IconLabel, SignIcon, SkillIcon, SkillLabel, MarkIcon, SlotIcon, TagIcon } from "@/components/ui/skill-icon";
-import { ArrowTip, LevelBars, LevelLegend, LevelStepper, StretchBars, useArrowTip, useHoldInPlace } from "./level-nav";
+import { ArrowTip, LevelBars, LevelLegend, LevelStepper, useArrowTip, useHoldInPlace } from "./level-nav";
 import { levelsLine, skips, stretchAt, stretches, writtenLevels } from "@/lib/rules/stretches";
 import { BottomSheet, PerkDetails, Tree, ViewToggle, type TreeView } from "./tree";
 import styles from "./build-view.module.css";
@@ -528,7 +528,8 @@ function LevelsTab({
           />
           <LevelLegend marks={marks} />
         </div>
-        {skips(plan) ? <StretchBars marks={marks} plan={plan} level={level} onChange={setLevel} /> : <LevelBars marks={marks} level={level} onChange={setLevel} />}
+        {/* The same ruler and row for every build; one that skips ahead has a cell per stretch (WO-69). */}
+        <LevelBars marks={marks} level={level} onChange={setLevel} spans={skips(plan) ? stretches(plan) : undefined} />
       </section>
 
       <LevelCard d={d} build={build} states={states} level={level} note={note} onPerk={(id) => showPerk(id, true)} />
