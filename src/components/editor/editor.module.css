@@ -907,13 +907,11 @@
 }
 
 /* Problems anywhere in the build, under the level row. */
+/* Other levels' problems: plain lines under the pools, no box (WO-69's cleanup). */
 .problemBar {
+  flex-basis: 100%;
   display: grid;
-  gap: 6px;
-  margin-top: 12px;
-  padding: 10px 14px;
-  border: 1px solid var(--health);
-  background: rgba(214, 92, 77, 0.08);
+  gap: 4px;
 }
 .problemLine {
   display: flex;
@@ -1141,4 +1139,17 @@
 .skipStep {
   --btn-pad-x: 10px;
   min-width: 36px;
+}
+.poolDetail {
+  cursor: help;
+}
+.poolDetail .hint {
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
+/* Shift and Ctrl/⌘ clicks need a keyboard: no hint on a touch screen. */
+@media (hover: none) {
+  .keyHint {
+    display: none;
+  }
 }

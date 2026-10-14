@@ -42,9 +42,9 @@ test("Skip ahead: write 2 to 10 and 11 to 25 as stretches, reset one, and read t
   // Level 1, then Skip ahead: the target is chosen first (10 levels on, so ‹ once for 10).
   await page.getByRole("button", { name: "Skip ahead to an earlier level" }).click();
   await page.getByRole("button", { name: "Skip ahead to level 10" }).click();
-  const bar = page.getByRole("region", { name: "Level", exact: true });
-  await expect(bar).toContainText("Levels 2 to");
-  await expect(bar.locator("[class*=levelNum]")).toHaveText("10");
+  // The stretches are the level tabs; the open one is pressed.
+  const tab = (name: string) => page.getByRole("group", { name: "Levels written" }).getByRole("button", { name });
+  await expect(tab("Levels 2 to 10")).toHaveAttribute("aria-pressed", "true");
   await expect(pool(page, "Skill points")).toContainText("270");
   await expect(pool(page, "Skill points")).toContainText("0 of 270 spent, 0 carried in");
   await expect(pool(page, "Perk points")).toContainText("0 of 9 spent");
@@ -54,8 +54,17 @@ test("Skip ahead: write 2 to 10 and 11 to 25 as stretches, reset one, and read t
   await raise.fill("20");
   await raise.press("Enter");
   await expect(page.getByLabel("Destruction raise")).toHaveValue("+20");
+  // Shift-click: 5 at a time; Ctrl or ⌘-click: as far as it can (Alteration to the max skill at level 10, 60).
+  await page.getByRole("button", { name: "Raise Restoration" }).click({ modifiers: ["Shift"] });
+  await expect(page.getByLabel("Restoration raise")).toHaveValue("+5");
+  await page.getByRole("button", { name: "Lower Restoration" }).click({ modifiers: ["Shift"] });
+  await expect(page.getByLabel("Restoration raise")).toHaveValue("0");
+  await page.getByRole("button", { name: "Raise Alteration" }).click({ modifiers: ["ControlOrMeta"] });
+  await expect(page.getByRole("button", { name: "Raise Alteration" })).toBeDisabled();
+  await page.getByRole("button", { name: "Lower Alteration" }).click({ modifiers: ["ControlOrMeta"] });
+  await expect(page.getByLabel("Alteration raise")).toHaveValue("0");
   for (let i = 0; i < 9; i++) await page.getByRole("button", { name: "More Magicka level-ups" }).click();
-  await expect(page.getByText("9 level-ups, 0 left")).toBeVisible();
+  await expect(page.getByText("9 level-ups", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Destruction", exact: true }).click();
   await take(page, "Destruction:Arcane Focus", "Novice Destruction");
   await expect(pool(page, "Perk points")).toContainText("2 of 9 spent");
@@ -64,7 +73,7 @@ test("Skip ahead: write 2 to 10 and 11 to 25 as stretches, reset one, and read t
   // Skip ahead to 25, Destruction to 50, then Impact: Empowered Destruction comes with it.
   for (let i = 0; i < 5; i++) await page.getByRole("button", { name: "Skip ahead to a later level" }).click();
   await page.getByRole("button", { name: "Skip ahead to level 25" }).click();
-  await expect(bar).toContainText("Levels 11 to");
+  await expect(tab("Levels 11 to 25")).toHaveAttribute("aria-pressed", "true");
   const raise2 = page.getByLabel("Destruction raise");
   await raise2.fill("10");
   await raise2.press("Enter");

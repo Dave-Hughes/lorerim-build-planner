@@ -98,6 +98,9 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   const ups = levelUps(st);
   const isStretch = st.from > 1 && st.from < st.to;
   const allStretches = stretches(plan);
+  const skipping = skips(plan);
+  // The stretches with a problem, for the red dot on their tab (WO-69).
+  const problemStretches = new Set(states.filter((x) => x.issues.length).map((x) => stretchAt(plan, x.level).to));
   const at = allStretches.findIndex((x) => x.to === st.to);
   const prevStretch = allStretches[at - 1];
   const nextStretch = allStretches[at + 1];
@@ -238,6 +241,16 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
     }
     return raise;
   };
+  /**
+   * The skill steppers: +1 or −1; Shift moves 5 at a time; Ctrl or ⌘ goes as far as the rules and
+   * the points allow (or back to 0). Never past what `raiseMax` allows.
+   */
+  const step = (sk: string, by: 1 | -1, e: React.MouseEvent) => {
+    const info = steps.find((i) => i.skill === sk)!;
+    const far = e.metaKey || e.ctrlKey;
+    const target = by > 0 ? (far ? raiseMax(sk) : Math.min(raiseMax(sk), info.added + (e.shiftKey ? 5 : 1))) : far ? 0 : Math.max(0, info.added - (e.shiftKey ? 5 : 1));
+    setPlan(ops.setSkillRaise(plan, level, sk, target, info.limit));
+  };
   // Perks that can't go with what's held at this level (WO-68, WO-69), with the reason.
   const ruled = (() => {
     const held = new Set([...Object.entries(s.perksTaken).filter(([, at]) => at.length > 0).map(([id]) => id), ...Object.keys(s.destinyTaken)]);
@@ -365,6 +378,13 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
           </section>
         )}
         <section ref={levelBarRef} aria-label="Level" className={styles.levelBar}>
+          {/* A build that skips ahead: its stretches are the level tabs (no arrows, no separate title). */}
+          {skipping && (
+            <div className={styles.levelRow}>
+              <StretchChips plan={plan} level={level} onChange={(n) => setLevel(n)} tabs problems={problemStretches} />
+            </div>
+          )}
+          {!skipping && (
           <div className={styles.levelNav}>
             {/* The arrows step by stretch (WO-69). */}
             <button type="button" className={`btn ${styles.levelArrow}`} aria-label="Previous level" disabled={!prevStretch} onClick={() => prevStretch && setLevel(prevStretch.to)}>
@@ -378,35 +398,33 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
               {nextStretch ? nextStretch.to : ""} ›
             </button>
           </div>
+          )}
           <dl className={styles.pools} data-tour="points">
             {/* A stretch counts its whole run (WO-69): spent of what it had, and what it carried in. */}
             {level > 1 && (
-              <Pool
-                label="Skill points"
-                value={left}
-                of={isStretch && before ? spentOf(s.skillPointsSpent, s.skillPointsAvailable, before.skillPointsBanked, true) : `left of ${s.skillPointsAvailable}`}
-              />
+              <Pool label="Skill points" value={left} of={`left of ${s.skillPointsAvailable}`} detail={isStretch && before ? spentOf(s.skillPointsSpent, s.skillPointsAvailable, before.skillPointsBanked, true) : undefined} />
             )}
             {/* Flashes ember once when a perk is taken (WO-59). */}
             <Pool
               label="Perk points"
               icon={<MarkIcon name="perk-points" />}
               value={perkLeft}
-              of={isStretch && before ? spentOf(s.perkPointsSpent - before.perkPointsSpent, s.perkPoints - before.perkPointsSpent, before.perkPoints - before.perkPointsSpent) : "to spend"}
+              of="to spend"
+              detail={isStretch && before ? spentOf(s.perkPointsSpent - before.perkPointsSpent, s.perkPoints - before.perkPointsSpent, before.perkPoints - before.perkPointsSpent) : undefined}
               flashKey={taken && taken.after === plan ? taken.key : undefined}
             />
             <Pool
               label="Destiny points"
               value={destinyLeft}
-              of={isStretch && before ? spentOf(s.destinyPointsSpent - before.destinyPointsSpent, s.destinyPoints - before.destinyPointsSpent, before.destinyPoints - before.destinyPointsSpent) : nextDestiny ? `next at ${nextDestiny}` : "no more"}
+              of={nextDestiny ? `next at ${nextDestiny}` : "no more"}
+              detail={isStretch && before ? spentOf(s.destinyPointsSpent - before.destinyPointsSpent, s.destinyPoints - before.destinyPointsSpent, before.destinyPoints - before.destinyPointsSpent) : undefined}
               destiny
             />
             <Pool label="Trainer sessions" value={trainerLeft} of="left this level" />
           </dl>
-          {/* A build that skips ahead has a chip per stretch in place of the bars (WO-69). */}
-          {total > 1 && (
+          {total > 1 && !skipping && (
             <div className={styles.levelRow}>
-              {skips(plan) ? <StretchChips plan={plan} level={level} onChange={(n) => setLevel(n)} /> : <LevelBars marks={marks} level={level} onChange={(n) => setLevel(n)} />}
+              <LevelBars marks={marks} level={level} onChange={(n) => setLevel(n)} />
             </div>
           )}
           {problems.length > 0 && (
@@ -432,7 +450,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
               <div className={styles.block}>
                 <div className={styles.blockHead}>
                   <span className="label">{isStretch ? "Attributes" : "Attribute"}</span>
-                  <span className={styles.hint}>{isStretch ? `${ups} level-ups, ${ups - attrUsed} left` : "+5 to one"}</span>
+                  <span className={styles.hint}>{isStretch ? `${ups} level-ups${ups - attrUsed ? `, ${ups - attrUsed} left` : ""}` : "+5 to one"}</span>
                   {justRepeated ? (
                     <button
                       type="button"
@@ -472,7 +490,6 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                           </span>
                           <span className={styles.attrVal}>
                             <span className="big-num">{s[a]}</span>
-                            {n > 0 && <span className={styles.plus}>+{5 * n}</span>}
                           </span>
                           <span className={styles.attrStepper}>
                             <button type="button" aria-label={`Fewer ${ATTRIBUTE_NAMES[a]} level-ups`} disabled={n <= 0} onClick={() => setPlan(ops.setAttributeCount(plan, level, a, n - 1))}>
@@ -533,6 +550,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                     <div style={{ width: `${Math.min(100, (s.skillPointsSpent / s.skillPointsAvailable) * 100)}%` }} className={left < 0 ? styles.pointsOver : ""} />
                   </div>
                   {!isStretch && carriedIn > 0 && <span className={styles.hint}>Includes {carriedIn} carried in from level {level - 1}</span>}
+                  {isStretch && <span className={`${styles.hint} ${styles.keyHint}`}>Shift-click + or − for 5 at a time; Ctrl- or ⌘-click to go as far as it can.</span>}
                   {justRepeated && repeated!.skipped.length > 0 && (
                     <span className={styles.hint} role="status">
                       {repeated!.skipped.join(" ")}
@@ -590,7 +608,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                               }
                             >
                               <span className={styles.stepper} data-stepper="">
-                                <button type="button" aria-label={`Lower ${sk}`} disabled={!info.canRemove} onClick={() => setPlan(ops.addSkillPoint(plan, level, sk, -1, info.limit))}>
+                                <button type="button" aria-label={`Lower ${sk}`} disabled={!info.canRemove} onClick={(e) => step(sk, -1, e)}>
                                   −
                                 </button>
                                 {/* On a stretch the raise can be typed (WO-69), kept within what the rules allow. */}
@@ -604,7 +622,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                                 ) : (
                                   <span className={info.added ? styles.stepOn : styles.stepOff}>{info.added ? `+${info.added}` : "0"}</span>
                                 )}
-                                <button type="button" aria-label={`Raise ${sk}`} disabled={!info.canAdd} onClick={() => setPlan(ops.addSkillPoint(plan, level, sk, 1, info.limit))}>
+                                <button type="button" aria-label={`Raise ${sk}`} disabled={!info.canAdd} onClick={(e) => step(sk, 1, e)}>
                                   +
                                 </button>
                               </span>
@@ -911,13 +929,24 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   );
 }
 
-function Pool({ label, icon, value, of, destiny, flashKey }: { label: string; icon?: React.ReactNode; value: number; of: string; destiny?: boolean; flashKey?: number }) {
+/** A pool of points. On a stretch (WO-69), `detail` ("510 of 625 spent, 175 carried in") is its tooltip, and read out. */
+function Pool({ label, icon, value, of, destiny, flashKey, detail }: { label: string; icon?: React.ReactNode; value: number; of: string; destiny?: boolean; flashKey?: number; detail?: string }) {
+  const hint = <span className={styles.hint}>{of}</span>;
   return (
     <div className={`${styles.pool} ${destiny ? styles.poolDestiny : ""}`}>
       <dt className={`label ${styles.poolLabel}`}>{icon ? <IconLabel icon={icon}>{label}</IconLabel> : label}</dt>
       <dd key={flashKey ?? "still"} className={`${styles.poolVal} ${flashKey ? styles.poolFlash : ""}`}>
         <span className={`big-num ${styles.poolNum} ${value < 0 ? "bad" : ""}`}>{value}</span>
-        <span className={styles.hint}>{of}</span>
+        {detail ? (
+          <Tooltip content={detail}>
+            <span tabIndex={0} className={styles.poolDetail}>
+              {hint}
+              <span className="sr-only">: {detail}</span>
+            </span>
+          </Tooltip>
+        ) : (
+          hint
+        )}
       </dd>
     </div>
   );
