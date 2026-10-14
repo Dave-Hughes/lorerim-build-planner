@@ -328,6 +328,10 @@
 .star:focus-visible {
   z-index: 30;
 }
+/* The selected star's details are open (the perk card, or the panel beside the tree): no tag on top of them (WO-73). */
+.star.selected .tag {
+  display: none;
+}
 
 /* List view */
 .list {

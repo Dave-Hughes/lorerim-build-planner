@@ -7,6 +7,7 @@ import { computeBuild } from "@/lib/rules/engine";
 import { gearChangeText, gearChanges } from "@/lib/rules/gear";
 import { THEMES, themeOf, themeStyle, type ThemeId } from "@/lib/themes";
 import type { BuildPlan } from "@/lib/rules/types";
+import { GameIcon } from "@/components/ui/skill-icon";
 import styles from "./theme-picker.module.css";
 
 /**
@@ -110,11 +111,22 @@ function ThemePreview({ plan, name, description, coverImageUrl, introStart }: { 
           <span className={styles.cap}>{intro.charAt(0)}</span>
           {intro.slice(1)}
         </p>
-        <div className={styles.chips}>
-          <span className={styles.chipOn}>Levels</span>
-          <span className={styles.chip}>Guide</span>
-          {chips && <span className={`${styles.chip} ${styles.chipMuted}`}>{chips}</span>}
+        {/* The build page's folder tabs (WO-60), small, Levels open (WO-73). */}
+        <div className={styles.tabs}>
+          <span className={`${styles.tab} ${styles.tabOn}`}>
+            <GameIcon file="tab-levels" size={16} />
+            Levels
+          </span>
+          <span className={styles.tab}>
+            <GameIcon file="tab-guide" size={16} />
+            Guide
+          </span>
         </div>
+        {chips && (
+          <div className={styles.chips}>
+            <span className={`${styles.chip} ${styles.chipMuted}`}>{chips}</span>
+          </div>
+        )}
         <div className={styles.panel}>
           <span className={`title ${styles.level}`}>Level {level.at}</span>
           {level.raised && (

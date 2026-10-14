@@ -1142,9 +1142,8 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
                 <span className={styles.newGearWhat}>
                   <span className={styles.newGearChip}>{name}</span>
                   {g.made && <MadeMark made={g.made} />}
-                  <span className="muted">
-                    {g.slot}, replaces {was ?? "nothing"}
-                  </span>
+                  {/* Into an empty slot: just the slot (WO-73). */}
+                  <span className="muted">{was ? `${g.slot}, replaces ${was}` : g.slot}</span>
                   {/* The author's note on its own line (WO-47), as a new spell shows its where. */}
                   {g.note.trim() && <span className={styles.newGearNote}>{g.note.trim()}</span>}
                 </span>

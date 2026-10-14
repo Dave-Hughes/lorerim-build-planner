@@ -110,7 +110,7 @@ test.describe("the written guide", () => {
     await page.goto(`/b/${TEST_BUILD_ID}?level=2`);
     await expect(page.getByRole("region", { name: "Notes for level 2" })).toHaveText("Cleared Embershard Mine for the ore.");
     await expect(page.getByRole("region", { name: "Notes for level 2" }).locator("strong")).toHaveText("Embershard Mine");
-    await expect(page.getByRole("button", { name: /^Level 2, notes/ })).toBeVisible();
+    await expect(page.getByRole("button", { name: /^Level 2,.*\bnotes\b/ })).toBeVisible();
     await expect(page.getByText("Notes", { exact: true })).toBeVisible();
   });
 

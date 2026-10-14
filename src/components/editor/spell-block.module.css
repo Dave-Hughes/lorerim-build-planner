@@ -82,6 +82,20 @@
 .pickCast {
   font-size: 14px;
 }
+/* The name over its game description (WO-73). */
+.pickNameCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.pickDesc {
+  font-size: 13px;
+  color: var(--muted);
+}
+.pickChange {
+  margin-left: auto;
+}
 .pickRow .btn {
   justify-content: center;
 }

@@ -23,8 +23,11 @@ test("tier perks give spell picks; a spell learned elsewhere, starred, shows on 
   await destruction.getByRole("button", { name: "Choose Flames" }).click();
   await destruction.getByRole("button", { name: "Choose Sparks" }).click();
   await expect(destruction).toContainText("2 of 2 chosen");
-  // Chosen ones pin to the top; the rest can't be chosen past 2.
+  // Chosen ones pin to the top; full, the list folds to them, and Change opens it again (WO-73),
+  // where the rest can't be chosen past 2.
   await expect(destruction.getByRole("listitem").first()).toContainText("Flames");
+  await expect(destruction.getByRole("button", { name: /^Choose / })).toHaveCount(0);
+  await destruction.getByRole("button", { name: "Change" }).click();
   await expect(destruction.getByRole("button", { name: "Choose Frostbite" })).toBeDisabled();
 
   const conjuration = page.getByRole("region", { name: "Novice Conjuration spells" });

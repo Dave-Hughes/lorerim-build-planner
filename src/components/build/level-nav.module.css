@@ -171,6 +171,22 @@
   color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
+/* The ends sit inside the ruler, not half over its edges (WO-73: nothing cut). */
+.tickFirst {
+  transform: translateX(-2px);
+}
+.tickLast {
+  transform: translateX(calc(-100% + 2px));
+}
+/* A phone labels every 10 levels, or every 25 on a build past 50 (WO-73): "95100" never again. */
+@media (max-width: 600px) {
+  .tick5 {
+    display: none;
+  }
+  .rulerLong .tick10 {
+    display: none;
+  }
+}
 .markDestiny {
   position: absolute;
   top: 9px;
@@ -222,7 +238,9 @@
 .row {
   display: grid;
   grid-template-columns: repeat(var(--cols), minmax(56px, 1fr));
-  min-width: 700px;
+  /* Cells as wide as in a full row of 12, from the left: two levels don't fill the page (WO-73). */
+  width: calc(min(var(--cols), 12) / 12 * 100%);
+  min-width: min(700px, calc(var(--cols) * 72px));
   border: 1px solid var(--rule);
 }
 /* Phones: the levels scroll sideways, snapping to a level, with a fade on the edge that has more. */

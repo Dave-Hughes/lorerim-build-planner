@@ -120,7 +120,8 @@ export function nearerTo(c: Rect, other: { x: number; y: number }, own: { x: num
  */
 export function labelCandidates(s: LabelRequest, o: LabelOptions): PlacedLabel[] {
   const full = spots(s, o, false);
-  return s.lines[1] && Math.max(1, s.priority) <= 2 ? [...full, ...spots(s, o, true)] : full;
+  // Every star may fall back to its name alone (WO-73: every star keeps a label at Fit).
+  return s.lines[1] ? [...full, ...spots(s, o, true)] : full;
 }
 
 function spots(s: LabelRequest, o: LabelOptions, nameOnly: boolean): PlacedLabel[] {
@@ -142,17 +143,22 @@ function spots(s: LabelRequest, o: LabelOptions, nameOnly: boolean): PlacedLabel
     { id: s.id, nameOnly, side: "below", x: s.x - w / 2 - shift, y: below, w, h },
     { id: s.id, nameOnly, side: "above", x: s.x - w / 2 + shift, y: above, w, h },
     { id: s.id, nameOnly, side: "above", x: s.x - w / 2 - shift, y: above, w, h },
-    // Crowded: one row further out, over a neighbour's label row.
-    ...(nameOnly
-      ? ([
-          { id: s.id, nameOnly, side: "above", x: s.x - w / 2, y: above - h, w, h },
-          { id: s.id, nameOnly, side: "below", x: s.x - w / 2, y: below + h, w, h },
-          { id: s.id, nameOnly, side: "above", x: s.x - w / 2 + shift, y: above - h, w, h },
-          { id: s.id, nameOnly, side: "above", x: s.x - w / 2 - shift, y: above - h, w, h },
-          { id: s.id, nameOnly, side: "below", x: s.x - w / 2 + shift, y: below + h, w, h },
-          { id: s.id, nameOnly, side: "below", x: s.x - w / 2 - shift, y: below + h, w, h },
-        ] as PlacedLabel[])
+    // Crowded (the name alone, or a one-line label): staggered up to three rows deep, over a
+    // neighbour's label row (WO-73), and further to the sides.
+    ...(nameOnly || !s.lines[1]
+      ? ([1, 2].flatMap((k) =>
+          [0, shift, -shift].flatMap((dx) => [
+            { id: s.id, nameOnly, side: "above", x: s.x - w / 2 + dx, y: above - k * h, w, h },
+            { id: s.id, nameOnly, side: "below", x: s.x - w / 2 + dx, y: below + k * h, w, h },
+          ]),
+        ) as PlacedLabel[])
       : []),
+    // Off to a corner: the label's near edge just past the star's side.
+    ...[2 * shift, -2 * shift, w / 2 + r + GAP, -(w / 2 + r + GAP), Math.round(w * 0.15), -Math.round(w * 0.15), Math.round(w * 0.55), -Math.round(w * 0.55)].flatMap((dx) => [
+      { id: s.id, nameOnly, side: "below" as const, x: s.x - w / 2 + dx, y: below, w, h },
+      { id: s.id, nameOnly, side: "above" as const, x: s.x - w / 2 + dx, y: above, w, h },
+      { id: s.id, nameOnly, side: (dx > 0 ? "right" : "left") as "right" | "left", x: s.x - w / 2 + dx, y: s.y - h / 2, w, h },
+    ]),
   ];
 }
 
@@ -212,26 +218,28 @@ export function placeLabels(stars: LabelRequest[], o: LabelOptions, spots?: Map<
     const fits = allowed(s).filter((c) => !placed.some((p) => overlaps(c, p)));
     const hit = fits.find((c) => clearSpot(c, o)) ?? fits[0];
     if (hit) put(hit);
-    else if (rank(s) <= 2) squeeze(s);
+    else squeeze(s);
   };
   // Rank by rank; a second pass per rank, since making room for one star can free a spot for another.
   for (const r of [1, 2, 3]) {
     const group = order.filter((s) => rank(s) === r);
     group.forEach(tryPlace);
-    if (r <= 2) group.filter((s) => !out.has(s.id)).forEach(tryPlace);
+    group.filter((s) => !out.has(s.id)).forEach(tryPlace);
   }
   return out;
 
-  // A taken or can-take star with no room: move the labels in its way (as important) to a spot of
-  // their own with the name alone, if that makes room for its name.
+  // A star with no room: move the labels in its way (as important) to another spot of their own (the
+  // name alone, for a two-line label), if that makes room for its name.
   function squeeze(s: LabelRequest) {
-    for (const c of allowed(s).filter((c) => c.nameOnly)) {
+    // A two-line label squeezes in with its name alone; a one-line label (Destiny) as it is (WO-73).
+    for (const c of allowed(s).filter((c) => c.nameOnly || !s.lines[1])) {
       const blockers = placed.filter((p) => overlaps(c, p));
       if (!blockers.length || !blockers.every((b) => rank(byId.get(b.id)!) === rank(s))) continue;
       blockers.forEach(take);
       const moved: PlacedLabel[] = [];
       for (const b of blockers) {
-        const alt = allowed(byId.get(b.id)!).find((x) => x.nameOnly && !(x.x === b.x && x.y === b.y) && !overlaps(x, c) && !placed.some((p) => overlaps(x, p)));
+        const bs = byId.get(b.id)!;
+        const alt = allowed(bs).find((x) => (x.nameOnly || !bs.lines[1]) && !(x.x === b.x && x.y === b.y) && !overlaps(x, c) && !placed.some((p) => overlaps(x, p)));
         if (!alt) break;
         put(alt);
         moved.push(alt);

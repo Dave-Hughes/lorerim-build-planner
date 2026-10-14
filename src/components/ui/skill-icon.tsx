@@ -102,7 +102,15 @@ export function IconLabel({ icon, className, children }: { icon: React.ReactNode
 export function SkillLabel({ name, className, children }: { name: string; className?: string; children?: React.ReactNode }) {
   return (
     <IconLabel icon={<SkillIcon name={name} />} className={className}>
-      {children ?? name}
+      {children ?? <NoBreakHyphens text={name} />}
     </IconLabel>
   );
+}
+
+/**
+ * Text whose hyphenated words never break at the hyphen ("One-Handed", never "One-/Handed", WO-73);
+ * it still wraps at its spaces. The text itself is unchanged.
+ */
+export function NoBreakHyphens({ text }: { text: string }) {
+  return text.split(/(\S*-\S*)/).map((part, i) => (/-/.test(part) ? <span key={i} style={{ whiteSpace: "nowrap" }}>{part}</span> : part));
 }

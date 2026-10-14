@@ -2,7 +2,7 @@
 
 import type { Stretch } from "@/lib/rules/stretches";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import type { LevelMark } from "@/lib/rules/derive";
+import { levelCellLabel, type LevelMark } from "@/lib/rules/derive";
 import { Tooltip } from "@/components/ui/tooltip";
 import styles from "./level-nav.module.css";
 import { pageZoom } from "@/lib/zoom";
@@ -158,7 +158,7 @@ export function LevelRuler({ marks, level, onChange, spans, win }: { marks: Leve
   return (
     <div className={styles.rulerWrap}>
       <div
-        className={styles.ruler}
+        className={`${styles.ruler} ${total > 50 ? styles.rulerLong : ""}`}
         aria-label={`Whole build, levels 1 to ${total}`}
         role="presentation"
         onPointerDown={(e) => {
@@ -205,7 +205,8 @@ export function LevelRuler({ marks, level, onChange, spans, win }: { marks: Leve
               <span className={`${styles.tick} ${five ? styles.tickFive : ""} ${inWindow ? styles.tickNear : ""}`} style={{ left: x(m.level) }} />
               {/* Skip a fifth-level label crowding the last one (e.g. 20 next to 21). */}
               {five && !(m.level !== total && m.level !== 1 && total - m.level < 3) && (
-                <span className={styles.tickLabel} style={{ left: x(m.level) }}>
+                // On a phone, every 10 (every 25 past 50 levels) so the numbers never run together (WO-73).
+                <span className={`${styles.tickLabel} ${m.level === 1 ? styles.tickFirst : m.level === total ? styles.tickLast : m.level % 25 === 0 ? styles.tick25 : m.level % 10 === 0 ? styles.tick10 : styles.tick5}`} style={{ left: x(m.level) }}>
                   {m.level}
                 </span>
               )}
@@ -296,7 +297,7 @@ export function LevelRow({ marks, level, onChange, spans }: { marks: LevelMark[]
               key={m.level}
               type="button"
               className={cls}
-              aria-label={`${m.from < m.level ? "Levels" : "Level"} ${name}${m.notes ? ", notes" : ""}${m.gear ? ", new gear" : ""}${m.problems ? `, ${m.problems} problem${m.problems > 1 ? "s" : ""}` : ""}`}
+              aria-label={levelCellLabel(m, m.from)}
               data-stop={name}
               aria-current={on ? "true" : undefined}
               onClick={() => onChange(m.level)}

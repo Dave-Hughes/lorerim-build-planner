@@ -392,7 +392,10 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   const left = room.vh - room.top - 48; // room for the legend under it
   const short = !small && room.vh < 900 && left >= 300;
   // A height the page decides wins, on phones too when the editor's sheet sets one (WO-62).
-  const h0 = height && (!small || sheetBelow === 0) ? height : Math.max(220, Math.min(fitted, small ? Math.round(w0 * 1.2) : short ? Math.min(left, w0) : Math.max(380, Math.min(room.vh - 240, w0))));
+  // A wide, flat tree (Destiny) still gets about half its width in height, so every star's name has
+  // room at Fit (WO-73).
+  const want = small ? fitted : Math.max(fitted, Math.round(w0 * 0.6));
+  const h0 = height && (!small || sheetBelow === 0) ? height : Math.max(220, Math.min(want, small ? Math.round(w0 * 1.2) : short ? Math.min(left, w0) : Math.max(380, Math.min(room.vh - 240, w0))));
   // Stars, lines and labels keep the box's sizes; only the drawing grows.
   const size = sizesFor(w0);
 
@@ -404,7 +407,8 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   // A star picked outside the tree (the level card, the held list) moves the view to it; so does a new tree.
   const viewKey = `${tree}|${selected && selected !== ownPick ? selected : ""}`;
   const [manual, setManual] = useState<{ key: string; t: number; fx: number; fy: number } | null>(null);
-  const t = clamp(manual?.key === viewKey ? manual.t : readable, fitScale, maxScale);
+  // Every tree opens fitted to its box (WO-73); zooming in is the reader's choice.
+  const t = clamp(manual?.key === viewKey ? manual.t : fitScale, fitScale, maxScale);
   const dims = w0 > 0 ? drawingSize(d, tree, w0, h0, pad, t) : null;
   const W = dims?.width ?? 0;
   const H = dims?.height ?? 0;
@@ -705,7 +709,8 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
           <i className={styles.keyLocked} />
           Not yet
         </span>
-        {ruled && ruled.size > 0 && (
+        {/* Only when this tree has a star ruled out (WO-73). */}
+        {ruled && (d.perksByTree.get(tree) ?? []).some((p) => ruled.has(p.id) && !isHeld(status.get(p.id))) && (
           <span>
             <i className={styles.keyRuled} />
             Ruled out

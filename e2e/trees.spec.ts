@@ -12,8 +12,8 @@ test.describe("perk trees on a phone", () => {
     await page.getByRole("button", { name: "Block", exact: true }).click();
     const sheet = page.getByRole("dialog", { name: "Block perks" });
     await sheet.getByRole("button", { name: "Tree", exact: true }).tap();
-    // The tree opens at a readable size on its bottom row; Fit shows all of it.
-    await sheet.getByRole("button", { name: "Fit", exact: true }).tap();
+    // The tree opens fitted (WO-73): nothing to zoom out to.
+    await expect(sheet.getByRole("button", { name: "Zoom out" })).toBeDisabled();
     await sheet.getByRole("button", { name: /^Overpowering Bashes, Block 50/ }).tap();
     await expect(sheet.getByRole("complementary", { name: "Perk details" })).toContainText("Overpowering Bashes");
     await sheet.getByRole("button", { name: "Close", exact: true }).tap();

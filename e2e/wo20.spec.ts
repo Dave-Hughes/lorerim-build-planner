@@ -41,6 +41,9 @@ test("dragging One-Handed pans it, a click afterwards still selects, a plain whe
   await perks.getByRole("tab", { name: /^One-Handed/ }).click();
   await perks.scrollIntoViewIfNeeded();
   const box = (await perks.locator('[class*="sky"]').first().boundingBox())!;
+  // Trees open fitted (WO-73): zoom in so there's something to pan.
+  await perks.getByRole("button", { name: "Zoom in" }).click();
+  await perks.getByRole("button", { name: "Zoom in" }).click();
   const before = await canvasShift(page);
   await page.mouse.move(box.x + 40, box.y + box.height - 60);
   await page.mouse.down();

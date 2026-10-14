@@ -4,7 +4,7 @@ import { useId, useRef, useState } from "react";
 import { useGameData } from "@/components/game-data";
 import { deityChanges } from "@/lib/rules/derive";
 import { Tooltip } from "@/components/ui/tooltip";
-import { IconLabel, RaceIcon, SignIcon, ModeIcon, DeityIcon } from "@/components/ui/skill-icon";
+import { IconLabel, NoBreakHyphens, RaceIcon, SignIcon, ModeIcon, DeityIcon } from "@/components/ui/skill-icon";
 import { traitWithChoice } from "@/lib/rules/trait-choices";
 import type { BuildPlan } from "@/lib/rules/types";
 import { useDismiss } from "@/lib/use-dismiss";
@@ -141,7 +141,7 @@ export function AboutBar({ plan }: { plan: BuildPlan }) {
             const label = traitWithChoice(t, plan.traitChoices);
             return (
               <span key={t}>
-                {trait ? <Tip tip={<span className={styles.gameWords}>{plain(trait.text)}</span>}>{label}</Tip> : label}
+                {trait ? <Tip tip={<span className={styles.gameWords}>{plain(trait.text)}</span>}>{traitLabel(label)}</Tip> : traitLabel(label)}
                 {i < plan.traits.length - 1 ? ", " : ""}
               </span>
             );
@@ -224,5 +224,19 @@ function StartValue({ plan }: { plan: BuildPlan }) {
         </span>
       )}
     </span>
+  );
+}
+
+/**
+ * "Focused Combat: One-Handed", never broken inside the trait's name or a hyphenated word (WO-73):
+ * it breaks, when it must, between the name and its choice.
+ */
+function traitLabel(label: string) {
+  const at = label.indexOf(": ");
+  if (at < 0) return <span style={{ whiteSpace: "nowrap" }}>{label}</span>;
+  return (
+    <>
+      <span style={{ whiteSpace: "nowrap" }}>{label.slice(0, at + 1)}</span> <NoBreakHyphens text={label.slice(at + 2)} />
+    </>
   );
 }

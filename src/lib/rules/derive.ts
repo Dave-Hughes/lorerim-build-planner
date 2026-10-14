@@ -151,6 +151,9 @@ export interface LevelMark {
   level: number;
   perks: number;
   destiny: boolean;
+  /** How many Destiny perks, and spells learned, at this level (for the cell's name, WO-73). */
+  destinies: number;
+  spells: number;
   stone: boolean;
   skill100: boolean;
   /** The author wrote notes for this level. */
@@ -176,6 +179,8 @@ export function levelMarks(d: GameData, plan: BuildPlan, states: LevelState[], n
       level: i + 1,
       perks: lv.perks.length,
       destiny: lv.destiny.length > 0,
+      destinies: lv.destiny.length,
+      spells: lv.spells?.length ?? 0,
       stone: !!lv.stone,
       skill100,
       notes: noted.has(i + 1),
@@ -495,4 +500,24 @@ export function deityChanges(plan: BuildPlan): { level: number; name: string; pr
 /** Every deity a build follows, the starting one first (for search). */
 export function deitiesFollowed(plan: BuildPlan): string[] {
   return [...new Set([plan.deity, ...plan.levels.map((l) => l.deity ?? "")].filter(Boolean))];
+}
+
+/**
+ * A level row cell's name (WO-73): its levels, then what its marks show, then its problems.
+ * "Levels 21 to 30, 10 perks, 2 Destiny, 2 spells, notes".
+ */
+export function levelCellLabel(m: LevelMark, from: number): string {
+  const plural = (n: number, one: string) => `${n} ${one}${n === 1 ? "" : "s"}`;
+  const parts = [
+    from < m.level ? `Levels ${from} to ${m.level}` : `Level ${m.level}`,
+    m.perks ? plural(m.perks, "perk") : "",
+    m.destinies ? `${m.destinies} Destiny` : "",
+    m.spells ? plural(m.spells, "spell") : "",
+    m.stone ? "standing stone" : "",
+    m.deity ? "deity" : "",
+    m.notes ? "notes" : "",
+    m.gear ? "new gear" : "",
+    m.problems ? plural(m.problems, "problem") : "",
+  ];
+  return parts.filter(Boolean).join(", ");
 }

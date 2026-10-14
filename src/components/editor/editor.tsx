@@ -404,6 +404,22 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
             <button type="button" className={`btn ${styles.levelArrow}`} aria-label="Next level" disabled={!nextStretch} onClick={() => nextStretch && setLevel(nextStretch.to)}>
               {nextStretch ? nextStretch.to : ""} ›
             </button>
+            {/* They act on the level shown, so they sit by its title; the footer keeps the ways forward (WO-73). */}
+            {(level > 1 || (level === total && total > 1)) && (
+              <span className={styles.levelActions}>
+                {/* Reset (WO-69): this stretch's skill points, attribute picks, perks and Destiny; gear, spells and the note stay. */}
+                {level > 1 && (
+                  <button type="button" className="btn btn-sm btn-quiet" onClick={resetLevel}>
+                    {confirmReset ? `Confirm: reset ${stretchLabel(level)}` : `Reset ${stretchLabel(level)}`}
+                  </button>
+                )}
+                {level === total && total > 1 && (
+                  <button type="button" className="btn btn-sm btn-quiet" onClick={removeLevel}>
+                    {confirmRemove ? `Confirm: remove ${stretchLabel(total)}${noted.has(total) ? " and its notes" : ""}` : `Remove ${stretchLabel(total)}`}
+                  </button>
+                )}
+              </span>
+            )}
           </div>
           <dl className={styles.pools} data-tour="points">
             {/* A stretch counts its whole run (WO-69): spent of what it had, and what it carried in. */}
@@ -594,7 +610,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                         <span className={`num ${styles.skillVals}`}>
                           {info.added > 0 ? (
                             <>
-                              <span className="muted">{info.from} → </span>
+                              <span className={`muted ${styles.skillFrom}`}>{info.from} → </span>
                               <span className={styles.skillTo}>{info.to}</span>
                             </>
                           ) : (
@@ -886,17 +902,6 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
             )}
           </span>
           <span className={styles.bottomActions}>
-            {/* Reset (WO-69): this stretch's skill points, attribute picks, perks and Destiny; gear, spells and the note stay. */}
-            {level > 1 && (
-              <button type="button" className="btn btn-quiet" onClick={resetLevel}>
-                {confirmReset ? `Confirm: reset ${stretchLabel(level)}` : `Reset ${stretchLabel(level)}`}
-              </button>
-            )}
-            {level === total && total > 1 && (
-              <button type="button" className="btn btn-quiet" onClick={removeLevel}>
-                {confirmRemove ? `Confirm: remove ${stretchLabel(total)}${noted.has(total) ? " and its notes" : ""}` : `Remove ${stretchLabel(total)}`}
-              </button>
-            )}
             {level === total ? (
               <>
                 {canContinueRepeat && (

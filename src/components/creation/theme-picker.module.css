@@ -234,19 +234,52 @@
   flex-wrap: wrap;
   gap: 8px;
 }
-.chip,
-.chipOn {
+.chip {
   padding: 4px 12px;
   border: 1px solid var(--rule);
 }
-.chipOn {
-  background: var(--ember);
-  border-color: var(--ember);
-  color: var(--on-ember);
-  font-weight: 600;
-}
 .chipMuted {
   color: var(--muted);
+}
+/* The build page's folder tabs, small (WO-60's look). */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 10px;
+  margin-bottom: -1px;
+  border: 1px solid var(--rule);
+  border-bottom: 0;
+  background: color-mix(in srgb, var(--ground) 60%, #000);
+  color: var(--muted);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tab + .tab {
+  border-left: 0;
+}
+.tabOn {
+  background: var(--ground);
+  color: var(--ember);
+  border-color: var(--rule-strong);
+  border-bottom: 1px solid var(--ground);
+}
+.tabOn::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: -1px;
+  height: 2px;
+  background: var(--ember);
 }
 .panel {
   background: var(--panel);

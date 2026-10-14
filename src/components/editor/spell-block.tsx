@@ -60,6 +60,9 @@ function PickList({ plan, level, setPlan, perk, count, pool }: { plan: BuildPlan
     .filter((s) => words.every((w) => s.name.toLowerCase().includes(w)))
     .sort(byName);
   const full = chosen.length >= count;
+  // Once the picks are full the list folds to the chosen spells, with Change to open it (WO-73).
+  const [opened, setOpened] = useState(false);
+  const folded = full && !opened;
   return (
     <section aria-label={`${name} spells`} className={`frame ${styles.pickCard}`}>
       <div className={styles.pickHead}>
@@ -74,18 +77,20 @@ function PickList({ plan, level, setPlan, perk, count, pool }: { plan: BuildPlan
         <span className={chosen.length ? "ember" : "muted"}>
           {chosen.length} of {count} chosen
         </span>
-        <input className={`input ${styles.pickSearch}`} type="search" placeholder="Search spells" aria-label={`Search ${name} spells`} value={q} onChange={(e) => setQ(e.target.value)} />
+        {folded ? (
+          <button type="button" className={`btn btn-sm ${styles.pickChange}`} onClick={() => setOpened(true)}>
+            Change
+          </button>
+        ) : (
+          <input className={`input ${styles.pickSearch}`} type="search" placeholder="Search spells" aria-label={`Search ${name} spells`} value={q} onChange={(e) => setQ(e.target.value)} />
+        )}
       </div>
       {/* Chosen ones stay pinned above the list, whatever it's scrolled to. */}
       {chosen.length > 0 && (
         <ul className={styles.pickChosen} aria-label="Chosen">
           {chosen.map((r) => (
           <li key={`c${r.index}`} className={`${styles.pickRow} ${styles.pickRowOn}`}>
-            <Tooltip content={<SpellTip spell={r.spell!} first={name} />}>
-              <span className={styles.pickName} tabIndex={0}>
-                {r.spell!.name}
-              </span>
-            </Tooltip>
+            <PickName spell={r.spell!} first={name} />
             <span className={styles.pickCast}>{r.spell!.cast}</span>
             <button type="button" className="btn btn-sm" aria-pressed="true" aria-label={`Remove ${r.spell!.name}`} onClick={() => setPlan(ops.removeSpell(plan, level, r.index))}>
               Remove
@@ -94,14 +99,12 @@ function PickList({ plan, level, setPlan, perk, count, pool }: { plan: BuildPlan
           ))}
         </ul>
       )}
+      {!folded && words.length > 0 && rest.length === 0 && <p className="muted">No spells match.</p>}
+      {!folded && (
       <ul className={styles.pickList}>
         {rest.map((s) => (
           <li key={s.id} className={styles.pickRow}>
-            <Tooltip content={<SpellTip spell={s} first={name} />}>
-              <span className={styles.pickName} tabIndex={0}>
-                {s.name}
-              </span>
-            </Tooltip>
+            <PickName spell={s} first={name} />
             <span className={styles.pickCast}>{s.cast}</span>
             <button type="button" className="btn btn-sm" aria-pressed="false" aria-label={`Choose ${s.name}`} disabled={full} onClick={() => setPlan(ops.addSpell(plan, level, { id: s.id, where: name }))}>
               Choose
@@ -109,7 +112,22 @@ function PickList({ plan, level, setPlan, perk, count, pool }: { plan: BuildPlan
           </li>
         ))}
       </ul>
+      )}
     </section>
+  );
+}
+
+/** A spell's name, with its game description under it as a perk's is (WO-73); the details on hover. */
+function PickName({ spell, first }: { spell: Spell; first: string }) {
+  return (
+    <span className={styles.pickNameCell}>
+      <Tooltip content={<SpellTip spell={spell} first={first} />}>
+        <span className={styles.pickName} tabIndex={0}>
+          {spell.name}
+        </span>
+      </Tooltip>
+      {spell.text && <span className={styles.pickDesc}>{spell.text}</span>}
+    </span>
   );
 }
 

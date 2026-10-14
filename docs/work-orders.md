@@ -3088,8 +3088,8 @@ That is the one launch blocker: a long build is exactly what the best authors wi
 
 ### Done when
 - [ ] Screenshots at 1512×806, 1440 and 390 for each point, compared with the canvas where a board exists.
-- [ ] e2e: open One-Handed and Destiny in the editor and on the build page. Every star's label is inside the box and none overlap; check it with bounding boxes.
-- [ ] Point 6 waits for Dave's OK; mark it done or dropped.
+- [x] e2e: open One-Handed and Destiny in the editor and on the build page. Every star's label is inside the box and none overlap; check it with bounding boxes.
+- [x] Point 6 waits for Dave's OK; mark it done or dropped.
 - [ ] All checks in CLAUDE.md pass.
 
 ---

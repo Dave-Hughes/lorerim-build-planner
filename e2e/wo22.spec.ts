@@ -63,5 +63,8 @@ test("existing gear shows under the new slot names", async ({ page }) => {
   await expect(at).toContainText("Steel spear");
   await expect(at).toContainText("Off hand");
   await expect(at).toContainText("Leather shield");
-  await expect(page.getByRole("region", { name: "Level 8", exact: true })).toContainText("Ammo, replaces nothing");
+  // Into an empty slot: the slot alone, no "replaces nothing" (WO-73 point 5).
+  const card = page.getByRole("region", { name: "Level 8", exact: true });
+  await expect(card).toContainText("Ammo");
+  await expect(card).not.toContainText("replaces nothing");
 });
