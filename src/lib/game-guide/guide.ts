@@ -63,8 +63,11 @@ export function slug(text: string): string {
 const marked = new Marked({ gfm: true });
 
 const escape = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-/** `[[F1]]` as a key cap. */
-const keys = (md: string) => md.replace(/\[\[([^\]]+)\]\]/g, (_, k: string) => `<kbd>${escape(k)}</kbd>`);
+/** `[[F1]]` as a key cap. `{{term}}` and `{{text|id}}` show as their text until WO-70 adds tooltips. */
+const keys = (md: string) =>
+  md
+    .replace(/\{\{([^}|]+)(?:\|[^}]*)?\}\}/g, "$1")
+    .replace(/\[\[([^\]]+)\]\]/g, (_, k: string) => `<kbd>${escape(k)}</kbd>`);
 /** A block of markdown as HTML; tables in a scrolling frame. */
 function html(md: string): string {
   const out = marked.parse(keys(md).trim(), { async: false }) as string;
@@ -92,13 +95,14 @@ function parseMods(lines: { text: string; n: number }[], file: string): GuideMod
   for (const { text, n } of lines) {
     if (!text.trim()) continue;
     const top = /^- \*\*(.+?)\*\*:\s*(.*)$/.exec(text);
-    const sub = /^\s+- (where|tag):\s*(.*)$/.exec(text);
+    const sub = /^\s+- (where|tag|nexus):\s*(.*)$/.exec(text);
     if (top) mods.push({ name: top[1], html: inline(top[2]) });
     else if (sub && mods.length) {
       const m = mods[mods.length - 1];
       if (sub[1] === "where") m.where = inline(sub[2]);
-      else m.tag = sub[2].trim();
-    } else throw new GuideError(file, n, `A mods item must be "- **Name**: text", or a "where:" or "tag:" under one.`);
+      else if (sub[1] === "tag") m.tag = sub[2].trim();
+      // `nexus:` ids are read by WO-70 (links to Nexus Mods); accepted and ignored until then.
+    } else throw new GuideError(file, n, `A mods item must be "- **Name**: text", or a "where:", "tag:" or "nexus:" under one.`);
   }
   return mods;
 }

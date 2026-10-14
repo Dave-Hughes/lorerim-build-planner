@@ -56,8 +56,7 @@ A waterskin holds water for the road. Make one at a {{tanning rack}} (the wooden
 - **Waterskin - Stay Hydrated in Tamriel**: The waterskin.
   - nexus: 110895
 - **[Optional] Disable Thirst**: Turns thirst off.
-  - tag: LoreRim's own mod
-  - tag: Optional in MO2, off by default
+  - tag: LoreRim's own optional mod, off by default
 :::
 
 :::ask{q="Can I turn thirst off?"}

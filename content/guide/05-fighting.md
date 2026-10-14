@@ -67,9 +67,8 @@ Power attack is [[Mouse 3]], the middle mouse button. It costs 40 stamina plus t
   - where: `MCM/Settings/OCPA.ini` in LoreRim - MCM and INI Settings
   - tag: Key can be changed
 - **Attack MCO**: Combos, and the slow turning mid-swing.
-  - tag: Not on Nexus
   - where: The optional `[Easy] Remove Attack Commitment` lets you turn freely mid-swing.
-  - tag: Optional in MO2
+  - tag: Not on Nexus
 :::
 
 :::ask{q="I can't turn while attacking"}

@@ -2950,7 +2950,7 @@ Dave on staging: better, but "still a lot of work before it's remotely useful". 
 
 ### Nexus links
 - In Related Mods and on `/guide/mods`, a mod with `nexus:` has its name linked to `https://www.nexusmods.com/skyrimspecialedition/mods/<id>`, in a new tab, with a small external-link mark after it. `tag: LoreRim's own mod` shows as the usual label.
-- 16 mods have no id yet (the chat session reads them from the installed list when Dave's PC is linked): Animated Whistling, Complete Controller Setup, Dynamic Activation Key, Engine Fixes, Faster Mining Plus SE, Gamepad++, Lock Bashing, Locked Chests Have Keys, MaxsuBlockOverhaul, Requiem - Lockpicking SKSE, Requiem - Modern Combat Rework, Rest By Campfire - Base Object Swapper, Sanctified Stolen Goods, Simple Outfit System, Take a Nap - Sleep on Chairs, Vampire sun immunity with helmet or hat. Attack MCO is not on Nexus (tagged). Leave these unlinked.
+- 16 mods have no id yet (the chat session reads them from the installed list when Dave's PC is linked): Animated Whistling, Complete Controller Setup, Dynamic Activation Key, Engine Fixes, Faster Mining Plus SE, Gamepad++, Lock Bashing, Locked Chests Have Keys, MaxsuBlockOverhaul, Requiem - Lockpicking SKSE, Requiem - Modern Combat Rework, Rest By Campfire - Base Object Swapper, Sanctified Stolen Goods, Simple Outfit System, Take a Nap - Sleep on Chairs, Vampire sun immunity with helmet or hat. Attack MCO is not on Nexus (tagged "Not on Nexus"). Leave these unlinked.
 
 ### Done when
 - [ ] Every `{{...}}` in the chapters renders as a term with its tooltip; a test feeds the parser an unknown term and a dead `see` link and expects build errors naming the file and line.
