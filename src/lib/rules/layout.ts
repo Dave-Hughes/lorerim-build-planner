@@ -92,8 +92,18 @@ export function treeLayout(d: GameData, tree: string, width: number, height: num
   return { width, height, scale, nodes, edges, external };
 }
 
-/** The span of a tree's stars in game units, and the distance between its two closest stars. */
+const metricsKnown = new WeakMap<GameData, Map<string, { spanX: number; spanY: number; minDist: number }>>();
+
+/** The span of a tree's stars in game units, and the distance between its two closest stars. Worked out once per tree (WO-74). */
 export function treeMetrics(d: GameData, tree: string): { spanX: number; spanY: number; minDist: number } {
+  let byTree = metricsKnown.get(d);
+  if (!byTree) metricsKnown.set(d, (byTree = new Map()));
+  let m = byTree.get(tree);
+  if (!m) byTree.set(tree, (m = measureTree(d, tree)));
+  return m;
+}
+
+function measureTree(d: GameData, tree: string): { spanX: number; spanY: number; minDist: number } {
   const pts = (d.perksByTree.get(tree) ?? []).filter((p) => p.pos).map((p) => p.pos!);
   const xs = pts.map((p) => p[0]);
   const ys = pts.map((p) => p[1]);

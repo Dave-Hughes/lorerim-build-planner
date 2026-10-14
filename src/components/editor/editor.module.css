@@ -165,6 +165,17 @@
   align-items: baseline;
   gap: 4px 10px;
 }
+.phoneOnly {
+  display: none;
+}
+@media (max-width: 600px) {
+  .wideOnly {
+    display: none;
+  }
+  .phoneOnly {
+    display: inline;
+  }
+}
 /* Kept on one line: under the heading when there's no room beside it (WO-73). */
 .maxSkill {
   display: inline-flex;
@@ -470,6 +481,7 @@
   top: calc(var(--sticky-top, 0px) + 12px);
   border: 1px solid var(--rule);
   background: #10161e;
+  --tree-bg: #10161e;
 }
 .perkCard {
   position: absolute;

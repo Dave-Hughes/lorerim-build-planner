@@ -141,6 +141,9 @@ export function LevelStepper({
   );
 }
 
+/** A Destiny diamond's width on the ruler (9px turned 45°) and a hair between two. */
+const DIAMOND_ROOM = 14;
+
 /** The whole build on one line. Only marks that matter: Destiny, stones, Skill 100 perks, notes. */
 export function LevelRuler({ marks, level, onChange, spans, win }: { marks: LevelMark[]; level: number; onChange: (level: number) => void; spans?: Stretch[]; win?: Stretch }) {
   const total = marks.length;
@@ -155,9 +158,32 @@ export function LevelRuler({ marks, level, onChange, spans, win }: { marks: Leve
   // A click jumps to the level under the pointer; dragging (the window or anywhere on the ruler)
   // moves the level, and so the row, as the pointer goes.
   const drag = useRef<{ x: number; moved: boolean; last: number } | null>(null);
+  // The ruler's width, so Destiny diamonds that would touch are nudged apart (WO-74).
+  const [ruler, setRuler] = useState<HTMLDivElement | null>(null);
+  const [width, setWidth] = useState(0);
+  useLayoutEffect(() => {
+    if (!ruler) return;
+    const set = () => setWidth(ruler.clientWidth);
+    set();
+    const ro = new ResizeObserver(set);
+    ro.observe(ruler);
+    return () => ro.disconnect();
+  }, [ruler]);
+  const destinyNudge = new Map<number, number>();
+  {
+    let last = -Infinity;
+    for (const m of marks) {
+      if (!m.destiny || !width) continue;
+      const px = ((m.level - 0.5) / total) * width;
+      const at = Math.max(px, last + DIAMOND_ROOM);
+      if (at !== px) destinyNudge.set(m.level, at - px);
+      last = at;
+    }
+  }
   return (
     <div className={styles.rulerWrap}>
       <div
+        ref={setRuler}
         className={`${styles.ruler} ${total > 50 ? styles.rulerLong : ""}`}
         aria-label={`Whole build, levels 1 to ${total}`}
         role="presentation"
@@ -210,7 +236,7 @@ export function LevelRuler({ marks, level, onChange, spans, win }: { marks: Leve
                   {m.level}
                 </span>
               )}
-              {m.destiny && <span className={styles.markDestiny} style={{ left: x(m.level) }} />}
+              {m.destiny && <span className={styles.markDestiny} style={{ left: destinyNudge.has(m.level) ? `calc(${x(m.level)} + ${destinyNudge.get(m.level)}px)` : x(m.level) }} />}
               {m.stone && <span className={styles.markStone} style={{ left: x(m.level) }} />}
               {m.deity && <span className={styles.markDeity} style={{ left: x(m.level) }} />}
               {m.skill100 && (

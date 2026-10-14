@@ -484,6 +484,7 @@
 .treeBox {
   border: 1px solid var(--rule);
   background: var(--sunk);
+  --tree-bg: var(--sunk);
 }
 
 .bottom {
@@ -1183,6 +1184,7 @@
   flex: 3 1 640px;
   min-width: 0;
   background: var(--sunk-deep);
+  --tree-bg: var(--sunk-deep);
 }
 .side {
   flex: 1 1 280px;
@@ -1207,8 +1209,11 @@
   padding-bottom: 6px;
   border-bottom: 1px solid var(--rule);
 }
+/* The canvas's Held list (SharedReworked): 96px for the name and a 12px gutter; the name here also
+   carries its 16px icon, so 120px keeps the gutter clear of the widest (WO-74). Beside its first perk. */
 .held .perkGroup {
-  grid-template-columns: 96px minmax(0, 1fr);
+  grid-template-columns: 120px minmax(0, 1fr);
+  align-items: baseline;
   gap: 12px;
   /* One rule under each group; the heading's rule is the only one above the first. */
   border-top: 0;

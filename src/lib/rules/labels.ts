@@ -22,6 +22,8 @@ export interface LabelRequest {
   lines: [string] | [string, string];
   /** 1 taken, 2 can take now, 3 not yet (0, an older "selected", counts as 1). */
   priority: number;
+  /** The name-only label, when it isn't just the first line: a taken star keeps its rank ("Short Blade Focus 3", WO-74). */
+  short?: string;
 }
 
 export interface Rect {
@@ -36,6 +38,8 @@ export interface PlacedLabel extends Rect {
   side: "below" | "above" | "right" | "left";
   /** Crowded: the name alone, without its requirement line. */
   nameOnly?: boolean;
+  /** Further out than its own row, with a line from the star to it (WO-74). Taken and can-take stars only. */
+  leader?: boolean;
 }
 
 export interface LabelOptions {
@@ -54,6 +58,13 @@ export interface LabelOptions {
 }
 
 const GAP = 4;
+/** Two labels on one row keep this far apart, so separate names never read as one (WO-74). */
+const ROW_GAP = 10;
+
+/** Two labels too close: overlapping, or on one row with less than ROW_GAP between them. */
+export function crowds(a: Rect, b: Rect): boolean {
+  return a.y < b.y + b.h && b.y < a.y + a.h && a.x < b.x + b.w + ROW_GAP && b.x < a.x + a.w + ROW_GAP;
+}
 
 /** An estimate of Sofia Sans widths, for tests and before fonts load. */
 export const estimateWidth = (text: string, size: number) => text.length * size * 0.56;
@@ -124,42 +135,64 @@ export function labelCandidates(s: LabelRequest, o: LabelOptions): PlacedLabel[]
   return s.lines[1] ? [...full, ...spots(s, o, true)] : full;
 }
 
-function spots(s: LabelRequest, o: LabelOptions, nameOnly: boolean): PlacedLabel[] {
+/** A label's box: its width and height, whole or (nameOnly) its name alone. */
+function labelBox(s: LabelRequest, o: LabelOptions, nameOnly: boolean): { w: number; h: number } {
   const measure = o.measure ?? estimateWidth;
   const sz = labelSizes(o.font);
   const two = !!s.lines[1] && !nameOnly;
-  const w = Math.ceil(Math.max(measure(s.lines[0], sz.name), two ? measure(s.lines[1]!, sz.sub) : 0)) + 2;
-  const h = sz.lineName + (two ? sz.lineSub : 0);
+  const name = nameOnly && s.short ? s.short : s.lines[0];
+  const w = Math.ceil(Math.max(measure(name, sz.name), two ? measure(s.lines[1]!, sz.sub) : 0)) + 2;
+  return { w, h: sz.lineName + (two ? sz.lineSub : 0) };
+}
+
+function spots(s: LabelRequest, o: LabelOptions, nameOnly: boolean): PlacedLabel[] {
+  const { w, h } = labelBox(s, o, nameOnly);
   const r = o.star;
   const below = s.y + r + GAP;
   const above = s.y - r - GAP - h;
+  // Sideways, never more than half a label's width (WO-74): further out, a label stops reading as
+  // its star's; a taken or can-take star gets a line to a spot further out instead (leaderSpots).
+  const near = Math.round(w * 0.15);
   const shift = Math.round(w * 0.35);
+  const at = (side: PlacedLabel["side"], x: number, y: number): PlacedLabel => ({ id: s.id, nameOnly, side, x, y, w, h });
   return [
-    { id: s.id, nameOnly, side: "below", x: s.x - w / 2, y: below, w, h },
-    { id: s.id, nameOnly, side: "above", x: s.x - w / 2, y: above, w, h },
-    { id: s.id, nameOnly, side: "right", x: s.x + r + GAP + 2, y: s.y - h / 2, w, h },
-    { id: s.id, nameOnly, side: "left", x: s.x - r - GAP - 2 - w, y: s.y - h / 2, w, h },
-    { id: s.id, nameOnly, side: "below", x: s.x - w / 2 + shift, y: below, w, h },
-    { id: s.id, nameOnly, side: "below", x: s.x - w / 2 - shift, y: below, w, h },
-    { id: s.id, nameOnly, side: "above", x: s.x - w / 2 + shift, y: above, w, h },
-    { id: s.id, nameOnly, side: "above", x: s.x - w / 2 - shift, y: above, w, h },
+    at("below", s.x - w / 2, below),
+    at("above", s.x - w / 2, above),
+    at("right", s.x + r + GAP + 2, s.y - h / 2),
+    at("left", s.x - r - GAP - 2 - w, s.y - h / 2),
+    ...[shift, -shift, near, -near].flatMap((dx) => [at("below", s.x - w / 2 + dx, below), at("above", s.x - w / 2 + dx, above)]),
     // Crowded (the name alone, or a one-line label): staggered up to three rows deep, over a
-    // neighbour's label row (WO-73), and further to the sides.
+    // neighbour's label row (WO-73).
     ...(nameOnly || !s.lines[1]
-      ? ([1, 2].flatMap((k) =>
-          [0, shift, -shift].flatMap((dx) => [
-            { id: s.id, nameOnly, side: "above", x: s.x - w / 2 + dx, y: above - k * h, w, h },
-            { id: s.id, nameOnly, side: "below", x: s.x - w / 2 + dx, y: below + k * h, w, h },
-          ]),
-        ) as PlacedLabel[])
+      ? [1, 2].flatMap((k) => [0, near, -near, shift, -shift].flatMap((dx) => [at("above", s.x - w / 2 + dx, above - k * h), at("below", s.x - w / 2 + dx, below + k * h)]))
       : []),
-    // Off to a corner: the label's near edge just past the star's side.
-    ...[2 * shift, -2 * shift, w / 2 + r + GAP, -(w / 2 + r + GAP), Math.round(w * 0.15), -Math.round(w * 0.15), Math.round(w * 0.55), -Math.round(w * 0.55)].flatMap((dx) => [
-      { id: s.id, nameOnly, side: "below" as const, x: s.x - w / 2 + dx, y: below, w, h },
-      { id: s.id, nameOnly, side: "above" as const, x: s.x - w / 2 + dx, y: above, w, h },
-      { id: s.id, nameOnly, side: (dx > 0 ? "right" : "left") as "right" | "left", x: s.x - w / 2 + dx, y: s.y - h / 2, w, h },
-    ]),
   ];
+}
+
+/**
+ * Further out, for a taken or can-take star with no room on its own rows (WO-74): rows 3 to 6 deep
+ * and further to the sides, each drawn with a line from the star. Still nearer its own star than any
+ * other (spotAllowed), so the line only makes plain what the distance already says.
+ */
+function leaderSpots(s: LabelRequest, o: LabelOptions): PlacedLabel[] {
+  const { w, h } = labelBox(s, o, !!s.lines[1]);
+  const r = o.star;
+  const below = s.y + r + GAP;
+  const above = s.y - r - GAP - h;
+  const at = (side: PlacedLabel["side"], x: number, y: number): PlacedLabel => ({ id: s.id, nameOnly: !!s.lines[1], leader: true, side, x, y, w, h });
+  const out: PlacedLabel[] = [];
+  for (let k = 3; k <= 6; k++) for (const dx of [0, -w * 0.35, w * 0.35]) out.push(at("above", s.x - w / 2 + dx, above - k * h), at("below", s.x - w / 2 + dx, below + k * h));
+  for (let j = 1; j <= 4; j++)
+    for (const dy of [0, -h, h]) out.push(at("right", s.x + r + GAP + 2 + j * 18, s.y - h / 2 + dy), at("left", s.x - r - GAP - 2 - w - j * 18, s.y - h / 2 + dy));
+  return out;
+}
+
+/** The leader line: from the star's edge to the nearest point of its label. */
+export function leaderLine(l: PlacedLabel, star: { x: number; y: number }, r: number): { x1: number; y1: number; x2: number; y2: number } {
+  const x2 = Math.max(l.x, Math.min(star.x, l.x + l.w));
+  const y2 = Math.max(l.y, Math.min(star.y, l.y + l.h));
+  const d = Math.hypot(x2 - star.x, y2 - star.y) || 1;
+  return { x1: star.x + ((x2 - star.x) / d) * (r + 1), y1: star.y + ((y2 - star.y) / d) * (r + 1), x2, y2 };
 }
 
 /**
@@ -169,9 +202,16 @@ function spots(s: LabelRequest, o: LabelOptions, nameOnly: boolean): PlacedLabel
 export function spotAllowed(c: PlacedLabel, stars: LabelRequest[], o: LabelOptions): boolean {
   if (c.x < 0 || c.y < 0 || c.x + c.w > o.width || c.y + c.h > o.height) return false;
   const own = stars.find((s) => s.id === c.id);
+  // A star farther from the label's centre than its own star can't be "nearer" (WO-74): skip the
+  // full test for it. Same answer, far fewer square roots.
+  const cx = c.x + c.w / 2;
+  const cy = c.y + c.h / 2;
+  const ownD2 = own ? (own.x - cx) ** 2 + (own.y - cy) ** 2 : 0;
+  const r = o.star + 1;
   for (const s of stars) {
-    if (overlaps(c, starRect(s.x, s.y, o.star))) return false;
-    if (own && s.id !== c.id && nearerTo(c, s, own)) return false;
+    if (s.x + r > c.x && s.x - r < c.x + c.w && s.y + r > c.y && s.y - r < c.y + c.h) return false;
+    if (!own || s.id === c.id || (s.x - cx) ** 2 + (s.y - cy) ** 2 > ownD2 + 1e-6) continue;
+    if (nearerTo(c, s, own)) return false;
   }
   return true;
 }
@@ -208,17 +248,31 @@ export function placeLabels(stars: LabelRequest[], o: LabelOptions, spots?: Map<
   // per star (WO-71), not again on each pass and squeeze.
   const allowedSpots = spots ?? new Map<string, PlacedLabel[]>();
   const allowed = (s: LabelRequest) => {
-    // The name-only spots are offered to taken and can-take stars only (labelCandidates).
-    const key = `${s.id}\u0001${s.lines.join("\u0002")}\u0001${rank(s) <= 2 ? 1 : 0}`;
+    // By the label's size, not its text (WO-74): the spots depend only on where the star is and how
+    // big its label is, so a level whose labels read differently but measure the same reuses them.
+    const key = `${s.id}\u0001${labelBox(s, o, false).w}\u0001${s.lines[1] ? labelBox(s, o, true).w : 0}`;
     let a = allowedSpots.get(key);
     if (!a) allowedSpots.set(key, (a = labelCandidates(s, o).filter((c) => spotAllowed(c, stars, o))));
     return a;
   };
+  // Leader lines drawn so far: no label sits on one.
+  const leaders: { x1: number; y1: number; x2: number; y2: number }[] = [];
+  const free = (c: PlacedLabel) => !placed.some((p) => crowds(c, p)) && !leaders.some((l) => crosses(c, l));
   const tryPlace = (s: LabelRequest) => {
-    const fits = allowed(s).filter((c) => !placed.some((p) => overlaps(c, p)));
+    const fits = allowed(s).filter(free);
     const hit = fits.find((c) => clearSpot(c, o)) ?? fits[0];
-    if (hit) put(hit);
-    else squeeze(s);
+    if (hit) return put(hit);
+    if (squeeze(s)) return;
+    // A taken or can-take star always gets its name (WO-74): further out, with a line to it.
+    if (rank(s) <= 2) {
+      const far = leaderSpots(s, o).filter((c) => spotAllowed(c, stars, o) && free(c));
+      for (const c of far) {
+        const line = leaderLine(c, s, o.star);
+        if (placed.some((p) => crosses(p, line)) || stars.some((x) => x.id !== s.id && Math.hypot(x.x - (line.x1 + line.x2) / 2, x.y - (line.y1 + line.y2) / 2) < o.star)) continue;
+        leaders.push(line);
+        return put(c);
+      }
+    }
   };
   // Rank by rank; a second pass per rank, since making room for one star can free a spot for another.
   for (const r of [1, 2, 3]) {
@@ -230,24 +284,28 @@ export function placeLabels(stars: LabelRequest[], o: LabelOptions, spots?: Map<
 
   // A star with no room: move the labels in its way (as important) to another spot of their own (the
   // name alone, for a two-line label), if that makes room for its name.
-  function squeeze(s: LabelRequest) {
+  function squeeze(s: LabelRequest): boolean {
     // A two-line label squeezes in with its name alone; a one-line label (Destiny) as it is (WO-73).
-    for (const c of allowed(s).filter((c) => c.nameOnly || !s.lines[1])) {
-      const blockers = placed.filter((p) => overlaps(c, p));
-      if (!blockers.length || !blockers.every((b) => rank(byId.get(b.id)!) === rank(s))) continue;
+    for (const c of allowed(s).filter((c) => (c.nameOnly || !s.lines[1]) && !leaders.some((l) => crosses(c, l)))) {
+      const blockers = placed.filter((p) => crowds(c, p));
+      if (!blockers.length || !blockers.every((b) => !b.leader && rank(byId.get(b.id)!) === rank(s))) continue;
       blockers.forEach(take);
       const moved: PlacedLabel[] = [];
       for (const b of blockers) {
         const bs = byId.get(b.id)!;
-        const alt = allowed(bs).find((x) => (x.nameOnly || !bs.lines[1]) && !(x.x === b.x && x.y === b.y) && !overlaps(x, c) && !placed.some((p) => overlaps(x, p)));
+        const alt = allowed(bs).find((x) => (x.nameOnly || !bs.lines[1]) && !(x.x === b.x && x.y === b.y) && !crowds(x, c) && free(x));
         if (!alt) break;
         put(alt);
         moved.push(alt);
       }
-      if (moved.length === blockers.length) return put(c);
+      if (moved.length === blockers.length) {
+        put(c);
+        return true;
+      }
       moved.forEach(take);
       blockers.forEach(put);
     }
+    return false;
   }
 }
 
@@ -264,9 +322,9 @@ export function withSelected(base: Map<string, PlacedLabel>, id: string | null |
   const inBox = all.filter((c) => c.x >= 0 && c.y >= 0 && c.x + c.w <= o.width && c.y + c.h <= o.height);
   const pool = allowed.length ? allowed : inBox.length ? inBox : all.slice(0, 1);
   const others = [...base.values()];
-  const cost = (c: PlacedLabel) => others.filter((p) => overlaps(c, p)).length * 2 + (clearOfLines(c, o) ? 0 : 1);
+  const cost = (c: PlacedLabel) => others.filter((p) => crowds(c, p)).length * 2 + (clearOfLines(c, o) ? 0 : 1);
   const best = pool.reduce((a, b) => (cost(b) < cost(a) ? b : a));
-  const out = new Map([...base].filter(([, p]) => !overlaps(best, p)));
+  const out = new Map([...base].filter(([, p]) => !crowds(best, p)));
   out.set(id, best);
   return out;
 }

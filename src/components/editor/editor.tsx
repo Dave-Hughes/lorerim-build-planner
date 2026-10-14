@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import type { Editor as TiptapEditor } from "@tiptap/react";
 import { EditBar } from "./edit-bar";
 import type { BuildVisibility } from "@/lib/builds/validate";
 import { InfoTip } from "@/components/ui/info-tip";
@@ -91,9 +92,17 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   const { ref: levelBarRef, hold: holdLevelBar } = useHoldInPlace<HTMLElement>(level);
   // Changing level keeps the level bar where it is on screen; the buttons at the bottom of the
   // page go back to the top, since the next level starts there.
+  // The open level's notes editor. Ended here, before React unmounts it on a new level (WO-74): left
+  // live, Tiptap's unmount redraws its document twice just before throwing it away, the largest part
+  // of a level change. (Its text is already saved, or saved by the autosave's own unmount.)
+  const notesEditor = useRef<TiptapEditor | null>(null);
+  const onNotesEditor = useCallback((e: TiptapEditor | null) => {
+    notesEditor.current = e;
+  }, []);
   const setLevel = useCallback(
     (n: number, max = total, toTop = false) => {
       const next = stretchAt(plan, Math.min(max, Math.max(1, n))).to;
+      if (next !== level && notesEditor.current && !notesEditor.current.isDestroyed) notesEditor.current.destroy();
       if (!toTop) holdLevelBar();
       setLevelState(next);
       setConfirmRemove(false);
@@ -103,7 +112,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
       window.history.replaceState(null, "", url);
       if (toTop) window.scrollTo({ top: 0 });
     },
-    [total, holdLevelBar, plan],
+    [total, holdLevelBar, plan, level],
   );
 
   const s = states[level - 1];
@@ -561,7 +570,15 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
               <div className={styles.blockHead}>
                 <span className="label">{level === 1 ? "Starting skills and perks" : "Skills and perks"}</span>
                 <span className={styles.maxSkill}>
-                  {level === 1 ? `Max skill ${s.maxSkill} at level 1` : `Up to +${d.rules.maxRaisePerSkillPerLevel * Math.max(1, ups)} each, max skill ${s.maxSkill}`}
+                  {level === 1 ? (
+                    `Max skill ${s.maxSkill} at level 1`
+                  ) : (
+                    <>
+                      {/* A phone says just the max skill (canvas: EditorStickyPhone, WO-74). */}
+                      <span className={styles.wideOnly}>{`Up to +${d.rules.maxRaisePerSkillPerLevel * Math.max(1, ups)} each, max skill ${s.maxSkill}`}</span>
+                      <span className={styles.phoneOnly}>{`Max skill ${s.maxSkill}`}</span>
+                    </>
+                  )}
                   <InfoTip
                     label="About the skill limit"
                     text={`No skill can go above 50 plus your character level. At level ${level} that's ${s.maxSkill}; skills can reach 100 from level 50.`}
@@ -873,6 +890,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
             level={level}
             from={st.from}
             notes={notes}
+            onEditor={onNotesEditor}
             onChange={(doc) => {
               editNotes(level, doc);
               // The level's old plain-text note now lives in the notes; clear it from the plan too.
@@ -982,6 +1000,7 @@ function LevelNotes({
   from,
   notes,
   onChange,
+  onEditor,
 }: {
   buildId: string;
   level: number;
@@ -989,6 +1008,7 @@ function LevelNotes({
   from: number;
   notes: React.RefObject<Record<string, GuideDoc>>;
   onChange: (doc: GuideDoc) => void;
+  onEditor: (editor: TiptapEditor | null) => void;
 }) {
   // The latest text for this level, read once as the level opens (the editor keeps it from there).
   const [initial] = useState(() => notes.current[`level:${level}`] ?? emptyDoc());
@@ -1015,6 +1035,7 @@ function LevelNotes({
         compact
         onStatus={onStatus}
         onChange={onChange}
+        onEditor={onEditor}
       />
     </section>
   );

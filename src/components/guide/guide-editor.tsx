@@ -32,6 +32,8 @@ export interface GuideEditorProps {
   onStatus?: (status: GuideSaveStatus, error: string | null, retry: () => void) => void;
   /** Every change, as it happens. */
   onChange?: (doc: GuideDoc) => void;
+  /** The editor once it exists (null when it goes), for a page that ends it itself before it unmounts (WO-74). */
+  onEditor?: (editor: Editor | null) => void;
 }
 
 type Rect = { left: number; top: number; bottom: number };
@@ -462,7 +464,7 @@ function Menu<T>({
   );
 }
 
-export function GuideEditor({ buildId, sectionKey, initial, label, placeholder = "", headingLevels = [2, 3], compact: compactProp, inline = false, onStatus, onChange }: GuideEditorProps) {
+export function GuideEditor({ buildId, sectionKey, initial, label, placeholder = "", headingLevels = [2, 3], compact: compactProp, inline = false, onStatus, onChange, onEditor }: GuideEditorProps) {
   const compact = compactProp || inline;
   const { status, error, change, retry } = useGuideAutosave(buildId, sectionKey);
   useEffect(() => onStatus?.(status, error, retry), [status, error, retry, onStatus]);
@@ -563,6 +565,11 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
     onFocus: () => setFocused(true),
     onBlur: () => setFocused(false),
   });
+
+  useEffect(() => {
+    onEditor?.(editor);
+    return () => onEditor?.(null);
+  }, [editor, onEditor]);
 
   // Give the editor's extensions this render's handlers.
   useLayoutEffect(() => {

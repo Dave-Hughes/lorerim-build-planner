@@ -10,10 +10,10 @@ import { SEVARI_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1440, height: 1000 } });
 
-/** The order's targets, in ms (WO-71 point 4). */
+/** The order's targets, in ms (WO-71 point 4; level nav under 120 since WO-74). */
 const CLICK = 200;
 const KEYSTROKE = 50;
-const NAV = 100;
+const NAV = 120;
 const SLOWDOWN = 4;
 
 declare global {

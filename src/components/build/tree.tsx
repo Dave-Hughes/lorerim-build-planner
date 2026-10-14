@@ -4,7 +4,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import { useGameData } from "@/components/game-data";
 import { perkText, type GameData, type Perk } from "@/lib/rules/data";
 import { perkRequirementText, perkStatus, type PerkStatus } from "@/lib/rules/derive";
-import { labelSizes, placeLabels, withSelected, type LabelOptions, type LabelRequest, type PlacedLabel } from "@/lib/rules/labels";
+import { labelSizes, leaderLine, placeLabels, withSelected, type LabelOptions, type LabelRequest, type PlacedLabel } from "@/lib/rules/labels";
 import { drawingSize, fitHeight, treeLayout, type LayoutPadding, type TreeLayout } from "@/lib/rules/layout";
 import { pageZoom } from "@/lib/zoom";
 import { isHeld, lineLook, lineState, prerequisiteLines } from "@/lib/rules/tree-states";
@@ -86,6 +86,11 @@ function nameLine(p: Perk, st: PerkStatus): string {
   return st.ranks > 1 && st.ranksTaken > 0 && st.ranksTaken < st.ranks ? `${p.name} ${st.ranksTaken}/${st.ranks}` : p.name;
 }
 
+/** A taken star's name-only label keeps its rank: "Short Blade Focus 3", not "Short Blade Focus" (WO-74). */
+function shortLine(p: Perk, st: PerkStatus): string | undefined {
+  return st.ranks > 1 && st.ranksTaken >= st.ranks && !st.granted ? `${p.name} ${st.ranksTaken}` : undefined;
+}
+
 /** A ring split into one arc per rank, taken arcs in ember, 2px gaps between arcs. */
 function rankRing(st: PerkStatus, sizePx: number): string {
   const n = st.ranks;
@@ -127,9 +132,16 @@ function useMeasure(el: HTMLElement | null) {
     if (!ctx) return undefined;
     void fontsReady;
     // Measured at the bold weight held and selected labels use, so no label is ever wider than its box.
+    // Each text and size once (WO-74): label placement asks for the same names again and again.
+    const known = new Map<string, number>();
     return (text: string, size: number) => {
-      ctx.font = `600 ${size}px ${family}`;
-      return ctx.measureText(text).width;
+      const key = `${size}\u0001${text}`;
+      let w = known.get(key);
+      if (w === undefined) {
+        ctx.font = `600 ${size}px ${family}`;
+        known.set(key, (w = ctx.measureText(text).width));
+      }
+      return w;
     };
   }, [el, fontsReady]);
 }
@@ -631,6 +643,14 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
                         />
                       );
                     })}
+                    {/* A label set further out has a 1px line from its star's edge, in the star's colour at half strength (WO-74). */}
+                    {layout.nodes.map((n) => {
+                      const l = labels.get(n.id);
+                      if (!l?.leader) return null;
+                      const k = leaderLine(l, n, size.star);
+                      const st = status.get(n.id)!;
+                      return <line key={`leader-${n.id}`} {...k} strokeWidth={1} className={isHeld(st) ? styles.leaderTaken : styles.leaderOpen} />;
+                    })}
                   </g>
                 </svg>
                 {layout.nodes.map((n) => {
@@ -674,7 +694,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
                           aria-hidden="true"
                           onClick={() => !why && select(n.id)}
                         >
-                          <span className={styles.labelName}>{nameLine(p, st)}</span>
+                          <span className={styles.labelName}>{label.nameOnly ? (shortLine(p, st) ?? nameLine(p, st)) : nameLine(p, st)}</span>
                           {req && !label.nameOnly && <span className={styles.labelReq}>{req}</span>}
                         </span>
                       )}
@@ -743,15 +763,21 @@ function useTreeLayout(d: GameData, tree: string, W: number, H: number, w0: numb
 const placedCache = new WeakMap<TreeLayout, { measure: LabelOptions["measure"]; star: number; font: number; byKey: Map<string, Map<string, PlacedLabel>>; spots: Map<string, PlacedLabel[]> }>();
 function placedFor(layout: TreeLayout, requests: LabelRequest[], opts: LabelOptions): Map<string, PlacedLabel> {
   let cache = placedCache.get(layout);
-  // New font measures (the fonts finished loading) or sizes place everything again.
-  if (!cache || cache.measure !== opts.measure || cache.star !== opts.star || cache.font !== opts.font) {
+  // New sizes place everything again.
+  if (!cache || cache.star !== opts.star || cache.font !== opts.font) {
     cache = { measure: opts.measure, star: opts.star, font: opts.font, byKey: new Map(), spots: new Map() };
     placedCache.set(layout, cache);
+  }
+  // New font measures (a font finished loading, often on a new level) only drop the finished
+  // placements: the allowed spots are kept by label size, so they still hold (WO-74).
+  if (cache.measure !== opts.measure) {
+    cache.measure = opts.measure;
+    cache.byKey = new Map();
   }
   const key = requests.map((r) => `${r.id}\u0001${r.lines.join("\u0002")}\u0001${r.priority}`).join("\u0003");
   const hit = cache.byKey.get(key);
   if (hit) return hit;
-  // The allowed spots are kept across levels too, by star and text (placeLabels).
+  // The allowed spots are kept across levels too, by star and label size (placeLabels).
   const placed = placeLabels(requests, opts, cache.spots);
   if (cache.byKey.size >= 40) cache.byKey.delete(cache.byKey.keys().next().value!);
   cache.byKey.set(key, placed);
@@ -784,6 +810,7 @@ function usePlacedLabels(
         x: n.x,
         y: n.y,
         lines: req ? [name, req] : [name],
+        short: shortLine(p, st),
         // A star with ranks already taken counts as taken.
         priority: st.state === "taken" || st.ranksTaken > 0 ? 1 : st.state === "open" ? 2 : 3,
       };

@@ -6,6 +6,8 @@
 .box {
   position: relative;
   min-width: 0;
+  /* The box's own background, for the labels' halo (WO-74); the page sets --tree-bg. */
+  --tree-ground: var(--tree-bg, var(--sunk));
   /* Taken stars, held lines and their halo: ember for skill trees, gold for Destiny (WO-27). */
   --perk: var(--ember);
   --perk-halo: color-mix(in srgb, var(--ember) 25%, transparent);
@@ -13,7 +15,9 @@
 .destinyTree {
   --perk: var(--destiny);
   --perk-halo: color-mix(in srgb, var(--brass) 30%, transparent);
+  --open-star: var(--destiny);
   background: var(--destiny-wash);
+  --tree-ground: color-mix(in srgb, var(--destiny) 10%, var(--tree-bg, var(--sunk)));
 }
 /* Destiny's can-take stars: a gold outline. */
 .destinyTree .open::before {
@@ -157,6 +161,15 @@
   stroke: var(--perk);
   opacity: 0.2;
 }
+/* A label set further out: a 1px line from its star, in the star's colour at half strength (WO-74). */
+.leaderTaken {
+  stroke: var(--perk);
+  opacity: 0.5;
+}
+.leaderOpen {
+  stroke: var(--open-star, var(--brass));
+  opacity: 0.5;
+}
 
 /* Stars */
 .star {
@@ -252,6 +265,14 @@
   white-space: nowrap;
   cursor: pointer;
   color: var(--text);
+  /* A halo in the box's own colour: a link line never runs through the letters (WO-74). */
+  text-shadow:
+    0 0 2px var(--tree-ground),
+    0 0 2px var(--tree-ground),
+    1px 1px 0 var(--tree-ground),
+    -1px -1px 0 var(--tree-ground),
+    1px -1px 0 var(--tree-ground),
+    -1px 1px 0 var(--tree-ground);
 }
 .side_below,
 .side_above {

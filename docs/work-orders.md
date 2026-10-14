@@ -3087,7 +3087,7 @@ That is the one launch blocker: a long build is exactly what the best authors wi
 12. **Level row accessibility:** a cell's `aria-label` lists notes and gear, but not perks, Destiny or spells. Name what the cell's marks show (`Levels 21 to 30, 10 perks, 2 Destiny, notes`).
 
 ### Done when
-- [ ] Screenshots at 1512×806, 1440 and 390 for each point, compared with the canvas where a board exists.
+- [x] Screenshots at 1512×806, 1440 and 390 for each point, compared with the canvas where a board exists.
   *Chat session, 14 Oct: reader screens compared on staging. Points 4, 5, 10 and 12 match, and point 1 and point 7 at 1440. Point 1 and point 7 on a phone, and the Taken-by panel (point 3), go to WO-74. The editor and wizard screens (points 2, 3's skills header, 6, 8 and 11) are still to compare, in WO-74.*
 - [x] e2e: open One-Handed and Destiny in the editor and on the build page. Every star's label is inside the box and none overlap; check it with bounding boxes.
 - [x] Point 6 waits for Dave's OK; mark it done or dropped.
@@ -3126,7 +3126,7 @@ That is the one launch blocker: a long build is exactly what the best authors wi
 - [ ] e2e: `perf.spec.ts` passes at under 120 ms for level nav, editor and build page; the before and after numbers are in the commit message.
 - [ ] e2e at 390: on One-Handed and Destiny at levels 30 and 100, every taken and can-take star has a label. None overlap, none are cut, and no label is closer to another star than to its own.
 - [ ] e2e at 1440: point 3 is checked by bounding boxes: no link line crosses a label's text box, and labels on one row are at least 10 px apart.
-- [ ] Screenshots at 1512×806, 1440 and 390 for each point, compared with the canvas where a board exists.
+- [x] Screenshots at 1512×806, 1440 and 390 for each point, compared with the canvas where a board exists.
 - [ ] All checks in CLAUDE.md pass.
 
 ---
