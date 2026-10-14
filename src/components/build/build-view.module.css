@@ -1529,3 +1529,9 @@
     font-size: 22px;
   }
 }
+
+/* "Snapshot at level 50" in the byline (WO-68): a brass tag. */
+.snapshotTag {
+  border-color: var(--brass);
+  color: #e8d3a4;
+}

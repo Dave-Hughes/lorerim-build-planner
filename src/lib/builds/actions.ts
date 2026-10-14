@@ -9,6 +9,8 @@ import { newBuildId, isValidBuildId } from "./ids";
 import { getBuild } from "./queries";
 import { buildDetailsSchema, buildVisibilitySchema, parseBuildPlan, type BuildDetails } from "./validate";
 import { convertPlan, droppedSentence } from "@/lib/rules/convert";
+import { checkSnapshot } from "@/lib/rules/snapshot";
+import type { BuildPlan } from "@/lib/rules/types";
 import { guideDocSchema, imageUrls, isGuideKey, isInlineOnly, levelOfKey, limitFor, textLength, tooLongMessage } from "@/lib/guide/doc";
 import { deleteBuildImages, deleteImagesIfUnused, isOurImage } from "@/lib/guide/images";
 import { copyGuide } from "@/lib/guide/queries";
@@ -77,6 +79,14 @@ export async function setLike(buildId: string, liked: boolean): Promise<ActionRe
   return { ok: true, value: { liked, count } };
 }
 
+/** A snapshot build (WO-68) is checked by the rules again here, and its result stored as they make it. */
+function withSnapshotResult(plan: BuildPlan): ActionResult<BuildPlan> {
+  if (!plan.snapshot) return { ok: true, value: plan };
+  const r = checkSnapshot(plan, plan.snapshot, requireGameData(plan.gameVersion));
+  if (!r.ok) return { ok: false, error: `The snapshot doesn't work: ${r.error}` };
+  return { ok: true, value: { ...plan, snapshot: { ...plan.snapshot, result: r.result } } };
+}
+
 /** Creates a build from the creation flow and returns its id. */
 export async function createBuild(input: { details: BuildDetails; plan: unknown }): Promise<ActionResult<{ id: string }>> {
   const userId = await requireUser();
@@ -95,6 +105,9 @@ export async function createBuild(input: { details: BuildDetails; plan: unknown 
   } catch {
     return { ok: false, error: "The build's choices didn't pass validation." };
   }
+  const snap = withSnapshotResult(plan);
+  if (!snap.ok) return snap;
+  plan = snap.value;
   const id = newBuildId();
   await db()
     .insert(schema.builds)
@@ -128,6 +141,9 @@ export async function saveBuildPlan(id: string, input: unknown): Promise<ActionR
   } catch {
     return { ok: false, error: "The build's choices didn't pass validation." };
   }
+  const snap = withSnapshotResult(plan);
+  if (!snap.ok) return snap;
+  plan = snap.value;
   const rows = await db()
     .update(schema.builds)
     .set({ plan, gameVersion: plan.gameVersion })

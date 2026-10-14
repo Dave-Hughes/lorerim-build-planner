@@ -3,6 +3,8 @@ export interface BrowseState {
   q: string;
   tags: string[];
   race: string;
+  /** Level-by-level builds or snapshots (WO-68); "" for any. */
+  kind: "" | "levels" | "snapshot";
   /** A version id, or "all". */
   version: string;
   sort: "newest" | "liked";
@@ -14,6 +16,7 @@ export function browseHref(s: BrowseState, defaultVersion: string, n?: number): 
   if (s.q.trim()) p.set("q", s.q.trim());
   if (s.tags.length) p.set("tags", s.tags.join(","));
   if (s.race) p.set("race", s.race);
+  if (s.kind) p.set("kind", s.kind);
   if (s.sort !== "newest") p.set("sort", s.sort);
   if (s.version !== defaultVersion) p.set("version", s.version);
   if (n) p.set("n", String(n));

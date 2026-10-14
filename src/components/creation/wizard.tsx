@@ -160,7 +160,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
   return (
     <>
       {mode === "edit" && buildId ? (
-        <EditBar buildId={buildId} name={details.name || "This build"} current="setup" visibility={details.visibility} onVisibility={(visibility) => updateDetails({ visibility })} />
+        <EditBar buildId={buildId} name={details.name || "This build"} current="setup" snapshot={!!plan.snapshot} visibility={details.visibility} onVisibility={(visibility) => updateDetails({ visibility })} />
       ) : (
         <FocusHeader
           context="New build"

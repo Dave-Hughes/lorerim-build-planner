@@ -915,14 +915,6 @@
   border: 1px solid var(--health);
   background: rgba(214, 92, 77, 0.08);
 }
-/* After Auto level (WO-64): what it did, with Undo until the next change. */
-.filledLine {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0;
-  font-size: 15px;
-}
 .problemLine {
   display: flex;
   flex-wrap: wrap;
@@ -1095,7 +1087,7 @@
   min-height: 40px;
 }
 
-/* A new build's first question (WO-67): two cards, Level by level and Auto level. */
+/* A new build's first question (WO-67, WO-68): two cards, Level by level and Snapshot. */
 .choice {
   max-width: 1120px;
   padding-top: 70px;
@@ -1141,9 +1133,6 @@
 }
 .choiceIcon {
   image-rendering: pixelated;
-}
-.choiceTapps {
-  margin: -6px 0;
 }
 .choiceName {
   font-family: var(--font-title);

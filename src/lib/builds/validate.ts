@@ -5,8 +5,9 @@ import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
 import { gameData, isKnownVersion, type GameData } from "@/lib/rules/server";
 import { readPlan } from "@/lib/rules/convert";
 import type { BuildPlan } from "@/lib/rules/types";
+import { MAX_LEVELS } from "./limits";
 
-export const MAX_LEVELS = 100;
+export { MAX_LEVELS };
 
 /** The plan schema for one LoreRim version: every name and id must exist in that version. */
 function planSchema(d: GameData) {
@@ -96,8 +97,27 @@ function planSchema(d: GameData) {
       )
       .max(60),
     notes: z.string().max(6000),
+    // A snapshot build (WO-68). Its result is worked out again on save (snapshot.ts), never taken as sent.
+    snapshot: z
+      .object({
+        level: z.number().int().min(2).max(MAX_LEVELS),
+        attributes: z.object({ health: z.number().int().min(0), magicka: z.number().int().min(0), stamina: z.number().int().min(0) }),
+        perks: z.array(perkId).max(200),
+        skills: z.record(skillName, z.number().int().min(0).max(100)),
+        result: z
+          .object({
+            skills: z.record(z.string(), z.number()),
+            perks: z.array(z.string()),
+            health: z.number(),
+            magicka: z.number(),
+            stamina: z.number(),
+          })
+          .optional(),
+      })
+      .optional(),
   })
-    .refine((p) => !p.startOption || (d.startByName.get(p.start)?.options.includes(p.startOption) ?? false), "Unknown choice for this start") satisfies z.ZodType<BuildPlan>;
+    .refine((p) => !p.startOption || (d.startByName.get(p.start)?.options.includes(p.startOption) ?? false), "Unknown choice for this start")
+    .refine((p) => !p.snapshot || p.levels.length === 1, "A snapshot keeps level 1 only") satisfies z.ZodType<BuildPlan>;
 }
 
 const versionOnly = z.object({

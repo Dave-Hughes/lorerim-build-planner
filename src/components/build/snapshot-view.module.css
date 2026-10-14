@@ -1,0 +1,193 @@
+/* A snapshot build's Build tab (WO-68). */
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.top {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px 40px;
+  flex-wrap: wrap;
+}
+.title {
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1;
+}
+.totals {
+  display: flex;
+  gap: 18px 34px;
+  flex-wrap: wrap;
+}
+.totals b {
+  font-size: 30px;
+}
+.health {
+  color: var(--health);
+}
+.magicka {
+  color: var(--magicka);
+}
+.stamina {
+  color: var(--stamina);
+}
+.cols {
+  display: grid;
+  grid-template-columns: 380px minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+.lab {
+  margin: 0 0 6px;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--brass);
+}
+.count {
+  color: var(--muted);
+  font-weight: 600;
+}
+.skills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sk {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) 120px 36px;
+  gap: 10px;
+  align-items: center;
+  padding: 5px 0;
+  border-top: 1px solid var(--rule-soft);
+  font-size: 15px;
+}
+.bar {
+  height: 6px;
+  background: var(--rule-soft);
+  position: relative;
+}
+.bar span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--muted);
+}
+.major span {
+  background: var(--ember);
+}
+.num {
+  text-align: right;
+}
+.tr {
+  border-top: 1px solid var(--rule);
+  padding: 12px 0;
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 14px;
+}
+.trName {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: start;
+}
+.trTitle {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 18px;
+}
+.diamond {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  margin: 0 3px;
+  transform: rotate(45deg);
+  background: var(--brass);
+  flex: none;
+}
+.pk {
+  display: inline-block;
+  margin: 0 14px 4px 0;
+  font-size: 15px;
+}
+/* The picks: the perks the build is about. */
+.key {
+  color: var(--ember-text);
+  font-weight: 600;
+}
+.key::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--ember);
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+.legend {
+  margin: 0;
+  border-top: 1px solid var(--rule);
+  padding-top: 12px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.legend .pk {
+  font-size: 14px;
+  margin: 0;
+}
+.treeBox {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--rule-strong);
+  background: none;
+  color: var(--soft);
+  font: inherit;
+  font-size: 14px;
+  padding: 6px 12px;
+  min-height: 40px;
+  cursor: pointer;
+}
+.chip[aria-selected="true"] {
+  border-color: var(--ember);
+  color: var(--ember-text);
+  background: #1b1712;
+}
+.chipCount {
+  color: var(--muted);
+}
+@media (max-width: 899px) {
+  .cols {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+  .tr {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+  .title {
+    font-size: 28px;
+  }
+}

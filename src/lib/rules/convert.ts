@@ -2,6 +2,7 @@
  * Moving a plan to another LoreRim version: what doesn't exist there is listed
  * and removed, never silently.
  */
+import { checkSnapshot } from "./snapshot";
 import { gameData, type GameData } from "./data";
 import { gearSlot } from "./gear";
 import { keptTraitChoices } from "./trait-choices";
@@ -30,6 +31,8 @@ export function missingIn(d: GameData, plan: BuildPlan): Dropped[] {
     for (const id of lv.destiny) if (!d.perkById.has(id)) add("Destiny perk", perkName(id));
     if (lv.stone && lv.stone !== "none" && !d.stoneByName.has(lv.stone)) add("stone", lv.stone);
   }
+  for (const id of plan.snapshot?.perks ?? []) if (!d.perkById.has(id)) add(id.startsWith("Destiny:") ? "Destiny perk" : "perk", perkName(id));
+  for (const s of Object.keys(plan.snapshot?.skills ?? {})) if (!d.skills.includes(s)) add("skill", s);
   return out;
 }
 
@@ -54,6 +57,13 @@ export function convertPlan(d: GameData, plan: BuildPlan): { plan: BuildPlan; dr
       stone: lv.stone && lv.stone !== "none" && !d.stoneByName.has(lv.stone) ? undefined : lv.stone,
     })),
   };
+  // A snapshot (WO-68) keeps what this version has; its result is worked out again here.
+  if (plan.snapshot) {
+    const snap = { ...plan.snapshot, perks: plan.snapshot.perks.filter((id) => d.perkById.has(id)), skills: Object.fromEntries(Object.entries(plan.snapshot.skills).filter(([s]) => skill(s))) };
+    delete snap.result;
+    const r = checkSnapshot(next, snap, d);
+    next.snapshot = r.ok ? { ...snap, result: r.result } : snap;
+  }
   if (!next.traits.includes("Master of One")) delete next.masterOfOneSkill;
   const choices = keptTraitChoices(next.traits, plan.traitChoices);
   if (choices) next.traitChoices = choices;

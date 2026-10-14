@@ -22,6 +22,7 @@ const summaryFields = {
   race: sql<string>`${schema.builds.plan}->>'race'`,
   traits: sql<string[]>`${schema.builds.plan}->'traits'`,
   levels: sql<number>`jsonb_array_length(${schema.builds.plan}->'levels')`,
+  snapshotLevel: sql<number | null>`(${schema.builds.plan}->'snapshot'->>'level')::int`,
   videoId: sql<string | null>`${schema.builds.plan}->>'videoId'`,
   // Held back (WO-40): an admin hid it, or the build has enough open reports.
   coverHeld: sql<boolean>`(exists(select 1 from ${schema.hiddenImages} h where h.url = ${schema.builds.coverImageUrl}) or (select count(*) from ${schema.buildReports} r where r.build_id = ${schema.builds.id} and r.cleared_at is null) >= ${REPORTS_TO_HIDE})`,
@@ -50,6 +51,7 @@ function toSummary(r: SummaryRow): BuildSummary {
     race: r.race,
     traits: r.traits ?? [],
     levels: Number(r.levels),
+    snapshotLevel: r.snapshotLevel === null || r.snapshotLevel === undefined ? null : Number(r.snapshotLevel),
     updatedAt: r.updatedAt,
     author: { name: r.authorName ?? "Unknown", image: r.authorImage ?? null, handle: r.authorHandle ?? null },
     likeCount: Number(r.likeCount ?? 0),
@@ -188,6 +190,8 @@ export interface BrowseQuery {
   /** Tag slugs; a build must have all of them. */
   tags?: string[];
   race?: string;
+  /** Level-by-level builds, or snapshots (WO-68); either when absent. */
+  kind?: "levels" | "snapshot";
   gameVersion?: string;
   sort?: "newest" | "liked";
   limit?: number;
@@ -207,6 +211,8 @@ export async function searchBuilds(f: BrowseQuery): Promise<{ builds: BuildSumma
   const where = [eq(schema.builds.visibility, "public")];
   if (f.gameVersion) where.push(eq(schema.builds.gameVersion, f.gameVersion));
   if (f.race) where.push(sql`${schema.builds.plan}->>'race' = ${f.race}`);
+  if (f.kind === "snapshot") where.push(sql`(${schema.builds.plan}->'snapshot') is not null`);
+  if (f.kind === "levels") where.push(sql`(${schema.builds.plan}->'snapshot') is null`);
   const q = f.q?.trim();
   if (q) {
     // Every word must appear somewhere: "nord shield" finds a Nord with a shield.

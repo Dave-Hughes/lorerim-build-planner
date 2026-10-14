@@ -122,6 +122,31 @@ export interface BuildPlan {
   mainSpells?: string[];
   gear: GearItem[];
   notes: string;
+  /** A snapshot build (WO-68): the build at one level, in place of levels 2 and on. Its levels hold level 1 only. */
+  snapshot?: Snapshot;
+}
+
+/**
+ * The build at one level (WO-68): the level, the attribute level-ups, the perks the author picked
+ * (what they need comes along) and skill values the author set by hand. `result` is what the
+ * rules make of it, worked out and stored on save.
+ */
+export interface Snapshot {
+  level: number;
+  attributes: Record<Attribute, number>;
+  perks: string[];
+  skills: Record<string, number>;
+  result?: SnapshotResult;
+}
+
+export interface SnapshotResult {
+  /** Every skill's value at the level. */
+  skills: Record<string, number>;
+  /** Every perk and Destiny star held: the picks and the auto selected ones. */
+  perks: string[];
+  health: number;
+  magicka: number;
+  stamina: number;
 }
 
 export type IssueCode =

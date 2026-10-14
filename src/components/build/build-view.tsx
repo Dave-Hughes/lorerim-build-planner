@@ -44,6 +44,7 @@ import { AttributeIcon, DeityIcon, GameIcon, IconLabel, SignIcon, SkillIcon, Ski
 import { ArrowTip, LevelBars, LevelLegend, LevelStepper, useArrowTip, useHoldInPlace } from "./level-nav";
 import { BottomSheet, PerkDetails, Tree, ViewToggle, type TreeView } from "./tree";
 import styles from "./build-view.module.css";
+import { SnapshotTab } from "./snapshot-view";
 import { pageZoom } from "@/lib/zoom";
 import { themeOf, themeStyle } from "@/lib/themes";
 import { useDismiss } from "@/lib/use-dismiss";
@@ -166,11 +167,14 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
 
   // The intro, else the guide's first paragraph, else nothing.
   const intro = guide.intro && !isEmptyDoc(guide.intro) ? guide.intro : firstParagraph(overview);
-  const TAB_NAMES: Record<BuildTab, string> = { levels: "Levels", guide: "Guide" };
+  // A snapshot build (WO-68): its first tab is Build, the build at its one level.
+  const snapshot = plan.snapshot;
+  const TAB_NAMES: Record<BuildTab, string> = { levels: snapshot ? "Build" : "Levels", guide: "Guide" };
+  const tabIcon = (t: BuildTab) => (t === "levels" && snapshot ? "destiny" : `tab-${t}`);
   // Each tab's second line: what's in it.
   const minutes = overview ? Math.max(1, Math.ceil(docWords(overview) / 200)) : 0;
   const TAB_SUB: Record<BuildTab, string> = {
-    levels: `Levels 1 to ${total}`,
+    levels: snapshot ? `At level ${snapshot.level}` : `Levels 1 to ${total}`,
     guide: overview ? `${minutes} min read${plan.videoId ? " | Video" : ""}` : "Video",
   };
 
@@ -188,7 +192,14 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   const railSpells = spellsAndAbilities(d, plan, level);
   const spellsCount = railSpells.spells.length + railSpells.abilities.length + railSpells.shouts.length;
   const railItems: RailItem[] =
-    tab === "guide" && overview
+    tab === "levels" && snapshot
+      ? [
+          { key: "at", label: `At level ${snapshot.level}`, target: "snapshot-top" },
+          { key: "skills", label: "Skills", target: "snapshot-skills" },
+          { key: "perks", label: "Perks", count: snapshot.result?.perks.length, target: "snapshot-perks" },
+          { key: "trees", label: "Perk trees", target: "snapshot-trees" },
+        ]
+      : tab === "guide" && overview
       ? [
           // Only this tab's sections (WO-57): the tabs themselves switch tabs.
           ...guideHeadings(overview, "guide").map((h) => ({ key: h.id, label: h.text, target: h.id })),
@@ -263,7 +274,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
     <GuideFactsProvider plan={plan} states={states}>
       <main className={styles.main}>
         {/* The owner's edit bar: one click to edit, as View build is one click back. */}
-        {isOwner && !build.isSample && <EditBar buildId={build.id} name={build.name} current={null} visibility={build.visibility} />}
+        {isOwner && !build.isSample && <EditBar buildId={build.id} name={build.name} current={null} visibility={build.visibility} snapshot={!!build.plan.snapshot} />}
         {/* The build's guide theme (WO-37): everything below the edit bar takes its colours. */}
         <div className={styles.themed} data-theme={themeOf(plan.theme).id} style={themeStyle(plan.theme)}>
         <Cover
@@ -318,7 +329,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
                   onClick={() => setTab(t)}
                 >
                   {/* Folder tabs (WO-60): the 32px icon, the name, what's inside. */}
-                  <GameIcon file={`tab-${t}`} size={32} className={styles.tabIcon} />
+                  <GameIcon file={tabIcon(t)} size={32} className={styles.tabIcon} />
                   <span className={styles.tabText}>
                     <span className={styles.tabName}>{TAB_NAMES[t]}</span>
                     <span className={styles.tabSub}>{TAB_SUB[t]}</span>
@@ -327,7 +338,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
               ))}
             </div>
           )}
-          {pinned && (tab === "levels" || tabs.length > 1) && (
+          {pinned && ((tab === "levels" && !snapshot) || tabs.length > 1) && (
             <div className={styles.pinnedBar} role="region" aria-label="Pinned bar" data-pinned-bar="">
               <div className={`page ${styles.pinnedInner}`}>
                 {/* The tabs, small, once the big ones scroll away (WO-60). */}
@@ -335,13 +346,13 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
                   <span className={styles.miniTabs}>
                     {tabs.map((t) => (
                       <button key={t} type="button" className={styles.miniTab} aria-pressed={tab === t} onClick={() => setTab(t)}>
-                        <GameIcon file={`tab-${t}`} size={16} />
+                        <GameIcon file={tabIcon(t)} size={16} />
                         <span>{TAB_NAMES[t]}</span>
                       </button>
                     ))}
                   </span>
                 )}
-                {tab === "levels" && (
+                {tab === "levels" && !snapshot && (
                 <>
                 <LevelStepper
                   level={level}
@@ -371,12 +382,15 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           )}
 
           {/* The reader's first-time tour (WO-61), on the Levels tab where its stops are. */}
-          {tab === "levels" && <Tour kind="reader" script={readerTour} />}
+          {tab === "levels" && !snapshot && <Tour kind="reader" script={readerTour} />}
           <div className={styles.withRail}>
           <ContentsRail items={railItems} />
           <div className={styles.railMain}>
           {tab === "levels" && (
             <div id="panel-levels" role={tabs.length > 1 ? "tabpanel" : undefined} aria-labelledby={tabs.length > 1 ? "tab-levels" : undefined} className={styles.panelStack}>
+              {snapshot ? (
+                <SnapshotTab plan={plan} />
+              ) : (
               <LevelsTab
                 build={build}
                 states={states}
@@ -391,6 +405,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
                 destinyOpenChoice={destinyOpenChoice}
                 setDestinyOpenChoice={setDestinyOpenChoice}
               />
+              )}
             </div>
           )}
           {tab === "guide" && (overview || plan.videoId) && (
@@ -1401,13 +1416,18 @@ function Cover({
           <div className={`${styles.byline} ${styles.heroIn} ${styles.heroIn3}`}>
             <AuthorLink author={build.author} className={styles.author} nameClassName={styles.authorName} avatar={<Avatar name={build.author.name} image={build.author.image} />} />
             {!build.isSample && <LikeButton buildId={build.id} liked={build.likedByViewer} count={build.likeCount} mode={isOwner && build.visibility === "private" ? "owner" : signedIn ? "can" : "signedOut"} signIn={signInToLike} />}
+            {build.plan.snapshot && <span className={`tag ${styles.snapshotTag}`}>Snapshot at level {build.plan.snapshot.level}</span>}
             <span className="tag">LoreRim {build.gameVersion}</span>
             {/* One unit, so a wrap never leaves the bar dangling at a line's end. */}
             <span className={styles.dates}>
-              <span>Planned to level {build.plan.levels.length}</span>
-              <span className={styles.pipe} aria-hidden="true">
-                |
-              </span>
+              {!build.plan.snapshot && (
+                <>
+                  <span>Planned to level {build.plan.levels.length}</span>
+                  <span className={styles.pipe} aria-hidden="true">
+                    |
+                  </span>
+                </>
+              )}
               <span>
                 Updated <LocalDate date={build.updatedAt} />
               </span>

@@ -157,7 +157,7 @@ describe("goalsToSettings (WO-65)", () => {
   });
 });
 
-describe("Auto level's floor and attributes (WO-67)", () => {
+describe("the level floor and attributes (WO-67)", () => {
   it("Expert Destruction alone on the Altmer needs level 25, the same as the preview's earliest", () => {
     expect(goalFloor(ALTMER, ["Destruction:Expert Destruction"], d, 100)).toBe(25);
     const at100 = fillToLevel(ALTMER, goalsToSettings(ALTMER, ["Destruction:Expert Destruction"], 100, "even", d).settings, d);

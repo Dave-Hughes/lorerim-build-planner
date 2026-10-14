@@ -31,11 +31,11 @@ export function BrowseFilters({ state, versions, defaultVersion, races, empty }:
   const tagsWrap = useRef<HTMLDivElement>(null);
   const tagsButton = useRef<HTMLButtonElement>(null);
   useDismiss({ open: tagsOpen, onClose: () => setTagsOpen(false), inside: [tagsWrap], trigger: tagsButton });
-  const filtered = !!(state.q || state.tags.length || state.race);
+  const filtered = !!(state.q || state.tags.length || state.race || state.kind);
   const clear = () => {
     typed.current = false;
     setQ("");
-    router.replace(browseHref({ q: "", tags: [], race: "", version: state.version, sort: state.sort }, defaultVersion), { scroll: false });
+    router.replace(browseHref({ q: "", tags: [], race: "", kind: "", version: state.version, sort: state.sort }, defaultVersion), { scroll: false });
   };
   return (
     <>
@@ -89,6 +89,15 @@ export function BrowseFilters({ state, versions, defaultVersion, races, empty }:
                 {r}
               </option>
             ))}
+          </select>
+        </label>
+        {/* Level-by-level builds or snapshots (WO-68). */}
+        <label className={`field ${styles.small}`}>
+          <span className="label">Kind</span>
+          <select className="select" value={state.kind} onChange={(e) => go({ kind: e.target.value as BrowseState["kind"] })}>
+            <option value="">Any</option>
+            <option value="levels">Level by level</option>
+            <option value="snapshot">Snapshot</option>
           </select>
         </label>
         <label className={`field ${styles.small}`}>

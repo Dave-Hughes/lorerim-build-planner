@@ -17,6 +17,8 @@ import pureMage from "./fixtures/pure-mage.json";
 import { textLength, type GuideDoc } from "../src/lib/guide/doc";
 import { snowflakeAt } from "../src/lib/moderation/age";
 import { emptyLevel } from "../src/lib/rules/derive";
+import { requireGameData } from "../src/lib/rules/data";
+import { checkSnapshot } from "../src/lib/rules/snapshot";
 import type { BuildPlan } from "../src/lib/rules/types";
 
 config({ path: ".env.local", quiet: true });
@@ -48,10 +50,12 @@ export const KHAJIIT_BUILD_ID = "e2ekhajeet";
 export const FOUR_BUILD_ID = "e2efa4rtwe";
 /** WO-57: the sample with only Novice Destruction at level 1, for the Add spell starting list. */
 export const NOVICE_DESTRUCTION_BUILD_ID = "e2edestrvc";
-/** WO-64: Jo'Vashar from the Auto level canvas, fresh (level 1 only, nothing taken), for Auto level. */
+/** WO-64: Jo'Vashar, fresh (level 1 only, nothing taken). */
 export const FRESH_BUILD_ID = "e2efresh2a";
-/** WO-65: the Auto level canvas's Altmer, fresh (level 1 only), for goals in the trees. */
+/** WO-65: the canvas's Altmer, fresh (level 1 only): a new build to make a snapshot of (WO-68). */
 export const FRESH_MAGE_BUILD_ID = "e2efreshmg";
+/** WO-68: a Listed snapshot build (Someone Else's), the Altmer at level 50, for the build page and Browse's Kind filter. */
+export const SNAPSHOT_BUILD_ID = "e2esnapsh2";
 export const AT_LIMIT_TOKEN = "e2e-session-token-0007";
 /** The test author's Discord id; playwright.config.ts gives it to the server as ADMIN_DISCORD_IDS. */
 export const E2E_ADMIN_DISCORD_ID = "e2e-discord-admin-0001";
@@ -119,6 +123,15 @@ function freshMagePlan(): BuildPlan {
     traits: [],
     traitChoices: {},
   } as BuildPlan;
+}
+
+/** The Altmer as a snapshot at level 50 (WO-68), its result worked out as the server would on save. */
+function snapshotPlan(): BuildPlan {
+  const plan = freshMagePlan();
+  const snapshot = { level: 50, attributes: { health: 12, magicka: 25, stamina: 12 }, perks: ["Destruction:Impact", "Destruction:Expert Destruction", "Alteration:Adept Alteration", "Block:Weapons Master"], skills: {} };
+  const r = checkSnapshot(plan, snapshot, requireGameData("5.0.4.8"));
+  if (!r.ok) throw new Error(`The seed snapshot doesn't work: ${r.error}`);
+  return { ...plan, snapshot: { ...snapshot, result: r.result } };
 }
 
 function samplePlan(): BuildPlan {
@@ -339,9 +352,21 @@ export async function seed() {
         createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
       },
       {
+        id: SNAPSHOT_BUILD_ID,
+        // Someone Else's, so the test author's player page keeps its one Listed build.
+        ownerId: OTHER_USER_ID,
+        name: "Altmer Battlemage Snapshot",
+        description: "Destruction up close, Alteration for armor, a shield for when it goes wrong.",
+        visibility: "public",
+        gameVersion: "5.0.4.8",
+        plan: snapshotPlan(),
+        // Made two days ago, so it doesn't count toward the test author's builds for the day (WO-40's limit).
+        createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
+      },
+      {
         id: FRESH_MAGE_BUILD_ID,
         ownerId: TEST_USER_ID,
-        name: "Auto level test",
+        name: "Snapshot test",
         description: "A fresh Altmer mage: level 1 only.",
         visibility: "unlisted",
         gameVersion: "5.0.4.8",

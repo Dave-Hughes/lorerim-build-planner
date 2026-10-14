@@ -44,6 +44,8 @@ export interface BuildSummary {
   race: string;
   traits: string[];
   levels: number;
+  /** A snapshot build's level (WO-68); absent or null for a level-by-level build. */
+  snapshotLevel?: number | null;
   updatedAt: Date;
   author: BuildAuthor;
   likeCount: number;

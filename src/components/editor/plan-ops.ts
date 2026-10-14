@@ -290,7 +290,7 @@ export function restoreLevelSpend(plan: BuildPlan, level: number, before: LevelS
   });
 }
 
-/** What Auto level is told (WO-64). Not saved: the levels it writes are. */
+/** What the fill is told (WO-64): a snapshot's settings (WO-68). */
 export interface FillSettings {
   /** The level to reach, 2 to the version's top. */
   to: number;
@@ -333,7 +333,7 @@ export function attributeOrder(s: Pick<FillSettings, "to" | "attributes" | "firs
 }
 
 /**
- * Auto level (WO-64): fills levels 2 to `to` of a fresh build (level 1 only) by the rules. Each
+ * The fill (WO-64): fills levels 2 to `to` of a fresh build (level 1 only) by the rules. Each
  * level gets its attribute from the order; its skill points go round the targets in row order, one
  * point at a time, skipping a skill at its target, the level's max skill, +5 this level, or one the
  * points left don't cover (the rest bank). Then its perk points take the first perks on the list
@@ -456,7 +456,7 @@ function whyNotPlaced(d: GameData, s: FillSettings, id: string, rank: number, la
   return `${not}: no ${p.tree === "Destiny" ? "Destiny" : "perk"} points left`;
 }
 
-/** How Auto level spends the attribute level-ups (WO-65): a preset (one first, or evenly), or the counts themselves (WO-67). */
+/** How the fill spends the attribute level-ups (WO-65): a preset (one first, or evenly), or the counts themselves (WO-67). */
 export type AttributeChoice = Attribute | "even" | Record<Attribute, number>;
 
 /** Level-ups shared out evenly, Health first with any left over. */
@@ -540,13 +540,13 @@ const skillNeed = (d: GameData, id: string) => {
 };
 
 /**
- * Auto level's goals (WO-65) as fillToLevel's settings. Each goal brings its prerequisites down to
+ * Picked perks (WO-65) as fillToLevel's settings. Each goal brings its prerequisites down to
  * the root: an "either" takes one already coming along, else the lowest skill requirement (its own
  * tree first on a tie). Perks the build already holds at level 1 aren't listed. Perks go
  * prerequisites first, then by skill requirement, low first. Targets: each tree's highest need, in
  * that order, then the majors and the minors up to the max skill so spare points go somewhere useful.
  */
-export function goalsToSettings(plan: BuildPlan, goals: string[], to: number, attributes: AttributeChoice, d: GameData): GoalSettings {
+export function goalsToSettings(plan: BuildPlan, goals: string[], to: number, attributes: AttributeChoice, d: GameData, setSkills: Record<string, number> = {}): GoalSettings {
   const states = computeBuild({ ...plan, levels: plan.levels.slice(0, 1) }, d);
   const held = (id: string) => {
     const st = perkStatus(d, states, 1, id);
@@ -613,6 +613,12 @@ export function goalsToSettings(plan: BuildPlan, goals: string[], to: number, at
     if (p.tree === "Destiny" || !(p.tree in states[0].skills)) continue;
     const need = Math.max(...perks.filter((x) => d.perkById.get(x)!.tree === p.tree).map((x) => skillNeed(d, x)));
     if (need > 0 && !targets.some(([s]) => s === p.tree)) targets.push([p.tree, need]);
+  }
+  // Values the author set by hand (a snapshot's, WO-68) come next, never under what the perks need.
+  for (const [s, v] of Object.entries(setSkills)) {
+    const at = targets.find(([t]) => t === s);
+    if (at) at[1] = Math.max(at[1], v);
+    else targets.push([s, v]);
   }
   for (const s of [...plan.majors, ...plan.minors]) if (!targets.some(([t]) => t === s)) targets.push([s, 100]);
 

@@ -42,7 +42,7 @@ export function BuildCard({ build, mine, likedAt, featured }: { build: BuildSumm
         {featured?.intro && <p className={styles.intro}>{featured.intro}</p>}
         <p className={styles.facts}>
           {build.race ? <IconLabel icon={<RaceIcon name={build.race} />}>{build.race}</IconLabel> : null}
-          {build.traits.length ? ` with ${build.traits.join(" and ")}` : ""}, to level {build.levels}
+          {build.traits.length ? ` with ${build.traits.join(" and ")}` : ""}, {build.snapshotLevel ? `Snapshot at level ${build.snapshotLevel}` : `to level ${build.levels}`}
         </p>
         <div className={styles.foot}>
           <AuthorLink author={build.author} className={styles.author} avatar={<Avatar name={build.author.name} image={build.author.image} size={24} />} />

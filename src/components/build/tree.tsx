@@ -35,16 +35,19 @@ export interface TreeProps {
   /** The list grouped by skill needed (default), or by state: can take now, taken, not yet (WO-62's phone sheet). */
   listBy?: "skill" | "state";
   /**
-   * Auto level's goals (WO-65): stars shown as goals, as coming along, or ruled out, in place of
-   * the build's states; lines between marked stars are lit. A tap picks at once, with no sheet.
+   * A snapshot's picks (WO-65, WO-68): stars shown as picked, auto selected or ruled out, in place
+   * of the build's states; lines between picked and auto selected stars are lit. A tap picks at
+   * once, with no sheet; a ruled-out star can't be picked.
    */
   marks?: Map<string, GoalMark>;
-  /** Open at Fit, the whole tree in view, rather than at reading size (Auto level, WO-65). */
+  /** Why a marked star is as it is (a ruled-out star's reason), added to its hover tag. */
+  markNotes?: Map<string, string>;
+  /** Open at Fit, the whole tree in view, rather than at reading size (the snapshot editor). */
   startFit?: boolean;
 }
 
-export type GoalMark = "goal" | "along" | "clash";
-const MARK_WORDS: Record<GoalMark, string> = { goal: "Goal", along: "Auto selected", clash: "Ruled out" };
+export type GoalMark = "goal" | "along" | "ruled";
+const MARK_WORDS: Record<GoalMark, string> = { goal: "Picked", along: "Auto selected", ruled: "Ruled out" };
 
 export type TreeView = "tree" | "list";
 
@@ -148,6 +151,7 @@ function PerkList({
   hidden,
   by = "skill",
   marks,
+  notes,
 }: {
   d: GameData;
   tree: string;
@@ -157,6 +161,7 @@ function PerkList({
   hidden?: boolean;
   by?: "skill" | "state";
   marks?: Map<string, GoalMark>;
+  notes?: Map<string, string>;
 }) {
   const perks = d.perksByTree.get(tree) ?? [];
   const groups: { label: string; perks: Perk[] }[] = [];
@@ -213,7 +218,14 @@ function PerkList({
               return (
                 <li key={p.id}>
                   {onSelect && !hidden ? (
-                    <button type="button" className={styles.listRow} aria-pressed={marks ? mark === "goal" : p.id === selectedId} onClick={() => onSelect(p.id)}>
+                    <button
+                      type="button"
+                      className={styles.listRow}
+                      aria-pressed={marks ? mark === "goal" : p.id === selectedId}
+                      aria-disabled={mark === "ruled" || undefined}
+                      title={mark === "ruled" ? notes?.get(p.id) : undefined}
+                      onClick={() => mark !== "ruled" && onSelect(p.id)}
+                    >
                       {body}
                     </button>
                   ) : (
@@ -340,7 +352,7 @@ export function BottomSheet({ label, onClose, children, tall }: { label: string;
   );
 }
 
-export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView, noToggle, sheetBelow = SMALL, height, heading, listBy = "skill", marks, startFit }: TreeProps) {
+export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView, noToggle, sheetBelow = SMALL, height, heading, listBy = "skill", marks, markNotes, startFit }: TreeProps) {
   const d = useGameData();
   const [wrap, setWrap] = useState<HTMLDivElement | null>(null);
   // `top`: where the drawing starts on the page (below the toolbar), for short windows.
@@ -575,6 +587,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   };
 
   const chain = (layout ? prerequisiteLines(d, layout.edges, status, selected) : new Set<string>());
+  const lit = (id: string) => marks?.get(id) === "goal" || marks?.get(id) === "along";
   // Grey lines first, then where you can go, then the selected star's needs, then your path on top.
   const lines = (() => {
     const order = { other: 0, next: 1, chain: 2, held: 3 };
@@ -582,7 +595,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
       .map((e) => ({
         e,
         look: marks
-          ? lineLook(marks.has(e.from) && marks.has(e.to) ? "held" : "other", e.anyOf, false)
+          ? lineLook(lit(e.from) && lit(e.to) ? "held" : "other", e.anyOf, false)
           : lineLook(lineState(status.get(e.from), status.get(e.to)), e.anyOf, chain.has(`${e.from}>${e.to}`)),
       }))
       .sort((a, b) => order[a.look.kind] - order[b.look.kind]);
@@ -612,7 +625,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
       </div>
 
       {view === "list" ? (
-        <PerkList d={d} tree={tree} status={status} onSelect={select} selectedId={selected} by={listBy} marks={marks} />
+        <PerkList d={d} tree={tree} status={status} onSelect={select} selectedId={selected} by={listBy} marks={marks} notes={markNotes} />
       ) : (
         <>
           {/* Screen readers get the list first. */}
@@ -661,13 +674,14 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
                   const isSel = n.id === selected;
                   const req = requirementLine(d, p, st);
                   const mark = marks?.get(n.id);
-                  const aria = `${p.name}${req ? `, ${req}` : ""}, ${marks ? (mark ? MARK_WORDS[mark].toLowerCase() : "not chosen") : stateWords(st)}`;
+                  const note = markNotes?.get(n.id);
+                  const aria = `${p.name}${req ? `, ${req}` : ""}, ${marks ? (mark ? MARK_WORDS[mark].toLowerCase() : "not chosen") : stateWords(st)}${note ? `. ${note}` : ""}`;
                   const extra = [
                     ...layout.external.filter((x) => x.forId === n.id).map((x) => `${p.anyOf ? "or" : "and"} ${x.tree}: ${x.name}`),
-                    ...(p.excludes ?? []).map((x) => {
+                    ...(note ? note.split(/(?<=\.) /) : (p.excludes ?? []).map((x) => {
                       const o = d.perkById.get(x);
                       return `Not with ${o && o.tree !== p.tree ? `${o.tree}: ` : ""}${o?.name ?? x}`;
-                    }),
+                    })),
                   ];
                   const label = labels.get(n.id);
                   const partial = st.ranksTaken > 0 && st.ranksTaken < st.ranks && !st.granted;
@@ -677,7 +691,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
                   const style = { left: n.x, top: n.y, ...(partial ? { ["--ring" as string]: rankRing(st, size.star * 2 * 1.3) } : {}) };
                   return (
                     <span key={n.id}>
-                      <button type="button" className={cls} style={style} aria-label={aria} aria-pressed={marks ? mark === "goal" : isSel} data-perk={n.id} data-mark={mark} onClick={() => select(n.id)} onFocus={(e) => reveal(n.id, e)}>
+                      <button type="button" className={cls} style={style} aria-label={aria} aria-pressed={marks ? mark === "goal" : isSel} aria-disabled={mark === "ruled" || undefined} data-perk={n.id} data-mark={mark} onClick={() => mark !== "ruled" && select(n.id)} onFocus={(e) => reveal(n.id, e)}>
                         {/* On hover (mouse) or keyboard focus: the name and what it needs, at once. */}
                         <span className={styles.tag} aria-hidden="true">
                           <b>{nameLine(p, st)}</b>
@@ -692,7 +706,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
                           className={`${styles.label} ${styles[`side_${label.side}`]} ${marks ? (mark ? styles[`labelMark_${mark}`] : "") : `${isSel ? styles.labelSelected : ""} ${held ? styles.labelHeld : st.state === "locked" ? styles.labelLocked : ""}`}`}
                           style={{ left: label.x, top: label.y, width: label.w, height: label.h }}
                           aria-hidden="true"
-                          onClick={() => select(n.id)}
+                          onClick={() => mark !== "ruled" && select(n.id)}
                         >
                           <span className={styles.labelName}>{nameLine(p, st)}</span>
                           {req && !label.nameOnly && <span className={styles.labelReq}>{req}</span>}
@@ -716,7 +730,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
         <div className={styles.legend}>
           <span>
             <i className={styles.keyGoal} />
-            Goal
+            Picked
           </span>
           <Tooltip content="Needed before a perk you picked, so it's taken for you.">
             <span tabIndex={0} className={styles.legendTip}>
@@ -727,6 +741,10 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
           <span>
             <i className={styles.keyFree} />
             Not chosen
+          </span>
+          <span>
+            <i className={styles.keyRuled} />
+            Ruled out
           </span>
         </div>
       ) : (

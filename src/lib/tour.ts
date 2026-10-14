@@ -3,9 +3,9 @@
  * kept in localStorage. Reads and writes never throw: with storage blocked the tour shows at most
  * once a visit (`seen` below remembers it for the page's life).
  */
-export type TourKind = "reader" | "author" | "autolevel";
+export type TourKind = "reader" | "author" | "snapshot";
 
-const KEY: Record<TourKind, string> = { reader: "planner.tour.reader", author: "planner.tour.author", autolevel: "planner.tour.autolevel" };
+const KEY: Record<TourKind, string> = { reader: "planner.tour.reader", author: "planner.tour.author", snapshot: "planner.tour.snapshot" };
 const seen = new Set<TourKind>();
 
 function read(kind: TourKind): string | null {
@@ -24,7 +24,7 @@ function write(kind: TourKind, value: string) {
 }
 
 /**
- * Whether to offer the tour now. The reader's, and Auto level's card (WO-64): never done. The
+ * Whether to offer the tour now. The reader's, and the snapshot editor's (WO-68): never done. The
  * author's: a build was just made and it's not done.
  */
 export function tourDue(kind: TourKind): boolean {
@@ -85,16 +85,16 @@ export const AUTHOR_TOUR: TourScript = {
 };
 
 /**
- * Auto level's tour (WO-67), in plain words. On a phone the tree opens from the skill list, so
- * the tree's stop points at the list.
+ * The snapshot editor's tour (WO-68), in plain words. On a phone the tree opens from the skill
+ * list, so the tree's stop points at the list.
  */
-export const AUTOLEVEL_TOUR = (to: number, wide: boolean): TourScript => ({
-  welcome: { title: "Auto level", text: "Fast-tracks a build. It fills in attributes, skills and perks for every level up to the one you pick.", go: "Show me", no: "Skip" },
+export const SNAPSHOT_TOUR = (wide: boolean): TourScript => ({
+  welcome: { title: "Snapshot", text: "Shows a build at one level: its skills, attributes and perks.", go: "Show me", no: "Skip" },
   stops: [
-    { target: "al-level", title: "Level to reach", text: "Pick the level to reach." },
-    { target: "al-attrs", title: "Attributes", text: "Set how many level-ups go to Health, Magicka and Stamina. The presets fill them in; change any number." },
-    { target: wide ? "al-tree" : "al-skills", title: "Pick perks", text: "Pick a perk you want. The perks it needs first are selected for you." },
-    { target: "al-skills", title: "Skills", text: "Each skill is raised to what your perks need." },
-    { target: "al-run", title: `Auto level to ${to}`, text: "When you're done, this saves every level. Then add notes, gear and spells to each one." },
+    { target: "sn-level", title: "At level", text: "Pick the level." },
+    { target: "sn-attrs", title: "Attributes", text: "Set how many level-ups go to Health, Magicka and Stamina. The presets fill them in; change any number." },
+    { target: wide ? "sn-tree" : "sn-skills", title: "Pick perks", text: "Pick a perk you want. The perks it needs first are selected for you, and perks that can't go with it are ruled out." },
+    { target: "sn-skills", title: "Skills", text: "Skills are raised to what your perks need. Spare points go to your majors; change any number." },
+    { target: "sn-save", title: "Save snapshot", text: "Save the snapshot, then write the Guide." },
   ],
 });

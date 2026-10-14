@@ -2798,18 +2798,18 @@ So it becomes a second kind of build: **a snapshot**, the build at one level ("h
 9. **Later, not now** (parked): gear and main spells on a snapshot; `Write it out level by level`, which copies a snapshot into a level-by-level build as a first draft.
 
 ### Done when
-- [ ] Unit tests:
+- [x] Unit tests:
   - a snapshot with Impact and Expert Destruction at 50 on the Altmer test build passes the check and stores its result;
   - one whose picks need level 25, saved at 20, is refused;
   - a set skill value past what the points allow is refused;
   - Weapons Master rules out Weapon Mastery and every perk whose path needs it;
   - the version copy keeps the snapshot.
-- [ ] e2e: new build, `Snapshot`, pick Expert Destruction at level 20. The level becomes 25 with the line, and `Save snapshot` lands on the build page with `Snapshot at level 25`, the Destruction perks, and Destruction at 75 or more.
-- [ ] e2e: pick Weapons Master; in One-Handed, Weapon Mastery is ruled out with its tooltip and can't be clicked.
-- [ ] e2e: Browse `Kind: Snapshot` lists the snapshot and not the level builds.
-- [ ] Nothing of Auto level is left: no route, button or tour.
-- [ ] Screenshots at 1440 and 390: the choice, the editor (with a ruled-out tooltip), and the build page. Compare with the canvas.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: new build, `Snapshot`, pick Expert Destruction at level 20. The level becomes 25 with the line, and `Save snapshot` lands on the build page with `Snapshot at level 25`, the Destruction perks, and Destruction at 75 or more.
+- [x] e2e: pick Weapons Master; in One-Handed, Weapon Mastery is ruled out with its tooltip and can't be clicked.
+- [x] e2e: Browse `Kind: Snapshot` lists the snapshot and not the level builds.
+- [x] Nothing of Auto level is left: no route, button or tour.
+- [x] Screenshots at 1440 and 390: the choice, the editor (with a ruled-out tooltip), and the build page. Compare with the canvas.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

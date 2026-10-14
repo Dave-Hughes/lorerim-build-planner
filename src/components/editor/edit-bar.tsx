@@ -146,6 +146,7 @@ export function EditBar({
   status,
   visibility: initial,
   onVisibility,
+  snapshot,
 }: {
   buildId: string;
   name: string;
@@ -155,6 +156,8 @@ export function EditBar({
   visibility: BuildVisibility;
   /** Told when the visibility changes here (Set up keeps its own copy). */
   onVisibility?: (v: BuildVisibility) => void;
+  /** A snapshot build (WO-68): its first page reads Snapshot, not Levels. */
+  snapshot?: boolean;
 }) {
   const [visibility, setVisibility] = useState(initial);
   const [saving, setSaving] = useState(false);
@@ -204,7 +207,7 @@ export function EditBar({
         <nav aria-label="Editing pages" className={styles.pages}>
           {PAGES.map((p) => (
             <Link key={p.key} href={`/b/${buildId}/${p.path}`} className={styles.page} aria-current={current === p.key ? "page" : undefined}>
-              {p.label}
+              {p.key === "levels" && snapshot ? "Snapshot" : p.label}
             </Link>
           ))}
         </nav>
@@ -250,7 +253,7 @@ export function EditBar({
               <>
                 {PAGES.map((p) => (
                   <Link key={p.key} href={`/b/${buildId}/${p.path}`} role="menuitem" tabIndex={-1} className={styles.menuItem} aria-current={current === p.key ? "page" : undefined} onClick={() => close()}>
-                    {p.label}
+                    {p.key === "levels" && snapshot ? "Snapshot" : p.label}
                   </Link>
                 ))}
                 <button type="button" role="menuitem" tabIndex={-1} className={styles.menuItem} onClick={copy}>
