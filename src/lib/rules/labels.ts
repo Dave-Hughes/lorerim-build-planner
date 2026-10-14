@@ -171,9 +171,20 @@ export function spotAllowed(c: PlacedLabel, stars: LabelRequest[], o: LabelOptio
 }
 
 const clearOfLines = (c: Rect, o: LabelOptions) => !(o.lines ?? []).some((l) => crosses({ x: c.x - 1, y: c.y - 1, w: c.w + 2, h: c.h + 2 }, l));
+/** clearOfLines for a spot from `allowed` in placeLabels, whose lines never change for it (WO-71). */
+const clearKnown = new WeakMap<PlacedLabel, boolean>();
+function clearSpot(c: PlacedLabel, o: LabelOptions): boolean {
+  let clear = clearKnown.get(c);
+  if (clear === undefined) clearKnown.set(c, (clear = clearOfLines(c, o)));
+  return clear;
+}
 
-/** Labels for a tree at a level, with no star selected. */
-export function placeLabels(stars: LabelRequest[], o: LabelOptions): Map<string, PlacedLabel> {
+/**
+ * Labels for a tree at a level, with no star selected. `spots`, kept by the caller for one layout and
+ * set of options, holds each label's allowed spots by its star and text (WO-71): they depend on
+ * nothing else, and most labels read the same from one level to the next.
+ */
+export function placeLabels(stars: LabelRequest[], o: LabelOptions, spots?: Map<string, PlacedLabel[]>): Map<string, PlacedLabel> {
   const placed: PlacedLabel[] = [];
   const out = new Map<string, PlacedLabel>();
   const rank = (s: LabelRequest) => Math.max(1, s.priority);
@@ -187,9 +198,19 @@ export function placeLabels(stars: LabelRequest[], o: LabelOptions): Map<string,
     placed.splice(placed.indexOf(c), 1);
     out.delete(c.id);
   };
+  // A star's spots, and which of them are allowed, don't depend on what is placed: worked out once
+  // per star (WO-71), not again on each pass and squeeze.
+  const allowedSpots = spots ?? new Map<string, PlacedLabel[]>();
+  const allowed = (s: LabelRequest) => {
+    // The name-only spots are offered to taken and can-take stars only (labelCandidates).
+    const key = `${s.id}\u0001${s.lines.join("\u0002")}\u0001${rank(s) <= 2 ? 1 : 0}`;
+    let a = allowedSpots.get(key);
+    if (!a) allowedSpots.set(key, (a = labelCandidates(s, o).filter((c) => spotAllowed(c, stars, o))));
+    return a;
+  };
   const tryPlace = (s: LabelRequest) => {
-    const fits = labelCandidates(s, o).filter((c) => spotAllowed(c, stars, o) && !placed.some((p) => overlaps(c, p)));
-    const hit = fits.find((c) => clearOfLines(c, o)) ?? fits[0];
+    const fits = allowed(s).filter((c) => !placed.some((p) => overlaps(c, p)));
+    const hit = fits.find((c) => clearSpot(c, o)) ?? fits[0];
     if (hit) put(hit);
     else if (rank(s) <= 2) squeeze(s);
   };
@@ -204,15 +225,13 @@ export function placeLabels(stars: LabelRequest[], o: LabelOptions): Map<string,
   // A taken or can-take star with no room: move the labels in its way (as important) to a spot of
   // their own with the name alone, if that makes room for its name.
   function squeeze(s: LabelRequest) {
-    for (const c of labelCandidates(s, o).filter((c) => c.nameOnly && spotAllowed(c, stars, o))) {
+    for (const c of allowed(s).filter((c) => c.nameOnly)) {
       const blockers = placed.filter((p) => overlaps(c, p));
       if (!blockers.length || !blockers.every((b) => rank(byId.get(b.id)!) === rank(s))) continue;
       blockers.forEach(take);
       const moved: PlacedLabel[] = [];
       for (const b of blockers) {
-        const alt = labelCandidates(byId.get(b.id)!, o).find(
-          (x) => x.nameOnly && !(x.x === b.x && x.y === b.y) && spotAllowed(x, stars, o) && !overlaps(x, c) && !placed.some((p) => overlaps(x, p)),
-        );
+        const alt = allowed(byId.get(b.id)!).find((x) => x.nameOnly && !(x.x === b.x && x.y === b.y) && !overlaps(x, c) && !placed.some((p) => overlaps(x, p)));
         if (!alt) break;
         put(alt);
         moved.push(alt);

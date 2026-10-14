@@ -3004,9 +3004,9 @@ That is the one launch blocker: a long build is exactly what the best authors wi
 5. **Nothing changes on screen.** This order is speed only.
 
 ### Done when
-- [ ] The fixture exists and is seeded for e2e.
-- [ ] `e2e/perf.spec.ts` runs in `npm run test:e2e` and fails above the targets in point 4.
-- [ ] Before and after numbers for each step are in the commit message.
+- [x] The fixture exists and is seeded for e2e.
+- [x] `e2e/perf.spec.ts` runs in `npm run test:e2e` and fails above the targets in point 4.
+- [x] Before and after numbers for each step are in the commit message.
 - [ ] The Sevari build on staging edits without a visible stall: Dave checks it in the app.
 - [ ] All checks in CLAUDE.md pass.
 

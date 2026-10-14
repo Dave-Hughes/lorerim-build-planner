@@ -4,8 +4,8 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import { useGameData } from "@/components/game-data";
 import { perkText, type GameData, type Perk } from "@/lib/rules/data";
 import { perkRequirementText, perkStatus, type PerkStatus } from "@/lib/rules/derive";
-import { labelSizes, placeLabels, withSelected, type LabelRequest, type PlacedLabel } from "@/lib/rules/labels";
-import { drawingSize, fitHeight, treeLayout, type LayoutPadding } from "@/lib/rules/layout";
+import { labelSizes, placeLabels, withSelected, type LabelOptions, type LabelRequest, type PlacedLabel } from "@/lib/rules/labels";
+import { drawingSize, fitHeight, treeLayout, type LayoutPadding, type TreeLayout } from "@/lib/rules/layout";
 import { pageZoom } from "@/lib/zoom";
 import { isHeld, lineLook, lineState, prerequisiteLines } from "@/lib/rules/tree-states";
 import type { LevelState } from "@/lib/rules/types";
@@ -326,6 +326,22 @@ export function BottomSheet({ label, onClose, children, tall }: { label: string;
   );
 }
 
+/** The tree's room: its width, the window, and where the drawing starts on the page (`top`, for short windows). */
+function roomOf(wrap: HTMLDivElement) {
+  const bar = wrap.firstElementChild as HTMLElement | null;
+  // Where the drawing starts: on the page, or below a [data-tree-anchor] that is scrolled to the
+  // window's top when it opens (the shared page's perk trees).
+  const anchor = wrap.closest<HTMLElement>("[data-tree-anchor]");
+  const from = anchor ? anchor.getBoundingClientRect().top : -window.scrollY;
+  const top = Math.round(wrap.getBoundingClientRect().top - from + (bar?.offsetHeight ?? 0));
+  return { w: Math.floor(wrap.clientWidth), vw: window.innerWidth, vh: window.innerHeight, top };
+}
+
+/** Unchanged (the usual case on a new level): the same object, so the tree isn't drawn twice (WO-71). */
+function keepRoom<R extends { w: number; vw: number; vh: number; top: number }>(was: R, next: R): R {
+  return was.w === next.w && was.vw === next.vw && was.vh === next.vh && was.top === next.top ? was : next;
+}
+
 export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView, noToggle, sheetBelow = SMALL, height, heading, listBy = "skill", ruled, openLabel }: TreeProps) {
   const d = useGameData();
   const [wrap, setWrap] = useState<HTMLDivElement | null>(null);
@@ -334,13 +350,8 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   useLayoutEffect(() => {
     if (!wrap) return;
     const set = () => {
-      const bar = wrap.firstElementChild as HTMLElement | null;
-      // Where the drawing starts: on the page, or below a [data-tree-anchor] that is scrolled to the
-      // window's top when it opens (the shared page's perk trees).
-      const anchor = wrap.closest<HTMLElement>("[data-tree-anchor]");
-      const from = anchor ? anchor.getBoundingClientRect().top : -window.scrollY;
-      const top = Math.round(wrap.getBoundingClientRect().top - from + (bar?.offsetHeight ?? 0));
-      setRoom({ w: Math.floor(wrap.clientWidth), vw: window.innerWidth, vh: window.innerHeight, top });
+      const next = roomOf(wrap);
+      setRoom((was) => keepRoom(was, next));
     };
     set();
     const ro = new ResizeObserver(set);
@@ -390,9 +401,8 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   const dims = w0 > 0 ? drawingSize(d, tree, w0, h0, pad, t) : null;
   const W = dims?.width ?? 0;
   const H = dims?.height ?? 0;
-  // (The React Compiler memoizes these.)
-  const layout = W > 0 ? treeLayout(d, tree, W, H, padFor(w0)) : null;
-  const pos = new Map(layout?.nodes.map((n) => [n.id, n]) ?? []);
+  // Worked out again only when the tree or the drawing's size changes (WO-71).
+  const { layout, pos } = useTreeLayout(d, tree, W, H, w0);
 
   // Where the view starts: the selected star; else this level's newest perk in the tree; else the
   // tree's bottom row, centred (where every tree starts).
@@ -428,31 +438,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   }, [d, tree, states, level]);
 
   // Labels are placed once for the tree, level and size; selecting a star only adds its own label.
-  const placing = (() => {
-    if (!layout) return null;
-    const requests: LabelRequest[] = layout.nodes.map((n) => {
-      const p = d.perkById.get(n.id)!;
-      const st = status.get(n.id)!;
-      const req = requirementLine(d, p, st);
-      const name = nameLine(p, st);
-      return {
-        id: n.id,
-        x: n.x,
-        y: n.y,
-        lines: req ? [name, req] : [name],
-        // A star with ranks already taken counts as taken.
-        priority: st.state === "taken" || st.ranksTaken > 0 ? 1 : st.state === "open" ? 2 : 3,
-      };
-    });
-    const lines = layout.edges.map((e) => {
-      const a = layout.nodes.find((n) => n.id === e.from)!;
-      const b = layout.nodes.find((n) => n.id === e.to)!;
-      return { x1: a.x, y1: a.y, x2: b.x, y2: b.y };
-    });
-    const opts = { width: layout.width, height: layout.height, star: size.star, font: size.font, measure, lines };
-    return { requests, opts, base: placeLabels(requests, opts) };
-  })();
-  const labels = (placing ? withSelected(placing.base, selected, placing.requests, placing.opts) : new Map<string, PlacedLabel>());
+  const labels = usePlacedLabels(d, layout, status, size.star, size.font, measure, selected);
 
   const select = (id: string) => {
     setOwnPick(id);
@@ -727,4 +713,76 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
       )}
     </div>
   );
+}
+
+/** The tree's layout and each star's place, again only when the tree or the drawing's size changes (WO-71). */
+function useTreeLayout(d: GameData, tree: string, W: number, H: number, w0: number) {
+  return useMemo(() => {
+    const layout = W > 0 ? treeLayout(d, tree, W, H, padFor(w0)) : null;
+    return { layout, pos: new Map(layout?.nodes.map((n) => [n.id, n]) ?? []) };
+  }, [d, tree, W, H, w0]);
+}
+
+/**
+ * Placed labels by what they say (WO-71): a level whose labels read the same as one placed before
+ * (the Destiny tree on most levels, a tree going back to a level) reuses that placement, since the
+ * same labels on the same layout always land in the same places. Per layout, and kept small.
+ */
+const placedCache = new WeakMap<TreeLayout, { measure: LabelOptions["measure"]; star: number; font: number; byKey: Map<string, Map<string, PlacedLabel>>; spots: Map<string, PlacedLabel[]> }>();
+function placedFor(layout: TreeLayout, requests: LabelRequest[], opts: LabelOptions): Map<string, PlacedLabel> {
+  let cache = placedCache.get(layout);
+  // New font measures (the fonts finished loading) or sizes place everything again.
+  if (!cache || cache.measure !== opts.measure || cache.star !== opts.star || cache.font !== opts.font) {
+    cache = { measure: opts.measure, star: opts.star, font: opts.font, byKey: new Map(), spots: new Map() };
+    placedCache.set(layout, cache);
+  }
+  const key = requests.map((r) => `${r.id}\u0001${r.lines.join("\u0002")}\u0001${r.priority}`).join("\u0003");
+  const hit = cache.byKey.get(key);
+  if (hit) return hit;
+  // The allowed spots are kept across levels too, by star and text (placeLabels).
+  const placed = placeLabels(requests, opts, cache.spots);
+  if (cache.byKey.size >= 40) cache.byKey.delete(cache.byKey.keys().next().value!);
+  cache.byKey.set(key, placed);
+  return placed;
+}
+
+/**
+ * The stars' labels. Placing them is the costliest part of drawing a tree, so it runs again only
+ * when the tree, its stars' states, the size or the font changes, not on every redraw (WO-71);
+ * selecting a star only adds its own label.
+ */
+function usePlacedLabels(
+  d: GameData,
+  layout: TreeLayout | null,
+  status: Map<string, PerkStatus>,
+  star: number,
+  font: number,
+  measure: ((text: string, size: number) => number) | undefined,
+  selected: string | null,
+) {
+  const placing = useMemo(() => {
+    if (!layout) return null;
+    const requests: LabelRequest[] = layout.nodes.map((n) => {
+      const p = d.perkById.get(n.id)!;
+      const st = status.get(n.id)!;
+      const req = requirementLine(d, p, st);
+      const name = nameLine(p, st);
+      return {
+        id: n.id,
+        x: n.x,
+        y: n.y,
+        lines: req ? [name, req] : [name],
+        // A star with ranks already taken counts as taken.
+        priority: st.state === "taken" || st.ranksTaken > 0 ? 1 : st.state === "open" ? 2 : 3,
+      };
+    });
+    const lines = layout.edges.map((e) => {
+      const a = layout.nodes.find((n) => n.id === e.from)!;
+      const b = layout.nodes.find((n) => n.id === e.to)!;
+      return { x1: a.x, y1: a.y, x2: b.x, y2: b.y };
+    });
+    const opts = { width: layout.width, height: layout.height, star, font, measure, lines };
+    return { requests, opts, base: placedFor(layout, requests, opts) };
+  }, [d, layout, status, star, font, measure]);
+  return useMemo(() => (placing ? withSelected(placing.base, selected, placing.requests, placing.opts) : new Map<string, PlacedLabel>()), [placing, selected]);
 }

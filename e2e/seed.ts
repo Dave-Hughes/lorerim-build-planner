@@ -14,6 +14,7 @@ import sample from "../src/lib/rules/__fixtures__/sample-build.json";
 import azrem from "./fixtures/azrem.json";
 import iriel from "./fixtures/iriel.json";
 import pureMage from "./fixtures/pure-mage.json";
+import sevari from "../src/lib/rules/__fixtures__/sevari.json";
 import { textLength, type GuideDoc } from "../src/lib/guide/doc";
 import { snowflakeAt } from "../src/lib/moderation/age";
 import { emptyLevel } from "../src/lib/rules/derive";
@@ -69,6 +70,8 @@ export const DESTINY_BUILD_ID = "e2edstnyaa";
 export const IRIEL_BUILD_ID = "e2eyrye7q2";
 /** A copy of Pure Mage from staging (e2e/fixtures/pure-mage.json): 57 levels, 21 gear rows with notes, Frost. Link only. */
 export const PURE_MAGE_BUILD_ID = "e2epuremag";
+/** WO-71: a copy of Sevari from staging (src/lib/rules/__fixtures__/sevari.json): 100 levels, skipping ahead from 5, about 100 perks. For the speed tests. */
+export const SEVARI_BUILD_ID = "e2esevar22";
 export const OTHER_USER_ID = "e2e-user-0002";
 export const OTHER_BUILD_ID = "e2eqq2e2e2";
 /** Made for the test-only older version (src/lib/rules/__fixtures__/test-version.ts). */
@@ -214,6 +217,15 @@ export async function seed() {
         visibility: "unlisted",
         gameVersion: "5.0.4.8",
         plan: pureMage.plan as unknown as BuildPlan,
+      },
+      {
+        id: SEVARI_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        name: sevari.name,
+        description: sevari.description,
+        visibility: "unlisted",
+        gameVersion: "5.0.4.8",
+        plan: sevari.plan as unknown as BuildPlan,
       },
       {
         id: AZREM_BUILD_ID,
@@ -399,6 +411,7 @@ export async function seed() {
         ...Object.entries(azrem.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: AZREM_BUILD_ID, key, doc, textLength: textLength(doc) })),
         ...Object.entries(iriel.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: IRIEL_BUILD_ID, key, doc, textLength: textLength(doc) })),
         ...Object.entries(pureMage.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: PURE_MAGE_BUILD_ID, key, doc, textLength: textLength(doc) })),
+        ...Object.entries(sevari.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: SEVARI_BUILD_ID, key, doc, textLength: textLength(doc) })),
       ],
     );
   } finally {

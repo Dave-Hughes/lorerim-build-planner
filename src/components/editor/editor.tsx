@@ -66,9 +66,25 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   const [confirmReset, setConfirmReset] = useState(false);
   // Skip ahead (WO-69): the level the footer's button goes to, chosen first; 10 levels on to start.
   const [skipTo, setSkipTo] = useState<number | null>(null);
-  // Level notes as edited here, so going back to a level shows the latest text.
-  const [notes, setNotes] = useState<Record<string, GuideDoc>>(guide);
-  const noted = useMemo(() => notedLevels(notes), [notes]);
+  // Level notes as edited here, so going back to a level shows the latest text. Kept out of state
+  // (WO-71): a keystroke in the notes must not redraw the whole editor. Only the set of levels with
+  // notes (the ruler's marks, the Remove label) is state, and it changes only when a level gains or
+  // loses its notes.
+  const notes = useRef<Record<string, GuideDoc>>(guide);
+  const [noted, setNoted] = useState(() => notedLevels(guide));
+  const editNotes = (n: number, doc: GuideDoc) => {
+    notes.current = { ...notes.current, [`level:${n}`]: doc };
+    const has = notedLevels({ [`level:${n}`]: doc }).has(n);
+    // Most keystrokes leave it as it was: no state update at all, so the editor isn't run again.
+    if (noted.has(n) === has) return;
+    setNoted((was) => {
+      if (was.has(n) === has) return was;
+      const next = new Set(was);
+      if (has) next.add(n);
+      else next.delete(n);
+      return next;
+    });
+  };
   // Notes typed here before but never confirmed by the server (a closed tab, a lost connection).
   useEffect(() => saveKeptGuides(buildId), [buildId]);
 
@@ -836,9 +852,9 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
             key={level}
             buildId={buildId}
             level={level}
-            initial={notes[`level:${level}`] ?? emptyDoc()}
+            notes={notes}
             onChange={(doc) => {
-              setNotes((n) => ({ ...n, [`level:${level}`]: doc }));
+              editNotes(level, doc);
               // The level's old plain-text note now lives in the notes; clear it from the plan too.
               if (lv.note) setPlan(ops.setNote(plan, level, ""));
             }}
@@ -951,7 +967,19 @@ function Pool({ label, icon, value, of, destiny, flashKey, detail }: { label: st
 }
 
 /** The level's notes: the guide editor, compact (H3 the only heading). */
-function LevelNotes({ buildId, level, initial, onChange }: { buildId: string; level: number; initial: GuideDoc; onChange: (doc: GuideDoc) => void }) {
+function LevelNotes({
+  buildId,
+  level,
+  notes,
+  onChange,
+}: {
+  buildId: string;
+  level: number;
+  notes: React.RefObject<Record<string, GuideDoc>>;
+  onChange: (doc: GuideDoc) => void;
+}) {
+  // The latest text for this level, read once as the level opens (the editor keeps it from there).
+  const [initial] = useState(() => notes.current[`level:${level}`] ?? emptyDoc());
   const [save, setSave] = useState<{ status: GuideSaveStatus; error: string | null }>({ status: "idle", error: null });
   const onStatus = useCallback((status: GuideSaveStatus, error: string | null) => setSave({ status, error }), []);
   const label = guideSaveLabel(save.status, save.error);

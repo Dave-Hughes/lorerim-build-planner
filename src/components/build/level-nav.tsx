@@ -407,14 +407,16 @@ export function LevelBars({ marks, level, onChange, spans }: { marks: LevelMark[
       set(left.current, w.left, r.left);
       set(right.current, w.right, r.right);
     };
-    // Follow the window while it moves, then settle.
+    // Follow the window while it moves, then settle. The first line is drawn in the next frame, still
+    // before it paints (WO-71): measured here, during the commit, it forced a layout of the whole
+    // page that the rest of the commit (the level's notes editor) undid, so the page was laid out twice.
     let frame = 0;
     const until = performance.now() + 220;
     const follow = () => {
       draw();
       if (performance.now() < until) frame = requestAnimationFrame(follow);
     };
-    follow();
+    frame = requestAnimationFrame(follow);
     const ro = new ResizeObserver(draw);
     ro.observe(el);
     window.addEventListener("resize", draw);

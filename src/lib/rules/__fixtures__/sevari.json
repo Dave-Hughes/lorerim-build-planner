@@ -1,0 +1,1487 @@
+{
+ "_source": "Sevari Uvayn (/b/vhzj9w38n3) on staging, copied 14 Oct 2026 for the WO-71 speed tests. The plan is the staging build's; its level notes are stand-ins of about the same length on the same levels.",
+ "name": "Sevari Uvayn, Morag Tong Nightblade",
+ "description": "Daggers from the shadows, Illusion to stay there, poison for anything that wakes up.",
+ "plan": {
+  "gear": [
+   {
+    "name": "Iron Dagger",
+    "note": "Off the boat. Buy two at the Windhelm smith.",
+    "slot": "Main hand",
+    "itemId": "Skyrim.esm:01397E",
+    "fromLevel": 1
+   },
+   {
+    "name": "Iron Dagger",
+    "note": "",
+    "slot": "Off hand",
+    "itemId": "Skyrim.esm:01397E",
+    "fromLevel": 1
+   },
+   {
+    "name": "Boiled Leather Armor",
+    "note": "",
+    "slot": "Body",
+    "itemId": "Common Clothes and Armors.esp:0008F1",
+    "fromLevel": 1
+   },
+   {
+    "name": "Elven Dagger",
+    "note": "Pair from the Riften market.",
+    "slot": "Main hand",
+    "itemId": "Skyrim.esm:01399E",
+    "fromLevel": 20
+   },
+   {
+    "name": "Elven Dagger",
+    "note": "",
+    "slot": "Off hand",
+    "itemId": "Skyrim.esm:01399E",
+    "fromLevel": 20
+   },
+   {
+    "name": "Thieves Guild Cuirass",
+    "note": "From Tonilia once you're a member.",
+    "slot": "Body",
+    "itemId": "Skyrim.esm:0D3ACC",
+    "fromLevel": 20
+   },
+   {
+    "name": "Glass Dagger",
+    "note": "Bought from the Dark Elf merchants on Solstheim, or Glass from Riften.",
+    "slot": "Main hand",
+    "itemId": "Skyrim.esm:0139A6",
+    "fromLevel": 40
+   },
+   {
+    "name": "Glass Dagger",
+    "note": "",
+    "slot": "Off hand",
+    "itemId": "Skyrim.esm:0139A6",
+    "fromLevel": 40
+   },
+   {
+    "name": "Nightingale Armor",
+    "note": "End of the Thieves Guild questline.",
+    "slot": "Body",
+    "itemId": "Skyrim.esm:0FCC0E",
+    "fromLevel": 50
+   },
+   {
+    "made": {
+     "base": "Daedric Dagger",
+     "enchantments": [
+      "Skyrim.esm:10FB98"
+     ]
+    },
+    "name": "Daedric Dagger",
+    "note": "Enchant your own with Paralyze. Add Absorb Health once you have Enchantment Mastery.",
+    "slot": "Main hand",
+    "itemId": "Apocalypse - Magic of Skyrim.esp:012E67",
+    "fromLevel": 75
+   }
+  ],
+  "mode": "Konahrik",
+  "race": "Dunmer",
+  "deity": "Mephala",
+  "notes": "",
+  "start": "From Overseas",
+  "theme": "daedric",
+  "levels": [
+   {
+    "note": "",
+    "perks": [
+     "One-Handed:Weapon Mastery",
+     "Sneak:Stealth",
+     "Illusion:Novice Illusion"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Requiem.esp:02852F",
+      "where": "Novice Illusion"
+     },
+     {
+      "id": "Requiem.esp:028532",
+      "where": "Novice Illusion"
+     }
+    ],
+    "destiny": [
+     "Destiny:Destiny"
+    ],
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "One-Handed:Weapon Mastery"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 5,
+     "Illusion": 5,
+     "One-Handed": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "One-Handed:Penetrating Strikes"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 5,
+     "Illusion": 5,
+     "One-Handed": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "One-Handed:Short Blade Focus"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 5,
+     "Illusion": 5,
+     "One-Handed": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Sneak:Deft Strike"
+    ],
+    "extras": [],
+    "destiny": [
+     "Destiny:Endurance"
+    ],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 5,
+     "Illusion": 5,
+     "One-Handed": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Evasion:Agility",
+     "Evasion:Light Armor Training",
+     "Sneak:Muffled Movement",
+     "Illusion:Apprentice Illusion",
+     "Alchemy:Alchemical Lore"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Skyrim.esm:08F3EB",
+      "where": "Apprentice Illusion"
+     },
+     {
+      "id": "Skyrim.esm:04DEE9",
+      "where": "Apprentice Illusion"
+     }
+    ],
+    "destiny": [
+     "Destiny:Thief"
+    ],
+    "attributes": {
+     "health": 2,
+     "stamina": 3
+    },
+    "skillPoints": {
+     "Sneak": 10,
+     "Alchemy": 10,
+     "Evasion": 15,
+     "Finesse": 15,
+     "Illusion": 5,
+     "One-Handed": 10,
+     "Restoration": 10
+    }
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "One-Handed:Short Blade Focus",
+     "Alchemy:Concentrated Poisons",
+     "Illusion:Emotional Illusions",
+     "Illusion:Perceptual Illusions",
+     "Sneak:Tripwire",
+     "Sneak:Fog of War",
+     "Evasion:Athletics",
+     "Finesse:Nimble Fingers",
+     "Finesse:Cutpurse"
+    ],
+    "extras": [],
+    "destiny": [
+     "Destiny:Swiftness"
+    ],
+    "attributes": {
+     "health": 3,
+     "magicka": 1,
+     "stamina": 5
+    },
+    "skillPoints": {
+     "Sneak": 9,
+     "Speech": 15,
+     "Alchemy": 20,
+     "Evasion": 15,
+     "Finesse": 20,
+     "Illusion": 14,
+     "One-Handed": 9,
+     "Restoration": 10
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "One-Handed:Puncture"
+    ],
+    "extras": [],
+    "destiny": [
+     "Destiny:Spellblade"
+    ],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 5,
+     "Evasion": 5,
+     "Finesse": 5,
+     "Illusion": 1,
+     "One-Handed": 1,
+     "Restoration": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Sneak:Anatomical Lore",
+     "Sneak:Light Steps",
+     "Illusion:Adept Illusion",
+     "Evasion:Dexterity",
+     "Evasion:Vexing Flanker",
+     "Alchemy:Improved Poisons",
+     "Finesse:Poisoner",
+     "One-Handed:Short Blade Focus",
+     "Sneak:Arcane Assassin",
+     "Evasion:Annoying Mosquitoes"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Skyrim.esm:027EB6",
+      "where": "Adept Illusion"
+     },
+     {
+      "id": "Requiem - Magic Redone.esp:005ECD",
+      "where": "Adept Illusion"
+     }
+    ],
+    "destiny": [
+     "Destiny:Silent Blade",
+     "Destiny:Nightblade"
+    ],
+    "attributes": {
+     "health": 3,
+     "magicka": 1,
+     "stamina": 6
+    },
+    "skillPoints": {
+     "Sneak": 10,
+     "Alchemy": 20,
+     "Evasion": 15,
+     "Finesse": 10,
+     "Illusion": 10,
+     "One-Handed": 10
+    }
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Sneak:Advanced Anatomical Lore",
+     "Sneak:Acrobatics",
+     "Illusion:Expert Illusion",
+     "Evasion:Combat Reflexes",
+     "Illusion:Shadow Shaping",
+     "Illusion:Delusive Illusions",
+     "Alchemy:Alkahest",
+     "Sneak:Cloak and Dagger",
+     "Illusion:Mesmerize",
+     "Finesse:Misdirection"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Requiem.esp:073737",
+      "where": "Expert Illusion"
+     },
+     {
+      "id": "Requiem - Magic Redone.esp:005EEB",
+      "where": "Expert Illusion"
+     }
+    ],
+    "destiny": [],
+    "attributes": {
+     "health": 4,
+     "magicka": 1,
+     "stamina": 5
+    },
+    "skillPoints": {
+     "Sneak": 10,
+     "Alchemy": 10,
+     "Evasion": 10,
+     "Finesse": 10,
+     "Illusion": 10,
+     "One-Handed": 10
+    }
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "One-Handed:Death Adder",
+     "Sneak:Problem Solver",
+     "Sneak:Shadow Opportunist",
+     "Illusion:Master of Shadows",
+     "Evasion:Wind Walker",
+     "Illusion:Obliterate the Mind",
+     "Alchemy:Improved Elixirs",
+     "Alchemy:Catalysis",
+     "Alchemy:Immunization",
+     "Illusion:Curse"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attributes": {
+     "health": 5,
+     "magicka": 1,
+     "stamina": 4
+    },
+    "skillPoints": {
+     "Sneak": 10,
+     "Alchemy": 10,
+     "Evasion": 10,
+     "Illusion": 10,
+     "One-Handed": 10
+    }
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Sneak:Shadowrunner",
+     "Illusion:Master Illusion",
+     "Evasion:Meteoric Reflexes",
+     "Alchemy:World Serpent",
+     "Illusion:Shadows of Conflict",
+     "Illusion:Environmental Manipulation",
+     "Illusion:Deceptive Image",
+     "Illusion:Empowered Illusion",
+     "Finesse:Perfected Art",
+     "Finesse:Outlaw",
+     "Finesse:Thief",
+     "Finesse:Lucky 7",
+     "Finesse:Death's Emperor",
+     "Finesse:Sound Body",
+     "Finesse:Sound Mind",
+     "Finesse:Sound Spirit",
+     "Finesse:Trapper",
+     "Finesse:Poisoned Clamps",
+     "Finesse:Salt on the Wound",
+     "Alchemy:Fortified Muscles",
+     "Alchemy:Purification Process",
+     "Alchemy:Regeneration",
+     "Restoration:Novice Restoration",
+     "Destruction:Novice Destruction",
+     "Illusion:Domination"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attributes": {
+     "health": 10,
+     "magicka": 3,
+     "stamina": 12
+    },
+    "skillPoints": {
+     "Speech": 25,
+     "Alchemy": 10,
+     "Evasion": 5,
+     "Finesse": 25,
+     "Smithing": 30,
+     "Enchanting": 35,
+     "Destruction": 45,
+     "Restoration": 35
+    }
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Restoration:Apprentice Restoration",
+     "Restoration:Adept Restoration",
+     "Restoration:Expert Restoration",
+     "Restoration:Master Restoration",
+     "Restoration:Improved Healing",
+     "Restoration:Respite",
+     "Enchanting:Enchanter's Insight",
+     "Enchanting:Soul Gem Mastery",
+     "Enchanting:Arcane Experimentation",
+     "Enchanting:Artificer's Insight",
+     "Enchanting:Elemental Lore",
+     "Enchanting:Corpus Lore",
+     "Enchanting:Skill Lore",
+     "Enchanting:Enchantment Mastery",
+     "Enchanting:Artifact Enchanter",
+     "Speech:Haggling",
+     "Speech:Silver Tongue",
+     "Speech:Masquerade",
+     "Smithing:Craftsmanship",
+     "Smithing:Advanced Light Armors",
+     "Speech:Merchant",
+     "Restoration:Improved Protection",
+     "Restoration:Improved Wards",
+     "Restoration:Ward Mastery"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attributes": {
+     "health": 12,
+     "magicka": 3,
+     "stamina": 10
+    },
+    "skillPoints": {
+     "Speech": 50,
+     "Smithing": 35,
+     "Enchanting": 50,
+     "Destruction": 25,
+     "Restoration": 25
+    }
+   }
+  ],
+  "majors": [
+   "One-Handed",
+   "Sneak",
+   "Illusion"
+  ],
+  "minors": [
+   "Evasion",
+   "Finesse",
+   "Alchemy",
+   "Destruction",
+   "Enchanting",
+   "Restoration"
+  ],
+  "schema": 1,
+  "traits": [
+   "Introvert",
+   "Focused Combat"
+  ],
+  "birthsign": "Shadow",
+  "gameVersion": "5.0.4.8",
+  "startOption": "Windhelm Docks",
+  "traitChoices": {
+   "Focused Combat": "One-Handed"
+  }
+ },
+ "guide": {
+  "level:1": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Stand-in note for level 1. The staging build has a note here; this copy carries one of about the same length so the editor has notes to load, mark on the ruler and save around."
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "What to raise, what to take and why, where to go next, and what to watch for before the next level-up: a few lines, the way an author writes them."
+      }
+     ]
+    }
+   ]
+  },
+  "level:2": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Stand-in note for level 2. The staging build has a note here; this copy carries one of about the same length so the editor has notes to load, mark on the ruler and save around."
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "What to raise, what to take and why, where to go next, and what to watch for before the next level-up: a few lines, the way an author writes them."
+      }
+     ]
+    }
+   ]
+  },
+  "level:3": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Stand-in note for level 3. The staging build has a note here; this copy carries one of about the same length so the editor has notes to load, mark on the ruler and save around."
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "What to raise, what to take and why, where to go next, and what to watch for before the next level-up: a few lines, the way an author writes them."
+      }
+     ]
+    }
+   ]
+  },
+  "level:4": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Stand-in note for level 4. The staging build has a note here; this copy carries one of about the same length so the editor has notes to load, mark on the ruler and save around."
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "What to raise, what to take and why, where to go next, and what to watch for before the next level-up: a few lines, the way an author writes them."
+      }
+     ]
+    }
+   ]
+  },
+  "level:5": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Stand-in note for level 5. The staging build has a note here; this copy carries one of about the same length so the editor has notes to load, mark on the ruler and save around."
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "What to raise, what to take and why, where to go next, and what to watch for before the next level-up: a few lines, the way an author writes them."
+      }
+     ]
+    }
+   ]
+  },
+  "level:10": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Stand-in note for level 10. The staging build has a note here; this copy carries one of about the same length so the editor has notes to load, mark on the ruler and save around."
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "What to raise, what to take and why, where to go next, and what to watch for before the next level-up: a few lines, the way an author writes them."
+      }
+     ]
+    }
+   ]
+  },
+  "level:19": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Stand-in note for level 19. The staging build has a note here; this copy carries one of about the same length so the editor has notes to load, mark on the ruler and save around."
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "What to raise, what to take and why, where to go next, and what to watch for before the next level-up: a few lines, the way an author writes them."
+      }
+     ]
+    }
+   ]
+  },
+  "level:20": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Stand-in note for level 20. The staging build has a note here; this copy carries one of about the same length so the editor has notes to load, mark on the ruler and save around."
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "What to raise, what to take and why, where to go next, and what to watch for before the next level-up: a few lines, the way an author writes them."
+      }
+     ]
+    }
+   ]
+  },
+  "level:30": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Stand-in note for level 30. The staging build has a note here; this copy carries one of about the same length so the editor has notes to load, mark on the ruler and save around."
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "What to raise, what to take and why, where to go next, and what to watch for before the next level-up: a few lines, the way an author writes them."
+      }
+     ]
+    }
+   ]
+  },
+  "level:40": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Stand-in note for level 40. The staging build has a note here; this copy carries one of about the same length so the editor has notes to load, mark on the ruler and save around."
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "What to raise, what to take and why, where to go next, and what to watch for before the next level-up: a few lines, the way an author writes them."
+      }
+     ]
+    }
+   ]
+  },
+  "level:50": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Stand-in note for level 50. The staging build has a note here; this copy carries one of about the same length so the editor has notes to load, mark on the ruler and save around."
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "What to raise, what to take and why, where to go next, and what to watch for before the next level-up: a few lines, the way an author writes them."
+      }
+     ]
+    }
+   ]
+  },
+  "level:75": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Stand-in note for level 75. The staging build has a note here; this copy carries one of about the same length so the editor has notes to load, mark on the ruler and save around."
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "What to raise, what to take and why, where to go next, and what to watch for before the next level-up: a few lines, the way an author writes them."
+      }
+     ]
+    }
+   ]
+  },
+  "level:100": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "Stand-in note for level 100. The staging build has a note here; this copy carries one of about the same length so the editor has notes to load, mark on the ruler and save around."
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "type": "text",
+       "text": "What to raise, what to take and why, where to go next, and what to watch for before the next level-up: a few lines, the way an author writes them."
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
