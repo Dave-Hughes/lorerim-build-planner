@@ -161,8 +161,8 @@ Take the Dodge perk in the Evasion tree first, then press Left Alt. Each dodge c
 | Key | Stance | Effect |
 | --- | --- | --- |
 | F1 | High | +20% armor penetration; you take 20% more physical damage |
-| F2 | Mid | +10% critical chance and critical damage; you take 10% less physical damage |
-| F3 | Low | +30% stagger and +30% damage to staggered enemies; enemies stagger you 30% more |
+| F2 | Mid | +10% critical chance and critical damage; you deal 10% less physical damage |
+| F3 | Low | +30% poise damage and +30% damage to staggered enemies; enemies do 30% more poise damage to you |
 | F4 | Neutral | None |
 
 ### Keys that aren't in vanilla Skyrim
