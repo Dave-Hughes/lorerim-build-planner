@@ -1,10 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  attributeSettings,
-  defaultAttribute,
-  fillToLevel,
-  goalsToSettings,
-} from "@/components/editor/plan-ops";
+import { attributeSettings, defaultAttribute, fillToLevel, goalFloor, goalsToSettings, mostFirst, scaleAttributes, shiftAttribute } from "@/components/editor/plan-ops";
 import { requireGameData, type GameData } from "./data";
 import { computeBuild } from "./engine";
 import { emptyLevel } from "./derive";
@@ -159,5 +154,39 @@ describe("goalsToSettings (WO-65)", () => {
     for (const id of ids)
       expect(report.perks.find((p) => p.id === id)?.level).not.toBeNull();
     expect(plan.levels).toHaveLength(30);
+  });
+});
+
+describe("Auto level's floor and attributes (WO-67)", () => {
+  it("Expert Destruction alone on the Altmer needs level 25, the same as the preview's earliest", () => {
+    expect(goalFloor(ALTMER, ["Destruction:Expert Destruction"], d, 100)).toBe(25);
+    const at100 = fillToLevel(ALTMER, goalsToSettings(ALTMER, ["Destruction:Expert Destruction"], 100, "even", d).settings, d);
+    expect(at100.report.perks.find((p) => p.id === "Destruction:Expert Destruction")?.level).toBe(25);
+    // Filled to the floor, the goal is placed.
+    const at25 = fillToLevel(ALTMER, goalsToSettings(ALTMER, ["Destruction:Expert Destruction"], 25, "magicka", d).settings, d);
+    expect(at25.report.perks.find((p) => p.id === "Destruction:Expert Destruction")?.level).toBe(25);
+    expect(goalFloor(ALTMER, [], d, 100)).toBe(2);
+  });
+
+  it("the attribute with the most goes first; a tie goes in turn", () => {
+    expect(mostFirst({ health: 3, magicka: 10, stamina: 6 })).toBe("magicka");
+    expect(mostFirst({ health: 6, magicka: 6, stamina: 7 })).toBe("stamina");
+    expect(mostFirst({ health: 7, magicka: 7, stamina: 5 })).toBe("even");
+  });
+
+  it("a new level keeps the shares and the total", () => {
+    const counts = { health: 5, magicka: 10, stamina: 4 };
+    for (const n of [9, 29, 49, 99]) {
+      const out = scaleAttributes(counts, n);
+      expect(out.health + out.magicka + out.stamina).toBe(n);
+      expect(out.magicka).toBeGreaterThan(out.health);
+    }
+    expect(scaleAttributes(counts, 38)).toEqual({ health: 10, magicka: 20, stamina: 8 });
+  });
+
+  it("a hand edit keeps the total", () => {
+    expect(shiftAttribute({ health: 5, magicka: 10, stamina: 4 }, "health", 1)).toEqual({ health: 6, magicka: 9, stamina: 4 });
+    expect(shiftAttribute({ health: 5, magicka: 10, stamina: 4 }, "magicka", -1)).toEqual({ health: 5, magicka: 9, stamina: 5 });
+    expect(shiftAttribute({ health: 0, magicka: 0, stamina: 19 }, "stamina", 1)).toBeNull();
   });
 });

@@ -9,6 +9,7 @@ import { drawingSize, fitHeight, treeLayout, type LayoutPadding } from "@/lib/ru
 import { pageZoom } from "@/lib/zoom";
 import { isHeld, lineLook, lineState, prerequisiteLines } from "@/lib/rules/tree-states";
 import type { LevelState } from "@/lib/rules/types";
+import { Tooltip } from "@/components/ui/tooltip";
 import styles from "./tree.module.css";
 
 export interface TreeProps {
@@ -43,7 +44,7 @@ export interface TreeProps {
 }
 
 export type GoalMark = "goal" | "along" | "clash";
-const MARK_WORDS: Record<GoalMark, string> = { goal: "Goal", along: "Comes along", clash: "Ruled out" };
+const MARK_WORDS: Record<GoalMark, string> = { goal: "Goal", along: "Auto selected", clash: "Ruled out" };
 
 export type TreeView = "tree" | "list";
 
@@ -717,10 +718,12 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
             <i className={styles.keyGoal} />
             Goal
           </span>
-          <span>
-            <i className={styles.keyAlong} />
-            Comes along
-          </span>
+          <Tooltip content="Needed before a perk you picked, so it's taken for you.">
+            <span tabIndex={0} className={styles.legendTip}>
+              <i className={styles.keyAlong} />
+              Auto selected
+            </span>
+          </Tooltip>
           <span>
             <i className={styles.keyFree} />
             Not chosen

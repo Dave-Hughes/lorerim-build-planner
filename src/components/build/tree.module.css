@@ -551,6 +551,11 @@ button.listRow[aria-pressed="true"] {
   background: var(--perk);
   box-shadow: 0 0 0 3px var(--perk-halo);
 }
+.legendTip {
+  cursor: help;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
 .keyGoal {
   width: 14px;
   height: 14px;

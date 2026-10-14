@@ -27,7 +27,7 @@ import { emptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import * as ops from "./plan-ops";
 import { Tour } from "@/components/tour/tour";
 import { AutoLevel } from "./auto-level";
-import { AUTHOR_TOUR } from "@/lib/tour";
+import { AUTHOR_TOUR, authorTourPending } from "@/lib/tour";
 import { useAutosave } from "./use-autosave";
 import styles from "./editor.module.css";
 import { pageZoom } from "@/lib/zoom";
@@ -42,11 +42,13 @@ interface Props {
   converted?: { from: string; dropped: string };
   /** The build's guide sections by key (`level:<n>` for level notes). */
   guide: Record<string, GuideDoc>;
+  /** A build just made by Set up: ask how to build it first (WO-67). */
+  chooseStart?: boolean;
 }
 
 const ATTRS: Attribute[] = ["health", "magicka", "stamina"];
 
-export function Editor({ buildId, name, visibility, initialPlan, initialLevel, converted, guide }: Props) {
+export function Editor({ buildId, name, visibility, initialPlan, initialLevel, converted, guide, chooseStart }: Props) {
   const d = useGameData();
   const [plan, setPlan] = useState(initialPlan);
   // Repeat last level (WO-56): the plan it made, what the level had before (for Undo) and what
@@ -54,6 +56,18 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   const [repeated, setRepeated] = useState<{ level: number; after: BuildPlan; before: ops.LevelSpend; skipped: string[] } | null>(null);
   // Auto level (WO-64): the page is open; and what a run made, for Undo until the next change.
   const [autoLevel, setAutoLevel] = useState(false);
+  // How to build it (WO-67): level by level, or Auto level. Only for a build just made, still at level 1.
+  const [choosing, setChoosing] = useState(!!chooseStart && initialPlan.levels.length === 1);
+  const chose = (auto: boolean) => {
+    // The author's tour (WO-61) goes round level 1 only for Level by level.
+    if (!auto) authorTourPending();
+    setAutoLevel(auto);
+    setChoosing(false);
+    const url = new URL(window.location.href);
+    url.searchParams.delete("start");
+    window.history.replaceState(null, "", url);
+    window.scrollTo({ top: 0 });
+  };
   const [filled, setFilled] = useState<{ to: number; before: BuildPlan; after: BuildPlan } | null>(null);
   const states = useMemo(() => computeBuild(plan, d), [plan, d]);
   const total = plan.levels.length;
@@ -296,7 +310,9 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
       />
       {error && status === "failed" && <div className={`page ${styles.errorBar}`}>{error}</div>}
 
-      {autoLevel ? (
+      {choosing ? (
+        <StartChoice onPick={chose} />
+      ) : autoLevel ? (
         <AutoLevel
           plan={plan}
           onCancel={() => (setAutoLevel(false), window.scrollTo({ top: 0 }))}
@@ -326,6 +342,12 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
             <button type="button" className={`btn ${styles.levelArrow}`} aria-label="Next level" disabled={level >= total} onClick={() => setLevel(level + 1)}>
               {level < total ? level + 1 : ""} ›
             </button>
+            {/* On a fresh build, Auto level next to the stepper as well as in the footer (WO-67). */}
+            {total === 1 && (
+              <button type="button" className="btn" onClick={() => (setAutoLevel(true), window.scrollTo({ top: 0 }))}>
+                Auto level
+              </button>
+            )}
           </div>
           <dl className={styles.pools} data-tour="points">
             {level > 1 && <Pool label="Skill points" value={left} of={`left of ${s.skillPointsAvailable}`} />}
@@ -992,5 +1014,34 @@ function TreeHeading({ tree, value }: { tree: string; value: string }) {
       <h2 className={styles.treeTitle}>{tree}</h2>
       <span className="muted">{value}</span>
     </>
+  );
+}
+
+/** A new build's first question (WO-67): level by level, or Auto level. */
+function StartChoice({ onPick }: { onPick: (auto: boolean) => void }) {
+  return (
+    <div className={`page ${styles.choice}`}>
+      <h1 className={styles.choiceTitle}>How do you want to build it?</h1>
+      <div className={styles.choiceCards}>
+        <button type="button" className={styles.choiceCard} onClick={() => onPick(false)}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/icons/tab-levels.svg" alt="" width={48} height={48} className={styles.choiceIcon} />
+          <span className={styles.choiceName}>Level by level</span>
+          <span className={styles.choiceText}>Start at level 1 and choose every attribute, skill and perk yourself.</span>
+          <span className="btn" aria-hidden="true">
+            Start at level 1
+          </span>
+        </button>
+        <button type="button" className={styles.choiceCard} onClick={() => onPick(true)}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/icons/tapps-point.svg" alt="" width={60} height={60} className={`${styles.choiceIcon} ${styles.choiceTapps}`} />
+          <span className={styles.choiceName}>Auto level</span>
+          <span className={styles.choiceText}>Pick a level and the perks you want. Every level in between is filled in for you, then you add the details.</span>
+          <span className="btn btn-primary" aria-hidden="true">
+            Auto level
+          </span>
+        </button>
+      </div>
+    </div>
   );
 }

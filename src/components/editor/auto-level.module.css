@@ -89,12 +89,41 @@
   color: #f1b3a6;
 }
 
-/* Custom attributes */
-.customRow {
+/* The attribute counters, always showing (WO-67), and the presets that fill them in. */
+.attrRow {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 10px 12px;
   flex-wrap: wrap;
+}
+.presets {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-left: 8px;
+}
+.chipWrap {
+  display: inline-flex;
+}
+.chip:disabled {
+  color: var(--dim);
+  border-color: var(--rule);
+  cursor: not-allowed;
+}
+/* "Level raised to 25 for Expert Destruction. Undo" until the next change. */
+.raised {
+  margin: 0;
+  font-size: 15px;
+  color: var(--ember-text);
+}
+.linkButton {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--ember);
+  text-decoration: underline;
+  cursor: pointer;
 }
 .att {
   border: 1px solid var(--rule-strong);
@@ -362,57 +391,6 @@
   margin-bottom: 8px;
 }
 
-/* Tapps explains, the first time */
-.tapps {
-  display: flex;
-  align-items: flex-start;
-  gap: 4px;
-}
-.tappsImg {
-  image-rendering: pixelated;
-  margin-top: 4px;
-  flex: none;
-}
-.tappsCard {
-  position: relative;
-  background: var(--panel);
-  border: 1px solid var(--brass);
-  padding: 14px 18px;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  flex: 1 1 auto;
-  margin-left: 10px;
-}
-.tappsCard > button {
-  white-space: nowrap;
-  flex: none;
-}
-.tappsTail {
-  position: absolute;
-  left: -8px;
-  top: 26px;
-  width: 14px;
-  height: 14px;
-  background: var(--panel);
-  border-left: 1px solid var(--brass);
-  border-bottom: 1px solid var(--brass);
-  transform: rotate(45deg);
-}
-.tappsWords {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex: 1 1 auto;
-}
-.tappsTitle {
-  font-family: var(--font-title);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 20px;
-  color: var(--ember-text);
-}
-
 @media (max-width: 1279px) {
   .columns {
     grid-template-columns: 250px minmax(0, 1fr) 320px;
@@ -443,17 +421,11 @@
   .title {
     font-size: 30px;
   }
-  .tappsImg {
-    width: 48px;
-    height: 48px;
-  }
-  .tappsCard {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  .customRow .att {
+  .attrRow .att {
     flex: 1 1 100%;
     justify-content: space-between;
+  }
+  .presets {
+    margin-left: 0;
   }
 }

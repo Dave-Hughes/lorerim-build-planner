@@ -9,13 +9,13 @@ import { clientVersion, isKnownVersion } from "@/lib/rules/server";
 import { getGuide } from "@/lib/guide/queries";
 
 type Params = Promise<{ id: string }>;
-type Search = Promise<{ level?: string; from?: string; dropped?: string }>;
+type Search = Promise<{ level?: string; from?: string; dropped?: string; start?: string }>;
 
 export const metadata: Metadata = { title: "Edit build" };
 export const dynamic = "force-dynamic";
 
 export default async function EditPage({ params, searchParams }: { params: Params; searchParams: Search }) {
-  const [{ id }, { level, from, dropped }, session] = await Promise.all([params, searchParams, auth()]);
+  const [{ id }, { level, from, dropped, start }, session] = await Promise.all([params, searchParams, auth()]);
   const userId = session?.user?.id ?? null;
   const build = await getBuild(id, userId);
   if (!build) notFound();
@@ -35,6 +35,7 @@ export default async function EditPage({ params, searchParams }: { params: Param
           initialLevel={Number(level) || 0}
           converted={from ? { from: from.slice(0, 40), dropped: (dropped ?? "").slice(0, 600) } : undefined}
           guide={Object.fromEntries(Object.entries(guide).map(([k, v]) => [k, v.doc]))}
+          chooseStart={start === "choose"}
         />
       </GameDataProvider>
     </>

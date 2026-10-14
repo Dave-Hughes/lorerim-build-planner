@@ -2732,14 +2732,14 @@ Dave's review of WO-65 on staging: better, but with these changes. Canvas: `Star
    - Once only, as now; `Show me around` restarts it.
 
 ### Done when
-- [ ] e2e: creating a build lands on the choice. `Auto level` opens the Auto level page; another new build's `Level by level` opens level 1 with the author's tour.
-- [ ] e2e: on the Auto level page at level 10, click Expert Destruction. The level becomes 25 with the `Level raised` line, the chips 10 and 20 are disabled, and `Undo` puts back 10 without the goal.
-- [ ] Unit test for the floor: Expert Destruction alone on the Altmer test build gives 25, the same as the preview's earliest.
-- [ ] The attribute counters always show. `Magicka first` fills them; a hand edit unlights the chip; changing the level keeps the total at N−1.
-- [ ] No `Comes along`, `Custom` or `Left over` anywhere in the app.
-- [ ] e2e: a fresh browser on the Auto level page gets the six-stop tour; skipping it doesn't bring it back; `Show me around` does.
-- [ ] Screenshots at 1440 and 390: the choice, the page with the raised-level line, and each tour stop.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: creating a build lands on the choice. `Auto level` opens the Auto level page; another new build's `Level by level` opens level 1 with the author's tour.
+- [x] e2e: on the Auto level page at level 10, click Expert Destruction. The level becomes 25 with the `Level raised` line, the chips 10 and 20 are disabled, and `Undo` puts back 10 without the goal.
+- [x] Unit test for the floor: Expert Destruction alone on the Altmer test build gives 25, the same as the preview's earliest.
+- [x] The attribute counters always show. `Magicka first` fills them; a hand edit unlights the chip; changing the level keeps the total at N−1.
+- [x] No `Comes along`, `Custom` or `Left over` anywhere in the app.
+- [x] e2e: a fresh browser on the Auto level page gets the six-stop tour; skipping it doesn't bring it back; `Show me around` does.
+- [x] Screenshots at 1440 and 390: the choice, the page with the raised-level line, and each tour stop.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

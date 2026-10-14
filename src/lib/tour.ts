@@ -83,3 +83,18 @@ export const AUTHOR_TOUR: TourScript = {
     { target: "footer", title: "On to level 2", text: "Done? Continue. From level 3 on, Repeat copies the level before. Less clicking, more mead." },
   ],
 };
+
+/**
+ * Auto level's tour (WO-67), in plain words. On a phone the tree opens from the skill list, so
+ * the tree's stop points at the list.
+ */
+export const AUTOLEVEL_TOUR = (to: number, wide: boolean): TourScript => ({
+  welcome: { title: "Auto level", text: "Fast-tracks a build. It fills in attributes, skills and perks for every level up to the one you pick.", go: "Show me", no: "Skip" },
+  stops: [
+    { target: "al-level", title: "Level to reach", text: "Pick the level to reach." },
+    { target: "al-attrs", title: "Attributes", text: "Set how many level-ups go to Health, Magicka and Stamina. The presets fill them in; change any number." },
+    { target: wide ? "al-tree" : "al-skills", title: "Pick perks", text: "Pick a perk you want. The perks it needs first are selected for you." },
+    { target: "al-skills", title: "Skills", text: "Each skill is raised to what your perks need." },
+    { target: "al-run", title: `Auto level to ${to}`, text: "When you're done, this saves every level. Then add notes, gear and spells to each one." },
+  ],
+});

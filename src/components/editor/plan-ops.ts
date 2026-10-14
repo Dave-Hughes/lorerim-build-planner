@@ -456,7 +456,7 @@ function whyNotPlaced(d: GameData, s: FillSettings, id: string, rank: number, la
   return `${not}: no ${p.tree === "Destiny" ? "Destiny" : "perk"} points left`;
 }
 
-/** How Auto level spends the attribute level-ups (WO-65): one taken first, evenly, or counted by hand. */
+/** How Auto level spends the attribute level-ups (WO-65): a preset (one first, or evenly), or the counts themselves (WO-67). */
 export type AttributeChoice = Attribute | "even" | Record<Attribute, number>;
 
 /** Level-ups shared out evenly, Health first with any left over. */
@@ -470,11 +470,57 @@ export function evenAttributes(n: number): Record<Attribute, number> {
 export function attributeSettings(choice: AttributeChoice, to: number): Pick<FillSettings, "attributes" | "first"> {
   const n = to - 1;
   if (choice === "even") return { attributes: evenAttributes(n), first: "even" };
-  if (typeof choice === "object") return { attributes: choice, first: "even" };
+  if (typeof choice === "object") return { attributes: choice, first: mostFirst(choice) };
   const half = Math.ceil(n / 2);
   const [a, b] = ATTRIBUTE_TURN.filter((x) => x !== choice);
   const rest = n - half;
   return { attributes: { [choice]: half, [a]: Math.ceil(rest / 2), [b]: Math.floor(rest / 2) } as Record<Attribute, number>, first: choice };
+}
+
+/** The attribute with the most level-ups goes first (WO-67); with a tie for most, they go in turn from the start. */
+export function mostFirst(counts: Record<Attribute, number>): Attribute | "even" {
+  const top = Math.max(...ATTRIBUTE_TURN.map((a) => counts[a]));
+  const at = ATTRIBUTE_TURN.filter((a) => counts[a] === top);
+  return at.length === 1 ? at[0] : "even";
+}
+
+/** The counts for a new number of level-ups, keeping their shares: rounded down, the rest to the largest remainders. */
+export function scaleAttributes(counts: Record<Attribute, number>, n: number): Record<Attribute, number> {
+  const total = ATTRIBUTE_TURN.reduce((t, a) => t + counts[a], 0);
+  if (total === 0) return evenAttributes(n);
+  const exact = ATTRIBUTE_TURN.map((a) => (counts[a] * n) / total);
+  const out = Object.fromEntries(ATTRIBUTE_TURN.map((a, i) => [a, Math.floor(exact[i])])) as Record<Attribute, number>;
+  let left = n - ATTRIBUTE_TURN.reduce((t, a) => t + out[a], 0);
+  for (const i of [0, 1, 2].sort((x, y) => exact[y] - Math.floor(exact[y]) - (exact[x] - Math.floor(exact[x])) || x - y)) if (left-- > 0) out[ATTRIBUTE_TURN[i]]++;
+  return out;
+}
+
+/**
+ * One more (or one fewer) level-up to `a`, keeping the total (WO-67): one more comes from the
+ * other attribute with the most; one fewer goes to the other with the fewest. Null when it can't.
+ */
+export function shiftAttribute(counts: Record<Attribute, number>, a: Attribute, by: 1 | -1): Record<Attribute, number> | null {
+  const others = ATTRIBUTE_TURN.filter((x) => x !== a);
+  if (by === 1) {
+    const from = others.reduce((x, y) => (counts[y] > counts[x] ? y : x));
+    return counts[from] > 0 ? { ...counts, [a]: counts[a] + 1, [from]: counts[from] - 1 } : null;
+  }
+  if (counts[a] <= 0) return null;
+  const to = others.reduce((x, y) => (counts[y] < counts[x] ? y : x));
+  return { ...counts, [a]: counts[a] - 1, [to]: counts[to] + 1 };
+}
+
+/**
+ * The lowest level every goal can make (WO-67): the same goals filled to the top level, as the
+ * preview's "at the earliest" is, and the latest of their levels. 2 with no goals; the top level
+ * when one can't be placed at all.
+ */
+export function goalFloor(plan: BuildPlan, goals: string[], d: GameData, top: number): number {
+  if (!goals.length) return 2;
+  const g = goalsToSettings(plan, goals, top, "even", d);
+  if (g.clashes.length) return 2;
+  const { report } = fillToLevel(plan, g.settings, d);
+  return Math.max(2, ...goals.map((id) => report.perks.find((p) => p.id === id)?.level ?? top));
 }
 
 export interface GoalSettings {

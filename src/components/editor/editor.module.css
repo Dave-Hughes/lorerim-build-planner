@@ -1094,3 +1094,77 @@
 .sheetToggle button {
   min-height: 40px;
 }
+
+/* A new build's first question (WO-67): two cards, Level by level and Auto level. */
+.choice {
+  max-width: 1120px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.choiceTitle {
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1;
+}
+.choiceCards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+.choiceCard {
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.choiceCard:hover,
+.choiceCard:focus-visible {
+  border-color: var(--ember);
+  background: #1b1712;
+}
+.choiceCard .btn {
+  margin-top: 8px;
+}
+.choiceIcon {
+  image-rendering: pixelated;
+}
+.choiceTapps {
+  margin: -6px 0;
+}
+.choiceName {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.1;
+}
+.choiceText {
+  color: var(--soft);
+}
+@media (max-width: 720px) {
+  .choice {
+    padding-top: 32px;
+    gap: 22px;
+  }
+  .choiceTitle {
+    font-size: 32px;
+  }
+  .choiceCards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

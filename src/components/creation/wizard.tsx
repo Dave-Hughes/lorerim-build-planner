@@ -11,7 +11,6 @@ import { EditBar } from "@/components/editor/edit-bar";
 import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel, ModeIcon, TagIcon, DeityIcon } from "@/components/ui/skill-icon";
 import { copyBuildForVersion, createBuild, saveBuildDetails, saveBuildPlan } from "@/lib/builds/actions";
 import { checkStep, type StepCheck } from "@/lib/builds/steps";
-import { authorTourPending } from "@/lib/tour";
 import { STEPS, STEP_NAMES, clearDraft, emptyDetails, emptyPlan, loadDraft, saveDraft, type Step } from "@/lib/builds/draft";
 import type { BuildDetails } from "@/lib/builds/validate";
 import { GameDataProvider, useGameData } from "@/components/game-data";
@@ -136,9 +135,8 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
         const r = await createBuild({ details: { ...details, tags: details.tags ?? suggestedTags(plan.majors) }, plan });
         if (!r.ok) return setError(r.error);
         clearDraft();
-        // Tapps shows the author round level 1, once (WO-61).
-        authorTourPending();
-        router.push(`/b/${r.value.id}/edit`);
+        // First, how to build it (WO-67); Level by level then starts Tapps' tour of level 1 (WO-61).
+        router.push(`/b/${r.value.id}/edit?start=choose`);
       } else if (buildId) {
         const a = await saveBuildDetails(buildId, { ...details, tags: details.tags ?? suggestedTags(plan.majors) });
         if (!a.ok) return setError(a.error);
