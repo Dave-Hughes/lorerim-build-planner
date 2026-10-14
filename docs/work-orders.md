@@ -2813,6 +2813,97 @@ So it becomes a second kind of build: **a snapshot**, the build at one level ("h
 
 ---
 
+## WO-69  Skip ahead: one kind of build, written at the levels that matter (14 Oct 2026)
+
+Canvas: row "Proposal: Skip ahead (in place of snapshots)", with `KeyLevelEditor.dc.html` (click around: steppers, stars, `Reset`, `Skip ahead to level`) and `KeyLevelPage.dc.html` (click a stretch). The numbers on both follow the rules constants, so use them as test values.
+
+**Why.** Dave tested WO-68. The snapshot is a second editor and a second page that look nothing like the rest of the app, and a build at one level still doesn't read like a guide. What he wants is the normal builder without having to write every level. So the snapshot goes, and the level builder learns to **skip ahead**: the author writes level 10, then jumps to 25 and writes levels 11 to 25 as one card, then 50. Writing every level is just a build that never skips. There is one kind of build again, and the word "snapshot" leaves the app.
+
+**Why the rules still hold** (so nobody re-adds Auto level's filling): every limit can be checked from a stretch's totals. Skill point cost depends only on the skill's value, unspent points bank, a stretch of n level-ups allows +5n per skill, and the skill cap only rises. If the totals pass, some level-by-level order exists, so the engine never has to pick one and the app never shows one.
+
+1. **The plan.** No new build type. Two optional fields on `LevelPlan`:
+   - `skipped?: true`: a level inside a stretch. It holds no choices of its own (no skill points, attribute, perks, Destiny, extras, spells, abilities, shouts, stone, deity or note; `parseBuildPlan` refuses any).
+   - `attributes?: Partial<Record<Attribute, number>>`: on the last level of a stretch, the level-ups to each attribute, in place of `attribute`.
+   - A stretch is a run of `skipped` levels plus the level after it, which holds the stretch's choices. The last level of a build is never `skipped`. `levels[L - 1]` stays level L everywhere, so the ruler, URLs, gear `fromLevel` and every lookup by level keep working.
+   - Helper in `src/lib/rules/`: `stretches(plan)` → `{ from, to }[]` in level order. A level that isn't in a stretch is `{ from: L, to: L }`.
+   - `copyBuildForVersion` carries both fields over.
+2. **The engine** (`computeBuild`). Hardly changes, because a skipped level spends nothing:
+   - **A skipped level:** banks its 30 skill points and earns its perk point, as an empty level does now. It raises no `attribute-missing`.
+   - **The level that ends a stretch of n level-ups:**
+     - **Per-skill limit:** +5n per skill. The message reads `Destruction: +80 is more than +75 in 15 level-ups.`
+     - **Attributes:** the `attributes` counts must add up to n. Too few reads `Pick 3 more attribute level-ups.` and too many reads `4 attribute level-ups too many.`
+   - **Everything else is as now:** skill cap at the level, perk requirements and prerequisites against the skills at the end of the stretch, trainer and Destiny totals, exclusions. A change to an earlier stretch that breaks a later one shows in the problem bar with `Go to levels 26 to 50`, like any problem now. Nothing blocks the edit.
+   - Test against the canvas numbers. On the Altmer plan in `KeyLevelPage.dc.html` (`KEYS` in its script), levels 11 to 25 have 625 skill points available (175 carried in), 510 spent, 115 carried to 26, and 13 of 15 perk points spent.
+3. **The editor: Skip ahead** (`KeyLevelEditor.dc.html`). It's the regular level editor at `/b/[id]/edit`. Nothing about it is a separate page.
+   - **The footer** keeps `Continue to level N` and gains `Skip ahead to level` with the target level in the button and ‹ › to change it. The target starts 10 levels on, capped at `MAX_LEVELS`. Pressing it adds the skipped levels and the new last level, then opens it. The target is chosen first, so nothing jumps without the author asking.
+   - **The level title** for a stretch: `Levels 11 to` with `25` as the big number. The pinned bar reads `Levels 11 to 25`. The ‹ › arrows step by stretch.
+   - **Above the columns:** a row of chips, one per stretch, as on the build page (point 4). This replaces the level bars on a build that skips, and a build that never skips keeps its bars.
+   - **The pools** count the whole stretch:
+     - `Skill points`: what's left, with `510 of 625 spent, 175 carried in`.
+     - `Perk points`: `13 of 15 spent`.
+     - `Destiny points`: `2 of 3 spent`.
+     - `Trainer sessions`: as now.
+     - A single level keeps today's hints.
+   - **Attributes** on a stretch: the three cards each show the total (`230`, `+45`) and a − n + counter of level-ups. The hint reads `15 level-ups, 0 left`. A single level keeps today's one-pick cards.
+   - **Skill rows:** the stepper is the raise over the stretch (`+35`, with `40 → 75`) and still steps by 1. On a stretch the number in the middle can also be typed in. The header hint reads `Up to +75 each, max skill 75`. `+` stops at the per-skill limit, the max skill and the points left.
+   - **The tree:** taking a star whose prerequisites aren't held takes them too, at this level, if the skills reach them. Keep the prerequisite-chain code from WO-65/68 for this and drop the rest of `fillToLevel`. On a stretch, a star the skill won't reach by its last level stays a dim dot, and the legend reads `Can take by level 25`. WO-68's **ruled out** stars (dashed ring, struck name, tooltip with the reason) stay, on every level. Move `ruledOut` out of `snapshot.ts` into its own file.
+   - **Reset** in the footer: `Reset levels 11 to 25` (`Reset level 20` on a single level). It clears the level's skill points, attribute picks, perks and Destiny. Gear, spells and the note stay. Ask once with `Confirm: reset levels 11 to 25`, as `Remove level` does.
+   - **Remove:** on the last stretch, `Remove levels 26 to 50` removes the whole stretch.
+   - **Repeat:** `Repeat level N` and `Continue and repeat` only show when the level before is a single level. A stretch's raises can't be repeated into one level.
+   - **Gear, spells, between level-ups and notes:** the same blocks as now, on the stretch's last level. Gear added there starts at that level.
+4. **The build page** (`KeyLevelPage.dc.html`). It's the regular page; only the level parts learn about stretches:
+   - **The ruler** draws each stretch as one box over its levels, the open one in ember.
+   - **The chip row** has one chip per stretch (`11 to 25`, `13 perks`). Arrow keys and ‹ › step by stretch. `?level=20` opens the stretch holding level 20.
+   - **The level nav** reads `Levels 11 to` with `25` as the big number and `of 50`.
+   - **The level card**, heading `Levels 11 to 25`:
+     - **Attributes:** `+45 Magicka`, `+20 Health`, `+10 Stamina`, most first.
+     - **Skill points:** each raise as now, `+35` with `40 → 75`.
+     - **Perks:** each with its requirement, `Impact (Destruction 50)`. A perk with no requirement keeps `(Block)`.
+     - **Destiny, gear, new spells and the note** as now.
+     - **Two columns:** skill and perk lists run in two columns when there are more than 6 rows.
+     - A single level's card is unchanged.
+   - **The sheet** below (attributes, skills, perks, Destiny, gear, spells) reads the stretch's last level, as it reads the open level now.
+   - **The byline**, only on a build that skips, adds the levels written, with runs collapsed: `Levels 1 to 10, 25, 50`. A build that writes every level shows nothing new.
+5. **Cards and Browse.**
+   - **Cards:** a build card says `to level 50` like any build. A build that skips adds the same levels line as the byline.
+   - **Browse:** the `Kind` filter goes.
+6. **The snapshot goes.**
+   - **Plan fields and types:** `BuildPlan.snapshot`, `Snapshot` and `SnapshotResult`.
+   - **Rules code:** `src/lib/rules/snapshot.ts` (keeping `ruledOut`, moved) and its tests.
+   - **Editor and page:** `snapshot-editor.*` and `snapshot-view.*`, the start choice (`StartChoice`, `?start=choose`; the wizard goes straight to `/b/[id]/edit` again) and `SNAPSHOT_TOUR`.
+   - **Browse code:** the Kind filter and its query.
+   - **Also:** the snapshot branches in `validate.ts`, `queries.ts`, `browse.ts`, `build-card.tsx`, `build-view.tsx`, `guide-page.tsx` and the home page, plus `e2e/wo68.spec.ts`.
+   - **Old snapshot builds:** WO-68 never reached production, so the only snapshot builds are test builds on staging and dev. A plan with `snapshot` loads as its level 1, and the field is dropped on the next save. No database script.
+7. **Tapps.** The author tour's last stop (`On to level 2`) reads `Done? Continue to level 2, or Skip ahead and write the levels in between as one. From level 3 on, Repeat copies the level before.`
+8. **Later, not now** (parked): splitting a stretch (write level 18 inside 11 to 25), and a Browse filter for builds that write every level.
+
+### Done when
+- [ ] Unit tests:
+  - On the canvas Altmer plan, levels 11 to 25: 625 available, 510 spent, 115 carried, 13 of 15 perk points, and no problems.
+  - +80 Destruction over 11 to 25 raises the per-skill problem with the message above.
+  - Attribute counts that don't add up to 15 raise the attribute problem.
+  - Impact taken at 25 with Destruction 45 raises `perk-skill`.
+  - A skipped level with choices is refused by `parseBuildPlan`, and a plan ending on a skipped level is refused.
+  - `stretches()` on the Altmer plan gives 1, 2 to 10, 11 to 25, 26 to 50.
+  - The version copy keeps `skipped` and `attributes`.
+- [ ] e2e:
+  - New build, level 1, then `Skip ahead to level` 10. The title reads `Levels 2 to 10` and the pools show 270 skill points and 9 perk points.
+  - Raise Destruction to +20 by typing, give 9 attribute level-ups, and take Arcane Focus by clicking its star.
+  - Skip ahead to 25, raise Destruction to 50, then click Impact: Empowered Destruction comes with it.
+  - Reset clears it after the confirm.
+  - The build page shows chips `1`, `2 to 10`, `11 to 25`, the card `Levels 11 to 25` with `(Destruction 50)` next to Impact, and the byline `Levels 1, 10, 25`.
+- [ ] e2e: a build that writes every level looks as it does today: bars in the editor, no levels line on the page or card.
+- [ ] Nothing of the snapshot is left: no route, start choice, Kind filter, tour, type or the word `Snapshot` in the UI (`grep -ri snapshot src` finds nothing but the plan loader's line that drops the old field).
+- [ ] Screenshots at 1440 and 390:
+  - the editor on a stretch, including the footer and a ruled-out tooltip;
+  - the editor right after `Skip ahead`;
+  - the build page with the stretch card open.
+
+  Compare with the canvas.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
@@ -2841,7 +2932,7 @@ So it becomes a second kind of build: **a snapshot**, the build at one level ("h
   So the full list of Types is in the files: `AIT_english.txt` has Cloak, Backpack, Scarf, Accessory, Face, Belt, Mantle, Pauldron and more.
 
   Working out each item's Type means doing what Keyword Item Distributor does, since the keywords aren't in the plugins. A first pass that read only the plugins gave wrong answers (robes as Cloak, no scarves). The planner's slots should be a short list picked from these Types; Dave picks which in game.
-- **Snapshots, more** (after WO-68): gear and main spells on a snapshot; `Write it out level by level`, a snapshot copied into a level build as a first draft.
+- **Skip ahead, more** (after WO-69): split a stretch (write level 18 inside 11 to 25); a Browse filter for builds that write every level.
 - **Destiny target:** pick the Destiny star you're heading for and light the path to it.
 - **Skills over levels:** a small line chart on the shared page of the main skills from level 1 to the last.
 - **Callings:** a field for the build's Calling, once the Callings mod data is in.

@@ -17,6 +17,8 @@ What is queued, in the order it was raised. Rules for the look live in [design-r
 - **Card first, character sheet folded (13 Oct 2026).** A proposal to lead the build page with key levels and the level card, fold everything else into a closed "Character sheet", and start each editor level small behind an "Add" row (canvas artboards `CardFirst.dc.html`, `LevelStartsSmall.dc.html`). Dave: keep the page as it is.
 - **Magicka check on spells (13 Oct 2026).** A warning on the level card when a spell costs more Magicka than the build has at that level. Dave: whether a spell is castable yet is for the author to cover in the guide.
 
+- **A separate snapshot build, and Auto level (WO-64 to WO-68, 14 Oct 2026).** Filling in the levels for the author read as nobody's playthrough, and a one-level build with its own editor and page didn't read as a guide. Replaced by Skip ahead (WO-69): one kind of build, written at the levels the author picks.
+
 ## Done
 
 - Pixel icons for the 18 skills and Destiny, approved 10 Oct 2026 (second pass: shared outline, top-left light). Rolled out everywhere by WO-4.
