@@ -286,8 +286,20 @@
   margin: 0 -8px;
   border-bottom: 1px solid #1c2430;
 }
+/* A row picks its tree anywhere but its stepper (WO-62 follow-up): pointer and a hover wash. */
+.skillRowPick {
+  cursor: pointer;
+  transition: background-color 120ms;
+}
+.skillRowPick:hover {
+  background: color-mix(in srgb, var(--text) 5%, transparent);
+}
+.skillRowPick:hover .skillName {
+  color: #f6c08f;
+}
 /* The row whose tree is open: an ember border, a faint ember wash, its name in light ember (WO-62). */
-.skillRowOn {
+.skillRowOn,
+.skillRowPick.skillRowOn:hover {
   background: color-mix(in srgb, var(--ember) 7%, transparent);
   box-shadow: inset 0 0 0 1px var(--ember);
 }

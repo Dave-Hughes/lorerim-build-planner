@@ -16,6 +16,22 @@ test.describe("at 1440x900", () => {
     await expect(page.getByRole("region", { name: "Perks" }).getByRole("heading", { name: "Sneak" })).toBeVisible();
   });
 
+  test("anywhere on a row but its stepper picks the tree", async ({ page, context }) => {
+    await signIn(context);
+    await page.goto(`/b/${FORTY_BUILD_ID}/edit?level=12`);
+    const sneak = page.getByRole("button", { name: "Sneak", exact: true });
+    const row = sneak.locator("xpath=..");
+    // The skill's value, at the row's middle.
+    await row.locator('[class*="skillVals"]').click();
+    await expect(sneak).toHaveAttribute("aria-pressed", "true");
+    await expect(page.locator('[data-tree="Sneak"]')).toBeVisible();
+    // Raising Finesse spends a point but leaves Sneak's tree open.
+    await page.getByRole("button", { name: "Raise Finesse" }).click();
+    await expect(sneak).toHaveAttribute("aria-pressed", "true");
+    await expect(page.getByRole("button", { name: "Finesse", exact: true })).toHaveAttribute("aria-pressed", "false");
+    await page.getByRole("button", { name: "Lower Finesse" }).click();
+  });
+
   test("scrolled down to the Mage rows the tree panel is still on screen; Illusion swaps it with no scroll jump", async ({ page, context }) => {
     await signIn(context);
     await page.goto(`/b/${FORTY_BUILD_ID}/edit?level=12`);

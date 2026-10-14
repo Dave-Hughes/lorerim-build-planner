@@ -428,7 +428,16 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                     const info = steps.find((i) => i.skill === sk)!;
                     const active = tree === sk;
                     return (
-                      <div key={sk} className={`${styles.skillRow} ${active ? styles.skillRowOn : ""}`}>
+                      // Anywhere on the row picks its tree, except the stepper; the name stays the keyboard's button.
+                      <div
+                        key={sk}
+                        className={`${styles.skillRow} ${styles.skillRowPick} ${active ? styles.skillRowOn : ""}`}
+                        onClick={(e) => {
+                          const t = e.target as HTMLElement;
+                          if (t.closest("button, [data-stepper]")) return;
+                          openTree(sk, e.currentTarget.querySelector<HTMLElement>("button") ?? undefined);
+                        }}
+                      >
                         {/* The name opens its tree (WO-62): the list is the editor's one tree picker. */}
                         <button type="button" className={styles.skillName} onClick={(e) => openTree(sk, e.currentTarget)} aria-pressed={active} aria-label={sk}>
                           <SkillIcon name={sk} /> {sk}
@@ -451,7 +460,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                         {level > 1 ? (
                           <>
                             <Tooltip content={info.atMax ? `${sk} is at the max skill for this level.` : info.atFive ? "+5 reached: the most one skill can rise in a level-up." : `${info.nextCost} skill point${info.nextCost === 1 ? "" : "s"} for the next +1.`}>
-                              <span className={styles.stepper}>
+                              <span className={styles.stepper} data-stepper="">
                                 <button type="button" aria-label={`Lower ${sk}`} disabled={!info.canRemove} onClick={() => setPlan(ops.addSkillPoint(plan, level, sk, -1))}>
                                   −
                                 </button>
@@ -474,7 +483,13 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                 </div>
               ))}
               {/* Destiny, the last row, in gold: it opens the constellation in the tree panel. */}
-              <div className={`${styles.skillRow} ${styles.destinyRow} ${tree === "Destiny" ? styles.skillRowOn : ""}`}>
+              <div
+                className={`${styles.skillRow} ${styles.skillRowPick} ${styles.destinyRow} ${tree === "Destiny" ? styles.skillRowOn : ""}`}
+                onClick={(e) => {
+                  if ((e.target as HTMLElement).closest("button")) return;
+                  openTree("Destiny", e.currentTarget.querySelector<HTMLElement>("button") ?? undefined);
+                }}
+              >
                 <button type="button" className={styles.skillName} onClick={(e) => openTree("Destiny", e.currentTarget)} aria-pressed={tree === "Destiny"} aria-label="Destiny">
                   <i className={styles.destinyDiamond} aria-hidden="true" /> Destiny
                   {destinyLeft > 0 && <span className={styles.destinyLeft}>{destinyLeft} left</span>}
