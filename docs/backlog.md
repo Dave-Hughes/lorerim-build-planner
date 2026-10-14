@@ -8,6 +8,10 @@ What is queued, in the order it was raised. Rules for the look live in [design-r
 2. **Buttons feel bland and basic, "not fun".** Every button across the app. Needs a design pass that stays inside the visual system (square corners, no glows) but gives them some character.
 3. **Skills step (step 3): how many majors and minors are chosen isn't obvious** at any moment. Make the counts unmissable while picking.
 
+## Follow up
+
+- **Guide: 16 mods without Nexus links (14 Oct 2026).** Animated Whistling, Complete Controller Setup, Dynamic Activation Key, Engine Fixes, Faster Mining Plus SE, Gamepad++, Lock Bashing, Locked Chests Have Keys, MaxsuBlockOverhaul, Requiem - Lockpicking SKSE, Requiem - Modern Combat Rework, Rest By Campfire - Base Object Swapper, Sanctified Stolen Goods, Simple Outfit System, Take a Nap - Sleep on Chairs, Vampire sun immunity with helmet or hat. Next time Dave's PC is linked, read each mod's `modid` from its `meta.ini` (or `modlist.csv`) and add `nexus:` lines to the chapters' Related Mods. Web searches returned the wrong mods, so don't guess.
+
 ## Decisions pending
 
 - **Domain:** lorerimplanner.com is free at $11.25/yr (checked 10 Oct 2026). Buy on Dave's say-so, then add `https://lorerimplanner.com/api/auth/callback/discord` to the Discord app's redirects (Discord developer portal, app "LoreRim Build Planner").

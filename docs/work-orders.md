@@ -2911,6 +2911,8 @@ Dave on staging: better, but "still a lot of work before it's remotely useful". 
 2. Mods link to their Nexus pages.
 3. Tooltips on words a newcomer won't know. The reader likely knows nothing about LoreRim: when the guide names a program (MO2), a mod, a mechanic or a system, they may not know what it is.
 
+**Already changed in your code (by the chat session, commit `2c23223`):** the WO-66 parser rejected the new syntax, which would have broken the staging build. `src/lib/game-guide/guide.ts` now shows `{{term}}` and `{{text|id}}` as plain text (in `keys()`), and accepts `nexus:` under a mod and ignores it. Replace both with the real handling below; typecheck, lint and the guide tests passed on that change.
+
 ### Content (supplied with this order)
 - `content/guide/terms.md`: 191 terms, each with a plain definition, and optionally an icon, a Nexus id and a `see` link to the section that explains it. Format in `content/guide/README.md`, "Terms".
 - The chapter files now mark terms as `{{MO2}}` or `{{Armor spells|flesh-spell}}`, have an `icon:` in their front matter, and carry `nexus:` ids in Related Mods. Several passages were rewritten for newcomers. Don't edit the wording; flag anything odd in the commit.
