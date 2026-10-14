@@ -2575,6 +2575,66 @@ Dave's idea: say where a character should be at level N and have the planner fil
 
 ---
 
+## WO-65  Auto level, second pass: pick goals in the trees (14 Oct 2026)
+
+Canvas: `AutoLevelGoals.dc.html`, row "Proposal: Auto level"; click around. `FillLevels.dc.html` beside it is what WO-64 built.
+
+Dave tried WO-64 on staging and found it "very confusing". The chat session tried it too, on a fresh Altmer, and found four problems:
+- **Prerequisites by hand:** adding Impact says `needs Empowered Destruction first`, and that one needs Novice Destruction.
+- **Perk names:** it starts as a blank search, but authors think in trees, not names.
+- **Skill targets repeat the perks:** wanting Expert Destruction already means Destruction 75.
+- **Too much at once:** the defaults (majors at 100, minors at 50) fill the page with amber before anything is chosen.
+
+This pass keeps WO-64's engine (`fillToLevel`) and its preview, and replaces how the author tells it what they want.
+
+1. **One line of settings** across the top:
+   - `‹ Level 1` and the title.
+   - `To level`: chips 10, 20, 30, 50 and a number field.
+   - `Attributes`: chips `Health first`, `Magicka first`, `Stamina first`, `Even` and `Custom`. Default: the attribute of the build's first major's school (Magicka for a mage school, Stamina for a warrior or thief skill).
+   - **X first** gives half the level-ups to X, taken first; the rest go to the other two in turn.
+   - **Custom** opens WO-64's three counters under the line.
+2. **Goals are picked in the trees.** The page uses WO-62's layout: the skill list on the left, the tree in the middle.
+   - **Clicking a star** makes it a goal: an ember star with a light ember ring. Clicking it again drops it.
+   - **Comes along:** a goal's prerequisites, down to the root of its tree, are marked as faint ember stars on lit lines. They're taken without being listed. Clicking one makes it a goal too.
+   - **"Either" prerequisites** (`anyOf`): take the one with the lowest skill requirement, or one already coming along.
+   - **Prerequisites in another tree** come along the same way, and their tree's row gets a count.
+   - **Exclusions:** a goal that rules out another goal (`Not with ...`) marks both in Health red, with the game's reason, and Auto level is disabled until one is dropped.
+   - Destiny is the last row of the list, as in WO-62. Its stars work the same way, and the path to them comes along.
+3. **The skill list shows what the goals need.** No steppers here.
+   - A row with goals shows a count, then e.g. `75 by 25`: the skill the goals need and the level it gets there, from the engine. Green when that's by the level to reach, amber when not.
+   - Rows without goals show today's value, muted.
+4. **What `fillToLevel` gets** is built from the goals (a pure function, `goalsToSettings(plan, goals, to, attributes, d)`, next to `fillToLevel`):
+   - `perks`: every goal and what comes along, prerequisites before what needs them, then by skill requirement, low first.
+   - `targets`: for each tree with goals, the highest skill its perks need, in the same order. After those, the majors and then the minors as lower-priority targets up to the max skill, so spare points go somewhere useful.
+   - `attributes` and `first` from the chips.
+5. **The preview** (right column) is WO-64's, reworded for goals:
+   - Health, Magicka and Stamina at the level to reach.
+   - Each goal with its level, and under it, muted, what comes along with it (`with Novice Destruction, Apprentice Destruction, Adept Destruction`). A goal's × drops it.
+   - When a goal can't make it: `Not by 20: needs Destruction 75, level 25 at the earliest`. "At the earliest" comes from running the same fill to the version's top level, cached.
+   - The line `N perks with what comes along.` Leftover points as in WO-64.
+   - The button `Auto level to N`.
+6. **Gone from the page:** the Skill targets section, the perk search list and the default targets. `FillSettings` stays the engine's input; the page no longer edits it directly.
+7. **Tapps' card** (WO-64) gets new words: `Tapps does the levels` / `Click the perks you want. Tapps brings the ones before them, raises the skills, and fills every level between. Can't happen by then? Tapps says so.`
+8. **Phones** follow WO-62's phone pattern:
+   - The list is the page.
+   - Tapping a skill opens its tree in a sheet, on List, where tapping a perk makes it a goal.
+   - The settings line wraps; the preview goes under the list, with the button pinned at the bottom.
+
+### Done when
+- [ ] Unit tests for `goalsToSettings`:
+  - Impact alone gives Novice Destruction, Empowered Destruction and Impact, in that order, and a Destruction target of 50.
+  - Expert Destruction gives the Novice, Apprentice and Adept path and a target of 75.
+  - An `anyOf` perk takes its cheaper prerequisite.
+  - A cross-tree prerequisite comes along.
+  - Two goals that exclude each other are reported, not filled.
+- [ ] Unit test: the canvas board's goals (Impact, Expert Destruction, Cremation, Adept Alteration) on an Altmer to 30 fill with no problems from the rules engine, and every goal is placed.
+- [ ] e2e: on a fresh test build, open Auto level, click Impact in the Destruction tree. Its path is marked, the Destruction row says `50 by …`, and the preview lists Impact with what comes along. `Auto level to 20` fills 20 levels with Impact taken; `Undo` brings back the fresh build.
+- [ ] e2e: set To level 10 with Expert Destruction as a goal. The preview says it can't make it and gives the earliest level.
+- [ ] Screenshots at 1440 and 390, compared with `AutoLevelGoals.dc.html`.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
