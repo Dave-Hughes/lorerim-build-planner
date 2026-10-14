@@ -1,4 +1,4 @@
-# Fill to a level: the prototype (WO-64)
+# Auto level: the prototype (WO-64)
 
 The script the chat session ran on 13 Oct to get the canvas numbers for Jo'Vashar (levels 2 to 30, no problems from the rules engine). A sketch of the algorithm in WO-64, not production code. To run it, copy it to the repo root as `.tmp-fill.ts` and run `npx tsx --tsconfig tsconfig.json ./.tmp-fill.ts`.
 

@@ -2526,15 +2526,15 @@ Players will paste answers into Discord, so every question needs its own link.
 
 ---
 
-## WO-64  Fill to a level, on a fresh build (13 Oct 2026)
+## WO-64  Auto level, on a fresh build (13 Oct 2026; named by Dave)
 
-Canvas: `FillLevels.dc.html` (row "Proposal: fill to a level"). Its preview numbers are a real run of the rules engine on Jo'Vashar's set up.
+Canvas: `FillLevels.dc.html` (row "Proposal: Auto level"). Its preview numbers are a real run of the rules engine on Jo'Vashar's set up.
 
 Dave's idea: say where a character should be at level N and have the planner fill every level up to it. It helps with a quick guide, a one-off for a friend, or checking whether something can be reached by a certain level. This order covers fresh builds only (nothing past level 1). Filling the rest of an existing build comes later.
 
-1. **Where it starts.** On a build with only level 1 and nothing chosen past it, the editor's footer offers `Fill to a level` beside `Continue to level 2`. It opens the Fill page; `‹ Level 1` goes back.
+1. **Where it starts.** On a build with only level 1 and nothing chosen past it, the editor's footer offers `Auto level` beside `Continue to level 2`. It opens the Auto level page; `‹ Level 1` goes back.
 2. **What the author sets** (left column):
-   - **Fill to level:** a number, 2 to the version's top level, with quick picks 10, 20, 30, 50. Default 20.
+   - **Level to reach:** a number, 2 to the version's top level, with quick picks 10, 20, 30, 50. Default 20.
    - **Skill targets:** rows of skill, value now, target, and a live status. The rows start as the build's majors at 100 and minors at 50; rows can be added and removed. The order of the rows is the order points go in when there aren't enough for all.
    - **Perks, in order:** search to add (the same picker as WO-57's), drag to reorder, × to remove. A ranked perk can be added more than once for more ranks. Destiny stars can be added the same way.
    - **Attributes:** how many level-ups go to Health, Magicka and Stamina, which must add up to N−1 (`29 of 29 level-ups`). `Take first` decides the order: one attribute first, then the rest in turn, or evenly from the start.
@@ -2553,8 +2553,12 @@ Dave's idea: say where a character should be at level N and have the planner fil
    - Each perk's level, or why it doesn't fit, e.g. `Not by level 30: needs Two-Handed 100, level 50 at the earliest` or `needs Alteration 75, above the target`.
    - A strip of levels 1 to N with a dot per perk taken.
    - Points left over at N, when there are any: `Left over at level 30: 450 skill points and 21 perk points. Raise a target or add perks.`
-5. **Fill.** `Fill levels 2 to N` writes the levels and goes to level N in the editor, with a line: `Filled levels 2 to N.` and `Undo` (back to the fresh build), until the next change. The fill settings are not saved.
-6. **Phones:** the preview goes under the form, with the Fill button pinned at the bottom.
+5. **Run it.** `Auto level to N` writes the levels and goes to level N in the editor, with a line: `Levels 2 to N filled in.` and `Undo` (back to the fresh build), until the next change. The settings are not saved.
+6. **Phones:** the preview goes under the form, with the `Auto level to N` button pinned at the bottom.
+7. **Tapps explains it** (WO-61's guide), the first time someone opens the page.
+   - The card: Tapps (the tankard pose) with `Tapps does the levels` / `Tell Tapps the level, the skills and the perks. Tapps fills in every level between, by the rules. Can't happen by then? Tapps says so. Like Mighty Strike at level 30. Not happening.` and `Got it`.
+   - Once only (`planner.tour.autolevel`, as WO-61 stores its tours); `Show me around` brings it back.
+   - If WO-61 isn't built yet, build the card with the same look and storage, and WO-61 picks it up.
 
 ### Done when
 - [ ] Unit tests for `fillToLevel`:
@@ -2563,8 +2567,9 @@ Dave's idea: say where a character should be at level N and have the planner fil
   - Attributes add up and follow `Take first`.
   - A ranked perk listed twice takes two ranks.
   - Level 1 and the setup are unchanged.
-- [ ] e2e: a fresh test build, `Fill to a level`, set 20 with two targets and three perks. The preview shows them; `Fill levels 2 to 20` makes 20 levels; `Undo` gives back the one-level build.
-- [ ] `Fill to a level` doesn't show on a build with level 2 or later.
+- [ ] e2e: a fresh test build, `Auto level`, set 20 with two targets and three perks. The preview shows them; `Auto level to 20` makes 20 levels; `Undo` gives back the one-level build.
+- [ ] `Auto level` doesn't show on a build with level 2 or later.
+- [ ] Tapps' card shows on the first visit only, and `Show me around` brings it back.
 - [ ] Screenshots at 1440 and 390, compared with the canvas.
 - [ ] All checks in CLAUDE.md pass.
 
@@ -2598,7 +2603,7 @@ Dave's idea: say where a character should be at level N and have the planner fil
   So the full list of Types is in the files: `AIT_english.txt` has Cloak, Backpack, Scarf, Accessory, Face, Belt, Mantle, Pauldron and more.
 
   Working out each item's Type means doing what Keyword Item Distributor does, since the keywords aren't in the plugins. A first pass that read only the plugins gave wrong answers (robes as Cloak, no scarves). The planner's slots should be a short list picked from these Types; Dave picks which in game.
-- **Fill the rest of an existing build** (after WO-64): keep levels 1 to K, fill K+1 to N with the same page.
+- **Auto level the rest of an existing build** (after WO-64): keep levels 1 to K, fill K+1 to N with the same page.
 - **Destiny target:** pick the Destiny star you're heading for and light the path to it.
 - **Skills over levels:** a small line chart on the shared page of the main skills from level 1 to the last.
 - **Callings:** a field for the build's Calling, once the Callings mod data is in.
