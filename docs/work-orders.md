@@ -2477,6 +2477,55 @@ Today every skill shows twice in the editor: in the left list, where its points 
 
 ---
 
+## WO-63  FAQ page: gameplay (13 Oct 2026)
+
+The site's first guide page: the gameplay questions players ask most on the LoreRim Discord, answered and checked against the 5.0.4.8 files. Install and performance questions come later as more sections on the same page, so build it to grow.
+
+### Content
+- The words are in `content/faq/gameplay.md`, committed with this order. One `##` per section, one `###` per question, the answer below it: paragraphs, bullet and numbered lists, bold, inline code (file paths, console commands) and pipe tables.
+- 9 sections, 44 questions. Don't edit the wording; if a line seems wrong, say so in the commit and leave it.
+- The file is the only place the content lives. Dave and the chat session will edit it directly, so a change to the file must be all it takes to change the page: no copy in components, no hand-written JSON.
+- Render it at build time. A small markdown library is fine (`marked` or `remark` + `remark-gfm` for tables); no MDX, nothing that runs in the browser.
+
+### Route and layout
+- `/faq`, in the `(site)` layout (header and footer as on Browse).
+- Title `FAQ`, then the byline `For LoreRim 5.0.4.8` in muted text. No intro paragraph, no eyebrow (design rules 1 and 3).
+- Desktop (900 and up): a contents list on the left with the section names, sticky under the header; the questions on the right. On phones the contents list sits above the questions and is collapsed to a `Sections` button.
+- The answers use the same column width as the build page's main column. No narrow `ch` cap on body text (Dave's rule on ragged line breaks).
+- Section names in the title face, as section labels elsewhere. Questions in the body face at a heading size, white; answers in body text. Tables, lists and code in the existing visual system: thin rules, square corners, `#141b23` panel behind code and tables, no shadows.
+
+### Linking to one answer
+Players will paste answers into Discord, so every question needs its own link.
+- Each question gets an id from its text, e.g. `#why-cant-i-fast-travel`. Ids are stable: same text, same id.
+- Hovering a question (or focusing it) shows a small link icon after it. Clicking copies the full URL with the `#id` and shows `Copied` for 2 s, the same as `Copy link` on the build page.
+- Opening `/faq#some-id` scrolls to that question below the sticky header, not under it.
+
+### Filter
+- One text box at the top of the questions: `Filter questions`.
+- Typing hides every question whose question or answer doesn't contain all the typed words (case-insensitive), and every section left empty. The contents list hides the same sections.
+- No match: `No questions match "[text]".` with a `Clear` button.
+- Clearing brings everything back. The filter isn't kept in the URL.
+- This is the one piece that runs in the browser; the page must read in full with scripts off.
+
+### Getting there
+- The footer gets an `FAQ` link next to the Discord link. The header stays as it is (it has no nav by design).
+- Page metadata: title `FAQ | LoreRim Build Planner`; description `Answers to the gameplay questions LoreRim players ask most, for LoreRim 5.0.4.8.`
+- Add FAQPage structured data (JSON-LD) built from the same file: one `Question` per `###`, its answer as plain text.
+
+### Done when
+- [ ] `/faq` shows all 9 sections and 44 questions from `content/faq/gameplay.md`, with tables, lists and code rendered.
+- [ ] A test (unit or e2e) counts sections and questions in the rendered page against the file, so the two can't drift.
+- [ ] Editing a question in the file and rebuilding changes the page with no other change.
+- [ ] e2e: open `/faq#why-cant-i-fast-travel`; that question is in view below the header. Copy its link; the clipboard holds the full URL.
+- [ ] e2e: type `vampire` in the filter; only matching questions remain (at least `Do vampires get thirsty?` and `Playing as a vampire`), and empty sections are hidden. Clear brings all 44 back.
+- [ ] The page reads in full with JavaScript disabled (filter and copy buttons may be absent).
+- [ ] The JSON-LD passes Google's Rich Results Test (or schema.org validator) with 44 questions.
+- [ ] Footer link `FAQ` on every site page.
+- [ ] Screenshots at 1440 (top, and scrolled to the Smithing book table) and at 390 (top with `Sections` open, and a table), checked against `docs/design-rules.md`: no eyebrows, no middle dots, no em dashes in the page's own copy.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
