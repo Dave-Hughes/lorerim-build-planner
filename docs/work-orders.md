@@ -3002,7 +3002,7 @@ That is the one launch blocker: a long build is exactly what the best authors wi
 4. **Targets** on the fixture, on a mid-range laptop profile (4× CPU slowdown in DevTools is fine as a stand-in):
    - clicks and stars: under 200 ms;
    - typing in notes and the search: under 50 ms a keystroke;
-   - level nav: under 100 ms.
+   - level nav: under 100 ms. *Changed by WO-74 to under 120 ms: at 4× the build page was 112 to 128 ms before WO-73, and 58 to 97 ms unthrottled.*
 5. **Nothing changes on screen.** This order is speed only.
 
 ### Done when
@@ -3088,8 +3088,45 @@ That is the one launch blocker: a long build is exactly what the best authors wi
 
 ### Done when
 - [ ] Screenshots at 1512×806, 1440 and 390 for each point, compared with the canvas where a board exists.
+  *Chat session, 14 Oct: reader screens compared on staging. Points 4, 5, 10 and 12 match, and point 1 and point 7 at 1440. Point 1 and point 7 on a phone, and the Taken-by panel (point 3), go to WO-74. The editor and wizard screens (points 2, 3's skills header, 6, 8 and 11) are still to compare, in WO-74.*
 - [x] e2e: open One-Handed and Destiny in the editor and on the build page. Every star's label is inside the box and none overlap; check it with bounding boxes.
 - [x] Point 6 waits for Dave's OK; mark it done or dropped.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-74  Launch: tree labels on phones, and level nav back under target (14 Oct 2026)
+
+**Why.** WO-73 left three things open: the build page's level nav got slower, phones can't fit every star's name, and the editor screens weren't compared with the canvas. A check of the reader screens also found a few small layout faults.
+
+1. **Level nav got slower: fix the cause.** On the build page at 4×, level nav went from 112–128 ms to 152 ms.
+   - Measured in a unit bench (fast machine, no slowdown): a first placement on a tree now costs 3 to 4 times what it did. One-Handed went from 1.1 to 4.3 ms and Destiny from 2.1 to 7.8 ms. At 4×, that is the extra 20 to 30 ms. Once a tree's spots are cached, placing again is under 1 ms either way.
+   - The cost is `spotAllowed`. It runs over every candidate spot (WO-73 raised them from about 12 to about 80 a star) against every star. Its cache is keyed by the label's text. A new level likely changes many stars' lines, so a level not seen yet misses the cache: check this in the profile.
+   - Expected kinds of fix (change what the profile shows): key the allowed spots by star and label size, not text; in `spotAllowed`, skip stars too far away to overlap or be nearer. Placing from cached spots, squeeze included, is already under 1 ms, so leave the squeeze alone.
+   - **Target:** level nav under 120 ms at 4× (WO-71 point 4 is changed to match), in the editor and on the build page.
+2. **Phones: the names that matter always show.** A 356 px box can't hold 51 names, so the rule on a phone (tree box under 600 px wide) is:
+   - Every taken and can-take star keeps its label. Today on Destiny at level 30, Silent Blade and Spellblade (both taken) and every can-take star lose theirs, while not-yet names like Saboteur and Monk keep theirs. On One-Handed, Short Blade Focus (taken) loses its label.
+   - If there's no room beside the star, the label sits further out, with a 1 px line from the star's edge to the label's near edge, in the star's colour at half strength. Not-yet stars never get a line.
+   - Not-yet stars get a name where one fits, and none where it doesn't. Zooming in or tapping a star shows the rest, as now.
+   - Desktop is unchanged: every star keeps its label at Fit.
+3. **Labels must read as their star's.**
+   - Each label's text gets a halo in the tree's background colour, so a link line never runs through letters (at 1440: War Axe Focus's requirement, Piercing Strike, Viper's Blade).
+   - Two labels on one row keep at least 10 px between them, so separate names don't read as one ("Assassin Saboteur", "Berserker Monk General", "Corrosive Weapon Absorbtion").
+   - Drop the far corner spots (more than half a label's width out to the side). Mace Focus and Stunning Blow sit too far from their stars, and on a phone Hand to Hand sits under Penetrating Strikes. Use point 2's line instead, for taken and can-take stars only.
+   - A taken star's short label keeps its rank (`Short Blade Focus 3`). Only the requirement line drops.
+4. **Taken-by panel:** `One-Handed` runs into `Short Blade Focus 1` with about 2 px between them. Give it the Held list's gutter from the canvas, with the tree name beside its first perk.
+5. **Phone level row:** with four cells, the row stops 38 px short of the right edge. When the cells don't fill the row on a phone, share its width evenly.
+6. **Ruler:**
+   - the selected diamond's halo cuts the top off its number (`30`);
+   - the window's slanted edge crosses the `1`;
+   - on a phone, the Destiny diamonds for 19 and 20 overlap. Keep the number clear, and nudge diamonds apart when they touch.
+7. **WO-73's editor screens:** compare points 2, 3 (the skills header), 6, 8 and 11 with `EditorSticky`, `EditorStickyPhone`, `Spells` and `DetailsThemes` on the canvas. Fix what differs, or note why the build is right. Tick WO-73's screenshot box when done.
+
+### Done when
+- [ ] e2e: `perf.spec.ts` passes at under 120 ms for level nav, editor and build page; the before and after numbers are in the commit message.
+- [ ] e2e at 390: on One-Handed and Destiny at levels 30 and 100, every taken and can-take star has a label. None overlap, none are cut, and no label is closer to another star than to its own.
+- [ ] e2e at 1440: point 3 is checked by bounding boxes: no link line crosses a label's text box, and labels on one row are at least 10 px apart.
+- [ ] Screenshots at 1512×806, 1440 and 390 for each point, compared with the canvas where a board exists.
 - [ ] All checks in CLAUDE.md pass.
 
 ---
