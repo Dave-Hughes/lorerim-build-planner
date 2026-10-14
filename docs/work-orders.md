@@ -3129,6 +3129,27 @@ That is the one launch blocker: a long build is exactly what the best authors wi
 - [x] Screenshots at 1512×806, 1440 and 390 for each point, compared with the canvas where a board exists.
 - [ ] All checks in CLAUDE.md pass.
 
+*Chat session, 14 Oct: the three open boxes above are settled in WO-75.*
+
+---
+
+## WO-75  Launch: close out WO-74's three open checks (14 Oct 2026)
+
+**Why.** WO-74 did the work, but three of its checks can't pass as written. The chat session checked staging at 1440 and 390 and settled each one.
+
+1. **Level nav: measure the median, not the worst.** At 4× the build page ran 112, 144 and 120 ms across three runs, so the worst single click is mostly noise. In `perf.spec.ts`, take five ‹ › steps each way and test the median under 120 ms, with the worst under 160 ms. The editor and the build page are both tested.
+2. **Phones: rank, don't promise every name.** A 356 px tree can't hold every taken and can-take name. On a phone the build page already names them right below the tree: the Destiny line, and the held list under the tree.
+   - Keep the rule that no label sits nearer another star than its own. Drop the leader lines if they never place a label there.
+   - The test at 390 becomes: no not-yet label takes a spot that a taken or can-take label could have used; none overlap; none are cut; and every taken perk is in the held list below the tree.
+3. **Lines through labels: the halo is the fix.** At 1440, lines pass under the halo and read cleanly; checked on Destiny at level 30. Replace the bounding-box check with one that every label has the halo.
+4. **Desktop lost a label.** On the build page at 1440, Destiny at level 30 shows 50 of 51 names: Conjuring Presence is missing. WO-73's rule holds on desktop: every star keeps its label at Fit. If the 10 px gap is what costs it, use 8 px.
+
+### Done when
+- [ ] `perf.spec.ts` passes with point 1's median and worst.
+- [ ] e2e at 390 tests point 2's rule, on One-Handed and Destiny at levels 30 and 100.
+- [ ] e2e at 1440: every label has the halo, and One-Handed and Destiny keep every label at levels 30 and 100, editor and build page.
+- [ ] The full e2e run passes, along with every other check in CLAUDE.md.
+
 ---
 
 ## Parked (not ordered yet)
