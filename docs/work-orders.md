@@ -3152,6 +3152,32 @@ That is the one launch blocker: a long build is exactly what the best authors wi
 
 ---
 
+## WO-76  Launch: free spell picks you can't miss (14 Oct 2026)
+
+**Why.** The Sevari build had 11 free spell picks left empty across levels 75 and 100: Master Illusion, Novice Restoration and Novice Destruction, then Apprentice to Master Restoration. Dave found them; the chat session, which built it, never noticed.
+- Taking a tier perk gives no prompt. The `Choose 2 spells` box appears further down the level with no signal.
+- Nothing marks an empty pick afterwards: not the level bar, not the level row, not the build.
+- Skip ahead makes it worse. A stretch can take several tier perks at once (level 100 took four), so the boxes stack up out of sight.
+
+1. **Say it when the perk is taken.** The taken line becomes `Apprentice Restoration taken. 2 perk points left.` followed by a `Choose 2 spells` button. The button scrolls to that perk's picker and puts focus in its search. Same on phones, in the sheet.
+2. **Empty picks are a to-do, not a problem.** They don't count as problems, and they never block saving or sharing.
+   - **Level bar:** beside the level's other counts, `3 spells to choose`. It's a button to the first picker with picks left.
+   - **Level row:** the cell gets the spells mark hollow until the picks are full, and its name adds `3 spells to choose` (WO-73 point 12).
+   - **Edit bar:** across the whole build, `11 spells to choose: levels 75, 100`. Each level is a link. This goes when none are left.
+3. **One place for a level's picks.** When a level takes more than one tier perk, the pickers sit together under one heading, `Spells to choose`, right under the perks. Each picker folds to its chosen spells once full (WO-73 point 8). Pickers with picks left come first.
+4. **The reader sees nothing new.** Empty picks are the author's to-do; the build page doesn't mention them.
+
+Use the game's words for perk and spell names. The ember accent marks picks left, as `0 of 2 chosen` already does.
+
+### Done when
+- [ ] e2e: take Apprentice Restoration on a level. The taken line's `Choose 2 spells` focuses that picker's search, and the level bar says `2 spells to choose`.
+- [ ] e2e: a stretch with two tier perks shows both pickers under `Spells to choose`, and the edit bar's count and links match. Choosing every spell clears all three.
+- [ ] Unit test: the count of spells to choose per level and per build, including a Master tier perk (1 pick).
+- [ ] Screenshots at 1512×806 and 390 of points 1 to 3.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
