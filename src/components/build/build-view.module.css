@@ -2,6 +2,8 @@
   /* The theme fills the page to the footer. */
   display: flex;
   flex-direction: column;
+  /* The Story runs the window's full width (WO-79): nothing past it scrolls sideways. */
+  overflow-x: clip;
 }
 /* The guide theme's root (WO-37): its ground and text, to the page's foot. */
 .themed {

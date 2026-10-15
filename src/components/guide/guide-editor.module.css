@@ -276,3 +276,21 @@
 .floating {
   max-width: calc(100vw - 32px);
 }
+
+/* The Story's image count (WO-79): "3 of 5 images", the button that adds one. */
+.imageCount {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.imageCount:disabled {
+  cursor: default;
+  color: var(--muted);
+  background: transparent;
+}
+.imageLimit {
+  margin: 0;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: var(--muted);
+}

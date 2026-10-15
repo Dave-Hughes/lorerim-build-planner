@@ -3245,11 +3245,11 @@ Use the game's words for perk and spell names. The ember accent marks picks left
 5. **Browse and the share card:** builds with a Story get a small `Story` tag on Browse. The share card is unchanged.
 
 ### Done when
-- [ ] e2e: write a Story with a title, three paragraphs, a quote and 5 images with captions. A sixth image is refused, with the message.
-- [ ] e2e: the build page shows the Story tab; the plate, the drop cap, the side-by-side pair and the viewer (‹ › and Esc) work.
-- [ ] A build without a Story shows no Story tab.
-- [ ] Screenshots at 1440 and 390, compared with `StoryTab`.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: write a Story with a title, three paragraphs, a quote and 5 images with captions. A sixth image is refused, with the message.
+- [x] e2e: the build page shows the Story tab; the plate, the drop cap, the side-by-side pair and the viewer (‹ › and Esc) work.
+- [x] A build without a Story shows no Story tab.
+- [x] Screenshots at 1440 and 390, compared with `StoryTab`.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

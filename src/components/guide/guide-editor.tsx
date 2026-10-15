@@ -35,6 +35,8 @@ export interface GuideEditorProps {
   onChange?: (doc: GuideDoc) => void;
   /** The editor once it exists (null when it goes), for a page that ends it itself before it unmounts (WO-74). */
   onEditor?: (editor: Editor | null) => void;
+  /** The most images it takes (the Story's 5, WO-79), and what it says when that's reached. */
+  maxImages?: { max: number; message: string };
 }
 
 type Rect = { left: number; top: number; bottom: number };
@@ -136,6 +138,7 @@ function Toolbar({
   onLink,
   onImage,
   onYoutube,
+  images,
 }: {
   editor: Editor;
   inline: boolean;
@@ -144,6 +147,8 @@ function Toolbar({
   onLink: () => void;
   onImage: () => void;
   onYoutube: () => void;
+  /** With a limit, the Image button says how many there are: "3 of 5 images". */
+  images?: { count: number; max: number };
 }) {
   const [more, setMore] = useState(false);
   // Opened without taking focus from the text, so Esc leaves focus in the editor.
@@ -167,7 +172,7 @@ function Toolbar({
         { name: "Quote", keys: "Mod+Shift+B", on: editor.isActive("blockquote"), run: () => c().toggleBlockquote().run() },
         { name: "Divider", on: false, run: () => c().setHorizontalRule().run() },
         { name: "Link", on: editor.isActive("link"), run: onLink },
-        { name: "Image", on: false, run: onImage },
+        ...(images ? [] : [{ name: "Image", on: false, run: onImage }]),
       ]
     : [
         { name: "Bold", keys: "Mod+B", on: editor.isActive("bold"), run: () => c().toggleBold().run() },
@@ -199,6 +204,18 @@ function Toolbar({
           </button>
         </Tooltip>
       ))}
+      {full && images && (
+        <button
+          type="button"
+          className={`${styles.tool} ${styles.toolText} ${styles.imageCount}`}
+          disabled={images.count >= images.max}
+          onMouseDown={(e) => e.preventDefault()}
+          onClick={onImage}
+        >
+          <ToolIcon name="Image" />
+          {images.count} of {images.max} images
+        </button>
+      )}
       {full && (
         <span ref={moreWrap} className={styles.moreWrap}>
           <button type="button" className={`${styles.tool} ${styles.toolText}`} aria-haspopup="menu" aria-expanded={more} onMouseDown={(e) => e.preventDefault()} onClick={() => setMore((m) => !m)}>
@@ -465,7 +482,7 @@ function Menu<T>({
   );
 }
 
-export function GuideEditor({ buildId, sectionKey, initial, label, placeholder = "", headingLevels = [2, 3], compact: compactProp, inline = false, onStatus, onChange, onEditor }: GuideEditorProps) {
+export function GuideEditor({ buildId, sectionKey, initial, label, placeholder = "", headingLevels = [2, 3], compact: compactProp, inline = false, onStatus, onChange, onEditor, maxImages }: GuideEditorProps) {
   const compact = compactProp || inline;
   const { status, error, change, retry } = useGuideAutosave(buildId, sectionKey);
   useEffect(() => onStatus?.(status, error, retry), [status, error, retry, onStatus]);
@@ -480,6 +497,8 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
   const { menu: mention, bridge: mentionBridge, close: closeMention, highlight: highlightMention } = useMenu<MentionInfo>();
   const [handlers] = useState(createEditorHandlers);
   const [filePicker, setFilePicker] = useState<HTMLInputElement | null>(null);
+  // Images past the limit, refused (WO-79): says so until the next image fits.
+  const [refused, setRefused] = useState(false);
   const menuId = `guide-blocks-${sectionKey.replace(":", "-")}`;
 
   const items = useCallback(
@@ -585,6 +604,22 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
     return () => window.clearTimeout(t);
   }, [editor]);
 
+  // Images in the document now, uploading ones included.
+  let imageCount = 0;
+  editor?.state.doc.descendants((n) => {
+    if (n.type.name === "image") imageCount++;
+  });
+  /** Adds images where they were dropped (or at the cursor), up to the limit when there is one. */
+  const addImages = (files: File[], pos?: number) => {
+    if (!editor) return;
+    let take = files;
+    if (maxImages) {
+      take = files.slice(0, Math.max(0, maxImages.max - imageCount));
+      setRefused(take.length < files.length);
+    }
+    if (take.length) void insertImages(editor, buildId, take, pos);
+  };
+
   // Give the editor's extensions this render's handlers.
   useLayoutEffect(() => {
     handlers.set({
@@ -600,11 +635,12 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
         return loadItems(d.version.id).then(() => searchMentions(d, q));
       }),
       link: () => setLinking(true),
-      files: (files, pos) => editor && void insertImages(editor, buildId, files, pos),
+      files: (files, pos) => addImages(files, pos),
     });
   });
 
   // Text kept in this browser from a save that didn't finish: save it now.
+
   useEffect(() => {
     if (editor && startDoc.unsaved) change(startDoc.doc);
   }, [editor, startDoc, change]);
@@ -642,6 +678,7 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
       levels={headingLevels}
       onLink={openLink}
       onImage={() => filePicker?.click()}
+      images={maxImages && { count: imageCount, max: maxImages.max }}
       onYoutube={() => {
         const c = editor.view.coordsAtPos(editor.state.selection.from);
         setYoutube({ left: c.left, top: c.top, bottom: c.bottom });
@@ -655,6 +692,11 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
           {toolbar}
           {linking && <LinkForm editor={editor} onDone={() => setLinking(false)} />}
         </div>
+      )}
+      {maxImages && (refused || imageCount >= maxImages.max) && (
+        <p role={refused ? "alert" : undefined} className={styles.imageLimit}>
+          {maxImages.message}
+        </p>
       )}
       <EditorContent editor={editor} />
       {slash && <Menu state={slash} id={menuId} label="Blocks" onPick={(i) => slash.command(slash.items[i])} onHighlight={highlightSlash} onClose={closeSlash} render={(item) => item.title} />}
@@ -687,7 +729,7 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
           onChange={(e) => {
             const files = Array.from(e.target.files ?? []);
             e.target.value = "";
-            if (files.length) void insertImages(editor, buildId, files);
+            if (files.length) addImages(files);
           }}
         />
       )}

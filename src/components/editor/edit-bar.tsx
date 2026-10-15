@@ -7,12 +7,13 @@ import { setBuildVisibility } from "@/lib/builds/actions";
 import type { BuildVisibility } from "@/lib/builds/validate";
 import styles from "./edit-bar.module.css";
 
-export type EditPage = "levels" | "setup" | "guide";
+export type EditPage = "levels" | "setup" | "guide" | "story";
 
 const PAGES: { key: EditPage; label: string; path: string }[] = [
   { key: "levels", label: "Levels", path: "edit" },
   { key: "setup", label: "Set up", path: "setup" },
   { key: "guide", label: "Guide", path: "guide" },
+  { key: "story", label: "Story", path: "story" },
 ];
 
 const VIS_ORDER: BuildVisibility[] = ["public", "unlisted", "private"];

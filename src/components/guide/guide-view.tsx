@@ -58,7 +58,8 @@ function withMarks(text: string, marks: GuideMark[] | undefined, key: string): R
   return <Fragment key={key}>{out}</Fragment>;
 }
 
-function draw(n: GuideNode, key: string, headingIds: Map<number, string>, index?: number): React.ReactNode {
+/** One node of a guide document, drawn (the Story draws its own paragraphs, quotes and images, WO-79). */
+export function draw(n: GuideNode, key: string, headingIds: Map<number, string>, index?: number): React.ReactNode {
   const kids = () => (n.content ?? []).map((c, i) => draw(c, `${key}.${i}`, headingIds));
   switch (n.type) {
     case "paragraph":

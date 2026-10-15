@@ -25,6 +25,8 @@ const summaryFields = {
   // Skip ahead (WO-69): the levels written, for a build that skips; null for one that writes every level.
   writtenLevels: sql<number[] | null>`(case when exists(select 1 from jsonb_array_elements(${schema.builds.plan}->'levels') x where x->>'skipped' = 'true') then (select jsonb_agg(t.i order by t.i) from jsonb_array_elements(${schema.builds.plan}->'levels') with ordinality t(x, i) where coalesce(t.x->>'skipped', '') <> 'true') else null end)`,
   videoId: sql<string | null>`${schema.builds.plan}->>'videoId'`,
+  // A Story (WO-79): a title and some text.
+  hasStory: sql<boolean>`(exists(select 1 from ${schema.buildGuides} g where g.build_id = ${schema.builds.id} and g.key = 'story:title' and g.text_length > 0) and exists(select 1 from ${schema.buildGuides} g where g.build_id = ${schema.builds.id} and g.key = 'story' and (g.text_length > 0 or g.doc::text like '%"type":"image"%')))`,
   // Held back (WO-40): an admin hid it, or the build has enough open reports.
   coverHeld: sql<boolean>`(exists(select 1 from ${schema.hiddenImages} h where h.url = ${schema.builds.coverImageUrl}) or (select count(*) from ${schema.buildReports} r where r.build_id = ${schema.builds.id} and r.cleared_at is null) >= ${REPORTS_TO_HIDE})`,
   updatedAt: schema.builds.updatedAt,
@@ -57,6 +59,7 @@ function toSummary(r: SummaryRow): BuildSummary {
     author: { name: r.authorName ?? "Unknown", image: r.authorImage ?? null, handle: r.authorHandle ?? null },
     likeCount: Number(r.likeCount ?? 0),
     videoId: r.videoId ?? null,
+    hasStory: !!r.hasStory,
   };
 }
 

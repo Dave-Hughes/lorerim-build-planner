@@ -29,9 +29,14 @@ export function BuildCard({ build, mine, likedAt, featured }: { build: BuildSumm
             <DestinyStar /> Featured
           </span>
         )}
-        {build.videoId && (
-          <span className={styles.videoBadge}>
-            <PlayMark size={featured ? 16 : 12} /> Video
+        {(build.videoId || build.hasStory) && (
+          <span className={styles.badges}>
+            {build.videoId && (
+              <span className={styles.videoBadge}>
+                <PlayMark size={featured ? 16 : 12} /> Video
+              </span>
+            )}
+            {build.hasStory && <span className={styles.videoBadge}>Story</span>}
           </span>
         )}
       </div>

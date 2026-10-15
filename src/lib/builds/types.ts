@@ -53,5 +53,7 @@ export interface BuildSummary {
   coverHeld?: boolean;
   /** Its video guide's YouTube id, when it has one (WO-39): cards show a Video badge. */
   videoId?: string | null;
+  /** It has a Story (WO-79): cards show a small Story tag. */
+  hasStory?: boolean;
   isSample?: boolean;
 }

@@ -1,0 +1,398 @@
+/*
+ * The Story tab (WO-79): a book page. The one place Alegreya sets body text (design rules, Visual
+ * system), since a story is flavor text. Its own warm off-white on a darker ground, whatever the theme.
+ * It runs the window's full width (the page zoom divides the viewport units, as for the page height).
+ */
+.story {
+  --story-ink: #ddd5c6;
+  --story-ground: #0b0f14;
+  --story-muted: #8e9bab;
+  --story-line: #cbbfa8;
+  width: calc(100vw / var(--page-zoom));
+  margin-left: calc(50% - 50vw / var(--page-zoom));
+  background: var(--story-ground);
+  color: var(--story-ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* The opening plate: the first image, full width and about 640px tall, the title over its lower edge. */
+.opening {
+  position: relative;
+  width: 100%;
+  height: 640px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.openingPlain {
+  height: auto;
+  padding-top: 72px;
+}
+.openingImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+  display: block;
+}
+.openingFade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 360px;
+  background: linear-gradient(to bottom, rgba(11, 15, 20, 0) 0%, rgba(11, 15, 20, 0.82) 62%, var(--story-ground) 100%);
+}
+.openingPlain .openingFade {
+  display: none;
+}
+.openingButton {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.openingButton:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: -4px;
+}
+.openingWords {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+  margin-bottom: 56px;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+.openingPlain .openingWords {
+  margin-bottom: 0;
+}
+.title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 64px;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.line {
+  margin: 0;
+  max-width: 640px;
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--story-line);
+}
+
+/* The text: a 680px column, Alegreya at 20px with line height 1.75. */
+.body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 48px;
+}
+.text {
+  width: 680px;
+  max-width: calc(100% - 32px);
+  margin: 0 0 26px;
+  font-family: var(--font-flavor);
+  font-size: 20px;
+  line-height: 1.75;
+  color: var(--story-ink);
+}
+.text p {
+  margin: 0;
+}
+.text a {
+  color: var(--ember);
+}
+.text ul,
+.text ol {
+  margin: 0;
+  padding-left: 1.4em;
+}
+/* Headings: the site's condensed caps, centred. */
+.text h2,
+.text h3 {
+  margin: 30px 0 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--text);
+}
+.text h3 {
+  font-size: 24px;
+}
+.text hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  width: 120px;
+  margin: 16px auto;
+}
+/* The first paragraph's brass drop cap. */
+.first::first-letter {
+  float: left;
+  font-family: var(--font-flavor);
+  font-size: 78px;
+  line-height: 0.82;
+  padding: 8px 12px 0 0;
+  color: var(--brass);
+}
+
+/* Plates: 1000px, wider than the text, brass corners, the caption under them in Alegreya italic. */
+.single,
+.pair {
+  width: 1000px;
+  max-width: calc(100% - 32px);
+  margin: 30px 0 56px;
+}
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.plate {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.plateFrame::before,
+.plateFrame::after {
+  width: 18px;
+  height: 18px;
+}
+.plateFrame::before {
+  top: -6px;
+  left: -6px;
+}
+.plateFrame::after {
+  bottom: -6px;
+  right: -6px;
+}
+.plateButton {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.plateButton img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.plateButton:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 3px;
+}
+.caption {
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--story-muted);
+  text-align: center;
+}
+.pair .caption {
+  font-size: 16px;
+}
+
+/* A quote the author marks: large Alegreya italic between two brass ornaments. */
+.quote {
+  width: 760px;
+  max-width: calc(100% - 32px);
+  margin: 22px 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.quoteText {
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 30px;
+  line-height: 1.4;
+  color: #e9e1d2;
+  text-align: center;
+}
+.quoteText p {
+  margin: 0;
+}
+.ornament {
+  display: block;
+  stroke: var(--brass);
+  fill: none;
+}
+.ornamentFill {
+  fill: var(--brass);
+}
+
+/* The end: an ornament, the character in one line, the way to the levels. */
+.end {
+  width: 680px;
+  max-width: calc(100% - 32px);
+  padding: 38px 0 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  text-align: center;
+}
+.character {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--story-muted);
+}
+.follow {
+  min-height: 44px;
+  padding: 0 8px;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 16px;
+  color: var(--ember);
+  cursor: pointer;
+}
+.follow:hover {
+  color: var(--bright);
+}
+
+/* The viewer: full screen, the caption, ‹ ›, "2 of 4". */
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(5, 7, 10, 0.96);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 24px;
+}
+.viewerRow {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  max-width: 100%;
+  min-height: 0;
+}
+/* A 1180 by 664 box at most, the image fitted inside it. */
+.viewerImage {
+  display: block;
+  width: min(1180px, calc(100vw / var(--page-zoom) - 200px));
+  height: min(664px, calc(100dvh / var(--page-zoom) - 200px));
+  object-fit: contain;
+}
+.viewerArrow,
+.viewerClose {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  background: #141b23;
+  border: 1px solid #3a4658;
+  color: var(--text);
+  font-size: 22px;
+  cursor: pointer;
+}
+.viewerClose {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  width: 44px;
+  height: 44px;
+  background: none;
+}
+.viewerArrow:hover,
+.viewerClose:hover {
+  border-color: var(--brass);
+}
+.viewerCaption {
+  margin: 0;
+  max-width: 900px;
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--story-line);
+  text-align: center;
+}
+.viewerCount {
+  margin: 0;
+  font-size: 14px;
+  color: var(--story-muted);
+}
+
+/* Phones: plates run edge to edge, the text is 18px with a 16px gutter, the viewer swipes. */
+@media (max-width: 699px) {
+  .opening {
+    height: 480px;
+  }
+  .title {
+    font-size: 44px;
+  }
+  .line {
+    font-size: 19px;
+  }
+  .text {
+    max-width: none;
+    width: 100%;
+    padding: 0 16px;
+    font-size: 18px;
+  }
+  .single,
+  .pair {
+    max-width: none;
+    width: 100%;
+    margin: 18px 0 36px;
+  }
+  .pair {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .plateFrame::before,
+  .plateFrame::after {
+    display: none;
+  }
+  .caption {
+    padding: 0 16px;
+  }
+  .quoteText {
+    font-size: 24px;
+  }
+  .viewer {
+    padding: 0;
+  }
+  .viewerArrow {
+    display: none;
+  }
+  .viewerImage {
+    width: 100vw;
+    height: min(70dvh, calc(100dvh - 160px));
+  }
+}

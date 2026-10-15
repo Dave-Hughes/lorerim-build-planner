@@ -205,3 +205,15 @@
     transition: none;
   }
 }
+
+/* The Story page (WO-79): the title and opening line, one line each. */
+.storyLead {
+  margin: 0;
+  max-width: 680px;
+}
+.lineField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 680px;
+}

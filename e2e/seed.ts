@@ -76,6 +76,8 @@ export const SEVARI_BUILD_ID = "e2esevar22";
 export const ONE_POINT_BUILD_ID = "e2ew72pq2s";
 /** WO-76: a Breton healer, Novice Restoration at level 1 and level 2 empty: Apprentice Restoration can be taken there. */
 export const HEALER_BUILD_ID = "e2ew76rest";
+/** WO-79: a copy of Sevari's plan with no Story yet; the Story tests write one. */
+export const STORY_BUILD_ID = "e2estry222";
 export const OTHER_USER_ID = "e2e-user-0002";
 export const OTHER_BUILD_ID = "e2eqq2e2e2";
 /** Made for the test-only older version (src/lib/rules/__fixtures__/test-version.ts). */
@@ -269,6 +271,16 @@ export async function seed() {
         // Made 2 days ago, out of the author's daily build limit (WO-40).
         createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
         name: sevari.name,
+        description: sevari.description,
+        visibility: "unlisted",
+        gameVersion: "5.0.4.8",
+        plan: sevari.plan as unknown as BuildPlan,
+      },
+      {
+        id: STORY_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
+        name: "Sevari, a story",
         description: sevari.description,
         visibility: "unlisted",
         gameVersion: "5.0.4.8",

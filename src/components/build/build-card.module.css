@@ -227,11 +227,16 @@
 }
 
 /* A video guide (WO-39): a small badge on the cover. */
-.videoBadge {
+/* Top right of the cover: Video and Story (WO-79). */
+.badges {
   position: absolute;
   right: 10px;
   top: 10px;
   z-index: 1;
+  display: flex;
+  gap: 6px;
+}
+.videoBadge {
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -261,9 +266,11 @@
 .featured .description {
   font-size: 19px;
 }
-.featured .videoBadge {
+.featured .badges {
   right: 16px;
   top: 16px;
+}
+.featured .videoBadge {
   padding: 6px 14px 6px 11px;
   font-size: 16px;
 }

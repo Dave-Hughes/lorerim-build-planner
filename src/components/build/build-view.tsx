@@ -29,7 +29,8 @@ import { guideHeadings } from "@/components/guide/guide-view";
 import { LocalDate } from "@/components/ui/local-date";
 import { GuideSection } from "@/components/guide/guide-section";
 import { LevelNote } from "@/components/guide/level-note";
-import { docWords, firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
+import { docWords, firstParagraph, isEmptyDoc, notedLevels, storyOf, type GuideDoc } from "@/lib/guide/doc";
+import { StoryView, storyImages } from "./story-view";
 import { GuideView } from "@/components/guide/guide-view";
 import { currentVersion, isOlderThanCurrent } from "@/lib/rules/versions";
 import { ATTRIBUTE_NAMES, levelChanges, levelFacts, levelMarks, nextDestinyLevel, perksByLevel, stoneShare, stretchPerkOrder, stretchPerkRequirement, type PerkListGroup } from "@/lib/rules/derive";
@@ -71,7 +72,7 @@ interface Props {
   admin?: { featured: boolean } | null;
 }
 
-export type BuildTab = "levels" | "guide";
+export type BuildTab = "levels" | "guide" | "story";
 
 /** What the reader may be looking at on the Levels tab, top to bottom: held still when the level changes (WO-49). */
 const HELD_SECTIONS = ["level-card", "attributes-skills", "perks", "destiny", "gear-at-level", "spells"] as const;
@@ -114,7 +115,9 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   // Tabs: one with nothing in it isn't shown; with only Levels there's no tab row.
   const overview = guide.overview && !isEmptyDoc(guide.overview) ? guide.overview : null;
   // The Guide tab holds the guide and the video guide (WO-39), either or both.
-  const tabs: BuildTab[] = ["levels", ...(overview || plan.videoId ? (["guide"] as const) : [])];
+  // The Story (WO-79): once it has a title and some text.
+  const story = useMemo(() => storyOf(guide), [guide]);
+  const tabs: BuildTab[] = ["levels", ...(overview || plan.videoId ? (["guide"] as const) : []), ...(story ? (["story"] as const) : [])];
   // "Watch the video guide" in the hero: opens the Guide tab at the video and starts it.
   const [play, setPlay] = useState(0);
   const [tabState, setTabState] = useState<BuildTab>(initialTab);
@@ -175,12 +178,13 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
 
   // The intro, else the guide's first paragraph, else nothing.
   const intro = guide.intro && !isEmptyDoc(guide.intro) ? guide.intro : firstParagraph(overview);
-  const TAB_NAMES: Record<BuildTab, string> = { levels: "Levels", guide: "Guide" };
+  const TAB_NAMES: Record<BuildTab, string> = { levels: "Levels", guide: "Guide", story: "Story" };
   // Each tab's second line: what's in it.
   const minutes = overview ? Math.max(1, Math.ceil(docWords(overview) / 200)) : 0;
   const TAB_SUB: Record<BuildTab, string> = {
     levels: `Levels 1 to ${total}`,
     guide: overview ? `${minutes} min read${plan.videoId ? " | Video" : ""}` : "Video",
+    story: story ? storySub(story.doc) : "",
   };
 
   const hasGuideTab = tabs.includes("guide");
@@ -197,7 +201,9 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   const railSpells = spellsAndAbilities(d, plan, level);
   const spellsCount = railSpells.spells.length + railSpells.abilities.length + railSpells.shouts.length;
   const railItems: RailItem[] =
-    tab === "guide" && overview
+    tab === "story"
+      ? []
+      : tab === "guide" && overview
       ? [
           // Only this tab's sections (WO-57): the tabs themselves switch tabs.
           ...guideHeadings(overview, "guide").map((h) => ({ key: h.id, label: h.text, target: h.id })),
@@ -403,6 +409,21 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           )}
           </div>
           </div>
+          {tab === "story" && story && (
+            <div id="panel-story" role="tabpanel" aria-labelledby="tab-story">
+              <StoryView
+                doc={story.doc}
+                title={story.title}
+                line={story.line}
+                character={characterLine(d, plan)}
+                onFollow={() => {
+                  setTab("levels");
+                  setLevel(1);
+                  requestAnimationFrame(() => tabRow?.scrollIntoView({ block: "start" }));
+                }}
+              />
+            </div>
+          )}
           {/* Report, quietly, at the foot (WO-40): signed-in players, not the owner. */}
           {signedIn && !isOwner && !build.isSample && <ReportBuild buildId={build.id} />}
         </div>
@@ -1607,4 +1628,17 @@ function GainColumns({ rows, columns }: { rows: React.ComponentProps<typeof Skil
       <SkillGains rows={rows.slice(half)} />
     </span>
   );
+}
+
+/** The Story tab's second line (WO-79): "4 images, 4 min read". */
+function storySub(doc: GuideDoc): string {
+  const n = storyImages(doc);
+  const minutes = Math.max(1, Math.ceil(docWords(doc) / 200));
+  return `${n ? `${n} image${n === 1 ? "" : "s"}, ` : ""}${minutes} min read`;
+}
+
+/** The character in one line, for the Story's end: "Dunmer | The Shadow | Mephala | Levels 1 to 100". */
+function characterLine(d: GameData, plan: BuildViewData["plan"]): string {
+  const sign = plan.traits.includes("Master of Destiny") ? null : d.signByName.get(plan.birthsign);
+  return [plan.race, sign ? `The ${sign.name}` : null, plan.deity || null, `Levels 1 to ${plan.levels.length}`].filter(Boolean).join(" | ");
 }

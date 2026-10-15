@@ -9,7 +9,7 @@ import { newBuildId, isValidBuildId } from "./ids";
 import { getBuild } from "./queries";
 import { buildDetailsSchema, buildVisibilitySchema, parseBuildPlan, type BuildDetails } from "./validate";
 import { convertPlan, droppedSentence } from "@/lib/rules/convert";
-import { guideDocSchema, imageUrls, isGuideKey, isInlineOnly, levelOfKey, limitFor, textLength, tooLongMessage } from "@/lib/guide/doc";
+import { STORY_IMAGES, STORY_IMAGE_ERROR, guideDocSchema, imageUrls, isGuideKey, isInlineOnly, isPlainLine, levelOfKey, limitFor, textLength, tooLongMessage } from "@/lib/guide/doc";
 import { deleteBuildImages, deleteImagesIfUnused, isOurImage } from "@/lib/guide/images";
 import { copyGuide } from "@/lib/guide/queries";
 import { currentVersion, isKnownVersion, requireGameData } from "@/lib/rules/server";
@@ -308,7 +308,9 @@ export async function saveGuideSection(buildId: string, key: string, input: unkn
   const limit = limitFor(key);
   if (length > limit) return { ok: false, error: tooLongMessage(length, limit) };
   if (key === "intro" && !isInlineOnly(doc)) return { ok: false, error: "The intro takes plain paragraphs with bold, italic and links only." };
+  if ((key === "story:title" || key === "story:line") && !isPlainLine(doc)) return { ok: false, error: "One line of plain text." };
   const images = imageUrls(doc);
+  if (key === "story" && images.size > STORY_IMAGES) return { ok: false, error: STORY_IMAGE_ERROR };
   if ([...images].some((u) => !isOurImage(u))) return { ok: false, error: "Images must be uploaded to the guide." };
 
   const level = levelOfKey(key);

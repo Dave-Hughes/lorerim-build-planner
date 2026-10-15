@@ -46,7 +46,7 @@ export default async function BuildPage({ params, searchParams }: { params: Para
         isOwner={isOwner}
         signedIn={!!viewerId}
         initialLevel={Number(level) || 1}
-        initialTab={tab === "guide" ? "guide" : "levels"}
+        initialTab={tab === "guide" || tab === "story" ? tab : "levels"}
         signInToCopy={<SignInButton redirectTo={`/b/${id}?copy=1`} className={build.plan.videoId ? "btn" : "btn btn-primary"} label="Copy to my builds" />}
         signInToLike={
           <SignInButton

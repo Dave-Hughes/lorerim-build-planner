@@ -25,14 +25,43 @@ export interface GuideDoc extends GuideNode {
 
 /**
  * `overview` for the whole build, `intro` for the short lead-in on the shared page, `level:<n>`
- * for a level's notes.
+ * for a level's notes, and the Story (WO-79): `story` its text, `story:title` and `story:line` its
+ * title and opening line.
  */
-export type GuideKey = "overview" | "intro" | `level:${number}`;
+export type GuideKey = "overview" | "intro" | "story" | "story:title" | "story:line" | `level:${number}`;
 
-export const GUIDE_LIMITS = { overview: 60_000, intro: 1_200, level: 6_000 } as const;
+export const GUIDE_LIMITS = { overview: 60_000, intro: 1_200, level: 6_000, story: 60_000, storyTitle: 60, storyLine: 140 } as const;
 
 export function limitFor(key: string): number {
-  return key === "overview" ? GUIDE_LIMITS.overview : key === "intro" ? GUIDE_LIMITS.intro : GUIDE_LIMITS.level;
+  if (key === "overview") return GUIDE_LIMITS.overview;
+  if (key === "intro") return GUIDE_LIMITS.intro;
+  if (key === "story") return GUIDE_LIMITS.story;
+  if (key === "story:title") return GUIDE_LIMITS.storyTitle;
+  if (key === "story:line") return GUIDE_LIMITS.storyLine;
+  return GUIDE_LIMITS.level;
+}
+
+/** A Story's images, counted on their own (the build's 40 still holds). */
+export const STORY_IMAGES = 5;
+export const STORY_IMAGE_ERROR = `A story can have ${STORY_IMAGES} images.`;
+
+/** A one-line plain-text field (the Story's title and opening line) as a document, and back. */
+export function lineDoc(text: string): GuideDoc {
+  const t = text.replace(/\s+/g, " ");
+  return { type: "doc", content: [t ? { type: "paragraph", content: [{ type: "text", text: t }] } : { type: "paragraph" }] };
+}
+
+/** The Story's parts, from a build's guide sections; null without a title and some text. */
+export function storyOf(sections: Record<string, GuideDoc>): { doc: GuideDoc; title: string; line: string } | null {
+  const doc = sections.story;
+  const title = docText(sections["story:title"]).trim();
+  if (!doc || isEmptyDoc(doc) || !title) return null;
+  return { doc, title, line: docText(sections["story:line"]).trim() };
+}
+
+/** Plain text with no marks, one paragraph (the Story's title and opening line). */
+export function isPlainLine(doc: GuideDoc): boolean {
+  return doc.content.length <= 1 && doc.content.every((p) => p.type === "paragraph" && (p.content ?? []).every((c) => c.type === "text" && !c.marks?.length));
 }
 
 /** The intro holds paragraphs of text with bold, italic and links only. */
@@ -68,7 +97,7 @@ export function notedLevels(sections: Record<string, GuideDoc>): Set<number> {
 }
 
 export function isGuideKey(key: string): key is GuideKey {
-  return key === "overview" || key === "intro" || /^level:([1-9]\d?|100)$/.test(key);
+  return key === "overview" || key === "intro" || key === "story" || key === "story:title" || key === "story:line" || /^level:([1-9]\d?|100)$/.test(key);
 }
 
 /** Only http and https links, ever. */
