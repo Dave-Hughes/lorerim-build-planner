@@ -3479,6 +3479,56 @@ Open question for Dave, in a canvas comment: should the buttons and other links 
 
 ---
 
+## WO-87  Launch: the coming soon page, fourth pass (15 Oct 2026)
+
+**Why.** Dave still didn't like the page after WO-86: his screenshots in the hero said nothing about the planner. This pass swaps them for pixel art drawn like the guide icons, tells how Tapps came to make the planner in four panels, says plainly what the planner is, and ends with what comes later. Dave said this direction is "WAY better". The boards are `ComingSoon4.dc.html` (desktop, press Play) and `ComingSoon4Phone.dc.html` (390). Match them, words included. The four feature sections from WO-86 (the live tree, gear and level cards, and sharing) stay exactly as they are. The board file still holds some leftover `shots` code and a `.kb` class from the third pass: ignore them.
+
+**Already in this commit (chat session):**
+- `scripts/coming-soon/` draws the art from the palette and Tapps sprites in `scripts/icons/pixels.py`. Run `python3 scripts/coming-soon/build.py`.
+- `public/coming-soon/px/` holds what it draws, all PNG and pixel for pixel what is on the canvas:
+  - hero layers at 288×150: `hero-sky`, `hero-stars-a`/`-b`, `hero-aurora-a`/`-b`, `hero-land`, and `hero-fg-0` to `-5` (the campfire with Tapps writing);
+  - story panels at 160×100: `p1-0..2`, `p2-0..2`, `p3-0..3`, `p4-0..3`.
+- To change the art, edit the scripts and run them again. Don't hand-edit the PNGs.
+
+1. **Hero.**
+   - The layers stack in the order above, each `position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:62% 100%; image-rendering:pixelated`.
+   - The hero is `clamp(560px, 52vw, 820px)` tall on a `#070a0f` ground.
+   - A left fade, `rgba(7,10,15,.78)` at 0, `.45` at 32% and `0` at 52%, keeps the words readable over the art.
+   - Motion, on the page's shared 280 ms tick:
+     - the foreground steps one frame a tick;
+     - the two star layers swap every 3 ticks;
+     - the aurora layers cross-fade (3 s ease) every 24 ticks.
+   - Only the land layer gets alt text: `A night in Skyrim drawn in pixels: an aurora over snowy peaks, a pine forest, and Tapps writing in a book by a campfire`. Every other layer is `alt=""`.
+   - The words sit top left in the page column: the logo star (48 px), then `LoreRim` / `Build Planner` at `clamp(52px, 6.2vw, 100px)`, then `Opening soon`.
+   - Under `Opening soon` there is one line at 18 px, `#c3cdd6`: `Will be shared in the Modding Bungalo Discord.` `Modding Bungalo` links to `DISCORD`, in `#f3ead8`, underlined.
+   - The hero has no button, no four lines and no shots any more.
+2. **How this started.** This section comes right after the hero, headed `How this started`. It holds four framed panels in a grid (`repeat(auto-fit, minmax(260px, 1fr))`, gap 32). Each panel has an ember label in the title face and an Alegreya caption at 20 px:
+   - `Level 1`: `I loved LoreRim from the start. I had no idea what I was doing.` Frames `p1` 0,1,0,2. Alt: `Tapps at a signpost at dawn, holding a map, a question mark over his helmet`.
+   - `Level 3`: `Skyrim did not wait for me to work it out.` Frames `p2` 0,1,0,2. Alt: `Tapps in a dark forest at night, a sabre cat with glowing eyes behind him`.
+   - `Writing it down`: `So I started writing my builds down, level by level.` Frames `p3` 0,1,2,3. Alt: `Tapps at a desk by candlelight, writing in a book`.
+   - `Level 50`: `Now there is a place for yours, and for everyone else's.` Frames `p4` 0,1,2,3. Alt: `Tapps in a tavern by the hearth, raising a tankard of mead`.
+   The panels step one frame every 2 ticks. The old "Why I made this" section is gone; this replaces it.
+3. **What it is.** This section comes before the four feature sections. The heading `What it is` sits on the left. On the right is one paragraph at `clamp(19px, 1.6vw, 22px)`: `A character planner for LoreRim 5.0.4.8. You plan a build level by level, with the game's own perks, traits, spells and gear, then publish it with a link or keep it to yourself.` Under it are the four icon lines from WO-85, two per row, which moved here from the hero.
+4. **Coming later.** This section comes after the share section, on a `#0e1319` band with a top rule. Under the heading `Coming later` are two framed cards side by side (`minmax(300px, 1fr)`), each with a 64 px pixel icon:
+   - `Story and roleplay` (`tab-story.svg`): `A build's own story, in the author's words and screenshots, for when you want a character to play and not only numbers.`
+   - `LoreRim survival guide` (`chapter-staying-alive.svg`): `How LoreRim plays, chapter by chapter: character creation, leveling, survival, combat, magic, crafting, travel, death and the keys, checked against the game's files.`
+5. **Reduced motion.** Everything holds still:
+   - the hero on `hero-fg-0`, stars A and aurora A;
+   - the panels on frame 0;
+   - the rest as in WO-86.
+6. **Tidy.** Delete `public/coming-soon/shot-*.webp` (all twelve files), since nothing uses them now.
+
+The question to Dave is still open in a canvas comment: should the share section's button and the footer link say `Modding Bungalo` in place of `LoreRim Discord`? Leave both as they are unless he answers.
+
+### Done when
+- [ ] e2e: the hero has no `<a class="btn">` and has the `Modding Bungalo` link under `Opening soon`; the foreground frame changes between two reads 600 ms apart. With reduced motion it doesn't change.
+- [ ] e2e: `How this started` shows the four labels and captions above; `What it is` comes before `Plan a character`; `Coming later` shows both cards.
+- [ ] Unit or e2e check: every `px/` image the page asks for exists, and nothing asks for a `shot-*` file.
+- [ ] Screenshots at 1440 and 390 of the whole page, compared with the two boards, with the hero pixels crisp (not smoothed).
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
