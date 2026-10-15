@@ -45,7 +45,7 @@ test("How this started has its four panels; What it is comes before Plan a chara
   await page.goto("/coming-soon");
   const story = page.getByRole("region", { name: "How this started" });
   for (const [label, text] of [
-    ["Level 1", "I loved LoreRim from the start. I had no idea what I was doing."],
+    ["Level 1", "I loved LoreRim from the start, but had no idea how to actually play it."],
     ["Level 3", "Skyrim did not wait for me to work it out."],
     ["Writing it down", "So I started writing my builds down, level by level."],
     ["Level 50", "Now there is a place for yours, and for everyone else's."],

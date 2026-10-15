@@ -17,7 +17,7 @@ export const HERO = {
 export const STORY = [
   {
     label: "Level 1",
-    text: "I loved LoreRim from the start. I had no idea what I was doing.",
+    text: "I loved LoreRim from the start, but had no idea how to actually play it.",
     alt: "Tapps at a signpost at dawn, holding a map, a question mark over his helmet",
     frames: [0, 1, 0, 2].map((i) => px(`p1-${i}`)),
   },

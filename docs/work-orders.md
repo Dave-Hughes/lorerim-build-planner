@@ -3503,7 +3503,7 @@ Open question for Dave, in a canvas comment: should the buttons and other links 
    - Under `Opening soon` there is one line at 18 px, `#c3cdd6`: `Will be shared in the Modding Bungalo Discord.` `Modding Bungalo` links to `DISCORD`, in `#f3ead8`, underlined.
    - The hero has no button, no four lines and no shots any more.
 2. **How this started.** This section comes right after the hero, headed `How this started`. It holds four framed panels in a grid (`repeat(auto-fit, minmax(260px, 1fr))`, gap 32). Each panel has an ember label in the title face and an Alegreya caption at 20 px:
-   - `Level 1`: `I loved LoreRim from the start. I had no idea what I was doing.` Frames `p1` 0,1,0,2. Alt: `Tapps at a signpost at dawn, holding a map, a question mark over his helmet`.
+   - `Level 1`: `I loved LoreRim from the start, but had no idea how to actually play it.` Frames `p1` 0,1,0,2. Alt: `Tapps at a signpost at dawn, holding a map, a question mark over his helmet`.
    - `Level 3`: `Skyrim did not wait for me to work it out.` Frames `p2` 0,1,0,2. Alt: `Tapps in a dark forest at night, a sabre cat with glowing eyes behind him`.
    - `Writing it down`: `So I started writing my builds down, level by level.` Frames `p3` 0,1,2,3. Alt: `Tapps at a desk by candlelight, writing in a book`.
    - `Level 50`: `Now there is a place for yours, and for everyone else's.` Frames `p4` 0,1,2,3. Alt: `Tapps in a tavern by the hearth, raising a tankard of mead`.
