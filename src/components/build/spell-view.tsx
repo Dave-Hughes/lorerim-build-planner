@@ -76,7 +76,7 @@ export function SpellView({ d, plan, level }: { d: GameData; plan: BuildPlan; le
   const groups = [...schools, ...(others.length ? [{ school: "Other", rows: others }] : [])];
   const chip = (isNew: boolean) => `${styles.chip} ${isNew ? styles.chipNew : ""}`;
   return (
-    <section id="spells" aria-label={`Spells and abilities at level ${level}`} className={styles.section}>
+    <section id="spells" data-tour="spells" aria-label={`Spells and abilities at level ${level}`} className={styles.section}>
       <div className="section-head">
         <h2 className="section-title">
           Spells and abilities <span className="section-title-at">at level {level}</span>

@@ -32,6 +32,18 @@ export function tourDue(kind: TourKind): boolean {
   const v = read(kind);
   return kind === "author" ? v === "pending" : v !== "done";
 }
+/**
+ * The reader's tour skips its welcome (WO-80): the visitor already said yes or no to the sample build
+ * on Browse, or opened it with Show me (`?tour=1`).
+ */
+export function tourSkipsWelcome(): boolean {
+  if (read("reader") === "next") return true;
+  try {
+    return new URLSearchParams(window.location.search).get("tour") === "1";
+  } catch {
+    return false;
+  }
+}
 /** Finished, skipped or declined: never again (until Show me around). */
 export function tourDone(kind: TourKind) {
   seen.add(kind);
@@ -46,6 +58,26 @@ export function authorTourPending() {
   if (read("author") !== "done") write("author", "pending");
 }
 
+/** The first visit's offer on Browse (WO-80): only while the reader's tour is still to come, and once. */
+const OFFER_KEY = "planner.tour.offer";
+export function offerDue(): boolean {
+  if (seen.has("reader") || read("reader") === "done" || read("reader") === "next") return false;
+  try {
+    return window.localStorage.getItem(OFFER_KEY) !== "done";
+  } catch {
+    return false;
+  }
+}
+/** Answered: Show me (the tour starts on the sample build) or No thanks (it starts on the next build opened). */
+export function offerAnswered(showMe: boolean) {
+  try {
+    window.localStorage.setItem(OFFER_KEY, "done");
+  } catch {
+    // Blocked storage: it may ask again next visit.
+  }
+  if (!showMe) write("reader", "next");
+}
+
 /** "Show me around" (account menu, footer): restarts the tour for the page you're on. */
 export const TOUR_EVENT = "planner:tour";
 export function startTour() {
@@ -57,29 +89,48 @@ export interface TourStop {
   target: string;
   title: string;
   text: string;
+  /** Skipped when the page doesn't have it (a build with no gear, no spells). */
+  optional?: boolean;
+  /** Scrolled to first, when the lit part shows only once the page has scrolled (the pinned bar). */
+  scrollTo?: string;
 }
 export interface TourScript {
   welcome: { title: string; text: string; go: string; no: string };
   stops: TourStop[];
 }
 
-/** Tapps' lines, from the canvas (TourReader, TourAuthor). */
-export const READER_TOUR = (hasGuide: boolean): TourScript => ({
-  welcome: { title: "Tapps here!", text: `First visit? Tapps show you around. ${hasGuide ? "Four" : "Three"} stops. Then mead.`, go: "Show me", no: "No thanks" },
+/**
+ * The reader's tour (WO-80): the build page in page order. Plain lines (design rule 22): what each
+ * part is and what you can do there.
+ */
+export const READER_TOUR = (tabs: { guide: boolean; story: boolean }): TourScript => ({
+  welcome: { title: "Tapps here", text: "New here? Tapps can walk you through this build, one part of the page at a time.", go: "Show me", no: "No thanks" },
   stops: [
-    { target: "level-row", title: "Every level", text: "Pick a level, see what was taken there. The arrows go one at a time. Tapps likes arrows." },
-    { target: "level-card", title: "What happened here", text: "Perks, gear and spells on the left. The author's note on the right. Read the note. Tapps never reads the note." },
-    { target: "perks", title: "The perk trees", text: "Every tree as it stands at this level. Open a skill to see its stars. Shiny." },
-    ...(hasGuide ? [{ target: "guide-tab", title: "The Guide", text: "The author's big story. Tapps looks at the pictures." }] : []),
+    { target: "level-row", title: "Levels", text: "Pick a level in the row or on the ruler, or step through them with ‹ and ›." },
+    { target: "pinned-bar", scrollTo: "level-card", title: "The pinned bar", text: "It stays at the top as you scroll. It shows the level you're on and what changed there." },
+    { target: "level-card", title: "The level card", text: "What was taken at this level, in the order the game asks. The author's note is beside it, under About this level." },
+    { target: "attributes-skills", title: "Attributes and skills", text: "Where the character stands at this level: each attribute, and each skill's level." },
+    { target: "perks", title: "Perk trees", text: "Each tree as it stands at this level. Click a star for its card." },
+    { target: "gear", optional: true, title: "Gear", text: "What the build wears and wields, and the level where each piece changes." },
+    { target: "spells", optional: true, title: "Spells", text: "The spells learned so far, by school." },
+    ...(tabs.guide || tabs.story
+      ? [
+          tabs.guide && tabs.story
+            ? { target: "build-tabs", title: "Guide and Story", text: "The Guide is the author's write-up of the build. The Story is the character's tale." }
+            : tabs.guide
+            ? { target: "build-tabs", title: "Guide", text: "The author's write-up of the whole build." }
+            : { target: "build-tabs", title: "Story", text: "The character's tale, told by the author." },
+        ]
+      : []),
   ],
 });
 
 export const AUTHOR_TOUR: TourScript = {
-  welcome: { title: "Build saved!", text: "Tapps proud of you. Now level 1. Tapps show you four things.", go: "Show me", no: "Later" },
+  welcome: { title: "Build saved", text: "This is level 1. Tapps can show you the four parts you use on every level.", go: "Show me", no: "Later" },
   stops: [
-    { target: "points", title: "Points to spend", text: "What this level gives you. Don't spend them all? They wait for the next level. Like leftovers." },
-    { target: "skills-tree", title: "Take a perk", text: "Pick a skill. Click a ring in its tree, then Confirm. A ring means you can take it now." },
-    { target: "note", title: "Your note", text: "Tell readers what to do here. Where to go, what to buy, what bites." },
-    { target: "footer", title: "On to level 2", text: "Done? Continue to level 2, or Skip ahead and write the levels in between as one. From level 3 on, Repeat copies the level before. On the skill buttons, Shift-click moves 5 at a time and Ctrl- or ⌘-click goes as far as it can." },
+    { target: "points", title: "Points to spend", text: "What this level gives you to spend. Points you don't spend carry over to the next level." },
+    { target: "skills-tree", title: "Take a perk", text: "Pick a skill, click a ring in its tree, then Confirm. A ring is a perk you can take now." },
+    { target: "note", title: "Your note", text: "Tell readers what to do at this level: where to go, what to buy, what to watch for." },
+    { target: "footer", title: "On to level 2", text: "Continue to level 2, or Skip ahead to write the levels in between as one. From level 3 on, Repeat copies the level before. On the skill buttons, Shift-click moves 5 at a time and Ctrl- or ⌘-click goes as far as it can." },
   ],
 };

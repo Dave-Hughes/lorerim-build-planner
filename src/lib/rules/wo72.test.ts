@@ -22,9 +22,8 @@ describe("WO-72: things the app gets wrong", () => {
     expect(stretchPerkRequirement(d, sbf.id, sbf.tree, sbf.rank)).toBe("(One-Handed 75)");
   });
 
-  it("point 3: the reader's tour greets a visitor", () => {
-    expect(READER_TOUR(true).welcome.text).toBe("First visit? Tapps show you around. Four stops. Then mead.");
-    expect(READER_TOUR(false).welcome.text).toBe("First visit? Tapps show you around. Three stops. Then mead.");
+  it("point 3: the reader's tour greets a visitor (in WO-80's plain words)", () => {
+    expect(READER_TOUR({ guide: true, story: false }).welcome.text).toBe("New here? Tapps can walk you through this build, one part of the page at a time.");
   });
 
   it("point 4: only runs of single levels merge", () => {

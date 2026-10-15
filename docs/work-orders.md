@@ -3282,11 +3282,11 @@ Use the game's words for perk and spell names. The ember accent marks picks left
 6. **The board:** update `TourReader` on the canvas to the new stops, with the welcome on Browse.
 
 ### Done when
-- [ ] e2e: a first visit to Browse offers the sample build. `Show me` opens it with the tour at stop 1; `No thanks` starts the tour on the next build opened.
-- [ ] e2e: Next scrolls to each stop in order, Back returns, a missing stop is skipped, and the count matches.
+- [x] e2e: a first visit to Browse offers the sample build. `Show me` opens it with the tour at stop 1; `No thanks` starts the tour on the next build opened.
+- [x] e2e: Next scrolls to each stop in order, Back returns, a missing stop is skipped, and the count matches.
 - [ ] No joke lines left in `src/lib/tour.ts` (the chat session checks the copy).
-- [ ] Screenshots of each stop at 1440 and 390.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Screenshots of each stop at 1440 and 390.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

@@ -4,6 +4,8 @@ import { BrowseFilters } from "@/components/build/browse-filters";
 import { browseHref, type BrowseState } from "@/lib/builds/browse";
 import { getFeaturedBuild, searchBuilds } from "@/lib/builds/queries";
 import { sampleBuild } from "@/lib/builds/sample";
+import { tourSampleId } from "@/lib/builds/sample-config";
+import { TourOffer } from "@/components/tour/tour";
 import { TAG_BY_SLUG } from "@/lib/builds/tags";
 import { currentVersion, gameData, knownVersions } from "@/lib/rules/server";
 import styles from "./home.module.css";
@@ -48,6 +50,8 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
   const sample = sampleBuild();
   return (
     <main className={`page ${styles.main}`}>
+      {/* A first visit: Tapps offers the sample build (WO-80). */}
+      <TourOffer href={`/b/${tourSampleId()}`} />
       <div className={styles.head}>
         <h1 className="title">Builds</h1>
       </div>

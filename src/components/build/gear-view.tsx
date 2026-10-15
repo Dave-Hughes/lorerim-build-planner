@@ -143,7 +143,7 @@ export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: num
   const spell = seg?.made?.spell ? d.spellById.get(seg.made.spell) : undefined;
 
   return (
-    <section ref={section} id="gear-at-level" aria-label={`Gear at level ${level}`} className={styles.section}>
+    <section ref={section} id="gear-at-level" data-tour="gear" aria-label={`Gear at level ${level}`} className={styles.section}>
       <div className="section-head">
         <h2 className="section-title">
           Gear <span className="section-title-at">at level {level}</span>

@@ -188,7 +188,8 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   };
 
   const hasGuideTab = tabs.includes("guide");
-  const readerTour = useMemo(() => READER_TOUR(hasGuideTab), [hasGuideTab]);
+  const hasStoryTab = tabs.includes("story");
+  const readerTour = useMemo(() => READER_TOUR({ guide: hasGuideTab, story: hasStoryTab }), [hasGuideTab, hasStoryTab]);
   const [picked, setPicked] = useState<Picked>(null);
   const [destinyOpenChoice, setDestinyOpenChoice] = useState(false);
 
@@ -315,7 +316,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           <AboutBar plan={plan} />
 
           {tabs.length > 1 && (
-            <div ref={setTabRow} role="tablist" aria-label="Build sections" className={styles.tabs} onKeyDown={onTabKey}>
+            <div ref={setTabRow} role="tablist" aria-label="Build sections" data-tour="build-tabs" className={styles.tabs} onKeyDown={onTabKey}>
               {tabs.map((t) => (
                 <button
                   key={t}
@@ -344,7 +345,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           )}
           {/* On the Levels tab only, without the tabs: the big folder tabs are where you switch (WO-78). */}
           {pinned && tab === "levels" && (
-            <div className={styles.pinnedBar} role="region" aria-label="Pinned bar" data-pinned-bar="">
+            <div className={styles.pinnedBar} role="region" aria-label="Pinned bar" data-pinned-bar="" data-tour="pinned-bar">
               <div className={`page ${styles.pinnedInner}`}>
                 {tab === "levels" && (
                 <>
@@ -545,7 +546,7 @@ function LevelsTab({
 
       <LevelCard d={d} build={build} states={states} level={level} note={note} onPerk={(id) => showPerk(id, true)} />
 
-      <div id="attributes-skills" className={styles.reference}>
+      <div id="attributes-skills" data-tour="attributes-skills" className={styles.reference}>
         <AttributesAt s={s} level={level} />
         <SkillsAt d={d} plan={plan} s={s} level={level} />
       </div>

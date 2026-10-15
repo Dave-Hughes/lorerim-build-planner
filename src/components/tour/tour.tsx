@@ -2,7 +2,8 @@
 
 import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
-import { TOUR_EVENT, tourDone, tourDue, tourLater, type TourKind, type TourScript } from "@/lib/tour";
+import { useRouter } from "next/navigation";
+import { TOUR_EVENT, offerAnswered, offerDue, tourDone, tourDue, tourLater, tourSkipsWelcome, type TourKind, type TourScript, type TourStop } from "@/lib/tour";
 import { pageZoom } from "@/lib/zoom";
 import styles from "./tour.module.css";
 
@@ -28,6 +29,15 @@ interface Layout {
   vh: number;
 }
 
+/** A stop lit only after a scroll (the pinned bar): whether the page is long enough to scroll its lead to the top. */
+function reachable(s: TourStop): boolean {
+  if (!s.scrollTo) return true;
+  const lead = document.querySelector<HTMLElement>(`[data-tour="${s.scrollTo}"]`);
+  if (!lead) return false;
+  const top = lead.getBoundingClientRect().top + window.scrollY;
+  return document.documentElement.scrollHeight - top >= window.innerHeight - 1;
+}
+
 /**
  * A first-time tour (WO-61): the welcome, then stop by stop. The page dims except the part being
  * shown, which is outlined in ember and scrolled into view; Tapps stands beside it with his finger
@@ -37,9 +47,19 @@ interface Layout {
  */
 export function Tour({ kind, script }: { kind: TourKind; script: TourScript }) {
   const due = useSyncExternalStore(noop, () => tourDue(kind), () => false);
+  // Straight to the first stop when the visitor already answered on Browse (WO-80).
+  const skipWelcome = useSyncExternalStore(noop, () => kind === "reader" && tourSkipsWelcome(), () => false);
+  // A stop the page doesn't have (no gear, no spells) is skipped, and the count follows. So is the
+  // pinned bar on a page too short to scroll it into being.
+  const present = useSyncExternalStore(
+    noop,
+    () => script.stops.filter((s) => (!s.optional || document.querySelector(`[data-tour="${s.target}"]`)) && reachable(s)).map((s) => s.target).join(","),
+    () => script.stops.filter((s) => !s.optional).map((s) => s.target).join(","),
+  );
+  const stops = script.stops.filter((s) => present.split(",").includes(s.target));
   const [step, setStep] = useState<number | null>(null);
-  const at = step ?? (due ? 0 : -1);
-  const total = script.stops.length;
+  const at = step ?? (due ? (skipWelcome ? 1 : 0) : -1);
+  const total = stops.length;
   const backRef = useRef<HTMLElement | null>(null);
 
   // Show me around: from the first stop.
@@ -62,37 +82,64 @@ export function Tour({ kind, script }: { kind: TourKind; script: TourScript }) {
   };
 
   if (at < 0 || at > total) return null;
-  return createPortal(<TourLayer key={at} at={at} script={script} onNext={() => (at === total ? end("done") : setStep(at + 1))} onEnd={end} backRef={backRef} />, document.body);
+  return createPortal(
+    <TourLayer key={at} at={at} script={script} stops={stops} onNext={() => (at === total ? end("done") : setStep(at + 1))} onBack={() => setStep(Math.max(1, at - 1))} onEnd={end} backRef={backRef} />,
+    document.body,
+  );
 }
 
 function TourLayer({
   at,
   script,
+  stops,
   onNext,
+  onBack,
   onEnd,
   backRef,
 }: {
   at: number;
   script: TourScript;
+  stops: TourStop[];
   onNext: () => void;
+  onBack: () => void;
   onEnd: (how: "done" | "later") => void;
   backRef: React.RefObject<HTMLElement | null>;
 }) {
-  const total = script.stops.length;
-  const stop = at > 0 ? script.stops[at - 1] : null;
+  const total = stops.length;
+  const stop = at > 0 ? stops[at - 1] : null;
   const card = useRef<HTMLDivElement>(null);
   const [layout, setLayout] = useState<Layout | null>(null);
 
-  // The lit part: scrolled into view, then measured every frame so the tour follows the page.
+  // The lit part: the page scrolls to it smoothly (at once with reduced motion), the light moves
+  // once the scroll ends, then it's measured every frame so the tour follows the page (WO-80).
   const targetName = stop?.target;
+  const leadName = stop?.scrollTo ?? stop?.target;
   useLayoutEffect(() => {
     if (!targetName) return;
-    const target = document.querySelector<HTMLElement>(`[data-tour="${targetName}"]`);
-    target?.scrollIntoView({ block: "center", behavior: "instant" as ScrollBehavior });
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const lead = document.querySelector<HTMLElement>(`[data-tour="${leadName}"]`);
+    const behavior = (still ? "instant" : "smooth") as ScrollBehavior;
+    // A part lit only after a scroll (the pinned bar): its lead to the very top, past any scroll margin.
+    if (lead && leadName !== targetName) window.scrollTo({ top: lead.getBoundingClientRect().top + window.scrollY, behavior });
+    else lead?.scrollIntoView({ block: "center", behavior });
     let frame = 0;
     let last = "";
+    // Settled once the page hasn't moved for six frames (or after 1.5 s at most).
+    let settled = still;
+    let quiet = 0;
+    let y = window.scrollY;
+    const t0 = performance.now();
     const place = () => {
       frame = requestAnimationFrame(place);
+      if (!settled) {
+        if (Math.abs(window.scrollY - y) < 0.5) quiet++;
+        else {
+          quiet = 0;
+          y = window.scrollY;
+        }
+        if (quiet < 6 && performance.now() - t0 < 1500) return;
+        settled = true;
+      }
       const el = document.querySelector<HTMLElement>(`[data-tour="${targetName}"]`);
       if (!el || !card.current) return;
       const z = pageZoom();
@@ -134,16 +181,19 @@ function TourLayer({
     };
     place();
     return () => cancelAnimationFrame(frame);
-  }, [targetName]);
+  }, [targetName, leadName]);
 
   // Focus into the card once per stop; Esc skips.
   const endRef = useRef(onEnd);
   useLayoutEffect(() => {
     endRef.current = onEnd;
   });
+  const placedNow = !stop || !!layout;
+  useEffect(() => {
+    if (placedNow) card.current?.querySelector<HTMLButtonElement>("[data-tour-next]")?.focus({ preventScroll: true });
+  }, [placedNow]);
   useEffect(() => {
     if (!backRef.current) backRef.current = document.activeElement as HTMLElement | null;
-    card.current?.querySelector<HTMLButtonElement>("[data-tour-next]")?.focus({ preventScroll: true });
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== "Escape") return;
       e.preventDefault();
@@ -204,6 +254,11 @@ function TourLayer({
               <button type="button" className="btn btn-quiet btn-sm" onClick={() => onEnd(stop || script.welcome.no !== "Later" ? "done" : "later")}>
                 {stop ? "Skip" : script.welcome.no}
               </button>
+              {stop && at > 1 && (
+                <button type="button" className="btn btn-sm" onClick={onBack}>
+                  Back
+                </button>
+              )}
               <button type="button" className="btn btn-primary btn-sm" data-tour-next="" onClick={onNext}>
                 {stop ? (at === total ? "Done" : "Next") : script.welcome.go}
               </button>
@@ -212,5 +267,63 @@ function TourLayer({
         </div>
       </div>
     </div>
+  );
+}
+
+/**
+ * The first visit's offer on Browse (WO-80): Tapps offers to walk through the sample build. Show me
+ * opens it at level 1 with the reader's tour at its first stop; No thanks starts the tour on the
+ * first build opened. Neither shows again once the tour is done.
+ */
+export function TourOffer({ href }: { href: string }) {
+  const due = useSyncExternalStore(noop, offerDue, () => false);
+  const [closed, setClosed] = useState(false);
+  const router = useRouter();
+  const show = useRef<HTMLButtonElement>(null);
+  const open = due && !closed;
+  const answer = (yes: boolean) => {
+    offerAnswered(yes);
+    setClosed(true);
+    if (yes) router.push(`${href}?level=1&tour=1`);
+  };
+  const answerRef = useRef(answer);
+  useLayoutEffect(() => {
+    answerRef.current = answer;
+  });
+  useEffect(() => {
+    if (!open) return;
+    show.current?.focus({ preventScroll: true });
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      e.preventDefault();
+      answerRef.current(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+  if (!open) return null;
+  return createPortal(
+    <div className={styles.layer}>
+      <span className={styles.dim} aria-hidden="true" />
+      <div role="dialog" aria-modal="true" aria-label="New here?" className={`${styles.card} ${styles.welcome}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/icons/tapps.svg" alt="Tapps" width={72} height={72} className={styles.portrait} />
+        <div className={styles.words}>
+          <h2 className={styles.title}>New here?</h2>
+          <p className={styles.text}>Walk through a sample build.</p>
+          <div className={styles.foot}>
+            <span className={styles.actions}>
+              <button type="button" className="btn btn-quiet btn-sm" onClick={() => answer(false)}>
+                No thanks
+              </button>
+              <button ref={show} type="button" className="btn btn-primary btn-sm" onClick={() => answer(true)}>
+                Show me
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body,
   );
 }
