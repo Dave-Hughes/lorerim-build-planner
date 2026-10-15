@@ -3359,6 +3359,25 @@ The old `slot` field stays for now, null for pieces the old slots didn't cover. 
 
 ---
 
+## WO-83  Launch: gear icons in place, and three checks rerun (15 Oct 2026)
+
+**Why.** WO-82 left most gear types on a borrowed or plain icon. The chat session drew one for each type (commit 03a8bca: `scripts/icons/pixels.py`, `public/icons/slot-*.svg`, `SLOT_ICON` in `skill-icon.tsx`). Shield uses the tag's shield and Bag uses the satchel, the same icon as `Other`. Free-text gear on the "New gear" row keeps the plain satchel (WO-46). The icons haven't been looked at in the app yet, and three e2e tests couldn't pass in the chat session's container.
+
+1. **Look at the icons where they're used:** the type list when adding gear, the editor's gear rows, the level card's "New gear" row and the build page's gear timeline. Each type shows its own icon at 16 px, lined up with its label like the others. Don't redraw an icon in this order; if one reads wrong, say which in the commit message and the chat session will redraw it.
+2. **Rerun the three tests** that failed only in the chat session's container:
+   - `guide.spec.ts` images and `wo79.spec.ts` point 2 failed with no blob token in its `.env.local`;
+   - `perf.spec.ts` came in at Confirm 216 ms (target 200) and typing in notes 104 ms (target 50) on a busy machine.
+
+   If a perf number still misses on a normal run, say so with the numbers. Don't tune the code in this order.
+
+### Done when
+- [ ] e2e: add a Cloak and a Lantern. Each shows `slot-cloak.svg` / `slot-lantern.svg` in the editor, the level card and the gear timeline. Free-text gear still shows `slot-other.svg`.
+- [ ] Screenshots at 1440 and 390: the type list open, and Iriel's build page gear timeline.
+- [ ] `guide.spec.ts`, `wo79.spec.ts` and `perf.spec.ts` pass, with the perf numbers in the commit message.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
