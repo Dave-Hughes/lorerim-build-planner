@@ -3471,11 +3471,11 @@ They are static on purpose: production has no sample build yet. Delete `build-pa
 Open question for Dave, in a canvas comment: should the buttons and other links say `Modding Bungalo` in place of `LoreRim Discord`? Leave them as they are unless he answers.
 
 ### Done when
-- [ ] e2e: the hero shows six shots, one visible at a time; with reduced motion the first stays and nothing moves.
-- [ ] e2e: at level 14 the gear shows `New: Elven Light Bow, Elven Arrow`; the level card steps to `Levels 36 to 42` and shows its range on the ruler.
-- [ ] Unit test: the fixture's gear and level cards match what Iriel's staging build page shows at levels 1, 20, 36 and 50.
-- [ ] Screenshots at 1440 and 390 of the whole page, compared with the two boards.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: the hero shows six shots, one visible at a time; with reduced motion the first stays and nothing moves.
+- [x] e2e: at level 14 the gear shows `New: Elven Light Bow, Elven Arrow`; the level card steps to `Levels 36 to 42` and shows its range on the ruler.
+- [x] Unit test: the fixture's gear and level cards match what Iriel's staging build page shows at levels 1, 20, 36 and 50.
+- [x] Screenshots at 1440 and 390 of the whole page, compared with the two boards.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

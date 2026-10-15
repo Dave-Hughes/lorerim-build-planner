@@ -23,23 +23,38 @@
   font-size: 15px;
 }
 
-/* ---------- The hero ---------- */
+/* ---------- The hero (WO-86): Tapps's characters cycling on the right, the words over dark on the left ---------- */
 .hero {
   position: relative;
-  height: clamp(680px, 62vw + 320px, 920px);
   overflow: hidden;
+  min-height: clamp(640px, 46vw + 160px, 800px);
   background: #0b0f14;
+  border-bottom: 1px solid #2a3442;
+  display: flex;
 }
-.drift {
+.shots {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 78%;
+  overflow: hidden;
+  background: #0e1319;
+}
+.shot {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 62% 40%;
   display: block;
-  transform-origin: 62% 40%;
-  animation: drift 48s ease-in-out infinite alternate;
+  opacity: 0;
+  transition: opacity 1.4s ease-in-out;
+  transform-origin: 50% 45%;
+  animation: drift 14s ease-in-out infinite alternate;
+}
+.shotOn {
+  opacity: 1;
 }
 @keyframes drift {
   from {
@@ -53,27 +68,46 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(11, 15, 20, 0.94) 0%, rgba(11, 15, 20, 0.78) 30%, rgba(11, 15, 20, 0.15) 56%, rgba(11, 15, 20, 0) 70%),
-    linear-gradient(0deg, rgba(11, 15, 20, 1) 0%, rgba(11, 15, 20, 0) 30%);
+    linear-gradient(90deg, rgba(11, 15, 20, 1) 0%, rgba(11, 15, 20, 1) 22%, rgba(11, 15, 20, 0.82) 34%, rgba(11, 15, 20, 0.35) 50%, rgba(11, 15, 20, 0) 64%),
+    linear-gradient(0deg, rgba(11, 15, 20, 0.7) 0%, rgba(11, 15, 20, 0) 26%);
+}
+/* Which shot: six small bars, the current one ember. */
+.bars {
+  position: absolute;
+  right: clamp(16px, 4vw, 54px);
+  bottom: 24px;
+  display: flex;
+  gap: 8px;
+  z-index: 1;
+}
+.bars span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: rgba(228, 235, 240, 0.35);
+  transition: background 0.4s;
+}
+.bars span.barOn {
+  background: var(--ember);
 }
 .heroWords {
   position: relative;
-  height: 100%;
-  box-sizing: border-box;
+  width: 100%;
   max-width: 1332px;
   margin: 0 auto;
-  padding: 0 clamp(16px, 4vw, 54px) clamp(48px, 7vw, 100px);
+  box-sizing: border-box;
+  padding: clamp(40px, 5vw, 72px) clamp(16px, 4vw, 54px);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  gap: 26px;
+  justify-content: center;
+  gap: 24px;
 }
 .title {
   margin: 0;
   font-family: var(--font-title);
   font-weight: 700;
-  font-size: clamp(64px, 9vw, 150px);
-  line-height: 0.9;
+  font-size: clamp(52px, 6.2vw, 100px);
+  line-height: 0.92;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #f3ead8;
@@ -85,7 +119,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font-size: clamp(18px, 1.6vw, 22px);
+  font-size: clamp(17px, 1.4vw, 20px);
   line-height: 1.4;
   color: #d6dde3;
 }
@@ -98,14 +132,14 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 18px 32px;
-  margin-top: 6px;
+  gap: 16px 28px;
+  margin-top: 8px;
 }
 .soon {
   margin: 0;
   font-family: var(--font-title);
   font-weight: 700;
-  font-size: clamp(28px, 2.8vw, 40px);
+  font-size: clamp(26px, 2.4vw, 34px);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ember);
@@ -132,14 +166,6 @@
 .page a.button:focus-visible {
   outline: 2px solid #f3ead8;
   outline-offset: 3px;
-}
-.credit {
-  position: absolute;
-  right: clamp(16px, 4vw, 54px);
-  bottom: 18px;
-  margin: 0;
-  font-size: 13px;
-  color: #8e9bab;
 }
 
 /* ---------- Four sections, one for each of the hero's lines ---------- */
@@ -208,34 +234,131 @@
 }
 
 /* A screenshot in the brass corner frame. */
-.shot {
+.shotFrame {
   border: 1px solid #2a3442;
 }
 .shotMuted {
   background: #10161e;
 }
-.shot::before,
-.shot::after,
+.shotFrame::before,
+.shotFrame::after,
+.live::before,
+.live::after,
 .treeBox::before,
 .treeBox::after {
   width: 18px;
   height: 18px;
   z-index: 1;
 }
-.shot::before,
+.shotFrame::before,
+.live::before,
 .treeBox::before {
   top: -6px;
   left: -6px;
 }
-.shot::after,
+.shotFrame::after,
+.live::after,
 .treeBox::after {
   bottom: -6px;
   right: -6px;
 }
-.shot img {
+.shotFrame img {
   display: block;
   width: 100%;
   height: auto;
+}
+.featureIconLine {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  color: #c3cdd6;
+}
+
+/* The gear timeline and the level cards, played (WO-86): the app's own, in the brass frame. */
+.live {
+  border: 1px solid #2a3442;
+  background: #10161e;
+  padding: 18px 20px 20px;
+  min-width: 0;
+}
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cardHead {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8e9bab;
+}
+.cardNum {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1;
+  color: #f3ead8;
+}
+.cardOf {
+  font-size: 16px;
+}
+/* 1 to 50: each level's Destiny star, perks and gear, an ember box over the card's level or range. */
+.ruler {
+  position: relative;
+  height: 34px;
+  border-bottom: 1px solid #2a3442;
+}
+.rulerBox {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border: 1px solid var(--ember);
+  background: rgba(240, 145, 63, 0.12);
+  transition:
+    left 0.3s ease,
+    width 0.3s ease;
+}
+.rulerMark {
+  position: absolute;
+  top: 4px;
+  width: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.rulerMark i {
+  display: block;
+  width: 7px;
+  height: 7px;
+}
+.rulerMark i:nth-child(1).markDestiny {
+  transform: rotate(45deg);
+  background: #7fb8a6;
+}
+.rulerMark i:nth-child(2) {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+.rulerMark i.markPerk {
+  background: var(--ember);
+}
+.rulerMark i.markNone {
+  background: #2f3b47;
+}
+.rulerMark i:nth-child(3) {
+  width: 6px;
+  height: 4px;
+}
+.rulerMark i.markGear {
+  background: #b9a173;
 }
 
 /* Two trait cards, as the app draws them: the art behind, a dark fade, the game's text. */
@@ -450,8 +573,24 @@
     display: inline;
   }
 }
+/* Phones: the picture fills the hero, the words sit low over a heavier bottom fade. */
+@media (max-width: 900px) {
+  .shots {
+    width: 100%;
+  }
+  .heroFade {
+    background: linear-gradient(0deg, rgba(11, 15, 20, 1) 0%, rgba(11, 15, 20, 0.92) 48%, rgba(11, 15, 20, 0.25) 78%, rgba(11, 15, 20, 0) 100%);
+  }
+  .heroWords {
+    justify-content: flex-end;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  .drift {
+  .shot {
     animation: none;
+    transition: none;
+  }
+  .rulerBox {
+    transition: none;
   }
 }

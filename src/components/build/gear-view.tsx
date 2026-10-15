@@ -80,12 +80,29 @@ const CARD_WIDTH = 400;
  * made, its levels and what it replaced, and Go to level); one at a time, closed on Esc, a click
  * outside, the same bar again, or another bar.
  */
-export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: number; onLevel: (n: number) => void }) {
+export function GearView({
+  plan,
+  level,
+  onLevel,
+  play,
+}: {
+  plan: BuildPlan;
+  level: number;
+  onLevel?: (n: number) => void;
+  /**
+   * Played level by level (the coming soon page, WO-86): the bars are labels, not buttons, and a piece
+   * put on at this level or the two before shows in ember, named at the top right ("New: ...").
+   */
+  play?: boolean;
+}) {
   const d = useGameData();
   // The item index, for the cards' stats and text.
   const items = useItems(d.version.id, plan.gear.some((g) => g.itemId));
   const total = plan.levels.length;
   const segments = timeline(plan);
+  // Playing: pieces put on in the last three levels (not the ones she starts with).
+  const fresh = (s: Segment) => !!play && s.from > 1 && s.from <= level && level - s.from < 3 && level <= s.to;
+  const freshNames = play ? segments.filter(fresh).sort((a, b) => a.from - b.from).map((s) => s.name) : [];
   const rows = GEAR_TYPES.flatMap((slot) => {
     const mine = segments.filter((s) => s.slot === slot);
     const lanes = mine.length ? Math.max(...mine.map((s) => s.lane)) + 1 : 0;
@@ -143,16 +160,17 @@ export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: num
   const spell = seg?.made?.spell ? d.spellById.get(seg.made.spell) : undefined;
 
   return (
-    <section ref={section} id="gear-at-level" data-tour="gear" aria-label={`Gear at level ${level}`} className={styles.section}>
-      <div className="section-head">
+    <section ref={section} id={play ? undefined : "gear-at-level"} data-tour={play ? undefined : "gear"} aria-label={`Gear at level ${level}`} className={`${styles.section} ${play ? styles.playing : ""}`}>
+      <div className={`section-head ${play ? styles.playHead : ""}`}>
         <h2 className="section-title">
           Gear <span className="section-title-at">at level {level}</span>
         </h2>
+        {play && freshNames.length > 0 && <span className={styles.fresh}>New: {freshNames.join(", ")}</span>}
       </div>
       {rows.length === 0 ? (
         <p className="muted">Nothing yet.</p>
       ) : (
-        <div ref={box} className={`frame ${styles.timelineBox}`} role="group" aria-label="Gear over the whole build">
+        <div ref={box} className={`${play ? "" : "frame"} ${styles.timelineBox}`} role="group" aria-label="Gear over the whole build">
           <div className={styles.timeline} style={{ ["--levels" as string]: total }}>
             <span />
             <div className={styles.ticks} aria-hidden="true">
@@ -171,10 +189,16 @@ export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: num
                 <div className={styles.track}>
                   <span className={styles.now} style={{ gridColumn: `${level} / ${level + 1}` }} aria-hidden="true" />
                   {r.segs.map((s) => {
-                    const state = s.from === level ? styles.barNew : s.from <= level && level <= s.to ? styles.barHeld : styles.barOther;
+                    const state = (play ? fresh(s) : s.from === level) ? styles.barNew : s.from <= level && level <= s.to ? styles.barHeld : styles.barOther;
                     // "Staff of Fireball, levels 5 to 29. On the Altar of Magnus." (WO-47)
                     const label = `${s.name}, ${s.from === s.to ? `level ${s.from}` : `levels ${s.from} to ${s.to}`}.${s.note ? ` ${s.note}` : ""}`;
                     const k = keyOf(s);
+                    if (play)
+                      return (
+                        <span key={k} className={`${styles.bar} ${state}`} style={{ gridColumn: `${s.from} / ${s.to + 1}` }}>
+                          {s.name}
+                        </span>
+                      );
                     return (
                       <button
                         key={k}
@@ -237,7 +261,7 @@ export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: num
               className={styles.cardGo}
               onClick={() => {
                 close();
-                onLevel(seg.from);
+                onLevel?.(seg.from);
               }}
             >
               Go to level {seg.from}

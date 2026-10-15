@@ -29,7 +29,7 @@ import { guideHeadings } from "@/components/guide/guide-view";
 import { LocalDate } from "@/components/ui/local-date";
 import { GuideSection } from "@/components/guide/guide-section";
 import { LevelNote } from "@/components/guide/level-note";
-import { docWords, firstParagraph, isEmptyDoc, notedLevels, storyOf, type GuideDoc } from "@/lib/guide/doc";
+import { docText, docWords, firstParagraph, isEmptyDoc, notedLevels, storyOf, type GuideDoc } from "@/lib/guide/doc";
 import { StoryView, storyImages } from "./story-view";
 import { GuideView } from "@/components/guide/guide-view";
 import { currentVersion, isOlderThanCurrent } from "@/lib/rules/versions";
@@ -1065,8 +1065,31 @@ const KEY_MARKS: Record<string, "trainer" | "skill-book" | "banked"> = { Trainer
  * The level card: what to do at this level, in the order the game asks (attribute, skill points,
  * perks, stone, trainers, books), with the author's note beside it.
  */
-function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; build: BuildViewData; states: LevelState[]; level: number; note: GuideDoc | null; onPerk: (id: string) => void }) {
+export function LevelCard({
+  d,
+  build,
+  states,
+  level,
+  note,
+  onPerk,
+  glance,
+}: {
+  d: GameData;
+  build: Pick<BuildViewData, "plan" | "author">;
+  states: LevelState[];
+  level: number;
+  note: GuideDoc | null;
+  onPerk?: (id: string) => void;
+  /**
+   * A card to look at, one after another (the coming soon page, WO-86): the first three skills, four
+   * perks and three gear lines ("and N more"), the note's opening sentences, nothing to press, and a
+   * fixed height so it never jumps.
+   */
+  glance?: boolean;
+}) {
   const { plan } = build;
+  // "and 4 more", under a list cut short.
+  const more = (n: number) => (n > 0 ? <span className="muted">and {n} more</span> : null);
   const s = states[level - 1];
   const changes = levelChanges(d, plan, states, level);
   const rows: [string, React.ReactNode][] = [];
@@ -1112,13 +1135,14 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       "Skill points",
       <GainColumns
         key="s"
-        columns={isStretch && raised.length > 6}
-        rows={raised.map((r) => ({
+        columns={!glance && isStretch && raised.length > 6}
+        more={glance ? more(raised.length - 3) : null}
+        rows={(glance ? raised.slice(0, 3) : raised).map((r) => ({
           skill: r.sk,
           gain: r.n,
           from: r.from,
           to: r.to,
-          note: r.to >= s.maxSkill ? `(max skill ${s.maxSkill} at level ${level})` : undefined,
+          note: !glance && r.to >= s.maxSkill ? `(max skill ${s.maxSkill} at level ${level})` : undefined,
         }))}
       />,
     ]);
@@ -1126,21 +1150,29 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
   // A stretch lists its perks by tree, requirement and name (WO-72).
   const perksShown = isStretch ? stretchPerkOrder(d, changes.perks) : changes.perks;
   const perkLines = [
-    ...perksShown.map((p, i) => (
+    ...(glance ? perksShown.slice(0, 4) : perksShown).map((p, i) => (
       <span key={`${p.id}-${i}`}>
-        <button type="button" className={styles.perkLink} onClick={() => onPerk(p.id)}>
-          {p.name}
-          {p.rank ? ` ${p.rank}` : ""}
-        </button>{" "}
+        {glance ? (
+          <span className={styles.perkLink}>
+            {p.name}
+            {p.rank ? ` ${p.rank}` : ""}
+          </span>
+        ) : (
+          <button type="button" className={styles.perkLink} onClick={() => onPerk?.(p.id)}>
+            {p.name}
+            {p.rank ? ` ${p.rank}` : ""}
+          </button>
+        )}{" "}
         <span className="muted">{isStretch ? stretchPerkRequirement(d, p.id, p.tree, p.rank) : p.tree !== p.name ? `(${p.tree}${p.book ? ", book" : ""})` : p.book ? "(book)" : ""}</span>
       </span>
     )),
   ];
   if (perkLines.length)
     rows.push([
-      perkLines.length > 1 ? "Perks" : "Perk",
+      perksShown.length > 1 ? "Perks" : "Perk",
       <span key="p" className={`${styles.stack} ${isStretch && perkLines.length > 6 ? styles.twoCols : ""}`}>
         {perkLines}
+        {glance && more(perksShown.length - 4)}
       </span>,
     ]);
   // Destiny: its own row after the perks, in its own colour (WO-27).
@@ -1150,9 +1182,13 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       <span key="d" className={styles.stack}>
         {changes.destiny.map((p) => (
           <span key={p.id}>
-            <button type="button" className={`${styles.perkLink} ${styles.destinyLink}`} onClick={() => onPerk(p.id)}>
-              {p.name}
-            </button>
+            {glance ? (
+              <span className={`${styles.perkLink} ${styles.destinyLink}`}>{p.name}</span>
+            ) : (
+              <button type="button" className={`${styles.perkLink} ${styles.destinyLink}`} onClick={() => onPerk?.(p.id)}>
+                {p.name}
+              </button>
+            )}
           </span>
         ))}
       </span>,
@@ -1204,7 +1240,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
     rows.push([
       "New gear",
       <span key="g" className={styles.newGear}>
-        {facts.gear.map((g, i) => {
+        {(glance ? facts.gear.slice(0, 3) : facts.gear).map((g, i) => {
           const name = g.name.trim();
           const was = replacedName(g, before);
           return (
@@ -1227,6 +1263,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
             </span>
           );
         })}
+        {glance && more(facts.gear.length - 3)}
       </span>,
     ]);
   }
@@ -1301,7 +1338,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
   if (changes.banked > 0) rows.push([level === plan.levels.length ? "Unspent" : "Banked", `${changes.banked} skill point${changes.banked === 1 ? "" : "s"}`]);
 
   return (
-    <section id="level-card" data-tour="level-card" aria-label={title} className={`frame ${styles.card} ${styles.cardWithNote}`}>
+    <section id={glance ? undefined : "level-card"} data-tour={glance ? undefined : "level-card"} aria-label={title} className={`${glance ? "" : "frame"} ${styles.card} ${styles.cardWithNote} ${glance ? styles.cardGlance : ""}`}>
       <div className={styles.cardMain}>
         <h2 className={styles.cardTitle}>{title}</h2>
         {rows.length ? (
@@ -1329,7 +1366,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
         ) : (
           <p className="muted">{level === 1 ? "No starting perks yet." : "Nothing yet."}</p>
         )}
-        {s.issues.length > 0 && (
+        {!glance && s.issues.length > 0 && (
           <ul className={styles.issues} aria-label="Problems at this level">
             {s.issues.map((i, n) => (
               <li key={n}>{i.message}</li>
@@ -1339,9 +1376,19 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       </div>
       {/* The author's column is always there: their name first, then the note (or that there isn't one). */}
       <aside aria-label="Author's note" className={styles.note}>
-        <AuthorLink author={build.author} className={styles.noteBy} avatar={<Avatar name={build.author.name} image={build.author.image} size={24} />} />
+        {glance ? (
+          <span className={styles.noteBy}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            {build.author.image && <img src={build.author.image} alt="" width={24} height={24} className={styles.noteByPix} />}
+            {build.author.name}
+          </span>
+        ) : (
+          <AuthorLink author={build.author} className={styles.noteBy} avatar={<Avatar name={build.author.name} image={build.author.image} size={24} />} />
+        )}
         <h3 className={`label ${styles.noteHead}`}>{isStretch ? "About this level range" : "About this level"}</h3>
-        {note ? (
+        {note && glance ? (
+          <p className={styles.glanceNote}>{openingSentences(docText(note))}</p>
+        ) : note ? (
           <LevelNote key={level} doc={note} level={level} lines={12} label={isStretch ? `About levels ${span.from} to ${span.to}` : undefined} />
         ) : (
           <p className={`muted ${styles.noNote}`}>No note for this level{isStretch ? " range" : ""}.</p>
@@ -1622,9 +1669,28 @@ function stretchSteps(plan: BuildViewData["plan"], level: number): { from: numbe
 }
 
 
-/** Skill gains, in two columns when a stretch raises more than 6 skills (WO-69). */
-function GainColumns({ rows, columns }: { rows: React.ComponentProps<typeof SkillGains>["rows"]; columns: boolean }) {
-  if (!columns) return <SkillGains rows={rows} />;
+/** A note's opening sentences, about 180 characters, for a card at a glance (WO-86). */
+function openingSentences(text: string): string {
+  const sentences = text.match(/[^.!?]+[.!?]+(\s|$)/g) ?? [text];
+  let out = "";
+  for (const s of sentences) {
+    if (out && (out + s).length > 180) break;
+    out += s;
+  }
+  return out.trim();
+}
+
+/** Skill gains, in two columns when a stretch raises more than 6 skills (WO-69); `more` under them. */
+function GainColumns({ rows, columns, more }: { rows: React.ComponentProps<typeof SkillGains>["rows"]; columns: boolean; more?: React.ReactNode }) {
+  if (!columns)
+    return more ? (
+      <span className={styles.stack}>
+        <SkillGains rows={rows} />
+        {more}
+      </span>
+    ) : (
+      <SkillGains rows={rows} />
+    );
   const half = Math.ceil(rows.length / 2);
   return (
     <span className={styles.twoCols}>

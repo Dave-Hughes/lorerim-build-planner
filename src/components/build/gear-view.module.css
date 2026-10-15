@@ -188,3 +188,30 @@
   flex-direction: column;
   gap: 2px;
 }
+
+/* Played level by level (the coming soon page, WO-86). */
+.playHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.fresh {
+  font-size: 14px;
+  color: var(--ember);
+}
+.playing .bar {
+  cursor: default;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+/* Played, the whole build fits the panel at any width, as the board draws it: names cut, never scrolled. */
+.playing .timeline {
+  grid-template-columns: minmax(84px, 120px) minmax(0, 1fr);
+}
+.playing .timelineBox {
+  overflow-x: hidden;
+}

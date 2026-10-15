@@ -1533,3 +1533,30 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* The level card at a glance (the coming soon page, WO-86): a fixed height, so stepping through never jumps. */
+.cardGlance {
+  height: 440px;
+  overflow: hidden;
+}
+.cardGlance .cardMain,
+.cardGlance .note {
+  overflow: hidden;
+}
+.noteByPix {
+  image-rendering: pixelated;
+}
+.glanceNote {
+  margin: 0;
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #ddd5c6;
+}
+/* On a phone the note sits under the card: taller, still fixed. */
+@media (max-width: 899px) {
+  .cardGlance {
+    height: 640px;
+  }
+}

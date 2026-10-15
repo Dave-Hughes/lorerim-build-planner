@@ -1,0 +1,1645 @@
+{
+ "id": "7h38zdhjnu",
+ "name": "Iriel Thornwhisper, Green Pact Hunter",
+ "source": "Staging build 7h38zdhjnu, read from its build page on 15 Oct 2026 (WO-86).",
+ "plan": {
+  "gear": [
+   {
+    "name": "Hunting Light Bow",
+    "note": "",
+    "slot": "Main hand",
+    "itemId": "Skyrim.esm:013985",
+    "fromLevel": 1
+   },
+   {
+    "name": "Hide Cuirass",
+    "note": "",
+    "slot": "Body",
+    "itemId": "Skyrim.esm:01B3A2",
+    "fromLevel": 1
+   },
+   {
+    "name": "Hide Bracers",
+    "note": "",
+    "slot": "Hands",
+    "itemId": "Skyrim.esm:013912",
+    "fromLevel": 1
+   },
+   {
+    "name": "Hide Boots",
+    "note": "",
+    "slot": "Feet",
+    "itemId": "Skyrim.esm:013910",
+    "fromLevel": 1
+   },
+   {
+    "name": "Bosmeri Hood",
+    "note": "",
+    "slot": "Head",
+    "itemId": "Bosmeri Swallowtail.esp:000A35",
+    "fromLevel": 1
+   },
+   {
+    "name": "Iron Arrow",
+    "note": "",
+    "slot": "Ammo",
+    "itemId": "Skyrim.esm:01397D",
+    "fromLevel": 1
+   },
+   {
+    "name": "Poison vials",
+    "note": "Paralysis and Frostbite",
+    "slot": "Accessory",
+    "fromLevel": 1
+   },
+   {
+    "name": "Imperial Bow",
+    "note": "",
+    "slot": "Main hand",
+    "itemId": "Requiem.esp:ABF9F7",
+    "fromLevel": 6
+   },
+   {
+    "name": "Steel Arrow",
+    "note": "",
+    "slot": "Ammo",
+    "itemId": "Skyrim.esm:105EE7",
+    "fromLevel": 6
+   },
+   {
+    "name": "Leather Scout Armor",
+    "note": "",
+    "slot": "Body",
+    "itemId": "ccbgssse053-ba_leather.esl:000829",
+    "fromLevel": 10
+   },
+   {
+    "name": "Leather Scout Gauntlets",
+    "note": "",
+    "slot": "Hands",
+    "itemId": "ccbgssse053-ba_leather.esl:00082A",
+    "fromLevel": 10
+   },
+   {
+    "name": "Leather Scout Boots",
+    "note": "",
+    "slot": "Feet",
+    "itemId": "ccbgssse053-ba_leather.esl:00082C",
+    "fromLevel": 10
+   },
+   {
+    "name": "Elven Light Bow",
+    "note": "",
+    "slot": "Main hand",
+    "itemId": "Skyrim.esm:01399D",
+    "fromLevel": 14
+   },
+   {
+    "name": "Elven Arrow",
+    "note": "",
+    "slot": "Ammo",
+    "itemId": "Skyrim.esm:0139BD",
+    "fromLevel": 14
+   },
+   {
+    "name": "Silver Garnet Ring",
+    "note": "",
+    "slot": "Ring",
+    "itemId": "Skyrim.esm:0877AB",
+    "fromLevel": 18
+   },
+   {
+    "name": "",
+    "note": "",
+    "slot": "Accessory",
+    "replaces": "Poison vials",
+    "fromLevel": 20
+   },
+   {
+    "name": "Elven Hunter Armor",
+    "note": "",
+    "slot": "Body",
+    "itemId": "ccbgssse064-ba_elven.esl:000801",
+    "fromLevel": 22
+   },
+   {
+    "name": "Elven Hunter Helmet",
+    "note": "",
+    "slot": "Head",
+    "itemId": "Unofficial Elven Hunter Armor Patch.esl:000904",
+    "fromLevel": 22
+   },
+   {
+    "name": "Elven Hunter Gauntlets",
+    "note": "",
+    "slot": "Hands",
+    "itemId": "ccbgssse064-ba_elven.esl:000802",
+    "fromLevel": 22
+   },
+   {
+    "name": "Elven Hunter Boots",
+    "note": "",
+    "slot": "Feet",
+    "itemId": "ccbgssse064-ba_elven.esl:000800",
+    "fromLevel": 22
+   },
+   {
+    "name": "Glass Light Bow",
+    "note": "",
+    "slot": "Main hand",
+    "itemId": "Skyrim.esm:0139A5",
+    "fromLevel": 26
+   },
+   {
+    "name": "Glass Arrow",
+    "note": "",
+    "slot": "Ammo",
+    "itemId": "Skyrim.esm:0139BE",
+    "fromLevel": 26
+   },
+   {
+    "name": "Glass Cuirass",
+    "note": "",
+    "slot": "Body",
+    "itemId": "Skyrim.esm:013939",
+    "fromLevel": 30
+   },
+   {
+    "name": "Glass Helmet",
+    "note": "",
+    "slot": "Head",
+    "itemId": "Skyrim.esm:01393B",
+    "fromLevel": 42
+   },
+   {
+    "name": "Glass Gauntlets",
+    "note": "",
+    "slot": "Hands",
+    "itemId": "Skyrim.esm:01393A",
+    "fromLevel": 42
+   },
+   {
+    "name": "Glass Boots",
+    "note": "",
+    "slot": "Feet",
+    "itemId": "Skyrim.esm:013938",
+    "fromLevel": 42
+   },
+   {
+    "name": "Ebony Light Bow",
+    "note": "",
+    "slot": "Main hand",
+    "itemId": "Requiem - Weapons and Armor Redone.esp:00080F",
+    "fromLevel": 45
+   },
+   {
+    "name": "Ebony Arrow",
+    "note": "",
+    "slot": "Ammo",
+    "itemId": "Skyrim.esm:0139BF",
+    "fromLevel": 45
+   },
+   {
+    "name": "Amulet of Kynareth",
+    "note": "",
+    "slot": "Amulet",
+    "itemId": "Skyrim.esm:0C8919",
+    "fromLevel": 33
+   }
+  ],
+  "mode": "Naaktiid",
+  "race": "Bosmer",
+  "deity": "Jephre",
+  "notes": "",
+  "start": "Pilgrim (Shrine)",
+  "theme": "dwemer",
+  "levels": [
+   {
+    "note": "",
+    "perks": [
+     "Marksman:Ranged Combat Training",
+     "Sneak:Stealth",
+     "Alchemy:Alchemical Lore",
+     "Evasion:Agility",
+     "Wayfarer:Cheap Tricks",
+     "Finesse:Trapper"
+    ],
+    "stone": "Thief",
+    "extras": [],
+    "destiny": [
+     "Destiny:Destiny"
+    ],
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Marksman:Precise Aim"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 5,
+     "Alchemy": 5,
+     "Marksman": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Sneak:Stealth"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "health",
+    "skillPoints": {
+     "Sneak": 5,
+     "Alchemy": 5,
+     "Marksman": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Alchemy:Concentrated Poisons"
+    ],
+    "extras": [
+     {
+      "kind": "trainer",
+      "skill": "Marksman"
+     },
+     {
+      "kind": "trainer",
+      "skill": "Marksman"
+     }
+    ],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 5,
+     "Alchemy": 5,
+     "Marksman": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Marksman:Eagle Eye"
+    ],
+    "extras": [],
+    "destiny": [
+     "Destiny:Endurance"
+    ],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 5,
+     "Alchemy": 5,
+     "Marksman": 3,
+     "Wayfarer": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Sneak:Deft Strike"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "health",
+    "skillPoints": {
+     "Sneak": 5,
+     "Alchemy": 4,
+     "Marksman": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Sneak:Muffled Movement"
+    ],
+    "extras": [
+     {
+      "kind": "book",
+      "skill": "Smithing"
+     }
+    ],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 2,
+     "Alchemy": 3,
+     "Evasion": 5,
+     "Marksman": 1,
+     "Wayfarer": 2
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Marksman:Piercing Shot"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 5,
+     "Marksman": 1,
+     "Wayfarer": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Marksman:Focus on the Prey"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "health",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 5,
+     "Marksman": 1,
+     "Wayfarer": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Evasion:Light Armor Training"
+    ],
+    "extras": [],
+    "destiny": [
+     "Destiny:Thief"
+    ],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 5,
+     "Marksman": 1,
+     "Wayfarer": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Alchemy:Alchemical Lore"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 5,
+     "Marksman": 1,
+     "Wayfarer": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Wayfarer:Lone Wolf"
+    ],
+    "stone": "Lover",
+    "extras": [],
+    "destiny": [],
+    "attribute": "health",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 5,
+     "Finesse": 5,
+     "Marksman": 1,
+     "Wayfarer": 3
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Sneak:Fog of War"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 5,
+     "Finesse": 3,
+     "Marksman": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Alchemy:Improved Poisons"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 4,
+     "Finesse": 5,
+     "Marksman": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Marksman:Power Shot"
+    ],
+    "extras": [],
+    "destiny": [
+     "Destiny:Adrenaline"
+    ],
+    "attribute": "health",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 5,
+     "Marksman": 1,
+     "Wayfarer": 4
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Marksman:Quick Shot"
+    ],
+    "extras": [
+     {
+      "kind": "trainer",
+      "skill": "One-Handed"
+     },
+     {
+      "kind": "trainer",
+      "skill": "One-Handed"
+     },
+     {
+      "kind": "trainer",
+      "skill": "One-Handed"
+     }
+    ],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 5,
+     "Marksman": 1,
+     "Wayfarer": 4
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Finesse:Poisoned Clamps"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 5,
+     "Marksman": 1,
+     "Wayfarer": 2
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Evasion:Athletics"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "health",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 5,
+     "Marksman": 1,
+     "Wayfarer": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Marksman:Penetrating Shot"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 5,
+     "Marksman": 1,
+     "Wayfarer": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Sneak:Anatomical Lore"
+    ],
+    "extras": [],
+    "destiny": [
+     "Destiny:Scout"
+    ],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 5,
+     "Marksman": 1,
+     "Wayfarer": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Alchemy:Improved Elixirs"
+    ],
+    "extras": [
+     {
+      "kind": "book",
+      "skill": "Speech"
+     }
+    ],
+    "destiny": [],
+    "attribute": "health",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 3,
+     "Marksman": 1,
+     "Wayfarer": 3
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Sneak:Light Steps"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 1,
+     "Marksman": 1,
+     "Wayfarer": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Marksman:Lion's Arrow"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 1,
+     "Marksman": 1,
+     "Wayfarer": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Alchemy:Alkahest"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "health",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 1,
+     "Marksman": 1,
+     "Wayfarer": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Evasion:Dexterity"
+    ],
+    "extras": [
+     {
+      "kind": "trainer",
+      "skill": "Speech"
+     }
+    ],
+    "destiny": [
+     "Destiny:Swift Shadow"
+    ],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 1,
+     "Marksman": 1,
+     "Wayfarer": 3
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Marksman:Marksman's Focus"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 1,
+     "Marksman": 1,
+     "Wayfarer": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Wayfarer:Solo"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "health",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 1,
+     "Marksman": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Marksman:Three Crows"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 1,
+     "Marksman": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Sneak:Advanced Anatomical Lore"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 1,
+     "Marksman": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Evasion:Wind Walker"
+    ],
+    "extras": [],
+    "shouts": [
+     {
+      "id": "Skyrim.esm:032920",
+      "words": 1
+     }
+    ],
+    "spells": [
+     {
+      "id": "Requiem - Magic Redone.esp:005A74"
+     }
+    ],
+    "destiny": [
+     "Destiny:Assassin"
+    ],
+    "attribute": "health",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 1,
+     "Marksman": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Marksman:Rapid Reload"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Marksman": 1,
+     "Smithing": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Smithing:Craftsmanship"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Skyrim.esm:08F3EB"
+     }
+    ],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Evasion": 1,
+     "Marksman": 1,
+     "Smithing": 5,
+     "Wayfarer": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Evasion:Vexing Flanker",
+     "Smithing:Advanced Light Armors",
+     "Marksman:Ranger"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "health",
+    "skillPoints": {
+     "Sneak": 1,
+     "Finesse": 1,
+     "Marksman": 1,
+     "Smithing": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Alchemy:Catalysis"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Evasion": 1,
+     "Marksman": 1,
+     "Smithing": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Marksman:Stunning Precision"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Alchemy": 1,
+     "Marksman": 1,
+     "Smithing": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Sneak:Acrobatics",
+     "Evasion:Athletics",
+     "Evasion:Combat Reflexes",
+     "Finesse:Nimble Fingers",
+     "Finesse:Cutpurse",
+     "Finesse:Poisoner",
+     "Marksman:Sniper"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attributes": {
+     "health": 3,
+     "stamina": 4
+    },
+    "skillPoints": {
+     "Sneak": 6,
+     "Alchemy": 2,
+     "Evasion": 5,
+     "Finesse": 3,
+     "Marksman": 7,
+     "Smithing": 11,
+     "Wayfarer": 3,
+     "One-Handed": 15
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Smithing:Elven Smithing",
+     "Alchemy:Night Vision"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Evasion": 1,
+     "Marksman": 1,
+     "Smithing": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Wayfarer:Maverick"
+    ],
+    "extras": [],
+    "spells": [
+     {
+      "id": "Skyrim.esm:02F3B8"
+     }
+    ],
+    "destiny": [],
+    "attribute": "stamina",
+    "skillPoints": {
+     "Sneak": 1,
+     "Marksman": 1,
+     "Smithing": 5
+    }
+   },
+   {
+    "note": "",
+    "perks": [
+     "Sneak:Shadow Opportunist"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attribute": "health",
+    "skillPoints": {
+     "Marksman": 1,
+     "Smithing": 5,
+     "Wayfarer": 1
+    }
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [],
+    "extras": [],
+    "destiny": [],
+    "skipped": true,
+    "skillPoints": {}
+   },
+   {
+    "note": "",
+    "perks": [
+     "Alchemy:Immunization",
+     "Sneak:Cloak and Dagger",
+     "Finesse:Salt on the Wound",
+     "Sneak:Problem Solver",
+     "Sneak:Tripwire",
+     "Smithing:Glass Smithing"
+    ],
+    "extras": [],
+    "destiny": [],
+    "attributes": {
+     "health": 1,
+     "stamina": 4
+    },
+    "skillPoints": {
+     "Sneak": 3,
+     "Speech": 18,
+     "Alchemy": 1,
+     "Evasion": 1,
+     "Finesse": 1,
+     "Marksman": 5,
+     "Smithing": 5,
+     "Wayfarer": 5,
+     "One-Handed": 12
+    }
+   }
+  ],
+  "majors": [
+   "Marksman",
+   "Sneak",
+   "Alchemy"
+  ],
+  "minors": [
+   "Evasion",
+   "Wayfarer",
+   "Finesse",
+   "One-Handed",
+   "Smithing",
+   "Speech"
+  ],
+  "schema": 1,
+  "traits": [
+   "Focused Combat",
+   "Witcher"
+  ],
+  "videoId": "ajiLsFhYn4I",
+  "birthsign": "Shadow",
+  "coverFocus": {
+   "x": 54,
+   "y": 7
+  },
+  "mainSpells": [
+   "Requiem - Magic Redone.esp:005A74"
+  ],
+  "gameVersion": "5.0.4.8",
+  "startOption": "The Eldergleam Sanctuary",
+  "traitChoices": {
+   "Focused Combat": "Marksman"
+  }
+ },
+ "notes": {
+  "level:1": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Pilgrim at the Eldergleam Sanctuary. Thief stone. Naaktiid gives six perk points: Ranged Combat Training, Stealth, Alchemical Lore, Agility, Cheap Tricks, Trapper.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:2": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Precise Aim. Walk out of the Eldergleam and start on Whiterun's missive board.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:3": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Stealth rank 2. Clear Embershard Mine from the shadows.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:4": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Two Marksman sessions with Faendal in Riverwood. Concentrated Poisons: brew Paralysis from Canis Root.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:5": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Eagle Eye. Destiny: Endurance, on the way to Thief.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:6": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Deft Strike. Imperial Bow and steel arrows from the Whiterun market.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:7": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Read a Smithing book, then temper the bow at Adrianne's forge. Muffled Movement.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:8": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Piercing Shot.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:9": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Focus on the Prey.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:10": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Light Armor Training. Leather scout set. Destiny: Thief.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:11": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Alchemical Lore rank 2.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:12": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Lone Wolf: no follower from here. Swap to the Lover stone.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:13": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Fog of War.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:14": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Improved Poisons. Elven Light Bow and elven arrows.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:15": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Power Shot. Destiny: Adrenaline.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:16": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Three One-Handed sessions for a backup dagger. Quick Shot.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:17": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Poisoned Clamps on every trap.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:18": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Athletics. Silver Garnet Ring.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:19": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Penetrating Shot.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:20": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Anatomical Lore. The poison vials are gone; brew them fresh from here. Destiny: Scout.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:21": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Read a Speech book. Improved Elixirs.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:22": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Light Steps. Elven hunter set.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:23": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Lion's Arrow.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:24": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Alkahest.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:25": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "One Speech session. Dexterity. Destiny: Swift Shadow.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:26": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Marksman's Focus. Glass Light Bow and glass arrows.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:27": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Solo.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:28": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Three Crows.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:29": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Advanced Anatomical Lore.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:30": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Wind Walker. Glass cuirass. Destiny: Assassin.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:31": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Rapid Reload. Start on Smithing now: Elven Smithing at 43 needs Smithing 50.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:32": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Craftsmanship comes from the book The Armorer's Encyclopedia, so it costs no perk point. Muffle from a spell tome: cast it before you close in on a camp.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:33": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Vexing Flanker, and Ranger with the perk point Craftsmanship saved. Advanced Light Armors comes from the book An Introduction to Scale Armors. The Amulet of Kynareth goes on and stays on.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:34": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Catalysis. Brew in batches before a long hunt; one ingredient run should cover a week of poisons.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:35": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Stunning Precision. From here on the plan skips ahead: levels 36 to 42 are one stretch.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:42": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Seven perks across the stretch: Acrobatics, Athletics rank 2, Combat Reflexes, then Nimble Fingers, Cutpurse and Poisoner in Finesse, and Sniper. The glass helmet, gauntlets and boots finish the set.",
+       "type": "text"
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Keep raising Smithing. Elven Smithing at 43 needs it at 50.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:43": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Elven Smithing comes from the book About Elven Craftsmanship, so the perk point goes to Night Vision. Glass Smithing at 50 needs Smithing 70.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:44": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Maverick. Fast Healing from a spell tome: a heal between fights, so the potions last.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:45": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Shadow Opportunist. The Ebony Light Bow and ebony arrows replace the glass ones.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  },
+  "level:50": {
+   "type": "doc",
+   "content": [
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Five perks across the stretch: Immunization, Cloak and Dagger, Salt on the Wound, Problem Solver and Tripwire. Glass Smithing comes from the book An Introduction to Malachite once Smithing reaches 70; use it on the glass set.",
+       "type": "text"
+      }
+     ]
+    },
+    {
+     "type": "paragraph",
+     "content": [
+      {
+       "text": "Marksman reaches 100 at level 50. The leftover points go into Speech.",
+       "type": "text"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

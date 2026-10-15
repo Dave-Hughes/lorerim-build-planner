@@ -8,11 +8,12 @@ test("the hero's Discord button and the other Discord links go to the LoreRim Di
   await expect(hero.getByRole("link", { name: "Join the LoreRim Discord" })).toHaveAttribute("href", DISCORD);
   // The hero's fourth line has no link now.
   await expect(hero.getByText("Share it with the community", { exact: true })).toBeVisible();
-  const links = page.getByRole("link", { name: /LoreRim Discord/ });
-  await expect(links).toHaveCount(4);
+  const links = page.getByRole("link", { name: /LoreRim Discord|Modding Bungalo/ });
+  // The hero's button, Modding Bungalo and the button in Share it (WO-86), Why, and the foot.
+  await expect(links).toHaveCount(5);
   for (const l of await links.all()) await expect(l).toHaveAttribute("href", DISCORD);
   // Focused Combat and Witcher, from traits.json, with the benefit and cost numbers coloured.
-  const traits = page.getByRole("region", { name: "Race, deity, traits, perks and gear" });
+  const traits = page.getByRole("region", { name: "Race, deity, traits, perks, gear and more" });
   await expect(traits).toContainText("Focused Combat");
   await expect(traits).toContainText("Witcher");
   await expect(traits.locator('b[data-trait="benefit"]').first()).toHaveText("10%");
@@ -26,12 +27,11 @@ test.describe("at 390", () => {
     await page.goto("/coming-soon");
     await page.waitForTimeout(500);
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
-    for (const name of ["Plan a character", "Race, deity, traits, perks and gear", "Iriel Thornwhisper's Marksman perks", "Share it"]) {
+    for (const name of ["Plan a character", "Race, deity, traits, perks, gear and more", "Iriel Thornwhisper's Marksman perks", "Share it"]) {
       const section = page.getByRole("region", { name, exact: true });
-      const heading = await section.getByRole("heading", { level: 2 }).boundingBox();
+      const heading = await section.getByRole("heading", { level: 2 }).first().boundingBox();
       const visual = await section.locator('[class*="featureVisual"]').boundingBox();
       expect(heading!.y + heading!.height, name).toBeLessThanOrEqual(visual!.y);
     }
-    await expect(page.getByText("Below:", { exact: true })).toBeVisible();
   });
 });
