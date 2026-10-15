@@ -25,9 +25,9 @@ test("point 4: with reduced motion the counter reads 50 and all 15 of Iriel's Ma
   for (const pose of ["lost", "writing", "cheers"]) await expect(page.locator(`img[src="/icons/tapps-${pose}-0.svg"]`)).toBeVisible();
 });
 
-test("point 3: without reduced motion the tree counts up from level 1", async ({ page }) => {
+test("point 3: without reduced motion the tree opens at level 20 (WO-85) and counts up", async ({ page }) => {
   await page.goto("/coming-soon");
   const n = page.locator("[data-level]");
-  await expect(n).toHaveText("1");
-  await expect.poll(async () => Number(await n.textContent()), { timeout: 5000 }).toBeGreaterThan(5);
+  await expect(n).toHaveText("20");
+  await expect.poll(async () => Number(await n.textContent()), { timeout: 5000 }).toBeGreaterThan(22);
 });

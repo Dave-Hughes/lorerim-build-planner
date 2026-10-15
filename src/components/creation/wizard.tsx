@@ -4,6 +4,7 @@ import Link from "next/link";
 import { MAX_TAGS, TAGS, TAG_GROUPS, suggestedTags } from "@/lib/builds/tags";
 import { useRouter } from "next/navigation";
 import { TRAIT_CHOICES, keptTraitChoices } from "@/lib/rules/trait-choices";
+import { TraitText } from "@/components/ui/trait-text";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { FocusHeader } from "@/components/ui/focus-header";
 import { Tooltip } from "@/components/ui/tooltip";
@@ -41,16 +42,6 @@ interface WizardProps {
 
 function plainTraitText(text: string): string {
   return text.replace(/<([^<>]*)>/g, "$1");
-}
-
-/** The game's description, with the numbers it highlights set in a brighter weight. */
-function TraitText({ text }: { text: string }) {
-  const parts = text.split(/<([^<>]*)>/);
-  return (
-    <>
-      {parts.map((part, i) => (i % 2 ? <b key={i}>{part}</b> : part))}
-    </>
-  );
 }
 
 export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, signIn, introStart }: WizardProps) {

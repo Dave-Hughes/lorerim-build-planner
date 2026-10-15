@@ -3434,10 +3434,10 @@ They are static on purpose: production has no sample build yet. Delete `build-pa
 5. Every screenshot sits in the brass corner frame, as on the board.
 
 ### Done when
-- [ ] e2e: the hero's Discord button and both other Discord links go to `DISCORD`; with reduced motion the counter reads 50; without it, the counter reads 20 on load.
-- [ ] e2e at 390: no horizontal scroll; each section's heading comes before its visual.
-- [ ] Screenshots at 1440 and 390 of the whole page, compared with the two boards.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: the hero's Discord button and both other Discord links go to `DISCORD`; with reduced motion the counter reads 50; without it, the counter reads 20 on load.
+- [x] e2e at 390: no horizontal scroll; each section's heading comes before its visual.
+- [x] Screenshots at 1440 and 390 of the whole page, compared with the two boards.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 
