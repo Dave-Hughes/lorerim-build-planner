@@ -19,7 +19,8 @@ test("the hero: no button, the Modding Bungalo link under Opening soon, crisp pi
   await expect(hero(page).getByRole("link", { name: "Modding Bungalo" })).toHaveAttribute("href", DISCORD);
   // Every layer drawn pixel for pixel; only the land has alt text.
   const layers = hero(page).locator('img[src^="/coming-soon/px/"]');
-  await expect(layers).toHaveCount(7);
+  // Sky, two star layers, two aurora layers, the land in six layers (for the parallax), the fire.
+  await expect(layers).toHaveCount(12);
   expect(await layers.evaluateAll((els) => els.every((e) => getComputedStyle(e).imageRendering === "pixelated"))).toBe(true);
   expect(await layers.evaluateAll((els) => els.filter((e) => e.getAttribute("alt")).length)).toBe(1);
   // Two reads 600 ms apart: the fire has stepped.
@@ -78,4 +79,25 @@ test("How this started has its four panels; What it is comes before Plan a chara
   await expect(later).toContainText("The planner is nearly ready. It will be shared in the Modding Bungalo Discord when it opens.");
   await expect(later.getByRole("link", { name: "Modding Bungalo" })).toHaveAttribute("href", /discord/);
   expect((await page.request.get("/coming-soon/px/icon-wall.png")).status()).toBe(200);
+});
+
+test("the hero's layers lag behind as the page scrolls, in whole art pixels; with reduced motion they don't", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/coming-soon");
+  const y = (name: string) =>
+    hero(page)
+      .locator(`img[src="/coming-soon/px/hero-land-${name}.png"]`)
+      .evaluate((e) => new DOMMatrix(getComputedStyle(e).transform).m42);
+  await page.mouse.wheel(0, 400);
+  await expect.poll(() => y("moon")).toBeGreaterThan(0);
+  expect(await y("ground")).toBe(0);
+  // At 1440 wide one art pixel is 5 screen pixels.
+  expect((await y("far")) % 5).toBe(0);
+  expect(await y("moon")).toBeGreaterThan(await y("forest-near"));
+
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/coming-soon");
+  await page.mouse.wheel(0, 400);
+  await page.waitForTimeout(300);
+  expect(await y("moon")).toBe(0);
 });

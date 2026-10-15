@@ -31,13 +31,16 @@ for _ in range(60):
 save(a, 'hero-stars-a'); save(b, 'hero-stars-b')
 save(S3.aurora(shift=0), 'hero-aurora-a'); save(S3.aurora(shift=14), 'hero-aurora-b')
 
+# The land, whole (the share card) and as six layers back to front (the hero's parallax).
+LAND_LAYERS = ('moon', 'far', 'near', 'forest-far', 'forest-near', 'ground')
 land = Image.new('RGBA', (W, H))
-for p in (S2.moon(240, 22, 6),
+for name, p in zip(LAND_LAYERS, (S2.moon(240, 22, 6),
           S3.mountains(5, 100, 44, '#26324a', '#3a4a63', '#1d2638', '#c9d2da', '#8e9bab', cap=14),
           S3.mountains(13, 112, 26, '#19212f', '#232e42', '#141b27', oct=((60, 1), (24, .45), (10, .15))),
           S2.forest(21, 122, '#0f1916', '#1c2b24', 0.55, 7, 14, '#0b120f'),
           S2.forest(33, 133, '#0a110e', '#15221c', 0.72, 11, 20, '#090d0b'),
-          S2.ground(135), S3.glow(182, 138, radii=(19, 12, 6), alphas=(22, 30, 40))):
+          Image.alpha_composite(S2.ground(135), S3.glow(182, 138, radii=(19, 12, 6), alphas=(22, 30, 40))))):
+    save(p, f'hero-land-{name}')
     land = Image.alpha_composite(land, p)
 save(land, 'hero-land')
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useGameData } from "@/components/game-data";
 import { Tree } from "@/components/build/tree";
 import { GearView } from "@/components/build/gear-view";
@@ -26,6 +26,49 @@ const CARD_TICKS = 5;
 const STAR_TICKS = 5;
 const AURORA_TICKS = 24;
 const PANEL_TICKS = 2;
+
+/** How far the sky layers lag as the page scrolls (the land's are in HERO.landLayers). */
+const SKY_DEPTH = 0.6;
+const AURORA_DEPTH = 0.55;
+
+/**
+ * Parallax (Dave, 15 Oct): as the hero scrolls away, each layer with a data-depth lags behind by
+ * that share of the scroll, moved in whole pixels of the art so it stays crisp. None with reduced motion.
+ */
+function useParallax() {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const hero = ref.current;
+    if (!hero) return;
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const layers = Array.from(hero.querySelectorAll<HTMLElement>("[data-depth]"));
+    let frame = 0;
+    const place = () => {
+      frame = 0;
+      const r = hero.getBoundingClientRect();
+      const scrolled = mq.matches || r.bottom <= 0 ? 0 : Math.max(0, -r.top);
+      const p = Math.max(r.width / 288, r.height / 150);
+      for (const el of layers) {
+        const y = Math.round((scrolled * Number(el.dataset.depth)) / p) * p;
+        el.style.transform = y ? `translate3d(0, ${y}px, 0)` : "";
+      }
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(place);
+    };
+    place();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    mq.addEventListener("change", onScroll);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      mq.removeEventListener("change", onScroll);
+    };
+  }, []);
+  return ref;
+}
 
 /** Ticks, paused while the tab is hidden; none with reduced motion. */
 function useTicks(): { tick: number; still: boolean } {
@@ -75,6 +118,7 @@ function levelAt(tick: number): number {
 export function ComingSoon() {
   const d = useGameData();
   const { tick, still } = useTicks();
+  const heroRef = useParallax();
   const level = still ? LAST : levelAt(tick);
   const states = useMemo(() => computeBuild(IRIEL_PLAN, d), [d]);
   const cards = useMemo(() => stretches(IRIEL_PLAN), []);
@@ -101,14 +145,22 @@ export function ComingSoon() {
   return (
     <div className={styles.page}>
       {/* A night in Skyrim in pixels: the layers back to front, the fire and stars on the clock (WO-87). */}
-      <section className={styles.hero}>
+      <section className={styles.hero} ref={heroRef}>
         {/* eslint-disable @next/next/no-img-element */}
-        <img className={styles.px} src={HERO.sky} alt="" />
-        <img className={`${styles.px} ${styles.stars}`} src={HERO.stars[0]} alt="" style={{ opacity: starsA ? 1 : 0 }} />
-        <img className={`${styles.px} ${styles.stars}`} src={HERO.stars[1]} alt="" style={{ opacity: starsA ? 0 : 1 }} />
-        <img className={`${styles.px} ${styles.aurora}`} src={HERO.aurora[0]} alt="" style={{ opacity: auroraA ? 1 : 0 }} />
-        <img className={`${styles.px} ${styles.aurora}`} src={HERO.aurora[1]} alt="" style={{ opacity: auroraA ? 0 : 1 }} />
-        <img className={styles.px} src={HERO.land} alt="A night in Skyrim drawn in pixels: an aurora over snowy peaks, a pine forest, and Tapps writing in a book by a campfire" />
+        <img className={styles.px} src={HERO.sky} alt="" data-depth={SKY_DEPTH} />
+        <img className={`${styles.px} ${styles.stars}`} src={HERO.stars[0]} alt="" data-depth={SKY_DEPTH} style={{ opacity: starsA ? 1 : 0 }} />
+        <img className={`${styles.px} ${styles.stars}`} src={HERO.stars[1]} alt="" data-depth={SKY_DEPTH} style={{ opacity: starsA ? 0 : 1 }} />
+        <img className={`${styles.px} ${styles.aurora}`} src={HERO.aurora[0]} alt="" data-depth={AURORA_DEPTH} style={{ opacity: auroraA ? 1 : 0 }} />
+        <img className={`${styles.px} ${styles.aurora}`} src={HERO.aurora[1]} alt="" data-depth={AURORA_DEPTH} style={{ opacity: auroraA ? 0 : 1 }} />
+        {HERO.landLayers.map((l, i) => (
+          <img
+            key={l.src}
+            className={styles.px}
+            src={l.src}
+            data-depth={l.depth}
+            alt={i === HERO.landLayers.length - 1 ? "A night in Skyrim drawn in pixels: an aurora over snowy peaks, a pine forest, and Tapps writing in a book by a campfire" : ""}
+          />
+        ))}
         <div className={styles.fireGlow} aria-hidden="true" />
         <img className={styles.px} src={HERO.fg[fg]} alt="" data-fg={fg} />
         {/* eslint-enable @next/next/no-img-element */}

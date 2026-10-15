@@ -10,6 +10,17 @@ export const HERO = {
   stars: [px("hero-stars-a"), px("hero-stars-b")],
   aurora: [px("hero-aurora-a"), px("hero-aurora-b")],
   land: px("hero-land"),
+  /** The land as six layers, back to front, for the parallax: how far each lags as the page scrolls (0 moves with it). */
+  landLayers: (
+    [
+      ["moon", 0.5],
+      ["far", 0.38],
+      ["near", 0.26],
+      ["forest-far", 0.15],
+      ["forest-near", 0.07],
+      ["ground", 0],
+    ] as const
+  ).map(([name, depth]) => ({ src: px(`hero-land-${name}`), depth })),
   fg: [0, 1, 2, 3, 4, 5].map((i) => px(`hero-fg-${i}`)),
 };
 
@@ -42,4 +53,4 @@ export const STORY = [
 ];
 
 /** Every pixel image the page uses. */
-export const ART_FILES = [HERO.sky, ...HERO.stars, ...HERO.aurora, HERO.land, ...HERO.fg, ...STORY.flatMap((s) => s.frames)];
+export const ART_FILES = [HERO.sky, ...HERO.stars, ...HERO.aurora, HERO.land, ...HERO.landLayers.map((l) => l.src), ...HERO.fg, ...STORY.flatMap((s) => s.frames)];

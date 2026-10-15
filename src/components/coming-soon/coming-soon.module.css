@@ -30,6 +30,8 @@
   position: relative;
   overflow: hidden;
   height: clamp(560px, 52vw, 820px);
+  /* Whole pixels, so the art's rows never land between screen pixels. */
+  height: round(clamp(560px, 52vw, 820px), 1px);
   background: #070a0f;
   container-type: size;
 }
@@ -42,6 +44,9 @@
   object-position: 62% 100%;
   image-rendering: pixelated;
   display: block;
+  /* Every layer on its own layer from the start: Chrome otherwise promotes one only while it fades,
+     and its rows can shift by a screen pixel each time (the stars "bounced", Dave, 15 Oct). */
+  will-change: transform;
 }
 /* A little life: the stars fade as they swap, the aurora slowly brightens and dims, the fire's glow flickers. */
 .stars {
