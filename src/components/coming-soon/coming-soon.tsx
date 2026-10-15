@@ -148,9 +148,6 @@ export function ComingSoon() {
           </ul>
           <div className={styles.soonRow}>
             <p className={styles.soon}>Opening soon</p>
-            <a className={styles.button} href={DISCORD}>
-              Join the LoreRim Discord
-            </a>
           </div>
         </div>
       </section>

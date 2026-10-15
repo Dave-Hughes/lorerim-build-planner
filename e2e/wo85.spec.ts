@@ -2,15 +2,15 @@
 import { expect, test } from "@playwright/test";
 import { DISCORD } from "../src/lib/links";
 
-test("the hero's Discord button and the other Discord links go to the LoreRim Discord; the trait cards read the game's text", async ({ page }) => {
+test("the other Discord links go to the LoreRim Discord; the trait cards read the game's text", async ({ page }) => {
   await page.goto("/coming-soon");
   const hero = page.locator("section").first();
-  await expect(hero.getByRole("link", { name: "Join the LoreRim Discord" })).toHaveAttribute("href", DISCORD);
+  await expect(hero.getByRole("link", { name: "Join the LoreRim Discord" })).toHaveCount(0);
   // The hero's fourth line has no link now.
   await expect(hero.getByText("Share it with the community", { exact: true })).toBeVisible();
   const links = page.getByRole("link", { name: /LoreRim Discord|Modding Bungalo/ });
-  // The hero's button, Modding Bungalo and the button in Share it (WO-86), Why, and the foot.
-  await expect(links).toHaveCount(5);
+  // Modding Bungalo and the links in Share it (WO-86), Why, and the footer.
+  await expect(links).toHaveCount(4);
   for (const l of await links.all()) await expect(l).toHaveAttribute("href", DISCORD);
   // Focused Combat and Witcher, from traits.json, with the benefit and cost numbers coloured.
   const traits = page.getByRole("region", { name: "Race, deity, traits, perks, gear and more" });
