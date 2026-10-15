@@ -68,6 +68,8 @@ test("How this started has its four panels; What it is comes before Plan a chara
   const later = page.getByRole("region", { name: "Coming later" });
   await expect(later).toContainText("Story and roleplay");
   await expect(later).toContainText("LoreRim survival guide");
+  await expect(later).toContainText("Add story and roleplay ideas for your character, for those of us who really enjoy that kind of thing.");
+  await expect(later).toContainText("A simple survival guide covering the basics of playing in LoreRim.");
   await expect(later.locator('img[src="/icons/tab-story.svg"]')).toBeVisible();
   await expect(later.locator('img[src="/icons/chapter-staying-alive.svg"]')).toBeVisible();
   // The icon wall sits behind it, and a last word about opening closes it.

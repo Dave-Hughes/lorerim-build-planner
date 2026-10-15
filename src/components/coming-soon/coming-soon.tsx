@@ -289,11 +289,11 @@ export function ComingSoon() {
             Coming later
           </h2>
           <div className={styles.laterCards}>
-            <Later icon="tab-story" title="Story and roleplay" text="A build's own story, in the author's words and screenshots, for when you want a character to play and not only numbers." />
+            <Later icon="tab-story" title="Story and roleplay" text="Add story and roleplay ideas for your character, for those of us who really enjoy that kind of thing." />
             <Later
               icon="chapter-staying-alive"
               title="LoreRim survival guide"
-              text="How LoreRim plays, chapter by chapter: character creation, leveling, survival, combat, magic, crafting, travel, death and the keys, checked against the game's files."
+              text="A simple survival guide covering the basics of playing in LoreRim."
             />
           </div>
           <div className={styles.laterEnd}>

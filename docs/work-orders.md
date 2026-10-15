@@ -3510,8 +3510,8 @@ Open question for Dave, in a canvas comment: should the buttons and other links 
    The panels step one frame every 2 ticks. The old "Why I made this" section is gone; this replaces it.
 3. **What it is.** This section comes before the four feature sections. The heading `What it is` sits on the left. On the right is one paragraph at `clamp(19px, 1.6vw, 22px)`: `A character planner for LoreRim. You plan a build level by level, with the game's own perks, traits, spells and gear, then publish it with a link or keep it to yourself.` Under it, at 16 px in `#8e9bab`: `It starts with LoreRim 5.0.4.8. Later versions will be supported as they come out.` Under it are the four icon lines from WO-85, two per row, which moved here from the hero.
 4. **Coming later.** This section comes after the share section, on a `#0e1319` band with a top rule. Under the heading `Coming later` are two framed cards side by side (`minmax(300px, 1fr)`), each with a 64 px pixel icon:
-   - `Story and roleplay` (`tab-story.svg`): `A build's own story, in the author's words and screenshots, for when you want a character to play and not only numbers.`
-   - `LoreRim survival guide` (`chapter-staying-alive.svg`): `How LoreRim plays, chapter by chapter: character creation, leveling, survival, combat, magic, crafting, travel, death and the keys, checked against the game's files.`
+   - `Story and roleplay` (`tab-story.svg`): `Add story and roleplay ideas for your character, for those of us who really enjoy that kind of thing.`
+   - `LoreRim survival guide` (`chapter-staying-alive.svg`): `A simple survival guide covering the basics of playing in LoreRim.`
 5. **Reduced motion.** Everything holds still:
    - the hero on `hero-fg-0`, stars A and aurora A;
    - the panels on frame 0;
