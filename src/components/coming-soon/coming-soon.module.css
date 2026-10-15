@@ -60,14 +60,14 @@
   justify-content: flex-start;
   gap: 22px;
 }
+/* Jersey 10, a pixel face, so the words sit in the scene (Dave picked it, 15 Oct). */
 .title {
   margin: 0;
-  font-family: var(--font-title);
-  font-weight: 700;
-  font-size: clamp(52px, 6.2vw, 100px);
-  line-height: 0.92;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  font-family: var(--font-pixel), var(--font-title);
+  font-weight: 400;
+  font-size: clamp(64px, 8.4vw, 120px);
+  line-height: 0.84;
+  letter-spacing: 0.01em;
   color: #f3ead8;
 }
 .soonBlock {
@@ -274,10 +274,10 @@
 
 .soon {
   margin: 0;
-  font-family: var(--font-title);
-  font-weight: 700;
-  font-size: clamp(26px, 2.4vw, 34px);
-  letter-spacing: 0.12em;
+  font-family: var(--font-pixel), var(--font-title);
+  font-weight: 400;
+  font-size: clamp(30px, 2.8vw, 40px);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ember);
 }

@@ -3544,7 +3544,7 @@ The question to Dave is still open in a canvas comment: should the share section
    - Brass corners as now.
    - The words go in a column 520 px wide at left 72, centred top to bottom:
      - the pixel logo star (`logo-0.svg`) at 64;
-     - `LoreRim` / `Build Planner` at 104 in the title face, `#f3ead8`;
+     - `LoreRim` / `Build Planner` at 120 in Jersey 10 (`src/lib/og/fonts/Jersey10-Regular.woff`, added 15 Oct), mixed case, line height .84, `#f3ead8`;
      - the site line, italic, at 30;
      - the `LoreRim 5.0.4.8` tag.
    - The 18 skill icons and the diagonal hatching go.
