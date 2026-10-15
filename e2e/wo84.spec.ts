@@ -21,8 +21,8 @@ test("point 4: with reduced motion the counter reads 50 and all 15 of Iriel's Ma
   const lit = await stars.evaluateAll((els) => els.filter((e) => /taken/.test(e.className)).length);
   expect(lit).toBe(15);
   expect(await stars.evaluateAll((els) => els.every((e) => e.getAttribute("tabindex") === "-1"))).toBe(true);
-  // Tapps holds frame 0 of each pose.
-  for (const pose of ["lost", "writing", "cheers"]) await expect(page.locator(`img[src="/icons/tapps-${pose}-0.svg"]`)).toBeVisible();
+  // The story panels hold frame 0 (since WO-87, in place of Tapps's three poses).
+  for (const n of [1, 2, 3, 4]) await expect(page.locator(`img[src="/coming-soon/px/p${n}-0.png"]`)).toBeVisible();
 });
 
 test("point 3: without reduced motion the tree opens at level 20 (WO-85) and counts up", async ({ page }) => {

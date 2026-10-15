@@ -11,7 +11,7 @@ test.use({ viewport: { width: 1440, height: 900 } });
 async function isComingSoon(page: Page) {
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(/LoreRim\s*Build Planner/);
   await expect(page.getByText("Opening soon", { exact: true })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Why I made this" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "How this started" })).toBeVisible();
 }
 
 test("point 2: /, a build, /new and /guide all show the coming soon page, at their own URLs with a 200", async ({ page }) => {

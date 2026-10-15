@@ -3521,11 +3521,11 @@ Open question for Dave, in a canvas comment: should the buttons and other links 
 The question to Dave is still open in a canvas comment: should the share section's button and the footer link say `Modding Bungalo` in place of `LoreRim Discord`? Leave both as they are unless he answers.
 
 ### Done when
-- [ ] e2e: the hero has no `<a class="btn">` and has the `Modding Bungalo` link under `Opening soon`; the foreground frame changes between two reads 600 ms apart. With reduced motion it doesn't change.
-- [ ] e2e: `How this started` shows the four labels and captions above; `What it is` comes before `Plan a character`; `Coming later` shows both cards.
-- [ ] Unit or e2e check: every `px/` image the page asks for exists, and nothing asks for a `shot-*` file.
-- [ ] Screenshots at 1440 and 390 of the whole page, compared with the two boards, with the hero pixels crisp (not smoothed).
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: the hero has no `<a class="btn">` and has the `Modding Bungalo` link under `Opening soon`; the foreground frame changes between two reads 600 ms apart. With reduced motion it doesn't change.
+- [x] e2e: `How this started` shows the four labels and captions above; `What it is` comes before `Plan a character`; `Coming later` shows both cards.
+- [x] Unit or e2e check: every `px/` image the page asks for exists, and nothing asks for a `shot-*` file.
+- [x] Screenshots at 1440 and 390 of the whole page, compared with the two boards, with the hero pixels crisp (not smoothed).
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

@@ -12,6 +12,7 @@ import { levelMarks } from "@/lib/rules/derive";
 import { stretches } from "@/lib/rules/stretches";
 import { notedLevels } from "@/lib/guide/doc";
 import { DISCORD } from "@/lib/links";
+import { HERO, STORY } from "@/lib/coming-soon/art";
 import styles from "./coming-soon.module.css";
 
 /** One level every 280 ms (WO-86), so new gear can be read; at 50 it holds 16 levels' time, then starts from 1. */
@@ -20,22 +21,11 @@ const LAST = 50;
 const HOLD = 16;
 /** Where the tree opens (WO-85): level 20, so it never shows as a grey outline. */
 const FIRST = 20;
-/** A level card every 5 ticks (about 1.4 s); a hero shot every 22 (about 6 s); Tapps's frames every 2. */
+/** A level card every 5 ticks (about 1.4 s). The hero's fire steps every tick, its stars swap every 3, its aurora every 24; the story panels step every 2 (WO-87). */
 const CARD_TICKS = 5;
-const SHOT_TICKS = 22;
-const BEAT_TICKS = 2;
-/** Tapps' frames on each beat. The last frame of each set is a blink. */
-const BEATS = { lost: [0, 1, 0, 1, 0, 1, 2, 1], writing: [0, 1, 2, 2, 3, 2, 2, 2], cheers: [0, 0, 1, 0, 0, 0, 2, 0] } as const;
-
-/** Tapps's characters, from his screenshots (WO-86), in the order they show. */
-const SHOTS = [
-  { file: "shot-864", alt: "A Nord with a shield and staff on a cliff before misty mountains at dawn", pos: "40% 50%" },
-  { file: "shot-868", alt: "An armoured Nord in tall grass before a walled town at sunset", pos: "62% 50%" },
-  { file: "shot-855", alt: "A warrior with a round shield looking up at the Throat of the World in snow", pos: "58% 50%" },
-  { file: "shot-869", alt: "A bearded archer in a field of grass with the sun setting behind a tower", pos: "30% 50%" },
-  { file: "shot-860", alt: "A hooded figure on a rock above a valley under low cloud", pos: "45% 50%" },
-  { file: "shot-782", alt: "An archer on a stone ledge above a valley", pos: "35% 45%" },
-];
+const STAR_TICKS = 3;
+const AURORA_TICKS = 24;
+const PANEL_TICKS = 2;
 
 /** Ticks, paused while the tab is hidden; none with reduced motion. */
 function useTicks(): { tick: number; still: boolean } {
@@ -76,11 +66,11 @@ function levelAt(tick: number): number {
 }
 
 /**
- * The coming soon page (WO-84; WO-85; third pass WO-86: the canvas boards ComingSoon2 and
- * ComingSoon2Phone). The hero cycles Tapps's characters behind the words; then a section for each of
- * its four lines. Iriel's tree, gear timeline and level cards are the app's own components, read
- * only, drawn from her build (a fixture copied from staging) and played on one clock. No sign-up, no
- * tracking, nothing stored.
+ * The coming soon page (WO-84 to WO-86; fourth pass WO-87: the canvas boards ComingSoon4 and
+ * ComingSoon4Phone). A pixel night in Skyrim with Tapps writing by the fire, how this started in four
+ * pixel panels, what it is, a section for each of its four lines, and what comes later. Iriel's tree,
+ * gear timeline and level cards are the app's own components, read only, drawn from her build (a
+ * fixture copied from staging) and played on one clock. No sign-up, no tracking, nothing stored.
  */
 export function ComingSoon() {
   const d = useGameData();
@@ -100,38 +90,28 @@ export function ComingSoon() {
   ).filter((p) => p.at <= level);
   const newest = taken.at(-1)?.at;
   const card = cards[still ? 0 : Math.floor(tick / CARD_TICKS) % cards.length];
-  const shot = still ? 0 : Math.floor(tick / SHOT_TICKS) % SHOTS.length;
-  const beat = still ? 0 : Math.floor(tick / BEAT_TICKS);
-  const frame = (pose: keyof typeof BEATS) => `/icons/tapps-${pose}-${still ? 0 : BEATS[pose][beat % BEATS[pose].length]}.svg`;
+  // The hero and the panels; with reduced motion, their first frames.
+  const fg = still ? 0 : tick % HERO.fg.length;
+  const starsA = still || Math.floor(tick / STAR_TICKS) % 2 === 0;
+  const auroraA = still || Math.floor(tick / AURORA_TICKS) % 2 === 0;
+  const panel = still ? 0 : Math.floor(tick / PANEL_TICKS);
   const traits = ["Focused Combat", "Witcher"].map((n) => d.traits.find((t) => t.name === n)).filter((t) => !!t);
   const range = card.from < card.to;
 
   return (
     <div className={styles.page}>
+      {/* A night in Skyrim in pixels: the layers back to front, the fire and stars on the clock (WO-87). */}
       <section className={styles.hero}>
-        <div className={styles.shots}>
-          {SHOTS.map((s, i) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              key={s.file}
-              className={`${styles.shot} ${i === shot ? styles.shotOn : ""}`}
-              src={`/coming-soon/${s.file}.webp`}
-              srcSet={`/coming-soon/${s.file}-1200.webp 1200w, /coming-soon/${s.file}.webp 2400w`}
-              sizes="(max-width: 900px) 100vw, 78vw"
-              alt={s.alt}
-              aria-hidden={i === shot ? undefined : true}
-              data-shot={i === shot ? "on" : "off"}
-              style={{ objectPosition: s.pos }}
-              loading={i === 0 ? "eager" : "lazy"}
-            />
-          ))}
-        </div>
+        {/* eslint-disable @next/next/no-img-element */}
+        <img className={styles.px} src={HERO.sky} alt="" />
+        <img className={styles.px} src={HERO.stars[0]} alt="" style={{ opacity: starsA ? 1 : 0 }} />
+        <img className={styles.px} src={HERO.stars[1]} alt="" style={{ opacity: starsA ? 0 : 1 }} />
+        <img className={`${styles.px} ${styles.aurora}`} src={HERO.aurora[0]} alt="" style={{ opacity: auroraA ? 1 : 0 }} />
+        <img className={`${styles.px} ${styles.aurora}`} src={HERO.aurora[1]} alt="" style={{ opacity: auroraA ? 0 : 1 }} />
+        <img className={styles.px} src={HERO.land} alt="A night in Skyrim drawn in pixels: an aurora over snowy peaks, a pine forest, and Tapps writing in a book by a campfire" />
+        <img className={styles.px} src={HERO.fg[fg]} alt="" data-fg={fg} />
+        {/* eslint-enable @next/next/no-img-element */}
         <div className={styles.heroFade} aria-hidden="true" />
-        <div className={styles.bars} aria-hidden="true">
-          {SHOTS.map((s, i) => (
-            <span key={s.file} className={i === shot ? styles.barOn : undefined} />
-          ))}
-        </div>
         <div className={styles.heroWords}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className={styles.pix} src="/icons/logo-0.svg" alt="" width={48} height={48} />
@@ -140,18 +120,57 @@ export function ComingSoon() {
             <br />
             Build Planner
           </h1>
-          <ul className={styles.lines}>
+          <div className={styles.soonBlock}>
+            <p className={styles.soon}>Opening soon</p>
+            <p className={styles.soonLine}>
+              Will be shared in the{" "}
+              <a className={styles.soonLink} href={DISCORD}>
+                Modding Bungalo
+              </a>{" "}
+              Discord.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* How this started: Tapps's story in four pixel panels (WO-87). */}
+      <section className={styles.story} aria-labelledby="story-title">
+        <div className={styles.storyInner}>
+          <h2 id="story-title" className={styles.h2}>
+            How this started
+          </h2>
+          <div className={styles.panels}>
+            {STORY.map((p) => (
+              <figure key={p.label} className={styles.panel}>
+                <div className={`frame ${styles.panelArt}`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img className={styles.pix} src={p.frames[panel % p.frames.length]} alt={p.alt} width={160} height={100} />
+                </div>
+                <figcaption className={styles.panelWords}>
+                  <span className={styles.panelLabel}>{p.label}</span>
+                  <span className={styles.say}>{p.text}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What it is, in plain words, before the four sections. */}
+      <section className={styles.what} aria-labelledby="what-title">
+        <h2 id="what-title" className={styles.featureTitle}>
+          What it is
+        </h2>
+        <div className={styles.whatBody}>
+          <p className={styles.whatText}>
+            A character planner for LoreRim 5.0.4.8. You plan a build level by level, with the game&apos;s own perks, traits, spells and gear, then publish it with a link or keep it to yourself.
+          </p>
+          <ul className={styles.whatLines}>
             <Line icon="race-nord">Plan a character for LoreRim</Line>
             <Line icon="destiny">Pick race, deity, perks, spells, gear and more</Line>
             <Line icon="tab-levels">See what changes at each level</Line>
             <Line icon="speech">Share it with the community</Line>
           </ul>
-          <div className={styles.soonRow}>
-            <p className={styles.soon}>Opening soon</p>
-            <a className={styles.button} href={DISCORD}>
-              Join the LoreRim Discord
-            </a>
-          </div>
         </div>
       </section>
 
@@ -259,30 +278,19 @@ export function ComingSoon() {
         </Feature>
       </div>
 
-      <section className={styles.why} aria-labelledby="why-title">
-        <div className={styles.whyInner}>
-          <h2 id="why-title" className={styles.h2}>
-            Why I made this
+      {/* Coming later (WO-87). */}
+      <section className={styles.later} aria-labelledby="later-title">
+        <div className={styles.laterInner}>
+          <h2 id="later-title" className={styles.h2}>
+            Coming later
           </h2>
-          <div className={styles.panels}>
-            <div className={styles.panel}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className={styles.pix} src={frame("lost")} alt="Tapps holding a map, a question mark over his helmet" width={180} height={180} />
-              <p className={styles.say}>I love LoreRim. When I first dove in, I was lost.</p>
-            </div>
-            <div className={styles.panel}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className={styles.pix} src={frame("writing")} alt="Tapps writing on a page with a quill" width={180} height={180} />
-              <p className={styles.say}>So I built what I wished I&apos;d had then: a place to plan a character and see how other people play theirs.</p>
-            </div>
-            <div className={styles.panel}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className={styles.pix} src={frame("cheers")} alt="Tapps with a tankard of mead" width={180} height={180} />
-              <p className={styles.say}>
-                It&apos;s my way of giving something back to the LoreRim team and everyone who plays it. Come find me on the <a href={DISCORD}>LoreRim Discord</a>.
-              </p>
-              <p className={styles.sign}>Tapps</p>
-            </div>
+          <div className={styles.laterCards}>
+            <Later icon="tab-story" title="Story and roleplay" text="A build's own story, in the author's words and screenshots, for when you want a character to play and not only numbers." />
+            <Later
+              icon="chapter-staying-alive"
+              title="LoreRim survival guide"
+              text="How LoreRim plays, chapter by chapter: character creation, leveling, survival, combat, magic, crafting, travel, death and the keys, checked against the game's files."
+            />
           </div>
         </div>
       </section>
@@ -312,6 +320,20 @@ function Line({ icon, children }: { icon: string; children: React.ReactNode }) {
       <img className={styles.pix} src={`/icons/${icon}.svg`} alt="" width={32} height={32} />
       {children}
     </li>
+  );
+}
+
+/** A framed card in Coming later: a 64 px pixel icon, a name, a sentence. */
+function Later({ icon, title, text }: { icon: string; title: string; text: string }) {
+  return (
+    <div className={`frame ${styles.laterCard}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className={styles.pix} src={`/icons/${icon}.svg`} alt="" width={64} height={64} />
+      <div className={styles.laterWords}>
+        <span className={styles.laterTitle}>{title}</span>
+        <span className={styles.laterText}>{text}</span>
+      </div>
+    </div>
   );
 }
 

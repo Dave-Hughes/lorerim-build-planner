@@ -23,84 +23,42 @@
   font-size: 15px;
 }
 
-/* ---------- The hero (WO-86): Tapps's characters cycling on the right, the words over dark on the left ---------- */
+/* ---------- The hero (WO-87): a pixel night in Skyrim, Tapps writing by the fire ---------- */
 .hero {
   position: relative;
   overflow: hidden;
-  min-height: clamp(640px, 46vw + 160px, 800px);
-  background: #0b0f14;
-  border-bottom: 1px solid #2a3442;
-  display: flex;
+  height: clamp(560px, 52vw, 820px);
+  background: #070a0f;
 }
-.shots {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 78%;
-  overflow: hidden;
-  background: #0e1319;
-}
-.shot {
+.px {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 62% 100%;
+  image-rendering: pixelated;
   display: block;
-  opacity: 0;
-  transition: opacity 1.4s ease-in-out;
-  transform-origin: 50% 45%;
-  animation: drift 14s ease-in-out infinite alternate;
 }
-.shotOn {
-  opacity: 1;
-}
-@keyframes drift {
-  from {
-    transform: scale(1.02) translate(0, 0);
-  }
-  to {
-    transform: scale(1.12) translate(1.5%, -1%);
-  }
+.aurora {
+  transition: opacity 3s ease-in-out;
 }
 .heroFade {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(90deg, rgba(11, 15, 20, 1) 0%, rgba(11, 15, 20, 1) 22%, rgba(11, 15, 20, 0.82) 34%, rgba(11, 15, 20, 0.35) 50%, rgba(11, 15, 20, 0) 64%),
-    linear-gradient(0deg, rgba(11, 15, 20, 0.7) 0%, rgba(11, 15, 20, 0) 26%);
-}
-/* Which shot: six small bars, the current one ember. */
-.bars {
-  position: absolute;
-  right: clamp(16px, 4vw, 54px);
-  bottom: 24px;
-  display: flex;
-  gap: 8px;
-  z-index: 1;
-}
-.bars span {
-  display: block;
-  width: 28px;
-  height: 3px;
-  background: rgba(228, 235, 240, 0.35);
-  transition: background 0.4s;
-}
-.bars span.barOn {
-  background: var(--ember);
+  background: linear-gradient(90deg, rgba(7, 10, 15, 0.78) 0%, rgba(7, 10, 15, 0.45) 32%, rgba(7, 10, 15, 0) 52%);
 }
 .heroWords {
   position: relative;
-  width: 100%;
+  height: 100%;
   max-width: 1332px;
   margin: 0 auto;
   box-sizing: border-box;
-  padding: clamp(40px, 5vw, 72px) clamp(16px, 4vw, 54px);
+  padding: clamp(40px, 6vw, 96px) clamp(16px, 4vw, 54px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 24px;
+  justify-content: flex-start;
+  gap: 22px;
 }
 .title {
   margin: 0;
@@ -112,29 +70,179 @@
   text-transform: uppercase;
   color: #f3ead8;
 }
-.lines {
+.soonBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+.soonLine {
+  margin: 0;
+  font-size: 18px;
+  color: #c3cdd6;
+}
+.page a.soonLink {
+  color: #f3ead8;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- How this started: four pixel panels ---------- */
+.story {
+  background: #0b0f14;
+  border-bottom: 1px solid #2a3442;
+}
+.storyInner {
+  max-width: 1332px;
+  margin: 0 auto;
+  padding: clamp(56px, 7vw, 100px) clamp(16px, 4vw, 54px);
+}
+.storyInner .h2 {
+  margin-bottom: clamp(28px, 3.5vw, 48px);
+}
+.panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+}
+.panel {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.panelArt {
+  border: 1px solid #2a3442;
+  background: #070a0f;
+}
+.panelArt::before,
+.panelArt::after,
+.laterCard::before,
+.laterCard::after {
+  width: 18px;
+  height: 18px;
+  z-index: 1;
+}
+.panelArt::before,
+.laterCard::before {
+  top: -6px;
+  left: -6px;
+}
+.panelArt::after,
+.laterCard::after {
+  bottom: -6px;
+  right: -6px;
+}
+.panelArt img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 160 / 100;
+}
+.panelWords {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.panelLabel {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ember);
+}
+
+/* ---------- What it is ---------- */
+.what {
+  max-width: 1332px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: clamp(64px, 8vw, 120px) clamp(16px, 4vw, 54px) 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 64px;
+  align-items: flex-start;
+}
+.what .featureTitle {
+  flex: 1 1 280px;
+  max-width: 360px;
+}
+.whatBody {
+  flex: 999 1 560px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.whatText {
+  margin: 0;
+  font-size: clamp(19px, 1.6vw, 22px);
+  line-height: 1.5;
+  color: #e4ebf0;
+}
+.whatLines {
   margin: 0;
   padding: 0;
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: clamp(17px, 1.4vw, 20px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px 32px;
+  font-size: 18px;
   line-height: 1.4;
   color: #d6dde3;
 }
-.lines li {
+.whatLines li {
   display: flex;
   align-items: center;
   gap: 14px;
 }
-.soonRow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px 28px;
-  margin-top: 8px;
+
+/* ---------- Coming later ---------- */
+.later {
+  margin-top: clamp(80px, 10vw, 140px);
+  border-top: 1px solid #2a3442;
+  background: #0e1319;
 }
+.laterInner {
+  max-width: 1332px;
+  margin: 0 auto;
+  padding: clamp(56px, 7vw, 100px) clamp(16px, 4vw, 54px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 3.5vw, 44px);
+}
+.laterCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.laterCard {
+  border: 1px solid #2a3442;
+  background: #10161e;
+  padding: 28px;
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+}
+.laterWords {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.laterTitle {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #f3ead8;
+}
+.laterText {
+  font-size: 17px;
+  line-height: 1.5;
+  color: #c3cdd6;
+}
+
 .soon {
   margin: 0;
   font-family: var(--font-title);
@@ -225,12 +333,6 @@
   display: flex;
   flex-direction: column;
   gap: 28px;
-}
-.wideOnly {
-  display: inline;
-}
-.narrowOnly {
-  display: none;
 }
 
 /* A screenshot in the brass corner frame. */
@@ -484,47 +586,13 @@
   padding: 0 6px;
 }
 
-/* ---------- Why I made this ---------- */
-.why {
-  margin-top: clamp(80px, 10vw, 140px);
-  border-top: 1px solid #2a3442;
-  background: #0e1319;
-}
-.whyInner {
-  max-width: 1332px;
-  margin: 0 auto;
-  padding: clamp(56px, 8vw, 110px) clamp(16px, 4vw, 54px);
-}
-.whyInner .h2 {
-  margin-bottom: clamp(32px, 4vw, 56px);
-}
-.panels {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 48px 56px;
-}
-.panel {
-  flex: 1 1 300px;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
+/* The story panels' captions, in Alegreya. */
 .say {
   margin: 0;
   font-family: var(--font-flavor);
-  font-size: 22px;
-  line-height: 1.55;
+  font-size: 20px;
+  line-height: 1.45;
   color: #ddd5c6;
-}
-.sign {
-  margin: 0;
-  font-family: var(--font-title);
-  font-weight: 600;
-  font-size: 24px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ember);
 }
 
 /* ---------- The foot ---------- */
@@ -561,33 +629,15 @@
   color: #c3cdd6;
 }
 
-/* Where the columns wrap (phones and narrow windows): each section stacks, its words first, and the tree's note says Below. */
+/* Where the columns wrap (phones and narrow windows): each section stacks, its words first. */
 @media (max-width: 1079px) {
-  .featureText {
+  .featureText,
+  .what .featureTitle {
     max-width: none;
-  }
-  .wideOnly {
-    display: none;
-  }
-  .narrowOnly {
-    display: inline;
-  }
-}
-/* Phones: the picture fills the hero, the words sit low over a heavier bottom fade. */
-@media (max-width: 900px) {
-  .shots {
-    width: 100%;
-  }
-  .heroFade {
-    background: linear-gradient(0deg, rgba(11, 15, 20, 1) 0%, rgba(11, 15, 20, 0.92) 48%, rgba(11, 15, 20, 0.25) 78%, rgba(11, 15, 20, 0) 100%);
-  }
-  .heroWords {
-    justify-content: flex-end;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .shot {
-    animation: none;
+  .aurora {
     transition: none;
   }
   .rulerBox {

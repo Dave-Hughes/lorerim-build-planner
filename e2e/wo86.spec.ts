@@ -1,37 +1,21 @@
 /**
- * WO-86: the coming soon page, third pass. The hero cycles six shots; Iriel's gear timeline and level
- * cards (the app's own, from her fixture) play on the page's clock. Playwright's clock moves the timers.
+ * WO-86: the coming soon page, third pass. Iriel's gear timeline and level cards (the app's own, from
+ * her fixture) play on the page's clock. Playwright's clock moves the timers. (WO-87 replaced the
+ * hero's six shots with pixel art: wo87.spec.ts.)
  */
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 test.use({ viewport: { width: 1440, height: 900 } });
 
 const TICK = 280;
-const shotOn = (page: Page) => page.locator('img[data-shot="on"]');
-
-test("the hero shows six shots, one at a time, and moves to the next after about 6 s", async ({ page }) => {
-  await page.clock.install();
-  await page.goto("/coming-soon");
-  await expect(page.locator("img[data-shot]")).toHaveCount(6);
-  await expect(shotOn(page)).toHaveCount(1);
-  const first = await shotOn(page).getAttribute("src");
-  expect(first).toContain("shot-864");
-  await page.clock.runFor(23 * TICK);
-  await expect(shotOn(page)).toHaveCount(1);
-  expect(await shotOn(page).getAttribute("src")).not.toBe(first);
-});
-
-test("with reduced motion the first shot stays and nothing moves: the tree and gear at 50, the level 1 card", async ({ page }) => {
+test("with reduced motion nothing moves: the tree and gear at 50, the level 1 card", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.clock.install();
   await page.goto("/coming-soon");
   await page.clock.runFor(30 * TICK);
-  expect(await shotOn(page).getAttribute("src")).toContain("shot-864");
   await expect(page.locator("[data-level]")).toHaveText("50");
   await expect(page.locator('[data-live="gear"]').getByRole("heading", { level: 2 })).toHaveText(/Gear\s*at level 50/);
   await expect(page.locator("[data-card]")).toHaveAttribute("data-card", "1-1");
-  const shot = await page.locator('img[data-shot="on"]').evaluate((el) => getComputedStyle(el).animationName);
-  expect(shot).toBe("none");
 });
 
 test("at level 14 the gear shows New: Elven Light Bow, Elven Arrow; the card steps to Levels 36 to 42 with its range on the ruler", async ({ page }) => {
