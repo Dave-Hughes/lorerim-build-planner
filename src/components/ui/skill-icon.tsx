@@ -61,7 +61,7 @@ export function SlotIcon({ slot, size = 16 }: { slot: string; size?: 16 | 24 | 3
   return <GameIcon file={`slot-${SLOT_ICON[slot] ?? "other"}`} size={size} />;
 }
 
-/** The gear types' icons (WO-82): the old slots keep theirs; the rest share the nearest, or Other's. */
+/** The gear types' icons (WO-82, WO-83): one each. Anything else, and free-text gear on the card ("Other"), takes the plain satchel. */
 const SLOT_ICON: Record<string, string> = {
   "Main hand": "main-hand",
   "Off hand": "off-hand",

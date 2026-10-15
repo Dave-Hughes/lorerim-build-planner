@@ -3371,10 +3371,10 @@ The old `slot` field stays for now, null for pieces the old slots didn't cover. 
    If a perf number still misses on a normal run, say so with the numbers. Don't tune the code in this order.
 
 ### Done when
-- [ ] e2e: add a Cloak and a Lantern. Each shows `slot-cloak.svg` / `slot-lantern.svg` in the editor, the level card and the gear timeline. Free-text gear still shows `slot-other.svg`.
-- [ ] Screenshots at 1440 and 390: the type list open, and Iriel's build page gear timeline.
-- [ ] `guide.spec.ts`, `wo79.spec.ts` and `perf.spec.ts` pass, with the perf numbers in the commit message.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: add a Cloak and a Lantern. Each shows `slot-cloak.svg` / `slot-lantern.svg` in the editor, the level card and the gear timeline. Free-text gear still shows `slot-other.svg`.
+- [x] Screenshots at 1440 and 390: the type list open, and Iriel's build page gear timeline.
+- [x] `guide.spec.ts`, `wo79.spec.ts` and `perf.spec.ts` pass, with the perf numbers in the commit message.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 
