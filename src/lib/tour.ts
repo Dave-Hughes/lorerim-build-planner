@@ -108,7 +108,7 @@ export const READER_TOUR = (tabs: { guide: boolean; story: boolean }): TourScrip
   stops: [
     { target: "level-row", title: "Levels", text: "Pick a level in the row or on the ruler, or step through them with ‹ and ›." },
     { target: "pinned-bar", scrollTo: "level-card", title: "The pinned bar", text: "It stays at the top as you scroll. It shows the level you're on and what changed there." },
-    { target: "level-card", title: "The level card", text: "What was taken at this level, in the order the game asks. The author's note is beside it, under About this level." },
+    { target: "level-card", title: "The level card", text: "What was taken at this level. The author's note is beside it, under About this level." },
     { target: "attributes-skills", title: "Attributes and skills", text: "Where the character stands at this level: each attribute, and each skill's level." },
     { target: "perks", title: "Perk trees", text: "Each tree as it stands at this level. Click a star for its card." },
     { target: "gear", optional: true, title: "Gear", text: "What the build wears and wields, and the level where each piece changes." },

@@ -5,6 +5,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { useDismiss } from "@/lib/use-dismiss";
 import { setBuildVisibility } from "@/lib/builds/actions";
 import type { BuildVisibility } from "@/lib/builds/validate";
+import { useFeatures } from "@/components/features";
 import styles from "./edit-bar.module.css";
 
 export type EditPage = "levels" | "setup" | "guide" | "story";
@@ -161,6 +162,9 @@ export function EditBar({
   todo?: React.ReactNode;
 }) {
   const [visibility, setVisibility] = useState(initial);
+  // The Story page is held back for launch (WO-81).
+  const { story } = useFeatures();
+  const pages = PAGES.filter((p) => p.key !== "story" || story);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
@@ -206,7 +210,7 @@ export function EditBar({
           {name}
         </span>
         <nav aria-label="Editing pages" className={styles.pages}>
-          {PAGES.map((p) => (
+          {pages.map((p) => (
             <Link key={p.key} href={`/b/${buildId}/${p.path}`} className={styles.page} aria-current={current === p.key ? "page" : undefined}>
               {p.label}
             </Link>
@@ -253,7 +257,7 @@ export function EditBar({
           <MenuButton className={styles.narrow} buttonClassName={`btn btn-sm btn-icon ${styles.moreButton}`} buttonLabel="More" menuLabel="More" button="⋯">
             {(close) => (
               <>
-                {PAGES.map((p) => (
+                {pages.map((p) => (
                   <Link key={p.key} href={`/b/${buildId}/${p.path}`} role="menuitem" tabIndex={-1} className={styles.menuItem} aria-current={current === p.key ? "page" : undefined} onClick={() => close()}>
                     {p.label}
                   </Link>

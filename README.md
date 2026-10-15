@@ -21,6 +21,11 @@ Safety rails:
 - A schema change reaches production only after it has run on dev (locally) and then staging (merge to `staging`).
 - Push `staging` and `main` separately. Vercel treats a deployment as production when its commit is also the head of `main`, so pushing both branches at the same commit in one go gives two production deployments instead of a preview. The normal order (commit to `staging`, check the preview, then merge to `main` and push `main`) never does that.
 
+### Switches and config in the environment
+
+- `FEATURE_STORY` and `FEATURE_SITE_GUIDE` (WO-81): `on` turns the Story and the site's beginner's guide on. Unset, they're on only under `npm run dev`, so staging and production show the launch view with both hidden. The e2e server turns both on, and a second e2e server (the `launch` project) keeps both off.
+- `SAMPLE_BUILD_ID` (WO-80): the build the first visit offers to walk through. Unset, it's the built-in example build.
+
 ## Local setup
 
 ```bash

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Avatar } from "./ui/avatar";
 import { getMaker } from "@/lib/users/maker";
 import { ShowMeAround } from "./tour/show-me-around";
+import { siteGuideOn } from "@/lib/features";
 import styles from "./site-footer.module.css";
 
 const DISCORD = "https://discord.gg/bungalo";
@@ -38,10 +39,12 @@ export async function SiteFooter() {
           <span className={styles.made}>{made}</span>
         )}
         <ShowMeAround className={styles.tour} />
-        {/* The guide (WO-66), next to the community link. */}
-        <Link href="/guide" className={styles.link}>
-          Guide
-        </Link>
+        {/* The guide (WO-66), next to the community link; held back for launch (WO-81). */}
+        {siteGuideOn() && (
+          <Link href="/guide" className={styles.link}>
+            Guide
+          </Link>
+        )}
         <a href={DISCORD} className={styles.link} target="_blank" rel="noopener noreferrer">
           <DiscordIcon />
           <span>LoreRim (Modding Bungalo) Community</span>

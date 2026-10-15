@@ -15,7 +15,7 @@ import azrem from "./fixtures/azrem.json";
 import iriel from "./fixtures/iriel.json";
 import pureMage from "./fixtures/pure-mage.json";
 import sevari from "../src/lib/rules/__fixtures__/sevari.json";
-import { textLength, type GuideDoc } from "../src/lib/guide/doc";
+import { lineDoc, textLength, type GuideDoc } from "../src/lib/guide/doc";
 import { snowflakeAt } from "../src/lib/moderation/age";
 import { emptyLevel } from "../src/lib/rules/derive";
 import { altmerSkipsPlan } from "../src/lib/rules/__fixtures__/altmer-skips";
@@ -76,6 +76,18 @@ export const SEVARI_BUILD_ID = "e2esevar22";
 export const ONE_POINT_BUILD_ID = "e2ew72pq2s";
 /** WO-76: a Breton healer, Novice Restoration at level 1 and level 2 empty: Apprentice Restoration can be taken there. */
 export const HEALER_BUILD_ID = "e2ew76rest";
+/** WO-81: the healer's Story, a title and two paragraphs (no images). */
+const HEALER_STORY: Record<string, GuideDoc> = {
+  "story:title": lineDoc("The Mender"),
+  "story:line": lineDoc("Every wound in Skyrim is somebody's business."),
+  story: {
+    type: "doc",
+    content: [
+      { type: "paragraph", content: [{ type: "text", text: "She came north with a satchel of herbs and a temple's letter of leave." }] },
+      { type: "paragraph", content: [{ type: "text", text: "By spring the Bannered Mare kept a chair for her by the fire." }] },
+    ],
+  },
+};
 /** WO-79: a copy of Sevari's plan with no Story yet; the Story tests write one. */
 export const STORY_BUILD_ID = "e2estry222";
 export const OTHER_USER_ID = "e2e-user-0002";
@@ -471,6 +483,8 @@ export async function seed() {
         ...Object.entries(iriel.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: IRIEL_BUILD_ID, key, doc, textLength: textLength(doc) })),
         ...Object.entries(pureMage.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: PURE_MAGE_BUILD_ID, key, doc, textLength: textLength(doc) })),
         ...Object.entries(sevari.guide as Record<string, GuideDoc>).map(([key, doc]) => ({ buildId: SEVARI_BUILD_ID, key, doc, textLength: textLength(doc) })),
+        // WO-81: a written Story, which the launch view (Story off) must hide.
+        ...Object.entries(HEALER_STORY).map(([key, doc]) => ({ buildId: HEALER_BUILD_ID, key, doc, textLength: textLength(doc) })),
       ],
     );
   } finally {

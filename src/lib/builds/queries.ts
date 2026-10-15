@@ -10,6 +10,7 @@ import { SAMPLE_BUILD_ID, isValidBuildId } from "./ids";
 import { sampleBuild } from "./sample";
 import type { BuildRecord, BuildSummary } from "./types";
 import { isHandle } from "@/lib/users/handles";
+import { storyOn } from "@/lib/features";
 import { assignHandle } from "@/lib/users/assign-handle";
 
 const summaryFields = {
@@ -59,7 +60,8 @@ function toSummary(r: SummaryRow): BuildSummary {
     author: { name: r.authorName ?? "Unknown", image: r.authorImage ?? null, handle: r.authorHandle ?? null },
     likeCount: Number(r.likeCount ?? 0),
     videoId: r.videoId ?? null,
-    hasStory: !!r.hasStory,
+    // Held back for launch (WO-81): no Story tag while the Story is off.
+    hasStory: storyOn() && !!r.hasStory,
   };
 }
 

@@ -12,6 +12,7 @@ import { getBuild, imageHold } from "@/lib/builds/queries";
 import { imageUrls, withHiddenImages } from "@/lib/guide/doc";
 import { buildMetadata } from "@/lib/og/metadata";
 import { getGuide } from "@/lib/guide/queries";
+import { storyOn } from "@/lib/features";
 import { clientVersion, isKnownVersion } from "@/lib/rules/server";
 
 type Params = Promise<{ id: string }>;
@@ -33,7 +34,9 @@ export default async function BuildPage({ params, searchParams }: { params: Para
   const isOwner = !!viewerId && viewerId === build.ownerId;
   const [guide, admin] = await Promise.all([getGuide(build.id, build.plan, !build.isSample), build.isSample ? false : isAdmin(viewerId)]);
   // Images waiting on an admin (WO-40) never reach the page: the cover becomes a plain hero, guide images a panel.
-  const docs = Object.fromEntries(Object.entries(guide).map(([k, v]) => [k, v.doc]));
+  // The Story is held back for launch (WO-81): its sections stay saved, but never reach the page.
+  const story = storyOn();
+  const docs = Object.fromEntries(Object.entries(guide).filter(([k]) => story || !k.startsWith("story")).map(([k, v]) => [k, v.doc]));
   const urls = [...(build.coverImageUrl ? [build.coverImageUrl] : []), ...Object.values(docs).flatMap((d) => [...imageUrls(d)])];
   const hold = build.isSample || !urls.length ? null : await imageHold(build.id, urls);
   const held = (src: string) => !!hold && (hold.all || hold.hidden.has(src));
@@ -46,7 +49,7 @@ export default async function BuildPage({ params, searchParams }: { params: Para
         isOwner={isOwner}
         signedIn={!!viewerId}
         initialLevel={Number(level) || 1}
-        initialTab={tab === "guide" || tab === "story" ? tab : "levels"}
+        initialTab={tab === "guide" || (tab === "story" && story) ? tab : "levels"}
         signInToCopy={<SignInButton redirectTo={`/b/${id}?copy=1`} className={build.plan.videoId ? "btn" : "btn btn-primary"} label="Copy to my builds" />}
         signInToLike={
           <SignInButton

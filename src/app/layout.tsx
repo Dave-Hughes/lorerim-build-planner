@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Alegreya, Alegreya_SC, Sofia_Sans, Sofia_Sans_Extra_Condensed } from "next/font/google";
 import "./globals.css";
 import { SITE_LINE, SITE_NAME, siteBase, siteMetadata } from "@/lib/og/metadata";
+import { FeaturesProvider } from "@/components/features";
+import { features } from "@/lib/features";
 
 const sofia = Sofia_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-sofia" });
 const sofiaCondensed = Sofia_Sans_Extra_Condensed({
@@ -26,7 +28,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${sofia.variable} ${sofiaCondensed.variable} ${alegreya.variable} ${alegreyaSC.variable}`}>
-      <body>{children}</body>
+      <body>
+        {/* The launch switches (WO-81), for the client components that hide what's off. */}
+        <FeaturesProvider value={features()}>{children}</FeaturesProvider>
+      </body>
     </html>
   );
 }

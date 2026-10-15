@@ -8,6 +8,7 @@ import { clientVersion, isKnownVersion } from "@/lib/rules/server";
 import { getBuild } from "@/lib/builds/queries";
 import { docText, emptyDoc } from "@/lib/guide/doc";
 import { getGuide } from "@/lib/guide/queries";
+import { storyOn } from "@/lib/features";
 
 type Params = Promise<{ id: string }>;
 
@@ -16,6 +17,8 @@ export const dynamic = "force-dynamic";
 
 /** The owner's page for the build's Story (WO-79). */
 export default async function StoryEditPage({ params }: { params: Params }) {
+  // Held back for launch (WO-81).
+  if (!storyOn()) notFound();
   const [{ id }, session] = await Promise.all([params, auth()]);
   const userId = session?.user?.id ?? null;
   const build = await getBuild(id, userId);
