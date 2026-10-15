@@ -3531,6 +3531,52 @@ The question to Dave is still open in a canvas comment: should the share section
 
 ---
 
+## WO-88  Link preview cards in the pixel style, a card per guide chapter, and a check of today's page fixes (15 Oct 2026)
+
+**Why.** Dave wants the link preview cards to match the new pixel look, with Tapps in them. A guide chapter should share with its own art. Several of Dave's canvas comments also went straight onto staging today (7db2ea5, 2c9160d and the commits before them), and only the WO-87 e2e spec was run on them. The boards are `ShareSitePixel.dc.html` and `ShareGuide.dc.html`, in the new row "Proposal: link preview cards in the pixel style". Match them.
+
+**Already in this commit (chat session):** `scripts/coming-soon/share.py` bakes the art the cards use into `src/lib/og/art/`, already scaled up pixel for pixel, so the card renderer never smooths it:
+- `site-scene.png`: the coming soon hero (Tapps writing by the fire) at 5x, cropped to 1200×630 as the hero crops it.
+- `guide-wall.png`: the icon wall at 3x, cropped to 1200×630.
+
+1. **The site's card** (`siteCard` in `src/lib/og/card.tsx`, served at `/og/site.png`):
+   - Full bleed: `site-scene.png`, with a left fade of `rgba(7,10,15,.86)` at 0, `.62` at 34% and `0` at 56%.
+   - Brass corners as now.
+   - The words go in a column 520 px wide at left 72, centred top to bottom:
+     - the pixel logo star (`logo-0.svg`) at 64;
+     - `LoreRim` / `Build Planner` at 104 in the title face, `#f3ead8`;
+     - the site line, italic, at 30;
+     - the `LoreRim 5.0.4.8` tag.
+   - The 18 skill icons and the diagonal hatching go.
+   - A build with no cover still uses this card with its own name in place of the title, as it does now, at 80 and clamped as now. Its video badge stays.
+2. **A guide chapter's card**, at `/guide/[slug]/card.png`. Build it statically, with one card per chapter.
+   - Background: `guide-wall.png` at opacity .16 on `#0e1319`, under a fade of `rgba(14,19,25,.92)` at 0, `.7` at 55% and `.35` at 100%. Brass corners.
+   - On the left (column 640 at left 72, centred):
+     - `LoreRim guide · Chapter N`, in ember, title face, 26;
+     - the chapter's title at 112;
+     - its subtitle, italic, at 30.
+   - On the right: a 320 px box (1 px `#2a3442`, `rgba(7,10,15,.75)`) holding the chapter's own icon from its front matter, at 256 px.
+   - Bottom left: the logo star at 32 and `LoreRim Build Planner`.
+   - Each chapter's `generateMetadata` points its Open Graph and Twitter image at its card.
+   - The guide's other pages (contents, terms, questions, mods) keep the site's card.
+3. **Build cards with a cover** are unchanged.
+4. **Check today's comment fixes on the coming soon page.**
+   - Run the whole of `npm run test:e2e`, not only `wo87.spec.ts`.
+   - Take screenshots at 1440 and 390 and compare them with `ComingSoon4` and `ComingSoon4Phone`, mainly:
+     - the four captions;
+     - the version line under `What it is`;
+     - the icon wall and `Opening soon` closing `Coming later`;
+     - the two card lines.
+   - Fix anything that is off.
+
+### Done when
+- [ ] Unit test: `/og/site.png` and one chapter's `card.png` come back as 1200×630 PNGs. A chapter page's metadata names its own card; `/guide/terms` names the site's card.
+- [ ] Screenshots of `/og/site.png`, a no-cover build's card and `/guide/staying-alive/card.png`, compared with the two boards, with the pixels crisp.
+- [ ] Screenshots of `/coming-soon` at 1440 and 390, compared with the ComingSoon4 boards.
+- [ ] All checks in CLAUDE.md pass, the full e2e run included.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
