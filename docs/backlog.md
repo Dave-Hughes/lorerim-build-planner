@@ -16,6 +16,8 @@ What is queued, in the order it was raised. Rules for the look live in [design-r
 
 - **Domain:** lorerimplanner.com is free at $11.25/yr (checked 10 Oct 2026). Buy on Dave's say-so, then add `https://lorerimplanner.com/api/auth/callback/discord` to the Discord app's redirects (Discord developer portal, app "LoreRim Build Planner").
 
+- **The tour's sample build (15 Oct 2026).** Iriel for now. Dave is asking Zenematics whether he'd post the first official guide; if he does, his build becomes the sample (change `SAMPLE_BUILD_ID`, no code change). On production the sample has to be a production build.
+
 ## Decided against
 
 - **Card first, character sheet folded (13 Oct 2026).** A proposal to lead the build page with key levels and the level card, fold everything else into a closed "Character sheet", and start each editor level small behind an "Add" row (canvas artboards `CardFirst.dc.html`, `LevelStartsSmall.dc.html`). Dave: keep the page as it is.
