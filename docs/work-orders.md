@@ -3316,7 +3316,7 @@ Use the game's words for perk and spell names. The ember accent marks picks left
 ### Done when
 - [x] e2e with both switches off: no Story tab, edit-bar link or card tag; `/b/[id]/story` and `/guide` are 404s; no Guide link in the nav or footer; a build's Guide tab still works, and its terms show tooltips without links.
 - [x] e2e with both on: the existing Story and guide tests pass unchanged.
-- [ ] Staging shows the launch view (both off).
+- [x] Staging shows the launch view (both off).
 - [x] All checks in CLAUDE.md pass.
 
 ---
