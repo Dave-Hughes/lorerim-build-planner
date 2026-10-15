@@ -238,7 +238,10 @@
       "Dummy",
       "^\\[",
       "^FXdustDropWEP$",
-      "^Unarmed$"
+      "^Unarmed$",
+      "^\\$TNG_",
+      "SMP ON Object",
+      "^Mule "
     ]
   },
   "starts": {

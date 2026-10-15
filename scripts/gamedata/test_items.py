@@ -106,27 +106,27 @@ class ItemsTest(unittest.TestCase):
         self.assertEqual(len(self.records), 15)
         self.assertEqual(self.kw[(PLUGIN, 0x801)], "WeapTypeSword")
 
-    def test_skips_non_playable_records_and_armor_without_a_slot(self):
+    def test_skips_non_playable_records_and_keeps_every_worn_piece(self):
         self.assertNotIn("Naked", self.names)  # non-playable flag
         self.assertNotIn("Ghost Blade", self.names)  # non-playable weapon flag
-        self.assertNotIn("Tail Ribbon", self.names)  # no slot the planner shows
-        self.assertEqual(self.counts["playable"], 12)
+        self.assertIn("Tail Ribbon", self.names)  # worn on slot 40: kept since 15 Oct, as an Accessory
+        self.assertEqual(self.counts["playable"], 13)
 
     def test_skips_debug_and_deleted_names(self):
         self.assertNotIn("zzzTest Sword", self.names)
         self.assertNotIn("[Debug] Hat", self.names)
-        self.assertEqual(self.counts["named"], 10)
+        self.assertEqual(self.counts["named"], 11)
 
     def test_skips_templated_enchanted_copies(self):
         self.assertNotIn("Iron Sword of Frost", self.names)
         self.assertNotIn("Steel Armor of Health", self.names)
         self.assertIn("Iron Sword", self.names)
-        self.assertEqual(self.counts["untemplated"], 8)
+        self.assertEqual(self.counts["untemplated"], 9)
 
     def test_keeps_every_same_name_record_for_the_merge(self):
         steel = [e for e in self.entries if e["name"] == "Steel Armor"]
         self.assertEqual([e["id"] for e in steel], ["Fixture.esp:000820", "Fixture.esp:000821"])
-        self.assertEqual(self.counts["merged"], 7)
+        self.assertEqual(self.counts["merged"], 8)
 
     def test_merge_keeps_the_latest_and_lists_the_others(self):
         steel = [e for e in items.merge(self.entries) if e["name"] == "Steel Armor"]
@@ -152,9 +152,35 @@ class ItemsTest(unittest.TestCase):
 
     def test_builds_the_planner_rows(self):
         rows = {r["name"]: r for r in items.build_items({"items": self.entries})}
-        self.assertEqual(rows["Steel Armor"], {"id": "Fixture.esp:000821", "name": "Steel Armor", "kind": "armor", "slot": "Body", "armorType": "Heavy", "stats": "Heavy armor, 25 armor, 30 weight", "also": ["Fixture.esp:000820"]})
+        self.assertEqual(rows["Steel Armor"], {"id": "Fixture.esp:000821", "name": "Steel Armor", "kind": "armor", "slot": "Body", "type": "Body", "armorType": "Heavy", "stats": "Heavy armor, 25 armor, 30 weight", "also": ["Fixture.esp:000820"]})
         self.assertEqual(rows["Steel Spear"]["stats"], "Spear, 11 damage, 14 weight")
         self.assertEqual(rows["Iron Arrow"]["stats"], "Arrow, 8 damage, 0.1 weight")
+
+
+class GearTypeTest(unittest.TestCase):
+    def test_the_name_says_what_a_piece_is(self):
+        t = items.gear_type
+        self.assertEqual(t("Fur Cape", [40, 46]), "Cloak")
+        self.assertEqual(t("Pelt Cloak (Fox)", [57]), "Cloak")
+        self.assertEqual(t("Cultist Mask", [30, 31, 42, 43]), "Face")  # a mask that covers the head too
+        self.assertEqual(t("Alchemist Hood", [42, 45]), "Head")
+        self.assertEqual(t("Fjola's Wedding Band", [51]), "Ring")
+        self.assertEqual(t("Travelling Merchant Backpack", [46, 47]), "Backpack")
+        self.assertEqual(t("Lute", [49]), "Instrument")
+
+    def test_body_slots_decide_the_rest(self):
+        t = items.gear_type
+        self.assertEqual(t("Ebony Helmet", [30, 31, 42, 43]), "Head")
+        self.assertEqual(t("Horned Helmet", [30, 31]), "Head")  # not an instrument
+        self.assertEqual(t("Cloak of the Night", [32]), "Body")  # robes stay Body
+        self.assertEqual(t("Iron Banded Shield", [39]), "Shield")
+        self.assertEqual(t("Heavy Mail", [56]), "Body")
+        self.assertEqual(t("Red Scarf", [45]), "Scarf")
+        self.assertEqual(t("Histus Flask", [48]), "Accessory")
+
+    def test_every_type_is_listed(self):
+        found = {t for t, _ in items.GEAR_NAME_TYPES} | {t for _, t in items.GEAR_SLOT_TYPES} | {"Accessory"}
+        self.assertEqual(found - set(items.GEAR_TYPES), set())
 
 
 class LabelTest(unittest.TestCase):

@@ -3321,6 +3321,44 @@ Use the game's words for perk and spell names. The ember accent marks picks left
 
 ---
 
+## WO-82  Launch: gear by type, any number at once (15 Oct 2026)
+
+**Why.** Dave tested every body slot combination in game (15 Oct; 105 items, one or two for each of the 80 combinations LoreRim uses). Slots don't map cleanly to what a piece is:
+- a helmet covers the head and the face, or just the head;
+- four or five accessories can be worn at once.
+
+So the planner sets **no rules** on what can be worn together. It only helps the author find the piece: pick its type, then search within that type.
+
+**Data (done by the chat session, this commit):** every wearable piece is now in `items.json`, 337 more than before. Each armor row has a `type` from `scripts/gamedata/items.py` (`gear_type`): the piece's name first when it says what it is (`Fur Cape` is a Cloak, `Cultist Mask` a Face), then its body slots. The type words are LoreRim's own, from Aura's Inventory Tweaks. `GEAR_TYPES` lists them in order:
+
+> Head, Circlet, Face, Body, Hands, Feet, Legs, Shield, Cloak, Mantle, Pauldron, Scarf, Backpack, Bag, Belt Bag, Bandolier, Amulet, Necklace, Ring, Earrings, Bracelet, Armlet, Lantern, Spyglass, Instrument, Accessory
+
+The old `slot` field stays for now, null for pieces the old slots didn't cover. Physics objects, `$TNG_` records and pack-mule gear are skipped (`overrides.json`).
+
+1. **Types in place of slots.** The gear types are Main hand, Off hand and Ammo, then the list above. Saved builds keep working: Head, Body, Hands, Feet, Ring and Amulet keep their names, and `Other` reads as `Accessory`. The plan's gear rows keep their shape, with the type in `slot`, so no migration is needed.
+2. **Any number of pieces per type,** the way `Other` works today:
+   - a new piece adds to what's worn;
+   - when the author picks a piece it `Replaces`, that one comes off. A new piece of a type where exactly one is worn offers to replace it, ticked.
+   - `Empty from here` takes one piece off.
+   - No warnings about pieces that clash in game.
+3. **Adding gear: type first, then the item.**
+   - The type is a plain list in the order above (design rule 10: no invented groups).
+   - The search then shows only that type: Main hand any weapon; Off hand one-handed weapons and shields; Ammo ammunition; an armor type its own rows.
+   - Under the results, `Search every item` drops the type filter, for a piece filed under a type the author didn't expect. Picking one keeps the type the author chose.
+   - Free text still works, for a piece that isn't in the index.
+4. **The build page and the level card:**
+   - the gear timeline has a row per type, with a lane per piece when several are worn at once;
+   - the level card says `Cloak: Fur Cape, replaces Imperial Cloak`, or `Accessory: Histus Flask` for a piece that adds.
+5. **Copy:** `Type`, `Replaces`, `Search every item`. Type names as listed.
+
+### Done when
+- [ ] Unit tests: gear held at a level with two pieces of one type, a replace, an `Empty from here`, and an old build's `Other` row read as Accessory.
+- [ ] e2e: add a Cloak (search shows cloaks only), then a Backpack, then a second Accessory. All three are worn at the next level, and the level card lists them. `Search every item` finds a piece outside the type.
+- [ ] Iriel and Sevari read as before on the build page (screenshots at 1440 and 390).
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
@@ -3332,23 +3370,6 @@ Use the game's words for perk and spell names. The ember accent marks picks left
 - **Set up loses changes silently (found 11 Oct).** Changes on a Set up step are kept only until `Save changes` on the Name step. Reloading, or leaving through the edit bar (`Levels`, `Guide`), drops them with no warning: a Focused Combat choice was lost this way. Either save each step as it changes, like the editor does, or warn before leaving with unsaved changes.
 
 - Custom domain: lorerimplanner.com, on Dave's say-so.
-- **More gear slots (pinned: Dave checks in game later on 12 Oct, then we pick the slots).** The chat session read LoreRim's game files, and 451 wearable pieces use body slots the planner doesn't know. The item index drops them all today. They sort into these groups:
-  - cloaks and capes: about 270 pieces, on slots 40, 45, 46 and 57;
-  - backpacks and bags: 67, on slot 47;
-  - scarves, collars and sashes: on slots 45 and 46;
-  - masks and eyewear: on slots 43 and 44;
-  - padding, mail and plates under-layers: 27, on slot 56;
-  - small extras: armlets, bracelets, beacons and flasks.
-
-  Wedding bands (slot 51) are rings. Body-physics objects and `$TNG_` records are junk to skip. Mods put the same kind of item on different slots, so sort by name as well as slot.
-
-  **Where the in-game "Type" comes from** (checked 11 Oct, late). The game has no gear slots, only each item's Type, and two mods set it at load time:
-  - Object Categorization Framework tags items with keywords through Keyword Item Distributor ini files, e.g. `OCF_BodyTypeScarf`, `OCF_AccessoryBag_Backpack`.
-  - Inventory Injector rules turn those keywords, plus body slots, into the Type label. LoreRim's main rule file is Aura's Inventory Tweaks' `AIT.json`; there are 142 rule files in all.
-
-  So the full list of Types is in the files: `AIT_english.txt` has Cloak, Backpack, Scarf, Accessory, Face, Belt, Mantle, Pauldron and more.
-
-  Working out each item's Type means doing what Keyword Item Distributor does, since the keywords aren't in the plugins. A first pass that read only the plugins gave wrong answers (robes as Cloak, no scarves). The planner's slots should be a short list picked from these Types; Dave picks which in game.
 - **Skip ahead, more** (after WO-69): split a stretch (write level 18 inside 11 to 25); a Browse filter for builds that write every level.
 - **Destiny target:** pick the Destiny star you're heading for and light the path to it.
 - **Skills over levels:** a small line chart on the shared page of the main skills from level 1 to the last.

@@ -181,7 +181,8 @@ def playable(rec):
     if rec["group"] == "WEAP":
         return not (rec["flags"] & NON_PLAYABLE_RECORD) and not (rec.get("weapFlags", 0) & WEAP_NON_PLAYABLE)
     if rec["group"] == "ARMO":
-        return not (rec["flags"] & NON_PLAYABLE_RECORD) and armor_slot(rec.get("biped", 0)) is not None
+        # Every piece worn somewhere is kept (15 Oct 2026): its gear type (gear_type) says where.
+        return not (rec["flags"] & NON_PLAYABLE_RECORD) and bool(rec.get("biped", 0))
     return not (rec.get("ammoFlags", 0) & AMMO_NON_PLAYABLE)
 
 
@@ -198,7 +199,8 @@ def describe(rec, kw_names):
         out.update(kind="weapon", weaponType=weapon_label(rec["name"], weapon_type(kws, rec.get("anim"))), damage=rec.get("damage"))
     elif rec["group"] == "ARMO":
         armor_type = next((ARMOR_KEYWORDS[k] for k in kws if k in ARMOR_KEYWORDS), None) or ARMOR_TYPES.get(rec.get("bodyType"))
-        out.update(kind="armor", slot=armor_slot(rec.get("biped", 0)), armorType=armor_type, armor=rec.get("armor"))
+        biped = rec.get("biped", 0)
+        out.update(kind="armor", slot=armor_slot(biped), slots=[30 + i for i in range(32) if biped >> i & 1], armorType=armor_type, armor=rec.get("armor"))
     else:
         out.update(kind="ammo", ammoType="Arrow" if rec.get("ammoFlags", 0) & AMMO_NON_BOLT else "Bolt", damage=round(rec.get("damage", 0), 2))
     for k in ("weight", "value"):
@@ -314,6 +316,60 @@ def stats_line(e):
     return ", ".join(parts)
 
 
+# Gear types (Dave, 15 Oct 2026): the words LoreRim's inventory uses for an item's Type (Aura's
+# Inventory Tweaks, AIT_english.txt), in the order the planner lists them. They only help an author
+# find a piece; the planner sets no rules on what can be worn together. A piece covering several
+# body slots gets one type: its name first, when it says what it is, then its body slots.
+GEAR_TYPES = ["Head", "Circlet", "Face", "Body", "Hands", "Feet", "Legs", "Shield", "Cloak", "Mantle", "Pauldron", "Scarf",
+              "Backpack", "Bag", "Belt Bag", "Bandolier", "Amulet", "Necklace", "Ring", "Earrings", "Bracelet", "Armlet",
+              "Lantern", "Spyglass", "Instrument", "Accessory"]
+# Name words, checked in this order. Skipped for a piece worn on the body or as a shield, so
+# "Cloak of the Night" robes stay Body. A head piece can still be a Face (a mask covers both).
+GEAR_NAME_TYPES = [
+    ("Face", r"\b(mask|masque|veil|goggles|glasses|spectacles|blindfold)\b"),
+    ("Head", r"\b(hood|helm|helmet|hat|cap|cowl|coif)\b"),
+    ("Ring", r"\b(ring|band)\b"),
+    ("Belt Bag", r"\bbelt (bag|pouch)\b"),
+    ("Backpack", r"\b(backpack|rucksack|knapsack)\b"),
+    ("Bag", r"\b(bag|satchel|pouch|sack|purse)\b"),
+    ("Bandolier", r"\bbandolier\b"),
+    ("Mantle", r"\bmantle\b"),
+    ("Cloak", r"\b(cloak|cape)\b"),
+    ("Pauldron", r"\b(pauldrons?|spaulders?)\b"),
+    ("Scarf", r"\b(scarf|shawl|neckerchief|kerchief|bandana)\b"),
+    ("Necklace", r"\b(necklace|choker|torc)\b"),
+    ("Earrings", r"\bearrings?\b"),
+    ("Bracelet", r"\b(bracelets?|bangles?)\b"),
+    ("Armlet", r"\barmlets?\b"),
+    ("Lantern", r"\b(lantern|lamp)\b"),
+    ("Spyglass", r"\b(spyglass|telescope)\b"),
+    ("Instrument", r"\b(lute|flute|drum|horn)\b"),
+]
+# Body slots, in order: the first one the piece covers gives its type.
+GEAR_SLOT_TYPES = [(39, "Shield"), (32, "Body"), (30, "Head"), (31, "Head"), (41, "Head"), (42, "Circlet"), (33, "Hands"), (37, "Feet"),
+              (36, "Ring"), (35, "Amulet"), (46, "Cloak"), (47, "Backpack"), (57, "Pauldron"), (45, "Scarf"), (44, "Face"), (55, "Face"),
+              (43, "Earrings"), (34, "Bracelet"), (58, "Armlet"), (59, "Armlet"), (38, "Legs"), (53, "Legs"), (54, "Legs"),
+              (56, "Body")]
+HEAD_SLOTS = {30, 31, 41, 42, 43}
+
+
+def gear_type(name, slots):
+    """The type an author picks to find this piece: 'Fur Cape' on 40+46 -> Cloak, 'Cultist Mask' -> Face."""
+    worn = set(slots)
+    if not worn & {32, 39}:
+        for t, pattern in GEAR_NAME_TYPES:
+            if not re.search(pattern, name, re.IGNORECASE):
+                continue
+            # An instrument word on a helmet ("Horned Helmet") isn't an instrument.
+            if t == "Instrument" and worn & HEAD_SLOTS:
+                continue
+            return t
+    for slot, t in GEAR_SLOT_TYPES:
+        if slot in worn:
+            return t
+    return "Accessory"
+
+
 def build_items(raw, skip=(), prefer=None):
     """
     items_raw.json -> the planner's items.json rows: { id, name, kind, slot, armorType, weaponType,
@@ -328,6 +384,7 @@ def build_items(raw, skip=(), prefer=None):
         row = {"id": e["id"], "name": e["name"], "kind": e["kind"]}
         if e["kind"] == "armor":
             row["slot"] = e.get("slot")
+            row["type"] = gear_type(e["name"], e.get("slots") or [])
             row["armorType"] = e.get("armorType")
         elif e["kind"] == "weapon":
             row["weaponType"] = e.get("weaponType")
