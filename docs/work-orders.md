@@ -3404,11 +3404,11 @@ The old `slot` field stays for now, null for pieces the old slots didn't cover. 
 6. **No sign-up, no tracking,** nothing stored.
 
 ### Done when
-- [ ] Unit test: `FEATURE_COMING_SOON` is off when unset, also under `next dev`.
-- [ ] e2e with the switch on: `/`, `/b/<a build>`, `/new` and `/guide` all show the coming soon page; `/signin` shows the button; an admin session sees the real home page; `/api/auth/providers` still answers. With it off, `/` is the usual home page.
-- [ ] e2e with reduced motion: the counter reads 50 and every one of Iriel's 15 Marksman perks is lit.
-- [ ] Screenshots at 1440 and 390, the tree mid-way (level 23) and the Why section, compared with the canvas boards.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Unit test: `FEATURE_COMING_SOON` is off when unset, also under `next dev`.
+- [x] e2e with the switch on: `/`, `/b/<a build>`, `/new` and `/guide` all show the coming soon page; `/signin` shows the button; an admin session sees the real home page; `/api/auth/providers` still answers. With it off, `/` is the usual home page.
+- [x] e2e with reduced motion: the counter reads 50 and every one of Iriel's 15 Marksman perks is lit.
+- [x] Screenshots at 1440 and 390, the tree mid-way (level 23) and the Why section, compared with the canvas boards.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

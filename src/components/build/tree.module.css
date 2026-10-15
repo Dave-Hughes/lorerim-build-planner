@@ -606,3 +606,12 @@ button.listRow[aria-pressed="true"] {
   font-size: 15px;
   font-weight: 600;
 }
+
+/* A tree to look at only (the coming soon page, WO-84): nothing to press or drag. */
+.still .sky {
+  cursor: default;
+}
+.still .star,
+.still .label {
+  pointer-events: none;
+}

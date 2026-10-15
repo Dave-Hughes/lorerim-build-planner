@@ -2,10 +2,10 @@ import Link from "next/link";
 import { Avatar } from "./ui/avatar";
 import { getMaker } from "@/lib/users/maker";
 import { ShowMeAround } from "./tour/show-me-around";
+import { DISCORD } from "@/lib/links";
 import { siteGuideOn } from "@/lib/features";
 import styles from "./site-footer.module.css";
 
-const DISCORD = "https://discord.gg/bungalo";
 
 /** The Discord mark, for the community link. */
 function DiscordIcon() {

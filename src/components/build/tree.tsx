@@ -40,6 +40,11 @@ export interface TreeProps {
   ruled?: Map<string, string>;
   /** The legend's word for a star that can be taken: "Can take by level 25" on a stretch (WO-69). */
   openLabel?: string;
+  /**
+   * A picture of the tree, to look at only (the coming soon page, WO-84): no toolbar or legend, no
+   * dragging or zooming, and the stars aren't buttons anyone can reach.
+   */
+  still?: boolean;
 }
 
 export type TreeView = "tree" | "list";
@@ -362,7 +367,7 @@ function keepRoom<R extends { w: number; vw: number; vh: number; top: number }>(
   return was.w === next.w && was.vw === next.vw && was.vh === next.vh && was.top === next.top ? was : next;
 }
 
-export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView, noToggle, sheetBelow = SMALL, height, heading, listBy = "skill", ruled, openLabel }: TreeProps) {
+export function Tree({ tree, states, level, selectedId, onSelect, details, view: heldView, onView, noToggle, sheetBelow = SMALL, height, heading, listBy = "skill", ruled, openLabel, still }: TreeProps) {
   const d = useGameData();
   const [wrap, setWrap] = useState<HTMLDivElement | null>(null);
   // `top`: where the drawing starts on the page (below the toolbar), for short windows.
@@ -590,8 +595,8 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   const bigger = W > w0 + 1 || H > h0 + 1;
 
   return (
-    <div className={`${styles.box} ${tree === "Destiny" ? styles.destinyTree : ""}`} ref={setWrap} data-tree={tree}>
-      <div className={styles.toolbar}>
+    <div className={`${styles.box} ${tree === "Destiny" ? styles.destinyTree : ""} ${still ? styles.still : ""}`} ref={setWrap} data-tree={tree}>
+      {!still && <div className={styles.toolbar}>
         {heading && <span className={styles.heading}>{heading}</span>}
         {/* On phones the tabs carry the switch, at the end of their row. */}
         {!noToggle && <ViewToggle view={view} onView={setView} className={onView ? styles.segWide : undefined} />}
@@ -608,7 +613,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
             </button>
           </span>
         )}
-      </div>
+      </div>}
 
       {view === "list" ? (
         <PerkList d={d} tree={tree} status={status} onSelect={select} selectedId={selected} by={listBy} ruled={ruled} />
@@ -618,11 +623,12 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
           <PerkList d={d} tree={tree} status={status} hidden ruled={ruled} />
           <div
             ref={sky}
-            tabIndex={0}
-            aria-label={`${tree} tree: drag or use the arrow keys to move around, Ctrl and the wheel to zoom`}
+            tabIndex={still ? undefined : 0}
+            aria-label={still ? `${tree} tree` : `${tree} tree: drag or use the arrow keys to move around, Ctrl and the wheel to zoom`}
+            aria-hidden={still ? true : undefined}
             className={`${styles.sky} ${small ? styles.skySmall : ""} ${dragging ? styles.dragging : ""}`}
-            style={{ height: h0, touchAction: bigger ? "none" : "pan-y" }}
-            {...gestures}
+            style={{ height: h0, touchAction: still ? "pan-y" : bigger ? "none" : "pan-y" }}
+            {...(still ? {} : gestures)}
           >
             {layout && (
               <div className={styles.canvas} style={{ width: W, height: H, transform: `translate(${panX}px, ${panY}px)`, ["--star" as string]: `${size.star * 2}px`, ["--label" as string]: `${labelSizes(size.font).name}px`, ["--sub" as string]: `${labelSizes(size.font).sub}px` }}>
@@ -678,7 +684,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
                   const style = { left: n.x, top: n.y, ...(partial ? { ["--ring" as string]: rankRing(st, size.star * 2 * 1.3) } : {}) };
                   return (
                     <span key={n.id}>
-                      <button type="button" className={cls} style={style} aria-label={aria} aria-pressed={isSel} aria-disabled={why ? true : undefined} data-perk={n.id} data-ruled={why ? "" : undefined} onClick={() => !why && select(n.id)} onFocus={(e) => reveal(n.id, e)}>
+                      <button type="button" className={cls} style={style} aria-label={aria} aria-pressed={isSel} aria-disabled={why ? true : undefined} tabIndex={still ? -1 : undefined} data-perk={n.id} data-ruled={why ? "" : undefined} onClick={() => !still && !why && select(n.id)} onFocus={(e) => reveal(n.id, e)}>
                         {/* On hover (mouse) or keyboard focus: the name and what it needs, at once. */}
                         <span className={styles.tag} aria-hidden="true">
                           <b>{nameLine(p, st)}</b>
@@ -713,7 +719,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
         </>
       )}
 
-      <div className={styles.legend}>
+      {!still && <div className={styles.legend}>
         <span>
           <i className={styles.keyTaken} />
           Taken
@@ -737,7 +743,7 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
             Ruled out
           </span>
         )}
-      </div>
+      </div>}
 
       {sheetMode && sheet && sheetStatus && (
         <BottomSheet label={d.perkById.get(sheet)?.name ?? "Perk"} onClose={() => setSheet(null)}>

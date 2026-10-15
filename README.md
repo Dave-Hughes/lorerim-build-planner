@@ -24,6 +24,7 @@ Safety rails:
 ### Switches and config in the environment
 
 - `FEATURE_STORY` and `FEATURE_SITE_GUIDE` (WO-81): `on` turns the Story and the site's beginner's guide on. Unset, they're on only under `npm run dev`, so staging and production show the launch view with both hidden. The e2e server turns both on, and a second e2e server (the `launch` project) keeps both off.
+- `FEATURE_COMING_SOON` (WO-84): `on` puts the coming soon page in front of every page, at its own URL, for everyone but signed-in admins. Off unless set, `npm run dev` included; Dave turns it on for production only, and off at launch. `/signin` (linked from nowhere) signs an admin in behind it. A third e2e server (the `soon` project) runs with it on.
 - `SAMPLE_BUILD_ID` (WO-80): the build the first visit offers to walk through. Unset, it's the built-in example build.
 
 ## Local setup

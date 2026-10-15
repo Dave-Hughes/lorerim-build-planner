@@ -6,11 +6,13 @@ const executablePath = fs.existsSync("/opt/pw-browsers/chromium") ? "/opt/pw-bro
 const port = 3123;
 /** A second server with WO-81's launch switches off: the launch view, for wo81.spec.ts. */
 const launchPort = 3125;
+/** A third with WO-84's coming soon page on, for wo84-soon.spec.ts. */
+const soonPort = 3127;
 
 /** Every test starts with Tapps' tours done (WO-61); the tour tests start from a fresh browser. */
 export const TOURS_DONE = {
   cookies: [],
-  origins: [port, launchPort].map((p) => ({
+  origins: [port, launchPort, soonPort].map((p) => ({
     origin: `http://localhost:${p}`,
     localStorage: [
       { name: "planner.tour.reader", value: "done" },
@@ -38,11 +40,13 @@ export default defineConfig({
   },
   projects: [
     // Story and the site guide on (WO-81), so their tests keep running.
-    { name: "all", testIgnore: /wo81-launch\.spec\.ts/ },
+    { name: "all", testIgnore: /wo81-launch\.spec\.ts|wo84-soon\.spec\.ts/ },
     // Both off, as they launch.
     { name: "launch", testMatch: /wo81-launch\.spec\.ts/, use: { baseURL: `http://localhost:${launchPort}` } },
+    // The coming soon page in front of everything (WO-84).
+    { name: "soon", testMatch: /wo84-soon\.spec\.ts/, use: { baseURL: `http://localhost:${soonPort}` } },
   ],
-  webServer: [port, launchPort].map((p) => ({
+  webServer: [port, launchPort, soonPort].map((p) => ({
     // Run `npm run build` first; this serves the production build.
     command: `npx next start -p ${p}`,
     url: `http://localhost:${p}/b/sample`,
@@ -59,6 +63,8 @@ export default defineConfig({
       SAMPLE_BUILD_ID: "e2eyrye7q2",
       FEATURE_STORY: p === port ? "on" : "off",
       FEATURE_SITE_GUIDE: p === port ? "on" : "off",
+      // FEATURE_COMING_SOON: on for the third server only.
+      FEATURE_COMING_SOON: p === soonPort ? "on" : "off",
     },
   })),
 });
