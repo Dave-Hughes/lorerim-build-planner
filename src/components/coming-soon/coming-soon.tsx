@@ -281,6 +281,9 @@ export function ComingSoon() {
 
       {/* Coming later (WO-87). */}
       <section className={styles.later} aria-labelledby="later-title">
+        {/* The icon wall: every 16 px icon, drawn by scripts/coming-soon/wall.py. */}
+        <div className={styles.laterWall} aria-hidden="true" />
+        <div className={styles.laterFade} aria-hidden="true" />
         <div className={styles.laterInner}>
           <h2 id="later-title" className={styles.h2}>
             Coming later
@@ -292,6 +295,16 @@ export function ComingSoon() {
               title="LoreRim survival guide"
               text="How LoreRim plays, chapter by chapter: character creation, leveling, survival, combat, magic, crafting, travel, death and the keys, checked against the game's files."
             />
+          </div>
+          <div className={styles.laterEnd}>
+            <p className={styles.soon}>Opening soon</p>
+            <p className={styles.soonLine}>
+              The planner is nearly ready. It will be shared in the{" "}
+              <a className={styles.soonLink} href={DISCORD}>
+                Modding Bungalo
+              </a>{" "}
+              Discord when it opens.
+            </p>
           </div>
         </div>
       </section>

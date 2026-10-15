@@ -70,4 +70,10 @@ test("How this started has its four panels; What it is comes before Plan a chara
   await expect(later).toContainText("LoreRim survival guide");
   await expect(later.locator('img[src="/icons/tab-story.svg"]')).toBeVisible();
   await expect(later.locator('img[src="/icons/chapter-staying-alive.svg"]')).toBeVisible();
+  // The icon wall sits behind it, and a last word about opening closes it.
+  const wall = await later.evaluate((el) => getComputedStyle(el.querySelector('[aria-hidden="true"]')!).backgroundImage);
+  expect(wall).toContain("/coming-soon/px/icon-wall.png");
+  await expect(later).toContainText("The planner is nearly ready. It will be shared in the Modding Bungalo Discord when it opens.");
+  await expect(later.getByRole("link", { name: "Modding Bungalo" })).toHaveAttribute("href", /discord/);
+  expect((await page.request.get("/coming-soon/px/icon-wall.png")).status()).toBe(200);
 });

@@ -3516,6 +3516,8 @@ Open question for Dave, in a canvas comment: should the buttons and other links 
    - the hero on `hero-fg-0`, stars A and aurora A;
    - the panels on frame 0;
    - the rest as in WO-86.
+   - Behind the section (added 15 Oct, Dave's comment): the icon wall, `public/coming-soon/px/icon-wall.png` from `scripts/coming-soon/wall.py`, every 16 px icon in a brick grid that tiles. It repeats at 1728 px wide (3x), pixelated, at opacity .2, under a fade from the band colour at the top and bottom to `.55` between 22% and 70%.
+   - Under the cards, centred: `Opening soon` (as in the hero), then `The planner is nearly ready. It will be shared in the Modding Bungalo Discord when it opens.` with `Modding Bungalo` linking to `DISCORD`.
 6. **Tidy.** Delete `public/coming-soon/shot-*.webp` (all twelve files), since nothing uses them now.
 
 The question to Dave is still open in a canvas comment: should the share section's button and the footer link say `Modding Bungalo` in place of `LoreRim Discord`? Leave both as they are unless he answers.

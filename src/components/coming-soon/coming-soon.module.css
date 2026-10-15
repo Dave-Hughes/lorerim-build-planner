@@ -205,11 +205,34 @@
 
 /* ---------- Coming later ---------- */
 .later {
+  position: relative;
+  overflow: hidden;
   margin-top: clamp(80px, 10vw, 140px);
   border-top: 1px solid #2a3442;
   background: #0e1319;
 }
+.laterWall {
+  position: absolute;
+  inset: 0;
+  background: url("/coming-soon/px/icon-wall.png") center top / 1728px auto repeat;
+  image-rendering: pixelated;
+  opacity: 0.2;
+}
+.laterFade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #0e1319 0%, rgba(14, 19, 25, 0.55) 22%, rgba(14, 19, 25, 0.55) 70%, #0e1319 100%);
+}
+.laterEnd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  margin-top: clamp(16px, 3vw, 40px);
+}
 .laterInner {
+  position: relative;
   max-width: 1332px;
   margin: 0 auto;
   padding: clamp(56px, 7vw, 100px) clamp(16px, 4vw, 54px);
