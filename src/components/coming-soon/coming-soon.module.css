@@ -24,11 +24,14 @@
 }
 
 /* ---------- The hero (WO-87): a pixel night in Skyrim, Tapps writing by the fire ---------- */
+/* A title screen (Dave picked it, 15 Oct): the words centred in the sky above Tapps, every size a
+   whole number of the art's pixels. --p is one art pixel: the 288x150 scene covers the hero. */
 .hero {
   position: relative;
   overflow: hidden;
   height: clamp(560px, 52vw, 820px);
   background: #070a0f;
+  container-type: size;
 }
 .px {
   position: absolute;
@@ -40,46 +43,100 @@
   image-rendering: pixelated;
   display: block;
 }
+/* A little life: the stars fade as they swap, the aurora slowly brightens and dims, the fire's glow flickers. */
+.stars {
+  transition: opacity 1.2s ease-in-out;
+}
 .aurora {
   transition: opacity 3s ease-in-out;
+  animation: auroraGlow 7s ease-in-out infinite alternate;
+}
+@keyframes auroraGlow {
+  from {
+    filter: brightness(0.8);
+  }
+  to {
+    filter: brightness(1.4) saturate(1.15);
+  }
+}
+.fireGlow {
+  --p: max(100cqw / 288, 100cqh / 150);
+  position: absolute;
+  left: calc((100cqw - 288 * var(--p)) * 0.62 + 182 * var(--p));
+  top: calc(100cqh - 13 * var(--p));
+  width: calc(64 * var(--p));
+  height: calc(36 * var(--p));
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, rgba(240, 145, 63, 0.24) 0%, rgba(240, 145, 63, 0.08) 45%, rgba(240, 145, 63, 0) 70%);
+  mix-blend-mode: screen;
+  animation: flicker 2.2s linear infinite;
+}
+@keyframes flicker {
+  0%, 100% { opacity: 0.7; }
+  12% { opacity: 1; }
+  24% { opacity: 0.8; }
+  41% { opacity: 0.95; }
+  57% { opacity: 0.65; }
+  73% { opacity: 1; }
+  86% { opacity: 0.75; }
 }
 .heroFade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(7, 10, 15, 0.78) 0%, rgba(7, 10, 15, 0.45) 32%, rgba(7, 10, 15, 0) 52%);
+  background: linear-gradient(180deg, rgba(7, 10, 15, 0.55) 0%, rgba(7, 10, 15, 0.15) 45%, rgba(7, 10, 15, 0) 60%);
 }
 .heroWords {
-  position: relative;
-  height: 100%;
-  max-width: 1332px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: clamp(40px, 6vw, 96px) clamp(16px, 4vw, 54px);
+  --p: max(100cqw / 288, 100cqh / 150);
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: calc(12 * var(--p));
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  gap: 22px;
+  align-items: center;
+  text-align: center;
 }
-/* Jersey 10, a pixel face, so the words sit in the scene (Dave picked it, 15 Oct). */
+.heroStar {
+  display: block;
+  width: calc(16 * var(--p));
+  height: calc(16 * var(--p));
+}
+/* Jersey 10 is drawn on a grid of 75/1400 em, so 18.667 art pixels a size puts one of its pixels on one of the art's. */
 .title {
-  margin: 0;
+  margin: calc(3 * var(--p)) 0 0;
   font-family: var(--font-pixel), var(--font-title);
   font-weight: 400;
-  font-size: clamp(64px, 8.4vw, 120px);
-  line-height: 0.84;
-  letter-spacing: 0.01em;
+  font-size: calc(18.6667 * var(--p));
+  line-height: calc(13 * var(--p));
   color: #f3ead8;
+  text-shadow: var(--p) var(--p) 0 #070a0f;
 }
 .soonBlock {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 6px;
+  align-items: center;
+  gap: calc(3 * var(--p));
+  margin-top: calc(6 * var(--p));
+}
+/* Opening soon in the hero: half the title's grid, and a slow blink like Press Start. */
+.heroWords .soon {
+  font-size: calc(9.3333 * var(--p));
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-shadow: var(--p) var(--p) 0 #070a0f;
+}
+.blink {
+  animation: blink 2.4s steps(1) infinite;
+}
+@keyframes blink {
+  0%, 62% { opacity: 1; }
+  63%, 100% { opacity: 0.25; }
 }
 .soonLine {
   margin: 0;
   font-size: 18px;
   color: #c3cdd6;
+  text-shadow: 0 1px 0 #070a0f;
 }
 .page a.soonLink {
   color: #f3ead8;
@@ -666,8 +723,12 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .aurora {
+  .aurora,
+  .stars,
+  .fireGlow,
+  .blink {
     transition: none;
+    animation: none;
   }
   .rulerBox {
     transition: none;

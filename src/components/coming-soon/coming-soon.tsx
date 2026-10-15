@@ -23,7 +23,7 @@ const HOLD = 16;
 const FIRST = 20;
 /** A level card every 5 ticks (about 1.4 s). The hero's fire steps every tick, its stars swap every 3, its aurora every 24; the story panels step every 2 (WO-87). */
 const CARD_TICKS = 5;
-const STAR_TICKS = 3;
+const STAR_TICKS = 5;
 const AURORA_TICKS = 24;
 const PANEL_TICKS = 2;
 
@@ -104,24 +104,25 @@ export function ComingSoon() {
       <section className={styles.hero}>
         {/* eslint-disable @next/next/no-img-element */}
         <img className={styles.px} src={HERO.sky} alt="" />
-        <img className={styles.px} src={HERO.stars[0]} alt="" style={{ opacity: starsA ? 1 : 0 }} />
-        <img className={styles.px} src={HERO.stars[1]} alt="" style={{ opacity: starsA ? 0 : 1 }} />
+        <img className={`${styles.px} ${styles.stars}`} src={HERO.stars[0]} alt="" style={{ opacity: starsA ? 1 : 0 }} />
+        <img className={`${styles.px} ${styles.stars}`} src={HERO.stars[1]} alt="" style={{ opacity: starsA ? 0 : 1 }} />
         <img className={`${styles.px} ${styles.aurora}`} src={HERO.aurora[0]} alt="" style={{ opacity: auroraA ? 1 : 0 }} />
         <img className={`${styles.px} ${styles.aurora}`} src={HERO.aurora[1]} alt="" style={{ opacity: auroraA ? 0 : 1 }} />
         <img className={styles.px} src={HERO.land} alt="A night in Skyrim drawn in pixels: an aurora over snowy peaks, a pine forest, and Tapps writing in a book by a campfire" />
+        <div className={styles.fireGlow} aria-hidden="true" />
         <img className={styles.px} src={HERO.fg[fg]} alt="" data-fg={fg} />
         {/* eslint-enable @next/next/no-img-element */}
         <div className={styles.heroFade} aria-hidden="true" />
         <div className={styles.heroWords}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className={styles.pix} src="/icons/logo-0.svg" alt="" width={48} height={48} />
+          <img className={`${styles.pix} ${styles.heroStar}`} src="/icons/logo-0.svg" alt="" width={48} height={48} />
           <h1 className={styles.title}>
             LoreRim
             <br />
             Build Planner
           </h1>
           <div className={styles.soonBlock}>
-            <p className={styles.soon}>Opening soon</p>
+            <p className={`${styles.soon} ${styles.blink}`}>Opening soon</p>
             <p className={styles.soonLine}>
               Will be shared in the{" "}
               <a className={styles.soonLink} href={DISCORD}>
