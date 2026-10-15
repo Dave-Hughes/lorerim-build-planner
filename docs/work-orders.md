@@ -3412,6 +3412,35 @@ The old `slot` field stays for now, null for pieces the old slots didn't cover. 
 
 ---
 
+## WO-85  Launch: the coming soon page, second pass (15 Oct 2026)
+
+**Why.** Seen in the browser, WO-84's page felt thin. The archer was buried under the words, the tree opened as a grey outline, and the two screenshots were too small to read. Dave approved a second pass on the canvas: boards `ComingSoon2.dc.html` (desktop, press Play) and `ComingSoon2Phone.dc.html` (390), in the row "Proposal: a coming soon page for the domain". Rebuild `/coming-soon` to match them, words included. The switch, the proxy, `/signin`, the motion rules and the tests from WO-84 stay as they are.
+
+**Already in this commit (chat session):** in `public/coming-soon/`:
+- `hero.webp` and `hero-1200.webp` are now mirrored, so the archer stands on the right;
+- `cover.webp`, `character.webp`, `level.webp` and `gear.webp`: Iriel's build page on staging at 2x (her cover, the character row, the level 20 ruler and card, the gear timeline);
+- `card.webp`: her build link's preview card.
+
+They are static on purpose: production has no sample build yet. Delete `build-page.webp` and `ruler.webp`, which nothing uses now. The trait art is the app's own (`/traits/focused-combat.webp`, `/traits/witcher.webp`).
+
+1. **Hero:** as WO-84, with the mirrored picture and the fade ending past the middle (`.94` at 0, `.78` at 30%, `.15` at 56%, clear from 70%). The fourth line is now `Share it with the community`, with no link. Under the four lines, one row: `Opening soon` in ember at `clamp(28px, 2.8vw, 40px)`, then a `Join the LoreRim Discord` button (ember, dark text, square, the title face uppercase). The button goes to `DISCORD`.
+2. **Four sections, one per hero line.** Each has a left column (the line's icon at 48 px, a heading, one sentence) and a wide right column with the visual. They stack on phones, column first.
+   - **Plan a character:** `Each build gets its own page, led by the author's cover art.` → `cover.webp`.
+   - **Race, deity, traits, perks and gear:** `Names, descriptions and art come straight from LoreRim's own files.` → `character.webp`; then two trait cards side by side, Focused Combat and Witcher, built as the app's trait cards (art behind, dark fade, the game's text with its numbers in the benefit and cost colours, read from `traits.json` rather than typed in); then `gear.webp`.
+   - **Level by level:** `Step through a build one level at a time and see what was picked at each.`, then in muted text `Right: Iriel's Marksman perks, from Tapps's sample build, in the order she takes them.` (`Below:` on phones). The visual is the animated tree from WO-84, now **starting at level 20** so it never opens grey, with the counter and taken list in a panel beside it as tall as the tree, then `level.webp` under both.
+   - **Share it:** `Every build has a link with its own preview card, ready to post where LoreRim players are.` and the Discord button again → `card.webp`, at most 760 wide.
+3. **Why I made this:** as before, with Tapps at 180 px (6x) and the text at 22 px.
+4. **Footer:** the star at 32 px with `LoreRim Build Planner` in the title face, `Made by Tapps. Not affiliated with the LoreRim team.`, and a `LoreRim Discord` link on the right.
+5. Every screenshot sits in the brass corner frame, as on the board.
+
+### Done when
+- [ ] e2e: the hero's Discord button and both other Discord links go to `DISCORD`; with reduced motion the counter reads 50; without it, the counter reads 20 on load.
+- [ ] e2e at 390: no horizontal scroll; each section's heading comes before its visual.
+- [ ] Screenshots at 1440 and 390 of the whole page, compared with the two boards.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
