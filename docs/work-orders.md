@@ -3378,6 +3378,40 @@ The old `slot` field stays for now, null for pieces the old slots didn't cover. 
 
 ---
 
+## WO-84  Launch: a coming soon page for lorerimplanner.com (15 Oct 2026)
+
+**Why.** Dave bought lorerimplanner.com. Until launch, the domain shows a coming soon page and nothing else, so production can be released, migrated and tested by Dave without anyone else using the app. The design is on the canvas, row "Proposal: a coming soon page for the domain": boards `ComingSoon.dc.html` (desktop, press Play to see it move) and `ComingSoonPhone.dc.html` (390). Dave approved it on 15 Oct. Copy it as drawn, words included.
+
+**Already in this commit (chat session):**
+- `public/coming-soon/hero.webp` (2400 wide) and `hero-1200.webp`: Dave's in-game Screenshot782 (the archer on the ledge), from the PC.
+- Ten new Tapps frames in `scripts/icons/pixels.py` (`TAPPS_FRAMES`), generated to `public/icons/tapps-lost-0..2.svg`, `tapps-writing-0..3.svg`, `tapps-cheers-0..2.svg`. 30x30, shown at 150 px (5x), pixelated. The last frame of each set is a blink.
+
+1. **A switch, `FEATURE_COMING_SOON`**, in `src/lib/features.ts`, but **off unless set**: unlike Story and the site guide it has no `next dev` default, so dev, staging and e2e show the app. Dave turns it on for production only, and off at launch.
+2. **With it on, every page route shows the coming soon page,** at its own URL (no redirect), with a 200 status, except:
+   - signed-in admins (`isAdmin`), who see the app as usual;
+   - `/api/auth/*`, `/og` images, icons and static files;
+   - a new `/signin` route: one `Sign in with Discord` button, not linked from anywhere, so Dave can sign in on production. After sign-in it goes to `/`.
+   - `robots`: the coming soon page is indexable; every other page answers with the coming soon page anyway.
+3. **The page,** as the canvas, top to bottom:
+   - **Hero:** the screenshot full width with the slow drift (scale 1.02 to 1.12 over 48 s, alternating), the left and bottom fades, the pixel star (`logo-0`, 48 px), `LoreRim` / `Build Planner` as the h1, the four lines with their 32 px icons (`race-nord`, `destiny`, `tab-levels`, `speech`), `Opening soon` in ember, and `Tapps, in LoreRim 5.0.4.8` bottom right. Height `clamp(640px, 62vw + 300px, 900px)`; use `100svh` instead if it reads better on a phone, but never taller than 900.
+   - **The tree:** `Iriel Thornwhisper, levels 1 to 50`, `Sample build by Tapps`, `Marksman perks, in the order she takes them.` The Marksman tree lights star by star with a level counter and a taken list, as the board does. Draw it with the app's own tree code (`src/components/build/tree.tsx`) in a read-only mode, not a copy, so it can't drift from the real thing. The levels come from a small fixed list in the page (the perk and the level she takes it, as in the board's script), not from the database: the page must work with no sample build in production. Timing: one level every 170 ms, hold at 50 for about 2.7 s, start again.
+   - **Two screens:** the build page and the ruler, in the brass corner frames. Take fresh ones of Iriel on staging with `scripts/shot.mjs` at 2x and commit them under `public/coming-soon/`.
+   - **Why I made this:** the three Tapps panels with Dave's three lines, signed `Tapps`. Frames change on the board's beats (`lost: 0 1 0 1 0 1 2 1`, `writing: 0 1 2 2 3 2 2 2`, `cheers: 0 0 1 0 0 0 2 0`, a beat about half a second).
+   - **Footer:** Tapps (32 px), `Made by Tapps.`, `Not affiliated with the LoreRim team.`, `lorerimplanner.com`.
+   - Both `LoreRim Discord` links go to `https://discord.gg/bungalo` (the footer's `DISCORD` constant).
+4. **Motion:** with `prefers-reduced-motion: reduce`, no drift, the tree shows level 50 finished, and Tapps holds frame 0 of each pose. Pause the timers when the tab is hidden.
+5. **Head:** title `LoreRim Build Planner`, description `A build planner for LoreRim. Plan a character, see what changes at each level and share it.`, and the existing site share card (`/og`).
+6. **No sign-up, no tracking,** nothing stored.
+
+### Done when
+- [ ] Unit test: `FEATURE_COMING_SOON` is off when unset, also under `next dev`.
+- [ ] e2e with the switch on: `/`, `/b/<a build>`, `/new` and `/guide` all show the coming soon page; `/signin` shows the button; an admin session sees the real home page; `/api/auth/providers` still answers. With it off, `/` is the usual home page.
+- [ ] e2e with reduced motion: the counter reads 50 and every one of Iriel's 15 Marksman perks is lit.
+- [ ] Screenshots at 1440 and 390, the tree mid-way (level 23) and the Why section, compared with the canvas boards.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
