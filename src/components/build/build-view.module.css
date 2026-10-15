@@ -763,15 +763,15 @@
   pointer-events: none;
   white-space: nowrap;
 }
-.summaryCut::after {
-  content: "…";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  padding-left: 14px;
+/* What doesn't fit, as a button to the level card (WO-77): a chip is never cut. */
+.sumMore {
+  cursor: pointer;
   color: var(--muted);
-  background: linear-gradient(to right, color-mix(in srgb, var(--ground) 0%, transparent), var(--ground) 40%);
+  border-style: dashed;
+}
+.sumMore:hover {
+  color: var(--bright);
+  border-color: var(--brass);
 }
 .sumChip {
   flex: none;

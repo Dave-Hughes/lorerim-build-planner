@@ -820,11 +820,16 @@ function SkillsAt({ d, plan, s, level }: { d: GameData; plan: BuildViewData["pla
   );
 }
 
+/** The pinned bar summary's folds (see LevelSummary). */
+const FOLDS = 7;
+
 /**
  * The pinned bar's one-line summary of a level, in the card's order: the attribute, the skills raised
  * (points, trainers, books), the perks (each a button that selects it in the Perks section), the
  * stone and the gear when they change, and a note mark. Each chip's tooltip is the card's line. When
- * the chips don't fit, the skills lose their names first, then the gear goes, then the stone; perks stay.
+ * the chips don't fit, the skills lose their names first, then the gear goes, then the stone;
+ * then the perks fold by tree, then into one chip, then the skills into one. Past that, the row ends
+ * with a `+N more` button (WO-77).
  */
 function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; plan: BuildViewData["plan"]; states: LevelState[]; level: number; noted: boolean; onPerk: (id: string) => void }) {
   const f = levelFacts(d, plan, states, level);
@@ -854,11 +859,12 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
     </span>
   );
   const skills = [...gains].sort((a, b) => b[1].n - a[1].n || a[0].localeCompare(b[0]));
-  // How much to fold away: 0 all, 1 skills without their names, 2 also no gear, 3 also no stone. Hidden
-  // copies of the row at each fold are measured against the room there is, on every resize.
+  // How much to fold away: 0 all, 1 skills without their names, 2 also no gear, 3 also no stone, 4 perks
+  // by tree, 5 perks as one chip, 6 skills as one chip (WO-77). Hidden copies of the row at each fold are
+  // measured against the room there is, on every resize.
   const [fold, setFold] = useState(0);
-  // Still cut off with everything folded: the row ends with "…".
-  const [cut, setCut] = useState(false);
+  // Still too wide with everything folded: how many chips fit before the `+N more` button.
+  const [keep, setKeep] = useState<number | null>(null);
   const row = useRef<HTMLSpanElement>(null);
   const measures = useRef<(HTMLSpanElement | null)[]>([]);
   useLayoutEffect(() => {
@@ -868,8 +874,17 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
       const room = el.clientWidth;
       const widths = measures.current.map((m) => m?.scrollWidth ?? 0);
       const f = widths.findIndex((w) => w <= room + 1);
-      setFold(f === -1 ? 3 : f);
-      setCut(f === -1);
+      setFold(f === -1 ? FOLDS - 1 : f);
+      if (f !== -1) return setKeep(null);
+      // The last copy ends with a `+N more` button: keep as many whole chips as fit beside it.
+      const last = measures.current[FOLDS - 1];
+      if (!last) return;
+      const kids = [...last.children] as HTMLElement[];
+      const more = kids.pop()!;
+      const gap = 6;
+      let n = kids.length;
+      while (n > 0 && kids[n - 1].offsetLeft + kids[n - 1].offsetWidth + gap + more.offsetWidth > room) n--;
+      setKeep(n);
     };
     const id = requestAnimationFrame(check);
     const ro = new ResizeObserver(() => requestAnimationFrame(check));
@@ -880,108 +895,153 @@ function LevelSummary({ d, plan, states, level, noted, onPerk }: { d: GameData; 
     };
   }, [level]);
   const perkList = [...f.perks, ...f.destiny.map((p) => ({ ...p, tree: "Destiny", rank: undefined, book: undefined }))];
-  // The chips at a fold. `plain` draws them without tooltips or buttons, for measuring.
-  const chips = (at: number, plain: boolean) => {
-    const chip = (key: string, tip: React.ReactNode, body: React.ReactNode, className = "") =>
-      plain ? (
-        <span key={key} className={`${styles.sumChip} ${className}`}>
-          {body}
-        </span>
-      ) : (
-        <Tooltip key={key} content={tip}>
-          <span className={`${styles.sumChip} ${className}`} tabIndex={0}>
-            {body}
-          </span>
-        </Tooltip>
-      );
-    return (
-      <>
-        {/* The attribute in its own colour, so it never reads as one more skill. */}
-        {f.attribute &&
-          chip(
-            "attr",
-            `+5 ${ATTRIBUTE_NAMES[f.attribute]}`,
-            <IconLabel icon={<AttributeIcon name={f.attribute} />}>
-              +5<span className={styles.sumAttrName}> {ATTRIBUTE_NAMES[f.attribute]}</span>
-            </IconLabel>,
-            `${styles.sumAttr} ${styles[`sumAttr_${f.attribute}`]} ${styles.sumKeep}`,
-          )}
-        {/* Every skill raised, named until there's no room for the names. */}
-        {skills.map(([sk, g]) =>
-          chip(sk, tip(g.lines), <IconLabel icon={<SkillIcon name={sk} />}>{at === 0 ? `${sk} +${g.n}` : `+${g.n}`}</IconLabel>, styles.sumWide),
-        )}
-        {/* Perks: ember, and each a button that selects it in the Perks section. */}
-        {perkList.map((p, i) => {
-          // Destiny's chip is gold, with the diamond (WO-27); perks stay ember.
-          const destiny = p.tree === "Destiny";
-          const body = destiny ? (
-            <span className={styles.sumDestinyBody}>
-              <i className={styles.destinyMark} aria-hidden="true" />
-              {p.name}
-            </span>
-          ) : (
-            <IconLabel icon={<SkillIcon name={p.tree} />}>
-              {p.name}
-              {p.rank ? ` ${p.rank}` : ""}
-            </IconLabel>
-          );
-          const cls = `${styles.sumChip} ${destiny ? styles.sumDestiny : styles.sumPerk} ${styles.sumKeep}`;
-          return plain ? (
-            <span key={`${p.id}-${i}`} className={cls}>
-              {body}
-            </span>
-          ) : (
-            <Tooltip
-              key={`${p.id}-${i}`}
-              content={destiny ? `Destiny: ${p.name}` : `Perk: ${p.name}${p.rank ? ` ${p.rank}` : ""}${p.tree !== p.name ? ` (${p.tree}${p.book ? ", book" : ""})` : ""}`}
-            >
-              <button type="button" className={cls} onClick={() => onPerk(p.id)}>
-                {body}
-              </button>
-            </Tooltip>
-          );
-        })}
-        {at < 3 &&
-          f.stone &&
-          chip(
-            "stone",
-            `${f.stone.name === "none" ? "No stone" : `The ${f.stone.name}`}${f.stone.prev ? ` (in place of The ${f.stone.prev})` : ""}`,
-            f.stone.name === "none" ? "No stone" : <IconLabel icon={<SignIcon name={f.stone.name} />}>The {f.stone.name}</IconLabel>,
-            styles.sumWide,
-          )}
-        {/* One Gear chip at a level with new gear, which goes to Gear at level N (WO-32). */}
-        {at < 2 &&
-          f.gear.length > 0 &&
-          (plain ? (
-            <span key="gear" className={`${styles.sumChip} ${styles.sumWide}`}>
-              <IconLabel icon={<SlotIcon slot="Other" />}>Gear</IconLabel>
-            </span>
-          ) : (
-            <Tooltip key="gear" content={f.gear.map(gearChangeText).join("\n")}>
-              <button type="button" className={`${styles.sumChip} ${styles.sumGear} ${styles.sumWide}`} onClick={() => document.getElementById("gear-at-level")?.scrollIntoView({ block: "start" })}>
-                <IconLabel icon={<SlotIcon slot="Other" />}>Gear</IconLabel>
-              </button>
-            </Tooltip>
-          ))}
-        {noted && chip("note", "The author left a note for this level", <IconLabel icon={<MarkIcon name="note" />}>Note</IconLabel>, styles.sumWide)}
-      </>
-    );
-  };
-  return (
-    <span ref={row} className={`${styles.summary} ${cut ? styles.summaryCut : ""}`} aria-label={`What level ${level} changed`}>
-      {chips(fold, false)}
-      {[0, 1, 2, 3].map((at) => (
-        <span
-          key={at}
-          ref={(el) => {
-            measures.current[at] = el;
-          }}
-          className={styles.sumMeasure}
-          aria-hidden="true"
-        >
-          {chips(at, true)}
+  const perkName = (p: (typeof perkList)[number]) => `${p.name}${p.rank ? ` ${p.rank}` : ""}`;
+  // The perks by tree, in the order they were taken; Destiny keeps its own chips until fold 5.
+  const byTree = new Map<string, typeof perkList>();
+  for (const p of perkList) byTree.set(p.tree, [...(byTree.get(p.tree) ?? []), p]);
+  const treeTip = (trees: [string, typeof perkList][]) => (
+    <span className={styles.gainTip}>
+      {trees.map(([tree, ps]) => (
+        <span key={tree} className={styles.gainTipLine}>
+          <span className={styles.gainTipLabel}>{tree}</span>
+          {ps.map(perkName).join(", ")}
         </span>
       ))}
+    </span>
+  );
+  // The chips at a fold, each with its key. `plain` draws them without tooltips or buttons, for measuring.
+  const chips = (at: number, plain: boolean): React.ReactElement[] => {
+    const chip = (key: string, tip: React.ReactNode, body: React.ReactNode, className = "", onClick?: () => void) => {
+      const cls = `${styles.sumChip} ${className}`;
+      if (plain)
+        return (
+          <span key={key} className={cls}>
+            {body}
+          </span>
+        );
+      return (
+        <Tooltip key={key} content={tip}>
+          {onClick ? (
+            <button type="button" className={cls} onClick={onClick}>
+              {body}
+            </button>
+          ) : (
+            <span className={cls} tabIndex={0}>
+              {body}
+            </span>
+          )}
+        </Tooltip>
+      );
+    };
+    const out: React.ReactElement[] = [];
+    // The attribute in its own colour, so it never reads as one more skill.
+    if (f.attribute)
+      out.push(
+        chip(
+          "attr",
+          `+5 ${ATTRIBUTE_NAMES[f.attribute]}`,
+          <IconLabel icon={<AttributeIcon name={f.attribute} />}>
+            +5<span className={styles.sumAttrName}> {ATTRIBUTE_NAMES[f.attribute]}</span>
+          </IconLabel>,
+          `${styles.sumAttr} ${styles[`sumAttr_${f.attribute}`]} ${styles.sumKeep}`,
+        ),
+      );
+    // Every skill raised, named until there's no room for the names; at fold 6, one chip for them all.
+    if (at >= 6 && skills.length > 1) {
+      const total = skills.reduce((n, [, g]) => n + g.n, 0);
+      const rows = skills.map(([sk, g]) => ({ skill: sk, gain: g.n, from: Math.min(...g.lines.map((l) => l.row.from)), to: Math.max(...g.lines.map((l) => l.row.to)) }));
+      out.push(chip("skills", <SkillGains rows={rows} />, `${skills.length} skills, +${total}`, styles.sumWide));
+    } else
+      for (const [sk, g] of skills)
+        out.push(chip(sk, tip(g.lines), <IconLabel icon={<SkillIcon name={sk} />}>{at === 0 ? `${sk} +${g.n}` : `+${g.n}`}</IconLabel>, styles.sumWide));
+    // Perks: ember, and each a button that selects it in the Perks section.
+    const perkCls = `${styles.sumPerk} ${styles.sumKeep}`;
+    const destinyChip = (p: (typeof perkList)[number], i: number) =>
+      chip(
+        `${p.id}-${i}`,
+        `Destiny: ${p.name}`,
+        // Destiny's chip is gold, with the diamond (WO-27); perks stay ember.
+        <span className={styles.sumDestinyBody}>
+          <i className={styles.destinyMark} aria-hidden="true" />
+          {p.name}
+        </span>,
+        `${styles.sumDestiny} ${styles.sumKeep}`,
+        () => onPerk(p.id),
+      );
+    if (at >= 5 && perkList.length > 1) {
+      out.push(chip("perks", treeTip([...byTree]), `${perkList.length} perks`, perkCls, () => onPerk(perkList[0].id)));
+    } else if (at >= 4) {
+      for (const [tree, ps] of byTree) {
+        if (tree === "Destiny") ps.forEach((p, i) => out.push(destinyChip(p, i)));
+        else
+          out.push(
+            chip(`tree-${tree}`, treeTip([[tree, ps]]), <IconLabel icon={<SkillIcon name={tree} />}>{`${tree} ×${ps.length}`}</IconLabel>, perkCls, () => onPerk(ps[0].id)),
+          );
+      }
+    } else
+      perkList.forEach((p, i) =>
+        out.push(
+          p.tree === "Destiny"
+            ? destinyChip(p, i)
+            : chip(
+                `${p.id}-${i}`,
+                `Perk: ${perkName(p)}${p.tree !== p.name ? ` (${p.tree}${p.book ? ", book" : ""})` : ""}`,
+                <IconLabel icon={<SkillIcon name={p.tree} />}>{perkName(p)}</IconLabel>,
+                perkCls,
+                () => onPerk(p.id),
+              ),
+        ),
+      );
+    if (at < 3 && f.stone)
+      out.push(
+        chip(
+          "stone",
+          `${f.stone.name === "none" ? "No stone" : `The ${f.stone.name}`}${f.stone.prev ? ` (in place of The ${f.stone.prev})` : ""}`,
+          f.stone.name === "none" ? "No stone" : <IconLabel icon={<SignIcon name={f.stone.name} />}>The {f.stone.name}</IconLabel>,
+          styles.sumWide,
+        ),
+      );
+    // One Gear chip at a level with new gear, which goes to Gear at level N (WO-32).
+    if (at < 2 && f.gear.length > 0)
+      out.push(
+        chip("gear", f.gear.map(gearChangeText).join("\n"), <IconLabel icon={<SlotIcon slot="Other" />}>Gear</IconLabel>, `${styles.sumGear} ${styles.sumWide}`, () =>
+          document.getElementById("gear-at-level")?.scrollIntoView({ block: "start" }),
+        ),
+      );
+    if (noted) out.push(chip("note", "The author left a note for this level", <IconLabel icon={<MarkIcon name="note" />}>Note</IconLabel>, styles.sumWide));
+    return out;
+  };
+  const shown = chips(fold, false);
+  // A chip is never cut: what doesn't fit is behind `+N more`, which goes to the level card (WO-77).
+  const moreButton = (n: number, plain: boolean) =>
+    plain ? (
+      <span key="more" className={`${styles.sumChip} ${styles.sumMore}`}>
+        +{n} more
+      </span>
+    ) : (
+      <button key="more" type="button" className={`${styles.sumChip} ${styles.sumMore}`} onClick={() => document.getElementById("level-card")?.scrollIntoView({ block: "start" })}>
+        +{n} more
+      </button>
+    );
+  return (
+    <span ref={row} className={styles.summary} aria-label={`What level ${level} changed`}>
+      {keep === null ? shown : [...shown.slice(0, keep), moreButton(shown.length - keep, false)]}
+      {Array.from({ length: FOLDS }, (_, at) => {
+        const copy = chips(at, true);
+        return (
+          <span
+            key={at}
+            ref={(el) => {
+              measures.current[at] = el;
+            }}
+            className={styles.sumMeasure}
+            aria-hidden="true"
+          >
+            {copy}
+            {at === FOLDS - 1 && moreButton(copy.length, true)}
+          </span>
+        );
+      })}
     </span>
   );
 }

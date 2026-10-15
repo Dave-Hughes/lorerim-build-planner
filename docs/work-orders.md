@@ -3190,10 +3190,10 @@ Use the game's words for perk and spell names. The ember accent marks picks left
 3. **Single levels don't change** unless they overflow too; the same folds apply to any level.
 
 ### Done when
-- [ ] e2e on Sevari at 1440 and 1280, at levels 51 to 75 and 76 to 100: the pinned bar is one line, every chip fully inside it, nothing ending in `…`.
-- [ ] e2e: the `+N more` button, when shown, scrolls to the level card.
-- [ ] Screenshots of the pinned bar at 1440 and 1280 for a single level and both stretches.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e on Sevari at 1440 and 1280, at levels 51 to 75 and 76 to 100: the pinned bar is one line, every chip fully inside it, nothing ending in `…`.
+- [x] e2e: the `+N more` button, when shown, scrolls to the level card.
+- [x] Screenshots of the pinned bar at 1440 and 1280 for a single level and both stretches.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 
