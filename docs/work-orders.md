@@ -3178,6 +3178,25 @@ Use the game's words for perk and spell names. The ember accent marks picks left
 
 ---
 
+## WO-77  Launch: the pinned bar on a stretch (14 Oct 2026)
+
+**Why.** On a stretch, the pinned bar's summary has too much to show. At levels 51 to 75 on Sevari it holds eight skill gains, then Shadowrunner, then a chip cut off mid-name (`Mast…`), and the rest is lost. The folds from earlier orders (skill names, gear, stone) were made for single levels, where there are only a few perks.
+
+1. **More folds, after the ones there are:**
+   - **Perks by tree:** one chip per tree, with the tree's icon and a count (`Restoration ×5`). The tooltip lists the perks, and a click selects the first in the Perks section. Destiny keeps its own gold chip.
+   - **Perks as one chip:** `9 perks`, with a tooltip that lists them by tree.
+   - **Skills as one chip:** `8 skills, +210`, with a tooltip that lists each gain.
+2. **Never cut a chip.** If the row still doesn't fit, it ends with a `+N more` button where the `…` was. The button scrolls to the level card, which shows everything.
+3. **Single levels don't change** unless they overflow too; the same folds apply to any level.
+
+### Done when
+- [ ] e2e on Sevari at 1440 and 1280, at levels 51 to 75 and 76 to 100: the pinned bar is one line, every chip fully inside it, nothing ending in `…`.
+- [ ] e2e: the `+N more` button, when shown, scrolls to the level card.
+- [ ] Screenshots of the pinned bar at 1440 and 1280 for a single level and both stretches.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
