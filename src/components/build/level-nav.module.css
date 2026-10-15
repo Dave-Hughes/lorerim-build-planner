@@ -406,6 +406,18 @@
 .cellOn .cellNotes {
   border-color: var(--on-ember);
 }
+/* Free spell picks left (WO-76, the editor's only): a hollow ember ring until they're chosen. */
+.cellSpellsTodo {
+  width: 8px;
+  height: 8px;
+  margin-left: 2px;
+  border: 1.5px solid var(--ember);
+  border-radius: 50%;
+  background: transparent;
+}
+.cellOn .cellSpellsTodo {
+  border-color: var(--on-ember);
+}
 .cellFuture .cellNotes {
   border-color: var(--line-bright);
 }

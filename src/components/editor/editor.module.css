@@ -540,6 +540,16 @@
 .takenLine svg {
   color: var(--ember);
 }
+/* In a phone's sheet (WO-76): in the flow, the width of the sheet, wrapping. */
+.sheetTaken {
+  margin: 0 16px 10px;
+}
+.sheetTaken .takenLine {
+  position: static;
+  transform: none;
+  flex-wrap: wrap;
+  white-space: normal;
+}
 /* Eight square sparks in the brass highlight, out about 30px and gone in 700ms. No glow. */
 .burst {
   position: absolute;
@@ -1194,4 +1204,31 @@
 .poolDetail .hint {
   text-decoration: underline dotted;
   text-underline-offset: 3px;
+}
+
+/* Free spell picks (WO-76): the level's count, a button to its pickers; the taken line's "Choose 2
+   spells"; the edit bar's list. Ember, as "0 of 2 chosen" is. */
+.poolTodo .poolLabel,
+.poolTodo .poolNum {
+  color: var(--ember);
+}
+.todoButton {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline dotted var(--ember);
+  text-underline-offset: 4px;
+}
+.chooseSpells {
+  border-color: var(--ember);
+  color: var(--ember);
+}
+.todoBar .linkButton {
+  color: var(--ember);
 }

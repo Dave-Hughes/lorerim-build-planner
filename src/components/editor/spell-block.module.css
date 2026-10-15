@@ -6,6 +6,11 @@
   flex-direction: column;
   gap: 16px;
 }
+/* A level's pickers together, under one heading (WO-76). */
+.picksHead {
+  margin: 0;
+  color: var(--ember);
+}
 .pickCard {
   display: flex;
   flex-direction: column;

@@ -29,6 +29,7 @@ import * as ops from "./plan-ops";
 import { MAX_LEVELS } from "@/lib/builds/validate";
 import { ruledOut } from "@/lib/rules/ruled-out";
 import { levelUps, skips, stretchAt, stretches } from "@/lib/rules/stretches";
+import { picksAt, spellsToChoose } from "@/lib/rules/spells";
 import { Tour } from "@/components/tour/tour";
 import { AUTHOR_TOUR } from "@/lib/tour";
 import { useAutosave } from "./use-autosave";
@@ -114,6 +115,27 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
     },
     [total, holdLevelBar, plan, level],
   );
+
+  // A tier perk's picker (WO-76): scrolled to, below the edit bar, with focus in its search. On
+  // another level, once that level is open. Without a perk, the first picker with picks left.
+  const pickFocus = useRef<{ perk: string | null } | null>(null);
+  const [pickTick, setPickTick] = useState(0);
+  const goToPicks = (perk: string | null, at = level) => {
+    if (at !== level) setLevel(at);
+    setSheetTree(null);
+    pickFocus.current = { perk };
+    setPickTick((n) => n + 1);
+  };
+  useEffect(() => {
+    const want = pickFocus.current;
+    pickFocus.current = null;
+    if (!want) return;
+    const box = want.perk ? document.querySelector<HTMLElement>(`[data-picks="${CSS.escape(want.perk)}"]`) : document.querySelector<HTMLElement>("[data-picks]");
+    if (!box) return;
+    const bar = document.querySelector<HTMLElement>("[data-edit-bar]")?.offsetHeight ?? 0;
+    window.scrollTo({ top: box.getBoundingClientRect().top + window.scrollY - bar - 16 });
+    box.querySelector<HTMLElement>('input[type="search"]')?.focus({ preventScroll: true });
+  }, [pickTick, level]);
 
   const s = states[level - 1];
   const lv = plan.levels[level - 1];
@@ -284,6 +306,12 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
     return out;
   })();
   const perkLeft = s.perkPoints - s.perkPointsSpent;
+  // Free spell picks still to choose (WO-76): this level's tier perks, and the whole build's.
+  const levelPicks = picksAt(d, plan, level);
+  const toChooseHere = levelPicks.reduce((n, p) => n + p.left, 0);
+  const toChoose = useMemo(() => spellsToChoose(d, plan), [d, plan]);
+  const spellsWord = (n: number) => `${n} spell${n === 1 ? "" : "s"}`;
+  const todoByLevel = useMemo(() => new Map(toChoose.levels.map((x) => [x.level, x.left])), [toChoose]);
   const destinyLeft = s.destinyPoints - s.destinyPointsSpent;
   // Trainer sessions: what is left of this level-up's own (unused ones carry over, but a running
   // total of 97 at level 20 reads as noise). Never more than the build has left overall.
@@ -369,6 +397,33 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
   };
 
 
+  // A perk just taken (WO-59), with Undo; and a tier perk's free spells (WO-76). In the tree's frame,
+  // and on a phone in the sheet.
+  const takenLine = taken && taken.after === plan && (
+    <div role="status" className={styles.takenLine}>
+      <TakenMark />
+      <span>
+        <b>{d.perkById.get(taken.id)?.name ?? "Perk"}</b> taken. {perkLeft} perk point{perkLeft === 1 ? "" : "s"} left.
+      </span>
+      {/* A tier perk's free spells, said when it's taken (WO-76). */}
+      {(levelPicks.find((p) => p.perk === taken.id)?.left ?? 0) > 0 && (
+        <button type="button" className={`btn btn-sm ${styles.chooseSpells}`} onClick={() => goToPicks(taken.id)}>
+          Choose {spellsWord(levelPicks.find((p) => p.perk === taken.id)!.left)}
+        </button>
+      )}
+      <button
+        type="button"
+        className="btn btn-sm btn-quiet"
+        onClick={() => {
+          setPlan(taken.before);
+          setTaken(null);
+        }}
+      >
+        Undo
+      </button>
+    </div>
+  );
+
   const saveLabel = status === "saved" ? "Saved" : status === "saving" ? "Saving…" : status === "unsaved" ? "Unsaved" : "Couldn't save";
 
   return (
@@ -378,6 +433,23 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
         name={name}
         current="levels"
         visibility={visibility}
+        todo={
+          toChoose.total > 0 && (
+            // The whole build's free spell picks left (WO-76), each level a way there.
+            <span className={styles.todoBar}>
+              {spellsWord(toChoose.total)} to choose:{" "}
+              {toChoose.levels.length > 1 ? "levels" : "level"}{" "}
+              {toChoose.levels.map((x, i) => (
+                <span key={x.level}>
+                  {i > 0 && ", "}
+                  <button type="button" className={styles.linkButton} onClick={() => goToPicks(null, x.level)}>
+                    {x.level}
+                  </button>
+                </span>
+              ))}
+            </span>
+          )
+        }
         status={
           <span className={status === "failed" ? "bad" : undefined}>
             {saveLabel}
@@ -453,11 +525,23 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
               destiny
             />
             <Pool label="Trainer sessions" value={trainerLeft} of={isStretch ? "left in these levels" : "left this level"} />
+            {/* Free spell picks left here (WO-76): a to-do, not a problem. Goes to the first picker with picks left. */}
+            {toChooseHere > 0 && (
+              <div className={`${styles.pool} ${styles.poolTodo}`}>
+                <dt className={`label ${styles.poolLabel}`}>Spells</dt>
+                <dd className={styles.poolVal}>
+                  <button type="button" className={styles.todoButton} aria-label={`${spellsWord(toChooseHere)} to choose`} onClick={() => goToPicks(null)}>
+                    <span className={`big-num ${styles.poolNum}`}>{toChooseHere}</span>
+                    <span className={styles.hint}>to choose</span>
+                  </button>
+                </dd>
+              </div>
+            )}
           </dl>
           {/* The same ruler and row as the build page; a build that skips ahead has a cell per stretch (WO-69). */}
           {total > 1 && (
             <div className={styles.levelRow}>
-              <LevelBars marks={marks} level={level} onChange={(n) => setLevel(n)} spans={skipping ? allStretches : undefined} />
+              <LevelBars marks={marks} level={level} onChange={(n) => setLevel(n)} spans={skipping ? allStretches : undefined} spellsToChoose={todoByLevel} />
             </div>
           )}
           {problems.length > 0 && (
@@ -719,24 +803,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                   {panel(selected, closeCard)}
                 </PerkCard>
               )}
-              {taken && taken.after === plan && (
-                <div role="status" className={styles.takenLine}>
-                  <TakenMark />
-                  <span>
-                    <b>{d.perkById.get(taken.id)?.name ?? "Perk"}</b> taken. {perkLeft} perk point{perkLeft === 1 ? "" : "s"} left.
-                  </span>
-                  <button
-                    type="button"
-                    className="btn btn-sm btn-quiet"
-                    onClick={() => {
-                      setPlan(taken.before);
-                      setTaken(null);
-                    }}
-                  >
-                    Undo
-                  </button>
-                </div>
-              )}
+              {takenLine}
               {burst && (
                 <span key={burst.key} className={styles.burst} style={{ left: burst.x, top: burst.y }} aria-hidden="true">
                   {SPARKS.map(([dx, dy], i) => (
@@ -763,6 +830,7 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
             <div className={styles.sheetHead}>
               <TreeHeading tree={sheetTree} value={sheetTree === "Destiny" ? `${destinyLeft} left` : `${s.skills[sheetTree] ?? ""}`} />
             </div>
+            {takenLine && <div className={styles.sheetTaken}>{takenLine}</div>}
             <ViewToggle view={treeView} onView={setTreeView} className={styles.sheetToggle} />
             {selected && <div className={styles.sheetPerk}>{panel(selected, () => setSelected(null))}</div>}
             <Tree tree={sheetTree} states={states} level={level} selectedId={selected} onSelect={pickPerk} view={treeView} onView={setTreeView} noToggle sheetBelow={0} ruled={ruled} openLabel={isStretch ? `Can take by level ${level}` : undefined} listBy="state" height={Math.max(300, Math.round(windowHeight * 0.85 - 250))} />

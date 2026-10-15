@@ -74,6 +74,8 @@ export const PURE_MAGE_BUILD_ID = "e2epuremag";
 export const SEVARI_BUILD_ID = "e2esevar22";
 /** WO-72: a Breton poisoner at level 1 (Alchemy 30), two of its three perk points spent: one left. */
 export const ONE_POINT_BUILD_ID = "e2ew72pq2s";
+/** WO-76: a Breton healer, Novice Restoration at level 1 and level 2 empty: Apprentice Restoration can be taken there. */
+export const HEALER_BUILD_ID = "e2ew76rest";
 export const OTHER_USER_ID = "e2e-user-0002";
 export const OTHER_BUILD_ID = "e2eqq2e2e2";
 /** Made for the test-only older version (src/lib/rules/__fixtures__/test-version.ts). */
@@ -219,6 +221,27 @@ export async function seed() {
         visibility: "unlisted",
         gameVersion: "5.0.4.8",
         plan: pureMage.plan as unknown as BuildPlan,
+      },
+      {
+        id: HEALER_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        // Made 2 days ago, out of the author's daily build limit (WO-40).
+        createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
+        name: "Breton Healer",
+        description: "Two levels, for spell picks.",
+        visibility: "private",
+        gameVersion: "5.0.4.8",
+        plan: {
+          ...freshPlan(),
+          race: "Breton",
+          birthsign: "Mage",
+          mode: "Konahrik" as const,
+          majors: ["Restoration", "Alteration", "Illusion"],
+          minors: ["Destruction", "Conjuration", "Enchanting", "Alchemy", "Speech", "Evasion"],
+          traits: [],
+          traitChoices: {},
+          levels: [{ ...emptyLevel(), perks: ["Restoration:Novice Restoration"] }, { ...emptyLevel(), attribute: "magicka" as const }],
+        } as BuildPlan,
       },
       {
         id: ONE_POINT_BUILD_ID,

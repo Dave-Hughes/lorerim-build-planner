@@ -3170,11 +3170,11 @@ That is the one launch blocker: a long build is exactly what the best authors wi
 Use the game's words for perk and spell names. The ember accent marks picks left, as `0 of 2 chosen` already does.
 
 ### Done when
-- [ ] e2e: take Apprentice Restoration on a level. The taken line's `Choose 2 spells` focuses that picker's search, and the level bar says `2 spells to choose`.
-- [ ] e2e: a stretch with two tier perks shows both pickers under `Spells to choose`, and the edit bar's count and links match. Choosing every spell clears all three.
-- [ ] Unit test: the count of spells to choose per level and per build, including a Master tier perk (1 pick).
-- [ ] Screenshots at 1512×806 and 390 of points 1 to 3.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: take Apprentice Restoration on a level. The taken line's `Choose 2 spells` focuses that picker's search, and the level bar says `2 spells to choose`.
+- [x] e2e: a stretch with two tier perks shows both pickers under `Spells to choose`, and the edit bar's count and links match. Choosing every spell clears all three.
+- [x] Unit test: the count of spells to choose per level and per build, including a Master tier perk (1 pick).
+- [x] Screenshots at 1512×806 and 390 of points 1 to 3.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

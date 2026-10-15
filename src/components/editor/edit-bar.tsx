@@ -146,6 +146,7 @@ export function EditBar({
   status,
   visibility: initial,
   onVisibility,
+  todo,
 }: {
   buildId: string;
   name: string;
@@ -155,6 +156,8 @@ export function EditBar({
   visibility: BuildVisibility;
   /** Told when the visibility changes here (Set up keeps its own copy). */
   onVisibility?: (v: BuildVisibility) => void;
+  /** The author's to-do across the build (WO-76: spells to choose), before the save status. */
+  todo?: React.ReactNode;
 }) {
   const [visibility, setVisibility] = useState(initial);
   const [saving, setSaving] = useState(false);
@@ -209,6 +212,7 @@ export function EditBar({
           ))}
         </nav>
         <span className={styles.right}>
+          {todo && <span className={styles.todo}>{todo}</span>}
           {(status || saving || error) && (
             <span className={styles.status} role="status">
               {error ? <span className="bad">{error}</span> : saving ? "Saving…" : status}

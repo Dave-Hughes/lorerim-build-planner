@@ -288,7 +288,19 @@ function shownStops(stops: LevelStop[], level: number) {
   return { shown: stops.slice(first, first + size), size };
 }
 
-export function LevelRow({ marks, level, onChange, spans }: { marks: LevelMark[]; level: number; onChange: (level: number) => void; spans?: Stretch[] }) {
+export function LevelRow({
+  marks,
+  level,
+  onChange,
+  spans,
+  spellsToChoose,
+}: {
+  marks: LevelMark[];
+  level: number;
+  onChange: (level: number) => void;
+  spans?: Stretch[];
+  spellsToChoose?: Map<number, number>;
+}) {
   const { shown, size } = shownStops(levelStops(marks, spans), level);
   // On phones the row scrolls sideways: keep the current level in view (moving the row, never
   // the page) and fade the edge that has more.
@@ -323,7 +335,7 @@ export function LevelRow({ marks, level, onChange, spans }: { marks: LevelMark[]
               key={m.level}
               type="button"
               className={cls}
-              aria-label={levelCellLabel(m, m.from)}
+              aria-label={levelCellLabel(m, m.from, spellsToChoose?.get(m.level))}
               data-stop={name}
               aria-current={on ? "true" : undefined}
               onClick={() => onChange(m.level)}
@@ -338,6 +350,8 @@ export function LevelRow({ marks, level, onChange, spans }: { marks: LevelMark[]
                 {m.deity && <i className={styles.cellDeity} />}
                 {m.notes && <i className={styles.cellNotes} />}
                 {m.gear && <GearMark className={styles.cellGear} />}
+                {/* Free spell picks left (WO-76): the spells mark, hollow until they're chosen. */}
+                {!!spellsToChoose?.get(m.level) && <i className={styles.cellSpellsTodo} />}
               </span>
               {m.problems > 0 && <i className={styles.cellProblem} />}
             </button>
@@ -406,7 +420,20 @@ export function useHoldInPlace<T extends HTMLElement>(level: number, sections: r
  * stretches: each is one cell in the row and one box on the ruler, and the ruler's window covers
  * the levels the row's cells span.
  */
-export function LevelBars({ marks, level, onChange, spans }: { marks: LevelMark[]; level: number; onChange: (level: number) => void; spans?: Stretch[] }) {
+export function LevelBars({
+  marks,
+  level,
+  onChange,
+  spans,
+  spellsToChoose,
+}: {
+  marks: LevelMark[];
+  level: number;
+  onChange: (level: number) => void;
+  spans?: Stretch[];
+  /** The editor's free spell picks left, by level (WO-76): a hollow mark and words in the cell. */
+  spellsToChoose?: Map<number, number>;
+}) {
   const { shown } = shownStops(levelStops(marks, spans), level);
   const win = spans && shown.length ? { from: shown[0].from, to: shown[shown.length - 1].level } : undefined;
   const box = useRef<HTMLDivElement>(null);
@@ -462,7 +489,7 @@ export function LevelBars({ marks, level, onChange, spans }: { marks: LevelMark[
           <line ref={right} />
         </svg>
       )}
-      <LevelRow marks={marks} level={level} onChange={onChange} spans={spans} />
+      <LevelRow marks={marks} level={level} onChange={onChange} spans={spans} spellsToChoose={spellsToChoose} />
     </div>
   );
 }

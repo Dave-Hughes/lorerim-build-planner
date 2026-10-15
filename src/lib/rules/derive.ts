@@ -504,9 +504,9 @@ export function deitiesFollowed(plan: BuildPlan): string[] {
 
 /**
  * A level row cell's name (WO-73): its levels, then what its marks show, then its problems.
- * "Levels 21 to 30, 10 perks, 2 Destiny, 2 spells, notes".
+ * "Levels 21 to 30, 10 perks, 2 Destiny, 2 spells, notes", and the editor's "3 spells to choose" (WO-76).
  */
-export function levelCellLabel(m: LevelMark, from: number): string {
+export function levelCellLabel(m: LevelMark, from: number, spellsToChoose = 0): string {
   const plural = (n: number, one: string) => `${n} ${one}${n === 1 ? "" : "s"}`;
   const parts = [
     from < m.level ? `Levels ${from} to ${m.level}` : `Level ${m.level}`,
@@ -517,6 +517,7 @@ export function levelCellLabel(m: LevelMark, from: number): string {
     m.deity ? "deity" : "",
     m.notes ? "notes" : "",
     m.gear ? "new gear" : "",
+    spellsToChoose ? `${plural(spellsToChoose, "spell")} to choose` : "",
     m.problems ? plural(m.problems, "problem") : "",
   ];
   return parts.filter(Boolean).join(", ");

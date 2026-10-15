@@ -6,7 +6,7 @@ import { keepInView } from "@/lib/keep-in-view";
 import { SkillIcon } from "@/components/ui/skill-icon";
 import { Tooltip } from "@/components/ui/tooltip";
 import type { Spell } from "@/lib/rules/data";
-import { MAX_MAIN_SPELLS, spellsAt, spellsLearned, startingSpells, tierPicksAt } from "@/lib/rules/spells";
+import { MAX_MAIN_SPELLS, picksAt, spellsAt, spellsLearned, startingSpells, tierPicksAt } from "@/lib/rules/spells";
 import type { BuildPlan } from "@/lib/rules/types";
 import * as ops from "./plan-ops";
 import styles from "./spell-block.module.css";
@@ -36,12 +36,18 @@ export function SpellPicks({ plan, level, setPlan }: { plan: BuildPlan; level: n
   const d = useGameData();
   const tiers = tierPicksAt(d, plan, level);
   if (!tiers.length) return null;
-  return (
-    <div className={styles.picks}>
-      {tiers.map((t) => (
-        <PickList key={t.perk} plan={plan} level={level} setPlan={setPlan} perk={t.perk} count={t.count} pool={t.pool} />
-      ))}
-    </div>
+  // Pickers with picks left first (WO-76).
+  const order = picksAt(d, plan, level).map((p) => p.perk);
+  const sorted = [...tiers].sort((a, b) => order.indexOf(a.perk) - order.indexOf(b.perk));
+  const lists = sorted.map((t) => <PickList key={t.perk} plan={plan} level={level} setPlan={setPlan} perk={t.perk} count={t.count} pool={t.pool} />);
+  // Two or more tier perks at a level: one place for their picks, under one heading (WO-76).
+  return tiers.length > 1 ? (
+    <section aria-label="Spells to choose" className={styles.picks}>
+      <h3 className={`label ${styles.picksHead}`}>Spells to choose</h3>
+      {lists}
+    </section>
+  ) : (
+    <div className={styles.picks}>{lists}</div>
   );
 }
 
@@ -64,7 +70,7 @@ function PickList({ plan, level, setPlan, perk, count, pool }: { plan: BuildPlan
   const [opened, setOpened] = useState(false);
   const folded = full && !opened;
   return (
-    <section aria-label={`${name} spells`} className={`frame ${styles.pickCard}`}>
+    <section aria-label={`${name} spells`} className={`frame ${styles.pickCard}`} data-picks={perk}>
       <div className={styles.pickHead}>
         <SkillIcon name={p?.tree ?? ""} />
         <span className={styles.pickPerk}>{name}</span>

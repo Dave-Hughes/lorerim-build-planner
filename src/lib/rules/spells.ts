@@ -63,6 +63,39 @@ export function spellsLearned(d: GameData, plan: BuildPlan, upTo = plan.levels.l
   return out;
 }
 
+/** A tier perk's free picks at its level (WO-76): how many it gives, how many are chosen, how many are left. */
+export interface PicksAt {
+  perk: string;
+  count: number;
+  chosen: number;
+  /** Picks still to choose: never more than the pool has left to give (spells the build learns anyway don't count). */
+  left: number;
+}
+
+/** A level's tier perks and their picks (WO-76), those with picks left first. */
+export function picksAt(d: GameData, plan: BuildPlan, level: number, learned = new Set(spellsLearned(d, plan).map((s) => s.id))): PicksAt[] {
+  const rows = spellsAt(d, plan, level);
+  return tierPicksAt(d, plan, level)
+    .map((t) => {
+      const chosen = rows.filter((r) => r.freeFrom === t.perk).length;
+      const open = t.pool.filter((id) => d.spellById.has(id) && !learned.has(id)).length;
+      return { perk: t.perk, count: t.count, chosen, left: Math.max(0, Math.min(t.count - chosen, open)) };
+    })
+    .sort((a, b) => Number(b.left > 0) - Number(a.left > 0));
+}
+
+/** The spells a level still has to choose (WO-76). */
+export function spellsToChooseAt(d: GameData, plan: BuildPlan, level: number, learned?: Set<string>): number {
+  return picksAt(d, plan, level, learned).reduce((n, p) => n + p.left, 0);
+}
+
+/** Across the build (WO-76): each level with spells to choose, and the total. */
+export function spellsToChoose(d: GameData, plan: BuildPlan): { total: number; levels: { level: number; left: number }[] } {
+  const learned = new Set(spellsLearned(d, plan).map((s) => s.id));
+  const levels = plan.levels.map((_, i) => ({ level: i + 1, left: spellsToChooseAt(d, plan, i + 1, learned) })).filter((x) => x.left > 0);
+  return { total: levels.reduce((n, x) => n + x.left, 0), levels };
+}
+
 /** The main spells that the build actually learns, in the author's order, at most 8. */
 export function keptMainSpells(plan: BuildPlan): string[] {
   const learned = new Set(plan.levels.flatMap((l) => (l.spells ?? []).map((s) => s.id)));

@@ -71,6 +71,12 @@
   color: var(--muted);
   white-space: nowrap;
 }
+/* The build's to-do (WO-76), in ember like "0 of 2 chosen". */
+.todo {
+  font-size: 14px;
+  color: var(--ember);
+  white-space: nowrap;
+}
 
 /* Who can see it: a select-style button with its icon. */
 .menuWrap {
