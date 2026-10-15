@@ -1412,6 +1412,10 @@
 .newGearWhat .muted {
   font-size: 14px;
 }
+/* ", replaces Imperial Cloak": right after the piece, past the row's gap (WO-82). */
+.newGearReplaces {
+  margin-left: -10px;
+}
 .newGearNote {
   flex-basis: 100%;
   font-size: 14px;

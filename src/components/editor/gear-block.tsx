@@ -8,19 +8,20 @@ import { enchantLines, enchantTarget, fitsTarget, searchEnchantments } from "@/l
 import { START_LIST_MAX } from "@/lib/rules/spells";
 import type { Enchantment } from "@/lib/rules/data";
 import { IconLabel, SlotIcon } from "@/components/ui/skill-icon";
-import { GEAR_SLOTS, gearAt, gearChangeText, gearChanges, madeStaffName, type GearSlot, type HeldGear } from "@/lib/rules/gear";
+import { GEAR_TYPES, gearAt, gearChangeText, gearChanges, madeStaffName, type GearType, type HeldGear } from "@/lib/rules/gear";
 import type { BuildPlan, LevelState, MadeGear } from "@/lib/rules/types";
 import { Tooltip } from "@/components/ui/tooltip";
 import * as ops from "./plan-ops";
 import styles from "./editor.module.css";
 
-/** Which entry is being changed: a slot, or one `Other` item by its name; "add" for Add gear. */
-type Editing = { slot: GearSlot; item?: string } | "add" | null;
+/** Which piece is being changed, by its type and name; "add" for Add gear. */
+type Editing = { type: GearType; item: string } | "add" | null;
 
 /**
- * The level's gear: what each slot holds here, carried items muted ("Steel spear, since level 4"),
- * changes made at this level in ember with Undo. Gear is optional: a build without any shows only
- * Add gear, and nothing here ever raises a problem.
+ * The level's gear, by type (WO-82): what's worn here, carried pieces muted ("Steel spear, since
+ * level 4"), changes made at this level in ember with Undo. A type holds any number of pieces and
+ * nothing is checked against what the game allows together. Gear is optional: a build without any
+ * shows only Add gear, and nothing here ever raises a problem.
  */
 export function GearBlock({ plan, level, state, setPlan }: { plan: BuildPlan; level: number; state: LevelState; setPlan: (p: BuildPlan) => void }) {
   // The enchantment lines the build's perks allow by this level (WO-72).
@@ -28,9 +29,8 @@ export function GearBlock({ plan, level, state, setPlan }: { plan: BuildPlan; le
   const [editing, setEditing] = useState<Editing>(null);
   const held = gearAt(plan, level);
   const emptied = gearChanges(plan, level).filter((g) => !g.name.trim());
-  const free = GEAR_SLOTS.filter((s) => s === "Other" || !held.some((h) => h.slot === s));
-  const what = (slot: string, item?: string) => (slot === "Other" ? `${item} (Other)` : slot);
-  const isEditing = (h: HeldGear) => editing !== null && editing !== "add" && editing.slot === h.slot && (h.slot !== "Other" || editing.item === h.name);
+  const what = (h: { slot: string; name: string }) => `${h.name} (${h.slot})`;
+  const isEditing = (h: HeldGear) => editing !== null && editing !== "add" && editing.type === h.slot && editing.item === h.name;
   const done = (p: BuildPlan) => {
     setPlan(p);
     setEditing(null);
@@ -46,19 +46,18 @@ export function GearBlock({ plan, level, state, setPlan }: { plan: BuildPlan; le
         <ul className={styles.gearList}>
           {held.map((h) => {
             const here = h.since === level;
-            const item = h.slot === "Other" ? h.name : undefined;
             if (isEditing(h))
               return (
                 <li key={`${h.slot}-${h.name}`}>
                   <GearForm
                     lines={lines}
-                    slot={h.slot}
+                    type={h.slot}
                     // A note belongs to the row it was written on: a change at a later level starts a new row, with no note (WO-72).
                     initial={{ name: h.name, note: here ? h.note : "", itemId: h.itemId, made: h.made }}
                     submit="Save"
-                    // Saving a carried item unchanged (same item, no note of its own) changes nothing.
+                    // Saving a carried piece unchanged (same item, no note of its own) changes nothing.
                     onSubmit={(set) =>
-                      !here && set.name.trim() === h.name && !set.note.trim() ? setEditing(null) : done(ops.setGearAt(plan, level, h.slot, set, item))
+                      !here && set.name.trim() === h.name && !set.note.trim() ? setEditing(null) : done(ops.setGearAt(plan, level, h.slot, set, h.name))
                     }
                     onCancel={() => setEditing(null)}
                   />
@@ -74,14 +73,14 @@ export function GearBlock({ plan, level, state, setPlan }: { plan: BuildPlan; le
                   {h.note && <span className={styles.gearNote}>{h.note}</span>}
                 </span>
                 <span className={styles.gearActions}>
-                  <button type="button" className="btn btn-sm" aria-label={`Change ${what(h.slot, item)}`} onClick={() => setEditing({ slot: h.slot, item })}>
+                  <button type="button" className="btn btn-sm" aria-label={`Change ${what(h)}`} onClick={() => setEditing({ type: h.slot, item: h.name })}>
                     Change
                   </button>
-                  <button type="button" className="btn btn-sm btn-quiet" aria-label={`Empty ${what(h.slot, item)} from here`} onClick={() => done(ops.emptyGearAt(plan, level, h.slot, item))}>
+                  <button type="button" className="btn btn-sm btn-quiet" aria-label={`Empty ${what(h)} from here`} onClick={() => done(ops.emptyGearAt(plan, level, h.slot, h.name))}>
                     Empty from here
                   </button>
                   {here && (
-                    <button type="button" className="btn btn-sm btn-quiet" aria-label={`Undo ${what(h.slot, item)}`} onClick={() => done(ops.undoGearAt(plan, level, h.slot, item))}>
+                    <button type="button" className="btn btn-sm btn-quiet" aria-label={`Undo ${what(h)}`} onClick={() => done(ops.undoGearAt(plan, level, h.slot, h.name))}>
                       Undo
                     </button>
                   )}
@@ -89,33 +88,30 @@ export function GearBlock({ plan, level, state, setPlan }: { plan: BuildPlan; le
               </li>
             );
           })}
-          {emptied.map((g) => {
-            const item = g.slot === "Other" ? (g.replaces ?? "") : undefined;
-            return (
-              <li key={`emptied-${g.slot}-${item ?? ""}`} className={`${styles.gearItem} ${styles.gearItemHere}`}>
-                <span className={styles.gearSlot}>
-                  <IconLabel icon={<SlotIcon slot={g.slot} />}>{g.slot}</IconLabel>
-                </span>
-                <span className={styles.gearWhat}>
-                  <span className={styles.gearSet}>{gearChangeText(g)}</span>
-                </span>
-                <span className={styles.gearActions}>
-                  <button type="button" className="btn btn-sm btn-quiet" aria-label={`Undo ${g.slot === "Other" ? `${item} (Other)` : g.slot} emptied`} onClick={() => done(ops.undoGearAt(plan, level, g.slot, item))}>
-                    Undo
-                  </button>
-                </span>
-              </li>
-            );
-          })}
+          {emptied.map((g) => (
+            <li key={`emptied-${g.slot}-${g.replaces ?? ""}`} className={`${styles.gearItem} ${styles.gearItemHere}`}>
+              <span className={styles.gearSlot}>
+                <IconLabel icon={<SlotIcon slot={g.slot} />}>{g.slot}</IconLabel>
+              </span>
+              <span className={styles.gearWhat}>
+                <span className={styles.gearSet}>{gearChangeText(g)}</span>
+              </span>
+              <span className={styles.gearActions}>
+                <button type="button" className="btn btn-sm btn-quiet" aria-label={`Undo ${gearChangeText(g)}`} onClick={() => done(ops.undoGearAt(plan, level, g.slot, g.replaces ?? ""))}>
+                  Undo
+                </button>
+              </span>
+            </li>
+          ))}
         </ul>
       )}
       {editing === "add" ? (
         <GearForm
           lines={lines}
-          slots={free}
+          worn={held}
           initial={{ name: "", note: "" }}
           submit="Add"
-          onSubmit={(set, slot) => done(ops.setGearAt(plan, level, slot, set))}
+          onSubmit={(set, type, replaces) => done(ops.setGearAt(plan, level, type, set, replaces))}
           onCancel={() => setEditing(null)}
         />
       ) : (
@@ -130,30 +126,38 @@ export function GearBlock({ plan, level, state, setPlan }: { plan: BuildPlan; le
 type GearSet = { name: string; note: string; itemId?: string; made?: MadeGear };
 
 /**
- * The item field (a search of the game's items that fit the slot, WO-23; free text is fine for
- * anything the index doesn't have) and an optional note; a slot select when adding.
+ * The item field (a search of the game's items of the type, WO-23 and WO-82; free text is fine for
+ * anything the index doesn't have) and an optional note. Adding, the type comes first, from a plain
+ * list (design rule 10), and when that type is already worn, what the new piece replaces.
  */
 function GearForm({
   lines,
-  slot,
-  slots,
+  type,
+  worn,
   initial,
   submit,
   onSubmit,
   onCancel,
 }: {
-  slot?: GearSlot;
+  /** The piece's type, when changing one already worn. */
+  type?: GearType;
   /** How many enchantment lines the perks allow, and the rule for the next (WO-72). */
   lines: { allowed: number; missing?: string };
-  slots?: GearSlot[];
+  /** Adding: what's worn at this level, for Replaces. */
+  worn?: HeldGear[];
   initial: GearSet;
   submit: string;
-  onSubmit: (set: GearSet, slot: GearSlot) => void;
+  onSubmit: (set: GearSet, type: GearType, replaces?: string) => void;
   onCancel: () => void;
 }) {
   const d = useGameData();
   const listId = useId();
-  const [pick, setPick] = useState<GearSlot>(slot ?? slots?.[0] ?? "Other");
+  const [pick, setPick] = useState<GearType>(type ?? GEAR_TYPES[0]);
+  // What a new piece replaces: one worn of its type is offered, ticked; with several, picked from a list.
+  const wornHere = (worn ?? []).filter((h) => h.slot === pick);
+  const [replaces, setReplaces] = useState<string>(() => (wornHere.length === 1 ? wornHere[0].name : ""));
+  // Search every item: the type filter dropped, for a piece filed under a type the author didn't expect.
+  const [everything, setEverything] = useState(false);
   // A made item edits its base item; its name is the game's ("Staff of Forbidden Sun").
   const [name, setName] = useState(initial.made?.base ?? initial.name);
   const [made, setMade] = useState(!!initial.made);
@@ -166,8 +170,9 @@ function GearForm({
   // The index loads the first time the field is used.
   const items = useItems(d.version.id, open);
   // Open from focus (WO-57): with nothing typed, the items that fit the slot, A to Z.
-  const fitting = open && items && !itemId && !name.trim() ? items.filter((i) => fitsSlot(i, pick)).sort((a, b) => a.name.localeCompare(b.name)) : null;
-  const found = !open || !items || itemId ? [] : fitting ? fitting.slice(0, START_LIST_MAX) : searchItems(items, name, 8, (i) => fitsSlot(i, pick));
+  const fits = (i: GameItem) => everything || fitsSlot(i, pick);
+  const fitting = open && items && !itemId && !name.trim() && !everything ? items.filter(fits).sort((a, b) => a.name.localeCompare(b.name)) : null;
+  const found = !open || !items || itemId ? [] : fitting ? fitting.slice(0, START_LIST_MAX) : searchItems(items, name, 8, fits);
   const moreItems = !!fitting && fitting.length > START_LIST_MAX;
   const choose = (i: GameItem) => {
     setName(i.name);
@@ -198,10 +203,10 @@ function GearForm({
   return (
     <form
       className={styles.gearForm}
-      aria-label={slot ? `Change ${slot}` : "Add gear"}
+      aria-label={type ? `Change ${initial.name} (${type})` : "Add gear"}
       onSubmit={(e) => {
         e.preventDefault();
-        if (name.trim() && !(made && isStaff && !spell)) onSubmit(madeSet(), pick);
+        if (name.trim() && !(made && isStaff && !spell)) onSubmit(madeSet(), pick, replaces || undefined);
       }}
       onKeyDown={(e) => {
         if (e.key !== "Escape") return;
@@ -209,20 +214,31 @@ function GearForm({
         else onCancel();
       }}
     >
-      {slots ? (
+      {!type ? (
         <span className={styles.gearSlotPick}>
           <SlotIcon slot={pick} />
-          <select className="select" aria-label="Slot" value={pick} onChange={(e) => setPick(e.target.value as GearSlot)}>
-            {slots.map((s) => (
-              <option key={s} value={s}>
-                {s}
+          <select
+            className="select"
+            aria-label="Type"
+            value={pick}
+            onChange={(e) => {
+              const next = e.target.value as GearType;
+              const here = (worn ?? []).filter((h) => h.slot === next);
+              setPick(next);
+              setReplaces(here.length === 1 ? here[0].name : "");
+              setEverything(false);
+            }}
+          >
+            {GEAR_TYPES.map((t) => (
+              <option key={t} value={t}>
+                {t}
               </option>
             ))}
           </select>
         </span>
       ) : (
         <span className={styles.gearSlot}>
-          <IconLabel icon={<SlotIcon slot={slot!} />}>{slot}</IconLabel>
+          <IconLabel icon={<SlotIcon slot={type} />}>{type}</IconLabel>
         </span>
       )}
       <span className={styles.gearSearch}>
@@ -284,7 +300,39 @@ function GearForm({
             )}
           </ul>
         )}
+        {!everything && !itemId && (
+          <button
+            type="button"
+            className={`btn btn-sm btn-quiet ${styles.gearEvery}`}
+            // Keeps focus in the field, so the list stays open on the wider search.
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={() => {
+              setEverything(true);
+              setOpen(true);
+            }}
+          >
+            Search every item
+          </button>
+        )}
       </span>
+      {wornHere.length === 1 && !type && (
+        <label className={styles.gearMadeCheck}>
+          <input type="checkbox" checked={replaces === wornHere[0].name} onChange={(e) => setReplaces(e.target.checked ? wornHere[0].name : "")} />
+          <span>Replaces {wornHere[0].name}</span>
+        </label>
+      )}
+      {wornHere.length > 1 && !type && (
+        <span className={styles.gearSlotPick}>
+          <select className="select" aria-label="Replaces" value={replaces} onChange={(e) => setReplaces(e.target.value)}>
+            <option value="">Replaces nothing</option>
+            {wornHere.map((h) => (
+              <option key={h.name} value={h.name}>
+                Replaces {h.name}
+              </option>
+            ))}
+          </select>
+        </span>
+      )}
       <input className="input" aria-label="Note (optional)" value={note} maxLength={300} placeholder="Note (optional)" onChange={(e) => setNote(e.target.value)} />
       <span className={styles.gearMade}>
         <label className={styles.gearMadeCheck}>

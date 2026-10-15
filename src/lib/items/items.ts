@@ -10,8 +10,10 @@ export interface GameItem {
   id: string;
   name: string;
   kind: "weapon" | "armor" | "ammo";
-  /** Armor: Head, Body, Hands, Feet, Shield, Ring or Amulet. */
+  /** Armor: Head, Body, Hands, Feet, Shield, Ring or Amulet; null for pieces those don't cover. */
   slot?: string | null;
+  /** Armor: its gear type (WO-82), LoreRim's own word: Cloak, Backpack, Face... (see GEAR_TYPES). */
+  type?: string | null;
   armorType?: string | null;
   /** Weapons: Sword, Bow, Spear...; ammunition: Arrow or Bolt. */
   weaponType?: string | null;
@@ -108,14 +110,18 @@ export function fitsSlot(item: GameItem, slot: string): boolean {
     case "Main hand":
       return item.kind === "weapon";
     case "Off hand":
-      return (item.kind === "weapon" && !TWO_HANDED.has(item.weaponType ?? "")) || (item.kind === "armor" && item.slot === "Shield");
+      return (item.kind === "weapon" && !TWO_HANDED.has(item.weaponType ?? "")) || (item.kind === "armor" && itemType(item) === "Shield");
     case "Ammo":
       return item.kind === "ammo";
-    case "Other":
-      return true;
     default:
-      return item.kind === "armor" && item.slot === slot;
+      // An armor type (WO-82): its own rows.
+      return item.kind === "armor" && itemType(item) === slot;
   }
+}
+
+/** An armor piece's gear type: the index's `type`, else its old slot. */
+export function itemType(item: GameItem): string | null {
+  return item.type ?? item.slot ?? null;
 }
 
 /**

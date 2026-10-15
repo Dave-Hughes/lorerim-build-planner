@@ -58,8 +58,26 @@ export function MarkIcon({ name, size = 16 }: { name: "trainer" | "skill-book" |
 
 /** A gear slot (WO-22's ten: Main hand ... Other). */
 export function SlotIcon({ slot, size = 16 }: { slot: string; size?: 16 | 24 | 32 }) {
-  return <GameIcon file={`slot-${slug(slot)}`} size={size} />;
+  return <GameIcon file={`slot-${SLOT_ICON[slot] ?? "other"}`} size={size} />;
 }
+
+/** The gear types' icons (WO-82): the old slots keep theirs; the rest share the nearest, or Other's. */
+const SLOT_ICON: Record<string, string> = {
+  "Main hand": "main-hand",
+  "Off hand": "off-hand",
+  Shield: "off-hand",
+  Ammo: "ammo",
+  Head: "head",
+  Circlet: "head",
+  Face: "head",
+  Body: "body",
+  Hands: "hands",
+  Feet: "feet",
+  Ring: "ring",
+  Earrings: "ring",
+  Amulet: "amulet",
+  Necklace: "amulet",
+};
 
 /** A game mode: Konahrik's mask, Naaktiid's seedling. */
 export function ModeIcon({ mode, size = 16 }: { mode: string; size?: 16 | 24 | 32 }) {

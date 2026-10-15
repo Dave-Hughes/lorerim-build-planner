@@ -38,17 +38,25 @@ export function enchantTarget(rowSlot: string, base?: { kind: string; slot?: str
       return { on: "weapon" };
     case "Off hand":
       return [{ on: "weapon" }, { on: "armor", slot: "Shield" }];
+    case "Ammo":
+      return null;
+    // The gear types (WO-82) that are one of the game's enchantable slots, or wear like one.
     case "Head":
+    case "Circlet":
+    case "Face":
+      return { on: "armor", slot: "Head" };
     case "Body":
     case "Hands":
     case "Feet":
+    case "Shield":
     case "Ring":
     case "Amulet":
       return { on: "armor", slot: rowSlot };
-    case "Other":
-      return [{ on: "weapon" }, ...["Head", "Body", "Hands", "Feet", "Shield", "Ring", "Amulet"].map((slot) => ({ on: "armor" as const, slot }))];
+    case "Necklace":
+      return { on: "armor", slot: "Amulet" };
     default:
-      return null;
+      // Cloaks, bags, accessories and the rest: whatever the game allows on armor.
+      return ["Head", "Body", "Hands", "Feet", "Shield", "Ring", "Amulet"].map((slot) => ({ on: "armor" as const, slot }));
   }
 }
 

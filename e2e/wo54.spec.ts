@@ -10,7 +10,7 @@ test("a made ring with Fortify Magicka (Rank I) picked from the game's list: the
   const gear = page.getByRole("region", { name: "Gear" });
   await gear.getByRole("button", { name: "Add gear" }).click();
   const form = page.getByRole("form", { name: "Add gear" });
-  await form.getByLabel("Slot").selectOption("Ring");
+  await form.getByLabel("Type").selectOption("Ring");
   await form.getByRole("combobox", { name: "Item" }).fill("Gold Ring");
   await form.getByLabel("Made by you").check();
   const line = form.getByRole("combobox", { name: "Enchantment 1" });
@@ -40,7 +40,7 @@ test("the enchantment picked isn't offered again on the next line, and Esc close
   await page.goto(`/b/${SEVARI_BUILD_ID}/edit?level=100`);
   await page.getByRole("region", { name: "Gear" }).getByRole("button", { name: "Add gear" }).click();
   const form = page.getByRole("form", { name: "Add gear" });
-  await form.getByLabel("Slot").selectOption("Ring");
+  await form.getByLabel("Type").selectOption("Ring");
   await form.getByRole("combobox", { name: "Item" }).fill("Gold Ring");
   await form.getByLabel("Made by you").check();
   await form.getByRole("combobox", { name: "Enchantment 1" }).fill("magicka");

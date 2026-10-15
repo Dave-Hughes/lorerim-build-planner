@@ -64,7 +64,7 @@ test.describe("WO-72 on Sevari, as its author", () => {
     await page.goto(`/b/${SEVARI_BUILD_ID}/edit?level=30`);
     const gear = page.getByRole("region", { name: "Gear" });
     // The Elven Dagger's row (level 20) has a note; a change at 30 is a new row.
-    await gear.getByRole("button", { name: "Change Main hand" }).click();
+    await gear.getByRole("button", { name: /^Change .* \(Main hand\)$/ }).click();
     await expect(gear.getByRole("textbox", { name: "Note (optional)" })).toHaveValue("");
   });
 

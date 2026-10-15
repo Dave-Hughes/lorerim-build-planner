@@ -4,7 +4,7 @@ import { withGearSlots } from "./convert";
 import { requireGameData } from "./data";
 import { computeBuild } from "./engine";
 import { setGearAt } from "@/components/editor/plan-ops";
-import { gearAt, gearChangeText, gearChanges, gearSlot, madeStaffName } from "./gear";
+import { gearAt, gearChangeText, gearChanges, gearType, madeStaffName } from "./gear";
 import type { BuildPlan, GearItem } from "./types";
 
 const base = sample as unknown as BuildPlan;
@@ -61,13 +61,14 @@ describe("gearChanges", () => {
 
 describe("old gear slots", () => {
   it("maps old free-text slots and keeps every row", () => {
-    expect(gearSlot("Weapon")).toBe("Main hand");
-    expect(gearSlot("Shield")).toBe("Off hand");
-    expect(gearSlot("Chest")).toBe("Body");
-    expect(gearSlot("Off-hand")).toBe("Off hand");
-    expect(gearSlot("Trinket")).toBe("Other");
+    expect(gearType("Weapon")).toBe("Main hand");
+    expect(gearType("Shield", true)).toBe("Off hand");
+    expect(gearType("Chest")).toBe("Body");
+    expect(gearType("Off-hand")).toBe("Off hand");
+    // WO-82: the Other slot became Accessory.
+    expect(gearType("Trinket")).toBe("Accessory");
     const plan = withGearSlots(withGear([row("Weapon", "Steel spear", 4, { note: "Bought" }), row("Shield", "Leather shield", 1), row("Trinket", "Lucky coin", 3)]));
-    expect(plan.gear).toEqual([row("Main hand", "Steel spear", 4, { note: "Bought" }), row("Off hand", "Leather shield", 1), row("Other", "Lucky coin", 3)]);
+    expect(plan.gear).toEqual([row("Main hand", "Steel spear", 4, { note: "Bought" }), row("Off hand", "Leather shield", 1), row("Accessory", "Lucky coin", 3)]);
   });
 
   it("reads Ushnar's staging gear by level under the new names", () => {

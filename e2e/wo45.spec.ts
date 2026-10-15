@@ -9,8 +9,8 @@ test("a staff made by you from level 40: the hammer mark and its tooltip", async
   await page.goto(`/b/${FORTY_BUILD_ID}/edit?level=40`);
   const gear = page.getByRole("region", { name: "Gear" });
   // Main hand carries over from level 1: change it from here.
-  await gear.getByRole("button", { name: "Change Main hand" }).click();
-  const form = page.getByRole("form", { name: "Change Main hand" });
+  await gear.getByRole("button", { name: /^Change .* \(Main hand\)$/ }).click();
+  const form = page.getByRole("form", { name: /^Change .* \(Main hand\)$/ });
   await form.getByRole("combobox", { name: "Item" }).fill("Apprentice's Staff");
   await form.getByLabel("Made by you").check();
   await form.getByRole("combobox", { name: "Spell" }).fill("Forbidden Sun");

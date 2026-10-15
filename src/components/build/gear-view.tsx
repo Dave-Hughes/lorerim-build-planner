@@ -4,7 +4,7 @@ import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { useGameData } from "@/components/game-data";
 import { IconLabel, SlotIcon } from "@/components/ui/skill-icon";
 import { itemById, useItems } from "@/lib/items/items";
-import { GEAR_SLOTS, gearAt, type GearSlot } from "@/lib/rules/gear";
+import { GEAR_TYPES, gearAt, replacedName, type GearType } from "@/lib/rules/gear";
 import type { BuildPlan, MadeGear } from "@/lib/rules/types";
 import { Tooltip } from "@/components/ui/tooltip";
 import type { GameData } from "@/lib/rules/data";
@@ -13,9 +13,9 @@ import { useDismiss } from "@/lib/use-dismiss";
 import { pageZoom } from "@/lib/zoom";
 import styles from "./gear-view.module.css";
 
-/** One stretch of levels an item is held for, in one slot (Other can hold several: one lane each). */
+/** One stretch of levels a piece is worn for, in one type (a type holds several: one lane each, WO-82). */
 interface Segment {
-  slot: GearSlot;
+  slot: GearType;
   lane: number;
   name: string;
   from: number;
@@ -52,13 +52,13 @@ function timeline(plan: BuildPlan): Segment[] {
     }
   }
   done.push(...open.values());
-  // What each run replaced: in a slot, the run that ended the level before; in Other, the row's own.
+  // What each run replaced: its row's own `replaces`, or for an old single-slot row, what was worn the level before.
   for (const s of done) {
-    if (s.slot === "Other") s.replaces = plan.gear.find((r) => r.slot === "Other" && r.fromLevel === s.from && r.name.trim() === s.name)?.replaces;
-    else s.replaces = done.find((o) => o.slot === s.slot && o.to === s.from - 1)?.name;
+    const row = plan.gear.find((r) => r.slot === s.slot && r.fromLevel === s.from && r.name.trim() === s.name);
+    if (row) s.replaces = replacedName(row, s.from > 1 ? gearAt(plan, s.from - 1) : []);
   }
   // Lanes: within a slot, the first lane free when a run starts.
-  const lanesBySlot = new Map<GearSlot, number[]>();
+  const lanesBySlot = new Map<GearType, number[]>();
   for (const s of done.sort((a, b) => a.from - b.from)) {
     const lanes = lanesBySlot.get(s.slot) ?? [];
     let lane = lanes.findIndex((end) => end < s.from);
@@ -86,7 +86,7 @@ export function GearView({ plan, level, onLevel }: { plan: BuildPlan; level: num
   const items = useItems(d.version.id, plan.gear.some((g) => g.itemId));
   const total = plan.levels.length;
   const segments = timeline(plan);
-  const rows = GEAR_SLOTS.flatMap((slot) => {
+  const rows = GEAR_TYPES.flatMap((slot) => {
     const mine = segments.filter((s) => s.slot === slot);
     const lanes = mine.length ? Math.max(...mine.map((s) => s.lane)) + 1 : 0;
     return Array.from({ length: lanes }, (_, lane) => ({ slot, lane, segs: mine.filter((s) => s.lane === lane) }));

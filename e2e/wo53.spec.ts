@@ -6,7 +6,7 @@ import { FORTY_BUILD_ID, SEVARI_BUILD_ID } from "./seed";
 async function addRing(page: Page) {
   await page.getByRole("region", { name: "Gear" }).getByRole("button", { name: "Add gear" }).click();
   const form = page.getByRole("form", { name: "Add gear" });
-  await form.getByLabel("Slot").selectOption("Ring");
+  await form.getByLabel("Type").selectOption("Ring");
   await form.getByRole("combobox", { name: "Item" }).fill("Silver Ring");
   await form.getByLabel("Made by you").check();
   return form;

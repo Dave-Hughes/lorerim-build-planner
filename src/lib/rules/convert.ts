@@ -3,7 +3,7 @@
  * and removed, never silently.
  */
 import { gameData, type GameData } from "./data";
-import { gearSlot } from "./gear";
+import { gearType } from "./gear";
 import { keptTraitChoices } from "./trait-choices";
 import type { BuildPlan, Extra } from "./types";
 
@@ -108,12 +108,13 @@ export function withGameStart(plan: BuildPlan, startNames: readonly string[]): B
 }
 
 /**
- * A saved plan with its gear in the fixed slots (Weapon → Main hand, Shield → Off hand, Chest →
- * Body, anything unknown → Other). Every row keeps its name, level and note.
+ * A saved plan with its gear in the gear types (Weapon → Main hand, Shield → Off hand, Chest →
+ * Body; `Other` and anything unknown → Accessory, WO-82). Every row keeps its name, level and note.
  */
 export function withGearSlots(plan: BuildPlan): BuildPlan {
-  if (plan.gear.every((g) => gearSlot(g.slot) === g.slot)) return plan;
-  return { ...plan, gear: plan.gear.map((g) => ({ ...g, slot: gearSlot(g.slot) })) };
+  const typeOf = (g: { slot: string; replaces?: string }) => gearType(g.slot, g.replaces === undefined);
+  if (plan.gear.every((g) => typeOf(g) === g.slot)) return plan;
+  return { ...plan, gear: plan.gear.map((g) => ({ ...g, slot: typeOf(g) })) };
 }
 
 /** A deity typed into the old free field, matched to the planner's by letters only ("riddlethar"). */

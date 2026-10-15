@@ -3352,10 +3352,10 @@ The old `slot` field stays for now, null for pieces the old slots didn't cover. 
 5. **Copy:** `Type`, `Replaces`, `Search every item`. Type names as listed.
 
 ### Done when
-- [ ] Unit tests: gear held at a level with two pieces of one type, a replace, an `Empty from here`, and an old build's `Other` row read as Accessory.
-- [ ] e2e: add a Cloak (search shows cloaks only), then a Backpack, then a second Accessory. All three are worn at the next level, and the level card lists them. `Search every item` finds a piece outside the type.
-- [ ] Iriel and Sevari read as before on the build page (screenshots at 1440 and 390).
-- [ ] All checks in CLAUDE.md pass.
+- [x] Unit tests: gear held at a level with two pieces of one type, a replace, an `Empty from here`, and an old build's `Other` row read as Accessory.
+- [x] e2e: add a Cloak (search shows cloaks only), then a Backpack, then a second Accessory. All three are worn at the next level, and the level card lists them. `Search every item` finds a piece outside the type.
+- [x] Iriel and Sevari read as before on the build page (screenshots at 1440 and 390).
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

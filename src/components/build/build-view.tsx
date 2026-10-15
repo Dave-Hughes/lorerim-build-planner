@@ -34,7 +34,7 @@ import { StoryView, storyImages } from "./story-view";
 import { GuideView } from "@/components/guide/guide-view";
 import { currentVersion, isOlderThanCurrent } from "@/lib/rules/versions";
 import { ATTRIBUTE_NAMES, levelChanges, levelFacts, levelMarks, nextDestinyLevel, perksByLevel, stoneShare, stretchPerkOrder, stretchPerkRequirement, type PerkListGroup } from "@/lib/rules/derive";
-import { gearAt, gearChangeText } from "@/lib/rules/gear";
+import { gearAt, gearChangeText, replacedName } from "@/lib/rules/gear";
 import { heldCount } from "@/lib/rules/tree-states";
 import type { GameData } from "@/lib/rules/data";
 import type { LevelState } from "@/lib/rules/types";
@@ -1196,8 +1196,9 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
         <span className="ember">+{facts.oghma.perkPoints} perk points</span>
       </span>,
     ]);
-  // New gear (WO-32): each item in an ember chip with its slot and what it replaces; an emptied
-  // slot as "Off hand emptied", "Poison vials (Other) removed".
+  // New gear (WO-32): each piece as "Cloak: Fur Cape, replaces Imperial Cloak", or "Accessory:
+  // Histus Flask" for one that adds (WO-82), the piece in an ember chip; one taken off as
+  // "Imperial Cloak (Cloak) removed", an old emptied slot as "Off hand emptied".
   if (facts.gear.length) {
     const before = level > 1 ? gearAt(plan, level - 1) : [];
     rows.push([
@@ -1205,16 +1206,18 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       <span key="g" className={styles.newGear}>
         {facts.gear.map((g, i) => {
           const name = g.name.trim();
-          const was = g.slot === "Other" ? g.replaces : before.find((b) => b.slot === g.slot)?.name;
+          const was = replacedName(g, before);
           return (
             <span key={i} className={styles.newGearRow}>
-              <SlotIcon slot={g.itemId || g.made ? g.slot : "Other"} size={24} />
+              {/* Free text, with no item behind it: the plain icon (WO-46). */}
+              <SlotIcon slot={g.itemId || g.made ? g.slot : "Accessory"} size={24} />
               {name ? (
                 <span className={styles.newGearWhat}>
+                  <span className="muted">{g.slot}:</span>{" "}
                   <span className={styles.newGearChip}>{name}</span>
                   {g.made && <MadeMark made={g.made} />}
-                  {/* Into an empty slot: just the slot (WO-73). */}
-                  <span className="muted">{was ? `${g.slot}, replaces ${was}` : g.slot}</span>
+                  {/* One that adds: just the type and the piece (WO-73, WO-82). */}
+                  {was && <span className={`muted ${styles.newGearReplaces}`}>, replaces {was}</span>}
                   {/* The author's note on its own line (WO-47), as a new spell shows its where. */}
                   {g.note.trim() && <span className={styles.newGearNote}>{g.note.trim()}</span>}
                 </span>

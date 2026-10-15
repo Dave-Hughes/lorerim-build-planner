@@ -70,15 +70,16 @@ export interface SpellRow {
 }
 
 /**
- * From `fromLevel` on, `slot` holds `name`, until a later row for the same slot. An empty name
- * empties the slot. See gear.ts.
+ * From `fromLevel` on, a piece of the type in `slot` is worn (WO-82: any number per type). With
+ * `replaces` it takes that piece's place, or with an empty name takes it off; `replaces: ""` adds.
+ * See gear.ts.
  */
 export interface GearItem {
   slot: string;
   name: string;
   fromLevel: number;
   note: string;
-  /** `Other` only: the item this row replaces, or with an empty name takes away. */
+  /** The piece this row replaces, or with an empty name takes off; "" when it adds. Unset on rows from before WO-82. */
   replaces?: string;
   /** The item picked from the game's item index (WO-23): "Skyrim.esm:012EB7". */
   itemId?: string;

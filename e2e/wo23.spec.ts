@@ -15,7 +15,7 @@ test("the Main hand field searches the game's weapons", async ({ page, context }
   await page.goto(`/b/${GEAR_BUILD_ID}/edit?level=1`);
   const gear = page.getByRole("region", { name: "Gear" });
   await gear.getByRole("button", { name: "Add gear" }).click();
-  await gear.getByRole("combobox", { name: "Slot" }).selectOption("Main hand");
+  await gear.getByRole("combobox", { name: "Type" }).selectOption("Main hand");
   await gear.getByRole("combobox", { name: "Item" }).fill("steel sp");
   const option = gear.getByRole("option", { name: /^Steel Spear/i }).first();
   await expect(option).toBeVisible();

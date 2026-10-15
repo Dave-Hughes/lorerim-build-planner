@@ -35,11 +35,12 @@ export function itemMention(i: GameItem): MentionInfo {
   return { kind: "item", id: i.id, name: i.name, kindLabel: i.stats, icon: { type: "slot", name: itemSlot(i) }, text: i.text ?? "" };
 }
 
-/** The gear slot an item goes in, for its icon: weapons the main hand, a shield the off hand. */
+/** The gear type an item is, for its icon: weapons the main hand, a shield the off hand (WO-82). */
 export function itemSlot(i: GameItem): string {
   if (i.kind === "weapon") return "Main hand";
   if (i.kind === "ammo") return "Ammo";
-  return i.slot === "Shield" ? "Off hand" : (i.slot ?? "Other");
+  const type = i.type ?? i.slot;
+  return type === "Shield" ? "Off hand" : (type ?? "Accessory");
 }
 
 export function resolveMention(d: GameData, kind: string, id: string): MentionInfo | null {

@@ -1232,3 +1232,8 @@
 .todoBar .linkButton {
   color: var(--ember);
 }
+/* Search every item (WO-82): under the field, drops the type filter. */
+.gearEvery {
+  display: block;
+  margin-top: 4px;
+}

@@ -64,6 +64,8 @@ export const TEST_BUILD_ID = "e2eqq2e2eq";
 export const SCRATCH_BUILD_ID = "e2eqq2e2e5";
 /** A copy of the sample with no gear, for setting gear level by level. */
 export const GEAR_BUILD_ID = "e2egearnew";
+/** WO-82: no gear yet, for gear by type. */
+export const GEAR82_BUILD_ID = "e2egear82x";
 /** The sample with level 5's Destiny point unspent (Konahrik), for the editor's Destiny control. */
 export const DESTINY_BUILD_ID = "e2edstnyaa";
 /** A copy of Iriel from staging (e2e/fixtures/iriel.json): 30 levels, gear changes, Destiny, a note at every level. Listed. */
@@ -202,6 +204,16 @@ export async function seed() {
         id: GEAR_BUILD_ID,
         ownerId: TEST_USER_ID,
         name: "Gearless Shield-Wall",
+        description: "No gear yet.",
+        visibility: "unlisted",
+        gameVersion: "5.0.4.8",
+        plan: { ...samplePlan(), gear: [] },
+      },
+      {
+        id: GEAR82_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
+        name: "Gear by Type",
         description: "No gear yet.",
         visibility: "unlisted",
         gameVersion: "5.0.4.8",

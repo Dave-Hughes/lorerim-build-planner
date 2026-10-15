@@ -11,6 +11,7 @@ const ITEMS: GameItem[] = [
   item("Steel Armor", "armor", { slot: "Body", armorType: "Heavy" }),
   item("Steel Shield", "armor", { slot: "Shield", armorType: "Heavy" }),
   item("Steel Arrow", "ammo", { weaponType: "Arrow" }),
+  item("Fur Cape", "armor", { slot: null, type: "Cloak", armorType: "Clothing" }),
 ];
 
 describe("searchItems", () => {
@@ -35,10 +36,11 @@ describe("fitsSlot", () => {
     expect(names("Main hand")).toEqual(["Steel Spear", "Steel Sword", "Steel Greatsword", "Ancient Steel Spear"]);
     expect(names("Off hand")).toEqual(["Steel Spear", "Steel Sword", "Ancient Steel Spear", "Steel Shield"]);
   });
-  it("offers armor by its slot and ammunition for Ammo", () => {
+  it("offers armor by its type (WO-82), its old slot when it has no type, and ammunition for Ammo", () => {
     expect(names("Body")).toEqual(["Iron Cuirass", "Steel Armor"]);
+    expect(names("Cloak")).toEqual(["Fur Cape"]);
+    expect(names("Shield")).toEqual(["Steel Shield"]);
     expect(names("Ammo")).toEqual(["Steel Arrow"]);
-    expect(names("Other")).toHaveLength(ITEMS.length);
   });
 });
 

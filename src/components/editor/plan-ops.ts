@@ -2,7 +2,7 @@
 import type { GameData } from "@/lib/rules/data";
 import { emptyLevel } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
-import { gearAt } from "@/lib/rules/gear";
+import { takesWholeSlot } from "@/lib/rules/gear";
 import { keptMainSpells, MAX_MAIN_SPELLS } from "@/lib/rules/spells";
 import { skippedLevel, stretchAt } from "@/lib/rules/stretches";
 import type { AbilityRow, Attribute, BuildPlan, Extra, GearItem, LevelPlan, LevelState, MadeGear, ShoutRow, SpellRow } from "@/lib/rules/types";
@@ -179,50 +179,52 @@ export function toggleMainSpell(plan: BuildPlan, id: string): BuildPlan {
 }
 
 /**
- * The rows set at `level` for one held entry: a slot, or in `Other` one item, by its name at
- * that level (a row that adds or replaces it, or one that takes it away).
+ * The row set at `level` for one piece of a type (WO-82): the row that puts it on (adds or replaces),
+ * or the one that takes it off. A legacy empty row (no name, nothing named) matches `item` "".
  */
-function isEntryRow(g: GearItem, level: number, slot: string, item?: string): boolean {
-  if (g.fromLevel !== level || g.slot !== slot) return false;
-  if (slot !== "Other") return true;
-  return g.name === item || (!g.name && g.replaces === item);
+function isEntryRow(g: GearItem, level: number, type: string, item: string): boolean {
+  if (g.fromLevel !== level || g.slot !== type) return false;
+  return g.name ? g.name === item : (g.replaces ?? "") === item;
 }
 
 /**
- * Sets what a slot holds from `level` on. In `Other`, `item` is the item being changed (one set
- * at this level is edited in place, one carried from earlier is replaced); without it, an item is added.
+ * Puts on a piece of a type from `level` (WO-82). Without `item` it adds to what's worn; with `item`
+ * it takes that piece's place (a row set at this level for it is edited in place instead).
  */
-export function setGearAt(plan: BuildPlan, level: number, slot: string, set: { name: string; note: string; itemId?: string; made?: MadeGear }, item?: string): BuildPlan {
+export function setGearAt(plan: BuildPlan, level: number, type: string, set: { name: string; note: string; itemId?: string; made?: MadeGear }, item?: string): BuildPlan {
   const name = set.name.trim();
   const note = set.note.trim();
-  if (!name) return emptyGearAt(plan, level, slot, item);
+  if (!name) return item === undefined ? plan : emptyGearAt(plan, level, type, item);
   // An item from the index keeps its id, so it links to its card.
   const picked = { ...(set.itemId ? { itemId: set.itemId } : {}), ...(set.made ? { made: set.made } : {}) };
-  if (slot !== "Other") return { ...plan, gear: [...plan.gear.filter((g) => !isEntryRow(g, level, slot)), { slot, name, fromLevel: level, note, ...picked }] };
-  const here = item === undefined ? -1 : plan.gear.findIndex((g) => g.fromLevel === level && g.slot === "Other" && g.name === item);
-  if (here >= 0) return { ...plan, gear: plan.gear.map((g, i) => (i === here ? { slot: g.slot, fromLevel: g.fromLevel, name, note, ...(g.replaces ? { replaces: g.replaces } : {}), ...picked } : g)) };
-  return { ...plan, gear: [...plan.gear, { slot, name, fromLevel: level, note, ...(item !== undefined ? { replaces: item } : {}), ...picked }] };
+  const here = item === undefined ? -1 : plan.gear.findIndex((g) => g.fromLevel === level && g.slot === type && g.name === item);
+  if (here >= 0)
+    return { ...plan, gear: plan.gear.map((g, i) => (i === here ? { slot: g.slot, fromLevel: g.fromLevel, name, note, ...(g.replaces !== undefined ? { replaces: g.replaces } : {}), ...picked } : g)) };
+  return { ...plan, gear: [...plan.gear, { slot: type, name, fromLevel: level, note, replaces: item ?? "", ...picked }] };
 }
 
-/** Empties a slot (or, in `Other`, takes `item` away) from `level` on. */
-export function emptyGearAt(plan: BuildPlan, level: number, slot: string, item?: string): BuildPlan {
-  if (slot !== "Other") {
-    const gear = plan.gear.filter((g) => !isEntryRow(g, level, slot));
-    const held = gearAt({ ...plan, gear }, level).some((g) => g.slot === slot);
-    return { ...plan, gear: held ? [...gear, { slot, name: "", fromLevel: level, note: "" }] : gear };
-  }
-  const here = plan.gear.findIndex((g) => g.fromLevel === level && g.slot === "Other" && g.name === item);
-  if (here < 0) return { ...plan, gear: [...plan.gear, { slot, name: "", fromLevel: level, note: "", replaces: item }] };
+/** Takes one piece off from `level` on (Empty from here). */
+export function emptyGearAt(plan: BuildPlan, level: number, type: string, item: string): BuildPlan {
+  const here = plan.gear.findIndex((g) => g.fromLevel === level && g.slot === type && g.name === item);
+  if (here < 0) return { ...plan, gear: [...plan.gear, { slot: type, name: "", fromLevel: level, note: "", replaces: item }] };
   const r = plan.gear[here];
-  return {
-    ...plan,
-    gear: r.replaces ? plan.gear.map((g, i) => (i === here ? { ...g, name: "", note: "" } : g)) : plan.gear.filter((_, i) => i !== here),
-  };
+  // Put on here: what it replaced comes off too (an old single-slot row empties the slot, as it did);
+  // a piece only added here just goes.
+  if (r.replaces || takesWholeSlot(r)) return { ...plan, gear: plan.gear.map((g, i) => (i === here ? { ...g, name: "", note: "", itemId: undefined, made: undefined } : g)).map(clean) };
+  return { ...plan, gear: plan.gear.filter((_, i) => i !== here) };
 }
 
-/** Takes back the change made at `level` to a slot (or to one `Other` item). */
-export function undoGearAt(plan: BuildPlan, level: number, slot: string, item?: string): BuildPlan {
-  return { ...plan, gear: plan.gear.filter((g) => !isEntryRow(g, level, slot, item)) };
+/** A gear row without the keys set to undefined. */
+function clean(g: GearItem): GearItem {
+  const out = { ...g };
+  if (out.itemId === undefined) delete out.itemId;
+  if (out.made === undefined) delete out.made;
+  return out;
+}
+
+/** Takes back the change made at `level` to one piece of a type. */
+export function undoGearAt(plan: BuildPlan, level: number, type: string, item: string): BuildPlan {
+  return { ...plan, gear: plan.gear.filter((g) => !isEntryRow(g, level, type, item)) };
 }
 
 
