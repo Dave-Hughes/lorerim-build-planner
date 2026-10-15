@@ -3441,6 +3441,44 @@ They are static on purpose: production has no sample build yet. Delete `build-pa
 
 ---
 
+## WO-86  Launch: the coming soon page, third pass (15 Oct 2026)
+
+**Why.** Dave reviewed WO-85 on the canvas and went another round: a hero that cycles through his own characters with the art behind the words, his copy, and the gear and level sections playing through the levels like the real thing. The board is `ComingSoon2.dc.html` (desktop, press Play) with `ComingSoon2Phone.dc.html` (390); its title now says "third pass". Match it, words included. Everything else from WO-84 and WO-85 stays.
+
+**Already in this commit (chat session):** `public/coming-soon/shot-864`, `-868`, `-855`, `-869`, `-860`, `-782` (`.webp` at 2400 wide and `-1200.webp`), from Dave's screenshots in `Stock Game`, in that order. After this order, delete the files nothing uses (`hero*.webp`, `gear.webp`, `level.webp`).
+
+1. **Hero.**
+   - The six shots fill the right 78% of the hero, one at a time: about 6 s each, a 1.4 s cross-fade, and a slow push-in (scale 1.02 to 1.12 over 14 s, alternating).
+   - The fade runs from solid ground at the left edge to clear past the middle (`1` to 22%, `.82` at 34%, `.35` at 50%, `0` from 64%), plus a bottom fade, so the art sits behind the words.
+   - Six small progress bars at the bottom right: the current one ember, the rest faint.
+   - The words are vertically centred in the page column: the star, `LoreRim` / `Build Planner` at `clamp(52px, 6.2vw, 100px)`, the four lines at `clamp(17px, 1.4vw, 20px)`, then `Opening soon` and the Discord button.
+   - No credit line.
+   - Phones: the picture fills the whole hero and the words sit low over a heavier bottom fade.
+   - Use `hero-1200` sizes below 900 px wide (`srcset`).
+2. **Copy, Dave's:**
+   - Plan a character: `Plan, build, publish and share your character builds.` then, on its own line with the Sneak icon (32 px) in front, `Or keep them private.`
+   - Heading 2: `Race, deity, traits, perks, gear and more`; its line: `All names, descriptions and other data come right from the LoreRim files.`
+   - Level by level: `Step through builds a level at a time, or fast track your build using level ranges. See details about what changes from each level, as well as the author's notes for that level.` The muted `Right: Iriel's…` line is gone.
+   - Share it: `Every build has a link with its own preview card, ready to post to the Modding Bungalo Discord server.` with `Modding Bungalo` linking to `DISCORD`.
+3. **Iriel as a fixture.** Export her build (`7h38zdhjnu`) from the staging database into `src/lib/coming-soon/iriel.json`: a read, not a write. The tree, the gear and the level cards all draw from it with the app's own components in a read-only mode, as the tree already does. That means no list typed out by hand, and nothing read from the production database.
+4. **Gear, live.** In place of `gear.webp`: the app's gear timeline for Iriel, with a playhead that moves through the levels on the tree's clock. Pieces worn at that level are lit. A piece put on at that level shows in ember for three levels, and `New: [names]` appears at the top right while it does. The header reads `Gear at level N`.
+5. **Level cards, live.** In place of `level.webp`: Iriel's real level cards, one after another, about 1.4 s each (its own clock, slower than the tree), ranges included (`Levels 36 to 42`). Above the card:
+   - `Level N of 50` (or `Levels A to B`);
+   - a 1 to 50 ruler marking each level's Destiny star, perks and gear, with an ember box over the card's level or range.
+   The card is the app's level card. To keep it from jumping, cap it at the first three skills (`and N more`), four perks and three gear lines, and cut the author's note to its opening sentences. Give it a fixed height.
+6. **The shared clock** is 280 ms a level now, so new gear can be read. With reduced motion everything holds still: the first shot, the tree and gear at level 50, the level 1 card.
+
+Open question for Dave, in a canvas comment: should the buttons and other links say `Modding Bungalo` in place of `LoreRim Discord`? Leave them as they are unless he answers.
+
+### Done when
+- [ ] e2e: the hero shows six shots, one visible at a time; with reduced motion the first stays and nothing moves.
+- [ ] e2e: at level 14 the gear shows `New: Elven Light Bow, Elven Arrow`; the level card steps to `Levels 36 to 42` and shows its range on the ruler.
+- [ ] Unit test: the fixture's gear and level cards match what Iriel's staging build page shows at levels 1, 20, 36 and 50.
+- [ ] Screenshots at 1440 and 390 of the whole page, compared with the two boards.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
