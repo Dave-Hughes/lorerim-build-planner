@@ -137,6 +137,8 @@
   font-size: 18px;
   color: #c3cdd6;
   text-shadow: 0 1px 0 #070a0f;
+  /* Two even lines on a phone, not "Discord." on its own. */
+  text-wrap: balance;
 }
 .page a.soonLink {
   color: #f3ead8;
