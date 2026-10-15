@@ -51,6 +51,10 @@ The guide teaches the game in the order a player meets it: chapters, then sectio
 20. **Each section:** a plain explanation, then a collapsed **More detail** (numbers, edge cases), then a collapsed **Related Mods** (each mod's name, what it does here, where its settings file is, and whether changing it is allowed), then **Players ask** (questions with answers, collapsed).
 21. **Only checked facts.** Every number comes from the installed 5.0.4.8 files or the official site, as the FAQ content does. Use the game's own terms (poise, not balance).
 
+## Tapps and the app's own words
+
+22. **Tapps speaks plainly (Dave, 14 Oct 2026).** The tour, empty states, tips and messages say what a thing is or what to do, in short sentences. No jokes, asides or bits ("Then mead.", "Tapps likes arrows."). Tapps keeps his name and portrait; his lines read like the rest of the app.
+
 ## Visual system
 
 - Ground #0e1319, panels #141b23, rules #2a3442, text #e4ebf0, muted #8e9bab.

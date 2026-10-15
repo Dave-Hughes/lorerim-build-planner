@@ -3197,6 +3197,99 @@ Use the game's words for perk and spell names. The ember accent marks picks left
 
 ---
 
+## WO-78  Launch: three small changes from Dave (14 Oct 2026)
+
+1. **Trees open fully zoomed out, everywhere.** Every tree opens at Fit (WO-73) when it is first shown, but a zoom the reader made carries over to the next level and the next visit to that tree.
+   - A tree goes back to Fit whenever the level, the tree or the page changes. Inside one level, the reader's zoom stays until they leave.
+   - The same goes for every place a tree is drawn: the build page's Perks and Destiny boxes, the editor's tree panel, and the phone sheet.
+   - A star picked from outside the tree (the level card, the held list) still selects it, but the view stays at Fit.
+2. **The pinned bar drops the Levels and Guide tabs.** On the build page they crowd the stepper and the level summary (Dave's screenshot, levels 51 to 75). With the tabs gone:
+   - on the Levels tab, the pinned bar holds the stepper and the summary;
+   - on the Guide tab (and Story, WO-79), there is no pinned bar. The big folder tabs are where you switch, at the top of the page.
+3. **The level note's heading:** `About this level`, or `About this level range` on a stretch.
+   - In the editor, it replaces `Notes for level N` and `Notes for levels N to M`. The region's accessible name keeps the numbers: `About levels 21 to 30`.
+   - On the build page, it's a heading over the note in the author's column, under the author's name.
+   - When there's no note, the text reads `No note for this level.` or `No note for this level range.`
+
+### Done when
+- [ ] e2e: zoom One-Handed in, change level, and it's at Fit again. Same in the editor and on a phone.
+- [ ] e2e: the pinned bar has no tabs; it shows on the Levels tab only.
+- [ ] e2e: the note's heading on a single level and on a stretch, in the editor and on the build page.
+- [ ] Screenshots at 1440 and 390.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-79  Story: the build's tale, with the author's screenshots (14 Oct 2026)
+
+**Why.** Authors write role-play builds: who the character is, where they came from, what they did. Today that ends up squeezed into the description or the Guide. The Story tab gives it a place of its own that reads like a book, not a form.
+
+**Board:** `StoryTab` on the design canvas (row 17). Click an image to see the viewer.
+
+1. **A third tab on the build page: `Story`.** It sits after Guide, as a folder tab with its own icon. The tab's second line reads `4 images, 4 min read`. It only shows when the author wrote one.
+2. **Writing it** reuses the Guide editor as it is: headings, bold and italic, quotes, links, @-mentions, images. It's a `Story` page in the edit bar, next to `Guide`.
+   - At most **5 images** in a Story, counted on their own (the build's limit of 40 still holds). The image button says `3 of 5 images`; at 5 it is disabled, with `A story can have 5 images.`
+   - Uploads go through the same checks as the cover and the Guide (`screenUpload`: new accounts, the upload limit, the nudity check).
+   - Each image can have a caption (one line, plain text).
+   - Two images placed one after the other show side by side on wide screens.
+   - A story has a title (required, up to 60 characters) and an optional opening line (up to 140 characters).
+3. **Reading it, on the board:**
+   - **The opening plate:** the story's first image, full width and about 640 px tall, with the title and the opening line over its lower edge on a dark fade, as the cover does. With no image, the title sits on the plain dark band.
+   - **The text is a book page:** Alegreya at 20 px with line height 1.75, a column 680 px wide, warm off-white (#ddd5c6) on a darker ground (#0b0f14). The first paragraph gets a brass drop cap. Headings are the site's condensed caps, centred.
+   - **Images are plates:** 1000 px wide (wider than the text), with brass corner marks, and the caption under them in Alegreya italic.
+   - **A quote the author marks** is set large in Alegreya italic, between two brass ornaments.
+   - **The viewer:** clicking a plate opens it full screen, with its caption, ‹ ›, the arrow keys, `2 of 4` and Esc to close.
+   - **The end:** an ornament, the character in one line (`Dunmer | The Shadow | Mephala | Levels 1 to 100`) and `Follow him level by level ›`, which goes to the Levels tab at level 1. Use the build's pronoun if it has one, or else `Follow the build level by level ›`.
+   - **Phone:** plates run edge to edge, the text is 18 px with a 16 px gutter, and the viewer swipes.
+4. **Design rules:** the Story is the one place Alegreya is used for body text, since it is flavor text (add this to the Visual system section of the design rules). Everything else stays as it is.
+5. **Browse and the share card:** builds with a Story get a small `Story` tag on Browse. The share card is unchanged.
+
+### Done when
+- [ ] e2e: write a Story with a title, three paragraphs, a quote and 5 images with captions. A sixth image is refused, with the message.
+- [ ] e2e: the build page shows the Story tab; the plate, the drop cap, the side-by-side pair and the viewer (‹ › and Esc) work.
+- [ ] A build without a Story shows no Story tab.
+- [ ] Screenshots at 1440 and 390, compared with `StoryTab`.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-80  The tour, second version, and a sample build (14 Oct 2026; sample build for Dave to pick)
+
+**Why.** The reader's tour has four stops that jump around the page, no way back, and lines that joke more than they explain (design rule 22). New visitors also land on Browse with no build in front of them, so the tour waits until they open one.
+
+1. **A sample build.** One complete, ordinary build that shows every part of the app: levels written one by one, notes, gear, spells, a Guide and a Story. Its id goes in config (`SAMPLE_BUILD_ID`), not in code. **Dave picks the build** (the chat session can make one).
+2. **The first visit.** On a visitor's first page that isn't a build (home, Browse), Tapps offers:
+   - `New here? Walk through a sample build.` with `Show me` and `No thanks`.
+   - `Show me` opens the sample build at level 1 and starts the reader's tour.
+   - `No thanks` closes it, and the reader's tour starts on the first build they open. Neither shows again once the tour is done.
+3. **The stops, in page order** (each lights its part of the page):
+   1. **Level row and ruler:** pick a level, or step with ‹ ›.
+   2. **The pinned bar:** it stays at the top as you scroll; it shows the level and what changed there.
+   3. **The level card:** what was taken at this level, and the author's note (`About this level`).
+   4. **Attributes and skills:** where the character stands at this level.
+   5. **Perk trees:** each tree as it stands at this level; click a star for its card.
+   6. **Gear:** what the build wears and when it changes.
+   7. **Spells:** spells learned so far, by school.
+   8. **Guide and Story tabs** (whichever the build has): the author's write-up and the character's tale.
+
+   A stop the build doesn't have is skipped (no gear, no spells).
+4. **Moving between stops:**
+   - `Next` scrolls the page smoothly to the next stop. It doesn't jump. The light moves once the scroll ends. Reduced motion jumps.
+   - `Back` returns to the stop before.
+   - The card shows `3 of 8`, and Esc ends the tour.
+   - On a phone, the card sits at the bottom, clear of what it points at.
+5. **Lines, under rule 22:** one or two short sentences per stop that say what it is and what you can do. The chat session writes them into `READER_TOUR` with this order. The author's tour (`AUTHOR_TOUR`) gets the same plain rewrite; its stops don't change.
+6. **The board:** update `TourReader` on the canvas to the new stops, with the welcome on Browse.
+
+### Done when
+- [ ] e2e: a first visit to Browse offers the sample build. `Show me` opens it with the tour at stop 1; `No thanks` starts the tour on the next build opened.
+- [ ] e2e: Next scrolls to each stop in order, Back returns, a missing stop is skipped, and the count matches.
+- [ ] No joke lines left in `src/lib/tour.ts` (the chat session checks the copy).
+- [ ] Screenshots of each stop at 1440 and 390.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
