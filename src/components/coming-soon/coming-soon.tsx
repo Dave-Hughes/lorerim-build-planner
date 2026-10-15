@@ -163,8 +163,9 @@ export function ComingSoon() {
         </h2>
         <div className={styles.whatBody}>
           <p className={styles.whatText}>
-            A character planner for LoreRim 5.0.4.8. You plan a build level by level, with the game&apos;s own perks, traits, spells and gear, then publish it with a link or keep it to yourself.
+            A character planner for LoreRim. You plan a build level by level, with the game&apos;s own perks, traits, spells and gear, then publish it with a link or keep it to yourself.
           </p>
+          <p className={styles.whatNote}>It starts with LoreRim 5.0.4.8. Later versions will be supported as they come out.</p>
           <ul className={styles.whatLines}>
             <Line icon="race-nord">Plan a character for LoreRim</Line>
             <Line icon="destiny">Pick race, deity, perks, spells, gear and more</Line>

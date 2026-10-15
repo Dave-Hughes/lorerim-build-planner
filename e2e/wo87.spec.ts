@@ -46,9 +46,9 @@ test("How this started has its four panels; What it is comes before Plan a chara
   const story = page.getByRole("region", { name: "How this started" });
   for (const [label, text] of [
     ["Level 1", "I loved LoreRim from the start, but had no idea how to actually play it."],
-    ["Level 3", "Skyrim did not wait for me to work it out."],
-    ["Writing it down", "So I started writing my builds down, level by level."],
-    ["Level 50", "Now there is a place for yours, and for everyone else's."],
+    ["Level 3", "LoreRim did not wait for me to figure it out."],
+    ["Writing it down", "So I started writing down what I learned, as I played, level by level."],
+    ["Level 50", "This is a place for you to do the same!"],
   ]) {
     const panel = story.locator("figure").filter({ hasText: label });
     await expect(panel.locator("figcaption")).toContainText(text);
@@ -56,7 +56,8 @@ test("How this started has its four panels; What it is comes before Plan a chara
   await expect(story.locator("figure")).toHaveCount(4);
 
   const what = page.getByRole("region", { name: "What it is" });
-  await expect(what).toContainText("A character planner for LoreRim 5.0.4.8.");
+  await expect(what).toContainText("A character planner for LoreRim.");
+  await expect(what).toContainText("It starts with LoreRim 5.0.4.8. Later versions will be supported as they come out.");
   await expect(what.getByRole("listitem")).toHaveCount(4);
   const whatY = (await what.boundingBox())!.y;
   const planY = (await page.getByRole("region", { name: "Plan a character", exact: true }).boundingBox())!.y;

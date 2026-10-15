@@ -23,19 +23,19 @@ export const STORY = [
   },
   {
     label: "Level 3",
-    text: "Skyrim did not wait for me to work it out.",
+    text: "LoreRim did not wait for me to figure it out.",
     alt: "Tapps in a dark forest at night, a sabre cat with glowing eyes behind him",
     frames: [0, 1, 0, 2].map((i) => px(`p2-${i}`)),
   },
   {
     label: "Writing it down",
-    text: "So I started writing my builds down, level by level.",
+    text: "So I started writing down what I learned, as I played, level by level.",
     alt: "Tapps at a desk by candlelight, writing in a book",
     frames: [0, 1, 2, 3].map((i) => px(`p3-${i}`)),
   },
   {
     label: "Level 50",
-    text: "Now there is a place for yours, and for everyone else's.",
+    text: "This is a place for you to do the same!",
     alt: "Tapps in a tavern by the hearth, raising a tankard of mead",
     frames: [0, 1, 2, 3].map((i) => px(`p4-${i}`)),
   },

@@ -180,6 +180,12 @@
   line-height: 1.5;
   color: #e4ebf0;
 }
+.whatNote {
+  margin: -8px 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #8e9bab;
+}
 .whatLines {
   margin: 0;
   padding: 0;
