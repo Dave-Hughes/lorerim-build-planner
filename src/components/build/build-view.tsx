@@ -546,7 +546,7 @@ function LevelsTab({
           </h2>
           {narrow && <ViewToggle view={view} onView={setViewChoice} />}
         </div>
-        {/* Phones in List view show the held list alone; the chips go with the tree. */}
+        {/* Phones in List view show the held list alone; the chips go with the tree, and the held list under it. */}
         {(!narrow || view === "tree") && <PerkChips d={d} perks={skillPerks} s={s} active={tree} onChange={(t) => setPicked({ level, tree: t, star: null })} />}
         <div className={styles.perksBody}>
           {(!narrow || view === "tree") && (
@@ -554,14 +554,13 @@ function LevelsTab({
               <Tree tree={tree} states={states} level={level} selectedId={selected} onSelect={(id) => setPicked({ level, tree, star: id })} view="tree" noToggle sheetBelow={1100} />
             </div>
           )}
-          {(!narrow || view === "list") && (
-            <div className={styles.side}>
-              {/* What the selected perk does, above the held list (wide screens; phones use the sheet). */}
-              {!narrow && selected && <PerkDetails id={selected} states={states} level={level} onClose={clearPick} />}
-              {/* Beside the tree, the open tree's perks in full and the rest folded (WO-35); the phone list view lists them all. */}
-              <HeldList perks={skillPerks} s={s} level={level} onPick={(id) => showPerk(id, false)} {...(narrow ? {} : { open: tree, onOpen: (t: string) => setPicked({ level, tree: t, star: null }) })} />
-            </div>
-          )}
+          <div className={styles.side}>
+            {/* What the selected perk does, above the held list (wide screens; phones use the sheet). */}
+            {!narrow && selected && <PerkDetails id={selected} states={states} level={level} onClose={clearPick} />}
+            {/* Beside the tree, the open tree's perks in full and the rest folded (WO-35); the phone list view lists them all.
+                On a phone it sits under the tree too (WO-75): a 356px tree can't name every perk, the list does. */}
+            <HeldList perks={skillPerks} s={s} level={level} onPick={(id) => showPerk(id, false)} {...(narrow && view === "list" ? {} : { open: tree, onOpen: (t: string) => setPicked({ level, tree: t, star: null }) })} />
+          </div>
         </div>
         {narrow && sheet && (
           <BottomSheet label={d.perkById.get(sheet)?.name ?? "Perk"} onClose={() => setSheet(null)}>

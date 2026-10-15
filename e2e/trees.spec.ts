@@ -37,7 +37,8 @@ test.describe("perk trees on a phone", () => {
     await page.getByRole("button", { name: "Tree", exact: true }).tap();
     await page.getByRole("tab", { name: /^Block/ }).tap();
     await expect(page.getByRole("button", { name: /^Powerful Bashes, Block 25, taken/ })).toBeVisible();
-    await expect(held).toHaveCount(0);
+    // Under the tree too since WO-75: a phone's tree can't name every perk, the list does.
+    await expect(held).toContainText("Powerful Bashes");
     await page.getByRole("button", { name: "List", exact: true }).tap();
     await expect(page.getByRole("region", { name: /^Taken by level/ })).toBeVisible();
   });

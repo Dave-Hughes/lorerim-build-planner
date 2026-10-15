@@ -3145,10 +3145,10 @@ That is the one launch blocker: a long build is exactly what the best authors wi
 4. **Desktop lost a label.** On the build page at 1440, Destiny at level 30 shows 50 of 51 names: Conjuring Presence is missing. WO-73's rule holds on desktop: every star keeps its label at Fit. If the 10 px gap is what costs it, use 8 px.
 
 ### Done when
-- [ ] `perf.spec.ts` passes with point 1's median and worst.
-- [ ] e2e at 390 tests point 2's rule, on One-Handed and Destiny at levels 30 and 100.
-- [ ] e2e at 1440: every label has the halo, and One-Handed and Destiny keep every label at levels 30 and 100, editor and build page.
-- [ ] The full e2e run passes, along with every other check in CLAUDE.md.
+- [x] `perf.spec.ts` passes with point 1's median and worst.
+- [x] e2e at 390 tests point 2's rule, on One-Handed and Destiny at levels 30 and 100.
+- [x] e2e at 1440: every label has the halo, and One-Handed and Destiny keep every label at levels 30 and 100, editor and build page.
+- [x] The full e2e run passes, along with every other check in CLAUDE.md.
 
 ---
 

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import { useGameData } from "@/components/game-data";
 import { perkText, type GameData, type Perk } from "@/lib/rules/data";
 import { perkRequirementText, perkStatus, type PerkStatus } from "@/lib/rules/derive";
-import { labelSizes, leaderLine, placeLabels, withSelected, type LabelOptions, type LabelRequest, type PlacedLabel } from "@/lib/rules/labels";
+import { labelSizes, placeLabels, withSelected, type LabelOptions, type LabelRequest, type PlacedLabel } from "@/lib/rules/labels";
 import { drawingSize, fitHeight, treeLayout, type LayoutPadding, type TreeLayout } from "@/lib/rules/layout";
 import { pageZoom } from "@/lib/zoom";
 import { isHeld, lineLook, lineState, prerequisiteLines } from "@/lib/rules/tree-states";
@@ -65,7 +65,8 @@ const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v
 /** Star radius, line width and label size scale with the drawing: 16px stars at 900 wide, 22px at 1600. */
 function sizesFor(width: number) {
   const t = clamp((width - 900) / 700, 0, 1);
-  return { star: width < 600 ? 7 : 8 + 3 * t, line: 1 + 0.5 * t, font: Math.round(13 + 2 * t) };
+  // Under 900 wide the names are 12px, the smallest the design allows, so a crowded tree keeps every one (WO-75).
+  return { star: width < 600 ? 7 : 8 + 3 * t, line: 1 + 0.5 * t, font: width < 900 ? 12 : Math.round(13 + 2 * t) };
 }
 
 function padFor(width: number): LayoutPadding {
@@ -642,14 +643,6 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
                           strokeDasharray={look.dashed ? (look.kind === "chain" ? `${4 * w} ${4 * w}` : `${2 * w} ${4 * w}`) : undefined}
                         />
                       );
-                    })}
-                    {/* A label set further out has a 1px line from its star's edge, in the star's colour at half strength (WO-74). */}
-                    {layout.nodes.map((n) => {
-                      const l = labels.get(n.id);
-                      if (!l?.leader) return null;
-                      const k = leaderLine(l, n, size.star);
-                      const st = status.get(n.id)!;
-                      return <line key={`leader-${n.id}`} {...k} strokeWidth={1} className={isHeld(st) ? styles.leaderTaken : styles.leaderOpen} />;
                     })}
                   </g>
                 </svg>

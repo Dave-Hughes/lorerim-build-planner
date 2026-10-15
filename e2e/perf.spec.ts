@@ -10,10 +10,12 @@ import { SEVARI_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1440, height: 1000 } });
 
-/** The order's targets, in ms (WO-71 point 4; level nav under 120 since WO-74). */
+/** The order's targets, in ms (WO-71 point 4; level nav's median under 120 and worst under 160 since WO-74 and WO-75). */
 const CLICK = 200;
 const KEYSTROKE = 50;
 const NAV = 120;
+/** Level nav's worst single click (WO-75). */
+const NAV_WORST = 160;
 const SLOWDOWN = 4;
 
 declare global {
@@ -50,10 +52,15 @@ async function worst(page: Page, run: () => Promise<void>, hover?: Locator): Pro
   return page.evaluate(() => window.__events.reduce((m, e) => Math.max(m, e.duration), 0));
 }
 
+const median = (xs: number[]) => {
+  const v = [...xs].sort((a, b) => a - b);
+  return v.length % 2 ? v[(v.length - 1) / 2] : (v[v.length / 2 - 1] + v[v.length / 2]) / 2;
+};
+
 const results: [string, number, number][] = [];
 function record(step: string, ms: number, target: number) {
   results.push([step, ms, target]);
-  console.log(`${step.padEnd(34)} worst ${String(Math.round(ms)).padStart(5)} ms  (target under ${target})`);
+  console.log(`${step.padEnd(34)} ${String(Math.round(ms)).padStart(5)} ms  (target under ${target})`);
 }
 
 test.afterAll(() => {
@@ -105,23 +112,26 @@ test("WO-71: the editor on a 100-level build answers within the targets", async 
   await page.keyboard.press("Escape");
   await page.keyboard.press("Escape");
 
-  // ‹ › on the editor's level nav.
-  let editorNav = 0;
-  for (const name of ["Previous level", "Previous level", "Next level", "Next level"]) {
+  // ‹ › on the editor's level nav: five steps back, five forward. The median and the worst (WO-75):
+  // one click is mostly noise, so the median carries the target and the worst its own ceiling.
+  const editorNav: number[] = [];
+  for (const name of [...Array(5).fill("Previous level"), ...Array(5).fill("Next level")]) {
     const button = levelBar.getByRole("button", { name, exact: true });
-    editorNav = Math.max(editorNav, await worst(page, () => button.click(), button));
+    editorNav.push(await worst(page, () => button.click(), button));
   }
-  record("Level nav, editor", editorNav, NAV);
+  record("Level nav, editor (median)", median(editorNav), NAV);
+  record("Level nav, editor (worst)", Math.max(...editorNav), NAV_WORST);
 
-  // ‹ › on the build page.
+  // ‹ › on the build page, the same way.
   await page.goto(`/b/${SEVARI_BUILD_ID}?level=50`);
   await page.waitForTimeout(1500);
-  let viewNav = 0;
-  for (const name of ["Previous level (←)", "Previous level (←)", "Next level (→)", "Next level (→)"]) {
+  const viewNav: number[] = [];
+  for (const name of [...Array(5).fill("Previous level (←)"), ...Array(5).fill("Next level (→)")]) {
     const button = page.getByRole("button", { name }).first();
-    viewNav = Math.max(viewNav, await worst(page, () => button.click(), button));
+    viewNav.push(await worst(page, () => button.click(), button));
   }
-  record("Level nav, build page", viewNav, NAV);
+  record("Level nav, build page (median)", median(viewNav), NAV);
+  record("Level nav, build page (worst)", Math.max(...viewNav), NAV_WORST);
 
   for (const [step, ms, target] of results) expect.soft(ms, `${step}: ${Math.round(ms)} ms`).toBeLessThan(target);
 });

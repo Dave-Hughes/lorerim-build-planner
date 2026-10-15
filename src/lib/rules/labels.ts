@@ -38,8 +38,8 @@ export interface PlacedLabel extends Rect {
   side: "below" | "above" | "right" | "left";
   /** Crowded: the name alone, without its requirement line. */
   nameOnly?: boolean;
-  /** Further out than its own row, with a line from the star to it (WO-74). Taken and can-take stars only. */
-  leader?: boolean;
+  /** Further out to the side than half its width: only when a star has no other spot (WO-75). */
+  far?: boolean;
 }
 
 export interface LabelOptions {
@@ -58,8 +58,8 @@ export interface LabelOptions {
 }
 
 const GAP = 4;
-/** Two labels on one row keep this far apart, so separate names never read as one (WO-74). */
-const ROW_GAP = 10;
+/** Two labels on one row keep this far apart, so separate names never read as one (WO-74; 8px since WO-75). */
+const ROW_GAP = 8;
 
 /** Two labels too close: overlapping, or on one row with less than ROW_GAP between them. */
 export function crowds(a: Rect, b: Rect): boolean {
@@ -151,7 +151,7 @@ function spots(s: LabelRequest, o: LabelOptions, nameOnly: boolean): PlacedLabel
   const below = s.y + r + GAP;
   const above = s.y - r - GAP - h;
   // Sideways, never more than half a label's width (WO-74): further out, a label stops reading as
-  // its star's; a taken or can-take star gets a line to a spot further out instead (leaderSpots).
+  // its star's. They're kept for a star with no other spot (farSpots, WO-75).
   const near = Math.round(w * 0.15);
   const shift = Math.round(w * 0.35);
   const at = (side: PlacedLabel["side"], x: number, y: number): PlacedLabel => ({ id: s.id, nameOnly, side, x, y, w, h });
@@ -174,29 +174,21 @@ function spots(s: LabelRequest, o: LabelOptions, nameOnly: boolean): PlacedLabel
 }
 
 /**
- * Further out, for a taken or can-take star with no room on its own rows (WO-74): rows 3 to 6 deep
- * and further to the sides, each drawn with a line from the star. Still nearer its own star than any
- * other (spotAllowed), so the line only makes plain what the distance already says.
+ * Off to a corner, further than half a label's width (WO-73's corner spots): kept only for a star
+ * that has no other spot, so it still has a name at Fit on desktop (WO-75). WO-74 took them away
+ * for every star because Mace Focus and Stunning Blow sat too far out; those now have nearer spots.
  */
-function leaderSpots(s: LabelRequest, o: LabelOptions): PlacedLabel[] {
-  const { w, h } = labelBox(s, o, !!s.lines[1]);
+function farSpots(s: LabelRequest, o: LabelOptions, nameOnly: boolean): PlacedLabel[] {
+  const { w, h } = labelBox(s, o, nameOnly);
   const r = o.star;
   const below = s.y + r + GAP;
   const above = s.y - r - GAP - h;
-  const at = (side: PlacedLabel["side"], x: number, y: number): PlacedLabel => ({ id: s.id, nameOnly: !!s.lines[1], leader: true, side, x, y, w, h });
-  const out: PlacedLabel[] = [];
-  for (let k = 3; k <= 6; k++) for (const dx of [0, -w * 0.35, w * 0.35]) out.push(at("above", s.x - w / 2 + dx, above - k * h), at("below", s.x - w / 2 + dx, below + k * h));
-  for (let j = 1; j <= 4; j++)
-    for (const dy of [0, -h, h]) out.push(at("right", s.x + r + GAP + 2 + j * 18, s.y - h / 2 + dy), at("left", s.x - r - GAP - 2 - w - j * 18, s.y - h / 2 + dy));
-  return out;
-}
-
-/** The leader line: from the star's edge to the nearest point of its label. */
-export function leaderLine(l: PlacedLabel, star: { x: number; y: number }, r: number): { x1: number; y1: number; x2: number; y2: number } {
-  const x2 = Math.max(l.x, Math.min(star.x, l.x + l.w));
-  const y2 = Math.max(l.y, Math.min(star.y, l.y + l.h));
-  const d = Math.hypot(x2 - star.x, y2 - star.y) || 1;
-  return { x1: star.x + ((x2 - star.x) / d) * (r + 1), y1: star.y + ((y2 - star.y) / d) * (r + 1), x2, y2 };
+  const at = (side: PlacedLabel["side"], x: number, y: number): PlacedLabel => ({ id: s.id, nameOnly, far: true, side, x, y, w, h });
+  return [Math.round(w * 0.55), -Math.round(w * 0.55), Math.round(w * 0.7), -Math.round(w * 0.7), w / 2 + r + GAP, -(w / 2 + r + GAP)].flatMap((dx) => [
+    at("below", s.x - w / 2 + dx, below),
+    at("above", s.x - w / 2 + dx, above),
+    at(dx > 0 ? "right" : "left", s.x - w / 2 + dx, s.y - h / 2),
+  ]);
 }
 
 /**
@@ -259,24 +251,16 @@ export function placeLabels(stars: LabelRequest[], o: LabelOptions, spots?: Map<
     if (!a) allowedSpots.set(key, (a = labelCandidates(s, o).filter((c) => spotAllowed(c, stars, o))));
     return a;
   };
-  // Leader lines drawn so far: no label sits on one.
-  const leaders: { x1: number; y1: number; x2: number; y2: number }[] = [];
-  const free = (c: PlacedLabel) => !placed.some((p) => crowds(c, p)) && !leaders.some((l) => crosses(c, l));
+  const free = (c: PlacedLabel) => !placed.some((p) => crowds(c, p));
   const tryPlace = (s: LabelRequest) => {
     const fits = allowed(s).filter(free);
     const hit = fits.find((c) => clearSpot(c, o)) ?? fits[0];
     if (hit) return put(hit);
     if (squeeze(s)) return;
-    // A taken or can-take star always gets its name (WO-74): further out, with a line to it.
-    if (rank(s) <= 2) {
-      const far = leaderSpots(s, o).filter((c) => spotAllowed(c, stars, o) && free(c));
-      for (const c of far) {
-        const line = leaderLine(c, s, o.star);
-        if (placed.some((p) => crosses(p, line)) || stars.some((x) => x.id !== s.id && Math.hypot(x.x - (line.x1 + line.x2) / 2, x.y - (line.y1 + line.y2) / 2) < o.star)) continue;
-        leaders.push(line);
-        return put(c);
-      }
-    }
+    // No other spot: off to a corner, so the star still has its name (WO-75).
+    const far = [...farSpots(s, o, false), ...(s.lines[1] ? farSpots(s, o, true) : [])].filter((c) => spotAllowed(c, stars, o) && free(c));
+    const corner = far.find((c) => clearOfLines(c, o)) ?? far[0];
+    if (corner) put(corner);
   };
   // Rank by rank; a second pass per rank, since making room for one star can free a spot for another.
   for (const r of [1, 2, 3]) {
@@ -290,9 +274,9 @@ export function placeLabels(stars: LabelRequest[], o: LabelOptions, spots?: Map<
   // name alone, for a two-line label), if that makes room for its name.
   function squeeze(s: LabelRequest): boolean {
     // A two-line label squeezes in with its name alone; a one-line label (Destiny) as it is (WO-73).
-    for (const c of allowed(s).filter((c) => (c.nameOnly || !s.lines[1]) && !leaders.some((l) => crosses(c, l)))) {
+    for (const c of allowed(s).filter((c) => c.nameOnly || !s.lines[1])) {
       const blockers = placed.filter((p) => crowds(c, p));
-      if (!blockers.length || !blockers.every((b) => !b.leader && rank(byId.get(b.id)!) === rank(s))) continue;
+      if (!blockers.length || !blockers.every((b) => rank(byId.get(b.id)!) === rank(s))) continue;
       blockers.forEach(take);
       const moved: PlacedLabel[] = [];
       for (const b of blockers) {

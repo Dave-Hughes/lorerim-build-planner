@@ -15,7 +15,6 @@
 .destinyTree {
   --perk: var(--destiny);
   --perk-halo: color-mix(in srgb, var(--brass) 30%, transparent);
-  --open-star: var(--destiny);
   background: var(--destiny-wash);
   --tree-ground: color-mix(in srgb, var(--destiny) 10%, var(--tree-bg, var(--sunk)));
 }
@@ -160,15 +159,6 @@
 .edgeHalo {
   stroke: var(--perk);
   opacity: 0.2;
-}
-/* A label set further out: a 1px line from its star, in the star's colour at half strength (WO-74). */
-.leaderTaken {
-  stroke: var(--perk);
-  opacity: 0.5;
-}
-.leaderOpen {
-  stroke: var(--open-star, var(--brass));
-  opacity: 0.5;
 }
 
 /* Stars */

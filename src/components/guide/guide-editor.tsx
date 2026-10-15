@@ -2,6 +2,7 @@
 
 import { EditorContent, useEditor, type Editor } from "@tiptap/react";
 import { TextSelection } from "@tiptap/pm/state";
+import { find as findLinks } from "linkifyjs";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useDismiss } from "@/lib/use-dismiss";
 import { LINK_ERROR, isSafeHref, isYoutubeUrl, type GuideDoc } from "@/lib/guide/doc";
@@ -570,6 +571,19 @@ export function GuideEditor({ buildId, sectionKey, initial, label, placeholder =
     onEditor?.(editor);
     return () => onEditor?.(null);
   }, [editor, onEditor]);
+
+  // Warm the link finder while idle (WO-75): Tiptap's link extension resets linkify whenever an
+  // editor goes (every level change), and building it again took the first keystroke's 20-odd ms.
+  useEffect(() => {
+    if (!editor) return;
+    const warm = () => void findLinks("warm lorerim.example");
+    if (typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(warm, { timeout: 1500 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const t = window.setTimeout(warm, 300);
+    return () => window.clearTimeout(t);
+  }, [editor]);
 
   // Give the editor's extensions this render's handlers.
   useLayoutEffect(() => {
