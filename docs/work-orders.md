@@ -3284,9 +3284,40 @@ Use the game's words for perk and spell names. The ember accent marks picks left
 ### Done when
 - [x] e2e: a first visit to Browse offers the sample build. `Show me` opens it with the tour at stop 1; `No thanks` starts the tour on the next build opened.
 - [x] e2e: Next scrolls to each stop in order, Back returns, a missing stop is skipped, and the count matches.
-- [ ] No joke lines left in `src/lib/tour.ts` (the chat session checks the copy).
+- [x] No joke lines left in `src/lib/tour.ts` (the chat session checks the copy). *Checked 15 Oct: clean. One phrase to drop in WO-81.*
 - [x] Screenshots of each stop at 1440 and 390.
 - [x] All checks in CLAUDE.md pass.
+
+---
+
+## WO-81  Launch: hide Story and the LoreRim guide for now (15 Oct 2026)
+
+**Why.** Dave, 15 Oct: both need more work from him before people see them. Hide them, don't delete them. Iriel's Story and the guide's content stay in place for later.
+
+1. **One switch for each,** read from the environment so they can come back without a code change: `FEATURE_STORY` and `FEATURE_SITE_GUIDE`.
+   - Off by default, and off on production.
+   - On in dev and in e2e, so their tests keep running.
+   - Staging: off, so Dave sees what launches.
+2. **Story off:**
+   - no Story tab on the build page;
+   - no Story page in the edit bar;
+   - `/b/[id]/story` returns not found;
+   - no Story tag on build cards;
+   - the tour's last stop names the Guide only.
+
+   The saved Story sections stay in the database, untouched.
+3. **Site guide off (the beginner's guide: `/guide`, its chapters, Mods, Questions and Terms):**
+   - the `Guide` link leaves the site nav and the footer;
+   - every `/guide` route returns not found;
+   - nothing in the sitemap.
+   - A build's own **Guide tab is not this** and stays as it is. Its term tooltips (WO-70) still show on hover, but stop linking to `/guide/terms`.
+4. **Tour copy:** the level card stop drops "in the order the game asks", which isn't checked. It reads `What was taken at this level. The author's note is beside it, under About this level.`
+
+### Done when
+- [ ] e2e with both switches off: no Story tab, edit-bar link or card tag; `/b/[id]/story` and `/guide` are 404s; no Guide link in the nav or footer; a build's Guide tab still works, and its terms show tooltips without links.
+- [ ] e2e with both on: the existing Story and guide tests pass unchanged.
+- [ ] Staging shows the launch view (both off).
+- [ ] All checks in CLAUDE.md pass.
 
 ---
 
