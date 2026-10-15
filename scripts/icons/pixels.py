@@ -1947,6 +1947,217 @@ SIGNS = {
     "Tower": sign_tower,
 }
 
+# Gear types (WO-82, 15 Oct 2026): one object each, the one a player would name.
+def slot_circlet():
+    i = Icon()
+    i.rect(1, 9, 14, 11, "a")                                       # band across the brow
+    i.recolor({"a"}, "A", lambda x, y: y == 9)
+    i.recolor({"a"}, "i", lambda x, y: y == 11)
+    i.poly([(4.5, 9), (8, 2.5), (11.5, 9)], "a")                    # raised point
+    i.recolor({"a"}, "A", lambda x, y: y < 9 and x <= 7)
+    i.rect(7, 5, 8, 7, "M"); i.px(7, 5, "c")                        # gem
+    i.px(3, 10, "r"); i.px(12, 10, "r")                             # side stones
+    return i.outline()
+
+
+def slot_face():
+    i = Icon()
+    ellipse(i, 8, 8, 6, 6.8, "w")                                   # bone mask
+    i.recolor({"w"}, "W", lambda x, y: x + y < 11)
+    i.recolor({"w"}, "g", lambda x, y: x >= 11 or y >= 12)
+    i.rect(4, 6, 6, 7, "k"); i.rect(10, 6, 12, 7, "k")              # eye holes
+    i.rect(7, 8, 8, 10, "g")                                        # nose ridge
+    i.rect(6, 12, 10, 12, "G")                                      # mouth slit
+    i.px(4, 3, "o"); i.px(5, 4, "O"); i.px(11, 4, "O"); i.px(12, 3, "o")   # painted marks
+    return i.outline()
+
+
+def slot_legs():
+    i = Icon()
+    i.rect(3, 1, 12, 4, "b")                                        # waist
+    i.rect(3, 4, 7, 14, "b"); i.rect(9, 4, 12, 14, "B")             # two legs
+    i.recolor({"b"}, "Y", lambda x, y: x <= 4)
+    i.rect(3, 2, 12, 2, "d"); i.px(8, 2, "Y")                       # belt, buckle
+    i.rect(3, 13, 7, 14, "d"); i.rect(9, 13, 12, 14, "d")           # cuffs
+    return i.outline()
+
+
+def slot_cloak():
+    i = Icon()
+    i.poly([(5, 1.5), (11, 1.5), (14.5, 15), (1.5, 15)], "M")       # cloak falling from the shoulders
+    i.recolor({"M"}, "m", lambda x, y: x <= 5)
+    i.recolor({"M"}, "N", lambda x, y: x >= 11)
+    for x in (5, 8, 11):
+        i.line(x, 6, x - (1 if x < 8 else -1 if x > 8 else 0), 14, "N")   # folds
+    i.rect(5, 1, 10, 2, "d")                                        # collar
+    i.rect(7, 2, 8, 3, "a"); i.px(7, 2, "A")                        # clasp
+    return i.outline()
+
+
+def slot_mantle():
+    i = Icon()
+    ellipse(i, 8, 8, 7.4, 5.4, "Q")                                 # fur round the shoulders
+    ellipse(i, 8, 5.2, 3.2, 2.6, ".")                               # neck opening
+    i.rect(5, 1, 10, 4, ".")
+    i.recolor({"Q"}, "K", lambda x, y: x <= 4 or (y <= 6 and x <= 6))
+    i.recolor({"Q"}, "V", lambda x, y: x >= 12 or y >= 11)
+    for x in (1, 4, 7, 10, 13):
+        i.rect(x, 12, x + 1, 13, "V"); i.px(x, 14, "V")              # fur tips
+    i.rect(7, 8, 8, 9, "a"); i.px(7, 8, "A")                        # clasp
+    return i.outline()
+
+
+def slot_pauldron():
+    i = Icon()
+    ellipse(i, 8, 9, 7, 6, "w", where=lambda x, y: y <= 9)          # rounded plate
+    i.rect(2, 9, 14, 10, "w")
+    i.recolor({"w"}, "W", lambda x, y: x + y < 11)
+    i.recolor({"w"}, "g", lambda x, y: x >= 11)
+    i.line(2, 7, 13, 7, "G"); i.line(3, 10, 13, 10, "G")            # lames
+    i.rect(2, 11, 14, 13, "g"); i.rect(2, 11, 4, 13, "w")           # lower lame
+    i.px(5, 4, "B"); i.px(10, 4, "B")                               # rivets
+    return i.outline()
+
+
+def slot_scarf():
+    i = Icon()
+    ellipse(i, 8, 5, 6.4, 3.6, "r")                                 # loop round the neck
+    ellipse(i, 8, 4.4, 3.6, 1.8, ".")
+    i.poly([(8, 6), (12, 6), (11, 15), (8, 15)], "r")               # hanging end
+    i.recolor({"r"}, "p", lambda x, y: x <= 4)
+    i.recolor({"r"}, "q", lambda x, y: x >= 11 or y >= 12)
+    for y in (9, 12):
+        i.line(8, y, 11, y, "q")                                    # stripes
+    i.px(8, 15, "q"); i.px(10, 15, "q")                             # fringe
+    return i.outline()
+
+
+def slot_backpack():
+    i = Icon()
+    i.rect(3, 3, 12, 14, "b")                                       # pack
+    i.rect(5, 1, 10, 3, "d")                                        # bedroll on top
+    i.rect(5, 1, 6, 3, "B")
+    i.rect(3, 3, 12, 7, "B"); i.rect(3, 3, 12, 3, "b")              # flap
+    i.recolor({"b"}, "Y", lambda x, y: x <= 4 and y >= 8)
+    i.recolor({"b"}, "B", lambda x, y: x >= 11 and y >= 8)
+    i.rect(5, 6, 5, 9, "d"); i.rect(10, 6, 10, 9, "d")              # straps
+    i.px(5, 9, "Y"); i.px(10, 9, "Y")                               # buckles
+    i.rect(5, 10, 10, 13, "B"); i.rect(5, 10, 10, 10, "d")          # front pocket
+    return i.outline()
+
+
+def slot_belt_bag():
+    i = Icon()
+    i.rect(0, 3, 15, 5, "d"); i.rect(0, 3, 15, 3, "B")              # belt
+    i.rect(4, 5, 11, 13, "b")                                       # pouch
+    i.rect(4, 5, 11, 8, "B"); i.rect(4, 5, 11, 5, "b")              # flap
+    i.recolor({"b"}, "Y", lambda x, y: x <= 5 and y >= 9)
+    i.rect(7, 7, 8, 9, "a"); i.px(7, 7, "A")                        # stud
+    i.rect(1, 3, 2, 5, "a"); i.px(1, 3, "A")                        # belt buckle
+    return i.outline()
+
+
+def slot_bandolier():
+    i = Icon()
+    i.line(2, 1, 14, 14, "d"); i.line(1, 2, 13, 15, "d"); i.line(2, 2, 13, 14, "B")   # strap across the chest
+    for (x, y) in ((4, 4), (7, 7), (10, 10)):
+        i.rect(x - 1, y - 3, x, y, "g")                             # vials in loops
+        i.px(x - 1, y - 3, "W"); i.px(x, y - 1, "s"); i.px(x - 1, y - 1, "e")
+    i.rect(12, 12, 13, 13, "a")                                     # buckle
+    return i.outline()
+
+
+def slot_necklace():
+    i = Icon()
+    ellipse(i, 8, 6, 6, 6, "a", where=lambda x, y: y >= 5)          # chain
+    ellipse(i, 8, 6, 4.6, 4.6, ".", where=lambda x, y: y >= 5)
+    i.recolor({"a"}, "A", lambda x, y: x <= 5)
+    for (x, y) in ((3, 8), (5, 10), (10, 10), (12, 8)):
+        i.px(x, y, "r")                                             # beads
+    i.rect(7, 11, 8, 14, "m"); i.px(7, 11, "c"); i.px(8, 14, "M")   # drop stone
+    return i.outline()
+
+
+def slot_earrings():
+    i = Icon()
+    for x0 in (2, 9):
+        ellipse(i, x0 + 2.5, 6, 2.6, 3, "a")                        # hoop
+        ellipse(i, x0 + 2.5, 6, 1.4, 1.8, ".")
+        i.recolor({"a"}, "A", lambda x, y, x0=x0: x <= x0 + 1)
+        i.rect(x0 + 2, 9, x0 + 3, 12, "m"); i.px(x0 + 2, 9, "c")    # hanging gem
+        i.px(x0 + 3, 12, "M")
+    return i.outline()
+
+
+def slot_bracelet():
+    i = Icon()
+    for k, x in enumerate((2, 5, 8, 11)):                            # linked plates
+        i.rect(x, 5, x + 2, 11, "a")
+        i.rect(x, 5, x + 2, 5, "A"); i.rect(x, 11, x + 2, 11, "i")
+        i.px(x + 1, 8, "r" if k % 2 == 0 else "m")                  # set stones
+    for x in (4, 7, 10):
+        i.rect(x, 7, x, 9, "B")                                     # links
+    return i.outline()
+
+
+def slot_armlet():
+    i = Icon()
+    i.rect(4, 2, 11, 13, "f")                                       # upper arm
+    i.recolor({"f"}, "F", lambda x, y: x <= 5)
+    i.recolor({"f"}, "v", lambda x, y: x >= 10)
+    i.rect(3, 6, 12, 9, "a"); i.rect(3, 6, 12, 6, "A")              # metal band
+    i.rect(3, 9, 12, 9, "i")
+    i.rect(7, 7, 8, 8, "M"); i.px(7, 7, "c")                        # stone
+    return i.outline()
+
+
+def slot_lantern():
+    i = Icon()
+    i.rect(7, 0, 8, 1, "G")                                         # ring
+    i.rect(4, 2, 11, 3, "g"); i.rect(4, 2, 11, 2, "w")              # cap
+    i.rect(4, 4, 11, 12, "y")                                       # glass with the light inside
+    i.rect(6, 6, 9, 10, "o"); i.rect(7, 7, 8, 9, "W")
+    for x in (4, 11):
+        i.rect(x, 4, x, 12, "G")                                    # frame bars
+    i.rect(3, 13, 12, 14, "g"); i.rect(3, 13, 12, 13, "w")          # base
+    return i.outline()
+
+
+def slot_spyglass():
+    i = Icon()
+    i.line(2, 13, 6, 9, "B"); i.line(3, 13, 6, 10, "B"); i.line(2, 12, 5, 9, "d")     # eyepiece draw
+    for k in range(4):
+        i.line(6 + k, 9 - k, 6 + k, 10 - k, "b"); i.line(5 + k, 9 - k, 7 + k, 11 - k, "b")
+    i.line(9, 6, 13, 2, "a"); i.line(10, 7, 14, 3, "i"); i.line(9, 5, 12, 2, "A")    # brass barrel
+    i.line(10, 6, 13, 3, "a")
+    i.line(5, 8, 7, 10, "a"); i.line(8, 5, 10, 7, "A")                               # bands
+    i.rect(13, 1, 14, 2, "c")                                                        # lens
+    return i.outline()
+
+
+def slot_instrument():
+    i = Icon()
+    ellipse(i, 6, 10.4, 4.6, 4.6, "b")                              # lute body
+    i.recolor({"b"}, "Y", lambda x, y: x + y < 13)
+    i.recolor({"b"}, "B", lambda x, y: x + y > 18)
+    i.disc(6, 10.4, 1.4, "d")                                       # sound hole
+    i.line(8, 8, 13, 3, "d"); i.line(9, 8, 14, 3, "B")              # neck
+    i.rect(13, 1, 15, 2, "d")                                       # head
+    i.line(4, 12, 13, 3, "L")                                       # strings
+    return i.outline()
+
+
+def slot_accessory():
+    i = Icon()
+    i.rect(6, 1, 9, 3, "d"); i.rect(6, 1, 7, 1, "B")                # stopper
+    i.rect(7, 4, 8, 5, "g")                                         # neck
+    ellipse(i, 7.6, 10.4, 5.4, 4.6, "g")                            # flask
+    i.recolor({"g"}, "W", lambda x, y: x + y < 12)
+    i.recolor({"g"}, "G", lambda x, y: x >= 11 or y >= 14)
+    i.rect(3, 9, 12, 11, "b"); i.rect(3, 9, 12, 9, "Y")             # leather wrap
+    return i.outline()
+
+
 RACES = {
     "Altmer": race_altmer, "Argonian": race_argonian, "Bosmer": race_bosmer, "Breton": race_breton,
     "Dunmer": race_dunmer, "Imperial": race_imperial, "Khajiit": race_khajiit, "Nord": race_nord,
@@ -1958,6 +2169,11 @@ SLOTS = {
     "Main hand": slot_main_hand, "Off hand": slot_off_hand, "Head": slot_head, "Body": slot_body,
     "Hands": slot_hands, "Feet": slot_feet, "Ring": slot_ring, "Amulet": slot_amulet, "Ammo": slot_ammo,
     "Other": slot_other,
+    "Circlet": slot_circlet, "Face": slot_face, "Legs": slot_legs, "Shield": tag_shield, "Cloak": slot_cloak, "Mantle": slot_mantle,
+    "Pauldron": slot_pauldron, "Scarf": slot_scarf, "Backpack": slot_backpack, "Bag": slot_other, "Belt Bag": slot_belt_bag,
+    "Bandolier": slot_bandolier, "Necklace": slot_necklace, "Earrings": slot_earrings, "Bracelet": slot_bracelet,
+    "Armlet": slot_armlet, "Lantern": slot_lantern, "Spyglass": slot_spyglass, "Instrument": slot_instrument,
+    "Accessory": slot_accessory,
 }
 MODES = {"Konahrik": mode_konahrik, "Naaktiid": mode_naaktiid}
 TAGS = {

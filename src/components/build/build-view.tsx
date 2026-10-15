@@ -1210,7 +1210,7 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
           return (
             <span key={i} className={styles.newGearRow}>
               {/* Free text, with no item behind it: the plain icon (WO-46). */}
-              <SlotIcon slot={g.itemId || g.made ? g.slot : "Accessory"} size={24} />
+              <SlotIcon slot={g.itemId || g.made ? g.slot : "Other"} size={24} />
               {name ? (
                 <span className={styles.newGearWhat}>
                   <span className="muted">{g.slot}:</span>{" "}
