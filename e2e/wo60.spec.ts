@@ -3,7 +3,7 @@ import { IRIEL_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1440, height: 900 } });
 
-test("folder tabs with icons; once scrolled away, small tabs in the pinned bar switch tabs; arrows move between tabs", async ({ page }) => {
+test("folder tabs with icons; the pinned bar shows once they scroll away; arrows move between tabs", async ({ page }) => {
   await page.goto(`/b/${IRIEL_BUILD_ID}?level=10`);
   const tabs = page.getByRole("tablist", { name: "Build sections" });
   await expect(tabs.locator('img[src="/icons/tab-levels.svg"]')).toBeVisible();
@@ -18,8 +18,6 @@ test("folder tabs with icons; once scrolled away, small tabs in the pinned bar s
   await expect(levels).toHaveAttribute("aria-selected", "true");
 
   await page.getByRole("region", { name: "Perks at level 10" }).scrollIntoViewIfNeeded();
-  const pinned = page.getByRole("region", { name: "Pinned bar" });
-  await expect(pinned.getByRole("button", { name: "Levels" })).toHaveAttribute("aria-pressed", "true");
-  await pinned.getByRole("button", { name: "Guide" }).click();
-  await expect(tabs.getByRole("tab", { name: /^Guide/ })).toHaveAttribute("aria-selected", "true");
+  // The pinned bar has no tabs since WO-78 (wo78.spec.ts).
+  await expect(page.getByRole("region", { name: "Pinned bar" })).toBeVisible();
 });

@@ -417,9 +417,17 @@ export function Tree({ tree, states, level, selectedId, onSelect, details, view:
   const fitScale = base?.fitScale ?? 1;
   const readable = base?.readableScale ?? 1;
   const maxScale = readable * 2;
-  // A star picked outside the tree (the level card, the held list) moves the view to it; so does a new tree.
+  // A star picked outside the tree (the level card, the held list) selects it, and the view goes back to Fit.
   const viewKey = `${tree}|${selected && selected !== ownPick ? selected : ""}`;
   const [manual, setManual] = useState<{ key: string; t: number; fx: number; fy: number } | null>(null);
+  // The reader's zoom lasts while they stay on this tree at this level: a new level or tree goes back
+  // to Fit, and so does coming back to one (WO-78).
+  const stay = `${tree}|${level}`;
+  const [stayed, setStayed] = useState(stay);
+  if (stayed !== stay) {
+    setStayed(stay);
+    setManual(null);
+  }
   // Every tree opens fitted to its box (WO-73); zooming in is the reader's choice.
   const t = clamp(manual?.key === viewKey ? manual.t : fitScale, fitScale, maxScale);
   const dims = w0 > 0 ? drawingSize(d, tree, w0, h0, pad, t) : null;

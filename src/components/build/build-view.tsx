@@ -336,20 +336,10 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
               ))}
             </div>
           )}
-          {pinned && (tab === "levels" || tabs.length > 1) && (
+          {/* On the Levels tab only, without the tabs: the big folder tabs are where you switch (WO-78). */}
+          {pinned && tab === "levels" && (
             <div className={styles.pinnedBar} role="region" aria-label="Pinned bar" data-pinned-bar="">
               <div className={`page ${styles.pinnedInner}`}>
-                {/* The tabs, small, once the big ones scroll away (WO-60). */}
-                {tabs.length > 1 && (
-                  <span className={styles.miniTabs}>
-                    {tabs.map((t) => (
-                      <button key={t} type="button" className={styles.miniTab} aria-pressed={tab === t} onClick={() => setTab(t)}>
-                        <GameIcon file={`tab-${t}`} size={16} />
-                        <span>{TAB_NAMES[t]}</span>
-                      </button>
-                    ))}
-                  </span>
-                )}
                 {tab === "levels" && (
                 <>
                 <LevelStepper
@@ -1325,7 +1315,12 @@ function LevelCard({ d, build, states, level, note, onPerk }: { d: GameData; bui
       {/* The author's column is always there: their name first, then the note (or that there isn't one). */}
       <aside aria-label="Author's note" className={styles.note}>
         <AuthorLink author={build.author} className={styles.noteBy} avatar={<Avatar name={build.author.name} image={build.author.image} size={24} />} />
-        {note ? <LevelNote key={level} doc={note} level={level} lines={12} /> : <p className={`muted ${styles.noNote}`}>No note for {isStretch ? `levels ${span.from} to ${span.to}` : `level ${level}`}.</p>}
+        <h3 className={`label ${styles.noteHead}`}>{isStretch ? "About this level range" : "About this level"}</h3>
+        {note ? (
+          <LevelNote key={level} doc={note} level={level} lines={12} label={isStretch ? `About levels ${span.from} to ${span.to}` : undefined} />
+        ) : (
+          <p className={`muted ${styles.noNote}`}>No note for this level{isStretch ? " range" : ""}.</p>
+        )}
       </aside>
     </section>
   );

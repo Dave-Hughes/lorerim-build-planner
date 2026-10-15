@@ -3212,11 +3212,11 @@ Use the game's words for perk and spell names. The ember accent marks picks left
    - When there's no note, the text reads `No note for this level.` or `No note for this level range.`
 
 ### Done when
-- [ ] e2e: zoom One-Handed in, change level, and it's at Fit again. Same in the editor and on a phone.
-- [ ] e2e: the pinned bar has no tabs; it shows on the Levels tab only.
-- [ ] e2e: the note's heading on a single level and on a stretch, in the editor and on the build page.
-- [ ] Screenshots at 1440 and 390.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: zoom One-Handed in, change level, and it's at Fit again. Same in the editor and on a phone.
+- [x] e2e: the pinned bar has no tabs; it shows on the Levels tab only.
+- [x] e2e: the note's heading on a single level and on a stretch, in the editor and on the build page.
+- [x] Screenshots at 1440 and 390.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

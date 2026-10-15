@@ -13,7 +13,7 @@ const NOTE_LINE = 17 * 1.55;
  * A level's notes; over ~200px they collapse with "Read more". With `lines` (the level card, WO-29),
  * a note over about 600 characters is clamped to that many lines instead.
  */
-export function LevelNote({ doc, level, lines }: { doc: GuideDoc; level: number; lines?: number }) {
+export function LevelNote({ doc, level, lines, label = `About level ${level}` }: { doc: GuideDoc; level: number; lines?: number; label?: string }) {
   const body = useRef<HTMLDivElement>(null);
   const [measuredLong, setLong] = useState(false);
   const [open, setOpen] = useState(false);
@@ -29,7 +29,7 @@ export function LevelNote({ doc, level, lines }: { doc: GuideDoc; level: number;
   }, [lines]);
   const collapsed = long && !open;
   return (
-    <section aria-label={`Notes for level ${level}`} className={styles.levelNote}>
+    <section aria-label={label} className={styles.levelNote}>
       <div ref={body} className={`${styles.body} ${collapsed ? styles.collapsed : ""}`} style={collapsed ? { maxHeight: lines ? Math.round(lines * NOTE_LINE) : COLLAPSED } : undefined}>
         <GuideView doc={doc} idPrefix={`level-${level}`} />
         {collapsed && <div className={`${styles.fade} ${styles.fadePanel}`} aria-hidden="true" />}

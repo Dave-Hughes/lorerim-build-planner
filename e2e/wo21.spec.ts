@@ -12,7 +12,7 @@ test("the card's author line links to their page; a level without a note says so
 
   await page.goto(`/b/${LONG_BUILD_ID}?level=10`);
   const empty = page.getByRole("region", { name: "Level 10", exact: true }).getByRole("complementary", { name: "Author's note" });
-  await expect(empty).toContainText("No note for level 10.");
+  await expect(empty).toContainText("No note for this level.");
   await expect(empty.getByRole("link", { name: "Test Author" })).toBeVisible();
 });
 

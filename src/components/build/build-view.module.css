@@ -669,35 +669,6 @@
   outline: 2px solid var(--brass);
   outline-offset: 4px;
 }
-/* The tabs, small, in the pinned bar. */
-.miniTabs {
-  display: flex;
-  flex: none;
-}
-.miniTab {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 0 12px;
-  border: 0;
-  border-bottom: 3px solid transparent;
-  background: none;
-  color: var(--muted);
-  font-family: var(--font-title);
-  font-weight: 700;
-  font-size: 18px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-.miniTab:hover {
-  color: var(--soft);
-}
-.miniTab[aria-pressed="true"] {
-  color: var(--ember);
-  border-bottom-color: var(--ember);
-}
 @media (max-width: 599px) {
   /* Two tabs share a phone's width. */
   .tab {
@@ -711,10 +682,6 @@
   }
   .tabSub {
     font-size: 12px;
-  }
-  .miniTab {
-    padding: 0 8px;
-    font-size: 16px;
   }
 }
 .panelStack {
@@ -1287,6 +1254,12 @@
 .card .noteBy {
   order: -1;
   color: var(--muted);
+}
+/* The note's heading, under the author's name (WO-78). */
+.card .noteHead {
+  order: -1;
+  margin: 0;
+  color: var(--brass);
 }
 .card .note .noNote {
   font-family: var(--font-body);

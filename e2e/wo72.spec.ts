@@ -52,7 +52,7 @@ test.describe("WO-72 on Sevari, as its author", () => {
     // Point 7: five sessions for each of 6 to 10's level-ups.
     await expect(pool(page, "Trainer sessions")).toContainText("25left in these levels");
     // Point 8.
-    await expect(page.getByRole("region", { name: "Notes for levels 6 to 10" })).toBeVisible();
+    await expect(page.getByRole("region", { name: "About levels 6 to 10" })).toBeVisible();
     // Point 13: 31 to 40 earns no Destiny points and has none left: just 0, no breakdown.
     await page.goto(`/b/${SEVARI_BUILD_ID}/edit?level=40`);
     const destiny = pool(page, "Destiny points");

@@ -3,7 +3,7 @@ import { signIn } from "./helpers";
 import { SCRATCH_BUILD_ID } from "./seed";
 
 const typeNote = async (page: Page, level: number, text: string) => {
-  const notes = page.getByRole("textbox", { name: `Notes for level ${level}` });
+  const notes = page.getByRole("textbox", { name: `About level ${level}` });
   await notes.click();
   await page.keyboard.press("ControlOrMeta+a");
   await page.keyboard.press("Delete");
@@ -20,7 +20,7 @@ test.describe("level notes are never lost", () => {
     // Let the level itself save, then come back from a fresh page.
     await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
     await page.goto(`/b/${SCRATCH_BUILD_ID}?level=6`);
-    await expect(page.getByRole("region", { name: "Notes for level 6" })).toContainText("Typed, then straight on to the next level.");
+    await expect(page.getByRole("region", { name: "About level 6" })).toContainText("Typed, then straight on to the next level.");
   });
 
   test("typing a note and leaving the page at once keeps it", async ({ page, context }) => {
@@ -31,7 +31,7 @@ test.describe("level notes are never lost", () => {
     // The note left with the page (a keepalive request): it may still be on its way.
     await expect(async () => {
       await page.goto(`/b/${SCRATCH_BUILD_ID}?level=5`);
-      await expect(page.getByRole("region", { name: "Notes for level 5" })).toContainText("Typed, then off to another page.", { timeout: 1000 });
+      await expect(page.getByRole("region", { name: "About level 5" })).toContainText("Typed, then off to another page.", { timeout: 1000 });
     }).toPass({ timeout: 10_000 });
   });
 });

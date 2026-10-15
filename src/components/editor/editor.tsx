@@ -1072,7 +1072,7 @@ function LevelNotes({
 }: {
   buildId: string;
   level: number;
-  /** Where the open stretch starts: "Notes for levels 6 to 10" (WO-72). */
+  /** Where the open stretch starts: "About levels 6 to 10" (WO-72, WO-78). */
   from: number;
   notes: React.RefObject<Record<string, GuideDoc>>;
   onChange: (doc: GuideDoc) => void;
@@ -1083,11 +1083,12 @@ function LevelNotes({
   const [save, setSave] = useState<{ status: GuideSaveStatus; error: string | null }>({ status: "idle", error: null });
   const onStatus = useCallback((status: GuideSaveStatus, error: string | null) => setSave({ status, error }), []);
   const label = guideSaveLabel(save.status, save.error);
-  const title = from < level ? `Notes for levels ${from} to ${level}` : `Notes for level ${level}`;
+  // The heading says "this level"; the region and the text box keep the numbers (WO-78).
+  const title = from < level ? `About levels ${from} to ${level}` : `About level ${level}`;
   return (
     <section aria-label={title} className={styles.levelNotes} data-tour="note">
       <div className={styles.blockHead}>
-        <span className="label">{title}</span>
+        <span className="label">{from < level ? "About this level range" : "About this level"}</span>
         {label && (
           <span role="status" className={save.status === "failed" ? styles.notesFailed : styles.hint}>
             {label}

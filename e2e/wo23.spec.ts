@@ -27,14 +27,14 @@ test("the Main hand field searches the game's weapons", async ({ page, context }
 test("@ebony in a level note offers Ebony items with their card", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${GEAR_BUILD_ID}/edit?level=2`);
-  const note = page.getByRole("textbox", { name: "Notes for level 2" });
+  const note = page.getByRole("textbox", { name: "About level 2" });
   await note.click();
   await page.keyboard.type("Wear @ebony");
   const option = page.getByRole("listbox", { name: "Game things" }).getByRole("option", { name: /^Ebony/ }).first();
   await expect(option).toBeVisible();
   const name = (await option.locator("span span").first().innerText()).trim();
   await option.click();
-  await expect(page.getByRole("region", { name: "Notes for level 2" }).getByRole("status")).toHaveText(/Saved/, { timeout: 10_000 });
+  await expect(page.getByRole("region", { name: "About level 2" }).getByRole("status")).toHaveText(/Saved/, { timeout: 10_000 });
 
   await page.goto(`/b/${GEAR_BUILD_ID}?level=2`);
   const chip = page.getByRole("complementary", { name: "Author's note" }).getByRole("button", { name });
