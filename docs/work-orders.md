@@ -3239,7 +3239,7 @@ Use the game's words for perk and spell names. The ember accent marks picks left
    - **Images are plates:** 1000 px wide (wider than the text), with brass corner marks, and the caption under them in Alegreya italic.
    - **A quote the author marks** is set large in Alegreya italic, between two brass ornaments.
    - **The viewer:** clicking a plate opens it full screen, with its caption, ‹ ›, the arrow keys, `2 of 4` and Esc to close.
-   - **The end:** an ornament, the character in one line (`Dunmer | The Shadow | Mephala | Levels 1 to 100`) and `Follow him level by level ›`, which goes to the Levels tab at level 1. Use the build's pronoun if it has one, or else `Follow the build level by level ›`.
+   - **The end:** an ornament, the character in one line (`Dunmer | The Shadow | Mephala | Levels 1 to 100`) and `Follow the build level by level ›`, which goes to the Levels tab at level 1.
    - **Phone:** plates run edge to edge, the text is 18 px with a 16 px gutter, and the viewer swipes.
 4. **Design rules:** the Story is the one place Alegreya is used for body text, since it is flavor text (add this to the Visual system section of the design rules). Everything else stays as it is.
 5. **Browse and the share card:** builds with a Story get a small `Story` tag on Browse. The share card is unchanged.
