@@ -3253,11 +3253,11 @@ Use the game's words for perk and spell names. The ember accent marks picks left
 
 ---
 
-## WO-80  The tour, second version, and a sample build (14 Oct 2026; sample build for Dave to pick)
+## WO-80  The tour, second version, and a sample build (14 Oct 2026)
 
 **Why.** The reader's tour has four stops that jump around the page, no way back, and lines that joke more than they explain (design rule 22). New visitors also land on Browse with no build in front of them, so the tour waits until they open one.
 
-1. **A sample build.** One complete, ordinary build that shows every part of the app: levels written one by one, notes, gear, spells, a Guide and a Story. Its id goes in config (`SAMPLE_BUILD_ID`), not in code. **Dave picks the build** (the chat session can make one).
+1. **A sample build.** One complete, ordinary build that shows every part of the app: levels written one by one, notes, gear, spells, a Guide and a Story. Its id goes in config (`SAMPLE_BUILD_ID`), not in code. **The build is Iriel Thornwhisper (`7h38zdhjnu`)** (Dave, 14 Oct). The chat session took her to level 50: levels 1 to 35 one by one, then the stretches 36 to 42 and 46 to 50, with three spells, gear upgrades at 33, 42 and 45, a note on every level, and a Guide section for 31 to 50. A Story comes once WO-79 is built.
 2. **The first visit.** On a visitor's first page that isn't a build (home, Browse), Tapps offers:
    - `New here? Walk through a sample build.` with `Show me` and `No thanks`.
    - `Show me` opens the sample build at level 1 and starts the reader's tour.
