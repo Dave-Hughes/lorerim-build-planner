@@ -1950,13 +1950,14 @@ SIGNS = {
 # Gear types (WO-82, 15 Oct 2026): one object each, the one a player would name.
 def slot_circlet():
     i = Icon()
-    i.rect(1, 9, 14, 11, "a")                                       # band across the brow
-    i.recolor({"a"}, "A", lambda x, y: y == 9)
-    i.recolor({"a"}, "i", lambda x, y: y == 11)
-    i.poly([(4.5, 9), (8, 2.5), (11.5, 9)], "a")                    # raised point
-    i.recolor({"a"}, "A", lambda x, y: y < 9 and x <= 7)
-    i.rect(7, 5, 8, 7, "M"); i.px(7, 5, "c")                        # gem
-    i.px(3, 10, "r"); i.px(12, 10, "r")                             # side stones
+    ellipse(i, 8, 6, 7.4, 6, "a", where=lambda x, y: y >= 6)       # band curving round the brow
+    ellipse(i, 8, 6, 5.6, 4.2, ".", where=lambda x, y: y >= 6)
+    i.rect(0, 6, 1, 7, "a"); i.rect(14, 6, 15, 7, "a")
+    i.recolor({"a"}, "A", lambda x, y: x <= 4)
+    i.recolor({"a"}, "i", lambda x, y: x >= 12)
+    i.poly([(5, 12), (8, 2.5), (11, 12)], "a")                      # tall front setting
+    i.recolor({"a"}, "A", lambda x, y: 5 <= x <= 7 and y < 11)
+    i.rect(7, 6, 8, 9, "M"); i.px(7, 6, "c"); i.px(8, 9, "N")       # gem
     return i.outline()
 
 
@@ -1996,14 +1997,15 @@ def slot_cloak():
 
 def slot_mantle():
     i = Icon()
-    ellipse(i, 8, 8, 7.4, 5.4, "Q")                                 # fur round the shoulders
-    ellipse(i, 8, 5.2, 3.2, 2.6, ".")                               # neck opening
-    i.rect(5, 1, 10, 4, ".")
-    i.recolor({"Q"}, "K", lambda x, y: x <= 4 or (y <= 6 and x <= 6))
-    i.recolor({"Q"}, "V", lambda x, y: x >= 12 or y >= 11)
-    for x in (1, 4, 7, 10, 13):
-        i.rect(x, 12, x + 1, 13, "V"); i.px(x, 14, "V")              # fur tips
-    i.rect(7, 8, 8, 9, "a"); i.px(7, 8, "A")                        # clasp
+    i.poly([(3, 5), (13, 5), (15.5, 13), (0.5, 13)], "B")          # short leather cape over the shoulders
+    i.recolor({"B"}, "b", lambda x, y: x <= 4)
+    i.recolor({"B"}, "d", lambda x, y: x >= 12 or y >= 12)
+    ellipse(i, 8, 4.6, 6.6, 3.4, "w")                               # thick fur collar
+    ellipse(i, 8, 3.4, 2.8, 1.6, ".")                               # neck
+    i.recolor({"w"}, "W", lambda x, y: x + y < 9)
+    i.recolor({"w"}, "g", lambda x, y: x >= 11 or y >= 7)
+    for x in (2, 5, 8, 11, 13):
+        i.px(x, 8, "g")                                             # fur tufts over the cape
     return i.outline()
 
 
@@ -2091,12 +2093,12 @@ def slot_earrings():
 
 def slot_bracelet():
     i = Icon()
-    for k, x in enumerate((2, 5, 8, 11)):                            # linked plates
-        i.rect(x, 5, x + 2, 11, "a")
-        i.rect(x, 5, x + 2, 5, "A"); i.rect(x, 11, x + 2, 11, "i")
-        i.px(x + 1, 8, "r" if k % 2 == 0 else "m")                  # set stones
-    for x in (4, 7, 10):
-        i.rect(x, 7, x, 9, "B")                                     # links
+    ellipse(i, 8, 8.4, 7.4, 5.6, "a")                               # wide cuff, seen from above and in front
+    ellipse(i, 8, 6.8, 5.2, 3, ".")                                 # the opening; the front band shows deeper
+    i.recolor({"a"}, "A", lambda x, y: y <= 6)
+    i.recolor({"a"}, "i", lambda x, y: y >= 12 or x <= 1 or x >= 14)
+    i.line(2, 10, 13, 10, "i")                                      # top edge of the front band
+    i.px(4, 11, "r"); i.rect(7, 11, 8, 12, "m"); i.px(7, 11, "c"); i.px(11, 11, "r")   # stones
     return i.outline()
 
 
