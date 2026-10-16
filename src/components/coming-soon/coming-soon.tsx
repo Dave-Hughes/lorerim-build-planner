@@ -41,7 +41,9 @@ function useParallax() {
     const hero = ref.current;
     if (!hero) return;
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const layers = Array.from(hero.querySelectorAll<HTMLElement>("[data-depth]"));
+    const layers = Array.from(
+      hero.querySelectorAll<HTMLElement>("[data-depth]"),
+    );
     let frame = 0;
     const place = () => {
       frame = 0;
@@ -82,7 +84,8 @@ function useTicks(): { tick: number; still: boolean } {
       timer = undefined;
     };
     const start = () => {
-      if (timer === undefined) timer = window.setInterval(() => setTick((t) => t + 1), TICK);
+      if (timer === undefined)
+        timer = window.setInterval(() => setTick((t) => t + 1), TICK);
     };
     const sync = () => {
       setStill(mq.matches);
@@ -122,7 +125,10 @@ export function ComingSoon() {
   const level = still ? LAST : levelAt(tick);
   const states = useMemo(() => computeBuild(IRIEL_PLAN, d), [d]);
   const cards = useMemo(() => stretches(IRIEL_PLAN), []);
-  const marks = useMemo(() => levelMarks(d, IRIEL_PLAN, states, notedLevels(IRIEL_NOTES)), [d, states]);
+  const marks = useMemo(
+    () => levelMarks(d, IRIEL_PLAN, states, notedLevels(IRIEL_NOTES)),
+    [d, states],
+  );
   // Her Marksman perks, in the order she takes them, up to this level.
   const taken = useMemo(
     () =>
@@ -139,7 +145,9 @@ export function ComingSoon() {
   const starsA = still || Math.floor(tick / STAR_TICKS) % 2 === 0;
   const auroraA = still || Math.floor(tick / AURORA_TICKS) % 2 === 0;
   const panel = still ? 0 : Math.floor(tick / PANEL_TICKS);
-  const traits = ["Focused Combat", "Witcher"].map((n) => d.traits.find((t) => t.name === n)).filter((t) => !!t);
+  const traits = ["Focused Combat", "Witcher"]
+    .map((n) => d.traits.find((t) => t.name === n))
+    .filter((t) => !!t);
   const range = card.from < card.to;
 
   return (
@@ -147,18 +155,51 @@ export function ComingSoon() {
       {/* A night in Skyrim in pixels: the layers back to front, the fire and stars on the clock (WO-87). */}
       <section className={styles.hero} ref={heroRef}>
         {/* eslint-disable @next/next/no-img-element */}
-        <img className={styles.px} src={HERO.sky} alt="" data-depth={SKY_DEPTH} />
-        <img className={`${styles.px} ${styles.stars}`} src={HERO.stars[0]} alt="" data-depth={SKY_DEPTH} style={{ opacity: starsA ? 1 : 0 }} />
-        <img className={`${styles.px} ${styles.stars}`} src={HERO.stars[1]} alt="" data-depth={SKY_DEPTH} style={{ opacity: starsA ? 0 : 1 }} />
-        <img className={`${styles.px} ${styles.aurora}`} src={HERO.aurora[0]} alt="" data-depth={AURORA_DEPTH} style={{ opacity: auroraA ? 1 : 0 }} />
-        <img className={`${styles.px} ${styles.aurora}`} src={HERO.aurora[1]} alt="" data-depth={AURORA_DEPTH} style={{ opacity: auroraA ? 0 : 1 }} />
+        <img
+          className={styles.px}
+          src={HERO.sky}
+          alt=""
+          data-depth={SKY_DEPTH}
+        />
+        <img
+          className={`${styles.px} ${styles.stars}`}
+          src={HERO.stars[0]}
+          alt=""
+          data-depth={SKY_DEPTH}
+          style={{ opacity: starsA ? 1 : 0 }}
+        />
+        <img
+          className={`${styles.px} ${styles.stars}`}
+          src={HERO.stars[1]}
+          alt=""
+          data-depth={SKY_DEPTH}
+          style={{ opacity: starsA ? 0 : 1 }}
+        />
+        <img
+          className={`${styles.px} ${styles.aurora}`}
+          src={HERO.aurora[0]}
+          alt=""
+          data-depth={AURORA_DEPTH}
+          style={{ opacity: auroraA ? 1 : 0 }}
+        />
+        <img
+          className={`${styles.px} ${styles.aurora}`}
+          src={HERO.aurora[1]}
+          alt=""
+          data-depth={AURORA_DEPTH}
+          style={{ opacity: auroraA ? 0 : 1 }}
+        />
         {HERO.landLayers.map((l, i) => (
           <img
             key={l.src}
             className={styles.px}
             src={l.src}
             data-depth={l.depth}
-            alt={i === HERO.landLayers.length - 1 ? "A night in Skyrim drawn in pixels: an aurora over snowy peaks, a pine forest, and Tapps writing in a book by a campfire" : ""}
+            alt={
+              i === HERO.landLayers.length - 1
+                ? "A night in Skyrim drawn in pixels: an aurora over snowy peaks, a pine forest, and Tapps writing in a book by a campfire"
+                : ""
+            }
           />
         ))}
         <div className={styles.fireGlow} aria-hidden="true" />
@@ -166,12 +207,16 @@ export function ComingSoon() {
         {/* eslint-enable @next/next/no-img-element */}
         <div className={styles.heroFade} aria-hidden="true" />
         <div className={styles.heroWords}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className={`${styles.pix} ${styles.heroStar}`} src="/icons/logo-0.svg" alt="" width={48} height={48} />
+          {/* The title as a pixel wordmark, drawn by scripts/coming-soon/wordmark.py. */}
           <h1 className={styles.title}>
-            LoreRim
-            <br />
-            Build Planner
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className={styles.wordmark}
+              src={HERO.wordmark}
+              alt="LoreRim Build Planner"
+              width={113}
+              height={38}
+            />
           </h1>
           <div className={styles.soonBlock}>
             <p className={`${styles.soon} ${styles.blink}`}>Opening soon</p>
@@ -189,22 +234,30 @@ export function ComingSoon() {
       {/* How this started: Tapps's story in four pixel panels (WO-87). */}
       <section className={styles.story} aria-labelledby="story-title">
         <div className={styles.storyInner}>
-          <h2 id="story-title" className={styles.h2}>
-            How this started
-          </h2>
-          <div className={styles.panels}>
-            {STORY.map((p) => (
-              <figure key={p.label} className={styles.panel}>
-                <div className={`frame ${styles.panelArt}`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img className={styles.pix} src={p.frames[panel % p.frames.length]} alt={p.alt} width={160} height={100} />
-                </div>
-                <figcaption className={styles.panelWords}>
-                  <span className={styles.panelLabel}>{p.label}</span>
-                  <span className={styles.say}>{p.text}</span>
-                </figcaption>
-              </figure>
-            ))}
+          <div className={styles.storyBody}>
+            <h2 id="story-title" className={styles.h2}>
+              How this started
+            </h2>
+            <div className={styles.panels}>
+              {STORY.map((p) => (
+                <figure key={p.label} className={styles.panel}>
+                  <div className={`frame ${styles.panelArt}`}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      className={styles.pix}
+                      src={p.frames[panel % p.frames.length]}
+                      alt={p.alt}
+                      width={160}
+                      height={100}
+                    />
+                  </div>
+                  <figcaption className={styles.panelWords}>
+                    <span className={styles.panelLabel}>{p.label}</span>
+                    <span className={styles.say}>{p.text}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -216,12 +269,19 @@ export function ComingSoon() {
         </h2>
         <div className={styles.whatBody}>
           <p className={styles.whatText}>
-            A character planner for LoreRim. You plan a build level by level, with the game&apos;s own perks, traits, spells and gear, then publish it with a link or keep it to yourself.
+            A character planner for LoreRim. You plan a build level by level,
+            with the game&apos;s own perks, traits, spells and gear, then
+            publish it with a link or keep it to yourself.
           </p>
-          <p className={styles.whatNote}>It starts with LoreRim 5.0.4.8. Later versions will be supported as they come out.</p>
+          <p className={styles.whatNote}>
+            It starts with LoreRim 5.0.4.8. Later versions will be supported as
+            they come out.
+          </p>
           <ul className={styles.whatLines}>
             <Line icon="race-nord">Plan a character for LoreRim</Line>
-            <Line icon="destiny">Pick race, deity, perks, spells, gear and more</Line>
+            <Line icon="destiny">
+              Pick race, deity, perks, spells, gear and more
+            </Line>
             <Line icon="tab-levels">See what changes at each level</Line>
             <Line icon="speech">Share it with the community</Line>
           </ul>
@@ -236,21 +296,46 @@ export function ComingSoon() {
           after={
             <p className={styles.featureIconLine}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className={styles.pix} src="/icons/sneak.svg" alt="" width={32} height={32} />
+              <img
+                className={styles.pix}
+                src="/icons/sneak.svg"
+                alt=""
+                width={32}
+                height={32}
+              />
               Or keep them private.
             </p>
           }
         >
-          <Shot src="/coming-soon/cover.webp" size={[2880, 1120]} alt="Iriel Thornwhisper, Green Pact Hunter: the top of her build page" />
+          <Shot
+            src="/coming-soon/cover.webp"
+            size={[2880, 1120]}
+            alt="Iriel Thornwhisper, Green Pact Hunter: the top of her build page"
+          />
         </Feature>
 
-        <Feature icon="destiny" title="Race, deity, traits, perks, gear and more" text="All names, descriptions and other data come right from the LoreRim files.">
+        <Feature
+          icon="destiny"
+          title="Race, deity, traits, perks, gear and more"
+          text="All names, descriptions and other data come right from the LoreRim files."
+        >
           <div className={styles.stack}>
-            <Shot src="/coming-soon/character.webp" size={[2560, 248]} alt="Iriel's race, birthsign, deity, traits, game mode and start" muted />
+            <Shot
+              src="/coming-soon/character.webp"
+              size={[2560, 248]}
+              alt="Iriel's race, birthsign, deity, traits, game mode and start"
+              muted
+            />
             <div className={styles.traits}>
               {traits.map((t) => (
                 <div key={t.name} className={styles.trait}>
-                  {t.image && <div className={styles.traitArt} style={{ backgroundImage: `url(${t.image})` }} aria-hidden="true" />}
+                  {t.image && (
+                    <div
+                      className={styles.traitArt}
+                      style={{ backgroundImage: `url(${t.image})` }}
+                      aria-hidden="true"
+                    />
+                  )}
                   <div className={styles.traitFade} aria-hidden="true" />
                   <div className={styles.traitWords}>
                     <span className={styles.traitName}>{t.name}</span>
@@ -277,15 +362,27 @@ export function ComingSoon() {
           <div className={styles.stack}>
             <div className={styles.treeRow}>
               <div className={`frame ${styles.treeBox}`}>
-                <Tree tree="Marksman" states={states} level={level} still noToggle />
+                <Tree
+                  tree="Marksman"
+                  states={states}
+                  level={level}
+                  still
+                  noToggle
+                />
               </div>
               <div className={styles.treeSide}>
                 <div className={styles.counter} aria-live="off">
-                  Level <span className={styles.counterNum} data-level={level}>{level}</span>
+                  Level{" "}
+                  <span className={styles.counterNum} data-level={level}>
+                    {level}
+                  </span>
                 </div>
                 <ol className={styles.taken} aria-label="Taken">
                   {taken.map((p) => (
-                    <li key={p.id} className={p.at === newest ? styles.takenNew : undefined}>
+                    <li
+                      key={p.id}
+                      className={p.at === newest ? styles.takenNew : undefined}
+                    >
                       <span>{d.perkById.get(p.id)?.name ?? p.id}</span>
                       <span className={styles.lv}>Lv {p.at}</span>
                     </li>
@@ -294,21 +391,49 @@ export function ComingSoon() {
               </div>
             </div>
             {/* Her level cards, one after another, on their own slower clock (WO-86). */}
-            <div className={`frame ${styles.live} ${styles.cards}`} data-live="cards">
-              <div className={styles.cardHead} data-card={`${card.from}-${card.to}`}>
-                {range ? `Levels ${card.from} to` : "Level"} <span className={styles.cardNum}>{card.to}</span> <span className={styles.cardOf}>of {LAST}</span>
+            <div
+              className={`frame ${styles.live} ${styles.cards}`}
+              data-live="cards"
+            >
+              <div
+                className={styles.cardHead}
+                data-card={`${card.from}-${card.to}`}
+              >
+                {range ? `Levels ${card.from} to` : "Level"}{" "}
+                <span className={styles.cardNum}>{card.to}</span>{" "}
+                <span className={styles.cardOf}>of {LAST}</span>
               </div>
               <div className={styles.ruler} aria-hidden="true">
-                <span className={styles.rulerBox} style={{ left: `${((card.from - 1) / LAST) * 100}%`, width: `${((card.to - card.from + 1) / LAST) * 100}%` }} data-range={`${card.from}-${card.to}`} />
+                <span
+                  className={styles.rulerBox}
+                  style={{
+                    left: `${((card.from - 1) / LAST) * 100}%`,
+                    width: `${((card.to - card.from + 1) / LAST) * 100}%`,
+                  }}
+                  data-range={`${card.from}-${card.to}`}
+                />
                 {marks.map((m) => (
-                  <span key={m.level} className={styles.rulerMark} style={{ left: `${((m.level - 1) / LAST) * 100}%` }}>
+                  <span
+                    key={m.level}
+                    className={styles.rulerMark}
+                    style={{ left: `${((m.level - 1) / LAST) * 100}%` }}
+                  >
                     <i className={m.destiny ? styles.markDestiny : undefined} />
-                    <i className={m.perks ? styles.markPerk : styles.markNone} />
+                    <i
+                      className={m.perks ? styles.markPerk : styles.markNone}
+                    />
                     <i className={m.gear ? styles.markGear : undefined} />
                   </span>
                 ))}
               </div>
-              <LevelCard d={d} build={{ plan: IRIEL_PLAN, author: IRIEL_AUTHOR }} states={states} level={card.to} note={IRIEL_NOTES[`level:${card.to}`] ?? null} glance />
+              <LevelCard
+                d={d}
+                build={{ plan: IRIEL_PLAN, author: IRIEL_AUTHOR }}
+                states={states}
+                level={card.to}
+                note={IRIEL_NOTES[`level:${card.to}`] ?? null}
+                glance
+              />
             </div>
           </div>
         </Feature>
@@ -318,7 +443,8 @@ export function ComingSoon() {
           title="Share it"
           text={
             <>
-              Every build has a link with its own preview card, ready to post to the <a href={DISCORD}>Modding Bungalo</a> Discord server.
+              Every build has a link with its own preview card, ready to post to
+              the <a href={DISCORD}>Modding Bungalo</a> Discord server.
             </>
           }
           after={
@@ -328,7 +454,11 @@ export function ComingSoon() {
           }
           narrow
         >
-          <Shot src="/coming-soon/card.webp" size={[1200, 630]} alt="The preview card for Iriel's build link" />
+          <Shot
+            src="/coming-soon/card.webp"
+            size={[1200, 630]}
+            alt="The preview card for Iriel's build link"
+          />
         </Feature>
       </div>
 
@@ -342,7 +472,11 @@ export function ComingSoon() {
             Coming later
           </h2>
           <div className={styles.laterCards}>
-            <Later icon="tab-story" title="Story and roleplay" text="Add story and roleplay ideas for your character, for those of us who really enjoy that kind of thing." />
+            <Later
+              icon="tab-story"
+              title="Story and roleplay"
+              text="Add story and roleplay ideas for your character, for those of us who really enjoy that kind of thing."
+            />
             <Later
               icon="chapter-staying-alive"
               title="LoreRim survival guide"
@@ -366,10 +500,18 @@ export function ComingSoon() {
         <div className={styles.footInner}>
           <span className={styles.made}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className={styles.pix} src="/icons/logo-0.svg" alt="" width={32} height={32} />
+            <img
+              className={styles.pix}
+              src="/icons/logo-0.svg"
+              alt=""
+              width={32}
+              height={32}
+            />
             <span className={styles.footName}>LoreRim Build Planner</span>
           </span>
-          <span className={styles.muted}>Made by Tapps. Not affiliated with the LoreRim team.</span>
+          <span className={styles.muted}>
+            Made by Tapps. Not affiliated with the LoreRim team.
+          </span>
           <span className={styles.grow} />
           <a className={styles.footLink} href={DISCORD}>
             LoreRim Discord
@@ -384,18 +526,38 @@ function Line({ icon, children }: { icon: string; children: React.ReactNode }) {
   return (
     <li>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className={styles.pix} src={`/icons/${icon}.svg`} alt="" width={32} height={32} />
+      <img
+        className={styles.pix}
+        src={`/icons/${icon}.svg`}
+        alt=""
+        width={32}
+        height={32}
+      />
       {children}
     </li>
   );
 }
 
 /** A framed card in Coming later: a 64 px pixel icon, a name, a sentence. */
-function Later({ icon, title, text }: { icon: string; title: string; text: string }) {
+function Later({
+  icon,
+  title,
+  text,
+}: {
+  icon: string;
+  title: string;
+  text: string;
+}) {
   return (
     <div className={`frame ${styles.laterCard}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className={styles.pix} src={`/icons/${icon}.svg`} alt="" width={64} height={64} />
+      <img
+        className={styles.pix}
+        src={`/icons/${icon}.svg`}
+        alt=""
+        width={64}
+        height={64}
+      />
       <div className={styles.laterWords}>
         <span className={styles.laterTitle}>{title}</span>
         <span className={styles.laterText}>{text}</span>
@@ -427,22 +589,50 @@ function Feature({
     <section className={styles.feature} aria-label={label ?? title}>
       <div className={styles.featureText}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className={styles.pix} src={`/icons/${icon}.svg`} alt="" width={48} height={48} />
+        <img
+          className={styles.pix}
+          src={`/icons/${icon}.svg`}
+          alt=""
+          width={48}
+          height={48}
+        />
         <h2 className={styles.featureTitle}>{title}</h2>
         <p className={styles.featureLead}>{text}</p>
         {after && <div className={styles.featureAfter}>{after}</div>}
       </div>
-      <div className={`${styles.featureVisual} ${narrow ? styles.featureNarrow : ""}`}>{children}</div>
+      <div
+        className={`${styles.featureVisual} ${narrow ? styles.featureNarrow : ""}`}
+      >
+        {children}
+      </div>
     </section>
   );
 }
 
 /** A screenshot in the brass corner frame, sized so nothing jumps as it loads. */
-function Shot({ src, alt, size, muted }: { src: string; alt: string; size: [number, number]; muted?: boolean }) {
+function Shot({
+  src,
+  alt,
+  size,
+  muted,
+}: {
+  src: string;
+  alt: string;
+  size: [number, number];
+  muted?: boolean;
+}) {
   return (
-    <div className={`frame ${styles.shotFrame} ${muted ? styles.shotMuted : ""}`}>
+    <div
+      className={`frame ${styles.shotFrame} ${muted ? styles.shotMuted : ""}`}
+    >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} width={size[0]} height={size[1]} loading="lazy" />
+      <img
+        src={src}
+        alt={alt}
+        width={size[0]}
+        height={size[1]}
+        loading="lazy"
+      />
     </div>
   );
 }

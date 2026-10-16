@@ -17,8 +17,10 @@ test("the hero: no button, the Modding Bungalo link under Opening soon, crisp pi
   await expect(hero(page).getByText("Opening soon", { exact: true })).toBeVisible();
   await expect(hero(page).getByText(/Will be shared in the\s+Modding Bungalo\s+Discord\./)).toBeVisible();
   await expect(hero(page).getByRole("link", { name: "Modding Bungalo" })).toHaveAttribute("href", DISCORD);
+  // The title is the pixel wordmark, named for screen readers.
+  await expect(hero(page).getByRole("heading", { level: 1, name: "LoreRim Build Planner" })).toBeVisible();
   // Every layer drawn pixel for pixel; only the land has alt text.
-  const layers = hero(page).locator('img[src^="/coming-soon/px/"]');
+  const layers = hero(page).locator('img[src^="/coming-soon/px/hero-"]');
   // Sky, two star layers, two aurora layers, the land in six layers (for the parallax), the fire.
   await expect(layers).toHaveCount(12);
   expect(await layers.evaluateAll((els) => els.every((e) => getComputedStyle(e).imageRendering === "pixelated"))).toBe(true);
@@ -48,10 +50,10 @@ test("How this started has its four panels; What it is comes before Plan a chara
   for (const [label, text] of [
     ["Level 1", "I loved LoreRim from the start, but had no idea how to actually play it."],
     ["Level 3", "LoreRim did not wait for me to figure it out."],
-    ["Reading up", "So I read guides on what worked for other players."],
+    ["Level 10", "So I read guides on what worked for other players."],
     ["Level 50", "And now this is a place for those guides to live, in the detail they need!"],
   ]) {
-    const panel = story.locator("figure").filter({ hasText: label });
+    const panel = story.locator("figure").filter({ has: page.getByText(label, { exact: true }) });
     await expect(panel.locator("figcaption")).toContainText(text);
   }
   await expect(story.locator("figure")).toHaveCount(4);

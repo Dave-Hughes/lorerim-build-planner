@@ -3505,7 +3505,7 @@ Open question for Dave, in a canvas comment: should the buttons and other links 
 2. **How this started.** This section comes right after the hero, headed `How this started`. It holds four framed panels in a grid (`repeat(auto-fit, minmax(260px, 1fr))`, gap 32). Each panel has an ember label in the title face and an Alegreya caption at 20 px:
    - `Level 1`: `I loved LoreRim from the start, but had no idea how to actually play it.` Frames `p1` 0,1,0,2. Alt: `Tapps at a signpost at dawn, holding a map, a question mark over his helmet`.
    - `Level 3`: `LoreRim did not wait for me to figure it out.` Frames `p2` 0,1,0,2. Alt: `Tapps in a dark forest at night, a sabre cat with glowing eyes behind him`.
-   - `Reading up`: `So I read guides on what worked for other players.` Frames `p3` 0,1,2,3. Alt: `Tapps at a desk by candlelight, writing in a book`.
+   - `Level 10`: `So I read guides on what worked for other players.` Frames `p3` 0,1,2,3. Alt: `Tapps at a desk by candlelight, writing in a book`.
    - `Level 50`: `And now this is a place for those guides to live, in the detail they need!` Frames `p4` 0,1,2,3. Alt: `Tapps in a tavern by the hearth, raising a tankard of mead`.
    The panels step one frame every 2 ticks. The old "Why I made this" section is gone; this replaces it.
 3. **What it is.** This section comes before the four feature sections. The heading `What it is` sits on the left. On the right is one paragraph at `clamp(19px, 1.6vw, 22px)`: `A character planner for LoreRim. You plan a build level by level, with the game's own perks, traits, spells and gear, then publish it with a link or keep it to yourself.` Under it, at 16 px in `#8e9bab`: `It starts with LoreRim 5.0.4.8. Later versions will be supported as they come out.` Under it are the four icon lines from WO-85, two per row, which moved here from the hero.
@@ -3544,7 +3544,7 @@ The question to Dave is still open in a canvas comment: should the share section
    - Brass corners as now.
    - The words go in a column 520 px wide at left 72, centred top to bottom:
      - the pixel logo star (`logo-0.svg`) at 64;
-     - `LoreRim` / `Build Planner` at 120 in Jersey 10 (`src/lib/og/fonts/Jersey10-Regular.woff`, added 15 Oct), mixed case, line height .84, `#f3ead8`;
+     - the title as the coming soon page's pixel wordmark (`public/coming-soon/px/wordmark.png`, 113×38, from `scripts/coming-soon/wordmark.py`) at 4x, 452 px wide, in place of the star and the set title (changed 15 Oct, after the boards);
      - the site line, italic, at 30;
      - the `LoreRim 5.0.4.8` tag.
    - The 18 skill icons and the diagonal hatching go.

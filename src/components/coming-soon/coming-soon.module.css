@@ -95,26 +95,23 @@
   position: absolute;
   left: 16px;
   right: 16px;
-  top: calc(12 * var(--p));
+  top: calc(16 * var(--p));
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-.heroStar {
-  display: block;
-  width: calc(16 * var(--p));
-  height: calc(16 * var(--p));
-}
-/* Jersey 10 is drawn on a grid of 75/1400 em, so 18.667 art pixels a size puts one of its pixels on one of the art's. */
+/* The wordmark: 113 art pixels wide, so it sits on the scene's grid; on a phone it shrinks to fit. */
 .title {
-  margin: calc(3 * var(--p)) 0 0;
-  font-family: var(--font-pixel), var(--font-title);
-  font-weight: 400;
-  font-size: calc(18.6667 * var(--p));
-  line-height: calc(13 * var(--p));
-  color: #f3ead8;
-  text-shadow: var(--p) var(--p) 0 #070a0f;
+  margin: 0;
+  line-height: 0;
+}
+.wordmark {
+  display: block;
+  width: calc(113 * var(--p));
+  max-width: 100%;
+  height: auto;
+  image-rendering: pixelated;
 }
 .soonBlock {
   display: flex;
@@ -125,6 +122,7 @@
 }
 /* Opening soon in the hero: half the title's grid, and a slow blink like Press Start. */
 .heroWords .soon {
+  color: #f3ead8;
   font-size: calc(9.3333 * var(--p));
   line-height: 1;
   letter-spacing: 0.08em;
@@ -161,13 +159,34 @@
   margin: 0 auto;
   padding: clamp(56px, 7vw, 100px) clamp(16px, 4vw, 54px);
 }
+/* The heading lines up with the panels, which keep their whole-pixel width. */
+.storyBody {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
 .storyInner .h2 {
   margin-bottom: clamp(28px, 3.5vw, 48px);
 }
+/* Two by two, each panel at a whole multiple of its 160 by 100 pixels (3x, 2x on smaller screens),
+   so its pixels are even and match the hero's look. */
 .panels {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(2, 480px);
+  justify-content: center;
+  gap: 48px 40px;
+  counter-reset: panel;
+}
+@media (max-width: 1119px) {
+  .panels {
+    grid-template-columns: repeat(2, 320px);
+    gap: 40px 24px;
+  }
+}
+@media (max-width: 719px) {
+  .panels {
+    grid-template-columns: 320px;
+  }
 }
 .panel {
   margin: 0;
@@ -198,6 +217,7 @@
   right: -6px;
 }
 .panelArt img {
+  display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 160 / 100;
@@ -275,12 +295,23 @@
   border-top: 1px solid #2a3442;
   background: #0e1319;
 }
+/* The wall drifts up and to the right, one tile (1728 by 864) a loop, in steps of 6 by 3 px
+   so the 3x pixels stay whole (Dave, 15 Oct). */
 .laterWall {
   position: absolute;
   inset: 0;
-  background: url("/coming-soon/px/icon-wall.png") center top / 1728px auto repeat;
+  background: url("/coming-soon/px/icon-wall.png") 0 0 / 1728px auto repeat;
   image-rendering: pixelated;
   opacity: 0.2;
+  animation: wallDrift 72s steps(288) infinite;
+}
+@keyframes wallDrift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 1728px -864px;
+  }
 }
 .laterFade {
   position: absolute;
@@ -686,6 +717,7 @@
   font-size: 20px;
   line-height: 1.45;
   color: #ddd5c6;
+  text-wrap: pretty;
 }
 
 /* ---------- The foot ---------- */
@@ -733,6 +765,7 @@
   .aurora,
   .stars,
   .fireGlow,
+  .laterWall,
   .blink {
     transition: none;
     animation: none;

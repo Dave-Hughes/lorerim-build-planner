@@ -10,6 +10,8 @@ export const HERO = {
   stars: [px("hero-stars-a"), px("hero-stars-b")],
   aurora: [px("hero-aurora-a"), px("hero-aurora-b")],
   land: px("hero-land"),
+  /** The title, a pixel wordmark at 113 by 38 art pixels. */
+  wordmark: px("wordmark"),
   /** The land as six layers, back to front, for the parallax: how far each lags as the page scrolls (0 moves with it). */
   landLayers: (
     [
@@ -39,7 +41,7 @@ export const STORY = [
     frames: [0, 1, 0, 2].map((i) => px(`p2-${i}`)),
   },
   {
-    label: "Reading up",
+    label: "Level 10",
     text: "So I read guides on what worked for other players.",
     alt: "Tapps at a desk by candlelight, writing in a book",
     frames: [0, 1, 2, 3].map((i) => px(`p3-${i}`)),
@@ -53,4 +55,4 @@ export const STORY = [
 ];
 
 /** Every pixel image the page uses. */
-export const ART_FILES = [HERO.sky, ...HERO.stars, ...HERO.aurora, HERO.land, ...HERO.landLayers.map((l) => l.src), ...HERO.fg, ...STORY.flatMap((s) => s.frames)];
+export const ART_FILES = [HERO.wordmark, HERO.sky, ...HERO.stars, ...HERO.aurora, HERO.land, ...HERO.landLayers.map((l) => l.src), ...HERO.fg, ...STORY.flatMap((s) => s.frames)];
