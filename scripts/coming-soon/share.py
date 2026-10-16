@@ -4,8 +4,10 @@ up with nearest-neighbour so the card renderer never smooths it:
 - src/lib/og/art/site-scene.png: the coming soon hero (sky, stars, aurora, land,
   Tapps writing by the fire) at 5x, cropped as the hero crops it (62% across, bottom).
 - src/lib/og/art/guide-wall.png: the icon wall at 3x, for the guide chapters' cards.
+- src/lib/og/art/wordmark.png: the coming soon page's pixel wordmark at 4x (452x152), the site card's
+  title (WO-88).
 
-Run after build.py and wall.py: python3 scripts/coming-soon/share.py
+Run after build.py, wall.py and wordmark.py: python3 scripts/coming-soon/share.py
 """
 import os
 from PIL import Image
@@ -34,5 +36,8 @@ ground = Image.new('RGBA', big.size, (14, 19, 25, 255))
 ground.alpha_composite(big)
 crop(ground, .5, 0).convert('RGB').save(os.path.join(OUT, 'guide-wall.png'), optimize=True)
 
-for f in ('site-scene.png', 'guide-wall.png'):
+mark = Image.open(os.path.join(PX, 'wordmark.png')).convert('RGBA')
+mark.resize((mark.width * 4, mark.height * 4), Image.NEAREST).save(os.path.join(OUT, 'wordmark.png'), optimize=True)
+
+for f in ('site-scene.png', 'guide-wall.png', 'wordmark.png'):
     print(f, os.path.getsize(os.path.join(OUT, f)), 'bytes')

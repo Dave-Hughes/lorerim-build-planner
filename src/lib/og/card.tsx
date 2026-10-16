@@ -1,6 +1,8 @@
 /**
- * The link-preview cards (WO-33), 1200×630, drawn by next/og's ImageResponse to the canvas
- * artboards "ShareBuild" and "ShareSite". Server only: it reads the fonts and icons from disk.
+ * The link-preview cards (WO-33; the pixel style, WO-88), 1200×630, drawn by next/og's ImageResponse
+ * to the canvas artboards "ShareBuild", "ShareSitePixel" and "ShareGuide". Server only: it reads the
+ * fonts, icons and art from disk. The pixel art comes from scripts/coming-soon/share.py already
+ * scaled up pixel for pixel, so the renderer never smooths it.
  */
 /* eslint-disable @next/next/no-img-element -- ImageResponse draws these to a PNG; next/image doesn't apply. */
 import { readFile } from "node:fs/promises";
@@ -9,7 +11,7 @@ import { ImageResponse } from "next/og";
 import { CARD, SITE_LINE, SITE_NAME } from "./metadata";
 
 const ROOT = process.cwd();
-const C = { ground: "#0e1319", text: "#e4ebf0", soft: "#c3cdd6", muted: "#8e9bab", brass: "#b9a173", ember: "#f0913f", rule: "#2a3442", ruleStrong: "#3a4658" };
+const C = { ground: "#0e1319", text: "#e4ebf0", soft: "#c3cdd6", muted: "#8e9bab", brass: "#b9a173", ember: "#f0913f", rule: "#2a3442", ruleStrong: "#3a4658", cream: "#f3ead8", page: "#ddd5c6" };
 
 /** Only the three faces the cards use (ImageResponse can't read next/font's woff2). */
 async function fonts() {
@@ -20,6 +22,12 @@ async function fonts() {
     { name: "Body", data: body, weight: 500 as const, style: "normal" as const },
     { name: "Flavor", data: flavor, weight: 400 as const, style: "italic" as const },
   ];
+}
+
+/** Art baked by scripts/coming-soon/share.py (src/lib/og/art), as a data-URI PNG. */
+async function art(file: string): Promise<string> {
+  const png = await readFile(path.join(ROOT, "src", "lib", "og", "art", file));
+  return `data:image/png;base64,${png.toString("base64")}`;
 }
 
 /** A pixel icon from public/icons as a data-URI SVG; drawn at whole multiples of 16 so it stays crisp. */
@@ -86,50 +94,64 @@ function clampText(text: string, perLine: number, lines: number): string {
   return out.length > lines ? `${out.slice(0, lines).join(" ")}…` : out.join(" ");
 }
 
-/** The site's card: the mark, the name (or a build's name, for a build with no cover), the line, the version, the 18 skills. */
-export async function siteCard({ title = SITE_NAME, version, skills, video = false }: { title?: string; version: string; skills: string[]; video?: boolean }) {
-  const icons = await Promise.all(skills.map((s) => icon(slug(s))));
+/**
+ * The site's card (WO-88, "ShareSitePixel"): the coming soon hero's night scene, faded on the left,
+ * the pixel wordmark, the site's line and the version. A build with no cover gets this card with its
+ * own name, set in the title face, in place of the wordmark.
+ */
+export async function siteCard({ title = SITE_NAME, version, video = false }: { title?: string; version: string; video?: boolean }) {
+  const [scene, mark, star] = await Promise.all([art("site-scene.png"), title === SITE_NAME ? art("wordmark.png") : null, icon("logo-0")]);
   return new ImageResponse(
     (
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          backgroundColor: C.ground,
-          backgroundImage: "repeating-linear-gradient(135deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 2px, transparent 2px, transparent 18px)",
-          color: C.text,
-          fontFamily: "Body",
-        }}
-      >
+      <div style={{ position: "relative", width: "100%", height: "100%", display: "flex", backgroundColor: "#070a0f", color: C.text, fontFamily: "Body" }}>
+        <img src={scene} alt="" width={1200} height={630} style={{ position: "absolute", top: 0, left: 0, width: 1200, height: 630 }} />
+        <div style={{ position: "absolute", top: 0, left: 0, width: 1200, height: 630, display: "flex", backgroundImage: "linear-gradient(90deg, rgba(7,10,15,0.86) 0%, rgba(7,10,15,0.62) 34%, rgba(7,10,15,0) 56%)" }} />
         <Corners />
-        <div style={{ position: "absolute", left: 72, top: 0, bottom: 0, width: 560, display: "flex", flexDirection: "column", justifyContent: "center", gap: 26 }}>
-          <StarMark size={64} stroke={1} />
-          <div style={{ fontFamily: "Title", fontSize: title === SITE_NAME ? 96 : 80, lineHeight: 0.9, letterSpacing: "0.06em", textTransform: "uppercase" }}>{clampText(title, 16, 3)}</div>
-          <div style={{ fontFamily: "Flavor", fontStyle: "italic", fontSize: 32, lineHeight: 1.3, color: C.soft }}>{SITE_LINE}</div>
+        <div style={{ position: "absolute", left: 72, top: 0, bottom: 0, width: 520, display: "flex", flexDirection: "column", justifyContent: "center", gap: 24 }}>
+          {mark ? (
+            <img src={mark} alt={SITE_NAME} width={452} height={152} />
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+              {star && <img src={star} alt="" width={64} height={64} />}
+              <div style={{ fontFamily: "Title", fontSize: 80, lineHeight: 0.9, letterSpacing: "0.06em", textTransform: "uppercase", color: C.cream }}>{clampText(title, 16, 3)}</div>
+            </div>
+          )}
+          <div style={{ fontFamily: "Flavor", fontStyle: "italic", fontSize: 30, lineHeight: 1.3, color: C.page }}>{SITE_LINE}</div>
           <div style={{ display: "flex" }}>
-            <div style={{ border: `1px solid ${C.ruleStrong}`, padding: "3px 12px", fontSize: 18, letterSpacing: "0.06em", color: C.soft }}>{`LoreRim ${version}`}</div>
+            <div style={{ border: `1px solid ${C.ruleStrong}`, backgroundColor: "rgba(7,10,15,0.6)", padding: "3px 12px", fontSize: 18, letterSpacing: "0.06em", color: C.soft }}>{`LoreRim ${version}`}</div>
           </div>
         </div>
-        <div
-          style={{
-            position: "absolute",
-            right: 80,
-            top: 135,
-            // Six across: 6 icons of 48, 5 gaps of 22, 30 padding each side, the 1px border.
-            width: 460,
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 22,
-            padding: 30,
-            border: `1px solid ${C.rule}`,
-            background: "rgba(18,25,34,0.8)",
-          }}
-        >
-          {icons.map((src, i) => (src ? <img key={i} src={src} width={48} height={48} style={{ opacity: 0.9 }} alt="" /> : <div key={i} style={{ width: 48, height: 48 }} />))}
-        </div>
         {video && <VideoBadge />}
+      </div>
+    ),
+    { ...CARD, fonts: await fonts() },
+  );
+}
+
+/**
+ * A guide chapter's card (WO-88, "ShareGuide"): the icon wall faint behind, the chapter's number,
+ * title and subtitle, its own icon in a box on the right, and the site's name at the foot.
+ */
+export async function guideCard(c: { number: number; title: string; subtitle?: string; icon?: string }) {
+  const [wall, chapterIcon, star] = await Promise.all([art("guide-wall.png"), c.icon ? icon(c.icon) : null, icon("logo-0")]);
+  return new ImageResponse(
+    (
+      <div style={{ position: "relative", width: "100%", height: "100%", display: "flex", backgroundColor: C.ground, color: C.text, fontFamily: "Body" }}>
+        <img src={wall} alt="" width={1200} height={630} style={{ position: "absolute", top: 0, left: 0, width: 1200, height: 630, opacity: 0.16 }} />
+        <div style={{ position: "absolute", top: 0, left: 0, width: 1200, height: 630, display: "flex", backgroundImage: "linear-gradient(90deg, rgba(14,19,25,0.92) 0%, rgba(14,19,25,0.7) 55%, rgba(14,19,25,0.35) 100%)" }} />
+        <Corners />
+        <div style={{ position: "absolute", left: 72, top: 0, bottom: 0, width: 640, display: "flex", flexDirection: "column", justifyContent: "center", gap: 22 }}>
+          <div style={{ fontFamily: "Title", fontSize: 26, letterSpacing: "0.14em", textTransform: "uppercase", color: C.ember }}>{`LoreRim guide · Chapter ${c.number}`}</div>
+          <div style={{ fontFamily: "Title", fontSize: 112, lineHeight: 0.9, letterSpacing: "0.03em", textTransform: "uppercase", color: C.cream }}>{clampText(c.title, 14, 2)}</div>
+          {c.subtitle && <div style={{ fontFamily: "Flavor", fontStyle: "italic", fontSize: 30, lineHeight: 1.3, color: C.page }}>{clampText(c.subtitle, 42, 3)}</div>}
+        </div>
+        <div style={{ position: "absolute", left: 1200 - 96 - 320, top: (630 - 320) / 2, width: 320, height: 320, display: "flex", alignItems: "center", justifyContent: "center", border: `1px solid ${C.rule}`, backgroundColor: "rgba(7,10,15,0.75)" }}>
+          {chapterIcon && <img src={chapterIcon} alt="" width={256} height={256} />}
+        </div>
+        <div style={{ position: "absolute", left: 72, top: 630 - 52 - 32, display: "flex", alignItems: "center", gap: 12 }}>
+          {star && <img src={star} alt="" width={32} height={32} />}
+          <div style={{ fontFamily: "Title", fontSize: 20, letterSpacing: "0.12em", textTransform: "uppercase", color: C.soft }}>{SITE_NAME}</div>
+        </div>
       </div>
     ),
     { ...CARD, fonts: await fonts() },

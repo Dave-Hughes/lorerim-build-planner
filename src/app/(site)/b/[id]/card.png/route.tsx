@@ -1,6 +1,5 @@
 import { buildCard, siteCard } from "@/lib/og/card";
 import { getBuild, imageHold } from "@/lib/builds/queries";
-import { gameData } from "@/lib/rules/server";
 
 type Params = Promise<{ id: string }>;
 
@@ -30,7 +29,7 @@ export async function GET(_req: Request, { params }: { params: Params }) {
         version: build.gameVersion,
         video: !!build.plan.videoId,
       })
-    : await siteCard({ title: build.name, version: build.gameVersion, skills: gameData(build.gameVersion)?.skills ?? [], video: !!build.plan.videoId });
+    : await siteCard({ title: build.name, version: build.gameVersion, video: !!build.plan.videoId });
   res.headers.set("cache-control", coverHeld ? "public, max-age=300" : "public, max-age=31536000, immutable");
   return res;
 }

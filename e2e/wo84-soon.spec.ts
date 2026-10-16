@@ -9,8 +9,10 @@ import { IRIEL_BUILD_ID } from "./seed";
 test.use({ viewport: { width: 1440, height: 900 } });
 
 async function isComingSoon(page: Page) {
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/LoreRim\s*Build Planner/);
-  await expect(page.getByText("Opening soon", { exact: true })).toBeVisible();
+  // The title is the pixel wordmark (15 Oct): its alt names the heading.
+  await expect(page.getByRole("heading", { level: 1 })).toHaveAccessibleName(/LoreRim\s*Build Planner/);
+  // The hero's, and since 15 Oct a second closing Coming later.
+  await expect(page.getByText("Opening soon", { exact: true }).first()).toBeVisible();
   await expect(page.getByRole("heading", { name: "How this started" })).toBeVisible();
 }
 

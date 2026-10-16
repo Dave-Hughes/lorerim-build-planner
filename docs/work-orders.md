@@ -3570,10 +3570,10 @@ The question to Dave is still open in a canvas comment: should the share section
    - Fix anything that is off.
 
 ### Done when
-- [ ] Unit test: `/og/site.png` and one chapter's `card.png` come back as 1200×630 PNGs. A chapter page's metadata names its own card; `/guide/terms` names the site's card.
-- [ ] Screenshots of `/og/site.png`, a no-cover build's card and `/guide/staying-alive/card.png`, compared with the two boards, with the pixels crisp.
-- [ ] Screenshots of `/coming-soon` at 1440 and 390, compared with the ComingSoon4 boards.
-- [ ] All checks in CLAUDE.md pass, the full e2e run included.
+- [x] Unit test: `/og/site.png` and one chapter's `card.png` come back as 1200×630 PNGs. A chapter page's metadata names its own card; `/guide/terms` names the site's card.
+- [x] Screenshots of `/og/site.png`, a no-cover build's card and `/guide/staying-alive/card.png`, compared with the two boards, with the pixels crisp.
+- [x] Screenshots of `/coming-soon` at 1440 and 390, compared with the ComingSoon4 boards.
+- [x] All checks in CLAUDE.md pass, the full e2e run included.
 
 ---
 

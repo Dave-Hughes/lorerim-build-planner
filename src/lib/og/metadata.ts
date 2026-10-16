@@ -18,6 +18,16 @@ export function siteMetadata(path: string, title: string = SITE_NAME, descriptio
   };
 }
 
+/** A guide chapter's tags (WO-88): its own card, at /guide/<slug>/card.png. */
+export function chapterMetadata(slug: string, title: string, description: string): Metadata {
+  const path = `/guide/${slug}`;
+  const image = { url: `${path}/card.png`, ...CARD, alt: title };
+  return {
+    openGraph: { type: "article", siteName: SITE_NAME, title, description, url: path, images: [image] },
+    twitter: { card: "summary_large_image", title, description, images: [image.url] },
+  };
+}
+
 /** What a build page needs to know for its tags. */
 export interface BuildForCard {
   id: string;
