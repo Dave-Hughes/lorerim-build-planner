@@ -3620,6 +3620,53 @@ The question to Dave is still open in a canvas comment: should the share section
 
 ---
 
+## WO-90  Admin export and import of a build, and an Example tag on the sample build (16 Oct 2026)
+
+**Why.** Production has no builds yet. Iriel, the sample build for first visits, lives in the staging database. The chat session can't write to production, so Dave needs a way to move a build between environments himself. He'll do the same later with Zen's build. Dave also wants the sample marked as an example, so nobody takes it for a tested guide.
+
+1. **Export (admins only).**
+   - On a build's page, an admin sees one more item in its actions: `Export`.
+   - It downloads `<build name>.lorerim-build.json`, which holds:
+     - the build's name, description, game version, visibility, cover image URL, cover focus and plan;
+     - its tags (slugs);
+     - every guide document (`build_guides`: key, doc, text length).
+   - It leaves out the owner, ids, likes, featured and dates.
+   - Add a `format: 1` field so a later change can be read.
+2. **Import (admins only).**
+   - On `/admin`, a section `Import a build` with a file picker and `Import`.
+   - Validate the file:
+     - the plan through `validate.ts`'s schema;
+     - tags against the `tag` table, dropping unknown slugs;
+     - guide keys against what the app writes.
+   - Create a new build owned by the admin, with a fresh id, the file's visibility, `like_count` 0 and not featured.
+   - **Images:** the cover and every image in the guide docs are copied into this environment's own Blob paths:
+     - the cover to `<env>/covers/<userId>/`;
+     - guide images to that build's image prefix (`imagePrefix(id)` in `src/lib/guide/images.ts`).
+     - Rewrite the URLs to match, so nothing on production points at a `staging/` path that staging cleanup could delete. An image that can't be fetched is left out, and the import reports it.
+   - When done, go to the new build's page and show its id: Dave needs it for `SAMPLE_BUILD_ID`.
+   - It goes through a server action with the admin check and BotID, like the other admin actions.
+3. **The Example tag.**
+   - The sample build gets an `Example` tag wherever it appears: the hero's byline, its card in Browse, on profiles and in the featured slot, and the tour's first stop. The sample is `tourSampleId()` in `src/lib/builds/sample-config.ts`, which is `SAMPLE_BUILD_ID` or the built-in example.
+   - Style it like the other tags, in brass.
+   - Its tooltip (the small "i", design rule 4): `A sample to show what a build page can look like, not a tested guide.`
+   - The tag follows whichever id `SAMPLE_BUILD_ID` names, so pointing it at Zen's build later moves the tag. Nothing is stored on the build.
+
+### Done when
+- [ ] Unit: export then import round-trips a build's plan, tags and guides; unknown tags are dropped; a bad plan is refused with the reason.
+- [ ] Unit: imported image URLs are rewritten to this environment's prefixes.
+- [ ] e2e: a non-admin sees neither `Export` nor `Import a build`.
+- [ ] e2e: an admin exports the seeded build and imports it, getting a second build with the same levels and notes.
+- [ ] e2e: the sample build shows `Example` with its tooltip on its page and its card; other builds don't.
+- [ ] Screenshots of the Export action, the Import section and the Example tag (page and card).
+- [ ] All checks in CLAUDE.md pass.
+
+After it's on production, Dave will:
+1. Export Iriel (`7h38zdhjnu`) on staging.
+2. Import her on production.
+3. Set `SAMPLE_BUILD_ID` to her new id in Vercel (Production) and redeploy.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
