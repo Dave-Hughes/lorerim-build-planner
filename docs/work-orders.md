@@ -3761,16 +3761,16 @@ After it's on production, Dave will:
 Copy: use the game's words, follow the design rules, and add no how-it-works text.
 
 ### Done when
-- [ ] Unit: filtering, sorting and paging on the server (type, armor, source, search, each sort); slugs are unique; an `also` id resolves to its item.
-- [ ] e2e: with `FEATURE_GEAR` off, `/gear` and an item page are not found and the header has no Gear link.
-- [ ] e2e: on `/gear`:
+- [x] Unit: filtering, sorting and paging on the server (type, armor, source, search, each sort); slugs are unique; an `also` id resolves to its item.
+- [x] e2e: with `FEATURE_GEAR` off, `/gear` and an item page are not found and the header has no Gear link.
+- [x] e2e: on `/gear`:
   - picking Body and Light and sorting by Armor rating lists Daedric Mail Cuirass first;
   - the URL holds those filters, and Back restores them;
   - an item's name opens its page.
-- [ ] e2e: Glass Cuirass's page shows its stat line, Make it with Forge and Glass Smithing, Improve it, Where to find it, and Records.
-- [ ] e2e: a plugin link opens in a new tab and points at nexusmods.com; Skyrim.esm is plain text.
-- [ ] Screenshots at 1440 and 390: the index (Armor, Body, Light), the Weapons tab, the phone sheet open, and Glass Cuirass's page, compared with the canvas boards.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: Glass Cuirass's page shows its stat line, Make it with Forge and Glass Smithing, Improve it, Where to find it, and Records.
+- [x] e2e: a plugin link opens in a new tab and points at nexusmods.com; Skyrim.esm is plain text.
+- [x] Screenshots at 1440 and 390: the index (Armor, Body, Light), the Weapons tab, the phone sheet open, and Glass Cuirass's page, compared with the canvas boards.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

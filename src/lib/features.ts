@@ -15,9 +15,12 @@ function flag(name: string): boolean {
 export const storyOn = () => flag("FEATURE_STORY");
 /** The site's beginner's guide: /guide and its chapters, Mods, Questions and Terms, and its links. */
 export const siteGuideOn = () => flag("FEATURE_SITE_GUIDE");
+/** The Gear page (WO-92): /gear, every item's page, and Gear in the header. */
+export const gearOn = () => flag("FEATURE_GEAR");
 
 export interface Features {
   story: boolean;
   siteGuide: boolean;
+  gear: boolean;
 }
-export const features = (): Features => ({ story: storyOn(), siteGuide: siteGuideOn() });
+export const features = (): Features => ({ story: storyOn(), siteGuide: siteGuideOn(), gear: gearOn() });

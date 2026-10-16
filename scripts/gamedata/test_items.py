@@ -150,6 +150,12 @@ class ItemsTest(unittest.TestCase):
         self.assertEqual((by["Hide Shield"]["slot"], by["Hide Shield"]["armorType"]), ("Shield", "Light"))
         self.assertEqual((by["Iron Arrow"]["ammoType"], by["Steel Bolt"]["ammoType"]), ("Arrow", "Bolt"))
 
+    def test_one_entry_per_record_whatever_the_case(self):
+        a = {"id": "ccBGSSSE001-Fish.esm:000B94", "name": "Replica Ring of Khajiit", "kind": "armor", "order": 3455}
+        b = {"id": "ccbgssse001-fish.esm:000B94", "name": "Ring of Khajiit", "kind": "armor", "order": 692}
+        self.assertEqual(items.one_per_record([b, a]), [a])
+        self.assertEqual(items.one_per_record([a, b]), [a])
+
     def test_builds_the_planner_rows(self):
         rows = {r["name"]: r for r in items.build_items({"items": self.entries})}
         self.assertEqual(rows["Steel Armor"], {"id": "Fixture.esp:000821", "name": "Steel Armor", "kind": "armor", "slot": "Body", "type": "Body", "armorType": "Heavy", "stats": "Heavy armor, 25 armor, 30 weight", "armor": 25, "weight": 30, "also": ["Fixture.esp:000820"]})

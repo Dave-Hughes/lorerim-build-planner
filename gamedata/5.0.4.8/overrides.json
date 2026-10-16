@@ -241,7 +241,20 @@
       "^Unarmed$",
       "^\\$TNG_",
       "SMP ON Object",
-      "^Mule "
+      "^Mule ",
+      "^Secondary .+ Dagger$",
+      "^Auri Body$",
+      "^Ashley Graham Hair$",
+      "^HT_ArmorInvisibleHelmet$",
+      "^DO NOT USE$",
+      "^TAKEMETemp",
+      "^You shouldn't see this",
+      "^SnowElf$",
+      "^WolvenWidowBodice$",
+      "^natenb$",
+      "^Cargo Saddle \\(",
+      "^(Hide|Horn|Misc Sack|Wine Bottle)$",
+      "^(Braids|Bun)$"
     ]
   },
   "starts": {

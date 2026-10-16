@@ -1,0 +1,562 @@
+/* The Gear page and an item's page (WO-92): canvas boards GearIndex, GearItem and GearPhone. */
+.main {
+  padding-top: 44px;
+  padding-bottom: 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.h1 {
+  font-size: calc(44px * var(--title-scale));
+  line-height: 1;
+}
+
+/* Tabs: Armor, Weapons, Ammo, each with its count. */
+.tabs {
+  display: flex;
+  gap: 32px;
+  margin-top: 4px;
+  border-bottom: 1px solid var(--rule);
+}
+.tab {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 10px 0 12px;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  color: var(--muted);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.tab small {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--dim);
+}
+.tab:hover {
+  color: var(--text);
+}
+.tab[aria-current="page"] {
+  color: var(--text);
+  border-bottom-color: var(--ember);
+}
+
+/* The controls. */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.typeBlock,
+.typeSheet {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  color: var(--soft);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.chip small {
+  color: var(--dim);
+  font-size: 12px;
+}
+.chip:hover {
+  border-color: var(--rule-strong);
+  color: var(--text);
+}
+.chip[aria-pressed="true"] {
+  border-color: var(--ember);
+  background: rgba(240, 145, 63, 0.14);
+  color: var(--ember-text);
+  font-weight: 600;
+}
+.chip[aria-pressed="true"] small {
+  color: var(--ember-text);
+}
+.fields {
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+.fields > .wideOnly:empty {
+  display: none;
+}
+.search {
+  min-width: 0;
+}
+.phoneBar,
+.pills {
+  display: none;
+}
+
+.countLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+/* The table. */
+.tableFrame {
+  border: 1px solid var(--rule);
+  background: #121922;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--rule-strong);
+  white-space: nowrap;
+}
+.table th.sorted {
+  color: var(--ember-text);
+}
+.table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: top;
+  font-size: 15px;
+}
+.table tbody tr:hover td {
+  background: var(--panel);
+}
+.table .numCol {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.iconCol {
+  width: 44px;
+  padding-right: 0 !important;
+}
+.iconCol img {
+  margin-top: 3px;
+}
+.name {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+.name:hover {
+  color: var(--ember-hover);
+}
+.text {
+  display: block;
+  max-width: 720px;
+  margin-top: 2px;
+  color: var(--soft);
+  font-size: 14px;
+}
+.plugin {
+  color: var(--muted);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.plugin a,
+.records a {
+  color: var(--ember);
+  text-decoration: none;
+}
+.plugin a:hover,
+.records a:hover {
+  color: var(--ember-hover);
+}
+.station {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--brass);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.unknown {
+  color: var(--dim);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* The phone's list. */
+.list {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.item {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
+  gap: 4px 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  color: var(--text);
+  text-decoration: none;
+}
+.item img {
+  margin-top: 3px;
+}
+.itemName {
+  font-weight: 600;
+}
+.itemStats {
+  color: var(--muted);
+  font-size: 14px;
+}
+.itemStation {
+  color: var(--brass);
+}
+
+.pager {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  color: var(--muted);
+}
+.off {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Phone (GearPhone). */
+@media (max-width: 699px) {
+  .main {
+    padding-top: 24px;
+    padding-bottom: 48px;
+    gap: 16px;
+  }
+  .h1 {
+    font-size: 36px;
+  }
+  .tabs {
+    gap: 22px;
+  }
+  .tab {
+    font-size: 19px;
+    padding: 8px 0 10px;
+  }
+  .tab small {
+    font-size: 13px;
+  }
+  .controls {
+    gap: 16px;
+  }
+  .typeBlock,
+  .wideOnly {
+    display: none;
+  }
+  .fields {
+    display: block;
+  }
+  .search :global(.label) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  .phoneBar {
+    display: flex;
+    gap: 10px;
+  }
+  .phoneBar > * {
+    flex: 1;
+  }
+  .sortButton select {
+    width: 100%;
+    border: 1px solid var(--rule-strong);
+    background: transparent;
+    color: var(--text);
+    text-align: center;
+    text-align-last: center;
+    appearance: none;
+  }
+  .onCount {
+    margin-left: 8px;
+    color: var(--ember);
+  }
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 32px;
+    padding: 0 10px;
+    border: 1px solid var(--ember);
+    background: rgba(240, 145, 63, 0.14);
+    color: var(--ember-text);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .pill span[aria-hidden] {
+    color: var(--muted);
+  }
+  .countLine {
+    margin-top: 0;
+  }
+  .wide {
+    display: none;
+  }
+  .tableFrame {
+    display: none;
+  }
+  .list {
+    display: block;
+  }
+  .pager {
+    justify-content: space-between;
+  }
+  .pager > span:first-child {
+    order: 1;
+  }
+  .pager > :nth-child(2) {
+    order: 0;
+  }
+  .pager > :nth-child(3) {
+    order: 2;
+  }
+}
+
+/* The Filters sheet. */
+.sheetBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(8, 11, 15, 0.6);
+  display: flex;
+  align-items: flex-end;
+}
+.sheet {
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: var(--panel);
+  border-top: 1px solid var(--rule-strong);
+  padding: 20px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* An item's page. */
+.itemMain {
+  padding-top: 28px;
+  padding-bottom: 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.back {
+  align-self: flex-start;
+  font-size: 15px;
+  text-decoration: none;
+}
+.itemHead {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.bigIcon {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--rule-strong);
+  background: var(--panel);
+  display: grid;
+  place-items: center;
+}
+.bigIconInner img {
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  vertical-align: top;
+}
+.itemTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.statLine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+  color: var(--soft);
+  font-size: 17px;
+}
+.bar {
+  color: var(--rule-strong);
+  margin: 0 14px;
+}
+.itemText {
+  margin: -12px 0 0;
+  max-width: 760px;
+  color: var(--soft);
+}
+.itemGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+.itemColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.h2 {
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.panel {
+  border: 1px solid var(--rule);
+  background: #121922;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.panel p {
+  margin: 0;
+}
+.needs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.stationBig .station {
+  color: var(--text);
+  font-weight: 700;
+  font-size: 17px;
+}
+.perk {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 3px 10px;
+  border: 1px solid var(--rule-strong);
+  background: var(--panel-raised);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  cursor: help;
+}
+.materials {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 4px 10px;
+}
+.materials li {
+  display: contents;
+}
+.materials b {
+  text-align: right;
+  color: var(--text);
+}
+.improve {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.findText {
+  margin: 0;
+  max-width: 640px;
+  color: var(--soft);
+}
+.records {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 6px 16px;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: 13px;
+  color: var(--soft);
+}
+.records div {
+  display: contents;
+}
+.records dt,
+.records dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 899px) {
+  .itemGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 699px) {
+  .itemMain {
+    padding-top: 20px;
+    gap: 22px;
+  }
+  .itemHead {
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .statLine {
+    font-size: 15px;
+  }
+  .bar {
+    margin: 0 8px;
+  }
+}

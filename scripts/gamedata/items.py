@@ -231,6 +231,21 @@ def index_items(winners, kw_names, skip):
     return entries, counts
 
 
+def one_per_record(entries):
+    """
+    One entry per record (WO-92). Plugins spell a master's name differently ("ccBGSSSE001-Fish.esm"
+    and "ccbgssse001-fish.esm"), so one record can come out twice; the game treats the names as the
+    same file, so the entry latest in the load order is the one it uses.
+    """
+    best = {}
+    for i, e in enumerate(entries):
+        k = e["id"].lower()
+        if k not in best or e.get("order", i) >= best[k][0]:
+            best[k] = (e.get("order", i), e)
+    keep = {id(e) for _, e in best.values()}
+    return [e for e in entries if id(e) in keep]
+
+
 def merge(entries, prefer=None):
     """
     One entry per kind and name. The record latest in the load order wins (as the index always
@@ -378,7 +393,7 @@ def build_items(raw, skip=(), prefer=None):
     """
     rows = []
     kept = [e for e in raw["items"] if not any(re.search(p, e["name"], re.IGNORECASE) for p in skip)]
-    for e in merge(kept, prefer):
+    for e in merge(one_per_record(kept), prefer):
         if e["kind"] == "weapon":
             e = {**e, "weaponType": weapon_label(e["name"], e.get("weaponType"))}
         row = {"id": e["id"], "name": e["name"], "kind": e["kind"]}

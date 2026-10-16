@@ -105,7 +105,8 @@ test.describe("gear", () => {
   test("is set in each level's editor, under the new slot names", async ({ page, context }) => {
     await signIn(context);
     await page.goto(`/b/${SCRATCH_BUILD_ID}/edit?level=1`);
-    await expect(page.getByRole("link", { name: "Gear" })).toHaveCount(0);
+    // No Gear tab of its own (the site's Gear page, WO-92, is in the header).
+    await expect(page.locator('a:not(nav[aria-label="Site"] a)').getByText("Gear", { exact: true })).toHaveCount(0);
     const gear = page.getByRole("region", { name: "Gear" });
     await expect(gear).toContainText("Main hand");
     await expect(gear).toContainText("Steel sword");
