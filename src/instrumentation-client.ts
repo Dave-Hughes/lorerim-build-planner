@@ -2,7 +2,7 @@ import { initBotId } from "botid/client/core";
 
 /*
  * Vercel BotID (WO-40), Basic mode: POSTs from the site's pages carry the check, which covers sign-in
- * (from any page's header) and the server actions that write (create, save, like, report, copy), and
+ * (from any page's header, and the /signin page) and the server actions that write (create, save, like, report, copy), and
  * the image uploads. The server asks it in src/lib/moderation/bot.ts, on Vercel only. Not the guide's
  * autosave endpoint (/api/builds/<id>/guide): it's sent with keepalive as the page closes, and
  * BotID's client can't sign a request then.
@@ -10,6 +10,9 @@ import { initBotId } from "botid/client/core";
 initBotId({
   protect: [
     { path: "/", method: "POST" },
+    // The sign-in page behind the coming soon page (WO-84): without it here, its button's POST had no
+    // BotID token, read as a bot, and did nothing (found 16 Oct on lorerimplanner.com).
+    { path: "/signin", method: "POST" },
     { path: "/new", method: "POST" },
     { path: "/me", method: "POST" },
     { path: "/b/*", method: "POST" },
