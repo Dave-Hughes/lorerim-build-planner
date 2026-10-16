@@ -168,72 +168,181 @@
 .storyInner .h2 {
   margin-bottom: clamp(28px, 3.5vw, 48px);
 }
-/* Two by two, each panel at a whole multiple of its 160 by 100 pixels (3x, 2x on smaller screens),
-   so its pixels are even and match the hero's look. */
-.panels {
-  display: grid;
-  grid-template-columns: repeat(2, 480px);
-  justify-content: center;
-  gap: 48px 40px;
-  counter-reset: panel;
+/* The cutscene: one scene at a whole multiple of 160 by 100 (5x, 4x, 3x, then 2x on phones),
+   a dialogue box the same width under it, and a marker for each scene. */
+.cutscene {
+  --w: 800px;
+  width: var(--w);
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
-@media (max-width: 1119px) {
-  .panels {
-    grid-template-columns: repeat(2, 320px);
-    gap: 40px 24px;
+@media (max-width: 959px) {
+  .cutscene {
+    --w: 640px;
   }
 }
 @media (max-width: 719px) {
-  .panels {
-    grid-template-columns: 320px;
+  .cutscene {
+    --w: 480px;
   }
 }
-.panel {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+@media (max-width: 559px) {
+  .cutscene {
+    --w: 320px;
+  }
 }
-.panelArt {
+.stage {
   border: 1px solid #2a3442;
   background: #070a0f;
+  line-height: 0;
 }
-.panelArt::before,
-.panelArt::after,
-.laterCard::before,
-.laterCard::after {
+.stage::before,
+.stage::after {
   width: 18px;
   height: 18px;
   z-index: 1;
 }
-.panelArt::before,
-.laterCard::before {
+.stage::before {
   top: -6px;
   left: -6px;
 }
-.panelArt::after,
-.laterCard::after {
+.stage::after {
   bottom: -6px;
   right: -6px;
 }
-.panelArt img {
+.stage img {
   display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 160 / 100;
 }
-.panelWords {
+/* A game's dialogue box: dark, a cream rule inside a black one, square corners. */
+.dialog {
+  margin: 6px;
+  min-height: 132px;
+  box-sizing: border-box;
+  padding: 18px 22px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: #0e1424;
+  box-shadow:
+    0 0 0 3px #e8d3a4,
+    0 0 0 6px #06080b;
+}
+.dialogFace {
+  flex: none;
+  width: 72px;
+  height: 72px;
+}
+.dialogWords {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-.panelLabel {
+.dialogLabel {
   font-family: var(--font-title);
   font-weight: 700;
   font-size: 18px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ember);
+}
+.dialogLine {
+  margin: 0;
+  font-family: var(--font-flavor);
+  font-size: 22px;
+  line-height: 1.45;
+  color: #f3ead8;
+}
+/* The rest of the line is laid out but unseen, so the box never jumps as it types. */
+.dialogRest {
+  visibility: hidden;
+}
+.dialogMore {
+  margin-left: 8px;
+  font-size: 12px;
+  color: var(--ember);
+  animation: blink 1.2s steps(1) infinite;
+}
+@media (max-width: 559px) {
+  .dialog {
+    min-height: 0;
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  .dialogFace {
+    width: 48px;
+    height: 48px;
+  }
+  .dialogLine {
+    font-size: 19px;
+  }
+}
+/* The level markers: a line with a diamond for each scene, like the planner's level ruler. */
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+}
+.steps::before {
+  content: "";
+  position: absolute;
+  left: 12.5%;
+  right: 12.5%;
+  top: 7px;
+  height: 2px;
+  background: #2a3442;
+}
+.step {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8e9bab;
+}
+.stepMark {
+  width: 12px;
+  height: 12px;
+  margin-top: 2px;
+  transform: rotate(45deg);
+  background: #0b0f14;
+  border: 2px solid #566273;
+}
+.step:hover {
+  color: #f3ead8;
+}
+.step:hover .stepMark {
+  border-color: #b9a173;
+}
+.step[aria-pressed="true"] {
+  color: var(--ember);
+}
+.step[aria-pressed="true"] .stepMark {
+  background: var(--ember);
+  border-color: var(--ember);
+}
+.step:focus-visible {
+  outline: 2px solid #f3ead8;
+  outline-offset: 4px;
 }
 
 /* ---------- What it is ---------- */
@@ -347,6 +456,20 @@
   display: flex;
   gap: 22px;
   align-items: flex-start;
+}
+.laterCard::before,
+.laterCard::after {
+  width: 18px;
+  height: 18px;
+  z-index: 1;
+}
+.laterCard::before {
+  top: -6px;
+  left: -6px;
+}
+.laterCard::after {
+  bottom: -6px;
+  right: -6px;
 }
 .laterWords {
   display: flex;
@@ -766,6 +889,7 @@
   .stars,
   .fireGlow,
   .laterWall,
+  .dialogMore,
   .blink {
     transition: none;
     animation: none;

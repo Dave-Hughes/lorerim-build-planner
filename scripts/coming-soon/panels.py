@@ -49,6 +49,8 @@ def put(im,rows,x,y):
     for j,r in enumerate(g):
         for i,c in enumerate(r):
             if c!='.' and 0<=x+i<PW and 0<=y+j<PH: px[x+i,y+j]=hexc(P.PALETTE[c])
+def put_flipped(im,rows,x,y):
+    put(im,[r[::-1] for r in rows],x,y)
 def rect(im,x0,y0,x1,y1,c):
     px=im.load()
     for y in range(y0,y1+1):
@@ -65,7 +67,7 @@ def glow(im,cx,cy,r,col,alpha):
                     px[x,y]=(int(o[0]*(1-a2)+col[0]*a2),int(o[1]*(1-a2)+col[1]*a2),int(o[2]*(1-a2)+col[2]*a2),255)
                     break
 
-# 1. Level 1: dawn on the road, a signpost, Tapps with the map
+# 1. Level 1: dawn on the road, a signpost, Tapps pointing the way
 def p1(frame):
     im=canvas(); grad(im,['#1a2539','#2a3450','#4a4058','#7a5060','#c4652a','#f0913f'],0,64)
     rect(im,0,64,PW-1,PH-1,'#0b0f14')
@@ -84,7 +86,8 @@ def p1(frame):
     rect(im,108,64,109,86,'#5c4b2e'); rect(im,110,66,124,69,'#b9a173'); rect(im,110,66,124,66,'#e8d3a4'); rect(im,124,67,125,68,'#b9a173')
     rect(im,94,72,107,75,'#b9a173'); rect(im,94,72,107,72,'#e8d3a4'); rect(im,93,73,93,74,'#b9a173')
     for (x,y) in ((112,67),(115,67),(118,67),(121,67),(97,73),(100,73),(103,73)): px[x,y]=hexc('#5c4b2e')
-    put(im, getattr(P,f'TAPPS_LOST_{frame%3}_ROWS'), 52, 60)
+    # Tapps, keen, pointing down the road (he bobs on frame 1)
+    put_flipped(im, P.TAPPS_POINT_ROWS, 50, 59 - (frame % 2))
     return im
 
 # 2. Level 3: night forest, eyes in the dark
@@ -109,7 +112,7 @@ def p2(frame):
     put(im, getattr(P,f'TAPPS_LOST_{frame%2}_ROWS'), 36, 60)
     return im
 
-# 3. Writing it down: candlelit desk
+# 3. Level 10: reading other players' guides by candlelight
 def p3(frame):
     im=canvas(); rect(im,0,0,PW-1,PH-1,'#141b23')
     px=im.load()
@@ -134,39 +137,52 @@ def p3(frame):
     fl=[(121,66),(122,66),(121,67),(122,67),(121,68),(122,68),(121,65)] if frame%2==0 else [(121,66),(122,66),(122,65),(121,67),(122,67),(121,68),(122,68)]
     for (x,y) in fl: px[x,y]=hexc('#f0913f')
     px[121,67]=hexc('#ecc07a'); px[122,68]=hexc('#ecc07a')
-    # an open book on the desk with a little constellation
+    # other players' guides: an open book, an unrolled scroll, and two stacks
     rect(im,86,74,112,79,'#e8d3a4'); rect(im,99,74,99,79,'#b9a173')
-    for (x,y) in ((89,77),(92,75),(95,77),(102,76),(105,75),(108,77)): px[x,y]=hexc('#f0913f')
+    for yy in (75,77):
+        rect(im,88,yy,96,yy,'#8a7347'); rect(im,102,yy,110,yy,'#8a7347')
+    rect(im,58,77,82,79,'#e8d3a4'); rect(im,58,76,59,79,'#b9a173'); rect(im,81,76,82,79,'#b9a173')
+    for xx in range(61,80,3): px[xx,78]=hexc('#5c4b2e')
+    stacks=((132,['#86391b','#4f6fae','#8a7347','#3e5230']),(140,['#566273','#9c4a3e','#b9a173']))
+    for sx,cs in stacks:
+        y=79
+        for i,c in enumerate(cs):
+            w=7-(i%2); rect(im,sx-(i%2),y-2,sx-(i%2)+w,y,c); rect(im,sx-(i%2),y-2,sx-(i%2)+w,y-2,'#06080b'); y-=3
     put(im, getattr(P,f'TAPPS_WRITING_{min(frame,3)}_ROWS'), 52, 51)
     return im
 
-# 4. Level 50: the tavern
+# 4. Level 50: a notice board full of guides, Tapps cheering beside it
 def p4(frame):
     im=canvas(); rect(im,0,0,PW-1,PH-1,'#2a1d14')
     px=im.load()
     for y in range(PH):
         for x in range(PW):
             if y%12==0: px[x,y]=hexc('#1f150e')
-    # hearth
-    rect(im,104,30,150,86,'#3a3d48'); rect(im,108,50,146,86,'#06080b')
-    for i in range(108,147,4):
-        for j in range(30,50,4): px[i,j]=hexc('#566273')
-    glow(im,127,74,46,(240,145,63),26+(frame%2)*5)
-    fl=["..o..o..","..oooo.o",".ooyyoo.","ooyWyyoo","oyyWWyyo"] if frame%2==0 else [".o..o...",".oooo.o.","ooyyooo.","oyyWyyoo","oyyWWyyo"]
-    for r,row in enumerate(fl):
-        for c,ch in enumerate(row):
-            if ch!='.':
-                for k in range(3):
-                    px[115+c*3+k,78+r]=hexc({'o':'#f0913f','y':'#ecc07a','W':'#f4f7f9'}[ch])
-    rect(im,112,84,142,86,'#5c4b2e')
-    # banner
-    rect(im,24,10,44,34,'#86391b'); rect(im,24,10,24,34,'#d07a6a'); rect(im,22,9,46,10,'#5c4b2e')
-    for (x,y) in ((34,18),(33,20),(35,20),(34,22),(34,20)): px[x,y]=hexc('#ecd28c')
-    # table
-    rect(im,10,84,96,87,'#8a7347'); rect(im,10,84,96,84,'#b9a173'); rect(im,14,88,16,PH-1,'#5c4b2e'); rect(im,90,88,92,PH-1,'#5c4b2e')
-    # two tankards on the table
-    for tx in (70,80):
-        rect(im,tx,77,tx+4,83,'#8e9bab'); rect(im,tx,76,tx+4,76,'#f4f7f9'); rect(im,tx+5,78,tx+5,81,'#566273')
-    put(im, getattr(P,f'TAPPS_CHEERS_{[0,1,0,2][frame%4]}_ROWS'), 30, 60)
+    # a lamp's warm light
+    glow(im,98,44,58,(240,145,63),18+(frame%2)*4)
+    # the board: a dark frame, cork, pages pinned all over it
+    rect(im,56,12,152,80,'#3a2a1a'); rect(im,59,15,149,77,'#8a6a44')
+    for y in range(15,78):
+        for x in range(59,150):
+            if (x*7+y*13)%11==0: px[x,y]=hexc('#7a5c3a')
+    rnd=random.Random(5)
+    icons=['#f0913f','#4f6fae','#86b47f','#d07a6a','#cddcf6','#b9a173','#9c4a3e','#ecd28c']
+    pages=[(63,19),(77,21),(91,18),(105,20),(119,19),(133,21),(65,45),(80,47),(108,46),(123,44),(136,47),(70,60),(117,61)]
+    for i,(x,y) in enumerate(pages):
+        w,h=11,13
+        rect(im,x+1,y+1,x+w+1,y+h+1,'#3a2a1a')              # shadow
+        rect(im,x,y,x+w,y+h,'#e8d3a4' if i%3 else '#f4f7f9')
+        rect(im,x+2,y+2,x+4,y+4,icons[i%len(icons)])          # a little icon
+        for ly in (y+7,y+9,y+11): rect(im,x+2,ly,x+w-2-rnd.randint(0,3),ly,'#8a7347')
+        px[x+w//2,y]=hexc('#d07a6a' if i%2 else '#f0913f')  # the pin
+    # the newest one, bigger, with the planner's star: Tapps's own
+    x,y=92,40; rect(im,x+1,y+1,x+16,y+21,'#3a2a1a'); rect(im,x,y,x+15,y+20,'#f4f7f9')
+    for (dx,dy) in ((7,3),(7,4),(6,5),(7,5),(8,5),(5,6),(6,6),(7,6),(8,6),(9,6),(6,7),(7,7),(8,7),(7,8),(7,9)):
+        px[x+dx,y+dy]=hexc('#f0913f')
+    for ly in (y+12,y+14,y+16,y+18): rect(im,x+2,ly,x+13-(ly%3),ly,'#8a7347')
+    px[x+7,y]=hexc('#86391b')
+    if frame%2: px[x+3,y+2]=hexc('#ffe3a3'); px[x+12,y+9]=hexc('#ffe3a3')   # a glint
+    # the floor and a bench
+    rect(im,0,88,PW-1,PH-1,'#1f150e'); rect(im,0,88,PW-1,88,'#3a2a1a')
+    put(im, getattr(P,f'TAPPS_CHEERS_{[0,1,0,2][frame%4]}_ROWS'), 20, 59)
     return im
-

@@ -26,30 +26,30 @@ export const HERO = {
   fg: [0, 1, 2, 3, 4, 5].map((i) => px(`hero-fg-${i}`)),
 };
 
-/** "How this started": four panels at 160 by 100, each a run of frames. */
+/** "How this started": four scenes at 160 by 100, each a run of frames, and Tapps's line for each (Dave, 15 Oct). */
 export const STORY = [
   {
     label: "Level 1",
-    text: "I loved LoreRim from the start, but had no idea how to actually play it.",
-    alt: "Tapps at a signpost at dawn, holding a map, a question mark over his helmet",
-    frames: [0, 1, 0, 2].map((i) => px(`p1-${i}`)),
+    text: "I loved LoreRim from the start.",
+    alt: "Tapps on a road at dawn, pointing past a signpost",
+    frames: [0, 1].map((i) => px(`p1-${i}`)),
   },
   {
     label: "Level 3",
-    text: "LoreRim did not wait for me to figure it out.",
+    text: "But it's tough as hell.",
     alt: "Tapps in a dark forest at night, a sabre cat with glowing eyes behind him",
     frames: [0, 1, 0, 2].map((i) => px(`p2-${i}`)),
   },
   {
     label: "Level 10",
-    text: "So I read guides on what worked for other players.",
-    alt: "Tapps at a desk by candlelight, writing in a book",
+    text: "So I read guides from other players.",
+    alt: "Tapps at a desk by candlelight, reading other players' guides",
     frames: [0, 1, 2, 3].map((i) => px(`p3-${i}`)),
   },
   {
     label: "Level 50",
-    text: "And now this is a place for those guides to live, in the detail they need!",
-    alt: "Tapps in a tavern by the hearth, raising a tankard of mead",
+    text: "Then I built a place where we can make more complete guides, and share them with each other.",
+    alt: "Tapps cheering beside a notice board covered in pinned guides",
     frames: [0, 1, 2, 3].map((i) => px(`p4-${i}`)),
   },
 ];

@@ -12,7 +12,8 @@ import { levelMarks } from "@/lib/rules/derive";
 import { stretches } from "@/lib/rules/stretches";
 import { notedLevels } from "@/lib/guide/doc";
 import { DISCORD } from "@/lib/links";
-import { HERO, STORY } from "@/lib/coming-soon/art";
+import { HERO } from "@/lib/coming-soon/art";
+import { Cutscene } from "./cutscene";
 import styles from "./coming-soon.module.css";
 
 /** One level every 280 ms (WO-86), so new gear can be read; at 50 it holds 16 levels' time, then starts from 1. */
@@ -231,33 +232,14 @@ export function ComingSoon() {
         </div>
       </section>
 
-      {/* How this started: Tapps's story in four pixel panels (WO-87). */}
+      {/* How this started: Tapps's story as a little cutscene. */}
       <section className={styles.story} aria-labelledby="story-title">
         <div className={styles.storyInner}>
           <div className={styles.storyBody}>
             <h2 id="story-title" className={styles.h2}>
               How this started
             </h2>
-            <div className={styles.panels}>
-              {STORY.map((p) => (
-                <figure key={p.label} className={styles.panel}>
-                  <div className={`frame ${styles.panelArt}`}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      className={styles.pix}
-                      src={p.frames[panel % p.frames.length]}
-                      alt={p.alt}
-                      width={160}
-                      height={100}
-                    />
-                  </div>
-                  <figcaption className={styles.panelWords}>
-                    <span className={styles.panelLabel}>{p.label}</span>
-                    <span className={styles.say}>{p.text}</span>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            <Cutscene frame={panel} still={still} />
           </div>
         </div>
       </section>
