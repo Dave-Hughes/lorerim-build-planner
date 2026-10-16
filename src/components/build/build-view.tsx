@@ -1542,7 +1542,11 @@ function Cover({
   }, []);
 
   return (
-    <section ref={hero} aria-label="Build" className={`${styles.cover} ${build.coverImageUrl ? "" : styles.coverPlain}`}>
+    <section
+      ref={hero}
+      aria-label="Build"
+      className={`${styles.cover} ${build.coverImageUrl ? "" : styles.coverPlain} ${!build.coverImageUrl && themeOf(build.plan.theme).vars["hero-art"] !== "none" ? styles.coverArt : ""}`}
+    >
       {build.coverImageUrl && (
         <div ref={layer} className={styles.coverLayer} aria-hidden="true">
           <div

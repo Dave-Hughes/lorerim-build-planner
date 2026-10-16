@@ -21,8 +21,8 @@ test("point 4: with reduced motion the counter reads 50 and all 15 of Iriel's Ma
   const lit = await stars.evaluateAll((els) => els.filter((e) => /taken/.test(e.className)).length);
   expect(lit).toBe(15);
   expect(await stars.evaluateAll((els) => els.every((e) => e.getAttribute("tabindex") === "-1"))).toBe(true);
-  // The story panels hold frame 0 (since WO-87, in place of Tapps's three poses).
-  for (const n of [1, 2, 3, 4]) await expect(page.locator(`img[src="/coming-soon/px/p${n}-0.png"]`)).toBeVisible();
+  // The story holds still: since the cutscene (15 Oct), on its first scene's first frame.
+  await expect(page.locator('img[src="/coming-soon/px/p1-0.png"]')).toBeVisible();
 });
 
 test("point 3: without reduced motion the tree opens at level 20 (WO-85) and counts up", async ({ page }) => {

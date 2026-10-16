@@ -68,6 +68,8 @@ export const GEAR_BUILD_ID = "e2egearnew";
 export const GEAR82_BUILD_ID = "e2egear82x";
 /** WO-83: no gear yet, for the gear icons. */
 export const GEAR83_BUILD_ID = "e2egear83x";
+/** WO-89: no cover, for the Aurora theme's pixel hero. */
+export const AURORA_BUILD_ID = "e2eavrvra2";
 /** The sample with level 5's Destiny point unspent (Konahrik), for the editor's Destiny control. */
 export const DESTINY_BUILD_ID = "e2edstnyaa";
 /** A copy of Iriel from staging (e2e/fixtures/iriel.json): 30 levels, gear changes, Destiny, a note at every level. Listed. */
@@ -217,6 +219,16 @@ export async function seed() {
         createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
         name: "Gear by Type",
         description: "No gear yet.",
+        visibility: "unlisted",
+        gameVersion: "5.0.4.8",
+        plan: { ...samplePlan(), gear: [] },
+      },
+      {
+        id: AURORA_BUILD_ID,
+        ownerId: TEST_USER_ID,
+        createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
+        name: "Under the Aurora",
+        description: "No cover, for the Aurora theme.",
         visibility: "unlisted",
         gameVersion: "5.0.4.8",
         plan: { ...samplePlan(), gear: [] },

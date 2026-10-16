@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Alegreya, Alegreya_SC, Sofia_Sans, Sofia_Sans_Extra_Condensed } from "next/font/google";
+import { Alegreya, Alegreya_SC, Jersey_10, Sofia_Sans, Sofia_Sans_Extra_Condensed } from "next/font/google";
 import "./globals.css";
 import { SITE_LINE, SITE_NAME, siteBase, siteMetadata } from "@/lib/og/metadata";
 import { FeaturesProvider } from "@/components/features";
@@ -15,6 +15,9 @@ const sofiaCondensed = Sofia_Sans_Extra_Condensed({
 const alegreya = Alegreya({ subsets: ["latin"], style: ["normal", "italic"], weight: ["400", "700"], variable: "--font-alegreya" });
 // Only the intro's first line, in small caps: not preloaded on every page.
 const alegreyaSC = Alegreya_SC({ subsets: ["latin"], weight: ["500", "700"], variable: "--font-alegreya-sc", preload: false });
+// The pixel face: the coming soon page's title and Opening soon, and Aurora's build title (WO-89).
+// Not preloaded, so the pages that don't use it never fetch it.
+const pixel = Jersey_10({ subsets: ["latin"], weight: "400", variable: "--font-pixel", preload: false });
 
 // Link previews (WO-33): absolute image URLs on staging and production, and the site's card on
 // every page that doesn't set its own. "./" is each page's own address.
@@ -27,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${sofia.variable} ${sofiaCondensed.variable} ${alegreya.variable} ${alegreyaSC.variable}`}>
+    <html lang="en" className={`${sofia.variable} ${sofiaCondensed.variable} ${alegreya.variable} ${alegreyaSC.variable} ${pixel.variable}`}>
       <body>
         {/* The launch switches (WO-81), for the client components that hide what's off. */}
         <FeaturesProvider value={features()}>{children}</FeaturesProvider>

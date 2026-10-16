@@ -1,13 +1,14 @@
 /**
  * Guide themes (WO-37): the look of a build's page below the site header. Each theme is a set of
  * CSS custom properties that override the site's tokens (globals.css) on the build page's root, so
- * components need no theme logic. Ember is the site's own look and the default. Fonts and layout
- * never change. Colours for the five come from the canvas artboard "DetailsThemes"; the shades
- * between them are picked to keep every text pair at WCAG AA (themes.test.ts checks).
+ * components need no theme logic. Ember is the site's own look and the default. Layout never changes,
+ * nor do fonts, except Aurora's: it sets the build's title in the pixel face (WO-89). Colours for the
+ * first five come from the canvas artboard "DetailsThemes", Aurora's from the coming soon page; the
+ * shades between them are picked to keep every text pair at WCAG AA (themes.test.ts checks).
  */
 import type { CSSProperties } from "react";
 
-export type ThemeId = "ember" | "parchment" | "frost" | "daedric" | "dwemer";
+export type ThemeId = "ember" | "parchment" | "frost" | "daedric" | "dwemer" | "aurora";
 
 /** The tokens a theme sets. Names match globals.css without the leading "--". */
 export interface ThemeVars {
@@ -47,6 +48,10 @@ export interface ThemeVars {
   "hero-veil": string;
   /** The hero with no cover image. */
   "hero-plain": string;
+  /** Pixel art for the hero with no cover image, layered front to back (WO-89); "none" for none. */
+  "hero-art": string;
+  /** The face of the build's title in the hero (WO-89): the site's title face, but Aurora's pixel one. */
+  "hero-title-font": string;
 }
 
 export interface Theme {
@@ -92,6 +97,8 @@ const EMBER: ThemeVars = {
   "hero-tint": "transparent",
   "hero-veil": "0%",
   "hero-plain": "none",
+  "hero-art": "none",
+  "hero-title-font": "var(--font-title)",
 };
 
 export const THEMES: Theme[] = [
@@ -135,6 +142,8 @@ export const THEMES: Theme[] = [
       "hero-tint": "#b9a77f",
       "hero-veil": "62%",
       "hero-plain": "linear-gradient(180deg, #b9a77f 0%, #ebe1c8 100%)",
+      "hero-art": "none",
+      "hero-title-font": "var(--font-title)",
     },
   },
   {
@@ -175,6 +184,8 @@ export const THEMES: Theme[] = [
       "hero-tint": "#34506a",
       "hero-veil": "0%",
       "hero-plain": "linear-gradient(180deg, #34506a 0%, #0f1a24 100%)",
+      "hero-art": "none",
+      "hero-title-font": "var(--font-title)",
     },
   },
   {
@@ -215,6 +226,8 @@ export const THEMES: Theme[] = [
       "hero-tint": "#4a1a18",
       "hero-veil": "0%",
       "hero-plain": "linear-gradient(180deg, #4a1a18 0%, #120a0b 100%)",
+      "hero-art": "none",
+      "hero-title-font": "var(--font-title)",
     },
   },
   {
@@ -255,6 +268,53 @@ export const THEMES: Theme[] = [
       "hero-tint": "#3a3524",
       "hero-veil": "0%",
       "hero-plain": "linear-gradient(180deg, #3a3524 0%, #10181a 100%)",
+      "hero-art": "none",
+      "hero-title-font": "var(--font-title)",
+    },
+  },
+  {
+    id: "aurora",
+    name: "Aurora",
+    line: "Stars, snow and a campfire.",
+    vars: {
+      ground: "#0c1222",
+      panel: "#111a2e",
+      "panel-raised": "#17213a",
+      "panel-high": "#1e2a46",
+      sunk: "#0e1528",
+      "sunk-deep": "#090e1b",
+      rule: "#25304d",
+      "rule-soft": "#19223a",
+      "rule-strong": "#34416a",
+      "line-bright": "#4a588a",
+      text: "#f3ead8",
+      soft: "#ddd5c6",
+      muted: "#a7a08f",
+      faint: "#9a9384",
+      dim: "#857e70",
+      bright: "#fffaf0",
+      ember: "#f0913f",
+      "ember-text": "#f6c08f",
+      "ember-hover": "#f5a55a",
+      "ember-press": "#d97f33",
+      "on-ember": "#0c1222",
+      // The cream of the coming soon page's dialogue box.
+      brass: "#e8d3a4",
+      // Destiny in aurora green.
+      destiny: "#7cc9a2",
+      "destiny-text": "#a8e0c2",
+      "destiny-line": "#2c5a48",
+      "destiny-ground": "#0d1c1f",
+      health: "#d9877a",
+      magicka: "#8aaee6",
+      stamina: "#93c28c",
+      stripe: "transparent",
+      "hero-tint": "#0e1a36",
+      "hero-veil": "0%",
+      "hero-plain": "linear-gradient(180deg, #0e1a36 0%, #0c1222 100%)",
+      // The coming soon scene, front to back: the land, stars A and aurora A over the sky.
+      "hero-art": "url(/coming-soon/px/hero-land.png), url(/coming-soon/px/hero-stars-a.png), url(/coming-soon/px/hero-aurora-a.png), url(/coming-soon/px/hero-sky.png)",
+      "hero-title-font": "var(--font-pixel), var(--font-title)",
     },
   },
 ];

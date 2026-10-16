@@ -107,10 +107,22 @@
     animation: none;
   }
 }
-/* Without a cover image the hero is only as tall as its text. */
+/* Without a cover image the hero is only as tall as its text, over the theme's pixel art if it has any. */
 .coverPlain {
   min-height: 0;
-  background-image: repeating-linear-gradient(135deg, var(--stripe) 0 2px, transparent 2px 16px), var(--hero-plain);
+  background-image: var(--hero-art), repeating-linear-gradient(135deg, var(--stripe) 0 2px, transparent 2px 16px), var(--hero-plain);
+}
+/* A theme with pixel art (Aurora, WO-89): the scene drawn pixel for pixel, tall enough to read. */
+.coverArt {
+  min-height: 360px;
+  background-size: cover;
+  background-position: 62% 100%;
+  image-rendering: pixelated;
+}
+@media (max-width: 599px) {
+  .coverArt {
+    min-height: 240px;
+  }
 }
 .coverFade {
   position: absolute;
@@ -143,6 +155,19 @@
   line-height: 0.92;
   letter-spacing: 0.04em;
   text-wrap: balance;
+}
+/* The build's title in the theme's face: the site's, or Aurora's pixel one (WO-89). */
+.cover .h1 {
+  font-family: var(--hero-title-font);
+}
+/* Aurora: the pixel face, mixed case, a hard shadow, a little larger since Jersey runs small. */
+[data-theme="aurora"] .cover .h1 {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  line-height: 0.9;
+  font-size: calc(clamp(44px, 7vw, 76px) * var(--title-scale) * 1.15);
+  text-shadow: 3px 3px 0 #070a0f;
 }
 .description {
   margin: 0;

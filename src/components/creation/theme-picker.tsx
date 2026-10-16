@@ -33,7 +33,7 @@ export function ThemePicker({
   return (
     <fieldset className={styles.fieldset}>
       <legend className="label">Theme</legend>
-      <span className="field-hint">The look of this build&apos;s page. Fonts and layout stay the same.</span>
+      <span className="field-hint">The look of this build&apos;s page. Layout stays the same.</span>
       <div className={styles.cards}>
         {THEMES.map((t) => (
           <button key={t.id} type="button" className={styles.card} aria-pressed={t.id === current} onClick={() => onPick(t.id)}>

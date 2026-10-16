@@ -16,7 +16,8 @@
 }
 .cards {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  /* Six themes since Aurora (WO-89). */
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 14px;
 }
 @media (max-width: 1100px) {
@@ -75,7 +76,11 @@
 .miniHero {
   flex: none;
   height: 46px;
-  background: var(--hero-plain), linear-gradient(180deg, var(--panel-high), var(--ground));
+  /* A theme's pixel art (Aurora) drawn crisp in the small hero too. */
+  background: var(--hero-art), var(--hero-plain), linear-gradient(180deg, var(--panel-high), var(--ground));
+  background-size: cover;
+  background-position: 62% 100%;
+  image-rendering: pixelated;
   display: flex;
   align-items: flex-end;
   padding: 6px 8px;
@@ -154,7 +159,10 @@
   min-height: 220px;
   display: flex;
   align-items: flex-end;
-  background: var(--hero-plain), linear-gradient(180deg, var(--panel-high), var(--ground));
+  background: var(--hero-art), var(--hero-plain), linear-gradient(180deg, var(--panel-high), var(--ground));
+  background-size: cover;
+  background-position: 62% 100%;
+  image-rendering: pixelated;
 }
 .heroImage,
 .heroTint,
@@ -183,10 +191,20 @@
   gap: 8px;
 }
 .name {
+  font-family: var(--hero-title-font);
   font-size: 48px;
   line-height: 0.95;
   letter-spacing: 0.03em;
   color: var(--bright);
+}
+/* Aurora's build title in the pixel face, as the build page sets it (WO-89). */
+[data-theme="aurora"] .name {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  line-height: 0.9;
+  font-size: 55px;
+  text-shadow: 3px 3px 0 #070a0f;
 }
 .description {
   font-size: 19px;

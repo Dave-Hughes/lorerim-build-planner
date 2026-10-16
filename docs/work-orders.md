@@ -3612,11 +3612,11 @@ The question to Dave is still open in a canvas comment: should the share section
 `validate.ts` takes the theme ids from `THEME_IDS`, so no migration is needed.
 
 ### Done when
-- [ ] Unit: Aurora sets every token and meets WCAG AA (the existing loop covers both).
-- [ ] e2e: picking Aurora in Set up and saving puts the scene in the hero of a build with no cover, and keeps the cover on one with a cover.
-- [ ] e2e: in Aurora the build's title is set in Jersey 10; in Ember it isn't.
-- [ ] Screenshots at 1440 and 390 of a no-cover build and a cover build in Aurora, plus the six-card picker.
-- [ ] All checks in CLAUDE.md pass.
+- [x] Unit: Aurora sets every token and meets WCAG AA (the existing loop covers both).
+- [x] e2e: picking Aurora in Set up and saving puts the scene in the hero of a build with no cover, and keeps the cover on one with a cover.
+- [x] e2e: in Aurora the build's title is set in Jersey 10; in Ember it isn't.
+- [x] Screenshots at 1440 and 390 of a no-cover build and a cover build in Aurora, plus the six-card picker.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

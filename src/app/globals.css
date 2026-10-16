@@ -30,6 +30,9 @@
   --hero-tint: transparent;
   --hero-veil: 0%;
   --hero-plain: none;
+  /* Guide themes (WO-89): pixel art for a hero with no cover, and the build title's face. */
+  --hero-art: none;
+  --hero-title-font: var(--font-title);
   /* Destiny (WO-27): its own colour everywhere it shows. Text on dark passes 4.5:1 (#d9c491: 9.3 to
      10.9; #b9a173: 6.4 to 7.5). Perks stay ember. */
   --destiny: #b9a173;
