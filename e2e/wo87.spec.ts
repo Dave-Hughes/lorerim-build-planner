@@ -48,8 +48,8 @@ test("How this started has its four panels; What it is comes before Plan a chara
   for (const [label, text] of [
     ["Level 1", "I loved LoreRim from the start, but had no idea how to actually play it."],
     ["Level 3", "LoreRim did not wait for me to figure it out."],
-    ["Writing it down", "So I started writing down what I learned, as I played, level by level."],
-    ["Level 50", "This is a place for you to do the same!"],
+    ["Reading up", "So I read guides on what worked for other players."],
+    ["Level 50", "And now this is a place for those guides to live, in the detail they need!"],
   ]) {
     const panel = story.locator("figure").filter({ hasText: label });
     await expect(panel.locator("figcaption")).toContainText(text);

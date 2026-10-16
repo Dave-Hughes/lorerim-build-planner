@@ -39,14 +39,14 @@ export const STORY = [
     frames: [0, 1, 0, 2].map((i) => px(`p2-${i}`)),
   },
   {
-    label: "Writing it down",
-    text: "So I started writing down what I learned, as I played, level by level.",
+    label: "Reading up",
+    text: "So I read guides on what worked for other players.",
     alt: "Tapps at a desk by candlelight, writing in a book",
     frames: [0, 1, 2, 3].map((i) => px(`p3-${i}`)),
   },
   {
     label: "Level 50",
-    text: "This is a place for you to do the same!",
+    text: "And now this is a place for those guides to live, in the detail they need!",
     alt: "Tapps in a tavern by the hearth, raising a tankard of mead",
     frames: [0, 1, 2, 3].map((i) => px(`p4-${i}`)),
   },
