@@ -75,7 +75,7 @@ test("with reduced motion the hero holds its first frame, stars A and aurora A, 
   // The cutscene holds its first scene, its line already written out.
   await expect(page.locator('img[src$="/p1-0.png"]')).toBeVisible();
   await expect(page.getByTestId("story-line")).toHaveText(
-    "I loved LoreRim from the start.",
+    "Hi, I'm Tapps. I've loved LoreRim from my first experience playing it.",
   );
 });
 
@@ -85,9 +85,15 @@ test("How this started has its four panels; What it is comes before Plan a chara
   await page.goto("/coming-soon");
   const story = page.getByRole("region", { name: "How this started" });
   const lines = [
-    ["Level 1", "I loved LoreRim from the start."],
-    ["Level 3", "But it's tough as hell."],
-    ["Level 10", "So I read guides from other players."],
+    [
+      "Level 1",
+      "Hi, I'm Tapps. I've loved LoreRim from my first experience playing it.",
+    ],
+    ["Level 3", "But it's tough as hell. I got my teeth kicked in."],
+    [
+      "Level 10",
+      "So I read guides by other players, and followed them to learn how to play.",
+    ],
     [
       "Level 50",
       "Then I built a place where we can make more complete guides, and share them with each other.",
@@ -105,7 +111,7 @@ test("How this started has its four panels; What it is comes before Plan a chara
   );
   await expect(story.locator('img[src*="/p3-"]')).toBeVisible();
   await expect(story.getByTestId("story-line")).toHaveText(
-    "So I read guides from other players.",
+    "So I read guides by other players, and followed them to learn how to play.",
     { timeout: 5000 },
   );
 

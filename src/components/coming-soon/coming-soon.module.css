@@ -157,16 +157,25 @@
 .storyInner {
   max-width: 1332px;
   margin: 0 auto;
-  padding: clamp(56px, 7vw, 100px) clamp(16px, 4vw, 54px);
+  padding: 0 clamp(16px, 4vw, 54px);
 }
-/* The heading lines up with the panels, which keep their whole-pixel width. */
-.storyBody {
-  width: fit-content;
-  max-width: 100%;
-  margin: 0 auto;
+/* Scroll drives the story: a tall track, the cutscene pinned in the middle of the screen while it
+   passes, a quarter of the scroll per scene (Dave, 15 Oct). */
+.track {
+  height: calc(100vh + 3 * 65vh);
+  height: calc(100svh + 3 * 65svh);
 }
-.storyInner .h2 {
-  margin-bottom: clamp(28px, 3.5vw, 48px);
+.pinned {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cutscene .h2 {
+  margin: 0 0 4px;
 }
 /* The cutscene: one scene at a whole multiple of 160 by 100 (5x, 4x, 3x, then 2x on phones),
    a dialogue box the same width under it, and a marker for each scene. */
@@ -177,19 +186,20 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
 }
-@media (max-width: 959px) {
+/* It has to fit the screen's height too, since it's pinned there. */
+@media (max-width: 959px), (max-height: 960px) {
   .cutscene {
     --w: 640px;
   }
 }
-@media (max-width: 719px) {
+@media (max-width: 719px), (max-height: 780px) {
   .cutscene {
     --w: 480px;
   }
 }
-@media (max-width: 559px) {
+@media (max-width: 559px), (max-height: 600px) {
   .cutscene {
     --w: 320px;
   }
@@ -262,12 +272,6 @@
 /* The rest of the line is laid out but unseen, so the box never jumps as it types. */
 .dialogRest {
   visibility: hidden;
-}
-.dialogMore {
-  margin-left: 8px;
-  font-size: 12px;
-  color: var(--ember);
-  animation: blink 1.2s steps(1) infinite;
 }
 @media (max-width: 559px) {
   .dialog {
@@ -889,7 +893,6 @@
   .stars,
   .fireGlow,
   .laterWall,
-  .dialogMore,
   .blink {
     transition: none;
     animation: none;

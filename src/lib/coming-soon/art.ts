@@ -30,19 +30,19 @@ export const HERO = {
 export const STORY = [
   {
     label: "Level 1",
-    text: "I loved LoreRim from the start.",
+    text: "Hi, I'm Tapps. I've loved LoreRim from my first experience playing it.",
     alt: "Tapps on a road at dawn, pointing past a signpost",
     frames: [0, 1].map((i) => px(`p1-${i}`)),
   },
   {
     label: "Level 3",
-    text: "But it's tough as hell.",
+    text: "But it's tough as hell. I got my teeth kicked in.",
     alt: "Tapps in a dark forest at night, a sabre cat with glowing eyes behind him",
     frames: [0, 1, 0, 2].map((i) => px(`p2-${i}`)),
   },
   {
     label: "Level 10",
-    text: "So I read guides from other players.",
+    text: "So I read guides by other players, and followed them to learn how to play.",
     alt: "Tapps at a desk by candlelight, reading other players' guides",
     frames: [0, 1, 2, 3].map((i) => px(`p3-${i}`)),
   },
@@ -55,4 +55,13 @@ export const STORY = [
 ];
 
 /** Every pixel image the page uses. */
-export const ART_FILES = [HERO.wordmark, HERO.sky, ...HERO.stars, ...HERO.aurora, HERO.land, ...HERO.landLayers.map((l) => l.src), ...HERO.fg, ...STORY.flatMap((s) => s.frames)];
+export const ART_FILES = [
+  HERO.wordmark,
+  HERO.sky,
+  ...HERO.stars,
+  ...HERO.aurora,
+  HERO.land,
+  ...HERO.landLayers.map((l) => l.src),
+  ...HERO.fg,
+  ...STORY.flatMap((s) => s.frames),
+];

@@ -3503,9 +3503,9 @@ Open question for Dave, in a canvas comment: should the buttons and other links 
    - Under `Opening soon` there is one line at 18 px, `#c3cdd6`: `Will be shared in the Modding Bungalo Discord.` `Modding Bungalo` links to `DISCORD`, in `#f3ead8`, underlined.
    - The hero has no button, no four lines and no shots any more.
 2. **How this started.** This section comes right after the hero, headed `How this started`. It holds four framed panels in a grid (`repeat(auto-fit, minmax(260px, 1fr))`, gap 32). Each panel has an ember label in the title face and an Alegreya caption at 20 px:
-   - `Level 1`: `I loved LoreRim from the start.` Frames `p1` 0,1,0,2. Alt: `Tapps at a signpost at dawn, holding a map, a question mark over his helmet`.
-   - `Level 3`: `But it's tough as hell.` Frames `p2` 0,1,0,2. Alt: `Tapps in a dark forest at night, a sabre cat with glowing eyes behind him`.
-   - `Level 10`: `So I read guides from other players.` Frames `p3` 0,1,2,3. Alt: `Tapps at a desk by candlelight, writing in a book`.
+   - `Level 1`: `Hi, I'm Tapps. I've loved LoreRim from my first experience playing it.` Frames `p1` 0,1,0,2. Alt: `Tapps at a signpost at dawn, holding a map, a question mark over his helmet`.
+   - `Level 3`: `But it's tough as hell. I got my teeth kicked in.` Frames `p2` 0,1,0,2. Alt: `Tapps in a dark forest at night, a sabre cat with glowing eyes behind him`.
+   - `Level 10`: `So I read guides by other players, and followed them to learn how to play.` Frames `p3` 0,1,2,3. Alt: `Tapps at a desk by candlelight, writing in a book`.
    - `Level 50`: `Then I built a place where we can make more complete guides, and share them with each other.` Frames `p4` 0,1,2,3. Alt: `Tapps in a tavern by the hearth, raising a tankard of mead`.
    The panels step one frame every 2 ticks. The old "Why I made this" section is gone; this replaces it.
 3. **What it is.** This section comes before the four feature sections. The heading `What it is` sits on the left. On the right is one paragraph at `clamp(19px, 1.6vw, 22px)`: `A character planner for LoreRim. You plan a build level by level, with the game's own perks, traits, spells and gear, then publish it with a link or keep it to yourself.` Under it, at 16 px in `#8e9bab`: `It starts with LoreRim 5.0.4.8. Later versions will be supported as they come out.` Under it are the four icon lines from WO-85, two per row, which moved here from the hero.

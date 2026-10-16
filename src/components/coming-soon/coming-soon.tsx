@@ -235,12 +235,7 @@ export function ComingSoon() {
       {/* How this started: Tapps's story as a little cutscene. */}
       <section className={styles.story} aria-labelledby="story-title">
         <div className={styles.storyInner}>
-          <div className={styles.storyBody}>
-            <h2 id="story-title" className={styles.h2}>
-              How this started
-            </h2>
-            <Cutscene frame={panel} still={still} />
-          </div>
+          <Cutscene frame={panel} still={still} />
         </div>
       </section>
 
