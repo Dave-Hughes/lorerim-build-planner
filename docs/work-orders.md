@@ -3671,7 +3671,9 @@ After it's on production, Dave will:
 
 **Why.** Dave wants a page to look through all the gear we've indexed (WO-92). The item records give stats and text but not how to get an item. Crafting recipes are records too (COBJ), so the first part of "how do I get it" can come straight from the game. Dave also wants each plugin name to open its Nexus page, as the guide's mod links do. The plugin records don't know their Nexus mod; the MO2 mod folders do (`meta.ini`, `modid=`).
 
-**Needs Dave's PC.** Like `items.py`, this reads the LoreRim install (`~/mnt/LoreRim`), so it runs in a session linked to Dave's computer with the LoreRim folder connected. If the computer isn't linked, stop and say so.
+**Two machines, two parts.** The game files are only on Dave's PC and the site is built on the Mac, so this order is done in two passes on one branch, `wo91-data`:
+- **PC (game data):** steps 1 to 4 and 6. Write the reading scripts, run them against the LoreRim install, and commit the scripts and the `*_raw.json` they write, plus the guide's `nexus:` lines. `esp.py` reads the install's path from `LORERIM_ROOT`, falling back to `~/mnt/LoreRim`. Run the Python tests. Push `wo91-data` only. Don't touch `src/`, and don't tick boxes.
+- **Mac (the build):** step 5. Merge `wo91-data` into `staging`. Extend `build.py`, build `recipes.json` and `plugins.json` and the item numbers, do the spot checks from the raw data, run every check in CLAUDE.md, tick the boxes, and push `staging`. Delete `wo91-data` once merged.
 
 1. **`scripts/gamedata/recipes.py`** (reads only, same style as `items.py`). It reads the winning COBJ records in the Ultra load order and writes `gamedata/5.0.4.8/recipes_raw.json`.
    - Keep a recipe when its created object (`CNAM`) is an item in `items_raw.json`, matched by the item's id or any id in its `also`.
