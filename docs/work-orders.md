@@ -3577,6 +3577,42 @@ The question to Dave is still open in a canvas comment: should the share section
 
 ---
 
+## WO-89  A sixth guide theme, Aurora: the coming soon page's look (16 Oct 2026)
+
+**Why.** Dave wants a guide theme that feels like the coming soon page: a night under the aurora, cream text, ember, and the pixel art. Themes are colour tokens (WO-37). This one adds pixel art to the hero when the build has no cover, which is the one thing a theme couldn't do before.
+
+1. **The theme.** In `src/lib/themes.ts`, after Dwemer: `{ id: "aurora", name: "Aurora", line: "Stars, snow and a campfire." }`. Its tokens (all checked against `themes.test.ts`, AA passes):
+   - Grounds: `ground #0c1222`, `panel #111a2e`, `panel-raised #17213a`, `panel-high #1e2a46`, `sunk #0e1528`, `sunk-deep #090e1b`.
+   - Rules: `rule #25304d`, `rule-soft #19223a`, `rule-strong #34416a`, `line-bright #4a588a`.
+   - Text: `text #f3ead8`, `soft #ddd5c6`, `muted #a7a08f`, `faint #9a9384`, `dim #857e70`, `bright #fffaf0`.
+   - Ember as Ember's: `ember #f0913f`, `ember-text #f6c08f`, `ember-hover #f5a55a`, `ember-press #d97f33`, `on-ember #0c1222`.
+   - `brass #e8d3a4` (the cream of the coming soon page's dialogue box).
+   - Destiny in aurora green: `destiny #7cc9a2`, `destiny-text #a8e0c2`, `destiny-line #2c5a48`, `destiny-ground #0d1c1f`.
+   - `health #d9877a`, `magicka #8aaee6`, `stamina #93c28c`.
+   - `stripe transparent`, `hero-tint #0e1a36`, `hero-veil 0%`, `hero-plain linear-gradient(180deg, #0e1a36 0%, #0c1222 100%)`.
+2. **Pixel art in the hero.**
+   - Add a token `hero-art`, default `none` in `globals.css` and in every other theme.
+   - For Aurora, it is the coming soon scene layered back to front: the land, stars A and the aurora A over the sky, each `url(/coming-soon/px/hero-….png)`.
+   - A build with **no cover** shows it in the hero:
+     - `background-size: cover`, positioned at `62% 100%`, `image-rendering: pixelated`;
+     - the usual fade into the ground below;
+     - with a `min-height` of 360 px (240 on phones) while `hero-art` is set, so the scene reads.
+   - A build **with** a cover keeps its cover, tinted by `hero-tint` as every theme does. No art over it.
+3. **Set up's picker.**
+   - Six cards in place of five.
+   - Aurora's card shows the scene in its small hero, crisp.
+   - The picker's hint keeps "Fonts and layout stay the same."
+
+`validate.ts` takes the theme ids from `THEME_IDS`, so no migration is needed.
+
+### Done when
+- [ ] Unit: Aurora sets every token and meets WCAG AA (the existing loop covers both).
+- [ ] e2e: picking Aurora in Set up and saving puts the scene in the hero of a build with no cover, and keeps the cover on one with a cover.
+- [ ] Screenshots at 1440 and 390 of a no-cover build and a cover build in Aurora, plus the six-card picker.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
