@@ -175,7 +175,6 @@
 }
 .text {
   display: block;
-  max-width: 720px;
   margin-top: 2px;
   color: var(--soft);
   font-size: 14px;
@@ -429,7 +428,8 @@
 }
 .itemText {
   margin: -12px 0 0;
-  max-width: 760px;
+  /* As wide as the main column below, so the line ends where the panels do. */
+  max-width: calc((100% - 40px) * 1.55 / 2.55);
   color: var(--soft);
 }
 .itemGrid {
@@ -518,7 +518,6 @@
 }
 .findText {
   margin: 0;
-  max-width: 640px;
   color: var(--soft);
 }
 .records {
@@ -542,6 +541,9 @@
 @media (max-width: 899px) {
   .itemGrid {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .itemText {
+    max-width: none;
   }
 }
 @media (max-width: 699px) {
