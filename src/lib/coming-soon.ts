@@ -19,7 +19,8 @@ export function passesComingSoon(path: string): boolean {
     path.startsWith("/_next/") ||
     path.startsWith("/icons/") ||
     path.startsWith("/coming-soon/") ||
-    // A file: an image, the icon, robots.txt, a build's card.png.
-    /\.[a-z0-9]+$/i.test(path)
+    // A file: an image, the icon, robots.txt. Not a build's card.png: that would show a build
+    // to anyone with the link while the site is closed (Dave, 16 Oct).
+    (/\.[a-z0-9]+$/i.test(path) && !path.startsWith("/b/") && !path.startsWith("/u/"))
   );
 }
