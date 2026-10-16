@@ -18,6 +18,7 @@ export function Cutscene({ frame, still }: { frame: number; still: boolean }) {
   const track = useRef<HTMLDivElement>(null);
   const [scene, setScene] = useState(0);
   const [typed, setTyped] = useState(0);
+  const [progress, setProgress] = useState(0);
   const line = STORY[scene].text;
   const shown = still ? line.length : typed;
 
@@ -31,6 +32,7 @@ export function Cutscene({ frame, still }: { frame: number; still: boolean }) {
       const r = el.getBoundingClientRect();
       const span = Math.max(1, r.height - window.innerHeight);
       const p = Math.min(1, Math.max(0, -r.top / span));
+      setProgress(p);
       const next = Math.min(STORY.length - 1, Math.floor(p * STORY.length));
       setScene((s) => {
         if (s !== next) setTyped(0);
@@ -102,13 +104,25 @@ export function Cutscene({ frame, still }: { frame: number; still: boolean }) {
               </p>
             </div>
           </div>
-          <ol className={styles.steps}>
+          {/* The line between the markers fills as the page scrolls, so it's clear the scroll tells the story. */}
+          <ol
+            className={styles.steps}
+            style={
+              {
+                "--fill": Math.min(
+                  1,
+                  (progress * STORY.length) / (STORY.length - 1),
+                ),
+              } as React.CSSProperties
+            }
+          >
             {STORY.map((p, i) => (
               <li key={p.label}>
                 <button
                   type="button"
                   className={styles.step}
                   aria-pressed={i === scene}
+                  data-passed={i < scene || undefined}
                   onClick={() => go(i)}
                 >
                   <span className={styles.stepMark} aria-hidden="true" />

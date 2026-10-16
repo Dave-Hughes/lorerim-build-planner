@@ -161,9 +161,10 @@
 }
 /* Scroll drives the story: a tall track, the cutscene pinned in the middle of the screen while it
    passes, a quarter of the scroll per scene (Dave, 15 Oct). */
+/* About a screen of scroll per scene (Dave found 65% too quick). */
 .track {
-  height: calc(100vh + 3 * 65vh);
-  height: calc(100svh + 3 * 65svh);
+  height: calc(100vh + 4 * 90vh);
+  height: calc(100svh + 4 * 90svh);
 }
 .pinned {
   position: sticky;
@@ -296,14 +297,26 @@
   grid-template-columns: repeat(4, 1fr);
   position: relative;
 }
-.steps::before {
+.steps::before,
+.steps::after {
   content: "";
   position: absolute;
   left: 12.5%;
-  right: 12.5%;
   top: 7px;
   height: 2px;
   background: #2a3442;
+}
+.steps::before {
+  right: 12.5%;
+}
+/* The filled part of the line, from the first marker towards the last as the page scrolls. */
+.steps::after {
+  width: calc(75% * var(--fill, 0));
+  background: var(--ember);
+}
+.steps li {
+  position: relative;
+  z-index: 1;
 }
 .step {
   position: relative;
@@ -339,6 +352,9 @@
 }
 .step[aria-pressed="true"] {
   color: var(--ember);
+}
+.step[data-passed] .stepMark {
+  border-color: var(--ember);
 }
 .step[aria-pressed="true"] .stepMark {
   background: var(--ember);
