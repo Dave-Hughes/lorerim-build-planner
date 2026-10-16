@@ -3667,6 +3667,147 @@ After it's on production, Dave will:
 
 ---
 
+## WO-91  Gear data: crafting recipes, and each plugin's Nexus page (16 Oct 2026)
+
+**Why.** Dave wants a page to look through all the gear we've indexed (WO-92). The item records give stats and text but not how to get an item. Crafting recipes are records too (COBJ), so the first part of "how do I get it" can come straight from the game. Dave also wants each plugin name to open its Nexus page, as the guide's mod links do. The plugin records don't know their Nexus mod; the MO2 mod folders do (`meta.ini`, `modid=`).
+
+**Needs Dave's PC.** Like `items.py`, this reads the LoreRim install (`~/mnt/LoreRim`), so it runs in a session linked to Dave's computer with the LoreRim folder connected. If the computer isn't linked, stop and say so.
+
+1. **`scripts/gamedata/recipes.py`** (reads only, same style as `items.py`). It reads the winning COBJ records in the Ultra load order and writes `gamedata/5.0.4.8/recipes_raw.json`.
+   - Keep a recipe when its created object (`CNAM`) is an item in `items_raw.json`, matched by the item's id or any id in its `also`.
+   - For each one record:
+     - the station keyword (`BNAM`);
+     - the materials (`CNTO`), as the component's own full name and the count;
+     - the created count (`NAM1`) when it isn't 1;
+     - its conditions (`CTDA`).
+   - A recipe at the Grindstone or the Workbench whose created object is the item itself is **tempering** (Improve it). Every other recipe is **crafting** (Make it).
+   - Breakdown recipes, the ones that turn gear back into ingots, are left out for now.
+   - Print counts as `items.py` does: recipes read, kept, crafting, tempering, and with each kind of condition.
+2. **Stations, in the game's words.**
+   - `overrides.json` gets a `stations` map from keyword to name:
+     - `CraftingSmithingForge` → Forge;
+     - `CraftingSmithingSkyforge` → Skyforge;
+     - `CraftingSmithingSharpeningWheel` → Grindstone;
+     - `CraftingSmithingArmorTable` → Workbench;
+     - `CraftingTanningRack` → Tanning Rack;
+     - `CraftingSmelter` → Smelter.
+   - `build.py` prints a note for any station keyword the map doesn't name, and leaves those recipes out until it's added. Check the in-game name of any you add against the furniture record's full name.
+3. **Conditions.**
+   - `HasPerk` becomes the perk's id in `perks.json` (`Smithing:Glass Smithing`).
+   - Any other condition counts toward `otherConditions: n` on the recipe, so the page can say it has more conditions, and `build.py` prints which kinds it found. Leave out the routine ones a tempering recipe always carries; list them in the WO's commit.
+4. **Plugins and their Nexus pages.**
+   - Same script, or `plugins.py`: for every plugin that has an item, write `gamedata/5.0.4.8/plugins_raw.json` with the MO2 mod folder it was loaded from and that folder's `meta.ini` `modid`.
+   - No `modid`, or `0`, means no link.
+   - The base game and DLC (`Stock Game/Data`) and Creation Club plugins (`cc*`) never get a link.
+5. **`build.py`.**
+   - Write `src/data/lorerim-5.0.4.8/recipes.json`, keyed by the item's primary id: `{ make?: Recipe[], improve?: Recipe[] }`, where `Recipe = { station, materials: [{ name, count }], perks: string[], otherConditions?, makes? }`.
+   - Write `plugins.json`: `{ "<plugin>": { "nexus": "1234" } }`, only for plugins with a link.
+   - Keep both out of `items.json`, so the editor's gear search doesn't fetch them.
+   - While in `build_items`, add number fields to each item, so the Gear page can sort: `armor`, `damage`, `weight`, read from the same record fields as `stats`. Keep `stats` as it is.
+6. **The guide's missing links (backlog, 14 Oct).** In the same run, read the `modid` of the 16 guide mods with no Nexus link and add their `nexus:` lines to the chapters' Related Mods. Don't guess any that aren't there.
+
+### Done when
+- [ ] `recipes_raw.json`, `plugins_raw.json`, `recipes.json` and `plugins.json` are built and committed, with the script's counts in the commit message.
+- [ ] Unit (`test_recipes.py`): a crafting recipe, a tempering recipe, a `HasPerk` condition resolved to a perk id, an unknown station left out with a note, and a recipe matched through an item's `also` id.
+- [ ] Spot checks against xEdit or the game, written in the commit: Glass Cuirass (Make and Improve), Hide Boots, Dragonscale Cuirass, and one modded item. Recipe text is the records' own words.
+- [ ] Items have `armor`, `damage` and `weight` numbers. The gear search and @-mentions still work.
+- [ ] The 16 guide mods have `nexus:` lines, or the commit lists the ones with no `modid`.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-92  A Gear page and an item page (16 Oct 2026)
+
+**Why.** There's no way to look through the gear except the editor's search. Canvas, row "Proposal: a Gear page, and gear across the app": `GearIndex`, `GearItem` and `GearPhone`. It ships behind a switch so it can go out as its own announcement after launch. Needs WO-91's data.
+
+1. **The switch.**
+   - `FEATURE_GEAR` in `src/lib/features.ts`, like the site guide.
+   - Off: `/gear` and every item page are not found, and the header has no Gear link.
+2. **Header.** `Builds`, then `Gear`, then `Guide` (when that's on). Ember when current, as now.
+3. **`/gear`, the index** (`GearIndex`).
+   - **Tabs:** Armor, Weapons, Ammo, each with its count.
+   - **Type chips** under the tabs:
+     - Armor: the gear types (`GEAR_TYPES` order, only the types that have items), each with its slot icon and its count.
+     - Weapons: the weapon types (Sword, Bow, Staff…), no icons.
+     - Ammo: Arrow, Bolt.
+     - A chip toggles; one at a time.
+   - **Fields** (in the Browse page's style):
+     - Search: the item search the editor uses (`searchItems`). It reads the name and the stats, plus the game's text.
+     - Armor: Any, Light, Heavy, Clothing. Armor tab only.
+     - Source: Any, Can be made, Not listed.
+     - Sort:
+       - Armor: Name, Armor rating, Weight.
+       - Weapons: Name, Damage, Weight.
+       - Ammo: Name, Damage.
+   - **Table:** the type icon, then the name (a link to the item's page) with the game's text under it when there is some, then the stat columns for the tab (Armor and Weight; Damage and Weight; Damage). Then:
+     - **Plugin:** a link with ↗ to its Nexus page in a new tab (`plugins.json`, `rel="noreferrer"`), or plain text when it has none.
+     - **Source:** the station with the anvil icon when the item can be made, else a grey `Not listed`.
+   - 50 a page, a count above (`339 pieces`), and ‹ › at the foot.
+   - **Everything lives in the URL** (`?kind=armor&type=Body&armor=Light&sort=armor&page=2`) and is filtered and sorted on the server from the JSON files. Nothing big ships to the browser. The browser's back button keeps your place.
+4. **Phone** (`GearPhone`). Search on its own row, then `Filters` (with how many are on) and the sort as two buttons. `Filters` opens a sheet with the type chips, Armor and Source. Filters that are on show as pills under the buttons, each with ✕. The rows become name over a stat line, with the station after a `|`.
+5. **The item page, `/gear/<slug>`** (`GearItem`).
+   - The slug is the id made URL-safe: lower case, every run of other characters one `-`. `Skyrim.esm:013939` becomes `skyrim-esm-013939`. A unit test checks every item's slug is unique.
+   - An old id in an item's `also` redirects to the item's page.
+   - **Top:** a back link to the index with the filters it came from (`‹ Light armor for the body`, or `‹ Gear`). Then the slot icon at 48 px in a framed square, the name as the page title, and one line: type | armor or weapon type | each stat.
+   - **Make it:** the station, `needs` and each perk as a chip linking to its tree (Smithing), then the materials as count and name. When a recipe has other conditions, a grey line: `Other conditions apply in game.` Under it, **Improve it**: station and materials on one line. An item with no recipe has no Make it section.
+   - **Where to find it**, on every item: `Not listed yet. The game's records don't say which chest, merchant or enemy carries an item, so we don't guess.`
+   - **Records** (right column): each plugin and form id the item has (its id and its `also`), in mono. A plugin with a Nexus page links there as in the table.
+   - Builds that use it come in WO-93. Leave room in the right column.
+   - Metadata: the item's name and stat line, and the site's link-preview card.
+6. **Noise in the index.** Look through the Armor tab for records that aren't wearable gear. One example is `Secondary Glass Dagger`, which is listed as body clothing and is probably a copy used to show a sheathed dagger. Add patterns for them to `overrides.json` (`items` → `skipNames`), rebuild, and list what was dropped in the commit. Don't drop anything a build has saved: check the seeded builds and Iriel's fixture.
+
+Copy: use the game's words, follow the design rules, and add no how-it-works text.
+
+### Done when
+- [ ] Unit: filtering, sorting and paging on the server (type, armor, source, search, each sort); slugs are unique; an `also` id resolves to its item.
+- [ ] e2e: with `FEATURE_GEAR` off, `/gear` and an item page are not found and the header has no Gear link.
+- [ ] e2e: on `/gear`:
+  - picking Body and Light and sorting by Armor rating lists Daedric Mail Cuirass first;
+  - the URL holds those filters, and Back restores them;
+  - an item's name opens its page.
+- [ ] e2e: Glass Cuirass's page shows its stat line, Make it with Forge and Glass Smithing, Improve it, Where to find it, and Records.
+- [ ] e2e: a plugin link opens in a new tab and points at nexusmods.com; Skyrim.esm is plain text.
+- [ ] Screenshots at 1440 and 390: the index (Armor, Body, Light), the Weapons tab, the phone sheet open, and Glass Cuirass's page, compared with the canvas boards.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
+## WO-93  Gear across the app: links to the item page, and builds that use an item (16 Oct 2026)
+
+**Why.** Once items have pages, every place that shows an item should lead to one. A build that uses an item is the best answer we have to "is this any good". Canvas: `GearElsewhere` (dashed outlines mark what's new). Needs WO-92. Every link here shows only while `FEATURE_GEAR` is on.
+
+1. **Build page gear card** (`gear-view.tsx`).
+   - Under the stat line, the recipe line when the item can be made: anvil icon, `Forge, needs Glass Smithing` (the first Make it recipe; its perks joined with "and").
+   - In the card's foot, `Gear page ›` to the item's page.
+   - A made item (WO-45) links its base item.
+2. **Guide @-mention card** (`mention-chip.tsx`). The same two lines, for items.
+3. **Editor gear search** (`gear-block.tsx`). Each option that can be made shows the station, in brass with the anvil icon, at the right. Nothing else changes. No links in the editor.
+4. **Smithing perk cards.**
+   - A perk that some recipe needs shows `Gear it lets you make (n) ›`.
+   - It links to `/gear?perk=<perk id>`. The index gets that filter, shown as a pill, `Needs Glass Smithing ✕`.
+   - This goes wherever a perk's card shows: the tree, the editor and the build page.
+5. **Builds that use it.**
+   - On an item's page, in the right column above Records: public builds whose gear uses the item (its id or any `also`). Each shows its name, its Example tag when it has one, `Levels 30 to 50`, and its author.
+   - Newest first, at most 6, then `All builds with it ›`.
+   - No builds: the section isn't shown.
+6. **Browse builds: a Gear field.**
+   - After Sort, a `Gear` field using the editor's item search.
+   - Picking an item shows it in the field with ✕, filters to public builds that use it, and puts `?item=<slug>` in the URL.
+   - `All builds with it ›` lands here.
+   - Query `plan->'gear'` for the ids. If that needs an index, add it through `npm run db:generate` and say so in the commit.
+
+### Done when
+- [ ] Unit: the recipe line's text from a recipe; the perk-to-items count; the builds-with-item query matches an `also` id and ignores private builds.
+- [ ] e2e: on Iriel's page (the e2e seed), the Glass Cuirass bar's card shows `Forge, needs Glass Smithing` and `Gear page ›`, and the link opens its page.
+- [ ] e2e: the editor's gear search marks a craftable item with its station.
+- [ ] e2e: Glass Smithing's card links to `/gear` filtered to that perk.
+- [ ] e2e: Browse with `?item=` lists only builds that use the item, and the item page lists the seeded build that uses it.
+- [ ] e2e: with `FEATURE_GEAR` off, none of these links or the Gear field show.
+- [ ] Screenshots of each place at 1440, and the build page card at 390, compared with `GearElsewhere`.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
@@ -3683,4 +3824,9 @@ After it's on production, Dave will:
 - **Skills over levels:** a small line chart on the shared page of the main skills from level 1 to the last.
 - **Callings:** a field for the build's Calling, once the Callings mod data is in.
 - **Note preview:** hovering a level in the level row shows the start of that level's note.
-- **Search by perk or item:** "builds that take Lone Wolf", "builds that use a Glass Light Bow", from the plan's perks and gear item ids.
+- **Search by perk:** "builds that take Lone Wolf", from the plan's perks. (The item half is WO-93.)
+- **Where gear is found (after WO-92, Dave 16 Oct).** The records can answer part of this. Each would fill the Gear page's Source filter and the item page's Where to find it:
+  1. **Placed items:** an item placed in a cell. Read the world data and turn cell ids into place names. Most useful for named uniques like Dawnbreaker and Chillrend.
+  2. **Loot lists and merchants:** follow the leveled lists, which nest inside each other, to who carries them. The answer is fuzzy ("can drop from bandits from level 20").
+  3. **Quest rewards:** handed out by scripts, so not readable. Hand-written notes only, if ever.
+  Until one of these is done, the page says plainly that it isn't listed.
