@@ -3598,16 +3598,23 @@ The question to Dave is still open in a canvas comment: should the share section
      - the usual fade into the ground below;
      - with a `min-height` of 360 px (240 on phones) while `hero-art` is set, so the scene reads.
    - A build **with** a cover keeps its cover, tinted by `hero-tint` as every theme does. No art over it.
-3. **Set up's picker.**
+3. **The build's title in the pixel face (Dave, 16 Oct).** Aurora is the one theme that changes a font, and only the build's name in the hero:
+   - Add a token `hero-title-font`, default `var(--font-title)` everywhere.
+   - In Aurora it is Jersey 10. Load it in the root layout with `next/font` (`variable: "--font-pixel"`, `preload: false`, so other pages don't fetch it), and move the coming soon page onto that one load.
+   - In Aurora the title is set mixed case (no uppercase), `letter-spacing: 0.01em`, `line-height: 0.9`, with a hard 3 px shadow down and right in `#070a0f`. Its size stays the hero's, scaled by 1.15 because Jersey is smaller for its size.
+   - Everything else on the page keeps the site's fonts.
+4. **Set up's picker.**
    - Six cards in place of five.
    - Aurora's card shows the scene in its small hero, crisp.
-   - The picker's hint keeps "Fonts and layout stay the same."
+   - The picker's hint becomes "The look of this build's page. Layout stays the same."
+5. **Design rules.** Extend the pixel face rule in `docs/design-rules.md` to say Aurora sets the build's title in it too.
 
 `validate.ts` takes the theme ids from `THEME_IDS`, so no migration is needed.
 
 ### Done when
 - [ ] Unit: Aurora sets every token and meets WCAG AA (the existing loop covers both).
 - [ ] e2e: picking Aurora in Set up and saving puts the scene in the hero of a build with no cover, and keeps the cover on one with a cover.
+- [ ] e2e: in Aurora the build's title is set in Jersey 10; in Ember it isn't.
 - [ ] Screenshots at 1440 and 390 of a no-cover build and a cover build in Aurora, plus the six-card picker.
 - [ ] All checks in CLAUDE.md pass.
 
