@@ -52,6 +52,7 @@ Followers who fall behind catch up when you draw your weapon. Hold [[Shift]] and
 - **Press E to Heal Followers SKSE**: Healing a follower with E.
   - nexus: 101823
 - **Simple Outfit System**: Changing a follower's clothes.
+  - nexus: 48974
 - **Swiftly Order Squad - Follower Commands UI**: A command wheel for all your followers.
   - nexus: 63259
 :::

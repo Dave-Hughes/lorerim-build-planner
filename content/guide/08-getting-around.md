@@ -68,6 +68,7 @@ The [[H]] key controls your horse:
   - nexus: 54225
   - where: MCM > Simplest Horses
 - **Animated Whistling**: The whistle.
+  - nexus: 76733
 :::
 
 :::ask{q="The stablemaster says I don't have a horse"}
@@ -96,7 +97,10 @@ There are three ways past a lock you can't pick: find its key (many locked chest
 
 :::mods
 - **Requiem - Lockpicking SKSE**: Lockpicking expertise.
+  - nexus: 172898
 - **Lock Bashing**: Bashing locks open.
+  - nexus: 165491
   - where: `SKSE/Plugins/LockBashing.ini` in LoreRim - MCM and INI Settings
 - **Locked Chests Have Keys**: Keys hidden near locked chests.
+  - nexus: 74565
 :::

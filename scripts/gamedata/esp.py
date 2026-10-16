@@ -1,5 +1,5 @@
 import os,struct,zlib,sys
-ROOT=os.path.expanduser('~/mnt/LoreRim')
+ROOT=os.environ.get('LORERIM_ROOT') or os.path.expanduser('~/mnt/LoreRim')
 def plugin_paths():
     mods=[l.strip()[1:] for l in open(ROOT+'/profiles/Ultra/modlist.txt',encoding='utf-8',errors='ignore') if l.startswith('+')]
     m={}

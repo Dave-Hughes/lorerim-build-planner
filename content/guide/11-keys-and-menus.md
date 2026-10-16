@@ -52,6 +52,7 @@ LoreRim adds many keys to Skyrim's own. Press [[F11]] in game for LoreRim's key 
 - **Stances - Dynamic Animation Sets**: Stance keys.
   - nexus: 40484
 - **Dynamic Activation Key**: Shift+E actions.
+  - nexus: 96273
 - **True Directional Movement**: Target lock key.
   - nexus: 51614
   - where: MCM > True Directional Movement
@@ -156,7 +157,9 @@ LoreRim's controller support is off by default. Tick Complete Controller Setup a
 
 :::mods
 - **Complete Controller Setup**: Controller layout.
+  - nexus: 99978
   - tag: Optional in MO2, off by default
 - **Gamepad++**: Controller support.
+  - nexus: 27007
   - tag: Optional in MO2, off by default
 :::

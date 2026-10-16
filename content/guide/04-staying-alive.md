@@ -81,7 +81,9 @@ You can sleep in any bed you own or rent, a bedroll, your camp, or at any lit ca
 
 :::mods
 - **Rest By Campfire - Base Object Swapper**: Resting at any lit campfire.
+  - nexus: 96202
 - **Take a Nap - Sleep on Chairs**: Napping in chairs.
+  - nexus: 113255
 :::
 
 :::ask{q="Why can't I sleep or wait?"}

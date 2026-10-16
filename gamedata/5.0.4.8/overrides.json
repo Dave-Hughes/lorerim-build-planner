@@ -305,5 +305,19 @@
       "^REQ_Trait_MassEffect"
     ],
     "_raceNote": "WO-55: Requiem's engine abilities, on every race; not racial abilities."
+  },
+  "stations": {
+    "CraftingSmithingForge": "Forge",
+    "CraftingSmithingSkyforge": "Skyforge",
+    "CraftingSmithingSharpeningWheel": "Grindstone",
+    "CraftingSmithingArmorTable": "Workbench",
+    "CraftingTanningRack": "Tanning Rack",
+    "CraftingSmelter": "Smelter",
+    "DLC1LD_CraftingForgeAetherium": "Aetherium Forge",
+    "DLC2StaffEnchanter": "Staff Enchanter",
+    "EnchantMorpholith_EC_SS_StaffEnchanter": "Staff Enchanter",
+    "zzzCHCraftZenithar": "Anvil of Zenithar",
+    "zzzCHCraftNocturnal": "Altar of Nocturnal",
+    "NTMRWICraftingTrade": "Throne of Trade"
   }
 }

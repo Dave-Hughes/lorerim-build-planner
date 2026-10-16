@@ -73,6 +73,7 @@ The game also saves on its own every 15 minutes, rotating through 3 {{autosave}}
 - **STB No save and load in combat**: Blocks saving and loading in combat.
   - nexus: 148590
 - **Engine Fixes**: Makes quicksaves full saves.
+  - nexus: 17230
 :::
 
 ## Where your saves are {#files}

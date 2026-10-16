@@ -1,0 +1,1661 @@
+{
+ "plugins": {
+  "00Taliesin.esp": {
+   "folder": "The Thalmor's Shadow - Taliesin (Custom Voiced Follower)",
+   "modid": "93413"
+  },
+  "018Auri.esp": {
+   "folder": "Song of the Green (Auri Follower)",
+   "modid": "11278"
+  },
+  "1Dwemer.esl": {
+   "folder": "Dwemer Armor - My patches and fixes by Xtudo SE - Fixes - ESL",
+   "modid": "81046"
+  },
+  "1HSS.esp": {
+   "folder": "Horse-Slaying Saber - My patches SE by Xtudo - Ebony Blade replacer Legacy of the Dragonborn LOTD",
+   "modid": "106465"
+  },
+  "1Markynaz.esl": {
+   "folder": "Dremora Markynaz Armor - My patches and fixes SE - Fixed ESL",
+   "modid": "79766"
+  },
+  "1Minotaurs.esp": {
+   "folder": "Minotaurs SE - Fixes",
+   "modid": "48864"
+  },
+  "1NDArmor.esl": {
+   "folder": "Mythic Dawn Armor SE - My patches and fixes by Xtudo",
+   "modid": "84325"
+  },
+  "1TheWreckOfTheArgentRaptor.esp": {
+   "folder": "The Wreck of the Argent Raptor - Immersion - Location",
+   "modid": "140763"
+  },
+  "1YsmirArmorSE.esl": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": "112480",
+   "modidFrom": "Ysmir Armor - SE by Xtudo - Armor Fixes"
+  },
+  "3BBB.esp": {
+   "folder": "CBBE 3BA (3BBB)",
+   "modid": "30174"
+  },
+  "_Fuse00HairPack01.esp": {
+   "folder": "HDT-SMP Hairpack 01",
+   "modid": "63181"
+  },
+  "_Fuse00HairPack02_ESL.esp": {
+   "folder": "HDT-SMP Hairpack 02",
+   "modid": "64259"
+  },
+  "aaaGraniteHill.esp": {
+   "folder": "Granite Hill - ESLIFIED LUX PATCH",
+   "modid": "14658"
+  },
+  "Aetherium Forge - Perk Potions - TGC.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Alchemist Outfit Variations.esp": {
+   "folder": "Styles of Skyrim - Alchemist Outfit Variations",
+   "modid": "128147"
+  },
+  "AlternatePerspective.esp": {
+   "folder": "Alternate Perspective",
+   "modid": "50307"
+  },
+  "Alternative Perspective - Reqtificated.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Apex_Khajiit.esp": {
+   "folder": "VickusDickus' Khajiiti Apex Armory Reforged",
+   "modid": "17114"
+  },
+  "Apocalypse - Magic of Skyrim.esp": {
+   "folder": "Apocalypse - Magic of Skyrim",
+   "modid": "1090"
+  },
+  "Arcane Arsenal.esp": {
+   "folder": "LoreRim Arcane Arsenal",
+   "modid": "128928"
+  },
+  "Arch-Mage Robes Addon.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Arena - Markarth Side.esp": {
+   "folder": "Arena - Markarth Side Town",
+   "modid": "114252"
+  },
+  "Armor and Clothing Extention - Mage Robes.esp": {
+   "folder": "Armor and Clothing Extension Robes Only",
+   "modid": "67458"
+  },
+  "Armor and Clothing Extention - Monk Robes.esp": {
+   "folder": "Armor and Clothing Extension Robes Only",
+   "modid": "67458"
+  },
+  "Armors of the Velothi - Reqtificated.esp": {
+   "folder": "Armors Reqtificated",
+   "modid": "123237"
+  },
+  "Armors of the Velothi 2 - Reqtificated.esp": {
+   "folder": "Armors Reqtificated",
+   "modid": "123237"
+  },
+  "Armors of the Velothi Pt2.esl": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": "69996",
+   "modidFrom": "Armors of the Velothi Pt. II"
+  },
+  "Armors of the Velothi.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": "62752",
+   "modidFrom": "Armors of the Velothi Pt. I"
+  },
+  "ArteFake.esp": {
+   "folder": "ArteFakes Updated Plugin",
+   "modid": "41254"
+  },
+  "Artifact of Might.esp": {
+   "folder": "Artifact of Might",
+   "modid": "104381"
+  },
+  "Artifacts of the Lore(Rim) - The Contest.esp": {
+   "folder": "Artifacts of the Lore",
+   "modid": null
+  },
+  "Artifacts of the Lore(Rim).esp": {
+   "folder": "Artifacts of the Lore",
+   "modid": null
+  },
+  "Ascend - Hidden Peaks of Skyrim.esp": {
+   "folder": "Ascend - Hidden Peaks of Skyrim",
+   "modid": "120802"
+  },
+  "Ashley Graham Hair.esp": {
+   "folder": "Ashley Graham Hair (Physics)",
+   "modid": "112367"
+  },
+  "Bard_Fashions.esp": {
+   "folder": "Bard Fashions",
+   "modid": "119620"
+  },
+  "Barkeeper Clothing Variations.esp": {
+   "folder": "Styles of Skyrim - Barkeeper Clothing Variations",
+   "modid": "125608"
+  },
+  "Beggar_Fashions.esp": {
+   "folder": "Beggar Fashions",
+   "modid": "120257"
+  },
+  "BetalillesHammerfellQuestBundle.esp": {
+   "folder": "Betalille's Hammerfell Quests Bundle - The Gray Cowl of Nocturnal",
+   "modid": "89977"
+  },
+  "Big Tweaks.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Blacksmith_Fashions.esp": {
+   "folder": "Blacksmith Fashions",
+   "modid": "118460"
+  },
+  "BlanketScarf.esp": {
+   "folder": "Blanket Scarf Earth Tones Edition - 20 styles",
+   "modid": "5050"
+  },
+  "Bloodskal Blade - Tweaks and Enhancements.esp": {
+   "folder": "Bloodskal Blade - Tweaks and Enhancements",
+   "modid": "55988"
+  },
+  "BluthundSword.esp": {
+   "folder": "Bluthund - A Longsword",
+   "modid": "60313"
+  },
+  "Bone Cultist Armor - Reqtificated.esp": {
+   "folder": "Armors Reqtificated",
+   "modid": "123237"
+  },
+  "Bone Cultist Armor.esp": {
+   "folder": "Bone Cultist Armor",
+   "modid": "111224"
+  },
+  "BOOB.esp": {
+   "folder": "Boozy Obnoxious and Opulent Bards",
+   "modid": "138251"
+  },
+  "Bosmeri Swallowtail.esp": {
+   "folder": "LoreRim - MCM and INI Settings",
+   "modid": "124248",
+   "modidFrom": "Bosmeri Swallowtail Armour"
+  },
+  "BowRapidCombo.esp": {
+   "folder": "LoreRim - MCM and INI Settings",
+   "modid": "89308",
+   "modidFrom": "Bow Rapid Combo V3"
+  },
+  "Breton Apparel - Imperial Renaissance.esp": {
+   "folder": "QND SPID Clothing Pack 2",
+   "modid": "93394"
+  },
+  "ccasvsse001-almsivi.esm": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccBGSSSE001-Fish.esm": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse002-exoticarrows.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse003-zombies.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse004-ruinsedge.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse005-goldbrand.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse006-stendarshammer.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse007-chrysamere.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse008-wraithguard.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse013-dawnfang.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse014-spellpack01.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse016-umbra.esm": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse018-shadowrend.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse019-staffofsheogorath.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse020-graycowl.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse021-lordsmail.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccBGSSSE025-AdvDSGS.esm": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse031-advcyrus.esm": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccBGSSSE037-Curios.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse038-bowofshadows.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse040-advobgobs.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse041-netchleather.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse043-crosselv.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse045-hasedoki.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse050-ba_daedric.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse051-ba_daedricmail.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse052-ba_iron.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse053-ba_leather.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse054-ba_orcish.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse055-ba_orcishscaled.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse056-ba_silver.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse057-ba_stalhrim.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse058-ba_steel.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse059-ba_dragonplate.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse060-ba_dragonscale.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse061-ba_dwarven.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse062-ba_dwarvenmail.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse063-ba_ebony.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse064-ba_elven.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse066-staves.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse067-daedinv.esm": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse068-bloodfall.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccbgssse069-contest.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "cccbhsse001-gaunt.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccedhsse001-norjewel.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccedhsse002-splkntset.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccedhsse003-redguard.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccffbsse001-imperialdragon.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccffbsse002-crossbowpack.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccfsvsse001-backpacks.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "cckrtsse001_altar.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccmtysse001-knightsofthenine.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccmtysse002-ve.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccpewsse002-armsofchaos.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccrmssse001-necrohouse.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "cctwbsse001-puzzledungeon.esm": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccvsvsse003-necroarts.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "ccvsvsse004-beafarmer.esl": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "Children Clothes Variations.esp": {
+   "folder": "Styles of Skyrim Mashups - Children Clothes Variations",
+   "modid": "136268"
+  },
+  "CL's Rapier.esp": {
+   "folder": "CL's Rapier",
+   "modid": "21101"
+  },
+  "Clanbringer.esp": {
+   "folder": "Clanbringer",
+   "modid": "109742"
+  },
+  "Cloaks&Capes SMP.esp": {
+   "folder": "HDT-SMP for Cloaks and Capes",
+   "modid": "55030"
+  },
+  "College Of Winterhold - Quest Expansion.esp": {
+   "folder": "College of Winterhold - Quest Expansion",
+   "modid": "66666"
+  },
+  "College_Fashions.esp": {
+   "folder": "College Fashions",
+   "modid": "116876"
+  },
+  "Collygon - Sorcerer.esp": {
+   "folder": "Sorcerer Outfits",
+   "modid": "137725"
+  },
+  "ColovianFurClothes.esp": {
+   "folder": "Colovian Fur Outfit",
+   "modid": "4465"
+  },
+  "ColovianNobleClothes.esp": {
+   "folder": "QND SPID Clothing Pack 2",
+   "modid": "93394"
+  },
+  "ColovianPrince.esl": {
+   "folder": "Colovian Prince - SE by Xtudo - Fixes",
+   "modid": "110812"
+  },
+  "Common Clothes and Armors.esp": {
+   "folder": "Common Clothes and Armors",
+   "modid": "21305"
+  },
+  "Common Clothing Expanded.esp": {
+   "folder": "Common Clothing Expansion",
+   "modid": "134088"
+  },
+  "CommonClothes.esp": {
+   "folder": "Common Clothes (ESP EDIT AND ESLIFIED)",
+   "modid": "5063"
+  },
+  "Companion_Fashions.esp": {
+   "folder": "Fashions of the Companions",
+   "modid": "117008"
+  },
+  "Court Wizard Robes Variations.esp": {
+   "folder": "Styles of Skyrim Mashups - Court Wizard Robes Variations",
+   "modid": "128600"
+  },
+  "Court_Fashions.esp": {
+   "folder": "Court Fashions",
+   "modid": "116231"
+  },
+  "Crown Plate Set.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Cultural Bards.esp": {
+   "folder": "Cultural Bards - A Bard Themed Clothing and Accessory Collection",
+   "modid": "133000"
+  },
+  "CuyiAntlers.esp": {
+   "folder": "Cuyi's Bosmeri Antlers - SSE",
+   "modid": "26173"
+  },
+  "Daedric Armor - Standalone version.esp": {
+   "folder": "Daedric Armor - Standalone version by Xtudo SE",
+   "modid": "58692"
+  },
+  "Daedric Blades - Standalone version.esp": {
+   "folder": "Daedric Blades - Standalone version SE",
+   "modid": "58692"
+  },
+  "Daedric Shield - Standalone version.esp": {
+   "folder": "Daedric Shield - Standalone version SE",
+   "modid": "59067"
+  },
+  "Daedric Steel Knight Armor.esp": {
+   "folder": "Daedric Steel Knight Armor",
+   "modid": "60838"
+  },
+  "Dawnguard.esm": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "dawnguardRobes.esp": {
+   "folder": "Dawnguard Robes",
+   "modid": "169034"
+  },
+  "Destroy the Dark Brotherhood - Quest Expansion.esp": {
+   "folder": "Destroy The Dark Brotherhood - Quest Expansion",
+   "modid": "118229"
+  },
+  "DigitigradeKhajiit+ArgonianRaptor.esp": {
+   "folder": "Digitigrade Beast Races for Skyrim SE",
+   "modid": "1975"
+  },
+  "DIS_Armor_Fractions.esp": {
+   "folder": "RMB SPIDified and Eslified Unplayable Faction Armors",
+   "modid": "96043"
+  },
+  "DIS_Heavy_Legion.esp": {
+   "folder": "LoreRim - MCM and INI Settings",
+   "modid": "30468",
+   "modidFrom": "New Legion"
+  },
+  "DIS_RealisticArmor.esp": {
+   "folder": "Realistic Armor CBBE",
+   "modid": "43509"
+  },
+  "Dragon Fang.esp": {
+   "folder": "Dragon Fang",
+   "modid": "132601"
+  },
+  "Dragon Quarterstaff.esp": {
+   "folder": "Dragon Quarterstaff",
+   "modid": "102856"
+  },
+  "Dragonborn.esm": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "DragonCleaver.esp": {
+   "folder": "Dragon Cleaver",
+   "modid": "121680"
+  },
+  "DragonPriestArmor.esp": {
+   "folder": "Armory of the Dragon Cult - Dragon Priest Armor",
+   "modid": "94244"
+  },
+  "Dunmer Outfit Variations.esp": {
+   "folder": "Styles of Skyrim - Dunmer Outfit Variations",
+   "modid": "125719"
+  },
+  "Dwemer Armor.esp": {
+   "folder": "Dwemer Armor",
+   "modid": "63074"
+  },
+  "DwemerOutfit.esl": {
+   "folder": "Dwemer Outfit - Morrowind Style",
+   "modid": "108959"
+  },
+  "Dynamic Things Alternative.esp": {
+   "folder": "Dynamic Things Alternative - Base Object Swapper",
+   "modid": "60741"
+  },
+  "EasternBrassplateSet - Solstheim Dwarven Armor replacer by Xtudo.esp": {
+   "folder": "Eastern Brassplate Set - SE by Xtudo - Solstheim",
+   "modid": "109635"
+  },
+  "EasternBrassplateSet.esl": {
+   "folder": "Eastern Brassplate Set - SE by Xtudo - My patches",
+   "modid": "109635"
+  },
+  "Ebony Knight - Reqtificated.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Ebony Knight Armor.esp": {
+   "folder": "Ebony Knight Armor",
+   "modid": "68062"
+  },
+  "ECSS - Staff of Sheogorath Patch.esp": {
+   "folder": "Skyrim Extended Cut - Saints and Seducers",
+   "modid": "72772"
+  },
+  "el_gildeddoubletsetcolor.esp": {
+   "folder": "Gilded Doublet - Ported to SSE",
+   "modid": "73879"
+  },
+  "Eli_Dovah Vault.esp": {
+   "folder": "Dovahkiin's Vault SSE",
+   "modid": "42237"
+  },
+  "Elven Enforcer - Reqtificated.esp": {
+   "folder": "Armors Reqtificated",
+   "modid": "123237"
+  },
+  "Elven Enforcer.esp": {
+   "folder": "Elven Enforcer Armor",
+   "modid": "109638"
+  },
+  "Escapeweave.esp": {
+   "folder": "Escapeweave",
+   "modid": "168685"
+  },
+  "evgHinterlandRanger.esp": {
+   "folder": "The Hinterland Ranger - HDT-SMP",
+   "modid": "99201"
+  },
+  "evgInfiltratorarmor.esp": {
+   "folder": "Illusive Infiltrator Armor",
+   "modid": "105659"
+  },
+  "evgnnsmpaccessories.esp": {
+   "folder": "Nirn Necessities - SMP Accessories",
+   "modid": "112481"
+  },
+  "evgSIRENROOT.esm": {
+   "folder": "SIRENROOT - Deluge of Deceit",
+   "modid": "70917"
+  },
+  "evgSouthboundScouts.esp": {
+   "folder": "The Southbound Scouts - HDT-SMP",
+   "modid": "122550"
+  },
+  "FalkreathShades.esp": {
+   "folder": "Gravewind - ESMIFIED",
+   "modid": "129582"
+  },
+  "Farming Tools - Weapon Pack.esp": {
+   "folder": "Farm Tools - Weapon Pack",
+   "modid": "97605"
+  },
+  "Fashions - Reqtificated.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Ferrymen - New Outfits by Xtudo.esp": {
+   "folder": "Ferrymen - New Clothing SE by Xtudo",
+   "modid": "92231"
+  },
+  "FFMSpellKnightVariants.esl": {
+   "folder": "Spell Knight Armor Variants",
+   "modid": "84620"
+  },
+  "FGCBanneredge.esp": {
+   "folder": "Banneredge",
+   "modid": "135007"
+  },
+  "FGCDrakeKnightSwordReborn.esp": {
+   "folder": "Drake Knight Sword and Shield Reborn",
+   "modid": "54704"
+  },
+  "FGCDraugrslayerGreatsword.esp": {
+   "folder": "Draugrslayer Greatsword Reborn",
+   "modid": "43886"
+  },
+  "FGCEgilRapier.esp": {
+   "folder": "Egil's Rapier",
+   "modid": "126825"
+  },
+  "FGCGleamstrike-ESL-AAVersion.esp": {
+   "folder": "Gleamstrike",
+   "modid": "124348"
+  },
+  "FGCGreatmaceOfBlasphemy.esp": {
+   "folder": "Greatmace Of Blasphemy",
+   "modid": "114046"
+  },
+  "FGCOrcHeroSwords.esp": {
+   "folder": "Orc Hero Swords",
+   "modid": "115301"
+  },
+  "FGCSamTheBattlePan.esp": {
+   "folder": "Sam - The Battle Pan",
+   "modid": "119691"
+  },
+  "FGCVerdantAxe.esp": {
+   "folder": "Verdant's Axe ESLIFIED",
+   "modid": "37345"
+  },
+  "FGCVolkiharRelicSword.esp": {
+   "folder": "Volkihar Relic Sword",
+   "modid": "128508"
+  },
+  "FGCWyrmheart.esp": {
+   "folder": "Wyrmheart and Twinwyrm Aegis",
+   "modid": "112704"
+  },
+  "Finding_VelehkSain.esp": {
+   "folder": "Finding Velehk Sain",
+   "modid": "19815"
+  },
+  "Fine Clothes Variations.esp": {
+   "folder": "Styles of Skyrim - Fine Clothes Variations",
+   "modid": "126451"
+  },
+  "Fists of Fury - Skyrim.esp": {
+   "folder": "Fists of Fury - Skyrim",
+   "modid": "73835"
+  },
+  "Fists Rewards.esp": {
+   "folder": "[LoreRim] Fisting Rewards",
+   "modid": null
+  },
+  "Follower_Fashions.esp": {
+   "folder": "Follower Fashions",
+   "modid": "118127"
+  },
+  "ForgottenCity.esp": {
+   "folder": "The Forgotten City",
+   "modid": "1179"
+  },
+  "ForswornMinotaurs_MinotaursSE.esp": {
+   "folder": "Forsworn Minotaurs",
+   "modid": "49035"
+  },
+  "ForswornVarietyArmorPack.esp": {
+   "folder": "Fashions of Forsworn",
+   "modid": "66673"
+  },
+  "Fozars_Dragonborn_-_Requiem_Patch.esp": {
+   "folder": "Requiem - Dragonborn Patch",
+   "modid": "34829"
+  },
+  "FSLE - Unique Abilities.esp": {
+   "folder": "Falmer Servant Lines Expansion - Unique Abilities",
+   "modid": "120995"
+  },
+  "Fur-Lined Steel - Reqtificated.esp": {
+   "folder": "Armors Reqtificated",
+   "modid": "123237"
+  },
+  "Fur-lined Steel Armor.esp": {
+   "folder": "Fur-lined Steel Armor",
+   "modid": "106305"
+  },
+  "GORE.esp": {
+   "folder": "Gore - A Companion Mod",
+   "modid": "85298"
+  },
+  "Grand Cleaver.esp": {
+   "folder": "Grand Cleaver",
+   "modid": "133858"
+  },
+  "Granite Maul SE - Johnskyrim.esp": {
+   "folder": "Granite Maul SE",
+   "modid": "29534"
+  },
+  "Gray Cowl of Nocturnal - Requiem Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Gray Fox Cowl.esm": {
+   "folder": "The Gray Cowl of Nocturnal - 10th anniversary",
+   "modid": "141327"
+  },
+  "Growl - Reqtificated.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Gryphon Knight - Reqtificated.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "GVLT_Gryphonknight.esp": {
+   "folder": "Gryphonknight Regalia - Breton Noble Armor",
+   "modid": "107437"
+  },
+  "GVLT_LifeswornVestige.esp": {
+   "folder": "Lifesworn Vestiges -- Champion of Arkay armor (optional SMP)",
+   "modid": "136837"
+  },
+  "HearthFires.esm": {
+   "folder": "Official Master Files - Cleaned Plugins",
+   "modid": null
+  },
+  "HeartOfTheReach.esp": {
+   "folder": "Heart of the Reach - New Quest - Dungeon - Weapons - 3 Creature Variants - Ring - Spell",
+   "modid": "76494"
+  },
+  "Heavy Legion - Reqtificated.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Helmet Toggle 2.esp": {
+   "folder": "Helmet Toggle 2",
+   "modid": "100617"
+  },
+  "HLIORemi.esp": {
+   "folder": "Remiel-Custom Voiced Follower",
+   "modid": "51874"
+  },
+  "Ice Breath.esp": {
+   "folder": "Ice Breath ESPFE FOMOD",
+   "modid": "147206"
+  },
+  "ImperialFineClothes.esp": {
+   "folder": "QND SPID Clothing Pack 2",
+   "modid": "93394"
+  },
+  "ImperialGladius.esp": {
+   "folder": "Imperial Gladius - Imperial Sword Replacer",
+   "modid": "147965"
+  },
+  "Inigo.esp": {
+   "folder": "INIGO",
+   "modid": "1461"
+  },
+  "InsanitySilverBow.esp": {
+   "folder": "Silver Bow",
+   "modid": "79302"
+  },
+  "JK's Arnleif and Sons Trading Company.esp": {
+   "folder": "JK's Arnleif and Sons Trading Company",
+   "modid": "54166"
+  },
+  "JK's Belethor's General Goods.esp": {
+   "folder": "JK's Belethor's General Goods",
+   "modid": "33636"
+  },
+  "JK's Blue Palace.esp": {
+   "folder": "JK's Blue Palace",
+   "modid": "45324"
+  },
+  "JK's Fort Dawnguard.esp": {
+   "folder": "JK's Fort Dawnguard",
+   "modid": "110645"
+  },
+  "JK's Palace of the Kings.esp": {
+   "folder": "JK's Palace of the Kings",
+   "modid": "48902"
+  },
+  "JK's Radiant Raiment.esp": {
+   "folder": "JK's Radiant Raiment",
+   "modid": "44858"
+  },
+  "JKs Blue Palace - Immersion Patch.esp": {
+   "folder": "JK's Interiors Patch Collection",
+   "modid": "35910"
+  },
+  "Journey to Baan Malur - Patched.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Journey to Baan Malur.esp": {
+   "folder": "Journey to Baan Malur and Morrowind",
+   "modid": "114518"
+  },
+  "JS Barenziah SE - Johnskyrim.esp": {
+   "folder": "JS Barenziah SE",
+   "modid": "22990"
+  },
+  "JS Vanilla Circlets SE.esp": {
+   "folder": "JS Vanilla Circlets SE",
+   "modid": "131813"
+  },
+  "Kad_MoonMonkRobes.esp": {
+   "folder": "Moon Monk's Robes",
+   "modid": "82495"
+  },
+  "Kanjs - Spriggan Sword.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "KaPoTunSword.esp": {
+   "folder": "Ka Po'Tun Execution Blade",
+   "modid": "145225"
+  },
+  "Karasumi's Leviathan Axe.esp": {
+   "folder": "Leviathan Axe - 4k ESPFE",
+   "modid": "106414"
+  },
+  "Katana Raven LoreCut - Reqtificated.esp": {
+   "folder": "Katana - Raven Replacer - LoreCut - Reqtificated",
+   "modid": "132964"
+  },
+  "Katana.esp": {
+   "folder": "Katana - Journey in the Shadows",
+   "modid": "69622"
+  },
+  "Khajiit Caravan Mules.esp": {
+   "folder": "IKC Mare and Mule - Immersive Khajiit Caravan with Fluff - LORERIM ESLIFIED",
+   "modid": "57986"
+  },
+  "KhajiitHazWears.esp": {
+   "folder": "Khajiit Has Wears",
+   "modid": "79540"
+  },
+  "Knight of the North.esp": {
+   "folder": "Knight of the North",
+   "modid": "45869"
+  },
+  "Kofi - Bjuddster Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Kofi - Combined Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Kofi - Faithless Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Kofi - Phaendrik Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Kozakowy1700LadySarahGown.esp": {
+   "folder": "Kozakowy's 1700 Lady Sarah Churchill Gown - SSE UNP CBBE",
+   "modid": "36423"
+  },
+  "ksmc_Elmlock.esp": {
+   "folder": "Elmlock Armor and Blade - ESP Update",
+   "modid": "105930"
+  },
+  "ksws04.esp": {
+   "folder": "Welkynar Hussar Armor",
+   "modid": "89496"
+  },
+  "ksws04_quest.esp": {
+   "folder": "The Welkynar Knight - Quest",
+   "modid": "89510"
+  },
+  "ksws07_quest.esm": {
+   "folder": "The Frozen Heart - Quest Mod",
+   "modid": "159911"
+  },
+  "KvetchiMercenary.esl": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": "110632",
+   "modidFrom": "Kvetchi Mercenary Set - My patches and tweaks SE by Xtudo - Vanilla Iron Armor replacer"
+  },
+  "Legends of Aetherium - Requiem Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LegendsOfAetherium.esp": {
+   "folder": "Legends of Aetherium - New Dungeon - Quest - Armour - Weapons",
+   "modid": "69807"
+  },
+  "Light Dragonbone - Reqtificated.esp": {
+   "folder": "Armors Reqtificated",
+   "modid": "123237"
+  },
+  "Light Dragonbone.esp": {
+   "folder": "Light Dragonbone Armor",
+   "modid": "105087"
+  },
+  "Lion's Mane.esp": {
+   "folder": "Lion's Mane",
+   "modid": "72166"
+  },
+  "LoreRim - Armor Merges.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim - Arrow Tweaks.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim - Cloth Padding.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim - Clothing.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim - Divine Crusader.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim - ISC Patches.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim - Leveled List Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim - Lucien Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim - Magink Bosses.esp": {
+   "folder": "Skyrim Boss Overhaul",
+   "modid": "152237"
+  },
+  "LoreRim - Miasma Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim - NPC Overwrite Merge.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim - NPCs and Races.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim - Outfit Distribution.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim - Recipes.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim - Remi Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim - Spells and Magic Effects.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Lorerim - Vigilant Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim - Weapons.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LoreRim Dreamstride.esp": {
+   "folder": "LoreRim - MCM and INI Settings",
+   "modid": null
+  },
+  "LoreRim Traits.esp": {
+   "folder": "[LoreRim] Traits",
+   "modid": null
+  },
+  "Lucien.esp": {
+   "folder": "Lucien - Immersive Fully Voiced Male Follower",
+   "modid": "20035"
+  },
+  "Lulu's Inigo - Reqtificated.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "LunarGuardArmor.esp": {
+   "folder": "Lunar Guard Armor",
+   "modid": "75349"
+  },
+  "LunarGuardArsenal_Battleaxe.esp": {
+   "folder": "Lunar Guard Arsenal - Battleaxe",
+   "modid": "79097"
+  },
+  "Mage Clothing Expansion.esp": {
+   "folder": "Mage Clothing Expansion",
+   "modid": "128173"
+  },
+  "Maormer Seascale - LoreRim Cut.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Mercenary Light Armor - Reqtificated.esp": {
+   "folder": "Armors Reqtificated",
+   "modid": "123237"
+  },
+  "Mercenary Light Iron Armor.esp": {
+   "folder": "Mercenary Light Iron Armor",
+   "modid": "59897"
+  },
+  "Merchant Clothes Variations.esp": {
+   "folder": "Styles of Skyrim - Merchant Clothes Variations",
+   "modid": "143310"
+  },
+  "Merchant_Fashions.esp": {
+   "folder": "Merchant Fashions",
+   "modid": "118922"
+  },
+  "Meridia.esp": {
+   "folder": "Meridia's Order ESMIFIED",
+   "modid": "102584"
+  },
+  "Miasma.esp": {
+   "folder": "Miasma",
+   "modid": "149879"
+  },
+  "mihailcrescent.esp": {
+   "folder": "Requiem - Daedric Crescent",
+   "modid": "135454"
+  },
+  "Miner Clothes Variations.esp": {
+   "folder": "Styles of Skyrim - Miner Clothes Variations",
+   "modid": "126007"
+  },
+  "MoreToDoSoulCairn.esp": {
+   "folder": "More to do in the Soul Cairn",
+   "modid": "115962"
+  },
+  "MorihausRefugeStandalone.esp": {
+   "folder": "Morihaus' Refuge - No Bruma Version",
+   "modid": "68558"
+  },
+  "NAT-ENB.esp": {
+   "folder": "NAT.ENB - ESP WEATHER PLUGIN",
+   "modid": "27141"
+  },
+  "NewArmoury.esp": {
+   "folder": "Animated Armoury - DAR Version - New Weapons with animations",
+   "modid": "35978"
+  },
+  "NightmarePlane.esp": {
+   "folder": "Sleepwalking Into A Nightmare - New Daedric Prince Quest",
+   "modid": "141047"
+  },
+  "Noct_BloodcoilRapier.esp": {
+   "folder": "Bloodcoil Rapier",
+   "modid": "118116"
+  },
+  "Noct_LostRelicsOfTamriel.esp": {
+   "folder": "Lost Relics of Tamriel - Echos of the Past",
+   "modid": "122137"
+  },
+  "Nord Raven Battle Armor.esp": {
+   "folder": "Nord Raven Battle Armor",
+   "modid": "63402"
+  },
+  "Nord Tribal Armor - Reqtificated.esp": {
+   "folder": "Armors Reqtificated",
+   "modid": "123237"
+  },
+  "Nord Tribal Armor.esp": {
+   "folder": "Nord Tribal Armor",
+   "modid": "62525"
+  },
+  "Nord Vagabond - Reqtificated.esp": {
+   "folder": "Armors Reqtificated",
+   "modid": "123237"
+  },
+  "Nord Vagabond Armor.esp": {
+   "folder": "Nord Vagabond Armor",
+   "modid": "63865"
+  },
+  "NordWarUA's Race Armor Expansion.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": "34585",
+   "modidFrom": "NordWarUA's Race Armor Expansion"
+  },
+  "NorthernRoadGarb.esl": {
+   "folder": "Northern Roadwatch Garb",
+   "modid": "155310"
+  },
+  "NPC Appearances Merged.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "NPCs Pre-Synthesis Reqtificated.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "NPCsWearWeddingBands.esp": {
+   "folder": "Married NPCs Wear Wedding Bands (SPID - Left Hand Rings)",
+   "modid": "69048"
+  },
+  "NW_Steel_Plate_Armors.esp": {
+   "folder": "Steel Plate Armors - ESLified",
+   "modid": "154073"
+  },
+  "Ordinator - Perks of Skyrim.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": "1137",
+   "modidFrom": "Ordinator - Perks of Skyrim"
+  },
+  "Pelt Cloaks.esp": {
+   "folder": "Pelts 'o' Plenty - Fur Pelt Cloaks - Trimmed Cloak Hotfix",
+   "modid": "120726"
+  },
+  "PenobscotWarBow.esp": {
+   "folder": "Penobscot War Bow [SSE]",
+   "modid": "16391"
+  },
+  "Phoenix glave.esp": {
+   "folder": "Phoenix Glave FOMOD ESPFE",
+   "modid": "148923"
+  },
+  "Pig Iron Chieftan.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "PraedysSkeletons.esp": {
+   "folder": "Skeleton Replacer HD",
+   "modid": "52845"
+  },
+  "Priestly_Fashions.esp": {
+   "folder": "Fashions of the Monks and Priests",
+   "modid": "117729"
+  },
+  "PrinceandPauper.esp": {
+   "folder": "Prince and The Pauper Refine",
+   "modid": "70037"
+  },
+  "PrinceandPauperRefine.esp": {
+   "folder": "Prince and The Pauper Refine",
+   "modid": "70037"
+  },
+  "PrvtI_SaintsSeducersArmory.esp": {
+   "folder": "Armory Extended - Saints and Seducers Patch for LoreRim",
+   "modid": "167859"
+  },
+  "PrvtIRoyalArmory.esp": {
+   "folder": "Royal Armory - New Artifacts",
+   "modid": "6994"
+  },
+  "RDT.esp": {
+   "folder": "Rozol do Tiid 2 4K ESPFE",
+   "modid": "152430"
+  },
+  "Relentless Sword SE - Johnskyrim.esp": {
+   "folder": "Relentless",
+   "modid": "114022"
+  },
+  "Requiem - Mage Clothing Expansion.esp": {
+   "folder": "Requiem - Mage Clothing Expansion",
+   "modid": "133794"
+  },
+  "Requiem - Magic Redone.esp": {
+   "folder": "Requiem - Magic Redone",
+   "modid": "59302"
+  },
+  "Requiem - Minor Arcana - Forsworn.esp": {
+   "folder": "Requiem - Minor Arcana",
+   "modid": "61342"
+  },
+  "Requiem - More Unique Enemies.esp": {
+   "folder": "Requiem - More Unique Enemies - ESLIFIED BOTH",
+   "modid": "74739"
+  },
+  "Requiem - NewArmoury.esp": {
+   "folder": "Requiem - Animated Armoury with Spear Mechanic Patch",
+   "modid": "64712"
+  },
+  "Requiem - Weapons and Armor Redone.esp": {
+   "folder": "Requiem - Weapons and Armor Redone",
+   "modid": "42591"
+  },
+  "Requiem for the Indifferent.esp": {
+   "folder": "LoreRim - Reqtificator",
+   "modid": null
+  },
+  "Requiem-betterForgottenVale.esp": {
+   "folder": "Requiem - ST - Forgotten Vale ESLIFIED",
+   "modid": "42633"
+  },
+  "Requiem.esp": {
+   "folder": "Requiem - The Roleplaying Overhaul (No Messages ESLIFIED)",
+   "modid": "60888"
+  },
+  "Requiem_VampireCollection.esp": {
+   "folder": "Requiem - ST - Vampires",
+   "modid": "42633"
+  },
+  "Rezzur_dagger.esp": {
+   "folder": "Rezzur Dagger",
+   "modid": "129585"
+  },
+  "RihadSwordsmanSet.esl": {
+   "folder": "Rihad Swordsman - SE by Xtudo - Fixes",
+   "modid": "122125"
+  },
+  "RiilungolzStaff AA Edition.esp": {
+   "folder": "Riilungolz - HDT-SMP and Animated Staff SE",
+   "modid": "97159"
+  },
+  "Ring of Draconic Burdon.esp": {
+   "folder": "Ring of Draconic Burden",
+   "modid": "128928"
+  },
+  "RiverfolkClothes.esl": {
+   "folder": "Riverfolk Clothes Set - My patches SE by Xtudo",
+   "modid": "136348"
+  },
+  "RiverStaff.esp": {
+   "folder": "Praedy's Staves AIO",
+   "modid": "65481"
+  },
+  "RMB SPID - Realistic Armors.esp": {
+   "folder": "[RMB SPIDified] Realistic Armor",
+   "modid": "88971"
+  },
+  "Rogue Nord - Reqtificated.esp": {
+   "folder": "Armors Reqtificated",
+   "modid": "123237"
+  },
+  "Rogue Nord Armor.esp": {
+   "folder": "Rogue Nord Armor",
+   "modid": "60304"
+  },
+  "Royal Elven Armor - Reqtificated.esp": {
+   "folder": "Armors Reqtificated",
+   "modid": "123237"
+  },
+  "Royal Elven Armor.esp": {
+   "folder": "Royal Elven Armor Set",
+   "modid": "58898"
+  },
+  "RuneDreamstrides.esp": {
+   "folder": "Demon of Dream",
+   "modid": "118719"
+  },
+  "RunemasterMagic.esl": {
+   "folder": "Runemaster Magic",
+   "modid": "145420"
+  },
+  "RVX Argonian Koi Whiskers.esp": {
+   "folder": "Aquatic Elegance - Argonian Koi Whisker Addons",
+   "modid": "97363"
+  },
+  "Ryn's Alvor's House.esp": {
+   "folder": "Ryn's Alvor and Sigrid's House",
+   "modid": "89187"
+  },
+  "Ryn's Crabber's Shanty.esp": {
+   "folder": "Ryn's Crabber's Shanty and Titanclaw Lair",
+   "modid": "72604"
+  },
+  "Ryn's Lost Valley Redoubt.esp": {
+   "folder": "Ryn's Lost Valley Redoubt",
+   "modid": "102676"
+  },
+  "Ryn's Mods - Reqtificated.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Ryn's Snazzy Last Vigil - Ebony Warrior Overhaul.esp": {
+   "folder": "Ryn's Snazzy Last Vigill",
+   "modid": "76385"
+  },
+  "s6o6tStormholdWarriorArmor.esp": {
+   "folder": "Stormhold Warrior Armor SSE - Port Plus",
+   "modid": "96559"
+  },
+  "SaviorsHideReplacer2.esp": {
+   "folder": "Savior's Hide Replacer 2",
+   "modid": "129638"
+  },
+  "Scholar's Sting.esp": {
+   "folder": "Scholar's Sting",
+   "modid": "135538"
+  },
+  "SeranaDialogueExpansion.esp": {
+   "folder": "Serana Dialogue Expansion",
+   "modid": "121920"
+  },
+  "Shadowscale Set - Reqtificated.esp": {
+   "folder": "Armors Reqtificated",
+   "modid": "123237"
+  },
+  "shadowscaleset.esp": {
+   "folder": "Shadowscale Set Reborn",
+   "modid": "79717"
+  },
+  "Siege at Icemoth.esp": {
+   "folder": "Siege at Icemoth",
+   "modid": "109541"
+  },
+  "sirwho_Wizard_Hats-Simple.esp": {
+   "folder": "Wizard Hats",
+   "modid": "2385"
+  },
+  "Skaal Mofu - Reqtificated.esp": {
+   "folder": "Armors Reqtificated",
+   "modid": "123237"
+  },
+  "Skaal MofuMofu Coat.esp": {
+   "folder": "QND SPID Clothing Pack 2",
+   "modid": "93394"
+  },
+  "Skyrim Extended Cut - Saints and Seducers.esp": {
+   "folder": "Skyrim Extended Cut - Saints and Seducers",
+   "modid": "72772"
+  },
+  "Skyrim.esm": {
+   "folder": null,
+   "modid": null
+  },
+  "SkyrimSpearMechanic.esp": {
+   "folder": "Skyrim Spear Mechanic SE",
+   "modid": "25146"
+  },
+  "Sleepwalking - Requiem Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "SMP_SpellKnightVariants.esp": {
+   "folder": "HDT-SMP Spell Knight Armor Patch and Variants",
+   "modid": "105432"
+  },
+  "SnozzResources.esp": {
+   "folder": "Snozz's Resource Pack",
+   "modid": "110110"
+  },
+  "Sons of Skyrim - Requiem Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Soul Devourer.esp": {
+   "folder": "Soul Devourer Ring",
+   "modid": "134135"
+  },
+  "Spear of Alacrity.esp": {
+   "folder": "Spear of Alacrity",
+   "modid": "125789"
+  },
+  "Spikey.esp": {
+   "folder": "Spikey - Morningstar Mace Supreme",
+   "modid": "65969"
+  },
+  "Stable Masters - New Clothes by Xtudo.esp": {
+   "folder": "Stable Masters - New Clothing SE by Xtudo - SPID",
+   "modid": "94704"
+  },
+  "Steel Elven Battle Mage - Reqtificated.esp": {
+   "folder": "Armors Reqtificated",
+   "modid": "123237"
+  },
+  "Steel Elven Battle Mage Armor.esp": {
+   "folder": "Steel Elven Battle Mage Armor",
+   "modid": "61408"
+  },
+  "Steel Light Elven - Reqtificated.esp": {
+   "folder": "Armors Reqtificated",
+   "modid": "123237"
+  },
+  "Steel Light Elven Armor.esp": {
+   "folder": "Steel Light Elven Armor",
+   "modid": "58580"
+  },
+  "Steel Plate Armor - Reqtificated.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "SurWR.esp": {
+   "folder": "Rob's Bug Fixes - Capital Whiterun Expansion",
+   "modid": "63355"
+  },
+  "Synthesis - Gameplay Overwrite.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Synthesis - NPC.esp": {
+   "folder": "LoreRim - Synthesis Output",
+   "modid": null
+  },
+  "Taliesin Patches.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "The Contest - New Model.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "The Cursed Tribe - Quest Expansion.esp": {
+   "folder": "The Cursed Tribe - Quest Expansion",
+   "modid": "171220"
+  },
+  "The Frozen Heart - Quest Mod - LoreRim Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "The Gray Cowl - Betalilles LoreRim Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "The Heart Of Dibella - Quest Expansion.esp": {
+   "folder": "The Heart of Dibella - Quest Expansion",
+   "modid": "94863"
+  },
+  "TheChoiceIsYours.esp": {
+   "folder": "The Choice is Yours",
+   "modid": "3850"
+  },
+  "TheGiftofSaturalia.esp": {
+   "folder": "The Gift Of Saturalia",
+   "modid": "105697"
+  },
+  "TheNewGentleman.esp": {
+   "folder": "[NoDelete] The New Gentleman",
+   "modid": null
+  },
+  "Thunder - Unique Weapon Addon.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Timeless spear.esp": {
+   "folder": "Timeless spear (Animated) ESPFE FOMOD",
+   "modid": "146915"
+  },
+  "Tools of Kagrenac.esp": {
+   "folder": "The Tools of Kagrenac ESMIFIED",
+   "modid": "14168"
+  },
+  "Trad_AE_CC_Collection_Requiem_Patch.esp": {
+   "folder": "Trad - AE - CC - Collection - Requiem Patch",
+   "modid": "64829"
+  },
+  "Travelling Priest - SkyPatched.esp": {
+   "folder": "Travelling Priest Robes - Distribution",
+   "modid": "118888"
+  },
+  "Travelling Priest - Vanilla HIMBO CBBE.esp": {
+   "folder": "Travelling Priest Robes - Vanilla HIMBO CBBE -",
+   "modid": "118327"
+  },
+  "Triumvirate - Mage Archetypes.esp": {
+   "folder": "Triumvirate (Balanced)",
+   "modid": "65427"
+  },
+  "Undeath.esp": {
+   "folder": "Undeath Remastered - CLEANED ESMIFIED",
+   "modid": "6180"
+  },
+  "UndeathFixes.esp": {
+   "folder": "Undeath - Classical Lichdom - ESMIFIED",
+   "modid": "40802"
+  },
+  "Unique Thane Weapons.esp": {
+   "folder": "Unique Thane Weapons",
+   "modid": "35497"
+  },
+  "UniqueBows.esp": {
+   "folder": "Unique Bows Collection Balanced",
+   "modid": "33451"
+  },
+  "Unmarked Locations Pack - All In One.esp": {
+   "folder": "Unmarked Locations Pack - All In One ESMIFIED",
+   "modid": "113660"
+  },
+  "Unofficial Daedric Mail Armor Patch.esl": {
+   "folder": "Restored Helmets",
+   "modid": "18975"
+  },
+  "Unofficial Elven Hunter Armor Patch.esl": {
+   "folder": "Restored Helmets",
+   "modid": "18975"
+  },
+  "Unofficial Skyrim Modders Patch.esp": {
+   "folder": "Unofficial Skyrim Modder's Patch - USMP SE",
+   "modid": "49616"
+  },
+  "Unofficial Skyrim Special Edition Patch.esp": {
+   "folder": "Unofficial Skyrim Special Edition Patch",
+   "modid": "266"
+  },
+  "Unplayable Faction Armor - Reqtificated.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Valthume Boss - Requiem.esp": {
+   "folder": "Valthume Boss - Yngnavar Ghost-Bear",
+   "modid": "136028"
+  },
+  "Vampire Armor and Clothing LoreRim Patch.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "Vampire Armor Expansion.esp": {
+   "folder": "Vampire Armor - SE by Xtudo - My Tweaks",
+   "modid": "166341"
+  },
+  "Vampire Clothing Expansion.esp": {
+   "folder": "Vampire Clothing Expansion",
+   "modid": "97185"
+  },
+  "Vampire Hunter's Stake.esp": {
+   "folder": "Vampire Hunter's Stake - Maleficus' Version",
+   "modid": "97198"
+  },
+  "VampiresHaveClaws - Player Version.esp": {
+   "folder": "Equipable Vampire Claws - Player Version",
+   "modid": "96482"
+  },
+  "Vigilant.esm": {
+   "folder": "VIGILANT - English Translation (Plus Voiced Addon)",
+   "modid": "11894"
+  },
+  "Volskygge Boss - Requiem.esp": {
+   "folder": "Volskygge Boss - Bekkhild",
+   "modid": "136593"
+  },
+  "Wand Keywords.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "WidowmakerBattleaxe_SE_ENG.esp": {
+   "folder": "Widowmaker Battleaxe SE",
+   "modid": "69295"
+  },
+  "Windcaller.esp": {
+   "folder": "Windcaller - Greybeard Inspired Robes and Staff",
+   "modid": "128033"
+  },
+  "WindhelmSSE.esp": {
+   "folder": "Capital Windhelm Expansion",
+   "modid": "42990"
+  },
+  "WinterDawn_Fashions.esp": {
+   "folder": "Winterhold Dawnstar and Sailor Fashions",
+   "modid": "121190"
+  },
+  "WoodenSwordsSpecialPenis.esp": {
+   "folder": "Lore Friendly Wooden Swords - Replacers",
+   "modid": "98823"
+  },
+  "WulfgardArmor.esp": {
+   "folder": "Wulfgar's Nordic Berserker Armor Axe and Shield",
+   "modid": "144218"
+  },
+  "Wyrmstooth.esp": {
+   "folder": "Wyrmstooth",
+   "modid": "45565"
+  },
+  "YamiConjuration.esp": {
+   "folder": "LoreRim - xEdit64 Output",
+   "modid": null
+  },
+  "ZD_HAG_HALBERD.esp": {
+   "folder": "Hagraven Halberd",
+   "modid": "131138"
+  },
+  "ZD_RB_Daggers.esp": {
+   "folder": "Soulpiercer and Doomfang Daggers ESL 2 4K FOMOD",
+   "modid": "144131"
+  },
+  "zzSkyrimAttire.esp": {
+   "folder": "zzjay Skyrim Attire - SE",
+   "modid": "92105"
+  }
+ }
+}

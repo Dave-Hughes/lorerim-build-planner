@@ -132,6 +132,7 @@ Mill owners such as Hod in Riverwood buy firewood at 2 gold a log.
 
 :::mods
 - **Faster Mining Plus SE**: One swing per vein.
+  - nexus: 2656
 - **Simple Hunting Overhaul**: Animal Pelts and hunting.
   - nexus: 95943
 :::
@@ -162,6 +163,7 @@ Each shop buys only its own kind of goods until you take the Speech perk Merchan
 - **[LoreRim] Economy Overhaul**: Prices, merchant gold and restock time.
   - tag: LoreRim's own mod
 - **Sanctified Stolen Goods**: Fences removing the stolen mark.
+  - nexus: 128597
 :::
 
 :::ask{q="Why do merchants pay so little?"}
