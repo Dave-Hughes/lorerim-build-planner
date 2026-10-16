@@ -1,0 +1,866 @@
+{
+ "00Taliesin.esp": {
+  "nexus": "93413"
+ },
+ "018Auri.esp": {
+  "nexus": "11278"
+ },
+ "1Dwemer.esl": {
+  "nexus": "81046"
+ },
+ "1HSS.esp": {
+  "nexus": "106465"
+ },
+ "1Markynaz.esl": {
+  "nexus": "79766"
+ },
+ "1Minotaurs.esp": {
+  "nexus": "48864"
+ },
+ "1NDArmor.esl": {
+  "nexus": "84325"
+ },
+ "1TheWreckOfTheArgentRaptor.esp": {
+  "nexus": "140763"
+ },
+ "1YsmirArmorSE.esl": {
+  "nexus": "112480"
+ },
+ "3BBB.esp": {
+  "nexus": "30174"
+ },
+ "_Fuse00HairPack01.esp": {
+  "nexus": "63181"
+ },
+ "_Fuse00HairPack02_ESL.esp": {
+  "nexus": "64259"
+ },
+ "aaaGraniteHill.esp": {
+  "nexus": "14658"
+ },
+ "Alchemist Outfit Variations.esp": {
+  "nexus": "128147"
+ },
+ "AlternatePerspective.esp": {
+  "nexus": "50307"
+ },
+ "Apex_Khajiit.esp": {
+  "nexus": "17114"
+ },
+ "Apocalypse - Magic of Skyrim.esp": {
+  "nexus": "1090"
+ },
+ "Arcane Arsenal.esp": {
+  "nexus": "128928"
+ },
+ "Arena - Markarth Side.esp": {
+  "nexus": "114252"
+ },
+ "Armor and Clothing Extention - Mage Robes.esp": {
+  "nexus": "67458"
+ },
+ "Armor and Clothing Extention - Monk Robes.esp": {
+  "nexus": "67458"
+ },
+ "Armors of the Velothi - Reqtificated.esp": {
+  "nexus": "123237"
+ },
+ "Armors of the Velothi 2 - Reqtificated.esp": {
+  "nexus": "123237"
+ },
+ "Armors of the Velothi Pt2.esl": {
+  "nexus": "69996"
+ },
+ "Armors of the Velothi.esp": {
+  "nexus": "62752"
+ },
+ "ArteFake.esp": {
+  "nexus": "41254"
+ },
+ "Artifact of Might.esp": {
+  "nexus": "104381"
+ },
+ "Ascend - Hidden Peaks of Skyrim.esp": {
+  "nexus": "120802"
+ },
+ "Ashley Graham Hair.esp": {
+  "nexus": "112367"
+ },
+ "Bard_Fashions.esp": {
+  "nexus": "119620"
+ },
+ "Barkeeper Clothing Variations.esp": {
+  "nexus": "125608"
+ },
+ "Beggar_Fashions.esp": {
+  "nexus": "120257"
+ },
+ "BetalillesHammerfellQuestBundle.esp": {
+  "nexus": "89977"
+ },
+ "Blacksmith_Fashions.esp": {
+  "nexus": "118460"
+ },
+ "BlanketScarf.esp": {
+  "nexus": "5050"
+ },
+ "Bloodskal Blade - Tweaks and Enhancements.esp": {
+  "nexus": "55988"
+ },
+ "BluthundSword.esp": {
+  "nexus": "60313"
+ },
+ "Bone Cultist Armor - Reqtificated.esp": {
+  "nexus": "123237"
+ },
+ "Bone Cultist Armor.esp": {
+  "nexus": "111224"
+ },
+ "BOOB.esp": {
+  "nexus": "138251"
+ },
+ "Bosmeri Swallowtail.esp": {
+  "nexus": "124248"
+ },
+ "BowRapidCombo.esp": {
+  "nexus": "89308"
+ },
+ "Breton Apparel - Imperial Renaissance.esp": {
+  "nexus": "93394"
+ },
+ "Children Clothes Variations.esp": {
+  "nexus": "136268"
+ },
+ "CL's Rapier.esp": {
+  "nexus": "21101"
+ },
+ "Clanbringer.esp": {
+  "nexus": "109742"
+ },
+ "Cloaks&Capes SMP.esp": {
+  "nexus": "55030"
+ },
+ "College Of Winterhold - Quest Expansion.esp": {
+  "nexus": "66666"
+ },
+ "College_Fashions.esp": {
+  "nexus": "116876"
+ },
+ "Collygon - Sorcerer.esp": {
+  "nexus": "137725"
+ },
+ "ColovianFurClothes.esp": {
+  "nexus": "4465"
+ },
+ "ColovianNobleClothes.esp": {
+  "nexus": "93394"
+ },
+ "ColovianPrince.esl": {
+  "nexus": "110812"
+ },
+ "Common Clothes and Armors.esp": {
+  "nexus": "21305"
+ },
+ "Common Clothing Expanded.esp": {
+  "nexus": "134088"
+ },
+ "CommonClothes.esp": {
+  "nexus": "5063"
+ },
+ "Companion_Fashions.esp": {
+  "nexus": "117008"
+ },
+ "Court Wizard Robes Variations.esp": {
+  "nexus": "128600"
+ },
+ "Court_Fashions.esp": {
+  "nexus": "116231"
+ },
+ "Cultural Bards.esp": {
+  "nexus": "133000"
+ },
+ "CuyiAntlers.esp": {
+  "nexus": "26173"
+ },
+ "Daedric Armor - Standalone version.esp": {
+  "nexus": "58692"
+ },
+ "Daedric Blades - Standalone version.esp": {
+  "nexus": "58692"
+ },
+ "Daedric Shield - Standalone version.esp": {
+  "nexus": "59067"
+ },
+ "Daedric Steel Knight Armor.esp": {
+  "nexus": "60838"
+ },
+ "dawnguardRobes.esp": {
+  "nexus": "169034"
+ },
+ "Destroy the Dark Brotherhood - Quest Expansion.esp": {
+  "nexus": "118229"
+ },
+ "DigitigradeKhajiit+ArgonianRaptor.esp": {
+  "nexus": "1975"
+ },
+ "DIS_Armor_Fractions.esp": {
+  "nexus": "96043"
+ },
+ "DIS_Heavy_Legion.esp": {
+  "nexus": "30468"
+ },
+ "DIS_RealisticArmor.esp": {
+  "nexus": "43509"
+ },
+ "Dragon Fang.esp": {
+  "nexus": "132601"
+ },
+ "Dragon Quarterstaff.esp": {
+  "nexus": "102856"
+ },
+ "DragonCleaver.esp": {
+  "nexus": "121680"
+ },
+ "DragonPriestArmor.esp": {
+  "nexus": "94244"
+ },
+ "Dunmer Outfit Variations.esp": {
+  "nexus": "125719"
+ },
+ "Dwemer Armor.esp": {
+  "nexus": "63074"
+ },
+ "DwemerOutfit.esl": {
+  "nexus": "108959"
+ },
+ "Dynamic Things Alternative.esp": {
+  "nexus": "60741"
+ },
+ "EasternBrassplateSet - Solstheim Dwarven Armor replacer by Xtudo.esp": {
+  "nexus": "109635"
+ },
+ "EasternBrassplateSet.esl": {
+  "nexus": "109635"
+ },
+ "Ebony Knight Armor.esp": {
+  "nexus": "68062"
+ },
+ "ECSS - Staff of Sheogorath Patch.esp": {
+  "nexus": "72772"
+ },
+ "el_gildeddoubletsetcolor.esp": {
+  "nexus": "73879"
+ },
+ "Eli_Dovah Vault.esp": {
+  "nexus": "42237"
+ },
+ "Elven Enforcer - Reqtificated.esp": {
+  "nexus": "123237"
+ },
+ "Elven Enforcer.esp": {
+  "nexus": "109638"
+ },
+ "Escapeweave.esp": {
+  "nexus": "168685"
+ },
+ "evgHinterlandRanger.esp": {
+  "nexus": "99201"
+ },
+ "evgInfiltratorarmor.esp": {
+  "nexus": "105659"
+ },
+ "evgnnsmpaccessories.esp": {
+  "nexus": "112481"
+ },
+ "evgSIRENROOT.esm": {
+  "nexus": "70917"
+ },
+ "evgSouthboundScouts.esp": {
+  "nexus": "122550"
+ },
+ "FalkreathShades.esp": {
+  "nexus": "129582"
+ },
+ "Farming Tools - Weapon Pack.esp": {
+  "nexus": "97605"
+ },
+ "Ferrymen - New Outfits by Xtudo.esp": {
+  "nexus": "92231"
+ },
+ "FFMSpellKnightVariants.esl": {
+  "nexus": "84620"
+ },
+ "FGCBanneredge.esp": {
+  "nexus": "135007"
+ },
+ "FGCDrakeKnightSwordReborn.esp": {
+  "nexus": "54704"
+ },
+ "FGCDraugrslayerGreatsword.esp": {
+  "nexus": "43886"
+ },
+ "FGCEgilRapier.esp": {
+  "nexus": "126825"
+ },
+ "FGCGleamstrike-ESL-AAVersion.esp": {
+  "nexus": "124348"
+ },
+ "FGCGreatmaceOfBlasphemy.esp": {
+  "nexus": "114046"
+ },
+ "FGCOrcHeroSwords.esp": {
+  "nexus": "115301"
+ },
+ "FGCSamTheBattlePan.esp": {
+  "nexus": "119691"
+ },
+ "FGCVerdantAxe.esp": {
+  "nexus": "37345"
+ },
+ "FGCVolkiharRelicSword.esp": {
+  "nexus": "128508"
+ },
+ "FGCWyrmheart.esp": {
+  "nexus": "112704"
+ },
+ "Finding_VelehkSain.esp": {
+  "nexus": "19815"
+ },
+ "Fine Clothes Variations.esp": {
+  "nexus": "126451"
+ },
+ "Fists of Fury - Skyrim.esp": {
+  "nexus": "73835"
+ },
+ "Follower_Fashions.esp": {
+  "nexus": "118127"
+ },
+ "ForgottenCity.esp": {
+  "nexus": "1179"
+ },
+ "ForswornMinotaurs_MinotaursSE.esp": {
+  "nexus": "49035"
+ },
+ "ForswornVarietyArmorPack.esp": {
+  "nexus": "66673"
+ },
+ "Fozars_Dragonborn_-_Requiem_Patch.esp": {
+  "nexus": "34829"
+ },
+ "FSLE - Unique Abilities.esp": {
+  "nexus": "120995"
+ },
+ "Fur-Lined Steel - Reqtificated.esp": {
+  "nexus": "123237"
+ },
+ "Fur-lined Steel Armor.esp": {
+  "nexus": "106305"
+ },
+ "GORE.esp": {
+  "nexus": "85298"
+ },
+ "Grand Cleaver.esp": {
+  "nexus": "133858"
+ },
+ "Granite Maul SE - Johnskyrim.esp": {
+  "nexus": "29534"
+ },
+ "Gray Fox Cowl.esm": {
+  "nexus": "141327"
+ },
+ "GVLT_Gryphonknight.esp": {
+  "nexus": "107437"
+ },
+ "GVLT_LifeswornVestige.esp": {
+  "nexus": "136837"
+ },
+ "HeartOfTheReach.esp": {
+  "nexus": "76494"
+ },
+ "Helmet Toggle 2.esp": {
+  "nexus": "100617"
+ },
+ "HLIORemi.esp": {
+  "nexus": "51874"
+ },
+ "Ice Breath.esp": {
+  "nexus": "147206"
+ },
+ "ImperialFineClothes.esp": {
+  "nexus": "93394"
+ },
+ "ImperialGladius.esp": {
+  "nexus": "147965"
+ },
+ "Inigo.esp": {
+  "nexus": "1461"
+ },
+ "InsanitySilverBow.esp": {
+  "nexus": "79302"
+ },
+ "JK's Arnleif and Sons Trading Company.esp": {
+  "nexus": "54166"
+ },
+ "JK's Belethor's General Goods.esp": {
+  "nexus": "33636"
+ },
+ "JK's Blue Palace.esp": {
+  "nexus": "45324"
+ },
+ "JK's Fort Dawnguard.esp": {
+  "nexus": "110645"
+ },
+ "JK's Palace of the Kings.esp": {
+  "nexus": "48902"
+ },
+ "JK's Radiant Raiment.esp": {
+  "nexus": "44858"
+ },
+ "JKs Blue Palace - Immersion Patch.esp": {
+  "nexus": "35910"
+ },
+ "Journey to Baan Malur.esp": {
+  "nexus": "114518"
+ },
+ "JS Barenziah SE - Johnskyrim.esp": {
+  "nexus": "22990"
+ },
+ "JS Vanilla Circlets SE.esp": {
+  "nexus": "131813"
+ },
+ "Kad_MoonMonkRobes.esp": {
+  "nexus": "82495"
+ },
+ "KaPoTunSword.esp": {
+  "nexus": "145225"
+ },
+ "Karasumi's Leviathan Axe.esp": {
+  "nexus": "106414"
+ },
+ "Katana Raven LoreCut - Reqtificated.esp": {
+  "nexus": "132964"
+ },
+ "Katana.esp": {
+  "nexus": "69622"
+ },
+ "Khajiit Caravan Mules.esp": {
+  "nexus": "57986"
+ },
+ "KhajiitHazWears.esp": {
+  "nexus": "79540"
+ },
+ "Knight of the North.esp": {
+  "nexus": "45869"
+ },
+ "Kozakowy1700LadySarahGown.esp": {
+  "nexus": "36423"
+ },
+ "ksmc_Elmlock.esp": {
+  "nexus": "105930"
+ },
+ "ksws04.esp": {
+  "nexus": "89496"
+ },
+ "ksws04_quest.esp": {
+  "nexus": "89510"
+ },
+ "ksws07_quest.esm": {
+  "nexus": "159911"
+ },
+ "KvetchiMercenary.esl": {
+  "nexus": "110632"
+ },
+ "LegendsOfAetherium.esp": {
+  "nexus": "69807"
+ },
+ "Light Dragonbone - Reqtificated.esp": {
+  "nexus": "123237"
+ },
+ "Light Dragonbone.esp": {
+  "nexus": "105087"
+ },
+ "Lion's Mane.esp": {
+  "nexus": "72166"
+ },
+ "LoreRim - Magink Bosses.esp": {
+  "nexus": "152237"
+ },
+ "Lucien.esp": {
+  "nexus": "20035"
+ },
+ "LunarGuardArmor.esp": {
+  "nexus": "75349"
+ },
+ "LunarGuardArsenal_Battleaxe.esp": {
+  "nexus": "79097"
+ },
+ "Mage Clothing Expansion.esp": {
+  "nexus": "128173"
+ },
+ "Mercenary Light Armor - Reqtificated.esp": {
+  "nexus": "123237"
+ },
+ "Mercenary Light Iron Armor.esp": {
+  "nexus": "59897"
+ },
+ "Merchant Clothes Variations.esp": {
+  "nexus": "143310"
+ },
+ "Merchant_Fashions.esp": {
+  "nexus": "118922"
+ },
+ "Meridia.esp": {
+  "nexus": "102584"
+ },
+ "Miasma.esp": {
+  "nexus": "149879"
+ },
+ "mihailcrescent.esp": {
+  "nexus": "135454"
+ },
+ "Miner Clothes Variations.esp": {
+  "nexus": "126007"
+ },
+ "MoreToDoSoulCairn.esp": {
+  "nexus": "115962"
+ },
+ "MorihausRefugeStandalone.esp": {
+  "nexus": "68558"
+ },
+ "NAT-ENB.esp": {
+  "nexus": "27141"
+ },
+ "NewArmoury.esp": {
+  "nexus": "35978"
+ },
+ "NightmarePlane.esp": {
+  "nexus": "141047"
+ },
+ "Noct_BloodcoilRapier.esp": {
+  "nexus": "118116"
+ },
+ "Noct_LostRelicsOfTamriel.esp": {
+  "nexus": "122137"
+ },
+ "Nord Raven Battle Armor.esp": {
+  "nexus": "63402"
+ },
+ "Nord Tribal Armor - Reqtificated.esp": {
+  "nexus": "123237"
+ },
+ "Nord Tribal Armor.esp": {
+  "nexus": "62525"
+ },
+ "Nord Vagabond - Reqtificated.esp": {
+  "nexus": "123237"
+ },
+ "Nord Vagabond Armor.esp": {
+  "nexus": "63865"
+ },
+ "NordWarUA's Race Armor Expansion.esp": {
+  "nexus": "34585"
+ },
+ "NorthernRoadGarb.esl": {
+  "nexus": "155310"
+ },
+ "NPCsWearWeddingBands.esp": {
+  "nexus": "69048"
+ },
+ "NW_Steel_Plate_Armors.esp": {
+  "nexus": "154073"
+ },
+ "Ordinator - Perks of Skyrim.esp": {
+  "nexus": "1137"
+ },
+ "Pelt Cloaks.esp": {
+  "nexus": "120726"
+ },
+ "PenobscotWarBow.esp": {
+  "nexus": "16391"
+ },
+ "Phoenix glave.esp": {
+  "nexus": "148923"
+ },
+ "PraedysSkeletons.esp": {
+  "nexus": "52845"
+ },
+ "Priestly_Fashions.esp": {
+  "nexus": "117729"
+ },
+ "PrinceandPauper.esp": {
+  "nexus": "70037"
+ },
+ "PrinceandPauperRefine.esp": {
+  "nexus": "70037"
+ },
+ "PrvtI_SaintsSeducersArmory.esp": {
+  "nexus": "167859"
+ },
+ "PrvtIRoyalArmory.esp": {
+  "nexus": "6994"
+ },
+ "RDT.esp": {
+  "nexus": "152430"
+ },
+ "Relentless Sword SE - Johnskyrim.esp": {
+  "nexus": "114022"
+ },
+ "Requiem - Mage Clothing Expansion.esp": {
+  "nexus": "133794"
+ },
+ "Requiem - Magic Redone.esp": {
+  "nexus": "59302"
+ },
+ "Requiem - Minor Arcana - Forsworn.esp": {
+  "nexus": "61342"
+ },
+ "Requiem - More Unique Enemies.esp": {
+  "nexus": "74739"
+ },
+ "Requiem - NewArmoury.esp": {
+  "nexus": "64712"
+ },
+ "Requiem - Weapons and Armor Redone.esp": {
+  "nexus": "42591"
+ },
+ "Requiem-betterForgottenVale.esp": {
+  "nexus": "42633"
+ },
+ "Requiem.esp": {
+  "nexus": "60888"
+ },
+ "Requiem_VampireCollection.esp": {
+  "nexus": "42633"
+ },
+ "Rezzur_dagger.esp": {
+  "nexus": "129585"
+ },
+ "RihadSwordsmanSet.esl": {
+  "nexus": "122125"
+ },
+ "RiilungolzStaff AA Edition.esp": {
+  "nexus": "97159"
+ },
+ "Ring of Draconic Burdon.esp": {
+  "nexus": "128928"
+ },
+ "RiverfolkClothes.esl": {
+  "nexus": "136348"
+ },
+ "RiverStaff.esp": {
+  "nexus": "65481"
+ },
+ "RMB SPID - Realistic Armors.esp": {
+  "nexus": "88971"
+ },
+ "Rogue Nord - Reqtificated.esp": {
+  "nexus": "123237"
+ },
+ "Rogue Nord Armor.esp": {
+  "nexus": "60304"
+ },
+ "Royal Elven Armor - Reqtificated.esp": {
+  "nexus": "123237"
+ },
+ "Royal Elven Armor.esp": {
+  "nexus": "58898"
+ },
+ "RuneDreamstrides.esp": {
+  "nexus": "118719"
+ },
+ "RunemasterMagic.esl": {
+  "nexus": "145420"
+ },
+ "RVX Argonian Koi Whiskers.esp": {
+  "nexus": "97363"
+ },
+ "Ryn's Alvor's House.esp": {
+  "nexus": "89187"
+ },
+ "Ryn's Crabber's Shanty.esp": {
+  "nexus": "72604"
+ },
+ "Ryn's Lost Valley Redoubt.esp": {
+  "nexus": "102676"
+ },
+ "Ryn's Snazzy Last Vigil - Ebony Warrior Overhaul.esp": {
+  "nexus": "76385"
+ },
+ "s6o6tStormholdWarriorArmor.esp": {
+  "nexus": "96559"
+ },
+ "SaviorsHideReplacer2.esp": {
+  "nexus": "129638"
+ },
+ "Scholar's Sting.esp": {
+  "nexus": "135538"
+ },
+ "SeranaDialogueExpansion.esp": {
+  "nexus": "121920"
+ },
+ "Shadowscale Set - Reqtificated.esp": {
+  "nexus": "123237"
+ },
+ "shadowscaleset.esp": {
+  "nexus": "79717"
+ },
+ "Siege at Icemoth.esp": {
+  "nexus": "109541"
+ },
+ "sirwho_Wizard_Hats-Simple.esp": {
+  "nexus": "2385"
+ },
+ "Skaal Mofu - Reqtificated.esp": {
+  "nexus": "123237"
+ },
+ "Skaal MofuMofu Coat.esp": {
+  "nexus": "93394"
+ },
+ "Skyrim Extended Cut - Saints and Seducers.esp": {
+  "nexus": "72772"
+ },
+ "SkyrimSpearMechanic.esp": {
+  "nexus": "25146"
+ },
+ "SMP_SpellKnightVariants.esp": {
+  "nexus": "105432"
+ },
+ "SnozzResources.esp": {
+  "nexus": "110110"
+ },
+ "Soul Devourer.esp": {
+  "nexus": "134135"
+ },
+ "Spear of Alacrity.esp": {
+  "nexus": "125789"
+ },
+ "Spikey.esp": {
+  "nexus": "65969"
+ },
+ "Stable Masters - New Clothes by Xtudo.esp": {
+  "nexus": "94704"
+ },
+ "Steel Elven Battle Mage - Reqtificated.esp": {
+  "nexus": "123237"
+ },
+ "Steel Elven Battle Mage Armor.esp": {
+  "nexus": "61408"
+ },
+ "Steel Light Elven - Reqtificated.esp": {
+  "nexus": "123237"
+ },
+ "Steel Light Elven Armor.esp": {
+  "nexus": "58580"
+ },
+ "SurWR.esp": {
+  "nexus": "63355"
+ },
+ "The Cursed Tribe - Quest Expansion.esp": {
+  "nexus": "171220"
+ },
+ "The Heart Of Dibella - Quest Expansion.esp": {
+  "nexus": "94863"
+ },
+ "TheChoiceIsYours.esp": {
+  "nexus": "3850"
+ },
+ "TheGiftofSaturalia.esp": {
+  "nexus": "105697"
+ },
+ "Timeless spear.esp": {
+  "nexus": "146915"
+ },
+ "Tools of Kagrenac.esp": {
+  "nexus": "14168"
+ },
+ "Trad_AE_CC_Collection_Requiem_Patch.esp": {
+  "nexus": "64829"
+ },
+ "Travelling Priest - SkyPatched.esp": {
+  "nexus": "118888"
+ },
+ "Travelling Priest - Vanilla HIMBO CBBE.esp": {
+  "nexus": "118327"
+ },
+ "Triumvirate - Mage Archetypes.esp": {
+  "nexus": "65427"
+ },
+ "Undeath.esp": {
+  "nexus": "6180"
+ },
+ "UndeathFixes.esp": {
+  "nexus": "40802"
+ },
+ "Unique Thane Weapons.esp": {
+  "nexus": "35497"
+ },
+ "UniqueBows.esp": {
+  "nexus": "33451"
+ },
+ "Unmarked Locations Pack - All In One.esp": {
+  "nexus": "113660"
+ },
+ "Unofficial Daedric Mail Armor Patch.esl": {
+  "nexus": "18975"
+ },
+ "Unofficial Elven Hunter Armor Patch.esl": {
+  "nexus": "18975"
+ },
+ "Unofficial Skyrim Modders Patch.esp": {
+  "nexus": "49616"
+ },
+ "Unofficial Skyrim Special Edition Patch.esp": {
+  "nexus": "266"
+ },
+ "Valthume Boss - Requiem.esp": {
+  "nexus": "136028"
+ },
+ "Vampire Armor Expansion.esp": {
+  "nexus": "166341"
+ },
+ "Vampire Clothing Expansion.esp": {
+  "nexus": "97185"
+ },
+ "Vampire Hunter's Stake.esp": {
+  "nexus": "97198"
+ },
+ "VampiresHaveClaws - Player Version.esp": {
+  "nexus": "96482"
+ },
+ "Vigilant.esm": {
+  "nexus": "11894"
+ },
+ "Volskygge Boss - Requiem.esp": {
+  "nexus": "136593"
+ },
+ "WidowmakerBattleaxe_SE_ENG.esp": {
+  "nexus": "69295"
+ },
+ "Windcaller.esp": {
+  "nexus": "128033"
+ },
+ "WindhelmSSE.esp": {
+  "nexus": "42990"
+ },
+ "WinterDawn_Fashions.esp": {
+  "nexus": "121190"
+ },
+ "WoodenSwordsSpecialPenis.esp": {
+  "nexus": "98823"
+ },
+ "WulfgardArmor.esp": {
+  "nexus": "144218"
+ },
+ "Wyrmstooth.esp": {
+  "nexus": "45565"
+ },
+ "ZD_HAG_HALBERD.esp": {
+  "nexus": "131138"
+ },
+ "ZD_RB_Daggers.esp": {
+  "nexus": "144131"
+ },
+ "zzSkyrimAttire.esp": {
+  "nexus": "92105"
+ }
+}

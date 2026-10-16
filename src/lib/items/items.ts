@@ -19,6 +19,10 @@ export interface GameItem {
   weaponType?: string | null;
   /** "Heavy armor, 25 armor, 30 weight" */
   stats: string;
+  /** The numbers in `stats` (WO-91), for sorting: armor on armor, damage on weapons and ammo, weight on all. */
+  armor?: number;
+  damage?: number;
+  weight?: number;
   text?: string;
   /** Other records with this name (WO-51 follow-up): a build that saved one of their ids still finds this item. */
   also?: string[];

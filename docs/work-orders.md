@@ -3709,12 +3709,12 @@ After it's on production, Dave will:
 6. **The guide's missing links (backlog, 14 Oct).** In the same run, read the `modid` of the 16 guide mods with no Nexus link and add their `nexus:` lines to the chapters' Related Mods. Don't guess any that aren't there.
 
 ### Done when
-- [ ] `recipes_raw.json`, `plugins_raw.json`, `recipes.json` and `plugins.json` are built and committed, with the script's counts in the commit message.
-- [ ] Unit (`test_recipes.py`): a crafting recipe, a tempering recipe, a `HasPerk` condition resolved to a perk id, an unknown station left out with a note, and a recipe matched through an item's `also` id.
-- [ ] Spot checks against xEdit or the game, written in the commit: Glass Cuirass (Make and Improve), Hide Boots, Dragonscale Cuirass, and one modded item. Recipe text is the records' own words.
-- [ ] Items have `armor`, `damage` and `weight` numbers. The gear search and @-mentions still work.
-- [ ] The 16 guide mods have `nexus:` lines, or the commit lists the ones with no `modid`.
-- [ ] All checks in CLAUDE.md pass.
+- [x] `recipes_raw.json`, `plugins_raw.json`, `recipes.json` and `plugins.json` are built and committed, with the script's counts in the commit message.
+- [x] Unit (`test_recipes.py`): a crafting recipe, a tempering recipe, a `HasPerk` condition resolved to a perk id, an unknown station left out with a note, and a recipe matched through an item's `also` id.
+- [x] Spot checks against xEdit or the game, written in the commit: Glass Cuirass (Make and Improve), Hide Boots, Dragonscale Cuirass, and one modded item. Recipe text is the records' own words.
+- [x] Items have `armor`, `damage` and `weight` numbers. The gear search and @-mentions still work.
+- [x] The 16 guide mods have `nexus:` lines, or the commit lists the ones with no `modid`.
+- [x] All checks in CLAUDE.md pass.
 
 ---
 

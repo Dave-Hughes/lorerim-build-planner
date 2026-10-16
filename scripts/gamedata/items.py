@@ -373,7 +373,7 @@ def gear_type(name, slots):
 def build_items(raw, skip=(), prefer=None):
     """
     items_raw.json -> the planner's items.json rows: { id, name, kind, slot, armorType, weaponType,
-    stats, text, also }. The name filter, the merge and the weapon labels run here, so a fix to any
+    stats, armor (armor) or damage (weapons, ammo), weight, text, also }. The name filter, the merge and the weapon labels run here, so a fix to any
     of them needs no new extract.
     """
     rows = []
@@ -391,6 +391,12 @@ def build_items(raw, skip=(), prefer=None):
         else:
             row["weaponType"] = e.get("ammoType")
         row["stats"] = stats_line(e)
+        # The same numbers as plain fields (WO-91), so the Gear page can sort by them.
+        if e["kind"] == "armor":
+            row["armor"] = e.get("armor") or 0
+        else:
+            row["damage"] = e.get("damage") or 0
+        row["weight"] = e.get("weight") or 0
         if e.get("text"):
             row["text"] = e["text"]
         if e.get("also"):

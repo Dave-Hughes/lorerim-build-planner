@@ -395,6 +395,34 @@ def main():
             json.dump(rows, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")
         print(f"{len(rows)} items -> items.json")
+        # Crafting and tempering (WO-91), from recipes.py's raw file: its own file, never in items.json,
+        # so the editor's gear search doesn't fetch it.
+        if os.path.exists(os.path.join(RAW, "recipes_raw.json")):
+            from recipes import build_recipes
+
+            tree_ids = {p["id"] for p in json.load(open(os.path.join(OUT, "perks.json"), encoding="utf-8"))}
+            recipe_perks = {}
+            for edid, pk in data["perks"].items():
+                pid = f"{pk['tree']}:{pk['ranks'][0]['name']}"
+                if pid in tree_ids:
+                    for rk in pk["ranks"]:
+                        recipe_perks[rk["edid"]] = pid
+                    recipe_perks[edid] = pid
+            recipes, notes = build_recipes(load("recipes_raw.json"), rows, load("overrides.json").get("stations", {}), recipe_perks)
+            problems += notes
+            with open(os.path.join(OUT, "recipes.json"), "w", encoding="utf-8") as f:
+                json.dump(recipes, f, separators=(",", ":"), ensure_ascii=False)
+                f.write("\n")
+            made = sum(1 for r in recipes.values() if r.get("make"))
+            improved = sum(1 for r in recipes.values() if r.get("improve"))
+            print(f"{len(recipes)} items with recipes ({made} made, {improved} improved) -> recipes.json")
+        # Each item plugin's Nexus page (WO-91): only plugins with a mod id.
+        if os.path.exists(os.path.join(RAW, "plugins_raw.json")):
+            plugins = {pl: {"nexus": src["modid"]} for pl, src in sorted(load("plugins_raw.json")["plugins"].items(), key=lambda kv: kv[0].lower()) if src.get("modid") and src["modid"] != "0"}
+            with open(os.path.join(OUT, "plugins.json"), "w", encoding="utf-8") as f:
+                json.dump(plugins, f, indent=1, ensure_ascii=False)
+                f.write("\n")
+            print(f"{len(plugins)} plugins with a Nexus page -> plugins.json")
     # Abilities and shouts (WO-51), from powers.py's raw file.
     if os.path.exists(os.path.join(RAW, "powers_raw.json")):
         from powers import build_powers
