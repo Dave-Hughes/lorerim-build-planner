@@ -539,6 +539,16 @@ async function cleanupImages() {
   } while (cursor);
 }
 
+/** Removes one build a test made (WO-90's import), so it doesn't sit in other tests' lists. */
+export async function deleteBuild(id: string) {
+  const pool = new Pool({ connectionString: assertDatabaseMatchesEnvironment() });
+  try {
+    await drizzle(pool, { schema }).delete(schema.builds).where(eq(schema.builds.id, id));
+  } finally {
+    await pool.end();
+  }
+}
+
 export async function cleanup() {
   await cleanupImages();
   const url = assertDatabaseMatchesEnvironment();

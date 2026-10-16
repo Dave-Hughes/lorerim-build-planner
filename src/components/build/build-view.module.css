@@ -1585,3 +1585,16 @@
     height: 640px;
   }
 }
+
+/* Just imported (WO-90): the new build's id, for an admin. */
+.importNote {
+  margin: 24px 0 0;
+  padding: 12px 16px;
+  border: 1px solid var(--ember);
+  background: color-mix(in srgb, var(--ember) 10%, transparent);
+  color: var(--text);
+}
+.importNote code {
+  font-size: 15px;
+  color: var(--ember-text);
+}

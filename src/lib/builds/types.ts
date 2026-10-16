@@ -31,6 +31,8 @@ export interface BuildRecord {
   /** When an admin featured it on Browse (WO-39); null when not featured. */
   featuredAt?: Date | null;
   isSample?: boolean;
+  /** It's the sample build (WO-90): the page shows an Example tag. Worked out, never stored. */
+  example?: boolean;
 }
 
 /** What a list card needs; no plan, so lists stay light. */
@@ -56,4 +58,6 @@ export interface BuildSummary {
   /** It has a Story (WO-79): cards show a small Story tag. */
   hasStory?: boolean;
   isSample?: boolean;
+  /** It's the sample build (WO-90): the card shows an Example tag. */
+  example?: boolean;
 }

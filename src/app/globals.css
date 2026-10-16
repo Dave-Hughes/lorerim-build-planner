@@ -377,6 +377,17 @@ textarea:focus-visible {
   padding: 0 5px;
   letter-spacing: 0;
 }
+/* The sample build's Example tag (WO-90): brass, with its "i" beside it. */
+.tag-brass,
+.tag-sm.tag-brass {
+  color: var(--brass);
+  border-color: color-mix(in srgb, var(--brass) 60%, transparent);
+}
+.example-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
 
 .input,
 .select,

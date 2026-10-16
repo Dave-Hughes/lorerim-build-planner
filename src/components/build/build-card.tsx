@@ -9,6 +9,7 @@ import type { BuildSummary } from "@/lib/builds/types";
 import { LocalDate } from "@/components/ui/local-date";
 import { PlayMark } from "./play-mark";
 import { HIDDEN_IMAGE_TEXT } from "@/lib/moderation/reports";
+import { ExampleTag } from "./example-tag";
 import styles from "./build-card.module.css";
 
 /**
@@ -44,6 +45,7 @@ export function BuildCard({ build, mine, likedAt, featured }: { build: BuildSumm
         <h2 className={styles.name}>
           <Link href={`/b/${build.id}`}>{build.name}</Link>
         </h2>
+        {build.example && <ExampleTag small className={styles.example} />}
         {build.description && <p className={`flavor ${styles.description}`}>{build.description}</p>}
         {featured?.intro && <p className={styles.intro}>{featured.intro}</p>}
         <p className={styles.facts}>

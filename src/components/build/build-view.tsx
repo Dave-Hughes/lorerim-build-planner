@@ -50,6 +50,7 @@ import { pageZoom } from "@/lib/zoom";
 import { themeOf, themeStyle } from "@/lib/themes";
 import { useDismiss } from "@/lib/use-dismiss";
 import { HIDDEN_IMAGE_TEXT } from "@/lib/moderation/reports";
+import { ExampleTag } from "./example-tag";
 
 export type BuildViewData = Omit<BuildRecord, "createdAt" | "updatedAt" | "featuredAt"> & { updatedAt: string };
 
@@ -68,8 +69,11 @@ interface Props {
   autoCopy?: boolean;
   /** The build's guide sections by key: `overview`, and `level:<n>` for level notes. */
   guide?: Record<string, GuideDoc>;
-  /** Set for admins (WO-39): whether this build is the featured one, for the More menu. */
-  admin?: { featured: boolean } | null;
+  /**
+   * Set for admins (WO-39): whether this build is the featured one, for the More menu; and, just after
+   * an import (WO-90), what the import left out.
+   */
+  admin?: { featured: boolean; imported?: { skipped: number; dropped: string[] } | null } | null;
 }
 
 export type BuildTab = "levels" | "guide" | "story";
@@ -298,6 +302,13 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
 
         <div className={`page ${styles.body}`}>
           <OldVersionNotice buildId={build.id} signedIn={signedIn} />
+          {admin?.imported && (
+            <p role="status" className={styles.importNote}>
+              Imported. Its id is <code>{build.id}</code>, the one <code>SAMPLE_BUILD_ID</code> wants.
+              {admin.imported.skipped > 0 && ` ${admin.imported.skipped} image${admin.imported.skipped === 1 ? "" : "s"} couldn't be copied and ${admin.imported.skipped === 1 ? "was" : "were"} left out.`}
+              {admin.imported.dropped.length > 0 && ` Tags this planner doesn't have were dropped: ${admin.imported.dropped.join(", ")}.`}
+            </p>
+          )}
           {intro && (
             <section aria-label="Intro" className={styles.intro}>
               <Ornament />
@@ -380,7 +391,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           )}
 
           {/* The reader's first-time tour (WO-61), on the Levels tab where its stops are. */}
-          {tab === "levels" && <Tour kind="reader" script={readerTour} />}
+          {tab === "levels" && <Tour kind="reader" script={readerTour} firstStop={build.example ? <ExampleTag small /> : undefined} />}
           <div className={styles.withRail}>
           <ContentsRail items={railItems} />
           <div className={styles.railMain}>
@@ -1568,6 +1579,7 @@ function Cover({
             <AuthorLink author={build.author} className={styles.author} nameClassName={styles.authorName} avatar={<Avatar name={build.author.name} image={build.author.image} />} />
             {!build.isSample && <LikeButton buildId={build.id} liked={build.likedByViewer} count={build.likeCount} mode={isOwner && build.visibility === "private" ? "owner" : signedIn ? "can" : "signedOut"} signIn={signInToLike} />}
             <span className="tag">LoreRim {build.gameVersion}</span>
+            {build.example && <ExampleTag />}
             {/* A build that skips ahead (WO-69): the levels written, runs collapsed. */}
             {skips(build.plan) && <span className={styles.writtenLevels}>{levelsLine(writtenLevels(build.plan))}</span>}
             {/* One unit, so a wrap never leaves the bar dangling at a line's end. */}
@@ -1633,8 +1645,8 @@ function Cover({
 }
 
 /**
- * The admin's More menu on a build page (WO-39): feature the build on Browse, or stop. Only Listed
- * builds can be featured; featuring one replaces the last.
+ * The admin's More menu on a build page (WO-39): feature the build on Browse, or stop (only Listed
+ * builds can be featured; featuring one replaces the last), and Export it (WO-90).
  */
 function AdminMenu({ buildId, featured: initial, listed, onError }: { buildId: string; featured: boolean; listed: boolean; onError: (e: string | null) => void }) {
   const router = useRouter();
@@ -1654,12 +1666,21 @@ function AdminMenu({ buildId, featured: initial, listed, onError }: { buildId: s
   return (
     <MenuButton buttonClassName="btn btn-icon" buttonLabel="More" menuLabel="More" button="⋯">
       {(close) => (
-        <button type="button" role="menuitem" tabIndex={-1} className={menuStyles.menuItem} onClick={() => toggle(close)} disabled={pending || (!featured && !listed)}>
-          <span className={menuStyles.menuText}>
-            <span className={menuStyles.menuLabel}>{featured ? "Stop featuring" : "Feature this build"}</span>
-            <span className={menuStyles.menuSub}>{featured ? "Browse goes back to its usual order." : listed ? "First on Browse, and larger." : "Only Listed builds can be featured."}</span>
-          </span>
-        </button>
+        <>
+          <button type="button" role="menuitem" tabIndex={-1} className={menuStyles.menuItem} onClick={() => toggle(close)} disabled={pending || (!featured && !listed)}>
+            <span className={menuStyles.menuText}>
+              <span className={menuStyles.menuLabel}>{featured ? "Stop featuring" : "Feature this build"}</span>
+              <span className={menuStyles.menuSub}>{featured ? "Browse goes back to its usual order." : listed ? "First on Browse, and larger." : "Only Listed builds can be featured."}</span>
+            </span>
+          </button>
+          {/* Export (WO-90): the build as a file, to import into another environment from /admin. */}
+          <a role="menuitem" tabIndex={-1} className={menuStyles.menuItem} href={`/api/builds/${buildId}/export`} download onClick={() => close()}>
+            <span className={menuStyles.menuText}>
+              <span className={menuStyles.menuLabel}>Export</span>
+              <span className={menuStyles.menuSub}>The build, its tags and its guide, as a file to import elsewhere.</span>
+            </span>
+          </a>
+        </>
       )}
     </MenuButton>
   );

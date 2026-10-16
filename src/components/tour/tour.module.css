@@ -150,3 +150,8 @@
   gap: 6px;
   margin-left: auto;
 }
+
+/* The sample's Example tag on the first stop (WO-90). */
+.words > :global(.example-tag) {
+  align-self: flex-start;
+}

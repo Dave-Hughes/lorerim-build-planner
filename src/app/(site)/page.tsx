@@ -75,6 +75,7 @@ export default async function Home({ searchParams }: { searchParams: Search }) {
                 author: sample.author,
                 likeCount: 0,
                 isSample: true,
+                example: true,
               }}
             />
           </BuildGrid>

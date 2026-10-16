@@ -16,7 +16,7 @@ import { storyOn } from "@/lib/features";
 import { clientVersion, isKnownVersion } from "@/lib/rules/server";
 
 type Params = Promise<{ id: string }>;
-type Search = Promise<{ level?: string; copy?: string; tab?: string }>;
+type Search = Promise<{ level?: string; copy?: string; tab?: string; imported?: string; skipped?: string; dropped?: string }>;
 
 /** Link previews (WO-33): a listed or link-only build's own card; nothing about a private one. */
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function BuildPage({ params, searchParams }: { params: Params; searchParams: Search }) {
-  const [{ id }, { level, copy, tab }, session] = await Promise.all([params, searchParams, auth()]);
+  const [{ id }, { level, copy, tab, imported, skipped, dropped }, session] = await Promise.all([params, searchParams, auth()]);
   const viewerId = session?.user?.id ?? null;
   const build = await getBuild(id, viewerId);
   if (!build) notFound();
@@ -63,7 +63,15 @@ export default async function BuildPage({ params, searchParams }: { params: Para
           />
         }
         autoCopy={copy === "1"}
-        admin={admin ? { featured: !!featuredAt } : null}
+        admin={
+          admin
+            ? {
+                featured: !!featuredAt,
+                // Just imported (WO-90): its id, for SAMPLE_BUILD_ID, and what didn't come across.
+                imported: imported === "1" ? { skipped: Number(skipped) || 0, dropped: dropped ? dropped.split(",").filter(Boolean) : [] } : null,
+              }
+            : null
+        }
         guide={hold ? Object.fromEntries(Object.entries(docs).map(([k, d]) => [k, withHiddenImages(d, held)])) : docs}
       />
     </GameDataProvider>

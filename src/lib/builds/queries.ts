@@ -8,6 +8,7 @@ import { readPlan } from "@/lib/rules/convert";
 import type { BuildPlan } from "@/lib/rules/types";
 import { SAMPLE_BUILD_ID, isValidBuildId } from "./ids";
 import { sampleBuild } from "./sample";
+import { tourSampleId } from "./sample-config";
 import type { BuildRecord, BuildSummary } from "./types";
 import { isHandle } from "@/lib/users/handles";
 import { storyOn } from "@/lib/features";
@@ -62,6 +63,7 @@ function toSummary(r: SummaryRow): BuildSummary {
     videoId: r.videoId ?? null,
     // Held back for launch (WO-81): no Story tag while the Story is off.
     hasStory: storyOn() && !!r.hasStory,
+    example: r.id === tourSampleId(),
   };
 }
 
@@ -86,7 +88,8 @@ export async function getFeaturedBuild(): Promise<(BuildSummary & { intro: strin
 
 /** A build the viewer may see: public or unlisted for anyone, private only for its owner. */
 export async function getBuild(id: string, viewerId: string | null): Promise<BuildRecord | null> {
-  if (id === SAMPLE_BUILD_ID) return sampleBuild();
+  // The built-in example is always one (WO-90).
+  if (id === SAMPLE_BUILD_ID) return { ...sampleBuild(), example: true };
   if (!isValidBuildId(id)) return null;
   const rows = await db()
     .select({
@@ -113,6 +116,7 @@ export async function getBuild(id: string, viewerId: string | null): Promise<Bui
     tags: row.tags ?? [],
     likeCount: row.build.likeCount,
     likedByViewer: !!row.liked,
+    example: row.build.id === tourSampleId(),
   };
 }
 

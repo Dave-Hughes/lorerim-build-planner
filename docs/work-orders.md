@@ -3652,13 +3652,13 @@ The question to Dave is still open in a canvas comment: should the share section
    - The tag follows whichever id `SAMPLE_BUILD_ID` names, so pointing it at Zen's build later moves the tag. Nothing is stored on the build.
 
 ### Done when
-- [ ] Unit: export then import round-trips a build's plan, tags and guides; unknown tags are dropped; a bad plan is refused with the reason.
-- [ ] Unit: imported image URLs are rewritten to this environment's prefixes.
-- [ ] e2e: a non-admin sees neither `Export` nor `Import a build`.
-- [ ] e2e: an admin exports the seeded build and imports it, getting a second build with the same levels and notes.
-- [ ] e2e: the sample build shows `Example` with its tooltip on its page and its card; other builds don't.
-- [ ] Screenshots of the Export action, the Import section and the Example tag (page and card).
-- [ ] All checks in CLAUDE.md pass.
+- [x] Unit: export then import round-trips a build's plan, tags and guides; unknown tags are dropped; a bad plan is refused with the reason.
+- [x] Unit: imported image URLs are rewritten to this environment's prefixes.
+- [x] e2e: a non-admin sees neither `Export` nor `Import a build`.
+- [x] e2e: an admin exports the seeded build and imports it, getting a second build with the same levels and notes.
+- [x] e2e: the sample build shows `Example` with its tooltip on its page and its card; other builds don't.
+- [x] Screenshots of the Export action, the Import section and the Example tag (page and card).
+- [x] All checks in CLAUDE.md pass.
 
 After it's on production, Dave will:
 1. Export Iriel (`7h38zdhjnu`) on staging.

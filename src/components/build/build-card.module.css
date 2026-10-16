@@ -324,3 +324,10 @@
   font-size: 14px;
   color: var(--muted);
 }
+
+/* The sample build's Example tag (WO-90): above the stretched link, so its "i" can be hovered. */
+.example {
+  position: relative;
+  z-index: 2;
+  align-self: flex-start;
+}

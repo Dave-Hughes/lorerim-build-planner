@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { TOUR_EVENT, offerAnswered, offerDue, tourDone, tourDue, tourLater, tourSkipsWelcome, type TourKind, type TourScript, type TourStop } from "@/lib/tour";
@@ -45,7 +45,7 @@ function reachable(s: TourStop): boolean {
  * at the bottom and a small ember arrow on the outline points at it. Esc skips; clicks on the dimmed
  * page do nothing; focus goes into the card and back where it was at the end.
  */
-export function Tour({ kind, script }: { kind: TourKind; script: TourScript }) {
+export function Tour({ kind, script, firstStop }: { kind: TourKind; script: TourScript; firstStop?: ReactNode }) {
   const due = useSyncExternalStore(noop, () => tourDue(kind), () => false);
   // Straight to the first stop when the visitor already answered on Browse (WO-80).
   const skipWelcome = useSyncExternalStore(noop, () => kind === "reader" && tourSkipsWelcome(), () => false);
@@ -83,7 +83,7 @@ export function Tour({ kind, script }: { kind: TourKind; script: TourScript }) {
 
   if (at < 0 || at > total) return null;
   return createPortal(
-    <TourLayer key={at} at={at} script={script} stops={stops} onNext={() => (at === total ? end("done") : setStep(at + 1))} onBack={() => setStep(Math.max(1, at - 1))} onEnd={end} backRef={backRef} />,
+    <TourLayer key={at} at={at} script={script} stops={stops} firstStop={firstStop} onNext={() => (at === total ? end("done") : setStep(at + 1))} onBack={() => setStep(Math.max(1, at - 1))} onEnd={end} backRef={backRef} />,
     document.body,
   );
 }
@@ -92,6 +92,7 @@ function TourLayer({
   at,
   script,
   stops,
+  firstStop,
   onNext,
   onBack,
   onEnd,
@@ -100,6 +101,7 @@ function TourLayer({
   at: number;
   script: TourScript;
   stops: TourStop[];
+  firstStop?: ReactNode;
   onNext: () => void;
   onBack: () => void;
   onEnd: (how: "done" | "later") => void;
@@ -243,6 +245,8 @@ function TourLayer({
         )}
         <div className={styles.words}>
           <h2 className={styles.title}>{title}</h2>
+          {/* The sample's Example tag (WO-90), on the stop the first visit opens at. */}
+          {stop && at === 1 && firstStop}
           <p className={styles.text}>{text}</p>
           <div className={styles.foot}>
             {stop && (
