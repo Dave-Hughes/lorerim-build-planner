@@ -52,7 +52,7 @@ Also here: Destroy the Acolyte Priests, A Forgotten Blade, Destroy the Dragon Cu
 
 ### The Dragonborn
 
-23 quests · Skyrim
+23 quests | Skyrim
 
 > I have been captured by the Empire and sentenced to death alongside the Stormcloak rebels. We were taken to Helgen, but before I could be executed a dragon appeared and attacked the town. I need to find some way to escape.
 
@@ -62,7 +62,7 @@ Also here: Destroy the Acolyte Priests, A Forgotten Blade, Destroy the Dragon Cu
 
 ### Dawnguard
 
-41 quests · Skyrim
+41 quests | Skyrim
 
 > I've learned of a group of vampire hunters known as the Dawnguard. It seems they are looking for new recruits.
 
@@ -72,7 +72,7 @@ Also here: Destroy the Acolyte Priests, A Forgotten Blade, Destroy the Dragon Cu
 
 ### Dragonborn
 
-8 quests · Skyrim
+8 quests | Skyrim
 
 > I've been attacked by a group of cultists. I need to see if they have any evidence of what prompted this assault.
 
@@ -89,7 +89,7 @@ Also here: The Gray Cowl of Nocturnal, The Tools of Kagrenac, Revealing Rune.
 
 ### The Companions
 
-21 quests · Skyrim
+21 quests | Skyrim
 
 > If I want to become a member of the Companions, I have to speak to their leader, Kodlak Whitemane, in Whiterun.
 
@@ -99,7 +99,7 @@ Also here: The Gray Cowl of Nocturnal, The Tools of Kagrenac, Revealing Rune.
 
 ### The College of Winterhold
 
-41 quests · College of Winterhold - Quest Expansion (Nexus 66666)
+41 quests | Skyrim, College of Winterhold - Quest Expansion (Nexus 66666)
 
 > I've found the College of Winterhold, where mages study the arcane arts in Skyrim. If I want to learn more about magic, I'll need to join their ranks.
 
@@ -109,7 +109,7 @@ Also here: The Gray Cowl of Nocturnal, The Tools of Kagrenac, Revealing Rune.
 
 ### The Thieves Guild
 
-35 quests · Skyrim
+35 quests | Skyrim
 
 > Brynjolf in Riften seems to be involved in some nefarious activities and has convinced me to take part in one of his schemes.
 
@@ -119,7 +119,7 @@ Also here: The Gray Cowl of Nocturnal, The Tools of Kagrenac, Revealing Rune.
 
 ### The Dark Brotherhood
 
-46 quests · The Innocence Lost - Quest Expansion (Nexus 80974), ACDB - Additional Contracts for the Dark Brotherhood (Nexus 59211), Listen - Dark Brotherhood Radiant Quests (Nexus 59659)
+46 quests | Skyrim, The Innocence Lost - Quest Expansion (Nexus 80974), ACDB - Additional Contracts for the Dark Brotherhood (Nexus 59211), Listen - Dark Brotherhood Radiant Quests (Nexus 59659)
 
 > I heard a rumor that a boy named Aventus Aretino, in Windhelm, has been attempting to contact the Dark Brotherhood. I should find this boy and speak with him, and find out why he wants to contact a guild of assassins.
 
@@ -129,7 +129,7 @@ Also here: The Gray Cowl of Nocturnal, The Tools of Kagrenac, Revealing Rune.
 
 ### The Civil War
 
-23 quests · Civil War Champions - Reduced Cut (Nexus 94999), After the Civil War - Siege Damage Repairs (Nexus 20668)
+23 quests | Skyrim, Civil War Champions - Reduced Cut (Nexus 94999), After the Civil War - Siege Damage Repairs (Nexus 20668)
 
 > In order to prove myself to Legate Rikke, I am to clear out the bandits living at Fort Hraggstad.
 
@@ -139,7 +139,7 @@ Also here: The Gray Cowl of Nocturnal, The Tools of Kagrenac, Revealing Rune.
 
 ### The Bards College
 
-7 quests · Bards College Excavation (Nexus 36950)
+7 quests | Skyrim, Bards College Excavation (Nexus 36950)
 
 > I have applied at the Bards College. As part of the application, Headmaster Viarmo wants me to find and bring to him King Olaf's Verse.
 
@@ -147,7 +147,7 @@ Also here: The Gray Cowl of Nocturnal, The Tools of Kagrenac, Revealing Rune.
 
 ### Vigilant
 
-47 quests · VIGILANT - English Translation (Plus Voiced Addon) (Nexus 11894)
+47 quests | VIGILANT - English Translation (Plus Voiced Addon) (Nexus 11894) | Molag Bal
 
 > Join the Vigilants of Stendarr
 
@@ -160,7 +160,7 @@ Also here: The Gray Cowl of Nocturnal, The Tools of Kagrenac, Revealing Rune.
 
 ### Meridia's Order
 
-17 quests · Meridia's Order ESMIFIED (Nexus 102584)
+17 quests | Meridia's Order ESMIFIED (Nexus 102584) | Meridia
 
 > I have been approached by Paladin Marith of Meridia's Order. Her leader, High Priestess Alara wishes to speak with me.
 
@@ -173,7 +173,7 @@ Also here: The Gray Cowl of Nocturnal, The Tools of Kagrenac, Revealing Rune.
 
 ### Penitus Oculatus
 
-11 quests · Penitus Oculatus (Nexus 21061)
+11 quests | Penitus Oculatus (Nexus 21061)
 
 > I've joined the Penitus Oculatus, The Empire's security and law enforcers, as well the Emperor's bodyguards. I should speak to Commander Maro for assignments.
 
@@ -187,7 +187,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### A Daedra's Best Friend
 
-1 quest · Skyrim · Clavicus Vile
+1 quest | Skyrim | Clavicus Vile
 
 > I ran in to a talking dog named Barbas who said he wanted my help. He's waiting outside Haemar's Shame.
 
@@ -196,7 +196,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### A Night To Remember
 
-1 quest · Skyrim · Sanguine
+1 quest | Skyrim | Sanguine
 
 > I have awoken in the Temple Of Dibella in Markarth. Sam and the staff he promised me have disappeared.
 
@@ -205,7 +205,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### Boethiah's Calling
 
-4 quests · Boethiah's Calling - Alternate Questline (Nexus 121499) · Boethiah
+4 quests | Skyrim, Boethiah's Calling - Alternate Questline (Nexus 121499) | Boethiah
 
 > I am to lead someone to the Shrine of Boethiah, instruct them to touch the Pillar of Sacrifice, and once trapped by its magic, slay them. If I do this Boethiah will appear.
 
@@ -215,7 +215,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### Discerning the Transmundane
 
-1 quest · Skyrim · Hermaeus Mora
+1 quest | Skyrim | Hermaeus Mora
 
 > I've been given a book of bizarre ramblings about Elder Scrolls, written by Septimus Signus. He claims to have spent time at the Winterhold Arcanaeum.
 
@@ -224,7 +224,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### Ill Met By Moonlight
 
-1 quest · Skyrim · Hircine
+1 quest | Skyrim | Hircine
 
 > There are stories in Falkreath of a strange vagrant who savagely killed a little girl.
 
@@ -233,7 +233,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### Pieces of the Past
 
-2 quests · Mehrunes Dagon's Shrine Unlocked - Pieces of the Past Quest Alternative - Voiced (Nexus 119502) · Mehrunes Dagon
+2 quests | Skyrim, Mehrunes Dagon's Shrine Unlocked - Pieces of the Past Quest Alternative - Voiced (Nexus 119502) | Mehrunes Dagon
 
 > Silus Vesuius, the owner of a museum dedicated to the Mythic Dawn cult, wants to hire me for a job. He'll give me the details inside his house in Dawnstar.
 
@@ -243,7 +243,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### The Black Star
 
-1 quest · Skyrim · Azura
+1 quest | Skyrim | Azura
 
 > Aranea, a priestess of Azura, says I am destined to find "an elven man, who can turn the brightest star as black as night." She believes he is in Winterhold.
 
@@ -252,7 +252,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### The Break of Dawn
 
-1 quest · Skyrim · Meridia
+1 quest | Skyrim | Meridia
 
 > I've found a strange gem. An otherworldly voice is commanding me to bring it to Mount Kilkreath.
 
@@ -261,7 +261,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### The Cursed Tribe
 
-1 quest · Skyrim · Malacath
+1 quest | Skyrim | Malacath
 
 > I've heard rumors there's some kind of problem in the Orc settlement of Largashbur, southwest of Riften.
 
@@ -270,7 +270,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### The House of Horrors
 
-1 quest · Skyrim · Molag Bal
+1 quest | Skyrim | Molag Bal
 
 > Tyranus, a Vigilant of Stendarr, is investigating an old, abandoned house in Markarth. He believes it was once a site of daedric worship.
 
@@ -279,7 +279,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### The Mind of Madness
 
-1 quest · Skyrim · Sheogorath
+1 quest | Skyrim | Sheogorath
 
 > Dervenin wants me to talk to his master about returning from vacation. To do so, I need to gain entrance to the Pelagius Wing of the Blue Palace.
 
@@ -288,7 +288,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### Saints and Seducers
 
-7 quests · Skyrim Extended Cut - Saints and Seducers (Nexus 72772), Creation Club · Sheogorath
+7 quests | Skyrim Extended Cut - Saints and Seducers (Nexus 72772), Creation Club | Sheogorath
 
 > Staada told me about a riot in the Shivering Isles' prison. She wants me to travel with her to the Asylum and help fight off the prisoners, before the Root does any more damage to Nirn.
 
@@ -300,7 +300,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### The Only Cure
 
-1 quest · Skyrim · Peryite
+1 quest | Skyrim | Peryite
 
 > A Khajiit named Kesh has offered to help me commune with Peryite. He asked me to acquire a deathbell flower, flawless ruby, silver ingot, and some vampire dust.
 
@@ -309,7 +309,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### The Taste of Death
 
-3 quests · The Taste of Death - Quest Addon (Nexus 123173) · Namira
+3 quests | Skyrim, The Taste of Death - Quest Addon (Nexus 123173) | Namira
 
 > Eola in Markarth wants me to join her in worshipping Namira, the Lady of Decay, by feasting on the flesh of the dead. She has something planned inside Reachcliff Cave.
 
@@ -318,7 +318,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### The Whispering Door
 
-2 quests · Mephala's Curse - Whispering Door Quest Addon (Nexus 120650) · Mephala
+2 quests | Skyrim, Mephala's Curse - Whispering Door Quest Addon (Nexus 120650) | Mephala
 
 > Balgruuf the Greater, Jarl of Whiterun, has a troubled child. He's asked me to help the boy.
 
@@ -327,7 +327,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### Waking Nightmare
 
-1 quest · Skyrim · Vaermina
+1 quest | Skyrim | Vaermina
 
 > I've overheard two citizens of Dawnstar complaining about horrible nightmares. They seem to be relying on a priest of Mara named Erandur for assistance.
 
@@ -336,7 +336,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### Sleepwalking Into A Nightmare
 
-1 quest · Sleepwalking Into A Nightmare - New Daedric Prince Quest (Nexus 141047)
+1 quest | Sleepwalking Into A Nightmare - New Daedric Prince Quest (Nexus 141047)
 
 > Ralforn has informed me of his wife Gretska who has disapeared over night and has told me of Gretska's common spots, I should look to see if I can find her or any clues at these spots.
 
@@ -353,7 +353,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Wyrmstooth
 
-20 quests · Wyrmstooth (Nexus 45565) · An island north of Solitude
+20 quests | Wyrmstooth (Nexus 45565) | An island north of Solitude
 
 > An imperial courier named Theodyn Bienne has requested I speak to Lurius Liore at the Bannered Mare in Whiterun as soon as possible.
 
@@ -366,7 +366,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Journey to Baan Malur
 
-8 quests · Journey to Baan Malur and Morrowind (Nexus 114518) · Morrowind, east of Windhelm
+8 quests | Journey to Baan Malur and Morrowind (Nexus 114518) | Morrowind, east of Windhelm
 
 > I have spoke with Adimmisaru, an Ashlander of the Ahemmusa Tribe. He's lost an old family heirloom, an amulet with "great powers" and is quite upset about it. He believes another trader in the market, Varanie, may have taken it.
 
@@ -377,7 +377,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Siege at Icemoth
 
-4 quests · Siege at Icemoth (Nexus 109541) · Islands north of Skyrim, near High Rock
+4 quests | Siege at Icemoth (Nexus 109541) | Islands north of Skyrim, near High Rock
 
 > While wandering the coast, I found the corpse of a mercenary by a beached sailboat. In his clutches I found a journal that mentioned an old abandoned Imperial fort known as "Fort Icemoth", far north of Jehanna just over the horizon. The journal also mentions a large presence of undead. I should investigate.
 
@@ -389,7 +389,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Gray Cowl of Nocturnal
 
-40 quests · The Gray Cowl of Nocturnal - 10th anniversary (Nexus 141327), Betalille's Hammerfell Quests Bundle - The Gray Cowl of Nocturnal (Nexus 89977) · Hammerfell: the Alik'r Desert
+40 quests | The Gray Cowl of Nocturnal - 10th anniversary (Nexus 141327), Betalille's Hammerfell Quests Bundle - The Gray Cowl of Nocturnal (Nexus 89977) | Hammerfell: the Alik'r Desert
 
 > I had a strange vision in my mind. Also I know where to go now.
 
@@ -402,7 +402,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Forgotten City
 
-2 quests · The Forgotten City (Nexus 1179) · An underground Dwemer city
+2 quests | The Forgotten City (Nexus 1179) | An underground Dwemer city
 
 > A courier tracked me down and gave me a letter. I should read it.
 
@@ -414,7 +414,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Gravewind
 
-3 quests · Gravewind - ESMIFIED (Nexus 129582) · A realm of the dead, entered from Falkreath
+3 quests | Gravewind - ESMIFIED (Nexus 129582) | A realm of the dead, entered from Falkreath
 
 > I've discovered the remains of an abandoned homestead in the woods of Falkreath, surrounded by graves and strange flowers.
 
@@ -426,7 +426,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Raven Rock
 
-12 quests · Skyrim · Raven Rock
+12 quests | Skyrim | Raven Rock
 
 > I've stumbled across a Dark Elf in combat for his life with strange, ashen beings at the Attius Farm outside of Raven Rock. He appears outnumbered, and he's requested I lend him a helping hand.
 
@@ -434,7 +434,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Thirsk Mead Hall
 
-7 quests · Skyrim · Thirsk
+7 quests | Skyrim | Thirsk
 
 > I met a group of Nords from Thirsk Mead Hall, which has recently been overrun by rieklings. They're camped on the eastern shore of the island, waiting for an opportunity to attack and take back their home.
 
@@ -442,7 +442,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Neloth of Tel Mithryn
 
-14 quests · Skyrim · Tel Mithryn
+14 quests | Skyrim | Tel Mithryn
 
 > Neloth has asked me to locate his steward, Varona Nelas. She is probably somewhere around Tel Mithryn.
 
@@ -450,7 +450,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Skaal Village
 
-3 quests · Skyrim · Skaal Village
+3 quests | Skyrim | Skaal Village
 
 > I met Tharstan, a historian living in Skaal Village who discovered the recently unearthed entrance to an old crypt. He offered to hire me as protection while we explored the crypt, and asked me to meet him there if I was interested.
 
@@ -458,7 +458,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Black Books
 
-6 quests · Skyrim · Solstheim
+6 quests | Skyrim | Solstheim | Hermaeus Mora
 
 > I read the Black Book called "Untold Legends", and found myself in Hermaeus Mora's realm of Apocrypha. I should uncover the knowledge hidden here, or read the book again to escape.
 
@@ -466,7 +466,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Ebony Warrior
 
-1 quest · Skyrim
+1 quest | Skyrim
 
 > Talk to the Ebony Warrior
 
@@ -475,7 +475,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Deathbrand
 
-1 quest · Skyrim · Haknir's Shoal
+1 quest | Skyrim | Haknir's Shoal
 
 > At Haknir's Shoal, a band of pirates uncovered an ancient treasure chest containing a single piece of stalhrim armor. How did they know to dig in this remote spot?
 
@@ -484,7 +484,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Unearthed
 
-2 quests · Skyrim · Kolbjorn Barrow
+2 quests | Skyrim | Kolbjorn Barrow
 
 > Outside Kolbjorn Barrow, I met Ralis Sedarys, an explorer who came to Solstheim in search of relics within the barrow. But when he arrived, he found it buried by the ash. He had all but given up on excavating it, but if I can supply the funds, he offered to make me a partner in his expedition.
 
@@ -492,7 +492,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Filial Bonds
 
-1 quest · Skyrim
+1 quest | Skyrim
 
 > I met Wulf Wild-Blood, whose brother disappeared many years ago. Wulf believes he may have become a werebear, and warned me to keep an eye out for him.
 
@@ -500,7 +500,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Kagrumez Gauntlet
 
-1 quest · Skyrim · Kagrumez
+1 quest | Skyrim | Kagrumez
 
 > Find Resonance Gems across Solstheim to complete the Kagrumez trials
 
@@ -508,7 +508,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Miasma
 
-1 quest · Miasma (Nexus 149879) · Raven Rock
+1 quest | Miasma (Nexus 149879) | Raven Rock
 
 > I met an Argonian called Haj-Xul at The Retching Netch in Raven Rock. He claims he is a member of the An-Xileel clan in Black Marsh and has hired me to assist him in capturing a criminal from House Telvanni who might have recently arrived in Solstheim.
 
@@ -519,7 +519,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Destroy the Acolyte Priests
 
-1 quest · Destroy the Acolyte Priests (Nexus 145580)
+1 quest | Destroy the Acolyte Priests (Nexus 145580)
 
 > Destroy Ahzidal
 
@@ -532,7 +532,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Forsworn Conspiracy
 
-4 quests · Skyrim · Markarth
+4 quests | Skyrim | Markarth
 
 > I've received a note from a man named Eltrys in Markarth. He wants me to meet him at the Shrine of Talos, presumably to talk about the recent incident in Markarth's marketplace.
 
@@ -541,7 +541,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Promises to Keep
 
-1 quest · Skyrim · Riften
+1 quest | Skyrim | Riften
 
 > Louis Letrush wants a message taken to Sibbi Black-Briar.
 
@@ -549,7 +549,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Unfathomable Depths
 
-1 quest · Skyrim · Riften
+1 quest | Skyrim | Riften
 
 > A disturbed Argonian named From-Deepest-Fathoms was wandering the Riften docks. She wanted me to take something she referred to as a Lexicon back to Avanchnzel.
 
@@ -557,7 +557,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Wolf Queen Awakened
 
-2 quests · Skyrim · Solitude
+2 quests | Skyrim | Solitude
 
 > A representative from Dragon Bridge has appealed to the court in Solitude for help investigating Wolfskull Cave. Falk Firebeard is looking for someone to look into the issue.
 
@@ -566,7 +566,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Lights Out!
 
-1 quest · Skyrim · Solitude
+1 quest | Skyrim | Solitude
 
 > Jaree-Ra on the Solitude docks has an offer for me.
 
@@ -574,7 +574,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### In My Time Of Need
 
-1 quest · Skyrim · Whiterun
+1 quest | Skyrim | Whiterun
 
 > A group of men calling themselves the Alik'r are looking for a Redguard woman in Whiterun.
 
@@ -582,7 +582,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Missing In Action
 
-1 quest · Skyrim · Whiterun
+1 quest | Skyrim | Whiterun
 
 > Fralia Gray-Mane in Whiterun is convinced that her missing son, Thorald, is still alive and being held captive. She's asked me to visit her at her home to speak privately about the matter.
 
@@ -590,7 +590,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Rise in the East
 
-1 quest · Skyrim · Windhelm
+1 quest | Skyrim | Windhelm
 
 > The East Empire Company is being harassed by a group of pirates and would like me to help shut them down. Orthus Endario, in the Windhelm office, has asked me to help get rid of this problem. If I do, the Windhelm office can re-open, and there should be some money in it for me.
 
@@ -598,7 +598,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Blood on the Ice
 
-2 quests · Skyrim · Windhelm
+2 quests | Skyrim | Windhelm
 
 > Windhelm is plagued by a shadowy killer. I've been asked to help investigate the latest murder.
 
@@ -606,7 +606,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The White Phial
 
-2 quests · Skyrim · Windhelm
+2 quests | Skyrim | Windhelm
 
 > The alchemist of Windhelm, Nurelion, has asked me to find the legendary White Phial for him.
 
@@ -614,7 +614,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Golden Claw
 
-1 quest · Skyrim · Riverwood
+1 quest | Skyrim | Riverwood
 
 > Lucan Valerius in Riverwood is offering me a gold reward if I retrieve his antique Golden Claw, stolen by bandits camped in Bleak Falls Barrow.
 
@@ -622,7 +622,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Laid to Rest
 
-1 quest · Skyrim · Morthal
+1 quest | Skyrim | Morthal
 
 > A mysterious fire killed Hroggar's wife and child. Hroggar took Alva as a lover immediately after the fire, and many in the town think he did it. The Jarl might pay me to investigate it.
 
@@ -630,7 +630,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### A Return To Your Roots
 
-1 quest · Skyrim
+1 quest | Skyrim
 
 > I've discovered an unusual ingredient called crimson nirnroot.
 
@@ -638,7 +638,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Heart of Dibella
 
-1 quest · Skyrim · Markarth
+1 quest | Skyrim | Markarth
 
 > I have received a letter inviting me to visit the Temple of Dibella.
 
@@ -646,7 +646,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Blessings of Nature
 
-1 quest · Skyrim · Whiterun
+1 quest | Skyrim | Whiterun
 
 > I've agreed to help Danica Pure-Spring repair the Gildergreen, the large tree outside the Temple of Kynareth in Whiterun.
 
@@ -654,7 +654,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Book of Love
 
-2 quests · The Book of Love - Fastred's Awakening (Nexus 170043) · Riften
+2 quests | Skyrim, The Book of Love - Fastred's Awakening (Nexus 170043) | Riften
 
 > I've agreed to help the Temple of Mara promote the cause of love throughout Skyrim.
 
@@ -662,7 +662,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Seeking A Cure
 
-2 quests · A Forlorn Hope - an addon for Seeking The Cure (Nexus 107939) · Morthal
+2 quests | Skyrim, A Forlorn Hope - an addon for Seeking The Cure (Nexus 107939) | Morthal
 
 > In my search for a cure for vampirism, I read a book entitled "Undeath Undone". As I was reading, a note addressed to Urag fell out from between the book's pages. The author of the note, Falion, seems knowledgeable about the history of the cure for vampirism. I should find out more about this person.
 
@@ -670,7 +670,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Falion's Secret
 
-1 quest · Skyrim · Morthal
+1 quest | Skyrim | Morthal
 
 > I followed Falion out to a circle of stones in the marsh near Morthal. I blackmailed him in exchange for keeping quiet. Though I can still tell the jarl what he's up to out here.
 
@@ -678,7 +678,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Repentance
 
-1 quest · Skyrim · Darklight Tower
+1 quest | Skyrim | Darklight Tower
 
 > I met a witch named Illia in Darklight Tower. She was supposed to obtain a sacrifice for her mother to perform an evil ritual, but rebelled.  Illia wants me to help her get to the top of the tower so she can stop her mother.
 
@@ -686,7 +686,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Siege on the Dragon Cult
 
-1 quest · Skyrim · Forelhost
+1 quest | Skyrim | Forelhost
 
 > I have been asked to defeat the Dragon Priest in Forelhost and to bring back his mask. A journal left by Skorm Snow-Strider may reveal a way past the collapsed areas.
 
@@ -694,7 +694,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Pale Lady
 
-1 quest · Skyrim · Frostmere Crypt
+1 quest | Skyrim | Frostmere Crypt
 
 > Outside Frostmere Crypt, I found a group of bandits attacking one of their own. It seems she was implicated when one of her friends stole a sword from the leader of the gang.
 
@@ -702,7 +702,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Forbidden Legend
 
-1 quest · Skyrim · Reachwater Rock
+1 quest | Skyrim | Reachwater Rock
 
 > In Reachwater Rock, I found a cryptic message that said the tomb here had been sealed, and should be forgotten forever. What is the story of this place?
 
@@ -710,7 +710,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### A Scroll For Anska
 
-1 quest · Skyrim · High Gate Ruins
+1 quest | Skyrim | High Gate Ruins
 
 > Find Anska's scroll and return it to her for a reward.
 
@@ -718,7 +718,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Ancestral Worship
 
-1 quest · Skyrim · Hillgrund's Tomb
+1 quest | Skyrim | Hillgrund's Tomb
 
 > I've agreed to help Golldir protect his ancestral tomb from the warlock, Vals Veran.
 
@@ -726,7 +726,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Kyne's Sacred Trials
 
-1 quest · Skyrim
+1 quest | Skyrim
 
 > I met an old Nord named Froki who offered to guide me through the Sacred Trials of Kyne.
 
@@ -734,7 +734,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Lost Expedition
 
-1 quest · Skyrim · Nchuand-Zel, Markarth
+1 quest | Skyrim | Nchuand-Zel, Markarth
 
 > I should try and find the researchers Alethius mentioned in his note.
 
@@ -742,7 +742,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Trius' Trinket
 
-1 quest · Skyrim
+1 quest | Skyrim
 
 > Trius has asked me to search the wreck below for a jewelry box.  Any other loot I find is mine.
 
@@ -750,7 +750,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Infiltration
 
-1 quest · Skyrim · Treva's Watch
+1 quest | Skyrim | Treva's Watch
 
 > I have entered Treva's Watch and spoken to a wizard called Brurid. He has asked me to take care of his old friend Stalleo who is outside of the fort. I can kill Stalleo, convince him to leave, or get his side of the story.
 
@@ -758,7 +758,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Evil in Waiting
 
-1 quest · Skyrim · Valthume
+1 quest | Skyrim | Valthume
 
 > A spirit known as Valdar has asked me to collect three vessels in Valthume to defeat the dragon priest Hevnoraak.
 
@@ -766,7 +766,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Silenced Tongues
 
-1 quest · Skyrim · Volunruud
+1 quest | Skyrim | Volunruud
 
 > I may be able to recover two ceremonial weapons within Volunruud which will allow me to enter the Elder's Cairn.
 
@@ -774,7 +774,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Yngol's Barrow
 
-1 quest · Skyrim · Yngol's Barrow
+1 quest | Skyrim | Yngol's Barrow
 
 > Explore Yngol's Barrow
 
@@ -782,7 +782,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Affairs of Hagravens
 
-1 quest · Skyrim · Blind Cliff Cave
+1 quest | Skyrim | Blind Cliff Cave
 
 > Kill the Hagraven Petra
 
@@ -790,7 +790,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Telrav's Request
 
-1 quest · Skyrim · Nilheim
+1 quest | Skyrim | Nilheim
 
 > I've found an injured merchant and agreed to escort him back to his camp.
 
@@ -798,7 +798,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Search and Seizure
 
-1 quest · Skyrim · Markarth
+1 quest | Skyrim | Markarth
 
 > Ondolemar has tasked me with breaking into Ogmund's home to find proof of Talos worship.
 
@@ -806,7 +806,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Toying With The Dead
 
-1 quest · Skyrim · Riften
+1 quest | Skyrim | Riften
 
 > Vekel, bartender in the Ragged Flagon, offered me a job to retrieve journals of a necromancer called Arondil.
 
@@ -814,7 +814,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Extracting an Argonian
 
-1 quest · Skyrim · Darkwater Crossing
+1 quest | Skyrim | Darkwater Crossing
 
 > One of the fisherman from Darkwater Crossing has gone missing. The last anyone knew he'd gone to look for better fishing at the nearby waterfalls.
 
@@ -822,7 +822,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Dark Ancestor
 
-2 quests · Skyrim · Falkreath
+2 quests | Skyrim | Falkreath
 
 > Tell Dengeir that Vighar is dead
 
@@ -830,7 +830,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Drowned Sorrows
 
-1 quest · Skyrim · Winterhold
+1 quest | Skyrim | Winterhold
 
 > I have agreed to search for Isabelle Rolaine, Ranmir's former lover in Winterhold. I should ask around about her.
 
@@ -838,7 +838,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Forgemaster's Fingers
 
-1 quest · Skyrim · Dushnikh Yal
+1 quest | Skyrim | Dushnikh Yal
 
 > Find the Forgemaster's Fingers
 
@@ -846,7 +846,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Lost to the Ages
 
-1 quest · Skyrim · Arkngthamz
+1 quest | Skyrim | Arkngthamz
 
 > In Arkngthamz, I met Katria, the ghost of an adventurer who perished there. She offered to join me in my fight to the summit, and I accepted her help.
 
@@ -854,7 +854,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### A Forgotten Blade
 
-1 quest · Redeeming Fultheim - A Blades Quest Addon (Nexus 136788)
+1 quest | Redeeming Fultheim - A Blades Quest Addon (Nexus 136788)
 
 > I've come across Fultheim, an old man who I believe may have been a member of the Blades in the past. However, he does seem to want to talk about it. I should ask Delphine about him.
 
@@ -863,7 +863,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Destroy the Dragon Cult
 
-1 quest · Defeat the Dragon Cult (Nexus 86625)
+1 quest | Defeat the Dragon Cult (Nexus 86625)
 
 > Esbern has noted the location of several Dragon Priests, whose loyalty to Alduin means they must be killed before I face Alduin, less they join their strength with his.
 
@@ -872,7 +872,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Undeath
 
-7 quests · Undeath Remastered - CLEANED ESMIFIED (Nexus 6180) · The Reach, then all over Skyrim
+7 quests | Undeath Remastered - CLEANED ESMIFIED (Nexus 6180) | The Reach, then all over Skyrim
 
 > I have heard a rumor that a Vigil of Stendarr caravan has been attacked on the road somewhere in the Reach. I should investigate.
 
@@ -884,7 +884,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Granite Hill
 
-1 quest · Granite Hill - ESLIFIED LUX PATCH (Nexus 14658) · Between Whiterun and Rorikstead
+1 quest | Granite Hill - ESLIFIED LUX PATCH (Nexus 14658) | Between Whiterun and Rorikstead
 
 > A courier handed me a note from someone in Granite Hill. I should read it.
 
@@ -897,7 +897,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Legends of Aetherium
 
-1 quest · Legends of Aetherium - New Dungeon - Quest - Armour - Weapons (Nexus 69807) · South of Riften
+1 quest | Legends of Aetherium - New Dungeon - Quest - Armour - Weapons (Nexus 69807) | South of Riften
 
 > Travel to the Itharzel excavation site
 
@@ -909,7 +909,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Tools of Kagrenac
 
-5 quests · The Tools of Kagrenac ESMIFIED (Nexus 14168)
+5 quests | The Tools of Kagrenac ESMIFIED (Nexus 14168)
 
 > I've received an anonymous note from the courier. I should read it and see what it's regarding.
 
@@ -922,7 +922,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Deluge of Deceit
 
-1 quest · SIRENROOT - Deluge of Deceit (Nexus 70917) · Lake Honrich, Riften
+1 quest | SIRENROOT - Deluge of Deceit (Nexus 70917) | Lake Honrich, Riften
 
 > The Black-Briars sent out a notice for diving work to collect ingredients at the bottom of Lake Honrich. I should speak to Frissa Black-Briar at Elgrim's Elixirs if I want to accept the job.
 
@@ -934,7 +934,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Heart of the Reach
 
-1 quest · Heart of the Reach - New Quest - Dungeon - Weapons - 3 Creature Variants - Ring - Spell (Nexus 76494) · Markarth
+1 quest | Heart of the Reach - New Quest - Dungeon - Weapons - 3 Creature Variants - Ring - Spell (Nexus 76494) | Markarth
 
 > I have talked to Gwilym, a priest I met in the Silver Blood Inn in Markarth. He has tasked me with healing the "Heart" in a cave in the reach. I should go there and make the remedy he provided.
 
@@ -945,7 +945,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Welkynar Knight
 
-4 quests · The Welkynar Knight - Quest (Nexus 89510)
+4 quests | The Welkynar Knight - Quest (Nexus 89510)
 
 > I received a mysterious note requesting a secret meeting at the Bannered Mare in Whiterun.
 
@@ -956,7 +956,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Relics of the Crusader
 
-1 quest · Creation Club
+1 quest | Creation Club
 
 > I've discovered the whereabouts of a powerful artifact that the once belonged to the fabled Divine Crusader. I should try and reunite all the missing relics.
 
@@ -966,7 +966,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Belethor's Sister
 
-5 quests · Belethor's Sister - Quest (Nexus 92381) · Whiterun
+5 quests | Belethor's Sister - Quest (Nexus 92381) | Whiterun
 
 > Return to Morven Stroud.
 
@@ -978,7 +978,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Revealing Rune
 
-1 quest · Revealing Rune (Nexus 120935) · Riften
+1 quest | Revealing Rune (Nexus 120935) | Riften
 
 > Search along the coast of Solitude for a clue to Rune's past
 
@@ -990,7 +990,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### More to do in the Soul Cairn
 
-3 quests · More to do in the Soul Cairn (Nexus 115962) · The Soul Cairn
+3 quests | More to do in the Soul Cairn (Nexus 115962) | The Soul Cairn
 
 > A soul in the Soul Cairn wants me to get their soul gem back. I'm not so sure about who he is, but maybe I should help him.
 
@@ -1002,7 +1002,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Gift of Saturalia
 
-6 quests · The Gift Of Saturalia (Nexus 105697)
+6 quests | The Gift Of Saturalia (Nexus 105697)
 
 > I've agreed to help Niklas the Trader with his Saturalia celebrations. He has five tasks for me to help people around Skyrim.
 
@@ -1014,7 +1014,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Fists of Fury
 
-3 quests · Fists of Fury - Skyrim (Nexus 73835) · Riften, Windhelm and Morthal
+3 quests | Fists of Fury - Skyrim (Nexus 73835) | Riften, Windhelm and Morthal
 
 > I got a letter about a brawling tournament. One of the locations is in Riften. If I want to learn more about it I need to talk to Maul.
 
@@ -1026,7 +1026,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Frozen Heart
 
-4 quests · The Frozen Heart - Quest Mod (Nexus 159911)
+4 quests | The Frozen Heart - Quest Mod (Nexus 159911)
 
 > I purchased a strange Snow Elf mirror from Belethor's General Goods. I should investigate the nature of this mirror.
 
@@ -1034,7 +1034,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Thalmor's Shadow
 
-1 quest · The Thalmor's Shadow - Taliesin (Custom Voiced Follower) (Nexus 93413) · Falkreath
+1 quest | The Thalmor's Shadow - Taliesin (Custom Voiced Follower) (Nexus 93413) | Falkreath
 
 > I heard rumors about a statue of Talos hidden somewhere in the Falkreath area. Perhaps I could find some allies that could help me.
 
@@ -1042,7 +1042,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### A Healing Wedding
 
-1 quest · Vittorias Alternate Wedding (Nexus 62466) · Solitude
+1 quest | Vittorias Alternate Wedding (Nexus 62466) | Solitude
 
 > I have been invited to attend the wedding reception of Vittoria Vici and Asgeir Snow-Shod, at the Temple of the Divines in Solitude.
 
@@ -1050,7 +1050,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Windhelm, expanded
 
-13 quests · Capital Windhelm Expansion (Nexus 42990) · Windhelm
+13 quests | Capital Windhelm Expansion (Nexus 42990) | Windhelm
 
 > Wilhelm has asked me to deliver a purchase agreement to Higil who lives in the Upper Valunstrad, west of the Palace. I can place the document on his desk if he is not at home.
 
@@ -1058,7 +1058,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Whiterun, expanded
 
-8 quests · Rob's Bug Fixes - Capital Whiterun Expansion (Nexus 63355) · Whiterun
+8 quests | Rob's Bug Fixes - Capital Whiterun Expansion (Nexus 63355) | Whiterun
 
 > I've recieved a note by a messenger from Whiterun. I should probably read it.
 
@@ -1066,7 +1066,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Markarth Side
 
-2 quests · Arena - Markarth Side Town (Nexus 114252) · South-east of Dragon Bridge
+2 quests | Arena - Markarth Side Town (Nexus 114252) | South-east of Dragon Bridge
 
 > I've met a strange Khajiit named Grit-dar in Markarth Side who has asked me to retrieve something for him from Morvunskar Crypts that resides near Windhelm.
 
@@ -1074,7 +1074,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### On Hogithum
 
-1 quest · Requiem - The Roleplaying Overhaul (No Messages ESLIFIED) (Nexus 60888)
+1 quest | Requiem - The Roleplaying Overhaul (No Messages ESLIFIED) (Nexus 60888)
 
 > I have discovered the fragment of a poem. That seems interesting. Perhaps I should explore at the Bard's College to see what this is all about.
 
@@ -1082,7 +1082,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Profane Divinity
 
-1 quest · Trad - AE - CC - Collection - Requiem Patch (Nexus 64829)
+1 quest | Trad - AE - CC - Collection - Requiem Patch (Nexus 64829)
 
 > In my search for the secrets behind the divine power of the Tribunal and Dagoth Ur I have conducted a profane ritual twisting my flesh with corpus, removing my very heart with the tools of Kagrenac and infusing it with the power of heartstones and the lingering power of the masks of the Tribunal and Daogth Ur. Without a heart I will surely die there is no way forward but to place my tainted heart back in its place.
 
@@ -1090,7 +1090,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Lost Library
 
-1 quest · Creation Club · Winterhold
+1 quest | Creation Club | Winterhold
 
 > I've heard tales of a long-lost ancient library of spell tomes, rumored to be somewhere in the area of Winterhold.  I should explore the area and see what I can find.
 
@@ -1098,7 +1098,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Through a Glass, Darkly
 
-1 quest · Creation Club · Eastmarch
+1 quest | Creation Club | Eastmarch
 
 > An inner voice is telling me I must confront a darkness within myself. I am drawn toward a geyser pool in Eastmarch. Perhaps answers lie there.
 
@@ -1106,7 +1106,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### In the Shadows
 
-1 quest · Creation Club
+1 quest | Creation Club
 
 > With the death of King Torygg, it seems not even the Jarls are safe in Skyrim, and security comes at a premium. Given the need for capable warriors, I should speak with the steward and see if he has any work for me.
 
@@ -1114,7 +1114,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Cause
 
-1 quest · Creation Club
+1 quest | Creation Club
 
 > I found the Oblivion Gate and defeated the leader of the Mythic Dawn, Vonos. It appears this was an elaborate ritual designed to deceive me, and killing Vonos was the final step. I have become an unwitting instrument of Mehrunes Dagon, and my actions have opened the Oblivion Gate.
 
@@ -1122,7 +1122,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Hendraheim
 
-1 quest · Creation Club
+1 quest | Creation Club
 
 > Couriers often deliver notices to travelers across Skyrim. If I head to a major hold, perhaps I will receive information that may concern me.
 
@@ -1130,7 +1130,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Guests for Dinner
 
-1 quest · Creation Club
+1 quest | Creation Club
 
 > I received a letter from a courier mentioning a banquet feast is happening at a large manor south of Frostflow Lighthouse. I arrived at the home and spoke to the waiter, who gave me a menu. The feast appears to be an elaborate trap to feed on a handful of noble guests. After finishing the guests and a surprise group of Dawnguard members, I should now speak to the waiter.
 
@@ -1138,7 +1138,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### A Dying Wish
 
-1 quest · Creation Club · Falkreath
+1 quest | Creation Club | Falkreath
 
 > In my travels, I've heard strange tales about hagravens performing rituals near Falkreath. I should head to the inn there and see what information I can turn up.
 
@@ -1146,7 +1146,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Dreams of the Dead
 
-1 quest · Creation Club
+1 quest | Creation Club
 
 > I've heard rumors of necromancer activity in one of the old abandoned forts. I should investigate to see what I can find.
 
@@ -1154,7 +1154,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Unquiet Dead
 
-1 quest · Creation Club · Near Rorikstead
+1 quest | Creation Club | Near Rorikstead
 
 > Search the plantation for clues
 
@@ -1162,7 +1162,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Stealer of Souls
 
-1 quest · Creation Club · Markarth
+1 quest | Creation Club | Markarth
 
 > Read the Letter from Calcelmo
 
@@ -1170,7 +1170,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Battle of the Champions
 
-1 quest · Creation Club · Whiterun
+1 quest | Creation Club | Whiterun
 
 > A civil war rages on between the Stormcloaks and Imperials, with Whiterun at the center. Having joined with the Stormcloaks, I should head to a major hold in case a courier has news for me.
 
@@ -1178,7 +1178,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Wintersand Deception
 
-1 quest · Creation Club
+1 quest | Creation Club
 
 > I have found a Thalmor Dossier mentioning Nazeem and Ahlam. Accourding to the Dossier, the couple are informants to the Thalmor, to spy on Whiterun and its Jarl. I should bring this information to the Jarl.
 
@@ -1186,7 +1186,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Myrwatch
 
-1 quest · Myrwatch - Tweaks and Enhancements (Nexus 97659)
+1 quest | Myrwatch - Tweaks and Enhancements (Nexus 97659)
 
 > As I entered the Vestibule of Myrwatch, I found a strange note. It turns out Myrwatch has been further sealed off and actually needs to be purchased from Tolfdir in the college of Winterhold. For him to deem me worthy for purchasing it, I either need to complete Shalidor's Maze and acquire the Diadem of the Savant, or find some other way of convincing him.
 
@@ -1194,7 +1194,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Return Aegisbane
 
-1 quest · Return Aegisbane (Nexus 108242)
+1 quest | Return Aegisbane (Nexus 108242)
 
 > Retrieve the Shatter-Shield family warhammer
 
@@ -1202,7 +1202,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Paragliding in Skyrim
 
-1 quest · Skyrim's Paraglider - ZERO (Nexus 134795)
+1 quest | Skyrim's Paraglider - ZERO (Nexus 134795)
 
 > A man fell out of the sky and died on impact. I should investigate.
 
@@ -1210,7 +1210,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Leaps Of Faith
 
-1 quest · Leaps of Faith - A Misc Quest (Nexus 53074)
+1 quest | Leaps of Faith - A Misc Quest (Nexus 53074)
 
 > Find and complete the remaining 11 Leaps of Faith.
 
@@ -1218,7 +1218,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### The Bonds of Matrimony
 
-1 quest · Skyrim · Riften
+1 quest | Skyrim | Riften
 
 > Speak to Maramal about arranging your wedding
 
@@ -1232,7 +1232,7 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Inigo
 
-1 quest · INIGO (Nexus 1461)
+1 quest | INIGO (Nexus 1461)
 
 > Inigo has been suffering from strange and painful visions. He believes that Snowpoint Beacon is near the source of these visions. We are going there to investigate.
 
@@ -1240,7 +1240,7 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Gore
 
-12 quests · Gore - A Companion Mod (Nexus 85298)
+12 quests | Gore - A Companion Mod (Nexus 85298)
 
 > I have heard of Imperial Patrols near Falkreath looking for something... or someone. I should look into it.
 
@@ -1248,7 +1248,7 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Remiel
 
-9 quests · Remiel-Custom Voiced Follower (Nexus 51874) · Markarth
+9 quests | Remiel-Custom Voiced Follower (Nexus 51874) | Markarth
 
 > I met a Breton named Remiel at the Silverblood Inn in Markarth. I have agreed to take her to see Nchuand-zel, the dwemer ruin under the city. First I need to speak to Calcelmo about killing the giant spider that is lurking in the excavation site.
 
@@ -1256,7 +1256,7 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Lucien
 
-2 quests · Lucien - Immersive Fully Voiced Male Follower (Nexus 20035)
+2 quests | Lucien - Immersive Fully Voiced Male Follower (Nexus 20035)
 
 > Lucien has received a letter from his father along with the key to a Dwemer ruin on Solstheim that he's keen to explore. He'd like us to visit there at our earliest convenience.
 
@@ -1264,7 +1264,7 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Serana
 
-7 quests · Serana Dialogue Expansion (Nexus 121920), Serana Dialogue Expansion - Romance ESL (Nexus 121920)
+7 quests | Skyrim, Serana Dialogue Expansion (Nexus 121920), Serana Dialogue Expansion - Romance ESL (Nexus 121920)
 
 > Serana asked me to find her books related to the events that led to the Dragonborn Prophecy. In return, she'll teach me a few lessons on skills she's good at. I'm sure I can find something for her in the College of Winterhold.
 
@@ -1273,7 +1273,7 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Auri
 
-1 quest · Song of the Green (Auri Follower) (Nexus 11278)
+1 quest | Song of the Green (Auri Follower) (Nexus 11278)
 
 > Auri is homesick, and you've decided to cheer her up. Perhaps taking her to the most beautiful places in Skyrim might relieve her longing?
 
@@ -1281,7 +1281,7 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Katana and Megara
 
-8 quests · Katana - Journey in the Shadows (Nexus 69622)
+8 quests | Katana - Journey in the Shadows (Nexus 69622)
 
 > I don't know exactly what Katana needs help with, but I'm sure she'll tell me when she's ready. For now, I guess it's a waiting game.
 
@@ -1289,7 +1289,7 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Fura Bloodmouth
 
-2 quests · (BEST EVIL FOLLOWER) Follower Dialogue Expansion - Fura Bloodmouth (Nexus 165839)
+2 quests | (BEST EVIL FOLLOWER) Follower Dialogue Expansion - Fura Bloodmouth (Nexus 165839)
 
 > I will accompany Fura Bloodmouth to Solitude and meet her mother.
 
@@ -1297,7 +1297,7 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Faralda
 
-2 quests · Follower Dialogue Expansion - Faralda (Nexus 155510) · Winterhold
+2 quests | Follower Dialogue Expansion - Faralda (Nexus 155510) | Winterhold
 
 > Faralda, the Professor of Destruction School in the College of Winterhold, wants  me to bring a letter from her to Vekel the Man in the Ragged Flagon in Riften. He will help deliver it to her aunt Eilonwy.
 
@@ -1305,7 +1305,7 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Jenassa
 
-1 quest · Follower Dialogue Expansion - Jenassa (Nexus 120255) · Whiterun
+1 quest | Follower Dialogue Expansion - Jenassa (Nexus 120255) | Whiterun
 
 > Jenassa would like to travel to the tower where she met her first love.
 
@@ -1313,7 +1313,7 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Mjoll the Lioness
 
-1 quest · Follower Dialogue Expansion - Mjoll the Lioness (Nexus 116025) · Riften
+1 quest | Follower Dialogue Expansion - Mjoll the Lioness (Nexus 116025) | Riften
 
 > Aerin, the friend of Mjoll, would like to prove that he is a real warrior and win Mjoll the Lioness's heart.
 
@@ -1321,7 +1321,7 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Erik the Slayer
 
-1 quest · Follower Dialogue Expansion - Erik the Slayer (Nexus 116719) · Rorikstead
+1 quest | Follower Dialogue Expansion - Erik the Slayer (Nexus 116719) | Rorikstead
 
 > Speak to Aela about Erik joining the Companions
 
@@ -1333,7 +1333,7 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Missives
 
-384 quests · Missives (Nexus 17576), Missives - Voice and Quest Expansion (Nexus 166094), Missives - Gray Cowl Patch (Nexus 26788), Missives - Solstheim Patch SE (Nexus 26788), Missives - Wyrmstooth Patch (Nexus 26788)
+384 quests | Missives (Nexus 17576), Missives - Voice and Quest Expansion (Nexus 166094), Missives - Gray Cowl Patch (Nexus 26788), Missives - Solstheim Patch SE (Nexus 26788), Missives - Wyrmstooth Patch (Nexus 26788)
 
 - Start: Read a notice board in any of the nine hold capitals, and on Solstheim, Wyrmstooth and in Hammerfell. The boards refresh every three days. *(mod page)*
 - Level: Delivery and gathering jobs are the safest money at level 1 *(players)*
@@ -1342,7 +1342,7 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Bounties and favours for the jarls
 
-79 quests · Favor Quests Separated (Nexus 73903)
+79 quests | Skyrim, Favor Quests Separated (Nexus 73903)
 
 - Start: Ask a jarl or their steward for work. *(files)*
 - Gate: Warlock and draugr bounties at level 15, giants and spriggans 20, hagravens and Falmer 25, vampires and dragons 30. Jarls' favours: the vampire at 10, hagravens at 20, the giant at 22. *(files)*
@@ -1350,19 +1350,19 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Favours for townsfolk
 
-7 quests · Skyrim
+7 quests | Skyrim
 
 - Quests: Delivery; A Few Words with You; Some Light Theft; That Was Always There; Rare Gifts; Dungeon Delving (Bandits); Dungeon Delving (Caves)
 
 ### Thane of every hold
 
-10 quests · Skyrim
+10 quests | Skyrim
 
 - Quests: Making Friends and Influencing People; Thane of the Reach; Thane of Haafingar; Thane of Whiterun; Thane of Eastmarch; Thane of Hjaalmarch; Thane of the Pale; Thane of Winterhold; Thane of Falkreath; I Done Got Thaned!
 
 ### Fishing
 
-23 quests · Creation Club · Riften Fishery
+23 quests | Creation Club | Riften Fishery
 
 > Skyrim's waters are teeming with life just below the surface. With enough skill and a bit of luck, I could catch a few fish that would make for a hearty meal. While there are many places to fish throughout Skyrim, I've heard rumors of an excellent fishing spot at a camp near the Guardian Stones just south of Riverwood.
 
@@ -1370,13 +1370,13 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Hunter's Mark
 
-2 quests · Hunters Mark Animal Den on Map (Nexus 128450)
+2 quests | Hunters Mark Animal Den on Map (Nexus 128450)
 
 - Quests: Hunter Marks Animal Den; Hunter Marks Animal Den 02
 
 ### More to Say
 
-14 quests · More to Say - Main (Nexus 22622), More To Say - Sissel's Book Quest (Nexus 22622)
+14 quests | More to Say - Main (Nexus 22622), More To Say - Sissel's Book Quest (Nexus 22622)
 
 > I've heard a tale of a skilled, but dangerous, hunter. She might be willing to train me in Archery.
 
@@ -1384,37 +1384,37 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Odd jobs in the Rift
 
-32 quests · Caught Red Handed - Quest Expansion (Nexus 65708) · Riften, Ivarstead and Shor's Stone
+32 quests | Skyrim, Caught Red Handed - Quest Expansion (Nexus 65708) | Riften, Ivarstead and Shor's Stone
 
 - Quests: Supply and Demand; The Lover's Requital; Under the Table; Few and Far Between; Spread the Love; Sealing the Deal; Ice Cold; Distant Memories; Grimsever's Return; Stoking the Flames; Caught Red Handed; Helping Hand; Pilgrimage; Hunt and Gather; Special Delivery; Bring It!; Truth Ore Consequences; Ringmaker; Bloody Nose; The Raid; Stabilized; Vald's Debt; Lifting the Shroud; The Straw that Broke; Grin and Bear It; Climb the Steps; Mine or Yours; Special Delivery; Bow to the Master; Flight or Fight; Smooth Jazbay; A Strong Nord Woman
 
 ### Odd jobs in the Reach
 
-11 quests · Skyrim · Markarth and around
+11 quests | Skyrim | Markarth and around
 
 - Quests: Delivery to Calcelmo; Lisbet's Missing Shipment; Bothela's Discreet Delivery; Skilled Apprenticeship; Coated in Blood; Nimhe, the Poisoned One; Sanuarach Mine; Kolskeggr Mine; Soljund's Sinkhole; The Ghost of Old Hroldan; Gharol's Message
 
 ### Odd jobs in Haafingar
 
-6 quests · Skyrim · Solitude
+6 quests | Skyrim | Solitude
 
 - Quests: No News is Good News; Fit for a Jarl; Return to Grace; Delivery; The Spiced Wine; Elisif's Tribute
 
 ### Odd jobs in Eastmarch
 
-3 quests · Skyrim · Windhelm and Kynesgrove
+3 quests | Skyrim | Windhelm and Kynesgrove
 
 - Quests: Delivery; Harsh Master; Dravynea's Frost Salts
 
 ### Odd jobs in Whiterun Hold
 
-2 quests · Skyrim · Riverwood and the farms
+2 quests | Skyrim | Riverwood and the farms
 
 - Quests: A Lovely Letter; Rogatus's Letter
 
 ### Odd jobs in the north
 
-6 quests · Skyrim · Winterhold, Dawnstar, Morthal and Falkreath
+6 quests | Skyrim | Winterhold, Dawnstar, Morthal and Falkreath
 
 - Quests: A Bad Trade; Salty Sea-Dogs; For the Good of Morthal; Payment Delivery; Lod's Lot; Amulet of the Moon
 

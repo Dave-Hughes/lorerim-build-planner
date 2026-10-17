@@ -188,15 +188,13 @@ def curate(quests, raw_lines, cur):
         else:
             # Steady work and homes have no story to open: a card says how to find them instead.
             text, how = begins_of(order, opening, objectives=line["category"] in cur["categories"])
+        # Where its quests come from: the base game first (as one), then each mod in quest order.
         sources = []
-        for n in line.get("lines", []):
-            l = raw[n]
-            if l.get("source") != "Skyrim" and (l.get("source"), l.get("modid")) not in sources:
-                sources.append((l.get("source"), l.get("modid")))
-        if not sources:
-            plugins = {q["plugin"] for q in order}
-            base = {"Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm"}
-            sources = [("Skyrim", None)] if plugins <= base else [(q["source"], q.get("modid")) for q in order[:1]]
+        for q in order:
+            src = ("Skyrim", None) if q.get("source") == "Skyrim" else (q.get("source"), q.get("modid"))
+            if src not in sources:
+                sources.append(src)
+        sources.sort(key=lambda s: s[0] != "Skyrim")
         item = {
             "id": line["id"], "name": line["name"], "category": line["category"], "also": line.get("also", []),
             "where": line.get("where"), "prince": line.get("prince"),
@@ -251,7 +249,7 @@ def report(lines, cur, not_in_records):
                 bits.append(l["where"])
             if l.get("prince"):
                 bits.append(l["prince"])
-            md.append(" · ".join(bits))
+            md.append(" | ".join(bits))
             md.append("")
             if l["begins"]:
                 md.append(f"> {l['begins']}")

@@ -240,6 +240,7 @@
         "daedric",
         "lands"
       ],
+      "prince": "Molag Bal",
       "lines": [
         "VIGILANT - English Translation (Plus Voiced Addon)"
       ],
@@ -265,6 +266,7 @@
       "also": [
         "daedric"
       ],
+      "prince": "Meridia",
       "lines": [
         "Meridia's Order ESMIFIED"
       ],
@@ -497,8 +499,8 @@
       "id": "the-taste-of-death",
       "name": "The Taste of Death",
       "category": "daedric",
-      "questsFirst": true,
       "prince": "Namira",
+      "questsFirst": true,
       "lines": [
         "The Taste of Death",
         "The Taste of Death - Quest Addon"
@@ -770,6 +772,7 @@
       "also": [
         "daedric"
       ],
+      "prince": "Hermaeus Mora",
       "where": "Solstheim",
       "quests": [
         "DLC2WE06",

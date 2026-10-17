@@ -17,7 +17,8 @@ def quest(edid, *logs, objective=None, plugin="Skyrim.esm", ending=None):
     if ending:
         stages.append({"index": 200, "log": [ending], "completes": True})
     return {"id": f"{plugin}:{edid}", "edid": edid, "name": edid.title(), "type": "Side Quest",
-            "plugin": plugin, "source": "Skyrim" if plugin == "Skyrim.esm" else "A Mod", "modid": None,
+            "plugin": plugin, "source": "Skyrim" if plugin == "Skyrim.esm" else "The Mod",
+            "modid": None if plugin == "Skyrim.esm" else "123",
             "stages": stages, "objectives": [{"index": 0, "text": objective}] if objective else []}
 
 
