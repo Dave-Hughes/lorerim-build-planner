@@ -1,0 +1,3517 @@
+{
+ "lines": [
+  {
+   "name": "Missives",
+   "kind": "mod",
+   "source": "Missives",
+   "modid": "17576",
+   "plugins": [
+    "Missives.esp"
+   ],
+   "count": 264,
+   "journal": 0,
+   "types": {
+    "Side Quest": 264
+   },
+   "opening": "Missives.esp:00F64E",
+   "begins": "Collect <Alias=Item>",
+   "quests": [
+    "Missives.esp:00F64E",
+    "Missives.esp:00F655",
+    "Missives.esp:00F65C",
+    "Missives.esp:03CEDE",
+    "Missives.esp:038DBC",
+    "Missives.esp:03C40F",
+    "Missives.esp:00FBC4",
+    "Missives.esp:00FBCB",
+    "Missives.esp:00FBD2",
+    "Missives.esp:010140",
+    "Missives.esp:010145",
+    "Missives.esp:010149",
+    "Missives.esp:0106B1",
+    "Missives.esp:0106BD",
+    "Missives.esp:0106C1",
+    "Missives.esp:0106C5",
+    "Missives.esp:0106C9",
+    "Missives.esp:010C35",
+    "Missives.esp:010C39",
+    "Missives.esp:010C3D",
+    "Missives.esp:0111A3",
+    "Missives.esp:0111A7",
+    "Missives.esp:0111AB",
+    "Missives.esp:0111AF",
+    "Missives.esp:011715",
+    "Missives.esp:011719",
+    "Missives.esp:01171D",
+    "Missives.esp:0377E4",
+    "Missives.esp:032C3D",
+    "Missives.esp:0382D0",
+    "Missives.esp:011C86",
+    "Missives.esp:011CBE",
+    "Missives.esp:011CF5",
+    "Missives.esp:03CEDF",
+    "Missives.esp:03A372",
+    "Missives.esp:03C973",
+    "Missives.esp:01228F",
+    "Missives.esp:012828",
+    "Missives.esp:012DC3",
+    "Missives.esp:01335D",
+    "Missives.esp:0133A2",
+    "Missives.esp:0133BE",
+    "Missives.esp:013EAD",
+    "Missives.esp:014439",
+    "Missives.esp:0149B7",
+    "Missives.esp:014F51",
+    "Missives.esp:0154DD",
+    "Missives.esp:015A63",
+    "Missives.esp:015FF7",
+    "Missives.esp:016582",
+    "Missives.esp:016B00",
+    "Missives.esp:01707E",
+    "Missives.esp:01709E",
+    "Missives.esp:01761C",
+    "Missives.esp:017638",
+    "Missives.esp:017654",
+    "Missives.esp:0377E9",
+    "Missives.esp:036CF8",
+    "Missives.esp:0382D5",
+    "Missives.esp:011C8D",
+    "Missives.esp:011CC5",
+    "Missives.esp:011CFD",
+    "Missives.esp:03CEE0",
+    "Missives.esp:03A37C",
+    "Missives.esp:03C974",
+    "Missives.esp:012297",
+    "Missives.esp:012830",
+    "Missives.esp:012DCA",
+    "Missives.esp:013362",
+    "Missives.esp:0133A6",
+    "Missives.esp:0133C2",
+    "Missives.esp:013EB1",
+    "Missives.esp:01443D",
+    "Missives.esp:0149C9",
+    "Missives.esp:014F55",
+    "Missives.esp:0154E1",
+    "Missives.esp:015A6E",
+    "Missives.esp:015FFB",
+    "Missives.esp:016586",
+    "Missives.esp:016B04",
+    "Missives.esp:017082",
+    "Missives.esp:0170A2",
+    "Missives.esp:017620",
+    "Missives.esp:01763C",
+    "Missives.esp:017658",
+    "Missives.esp:0377EE",
+    "Missives.esp:036CFC",
+    "Missives.esp:0382DA",
+    "Missives.esp:011C96",
+    "Missives.esp:011CCD",
+    "Missives.esp:011D04",
+    "Missives.esp:03CEE1",
+    "Missives.esp:03A386",
+    "Missives.esp:03C975",
+    "Missives.esp:01229F",
+    "Missives.esp:012838",
+    "Missives.esp:012DD2",
+    "Missives.esp:013372",
+    "Missives.esp:0133AA",
+    "Missives.esp:0133C6",
+    "Missives.esp:013EB5",
+    "Missives.esp:014441",
+    "Missives.esp:0149CD",
+    "Missives.esp:014F5D",
+    "Missives.esp:0154E5",
+    "Missives.esp:015A72",
+    "Missives.esp:015FFF",
+    "Missives.esp:01658A",
+    "Missives.esp:016B08",
+    "Missives.esp:017086",
+    "Missives.esp:0170A6",
+    "Missives.esp:017624",
+    "Missives.esp:017640",
+    "Missives.esp:01765C",
+    "Missives.esp:0377F3",
+    "Missives.esp:036D02",
+    "Missives.esp:0382DF",
+    "Missives.esp:011C9E",
+    "Missives.esp:011CD5",
+    "Missives.esp:011D0C",
+    "Missives.esp:03CEE2",
+    "Missives.esp:03A8F2",
+    "Missives.esp:03C976",
+    "Missives.esp:0122A6",
+    "Missives.esp:012840",
+    "Missives.esp:012DDA",
+    "Missives.esp:013376",
+    "Missives.esp:0133AE",
+    "Missives.esp:0133CA",
+    "Missives.esp:013EB9",
+    "Missives.esp:014445",
+    "Missives.esp:0149D1",
+    "Missives.esp:014F61",
+    "Missives.esp:0154E9",
+    "Missives.esp:015A76",
+    "Missives.esp:016003",
+    "Missives.esp:01658E",
+    "Missives.esp:016B0C",
+    "Missives.esp:01708A",
+    "Missives.esp:0170AA",
+    "Missives.esp:01709A",
+    "Missives.esp:017628",
+    "Missives.esp:017644",
+    "Missives.esp:017660",
+    "Missives.esp:0377F8",
+    "Missives.esp:036D07",
+    "Missives.esp:0382E4",
+    "Missives.esp:011CA8",
+    "Missives.esp:011CDD",
+    "Missives.esp:011D14",
+    "Missives.esp:03D448",
+    "Missives.esp:03A8F3",
+    "Missives.esp:03C977",
+    "Missives.esp:0122AE",
+    "Missives.esp:012848",
+    "Missives.esp:012DE2",
+    "Missives.esp:01337A",
+    "Missives.esp:0133B2",
+    "Missives.esp:0133CE",
+    "Missives.esp:013EBD",
+    "Missives.esp:014449",
+    "Missives.esp:0149D5",
+    "Missives.esp:014F65",
+    "Missives.esp:0154ED",
+    "Missives.esp:015A7A",
+    "Missives.esp:016007",
+    "Missives.esp:016592",
+    "Missives.esp:016B10",
+    "Missives.esp:0170AE",
+    "Missives.esp:01708E",
+    "Missives.esp:01762C",
+    "Missives.esp:017648",
+    "Missives.esp:017664",
+    "Missives.esp:0377FD",
+    "Missives.esp:036D0C",
+    "Missives.esp:0382E9",
+    "Missives.esp:011CAF",
+    "Missives.esp:011CE5",
+    "Missives.esp:011D1D",
+    "Missives.esp:03D44A",
+    "Missives.esp:03A8F4",
+    "Missives.esp:03CEDB",
+    "Missives.esp:0122B6",
+    "Missives.esp:012851",
+    "Missives.esp:012DEA",
+    "Missives.esp:01337E",
+    "Missives.esp:0133B6",
+    "Missives.esp:013935",
+    "Missives.esp:013EC1",
+    "Missives.esp:01444D",
+    "Missives.esp:0149D9",
+    "Missives.esp:014F69",
+    "Missives.esp:0154F1",
+    "Missives.esp:015A7E",
+    "Missives.esp:01600B",
+    "Missives.esp:016596",
+    "Missives.esp:016B14",
+    "Missives.esp:017092",
+    "Missives.esp:0170B2",
+    "Missives.esp:017630",
+    "Missives.esp:01764C",
+    "Missives.esp:017668",
+    "Missives.esp:037D64",
+    "Missives.esp:037273",
+    "Missives.esp:0382EB",
+    "Missives.esp:00E5EB",
+    "Missives.esp:00BA9E",
+    "Missives.esp:00E080",
+    "Missives.esp:03D44B",
+    "Missives.esp:03AE58",
+    "Missives.esp:03CEDC",
+    "Missives.esp:00EB5C",
+    "Missives.esp:00D59D",
+    "Missives.esp:00EB55",
+    "Missives.esp:008EEA",
+    "Missives.esp:0063AB",
+    "Missives.esp:008408",
+    "Missives.esp:009A1C",
+    "Missives.esp:00DB12",
+    "Missives.esp:00DB0A",
+    "Missives.esp:00DB0E",
+    "Missives.esp:00DB16",
+    "Missives.esp:00AA6B",
+    "Missives.esp:009F99",
+    "Missives.esp:00AA67",
+    "Missives.esp:0058E4",
+    "Missives.esp:00F0C8",
+    "Missives.esp:00F0D1",
+    "Missives.esp:00F0CC",
+    "Missives.esp:00F0D7",
+    "Missives.esp:00F0DB",
+    "Missives.esp:006E72",
+    "Missives.esp:034737",
+    "Missives.esp:037278",
+    "Missives.esp:035764",
+    "Missives.esp:011CB6",
+    "Missives.esp:011CEE",
+    "Missives.esp:011D24",
+    "Missives.esp:03D44C",
+    "Missives.esp:03AE59",
+    "Missives.esp:03CEDD",
+    "Missives.esp:0122BF",
+    "Missives.esp:012859",
+    "Missives.esp:012DF2",
+    "Missives.esp:013382",
+    "Missives.esp:0133BA",
+    "Missives.esp:013939",
+    "Missives.esp:013EC5",
+    "Missives.esp:014451",
+    "Missives.esp:0149DD",
+    "Missives.esp:014F59",
+    "Missives.esp:0154F5",
+    "Missives.esp:015A82",
+    "Missives.esp:01600F",
+    "Missives.esp:01659A",
+    "Missives.esp:016B18",
+    "Missives.esp:017096",
+    "Missives.esp:0170B6",
+    "Missives.esp:017634",
+    "Missives.esp:017650",
+    "Missives.esp:01766C",
+    "Missives.esp:037D69",
+    "Missives.esp:03727D",
+    "Missives.esp:0382F0"
+   ]
+  },
+  {
+   "name": "Miscellaneous",
+   "kind": "bucket",
+   "source": "Skyrim",
+   "count": 176,
+   "journal": 16,
+   "types": {
+    "Misc": 176
+   },
+   "opening": "Skyrim.esm:0D944F",
+   "begins": "Giraud Gemane of the Bards College has found a clue to the location of the legendary drum of Rjorn. He's asked me to go to Halldir's Cairn and retrieve it.",
+   "quests": [
+    "Skyrim.esm:0D944F",
+    "Skyrim.esm:0D9431",
+    "Skyrim.esm:0D93FA",
+    "Skyrim.esm:095125",
+    "Skyrim.esm:0BD77F",
+    "Skyrim.esm:0BD78C",
+    "Skyrim.esm:0CBA9A",
+    "Skyrim.esm:0D3C5F",
+    "Skyrim.esm:0E1B5A",
+    "Skyrim.esm:0C349B",
+    "Skyrim.esm:07D949",
+    "Skyrim.esm:01EA5A",
+    "Skyrim.esm:0362AC",
+    "Skyrim.esm:034B58",
+    "Dawnguard.esm:004C1C",
+    "Dawnguard.esm:0163CD",
+    "Dawnguard.esm:01909F",
+    "Dawnguard.esm:00EA41",
+    "Dawnguard.esm:00C73A",
+    "Dawnguard.esm:01119F",
+    "Dawnguard.esm:01A3E4",
+    "Dragonborn.esm:02667E",
+    "Dragonborn.esm:03166D",
+    "Dragonborn.esm:02BAB0",
+    "Dragonborn.esm:020A1C",
+    "Dragonborn.esm:03332A",
+    "Dragonborn.esm:024DDE",
+    "Dragonborn.esm:024DE7",
+    "Dragonborn.esm:024DFC",
+    "Dragonborn.esm:024E04",
+    "Dragonborn.esm:024FA8",
+    "Dragonborn.esm:024FAD",
+    "Dragonborn.esm:02BAC6",
+    "Dragonborn.esm:02C8AA",
+    "Dragonborn.esm:02AD26",
+    "Dragonborn.esm:038EBF",
+    "Dragonborn.esm:038EC4",
+    "Dragonborn.esm:038FBC",
+    "Dragonborn.esm:038FBB",
+    "Dragonborn.esm:01CDE1",
+    "Dragonborn.esm:01F13B",
+    "Dragonborn.esm:027A14",
+    "Dragonborn.esm:0331C0",
+    "Skyrim.esm:0AE014",
+    "Skyrim.esm:039B3B",
+    "Skyrim.esm:01BAEC",
+    "Skyrim.esm:0403B0",
+    "Skyrim.esm:0CA209",
+    "Skyrim.esm:03F46A",
+    "Skyrim.esm:03F4EC",
+    "Skyrim.esm:06FD35",
+    "Skyrim.esm:0940E0",
+    "Skyrim.esm:0CA439",
+    "Skyrim.esm:06C824",
+    "Skyrim.esm:090E36",
+    "Skyrim.esm:07172A",
+    "Skyrim.esm:0A3504",
+    "Skyrim.esm:0940D0",
+    "Skyrim.esm:07105B",
+    "Skyrim.esm:06FE37",
+    "Skyrim.esm:0A2C86",
+    "Skyrim.esm:0A2C9B",
+    "Skyrim.esm:0A2C9E",
+    "Skyrim.esm:0A2CA6",
+    "Skyrim.esm:0A34CE",
+    "Skyrim.esm:0A34D4",
+    "Skyrim.esm:0A34D7",
+    "Skyrim.esm:0A34DE",
+    "Skyrim.esm:087E24",
+    "Skyrim.esm:076335",
+    "Skyrim.esm:0D9393",
+    "Skyrim.esm:0DB851",
+    "Skyrim.esm:09976E",
+    "Skyrim.esm:093753",
+    "Skyrim.esm:0B83C3",
+    "Skyrim.esm:0D6986",
+    "Skyrim.esm:0E3EA5",
+    "Skyrim.esm:0E76DE",
+    "Skyrim.esm:0D9B63",
+    "Skyrim.esm:0D9B64",
+    "Skyrim.esm:0D9B65",
+    "Skyrim.esm:0D9B66",
+    "Skyrim.esm:0622E8",
+    "Skyrim.esm:01FD72",
+    "Skyrim.esm:069043",
+    "Skyrim.esm:075399",
+    "Skyrim.esm:0753A1",
+    "Skyrim.esm:0790E1",
+    "Skyrim.esm:06099C",
+    "Skyrim.esm:0647B3",
+    "Skyrim.esm:053804",
+    "Skyrim.esm:0E3E9B",
+    "Skyrim.esm:021891",
+    "Skyrim.esm:021896",
+    "Skyrim.esm:06819A",
+    "Skyrim.esm:053305",
+    "Skyrim.esm:053306",
+    "Skyrim.esm:053307",
+    "Skyrim.esm:053308",
+    "Skyrim.esm:053309",
+    "Skyrim.esm:053318",
+    "Skyrim.esm:05331A",
+    "Skyrim.esm:05331B",
+    "Skyrim.esm:05331C",
+    "Skyrim.esm:05331D",
+    "Skyrim.esm:041F91",
+    "Skyrim.esm:041FD2",
+    "Skyrim.esm:043E1A",
+    "Skyrim.esm:043E25",
+    "Skyrim.esm:0557E9",
+    "Skyrim.esm:0557F3",
+    "Skyrim.esm:05B2DE",
+    "Skyrim.esm:05B3A5",
+    "Skyrim.esm:065C30",
+    "Skyrim.esm:085D40",
+    "Skyrim.esm:0C1E07",
+    "Skyrim.esm:065BDF",
+    "Skyrim.esm:074A83",
+    "Skyrim.esm:0931BF",
+    "Skyrim.esm:0E3308",
+    "Skyrim.esm:094152",
+    "Skyrim.esm:094158",
+    "Skyrim.esm:0E49E7",
+    "Skyrim.esm:0E49E8",
+    "Skyrim.esm:0E38C9",
+    "Skyrim.esm:0E3E67",
+    "Skyrim.esm:0E6DF1",
+    "Skyrim.esm:06136B",
+    "Skyrim.esm:064958",
+    "Skyrim.esm:0C04BA",
+    "Skyrim.esm:0CD882",
+    "Skyrim.esm:062F54",
+    "Skyrim.esm:064EA8",
+    "Skyrim.esm:05D2E9",
+    "Skyrim.esm:054D0A",
+    "Skyrim.esm:0266F1",
+    "Skyrim.esm:0266F2",
+    "Skyrim.esm:028A13",
+    "Skyrim.esm:028A19",
+    "Skyrim.esm:028A1E",
+    "Skyrim.esm:028A24",
+    "Skyrim.esm:0BC096",
+    "Skyrim.esm:074793",
+    "Skyrim.esm:0E8BD7",
+    "Skyrim.esm:0C7D1C",
+    "Skyrim.esm:0C7D42",
+    "Skyrim.esm:0D055D",
+    "Skyrim.esm:0D69FB",
+    "Skyrim.esm:0E77BA",
+    "Skyrim.esm:064A14",
+    "Skyrim.esm:0C99EF",
+    "Skyrim.esm:084ABD",
+    "Skyrim.esm:1007FC",
+    "Skyrim.esm:0D3AC6",
+    "Skyrim.esm:06D585",
+    "Skyrim.esm:0D8E40",
+    "Skyrim.esm:04C6C2",
+    "Skyrim.esm:0A17AD",
+    "Skyrim.esm:0A17B4",
+    "Skyrim.esm:0A17B5",
+    "Skyrim.esm:0A17B6",
+    "Skyrim.esm:0A17B7",
+    "Skyrim.esm:0A17B8",
+    "Skyrim.esm:0A17B9",
+    "Skyrim.esm:0A17BA",
+    "Skyrim.esm:0A17BB",
+    "Skyrim.esm:0A17BC",
+    "Skyrim.esm:04A602",
+    "Skyrim.esm:0A0F43",
+    "Skyrim.esm:039792",
+    "Skyrim.esm:023EE4",
+    "Skyrim.esm:06E028",
+    "Skyrim.esm:06F211",
+    "Skyrim.esm:04B869",
+    "Skyrim.esm:0AE004",
+    "Skyrim.esm:071441"
+   ]
+  },
+  {
+   "name": "Side quests",
+   "kind": "bucket",
+   "source": "Skyrim",
+   "count": 76,
+   "journal": 74,
+   "types": {
+    "Side Quest": 57,
+    "None": 19
+   },
+   "opening": "Skyrim.esm:01BC95",
+   "begins": "Dummy entry to end this quest.",
+   "quests": [
+    "Skyrim.esm:0E7814",
+    "Skyrim.esm:076B4A",
+    "Skyrim.esm:0DBA41",
+    "Dawnguard.esm:005817",
+    "Dawnguard.esm:005044",
+    "Dragonborn.esm:03216C",
+    "Dragonborn.esm:03216E",
+    "Dragonborn.esm:03216D",
+    "Dragonborn.esm:03216F",
+    "Dragonborn.esm:032170",
+    "Dragonborn.esm:024002",
+    "Dragonborn.esm:01810B",
+    "Dragonborn.esm:02C49E",
+    "Dragonborn.esm:01A50B",
+    "Dragonborn.esm:01A50C",
+    "Dragonborn.esm:018B13",
+    "Dragonborn.esm:018B14",
+    "Dragonborn.esm:018B15",
+    "Dragonborn.esm:019B4A",
+    "Dragonborn.esm:01CAF1",
+    "Dragonborn.esm:017E8D",
+    "Dragonborn.esm:01844E",
+    "Dragonborn.esm:0195A1",
+    "Dragonborn.esm:01AAB0",
+    "Dragonborn.esm:01AAC8",
+    "Dragonborn.esm:01B65F",
+    "Dragonborn.esm:01C06E",
+    "Dragonborn.esm:01B65D",
+    "Dragonborn.esm:01D8D1",
+    "Dragonborn.esm:01B664",
+    "Dragonborn.esm:01C05C",
+    "Dragonborn.esm:01BD18",
+    "Dragonborn.esm:0209AE",
+    "Skyrim.esm:03FA89",
+    "Skyrim.esm:035354",
+    "Skyrim.esm:0CF915",
+    "Skyrim.esm:0E4D31",
+    "Skyrim.esm:0443F4",
+    "Skyrim.esm:03E897",
+    "Skyrim.esm:018601",
+    "Skyrim.esm:0C3709",
+    "Skyrim.esm:043BAB",
+    "Skyrim.esm:04B2A1",
+    "Skyrim.esm:03ED82",
+    "Skyrim.esm:08ADFA",
+    "Skyrim.esm:0434A3",
+    "Skyrim.esm:064798",
+    "Skyrim.esm:09F179",
+    "Skyrim.esm:01BC95",
+    "Skyrim.esm:018B4B",
+    "Skyrim.esm:040A5E",
+    "Skyrim.esm:01DA3C",
+    "Skyrim.esm:0209CA",
+    "Skyrim.esm:053511",
+    "Skyrim.esm:026C4D",
+    "Skyrim.esm:093807",
+    "Skyrim.esm:023A64",
+    "Skyrim.esm:01CF25",
+    "Skyrim.esm:01CF26",
+    "Skyrim.esm:01DBFC",
+    "Skyrim.esm:01F7A3",
+    "Skyrim.esm:020556",
+    "Skyrim.esm:02C258",
+    "Skyrim.esm:02499C",
+    "Skyrim.esm:039645",
+    "Skyrim.esm:025F3E",
+    "Skyrim.esm:0C9BA0",
+    "Skyrim.esm:023B6C",
+    "Skyrim.esm:0211D5",
+    "Skyrim.esm:01C48E",
+    "Skyrim.esm:0B882D",
+    "Skyrim.esm:0B882F",
+    "Skyrim.esm:0B8830",
+    "Skyrim.esm:0549F3",
+    "Skyrim.esm:0B8831",
+    "Skyrim.esm:05C625"
+   ]
+  },
+  {
+   "name": "Favor Quests Separated",
+   "kind": "mod",
+   "source": "Favor Quests Separated",
+   "modid": "73903",
+   "plugins": [
+    "Favor Quests Seperated.esp"
+   ],
+   "count": 68,
+   "journal": 0,
+   "types": {
+    "Misc": 68
+   },
+   "opening": "Favor Quests Seperated.esp:000E42",
+   "begins": "Kill the bandit leader located at <Alias=BountyLocation>",
+   "quests": [
+    "Favor Quests Seperated.esp:000E42",
+    "Favor Quests Seperated.esp:000E36",
+    "Favor Quests Seperated.esp:000E1E",
+    "Favor Quests Seperated.esp:000E24",
+    "Favor Quests Seperated.esp:000E30",
+    "Favor Quests Seperated.esp:000E4E",
+    "Favor Quests Seperated.esp:000E48",
+    "Favor Quests Seperated.esp:000E2A",
+    "Favor Quests Seperated.esp:000E3C",
+    "Favor Quests Seperated.esp:000E90",
+    "Favor Quests Seperated.esp:000E86",
+    "Favor Quests Seperated.esp:000E72",
+    "Favor Quests Seperated.esp:000E77",
+    "Favor Quests Seperated.esp:000E81",
+    "Favor Quests Seperated.esp:000E9A",
+    "Favor Quests Seperated.esp:000E95",
+    "Favor Quests Seperated.esp:000E7C",
+    "Favor Quests Seperated.esp:000E8B",
+    "Favor Quests Seperated.esp:000ED3",
+    "Favor Quests Seperated.esp:000EC9",
+    "Favor Quests Seperated.esp:000EE2",
+    "Favor Quests Seperated.esp:000EBA",
+    "Favor Quests Seperated.esp:000EC4",
+    "Favor Quests Seperated.esp:000EDD",
+    "Favor Quests Seperated.esp:000ED8",
+    "Favor Quests Seperated.esp:000EBF",
+    "Favor Quests Seperated.esp:000ECE",
+    "Favor Quests Seperated.esp:000F20",
+    "Favor Quests Seperated.esp:000F16",
+    "Favor Quests Seperated.esp:000F02",
+    "Favor Quests Seperated.esp:000F07",
+    "Favor Quests Seperated.esp:000F11",
+    "Favor Quests Seperated.esp:000F2A",
+    "Favor Quests Seperated.esp:000F25",
+    "Favor Quests Seperated.esp:000F0C",
+    "Favor Quests Seperated.esp:000F1B",
+    "Favor Quests Seperated.esp:000835",
+    "Favor Quests Seperated.esp:000842",
+    "Favor Quests Seperated.esp:000847",
+    "Favor Quests Seperated.esp:000838",
+    "Favor Quests Seperated.esp:00083D",
+    "Favor Quests Seperated.esp:00082D",
+    "Favor Quests Seperated.esp:000896",
+    "Favor Quests Seperated.esp:0008B3",
+    "Favor Quests Seperated.esp:0008A5",
+    "Favor Quests Seperated.esp:000869",
+    "Favor Quests Seperated.esp:000878",
+    "Favor Quests Seperated.esp:000887",
+    "Favor Quests Seperated.esp:000A0C",
+    "Favor Quests Seperated.esp:000A1D",
+    "Favor Quests Seperated.esp:000A14",
+    "Favor Quests Seperated.esp:000B3E",
+    "Favor Quests Seperated.esp:000B50",
+    "Favor Quests Seperated.esp:000B34",
+    "Favor Quests Seperated.esp:000B47",
+    "Favor Quests Seperated.esp:000D7E",
+    "Favor Quests Seperated.esp:000D86",
+    "Favor Quests Seperated.esp:000D76",
+    "Favor Quests Seperated.esp:000D6E",
+    "Favor Quests Seperated.esp:000D97",
+    "Favor Quests Seperated.esp:000D8F",
+    "Favor Quests Seperated.esp:000DB9",
+    "Favor Quests Seperated.esp:000DC2",
+    "Favor Quests Seperated.esp:000DD5",
+    "Favor Quests Seperated.esp:000DF9",
+    "Favor Quests Seperated.esp:000DF0",
+    "Favor Quests Seperated.esp:000DDE",
+    "Favor Quests Seperated.esp:000DE7"
+   ]
+  },
+  {
+   "name": "VIGILANT - English Translation (Plus Voiced Addon)",
+   "kind": "mod",
+   "source": "VIGILANT - English Translation (Plus Voiced Addon)",
+   "modid": "11894",
+   "plugins": [
+    "Vigilant.esm"
+   ],
+   "count": 47,
+   "journal": 2,
+   "types": {
+    "Misc": 28,
+    "Side Quest": 19
+   },
+   "opening": "Vigilant.esm:005CE2",
+   "begins": "Join the Vigilants of Stendarr",
+   "quests": [
+    "Vigilant.esm:4E1318",
+    "Vigilant.esm:4E372E",
+    "Vigilant.esm:4E0116",
+    "Vigilant.esm:4E011B",
+    "Vigilant.esm:4E0121",
+    "Vigilant.esm:4E0102",
+    "Vigilant.esm:4E0108",
+    "Vigilant.esm:4E010E",
+    "Vigilant.esm:005CE2",
+    "Vigilant.esm:005CE3",
+    "Vigilant.esm:006271",
+    "Vigilant.esm:00627F",
+    "Vigilant.esm:0082EA",
+    "Vigilant.esm:0098C9",
+    "Vigilant.esm:009E68",
+    "Vigilant.esm:00A3FE",
+    "Vigilant.esm:00EA8A",
+    "Vigilant.esm:00EFF7",
+    "Vigilant.esm:011B75",
+    "Vigilant.esm:4D0376",
+    "Vigilant.esm:4EA3A8",
+    "Vigilant.esm:4EA3D1",
+    "Vigilant.esm:4EA3AC",
+    "Vigilant.esm:4E91B0",
+    "Vigilant.esm:4EA3C8",
+    "Vigilant.esm:4D4C3D",
+    "Vigilant.esm:51EAC1",
+    "Vigilant.esm:43B81F",
+    "Vigilant.esm:038524",
+    "Vigilant.esm:038525",
+    "Vigilant.esm:038526",
+    "Vigilant.esm:42E0B1",
+    "Vigilant.esm:12C4F4",
+    "Vigilant.esm:13712B",
+    "Vigilant.esm:13965A",
+    "Vigilant.esm:140225",
+    "Vigilant.esm:05AE03",
+    "Vigilant.esm:06A23B",
+    "Vigilant.esm:06F53C",
+    "Vigilant.esm:080E91",
+    "Vigilant.esm:2CAE30",
+    "Vigilant.esm:4EC7F3",
+    "Vigilant.esm:51532C",
+    "Vigilant.esm:51ADBF",
+    "Vigilant.esm:43CBAE",
+    "Vigilant.esm:065932",
+    "Vigilant.esm:324E7E"
+   ]
+  },
+  {
+   "name": "Missives - Voice and Quest Expansion",
+   "kind": "mod",
+   "source": "Missives - Voice and Quest Expansion",
+   "modid": "166094",
+   "plugins": [
+    "MissivesExpansion.esp"
+   ],
+   "count": 40,
+   "journal": 20,
+   "types": {
+    "Side Quest": 40
+   },
+   "opening": "MissivesExpansion.esp:000912",
+   "begins": "QuickStart",
+   "quests": [
+    "MissivesExpansion.esp:000912",
+    "MissivesExpansion.esp:00090A",
+    "MissivesExpansion.esp:000908",
+    "MissivesExpansion.esp:000904",
+    "MissivesExpansion.esp:000902",
+    "MissivesExpansion.esp:000906",
+    "MissivesExpansion.esp:00090E",
+    "MissivesExpansion.esp:000920",
+    "MissivesExpansion.esp:00090C",
+    "MissivesExpansion.esp:000910",
+    "MissivesExpansion.esp:000922",
+    "MissivesExpansion.esp:000928",
+    "MissivesExpansion.esp:000914",
+    "MissivesExpansion.esp:000918",
+    "MissivesExpansion.esp:00091A",
+    "MissivesExpansion.esp:00091E",
+    "MissivesExpansion.esp:000926",
+    "MissivesExpansion.esp:000924",
+    "MissivesExpansion.esp:00091C",
+    "MissivesExpansion.esp:000916",
+    "MissivesExpansion.esp:000028",
+    "MissivesExpansion.esp:000020",
+    "MissivesExpansion.esp:00001F",
+    "MissivesExpansion.esp:00000E",
+    "MissivesExpansion.esp:000001",
+    "MissivesExpansion.esp:00000F",
+    "MissivesExpansion.esp:000026",
+    "MissivesExpansion.esp:000189",
+    "MissivesExpansion.esp:000021",
+    "MissivesExpansion.esp:000027",
+    "MissivesExpansion.esp:00019F",
+    "MissivesExpansion.esp:0001B9",
+    "MissivesExpansion.esp:000029",
+    "MissivesExpansion.esp:00002E",
+    "MissivesExpansion.esp:00002F",
+    "MissivesExpansion.esp:000188",
+    "MissivesExpansion.esp:0001AB",
+    "MissivesExpansion.esp:0001A1",
+    "MissivesExpansion.esp:000199",
+    "MissivesExpansion.esp:00002A"
+   ]
+  },
+  {
+   "name": "Dawnguard",
+   "kind": "story",
+   "source": "Skyrim",
+   "count": 34,
+   "journal": 34,
+   "types": {
+    "Dawnguard": 34
+   },
+   "opening": "Dawnguard.esm:00D06C",
+   "begins": "I've learned of a group of vampire hunters known as the Dawnguard. It seems they are looking for new recruits.",
+   "quests": [
+    "Dawnguard.esm:00D06C",
+    "Dawnguard.esm:004E24",
+    "Dawnguard.esm:013F1F",
+    "Dawnguard.esm:005E4A",
+    "Dawnguard.esm:005E53",
+    "Dawnguard.esm:005E58",
+    "Dawnguard.esm:006952",
+    "Dawnguard.esm:006BAC",
+    "Dawnguard.esm:007201",
+    "Dawnguard.esm:007EC5",
+    "Dawnguard.esm:015017",
+    "Dawnguard.esm:004C1B",
+    "Dawnguard.esm:0050B9",
+    "Dawnguard.esm:0050BD",
+    "Dawnguard.esm:0056FD",
+    "Dawnguard.esm:005702",
+    "Dawnguard.esm:0058CA",
+    "Dawnguard.esm:00A29C",
+    "Dawnguard.esm:00CE06",
+    "Dawnguard.esm:00CE0B",
+    "Dawnguard.esm:019938",
+    "Dawnguard.esm:00594C",
+    "Dawnguard.esm:00352A",
+    "Dawnguard.esm:002F65",
+    "Dawnguard.esm:0098CB",
+    "Dawnguard.esm:004C3D",
+    "Dawnguard.esm:00284F",
+    "Dawnguard.esm:002850",
+    "Dawnguard.esm:002852",
+    "Dawnguard.esm:002853",
+    "Dawnguard.esm:007C25",
+    "Dawnguard.esm:005DA9",
+    "Dawnguard.esm:0181BF",
+    "Dawnguard.esm:01400B"
+   ]
+  },
+  {
+   "name": "Betalille's Hammerfell Quests Bundle - The Gray Cowl of Nocturnal",
+   "kind": "mod",
+   "source": "Betalille's Hammerfell Quests Bundle - The Gray Cowl of Nocturnal",
+   "modid": "89977",
+   "plugins": [
+    "BetalillesHammerfellQuestBundle.esp"
+   ],
+   "count": 32,
+   "journal": 32,
+   "types": {
+    "Side Quest": 13,
+    "Dark Brotherhood": 10,
+    "Misc": 6,
+    "Main Quest": 2,
+    "Mages Guild": 1
+   },
+   "opening": "BetalillesHammerfellQuestBundle.esp:00179E",
+   "begins": "A merchant in Solstheim wants to travel to Hammerfell and create a shop for dunmer goods there. I agreed to accompany him in Hammerfell.",
+   "quests": [
+    "BetalillesHammerfellQuestBundle.esp:0017A1",
+    "BetalillesHammerfellQuestBundle.esp:0017A0",
+    "BetalillesHammerfellQuestBundle.esp:00179F",
+    "BetalillesHammerfellQuestBundle.esp:001545",
+    "BetalillesHammerfellQuestBundle.esp:001781",
+    "BetalillesHammerfellQuestBundle.esp:00179E",
+    "BetalillesHammerfellQuestBundle.esp:00117E",
+    "BetalillesHammerfellQuestBundle.esp:00117F",
+    "BetalillesHammerfellQuestBundle.esp:001180",
+    "BetalillesHammerfellQuestBundle.esp:001181",
+    "BetalillesHammerfellQuestBundle.esp:000ECA",
+    "BetalillesHammerfellQuestBundle.esp:001076",
+    "BetalillesHammerfellQuestBundle.esp:000ECD",
+    "BetalillesHammerfellQuestBundle.esp:000ECE",
+    "BetalillesHammerfellQuestBundle.esp:000ECF",
+    "BetalillesHammerfellQuestBundle.esp:000ED0",
+    "BetalillesHammerfellQuestBundle.esp:000ED1",
+    "BetalillesHammerfellQuestBundle.esp:000FCA",
+    "BetalillesHammerfellQuestBundle.esp:000FCE",
+    "BetalillesHammerfellQuestBundle.esp:000FCF",
+    "BetalillesHammerfellQuestBundle.esp:000B6B",
+    "BetalillesHammerfellQuestBundle.esp:000C5C",
+    "BetalillesHammerfellQuestBundle.esp:000C5D",
+    "BetalillesHammerfellQuestBundle.esp:000A8E",
+    "BetalillesHammerfellQuestBundle.esp:000A8F",
+    "BetalillesHammerfellQuestBundle.esp:000AB8",
+    "BetalillesHammerfellQuestBundle.esp:000AB9",
+    "BetalillesHammerfellQuestBundle.esp:000AB7",
+    "BetalillesHammerfellQuestBundle.esp:000ABB",
+    "BetalillesHammerfellQuestBundle.esp:000ABA",
+    "BetalillesHammerfellQuestBundle.esp:000ABC",
+    "BetalillesHammerfellQuestBundle.esp:001252"
+   ]
+  },
+  {
+   "name": "Dark Brotherhood",
+   "kind": "story",
+   "source": "Skyrim",
+   "count": 29,
+   "journal": 29,
+   "types": {
+    "Dark Brotherhood": 29
+   },
+   "opening": "Skyrim.esm:01EA50",
+   "begins": "I heard a rumor that a boy named Aventus Aretino, in Windhelm, has been attempting to contact the Dark Brotherhood. I should find this boy and speak with him, and find out why he wants to contact a guild of assassins.",
+   "quests": [
+    "Skyrim.esm:01EA50",
+    "Skyrim.esm:087BA2",
+    "Skyrim.esm:01EA4F",
+    "Skyrim.esm:01EA51",
+    "Skyrim.esm:022F47",
+    "Skyrim.esm:01EA52",
+    "Skyrim.esm:01EA53",
+    "Skyrim.esm:02AD16",
+    "Skyrim.esm:01EA54",
+    "Skyrim.esm:01EA55",
+    "Skyrim.esm:01EA56",
+    "Skyrim.esm:01EA57",
+    "Skyrim.esm:01EA58",
+    "Skyrim.esm:03CEDA",
+    "Skyrim.esm:01EA59",
+    "Skyrim.esm:0934FB",
+    "Skyrim.esm:06F9A5",
+    "Skyrim.esm:01EA5B",
+    "Skyrim.esm:01EA5E",
+    "Skyrim.esm:01EA5F",
+    "Skyrim.esm:01EA60",
+    "Skyrim.esm:01EA61",
+    "Skyrim.esm:01EA62",
+    "Skyrim.esm:01EA63",
+    "Skyrim.esm:01EA64",
+    "Skyrim.esm:01EA65",
+    "Skyrim.esm:01EA66",
+    "Skyrim.esm:01EA67",
+    "Skyrim.esm:01EA68"
+   ]
+  },
+  {
+   "name": "Missives - Gray Cowl Patch",
+   "kind": "mod",
+   "source": "Missives - Gray Cowl Patch",
+   "modid": "26788",
+   "plugins": [
+    "Missives - Gray Cowl Patch.esp"
+   ],
+   "count": 27,
+   "journal": 0,
+   "types": {
+    "Side Quest": 27
+   },
+   "opening": "Missives - Gray Cowl Patch.esp:000800",
+   "begins": "Collect <Alias=Item>",
+   "quests": [
+    "Missives - Gray Cowl Patch.esp:000800",
+    "Missives - Gray Cowl Patch.esp:000801",
+    "Missives - Gray Cowl Patch.esp:000802",
+    "Missives - Gray Cowl Patch.esp:000803",
+    "Missives - Gray Cowl Patch.esp:000804",
+    "Missives - Gray Cowl Patch.esp:000805",
+    "Missives - Gray Cowl Patch.esp:000806",
+    "Missives - Gray Cowl Patch.esp:000807",
+    "Missives - Gray Cowl Patch.esp:000808",
+    "Missives - Gray Cowl Patch.esp:000809",
+    "Missives - Gray Cowl Patch.esp:00080A",
+    "Missives - Gray Cowl Patch.esp:00080B",
+    "Missives - Gray Cowl Patch.esp:00080C",
+    "Missives - Gray Cowl Patch.esp:00080D",
+    "Missives - Gray Cowl Patch.esp:00080E",
+    "Missives - Gray Cowl Patch.esp:00080F",
+    "Missives - Gray Cowl Patch.esp:000810",
+    "Missives - Gray Cowl Patch.esp:000811",
+    "Missives - Gray Cowl Patch.esp:000812",
+    "Missives - Gray Cowl Patch.esp:000813",
+    "Missives - Gray Cowl Patch.esp:000814",
+    "Missives - Gray Cowl Patch.esp:000815",
+    "Missives - Gray Cowl Patch.esp:000816",
+    "Missives - Gray Cowl Patch.esp:000817",
+    "Missives - Gray Cowl Patch.esp:000818",
+    "Missives - Gray Cowl Patch.esp:000819",
+    "Missives - Gray Cowl Patch.esp:00081A"
+   ]
+  },
+  {
+   "name": "Missives - Solstheim Patch SE",
+   "kind": "mod",
+   "source": "Missives - Solstheim Patch SE",
+   "modid": "26788",
+   "plugins": [
+    "Missives - Solstheim.esp"
+   ],
+   "count": 27,
+   "journal": 0,
+   "types": {
+    "Side Quest": 27
+   },
+   "opening": "Missives - Solstheim.esp:00085D",
+   "begins": "Collect <Alias=Item>",
+   "quests": [
+    "Missives - Solstheim.esp:00085D",
+    "Missives - Solstheim.esp:00085E",
+    "Missives - Solstheim.esp:00085F",
+    "Missives - Solstheim.esp:0008CE",
+    "Missives - Solstheim.esp:0008CF",
+    "Missives - Solstheim.esp:0008D0",
+    "Missives - Solstheim.esp:000860",
+    "Missives - Solstheim.esp:000861",
+    "Missives - Solstheim.esp:000862",
+    "Missives - Solstheim.esp:000863",
+    "Missives - Solstheim.esp:000864",
+    "Missives - Solstheim.esp:000865",
+    "Missives - Solstheim.esp:000866",
+    "Missives - Solstheim.esp:000867",
+    "Missives - Solstheim.esp:000868",
+    "Missives - Solstheim.esp:000869",
+    "Missives - Solstheim.esp:00086A",
+    "Missives - Solstheim.esp:00086B",
+    "Missives - Solstheim.esp:00086C",
+    "Missives - Solstheim.esp:00086D",
+    "Missives - Solstheim.esp:00086E",
+    "Missives - Solstheim.esp:00086F",
+    "Missives - Solstheim.esp:000870",
+    "Missives - Solstheim.esp:000871",
+    "Missives - Solstheim.esp:000872",
+    "Missives - Solstheim.esp:000873",
+    "Missives - Solstheim.esp:000874"
+   ]
+  },
+  {
+   "name": "Missives - Wyrmstooth Patch",
+   "kind": "mod",
+   "source": "Missives - Wyrmstooth Patch",
+   "modid": "26788",
+   "plugins": [
+    "Missives - Wyrmstooth.esp"
+   ],
+   "count": 26,
+   "journal": 0,
+   "types": {
+    "Side Quest": 26
+   },
+   "opening": "Missives - Wyrmstooth.esp:00089A",
+   "begins": "Collect <Alias=Item>",
+   "quests": [
+    "Missives - Wyrmstooth.esp:00089A",
+    "Missives - Wyrmstooth.esp:00089B",
+    "Missives - Wyrmstooth.esp:00089C",
+    "Missives - Wyrmstooth.esp:0008B3",
+    "Missives - Wyrmstooth.esp:0008B1",
+    "Missives - Wyrmstooth.esp:0008B2",
+    "Missives - Wyrmstooth.esp:00089D",
+    "Missives - Wyrmstooth.esp:00089E",
+    "Missives - Wyrmstooth.esp:00089F",
+    "Missives - Wyrmstooth.esp:0008A0",
+    "Missives - Wyrmstooth.esp:0008A1",
+    "Missives - Wyrmstooth.esp:0008A2",
+    "Missives - Wyrmstooth.esp:0008A3",
+    "Missives - Wyrmstooth.esp:0008A4",
+    "Missives - Wyrmstooth.esp:0008A5",
+    "Missives - Wyrmstooth.esp:0008A6",
+    "Missives - Wyrmstooth.esp:0008A7",
+    "Missives - Wyrmstooth.esp:0008A8",
+    "Missives - Wyrmstooth.esp:0008A9",
+    "Missives - Wyrmstooth.esp:0008AA",
+    "Missives - Wyrmstooth.esp:0008AB",
+    "Missives - Wyrmstooth.esp:0008AC",
+    "Missives - Wyrmstooth.esp:0008AD",
+    "Missives - Wyrmstooth.esp:0008AE",
+    "Missives - Wyrmstooth.esp:0008AF",
+    "Missives - Wyrmstooth.esp:0008B0"
+   ]
+  },
+  {
+   "name": "Thieves Guild",
+   "kind": "story",
+   "source": "Skyrim",
+   "count": 25,
+   "journal": 25,
+   "types": {
+    "Thieves Guild": 25
+   },
+   "opening": "Skyrim.esm:021556",
+   "begins": "Brynjolf in Riften seems to be involved in some nefarious activities and has convinced me to take part in one of his schemes.",
+   "quests": [
+    "Skyrim.esm:021556",
+    "Skyrim.esm:01F326",
+    "Skyrim.esm:02154E",
+    "Skyrim.esm:02154F",
+    "Skyrim.esm:021550",
+    "Skyrim.esm:021551",
+    "Skyrim.esm:021552",
+    "Skyrim.esm:021553",
+    "Skyrim.esm:057F99",
+    "Skyrim.esm:021554",
+    "Skyrim.esm:021555",
+    "Skyrim.esm:0B03A2",
+    "Skyrim.esm:09DD77",
+    "Skyrim.esm:0D7D69",
+    "Skyrim.esm:02893B",
+    "Skyrim.esm:015D24",
+    "Skyrim.esm:06098E",
+    "Skyrim.esm:028922",
+    "Skyrim.esm:028936",
+    "Skyrim.esm:060990",
+    "Skyrim.esm:02893E",
+    "Skyrim.esm:0799DF",
+    "Skyrim.esm:0799E0",
+    "Skyrim.esm:0799E1",
+    "Skyrim.esm:0799E2"
+   ]
+  },
+  {
+   "name": "ccBGSSSE001-Fish",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccBGSSSE001-Fish.esm"
+   ],
+   "count": 24,
+   "journal": 23,
+   "types": {
+    "Side Quest": 24
+   },
+   "opening": "ccBGSSSE001-Fish.esm:0009D4",
+   "begins": "I met Viriya, one of the employees at the Riften Fishery. She handed me a bounty letter and seemed rather frustrated. I should see what it has to say.",
+   "quests": [
+    "ccBGSSSE001-Fish.esm:0009D4",
+    "ccBGSSSE001-Fish.esm:0009DA",
+    "ccBGSSSE001-Fish.esm:0009D6",
+    "ccBGSSSE001-Fish.esm:0009E9",
+    "ccBGSSSE001-Fish.esm:0009DE",
+    "ccBGSSSE001-Fish.esm:0009EB",
+    "ccBGSSSE001-Fish.esm:0009E8",
+    "ccBGSSSE001-Fish.esm:0009DD",
+    "ccBGSSSE001-Fish.esm:0009DC",
+    "ccBGSSSE001-Fish.esm:000AD6",
+    "ccBGSSSE001-Fish.esm:0009EC",
+    "ccBGSSSE001-Fish.esm:0009E2",
+    "ccBGSSSE001-Fish.esm:0009DF",
+    "ccBGSSSE001-Fish.esm:0009E4",
+    "ccBGSSSE001-Fish.esm:0009E3",
+    "ccBGSSSE001-Fish.esm:000E5D",
+    "ccBGSSSE001-Fish.esm:0009D7",
+    "ccBGSSSE001-Fish.esm:0009D5",
+    "ccBGSSSE001-Fish.esm:0009E6",
+    "ccBGSSSE001-Fish.esm:000B98",
+    "ccBGSSSE001-Fish.esm:000C2F",
+    "ccBGSSSE001-Fish.esm:000C8C",
+    "ccBGSSSE001-Fish.esm:0009D3",
+    "ccBGSSSE001-Fish.esm:0009DB"
+   ]
+  },
+  {
+   "name": "College of Winterhold",
+   "kind": "story",
+   "source": "Skyrim",
+   "count": 24,
+   "journal": 23,
+   "types": {
+    "Mages Guild": 24
+   },
+   "opening": "Skyrim.esm:01F251",
+   "begins": "I've found the College of Winterhold, where mages study the arcane arts in Skyrim. If I want to learn more about magic, I'll need to join their ranks.",
+   "quests": [
+    "Skyrim.esm:01F251",
+    "Skyrim.esm:01F252",
+    "Skyrim.esm:01F253",
+    "Skyrim.esm:01F254",
+    "Skyrim.esm:01F255",
+    "Skyrim.esm:01F256",
+    "Skyrim.esm:01F257",
+    "Skyrim.esm:01F258",
+    "Skyrim.esm:0E0E04",
+    "Skyrim.esm:0C1E72",
+    "Skyrim.esm:0C0416",
+    "Skyrim.esm:0958B3",
+    "Skyrim.esm:06BC33",
+    "Skyrim.esm:06A086",
+    "Skyrim.esm:06A08D",
+    "Skyrim.esm:06A097",
+    "Skyrim.esm:06A119",
+    "Skyrim.esm:0C9A0E",
+    "Skyrim.esm:0A4E82",
+    "Skyrim.esm:0B3233",
+    "Skyrim.esm:099F27",
+    "Skyrim.esm:0CD987",
+    "Skyrim.esm:0D0755",
+    "Skyrim.esm:05A609"
+   ]
+  },
+  {
+   "name": "Companions",
+   "kind": "story",
+   "source": "Skyrim",
+   "count": 22,
+   "journal": 22,
+   "types": {
+    "Companions": 22
+   },
+   "opening": "Skyrim.esm:04B2D9",
+   "begins": "If I want to become a member of the Companions, I have to speak to their leader, Kodlak Whitemane, in Whiterun.",
+   "quests": [
+    "Skyrim.esm:04B2D9",
+    "Skyrim.esm:06E803",
+    "Skyrim.esm:06E804",
+    "Skyrim.esm:01CEF4",
+    "Skyrim.esm:01CEF5",
+    "Skyrim.esm:06E805",
+    "Skyrim.esm:01CEF6",
+    "Skyrim.esm:01CEEE",
+    "Skyrim.esm:025185",
+    "Skyrim.esm:025230",
+    "Skyrim.esm:025231",
+    "Skyrim.esm:02522F",
+    "Skyrim.esm:0C18E1",
+    "Skyrim.esm:025250",
+    "Skyrim.esm:025251",
+    "Skyrim.esm:025252",
+    "Skyrim.esm:09D6FC",
+    "Skyrim.esm:09D700",
+    "Skyrim.esm:0E3145",
+    "Skyrim.esm:0E3163",
+    "Skyrim.esm:0E3156",
+    "Skyrim.esm:052795"
+   ]
+  },
+  {
+   "name": "Adventurer's Start - An Alternate Perspective Addon",
+   "kind": "mod",
+   "source": "Adventurer's Start - An Alternate Perspective Addon",
+   "modid": "145599",
+   "plugins": [
+    "AP - Missile Additional Starts.esp"
+   ],
+   "count": 20,
+   "journal": 20,
+   "types": {
+    "Side Quest": 15,
+    "None": 5
+   },
+   "opening": "AP - Missile Additional Starts.esp:000018",
+   "begins": "I've been ambushed by a group of bandits. I need to fight my way out of this to survive.",
+   "quests": [
+    "AP - Missile Additional Starts.esp:000018",
+    "AP - Missile Additional Starts.esp:00001A",
+    "AP - Missile Additional Starts.esp:000021",
+    "AP - Missile Additional Starts.esp:00001B",
+    "AP - Missile Additional Starts.esp:00002D",
+    "AP - Missile Additional Starts.esp:000033",
+    "AP - Missile Additional Starts.esp:000027",
+    "AP - Missile Additional Starts.esp:000019",
+    "AP - Missile Additional Starts.esp:000086",
+    "AP - Missile Additional Starts.esp:00007B",
+    "AP - Missile Additional Starts.esp:00008D",
+    "AP - Missile Additional Starts.esp:000081",
+    "AP - Missile Additional Starts.esp:000073",
+    "AP - Missile Additional Starts.esp:00004C",
+    "AP - Missile Additional Starts.esp:000058",
+    "AP - Missile Additional Starts.esp:00005C",
+    "AP - Missile Additional Starts.esp:000048",
+    "AP - Missile Additional Starts.esp:000050",
+    "AP - Missile Additional Starts.esp:00003F",
+    "AP - Missile Additional Starts.esp:000054"
+   ]
+  },
+  {
+   "name": "New Beginnings - Alternate Perspective Extension",
+   "kind": "mod",
+   "source": "New Beginnings - Alternate Perspective Extension",
+   "modid": "57818",
+   "plugins": [
+    "Alternate Perspective -- New Beginnings.esp"
+   ],
+   "count": 20,
+   "journal": 20,
+   "types": {
+    "Main Quest": 20
+   },
+   "opening": "Alternate Perspective -- New Beginnings.esp:000838",
+   "begins": "I have finally arrived at the Eldergleam Sanctuary. It's even more beautiful than I had imagined! I knew coming here was the right choice. I think I'll stay here for a while before I travel on...",
+   "quests": [
+    "Alternate Perspective -- New Beginnings.esp:000800",
+    "Alternate Perspective -- New Beginnings.esp:00081C",
+    "Alternate Perspective -- New Beginnings.esp:00080A",
+    "Alternate Perspective -- New Beginnings.esp:000858",
+    "Alternate Perspective -- New Beginnings.esp:00083C",
+    "Alternate Perspective -- New Beginnings.esp:000802",
+    "Alternate Perspective -- New Beginnings.esp:00083A",
+    "Alternate Perspective -- New Beginnings.esp:000847",
+    "Alternate Perspective -- New Beginnings.esp:000842",
+    "Alternate Perspective -- New Beginnings.esp:00082B",
+    "Alternate Perspective -- New Beginnings.esp:000838",
+    "Alternate Perspective -- New Beginnings.esp:000828",
+    "Alternate Perspective -- New Beginnings.esp:000840",
+    "Alternate Perspective -- New Beginnings.esp:00083E",
+    "Alternate Perspective -- New Beginnings.esp:000835",
+    "Alternate Perspective -- New Beginnings.esp:000816",
+    "Alternate Perspective -- New Beginnings.esp:000829",
+    "Alternate Perspective -- New Beginnings.esp:000804",
+    "Alternate Perspective -- New Beginnings.esp:00081F",
+    "Alternate Perspective -- New Beginnings.esp:000820"
+   ]
+  },
+  {
+   "name": "Wyrmstooth",
+   "kind": "mod",
+   "source": "Wyrmstooth",
+   "modid": "45565",
+   "plugins": [
+    "Wyrmstooth.esp"
+   ],
+   "count": 20,
+   "journal": 15,
+   "types": {
+    "Side Quest": 14,
+    "Misc": 6
+   },
+   "opening": "Wyrmstooth.esp:022528",
+   "begins": "An imperial courier named Theodyn Bienne has requested I speak to Lurius Liore at the Bannered Mare in Whiterun as soon as possible.",
+   "quests": [
+    "Wyrmstooth.esp:3A1467",
+    "Wyrmstooth.esp:028F01",
+    "Wyrmstooth.esp:46DA2A",
+    "Wyrmstooth.esp:4B9DEE",
+    "Wyrmstooth.esp:4B9DED",
+    "Wyrmstooth.esp:4B9DF0",
+    "Wyrmstooth.esp:4B9DEF",
+    "Wyrmstooth.esp:3A1469",
+    "Wyrmstooth.esp:022528",
+    "Wyrmstooth.esp:3A146A",
+    "Wyrmstooth.esp:3943A0",
+    "Wyrmstooth.esp:C92734",
+    "Wyrmstooth.esp:28D0B5",
+    "Wyrmstooth.esp:48F992",
+    "Wyrmstooth.esp:3A1468",
+    "Wyrmstooth.esp:B5DA18",
+    "Wyrmstooth.esp:C651DA",
+    "Wyrmstooth.esp:2F1A74",
+    "Wyrmstooth.esp:2E49AF",
+    "Wyrmstooth.esp:3920D5"
+   ]
+  },
+  {
+   "name": "Main Quest",
+   "kind": "story",
+   "source": "Skyrim",
+   "count": 19,
+   "journal": 19,
+   "types": {
+    "Main Quest": 19
+   },
+   "opening": "Skyrim.esm:03372B",
+   "begins": "I have been captured by the Empire and sentenced to death alongside the Stormcloak rebels. We were taken to Helgen, but before I could be executed a dragon appeared and attacked the town. I need to find some way to escape.",
+   "quests": [
+    "Skyrim.esm:03372B",
+    "Skyrim.esm:04E50D",
+    "Skyrim.esm:0D0800",
+    "Skyrim.esm:02610C",
+    "Skyrim.esm:0242BA",
+    "Skyrim.esm:0713DC",
+    "Skyrim.esm:032926",
+    "Skyrim.esm:035D5F",
+    "Skyrim.esm:036191",
+    "Skyrim.esm:036192",
+    "Skyrim.esm:02D515",
+    "Skyrim.esm:02D516",
+    "Skyrim.esm:036193",
+    "Skyrim.esm:044C56",
+    "Skyrim.esm:045923",
+    "Skyrim.esm:046EF0",
+    "Skyrim.esm:046EF1",
+    "Skyrim.esm:046EF2",
+    "Skyrim.esm:03FA16"
+   ]
+  },
+  {
+   "name": "Civil War",
+   "kind": "story",
+   "source": "Skyrim",
+   "count": 17,
+   "journal": 11,
+   "types": {
+    "Civil War": 17
+   },
+   "opening": "Skyrim.esm:0D517A",
+   "begins": "In order to prove myself to Legate Rikke, I am to clear out the bandits living at Fort Hraggstad.",
+   "quests": [
+    "Skyrim.esm:0D517A",
+    "Skyrim.esm:0E2D29",
+    "Skyrim.esm:02D75C",
+    "Skyrim.esm:02610B",
+    "Skyrim.esm:0D661C",
+    "Skyrim.esm:026F45",
+    "Skyrim.esm:087C21",
+    "Skyrim.esm:083042",
+    "Skyrim.esm:03BCC4",
+    "Skyrim.esm:035A23",
+    "Skyrim.esm:0504F0",
+    "Skyrim.esm:029940",
+    "Skyrim.esm:02B272",
+    "Skyrim.esm:01FA52",
+    "Skyrim.esm:04E857",
+    "Skyrim.esm:02FF95",
+    "Skyrim.esm:096E71"
+   ]
+  },
+  {
+   "name": "Meridia's Order ESMIFIED",
+   "kind": "mod",
+   "source": "Meridia's Order ESMIFIED",
+   "modid": "102584",
+   "plugins": [
+    "Meridia.esp"
+   ],
+   "count": 17,
+   "journal": 17,
+   "types": {
+    "None": 13,
+    "Daedric": 4
+   },
+   "opening": "Meridia.esp:00154A",
+   "begins": "I have been approached by Paladin Marith of Meridia's Order. Her leader, High Priestess Alara wishes to speak with me.",
+   "quests": [
+    "Meridia.esp:00154A",
+    "Meridia.esp:003B23",
+    "Meridia.esp:0046DA",
+    "Meridia.esp:00816C",
+    "Meridia.esp:0092EE",
+    "Meridia.esp:00BC5D",
+    "Meridia.esp:007CFC",
+    "Meridia.esp:0103B4",
+    "Meridia.esp:019A81",
+    "Meridia.esp:019A82",
+    "Meridia.esp:01ACCF",
+    "Meridia.esp:01F41F",
+    "Meridia.esp:02B1F6",
+    "Meridia.esp:02A183",
+    "Meridia.esp:02A15E",
+    "Meridia.esp:02C7C9",
+    "Meridia.esp:030946"
+   ]
+  },
+  {
+   "name": "More to Say - Main",
+   "kind": "mod",
+   "source": "More to Say - Main",
+   "modid": "22622",
+   "plugins": [
+    "moretodo.esp",
+    "moretosayriverwood.esp",
+    "moretosaywinterhold.esp",
+    "secretofrorikstead.esp"
+   ],
+   "count": 16,
+   "journal": 4,
+   "types": {
+    "Misc": 15,
+    "None": 1
+   },
+   "opening": "moretosayriverwood.esp:000800",
+   "begins": "; Hilde admonished",
+   "quests": [
+    "moretodo.esp:000818",
+    "moretodo.esp:000999",
+    "moretodo.esp:000815",
+    "moretodo.esp:000836",
+    "moretodo.esp:00091B",
+    "moretodo.esp:000927",
+    "moretodo.esp:000987",
+    "moretodo.esp:0008E1",
+    "moretosaywinterhold.esp:000800",
+    "moretosayriverwood.esp:000800",
+    "moretodo.esp:000EEA",
+    "moretosayriverwood.esp:000F02",
+    "secretofrorikstead.esp:000897",
+    "moretodo.esp:000803",
+    "moretodo.esp:000B05",
+    "moretodo.esp:000BEE"
+   ]
+  },
+  {
+   "name": "Capital Windhelm Expansion",
+   "kind": "mod",
+   "source": "Capital Windhelm Expansion",
+   "modid": "42990",
+   "plugins": [
+    "WindhelmSSE.esp"
+   ],
+   "count": 13,
+   "journal": 13,
+   "types": {
+    "Side Quest": 7,
+    "Misc": 6
+   },
+   "opening": "WindhelmSSE.esp:320702",
+   "begins": "Wilhelm has asked me to deliver a purchase agreement to Higil who lives in the Upper Valunstrad, west of the Palace. I can place the document on his desk if he is not at home.",
+   "quests": [
+    "WindhelmSSE.esp:3EC170",
+    "WindhelmSSE.esp:2C495C",
+    "WindhelmSSE.esp:320702",
+    "WindhelmSSE.esp:29178E",
+    "WindhelmSSE.esp:25E704",
+    "WindhelmSSE.esp:24F30A",
+    "WindhelmSSE.esp:24F338",
+    "WindhelmSSE.esp:1F355A",
+    "WindhelmSSE.esp:1066C3",
+    "WindhelmSSE.esp:1EE2E4",
+    "WindhelmSSE.esp:1066C4",
+    "WindhelmSSE.esp:2CEC4D",
+    "WindhelmSSE.esp:2DDFF3"
+   ]
+  },
+  {
+   "name": "Gore - A Companion Mod",
+   "kind": "mod",
+   "source": "Gore - A Companion Mod",
+   "modid": "85298",
+   "plugins": [
+    "GORE.esp"
+   ],
+   "count": 12,
+   "journal": 12,
+   "types": {
+    "Side Quest": 11,
+    "None": 1
+   },
+   "opening": "GORE.esp:10A083",
+   "begins": "I should speak to Gore about upgrading his personal equipment.",
+   "quests": [
+    "GORE.esp:10A083",
+    "GORE.esp:6EA61E",
+    "GORE.esp:3E8DC9",
+    "GORE.esp:1517F2",
+    "GORE.esp:AFF592",
+    "GORE.esp:2EADD8",
+    "GORE.esp:7752FD",
+    "GORE.esp:6245B4",
+    "GORE.esp:066720",
+    "GORE.esp:6738F7",
+    "GORE.esp:5A610A",
+    "GORE.esp:89E472"
+   ]
+  },
+  {
+   "name": "Katana - Journey in the Shadows",
+   "kind": "mod",
+   "source": "Katana - Journey in the Shadows",
+   "modid": "69622",
+   "plugins": [
+    "Katana.esp"
+   ],
+   "count": 12,
+   "journal": 8,
+   "types": {
+    "Side Quest": 6,
+    "Misc": 4,
+    "None": 2
+   },
+   "opening": "Katana.esp:E02209",
+   "begins": "Megara mentioned a carrot at Chillfurrow Farm. I wonder what's so special about it. I suppose I should find out.",
+   "quests": [
+    "Katana.esp:E02209",
+    "Katana.esp:B74A58",
+    "Katana.esp:00AA04",
+    "Katana.esp:617D75",
+    "Katana.esp:8E1B19",
+    "Katana.esp:BEE373",
+    "Katana.esp:1AF0EA",
+    "Katana.esp:8BB421",
+    "Katana.esp:A883AD",
+    "Katana.esp:E39DE4",
+    "Katana.esp:C5896B",
+    "Katana.esp:8BB420"
+   ]
+  },
+  {
+   "name": "Penitus Oculatus",
+   "kind": "mod",
+   "source": "Penitus Oculatus",
+   "modid": "21061",
+   "plugins": [
+    "Penitus_Oculatus.esp"
+   ],
+   "count": 11,
+   "journal": 11,
+   "types": {
+    "Dark Brotherhood": 11
+   },
+   "opening": "Penitus_Oculatus.esp:0012D1",
+   "begins": "I've joined the Penitus Oculatus, The Empire's security and law enforcers, as well the Emperor's bodyguards. I should speak to Commander Maro for assignments.",
+   "quests": [
+    "Penitus_Oculatus.esp:0012D1",
+    "Penitus_Oculatus.esp:00A9C4",
+    "Penitus_Oculatus.esp:004E19",
+    "Penitus_Oculatus.esp:008968",
+    "Penitus_Oculatus.esp:00CA4B",
+    "Penitus_Oculatus.esp:00DFE9",
+    "Penitus_Oculatus.esp:003884",
+    "Penitus_Oculatus.esp:01B2C2",
+    "Penitus_Oculatus.esp:01B2CB",
+    "Penitus_Oculatus.esp:01BD9F",
+    "Penitus_Oculatus.esp:01CDD1"
+   ]
+  },
+  {
+   "name": "Journey to Baan Malur and Morrowind",
+   "kind": "mod",
+   "source": "Journey to Baan Malur and Morrowind",
+   "modid": "114518",
+   "plugins": [
+    "Journey to Baan Malur.esp"
+   ],
+   "count": 10,
+   "journal": 7,
+   "types": {
+    "Side Quest": 5,
+    "Misc": 3,
+    "Daedric": 1,
+    "None": 1
+   },
+   "opening": "Journey to Baan Malur.esp:2B52A7",
+   "begins": "finished quest",
+   "quests": [
+    "Journey to Baan Malur.esp:2B52A7",
+    "Journey to Baan Malur.esp:03DD9D",
+    "Journey to Baan Malur.esp:1A7730",
+    "Journey to Baan Malur.esp:10D7F7",
+    "Journey to Baan Malur.esp:20149E",
+    "Journey to Baan Malur.esp:28C8ED",
+    "Journey to Baan Malur.esp:1240DA",
+    "Journey to Baan Malur.esp:136F43",
+    "Journey to Baan Malur.esp:0BA420",
+    "Journey to Baan Malur.esp:3179BE"
+   ]
+  },
+  {
+   "name": "Remiel-Custom Voiced Follower",
+   "kind": "mod",
+   "source": "Remiel-Custom Voiced Follower",
+   "modid": "51874",
+   "plugins": [
+    "HLIORemi.esp"
+   ],
+   "count": 10,
+   "journal": 10,
+   "types": {
+    "Side Quest": 9,
+    "Misc": 1
+   },
+   "opening": "HLIORemi.esp:46FA55",
+   "begins": "I was attacked by an assassin. I should investigate the body for any clues as to why.",
+   "quests": [
+    "HLIORemi.esp:62E259",
+    "HLIORemi.esp:6A304E",
+    "HLIORemi.esp:59B47F",
+    "HLIORemi.esp:46FA55",
+    "HLIORemi.esp:18BBC4",
+    "HLIORemi.esp:22DCD3",
+    "HLIORemi.esp:8486EB",
+    "HLIORemi.esp:237EE7",
+    "HLIORemi.esp:08E59F",
+    "HLIORemi.esp:0E4852"
+   ]
+  },
+  {
+   "name": "ACDB - Additional Contracts for the Dark Brotherhood",
+   "kind": "mod",
+   "source": "ACDB - Additional Contracts for the Dark Brotherhood",
+   "modid": "59211",
+   "plugins": [
+    "Additional Contracts For the Dark Brotherhood.esp"
+   ],
+   "count": 9,
+   "journal": 9,
+   "types": {
+    "Dark Brotherhood": 9
+   },
+   "opening": "Additional Contracts For the Dark Brotherhood.esp:000822",
+   "begins": "I have accepted an additional contract to kill Braith in Whiterun.",
+   "quests": [
+    "Additional Contracts For the Dark Brotherhood.esp:000822",
+    "Additional Contracts For the Dark Brotherhood.esp:000FE8",
+    "Additional Contracts For the Dark Brotherhood.esp:000E51",
+    "Additional Contracts For the Dark Brotherhood.esp:000DCA",
+    "Additional Contracts For the Dark Brotherhood.esp:00081B",
+    "Additional Contracts For the Dark Brotherhood.esp:000858",
+    "Additional Contracts For the Dark Brotherhood.esp:000E3C",
+    "Additional Contracts For the Dark Brotherhood.esp:00082B",
+    "Additional Contracts For the Dark Brotherhood.esp:000FDA"
+   ]
+  },
+  {
+   "name": "College of Winterhold - Quest Expansion",
+   "kind": "mod",
+   "source": "College of Winterhold - Quest Expansion",
+   "modid": "66666",
+   "plugins": [
+    "College Of Winterhold - Quest Expansion.esp"
+   ],
+   "count": 8,
+   "journal": 8,
+   "types": {
+    "Mages Guild": 8
+   },
+   "opening": "College Of Winterhold - Quest Expansion.esp:000801",
+   "begins": "After learning the Waterbreathing spell from Tolfdir, I have been instructed to talk to Arniel Gane.",
+   "quests": [
+    "College Of Winterhold - Quest Expansion.esp:000801",
+    "College Of Winterhold - Quest Expansion.esp:00081D",
+    "College Of Winterhold - Quest Expansion.esp:00086F",
+    "College Of Winterhold - Quest Expansion.esp:000873",
+    "College Of Winterhold - Quest Expansion.esp:000871",
+    "College Of Winterhold - Quest Expansion.esp:000872",
+    "College Of Winterhold - Quest Expansion.esp:000870",
+    "College Of Winterhold - Quest Expansion.esp:00086E"
+   ]
+  },
+  {
+   "name": "Rob's Bug Fixes - Capital Whiterun Expansion",
+   "kind": "mod",
+   "source": "Rob's Bug Fixes - Capital Whiterun Expansion",
+   "modid": "63355",
+   "plugins": [
+    "SurWR.esp"
+   ],
+   "count": 8,
+   "journal": 8,
+   "types": {
+    "None": 5,
+    "Side Quest": 3
+   },
+   "opening": "SurWR.esp:09A75A",
+   "begins": "I've bought the deed to Bluesky Hall in the town of Whiterun, and all accompanying goods. The hall is located in Whiterun, in the city district behind the Hall of the Dead. I should probably pay my new property a visit.",
+   "quests": [
+    "SurWR.esp:09A75A",
+    "SurWR.esp:1DFD0B",
+    "SurWR.esp:0C8496",
+    "SurWR.esp:37116B",
+    "SurWR.esp:2ECDA4",
+    "SurWR.esp:0D2AD7",
+    "SurWR.esp:31ABC1",
+    "SurWR.esp:3436A3"
+   ]
+  },
+  {
+   "name": "The Gray Cowl of Nocturnal - 10th anniversary",
+   "kind": "mod",
+   "source": "The Gray Cowl of Nocturnal - 10th anniversary",
+   "modid": "141327",
+   "plugins": [
+    "Gray Fox Cowl.esm"
+   ],
+   "count": 8,
+   "journal": 7,
+   "types": {
+    "Side Quest": 6,
+    "Misc": 1,
+    "Daedric": 1
+   },
+   "opening": "Gray Fox Cowl.esm:001E61",
+   "begins": "I had a strange vision in my mind. Also I know where to go now.",
+   "quests": [
+    "Gray Fox Cowl.esm:0026F4",
+    "Gray Fox Cowl.esm:01E072",
+    "Gray Fox Cowl.esm:01F56B",
+    "Gray Fox Cowl.esm:01CFA7",
+    "Gray Fox Cowl.esm:03039F",
+    "Gray Fox Cowl.esm:050159",
+    "Gray Fox Cowl.esm:001E61",
+    "Gray Fox Cowl.esm:026AE8"
+   ]
+  },
+  {
+   "name": "Dragonborn",
+   "kind": "story",
+   "source": "Skyrim",
+   "count": 7,
+   "journal": 7,
+   "types": {
+    "Dragonborn": 7
+   },
+   "opening": "Dragonborn.esm:017F8E",
+   "begins": "I've been attacked by a group of cultists. I need to see if they have any evidence of what prompted this assault.",
+   "quests": [
+    "Dragonborn.esm:017F8E",
+    "Dragonborn.esm:017F8F",
+    "Dragonborn.esm:017F90",
+    "Dragonborn.esm:035440",
+    "Dragonborn.esm:016E1F",
+    "Dragonborn.esm:0179DE",
+    "Dragonborn.esm:0179D7"
+   ]
+  },
+  {
+   "name": "Undeath Remastered - CLEANED ESMIFIED",
+   "kind": "mod",
+   "source": "Undeath Remastered - CLEANED ESMIFIED",
+   "modid": "6180",
+   "plugins": [
+    "Undeath.esp"
+   ],
+   "count": 7,
+   "journal": 7,
+   "types": {
+    "Dark Brotherhood": 7
+   },
+   "opening": "Undeath.esp:125089",
+   "begins": "I have found and read the Black Book called \"Whispers of the Veil\" deep within Scourg Barrow, and found myself in Hermaeus Mora's realm of Apocrypha. The forbidden knowledge hidden here may be the secrets of the ritual the necromancer Antioch was seeking. I should press on to uncover it, or read the book again to escape.",
+   "quests": [
+    "Undeath.esp:125089",
+    "Undeath.esp:019EC8",
+    "Undeath.esp:1E225A",
+    "Undeath.esp:26C339",
+    "Undeath.esp:26C344",
+    "Undeath.esp:26C345",
+    "Undeath.esp:2BDBBF"
+   ]
+  },
+  {
+   "name": "INIGO",
+   "kind": "mod",
+   "source": "INIGO",
+   "modid": "1461",
+   "plugins": [
+    "Inigo.esp"
+   ],
+   "count": 6,
+   "journal": 5,
+   "types": {
+    "None": 4,
+    "Side Quest": 2
+   },
+   "opening": "Inigo.esp:0695C5",
+   "begins": "Inigo has been suffering from strange and painful visions. He believes that Snowpoint Beacon is near the source of these visions. We are going there to investigate.",
+   "quests": [
+    "Inigo.esp:0695C5",
+    "Inigo.esp:0632D2",
+    "Inigo.esp:095D76",
+    "Inigo.esp:0BFBE8",
+    "Inigo.esp:06CB85",
+    "Inigo.esp:0C0C2E"
+   ]
+  },
+  {
+   "name": "Listen - Dark Brotherhood Radiant Quests",
+   "kind": "mod",
+   "source": "Listen - Dark Brotherhood Radiant Quests",
+   "modid": "59659",
+   "plugins": [
+    "Listen.esp"
+   ],
+   "count": 6,
+   "journal": 6,
+   "types": {
+    "Dark Brotherhood": 6
+   },
+   "opening": "Listen.esp:000808",
+   "begins": "Startup stage",
+   "quests": [
+    "Listen.esp:000808",
+    "Listen.esp:000828",
+    "Listen.esp:00081A",
+    "Listen.esp:000820",
+    "Listen.esp:000802",
+    "Listen.esp:000819"
+   ]
+  },
+  {
+   "name": "The Gift Of Saturalia",
+   "kind": "mod",
+   "source": "The Gift Of Saturalia",
+   "modid": "105697",
+   "plugins": [
+    "TheGiftofSaturalia.esp"
+   ],
+   "count": 6,
+   "journal": 6,
+   "types": {
+    "Side Quest": 6
+   },
+   "opening": "TheGiftofSaturalia.esp:000D61",
+   "begins": "I've agreed to help Niklas the Trader with his Saturalia celebrations. He has five tasks for me to help people around Skyrim.",
+   "quests": [
+    "TheGiftofSaturalia.esp:000963",
+    "TheGiftofSaturalia.esp:0009A4",
+    "TheGiftofSaturalia.esp:0008D3",
+    "TheGiftofSaturalia.esp:0009D2",
+    "TheGiftofSaturalia.esp:0008AA",
+    "TheGiftofSaturalia.esp:000D61"
+   ]
+  },
+  {
+   "name": "Belethor's Sister - Quest",
+   "kind": "mod",
+   "source": "Belethor's Sister - Quest",
+   "modid": "92381",
+   "plugins": [
+    "Belethor's Sister.esp"
+   ],
+   "count": 5,
+   "journal": 5,
+   "types": {
+    "Side Quest": 4,
+    "None": 1
+   },
+   "opening": "Belethor's Sister.esp:000804",
+   "begins": "Belethor told me he sold his sister <alias=waifu> for money and has asked me to get her back. Belethor told me he sold <alias=waifu> to Ysolda.",
+   "quests": [
+    "Belethor's Sister.esp:000804",
+    "Belethor's Sister.esp:00085E",
+    "Belethor's Sister.esp:000947",
+    "Belethor's Sister.esp:0008E6",
+    "Belethor's Sister.esp:0008E0"
+   ]
+  },
+  {
+   "name": "Serana Dialogue Expansion",
+   "kind": "mod",
+   "source": "Serana Dialogue Expansion",
+   "modid": "121920",
+   "plugins": [
+    "SeranaDialogueExpansion.esp"
+   ],
+   "count": 5,
+   "journal": 4,
+   "types": {
+    "None": 3,
+    "Side Quest": 1,
+    "Misc": 1
+   },
+   "opening": "SeranaDialogueExpansion.esp:000112",
+   "begins": "Meeko",
+   "quests": [
+    "SeranaDialogueExpansion.esp:000112",
+    "SeranaDialogueExpansion.esp:000612",
+    "SeranaDialogueExpansion.esp:000519",
+    "SeranaDialogueExpansion.esp:0000C8",
+    "SeranaDialogueExpansion.esp:00078F"
+   ]
+  },
+  {
+   "name": "Serana Dialogue Expansion - Romance ESL",
+   "kind": "mod",
+   "source": "Serana Dialogue Expansion - Romance ESL",
+   "modid": "121920",
+   "plugins": [
+    "SeranaDialogueExpansion - Romance.esp"
+   ],
+   "count": 5,
+   "journal": 5,
+   "types": {
+    "Side Quest": 5
+   },
+   "opening": "SeranaDialogueExpansion - Romance.esp:000179",
+   "begins": "I wanted to take Serana on a dance, but I made her uncomfortable. I should wait until tomorrow and apologize.",
+   "quests": [
+    "SeranaDialogueExpansion - Romance.esp:000001",
+    "SeranaDialogueExpansion - Romance.esp:00000D",
+    "SeranaDialogueExpansion - Romance.esp:000197",
+    "SeranaDialogueExpansion - Romance.esp:000198",
+    "SeranaDialogueExpansion - Romance.esp:000179"
+   ]
+  },
+  {
+   "name": "Skyrim Extended Cut - Saints and Seducers",
+   "kind": "mod",
+   "source": "Skyrim Extended Cut - Saints and Seducers",
+   "modid": "72772",
+   "plugins": [
+    "Skyrim Extended Cut - Saints and Seducers.esp"
+   ],
+   "count": 5,
+   "journal": 4,
+   "types": {
+    "Side Quest": 2,
+    "Daedric": 2,
+    "Misc": 1
+   },
+   "opening": "Skyrim Extended Cut - Saints and Seducers.esp:099D19",
+   "begins": "Staada told me about a riot in the Shivering Isles' prison. She wants me to travel with her to the Asylum and help fight off the prisoners, before the Root does any more damage to Nirn.",
+   "quests": [
+    "Skyrim Extended Cut - Saints and Seducers.esp:099D1B",
+    "Skyrim Extended Cut - Saints and Seducers.esp:099D18",
+    "Skyrim Extended Cut - Saints and Seducers.esp:099D19",
+    "Skyrim Extended Cut - Saints and Seducers.esp:09EF5F",
+    "Skyrim Extended Cut - Saints and Seducers.esp:099D1A"
+   ]
+  },
+  {
+   "name": "The Tools of Kagrenac ESMIFIED",
+   "kind": "mod",
+   "source": "The Tools of Kagrenac ESMIFIED",
+   "modid": "14168",
+   "plugins": [
+    "Tools of Kagrenac.esp"
+   ],
+   "count": 5,
+   "journal": 1,
+   "types": {
+    "Misc": 4,
+    "Side Quest": 1
+   },
+   "opening": "Tools of Kagrenac.esp:21F221",
+   "begins": "I've received an anonymous note from the courier. I should read it and see what it's regarding.",
+   "quests": [
+    "Tools of Kagrenac.esp:21F230",
+    "Tools of Kagrenac.esp:21F231",
+    "Tools of Kagrenac.esp:21F221",
+    "Tools of Kagrenac.esp:71C218",
+    "Tools of Kagrenac.esp:24CBF6"
+   ]
+  },
+  {
+   "name": "Lucien - Immersive Fully Voiced Male Follower",
+   "kind": "mod",
+   "source": "Lucien - Immersive Fully Voiced Male Follower",
+   "modid": "20035",
+   "plugins": [
+    "Lucien.esp"
+   ],
+   "count": 4,
+   "journal": 3,
+   "types": {
+    "None": 2,
+    "Misc": 2
+   },
+   "opening": "Lucien.esp:62424C",
+   "begins": "Lucien's resonant sphere has started making a strange noise, which Lucien tells me is a warning of some kind indicating that Dumzbthar is under attack. We should go there as quickly as possible.",
+   "quests": [
+    "Lucien.esp:62424C",
+    "Lucien.esp:4E9CB9",
+    "Lucien.esp:00AA3A",
+    "Lucien.esp:2B13ED"
+   ]
+  },
+  {
+   "name": "Requiem - The Roleplaying Overhaul (No Messages ESLIFIED)",
+   "kind": "mod",
+   "source": "Requiem - The Roleplaying Overhaul (No Messages ESLIFIED)",
+   "modid": "60888",
+   "plugins": [
+    "Requiem.esp"
+   ],
+   "count": 4,
+   "journal": 4,
+   "types": {
+    "None": 3,
+    "Side Quest": 1
+   },
+   "opening": "Requiem.esp:AD383D",
+   "begins": "I have discovered the fragment of a poem. That seems interesting. Perhaps I should explore at the Bard's College to see what this is all about.",
+   "quests": [
+    "Requiem.esp:AD383D",
+    "Requiem.esp:AD3AF6",
+    "Requiem.esp:5DAA49",
+    "Requiem.esp:63149E"
+   ]
+  },
+  {
+   "name": "Siege at Icemoth",
+   "kind": "mod",
+   "source": "Siege at Icemoth",
+   "modid": "109541",
+   "plugins": [
+    "Siege at Icemoth.esp"
+   ],
+   "count": 4,
+   "journal": 3,
+   "types": {
+    "Side Quest": 3,
+    "Misc": 1
+   },
+   "opening": "Siege at Icemoth.esp:5A079F",
+   "begins": "While wandering the coast, I found the corpse of a mercenary by a beached sailboat. In his clutches I found a journal that mentioned an old abandoned Imperial fort known as \"Fort Icemoth\", far north of Jehanna just over the horizon. The journal also mentions a large presence of undead. I should investigate.",
+   "quests": [
+    "Siege at Icemoth.esp:59F97E",
+    "Siege at Icemoth.esp:936795",
+    "Siege at Icemoth.esp:5A079F",
+    "Siege at Icemoth.esp:097057"
+   ]
+  },
+  {
+   "name": "The Frozen Heart - Quest Mod",
+   "kind": "mod",
+   "source": "The Frozen Heart - Quest Mod",
+   "modid": "159911",
+   "plugins": [
+    "ksws07_quest.esm"
+   ],
+   "count": 4,
+   "journal": 4,
+   "types": {
+    "Side Quest": 4
+   },
+   "opening": "ksws07_quest.esm:002086",
+   "begins": "I purchased a strange Snow Elf mirror from Belethor's General Goods. I should investigate the nature of this mirror.",
+   "quests": [
+    "ksws07_quest.esm:002444",
+    "ksws07_quest.esm:000BBA",
+    "ksws07_quest.esm:002086",
+    "ksws07_quest.esm:0024EF"
+   ]
+  },
+  {
+   "name": "The Welkynar Knight - Quest",
+   "kind": "mod",
+   "source": "The Welkynar Knight - Quest",
+   "modid": "89510",
+   "plugins": [
+    "ksws04_quest.esp"
+   ],
+   "count": 4,
+   "journal": 3,
+   "types": {
+    "Side Quest": 3,
+    "Misc": 1
+   },
+   "opening": "ksws04_quest.esp:000A43",
+   "begins": "I received a mysterious note requesting a secret meeting at the Bannered Mare in Whiterun.",
+   "quests": [
+    "ksws04_quest.esp:000B86",
+    "ksws04_quest.esp:000B88",
+    "ksws04_quest.esp:000B6C",
+    "ksws04_quest.esp:000A43"
+   ]
+  },
+  {
+   "name": "(BEST EVIL FOLLOWER) Follower Dialogue Expansion - Fura Bloodmouth",
+   "kind": "mod",
+   "source": "(BEST EVIL FOLLOWER) Follower Dialogue Expansion - Fura Bloodmouth",
+   "modid": "165839",
+   "plugins": [
+    "FDE Fura.esp"
+   ],
+   "count": 3,
+   "journal": 3,
+   "types": {
+    "None": 2,
+    "Dawnguard": 1
+   },
+   "opening": "FDE Fura.esp:000933",
+   "begins": "I will accompany Fura Bloodmouth to Solitude and meet her mother.",
+   "quests": [
+    "FDE Fura.esp:000933",
+    "FDE Fura.esp:000B6B",
+    "FDE Fura.esp:0009EB"
+   ]
+  },
+  {
+   "name": "Fists of Fury - Skyrim",
+   "kind": "mod",
+   "source": "Fists of Fury - Skyrim",
+   "modid": "73835",
+   "plugins": [
+    "Fists of Fury - Skyrim.esp"
+   ],
+   "count": 3,
+   "journal": 3,
+   "types": {
+    "Side Quest": 3
+   },
+   "opening": "Fists of Fury - Skyrim.esp:149C95",
+   "begins": "I've talked to Falion about the brawling tournament. He told me to go to the Summoning Stones outside of Morthal.",
+   "quests": [
+    "Fists of Fury - Skyrim.esp:149C95",
+    "Fists of Fury - Skyrim.esp:04C991",
+    "Fists of Fury - Skyrim.esp:1D7962"
+   ]
+  },
+  {
+   "name": "Gravewind - ESMIFIED",
+   "kind": "mod",
+   "source": "Gravewind - ESMIFIED",
+   "modid": "129582",
+   "plugins": [
+    "FalkreathShades.esp"
+   ],
+   "count": 3,
+   "journal": 3,
+   "types": {
+    "Side Quest": 3
+   },
+   "opening": "FalkreathShades.esp:4DCCF9",
+   "begins": "I touched a light left by Richter, letting Gravewind fall into the abyss and freeing the souls enthralled within. I have to escape before I disappear with the rest of the realm.",
+   "quests": [
+    "FalkreathShades.esp:4DCCF9",
+    "FalkreathShades.esp:4CD9DA",
+    "FalkreathShades.esp:4D2AF7"
+   ]
+  },
+  {
+   "name": "More to do in the Soul Cairn",
+   "kind": "mod",
+   "source": "More to do in the Soul Cairn",
+   "modid": "115962",
+   "plugins": [
+    "MoreToDoSoulCairn.esp"
+   ],
+   "count": 3,
+   "journal": 3,
+   "types": {
+    "Side Quest": 3
+   },
+   "opening": "MoreToDoSoulCairn.esp:000A00",
+   "begins": "A soul in the Soul Cairn wants me to get their soul gem back. I'm not so sure about who he is, but maybe I should help him.",
+   "quests": [
+    "MoreToDoSoulCairn.esp:0008F7",
+    "MoreToDoSoulCairn.esp:0009E7",
+    "MoreToDoSoulCairn.esp:000A00"
+   ]
+  },
+  {
+   "name": "Arena - Markarth Side Town",
+   "kind": "mod",
+   "source": "Arena - Markarth Side Town",
+   "modid": "114252",
+   "plugins": [
+    "Arena - Markarth Side.esp"
+   ],
+   "count": 2,
+   "journal": 2,
+   "types": {
+    "Side Quest": 2
+   },
+   "opening": "Arena - Markarth Side.esp:146378",
+   "begins": "I've met a strange Khajiit named Grit-dar in Markarth Side who has asked me to retrieve something for him from Morvunskar Crypts that resides near Windhelm.",
+   "quests": [
+    "Arena - Markarth Side.esp:146378",
+    "Arena - Markarth Side.esp:10E4AC"
+   ]
+  },
+  {
+   "name": "ccbgssse025-advdsgs",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccbgssse025-advdsgs.esm"
+   ],
+   "count": 2,
+   "journal": 0,
+   "types": {
+    "Misc": 2
+   },
+   "opening": "ccbgssse025-advdsgs.esm:0010C0",
+   "begins": "Free the Elytra Nymph",
+   "quests": [
+    "ccbgssse025-advdsgs.esm:0010C0",
+    "ccbgssse025-advdsgs.esm:0010C3"
+   ]
+  },
+  {
+   "name": "ccffbsse001-imperialdragon",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccffbsse001-imperialdragon.esl"
+   ],
+   "count": 2,
+   "journal": 2,
+   "types": {
+    "None": 1,
+    "Misc": 1
+   },
+   "opening": "ccffbsse001-imperialdragon.esl:00086B",
+   "begins": "Stormbear",
+   "quests": [
+    "ccffbsse001-imperialdragon.esl:00086B",
+    "ccffbsse001-imperialdragon.esl:000927"
+   ]
+  },
+  {
+   "name": "Follower Dialogue Expansion - Faralda",
+   "kind": "mod",
+   "source": "Follower Dialogue Expansion - Faralda",
+   "modid": "155510",
+   "plugins": [
+    "FDE Faralda.esp"
+   ],
+   "count": 2,
+   "journal": 2,
+   "types": {
+    "None": 2
+   },
+   "opening": "FDE Faralda.esp:00096A",
+   "begins": "Faralda, the Professor of Destruction School in the College of Winterhold, wants  me to bring a letter from her to Vekel the Man in the Ragged Flagon in Riften. He will help deliver it to her aunt Eilonwy.",
+   "quests": [
+    "FDE Faralda.esp:00096A",
+    "FDE Faralda.esp:000A40"
+   ]
+  },
+  {
+   "name": "Hunters Mark Animal Den on Map",
+   "kind": "mod",
+   "source": "Hunters Mark Animal Den on Map",
+   "modid": "128450",
+   "plugins": [
+    "Hunters Mark Animal Den on Map.esp"
+   ],
+   "count": 2,
+   "journal": 0,
+   "types": {
+    "Misc": 2
+   },
+   "opening": "Hunters Mark Animal Den on Map.esp:000800",
+   "begins": "Hunt down animals at <Alias=AnimalDenLocation>",
+   "quests": [
+    "Hunters Mark Animal Den on Map.esp:000800",
+    "Hunters Mark Animal Den on Map.esp:00081E"
+   ]
+  },
+  {
+   "name": "Miasma",
+   "kind": "mod",
+   "source": "Miasma",
+   "modid": "149879",
+   "plugins": [
+    "Miasma.esp"
+   ],
+   "count": 2,
+   "journal": 2,
+   "types": {
+    "Side Quest": 1,
+    "None": 1
+   },
+   "opening": "Miasma.esp:001E23",
+   "begins": "I met an Argonian called Haj-Xul at The Retching Netch in Raven Rock. He claims he is a member of the An-Xileel clan in Black Marsh and has hired me to assist him in capturing a criminal from House Telvanni who might have recently arrived in Solstheim.",
+   "quests": [
+    "Miasma.esp:001E23",
+    "Miasma.esp:001906"
+   ]
+  },
+  {
+   "name": "The Forgotten City",
+   "kind": "mod",
+   "source": "The Forgotten City",
+   "modid": "1179",
+   "plugins": [
+    "ForgottenCity.esp"
+   ],
+   "count": 2,
+   "journal": 2,
+   "types": {
+    "Side Quest": 2
+   },
+   "opening": "ForgottenCity.esp:012BB9",
+   "begins": "A courier tracked me down and gave me a letter. I should read it.",
+   "quests": [
+    "ForgottenCity.esp:012BB9",
+    "ForgottenCity.esp:05965B"
+   ]
+  },
+  {
+   "name": "A Daedra's Best Friend",
+   "kind": "daedric",
+   "source": "Skyrim",
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "Skyrim.esm:01BFC4",
+   "begins": "I ran in to a talking dog named Barbas who said he wanted my help. He's waiting outside Haemar's Shame.",
+   "quests": [
+    "Skyrim.esm:01BFC4"
+   ]
+  },
+  {
+   "name": "A Forlorn Hope - an addon for Seeking The Cure",
+   "kind": "mod",
+   "source": "A Forlorn Hope - an addon for Seeking The Cure",
+   "modid": "107939",
+   "plugins": [
+    "Forlorn Hope.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Side Quest": 1
+   },
+   "opening": "Forlorn Hope.esp:000802",
+   "begins": "I have received a letter from Falion describing a way to create \"daedric essence\". To do this I need to locate the Aetherium Forge first.",
+   "quests": [
+    "Forlorn Hope.esp:000802"
+   ]
+  },
+  {
+   "name": "A Night To Remember",
+   "kind": "daedric",
+   "source": "Skyrim",
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "Skyrim.esm:01BB9B",
+   "begins": "I have awoken in the Temple Of Dibella in Markarth. Sam and the staff he promised me have disappeared.",
+   "quests": [
+    "Skyrim.esm:01BB9B"
+   ]
+  },
+  {
+   "name": "After the Civil War - Siege Damage Repairs",
+   "kind": "mod",
+   "source": "After the Civil War - Siege Damage Repairs",
+   "modid": "20668",
+   "plugins": [
+    "CWRepairs.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Civil War": 1
+   },
+   "opening": "CWRepairs.esp:000803",
+   "begins": "It's time to rebuild and repairs to the damaged cities will soon begin. It won't be long until they are back to normal.",
+   "quests": [
+    "CWRepairs.esp:000803"
+   ]
+  },
+  {
+   "name": "Alternate Perspective",
+   "kind": "mod",
+   "source": "Alternate Perspective",
+   "modid": "50307",
+   "plugins": [
+    "AlternatePerspective.esp"
+   ],
+   "count": 1,
+   "journal": 0,
+   "types": {
+    "None": 1
+   },
+   "opening": "AlternatePerspective.esp:164217",
+   "begins": "Survive",
+   "quests": [
+    "AlternatePerspective.esp:164217"
+   ]
+  },
+  {
+   "name": "Bards College Excavation",
+   "kind": "mod",
+   "source": "Bards College Excavation",
+   "modid": "36950",
+   "plugins": [
+    "BardExcavation.esp"
+   ],
+   "count": 1,
+   "journal": 0,
+   "types": {
+    "Misc": 1
+   },
+   "opening": "BardExcavation.esp:00085E",
+   "begins": "Clear Dead Men's Respite.",
+   "quests": [
+    "BardExcavation.esp:00085E"
+   ]
+  },
+  {
+   "name": "Boethiah's Calling",
+   "kind": "daedric",
+   "source": "Skyrim",
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "Skyrim.esm:04D8D6",
+   "begins": "I am to lead someone to the Shrine of Boethiah, instruct them to touch the Pillar of Sacrifice, and once trapped by its magic, slay them. If I do this Boethiah will appear.",
+   "quests": [
+    "Skyrim.esm:04D8D6"
+   ]
+  },
+  {
+   "name": "Boethiah's Calling - Alternate Questline",
+   "kind": "mod",
+   "source": "Boethiah's Calling - Alternate Questline",
+   "modid": "121499",
+   "plugins": [
+    "BoethiahCalling_AlternativeQuest.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "BoethiahCalling_AlternativeQuest.esp:000800",
+   "begins": "I have agreed to help Rudin Filaro, a Dark Elf intent on visiting the Temple of Mara located in the mountains northeast of Kynesgrove. He has hired to escort him as the road is known to be dangerous.",
+   "quests": [
+    "BoethiahCalling_AlternativeQuest.esp:000800"
+   ]
+  },
+  {
+   "name": "Caught Red Handed - Quest Expansion",
+   "kind": "mod",
+   "source": "Caught Red Handed - Quest Expansion",
+   "modid": "65708",
+   "plugins": [
+    "Caught Red Handed - Quest Expansion.esp"
+   ],
+   "count": 1,
+   "journal": 0,
+   "types": {
+    "Misc": 1
+   },
+   "opening": "Caught Red Handed - Quest Expansion.esp:000802",
+   "begins": "Talk to Tythis",
+   "quests": [
+    "Caught Red Handed - Quest Expansion.esp:000802"
+   ]
+  },
+  {
+   "name": "CC Tundra Homestead - Tweaks and Enhancements",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "CC Tundra Homestead - Tweaks and Enhancements.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Side Quest": 1
+   },
+   "opening": "CC Tundra Homestead - Tweaks and Enhancements.esp:00000A",
+   "begins": "I have found a Thalmor Dossier mentioning Nazeem and Ahlam. Accourding to the Dossier, the couple are informants to the Thalmor, to spy on Whiterun and its Jarl. I should bring this information to the Jarl.",
+   "quests": [
+    "CC Tundra Homestead - Tweaks and Enhancements.esp:00000A"
+   ]
+  },
+  {
+   "name": "ccbgssse002-exoticarrows",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccbgssse002-exoticarrows.esl"
+   ],
+   "count": 1,
+   "journal": 0,
+   "types": {
+    "None": 1
+   },
+   "opening": "ccbgssse002-exoticarrows.esl:00081E",
+   "begins": "Read the Letter from Calcelmo",
+   "quests": [
+    "ccbgssse002-exoticarrows.esl:00081E"
+   ]
+  },
+  {
+   "name": "ccbgssse014-spellpack01",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccbgssse014-spellpack01.esl"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "ccbgssse014-spellpack01.esl:00083C",
+   "begins": "I've heard tales of a long-lost ancient library of spell tomes, rumored to be somewhere in the area of Winterhold.  I should explore the area and see what I can find.",
+   "quests": [
+    "ccbgssse014-spellpack01.esl:00083C"
+   ]
+  },
+  {
+   "name": "ccbgssse018-shadowrend",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccbgssse018-shadowrend.esl"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Misc": 1
+   },
+   "opening": "ccbgssse018-shadowrend.esl:00081C",
+   "begins": "An inner voice is telling me I must confront a darkness within myself. I am drawn toward a geyser pool in Eastmarch. Perhaps answers lie there.",
+   "quests": [
+    "ccbgssse018-shadowrend.esl:00081C"
+   ]
+  },
+  {
+   "name": "ccbgssse038-bowofshadows",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccbgssse038-bowofshadows.esl"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "ccbgssse038-bowofshadows.esl:00080E",
+   "begins": "With the death of King Torygg, it seems not even the Jarls are safe in Skyrim, and security comes at a premium. Given the need for capable warriors, I should speak with the steward and see if he has any work for me.",
+   "quests": [
+    "ccbgssse038-bowofshadows.esl:00080E"
+   ]
+  },
+  {
+   "name": "ccbgssse067-daedinv",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccbgssse067-daedinv.esm"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "ccbgssse067-daedinv.esm:06BFC1",
+   "begins": "I found the Oblivion Gate and defeated the leader of the Mythic Dawn, Vonos. It appears this was an elaborate ritual designed to deceive me, and killing Vonos was the final step. I have become an unwitting instrument of Mehrunes Dagon, and my actions have opened the Oblivion Gate.",
+   "quests": [
+    "ccbgssse067-daedinv.esm:06BFC1"
+   ]
+  },
+  {
+   "name": "cceejsse004-hall",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "cceejsse004-hall.esl"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Side Quest": 1
+   },
+   "opening": "cceejsse004-hall.esl:000C4F",
+   "begins": "Couriers often deliver notices to travelers across Skyrim. If I head to a major hold, perhaps I will receive information that may concern me.",
+   "quests": [
+    "cceejsse004-hall.esl:000C4F"
+   ]
+  },
+  {
+   "name": "cceejsse005-cave",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "cceejsse005-cave.esm"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "cceejsse005-cave.esm:0B7AED",
+   "begins": "I received a letter from a courier mentioning a banquet feast is happening at a large manor south of Frostflow Lighthouse. I arrived at the home and spoke to the waiter, who gave me a menu. The feast appears to be an elaborate trap to feed on a handful of noble guests. After finishing the guests and a surprise group of Dawnguard members, I should now speak to the waiter.",
+   "quests": [
+    "cceejsse005-cave.esm:0B7AED"
+   ]
+  },
+  {
+   "name": "cckrtsse001_altar",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "cckrtsse001_altar.esl"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Side Quest": 1
+   },
+   "opening": "cckrtsse001_altar.esl:000D63",
+   "begins": "In my travels, I've heard strange tales about hagravens performing rituals near Falkreath. I should head to the inn there and see what information I can turn up.",
+   "quests": [
+    "cckrtsse001_altar.esl:000D63"
+   ]
+  },
+  {
+   "name": "ccmtysse001-knightsofthenine",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccmtysse001-knightsofthenine.esl"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Side Quest": 1
+   },
+   "opening": "ccmtysse001-knightsofthenine.esl:00083C",
+   "begins": "I've discovered the whereabouts of a powerful artifact that the once belonged to the fabled Divine Crusader. I should try and reunite all the missing relics.",
+   "quests": [
+    "ccmtysse001-knightsofthenine.esl:00083C"
+   ]
+  },
+  {
+   "name": "ccrmssse001-necrohouse",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccrmssse001-necrohouse.esl"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "ccrmssse001-necrohouse.esl:000CC4",
+   "begins": "I've heard rumors of necromancer activity in one of the old abandoned forts. I should investigate to see what I can find.",
+   "quests": [
+    "ccrmssse001-necrohouse.esl:000CC4"
+   ]
+  },
+  {
+   "name": "ccvsvsse004-beafarmer",
+   "kind": "mod",
+   "source": "Creation Club",
+   "plugins": [
+    "ccvsvsse004-beafarmer.esl"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Side Quest": 1
+   },
+   "opening": "ccvsvsse004-beafarmer.esl:000D28",
+   "begins": "<Alias=FarmLocation> near Rorikstead is reportedly haunted by ghosts that harass travelers on the road. The Jarl of Whiterun Hold is offering the plantation itself as a reward for anyone who can lay the spirits to rest. I should head to <Alias=FarmLocation> to investigate.",
+   "quests": [
+    "ccvsvsse004-beafarmer.esl:000D28"
+   ]
+  },
+  {
+   "name": "Civil War Champions - Reduced Cut",
+   "kind": "mod",
+   "source": "Civil War Champions - Reduced Cut",
+   "modid": "94999",
+   "plugins": [
+    "Civil War Champions - Reduced Cut.esp"
+   ],
+   "count": 1,
+   "journal": 0,
+   "types": {
+    "Misc": 1
+   },
+   "opening": "Civil War Champions - Reduced Cut.esp:000800",
+   "begins": "Pick up champion armor from your commanding officer",
+   "quests": [
+    "Civil War Champions - Reduced Cut.esp:000800"
+   ]
+  },
+  {
+   "name": "Defeat the Dragon Cult",
+   "kind": "mod",
+   "source": "Defeat the Dragon Cult",
+   "modid": "86625",
+   "plugins": [
+    "Defeat the Dragon Cult.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Main Quest": 1
+   },
+   "opening": "Defeat the Dragon Cult.esp:000800",
+   "begins": "Esbern has noted the location of several Dragon Priests, whose loyalty to Alduin means they must be killed before I face Alduin, less they join their strength with his.",
+   "quests": [
+    "Defeat the Dragon Cult.esp:000800"
+   ]
+  },
+  {
+   "name": "Destroy the Acolyte Priests",
+   "kind": "mod",
+   "source": "Destroy the Acolyte Priests",
+   "modid": "145580",
+   "plugins": [
+    "Destroy the Acolyte Priests.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Dragonborn": 1
+   },
+   "opening": "Destroy the Acolyte Priests.esp:000800",
+   "begins": "<Alias.ShortName=Storn> has said that to ensure the land is completely cleansed of Miraak's influence, I should seek out and destroy his three Acolyte Priests, who are each sealed within different tombs around the island of Solstheim.",
+   "quests": [
+    "Destroy the Acolyte Priests.esp:000800"
+   ]
+  },
+  {
+   "name": "Discerning the Transmundane",
+   "kind": "daedric",
+   "source": "Skyrim",
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "Skyrim.esm:02D512",
+   "begins": "I've been given a book of bizarre ramblings about Elder Scrolls, written by Septimus Signus. He claims to have spent time at the Winterhold Arcanaeum.",
+   "quests": [
+    "Skyrim.esm:02D512"
+   ]
+  },
+  {
+   "name": "Follower Dialogue Expansion - Erik the Slayer",
+   "kind": "mod",
+   "source": "Follower Dialogue Expansion - Erik the Slayer",
+   "modid": "116719",
+   "plugins": [
+    "FDE Erik.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Companions": 1
+   },
+   "opening": "FDE Erik.esp:0008E8",
+   "begins": "Erik and I will clear <Alias=Location> as his trial to join the Companions.",
+   "quests": [
+    "FDE Erik.esp:0008E8"
+   ]
+  },
+  {
+   "name": "Follower Dialogue Expansion - Jenassa",
+   "kind": "mod",
+   "source": "Follower Dialogue Expansion - Jenassa",
+   "modid": "120255",
+   "plugins": [
+    "FDE Jenassa.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Side Quest": 1
+   },
+   "opening": "FDE Jenassa.esp:000D03",
+   "begins": "Jenassa would like to travel to the tower where she met her first love.",
+   "quests": [
+    "FDE Jenassa.esp:000D03"
+   ]
+  },
+  {
+   "name": "Follower Dialogue Expansion - Mjoll the Lioness",
+   "kind": "mod",
+   "source": "Follower Dialogue Expansion - Mjoll the Lioness",
+   "modid": "116025",
+   "plugins": [
+    "FDE Mjoll.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "FDE Mjoll.esp:0008E0",
+   "begins": "Aerin, the friend of Mjoll, would like to prove that he is a real warrior and win Mjoll the Lioness's heart.",
+   "quests": [
+    "FDE Mjoll.esp:0008E0"
+   ]
+  },
+  {
+   "name": "Granite Hill - ESLIFIED LUX PATCH",
+   "kind": "mod",
+   "source": "Granite Hill - ESLIFIED LUX PATCH",
+   "modid": "14658",
+   "plugins": [
+    "aaaGraniteHill.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Side Quest": 1
+   },
+   "opening": "aaaGraniteHill.esp:48BBC2",
+   "begins": "A courier handed me a note from someone in Granite Hill. I should read it.",
+   "quests": [
+    "aaaGraniteHill.esp:48BBC2"
+   ]
+  },
+  {
+   "name": "Heart of the Reach - New Quest - Dungeon - Weapons - 3 Creature Variants - Ring - Spell",
+   "kind": "mod",
+   "source": "Heart of the Reach - New Quest - Dungeon - Weapons - 3 Creature Variants - Ring - Spell",
+   "modid": "76494",
+   "plugins": [
+    "HeartOfTheReach.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Side Quest": 1
+   },
+   "opening": "HeartOfTheReach.esp:0B9E71",
+   "begins": "I have talked to Gwilym, a priest I met in the Silver Blood Inn in Markarth. He has tasked me with healing the \"Heart\" in a cave in the reach. I should go there and make the remedy he provided.",
+   "quests": [
+    "HeartOfTheReach.esp:0B9E71"
+   ]
+  },
+  {
+   "name": "Ill Met By Moonlight",
+   "kind": "daedric",
+   "source": "Skyrim",
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "Skyrim.esm:02A49A",
+   "begins": "There are stories in Falkreath of a strange vagrant who savagely killed a little girl.",
+   "quests": [
+    "Skyrim.esm:02A49A"
+   ]
+  },
+  {
+   "name": "Leaps of Faith - A Misc Quest",
+   "kind": "mod",
+   "source": "Leaps of Faith - A Misc Quest",
+   "modid": "53074",
+   "plugins": [
+    "LeapsOfFaith.esp"
+   ],
+   "count": 1,
+   "journal": 0,
+   "types": {
+    "Misc": 1
+   },
+   "opening": "LeapsOfFaith.esp:000836",
+   "begins": "Find and complete the remaining 11 Leaps of Faith.",
+   "quests": [
+    "LeapsOfFaith.esp:000836"
+   ]
+  },
+  {
+   "name": "Legends of Aetherium - New Dungeon - Quest - Armour - Weapons",
+   "kind": "mod",
+   "source": "Legends of Aetherium - New Dungeon - Quest - Armour - Weapons",
+   "modid": "69807",
+   "plugins": [
+    "LegendsOfAetherium.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Side Quest": 1
+   },
+   "opening": "LegendsOfAetherium.esp:0A53DD",
+   "begins": "I have heard of an excavation into a lost Dwemer ruin offering gold as a reward for work aiding the crew. I should go an investigate to see if there is any work still available.",
+   "quests": [
+    "LegendsOfAetherium.esp:0A53DD"
+   ]
+  },
+  {
+   "name": "Mehrunes Dagon's Shrine Unlocked - Pieces of the Past Quest Alternative - Voiced",
+   "kind": "mod",
+   "source": "Mehrunes Dagon's Shrine Unlocked - Pieces of the Past Quest Alternative - Voiced",
+   "modid": "119502",
+   "plugins": [
+    "SilusJournal_ReforgeRazor.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "SilusJournal_ReforgeRazor.esp:000D9B",
+   "begins": "Silus has agreed to let me reforge Mehrunes Dagon's Razor without seeking the Daedric Prince's help. Successfully reforging the Razor will require me being skilled in working with both enchanted and Daedric materials.",
+   "quests": [
+    "SilusJournal_ReforgeRazor.esp:000D9B"
+   ]
+  },
+  {
+   "name": "Mephala's Curse - Whispering Door Quest Addon",
+   "kind": "mod",
+   "source": "Mephala's Curse - Whispering Door Quest Addon",
+   "modid": "120650",
+   "plugins": [
+    "EbonyBladeCurse.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Side Quest": 1
+   },
+   "opening": "EbonyBladeCurse.esp:000807",
+   "begins": "I have acquired the Ebony Blade, the legendary artifact of Mephala. I must decide whether to keep this powerful weapon or seek a means to destroy it. To destroy it, I would need a fire more intense than those that stoke the Skyforge.",
+   "quests": [
+    "EbonyBladeCurse.esp:000807"
+   ]
+  },
+  {
+   "name": "More To Say - Sissel's Book Quest",
+   "kind": "mod",
+   "source": "More To Say - Sissel's Book Quest",
+   "modid": "22622",
+   "plugins": [
+    "sisselbookquest.esp"
+   ],
+   "count": 1,
+   "journal": 0,
+   "types": {
+    "Misc": 1
+   },
+   "opening": "sisselbookquest.esp:000889",
+   "begins": "Find one <Alias=SisselBookAlias>.",
+   "quests": [
+    "sisselbookquest.esp:000889"
+   ]
+  },
+  {
+   "name": "Myrwatch - Tweaks and Enhancements",
+   "kind": "mod",
+   "source": "Myrwatch - Tweaks and Enhancements",
+   "modid": "97659",
+   "plugins": [
+    "Myrwatch - Tweaks and Enhancements.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Misc": 1
+   },
+   "opening": "Myrwatch - Tweaks and Enhancements.esp:0008E3",
+   "begins": "As I entered the Vestibule of Myrwatch, I found a strange note. It turns out Myrwatch has been further sealed off and actually needs to be purchased from Tolfdir in the college of Winterhold. For him to deem me worthy for purchasing it, I either need to complete Shalidor's Maze and acquire the Diadem of the Savant, or find some other way of convincing him.",
+   "quests": [
+    "Myrwatch - Tweaks and Enhancements.esp:0008E3"
+   ]
+  },
+  {
+   "name": "Ordinator - Perks of Skyrim",
+   "kind": "mod",
+   "source": "Ordinator - Perks of Skyrim",
+   "modid": "1137",
+   "plugins": [
+    "Ordinator - Perks of Skyrim.esp"
+   ],
+   "count": 1,
+   "journal": 0,
+   "types": {
+    "None": 1
+   },
+   "opening": "Ordinator - Perks of Skyrim.esp:06C681",
+   "begins": "Find the Spirit Teacher",
+   "quests": [
+    "Ordinator - Perks of Skyrim.esp:06C681"
+   ]
+  },
+  {
+   "name": "Pieces of the Past",
+   "kind": "daedric",
+   "source": "Skyrim",
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "Skyrim.esm:0240B8",
+   "begins": "Silus Vesuius, the owner of a museum dedicated to the Mythic Dawn cult, wants to hire me for a job. He'll give me the details inside his house in Dawnstar.",
+   "quests": [
+    "Skyrim.esm:0240B8"
+   ]
+  },
+  {
+   "name": "Redeeming Fultheim - A Blades Quest Addon",
+   "kind": "mod",
+   "source": "Redeeming Fultheim - A Blades Quest Addon",
+   "modid": "136788",
+   "plugins": [
+    "Redeeming Fultheim - Blades Quest Addon.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Main Quest": 1
+   },
+   "opening": "Redeeming Fultheim - Blades Quest Addon.esp:000D62",
+   "begins": "I've come across Fultheim, an old man who I believe may have been a member of the Blades in the past. However, he does seem to want to talk about it. I should ask Delphine about him.",
+   "quests": [
+    "Redeeming Fultheim - Blades Quest Addon.esp:000D62"
+   ]
+  },
+  {
+   "name": "Requiem - Improved Spell Learning",
+   "kind": "mod",
+   "source": "Requiem - Improved Spell Learning",
+   "modid": "74010",
+   "plugins": [
+    "Requiem - Improved Spell Learning.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "Requiem - Improved Spell Learning.esp:000800",
+   "begins": "Alteration - Novice",
+   "quests": [
+    "Requiem - Improved Spell Learning.esp:000800"
+   ]
+  },
+  {
+   "name": "Respawn - Soulslike Edition",
+   "kind": "mod",
+   "source": "Respawn - Soulslike Edition",
+   "modid": "69267",
+   "plugins": [
+    "Respawn - Death Overhaul.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "Respawn - Death Overhaul.esp:000800",
+   "begins": "When I was defeated, I dropped some of my belongings. I need to retrieve them. If I fail a second time without retrieving them, they will surely be lost forever. I need to be careful.",
+   "quests": [
+    "Respawn - Death Overhaul.esp:000800"
+   ]
+  },
+  {
+   "name": "Return Aegisbane",
+   "kind": "mod",
+   "source": "Return Aegisbane",
+   "modid": "108242",
+   "plugins": [
+    "ReturnAegisbane.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Misc": 1
+   },
+   "opening": "ReturnAegisbane.esp:000800",
+   "begins": "Retrieve Aegisbane",
+   "quests": [
+    "ReturnAegisbane.esp:000800"
+   ]
+  },
+  {
+   "name": "Revealing Rune",
+   "kind": "mod",
+   "source": "Revealing Rune",
+   "modid": "120935",
+   "plugins": [
+    "Revealing Rune.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Misc": 1
+   },
+   "opening": "Revealing Rune.esp:000D62",
+   "begins": "Decision stage",
+   "quests": [
+    "Revealing Rune.esp:000D62"
+   ]
+  },
+  {
+   "name": "SIRENROOT - Deluge of Deceit",
+   "kind": "mod",
+   "source": "SIRENROOT - Deluge of Deceit",
+   "modid": "70917",
+   "plugins": [
+    "evgSIRENROOT.esm"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Side Quest": 1
+   },
+   "opening": "evgSIRENROOT.esm:026BC5",
+   "begins": "The Black-Briars sent out a notice for diving work to collect ingredients at the bottom of Lake Honrich. I should speak to Frissa Black-Briar at Elgrim's Elixirs if I want to accept the job.",
+   "quests": [
+    "evgSIRENROOT.esm:026BC5"
+   ]
+  },
+  {
+   "name": "Skyrim's Paraglider - ZERO",
+   "kind": "mod",
+   "source": "Skyrim's Paraglider - ZERO",
+   "modid": "134795",
+   "plugins": [
+    "Paragliding.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Side Quest": 1
+   },
+   "opening": "Paragliding.esp:00801F",
+   "begins": "A man fell out of the sky and died on impact. I should investigate.",
+   "quests": [
+    "Paragliding.esp:00801F"
+   ]
+  },
+  {
+   "name": "Sleepwalking Into A Nightmare - New Daedric Prince Quest",
+   "kind": "mod",
+   "source": "Sleepwalking Into A Nightmare - New Daedric Prince Quest",
+   "modid": "141047",
+   "plugins": [
+    "NightmarePlane.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "NightmarePlane.esp:0348DA",
+   "begins": "Ralforn has informed me of his wife Gretska who has disapeared over night and has told me of Gretska's common spots, I should look to see if I can find her or any clues at these spots.",
+   "quests": [
+    "NightmarePlane.esp:0348DA"
+   ]
+  },
+  {
+   "name": "Snazzy Misc Locations",
+   "kind": "mod",
+   "source": "Snazzy Misc Locations",
+   "modid": "147762",
+   "plugins": [
+    "Snazzy Black Briar Lodge.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "Snazzy Black Briar Lodge.esp:00076C",
+   "begins": "I decided not to buy the lodge right now",
+   "quests": [
+    "Snazzy Black Briar Lodge.esp:00076C"
+   ]
+  },
+  {
+   "name": "Snazzy Riften AIO",
+   "kind": "mod",
+   "source": "Snazzy Riften AIO",
+   "modid": "147594",
+   "plugins": [
+    "Snazzy Interiors - Riften AIO.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "Snazzy Interiors - Riften AIO.esp:000A82",
+   "begins": "accept Manor",
+   "quests": [
+    "Snazzy Interiors - Riften AIO.esp:000A82"
+   ]
+  },
+  {
+   "name": "Solstheim Earthquakes SE",
+   "kind": "mod",
+   "source": "Solstheim Earthquakes SE",
+   "modid": "22884",
+   "plugins": [
+    "earthquakes - MCM.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "earthquakes - MCM.esp:0012C4",
+   "begins": "Show settings",
+   "quests": [
+    "earthquakes - MCM.esp:0012C4"
+   ]
+  },
+  {
+   "name": "Song of the Green (Auri Follower)",
+   "kind": "mod",
+   "source": "Song of the Green (Auri Follower)",
+   "modid": "11278",
+   "plugins": [
+    "018Auri.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Side Quest": 1
+   },
+   "opening": "018Auri.esp:03E4B1",
+   "begins": "Auri is homesick, and you've decided to cheer her up. Perhaps taking her to the most beautiful places in Skyrim might relieve her longing?",
+   "quests": [
+    "018Auri.esp:03E4B1"
+   ]
+  },
+  {
+   "name": "The Black Star",
+   "kind": "daedric",
+   "source": "Skyrim",
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "Skyrim.esm:028AD6",
+   "begins": "Aranea, a priestess of Azura, says I am destined to find \"an elven man, who can turn the brightest star as black as night.\" She believes he is in Winterhold.",
+   "quests": [
+    "Skyrim.esm:028AD6"
+   ]
+  },
+  {
+   "name": "The Book of Love - Fastred's Awakening",
+   "kind": "mod",
+   "source": "The Book of Love - Fastred's Awakening",
+   "modid": "170043",
+   "plugins": [
+    "TT_FastredsAwakening.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "TT_FastredsAwakening.esp:000009",
+   "begins": "Fastred wants to leave Ivarstead with Bassianus, but her father won't allow it. She seems conflicted about her choices. Perhaps there's another solution.",
+   "quests": [
+    "TT_FastredsAwakening.esp:000009"
+   ]
+  },
+  {
+   "name": "The Break of Dawn",
+   "kind": "daedric",
+   "source": "Skyrim",
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "Skyrim.esm:04E4E1",
+   "begins": "An otherworldly voice coming from Mount Kilkreath is commanding me to find a beacon and return it. It should be located in <Alias=GemContainerLocation>.",
+   "quests": [
+    "Skyrim.esm:04E4E1"
+   ]
+  },
+  {
+   "name": "The Cursed Tribe",
+   "kind": "daedric",
+   "source": "Skyrim",
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "Skyrim.esm:03B681",
+   "begins": "I've heard rumors there's some kind of problem in the Orc settlement of Largashbur, southwest of Riften.",
+   "quests": [
+    "Skyrim.esm:03B681"
+   ]
+  },
+  {
+   "name": "The House of Horrors",
+   "kind": "daedric",
+   "source": "Skyrim",
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "Skyrim.esm:022F08",
+   "begins": "Tyranus, a Vigilant of Stendarr, is investigating an old, abandoned house in Markarth. He believes it was once a site of daedric worship.",
+   "quests": [
+    "Skyrim.esm:022F08"
+   ]
+  },
+  {
+   "name": "The Innocence Lost - Quest Expansion",
+   "kind": "mod",
+   "source": "The Innocence Lost - Quest Expansion",
+   "modid": "80974",
+   "plugins": [
+    "Innocence Lost - Quest Expansion.esp"
+   ],
+   "count": 1,
+   "journal": 0,
+   "types": {
+    "Misc": 1
+   },
+   "opening": "Innocence Lost - Quest Expansion.esp:000836",
+   "begins": "Ask a guard to arrest Grelod (Optional)",
+   "quests": [
+    "Innocence Lost - Quest Expansion.esp:000836"
+   ]
+  },
+  {
+   "name": "The Mind of Madness",
+   "kind": "daedric",
+   "source": "Skyrim",
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "Skyrim.esm:02AC68",
+   "begins": "Dervenin wants me to talk to his master about returning from vacation. To do so, I need to gain entrance to the Pelagius Wing of the Blue Palace.",
+   "quests": [
+    "Skyrim.esm:02AC68"
+   ]
+  },
+  {
+   "name": "The Only Cure",
+   "kind": "daedric",
+   "source": "Skyrim",
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "Skyrim.esm:08998D",
+   "begins": "A Khajiit named Kesh has offered to help me commune with Peryite. He asked me to acquire a deathbell flower, flawless ruby, silver ingot, and some vampire dust.",
+   "quests": [
+    "Skyrim.esm:08998D"
+   ]
+  },
+  {
+   "name": "The Taste of Death",
+   "kind": "daedric",
+   "source": "Skyrim",
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "Skyrim.esm:02C358",
+   "begins": "Eola in Markarth wants me to join her in worshipping Namira, the Lady of Decay, by feasting on the flesh of the dead. She has something planned inside Reachcliff Cave.",
+   "quests": [
+    "Skyrim.esm:02C358"
+   ]
+  },
+  {
+   "name": "The Taste of Death - Quest Addon",
+   "kind": "mod",
+   "source": "The Taste of Death - Quest Addon",
+   "modid": "123173",
+   "plugins": [
+    "TasteOfDeath_Addon_Dialogue.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "TasteOfDeath_Addon_Dialogue.esp:000050",
+   "begins": "I've read the journal of the cannibal who assaulted me. It revealed that Draugr drove them from Reachcliff Cave and that more cannibals are hiding in Markarth. The cave may hold clues to their identities.",
+   "quests": [
+    "TasteOfDeath_Addon_Dialogue.esp:000050"
+   ]
+  },
+  {
+   "name": "The Thalmor's Shadow - Taliesin (Custom Voiced Follower)",
+   "kind": "mod",
+   "source": "The Thalmor's Shadow - Taliesin (Custom Voiced Follower)",
+   "modid": "93413",
+   "plugins": [
+    "00Taliesin.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Main Quest": 1
+   },
+   "opening": "00Taliesin.esp:5487A2",
+   "begins": "I heard rumors about a statue of Talos hidden somewhere in the Falkreath area. Perhaps I could find some allies that could help me.",
+   "quests": [
+    "00Taliesin.esp:5487A2"
+   ]
+  },
+  {
+   "name": "The Whispering Door",
+   "kind": "daedric",
+   "source": "Skyrim",
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "Skyrim.esm:04A37B",
+   "begins": "Balgruuf the Greater, Jarl of Whiterun, has a troubled child. He's asked me to help the boy.",
+   "quests": [
+    "Skyrim.esm:04A37B"
+   ]
+  },
+  {
+   "name": "Trad - AE - CC - Collection - Requiem Patch",
+   "kind": "mod",
+   "source": "Trad - AE - CC - Collection - Requiem Patch",
+   "modid": "64829",
+   "plugins": [
+    "Trad_AE_CC_Collection_Requiem_Patch.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "None": 1
+   },
+   "opening": "Trad_AE_CC_Collection_Requiem_Patch.esp:64E16A",
+   "begins": "In my search for the secrets behind the divine power of the Tribunal and Dagoth Ur I have conducted a profane ritual twisting my flesh with corpus, removing my very heart with the tools of Kagrenac and infusing it with the power of heartstones and the lingering power of the masks of the Tribunal and Daogth Ur. Without a heart I will surely die there is no way forward but to place my tainted heart back in its place.",
+   "quests": [
+    "Trad_AE_CC_Collection_Requiem_Patch.esp:64E16A"
+   ]
+  },
+  {
+   "name": "Vittorias Alternate Wedding",
+   "kind": "mod",
+   "source": "Vittorias Alternate Wedding",
+   "modid": "62466",
+   "plugins": [
+    "Vittorias Alternate Wedding.esp"
+   ],
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Side Quest": 1
+   },
+   "opening": "Vittorias Alternate Wedding.esp:000800",
+   "begins": "I have been invited to attend the wedding reception of Vittoria Vici and Asgeir Snow-Shod, at the Temple of the Divines in Solitude.",
+   "quests": [
+    "Vittorias Alternate Wedding.esp:000800"
+   ]
+  },
+  {
+   "name": "Waking Nightmare",
+   "kind": "daedric",
+   "source": "Skyrim",
+   "count": 1,
+   "journal": 1,
+   "types": {
+    "Daedric": 1
+   },
+   "opening": "Skyrim.esm:0242AF",
+   "begins": "I've overheard two citizens of Dawnstar complaining about horrible nightmares. They seem to be relying on a priest of Mara named Erandur for assistance.",
+   "quests": [
+    "Skyrim.esm:0242AF"
+   ]
+  }
+ ]
+}
