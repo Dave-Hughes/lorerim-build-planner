@@ -3,40 +3,40 @@
   "categories": {
     "main": {
       "name": "Main stories",
-      "subtitle": "Dragons, vampires and Miraak",
-      "more": "The three long stories the game is built around: the Dragonborn, Dawnguard's vampire war, and Miraak on Solstheim. In LoreRim, Dawnguard waits for level 30 and Miraak's cultists for 25."
+      "subtitle": "The game's three long stories: the main quest, Dawnguard and Dragonborn",
+      "more": "Each runs for many hours. In LoreRim, Dawnguard waits for level 30, and Miraak's cultists come at 25 once you've finished The Way of the Voice."
     },
     "guilds": {
       "name": "Guilds and factions",
-      "subtitle": "Earn your place, then run it",
-      "more": "Join, work your way up, and take charge. The Companions, the College, the Thieves Guild, the Dark Brotherhood, the Bards College and the Civil War, plus orders that mods add, like the Vigilants of Stendarr."
+      "subtitle": "Join a guild or a side and work your way up",
+      "more": "The Companions, the College, the Thieves Guild, the Dark Brotherhood, the Bards College and the Civil War, plus orders that mods add, like the Vigilants of Stendarr."
     },
     "daedric": {
       "name": "Daedric Princes",
-      "subtitle": "Power at a price",
-      "more": "Each Prince has a quest with an artifact at the end. LoreRim holds almost all of them back until level 20, and Hircine until 25."
+      "subtitle": "Quests for the Daedric Princes, most ending in an artifact",
+      "more": "LoreRim holds almost all of them back until level 20, and Hircine until 25. Lines that mods add, like Saints and Seducers, are here too."
     },
     "lands": {
       "name": "New lands",
-      "subtitle": "Places off the map",
-      "more": "Islands, a desert, dream realms and Solstheim: whole places with their own stories. Most are made for level 20 and up."
+      "subtitle": "Quests that take you to places outside Skyrim",
+      "more": "Solstheim, Wyrmstooth, Hammerfell, Morrowind's border, realms of the dead and more. Most are made for level 20 and up."
     },
     "side": {
       "name": "Side stories",
-      "subtitle": "Smaller tales, all over Skyrim",
-      "more": "One-off stories you'd stumble into: a murder in Windhelm, a haunted barrow, a stranger's favour. Most take an hour or two."
+      "subtitle": "Shorter quests in towns, ruins and on the road",
+      "more": "The longest list: the base game's side quests and the ones mods add. Most take an hour or two."
     },
     "followers": {
       "name": "Followers",
-      "subtitle": "Their stories, on the road",
-      "more": "Followers with stories of their own. Bring them along and their quests find you."
+      "subtitle": "Quests that come from your followers",
+      "more": "Bring them along and their quests come to you. Serana's also belongs to Dawnguard."
     }
   },
   "shelves": {
     "work": {
-      "name": "Need coin?",
-      "subtitle": "Notice boards, bounties and odd jobs",
-      "more": "Work that comes back: Missives boards in every hold, bounties from the jarls, and odd jobs for the people of each town. No story to follow; pick one up whenever you need coin."
+      "name": "Jobs and errands",
+      "subtitle": "Notice boards, bounties and favours for townsfolk",
+      "more": "Missives boards in every hold, bounties from the jarls, and odd jobs for the people of each town. They come back, so pick one up whenever you like."
     }
   },
   "lines": [

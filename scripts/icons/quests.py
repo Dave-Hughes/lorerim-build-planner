@@ -112,21 +112,21 @@ def followers(Icon):
 
 
 def work(Icon):
-    # A coin purse with a septim spilling out
+    # A notice board on two posts, with two notes pinned to it
     i = Icon()
-    _ell(i, 7, 10, 5.6, 4.8, "B")                                  # the purse
-    i.recolor({"B"}, "b", lambda x, y: x + y <= 14)
-    i.recolor({"B"}, "d", lambda x, y: x + y >= 20)
-    i.poly([(4, 6), (10, 6), (11, 3), (3, 3)], "B")                # gathered neck
-    i.recolor({"B"}, "b", lambda x, y: y <= 4 and x <= 6)
-    i.rect(4, 6, 10, 6, "R")                                       # drawstring
-    _ell(i, 12.5, 12.5, 3.2, 2.4, "a")                             # a septim, tilted
-    _ell(i, 12.5, 12.2, 2.4, 1.6, "A")
-    i.recolor({"A"}, "y", lambda x, y: x <= 12 and y <= 12)
+    i.rect(1, 2, 14, 11, "B")                                      # the board
+    i.recolor({"B"}, "b", lambda x, y: y <= 3 or x <= 2)
+    i.recolor({"B"}, "d", lambda x, y: x >= 13 or y >= 10)
+    i.rect(3, 12, 4, 15, "d"); i.rect(11, 12, 12, 15, "d"); i.px(3, 12, "B"); i.px(11, 12, "B")  # posts
+    i.rect(3, 4, 7, 9, "W"); i.rect(7, 5, 7, 9, "w")               # a note
+    i.line(4, 6, 6, 6, "g"); i.line(4, 8, 5, 8, "g")
+    i.rect(9, 5, 12, 10, "Y"); i.rect(12, 6, 12, 10, "b")          # a second, older note
+    i.line(10, 7, 11, 7, "B"); i.line(10, 9, 11, 9, "B")
+    i.px(5, 4, "r"); i.px(10, 5, "o")                              # pins
     return i.outline()
 
 
 QUESTS = {
     "Main stories": main_stories, "Guilds and factions": guilds, "Daedric Princes": daedric,
-    "New lands": new_lands, "Side stories": side_stories, "Followers": followers, "Need coin": work,
+    "New lands": new_lands, "Side stories": side_stories, "Followers": followers, "Jobs and errands": work,
 }

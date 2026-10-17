@@ -6,21 +6,21 @@ Six categories, each line in one (its home) and maybe others (also). Repeatable 
 
 | Category | Subtitle | Lines (home) | Also here |
 |---|---|---|---|
-| Main stories | Dragons, vampires and Miraak | 3 | 4 |
-| Guilds and factions | Earn your place, then run it | 9 | 3 |
-| Daedric Princes | Power at a price | 17 | 3 |
-| New lands | Places off the map | 18 | 4 |
-| Side stories | Smaller tales, all over Skyrim | 80 | 0 |
-| Followers | Their stories, on the road | 12 | 2 |
-| Need coin? | Notice boards, bounties and odd jobs | 13 | 0 |
+| Main stories | The game's three long stories: the main quest, Dawnguard and Dragonborn | 3 | 4 |
+| Guilds and factions | Join a guild or a side and work your way up | 9 | 3 |
+| Daedric Princes | Quests for the Daedric Princes, most ending in an artifact | 17 | 3 |
+| New lands | Quests that take you to places outside Skyrim | 18 | 4 |
+| Side stories | Shorter quests in towns, ruins and on the road | 80 | 0 |
+| Followers | Quests that come from your followers | 12 | 2 |
+| Jobs and errands | Notice boards, bounties and favours for townsfolk | 13 | 0 |
 
-- **Main stories**: The three long stories the game is built around: the Dragonborn, Dawnguard's vampire war, and Miraak on Solstheim. In LoreRim, Dawnguard waits for level 30 and Miraak's cultists for 25.
-- **Guilds and factions**: Join, work your way up, and take charge. The Companions, the College, the Thieves Guild, the Dark Brotherhood, the Bards College and the Civil War, plus orders that mods add, like the Vigilants of Stendarr.
-- **Daedric Princes**: Each Prince has a quest with an artifact at the end. LoreRim holds almost all of them back until level 20, and Hircine until 25.
-- **New lands**: Islands, a desert, dream realms and Solstheim: whole places with their own stories. Most are made for level 20 and up.
-- **Side stories**: One-off stories you'd stumble into: a murder in Windhelm, a haunted barrow, a stranger's favour. Most take an hour or two.
-- **Followers**: Followers with stories of their own. Bring them along and their quests find you.
-- **Need coin?**: Work that comes back: Missives boards in every hold, bounties from the jarls, and odd jobs for the people of each town. No story to follow; pick one up whenever you need coin.
+- **Main stories**: Each runs for many hours. In LoreRim, Dawnguard waits for level 30, and Miraak's cultists come at 25 once you've finished The Way of the Voice.
+- **Guilds and factions**: The Companions, the College, the Thieves Guild, the Dark Brotherhood, the Bards College and the Civil War, plus orders that mods add, like the Vigilants of Stendarr.
+- **Daedric Princes**: LoreRim holds almost all of them back until level 20, and Hircine until 25. Lines that mods add, like Saints and Seducers, are here too.
+- **New lands**: Solstheim, Wyrmstooth, Hammerfell, Morrowind's border, realms of the dead and more. Most are made for level 20 and up.
+- **Side stories**: The longest list: the base game's side quests and the ones mods add. Most take an hour or two.
+- **Followers**: Bring them along and their quests come to you. Serana's also belongs to Dawnguard.
+- **Jobs and errands**: Missives boards in every hold, bounties from the jarls, and odd jobs for the people of each town. They come back, so pick one up whenever you like.
 
 ## Needs a look
 
@@ -46,7 +46,7 @@ Six categories, each line in one (its home) and maybe others (also). Repeatable 
 
 ## Main stories
 
-*Dragons, vampires and Miraak*
+*The game's three long stories: the main quest, Dawnguard and Dragonborn*
 
 Also here: Destroy the Acolyte Priests, A Forgotten Blade, Destroy the Dragon Cult, Serana.
 
@@ -83,7 +83,7 @@ Also here: Destroy the Acolyte Priests, A Forgotten Blade, Destroy the Dragon Cu
 
 ## Guilds and factions
 
-*Earn your place, then run it*
+*Join a guild or a side and work your way up*
 
 Also here: The Gray Cowl of Nocturnal, The Tools of Kagrenac, Revealing Rune.
 
@@ -181,7 +181,7 @@ Also here: The Gray Cowl of Nocturnal, The Tools of Kagrenac, Revealing Rune.
 
 ## Daedric Princes
 
-*Power at a price*
+*Quests for the Daedric Princes, most ending in an artifact*
 
 Also here: Vigilant, Meridia's Order, The Black Books.
 
@@ -347,7 +347,7 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ## New lands
 
-*Places off the map*
+*Quests that take you to places outside Skyrim*
 
 Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to do in the Soul Cairn.
 
@@ -528,7 +528,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ## Side stories
 
-*Smaller tales, all over Skyrim*
+*Shorter quests in towns, ruins and on the road*
 
 ### The Forsworn Conspiracy
 
@@ -1226,7 +1226,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ## Followers
 
-*Their stories, on the road*
+*Quests that come from your followers*
 
 Also here: Lost to the Ages, The Thalmor's Shadow.
 
@@ -1327,9 +1327,9 @@ Also here: Lost to the Ages, The Thalmor's Shadow.
 
 - Quests: Erik the Shield Brother
 
-## Need coin?
+## Jobs and errands
 
-*Notice boards, bounties and odd jobs*
+*Notice boards, bounties and favours for townsfolk*
 
 ### Missives
 
