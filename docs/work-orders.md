@@ -3956,6 +3956,32 @@ After it's on production, Dave makes Zen's invite in /admin and sends him the li
 
 ---
 
+## WO-98  Quest givers, where quests start, and rewards: what the records can tell (PC only, spike, 17 Oct 2026)
+
+**Why.** For the quest pages, the two things players most want are who gives a quest (and where to find them) and what it pays. WO-97 left both out because neither sits in a quest's own fields as a plain fact. They are in the records, though, spread across other parts: who is in a quest, which dialogue starts it, what its scripts hand out. This spike finds out how much of that we can read reliably, before anyone designs around it. Today 93 of the 139 story lines already say where to go, in their opening journal entry ("Lucan Valerius in Riverwood is offering me a gold reward…") or in the field guide's start notes. Rewards we have for none.
+
+**Where:** Dave's PC, `LORERIM_ROOT` as in WO-91. Branch `wo98-quest-givers` from `staging`. Reads only. Don't touch `src/` or tick boxes.
+
+1. **People in a quest.** From each kept quest's aliases (QUST `ALST`/`ALLS` blocks): the alias name, and when it's filled by a **unique actor** (`ALUA`) or a **forced reference** (`ALFR`), the NPC's full name. Note a **specific location** (`ALFL`) the same way, by its location name.
+2. **Who starts it.** The dialogue (INFO) that belongs to the quest (`QNAM`) and is spoken at its first stages, read from each INFO's conditions: `GetIsID` naming the speaker NPC, and the quest stage it needs (`GetStage < n`). The speaker of the earliest one is the likely giver. Also record any story-manager node (`SMQN`) that starts the quest and its event (change location, kill, script event), which covers quests that start when you walk somewhere.
+3. **Where that NPC is.** For a giver NPC, its placed reference (`ACHR`): the cell, and the cell's location (`LCTN`) name, so "Lurius Liore, the Bannered Mare, Whiterun". NPCs with schedules move about; the placed cell is their home, and the page would say so.
+4. **Rewards.** Two readable sources, no decompiling:
+   - aliases that **create an item** (`ALCO`), as Dawnbreaker is created for The Break of Dawn;
+   - the quest script's properties (`VMAD` on the QUST, its fragment script's properties) that point at a weapon, armour, book, spell, perk, gold or a leveled list. Leveled lists named like rewards (`QuestReward*`, `LItemReward*`) count; quest items (flagged quest objects, keys, notes) don't.
+   Record each with its name and record type. These are what the scripts *can* hand out, not proof of what they do.
+5. **Check it.** Run all of it on these 15 and put the results in `quest_givers_report.md` beside a column for the known answer, which Bob fills in from the game afterwards: The Golden Claw (`MS13`), Rise in the East (`MS10`), The Forsworn Conspiracy (`MS01`), The Break of Dawn (`DA09`), A Daedra's Best Friend (`DA03`), Take Up Arms (`C00`), A Chance Arrangement (`TG00`), Wyrmstooth (`WTDragonHunt`), Vigilant of Stendarr (`zzzAoMMq00`), Meridia's Order (`NMeridia01`), In the Pines (`GRVEMainQuest01`), Bad Vibrations (`InigoBadVibrations`), In their Footsteps (`NecroQuest01`), Deluge of Deceit (`EVGSirenrootQuest`), Fists of Fury - The Rift (`FOFRiftenBrawlerQuest`).
+6. **Coverage.** Then the counts over all 1,340 kept quests: how many get a likely giver, a giver with a location, a start event, at least one reward candidate.
+
+**Output:** `gamedata/5.0.4.8/quest_givers_raw.json` and `quest_givers_report.md`, committed on `wo98-quest-givers`, with the coverage counts in the commit message.
+
+### Done when
+- [ ] The 15 samples are in the report, each with its likely giver and where they are, any start event, and reward candidates, or "none found".
+- [ ] Coverage counts for all kept quests are in the report and the commit message.
+- [ ] Unit (`test_quest_givers.py`, a fixture plugin like `test_quests.py`): a unique-actor alias, an INFO's speaker and stage conditions, an `ALCO` item alias and a script property pointing at a weapon.
+- [ ] Python tests pass.
+
+---
+
 ## Parked (not ordered yet)
 
 - **Renders that lose their effects (after WO-95).** Items with glow, parallax or animated shading, Dawnbreaker for one, render flat. Fix them one by one in `render.py` (emissive maps, a second light pass) once Dave flags the ones that matter.
