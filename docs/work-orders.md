@@ -3776,6 +3776,8 @@ Copy: use the game's words, follow the design rules, and add no how-it-works tex
 
 ## WO-93  Gear across the app: links to the item page, and builds that use an item (16 Oct 2026)
 
+> **On hold (Dave, 16 Oct 2026).** Launch comes first. The Gear page stays hidden (`FEATURE_GEAR` off everywhere) and rolls out after the guides launch. Don't start this order until Dave says so.
+
 **Why.** Once items have pages, every place that shows an item should lead to one. A build that uses an item is the best answer we have to "is this any good". Canvas: `GearElsewhere` (dashed outlines mark what's new). Needs WO-92. Every link here shows only while `FEATURE_GEAR` is on.
 
 1. **Build page gear card** (`gear-view.tsx`).
@@ -3812,6 +3814,8 @@ Copy: use the game's words, follow the design rules, and add no how-it-works tex
 
 ## WO-94  Item renders: render every indexed item on Dave's PC (PC only, 16 Oct 2026)
 
+> **On hold (Dave, 16 Oct 2026).** Launch comes first. The Gear page stays hidden (`FEATURE_GEAR` off everywhere) and rolls out after the guides launch. Don't start this order until Dave says so.
+
 **Why.** Dave wants to see each item the way the game's inventory shows it. The `spike-renders` branch proved it works: a still and a 24-angle turntable per item, rendered from the install's own models and textures. Canvas board: `ItemRenders`. The LoreRim team agreed on 16 Oct, on one condition: every picture credits where it comes from (the base game, or the mod by name). We only ever publish pictures. Model and texture files never leave Dave's PC.
 
 **Where:** Dave's PC, `LORERIM_ROOT`, the Blender and PyNifly set up in the spike (`%LOCALAPPDATA%\Programs\blender-spike`). Work on branch `wo94-renders`, made from `staging`. Don't touch `src/`.
@@ -3845,6 +3849,8 @@ Copy: use the game's words, follow the design rules, and add no how-it-works tex
 ---
 
 ## WO-95  Item renders on the item page, with credits (Mac, 16 Oct 2026)
+
+> **On hold (Dave, 16 Oct 2026).** Launch comes first. The Gear page stays hidden (`FEATURE_GEAR` off everywhere) and rolls out after the guides launch. Don't start this order until Dave says so.
 
 **Why.** WO-94 renders every item on Dave's PC. This order puts those pictures on the site. Canvas: `ItemRenders`, block 4. Needs WO-94.
 
