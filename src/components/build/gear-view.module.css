@@ -201,6 +201,22 @@
   font-size: 14px;
   color: var(--ember);
 }
+/* Played (the coming soon page): the heading and New line keep one row, the names cut short when
+   they don't fit, so the section's height never changes as the level moves (17 Oct). */
+.playing .playHead {
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.playing .playHead > h2 {
+  flex: none;
+}
+.playing .fresh {
+  min-width: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .playing .bar {
   cursor: default;
   transition:

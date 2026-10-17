@@ -16,14 +16,13 @@ import { HERO } from "@/lib/coming-soon/art";
 import { Cutscene } from "./cutscene";
 import styles from "./coming-soon.module.css";
 
-/** One level every 280 ms (WO-86), so new gear can be read; at 50 it holds 16 levels' time, then starts from 1. */
+/** The clock for the art only: the hero's fire steps every tick, its stars swap every 5, its aurora every 24; the story panels step every 2 (WO-87). */
 const TICK = 280;
 const LAST = 50;
-const HOLD = 16;
 /** Where the tree opens (WO-85): level 20, so it never shows as a grey outline. */
 const FIRST = 20;
-/** A level card every 5 ticks (about 1.4 s). The hero's fire steps every tick, its stars swap every 3, its aurora every 24; the story panels step every 2 (WO-87). */
-const CARD_TICKS = 5;
+/** How many of Iriel's level cards the scroll steps through: evenly spaced, so each stays long enough to read. */
+const CARD_COUNT = 8;
 const STAR_TICKS = 5;
 const AURORA_TICKS = 24;
 const PANEL_TICKS = 2;
@@ -73,6 +72,43 @@ function useParallax() {
   return ref;
 }
 
+/**
+ * How far the page has scrolled through an element (Dave, 17 Oct: what changes should follow the
+ * scroll, so the reader drives it and nothing moves once it's passed). 0 until its top is 85% of the
+ * way down the screen, 1 once its bottom is above the middle; it stays at 1 above the screen.
+ */
+function useScrollProgress<T extends HTMLElement>(): [
+  React.RefObject<T | null>,
+  number,
+] {
+  const ref = useRef<T>(null);
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    let frame = 0;
+    const place = () => {
+      frame = 0;
+      const el = ref.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const span = Math.max(1, r.height + vh * 0.3);
+      setP(Math.min(1, Math.max(0, (vh * 0.85 - r.top) / span)));
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(place);
+    };
+    place();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+  return [ref, p];
+}
+
 /** Ticks, paused while the tab is hidden; none with reduced motion. */
 function useTicks(): { tick: number; still: boolean } {
   const [tick, setTick] = useState(0);
@@ -105,11 +141,9 @@ function useTicks(): { tick: number; still: boolean } {
   return { tick, still };
 }
 
-/** The shared clock's level: 20 to 50 the first time, then 1 to 50, holding at 50 between. */
-function levelAt(tick: number): number {
-  const first = LAST + HOLD - FIRST + 1;
-  const v = tick < first ? FIRST + tick : 1 + ((tick - first) % (LAST + HOLD));
-  return Math.min(LAST, v);
+/** A scroll progress as a level: FIRST at the start, LAST at the end. */
+function levelAt(p: number): number {
+  return Math.round(FIRST + p * (LAST - FIRST));
 }
 
 /**
@@ -123,14 +157,28 @@ export function ComingSoon() {
   const d = useGameData();
   const { tick, still } = useTicks();
   const heroRef = useParallax();
-  const level = still ? LAST : levelAt(tick);
+  // Her gear, her tree and her level cards follow the scroll through their own boxes (17 Oct).
+  const [gearRef, gearP] = useScrollProgress<HTMLDivElement>();
+  const [treeRef, treeP] = useScrollProgress<HTMLDivElement>();
+  const [cardsRef, cardsP] = useScrollProgress<HTMLDivElement>();
+  const gearLevel = still ? LAST : Math.round(1 + gearP * (LAST - 1));
+  const level = still ? LAST : levelAt(treeP);
   const states = useMemo(() => computeBuild(IRIEL_PLAN, d), [d]);
-  const cards = useMemo(() => stretches(IRIEL_PLAN), []);
+  // A few of her level cards, evenly spaced from the first to the last.
+  const cards = useMemo(() => {
+    const all = stretches(IRIEL_PLAN);
+    const n = Math.min(CARD_COUNT, all.length);
+    return Array.from(
+      { length: n },
+      (_, i) => all[Math.round((i * (all.length - 1)) / Math.max(1, n - 1))],
+    );
+  }, []);
   const marks = useMemo(
     () => levelMarks(d, IRIEL_PLAN, states, notedLevels(IRIEL_NOTES)),
     [d, states],
   );
-  // Her Marksman perks, in the order she takes them, up to this level.
+  // Her Marksman perks, in the order she takes them. All of them are laid out, those not yet taken
+  // unseen, so the list is its full height from the start and never pushes the page down.
   const taken = useMemo(
     () =>
       Object.entries(states[LAST - 1].perksTaken)
@@ -138,9 +186,12 @@ export function ComingSoon() {
         .map(([id, at]) => ({ id, at: at[0] }))
         .sort((a, b) => a.at - b.at),
     [d, states],
-  ).filter((p) => p.at <= level);
-  const newest = taken.at(-1)?.at;
-  const card = cards[still ? 0 : Math.floor(tick / CARD_TICKS) % cards.length];
+  );
+  const newest = taken.filter((p) => p.at <= level).at(-1)?.at;
+  const cardAt = still
+    ? 0
+    : Math.min(cards.length - 1, Math.floor(cardsP * cards.length));
+  const card = cards[cardAt];
   // The hero and the panels; with reduced motion, their first frames.
   const fg = still ? 0 : tick % HERO.fg.length;
   const starsA = still || Math.floor(tick / STAR_TICKS) % 2 === 0;
@@ -323,9 +374,13 @@ export function ComingSoon() {
                 </div>
               ))}
             </div>
-            {/* Her gear, played on the tree's clock (WO-86). */}
-            <div className={`frame ${styles.live}`} data-live="gear">
-              <GearView plan={IRIEL_PLAN} level={level} play />
+            {/* Her gear, played as the page scrolls past it (WO-86; scroll, 17 Oct). */}
+            <div
+              ref={gearRef}
+              className={`frame ${styles.live}`}
+              data-live="gear"
+            >
+              <GearView plan={IRIEL_PLAN} level={gearLevel} play />
             </div>
           </div>
         </Feature>
@@ -347,7 +402,7 @@ export function ComingSoon() {
                   noToggle
                 />
               </div>
-              <div className={styles.treeSide}>
+              <div ref={treeRef} className={styles.treeSide}>
                 <div className={styles.counter} aria-live="off">
                   Level{" "}
                   <span className={styles.counterNum} data-level={level}>
@@ -358,7 +413,14 @@ export function ComingSoon() {
                   {taken.map((p) => (
                     <li
                       key={p.id}
-                      className={p.at === newest ? styles.takenNew : undefined}
+                      className={
+                        p.at > level
+                          ? styles.takenLater
+                          : p.at === newest
+                            ? styles.takenNew
+                            : undefined
+                      }
+                      aria-hidden={p.at > level || undefined}
                     >
                       <span>{d.perkById.get(p.id)?.name ?? p.id}</span>
                       <span className={styles.lv}>Lv {p.at}</span>
@@ -367,8 +429,9 @@ export function ComingSoon() {
                 </ol>
               </div>
             </div>
-            {/* Her level cards, one after another, on their own slower clock (WO-86). */}
+            {/* Her level cards, one after another as the page scrolls (WO-86; scroll, 17 Oct). */}
             <div
+              ref={cardsRef}
               className={`frame ${styles.live} ${styles.cards}`}
               data-live="cards"
             >
@@ -403,14 +466,27 @@ export function ComingSoon() {
                   </span>
                 ))}
               </div>
-              <LevelCard
-                d={d}
-                build={{ plan: IRIEL_PLAN, author: IRIEL_AUTHOR }}
-                states={states}
-                level={card.to}
-                note={IRIEL_NOTES[`level:${card.to}`] ?? null}
-                glance
-              />
+              {/* Every card is laid out in the same place and only this one is seen, so the box is as
+                  tall as the tallest card the whole time. */}
+              <div className={styles.cardStack}>
+                {cards.map((c, i) => (
+                  <div
+                    key={`${c.from}-${c.to}`}
+                    className={i === cardAt ? undefined : styles.cardHidden}
+                    aria-hidden={i === cardAt ? undefined : true}
+                    inert={i === cardAt ? undefined : true}
+                  >
+                    <LevelCard
+                      d={d}
+                      build={{ plan: IRIEL_PLAN, author: IRIEL_AUTHOR }}
+                      states={states}
+                      level={c.to}
+                      note={IRIEL_NOTES[`level:${c.to}`] ?? null}
+                      glance
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </Feature>

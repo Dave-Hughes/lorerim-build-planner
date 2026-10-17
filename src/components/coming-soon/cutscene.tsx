@@ -6,6 +6,11 @@ import styles from "./coming-soon.module.css";
 
 /** How fast a line types out. */
 const TYPE_MS = 32;
+/** The longest of Tapps's lines, which sizes the dialogue box. */
+const LONGEST = STORY.reduce(
+  (a, s) => (s.text.length > a.length ? s.text : a),
+  "",
+);
 
 /**
  * "How this started" as a little cutscene that the page's scroll drives (Dave, 15 Oct). The section is
@@ -98,10 +103,17 @@ export function Cutscene({ frame, still }: { frame: number; still: boolean }) {
             />
             <div className={styles.dialogWords}>
               <span className={styles.dialogLabel}>Tapps</span>
-              <p className={styles.dialogLine} data-testid="story-line">
-                {line.slice(0, shown)}
-                <span className={styles.dialogRest}>{line.slice(shown)}</span>
-              </p>
+              {/* The longest line is laid out unseen in the same place, so the box is the same height
+                  for every scene (17 Oct). */}
+              <div className={styles.dialogLines}>
+                <p className={`${styles.dialogLine} ${styles.dialogRest}`}>
+                  {LONGEST}
+                </p>
+                <p className={styles.dialogLine} data-testid="story-line">
+                  {line.slice(0, shown)}
+                  <span className={styles.dialogRest}>{line.slice(shown)}</span>
+                </p>
+              </div>
             </div>
           </div>
           {/* The line between the markers fills as the page scrolls, so it's clear the scroll tells the story. */}

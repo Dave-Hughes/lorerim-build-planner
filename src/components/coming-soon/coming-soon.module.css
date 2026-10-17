@@ -72,23 +72,48 @@
   width: calc(64 * var(--p));
   height: calc(36 * var(--p));
   transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse at center, rgba(240, 145, 63, 0.24) 0%, rgba(240, 145, 63, 0.08) 45%, rgba(240, 145, 63, 0) 70%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(240, 145, 63, 0.24) 0%,
+    rgba(240, 145, 63, 0.08) 45%,
+    rgba(240, 145, 63, 0) 70%
+  );
   mix-blend-mode: screen;
   animation: flicker 2.2s linear infinite;
 }
 @keyframes flicker {
-  0%, 100% { opacity: 0.7; }
-  12% { opacity: 1; }
-  24% { opacity: 0.8; }
-  41% { opacity: 0.95; }
-  57% { opacity: 0.65; }
-  73% { opacity: 1; }
-  86% { opacity: 0.75; }
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  12% {
+    opacity: 1;
+  }
+  24% {
+    opacity: 0.8;
+  }
+  41% {
+    opacity: 0.95;
+  }
+  57% {
+    opacity: 0.65;
+  }
+  73% {
+    opacity: 1;
+  }
+  86% {
+    opacity: 0.75;
+  }
 }
 .heroFade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(7, 10, 15, 0.55) 0%, rgba(7, 10, 15, 0.15) 45%, rgba(7, 10, 15, 0) 60%);
+  background: linear-gradient(
+    180deg,
+    rgba(7, 10, 15, 0.55) 0%,
+    rgba(7, 10, 15, 0.15) 45%,
+    rgba(7, 10, 15, 0) 60%
+  );
 }
 .heroWords {
   --p: max(100cqw / 288, 100cqh / 150);
@@ -132,8 +157,14 @@
   animation: blink 2.4s steps(1) infinite;
 }
 @keyframes blink {
-  0%, 62% { opacity: 1; }
-  63%, 100% { opacity: 0.25; }
+  0%,
+  62% {
+    opacity: 1;
+  }
+  63%,
+  100% {
+    opacity: 0.25;
+  }
 }
 .soonLine {
   margin: 0;
@@ -269,6 +300,12 @@
   font-size: 22px;
   line-height: 1.45;
   color: #f3ead8;
+}
+.dialogLines {
+  display: grid;
+}
+.dialogLines > * {
+  grid-area: 1 / 1;
 }
 /* The rest of the line is laid out but unseen, so the box never jumps as it types. */
 .dialogRest {
@@ -445,7 +482,13 @@
 .laterFade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, #0e1319 0%, rgba(14, 19, 25, 0.55) 22%, rgba(14, 19, 25, 0.55) 70%, #0e1319 100%);
+  background: linear-gradient(
+    180deg,
+    #0e1319 0%,
+    rgba(14, 19, 25, 0.55) 22%,
+    rgba(14, 19, 25, 0.55) 70%,
+    #0e1319 100%
+  );
 }
 .laterEnd {
   display: flex;
@@ -657,6 +700,17 @@
   flex-direction: column;
   gap: 16px;
 }
+/* The level cards on top of each other in one cell: the box is the tallest card's height (17 Oct). */
+.cardStack {
+  display: grid;
+}
+.cardStack > * {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+.cardHidden {
+  visibility: hidden;
+}
 .cardHead {
   display: flex;
   align-items: baseline;
@@ -754,7 +808,12 @@
 .traitFade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(14, 19, 25, 0.97) 0%, rgba(14, 19, 25, 0.88) 42%, rgba(14, 19, 25, 0) 78%);
+  background: linear-gradient(
+    0deg,
+    rgba(14, 19, 25, 0.97) 0%,
+    rgba(14, 19, 25, 0.88) 42%,
+    rgba(14, 19, 25, 0) 78%
+  );
 }
 .traitWords {
   position: absolute;
@@ -844,6 +903,10 @@
 }
 .taken li.takenNew {
   color: var(--ember);
+}
+/* Perks she hasn't taken yet at this level: laid out but unseen, so the list never grows (17 Oct). */
+.taken li.takenLater {
+  visibility: hidden;
 }
 .lv {
   flex: none;
