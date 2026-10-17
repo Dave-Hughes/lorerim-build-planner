@@ -1,6 +1,6 @@
 # Quest lines, curated
 
-152 lines from 1241 quests. Written by `scripts/gamedata/questlines.py` from `questlines.json` (hand-kept) and the raw crawl. Begins is the game's own text: the line's opening journal entry.
+152 lines from 1240 quests. Written by `scripts/gamedata/questlines.py` from `questlines.json` (hand-kept) and the raw crawl. Begins is the game's own text: the line's opening journal entry.
 
 Six categories, each line in one (its home) and maybe others (also). Repeatable work is a shelf of its own, not a category.
 
@@ -353,7 +353,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 ### Wyrmstooth
 
-20 quests | Wyrmstooth (Nexus 45565) | An island north of Solitude
+19 quests | Wyrmstooth (Nexus 45565) | An island north of Solitude
 
 > An imperial courier named Theodyn Bienne has requested I speak to Lurius Liore at the Bannered Mare in Whiterun as soon as possible.
 
@@ -362,7 +362,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 - Level: 20–40 on the island *(players)*
 - Length: 6–10 hours *(players)*
 - After: Rise in the East, The Dragonborn
-- Quests: Retrieving Embersunder; Barrow of the Wyrm; Blind Robber's Cache; Animal Bounty; Bandit Bounty; Vampire Bounty; Warlock Bounty; Robbed Blind; Wyrmstooth; Stickler in the Mud; Unwanted Guests; Noticeboard Pointer; Reclaiming the Past; A Priceless Commodity; Repaying a Debt; A Debt Unpaid; The Naked Nord; Someone with Backbone; A Howl Load of Trouble; Wrap Me Up
+- Quests: Retrieving Embersunder; Barrow of the Wyrm; Blind Robber's Cache; Animal Bounty; Bandit Bounty; Vampire Bounty; Warlock Bounty; Robbed Blind; Wyrmstooth; Stickler in the Mud; Unwanted Guests; Reclaiming the Past; A Priceless Commodity; Repaying a Debt; A Debt Unpaid; The Naked Nord; Someone with Backbone; A Howl Load of Trouble; Wrap Me Up
 
 ### Journey to Baan Malur
 

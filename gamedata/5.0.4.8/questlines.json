@@ -586,7 +586,10 @@
         "gate": "files",
         "level": "players",
         "size": "players"
-      }
+      },
+      "skip": [
+        "WTNoticeboardPointer"
+      ]
     },
     {
       "id": "baan-malur",
