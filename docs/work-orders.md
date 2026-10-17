@@ -3924,6 +3924,32 @@ After it's on production, Dave makes Zen's invite in /admin and sends him the li
 
 ---
 
+## WO-97  Quest data: every quest line from the records (PC only, 17 Oct 2026)
+
+**Why.** Dave wants a catalogue of every quest in LoreRim, like the Gear page. This order is the data only, read on Dave's PC; the page comes after launch, with the Gear page. Quests are QUST records, and the player-facing parts are in them: the quest's name, its journal entries and its objectives, in the game's own words.
+
+**Where:** Dave's PC, `LORERIM_ROOT` as in WO-91. Branch `wo97-quests` from `staging`. Don't touch `src/`, and don't tick boxes. The Mac pass (building it into `src/data`) comes with the page later.
+
+1. **`scripts/gamedata/quests.py`**, in the style of `items.py` (reads only). For each winning QUST record in the Ultra load order, record:
+   - its id, EDID, full name, and the plugin it comes from (and other plugins that edit it);
+   - its **type**, from DNAM's quest type: Main Quest, Mages Guild, Thieves Guild, Dark Brotherhood, Companions, Misc, Daedric, Side Quest, Civil War, Dawnguard, Dragonborn, or none;
+   - its **stages**, in order: the index, each journal entry's text (the log entries), and whether that stage completes or fails the quest;
+   - its **objectives**: the index and the display text.
+   
+   Text comes from the plugins' string tables, as `extract.py` reads them. Keep the game's words exactly.
+2. **Player-facing only.** Keep a quest when it has a full name and at least one journal entry or objective. Print a count for each step: read, named, with journal or objectives, kept. Many named quests are the game's own machinery (radiant scenes, dialogue holders) and have neither.
+3. **Where it comes from.** For each kept quest, record the MO2 mod folder its plugin loads from and that folder's Nexus `modid`, reusing WO-91's plugin lookup. Base game and DLC count as Skyrim.
+4. **Output:** `gamedata/5.0.4.8/quests_raw.json`, plus a short `quests_report.md` beside it with the counts, the number kept by type and by plugin (the top 20), and five sample quests in full. One should be base game (Bleak Falls Barrow, `MQ101`'s first part, or similar), one from Vigilant, and one from another quest mod.
+5. **What the records don't say.** Who gives a quest, and where, sits in its aliases and dialogue conditions, which are not readable as plain facts. Leave them out. The page will say so, as the Gear page does for where items are found.
+
+### Done when
+- [ ] `quests_raw.json` and `quests_report.md` are committed on `wo97-quests`, with the counts in the commit message.
+- [ ] Unit (`test_quests.py`, on a small fixture plugin like `test_items.py`): the type read from DNAM, stages with their log text in order, objectives, the player-facing filter, and text from a string table.
+- [ ] The five sample quests' names, journal text and objectives match the game (checked against xEdit or in game), as written in the report.
+- [ ] Python tests pass. Push `wo97-quests` only.
+
+---
+
 ## Parked (not ordered yet)
 
 - **Renders that lose their effects (after WO-95).** Items with glow, parallax or animated shading, Dawnbreaker for one, render flat. Fix them one by one in `render.py` (emissive maps, a second light pass) once Dave flags the ones that matter.
