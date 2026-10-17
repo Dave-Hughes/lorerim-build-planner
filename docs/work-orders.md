@@ -3945,7 +3945,7 @@ After it's on production, Dave makes Zen's invite in /admin and sends him the li
    - **Mods:** one line per quest mod (its plugin, or the plugins one MO2 folder ships). Its quests go in EDID order, so `zzzAoMMq00`, `01`, `02` and so on.
    - **Per line:** its name (the mod's name, or the vanilla line's), the source, the quest count, the type mix, and the first quest's first journal entry, which usually says how the line begins.
    - **The report** lists every line, biggest first: the list a player would pick from.
-   - **Cross-check** against the field guide's `lorerim/world/quests-and-lands.md`, which is in Dave's claude.ai Project, not the repo: Dave or Bob pastes it into the session when this order runs. Every line it names should appear. Note any it has that the crawl missed, and any big line the crawl found that it doesn't name.
+   - **Bob cross-checks it afterwards** against the field guide's `lorerim/world/quests-and-lands.md` (in Dave's claude.ai Project, which this session can't open). That research names about 30 quest mods with how each starts and its level gate. Every line it names should show up here.
 6. **What the records don't say.** Who gives a quest, and where, sits in its aliases and dialogue conditions, which are not readable as plain facts. Leave them out. The page will say so, as the Gear page does for where items are found.
 
 ### Done when
