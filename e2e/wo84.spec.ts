@@ -25,9 +25,11 @@ test("point 4: with reduced motion the counter reads 50 and all 15 of Iriel's Ma
   await expect(page.locator('img[src="/coming-soon/px/p1-0.png"]')).toBeVisible();
 });
 
-test("point 3: without reduced motion the tree opens at level 20 (WO-85) and counts up", async ({ page }) => {
+test("point 3: without reduced motion the tree opens at level 20 (WO-85) and counts up as the page scrolls past it (17 Oct)", async ({ page }) => {
   await page.goto("/coming-soon");
   const n = page.locator("[data-level]");
   await expect(n).toHaveText("20");
+  await n.scrollIntoViewIfNeeded();
+  await page.mouse.wheel(0, 300);
   await expect.poll(async () => Number(await n.textContent()), { timeout: 5000 }).toBeGreaterThan(22);
 });
