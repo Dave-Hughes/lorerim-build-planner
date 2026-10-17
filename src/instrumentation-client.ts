@@ -17,6 +17,9 @@ initBotId({
     { path: "/me", method: "POST" },
     { path: "/b/*", method: "POST" },
     { path: "/u/*", method: "POST" },
+    // "/admin/*" doesn't cover /admin itself, where Import a build (WO-90) posts: without this its
+    // button read as a bot (found 16 Oct on lorerimplanner.com).
+    { path: "/admin", method: "POST" },
     { path: "/admin/*", method: "POST" },
     { path: "/api/covers", method: "POST" },
     { path: "/api/builds/*/images", method: "POST" },
