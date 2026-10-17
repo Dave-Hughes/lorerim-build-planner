@@ -39,11 +39,12 @@ RAW = [
      "opening": "Mod.esp:ModStart", "quests": ["Mod.esp:ModStart", "Mod.esp:ModMarker", "Mod.esp:ModWarrior"]},
 ]
 CUR = {
-    "kinds": {"story": "A story in Skyrim", "land": "Go somewhere new"},
+    "categories": {"side": {"name": "Side stories", "subtitle": "s", "more": "m"},
+                   "lands": {"name": "New lands", "subtitle": "s", "more": "m"}},
     "lines": [
-        {"id": "rise-in-the-east", "name": "Rise in the East", "kind": "story", "quests": ["MS10"]},
-        {"id": "blood-on-the-ice", "name": "Blood on the Ice", "kind": "story", "quests": ["MS11"]},
-        {"id": "the-mod", "name": "The Mod", "kind": "land", "lines": ["The Mod"], "skip": ["ModMarker"],
+        {"id": "rise-in-the-east", "name": "Rise in the East", "category": "side", "quests": ["MS10"]},
+        {"id": "blood-on-the-ice", "name": "Blood on the Ice", "category": "side", "quests": ["MS11"]},
+        {"id": "the-mod", "name": "The Mod", "category": "lands", "lines": ["The Mod"], "skip": ["ModMarker"],
          "after": ["rise-in-the-east"], "gate": "Level 20.", "minLevel": 20, "checked": {"gate": "files"}},
     ],
     "droppedQuests": {"WEJunk": "A roadside encounter."},
@@ -83,7 +84,7 @@ class Checks(unittest.TestCase):
         cur["lines"][1]["quests"].append("MS10")
         self.fails(cur, "MS10 is on both")
         cur = copy.deepcopy(CUR)
-        cur["lines"].append({"id": "again", "name": "Again", "kind": "land", "lines": ["The Mod"]})
+        cur["lines"].append({"id": "again", "name": "Again", "category": "lands", "lines": ["The Mod"]})
         self.fails(cur, "is on both the-mod and again")
 
     def test_names_must_be_real(self):
@@ -91,6 +92,12 @@ class Checks(unittest.TestCase):
         cur["lines"][0]["quests"] = ["MS99"]
         cur["lines"][2]["after"] = ["nowhere"]
         self.fails(cur, "no quest MS99", "after nowhere")
+
+    def test_categories_must_be_real(self):
+        cur = copy.deepcopy(CUR)
+        cur["lines"][0]["category"] = "homes"
+        cur["lines"][2]["also"] = ["lands"]
+        self.fails(cur, "unknown category homes", "also in lands")
 
     def test_a_bucket_is_split_not_taken_whole(self):
         cur = copy.deepcopy(CUR)
@@ -100,7 +107,7 @@ class Checks(unittest.TestCase):
     def test_a_named_quest_leaves_its_raw_line(self):
         cur = copy.deepcopy(CUR)
         cur["lines"][2]["skip"] = []
-        cur["lines"].append({"id": "follower", "name": "Follower", "kind": "story", "quests": ["ModMarker"]})
+        cur["lines"].append({"id": "follower", "name": "Follower", "category": "side", "quests": ["ModMarker"]})
         out = run(cur)
         self.assertNotIn("ModMarker", [q["edid"] for q in out["the-mod"]["quests"]])
         self.assertEqual([q["edid"] for q in out["follower"]["quests"]], ["ModMarker"])

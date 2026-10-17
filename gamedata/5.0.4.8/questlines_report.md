@@ -1,19 +1,26 @@
 # Quest lines, curated
 
-156 lines from 1283 quests. Written by `scripts/gamedata/questlines.py` from `questlines.json` (hand-kept) and the raw crawl. Begins is the game's own text: the line's opening journal entry.
+152 lines from 1241 quests. Written by `scripts/gamedata/questlines.py` from `questlines.json` (hand-kept) and the raw crawl. Begins is the game's own text: the line's opening journal entry.
 
-| Kind | Lines | Quests |
-|---|---|---|
-| The big stories | 3 | 72 |
-| Join a guild or order | 9 | 248 |
-| Strike a bargain with a Daedric Prince | 17 | 30 |
-| Go somewhere new | 6 | 77 |
-| A story in Skyrim | 79 | 137 |
-| A story on Solstheim | 12 | 50 |
-| A companion's story | 12 | 47 |
-| Steady work | 13 | 579 |
-| A place of your own | 3 | 3 |
-| Where you begin | 2 | 40 |
+Six categories, each line in one (its home) and maybe others (also). Repeatable work is a shelf of its own, not a category.
+
+| Category | Subtitle | Lines (home) | Also here |
+|---|---|---|---|
+| Main stories | Dragons, vampires and Miraak | 3 | 4 |
+| Guilds and factions | Earn your place, then run it | 9 | 3 |
+| Daedric Princes | Power at a price | 17 | 3 |
+| New lands | Places off the map | 18 | 4 |
+| Side stories | Smaller tales, all over Skyrim | 80 | 0 |
+| Followers | Their stories, on the road | 12 | 2 |
+| Need coin? | Notice boards, bounties and odd jobs | 13 | 0 |
+
+- **Main stories**: The three long stories the game is built around: the Dragonborn, Dawnguard's vampire war, and Miraak on Solstheim. In LoreRim, Dawnguard waits for level 30 and Miraak's cultists for 25.
+- **Guilds and factions**: Join, work your way up, and take charge. The Companions, the College, the Thieves Guild, the Dark Brotherhood, the Bards College and the Civil War, plus orders that mods add, like the Vigilants of Stendarr.
+- **Daedric Princes**: Each Prince has a quest with an artifact at the end. LoreRim holds almost all of them back until level 20, and Hircine until 25.
+- **New lands**: Islands, a desert, dream realms and Solstheim: whole places with their own stories. Most are made for level 20 and up.
+- **Side stories**: One-off stories you'd stumble into: a murder in Windhelm, a haunted barrow, a stranger's favour. Most take an hour or two.
+- **Followers**: Followers with stories of their own. Bring them along and their quests find you.
+- **Need coin?**: Work that comes back: Missives boards in every hold, bounties from the jarls, and odd jobs for the people of each town. No story to follow; pick one up whenever you need coin.
 
 ## Needs a look
 
@@ -33,13 +40,15 @@
 - **Return Aegisbane**: the opening quest has no plain journal entry; shows its first objective.
 - **Leaps Of Faith**: the opening quest has no plain journal entry; shows its first objective.
 - **Erik the Slayer**: the opening quest has no plain journal entry; shows its first objective.
-- **The Bonds of Matrimony**: no plain journal entry or objective anywhere.
-- **Riftweald Manor**: no plain journal entry or objective anywhere.
-- **Lodges for sale**: no plain journal entry or objective anywhere.
+- **The Bonds of Matrimony**: the opening quest has no plain journal entry; shows its first objective.
 
-**No facts checked yet** (87): The Bards College, Penitus Oculatus, Raven Rock, Thirsk Mead Hall, Neloth of Tel Mithryn, Skaal Village, The Black Books, Unearthed, Filial Bonds, The Kagrumez Gauntlet, Destroy the Acolyte Priests, Promises to Keep, Unfathomable Depths, Lights Out!, In My Time Of Need, Missing In Action, Rise in the East, Blood on the Ice, The White Phial, The Golden Claw, Laid to Rest, A Return To Your Roots, The Heart of Dibella, The Blessings of Nature, The Book of Love, Seeking A Cure, Falion's Secret, Repentance, Siege on the Dragon Cult, The Pale Lady, Forbidden Legend, A Scroll For Anska, Ancestral Worship, Kyne's Sacred Trials, The Lost Expedition, Trius' Trinket, Infiltration, Evil in Waiting, Silenced Tongues, Yngol's Barrow, The Affairs of Hagravens, Telrav's Request, Search and Seizure, Toying With The Dead, Extracting an Argonian, Dark Ancestor, Drowned Sorrows, The Forgemaster's Fingers, Lost to the Ages, A Forgotten Blade, Destroy the Dragon Cult, The Frozen Heart, The Thalmor's Shadow, A Healing Wedding, Windhelm, expanded, Whiterun, expanded, Markarth Side, On Hogithum, Profane Divinity, The Lost Library, Through a Glass, Darkly, In the Shadows, The Cause, Hendraheim, Guests for Dinner, A Dying Wish, Dreams of the Dead, The Unquiet Dead, Stealer of Souls, Battle of the Champions, The Wintersand Deception, Myrwatch, Return Aegisbane, Paragliding in Skyrim, Leaps Of Faith, Inigo, Gore, Remiel, Lucien, Serana, Auri, Katana and Megara, Fura Bloodmouth, Faralda, Jenassa, Mjoll the Lioness, Erik the Slayer.
+**No facts checked yet** (88): The Bards College, Penitus Oculatus, Raven Rock, Thirsk Mead Hall, Neloth of Tel Mithryn, Skaal Village, The Black Books, Unearthed, Filial Bonds, The Kagrumez Gauntlet, Destroy the Acolyte Priests, Promises to Keep, Unfathomable Depths, Lights Out!, In My Time Of Need, Missing In Action, Rise in the East, Blood on the Ice, The White Phial, The Golden Claw, Laid to Rest, A Return To Your Roots, The Heart of Dibella, The Blessings of Nature, The Book of Love, Seeking A Cure, Falion's Secret, Repentance, Siege on the Dragon Cult, The Pale Lady, Forbidden Legend, A Scroll For Anska, Ancestral Worship, Kyne's Sacred Trials, The Lost Expedition, Trius' Trinket, Infiltration, Evil in Waiting, Silenced Tongues, Yngol's Barrow, The Affairs of Hagravens, Telrav's Request, Search and Seizure, Toying With The Dead, Extracting an Argonian, Dark Ancestor, Drowned Sorrows, The Forgemaster's Fingers, Lost to the Ages, A Forgotten Blade, Destroy the Dragon Cult, The Frozen Heart, The Thalmor's Shadow, A Healing Wedding, Windhelm, expanded, Whiterun, expanded, Markarth Side, On Hogithum, Profane Divinity, The Lost Library, Through a Glass, Darkly, In the Shadows, The Cause, Hendraheim, Guests for Dinner, A Dying Wish, Dreams of the Dead, The Unquiet Dead, Stealer of Souls, Battle of the Champions, The Wintersand Deception, Myrwatch, Return Aegisbane, Paragliding in Skyrim, Leaps Of Faith, Inigo, Gore, Remiel, Lucien, Serana, Auri, Katana and Megara, Fura Bloodmouth, Faralda, Jenassa, Mjoll the Lioness, Erik the Slayer, The Bonds of Matrimony.
 
-## The big stories
+## Main stories
+
+*Dragons, vampires and Miraak*
+
+Also here: Destroy the Acolyte Priests, A Forgotten Blade, Destroy the Dragon Cult, Serana.
 
 ### The Dragonborn
 
@@ -72,7 +81,11 @@
 - After: The Dragonborn
 - Quests: Dragonborn; The Temple of Miraak; The Fate of the Skaal; Cleansing the Stones; The Path of Knowledge; The Gardener of Men; At the Summit of Apocrypha; Cultists vs Player
 
-## Join a guild or order
+## Guilds and factions
+
+*Earn your place, then run it*
+
+Also here: The Gray Cowl of Nocturnal, The Tools of Kagrenac, Revealing Rune.
 
 ### The Companions
 
@@ -166,7 +179,11 @@
 
 - Quests: Penitus Oculatus; Unfinished Business; Bad Blood; Fool's Errand; A Nest of Vipers; Loose Ends; Unfinished Business; House Cleaning; Paperwork; Inquisition; Troubleshoot
 
-## Strike a bargain with a Daedric Prince
+## Daedric Princes
+
+*Power at a price*
+
+Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### A Daedra's Best Friend
 
@@ -328,7 +345,11 @@
 - Length: 1–2 hours *(mod page)*
 - Quests: Sleepwalking Into A Nightmare
 
-## Go somewhere new
+## New lands
+
+*Places off the map*
+
+Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to do in the Soul Cairn.
 
 ### Wyrmstooth
 
@@ -403,7 +424,111 @@
 - Length: 2–4 hours *(mod page)*
 - Quests: Lost to Oblivion; In the Pines; Lost in the Woods
 
-## A story in Skyrim
+### Raven Rock
+
+12 quests · Skyrim · Raven Rock
+
+> I've stumbled across a Dark Elf in combat for his life with strange, ashen beings at the Attius Farm outside of Raven Rock. He appears outnumbered, and he's requested I lend him a helping hand.
+
+- Quests: March of the Dead; Served Cold; An Axe to Find; The Final Descent; The Final Descent Priest; Recipe for Distraction; Fetch the Netch; Clean Sweep; It's All In The Taste; Pain in the Necklace; Feeding the Addiction; First Edition
+
+### Thirsk Mead Hall
+
+7 quests · Skyrim · Thirsk
+
+> I met a group of Nords from Thirsk Mead Hall, which has recently been overrun by rieklings. They're camped on the eastern shore of the island, waiting for an opportunity to attack and take back their home.
+
+- Quests: Thirsk Rumors; Retaking Thirsk; The Chief of Thirsk Hall; Elmus Favor Quest; Elmus Favor Quest; Halbarn Favor Quest; Hilund Favor Quest
+
+### Neloth of Tel Mithryn
+
+14 quests · Skyrim · Tel Mithryn
+
+> Neloth has asked me to locate his steward, Varona Nelas. She is probably somewhere around Tel Mithryn.
+
+- Quests: Reluctant Steward; A New Debt; Old Friends; From the Ashes; Healing a House; Lost Knowledge; Heart Stones; Telvanni Research; Wind and Sand; Experimental Subject; Experimental Subject; Briarheart Necropsy; Azra's Staffs; Hunting and Gathering
+
+### Skaal Village
+
+3 quests · Skyrim · Skaal Village
+
+> I met Tharstan, a historian living in Skaal Village who discovered the recently unearthed entrance to an old crypt. He offered to hire me as protection while we explored the crypt, and asked me to meet him there if I was interested.
+
+- Quests: Lost Legacy; A New Source of Stalhrim; Skaal Village Dialogue
+
+### The Black Books
+
+6 quests · Skyrim · Solstheim
+
+> I read the Black Book called "Untold Legends", and found myself in Hermaeus Mora's realm of Apocrypha. I should uncover the knowledge hidden here, or read the book again to escape.
+
+- Quests: Black Book; Black Book: Untold Legends; Black Book: The Winds of Change; Black Book: The Sallow Regent; Black Book: Filament and Filigree; Black Book: The Hidden Twilight
+
+### The Ebony Warrior
+
+1 quest · Skyrim
+
+> Talk to the Ebony Warrior
+
+- Gate: Level 40. *(files)*
+- Quests: The Ebony Warrior
+
+### Deathbrand
+
+1 quest · Skyrim · Haknir's Shoal
+
+> At Haknir's Shoal, a band of pirates uncovered an ancient treasure chest containing a single piece of stalhrim armor. How did they know to dig in this remote spot?
+
+- Gate: Level 20 for the treasure. *(files)*
+- Quests: Deathbrand
+
+### Unearthed
+
+2 quests · Skyrim · Kolbjorn Barrow
+
+> Outside Kolbjorn Barrow, I met Ralis Sedarys, an explorer who came to Solstheim in search of relics within the barrow. But when he arrived, he found it buried by the ash. He had all but given up on excavating it, but if I can supply the funds, he offered to make me a partner in his expedition.
+
+- Quests: Unearthed; Kolbjorn Barrow Misc Objectives
+
+### Filial Bonds
+
+1 quest · Skyrim
+
+> I met Wulf Wild-Blood, whose brother disappeared many years ago. Wulf believes he may have become a werebear, and warned me to keep an eye out for him.
+
+- Quests: Filial Bonds
+
+### The Kagrumez Gauntlet
+
+1 quest · Skyrim · Kagrumez
+
+> Find Resonance Gems across Solstheim to complete the Kagrumez trials
+
+- Quests: The Kagrumez Gauntlet
+
+### Miasma
+
+1 quest · Miasma (Nexus 149879) · Raven Rock
+
+> I met an Argonian called Haj-Xul at The Retching Netch in Raven Rock. He claims he is a member of the An-Xileel clan in Black Marsh and has hired me to assist him in capturing a criminal from House Telvanni who might have recently arrived in Solstheim.
+
+- Start: Haj-Xul, in the Retching Netch, Raven Rock. *(files)*
+- Level: At least 20, by the author *(mod page)*
+- Length: 2–3 hours *(mod page)*
+- Quests: Miasma
+
+### Destroy the Acolyte Priests
+
+1 quest · Destroy the Acolyte Priests (Nexus 145580)
+
+> Destroy Ahzidal
+
+- After: Dragonborn
+- Quests: Destroy the Acolyte Priests
+
+## Side stories
+
+*Smaller tales, all over Skyrim*
 
 ### The Forsworn Conspiracy
 
@@ -1091,111 +1216,19 @@
 
 - Quests: Leaps Of Faith
 
-## A story on Solstheim
+### The Bonds of Matrimony
 
-### Raven Rock
+1 quest · Skyrim · Riften
 
-12 quests · Skyrim · Raven Rock
+> Speak to Maramal about arranging your wedding
 
-> I've stumbled across a Dark Elf in combat for his life with strange, ashen beings at the Attius Farm outside of Raven Rock. He appears outnumbered, and he's requested I lend him a helping hand.
+- Quests: The Bonds of Matrimony
 
-- Quests: March of the Dead; Served Cold; An Axe to Find; The Final Descent; The Final Descent Priest; Recipe for Distraction; Fetch the Netch; Clean Sweep; It's All In The Taste; Pain in the Necklace; Feeding the Addiction; First Edition
+## Followers
 
-### Thirsk Mead Hall
+*Their stories, on the road*
 
-7 quests · Skyrim · Thirsk
-
-> I met a group of Nords from Thirsk Mead Hall, which has recently been overrun by rieklings. They're camped on the eastern shore of the island, waiting for an opportunity to attack and take back their home.
-
-- Quests: Thirsk Rumors; Retaking Thirsk; The Chief of Thirsk Hall; Elmus Favor Quest; Elmus Favor Quest; Halbarn Favor Quest; Hilund Favor Quest
-
-### Neloth of Tel Mithryn
-
-14 quests · Skyrim · Tel Mithryn
-
-> Neloth has asked me to locate his steward, Varona Nelas. She is probably somewhere around Tel Mithryn.
-
-- Quests: Reluctant Steward; A New Debt; Old Friends; From the Ashes; Healing a House; Lost Knowledge; Heart Stones; Telvanni Research; Wind and Sand; Experimental Subject; Experimental Subject; Briarheart Necropsy; Azra's Staffs; Hunting and Gathering
-
-### Skaal Village
-
-3 quests · Skyrim · Skaal Village
-
-> I met Tharstan, a historian living in Skaal Village who discovered the recently unearthed entrance to an old crypt. He offered to hire me as protection while we explored the crypt, and asked me to meet him there if I was interested.
-
-- Quests: Lost Legacy; A New Source of Stalhrim; Skaal Village Dialogue
-
-### The Black Books
-
-6 quests · Skyrim · Solstheim
-
-> I read the Black Book called "Untold Legends", and found myself in Hermaeus Mora's realm of Apocrypha. I should uncover the knowledge hidden here, or read the book again to escape.
-
-- Quests: Black Book; Black Book: Untold Legends; Black Book: The Winds of Change; Black Book: The Sallow Regent; Black Book: Filament and Filigree; Black Book: The Hidden Twilight
-
-### The Ebony Warrior
-
-1 quest · Skyrim
-
-> Talk to the Ebony Warrior
-
-- Gate: Level 40. *(files)*
-- Quests: The Ebony Warrior
-
-### Deathbrand
-
-1 quest · Skyrim · Haknir's Shoal
-
-> At Haknir's Shoal, a band of pirates uncovered an ancient treasure chest containing a single piece of stalhrim armor. How did they know to dig in this remote spot?
-
-- Gate: Level 20 for the treasure. *(files)*
-- Quests: Deathbrand
-
-### Unearthed
-
-2 quests · Skyrim · Kolbjorn Barrow
-
-> Outside Kolbjorn Barrow, I met Ralis Sedarys, an explorer who came to Solstheim in search of relics within the barrow. But when he arrived, he found it buried by the ash. He had all but given up on excavating it, but if I can supply the funds, he offered to make me a partner in his expedition.
-
-- Quests: Unearthed; Kolbjorn Barrow Misc Objectives
-
-### Filial Bonds
-
-1 quest · Skyrim
-
-> I met Wulf Wild-Blood, whose brother disappeared many years ago. Wulf believes he may have become a werebear, and warned me to keep an eye out for him.
-
-- Quests: Filial Bonds
-
-### The Kagrumez Gauntlet
-
-1 quest · Skyrim · Kagrumez
-
-> Find Resonance Gems across Solstheim to complete the Kagrumez trials
-
-- Quests: The Kagrumez Gauntlet
-
-### Miasma
-
-1 quest · Miasma (Nexus 149879) · Raven Rock
-
-> I met an Argonian called Haj-Xul at The Retching Netch in Raven Rock. He claims he is a member of the An-Xileel clan in Black Marsh and has hired me to assist him in capturing a criminal from House Telvanni who might have recently arrived in Solstheim.
-
-- Start: Haj-Xul, in the Retching Netch, Raven Rock. *(files)*
-- Level: At least 20, by the author *(mod page)*
-- Length: 2–3 hours *(mod page)*
-- Quests: Miasma
-
-### Destroy the Acolyte Priests
-
-1 quest · Destroy the Acolyte Priests (Nexus 145580)
-
-> Destroy Ahzidal
-
-- After: Dragonborn
-- Quests: Destroy the Acolyte Priests
-
-## A companion's story
+Also here: Lost to the Ages, The Thalmor's Shadow.
 
 ### Inigo
 
@@ -1294,7 +1327,9 @@
 
 - Quests: Erik the Shield Brother
 
-## Steady work
+## Need coin?
+
+*Notice boards, bounties and odd jobs*
 
 ### Missives
 
@@ -1383,44 +1418,6 @@
 
 - Quests: A Bad Trade; Salty Sea-Dogs; For the Good of Morthal; Payment Delivery; Lod's Lot; Amulet of the Moon
 
-## A place of your own
-
-### The Bonds of Matrimony
-
-1 quest · Skyrim · Riften
-
-- Quests: The Bonds of Matrimony
-
-### Riftweald Manor
-
-1 quest · Snazzy Riften AIO (Nexus 147594) · Riften
-
-- Quests: GM_RiftwealdPHQuest01
-
-### Lodges for sale
-
-1 quest · Snazzy Misc Locations (Nexus 147762)
-
-- Quests: GM_BBLPHQuest01
-
-## Where you begin
-
-### Adventurer's Start
-
-20 quests · Adventurer's Start - An Alternate Perspective Addon (Nexus 145599)
-
-> I've been ambushed by a group of bandits. I need to fight my way out of this to survive.
-
-- Quests: Ambushed; Ambushed; Ambushed; Ambushed; Ambushed; Ambushed; Ambushed; Ambushed; Prisoner; Prisoner; Prisoner; Prisoner; Prisoner; Bounty Hunter; Bounty Hunter; Bounty Hunter; Bounty Hunter; Bounty Hunter; Bounty Hunter; Bounty Hunter
-
-### New Beginnings
-
-20 quests · New Beginnings - Alternate Perspective Extension (Nexus 57818)
-
-> I have finally arrived at the Eldergleam Sanctuary. It's even more beautiful than I had imagined! I knew coming here was the right choice. I think I'll stay here for a while before I travel on...
-
-- Quests: From the Depths; A Cry From the Depths; The Evergreen Grove; Target Practice; Dawn and Dusk; From the Depths; Boethiah's Proving; Profit in the Wind; A New Dawn; The Bodies of Men on His Wings; The Blessings of Kyne; Locked Up; The Lady of Infinite Energies; The Taskmaster; Always Vigilant; The Pilgrimage; I Didn't Expect a Kind of Thalmor Inquisition; A Restless Death; When the Wolfbane Blooms; Eye of Newt and Toe of Frog
-
 ## In the field guide, not in the records
 
 Installed, but the crawl kept no quest for them (no journal text it could read, or the plugin goes by another name). To check on the PC.
@@ -1438,4 +1435,8 @@ Installed, but the crawl kept no quest for them (no journal text it could read, 
 - Solstheim Earthquakes SE: A settings holder.
 - Requiem - Improved Spell Learning: Spell learning: a system.
 - Ordinator - Perks of Skyrim: Ordinator's perk tutors: a system.
+- Snazzy Riften AIO: A home to buy, not a quest.
+- Snazzy Misc Locations: A home to buy, not a quest.
+- Adventurer's Start - An Alternate Perspective Addon: A start: it's on the build's start step.
+- New Beginnings - Alternate Perspective Extension: A start: it's on the build's start step.
 - 24 base-game quests: roadside encounters, children's games, monitors and placeholders (listed in `questlines.json`).

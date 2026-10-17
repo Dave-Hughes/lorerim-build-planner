@@ -1,616 +1,2201 @@
 {
-  "about": "Hand-kept: turns questlines_raw.json (one line per mod, plus two vanilla buckets) into the quest lines a player would pick from. scripts/gamedata/questlines.py reads this with quests_raw.json and questlines_raw.json, checks that every raw line and every bucket quest lands somewhere, and writes questlines_report.md. Facts the records don't hold (how a line starts, its gate, its level, its length) come from the field guide's lorerim/world/quests-and-lands.md; 'checked' says where each came from: files (read from the winning records in Dave's install), mod page, or players. A line with no fact has nothing checked yet.",
-  "kinds": {
-    "main": "The big stories",
-    "guild": "Join a guild or order",
-    "daedric": "Strike a bargain with a Daedric Prince",
-    "land": "Go somewhere new",
-    "story": "A story in Skyrim",
-    "solstheim": "A story on Solstheim",
-    "companion": "A companion's story",
-    "work": "Steady work",
-    "home": "A place of your own",
-    "start": "Where you begin"
+  "about": "Hand-kept: turns questlines_raw.json (one line per mod, plus two vanilla buckets) into the quest lines a player would pick from. Each line has a home category (one of the six in 'categories', or the 'work' shelf) and may sit in others too ('also'). scripts/gamedata/questlines.py reads this with quests_raw.json and questlines_raw.json, checks that every raw line and every bucket quest lands somewhere, and writes questlines_report.md. Facts the records don't hold (how a line starts, its gate, its level, its length) come from the field guide's lorerim/world/quests-and-lands.md; 'checked' says where each came from: files (read from the winning records in Dave's install), mod page, or players. A line with no fact has nothing checked yet.",
+  "categories": {
+    "main": {
+      "name": "Main stories",
+      "subtitle": "Dragons, vampires and Miraak",
+      "more": "The three long stories the game is built around: the Dragonborn, Dawnguard's vampire war, and Miraak on Solstheim. In LoreRim, Dawnguard waits for level 30 and Miraak's cultists for 25."
+    },
+    "guilds": {
+      "name": "Guilds and factions",
+      "subtitle": "Earn your place, then run it",
+      "more": "Join, work your way up, and take charge. The Companions, the College, the Thieves Guild, the Dark Brotherhood, the Bards College and the Civil War, plus orders that mods add, like the Vigilants of Stendarr."
+    },
+    "daedric": {
+      "name": "Daedric Princes",
+      "subtitle": "Power at a price",
+      "more": "Each Prince has a quest with an artifact at the end. LoreRim holds almost all of them back until level 20, and Hircine until 25."
+    },
+    "lands": {
+      "name": "New lands",
+      "subtitle": "Places off the map",
+      "more": "Islands, a desert, dream realms and Solstheim: whole places with their own stories. Most are made for level 20 and up."
+    },
+    "side": {
+      "name": "Side stories",
+      "subtitle": "Smaller tales, all over Skyrim",
+      "more": "One-off stories you'd stumble into: a murder in Windhelm, a haunted barrow, a stranger's favour. Most take an hour or two."
+    },
+    "followers": {
+      "name": "Followers",
+      "subtitle": "Their stories, on the road",
+      "more": "Followers with stories of their own. Bring them along and their quests find you."
+    }
+  },
+  "shelves": {
+    "work": {
+      "name": "Need coin?",
+      "subtitle": "Notice boards, bounties and odd jobs",
+      "more": "Work that comes back: Missives boards in every hold, bounties from the jarls, and odd jobs for the people of each town. No story to follow; pick one up whenever you need coin."
+    }
   },
   "lines": [
     {
-      "id": "main-quest", "name": "The Dragonborn", "kind": "main",
-      "lines": ["Main Quest"],
-      "quests": ["FreeformHighHrothgarA", "FreeformSkyhavenTempleA", "FreeformSkyHavenTempleB", "FreeformSkyHavenTempleD"],
+      "id": "main-quest",
+      "name": "The Dragonborn",
+      "category": "main",
+      "lines": [
+        "Main Quest"
+      ],
+      "quests": [
+        "FreeformHighHrothgarA",
+        "FreeformSkyhavenTempleA",
+        "FreeformSkyHavenTempleB",
+        "FreeformSkyHavenTempleD"
+      ],
       "start": "Pick The Dragonborn at the dragon statue in the Helgen inn. The main quest starts with the cart ride into Helgen.",
       "gate": "None. After Before the Storm, Balgruuf no longer walks you to Farengar: the Dragonstone task waits until you ask Farengar about the dragons.",
-      "checked": {"start": "files", "gate": "files"}
+      "checked": {
+        "start": "files",
+        "gate": "files"
+      }
     },
     {
-      "id": "dawnguard", "name": "Dawnguard", "kind": "main",
-      "lines": ["Dawnguard"],
-      "quests": ["DLC01SoulCairnHorseQuest2", "DLC1Radiant", "DLC1VQ05SoulGemHandler", "DLC1VQDragon", "DLC1VQDragonMisc", "DLC1VQFVBooks", "DLC1VampireTutorial"],
+      "id": "dawnguard",
+      "name": "Dawnguard",
+      "category": "main",
+      "lines": [
+        "Dawnguard"
+      ],
+      "quests": [
+        "DLC01SoulCairnHorseQuest2",
+        "DLC1Radiant",
+        "DLC1VQ05SoulGemHandler",
+        "DLC1VQDragon",
+        "DLC1VQDragonMisc",
+        "DLC1VQFVBooks",
+        "DLC1VampireTutorial"
+      ],
       "start": "Durak comes to recruit you, or walk into Dayspring Canyon, south-east of Riften. Guards' rumours about the Dawnguard also need Laid to Rest done in Morthal.",
-      "gate": "Level 30 for Durak and the rumours.", "minLevel": 30,
-      "checked": {"start": "files", "gate": "files"}
+      "gate": "Level 30 for Durak and the rumours.",
+      "minLevel": 30,
+      "checked": {
+        "start": "files",
+        "gate": "files"
+      }
     },
     {
-      "id": "dragonborn", "name": "Dragonborn", "kind": "main",
-      "lines": ["Dragonborn"],
-      "quests": ["DLC2WE09"],
+      "id": "dragonborn",
+      "name": "Dragonborn",
+      "category": "main",
+      "lines": [
+        "Dragonborn"
+      ],
+      "quests": [
+        "DLC2WE09"
+      ],
       "start": "Miraak's cultists find you once you're level 25 and past The Way of the Voice. You can sail to Raven Rock from Windhelm's docks earlier.",
-      "gate": "Level 25 and The Way of the Voice, for the cultists.", "minLevel": 25, "after": ["main-quest"],
-      "checked": {"start": "files", "gate": "files"}
+      "gate": "Level 25 and The Way of the Voice, for the cultists.",
+      "minLevel": 25,
+      "after": [
+        "main-quest"
+      ],
+      "checked": {
+        "start": "files",
+        "gate": "files"
+      }
     },
-
     {
-      "id": "companions", "name": "The Companions", "kind": "guild",
-      "lines": ["Companions"],
+      "id": "companions",
+      "name": "The Companions",
+      "category": "guilds",
+      "lines": [
+        "Companions"
+      ],
       "start": "Talk to Kodlak Whitemane in Jorrvaskr, Whiterun. Or take the Companions start.",
       "gate": "None. Jobs open the next part: 3 before Proving Honor, 5 more before The Silver Hand, 4 more before Blood's Honor (12 in all).",
-      "checked": {"start": "files", "gate": "files"}
+      "checked": {
+        "start": "files",
+        "gate": "files"
+      }
     },
     {
-      "id": "college", "name": "The College of Winterhold", "kind": "guild",
-      "lines": ["College of Winterhold", "College of Winterhold - Quest Expansion"],
-      "quests": ["MG01Pointer", "MGR01", "MGR02", "MGR10", "MGR11", "MGR12", "MGR20", "MGR20B", "FreeformWinterholdCollegeA"],
+      "id": "college",
+      "name": "The College of Winterhold",
+      "category": "guilds",
+      "lines": [
+        "College of Winterhold",
+        "College of Winterhold - Quest Expansion"
+      ],
+      "quests": [
+        "MG01Pointer",
+        "MGR01",
+        "MGR02",
+        "MGR10",
+        "MGR11",
+        "MGR12",
+        "MGR20",
+        "MGR20B",
+        "FreeformWinterholdCollegeA"
+      ],
       "start": "Pass Faralda's test at the College bridge in Winterhold: cast one of the spells she asks for. After The Way of the Voice a Shout also gets you in. Or take the College start.",
       "gate": "None.",
-      "checked": {"start": "files", "gate": "files"}
+      "checked": {
+        "start": "files",
+        "gate": "files"
+      }
     },
     {
-      "id": "thieves-guild", "name": "The Thieves Guild", "kind": "guild",
-      "lines": ["Thieves Guild"],
-      "quests": ["TG00MaulHandler", "TG00MiscHandler", "TG02B", "TG03SP", "TG04EECHandler", "TG04Post", "TGCrownMisc", "TGFenceCaravan", "TGLarceny", "DLC2TGQuest"],
+      "id": "thieves-guild",
+      "name": "The Thieves Guild",
+      "category": "guilds",
+      "lines": [
+        "Thieves Guild"
+      ],
+      "quests": [
+        "TG00MaulHandler",
+        "TG00MiscHandler",
+        "TG02B",
+        "TG03SP",
+        "TG04EECHandler",
+        "TG04Post",
+        "TGCrownMisc",
+        "TGFenceCaravan",
+        "TGLarceny",
+        "DLC2TGQuest"
+      ],
       "start": "Brynjolf comes up to you in Riften's market, between 8 in the morning and 8 at night.",
       "gate": "None.",
-      "checked": {"start": "files", "gate": "files"}
+      "checked": {
+        "start": "files",
+        "gate": "files"
+      }
     },
     {
-      "id": "dark-brotherhood", "name": "The Dark Brotherhood", "kind": "guild",
-      "lines": ["Dark Brotherhood", "The Innocence Lost - Quest Expansion", "ACDB - Additional Contracts for the Dark Brotherhood", "Listen - Dark Brotherhood Radiant Quests"],
-      "quests": ["DBrecurring"],
+      "id": "dark-brotherhood",
+      "name": "The Dark Brotherhood",
+      "category": "guilds",
+      "lines": [
+        "Dark Brotherhood",
+        "The Innocence Lost - Quest Expansion",
+        "ACDB - Additional Contracts for the Dark Brotherhood",
+        "Listen - Dark Brotherhood Radiant Quests"
+      ],
+      "quests": [
+        "DBrecurring"
+      ],
       "start": "Aventus Aretino in Windhelm (Innocence Lost). Kill Grelod, sleep, and Astrid finds you. Or take the Dark Brotherhood start.",
       "gate": "None.",
-      "checked": {"start": "files", "gate": "files"}
+      "checked": {
+        "start": "files",
+        "gate": "files"
+      }
     },
     {
-      "id": "civil-war", "questsFirst": true, "name": "The Civil War", "kind": "guild",
-      "lines": ["Civil War", "Civil War Champions - Reduced Cut", "After the Civil War - Siege Damage Repairs"],
-      "quests": ["CW00A", "CW00B", "CW01AOutfitImperial", "DialogueSolitudeGuardIntro"],
+      "id": "civil-war",
+      "name": "The Civil War",
+      "category": "guilds",
+      "questsFirst": true,
+      "lines": [
+        "Civil War",
+        "Civil War Champions - Reduced Cut",
+        "After the Civil War - Siege Damage Repairs"
+      ],
+      "quests": [
+        "CW00A",
+        "CW00B",
+        "CW01AOutfitImperial",
+        "DialogueSolitudeGuardIntro"
+      ],
       "start": "Join the Legion with Legate Rikke at Castle Dour, Solitude, or the Stormcloaks with Galmar Stone-Fist in Windhelm.",
       "gate": "None.",
-      "checked": {"start": "files", "gate": "files"}
+      "checked": {
+        "start": "files",
+        "gate": "files"
+      }
     },
     {
-      "id": "bards-college", "questsFirst": true, "name": "The Bards College", "kind": "guild",
-      "lines": ["Bards College Excavation"],
-      "quests": ["MS05", "BardsCollegePoeticEdda", "BardsCollegeDrum", "BardsCollegeFlute", "BardsCollegeLute", "dunBardsLeapSummitQST"],
+      "id": "bards-college",
+      "name": "The Bards College",
+      "category": "guilds",
+      "questsFirst": true,
+      "lines": [
+        "Bards College Excavation"
+      ],
+      "quests": [
+        "MS05",
+        "BardsCollegePoeticEdda",
+        "BardsCollegeDrum",
+        "BardsCollegeFlute",
+        "BardsCollegeLute",
+        "dunBardsLeapSummitQST"
+      ],
       "opening": "MS05"
     },
     {
-      "id": "vigilants", "name": "Vigilant", "kind": "guild",
-      "lines": ["VIGILANT - English Translation (Plus Voiced Addon)"],
+      "id": "vigilants",
+      "name": "Vigilant",
+      "category": "guilds",
+      "also": [
+        "daedric",
+        "lands"
+      ],
+      "lines": [
+        "VIGILANT - English Translation (Plus Voiced Addon)"
+      ],
       "opening": "zzzAoMMq00",
       "start": "Altano and Orlando wait in the Windpeak Inn, Dawnstar.",
-      "gate": "Level 25.", "minLevel": 25,
-      "level": "30–40 and up for Acts II to IV", "size": "15–30 hours",
+      "gate": "Level 25.",
+      "minLevel": 25,
+      "level": "30–40 and up for Acts II to IV",
+      "size": "15–30 hours",
       "note": "Four acts, ending in Coldharbour. Most of the Coldharbour quests pay no quest XP: they're typed Misc.",
-      "checked": {"start": "mod page", "gate": "files", "level": "players", "size": "players", "note": "files"}
+      "checked": {
+        "start": "mod page",
+        "gate": "files",
+        "level": "players",
+        "size": "players",
+        "note": "files"
+      }
     },
     {
-      "id": "meridias-order", "name": "Meridia's Order", "kind": "guild",
-      "lines": ["Meridia's Order ESMIFIED"],
+      "id": "meridias-order",
+      "name": "Meridia's Order",
+      "category": "guilds",
+      "also": [
+        "daedric"
+      ],
+      "lines": [
+        "Meridia's Order ESMIFIED"
+      ],
       "start": "After The Break of Dawn, a paladin greets you in a city. Or go to the Sanctum near Rimerock Burrow, west of Solitude.",
-      "gate": "The Break of Dawn, which waits for level 20.", "minLevel": 20, "after": ["the-break-of-dawn"],
-      "level": "20–40", "size": "6–10 hours",
-      "checked": {"start": "mod page", "gate": "files", "level": "mod page", "size": "mod page"}
+      "gate": "The Break of Dawn, which waits for level 20.",
+      "minLevel": 20,
+      "after": [
+        "the-break-of-dawn"
+      ],
+      "level": "20–40",
+      "size": "6–10 hours",
+      "checked": {
+        "start": "mod page",
+        "gate": "files",
+        "level": "mod page",
+        "size": "mod page"
+      }
     },
     {
-      "id": "penitus-oculatus", "name": "Penitus Oculatus", "kind": "guild",
-      "lines": ["Penitus Oculatus"]
-    },
-
-    {
-      "id": "a-daedras-best-friend", "name": "A Daedra's Best Friend", "kind": "daedric", "prince": "Clavicus Vile",
-      "lines": ["A Daedra's Best Friend"],
-      "gate": "No level found.", "checked": {"gate": "files"}
+      "id": "penitus-oculatus",
+      "name": "Penitus Oculatus",
+      "category": "guilds",
+      "lines": [
+        "Penitus Oculatus"
+      ]
     },
     {
-      "id": "a-night-to-remember", "name": "A Night To Remember", "kind": "daedric", "prince": "Sanguine",
-      "lines": ["A Night To Remember"],
-      "gate": "Level 20.", "minLevel": 20, "checked": {"gate": "files"}
+      "id": "a-daedras-best-friend",
+      "name": "A Daedra's Best Friend",
+      "category": "daedric",
+      "prince": "Clavicus Vile",
+      "lines": [
+        "A Daedra's Best Friend"
+      ],
+      "gate": "No level found.",
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "boethiahs-calling", "name": "Boethiah's Calling", "kind": "daedric", "prince": "Boethiah",
-      "lines": ["Boethiah's Calling", "Boethiah's Calling - Alternate Questline"],
-      "quests": ["WEDA02", "DA02KillObj"],
+      "id": "a-night-to-remember",
+      "name": "A Night To Remember",
+      "category": "daedric",
+      "prince": "Sanguine",
+      "lines": [
+        "A Night To Remember"
+      ],
+      "gate": "Level 20.",
+      "minLevel": 20,
+      "checked": {
+        "gate": "files"
+      }
+    },
+    {
+      "id": "boethiahs-calling",
+      "name": "Boethiah's Calling",
+      "category": "daedric",
+      "prince": "Boethiah",
+      "lines": [
+        "Boethiah's Calling",
+        "Boethiah's Calling - Alternate Questline"
+      ],
+      "quests": [
+        "WEDA02",
+        "DA02KillObj"
+      ],
       "opening": "DA02",
-      "gate": "Level 20.", "minLevel": 20,
+      "gate": "Level 20.",
+      "minLevel": 20,
       "note": "The Man in Black is a second way through, with Rudin Filaro at the Temple of Mara.",
-      "checked": {"gate": "files"}
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "discerning-the-transmundane", "name": "Discerning the Transmundane", "kind": "daedric", "prince": "Hermaeus Mora",
-      "lines": ["Discerning the Transmundane"],
-      "gate": "Level 20.", "minLevel": 20, "checked": {"gate": "files"}
+      "id": "discerning-the-transmundane",
+      "name": "Discerning the Transmundane",
+      "category": "daedric",
+      "prince": "Hermaeus Mora",
+      "lines": [
+        "Discerning the Transmundane"
+      ],
+      "gate": "Level 20.",
+      "minLevel": 20,
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "ill-met-by-moonlight", "name": "Ill Met By Moonlight", "kind": "daedric", "prince": "Hircine",
-      "lines": ["Ill Met By Moonlight"],
-      "gate": "Level 25.", "minLevel": 25, "checked": {"gate": "files"}
+      "id": "ill-met-by-moonlight",
+      "name": "Ill Met By Moonlight",
+      "category": "daedric",
+      "prince": "Hircine",
+      "lines": [
+        "Ill Met By Moonlight"
+      ],
+      "gate": "Level 25.",
+      "minLevel": 25,
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "pieces-of-the-past", "name": "Pieces of the Past", "kind": "daedric", "prince": "Mehrunes Dagon",
-      "lines": ["Pieces of the Past", "Mehrunes Dagon's Shrine Unlocked - Pieces of the Past Quest Alternative - Voiced"],
+      "id": "pieces-of-the-past",
+      "name": "Pieces of the Past",
+      "category": "daedric",
+      "prince": "Mehrunes Dagon",
+      "lines": [
+        "Pieces of the Past",
+        "Mehrunes Dagon's Shrine Unlocked - Pieces of the Past Quest Alternative - Voiced"
+      ],
       "opening": "DA07",
-      "gate": "Level 20.", "minLevel": 20,
+      "gate": "Level 20.",
+      "minLevel": 20,
       "note": "Reforging the Past lets you reforge the Razor without Dagon.",
-      "checked": {"gate": "files"}
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "the-black-star", "name": "The Black Star", "kind": "daedric", "prince": "Azura",
-      "lines": ["The Black Star"],
-      "gate": "No level found.", "checked": {"gate": "files"}
+      "id": "the-black-star",
+      "name": "The Black Star",
+      "category": "daedric",
+      "prince": "Azura",
+      "lines": [
+        "The Black Star"
+      ],
+      "gate": "No level found.",
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "the-break-of-dawn", "name": "The Break of Dawn", "kind": "daedric", "prince": "Meridia",
-      "lines": ["The Break of Dawn"],
-      "gate": "Level 20, and not as a vampire.", "minLevel": 20, "checked": {"gate": "files"}
+      "id": "the-break-of-dawn",
+      "name": "The Break of Dawn",
+      "category": "daedric",
+      "prince": "Meridia",
+      "lines": [
+        "The Break of Dawn"
+      ],
+      "gate": "Level 20, and not as a vampire.",
+      "minLevel": 20,
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "the-cursed-tribe", "name": "The Cursed Tribe", "kind": "daedric", "prince": "Malacath",
-      "lines": ["The Cursed Tribe"],
-      "gate": "Level 20.", "minLevel": 20, "checked": {"gate": "files"}
+      "id": "the-cursed-tribe",
+      "name": "The Cursed Tribe",
+      "category": "daedric",
+      "prince": "Malacath",
+      "lines": [
+        "The Cursed Tribe"
+      ],
+      "gate": "Level 20.",
+      "minLevel": 20,
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "the-house-of-horrors", "name": "The House of Horrors", "kind": "daedric", "prince": "Molag Bal",
-      "lines": ["The House of Horrors"],
-      "gate": "Level 20.", "minLevel": 20, "checked": {"gate": "files"}
+      "id": "the-house-of-horrors",
+      "name": "The House of Horrors",
+      "category": "daedric",
+      "prince": "Molag Bal",
+      "lines": [
+        "The House of Horrors"
+      ],
+      "gate": "Level 20.",
+      "minLevel": 20,
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "the-mind-of-madness", "name": "The Mind of Madness", "kind": "daedric", "prince": "Sheogorath",
-      "lines": ["The Mind of Madness"],
-      "gate": "Level 20.", "minLevel": 20, "checked": {"gate": "files"}
+      "id": "the-mind-of-madness",
+      "name": "The Mind of Madness",
+      "category": "daedric",
+      "prince": "Sheogorath",
+      "lines": [
+        "The Mind of Madness"
+      ],
+      "gate": "Level 20.",
+      "minLevel": 20,
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "saints-and-seducers", "name": "Saints and Seducers", "kind": "daedric", "prince": "Sheogorath",
-      "lines": ["Skyrim Extended Cut - Saints and Seducers", "ccbgssse025-advdsgs"],
+      "id": "saints-and-seducers",
+      "name": "Saints and Seducers",
+      "category": "daedric",
+      "also": [
+        "lands"
+      ],
+      "prince": "Sheogorath",
+      "lines": [
+        "Skyrim Extended Cut - Saints and Seducers",
+        "ccbgssse025-advdsgs"
+      ],
       "opening": "EC_SS_MQ101",
       "start": "Carries on Sheogorath's story after The Mind of Madness, in the Shivering Isles.",
-      "gate": "Level 20, after The Mind of Madness.", "minLevel": 20, "after": ["the-mind-of-madness"],
+      "gate": "Level 20, after The Mind of Madness.",
+      "minLevel": 20,
+      "after": [
+        "the-mind-of-madness"
+      ],
       "size": "1–3 hours",
-      "checked": {"start": "mod page", "gate": "files", "size": "mod page"}
+      "checked": {
+        "start": "mod page",
+        "gate": "files",
+        "size": "mod page"
+      }
     },
     {
-      "id": "the-only-cure", "name": "The Only Cure", "kind": "daedric", "prince": "Peryite",
-      "lines": ["The Only Cure"],
-      "gate": "Level 20.", "minLevel": 20, "checked": {"gate": "files"}
+      "id": "the-only-cure",
+      "name": "The Only Cure",
+      "category": "daedric",
+      "prince": "Peryite",
+      "lines": [
+        "The Only Cure"
+      ],
+      "gate": "Level 20.",
+      "minLevel": 20,
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "the-taste-of-death", "questsFirst": true, "name": "The Taste of Death", "kind": "daedric", "prince": "Namira",
-      "lines": ["The Taste of Death", "The Taste of Death - Quest Addon"],
-      "quests": ["DA11Intro"],
+      "id": "the-taste-of-death",
+      "name": "The Taste of Death",
+      "category": "daedric",
+      "questsFirst": true,
+      "prince": "Namira",
+      "lines": [
+        "The Taste of Death",
+        "The Taste of Death - Quest Addon"
+      ],
+      "quests": [
+        "DA11Intro"
+      ],
       "opening": "DA11",
-      "gate": "Level 20.", "minLevel": 20, "checked": {"gate": "files"}
+      "gate": "Level 20.",
+      "minLevel": 20,
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "the-whispering-door", "name": "The Whispering Door", "kind": "daedric", "prince": "Mephala",
-      "lines": ["The Whispering Door", "Mephala's Curse - Whispering Door Quest Addon"],
+      "id": "the-whispering-door",
+      "name": "The Whispering Door",
+      "category": "daedric",
+      "prince": "Mephala",
+      "lines": [
+        "The Whispering Door",
+        "Mephala's Curse - Whispering Door Quest Addon"
+      ],
       "opening": "DA08",
-      "gate": "Level 20.", "minLevel": 20, "checked": {"gate": "files"}
+      "gate": "Level 20.",
+      "minLevel": 20,
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "waking-nightmare", "name": "Waking Nightmare", "kind": "daedric", "prince": "Vaermina",
-      "lines": ["Waking Nightmare"],
-      "gate": "No level found.", "checked": {"gate": "files"}
+      "id": "waking-nightmare",
+      "name": "Waking Nightmare",
+      "category": "daedric",
+      "prince": "Vaermina",
+      "lines": [
+        "Waking Nightmare"
+      ],
+      "gate": "No level found.",
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "sleepwalking-into-a-nightmare", "name": "Sleepwalking Into A Nightmare", "kind": "daedric",
-      "lines": ["Sleepwalking Into A Nightmare - New Daedric Prince Quest"],
+      "id": "sleepwalking-into-a-nightmare",
+      "name": "Sleepwalking Into A Nightmare",
+      "category": "daedric",
+      "also": [
+        "lands"
+      ],
+      "lines": [
+        "Sleepwalking Into A Nightmare - New Daedric Prince Quest"
+      ],
       "start": "Ralforn at Green-Tip Cabin, north-east of Ivarstead.",
-      "gate": "None found.", "size": "1–2 hours",
-      "checked": {"start": "mod page", "gate": "mod page", "size": "mod page"}
+      "gate": "None found.",
+      "size": "1–2 hours",
+      "checked": {
+        "start": "mod page",
+        "gate": "mod page",
+        "size": "mod page"
+      }
     },
-
     {
-      "id": "wyrmstooth", "name": "Wyrmstooth", "kind": "land", "where": "An island north of Solitude",
-      "lines": ["Wyrmstooth"],
+      "id": "wyrmstooth",
+      "name": "Wyrmstooth",
+      "category": "lands",
+      "where": "An island north of Solitude",
+      "lines": [
+        "Wyrmstooth"
+      ],
       "opening": "WTDragonHunt",
       "start": "An Imperial courier, Theodyn Bienne, finds you and sends you to Lurius Liore at the Bannered Mare in Whiterun.",
-      "gate": "Level 20, Rise in the East done, and the main quest past The Horn of Jurgen Windcaller.", "minLevel": 20, "after": ["rise-in-the-east", "main-quest"],
-      "level": "20–40 on the island", "size": "6–10 hours",
-      "checked": {"start": "files", "gate": "files", "level": "players", "size": "players"}
+      "gate": "Level 20, Rise in the East done, and the main quest past The Horn of Jurgen Windcaller.",
+      "minLevel": 20,
+      "after": [
+        "rise-in-the-east",
+        "main-quest"
+      ],
+      "level": "20–40 on the island",
+      "size": "6–10 hours",
+      "checked": {
+        "start": "files",
+        "gate": "files",
+        "level": "players",
+        "size": "players"
+      }
     },
     {
-      "id": "baan-malur", "name": "Journey to Baan Malur", "kind": "land", "where": "Morrowind, east of Windhelm",
-      "lines": ["Journey to Baan Malur and Morrowind"],
-      "skip": ["DefunctQuest05", "DefunctQuest06"],
+      "id": "baan-malur",
+      "name": "Journey to Baan Malur",
+      "category": "lands",
+      "where": "Morrowind, east of Windhelm",
+      "lines": [
+        "Journey to Baan Malur and Morrowind"
+      ],
+      "skip": [
+        "DefunctQuest05",
+        "DefunctQuest06"
+      ],
       "opening": "DefunctQuest02",
       "start": "Take the paid ferry from Raven Rock, or walk east of Windhelm through the Dwemer ruin Kalbthurz.",
       "gate": "None found.",
       "level": "Morrowind's creatures: treat it as 25 and up",
-      "checked": {"start": "mod page", "gate": "files", "level": "players"}
+      "checked": {
+        "start": "mod page",
+        "gate": "files",
+        "level": "players"
+      }
     },
     {
-      "id": "siege-at-icemoth", "name": "Siege at Icemoth", "kind": "land", "where": "Islands north of Skyrim, near High Rock",
-      "lines": ["Siege at Icemoth"],
+      "id": "siege-at-icemoth",
+      "name": "Siege at Icemoth",
+      "category": "lands",
+      "where": "Islands north of Skyrim, near High Rock",
+      "lines": [
+        "Siege at Icemoth"
+      ],
       "opening": "HYORdunIcemothQST",
       "start": "Read the dead mercenary's waterlogged journal at the Old Wooden Jetty, on the north-west beach west of Northwatch Keep.",
-      "gate": "None found.", "level": "25 and up", "size": "2–4 hours",
-      "checked": {"start": "files", "gate": "files", "level": "players", "size": "players"}
+      "gate": "None found.",
+      "level": "25 and up",
+      "size": "2–4 hours",
+      "checked": {
+        "start": "files",
+        "gate": "files",
+        "level": "players",
+        "size": "players"
+      }
     },
     {
-      "id": "gray-cowl", "name": "The Gray Cowl of Nocturnal", "kind": "land", "where": "Hammerfell: the Alik'r Desert",
-      "lines": ["The Gray Cowl of Nocturnal - 10th anniversary", "Betalille's Hammerfell Quests Bundle - The Gray Cowl of Nocturnal"],
+      "id": "gray-cowl",
+      "name": "The Gray Cowl of Nocturnal",
+      "category": "lands",
+      "also": [
+        "guilds"
+      ],
+      "where": "Hammerfell: the Alik'r Desert",
+      "lines": [
+        "The Gray Cowl of Nocturnal - 10th anniversary",
+        "Betalille's Hammerfell Quests Bundle - The Gray Cowl of Nocturnal"
+      ],
       "opening": "manny_GF_MQ",
       "start": "Starts once you've finished the Thieves Guild (Under New Management).",
-      "gate": "The Thieves Guild questline finished.", "after": ["thieves-guild"],
-      "level": "30 and up in the desert", "size": "8–15 hours",
-      "checked": {"start": "files", "gate": "files", "level": "players", "size": "players"}
+      "gate": "The Thieves Guild questline finished.",
+      "after": [
+        "thieves-guild"
+      ],
+      "level": "30 and up in the desert",
+      "size": "8–15 hours",
+      "checked": {
+        "start": "files",
+        "gate": "files",
+        "level": "players",
+        "size": "players"
+      }
     },
     {
-      "id": "forgotten-city", "name": "The Forgotten City", "kind": "land", "where": "An underground Dwemer city",
-      "lines": ["The Forgotten City"],
+      "id": "forgotten-city",
+      "name": "The Forgotten City",
+      "category": "lands",
+      "where": "An underground Dwemer city",
+      "lines": [
+        "The Forgotten City"
+      ],
       "start": "A courier brings you a letter.",
-      "gate": "None found.", "level": "Any: it's mostly talking", "size": "6–8 hours",
-      "checked": {"start": "files", "gate": "files", "level": "mod page", "size": "mod page"}
+      "gate": "None found.",
+      "level": "Any: it's mostly talking",
+      "size": "6–8 hours",
+      "checked": {
+        "start": "files",
+        "gate": "files",
+        "level": "mod page",
+        "size": "mod page"
+      }
     },
     {
-      "id": "gravewind", "name": "Gravewind", "kind": "land", "where": "A realm of the dead, entered from Falkreath",
-      "lines": ["Gravewind - ESMIFIED"],
+      "id": "gravewind",
+      "name": "Gravewind",
+      "category": "lands",
+      "where": "A realm of the dead, entered from Falkreath",
+      "lines": [
+        "Gravewind - ESMIFIED"
+      ],
       "opening": "GRVEMainQuest01",
       "start": "Walk into the abandoned homestead north-west of Roadside Ruins, Falkreath. Once inside, you're trapped.",
-      "gate": "None found.", "level": "25 and up, by the author", "size": "2–4 hours",
-      "checked": {"start": "mod page", "gate": "files", "level": "mod page", "size": "mod page"}
+      "gate": "None found.",
+      "level": "25 and up, by the author",
+      "size": "2–4 hours",
+      "checked": {
+        "start": "mod page",
+        "gate": "files",
+        "level": "mod page",
+        "size": "mod page"
+      }
     },
-
     {
-      "id": "raven-rock", "name": "Raven Rock", "kind": "solstheim", "where": "Raven Rock",
-      "quests": ["DLC2RR01", "DLC2RR02", "DLC2RR03Intro", "DLC2RR03", "DLC2RR03Priest", "DLC2RRFavor01", "DLC2RRFavor02", "DLC2RRFavor03", "DLC2RRFavor04", "DLC2RRFavor05", "DLC2RRFavor06", "DLC2RRFavor07"]
+      "id": "raven-rock",
+      "name": "Raven Rock",
+      "category": "lands",
+      "where": "Raven Rock",
+      "quests": [
+        "DLC2RR01",
+        "DLC2RR02",
+        "DLC2RR03Intro",
+        "DLC2RR03",
+        "DLC2RR03Priest",
+        "DLC2RRFavor01",
+        "DLC2RRFavor02",
+        "DLC2RRFavor03",
+        "DLC2RRFavor04",
+        "DLC2RRFavor05",
+        "DLC2RRFavor06",
+        "DLC2RRFavor07"
+      ]
     },
     {
-      "id": "thirsk", "name": "Thirsk Mead Hall", "kind": "solstheim", "where": "Thirsk",
-      "quests": ["DLC2MHMisc", "DLC2MH01", "DLC2MH02", "DLC2ThirskFFElmus", "DLC2ThirskFFElmusBack", "DLC2ThirskFFHalbarn", "DLC2ThirskFFHilund"],
+      "id": "thirsk",
+      "name": "Thirsk Mead Hall",
+      "category": "lands",
+      "where": "Thirsk",
+      "quests": [
+        "DLC2MHMisc",
+        "DLC2MH01",
+        "DLC2MH02",
+        "DLC2ThirskFFElmus",
+        "DLC2ThirskFFElmusBack",
+        "DLC2ThirskFFHalbarn",
+        "DLC2ThirskFFHilund"
+      ],
       "opening": "DLC2MH01"
     },
     {
-      "id": "tel-mithryn", "name": "Neloth of Tel Mithryn", "kind": "solstheim", "where": "Tel Mithryn",
-      "quests": ["DLC2TT1", "DLC2TT1b", "DLC2TT2", "DLC2TTF1", "DLC2TTF2", "DLC2TTR1", "DLC2TTR2", "DLC2TTR3a", "DLC2TTR3b", "DLC2TTR4a", "DLC2TTR4b", "DLC2TTR5", "DLC2TTR7", "DLC2TTR8"]
+      "id": "tel-mithryn",
+      "name": "Neloth of Tel Mithryn",
+      "category": "lands",
+      "where": "Tel Mithryn",
+      "quests": [
+        "DLC2TT1",
+        "DLC2TT1b",
+        "DLC2TT2",
+        "DLC2TTF1",
+        "DLC2TTF2",
+        "DLC2TTR1",
+        "DLC2TTR2",
+        "DLC2TTR3a",
+        "DLC2TTR3b",
+        "DLC2TTR4a",
+        "DLC2TTR4b",
+        "DLC2TTR5",
+        "DLC2TTR7",
+        "DLC2TTR8"
+      ]
     },
     {
-      "id": "skaal-village", "name": "Skaal Village", "kind": "solstheim", "where": "Skaal Village",
-      "quests": ["DLC2SV01", "DLC2SV02", "DLC2SkaalVillageFreeform1"]
+      "id": "skaal-village",
+      "name": "Skaal Village",
+      "category": "lands",
+      "where": "Skaal Village",
+      "quests": [
+        "DLC2SV01",
+        "DLC2SV02",
+        "DLC2SkaalVillageFreeform1"
+      ]
     },
     {
-      "id": "black-books", "name": "The Black Books", "kind": "solstheim", "where": "Solstheim",
-      "quests": ["DLC2WE06", "DLC2BlackBook03Quest", "DLC2BlackBook04Quest", "DLC2BlackBook05Quest", "DLC2BlackBook06Quest", "DLC2BlackBook07Quest"],
+      "id": "black-books",
+      "name": "The Black Books",
+      "category": "lands",
+      "also": [
+        "daedric"
+      ],
+      "where": "Solstheim",
+      "quests": [
+        "DLC2WE06",
+        "DLC2BlackBook03Quest",
+        "DLC2BlackBook04Quest",
+        "DLC2BlackBook05Quest",
+        "DLC2BlackBook06Quest",
+        "DLC2BlackBook07Quest"
+      ],
       "opening": "DLC2BlackBook03Quest"
     },
     {
-      "id": "the-ebony-warrior", "name": "The Ebony Warrior", "kind": "solstheim",
-      "quests": ["DLC2EbonyWarriorQuest"],
-      "gate": "Level 40.", "minLevel": 40, "checked": {"gate": "files"}
+      "id": "the-ebony-warrior",
+      "name": "The Ebony Warrior",
+      "category": "lands",
+      "quests": [
+        "DLC2EbonyWarriorQuest"
+      ],
+      "gate": "Level 40.",
+      "minLevel": 40,
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "deathbrand", "name": "Deathbrand", "kind": "solstheim", "where": "Haknir's Shoal",
-      "quests": ["DLC2dunHaknirTreasureQST"],
-      "gate": "Level 20 for the treasure.", "minLevel": 20, "checked": {"gate": "files"}
+      "id": "deathbrand",
+      "name": "Deathbrand",
+      "category": "lands",
+      "where": "Haknir's Shoal",
+      "quests": [
+        "DLC2dunHaknirTreasureQST"
+      ],
+      "gate": "Level 20 for the treasure.",
+      "minLevel": 20,
+      "checked": {
+        "gate": "files"
+      }
     },
     {
-      "id": "unearthed", "name": "Unearthed", "kind": "solstheim", "where": "Kolbjorn Barrow",
-      "quests": ["DLC2dunKolbjornQST", "DLC2dunKolbjornMiscQST"]
+      "id": "unearthed",
+      "name": "Unearthed",
+      "category": "lands",
+      "where": "Kolbjorn Barrow",
+      "quests": [
+        "DLC2dunKolbjornQST",
+        "DLC2dunKolbjornMiscQST"
+      ]
     },
     {
-      "id": "filial-bonds", "name": "Filial Bonds", "kind": "solstheim",
-      "quests": ["DLC2WB01"]
+      "id": "filial-bonds",
+      "name": "Filial Bonds",
+      "category": "lands",
+      "quests": [
+        "DLC2WB01"
+      ]
     },
     {
-      "id": "the-kagrumez-gauntlet", "name": "The Kagrumez Gauntlet", "kind": "solstheim", "where": "Kagrumez",
-      "quests": ["DLC2KagrumezQST"]
+      "id": "the-kagrumez-gauntlet",
+      "name": "The Kagrumez Gauntlet",
+      "category": "lands",
+      "where": "Kagrumez",
+      "quests": [
+        "DLC2KagrumezQST"
+      ]
     },
     {
-      "id": "miasma", "name": "Miasma", "kind": "solstheim", "where": "Raven Rock",
-      "lines": ["Miasma"],
-      "skip": ["RE01PriestFight"],
+      "id": "miasma",
+      "name": "Miasma",
+      "category": "lands",
+      "where": "Raven Rock",
+      "lines": [
+        "Miasma"
+      ],
+      "skip": [
+        "RE01PriestFight"
+      ],
       "start": "Haj-Xul, in the Retching Netch, Raven Rock.",
-      "level": "At least 20, by the author", "size": "2–3 hours",
-      "checked": {"start": "files", "level": "mod page", "size": "mod page"}
+      "level": "At least 20, by the author",
+      "size": "2–3 hours",
+      "checked": {
+        "start": "files",
+        "level": "mod page",
+        "size": "mod page"
+      }
     },
     {
-      "id": "destroy-the-acolyte-priests", "name": "Destroy the Acolyte Priests", "kind": "solstheim",
-      "lines": ["Destroy the Acolyte Priests"], "after": ["dragonborn"]
-    },
-
-    {
-      "id": "forsworn-conspiracy", "name": "The Forsworn Conspiracy", "kind": "story", "where": "Markarth",
-      "quests": ["MS01", "MS02", "FreeformCidhnaMineA", "DialogueCidhnaMine"],
-      "gate": "Level 20.", "minLevel": 20, "checked": {"gate": "files"}
-    },
-    {"id": "promises-to-keep", "name": "Promises to Keep", "kind": "story", "where": "Riften", "quests": ["MS03"]},
-    {"id": "unfathomable-depths", "name": "Unfathomable Depths", "kind": "story", "where": "Riften", "quests": ["MS04"]},
-    {
-      "id": "the-wolf-queen-awakened", "name": "The Wolf Queen Awakened", "kind": "story", "where": "Solitude",
-      "quests": ["MS06Start", "MS06"],
-      "gate": "Level 10.", "minLevel": 10, "checked": {"gate": "files"}
-    },
-    {"id": "lights-out", "name": "Lights Out!", "kind": "story", "where": "Solitude", "quests": ["MS07"]},
-    {"id": "in-my-time-of-need", "name": "In My Time Of Need", "kind": "story", "where": "Whiterun", "quests": ["MS08"]},
-    {"id": "missing-in-action", "name": "Missing In Action", "kind": "story", "where": "Whiterun", "quests": ["MS09"]},
-    {"id": "rise-in-the-east", "name": "Rise in the East", "kind": "story", "where": "Windhelm", "quests": ["MS10"]},
-    {"id": "blood-on-the-ice", "name": "Blood on the Ice", "kind": "story", "where": "Windhelm", "quests": ["MS11", "MS11b"]},
-    {"id": "the-white-phial", "name": "The White Phial", "kind": "story", "where": "Windhelm", "quests": ["MS12", "MS12b"]},
-    {"id": "the-golden-claw", "name": "The Golden Claw", "kind": "story", "where": "Riverwood", "quests": ["MS13"]},
-    {"id": "laid-to-rest", "name": "Laid to Rest", "kind": "story", "where": "Morthal", "quests": ["MS14"]},
-    {"id": "a-return-to-your-roots", "name": "A Return To Your Roots", "kind": "story", "quests": ["NN01"]},
-    {"id": "the-heart-of-dibella", "name": "The Heart of Dibella", "kind": "story", "where": "Markarth", "quests": ["T01"]},
-    {"id": "the-blessings-of-nature", "name": "The Blessings of Nature", "kind": "story", "where": "Whiterun", "quests": ["T03"]},
-    {
-      "id": "the-book-of-love", "questsFirst": true, "name": "The Book of Love", "kind": "story", "where": "Riften",
-      "lines": ["The Book of Love - Fastred's Awakening"], "quests": ["t02"], "opening": "t02"
+      "id": "destroy-the-acolyte-priests",
+      "name": "Destroy the Acolyte Priests",
+      "category": "lands",
+      "also": [
+        "main"
+      ],
+      "lines": [
+        "Destroy the Acolyte Priests"
+      ],
+      "after": [
+        "dragonborn"
+      ]
     },
     {
-      "id": "seeking-a-cure", "questsFirst": true, "name": "Seeking A Cure", "kind": "story", "where": "Morthal",
-      "lines": ["A Forlorn Hope - an addon for Seeking The Cure"], "quests": ["VC01"], "opening": "VC01"
+      "id": "forsworn-conspiracy",
+      "name": "The Forsworn Conspiracy",
+      "category": "side",
+      "where": "Markarth",
+      "quests": [
+        "MS01",
+        "MS02",
+        "FreeformCidhnaMineA",
+        "DialogueCidhnaMine"
+      ],
+      "gate": "Level 20.",
+      "minLevel": 20,
+      "checked": {
+        "gate": "files"
+      }
     },
-    {"id": "falions-secret", "name": "Falion's Secret", "kind": "story", "where": "Morthal", "quests": ["FreeformMorthalA"]},
-    {"id": "repentance", "name": "Repentance", "kind": "story", "where": "Darklight Tower", "quests": ["dunDarklightQST"]},
-    {"id": "siege-on-the-dragon-cult", "name": "Siege on the Dragon Cult", "kind": "story", "where": "Forelhost", "quests": ["dunForelhostQST"]},
-    {"id": "the-pale-lady", "name": "The Pale Lady", "kind": "story", "where": "Frostmere Crypt", "quests": ["dunFrostmereCryptQST"]},
-    {"id": "forbidden-legend", "name": "Forbidden Legend", "kind": "story", "where": "Reachwater Rock", "quests": ["dunGauldursonQST"]},
-    {"id": "a-scroll-for-anska", "name": "A Scroll For Anska", "kind": "story", "where": "High Gate Ruins", "quests": ["dunHighGateRuinsQST"]},
-    {"id": "ancestral-worship", "name": "Ancestral Worship", "kind": "story", "where": "Hillgrund's Tomb", "quests": ["dunHillgrundsTombQST"]},
-    {"id": "kynes-sacred-trials", "name": "Kyne's Sacred Trials", "kind": "story", "quests": ["dunHunterQST"]},
-    {"id": "the-lost-expedition", "name": "The Lost Expedition", "kind": "story", "where": "Nchuand-Zel, Markarth", "quests": ["dunNchuandZelQst"]},
-    {"id": "trius-trinket", "name": "Trius' Trinket", "kind": "story", "quests": ["dunShipwreck04QST"]},
-    {"id": "infiltration", "name": "Infiltration", "kind": "story", "where": "Treva's Watch", "quests": ["dunTrevasWatchQST"]},
-    {"id": "evil-in-waiting", "name": "Evil in Waiting", "kind": "story", "where": "Valthume", "quests": ["dunValthumeQST"]},
-    {"id": "silenced-tongues", "name": "Silenced Tongues", "kind": "story", "where": "Volunruud", "quests": ["dunVolunruudQST"]},
-    {"id": "yngols-barrow", "name": "Yngol's Barrow", "kind": "story", "where": "Yngol's Barrow", "quests": ["dunYngolBarrowQST"]},
-    {"id": "the-affairs-of-hagravens", "name": "The Affairs of Hagravens", "kind": "story", "where": "Blind Cliff Cave", "quests": ["dunBlindCliffQST"]},
-    {"id": "telravs-request", "name": "Telrav's Request", "kind": "story", "where": "Nilheim", "quests": ["dunNilheimQST"]},
-    {"id": "search-and-seizure", "name": "Search and Seizure", "kind": "story", "where": "Markarth", "quests": ["FreeformMarkarthM"]},
-    {"id": "toying-with-the-dead", "name": "Toying With The Dead", "kind": "story", "where": "Riften", "quests": ["FreeformRiften21"]},
-    {"id": "extracting-an-argonian", "name": "Extracting an Argonian", "kind": "story", "where": "Darkwater Crossing", "quests": ["DarkwaterCrossingDerkeethusRescueQuest"]},
-    {"id": "dark-ancestor", "name": "Dark Ancestor", "kind": "story", "where": "Falkreath", "quests": ["FreeformFalkreathQuest03", "FreeformFalkreathQuest03B"]},
-    {"id": "drowned-sorrows", "name": "Drowned Sorrows", "kind": "story", "where": "Winterhold", "quests": ["FreeformWinterholdC"]},
-    {"id": "the-forgemasters-fingers", "name": "The Forgemaster's Fingers", "kind": "story", "where": "Dushnikh Yal", "quests": ["FavorOrcsIntro"]},
-    {"id": "lost-to-the-ages", "name": "Lost to the Ages", "kind": "story", "where": "Arkngthamz", "quests": ["DLC1LD"]},
-    {"id": "a-forgotten-blade", "name": "A Forgotten Blade", "kind": "story", "lines": ["Redeeming Fultheim - A Blades Quest Addon"], "after": ["main-quest"]},
-    {"id": "destroy-the-dragon-cult", "name": "Destroy the Dragon Cult", "kind": "story", "lines": ["Defeat the Dragon Cult"], "after": ["main-quest"]},
-
     {
-      "id": "undeath", "name": "Undeath", "kind": "story", "where": "The Reach, then all over Skyrim",
-      "lines": ["Undeath Remastered - CLEANED ESMIFIED"],
+      "id": "promises-to-keep",
+      "name": "Promises to Keep",
+      "category": "side",
+      "where": "Riften",
+      "quests": [
+        "MS03"
+      ]
+    },
+    {
+      "id": "unfathomable-depths",
+      "name": "Unfathomable Depths",
+      "category": "side",
+      "where": "Riften",
+      "quests": [
+        "MS04"
+      ]
+    },
+    {
+      "id": "the-wolf-queen-awakened",
+      "name": "The Wolf Queen Awakened",
+      "category": "side",
+      "where": "Solitude",
+      "quests": [
+        "MS06Start",
+        "MS06"
+      ],
+      "gate": "Level 10.",
+      "minLevel": 10,
+      "checked": {
+        "gate": "files"
+      }
+    },
+    {
+      "id": "lights-out",
+      "name": "Lights Out!",
+      "category": "side",
+      "where": "Solitude",
+      "quests": [
+        "MS07"
+      ]
+    },
+    {
+      "id": "in-my-time-of-need",
+      "name": "In My Time Of Need",
+      "category": "side",
+      "where": "Whiterun",
+      "quests": [
+        "MS08"
+      ]
+    },
+    {
+      "id": "missing-in-action",
+      "name": "Missing In Action",
+      "category": "side",
+      "where": "Whiterun",
+      "quests": [
+        "MS09"
+      ]
+    },
+    {
+      "id": "rise-in-the-east",
+      "name": "Rise in the East",
+      "category": "side",
+      "where": "Windhelm",
+      "quests": [
+        "MS10"
+      ]
+    },
+    {
+      "id": "blood-on-the-ice",
+      "name": "Blood on the Ice",
+      "category": "side",
+      "where": "Windhelm",
+      "quests": [
+        "MS11",
+        "MS11b"
+      ]
+    },
+    {
+      "id": "the-white-phial",
+      "name": "The White Phial",
+      "category": "side",
+      "where": "Windhelm",
+      "quests": [
+        "MS12",
+        "MS12b"
+      ]
+    },
+    {
+      "id": "the-golden-claw",
+      "name": "The Golden Claw",
+      "category": "side",
+      "where": "Riverwood",
+      "quests": [
+        "MS13"
+      ]
+    },
+    {
+      "id": "laid-to-rest",
+      "name": "Laid to Rest",
+      "category": "side",
+      "where": "Morthal",
+      "quests": [
+        "MS14"
+      ]
+    },
+    {
+      "id": "a-return-to-your-roots",
+      "name": "A Return To Your Roots",
+      "category": "side",
+      "quests": [
+        "NN01"
+      ]
+    },
+    {
+      "id": "the-heart-of-dibella",
+      "name": "The Heart of Dibella",
+      "category": "side",
+      "where": "Markarth",
+      "quests": [
+        "T01"
+      ]
+    },
+    {
+      "id": "the-blessings-of-nature",
+      "name": "The Blessings of Nature",
+      "category": "side",
+      "where": "Whiterun",
+      "quests": [
+        "T03"
+      ]
+    },
+    {
+      "id": "the-book-of-love",
+      "name": "The Book of Love",
+      "category": "side",
+      "questsFirst": true,
+      "where": "Riften",
+      "lines": [
+        "The Book of Love - Fastred's Awakening"
+      ],
+      "quests": [
+        "t02"
+      ],
+      "opening": "t02"
+    },
+    {
+      "id": "seeking-a-cure",
+      "name": "Seeking A Cure",
+      "category": "side",
+      "questsFirst": true,
+      "where": "Morthal",
+      "lines": [
+        "A Forlorn Hope - an addon for Seeking The Cure"
+      ],
+      "quests": [
+        "VC01"
+      ],
+      "opening": "VC01"
+    },
+    {
+      "id": "falions-secret",
+      "name": "Falion's Secret",
+      "category": "side",
+      "where": "Morthal",
+      "quests": [
+        "FreeformMorthalA"
+      ]
+    },
+    {
+      "id": "repentance",
+      "name": "Repentance",
+      "category": "side",
+      "where": "Darklight Tower",
+      "quests": [
+        "dunDarklightQST"
+      ]
+    },
+    {
+      "id": "siege-on-the-dragon-cult",
+      "name": "Siege on the Dragon Cult",
+      "category": "side",
+      "where": "Forelhost",
+      "quests": [
+        "dunForelhostQST"
+      ]
+    },
+    {
+      "id": "the-pale-lady",
+      "name": "The Pale Lady",
+      "category": "side",
+      "where": "Frostmere Crypt",
+      "quests": [
+        "dunFrostmereCryptQST"
+      ]
+    },
+    {
+      "id": "forbidden-legend",
+      "name": "Forbidden Legend",
+      "category": "side",
+      "where": "Reachwater Rock",
+      "quests": [
+        "dunGauldursonQST"
+      ]
+    },
+    {
+      "id": "a-scroll-for-anska",
+      "name": "A Scroll For Anska",
+      "category": "side",
+      "where": "High Gate Ruins",
+      "quests": [
+        "dunHighGateRuinsQST"
+      ]
+    },
+    {
+      "id": "ancestral-worship",
+      "name": "Ancestral Worship",
+      "category": "side",
+      "where": "Hillgrund's Tomb",
+      "quests": [
+        "dunHillgrundsTombQST"
+      ]
+    },
+    {
+      "id": "kynes-sacred-trials",
+      "name": "Kyne's Sacred Trials",
+      "category": "side",
+      "quests": [
+        "dunHunterQST"
+      ]
+    },
+    {
+      "id": "the-lost-expedition",
+      "name": "The Lost Expedition",
+      "category": "side",
+      "where": "Nchuand-Zel, Markarth",
+      "quests": [
+        "dunNchuandZelQst"
+      ]
+    },
+    {
+      "id": "trius-trinket",
+      "name": "Trius' Trinket",
+      "category": "side",
+      "quests": [
+        "dunShipwreck04QST"
+      ]
+    },
+    {
+      "id": "infiltration",
+      "name": "Infiltration",
+      "category": "side",
+      "where": "Treva's Watch",
+      "quests": [
+        "dunTrevasWatchQST"
+      ]
+    },
+    {
+      "id": "evil-in-waiting",
+      "name": "Evil in Waiting",
+      "category": "side",
+      "where": "Valthume",
+      "quests": [
+        "dunValthumeQST"
+      ]
+    },
+    {
+      "id": "silenced-tongues",
+      "name": "Silenced Tongues",
+      "category": "side",
+      "where": "Volunruud",
+      "quests": [
+        "dunVolunruudQST"
+      ]
+    },
+    {
+      "id": "yngols-barrow",
+      "name": "Yngol's Barrow",
+      "category": "side",
+      "where": "Yngol's Barrow",
+      "quests": [
+        "dunYngolBarrowQST"
+      ]
+    },
+    {
+      "id": "the-affairs-of-hagravens",
+      "name": "The Affairs of Hagravens",
+      "category": "side",
+      "where": "Blind Cliff Cave",
+      "quests": [
+        "dunBlindCliffQST"
+      ]
+    },
+    {
+      "id": "telravs-request",
+      "name": "Telrav's Request",
+      "category": "side",
+      "where": "Nilheim",
+      "quests": [
+        "dunNilheimQST"
+      ]
+    },
+    {
+      "id": "search-and-seizure",
+      "name": "Search and Seizure",
+      "category": "side",
+      "where": "Markarth",
+      "quests": [
+        "FreeformMarkarthM"
+      ]
+    },
+    {
+      "id": "toying-with-the-dead",
+      "name": "Toying With The Dead",
+      "category": "side",
+      "where": "Riften",
+      "quests": [
+        "FreeformRiften21"
+      ]
+    },
+    {
+      "id": "extracting-an-argonian",
+      "name": "Extracting an Argonian",
+      "category": "side",
+      "where": "Darkwater Crossing",
+      "quests": [
+        "DarkwaterCrossingDerkeethusRescueQuest"
+      ]
+    },
+    {
+      "id": "dark-ancestor",
+      "name": "Dark Ancestor",
+      "category": "side",
+      "where": "Falkreath",
+      "quests": [
+        "FreeformFalkreathQuest03",
+        "FreeformFalkreathQuest03B"
+      ]
+    },
+    {
+      "id": "drowned-sorrows",
+      "name": "Drowned Sorrows",
+      "category": "side",
+      "where": "Winterhold",
+      "quests": [
+        "FreeformWinterholdC"
+      ]
+    },
+    {
+      "id": "the-forgemasters-fingers",
+      "name": "The Forgemaster's Fingers",
+      "category": "side",
+      "where": "Dushnikh Yal",
+      "quests": [
+        "FavorOrcsIntro"
+      ]
+    },
+    {
+      "id": "lost-to-the-ages",
+      "name": "Lost to the Ages",
+      "category": "side",
+      "also": [
+        "followers"
+      ],
+      "where": "Arkngthamz",
+      "quests": [
+        "DLC1LD"
+      ]
+    },
+    {
+      "id": "a-forgotten-blade",
+      "name": "A Forgotten Blade",
+      "category": "side",
+      "also": [
+        "main"
+      ],
+      "lines": [
+        "Redeeming Fultheim - A Blades Quest Addon"
+      ],
+      "after": [
+        "main-quest"
+      ]
+    },
+    {
+      "id": "destroy-the-dragon-cult",
+      "name": "Destroy the Dragon Cult",
+      "category": "side",
+      "also": [
+        "main"
+      ],
+      "lines": [
+        "Defeat the Dragon Cult"
+      ],
+      "after": [
+        "main-quest"
+      ]
+    },
+    {
+      "id": "undeath",
+      "name": "Undeath",
+      "category": "side",
+      "where": "The Reach, then all over Skyrim",
+      "lines": [
+        "Undeath Remastered - CLEANED ESMIFIED"
+      ],
       "opening": "NecroQuest01",
       "start": "A rumour that a Vigil of Stendarr caravan was attacked in the Reach, or find the ambush yourself. A note in the Markarth inn also points you there.",
-      "level": "30 and up", "size": "8–12 hours",
+      "level": "30 and up",
+      "size": "8–12 hours",
       "note": "You can end it as a lich.",
-      "checked": {"start": "files", "level": "players", "size": "players", "note": "mod page"}
+      "checked": {
+        "start": "files",
+        "level": "players",
+        "size": "players",
+        "note": "mod page"
+      }
     },
     {
-      "id": "granite-hill", "name": "Granite Hill", "kind": "story", "where": "Between Whiterun and Rorikstead",
-      "lines": ["Granite Hill - ESLIFIED LUX PATCH"],
+      "id": "granite-hill",
+      "name": "Granite Hill",
+      "category": "side",
+      "where": "Between Whiterun and Rorikstead",
+      "lines": [
+        "Granite Hill - ESLIFIED LUX PATCH"
+      ],
       "start": "A courier brings a note after you've killed the dragon at the Western Watchtower.",
-      "gate": "Dragon Rising.", "after": ["main-quest"],
-      "level": "The dungeon under the shop holds a level 50 boss and two at 34", "size": "1 hour",
-      "checked": {"start": "files", "gate": "files", "level": "files", "size": "mod page"}
+      "gate": "Dragon Rising.",
+      "after": [
+        "main-quest"
+      ],
+      "level": "The dungeon under the shop holds a level 50 boss and two at 34",
+      "size": "1 hour",
+      "checked": {
+        "start": "files",
+        "gate": "files",
+        "level": "files",
+        "size": "mod page"
+      }
     },
     {
-      "id": "legends-of-aetherium", "name": "Legends of Aetherium", "kind": "story", "where": "South of Riften",
-      "lines": ["Legends of Aetherium - New Dungeon - Quest - Armour - Weapons"],
+      "id": "legends-of-aetherium",
+      "name": "Legends of Aetherium",
+      "category": "side",
+      "where": "South of Riften",
+      "lines": [
+        "Legends of Aetherium - New Dungeon - Quest - Armour - Weapons"
+      ],
       "start": "A hiring notice in the Bee and Barb, the Frozen Hearth, Candlehearth Hall or the Bannered Mare. Or walk to the dig near Crystaldrift Cave.",
-      "gate": "None.", "level": "Dwemer machines from level 16 to 60", "size": "2–3 hours",
-      "checked": {"start": "files", "gate": "files", "level": "files", "size": "mod page"}
+      "gate": "None.",
+      "level": "Dwemer machines from level 16 to 60",
+      "size": "2–3 hours",
+      "checked": {
+        "start": "files",
+        "gate": "files",
+        "level": "files",
+        "size": "mod page"
+      }
     },
     {
-      "id": "the-tools-of-kagrenac", "name": "The Tools of Kagrenac", "kind": "story",
-      "lines": ["The Tools of Kagrenac ESMIFIED"],
+      "id": "the-tools-of-kagrenac",
+      "name": "The Tools of Kagrenac",
+      "category": "side",
+      "also": [
+        "guilds"
+      ],
+      "lines": [
+        "The Tools of Kagrenac ESMIFIED"
+      ],
       "start": "A courier letter a couple of days after Arniel's Endeavor gives you Keening.",
-      "gate": "Arniel's Endeavor, at the College.", "after": ["college"],
-      "level": "30 and up", "size": "4–6 hours",
-      "checked": {"start": "mod page", "gate": "mod page", "level": "mod page", "size": "mod page"}
+      "gate": "Arniel's Endeavor, at the College.",
+      "after": [
+        "college"
+      ],
+      "level": "30 and up",
+      "size": "4–6 hours",
+      "checked": {
+        "start": "mod page",
+        "gate": "mod page",
+        "level": "mod page",
+        "size": "mod page"
+      }
     },
     {
-      "id": "deluge-of-deceit", "name": "Deluge of Deceit", "kind": "story", "where": "Lake Honrich, Riften",
-      "lines": ["SIRENROOT - Deluge of Deceit"],
+      "id": "deluge-of-deceit",
+      "name": "Deluge of Deceit",
+      "category": "side",
+      "where": "Lake Honrich, Riften",
+      "lines": [
+        "SIRENROOT - Deluge of Deceit"
+      ],
       "start": "Frissa Black-Briar, at Elgrim's Elixirs in Riften.",
-      "gate": "None.", "level": "Early levels, by the author: 3 to 15", "size": "2–5 hours",
-      "checked": {"start": "mod page", "gate": "mod page", "level": "mod page", "size": "mod page"}
+      "gate": "None.",
+      "level": "Early levels, by the author: 3 to 15",
+      "size": "2–5 hours",
+      "checked": {
+        "start": "mod page",
+        "gate": "mod page",
+        "level": "mod page",
+        "size": "mod page"
+      }
     },
     {
-      "id": "heart-of-the-reach", "name": "Heart of the Reach", "kind": "story", "where": "Markarth",
-      "lines": ["Heart of the Reach - New Quest - Dungeon - Weapons - 3 Creature Variants - Ring - Spell"],
+      "id": "heart-of-the-reach",
+      "name": "Heart of the Reach",
+      "category": "side",
+      "where": "Markarth",
+      "lines": [
+        "Heart of the Reach - New Quest - Dungeon - Weapons - 3 Creature Variants - Ring - Spell"
+      ],
       "start": "Gwilym, in the Silver-Blood Inn, Markarth.",
-      "gate": "None.", "size": "1–2 hours",
-      "checked": {"start": "files", "gate": "mod page", "size": "mod page"}
+      "gate": "None.",
+      "size": "1–2 hours",
+      "checked": {
+        "start": "files",
+        "gate": "mod page",
+        "size": "mod page"
+      }
     },
     {
-      "id": "the-welkynar-knight", "name": "The Welkynar Knight", "kind": "story",
-      "lines": ["The Welkynar Knight - Quest"],
+      "id": "the-welkynar-knight",
+      "name": "The Welkynar Knight",
+      "category": "side",
+      "lines": [
+        "The Welkynar Knight - Quest"
+      ],
       "opening": "ksws04MainQuest",
       "start": "A courier note asks you to a secret meeting at the Bannered Mare.",
-      "gate": "Level 25, by the author.", "minLevel": 25, "size": "1–2 hours",
-      "checked": {"start": "files", "gate": "mod page", "size": "mod page"}
+      "gate": "Level 25, by the author.",
+      "minLevel": 25,
+      "size": "1–2 hours",
+      "checked": {
+        "start": "files",
+        "gate": "mod page",
+        "size": "mod page"
+      }
     },
     {
-      "id": "relics-of-the-crusader", "name": "Relics of the Crusader", "kind": "story",
-      "lines": ["ccmtysse001-knightsofthenine"],
+      "id": "relics-of-the-crusader",
+      "name": "Relics of the Crusader",
+      "category": "side",
+      "lines": [
+        "ccmtysse001-knightsofthenine"
+      ],
       "note": "Knight of the North reworks it: the relics are hidden with devoted servants of the Divines. Players report the one at Stendarr's Beacon is a Thalmor ambush.",
       "size": "2–4 hours",
-      "checked": {"note": "players", "size": "mod page"}
+      "checked": {
+        "note": "players",
+        "size": "mod page"
+      }
     },
     {
-      "id": "belethors-sister", "name": "Belethor's Sister", "kind": "story", "where": "Whiterun",
-      "lines": ["Belethor's Sister - Quest"],
+      "id": "belethors-sister",
+      "name": "Belethor's Sister",
+      "category": "side",
+      "where": "Whiterun",
+      "lines": [
+        "Belethor's Sister - Quest"
+      ],
       "start": "Talk to Belethor in Whiterun.",
-      "gate": "Level 20, and the Soul Cairn open (Dawnguard's Chasing Echoes).", "minLevel": 20, "after": ["dawnguard"],
+      "gate": "Level 20, and the Soul Cairn open (Dawnguard's Chasing Echoes).",
+      "minLevel": 20,
+      "after": [
+        "dawnguard"
+      ],
       "size": "1–2 hours",
-      "checked": {"start": "mod page", "gate": "mod page", "size": "mod page"}
+      "checked": {
+        "start": "mod page",
+        "gate": "mod page",
+        "size": "mod page"
+      }
     },
     {
-      "id": "revealing-rune", "name": "Revealing Rune", "kind": "story", "where": "Riften",
-      "lines": ["Revealing Rune"],
+      "id": "revealing-rune",
+      "name": "Revealing Rune",
+      "category": "side",
+      "also": [
+        "guilds"
+      ],
+      "where": "Riften",
+      "lines": [
+        "Revealing Rune"
+      ],
       "start": "Ask Rune about his name.",
-      "gate": "A member of the Thieves Guild.", "after": ["thieves-guild"], "size": "30 minutes",
-      "checked": {"start": "mod page", "gate": "mod page", "size": "mod page"}
+      "gate": "A member of the Thieves Guild.",
+      "after": [
+        "thieves-guild"
+      ],
+      "size": "30 minutes",
+      "checked": {
+        "start": "mod page",
+        "gate": "mod page",
+        "size": "mod page"
+      }
     },
     {
-      "id": "more-to-do-in-the-soul-cairn", "name": "More to do in the Soul Cairn", "kind": "story", "where": "The Soul Cairn",
-      "lines": ["More to do in the Soul Cairn"],
+      "id": "more-to-do-in-the-soul-cairn",
+      "name": "More to do in the Soul Cairn",
+      "category": "side",
+      "also": [
+        "lands"
+      ],
+      "where": "The Soul Cairn",
+      "lines": [
+        "More to do in the Soul Cairn"
+      ],
       "start": "Inside the Soul Cairn, during Dawnguard's Chasing Echoes.",
-      "gate": "Dawnguard, which waits for level 30.", "minLevel": 30, "after": ["dawnguard"], "size": "1–2 hours",
-      "checked": {"start": "mod page", "gate": "files", "size": "mod page"}
+      "gate": "Dawnguard, which waits for level 30.",
+      "minLevel": 30,
+      "after": [
+        "dawnguard"
+      ],
+      "size": "1–2 hours",
+      "checked": {
+        "start": "mod page",
+        "gate": "files",
+        "size": "mod page"
+      }
     },
     {
-      "id": "the-gift-of-saturalia", "name": "The Gift of Saturalia", "kind": "story",
-      "lines": ["The Gift Of Saturalia"],
+      "id": "the-gift-of-saturalia",
+      "name": "The Gift of Saturalia",
+      "category": "side",
+      "lines": [
+        "The Gift Of Saturalia"
+      ],
       "opening": "Sat_TheGiftofSaturalia",
-      "start": "Niklas the Trader.", "gate": "None.", "level": "Any", "size": "1 hour",
-      "checked": {"start": "files", "gate": "files", "size": "mod page"}
+      "start": "Niklas the Trader.",
+      "gate": "None.",
+      "level": "Any",
+      "size": "1 hour",
+      "checked": {
+        "start": "files",
+        "gate": "files",
+        "size": "mod page"
+      }
     },
     {
-      "id": "fists-of-fury", "name": "Fists of Fury", "kind": "story", "where": "Riften, Windhelm and Morthal",
-      "lines": ["Fists of Fury - Skyrim"],
+      "id": "fists-of-fury",
+      "name": "Fists of Fury",
+      "category": "side",
+      "where": "Riften, Windhelm and Morthal",
+      "lines": [
+        "Fists of Fury - Skyrim"
+      ],
       "opening": "FOFRiftenBrawlerQuest",
-      "start": "A letter about a brawling tournament.", "gate": "None.", "level": "Any: brawls, not fights to the death", "size": "1–2 hours",
-      "checked": {"start": "files", "gate": "files", "size": "mod page"}
+      "start": "A letter about a brawling tournament.",
+      "gate": "None.",
+      "level": "Any: brawls, not fights to the death",
+      "size": "1–2 hours",
+      "checked": {
+        "start": "files",
+        "gate": "files",
+        "size": "mod page"
+      }
     },
     {
-      "id": "the-frozen-heart", "name": "The Frozen Heart", "kind": "story",
-      "lines": ["The Frozen Heart - Quest Mod"], "opening": "ksws07MainQuest"
+      "id": "the-frozen-heart",
+      "name": "The Frozen Heart",
+      "category": "side",
+      "lines": [
+        "The Frozen Heart - Quest Mod"
+      ],
+      "opening": "ksws07MainQuest"
     },
-    {"id": "the-thalmors-shadow", "name": "The Thalmor's Shadow", "kind": "story", "where": "Falkreath", "lines": ["The Thalmor's Shadow - Taliesin (Custom Voiced Follower)"]},
-    {"id": "a-healing-wedding", "name": "A Healing Wedding", "kind": "story", "where": "Solitude", "lines": ["Vittorias Alternate Wedding"]},
-    {"id": "capital-windhelm", "name": "Windhelm, expanded", "kind": "story", "where": "Windhelm", "lines": ["Capital Windhelm Expansion"], "opening": "0WHQuestDeliveryToBro"},
-    {"id": "capital-whiterun", "name": "Whiterun, expanded", "kind": "story", "where": "Whiterun", "lines": ["Rob's Bug Fixes - Capital Whiterun Expansion"], "opening": "0WRThaneQ01"},
-    {"id": "markarth-side", "name": "Markarth Side", "kind": "story", "where": "South-east of Dragon Bridge", "lines": ["Arena - Markarth Side Town"]},
-    {"id": "on-hogithum", "name": "On Hogithum", "kind": "story", "lines": ["Requiem - The Roleplaying Overhaul (No Messages ESLIFIED)"], "skip": ["REQ_Quest_Installation", "REQ_Quest_Spellchoices", "REQ_Quest_Spellchoices_PlayerCheck"]},
-    {"id": "profane-divinity", "name": "Profane Divinity", "kind": "story", "lines": ["Trad - AE - CC - Collection - Requiem Patch"]},
-    {"id": "the-lost-library", "name": "The Lost Library", "kind": "story", "where": "Winterhold", "lines": ["ccbgssse014-spellpack01"]},
-    {"id": "through-a-glass-darkly", "name": "Through a Glass, Darkly", "kind": "story", "where": "Eastmarch", "lines": ["ccbgssse018-shadowrend"]},
-    {"id": "in-the-shadows", "name": "In the Shadows", "kind": "story", "lines": ["ccbgssse038-bowofshadows"]},
-    {"id": "the-cause", "name": "The Cause", "kind": "story", "lines": ["ccbgssse067-daedinv"]},
-    {"id": "hendraheim", "name": "Hendraheim", "kind": "story", "lines": ["cceejsse004-hall"]},
-    {"id": "guests-for-dinner", "name": "Guests for Dinner", "kind": "story", "lines": ["cceejsse005-cave"]},
-    {"id": "a-dying-wish", "name": "A Dying Wish", "kind": "story", "where": "Falkreath", "lines": ["cckrtsse001_altar"]},
-    {"id": "dreams-of-the-dead", "name": "Dreams of the Dead", "kind": "story", "lines": ["ccrmssse001-necrohouse"]},
-    {"id": "the-unquiet-dead", "name": "The Unquiet Dead", "kind": "story", "where": "Near Rorikstead", "lines": ["ccvsvsse004-beafarmer"]},
-    {"id": "stealer-of-souls", "name": "Stealer of Souls", "kind": "story", "where": "Markarth", "lines": ["ccbgssse002-exoticarrows"]},
-    {"id": "battle-of-the-champions", "name": "Battle of the Champions", "kind": "story", "where": "Whiterun", "lines": ["ccffbsse001-imperialdragon"], "skip": ["ccFFBSSE001_CorpseCheck"]},
-    {"id": "the-wintersand-deception", "name": "The Wintersand Deception", "kind": "story", "lines": ["CC Tundra Homestead - Tweaks and Enhancements"]},
-    {"id": "myrwatch", "name": "Myrwatch", "kind": "story", "lines": ["Myrwatch - Tweaks and Enhancements"]},
-    {"id": "return-aegisbane", "name": "Return Aegisbane", "kind": "story", "lines": ["Return Aegisbane"]},
-    {"id": "paragliding-in-skyrim", "name": "Paragliding in Skyrim", "kind": "story", "lines": ["Skyrim's Paraglider - ZERO"]},
-    {"id": "leaps-of-faith", "name": "Leaps Of Faith", "kind": "story", "lines": ["Leaps of Faith - A Misc Quest"]},
-
     {
-      "id": "inigo", "name": "Inigo", "kind": "companion",
-      "lines": ["INIGO"],
-      "skip": ["InigoMapMarker", "InigoNpcChatMain", "InigoNPCTalkedTo", "InigoPlayerJourney", "InigoPlayerQuestions"]
+      "id": "the-thalmors-shadow",
+      "name": "The Thalmor's Shadow",
+      "category": "side",
+      "also": [
+        "followers"
+      ],
+      "where": "Falkreath",
+      "lines": [
+        "The Thalmor's Shadow - Taliesin (Custom Voiced Follower)"
+      ]
     },
-    {"id": "gore", "name": "Gore", "kind": "companion", "lines": ["Gore - A Companion Mod"], "opening": "HD1GoreMeet"},
-    {"id": "remiel", "name": "Remiel", "kind": "companion", "where": "Markarth", "lines": ["Remiel-Custom Voiced Follower"], "skip": ["HLIORemiMarker"], "opening": "HLIOStartingQuest"},
-    {"id": "lucien", "name": "Lucien", "kind": "companion", "lines": ["Lucien - Immersive Fully Voiced Male Follower"], "skip": ["JRLucienMapMarker", "JRLucienMQ"], "opening": "JRLucienPersonal1"},
     {
-      "id": "serana", "name": "Serana", "kind": "companion", "after": ["dawnguard"],
-      "lines": ["Serana Dialogue Expansion", "Serana Dialogue Expansion - Romance ESL"],
-      "quests": ["DLC1SeranaCureSelfQuest"],
-      "skip": ["SDE_Scenes", "SDE_Scenes_MeekoCheck", "SDE_Scenes_MjollCheck", "SDE_TrackQuest"],
+      "id": "a-healing-wedding",
+      "name": "A Healing Wedding",
+      "category": "side",
+      "where": "Solitude",
+      "lines": [
+        "Vittorias Alternate Wedding"
+      ]
+    },
+    {
+      "id": "capital-windhelm",
+      "name": "Windhelm, expanded",
+      "category": "side",
+      "where": "Windhelm",
+      "lines": [
+        "Capital Windhelm Expansion"
+      ],
+      "opening": "0WHQuestDeliveryToBro"
+    },
+    {
+      "id": "capital-whiterun",
+      "name": "Whiterun, expanded",
+      "category": "side",
+      "where": "Whiterun",
+      "lines": [
+        "Rob's Bug Fixes - Capital Whiterun Expansion"
+      ],
+      "opening": "0WRThaneQ01"
+    },
+    {
+      "id": "markarth-side",
+      "name": "Markarth Side",
+      "category": "side",
+      "where": "South-east of Dragon Bridge",
+      "lines": [
+        "Arena - Markarth Side Town"
+      ]
+    },
+    {
+      "id": "on-hogithum",
+      "name": "On Hogithum",
+      "category": "side",
+      "lines": [
+        "Requiem - The Roleplaying Overhaul (No Messages ESLIFIED)"
+      ],
+      "skip": [
+        "REQ_Quest_Installation",
+        "REQ_Quest_Spellchoices",
+        "REQ_Quest_Spellchoices_PlayerCheck"
+      ]
+    },
+    {
+      "id": "profane-divinity",
+      "name": "Profane Divinity",
+      "category": "side",
+      "lines": [
+        "Trad - AE - CC - Collection - Requiem Patch"
+      ]
+    },
+    {
+      "id": "the-lost-library",
+      "name": "The Lost Library",
+      "category": "side",
+      "where": "Winterhold",
+      "lines": [
+        "ccbgssse014-spellpack01"
+      ]
+    },
+    {
+      "id": "through-a-glass-darkly",
+      "name": "Through a Glass, Darkly",
+      "category": "side",
+      "where": "Eastmarch",
+      "lines": [
+        "ccbgssse018-shadowrend"
+      ]
+    },
+    {
+      "id": "in-the-shadows",
+      "name": "In the Shadows",
+      "category": "side",
+      "lines": [
+        "ccbgssse038-bowofshadows"
+      ]
+    },
+    {
+      "id": "the-cause",
+      "name": "The Cause",
+      "category": "side",
+      "lines": [
+        "ccbgssse067-daedinv"
+      ]
+    },
+    {
+      "id": "hendraheim",
+      "name": "Hendraheim",
+      "category": "side",
+      "lines": [
+        "cceejsse004-hall"
+      ]
+    },
+    {
+      "id": "guests-for-dinner",
+      "name": "Guests for Dinner",
+      "category": "side",
+      "lines": [
+        "cceejsse005-cave"
+      ]
+    },
+    {
+      "id": "a-dying-wish",
+      "name": "A Dying Wish",
+      "category": "side",
+      "where": "Falkreath",
+      "lines": [
+        "cckrtsse001_altar"
+      ]
+    },
+    {
+      "id": "dreams-of-the-dead",
+      "name": "Dreams of the Dead",
+      "category": "side",
+      "lines": [
+        "ccrmssse001-necrohouse"
+      ]
+    },
+    {
+      "id": "the-unquiet-dead",
+      "name": "The Unquiet Dead",
+      "category": "side",
+      "where": "Near Rorikstead",
+      "lines": [
+        "ccvsvsse004-beafarmer"
+      ]
+    },
+    {
+      "id": "stealer-of-souls",
+      "name": "Stealer of Souls",
+      "category": "side",
+      "where": "Markarth",
+      "lines": [
+        "ccbgssse002-exoticarrows"
+      ]
+    },
+    {
+      "id": "battle-of-the-champions",
+      "name": "Battle of the Champions",
+      "category": "side",
+      "where": "Whiterun",
+      "lines": [
+        "ccffbsse001-imperialdragon"
+      ],
+      "skip": [
+        "ccFFBSSE001_CorpseCheck"
+      ]
+    },
+    {
+      "id": "the-wintersand-deception",
+      "name": "The Wintersand Deception",
+      "category": "side",
+      "lines": [
+        "CC Tundra Homestead - Tweaks and Enhancements"
+      ]
+    },
+    {
+      "id": "myrwatch",
+      "name": "Myrwatch",
+      "category": "side",
+      "lines": [
+        "Myrwatch - Tweaks and Enhancements"
+      ]
+    },
+    {
+      "id": "return-aegisbane",
+      "name": "Return Aegisbane",
+      "category": "side",
+      "lines": [
+        "Return Aegisbane"
+      ]
+    },
+    {
+      "id": "paragliding-in-skyrim",
+      "name": "Paragliding in Skyrim",
+      "category": "side",
+      "lines": [
+        "Skyrim's Paraglider - ZERO"
+      ]
+    },
+    {
+      "id": "leaps-of-faith",
+      "name": "Leaps Of Faith",
+      "category": "side",
+      "lines": [
+        "Leaps of Faith - A Misc Quest"
+      ]
+    },
+    {
+      "id": "inigo",
+      "name": "Inigo",
+      "category": "followers",
+      "lines": [
+        "INIGO"
+      ],
+      "skip": [
+        "InigoMapMarker",
+        "InigoNpcChatMain",
+        "InigoNPCTalkedTo",
+        "InigoPlayerJourney",
+        "InigoPlayerQuestions"
+      ]
+    },
+    {
+      "id": "gore",
+      "name": "Gore",
+      "category": "followers",
+      "lines": [
+        "Gore - A Companion Mod"
+      ],
+      "opening": "HD1GoreMeet"
+    },
+    {
+      "id": "remiel",
+      "name": "Remiel",
+      "category": "followers",
+      "where": "Markarth",
+      "lines": [
+        "Remiel-Custom Voiced Follower"
+      ],
+      "skip": [
+        "HLIORemiMarker"
+      ],
+      "opening": "HLIOStartingQuest"
+    },
+    {
+      "id": "lucien",
+      "name": "Lucien",
+      "category": "followers",
+      "lines": [
+        "Lucien - Immersive Fully Voiced Male Follower"
+      ],
+      "skip": [
+        "JRLucienMapMarker",
+        "JRLucienMQ"
+      ],
+      "opening": "JRLucienPersonal1"
+    },
+    {
+      "id": "serana",
+      "name": "Serana",
+      "category": "followers",
+      "also": [
+        "main"
+      ],
+      "after": [
+        "dawnguard"
+      ],
+      "lines": [
+        "Serana Dialogue Expansion",
+        "Serana Dialogue Expansion - Romance ESL"
+      ],
+      "quests": [
+        "DLC1SeranaCureSelfQuest"
+      ],
+      "skip": [
+        "SDE_Scenes",
+        "SDE_Scenes_MeekoCheck",
+        "SDE_Scenes_MjollCheck",
+        "SDE_TrackQuest"
+      ],
       "opening": "SDE_TheElderScrolls"
     },
-    {"id": "auri", "name": "Auri", "kind": "companion", "lines": ["Song of the Green (Auri Follower)"]},
-    {"id": "katana", "name": "Katana and Megara", "kind": "companion", "lines": ["Katana - Journey in the Shadows"], "skip": ["AK69KatanaFollowQuest", "AK69MegaraFollowQuest", "AK69ShaleFollowQuest", "AK69KatanaIntro"], "opening": "AK69KatanaPersonalQuest"},
-    {"id": "fura", "name": "Fura Bloodmouth", "kind": "companion", "lines": ["(BEST EVIL FOLLOWER) Follower Dialogue Expansion - Fura Bloodmouth"], "skip": ["DLC1VQ08Test"]},
-    {"id": "faralda", "name": "Faralda", "kind": "companion", "where": "Winterhold", "lines": ["Follower Dialogue Expansion - Faralda"]},
-    {"id": "jenassa", "name": "Jenassa", "kind": "companion", "where": "Whiterun", "lines": ["Follower Dialogue Expansion - Jenassa"]},
-    {"id": "mjoll", "name": "Mjoll the Lioness", "kind": "companion", "where": "Riften", "lines": ["Follower Dialogue Expansion - Mjoll the Lioness"]},
-    {"id": "erik", "name": "Erik the Slayer", "kind": "companion", "where": "Rorikstead", "lines": ["Follower Dialogue Expansion - Erik the Slayer"]},
-
     {
-      "id": "missives", "name": "Missives", "kind": "work",
-      "lines": ["Missives", "Missives - Voice and Quest Expansion", "Missives - Gray Cowl Patch", "Missives - Solstheim Patch SE", "Missives - Wyrmstooth Patch"],
+      "id": "auri",
+      "name": "Auri",
+      "category": "followers",
+      "lines": [
+        "Song of the Green (Auri Follower)"
+      ]
+    },
+    {
+      "id": "katana",
+      "name": "Katana and Megara",
+      "category": "followers",
+      "lines": [
+        "Katana - Journey in the Shadows"
+      ],
+      "skip": [
+        "AK69KatanaFollowQuest",
+        "AK69MegaraFollowQuest",
+        "AK69ShaleFollowQuest",
+        "AK69KatanaIntro"
+      ],
+      "opening": "AK69KatanaPersonalQuest"
+    },
+    {
+      "id": "fura",
+      "name": "Fura Bloodmouth",
+      "category": "followers",
+      "lines": [
+        "(BEST EVIL FOLLOWER) Follower Dialogue Expansion - Fura Bloodmouth"
+      ],
+      "skip": [
+        "DLC1VQ08Test"
+      ]
+    },
+    {
+      "id": "faralda",
+      "name": "Faralda",
+      "category": "followers",
+      "where": "Winterhold",
+      "lines": [
+        "Follower Dialogue Expansion - Faralda"
+      ]
+    },
+    {
+      "id": "jenassa",
+      "name": "Jenassa",
+      "category": "followers",
+      "where": "Whiterun",
+      "lines": [
+        "Follower Dialogue Expansion - Jenassa"
+      ]
+    },
+    {
+      "id": "mjoll",
+      "name": "Mjoll the Lioness",
+      "category": "followers",
+      "where": "Riften",
+      "lines": [
+        "Follower Dialogue Expansion - Mjoll the Lioness"
+      ]
+    },
+    {
+      "id": "erik",
+      "name": "Erik the Slayer",
+      "category": "followers",
+      "where": "Rorikstead",
+      "lines": [
+        "Follower Dialogue Expansion - Erik the Slayer"
+      ]
+    },
+    {
+      "id": "missives",
+      "name": "Missives",
+      "category": "work",
+      "lines": [
+        "Missives",
+        "Missives - Voice and Quest Expansion",
+        "Missives - Gray Cowl Patch",
+        "Missives - Solstheim Patch SE",
+        "Missives - Wyrmstooth Patch"
+      ],
       "start": "Read a notice board in any of the nine hold capitals, and on Solstheim, Wyrmstooth and in Hammerfell. The boards refresh every three days.",
       "level": "Delivery and gathering jobs are the safest money at level 1",
       "note": "LoreRim pays these as Side quests.",
-      "checked": {"start": "mod page", "level": "players", "note": "files"}
+      "checked": {
+        "start": "mod page",
+        "level": "players",
+        "note": "files"
+      }
     },
     {
-      "id": "jarls-bounties", "name": "Bounties and favours for the jarls", "kind": "work",
-      "lines": ["Favor Quests Separated"],
-      "quests": ["BQ01", "BQ02", "BQ03", "BQ04", "Favor104", "Favor109", "Favor151", "Favor153", "Favor154", "Favor157", "Favor158"],
+      "id": "jarls-bounties",
+      "name": "Bounties and favours for the jarls",
+      "category": "work",
+      "lines": [
+        "Favor Quests Separated"
+      ],
+      "quests": [
+        "BQ01",
+        "BQ02",
+        "BQ03",
+        "BQ04",
+        "Favor104",
+        "Favor109",
+        "Favor151",
+        "Favor153",
+        "Favor154",
+        "Favor157",
+        "Favor158"
+      ],
       "start": "Ask a jarl or their steward for work.",
       "gate": "Warlock and draugr bounties at level 15, giants and spriggans 20, hagravens and Falmer 25, vampires and dragons 30. Jarls' favours: the vampire at 10, hagravens at 20, the giant at 22.",
-      "checked": {"start": "files", "gate": "files"}
+      "checked": {
+        "start": "files",
+        "gate": "files"
+      }
     },
     {
-      "id": "townsfolk-favours", "name": "Favours for townsfolk", "kind": "work",
-      "quests": ["Favor001", "Favor013", "Favor018", "Favor019", "Favor110", "Favor204", "Favor205"]
+      "id": "townsfolk-favours",
+      "name": "Favours for townsfolk",
+      "category": "work",
+      "quests": [
+        "Favor001",
+        "Favor013",
+        "Favor018",
+        "Favor019",
+        "Favor110",
+        "Favor204",
+        "Favor205"
+      ]
     },
     {
-      "id": "thane", "name": "Thane of every hold", "kind": "work",
-      "quests": ["FavorJarlsMakeFriends", "Favor250", "Favor252", "Favor253", "Favor254", "Favor255", "Favor256", "Favor257", "Favor258", "FreeformRiftenThane"]
+      "id": "thane",
+      "name": "Thane of every hold",
+      "category": "work",
+      "quests": [
+        "FavorJarlsMakeFriends",
+        "Favor250",
+        "Favor252",
+        "Favor253",
+        "Favor254",
+        "Favor255",
+        "Favor256",
+        "Favor257",
+        "Favor258",
+        "FreeformRiftenThane"
+      ]
     },
     {
-      "id": "fishing", "name": "Fishing", "kind": "work", "where": "Riften Fishery",
-      "lines": ["ccBGSSSE001-Fish"], "skip": ["ccBGSSSE001_MiscQuests"], "opening": "ccBGSSSE001_Start_MQ1"
+      "id": "fishing",
+      "name": "Fishing",
+      "category": "work",
+      "where": "Riften Fishery",
+      "lines": [
+        "ccBGSSSE001-Fish"
+      ],
+      "skip": [
+        "ccBGSSSE001_MiscQuests"
+      ],
+      "opening": "ccBGSSSE001_Start_MQ1"
     },
-    {"id": "hunters-mark", "name": "Hunter's Mark", "kind": "work", "lines": ["Hunters Mark Animal Den on Map"]},
     {
-      "id": "more-to-say", "name": "More to Say", "kind": "work",
-      "lines": ["More to Say - Main", "More To Say - Sissel's Book Quest"],
-      "skip": ["ACFRiverwoodConversations", "ACFMTSWinterholdDialogue", "ACFFindGolldirQuest"],
+      "id": "hunters-mark",
+      "name": "Hunter's Mark",
+      "category": "work",
+      "lines": [
+        "Hunters Mark Animal Den on Map"
+      ]
+    },
+    {
+      "id": "more-to-say",
+      "name": "More to Say",
+      "category": "work",
+      "lines": [
+        "More to Say - Main",
+        "More To Say - Sissel's Book Quest"
+      ],
+      "skip": [
+        "ACFRiverwoodConversations",
+        "ACFMTSWinterholdDialogue",
+        "ACFFindGolldirQuest"
+      ],
       "opening": "ACFMTSAngisCampDialogue"
     },
     {
-      "id": "odd-jobs-the-rift", "questsFirst": true, "name": "Odd jobs in the Rift", "kind": "work", "where": "Riften, Ivarstead and Shor's Stone",
-      "lines": ["Caught Red Handed - Quest Expansion"],
-      "quests": ["FreeformRiften01", "FreeformRiften02", "FreeformRiften03", "FreeformRiften04", "FreeformRiften05", "FreeformRiften06", "FreeformRiften07", "FreeformRiften08", "FreeformRiften09", "FreeformRiften10", "FreeformRiften11", "FreeformRiften12", "FreeformRiften13", "FreeformRiften14", "FreeformRiften15", "FreeformRiften16", "FreeformRiften17", "FreeformRiften18", "FreeformRiften19", "FreeformRiften20", "FreeformRiften22", "FreeformValdDebt", "FreeformIvarstead01", "FreeformIvarstead02", "FreeformIvarstead03", "FreeformIvarstead04", "FreeformShorsStone01", "FreeformShorsStone02", "FreeformMerryfairFarm", "FreeformHeartwoodMill", "FreeformSarethiFarm"]
+      "id": "odd-jobs-the-rift",
+      "name": "Odd jobs in the Rift",
+      "category": "work",
+      "questsFirst": true,
+      "where": "Riften, Ivarstead and Shor's Stone",
+      "lines": [
+        "Caught Red Handed - Quest Expansion"
+      ],
+      "quests": [
+        "FreeformRiften01",
+        "FreeformRiften02",
+        "FreeformRiften03",
+        "FreeformRiften04",
+        "FreeformRiften05",
+        "FreeformRiften06",
+        "FreeformRiften07",
+        "FreeformRiften08",
+        "FreeformRiften09",
+        "FreeformRiften10",
+        "FreeformRiften11",
+        "FreeformRiften12",
+        "FreeformRiften13",
+        "FreeformRiften14",
+        "FreeformRiften15",
+        "FreeformRiften16",
+        "FreeformRiften17",
+        "FreeformRiften18",
+        "FreeformRiften19",
+        "FreeformRiften20",
+        "FreeformRiften22",
+        "FreeformValdDebt",
+        "FreeformIvarstead01",
+        "FreeformIvarstead02",
+        "FreeformIvarstead03",
+        "FreeformIvarstead04",
+        "FreeformShorsStone01",
+        "FreeformShorsStone02",
+        "FreeformMerryfairFarm",
+        "FreeformHeartwoodMill",
+        "FreeformSarethiFarm"
+      ]
     },
     {
-      "id": "odd-jobs-the-reach", "name": "Odd jobs in the Reach", "kind": "work", "where": "Markarth and around",
-      "quests": ["FreeformMarkarthD", "FreeformMarkarthE", "FreeformMarkarthJ", "FreeformMarkarthL", "FreeformMarkarthN", "FreeformMarkarthO", "FreeformKarthwastenA", "FreeformKolskeggrA", "FreeformSoljundsSinkholeA", "FreeformOldHroldanB", "FreeformDushnikhYalA"]
+      "id": "odd-jobs-the-reach",
+      "name": "Odd jobs in the Reach",
+      "category": "work",
+      "where": "Markarth and around",
+      "quests": [
+        "FreeformMarkarthD",
+        "FreeformMarkarthE",
+        "FreeformMarkarthJ",
+        "FreeformMarkarthL",
+        "FreeformMarkarthN",
+        "FreeformMarkarthO",
+        "FreeformKarthwastenA",
+        "FreeformKolskeggrA",
+        "FreeformSoljundsSinkholeA",
+        "FreeformOldHroldanB",
+        "FreeformDushnikhYalA"
+      ]
     },
     {
-      "id": "odd-jobs-haafingar", "name": "Odd jobs in Haafingar", "kind": "work", "where": "Solitude",
-      "quests": ["SolitudeFreeform01", "SolitudeFreeform02", "SolitudeFreeform03", "SolitudeFreeform04", "SolitudeFreeform06", "SolitudeFreeform07"]
+      "id": "odd-jobs-haafingar",
+      "name": "Odd jobs in Haafingar",
+      "category": "work",
+      "where": "Solitude",
+      "quests": [
+        "SolitudeFreeform01",
+        "SolitudeFreeform02",
+        "SolitudeFreeform03",
+        "SolitudeFreeform04",
+        "SolitudeFreeform06",
+        "SolitudeFreeform07"
+      ]
     },
     {
-      "id": "odd-jobs-eastmarch", "name": "Odd jobs in Eastmarch", "kind": "work", "where": "Windhelm and Kynesgrove",
-      "quests": ["FreeformWindhelmA", "FreeformShipsWindhelm", "FreeformKynesgroveA"]
+      "id": "odd-jobs-eastmarch",
+      "name": "Odd jobs in Eastmarch",
+      "category": "work",
+      "where": "Windhelm and Kynesgrove",
+      "quests": [
+        "FreeformWindhelmA",
+        "FreeformShipsWindhelm",
+        "FreeformKynesgroveA"
+      ]
     },
     {
-      "id": "odd-jobs-whiterun", "name": "Odd jobs in Whiterun Hold", "kind": "work", "where": "Riverwood and the farms",
-      "quests": ["FreeformRiverwood01", "FreeformSalviusFarmA"]
+      "id": "odd-jobs-whiterun",
+      "name": "Odd jobs in Whiterun Hold",
+      "category": "work",
+      "where": "Riverwood and the farms",
+      "quests": [
+        "FreeformRiverwood01",
+        "FreeformSalviusFarmA"
+      ]
     },
     {
-      "id": "odd-jobs-the-north", "name": "Odd jobs in the north", "kind": "work", "where": "Winterhold, Dawnstar, Morthal and Falkreath",
-      "quests": ["FreeformWinterholdA", "FreeformShipsDawnstar", "FreeformMorthalB", "FreeformStonehillsA", "FreeformFalkreathQuest01", "FreeformCaravansA"]
+      "id": "odd-jobs-the-north",
+      "name": "Odd jobs in the north",
+      "category": "work",
+      "where": "Winterhold, Dawnstar, Morthal and Falkreath",
+      "quests": [
+        "FreeformWinterholdA",
+        "FreeformShipsDawnstar",
+        "FreeformMorthalB",
+        "FreeformStonehillsA",
+        "FreeformFalkreathQuest01",
+        "FreeformCaravansA"
+      ]
     },
-
-    {"id": "marriage", "name": "The Bonds of Matrimony", "kind": "home", "where": "Riften", "quests": ["RelationshipMarriage"]},
-    {"id": "riftweald-manor", "name": "Riftweald Manor", "kind": "home", "where": "Riften", "lines": ["Snazzy Riften AIO"]},
-    {"id": "snazzy-lodges", "name": "Lodges for sale", "kind": "home", "lines": ["Snazzy Misc Locations"], "begins": false},
-
-    {"id": "adventurers-start", "name": "Adventurer's Start", "kind": "start", "lines": ["Adventurer's Start - An Alternate Perspective Addon"]},
-    {"id": "new-beginnings", "name": "New Beginnings", "kind": "start", "lines": ["New Beginnings - Alternate Perspective Extension"]}
+    {
+      "id": "marriage",
+      "name": "The Bonds of Matrimony",
+      "where": "Riften",
+      "quests": [
+        "RelationshipMarriage"
+      ],
+      "category": "side"
+    }
   ],
   "dropped": {
     "Alternate Perspective": "The start menu's own scene, not a quest to go looking for.",
     "Respawn - Soulslike Edition": "Getting your things back after a defeat: a system, not a story.",
     "Solstheim Earthquakes SE": "A settings holder.",
     "Requiem - Improved Spell Learning": "Spell learning: a system.",
-    "Ordinator - Perks of Skyrim": "Ordinator's perk tutors: a system."
+    "Ordinator - Perks of Skyrim": "Ordinator's perk tutors: a system.",
+    "Snazzy Riften AIO": "A home to buy, not a quest.",
+    "Snazzy Misc Locations": "A home to buy, not a quest.",
+    "Adventurer's Start - An Alternate Perspective Addon": "A start: it's on the build's start step.",
+    "New Beginnings - Alternate Perspective Extension": "A start: it's on the build's start step."
   },
   "droppedQuests": {
     "MQReserved": "A placeholder.",
     "DialogueTutorial": "A tutorial holder.",
-    "TG00ArrestMonitor": "Machinery.", "TG01ActorKillMonitor": "Machinery.", "TG03ActorKillMonitor": "Machinery.", "TG04ActorKiIllMonitor": "Machinery.",
-    "WE100ObjA": "A roadside encounter.", "WE100ObjB": "A roadside encounter.", "WE100ObjC": "A roadside encounter.", "WE100ObjD": "A roadside encounter.", "WE100ObjE": "A roadside encounter.",
-    "WE100ObjF": "A roadside encounter.", "WE100ObjG": "A roadside encounter.", "WE100ObjH": "A roadside encounter.", "WE100ObjI": "A roadside encounter.", "WE100ObjJ": "A roadside encounter.",
-    "WIAddItem07": "A chance encounter.", "WIAssault02": "A chance encounter.", "WICastMagic04": "A chance encounter.", "WIChangeLocation03": "A chance encounter.",
-    "WIChangeLocation04": "A chance encounter.", "WIGamesHideAndSeek": "Children's games.", "WIGamesTag": "Children's games.", "WIKill04": "A chance encounter."
+    "TG00ArrestMonitor": "Machinery.",
+    "TG01ActorKillMonitor": "Machinery.",
+    "TG03ActorKillMonitor": "Machinery.",
+    "TG04ActorKiIllMonitor": "Machinery.",
+    "WE100ObjA": "A roadside encounter.",
+    "WE100ObjB": "A roadside encounter.",
+    "WE100ObjC": "A roadside encounter.",
+    "WE100ObjD": "A roadside encounter.",
+    "WE100ObjE": "A roadside encounter.",
+    "WE100ObjF": "A roadside encounter.",
+    "WE100ObjG": "A roadside encounter.",
+    "WE100ObjH": "A roadside encounter.",
+    "WE100ObjI": "A roadside encounter.",
+    "WE100ObjJ": "A roadside encounter.",
+    "WIAddItem07": "A chance encounter.",
+    "WIAssault02": "A chance encounter.",
+    "WICastMagic04": "A chance encounter.",
+    "WIChangeLocation03": "A chance encounter.",
+    "WIChangeLocation04": "A chance encounter.",
+    "WIGamesHideAndSeek": "Children's games.",
+    "WIGamesTag": "Children's games.",
+    "WIKill04": "A chance encounter."
   },
   "notInRecords": [
-    {"name": "Demon of Dream", "why": "Installed (folder Demon of Dream). Field guide: three Vaermina dream-dungeons; take the Idol of Vaermina in Cragwallow Slope, east of Windhelm, and read the note; 15 and up, 2–3 hours (mod page)."},
-    {"name": "Finding Velehk Sain", "why": "Installed (Finding_VelehkSain.esp). Field guide: four missing College apprentices and a dremora pirate; starts at the College, a black gauntlet in the Midden; about an hour (mod page)."},
-    {"name": "Unmasking Sybille", "why": "Not found under that name in the plugin list. Field guide: investigate Solitude's vampire court wizard; Melaran, Odar, or evidence in Solitude; 30 minutes (mod page)."},
-    {"name": "Ascend - Hidden Peaks of Skyrim", "why": "Installed. Exploration with no journal: ten secret mountain routes, found by the winds that mark them (mod page)."},
-    {"name": "Dragon's Teeth Prison", "why": "Field guide: a dungeon west of Falkreath where Vigilants investigate a Hircine coven; walk in; 20 and up (players). No quest record kept."}
+    {
+      "name": "Demon of Dream",
+      "why": "Installed (folder Demon of Dream). Field guide: three Vaermina dream-dungeons; take the Idol of Vaermina in Cragwallow Slope, east of Windhelm, and read the note; 15 and up, 2–3 hours (mod page)."
+    },
+    {
+      "name": "Finding Velehk Sain",
+      "why": "Installed (Finding_VelehkSain.esp). Field guide: four missing College apprentices and a dremora pirate; starts at the College, a black gauntlet in the Midden; about an hour (mod page)."
+    },
+    {
+      "name": "Unmasking Sybille",
+      "why": "Not found under that name in the plugin list. Field guide: investigate Solitude's vampire court wizard; Melaran, Odar, or evidence in Solitude; 30 minutes (mod page)."
+    },
+    {
+      "name": "Ascend - Hidden Peaks of Skyrim",
+      "why": "Installed. Exploration with no journal: ten secret mountain routes, found by the winds that mark them (mod page)."
+    },
+    {
+      "name": "Dragon's Teeth Prison",
+      "why": "Field guide: a dungeon west of Falkreath where Vigilants investigate a Hircine coven; walk in; 20 and up (players). No quest record kept."
+    }
   ]
 }

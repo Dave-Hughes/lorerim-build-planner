@@ -14,6 +14,8 @@ questlines.json lists each curated line with
   opening    the quest whose first journal entry says how the line begins. Default: the first raw
              line's opening, else the first quest. "begins": false when the text is no use (a
              modder's note that happens to read as a sentence).
+  category   its home: one of the six `categories`, or a `shelves` entry (repeatable work)
+  also       other categories it belongs in (Vigilant: guilds, and Daedric for Molag Bal)
   start, gate, minLevel, level, size, note, after: facts the records don't hold, from the field
              guide; `checked` says where each came from (files, mod page, players).
 `dropped` and `droppedQuests` say why a raw line or a bucket quest is left out.
@@ -139,8 +141,12 @@ def curate(quests, raw_lines, cur):
     if len(ids) != len(cur["lines"]):
         problems.append("two lines share an id")
     for line in cur["lines"]:
-        if line["kind"] not in cur["kinds"]:
-            problems.append(f"{line['id']}: unknown kind {line['kind']}")
+        homes = {**cur["categories"], **cur.get("shelves", {})}
+        if line["category"] not in homes:
+            problems.append(f"{line['id']}: unknown category {line['category']}")
+        for c in line.get("also", []):
+            if c not in cur["categories"] or c == line["category"]:
+                problems.append(f"{line['id']}: also in {c}, which isn't another category")
         for a in line.get("after", []):
             if a not in ids:
                 problems.append(f"{line['id']}: after {a}, which isn't a line")
@@ -181,7 +187,7 @@ def curate(quests, raw_lines, cur):
             text, how = None, None
         else:
             # Steady work and homes have no story to open: a card says how to find them instead.
-            text, how = begins_of(order, opening, objectives=line["kind"] not in ("work", "home", "start"))
+            text, how = begins_of(order, opening, objectives=line["category"] in cur["categories"])
         sources = []
         for n in line.get("lines", []):
             l = raw[n]
@@ -192,7 +198,7 @@ def curate(quests, raw_lines, cur):
             base = {"Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm"}
             sources = [("Skyrim", None)] if plugins <= base else [(q["source"], q.get("modid")) for q in order[:1]]
         item = {
-            "id": line["id"], "name": line["name"], "kind": line["kind"],
+            "id": line["id"], "name": line["name"], "category": line["category"], "also": line.get("also", []),
             "where": line.get("where"), "prince": line.get("prince"),
             "sources": [{"name": s, "modid": m} for s, m in sources],
             "opening": opening["edid"], "begins": text, "beginsFrom": how,
@@ -214,21 +220,28 @@ def report(lines, cur, not_in_records):
           f"{len(lines)} lines from {sum(len(l['quests']) for l in lines)} quests. Written by "
           "`scripts/gamedata/questlines.py` from `questlines.json` (hand-kept) and the raw crawl. "
           "Begins is the game's own text: the line's opening journal entry.", ""]
-    kinds = cur["kinds"]
-    md += ["| Kind | Lines | Quests |", "|---|---|---|"]
-    for k, label in kinds.items():
-        ls = [l for l in lines if l["kind"] == k]
-        md.append(f"| {label} | {len(ls)} | {sum(len(l['quests']) for l in ls)} |")
-    look = [l for l in lines if l["beginsFrom"] != "opening" and l["kind"] not in ("work", "start")]
+    cats = {**cur["categories"], **cur.get("shelves", {})}
+    md += ["Six categories, each line in one (its home) and maybe others (also). Repeatable work is "
+           "a shelf of its own, not a category.", "",
+           "| Category | Subtitle | Lines (home) | Also here |", "|---|---|---|---|"]
+    for k, c in cats.items():
+        ls = [l for l in lines if l["category"] == k]
+        more = [l for l in lines if k in l["also"]]
+        md.append(f"| {c['name']} | {c['subtitle']} | {len(ls)} | {len(more)} |")
+    md += [""] + [f"- **{c['name']}**: {c['more']}" for c in cats.values()]
+    look = [l for l in lines if l["beginsFrom"] != "opening" and l["category"] in cur["categories"]]
     md += ["", "## Needs a look", ""]
     md += [f"- **{l['name']}**: " + ("no plain journal entry or objective anywhere." if not l["begins"]
            else {"objective": "the opening quest has no plain journal entry; shows its first objective.",
                  "later": "the opening quest has no plain text; shows a later quest's first entry."}[l["beginsFrom"]]) for l in look] or ["Nothing."]
-    unchecked = [l["name"] for l in lines if not l["checked"] and l["kind"] not in ("work", "start", "home")]
+    unchecked = [l["name"] for l in lines if not l["checked"] and l["category"] in cur["categories"]]
     md += ["", f"**No facts checked yet** ({len(unchecked)}): " + ", ".join(unchecked) + ".", ""]
-    for k, label in kinds.items():
-        ls = [l for l in lines if l["kind"] == k]
-        md += [f"## {label}", ""]
+    for k, c in cats.items():
+        ls = [l for l in lines if l["category"] == k]
+        md += [f"## {c['name']}", "", f"*{c['subtitle']}*", ""]
+        more = [l["name"] for l in lines if k in l["also"]]
+        if more:
+            md += ["Also here: " + ", ".join(more) + ".", ""]
         for l in ls:
             src = ", ".join(s["name"] + (f" (Nexus {s['modid']})" if s["modid"] else "") for s in l["sources"])
             md.append(f"### {l['name']}")
