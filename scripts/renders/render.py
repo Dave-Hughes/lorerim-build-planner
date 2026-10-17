@@ -16,9 +16,6 @@ import sys
 import bpy
 from mathutils import Matrix, Vector
 
-args = sys.argv[sys.argv.index("--") + 1:]
-ITEM, OUT = os.path.abspath(args[0]), os.path.abspath(args[1])
-ENGINE = (args[2] if len(args) > 2 else "EEVEE").upper()
 FRAMES = 24
 # Three-quarter view: camera 35 degrees round from the front, 20 degrees above.
 AZIMUTH, ELEVATION = math.radians(35), math.radians(20)
@@ -29,10 +26,10 @@ def clear():
     bpy.ops.preferences.addon_enable(module="io_scene_nifly")
 
 
-def load():
-    nif = glob.glob(os.path.join(ITEM, "meshes", "**", "*.nif"), recursive=True)[0]
+def load(item):
+    nif = glob.glob(os.path.join(item, "meshes", "**", "*.nif"), recursive=True)[0]
     # PyNifly finds textures under its Skyrim texture path; the item's folder is a small Data folder.
-    bpy.context.preferences.addons["io_scene_nifly"].preferences.sky_texture_path_1 = ITEM
+    bpy.context.preferences.addons["io_scene_nifly"].preferences.sky_texture_path_1 = item
     bpy.ops.import_scene.pynifly(filepath=nif, import_collisions=False, import_animations=False, import_tris=False, import_shapekeys=False)
     meshes = [o for o in bpy.context.scene.objects if o.type == "MESH"]
     # Effect shapes (Dawnbreaker's glow, blood decals) have no diffuse texture to show, and a sword's
@@ -97,7 +94,7 @@ def frame(meshes):
     return pivot
 
 
-def stage():
+def stage(engine):
     scene = bpy.context.scene
     dist = 3.2
     cam = bpy.data.objects.new("cam", bpy.data.cameras.new("cam"))
@@ -122,8 +119,8 @@ def stage():
     world.node_tree.nodes["Background"].inputs[0].default_value = (0.35, 0.35, 0.37, 1)
     world.node_tree.nodes["Background"].inputs[1].default_value = 0.6
     scene.world = world
-    scene.render.engine = "CYCLES" if ENGINE == "CYCLES" else "BLENDER_EEVEE_NEXT"
-    if ENGINE == "CYCLES":
+    scene.render.engine = "CYCLES" if engine == "CYCLES" else "BLENDER_EEVEE_NEXT"
+    if engine == "CYCLES":
         scene.cycles.samples = 64
         scene.cycles.use_denoising = True
     scene.render.film_transparent = True
@@ -132,23 +129,25 @@ def stage():
     scene.view_settings.view_transform = "AgX"
 
 
-def render(pivot):
+def render(pivot, out):
     scene = bpy.context.scene
     turn = pivot.children[0]
     scene.render.resolution_x = scene.render.resolution_y = 512
-    scene.render.filepath = os.path.join(OUT, "still.png")
+    scene.render.filepath = os.path.join(out, "still.png")
     bpy.ops.render.render(write_still=True)
     scene.render.resolution_x = scene.render.resolution_y = 256
     base = turn.rotation_euler.copy()
     for i in range(FRAMES):
         pivot.rotation_euler = (0, 0, 2 * math.pi * i / FRAMES)
         turn.rotation_euler = base
-        scene.render.filepath = os.path.join(OUT, "turn", f"{i:04d}.png")
+        scene.render.filepath = os.path.join(out, "turn", f"{i:04d}.png")
         bpy.ops.render.render(write_still=True)
 
 
-clear()
-nif, meshes = load()
-print("RENDER", os.path.basename(nif), len(meshes), "meshes:", ", ".join(o.name for o in meshes))
-stage()
-render(frame(meshes))
+if __name__ == "__main__":
+    args = sys.argv[sys.argv.index("--") + 1:]
+    clear()
+    nif, meshes = load(os.path.abspath(args[0]))
+    print("RENDER", os.path.basename(nif), len(meshes), "meshes:", ", ".join(o.name for o in meshes))
+    stage((args[2] if len(args) > 2 else "EEVEE").upper())
+    render(frame(meshes), os.path.abspath(args[1]))
