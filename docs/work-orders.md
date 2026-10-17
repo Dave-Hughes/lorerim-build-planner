@@ -3949,10 +3949,10 @@ After it's on production, Dave makes Zen's invite in /admin and sends him the li
 6. **What the records don't say.** Who gives a quest, and where, sits in its aliases and dialogue conditions, which are not readable as plain facts. Leave them out. The page will say so, as the Gear page does for where items are found.
 
 ### Done when
-- [ ] `quests_raw.json`, `questlines_raw.json` and `quests_report.md` are committed on `wo97-quests`, with the counts in the commit message.
-- [ ] Unit (`test_quests.py`, on a small fixture plugin like `test_items.py`): the type read from DNAM, stages with their log text in order, objectives, the player-facing filter, and text from a string table.
-- [ ] The five sample quests' names, journal text and objectives match the game (checked against xEdit or in game), as written in the report.
-- [ ] Python tests pass. Push `wo97-quests` only.
+- [x] `quests_raw.json`, `questlines_raw.json` and `quests_report.md` are committed on `wo97-quests`, with the counts in the commit message.
+- [x] Unit (`test_quests.py`, on a small fixture plugin like `test_items.py`): the type read from DNAM, stages with their log text in order, objectives, the player-facing filter, and text from a string table.
+- [ ] (Open: the text is read straight from the records; an in-game look at the five samples is still to do.) The five sample quests' names, journal text and objectives match the game (checked against xEdit or in game), as written in the report.
+- [x] Python tests pass (58). Merged to staging by Bob, 17 Oct.
 
 ---
 
