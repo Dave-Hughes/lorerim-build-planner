@@ -3885,6 +3885,45 @@ Copy: use the game's words, follow the design rules, and add no how-it-works tex
 
 ---
 
+## WO-96  Early access: a personal invite past the coming soon page (17 Oct 2026)
+
+**Why.** Dave wants to let a few people into production before launch, Zenematics first, so they can make a build and get the whole experience. Today only admins get past the coming soon page, and being an admin carries moderation powers. An invited person should get the app and nothing more.
+
+1. **Data** (migration via `npm run db:generate`):
+   - **`invite` table:** `id`, a `token_hash` (store a SHA-256 of the token, never the token itself), `label` (who it's for, such as "Zenematics"), `created_by` (user id), `created_at`, `expires_at` (14 days), `used_by` (user id, null until used), `used_at`.
+   - **`user.early_access_at`:** a timestamp, null for everyone else.
+2. **Who passes the coming soon page.** In `src/proxy.ts`, a signed-in user passes when they're an admin **or** their `early_access_at` is set, with one query for both from the session token. Rename `isAdminSession` to `passesSession` (or similar) and keep it to that one query.
+3. **The invite page, `/invite/<token>`.**
+   - It passes the coming soon page: add `/invite/` to `passesComingSoon`.
+   - It's set in the coming soon page's look: the pixel night with Tapps by the fire behind it, and the cream dialogue box from the story.
+   - Tapps says, in the box: `[Label], you're invited in early. Make a build, look around, and tell me what you think before it opens to everyone.` Dave may reword this. Keep it plain (design rules 17 and 22).
+   - **Signed out:** `Sign in with Discord`, coming back to this same page.
+   - **Signed in:** one button, `Come in`. It's a server action with the BotID check. It sets the user's `early_access_at`, marks the invite used, and goes to `/`, where the first-visit tour starts as usual.
+   - **Used, expired or unknown token:** the same scene, with `This invite has been used or has run out. Ask Tapps for a new one.` and no button. Don't say which of the three it was.
+   - An invite works once. The person it's used by keeps their access.
+4. **BotID.** Add `{ path: "/invite/*", method: "POST" }` to `src/instrumentation-client.ts`. Without it, `Come in` reads as a bot, the way `/signin` and `/admin` did.
+5. **`/admin`: an `Early access` section.**
+   - **Invite someone:** a `Name` field and `Make invite`. It shows the link once, with `Copy link`, plus `It works once, for 14 days.`
+   - **Invites:** each one's label, made date, and `Waiting`, `Used by <Discord name>` or `Ran out`, with `Cancel` on waiting ones.
+   - **People with early access:** each one's Discord name and avatar, the date they came in, and `Remove`. `Remove` clears `early_access_at`, so they see the coming soon page again on their next page load.
+   - Admins only, server actions with the admin check and BotID, like the other admin sections.
+6. **After launch.** With `FEATURE_COMING_SOON` off, nothing here changes anything: everyone sees the app. Leave the section in place; it costs nothing.
+
+### Done when
+- [ ] Unit: the proxy's check passes an admin, an early-access user and nobody else; a token is stored hashed; an invite can't be used twice or after it expires.
+- [ ] e2e (with the coming soon switch on, the `soon` project):
+  - an invite link shows the scene and `Sign in with Discord` signed out;
+  - signed in, `Come in` lands on the app, and the app stays open on later pages;
+  - a second account can't use the same link;
+  - `Remove` in /admin puts the coming soon page back.
+- [ ] e2e: a non-admin sees no `Early access` section.
+- [ ] Screenshots of the invite page (signed out, signed in, used) at 1440 and 390, and the /admin section.
+- [ ] All checks in CLAUDE.md pass.
+
+After it's on production, Dave makes Zen's invite in /admin and sends him the link.
+
+---
+
 ## Parked (not ordered yet)
 
 - **Renders that lose their effects (after WO-95).** Items with glow, parallax or animated shading, Dawnbreaker for one, render flat. Fix them one by one in `render.py` (emissive maps, a second light pass) once Dave flags the ones that matter.
