@@ -71,6 +71,20 @@
       "when": 1791815797926,
       "tag": "0009_safety",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1792254432099,
+      "tag": "0010_early_access",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1792255489973,
+      "tag": "0011_invite_message",
+      "breakpoints": true
     }
   ]
 }

@@ -40,11 +40,11 @@ export default defineConfig({
   },
   projects: [
     // Story and the site guide on (WO-81), so their tests keep running.
-    { name: "all", testIgnore: /wo81-launch\.spec\.ts|wo84-soon\.spec\.ts|wo92-off\.spec\.ts/ },
+    { name: "all", testIgnore: /wo81-launch\.spec\.ts|wo84-soon\.spec\.ts|wo92-off\.spec\.ts|wo96-soon\.spec\.ts/ },
     // Both off, as they launch.
     { name: "launch", testMatch: /wo81-launch\.spec\.ts|wo92-off\.spec\.ts/, use: { baseURL: `http://localhost:${launchPort}` } },
     // The coming soon page in front of everything (WO-84).
-    { name: "soon", testMatch: /wo84-soon\.spec\.ts/, use: { baseURL: `http://localhost:${soonPort}` } },
+    { name: "soon", testMatch: /wo84-soon\.spec\.ts|wo96-soon\.spec\.ts/, use: { baseURL: `http://localhost:${soonPort}` } },
   ],
   webServer: [port, launchPort, soonPort].map((p) => ({
     // Run `npm run build` first; this serves the production build.

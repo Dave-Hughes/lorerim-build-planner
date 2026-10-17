@@ -21,6 +21,8 @@ initBotId({
     // button read as a bot (found 16 Oct on lorerimplanner.com).
     { path: "/admin", method: "POST" },
     { path: "/admin/*", method: "POST" },
+    // An early-access invite's Come in (WO-96).
+    { path: "/invite/*", method: "POST" },
     { path: "/api/covers", method: "POST" },
     { path: "/api/builds/*/images", method: "POST" },
   ],

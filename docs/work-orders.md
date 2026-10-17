@@ -3910,15 +3910,15 @@ Copy: use the game's words, follow the design rules, and add no how-it-works tex
 6. **After launch.** With `FEATURE_COMING_SOON` off, nothing here changes anything: everyone sees the app. Leave the section in place; it costs nothing.
 
 ### Done when
-- [ ] Unit: the proxy's check passes an admin, an early-access user and nobody else; a token is stored hashed; an invite can't be used twice or after it expires.
-- [ ] e2e (with the coming soon switch on, the `soon` project):
+- [x] Unit: the proxy's check passes an admin, an early-access user and nobody else; a token is stored hashed; an invite can't be used twice or after it expires.
+- [x] e2e (with the coming soon switch on, the `soon` project):
   - an invite link shows the scene and `Sign in with Discord` signed out;
   - signed in, `Come in` lands on the app, and the app stays open on later pages;
   - a second account can't use the same link;
   - `Remove` in /admin puts the coming soon page back.
-- [ ] e2e: a non-admin sees no `Early access` section.
-- [ ] Screenshots of the invite page (signed out, signed in, used) at 1440 and 390, and the /admin section.
-- [ ] All checks in CLAUDE.md pass.
+- [x] e2e: a non-admin sees no `Early access` section.
+- [x] Screenshots of the invite page (signed out, signed in, used) at 1440 and 390, and the /admin section.
+- [x] All checks in CLAUDE.md pass.
 
 After it's on production, Dave makes Zen's invite in /admin and sends him the link.
 

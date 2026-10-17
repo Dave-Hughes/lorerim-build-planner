@@ -26,6 +26,8 @@ export const users = pgTable("user", {
   image: text("image"),
   /** The public page's address, /u/<handle>. Made from the Discord name once, then never changed. */
   handle: text("handle").unique(),
+  /** Let in early past the coming soon page by an invite (WO-96); null for everyone else. */
+  earlyAccessAt: timestamp("early_access_at", { withTimezone: true }),
 });
 
 export const accounts = pgTable(
@@ -235,3 +237,21 @@ export const rateEvents = pgTable(
   },
   (t) => [index("rate_event_user_idx").on(t.userId, t.kind, t.at)],
 );
+
+/**
+ * Early-access invites (WO-96): an admin makes one for a named person; its link works once, for 14
+ * days. Only a SHA-256 of the link's token is kept, never the token.
+ */
+export const invites = pgTable("invite", {
+  id: serial("id").primaryKey(),
+  tokenHash: text("token_hash").notNull().unique(),
+  /** Who it's for: "Zenematics". */
+  label: text("label").notNull(),
+  /** What Tapps says on this invite's page, written for the person; null for the usual line. */
+  message: text("message"),
+  createdBy: text("created_by").references(() => users.id, { onDelete: "set null" }),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+  usedBy: text("used_by").references(() => users.id, { onDelete: "set null" }),
+  usedAt: timestamp("used_at", { withTimezone: true }),
+});

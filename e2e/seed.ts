@@ -5,7 +5,7 @@
  */
 import { config } from "dotenv";
 import { del, list } from "@vercel/blob";
-import { and, eq, like } from "drizzle-orm";
+import { and, eq, like, or } from "drizzle-orm";
 import { Pool } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-serverless";
 import { assertDatabaseMatchesEnvironment } from "../src/db/environments";
@@ -166,6 +166,8 @@ export async function seed() {
     // The test players' image checks (WO-40) would outlive them with no uploader.
     await db.delete(schema.imageChecks).where(like(schema.imageChecks.uploaderId, "e2e-%"));
     await db.delete(schema.builds).where(like(schema.builds.id, "e2e%"));
+    // The test players' invites (WO-96), made or used: they'd outlive them with no one on them.
+    await db.delete(schema.invites).where(or(like(schema.invites.createdBy, "e2e-%"), like(schema.invites.usedBy, "e2e-%")));
     await db.delete(schema.users).where(like(schema.users.id, "e2e-%"));
     await db.insert(schema.users).values([
       { id: TEST_USER_ID, name: TEST_USER_NAME, email: null, image: null, handle: TEST_USER_HANDLE },
@@ -558,6 +560,7 @@ export async function cleanup() {
     await db.delete(schema.imageChecks).where(like(schema.imageChecks.uploaderId, "e2e-%"));
     await db.delete(schema.builds).where(and(like(schema.builds.id, "e2e%")));
     await db.delete(schema.builds).where(eq(schema.builds.ownerId, TEST_USER_ID));
+    await db.delete(schema.invites).where(or(like(schema.invites.createdBy, "e2e-%"), like(schema.invites.usedBy, "e2e-%")));
     await db.delete(schema.users).where(like(schema.users.id, "e2e-%"));
   } finally {
     await pool.end();

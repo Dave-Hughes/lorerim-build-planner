@@ -1,0 +1,63 @@
+/* An invite's page (WO-96): the coming soon hero, then the dialogue box laid over its lower edge. */
+.page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+/* The scene leaves room under it for the box and the button, so both are on screen. */
+.page .scene {
+  flex: none;
+  height: max(360px, min(clamp(560px, 52vw, 820px), calc(100dvh - 270px)));
+  height: round(max(360px, min(clamp(560px, 52vw, 820px), calc(100dvh - 270px))), 1px);
+}
+@media (max-width: 559px) {
+  .page .scene {
+    height: max(380px, min(560px, calc(100dvh - 330px)));
+  }
+}
+.talk {
+  position: relative;
+  z-index: 1;
+  width: min(760px, calc(100% - 32px));
+  margin: -16px auto 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+.talk > :first-child {
+  align-self: stretch;
+}
+.action form {
+  margin: 0;
+}
+@media (max-width: 559px) {
+  .talk {
+    margin-top: -12px;
+    gap: 22px;
+  }
+}
+/* Come in and Sign in with Discord: the coming soon page's ember button. */
+.action button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 14px 26px;
+  border: 0;
+  border-radius: 0;
+  background: var(--ember);
+  color: #0e1319;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.action button:hover {
+  background: #ffb070;
+}
+.action button:focus-visible {
+  outline: 2px solid #f3ead8;
+  outline-offset: 3px;
+}

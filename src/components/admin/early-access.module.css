@@ -1,0 +1,53 @@
+/* /admin's Early access section (WO-96). */
+.name {
+  flex: 1 1 260px;
+}
+.message {
+  flex: 1 1 100%;
+}
+.link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--ember);
+  background: color-mix(in srgb, var(--ember) 10%, transparent);
+}
+.url {
+  font-size: 14px;
+  color: var(--ember-text);
+  overflow-wrap: anywhere;
+}
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) 110px minmax(0, 1fr) 96px;
+  align-items: center;
+  gap: 8px 16px;
+  min-height: 52px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.who {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  min-width: 0;
+}
+.waiting {
+  color: var(--ember-text);
+}
+.list li > button {
+  justify-self: end;
+}
+@media (max-width: 599px) {
+  .list li {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}

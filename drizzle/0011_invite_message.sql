@@ -1,0 +1,1 @@
+ALTER TABLE "invite" ADD COLUMN "message" text;

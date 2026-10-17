@@ -9,11 +9,13 @@ export function comingSoonOn(env: Record<string, string | undefined> = process.e
   return v === "on" || v === "1" || v === "true";
 }
 
-/** Paths that are never the coming soon page: sign-in, the share card, icons and files, the page itself. */
+/** Paths that are never the coming soon page: sign-in, an invite, the share card, icons and files, the page itself. */
 export function passesComingSoon(path: string): boolean {
   return (
     path === "/signin" ||
     path === "/coming-soon" ||
+    // An early-access invite (WO-96): its page is how an invited player gets in.
+    path.startsWith("/invite/") ||
     path.startsWith("/api/") ||
     path.startsWith("/og") ||
     path.startsWith("/_next/") ||
