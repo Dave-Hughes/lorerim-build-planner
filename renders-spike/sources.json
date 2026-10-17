@@ -1,0 +1,49 @@
+{
+ "glass-cuirass": {
+  "record": "LoreRim - Armor Merges.esp",
+  "model": "meshes\\armor\\glass\\m\\cuirassglassgo.nif",
+  "modelFrom": "mods\\Glass Armors and Weapons Retexture SE\\Glass Armors and Weapons Retexture SE.bsa",
+  "textures": {
+   "textures\\armor\\glass\\m\\curiass.dds": "mods\\Glass Armors and Weapons Retexture SE\\Glass Armors and Weapons Retexture SE - Textures.bsa",
+   "textures\\armor\\glass\\m\\curiass_n.dds": "mods\\Glass Armors and Weapons Retexture SE\\Glass Armors and Weapons Retexture SE - Textures.bsa",
+   "textures\\cubemaps\\shinybright_e.dds": "mods\\Custom Cubemaps by fadingsignal",
+   "textures\\armor\\glass\\m\\curiassenvmask.dds": "mods\\Glass Armors and Weapons Retexture SE\\Glass Armors and Weapons Retexture SE - Textures.bsa"
+  }
+ },
+ "dawnbreaker": {
+  "record": "Synthesis - Gameplay Overwrite.esp",
+  "model": "meshes\\weapons\\dawnbreaker\\dawnbreaker.nif",
+  "modelFrom": "mods\\Multilayer Parallax Animated Dawnbreaker",
+  "textures": {
+   "textures\\blood\\bloodedge01.dds": "mods\\Simplicity of Splatter - High-Res Blood Textures",
+   "textures\\blood\\bloodedge01add.dds": "mods\\Simplicity of Splatter - High-Res Blood Textures",
+   "textures\\blood\\bloodedge01_n.dds": "mods\\Simplicity of Splatter - High-Res Blood Textures",
+   "textures\\effects\\darkswirls.dds": "mods\\Particle Patch for ENB ESMIFIED\\Particle Patch - Textures.bsa",
+   "textures\\effects\\gradients\\gradlightbeam.dds": "mods\\Kanjs - Smooth and artifact-free gradient",
+   "textures\\effects\\fxbrightfash01.dds": "mods\\Cleaned Skyrim SE Textures\\Skyrim - Textures5.bsa",
+   "textures\\effects\\glowsoft01.dds": "mods\\Cleaned Skyrim SE Textures\\Skyrim - Textures5.bsa",
+   "textures\\effects\\vaportile01.dds": "mods\\RUSTIC DAEDRA - Special Edition",
+   "textures\\effects\\gradients\\graddiscolightbeam.dds": "mods\\Kanjs - Smooth and artifact-free gradient",
+   "textures\\weapons\\dawnbreaker\\dawnbreaker.dds": "mods\\Multilayer Parallax Animated Dawnbreaker",
+   "textures\\weapons\\dawnbreaker\\dawnbreaker_n.dds": "mods\\Multilayer Parallax Animated Dawnbreaker",
+   "textures\\cubemaps\\dawnbreaker_e.dds": "mods\\Multilayer Parallax Animated Dawnbreaker",
+   "textures\\weapons\\dawnbreaker\\dawnbreaker_m.dds": "mods\\Multilayer Parallax Animated Dawnbreaker",
+   "textures\\weapons\\dawnbreaker\\dawnbreaker_p.dds": "mods\\Multilayer Parallax Animated Dawnbreaker",
+   "textures\\weapons\\dawnbreaker\\dawnbreaker_bl.dds": null,
+   "textures\\weapons\\dawnbreaker\\scabbard.dds": "mods\\Multilayer Parallax Animated Dawnbreaker",
+   "textures\\weapons\\dawnbreaker\\scabbard_n.dds": "mods\\Multilayer Parallax Animated Dawnbreaker",
+   "textures\\weapons\\dawnbreaker\\scabbard_m.dds": "mods\\Multilayer Parallax Animated Dawnbreaker"
+  }
+ },
+ "glass-light-bow": {
+  "record": "Requiem for the Indifferent.esp",
+  "model": "meshes\\weapons\\glass\\glassbowskinned.nif",
+  "modelFrom": "mods\\IPM - Insane Armory",
+  "textures": {
+   "textures\\weapons\\glass\\glassbow.dds": "mods\\Glass Armors and Weapons Retexture SE\\Glass Armors and Weapons Retexture SE - Textures.bsa",
+   "textures\\weapons\\glass\\glassbow_n.dds": "mods\\Glass Armors and Weapons Retexture SE\\Glass Armors and Weapons Retexture SE - Textures.bsa",
+   "textures\\cubemaps\\ore_gold_e.dds": "mods\\Custom Cubemaps by fadingsignal",
+   "textures\\weapons\\glass\\glassbow_envmask.dds": "mods\\Glass Armors and Weapons Retexture SE\\Glass Armors and Weapons Retexture SE - Textures.bsa"
+  }
+ }
+}
