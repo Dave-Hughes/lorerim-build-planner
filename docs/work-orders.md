@@ -3810,7 +3810,78 @@ Copy: use the game's words, follow the design rules, and add no how-it-works tex
 
 ---
 
+## WO-94  Item renders: render every indexed item on Dave's PC (PC only, 16 Oct 2026)
+
+**Why.** Dave wants to see each item the way the game's inventory shows it. The `spike-renders` branch proved it works: a still and a 24-angle turntable per item, rendered from the install's own models and textures. Canvas board: `ItemRenders`. The LoreRim team agreed on 16 Oct, on one condition: every picture credits where it comes from (the base game, or the mod by name). We only ever publish pictures. Model and texture files never leave Dave's PC.
+
+**Where:** Dave's PC, `LORERIM_ROOT`, the Blender and PyNifly set up in the spike (`%LOCALAPPDATA%\Programs\blender-spike`). Work on branch `wo94-renders`, made from `staging`. Don't touch `src/`.
+
+1. **From spike to pipeline.** Move `scripts/renders/` from `spike-renders` onto the new branch and make it run over every item in `src/data/lorerim-5.0.4.8/items.json`:
+   - It **resumes**: it skips items whose outputs exist, so it can run overnight in batches (`--from`, `--limit`).
+   - It **renders a look once**. Items whose model and texture files are the same share one render. Record which items share it.
+   - A **failure** (missing mesh, import error) is logged with the reason, and the run moves on.
+   - Drop the pixel versions. Dave and Bob decided the renders stay renders.
+2. **Outputs per look**, in `C:\LoreRim-renders\5.0.4.8\<look id>\` (outside the repo):
+   - `still.webp`: 512 px, transparent, quality about 85.
+   - `spin.webp`: 24 frames at 384 px in one row (9216 × 384), same light and camera as the spike.
+3. **Credits.** For each item, record two sources:
+   - **The record's plugin**, as `items.json` has it.
+   - **The look's source:** the MO2 mod folder that supplied the model, plus the folder (or folders) that supplied the item's own textures. These are the textures under the item's own `textures\armor\…` or `textures\weapons\…` path. Shared ones like cubemaps, blood or effects don't count.
+   
+   Then:
+   - Map each folder to its Nexus `modid` from `meta.ini`, the same way as WO-91.
+   - Folders that only repack the base game (for example `Cleaned Skyrim SE Textures`) count as **Skyrim**. List them in `overrides.json` → `renders` → `baseGameFolders`.
+4. **Manifest.** Write `gamedata/5.0.4.8/renders_raw.json`. It has one entry per item id: its look id, the look's source folders and their modids, and a `status` (`ok`, or the failure reason). Commit the scripts and the manifest. **The images are not committed.**
+5. **Hand the images over.** Zip `C:\LoreRim-renders\5.0.4.8` in parts under 1.9 GB. Upload them as assets on a GitHub release in this repo, tagged `renders-5.0.4.8`, marked as a pre-release.
+   - If this PC can't authenticate to GitHub's API, stop and tell Dave which one command he needs to run (for example `gh auth login`).
+   - Push `wo94-renders`. Don't push staging or main.
+
+### Done when
+- [ ] Every item has a `renders_raw.json` entry. The commit message gives the counts: rendered, shared looks, failed (by reason), and hours taken.
+- [ ] Spot checks in the commit: Glass Cuirass, Glass Light Bow, Hide Boots, Daedric Mail Cuirass, Dragonscale Cuirass and one Vigilant item. Each has a still, a spin, and credits naming the right mod folders.
+- [ ] The release `renders-5.0.4.8` holds the zipped images.
+- [ ] Python tests pass, including new ones for the credit rule (own textures vs shared ones, base-game folders).
+
+---
+
+## WO-95  Item renders on the item page, with credits (Mac, 16 Oct 2026)
+
+**Why.** WO-94 renders every item on Dave's PC. This order puts those pictures on the site. Canvas: `ItemRenders`, block 4. Needs WO-94.
+
+1. **Upload.**
+   - Merge `wo94-renders` into staging.
+   - Download the `renders-5.0.4.8` release assets.
+   - Upload each look's `still.webp` and `spin.webp` to Vercel Blob under `gear/5.0.4.8/<look id>/`, with a one-year cache. The renders are the same in every environment, so use one shared prefix with no `staging/`.
+   - Make the upload a script (`scripts/gamedata/upload_renders.mjs`) that skips files already there.
+   - It needs `BLOB_READ_WRITE_TOKEN` from `.env.local` (`vercel env pull`). If it isn't there, stop and say so. Never print it.
+2. **`build.py`** turns `renders_raw.json` into `src/data/lorerim-5.0.4.8/renders.json`, keyed by item id:
+   - `{ look, credits: [{ label, nexus? }] }` for items with status `ok`.
+   - The credit labels are the base game as `Skyrim`, or each mod folder's name.
+   - Keep it out of `items.json`.
+3. **The item page.**
+   - Where the type icon sits now, a 240 px framed square holding the still. Its alt text is the item's name.
+   - **Drag** across it (or use ← → when it has focus) and it turns through the 24 frames of `spin.webp`. Load the spin only on the first drag or keypress.
+   - It turns only by drag or keys, never on its own. Respect `prefers-reduced-motion` by not easing between frames.
+   - No render: the type icon stays as it is now.
+4. **Credits**, under the picture in small muted text:
+   - `Skyrim` when every source is the base game.
+   - Otherwise each mod's name, linked to its Nexus page in a new tab, the same way the Plugin column links.
+   
+   Use the game's and the mods' own names. No extra wording beyond a label: `Look from` before the names is enough.
+5. **Nowhere else yet.** The table keeps the type icons. Renders in the build page's gear cards can come later.
+
+### Done when
+- [ ] Unit: `renders.json` is built from the raw manifest; credits for a base-game look, a modded look, and one with two mods.
+- [ ] e2e: Glass Cuirass's page shows the still and `Look from Glass Armors and Weapons Retexture SE ↗`. Dragging changes the frame; ← → change it with focus; an item with no render shows its type icon.
+- [ ] The Blob upload is a script that skips existing files; the commit says how many files went up and their total size.
+- [ ] Screenshots of Glass Cuirass, Dawnbreaker and an item with no render, at 1440 and 390.
+- [ ] All checks in CLAUDE.md pass.
+
+---
+
 ## Parked (not ordered yet)
+
+- **Renders that lose their effects (after WO-95).** Items with glow, parallax or animated shading, Dawnbreaker for one, render flat. Fix them one by one in `render.py` (emissive maps, a second light pass) once Dave flags the ones that matter.
 
 - **A true beginner's guide to LoreRim (Dave, 12 Oct; not now).**
   - It isn't a character guide and isn't about installing. It's the in-game basics a new player wishes they'd known.
