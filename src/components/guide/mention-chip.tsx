@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { RaceIcon, SignIcon, SkillIcon, SlotIcon } from "@/components/ui/skill-icon";
+import { RaceIcon, SignIcon, SkillIcon, SlotIcon, WeaponIcon } from "@/components/ui/skill-icon";
 import type { MentionInfo } from "@/lib/guide/mention";
 import styles from "./mention.module.css";
 
@@ -10,6 +10,7 @@ export function MentionChipIcon({ info }: { info: MentionInfo }) {
     return i.image ? <img src={i.image} alt="" aria-hidden="true" width={16} height={16} className={styles.traitIcon} /> : null;
   if (i.type === "none") return null;
   if (i.type === "slot") return <SlotIcon slot={i.name} />;
+  if (i.type === "weapon") return <WeaponIcon type={i.name} ammo={i.ammo} />;
   if (i.type === "sign") return <SignIcon name={i.name} />;
   if (i.type === "race") return <RaceIcon name={i.name} />;
   return <SkillIcon name={i.name} />;

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { SlotIcon } from "@/components/ui/skill-icon";
+import { ItemTypeIcon } from "@/components/ui/skill-icon";
 import { ARMOR_CLASSES, SORTS, gearHref, type ArmorClass, type GearQuery, type GearSource, type GearSort } from "@/lib/gear/query";
 import styles from "./gear.module.css";
 
@@ -39,7 +39,7 @@ export function GearControls({ query, types, sortLabel }: { query: GearQuery; ty
     <div role="group" aria-label="Type" className={styles.chips}>
       {types.map((t) => (
         <button key={t.name} type="button" className={styles.chip} aria-pressed={query.type === t.name} onClick={() => go({ type: query.type === t.name ? "" : t.name })}>
-          {armorTab && <SlotIcon slot={t.name} />}
+          <ItemTypeIcon kind={query.kind} type={t.name} />
           {t.name} <small>{t.n.toLocaleString("en-US")}</small>
         </button>
       ))}
@@ -120,7 +120,7 @@ export function GearControls({ query, types, sortLabel }: { query: GearQuery; ty
         <p className={styles.pills}>
           {query.type && (
             <button type="button" className={styles.pill} aria-label={`Remove ${query.type}`} onClick={() => go({ type: "" })}>
-              {armorTab && <SlotIcon slot={query.type} />}
+              <ItemTypeIcon kind={query.kind} type={query.type} />
               {query.type} <span aria-hidden="true">✕</span>
             </button>
           )}

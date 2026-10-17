@@ -9,7 +9,7 @@ import { perkText, type GameData } from "@/lib/rules/data";
 export const MENTION_KINDS = ["perk", "destiny", "skill", "trait", "birthsign", "stone", "race", "item", "spell"] as const;
 export type MentionKind = (typeof MENTION_KINDS)[number];
 
-export type MentionIcon = { type: "skill" | "sign" | "race" | "slot"; name: string } | { type: "trait"; image: string | null } | { type: "none" };
+export type MentionIcon = { type: "skill" | "sign" | "race" | "slot"; name: string } | { type: "weapon"; name: string | null; ammo: boolean } | { type: "trait"; image: string | null } | { type: "none" };
 
 export interface MentionInfo {
   kind: MentionKind;
@@ -32,7 +32,7 @@ export function mentionFallbackLabel(id: string, label?: string | null): string 
 
 /** An item from the index as a mention: the chip shows its name; the card its type, stats and the game's text. */
 export function itemMention(i: GameItem): MentionInfo {
-  return { kind: "item", id: i.id, name: i.name, kindLabel: i.stats, icon: { type: "slot", name: itemSlot(i) }, text: i.text ?? "" };
+  return { kind: "item", id: i.id, name: i.name, kindLabel: i.stats, icon: i.kind === "armor" ? { type: "slot", name: itemSlot(i) } : { type: "weapon", name: i.weaponType ?? null, ammo: i.kind === "ammo" }, text: i.text ?? "" };
 }
 
 /** The gear type an item is, for its icon: weapons the main hand, a shield the off hand (WO-82). */

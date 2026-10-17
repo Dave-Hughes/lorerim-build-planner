@@ -57,6 +57,22 @@ export function MarkIcon({ name, size = 16 }: { name: "trainer" | "skill-book" |
 }
 
 /** A gear slot (WO-22's ten: Main hand ... Other). */
+/** The weapon types and ammunition with an icon of their own (scripts/icons/weapons.py). */
+const WEAPON_ICONS = new Set(["sword", "greatsword", "dagger", "rapier", "mace", "war-axe", "battleaxe", "warhammer", "spear", "polearm", "javelin", "quarterstaff", "staff", "bow", "crossbow", "pickaxe", "arrow", "bolt"]);
+
+/** A weapon type or kind of ammunition (Sword, Bow, Arrow...). One without an icon of its own takes the hand's or the quiver's. */
+export function WeaponIcon({ type, ammo = false, size = 16 }: { type: string | null | undefined; ammo?: boolean; size?: 16 | 24 | 32 }) {
+  const s = type ? slug(type) : "";
+  if (WEAPON_ICONS.has(s)) return <GameIcon file={`weapon-${s}`} size={size} />;
+  return <SlotIcon slot={ammo ? "Ammo" : "Main hand"} size={size} />;
+}
+
+/** An item's type icon: its gear type's for armor, its weapon type's for weapons and ammunition. */
+export function ItemTypeIcon({ kind, type, size = 16 }: { kind: "armor" | "weapon" | "ammo"; type: string | null | undefined; size?: 16 | 24 | 32 }) {
+  if (kind === "armor") return <SlotIcon slot={type ?? "Other"} size={size} />;
+  return <WeaponIcon type={type} ammo={kind === "ammo"} size={size} />;
+}
+
 export function SlotIcon({ slot, size = 16 }: { slot: string; size?: 16 | 24 | 32 }) {
   return <GameIcon file={`slot-${SLOT_ICON[slot] ?? "other"}`} size={size} />;
 }

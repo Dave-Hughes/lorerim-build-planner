@@ -4,13 +4,23 @@ import { describe, expect, it } from "vitest";
 import { MentionChip } from "@/components/guide/mention-chip";
 import { requireGameData } from "@/lib/rules/data";
 import { guideDocSchema } from "./doc";
-import { mentionFallbackLabel, resolveMention, searchMentions } from "./mention";
+import { itemMention, mentionFallbackLabel, resolveMention, searchMentions } from "./mention";
 
 const d = requireGameData("5.0.4.8");
 const chip = (kind: string, id: string, takenAt?: number[] | null) =>
   renderToStaticMarkup(createElement(MentionChip, { info: resolveMention(d, kind, id), missingLabel: mentionFallbackLabel(id), version: d.version.id, takenAt }));
 
 describe("mentions", () => {
+  it("give a weapon its own type's icon, and armor its gear type's", () => {
+    const bow = itemMention({ id: "Skyrim.esm:0139A5", name: "Glass Light Bow", kind: "weapon", weaponType: "Bow", stats: "Bow, 40 damage, 9 weight" });
+    expect(bow.icon).toEqual({ type: "weapon", name: "Bow", ammo: false });
+    expect(renderToStaticMarkup(createElement(MentionChip, { info: bow, missingLabel: "", version: d.version.id }))).toContain("/icons/weapon-bow.svg");
+    const arrow = itemMention({ id: "Skyrim.esm:0139BE", name: "Glass Arrow", kind: "ammo", weaponType: "Arrow", stats: "Arrow, 78 damage" });
+    expect(renderToStaticMarkup(createElement(MentionChip, { info: arrow, missingLabel: "", version: d.version.id }))).toContain("/icons/weapon-arrow.svg");
+    const cuirass = itemMention({ id: "Skyrim.esm:013939", name: "Glass Cuirass", kind: "armor", slot: "Body", type: "Body", stats: "Light armor, 275 armor, 12.5 weight" });
+    expect(cuirass.icon).toEqual({ type: "slot", name: "Body" });
+  });
+
   it("resolve against the build's version, from kind and id only", () => {
     const p = resolveMention(d, "perk", "Block:Powerful Bashes");
     expect(p?.name).toBe("Powerful Bashes");
