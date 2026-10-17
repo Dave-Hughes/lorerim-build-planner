@@ -1,5 +1,5 @@
 """
-Pixel icons for the 18 skills and Destiny, the build page's tabs, attributes, birthsigns, races, level marks, gear slots, game modes, tags, deities, the logo, and the guide's chapters and needs, and the weapon types (weapons.py): 16x16, drawn with a few shape
+Pixel icons for the 18 skills and Destiny, the build page's tabs, attributes, birthsigns, races, level marks, gear slots, game modes, tags, deities, the logo, and the guide's chapters and needs, the weapon types (weapons.py), and the Quests page's categories (quests.py): 16x16, drawn with a few shape
 helpers, then given a 1 px dark outline automatically so every icon shares
 the same edge. Written out as SVG (one rect per run of pixels, crisp at any
 size).
@@ -2806,7 +2806,10 @@ GUIDE = {"Tapps": tapps, "Tapps point": tapps_point, **{k: (lambda r=r: Sprite(r
 from weapons import WEAPONS as _WEAPON_DRAWS  # noqa: E402  (weapon types and ammunition, after WO-92)
 
 WEAPONS = {name: (lambda f=f: f(Icon)) for name, f in _WEAPON_DRAWS.items()}
-SETS = {"": {**ICONS, **GUIDE}, "tab-": TABS, "attr-": ATTRIBUTES, "sign-": SIGNS, "race-": RACES, "mark-": MARKS, "slot-": SLOTS, "mode-": MODES, "tag-": TAGS, "deity-": DEITIES, "logo-": LOGO, "chapter-": CHAPTERS, "need-": NEEDS, "weapon-": WEAPONS}
+from quests import QUESTS as _QUEST_DRAWS  # noqa: E402  (the Quests page's categories)
+
+QUESTS = {name: (lambda f=f: f(Icon)) for name, f in _QUEST_DRAWS.items()}
+SETS = {"": {**ICONS, **GUIDE}, "tab-": TABS, "attr-": ATTRIBUTES, "sign-": SIGNS, "race-": RACES, "mark-": MARKS, "slot-": SLOTS, "mode-": MODES, "tag-": TAGS, "deity-": DEITIES, "logo-": LOGO, "chapter-": CHAPTERS, "need-": NEEDS, "weapon-": WEAPONS, "quest-": QUESTS}
 
 
 def slug(name):
