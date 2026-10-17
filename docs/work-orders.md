@@ -3926,7 +3926,7 @@ After it's on production, Dave makes Zen's invite in /admin and sends him the li
 
 ## WO-97  Quest data: every quest line from the records (PC only, 17 Oct 2026)
 
-**Why.** Dave wants a catalogue of every quest in LoreRim, like the Gear page. This order is the data only, read on Dave's PC; the page comes after launch, with the Gear page. Quests are QUST records, and the player-facing parts are in them: the quest's name, its journal entries and its objectives, in the game's own words.
+**Why.** Dave wants a catalogue of every quest in LoreRim, like the Gear page. The point (Dave, 17 Oct): players don't want to be the Dragonborn every playthrough, so they need a way to find all the big quest lines they could follow instead. That makes the unit a **quest line** (the Companions, Vigilant, Wyrmstooth), with its quests in order, more than single quests. This order is the data only, read on Dave's PC; the page comes after launch, with the Gear page. Quests are QUST records, and the player-facing parts are in them: the quest's name, its journal entries and its objectives, in the game's own words.
 
 **Where:** Dave's PC, `LORERIM_ROOT` as in WO-91. Branch `wo97-quests` from `staging`. Don't touch `src/`, and don't tick boxes. The Mac pass (building it into `src/data`) comes with the page later.
 
@@ -3939,11 +3939,17 @@ After it's on production, Dave makes Zen's invite in /admin and sends him the li
    Text comes from the plugins' string tables, as `extract.py` reads them. Keep the game's words exactly.
 2. **Player-facing only.** Keep a quest when it has a full name and at least one journal entry or objective. Print a count for each step: read, named, with journal or objectives, kept. Many named quests are the game's own machinery (radiant scenes, dialogue holders) and have neither.
 3. **Where it comes from.** For each kept quest, record the MO2 mod folder its plugin loads from and that folder's Nexus `modid`, reusing WO-91's plugin lookup. Base game and DLC count as Skyrim.
-4. **Output:** `gamedata/5.0.4.8/quests_raw.json`, plus a short `quests_report.md` beside it with the counts, the number kept by type and by plugin (the top 20), and five sample quests in full. One should be base game (Bleak Falls Barrow, `MQ101`'s first part, or similar), one from Vigilant, and one from another quest mod.
-5. **What the records don't say.** Who gives a quest, and where, sits in its aliases and dialogue conditions, which are not readable as plain facts. Leave them out. The page will say so, as the Gear page does for where items are found.
+4. **Output:** `gamedata/5.0.4.8/quests_raw.json` (and step 5's `questlines_raw.json`), plus a short `quests_report.md` beside it with the counts, the number kept by type and by plugin (the top 20), and five sample quests in full. One should be base game (Bleak Falls Barrow, `MQ101`'s first part, or similar), one from Vigilant, and one from another quest mod.
+5. **Quest lines.** Group the kept quests into lines and write `gamedata/5.0.4.8/questlines_raw.json`:
+   - **Vanilla and DLC:** one line per story type: Main Quest, College (Mages Guild), Companions, Thieves Guild, Dark Brotherhood, Civil War, Dawnguard and Dragonborn. Each Daedric quest is its own line, under Daedric. Side and Misc quests from the base game are one bucket each, not lines.
+   - **Mods:** one line per quest mod (its plugin, or the plugins one MO2 folder ships). Its quests go in EDID order, so `zzzAoMMq00`, `01`, `02` and so on.
+   - **Per line:** its name (the mod's name, or the vanilla line's), the source, the quest count, the type mix, and the first quest's first journal entry, which usually says how the line begins.
+   - **The report** lists every line, biggest first: the list a player would pick from.
+   - **Cross-check** against the field guide's `lorerim/world/quests-and-lands.md`, which is in Dave's claude.ai Project, not the repo: Dave or Bob pastes it into the session when this order runs. Every line it names should appear. Note any it has that the crawl missed, and any big line the crawl found that it doesn't name.
+6. **What the records don't say.** Who gives a quest, and where, sits in its aliases and dialogue conditions, which are not readable as plain facts. Leave them out. The page will say so, as the Gear page does for where items are found.
 
 ### Done when
-- [ ] `quests_raw.json` and `quests_report.md` are committed on `wo97-quests`, with the counts in the commit message.
+- [ ] `quests_raw.json`, `questlines_raw.json` and `quests_report.md` are committed on `wo97-quests`, with the counts in the commit message.
 - [ ] Unit (`test_quests.py`, on a small fixture plugin like `test_items.py`): the type read from DNAM, stages with their log text in order, objectives, the player-facing filter, and text from a string table.
 - [ ] The five sample quests' names, journal text and objectives match the game (checked against xEdit or in game), as written in the report.
 - [ ] Python tests pass. Push `wo97-quests` only.
