@@ -4078,12 +4078,12 @@ As `QuestLine`:
 As `QuestPhone`: one column, the cards stacked with their scenes, Where you are as a collapsible panel at the top, filters in a sheet as on Gear.
 
 ### Done when
-- [ ] `FEATURE_QUESTS` works as in 1: on in dev and staging unset, off on production unset, header link only when on.
-- [ ] `quests.json` builds from the curation and WO-98/99's data; unit tests for the name cleanup, the giver rule (role names out), the gold tiers and the item filter, and the XP table.
-- [ ] Unit: the open rule, with a level gate, an `after` line, `mainQuestAt` before and after, and no level entered.
-- [ ] e2e: the home shows six cards and Jobs and errands; entering level 22 changes "open to you" counts; Daedric Princes at level 22 shows Ill Met By Moonlight as "Opens at level 25"; Wyrmstooth's page, with level 22, The Way of the Voice and the Thieves Guild set, ticks the level and the main quest and crosses Rise in the East; its journals are hidden until opened.
-- [ ] Screenshots for Dave (desktop and phone): the home with Where you are filled in, Daedric Princes at level 22, Wyrmstooth's page.
-- [ ] Every check in CLAUDE.md passes.
+- [x] `FEATURE_QUESTS` works as in 1: on in dev and staging unset, off on production unset, header link only when on.
+- [x] `quests.json` builds from the curation and WO-98/99's data; unit tests for the name cleanup, the giver rule (role names out), the gold tiers and the item filter, and the XP table.
+- [x] Unit: the open rule, with a level gate, an `after` line, `mainQuestAt` before and after, and no level entered.
+- [x] e2e: the home shows six cards and Jobs and errands; entering level 22 changes "open to you" counts; Daedric Princes at level 22 shows Ill Met By Moonlight as "Opens at level 25"; Wyrmstooth's page, with level 22, The Way of the Voice and the Thieves Guild set, ticks the level and the main quest and crosses Rise in the East; its journals are hidden until opened.
+- [x] Screenshots for Dave (desktop and phone): the home with Where you are filled in, Daedric Princes at level 22, Wyrmstooth's page.
+- [x] Every check in CLAUDE.md passes.
 
 ---
 

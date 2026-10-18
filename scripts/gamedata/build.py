@@ -455,6 +455,19 @@ def main():
             json.dump(ench, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")
         print(f"{len(ench)} enchantments ({sum(r['on'] == 'weapon' for r in ench)} weapon) -> enchantments.json")
+    # The Quests pages (WO-100): the curated lines, with their givers, journals, XP and rewards.
+    if all(os.path.exists(os.path.join(RAW, n)) for n in ("questlines.json", "quests_raw.json", "questlines_raw.json", "quest_givers_raw.json")):
+        from questlines import curate
+        from quest_pages import build_quests
+
+        quests_raw = load("quests_raw.json")["quests"]
+        lines = curate(quests_raw, load("questlines_raw.json")["lines"], load("questlines.json"))
+        pages = build_quests(lines, quests_raw, load("quest_givers_raw.json")["quests"])
+        cur = load("questlines.json")
+        with open(os.path.join(OUT, "quests.json"), "w", encoding="utf-8") as f:
+            json.dump({"categories": cur["categories"], "shelves": cur.get("shelves", {}), "lines": pages}, f, separators=(",", ":"), ensure_ascii=False)
+            f.write("\n")
+        print(f"{len(pages)} quest lines, {sum(len(l['quests']) for l in pages)} quests, {sum(1 for l in pages if 'giver' in l)} with a giver -> quests.json")
     # Spells (WO-41): the tomes' spells and the tier perks' picks, from spells.py's raw file.
     if os.path.exists(os.path.join(RAW, "spells_raw.json")):
         from spells import build_spells

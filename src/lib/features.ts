@@ -17,10 +17,20 @@ export const storyOn = () => flag("FEATURE_STORY");
 export const siteGuideOn = () => flag("FEATURE_SITE_GUIDE");
 /** The Gear page (WO-92): /gear, every item's page, and Gear in the header. */
 export const gearOn = () => flag("FEATURE_GEAR");
+/**
+ * The Quests pages (WO-100): /quests, its categories and lines, and Quests in the header. Unlike the
+ * others, unset it's on on staging too (Vercel's preview), so Dave sees it there without a setting.
+ */
+export const questsOn = (env: Record<string, string | undefined> = process.env) => {
+  const v = env.FEATURE_QUESTS?.trim().toLowerCase();
+  if (!v) return env.NODE_ENV === "development" || env.VERCEL_ENV === "preview";
+  return v === "on" || v === "1" || v === "true";
+};
 
 export interface Features {
   story: boolean;
   siteGuide: boolean;
   gear: boolean;
+  quests: boolean;
 }
-export const features = (): Features => ({ story: storyOn(), siteGuide: siteGuideOn(), gear: gearOn() });
+export const features = (): Features => ({ story: storyOn(), siteGuide: siteGuideOn(), gear: gearOn(), quests: questsOn() });
