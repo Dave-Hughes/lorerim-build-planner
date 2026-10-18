@@ -4102,10 +4102,10 @@ For each of the 152 curated lines (`questlines.py`), take its opening quest, and
 **Output:** `gamedata/5.0.4.8/quest_starts_raw.json` and `quest_starts_report.md`. The report lists every line where a plugin other than the quest's own mod changes any of the above, worst first: a lock or key, then a new condition, then a global. For each, write in plain words what the player has to do, as for Gravewind: "The homestead door needs the Cemetery Homestead Key, carried by Vighar in Bloodlet Throne."
 
 ### Done when
-- [ ] Gravewind comes out as above (the lock, the key, Vighar, Bloodlet Throne), from the records alone.
-- [ ] The report covers all 152 lines, with the count of lines a non-own plugin changes, by kind.
-- [ ] Unit (`test_quest_starts.py`): a door with `XLOC` needing a key, the key on an alias's inventory, a QUST condition added by a later plugin, a global's winning value.
-- [ ] Python tests pass. Commit on `wo101-quest-starts`, push, and stop; Bob checks the report against the curation.
+- [x] Gravewind comes out as above (the lock, the key, Vighar, Bloodlet Throne), from the records alone.
+- [x] The report covers all 152 lines, with the count of lines a non-own plugin changes, by kind.
+- [x] Unit (`test_quest_starts.py`): a door with `XLOC` needing a key, the key on an alias's inventory, a QUST condition added by a later plugin, a global's winning value.
+- [x] Python tests pass. Commit on `wo101-quest-starts`, push, and stop; Bob checks the report against the curation.
 
 ---
 
