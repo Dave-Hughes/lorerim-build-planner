@@ -4087,6 +4087,28 @@ As `QuestPhone`: one column, the cards stacked with their scenes, Where you are 
 
 ---
 
+## WO-101  What other plugins change about how each quest line starts (PC only, 18 Oct 2026)
+
+**Why.** Dave's first real test of the Quests pages failed. Gravewind said "walk into the abandoned homestead", which is the mod page's wording. In LoreRim the door is locked: `LoreRim Gravewind Start Tweak.esp` (in `LoreRim - xEdit64 Output`) adds a lock that needs a Cemetery Homestead Key. It puts that key in the inventory of Vighar, the vampire in Bloodlet Throne (Dark Ancestor). Bob has fixed Gravewind by hand. The pattern is the problem: LoreRim and other patches change how a quest starts, and the field guide's start notes came from mod pages. Every line needs the same check, read from the files.
+
+**Where:** Dave's PC, `LORERIM_ROOT`. Branch `wo101-quest-starts` from `staging`. Reads only. Don't touch `src/`.
+
+For each of the 152 curated lines (`questlines.py`), take its opening quest, and record every plugin in the Ultra load order that overrides any of these, with what it changes:
+1. **The opening quest's QUST record:** changed conditions (`CTDA`: level, `GetStageDone`, `GetQuestCompleted` and the like, with the quest each names), the start-game flag, aliases added or changed, and items given to an alias (`CNTO`), each named.
+2. **Doors into the places the quest uses:** the cells of its location aliases (`ALFL`) and of its people's placed references (WO-99's `where`). For every door reference (`REFR` of a `DOOR` with `XTEL`) leading into those cells, record a lock (`XLOC`: level, 255 is "needs a key", the key's name, and who carries the key: any `CNTO` on an NPC or quest alias, or a placed reference of the key with its cell). Also record an enable parent (`XESP`) that hides the door until something happens.
+3. **Its opening dialogue:** the quest's INFOs from WO-98 whose conditions a later plugin changes.
+4. **Globals the conditions read** (`GetGlobalValue`) and their winning values, with the plugin that sets them. This is how WO-91's field guide found the level gates.
+
+**Output:** `gamedata/5.0.4.8/quest_starts_raw.json` and `quest_starts_report.md`. The report lists every line where a plugin other than the quest's own mod changes any of the above, worst first: a lock or key, then a new condition, then a global. For each, write in plain words what the player has to do, as for Gravewind: "The homestead door needs the Cemetery Homestead Key, carried by Vighar in Bloodlet Throne."
+
+### Done when
+- [ ] Gravewind comes out as above (the lock, the key, Vighar, Bloodlet Throne), from the records alone.
+- [ ] The report covers all 152 lines, with the count of lines a non-own plugin changes, by kind.
+- [ ] Unit (`test_quest_starts.py`): a door with `XLOC` needing a key, the key on an alias's inventory, a QUST condition added by a later plugin, a global's winning value.
+- [ ] Python tests pass. Commit on `wo101-quest-starts`, push, and stop; Bob checks the report against the curation.
+
+---
+
 ## Parked (not ordered yet)
 
 - **Renders that lose their effects (after WO-95).** Items with glow, parallax or animated shading, Dawnbreaker for one, render flat. Fix them one by one in `render.py` (emissive maps, a second light pass) once Dave flags the ones that matter.

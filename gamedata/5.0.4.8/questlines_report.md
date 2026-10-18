@@ -418,10 +418,12 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 
 > I've discovered the remains of an abandoned homestead in the woods of Falkreath, surrounded by graves and strange flowers.
 
-- Start: Walk into the abandoned homestead north-west of Roadside Ruins, Falkreath. Once inside, you're trapped. *(mod page)*
-- Gate: None found. *(files)*
+- Start: LoreRim locks the abandoned homestead north-west of Roadside Ruins, Falkreath. The Cemetery Homestead Key is on Vighar, the vampire in Bloodlet Throne: Dengeir of Stuhn in Falkreath sends you after him (Dark Ancestor). Once inside, you're trapped. *(files)*
+- Gate: The Cemetery Homestead Key, from Vighar in Bloodlet Throne. *(files)*
 - Level: 25 and up, by the author *(mod page)*
 - Length: 2–4 hours *(mod page)*
+- Note: LoreRim's own patch (LoreRim Gravewind Start Tweak.esp) adds the lock and the key; the mod page's "walk in" is out of date.
+- After: Dark Ancestor
 - Quests: Lost to Oblivion; In the Pines; Lost in the Woods
 
 ### Raven Rock

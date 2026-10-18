@@ -690,12 +690,16 @@
         "Gravewind - ESMIFIED"
       ],
       "opening": "GRVEMainQuest01",
-      "start": "Walk into the abandoned homestead north-west of Roadside Ruins, Falkreath. Once inside, you're trapped.",
-      "gate": "None found.",
+      "start": "LoreRim locks the abandoned homestead north-west of Roadside Ruins, Falkreath. The Cemetery Homestead Key is on Vighar, the vampire in Bloodlet Throne: Dengeir of Stuhn in Falkreath sends you after him (Dark Ancestor). Once inside, you're trapped.",
+      "gate": "The Cemetery Homestead Key, from Vighar in Bloodlet Throne.",
       "level": "25 and up, by the author",
       "size": "2–4 hours",
+      "after": [
+        "dark-ancestor"
+      ],
+      "note": "LoreRim's own patch (LoreRim Gravewind Start Tweak.esp) adds the lock and the key; the mod page's \"walk in\" is out of date.",
       "checked": {
-        "start": "mod page",
+        "start": "files",
         "gate": "files",
         "level": "mod page",
         "size": "mod page"
