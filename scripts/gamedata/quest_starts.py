@@ -43,7 +43,7 @@ START_GAME = 0x01  # QUST DNAM flag
 PERSISTENT = 0x400  # CELL record flag: a worldspace's persistent cell, holding refs from all over it
 CELL_SIZE = 4096
 CMP = {0: "==", 1: "!=", 2: ">", 3: ">=", 4: "<", 5: "<="}
-FUNCTIONS = {14: "GetActorValue", 47: "GetItemCount", 56: "GetQuestRunning", 58: "GetStage", 59: "GetStageDone", 69: "GetIsRace",
+FUNCTIONS = {14: "GetActorValue", 47: "GetItemCount", 77: "GetRandomPercent", 56: "GetQuestRunning", 58: "GetStage", 59: "GetStageDone", 69: "GetIsRace",
              71: "GetInFaction", 72: "GetIsID", 74: "GetGlobalValue", 80: "GetLevel", 448: "HasPerk", 543: "GetQuestCompleted",
              566: "GetIsAliasRef"}
 FORM_PARAM = {47, 56, 58, 59, 69, 71, 72, 74, 448, 543}

@@ -4151,17 +4151,17 @@ Bob found all three on 18 Oct by hand (the list is in the backlog). This order m
 **Output:** `gamedata/5.0.4.8/story_checks/main-quest.json` and `main-quest.md`. The `.md` has one block per quest in story order: started by, where, needs, first objective, and verdicts. Each fact names its source (plugin plus form id, or script plus function). After the quests come the starts table (step 4), the payoff (step 5) and the three answers (step 6). Make `story_check.py` take a line id, so the next story is one command.
 
 ### Done when
-- [ ] All 23 quests have a starter with its source, or an `unread` with the reason.
-- [ ] Every start in `starts_raw.json` says whether the main quest runs, and how it starts later if it doesn't.
-- [ ] The payoff is listed, or the report says nothing is given.
-- [ ] The three questions in step 6 are answered.
-- [ ] Run-time values: Timing is Everything's Dragonborn level, and Wyrmstooth's start level with its settings loader if one is installed.
-- [ ] Unit (`test_story_check.py`):
+- [x] All 23 quests have a starter with its source, or an `unread` with the reason.
+- [x] Every start in `starts_raw.json` says whether the main quest runs, and how it starts later if it doesn't.
+- [x] The payoff is listed, or the report says nothing is given.
+- [x] The three questions in step 6 are answered.
+- [x] Run-time values: Timing is Everything's Dragonborn level, and Wyrmstooth's start level with its settings loader if one is installed.
+- [x] Unit (`test_story_check.py`):
   - the `.pex` reader on a fixture, with `SetStage` on another quest found;
   - a story manager node's conditions gathered up its parents;
   - an MCM Helper `settings.ini` value beating a record's global;
   - a loose script beating the BSA copy.
-- [ ] Python tests pass. Commit on `wo104-start-check`, push, and stop.
+- [x] Python tests pass. Commit on `wo104-start-check`, push, and stop.
 
 **After Jeff (Bob, then a second check):**
 1. Bob reads the report against the base game and the board, item by item, and lists every place LoreRim differs.
