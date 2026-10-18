@@ -3975,10 +3975,28 @@ After it's on production, Dave makes Zen's invite in /admin and sends him the li
 **Output:** `gamedata/5.0.4.8/quest_givers_raw.json` and `quest_givers_report.md`, committed on `wo98-quest-givers`, with the coverage counts in the commit message.
 
 ### Done when
-- [ ] The 15 samples are in the report, each with its likely giver and where they are, any start event, and reward candidates, or "none found".
-- [ ] Coverage counts for all kept quests are in the report and the commit message.
-- [ ] Unit (`test_quest_givers.py`, a fixture plugin like `test_quests.py`): a unique-actor alias, an INFO's speaker and stage conditions, an `ALCO` item alias and a script property pointing at a weapon.
-- [ ] Python tests pass.
+- [x] The 15 samples are in the report, each with its likely giver and where they are, any start event, and reward candidates, or "none found".
+- [x] Coverage counts for all kept quests are in the report and the commit message.
+- [x] Unit (`test_quest_givers.py`, a fixture plugin like `test_quests.py`): a unique-actor alias, an INFO's speaker and stage conditions, an `ALCO` item alias and a script property pointing at a weapon.
+- [x] Python tests pass (74). Merged to staging by Bob, 18 Oct; the samples checked in `quest_givers_checks.md`.
+
+---
+
+## WO-99  Quest givers: a place for everyone in a quest, and the reward's own script (PC only, 18 Oct 2026)
+
+**Why.** WO-98 showed the game files can say who gives a quest. The best rule (see `gamedata/5.0.4.8/quest_givers_checks.md`) takes the person named in the quest's opening journal entry or first objective, and falls back to the dialogue speaker. It got all 13 samples with a giver right, and finds a giver for 109 of the 139 story lines. But WO-98 placed only the dialogue speaker, so a giver found by name (Lucan Valerius, Kodlak Whitemane, Lurius Liore, Frissa Black-Briar) has no place yet.
+
+**Where:** Dave's PC, `LORERIM_ROOT`. Branch `wo99-quest-places` from `staging`. Reads only. Don't touch `src/`.
+
+1. In `scripts/gamedata/quest_givers.py`, give **every person** in a quest's aliases (`people`, each with an `npc`) its placed reference, cell, cell name and location, the way the giver's `where` is done now. Keep the form id of the NPC beside its name.
+2. For each reward candidate, record which script it comes from as a kind: `fragment` (the quest's own `QF_` script), `quest script` (another script on the quest), or `alias`. WO-98 has it in `via`; make it a field.
+3. Rebuild `quest_givers_raw.json` and the report, and add to the coverage table: people with a place, and story-line openings (Bob's 139, from `questlines.py`) whose named giver now has a place.
+
+### Done when
+- [ ] Every person with an `npc` has a `where` (or an empty list when they're never placed, as a courier spawned by script).
+- [ ] Rewards carry their script kind.
+- [ ] The report's coverage table has the two new rows.
+- [ ] Unit: a placed alias NPC; a reward from a fragment script and one from a shared script. Python tests pass.
 
 ---
 
