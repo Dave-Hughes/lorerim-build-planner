@@ -4000,6 +4000,93 @@ After it's on production, Dave makes Zen's invite in /admin and sends him the li
 
 ---
 
+## WO-100  The Quests pages, on staging (Mac, 18 Oct 2026)
+
+**Why.** Dave wants to use the Quests pages in his own playthrough now, not after launch. The player they're for (`docs/backlog.md`, "What the quest pages are for"): partway through a playthrough, unsure what to do next. Every screen answers *what big story can I start from where I am, and how do I start it?* The design is on the canvas, row "Proposal: a Quests page in six categories": `QuestHome`, `QuestCategory`, `QuestLine`, `QuestPhone`, `QuestIcons`. Build it to match, behind a switch: on for Dave on staging, off on production.
+
+### 1. The switch
+- `questsOn()` in `src/lib/features.ts`, read from `FEATURE_QUESTS` like the others, with one difference: unset, it's on under `next dev` **and on staging** (`VERCEL_ENV === "preview"`), off on production. Dave shouldn't have to set an env var to see it. Add it to `features()`.
+- Off: `/quests` and everything under it 404 (a layout check, as Gear does), and there's no Quests link.
+- On: **Quests** in the header nav, after Builds.
+
+### 2. The data: `src/data/lorerim-5.0.4.8/quests.json`
+A new step in `scripts/gamedata/build.py`. It calls `questlines.curate()` and joins `quest_givers_raw.json`; don't hand-edit the output. For each of the 152 lines, in `questlines.json` order:
+- From the curation: `id`, `name`, `category`, `also`, `prince`, `where`, `opening`, `begins`, `beginsFrom`, `start`, `gate`, `minLevel`, `mainQuestAt`, `after`, `level`, `size`, `note`, `checked`.
+- `sources`: each with a display `name`, its Nexus `modid`, and `base: true` for the base game. Names come from the MO2 folder via a small cleanup function, with a unit test on these: "VIGILANT - English Translation (Plus Voiced Addon)" → "VIGILANT"; "Meridia's Order ESMIFIED" → "Meridia's Order"; "Undeath Remastered - CLEANED ESMIFIED" → "Undeath Remastered"; "The Welkynar Knight - Quest" → "The Welkynar Knight"; "Skyrim" → "Base game"; "Creation Club" stays.
+- `giver`: the opening quest's `namedGiver`, as `{ name, place }`, where `place` is "cell name, location" from its first `where` ("Riverwood Trader, Riverwood"). Leave it out when there's no giver, or when the name is a role, not a person: Prisoner, Courier, Guard, Bandit, Necromancer, and any name that's the same as its alias. The first-objective text goes in as `firstObjective` when WO-98 says it names who or where.
+- `quests`: each with `edid`, `name`, `type`, `xp` (LoreRim's Experience.ini: Main, Daedric, Dawnguard, Dragonborn 200; Civil War 150; Side, College, Thieves Guild, Dark Brotherhood, Companions 100; Misc and None 0), `journal` (its log entries in stage order), `objectives`, and `rewards`:
+  - `gold`: "small", "medium" or "large", from a reward list named `...QuestReward01Small`, `02Medium`, `03Large` or `FavorRewardGold...`. Plain Septim properties alone don't count.
+  - `items`: names of weapons and armour created by an alias, or pointed at by the quest's own fragment script (`kind: fragment`). Leave out spells, perks, books, leveled lists other than gold, and anything from a shared quest script.
+- `xpTotal` per line.
+Keep it a server-only import. It will be a few MB; check `npm run build` doesn't put it in a client bundle.
+
+### 3. Where you are
+One panel, shared by every Quests page, kept in `localStorage` (`quests:where`), with a **Clear** link. Not in the database yet.
+- **Your level**, a number.
+- **Main quest, done up to**: a select. "Not started", then the main quest's quests in order (Unbound … Dragonslayer).
+- **Finished**: a chip per line that other lines name in `after` (all but `main-quest`): The Thieves Guild, The College of Winterhold, Dawnguard, Rise in the East, The Mind of Madness, The Break of Dawn and so on, by line name.
+
+**Open to you**, used everywhere:
+- a line is open when its `minLevel` is at most your level;
+- and every id in `after` is finished;
+- and, for `main-quest`, your main quest is at or past `mainQuestAt`. A line with `main-quest` in `after` and no `mainQuestAt` doesn't block. Its page says "Part of the main quest comes first; how far isn't checked yet."
+- With no level entered, nothing is counted as open or locked. The cards show only how many quest lines they have.
+
+### 4. `/quests`
+As `QuestHome`, top to bottom:
+- **Quests** and a search box. It searches line names, quest names and journal text, and results go to the line.
+- **Where you are.**
+- **The six category cards.** Each has its scene (`public/quests/<slug>.png`, pixelated), its icon (`public/icons/quest-<slug>.svg`), name, subtitle, the `more` text, and "N open to you of M quest lines". M counts lines whose home is the category and lines that are `also` in it.
+- **Jobs and errands**: the notice-board icon, subtitle, and a chip per work line with its quest count.
+
+The words are the ones in `questlines.json` (`categories`, `shelves`). Don't add any.
+
+### 5. `/quests/c/<category>`
+As `QuestCategory`:
+- **Cover.** The scene with the fade, the icon, name, subtitle and `more` text over its lower edge.
+- **Filters.** Search, Your level (the same stored value), Source (Any, Base game, Mods), and **Only what I can start**.
+- **Count.** "N quest lines", sorted by `minLevel` (none first), then name.
+- **Each line's card:**
+  - name;
+  - its Prince with their deity icon (`public/icons/deity-<slug>.svg`) or its `where`;
+  - a level chip: "Any level", "Level 20", or "Opens at level 25" in the health colour when it's above your level;
+  - source tags (a mod links to its Nexus page in a new tab, with ↗);
+  - "Also in …";
+  - the opening (Alegreya italic in quotes when `beginsFrom` is a journal entry, plain text when it's an objective).
+- **Tell me more** opens Start, Needs, Length, Quests (count) and where each was checked, as on the board.
+- **The name links to the line's page.**
+
+### 6. `/quests/<line id>`
+As `QuestLine`:
+- **Back link** to its category.
+- **Cover** with the category's scene, the icon, name, `where`, source tags and the quest count.
+- **The opening**, quoted.
+- **How to start it:**
+  - Who (`giver.name`), Where (`giver.place`), How (`start`), each saying where it came from: "game files" or "field guide", from `checked`.
+  - The needs as a checklist against Where you are (✓ or ✕, with "You're 22" and the like). A ✕ quest links to its own page.
+  - A status line: open to you, or what's left.
+- **Facts:** Length, Enemies (`level`), Quest XP (`xpTotal`, with how many quests pay).
+- **Rewards:** gold tiers and items from the data, headed "From the game files, not checked in game". When there are none: "Not listed yet."
+- **Quests**, in two groups:
+  - those that pay XP, the opening first, marked **Starts here**;
+  - then "Jobs and bounties" for Misc ones.
+  
+  Each row has name, XP, and **Journal ›**. That shows the first entry, then a **Show the next N entries** button with "These give the story away" beside it.
+- **Down the side:** for each ✕ need, a "Do this first" card with that line's opening; the line's Jobs and errands siblings when it has any.
+
+### 7. Phone
+As `QuestPhone`: one column, the cards stacked with their scenes, Where you are as a collapsible panel at the top, filters in a sheet as on Gear.
+
+### Done when
+- [ ] `FEATURE_QUESTS` works as in 1: on in dev and staging unset, off on production unset, header link only when on.
+- [ ] `quests.json` builds from the curation and WO-98/99's data; unit tests for the name cleanup, the giver rule (role names out), the gold tiers and the item filter, and the XP table.
+- [ ] Unit: the open rule, with a level gate, an `after` line, `mainQuestAt` before and after, and no level entered.
+- [ ] e2e: the home shows six cards and Jobs and errands; entering level 22 changes "open to you" counts; Daedric Princes at level 22 shows Ill Met By Moonlight as "Opens at level 25"; Wyrmstooth's page, with level 22, The Way of the Voice and the Thieves Guild set, ticks the level and the main quest and crosses Rise in the East; its journals are hidden until opened.
+- [ ] Screenshots for Dave (desktop and phone): the home with Where you are filled in, Daedric Princes at level 22, Wyrmstooth's page.
+- [ ] Every check in CLAUDE.md passes.
+
+---
+
 ## Parked (not ordered yet)
 
 - **Renders that lose their effects (after WO-95).** Items with glow, parallax or animated shading, Dawnbreaker for one, render flat. Fix them one by one in `render.py` (emissive maps, a second light pass) once Dave flags the ones that matter.

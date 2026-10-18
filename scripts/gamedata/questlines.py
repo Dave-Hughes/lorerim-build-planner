@@ -33,7 +33,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
-FACTS = ("start", "gate", "minLevel", "level", "size", "note")
+FACTS = ("start", "gate", "minLevel", "level", "size", "note", "mainQuestAt")
 
 
 class CurationError(Exception):
@@ -144,6 +144,8 @@ def curate(quests, raw_lines, cur):
         homes = {**cur["categories"], **cur.get("shelves", {})}
         if line["category"] not in homes:
             problems.append(f"{line['id']}: unknown category {line['category']}")
+        if line.get("mainQuestAt") and line["mainQuestAt"] not in by_edid:
+            problems.append(f"{line['id']}: mainQuestAt {line['mainQuestAt']} isn't a quest")
         for c in line.get("also", []):
             if c not in cur["categories"] or c == line["category"]:
                 problems.append(f"{line['id']}: also in {c}, which isn't another category")

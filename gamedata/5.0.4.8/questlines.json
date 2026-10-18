@@ -1,5 +1,5 @@
 {
-  "about": "Hand-kept: turns questlines_raw.json (one line per mod, plus two vanilla buckets) into the quest lines a player would pick from. Each line has a home category (one of the six in 'categories', or the 'work' shelf) and may sit in others too ('also'). scripts/gamedata/questlines.py reads this with quests_raw.json and questlines_raw.json, checks that every raw line and every bucket quest lands somewhere, and writes questlines_report.md. Facts the records don't hold (how a line starts, its gate, its level, its length) come from the field guide's lorerim/world/quests-and-lands.md; 'checked' says where each came from: files (read from the winning records in Dave's install), mod page, or players. A line with no fact has nothing checked yet.",
+  "about": "Hand-kept: turns questlines_raw.json (one line per mod, plus two vanilla buckets) into the quest lines a player would pick from. Each line has a home category (one of the six in 'categories', or the 'work' shelf) and may sit in others too ('also'). scripts/gamedata/questlines.py reads this with quests_raw.json and questlines_raw.json, checks that every raw line and every bucket quest lands somewhere, and writes questlines_report.md. Facts the records don't hold (how a line starts, its gate, its level, its length) come from the field guide's lorerim/world/quests-and-lands.md; 'checked' says where each came from: files (read from the winning records in Dave's install), mod page, or players. A line with no fact has nothing checked yet. 'mainQuestAt' names the main-quest quest (EDID) that must be finished for a line that needs the main quest; a line with 'main-quest' in 'after' and no 'mainQuestAt' needs some of it, how far not yet checked.",
   "categories": {
     "main": {
       "name": "Main stories",
@@ -103,7 +103,8 @@
       "checked": {
         "start": "files",
         "gate": "files"
-      }
+      },
+      "mainQuestAt": "MQ105"
     },
     {
       "id": "companions",
@@ -573,7 +574,7 @@
       ],
       "opening": "WTDragonHunt",
       "start": "An Imperial courier, Theodyn Bienne, finds you and sends you to Lurius Liore at the Bannered Mare in Whiterun.",
-      "gate": "Level 20, Rise in the East done, and the main quest past The Horn of Jurgen Windcaller.",
+      "gate": "Level 20, Rise in the East done, and the main quest through The Way of the Voice.",
       "minLevel": 20,
       "after": [
         "rise-in-the-east",
@@ -589,7 +590,8 @@
       },
       "skip": [
         "WTNoticeboardPointer"
-      ]
+      ],
+      "mainQuestAt": "MQ105"
     },
     {
       "id": "baan-malur",
@@ -1330,7 +1332,8 @@
         "gate": "files",
         "level": "files",
         "size": "mod page"
-      }
+      },
+      "mainQuestAt": "MQ104"
     },
     {
       "id": "legends-of-aetherium",

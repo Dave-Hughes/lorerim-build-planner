@@ -358,7 +358,7 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 > An imperial courier named Theodyn Bienne has requested I speak to Lurius Liore at the Bannered Mare in Whiterun as soon as possible.
 
 - Start: An Imperial courier, Theodyn Bienne, finds you and sends you to Lurius Liore at the Bannered Mare in Whiterun. *(files)*
-- Gate: Level 20, Rise in the East done, and the main quest past The Horn of Jurgen Windcaller. *(files)*
+- Gate: Level 20, Rise in the East done, and the main quest through The Way of the Voice. *(files)*
 - Level: 20–40 on the island *(players)*
 - Length: 6–10 hours *(players)*
 - After: Rise in the East, The Dragonborn
