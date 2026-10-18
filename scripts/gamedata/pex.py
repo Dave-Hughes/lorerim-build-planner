@@ -212,13 +212,17 @@ class Scripts:
             loose_dirs = [os.path.join(root, "mods", d) for d in mods] + [os.path.join(root, "Stock Game", "Data")]
         self.loose = {}
         for d in reversed(loose_dirs):  # lowest priority first, so higher ones overwrite
-            sd = os.path.join(d, "scripts")
-            try:
-                for f in os.listdir(sd):
-                    if f.lower().endswith(".pex"):
-                        self.loose[f.lower()[:-4]] = os.path.join(sd, f)
+            try:  # "Scripts" or "scripts": one folder on Windows, maybe two elsewhere
+                sds = [os.path.join(d, s) for s in os.listdir(d) if s.lower() == "scripts"]
             except OSError:
-                pass
+                sds = []
+            for sd in sds:
+                try:
+                    for f in os.listdir(sd):
+                        if f.lower().endswith(".pex"):
+                            self.loose[f.lower()[:-4]] = os.path.join(sd, f)
+                except OSError:
+                    pass
         if archives is None:
             found = {}
             for d in reversed(loose_dirs):

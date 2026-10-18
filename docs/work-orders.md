@@ -4170,6 +4170,37 @@ Bob found all three on 18 Oct by hand (the list is in the backlog). This order m
 
 ---
 
+## WO-105  The start check, second pass: answers a player can follow (PC only, 18 Oct 2026)
+
+**Why.** WO-104's report is right on the chain, the three questions and Timing is Everything. It isn't page-ready yet. Bob's check is in `gamedata/5.0.4.8/story_checks/main-quest-review.md`, items 1 to 9. The biggest gap is the one Dave asked about: how a player who didn't take a Dragonborn start gets into the main quest. Right now the answer is form ids.
+
+**Where:** Dave's PC. Branch `wo105-start-check` from `staging`. Change `story_check.py` and rerun it on `main-quest`. (Bob made `pex.py` find `Scripts` and `scripts` alike, so its tests pass on Linux too.)
+
+1. **Starters, not catch-ups.** "Started by" lists only calls that take the quest from not running to its first objective's stage: `Start()`, `SetStage` to the first objective's stage or below, start-game, a story manager node, or dialogue. Calls from a later quest's early stage that set this quest's stage go under **Caught up by**. Before the Storm must come out started by Unbound's end.
+2. **Names.** Every quest is named from its own record. MQ102A and MQ102B are Before the Storm (Imperial and Stormcloak), not Season Unending. Add a unit test for it.
+3. **Who and where come from the first objective's target.** Take the alias the first objective points at and say who or what it holds: a forced reference, a unique actor, or a location. Then say where that is. Never print "Location for things that need a location".
+4. **Into the main quest from every other start.** For each AP route into Unbound (`AP_DialogueHelgen` with `APMessengerUtil`, Shazdehviir's dialogue `38C6E9`, INFO `075139`, `APS_VanillaStart`), write down:
+   - who speaks, and their race and placed cell;
+   - the player's prompt and the reply, word for word;
+   - the INFO's conditions, read in full (the report has them empty);
+   - what `APMessengerUtil` does, from the `.pex`;
+   - in one plain sentence, what the player does: for example, "Go to Helgen and ask X about Y".
+
+   If a route can't be followed, name the call where it stops.
+5. **OR groups.** Print conditions as the game reads them, with "or" between OR'd conditions. Add a unit test.
+6. **Doors.** A door is a need only when it is the way into the first objective's target cell and that cell has no other unlocked way in. Say which door it is: "the door from the courtyard", not "the High Hrothgar door".
+7. **Gives.** Only `AddItem` on the player on the quest's own completing stages, and items its aliases create that end with the player. A reward list is named with what it holds, or "levelled: gold and an item".
+8. **Wyrmstooth's start level.** Read `WT_MCMScript`'s `OnConfigInit`, `OnGameReload`, `LoadSettings` and `MigrateToMCMHelper`. Say which value `WTStartLevel` has in a new game, 10 or 20, and why, given `bLoadSettingsonReload=0`.
+
+### Done when
+- [ ] Items 1 to 8 show in a rerun `main-quest.md`.
+- [ ] Before the Storm is started by Unbound's end; MQ102A and MQ102B are named right; Before the Storm's who is Alvor or Gerdur, from the `RiverwoodFriend` alias.
+- [ ] Every non-Dragonborn start says, in one sentence, how the player gets into the main quest, or names where the trail stops.
+- [ ] Wyrmstooth's level in a new game, with the reason.
+- [ ] Unit tests for items 1, 2 and 5. Python tests pass. Commit on `wo105-start-check`, push, and stop.
+
+---
+
 ## WO-102  Quest scripts: what starts each quest, what it unlocks, and what it pays (PC only, 18 Oct 2026)
 
 **Paused (18 Oct).** Stories come first. WO-104 builds steps 1 and 2, and runs the rest for one story at a time instead of all 1,340 quests at once.
