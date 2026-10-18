@@ -4146,11 +4146,11 @@ For each of the 152 curated lines (`questlines.py`), take its opening quest, and
 - every line whose start or rewards differ from what `quests.json` says now.
 
 ### Done when
-- [ ] The `.pex` reader handles every script the quests use, or the report lists the ones it couldn't read.
-- [ ] The 15 samples match the known rewards where one is known: The Golden Claw's gold, Dawnbreaker, the Masque of Clavicus Vile or the Rueful Axe, Brynjolf's gold. The report says which starters it found.
-- [ ] Every line has a verdict (traced, random or unread), with the reason for the last two.
-- [ ] Unit: the reader on a fixture `.pex`; a fragment mapped to its stage; `AddItem` on the player resolved through a property; `SetStage` on another quest; a winner chosen between a loose file and a BSA.
-- [ ] Python tests pass. Commit on `wo102-quest-scripts`, push, and stop; Bob checks it.
+- [x] The `.pex` reader handles every script the quests use, or the report lists the ones it couldn't read.
+- [x] The 15 samples match the known rewards where one is known: The Golden Claw's gold, Dawnbreaker, the Masque of Clavicus Vile or the Rueful Axe, Brynjolf's gold. The report says which starters it found.
+- [x] Every line has a verdict (traced, random or unread), with the reason for the last two.
+- [x] Unit: the reader on a fixture `.pex`; a fragment mapped to its stage; `AddItem` on the player resolved through a property; `SetStage` on another quest; a winner chosen between a loose file and a BSA.
+- [x] Python tests pass. Commit on `wo102-quest-scripts`, push, and stop; Bob checks it.
 
 ---
 
