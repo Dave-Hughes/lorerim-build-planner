@@ -4193,11 +4193,11 @@ Bob found all three on 18 Oct by hand (the list is in the backlog). This order m
 8. **Wyrmstooth's start level.** Read `WT_MCMScript`'s `OnConfigInit`, `OnGameReload`, `LoadSettings` and `MigrateToMCMHelper`. Say which value `WTStartLevel` has in a new game, 10 or 20, and why, given `bLoadSettingsonReload=0`.
 
 ### Done when
-- [ ] Items 1 to 8 show in a rerun `main-quest.md`.
+- [x] Items 1 to 8 show in a rerun `main-quest.md`.
 - [ ] Before the Storm is started by Unbound's end; MQ102A and MQ102B are named right; Before the Storm's who is Alvor or Gerdur, from the `RiverwoodFriend` alias.
-- [ ] Every non-Dragonborn start says, in one sentence, how the player gets into the main quest, or names where the trail stops.
-- [ ] Wyrmstooth's level in a new game, with the reason.
-- [ ] Unit tests for items 1, 2 and 5. Python tests pass. Commit on `wo105-start-check`, push, and stop.
+- [x] Every non-Dragonborn start says, in one sentence, how the player gets into the main quest, or names where the trail stops.
+- [x] Wyrmstooth's level in a new game, with the reason.
+- [x] Unit tests for items 1, 2 and 5. Python tests pass. Commit on `wo105-start-check`, push, and stop.
 
 ---
 

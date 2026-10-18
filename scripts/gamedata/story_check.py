@@ -1,34 +1,42 @@
 """
-The start check for one story (WO-104): for every quest on a curated line, what starts it, where, what
-it needs, and which values a settings loader or script changes at run time, each fact with its source
-and a verdict. Reads only. Writes gamedata/<version>/story_checks/<line>.json and <line>.md:
+The start check for one story (WO-104, second pass WO-105): for every quest on a curated line, what starts
+it, who and where its first objective points at, what it needs, what it gives, and which values a settings
+loader or script changes at run time, each fact with its source and a verdict. Reads only. Writes
+gamedata/<version>/story_checks/<line>.json and <line>.md:
   python3 scripts/gamedata/story_check.py <line id> [version]        e.g. main-quest
 
 The quests are the line's in src/data/lorerim-<version>/quests.json (read, never written), in story order.
+Names come from each record's own FULL, looked up in its plugin's STRINGS table (not DLSTRINGS or ILSTRINGS,
+which reuse the same ids for other text).
 
 For each quest:
-  started by  dialogue (the speaker, their placed cell, the line's conditions), another quest's script
-              (which, at what stage, Start() or SetStage, read from the .pex), a story manager node (its
-              event and every condition up its parents, globals resolved), or the start-game flag;
-  where       the first objective, with who and where it points at (quest_givers_raw.json);
-  needs       level, quests done and items from the quest's own conditions and its starters', and the
-              doors and keys into the cells it uses (quest_starts.py's door check);
-  run time    every global those read: its record value, and what an MCM Helper settings loader (the
-              mod's MCM/Config/<mod>/settings.ini, overridden by MCM/Settings/<mod>.ini in a mod folder
-              or overwrite, carried into the global by the mod's MCM script) or a script's SetValue makes it.
-Then: every way a game begins (starts_raw.json, each start's quest read for what it does to the main
-quest), the payoff on the stages that complete the last quests, and the WO's three questions.
+  started by   only what takes it from not running to the stage that shows its first objective: Start(),
+               SetStage to that stage or below, dialogue doing that, a story manager node (its event and every
+               condition up its parents, OR groups kept, globals resolved), or the start-game flag. A starter
+               that is a helper quest is followed back to what starts it (Unbound's end, through MQ102A).
+  caught up by calls from a later quest in the story that set this quest's stage (how the game skips ahead).
+  who, where   the alias the first objective points at, and what it holds: a unique actor, a forced reference,
+               a location, the NPCs its conditions name, or whoever a script's ForceRefTo puts in it; and where
+               that is placed.
+  needs        level, quests and items from its own conditions; a door only when it is the way into the first
+               objective's target cell and no other way in is unlocked, named by where it leads from.
+  gives        AddItem on the player on its own completing stages, and items its aliases create in the player;
+               a reward list named by what it holds.
+  run time     every global those read: its record value, and what an MCM Helper settings loader or a script's
+               SetValue makes it.
+Then: every way a game begins (starts_raw.json), each route into the line's first quest in player terms
+(speaker, race, placed cell, prompt and reply, conditions, what the script does), the payoff, the WO's three
+questions and Wyrmstooth's start level in a new game.
 
 Verdicts: files (a record decides it), script (a .pex decides it, read), run time (a settings loader or
 script sets it at load), conflict (two sources disagree; both given), unread (named).
 """
 import configparser
+import glob
 import json
 import os
-import re
 import struct
 import sys
-from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from esp import header, iter_group, rec_data, resolve, subrecs  # noqa: E402
@@ -43,11 +51,89 @@ EVENTS = {"CLOC": "change location", "KILL": "kill", "SCPT": "script event", "LE
 ROLES = {"prisoner", "courier", "guard", "bandit", "necromancer"}
 MCM_GETTERS = {"getmodsettingint", "getmodsettingfloat", "getmodsettingbool", "getmodsettingstring"}
 SETTERS = {"setvalue", "setvalueint", "setvaluefloat"}
+LEVELS = {0: "unlocked", 1: "Novice", 25: "Apprentice", 50: "Adept", 75: "Expert", 100: "Master", 255: "needs a key"}
 
 
 def form_id(key):
     return f"{key[0]}:{key[1]:06X}"
 
+
+def quest_label(qid, names):
+    """'MQ102A (Before the Storm)': the EDID and the quest's own name."""
+    n = names.get(qid, {})
+    label = n.get("edid") or qid
+    if n.get("name") and n["name"] != n.get("edid"):
+        label += f" ({n['name']})"
+    return label
+
+
+def name_strings(path, name, loc, root):
+    """The STRINGS table a localized plugin's names (FULL) come from: its loose Strings, else the base game's."""
+    if not loc:
+        return None
+    from bsa import vanilla_strings_kinds
+    from esp import localized_strings_kinds
+
+    own = localized_strings_kinds(path, name)
+    return own["STRINGS"] if any(own.values()) else vanilla_strings_kinds(name, root)["STRINGS"]
+
+
+def all_strings(path, name, loc, root):
+    """All three tables, for dialogue: {'STRINGS', 'DLSTRINGS', 'ILSTRINGS'}."""
+    if not loc:
+        return None
+    from bsa import vanilla_strings_kinds
+    from esp import localized_strings_kinds
+
+    own = localized_strings_kinds(path, name)
+    return own if any(own.values()) else vanilla_strings_kinds(name, root)
+
+
+# ---- conditions ----------------------------------------------------------------------------------
+
+def num(v):
+    """25.0 -> '25'."""
+    return f"{v:g}" if isinstance(v, float) else str(v)
+
+
+def cond_text(c, names, gvals=None, alias_names=None):
+    """One condition in plain words: 'the speaker is Shazdehviir', 'Unbound hasn't started', 'the player has at least 25 gold'."""
+    gvals, alias_names = gvals or {}, alias_names or {}
+    fn, cmp, val = c["fn"], c["cmp"], c.get("value")
+    yes = (cmp == "==" and val == 1) or (cmp == "!=" and val == 0)
+    if fn == "GetIsID" and isinstance(c.get("param"), str):
+        who = names.get(c["param"], {}).get("name") or c["param"]
+        return f"the speaker is {who}" if yes else f"the speaker isn't {who}"
+    if fn == "GetIsAliasRef":
+        al = alias_names.get(c.get("param"), f"alias {c.get('param')}")
+        return f"the speaker is the one in alias {al}" if yes else f"the speaker isn't the one in alias {al}"
+    if fn == "GetStage" and isinstance(c.get("param"), str) and val == 0 and cmp in ("==", "<="):
+        return f"{names.get(c['param'], {}).get('name') or c['param']} hasn't started"
+    if fn == "GetItemCount" and isinstance(c.get("param"), str) and names.get(c["param"], {}).get("edid", "").lower().startswith("gold"):
+        amount = (f"{names.get(c['global'], {}).get('edid') or 'a global'} ({num(gvals.get(c['global'], {}).get('value', '?'))})" if c.get("global") else num(val))
+        return {">=": f"the player has at least {amount} gold", ">": f"the player has more than {amount} gold"}.get(cmp, f"gold {cmp} {amount}")
+    text = qst.describe_condition(c, names, gvals)
+    return text.replace(".0 ", " ").replace(".0)", ")").replace(".0;", ";") if text.endswith(".0") is False else text[:-2]
+
+
+def format_conditions(conds, names, gvals=None, alias_names=None):
+    """
+    Conditions as the game reads them: an OR flag joins a condition with the next into one group, and the groups
+    are all needed. ['A', 'B' (or), 'C'] -> 'A; B or C'.
+    """
+    gvals = gvals or {}
+    groups, cur = [], []
+    for c in conds:
+        cur.append(cond_text(c, names, gvals, alias_names))
+        if not c.get("or"):
+            groups.append(cur)
+            cur = []
+    if cur:
+        groups.append(cur)
+    return "; ".join(" or ".join(g) for g in groups)
+
+
+# ---- story manager nodes -------------------------------------------------------------------------
 
 def read_nodes(buf, name):
     """Story manager nodes: type, EDID, parent, conditions, the quests a quest node starts, a branch root's event."""
@@ -99,7 +185,152 @@ def node_starts(quest, nodes):
     return out
 
 
-# ---- settings loaders --------------------------------------------------------------------------
+# ---- records read for WO-105 ---------------------------------------------------------------------
+
+def read_objective_targets(buf, name, ids):
+    """For the quests in `ids`: {quest: {objective index: [alias ids its targets name]}} (QOBJ, then QSTA)."""
+    masters = header(buf)
+    out = {}
+    if b"QUST" not in buf:
+        return out
+    for o in iter_group(buf, "QUST"):
+        _, flags, fid, d = rec_data(buf, o)
+        key = form_id(resolve(fid, masters, name))
+        if key not in ids:
+            continue
+        objs, cur = {}, None
+        for s, v in subrecs(d):
+            if s == "QOBJ":
+                cur = struct.unpack_from("<H", v)[0]
+                objs[cur] = []
+            elif s == "QSTA" and cur is not None and len(v) >= 4:
+                objs[cur].append(struct.unpack_from("<i", v)[0])
+            elif s in ("ANAM", "ALST", "ALLS"):
+                cur = None
+        out[key] = objs
+    return out
+
+
+def read_dialogue(buf, name, wanted, strings=None):
+    """
+    The INFOs in `wanted`: their topic (and its prompt, FULL), the topic's quest, their own prompt (RNAM), their
+    response lines (NAM1), a shared INFO they take their lines from (DNAM), and their conditions.
+    """
+    masters = header(buf)
+    loc = bool(struct.unpack_from("<I", buf, 8)[0] & 0x80)
+    strings = strings or {}
+
+    def txt(v, kind):
+        if loc and len(v) == 4:
+            return strings.get(kind, {}).get(struct.unpack_from("<I", v)[0], "")
+        return v.rstrip(b"\0").decode("utf-8", "replace")
+
+    out = {}
+    if b"DIAL" not in buf:
+        return out
+    topic = None
+    for o in iter_group(buf, "DIAL"):
+        t = buf[o:o + 4]
+        if t == b"INFO":
+            key = form_id(resolve(struct.unpack_from("<I", buf, o + 12)[0], masters, name))
+            if key not in wanted:
+                continue
+        elif t != b"DIAL":
+            continue
+        tt, flags, fid, d = rec_data(buf, o)
+        subs = subrecs(d)
+        if tt == "DIAL":
+            topic = {"id": form_id(resolve(fid, masters, name)), "edid": "", "prompt": "", "quest": None}
+            for s, v in subs:
+                if s == "EDID":
+                    topic["edid"] = v.rstrip(b"\0").decode("latin1")
+                elif s == "FULL":
+                    topic["prompt"] = txt(v, "STRINGS")
+                elif s == "QNAM" and len(v) >= 4:
+                    topic["quest"] = form_id(resolve(struct.unpack_from("<I", v)[0], masters, name))
+            continue
+        info = {"plugin": name, "topic": dict(topic) if topic else None, "prompt": None, "lines": [], "shared": None, "conditions": []}
+        for s, v in subs:
+            if s == "RNAM":
+                info["prompt"] = txt(v, "STRINGS")
+            elif s == "NAM1":
+                line = txt(v, "ILSTRINGS")
+                if line:
+                    info["lines"].append(line)
+            elif s == "DNAM" and len(v) >= 4:
+                info["shared"] = form_id(resolve(struct.unpack_from("<I", v)[0], masters, name))
+            elif s == "CTDA" and len(v) >= 24:
+                info["conditions"].append(qst.ctda(v, masters, name))
+        out[key] = info
+    return out
+
+
+def read_races(buf, name, npcs, strings=None):
+    """{npc: race id} for the NPCs in `npcs`, and {race: name} for every race the plugin has."""
+    masters = header(buf)
+    loc = bool(struct.unpack_from("<I", buf, 8)[0] & 0x80)
+    strings = strings or {}
+    race_of, race_names = {}, {}
+    if b"NPC_" in buf and npcs:
+        for o in iter_group(buf, "NPC_"):
+            key = form_id(resolve(struct.unpack_from("<I", buf, o + 12)[0], masters, name))
+            if key not in npcs:
+                continue
+            _, _, fid, d = rec_data(buf, o)
+            for s, v in subrecs(d):
+                if s == "RNAM" and len(v) >= 4:
+                    race_of[key] = form_id(resolve(struct.unpack_from("<I", v)[0], masters, name))
+    if b"RACE" in buf:
+        for o in iter_group(buf, "RACE"):
+            _, _, fid, d = rec_data(buf, o)
+            for s, v in subrecs(d):
+                if s == "FULL":
+                    race_names[form_id(resolve(fid, masters, name))] = (strings.get(struct.unpack_from("<I", v)[0], "") if loc and len(v) == 4
+                                                                        else v.rstrip(b"\0").decode("utf-8", "replace"))
+                    break
+    return race_of, race_names
+
+
+# ---- starters ------------------------------------------------------------------------------------
+
+def first_objective_stage(qid, quest, events):
+    """The stage that shows a quest's first objective (its own fragment calling SetObjectiveDisplayed), else its first journal stage."""
+    objectives = sorted(o["index"] for o in quest.get("objectives", []))
+    if objectives:
+        shown = [c["stage"] for c, e in events if c.get("quest") == qid and c["kind"] == "quest" and c.get("stage") is not None
+                 and e["call"] == "SetObjectiveDisplayed" and e.get("objective") == objectives[0] and e.get("via") in (None, qid)]
+        if shown:
+            return min(shown)
+    logged = [s["index"] for s in quest.get("stages", []) if s.get("log")]
+    return min(logged) if logged else 10
+
+
+def classify_starts(qid, order, events, threshold, here=None):
+    """
+    The calls on a quest from outside it, sorted: started (Start, or SetStage to its first objective's stage or below,
+    from anything but a later quest in the story), caught up (a later quest in the story setting its stage) and
+    advanced (a stage past the first objective's). `order` is {quest id: place in the story}; `here` is the quest's
+    place when it isn't on the story itself (a helper quest takes the place of the story quest it serves).
+    """
+    out = {"started": [], "caughtUp": [], "advanced": []}
+    here = order.get(qid, -1) if here is None else here
+    for ctx, ev in events:
+        if ev.get("quest") != qid or ev["call"] not in ("Start", "SetStage"):
+            continue
+        caller = ctx.get("quest")
+        if ctx["kind"] in ("quest", "alias") and caller == qid and ev.get("via") in (None, qid):
+            continue  # its own scripts moving it along
+        row = (ctx, ev)
+        if caller in order and order[caller] > here and caller != qid:
+            out["caughtUp"].append(row)
+        elif ev["call"] == "SetStage" and ev.get("stage", 0) > threshold:
+            out["advanced"].append(row)
+        else:
+            out["started"].append(row)
+    return out
+
+
+# ---- settings loaders ----------------------------------------------------------------------------
 
 def read_ini(path):
     cp = configparser.ConfigParser(interpolation=None, strict=False)
@@ -176,14 +407,65 @@ def settings_globals(pex, props, prop_value):
     return out
 
 
+def mcm_flow(pex, key):
+    """
+    When an MCM Helper script applies one setting: whether OnConfigInit loads settings on a new game, what guards a
+    migration that copies globals into settings, and whether OnGameReload reloads them. Read from the code.
+    """
+    funcs = {f["name"].lower(): f for _, f in functions(pex)}
+
+    def calls(f, name):
+        return any(op in ("callmethod", "callparent") and args[0][1].lower() == name for op, args in f["code"]) if f else False
+
+    def assigns_true(f, var):
+        return any(op == "assign" and args[0][1].lower() == var and args[1] == (5, True) for op, args in f["code"]) if f else False
+
+    init, reload_, load = funcs.get("onconfiginit"), funcs.get("ongamereload"), funcs.get("loadsettings")
+    migrate = funcs.get("migratetomcmhelper")
+    guard = None
+    if reload_ and migrate:
+        for op, args in reload_["code"]:
+            if op == "not" and args[1][0] == IDENT:
+                guard = args[1][1]
+                break
+    reload_key = None
+    if reload_:
+        for op, args in reload_["code"]:
+            if op == "callmethod" and args[0][1].lower() in MCM_GETTERS and len(args) > 3 and args[3][0] == STRING:
+                reload_key = args[3][1]
+    # LoadSettings may hand the work to the script's own functions (Wyrmstooth's calls Load): follow self calls a few deep.
+    reach, todo, gate = [], ["loadsettings"], None
+    while todo and len(reach) < 6:
+        fname = todo.pop(0)
+        f = funcs.get(fname)
+        if not f or fname in reach:
+            continue
+        reach.append(fname)
+        for op, args in f["code"]:
+            if op == "callmethod" and args[1] == (IDENT, "self") and args[0][1].lower() in funcs:
+                todo.append(args[0][1].lower())
+            if gate is None and fname == "loadsettings" and op == "callmethod" and args[0][1].lower() in MCM_GETTERS and len(args) > 3 and args[3][0] == STRING:
+                gate = args[3][1]  # the first setting LoadSettings checks before it does anything (bEnabled)
+    reads_in = next((funcs[f]["name"] for f in reach if any(op == "callmethod" and args[0][1].lower() in MCM_GETTERS and len(args) > 3 and args[3][1] == key
+                                                         for op, args in funcs[f]["code"])), None)
+    load_reads = bool(reads_in)
+    migrate_copies = bool(migrate) and any(op == "callmethod" and args[0][1].lower().startswith("setmodsetting") and len(args) > 3 and args[3][1] == key
+                                           for op, args in migrate["code"])
+    return {"initLoads": calls(init, "loadsettings"), "initSetsGuard": bool(guard) and assigns_true(init, guard.lower()), "guard": guard,
+            "reloadMigrates": calls(reload_, "migratetomcmhelper"), "reloadLoadsIf": reload_key, "loadReadsKey": load_reads,
+            "migrateCopiesKey": migrate_copies, "readsIn": reads_in, "gate": gate}
+
+
 class StoryAnalyzer(qsc.Analyzer):
-    """WO-102's analyzer, also recording SetValue on globals, shouts and words taught, and AddShout."""
+    """WO-102's analyzer, also recording SetValue on globals, SetObjectiveDisplayed, shouts and words taught, and AddShout."""
 
     def event(self, fl, fn, target, rest, owner):
         if target and fl in SETTERS and target.get("type") == "GLOB" and rest:
             return {"call": "SetValue", "global": target["form"], "value": rest[0].get("int") if rest[0] else None}
         if target and fl == "addshout" and target.get("player"):
             return {"call": "AddShout", "item": rest[0] if rest else None}
+        if target and fl == "setobjectivedisplayed" and target.get("self") and owner.get("quest") and not owner.get("info") and rest and rest[0] and "int" in rest[0]:
+            return {"call": "SetObjectiveDisplayed", "quest": owner["quest"], "objective": int(rest[0]["int"])}
         return super().event(fl, fn, target, rest, owner)
 
     def static_event(self, cls, fn, rest, owner):
@@ -191,8 +473,6 @@ class StoryAnalyzer(qsc.Analyzer):
             return {"call": "TeachWord" if fn == "teachword" else "UnlockWord", "item": rest[0] if rest else None}
         return None
 
-
-# ---- the check -----------------------------------------------------------------------------------
 
 def global_fact(gid, gv, loaders, setters, names):
     """A global's record value, what a settings loader or script makes it at run time, and the verdict."""
@@ -218,14 +498,12 @@ def global_fact(gid, gv, loaders, setters, names):
     if len(values) > 1:
         rec["verdict"] = "conflict"
     elif unread_settings and not runtime:
-        # A settings file says one thing, but the script that would load it isn't the one the game runs: the record stands.
         rec["value"] = rec.get("record")
         same = all(str(u["value"]).split(".")[0] == str(rec.get("record")).split(".")[0] for u in unread_settings)
         rec["verdict"] = "files" if same else "conflict"
     elif runtime and any(r["by"] == "settings loader" for r in runtime):
         rec["verdict"] = "run time"
-        lv = next(r["value"] for r in runtime if r["by"] == "settings loader")
-        rec["value"] = lv
+        rec["value"] = next(r["value"] for r in runtime if r["by"] == "settings loader")
     elif runtime:
         rec["verdict"] = "run time"
     else:
@@ -236,25 +514,48 @@ def global_fact(gid, gv, loaders, setters, names):
     return rec
 
 
-def needs_from(conds, names, globals_):
-    """Level, quests done and items from a list of conditions, in words, each with the global it reads."""
-    out = {"level": [], "quests": [], "items": [], "other": []}
-    for c in conds:
-        words = qst.describe_condition(c, names, {k: {"value": v.get("value")} for k, v in globals_.items()})
-        row = {"text": words, **({"node": c["node"]} if c.get("node") else {})}
-        g = c.get("global") or (c.get("param") if c["fn"] == "GetGlobalValue" else None)
-        if g:
-            row["global"] = g
-        key = {"GetLevel": "level", "GetStageDone": "quests", "GetQuestCompleted": "quests", "GetStage": "quests", "GetItemCount": "items"}.get(c["fn"], "other")
-        if row not in out[key]:
-            out[key].append(row)
-    return out
+# ---- what a reward list holds --------------------------------------------------------------------
 
+def describe_list(lid, names, depth=0):
+    """A levelled list in words: 'levelled: Steel Sword or Steel Mace', or 'levelled: gold and an item'."""
+    n = names.get(lid, {})
+    entries = list(dict.fromkeys(n.get("entries", [])))
+    kinds, named = set(), []
+    for e in entries:
+        en = names.get(e, {})
+        if en.get("type") == "MISC" and en.get("edid", "").lower().startswith("gold"):
+            kinds.add("gold")
+        elif en.get("type") == "LVLI":
+            inner = describe_list(e, names, depth + 1) if depth < 2 else ""
+            kinds.add("gold" if inner == "levelled: gold" else "item")
+        else:
+            kinds.add("item")
+            named.append(en.get("name") or en.get("edid") or e)
+    if kinds == {"item"} and 0 < len(named) <= 3 and len(named) == len(entries):
+        return "levelled: " + " or ".join(named)
+    words = [w for w in ("gold", "item") if w in kinds]
+    return "levelled: " + " and ".join("gold" if w == "gold" else "an item" for w in words) if words else "levelled: nothing"
+
+
+def item_text(ev, names):
+    """An AddItem's item in words, with a count and what a reward list holds."""
+    it = qsc.item_of(ev, names)
+    if not it:
+        return None
+    if it.get("gold"):
+        return f"{it['count']} gold" if isinstance(it.get("count"), int) else "gold (an amount the script works out)"
+    if it.get("type") == "LVLI":
+        text = f"{it['name']} ({describe_list(it['id'], names)})"
+    else:
+        text = it["name"]
+    return text + (f" x{it['count']}" if isinstance(it.get("count"), int) and it["count"] != 1 else "")
+
+
+# ---- the check -----------------------------------------------------------------------------------
 
 def main():
-    from bsa import vanilla_strings
-    from esp import ROOT, load_order, localized_strings, plugin_paths
-    from pex import Scripts
+    from esp import ROOT, load_order, plugin_paths
+    from pex import Scripts, read_pex
     from quest_givers import place, where_text
 
     line_id = sys.argv[1] if len(sys.argv) > 1 else "main-quest"
@@ -264,28 +565,29 @@ def main():
     lines = json.load(open(os.path.join(REPO, "src", "data", f"lorerim-{version}", "quests.json"), encoding="utf-8"))["lines"]
     line = next(l for l in lines if l["id"] == line_id)
     raw = {q["edid"].lower(): q for q in load("quests_raw.json")["quests"]}
-    givers = {r["id"]: r for r in load("quest_givers_raw.json")["quests"]}
     story = [raw[q["edid"].lower()] for q in line["quests"] if q["edid"].lower() in raw]
     missing_edids = [q["edid"] for q in line["quests"] if q["edid"].lower() not in raw]
     story_ids = {q["id"] for q in story}
+    order = {q["id"]: i for i, q in enumerate(story)}
 
     pp, lo = plugin_paths(), load_order()
     quests, infos, names, nodes = {}, {}, {}, {}
     qv, iv, gv = {}, {}, {}
-    inventories, alias_items, script_targets = {}, {}, {}
+    inventories, alias_items, script_targets, objective_targets = {}, {}, {}, {}
     quest_plugin, info_plugin = {}, {}
-    ref_plugins = []
+    plugins = []
     for n in lo:
         p = pp.get(n.lower())
         if not p:
             continue
         buf = open(p, "rb").read()
         loc = bool(struct.unpack_from("<I", buf, 8)[0] & 0x80)
-        strings = (localized_strings(p, n) or vanilla_strings(n, ROOT)) if loc else None
+        strings = name_strings(p, n, loc, ROOT)
         try:
             got = qsc.read_plugin(buf, n, strings)
             st = qst.read_plugin(buf, n, story_ids, strings)
             nodes.update(read_nodes(buf, n))
+            objective_targets.update(read_objective_targets(buf, n, story_ids))
         except Exception as e:  # a plugin the reader can't follow is listed, never fatal
             print("skip", n, e, file=sys.stderr)
             continue
@@ -307,8 +609,7 @@ def main():
         for a in st["aliasItems"]:
             alias_items[(a["quest"], a["alias"])] = a
         script_targets.update(st["scriptTargets"])
-        if b"CELL" in buf or b"WRLD" in buf:
-            ref_plugins.append((n, p, loc))
+        plugins.append((n, p, loc))
     print(f"read {len(quests)} quests, {len(infos)} scripted dialogue lines, {len(nodes)} story manager nodes", flush=True)
 
     scripts = Scripts(ROOT, lo)
@@ -347,14 +648,14 @@ def main():
     mcm = mcm_settings(dirs, os.path.join(ROOT, "overwrite"))
     loader_scripts = {}
     for modname, m in mcm.items():
-        sd = os.path.join(ROOT, "mods", m["folder"], "scripts")
-        if os.path.isdir(sd):
-            for f in os.listdir(sd):
-                if f.lower().endswith(".pex"):
-                    loader_scripts[f[:-4].lower()] = modname
-    loaders = {}
-    loader_quests = {}
-    from pex import read_pex
+        for sdname in ("Scripts", "scripts"):
+            sd = os.path.join(ROOT, "mods", m["folder"], sdname)
+            if os.path.isdir(sd):
+                for f in os.listdir(sd):
+                    if f.lower().endswith(".pex"):
+                        loader_scripts[f[:-4].lower()] = modname
+                break
+    loaders, loader_quests = {}, {}
     for qid, q in quests.items():
         for sc in (q.get("vmad") or {}).get("scripts", []):
             modname = loader_scripts.get(sc["name"].lower())
@@ -375,7 +676,6 @@ def main():
                 row = {"mod": modname, "key": key, "value": value, "from": src, "script": f"{sc['name']}.{fn}"}
                 if not any(r["key"] == key and r["mod"] == modname for r in loaders.get(g, [])):
                     loaders.setdefault(g, []).append(row)
-            # The loader's own copy, when another folder's copy wins: what it would carry that the winner doesn't.
             if own_path and os.path.normpath(own_path) != os.path.normpath(where or ""):
                 try:
                     own = read_pex(open(own_path, "rb").read())
@@ -397,31 +697,87 @@ def main():
         if ev["call"] == "SetValue" and ev.get("global") and ctx.get("script", "").lower() not in loader_scripts and ctx.get("quest") not in loader_quest_ids:
             setters.setdefault(ev["global"], []).append({"script": ctx["script"], "function": ev["function"], "value": ev.get("value")})
 
-    # Starters, rewards (WO-102's rules) for the story's quests.
-    kept_rows = qsc.build_quests(story, quests, events, names, {q["id"]: {"starts": []} for q in story}, lambda r: None)
+    # Starters, first objective targets, and who to place.
+    thresholds = {q["id"]: first_objective_stage(q["id"], q, events) for q in story}
+    sorted_starts = {q["id"]: classify_starts(q["id"], order, events, thresholds[q["id"]]) for q in story}
+    forced = {}  # (quest, alias name) -> [what ForceRefTo puts there]
+    for ctx, ev in events:
+        if ev["call"] == "ForceRefTo" and ev.get("quest") and ev.get("to"):
+            forced.setdefault((ev["quest"], ev["alias"].lower()), []).append(ev["to"])
+    targets = {}
+    for q in story:
+        objs = objective_targets.get(q["id"], {})
+        first = min(objs) if objs else None
+        aliases = quests.get(q["id"], {}).get("aliases", {})
+        targets[q["id"]] = [aliases[a] for a in objs.get(first, []) if a in aliases] if first is not None else []
+    npcs, refs = set(), set()
+    for ts in targets.values():
+        for a in ts:
+            if a.get("actor"):
+                npcs.add(a["actor"])
+            if a.get("ref"):
+                refs.add(a["ref"])
+            npcs |= set(a.get("isID", []))
+    for (q, _), tos in forced.items():
+        if q in story_ids:
+            for t in tos:
+                if t.get("form"):
+                    refs.add(t["form"])
+    route_infos = set()
+    first_q = story[0]["id"] if story else None
+    starts_raw = load("starts_raw.json")["starts"]
+    start_quest_ids = set()
+    for s in starts_raw:
+        ids = [s["id"]] if s.get("id") else [o["id"] for o in s["options"] if o["id"] not in ("0", 0, None)]
+        for oid in ids:
+            num = oid if isinstance(oid, int) else int(oid, 16) if str(oid).lower().startswith("0x") else int(oid)
+            start_quest_ids.add(f"{s['plugin']}:{num & 0xFFFFFF:06X}")
+    for ctx, ev in sorted_starts.get(first_q, {}).get("started", []):
+        if ctx["kind"] == "dialogue":
+            route_infos.add(ctx["info"])
+    for q in story:
+        for ctx, ev in sorted_starts[q["id"]]["started"]:
+            if ctx["kind"] == "dialogue":
+                route_infos.add(ctx["info"])
+    for iid in route_infos:
+        if infos.get(iid, {}).get("speaker"):
+            npcs.add(infos[iid]["speaker"])
+        for a in quests.get(infos.get(iid, {}).get("quest"), {}).get("aliases", {}).values():
+            if a.get("actor"):
+                npcs.add(a["actor"])
+            if a.get("ref"):
+                refs.add(a["ref"])
 
-    # Speakers and key holders to place; doors into each quest's cells.
-    speakers = {s.get("speakerId") for r in kept_rows.values() for s in r["startedBy"]}
-    speakers = {infos[s["info"]]["speaker"] for r in kept_rows.values() for s in r["startedBy"] if s["by"] == "dialogue" and infos.get(s["info"], {}).get("speaker")}
+    # Pass 2: dialogue, races, and references (doors, people, targets).
     keys = {k for k, v in names.items() if v["type"] == "KEYM"}
-    holders = {h for h, items in inventories.items() if any(i[0] in keys for i in items)} | speakers
-    wanted = {t for ts in script_targets.values() for t in ts}
+    dialogue, race_of, race_names = {}, {}, {}
     dv, placed, cells, tied, wanted_cells = {}, {}, {}, {}, {}
-    for n, p, loc in ref_plugins:
+    wanted = {t for ts in script_targets.values() for t in ts} | refs
+    for n, p, loc in plugins:
         buf = open(p, "rb").read()
-        strings = (localized_strings(p, n) or vanilla_strings(n, ROOT)) if loc else None
+        tables = all_strings(p, n, loc, ROOT)
         try:
-            doors, pl, ce, ti, wc = qst.read_refs(buf, n, keys, holders, strings, story_ids, wanted)
+            dialogue.update(read_dialogue(buf, n, route_infos, tables))
+            ro, rn = read_races(buf, n, npcs, tables["STRINGS"] if tables else None)
+            race_of.update(ro)
+            race_names.update(rn)
+            if b"CELL" in buf or b"WRLD" in buf:
+                doors, pl, ce, ti, wc = qst.read_refs(buf, n, keys, npcs, tables["STRINGS"] if tables else None, story_ids, wanted)
+                for k, d in doors.items():
+                    dv.setdefault(k, []).append((n, d))
+                placed.update(pl)
+                cells.update(ce)
+                for k, v in ti.items():
+                    tied.setdefault(k, []).extend(v)
+                wanted_cells.update(wc)
         except Exception as e:  # noqa: BLE001
-            print("skip refs", n, e, file=sys.stderr)
-            continue
-        for k, d in doors.items():
-            dv.setdefault(k, []).append((n, d))
-        placed.update(pl)
-        cells.update(ce)
-        for k, v in ti.items():
-            tied.setdefault(k, []).extend(v)
-        wanted_cells.update(wc)
+            print("skip pass 2", n, e, file=sys.stderr)
+    # Shared lines: an INFO can take its response from another (DNAM).
+    shared = {d["shared"] for d in dialogue.values() if d.get("shared") and not d["lines"]}
+    if shared:
+        for n, p, loc in plugins:
+            buf = open(p, "rb").read()
+            dialogue.update({k: v for k, v in read_dialogue(buf, n, shared, all_strings(p, n, loc, ROOT)).items()})
     grid = {(c["world"], c["grid"][0], c["grid"][1]): cid for cid, c in cells.items() if c.get("world") and "grid" in c and not c.get("persistent")}
     for versions_d in dv.values():
         for _, d in versions_d:
@@ -429,108 +785,189 @@ def main():
     for p in placed.values():
         p["cell"] = qst.real_cell(p["cell"], p.get("pos"), cells, grid) or p["cell"]
     door_cell = {k: v[-1][1]["cell"] for k, v in dv.items()}
-    cells_by_location = {}
-    for cid, c in cells.items():
-        if c.get("location"):
-            cells_by_location.setdefault(c["location"], set()).add(cid)
+    doors_into_cell = {}
+    for did, vd in dv.items():
+        d = vd[-1][1]
+        into = door_cell.get(d["to"])
+        if into and not d["deleted"] and into != d["cell"]:
+            doors_into_cell.setdefault(into, []).append((did, vd))
 
-    def doors_into(qid):
-        versions = qv.get(qid, [])
-        winner = versions[-1][1] if versions else {"aliases": []}
-        use = set()
-        for a in winner["aliases"]:
-            if a.get("location"):
-                use |= cells_by_location.get(a["location"], set())
-        for p in givers.get(qid, {}).get("people", []):
-            for w in p.get("where", []):
-                if w.get("cell") and not cells.get(w["cell"], {}).get("persistent"):
-                    use.add(w["cell"])
-        use |= {qst.real_cell(c, pos, cells, grid) for _, c, pos in tied.get(qid, [])}
-        use.discard(None)
+    def cell_text(cid):
+        c = cells.get(cid, {})
+        parts = [c.get("name"), names.get(c.get("location"), {}).get("name")]
+        parts = [x for x in parts if x and not x.lower().startswith("location for")]
+        if not parts and c.get("world"):
+            parts = [names.get(c["world"], {}).get("name")]
+        return ", ".join(dict.fromkeys(x for x in parts if x)) or None
+
+    def npc_where(npc):
+        return [x for x in (where_text(r) for r in place(npc, placed, cells, names)) if x and not x.lower().startswith("location for")]
+
+    def npc_cells(npc):
+        return [r["cell"] for r in place(npc, placed, cells, names) if r.get("cell")]
+
+    def holder(t):
+        """What one ForceRefTo target is: an NPC (from a placed reference's base) or a thing."""
+        if t.get("form"):
+            p = placed.get(t["form"])
+            if p and p.get("base"):
+                return {"id": p["base"], "name": names.get(p["base"], {}).get("name") or p["base"], "ref": t["form"], "cell": p["cell"]}
+            n = names.get(t["form"], {})
+            return {"id": t["form"], "name": n.get("name") or n.get("edid") or t["form"]}
+        if t.get("aliasRef") or t.get("alias"):
+            who = t.get("actor") or t.get("ref")
+            return {"id": who, "name": names.get(who, {}).get("name") or (t.get("aliasRef") or t.get("alias"))} if who else None
+        return None
+
+    def who_where(qid):
+        """Who or what the first objective's target alias holds, and where that is."""
         out = []
-        for did, vd in dv.items():
-            d = vd[-1][1]
-            into = door_cell.get(d["to"])
-            if d["deleted"] or into is None or into == d["cell"] or not d["lock"]:
-                continue
-            outdoors = cells.get(d["cell"], {}).get("world") is not None
-            if not ((into in use and d["cell"] not in use) or (d["cell"] in use and outdoors and cells.get(into, {}).get("world") is None)):
-                continue
-            # A door that needs a key, or whose lock a later plugin added or changed (WO-101); an ordinary locked house door isn't a need.
-            whats = {c[2]["what"] for c in qst.door_changes(vd)}
-            if not (d["lock"]["level"] == 255 or whats & {"key", "locked"}):
-                continue
-            target = cells.get(into, {})
-            iname = target.get("name") or names.get(target.get("location"), {}).get("name")
-            carry = qst.carriers(d["lock"]["key"], inventories, list(alias_items.values()), placed, cells, names) if d["lock"].get("key") else []
-            out.append({"door": did, "into": iname, "lock": d["lock"], "plain": qst.plain_lock(d, iname, names, carry), "plugin": vd[-1][0],
-                        "changedBy": sorted({c[0] for c in qst.door_changes(vd) if c[2]["what"] != "minor"})})
+        for a in targets.get(qid, []):
+            row = {"alias": a["name"], "fill": a["fill"], "holds": [], "cells": []}
+            if a.get("actor"):
+                row["holds"].append({"name": names.get(a["actor"], {}).get("name") or a["actor"], "kind": "unique actor", "where": npc_where(a["actor"])})
+                row["cells"] += npc_cells(a["actor"])
+            if a.get("ref"):
+                p = placed.get(a["ref"])
+                base = p and p.get("base")
+                row["holds"].append({"name": names.get(base, {}).get("name") or ("a marker" if base else a["ref"]), "kind": "forced reference",
+                                     "where": [cell_text(p["cell"])] if p and cell_text(p["cell"]) else []})
+                if p and p.get("cell"):
+                    row["cells"].append(p["cell"])
+            if a.get("location"):
+                nm = names.get(a["location"], {}).get("name") or a["location"]
+                if not nm.lower().startswith("location for"):
+                    row["holds"].append({"name": nm, "kind": "location", "where": [nm]})
+            if a.get("creates"):
+                row["holds"].append({"name": names.get(a["creates"], {}).get("name") or a["creates"], "kind": "created item", "where": []})
+            for npc in a.get("isID", []):
+                row["holds"].append({"name": names.get(npc, {}).get("name") or npc, "kind": "named in its conditions", "where": npc_where(npc)})
+                row["cells"] += npc_cells(npc)
+            for t in forced.get((qid, a["name"].lower()), []):
+                h = holder(t)
+                if h and h["name"] not in [x["name"] for x in row["holds"]]:
+                    where = [cell_text(h["cell"])] if h.get("cell") and cell_text(h["cell"]) else npc_where(h["id"]) if h.get("id") else []
+                    row["holds"].append({"name": h["name"], "kind": "put there by a script (ForceRefTo)", "where": where})
+                    if h.get("cell"):
+                        row["cells"].append(h["cell"])
+            row["holds"] = [h for h in row["holds"] if h["name"].lower() not in ROLES]
+            out.append(row)
         return out
 
-    def speaker_place(npc):
-        rows = place(npc, placed, cells, names)
-        return [where_text(r) for r in rows if where_text(r)]
+    def door_needs(qid, ww):
+        """A door is a need only when it's the way into the first objective's target cell and no other way in is unlocked."""
+        out = []
+        for row in ww:
+            for cid in dict.fromkeys(row["cells"]):
+                ways = doors_into_cell.get(cid, [])
+                if not ways or any(not vd[-1][1]["lock"] or vd[-1][1]["lock"]["level"] == 0 for _, vd in ways):
+                    continue
+                for did, vd in ways:
+                    d = vd[-1][1]
+                    lock = d["lock"]
+                    frm = cell_text(d["cell"]) or "outside"
+                    if lock["level"] == 255 or lock.get("key"):
+                        kn = names.get(lock.get("key"), {})
+                        carry = qst.carriers(lock["key"], inventories, list(alias_items.values()), placed, cells, names) if lock.get("key") else []
+                        who = "; ".join(c["name"] + (f" in {c['places'][0]}" if c["places"] else "") for c in carry if c["kind"] != "placed")
+                        text = f"The door from {frm} into {cell_text(cid) or 'it'} needs {('the ' + kn['name']) if kn.get('name') else 'a key'}" + (f", carried by {who}" if who else "") + "."
+                    else:
+                        text = f"The door from {frm} into {cell_text(cid) or 'it'} is locked ({LEVELS.get(lock['level'], lock['level'])})."
+                    out.append({"door": did, "plugin": vd[-1][0], "text": text})
+        return out
 
-    def info_conditions(iid):
-        vs = iv.get(iid)
-        if vs:
-            return vs[-1][1]["conditions"]
-        return []
+    def door_ways(ww):
+        """For each target cell: how many doors lead in and how many of them are locked."""
+        out = []
+        for row in ww:
+            for cid in dict.fromkeys(row["cells"]):
+                ways = doors_into_cell.get(cid, [])
+                if cells.get(cid, {}).get("world") is not None and not ways:
+                    continue  # outdoors: you walk in
+                locked = [w for w in ways if w[1][-1][1]["lock"] and w[1][-1][1]["lock"]["level"] != 0]
+                out.append({"cell": cell_text(cid) or cid, "ways": len(ways), "locked": len(locked)})
+        return out
 
-    # Globals any of it reads.
+    def gives(q):
+        """AddItem on the player on its own completing stages, and items its aliases create in the player."""
+        qid = q["id"]
+        completing = {s["index"] for s in q["stages"] if s.get("completes")}
+        out = []
+        for ctx, ev in events:
+            if (ctx.get("quest") == qid and ctx["kind"] == "quest" and ctx.get("fragment") and ctx.get("stage") in completing and ev.get("via") in (None, qid)
+                    and ev["call"].lower() == "additem"):
+                t = item_text(ev, names)
+                if t:
+                    out.append({"what": t, "stage": ctx["stage"], "source": f"{ctx['script']}.{ev['function']}", "verdict": "script"})
+        aliases = quests.get(qid, {}).get("aliases", {})
+        player_aliases = {i for i, a in aliases.items() if a.get("ref") == qsc.PLAYER_REF or a["name"].lower() in ("player", "playeralias", "playerref")}
+        for a in aliases.values():
+            if a.get("creates") and a.get("createIn") in player_aliases:
+                out.append({"what": names.get(a["creates"], {}).get("name") or a["creates"], "stage": None, "source": f"alias {a['name']} (created in the player)", "verdict": "files"})
+        return out
+
+    def starter_row(ctx, ev, depth=0):
+        """One starter in words, with its source; a helper quest is followed back one step."""
+        stage = f" {ev['stage']}" if ev.get("stage") is not None else ""
+        if ctx["kind"] == "dialogue":
+            spk = infos.get(ctx["info"], {}).get("speaker")
+            return {"by": "dialogue", "speaker": names.get(spk, {}).get("name") if spk else None, "speakerPlaced": npc_where(spk) if spk else [],
+                    "call": ev["call"] + stage, "info": ctx["info"],
+                    "conditions": format_conditions(iv[ctx["info"]][-1][1]["conditions"], names) if iv.get(ctx["info"]) else
+                    (format_conditions(dialogue[ctx["info"]]["conditions"], names) if ctx["info"] in dialogue else None),
+                    "source": f"{ctx['script']}.{ev['function']} on INFO {ctx['info']} ({info_plugin.get(ctx['info'], '?')})", "verdict": "script"}
+        caller = ctx.get("quest")
+        via = f", through {quest_label(ev['via'], names)}'s {ev.get('viaFunction')}" if ev.get("via") else ""
+        row = {"by": "quest script", "quest": quest_label(caller, names), "questId": caller, "atStage": ctx.get("stage"), "call": ev["call"] + stage,
+               "source": f"{ctx['script']}.{ev['function']} on {caller} ({quest_plugin.get(caller, '?')}){via}", "verdict": "script"}
+        if caller not in order:
+            actors = [a["name"] for a in quests.get(caller, {}).get("aliases", {}).values() if a.get("actor")][:3]
+            row["quest"] = f"{names.get(caller, {}).get('edid') or caller}" + (f" (named \"{names[caller]['name']}\" in its record)" if names.get(caller, {}).get("name") else "")                 + f", a helper quest" + (f" with {', '.join(actors)}" if actors else "")
+        if caller not in order and depth == 0:  # a helper (MQ102A): what starts it, one step back
+            here = order.get(ev.get("quest"), -1)
+            up = [x for x in classify_starts(caller, order, events, 10, here=here)["started"] if x[0].get("quest") != caller]
+            # The story quests before the one it serves; the quest itself calling its helper back isn't a start.
+            from_story = [x for x in up if order.get(x[0].get("quest"), here) < here]
+            row["throughStartedBy"] = [starter_row(c, e, 1) for c, e in (from_story or up)][:4]
+        return row
+
     report_quests = []
     all_globals = {}
     for q in story:
         qid = q["id"]
-        r = kept_rows[qid]
         versions = qv.get(qid, [])
         winner = versions[-1][1] if versions else {"dialogue": [], "event": [], "flags": 0}
-        starts = []
-        for s in r["startedBy"]:
-            if s["by"] == "dialogue":
-                info = infos.get(s["info"], {})
-                conds = info_conditions(s["info"])
-                fr = next((f for f in info.get("vmad", {}).get("fragments", [])), {})
-                starts.append({"by": "dialogue", "speaker": s.get("speaker"), "speakerPlaced": speaker_place(info.get("speaker")) if info.get("speaker") else [],
-                               "call": s["call"], "stage": s.get("stage"), "conditions": conds,
-                               "source": f"{fr.get('script', '?')}.{fr.get('function', '?')} on INFO {s['info']} ({info_plugin.get(s['info'], '?')})", "verdict": "script"})
-            elif s["by"] == "quest script":
-                qn = names.get(s["quest"], {})
-                label = qn.get("edid") or s["quest"]
-                if qn.get("name") and qn["name"] != qn.get("edid"):
-                    label += f" ({qn['name']})"
-                starts.append({"by": "quest script", "quest": label, "questId": s["quest"], "atStage": s.get("atStage"), "call": s["call"],
-                               "stage": s.get("stage"), "source": f"{s['script']} on {s['quest']} ({quest_plugin.get(s['quest'], '?')})", "verdict": "script"})
+        srt = sorted_starts[qid]
+        starts = [starter_row(c, e) for c, e in srt["started"]]
         for ns in node_starts(qid, nodes):
-            starts.append({"by": "story manager", "event": ns["event"], "node": ns["node"], "conditions": ns["conditions"], "parents": ns["parents"],
+            starts.append({"by": "story manager", "event": ns["event"], "node": ns["node"], "conditionsRaw": ns["conditions"], "parents": ns["parents"],
                            "source": f"{ns['node']} {ns['id']} ({ns['plugin']})", "verdict": "files"})
         if winner["flags"] & qst.START_GAME:
             starts.append({"by": "start game", "source": f"{qid} DNAM ({versions[-1][0] if versions else '?'})", "verdict": "files"})
-        conds = winner["dialogue"] + winner["event"]
-        for s in starts:
-            conds += s.get("conditions", []) if s["by"] in ("story manager",) else []
-        gl = {c.get("global") for s in starts for c in s.get("conditions", []) if c.get("global")} | {c.get("global") for c in conds if c.get("global")}
-        gl |= {c["param"] for s in starts for c in s.get("conditions", []) if c["fn"] == "GetGlobalValue"} | {c["param"] for c in conds if c["fn"] == "GetGlobalValue"}
-        gl.discard(None)
+        own_conds = winner["dialogue"] + winner["event"]
+        gl = set()
+        for c in own_conds + [c for s in starts for c in s.get("conditionsRaw", [])]:
+            g = c.get("global") or (c["param"] if c["fn"] == "GetGlobalValue" else None)
+            if g:
+                gl.add(g)
         facts = {g: global_fact(g, gv, loaders, setters, names) for g in sorted(gl)}
         all_globals.update(facts)
+        gvals = {k: {"value": v["value"]} for k, v in facts.items()}
         for s in starts:
-            if any((c.get("global") or (c["param"] if c["fn"] == "GetGlobalValue" else None)) in facts and facts[c.get("global") or c["param"]]["verdict"] in ("run time", "conflict")
-                   for c in s.get("conditions", [])):
-                s["verdict"] = "run time" if s["verdict"] == "files" else s["verdict"]
-            if s.get("conditions"):
-                s["conditionText"] = [qst.describe_condition(c, names, {k: {"value": v["value"]} for k, v in facts.items()}) for c in s["conditions"]]
-        g = givers.get(qid, {})
-        fo = g.get("firstObjective") or {}
-        ng = g.get("namedGiver") or {}
-        needs = needs_from(conds, names, facts)
-        doors = doors_into(qid)
-        row = {"id": qid, "edid": q["edid"], "name": q["name"], "plugin": versions[-1][0] if versions else quest_plugin.get(qid),
-               "startedBy": starts, "advancedBy": r.get("advancedBy", []),
-               "firstObjective": {"text": fo.get("filled") or fo.get("text"), "source": f"{qid} QOBJ", "verdict": "files"} if fo else None,
-               "who": ({"name": ng.get("name"), "where": [where_text(w) for w in ng.get("where", []) if where_text(w)], "how": ng.get("how")}
-                       if ng and (ng.get("name") or "").lower() not in ROLES else None),
-               "needs": needs, "doors": doors, "globals": list(facts.values()), "rewards": r["rewards"], "unlocks": r["unlocks"]}
+            if s.get("conditionsRaw") is not None:
+                s["conditions"] = format_conditions(s.pop("conditionsRaw"), names, gvals)
+                if any(f["verdict"] in ("run time", "conflict") for f in facts.values()):
+                    s["verdict"] = "run time"
+        caught = [{"by": quest_label(c.get("quest"), names), "atStage": c.get("stage"), "call": e["call"] + (f" {e['stage']}" if e.get("stage") is not None else ""),
+                   "source": f"{c['script']}.{e['function']} ({quest_plugin.get(c.get('quest'), '?')})"} for c, e in srt["caughtUp"]]
+        ww = who_where(qid)
+        fo = (q.get("objectives") or [{}])[0]
+        row = {"id": qid, "edid": q["edid"], "name": names.get(qid, {}).get("name") or q["name"], "plugin": versions[-1][0] if versions else quest_plugin.get(qid),
+               "firstObjectiveStage": thresholds[qid], "startedBy": starts, "caughtUpBy": caught, "advancedBy": len(srt["advanced"]),
+               "firstObjective": {"text": fo.get("text"), "index": fo.get("index"), "source": f"{qid} QOBJ {fo.get('index')}", "verdict": "files"} if fo else None,
+               "target": ww, "needs": {"conditions": format_conditions(own_conds, names, gvals) if own_conds else None, "doors": door_needs(qid, ww),
+                                       "ways": door_ways(ww)},
+               "globals": list(facts.values()), "gives": gives(q)}
         if not starts:
             own = [s["name"] for s in (quests.get(qid, {}).get("vmad") or {}).get("scripts", [])]
             miss = [s for s in own if s in an.missing]
@@ -538,13 +975,10 @@ def main():
         report_quests.append(row)
 
     # Every way a game begins.
-    starts_raw = load("starts_raw.json")["starts"]
     by_edid = {v["edid"].lower(): k for k, v in names.items() if v["type"] == "QUST"}
-    mq101 = by_edid.get("mq101")
     mq_ids = {by_edid.get(e) for e in ("mq101", "mq102", "mq102a", "mq102b", "mq103", "mq104", "mq105")} - {None}
-    mq_stages = {q["id"]: {s["index"] for s in q["stages"] if s.get("completes")} for q in story}
-    mq101_flag = bool(qv.get(mq101, [[None, {"flags": 0}]])[-1][1]["flags"] & qst.START_GAME) if mq101 else None
-    start_quest_ids = set()
+    first_done = {s["index"] for s in story[0]["stages"] if s.get("completes")} if story else {1000}
+    first_flag = bool(qv.get(first_q, [[None, {"flags": 0}]])[-1][1]["flags"] & qst.START_GAME) if first_q else False
     start_rows = []
     for s in starts_raw:
         ids = [s["id"]] if s.get("id") else [o["id"] for o in s["options"] if o["id"] not in ("0", 0, None)]
@@ -552,64 +986,120 @@ def main():
         for oid in ids:
             num = oid if isinstance(oid, int) else int(oid, 16) if str(oid).lower().startswith("0x") else int(oid)
             fid = f"{s['plugin']}:{num & 0xFFFFFF:06X}"
-            start_quest_ids.add(fid)
             evs = [(c, e) for c, e in events if c.get("quest") == fid and e["call"] in ("SetStage", "Start") and e.get("quest") in mq_ids]
-            moves = [f"{names.get(e['quest'], {}).get('edid')} {e['call']}{(' ' + str(e['stage'])) if e.get('stage') is not None else ''}" for _, e in evs]
-            mq101_set = [e.get("stage") for _, e in evs if e.get("quest") == mq101 and e["call"] == "SetStage"]
-            done = mq_stages.get(mq101, {1000})
-            if mq101_set and min(mq101_set) < min(done):
-                runs = f"yes, from stage {min(mq101_set)}"
-            elif mq101_set:
-                runs = f"no: its script sets MQ101 to {max(mq101_set)} (done)"
-            elif mq101_flag:
-                runs = "yes: MQ101 is start-game enabled"
+            moves = list(dict.fromkeys(f"{names.get(e['quest'], {}).get('edid')} {e['call']}{(' ' + str(e['stage'])) if e.get('stage') is not None else ''}" for _, e in evs))
+            first_set = [e.get("stage") for _, e in evs if e.get("quest") == first_q and e["call"] == "SetStage"]
+            if first_set and min(first_set) < min(first_done):
+                runs = f"yes, from stage {min(first_set)}"
+            elif first_set:
+                runs = f"no: its script sets {names.get(first_q, {}).get('edid')} to {max(first_set)} (done)"
+            elif first_flag:
+                runs = "yes: it is start-game enabled"
             else:
                 runs = "no"
             label = next((o["name"] for o in s["options"] if o["id"] == oid), s["name"])
-            opts.append({"option": label, "quest": fid, "questEdid": names.get(fid, {}).get("edid"), "mainQuestRuns": runs, "moves": list(dict.fromkeys(moves)),
+            opts.append({"option": label, "quest": fid, "questEdid": names.get(fid, {}).get("edid"), "mainQuestRuns": runs, "moves": moves,
                          "source": f"{names.get(fid, {}).get('edid')} scripts ({quest_plugin.get(fid, '?')})" if fid in quests else f"{fid} isn't a quest in the records"})
         start_rows.append({"start": s["name"], "from": s["from"], "options": opts})
-    later = []
-    for target in sorted(mq_ids, key=lambda x: names.get(x, {}).get("edid", "")):
-        for c, e in events:
-            if e.get("quest") != target or e["call"] not in ("SetStage", "Start"):
+
+    # Routes into the line's first quest from outside the starts, in player terms.
+    ap_configs = " ".join(open(f, encoding="utf-8", errors="ignore").read().upper() for f in glob.glob(os.path.join(ROOT, "mods", "*", "SKSE", "AlternatePerspective", "*.json")))
+    routes = []
+    seen = set()
+    for ctx, ev in sorted_starts.get(first_q, {}).get("started", []):
+        caller = ctx.get("quest")
+        if caller in start_quest_ids:
+            continue
+        if ctx["kind"] == "dialogue":
+            key = ("info", ctx["info"])
+        elif ev.get("via"):
+            key = ("via", ev["via"], ev.get("viaFunction"))
+        else:
+            key = ("quest", caller)
+        if key in seen:
+            continue
+        seen.add(key)
+        if ctx["kind"] == "dialogue":
+            d = dialogue.get(ctx["info"], {})
+            lines_ = d.get("lines") or dialogue.get(d.get("shared") or "", {}).get("lines") or []
+            spk = infos.get(ctx["info"], {}).get("speaker")
+            speaker = names.get(spk, {}).get("name") if spk else None
+            how_named = "GetIsID"
+            if not spk:
+                # Spoken by whoever fills an alias of the topic's quest (GetIsAliasRef).
+                tq = (d.get("topic") or {}).get("quest") or ctx.get("quest")
+                al = next((c["param"] for c in d.get("conditions", []) if c["fn"] == "GetIsAliasRef"), None)
+                a = quests.get(tq, {}).get("aliases", {}).get(al) if al is not None else None
+                if a:
+                    who = a.get("actor") or (placed.get(a.get("ref"), {}) or {}).get("base")
+                    speaker = names.get(who, {}).get("name") if who else None
+                    how_named = f"alias {a['name']} of {quest_label(tq, names)} ({a['fill']})"
+                    spk = who
+            race = race_names.get(race_of.get(spk)) if spk else None
+            where = npc_where(spk) if spk else []
+            prompt = d.get("prompt") or (d.get("topic") or {}).get("prompt")
+            tq = (d.get("topic") or {}).get("quest") or ctx.get("quest")
+            alias_names = {i: a["name"] for i, a in quests.get(tq, {}).get("aliases", {}).items()}
+            conds = format_conditions(d.get("conditions", []), names, {g: {"value": global_fact(g, gv, loaders, setters, names)["value"]}
+                                                                         for g in {c.get("global") for c in d.get("conditions", []) if c.get("global")}}, alias_names)
+            route = {"route": f"dialogue INFO {ctx['info']}", "kind": "dialogue", "speaker": speaker, "speakerNamed": how_named, "race": race, "placed": where,
+                     "prompt": prompt, "reply": lines_, "conditions": conds, "does": f"{ev['call']}{(' ' + str(ev['stage'])) if ev.get('stage') is not None else ''} on {quest_label(first_q, names)}",
+                     "source": f"{ctx['script']}.{ev['function']} on INFO {ctx['info']} ({d.get('plugin') or info_plugin.get(ctx['info'], '?')}); topic {(d.get('topic') or {}).get('edid')}"}
+            who_txt = speaker or "the speaker the line's conditions name"
+            route["sentence"] = (f"Talk to {who_txt}" + (f" ({race})" if race else "") + (f" in {where[0]}" if where else "") + (f" and choose \"{prompt}\"" if prompt else "")
+                                 + (f", when {conds}" if conds else "") + f": {route['does']}.")
+            if not speaker:
+                route["stops"] = f"the speaker isn't named by an NPC: {how_named}"
+        elif ev.get("via") or (ctx["kind"] == "quest" and not ctx.get("fragment")):
+            vq, vf = (ev["via"], ev.get("viaFunction")) if ev.get("via") else (caller, ev["function"].lower())
+            if ("via", vq, vf) in seen and not ev.get("via"):
                 continue
-            src_q = c.get("quest")
-            if src_q in start_quest_ids or src_q in mq_ids:
-                continue
-            stage_bound = min((s["index"] for s in raw.get(names.get(target, {}).get("edid", "").lower(), {}).get("stages", []) if s.get("log")), default=10)
-            if e["call"] == "SetStage" and e.get("stage", 0) > stage_bound:
-                continue
-            who = (f"dialogue with {names.get(infos[c['info']]['speaker'], {}).get('name')}" if c["kind"] == "dialogue" and infos.get(c["info"], {}).get("speaker")
-                   else f"{names.get(src_q, {}).get('edid') or src_q}" + (f" stage {c['stage']}" if c.get("stage") is not None else ""))
-            later.append({"quest": names.get(target, {}).get("edid"), "by": who, "call": e["call"], "stage": e.get("stage"), "script": c["script"],
-                          "plugin": quest_plugin.get(src_q) if c["kind"] != "dialogue" else info_plugin.get(c["info"])})
-    for target in sorted(mq_ids, key=lambda x: names.get(x, {}).get("edid", "")):
-        for ns in node_starts(target, nodes):
-            later.append({"quest": names.get(target, {}).get("edid"), "by": f"story manager {ns['node']} ({ns['event']})", "call": "node", "stage": None,
-                          "script": None, "plugin": ns["plugin"],
-                          "conditions": [qst.describe_condition(c, names, {g: {"value": global_fact(g, gv, loaders, setters, names)["value"]}
-                                                                            for g in [c.get("global") or (c["param"] if c["fn"] == "GetGlobalValue" else None)] if g}) for c in ns["conditions"]]})
-    # APS skip quests and the like: who starts the quests that move the main quest for a start that skips it.
-    movers = sorted({c.get("quest") for c, e in events if e.get("quest") in mq_ids and c.get("quest") and c.get("quest") not in mq_ids and c.get("quest") not in start_quest_ids})
-    mover_rows = []
-    for m in movers:
-        st = [x for x in qsc.build_quests([{"id": m, "edid": names.get(m, {}).get("edid", m), "name": names.get(m, {}).get("name", ""), "stages": [], "objectives": []}],
-                                          quests, events, names, {m: {"starts": []}}, lambda r: None)[m]["startedBy"]]
-        row = {"quest": names.get(m, {}).get("edid") or m, "id": m, "plugin": quest_plugin.get(m), "startedBy": [qsc.starter_text(x) for x in st[:5]],
-               "nodes": [f"{ns['node']} ({ns['event']})" for ns in node_starts(m, nodes)], "startGame": bool(quests.get(m, {}).get("flags", 0) & qst.START_GAME)}
-        # And what starts the quests that start it (APS_MQSkipMQ105 starts the Hadvar and Ralof skips).
-        deeper = []
-        for x in st[:5]:
-            if x["by"] == "quest script" and x["quest"] not in mq_ids:
-                up = qsc.build_quests([{"id": x["quest"], "edid": names.get(x["quest"], {}).get("edid", ""), "name": "", "stages": [], "objectives": []}],
-                                      quests, events, names, {x["quest"]: {"starts": []}}, lambda r: None)[x["quest"]]["startedBy"]
-                deeper.append({"quest": names.get(x["quest"], {}).get("edid") or x["quest"], "startedBy": [qsc.starter_text(u) for u in up[:5]],
-                               "nodes": [f"{ns['node']} ({ns['event']})" for ns in node_starts(x["quest"], nodes)],
-                               "startGame": bool(quests.get(x["quest"], {}).get("flags", 0) & qst.START_GAME)})
-        row["startedByStartedBy"] = deeper
-        mover_rows.append(row)
-    start_game_mq = [names.get(q, {}).get("edid") for q in sorted(mq_ids) if quests.get(q, {}).get("flags", 0) & qst.START_GAME]
+            seen.add(("via", vq, vf))
+            calls = [e for c, e in events if e.get("via") == vq and e.get("viaFunction") == vf]
+            did = list(dict.fromkeys(f"{e['call']} {quest_label(e['quest'], names) if e.get('quest') else qsc.describe(e.get('who') or e.get('ref') or e.get('item'), names)}"
+                                     + (f" {e['stage']}" if e.get("stage") is not None else "") for e in calls))
+            callers = list(dict.fromkeys((f"dialogue INFO {c['info']} \"{(dialogue.get(c['info']) or {}).get('prompt') or ((dialogue.get(c['info']) or {}).get('topic') or {}).get('prompt') or ''}\""
+                                          if c["kind"] == "dialogue" else quest_label(c.get("quest"), names) + (f" stage {c['stage']}" if c.get("stage") is not None else ""))
+                                         for c, e in events if e.get("via") == vq and e.get("viaFunction") == vf))
+            if not did:
+                did = [f"{ev['call']} {quest_label(first_q, names)}" + (f" {ev['stage']}" if ev.get("stage") is not None else "")]
+            starts_of_vq = (classify_starts(vq, order, events, 10)["started"] or node_starts(vq, nodes) or (quests.get(vq, {}).get("flags", 0) & qst.START_GAME))
+            route = {"route": f"{quest_label(vq, names)}, its script's {vf}", "kind": "script function", "does": did, "calledFrom": callers,
+                     "source": f"{ctx['script'] if not ev.get('via') else vf} on {vq} ({quest_plugin.get(vq, '?')})"}
+            from_starts = [c for c in callers if any(c.startswith(quest_label(sq, names)) for sq in start_quest_ids)]
+            others = [c for c in callers if c not in from_starts]
+            route["sentence"] = (f"{quest_label(vq, names)}'s {vf} does {'; '.join(did)}; it is called from "
+                                 + ("; ".join(callers) if callers else "nothing the reader found") + "."
+                                 + (" Only a start's quest calls it, so from any other start this route needs one of the dialogue lines here." if from_starts and not others else ""))
+            if not callers and not starts_of_vq:
+                route["stops"] = f"nothing in the records or scripts calls {vf} or starts {quest_label(vq, names)}"
+        else:
+            up = classify_starts(caller, order, events, 10)["started"]
+            route = {"route": quest_label(caller, names), "kind": "quest script", "does": f"stage {ctx.get('stage')}: {ev['call']}{(' ' + str(ev['stage'])) if ev.get('stage') is not None else ''}",
+                     "startedBy": [starter_row(c, e)["source"] for c, e in up if c.get("quest") != caller][:4],
+                     "inStartMenu": caller.split(":")[1].lstrip("0") in ap_configs if caller else False, "source": f"{ctx['script']} on {caller} ({quest_plugin.get(caller, '?')})"}
+            if not route["startedBy"] and not node_starts(caller, nodes) and not (quests.get(caller, {}).get("flags", 0) & qst.START_GAME):
+                route["stops"] = (f"nothing in the records or scripts starts {quest_label(caller, names)}"
+                                  + ("" if route["inStartMenu"] else ", and Alternate Perspective's start menu in LoreRim doesn't offer it"))
+                route["sentence"] = f"The trail stops at {quest_label(caller, names)}: {route['stops']}."
+            else:
+                route["sentence"] = f"{quest_label(caller, names)} {route['does']} on {quest_label(first_q, names)}; it is started by " + "; ".join(route["startedBy"]) + "."
+        routes.append(route)
+    # What every other start can do: the story's quests that run from the start, and the routes above.
+    chain_type = story[0].get("type") if story else None
+    start_game_story = [r for r, q in zip(report_quests, story) if q.get("type") == chain_type and any(s["by"] == "start game" for s in r["startedBy"])]
+    open_now = []
+    for r in start_game_story:
+        who = next((h for t in r["target"] for h in t["holds"]), None)
+        if who and r.get("firstObjective"):
+            open_now.append(f"talk to {who['name']}" + (f" in {who['where'][0]}" if who.get("where") else "") + f": {r['name']} is running from the start ({r['firstObjective']['text']})")
+        elif r.get("firstObjective"):
+            open_now.append(f"{r['name']} is running from the start: {r['firstObjective']['text']}")
+    talk = []
+    for r in routes:
+        if r["kind"] == "dialogue" and not r.get("stops") and r.get("speaker"):
+            talk.append(f"ask {r['speaker']}" + (f" in {r['placed'][0]}" if r.get("placed") else "") + f" \"{r['prompt']}\" ({r['conditions']}), which starts {quest_label(first_q, names).split(' (')[-1].rstrip(')')}")
+    other_start_sentence = ("To get into the main quest: " + "; or ".join(open_now + talk) + ".") if (open_now or talk) else "The reader found no way into the main quest from it."
 
     # The payoff: what the stages that complete the last quests give.
     payoff = []
@@ -618,11 +1108,13 @@ def main():
         if not q:
             continue
         completing = {s["index"] for s in q["stages"] if s.get("completes")}
-        gives = []
+        given = []
         for c, ev in events:
-            if c.get("quest") == q["id"] and c["kind"] == "quest" and c.get("stage") in completing and ev["call"].lower() in ("additem", "addspell", "addperk", "addshout", "teachword", "unlockword"):
-                gives.append({"call": ev["call"], "what": qsc.describe(ev.get("item"), names), "count": ev.get("count"), "stage": c["stage"], "source": f"{c['script']}.{ev['function']}"})
-        payoff.append({"quest": q["name"], "edid": q["edid"], "completingStages": sorted(completing), "gives": gives})
+            if (c.get("quest") == q["id"] and c["kind"] == "quest" and c.get("stage") in completing and ev.get("via") in (None, q["id"])
+                    and ev["call"].lower() in ("additem", "addspell", "addperk", "addshout", "teachword", "unlockword")):
+                given.append({"call": ev["call"], "what": item_text(ev, names) if ev["call"].lower() == "additem" else qsc.describe(ev.get("item"), names),
+                              "stage": c["stage"], "source": f"{c['script']}.{ev['function']}"})
+        payoff.append({"quest": names.get(q["id"], {}).get("name") or q["name"], "edid": q["edid"], "completingStages": sorted(completing), "gives": given})
 
     # The three questions.
     mq105 = raw.get("mq105")
@@ -633,47 +1125,58 @@ def main():
                     else f"Skyrim.esm:0242BA is {q1['edid']} ({q1['name']}); its completing stages are {q1['completingStages']}.")
     horn = next((r for r in report_quests if r["edid"].lower() == "mq105ustengrav"), None)
     q2 = {"question": "Who starts The Horn of Jurgen Windcaller, and where?", "quest": horn and f"{horn['name']} ({horn['edid']}, {horn['id']})",
-          "startedBy": horn["startedBy"] if horn else [], "who": horn and horn["who"], "firstObjective": horn and horn["firstObjective"],
-          "giver": horn and (givers.get(horn["id"], {}).get("namedGiver") or {})}
+          "startedBy": horn["startedBy"] if horn else [], "target": horn and horn["target"], "firstObjective": horn and horn["firstObjective"]}
     dlc2 = by_edid.get("dlc2cultistambush")
-    q3_nodes = node_starts(dlc2, nodes) if dlc2 else []
     tie_level = setting_value(mcm["TimingIsEverything"], "iTIE_MinimumLevel:Dragonborn") if "TimingIsEverything" in mcm else (None, None)
     q3 = {"question": "Does Dragonborn's cultist node read Timing is Everything's level (25 in its settings.ini), or something else?",
           "quest": (names.get(dlc2, {}).get("edid") + f" ({dlc2})") if dlc2 else None, "nodes": [], "tieSetting": {"key": "iTIE_MinimumLevel:Dragonborn", "value": tie_level[0], "from": tie_level[1]}}
-    for ns in q3_nodes:
-        reads = []
-        for c in ns["conditions"]:
-            if c["fn"] == "GetLevel":
-                g = c.get("global")
-                fact = global_fact(g, gv, loaders, setters, names) if g else None
-                reads.append({"node": c.get("node"), "cmp": c["cmp"], "value": c.get("value"), "global": g, "fact": fact})
-        gvals, gfacts = {}, []
+    for ns in (node_starts(dlc2, nodes) if dlc2 else []):
+        gfacts, gvals = [], {}
         for c in ns["conditions"]:
             g = c.get("global") or (c["param"] if c["fn"] == "GetGlobalValue" else None)
             if g and g not in gvals:
                 f = global_fact(g, gv, loaders, setters, names)
                 gvals[g] = {"value": f["value"]}
                 gfacts.append(f)
-        q3["nodes"].append({"node": ns["node"], "id": ns["id"], "plugin": ns["plugin"], "event": ns["event"], "levelConditions": reads, "globals": gfacts,
-                            "conditions": [qst.describe_condition(c, names, gvals) for c in ns["conditions"]]})
+        q3["nodes"].append({"node": ns["node"], "id": ns["id"], "plugin": ns["plugin"], "event": ns["event"], "globals": gfacts,
+                            "conditions": format_conditions(ns["conditions"], names, gvals)})
+
+    # Wyrmstooth: its start level in a new game, from WT_MCMScript's own code.
     wt_global = next((k for k, v in names.items() if v["type"] == "GLOB" and v["edid"].lower() == "wtstartlevel"), None)
     wyrm = {"loaderInstalled": "Wyrmstooth" in mcm, "loaderFolder": mcm.get("Wyrmstooth", {}).get("folder"), "global": wt_global,
-            "fact": global_fact(wt_global, gv, loaders, setters, names) if wt_global else None,
-            "loaderQuest": loader_quests.get("Wyrmstooth")}
-    tie = {"loaderInstalled": "TimingIsEverything" in mcm, "loaderFolder": mcm.get("TimingIsEverything", {}).get("folder"),
-           "script": loader_quests.get("TimingIsEverything"),
+            "fact": global_fact(wt_global, gv, loaders, setters, names) if wt_global else None, "loaderQuest": loader_quests.get("Wyrmstooth")}
+    if wyrm["loaderQuest"]:
+        wp = scripts.get(wyrm["loaderQuest"]["script"])
+        key = next((r["key"] for r in loaders.get(wt_global, []) if r["mod"] == "Wyrmstooth"), "iWTGeneralRequirementsMinimalLevel:Requirements")
+        flow = mcm_flow(wp, key) if isinstance(wp, dict) else {}
+        setting, src = setting_value(mcm["Wyrmstooth"], key)
+        reload_setting = setting_value(mcm["Wyrmstooth"], flow.get("reloadLoadsIf") or "bLoadSettingsonReload:Maintenance")[0]
+        rec = wyrm["fact"].get("record") if wyrm["fact"] else None
+        gate_value = setting_value(mcm["Wyrmstooth"], flow["gate"])[0] if flow.get("gate") else None
+        gate_on = gate_value is None or str(gate_value).strip() not in ("0", "false", "False")
+        new_game = int(setting) if flow.get("initLoads") and flow.get("loadReadsKey") and gate_on and str(setting).isdigit() else rec
+        why = []
+        if flow.get("initLoads"):
+            why.append(f"OnConfigInit runs once when the menu registers in a new game; it sets `{flow.get('guard')}` and calls LoadSettings, "
+                       + (f"which goes on only while {flow['gate']} is set (it is {gate_value}) and then calls {flow['readsIn']}, " if flow.get("gate") else "")
+                       + f"which reads {key} ({setting}, {src}) and sets WTStartLevel to it")
+        if flow.get("migrateCopiesKey"):
+            why.append(f"MigrateToMCMHelper, which would copy the global's record value ({rec}) into that setting, runs only from OnGameReload or OnConfigOpen "
+                       f"while `{flow.get('guard')}` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would)")
+        if flow.get("reloadLoadsIf"):
+            why.append(f"OnGameReload reloads the settings only when {flow['reloadLoadsIf']} is set; it is {reload_setting}, so later loads keep whatever the global holds")
+        wyrm["newGame"] = {"value": new_game, "why": why, "verdict": "run time" if new_game != rec else "files"}
+
+    tie = {"loaderInstalled": "TimingIsEverything" in mcm, "loaderFolder": mcm.get("TimingIsEverything", {}).get("folder"), "script": loader_quests.get("TimingIsEverything"),
            "dragonbornLevel": {"key": "iTIE_MinimumLevel:Dragonborn", "value": tie_level[0], "from": tie_level[1],
                                "globals": [dict(global_fact(g, gv, loaders, setters, names), **{"global": g}) for g, rows in loaders.items()
                                            if any(r["key"] == "iTIE_MinimumLevel:Dragonborn" for r in rows)]}}
-
     touched = {r["mod"] for g in all_globals for r in loaders.get(g, [])}
-    for g in [x.get("global") for x in tie["dragonbornLevel"]["globals"]] + [wt_global]:
-        touched |= {r["mod"] for r in loaders.get(g, [])}
     shown = {m: v for m, v in loader_quests.items() if m in touched or m in ("TimingIsEverything", "Wyrmstooth")}
-    out = {"line": line_id, "name": line["name"], "quests": report_quests, "notInRawQuests": missing_edids, "starts": start_rows, "mainQuestLater": later,
-           "startGameMainQuest": start_game_mq, "loaders": shown,
-           "mainQuestMovers": mover_rows, "payoff": payoff, "questions": [q1, q2, q3], "timingIsEverything": tie, "wyrmstooth": wyrm,
-           "missingScripts": sorted(an.missing)}
+
+    out = {"line": line_id, "name": line["name"], "quests": report_quests, "notInRawQuests": missing_edids, "starts": start_rows,
+           "otherStarts": other_start_sentence, "routes": routes, "loaders": shown, "payoff": payoff, "questions": [q1, q2, q3],
+           "timingIsEverything": tie, "wyrmstooth": wyrm, "missingScripts": sorted(an.missing)}
     d = os.path.join(base, "story_checks")
     os.makedirs(d, exist_ok=True)
     with open(os.path.join(d, f"{line_id}.json"), "w", encoding="utf-8", newline="\n") as f:
@@ -681,20 +1184,24 @@ def main():
         f.write("\n")
     with open(os.path.join(d, f"{line_id}.md"), "w", encoding="utf-8", newline="\n") as f:
         f.write(markdown(out))
-    c = Counter("unread" if r.get("unread") else "started" for r in report_quests)
-    print(f"{line_id}: {len(report_quests)} quests ({dict(c)}), {sum(len(s['options']) for s in start_rows)} start options -> story_checks/{line_id}.md")
+    print(f"{line_id}: {len(report_quests)} quests, {sum(1 for r in report_quests if r.get('unread'))} unread, {len(routes)} routes into "
+          f"{report_quests[0]['name'] if report_quests else '?'} -> story_checks/{line_id}.md")
 
 
 def starter_line(s):
     if s["by"] == "dialogue":
         where = f", placed in {'; '.join(s['speakerPlaced'][:2])}" if s.get("speakerPlaced") else ""
-        when = f" (needs: {'; '.join(s['conditionText'])})" if s.get("conditionText") else ""
-        return f"Dialogue with {s.get('speaker') or 'someone the line does not name'}{where}: {s['call']}{' ' + str(s['stage']) if s.get('stage') is not None else ''}{when}"
+        when = f" (when: {s['conditions']})" if s.get("conditions") else ""
+        return f"Dialogue with {s.get('speaker') or 'someone the line does not name'}{where}: {s['call']}{when}"
     if s["by"] == "quest script":
-        return f"{s['quest']}{(' at stage ' + str(s['atStage'])) if s.get('atStage') is not None else ''} calls {s['call']}{' ' + str(s['stage']) if s.get('stage') is not None else ''}"
+        text = f"{s['quest']}{(' at stage ' + str(s['atStage'])) if s.get('atStage') is not None else ''} calls {s['call']}"
+        if s.get("throughStartedBy"):
+            text += "; " + s["quest"].split(" ")[0] + " is started by " + "; ".join(
+                (f"{u['quest']}" + (f" at stage {u['atStage']}" if u.get("atStage") is not None else "") + f" ({u['call']})") if u["by"] == "quest script"
+                else f"dialogue with {u.get('speaker') or 'someone'} ({u['call']})" for u in s["throughStartedBy"])
+        return text
     if s["by"] == "story manager":
-        conds = "; ".join(s.get("conditionText", [])) or "no conditions"
-        return f"Story manager node {s['node']}, event: {s['event'] or 'none'}; conditions up its parents: {conds}"
+        return f"Story manager node {s['node']}, event: {s['event'] or 'none'}; conditions up its parents: {s.get('conditions') or 'none'}"
     return "Start-game flag: the quest runs from the start of the game"
 
 
@@ -702,73 +1209,99 @@ def markdown(out):
     md = [f"# Start check: {out['name']} (`{out['line']}`)", "",
           "Written by `scripts/gamedata/story_check.py` from the records, the winning compiled scripts and the settings loaders in the Ultra profile. "
           "Verdicts: **files** a record decides it; **script** a script decides it, read; **run time** a settings loader or script sets it at load; "
-          "**conflict** two sources disagree; **unread** named.", ""]
+          "**conflict** two sources disagree; **unread** named. Conditions read as the game reads them: \"or\" joins OR'd conditions, \";\" separates what is all needed.", ""]
     if out["notInRawQuests"]:
         md += [f"Not in the crawl (no journal text): {', '.join(out['notInRawQuests'])}.", ""]
     for i, q in enumerate(out["quests"], 1):
         md += [f"## {i}. {q['name']} (`{q['edid']}`, {q['id']}, {q['plugin']})", ""]
-        md.append("**Started by**")
-        md.append("")
+        md += ["**Started by**", ""]
         if q.get("unread"):
             md.append(f"- **unread**: {q['unread']}")
-        for s in q["startedBy"][:8]:
-            md.append(f"- {starter_line(s)}. Source: {s['source']}. **{s['verdict']}**")
-        if len(q["startedBy"]) > 8:
-            md.append(f"- and {len(q['startedBy']) - 8} more in the JSON")
-        md.append("")
-        md.append("**Where**")
-        md.append("")
-        if q.get("firstObjective") and q["firstObjective"]["text"]:
+        grouped, order_ = {}, []
+        for s in q["startedBy"]:
+            key = (s["by"], s.get("quest") or s.get("info") or s.get("node") or s["by"])
+            if key not in grouped:
+                grouped[key] = []
+                order_.append(key)
+            grouped[key].append(s)
+        for key in order_[:8]:
+            rows = grouped[key]
+            s = rows[0]
+            if len(rows) > 1 and s["by"] == "quest script":
+                calls = "; ".join(f"at stage {r['atStage']} {r['call']}" if r.get("atStage") is not None else r["call"] for r in rows)
+                line = starter_line(dict(s, atStage=None, call=calls))
+                md.append(f"- {line}. Sources: {', '.join(dict.fromkeys(r['source'].split(' on ')[0] for r in rows))} on {s['questId']}. **{s['verdict']}**")
+            else:
+                for r in rows[:3]:
+                    md.append(f"- {starter_line(r)}. Source: {r['source']}. **{r['verdict']}**")
+        if len(order_) > 8:
+            md.append(f"- and {len(order_) - 8} more in the JSON")
+        md.append(f"- (First objective shown at stage {q['firstObjectiveStage']}; a call to a later stage advances the quest instead.)")
+        if q["caughtUpBy"]:
+            md += ["", "**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)", ""]
+            for c in q["caughtUpBy"][:6]:
+                md.append(f"- {c['by']}" + (f" at stage {c['atStage']}" if c.get("atStage") is not None else "") + f" calls {c['call']}. Source: {c['source']}.")
+            if len(q["caughtUpBy"]) > 6:
+                md.append(f"- and {len(q['caughtUpBy']) - 6} more in the JSON")
+        md += ["", "**Who and where**", ""]
+        if q.get("firstObjective") and q["firstObjective"].get("text"):
             md.append(f"- First objective: \"{q['firstObjective']['text']}\". Source: {q['firstObjective']['source']}. **files**")
-        if q.get("who") and q["who"].get("name"):
-            md.append(f"- Who: {q['who']['name']} ({'named in its opening' if q['who'].get('how') == 'named' else 'its first speaker'})"
-                      + (f", placed in {'; '.join(q['who']['where'][:2])}" if q["who"].get("where") else ", never placed (a script moves or spawns them)") + ". **files**")
-        md.append("")
-        md.append("**Needs**")
-        md.append("")
+        if not q["target"]:
+            md.append("- Its first objective names no target alias.")
+        for t in q["target"]:
+            holds = "; ".join(f"{h['name']} ({h['kind']}" + (f", placed in {', '.join(h['where'][:2])}" if h.get("where") else "") + ")" for h in t["holds"])
+            md.append(f"- Target alias {t['alias']} ({t['fill']}): " + (holds or "nothing the records or scripts name") + ". **"
+                      + ("script" if any("script" in h["kind"] for h in t["holds"]) else "files") + "**")
+        md += ["", "**Needs**", ""]
         n = q["needs"]
-        any_need = False
-        for k, label in (("level", "Level"), ("quests", "Quests"), ("items", "Items"), ("other", "Other conditions")):
-            if n[k]:
-                any_need = True
-                md.append(f"- {label}: " + "; ".join(x["text"] for x in n[k]) + ". Source: the quest's own conditions. **files**")
-        for d in q["doors"]:
-            any_need = True
-            md.append(f"- Door: {d['plain']} Source: {d['door']} ({d['plugin']}). **files**")
-        if not any_need:
-            md.append("- Nothing in its own conditions or doors.")
+        if n["conditions"]:
+            md.append(f"- Its own conditions: {n['conditions']}. **files**")
+        for d in n["doors"]:
+            md.append(f"- {d['text']} Source: {d['door']} ({d['plugin']}). **files**")
+        if not n["conditions"] and not n["doors"]:
+            md.append("- Nothing in its own conditions, and no locked-only way into its first objective's place.")
+        ways = [w for w in n.get("ways", []) if w["ways"]]
+        if ways:
+            md.append("- Ways in: " + "; ".join(f"{w['cell']}: {w['ways']} door{'s' if w['ways'] != 1 else ''}, {w['locked']} locked" for w in ways)
+                      + ". A door is a need only when every way in is locked. **files**")
         for g in q["globals"]:
             rt = "; ".join(f"{r['by']} {r.get('mod') or r.get('script')}: {r.get('key', '')} = {r['value']}" + (f" ({r['from']})" if r.get("from") else "") for r in g["runtime"])
             md.append(f"- Global {g['edid']}: record {g.get('record')} ({g.get('recordFrom')})" + (f"; at run time {rt}" if rt else "") + f". **{g['verdict']}**")
         md.append("")
-        if q["rewards"]:
-            md.append("**Gives**: " + "; ".join(dict.fromkeys(qsc.reward_text(x) for x in q["rewards"])) + ". **script**")
-            md.append("")
-    md += ["## Every way a game begins", "", f"MQ101's start-game flag: see each quest above. Each start's option is a quest; what its scripts do to the main quest:", "",
-           "| Start | Option | Its quest | Main quest (MQ101) runs? | What it moves |", "| --- | --- | --- | --- | --- |"]
+        md.append("**Gives**: " + ("; ".join(f"{x['what']}" + (f" (stage {x['stage']}, {x['source']})" if x.get("stage") is not None else f" ({x['source']})") for x in q["gives"])
+                                   or "nothing on its completing stages") + ".")
+        md.append("")
+    md += ["## Every way a game begins", "", "Each start's option is a quest; what its scripts do to the main quest, and how a player gets in from it:", "",
+           "| Start | Option | Its quest | Main quest (MQ101) runs? | What it moves | How the player gets into the main quest |", "| --- | --- | --- | --- | --- | --- |"]
     for s in out["starts"]:
         for o in s["options"]:
-            md.append(f"| {s['start']} | {o['option']} | {o['questEdid'] or o['quest']} | {o['mainQuestRuns']} | {'; '.join(o['moves']) or 'nothing in the main quest'} |")
-    md += ["", "**When MQ101 doesn't run, what starts the main quest later** (calls on MQ101 to MQ105 from outside the starts and the main quest itself):", ""]
-    seen = set()
-    for l in out["mainQuestLater"]:
-        key = (l["quest"], l["by"], l["call"], l["stage"])
-        if key in seen:
-            continue
-        seen.add(key)
-        md.append(f"- {l['quest']}: {l['by']} ({l['call']}{' ' + str(l['stage']) if l['stage'] is not None else ''})" + (f", {l['script']}" if l.get("script") else "")
-                  + (f", {l['plugin']}" if l.get("plugin") else "") + (f"; conditions: {'; '.join(l['conditions'])}" if l.get("conditions") else ""))
-    md += ["", f"Main-quest quests with the start-game flag (running from the first moment, whatever the start): {', '.join(out['startGameMainQuest']) or 'none'}. **files**", ""]
-    md += ["Quests outside the main quest that move it, and what starts them:", ""]
-    for m in out["mainQuestMovers"]:
-        md.append(f"- {m['quest']} ({m['plugin']}): " + ("; ".join(dict.fromkeys(m["startedBy"] + m["nodes"] + (["start-game"] if m.get("startGame") else []))) or "no starter found in its records or scripts"))
-        for d in m.get("startedByStartedBy", []):
-            md.append(f"  - {d['quest']} is started by: " + ("; ".join(dict.fromkeys(d["startedBy"] + d["nodes"] + (["start-game"] if d.get("startGame") else []))) or "no starter found in its records or scripts (**unread**)"))
-    md += ["", "## The payoff", ""]
+            how = "it runs from the start" if o["mainQuestRuns"].startswith("yes") else out["otherStarts"]
+            md.append(f"| {s['start']} | {o['option']} | {o['questEdid'] or o['quest']} | {o['mainQuestRuns']} | {'; '.join(o['moves']) or 'nothing in the main quest'} | {how.replace('|', '/')} |")
+    md += ["", "## Routes into the first quest from outside the starts", ""]
+    for r in out["routes"]:
+        md.append(f"### {r['route']}")
+        md.append("")
+        if r["kind"] == "dialogue":
+            md.append(f"- Speaker: {r.get('speaker') or 'not named by an NPC'}" + (f" ({r['race']})" if r.get("race") else "") + (f", placed in {'; '.join(r['placed'][:2])}" if r.get("placed") else "")
+                      + f". Named by: {r['speakerNamed']}.")
+            md.append(f"- The player's prompt: \"{r.get('prompt') or ''}\".")
+            md.append("- The reply: " + (" / ".join(f"\"{x}\"" for x in r["reply"]) if r["reply"] else "(no line of its own)") + ".")
+            md.append(f"- When it's offered: {r['conditions'] or 'no conditions'}.")
+            md.append(f"- What it does: {r['does']}. Source: {r['source']}. **script**")
+        elif r["kind"] == "script function":
+            md.append(f"- What it does: {'; '.join(r['does'])}. Source: {r['source']}. **script**")
+            md.append(f"- Called from: {'; '.join(r['calledFrom']) or 'nothing the reader found'}.")
+        else:
+            md.append(f"- What it does: {r['does']}. Source: {r['source']}. **script**")
+            md.append(f"- Started by: {'; '.join(r['startedBy']) or 'nothing in the records or scripts'}.")
+        if r.get("stops"):
+            md.append(f"- **unread**: the trail stops here: {r['stops']}.")
+        md.append(f"- In one sentence: {r['sentence']}")
+        md.append("")
+    md += ["## The payoff", ""]
     for p in out["payoff"]:
         md.append(f"- **{p['quest']}** (completes at {', '.join(map(str, p['completingStages']))}): "
-                  + ("; ".join(f"{g['call']} {g['what']}" + (f" x{g['count']}" if g.get("count") not in (None, 1) else "") + f" ({g['source']}, stage {g['stage']})" for g in p["gives"])
-                     or "nothing is given on its completing stages") + ".")
+                  + ("; ".join(f"{g['call']} {g['what']} ({g['source']}, stage {g['stage']})" for g in p["gives"]) or "nothing is given on its completing stages") + ".")
     md += ["", "## Three questions", ""]
     q1, q2, q3 = out["questions"]
     md += [f"**{q1['question']}** {q1['answer']}", ""]
@@ -777,19 +1310,11 @@ def markdown(out):
         md.append(f"- {starter_line(s)}. Source: {s['source']}.")
     if q2.get("firstObjective") and q2["firstObjective"].get("text"):
         md.append(f"- Its first objective: \"{q2['firstObjective']['text']}\".")
-    if q2.get("who") and q2["who"].get("name"):
-        md.append(f"- Named in its opening: {q2['who']['name']}" + (f", placed in {'; '.join(q2['who']['where'][:2])}" if q2["who"].get("where") else ""))
+    for t in q2.get("target") or []:
+        md.append(f"- Its target alias {t['alias']}: " + ("; ".join(f"{h['name']} ({h['kind']})" for h in t["holds"]) or "nothing named") + ".")
     md += ["", f"**{q3['question']}** Timing is Everything's setting {q3['tieSetting']['key']} = {q3['tieSetting']['value']} ({q3['tieSetting']['from']}).", ""]
-    def level_text(c):
-        if not c.get("fact"):
-            return f"level {c['cmp']} {c['value']} (a number in the record; **files**)"
-        f = c["fact"]
-        rt = ", ".join(f"{r.get('mod') or r.get('script')} {r.get('key', '')} = {r['value']}" for r in f["runtime"]) or "nothing sets it"
-        return f"level {c['cmp']} global {f['edid']} (record {f.get('record')}, at run time {rt}; **{f['verdict']}**)"
-
     for n in q3["nodes"]:
-        md.append(f"- Node {n['node']} ({n['plugin']}), event {n['event']}: " + ("; ".join(level_text(c) for c in n["levelConditions"]) or "no level condition")
-                  + ". All its conditions: " + ("; ".join(n["conditions"]) or "none") + ".")
+        md.append(f"- Node {n['node']} ({n['plugin']}), event {n['event']}: {n['conditions']}.")
         for g in n.get("globals", []):
             unread = "; ".join(f"{u['mod']} {u['key']} = {u['value']} in {u['from']}, but {u['why']}" for u in g.get("settingsNotRead", []))
             was = f", was {g['recordWas']['value']} in {g['recordWas']['from']}" if g.get("recordWas") else ""
@@ -801,17 +1326,14 @@ def markdown(out):
     md += ["", "## Run-time values", "", "Settings loaders the story's globals touch, and whether the script the game runs reads their settings.ini:", ""]
     for modname, info in sorted(out["loaders"].items()):
         md.append(f"- {modname}: script {info['script']} on {info['quest']}; the copy that wins is {info['winner']} (extends {info['winnerParent']}); "
-                  + ("it reads its MCM Helper settings on load and sets globals from them." if info["readsSettings"]
+                  + ("it reads its MCM Helper settings and sets globals from them." if info["readsSettings"]
                      else "it carries no settings.ini value into a global, so the globals keep their record values unless the player changes them in the menu."))
-    md.append("")
-    md += [
-           f"- Timing is Everything settings loader: {'installed (' + tie['loaderFolder'] + ')' if tie['loaderInstalled'] else 'not installed'}; Dragonborn level setting "
-           f"{tie['dragonbornLevel']['value']} ({tie['dragonbornLevel']['from']}), meant for "
-           + (", ".join(f"{g['edid']} (record {g.get('record')} from {g.get('recordFrom')}; in game {g['value']}"
-                        + ("; " + "; ".join(u["why"] for u in g.get("settingsNotRead", [])) if g.get("settingsNotRead") else "") + f"; **{g['verdict']}**)"
-                        for g in tie["dragonbornLevel"]["globals"]) or "no global the reader could follow") + ".",
-           f"- Wyrmstooth settings loader: {'installed (' + wy['loaderFolder'] + ')' if wy['loaderInstalled'] else 'not installed'}. WTStartLevel: "
-           + (f"record {wy['fact'].get('record')} ({wy['fact'].get('recordFrom')}), in game {wy['fact']['value']}" + (" (" + "; ".join(f"{r.get('mod') or r.get('script')} {r.get('key', '')} = {r['value']}" for r in wy['fact']['runtime']) + ")" if wy['fact']['runtime'] else "") + f", **{wy['fact']['verdict']}**" if wy["fact"] else "no WTStartLevel global in the records") + "."]
+    md += ["", f"- Timing is Everything: Dragonborn level setting {tie['dragonbornLevel']['value']} ({tie['dragonbornLevel']['from']}), meant for "
+           + (", ".join(f"{g['edid']} (record {g.get('record')} from {g.get('recordFrom')}; in game {g['value']}; **{g['verdict']}**)" for g in tie["dragonbornLevel"]["globals"]) or "no global the reader could follow") + "."]
+    if wy.get("newGame"):
+        ng = wy["newGame"]
+        md.append(f"- Wyrmstooth: WTStartLevel is {ng['value']} in a new game (record {wy['fact'].get('record')} in {wy['fact'].get('recordFrom')}). Why: "
+                  + "; ".join(ng["why"]) + f". Source: {wy['loaderQuest']['script']} ({wy['loaderQuest']['winner']}). **{ng['verdict']}**")
     if out["missingScripts"]:
         md += ["", f"Scripts the records name that aren't in the install ({len(out['missingScripts'])}); calls inside them can't be read. Full list in the JSON."]
     return "\n".join(md) + "\n"

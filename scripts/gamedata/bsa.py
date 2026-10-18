@@ -59,6 +59,23 @@ def parse_strings(b, kind):
 _VANILLA = None
 
 
+_VANILLA_KINDS = None
+
+
+def vanilla_strings_kinds(plugin, root):
+    """A base-game master's English string tables, each on its own: {'STRINGS': {...}, 'DLSTRINGS': {...}, 'ILSTRINGS': {...}}."""
+    global _VANILLA_KINDS
+    if _VANILLA_KINDS is None:
+        _VANILLA_KINDS = {}
+        for k, v in read_bsa(os.path.join(root, "Stock Game", "Data", "Skyrim - Interface.bsa"), ["strings\\"]).items():
+            if "_english." not in k or v is None:
+                continue
+            base, kind = k.split("\\")[-1].rsplit(".", 1)
+            _VANILLA_KINDS.setdefault(base.replace("_english", ""), {})[kind.upper()] = parse_strings(v, kind)
+    found = _VANILLA_KINDS.get(plugin.lower().rsplit(".", 1)[0], {})
+    return {k: found.get(k, {}) for k in ("STRINGS", "DLSTRINGS", "ILSTRINGS")}
+
+
 def vanilla_strings(plugin, root):
     """English strings for a base-game master (Skyrim, Update, Dawnguard, HearthFires, Dragonborn)."""
     global _VANILLA

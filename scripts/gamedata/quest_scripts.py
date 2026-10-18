@@ -175,6 +175,12 @@ def read_aliases(subs, masters, name):
             cur[{"ALUA": "actor", "ALFR": "ref", "ALFL": "location", "ALCO": "creates"}[s]] = form_id(resolve(struct.unpack_from("<I", v)[0], masters, name))
         elif s == "ALFA":
             cur["fromAlias"] = True
+        elif s == "ALCA" and len(v) >= 4:
+            # Create the item at (0) or in (0x8000) another alias: "in" the player alias means it ends up with the player.
+            target, how = struct.unpack_from("<hH", v)
+            cur["createIn" if how & 0x8000 else "createAt"] = target
+        elif s == "CTDA" and len(v) >= 16 and struct.unpack_from("<H", v, 8)[0] == 72:
+            cur.setdefault("isID", []).append(form_id(resolve(struct.unpack_from("<I", v, 12)[0], masters, name)))
         elif s in ("ALFE", "ALFD"):
             cur["fromEvent"] = True
         elif s == "ALED":
@@ -356,7 +362,12 @@ class Analyzer:
             env = {var: self.prop_value(props[p], quest) for var, p in autovars.items() if p in props}
             for (pname, _), arg in zip(f["params"], rest):
                 env[pname.lower()] = arg
-            self.walk(f, env, {"quest": quest}, funcs, autovars, props, events, entry, depth + 1)
+            inner = []
+            self.walk(f, env, {"quest": quest}, funcs, autovars, props, inner, entry, depth + 1)
+            for ev in inner:
+                ev.setdefault("via", quest)  # found inside another quest's script, called from here
+                ev.setdefault("viaFunction", fname)
+            events.extend(inner)
             return True
         return False
 
@@ -459,8 +470,10 @@ class Analyzer:
                     for (pname, _), arg in zip(funcs[fl]["params"], rest):
                         sub_env[pname.lower()] = arg
                     self.walk(funcs[fl], sub_env, owner, funcs, autovars, props, events, entry, depth + 1)
-                elif (target and target.get("quest") and not target.get("self") and "alias" not in target and "aliasRef" not in target
+                elif (target and target.get("quest") and "alias" not in target and "aliasRef" not in target
+                      and not (target.get("self") and owner.get("info")) and (not target.get("self") or fl not in funcs)
                       and depth < 3 and fl not in ("setstage", "start", "stop", "getstage", "getstagedone", "isrunning", "iscompleted", "reset")):
+                    # Another quest's script, or (kmyQuest = self as MQ101QuestScript) one of this quest's other scripts.
                     self.call_into(target["quest"], fl, rest, events, entry, depth)
                 ev = self.event(fl, fn, target, rest, owner)
                 if ev:
@@ -489,7 +502,7 @@ class Analyzer:
         if fl in REF_CALLS and ("form" in target or "aliasRef" in target or "alias" in target):
             return {"call": fn, "ref": target}
         if fl == "forcerefto" and "alias" in target:
-            return {"call": "ForceRefTo", "alias": target["alias"], "to": rest[0] if rest else None}
+            return {"call": "ForceRefTo", "alias": target["alias"], "quest": target.get("quest"), "to": rest[0] if rest else None}
         if fl == "moveto" and ("aliasRef" in target or "form" in target):
             return {"call": "MoveTo", "who": target, "to": rest[0] if rest else None}
         return None

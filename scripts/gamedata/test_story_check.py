@@ -139,5 +139,95 @@ class SettingsTest(unittest.TestCase):
         self.assertEqual(same["verdict"], "files")
 
 
+def ev(caller, kind, target, call, stage=None, at=None, via=None):
+    """One (context, event) pair as story_check reads them."""
+    ctx = {"kind": kind, "quest": caller, "script": f"QF_{caller}", "stage": at}
+    e = {"call": call, "quest": target, "function": "Fragment_0"}
+    if stage is not None:
+        e["stage"] = stage
+    if via:
+        e["via"] = via
+    return ctx, e
+
+
+class StartersTest(unittest.TestCase):
+    """Item 1: starters, catch-ups and advances, as the story's order reads them."""
+
+    def test_starters_not_catch_ups(self):
+        order = {"Unbound": 0, "Storm": 1, "Barrow": 2}
+        events = [
+            ev("Unbound", "quest", "Helper", "SetStage", 3, at=700),   # Unbound's end starts the helper...
+            ev("Helper", "quest", "Storm", "Start", at=5),             # ...whose stage 5 starts Before the Storm
+            ev("Barrow", "quest", "Storm", "SetStage", 1, at=1),       # a later quest catching Before the Storm up
+            ev("Elsewhere", "quest", "Storm", "SetStage", 50, at=10),  # past the first objective's stage: advances it
+            ev("Storm", "quest", "Storm", "SetStage", 10, at=5),       # its own script
+            ev("Storm", "quest", "Storm", "SetStage", 12, at=5, via="Storm"),  # its own other script
+        ]
+        out = sc.classify_starts("Storm", order, events, 10)
+        self.assertEqual([c["quest"] for c, _ in out["started"]], ["Helper"])
+        self.assertEqual([c["quest"] for c, _ in out["caughtUp"]], ["Barrow"])
+        self.assertEqual([c["quest"] for c, _ in out["advanced"]], ["Elsewhere"])
+        # The helper isn't on the story: it takes Before the Storm's place, so Unbound starts it and Barrow doesn't.
+        events.append(ev("Barrow", "quest", "Helper", "SetStage", 1, at=1))
+        helper = sc.classify_starts("Helper", order, events, 10, here=order["Storm"])
+        self.assertEqual([c["quest"] for c, _ in helper["started"]], ["Unbound"])
+        self.assertEqual([c["quest"] for c, _ in helper["caughtUp"]], ["Barrow"])
+
+
+def localized_quest_plugin():
+    """A localized plugin whose quest's FULL is string 5."""
+    tes4 = record("TES4", 0, [sub("HEDR", struct.pack("<fII", 1.7, 0, 0x800))], flags=0x80)
+    return tes4 + group("QUST", [record("QUST", 0x800, [sub("EDID", zs("MQ102A")), sub("FULL", u32(5))])])
+
+
+def string_table(entries, lengths):
+    data, directory = b"", b""
+    for i, s in entries:
+        directory += struct.pack("<II", i, len(data))
+        b = s.encode() + bytes([0])
+        data += (struct.pack("<I", len(b)) + b) if lengths else b
+    return struct.pack("<II", len(entries), len(data)) + directory + data
+
+
+class NamesTest(unittest.TestCase):
+    """Item 2: a quest's name is its own FULL, from STRINGS, not a DLSTRINGS line that reuses the id."""
+
+    def test_name_from_strings_not_dlstrings(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            os.makedirs(os.path.join(tmp, "Strings"))
+            with open(os.path.join(tmp, "Strings", "Fixture_english.STRINGS"), "wb") as f:
+                f.write(string_table([(5, "Before the Storm")], False))
+            with open(os.path.join(tmp, "Strings", "Fixture_english.DLSTRINGS"), "wb") as f:
+                f.write(string_table([(5, "Season Unending")], True))
+            strings = sc.name_strings(os.path.join(tmp, PLUGIN), PLUGIN, True, tmp)
+            got = qsc.read_plugin(localized_quest_plugin(), PLUGIN, strings)
+            self.assertEqual(got["names"]["Fixture.esp:000800"]["name"], "Before the Storm")
+            self.assertEqual(sc.quest_label("Fixture.esp:000800", got["names"]), "MQ102A (Before the Storm)")
+
+
+class ConditionsTest(unittest.TestCase):
+    """Item 5: conditions read as the game reads them, OR'd ones joined with "or"."""
+
+    def test_or_groups(self):
+        names = {"Skyrim.esm:03FA16": {"type": "QUST", "edid": "MQPaarthurnax", "name": "Paarthurnax"},
+                 "Skyrim.esm:036192": {"type": "QUST", "edid": "MQ203", "name": "Alduin's Wall"}}
+        conds = [
+            {"fn": "GetStageDone", "cmp": "==", "value": 1.0, "or": False, "param": "Skyrim.esm:036192", "stage": 280},
+            {"fn": "GetStage", "cmp": "<", "value": 10.0, "or": True, "param": "Skyrim.esm:03FA16"},
+            {"fn": "GetStageDone", "cmp": "==", "value": 1.0, "or": True, "param": "Skyrim.esm:03FA16", "stage": 100},
+            {"fn": "GetStageDone", "cmp": "==", "value": 1.0, "or": False, "param": "Skyrim.esm:03FA16", "stage": 99},
+        ]
+        self.assertEqual(sc.format_conditions(conds, names),
+                         "Alduin's Wall stage 280 done; Paarthurnax stage < 10 or Paarthurnax stage 100 done or Paarthurnax stage 99 done")
+
+    def test_speaker_and_gold_in_plain_words(self):
+        names = {"Skyrim.esm:00000F": {"type": "MISC", "edid": "Gold001", "name": "Septim"}, "AP.esp:00B189": {"type": "NPC_", "edid": "X", "name": "Shazdehviir"}}
+        conds = [{"fn": "GetIsID", "cmp": "==", "value": 1.0, "or": False, "param": "AP.esp:00B189"},
+                 {"fn": "GetIsAliasRef", "cmp": "==", "value": 1.0, "or": False, "param": 2},
+                 {"fn": "GetItemCount", "cmp": ">=", "value": 25.0, "or": False, "param": "Skyrim.esm:00000F"}]
+        self.assertEqual(sc.format_conditions(conds, names, alias_names={2: "Innkeeper"}),
+                         "the speaker is Shazdehviir; the speaker is the one in alias Innkeeper; the player has at least 25 gold")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -50,6 +50,31 @@ def resolve(fid,masters,name):
     idx=fid>>24
     return (masters[idx] if idx<len(masters) else name, fid&0xFFFFFF)
 
+def localized_strings_kinds(plugin_path, name):
+    """
+    Loose Strings files for a localized plugin, each table on its own: {'STRINGS': {id: text}, 'DLSTRINGS': ..., 'ILSTRINGS': ...}.
+    Names (FULL) are in STRINGS, descriptions and journal entries in DLSTRINGS, dialogue lines in ILSTRINGS; the same id
+    can mean different text in each, so a name must be looked up in STRINGS alone.
+    """
+    base = os.path.splitext(name)[0]
+    out = {'STRINGS': {}, 'DLSTRINGS': {}, 'ILSTRINGS': {}}
+    for d in [os.path.dirname(plugin_path) + '/Strings', ROOT + '/Stock Game/Data/Strings']:
+        for kind in ('STRINGS', 'DLSTRINGS', 'ILSTRINGS'):
+            p = f'{d}/{base}_english.{kind}'
+            if not os.path.exists(p) or out[kind]: continue
+            b = open(p, 'rb').read()
+            n, size = struct.unpack_from('<II', b, 0)
+            table = 8 + n * 8
+            for i in range(n):
+                sid, off = struct.unpack_from('<II', b, 8 + i * 8)
+                o = table + off
+                if kind == 'STRINGS':
+                    e = b.index(b'\0', o); s = b[o:e]
+                else:
+                    ln = struct.unpack_from('<I', b, o)[0]; s = b[o + 4:o + 4 + ln].rstrip(b'\0')
+                out[kind][sid] = s.decode('utf-8', 'replace')
+    return out
+
 def localized_strings(plugin_path, name):
     """Loose Strings files for a localized plugin, if any."""
     base = os.path.splitext(name)[0]
