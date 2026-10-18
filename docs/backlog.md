@@ -24,6 +24,29 @@ What is queued, in the order it was raised. Rules for the look live in [design-r
     4. **Honest about gaps.** Where the files don't say (a giver, a reward), the page says it isn't listed, as the Gear page does.
     5. **The test:** from the Quests page, a player picks a story and knows where to walk to start it, in about a minute, without having the story spoiled.
     Who gives a quest and its rewards are what players want most; WO-98 finds out how much of that the records hold.
+  - **Stories, not quest lists (Dave, 18 Oct).** Browsing the quest lines on staging didn't hook him, and too many facts were wrong. The Quests pages hold two kinds of thing:
+    - **Stories:** the big multi-quest arcs, each shown as an adventure with a goal ("Become the Dragonborn", "Join the Companions"), its chapters, and the player's next step. Written by hand, one at a time. First board: canvas row 22, `QuestStory.dc.html`.
+    - **Everything else:** one-off quests stay a list, sorted by where they start (hold, then town), filtered by category and level. No story page.
+
+    How a story is made, the same steps every time:
+    1. **Pick it.** Four or more quests with a payoff at the end (a title, a home, an artifact, the end of a war). Draft list of about 20: the main quest, Companions, College, Thieves Guild, Dark Brotherhood, Civil War, Dawnguard, Dragonborn, Vigilant, Wyrmstooth, Undeath, and the mod lines in `questlines.json` with four or more story quests. Dave approves the list.
+    2. **Name it as the goal.** What you become or do by the end, verb first, in the game's words, five words or fewer.
+    3. **Write the pitch.** Two plain sentences: the situation, and what you're trying to do. Nothing past the first chapter.
+    4. **Cut it into chapters.** Three to seven, each a few quests ending at a natural stop, named as plain goals. Chapters past the player's own are hidden until asked for.
+    5. **Write each quest's start.** Who, where, and what to do to get it. Every start goes through the start check below; one that hasn't passed says it isn't checked yet.
+    6. **Gates and what it opens.** The level and the stories it needs, and the stories it opens. Through the start check too.
+    7. **Payoff.** One line: what you get at the end. From the files, or "not listed yet".
+    8. **Dave reads it.** Does it hook, and does it pass the one-minute test. What he fixes goes back into these steps.
+
+    **The start check** (what Gravewind and the 18 Oct finds taught): for each start, read the quest's conditions and start-game flag; the story manager node that starts it (level, quests done) and the last plugin to change it; delayed-start mods (the Delayed Quest Starts set, VIGILANT - Delayed Start) with their rumour lines and triggers; the doors and keys into where it starts; and settings loaders that reset values on every load (Timing is Everything's MCM `settings.ini` beats `LoreRim - Global Modifiers.esp` in game). Where the files disagree or a script decides, the page says so.
+
+    **Order and who.** Become the Dragonborn first, for Dave to read. Then Companions, College, Thieves Guild, Dark Brotherhood, Dawnguard, then the rest. Bob writes stories in a hand-kept `gamedata/5.0.4.8/stories.json`; Jeff on PC runs the start check for each story's quests (in place of WO-102's sweep of all 152 lines, which is paused); Jeff on Mac builds the story page and the sorted list.
+
+    **Found on 18 Oct, to use when the stories are written** (all from the files on the PC):
+    - Timing is Everything's settings loader sets these levels on every load, over LoreRim's own values: Dawnguard 10 (LoreRim's file says 30), The Break of Dawn 12 and vampires allowed (20, no vampires), Boethiah's Calling 30 (20), The Cursed Tribe 9, The Only Cure 12, A Night To Remember 14, Discerning the Transmundane 15, Deathbrand 36, Unfathomable Depths 14. Dave can confirm in the MCM, Timing is Everything.
+    - The Forsworn Conspiracy: level 20, then ask the Markarth carriage driver about the Forsworn, then walk in by day (8 to 20). The House of Horrors: level 20, ask Kleppr or Frabbi at the Silver-Blood Inn "Anything noteworthy happening?". The Taste of Death: level 20, Kleppr or Frabbi's rumour about the Hall of the Dead. The Mind of Madness: level 20, Corpulus or Sorex Vinius's rumour at the Winking Skeever; then Dervenin comes to you.
+    - Vigilant: Altano and Orlando come to the Windpeak Inn only at level 25 with The House of Horrors and Kindred Judgment done.
+    - Hendraheim: needs The Silver Hand (Companions) done; LoreRim - Dialogue Patch.esp puts that back.
   - To check on the PC: Demon of Dream and Finding Velehk Sain are installed but the crawl kept no quest for them; Unmasking Sybille isn't in the plugin list under that name.
 
 - **Domain:** lorerimplanner.com is free at $11.25/yr (checked 10 Oct 2026). Buy on Dave's say-so, then add `https://lorerimplanner.com/api/auth/callback/discord` to the Discord app's redirects (Discord developer portal, app "LoreRim Build Planner").
