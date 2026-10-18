@@ -3993,10 +3993,10 @@ After it's on production, Dave makes Zen's invite in /admin and sends him the li
 3. Rebuild `quest_givers_raw.json` and the report, and add to the coverage table: people with a place, and story-line openings (Bob's 139, from `questlines.py`) whose named giver now has a place.
 
 ### Done when
-- [ ] Every person with an `npc` has a `where` (or an empty list when they're never placed, as a courier spawned by script).
-- [ ] Rewards carry their script kind.
-- [ ] The report's coverage table has the two new rows.
-- [ ] Unit: a placed alias NPC; a reward from a fragment script and one from a shared script. Python tests pass.
+- [x] Every person with an `npc` has a `where` (or an empty list when they're never placed, as a courier spawned by script).
+- [x] Rewards carry their script kind.
+- [x] The report's coverage table has the two new rows.
+- [x] Unit: a placed alias NPC; a reward from a fragment script and one from a shared script. Python tests pass.
 
 ---
 

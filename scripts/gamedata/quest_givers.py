@@ -5,8 +5,10 @@ gamedata/<version>/quest_givers_raw.json and quest_givers_report.md:
   python3 scripts/gamedata/quest_givers.py [version]
 
 For each kept quest:
-  people      its aliases (QUST ALST/ALLS blocks): the alias name, and the NPC when it's filled by a
-              unique actor (ALUA) or a forced reference (ALFR), or the location (ALFL)
+  people      its aliases (QUST ALST/ALLS blocks): the alias name, and the NPC (name and form id) when
+              it's filled by a unique actor (ALUA) or a forced reference (ALFR), or the location (ALFL).
+              Each NPC gets `where`, as the giver does: every placed ACHR of a unique actor, or the
+              forced reference itself. An empty list when it's never placed (a courier a script spawns).
   giver       the likely giver: the speaker of the quest's own dialogue (INFOs under a DIAL whose QNAM
               is the quest) spoken earliest, by its stage condition (GetStage < n on the quest). The
               speaker is read from the INFO's conditions: GetIsID naming an NPC, or GetIsAliasRef
@@ -20,7 +22,11 @@ For each kept quest:
   rewards     what its records can hand out: items created by an alias (ALCO), and the quest scripts'
               properties (VMAD) that point at a weapon, armour, book, spell, perk, gold or a leveled
               list named as a reward. Quest objects (alias flag), keys and notes don't count. These
-              are what the scripts can give, not proof of what they do.
+              are what the scripts can give, not proof of what they do. Each says which script it
+              comes from as `kind`: fragment (the quest's own QF_ script), quest script (another script
+              on the quest, often one shared by a whole guild) or alias.
+  named giver Bob's rule (quest_givers_checks.md): the first person from the aliases whose name is in
+              the quest's opening journal entry or first objective, else the dialogue speaker.
 """
 import json
 import os
@@ -336,6 +342,36 @@ def place(npc, placed, cells, names):
     return out
 
 
+def place_ref(ref, placed, cells, names):
+    """Where one placed reference is (a forced reference), in place()'s shape."""
+    p = placed.get(ref)
+    if not p or p["deleted"]:
+        return []
+    return place(p["base"], {ref: p}, cells, names)
+
+
+def script_kind(via):
+    """fragment (the quest's own QF_ script), quest script (any other script on it) or alias."""
+    if via.startswith("alias "):
+        return "alias"
+    return "fragment" if via.split(".")[0].lower().startswith("qf_") else "quest script"
+
+
+def named_giver(quest, people, giver):
+    """
+    Bob's rule: the first person from the aliases whose name appears in the quest's opening journal entry
+    (its first) or first objective (aliases filled in); else the dialogue speaker. {npc, name, how, where} or None.
+    """
+    first_log = next((log for st in quest.get("stages", []) for log in st.get("log", [])), "")
+    texts = [t for t in (first_log, quest.get("firstObjective", "")) if t]
+    for p in people:
+        if p.get("npcId") and p.get("npc") and any(p["npc"] in t for t in texts):
+            return {"npc": p["npcId"], "name": p["npc"], "how": "named", "where": p.get("where", [])}
+    if giver:
+        return {"npc": giver["npc"], "name": giver["name"], "how": "dialogue", "where": giver.get("where", [])}
+    return None
+
+
 def where_text(p):
     parts = [x for x in (p.get("cellName"), p.get("location")) if x]
     if not parts and p.get("world"):
@@ -405,11 +441,12 @@ def rewards(aliases, scripts, names):
     for a in aliases:
         if a.get("creates") and (r := ok(a["creates"])):
             seen.add(a["creates"])
-            out.append({"id": a["creates"], "name": r[0], "type": r[1], "via": f"alias {a['name']}"})
+            out.append({"id": a["creates"], "name": r[0], "type": r[1], "via": f"alias {a['name']}", "kind": "alias"})
     for script, prop, fid in scripts:
         if r := ok(fid):
             seen.add(fid)
-            out.append({"id": fid, "name": r[0], "type": r[1], "via": f"{script}.{prop}"})
+            via = f"{script}.{prop}"
+            out.append({"id": fid, "name": r[0], "type": r[1], "via": via, "kind": script_kind(via), "script": script})
     return out
 
 
@@ -426,6 +463,8 @@ def build(kept, parts, placed, cells):
             who = alias_person(a, names, placed)
             if who:
                 row["npc"] = names.get(who, {}).get("name") or names.get(who, {}).get("edid") or who
+                row["npcId"] = who
+                row["where"] = place(who, placed, cells, names) if a.get("actor") else place_ref(a["ref"], placed, cells, names)
             if a.get("location"):
                 row["location"] = names.get(a["location"], {}).get("name") or a["location"]
             if len(row) > 1:
@@ -441,6 +480,9 @@ def build(kept, parts, placed, cells):
         if q["objectives"]:
             filled, names_it = fill_objective(q["objectives"][0]["text"], aliases, names, placed)
             out["firstObjective"] = {"text": q["objectives"][0]["text"], "filled": filled, "namesWhoOrWhere": names_it}
+        ng = named_giver({"stages": q["stages"], "firstObjective": out.get("firstObjective", {}).get("filled", "")}, people, out.get("giver"))
+        if ng:
+            out["namedGiver"] = ng
         ev = start_events(q["id"], nodes)
         if ev:
             out["starts"] = ev
@@ -453,7 +495,8 @@ def build(kept, parts, placed, cells):
     return rows
 
 
-def coverage(rows):
+def coverage(rows, openings=None):
+    """The coverage table. `openings`: the curated story lines' opening EDIDs (questlines.py), for the last rows."""
     c = {"quests": len(rows)}
     c["likely giver"] = sum(1 for r in rows if r.get("giver"))
     c["giver with a location"] = sum(1 for r in rows if r.get("giver", {}).get("where"))
@@ -462,7 +505,26 @@ def coverage(rows):
     c["start event"] = sum(1 for r in rows if r.get("starts"))
     c["reward candidate"] = sum(1 for r in rows if r.get("rewards"))
     c["reward candidate other than gold"] = sum(1 for r in rows if any(x["type"] != "gold" for x in r.get("rewards", [])))
+    people = [p for r in rows for p in r["people"] if p.get("npcId")]
+    c["people (aliases with an NPC)"] = len(people)
+    c["people with a place"] = sum(1 for p in people if p["where"])
+    c["named giver"] = sum(1 for r in rows if r.get("namedGiver"))
+    c["named giver with a place"] = sum(1 for r in rows if r.get("namedGiver", {}).get("where"))
+    if openings is not None:
+        by_edid = {r["edid"]: r for r in rows}
+        c["story lines"] = len(openings)
+        c["story-line openings with a named giver"] = sum(1 for e in openings if by_edid.get(e, {}).get("namedGiver"))
+        c["story-line openings whose named giver has a place"] = sum(1 for e in openings if by_edid.get(e, {}).get("namedGiver", {}).get("where"))
     return c
+
+
+def person_text(p):
+    """'Lucan: Lucan Valerius, `Skyrim.esm:01347A`, Riverwood Trader, Riverwood' for the sample details."""
+    bits = [x for x in (p.get("npc"), p.get("location")) if x]
+    if p.get("npcId"):
+        bits.append(f"`{p['npcId']}`")
+        bits.append("; ".join(where_text(w) for w in p["where"]) or "never placed")
+    return f"{p['alias']}: " + ", ".join(bits)
 
 
 def report(rows, counts):
@@ -474,15 +536,17 @@ def report(rows, counts):
            "## Coverage over all kept quests", "", "| | Quests |", "| --- | --- |"]
     out += [f"| {k} | {v} |" for k, v in counts.items()]
     out += ["", "## The 15 samples", "", "Known answer: for Bob to fill in from the game.", "",
-            "| Quest | Likely giver | Where | First objective | Start event | Reward candidates | Known answer |",
-            "| --- | --- | --- | --- | --- | --- | --- |"]
+            "| Quest | Named giver, and where | Dialogue speaker | Where | First objective | Start event | Reward candidates | Known answer |",
+            "| --- | --- | --- | --- | --- | --- | --- | --- |"]
     details = []
     for e in SAMPLES:
         r = by_edid.get(e.lower())
         if not r:
-            out.append(f"| `{e}` | not a kept quest | | | | | |")
+            out.append(f"| `{e}` | not a kept quest | | | | | | |")
             continue
         g = r.get("giver")
+        ng = r.get("namedGiver")
+        named_col = (f"{ng['name']} ({ng['how']}): " + ("; ".join(where_text(p) for p in ng["where"]) or "no place")) if ng else "none found"
         giver = f"{g['name']} (dialogue before stage {g['stageBelow']})" if g else "none found"
         if g and g.get("others"):
             giver += "; also " + ", ".join(f"{o['name']} (before {o['stageBelow']})" for o in g["others"])
@@ -490,13 +554,13 @@ def report(rows, counts):
         fo = r.get("firstObjective", {})
         obj = (fo.get("filled", "") + ("" if fo.get("namesWhoOrWhere") else " (names no one)")) if fo else "none"
         ev = "; ".join(f"{s['event'] or '?'} ({s['node']})" for s in r.get("starts", [])) or "none found"
-        rw = "; ".join(f"{x['name']} ({x['type']})" for x in r.get("rewards", [])) or "none found"
-        out.append(f"| {r['name']} (`{r['edid']}`) | {giver} | {where} | {obj.replace('|', '/')} | {ev} | {rw} | |")
+        rw = "; ".join(f"{x['name']} ({x['type']}, {x['kind']})" for x in r.get("rewards", [])) or "none found"
+        out.append(f"| {r['name']} (`{r['edid']}`) | {named_col} | {giver} | {where} | {obj.replace('|', '/')} | {ev} | {rw} | |")
         details += [f"### {r['name']} (`{r['edid']}`, {r['id']})", ""]
-        details.append("- People: " + ("; ".join(f"{p['alias']}: " + ", ".join(x for x in (p.get('npc'), p.get('location')) if x) for p in r["people"]) or "none"))
+        details.append("- People: " + ("; ".join(person_text(p) for p in r["people"]) or "none"))
         if g:
             details.append(f"- Giver: {g['name']}, named by {g['named']} in INFO {g['info']}, dialogue before stage {g['stageBelow']}")
-        details.append("- Rewards: " + ("; ".join(f"{x['name']} ({x['type']}, {x['via']})" for x in r.get("rewards", [])) or "none found"))
+        details.append("- Rewards: " + ("; ".join(f"{x['name']} ({x['type']}, {x['kind']}: {x['via']})" for x in r.get("rewards", [])) or "none found"))
         details.append("")
     out += ["", "## Sample details", ""] + details
     return "\n".join(out) + "\n"
@@ -530,7 +594,7 @@ def main():
             bufs.append((n, p, loc))
     # Pass 2: where the givers (and the NPCs behind forced references) are placed.
     refs = {a["ref"] for q in parts["quests"].values() for a in q["aliases"] if a.get("ref")}
-    npcs = set()
+    npcs = {a["actor"] for q in parts["quests"].values() for a in q["aliases"] if a.get("actor")}
     for q in kept:
         g = likely_giver(q["id"], parts["infos"], parts["quests"].get(q["id"], {"aliases": []})["aliases"], parts["names"], {})
         if g:
@@ -558,7 +622,12 @@ def main():
                 continue
             placed.update(pl)
     rows = build(kept, parts, placed, cells)
-    counts = coverage(rows)
+    from questlines import curate
+
+    load = lambda n: json.load(open(os.path.join(base, n), encoding="utf-8"))  # noqa: E731
+    cur = load("questlines.json")
+    lines = curate(kept, load("questlines_raw.json")["lines"], cur)
+    counts = coverage(rows, [l["opening"] for l in lines if l["category"] in cur["categories"]])
     with open(os.path.join(base, "quest_givers_raw.json"), "w", encoding="utf-8", newline="\n") as f:
         json.dump({"coverage": counts, "quests": rows}, f, indent=1, ensure_ascii=False)
         f.write("\n")

@@ -45,11 +45,13 @@ def wstr(s):
     return struct.pack("<H", len(s)) + s.encode()
 
 
-def vmad(script, props):
-    """VMAD version 5, object format 2: one script with object properties."""
-    out = struct.pack("<hhH", 5, 2, 1) + wstr(script) + b"\x00" + struct.pack("<H", len(props))
-    for name, fid in props:
-        out += wstr(name) + bytes([1, 1]) + struct.pack("<hhI", 0, -1, fid)
+def vmad(*scripts):
+    """VMAD version 5, object format 2: scripts given as (name, [(property, form id)])."""
+    out = struct.pack("<hhH", 5, 2, len(scripts))
+    for script, props in scripts:
+        out += wstr(script) + b"\x00" + struct.pack("<H", len(props))
+        for name, fid in props:
+            out += wstr(name) + bytes([1, 1]) + struct.pack("<hhI", 0, -1, fid)
     return sub("VMAD", out)
 
 
@@ -59,12 +61,15 @@ def named(t, fid, edid, full):
 
 def fixture():
     tes4 = record("TES4", 0, [sub("HEDR", struct.pack("<fII", 1.7, 0, 0x800))])
-    quest = [sub("EDID", zs("FXGolden")), vmad("QF_FXGolden_00000800", [("Gold001", 0x830), ("RewardSword", 0x821), ("Alias_Lucan", 0x800)]),
-             sub("FULL", zs("The Fixture Claw")), sub("ANAM", u32(3)),
+    quest = [sub("EDID", zs("FXGolden")),
+             vmad(("QF_FXGolden_00000800", [("Gold001", 0x830), ("RewardSword", 0x821), ("Alias_Lucan", 0x800)]),
+                  ("FXGuildHousekeepingScript", [("SharedBlade", 0x824)])),
+             sub("FULL", zs("The Fixture Claw")), sub("ANAM", u32(5)),
              sub("ALST", u32(0)), sub("ALID", zs("Lucan")), sub("FNAM", u32(0x41)), sub("ALUA", u32(0x810)), sub("ALED", b""),
              sub("ALST", u32(1)), sub("ALID", zs("Claw")), sub("FNAM", u32(qg.QUEST_OBJECT)), sub("ALCO", u32(0x822)), sub("ALED", b""),
              sub("ALST", u32(2)), sub("ALID", zs("Prize")), sub("FNAM", u32(0)), sub("ALCO", u32(0x820)), sub("ALED", b""),
-             sub("ALLS", u32(3)), sub("ALID", zs("Village")), sub("FNAM", u32(0)), sub("ALFL", u32(0x840)), sub("ALED", b"")]
+             sub("ALLS", u32(3)), sub("ALID", zs("Village")), sub("FNAM", u32(0)), sub("ALFL", u32(0x840)), sub("ALED", b""),
+             sub("ALST", u32(4)), sub("ALID", zs("Courier")), sub("FNAM", u32(0)), sub("ALUA", u32(0x812)), sub("ALED", b"")]
     topic = record("DIAL", 0x850, [sub("EDID", zs("FXGoldenTopic")), sub("QNAM", u32(0x800))])
     infos = group(0x850, [
         record("INFO", 0x851, [ctda(qg.GET_STAGE, 0x800, 10.0, cmp=4), ctda(qg.GET_IS_ID, 0x811)]),        # Camilla, before stage 10
@@ -79,11 +84,15 @@ def fixture():
         group("DIAL", [topic, infos, other, other_infos]),
         group("SMEN", [record("SMEN", 0x870, [sub("PNAM", u32(0)), sub("ENAM", b"CLOC")])]),
         group("SMQN", [record("SMQN", 0x871, [sub("EDID", zs("FXStartNode")), sub("PNAM", u32(0x870)), sub("QNAM", u32(1)), sub("NNAM", u32(0x800))])]),
-        group("NPC_", [named("NPC_", 0x810, "FXLucan", "Lucan Valerius"), named("NPC_", 0x811, "FXCamilla", "Camilla Valerius")]),
+        group("NPC_", [named("NPC_", 0x810, "FXLucan", "Lucan Valerius"), named("NPC_", 0x811, "FXCamilla", "Camilla Valerius"),
+                       named("NPC_", 0x812, "FXCourier", "Courier")]),
         group("LCTN", [named("LCTN", 0x840, "FXRiverwood", "Riverwood")]),
         group("WEAP", [named("WEAP", 0x820, "FXPrizeAxe", "Prize Axe"), named("WEAP", 0x821, "FXRewardSword", "Reward Sword"),
-                       record("WEAP", 0x823, [sub("EDID", zs("FXEffectBlade"))])]),
+                       record("WEAP", 0x823, [sub("EDID", zs("FXEffectBlade"))]), named("WEAP", 0x824, "FXSharedBlade", "Shared Blade")]),
         group("MISC", [named("MISC", 0x822, "FXGoldenClaw", "Golden Claw"), named("MISC", 0x830, "Gold001", "Septim")]),
+        # Lucan placed in the Riverwood Trader; the courier is never placed (a script spawns him).
+        group("CELL", [record("CELL", 0x901, [sub("EDID", zs("FXTrader")), sub("FULL", zs("Riverwood Trader")), sub("XLCN", u32(0x840))]),
+                       group(0x901, [record("ACHR", 0x900, [sub("NAME", u32(0x810))]), record("REFR", 0x902, [sub("NAME", u32(0x822))])], gtype=8)]),
     ])
 
 
@@ -107,11 +116,27 @@ class GiverTest(unittest.TestCase):
         self.assertEqual((g["npc"], g["stageBelow"], g["named"]), ("Fixture.esp:000810", 5, "alias Lucan"))
         self.assertEqual(g["others"], [{"npc": "Fixture.esp:000811", "stageBelow": 10}])
 
-    def test_alco_item_and_script_property_rewards(self):
+    def test_rewards_with_their_script_kind(self):
         rw = qg.rewards(self.q["aliases"], self.q["scripts"], self.parts["names"])
-        self.assertEqual([(r["name"], r["type"], r["via"]) for r in rw],
-                         [("Prize Axe", "weapon", "alias Prize"), ("Septim", "gold", "QF_FXGolden_00000800.Gold001"),
-                          ("Reward Sword", "weapon", "QF_FXGolden_00000800.RewardSword")])
+        self.assertEqual([(r["name"], r["type"], r["kind"], r["via"]) for r in rw],
+                         [("Prize Axe", "weapon", "alias", "alias Prize"),
+                          ("Septim", "gold", "fragment", "QF_FXGolden_00000800.Gold001"),
+                          ("Reward Sword", "weapon", "fragment", "QF_FXGolden_00000800.RewardSword"),
+                          ("Shared Blade", "weapon", "quest script", "FXGuildHousekeepingScript.SharedBlade")])
+
+    def test_placed_alias_people_and_named_giver(self):
+        placed, cells = qg.read_placements(fixture(), PLUGIN, {"Fixture.esp:000810", "Fixture.esp:000812"}, set())
+        self.assertEqual(set(placed), {"Fixture.esp:000900"})  # the REFR isn't asked for
+        kept = [{"id": QUEST, "edid": "FXGolden", "name": "The Fixture Claw",
+                 "stages": [{"index": 10, "log": ["Lucan Valerius in Riverwood has been robbed."]}],
+                 "objectives": [{"index": 10, "text": "Retrieve the Golden Claw"}]}]
+        row = qg.build(kept, self.parts, placed, cells)[0]
+        people = {p["alias"]: p for p in row["people"]}
+        self.assertEqual((people["Lucan"]["npc"], people["Lucan"]["npcId"]), ("Lucan Valerius", "Fixture.esp:000810"))
+        self.assertEqual([qg.where_text(w) for w in people["Lucan"]["where"]], ["Riverwood Trader, Riverwood"])
+        self.assertEqual(people["Courier"]["where"], [])
+        self.assertEqual((row["namedGiver"]["name"], row["namedGiver"]["how"]), ("Lucan Valerius", "named"))
+        self.assertEqual(qg.coverage([row], ["FXGolden"])["story-line openings whose named giver has a place"], 1)
 
     def test_start_event(self):
         self.assertEqual(qg.start_events(QUEST, self.parts["nodes"]), [{"node": "FXStartNode", "event": "change location"}])
