@@ -4109,6 +4109,74 @@ For each of the 152 curated lines (`questlines.py`), take its opening quest, and
 
 ---
 
+## WO-102  Quest scripts: what starts each quest, what it unlocks, and what it pays (PC only, 18 Oct 2026)
+
+**Why.** After WO-101 the records are covered. What's left of how a quest starts, and nearly all of what it pays, is in its Papyrus scripts. These are compiled `.pex` files that call things like `SetStage`, `Start`, `AddItem`, `Unlock`, `Enable` and `ForceRefTo`. Read them, and every fact on a quest page can point at the record or script it came from. What can't be traced gets named, not guessed. Dave can't check 152 lines in game, so this is how the pages earn trust.
+
+**Where:** Dave's PC, `LORERIM_ROOT`. Branch `wo102-quest-scripts` from `staging`. Reads only. Don't touch `src/`. Write the reader in Python, in `scripts/gamedata/` (`pex.py` and `quest_scripts.py`), with no outside decompiler. The `.pex` format is documented, and the field guide already read strings from `tie_mcmscript.pex` this way.
+
+1. **Find the winning script.** A script can sit loose in a mod folder or inside a BSA (`bsa.py`). For each script name, the winner is the loose file from the last mod folder in MO2 order; failing that, the file in the BSA of the last plugin that loads one.
+2. **Read a `.pex`.** The header, string table, objects, properties, states and functions, and each function's instructions with their arguments. Unit-test the reader on a small compiled fixture.
+3. **Which scripts belong to a quest.** For each of the 1,340 kept quests:
+   - the scripts on its QUST record (VMAD), with its stage fragments (`QF_…`), each fragment mapped to its stage from the VMAD fragment table;
+   - the scripts on its aliases;
+   - the fragments of its dialogue (`TIF_…` on its INFOs, WO-98);
+   - the scripts on the doors, keys and activators WO-101 found for the line.
+   
+   Resolve every property to the form the VMAD points it at, by name.
+4. **The calls that matter**, with their targets named (quest, stage, item and count, door, actor), and the stage or dialogue line they run on:
+   - `Start()` and `SetStage(n)` on another quest. This is what starts quests, so record it on both sides: "X's stage 200 starts Y".
+   - `AddItem` and `RemoveItem` on the player (`Game.GetPlayer()`, a `PlayerRef` property or the player alias), with item and count. A gold count, and leveled lists by name.
+   - `Unlock`, `Lock`, `SetLockLevel`, `Enable`, `Disable` and `SetOpen` on references, with the reference's cell.
+   - `AddPerk`, `AddSpell` and `ModFactionRank` on the player.
+   - `ForceRefTo` and `MoveTo` that place people (as Lurius Liore moved to the Bannered Mare).
+5. **Per quest, the derived facts:**
+   - **started by:** dialogue (who), another quest's script (which, at what stage), a story-manager event (WO-98), or start-game;
+   - **rewards:** what `AddItem` gives the player on the stages that complete the quest, plus items an alias creates that end up with the player;
+   - **unlocks:** doors, places and people a stage changes.
+6. **Per line, a trace verdict** for the page to show:
+   - **traced:** the opening quest's start and its rewards resolve to records and scripts;
+   - **random:** an alias or call picks a place or person at run time; name the alias;
+   - **unread:** a call goes into a script or engine function this reader can't follow (SKSE native functions, a missing script); name it.
+
+**Output:** `gamedata/5.0.4.8/quest_scripts_raw.json` and `quest_scripts_report.md`. The report has:
+- the coverage: quests with a known starter, quests with a script reward, and lines by verdict;
+- the 15 WO-98 samples again, beside `quest_givers_checks.md`'s known answers;
+- Gravewind;
+- every line whose start or rewards differ from what `quests.json` says now.
+
+### Done when
+- [ ] The `.pex` reader handles every script the quests use, or the report lists the ones it couldn't read.
+- [ ] The 15 samples match the known rewards where one is known: The Golden Claw's gold, Dawnbreaker, the Masque of Clavicus Vile or the Rueful Axe, Brynjolf's gold. The report says which starters it found.
+- [ ] Every line has a verdict (traced, random or unread), with the reason for the last two.
+- [ ] Unit: the reader on a fixture `.pex`; a fragment mapped to its stage; `AddItem` on the player resolved through a property; `SetStage` on another quest; a winner chosen between a loose file and a BSA.
+- [ ] Python tests pass. Commit on `wo102-quest-scripts`, push, and stop; Bob checks it.
+
+---
+
+## WO-103  "This was wrong" on every quest page (Mac, 18 Oct 2026)
+
+**Why.** No file says everything. There are random picks, engine plugins, and saves that a bug broke. Dave can't play 152 quest lines to find what's still wrong, but LoreRim's players play them every day. Give them one button to say so. Reports come to Dave and Bob in `/admin`.
+
+1. **The button.** On each quest line's page (`/quests/<id>`), under the quests list: **This was wrong**. It opens a small form in place:
+   - What: How to start it, What it needs, Who and where, Rewards, The journal, Something else;
+   - a text box ("What happened in your game?", up to 1,000 characters);
+   - **Send**.
+   
+   Signed-in or not. After sending: "Thanks. We'll check it." No other copy.
+2. **Storage.** A `quest_report` table: id, line id, what, text, the user id when signed in, created at, and status (new, fixed, not a problem). Make the migration with `npm run db:generate`, and keep it additive.
+3. **Abuse.** Add the route to BotID's protect list in `src/instrumentation-client.ts`. Allow at most 5 reports per person (or IP when signed out) per hour.
+4. **`/admin` → Quest reports.** Newest first, with the line's name linking to its page, what, the text, who (or "signed out") and when. A status select per report.
+5. **The switch.** All of it sits behind `questsOn()`.
+
+### Done when
+- [ ] A report sends from the Gravewind page signed in and signed out, and shows in `/admin` with its status changeable.
+- [ ] The sixth report in an hour is refused with "You've sent a few already. Try again later."
+- [ ] Migration committed in `drizzle/`, additive only.
+- [ ] e2e for both; every check in CLAUDE.md passes; screenshots of the open form and the admin list.
+
+---
+
 ## Parked (not ordered yet)
 
 - **Renders that lose their effects (after WO-95).** Items with glow, parallax or animated shading, Dawnbreaker for one, render flat. Fix them one by one in `render.py` (emissive maps, a second light pass) once Dave flags the ones that matter.

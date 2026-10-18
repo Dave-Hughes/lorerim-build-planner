@@ -131,9 +131,19 @@ def build_quests(lines, quests_raw, givers_raw):
     out = []
     for line in lines:
         item = {k: line[k] for k in ("id", "name", "category", "also", "prince", "where", "opening", "begins", "beginsFrom", "after", "checked") if k in line}
+        # Instructions a player acts on (how it starts, what it needs) show only when they were read
+        # from the files in this load order. Gravewind's mod-page "walk in" was wrong in LoreRim (a
+        # LoreRim patch locks the door), so mod-page and player starts and gates stay out until WO-101
+        # and WO-102 confirm them. Length and difficulty stay, labelled with where they came from.
+        checked = dict(line.get("checked", {}))
+        unread = {k for k in ("start", "gate", "note") if k in line and checked.get(k) != "files"}
         for k in ("start", "gate", "minLevel", "mainQuestAt", "level", "size", "note"):
-            if k in line:
-                item[k] = line[k]
+            if k not in line or k in unread or (k == "minLevel" and "gate" in unread):
+                continue
+            item[k] = line[k]
+        if "gate" in unread:
+            item["after"] = [a for a in line.get("after", []) if a == "main-quest"]
+        item["checked"] = {k: v for k, v in checked.items() if k not in unread}
         item["sources"] = [
             {"name": source_name(s["name"]), **({"modid": s["modid"]} if s.get("modid") else {}), **({"base": True} if s["name"] == "Skyrim" else {})}
             for s in line["sources"]

@@ -72,6 +72,19 @@ class QuestPagesTest(unittest.TestCase):
         q = {"stages": [{"index": 20, "log": ["Second."]}, {"index": 10, "log": ["First."]}, {"index": 30, "log": []}]}
         self.assertEqual(qp.journal(q), ["First.", "Second."])
 
+    def test_only_instructions_read_from_the_files_show(self):
+        line = {"id": "l", "name": "L", "category": "lands", "sources": [{"name": "Skyrim", "modid": None}],
+                "opening": "Q", "quests": [], "after": ["college", "main-quest"],
+                "start": "Walk in.", "gate": "Level 25.", "minLevel": 25, "size": "1 hour", "note": "Trapped.",
+                "checked": {"start": "mod page", "gate": "mod page", "size": "mod page", "note": "files"}}
+        out = qp.build_quests([line], [], [])[0]
+        self.assertNotIn("start", out)
+        self.assertNotIn("gate", out)
+        self.assertNotIn("minLevel", out)
+        self.assertEqual(out["after"], ["main-quest"])
+        self.assertEqual((out["size"], out["note"]), ("1 hour", "Trapped."))
+        self.assertEqual(out["checked"], {"size": "mod page", "note": "files"})
+
 
 if __name__ == "__main__":
     unittest.main()
