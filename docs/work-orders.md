@@ -4109,7 +4109,70 @@ For each of the 152 curated lines (`questlines.py`), take its opening quest, and
 
 ---
 
+## WO-104  The start check, for one story: Become the Dragonborn (PC only, 18 Oct 2026)
+
+**Why.** Quest lines are becoming stories (`docs/backlog.md`, "Stories, not quest lists"). A story page tells the player what to do at every step, so every step has to be right. WO-101 checked only each line's opening quest, from its own records, and missed the ways LoreRim really moves starts:
+- story manager nodes;
+- delayed-start mods that hide the start behind a rumour;
+- Timing is Everything's settings loader, which resets quest levels on every load over LoreRim's own values.
+
+Bob found all three on 18 Oct by hand (the list is in the backlog). This order makes that check a tool, and runs it on one story end to end. Nothing more gets written until this one comes out right.
+
+**Where:** Dave's PC, `LORERIM_ROOT`, Ultra profile. Branch `wo104-start-check` from `staging`. Reads only. Don't touch `src/`. Build WO-102's steps 1 and 2 (find the winning script, read a `.pex`) as part of this order. The rest of WO-102 stays paused.
+
+**The story's quests:** the 19 in `quests.json` line `main-quest` (MQ101 to MQ305, and MQPaarthurnax), plus its 4 repeating jobs (FreeformHighHrothgarA, FreeformSkyhavenTempleA, B and D).
+
+1. **For every quest, what starts it.** Record each of these that applies, with the plugin that wins:
+   - **Dialogue:** the speaker's name, their placed cell, and the INFO's conditions.
+   - **Another quest's script:** which script, at what stage, calling `Start()` or `SetStage`, read from the `.pex`.
+   - **A story manager node:** the event (location change, script event and so on) and every condition up the node's parents, with globals resolved.
+   - **Start-game:** the start-game flag.
+
+   Then the first objective's text, and who and where it points at.
+2. **What it needs.** Level, quests done, items, and doors and keys into where it starts (WO-101's door check, run on this quest's own cells).
+3. **Values set at run time.** For every global step 1 or 2 reads, find anything that sets it on load or in play:
+   - MCM Helper settings loaders: the mod's `MCM/Config/<mod>/settings.ini` defaults, a `MCM/Settings/<mod>.ini` in any mod folder, or one in `overwrite`;
+   - scripts that call `SetValue` on it.
+
+   Report the value the game ends up with, and the record value if it differs. Timing is Everything is the known case. Also check whether a Wyrmstooth settings loader is installed, and what `WTStartLevel` ends up as.
+4. **Every way a game begins.** For each start in `starts_raw.json` (Alternate Perspective's statues and the rest): does MQ101 run? If not, what starts the main quest later, if anything? Answer it from the records and scripts, start by start.
+5. **The payoff.** What the player gets on the stages that complete MQ305 and MQPaarthurnax: `AddItem`, `AddSpell`, `AddPerk` and shouts taught. If nothing is given, say so.
+6. **Three questions from the board, answered outright:**
+   - Is `Skyrim.esm:0242BA` MQ105, and is stage 160 the one that completes it?
+   - Who starts The Horn of Jurgen Windcaller, and where?
+   - Does Dragonborn's cultist node read Timing is Everything's level (25 in its settings.ini), or something else?
+7. **A verdict on every fact:**
+   - **files:** a record decides it;
+   - **script:** a `.pex` decides it, and you read it;
+   - **run time:** a settings loader or script sets it at load;
+   - **conflict:** two sources disagree, so give both;
+   - **unread:** name what couldn't be followed.
+
+**Output:** `gamedata/5.0.4.8/story_checks/main-quest.json` and `main-quest.md`. The `.md` has one block per quest in story order: started by, where, needs, first objective, and verdicts. Each fact names its source (plugin plus form id, or script plus function). After the quests come the starts table (step 4), the payoff (step 5) and the three answers (step 6). Make `story_check.py` take a line id, so the next story is one command.
+
+### Done when
+- [ ] All 23 quests have a starter with its source, or an `unread` with the reason.
+- [ ] Every start in `starts_raw.json` says whether the main quest runs, and how it starts later if it doesn't.
+- [ ] The payoff is listed, or the report says nothing is given.
+- [ ] The three questions in step 6 are answered.
+- [ ] Run-time values: Timing is Everything's Dragonborn level, and Wyrmstooth's start level with its settings loader if one is installed.
+- [ ] Unit (`test_story_check.py`):
+  - the `.pex` reader on a fixture, with `SetStage` on another quest found;
+  - a story manager node's conditions gathered up its parents;
+  - an MCM Helper `settings.ini` value beating a record's global;
+  - a loose script beating the BSA copy.
+- [ ] Python tests pass. Commit on `wo104-start-check`, push, and stop.
+
+**After Jeff (Bob, then a second check):**
+1. Bob reads the report against the base game and the board, item by item, and lists every place LoreRim differs.
+2. A reviewer who didn't write any of it (the Rex agent) checks the finished story page against the report, fact by fact.
+3. Only then does the board change: every fact on it is one the report backs, and anything else says it isn't checked yet. Bob screenshots it for Dave.
+
+---
+
 ## WO-102  Quest scripts: what starts each quest, what it unlocks, and what it pays (PC only, 18 Oct 2026)
+
+**Paused (18 Oct).** Stories come first. WO-104 builds steps 1 and 2, and runs the rest for one story at a time instead of all 1,340 quests at once.
 
 **Why.** After WO-101 the records are covered. What's left of how a quest starts, and nearly all of what it pays, is in its Papyrus scripts. These are compiled `.pex` files that call things like `SetStage`, `Start`, `AddItem`, `Unlock`, `Enable` and `ForceRefTo`. Read them, and every fact on a quest page can point at the record or script it came from. What can't be traced gets named, not guessed. Dave can't check 152 lines in game, so this is how the pages earn trust.
 
