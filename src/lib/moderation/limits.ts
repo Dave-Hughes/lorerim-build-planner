@@ -62,7 +62,8 @@ export async function newAccountHold(userId: string): Promise<string | null> {
 }
 
 /** Limits per IP for callers with no account (WO-108, WO-109): calls a minute. */
-export const IP_LIMITS = { mcp: 60, oauth: 30 } as const;
+/** `mcp-write` counts by player, not IP (WO-110): an assistant's writes to one account. */
+export const IP_LIMITS = { mcp: 60, oauth: 30, "mcp-write": 30 } as const;
 export const MCP_CALLS_A_MINUTE = IP_LIMITS.mcp;
 export const MCP_LIMIT_MESSAGE = "Too many calls. Try again in a minute.";
 

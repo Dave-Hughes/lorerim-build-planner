@@ -1,4 +1,5 @@
 import {
+  boolean,
   index,
   integer,
   jsonb,
@@ -95,6 +96,10 @@ export const builds = pgTable(
     likeCount: integer("like_count").notNull().default(0),
     /** When an admin featured it on Browse (WO-39). At most one build has it; only Listed builds. */
     featuredAt: timestamp("featured_at", { withTimezone: true }),
+    /** The assistant's name when one of its tools made the build (WO-110); null for builds made on the site. */
+    draftedBy: text("drafted_by"),
+    /** Whether the page says who drafted it ("Drafted with Claude"); the author can turn it off in Set up. */
+    showDrafted: boolean("show_drafted").notNull().default(true),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .notNull()

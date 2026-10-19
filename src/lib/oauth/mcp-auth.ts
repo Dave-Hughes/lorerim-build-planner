@@ -45,3 +45,11 @@ export async function whoami(userId: string, scopes: string[]) {
     scopes: scopes.map((s) => ({ scope: s, means: SCOPES[s as Scope] ?? s })),
   };
 }
+
+/** The signed-in player for a write, with the assistant's name as it signed in ("Claude"). */
+export async function writer(auth: PlannerAuth | undefined, scope: Scope): Promise<{ userId: string; clientName: string } | { refusal: string }> {
+  const who = signedIn(auth, scope);
+  if ("refusal" in who) return who;
+  const [c] = await db().select({ name: schema.oauthClients.name }).from(schema.oauthClients).where(eq(schema.oauthClients.id, auth!.clientId)).limit(1);
+  return { userId: who.userId, clientName: c?.name ?? "an assistant" };
+}

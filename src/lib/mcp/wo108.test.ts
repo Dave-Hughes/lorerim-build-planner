@@ -3,6 +3,8 @@ import sample from "@/lib/rules/__fixtures__/sample-build.json";
 import { mcpOn } from "@/lib/features";
 import { answer, MAX_BYTES } from "./answer";
 import { FactsError, checkProgression, getPerk, getQuestStart, getSpell, searchFacts, styleGuide, versionData } from "./facts";
+import { plainOf } from "./plan";
+import type { BuildPlan } from "@/lib/rules/types";
 
 describe("the facts tools (WO-108)", () => {
   it("refuses a version the planner doesn't ship, naming those it does", () => {
@@ -59,16 +61,18 @@ describe("the facts tools (WO-108)", () => {
     }
   });
 
-  it("check_progression returns the issue for an illegal perk, the last level, and what's takeable next", () => {
-    const ok = checkProgression(sample);
+  it("check_progression, on the plain shape get_build gives, returns the issue for an illegal perk, the last level, and what's takeable next", () => {
+    const d = versionData();
+    const plain = plainOf(d, sample as unknown as BuildPlan);
+    const ok = checkProgression(plain);
     expect(ok.levels).toBe(6);
     expect(ok.last?.level).toBe(6);
     expect(ok.canTakeNext.length).toBeGreaterThan(0);
-    const bad = structuredClone(sample) as typeof sample;
+    const bad = structuredClone(plain);
     bad.levels[0].perks.push("Destruction:Expert Destruction");
     const r = checkProgression(bad);
     expect(r.issues.some((i) => i.level === 1 && /Expert Destruction/.test(i.message))).toBe(true);
-    expect(() => checkProgression({ nonsense: true })).toThrow(FactsError);
+    expect(() => checkProgression({ race: "Nord", majors: ["Nonsense"], minors: [], levels: [{}] })).toThrow(/No skill called Nonsense\. Skills are:/);
   });
 
   it("get_style_guide is the planner's writing rules", () => {

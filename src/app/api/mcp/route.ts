@@ -1,14 +1,19 @@
-import { createMcpHandler, withMcpAuth } from "mcp-handler";
+import { createMcpHandler, getPublicOrigin, withMcpAuth } from "mcp-handler";
 import { z } from "zod";
 import { mcpOn } from "@/lib/features";
 import { DEFAULT_VERSION, FACT_KINDS, FactsError, checkProgression, getPerk, getQuestStart, getSpell, searchFacts, styleGuide } from "@/lib/mcp/facts";
 import { answer, type Answer } from "@/lib/mcp/answer";
 import { mcpCall } from "@/lib/moderation/limits";
+import { creationFields, gearRow, levelFields, registerBuildTools } from "@/lib/mcp/build-tools";
+import { checkPlan } from "@/lib/mcp/facts";
+import { getBuild as readableBuild } from "@/lib/builds/queries";
+import { versionData } from "@/lib/mcp/errors";
 import { signedIn, verifyBearer, whoami, type PlannerAuth } from "@/lib/oauth/mcp-auth";
 
 /**
- * The planner's MCP route (WO-108): read-only facts for assistants, no sign-in. Each tool answers
- * from the planner's data for a LoreRim version, 60 calls a minute per IP, 64 KB an answer at most.
+ * The planner's MCP route (WO-108, WO-110): facts for assistants with no sign-in, and, signed in with
+ * builds:write, drafts in the player's account. Each tool answers from the planner's data for a
+ * LoreRim version, 60 calls a minute per IP, 64 KB an answer at most.
  * Off unless mcpOn() (on in dev and on staging): then it's not found.
  */
 
@@ -33,7 +38,7 @@ async function guarded(ip: string, run: () => unknown | Promise<unknown>): Promi
   }
 }
 
-function handlerFor(ip: string) {
+function handlerFor(ip: string, origin: string) {
   return createMcpHandler(
     (server) => {
       server.registerTool(
@@ -80,10 +85,24 @@ function handlerFor(ip: string) {
         "check_progression",
         {
           title: "Check a build",
-          description: "Run a build plan (the planner editor's JSON) through the planner's rules and return its issues, where it stands at its last level, and the perks it can take there.",
-          inputSchema: z.object({ build: z.record(z.string(), z.unknown()).describe("The build plan, as the editor saves it.") }),
+          description: "Run a build through the planner's rules, given in the plain shape get_build returns or as a build id, and return its issues by level, where it stands at its last level, and the perks it can take there.",
+          inputSchema: z.object({
+            build: z
+              .union([
+                z.string().min(1).max(40).describe("A build id: the player's own, or a Listed or Link only build."),
+                z.object({ gameVersion: z.string().max(20).optional(), ...creationFields, levels: z.array(z.object({ level: z.number().int().optional(), ...levelFields })).min(1).max(100), gear: z.array(gearRow).max(60).optional() }),
+              ])
+              .describe("The build: an id, or the plain shape get_build returns."),
+          }),
         },
-        async ({ build }) => guarded(ip, () => checkProgression(build)),
+        async ({ build }, ctx) =>
+          guarded(ip, async () => {
+            if (typeof build !== "string") return checkProgression(build);
+            const userId = (ctx.http?.authInfo as PlannerAuth | undefined)?.extra?.userId;
+            const b = await readableBuild(build, typeof userId === "string" ? userId : null);
+            if (!b) throw new FactsError(`No build you can see has the id ${build}.`);
+            return checkPlan(versionData(b.plan.gameVersion), b.plan);
+          }),
       );
       server.registerTool(
         "whoami",
@@ -108,6 +127,7 @@ function handlerFor(ip: string) {
         },
         async () => guarded(ip, () => styleGuide()),
       );
+      registerBuildTools(server, (run) => guarded(ip, run), origin);
     },
     { serverInfo: { name: "LoreRim Build Planner", version: "1.0.0" } },
   );
@@ -119,7 +139,7 @@ function handlerFor(ip: string) {
  */
 async function handle(req: Request): Promise<Response> {
   if (!mcpOn()) return new Response("Not found", { status: 404 });
-  return withMcpAuth(handlerFor(callerIp(req)), verifyBearer, { required: false, resourceMetadataPath: "/.well-known/oauth-protected-resource" })(req);
+  return withMcpAuth(handlerFor(callerIp(req), getPublicOrigin(req)), verifyBearer, { required: false, resourceMetadataPath: "/.well-known/oauth-protected-resource" })(req);
 }
 
 export { handle as GET, handle as POST };

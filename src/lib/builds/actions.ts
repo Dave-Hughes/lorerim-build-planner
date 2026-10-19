@@ -1,11 +1,12 @@
 "use server";
 
-import { and, eq, isNotNull, like, ne, sql } from "drizzle-orm";
+import { and, eq, isNotNull, ne, sql } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { db, schema } from "@/db";
 import { newBuildId, isValidBuildId } from "./ids";
+import { insertBuild, writeDetails, writePlan } from "./writes";
 import { getBuild } from "./queries";
 import { buildDetailsSchema, buildVisibilitySchema, parseBuildPlan, type BuildDetails } from "./validate";
 import { convertPlan, droppedSentence } from "@/lib/rules/convert";
@@ -31,18 +32,6 @@ async function requireUser(): Promise<string | null> {
 async function guard(userId: string, kind?: LimitKind): Promise<string | null> {
   if (await looksLikeBot()) return BOT_MESSAGE;
   return kind ? overLimit(userId, kind) : null;
-}
-
-function orNull(s: string): string | null {
-  return s.trim() === "" ? null : s.trim();
-}
-
-/** Replaces a build's tags, all at once (one batch). The caller has checked ownership. */
-async function setTags(buildId: string, slugs: string[]) {
-  const unique = [...new Set(slugs)];
-  const del = db().delete(schema.buildTags).where(eq(schema.buildTags.buildId, buildId));
-  if (unique.length) await db().batch([del, db().insert(schema.buildTags).values(unique.map((tagSlug) => ({ buildId, tagSlug })))]);
-  else await del;
 }
 
 /**
@@ -95,21 +84,7 @@ export async function createBuild(input: { details: BuildDetails; plan: unknown 
   } catch {
     return { ok: false, error: "The build's choices didn't pass validation." };
   }
-  const id = newBuildId();
-  await db()
-    .insert(schema.builds)
-    .values({
-      id,
-      ownerId: userId,
-      name: details.data.name,
-      description: details.data.description,
-      coverImageUrl: orNull(details.data.coverImageUrl),
-      writeupUrl: orNull(details.data.writeupUrl),
-      visibility: details.data.visibility,
-      gameVersion: plan.gameVersion,
-      plan,
-    });
-  if (details.data.tags) await setTags(id, details.data.tags);
+  const id = await insertBuild(userId, details.data, plan);
   revalidatePath("/");
   revalidatePath("/me");
   return { ok: true, value: { id } };
@@ -128,24 +103,10 @@ export async function saveBuildPlan(id: string, input: unknown): Promise<ActionR
   } catch {
     return { ok: false, error: "The build's choices didn't pass validation." };
   }
-  const rows = await db()
-    .update(schema.builds)
-    .set({ plan, gameVersion: plan.gameVersion })
-    .where(and(eq(schema.builds.id, id), eq(schema.builds.ownerId, userId)))
-    .returning({ updatedAt: schema.builds.updatedAt });
-  if (!rows[0]) return { ok: false, error: "Only the build's author can change it." };
-  // Notes for levels the build no longer has go with them.
-  await db()
-    .delete(schema.buildGuides)
-    .where(
-      and(
-        eq(schema.buildGuides.buildId, id),
-        like(schema.buildGuides.key, "level:%"),
-        sql`substring(${schema.buildGuides.key} from 7)::int > ${plan.levels.length}`,
-      ),
-    );
+  const updatedAt = await writePlan(userId, id, plan);
+  if (!updatedAt) return { ok: false, error: "Only the build's author can change it." };
   revalidatePath(`/b/${id}`);
-  return { ok: true, value: { updatedAt: rows[0].updatedAt.toISOString() } };
+  return { ok: true, value: { updatedAt: updatedAt.toISOString() } };
 }
 
 /** Saves name, description, links and visibility. Only the owner can. */
@@ -160,21 +121,7 @@ export async function saveBuildDetails(id: string, input: BuildDetails): Promise
     const hold = await newAccountHold(userId);
     if (hold) return { ok: false, error: hold };
   }
-  const rows = await db()
-    .update(schema.builds)
-    .set({
-      name: details.data.name,
-      description: details.data.description,
-      coverImageUrl: orNull(details.data.coverImageUrl),
-      writeupUrl: orNull(details.data.writeupUrl),
-      visibility: details.data.visibility,
-      // Only Listed builds can be featured (WO-39).
-      ...(details.data.visibility === "public" ? {} : { featuredAt: null }),
-    })
-    .where(and(eq(schema.builds.id, id), eq(schema.builds.ownerId, userId)))
-    .returning({ id: schema.builds.id });
-  if (!rows[0]) return { ok: false, error: "Only the build's author can change it." };
-  if (details.data.tags) await setTags(id, details.data.tags);
+  if (!(await writeDetails(userId, id, details.data))) return { ok: false, error: "Only the build's author can change it." };
   revalidatePath(`/b/${id}`);
   revalidatePath("/");
   revalidatePath("/me");

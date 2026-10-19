@@ -1,12 +1,9 @@
 import "server-only";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { ZodError } from "zod";
-import { parseBuildPlan } from "@/lib/builds/validate";
-import { perkStatus } from "@/lib/rules/derive";
-import { checkCreation, computeBuild } from "@/lib/rules/engine";
-import { gameData, perkText, rankCount, type GameData, type Perk } from "@/lib/rules/data";
-import { currentVersion, shippedVersions } from "@/lib/rules/versions";
+import { perkText, rankCount, type GameData, type Perk } from "@/lib/rules/data";
+import type { BuildPlan } from "@/lib/rules/types";
+import { currentVersion } from "@/lib/rules/versions";
 import { categories, homeName, questsData } from "@/lib/quests/data";
 import { storyById, storyOfLine } from "@/lib/quests/stories-data";
 import { storyOrder } from "@/lib/quests/story";
@@ -16,17 +13,9 @@ import { storyOrder } from "@/lib/quests/story";
  * never from anything else. Each function returns plain JSON for the MCP route to send.
  */
 
-export const DEFAULT_VERSION = "5.0.4.8";
-
-export class FactsError extends Error {}
-
-/** The game data for `version`; any version the planner doesn't ship is refused, naming those it does. */
-export function versionData(version: string = DEFAULT_VERSION): GameData {
-  const shipped = shippedVersions().map((v) => v.id);
-  const d = shipped.includes(version) ? gameData(version) : undefined;
-  if (!d) throw new FactsError(`LoreRim ${version} isn't in the planner. It has: ${shipped.join(", ")}.`);
-  return d;
-}
+export { DEFAULT_VERSION, FactsError, versionData } from "./errors";
+import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
+import { canTakeAt, issuesOf, planFromPlain, stateAt, type PlainBuild } from "./plan";
 
 /** The quest data is for the current version only. */
 function questsFor(version: string) {
@@ -192,46 +181,17 @@ export function getQuestStart(id: string, version = DEFAULT_VERSION) {
   };
 }
 
-/** A build plan run through the planner's rules: its issues, where it stands at its last level, and the perks it can take there. */
-export function checkProgression(build: unknown) {
-  let plan;
-  try {
-    plan = parseBuildPlan(build);
-  } catch (e) {
-    const issue = e instanceof ZodError ? e.issues[0] : undefined;
-    throw new FactsError(`The build doesn't read as a plan: ${issue ? `${issue.path.join(".")}: ${issue.message}` : e instanceof Error ? e.message : "check it's the editor's JSON"}`);
-  }
-  const d = versionData(plan.gameVersion);
-  const creation = checkCreation(plan, d);
-  const states = computeBuild(plan, d);
-  const last = states[states.length - 1];
-  const issues = [...creation.map((i) => ({ level: 0, ...i })), ...states.flatMap((s) => s.issues.map((i) => ({ level: s.level, ...i })))];
-  const open = last
-    ? d.perks
-        .filter((p) => !(p.id in last.perksTaken) && !(p.id in last.destinyTaken))
-        .map((p) => ({ p, st: perkStatus(d, states, last.level, p.id) }))
-        .filter(({ st }) => st.state === "open")
-        .map(({ p, st }) => ({ id: p.id, tree: p.tree, name: p.name, cost: p.tree === "Destiny" ? "1 Destiny point" : p.book ? "No perk point (a book)" : "1 perk point", ...(st.noPoint ? { note: st.noPoint } : {}) }))
-    : [];
-  return {
-    gameVersion: plan.gameVersion,
-    levels: states.length,
-    issues,
-    last: last
-      ? {
-          level: last.level,
-          skills: last.skills,
-          perkPointsLeft: last.perkPoints - last.perkPointsSpent,
-          destinyPointsLeft: last.destinyPoints - last.destinyPointsSpent,
-          health: last.health,
-          magicka: last.magicka,
-          stamina: last.stamina,
-          carryWeight: last.carryWeight,
-          perks: Object.keys(last.perksTaken).map((id) => perkName(d, id)),
-        }
-      : null,
-    canTakeNext: open,
-  };
+/** A plan run through the planner's rules: its issues by level, where it stands at its last level, and the perks it can take there. */
+export function checkPlan(d: GameData, plan: BuildPlan) {
+  const { plan: parsed, states, issues } = issuesOf(d, plan);
+  const last = states.length;
+  return { gameVersion: parsed.gameVersion, levels: parsed.levels.length, issues, last: stateAt(d, states, last), canTakeNext: canTakeAt(d, states, last) };
+}
+
+/** check_progression (WO-110): a build in the plain shape get_build returns, not the editor's JSON. */
+export function checkProgression(plain: PlainBuild) {
+  const d = versionData(plain.gameVersion ?? DEFAULT_VERSION);
+  return checkPlan(d, planFromPlain(d, plain));
 }
 
 let style: string | null = null;

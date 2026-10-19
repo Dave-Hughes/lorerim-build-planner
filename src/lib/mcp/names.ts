@@ -1,7 +1,7 @@
 import "server-only";
 import type { GameData } from "@/lib/rules/data";
 import type { GameItem } from "@/lib/items/search";
-import { FactsError } from "./facts";
+import { FactsError } from "./errors";
 
 /**
  * Names, not ids (WO-110): an assistant sends the game's names as the planner shows them, and this
