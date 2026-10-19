@@ -4342,6 +4342,63 @@ One column. The side panels go under The story so far, in this order: Opens othe
 
 ---
 
+## The planner MCP (queued 19 Oct 2026; WO-108 is ready, the rest are written when their turn comes)
+
+The spec is Dave's "LoreRim Planner MCP — Spec" doc. In one line: a second door into the planner, for AI assistants, with the rules kept on our server. What's involved, in order:
+
+| Order | What it delivers | Depends on |
+|---|---|---|
+| WO-108 | The MCP route on the site and the read-only facts tools, no sign-in | nothing |
+| WO-109 | Sign-in for assistants: the planner as an OAuth server over the Discord session, with tokens a player can see and revoke | WO-108 |
+| WO-110 | Build drafts from an assistant, checked by the editor's own rules, with a review link | WO-109 |
+| WO-111 | Playthroughs: the full walkthrough (acts, objectives, chapters, beats, the page) | WO-110, the stories work |
+| WO-112 | The helper on the player's PC: a local MCP that reads the save and sends a snapshot | WO-111 |
+
+Facts about the ground, checked 19 Oct: Vercel's `mcp-handler` turns a Next.js route into an MCP server (Streamable HTTP, stateless, no Redis, Node 20+, the MCP SDK v2 with zod 4, which the site already uses). Claude adds a remote server by URL on every plan (Free gets one), with "No sign-in", or OAuth where the server reads Claude's published client identity (CIMD) or registers itself (DCR). `withMcpAuth` in the same package verifies bearer tokens and serves the RFC 9728 metadata; the authorization server itself is ours to build.
+
+---
+
+## WO-108  The MCP route and the facts tools (Mac, 19 Oct 2026)
+
+**Why.** Phase 1 of the spec: any assistant answers "what does Haggling need?" or "where do I buy Holy Fire?" from the planner's data for 5.0.4.8 instead of guessing. Read-only, no sign-in, so the risk is low and every LoreRim player with an assistant can use it the day it ships.
+
+**Where:** `src/app/api/mcp/route.ts` with `mcp-handler`, exporting `GET` and `POST`. Behind `mcpOn()` in `src/lib/features.ts` (`FEATURE_MCP`, same shape as `questsOn()`: on in dev and on staging unset, off on production). Off: the route 404s.
+
+### 1. The tools
+Every tool takes `version` (default `5.0.4.8`; any other id is refused with the shipped versions listed). Answers come from `src/data/lorerim-<version>/*.json` through `src/lib/rules/data.ts` and the quest data, never from anything else. Each tool's description is one plain sentence a model reads; input schemas in zod.
+- `search_facts(query, kinds?)`: perks, spells, traits, races, birthsigns, deities, quest lines and stories by name or word, 20 hits at most, each with its kind, id, name and one line.
+- `get_perk(id | name)`: the perk's tree, ranks, requirements (skill level, perks, items), its text per rank, and what rules it out, as the editor shows.
+- `get_spell(id | name)`: school, tier, cost, effect, and where it's sold, flagged when the stock is random.
+- `get_quest_start(id)`: a quest line's or story's start: who gives it, where, how, the level gate and what else it needs, with `checked` for every fact as the pages show it. **Only lines that have passed the start check are answered in full**; for the rest the tool returns the name, category and `checked: "not yet"` with no instructions.
+- `check_progression(build)`: given a build plan (the editor's JSON), run `checkCreation` and `computeBuild` from `src/lib/rules/engine.ts` and return the issues, the state at the last level, and what's legal next (the perks takeable at that level with their costs).
+- `get_style_guide()`: the planner's writing and layout rules for assistants, from a new `content/mcp/style.md` (Bob writes it from `docs/design-rules.md`).
+
+### 2. Limits
+- 60 calls a minute per IP through `src/lib/moderation/limits.ts` and `rateEvents`, with the key `mcp`. Over: an MCP error "Too many calls. Try again in a minute."
+- Responses capped at 64 KB; `search_facts` says when more hits were left out.
+
+### 3. Tests
+- Unit: each tool on the shipped data (Haggling's requirements, Holy Fire's merchants, Gravewind returns `not yet` with no instructions, Become the Dragonborn returns its checked start, a build with an illegal perk returns the issue).
+- Integration: an MCP client (the SDK's) against the route in e2e: `initialize`, `tools/list`, one call of each tool.
+- Bob then adds `https://lorerim-build-planner-git-staging-daves-projects-a9b7d176.vercel.app/api/mcp` to Claude as a custom connector with No sign-in and asks the six questions in the spec's done-when.
+
+### Done when
+- [ ] `FEATURE_MCP` works as in 1; off, the route 404s.
+- [ ] The six tools answer as listed; `get_quest_start` gives instructions only for checked lines.
+- [ ] Rate limit refuses the 61st call in a minute.
+- [ ] Unit and e2e above; every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Bob connects Claude to it and reports.
+
+---
+
+## WO-109 to WO-112  (to write when WO-108 is checked)
+
+- **WO-109 Sign-in for assistants.** The planner becomes an OAuth authorization server for its own MCP: an "Allow <assistant> to use your LoreRim Planner account?" page behind the Discord session; token issue, refresh and revoke in a new table; Claude's published client identity (CIMD) and Dynamic Client Registration both accepted; `withMcpAuth` and `protectedResourceHandler` on the route; an "Assistants" section in account settings listing tokens with Revoke. Decision for Dave first: build it in (recommended, it's a few hundred lines on top of Auth.js) or use a paid identity service.
+- **WO-110 Build drafts.** `create_build`, `add_level`, `update_build`, `submit_draft`: builds owned by the signed-in player, `draft` until published on the site, every write through `checkCreation` and `computeBuild` and refused with the issue list. A "Drafted with an assistant" line on the build, shown or hidden by the author.
+- **WO-111 Playthroughs.** The full walkthrough: tables for playthrough, act, objective, chapter, beat and snapshot; the tools; `suggest_quests` over checked stories only; the page, designed on the canvas first.
+- **WO-112 The helper.** A local MCP (Claude Desktop extension or a Claude Code server) wrapping the save reader from the Kyria work, sending only the snapshot fields.
+
+---
+
 ## Parked (not ordered yet)
 
 - **Renders that lose their effects (after WO-95).** Items with glow, parallax or animated shading, Dawnbreaker for one, render flat. Fix them one by one in `render.py` (emissive maps, a second light pass) once Dave flags the ones that matter.
