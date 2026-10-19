@@ -58,8 +58,8 @@ test("Wyrmstooth: level and main quest ticked, Rise in the East crossed, journal
   await setWhere(page, "22", "The Way of the Voice", ["The Thieves Guild"]);
   const needs = page.getByRole("list", { name: "Needs" });
   const row = (t: string | RegExp) => needs.getByRole("listitem").filter({ hasText: t });
-  await expect(row("Level 20").getByLabel("Done")).toBeVisible();
-  await expect(row("Level 20")).toContainText("You're 22");
+  await expect(row("Level 10").getByLabel("Done")).toBeVisible();
+  await expect(row("Level 10")).toContainText("You're 22");
   await expect(row("The main quest through The Way of the Voice").getByLabel("Done")).toBeVisible();
   await expect(row("Rise in the East").getByLabel("Not yet")).toBeVisible();
   await expect(row("Rise in the East").getByRole("link", { name: "Rise in the East" })).toHaveAttribute("href", "/quests/rise-in-the-east");

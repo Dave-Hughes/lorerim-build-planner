@@ -4230,14 +4230,14 @@ Top to bottom, as the board:
 One column. The side panels go under The story so far, in this order: Opens other stories, How it starts, Quest XP and Reward.
 
 ### Done when
-- [ ] Data check: `build.py` writes `stories.json`, the checks in 1 have unit tests, and a broken `edid` fails the build.
-- [ ] With Where you are set to level 22 and main quest done up to The Way of the Voice:
+- [x] Data check: `build.py` writes `stories.json`, the checks in 1 have unit tests, and a broken `edid` fails the build.
+- [x] With Where you are set to level 22 and main quest done up to The Way of the Voice:
   - the next step is The Horn of Jurgen Windcaller, "Starts as The Way of the Voice ends", first task "Retrieve the Horn of Jurgen Windcaller";
   - 5 of 19 done;
   - Dragonborn shows ✓ The Way of the Voice, ✕ Level 25 with "not checked yet", and ✓ the ship line;
   - Wyrmstooth shows ✓ Level 10 and ✕ Rise in the East.
-- [ ] Mark done moves to A Blade in the Dark and updates Where you are's main quest select.
-- [ ] e2e for the above. Every check in CLAUDE.md passes. Screenshots on desktop and phone (`scripts/shot.mjs`), compared against `QuestStory.dc.html`. Commit on `staging`, push, and stop: Dave checks the preview.
+- [x] Mark done moves to A Blade in the Dark and updates Where you are's main quest select.
+- [x] e2e for the above. Every check in CLAUDE.md passes. Screenshots on desktop and phone (`scripts/shot.mjs`), compared against `QuestStory.dc.html`. Commit on `staging`, push, and stop: Dave checks the preview.
 
 ---
 

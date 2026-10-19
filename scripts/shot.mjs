@@ -1,6 +1,7 @@
 // Screenshot helper for checking screens against the design canvas.
 // node scripts/shot.mjs <url> <out.png> [width] [height] [fullPage 0|1] [clickText] [selector]
 // SCALE=2 takes it at 2x (the device pixel ratio), for images the site shows (WO-84).
+// LOCAL_STORAGE='{"key":"value"}' sets the page's localStorage first (the Quests pages' Where you are, WO-106).
 import { chromium } from "playwright-core";
 import fs from "node:fs";
 const [url, out, w = "1440", h = "2200", full = "1", click = "", selector = ""] = process.argv.slice(2);
@@ -8,6 +9,7 @@ const executablePath = fs.existsSync("/opt/pw-browsers/chromium") ? "/opt/pw-bro
 const browser = await chromium.launch({ executablePath });
 const context = await browser.newContext({ viewport: { width: +w, height: +h }, deviceScaleFactor: Number(process.env.SCALE) || 1 });
 if (process.env.SESSION_TOKEN) await context.addCookies([{ name: "authjs.session-token", value: process.env.SESSION_TOKEN, domain: "localhost", path: "/" }]);
+if (process.env.LOCAL_STORAGE) await context.addInitScript((items) => { for (const [k, v] of Object.entries(items)) localStorage.setItem(k, v); }, JSON.parse(process.env.LOCAL_STORAGE));
 const page = await context.newPage();
 const errors = [];
 page.on("pageerror", (e) => errors.push("pageerror: " + e.message));

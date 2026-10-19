@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { CategoryList, type CardLine } from "@/components/quests/category-list";
 import { categories, gateOf, homeName, linesIn, mainOrder, searchLines } from "@/lib/quests/data";
 import { andList, checkedLine } from "@/lib/quests/words";
+import { storyOfLine } from "@/lib/quests/stories-data";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/quests/quests.module.css";
 
@@ -46,6 +47,7 @@ export default async function QuestCategoryPage({ params, searchParams }: { para
     size: l.size,
     quests: l.quests.length,
     checked: checkedLine(l.checked),
+    ...(storyOfLine(l.id) ? { story: { id: storyOfLine(l.id)!.id, name: storyOfLine(l.id)!.name } } : {}),
   }));
   return (
     <main className={`page ${styles.main} ${styles.inner}`}>

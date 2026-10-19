@@ -997,3 +997,263 @@ a.mod:hover {
     grid-column: 2;
   }
 }
+
+/* A story (WO-106, QuestStory). */
+.storyGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  gap: 32px;
+  align-items: start;
+}
+.storyMain,
+.storySide {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+.storySide {
+  gap: 20px;
+}
+.pitch {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.nextName {
+  font-size: 21px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.nextButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.startLines {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.startLines p {
+  margin: 0;
+}
+.sofar {
+  display: flex;
+  flex-direction: column;
+}
+.sofarHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.chapters {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ch {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 6px 16px;
+  align-items: start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.chN {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  border: 1px solid var(--rule-strong);
+  color: var(--muted);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 17px;
+}
+.chDone .chN {
+  background: var(--stamina);
+  border-color: var(--stamina);
+  color: var(--on-ember);
+}
+.chNow .chN {
+  border-color: var(--ember);
+  color: var(--ember);
+}
+.ch h3 {
+  margin: 4px 0 0;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text);
+}
+.chDone h3 {
+  color: var(--soft);
+}
+.chLater h3 {
+  color: var(--dim);
+  font-weight: 500;
+}
+.cnt {
+  padding-top: 6px;
+  color: var(--muted);
+  font-size: 14px;
+  white-space: nowrap;
+}
+.qs {
+  grid-column: 2 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font-size: 15px;
+  color: var(--muted);
+}
+.qDone > span {
+  color: var(--stamina);
+}
+.qNext {
+  color: var(--ember);
+  font-weight: 600;
+}
+.sofar .next {
+  padding-top: 16px;
+}
+.twoFacts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.opens {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.op {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.op:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.opName {
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.alongList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.alongList li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--soft);
+}
+.alongList b {
+  color: var(--text);
+  font-weight: 600;
+}
+.wrong {
+  align-self: flex-start;
+  font-size: 15px;
+  text-decoration: none;
+}
+.storyLink {
+  align-self: flex-start;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.lineUnder {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* A story on a phone: one column, the side panels under The story so far. */
+@media (max-width: 1099px) {
+  .storyGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .storyMain,
+  .storySide {
+    display: contents;
+  }
+  .oPitch {
+    order: 1;
+  }
+  .oNext {
+    order: 2;
+  }
+  .oSoFar {
+    order: 3;
+  }
+  .oOpens {
+    order: 4;
+  }
+  .oStarts {
+    order: 5;
+  }
+  .oFacts {
+    order: 6;
+  }
+  .oAlong {
+    order: 7;
+  }
+  .oWrong {
+    order: 8;
+  }
+}
+@media (max-width: 699px) {
+  .twoFacts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .twoFacts .fact {
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .twoFacts .fact:last-child {
+    border-bottom: 0;
+  }
+  .pitch {
+    font-size: 18px;
+  }
+  .ch {
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    gap: 6px 12px;
+  }
+}
+
+/* Links inside a panel sit at its start, not centred. */
+.panel > .link {
+  align-self: flex-start;
+}
+.oFacts {
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 699px) {
+  /* A need on a phone: its mark, then its words beside it, the why and source under them. */
+  .need {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr);
+    gap: 2px 12px;
+    align-items: start;
+  }
+  .need > :not(:first-child):not(:nth-child(2)) {
+    grid-column: 2;
+    margin-left: 0;
+  }
+}

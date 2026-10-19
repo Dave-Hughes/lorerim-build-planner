@@ -468,6 +468,18 @@ def main():
             json.dump({"categories": cur["categories"], "shelves": cur.get("shelves", {}), "lines": pages}, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")
         print(f"{len(pages)} quest lines, {sum(len(l['quests']) for l in pages)} quests, {sum(1 for l in pages if 'giver' in l)} with a giver -> quests.json")
+        # Stories (WO-106): Bob's hand-kept stories, checked against the lines; a broken one stops the build.
+        if os.path.exists(os.path.join(RAW, "stories.json")):
+            from stories import StoryError, build_stories
+
+            try:
+                told = build_stories(load("stories.json")["stories"], pages)
+            except StoryError as e:
+                sys.exit(f"stories.json:\n{e}")
+            with open(os.path.join(OUT, "stories.json"), "w", encoding="utf-8") as f:
+                json.dump({"stories": told}, f, indent=1, ensure_ascii=False)
+                f.write("\n")
+            print(f"{len(told)} stor{'y' if len(told) == 1 else 'ies'} -> stories.json")
     # Spells (WO-41): the tomes' spells and the tier perks' picks, from spells.py's raw file.
     if os.path.exists(os.path.join(RAW, "spells_raw.json")):
         from spells import build_spells

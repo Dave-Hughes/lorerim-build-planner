@@ -23,6 +23,8 @@ export interface CardLine extends LineGate {
   size?: string;
   quests: number;
   checked: string;
+  /** The story told from this line (WO-106): the card's title and link, the line's name under it. */
+  story?: { id: string; name: string };
 }
 
 /**
@@ -107,8 +109,9 @@ export function CategoryList({ lines, main, q }: { lines: CardLine[]; main: stri
           return (
             <article key={l.id} className={`${styles.card} ${open ? styles.cardOpen : ""} ${chip.above ? styles.later : ""}`} aria-labelledby={`line-${l.id}`}>
               <h2 id={`line-${l.id}`} className={styles.qname}>
-                <Link href={`/quests/${l.id}`}>{l.name}</Link>
+                <Link href={l.story ? `/quests/s/${l.story.id}` : `/quests/${l.id}`}>{l.story?.name ?? l.name}</Link>
               </h2>
+              {l.story && <span className={styles.lineUnder}>{l.name}</span>}
               <span className={styles.meta}>
                 {l.prince ? (
                   <span className={styles.prince}>

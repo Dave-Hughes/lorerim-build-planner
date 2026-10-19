@@ -1,0 +1,328 @@
+{
+ "stories": [
+  {
+   "id": "become-the-dragonborn",
+   "line": "main-quest",
+   "name": "Become the Dragonborn",
+   "category": "main",
+   "pitch": "Dragons have come back to Skyrim, and you turn out to be Dragonborn: you can take a dragon's soul and learn its shouts. The story follows why the dragons are back and how to stop them.",
+   "check": "story_checks/main-quest.md",
+   "start": [
+    {
+     "text": "Take a Dragonborn start: Helgen Keep (Start) or Helgen Keep (End).",
+     "checked": "files"
+    },
+    {
+     "text": "From any other start: ask Matlara in Helgen for a room, for 25 gold, before Unbound has begun.",
+     "checked": "not yet"
+    }
+   ],
+   "chapters": [
+    {
+     "name": "Escape Helgen",
+     "quests": [
+      {
+       "edid": "MQ101",
+       "task": "Make your way to the Keep",
+       "where": "Helgen",
+       "checked": "files",
+       "name": "Unbound",
+       "xp": 200
+      },
+      {
+       "edid": "MQ102",
+       "from": "MQ101",
+       "task": "Talk to Alvor or Gerdur in Riverwood",
+       "where": "Riverwood",
+       "checked": "files",
+       "name": "Before the Storm",
+       "xp": 200
+      }
+     ]
+    },
+    {
+     "name": "The Dragonstone",
+     "quests": [
+      {
+       "edid": "MQ103",
+       "from": "MQ102",
+       "task": "Talk to Farengar",
+       "who": "Farengar Secret-Fire",
+       "where": "Dragonsreach, Whiterun",
+       "checked": "files",
+       "name": "Bleak Falls Barrow",
+       "xp": 200
+      }
+     ]
+    },
+    {
+     "name": "Your first dragon",
+     "quests": [
+      {
+       "edid": "MQ104",
+       "from": "MQ103",
+       "task": "Talk to Jarl Balgruuf",
+       "who": "Balgruuf the Greater",
+       "where": "Dragonsreach, Whiterun",
+       "checked": "files",
+       "name": "Dragon Rising",
+       "xp": 200
+      }
+     ]
+    },
+    {
+     "name": "The Greybeards",
+     "quests": [
+      {
+       "edid": "MQ105",
+       "from": "MQ104",
+       "task": "Speak to the Greybeards",
+       "who": "Arngeir",
+       "where": "High Hrothgar",
+       "checked": "files",
+       "name": "The Way of the Voice",
+       "xp": 200
+      },
+      {
+       "edid": "MQ105Ustengrav",
+       "from": "MQ105",
+       "atEnd": true,
+       "task": "Retrieve the Horn of Jurgen Windcaller",
+       "checked": "files",
+       "name": "The Horn of Jurgen Windcaller",
+       "xp": 200
+      }
+     ]
+    },
+    {
+     "name": "Find the Blades",
+     "quests": [
+      {
+       "edid": "MQ106",
+       "from": "MQ105",
+       "task": "Talk to Delphine",
+       "who": "Delphine",
+       "where": "Sleeping Giant Inn, Riverwood",
+       "checked": "files",
+       "name": "A Blade in the Dark",
+       "xp": 200
+      },
+      {
+       "edid": "MQ201",
+       "from": "MQ106",
+       "task": "Meet Delphine in Riverwood or storm the Thalmor Embassy",
+       "who": "Delphine",
+       "where": "Sleeping Giant Inn, Riverwood",
+       "note": "Storming the Embassy is LoreRim's addition (Storm the Thalmor Embassy).",
+       "checked": "files",
+       "name": "Diplomatic Immunity",
+       "xp": 200
+      },
+      {
+       "edid": "MQ202",
+       "from": "MQ201",
+       "task": "Ask in Riften about Esbern",
+       "who": "Keerava",
+       "where": "The Bee and Barb, Riften",
+       "checked": "files",
+       "name": "A Cornered Rat",
+       "xp": 200
+      },
+      {
+       "edid": "MQ203",
+       "from": "MQ202",
+       "task": "Escort Esbern to Riverwood",
+       "checked": "files",
+       "name": "Alduin's Wall",
+       "xp": 200
+      }
+     ]
+    },
+    {
+     "name": "An Elder Scroll",
+     "quests": [
+      {
+       "edid": "MQ204",
+       "from": "MQ203",
+       "task": "Talk to Arngeir",
+       "who": "Arngeir",
+       "where": "High Hrothgar",
+       "checked": "files",
+       "name": "The Throat of the World",
+       "xp": 200
+      },
+      {
+       "edid": "MQ205",
+       "from": "MQ204",
+       "task": "Learn the location of the Elder Scroll",
+       "checked": "files",
+       "name": "Elder Knowledge",
+       "xp": 200
+      },
+      {
+       "edid": "MQ206",
+       "from": "MQ205",
+       "task": "Read the Elder Scroll at the Time-Wound",
+       "where": "Throat of the World",
+       "checked": "files",
+       "name": "Alduin's Bane",
+       "xp": 200
+      }
+     ]
+    },
+    {
+     "name": "Defeat Alduin",
+     "quests": [
+      {
+       "edid": "MQ301",
+       "from": "MQ206",
+       "task": "Talk to Paarthurnax",
+       "checked": "files",
+       "name": "The Fallen",
+       "xp": 200
+      },
+      {
+       "edid": "MQ302",
+       "from": "MQ301",
+       "task": "Talk to Arngeir",
+       "who": "Arngeir",
+       "where": "High Hrothgar",
+       "checked": "files",
+       "name": "Season Unending",
+       "xp": 200
+      },
+      {
+       "edid": "MQ303",
+       "from": "MQ301",
+       "task": "Set Odahviing free",
+       "checked": "files",
+       "name": "The World-Eater's Eyrie",
+       "xp": 200
+      },
+      {
+       "edid": "MQ304",
+       "from": "MQ303",
+       "task": "Find out how to defeat Alduin",
+       "where": "Sovngarde",
+       "checked": "files",
+       "name": "Sovngarde",
+       "xp": 200
+      },
+      {
+       "edid": "MQ305",
+       "from": "MQ304",
+       "task": "Help the heroes of Sovngarde dispel Alduin's mist",
+       "where": "Sovngarde",
+       "checked": "files",
+       "name": "Dragonslayer",
+       "xp": 200
+      },
+      {
+       "edid": "MQPaarthurnax",
+       "from": "MQ301",
+       "task": "Decide Paarthurnax's Fate",
+       "checked": "files",
+       "name": "Paarthurnax",
+       "xp": 200
+      }
+     ]
+    }
+   ],
+   "alongside": [
+    {
+     "edid": "FreeformHighHrothgarA",
+     "task": "Find the Word of Power",
+     "who": "Arngeir",
+     "where": "High Hrothgar",
+     "checked": "files",
+     "name": "The Words of Power",
+     "xp": 0
+    },
+    {
+     "edid": "FreeformSkyhavenTempleA",
+     "task": "Bring a follower to Delphine",
+     "who": "Delphine",
+     "checked": "files",
+     "name": "Rebuilding the Blades",
+     "xp": 0
+    },
+    {
+     "edid": "FreeformSkyHavenTempleB",
+     "task": "Kill the dragon in its lair",
+     "who": "Esbern",
+     "checked": "files",
+     "name": "Dragon Hunting",
+     "xp": 0
+    },
+    {
+     "edid": "FreeformSkyHavenTempleD",
+     "task": "Bring 3 Dragon Blood, 3 Dragon Bile and 3 Dragon Rheum to Esbern",
+     "who": "Esbern",
+     "checked": "files",
+     "name": "Dragon Research",
+     "xp": 0
+    }
+   ],
+   "reward": {
+    "text": "None: the last quest gives no item.",
+    "checked": "files"
+   },
+   "opens": [
+    {
+     "line": "dragonborn",
+     "needs": [
+      {
+       "kind": "mainQuest",
+       "at": "MQ105",
+       "text": "The Way of the Voice",
+       "checked": "files"
+      },
+      {
+       "kind": "level",
+       "level": 25,
+       "text": "Level 25, for the cultists to find you",
+       "checked": "not yet",
+       "why": "LoreRim's files set their chance to 0"
+      }
+     ],
+     "or": {
+      "text": "Or sail to Raven Rock from Windhelm's docks",
+      "checked": "files"
+     },
+     "name": "Dragonborn"
+    },
+    {
+     "line": "wyrmstooth",
+     "needs": [
+      {
+       "kind": "mainQuest",
+       "at": "MQ105",
+       "text": "The Way of the Voice",
+       "checked": "files"
+      },
+      {
+       "kind": "level",
+       "level": 10,
+       "text": "Level 10",
+       "checked": "files"
+      },
+      {
+       "kind": "line",
+       "line": "rise-in-the-east",
+       "text": "Rise in the East",
+       "checked": "files"
+      }
+     ],
+     "name": "Wyrmstooth"
+    }
+   ],
+   "lineName": "The Dragonborn",
+   "sources": [
+    {
+     "name": "Base game",
+     "base": true
+    }
+   ]
+  }
+ ]
+}

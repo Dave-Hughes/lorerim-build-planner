@@ -7,6 +7,7 @@ import { DoFirst, LineNeeds, type AfterLine } from "@/components/quests/line-sta
 import { WherePanel } from "@/components/quests/where-panel";
 import { categories, categorySlug, finishable, gateOf, homeName, mainOrder, questsData } from "@/lib/quests/data";
 import { MAIN } from "@/lib/quests/open";
+import { storyOfLine } from "@/lib/quests/stories-data";
 import { fromLabel } from "@/lib/quests/words";
 import { siteMetadata } from "@/lib/og/metadata";
 import type { Quest, QuestLine } from "@/lib/quests/types";
@@ -61,11 +62,17 @@ export default async function QuestLinePage({ params }: { params: Params }) {
   const rewards = line.quests.filter((q) => q.rewards);
   const sibs = siblings(line);
   const checkedFrom = (k: keyof QuestLine["checked"]) => fromLabel(line.checked[k]);
+  const told = storyOfLine(line.id);
   return (
     <main className={`page ${styles.main} ${styles.inner}`}>
       <Link href={home ? `/quests/c/${home.slug}` : "/quests"} className={styles.back}>
         ‹ {home?.name ?? shelves[line.category]?.name ?? "Quests"}
       </Link>
+      {told && (
+        <Link href={`/quests/s/${told.id}`} className={styles.storyLink}>
+          Read it as a story ›
+        </Link>
+      )}
       <div className={`frame ${styles.cover}`}>
         <img src={`/quests/${slug}.png`} alt="" className={styles.coverArt} />
         <span className={styles.coverFade} aria-hidden="true" />
@@ -203,7 +210,7 @@ export default async function QuestLinePage({ params }: { params: Params }) {
                 </div>
                 <ul className={styles.qlist}>
                   {story.map((q) => (
-                    <QuestRow key={q.edid} name={q.name} xp={q.xp} first={q === opening} journal={q.journal} />
+                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening} journal={q.journal} />
                   ))}
                 </ul>
               </div>
@@ -218,7 +225,7 @@ export default async function QuestLinePage({ params }: { params: Params }) {
                 </div>
                 <ul className={styles.qlist}>
                   {jobs.map((q) => (
-                    <QuestRow key={q.edid} name={q.name} xp={q.xp} first={q === opening} journal={q.journal} />
+                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening} journal={q.journal} />
                   ))}
                 </ul>
               </div>

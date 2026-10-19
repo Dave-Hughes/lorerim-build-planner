@@ -1,15 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./quests.module.css";
 
-/** A quest's journal (WO-100): hidden until opened, then the first entry, then the rest on request. */
-export function QuestRow({ name, xp, first, journal }: { name: string; xp: number; first: boolean; journal: string[] }) {
+/**
+ * A quest's journal (WO-100): hidden until opened, then the first entry, then the rest on request. A
+ * link to #q-<edid> (a story's next step, WO-106) opens it.
+ */
+export function QuestRow({ edid, name, xp, first, journal }: { edid: string; name: string; xp: number; first: boolean; journal: string[] }) {
   const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const check = () => {
+      if (window.location.hash === `#q-${edid}`) setOpen(true);
+    };
+    check();
+    window.addEventListener("hashchange", check);
+    return () => window.removeEventListener("hashchange", check);
+  }, [edid]);
   const [all, setAll] = useState(false);
   const shown = all ? journal : journal.slice(0, 1);
   return (
-    <li className={styles.q}>
+    <li className={styles.q} id={`q-${edid}`}>
       <span className={styles.qn}>
         {name}
         {first && <span className={styles.first}>Starts here</span>}
