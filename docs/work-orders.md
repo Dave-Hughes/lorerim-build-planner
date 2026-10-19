@@ -4398,7 +4398,7 @@ Every tool takes `version` (default `5.0.4.8`; any other id is refused with the 
 
 **How it fits, in one paragraph.** An assistant (Claude, ChatGPT, Cursor) tells the player "sign in to LoreRim Build Planner" and opens a page on the site. The player is already signed in with Discord, or signs in. The page says "Allow Claude to use your LoreRim Planner account?" with what it may do; the player allows. The site hands the assistant a code, the assistant trades it for a token, and from then on its calls to `/api/mcp` carry that token. The planner checks the token on every call. On the account page the player sees the assistant listed and can revoke it.
 
-**Where:** the same app. Branch `wo109-assistant-signin` from `staging`? No: commit on `staging` as usual, in small commits, one piece at a time. Read `mcp-handler`'s `docs/AUTHORIZATION.md` first.
+**Where:** the same app, on `staging` as usual, in small commits, one piece at a time. Read `mcp-handler`'s `docs/AUTHORIZATION.md` first.
 
 ### 1. What the standard asks for (checked 19 Oct against the 2026-07-28 MCP spec and mcp-handler 2.x)
 - The MCP route is the **resource server**. It serves RFC 9728 Protected Resource Metadata at `/.well-known/oauth-protected-resource` naming our authorization server (the site itself) and the resource `https://<host>/api/mcp`. `withMcpAuth` verifies bearer tokens and answers 401 with the `WWW-Authenticate` challenge that points clients there.
@@ -4424,7 +4424,7 @@ Every tool takes `version` (default `5.0.4.8`; any other id is refused with the 
 ### 4. The route
 - `withMcpAuth(handler, verifyToken, { required: false, resourceMetadataPath: "/.well-known/oauth-protected-resource" })`: no token passes through to the facts tools; a bad or expired token gets the 401 challenge from the library, so a client refreshes or signs in again.
 - `verifyToken` looks the hash up, checks expiry and revocation, touches `last_used_at`, and returns `{ token, scopes, clientId, extra: { userId } }`.
-- Tools read `ctx.http?.authInfo`. One tool ships in this order to prove it: `whoami` (scope `facts` or none needed... no: it needs a token) returns the player's planner name and handle and the token's scopes, and without a token answers "This connector was added without sign-in. Remove it in Claude and add it again with Sign in now."
+- Tools read `ctx.http?.authInfo`. One tool ships in this order to prove it: `whoami`, which needs a token and returns the player's planner name and handle and the token's scopes. Without a token it answers "This connector was added without sign-in. Remove it in Claude and add it again with Sign in now."
 - A tool that needs a scope the token lacks answers "Your sign-in doesn't allow this. Reconnect and allow <scope in plain words>."
 
 ### 5. Tables (migrations additive, `npm run db:generate`)
