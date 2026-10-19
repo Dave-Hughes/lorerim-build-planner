@@ -17,6 +17,11 @@ export const SCOPES = {
 } as const;
 export type Scope = keyof typeof SCOPES;
 export const SCOPE_LIST = Object.keys(SCOPES) as Scope[];
+/**
+ * The scopes that have tools today (WO-110): what the metadata offers and what's granted when a
+ * client asks for none. playthroughs:write joins when WO-111's tools ship.
+ */
+export const GRANTABLE: Scope[] = ["facts", "builds:write"];
 
 export const newSecret = () => randomBytes(32).toString("base64url");
 export const sha256 = (s: string) => createHash("sha256").update(s).digest("hex");
@@ -32,12 +37,16 @@ export function pkceMatches(verifier: string | null | undefined, challenge: stri
 /** A redirect URI must be one of the client's, character for character: no trailing slash, no other port. */
 export const redirectAllowed = (uri: string, allowed: readonly string[]) => allowed.includes(uri);
 
-/** The scopes asked for: all of them when none is named; null when one isn't ours. */
+/**
+ * The scopes to grant: those asked for that have tools today, or all of those when none is named;
+ * null when one isn't ours at all. A scope whose tools haven't shipped is left out, not refused.
+ */
 export function parseScopes(param: string | null | undefined): Scope[] | null {
   const asked = (param ?? "").split(/\s+/).filter(Boolean);
-  if (!asked.length) return [...SCOPE_LIST];
+  if (!asked.length) return [...GRANTABLE];
   if (asked.some((s) => !(s in SCOPES))) return null;
-  return SCOPE_LIST.filter((s) => asked.includes(s));
+  const granted = GRANTABLE.filter((s) => asked.includes(s));
+  return granted.length ? granted : null;
 }
 
 /** What a tool says when the token lacks its scope. */

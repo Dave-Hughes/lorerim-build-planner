@@ -1,4 +1,4 @@
-import { SCOPE_LIST } from "@/lib/oauth/core";
+import { GRANTABLE } from "@/lib/oauth/core";
 import { endpoint, json } from "@/lib/oauth/http";
 import { originOf } from "@/lib/oauth/store";
 
@@ -12,7 +12,7 @@ const handle = endpoint((req) => {
       token_endpoint: `${issuer}/oauth/token`,
       registration_endpoint: `${issuer}/oauth/register`,
       revocation_endpoint: `${issuer}/oauth/revoke`,
-      scopes_supported: SCOPE_LIST,
+      scopes_supported: GRANTABLE,
       response_types_supported: ["code"],
       grant_types_supported: ["authorization_code", "refresh_token"],
       code_challenge_methods_supported: ["S256"],

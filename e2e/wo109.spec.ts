@@ -46,7 +46,8 @@ async function approve(page: Page, base: string, clientId: string, challenge: st
   await expect(page.getByRole("heading", { level: 1 })).toContainText("to use your LoreRim Planner account?");
   await expect(page.getByText("Look up perks, spells and quests")).toBeVisible();
   await expect(page.getByText("Draft builds in your account")).toBeVisible();
-  if (!full) await expect(page.getByText("Write playthroughs in your account")).toBeVisible();
+  // Asking for no scopes grants only those with tools today (WO-110).
+  if (!full) await expect(page.getByText("Write playthroughs in your account")).toHaveCount(0);
   await page.getByRole("button", { name: "Allow" }).click();
   await expect.poll(() => landed).toContain("code=");
   const u = new URL(landed);
@@ -71,7 +72,7 @@ test("the metadata routes answer as the spec asks", async ({ baseURL }) => {
     token_endpoint: expect.stringMatching(/\/oauth\/token$/),
     registration_endpoint: expect.stringMatching(/\/oauth\/register$/),
     revocation_endpoint: expect.stringMatching(/\/oauth\/revoke$/),
-    scopes_supported: ["facts", "builds:write", "playthroughs:write"],
+    scopes_supported: ["facts", "builds:write"],
     response_types_supported: ["code"],
     grant_types_supported: ["authorization_code", "refresh_token"],
     code_challenge_methods_supported: ["S256"],

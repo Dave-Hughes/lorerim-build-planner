@@ -192,9 +192,12 @@ describe("client ID metadata documents (WO-109)", () => {
 });
 
 describe("scopes (WO-109)", () => {
-  it("reads the scopes asked for, all when none, and refuses an unknown one", () => {
+  it("grants the scopes asked for that have tools, only facts and builds:write when none is named, and refuses an unknown one", () => {
     expect(parseScopes("facts builds:write")).toEqual(["facts", "builds:write"]);
-    expect(parseScopes("")).toEqual(["facts", "builds:write", "playthroughs:write"]);
+    // WO-110: playthroughs:write has no tools until WO-111, so it isn't granted.
+    expect(parseScopes("")).toEqual(["facts", "builds:write"]);
+    expect(parseScopes(null)).toEqual(["facts", "builds:write"]);
+    expect(parseScopes("facts playthroughs:write")).toEqual(["facts"]);
     expect(parseScopes("facts admin")).toBeNull();
   });
 
