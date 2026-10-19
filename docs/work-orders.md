@@ -4455,6 +4455,21 @@ On `/me`, a section **Assistants**: one row per client with a live token: its na
 
 ---
 
+## WO-109b  The door on any path, and a 401 that starts sign-in (Mac, 19 Oct 2026)
+
+**Why.** Two things came out of Dave's first try at WO-109. Claude won't let him delete a custom connector and add it again with sign-in; it keys connectors by URL, so he needs a fresh URL for the same door. And a connector added with "Sign in when needed", or Claude Code, only starts sign-in when the server answers 401; our door never does without a token, so a write tool would just return the plain message and the client would never sign in.
+
+1. **Any path under `/api/mcp`.** Move the route to `src/app/api/mcp/[[...rest]]/route.ts`; `mcp-handler` ignores the pathname. The resource is the URL the client used: the protected resource metadata is served at `/.well-known/oauth-protected-resource` and at the path form `/.well-known/oauth-protected-resource/api/mcp/<rest>`, each naming that path as `resource`; the `resource` check at `/oauth/authorize` and `/oauth/token` accepts any `https://<host>/api/mcp` or `https://<host>/api/mcp/<rest>` (no query, no fragment). Tokens aren't tied to the path.
+2. **A 401 that starts sign-in.** Before the handler runs, read the JSON-RPC body. A `tools/call` for a tool that needs sign-in (`whoami` now; WO-110's and WO-111's later), with no bearer token, answers HTTP 401 with the same `WWW-Authenticate` challenge the library sends for a bad token. With a token that lacks the tool's scope, HTTP 403 with `error="insufficient_scope"` and `scope="<the scope>"`. Everything else (initialize, tools/list, the facts tools) stays open as it is. The plain messages from WO-109 stay for clients that ignore the status.
+3. **Tests.** Unit: the path check (accepts `/api/mcp/signed-in`, refuses `/api/mcp?x=1` and another host); the body check (a `tools/call` of `whoami` without a token is 401, `search_facts` without one is 200, `whoami` with a token missing nothing is 200). e2e: the WO-109 flow through `/api/mcp/signed-in`, and the metadata at its path form.
+
+### Done when
+- [ ] `https://<staging>/api/mcp/signed-in` answers `tools/list`, and its path-form metadata names it as the resource.
+- [ ] `whoami` without a token is a 401 with the challenge; with a token, the player.
+- [ ] The WO-109 e2e passes through the new path; every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Dave adds `/api/mcp/signed-in` as a new connector with Sign in now.
+
+---
+
 ## WO-110 to WO-112  (to write when WO-109 is checked)
 
 - **WO-110 Build drafts.** `create_build`, `add_level`, `update_build`, `submit_draft`: builds owned by the signed-in player, `draft` until published on the site, every write through `checkCreation` and `computeBuild` and refused with the issue list. A "Drafted with an assistant" line on the build, shown or hidden by the author. Found in WO-108's check: an assistant can't guess the editor's plan JSON (`check_progression` refuses anything else with "expected 1"), so these tools take plain inputs (race, sign, a level's skill points and perk names) and build the plan themselves; `check_progression` gets the same plain input.
