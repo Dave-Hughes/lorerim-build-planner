@@ -1,9 +1,10 @@
-import { createMcpHandler } from "mcp-handler";
+import { createMcpHandler, withMcpAuth } from "mcp-handler";
 import { z } from "zod";
 import { mcpOn } from "@/lib/features";
 import { DEFAULT_VERSION, FACT_KINDS, FactsError, checkProgression, getPerk, getQuestStart, getSpell, searchFacts, styleGuide } from "@/lib/mcp/facts";
 import { answer, type Answer } from "@/lib/mcp/answer";
 import { mcpCall } from "@/lib/moderation/limits";
+import { signedIn, verifyBearer, whoami, type PlannerAuth } from "@/lib/oauth/mcp-auth";
 
 /**
  * The planner's MCP route (WO-108): read-only facts for assistants, no sign-in. Each tool answers
@@ -21,11 +22,11 @@ function callerIp(req: Request): string {
 }
 
 /** Every tool's run: the limit first, then the facts; a refusal says why in plain words. */
-async function guarded(ip: string, run: () => unknown): Promise<Answer> {
+async function guarded(ip: string, run: () => unknown | Promise<unknown>): Promise<Answer> {
   const over = await mcpCall(ip);
   if (over) return refuse(over);
   try {
-    return answer(run());
+    return answer(await run());
   } catch (e) {
     if (e instanceof FactsError) return refuse(e.message);
     throw e;
@@ -85,6 +86,20 @@ function handlerFor(ip: string) {
         async ({ build }) => guarded(ip, () => checkProgression(build)),
       );
       server.registerTool(
+        "whoami",
+        {
+          title: "Who you are on the planner",
+          description: "Get the signed-in player's LoreRim Build Planner name and handle, and what this sign-in allows; needs the connector added with sign-in.",
+          inputSchema: z.object({}),
+        },
+        async (_args, ctx) =>
+          guarded(ip, async () => {
+            const who = signedIn(ctx.http?.authInfo as PlannerAuth | undefined);
+            if ("refusal" in who) throw new FactsError(who.refusal);
+            return whoami(who.userId, who.scopes);
+          }),
+      );
+      server.registerTool(
         "get_style_guide",
         {
           title: "How to write for the planner",
@@ -98,9 +113,13 @@ function handlerFor(ip: string) {
   );
 }
 
+/**
+ * A bearer token, when sent, must be live (WO-109): a bad one gets 401 with the challenge pointing at
+ * /.well-known/oauth-protected-resource. No token passes through to the open facts tools.
+ */
 async function handle(req: Request): Promise<Response> {
   if (!mcpOn()) return new Response("Not found", { status: 404 });
-  return handlerFor(callerIp(req))(req);
+  return withMcpAuth(handlerFor(callerIp(req)), verifyBearer, { required: false, resourceMetadataPath: "/.well-known/oauth-protected-resource" })(req);
 }
 
 export { handle as GET, handle as POST };
