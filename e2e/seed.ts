@@ -561,7 +561,9 @@ export async function cleanup() {
     await db.delete(schema.builds).where(and(like(schema.builds.id, "e2e%")));
     await db.delete(schema.builds).where(eq(schema.builds.ownerId, TEST_USER_ID));
     // The MCP route's calls (WO-108): the tests' made-up addresses, counted by subject with no account.
-    await db.delete(schema.rateEvents).where(and(eq(schema.rateEvents.kind, "mcp"), isNull(schema.rateEvents.userId)));
+    await db.delete(schema.rateEvents).where(and(or(eq(schema.rateEvents.kind, "mcp"), eq(schema.rateEvents.kind, "oauth")), isNull(schema.rateEvents.userId)));
+    // The assistants the sign-in tests registered or served (WO-109); their codes and tokens go with the test users.
+    await db.delete(schema.oauthClients).where(like(schema.oauthClients.name, "E2E %"));
     await db.delete(schema.invites).where(or(like(schema.invites.createdBy, "e2e-%"), like(schema.invites.usedBy, "e2e-%")));
     await db.delete(schema.users).where(like(schema.users.id, "e2e-%"));
   } finally {

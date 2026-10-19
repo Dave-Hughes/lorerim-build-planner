@@ -21,7 +21,7 @@ test("initialize, tools/list and one call of each tool", async ({ baseURL }) => 
   const client = await connect(baseURL!, fakeIp());
   expect(client.getServerVersion()?.name).toBe("LoreRim Build Planner");
   const { tools } = await client.listTools();
-  expect(tools.map((t) => t.name).sort()).toEqual(["check_progression", "get_perk", "get_quest_start", "get_spell", "get_style_guide", "search_facts"]);
+  expect(tools.map((t) => t.name).sort()).toEqual(["check_progression", "get_perk", "get_quest_start", "get_spell", "get_style_guide", "search_facts", "whoami"]);
 
   expect(JSON.parse(textOf(await client.callTool({ name: "search_facts", arguments: { query: "Haggling" } }))).hits[0]).toMatchObject({ id: "Speech:Haggling" });
   expect(JSON.parse(textOf(await client.callTool({ name: "get_perk", arguments: { name: "Haggling" } })))).toMatchObject({ tree: "Speech", ranks: 1 });

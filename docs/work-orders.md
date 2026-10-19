@@ -4447,11 +4447,11 @@ On `/me`, a section **Assistants**: one row per client with a live token: its na
 - Screenshots of the consent page (desktop and phone) and the Assistants section, against `docs/design-rules.md`.
 
 ### Done when
-- [ ] Both metadata routes answer as in 1, on staging, behind `FEATURE_MCP`.
-- [ ] The e2e flow above passes for a registered client and a CIMD client.
-- [ ] `whoami` through the door with a token returns the player; without one, the plain message; with a bad one, a 401 and the challenge.
-- [ ] Revoke on `/me` cuts the assistant off.
-- [ ] Every check in CLAUDE.md passes; migrations committed, additive. Commit on `staging`, push, and stop: Dave removes his connector and adds it again with Sign in now, approves on the consent page, and asks Claude "who am I on the planner?"
+- [x] Both metadata routes answer as in 1, on staging, behind `FEATURE_MCP`.
+- [x] The e2e flow above passes for a registered client and a CIMD client.
+- [x] `whoami` through the door with a token returns the player; without one, the plain message; with a bad one, a 401 and the challenge.
+- [x] Revoke on `/me` cuts the assistant off.
+- [x] Every check in CLAUDE.md passes; migrations committed, additive. Commit on `staging`, push, and stop: Dave removes his connector and adds it again with Sign in now, approves on the consent page, and asks Claude "who am I on the planner?"
 
 ---
 
