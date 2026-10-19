@@ -21,6 +21,7 @@
   "dependencies": {
     "@auth/drizzle-adapter": "^1.11.3",
     "@floating-ui/dom": "1.8.0",
+    "@modelcontextprotocol/server": "2.3.1",
     "@neondatabase/serverless": "^1.2.0",
     "@tiptap/extension-bubble-menu": "3.31.4",
     "@tiptap/extension-image": "3.31.4",
@@ -37,6 +38,7 @@
     "drizzle-orm": "^0.45.4",
     "linkifyjs": "^4.3.3",
     "marked": "^16.4.2",
+    "mcp-handler": "2.3.0",
     "next": "16.3.6",
     "next-auth": "^5.0.0-beta.32",
     "react": "19.3.0",
@@ -45,6 +47,7 @@
     "zod": "4.6.5"
   },
   "devDependencies": {
+    "@modelcontextprotocol/client": "2.3.1",
     "@playwright/test": "1.64.0",
     "@types/node": "^22",
     "@types/react": "^19",

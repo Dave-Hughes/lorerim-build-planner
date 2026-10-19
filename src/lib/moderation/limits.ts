@@ -1,4 +1,5 @@
 import "server-only";
+import { createHash } from "node:crypto";
 import { and, count, eq, gt, lt, sql } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { newAccountMessage, newAccountUntil } from "./age";
@@ -58,4 +59,31 @@ export async function newAccountHold(userId: string): Promise<string | null> {
     .limit(1);
   const until = newAccountUntil(row?.id ?? null);
   return until ? newAccountMessage(until) : null;
+}
+
+/** The MCP route's limit (WO-108): calls a minute from one IP. */
+export const MCP_CALLS_A_MINUTE = 60;
+export const MCP_LIMIT_MESSAGE = "Too many calls. Try again in a minute.";
+
+/** What's stored for a caller: a SHA-256 of their IP, never the IP. */
+export const mcpSubject = (ip: string) => createHash("sha256").update(`mcp:${ip}`).digest("hex");
+
+/**
+ * Counts one MCP call from `ip` and says whether it's over the limit: the message for the 61st call
+ * in a minute, else null. A call over the limit isn't counted, and events older than an hour go.
+ */
+export async function mcpCall(ip: string): Promise<string | null> {
+  const subject = mcpSubject(ip);
+  const [r] = await db()
+    .select({ n: count() })
+    .from(schema.rateEvents)
+    .where(and(eq(schema.rateEvents.subject, subject), eq(schema.rateEvents.kind, "mcp"), gt(schema.rateEvents.at, sql`now() - interval '1 minute'`)));
+  if (r.n >= MCP_CALLS_A_MINUTE) return MCP_LIMIT_MESSAGE;
+  await db().batch([
+    db().insert(schema.rateEvents).values({ subject, kind: "mcp" }),
+    db()
+      .delete(schema.rateEvents)
+      .where(and(eq(schema.rateEvents.subject, subject), eq(schema.rateEvents.kind, "mcp"), lt(schema.rateEvents.at, sql`now() - interval '1 hour'`))),
+  ]);
+  return null;
 }

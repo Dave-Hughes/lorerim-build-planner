@@ -85,6 +85,13 @@
       "when": 1792255489973,
       "tag": "0011_invite_message",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1792438268465,
+      "tag": "0012_mcp_rate_limit",
+      "breakpoints": true
     }
   ]
 }

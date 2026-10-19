@@ -4385,10 +4385,10 @@ Every tool takes `version` (default `5.0.4.8`; any other id is refused with the 
 - Bob then adds `https://lorerim-build-planner-git-staging-daves-projects-a9b7d176.vercel.app/api/mcp` to Claude as a custom connector with No sign-in and asks the six questions in the spec's done-when.
 
 ### Done when
-- [ ] `FEATURE_MCP` works as in 1; off, the route 404s.
-- [ ] The six tools answer as listed; `get_quest_start` gives instructions only for checked lines.
-- [ ] Rate limit refuses the 61st call in a minute.
-- [ ] Unit and e2e above; every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Bob connects Claude to it and reports.
+- [x] `FEATURE_MCP` works as in 1; off, the route 404s.
+- [x] The six tools answer as listed; `get_quest_start` gives instructions only for checked lines.
+- [x] Rate limit refuses the 61st call in a minute.
+- [x] Unit and e2e above; every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Bob connects Claude to it and reports.
 
 ---
 

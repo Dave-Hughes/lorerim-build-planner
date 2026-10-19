@@ -27,6 +27,16 @@ export const questsOn = (env: Record<string, string | undefined> = process.env) 
   return v === "on" || v === "1" || v === "true";
 };
 
+/**
+ * The planner's MCP route (WO-108), for assistants: the same as the Quests pages, on in dev and on
+ * staging unset, off on production unless FEATURE_MCP says so.
+ */
+export const mcpOn = (env: Record<string, string | undefined> = process.env) => {
+  const v = env.FEATURE_MCP?.trim().toLowerCase();
+  if (!v) return env.NODE_ENV === "development" || env.VERCEL_ENV === "preview";
+  return v === "on" || v === "1" || v === "true";
+};
+
 export interface Features {
   story: boolean;
   siteGuide: boolean;

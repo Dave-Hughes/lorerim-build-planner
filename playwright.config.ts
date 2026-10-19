@@ -40,9 +40,9 @@ export default defineConfig({
   },
   projects: [
     // Story and the site guide on (WO-81), so their tests keep running.
-    { name: "all", testIgnore: /wo81-launch\.spec\.ts|wo84-soon\.spec\.ts|wo92-off\.spec\.ts|wo96-soon\.spec\.ts|wo100-off\.spec\.ts/ },
+    { name: "all", testIgnore: /wo81-launch\.spec\.ts|wo84-soon\.spec\.ts|wo92-off\.spec\.ts|wo96-soon\.spec\.ts|wo100-off\.spec\.ts|wo108-off\.spec\.ts/ },
     // Both off, as they launch.
-    { name: "launch", testMatch: /wo81-launch\.spec\.ts|wo92-off\.spec\.ts|wo100-off\.spec\.ts/, use: { baseURL: `http://localhost:${launchPort}` } },
+    { name: "launch", testMatch: /wo81-launch\.spec\.ts|wo92-off\.spec\.ts|wo100-off\.spec\.ts|wo108-off\.spec\.ts/, use: { baseURL: `http://localhost:${launchPort}` } },
     // The coming soon page in front of everything (WO-84).
     { name: "soon", testMatch: /wo84-soon\.spec\.ts|wo96-soon\.spec\.ts/, use: { baseURL: `http://localhost:${soonPort}` } },
   ],
@@ -67,6 +67,8 @@ export default defineConfig({
       FEATURE_GEAR: p === port ? "on" : "off",
       // FEATURE_QUESTS (WO-100): the same.
       FEATURE_QUESTS: p === port ? "on" : "off",
+      // FEATURE_MCP (WO-108): the same.
+      FEATURE_MCP: p === port ? "on" : "off",
       // FEATURE_COMING_SOON: on for the third server only.
       FEATURE_COMING_SOON: p === soonPort ? "on" : "off",
     },

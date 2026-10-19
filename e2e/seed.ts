@@ -5,7 +5,7 @@
  */
 import { config } from "dotenv";
 import { del, list } from "@vercel/blob";
-import { and, eq, like, or } from "drizzle-orm";
+import { and, eq, isNull, like, or } from "drizzle-orm";
 import { Pool } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-serverless";
 import { assertDatabaseMatchesEnvironment } from "../src/db/environments";
@@ -560,6 +560,8 @@ export async function cleanup() {
     await db.delete(schema.imageChecks).where(like(schema.imageChecks.uploaderId, "e2e-%"));
     await db.delete(schema.builds).where(and(like(schema.builds.id, "e2e%")));
     await db.delete(schema.builds).where(eq(schema.builds.ownerId, TEST_USER_ID));
+    // The MCP route's calls (WO-108): the tests' made-up addresses, counted by subject with no account.
+    await db.delete(schema.rateEvents).where(and(eq(schema.rateEvents.kind, "mcp"), isNull(schema.rateEvents.userId)));
     await db.delete(schema.invites).where(or(like(schema.invites.createdBy, "e2e-%"), like(schema.invites.usedBy, "e2e-%")));
     await db.delete(schema.users).where(like(schema.users.id, "e2e-%"));
   } finally {

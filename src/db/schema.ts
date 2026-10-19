@@ -223,19 +223,22 @@ export const hiddenImages = pgTable("hidden_image", {
   hiddenAt: timestamp("hidden_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
-/** What the per-account rate limits count (WO-40): image uploads and likes. Builds and reports count their own rows. */
+/**
+ * What the rate limits count (WO-40): an account's image uploads and likes (builds and reports count
+ * their own rows), and the MCP route's calls (WO-108), which have no account: those carry `subject`,
+ * a SHA-256 of the caller's IP, never the IP itself.
+ */
 export const rateEvents = pgTable(
   "rate_event",
   {
     id: serial("id").primaryKey(),
-    userId: text("user_id")
-      .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
-    /** `upload` or `like`. */
+    userId: text("user_id").references(() => users.id, { onDelete: "cascade" }),
+    subject: text("subject"),
+    /** `upload`, `like` or `mcp`. */
     kind: text("kind").notNull(),
     at: timestamp("at", { withTimezone: true }).notNull().defaultNow(),
   },
-  (t) => [index("rate_event_user_idx").on(t.userId, t.kind, t.at)],
+  (t) => [index("rate_event_user_idx").on(t.userId, t.kind, t.at), index("rate_event_subject_idx").on(t.subject, t.kind, t.at)],
 );
 
 /**
