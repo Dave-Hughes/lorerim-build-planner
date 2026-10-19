@@ -4524,6 +4524,20 @@ All take `version` (default 5.0.4.8) and act only on builds the signed-in player
 
 ---
 
+## WO-110a  Ranks and carried-over points in the tool answers (Mac, 19 Oct 2026)
+
+**Why.** Dave's Claude drafted a Nord two-hander through the door (`/b/efkfas489t` on staging) and the draft passed Bob's check against the planner's perk text. Two things in the answers made the assistant doubt the planner: a perk with ranks comes back as its bare name repeated ("Great Weapon Mastery, Great Weapon Mastery") where the page says "Great Weapon Mastery 2", and `skillPointsLeft` reads as a leftover when the page calls it "Skill points carried over".
+
+- In `plainOf` and `stateAt` (`src/lib/mcp/plan.ts`), a perk with more than one rank is labelled with the rank the build has by that level, in the input's own form: "Great Weapon Mastery (2/2)", "Longweapon Focus (1/3)". One-rank perks stay the bare name; a name two trees share stays `Tree:Name`.
+- `skillPointsLeft` becomes `skillPointsCarriedOver` in the level state, with the same number; the tool descriptions for `add_level` and `get_build` say "unspent skill points carry to the next level, as on the site".
+- Unit test: the sample build's level with a second rank labels it "(2/2)"; the rename.
+
+### Done when
+- [ ] `get_build` on `/b/efkfas489t` (Dave's draft) shows "Great Weapon Mastery (2/2)" at level 1 and "Longweapon Focus (2/3)" at level 19, and `skillPointsCarriedOver`.
+- [ ] Typecheck, lint, unit tests, the WO-108 to WO-110 e2e. Commit on `staging`, push, stop.
+
+---
+
 ## WO-111 and WO-112  (to write when WO-110 is checked)
 
 - **WO-113 Merchants (PC).** `get_spell` can't say where a spell is sold: the planner has no merchant data. Read vendor containers and their leveled lists from the game files, per spell tome and item, and mark random stock as such. Until then the tool says so and tells the assistant not to name one from memory.
