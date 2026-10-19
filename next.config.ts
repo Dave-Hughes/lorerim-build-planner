@@ -15,6 +15,15 @@ const nextConfig: NextConfig = {
   // The guide's words live in content/guide/*.md (WO-66): ship them with the pages that read them.
   outputFileTracingIncludes: { "/guide": ["./content/guide/**/*"], "/guide/[slug]": ["./content/guide/**/*"], "/guide/questions": ["./content/guide/**/*"], "/guide/mods": ["./content/guide/**/*"], "/guide/terms": ["./content/guide/**/*"] },
   // The FAQ became the guide's All questions (WO-66).
+  // Sign-in for assistants (WO-109): the OAuth metadata lives at /.well-known/, served from /oauth/metadata/.
+  async rewrites() {
+    return [
+      { source: "/.well-known/oauth-authorization-server", destination: "/oauth/metadata/authorization-server" },
+      { source: "/.well-known/oauth-authorization-server/:path*", destination: "/oauth/metadata/authorization-server" },
+      { source: "/.well-known/oauth-protected-resource", destination: "/oauth/metadata/protected-resource" },
+      { source: "/.well-known/oauth-protected-resource/:path*", destination: "/oauth/metadata/protected-resource" },
+    ];
+  },
   async redirects() {
     return [{ source: "/faq", destination: "/guide/questions", permanent: true }];
   },

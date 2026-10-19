@@ -1,0 +1,59 @@
+/* The consent page (WO-109): one panel, the assistant's name, what it may do, Allow and Deny. */
+.main {
+  padding-top: 64px;
+  padding-bottom: 96px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.panel {
+  width: min(640px, 100%);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 32px 36px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+}
+.title {
+  font-size: calc(32px * var(--title-scale));
+  line-height: 1.1;
+}
+.lead {
+  margin: 0;
+  font-size: 17px;
+  color: var(--soft);
+}
+.scopes {
+  margin: 0;
+  padding-left: 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 17px;
+  color: var(--text);
+}
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 6px;
+}
+.from {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+@media (max-width: 699px) {
+  .main {
+    padding-top: 28px;
+  }
+  .panel {
+    padding: 22px 18px;
+  }
+  .title {
+    font-size: 26px;
+  }
+}

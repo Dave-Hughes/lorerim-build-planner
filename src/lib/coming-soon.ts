@@ -16,6 +16,9 @@ export function passesComingSoon(path: string): boolean {
     path === "/coming-soon" ||
     // An early-access invite (WO-96): its page is how an invited player gets in.
     path.startsWith("/invite/") ||
+    // Sign-in for assistants (WO-109): the consent page, the token endpoints and the metadata.
+    path.startsWith("/oauth/") ||
+    path.startsWith("/.well-known/") ||
     path.startsWith("/api/") ||
     path.startsWith("/og") ||
     path.startsWith("/_next/") ||
