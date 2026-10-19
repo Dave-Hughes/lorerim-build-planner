@@ -105,3 +105,24 @@ describe("check_progression on the plain shape (WO-110)", () => {
     expect(r.last?.level).toBe(plain.levels.length);
   });
 });
+
+describe("ranks and carried-over points in the answers (WO-110a)", () => {
+  it("labels a ranked perk with the rank the build has by that level, and leaves one-rank perks bare", () => {
+    const plan = structuredClone(sample) as unknown as BuildPlan;
+    plan.levels[4].perks.push("One-Handed:Weapon Mastery");
+    const plain = plainOf(d, plan);
+    expect(plain.levels[0].perks).toContain("Weapon Mastery (1/2)");
+    expect(plain.levels[4].perks).toContain("Weapon Mastery (2/2)");
+    expect(plain.levels[0].perks).toContain("Conditioning");
+    expect(plain.levels[4].state?.perks).toContain("Weapon Mastery (2/2)");
+    expect(plain.levels[1].state?.perks).toContain("Weapon Mastery (1/2)");
+    // The label reads back as the same perk.
+    expect(names.perk(d, "Weapon Mastery (2/2)")).toBe("One-Handed:Weapon Mastery");
+  });
+
+  it("calls unspent skill points carried over, as the site does", () => {
+    const state = plainOf(d, sample as unknown as BuildPlan).levels[0].state!;
+    expect(state).toHaveProperty("skillPointsCarriedOver");
+    expect(state).not.toHaveProperty("skillPointsLeft");
+  });
+});

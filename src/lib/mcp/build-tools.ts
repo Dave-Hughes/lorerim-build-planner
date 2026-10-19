@@ -69,7 +69,7 @@ export function registerBuildTools(server: Server, guarded: Guarded, origin: str
   tool(
     "add_level",
     "Add the next level",
-    "Add the next level to one of the player's builds; the planner checks the whole build and saves nothing if any level breaks a rule, answering with the rule and the level.",
+    "Add the next level to one of the player's builds; the planner checks the whole build and saves nothing if any level breaks a rule, answering with the rule and the level. Unspent skill points carry to the next level, as on the site.",
     z.object({ build, ...levelFields }),
     (p, a: Parameters<typeof addLevel>[1]) => addLevel(p, a),
   );
@@ -95,7 +95,7 @@ export function registerBuildTools(server: Server, guarded: Guarded, origin: str
     z.object({ build, name: z.string().max(80).optional(), description: z.string().max(300).optional(), notes: z.string().max(6000).optional(), tags: z.array(z.string().max(40)).max(10).optional(), mainSpells: z.array(z.string().max(120)).max(8).optional() }),
     (p, a: Parameters<typeof setDetails>[1]) => setDetails(p, a),
   );
-  tool("get_build", "Read a build", "Get one of the player's builds in the same plain shape the inputs use, each level with its state, plus its review link and who can see it.", z.object({ build }), (p, a: { build: string }) => getBuild(p, a));
+  tool("get_build", "Read a build", "Get one of the player's builds in the same plain shape the inputs use, each level with its state, plus its review link and who can see it. Unspent skill points carry to the next level, as on the site.", z.object({ build }), (p, a: { build: string }) => getBuild(p, a));
   tool("list_my_builds", "List the player's builds", "List the signed-in player's builds: id, name, who can see it, levels, last change, and whether an assistant drafted it.", z.object({}), (p) => listMyBuilds(p));
   tool(
     "finish_draft",

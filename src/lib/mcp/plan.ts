@@ -175,14 +175,15 @@ export function stateAt(d: GameData, states: LevelState[], level: number) {
   return {
     level: s.level,
     skills: s.skills,
-    skillPointsLeft: s.skillPointsAvailable - s.skillPointsSpent,
+    // Unspent skill points carry to the next level, as on the site ("Skill points carried over").
+    skillPointsCarriedOver: s.skillPointsAvailable - s.skillPointsSpent,
     perkPointsLeft: s.perkPoints - s.perkPointsSpent,
     destinyPointsLeft: s.destinyPoints - s.destinyPointsSpent,
     health: s.health,
     magicka: s.magicka,
     stamina: s.stamina,
     carryWeight: s.carryWeight,
-    perks: Object.keys(s.perksTaken).map((id) => names.perkLabel(d, id)),
+    perks: Object.entries(s.perksTaken).map(([id, at]) => names.perkLabel(d, id, at.length)),
   };
 }
 
@@ -204,6 +205,13 @@ export function plainOf(d: GameData, saved: BuildPlan) {
   const { states } = issuesOf(d, plan);
   const spellName = (id: string) => d.spellById.get(id)?.name ?? id;
   const title = (a?: Attribute) => (a ? a[0].toUpperCase() + a.slice(1) : undefined);
+  // Each rank as the build takes it: the second time an id comes up, it's rank 2.
+  const seen = new Map<string, number>();
+  const ranked = (id: string) => {
+    const n = (seen.get(id) ?? 0) + 1;
+    seen.set(id, n);
+    return names.perkLabel(d, id, n);
+  };
   return {
     gameVersion: plan.gameVersion,
     race: plan.race,
@@ -220,7 +228,7 @@ export function plainOf(d: GameData, saved: BuildPlan) {
       level: i + 1,
       ...(lv.attribute ? { attribute: title(lv.attribute) } : {}),
       skillPoints: lv.skillPoints,
-      perks: lv.perks.map((id) => names.perkLabel(d, id)),
+      perks: lv.perks.map(ranked),
       destiny: lv.destiny.map((id) => perkName(d, id)),
       extras: lv.extras.filter((e) => e.kind !== "oghma"),
       spells: (lv.spells ?? []).map((s) => ({ name: spellName(s.id), ...(s.where ? { where: s.where } : {}) })),

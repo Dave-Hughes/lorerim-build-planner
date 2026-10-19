@@ -4534,7 +4534,7 @@ All take `version` (default 5.0.4.8) and act only on builds the signed-in player
 
 ### Done when
 - [ ] `get_build` on `/b/efkfas489t` (Dave's draft) shows "Great Weapon Mastery (2/2)" at level 1 and "Longweapon Focus (2/3)" at level 19, and `skillPointsCarriedOver`.
-- [ ] Typecheck, lint, unit tests, the WO-108 to WO-110 e2e. Commit on `staging`, push, stop.
+- [x] Typecheck, lint, unit tests, the WO-108 to WO-110 e2e. Commit on `staging`, push, stop.
 
 ---
 

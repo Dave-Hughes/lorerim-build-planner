@@ -1,5 +1,5 @@
 import "server-only";
-import type { GameData } from "@/lib/rules/data";
+import { rankCount, type GameData } from "@/lib/rules/data";
 import type { GameItem } from "@/lib/items/search";
 import { FactsError } from "./errors";
 
@@ -113,9 +113,15 @@ export function item(items: readonly GameItem[], name: string): GameItem {
   throw new FactsError(`No item called ${name}. The closest: ${closest(name, items.map((i) => i.name)).join(", ")}.`);
 }
 
-/** The id's display name, back again, for answers in the same plain shape the inputs use. */
-export const perkLabel = (d: GameData, id: string) => {
+/**
+ * The id's display name, back again, for answers in the same plain shape the inputs use: the bare
+ * name, or Tree:Name when two trees share it. With `rank`, a perk that has more than one rank says
+ * which, in the input's own form (WO-110a): "Great Weapon Mastery (2/2)".
+ */
+export const perkLabel = (d: GameData, id: string, rank?: number) => {
   const p = d.perkById.get(id);
   if (!p) return id;
-  return d.perks.filter((x) => x.name === p.name).length > 1 ? p.id : p.name;
+  const name = d.perks.filter((x) => x.name === p.name).length > 1 ? p.id : p.name;
+  const ranks = rankCount(p);
+  return rank && ranks > 1 ? `${name} (${rank}/${ranks})` : name;
 };
