@@ -1,0 +1,6105 @@
+{
+ "line": "dark-brotherhood",
+ "name": "The Dark Brotherhood",
+ "quests": [
+  {
+   "id": "Skyrim.esm:01EA50",
+   "edid": "DB01",
+   "name": "Innocence Lost",
+   "plugin": "Innocence Lost - Quest Expansion.esp",
+   "firstObjectiveStage": 5,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:01EA50 DNAM (Innocence Lost - Quest Expansion.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DB10 (Death Incarnate)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB10_0003CEDA.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB04a (The Silence Has Been Broken)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB04a_0002AD16.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB02a (Sanctuary)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB02a_00022F47.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB11 (Hail Sithis!)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB11_0001EA59.fragment_16 (Skyrim.esm)"
+    },
+    {
+     "by": "DB09 (To Kill an Empire)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB09_0001EA58.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB08 (Recipe for Disaster)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB08_0001EA57.fragment_12 (Skyrim.esm)"
+    },
+    {
+     "by": "DB07 (The Cure for Madness)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB07_0001EA56.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB06 (Breaching Security)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB06_0001EA55.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB05 (Bound Until Death)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB05_0001EA54.fragment_0 (Unofficial Skyrim Special Edition Patch.esp)"
+    },
+    {
+     "by": "DB04 (Whispers in the Dark)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB04_0001EA53.fragment_26 (Skyrim.esm)"
+    },
+    {
+     "by": "DB02 (With Friends Like These...)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB02_0001EA51.fragment_14 (Unofficial Skyrim Special Edition Patch.esp)"
+    }
+   ],
+   "advancedBy": 23,
+   "firstObjective": {
+    "text": "Talk to Aventus Aretino",
+    "index": 5,
+    "source": "Skyrim.esm:01EA50 QOBJ 5",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "AventusAretinoAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Aventus Aretino",
+       "kind": "unique actor",
+       "where": [
+        "Aretino Residence"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016784"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Aretino Residence",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:087BA2",
+   "edid": "DarkBrotherhoodSanctuaryRepair",
+   "name": "Where You Hang Your Enemy's Head...",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [
+    {
+     "by": "DB11 (Hail Sithis!)",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "QF_DB11_0001EA59.fragment_24 (Skyrim.esm)"
+    }
+   ],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Employ Delvin Mallory's services",
+    "index": 10,
+    "source": "Skyrim.esm:087BA2 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DelvinMalloryAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Delvin Mallory",
+       "kind": "unique actor",
+       "where": [
+        "The Ragged Flagon"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016BCF"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "The Ragged Flagon",
+      "ways": 4,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Skyrim.esm:01EA4F",
+   "edid": "DB01Misc",
+   "name": "Delayed Burial",
+   "plugin": "CutContentRestoration - Whiterun Stables Scene.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Cicero",
+     "speakerPlaced": [
+      "Loreius Farm"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0550E0",
+     "conditions": "the speaker is Cicero",
+     "source": "TIF__000550E0.Fragment_0 on INFO Skyrim.esm:0550E0 (Escapeweave.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Vantus Loreius",
+     "speakerPlaced": [
+      "Loreius Farm, Loreius Farmhouse"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0550E6",
+     "conditions": "the speaker is Vantus Loreius",
+     "source": "TIF__000550E6.Fragment_0 on INFO Skyrim.esm:0550E6 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:01EA4F DNAM (CutContentRestoration - Whiterun Stables Scene.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DB02 (With Friends Like These...)",
+     "atStage": 50,
+     "call": "SetStage 215",
+     "source": "QF_DB02_0001EA51.fragment_24 (Unofficial Skyrim Special Edition Patch.esp)"
+    },
+    {
+     "by": "DB02 (With Friends Like These...)",
+     "atStage": 50,
+     "call": "SetStage 210",
+     "source": "QF_DB02_0001EA51.fragment_19 (Unofficial Skyrim Special Edition Patch.esp)"
+    },
+    {
+     "by": "DB02 (With Friends Like These...)",
+     "atStage": 50,
+     "call": "SetStage 215",
+     "source": "QF_DB02_0001EA51.fragment_19 (Unofficial Skyrim Special Edition Patch.esp)"
+    },
+    {
+     "by": "DB02 (With Friends Like These...)",
+     "atStage": 50,
+     "call": "SetStage 215",
+     "source": "QF_DB02_0001EA51.fragment_19 (Unofficial Skyrim Special Edition Patch.esp)"
+    },
+    {
+     "by": "DB02 (With Friends Like These...)",
+     "atStage": 220,
+     "call": "SetStage 210",
+     "source": "QF_DB02_0001EA51.fragment_20 (Unofficial Skyrim Special Edition Patch.esp)"
+    },
+    {
+     "by": "DB02 (With Friends Like These...)",
+     "atStage": 220,
+     "call": "SetStage 215",
+     "source": "QF_DB02_0001EA51.fragment_26 (Unofficial Skyrim Special Edition Patch.esp)"
+    }
+   ],
+   "advancedBy": 7,
+   "firstObjective": {
+    "text": "Talk to the strange jester",
+    "index": 5,
+    "source": "Skyrim.esm:01EA4F QOBJ 5",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "CiceroRoadAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Cicero",
+       "kind": "forced reference",
+       "where": [
+        "Loreius Farm"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:009101"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA51",
+   "edid": "DB02",
+   "name": "With Friends Like These...",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "APS_GuildBrotherhood, a helper quest with Astrid",
+     "questId": "AlternatePerspective.esp:3D36E7",
+     "atStage": 0,
+     "call": "SetStage 10",
+     "source": "QF_APS_GuildBrotherhood_063D36E7.fragment_0 on AlternatePerspective.esp:3D36E7 (AlternatePerspective.esp)",
+     "verdict": "script",
+     "throughStartedBy": []
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:020BE0",
+     "conditions": "the speaker is Astrid",
+     "source": "TIF__00020BE0.Fragment_0 on INFO Skyrim.esm:020BE0 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:020BE1",
+     "conditions": "the speaker is Astrid",
+     "source": "TIF__00020BE1.Fragment_0 on INFO Skyrim.esm:020BE1 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:020BE2",
+     "conditions": "Innocence Lost stage != 201; the speaker is Astrid",
+     "source": "TIF__00020BE2.Fragment_0 on INFO Skyrim.esm:020BE2 (Destroy the Dark Brotherhood - Quest Expansion.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0CEFB9",
+     "conditions": "Innocence Lost stage != 201; the speaker is Astrid",
+     "source": "TIF__000CEFB9.Fragment_1 on INFO Skyrim.esm:0CEFB9 (Destroy the Dark Brotherhood - Quest Expansion.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Destroy the Dark Brotherhood - Quest Expansion.esp:0008B0",
+     "conditions": "Innocence Lost stage == 201; the speaker is Astrid",
+     "source": "DB_GrelodAlt_2.Fragment_0 on INFO Destroy the Dark Brotherhood - Quest Expansion.esp:0008B0 (Destroy the Dark Brotherhood - Quest Expansion.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Destroy the Dark Brotherhood - Quest Expansion.esp:0008A7",
+     "conditions": "Innocence Lost stage == 201; the speaker is Astrid",
+     "source": "DBGrelod_Alt1.Fragment_0 on INFO Destroy the Dark Brotherhood - Quest Expansion.esp:0008A7 (Destroy the Dark Brotherhood - Quest Expansion.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DB10 (Death Incarnate)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB10_0003CEDA.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB04a (The Silence Has Been Broken)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB04a_0002AD16.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB02a (Sanctuary)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB02a_00022F47.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB11 (Hail Sithis!)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB11_0001EA59.fragment_16 (Skyrim.esm)"
+    },
+    {
+     "by": "DB09 (To Kill an Empire)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB09_0001EA58.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB08 (Recipe for Disaster)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB08_0001EA57.fragment_12 (Skyrim.esm)"
+    },
+    {
+     "by": "DB07 (The Cure for Madness)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB07_0001EA56.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB06 (Breaching Security)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB06_0001EA55.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB05 (Bound Until Death)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB05_0001EA54.fragment_0 (Unofficial Skyrim Special Edition Patch.esp)"
+    },
+    {
+     "by": "DB04 (Whispers in the Dark)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB04_0001EA53.fragment_26 (Skyrim.esm)"
+    },
+    {
+     "by": "DB03 (Mourning Never Comes)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB03_0001EA52.fragment_0 (Unofficial Skyrim Special Edition Patch.esp)"
+    }
+   ],
+   "advancedBy": 10,
+   "firstObjective": {
+    "text": "Kill one of the captives",
+    "index": 10,
+    "source": "Skyrim.esm:01EA51 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:022F47",
+   "edid": "DB02a",
+   "name": "Sanctuary",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:020BDF",
+     "conditions": "the speaker is Astrid",
+     "source": "TIF__00020BDF.Fragment_0 on INFO Skyrim.esm:020BDF (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:020BDE",
+     "conditions": "the speaker is Astrid",
+     "source": "TIF__00020BDE.Fragment_0 on INFO Skyrim.esm:020BDE (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:020BDD",
+     "conditions": "With Friends Like These... stage == 50; the speaker is Astrid",
+     "source": "TIF__00020BDD.Fragment_0 on INFO Skyrim.esm:020BDD (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DBSideContract12 (Contract: Kill Safia)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DBSideContract12_0001EA68.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DBSideContract11 (Contract: Kill Helvard)",
+     "atStage": 0,
+     "call": "SetStage 20",
+     "source": "QF_DBSideContract11_0001EA67.fragment_0 (Unofficial Skyrim Special Edition Patch.esp)"
+    },
+    {
+     "by": "DBSideContract10 (Contract: Kill Maluril)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DBSideContract10_0001EA66.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DBSideContract09 (Contract: Kill Agnis)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DBSideContract09_0001EA65.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DBSideContract08 (Contract: Kill Anoriath)",
+     "atStage": 0,
+     "call": "SetStage 20",
+     "source": "QF_DBSideContract08_0001EA64.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DBSideContract07 (Contract: Kill Ma'randru-jo)",
+     "atStage": 0,
+     "call": "SetStage 20",
+     "source": "QF_DBSideContract07_0001EA63.fragment_10 (Skyrim.esm)"
+    },
+    {
+     "by": "DBSideContract06 (Contract: Kill Deekus)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DBSideContract06_0001EA62.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DBSideContract05 (Contract: Kill Lurbuk)",
+     "atStage": 0,
+     "call": "SetStage 20",
+     "source": "QF_DBSideContract05_0001EA61.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DBSideContract04 (Contract: Kill Hern)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DBSideContract04_0001EA60.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DBSideContract03 (Contract: Kill Beitild)",
+     "atStage": 0,
+     "call": "SetStage 10",
+     "source": "QF_DBSideContract03_0001EA5F.fragment_0 (Unofficial Skyrim Special Edition Patch.esp)"
+    },
+    {
+     "by": "DBSideContract02 (Contract: Kill Ennodius Papius)",
+     "atStage": 0,
+     "call": "SetStage 10",
+     "source": "QF_DBSideContract02_0001EA5E.fragment_4 (Skyrim.esm)"
+    },
+    {
+     "by": "DBSideContract01 (Contract: Kill Narfi)",
+     "atStage": 0,
+     "call": "SetStage 10",
+     "source": "QF_DBSideContract01_0001EA5B.fragment_0 (CC Farming - Tweaks and Enhancements.esp)"
+    },
+    {
+     "by": "DB03 (Mourning Never Comes)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB03_0001EA52.fragment_0 (Unofficial Skyrim Special Edition Patch.esp)"
+    }
+   ],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Speak with Nazir",
+    "index": 10,
+    "source": "Skyrim.esm:022F47 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "NazirAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Nazir",
+       "kind": "forced reference",
+       "where": [
+        "Dark Brotherhood Sanctuary"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0AD5A1"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Dark Brotherhood Sanctuary",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA52",
+   "edid": "DB03",
+   "name": "Mourning Never Comes",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 5,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:0AAAC9",
+     "conditions": "the speaker is Nazir; fn629 >= 1; fn629 <= 3; Mourning Never Comes stage < 10",
+     "source": "TIF__000AAAC9.Fragment_0 on INFO Skyrim.esm:0AAAC9 (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DB10 (Death Incarnate)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB10_0003CEDA.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB04a (The Silence Has Been Broken)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB04a_0002AD16.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DBrecurring (The Dark Brotherhood Forever)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DBRecurring_0001EA5A.fragment_3 (LoreRim - Global Modifiers.esp)"
+    },
+    {
+     "by": "DB11 (Hail Sithis!)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB11_0001EA59.fragment_16 (Skyrim.esm)"
+    },
+    {
+     "by": "DB09 (To Kill an Empire)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB09_0001EA58.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB08 (Recipe for Disaster)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB08_0001EA57.fragment_12 (Skyrim.esm)"
+    },
+    {
+     "by": "DB07 (The Cure for Madness)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB07_0001EA56.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB06 (Breaching Security)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB06_0001EA55.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB05 (Bound Until Death)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB05_0001EA54.fragment_0 (Unofficial Skyrim Special Edition Patch.esp)"
+    },
+    {
+     "by": "DB04 (Whispers in the Dark)",
+     "atStage": 0,
+     "call": "SetStage 40",
+     "source": "QF_DB04_0001EA53.fragment_26 (Skyrim.esm)"
+    },
+    {
+     "by": "DB04 (Whispers in the Dark)",
+     "atStage": 0,
+     "call": "SetStage 50",
+     "source": "QF_DB04_0001EA53.fragment_26 (Skyrim.esm)"
+    }
+   ],
+   "advancedBy": 11,
+   "firstObjective": {
+    "text": "Speak with Astrid",
+    "index": 5,
+    "source": "Skyrim.esm:01EA52 QOBJ 5",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "AstridAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Astrid",
+       "kind": "forced reference",
+       "where": [
+        "Abandoned Shack"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:050F1E"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [
+     {
+      "door": "Skyrim.esm:050F1F",
+      "plugin": "Skyrim.esm",
+      "text": "The door from Abandoned Shack into Abandoned Shack needs the Abandoned Shack Key."
+     }
+    ],
+    "ways": [
+     {
+      "cell": "Abandoned Shack",
+      "ways": 1,
+      "locked": 1
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA53",
+   "edid": "DB04",
+   "name": "Whispers in the Dark",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DB03 (Mourning Never Comes)",
+     "questId": "Skyrim.esm:01EA52",
+     "atStage": 50,
+     "call": "SetStage 1",
+     "source": "QF_DB03_0001EA52.fragment_39 on Skyrim.esm:01EA52 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "DB03 (Mourning Never Comes)",
+     "questId": "Skyrim.esm:01EA52",
+     "atStage": 200,
+     "call": "SetStage 1",
+     "source": "QF_DB03_0001EA52.fragment_14 on Skyrim.esm:01EA52 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0403F6",
+     "conditions": "the speaker is Astrid",
+     "source": "TIF__000403F6.Fragment_0 on INFO Skyrim.esm:0403F6 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0403F7",
+     "conditions": "the speaker is Astrid",
+     "source": "TIF__000403F7.Fragment_0 on INFO Skyrim.esm:0403F7 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:040361",
+     "conditions": "the speaker is Astrid",
+     "source": "TIF__00040361.Fragment_0 on INFO Skyrim.esm:040361 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:0A34FD",
+     "conditions": "fn629 == 4; the speaker is Nazir",
+     "source": "TIF__000A34FD.Fragment_0 on INFO Skyrim.esm:0A34FD (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DB10 (Death Incarnate)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB10_0003CEDA.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB04a (The Silence Has Been Broken)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB04a_0002AD16.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DBSideContract04 (Contract: Kill Hern)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DBSideContract04_0001EA60.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB11 (Hail Sithis!)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB11_0001EA59.fragment_16 (Skyrim.esm)"
+    },
+    {
+     "by": "DB09 (To Kill an Empire)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB09_0001EA58.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB08 (Recipe for Disaster)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB08_0001EA57.fragment_12 (Skyrim.esm)"
+    },
+    {
+     "by": "DB07 (The Cure for Madness)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB07_0001EA56.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB06 (Breaching Security)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB06_0001EA55.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB05 (Bound Until Death)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB05_0001EA54.fragment_0 (Unofficial Skyrim Special Edition Patch.esp)"
+    }
+   ],
+   "advancedBy": 6,
+   "firstObjective": {
+    "text": "Hide in the Night Mother's coffin",
+    "index": 10,
+    "source": "Skyrim.esm:01EA53 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "CoffinAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Night Mother's Coffin",
+       "kind": "forced reference",
+       "where": [
+        "Dark Brotherhood Sanctuary"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0AD5A1"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Dark Brotherhood Sanctuary",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:02AD16",
+   "edid": "DB04a",
+   "name": "The Silence Has Been Broken",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 5,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DB04 (Whispers in the Dark)",
+     "questId": "Skyrim.esm:01EA53",
+     "atStage": 40,
+     "call": "Start",
+     "source": "QF_DB04_0001EA53.fragment_12 on Skyrim.esm:01EA53 (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DB10 (Death Incarnate)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB10_0003CEDA.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DBSideContract06 (Contract: Kill Deekus)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DBSideContract06_0001EA62.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB11 (Hail Sithis!)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB11_0001EA59.fragment_16 (Skyrim.esm)"
+    },
+    {
+     "by": "DB09 (To Kill an Empire)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB09_0001EA58.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB08 (Recipe for Disaster)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB08_0001EA57.fragment_12 (Skyrim.esm)"
+    },
+    {
+     "by": "DB07 (The Cure for Madness)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB07_0001EA56.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB06 (Breaching Security)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB06_0001EA55.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB05 (Bound Until Death)",
+     "atStage": 0,
+     "call": "SetStage 40",
+     "source": "QF_DB05_0001EA54.fragment_0 (Unofficial Skyrim Special Edition Patch.esp)"
+    }
+   ],
+   "advancedBy": 14,
+   "firstObjective": {
+    "text": "Speak with Astrid",
+    "index": 5,
+    "source": "Skyrim.esm:02AD16 QOBJ 5",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "AstridAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Astrid",
+       "kind": "forced reference",
+       "where": [
+        "Abandoned Shack"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:050F1E"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [
+     {
+      "door": "Skyrim.esm:050F1F",
+      "plugin": "Skyrim.esm",
+      "text": "The door from Abandoned Shack into Abandoned Shack needs the Abandoned Shack Key."
+     }
+    ],
+    "ways": [
+     {
+      "cell": "Abandoned Shack",
+      "ways": 1,
+      "locked": 1
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA54",
+   "edid": "DB05",
+   "name": "Bound Until Death",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:037B5A",
+     "conditions": "the speaker is Astrid",
+     "source": "TIF__00037B5A.Fragment_0 on INFO Skyrim.esm:037B5A (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0E0E54",
+     "conditions": "the speaker is Astrid",
+     "source": "TIF__000E0E54.Fragment_0 on INFO Skyrim.esm:0E0E54 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0E0E55",
+     "conditions": "the speaker is Astrid",
+     "source": "TIF__000E0E55.Fragment_0 on INFO Skyrim.esm:0E0E55 (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DB10 (Death Incarnate)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB10_0003CEDA.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB11 (Hail Sithis!)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB11_0001EA59.fragment_16 (Skyrim.esm)"
+    },
+    {
+     "by": "DB09 (To Kill an Empire)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB09_0001EA58.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB08 (Recipe for Disaster)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB08_0001EA57.fragment_12 (Skyrim.esm)"
+    },
+    {
+     "by": "DB07 (The Cure for Madness)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB07_0001EA56.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB06 (Breaching Security)",
+     "atStage": 0,
+     "call": "SetStage 20",
+     "source": "QF_DB06_0001EA55.fragment_0 (Skyrim.esm)"
+    }
+   ],
+   "advancedBy": 8,
+   "firstObjective": {
+    "text": "Kill Vittoria Vici",
+    "index": 10,
+    "source": "Skyrim.esm:01EA54 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "VittoriaViciAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Vittoria Vici",
+       "kind": "unique actor",
+       "where": [
+        "Vittoria Vici's House"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016A07"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Vittoria Vici's House",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA55",
+   "edid": "DB06",
+   "name": "Breaching Security",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 5,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:037B52",
+     "conditions": "fn629 == 1; the speaker is Astrid",
+     "source": "TIF__00037B52.Fragment_0 on INFO Skyrim.esm:037B52 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:0618A6",
+     "conditions": "fn629 == 0; the speaker is Astrid",
+     "source": "TIF__000618A6.Fragment_0 on INFO Skyrim.esm:0618A6 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:037B43",
+     "conditions": "fn629 == 1; the speaker is Astrid",
+     "source": "TIF__00037B43.Fragment_0 on INFO Skyrim.esm:037B43 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:0618A7",
+     "conditions": "fn629 == 0; the speaker is Astrid",
+     "source": "TIF__000618A7.Fragment_0 on INFO Skyrim.esm:0618A7 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:037B4B",
+     "conditions": "fn629 == 1; the speaker is Astrid",
+     "source": "TIF__00037B4B.Fragment_0 on INFO Skyrim.esm:037B4B (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:0618A8",
+     "conditions": "fn629 == 0; the speaker is Astrid",
+     "source": "TIF__000618A8.Fragment_0 on INFO Skyrim.esm:0618A8 (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DB10 (Death Incarnate)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB10_0003CEDA.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB11 (Hail Sithis!)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB11_0001EA59.fragment_16 (Skyrim.esm)"
+    },
+    {
+     "by": "DB09 (To Kill an Empire)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB09_0001EA58.fragment_0 (Skyrim.esm)"
+    },
+    {
+     "by": "DB08 (Recipe for Disaster)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB08_0001EA57.fragment_12 (Skyrim.esm)"
+    },
+    {
+     "by": "DB07 (The Cure for Madness)",
+     "atStage": 0,
+     "call": "SetStage 30",
+     "source": "QF_DB07_0001EA56.fragment_0 (Skyrim.esm)"
+    }
+   ],
+   "advancedBy": 5,
+   "firstObjective": {
+    "text": "Speak with Gabriella",
+    "index": 5,
+    "source": "Skyrim.esm:01EA55 QOBJ 5",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "GabriellaAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Gabriella",
+       "kind": "forced reference",
+       "where": [
+        "Dark Brotherhood Sanctuary"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0AD5A1"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Dark Brotherhood Sanctuary",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA56",
+   "edid": "DB07",
+   "name": "The Cure for Madness",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Gabriella",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:059636",
+     "conditions": "fn629 == 1; the speaker is Gabriella",
+     "source": "TIF__00059636.Fragment_1 on INFO Skyrim.esm:059636 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Gabriella",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:059643",
+     "conditions": "fn629 == 0; the speaker is Gabriella",
+     "source": "TIF__00059643.Fragment_1 on INFO Skyrim.esm:059643 (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DB10 (Death Incarnate)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB10_0003CEDA.fragment_2 (Skyrim.esm)"
+    },
+    {
+     "by": "DB11 (Hail Sithis!)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB11_0001EA59.fragment_17 (Skyrim.esm)"
+    },
+    {
+     "by": "DB09 (To Kill an Empire)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB09_0001EA58.fragment_2 (Skyrim.esm)"
+    },
+    {
+     "by": "DB08 (Recipe for Disaster)",
+     "atStage": 0,
+     "call": "SetStage 60",
+     "source": "QF_DB08_0001EA57.fragment_12 (Skyrim.esm)"
+    }
+   ],
+   "advancedBy": 10,
+   "firstObjective": {
+    "text": "Talk to Astrid",
+    "index": 10,
+    "source": "Skyrim.esm:01EA56 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "AstridAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Astrid",
+       "kind": "forced reference",
+       "where": [
+        "Abandoned Shack"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:050F1E"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [
+     {
+      "door": "Skyrim.esm:050F1F",
+      "plugin": "Skyrim.esm",
+      "text": "The door from Abandoned Shack into Abandoned Shack needs the Abandoned Shack Key."
+     }
+    ],
+    "ways": [
+     {
+      "cell": "Abandoned Shack",
+      "ways": 1,
+      "locked": 1
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA57",
+   "edid": "DB08",
+   "name": "Recipe for Disaster",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 2,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 2",
+     "info": "Skyrim.esm:038C6D",
+     "conditions": "the speaker is Astrid",
+     "source": "TIF__00038C6D.Fragment_0 on INFO Skyrim.esm:038C6D (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DB10 (Death Incarnate)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB10_0003CEDA.fragment_2 (Skyrim.esm)"
+    },
+    {
+     "by": "DB11 (Hail Sithis!)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB11_0001EA59.fragment_17 (Skyrim.esm)"
+    },
+    {
+     "by": "DB09 (To Kill an Empire)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB09_0001EA58.fragment_2 (Skyrim.esm)"
+    }
+   ],
+   "advancedBy": 12,
+   "firstObjective": {
+    "text": "Report to Festus Krex",
+    "index": 2,
+    "source": "Skyrim.esm:01EA57 QOBJ 2",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FestusKrexAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Festus Krex",
+       "kind": "forced reference",
+       "where": [
+        "Dark Brotherhood Sanctuary"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0AD5A1"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Dark Brotherhood Sanctuary",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA58",
+   "edid": "DB09",
+   "name": "To Kill an Empire",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 5,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Festus Krex",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:068B6D",
+     "conditions": "the speaker is Festus Krex",
+     "source": "TIF__00068B6D.Fragment_1 on INFO Skyrim.esm:068B6D (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Festus Krex",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:068B6C",
+     "conditions": "the speaker is Festus Krex",
+     "source": "TIF__00068B6C.Fragment_1 on INFO Skyrim.esm:068B6C (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Festus Krex",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:068B75",
+     "conditions": "the speaker is Festus Krex",
+     "source": "TIF__00068B75.Fragment_1 on INFO Skyrim.esm:068B75 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Festus Krex",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:068B78",
+     "conditions": "fn629 == 1; fn629 == 1; fn629 == 1; fn629 == 1; the speaker is Festus Krex",
+     "source": "TIF__00068B78.Fragment_1 on INFO Skyrim.esm:068B78 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Festus Krex",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:068B7B",
+     "conditions": "fn629 == 1; fn629 == 1; fn629 == 0; the speaker is Festus Krex",
+     "source": "TIF__00068B7B.Fragment_1 on INFO Skyrim.esm:068B7B (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DB10 (Death Incarnate)",
+     "atStage": 0,
+     "call": "SetStage 70",
+     "source": "QF_DB10_0003CEDA.fragment_2 (Skyrim.esm)"
+    },
+    {
+     "by": "DB11 (Hail Sithis!)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "QF_DB11_0001EA59.fragment_17 (Skyrim.esm)"
+    }
+   ],
+   "advancedBy": 9,
+   "firstObjective": {
+    "text": "Report to Astrid",
+    "index": 5,
+    "source": "Skyrim.esm:01EA58 QOBJ 5",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "AstridAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Astrid",
+       "kind": "forced reference",
+       "where": [
+        "Abandoned Shack"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:050F1E"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [
+     {
+      "door": "Skyrim.esm:050F1F",
+      "plugin": "Skyrim.esm",
+      "text": "The door from Abandoned Shack into Abandoned Shack needs the Abandoned Shack Key."
+     }
+    ],
+    "ways": [
+     {
+      "cell": "Abandoned Shack",
+      "ways": 1,
+      "locked": 1
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:03CEDA",
+   "edid": "DB10",
+   "name": "Death Incarnate",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DarkBrotherhood (named \"Dark Brotherhood\" in its record), a helper quest with AmaundAlias, AventusAlias, MuiriAlias",
+     "questId": "Skyrim.esm:01EA5C",
+     "atStage": null,
+     "call": "SetStage 10",
+     "source": "pSancSoldierScript.OnUpdate on Skyrim.esm:01EA5C (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script",
+     "throughStartedBy": []
+    },
+    {
+     "by": "quest script",
+     "quest": "DB09 (To Kill an Empire)",
+     "questId": "Skyrim.esm:01EA58",
+     "atStage": 75,
+     "call": "SetStage 1",
+     "source": "QF_DB09_0001EA58.fragment_59 on Skyrim.esm:01EA58 (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DB11 (Hail Sithis!)",
+     "atStage": 0,
+     "call": "SetStage 80",
+     "source": "QF_DB11_0001EA59.fragment_17 (Skyrim.esm)"
+    }
+   ],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Enter the Sanctuary",
+    "index": 10,
+    "source": "Skyrim.esm:03CEDA QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "BlackDoorAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Iron Door",
+       "kind": "forced reference",
+       "where": [
+        "Dark Brotherhood Sanctuary"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:009C62"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Dark Brotherhood Sanctuary",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA59",
+   "edid": "DB11",
+   "name": "Hail Sithis!",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 5,
+   "startedBy": [],
+   "caughtUpBy": [
+    {
+     "by": "DBrecurring (The Dark Brotherhood Forever)",
+     "atStage": 0,
+     "call": "SetStage 80",
+     "source": "QF_DBRecurring_0001EA5A.fragment_5 (LoreRim - Global Modifiers.esp)"
+    }
+   ],
+   "advancedBy": 6,
+   "firstObjective": {
+    "text": "Talk to Nazir",
+    "index": 5,
+    "source": "Skyrim.esm:01EA59 QOBJ 5",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "NazirAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Nazir",
+       "kind": "forced reference",
+       "where": [
+        "Dark Brotherhood Sanctuary"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0AD5A1"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Dark Brotherhood Sanctuary",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Skyrim.esm:0934FB",
+   "edid": "DBDestroy",
+   "name": "Destroy the Dark Brotherhood!",
+   "plugin": "LoreRim - Dialogue Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DarkBrotherhood (named \"Dark Brotherhood\" in its record), a helper quest with AmaundAlias, AventusAlias, MuiriAlias",
+     "questId": "Skyrim.esm:01EA5C",
+     "atStage": null,
+     "call": "SetStage 10",
+     "source": "pAstridScript.OnDeath on Skyrim.esm:01EA5C (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script",
+     "throughStartedBy": []
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 5,
+   "firstObjective": {
+    "text": "Report Astrid's death to a guard",
+    "index": 10,
+    "source": "Skyrim.esm:0934FB QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "3000 gold",
+     "stage": 200,
+     "source": "QF_DBDestroy_000934FB.fragment_2",
+     "verdict": "script"
+    }
+   ]
+  },
+  {
+   "id": "Skyrim.esm:06F9A5",
+   "edid": "DBEviction",
+   "name": "Honor Thy Family",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DBSuspensionQuest (named \"Dark Brotherhood Suspension\" in its record), a helper quest",
+     "questId": "Skyrim.esm:0A2490",
+     "atStage": 0,
+     "call": "Start",
+     "source": "QF_DBSuspensionQuest_000A2490.fragment_0 on Skyrim.esm:0A2490 (Skyrim.esm)",
+     "verdict": "script",
+     "throughStartedBy": []
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:06F99D",
+     "conditions": "fn629 == 1; Hail Sithis! stage <= 80; the speaker is Nazir",
+     "source": "TIF__0006F99D.Fragment_0 on INFO Skyrim.esm:06F99D (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:06F99E",
+     "conditions": "fn629 == 1; Hail Sithis! stage > 80; the speaker is Nazir",
+     "source": "TIF__0006F99E.Fragment_0 on INFO Skyrim.esm:06F99E (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Gabriella",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:06F99F",
+     "conditions": "fn629 == 1; the speaker is Gabriella; Destroy the Dark Brotherhood! stage <= 10",
+     "source": "TIF__0006F99F.Fragment_0 on INFO Skyrim.esm:06F99F (Destroy the Dark Brotherhood - Quest Expansion.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Babette",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:06F9A0",
+     "conditions": "fn629 == 1; the speaker is Babette",
+     "source": "TIF__0006F9A0.Fragment_0 on INFO Skyrim.esm:06F9A0 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Festus Krex",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:06F9A1",
+     "conditions": "fn629 == 1; the speaker is Festus Krex",
+     "source": "TIF__0006F9A1.Fragment_0 on INFO Skyrim.esm:06F9A1 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Arnbjorn",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:06F9A2",
+     "conditions": "fn629 == 1; the speaker is Arnbjorn",
+     "source": "TIF__0006F9A2.Fragment_0 on INFO Skyrim.esm:06F9A2 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Veezara",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:06F9A3",
+     "conditions": "fn629 == 1; the speaker is Veezara; Destroy the Dark Brotherhood! stage <= 10",
+     "source": "TIF__0006F9A3.Fragment_0 on INFO Skyrim.esm:06F9A3 (Destroy the Dark Brotherhood - Quest Expansion.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Astrid",
+     "speakerPlaced": [
+      "Abandoned Shack"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:06F9A4",
+     "conditions": "fn629 == 1; the speaker is Astrid",
+     "source": "TIF__0006F9A4.Fragment_0 on INFO Skyrim.esm:06F9A4 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Cicero",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0D5C3A",
+     "conditions": "fn629 == 1; the speaker is Cicero",
+     "source": "TIF__000D5C3A.Fragment_0 on INFO Skyrim.esm:0D5C3A (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Cicero",
+     "speakerPlaced": [
+      "Dawnstar"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0D5C3B",
+     "conditions": "fn629 == 1; the speaker is Cicero",
+     "source": "TIF__000D5C3B.Fragment_0 on INFO Skyrim.esm:0D5C3B (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Dark Brotherhood Initiate",
+     "speakerPlaced": [
+      "Dawnstar Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0D5C3C",
+     "conditions": "fn629 == 1; the speaker is Dark Brotherhood Initiate",
+     "source": "TIF__000D5C3C.Fragment_0 on INFO Skyrim.esm:0D5C3C (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Adelinda",
+     "speakerPlaced": [
+      "Dawnstar Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0D5C3D",
+     "conditions": "fn629 == 1; the speaker is Adelinda",
+     "source": "TIF__000D5C3D.Fragment_0 on INFO Skyrim.esm:0D5C3D (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Pay Nazir the fine",
+    "index": 10,
+    "source": "Skyrim.esm:06F9A5 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "NazirAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Nazir",
+       "kind": "forced reference",
+       "where": [
+        "Dark Brotherhood Sanctuary"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0AD5A1"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Dark Brotherhood Sanctuary",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA5B",
+   "edid": "DBSideContract01",
+   "name": "Contract: Kill Narfi",
+   "plugin": "CC Farming - Tweaks and Enhancements.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:020017",
+     "conditions": "Sanctuary stage < 200; fn629 == 1; the speaker is Nazir; GetInFaction ccvsvsse004-beafarmer.esl:00086C == 0",
+     "source": "TIF__00020017.Fragment_0 on INFO Skyrim.esm:020017 (CC Farming - Tweaks and Enhancements.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Kill Narfi",
+    "index": 10,
+    "source": "Skyrim.esm:01EA5B QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DBSideContract01NarfiAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Narfi",
+       "kind": "forced reference",
+       "where": [
+        "Ivarstead"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0097A1"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [
+     {
+      "door": "The Great Town of Ivarstead.esp:000090",
+      "plugin": "The Great Town of Ivarstead.esp",
+      "text": "The door from Henrik's House into Ivarstead needs the Key to Henrik's House, carried by Henrik."
+     }
+    ],
+    "ways": [
+     {
+      "cell": "Ivarstead",
+      "ways": 1,
+      "locked": 1
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA5E",
+   "edid": "DBSideContract02",
+   "name": "Contract: Kill Ennodius Papius",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:020017",
+     "conditions": "Sanctuary stage < 200; fn629 == 1; the speaker is Nazir; GetInFaction ccvsvsse004-beafarmer.esl:00086C == 0",
+     "source": "TIF__00020017.Fragment_0 on INFO Skyrim.esm:020017 (CC Farming - Tweaks and Enhancements.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "CC Farming - Tweaks and Enhancements.esp:000800",
+     "conditions": "Sanctuary stage < 200; fn629 == 1; the speaker is Nazir; GetInFaction ccvsvsse004-beafarmer.esl:00086C == 1",
+     "source": "DBNazir_ContractSet1Ready_Alternate.Fragment_0 on INFO CC Farming - Tweaks and Enhancements.esp:000800 (CC Farming - Tweaks and Enhancements.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill Ennodius Papius",
+    "index": 10,
+    "source": "Skyrim.esm:01EA5E QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DBEnnodiusAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Ennodius Papius",
+       "kind": "unique actor",
+       "where": [
+        "Anga's Mill"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0090D1"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA5F",
+   "edid": "DBSideContract03",
+   "name": "Contract: Kill Beitild",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:020017",
+     "conditions": "Sanctuary stage < 200; fn629 == 1; the speaker is Nazir; GetInFaction ccvsvsse004-beafarmer.esl:00086C == 0",
+     "source": "TIF__00020017.Fragment_0 on INFO Skyrim.esm:020017 (CC Farming - Tweaks and Enhancements.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "CC Farming - Tweaks and Enhancements.esp:000800",
+     "conditions": "Sanctuary stage < 200; fn629 == 1; the speaker is Nazir; GetInFaction ccvsvsse004-beafarmer.esl:00086C == 1",
+     "source": "DBNazir_ContractSet1Ready_Alternate.Fragment_0 on INFO CC Farming - Tweaks and Enhancements.esp:000800 (CC Farming - Tweaks and Enhancements.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill Beitild",
+    "index": 10,
+    "source": "Skyrim.esm:01EA5F QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DBBeitildAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Beitild",
+       "kind": "forced reference",
+       "where": [
+        "Beitild's House"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:013A88"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Beitild's House",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA60",
+   "edid": "DBSideContract04",
+   "name": "Contract: Kill Hern",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:02AD12",
+     "conditions": "Whispers in the Dark stage > 50; fn629 == 3; fn629 == 0; the speaker is Nazir",
+     "source": "TIF__0002AD12.Fragment_0 on INFO Skyrim.esm:02AD12 (CC Farming - Tweaks and Enhancements.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0205BE",
+     "conditions": "Whispers in the Dark stage == 50; fn629 == 3; fn629 == 0; the speaker is Nazir",
+     "source": "TIF__000205BE.Fragment_0 on INFO Skyrim.esm:0205BE (CC Farming - Tweaks and Enhancements.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill Hern",
+    "index": 10,
+    "source": "Skyrim.esm:01EA60 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DBHernAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Hern",
+       "kind": "forced reference",
+       "where": [
+        "Half-Moon Mill"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0161EF"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Half-Moon Mill",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA61",
+   "edid": "DBSideContract05",
+   "name": "Contract: Kill Lurbuk",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:02AD12",
+     "conditions": "Whispers in the Dark stage > 50; fn629 == 3; fn629 == 0; the speaker is Nazir",
+     "source": "TIF__0002AD12.Fragment_0 on INFO Skyrim.esm:02AD12 (CC Farming - Tweaks and Enhancements.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0205BE",
+     "conditions": "Whispers in the Dark stage == 50; fn629 == 3; fn629 == 0; the speaker is Nazir",
+     "source": "TIF__000205BE.Fragment_0 on INFO Skyrim.esm:0205BE (CC Farming - Tweaks and Enhancements.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill Lurbuk",
+    "index": 10,
+    "source": "Skyrim.esm:01EA61 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DBLurbukAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Lurbuk",
+       "kind": "forced reference",
+       "where": [
+        "Moorside Inn"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0138CE"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Moorside Inn",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA62",
+   "edid": "DBSideContract06",
+   "name": "Contract: Kill Deekus",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:02AD00",
+     "conditions": "The Silence Has Been Broken stage >= 30; fn629 == 5; fn629 == 1; the speaker is Nazir",
+     "source": "TIF__0002AD00.Fragment_0 on INFO Skyrim.esm:02AD00 (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill Deekus",
+    "index": 10,
+    "source": "Skyrim.esm:01EA62 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DBDeekusAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Deekus",
+       "kind": "unique actor",
+       "where": [
+        "Hela's Folly"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:008E34"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA63",
+   "edid": "DBSideContract07",
+   "name": "Contract: Kill Ma'randru-jo",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:02AD00",
+     "conditions": "The Silence Has Been Broken stage >= 30; fn629 == 5; fn629 == 1; the speaker is Nazir",
+     "source": "TIF__0002AD00.Fragment_0 on INFO Skyrim.esm:02AD00 (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill Ma'randru-jo",
+    "index": 10,
+    "source": "Skyrim.esm:01EA63 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DBMarandrujoAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Ma'randru-jo",
+       "kind": "unique actor",
+       "where": [
+        "Salvius Farm"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:007178"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [
+     {
+      "door": "Lux Via - Markarth Entrance and Farm Overhaul.esp:0008B8",
+      "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+      "text": "The door from Mill Maintenance, Markarth Mill Maintenance into Salvius Farm needs the Key to Savantus Mill Maintenance, carried by Savantus Ingenius."
+     },
+     {
+      "door": "Lux Via - Markarth Entrance and Farm Overhaul.esp:000888",
+      "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+      "text": "The door from Hilarius Farmhouse into Salvius Farm needs the Key to Hilarius Farmhouse, carried by Hilarius; Vagdis Hilarius."
+     }
+    ],
+    "ways": [
+     {
+      "cell": "Salvius Farm",
+      "ways": 2,
+      "locked": 2
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA64",
+   "edid": "DBSideContract08",
+   "name": "Contract: Kill Anoriath",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:02AD00",
+     "conditions": "The Silence Has Been Broken stage >= 30; fn629 == 5; fn629 == 1; the speaker is Nazir",
+     "source": "TIF__0002AD00.Fragment_0 on INFO Skyrim.esm:02AD00 (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill Anoriath",
+    "index": 10,
+    "source": "Skyrim.esm:01EA64 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DBAnoriathAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Anoriath",
+       "kind": "forced reference",
+       "where": [
+        "The Drunken Huntsman, Drunken Huntsman"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0165B7"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "The Drunken Huntsman, Drunken Huntsman",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA65",
+   "edid": "DBSideContract09",
+   "name": "Contract: Kill Agnis",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0205C1",
+     "conditions": "fn629 == 8; fn629 == 2; the speaker is Nazir",
+     "source": "TIF__000205C1.Fragment_0 on INFO Skyrim.esm:0205C1 (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill Agnis",
+    "index": 10,
+    "source": "Skyrim.esm:01EA65 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DBAgnisAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Agnis",
+       "kind": "unique actor",
+       "where": [
+        "Fort Greymoor"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:01527C"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Fort Greymoor",
+      "ways": 4,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA66",
+   "edid": "DBSideContract10",
+   "name": "Contract: Kill Maluril",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0205C0",
+     "conditions": "fn629 == 9; fn629 == 3; the speaker is Nazir",
+     "source": "TIF__000205C0.Fragment_0 on INFO Skyrim.esm:0205C0 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill Maluril",
+    "index": 10,
+    "source": "Skyrim.esm:01EA66 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DBMalurilAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Maluril",
+       "kind": "unique actor",
+       "where": [
+        "Mzinchaleft"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:01523D"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Mzinchaleft",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA67",
+   "edid": "DBSideContract11",
+   "name": "Contract: Kill Helvard",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0205C0",
+     "conditions": "fn629 == 9; fn629 == 3; the speaker is Nazir",
+     "source": "TIF__000205C0.Fragment_0 on INFO Skyrim.esm:0205C0 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill Helvard",
+    "index": 10,
+    "source": "Skyrim.esm:01EA67 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DBHelvardAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Helvard",
+       "kind": "forced reference",
+       "where": [
+        "Hakkvild's High Hall, Jarl's Longhouse"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:013A79"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Hakkvild's High Hall, Jarl's Longhouse",
+      "ways": 5,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA68",
+   "edid": "DBSideContract12",
+   "name": "Contract: Kill Safia",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Nazir",
+     "speakerPlaced": [
+      "Dark Brotherhood Sanctuary"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0205BD",
+     "conditions": "fn629 == 11; fn629 == 4; the speaker is Nazir",
+     "source": "TIF__000205BD.Fragment_0 on INFO Skyrim.esm:0205BD (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill Safia",
+    "index": 10,
+    "source": "Skyrim.esm:01EA68 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DBSafiaAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Safia",
+       "kind": "unique actor",
+       "where": [
+        "Red Wave, Solitude"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0A1793"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Red Wave, Solitude",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Innocence Lost - Quest Expansion.esp:000836",
+   "edid": "DB01_OptionalObjectives",
+   "name": "DB01_Opt",
+   "plugin": "Innocence Lost - Quest Expansion.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "Innocence Lost - Quest Expansion.esp:000836 DNAM (Innocence Lost - Quest Expansion.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Ask a guard to arrest Grelod (Optional)",
+    "index": 10,
+    "source": "Innocence Lost - Quest Expansion.esp:000836 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Additional Contracts For the Dark Brotherhood.esp:000822",
+   "edid": "ExtraContracts_KillBraith_Quest",
+   "name": "Contract: Kill Braith",
+   "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Kill Braith",
+    "index": 10,
+    "source": "Additional Contracts For the Dark Brotherhood.esp:000822 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Braith",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Braith",
+       "kind": "forced reference",
+       "where": [
+        "Amren's House"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0165AB"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Amren's House",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "LvlQuestReward02Medium (levelled: gold)",
+     "stage": 200,
+     "source": "QF_ExtraContracts_KillBraith_06000822.fragment_6",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Additional Contracts For the Dark Brotherhood.esp:000FE8",
+   "edid": "ExtraContracts_KillElenwen_Quest",
+   "name": "Contract: Kill Elenwen",
+   "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Kill Elenwen",
+    "index": 10,
+    "source": "Additional Contracts For the Dark Brotherhood.esp:000FE8 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Victim",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Elenwen",
+       "kind": "forced reference",
+       "where": [
+        "Thalmor Embassy"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:07C98B"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Thalmor Embassy",
+      "ways": 4,
+      "locked": 1
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "LvlQuestReward04Wow (levelled: gold)",
+     "stage": 200,
+     "source": "QF_ExtraContracts_KillElenwen.fragment_5",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Additional Contracts For the Dark Brotherhood.esp:000E51",
+   "edid": "ExtraContracts_KillErikur_Quest",
+   "name": "Contract: Kill Erikur",
+   "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Kill Erikur in Solitude",
+    "index": 10,
+    "source": "Additional Contracts For the Dark Brotherhood.esp:000E51 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Victim",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Erikur",
+       "kind": "forced reference",
+       "where": [
+        "Erikur's House"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016A09"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Erikur's House",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "LvlQuestReward03Large (levelled: gold)",
+     "stage": 200,
+     "source": "QF_ExtraContracts_Script.fragment_5",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Additional Contracts For the Dark Brotherhood.esp:000DCA",
+   "edid": "ExtraContracts_KillLemkil_Quest",
+   "name": "Contract: Kill Lemkil",
+   "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Kill Lemkil",
+    "index": 10,
+    "source": "Additional Contracts For the Dark Brotherhood.esp:000DCA QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Victim",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Lemkil",
+       "kind": "forced reference",
+       "where": [
+        "Lemkil's Farmhouse"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:013867"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Lemkil's Farmhouse",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "LvlQuestReward02Medium (levelled: gold)",
+     "stage": 200,
+     "source": "QF_ExtraContracts_Script.fragment_5",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Additional Contracts For the Dark Brotherhood.esp:00081B",
+   "edid": "ExtraContracts_KillNazeem_Quest",
+   "name": "Contract: Kill Nazeem",
+   "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Kill Nazeem",
+    "index": 10,
+    "source": "Additional Contracts For the Dark Brotherhood.esp:00081B QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Nazeem",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Nazeem",
+       "kind": "forced reference",
+       "where": [
+        "Wintersand Manor"
+       ]
+      }
+     ],
+     "cells": [
+      "cceejsse001-hstead.esm:00087F"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Wintersand Manor",
+      "ways": 5,
+      "locked": 4
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "LvlQuestReward03Large (levelled: gold)",
+     "stage": 200,
+     "source": "QF_ExtraContracts_KillNazeem_0600AA19.fragment_0",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Additional Contracts For the Dark Brotherhood.esp:000858",
+   "edid": "ExtraContracts_KillRolff_Quest",
+   "name": "Contract: Kill Rolff Stone-Fist",
+   "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Kill Rolff",
+    "index": 10,
+    "source": "Additional Contracts For the Dark Brotherhood.esp:000858 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Rolff",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Rolff Stone-Fist",
+       "kind": "forced reference",
+       "where": [
+        "Candlehearth Hall"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016789"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Candlehearth Hall",
+      "ways": 4,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "LvlQuestReward03Large (levelled: gold)",
+     "stage": 200,
+     "source": "QF_ExtraContracts_KillRolff__04000809.fragment_4",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Additional Contracts For the Dark Brotherhood.esp:000E3C",
+   "edid": "ExtraContracts_KillSerana_Quest",
+   "name": "Contract: Kill Serana",
+   "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Kill Serana",
+    "index": 10,
+    "source": "Additional Contracts For the Dark Brotherhood.esp:000E3C QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Victim",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Serana",
+       "kind": "forced reference",
+       "where": [
+        "Dimhollow Cavern, Dimhollow Crypt"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:000EB7"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Dimhollow Cavern, Dimhollow Crypt",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "LvlQuestReward04Wow (levelled: gold)",
+     "stage": 200,
+     "source": "QF_ExtraContracts_KillSerana.fragment_5",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Additional Contracts For the Dark Brotherhood.esp:00082B",
+   "edid": "ExtraContracts_KillTaarieEndarie_Quest",
+   "name": "Contract: Kill Taarie and Endarie",
+   "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Kill Taarie and Endarie (<Global=ExtraContracts_KillTaarieEndarie_KillCount_Current>/<Global=ExtraContracts_KillTaarieEndarie_KillCount_Total>)",
+    "index": 10,
+    "source": "Additional Contracts For the Dark Brotherhood.esp:00082B QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Taarie",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Taarie",
+       "kind": "forced reference",
+       "where": [
+        "Radiant Raiment, Radiant Raiments"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016A0F"
+     ]
+    },
+    {
+     "alias": "Endarie",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Endarie",
+       "kind": "forced reference",
+       "where": [
+        "Radiant Raiment, Radiant Raiments"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016A0F"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Radiant Raiment, Radiant Raiments",
+      "ways": 1,
+      "locked": 0
+     },
+     {
+      "cell": "Radiant Raiment, Radiant Raiments",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "LvlQuestReward03Large (levelled: gold)",
+     "stage": 200,
+     "source": "QF_ExtraContracts_KillTaarie_0600082B.fragment_5",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Additional Contracts For the Dark Brotherhood.esp:000FDA",
+   "edid": "ExtraContracts_KillThonarSilverblood_Quest",
+   "name": "Contract: Kill Thonar Silver-Blood",
+   "plugin": "Additional Contracts For the Dark Brotherhood.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Kill Thonar Silver-Blood in Markarth",
+    "index": 10,
+    "source": "Additional Contracts For the Dark Brotherhood.esp:000FDA QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Victim",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Thonar Silver-Blood",
+       "kind": "forced reference",
+       "where": [
+        "The Treasury House, Treasury House"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016E00"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "The Treasury House, Treasury House",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "LvlQuestReward03Large (levelled: gold)",
+     "stage": 200,
+     "source": "QF_ExtraContracts_Script.fragment_5",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Listen.esp:000808",
+   "edid": "LTNQuestHandler",
+   "name": "LTN Quest Handler",
+   "plugin": "Listen.esp",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "Listen.esp:000808 DNAM (Listen.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": null,
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Listen.esp:000828",
+   "edid": "LTNQuestMarkarth",
+   "name": "Contract: Kill <Alias=Target>",
+   "plugin": "Listen.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": 10,
+     "call": "SetStage 10",
+     "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": 10,
+     "call": "SetStage 10",
+     "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": null,
+     "call": "SetStage 10",
+     "source": "LTNQuestHandlerScript.LTNGiveQuestsFunction on Listen.esp:000808 (Listen.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": null,
+     "call": "SetStage 10",
+     "source": "LTNQuestHandlerScript.LTNGiveQuestsFunction on Listen.esp:000808 (Listen.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill <Alias=Target>.",
+    "index": 10,
+    "source": "Listen.esp:000828 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target",
+     "fill": "run time",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Listen.esp:00081A",
+   "edid": "LTNQuestRiften",
+   "name": "Contract: Kill <Alias=Target>",
+   "plugin": "Listen.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": 10,
+     "call": "SetStage 10",
+     "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": 10,
+     "call": "SetStage 10",
+     "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": null,
+     "call": "SetStage 10",
+     "source": "LTNQuestHandlerScript.LTNGiveQuestsFunction on Listen.esp:000808 (Listen.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": null,
+     "call": "SetStage 10",
+     "source": "LTNQuestHandlerScript.LTNGiveQuestsFunction on Listen.esp:000808 (Listen.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill <Alias=Target>.",
+    "index": 10,
+    "source": "Listen.esp:00081A QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target",
+     "fill": "run time",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Listen.esp:000820",
+   "edid": "LTNQuestSolitude",
+   "name": "Contract: Kill <Alias=Target>",
+   "plugin": "Listen.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": 10,
+     "call": "SetStage 10",
+     "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": 10,
+     "call": "SetStage 10",
+     "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": null,
+     "call": "SetStage 10",
+     "source": "LTNQuestHandlerScript.LTNGiveQuestsFunction on Listen.esp:000808 (Listen.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": null,
+     "call": "SetStage 10",
+     "source": "LTNQuestHandlerScript.LTNGiveQuestsFunction on Listen.esp:000808 (Listen.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill <Alias=Target>.",
+    "index": 10,
+    "source": "Listen.esp:000820 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target",
+     "fill": "run time",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Listen.esp:000802",
+   "edid": "LTNQuestWhiterun",
+   "name": "Contract: Kill <Alias=Target>",
+   "plugin": "Listen.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": 10,
+     "call": "SetStage 10",
+     "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": 10,
+     "call": "SetStage 10",
+     "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": null,
+     "call": "SetStage 10",
+     "source": "LTNQuestHandlerScript.LTNGiveQuestsFunction on Listen.esp:000808 (Listen.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": null,
+     "call": "SetStage 10",
+     "source": "LTNQuestHandlerScript.LTNGiveQuestsFunction on Listen.esp:000808 (Listen.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill <Alias=Target>.",
+    "index": 10,
+    "source": "Listen.esp:000802 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target",
+     "fill": "run time",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Listen.esp:000819",
+   "edid": "LTNQuestWindhelm",
+   "name": "Contract: Kill <Alias=Target>",
+   "plugin": "Listen.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": 10,
+     "call": "SetStage 10",
+     "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": 10,
+     "call": "SetStage 10",
+     "source": "QF_LTNQuestHandler_01000808.fragment_7 on Listen.esp:000808 (Listen.esp), through LTNQuestHandler (LTN Quest Handler)'s ltngivequestsfunction",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": null,
+     "call": "SetStage 10",
+     "source": "LTNQuestHandlerScript.LTNGiveQuestsFunction on Listen.esp:000808 (Listen.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "LTNQuestHandler (LTN Quest Handler)",
+     "questId": "Listen.esp:000808",
+     "atStage": null,
+     "call": "SetStage 10",
+     "source": "LTNQuestHandlerScript.LTNGiveQuestsFunction on Listen.esp:000808 (Listen.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill <Alias=Target>.",
+    "index": 10,
+    "source": "Listen.esp:000819 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target",
+     "fill": "run time",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:01EA5A",
+   "edid": "DBrecurring",
+   "name": "The Dark Brotherhood Forever",
+   "plugin": "LoreRim - Global Modifiers.esp",
+   "firstObjectiveStage": 15,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DBRecurringControlQuest, a helper quest",
+     "questId": "Skyrim.esm:097256",
+     "atStage": null,
+     "call": "SetStage 10",
+     "source": "DBRecurringControlQuestScript.OnUpdate on Skyrim.esm:097256 (Unofficial Skyrim Modders Patch.esp)",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "quest script",
+       "quest": "DBrecurring (The Dark Brotherhood Forever)",
+       "questId": "Skyrim.esm:01EA5A",
+       "atStage": 200,
+       "call": "SetStage 10",
+       "source": "QF_DBRecurring_0001EA5A.fragment_0 on Skyrim.esm:01EA5A (LoreRim - Global Modifiers.esp)",
+       "verdict": "script"
+      }
+     ]
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 20,
+   "firstObjective": {
+    "text": "Approach the Night Mother",
+    "index": 10,
+    "source": "Skyrim.esm:01EA5A QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "NMCoffinAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Night Mother's Coffin",
+       "kind": "forced reference",
+       "where": [
+        "Dawnstar Sanctuary"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0193EE"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Dawnstar Sanctuary",
+      "ways": 4,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  }
+ ],
+ "notInRawQuests": [],
+ "starts": [
+  {
+   "start": "Regular (Inn)",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "The Bannered Mare",
+     "quest": "AlternatePerspective.esp:3271C8",
+     "questEdid": "APS_InnWhiterun",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnWhiterun scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Bee and Barb",
+     "quest": "AlternatePerspective.esp:3457D0",
+     "questEdid": "APS_InnRiften",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Winking Skeever",
+     "quest": "AlternatePerspective.esp:3457D2",
+     "questEdid": "APS_InnSolitude",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnSolitude scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Silver-Blood Inn",
+     "quest": "AlternatePerspective.esp:3457D4",
+     "questEdid": "APS_InnMarkarth",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnMarkarth scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Candlehearth Hall",
+     "quest": "AlternatePerspective.esp:3457D6",
+     "questEdid": "APS_InnWindhelm",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnWindhelm scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dead Man's Drink",
+     "quest": "AlternatePerspective.esp:3457D9",
+     "questEdid": "APS_InnFalkreath",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnFalkreath scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Moorside Inn",
+     "quest": "AlternatePerspective.esp:3457DD",
+     "questEdid": "APS_InnMorthal",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnMorthal scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Frozen Hearth",
+     "quest": "AlternatePerspective.esp:3457DF",
+     "questEdid": "APS_InnWinterhold",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnWinterhold scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Windpeak Inn",
+     "quest": "AlternatePerspective.esp:3457E0",
+     "questEdid": "APS_InnDawnstar",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Retching Netch",
+     "quest": "AlternatePerspective.esp:34A8E2",
+     "questEdid": "APS_InnRavenRock",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnRavenRock scripts (Alternate Perspective - Gate to Sovngarde Edition.esp)"
+    },
+    {
+     "option": "The Sleeping Giant Inn",
+     "quest": "AlternatePerspective.esp:34A8E3",
+     "questEdid": "APS_InnRiverwood",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnRiverwood scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Frostfruit Inn",
+     "quest": "AlternatePerspective.esp:34A8E4",
+     "questEdid": "APS_InnRorikstead",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnRorikstead scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Vilemyr Inn",
+     "quest": "AlternatePerspective.esp:34A8E5",
+     "questEdid": "APS_InnIvarstead",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnIvarstead scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Old Hroldan Inn",
+     "quest": "AlternatePerspective.esp:34A8E6",
+     "questEdid": "APS_InnOldHroldan",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnOldHroldan scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Four Shields Tavern",
+     "quest": "AlternatePerspective.esp:34A8E7",
+     "questEdid": "APS_InnDragonbridge",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnDragonbridge scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Nightgate Inn",
+     "quest": "AlternatePerspective.esp:34A8E8",
+     "questEdid": "APS_InnNightgate",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnNightgate scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Braidwood Inn",
+     "quest": "AlternatePerspective.esp:34A8E9",
+     "questEdid": "APS_InnKynesgrove",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnKynesgrove scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "From Overseas",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "East Empire Trading Company",
+     "quest": "AlternatePerspective.esp:34F9EC",
+     "questEdid": "APS_DocksSolitude",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_DocksSolitude scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Windhelm Docks",
+     "quest": "AlternatePerspective.esp:34F9EE",
+     "questEdid": "APS_DocksWindhelm",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_DocksWindhelm scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dawnstar's Shore",
+     "quest": "AlternatePerspective.esp:34F9ED",
+     "questEdid": "APS_DocksDawnstar",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_DocksDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Raven Rock Docks",
+     "quest": "AlternatePerspective.esp:34F9F0",
+     "questEdid": "APS_DocksRavenRock",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_DocksRavenRock scripts (Alternate Perspective - Gate to Sovngarde Edition.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Wanted Criminal",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Whiterun",
+     "quest": "AlternatePerspective.esp:34FA14",
+     "questEdid": "APS_WantedTPWhiterun",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_WantedTPWhiterun scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AlternatePerspective.esp:34FA15",
+     "questEdid": "APS_WantedTPRRiften",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_WantedTPRRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AlternatePerspective.esp:34FA1B",
+     "questEdid": "APS_WantedTPRDawnstar",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_WantedTPRDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AlternatePerspective.esp:34FA25",
+     "questEdid": "APS_WantedTPWinterhold",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_WantedTPWinterhold scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Left for Dead",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "The Rift",
+     "quest": "AlternatePerspective.esp:34FA27",
+     "questEdid": "APS_LeftForDeadRiften",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_LeftForDeadRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AlternatePerspective.esp:34FA29",
+     "questEdid": "APS_LeftForDeadMarkarth",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_LeftForDeadMarkarth scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AlternatePerspective.esp:34FA20",
+     "questEdid": "APS_LeftForDeadWinterhold",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_LeftForDeadWinterhold scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Forsworn",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Forsworn",
+     "quest": "AlternatePerspective.esp:46649F",
+     "questEdid": "APS_Forsworn",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_Forsworn scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Guilds",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "College of Winterhold",
+     "quest": "AlternatePerspective.esp:3D36E6",
+     "questEdid": "APS_GuildMages",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_GuildMages scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Thieves Guild",
+     "quest": "AlternatePerspective.esp:3CE5E5",
+     "questEdid": "APS_GuildThievesguild",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_GuildThievesguild scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dark Brotherhood",
+     "quest": "AlternatePerspective.esp:3D36E7",
+     "questEdid": "APS_GuildBrotherhood",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_GuildBrotherhood scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Companions",
+     "quest": "AlternatePerspective.esp:3D36E8",
+     "questEdid": "APS_GuildCompanions",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_GuildCompanions scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Dragonborn",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Helgen Keep (Start)",
+     "quest": "AlternatePerspective.esp:47F943",
+     "questEdid": "APS_MQSkipKeep",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [
+      "MQ101 SetStage 6",
+      "MQ101 SetStage 7"
+     ],
+     "source": "APS_MQSkipKeep scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Helgen Keep (End)",
+     "quest": "AlternatePerspective.esp:484A45",
+     "questEdid": "APS_MQSkipKeepEnd",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [
+      "MQ101 SetStage 250",
+      "MQ101 SetStage 550",
+      "MQ101 SetStage 700",
+      "MQ101 SetStage 710",
+      "MQ101 SetStage 720",
+      "MQ101 SetStage 725"
+     ],
+     "source": "APS_MQSkipKeepEnd scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Addict",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Addict",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000800",
+     "questEdid": "AFLOLALAddictQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALAddictQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Dwemer Ruin",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Dwemer Ruin",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00081C",
+     "questEdid": "AFLOLALAdventureQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALAdventureQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Alchemist",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Alchemist",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00080A",
+     "questEdid": "AFLOLALAlchemistQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALAlchemistQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "At Angis Camp",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "At Angis Camp",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000858",
+     "questEdid": "AFLOLALAngiQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALAngiQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Beggar",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Riften",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00085F",
+     "questEdid": "AFLOAP_BeggarRiften",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BeggarRiften scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Markarth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000860",
+     "questEdid": "AFLOAP_BeggarMarkarth",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BeggarMarkarth scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Jailed",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000861",
+     "questEdid": "AFLOAP_JailWhiterun",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailWhiterun scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000869",
+     "questEdid": "AFLOAP_JailRift",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailRift scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Eastmarch",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000862",
+     "questEdid": "AFLOAP_JailEastmarch",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailEastmarch scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Haarfinger",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000864",
+     "questEdid": "AFLOAP_JailHaarfinger",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailHaarfinger scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000868",
+     "questEdid": "AFLOAP_JailReach",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailReach scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000863",
+     "questEdid": "AFLOAP_JailFalkreath",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailFalkreath scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hjaalmach",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000865",
+     "questEdid": "AFLOAP_JailHjaalmach",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailHjaalmach scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000866",
+     "questEdid": "AFLOAP_JailPale",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailPale scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086A",
+     "questEdid": "AFLOAP_JailWinterhold",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailWinterhold scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Raven Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000867",
+     "questEdid": "AFLOAP_JailRavenRock",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailRavenRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Mercenary",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Cyrodiil",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086B",
+     "questEdid": "AFLOAP_BorderMercenaryCyrodill",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryCyrodill scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hammerfell",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086C",
+     "questEdid": "AFLOAP_BorderMercenaryHammerfell",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryHammerfell scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "High Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086D",
+     "questEdid": "AFLOAP_BorderMercenaryHighRock",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryHighRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Northern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086E",
+     "questEdid": "AFLOAP_BorderMercenaryNorthernMorrorwind",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryNorthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Southern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086F",
+     "questEdid": "AFLOAP_BorderMercenarySouthernMorrorwind",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenarySouthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Merchant",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Cyrodiil",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000870",
+     "questEdid": "AFLOAP_BorderMerchantCyrodill",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantCyrodill scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hammerfell",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000871",
+     "questEdid": "AFLOAP_BorderMerchantHammerfell",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantHammerfell scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "High Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000872",
+     "questEdid": "AFLOAP_BorderMerchantHighRock",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantHighRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Northern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000873",
+     "questEdid": "AFLOAP_BorderMerchantNorthernMorrorwind",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantNorthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Southern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000874",
+     "questEdid": "AFLOAP_BorderMerchantSouthernMorrorwind",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantSouthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Pilgrim (Shrine)",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Shrine of Azura",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083C",
+     "questEdid": "AFLOLALAzuraQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALAzuraQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Boethiah",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083A",
+     "questEdid": "AFLOLALBoethiahQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALBoethiahQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Mehrunes Dagon",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000842",
+     "questEdid": "AFLOLALDagonQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALDagonQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Eldergleam Sanctuary",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000838",
+     "questEdid": "AFLOLALEldergleamQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALEldergleamQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Statue of Meridia",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000840",
+     "questEdid": "AFLOLALMeridiaQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALMeridiaQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Peryite",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083E",
+     "questEdid": "AFLOLALPeryiteQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALPeryiteQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Stendarr's Beacon",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000835",
+     "questEdid": "AFLOLALStendarrQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALStendarrQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hall of the Vigilant",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000881",
+     "questEdid": "AFLOAP_StendarrHall",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_StendarrHall scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Pilgrim (Temple)",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Temple of the Divines",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000876",
+     "questEdid": "AFLOAP_TempleDivine",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_TempleDivine scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Dibella",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000875",
+     "questEdid": "AFLOAP_TempleDibella",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_TempleDibella scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Kynareth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000877",
+     "questEdid": "AFLOAP_TempleKynareth",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_TempleKynareth scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Mara",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000878",
+     "questEdid": "AFLOAP_TempleMara",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_TempleMara scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Talos",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000879",
+     "questEdid": "AFLOAP_TempleTalos",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_TempleTalos scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Thalmor Prisoner",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Thalmor Prisoner",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000829",
+     "questEdid": "AFLOLALThalmorQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALThalmorQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Vampire",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Solitude",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087D",
+     "questEdid": "AFLOAP_VampireSolitude",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_VampireSolitude scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087A",
+     "questEdid": "AFLOAP_VampireFalkreath",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_VampireFalkreath scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087E",
+     "questEdid": "AFLOAP_VampireWhiterun",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_VampireWhiterun scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Riften",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087C",
+     "questEdid": "AFLOAP_VampireRiften",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_VampireRiften scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Windhelm",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087F",
+     "questEdid": "AFLOAP_VampireWindhelm",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_VampireWindhelm scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Markarth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087B",
+     "questEdid": "AFLOAP_VampireMarkarth",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_VampireMarkarth scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Werewolf",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Werewolf",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00081F",
+     "questEdid": "AFLOLALWerewolfQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALWerewolfQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Roadside Ambush",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:000018",
+     "questEdid": "MissileAPAmbushStartEastmarchQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartEastmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:000021",
+     "questEdid": "MissileAPAmbushStartHaafingarQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:00001B",
+     "questEdid": "MissileAPAmbushStartHjaalmarchQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:00001A",
+     "questEdid": "MissileAPAmbushStartFalkreathQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:00002D",
+     "questEdid": "MissileAPAmbushStartPaleQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:000033",
+     "questEdid": "MissileAPAmbushStartReachQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000027",
+     "questEdid": "MissileAPAmbushStartRiftQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:000019",
+     "questEdid": "MissileAPAmbushStartWhiterunQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Fell in a Spike Pit",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Fell in a Spike Pit",
+     "quest": "AP - Missile Additional Starts.esp:000039",
+     "questEdid": "MissileAPFellInAPitQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPFellInAPitQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Bounty Hunter",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:00004C",
+     "questEdid": "MissileAPBountyHunterStartEastmarchQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartEastmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:000058",
+     "questEdid": "MissileAPBountyHunterStartFalkreathQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:00005C",
+     "questEdid": "MissileAPBountyHunterStartHaafingarQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:000048",
+     "questEdid": "MissileAPBountyHunterStartHjaalmarchQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000050",
+     "questEdid": "MissileAPBountyHunterStartRiftQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:00003F",
+     "questEdid": "MissileAPBountyHunterStartWhiterunQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AP - Missile Additional Starts.esp:000054",
+     "questEdid": "MissileAPBountyHunterStartWinterholdQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartWinterholdQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Prisoner in a Bandit Fort",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:000086",
+     "questEdid": "MissileAPBanditPrisonerStartHaafingarQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:00007B",
+     "questEdid": "MissileAPBanditPrisonerStartPaleQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:00008D",
+     "questEdid": "MissileAPBanditPrisonerStartReachQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000081",
+     "questEdid": "MissileAPBanditPrisonerStartRiftQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:000073",
+     "questEdid": "MissileAPBanditPrisonerStartWhiterunQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Out in the Wilderness",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:0000D8",
+     "questEdid": "MissileAPOutInTheWildernessStartEastmarchQuestDUPLICATE001",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartEastmarchQuestDUPLICATE001 scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:0000CE",
+     "questEdid": "MissileAPOutInTheWildernessStartFalkreathQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:0000D2",
+     "questEdid": "MissileAPOutInTheWildernessStartHaafingarQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:0000D4",
+     "questEdid": "MissileAPOutInTheWildernessStartHjaalmarchQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:0000DA",
+     "questEdid": "MissileAPOutInTheWildernessStartPaleQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:0000D0",
+     "questEdid": "MissileAPOutInTheWildernessStartReachQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:0000CB",
+     "questEdid": "MissileAPOutInTheWildernessStartRiftQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:0000C8",
+     "questEdid": "MissileAPOutInTheWildernessStartWhiterunQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AP - Missile Additional Starts.esp:0000D6",
+     "questEdid": "MissileAPOutInTheWildernessStartWinterholdQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartWinterholdQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  }
+ ],
+ "otherStarts": "To get into the main quest: talk to Aventus Aretino in Aretino Residence: Innocence Lost is running from the start (Talk to Aventus Aretino); or talk to Cicero in Loreius Farm: Delayed Burial is running from the start (Talk to the strange jester).",
+ "routes": [],
+ "loaders": {
+  "Wyrmstooth": {
+   "quest": "Wyrmstooth.esp:AC1487",
+   "script": "WT_MCMScript",
+   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/Wyrmstooth - Settings Loader/Scripts/WT_MCMScript.pex",
+   "winnerParent": "MCM_ConfigBase",
+   "readsSettings": true
+  },
+  "TimingIsEverything": {
+   "quest": "TimingIsEverything.esp:005E3B",
+   "script": "TIE_MCMScript",
+   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex",
+   "winnerParent": "SKI_ConfigBase",
+   "readsSettings": false
+  }
+ },
+ "payoff": [
+  {
+   "quest": "Dragonslayer",
+   "edid": "MQ305",
+   "completingStages": [
+    200
+   ],
+   "gives": []
+  },
+  {
+   "quest": "Paarthurnax",
+   "edid": "MQPaarthurnax",
+   "completingStages": [
+    99,
+    100
+   ],
+   "gives": []
+  }
+ ],
+ "questions": [
+  {
+   "question": "Is Skyrim.esm:0242BA MQ105, and is stage 160 the one that completes it?",
+   "edid": "MQ105",
+   "name": "The Way of the Voice",
+   "completingStages": [
+    160
+   ],
+   "answer": "Yes: Skyrim.esm:0242BA is MQ105 (The Way of the Voice), and stage 160 is its only completing stage."
+  },
+  {
+   "question": "Who starts The Horn of Jurgen Windcaller, and where?",
+   "quest": null,
+   "startedBy": [],
+   "target": null,
+   "firstObjective": null
+  },
+  {
+   "question": "Does Dragonborn's cultist node read Timing is Everything's level (25 in its settings.ini), or something else?",
+   "quest": "DLC2CultistAmbush (Dragonborn.esm:03546D)",
+   "nodes": [
+    {
+     "node": "DLC2CultistAmbushNode001",
+     "id": "Dragonborn.esm:035472",
+     "plugin": "LoreRim - Global Modifiers.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode002",
+     "id": "TimingIsEverything.esp:00E53C",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode003",
+     "id": "TimingIsEverything.esp:00E53D",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode004",
+     "id": "TimingIsEverything.esp:00E53E",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode005",
+     "id": "TimingIsEverything.esp:00E53F",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode006",
+     "id": "TimingIsEverything.esp:00E540",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode007",
+     "id": "TimingIsEverything.esp:00E541",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode008",
+     "id": "TimingIsEverything.esp:00E542",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode000",
+     "id": "TimingIsEverything.esp:00E543",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    }
+   ],
+   "tieSetting": {
+    "key": "iTIE_MinimumLevel:Dragonborn",
+    "value": "25",
+    "from": "settings.ini in Timing is Everything SE - Settings Loader"
+   }
+  }
+ ],
+ "timingIsEverything": {
+  "loaderInstalled": true,
+  "loaderFolder": "Timing is Everything SE - Settings Loader",
+  "script": {
+   "quest": "TimingIsEverything.esp:005E3B",
+   "script": "TIE_MCMScript",
+   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex",
+   "winnerParent": "SKI_ConfigBase",
+   "readsSettings": false
+  },
+  "dragonbornLevel": {
+   "key": "iTIE_MinimumLevel:Dragonborn",
+   "value": "25",
+   "from": "settings.ini in Timing is Everything SE - Settings Loader",
+   "globals": [
+    {
+     "id": "TimingIsEverything.esp:00E53B",
+     "edid": "DLC2CultistAttackMinLevel_KRY",
+     "record": 25.0,
+     "recordFrom": "TimingIsEverything.esp",
+     "runtime": [],
+     "settingsNotRead": [
+      {
+       "mod": "TimingIsEverything",
+       "key": "iTIE_MinimumLevel:Dragonborn",
+       "value": "25",
+       "from": "settings.ini in Timing is Everything SE - Settings Loader",
+       "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+      }
+     ],
+     "value": 25.0,
+     "verdict": "files",
+     "global": "TimingIsEverything.esp:00E53B"
+    }
+   ]
+  }
+ },
+ "wyrmstooth": {
+  "loaderInstalled": true,
+  "loaderFolder": "Wyrmstooth - Settings Loader",
+  "global": "Wyrmstooth.esp:AC356A",
+  "fact": {
+   "id": "Wyrmstooth.esp:AC356A",
+   "edid": "WTStartLevel",
+   "record": 20.0,
+   "recordFrom": "Requiem - Wyrmstooth.esp",
+   "recordWas": {
+    "value": 10.0,
+    "from": "Wyrmstooth.esp"
+   },
+   "runtime": [
+    {
+     "by": "settings loader",
+     "mod": "Wyrmstooth",
+     "key": "iWTGeneralRequirementsMinimalLevel:Requirements",
+     "value": "10",
+     "from": "settings.ini in Wyrmstooth - Settings Loader",
+     "script": "WT_MCMScript.OnSettingChange"
+    }
+   ],
+   "verdict": "run time",
+   "value": "10"
+  },
+  "loaderQuest": {
+   "quest": "Wyrmstooth.esp:AC1487",
+   "script": "WT_MCMScript",
+   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/Wyrmstooth - Settings Loader/Scripts/WT_MCMScript.pex",
+   "winnerParent": "MCM_ConfigBase",
+   "readsSettings": true
+  },
+  "newGame": {
+   "value": 10,
+   "why": [
+    "OnConfigInit runs once when the menu registers in a new game; it sets `migrated` and calls LoadSettings, which goes on only while bEnabled:Maintenance is set (it is 1) and then calls Load, which reads iWTGeneralRequirementsMinimalLevel:Requirements (10, settings.ini in Wyrmstooth - Settings Loader) and sets WTStartLevel to it",
+    "MigrateToMCMHelper, which would copy the global's record value (20.0) into that setting, runs only from OnGameReload or OnConfigOpen while `migrated` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would)",
+    "OnGameReload reloads the settings only when bLoadSettingsonReload:Maintenance is set; it is 0, so later loads keep whatever the global holds"
+   ],
+   "verdict": "run time"
+  }
+ },
+ "missingScripts": [
+  "AAS_PlayerScript",
+  "ACFH_TIF__03000B2B",
+  "ACFH_TIF__03000B6B",
+  "BGSSSE010_OnReadSetStageAlias",
+  "BaanMalurCarriageScript",
+  "HLIO_TIF__0598299C",
+  "JR0_QF_JRLucienCCSaintsAndSed_07000800",
+  "JR_TIF__05172482",
+  "JR_TIF__05172488",
+  "ParryManagerQuestScript",
+  "QF_DLCDwarvenPuzzleDungeonQu_050038D9",
+  "QF_HRI_Events_Quest_WEWerebe_0402904A",
+  "QF_SOMRRumoursQuest_0721AE15",
+  "QF_ccBGSSSE001_Crab_MQ1_050009D4",
+  "QF_ccBGSSSE001_Crab_MQ2_050009DA",
+  "QF_ccBGSSSE001_Crab_MQ3_050009D6",
+  "QF_ccBGSSSE001_Fish_MQ1_050009DE",
+  "QF_ccBGSSSE001_Fish_MQ2_050009EB",
+  "QF_ccBGSSSE001_Fish_MQ3_050009E8",
+  "QF_ccBGSSSE001_Fish_MQ4_050009DD",
+  "QF_ccBGSSSE001_Fish_MQ5_050009DC",
+  "QF_ccBGSSSE001_MiscQuests_050009E6",
+  "QF_ccBGSSSE001_Misc_Falkreat_050009EC",
+  "QF_ccBGSSSE001_Misc_Khajiit_050009E2",
+  "QF_ccBGSSSE001_Misc_Markarth_050009DF",
+  "QF_ccBGSSSE001_Misc_Morthal_050009E4",
+  "QF_ccBGSSSE001_Misc_Solitude_050009E3",
+  "QF_ccBGSSSE001_Misc_Whiterun_050009D7",
+  "QF_ccBGSSSE001_Misc_Whiterun_05000E5D",
+  "QF_ccBGSSSE001_Misc_Windhelm_050009D5",
+  "QF_ccBGSSSE001_Radiant_1_05000B98",
+  "QF_ccBGSSSE001_Radiant_2_05000C2F",
+  "QF_ccBGSSSE001_Radiant_3_05000C8C",
+  "QF_ccBGSSSE001_Start_MQ1_050009D3",
+  "QF_ccBGSSSE001_Start_MQ2_050009DB",
+  "QF_ccBGSSSE010_PetPurchaseQu_02000808",
+  "QF_ccBGSSSE025_ElytraPetAcqu_050010C3",
+  "QF_ccBGSSSE025_RareCuriosInt_050010C1",
+  "QF_ccBGSSSE035_PetAcquireQue_0400080A",
+  "SSE_TIF__020008AA",
+  "SSE_ccBGSSSE037_RareCurios_0100084D",
+  "SilgradCarriageScript",
+  "SkyInteract_PlayerLoadGameAlias",
+  "Survival_PlayerHitInfo",
+  "Survival_PlayerLocationInfo",
+  "Survival_ThirstPlayerAlias",
+  "Survival_VampirismLycanthropy",
+  "TIF__020458BA",
+  "TIF__023943AB",
+  "TIF__03000976",
+  "TIF__03000D75",
+  "TIF__04138034",
+  "TIF__08005903",
+  "TIF_ccBGSSSE025_StaadaFrag",
+  "TIF_ccBGSSSE025_StaadaFrag2",
+  "TIF_ccBGSSSE025_StaadaFrag3",
+  "TIF_ccBGSSSE025_StaadaFragA",
+  "TIF_ccBGSSSE025_StaadaFrgF",
+  "Traits_ElementalistPlayerScript",
+  "VS02_QF_ccVSVSSE002_MainQuest_050008C8",
+  "aaCi_TIF__0501F5BC",
+  "aaEl_QF_aaElisifUpdate0108_05014EF5",
+  "aaaVampireFeedingContractScriptB",
+  "aaaVampireFeedingRemoveAlias",
+  "ccASVSSE001_KillFollowerCheck",
+  "ccASVSSE001_OnHitStageSetScript",
+  "ccASVSSE001_SetStageonActivateScript",
+  "ccASVSSE001_TIF__05000DFC",
+  "ccASVSSE001_TIF__05000E04",
+  "ccASVSSE001_TIF__05000E07",
+  "ccASVSSE001_TIF__05000E09",
+  "ccASVSSE001_TIF__05000EAB",
+  "ccASVSSE001_TIF__0500114D",
+  "ccASVSSE001_TIF__0500115F",
+  "ccASVSSE001_TIF__05001160",
+  "ccASVSSE001_TIF__0500116A",
+  "ccASVSSE001_TIF__05001178",
+  "ccASVSSE001_TIF__05048064",
+  "ccASVSSE001_TIF__05048065",
+  "ccASVSSE001_TIF__0504806D",
+  "ccASVSSE001_TIF__05219F5B",
+  "ccASVSSE001_TaskChecklilst",
+  "ccBGSSSE001_AdvanceStageOnUpdate",
+  "ccBGSSSE001_CatapultMonitor",
+  "ccBGSSSE001_CrabEncMonitor",
+  "ccBGSSSE001_CrabMQ2EncAlias",
+  "ccBGSSSE001_CrabMQ3_Quest",
+  "ccBGSSSE001_CrabMQ4BodyCleanup",
+  "ccBGSSSE001_CrabMQ4Reinforcements",
+  "ccBGSSSE001_DeleteOnQuestDone",
+  "ccBGSSSE001_GuardPanicScript",
+  "ccBGSSSE001_ItemCollectObjectiveScript",
+  "ccBGSSSE001_MiscDwarPlayScript",
+  "ccBGSSSE001_MiscKhajPlayScript",
+  "ccBGSSSE001_MiscMarkarthScript",
+  "ccBGSSSE001_MiscQuestScript",
+  "ccBGSSSE001_MiscSol_DinnerGuestScript",
+  "ccBGSSSE001_MiscWhiterunCourier",
+  "ccBGSSSE001_OnDeathCallReinforce",
+  "ccBGSSSE001_OnReadSetStage",
+  "ccBGSSSE001_PlayerHitScript",
+  "ccBGSSSE001_Quest_SetStageAfterTimer",
+  "ccBGSSSE001_RadiantFishQuest",
+  "ccBGSSSE001_RadiantItemPlayerScript",
+  "ccBGSSSE001_RadiantJunkQuest",
+  "ccBGSSSE001_RadiantQuest3Listener",
+  "ccBGSSSE001_SandboxFollowerScript",
+  "ccBGSSSE001_SetStageOnActivate",
+  "ccBGSSSE001_SetStageOnPickup",
+  "ccBGSSSE001_StartMQ1PlayerScript",
+  "ccBGSSSE001_SwapOutfitOnCellAttach",
+  "ccBGSSSE001_TIF__0500099D",
+  "ccBGSSSE001_TIF__050009A7",
+  "ccBGSSSE001_TIF__050009BC",
+  "ccBGSSSE001_TIF__050009D1",
+  "ccBGSSSE001_TIF__05000A63",
+  "ccBGSSSE001_TIF__05000A68",
+  "ccBGSSSE001_TIF__05000B1E",
+  "ccBGSSSE001_TIF__05000B5C",
+  "ccBGSSSE001_TIF__05000B60",
+  "ccBGSSSE001_TIF__05000B64",
+  "ccBGSSSE001_TIF__05000B79",
+  "ccBGSSSE001_TIF__05000BAF",
+  "ccBGSSSE001_TIF__05000BB0",
+  "ccBGSSSE001_TIF__05000BB1",
+  "ccBGSSSE001_TIF__05000BB2",
+  "ccBGSSSE001_TIF__05000BB3",
+  "ccBGSSSE001_TIF__05000BB4",
+  "ccBGSSSE001_TIF__05000BB5",
+  "ccBGSSSE001_TIF__05000BB6",
+  "ccBGSSSE001_TIF__05000BDE",
+  "ccBGSSSE001_TIF__05000C28",
+  "ccBGSSSE001_TIF__05000C29",
+  "ccBGSSSE001_TIF__05000C49",
+  "ccBGSSSE001_TIF__05000C5C",
+  "ccBGSSSE001_TIF__05000C5E",
+  "ccBGSSSE001_TIF__05000C70",
+  "ccBGSSSE001_TIF__05000E5B",
+  "ccBGSSSE001_TIF__05000E5C",
+  "ccBGSSSE001_TIF__05000E5E",
+  "ccBGSSSE001_TIF__05000E7B",
+  "ccBGSSSE001_TIF__05000EA4",
+  "ccBGSSSE001_TIF__05000EA9",
+  "ccBGSSSE001_TIF__05000EAC",
+  "ccBGSSSE001_TIF__05000EAF",
+  "ccBGSSSE001_TIF__05000EB4",
+  "ccBGSSSE001_TIF__05000EC3",
+  "ccBGSSSE001_TIF__05000ECE",
+  "ccBGSSSE001_TIF__05000EE5",
+  "ccBGSSSE001_TIF__050C1D0F",
+  "ccBGSSSE001_WhiterunChestScript",
+  "ccBGSSSE002_TKArrowsQuestScript",
+  "ccBGSSSE010_ContainerSetStage",
+  "ccBGSSSE010_SetStageOnActivate",
+  "ccBGSSSE013_BattleScript",
+  "ccBGSSSE014_SetStageContainerOpen",
+  "ccBGSSSE018_QF_ShadowQuest_0100081C",
+  "ccBGSSSE018_ShadowrendPlaceScript",
+  "ccBGSSSE018_ShadowrendPlayerScript",
+  "ccBGSSSE025_ElytraCollectItemScript",
+  "ccBGSSSE025_RCIntegrationScript",
+  "ccBGSSSE034_MapContainerChangeAlias",
+  "ccBGSSSE034_TIF__02000837",
+  "ccBGSSSE034_TIF__02000838",
+  "ccBGSSSE034_TIF__02000839",
+  "ccBGSSSE034_TIF__0200083A",
+  "ccBGSSSE034_TIF__0200083C",
+  "ccBGSSSE034_TIF__0200084A",
+  "ccBGSSSE034_WildHorseRefAliasScript",
+  "ccBGSSSE034_WildHorsesQuestScript",
+  "ccBGSSSE034_tif__02000d6c",
+  "ccBGSSSE034_tif__02000d6d",
+  "ccBGSSSE035_MerchantAlias",
+  "ccBGSSSE035_OnActStageRefAlias",
+  "ccBGSSSE036_SetStageOnRead",
+  "ccBGSSSE051_TIF__05000833",
+  "ccBGSSSE051_TIF__05000838",
+  "ccBGSSSE051_TIF__05000839",
+  "ccBGSSSE051__TIF__0500083D",
+  "ccBGSSSE051__TIF__05000841",
+  "ccBGSSSE067_ContentAwareScript",
+  "ccBGSSSE067_QuestFunctionsScript",
+  "ccBGSSSE067_Quest_0506BFC1",
+  "ccBGSSSE067_SetStageOnActivateConfirm",
+  "ccBGSSSE067_SetStageOnOpenRefAlias",
+  "ccBGSSSE067_SetStageTriggerScript",
+  "ccEDHSSE003_TIF__02000860",
+  "ccEDHSSE003_TIF__02000862",
+  "ccEDHSSE003_TIF__0200086B",
+  "ccEDHSSE003_TIF__02000871",
+  "ccEDHSSE003_TIF__02000875",
+  "ccEDHSSE003_TIF__0200088B",
+  "ccEDHSSE003_TIF__020008B0",
+  "ccEEJSSE004__05000C54",
+  "ccEEJSSE004__05000C58",
+  "ccEEJSSE004__05000C72",
+  "ccEEJSSE005_DeathCount",
+  "ccEEJSSE005_Quest_050B7AED",
+  "ccEEJSSE005_SetGlobalOnPickup",
+  "ccEEJSSE005_TIF__050DB2AD",
+  "ccEEJSSE005_TIF__050DB2C5",
+  "ccFFBSSE001_SoldierDeadCountScript",
+  "ccKRTSSE001_DoorActivateScript",
+  "ccKRTSSE001_FerrySyste_05000A7B",
+  "ccKRTSSE001_GTScript",
+  "ccKRTSSE001_GameTimeScript",
+  "ccKRTSSE001_QuestFortu_05000A90",
+  "ccKRTSSE001_SetStageOnLoadScript",
+  "ccKRTSSE001_SleepSetStageScript",
+  "ccKRTSSE001_StageSetonActivate",
+  "ccKRTSSE001_TIF__05000A7E",
+  "ccQDRSSE002_FollowerIdleOnSitScript",
+  "ccRMSSSE001_AltarActivateScript",
+  "ccRMSSSE001_GhostTrapScript",
+  "ccRMSSSE001_SleepSetStageScript",
+  "ccRMSSSE001_TorchCountScript",
+  "ccRMSSSE001_TradeWithSkeletonScript",
+  "ccVSVSSE002_MainQuestScript",
+  "ccVSVSSE003_QF_MainQuest",
+  "ccVSVSSE004_AnimalAliasEggScript",
+  "ccVSVSSE004_AnimalAliasMilkScript",
+  "ccVSVSSE004_F_MainQuestManager",
+  "ccVSVSSE004_F_OverseerAliasScript",
+  "ccVSVSSE004_GuardDogAliasScript",
+  "ccVSVSSE004_HorseAliasScript",
+  "ccVSVSSE004_TIF_BuyChickens",
+  "ccVSVSSE004_TIF_BuyChickensSpouse",
+  "ccVSVSSE004_TIF_BuyCow",
+  "ccVSVSSE004_TIF_BuyCowSpouse",
+  "ccVSVSSE004_TIF_BuyGoat",
+  "ccVSVSSE004_TIF_BuyGoatSpouse",
+  "ccVSVSSE004_TIF_BuyHorse",
+  "ccVSVSSE004_TIF_BuyHorseSpouse",
+  "ccVSVSSE004_TIF_CollectProfitF",
+  "ccVSVSSE004_TIF_CollectProfitM",
+  "ccVSVSSE004_TIF_CollectProfitSpouse",
+  "ccVSVSSE004_TIF_FarmhandDismiss2",
+  "ccVSVSSE004_TIF_FarmhandHire",
+  "ccVSVSSE004_TIF_OverseerHire",
+  "ccVSVSSE004_TIF_OverseerHireSpouse",
+  "ccVSVSSE004_TIF_SpawnFarmhand1",
+  "ccVSVSSE004_TIF_SpawnFarmhand1Spouse",
+  "ccVSVSSE004_TIF_UpgradeAltKidRoom",
+  "ccVSVSSE004_TIF_UpgradeBedroom",
+  "ccVSVSSE004_TIF_UpgradeBedroomSpouse",
+  "ccVSVSSE004_TIF_UpgradeDining",
+  "ccVSVSSE004_TIF_UpgradeDiningSpouse",
+  "ccVSVSSE004_TIF_UpgradeKidRoom",
+  "ccVSVSSE004_TIF_UpgradeKidRoomAltS",
+  "ccVSVSSE004_TIF_UpgradeKidRoomRepS",
+  "ccVSVSSE004_TIF_UpgradeKidRoomReplace",
+  "ccVSVSSE004_TIF_UpgradeKidRoomSpouse",
+  "ccVSVSSE004_TIF_UpgradeKitchen",
+  "ccVSVSSE004_TIF_UpgradeKitchenSpouse",
+  "ccVSVSSE004_TIF_UpgradeLab",
+  "ccVSVSSE004_TIF_UpgradeLabSpouse",
+  "ccVSVSSE004_TIF_UpgradeLoft",
+  "ccVSVSSE004_TIF_UpgradeLoftSpouse",
+  "urshug_TIF__0200183E"
+ ]
+}

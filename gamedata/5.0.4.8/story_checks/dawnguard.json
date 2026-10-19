@@ -1,0 +1,5502 @@
+{
+ "line": "dawnguard",
+ "name": "Dawnguard",
+ "quests": [
+  {
+   "id": "Dawnguard.esm:00D06C",
+   "edid": "DLC1VQ01MiscObjective",
+   "name": "Dawnguard",
+   "plugin": "Requiem.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ00ChangeLocation, a helper quest with Messenger",
+     "questId": "Dawnguard.esm:00D90B",
+     "atStage": 0,
+     "call": "SetStage 5",
+     "source": "DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B.fragment_1 on Dawnguard.esm:00D90B (TheChoiceIsYours.esp)",
+     "verdict": "script",
+     "throughStartedBy": []
+    },
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ00, a helper quest",
+     "questId": "Dawnguard.esm:00D90E",
+     "atStage": 50,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_DLC1VQ00_0100D90E.fragment_7 on Dawnguard.esm:00D90E (Dawnguard.esm)",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "quest script",
+       "quest": "DLC1VQ00ChangeLocation, a helper quest with Messenger",
+       "questId": "Dawnguard.esm:00D90B",
+       "atStage": 0,
+       "call": "Start",
+       "source": "DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B.fragment_1 on Dawnguard.esm:00D90B (TheChoiceIsYours.esp)",
+       "verdict": "script"
+      }
+     ]
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:00D8D8",
+     "conditions": "",
+     "source": "DLC1_TIF__0100D8D8.Fragment_0 on INFO Dawnguard.esm:00D8D8 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DLC1VQ01 (Awakening)",
+     "atStage": 0,
+     "call": "SetStage 10",
+     "source": "QF_DLC01VQ01_0100352A.fragment_7 (Dawnguard.esm)"
+    }
+   ],
+   "advancedBy": 6,
+   "firstObjective": {
+    "text": "Speak with the leader of the Dawnguard, located within Fort Dawnguard, which is southeast of Riften and inside of Dayspring Canyon.",
+    "index": 10,
+    "source": "Dawnguard.esm:00D06C QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Isran",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Isran",
+       "kind": "unique actor",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:001DBA"
+     ]
+    },
+    {
+     "alias": "FortDawnguardWorldspaceDoor",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Passage",
+       "kind": "forced reference",
+       "where": [
+        "Skyrim"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:00BD2D"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Fort Dawnguard",
+      "ways": 9,
+      "locked": 0
+     },
+     {
+      "cell": "Skyrim",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:004E24",
+   "edid": "DLC1HunterBaseIntro",
+   "name": "A New Order",
+   "plugin": "Requiem.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [],
+   "caughtUpBy": [
+    {
+     "by": "DLC1VQ02 (Bloodline)",
+     "atStage": 190,
+     "call": "SetStage 20",
+     "source": "DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_13 (Dawnguard.esm)"
+    },
+    {
+     "by": "DLC1VQ02 (Bloodline)",
+     "atStage": 30,
+     "call": "SetStage 20",
+     "source": "DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_9 (Dawnguard.esm)"
+    },
+    {
+     "by": "DLC1VQ03Hunter (Prophet)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "DLC1_QF_DLC1VQ03Hunter_010098CB.fragment_7 (Unofficial Skyrim Special Edition Patch.esp)"
+    }
+   ],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Meet Tolan at Stendarr's Beacon",
+    "index": 10,
+    "source": "Dawnguard.esm:004E24 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "IsranAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Isran",
+       "kind": "unique actor",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:001DBA"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Fort Dawnguard",
+      "ways": 9,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Dawnguard.esm:013F1F",
+   "edid": "DLC1HunterBaseStage2",
+   "name": "Bolstering the Ranks",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:014362",
+     "conditions": "the speaker is the one in alias alias 1",
+     "source": "DLC1_TIF__01014362.Fragment_0 on INFO Dawnguard.esm:014362 (Dawnguard.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DLC1VQ03Hunter (Prophet)",
+     "atStage": 60,
+     "call": "Start",
+     "source": "DLC1_QF_DLC1VQ03Hunter_010098CB.fragment_13 (Unofficial Skyrim Special Edition Patch.esp)"
+    }
+   ],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Speak with Isran",
+    "index": 10,
+    "source": "Dawnguard.esm:013F1F QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "IsranAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Isran",
+       "kind": "unique actor",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:001DBA"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Fort Dawnguard",
+      "ways": 9,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:005E4A",
+   "edid": "DLC1RH01",
+   "name": "Hide and Seek",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:005E41",
+     "conditions": "fn67 == 1; the speaker is the one in alias alias None; Hide and Seek stage < 10",
+     "source": "DLC1_TIF__01005E41.Fragment_0 on INFO Dawnguard.esm:005E41 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantHunterQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm)",
+     "verdict": "files",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Discreetly kill the <Alias=Target>",
+    "index": 10,
+    "source": "Dawnguard.esm:005E4A QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target",
+     "fill": "run time",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:005E53",
+   "edid": "DLC1RH02",
+   "name": "Cleansing Light",
+   "plugin": "Dawnguard.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:005E48",
+     "conditions": "fn67 == 1; Cleansing Light stage < 10; the speaker is the one in alias alias None",
+     "source": "DLC1_TIF__01005E48.Fragment_0 on INFO Dawnguard.esm:005E48 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantHunterQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm)",
+     "verdict": "files",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill the <Alias=Boss> at <Alias=Dungeon>",
+    "index": 10,
+    "source": "Dawnguard.esm:005E53 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Boss",
+     "fill": "from alias",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:005E58",
+   "edid": "DLC1RH03",
+   "name": "Preemptive Strike",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:005E43",
+     "conditions": "the speaker is the one in alias alias None",
+     "source": "DLC1_TIF__01005E43.Fragment_0 on INFO Dawnguard.esm:005E43 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantHunterQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm)",
+     "verdict": "files",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill the <Alias=Vampire> at <Alias=Dungeon>",
+    "index": 10,
+    "source": "Dawnguard.esm:005E58 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Vampire",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Skyrim.esm:02F9E2",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:006952",
+   "edid": "DLC1RH04",
+   "name": "Hunting the Monster",
+   "plugin": "Dawnguard.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:006950",
+     "conditions": "fn67 == 1; Hunting the Monster stage < 10; the speaker is the one in alias alias None",
+     "source": "DLC1_TIF__01006950.Fragment_0 on INFO Dawnguard.esm:006950 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantHunterQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm)",
+     "verdict": "files",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 8,
+   "firstObjective": {
+    "text": "Find evidence of the vampire's whereabouts",
+    "index": 10,
+    "source": "Dawnguard.esm:006952 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Friend",
+     "fill": "run time",
+     "holds": [],
+     "cells": []
+    },
+    {
+     "alias": "Letter",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Letter from a Vampire",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:006BAC",
+   "edid": "DLC1RH05",
+   "name": "Ancient Technology",
+   "plugin": "Dawnguard.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:002F1B",
+     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias alias None; global DLC1RH05RunCount == 0 (now ?)",
+     "source": "DLC1_TIF__01002F1B.Fragment_0 on INFO Dawnguard.esm:002F1B (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:006BAB",
+     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias alias None; global DLC1RH05RunCount == 1 (now ?)",
+     "source": "DLC1_TIF__01006BAB.Fragment_0 on INFO Dawnguard.esm:006BAB (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:002F1C",
+     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias alias None; global DLC1RH05RunCount == 2 (now ?)",
+     "source": "DLC1_TIF__01002F1C.Fragment_0 on INFO Dawnguard.esm:002F1C (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:002F1D",
+     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias alias None; global DLC1RH05RunCount == 3 (now ?)",
+     "source": "DLC1_TIF__01002F1D.Fragment_0 on INFO Dawnguard.esm:002F1D (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:002F1E",
+     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias alias None; global DLC1RH05RunCount == 4 (now ?)",
+     "source": "DLC1_TIF__01002F1E.Fragment_0 on INFO Dawnguard.esm:002F1E (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:002F1F",
+     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias alias None; global DLC1RH05RunCount == 5 (now ?)",
+     "source": "DLC1_TIF__01002F1F.Fragment_0 on INFO Dawnguard.esm:002F1F (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:002F20",
+     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias alias None",
+     "source": "DLC1_TIF__01002F20.Fragment_0 on INFO Dawnguard.esm:002F20 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RH05QuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RH05QuestNode Dawnguard.esm:002F21 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "run time",
+     "conditions": "fn576 == 1; global DLC1RH05FinishedAllQuests == 0 (now 0); fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 31,
+   "firstObjective": {
+    "text": "Retrieve the <Alias=Item> from <Alias=Dungeon>",
+    "index": 10,
+    "source": "Dawnguard.esm:006BAC QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Item",
+     "fill": "run time",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [
+    {
+     "id": "Dawnguard.esm:002F23",
+     "edid": "DLC1RH05FinishedAllQuests",
+     "record": 0.0,
+     "recordFrom": "Dawnguard.esm",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "DLC1_QF_DLC1RH05_01006BAC",
+       "function": "fragment_2",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    }
+   ],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:007201",
+   "edid": "DLC1RH06",
+   "name": "Rescue",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:007C30",
+     "conditions": "the speaker is the one in alias alias None; fn70 == 1",
+     "source": "DLC1_TIF__01007C30.Fragment_0 on INFO Dawnguard.esm:007C30 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:007C31",
+     "conditions": "the speaker is the one in alias alias None; fn70 == 1",
+     "source": "DLC1_TIF__01007C31.Fragment_0 on INFO Dawnguard.esm:007C31 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantHunterQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm)",
+     "verdict": "files",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Rescue <Alias=Prisoner> from <Alias=Dungeon>",
+    "index": 10,
+    "source": "Dawnguard.esm:007201 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Prisoner",
+     "fill": "run time",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:007EC5",
+   "edid": "DLC1RH07",
+   "name": "A Jarl's Justice",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:007EC2",
+     "conditions": "fn67 == 1; the speaker is the one in alias alias 1; A Jarl's Justice stage < 10",
+     "source": "DLC1_TIF__01007EC2.Fragment_0 on INFO Dawnguard.esm:007EC2 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantHunterQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm)",
+     "verdict": "files",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Warn <Alias=Jarl> about the vampire threat",
+    "index": 10,
+    "source": "Dawnguard.esm:007EC5 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Jarl",
+     "fill": "run time",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": "global DLC1RH07NextAllowed <= GameDaysPassed (now 1) (now ?)",
+    "doors": [],
+    "ways": []
+   },
+   "globals": [
+    {
+     "id": "Skyrim.esm:000039",
+     "edid": "GameDaysPassed",
+     "record": 1.0,
+     "recordFrom": "Wintersun - Reqtificated.esp",
+     "runtime": [],
+     "verdict": "files",
+     "value": 1.0
+    }
+   ],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:015017",
+   "edid": "DLC1RH08",
+   "name": "Lost Relic",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:01500F",
+     "conditions": "fn67 == 1; Lost Relic stage < 10; the speaker is the one in alias alias None",
+     "source": "DLC1_TIF__0101500F.Fragment_0 on INFO Dawnguard.esm:01500F (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantHunterQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm)",
+     "verdict": "run time",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 29,
+   "firstObjective": {
+    "text": "Retrieve the <Alias=Item> from <Alias=Dungeon>",
+    "index": 10,
+    "source": "Dawnguard.esm:015017 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Item",
+     "fill": "run time",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": "global DLC1RH08RunCount < 3 (now 0)",
+    "doors": [],
+    "ways": []
+   },
+   "globals": [
+    {
+     "id": "Dawnguard.esm:015018",
+     "edid": "DLC1RH08RunCount",
+     "record": 0.0,
+     "recordFrom": "Dawnguard.esm",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "DLC1_QF_DLC1RH08_01015017",
+       "function": "fragment_0",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    }
+   ],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:004C1B",
+   "edid": "DLC1RV01",
+   "name": "The Hunt",
+   "plugin": "Dawnguard.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Fura Bloodmouth",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:004C1A",
+     "conditions": "the speaker is the one in alias alias 1; The Hunt stage < 10; the speaker is Fura Bloodmouth",
+     "source": "DLC1_TIF__01004C1A.Fragment_0 on INFO Dawnguard.esm:004C1A (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Garan Marethi",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:015E0C",
+     "conditions": "the speaker is the one in alias alias 1; The Hunt stage < 10; the speaker is Garan Marethi",
+     "source": "DLC1_TIF__01015E0C.Fragment_0 on INFO Dawnguard.esm:015E0C (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantVampireQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm)",
+     "verdict": "files",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 7,
+   "firstObjective": {
+    "text": "Kill <Alias=Target>",
+    "index": 10,
+    "source": "Dawnguard.esm:004C1B QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target",
+     "fill": "run time",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:0050B9",
+   "edid": "DLC1RV02",
+   "name": "Culling the Beast",
+   "plugin": "Dawnguard.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Fura Bloodmouth",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:0050B5",
+     "conditions": "the speaker is the one in alias alias None; Culling the Beast stage < 10; the speaker is Fura Bloodmouth",
+     "source": "DLC1_TIF__010050B5.Fragment_0 on INFO Dawnguard.esm:0050B5 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Garan Marethi",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:015E11",
+     "conditions": "the speaker is the one in alias alias None; Culling the Beast stage < 10; the speaker is Garan Marethi",
+     "source": "DLC1_TIF__01015E11.Fragment_0 on INFO Dawnguard.esm:015E11 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantVampireQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm)",
+     "verdict": "files",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Kill the <Alias=Boss> at <Alias=Dungeon>",
+    "index": 10,
+    "source": "Dawnguard.esm:0050B9 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Boss",
+     "fill": "from alias",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:0050BD",
+   "edid": "DLC1RV03",
+   "name": "Deceiving the Herd",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:0050B3",
+     "conditions": "Deceiving the Herd stage < 10; the speaker is the one in alias alias None",
+     "source": "DLC1_TIF__010050B3.Fragment_0 on INFO Dawnguard.esm:0050B3 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantVampireQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm)",
+     "verdict": "files",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Kill someone out in the streets of <Alias=City>",
+    "index": 100,
+    "source": "Dawnguard.esm:0050BD QOBJ 100",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "CityCenterMarker",
+     "fill": "from alias",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:0056FD",
+   "edid": "DLC1RV04",
+   "name": "Protecting the Bloodline",
+   "plugin": "Dawnguard.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Fura Bloodmouth",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:015E12",
+     "conditions": "the speaker is the one in alias alias None; the speaker is Fura Bloodmouth",
+     "source": "DLC1_TIF__01015E12.Fragment_0 on INFO Dawnguard.esm:015E12 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Garan Marethi",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:015E13",
+     "conditions": "the speaker is the one in alias alias None; the speaker is Garan Marethi",
+     "source": "DLC1_TIF__01015E13.Fragment_0 on INFO Dawnguard.esm:015E13 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantVampireQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm)",
+     "verdict": "files",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Kill the <Alias=Vampire> at <Alias=Dungeon>",
+    "index": 10,
+    "source": "Dawnguard.esm:0056FD QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Vampire",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Skyrim.esm:02F9E2",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:005702",
+   "edid": "DLC1RV05",
+   "name": "Ancient Power",
+   "plugin": "Dawnguard.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:0056F9",
+     "conditions": "the speaker is the one in alias alias None; Ancient Power stage < 10; global DLC1VampireChaliceLevel == 0 (now ?)",
+     "source": "DLC1_TIF__010056F9.Fragment_0 on INFO Dawnguard.esm:0056F9 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:01473D",
+     "conditions": "the speaker is the one in alias alias None; Ancient Power stage < 10",
+     "source": "DLC1_TIF__0101473D.Fragment_0 on INFO Dawnguard.esm:01473D (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantVampireQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm)",
+     "verdict": "files",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Retrieve the <Alias=Remains> from <Alias=Dungeon>",
+    "index": 10,
+    "source": "Dawnguard.esm:005702 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Remains",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Dawnguard.esm:00570A",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:0058CA",
+   "edid": "DLC1RV06",
+   "name": "The Gift",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:0058BD",
+     "conditions": "the speaker is the one in alias alias None; fn70 == 1",
+     "source": "DLC1_TIF__010058BD.Fragment_0 on INFO Dawnguard.esm:0058BD (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:0058BE",
+     "conditions": "the speaker is the one in alias alias None; fn70 == 1",
+     "source": "DLC1_TIF__010058BE.Fragment_0 on INFO Dawnguard.esm:0058BE (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantVampireQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm)",
+     "verdict": "run time",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Mesmerize and turn <Alias=Spouse> into a vampire.",
+    "index": 10,
+    "source": "Dawnguard.esm:0058CA QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Spouse",
+     "fill": "run time",
+     "holds": [
+      {
+       "name": "Aela the Huntress",
+       "kind": "named in its conditions",
+       "where": [
+        "Jorrvaskr Living Quarters, Jorrvaskr"
+       ]
+      },
+      {
+       "name": "Farkas",
+       "kind": "named in its conditions",
+       "where": [
+        "Jorrvaskr Living Quarters, Jorrvaskr"
+       ]
+      },
+      {
+       "name": "Vilkas",
+       "kind": "named in its conditions",
+       "where": [
+        "Jorrvaskr Living Quarters, Jorrvaskr"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:07947A",
+      "Skyrim.esm:07947A",
+      "Skyrim.esm:07947A"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": "global DLC1RV06DoOnce == 0 (now 0)",
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Jorrvaskr Living Quarters, Jorrvaskr",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [
+    {
+     "id": "Dawnguard.esm:014C9D",
+     "edid": "DLC1RV06DoOnce",
+     "record": 0.0,
+     "recordFrom": "Dawnguard.esm",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "DLC1_QF_DLC1RV06_010058CA",
+       "function": "fragment_0",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    }
+   ],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:00A29C",
+   "edid": "DLC1RV07",
+   "name": "New Allegiances",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:00A299",
+     "conditions": "the speaker is the one in alias alias None; fn70 == 1",
+     "source": "DLC1_TIF__0100A299.Fragment_0 on INFO Dawnguard.esm:00A299 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:00A29A",
+     "conditions": "the speaker is the one in alias alias None; fn70 == 1",
+     "source": "DLC1_TIF__0100A29A.Fragment_0 on INFO Dawnguard.esm:00A29A (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantVampireQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm)",
+     "verdict": "files",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Turn <Alias=Candidate> into a vampire",
+    "index": 10,
+    "source": "Dawnguard.esm:00A29C QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Candidate",
+     "fill": "run time",
+     "holds": [
+      {
+       "name": "Haran",
+       "kind": "named in its conditions",
+       "where": [
+        "The Frozen Hearth"
+       ]
+      },
+      {
+       "name": "Cairine",
+       "kind": "named in its conditions",
+       "where": [
+        "The Warrens"
+       ]
+      },
+      {
+       "name": "Valindor",
+       "kind": "named in its conditions",
+       "where": [
+        "Valindor's House"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:013814",
+      "Skyrim.esm:016D72",
+      "Skyrim.esm:09CCDD"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "The Frozen Hearth",
+      "ways": 5,
+      "locked": 0
+     },
+     {
+      "cell": "The Warrens",
+      "ways": 1,
+      "locked": 0
+     },
+     {
+      "cell": "Valindor's House",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:00CE06",
+   "edid": "DLC1RV08",
+   "name": "Rings of Blood Magic",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:003992",
+     "conditions": "the speaker is the one in alias alias None",
+     "source": "DLC1_TIF__01003992.Fragment_0 on INFO Dawnguard.esm:003992 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantVampireQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm)",
+     "verdict": "run time",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Retrieve the <Alias=Item1> from <Alias=Location1>",
+    "index": 110,
+    "source": "Dawnguard.esm:00CE06 QOBJ 110",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Item1",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Ring of the Beast",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": "global DLC1RV08DoOnce == 0 (now 0)",
+    "doors": [],
+    "ways": []
+   },
+   "globals": [
+    {
+     "id": "Dawnguard.esm:01463F",
+     "edid": "DLC1RV08DoOnce",
+     "record": 0.0,
+     "recordFrom": "Dawnguard.esm",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "DLC1_QF_DLC1RV08_0100CE06",
+       "function": "fragment_0",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    }
+   ],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:00CE0B",
+   "edid": "DLC1RV09",
+   "name": "Amulets of Night Power",
+   "plugin": "Dawnguard.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:003997",
+     "conditions": "the speaker is the one in alias alias None",
+     "source": "DLC1_TIF__01003997.Fragment_0 on INFO Dawnguard.esm:003997 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantVampireQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm)",
+     "verdict": "run time",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Retrieve the <Alias=Item1> from <Alias=Location1>",
+    "index": 110,
+    "source": "Dawnguard.esm:00CE0B QOBJ 110",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Item1",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Amulet of Bats",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": "global DLC1RV09DoOnce == 0 (now 0); HasPerk Vampiric Seed == 1",
+    "doors": [],
+    "ways": []
+   },
+   "globals": [
+    {
+     "id": "Dawnguard.esm:014640",
+     "edid": "DLC1RV09DoOnce",
+     "record": 0.0,
+     "recordFrom": "Dawnguard.esm",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "DLC1_QF_DLC1RV09_0100CE0B",
+       "function": "fragment_0",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    }
+   ],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:019938",
+   "edid": "DLC1RV10",
+   "name": "Destroying the Dawnguard",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Garan Marethi",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:019932",
+     "conditions": "the speaker is the one in alias alias None; the speaker is Garan Marethi; Destroying the Dawnguard stage < 10",
+     "source": "DLC1_TIF__01019932.Fragment_0 on INFO Dawnguard.esm:019932 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Fura Bloodmouth",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:019933",
+     "conditions": "the speaker is the one in alias alias None; the speaker is Fura Bloodmouth; Destroying the Dawnguard stage < 10",
+     "source": "DLC1_TIF__01019933.Fragment_0 on INFO Dawnguard.esm:019933 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "script event",
+     "node": "DLC1RadiantVampireQuestNode",
+     "parents": [
+      "DLC1RadiantQuestNode",
+      "Skyrim.esm:01379A",
+      "Root"
+     ],
+     "source": "DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm)",
+     "verdict": "run time",
+     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Kill the Dawnguard Leaders",
+    "index": 10,
+    "source": "Dawnguard.esm:019938 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Agmaer",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Agmaer",
+       "kind": "unique actor",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:001DBA"
+     ]
+    },
+    {
+     "alias": "Beleval",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Beleval",
+       "kind": "unique actor",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:001DBA"
+     ]
+    },
+    {
+     "alias": "Celann",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Celann",
+       "kind": "unique actor",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:001DBA"
+     ]
+    },
+    {
+     "alias": "Durak",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Durak",
+       "kind": "unique actor",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:001DBA"
+     ]
+    },
+    {
+     "alias": "Florentius",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Florentius Baenius",
+       "kind": "unique actor",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:001DBA"
+     ]
+    },
+    {
+     "alias": "Gunmar",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Gunmar",
+       "kind": "unique actor",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:001DBA"
+     ]
+    },
+    {
+     "alias": "Isran",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Isran",
+       "kind": "unique actor",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:001DBA"
+     ]
+    },
+    {
+     "alias": "Sorine",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Sorine Jurard",
+       "kind": "unique actor",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:001DBA"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": "global DLC1HarkonDead == 1 (now 0); global DLC1RV10DoOnce == 0 (now 0)",
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Fort Dawnguard",
+      "ways": 9,
+      "locked": 0
+     },
+     {
+      "cell": "Fort Dawnguard",
+      "ways": 9,
+      "locked": 0
+     },
+     {
+      "cell": "Fort Dawnguard",
+      "ways": 9,
+      "locked": 0
+     },
+     {
+      "cell": "Fort Dawnguard",
+      "ways": 9,
+      "locked": 0
+     },
+     {
+      "cell": "Fort Dawnguard",
+      "ways": 9,
+      "locked": 0
+     },
+     {
+      "cell": "Fort Dawnguard",
+      "ways": 9,
+      "locked": 0
+     },
+     {
+      "cell": "Fort Dawnguard",
+      "ways": 9,
+      "locked": 0
+     },
+     {
+      "cell": "Fort Dawnguard",
+      "ways": 9,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [
+    {
+     "id": "Dawnguard.esm:014C9C",
+     "edid": "DLC1RV10DoOnce",
+     "record": 0.0,
+     "recordFrom": "Dawnguard.esm",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "DLC1_QF_DLC1RV10_01019938",
+       "function": "fragment_0",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    },
+    {
+     "id": "Dawnguard.esm:015A20",
+     "edid": "DLC1HarkonDead",
+     "record": 0.0,
+     "recordFrom": "Dawnguard.esm",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "DLC1_QF_DLC1VQ08_01007C25",
+       "function": "fragment_2",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "aaFu_QF__0501FC2B",
+       "function": "fragment_2",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    }
+   ],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:00594C",
+   "edid": "DLC1VampireBaseIntro",
+   "name": "The Bloodstone Chalice",
+   "plugin": "Dawnguard.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [
+    {
+     "by": "DLC1VQ02 (Bloodline)",
+     "atStage": 180,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_14 (Dawnguard.esm)"
+    }
+   ],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Speak with Garan Marethi",
+    "index": 10,
+    "source": "Dawnguard.esm:00594C QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "GaranAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Garan Marethi",
+       "kind": "unique actor",
+       "where": [
+        "Volkihar Keep"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:000803"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Volkihar Keep",
+      "ways": 6,
+      "locked": 1
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Dawnguard.esm:00352A",
+   "edid": "DLC1VQ01",
+   "name": "Awakening",
+   "plugin": "Dawnguard.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ01MiscObjective (Dawnguard)",
+     "questId": "Dawnguard.esm:00D06C",
+     "atStage": 180,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_DLC1VQ01MiscObjective_0100D06C.fragment_16 on Dawnguard.esm:00D06C (Requiem.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Vigilant Tolan",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
+     "call": "SetStage 10",
+     "info": "Dawnguard.esm:019AAB",
+     "conditions": "the speaker is Vigilant Tolan",
+     "source": "DLC1_TIF_DLC1VQ01TolanDirecti_01019AAB.Fragment_0 on INFO Dawnguard.esm:019AAB (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Vigilant Tolan",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
+     "call": "SetStage 5",
+     "info": "Dawnguard.esm:01A1B4",
+     "conditions": "the speaker is Vigilant Tolan; Awakening stage 10 done; Awakening stage 5 not done",
+     "source": "DLC1_TIF__0101A1B4.Fragment_0 on INFO Dawnguard.esm:01A1B4 (Dawnguard.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DLC1VQ03Hunter (Prophet)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "DLC1_QF_DLC1VQ03Hunter_010098CB.fragment_7 (Unofficial Skyrim Special Edition Patch.esp)"
+    }
+   ],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Find out what the vampires are seeking",
+    "index": 30,
+    "source": "Dawnguard.esm:00352A QOBJ 30",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Sarcophagus",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Dimhollow Cavern, Dimhollow Crypt"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:000EB7"
+     ]
+    },
+    {
+     "alias": "DimhollowEntrance",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Passage",
+       "kind": "forced reference",
+       "where": [
+        "Dimhollow Crypt"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:000EB8"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Dimhollow Cavern, Dimhollow Crypt",
+      "ways": 2,
+      "locked": 0
+     },
+     {
+      "cell": "Dimhollow Crypt",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:002F65",
+   "edid": "DLC1VQ02",
+   "name": "Bloodline",
+   "plugin": "Dawnguard.esm",
+   "firstObjectiveStage": 5,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ01 (Awakening)",
+     "questId": "Dawnguard.esm:00352A",
+     "atStage": 200,
+     "call": "SetStage 5",
+     "source": "QF_DLC01VQ01_0100352A.fragment_1 on Dawnguard.esm:00352A (Dawnguard.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DLC1VQ03Hunter (Prophet)",
+     "atStage": 0,
+     "call": "SetStage 200",
+     "source": "DLC1_QF_DLC1VQ03Hunter_010098CB.fragment_7 (Unofficial Skyrim Special Edition Patch.esp)"
+    },
+    {
+     "by": "DLC1VampireTutorial (Power of the Blood)",
+     "atStage": 100,
+     "call": "SetStage 180",
+     "source": "DLC1_QF_DLC1VampireTutorial_0101909F.fragment_10 (Skip Vampire Lord Tutorial.esp)"
+    }
+   ],
+   "advancedBy": 6,
+   "firstObjective": {
+    "text": "Lead Serana to her home",
+    "index": 10,
+    "source": "Dawnguard.esm:002F65 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Harkon",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Lord Harkon",
+       "kind": "unique actor",
+       "where": [
+        "Volkihar Keep"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:000803"
+     ]
+    },
+    {
+     "alias": "Boat",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Rowboat",
+       "kind": "forced reference",
+       "where": [
+        "Skyrim"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:006E11"
+     ]
+    },
+    {
+     "alias": "DungeonExit",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Dimhollow Cavern, Dimhollow Crypt"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:000EB7"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Volkihar Keep",
+      "ways": 6,
+      "locked": 1
+     },
+     {
+      "cell": "Skyrim",
+      "ways": 1,
+      "locked": 0
+     },
+     {
+      "cell": "Dimhollow Cavern, Dimhollow Crypt",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:0098CB",
+   "edid": "DLC1VQ03Hunter",
+   "name": "Prophet",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 5,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DLC1HunterBaseIntro (A New Order)",
+     "questId": "Dawnguard.esm:004E24",
+     "atStage": 200,
+     "call": "SetStage 5",
+     "source": "DLC1_QF_DLC1HunterBaseIntro_01004E24.fragment_5 on Dawnguard.esm:004E24 (Requiem.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 18,
+   "firstObjective": {
+    "text": "Follow Isran",
+    "index": 5,
+    "source": "Dawnguard.esm:0098CB QOBJ 5",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Isran",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Isran",
+       "kind": "unique actor",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:001DBA"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Fort Dawnguard",
+      "ways": 9,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:004C3D",
+   "edid": "DLC1VQ03Vampire",
+   "name": "Prophet",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 5,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DLC1VampireBaseIntro (The Bloodstone Chalice)",
+     "questId": "Dawnguard.esm:00594C",
+     "atStage": 200,
+     "call": "Start",
+     "source": "DLC1_QF_DLC1VampireBaseIntro_0100594C.fragment_14 on Dawnguard.esm:00594C (Dawnguard.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 19,
+   "firstObjective": {
+    "text": "Speak to Harkon",
+    "index": 10,
+    "source": "Dawnguard.esm:004C3D QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Harkon",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Lord Harkon",
+       "kind": "unique actor",
+       "where": [
+        "Volkihar Keep"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:000803"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Volkihar Keep",
+      "ways": 6,
+      "locked": 1
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:00284F",
+   "edid": "DLC1VQ04",
+   "name": "Chasing Echoes",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ03Vampire (Prophet)",
+     "questId": "Dawnguard.esm:004C3D",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_DLC1VQ03Vampire_01004C3D.fragment_1 on Dawnguard.esm:004C3D (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ03Hunter (Prophet)",
+     "questId": "Dawnguard.esm:0098CB",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_DLC1VQ03Hunter_010098CB.fragment_1 on Dawnguard.esm:0098CB (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 11,
+   "firstObjective": {
+    "text": "Speak to Serana",
+    "index": 10,
+    "source": "Dawnguard.esm:00284F QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DLC1VQ04RNPC",
+     "fill": "run time",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:002850",
+   "edid": "DLC1VQ05",
+   "name": "Beyond Death",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ04 (Chasing Echoes)",
+     "questId": "Dawnguard.esm:00284F",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_VQ04Hunter_0100284F.fragment_5 on Dawnguard.esm:00284F (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 7,
+   "firstObjective": {
+    "text": "Locate Valerica",
+    "index": 10,
+    "source": "Dawnguard.esm:002850 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DLC1VQ05ValericaAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Valerica",
+       "kind": "unique actor",
+       "where": [
+        "Soul Cairn"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:0028BF"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:002852",
+   "edid": "DLC1VQ06",
+   "name": "Unseen Visions",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [
+    {
+     "by": "DLC1VQElder (Seeking Disclosure)",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_DLC1VQElder_01005DA9.fragment_0 (Unofficial Skyrim Special Edition Patch.esp)"
+    },
+    {
+     "by": "DLC1VQElder (Seeking Disclosure)",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_DLC1VQElder_01005DA9.fragment_13 (Unofficial Skyrim Special Edition Patch.esp)"
+    }
+   ],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Find a Moth Priest's knife",
+    "index": 10,
+    "source": "Dawnguard.esm:002852 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DLC1VQ06DrawKnifeQTAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Ancestor Glade"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:0048D6"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Dawnguard.esm:002853",
+   "edid": "DLC1VQ07",
+   "name": "Touching the Sky",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ06 (Unseen Visions)",
+     "questId": "Dawnguard.esm:002852",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_DLC1VQ06_01002852.fragment_2 on Dawnguard.esm:002852 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ06 (Unseen Visions)",
+     "questId": "Dawnguard.esm:002852",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_DLC1VQ06_01002852.fragment_13 on Dawnguard.esm:002852 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 10,
+   "firstObjective": {
+    "text": "Locate Auriel's Bow",
+    "index": 20,
+    "source": "Dawnguard.esm:002853 QOBJ 20",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DLC1VQ07GeleborAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Knight-Paladin Gelebor",
+       "kind": "unique actor",
+       "where": [
+        "Darkfall Cave"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:004346"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Darkfall Cave",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "Elven Arrow x12",
+     "stage": 200,
+     "source": "DLC1_QF_DLC1VQ07_01002853.fragment_22",
+     "verdict": "script"
+    },
+    {
+     "what": "Sunhallowed Elven Arrow x12",
+     "stage": 200,
+     "source": "DLC1_QF_DLC1VQ07_01002853.fragment_22",
+     "verdict": "script"
+    }
+   ]
+  },
+  {
+   "id": "Dawnguard.esm:007C25",
+   "edid": "DLC1VQ08",
+   "name": "Kindred Judgment",
+   "plugin": "Requiem_VampireCollection.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ07 (Touching the Sky)",
+     "questId": "Dawnguard.esm:002853",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_DLC1VQ07_01002853.fragment_22 on Dawnguard.esm:002853 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 7,
+   "firstObjective": {
+    "text": "Speak to Serana",
+    "index": 10,
+    "source": "Dawnguard.esm:007C25 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DLC1VQ08RNPCAlias",
+     "fill": "run time",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:005DA9",
+   "edid": "DLC1VQElder",
+   "name": "Seeking Disclosure",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ03Vampire (Prophet)",
+     "questId": "Dawnguard.esm:004C3D",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_DLC1VQ03Vampire_01004C3D.fragment_1 on Dawnguard.esm:004C3D (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ03Hunter (Prophet)",
+     "questId": "Dawnguard.esm:0098CB",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_DLC1VQ03Hunter_010098CB.fragment_1 on Dawnguard.esm:0098CB (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 6,
+   "firstObjective": {
+    "text": "Find The Elder Scroll (Dragon)",
+    "index": 10,
+    "source": "Dawnguard.esm:005DA9 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "Elder Scroll (Sun)",
+     "stage": 200,
+     "source": "DLC1_QF_DLC1VQElder_01005DA9.fragment_0",
+     "verdict": "script"
+    },
+    {
+     "what": "Elder Scroll (Sun)",
+     "stage": 200,
+     "source": "DLC1_QF_DLC1VQElder_01005DA9.fragment_13",
+     "verdict": "script"
+    }
+   ]
+  },
+  {
+   "id": "Dawnguard.esm:0181BF",
+   "edid": "DLC1VQElderHandler",
+   "name": "Scroll Scouting",
+   "plugin": "Dawnguard.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DLC1VQElder (Seeking Disclosure)",
+     "questId": "Dawnguard.esm:005DA9",
+     "atStage": 10,
+     "call": "SetStage 20",
+     "source": "DLC1_QF_DLC1VQElder_01005DA9.fragment_2 on Dawnguard.esm:005DA9 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Dexion Evicus",
+     "speakerPlaced": [
+      "Forebears' Holdout"
+     ],
+     "call": "SetStage 20",
+     "info": "Dawnguard.esm:0181BC",
+     "conditions": "the speaker is Dexion Evicus; Seeking Disclosure stage 20 not done; Elder Knowledge hasn't started; Discerning the Transmundane stage < 10; fn629 == 0",
+     "source": "DLC1_TIF__010181BC.Fragment_0 on INFO Dawnguard.esm:0181BC (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 20",
+     "info": "Dawnguard.esm:0181BE",
+     "conditions": "the speaker is the one in alias alias None; Seeking Disclosure stage 20 not done; Elder Knowledge hasn't started; Discerning the Transmundane stage < 10; fn629 == 0",
+     "source": "DLC1_TIF__010181BE.Fragment_0 on INFO Dawnguard.esm:0181BE (Dawnguard.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 9,
+   "firstObjective": {
+    "text": "Discover the location of the Elder Scroll (Dragon)",
+    "index": 10,
+    "source": "Dawnguard.esm:0181BF QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DLC1VQElderHandlerUragAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Urag gro-Shub",
+       "kind": "unique actor",
+       "where": [
+        "The Arcanaeum"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:013810"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "The Arcanaeum",
+      "ways": 4,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:01400B",
+   "edid": "DLC1VQSaint",
+   "name": "Impatience of a Saint",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Jiub",
+     "speakerPlaced": [
+      "Soul Cairn"
+     ],
+     "call": "SetStage 20",
+     "info": "Dawnguard.esm:01417B",
+     "conditions": "the speaker is Jiub; Impatience of a Saint stage == 10; global DLC1VQSaintDLink01 == 2 (now ?)",
+     "source": "DLC1_TIF__0101417B.Fragment_0 on INFO Dawnguard.esm:01417B (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Dawnguard.esm:01400B DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Find pages from Saint Jiub's Opus (<Global=DLC1VQSaintCount>/<Global=DLC1VQSaintTotal>)",
+    "index": 10,
+    "source": "Dawnguard.esm:01400B QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "Saint Jiub's Opus",
+     "stage": 200,
+     "source": "DLC1_QF_DLC1VQSaint_0101400B.fragment_3",
+     "verdict": "script"
+    },
+    {
+     "what": "Locket of Saint Jiub",
+     "stage": 200,
+     "source": "DLC1_QF_DLC1VQSaint_0101400B.fragment_3",
+     "verdict": "script"
+    }
+   ]
+  },
+  {
+   "id": "Dawnguard.esm:0163CD",
+   "edid": "DLC01SoulCairnHorseQuest2",
+   "name": "Soul Cairn Horse Quest",
+   "plugin": "Dawnguard.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 15",
+     "info": "Dawnguard.esm:002B0B",
+     "conditions": "the speaker is the one in alias alias 41",
+     "source": "DLC1_TIF__01002B0B.Fragment_0 on INFO Dawnguard.esm:002B0B (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 20",
+     "info": "Dawnguard.esm:002B0B",
+     "conditions": "the speaker is the one in alias alias 41",
+     "source": "DLC1_TIF__01002B0B.Fragment_1 on INFO Dawnguard.esm:002B0B (Dawnguard.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Find Arvak's skull in the Soul Cairn",
+    "index": 20,
+    "source": "Dawnguard.esm:0163CD QOBJ 20",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": "fn18 > 22 or fn18 < 5.5",
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:004C1C",
+   "edid": "DLC1Radiant",
+   "name": "\"Parent\" quest for Radiant Content",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ06 (Unseen Visions)",
+     "questId": "Dawnguard.esm:002852",
+     "atStage": 0,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_DLC1VQ06_01002852.fragment_0 on Dawnguard.esm:002852 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ03Vampire (Prophet)",
+     "questId": "Dawnguard.esm:004C3D",
+     "atStage": 0,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_DLC1VQ03Vampire_01004C3D.fragment_7 on Dawnguard.esm:004C3D (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Dawnguard.esm:004C1C DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Speak with <Alias=CurrentQuestGiver> for an assignment",
+    "index": 10,
+    "source": "Dawnguard.esm:004C1C QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "CurrentQuestGiver",
+     "fill": "run time",
+     "holds": [
+      {
+       "name": "Isran",
+       "kind": "put there by a script (ForceRefTo)",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      },
+      {
+       "name": "Gunmar",
+       "kind": "put there by a script (ForceRefTo)",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      },
+      {
+       "name": "Florentius Baenius",
+       "kind": "put there by a script (ForceRefTo)",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      },
+      {
+       "name": "Sorine Jurard",
+       "kind": "put there by a script (ForceRefTo)",
+       "where": [
+        "Fort Dawnguard"
+       ]
+      },
+      {
+       "name": "Orthjolf",
+       "kind": "put there by a script (ForceRefTo)",
+       "where": [
+        "Volkihar Keep"
+       ]
+      },
+      {
+       "name": "Vingalmo",
+       "kind": "put there by a script (ForceRefTo)",
+       "where": [
+        "Volkihar Keep"
+       ]
+      },
+      {
+       "name": "Feran Sadri",
+       "kind": "put there by a script (ForceRefTo)",
+       "where": [
+        "Volkihar Keep"
+       ]
+      },
+      {
+       "name": "Garan Marethi",
+       "kind": "put there by a script (ForceRefTo)",
+       "where": [
+        "Volkihar Keep"
+       ]
+      },
+      {
+       "name": "Fura Bloodmouth",
+       "kind": "put there by a script (ForceRefTo)",
+       "where": [
+        "Volkihar Keep"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:001DBA",
+      "Dawnguard.esm:001DBA",
+      "Dawnguard.esm:001DBA",
+      "Dawnguard.esm:001DBA",
+      "Dawnguard.esm:000803",
+      "Dawnguard.esm:000803",
+      "Dawnguard.esm:000803",
+      "Dawnguard.esm:000803",
+      "Dawnguard.esm:000803"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Fort Dawnguard",
+      "ways": 9,
+      "locked": 0
+     },
+     {
+      "cell": "Volkihar Keep",
+      "ways": 6,
+      "locked": 1
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:00EA41",
+   "edid": "DLC1VQ05SoulGemHandler",
+   "name": "Beyond Death Soul Gem Handler",
+   "plugin": "Praedy's SoulEssenceGem.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ04 (Chasing Echoes)",
+     "questId": "Dawnguard.esm:00284F",
+     "atStage": null,
+     "call": "SetStage 10",
+     "source": "dlc1vq04questscript.SoulTrapped on Dawnguard.esm:00284F (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ04 (Chasing Echoes)",
+     "questId": "Dawnguard.esm:00284F",
+     "atStage": 115,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_VQ04Hunter_0100284F.fragment_33 on Dawnguard.esm:00284F (Unofficial Skyrim Special Edition Patch.esp), through DLC1VQ04 (Chasing Echoes)'s soultrapped",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Valerica",
+     "speakerPlaced": [
+      "Soul Cairn"
+     ],
+     "call": "SetStage 20",
+     "info": "Dawnguard.esm:00E9DD",
+     "conditions": "the speaker is Valerica; Beyond Death stage == 130; Beyond Death Soul Gem Handler stage 30 not done; global DLC1VQ04SoulTrapped == 1 (now ?)",
+     "source": "DLC1_TIF__0200E9DD.Fragment_0 on INFO Dawnguard.esm:00E9DD (Dawnguard.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Retrieve the Soul Essence Gem",
+    "index": 10,
+    "source": "Dawnguard.esm:00EA41 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DLC1VQ05GemChestAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Chest",
+       "kind": "forced reference",
+       "where": [
+        "Soul Cairn"
+       ]
+      }
+     ],
+     "cells": [
+      "Dawnguard.esm:002CE3"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:00C73A",
+   "edid": "DLC1VQDragon",
+   "name": "Durnehviir",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 30,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 30",
+     "info": "Dawnguard.esm:01157B",
+     "conditions": "the speaker is the one in alias alias 1; Durnehviir stage == 20; global DLC1VQDragonDLink01 == 1 (now ?)",
+     "source": "DLC1_TIF__0101157B.Fragment_0 on INFO Dawnguard.esm:01157B (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 20",
+     "info": "Dawnguard.esm:01157E",
+     "conditions": "the speaker is the one in alias alias 1; Durnehviir stage == 10; global DLC1VQDragonDLink01 == 0 (now ?)",
+     "source": "DLC1_TIF__0101157E.Fragment_0 on INFO Dawnguard.esm:01157E (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerPlaced": [],
+     "call": "SetStage 20",
+     "info": "Dawnguard.esm:011570",
+     "conditions": "the speaker is the one in alias alias 1; Durnehviir stage == 10; global DLC1VQDragonDLink01 == 0 (now ?)",
+     "source": "DLC1_TIF__01011570.Fragment_0 on INFO Dawnguard.esm:011570 (Dawnguard.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Dawnguard.esm:00C73A DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Summon Durnehviir in Tamriel",
+    "index": 10,
+    "source": "Dawnguard.esm:00C73A QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:01119F",
+   "edid": "DLC1VQDragonMisc",
+   "name": "Durnehviir Misc Objective Handler",
+   "plugin": "Dawnguard.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Speak to Durnehviir at his lair in the Soul Cairn",
+    "index": 10,
+    "source": "Dawnguard.esm:01119F QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DLC1VQDragonMiscAlias",
+     "fill": "from alias",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Dawnguard.esm:01A3E4",
+   "edid": "DLC1VQFVBooks",
+   "name": "Forgotten Vale Books Quest",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "Dawnguard.esm:01A3E4 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Bring Ancient Falmer Tome to Urag gro-Shub",
+    "index": 10,
+    "source": "Dawnguard.esm:01A3E4 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DLC1FVBUragAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Urag gro-Shub",
+       "kind": "unique actor",
+       "where": [
+        "The Arcanaeum"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:013810"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "The Arcanaeum",
+      "ways": 4,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Dawnguard.esm:01909F",
+   "edid": "DLC1VampireTutorial",
+   "name": "Power of the Blood",
+   "plugin": "Skip Vampire Lord Tutorial.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DLC1VQ02 (Bloodline)",
+     "questId": "Dawnguard.esm:002F65",
+     "atStage": 40,
+     "call": "SetStage 10",
+     "source": "DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_20 on Dawnguard.esm:002F65 (Dawnguard.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Tranform into the Vampire Lord",
+    "index": 10,
+    "source": "Dawnguard.esm:01909F QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  }
+ ],
+ "notInRawQuests": [],
+ "starts": [
+  {
+   "start": "Regular (Inn)",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "The Bannered Mare",
+     "quest": "AlternatePerspective.esp:3271C8",
+     "questEdid": "APS_InnWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnWhiterun scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Bee and Barb",
+     "quest": "AlternatePerspective.esp:3457D0",
+     "questEdid": "APS_InnRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Winking Skeever",
+     "quest": "AlternatePerspective.esp:3457D2",
+     "questEdid": "APS_InnSolitude",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnSolitude scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Silver-Blood Inn",
+     "quest": "AlternatePerspective.esp:3457D4",
+     "questEdid": "APS_InnMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnMarkarth scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Candlehearth Hall",
+     "quest": "AlternatePerspective.esp:3457D6",
+     "questEdid": "APS_InnWindhelm",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnWindhelm scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dead Man's Drink",
+     "quest": "AlternatePerspective.esp:3457D9",
+     "questEdid": "APS_InnFalkreath",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnFalkreath scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Moorside Inn",
+     "quest": "AlternatePerspective.esp:3457DD",
+     "questEdid": "APS_InnMorthal",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnMorthal scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Frozen Hearth",
+     "quest": "AlternatePerspective.esp:3457DF",
+     "questEdid": "APS_InnWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnWinterhold scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Windpeak Inn",
+     "quest": "AlternatePerspective.esp:3457E0",
+     "questEdid": "APS_InnDawnstar",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Retching Netch",
+     "quest": "AlternatePerspective.esp:34A8E2",
+     "questEdid": "APS_InnRavenRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRavenRock scripts (Alternate Perspective - Gate to Sovngarde Edition.esp)"
+    },
+    {
+     "option": "The Sleeping Giant Inn",
+     "quest": "AlternatePerspective.esp:34A8E3",
+     "questEdid": "APS_InnRiverwood",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRiverwood scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Frostfruit Inn",
+     "quest": "AlternatePerspective.esp:34A8E4",
+     "questEdid": "APS_InnRorikstead",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRorikstead scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Vilemyr Inn",
+     "quest": "AlternatePerspective.esp:34A8E5",
+     "questEdid": "APS_InnIvarstead",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnIvarstead scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Old Hroldan Inn",
+     "quest": "AlternatePerspective.esp:34A8E6",
+     "questEdid": "APS_InnOldHroldan",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnOldHroldan scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Four Shields Tavern",
+     "quest": "AlternatePerspective.esp:34A8E7",
+     "questEdid": "APS_InnDragonbridge",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnDragonbridge scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Nightgate Inn",
+     "quest": "AlternatePerspective.esp:34A8E8",
+     "questEdid": "APS_InnNightgate",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnNightgate scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Braidwood Inn",
+     "quest": "AlternatePerspective.esp:34A8E9",
+     "questEdid": "APS_InnKynesgrove",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnKynesgrove scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "From Overseas",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "East Empire Trading Company",
+     "quest": "AlternatePerspective.esp:34F9EC",
+     "questEdid": "APS_DocksSolitude",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksSolitude scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Windhelm Docks",
+     "quest": "AlternatePerspective.esp:34F9EE",
+     "questEdid": "APS_DocksWindhelm",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksWindhelm scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dawnstar's Shore",
+     "quest": "AlternatePerspective.esp:34F9ED",
+     "questEdid": "APS_DocksDawnstar",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Raven Rock Docks",
+     "quest": "AlternatePerspective.esp:34F9F0",
+     "questEdid": "APS_DocksRavenRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksRavenRock scripts (Alternate Perspective - Gate to Sovngarde Edition.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Wanted Criminal",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Whiterun",
+     "quest": "AlternatePerspective.esp:34FA14",
+     "questEdid": "APS_WantedTPWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPWhiterun scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AlternatePerspective.esp:34FA15",
+     "questEdid": "APS_WantedTPRRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPRRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AlternatePerspective.esp:34FA1B",
+     "questEdid": "APS_WantedTPRDawnstar",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPRDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AlternatePerspective.esp:34FA25",
+     "questEdid": "APS_WantedTPWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPWinterhold scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Left for Dead",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "The Rift",
+     "quest": "AlternatePerspective.esp:34FA27",
+     "questEdid": "APS_LeftForDeadRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_LeftForDeadRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AlternatePerspective.esp:34FA29",
+     "questEdid": "APS_LeftForDeadMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_LeftForDeadMarkarth scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AlternatePerspective.esp:34FA20",
+     "questEdid": "APS_LeftForDeadWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_LeftForDeadWinterhold scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Forsworn",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Forsworn",
+     "quest": "AlternatePerspective.esp:46649F",
+     "questEdid": "APS_Forsworn",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_Forsworn scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Guilds",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "College of Winterhold",
+     "quest": "AlternatePerspective.esp:3D36E6",
+     "questEdid": "APS_GuildMages",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildMages scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Thieves Guild",
+     "quest": "AlternatePerspective.esp:3CE5E5",
+     "questEdid": "APS_GuildThievesguild",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildThievesguild scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dark Brotherhood",
+     "quest": "AlternatePerspective.esp:3D36E7",
+     "questEdid": "APS_GuildBrotherhood",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildBrotherhood scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Companions",
+     "quest": "AlternatePerspective.esp:3D36E8",
+     "questEdid": "APS_GuildCompanions",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildCompanions scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Dragonborn",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Helgen Keep (Start)",
+     "quest": "AlternatePerspective.esp:47F943",
+     "questEdid": "APS_MQSkipKeep",
+     "mainQuestRuns": "no",
+     "moves": [
+      "MQ101 SetStage 6",
+      "MQ101 SetStage 7"
+     ],
+     "source": "APS_MQSkipKeep scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Helgen Keep (End)",
+     "quest": "AlternatePerspective.esp:484A45",
+     "questEdid": "APS_MQSkipKeepEnd",
+     "mainQuestRuns": "no",
+     "moves": [
+      "MQ101 SetStage 250",
+      "MQ101 SetStage 550",
+      "MQ101 SetStage 700",
+      "MQ101 SetStage 710",
+      "MQ101 SetStage 720",
+      "MQ101 SetStage 725"
+     ],
+     "source": "APS_MQSkipKeepEnd scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Addict",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Addict",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000800",
+     "questEdid": "AFLOLALAddictQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAddictQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Dwemer Ruin",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Dwemer Ruin",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00081C",
+     "questEdid": "AFLOLALAdventureQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAdventureQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Alchemist",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Alchemist",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00080A",
+     "questEdid": "AFLOLALAlchemistQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAlchemistQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "At Angis Camp",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "At Angis Camp",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000858",
+     "questEdid": "AFLOLALAngiQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAngiQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Beggar",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Riften",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00085F",
+     "questEdid": "AFLOAP_BeggarRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BeggarRiften scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Markarth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000860",
+     "questEdid": "AFLOAP_BeggarMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BeggarMarkarth scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Jailed",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000861",
+     "questEdid": "AFLOAP_JailWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailWhiterun scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000869",
+     "questEdid": "AFLOAP_JailRift",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailRift scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Eastmarch",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000862",
+     "questEdid": "AFLOAP_JailEastmarch",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailEastmarch scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Haarfinger",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000864",
+     "questEdid": "AFLOAP_JailHaarfinger",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailHaarfinger scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000868",
+     "questEdid": "AFLOAP_JailReach",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailReach scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000863",
+     "questEdid": "AFLOAP_JailFalkreath",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailFalkreath scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hjaalmach",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000865",
+     "questEdid": "AFLOAP_JailHjaalmach",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailHjaalmach scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000866",
+     "questEdid": "AFLOAP_JailPale",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailPale scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086A",
+     "questEdid": "AFLOAP_JailWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailWinterhold scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Raven Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000867",
+     "questEdid": "AFLOAP_JailRavenRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailRavenRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Mercenary",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Cyrodiil",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086B",
+     "questEdid": "AFLOAP_BorderMercenaryCyrodill",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryCyrodill scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hammerfell",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086C",
+     "questEdid": "AFLOAP_BorderMercenaryHammerfell",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryHammerfell scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "High Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086D",
+     "questEdid": "AFLOAP_BorderMercenaryHighRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryHighRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Northern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086E",
+     "questEdid": "AFLOAP_BorderMercenaryNorthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryNorthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Southern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086F",
+     "questEdid": "AFLOAP_BorderMercenarySouthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenarySouthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Merchant",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Cyrodiil",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000870",
+     "questEdid": "AFLOAP_BorderMerchantCyrodill",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantCyrodill scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hammerfell",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000871",
+     "questEdid": "AFLOAP_BorderMerchantHammerfell",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantHammerfell scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "High Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000872",
+     "questEdid": "AFLOAP_BorderMerchantHighRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantHighRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Northern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000873",
+     "questEdid": "AFLOAP_BorderMerchantNorthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantNorthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Southern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000874",
+     "questEdid": "AFLOAP_BorderMerchantSouthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantSouthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Pilgrim (Shrine)",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Shrine of Azura",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083C",
+     "questEdid": "AFLOLALAzuraQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAzuraQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Boethiah",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083A",
+     "questEdid": "AFLOLALBoethiahQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALBoethiahQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Mehrunes Dagon",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000842",
+     "questEdid": "AFLOLALDagonQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALDagonQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Eldergleam Sanctuary",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000838",
+     "questEdid": "AFLOLALEldergleamQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALEldergleamQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Statue of Meridia",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000840",
+     "questEdid": "AFLOLALMeridiaQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALMeridiaQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Peryite",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083E",
+     "questEdid": "AFLOLALPeryiteQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALPeryiteQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Stendarr's Beacon",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000835",
+     "questEdid": "AFLOLALStendarrQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALStendarrQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hall of the Vigilant",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000881",
+     "questEdid": "AFLOAP_StendarrHall",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_StendarrHall scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Pilgrim (Temple)",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Temple of the Divines",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000876",
+     "questEdid": "AFLOAP_TempleDivine",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleDivine scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Dibella",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000875",
+     "questEdid": "AFLOAP_TempleDibella",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleDibella scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Kynareth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000877",
+     "questEdid": "AFLOAP_TempleKynareth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleKynareth scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Mara",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000878",
+     "questEdid": "AFLOAP_TempleMara",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleMara scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Talos",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000879",
+     "questEdid": "AFLOAP_TempleTalos",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleTalos scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Thalmor Prisoner",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Thalmor Prisoner",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000829",
+     "questEdid": "AFLOLALThalmorQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALThalmorQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Vampire",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Solitude",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087D",
+     "questEdid": "AFLOAP_VampireSolitude",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireSolitude scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087A",
+     "questEdid": "AFLOAP_VampireFalkreath",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireFalkreath scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087E",
+     "questEdid": "AFLOAP_VampireWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireWhiterun scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Riften",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087C",
+     "questEdid": "AFLOAP_VampireRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireRiften scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Windhelm",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087F",
+     "questEdid": "AFLOAP_VampireWindhelm",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireWindhelm scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Markarth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087B",
+     "questEdid": "AFLOAP_VampireMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireMarkarth scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Werewolf",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Werewolf",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00081F",
+     "questEdid": "AFLOLALWerewolfQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALWerewolfQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Roadside Ambush",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:000018",
+     "questEdid": "MissileAPAmbushStartEastmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartEastmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:000021",
+     "questEdid": "MissileAPAmbushStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:00001B",
+     "questEdid": "MissileAPAmbushStartHjaalmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:00001A",
+     "questEdid": "MissileAPAmbushStartFalkreathQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:00002D",
+     "questEdid": "MissileAPAmbushStartPaleQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:000033",
+     "questEdid": "MissileAPAmbushStartReachQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000027",
+     "questEdid": "MissileAPAmbushStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:000019",
+     "questEdid": "MissileAPAmbushStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Fell in a Spike Pit",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Fell in a Spike Pit",
+     "quest": "AP - Missile Additional Starts.esp:000039",
+     "questEdid": "MissileAPFellInAPitQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPFellInAPitQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Bounty Hunter",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:00004C",
+     "questEdid": "MissileAPBountyHunterStartEastmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartEastmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:000058",
+     "questEdid": "MissileAPBountyHunterStartFalkreathQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:00005C",
+     "questEdid": "MissileAPBountyHunterStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:000048",
+     "questEdid": "MissileAPBountyHunterStartHjaalmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000050",
+     "questEdid": "MissileAPBountyHunterStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:00003F",
+     "questEdid": "MissileAPBountyHunterStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AP - Missile Additional Starts.esp:000054",
+     "questEdid": "MissileAPBountyHunterStartWinterholdQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartWinterholdQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Prisoner in a Bandit Fort",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:000086",
+     "questEdid": "MissileAPBanditPrisonerStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:00007B",
+     "questEdid": "MissileAPBanditPrisonerStartPaleQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:00008D",
+     "questEdid": "MissileAPBanditPrisonerStartReachQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000081",
+     "questEdid": "MissileAPBanditPrisonerStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:000073",
+     "questEdid": "MissileAPBanditPrisonerStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Out in the Wilderness",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:0000D8",
+     "questEdid": "MissileAPOutInTheWildernessStartEastmarchQuestDUPLICATE001",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartEastmarchQuestDUPLICATE001 scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:0000CE",
+     "questEdid": "MissileAPOutInTheWildernessStartFalkreathQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:0000D2",
+     "questEdid": "MissileAPOutInTheWildernessStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:0000D4",
+     "questEdid": "MissileAPOutInTheWildernessStartHjaalmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:0000DA",
+     "questEdid": "MissileAPOutInTheWildernessStartPaleQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:0000D0",
+     "questEdid": "MissileAPOutInTheWildernessStartReachQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:0000CB",
+     "questEdid": "MissileAPOutInTheWildernessStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:0000C8",
+     "questEdid": "MissileAPOutInTheWildernessStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AP - Missile Additional Starts.esp:0000D6",
+     "questEdid": "MissileAPOutInTheWildernessStartWinterholdQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartWinterholdQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  }
+ ],
+ "otherStarts": "To get into the main quest: Impatience of a Saint is running from the start: Find pages from Saint Jiub's Opus (<Global=DLC1VQSaintCount>/<Global=DLC1VQSaintTotal>).",
+ "routes": [
+  {
+   "route": "DLC1VQ00ChangeLocation",
+   "kind": "quest script",
+   "does": "stage 0: SetStage 5",
+   "startedBy": [],
+   "inStartMenu": false,
+   "source": "DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B on Dawnguard.esm:00D90B (TheChoiceIsYours.esp)",
+   "sentence": "DLC1VQ00ChangeLocation stage 0: SetStage 5 on DLC1VQ01MiscObjective (Dawnguard); it is started by ."
+  },
+  {
+   "route": "DLC1VQ00",
+   "kind": "quest script",
+   "does": "stage 50: SetStage 10",
+   "startedBy": [
+    "DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B.fragment_1 on Dawnguard.esm:00D90B (TheChoiceIsYours.esp)"
+   ],
+   "inStartMenu": false,
+   "source": "DLC1_QF_DLC1VQ00_0100D90E on Dawnguard.esm:00D90E (Dawnguard.esm)",
+   "sentence": "DLC1VQ00 stage 50: SetStage 10 on DLC1VQ01MiscObjective (Dawnguard); it is started by DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B.fragment_1 on Dawnguard.esm:00D90B (TheChoiceIsYours.esp)."
+  },
+  {
+   "route": "dialogue INFO Dawnguard.esm:00D8D8",
+   "kind": "dialogue",
+   "speaker": null,
+   "speakerNamed": "GetIsID",
+   "race": null,
+   "placed": [],
+   "prompt": "",
+   "reply": [
+    "Oh, hey there! You here to join the Dawnguard too?"
+   ],
+   "conditions": "",
+   "does": "SetStage 10 on DLC1VQ01MiscObjective (Dawnguard)",
+   "source": "DLC1_TIF__0100D8D8.Fragment_0 on INFO Dawnguard.esm:00D8D8 (Unofficial Skyrim Special Edition Patch.esp); topic ",
+   "sentence": "Talk to the speaker the line's conditions name: SetStage 10 on DLC1VQ01MiscObjective (Dawnguard).",
+   "stops": "the speaker isn't named by an NPC: GetIsID"
+  }
+ ],
+ "loaders": {
+  "Wyrmstooth": {
+   "quest": "Wyrmstooth.esp:AC1487",
+   "script": "WT_MCMScript",
+   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/Wyrmstooth - Settings Loader/Scripts/WT_MCMScript.pex",
+   "winnerParent": "MCM_ConfigBase",
+   "readsSettings": true
+  },
+  "TimingIsEverything": {
+   "quest": "TimingIsEverything.esp:005E3B",
+   "script": "TIE_MCMScript",
+   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex",
+   "winnerParent": "SKI_ConfigBase",
+   "readsSettings": false
+  }
+ },
+ "payoff": [
+  {
+   "quest": "Dragonslayer",
+   "edid": "MQ305",
+   "completingStages": [
+    200
+   ],
+   "gives": []
+  },
+  {
+   "quest": "Paarthurnax",
+   "edid": "MQPaarthurnax",
+   "completingStages": [
+    99,
+    100
+   ],
+   "gives": []
+  }
+ ],
+ "questions": [
+  {
+   "question": "Is Skyrim.esm:0242BA MQ105, and is stage 160 the one that completes it?",
+   "edid": "MQ105",
+   "name": "The Way of the Voice",
+   "completingStages": [
+    160
+   ],
+   "answer": "Yes: Skyrim.esm:0242BA is MQ105 (The Way of the Voice), and stage 160 is its only completing stage."
+  },
+  {
+   "question": "Who starts The Horn of Jurgen Windcaller, and where?",
+   "quest": null,
+   "startedBy": [],
+   "target": null,
+   "firstObjective": null
+  },
+  {
+   "question": "Does Dragonborn's cultist node read Timing is Everything's level (25 in its settings.ini), or something else?",
+   "quest": "DLC2CultistAmbush (Dragonborn.esm:03546D)",
+   "nodes": [
+    {
+     "node": "DLC2CultistAmbushNode001",
+     "id": "Dragonborn.esm:035472",
+     "plugin": "LoreRim - Global Modifiers.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode002",
+     "id": "TimingIsEverything.esp:00E53C",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode003",
+     "id": "TimingIsEverything.esp:00E53D",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode004",
+     "id": "TimingIsEverything.esp:00E53E",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode005",
+     "id": "TimingIsEverything.esp:00E53F",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode006",
+     "id": "TimingIsEverything.esp:00E540",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode007",
+     "id": "TimingIsEverything.esp:00E541",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode008",
+     "id": "TimingIsEverything.esp:00E542",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode000",
+     "id": "TimingIsEverything.esp:00E543",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    }
+   ],
+   "tieSetting": {
+    "key": "iTIE_MinimumLevel:Dragonborn",
+    "value": "25",
+    "from": "settings.ini in Timing is Everything SE - Settings Loader"
+   }
+  }
+ ],
+ "timingIsEverything": {
+  "loaderInstalled": true,
+  "loaderFolder": "Timing is Everything SE - Settings Loader",
+  "script": {
+   "quest": "TimingIsEverything.esp:005E3B",
+   "script": "TIE_MCMScript",
+   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex",
+   "winnerParent": "SKI_ConfigBase",
+   "readsSettings": false
+  },
+  "dragonbornLevel": {
+   "key": "iTIE_MinimumLevel:Dragonborn",
+   "value": "25",
+   "from": "settings.ini in Timing is Everything SE - Settings Loader",
+   "globals": [
+    {
+     "id": "TimingIsEverything.esp:00E53B",
+     "edid": "DLC2CultistAttackMinLevel_KRY",
+     "record": 25.0,
+     "recordFrom": "TimingIsEverything.esp",
+     "runtime": [],
+     "settingsNotRead": [
+      {
+       "mod": "TimingIsEverything",
+       "key": "iTIE_MinimumLevel:Dragonborn",
+       "value": "25",
+       "from": "settings.ini in Timing is Everything SE - Settings Loader",
+       "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+      }
+     ],
+     "value": 25.0,
+     "verdict": "files",
+     "global": "TimingIsEverything.esp:00E53B"
+    }
+   ]
+  }
+ },
+ "wyrmstooth": {
+  "loaderInstalled": true,
+  "loaderFolder": "Wyrmstooth - Settings Loader",
+  "global": "Wyrmstooth.esp:AC356A",
+  "fact": {
+   "id": "Wyrmstooth.esp:AC356A",
+   "edid": "WTStartLevel",
+   "record": 20.0,
+   "recordFrom": "Requiem - Wyrmstooth.esp",
+   "recordWas": {
+    "value": 10.0,
+    "from": "Wyrmstooth.esp"
+   },
+   "runtime": [
+    {
+     "by": "settings loader",
+     "mod": "Wyrmstooth",
+     "key": "iWTGeneralRequirementsMinimalLevel:Requirements",
+     "value": "10",
+     "from": "settings.ini in Wyrmstooth - Settings Loader",
+     "script": "WT_MCMScript.OnSettingChange"
+    }
+   ],
+   "verdict": "run time",
+   "value": "10"
+  },
+  "loaderQuest": {
+   "quest": "Wyrmstooth.esp:AC1487",
+   "script": "WT_MCMScript",
+   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/Wyrmstooth - Settings Loader/Scripts/WT_MCMScript.pex",
+   "winnerParent": "MCM_ConfigBase",
+   "readsSettings": true
+  },
+  "newGame": {
+   "value": 10,
+   "why": [
+    "OnConfigInit runs once when the menu registers in a new game; it sets `migrated` and calls LoadSettings, which goes on only while bEnabled:Maintenance is set (it is 1) and then calls Load, which reads iWTGeneralRequirementsMinimalLevel:Requirements (10, settings.ini in Wyrmstooth - Settings Loader) and sets WTStartLevel to it",
+    "MigrateToMCMHelper, which would copy the global's record value (20.0) into that setting, runs only from OnGameReload or OnConfigOpen while `migrated` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would)",
+    "OnGameReload reloads the settings only when bLoadSettingsonReload:Maintenance is set; it is 0, so later loads keep whatever the global holds"
+   ],
+   "verdict": "run time"
+  }
+ },
+ "missingScripts": [
+  "AAS_PlayerScript",
+  "ACFH_TIF__03000B2B",
+  "ACFH_TIF__03000B6B",
+  "BGSSSE010_OnReadSetStageAlias",
+  "BaanMalurCarriageScript",
+  "HLIO_TIF__0598299C",
+  "JR0_QF_JRLucienCCSaintsAndSed_07000800",
+  "JR_TIF__05172482",
+  "JR_TIF__05172488",
+  "ParryManagerQuestScript",
+  "QF_DLCDwarvenPuzzleDungeonQu_050038D9",
+  "QF_HRI_Events_Quest_WEWerebe_0402904A",
+  "QF_SOMRRumoursQuest_0721AE15",
+  "QF_ccBGSSSE001_Crab_MQ1_050009D4",
+  "QF_ccBGSSSE001_Crab_MQ2_050009DA",
+  "QF_ccBGSSSE001_Crab_MQ3_050009D6",
+  "QF_ccBGSSSE001_Fish_MQ1_050009DE",
+  "QF_ccBGSSSE001_Fish_MQ2_050009EB",
+  "QF_ccBGSSSE001_Fish_MQ3_050009E8",
+  "QF_ccBGSSSE001_Fish_MQ4_050009DD",
+  "QF_ccBGSSSE001_Fish_MQ5_050009DC",
+  "QF_ccBGSSSE001_MiscQuests_050009E6",
+  "QF_ccBGSSSE001_Misc_Falkreat_050009EC",
+  "QF_ccBGSSSE001_Misc_Khajiit_050009E2",
+  "QF_ccBGSSSE001_Misc_Markarth_050009DF",
+  "QF_ccBGSSSE001_Misc_Morthal_050009E4",
+  "QF_ccBGSSSE001_Misc_Solitude_050009E3",
+  "QF_ccBGSSSE001_Misc_Whiterun_050009D7",
+  "QF_ccBGSSSE001_Misc_Whiterun_05000E5D",
+  "QF_ccBGSSSE001_Misc_Windhelm_050009D5",
+  "QF_ccBGSSSE001_Radiant_1_05000B98",
+  "QF_ccBGSSSE001_Radiant_2_05000C2F",
+  "QF_ccBGSSSE001_Radiant_3_05000C8C",
+  "QF_ccBGSSSE001_Start_MQ1_050009D3",
+  "QF_ccBGSSSE001_Start_MQ2_050009DB",
+  "QF_ccBGSSSE010_PetPurchaseQu_02000808",
+  "QF_ccBGSSSE025_ElytraPetAcqu_050010C3",
+  "QF_ccBGSSSE025_RareCuriosInt_050010C1",
+  "QF_ccBGSSSE035_PetAcquireQue_0400080A",
+  "SSE_TIF__020008AA",
+  "SSE_ccBGSSSE037_RareCurios_0100084D",
+  "SilgradCarriageScript",
+  "SkyInteract_PlayerLoadGameAlias",
+  "Survival_PlayerHitInfo",
+  "Survival_PlayerLocationInfo",
+  "Survival_ThirstPlayerAlias",
+  "Survival_VampirismLycanthropy",
+  "TIF__020458BA",
+  "TIF__023943AB",
+  "TIF__03000976",
+  "TIF__03000D75",
+  "TIF__04138034",
+  "TIF__08005903",
+  "TIF_ccBGSSSE025_StaadaFrag",
+  "TIF_ccBGSSSE025_StaadaFrag2",
+  "TIF_ccBGSSSE025_StaadaFrag3",
+  "TIF_ccBGSSSE025_StaadaFragA",
+  "TIF_ccBGSSSE025_StaadaFrgF",
+  "Traits_ElementalistPlayerScript",
+  "VS02_QF_ccVSVSSE002_MainQuest_050008C8",
+  "aaCi_TIF__0501F5BC",
+  "aaEl_QF_aaElisifUpdate0108_05014EF5",
+  "aaaVampireFeedingContractScriptB",
+  "aaaVampireFeedingRemoveAlias",
+  "ccASVSSE001_KillFollowerCheck",
+  "ccASVSSE001_OnHitStageSetScript",
+  "ccASVSSE001_SetStageonActivateScript",
+  "ccASVSSE001_TIF__05000DFC",
+  "ccASVSSE001_TIF__05000E04",
+  "ccASVSSE001_TIF__05000E07",
+  "ccASVSSE001_TIF__05000E09",
+  "ccASVSSE001_TIF__05000EAB",
+  "ccASVSSE001_TIF__0500114D",
+  "ccASVSSE001_TIF__0500115F",
+  "ccASVSSE001_TIF__05001160",
+  "ccASVSSE001_TIF__0500116A",
+  "ccASVSSE001_TIF__05001178",
+  "ccASVSSE001_TIF__05048064",
+  "ccASVSSE001_TIF__05048065",
+  "ccASVSSE001_TIF__0504806D",
+  "ccASVSSE001_TIF__05219F5B",
+  "ccASVSSE001_TaskChecklilst",
+  "ccBGSSSE001_AdvanceStageOnUpdate",
+  "ccBGSSSE001_CatapultMonitor",
+  "ccBGSSSE001_CrabEncMonitor",
+  "ccBGSSSE001_CrabMQ2EncAlias",
+  "ccBGSSSE001_CrabMQ3_Quest",
+  "ccBGSSSE001_CrabMQ4BodyCleanup",
+  "ccBGSSSE001_CrabMQ4Reinforcements",
+  "ccBGSSSE001_DeleteOnQuestDone",
+  "ccBGSSSE001_GuardPanicScript",
+  "ccBGSSSE001_ItemCollectObjectiveScript",
+  "ccBGSSSE001_MiscDwarPlayScript",
+  "ccBGSSSE001_MiscKhajPlayScript",
+  "ccBGSSSE001_MiscMarkarthScript",
+  "ccBGSSSE001_MiscQuestScript",
+  "ccBGSSSE001_MiscSol_DinnerGuestScript",
+  "ccBGSSSE001_MiscWhiterunCourier",
+  "ccBGSSSE001_OnDeathCallReinforce",
+  "ccBGSSSE001_OnReadSetStage",
+  "ccBGSSSE001_PlayerHitScript",
+  "ccBGSSSE001_Quest_SetStageAfterTimer",
+  "ccBGSSSE001_RadiantFishQuest",
+  "ccBGSSSE001_RadiantItemPlayerScript",
+  "ccBGSSSE001_RadiantJunkQuest",
+  "ccBGSSSE001_RadiantQuest3Listener",
+  "ccBGSSSE001_SandboxFollowerScript",
+  "ccBGSSSE001_SetStageOnActivate",
+  "ccBGSSSE001_SetStageOnPickup",
+  "ccBGSSSE001_StartMQ1PlayerScript",
+  "ccBGSSSE001_SwapOutfitOnCellAttach",
+  "ccBGSSSE001_TIF__0500099D",
+  "ccBGSSSE001_TIF__050009A7",
+  "ccBGSSSE001_TIF__050009BC",
+  "ccBGSSSE001_TIF__050009D1",
+  "ccBGSSSE001_TIF__05000A63",
+  "ccBGSSSE001_TIF__05000A68",
+  "ccBGSSSE001_TIF__05000B1E",
+  "ccBGSSSE001_TIF__05000B5C",
+  "ccBGSSSE001_TIF__05000B60",
+  "ccBGSSSE001_TIF__05000B64",
+  "ccBGSSSE001_TIF__05000B79",
+  "ccBGSSSE001_TIF__05000BAF",
+  "ccBGSSSE001_TIF__05000BB0",
+  "ccBGSSSE001_TIF__05000BB1",
+  "ccBGSSSE001_TIF__05000BB2",
+  "ccBGSSSE001_TIF__05000BB3",
+  "ccBGSSSE001_TIF__05000BB4",
+  "ccBGSSSE001_TIF__05000BB5",
+  "ccBGSSSE001_TIF__05000BB6",
+  "ccBGSSSE001_TIF__05000BDE",
+  "ccBGSSSE001_TIF__05000C28",
+  "ccBGSSSE001_TIF__05000C29",
+  "ccBGSSSE001_TIF__05000C49",
+  "ccBGSSSE001_TIF__05000C5C",
+  "ccBGSSSE001_TIF__05000C5E",
+  "ccBGSSSE001_TIF__05000C70",
+  "ccBGSSSE001_TIF__05000E5B",
+  "ccBGSSSE001_TIF__05000E5C",
+  "ccBGSSSE001_TIF__05000E5E",
+  "ccBGSSSE001_TIF__05000E7B",
+  "ccBGSSSE001_TIF__05000EA4",
+  "ccBGSSSE001_TIF__05000EA9",
+  "ccBGSSSE001_TIF__05000EAC",
+  "ccBGSSSE001_TIF__05000EAF",
+  "ccBGSSSE001_TIF__05000EB4",
+  "ccBGSSSE001_TIF__05000EC3",
+  "ccBGSSSE001_TIF__05000ECE",
+  "ccBGSSSE001_TIF__05000EE5",
+  "ccBGSSSE001_TIF__050C1D0F",
+  "ccBGSSSE001_WhiterunChestScript",
+  "ccBGSSSE002_TKArrowsQuestScript",
+  "ccBGSSSE010_ContainerSetStage",
+  "ccBGSSSE010_SetStageOnActivate",
+  "ccBGSSSE013_BattleScript",
+  "ccBGSSSE014_SetStageContainerOpen",
+  "ccBGSSSE018_QF_ShadowQuest_0100081C",
+  "ccBGSSSE018_ShadowrendPlaceScript",
+  "ccBGSSSE018_ShadowrendPlayerScript",
+  "ccBGSSSE025_ElytraCollectItemScript",
+  "ccBGSSSE025_RCIntegrationScript",
+  "ccBGSSSE034_MapContainerChangeAlias",
+  "ccBGSSSE034_TIF__02000837",
+  "ccBGSSSE034_TIF__02000838",
+  "ccBGSSSE034_TIF__02000839",
+  "ccBGSSSE034_TIF__0200083A",
+  "ccBGSSSE034_TIF__0200083C",
+  "ccBGSSSE034_TIF__0200084A",
+  "ccBGSSSE034_WildHorseRefAliasScript",
+  "ccBGSSSE034_WildHorsesQuestScript",
+  "ccBGSSSE034_tif__02000d6c",
+  "ccBGSSSE034_tif__02000d6d",
+  "ccBGSSSE035_MerchantAlias",
+  "ccBGSSSE035_OnActStageRefAlias",
+  "ccBGSSSE036_SetStageOnRead",
+  "ccBGSSSE051_TIF__05000833",
+  "ccBGSSSE051_TIF__05000838",
+  "ccBGSSSE051_TIF__05000839",
+  "ccBGSSSE051__TIF__0500083D",
+  "ccBGSSSE051__TIF__05000841",
+  "ccBGSSSE067_ContentAwareScript",
+  "ccBGSSSE067_QuestFunctionsScript",
+  "ccBGSSSE067_Quest_0506BFC1",
+  "ccBGSSSE067_SetStageOnActivateConfirm",
+  "ccBGSSSE067_SetStageOnOpenRefAlias",
+  "ccBGSSSE067_SetStageTriggerScript",
+  "ccEDHSSE003_TIF__02000860",
+  "ccEDHSSE003_TIF__02000862",
+  "ccEDHSSE003_TIF__0200086B",
+  "ccEDHSSE003_TIF__02000871",
+  "ccEDHSSE003_TIF__02000875",
+  "ccEDHSSE003_TIF__0200088B",
+  "ccEDHSSE003_TIF__020008B0",
+  "ccEEJSSE004__05000C54",
+  "ccEEJSSE004__05000C58",
+  "ccEEJSSE004__05000C72",
+  "ccEEJSSE005_DeathCount",
+  "ccEEJSSE005_Quest_050B7AED",
+  "ccEEJSSE005_SetGlobalOnPickup",
+  "ccEEJSSE005_TIF__050DB2AD",
+  "ccEEJSSE005_TIF__050DB2C5",
+  "ccFFBSSE001_SoldierDeadCountScript",
+  "ccKRTSSE001_DoorActivateScript",
+  "ccKRTSSE001_FerrySyste_05000A7B",
+  "ccKRTSSE001_GTScript",
+  "ccKRTSSE001_GameTimeScript",
+  "ccKRTSSE001_QuestFortu_05000A90",
+  "ccKRTSSE001_SetStageOnLoadScript",
+  "ccKRTSSE001_SleepSetStageScript",
+  "ccKRTSSE001_StageSetonActivate",
+  "ccKRTSSE001_TIF__05000A7E",
+  "ccQDRSSE002_FollowerIdleOnSitScript",
+  "ccRMSSSE001_AltarActivateScript",
+  "ccRMSSSE001_GhostTrapScript",
+  "ccRMSSSE001_SleepSetStageScript",
+  "ccRMSSSE001_TorchCountScript",
+  "ccRMSSSE001_TradeWithSkeletonScript",
+  "ccVSVSSE002_MainQuestScript",
+  "ccVSVSSE003_QF_MainQuest",
+  "ccVSVSSE004_AnimalAliasEggScript",
+  "ccVSVSSE004_AnimalAliasMilkScript",
+  "ccVSVSSE004_F_MainQuestManager",
+  "ccVSVSSE004_F_OverseerAliasScript",
+  "ccVSVSSE004_GuardDogAliasScript",
+  "ccVSVSSE004_HorseAliasScript",
+  "ccVSVSSE004_TIF_BuyChickens",
+  "ccVSVSSE004_TIF_BuyChickensSpouse",
+  "ccVSVSSE004_TIF_BuyCow",
+  "ccVSVSSE004_TIF_BuyCowSpouse",
+  "ccVSVSSE004_TIF_BuyGoat",
+  "ccVSVSSE004_TIF_BuyGoatSpouse",
+  "ccVSVSSE004_TIF_BuyHorse",
+  "ccVSVSSE004_TIF_BuyHorseSpouse",
+  "ccVSVSSE004_TIF_CollectProfitF",
+  "ccVSVSSE004_TIF_CollectProfitM",
+  "ccVSVSSE004_TIF_CollectProfitSpouse",
+  "ccVSVSSE004_TIF_FarmhandDismiss2",
+  "ccVSVSSE004_TIF_FarmhandHire",
+  "ccVSVSSE004_TIF_OverseerHire",
+  "ccVSVSSE004_TIF_OverseerHireSpouse",
+  "ccVSVSSE004_TIF_SpawnFarmhand1",
+  "ccVSVSSE004_TIF_SpawnFarmhand1Spouse",
+  "ccVSVSSE004_TIF_UpgradeAltKidRoom",
+  "ccVSVSSE004_TIF_UpgradeBedroom",
+  "ccVSVSSE004_TIF_UpgradeBedroomSpouse",
+  "ccVSVSSE004_TIF_UpgradeDining",
+  "ccVSVSSE004_TIF_UpgradeDiningSpouse",
+  "ccVSVSSE004_TIF_UpgradeKidRoom",
+  "ccVSVSSE004_TIF_UpgradeKidRoomAltS",
+  "ccVSVSSE004_TIF_UpgradeKidRoomRepS",
+  "ccVSVSSE004_TIF_UpgradeKidRoomReplace",
+  "ccVSVSSE004_TIF_UpgradeKidRoomSpouse",
+  "ccVSVSSE004_TIF_UpgradeKitchen",
+  "ccVSVSSE004_TIF_UpgradeKitchenSpouse",
+  "ccVSVSSE004_TIF_UpgradeLab",
+  "ccVSVSSE004_TIF_UpgradeLabSpouse",
+  "ccVSVSSE004_TIF_UpgradeLoft",
+  "ccVSVSSE004_TIF_UpgradeLoftSpouse",
+  "urshug_TIF__0200183E"
+ ]
+}
