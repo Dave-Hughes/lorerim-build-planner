@@ -55,3 +55,18 @@ Read item by item against the base game and the story board (`QuestStory.dc.html
 - Payoff: "No item reward. The story ends with Dragonslayer."
 - Wyrmstooth: level shown as not checked until item 9 is answered.
 - Chapter 5 gets a note about Storm the Thalmor Embassy.
+
+## WO-105 rerun, checked (18 Oct, evening)
+
+- **Items 1 to 8 are in.**
+  - Before the Storm is started through its helper quests MQ102A and MQ102B. Unbound starts them at stage 700 or 800, and they put Alvor or Gerdur in `RiverwoodFriend`.
+  - Catch-ups sit under their own heading.
+  - Conditions print with their "or".
+  - No quest in the story has a locked-only way in.
+  - Rewards come only from a quest's own completing stages: Blade of Whiterun from Dragon Rising, nothing from the last quests.
+- **MQ102A and MQ102B's names:** Jeff is right. Their records' own names are "Season Unending". The report calling them Before the Storm's helper quests is correct, and the box is ticked.
+- **Wyrmstooth: level 10 in a new game.** The settings loader's first-run load sets `WTStartLevel` from its `settings.ini`. The migration that would keep 20 runs only on saves made before the loader. The story page and `questlines.json` must use 10.
+- **The other starts:** the report offers three ways in. Only one is solid.
+  - **Farengar: not backed.** The line comes from the tool, not from dialogue. Bleak Falls Barrow runs from the start, but only at stage 0. Its first objective, "Talk to Farengar", appears at stage 10, and only Before the Storm's stage 160 sets that. No dialogue in the report moves Bleak Falls Barrow off stage 0. Drop it from the page, and fix `story_check.py` (around line 1095) so a start-game quest only counts as "open now" when it shows its first objective at the stage it starts on.
+  - **Shazdehviir's "Skip to Helgen Keep":** this is the statue choice at the very start (the Dragonborn start), not a way in later.
+  - **Matlara, "I'd like to rent a room", 25 gold, at the Resting Pilgrim in Helgen:** the likely way in later, but one link isn't read. She has to be in `AP_DialogueHelgen`'s `RestingPilgrimOwner` alias, and Unbound starts that quest at stage 0. What starts Unbound at stage 0 in a new game hasn't been found (`APS_VanillaStart` has no starter). Until that's read, or Dave confirms it from his own game, the page marks this line "not checked yet".
