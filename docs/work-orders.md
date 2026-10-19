@@ -4392,9 +4392,71 @@ Every tool takes `version` (default `5.0.4.8`; any other id is refused with the 
 
 ---
 
-## WO-109 to WO-112  (to write when WO-108 is checked)
+## WO-109  Sign-in for assistants (Mac, 19 Oct 2026)
 
-- **WO-109 Sign-in for assistants.** The planner becomes an OAuth authorization server for its own MCP: an "Allow <assistant> to use your LoreRim Planner account?" page behind the Discord session; token issue, refresh and revoke in a new table; Claude's published client identity (CIMD) and Dynamic Client Registration both accepted; `withMcpAuth` and `protectedResourceHandler` on the route; an "Assistants" section in account settings listing tokens with Revoke. Decided 19 Oct: built into the site, no identity service.
+**Why.** Phase 2 of the spec. Today the door only reads. For an assistant to write a draft to a player's account, the planner has to know who the player is, which means handing out its own tokens to other programs. The planner only ever signed people in through Discord; this order makes it an OAuth authorization server for its own MCP, with the rules kept here: the player sees and approves what the assistant gets, and can cut it off. Decided 19 Oct: built in, no identity service.
+
+**How it fits, in one paragraph.** An assistant (Claude, ChatGPT, Cursor) tells the player "sign in to LoreRim Build Planner" and opens a page on the site. The player is already signed in with Discord, or signs in. The page says "Allow Claude to use your LoreRim Planner account?" with what it may do; the player allows. The site hands the assistant a code, the assistant trades it for a token, and from then on its calls to `/api/mcp` carry that token. The planner checks the token on every call. On the account page the player sees the assistant listed and can revoke it.
+
+**Where:** the same app. Branch `wo109-assistant-signin` from `staging`? No: commit on `staging` as usual, in small commits, one piece at a time. Read `mcp-handler`'s `docs/AUTHORIZATION.md` first.
+
+### 1. What the standard asks for (checked 19 Oct against the 2026-07-28 MCP spec and mcp-handler 2.x)
+- The MCP route is the **resource server**. It serves RFC 9728 Protected Resource Metadata at `/.well-known/oauth-protected-resource` naming our authorization server (the site itself) and the resource `https://<host>/api/mcp`. `withMcpAuth` verifies bearer tokens and answers 401 with the `WWW-Authenticate` challenge that points clients there.
+- The site is also the **authorization server**. It serves RFC 8414 metadata at `/.well-known/oauth-authorization-server` with `issuer`, `authorization_endpoint`, `token_endpoint`, `registration_endpoint`, `revocation_endpoint`, `scopes_supported`, `response_types_supported: ["code"]`, `grant_types_supported: ["authorization_code", "refresh_token"]`, `code_challenge_methods_supported: ["S256"]`, `token_endpoint_auth_methods_supported: ["none"]`, and `client_id_metadata_document_supported: true`.
+- **Clients identify themselves two ways**, both accepted:
+  - **Client ID Metadata Documents (CIMD)**, the current way and what Claude prefers: the `client_id` is an HTTPS URL. We fetch it (HTTPS only, public hosts only, 5 s timeout, 64 KB cap, cached by its HTTP cache headers for at most a day), check the document's `client_id` equals the URL exactly, and take `client_name` and `redirect_uris` from it.
+  - **Dynamic Client Registration (RFC 7591)**, kept for older clients: `POST /oauth/register` takes the client's metadata and returns a random `client_id`; public clients only, no secret. Rate limited like the MCP route.
+- **PKCE with S256 is required** on every authorization; a request without `code_challenge` is refused. The `resource` parameter (RFC 8707), when sent, must be our MCP URL. `state` is passed back untouched. `redirect_uri` must match one in the client's metadata exactly.
+
+### 2. The pages and endpoints
+- `GET /oauth/authorize`: the consent page. Behind the Discord session (not signed in: the sign-in page, then back here with the same query). Validates the client (1), the scopes, PKCE and the redirect. Shows, in the site's style: the client's name, "wants to use your LoreRim Planner account to:" and each scope in plain words, then **Allow** and **Deny**. Allow issues a one-time code (10 minutes) and redirects to the client's `redirect_uri` with `code` and `state`. Deny redirects with `error=access_denied`. The form carries a token tied to the session so a cross-site POST can't approve. The page passes the coming-soon proxy (`passesComingSoon`), as `/signin` does, and so do `/.well-known/` and `/oauth/`.
+- `POST /oauth/token`: `authorization_code` with `code_verifier` (checked against the stored challenge; the code is single-use, expired or used codes refused and, on reuse, every token from that code revoked), and `refresh_token` (rotated on every use; the old one refused after). Access tokens last 8 hours, refresh tokens 90 days. Tokens are random 32-byte strings, stored only as SHA-256 hashes.
+- `POST /oauth/revoke` (RFC 7009): revokes a token and its pair.
+- `POST /oauth/register`: as in 1.
+- The two `/.well-known/` metadata routes, as in 1. Note Next's handling of dotted paths in `app/.well-known/...`: a route group or a rewrite in `next.config` is fine; the URL is what matters.
+
+### 3. Scopes
+- `facts`: the read tools. They stay open without a token, so a connector added with No sign-in keeps working.
+- `builds:write`: make and change the player's draft builds (WO-110's tools).
+- `playthroughs:write`: WO-111's tools.
+- The consent page words: "Look up perks, spells and quests", "Draft builds in your account", "Write playthroughs in your account".
+
+### 4. The route
+- `withMcpAuth(handler, verifyToken, { required: false, resourceMetadataPath: "/.well-known/oauth-protected-resource" })`: no token passes through to the facts tools; a bad or expired token gets the 401 challenge from the library, so a client refreshes or signs in again.
+- `verifyToken` looks the hash up, checks expiry and revocation, touches `last_used_at`, and returns `{ token, scopes, clientId, extra: { userId } }`.
+- Tools read `ctx.http?.authInfo`. One tool ships in this order to prove it: `whoami` (scope `facts` or none needed... no: it needs a token) returns the player's planner name and handle and the token's scopes, and without a token answers "This connector was added without sign-in. Remove it in Claude and add it again with Sign in now."
+- A tool that needs a scope the token lacks answers "Your sign-in doesn't allow this. Reconnect and allow <scope in plain words>."
+
+### 5. Tables (migrations additive, `npm run db:generate`)
+- `oauth_client`: `id` (the CIMD URL or the registered id), `kind` (`cimd` | `registered`), `name`, `redirect_uris` (json), `metadata` (json, as fetched or registered), `fetched_at`, `created_at`.
+- `oauth_code`: `hash`, `client_id`, `user_id`, `redirect_uri`, `code_challenge`, `scopes`, `resource`, `expires_at`, `used_at`.
+- `oauth_token`: `hash`, `kind` (`access` | `refresh`), `pair` (the id linking an access token to its refresh token), `client_id`, `user_id`, `scopes`, `expires_at`, `revoked_at`, `created_at`, `last_used_at`.
+
+### 6. The account page
+On `/me`, a section **Assistants**: one row per client with a live token: its name, what it may do (the scopes in plain words), connected on, last used, and **Revoke** (revokes every token of that client for this player, with no confirm dialog; the row says "Revoked" and goes on the next load). Empty: "No assistant is connected to your account." No how-it-works copy.
+
+### 7. Limits and safety
+- `/oauth/*` and the metadata routes: 30 calls a minute per IP through `limits.ts`, kind `oauth`.
+- BotID isn't on these routes (assistants aren't browsers); the consent form's session-bound token is the guard.
+- Never log a token, code or verifier. Tokens are never shown on the site.
+- CIMD fetches: HTTPS only; refuse hosts that resolve to private or loopback addresses; follow at most one redirect to the same host.
+
+### 8. Tests
+- Unit: PKCE verify (right, wrong, missing); code single-use and expiry; reuse revokes the pair; redirect exact match (a trailing slash or a different port is refused); CIMD document with a mismatched `client_id` refused, `http://` refused, private host refused; refresh rotation; revoke cuts both tokens; `verifyToken` on an expired or revoked token returns nothing; scope check wording.
+- e2e, with plain `fetch` as the client: register a client at `/oauth/register`; as the seeded signed-in e2e user open `/oauth/authorize` with PKCE and the right `resource`, approve; exchange the code at `/oauth/token`; call `whoami` through the MCP route with the token and get the seeded name; refresh and see the old refresh token refused; revoke from `/me` and see `whoami` answer 401; a CIMD client served by the test server itself goes through the same flow; the launch server (FEATURE_MCP off) 404s the lot.
+- Screenshots of the consent page (desktop and phone) and the Assistants section, against `docs/design-rules.md`.
+
+### Done when
+- [ ] Both metadata routes answer as in 1, on staging, behind `FEATURE_MCP`.
+- [ ] The e2e flow above passes for a registered client and a CIMD client.
+- [ ] `whoami` through the door with a token returns the player; without one, the plain message; with a bad one, a 401 and the challenge.
+- [ ] Revoke on `/me` cuts the assistant off.
+- [ ] Every check in CLAUDE.md passes; migrations committed, additive. Commit on `staging`, push, and stop: Dave removes his connector and adds it again with Sign in now, approves on the consent page, and asks Claude "who am I on the planner?"
+
+---
+
+## WO-110 to WO-112  (to write when WO-109 is checked)
+
 - **WO-110 Build drafts.** `create_build`, `add_level`, `update_build`, `submit_draft`: builds owned by the signed-in player, `draft` until published on the site, every write through `checkCreation` and `computeBuild` and refused with the issue list. A "Drafted with an assistant" line on the build, shown or hidden by the author. Found in WO-108's check: an assistant can't guess the editor's plan JSON (`check_progression` refuses anything else with "expected 1"), so these tools take plain inputs (race, sign, a level's skill points and perk names) and build the plan themselves; `check_progression` gets the same plain input.
 - **WO-113 Merchants (PC).** `get_spell` can't say where a spell is sold: the planner has no merchant data. Read vendor containers and their leveled lists from the game files, per spell tome and item, and mark random stock as such. Until then the tool says so and tells the assistant not to name one from memory.
 - **WO-111 Playthroughs.** The full walkthrough: tables for playthrough, act, objective, chapter, beat and snapshot; the tools; `suggest_quests` over checked stories only; the page, designed on the canvas first.
