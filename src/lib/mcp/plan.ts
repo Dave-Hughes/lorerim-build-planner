@@ -148,6 +148,9 @@ function zodLine(e: unknown): string {
 
 /** Every issue the editor finds in a plan, with its level (0 for character creation). */
 export function issuesOf(d: GameData, plan: BuildPlan): { plan: BuildPlan; states: LevelState[]; issues: PlannerIssue[] } {
+  // Character creation first, in the editor's own words ("Only 3 major skills."), before the plan's shape is checked.
+  const creation = checkCreation(plan, d);
+  if (creation.length) return { plan, states: [], issues: creation.map((i) => ({ level: 0, message: i.message })) };
   let parsed: BuildPlan;
   try {
     parsed = parseBuildPlan(plan);
@@ -155,7 +158,7 @@ export function issuesOf(d: GameData, plan: BuildPlan): { plan: BuildPlan; state
     return { plan, states: [], issues: [{ level: 0, message: zodLine(e) }] };
   }
   const states = computeBuild(parsed, d);
-  const issues = [...checkCreation(parsed, d).map((i) => ({ level: 0, message: i.message })), ...states.flatMap((s) => s.issues.map((i) => ({ level: s.level, message: i.message })))];
+  const issues = states.flatMap((s) => s.issues.map((i) => ({ level: s.level, message: i.message })));
   return { plan: parsed, states, issues };
 }
 

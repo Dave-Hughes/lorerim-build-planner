@@ -4516,11 +4516,11 @@ All take `version` (default 5.0.4.8) and act only on builds the signed-in player
 - Screenshots: the build page with the drafted line, My builds with the card, the Details checkbox.
 
 ### Done when
-- [ ] From a fresh token, an assistant can make a level 1 to 20 build through the door with no editor JSON, and every refusal names the rule and the level.
-- [ ] The draft is private, under My builds, marked as drafted, and opens in the editor with every level as sent.
-- [ ] `finish_draft` returns the review link only when the whole build passes.
-- [ ] Scopes granted when none are asked for are `facts` and `builds:write` only.
-- [ ] Every check in CLAUDE.md passes; migration additive. Commit on `staging`, push, and stop: Dave asks Claude to draft a build and reads it on My builds.
+- [x] From a fresh token, an assistant can make a level 1 to 20 build through the door with no editor JSON, and every refusal names the rule and the level.
+- [x] The draft is private, under My builds, marked as drafted, and opens in the editor with every level as sent.
+- [x] `finish_draft` returns the review link only when the whole build passes.
+- [x] Scopes granted when none are asked for are `facts` and `builds:write` only.
+- [x] Every check in CLAUDE.md passes; migration additive. Commit on `staging`, push, and stop: Dave asks Claude to draft a build and reads it on My builds.
 
 ---
 
