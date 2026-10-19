@@ -4470,9 +4470,62 @@ On `/me`, a section **Assistants**: one row per client with a live token: its na
 
 ---
 
-## WO-110 to WO-112  (to write when WO-109 is checked)
+## WO-110  Build drafts from an assistant (Mac, 19 Oct 2026)
 
-- **WO-110 Build drafts.** `create_build`, `add_level`, `update_build`, `submit_draft`: builds owned by the signed-in player, `draft` until published on the site, every write through `checkCreation` and `computeBuild` and refused with the issue list. A "Drafted with an assistant" line on the build, shown or hidden by the author. Found in WO-108's check: an assistant can't guess the editor's plan JSON (`check_progression` refuses anything else with "expected 1"), so these tools take plain inputs (race, sign, a level's skill points and perk names) and build the plan themselves; `check_progression` gets the same plain input.
+**Why.** Phase 2 proper. Dave says to Claude "draft me a level 1 to 20 Nord two-hander sworn to Stendarr"; Claude builds it level by level through the door; the planner refuses anything its rules refuse, with the reason; the draft appears under My builds, private, for Dave to finish and publish. The assistant never publishes. Found in WO-108: an assistant can't guess the editor's plan JSON, so every tool here takes plain inputs and the planner builds the plan.
+
+**Where:** on `staging`, small commits. The tools live in `src/lib/mcp/builds.ts`; they call the same code the editor does (`parseBuildPlan`, `checkCreation`, `computeBuild`, `createBuild`'s rules), never a second copy of the rules.
+
+### 1. Scopes, first
+- Every tool below needs a token with `builds:write`. Without one: the WO-109 refusal; from WO-109b on, the 401 or 403.
+- When a client asks for no scopes, the consent page offers and the planner grants only the scopes that have tools today: `facts` and `builds:write`. `playthroughs:write` appears when WO-111 ships. Dave's current grant is left as it is.
+
+### 2. Names, not ids
+Inputs take the game's names as the planner shows them. Resolution, in `src/lib/mcp/names.ts`, shared by every tool:
+- Skills, races, birthsigns, deities, starts, traits: exact name, case-insensitive; a miss is refused with "No skill called X. Skills are: …" (the full list is short enough for skills, races, signs, deities and modes; for traits and starts, the closest five).
+- Perks: `Tree:Name` ids, or a name alone when one tree has it. A name two trees have (Leadership) is refused with the ids to pick from. A rank beyond the first is "Name (2/3)" or the id repeated.
+- Spells, gear and abilities: names as on the Gear and Spells pages; a miss lists the closest five.
+
+### 3. The tools
+All take `version` (default 5.0.4.8) and act only on builds the signed-in player owns.
+- `create_build({ name, description?, race, birthsign?, mode?, deity?, start?, startOption?, majors, minors, traits?, notes? })`: a new private build with level 1 from `emptyPlan`, through `checkCreation`. Refused with the issues when the choices break a rule (too many majors, a trait that rules another out, a start option that isn't the start's). Returns the build id, the review link, level 1's state (skills, points) and what's legal at level 1 (`canTakeNext`, as `check_progression` gives it). `mode` defaults to the planner's default.
+- `add_level({ build, attribute, skillPoints, perks?, destiny?, extras?, spells?, stone?, deity?, note? })`: appends the next level. The planner builds the `LevelPlan`, runs `computeBuild` on the whole plan, and saves only when there are no issues at any level; otherwise nothing is saved and the issues come back with the level they're at. Returns the new level's state and what's legal next. `extras` are `{ kind: "trainer" | "book", skill }`; `spells` are `{ name, where? }`.
+- `set_level({ build, level, …the same fields })`: replaces one level's choices, same check, same answer. Levels after it are checked again and the first issue found stops the save.
+- `remove_last_level({ build })`: drops the last level (never level 1).
+- `set_gear({ build, gear: [{ slot, name, fromLevel, note?, replaces? }] })`: the build's gear list, through the gear rules (`src/lib/rules/gear.ts`), as the editor saves it.
+- `set_details({ build, name?, description?, notes?, tags?, mainSpells? })`: through `buildDetailsSchema`; tags by slug, listed when one is wrong.
+- `get_build({ build })`: the plan in the same plain shape the inputs use, each level with its computed state, plus the review link and visibility.
+- `list_my_builds()`: the player's builds: id, name, visibility, levels, updated, and whether an assistant drafted it.
+- `finish_draft({ build })`: runs the full check once more and returns either "Ready: open <review link> to read it and publish" with the link, or the issues. It changes nothing; publishing is the Listed/Link only choice on the site, by the player.
+- `check_progression`: now takes the same plain shape as `get_build` returns (or a build id), not the editor's JSON.
+
+### 4. On the site
+- New column `build.drafted_by` (text, null): the assistant's client name when a tool made the build. Migration additive.
+- A build made this way starts `private`. On its page, under the byline: "Drafted with Claude" while `drafted_by` is set. In Set up's Details step: a checkbox "Show that an assistant drafted it", on by default for these builds; off clears the line but not the column (the planner still knows).
+- My builds: the card carries "Drafted with Claude" in the muted style.
+- The Assistants section's row counts: "3 builds drafted" after the scopes, from `drafted_by` and the token's client.
+
+### 5. Limits
+- Writes: 30 a minute per player, kind `mcp-write`, through `limits.ts`.
+- At most 20 private assistant-drafted builds per player at once; the 21st is refused with "You have 20 drafts. Publish or delete one on the site first."
+- Build names and notes go through the same moderation checks as the site's forms (`src/lib/moderation/check.ts`).
+
+### 6. Tests
+- Unit: name resolution (a skill miss lists skills; Leadership refused with both ids; "(2/3)" ranks); `create_build` refusals (four majors, a start option not the start's); `add_level` with an illegal perk saves nothing and returns the issue at its level; `set_level` that breaks a later level stops at the first issue; the draft cap; scopes granted when none are asked for; `check_progression` on the plain shape.
+- e2e, with the WO-109 flow for the token: create a build, add three levels (one refused, then fixed), set gear, `finish_draft` returns the link; the build shows under My builds as "Drafted with Claude", private, and opens in the editor; the Details checkbox hides the line; a second player's token can't read it.
+- Screenshots: the build page with the drafted line, My builds with the card, the Details checkbox.
+
+### Done when
+- [ ] From a fresh token, an assistant can make a level 1 to 20 build through the door with no editor JSON, and every refusal names the rule and the level.
+- [ ] The draft is private, under My builds, marked as drafted, and opens in the editor with every level as sent.
+- [ ] `finish_draft` returns the review link only when the whole build passes.
+- [ ] Scopes granted when none are asked for are `facts` and `builds:write` only.
+- [ ] Every check in CLAUDE.md passes; migration additive. Commit on `staging`, push, and stop: Dave asks Claude to draft a build and reads it on My builds.
+
+---
+
+## WO-111 and WO-112  (to write when WO-110 is checked)
+
 - **WO-113 Merchants (PC).** `get_spell` can't say where a spell is sold: the planner has no merchant data. Read vendor containers and their leveled lists from the game files, per spell tome and item, and mark random stock as such. Until then the tool says so and tells the assistant not to name one from memory.
 - **WO-111 Playthroughs.** The full walkthrough: tables for playthrough, act, objective, chapter, beat and snapshot; the tools; `suggest_quests` over checked stories only; the page, designed on the canvas first.
 - **WO-112 The helper.** A local MCP (Claude Desktop extension or a Claude Code server) wrapping the save reader from the Kyria work, sending only the snapshot fields.
