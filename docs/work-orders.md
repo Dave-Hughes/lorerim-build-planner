@@ -4533,7 +4533,7 @@ All take `version` (default 5.0.4.8) and act only on builds the signed-in player
 - Unit test: the sample build's level with a second rank labels it "(2/2)"; the rename.
 
 ### Done when
-- [ ] `get_build` on `/b/efkfas489t` (Dave's draft) shows "Great Weapon Mastery (2/2)" at level 1 and "Longweapon Focus (2/3)" at level 19, and `skillPointsCarriedOver`.
+- [x] `get_build` on `/b/efkfas489t` (Dave's draft) shows "Great Weapon Mastery (2/2)" at level 1 and "Longweapon Focus (2/3)" at level 19, and `skillPointsCarriedOver`. (Bob checked it on staging through `check_progression` with the build id, 19 Oct.)
 - [x] Typecheck, lint, unit tests, the WO-108 to WO-110 e2e. Commit on `staging`, push, stop.
 
 ---
