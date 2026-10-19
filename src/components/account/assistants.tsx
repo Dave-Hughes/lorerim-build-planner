@@ -12,6 +12,8 @@ export interface AssistantRow {
   may: string[];
   since: Date;
   lastUsed: Date | null;
+  /** Builds its tools drafted (WO-110). */
+  drafted: number;
 }
 
 /** Assistants (WO-109): each connected assistant, what it may do, and Revoke. */
@@ -33,7 +35,10 @@ export function Assistants({ rows }: { rows: AssistantRow[] }) {
             return (
               <li key={r.clientId}>
                 <span className={styles.name}>{r.name}</span>
-                <span className={styles.may}>{r.may.join(" | ")}</span>
+                <span className={styles.may}>
+                  {r.may.join(" | ")}
+                  {r.drafted > 0 && <span className="muted"> | {r.drafted === 1 ? "1 build drafted" : `${r.drafted} builds drafted`}</span>}
+                </span>
                 <span className="muted">
                   Connected <LocalDate date={r.since} />
                 </span>

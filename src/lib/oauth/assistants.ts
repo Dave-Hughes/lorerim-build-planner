@@ -1,5 +1,5 @@
 import "server-only";
-import { and, eq, gt, isNull, max, min, sql } from "drizzle-orm";
+import { and, count, eq, gt, isNotNull, isNull, max, min, sql } from "drizzle-orm";
 import { db, schema } from "@/db";
 
 /**
@@ -24,10 +24,17 @@ export async function connectedAssistants(userId: string) {
     .where(eq(schema.oauthTokens.userId, userId))
     .groupBy(schema.oauthTokens.clientId);
   const clients = await db().select({ id: schema.oauthClients.id, name: schema.oauthClients.name }).from(schema.oauthClients);
+  // Builds its tools made (WO-110), by the name it signed in with.
+  const drafted = await db()
+    .select({ by: schema.builds.draftedBy, n: count() })
+    .from(schema.builds)
+    .where(and(eq(schema.builds.ownerId, userId), isNotNull(schema.builds.draftedBy)))
+    .groupBy(schema.builds.draftedBy);
   return live
     .map((l) => ({
       clientId: l.clientId,
       name: clients.find((c) => c.id === l.clientId)?.name ?? "An assistant",
+      drafted: drafted.find((x) => x.by === (clients.find((c) => c.id === l.clientId)?.name ?? ""))?.n ?? 0,
       scopes: l.scopes ?? [],
       since: used.find((u) => u.clientId === l.clientId)?.first ?? l.since ?? now,
       lastUsed: used.find((u) => u.clientId === l.clientId)?.at ?? null,

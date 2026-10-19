@@ -64,6 +64,8 @@ export function BuildCard({ build, mine, likedAt, featured }: { build: BuildSumm
             <span className="muted">{likedAt ? <LocalDate date={likedAt} short prefix="Liked " /> : <LocalDate date={build.updatedAt} />}</span>
           </span>
         </div>
+        {/* Made by an assistant's tools (WO-110), on the author's own cards. */}
+        {mine && build.draftedBy && <p className={`muted ${styles.drafted}`}>Drafted with {build.draftedBy}</p>}
         {mine && (
           <div className={styles.mine}>
             <span className={styles.tags}>

@@ -38,13 +38,15 @@ interface WizardProps {
   signIn: React.ReactNode;
   /** The start of the build's guide intro, for the theme preview (edit only). */
   introStart?: string;
+  /** An assistant drafted it (WO-110): its name, and whether the page says so. */
+  drafted?: { by: string; show: boolean } | null;
 }
 
 function plainTraitText(text: string): string {
   return text.replace(/<([^<>]*)>/g, "$1");
 }
 
-export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, signIn, introStart }: WizardProps) {
+export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, signIn, introStart, drafted }: WizardProps) {
   const router = useRouter();
   // Rendered on the client only (see wizard-loader.tsx), so the draft in this
   // browser can seed the state directly.
@@ -54,6 +56,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
   // The wizard holds the plan, so it reads the plan's version directly and provides it to the steps.
   const d = requireGameData(plan.gameVersion);
   const [details, setDetails] = useState<BuildDetails>(() => initialDetails ?? draft?.details ?? emptyDetails());
+  const [showDrafted, setShowDrafted] = useState(drafted?.show ?? true);
   const [step, setStepState] = useState<Step>(() => {
     const fromUrl = new URLSearchParams(window.location.search).get("step") as Step | null;
     if (fromUrl && STEPS.includes(fromUrl)) return fromUrl;
@@ -131,7 +134,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
         authorTourPending();
         router.push(`/b/${r.value.id}/edit`);
       } else if (buildId) {
-        const a = await saveBuildDetails(buildId, { ...details, tags: details.tags ?? suggestedTags(plan.majors) });
+        const a = await saveBuildDetails(buildId, { ...details, tags: details.tags ?? suggestedTags(plan.majors) }, drafted ? { showDrafted } : undefined);
         if (!a.ok) return setError(a.error);
         const b = await saveBuildPlan(buildId, plan);
         if (!b.ok) return setError(b.error);
@@ -249,7 +252,17 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
             {step === "traits" && <TraitsStep plan={plan} update={update} />}
             {step === "deity" && <DeityStep plan={plan} update={update} />}
             {step === "mode" && <ModeStep plan={plan} update={update} />}
-            {step === "name" && <NameStep details={details} updateDetails={updateDetails} plan={plan} update={update} signedIn={signedIn} introStart={introStart} />}
+            {step === "name" && (
+              <NameStep
+                details={details}
+                updateDetails={updateDetails}
+                plan={plan}
+                update={update}
+                signedIn={signedIn}
+                introStart={introStart}
+                drafted={drafted ? { show: showDrafted, onChange: (v) => (touch(), setShowDrafted(v)) } : null}
+              />
+            )}
           </GameDataProvider>
 
           <div className={styles.nav}>
@@ -903,7 +916,24 @@ function StartPicker({ plan, update }: StepProps) {
   );
 }
 
-function NameStep({ details, updateDetails, plan, update, signedIn, introStart }: { details: BuildDetails; updateDetails: (p: Partial<BuildDetails>) => void; plan: BuildPlan; update: StepProps["update"]; signedIn: boolean; introStart?: string }) {
+function NameStep({
+  details,
+  updateDetails,
+  plan,
+  update,
+  signedIn,
+  introStart,
+  drafted,
+}: {
+  details: BuildDetails;
+  updateDetails: (p: Partial<BuildDetails>) => void;
+  plan: BuildPlan;
+  update: StepProps["update"];
+  signedIn: boolean;
+  introStart?: string;
+  /** An assistant drafted it (WO-110): whether the page says so. */
+  drafted?: { show: boolean; onChange: (show: boolean) => void } | null;
+}) {
   const d = useGameData();
   const noSign = plan.traits.includes("Master of Destiny");
   return (
@@ -980,6 +1010,12 @@ function NameStep({ details, updateDetails, plan, update, signedIn, introStart }
             </label>
           ))}
         </fieldset>
+        {drafted && (
+          <label className={styles.radio}>
+            <input type="checkbox" checked={drafted.show} onChange={(e) => drafted.onChange(e.target.checked)} />
+            <span>Show that an assistant drafted it</span>
+          </label>
+        )}
       </div>
       <ThemePicker
         plan={plan}

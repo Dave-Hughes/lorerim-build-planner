@@ -43,6 +43,7 @@ export default async function SetupPage({ params }: { params: Params }) {
           }}
           signedIn
           introStart={docText(intro).slice(0, 400)}
+          drafted={build.draftedBy ? { by: build.draftedBy, show: build.showDrafted !== false } : null}
           signIn={<SignInButton redirectTo={`/b/${id}/setup`} className="btn btn-primary" />}
         />
       </GameDataProvider>

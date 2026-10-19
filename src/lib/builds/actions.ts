@@ -110,7 +110,7 @@ export async function saveBuildPlan(id: string, input: unknown): Promise<ActionR
 }
 
 /** Saves name, description, links and visibility. Only the owner can. */
-export async function saveBuildDetails(id: string, input: BuildDetails): Promise<ActionResult> {
+export async function saveBuildDetails(id: string, input: BuildDetails, extra: { showDrafted?: boolean } = {}): Promise<ActionResult> {
   const userId = await requireUser();
   if (!userId) return { ok: false, error: "Your sign-in expired. Sign in again to keep saving." };
   const stop = await guard(userId);
@@ -121,7 +121,7 @@ export async function saveBuildDetails(id: string, input: BuildDetails): Promise
     const hold = await newAccountHold(userId);
     if (hold) return { ok: false, error: hold };
   }
-  if (!(await writeDetails(userId, id, details.data))) return { ok: false, error: "Only the build's author can change it." };
+  if (!(await writeDetails(userId, id, details.data, { showDrafted: typeof extra?.showDrafted === "boolean" ? extra.showDrafted : undefined }))) return { ok: false, error: "Only the build's author can change it." };
   revalidatePath(`/b/${id}`);
   revalidatePath("/");
   revalidatePath("/me");

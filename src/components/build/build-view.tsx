@@ -1593,6 +1593,8 @@ function Cover({
               </span>
             </span>
           </div>
+          {/* Drafted by an assistant's tools (WO-110), while the author shows it. */}
+          {build.draftedBy && build.showDrafted !== false && <p className={`${styles.drafted} ${styles.heroIn} ${styles.heroIn3}`}>Drafted with {build.draftedBy}</p>}
           {build.tags.length > 0 && (
             <ul className={`${styles.tagLine} ${styles.heroIn} ${styles.heroIn3}`} aria-label="Tags">
               {build.tags.map((t) => (

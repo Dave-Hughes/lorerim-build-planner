@@ -33,6 +33,9 @@ export interface BuildRecord {
   isSample?: boolean;
   /** It's the sample build (WO-90): the page shows an Example tag. Worked out, never stored. */
   example?: boolean;
+  /** The assistant that drafted it (WO-110), and whether the page says so. */
+  draftedBy?: string | null;
+  showDrafted?: boolean;
 }
 
 /** What a list card needs; no plan, so lists stay light. */
@@ -60,4 +63,6 @@ export interface BuildSummary {
   isSample?: boolean;
   /** It's the sample build (WO-90): the card shows an Example tag. */
   example?: boolean;
+  /** The assistant that drafted it, when the author shows it (WO-110): My builds' card says so. */
+  draftedBy?: string | null;
 }

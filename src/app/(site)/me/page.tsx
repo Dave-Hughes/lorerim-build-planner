@@ -55,7 +55,7 @@ export default async function MyBuilds() {
         </BuildGrid>
       )}
       {/* The assistants this player let in (WO-109), while the MCP door is open. */}
-      {assistants && <Assistants rows={assistants.map((a) => ({ clientId: a.clientId, name: a.name, may: a.scopes.map((s) => SCOPES[s as Scope] ?? s), since: a.since, lastUsed: a.lastUsed }))} />}
+      {assistants && <Assistants rows={assistants.map((a) => ({ clientId: a.clientId, name: a.name, may: a.scopes.map((s) => SCOPES[s as Scope] ?? s), since: a.since, lastUsed: a.lastUsed, drafted: a.drafted }))} />}
     </main>
   );
 }

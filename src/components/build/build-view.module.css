@@ -1598,3 +1598,10 @@
   font-size: 15px;
   color: var(--ember-text);
 }
+
+/* "Drafted with Claude" under the byline (WO-110). */
+.drafted {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}

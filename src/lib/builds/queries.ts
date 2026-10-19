@@ -33,6 +33,8 @@ const summaryFields = {
   coverHeld: sql<boolean>`(exists(select 1 from ${schema.hiddenImages} h where h.url = ${schema.builds.coverImageUrl}) or (select count(*) from ${schema.buildReports} r where r.build_id = ${schema.builds.id} and r.cleared_at is null) >= ${REPORTS_TO_HIDE})`,
   updatedAt: schema.builds.updatedAt,
   likeCount: schema.builds.likeCount,
+  // Drafted by an assistant (WO-110), when the author shows it.
+  draftedBy: sql<string | null>`case when ${schema.builds.showDrafted} then ${schema.builds.draftedBy} else null end`,
   authorName: schema.users.name,
   authorImage: schema.users.image,
   authorHandle: schema.users.handle,
@@ -64,6 +66,7 @@ function toSummary(r: SummaryRow): BuildSummary {
     // Held back for launch (WO-81): no Story tag while the Story is off.
     hasStory: storyOn() && !!r.hasStory,
     example: r.id === tourSampleId(),
+    draftedBy: r.draftedBy ?? null,
   };
 }
 

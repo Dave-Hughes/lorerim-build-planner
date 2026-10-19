@@ -331,3 +331,9 @@
   z-index: 2;
   align-self: flex-start;
 }
+
+/* "Drafted with Claude" on the author's own card (WO-110). */
+.drafted {
+  margin: 0;
+  font-size: 14px;
+}
