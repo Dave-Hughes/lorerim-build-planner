@@ -4342,7 +4342,9 @@ One column. The side panels go under The story so far, in this order: Opens othe
 
 ---
 
-## The planner MCP (queued 19 Oct 2026; WO-108 is ready, the rest are written when their turn comes)
+## The planner MCP (started 19 Oct 2026; WO-108 is with Jeff, the rest are written when their turn comes)
+
+Decided 19 Oct, Dave taking Bob's lean: the look-up door ships behind `FEATURE_MCP` (on staging now, on production when Dave flips it, before or after launch); sign-in for assistants is built into the site; WO-108 runs in parallel with the quest work.
 
 The spec is Dave's "LoreRim Planner MCP — Spec" doc. In one line: a second door into the planner, for AI assistants, with the rules kept on our server. What's involved, in order:
 
@@ -4392,7 +4394,7 @@ Every tool takes `version` (default `5.0.4.8`; any other id is refused with the 
 
 ## WO-109 to WO-112  (to write when WO-108 is checked)
 
-- **WO-109 Sign-in for assistants.** The planner becomes an OAuth authorization server for its own MCP: an "Allow <assistant> to use your LoreRim Planner account?" page behind the Discord session; token issue, refresh and revoke in a new table; Claude's published client identity (CIMD) and Dynamic Client Registration both accepted; `withMcpAuth` and `protectedResourceHandler` on the route; an "Assistants" section in account settings listing tokens with Revoke. Decision for Dave first: build it in (recommended, it's a few hundred lines on top of Auth.js) or use a paid identity service.
+- **WO-109 Sign-in for assistants.** The planner becomes an OAuth authorization server for its own MCP: an "Allow <assistant> to use your LoreRim Planner account?" page behind the Discord session; token issue, refresh and revoke in a new table; Claude's published client identity (CIMD) and Dynamic Client Registration both accepted; `withMcpAuth` and `protectedResourceHandler` on the route; an "Assistants" section in account settings listing tokens with Revoke. Decided 19 Oct: built into the site, no identity service.
 - **WO-110 Build drafts.** `create_build`, `add_level`, `update_build`, `submit_draft`: builds owned by the signed-in player, `draft` until published on the site, every write through `checkCreation` and `computeBuild` and refused with the issue list. A "Drafted with an assistant" line on the build, shown or hidden by the author.
 - **WO-111 Playthroughs.** The full walkthrough: tables for playthrough, act, objective, chapter, beat and snapshot; the tools; `suggest_quests` over checked stories only; the page, designed on the canvas first.
 - **WO-112 The helper.** A local MCP (Claude Desktop extension or a Claude Code server) wrapping the save reader from the Kyria work, sending only the snapshot fields.
