@@ -53,7 +53,7 @@
         "FreeformSkyHavenTempleB",
         "FreeformSkyHavenTempleD"
       ],
-      "start": "Pick The Dragonborn at the dragon statue in the Helgen inn. The main quest starts with the cart ride into Helgen.",
+      "start": "Take a Dragonborn start: Helgen Keep (Start) or Helgen Keep (End).",
       "gate": "None. After Before the Storm, Balgruuf no longer walks you to Farengar: the Dragonstone task waits until you ask Farengar about the dragons.",
       "checked": {
         "start": "files",
@@ -574,8 +574,8 @@
       ],
       "opening": "WTDragonHunt",
       "start": "An Imperial courier, Theodyn Bienne, finds you and sends you to Lurius Liore at the Bannered Mare in Whiterun.",
-      "gate": "Level 20, Rise in the East done, and the main quest through The Way of the Voice.",
-      "minLevel": 20,
+      "gate": "Level 10, Rise in the East done, and the main quest through The Way of the Voice.",
+      "minLevel": 10,
       "after": [
         "rise-in-the-east",
         "main-quest"
@@ -586,12 +586,14 @@
         "start": "files",
         "gate": "files",
         "level": "players",
-        "size": "players"
+        "size": "players",
+        "note": "files"
       },
       "skip": [
         "WTNoticeboardPointer"
       ],
-      "mainQuestAt": "MQ105"
+      "mainQuestAt": "MQ105",
+      "note": "Wyrmstooth - Settings Loader sets the start level to 10 in a new game; Requiem - Wyrmstooth.esp's 20 only holds on saves from before the loader."
     },
     {
       "id": "baan-malur",

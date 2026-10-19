@@ -70,3 +70,17 @@ Read item by item against the base game and the story board (`QuestStory.dc.html
   - **Farengar: not backed.** The line comes from the tool, not from dialogue. Bleak Falls Barrow runs from the start, but only at stage 0. Its first objective, "Talk to Farengar", appears at stage 10, and only Before the Storm's stage 160 sets that. No dialogue in the report moves Bleak Falls Barrow off stage 0. Drop it from the page, and fix `story_check.py` (around line 1095) so a start-game quest only counts as "open now" when it shows its first objective at the stage it starts on.
   - **Shazdehviir's "Skip to Helgen Keep":** this is the statue choice at the very start (the Dragonborn start), not a way in later.
   - **Matlara, "I'd like to rent a room", 25 gold, at the Resting Pilgrim in Helgen:** the likely way in later, but one link isn't read. She has to be in `AP_DialogueHelgen`'s `RestingPilgrimOwner` alias, and Unbound starts that quest at stage 0. What starts Unbound at stage 0 in a new game hasn't been found (`APS_VanillaStart` has no starter). Until that's read, or Dave confirms it from his own game, the page marks this line "not checked yet".
+
+## Second check of the story page (Rex, 18 Oct)
+
+An independent check of `QuestStory.dc.html` against this report. Changes made to the page:
+- "Done" was 6 of 19: it's 5 (the Horn is next, not done). Said once now.
+- "When" no longer says High Hrothgar. The Horn's target alias names no place.
+- Chapter 7 has 6 quests. Paarthurnax starts during The Fallen, not after the end.
+- "Along the way" no longer says the jobs repeat. The report doesn't say so.
+- **Dragonborn:** the cultists' node also needs `GetRandomPercent < DLC2WE09Chance`, and LoreRim's record sets that chance to 0.0. Scripts and Extended Encounters' menu can set it in play. Until that's read, "level 25 for the cultists" is marked not checked, and the page offers the ship to Raven Rock from Windhelm.
+- Matlara: "Resting Pilgrim" comes from an alias name, not the report, so it's dropped. Bob keeps the line marked not checked (the alias link above), against Rex's call that the report backs it. Farengar stays off (not backed); Shazdehviir is the starting statue.
+
+Data fixed: Wyrmstooth's gate is level 10 in `questlines.json`, and the main quest's start text is the Dragonborn starts.
+
+Still to fix before rewards go on story pages: `quests.json`'s rewards come from WO-99. They disagree with this report on MQ106 (the report gives Delphine's Secret Door Key), MQ204 and MQ301 (the report gives nothing). Rewards should come from the start check's own-completing-stages rule.
