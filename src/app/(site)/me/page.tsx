@@ -4,6 +4,10 @@ import { auth } from "@/auth";
 import { BuildCard, BuildGrid } from "@/components/build/build-card";
 import { SignInButton } from "@/components/site-header";
 import { handleFor, listBuildsByOwner } from "@/lib/builds/queries";
+import { Assistants } from "@/components/account/assistants";
+import { mcpOn } from "@/lib/features";
+import { SCOPES, type Scope } from "@/lib/oauth/core";
+import { connectedAssistants } from "@/lib/oauth/assistants";
 import styles from "../home.module.css";
 
 export const metadata: Metadata = { title: "My builds" };
@@ -23,7 +27,7 @@ export default async function MyBuilds() {
       </main>
     );
   }
-  const [builds, handle] = await Promise.all([listBuildsByOwner(userId), handleFor(userId)]);
+  const [builds, handle, assistants] = await Promise.all([listBuildsByOwner(userId), handleFor(userId), mcpOn() ? connectedAssistants(userId) : Promise.resolve(null)]);
   return (
     <main className={`page ${styles.main}`}>
       <div className={styles.head}>
@@ -50,6 +54,8 @@ export default async function MyBuilds() {
           ))}
         </BuildGrid>
       )}
+      {/* The assistants this player let in (WO-109), while the MCP door is open. */}
+      {assistants && <Assistants rows={assistants.map((a) => ({ clientId: a.clientId, name: a.name, may: a.scopes.map((s) => SCOPES[s as Scope] ?? s), since: a.since, lastUsed: a.lastUsed }))} />}
     </main>
   );
 }

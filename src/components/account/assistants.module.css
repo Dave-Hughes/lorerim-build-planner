@@ -1,0 +1,55 @@
+/* /me's Assistants (WO-109). */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+.h2 {
+  font-size: calc(26px * var(--title-scale));
+}
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+.list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr) auto auto 96px;
+  align-items: center;
+  gap: 8px 18px;
+  min-height: 56px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.list li > :last-child {
+  justify-self: end;
+}
+.name {
+  font-weight: 600;
+}
+.may {
+  color: var(--soft);
+  font-size: 15px;
+}
+.revoked {
+  color: var(--muted);
+  font-size: 14px;
+}
+.error {
+  margin: 0;
+  color: var(--health);
+}
+@media (max-width: 799px) {
+  .list li {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .list li > :not(.name):not(:last-child) {
+    grid-column: 1 / -1;
+  }
+  .list li > :last-child {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
