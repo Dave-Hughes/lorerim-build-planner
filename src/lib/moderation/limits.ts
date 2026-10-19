@@ -61,29 +61,34 @@ export async function newAccountHold(userId: string): Promise<string | null> {
   return until ? newAccountMessage(until) : null;
 }
 
-/** The MCP route's limit (WO-108): calls a minute from one IP. */
-export const MCP_CALLS_A_MINUTE = 60;
+/** Limits per IP for callers with no account (WO-108, WO-109): calls a minute. */
+export const IP_LIMITS = { mcp: 60, oauth: 30 } as const;
+export const MCP_CALLS_A_MINUTE = IP_LIMITS.mcp;
 export const MCP_LIMIT_MESSAGE = "Too many calls. Try again in a minute.";
 
 /** What's stored for a caller: a SHA-256 of their IP, never the IP. */
-export const mcpSubject = (ip: string) => createHash("sha256").update(`mcp:${ip}`).digest("hex");
+export const ipSubject = (kind: keyof typeof IP_LIMITS, ip: string) => createHash("sha256").update(`${kind}:${ip}`).digest("hex");
+export const mcpSubject = (ip: string) => ipSubject("mcp", ip);
 
 /**
- * Counts one MCP call from `ip` and says whether it's over the limit: the message for the 61st call
- * in a minute, else null. A call over the limit isn't counted, and events older than an hour go.
+ * Counts one call of `kind` from `ip` and says whether it's over the limit: the message for the call
+ * past it in a minute, else null. A call over the limit isn't counted, and events older than an hour go.
  */
-export async function mcpCall(ip: string): Promise<string | null> {
-  const subject = mcpSubject(ip);
+export async function ipCall(kind: keyof typeof IP_LIMITS, ip: string): Promise<string | null> {
+  const subject = ipSubject(kind, ip);
   const [r] = await db()
     .select({ n: count() })
     .from(schema.rateEvents)
-    .where(and(eq(schema.rateEvents.subject, subject), eq(schema.rateEvents.kind, "mcp"), gt(schema.rateEvents.at, sql`now() - interval '1 minute'`)));
-  if (r.n >= MCP_CALLS_A_MINUTE) return MCP_LIMIT_MESSAGE;
+    .where(and(eq(schema.rateEvents.subject, subject), eq(schema.rateEvents.kind, kind), gt(schema.rateEvents.at, sql`now() - interval '1 minute'`)));
+  if (r.n >= IP_LIMITS[kind]) return MCP_LIMIT_MESSAGE;
   await db().batch([
-    db().insert(schema.rateEvents).values({ subject, kind: "mcp" }),
+    db().insert(schema.rateEvents).values({ subject, kind }),
     db()
       .delete(schema.rateEvents)
-      .where(and(eq(schema.rateEvents.subject, subject), eq(schema.rateEvents.kind, "mcp"), lt(schema.rateEvents.at, sql`now() - interval '1 hour'`))),
+      .where(and(eq(schema.rateEvents.subject, subject), eq(schema.rateEvents.kind, kind), lt(schema.rateEvents.at, sql`now() - interval '1 hour'`))),
   ]);
   return null;
 }
+
+/** The MCP route's limit: 60 calls a minute per IP. */
+export const mcpCall = (ip: string) => ipCall("mcp", ip);

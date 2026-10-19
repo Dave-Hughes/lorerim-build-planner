@@ -258,3 +258,62 @@ export const invites = pgTable("invite", {
   usedBy: text("used_by").references(() => users.id, { onDelete: "set null" }),
   usedAt: timestamp("used_at", { withTimezone: true }),
 });
+
+/* ---------- Sign-in for assistants (WO-109): the planner as its own OAuth server for its MCP ---------- */
+
+/**
+ * An assistant that asks to act for a player: a Client ID Metadata Document (its `id` is the HTTPS URL
+ * we fetched) or a client that registered itself (RFC 7591, a random id). Public clients only.
+ */
+export const oauthClients = pgTable("oauth_client", {
+  id: text("id").primaryKey(),
+  /** `cimd` or `registered`. */
+  kind: text("kind").notNull(),
+  name: text("name").notNull(),
+  redirectUris: jsonb("redirect_uris").$type<string[]>().notNull(),
+  /** The document as fetched, or the metadata as registered. */
+  metadata: jsonb("metadata").$type<Record<string, unknown>>().notNull(),
+  fetchedAt: timestamp("fetched_at", { withTimezone: true }),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+/** A one-time authorization code (10 minutes), stored only as a SHA-256. */
+export const oauthCodes = pgTable("oauth_code", {
+  hash: text("hash").primaryKey(),
+  clientId: text("client_id").notNull(),
+  userId: text("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  redirectUri: text("redirect_uri").notNull(),
+  codeChallenge: text("code_challenge").notNull(),
+  scopes: jsonb("scopes").$type<string[]>().notNull(),
+  resource: text("resource"),
+  expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+  usedAt: timestamp("used_at", { withTimezone: true }),
+});
+
+/**
+ * Access (8 hours) and refresh (90 days) tokens, stored only as SHA-256s. `pair` links an access
+ * token to its refresh token; `grant` is the code they came from, kept through every refresh, so a
+ * reused code revokes everything it led to.
+ */
+export const oauthTokens = pgTable(
+  "oauth_token",
+  {
+    hash: text("hash").primaryKey(),
+    /** `access` or `refresh`. */
+    kind: text("kind").notNull(),
+    pair: text("pair").notNull(),
+    grant: text("grant").notNull(),
+    clientId: text("client_id").notNull(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    scopes: jsonb("scopes").$type<string[]>().notNull(),
+    expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+    revokedAt: timestamp("revoked_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    lastUsedAt: timestamp("last_used_at", { withTimezone: true }),
+  },
+  (t) => [index("oauth_token_pair_idx").on(t.pair), index("oauth_token_grant_idx").on(t.grant), index("oauth_token_user_idx").on(t.userId, t.clientId)],
+);
