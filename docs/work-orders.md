@@ -4170,6 +4170,77 @@ Bob found all three on 18 Oct by hand (the list is in the backlog). This order m
 
 ---
 
+## WO-106  Story pages: Become the Dragonborn, on staging (Mac, 18 Oct 2026)
+
+**Why.** Dave wants to open a story and know what to do next in his own playthrough. The first story's facts have been checked twice: the start check (WO-104, WO-105), then Bob and a second reviewer. They're written up in `gamedata/5.0.4.8/stories.json`. Build the page the canvas shows (row 22, `QuestStory.dc.html`), behind `questsOn()`. Use the facts in `stories.json` and nothing else. Every sentence a player reads comes from that file or from `quests.json`.
+
+### 1. The data
+- **A step in `build.py`.** It reads `gamedata/5.0.4.8/stories.json` and writes `src/data/lorerim-5.0.4.8/stories.json`.
+- **Checks (fatal):**
+  - every `edid` is a quest of the story's `line` in `quests.json`;
+  - every quest of that line is in a chapter or in `alongside`, exactly once;
+  - every `from` is a quest in the story;
+  - every `opens[].line` and every need's `line` is a line id;
+  - `checked` is `files` or `not yet`.
+- **From `quests.json`, joined in:** each quest's `name` and `xp`, and each opened line's `name`.
+- **Tests:** a unit test per check.
+
+### 2. `/quests/s/<story id>`
+Top to bottom, as the board:
+- **Back link and cover.**
+  - Back link to the category (`category`). Cover with the category's scene and icon, `name` as the title.
+  - Under it: "The main quest" (the line's name); the source tag; "N chapters | N quests".
+- **The pitch**, plain text, not italic.
+- **Your next step.** The first quest in story order that isn't done, with:
+  - its name, linking to the quest line page's journal for it;
+  - **When:** "Starts as X ends" when `atEnd`, otherwise "Starts during X", where X is `from`'s name. Leave it out for the first quest.
+  - **Who** and **Where** when given;
+  - **First task**, from `task`;
+  - the `note`, when given.
+
+  Then two buttons:
+  - **Mark done** moves your progress on by one quest;
+  - **I'm further on** opens a select of the story's quests to set how far you are.
+
+  When no progress is set, the next step is the first quest, and the panel shows the story's `start` lines.
+- **The story so far.**
+  - "N of M quests done" once, in the section's header.
+  - Chapters in order. A done chapter gets a filled number and its quests ticked. The current chapter shows its quests, with the next one marked "next".
+  - Later chapters show only "Chapter N" and a quest count. **Show the rest** reveals their names and quests, with "Chapter names give the story away" beside it.
+- **Along the way.** "N jobs that open as the story goes on. They pay no quest XP." Then **Show them ›**, which lists each one with its task and who.
+- **Down the side:**
+  - **Quest XP**, the sum, with "200 a quest" when they're all 200.
+  - **Reward at the end**, from `reward`.
+  - **Opens other stories**: each `opens` line linked to its page, with its needs checked against Where you are (✓ or ✕, "You're 22").
+  - **How it starts**: the `start` lines.
+  - **This was wrong ›**, to WO-103's form when that's built; a plain link to the line page until then.
+- **"not checked yet".** Any fact whose `checked` is `not yet` carries the label in the muted source style, the way "game files" shows now. On a need, the `why` goes after it. An `or` shows as its own ✓ line.
+
+### 3. Progress
+- **Stored:** `localStorage` key `quests:story:<id>`, holding the edid of the last quest done.
+- **The main quest:** this story reads and writes Where you are's **Main quest, done up to** instead, so the two never disagree. A quest after Dragonslayer in story order (Paarthurnax) counts as done when Dragonslayer is.
+- **Mark done** past the last quest: "You've finished this story."
+
+### 4. Links into it
+- Main stories (`/quests/c/main`): the main quest's card links to the story page. The card's title is the story's `name`, and the line's name goes under it.
+- The quest line page (`/quests/main-quest`) gets a link at the top: "Read it as a story ›".
+- The Quests home: no change.
+
+### 5. Phone
+One column. The side panels go under The story so far, in this order: Opens other stories, How it starts, Quest XP and Reward.
+
+### Done when
+- [ ] Data check: `build.py` writes `stories.json`, the checks in 1 have unit tests, and a broken `edid` fails the build.
+- [ ] With Where you are set to level 22 and main quest done up to The Way of the Voice:
+  - the next step is The Horn of Jurgen Windcaller, "Starts as The Way of the Voice ends", first task "Retrieve the Horn of Jurgen Windcaller";
+  - 5 of 19 done;
+  - Dragonborn shows ✓ The Way of the Voice, ✕ Level 25 with "not checked yet", and ✓ the ship line;
+  - Wyrmstooth shows ✓ Level 10 and ✕ Rise in the East.
+- [ ] Mark done moves to A Blade in the Dark and updates Where you are's main quest select.
+- [ ] e2e for the above. Every check in CLAUDE.md passes. Screenshots on desktop and phone (`scripts/shot.mjs`), compared against `QuestStory.dc.html`. Commit on `staging`, push, and stop: Dave checks the preview.
+
+---
+
 ## WO-105  The start check, second pass: answers a player can follow (PC only, 18 Oct 2026)
 
 **Why.** WO-104's report is right on the chain, the three questions and Timing is Everything. It isn't page-ready yet. Bob's check is in `gamedata/5.0.4.8/story_checks/main-quest-review.md`, items 1 to 9. The biggest gap is the one Dave asked about: how a player who didn't take a Dragonborn start gets into the main quest. Right now the answer is form ids.
