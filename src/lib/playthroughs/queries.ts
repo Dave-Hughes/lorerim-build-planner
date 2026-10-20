@@ -205,3 +205,16 @@ export async function isOwner(userId: string, id: string): Promise<boolean> {
     .limit(1);
   return !!r;
 }
+
+/** A build's run (WO-114), the latest, when the viewer may see it: the owner always, others while it's Listed or Link only. */
+export async function runOfBuild(buildId: string, viewerId: string | null) {
+  const [r] = await db()
+    .select({ id: schema.playthroughs.id, name: schema.playthroughs.name, ownerId: schema.playthroughs.ownerId, visibility: schema.playthroughs.visibility })
+    .from(schema.playthroughs)
+    .where(eq(schema.playthroughs.buildId, buildId))
+    .orderBy(desc(schema.playthroughs.updatedAt))
+    .limit(1);
+  if (!r) return null;
+  if (r.visibility === "private" && r.ownerId !== viewerId) return null;
+  return r;
+}

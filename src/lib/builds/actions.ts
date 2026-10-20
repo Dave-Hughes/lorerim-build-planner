@@ -10,6 +10,7 @@ import { insertBuild, writeDetails, writePlan } from "./writes";
 import { getBuild } from "./queries";
 import { buildDetailsSchema, buildVisibilitySchema, parseBuildPlan, type BuildDetails } from "./validate";
 import { convertPlan, droppedSentence } from "@/lib/rules/convert";
+import { checkNewBuild } from "./new-build";
 import { checkGuideDoc, imageUrls, isGuideKey, levelOfKey } from "@/lib/guide/doc";
 import { deleteBuildImages, deleteImagesIfUnused, isOurImage } from "@/lib/guide/images";
 import { copyGuide } from "@/lib/guide/queries";
@@ -70,21 +71,9 @@ export async function setLike(buildId: string, liked: boolean): Promise<ActionRe
 export async function createBuild(input: { details: BuildDetails; plan: unknown }): Promise<ActionResult<{ id: string }>> {
   const userId = await requireUser();
   if (!userId) return { ok: false, error: "Sign in with Discord to save a build." };
-  const stop = await guard(userId, "build");
-  if (stop) return { ok: false, error: stop };
-  const details = buildDetailsSchema.safeParse(input.details);
-  if (!details.success) return { ok: false, error: details.error.issues[0]?.message ?? "Check the build details." };
-  if (details.data.visibility === "public") {
-    const hold = await newAccountHold(userId);
-    if (hold) return { ok: false, error: hold };
-  }
-  let plan;
-  try {
-    plan = parseBuildPlan(input.plan);
-  } catch {
-    return { ok: false, error: "The build's choices didn't pass validation." };
-  }
-  const id = await insertBuild(userId, details.data, plan);
+  const checked = await checkNewBuild(userId, input);
+  if (!checked.ok) return checked;
+  const id = await insertBuild(userId, checked.details, checked.plan);
   revalidatePath("/");
   revalidatePath("/me");
   return { ok: true, value: { id } };

@@ -1,5 +1,6 @@
 import "server-only";
-import { and, asc, count, eq, inArray, isNotNull, max } from "drizzle-orm";
+import { and, asc, count, eq, inArray, isNotNull, max, sql } from "drizzle-orm";
+import type { BatchItem } from "drizzle-orm/batch";
 import { db, schema } from "@/db";
 import { newBuildId } from "@/lib/builds/ids";
 import { checkGuideDoc, imageUrls, lineDoc, type GuideDoc } from "@/lib/guide/doc";
@@ -109,6 +110,64 @@ export async function setCover(userId: string, id: string, url: string | null) {
 export async function deletePlaythrough(userId: string, id: string) {
   const p = await ownedPlaythrough(userId, id);
   await db().delete(schema.playthroughs).where(eq(schema.playthroughs.id, p.id));
+}
+
+/* ---------- A character's run, made with its build (WO-114) ---------- */
+
+/** The run step's input: name, line, Act I, and its first objectives. */
+export interface RunInput {
+  name: string;
+  line?: string;
+  act: ActInput;
+  objectives?: ObjectiveInput[];
+}
+
+/** The run step checked whole, before anything is written: a refusal means nothing is made. */
+export function prepareRun(input: RunInput) {
+  const d = detailsSchema.safeParse({ name: input.name, line: input.line ?? "" });
+  if (!d.success) fail(firstIssue(d.error));
+  const act = actValues(input.act);
+  const objectives = (input.objectives ?? []).map((o, i) => {
+    const r = objectiveSchema.safeParse(o);
+    if (!r.success) fail(`Objective ${i + 1}: ${firstIssue(r.error)}`);
+    return r.data!;
+  });
+  if (objectives.length > PLAYTHROUGH_LIMITS.objectivesPerAct) fail(`An act can have ${PLAYTHROUGH_LIMITS.objectivesPerAct} objectives.`);
+  return { name: d.data!.name, line: d.data!.line, act, objectives };
+}
+export type PreparedRun = ReturnType<typeof prepareRun>;
+
+/**
+ * The statements that write a prepared run on a build: the playthrough, Act I and its objectives, for
+ * one batch (one transaction) with the build's own insert or the attach. The objectives find their act
+ * by the new run's id, since a batch can't pass a returned id along.
+ */
+export function runStatements(userId: string, buildId: string, gameVersion: string, run: PreparedRun, draftedBy: string | null, id = newBuildId()): { id: string; statements: BatchItem<"pg">[] } {
+  const actId = sql`(select ${schema.playthroughActs.id} from ${schema.playthroughActs} where ${schema.playthroughActs.playthroughId} = ${id} and ${schema.playthroughActs.position} = 1)`;
+  return {
+    id,
+    statements: [
+      db().insert(schema.playthroughs).values({ id, ownerId: userId, buildId, name: run.name, line: run.line, gameVersion, visibility: "private", draftedBy }),
+      db().insert(schema.playthroughActs).values({ playthroughId: id, position: 1, ...run.act }),
+      ...run.objectives.map((o, i) => db().insert(schema.playthroughObjectives).values({ actId, position: i + 1, ...o, suggestedBy: null, accepted: true })),
+    ],
+  };
+}
+
+/** Add a run (WO-114): a run on one of the player's builds that has none, from the same step. */
+export async function attachRun(userId: string, buildId: string, input: RunInput, draftedBy: string | null = null): Promise<string> {
+  const [b] = await db()
+    .select({ id: schema.builds.id, gameVersion: schema.builds.gameVersion })
+    .from(schema.builds)
+    .where(and(eq(schema.builds.id, buildId), eq(schema.builds.ownerId, userId)))
+    .limit(1);
+  if (!b) fail(`No build of yours has the id ${buildId}.`);
+  const [has] = await db().select({ id: schema.playthroughs.id }).from(schema.playthroughs).where(eq(schema.playthroughs.buildId, b!.id)).limit(1);
+  if (has) fail("This build has a run already.");
+  if (draftedBy && (await draftCount(userId)) >= PLAYTHROUGH_LIMITS.drafts) fail(DRAFT_CAP_MESSAGE);
+  const { id, statements } = runStatements(userId, b!.id, b!.gameVersion, prepareRun(input), draftedBy);
+  await db().batch(statements as [BatchItem<"pg">, ...BatchItem<"pg">[]]);
+  return id;
 }
 
 /* ---------- Acts ---------- */

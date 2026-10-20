@@ -1,5 +1,6 @@
 import "server-only";
 import { and, eq, like, sql } from "drizzle-orm";
+import type { BatchItem } from "drizzle-orm/batch";
 import { db, schema } from "@/db";
 import type { BuildPlan } from "@/lib/rules/types";
 import { newBuildId } from "./ids";
@@ -21,10 +22,13 @@ export async function setTags(buildId: string, slugs: string[]) {
   else await del;
 }
 
-/** A new build for `userId`; `draftedBy` names the assistant when one of its tools made it. */
-export async function insertBuild(userId: string, details: BuildDetails, plan: BuildPlan, draftedBy: string | null = null): Promise<string> {
+/**
+ * A new build for `userId`; `draftedBy` names the assistant when one of its tools made it. `also` adds
+ * statements that need the build's id (a character's run, WO-114), written in the same transaction.
+ */
+export async function insertBuild(userId: string, details: BuildDetails, plan: BuildPlan, draftedBy: string | null = null, also?: (buildId: string) => BatchItem<"pg">[]): Promise<string> {
   const id = newBuildId();
-  await db()
+  const build = db()
     .insert(schema.builds)
     .values({
       id,
@@ -38,7 +42,10 @@ export async function insertBuild(userId: string, details: BuildDetails, plan: B
       plan,
       draftedBy,
     });
-  if (details.tags) await setTags(id, details.tags);
+  const tags = [...new Set(details.tags ?? [])];
+  const rest = [...(tags.length ? [db().insert(schema.buildTags).values(tags.map((tagSlug) => ({ buildId: id, tagSlug })))] : []), ...(also?.(id) ?? [])];
+  if (rest.length) await db().batch([build, ...rest]);
+  else await build;
   return id;
 }
 

@@ -1097,3 +1097,81 @@
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
 }
+
+/* New character's one question (WO-114): two cards, the chosen one in ember. */
+.kindMain {
+  padding-top: 32px;
+  padding-bottom: 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.kindTitle {
+  font-size: 40px;
+}
+.kinds {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.kind {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 26px 28px;
+  min-height: 230px;
+  text-align: left;
+  border: 1px solid var(--rule);
+  background: #121922;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+.kind:hover {
+  border-color: var(--rule-strong);
+}
+.kindOn,
+.kindOn:hover {
+  border: 2px solid var(--ember);
+  padding: 25px 27px;
+}
+.kindName {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1;
+}
+.kindText {
+  font-size: 17px;
+  line-height: 1.5;
+}
+.kindPoints {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 15px;
+  color: var(--soft);
+  line-height: 1.6;
+}
+.kindPick {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.kindDot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--rule-strong);
+}
+.kindOn .kindDot {
+  background: var(--ember);
+  border-color: var(--ember);
+}
+@media (max-width: 760px) {
+  .kinds {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

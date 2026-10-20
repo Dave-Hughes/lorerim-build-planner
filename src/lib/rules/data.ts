@@ -94,6 +94,10 @@ export interface Start {
   options: string[];
   /** What the choice is (Inn, Port, Hold, City, Homeland, Guild, Shrine, Temple, Helgen Keep). */
   optionLabel?: string;
+  /** Where it puts the character, when the data names it (WO-114): Act I's place. */
+  place?: string;
+  /** Its own quest, when the data names it (WO-114): Act I's first objective, done when the save shows it. */
+  quest?: { edid: string; name: string; xp?: number };
 }
 
 /** A deity's Wintersun text: the follower and devotee boons and the tenets, each with its name. */
