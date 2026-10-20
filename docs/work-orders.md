@@ -4640,6 +4640,20 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-111c  A playthrough's details through the door (Mac, 19 Oct 2026)
+
+**Why.** Dave's Claude drafted Kyria's build after her playthrough and had no way to attach it: only `create_playthrough` takes a build. The edit page can, the door can't.
+
+- New tool `set_playthrough({ playthrough, name?, line?, build? })`, scope `playthroughs:write`: the playthrough's own details, through the same write the edit page uses. `build` is one of the player's builds by id or name, or "none" to unlink; a build that isn't the player's is refused. Plain fields, no unions.
+- `get_playthrough` and `list_my_playthroughs` answer with the linked build's id and name.
+- Unit test for the link, the unlink and the refusal; the WO-111 e2e links the drafted playthrough to the test author's build and sees the Build tab change.
+
+### Done when
+- [ ] Dave's Claude links Kyria's playthrough to her build through the door and the Build tab shows "level 23 of 23".
+- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
+
+---
+
 ## WO-112 and WO-113  (to write when WO-111 is checked)
 
 - **WO-113 Merchants (PC).** `get_spell` can't say where a spell is sold: the planner has no merchant data. Read vendor containers and their leveled lists from the game files, per spell tome and item, and mark random stock as such. Until then the tool says so and tells the assistant not to name one from memory.
