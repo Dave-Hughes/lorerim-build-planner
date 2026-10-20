@@ -14,6 +14,12 @@ export function imagePrefix(buildId: string): string {
   return `${env === "development" ? "dev" : env}/builds/${buildId}/`;
 }
 
+/** A playthrough's images (WO-111), its chapters' and its opening image: <env>/playthroughs/<id>/ */
+export function playthroughImagePrefix(id: string): string {
+  const env = currentEnvironment();
+  return `${env === "development" ? "dev" : env}/playthroughs/${id}/`;
+}
+
 /** Cover images, by who uploaded them (a new build has no id until it's saved): <env>/covers/<userId>/ */
 export function coverPrefix(userId: string): string {
   const env = currentEnvironment();

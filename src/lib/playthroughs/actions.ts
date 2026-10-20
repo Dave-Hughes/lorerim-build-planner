@@ -67,3 +67,6 @@ export const enterByHand = async (id: string, input: Omit<SnapshotInput, "source
 
 /** The owner read a beat before it opened; kept, and nothing is ticked. */
 export const readEarly = async (id: string, chapterId: number) => run(null, (u) => w.markRead(u, id, [chapterId]));
+
+/** A chapter's text from the Story editor, autosaved (the same checks as the Story, WO-79). */
+export const saveChapterDoc = async (id: string, chapterId: number, doc: unknown) => run(id, (u) => w.setChapter(u, id, chapterId, { doc }));

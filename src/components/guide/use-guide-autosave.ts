@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { saveGuideSection } from "@/lib/builds/actions";
+import { saveChapterDoc } from "@/lib/playthroughs/actions";
 import type { GuideDoc } from "@/lib/guide/doc";
 import { withoutUnfinishedImages } from "./image-upload";
 
@@ -9,6 +10,23 @@ export type GuideSaveStatus = "idle" | "saving" | "saved" | "failed";
 
 const DELAY = 800;
 const RETRY = 5000;
+
+/**
+ * What a section belongs to: a build's id, or `p:<id>` for a playthrough's chapter (WO-111), whose
+ * key is `chapter:<n>`. Both save through the same checks (checkGuideDoc, as the Story).
+ */
+const playthroughOf = (target: string) => (target.startsWith("p:") ? target.slice(2) : null);
+
+function saveSection(target: string, key: string, doc: GuideDoc) {
+  const pid = playthroughOf(target);
+  return pid ? saveChapterDoc(pid, Number(key.replace(/^chapter:/, "")), doc) : saveGuideSection(target, key, doc);
+}
+
+/** Where a page that's closing sends a section. */
+export function beaconUrl(target: string): string {
+  const pid = playthroughOf(target);
+  return pid ? `/api/playthroughs/${pid}/chapters` : `/api/builds/${target}/guide`;
+}
 
 function storageKey(buildId: string, key: string) {
   return `lorerim-guide:${buildId}:${key}`;
@@ -30,7 +48,7 @@ export function unsavedGuide(buildId: string, key: string): GuideDoc | null {
  */
 function sendNow(buildId: string, key: string, doc: GuideDoc): Promise<boolean> {
   const body = JSON.stringify({ key, doc });
-  const post = (keepalive: boolean) => fetch(`/api/builds/${buildId}/guide`, { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive });
+  const post = (keepalive: boolean) => fetch(beaconUrl(buildId), { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive });
   // keepalive bodies are capped at 64 KB; a longer section goes as a plain request.
   return post(body.length < 60_000)
     .catch(() => post(false))
@@ -96,11 +114,11 @@ export function useGuideAutosave(buildId: string, key: string) {
       if (!doc || inFlight.current) return;
       inFlight.current = true;
       setStatus("saving");
-      let r: Awaited<ReturnType<typeof saveGuideSection>>;
+      let r: { ok: true } | { ok: false; error: string };
       try {
         // A plain JSON copy: ProseMirror's attribute objects have no prototype, and a server
         // action would pass them as references instead of copying them.
-        r = await saveGuideSection(buildId, key, JSON.parse(JSON.stringify(doc)));
+        r = await saveSection(buildId, key, JSON.parse(JSON.stringify(doc)));
       } catch {
         r = { ok: false, error: "Couldn't reach the server. Your text is kept in this browser." };
       }

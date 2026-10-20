@@ -51,7 +51,8 @@ function findPos(editor: Editor, id: string): number | null {
 function send(buildId: string, file: File, onProgress: (n: number) => void): Promise<string> {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", `/api/builds/${buildId}/images`);
+    // A playthrough's chapter (WO-111) uploads under the playthrough; see use-guide-autosave.
+    xhr.open("POST", buildId.startsWith("p:") ? `/api/playthroughs/${buildId.slice(2)}/images` : `/api/builds/${buildId}/images`);
     xhr.upload.onprogress = (e) => e.lengthComputable && onProgress(e.loaded / e.total);
     xhr.onload = () => {
       let body: { url?: string; error?: string } = {};

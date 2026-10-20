@@ -5,15 +5,16 @@ import { usePathname } from "next/navigation";
 import { useFeatures } from "./features";
 import styles from "./site-header.module.css";
 
-/** The header's links (WO-66): Builds, Quests (WO-100), Gear (WO-92) and Guide, the current one in ember. */
+/** The header's links (WO-66): Builds, Quests (WO-100), Playthroughs (WO-111), Gear (WO-92) and Guide, the current one in ember. */
 export function SiteNav() {
   const path = usePathname() ?? "/";
   const guide = path === "/guide" || path.startsWith("/guide/");
   const builds = path === "/";
   const gearHere = path === "/gear" || path.startsWith("/gear/");
   const questsHere = path === "/quests" || path.startsWith("/quests/");
+  const playHere = path === "/playthroughs" || path.startsWith("/playthroughs/") || path.startsWith("/p/");
   // The site guide is held back for launch (WO-81).
-  const { siteGuide, gear, quests } = useFeatures();
+  const { siteGuide, gear, quests, playthroughs } = useFeatures();
   return (
     <nav className={styles.nav} aria-label="Site">
       <Link href="/" aria-current={builds ? "page" : undefined}>
@@ -22,6 +23,11 @@ export function SiteNav() {
       {quests && (
         <Link href="/quests" aria-current={questsHere ? "page" : undefined}>
           Quests
+        </Link>
+      )}
+      {playthroughs && (
+        <Link href="/playthroughs" aria-current={playHere ? "page" : undefined}>
+          Playthroughs
         </Link>
       )}
       {gear && (

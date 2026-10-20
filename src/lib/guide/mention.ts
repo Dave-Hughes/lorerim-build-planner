@@ -130,3 +130,31 @@ export function searchMentions(d: GameData, query: string, limit = 8): MentionIn
   const itemRest = items.filter((i) => !itemStarts.includes(i));
   return [...starts, ...itemStarts.map(itemMention), ...contains, ...itemRest.map(itemMention)].slice(0, limit);
 }
+
+/** A thing an objective can link to that the game data doesn't hold: a quest, a quest line, a follower (WO-111). */
+export interface ExtraMention {
+  kind: string;
+  id: string;
+  name: string;
+  /** "Quest, Dark Brotherhood", "Follower". */
+  where: string;
+}
+
+/**
+ * The @ search for a playthrough's objectives (WO-111): the guide's own search, kept to `kinds`
+ * (spells and items), with the planner's quests, quest lines and followers beside them, names that
+ * start with the query first.
+ */
+export function searchWithExtras(d: GameData, query: string, extras: readonly ExtraMention[], kinds: readonly string[], limit = 8): ExtraMention[] {
+  const q = query.trim().toLowerCase();
+  if (!q) return extras.filter((x) => x.kind !== "quest").slice(0, limit);
+  const game = searchMentions(d, q, 40)
+    .filter((m) => kinds.includes(m.kind))
+    .map((m) => ({ kind: m.kind, id: m.id, name: m.name, where: m.kindLabel }));
+  const name = (x: ExtraMention) => x.name.toLowerCase().replace(/^the /, "");
+  const starts = extras.filter((x) => name(x).startsWith(q) || x.name.toLowerCase().startsWith(q));
+  const contains = extras.filter((x) => !starts.includes(x) && x.name.toLowerCase().includes(q));
+  const gameStarts = game.filter((m) => name(m).startsWith(q));
+  const gameRest = game.filter((m) => !gameStarts.includes(m));
+  return [...starts, ...gameStarts, ...contains, ...gameRest].slice(0, limit);
+}
