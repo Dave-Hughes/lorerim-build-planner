@@ -69,6 +69,8 @@ export default defineConfig({
       FEATURE_QUESTS: p === port ? "on" : "off",
       // FEATURE_MCP (WO-108): the same.
       FEATURE_MCP: p === port ? "on" : "off",
+      // FEATURE_PLAYTHROUGHS (WO-111): the same.
+      FEATURE_PLAYTHROUGHS: p === port ? "on" : "off",
       // WO-109: the e2e flow serves its own CIMD client from http://localhost. Refused on Vercel whatever its value.
       OAUTH_ALLOW_LOCAL_CLIENTS: "1",
       // FEATURE_COMING_SOON: on for the third server only.

@@ -14,6 +14,7 @@ import {
 import type { AdapterAccountType } from "next-auth/adapters";
 import type { GuideDoc } from "@/lib/guide/doc";
 import type { BuildPlan } from "@/lib/rules/types";
+import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, ObjectiveStatus, Reach, SnapshotSource } from "@/lib/playthroughs/types";
 
 /* ---------- Auth.js tables (shape required by @auth/drizzle-adapter) ---------- */
 
@@ -322,3 +323,128 @@ export const oauthTokens = pgTable(
   },
   (t) => [index("oauth_token_pair_idx").on(t.pair), index("oauth_token_grant_idx").on(t.grant), index("oauth_token_user_idx").on(t.userId, t.clientId)],
 );
+
+/* ---------- Playthroughs (WO-111): a character's whole run, as a quest log and a tale ---------- */
+
+export const playthroughs = pgTable(
+  "playthrough",
+  {
+    /** Short id used in share links: /p/<id>, the builds' shape. */
+    id: text("id").primaryKey(),
+    ownerId: text("owner_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    /** The player's own build, when linked. */
+    buildId: text("build_id").references(() => builds.id, { onDelete: "set null" }),
+    name: text("name").notNull(),
+    /** One sentence, 140 at most. */
+    line: text("line").notNull().default(""),
+    gameVersion: text("game_version").notNull(),
+    visibility: buildVisibility("visibility").notNull().default("private"),
+    /** The assistant's name when one of its tools made it; null when made on the site. */
+    draftedBy: text("drafted_by"),
+    showDrafted: boolean("show_drafted").notNull().default(true),
+    /** The author's opening image, uploaded through the site (never the tools). */
+    coverImageUrl: text("cover_image_url"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow()
+      .$onUpdate(() => new Date()),
+  },
+  (t) => [index("playthrough_owner_idx").on(t.ownerId), index("playthrough_visibility_updated_idx").on(t.visibility, t.updatedAt)],
+);
+
+export const playthroughActs = pgTable(
+  "playthrough_act",
+  {
+    id: serial("id").primaryKey(),
+    playthroughId: text("playthrough_id")
+      .notNull()
+      .references(() => playthroughs.id, { onDelete: "cascade" }),
+    position: integer("position").notNull(),
+    name: text("name").notNull(),
+    levelFrom: integer("level_from").notNull(),
+    /** Null: "and up". */
+    levelTo: integer("level_to"),
+    place: text("place").notNull().default(""),
+    goal: text("goal").notNull().default(""),
+    standingRule: text("standing_rule"),
+  },
+  (t) => [index("playthrough_act_idx").on(t.playthroughId, t.position)],
+);
+
+export const playthroughObjectives = pgTable(
+  "playthrough_objective",
+  {
+    id: serial("id").primaryKey(),
+    actId: integer("act_id")
+      .notNull()
+      .references(() => playthroughActs.id, { onDelete: "cascade" }),
+    position: integer("position").notNull(),
+    text: text("text").notNull(),
+    kind: text("kind").$type<ObjectiveKind>().notNull(),
+    link: jsonb("link").$type<ObjectiveLink | null>(),
+    doneBy: text("done_by").$type<DoneBy>().notNull(),
+    detect: jsonb("detect").$type<Detect | null>(),
+    reach: jsonb("reach").$type<Reach | null>(),
+    why: text("why"),
+    /** The player's own status; `done` counts only for `hand` objectives (status.ts works out the rest). */
+    status: text("status").$type<ObjectiveStatus>().notNull().default("todo"),
+    doneAt: timestamp("done_at", { withTimezone: true }),
+    /** The assistant's name when it was suggested; it counts for nothing until accepted. */
+    suggestedBy: text("suggested_by"),
+    accepted: boolean("accepted").notNull().default(true),
+  },
+  (t) => [index("playthrough_objective_idx").on(t.actId, t.position)],
+);
+
+export const playthroughChapters = pgTable(
+  "playthrough_chapter",
+  {
+    id: serial("id").primaryKey(),
+    playthroughId: text("playthrough_id")
+      .notNull()
+      .references(() => playthroughs.id, { onDelete: "cascade" }),
+    /** Null: before the game. */
+    actId: integer("act_id").references(() => playthroughActs.id, { onDelete: "set null" }),
+    kind: text("kind").$type<ChapterKind>().notNull(),
+    position: integer("position").notNull(),
+    title: text("title").notNull(),
+    /** A beat opens when this objective is done; none, it's open. */
+    opensAfter: integer("opens_after").references(() => playthroughObjectives.id, { onDelete: "set null" }),
+    /** "Save 7, 19 Oct 2026". */
+    fromSave: text("from_save"),
+    writtenBy: text("written_by"),
+    readAt: timestamp("read_at", { withTimezone: true }),
+    /** The guide document, validated as the Story is, its limit the same. */
+    doc: jsonb("doc").$type<GuideDoc>().notNull(),
+    textLength: integer("text_length").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("playthrough_chapter_idx").on(t.playthroughId, t.position)],
+);
+
+/** Where the player stands: one row per playthrough, replaced on each update, the last one kept in prev_*. */
+export const playthroughSnapshots = pgTable("playthrough_snapshot", {
+  playthroughId: text("playthrough_id")
+    .primaryKey()
+    .references(() => playthroughs.id, { onDelete: "cascade" }),
+  source: text("source").$type<SnapshotSource>().notNull(),
+  /** "Save 7". */
+  label: text("label").notNull(),
+  level: integer("level").notNull(),
+  xp: integer("xp"),
+  day: integer("day"),
+  place: text("place"),
+  skills: jsonb("skills").$type<Record<string, number>>().notNull(),
+  /** Quest edid to the highest stage the save has. */
+  questStages: jsonb("quest_stages").$type<Record<string, number> | null>(),
+  /** Counts the player or the save gives, by label ("books read"). */
+  counts: jsonb("counts").$type<Record<string, number> | null>(),
+  readBy: text("read_by"),
+  at: timestamp("at", { withTimezone: true }).notNull().defaultNow(),
+  prevLabel: text("prev_label"),
+  prevLevel: integer("prev_level"),
+  prevSkills: jsonb("prev_skills").$type<Record<string, number> | null>(),
+});

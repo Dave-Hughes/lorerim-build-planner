@@ -37,10 +37,21 @@ export const mcpOn = (env: Record<string, string | undefined> = process.env) => 
   return v === "on" || v === "1" || v === "true";
 };
 
+/**
+ * Playthroughs (WO-111): /p/<id>, /playthroughs, My playthroughs on /me, Playthroughs in the header,
+ * and the assistants' playthrough tools. On in dev and on staging unset, as the Quests pages.
+ */
+export const playthroughsOn = (env: Record<string, string | undefined> = process.env) => {
+  const v = env.FEATURE_PLAYTHROUGHS?.trim().toLowerCase();
+  if (!v) return env.NODE_ENV === "development" || env.VERCEL_ENV === "preview";
+  return v === "on" || v === "1" || v === "true";
+};
+
 export interface Features {
   story: boolean;
   siteGuide: boolean;
   gear: boolean;
   quests: boolean;
+  playthroughs: boolean;
 }
-export const features = (): Features => ({ story: storyOn(), siteGuide: siteGuideOn(), gear: gearOn(), quests: questsOn() });
+export const features = (): Features => ({ story: storyOn(), siteGuide: siteGuideOn(), gear: gearOn(), quests: questsOn(), playthroughs: playthroughsOn() });

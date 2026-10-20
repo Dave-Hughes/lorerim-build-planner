@@ -128,9 +128,9 @@ export function imageTooBigMessage(bytes: number): string {
   return `Too big: ${(bytes / 1024 / 1024).toFixed(1)} MB. Images can be up to ${IMAGE_LIMITS.bytes / 1024 / 1024} MB.`;
 }
 
-/** An image in our Blob store, under a build's folder: <env>/builds/<buildId>/<name>.<ext> */
+/** An image in our Blob store, under a build's or a playthrough's folder: <env>/builds/<buildId>/<name>.<ext> */
 export function isGuideImageUrl(src: string): boolean {
-  return /^https:\/\/[a-z0-9]+\.public\.blob\.vercel-storage\.com\/(production|staging|dev)\/builds\/[23456789abcdefghjkmnpqrstuvwxyz]{10}\/[\w-]{8,64}\.(png|jpg|webp|gif)$/.test(src);
+  return /^https:\/\/[a-z0-9]+\.public\.blob\.vercel-storage\.com\/(production|staging|dev)\/(builds|playthroughs)\/[23456789abcdefghjkmnpqrstuvwxyz]{10}\/[\w-]{8,64}\.(png|jpg|webp|gif)$/.test(src);
 }
 
 /** Every image a document shows. */
@@ -260,4 +260,22 @@ export function isEmptyDoc(doc: GuideDoc | null | undefined): boolean {
 /** "Too long to save: 61,200 of 60,000 characters" */
 export function tooLongMessage(length: number, limit: number): string {
   return `Too long to save: ${length.toLocaleString("en-US")} of ${limit.toLocaleString("en-US")} characters`;
+}
+
+/**
+ * A section's document checked against its key's rules (the schema, the length, the intro's and the
+ * Story's own limits): the document, or why it can't be saved. The Story's rules also hold for a
+ * playthrough's chapters, entries and beats (WO-111), which are checked as `story`.
+ */
+export function checkGuideDoc(key: string, input: unknown): { ok: true; doc: GuideDoc; length: number } | { ok: false; error: string } {
+  const parsed = guideDocSchema.safeParse(input);
+  if (!parsed.success) return { ok: false, error: parsed.error.issues[0]?.message ?? "The guide has something it can't save." };
+  const doc = parsed.data as typeof parsed.data & { type: "doc" };
+  const length = textLength(doc);
+  const limit = limitFor(key);
+  if (length > limit) return { ok: false, error: tooLongMessage(length, limit) };
+  if (key === "intro" && !isInlineOnly(doc)) return { ok: false, error: "The intro takes plain paragraphs with bold, italic and links only." };
+  if ((key === "story:title" || key === "story:line") && !isPlainLine(doc)) return { ok: false, error: "One line of plain text." };
+  if (key === "story" && imageUrls(doc).size > STORY_IMAGES) return { ok: false, error: STORY_IMAGE_ERROR };
+  return { ok: true, doc, length };
 }
