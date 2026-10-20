@@ -179,12 +179,6 @@ export function assemble(rows: { acts: ActRow[]; objectives: ObjectiveRow[]; cha
   };
 }
 
-/** "4 chapters, 2 entries". */
-export function taleCount(c: PlaythroughView["counts"]): string {
-  const parts = [`${c.chapters} ${c.chapters === 1 ? "chapter" : "chapters"}`, `${c.entries} ${c.entries === 1 ? "entry" : "entries"}`];
-  return parts.join(", ");
-}
-
 /** Skills that moved since the last snapshot: "Speech 30 | Two-Handed 36". */
 export function skillsMoved(s: Pick<SnapshotRow, "skills" | "prevSkills">): { name: string; value: number }[] {
   if (!s.prevSkills) return [];

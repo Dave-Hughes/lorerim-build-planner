@@ -100,7 +100,7 @@ function RunBox({ build, run }: { build: BuildSummary; run: CardRun }) {
       <div className={`${styles.run} ${styles.runNone}`}>
         <b>Build alone</b>
         <Link href={`/b/${build.id}/run`} className={styles.runLink}>
-          Add a run ›
+          Start a run ›
         </Link>
         <span>{build.hasStory ? "Shared as a build, with its Story" : "No acts, objectives or tale yet"}</span>
       </div>

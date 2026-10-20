@@ -859,6 +859,69 @@
   border-bottom: 1px solid var(--rule);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
+/* The pinned bar's first row (WO-116): the name, then the tabs, thin. */
+.pinnedTabs {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 36px;
+}
+.pinnedTabs + .pinnedInner {
+  border-top: 1px solid var(--rule-soft);
+  margin-top: 6px;
+  padding-top: 6px;
+}
+.pinnedName {
+  font-family: var(--font-title);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.pinnedTabRow {
+  display: flex;
+  gap: 4px;
+  flex: none;
+}
+.pinnedTab {
+  height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-family: var(--font-title);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+}
+.pinnedTab:hover {
+  color: var(--soft);
+}
+.pinnedTab[aria-pressed="true"] {
+  color: var(--ember);
+  border-bottom-color: var(--ember);
+}
+@media (max-width: 640px) {
+  .pinnedTabs {
+    gap: 8px;
+  }
+  .pinnedTabRow {
+    flex: 1 1 auto;
+    justify-content: flex-end;
+  }
+  .pinnedTab {
+    padding: 0 8px;
+    font-size: 14px;
+  }
+}
 
 /* ---------- The level card ---------- */
 .card {

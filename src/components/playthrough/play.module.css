@@ -6,6 +6,17 @@
   flex-direction: column;
   gap: 28px;
 }
+/* Play as a tab of the build's page (WO-116), or under the run's own band. */
+.body {
+  padding-top: 8px;
+  padding-bottom: 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.main > .body {
+  padding: 0;
+}
 .back {
   font-size: 15px;
   align-self: flex-start;

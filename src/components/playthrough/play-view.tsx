@@ -3,15 +3,40 @@ import { formatDate } from "@/lib/format/date";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
 import { skillsMoved, type ActView, type ObjectiveView } from "@/lib/playthroughs/view";
 import { Answer, HandEntry, StatusPick, TickBox, Visibility } from "./play-controls";
-import { PlaythroughTabs, RunHero } from "./tabs";
+import { RunHero } from "./tabs";
 import s from "./play.module.css";
+
+/**
+ * A run whose build the reader can't open, or that has none yet: the run's own band over its Play
+ * view, with no tabs (WO-116; with a build, Play is a tab of the build's page).
+ */
+export function PlayView({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwner: boolean; actIndex: number | null }) {
+  return (
+    <main className={`page ${s.main}`}>
+      {isOwner && (
+        <Link href="/me" className={s.back}>
+          ‹ My characters
+        </Link>
+      )}
+      <RunHero p={p} isOwner={isOwner} />
+      <PlayBody p={p} isOwner={isOwner} actIndex={actIndex} />
+    </main>
+  );
+}
+
+/** Play's tab line (WO-116): "Act I, 4 of 16 done". */
+export function playSub(p: PlaythroughRecord): string {
+  const v = p.view;
+  if (!v.total) return v.current ? `Act ${v.current.n}` : "No objectives yet";
+  return `${v.current ? `Act ${v.current.n}, ` : ""}${v.done} of ${v.total} done`;
+}
 
 /**
  * The Play view (WO-111), as the Playthrough board on canvas row 23: where you stand from the
  * snapshot, the acts down the left, the act's objectives with their status worked out, one-line
  * pointers to the tale (never its text), and on the right what's next, the character, and who can see it.
  */
-export function PlayView({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwner: boolean; actIndex: number | null }) {
+export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwner: boolean; actIndex: number | null }) {
   const v = p.view;
   const act = (actIndex !== null ? v.acts[actIndex] : null) ?? v.current;
   const snap = p.snapshot;
@@ -24,17 +49,7 @@ export function PlayView({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
   const nextAct = curIdx >= 0 ? v.acts[curIdx + 1] : undefined;
 
   return (
-    <main className={`page ${s.main}`}>
-      {isOwner && (
-        <Link href="/me#playthroughs" className={s.back}>
-          ‹ My playthroughs
-        </Link>
-      )}
-
-      <RunHero p={p} isOwner={isOwner} />
-
-      <PlaythroughTabs p={p} current="play" />
-
+    <div className={s.body}>
       <section aria-labelledby="stand" className={s.stand}>
         <span className={s.head}>
           <h2 id="stand" className={s.h2}>
@@ -96,7 +111,7 @@ export function PlayView({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
               {v.acts.map((a, i) => {
                 const state = a.total > 0 && a.done === a.total ? s.actDone : a === act ? s.actNow : s.actLater;
                 return (
-                  <Link key={a.id} href={`/p/${p.id}?act=${i + 1}`} className={`${s.act} ${state}`} aria-current={a === act ? "true" : undefined}>
+                  <Link key={a.id} href={`/p/${p.id}?act=${i + 1}`} scroll={false} className={`${s.act} ${state}`} aria-current={a === act ? "true" : undefined}>
                     <span className={s.actN}>{a.n}</span>
                     <h3>{a.name}</h3>
                     <span className={s.actCnt}>
@@ -216,7 +231,7 @@ export function PlayView({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
                   </>
                 )}
               </dl>
-              <Link href={`/b/${p.build.id}`}>The build, level by level ›</Link>
+              <Link href={`/p/${p.id}?tab=levels`}>The build, level by level ›</Link>
             </section>
           )}
 
@@ -245,7 +260,7 @@ export function PlayView({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
           )}
         </aside>
       </div>
-    </main>
+    </div>
   );
 }
 

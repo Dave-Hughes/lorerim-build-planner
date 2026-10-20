@@ -1248,6 +1248,20 @@ def tab_guide():
     return i.outline()
 
 
+def tab_play():
+    # A quest scroll (WO-116): parchment between two wooden rods, lines of writing, a red wax seal.
+    i = Icon()
+    i.rect(3, 3, 12, 12, "Y"); i.rect(10, 3, 12, 12, "b")     # parchment, its right side in shade
+    i.rect(2, 1, 13, 2, "b"); i.rect(2, 1, 13, 1, "Y")        # top rod, lit above
+    i.rect(2, 13, 13, 14, "B"); i.rect(2, 14, 13, 14, "d")    # bottom rod, in shade
+    i.px(1, 1, "d"); i.px(14, 2, "d"); i.px(1, 13, "d"); i.px(14, 14, "d")  # rod ends
+    for y in (5, 7, 9):
+        i.rect(4, y, 10, y, "G")                                # lines of writing
+    i.rect(4, 11, 7, 11, "G")
+    i.disc(10.5, 10.5, 1.6, "r"); i.px(10, 10, "p"); i.px(11, 11, "q")      # the seal
+    return i.outline()
+
+
 # ---------------------------------------------------------------- gear slots
 
 def power():
@@ -2801,7 +2815,7 @@ CHAPTERS = {
 }
 NEEDS = {"Hunger": need_hunger, "Thirst": need_thirst, "Fatigue": need_fatigue, "Cold": need_cold}
 
-TABS = {"Levels": tab_levels, "Guide": tab_guide}
+TABS = {"Levels": tab_levels, "Guide": tab_guide, "Play": tab_play}
 GUIDE = {"Tapps": tapps, "Tapps point": tapps_point, **{k: (lambda r=r: Sprite(r)) for k, r in TAPPS_FRAMES.items()}}
 from weapons import WEAPONS as _WEAPON_DRAWS  # noqa: E402  (weapon types and ammunition, after WO-92)
 
