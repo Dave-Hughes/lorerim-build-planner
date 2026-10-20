@@ -11,9 +11,13 @@ Each line keeps the curation's facts and gains:
                  stages (WO-115: each stage's log entries with whether it completes or fails the
                  quest and when it shows, in plain words), endings (the entries that complete or
                  fail it, in stage order; [] when the records flag none), objectives and rewards
-                 (gold tier, weapons and armour)
+                 (gold tier, weapons and armour), and start (WO-115: from the start check's results in
+                 gamedata/<version>/story_checks, { needs, who, where, task, ways, checked: "files" | "not
+                 yet" }; a line not checked yet, or a quest the check couldn't trace, is "not yet")
   xpTotal        the line's quest XP
 """
+import json
+import os
 import re
 
 # LoreRim's Experience.ini: the XP a finished quest gives, by its type in the records.
@@ -156,8 +160,130 @@ def endings_of(stages):
     return [{"stage": st["index"], **e} for st in stages for e in st["log"] if e.get("completes") or e.get("fails")]
 
 
-def build_quests(lines, quests_raw, givers_raw):
+def load_checks(folder):
+    """The start check's results (story_check.py): {line id: {quest edid: its row}}, for the lines checked so far."""
+    out = {}
+    if not os.path.isdir(folder):
+        return out
+    for name in sorted(os.listdir(folder)):
+        if name.endswith(".json") and not name.startswith("."):
+            data = json.load(open(os.path.join(folder, name), encoding="utf-8"))
+            if isinstance(data, dict) and "quests" in data and "line" in data:
+                out[data["line"]] = {q["edid"]: q for q in data["quests"]}
+    return out
+
+
+_LEVEL = re.compile(r"\blevel >= (?:[^;()]*?\(now )?(\d+)", re.IGNORECASE)
+_UNNAMED = re.compile(r"\bfn\d+\b")
+_HOLDING = re.compile(r"holder|holding|storage|dummy|test", re.IGNORECASE)  # a cell a script keeps someone in (as place_of)
+
+
+def level_of(text):
+    """The level a condition text asks for: 'level >= DLC1VQMinLevel (now 30)' -> 30."""
+    m = _LEVEL.search(text or "")
+    return int(m.group(1)) if m else None
+
+
+def plain_needs(conditions, own_name):
+    """
+    A condition text (groups joined with '; ') as needs: the level as "Level N", the speaker and the quest's own
+    "not started yet" left out (the way in says who; a quest that hasn't started is the point), and a condition the
+    reader can't name yet kept and said so.
+    """
+    out = []
+    for group in (conditions or "").split("; "):
+        g = group.strip()
+        if not g or g.startswith(("the speaker is", "the speaker isn't")):
+            continue
+        if own_name and g.startswith(own_name) and re.search(r"(stage <=? \d+|hasn't started|stage \d+ not done|stage == 0)$", g):
+            continue
+        lv = level_of(g)
+        if lv is not None and " or " not in g:
+            out.append(f"Level {lv}")
+        elif _UNNAMED.search(g):
+            out.append(f"a condition the start check can't name yet ({g})")
+        else:
+            out.append(g)
+    return list(dict.fromkeys(out))
+
+
+def way_of(s, own_name, line_quests):
+    """One starter row in player words, and the needs that go with it."""
+    if s["by"] == "dialogue":
+        who = s.get("speaker") or "someone the records don't name"
+        text = (f"Ask {who} \"{s['prompt']}\"" if s.get("prompt") else f"Talk to {who}") + (f" in {s['speakerPlaced'][0]}" if s.get("speakerPlaced") else "")
+        return text, plain_needs(s.get("conditions"), own_name)
+    if s["by"] == "story manager":
+        return f"It starts by itself on {s.get('event') or 'a story event'}", plain_needs(s.get("conditions"), own_name)
+    if s["by"] == "quest script":
+        edid = (s.get("quest") or "").split(" ")[0].rstrip(",")
+        if edid in line_quests:
+            return f"After {line_quests[edid]}" + (f" (its stage {s['atStage']})" if s.get("atStage") is not None else ""), []
+        ups = [way_of(u, own_name, line_quests) for u in s.get("throughStartedBy", []) if u["by"] != "quest script" or u.get("quest")]
+        named = (s.get("quest") or edid).split(",")[0]
+        # One way up: its needs are this way's (Dawnguard's helper starts on a node that needs level 30). More than
+        # one (Dragonborn's two cultist nodes): each keeps its own needs in the text.
+        if len(ups) == 1:
+            return f"Through {named}, which starts from: {ups[0][0]}", ups[0][1]
+        texts = list(dict.fromkeys(t + (f" ({', '.join(n)})" if n else "") for t, n in ups))
+        return f"Through {named}" + (f", which starts from: {'; or '.join(texts)}" if texts else ""), []
+    return "It runs from the start of the game", []
+
+
+def start_of(row, line_quests):
+    """
+    A quest's checked start in plain words: { needs, who, where, task, ways, checked }. needs are all needed; when
+    there is more than one way in they are one need ("One of: ..."). checked is "files" when the start check traced
+    what starts it, else "not yet".
+    """
+    if not row:
+        return {"checked": "not yet"}
+    own = row.get("name")
+    starters = row.get("startedBy", [])
+    needs = plain_needs((row.get("needs") or {}).get("conditions"), own)
+    ways = []
+    if not any(s["by"] == "start game" for s in starters):
+        for s in starters:
+            w = way_of(s, own, line_quests)
+            if w not in ways:
+                ways.append(w)
+        if len(ways) == 1:
+            needs = [ways[0][0]] + needs + ways[0][1]
+        elif ways:
+            needs.append("One of: " + "; or ".join(t + (f" ({', '.join(n)})" if n else "") for t, n in ways))
+    needs += [d["text"] for d in (row.get("needs") or {}).get("doors", [])]
+    holder = next((h for t in row.get("target", []) for h in t.get("holds", []) if h.get("name")), None)
+    if holder:
+        holder = dict(holder, where=[w for w in holder.get("where", []) if not _HOLDING.search(w)])
+    talk = next((s for s in starters if s["by"] == "dialogue" and s.get("speaker")), None)
+    out = {"needs": list(dict.fromkeys(needs))}
+    if holder:
+        out["who"] = holder["name"]
+        if holder.get("where"):
+            out["where"] = holder["where"][0]
+    elif talk:
+        out["who"] = talk["speaker"]
+        if talk.get("speakerPlaced"):
+            out["where"] = talk["speakerPlaced"][0]
+    if (row.get("firstObjective") or {}).get("text"):
+        out["task"] = row["firstObjective"]["text"]
+    if len(ways) > 1:
+        out["ways"] = [{"how": t, **({"needs": n} if n else {})} for t, n in ways]
+    traced = starters and not row.get("unread") and not all(s["by"] == "quest script" and not s.get("throughStartedBy") and
+                                                                (s.get("quest") or "").split(" ")[0].rstrip(",") not in line_quests for s in starters)
+    out["checked"] = "files" if traced else "not yet"
+    return out
+
+
+def start_disagreements(pages):
+    """Where a line's opening quest's checked level differed from the field guide's minLevel (build_quests kept the checked one)."""
+    return [{"line": l["id"], "name": l["name"], "field": "minLevel", "guide": l["guideMinLevel"], "checked": l["minLevel"], "quest": l["quests"][0]["name"]}
+            for l in pages if "guideMinLevel" in l]
+
+
+def build_quests(lines, quests_raw, givers_raw, checks=None):
     """The curated lines (questlines.curate) -> the quests.json lines, in curation order."""
+    checks = checks or {}
     by_id = {q["id"]: q for q in quests_raw}
     givers = {g["id"]: g for g in givers_raw}
     by_edid = {q["edid"]: q["id"] for q in quests_raw}
@@ -189,6 +315,8 @@ def build_quests(lines, quests_raw, givers_raw):
         if fo and fo.get("namesWhoOrWhere") and fo.get("filled"):
             item["firstObjective"] = fo["filled"]
         quests = []
+        checked_rows = checks.get(line["id"], {})
+        line_quests = {by_id[lq["id"]]["edid"]: by_id[lq["id"]]["name"] for lq in line["quests"]}
         for lq in line["quests"]:
             q = by_id[lq["id"]]
             rw = (givers.get(q["id"]) or {}).get("rewards", [])
@@ -210,10 +338,17 @@ def build_quests(lines, quests_raw, givers_raw):
                     "stages": stages,
                     "endings": endings_of(stages),
                     "objectives": [o["text"] for o in sorted(q.get("objectives", []), key=lambda o: o.get("index", 0)) if o.get("text")],
+                    "start": start_of(checked_rows.get(q["edid"]), line_quests),
                     **({"rewards": rewards} if rewards else {}),
                 }
             )
         item["quests"] = quests
+        # A checked level beats the field guide's (WO-115); start_disagreements lists each for questlines_report.md.
+        first = quests[0]["start"] if quests else {}
+        levels = [int(n.split(" ")[1]) for n in first.get("needs", []) if re.fullmatch(r"Level \d+", n)]
+        if first.get("checked") == "files" and levels and item.get("minLevel") is not None and max(levels) != item["minLevel"]:
+            item["guideMinLevel"] = item["minLevel"]
+            item["minLevel"] = max(levels)
         item["xpTotal"] = sum(q["xp"] for q in quests)
         out.append(item)
     return out

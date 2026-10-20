@@ -215,7 +215,7 @@ def curate(quests, raw_lines, cur):
     return out
 
 
-def report(lines, cur, not_in_records):
+def report(lines, cur, not_in_records, disagreements=None):
     md = ["# Quest lines, curated", "",
           f"{len(lines)} lines from {sum(len(l['quests']) for l in lines)} quests. Written by "
           "`scripts/gamedata/questlines.py` from `questlines.json` (hand-kept) and the raw crawl. "
@@ -269,6 +269,11 @@ def report(lines, cur, not_in_records):
            "plugin goes by another name). To check on the PC.", ""]
     for n in not_in_records:
         md.append(f"- **{n['name']}**: {n['why']}")
+    if disagreements:
+        md += ["", "## Checked starts that disagree with the field guide", "",
+               "The start check (story_check.py) read these from the files; the checked value is the one quests.json keeps.", ""]
+        for d in disagreements:
+            md.append(f"- **{d['name']}** ({d['quest']}): the field guide's {d['field']} is {d['guide']}; the files say {d['checked']}.")
     dropped = cur.get("dropped", {})
     md += ["", "## Left out", ""] + [f"- {n}: {why}" for n, why in dropped.items()]
     md += [f"- {len(cur.get('droppedQuests', {}))} base-game quests: roadside encounters, children's games, "

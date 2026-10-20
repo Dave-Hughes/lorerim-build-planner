@@ -56,7 +56,7 @@ Also here: Destroy the Acolyte Priests, A Forgotten Blade, Destroy the Dragon Cu
 
 > I have been captured by the Empire and sentenced to death alongside the Stormcloak rebels. We were taken to Helgen, but before I could be executed a dragon appeared and attacked the town. I need to find some way to escape.
 
-- Start: Pick The Dragonborn at the dragon statue in the Helgen inn. The main quest starts with the cart ride into Helgen. *(files)*
+- Start: Take a Dragonborn start: Helgen Keep (Start) or Helgen Keep (End). *(files)*
 - Gate: None. After Before the Storm, Balgruuf no longer walks you to Farengar: the Dragonstone task waits until you ask Farengar about the dragons. *(files)*
 - Quests: Unbound; Before the Storm; Bleak Falls Barrow; Dragon Rising; The Way of the Voice; The Horn of Jurgen Windcaller; A Blade in the Dark; Diplomatic Immunity; A Cornered Rat; Alduin's Wall; The Throat of the World; Elder Knowledge; Alduin's Bane; The Fallen; Season Unending; The World-Eater's Eyrie; Sovngarde; Dragonslayer; Paarthurnax; The Words of Power; Rebuilding the Blades; Dragon Hunting; Dragon Research
 
@@ -358,9 +358,10 @@ Also here: Vigilant, Saints and Seducers, Sleepwalking Into A Nightmare, More to
 > An imperial courier named Theodyn Bienne has requested I speak to Lurius Liore at the Bannered Mare in Whiterun as soon as possible.
 
 - Start: An Imperial courier, Theodyn Bienne, finds you and sends you to Lurius Liore at the Bannered Mare in Whiterun. *(files)*
-- Gate: Level 20, Rise in the East done, and the main quest through The Way of the Voice. *(files)*
+- Gate: Level 10, Rise in the East done, and the main quest through The Way of the Voice. *(files)*
 - Level: 20–40 on the island *(players)*
 - Length: 6–10 hours *(players)*
+- Note: Wyrmstooth - Settings Loader sets the start level to 10 in a new game; Requiem - Wyrmstooth.esp's 20 only holds on saves from before the loader. *(files)*
 - After: Rise in the East, The Dragonborn
 - Quests: Retrieving Embersunder; Barrow of the Wyrm; Blind Robber's Cache; Animal Bounty; Bandit Bounty; Vampire Bounty; Warlock Bounty; Robbed Blind; Wyrmstooth; Stickler in the Mud; Unwanted Guests; Reclaiming the Past; A Priceless Commodity; Repaying a Debt; A Debt Unpaid; The Naked Nord; Someone with Backbone; A Howl Load of Trouble; Wrap Me Up
 

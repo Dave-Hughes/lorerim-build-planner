@@ -144,5 +144,34 @@ class EndingsTest(unittest.TestCase):
         self.assertEqual(out[0]["journal"], qp.journal(self.raw["MS11"]))
 
 
+class StartTest(unittest.TestCase):
+    """WO-115 Part 2: a quest's checked start from its story_check row, in plain words."""
+
+    def test_start_game_quest_points_at_its_giver(self):
+        row = {"name": "Take Up Arms", "startedBy": [{"by": "start game"}, {"by": "dialogue", "speaker": "Aela", "prompt": "Can I join?"}],
+               "target": [{"holds": [{"name": "Kodlak Whitemane", "where": ["Jorrvaskr"]}]}], "firstObjective": {"text": "Speak to Kodlak Whitemane"},
+               "needs": {"conditions": None, "doors": []}}
+        self.assertEqual(qp.start_of(row, {}), {"needs": [], "who": "Kodlak Whitemane", "where": "Jorrvaskr", "task": "Speak to Kodlak Whitemane", "checked": "files"})
+
+    def test_ways_in_with_their_needs(self):
+        node = {"by": "story manager", "event": "change location", "conditions": "Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; fn576 == 1"}
+        helper = {"by": "quest script", "quest": "DLC1VQ00ChangeLocation, a helper quest", "throughStartedBy": [node]}
+        talk = {"by": "dialogue", "speaker": "Agmaer", "speakerPlaced": ["Fort Dawnguard"], "conditions": "the speaker is Agmaer"}
+        row = {"name": "Dawnguard", "startedBy": [helper, talk], "target": [], "needs": {"conditions": None, "doors": []}}
+        start = qp.start_of(row, {})
+        self.assertEqual(start["ways"][0], {"how": "Through DLC1VQ00ChangeLocation, which starts from: It starts by itself on change location",
+                                            "needs": ["Laid to Rest completed", "Level 30", "a condition the start check can't name yet (fn576 == 1)"]})
+        self.assertEqual(start["ways"][1], {"how": "Talk to Agmaer in Fort Dawnguard"})
+        self.assertEqual((start["who"], start["checked"]), ("Agmaer", "files"))
+
+    def test_earlier_quest_and_untraced(self):
+        row = {"name": "Proving Honor", "startedBy": [{"by": "quest script", "quest": "C00 (Take Up Arms)", "atStage": 200}], "target": [], "needs": {"conditions": "level >= 5"}}
+        self.assertEqual(qp.start_of(row, {"C00": "Take Up Arms"})["needs"], ["After Take Up Arms (its stage 200)", "Level 5"])
+        self.assertEqual(qp.start_of({"name": "X", "startedBy": [], "unread": "no starter"}, {})["checked"], "not yet")
+        self.assertEqual(qp.start_of(None, {}), {"checked": "not yet"})
+        stuck = {"name": "X", "startedBy": [{"by": "quest script", "quest": "Helper, a helper quest", "throughStartedBy": []}], "target": [], "needs": {}}
+        self.assertEqual(qp.start_of(stuck, {})["checked"], "not yet")
+
+
 if __name__ == "__main__":
     unittest.main()

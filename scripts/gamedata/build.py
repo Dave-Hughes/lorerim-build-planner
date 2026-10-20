@@ -458,16 +458,22 @@ def main():
     # The Quests pages (WO-100): the curated lines, with their givers, journals, XP and rewards.
     if all(os.path.exists(os.path.join(RAW, n)) for n in ("questlines.json", "quests_raw.json", "questlines_raw.json", "quest_givers_raw.json")):
         from questlines import curate
-        from quest_pages import build_quests
+        from quest_pages import build_quests, load_checks, start_disagreements
+        from questlines import report as questlines_report
 
         quests_raw = load("quests_raw.json")["quests"]
         lines = curate(quests_raw, load("questlines_raw.json")["lines"], load("questlines.json"))
-        pages = build_quests(lines, quests_raw, load("quest_givers_raw.json")["quests"])
+        checks = load_checks(os.path.join(RAW, "story_checks"))  # WO-115: each quest's checked start
+        pages = build_quests(lines, quests_raw, load("quest_givers_raw.json")["quests"], checks)
         cur = load("questlines.json")
+        with open(os.path.join(RAW, "questlines_report.md"), "w", encoding="utf-8") as f:
+            f.write(questlines_report(lines, cur, cur.get("notInRecords", []), start_disagreements(pages)))
         with open(os.path.join(OUT, "quests.json"), "w", encoding="utf-8") as f:
             json.dump({"categories": cur["categories"], "shelves": cur.get("shelves", {}), "lines": pages}, f, separators=(",", ":"), ensure_ascii=False)
             f.write("\n")
         print(f"{len(pages)} quest lines, {sum(len(l['quests']) for l in pages)} quests, {sum(1 for l in pages if 'giver' in l)} with a giver -> quests.json")
+        starts = [q["start"]["checked"] for l in pages for q in l["quests"]]
+        print(f"{len(checks)} lines checked: {starts.count('files')} quest starts checked from the files, {starts.count('not yet')} not yet")
         # Stories (WO-106): Bob's hand-kept stories, checked against the lines; a broken one stops the build.
         if os.path.exists(os.path.join(RAW, "stories.json")):
             from stories import StoryError, build_stories
