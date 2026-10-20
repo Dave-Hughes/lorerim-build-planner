@@ -1,0 +1,158 @@
+/**
+ * WO-111: an assistant drafts a playthrough through the door on the test author's build (two acts,
+ * five objectives with one refused, a suggestion, a beat and a chapter, finish_draft), then the
+ * player on the site: private under My playthroughs, a tick opening the beat, the Tale view, editing
+ * by hand with a @quest mention and the rule under a refused one, Accept, Enter it by hand. Another
+ * player's token can't read it and a facts-only token can't write.
+ */
+import { expect, test } from "@playwright/test";
+import { call, ip, signIn, tokenFor } from "./helpers";
+import { TEST_BUILD_ID } from "./seed";
+
+test.describe.configure({ mode: "serial" });
+
+const from = ip();
+let token = "";
+let pid = "";
+const RULE = "An objective is one thing you can know is done.";
+
+test("an assistant drafts a playthrough end to end, refused for an objective that can't be known done", async ({ page, context, baseURL }) => {
+  await signIn(context);
+  const t = await tokenFor(page, context, baseURL!, from);
+  expect(t.scope).toBe("facts builds:write playthroughs:write");
+  token = t.access_token;
+  const go = (name: string, args: object) => call(baseURL!, from, token, name, args);
+
+  const made = await go("create_playthrough", { name: "E2E Kyria", line: "A knight of Stendarr hiding as a bard in Riften.", build: TEST_BUILD_ID });
+  expect(made.isError, made.text).toBe(false);
+  pid = made.json().playthrough;
+  expect(made.json()).toMatchObject({ visibility: "private" });
+
+  const one = await go("add_act", { playthrough: pid, name: "The Sister's House", levels: "1 to 6", place: "Riften", goal: "Earn a bed and coin in Riften as a bard and a worker.", standingRule: "Play the Bee and Barb most nights." });
+  expect(one.isError, one.text).toBe(false);
+  const two = await go("add_act", { playthrough: pid, name: "The Bard's Road", levels: "6 to 8", place: "Ivarstead", goal: "On foot, a song at every inn." });
+  expect(two.isError, two.text).toBe(false);
+
+  const objectives = [
+    { act: 1, text: "Take a room at the Bee and Barb", kind: "once", doneWhen: "hand" },
+    { act: 1, text: "Warn Haelga, or expose her", kind: "once", link: { kind: "quest", name: "Caught Red Handed" }, doneWhen: { quest: "Caught Red Handed", stage: 12 }, why: "From Svana at the bunkhouse." },
+    { act: 1, text: "Reach level 6", kind: "reach", doneWhen: { reach: { key: "Level", target: 6 } } },
+    { act: 1, text: "Hunt and tan her first hides", kind: "once", doneWhen: "hand", why: "Deer or elk around Lake Honrich." },
+    { act: "The Bard's Road", text: "Join the Bards College", kind: "once", doneWhen: "hand" },
+  ];
+  for (const o of objectives) {
+    const r = await go("add_objective", { playthrough: pid, ...o });
+    expect(r.isError, `${o.text}: ${r.text}`).toBe(false);
+  }
+  // Rule 14: a standing rule, and a done-once objective with no done-when, are refused; nothing saved.
+  const every = await go("add_objective", { playthrough: pid, act: 1, text: "Read every new book", kind: "once", doneWhen: "hand" });
+  expect(every.isError).toBe(true);
+  expect(every.text).toContain(RULE);
+  const unknown = await go("add_objective", { playthrough: pid, act: 1, text: "Sing for the children at Honorhall", kind: "once" });
+  expect(unknown.isError).toBe(true);
+  expect(unknown.text).toContain(RULE);
+
+  const sug = await go("suggest_objective", { playthrough: pid, act: 1, text: "The Book of Love", kind: "once", link: { kind: "line", name: "The Book of Love" }, doneWhen: "hand" });
+  expect(sug.isError, sug.text).toBe(false);
+  expect(sug.json().suggested).toBe(true);
+
+  // A beat needs its objective; then one that opens when the hides are tanned.
+  expect((await go("write_chapter", { playthrough: pid, kind: "beat", title: "Made with Care", text: "The hide was rough under her hands." })).isError).toBe(true);
+  const beat = await go("write_chapter", { playthrough: pid, kind: "beat", title: "Made with Care", text: "The hide was rough under her hands.", act: 1, after: "Hunt and tan her first hides" });
+  expect(beat.isError, beat.text).toBe(false);
+  const chapter = await go("write_chapter", { playthrough: pid, kind: "chapter", title: "Chapter One: The Chapel by the Sea", text: "The chapel bells in Anvil rang the hours.\n\nShe learned the songs before her letters." });
+  expect(chapter.isError, chapter.text).toBe(false);
+
+  // The save decides a save objective, never the assistant; an estimate isn't a snapshot.
+  expect((await go("set_status", { playthrough: pid, objective: "Warn Haelga, or expose her", status: "done" })).text).toMatch(/save decides/);
+  expect((await go("set_snapshot", { playthrough: pid, source: "hand", label: "Guess", level: 5, skills: {} })).isError).toBe(true);
+
+  const got = (await go("get_playthrough", { playthrough: "E2E Kyria" })).json();
+  expect(got.acts).toHaveLength(2);
+  expect(got.acts[0].objectives.map((o: { status: string }) => o.status)).toEqual(["to do", "to do", "to do", "to do", "suggested, waiting for the player"]);
+  expect(got.done).toBe("0 of 5");
+
+  const done = await go("finish_draft_playthrough", { playthrough: pid });
+  expect(done.json()).toMatchObject({ ready: true, link: `${baseURL!.replace(/\/$/, "")}/p/${pid}` });
+
+  const quests = await call(baseURL!, from, token, "suggest_quests", { level: 10 });
+  expect(quests.isError, quests.text).toBe(false);
+  for (const s of quests.json().suggestions) expect(s.checked).toBe("files");
+});
+
+test("on the site: private under My playthroughs, a tick opens the beat, Accept counts, by hand moves the meter", async ({ page, context }) => {
+  await signIn(context);
+  await page.goto("/me");
+  const card = page.getByRole("link", { name: /E2E Kyria/ });
+  await expect(card).toContainText("Drafted with E2E Claude");
+  await expect(card).toContainText("Private");
+
+  const playTab = () => page.getByRole("navigation", { name: "Views" }).getByRole("link", { name: /^Play/ });
+  await page.goto(`/p/${pid}`);
+  await expect(page.getByRole("heading", { name: "E2E Kyria" })).toBeVisible();
+  await expect(playTab()).toContainText("0 of 5 done");
+  await expect(page.getByText("Made with Care opens when you tick this.")).toBeVisible();
+  // The Tale text is nowhere on the Play view, only its pointer.
+  await expect(page.getByText("The hide was rough under her hands.")).toHaveCount(0);
+
+  await page.getByRole("checkbox", { name: "Hunt and tan her first hides" }).click();
+  await expect(page.getByText(/Made with Care\s*opened from this/)).toBeVisible();
+  await expect(playTab()).toContainText("1 of 5 done");
+
+  await page.getByRole("button", { name: "Accept" }).click();
+  await expect(page.getByText("Suggested by E2E Claude")).toHaveCount(0);
+  await expect(playTab()).toContainText("1 of 6 done");
+
+  await expect(page.getByText("Level 6: not read yet")).toBeVisible();
+  await page.getByRole("button", { name: "Enter it by hand" }).click();
+  await page.getByLabel("Level").fill("6");
+  await page.getByRole("button", { name: "Save" }).click();
+  await expect(page.getByText("Level 6 of 6", { exact: true })).toBeVisible();
+  await expect(playTab()).toContainText("2 of 6 done");
+});
+
+test("the Tale view shows the chapter, the opened beat and its way back to the game", async ({ page, context }) => {
+  await signIn(context);
+  await page.goto(`/p/${pid}/tale?from=1`);
+  await expect(page.getByRole("heading", { name: "Chapter One: The Chapel by the Sea" })).toBeVisible();
+  await expect(page.getByText("The chapel bells in Anvil rang the hours.")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Made with Care" })).toBeVisible();
+  const back = page.getByRole("link", { name: "Hunt and tan her first hides" });
+  await expect(back).toBeVisible();
+  await back.click();
+  await expect(page).toHaveURL(new RegExp(`/p/${pid}\\?act=1#o\\d+`));
+});
+
+test("editing by hand: a @quest mention, and the rule under a refused objective", async ({ page, context }) => {
+  await signIn(context);
+  await page.goto(`/p/${pid}/edit`);
+  await expect(page.getByText("Editing E2E Kyria")).toBeVisible();
+  await page.getByRole("button", { name: "Add an objective" }).click();
+  const box = page.getByRole("combobox", { name: "Objective" }).last();
+  await box.fill("@Spread the");
+  await page.getByRole("option", { name: /^Spread the Love/ }).first().click();
+  await expect(page.getByText("Quest: Spread the Love")).toBeVisible();
+  await expect.poll(async () => (await page.reload(), await page.getByText("Quest: Spread the Love").count())).toBeGreaterThan(0);
+
+  await page.getByRole("button", { name: "Add an objective" }).click();
+  await page.getByRole("combobox", { name: "Objective" }).last().fill("Read every new book");
+  await expect(page.getByText(RULE).first()).toBeVisible();
+});
+
+test("another player's token can't read it, and a facts-only token can't write", async ({ page, context, baseURL }) => {
+  const other = ip();
+  await signIn(context, "other");
+  const t = await tokenFor(page, context, baseURL!, other);
+  const read = await call(baseURL!, other, t.access_token, "get_playthrough", { playthrough: pid });
+  expect(read.isError).toBe(true);
+  expect(read.text).toMatch(/No playthrough of yours/);
+  await page.goto(`/p/${pid}`);
+  await expect(page.getByRole("heading", { name: "E2E Kyria" })).toHaveCount(0);
+
+  await context.clearCookies();
+  await signIn(context);
+  const facts = await tokenFor(page, context, baseURL!, other, "facts");
+  const write = await call(baseURL!, other, facts.access_token, "add_act", { playthrough: pid, name: "Act Three", levels: "8 to 20", place: "Solitude", goal: "Join the College." });
+  expect(write.isError).toBe(true);
+  expect(write.text).toMatch(/doesn't allow this/);
+});

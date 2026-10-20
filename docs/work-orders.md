@@ -4599,11 +4599,11 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - Screenshots: the Play view, the Tale view, editing an act, My playthroughs. Compare with row 23 on the canvas.
 
 ### Done when
-- [ ] An assistant with a token can draft a playthrough end to end with plain inputs, is refused for an objective the player can't know is done, and gets the review link from `finish_draft`.
-- [ ] The Play view, Tale view and edit page match the three boards; the Tale text appears nowhere on the Play view but its one-line pointers.
-- [ ] Done is worked out from the snapshot or the player's tick, never stored by the assistant; a suggestion counts only once accepted.
-- [ ] The rules are in `content/mcp/style.md` and `docs/design-rules.md` as written here.
-- [ ] Every check in CLAUDE.md passes; migration additive; behind the flag. Commit on `staging`, push, and stop: Dave asks Claude to draft Kyria's playthrough and reads it.
+- [x] An assistant with a token can draft a playthrough end to end with plain inputs, is refused for an objective the player can't know is done, and gets the review link from `finish_draft`.
+- [x] The Play view, Tale view and edit page match the three boards; the Tale text appears nowhere on the Play view but its one-line pointers.
+- [x] Done is worked out from the snapshot or the player's tick, never stored by the assistant; a suggestion counts only once accepted.
+- [x] The rules are in `content/mcp/style.md` and `docs/design-rules.md` as written here.
+- [x] Every check in CLAUDE.md passes; migration additive; behind the flag. Commit on `staging`, push, and stop: Dave asks Claude to draft Kyria's playthrough and reads it.
 
 ---
 

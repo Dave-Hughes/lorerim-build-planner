@@ -46,8 +46,9 @@ async function approve(page: Page, base: string, clientId: string, challenge: st
   await expect(page.getByRole("heading", { level: 1 })).toContainText("to use your LoreRim Planner account?");
   await expect(page.getByText("Look up perks, spells and quests")).toBeVisible();
   await expect(page.getByText("Draft builds in your account")).toBeVisible();
-  // Asking for no scopes grants only those with tools today (WO-110).
-  if (!full) await expect(page.getByText("Write playthroughs in your account")).toHaveCount(0);
+  // Asking for no scopes grants those with tools today: playthroughs too since WO-111; asking for two, only those.
+  if (!full) await expect(page.getByText("Write playthroughs in your account")).toBeVisible();
+  else await expect(page.getByText("Write playthroughs in your account")).toHaveCount(0);
   await page.getByRole("button", { name: "Allow" }).click();
   await expect.poll(() => landed).toContain("code=");
   const u = new URL(landed);
