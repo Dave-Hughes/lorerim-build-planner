@@ -4707,6 +4707,22 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-114a  No question at New character; a run is added from the build (Mac, 20 Oct 2026)
+
+**Why.** Dave, after reading how it works: the "a build and a run / a build alone" question at New character is for us, not for the player. Every character is a build; a run is something you add. A player sharing a build should never see the word run; a player wanting the story loses one click.
+
+- `/new` opens Set up directly, as New build did. No first question; `?kind=` goes.
+- The run's step (WO-114 section 3) moves behind one action, **Start a run**: for the owner, beside Edit on the build page's hero and on the card in My characters (in place of "Add a run"). It opens the same step, name and line prefilled from the build, Act I from the start, Confirm makes the run and opens the Play view.
+- A build without a run is the build page as before, no Play or Tale tabs. Once a run exists the character has the Play, Tale and Build views.
+- The door is unchanged: `create_playthrough` with creation fields still makes both in one call; `create_build` a build alone.
+- Update the WO-114 e2e: New character lands in Set up; Start a run from the hero and from the card; a build without a run shows no run tabs. The `NewCharacter.dc.html` board is superseded by this order (note on the canvas).
+
+### Done when
+- [ ] New character is Set up; a run is started from the build page or its card; a build without a run looks as it did before WO-114.
+- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
+
+---
+
 ## WO-115  Quests an assistant can trust: endings, starts for every quest, and "open for you" (20 Oct 2026)
 
 **Why.** Dave: assistants recommend quests he can't take on, call a quest available when it isn't, and tell him a quest ends one way when it ended another. Bob's look (backlog, "Why quest advice goes wrong"): the planner holds 1,240 quests by shape and checked starts for six stories; nobody holds each quest's endings, each quest's start conditions in plain words, or the player's quest state. Both the planner and the Book chat's own index answer those from memory. This order gives the planner the three, in the order they pay off, and makes the door say "open for you" or "unknown" instead of leaving the gap for the assistant to fill.
