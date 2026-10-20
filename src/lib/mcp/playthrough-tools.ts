@@ -5,6 +5,7 @@ import { writer, type PlannerAuth } from "@/lib/oauth/mcp-auth";
 import { LINK_KINDS } from "@/lib/playthroughs/types";
 import type { Player } from "./builds";
 import { DEFAULT_VERSION, FactsError } from "./errors";
+import { creationFields } from "./build-tools";
 import * as t from "./playthroughs";
 
 /** The playthrough tools' registration (WO-111), each needing a sign-in with playthroughs:write; suggest_quests is facts. */
@@ -52,12 +53,14 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
   tool(
     "create_playthrough",
     "Start a playthrough",
-    "Make a new private playthrough in the player's account: a character's run as acts, objectives and a tale. Drafted by you; the player reads and publishes it. At most 10 private drafted ones per player.",
+    "Make a character with a run in the player's account: with character creation's fields (race, birthsign, majors, minors...), the build and the run together, Act I set from the start; or with build, a run on one of the player's builds. Both private and drafted by you; the player reads and publishes. At most 10 private drafted runs per player.",
     z.object({
-      name: z.string().min(1).max(80).describe("The character's name, or the playthrough's."),
+      name: z.string().min(1).max(80).describe("The character's name: the run's, and the new build's."),
       line: z.string().max(140).optional().describe("One sentence: who the character is."),
-      build: z.string().max(80).optional().describe("One of the player's own builds, by id or name."),
+      build: z.string().max(80).optional().describe("One of the player's own builds, by id or name, instead of the creation fields."),
       version: z.string().max(20).optional().describe(`The LoreRim version, ${DEFAULT_VERSION} if left out.`),
+      // Character creation, as create_build takes it (WO-110), for a new build with the run.
+      ...z.object(creationFields).partial().shape,
     }),
     (p, a: Parameters<typeof t.createPlaythrough>[1]) => t.createPlaythrough(p, a),
   );

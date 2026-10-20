@@ -115,5 +115,13 @@ export const snapshotSchema = z.object({
 });
 export type SnapshotInput = z.input<typeof snapshotSchema>;
 
+/** Act I as a new character's run starts it (WO-114), on the site and through the door. */
+export const FIRST_ACT = { name: "The first days", levels: "1 to 5" } as const;
+
+/** The start's own quest as Act I's first objective (WO-114): done when the save shows it. */
+export function startObjective(q: { edid: string; name: string; xp?: number }): ObjectiveInput {
+  return { text: q.name, kind: "once", link: { kind: "quest", id: q.edid }, doneBy: "save", detect: { quest: q.edid }, why: `The start's own quest.${q.xp ? ` ${q.xp} XP.` : ""}` };
+}
+
 /** The first issue's message, for refusals and forms. */
 export const firstIssue = (e: z.ZodError) => e.issues[0]?.message ?? "Check the fields.";

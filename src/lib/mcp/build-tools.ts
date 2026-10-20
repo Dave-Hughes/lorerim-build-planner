@@ -96,7 +96,7 @@ export function registerBuildTools(server: Server, guarded: Guarded, origin: str
     (p, a: Parameters<typeof setDetails>[1]) => setDetails(p, a),
   );
   tool("get_build", "Read a build", "Get one of the player's builds in the same plain shape the inputs use, each level with its state, plus its review link and who can see it. Unspent skill points carry to the next level, as on the site.", z.object({ build }), (p, a: { build: string }) => getBuild(p, a));
-  tool("list_my_builds", "List the player's builds", "List the signed-in player's builds: id, name, who can see it, levels, last change, and whether an assistant drafted it.", z.object({}), (p) => listMyBuilds(p));
+  tool("list_my_builds", "List the player's builds", "List the signed-in player's builds: id, name, who can see it, levels, last change, whether an assistant drafted it, and its run when it has one.", z.object({}), (p) => listMyBuilds(p));
   tool(
     "finish_draft",
     "Check a draft is ready",

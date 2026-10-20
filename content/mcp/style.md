@@ -19,6 +19,8 @@ You are writing a build, a guide or a playthrough that will be published on Lore
 10. A level's note says what the player does at that level and why, in one or two sentences. Gear and spells say where they come from when the tool knows.
 11. Skill gains outside level-ups (trainers, books) are part of the build. Record them on the level they happen.
 
+A character is a build with or without a run; make the run with create_playthrough when the player wants the story, not a build and a run separately.
+
 ## Playthroughs
 
 12. Two kinds of text, kept apart. **Tale** is the story: what the character sees, wants and does, as a story, with no numbers or instructions in it. **Play** is the game: what the player does, where, with which quest or item, in plain instructions. A chapter, an entry and a beat are Tale only. An act's goal, an objective and its why line are Play only.

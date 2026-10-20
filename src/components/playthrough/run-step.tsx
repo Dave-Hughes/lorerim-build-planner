@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { RunInput } from "@/lib/playthroughs/writes";
 import { objectiveRefusal } from "@/lib/playthroughs/status";
+import { FIRST_ACT, startObjective } from "@/lib/playthroughs/validate";
 import e from "./edit.module.css";
 import p from "./play.module.css";
 
@@ -29,7 +30,7 @@ export function RunStep({
 }) {
   const [name, setName] = useState(initial.name);
   const [line, setLine] = useState(initial.line.slice(0, 140));
-  const [act, setAct] = useState({ name: "The first days", levels: "1 to 5", place: initial.place, goal: "" });
+  const [act, setAct] = useState<{ name: string; levels: string; place: string; goal: string }>({ name: FIRST_ACT.name, levels: FIRST_ACT.levels, place: initial.place, goal: "" });
   const [withQuest, setWithQuest] = useState(!!startQuest);
   const [mine, setMine] = useState<string[]>([]);
   const [draft, setDraft] = useState("");
@@ -41,7 +42,7 @@ export function RunStep({
       line,
       act,
       objectives: [
-        ...(withQuest && startQuest ? [{ text: startQuest.name, kind: "once" as const, link: { kind: "quest" as const, id: startQuest.edid }, doneBy: "save" as const, detect: { quest: startQuest.edid }, why: `The start's own quest.${startQuest.xp ? ` ${startQuest.xp} XP.` : ""}` }] : []),
+        ...(withQuest && startQuest ? [startObjective(startQuest)] : []),
         ...mine.map((text) => ({ text, kind: "once" as const, doneBy: "hand" as const })),
       ],
     });

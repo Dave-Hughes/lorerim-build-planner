@@ -10,14 +10,16 @@ import { markdownToDoc, MarkdownError } from "@/lib/playthroughs/markdown";
 import { getPlaythrough, listMyPlaythroughs, type PlaythroughRecord } from "@/lib/playthroughs/queries";
 import { reachLabel, RULE_14 } from "@/lib/playthroughs/status";
 import type { Detect, DoneBy, LinkKind, ObjectiveLink, ObjectiveStatus, Reach } from "@/lib/playthroughs/types";
-import { levelsInput } from "@/lib/playthroughs/validate";
+import { FIRST_ACT, levelsInput, startObjective } from "@/lib/playthroughs/validate";
 import * as w from "@/lib/playthroughs/writes";
 import { gateOf, mainOrder, questsData } from "@/lib/quests/data";
 import { openState } from "@/lib/quests/open";
 import { stories } from "@/lib/quests/stories-data";
 import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import * as names from "./names";
-import type { Player } from "./builds";
+import { prepareBuild, type Player } from "./builds";
+import { insertBuild } from "@/lib/builds/writes";
+import type { CreateInput } from "./plan";
 
 /**
  * The playthrough tools (WO-111): an assistant drafts a playthrough for the signed-in player with
@@ -205,7 +207,41 @@ const myBuilds = (p: Player) => db().select({ id: schema.builds.id, name: schema
 
 /* ---------- The tools ---------- */
 
-export async function createPlaythrough(p: Player, input: { name: string; line?: string; build?: string; version?: string }) {
+/** Act I as New character sets it (WO-114): "The first days", levels 1 to 5, and the start's place and quest when the data names them. */
+export function firstAct(start: { place?: string; quest?: { edid: string; name: string; xp?: number } } | undefined): w.RunInput["act"] & { objectives: w.RunInput["objectives"] } {
+  return { ...FIRST_ACT, place: start?.place ?? "", goal: "", objectives: start?.quest ? [startObjective(start.quest)] : [] };
+}
+
+/**
+ * create_playthrough: with character creation's fields (WO-114), the build and the run together in one
+ * transaction, Act I set from the start, both private and drafted by the assistant. With `build`
+ * instead, a run on one of the player's builds, as before.
+ */
+export async function createPlaythrough(p: Player, input: { name: string; line?: string; build?: string; version?: string } & Partial<Omit<CreateInput, "name" | "description">>) {
+  if (input.race !== undefined || input.majors !== undefined) {
+    if (input.build) throw new FactsError("Give the character creation fields for a new build, or build for one the player has, not both.");
+    const { details, plan } = await prepareBuild(p, { ...input, name: input.name, description: input.line, race: input.race ?? "", majors: input.majors ?? [], minors: input.minors ?? [] } as CreateInput & { version?: string });
+    if ((await w.draftCount(p.userId)) >= 10) throw new FactsError(w.DRAFT_CAP_MESSAGE);
+    const { objectives, ...act } = firstAct(plan.start ? versionData(plan.gameVersion).startByName.get(plan.start) : undefined);
+    const run = await writes(async () => w.prepareRun({ name: input.name, line: input.line, act, objectives }));
+    const by = p.clientName.slice(0, 80);
+    let id = "";
+    const buildId = await insertBuild(p.userId, details, plan, by, (b) => {
+      const r = w.runStatements(p.userId, b, plan.gameVersion, run, by);
+      id = r.id;
+      return r.statements;
+    });
+    revalidatePath("/me");
+    return {
+      playthrough: id,
+      link: link(p, id),
+      build: buildId,
+      buildLink: `${p.origin}/b/${buildId}`,
+      visibility: "private",
+      act: { act: "1", name: act.name, levels: act.levels, place: act.place, objectives: objectives?.length ?? 0 },
+      next: "Add levels with add_level, then more acts and objectives.",
+    };
+  }
   await writeGuard(p);
   const buildId = input.build ? pickBuild(await myBuilds(p), input.build) : null;
   versionData(input.version ?? DEFAULT_VERSION);
@@ -368,7 +404,8 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
     line: pt.line,
     visibility: pt.visibility,
     link: link(p, pt.id),
-    build: pt.build ? { id: pt.build.id, name: pt.build.name } : null,
+    // The character's build (WO-114): its id, name, cover and levels.
+    build: pt.build ? { id: pt.build.id, name: pt.build.name, cover: pt.build.coverImageUrl, levels: pt.build.levels, link: `${p.origin}/b/${pt.build.id}` } : null,
     draftedByAnAssistant: !!pt.draftedBy,
     done: `${v.done} of ${v.total}`,
     whereYouStand: pt.snapshot

@@ -55,8 +55,12 @@ async function save(p: Player, id: string, plan: BuildPlan, level: number, first
   return { build: id, link: link(p, id), levels: parsed.levels.length, level: stateAt(d, states, level), canTakeNext: canTakeAt(d, states, level) };
 }
 
-/** create_build: a new private build at level 1, from character creation's choices. */
-export async function createBuild(p: Player, input: CreateInput & { version?: string }) {
+/**
+ * A new build's checks for the tools, before anything is written: the write limit, the site's day
+ * limit, the 20 drafts, the details and every rule at level 1. Shared by create_build and, for a
+ * character with a run, create_playthrough (WO-114).
+ */
+export async function prepareBuild(p: Player, input: CreateInput & { version?: string }) {
   await writeGuard(p);
   const d = versionData(input.version ?? DEFAULT_VERSION);
   const stop = await overLimit(p.userId, "build");
@@ -71,7 +75,13 @@ export async function createBuild(p: Player, input: CreateInput & { version?: st
   if (!details.success) throw new FactsError(details.error.issues[0]?.message ?? "Check the build's name and description.");
   const { plan, states, issues } = issuesOf(d, planFromCreate(d, input));
   if (issues.length) throw refusal(issues);
-  const id = await insertBuild(p.userId, details.data, plan, p.clientName.slice(0, 80));
+  return { d, details: details.data, plan, states };
+}
+
+/** create_build: a new private build at level 1, from character creation's choices. */
+export async function createBuild(p: Player, input: CreateInput & { version?: string }) {
+  const { d, details, plan, states } = await prepareBuild(p, input);
+  const id = await insertBuild(p.userId, details, plan, p.clientName.slice(0, 80));
   revalidatePath("/me");
   return { build: id, link: link(p, id), visibility: "private", level: stateAt(d, states, 1), canTakeNext: canTakeAt(d, states, 1) };
 }
@@ -149,15 +159,22 @@ export async function getBuild(p: Player, input: { build: string }) {
   return { build: b.id, name: b.name, description: b.description, visibility: b.visibility, link: link(p, b.id), draftedByAnAssistant: !!b.draftedBy, ...plainOf(d, b.plan) };
 }
 
-/** list_my_builds: the player's builds, newest first. */
+/** list_my_builds: the player's builds, newest first, each with its run when it has one (WO-114). */
 export async function listMyBuilds(p: Player) {
+  const runs = await db()
+    .select({ id: schema.playthroughs.id, buildId: schema.playthroughs.buildId, name: schema.playthroughs.name })
+    .from(schema.playthroughs)
+    .where(and(eq(schema.playthroughs.ownerId, p.userId), isNotNull(schema.playthroughs.buildId)));
   const rows = await db()
     .select({ id: schema.builds.id, name: schema.builds.name, visibility: schema.builds.visibility, plan: schema.builds.plan, updatedAt: schema.builds.updatedAt, draftedBy: schema.builds.draftedBy })
     .from(schema.builds)
     .where(eq(schema.builds.ownerId, p.userId))
     .orderBy(desc(schema.builds.updatedAt))
     .limit(100);
-  return rows.map((r) => ({ build: r.id, name: r.name, visibility: r.visibility, levels: r.plan.levels.length, updated: r.updatedAt.toISOString(), draftedByAnAssistant: !!r.draftedBy }));
+  return rows.map((r) => {
+    const run = runs.find((x) => x.buildId === r.id);
+    return { build: r.id, name: r.name, visibility: r.visibility, levels: r.plan.levels.length, updated: r.updatedAt.toISOString(), draftedByAnAssistant: !!r.draftedBy, run: run ? { playthrough: run.id, name: run.name } : null };
+  });
 }
 
 /** finish_draft: the full check once more. It changes nothing; publishing is the player's, on the site. */
