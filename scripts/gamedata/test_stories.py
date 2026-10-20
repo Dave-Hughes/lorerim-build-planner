@@ -41,6 +41,12 @@ class StoriesTest(unittest.TestCase):
         self.assertEqual(out["alongside"][0]["xp"], 0)
         self.assertEqual(out["opens"][0]["name"], "Wyrmstooth")
 
+    def test_a_hidden_alongside_quest_counts_for_the_check_and_is_left_out(self):
+        s = copy.deepcopy(GOOD)
+        s["alongside"][0]["hidden"] = True
+        out = stories.build_stories([s], LINES)[0]
+        self.assertEqual(out["alongside"], [])
+
     def assertFails(self, story, words):
         with self.assertRaises(stories.StoryError) as e:
             stories.build_stories([story], LINES)

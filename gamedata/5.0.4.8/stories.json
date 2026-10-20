@@ -1,5 +1,5 @@
 {
-  "about": "Hand-kept by Bob. A story is a big quest line written as an adventure: a goal, a pitch, chapters, and for each quest how it starts and its first task. Every fact comes from the start check (gamedata/5.0.4.8/story_checks/<line>.md, checked in <line>-review.md); 'checked' says 'files' when the report backs it and 'not yet' when it doesn't, and the page shows 'not checked yet' for those. Quest ids are EDIDs from the line's quests in quests.json. 'from' is the quest whose script starts this one; 'atEnd' is true only when the report shows that stage completes it. The steps for writing one are in docs/backlog.md, 'Stories, not quest lists'.",
+  "about": "Hand-kept by Bob. A story is a big quest line written as an adventure: a goal, a pitch, chapters, and for each quest how it starts and its first task. Every fact comes from the start check (gamedata/5.0.4.8/story_checks/<line>.md, checked in <line>-review.md); 'checked' says 'files' when the report backs it and 'not yet' when it doesn't, and the page shows 'not checked yet' for those. Quest ids are EDIDs from the line's quests in quests.json. 'from' is the quest whose script starts this one; 'atEnd' is true only when the report shows that stage completes it. The steps for writing one are in docs/backlog.md, 'Stories, not quest lists'. An 'alongside' quest marked 'hidden' is a helper or handler quest the player never sees, or a path the story doesn't tell (Dawnguard's vampire side): it counts for the check and stays off the page.",
   "stories": [
     {
       "id": "become-the-dragonborn",
@@ -264,6 +264,1360 @@
               "kind": "line",
               "line": "rise-in-the-east",
               "text": "Rise in the East",
+              "checked": "files"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "join-the-companions",
+      "line": "companions",
+      "name": "Join the Companions",
+      "category": "guilds",
+      "pitch": "The Companions are a band of warriors who live in Jorrvaskr, the mead hall in Whiterun, and take work from anyone who pays. Kodlak Whitemane, their Harbinger, takes on newcomers who show up and ask.",
+      "check": "story_checks/companions.md",
+      "start": [
+        {
+          "text": "Talk to Kodlak Whitemane in Jorrvaskr, Whiterun. He takes you on when Vilkas is at hand; there is no skill test.",
+          "checked": "files"
+        },
+        {
+          "text": "Or take the Companions start.",
+          "checked": "files"
+        }
+      ],
+      "chapters": [
+        {
+          "name": "Take up arms",
+          "quests": [
+            {
+              "edid": "C00",
+              "task": "Speak to Kodlak Whitemane",
+              "who": "Kodlak Whitemane",
+              "where": "Jorrvaskr, Whiterun",
+              "note": "Kodlak takes you on when Vilkas is at hand. There is no skill test.",
+              "checked": "files"
+            },
+            {
+              "edid": "C01",
+              "from": "C00",
+              "task": "Speak to Skjor",
+              "who": "Skjor",
+              "where": "Jorrvaskr, Whiterun",
+              "note": "Three jobs for the Companions first.",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "The Circle",
+          "quests": [
+            {
+              "edid": "C02",
+              "task": "Follow Skjor",
+              "where": "Jorrvaskr, Whiterun",
+              "note": "The files give the first task as \"Follow the questgiver\" and don't name him.",
+              "checked": "not yet"
+            },
+            {
+              "edid": "C03",
+              "from": "C00",
+              "task": "Talk to Skjor",
+              "who": "Skjor",
+              "where": "Jorrvaskr, Whiterun",
+              "note": "Five more jobs first.",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "Blood's honor",
+          "quests": [
+            {
+              "edid": "C04",
+              "from": "C00",
+              "task": "Speak to Kodlak Whitemane",
+              "who": "Kodlak Whitemane",
+              "where": "Jorrvaskr, Whiterun",
+              "note": "Four more jobs first.",
+              "checked": "files"
+            },
+            {
+              "edid": "C05",
+              "task": "Retrieve the fragments of Wuuthrad",
+              "where": "Driftshade Refuge",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "Glory of the dead",
+          "quests": [
+            {
+              "edid": "C06",
+              "task": "Attend Kodlak's funeral",
+              "where": "Whiterun",
+              "checked": "files"
+            }
+          ]
+        }
+      ],
+      "alongside": [
+        {
+          "edid": "CR01",
+          "task": "Kill a beast that troubles a town",
+          "checked": "files"
+        },
+        {
+          "edid": "CR02",
+          "task": "Clear out an animal den",
+          "checked": "files"
+        },
+        {
+          "edid": "CR03",
+          "task": "Collect pelts",
+          "checked": "files"
+        },
+        {
+          "edid": "CR04",
+          "task": "Intimidate someone in a town",
+          "checked": "files"
+        },
+        {
+          "edid": "CR05",
+          "task": "Kill the leader of a lair",
+          "checked": "files"
+        },
+        {
+          "edid": "CR06",
+          "task": "Retrieve an heirloom",
+          "checked": "files"
+        },
+        {
+          "edid": "CR07",
+          "task": "Kill the escaped criminal",
+          "checked": "files"
+        },
+        {
+          "edid": "CR08",
+          "task": "Rescue a captive from a lair",
+          "checked": "files"
+        },
+        {
+          "edid": "CR09",
+          "task": "Assassinate the Silver Hand leader",
+          "checked": "files"
+        },
+        {
+          "edid": "CR10",
+          "task": "Steal the plans from a Silver Hand camp",
+          "checked": "files"
+        },
+        {
+          "edid": "CR11",
+          "task": "Retrieve the fragment of Wuuthrad",
+          "checked": "files"
+        },
+        {
+          "edid": "CR12",
+          "task": "Retrieve the Totem of Hircine",
+          "note": "After the story.",
+          "checked": "files"
+        },
+        {
+          "edid": "CR13",
+          "task": "Collect a Glenmoril Witch's head",
+          "note": "After the story.",
+          "checked": "files"
+        },
+        {
+          "edid": "CR14",
+          "task": "Kill a dragon at its den",
+          "note": "After the story.",
+          "checked": "files"
+        }
+      ],
+      "reward": {
+        "text": "None: the last quest gives no item.",
+        "checked": "files"
+      },
+      "opens": []
+    },
+    {
+      "id": "join-the-college",
+      "line": "college",
+      "name": "Join the College of Winterhold",
+      "category": "guilds",
+      "pitch": "The College of Winterhold is the one place in Skyrim that teaches magic, on a rock above the ruined town. Faralda keeps the bridge and lets in anyone who can show her a spell.",
+      "check": "story_checks/college.md",
+      "start": [
+        {
+          "text": "Ask Faralda at the College bridge in Winterhold to join. She asks for a spell: a court wizard sells it, not Faralda. After The Way of the Voice, a Shout will do.",
+          "checked": "files"
+        },
+        {
+          "text": "Or take the College of Winterhold start.",
+          "checked": "files"
+        }
+      ],
+      "chapters": [
+        {
+          "name": "First lessons",
+          "quests": [
+            {
+              "edid": "MG01",
+              "task": "Join the College of Winterhold",
+              "who": "Faralda",
+              "where": "The bridge to the College, Winterhold",
+              "note": "Faralda asks for a spell. She doesn't sell it; a court wizard does. After The Way of the Voice a Shout will do.",
+              "checked": "files"
+            },
+            {
+              "edid": "MG02",
+              "task": "Meet Tolfdir outside Saarthal",
+              "who": "Tolfdir",
+              "where": "Saarthal",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "Hitting the books",
+          "quests": [
+            {
+              "edid": "MG03",
+              "from": "MG02",
+              "task": "Speak with Mirabelle Ervine",
+              "who": "Mirabelle Ervine",
+              "where": "The College of Winterhold",
+              "checked": "files"
+            },
+            {
+              "edid": "MG04",
+              "from": "MG03",
+              "task": "Speak with Tolfdir",
+              "who": "Tolfdir",
+              "where": "The College of Winterhold",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "Revealing the unseen",
+          "quests": [
+            {
+              "edid": "mg06",
+              "from": "MG04",
+              "task": "Speak with Mirabelle Ervine",
+              "who": "Mirabelle Ervine",
+              "where": "The College of Winterhold",
+              "checked": "files"
+            },
+            {
+              "edid": "MG05",
+              "task": "Assess the damage to the Great Hall",
+              "where": "The College of Winterhold",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "The Staff of Magnus",
+          "quests": [
+            {
+              "edid": "MG07",
+              "from": "MG05",
+              "task": "Enter Labyrinthian",
+              "where": "Labyrinthian",
+              "checked": "files"
+            },
+            {
+              "edid": "MG08",
+              "from": "MG07",
+              "task": "Use the Staff of Magnus to enter the College of Winterhold",
+              "where": "The College of Winterhold",
+              "checked": "files"
+            }
+          ]
+        }
+      ],
+      "alongside": [
+        {
+          "edid": "MGR21",
+          "task": "Find Shalidor's writings",
+          "checked": "files"
+        },
+        {
+          "edid": "MGR30",
+          "task": "Close the Rupture",
+          "note": "After the story.",
+          "checked": "files"
+        },
+        {
+          "edid": "MGRAppBrelyna01",
+          "task": "Wait for Brelyna's spell to wear off",
+          "checked": "files"
+        },
+        {
+          "edid": "MGRAppJzargo01",
+          "task": "Test J'zargo's Flame Cloak spell on the undead",
+          "checked": "files"
+        },
+        {
+          "edid": "MGRAppOnmund01",
+          "task": "Speak with Enthir",
+          "checked": "files"
+        },
+        {
+          "edid": "MGRArniel01",
+          "task": "Deliver ten cogs to Arniel Gane",
+          "checked": "files"
+        },
+        {
+          "edid": "MGRArniel02",
+          "task": "Speak to Enthir",
+          "checked": "files"
+        },
+        {
+          "edid": "MGRArniel03",
+          "task": "Place the warped soul gem into a Convector",
+          "checked": "files"
+        },
+        {
+          "edid": "MGRArniel04",
+          "task": "Talk to Enthir",
+          "checked": "files"
+        },
+        {
+          "edid": "MGRejoinQuest",
+          "task": "Rejoining the College",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "MGRitual01",
+          "task": "Complete the book Powers of the Elements",
+          "checked": "files"
+        },
+        {
+          "edid": "MGRitual02",
+          "task": "Bring the four Master Illusion texts to Drevis Neloren",
+          "checked": "files"
+        },
+        {
+          "edid": "MGRitual03",
+          "task": "Summon and subdue an Unbound Dremora",
+          "checked": "files"
+        },
+        {
+          "edid": "MGRitual04",
+          "task": "Gain the Augur's approval",
+          "checked": "files"
+        },
+        {
+          "edid": "MGRitual05",
+          "task": "Use Kahvozein's Fang to collect Dragon Heartscales",
+          "checked": "files"
+        },
+        {
+          "edid": "MGRRogue",
+          "task": "Deal with the rogue wizard",
+          "checked": "files"
+        },
+        {
+          "edid": "Cow_Breathing",
+          "task": "Talk to Arniel Gane",
+          "checked": "files"
+        },
+        {
+          "edid": "COW_CentralQuest",
+          "task": "Talk to Tolfdir for more lessons",
+          "checked": "files"
+        },
+        {
+          "edid": "Cow_Conjuration",
+          "task": "Learn Conjure Familiar and talk to Phinis",
+          "checked": "files"
+        },
+        {
+          "edid": "Cow_Destruction",
+          "task": "Learn the spell and talk to Faralda",
+          "checked": "files"
+        },
+        {
+          "edid": "Cow_enchantment",
+          "task": "Find an Arcane Enchanter",
+          "checked": "files"
+        },
+        {
+          "edid": "Cow_illusion",
+          "task": "Learn the spell and talk to Drevis",
+          "checked": "files"
+        },
+        {
+          "edid": "Cow_Reading",
+          "task": "Read Olaf and the Dragon and talk to Urag gro-Shub",
+          "checked": "files"
+        },
+        {
+          "edid": "Cow_restoration",
+          "task": "Learn the spell and talk to Colette",
+          "checked": "files"
+        },
+        {
+          "edid": "MG01Pointer",
+          "task": "College Objective Quest",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "MGR01",
+          "task": "Find Tolfdir's missing Alembic",
+          "checked": "files"
+        },
+        {
+          "edid": "MGR02",
+          "task": "Cleanse the focal points for magical energies around the College",
+          "checked": "files"
+        },
+        {
+          "edid": "MGR10",
+          "task": "Pick up an item for a client",
+          "checked": "files"
+        },
+        {
+          "edid": "MGR11",
+          "task": "Restocking Soul Gems",
+          "checked": "not yet",
+          "hidden": true
+        },
+        {
+          "edid": "MGR12",
+          "task": "Bring a Filled Grand Soul Gem to Sergius Turrianus",
+          "checked": "files"
+        },
+        {
+          "edid": "MGR20",
+          "task": "Find a book for Urag gro-Shub",
+          "checked": "files"
+        },
+        {
+          "edid": "MGR20B",
+          "task": "Fetch me that Book!",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "FreeformWinterholdCollegeA",
+          "task": "Talk to Nirya to see what she's plotting",
+          "checked": "files"
+        }
+      ],
+      "reward": {
+        "text": "None: the last quest gives no item.",
+        "checked": "files"
+      },
+      "opens": []
+    },
+    {
+      "id": "join-the-thieves-guild",
+      "line": "thieves-guild",
+      "name": "Join the Thieves Guild",
+      "category": "guilds",
+      "pitch": "Brynjolf works Riften's market by day and the Ragged Flagon under the city by night, and he is looking for someone with quick hands. His first scheme is a frame-up in the market.",
+      "check": "story_checks/thieves-guild.md",
+      "start": [
+        {
+          "text": "Brynjolf comes up to you in Riften's market, between 8 in the morning and 8 at night.",
+          "checked": "files"
+        },
+        {
+          "text": "Or take the Thieves Guild start.",
+          "checked": "files"
+        }
+      ],
+      "chapters": [
+        {
+          "name": "A chance arrangement",
+          "quests": [
+            {
+              "edid": "TG00",
+              "task": "Meet Brynjolf during daytime",
+              "who": "Brynjolf",
+              "where": "Riften's market",
+              "checked": "files"
+            },
+            {
+              "edid": "TG01",
+              "from": "TG00",
+              "task": "Locate Brynjolf at the Ragged Flagon",
+              "who": "Brynjolf",
+              "where": "The Ragged Flagon, Riften",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "Loud and clear",
+          "quests": [
+            {
+              "edid": "TG02",
+              "from": "TG01",
+              "task": "Follow Brynjolf",
+              "who": "Brynjolf",
+              "where": "The Ragged Flagon, Riften",
+              "checked": "files"
+            },
+            {
+              "edid": "TG03",
+              "from": "TG02",
+              "task": "Speak to Maven Black-Briar",
+              "who": "Maven Black-Briar",
+              "where": "Riften",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "Scoundrel's folly",
+          "quests": [
+            {
+              "edid": "TG04",
+              "from": "TG03",
+              "task": "Speak to Mercer Frey",
+              "who": "Mercer Frey",
+              "where": "The Ragged Flagon Cistern, Riften",
+              "checked": "files"
+            },
+            {
+              "edid": "TG05",
+              "from": "TG04",
+              "task": "Meet Mercer Frey outside Snow Veil Sanctum",
+              "who": "Mercer Frey",
+              "where": "Snow Veil Sanctum",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "Hard answers",
+          "quests": [
+            {
+              "edid": "TG06",
+              "from": "TG05",
+              "task": "Speak with Enthir",
+              "who": "Enthir",
+              "where": "The College of Winterhold",
+              "checked": "files"
+            },
+            {
+              "edid": "TG07",
+              "from": "TG06",
+              "task": "Meet Karliah at the Ragged Flagon",
+              "who": "Karliah",
+              "where": "The Ragged Flagon, Riften",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "Trinity restored",
+          "quests": [
+            {
+              "edid": "TG08A",
+              "from": "TG07",
+              "task": "Listen to Karliah",
+              "who": "Karliah",
+              "checked": "files"
+            },
+            {
+              "edid": "TG08B",
+              "from": "TG08A",
+              "task": "Travel to Irkngthand",
+              "where": "Irkngthand",
+              "checked": "files"
+            },
+            {
+              "edid": "TG09",
+              "from": "TG08B",
+              "task": "Enter the Twilight Sepulcher",
+              "where": "Twilight Sepulcher",
+              "checked": "files"
+            }
+          ]
+        }
+      ],
+      "alongside": [
+        {
+          "edid": "TGBan",
+          "task": "Speak to Vex",
+          "note": "If you cross the Guild.",
+          "checked": "files"
+        },
+        {
+          "edid": "TGCrown",
+          "task": "Become a full member of the Thieves Guild",
+          "checked": "files"
+        },
+        {
+          "edid": "TGLeadership",
+          "task": "Speak to Brynjolf about becoming the Guild Master",
+          "note": "After the story.",
+          "checked": "files"
+        },
+        {
+          "edid": "TGRBE",
+          "task": "Retrieve an item from a wealthy home",
+          "checked": "files"
+        },
+        {
+          "edid": "TGRDU",
+          "task": "Plant evidence in a wealthy home",
+          "checked": "files"
+        },
+        {
+          "edid": "TGRFO",
+          "task": "Make changes in a ledger",
+          "checked": "files"
+        },
+        {
+          "edid": "TGRGF",
+          "task": "Pick an item from a mark",
+          "checked": "files"
+        },
+        {
+          "edid": "TGRHC",
+          "task": "Clear a wealthy home of valuables",
+          "checked": "files"
+        },
+        {
+          "edid": "TGRNT",
+          "task": "Steal gold in goods from a city",
+          "checked": "files"
+        },
+        {
+          "edid": "TGRSL",
+          "task": "Retrieve an item from a business",
+          "checked": "files"
+        },
+        {
+          "edid": "TGTQ01",
+          "task": "Speak to Endon the Silversmith",
+          "checked": "files"
+        },
+        {
+          "edid": "TGTQ02",
+          "task": "Speak to Erikur",
+          "checked": "files"
+        },
+        {
+          "edid": "TGTQ03",
+          "task": "Speak to Olfrid Battle-Born",
+          "checked": "files"
+        },
+        {
+          "edid": "TGTQ04",
+          "task": "Speak to Torsten Cruel-Sea",
+          "checked": "files"
+        },
+        {
+          "edid": "TG00MaulHandler",
+          "task": "TG00 Maul Handler",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "TG00MiscHandler",
+          "task": "TG00 Misc Handler",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "TG02B",
+          "task": "Learn more about the Thieves Guild from Vex",
+          "checked": "files"
+        },
+        {
+          "edid": "TG03SP",
+          "task": "Dampened Spirits Scene Quest",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "TG04EECHandler",
+          "task": "East Empire Warehouse Dialogue and Handler",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "TG04Post",
+          "task": "Scoundrel's Folly Post",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "TGCrownMisc",
+          "task": "No Stone Unturned Misc Handler",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "TGFenceCaravan",
+          "task": "Deliver Moon Sugar to Ri'saad",
+          "checked": "files"
+        },
+        {
+          "edid": "TGLarceny",
+          "task": "Return the Queen Bee Statue to Delvin",
+          "checked": "files"
+        },
+        {
+          "edid": "DLC2TGQuest",
+          "task": "Recover the Bonemold Formula for Glover Mallory",
+          "checked": "files"
+        }
+      ],
+      "reward": {
+        "text": "None: the last quest gives no item.",
+        "checked": "files"
+      },
+      "opens": []
+    },
+    {
+      "id": "join-the-dark-brotherhood",
+      "line": "dark-brotherhood",
+      "name": "Join the Dark Brotherhood",
+      "category": "guilds",
+      "pitch": "A boy in Windhelm, Aventus Aretino, has been performing the Black Sacrament to call the Dark Brotherhood to him. Whoever answers gets his contract: Grelod the Kind, who runs the orphanage in Riften.",
+      "check": "story_checks/dark-brotherhood.md",
+      "start": [
+        {
+          "text": "Talk to Aventus Aretino in the Aretino Residence, Windhelm. The door is unlocked.",
+          "checked": "files"
+        },
+        {
+          "text": "Kill Grelod the Kind in Honorhall Orphanage, Riften, then sleep: Astrid comes for you.",
+          "checked": "not yet"
+        },
+        {
+          "text": "Or take the Dark Brotherhood start.",
+          "checked": "files"
+        }
+      ],
+      "chapters": [
+        {
+          "name": "Innocence lost",
+          "quests": [
+            {
+              "edid": "DB01",
+              "task": "Talk to Aventus Aretino",
+              "who": "Aventus Aretino",
+              "where": "Aretino Residence, Windhelm",
+              "note": "The door is unlocked.",
+              "checked": "files"
+            },
+            {
+              "edid": "DB02",
+              "task": "Kill one of the captives",
+              "who": "Astrid",
+              "where": "Abandoned Shack",
+              "note": "What moves you to the shack after Grelod isn't traced in the files. Kill Astrid instead and the story ends with Destroy the Dark Brotherhood!",
+              "checked": "not yet"
+            }
+          ]
+        },
+        {
+          "name": "Sanctuary",
+          "quests": [
+            {
+              "edid": "DB02a",
+              "task": "Speak with Nazir",
+              "who": "Nazir",
+              "where": "Dark Brotherhood Sanctuary",
+              "checked": "files"
+            },
+            {
+              "edid": "DB03",
+              "task": "Speak with Astrid",
+              "who": "Astrid",
+              "where": "Dark Brotherhood Sanctuary",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "Whispers in the dark",
+          "quests": [
+            {
+              "edid": "DB04",
+              "from": "DB03",
+              "task": "Hide in the Night Mother's coffin",
+              "where": "Dark Brotherhood Sanctuary",
+              "checked": "files"
+            },
+            {
+              "edid": "DB04a",
+              "from": "DB04",
+              "task": "Speak with Astrid",
+              "who": "Astrid",
+              "where": "Dark Brotherhood Sanctuary",
+              "checked": "files"
+            },
+            {
+              "edid": "DB05",
+              "task": "Kill Vittoria Vici",
+              "who": "Vittoria Vici",
+              "where": "Solitude",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "Breaching security",
+          "quests": [
+            {
+              "edid": "DB06",
+              "task": "Speak with Gabriella",
+              "who": "Gabriella",
+              "where": "Dark Brotherhood Sanctuary",
+              "checked": "files"
+            },
+            {
+              "edid": "DB07",
+              "task": "Talk to Astrid",
+              "who": "Astrid",
+              "where": "Dark Brotherhood Sanctuary",
+              "checked": "files"
+            },
+            {
+              "edid": "DB08",
+              "task": "Report to Festus Krex",
+              "who": "Festus Krex",
+              "where": "Dark Brotherhood Sanctuary",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "To kill an Emperor",
+          "quests": [
+            {
+              "edid": "DB09",
+              "task": "Report to Astrid",
+              "who": "Astrid",
+              "where": "Dark Brotherhood Sanctuary",
+              "checked": "files"
+            },
+            {
+              "edid": "DB10",
+              "from": "DB09",
+              "task": "Enter the Sanctuary",
+              "where": "Dark Brotherhood Sanctuary",
+              "checked": "files"
+            },
+            {
+              "edid": "DB11",
+              "task": "Talk to Nazir",
+              "who": "Nazir",
+              "where": "Dark Brotherhood Sanctuary",
+              "checked": "files"
+            }
+          ]
+        }
+      ],
+      "alongside": [
+        {
+          "edid": "DarkBrotherhoodSanctuaryRepair",
+          "task": "Employ Delvin Mallory's services",
+          "note": "After the story.",
+          "checked": "files"
+        },
+        {
+          "edid": "DB01Misc",
+          "task": "Talk to the strange jester",
+          "checked": "files"
+        },
+        {
+          "edid": "DBDestroy",
+          "task": "Report Astrid's death to a guard",
+          "note": "The other ending, if you kill Astrid in the shack.",
+          "checked": "files"
+        },
+        {
+          "edid": "DBEviction",
+          "task": "Pay Nazir the fine",
+          "note": "If you cross the Brotherhood.",
+          "checked": "files"
+        },
+        {
+          "edid": "DBSideContract01",
+          "task": "Kill Narfi",
+          "checked": "files"
+        },
+        {
+          "edid": "DBSideContract02",
+          "task": "Kill Ennodius Papius",
+          "checked": "files"
+        },
+        {
+          "edid": "DBSideContract03",
+          "task": "Kill Beitild",
+          "checked": "files"
+        },
+        {
+          "edid": "DBSideContract04",
+          "task": "Kill Hern",
+          "checked": "files"
+        },
+        {
+          "edid": "DBSideContract05",
+          "task": "Kill Lurbuk",
+          "checked": "files"
+        },
+        {
+          "edid": "DBSideContract06",
+          "task": "Kill Deekus",
+          "checked": "files"
+        },
+        {
+          "edid": "DBSideContract07",
+          "task": "Kill Ma'randru-jo",
+          "checked": "files"
+        },
+        {
+          "edid": "DBSideContract08",
+          "task": "Kill Anoriath",
+          "checked": "files"
+        },
+        {
+          "edid": "DBSideContract09",
+          "task": "Kill Agnis",
+          "checked": "files"
+        },
+        {
+          "edid": "DBSideContract10",
+          "task": "Kill Maluril",
+          "checked": "files"
+        },
+        {
+          "edid": "DBSideContract11",
+          "task": "Kill Helvard",
+          "checked": "files"
+        },
+        {
+          "edid": "DBSideContract12",
+          "task": "Kill Safia",
+          "checked": "files"
+        },
+        {
+          "edid": "DB01_OptionalObjectives",
+          "task": "DB01_Opt",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "ExtraContracts_KillBraith_Quest",
+          "task": "Kill Braith",
+          "checked": "files"
+        },
+        {
+          "edid": "ExtraContracts_KillElenwen_Quest",
+          "task": "Kill Elenwen",
+          "checked": "files"
+        },
+        {
+          "edid": "ExtraContracts_KillErikur_Quest",
+          "task": "Kill Erikur",
+          "checked": "files"
+        },
+        {
+          "edid": "ExtraContracts_KillLemkil_Quest",
+          "task": "Kill Lemkil",
+          "checked": "files"
+        },
+        {
+          "edid": "ExtraContracts_KillNazeem_Quest",
+          "task": "Kill Nazeem",
+          "checked": "files"
+        },
+        {
+          "edid": "ExtraContracts_KillRolff_Quest",
+          "task": "Kill Rolff Stone-Fist",
+          "checked": "files"
+        },
+        {
+          "edid": "ExtraContracts_KillSerana_Quest",
+          "task": "Kill Serana",
+          "checked": "files"
+        },
+        {
+          "edid": "ExtraContracts_KillTaarieEndarie_Quest",
+          "task": "Kill Taarie and Endarie",
+          "checked": "files"
+        },
+        {
+          "edid": "ExtraContracts_KillThonarSilverblood_Quest",
+          "task": "Kill Thonar Silver-Blood",
+          "checked": "files"
+        },
+        {
+          "edid": "LTNQuestHandler",
+          "task": "LTN Quest Handler",
+          "checked": "not yet",
+          "hidden": true
+        },
+        {
+          "edid": "LTNQuestMarkarth",
+          "task": "A contract in Markarth",
+          "checked": "files"
+        },
+        {
+          "edid": "LTNQuestRiften",
+          "task": "A contract in Riften",
+          "checked": "files"
+        },
+        {
+          "edid": "LTNQuestSolitude",
+          "task": "A contract in Solitude",
+          "checked": "files"
+        },
+        {
+          "edid": "LTNQuestWhiterun",
+          "task": "A contract in Whiterun",
+          "checked": "files"
+        },
+        {
+          "edid": "LTNQuestWindhelm",
+          "task": "A contract in Windhelm",
+          "checked": "files"
+        },
+        {
+          "edid": "DBrecurring",
+          "task": "Approach the Night Mother",
+          "note": "After the story.",
+          "checked": "files"
+        }
+      ],
+      "reward": {
+        "text": "Not listed yet.",
+        "checked": "not yet"
+      },
+      "opens": []
+    },
+    {
+      "id": "join-the-dawnguard",
+      "line": "dawnguard",
+      "name": "Join the Dawnguard",
+      "category": "main",
+      "pitch": "Vampires are stirring in Skyrim, and an old order of hunters, the Dawnguard, is forming again in a fort south-east of Riften. Isran takes anyone willing, and the first job is to find out what the vampires want in a cave called Dimhollow.",
+      "check": "story_checks/dawnguard.md",
+      "start": [
+        {
+          "text": "Walk into Dayspring Canyon, south-east of Riften, and speak with Isran in Fort Dawnguard.",
+          "checked": "files"
+        },
+        {
+          "text": "From level 30, Durak comes to recruit you, and guards talk about the Dawnguard.",
+          "checked": "not yet"
+        }
+      ],
+      "chapters": [
+        {
+          "name": "A new order",
+          "quests": [
+            {
+              "edid": "DLC1VQ01MiscObjective",
+              "task": "Speak with the leader of the Dawnguard",
+              "who": "Isran",
+              "where": "Fort Dawnguard, in Dayspring Canyon south-east of Riften",
+              "checked": "files"
+            },
+            {
+              "edid": "DLC1HunterBaseIntro",
+              "task": "Meet Tolan at Stendarr's Beacon",
+              "who": "Isran",
+              "where": "Fort Dawnguard",
+              "checked": "files"
+            },
+            {
+              "edid": "DLC1VQ01",
+              "from": "DLC1VQ01MiscObjective",
+              "task": "Find out what the vampires are seeking",
+              "where": "Dimhollow Cavern",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "Bloodline",
+          "quests": [
+            {
+              "edid": "DLC1VQ02",
+              "from": "DLC1VQ01",
+              "task": "Lead Serana to her home",
+              "where": "Volkihar Keep",
+              "checked": "files"
+            },
+            {
+              "edid": "DLC1VQ03Hunter",
+              "from": "DLC1HunterBaseIntro",
+              "task": "Follow Isran",
+              "who": "Isran",
+              "where": "Fort Dawnguard",
+              "note": "The Dawnguard's side. Side with the vampires at the castle and the story goes on without the fort.",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "Chasing echoes",
+          "quests": [
+            {
+              "edid": "DLC1VQ04",
+              "from": "DLC1VQ03Hunter",
+              "task": "Speak to Serana",
+              "checked": "files"
+            },
+            {
+              "edid": "DLC1VQ05",
+              "from": "DLC1VQ04",
+              "task": "Locate Valerica",
+              "who": "Valerica",
+              "where": "The Soul Cairn",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "Unseen visions",
+          "quests": [
+            {
+              "edid": "DLC1VQ06",
+              "task": "Find a Moth Priest's knife",
+              "where": "Ancestor Glade",
+              "checked": "files"
+            },
+            {
+              "edid": "DLC1VQ07",
+              "from": "DLC1VQ06",
+              "task": "Locate Auriel's Bow",
+              "who": "Knight-Paladin Gelebor",
+              "where": "Darkfall Cave",
+              "checked": "files"
+            }
+          ]
+        },
+        {
+          "name": "Kindred judgment",
+          "quests": [
+            {
+              "edid": "DLC1VQ08",
+              "from": "DLC1VQ07",
+              "task": "Speak to Serana",
+              "checked": "files"
+            }
+          ]
+        }
+      ],
+      "alongside": [
+        {
+          "edid": "DLC1HunterBaseStage2",
+          "task": "Speak with Isran",
+          "checked": "files"
+        },
+        {
+          "edid": "DLC1RH01",
+          "task": "Discreetly kill a vampire in a town",
+          "checked": "files"
+        },
+        {
+          "edid": "DLC1RH02",
+          "task": "Kill the vampire leader at a lair",
+          "checked": "files"
+        },
+        {
+          "edid": "DLC1RH03",
+          "task": "Kill a vampire at a lair",
+          "checked": "files"
+        },
+        {
+          "edid": "DLC1RH04",
+          "task": "Find evidence of the vampire's whereabouts",
+          "checked": "files"
+        },
+        {
+          "edid": "DLC1RH05",
+          "task": "Retrieve a Dwemer part from a ruin",
+          "checked": "files"
+        },
+        {
+          "edid": "DLC1RH06",
+          "task": "Rescue a prisoner from a lair",
+          "checked": "files"
+        },
+        {
+          "edid": "DLC1RH07",
+          "task": "Warn a Jarl about the vampire threat",
+          "checked": "files"
+        },
+        {
+          "edid": "DLC1RH08",
+          "task": "Retrieve a relic from a ruin",
+          "checked": "files"
+        },
+        {
+          "edid": "DLC1RV01",
+          "task": "The Hunt",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1RV02",
+          "task": "Culling the Beast",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1RV03",
+          "task": "Deceiving the Herd",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1RV04",
+          "task": "Protecting the Bloodline",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1RV05",
+          "task": "Ancient Power",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1RV06",
+          "task": "The Gift",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1RV07",
+          "task": "New Allegiances",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1RV08",
+          "task": "Rings of Blood Magic",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1RV09",
+          "task": "Amulets of Night Power",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1RV10",
+          "task": "Destroying the Dawnguard",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1VampireBaseIntro",
+          "task": "The Bloodstone Chalice",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1VQ03Vampire",
+          "task": "Prophet",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1VQElder",
+          "task": "Find The Elder Scroll (Dragon)",
+          "checked": "files"
+        },
+        {
+          "edid": "DLC1VQElderHandler",
+          "task": "Scroll Scouting",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1VQSaint",
+          "task": "Find pages from Saint Jiub's Opus",
+          "checked": "files"
+        },
+        {
+          "edid": "DLC01SoulCairnHorseQuest2",
+          "task": "Find Arvak's skull in the Soul Cairn",
+          "checked": "files"
+        },
+        {
+          "edid": "DLC1Radiant",
+          "task": "\"Parent\" quest for Radiant Content",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1VQ05SoulGemHandler",
+          "task": "Beyond Death Soul Gem Handler",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1VQDragon",
+          "task": "Summon Durnehviir in Tamriel",
+          "checked": "files"
+        },
+        {
+          "edid": "DLC1VQDragonMisc",
+          "task": "Durnehviir Misc Objective Handler",
+          "checked": "files",
+          "hidden": true
+        },
+        {
+          "edid": "DLC1VQFVBooks",
+          "task": "Bring Ancient Falmer Tome to Urag gro-Shub",
+          "checked": "files"
+        },
+        {
+          "edid": "DLC1VampireTutorial",
+          "task": "Power of the Blood",
+          "checked": "files",
+          "hidden": true
+        }
+      ],
+      "reward": {
+        "text": "Not listed yet.",
+        "checked": "not yet"
+      },
+      "opens": [
+        {
+          "line": "vigilants",
+          "needs": [
+            {
+              "kind": "level",
+              "level": 25,
+              "text": "Level 25",
+              "checked": "files"
+            },
+            {
+              "kind": "line",
+              "line": "the-house-of-horrors",
+              "text": "The House of Horrors",
+              "checked": "files"
+            },
+            {
+              "kind": "line",
+              "line": "dawnguard",
+              "text": "Kindred Judgment, the end of this story",
               "checked": "files"
             }
           ]

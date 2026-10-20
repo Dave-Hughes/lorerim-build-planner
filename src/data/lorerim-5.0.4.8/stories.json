@@ -323,6 +323,1548 @@
      "base": true
     }
    ]
+  },
+  {
+   "id": "join-the-companions",
+   "line": "companions",
+   "name": "Join the Companions",
+   "category": "guilds",
+   "pitch": "The Companions are a band of warriors who live in Jorrvaskr, the mead hall in Whiterun, and take work from anyone who pays. Kodlak Whitemane, their Harbinger, takes on newcomers who show up and ask.",
+   "check": "story_checks/companions.md",
+   "start": [
+    {
+     "text": "Talk to Kodlak Whitemane in Jorrvaskr, Whiterun. He takes you on when Vilkas is at hand; there is no skill test.",
+     "checked": "files"
+    },
+    {
+     "text": "Or take the Companions start.",
+     "checked": "files"
+    }
+   ],
+   "chapters": [
+    {
+     "name": "Take up arms",
+     "quests": [
+      {
+       "edid": "C00",
+       "task": "Speak to Kodlak Whitemane",
+       "who": "Kodlak Whitemane",
+       "where": "Jorrvaskr, Whiterun",
+       "note": "Kodlak takes you on when Vilkas is at hand. There is no skill test.",
+       "checked": "files",
+       "name": "Take Up Arms",
+       "xp": 100
+      },
+      {
+       "edid": "C01",
+       "from": "C00",
+       "task": "Speak to Skjor",
+       "who": "Skjor",
+       "where": "Jorrvaskr, Whiterun",
+       "note": "Three jobs for the Companions first.",
+       "checked": "files",
+       "name": "Proving Honor",
+       "xp": 100
+      }
+     ]
+    },
+    {
+     "name": "The Circle",
+     "quests": [
+      {
+       "edid": "C02",
+       "task": "Follow Skjor",
+       "where": "Jorrvaskr, Whiterun",
+       "note": "The files give the first task as \"Follow the questgiver\" and don't name him.",
+       "checked": "not yet",
+       "name": "Brotherhood",
+       "xp": 100
+      },
+      {
+       "edid": "C03",
+       "from": "C00",
+       "task": "Talk to Skjor",
+       "who": "Skjor",
+       "where": "Jorrvaskr, Whiterun",
+       "note": "Five more jobs first.",
+       "checked": "files",
+       "name": "The Silver Hand",
+       "xp": 100
+      }
+     ]
+    },
+    {
+     "name": "Blood's honor",
+     "quests": [
+      {
+       "edid": "C04",
+       "from": "C00",
+       "task": "Speak to Kodlak Whitemane",
+       "who": "Kodlak Whitemane",
+       "where": "Jorrvaskr, Whiterun",
+       "note": "Four more jobs first.",
+       "checked": "files",
+       "name": "Blood's Honor",
+       "xp": 100
+      },
+      {
+       "edid": "C05",
+       "task": "Retrieve the fragments of Wuuthrad",
+       "where": "Driftshade Refuge",
+       "checked": "files",
+       "name": "Purity of Revenge",
+       "xp": 100
+      }
+     ]
+    },
+    {
+     "name": "Glory of the dead",
+     "quests": [
+      {
+       "edid": "C06",
+       "task": "Attend Kodlak's funeral",
+       "where": "Whiterun",
+       "checked": "files",
+       "name": "Glory of the Dead",
+       "xp": 100
+      }
+     ]
+    }
+   ],
+   "alongside": [
+    {
+     "edid": "CR01",
+     "task": "Kill a beast that troubles a town",
+     "checked": "files",
+     "name": "Animal Extermination",
+     "xp": 100
+    },
+    {
+     "edid": "CR02",
+     "task": "Clear out an animal den",
+     "checked": "files",
+     "name": "Animal Extermination",
+     "xp": 100
+    },
+    {
+     "edid": "CR03",
+     "task": "Collect pelts",
+     "checked": "files",
+     "name": "Animal Pelt Collection",
+     "xp": 100
+    },
+    {
+     "edid": "CR04",
+     "task": "Intimidate someone in a town",
+     "checked": "files",
+     "name": "Hired Muscle",
+     "xp": 100
+    },
+    {
+     "edid": "CR05",
+     "task": "Kill the leader of a lair",
+     "checked": "files",
+     "name": "Trouble in Skyrim",
+     "xp": 100
+    },
+    {
+     "edid": "CR06",
+     "task": "Retrieve an heirloom",
+     "checked": "files",
+     "name": "Family Heirloom",
+     "xp": 100
+    },
+    {
+     "edid": "CR07",
+     "task": "Kill the escaped criminal",
+     "checked": "files",
+     "name": "Escaped Criminal",
+     "xp": 100
+    },
+    {
+     "edid": "CR08",
+     "task": "Rescue a captive from a lair",
+     "checked": "files",
+     "name": "Rescue Mission",
+     "xp": 100
+    },
+    {
+     "edid": "CR09",
+     "task": "Assassinate the Silver Hand leader",
+     "checked": "files",
+     "name": "Striking the Heart",
+     "xp": 100
+    },
+    {
+     "edid": "CR10",
+     "task": "Steal the plans from a Silver Hand camp",
+     "checked": "files",
+     "name": "Stealing Plans",
+     "xp": 100
+    },
+    {
+     "edid": "CR11",
+     "task": "Retrieve the fragment of Wuuthrad",
+     "checked": "files",
+     "name": "Retrieval",
+     "xp": 100
+    },
+    {
+     "edid": "CR12",
+     "task": "Retrieve the Totem of Hircine",
+     "note": "After the story.",
+     "checked": "files",
+     "name": "Totems of Hircine",
+     "xp": 100
+    },
+    {
+     "edid": "CR13",
+     "task": "Collect a Glenmoril Witch's head",
+     "note": "After the story.",
+     "checked": "files",
+     "name": "Purity",
+     "xp": 100
+    },
+    {
+     "edid": "CR14",
+     "task": "Kill a dragon at its den",
+     "note": "After the story.",
+     "checked": "files",
+     "name": "Dragon Seekers",
+     "xp": 100
+    }
+   ],
+   "reward": {
+    "text": "None: the last quest gives no item.",
+    "checked": "files"
+   },
+   "opens": [],
+   "lineName": "The Companions",
+   "sources": [
+    {
+     "name": "Base game",
+     "base": true
+    }
+   ]
+  },
+  {
+   "id": "join-the-college",
+   "line": "college",
+   "name": "Join the College of Winterhold",
+   "category": "guilds",
+   "pitch": "The College of Winterhold is the one place in Skyrim that teaches magic, on a rock above the ruined town. Faralda keeps the bridge and lets in anyone who can show her a spell.",
+   "check": "story_checks/college.md",
+   "start": [
+    {
+     "text": "Ask Faralda at the College bridge in Winterhold to join. She asks for a spell: a court wizard sells it, not Faralda. After The Way of the Voice, a Shout will do.",
+     "checked": "files"
+    },
+    {
+     "text": "Or take the College of Winterhold start.",
+     "checked": "files"
+    }
+   ],
+   "chapters": [
+    {
+     "name": "First lessons",
+     "quests": [
+      {
+       "edid": "MG01",
+       "task": "Join the College of Winterhold",
+       "who": "Faralda",
+       "where": "The bridge to the College, Winterhold",
+       "note": "Faralda asks for a spell. She doesn't sell it; a court wizard does. After The Way of the Voice a Shout will do.",
+       "checked": "files",
+       "name": "First Lessons",
+       "xp": 100
+      },
+      {
+       "edid": "MG02",
+       "task": "Meet Tolfdir outside Saarthal",
+       "who": "Tolfdir",
+       "where": "Saarthal",
+       "checked": "files",
+       "name": "Under Saarthal",
+       "xp": 100
+      }
+     ]
+    },
+    {
+     "name": "Hitting the books",
+     "quests": [
+      {
+       "edid": "MG03",
+       "from": "MG02",
+       "task": "Speak with Mirabelle Ervine",
+       "who": "Mirabelle Ervine",
+       "where": "The College of Winterhold",
+       "checked": "files",
+       "name": "Hitting the Books",
+       "xp": 100
+      },
+      {
+       "edid": "MG04",
+       "from": "MG03",
+       "task": "Speak with Tolfdir",
+       "who": "Tolfdir",
+       "where": "The College of Winterhold",
+       "checked": "files",
+       "name": "Good Intentions",
+       "xp": 100
+      }
+     ]
+    },
+    {
+     "name": "Revealing the unseen",
+     "quests": [
+      {
+       "edid": "mg06",
+       "from": "MG04",
+       "task": "Speak with Mirabelle Ervine",
+       "who": "Mirabelle Ervine",
+       "where": "The College of Winterhold",
+       "checked": "files",
+       "name": "Revealing the Unseen",
+       "xp": 100
+      },
+      {
+       "edid": "MG05",
+       "task": "Assess the damage to the Great Hall",
+       "where": "The College of Winterhold",
+       "checked": "files",
+       "name": "Containment",
+       "xp": 100
+      }
+     ]
+    },
+    {
+     "name": "The Staff of Magnus",
+     "quests": [
+      {
+       "edid": "MG07",
+       "from": "MG05",
+       "task": "Enter Labyrinthian",
+       "where": "Labyrinthian",
+       "checked": "files",
+       "name": "The Staff of Magnus",
+       "xp": 100
+      },
+      {
+       "edid": "MG08",
+       "from": "MG07",
+       "task": "Use the Staff of Magnus to enter the College of Winterhold",
+       "where": "The College of Winterhold",
+       "checked": "files",
+       "name": "The Eye of Magnus",
+       "xp": 100
+      }
+     ]
+    }
+   ],
+   "alongside": [
+    {
+     "edid": "MGR21",
+     "task": "Find Shalidor's writings",
+     "checked": "files",
+     "name": "Shalidor's Insights",
+     "xp": 100
+    },
+    {
+     "edid": "MGR30",
+     "task": "Close the Rupture",
+     "note": "After the story.",
+     "checked": "files",
+     "name": "Aftershock",
+     "xp": 100
+    },
+    {
+     "edid": "MGRAppBrelyna01",
+     "task": "Wait for Brelyna's spell to wear off",
+     "checked": "files",
+     "name": "Brelyna's Practice",
+     "xp": 100
+    },
+    {
+     "edid": "MGRAppJzargo01",
+     "task": "Test J'zargo's Flame Cloak spell on the undead",
+     "checked": "files",
+     "name": "J'zargo's Experiment",
+     "xp": 100
+    },
+    {
+     "edid": "MGRAppOnmund01",
+     "task": "Speak with Enthir",
+     "checked": "files",
+     "name": "Onmund's Request",
+     "xp": 100
+    },
+    {
+     "edid": "MGRArniel01",
+     "task": "Deliver ten cogs to Arniel Gane",
+     "checked": "files",
+     "name": "Arniel's Endeavor",
+     "xp": 100
+    },
+    {
+     "edid": "MGRArniel02",
+     "task": "Speak to Enthir",
+     "checked": "files",
+     "name": "Arniel's Endeavor",
+     "xp": 100
+    },
+    {
+     "edid": "MGRArniel03",
+     "task": "Place the warped soul gem into a Convector",
+     "checked": "files",
+     "name": "Arniel's Endeavor",
+     "xp": 100
+    },
+    {
+     "edid": "MGRArniel04",
+     "task": "Talk to Enthir",
+     "checked": "files",
+     "name": "Arniel's Endeavor",
+     "xp": 100
+    },
+    {
+     "edid": "MGRitual01",
+     "task": "Complete the book Powers of the Elements",
+     "checked": "files",
+     "name": "Destruction Ritual Spell",
+     "xp": 100
+    },
+    {
+     "edid": "MGRitual02",
+     "task": "Bring the four Master Illusion texts to Drevis Neloren",
+     "checked": "files",
+     "name": "Illusion Ritual Spell",
+     "xp": 100
+    },
+    {
+     "edid": "MGRitual03",
+     "task": "Summon and subdue an Unbound Dremora",
+     "checked": "files",
+     "name": "Conjuration Ritual Spell",
+     "xp": 100
+    },
+    {
+     "edid": "MGRitual04",
+     "task": "Gain the Augur's approval",
+     "checked": "files",
+     "name": "Restoration Ritual Spell",
+     "xp": 100
+    },
+    {
+     "edid": "MGRitual05",
+     "task": "Use Kahvozein's Fang to collect Dragon Heartscales",
+     "checked": "files",
+     "name": "Alteration Ritual Spell",
+     "xp": 100
+    },
+    {
+     "edid": "MGRRogue",
+     "task": "Deal with the rogue wizard",
+     "checked": "files",
+     "name": "Rogue Wizard",
+     "xp": 100
+    },
+    {
+     "edid": "Cow_Breathing",
+     "task": "Talk to Arniel Gane",
+     "checked": "files",
+     "name": "Rapture of the Deep",
+     "xp": 100
+    },
+    {
+     "edid": "COW_CentralQuest",
+     "task": "Talk to Tolfdir for more lessons",
+     "checked": "files",
+     "name": "College Curriculum",
+     "xp": 100
+    },
+    {
+     "edid": "Cow_Conjuration",
+     "task": "Learn Conjure Familiar and talk to Phinis",
+     "checked": "files",
+     "name": "I Choose You, Familiar",
+     "xp": 100
+    },
+    {
+     "edid": "Cow_Destruction",
+     "task": "Learn the spell and talk to Faralda",
+     "checked": "files",
+     "name": "A Test of Ice and Fire",
+     "xp": 100
+    },
+    {
+     "edid": "Cow_enchantment",
+     "task": "Find an Arcane Enchanter",
+     "checked": "files",
+     "name": "Enchanted To Meet You",
+     "xp": 100
+    },
+    {
+     "edid": "Cow_illusion",
+     "task": "Learn the spell and talk to Drevis",
+     "checked": "files",
+     "name": "Back-Stabbing Rodents",
+     "xp": 100
+    },
+    {
+     "edid": "Cow_Reading",
+     "task": "Read Olaf and the Dragon and talk to Urag gro-Shub",
+     "checked": "files",
+     "name": "Reading Comprehension 101",
+     "xp": 100
+    },
+    {
+     "edid": "Cow_restoration",
+     "task": "Learn the spell and talk to Colette",
+     "checked": "files",
+     "name": "None Escape The Light",
+     "xp": 100
+    },
+    {
+     "edid": "MGR01",
+     "task": "Find Tolfdir's missing Alembic",
+     "checked": "files",
+     "name": "Tolfdir the Absent-Minded",
+     "xp": 0
+    },
+    {
+     "edid": "MGR02",
+     "task": "Cleanse the focal points for magical energies around the College",
+     "checked": "files",
+     "name": "Out of Balance",
+     "xp": 0
+    },
+    {
+     "edid": "MGR10",
+     "task": "Pick up an item for a client",
+     "checked": "files",
+     "name": "Enchanting Pick-Up",
+     "xp": 0
+    },
+    {
+     "edid": "MGR12",
+     "task": "Bring a Filled Grand Soul Gem to Sergius Turrianus",
+     "checked": "files",
+     "name": "Filling Soul Gems",
+     "xp": 0
+    },
+    {
+     "edid": "MGR20",
+     "task": "Find a book for Urag gro-Shub",
+     "checked": "files",
+     "name": "Fetch me that Book!",
+     "xp": 0
+    },
+    {
+     "edid": "FreeformWinterholdCollegeA",
+     "task": "Talk to Nirya to see what she's plotting",
+     "checked": "files",
+     "name": "Research Thief",
+     "xp": 0
+    }
+   ],
+   "reward": {
+    "text": "None: the last quest gives no item.",
+    "checked": "files"
+   },
+   "opens": [],
+   "lineName": "The College of Winterhold",
+   "sources": [
+    {
+     "name": "Base game",
+     "base": true
+    },
+    {
+     "name": "College of Winterhold - Quest Expansion",
+     "modid": "66666"
+    }
+   ]
+  },
+  {
+   "id": "join-the-thieves-guild",
+   "line": "thieves-guild",
+   "name": "Join the Thieves Guild",
+   "category": "guilds",
+   "pitch": "Brynjolf works Riften's market by day and the Ragged Flagon under the city by night, and he is looking for someone with quick hands. His first scheme is a frame-up in the market.",
+   "check": "story_checks/thieves-guild.md",
+   "start": [
+    {
+     "text": "Brynjolf comes up to you in Riften's market, between 8 in the morning and 8 at night.",
+     "checked": "files"
+    },
+    {
+     "text": "Or take the Thieves Guild start.",
+     "checked": "files"
+    }
+   ],
+   "chapters": [
+    {
+     "name": "A chance arrangement",
+     "quests": [
+      {
+       "edid": "TG00",
+       "task": "Meet Brynjolf during daytime",
+       "who": "Brynjolf",
+       "where": "Riften's market",
+       "checked": "files",
+       "name": "A Chance Arrangement",
+       "xp": 100
+      },
+      {
+       "edid": "TG01",
+       "from": "TG00",
+       "task": "Locate Brynjolf at the Ragged Flagon",
+       "who": "Brynjolf",
+       "where": "The Ragged Flagon, Riften",
+       "checked": "files",
+       "name": "Taking Care of Business",
+       "xp": 100
+      }
+     ]
+    },
+    {
+     "name": "Loud and clear",
+     "quests": [
+      {
+       "edid": "TG02",
+       "from": "TG01",
+       "task": "Follow Brynjolf",
+       "who": "Brynjolf",
+       "where": "The Ragged Flagon, Riften",
+       "checked": "files",
+       "name": "Loud and Clear",
+       "xp": 100
+      },
+      {
+       "edid": "TG03",
+       "from": "TG02",
+       "task": "Speak to Maven Black-Briar",
+       "who": "Maven Black-Briar",
+       "where": "Riften",
+       "checked": "files",
+       "name": "Dampened Spirits",
+       "xp": 100
+      }
+     ]
+    },
+    {
+     "name": "Scoundrel's folly",
+     "quests": [
+      {
+       "edid": "TG04",
+       "from": "TG03",
+       "task": "Speak to Mercer Frey",
+       "who": "Mercer Frey",
+       "where": "The Ragged Flagon Cistern, Riften",
+       "checked": "files",
+       "name": "Scoundrel's Folly",
+       "xp": 100
+      },
+      {
+       "edid": "TG05",
+       "from": "TG04",
+       "task": "Meet Mercer Frey outside Snow Veil Sanctum",
+       "who": "Mercer Frey",
+       "where": "Snow Veil Sanctum",
+       "checked": "files",
+       "name": "Speaking With Silence",
+       "xp": 100
+      }
+     ]
+    },
+    {
+     "name": "Hard answers",
+     "quests": [
+      {
+       "edid": "TG06",
+       "from": "TG05",
+       "task": "Speak with Enthir",
+       "who": "Enthir",
+       "where": "The College of Winterhold",
+       "checked": "files",
+       "name": "Hard Answers",
+       "xp": 100
+      },
+      {
+       "edid": "TG07",
+       "from": "TG06",
+       "task": "Meet Karliah at the Ragged Flagon",
+       "who": "Karliah",
+       "where": "The Ragged Flagon, Riften",
+       "checked": "files",
+       "name": "The Pursuit",
+       "xp": 100
+      }
+     ]
+    },
+    {
+     "name": "Trinity restored",
+     "quests": [
+      {
+       "edid": "TG08A",
+       "from": "TG07",
+       "task": "Listen to Karliah",
+       "who": "Karliah",
+       "checked": "files",
+       "name": "Trinity Restored",
+       "xp": 100
+      },
+      {
+       "edid": "TG08B",
+       "from": "TG08A",
+       "task": "Travel to Irkngthand",
+       "where": "Irkngthand",
+       "checked": "files",
+       "name": "Blindsighted",
+       "xp": 100
+      },
+      {
+       "edid": "TG09",
+       "from": "TG08B",
+       "task": "Enter the Twilight Sepulcher",
+       "where": "Twilight Sepulcher",
+       "checked": "files",
+       "name": "Darkness Returns",
+       "xp": 100
+      }
+     ]
+    }
+   ],
+   "alongside": [
+    {
+     "edid": "TGBan",
+     "task": "Speak to Vex",
+     "note": "If you cross the Guild.",
+     "checked": "files",
+     "name": "Reparations",
+     "xp": 100
+    },
+    {
+     "edid": "TGCrown",
+     "task": "Become a full member of the Thieves Guild",
+     "checked": "files",
+     "name": "No Stone Unturned",
+     "xp": 100
+    },
+    {
+     "edid": "TGLeadership",
+     "task": "Speak to Brynjolf about becoming the Guild Master",
+     "note": "After the story.",
+     "checked": "files",
+     "name": "Under New Management",
+     "xp": 100
+    },
+    {
+     "edid": "TGRBE",
+     "task": "Retrieve an item from a wealthy home",
+     "checked": "files",
+     "name": "The Burglary Job",
+     "xp": 100
+    },
+    {
+     "edid": "TGRDU",
+     "task": "Plant evidence in a wealthy home",
+     "checked": "files",
+     "name": "The Shill Job",
+     "xp": 100
+    },
+    {
+     "edid": "TGRFO",
+     "task": "Make changes in a ledger",
+     "checked": "files",
+     "name": "The Numbers Job",
+     "xp": 100
+    },
+    {
+     "edid": "TGRGF",
+     "task": "Pick an item from a mark",
+     "checked": "files",
+     "name": "The Fishing Job",
+     "xp": 100
+    },
+    {
+     "edid": "TGRHC",
+     "task": "Clear a wealthy home of valuables",
+     "checked": "files",
+     "name": "The Sweep Job",
+     "xp": 100
+    },
+    {
+     "edid": "TGRNT",
+     "task": "Steal gold in goods from a city",
+     "checked": "files",
+     "name": "The Bedlam Job",
+     "xp": 100
+    },
+    {
+     "edid": "TGRSL",
+     "task": "Retrieve an item from a business",
+     "checked": "files",
+     "name": "The Heist Job",
+     "xp": 100
+    },
+    {
+     "edid": "TGTQ01",
+     "task": "Speak to Endon the Silversmith",
+     "checked": "files",
+     "name": "Silver Lining",
+     "xp": 100
+    },
+    {
+     "edid": "TGTQ02",
+     "task": "Speak to Erikur",
+     "checked": "files",
+     "name": "The Dainty Sload",
+     "xp": 100
+    },
+    {
+     "edid": "TGTQ03",
+     "task": "Speak to Olfrid Battle-Born",
+     "checked": "files",
+     "name": "Imitation Amnesty",
+     "xp": 100
+    },
+    {
+     "edid": "TGTQ04",
+     "task": "Speak to Torsten Cruel-Sea",
+     "checked": "files",
+     "name": "Summerset Shadows",
+     "xp": 100
+    },
+    {
+     "edid": "TG02B",
+     "task": "Learn more about the Thieves Guild from Vex",
+     "checked": "files",
+     "name": "Meet the Family",
+     "xp": 0
+    },
+    {
+     "edid": "TGFenceCaravan",
+     "task": "Deliver Moon Sugar to Ri'saad",
+     "checked": "files",
+     "name": "Thieves Guild Caravan Fence Quest",
+     "xp": 0
+    },
+    {
+     "edid": "TGLarceny",
+     "task": "Return the Queen Bee Statue to Delvin",
+     "checked": "files",
+     "name": "The Litany of Larceny",
+     "xp": 0
+    },
+    {
+     "edid": "DLC2TGQuest",
+     "task": "Recover the Bonemold Formula for Glover Mallory",
+     "checked": "files",
+     "name": "Paid in Full",
+     "xp": 0
+    }
+   ],
+   "reward": {
+    "text": "None: the last quest gives no item.",
+    "checked": "files"
+   },
+   "opens": [],
+   "lineName": "The Thieves Guild",
+   "sources": [
+    {
+     "name": "Base game",
+     "base": true
+    }
+   ]
+  },
+  {
+   "id": "join-the-dark-brotherhood",
+   "line": "dark-brotherhood",
+   "name": "Join the Dark Brotherhood",
+   "category": "guilds",
+   "pitch": "A boy in Windhelm, Aventus Aretino, has been performing the Black Sacrament to call the Dark Brotherhood to him. Whoever answers gets his contract: Grelod the Kind, who runs the orphanage in Riften.",
+   "check": "story_checks/dark-brotherhood.md",
+   "start": [
+    {
+     "text": "Talk to Aventus Aretino in the Aretino Residence, Windhelm. The door is unlocked.",
+     "checked": "files"
+    },
+    {
+     "text": "Kill Grelod the Kind in Honorhall Orphanage, Riften, then sleep: Astrid comes for you.",
+     "checked": "not yet"
+    },
+    {
+     "text": "Or take the Dark Brotherhood start.",
+     "checked": "files"
+    }
+   ],
+   "chapters": [
+    {
+     "name": "Innocence lost",
+     "quests": [
+      {
+       "edid": "DB01",
+       "task": "Talk to Aventus Aretino",
+       "who": "Aventus Aretino",
+       "where": "Aretino Residence, Windhelm",
+       "note": "The door is unlocked.",
+       "checked": "files",
+       "name": "Innocence Lost",
+       "xp": 100
+      },
+      {
+       "edid": "DB02",
+       "task": "Kill one of the captives",
+       "who": "Astrid",
+       "where": "Abandoned Shack",
+       "note": "What moves you to the shack after Grelod isn't traced in the files. Kill Astrid instead and the story ends with Destroy the Dark Brotherhood!",
+       "checked": "not yet",
+       "name": "With Friends Like These...",
+       "xp": 100
+      }
+     ]
+    },
+    {
+     "name": "Sanctuary",
+     "quests": [
+      {
+       "edid": "DB02a",
+       "task": "Speak with Nazir",
+       "who": "Nazir",
+       "where": "Dark Brotherhood Sanctuary",
+       "checked": "files",
+       "name": "Sanctuary",
+       "xp": 100
+      },
+      {
+       "edid": "DB03",
+       "task": "Speak with Astrid",
+       "who": "Astrid",
+       "where": "Dark Brotherhood Sanctuary",
+       "checked": "files",
+       "name": "Mourning Never Comes",
+       "xp": 100
+      }
+     ]
+    },
+    {
+     "name": "Whispers in the dark",
+     "quests": [
+      {
+       "edid": "DB04",
+       "from": "DB03",
+       "task": "Hide in the Night Mother's coffin",
+       "where": "Dark Brotherhood Sanctuary",
+       "checked": "files",
+       "name": "Whispers in the Dark",
+       "xp": 100
+      },
+      {
+       "edid": "DB04a",
+       "from": "DB04",
+       "task": "Speak with Astrid",
+       "who": "Astrid",
+       "where": "Dark Brotherhood Sanctuary",
+       "checked": "files",
+       "name": "The Silence Has Been Broken",
+       "xp": 100
+      },
+      {
+       "edid": "DB05",
+       "task": "Kill Vittoria Vici",
+       "who": "Vittoria Vici",
+       "where": "Solitude",
+       "checked": "files",
+       "name": "Bound Until Death",
+       "xp": 100
+      }
+     ]
+    },
+    {
+     "name": "Breaching security",
+     "quests": [
+      {
+       "edid": "DB06",
+       "task": "Speak with Gabriella",
+       "who": "Gabriella",
+       "where": "Dark Brotherhood Sanctuary",
+       "checked": "files",
+       "name": "Breaching Security",
+       "xp": 100
+      },
+      {
+       "edid": "DB07",
+       "task": "Talk to Astrid",
+       "who": "Astrid",
+       "where": "Dark Brotherhood Sanctuary",
+       "checked": "files",
+       "name": "The Cure for Madness",
+       "xp": 100
+      },
+      {
+       "edid": "DB08",
+       "task": "Report to Festus Krex",
+       "who": "Festus Krex",
+       "where": "Dark Brotherhood Sanctuary",
+       "checked": "files",
+       "name": "Recipe for Disaster",
+       "xp": 100
+      }
+     ]
+    },
+    {
+     "name": "To kill an Emperor",
+     "quests": [
+      {
+       "edid": "DB09",
+       "task": "Report to Astrid",
+       "who": "Astrid",
+       "where": "Dark Brotherhood Sanctuary",
+       "checked": "files",
+       "name": "To Kill an Empire",
+       "xp": 100
+      },
+      {
+       "edid": "DB10",
+       "from": "DB09",
+       "task": "Enter the Sanctuary",
+       "where": "Dark Brotherhood Sanctuary",
+       "checked": "files",
+       "name": "Death Incarnate",
+       "xp": 100
+      },
+      {
+       "edid": "DB11",
+       "task": "Talk to Nazir",
+       "who": "Nazir",
+       "where": "Dark Brotherhood Sanctuary",
+       "checked": "files",
+       "name": "Hail Sithis!",
+       "xp": 100
+      }
+     ]
+    }
+   ],
+   "alongside": [
+    {
+     "edid": "DarkBrotherhoodSanctuaryRepair",
+     "task": "Employ Delvin Mallory's services",
+     "note": "After the story.",
+     "checked": "files",
+     "name": "Where You Hang Your Enemy's Head...",
+     "xp": 100
+    },
+    {
+     "edid": "DB01Misc",
+     "task": "Talk to the strange jester",
+     "checked": "files",
+     "name": "Delayed Burial",
+     "xp": 100
+    },
+    {
+     "edid": "DBDestroy",
+     "task": "Report Astrid's death to a guard",
+     "note": "The other ending, if you kill Astrid in the shack.",
+     "checked": "files",
+     "name": "Destroy the Dark Brotherhood!",
+     "xp": 100
+    },
+    {
+     "edid": "DBEviction",
+     "task": "Pay Nazir the fine",
+     "note": "If you cross the Brotherhood.",
+     "checked": "files",
+     "name": "Honor Thy Family",
+     "xp": 100
+    },
+    {
+     "edid": "DBSideContract01",
+     "task": "Kill Narfi",
+     "checked": "files",
+     "name": "Contract: Kill Narfi",
+     "xp": 100
+    },
+    {
+     "edid": "DBSideContract02",
+     "task": "Kill Ennodius Papius",
+     "checked": "files",
+     "name": "Contract: Kill Ennodius Papius",
+     "xp": 100
+    },
+    {
+     "edid": "DBSideContract03",
+     "task": "Kill Beitild",
+     "checked": "files",
+     "name": "Contract: Kill Beitild",
+     "xp": 100
+    },
+    {
+     "edid": "DBSideContract04",
+     "task": "Kill Hern",
+     "checked": "files",
+     "name": "Contract: Kill Hern",
+     "xp": 100
+    },
+    {
+     "edid": "DBSideContract05",
+     "task": "Kill Lurbuk",
+     "checked": "files",
+     "name": "Contract: Kill Lurbuk",
+     "xp": 100
+    },
+    {
+     "edid": "DBSideContract06",
+     "task": "Kill Deekus",
+     "checked": "files",
+     "name": "Contract: Kill Deekus",
+     "xp": 100
+    },
+    {
+     "edid": "DBSideContract07",
+     "task": "Kill Ma'randru-jo",
+     "checked": "files",
+     "name": "Contract: Kill Ma'randru-jo",
+     "xp": 100
+    },
+    {
+     "edid": "DBSideContract08",
+     "task": "Kill Anoriath",
+     "checked": "files",
+     "name": "Contract: Kill Anoriath",
+     "xp": 100
+    },
+    {
+     "edid": "DBSideContract09",
+     "task": "Kill Agnis",
+     "checked": "files",
+     "name": "Contract: Kill Agnis",
+     "xp": 100
+    },
+    {
+     "edid": "DBSideContract10",
+     "task": "Kill Maluril",
+     "checked": "files",
+     "name": "Contract: Kill Maluril",
+     "xp": 100
+    },
+    {
+     "edid": "DBSideContract11",
+     "task": "Kill Helvard",
+     "checked": "files",
+     "name": "Contract: Kill Helvard",
+     "xp": 100
+    },
+    {
+     "edid": "DBSideContract12",
+     "task": "Kill Safia",
+     "checked": "files",
+     "name": "Contract: Kill Safia",
+     "xp": 100
+    },
+    {
+     "edid": "ExtraContracts_KillBraith_Quest",
+     "task": "Kill Braith",
+     "checked": "files",
+     "name": "Contract: Kill Braith",
+     "xp": 100
+    },
+    {
+     "edid": "ExtraContracts_KillElenwen_Quest",
+     "task": "Kill Elenwen",
+     "checked": "files",
+     "name": "Contract: Kill Elenwen",
+     "xp": 100
+    },
+    {
+     "edid": "ExtraContracts_KillErikur_Quest",
+     "task": "Kill Erikur",
+     "checked": "files",
+     "name": "Contract: Kill Erikur",
+     "xp": 100
+    },
+    {
+     "edid": "ExtraContracts_KillLemkil_Quest",
+     "task": "Kill Lemkil",
+     "checked": "files",
+     "name": "Contract: Kill Lemkil",
+     "xp": 100
+    },
+    {
+     "edid": "ExtraContracts_KillNazeem_Quest",
+     "task": "Kill Nazeem",
+     "checked": "files",
+     "name": "Contract: Kill Nazeem",
+     "xp": 100
+    },
+    {
+     "edid": "ExtraContracts_KillRolff_Quest",
+     "task": "Kill Rolff Stone-Fist",
+     "checked": "files",
+     "name": "Contract: Kill Rolff Stone-Fist",
+     "xp": 100
+    },
+    {
+     "edid": "ExtraContracts_KillSerana_Quest",
+     "task": "Kill Serana",
+     "checked": "files",
+     "name": "Contract: Kill Serana",
+     "xp": 100
+    },
+    {
+     "edid": "ExtraContracts_KillTaarieEndarie_Quest",
+     "task": "Kill Taarie and Endarie",
+     "checked": "files",
+     "name": "Contract: Kill Taarie and Endarie",
+     "xp": 100
+    },
+    {
+     "edid": "ExtraContracts_KillThonarSilverblood_Quest",
+     "task": "Kill Thonar Silver-Blood",
+     "checked": "files",
+     "name": "Contract: Kill Thonar Silver-Blood",
+     "xp": 100
+    },
+    {
+     "edid": "LTNQuestMarkarth",
+     "task": "A contract in Markarth",
+     "checked": "files",
+     "name": "Contract: Kill <Alias=Target>",
+     "xp": 100
+    },
+    {
+     "edid": "LTNQuestRiften",
+     "task": "A contract in Riften",
+     "checked": "files",
+     "name": "Contract: Kill <Alias=Target>",
+     "xp": 100
+    },
+    {
+     "edid": "LTNQuestSolitude",
+     "task": "A contract in Solitude",
+     "checked": "files",
+     "name": "Contract: Kill <Alias=Target>",
+     "xp": 100
+    },
+    {
+     "edid": "LTNQuestWhiterun",
+     "task": "A contract in Whiterun",
+     "checked": "files",
+     "name": "Contract: Kill <Alias=Target>",
+     "xp": 100
+    },
+    {
+     "edid": "LTNQuestWindhelm",
+     "task": "A contract in Windhelm",
+     "checked": "files",
+     "name": "Contract: Kill <Alias=Target>",
+     "xp": 100
+    },
+    {
+     "edid": "DBrecurring",
+     "task": "Approach the Night Mother",
+     "note": "After the story.",
+     "checked": "files",
+     "name": "The Dark Brotherhood Forever",
+     "xp": 0
+    }
+   ],
+   "reward": {
+    "text": "Not listed yet.",
+    "checked": "not yet"
+   },
+   "opens": [],
+   "lineName": "The Dark Brotherhood",
+   "sources": [
+    {
+     "name": "Base game",
+     "base": true
+    },
+    {
+     "name": "The Innocence Lost - Quest Expansion",
+     "modid": "80974"
+    },
+    {
+     "name": "ACDB - Additional Contracts for the Dark Brotherhood",
+     "modid": "59211"
+    },
+    {
+     "name": "Listen - Dark Brotherhood Radiant Quests",
+     "modid": "59659"
+    }
+   ]
+  },
+  {
+   "id": "join-the-dawnguard",
+   "line": "dawnguard",
+   "name": "Join the Dawnguard",
+   "category": "main",
+   "pitch": "Vampires are stirring in Skyrim, and an old order of hunters, the Dawnguard, is forming again in a fort south-east of Riften. Isran takes anyone willing, and the first job is to find out what the vampires want in a cave called Dimhollow.",
+   "check": "story_checks/dawnguard.md",
+   "start": [
+    {
+     "text": "Walk into Dayspring Canyon, south-east of Riften, and speak with Isran in Fort Dawnguard.",
+     "checked": "files"
+    },
+    {
+     "text": "From level 30, Durak comes to recruit you, and guards talk about the Dawnguard.",
+     "checked": "not yet"
+    }
+   ],
+   "chapters": [
+    {
+     "name": "A new order",
+     "quests": [
+      {
+       "edid": "DLC1VQ01MiscObjective",
+       "task": "Speak with the leader of the Dawnguard",
+       "who": "Isran",
+       "where": "Fort Dawnguard, in Dayspring Canyon south-east of Riften",
+       "checked": "files",
+       "name": "Dawnguard",
+       "xp": 200
+      },
+      {
+       "edid": "DLC1HunterBaseIntro",
+       "task": "Meet Tolan at Stendarr's Beacon",
+       "who": "Isran",
+       "where": "Fort Dawnguard",
+       "checked": "files",
+       "name": "A New Order",
+       "xp": 200
+      },
+      {
+       "edid": "DLC1VQ01",
+       "from": "DLC1VQ01MiscObjective",
+       "task": "Find out what the vampires are seeking",
+       "where": "Dimhollow Cavern",
+       "checked": "files",
+       "name": "Awakening",
+       "xp": 200
+      }
+     ]
+    },
+    {
+     "name": "Bloodline",
+     "quests": [
+      {
+       "edid": "DLC1VQ02",
+       "from": "DLC1VQ01",
+       "task": "Lead Serana to her home",
+       "where": "Volkihar Keep",
+       "checked": "files",
+       "name": "Bloodline",
+       "xp": 200
+      },
+      {
+       "edid": "DLC1VQ03Hunter",
+       "from": "DLC1HunterBaseIntro",
+       "task": "Follow Isran",
+       "who": "Isran",
+       "where": "Fort Dawnguard",
+       "note": "The Dawnguard's side. Side with the vampires at the castle and the story goes on without the fort.",
+       "checked": "files",
+       "name": "Prophet",
+       "xp": 200
+      }
+     ]
+    },
+    {
+     "name": "Chasing echoes",
+     "quests": [
+      {
+       "edid": "DLC1VQ04",
+       "from": "DLC1VQ03Hunter",
+       "task": "Speak to Serana",
+       "checked": "files",
+       "name": "Chasing Echoes",
+       "xp": 200
+      },
+      {
+       "edid": "DLC1VQ05",
+       "from": "DLC1VQ04",
+       "task": "Locate Valerica",
+       "who": "Valerica",
+       "where": "The Soul Cairn",
+       "checked": "files",
+       "name": "Beyond Death",
+       "xp": 200
+      }
+     ]
+    },
+    {
+     "name": "Unseen visions",
+     "quests": [
+      {
+       "edid": "DLC1VQ06",
+       "task": "Find a Moth Priest's knife",
+       "where": "Ancestor Glade",
+       "checked": "files",
+       "name": "Unseen Visions",
+       "xp": 200
+      },
+      {
+       "edid": "DLC1VQ07",
+       "from": "DLC1VQ06",
+       "task": "Locate Auriel's Bow",
+       "who": "Knight-Paladin Gelebor",
+       "where": "Darkfall Cave",
+       "checked": "files",
+       "name": "Touching the Sky",
+       "xp": 200
+      }
+     ]
+    },
+    {
+     "name": "Kindred judgment",
+     "quests": [
+      {
+       "edid": "DLC1VQ08",
+       "from": "DLC1VQ07",
+       "task": "Speak to Serana",
+       "checked": "files",
+       "name": "Kindred Judgment",
+       "xp": 200
+      }
+     ]
+    }
+   ],
+   "alongside": [
+    {
+     "edid": "DLC1HunterBaseStage2",
+     "task": "Speak with Isran",
+     "checked": "files",
+     "name": "Bolstering the Ranks",
+     "xp": 200
+    },
+    {
+     "edid": "DLC1RH01",
+     "task": "Discreetly kill a vampire in a town",
+     "checked": "files",
+     "name": "Hide and Seek",
+     "xp": 200
+    },
+    {
+     "edid": "DLC1RH02",
+     "task": "Kill the vampire leader at a lair",
+     "checked": "files",
+     "name": "Cleansing Light",
+     "xp": 200
+    },
+    {
+     "edid": "DLC1RH03",
+     "task": "Kill a vampire at a lair",
+     "checked": "files",
+     "name": "Preemptive Strike",
+     "xp": 200
+    },
+    {
+     "edid": "DLC1RH04",
+     "task": "Find evidence of the vampire's whereabouts",
+     "checked": "files",
+     "name": "Hunting the Monster",
+     "xp": 200
+    },
+    {
+     "edid": "DLC1RH05",
+     "task": "Retrieve a Dwemer part from a ruin",
+     "checked": "files",
+     "name": "Ancient Technology",
+     "xp": 200
+    },
+    {
+     "edid": "DLC1RH06",
+     "task": "Rescue a prisoner from a lair",
+     "checked": "files",
+     "name": "Rescue",
+     "xp": 200
+    },
+    {
+     "edid": "DLC1RH07",
+     "task": "Warn a Jarl about the vampire threat",
+     "checked": "files",
+     "name": "A Jarl's Justice",
+     "xp": 200
+    },
+    {
+     "edid": "DLC1RH08",
+     "task": "Retrieve a relic from a ruin",
+     "checked": "files",
+     "name": "Lost Relic",
+     "xp": 200
+    },
+    {
+     "edid": "DLC1VQElder",
+     "task": "Find The Elder Scroll (Dragon)",
+     "checked": "files",
+     "name": "Seeking Disclosure",
+     "xp": 200
+    },
+    {
+     "edid": "DLC1VQSaint",
+     "task": "Find pages from Saint Jiub's Opus",
+     "checked": "files",
+     "name": "Impatience of a Saint",
+     "xp": 200
+    },
+    {
+     "edid": "DLC01SoulCairnHorseQuest2",
+     "task": "Find Arvak's skull in the Soul Cairn",
+     "checked": "files",
+     "name": "Soul Cairn Horse Quest",
+     "xp": 0
+    },
+    {
+     "edid": "DLC1VQDragon",
+     "task": "Summon Durnehviir in Tamriel",
+     "checked": "files",
+     "name": "Durnehviir",
+     "xp": 0
+    },
+    {
+     "edid": "DLC1VQFVBooks",
+     "task": "Bring Ancient Falmer Tome to Urag gro-Shub",
+     "checked": "files",
+     "name": "Forgotten Vale Books Quest",
+     "xp": 0
+    }
+   ],
+   "reward": {
+    "text": "Not listed yet.",
+    "checked": "not yet"
+   },
+   "opens": [
+    {
+     "line": "vigilants",
+     "needs": [
+      {
+       "kind": "level",
+       "level": 25,
+       "text": "Level 25",
+       "checked": "files"
+      },
+      {
+       "kind": "line",
+       "line": "the-house-of-horrors",
+       "text": "The House of Horrors",
+       "checked": "files"
+      },
+      {
+       "kind": "line",
+       "line": "dawnguard",
+       "text": "Kindred Judgment, the end of this story",
+       "checked": "files"
+      }
+     ],
+     "name": "Vigilant"
+    }
+   ],
+   "lineName": "Dawnguard",
+   "sources": [
+    {
+     "name": "Base game",
+     "base": true
+    }
+   ]
   }
  ]
 }

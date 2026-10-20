@@ -5,7 +5,7 @@ src/data/lorerim-<version>/stories.json with each quest's name and XP, and each 
 joined in from the quest pages' data.
 
 Checks, all fatal (StoryError): every edid is a quest of the story's line; every quest of that line
-is in a chapter or `alongside`, once; every `from` is a quest in the story; every opened line and
+is in a chapter or `alongside` (a hidden one for a helper quest), once; every `from` is a quest in the story; every opened line and
 every need's line is a line id; every `checked` is "files" or "not yet".
 """
 import copy
@@ -84,7 +84,10 @@ def build_stories(stories, quest_lines):
         by = {q["edid"]: q for q in line["quests"]}
         s["lineName"] = line["name"]
         s["sources"] = line["sources"]
-        for q in [q for c in s["chapters"] for q in c["quests"]] + s.get("alongside", []):
+        # A helper or handler quest the player never sees is told as alongside with `hidden`: it counts
+        # for the check (every quest of the line is placed) and is left out of what the page shows.
+        s["alongside"] = [q for q in s.get("alongside", []) if not q.get("hidden")]
+        for q in [q for c in s["chapters"] for q in c["quests"]] + s["alongside"]:
             q["name"] = by[q["edid"]]["name"]
             q["xp"] = by[q["edid"]]["xp"]
         for o in s.get("opens", []):
