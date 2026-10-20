@@ -133,6 +133,12 @@ export function isGuideImageUrl(src: string): boolean {
   return /^https:\/\/[a-z0-9]+\.public\.blob\.vercel-storage\.com\/(production|staging|dev)\/(builds|playthroughs)\/[23456789abcdefghjkmnpqrstuvwxyz]{10}\/[\w-]{8,64}\.(png|jpg|webp|gif)$/.test(src);
 }
 
+/** A story's first image at the top level, as the Story tab opens on it (the Tale page's plate, WO-114). */
+export function firstPlate(doc: GuideDoc): string | null {
+  const n = doc.content.find((x) => x.type === "image" && typeof x.attrs?.src === "string" && isGuideImageUrl(x.attrs.src));
+  return (n?.attrs?.src as string | undefined) ?? null;
+}
+
 /** Every image a document shows. */
 export function imageUrls(n: GuideNode, out: Set<string> = new Set()): Set<string> {
   if (n.type === "image" && typeof n.attrs?.src === "string") out.add(n.attrs.src);

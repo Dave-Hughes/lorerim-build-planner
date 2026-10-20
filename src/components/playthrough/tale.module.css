@@ -1,53 +1,83 @@
 /*
- * The playthrough's Tale view (WO-111), as the PlaythroughTale board: the Story tab's book page
- * (WO-79) with a contents rail, on the Story's own darker ground, the full window wide.
+ * The Tale page (WO-114), as the revised PlaythroughTale board: a reading page. The plate, a thin
+ * bar that fades on scroll, the 680px column in the Story tab's rendering, and Contents in a drawer.
+ * The Story's own darker ground and warm ink, the full window wide.
  */
 .tale {
-  width: calc(100vw / var(--page-zoom));
-  margin-left: calc(50% - 50vw / var(--page-zoom));
+  min-height: 100vh;
   background: #0b0f14;
   color: #ddd5c6;
   padding-bottom: 120px;
-}
-.head {
-  padding-top: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-.who {
-  display: flex;
-  align-items: baseline;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-.name {
-  margin: 0;
-  font-family: var(--font-title);
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 34px;
-  letter-spacing: 0.04em;
-  color: var(--text);
-}
-.by {
-  font-size: 15px;
-  color: var(--muted);
+  position: relative;
 }
 
-/* The opening plate: the author's image, or the title on the dark ground. */
+/* The bar over the plate: fixed, gone after the first 200px down, back on the way up. */
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 20;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 32px;
+  background: linear-gradient(to bottom, rgba(11, 15, 20, 0.85), rgba(11, 15, 20, 0));
+  transition: opacity 240ms, transform 240ms;
+}
+.barHidden {
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+}
+.barName,
+.barTabs a,
+.barTabs span {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.barName {
+  letter-spacing: 0.16em;
+}
+.barTabs {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+.barTabs span[aria-current] {
+  color: var(--text);
+}
+.barTabs a:hover,
+.barName:hover {
+  color: var(--text);
+}
+.barTabs .barBack {
+  font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+/* The opening plate: 720 tall, the Tale's title and epigraph over its lower edge. */
 .opening {
   position: relative;
-  height: 560px;
+  height: 720px;
   overflow: hidden;
-  margin-top: 22px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
 }
 .openingPlain {
   height: auto;
-  padding-top: 56px;
+  padding-top: 140px;
 }
 .openingImage {
   position: absolute;
@@ -62,12 +92,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 340px;
+  height: 400px;
   background: linear-gradient(to bottom, rgba(11, 15, 20, 0) 0%, rgba(11, 15, 20, 0.82) 62%, #0b0f14 100%);
 }
 .words {
   position: relative;
-  margin-bottom: 48px;
+  margin-bottom: 56px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,7 +113,7 @@
   font-family: var(--font-title);
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 64px;
+  font-size: 72px;
   letter-spacing: 0.05em;
   line-height: 1;
   color: var(--text);
@@ -96,74 +126,115 @@
   color: #cbbfa8;
   max-width: 640px;
 }
-
-.grid {
-  padding-top: 40px;
-  display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
-  gap: 60px;
-  align-items: start;
+.by {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--muted);
 }
 
-/* Contents: the chapters before the game, then each act's entries and beats. */
-.toc {
+/* Contents: a tab on the left edge, and the drawer it opens over the page. */
+.ctab {
+  position: fixed;
+  left: 0;
+  top: 200px;
+  z-index: 15;
+  width: 36px;
+  height: 120px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--rule);
+  border-left: 0;
+  background: #10161e;
+  color: var(--muted);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ctab:hover,
+.ctab[aria-expanded="true"] {
+  color: var(--text);
+}
+.drawer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 30;
+  width: 320px;
+  max-width: 100vw;
+  overflow-y: auto;
+  background: #10161e;
+  border-right: 1px solid var(--rule);
+  padding: 28px 26px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  position: sticky;
-  top: 24px;
 }
 .part {
   font-family: var(--font-title);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--muted);
   padding: 18px 0 8px;
   border-bottom: 1px solid var(--rule);
 }
-.toc > a,
+.drawer a,
 .tocEmpty {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  padding: 9px 0;
+  padding: 8px 0;
   border-bottom: 1px solid var(--rule-soft);
   font-family: var(--font-flavor);
   font-size: 17px;
   color: #ddd5c6;
   text-decoration: none;
 }
-.toc > a:hover {
-  color: var(--ember-hover);
+.drawer a.on {
+  color: var(--ember);
 }
-.toc > .locked,
+.drawer a.locked,
 .tocEmpty {
   color: var(--dim);
 }
-.toc small {
+.drawer small {
   font-family: var(--font-body);
   font-size: 13px;
   color: var(--muted);
   white-space: nowrap;
   padding-top: 3px;
 }
-.tocAdd {
+.drawerAdd {
   padding-top: 18px;
   display: flex;
-  flex-direction: column;
   gap: 10px;
-  align-items: flex-start;
-  font-size: 13px;
+  font-size: 14px;
+}
+.drawerAdd a {
+  border: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ember);
+}
+.dim {
   color: var(--muted);
 }
 
+/* The column. */
 .pieces {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 48px;
-  min-width: 0;
+  padding: 56px 16px 0;
 }
 .piece {
   width: 680px;
@@ -173,7 +244,6 @@
   gap: 26px;
   scroll-margin-top: 24px;
 }
-/* The Story's text blocks keep their 680px inside the piece; plates may run wider. */
 .piece > div,
 .piece > p {
   margin-bottom: 0 !important;
@@ -190,7 +260,7 @@
 }
 .sub {
   font-size: 14px;
-  color: var(--muted);
+  color: #6f7c8c;
   text-align: center;
   margin-top: -16px;
 }
@@ -206,40 +276,66 @@
   max-width: 100% !important;
   margin-bottom: 0 !important;
 }
-.meta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
+/* An entry's "In the game": a small italic at the end, to the right. */
+.game {
+  align-self: flex-end;
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 15px;
   color: var(--muted);
-  flex-wrap: wrap;
+}
+/* The owner's Edit and "written by": quiet until the pointer is on the piece. */
+.tools {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--rule-strong);
+  transition: color 160ms;
+}
+.tools a {
+  color: inherit;
+}
+.piece:hover .tools,
+.piece:focus-within .tools {
+  color: var(--muted);
+}
+.piece:hover .tools a,
+.piece:focus-within .tools a {
+  color: var(--ember);
 }
 
-/* A beat not reached yet: its title, what opens it, and Read it anyway. */
+/* A beat not reached yet: a title and one line, no box. */
 .wait {
   width: 680px;
   max-width: 100%;
-  box-sizing: border-box;
-  padding: 26px 28px;
-  border: 1px solid var(--rule);
-  background: #10161e;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  font-size: 15px;
-  color: var(--soft);
+  gap: 6px;
+  align-items: center;
+  text-align: center;
+  padding: 12px 0;
   scroll-margin-top: 24px;
 }
 .waitTitle {
   font-family: var(--font-flavor);
+  font-style: italic;
   font-size: 24px;
   color: var(--muted);
 }
-.waitRow {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: wrap;
+.waitLine {
+  font-size: 14px;
+  color: #6f7c8c;
+}
+.linkButton {
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--ember);
+  font: inherit;
+  cursor: pointer;
+}
+.linkButton:hover {
+  color: var(--ember-hover);
 }
 
 .end {
@@ -266,17 +362,20 @@
   font-size: 16px;
 }
 
-@media (max-width: 1000px) {
-  .grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .toc {
-    position: static;
+@media (max-width: 760px) {
+  .opening {
+    height: 460px;
   }
   .title {
-    font-size: 42px;
+    font-size: 44px;
   }
-  .opening {
-    height: 380px;
+  .bar {
+    padding: 0 16px;
+  }
+  .barName {
+    display: none;
+  }
+  .ctab {
+    top: 140px;
   }
 }

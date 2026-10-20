@@ -17,6 +17,9 @@ export const detailsSchema = z.object({
   line: line(L.line),
 });
 
+/** The Tale page's title and epigraph (WO-114): plain lines, empty for none. */
+export const taleSchema = z.object({ taleTitle: line(L.chapterTitle).optional(), taleLine: line(L.line).optional() });
+
 /** "1 to 6", "1-6", "40 and up", "40+", "6": the act's levels, or a message. */
 export function parseLevels(input: string): { from: number; to: number | null } | string {
   const s = input.trim().toLowerCase();

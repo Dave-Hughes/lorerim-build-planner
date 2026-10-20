@@ -62,6 +62,9 @@ export interface EditData {
   showDrafted: boolean;
   /** The build's cover (WO-114), the character's one. */
   coverImageUrl: string | null;
+  /** The Tale page's title and epigraph (WO-114). */
+  taleTitle: string;
+  taleLine: string;
   acts: EditAct[];
   chapters: EditChapter[];
   builds: { id: string; name: string }[];
@@ -812,6 +815,8 @@ function Details({ data, onSaved }: { data: EditData; onSaved: () => void }) {
   const { error, save, setError } = useSave(onSaved);
   const [name, setName] = useState(data.name);
   const [line, setLine] = useState(data.line);
+  const [taleTitle, setTaleTitle] = useState(data.taleTitle);
+  const [taleLine, setTaleLine] = useState(data.taleLine);
   const [uploading, setUploading] = useState(false);
   return (
     <section className={s.panel} aria-labelledby="details" style={{ gap: 14 }}>
@@ -825,6 +830,14 @@ function Details({ data, onSaved }: { data: EditData; onSaved: () => void }) {
       <label className={s.field}>
         <span className={s.lbl}>One line</span>
         <textarea className={`textarea ${s.in}`} rows={3} value={line} maxLength={140} onChange={(e) => setLine(e.target.value)} onBlur={() => line !== data.line && save(() => act.saveDetails(data.id, { line }), true)} />
+      </label>
+      <label className={s.field}>
+        <span className={s.lbl}>The tale&apos;s title</span>
+        <input className={`input ${s.in}`} value={taleTitle} maxLength={60} placeholder={data.name} onChange={(e) => setTaleTitle(e.target.value)} onBlur={() => taleTitle !== data.taleTitle && save(() => act.saveDetails(data.id, { taleTitle }), true)} />
+      </label>
+      <label className={s.field}>
+        <span className={s.lbl}>Its epigraph</span>
+        <input className={`input ${s.in}`} value={taleLine} maxLength={140} placeholder="[A line under the title, if any]" onChange={(e) => setTaleLine(e.target.value)} onBlur={() => taleLine !== data.taleLine && save(() => act.saveDetails(data.id, { taleLine }), true)} />
       </label>
       <label className={s.field}>
         <span className={s.lbl}>Build</span>

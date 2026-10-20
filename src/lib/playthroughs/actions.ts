@@ -44,7 +44,7 @@ export async function newPlaythrough(input: { name: string; line?: string; build
   return run(null, async (u) => ({ id: await w.createPlaythrough(u, { ...input, gameVersion: currentVersion().id }) }));
 }
 
-export const saveDetails = async (id: string, input: { name?: string; line?: string; buildId?: string | null; visibility?: BuildVisibility; showDrafted?: boolean }) =>
+export const saveDetails = async (id: string, input: { name?: string; line?: string; buildId?: string | null; visibility?: BuildVisibility; showDrafted?: boolean; taleTitle?: string; taleLine?: string }) =>
   run(id, (u) => w.setDetails(u, id, input));
 /** The character's cover, set on the build (WO-114). */
 export const saveCover = async (id: string, url: string | null) => run(id, (u) => w.setCover(u, id, url));

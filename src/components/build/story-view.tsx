@@ -155,12 +155,12 @@ function storyBlocks(doc: GuideDoc, { skipOpening, onOpen, idPrefix, cap = true 
 }
 
 /** One story document's text and images, with its own image viewer (a playthrough's chapter). */
-export function StoryText({ doc, idPrefix, cap = true }: { doc: GuideDoc; idPrefix: string; cap?: boolean }) {
+export function StoryText({ doc, idPrefix, cap = true, skipOpening = false }: { doc: GuideDoc; idPrefix: string; cap?: boolean; skipOpening?: boolean }) {
   const [view, setView] = useState<number | null>(null);
   const plates = platesOf(doc);
   return (
     <>
-      {storyBlocks(doc, { skipOpening: false, onOpen: setView, idPrefix, cap })}
+      {storyBlocks(doc, { skipOpening, onOpen: setView, idPrefix, cap })}
       {view !== null && <Viewer plates={plates} at={view} onAt={setView} onClose={() => setView(null)} />}
     </>
   );

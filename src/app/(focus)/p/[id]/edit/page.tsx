@@ -34,6 +34,8 @@ export default async function EditPlaythroughPage({ params, searchParams }: { pa
     draftedBy: p.draftedBy,
     showDrafted: p.showDrafted,
     coverImageUrl: p.build?.coverImageUrl ?? null,
+    taleTitle: p.taleTitle ?? "",
+    taleLine: p.taleLine ?? "",
     builds,
     acts: p.view.acts.map((a) => ({
       id: a.id,

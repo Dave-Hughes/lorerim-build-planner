@@ -7,7 +7,7 @@ import { checkGuideDoc, docText, imageUrls, isEmptyDoc, lineDoc, type GuideDoc }
 import { isOurImage } from "@/lib/guide/images";
 import type { BuildVisibility } from "@/lib/builds/validate";
 import { newAccountHold } from "@/lib/moderation/limits";
-import { actSchema, chapterTitleSchema, detailsSchema, firstIssue, objectiveSchema, snapshotSchema, type ActInput, type ObjectiveInput, type SnapshotInput } from "./validate";
+import { actSchema, chapterTitleSchema, detailsSchema, firstIssue, taleSchema, objectiveSchema, snapshotSchema, type ActInput, type ObjectiveInput, type SnapshotInput } from "./validate";
 import { PLAYTHROUGH_LIMITS, type ChapterKind, type ObjectiveStatus } from "./types";
 
 /**
@@ -77,11 +77,13 @@ export async function createPlaythrough(userId: string, input: { name: string; l
 export async function setDetails(
   userId: string,
   id: string,
-  input: { name?: string; line?: string; buildId?: string | null; visibility?: BuildVisibility; showDrafted?: boolean },
+  input: { name?: string; line?: string; buildId?: string | null; visibility?: BuildVisibility; showDrafted?: boolean; taleTitle?: string; taleLine?: string },
 ) {
   const p = await ownedPlaythrough(userId, id);
   const d = detailsSchema.safeParse({ name: input.name ?? p.name, line: input.line ?? p.line });
   if (!d.success) fail(firstIssue(d.error));
+  const tale = taleSchema.safeParse({ taleTitle: input.taleTitle, taleLine: input.taleLine });
+  if (!tale.success) fail(firstIssue(tale.error));
   const build = input.buildId === undefined ? undefined : await ownBuild(userId, input.buildId);
   if (input.visibility === "public" && p.visibility !== "public") {
     const hold = await newAccountHold(userId);
@@ -105,6 +107,8 @@ export async function setDetails(
       ...(build === undefined ? {} : { buildId: build?.id ?? null, ...(build ? { gameVersion: build.gameVersion } : {}) }),
       ...(input.visibility ? { visibility: input.visibility } : {}),
       ...(input.showDrafted === undefined ? {} : { showDrafted: input.showDrafted }),
+      ...(tale.data!.taleTitle === undefined ? {} : { taleTitle: tale.data!.taleTitle || null }),
+      ...(tale.data!.taleLine === undefined ? {} : { taleLine: tale.data!.taleLine || null }),
     })
     .where(eq(schema.playthroughs.id, p.id));
   // Attaching moves the build's Story into the run, in the same transaction; detaching leaves the chapters.
