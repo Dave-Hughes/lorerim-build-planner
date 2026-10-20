@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { Ornament, StoryText } from "@/components/build/story-view";
 import { formatDate } from "@/lib/format/date";
@@ -59,12 +60,12 @@ export function TaleView({ p, isOwner, from }: { p: PlaythroughRecord; isOwner: 
           {v.acts.map((a) => {
             const mine = v.chapters.filter((c) => c.actId === a.id);
             return (
-              <div key={a.id} style={{ display: "contents" }}>
+              <Fragment key={a.id}>
                 <span className={s.part}>
                   Act {a.n} {a.name}
                 </span>
                 {mine.length ? mine.map((c) => <TocLink key={c.id} c={c} />) : <span className={s.tocEmpty}>Nothing written yet</span>}
-              </div>
+              </Fragment>
             );
           })}
           {isOwner && (

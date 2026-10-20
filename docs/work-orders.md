@@ -4607,6 +4607,21 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-111a  Ticking a quest objective before the helper exists (Mac, 19 Oct 2026)
+
+**Why.** Bob's check of WO-111 on the seeded Kyria: an objective the save decides ("Spread the Love", a quest with a stage) has no tick and no status menu, and nothing can mark it done until WO-112's helper sends quest stages. Until then a player with a quest-linked objective is stuck, and the assistant's drafts will be full of them.
+
+- A `save` objective the snapshot hasn't shown can be ticked by the player; it then reads "Done, ticked by you" and the beat it opens opens. When a later snapshot shows the quest at the stage, "Done, from your save" takes over; a snapshot that shows the quest not yet there leaves the player's tick alone (the save can be older than the tick).
+- `set_status` through the door stays `hand` objectives only; the player's tick on a `save` objective is the site's, as rule 18 keeps the save the assistant's only source.
+- The status menu on a `save` objective offers Done and To do only (no Under way, no Later: the save decides the rest).
+- Unit test for the three cases; the WO-111 e2e ticks "Spread the Love" by hand and sees it done.
+
+### Done when
+- [ ] On the seeded Kyria, "Spread the Love" can be ticked and reads "Done, ticked by you"; a snapshot with its stage changes it to "Done, from your save".
+- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
+
+---
+
 ## WO-112 and WO-113  (to write when WO-111 is checked)
 
 - **WO-113 Merchants (PC).** `get_spell` can't say where a spell is sold: the planner has no merchant data. Read vendor containers and their leveled lists from the game files, per spell tome and item, and mark random stock as such. Until then the tool says so and tells the assistant not to name one from memory.
