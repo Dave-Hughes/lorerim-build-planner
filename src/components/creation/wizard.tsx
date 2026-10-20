@@ -26,8 +26,6 @@ import { ThemePicker } from "./theme-picker";
 import { themeOf } from "@/lib/themes";
 import { useDismiss } from "@/lib/use-dismiss";
 import { YOUTUBE_ERROR, youtubeVideoId } from "@/lib/builds/youtube";
-import { RunStep } from "@/components/playthrough/run-step";
-import { newCharacter } from "@/lib/playthroughs/actions";
 import styles from "./wizard.module.css";
 
 interface WizardProps {
@@ -42,7 +40,7 @@ interface WizardProps {
   introStart?: string;
   /** An assistant drafted it (WO-110): its name, and whether the page says so. */
   drafted?: { by: string; show: boolean } | null;
-  /** Playthroughs are on (WO-114): a new build is a character, asked first whether it has a run. */
+  /** Playthroughs are on (WO-114): a new build is a character; a run is started from it (WO-116). */
   characters?: boolean;
 }
 
@@ -52,13 +50,6 @@ function plainTraitText(text: string): string {
 
 export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, signIn, introStart, drafted, characters = false }: WizardProps) {
   const router = useRouter();
-  // New character (WO-114): a build and a run, or a build alone, asked before Set up. Kept in the URL.
-  const asks = characters && mode === "create";
-  const [kind, setKindState] = useState<"run" | "alone" | null>(() => {
-    const k = new URLSearchParams(window.location.search).get("kind");
-    return k === "run" || k === "alone" ? k : asks ? null : "alone";
-  });
-  const [onRun, setOnRun] = useState(() => kind === "run" && new URLSearchParams(window.location.search).get("step") === "run");
   // Rendered on the client only (see wizard-loader.tsx), so the draft in this
   // browser can seed the state directly.
   const [draft] = useState(() => (mode === "create" ? loadDraft() : null));
@@ -104,35 +95,14 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
     },
     [touch],
   );
-  const setStep = useCallback((s: Step | "run") => {
+  const setStep = useCallback((s: Step) => {
     touch();
-    if (s === "run") setOnRun(true);
-    else {
-      setOnRun(false);
-      setStepState(s);
-    }
+    setStepState(s);
     const url = new URL(window.location.href);
     url.searchParams.set("step", s);
     window.history.replaceState(null, "", url);
     window.scrollTo({ top: 0 });
   }, [touch]);
-  const setKind = (k: "run" | "alone") => {
-    setKindState(k);
-    const url = new URL(window.location.href);
-    url.searchParams.set("kind", k);
-    window.history.replaceState(null, "", url);
-    window.scrollTo({ top: 0 });
-  };
-  // A build and a run: Set up's build and The run step's run, made together (WO-114).
-  const finishCharacter = (run: Parameters<typeof newCharacter>[0]["run"]) =>
-    start(async () => {
-      setError(null);
-      const r = await newCharacter({ details: { ...details, tags: details.tags ?? suggestedTags(plan.majors) }, plan, run });
-      if (!r.ok) return setError(r.error);
-      clearDraft();
-      router.push(`/p/${r.value.id}`);
-    });
-
   const stepIndex = STEPS.indexOf(step);
   const masterOfDestiny = plan.traits.includes("Master of Destiny");
 
@@ -184,8 +154,6 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
 
   const headerStatus = mode === "create" ? (draftStatus === "saved" ? "Draft saved" : draftStatus === "failed" ? "Draft not saved" : null) : null;
 
-  if (kind === null) return <KindChoice onConfirm={setKind} />;
-  const startData = plan.start ? d.startByName.get(plan.start) : undefined;
 
   return (
     <>
@@ -207,7 +175,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
           <ol className={styles.steps}>
             {STEPS.map((s, i) => {
               const check = checks[s];
-              const state = i === stepIndex && !onRun ? "now" : check.state;
+              const state = i === stepIndex ? "now" : check.state;
               return (
                 <li key={s}>
                   <button
@@ -229,19 +197,6 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
                 </li>
               );
             })}
-            {kind === "run" && (
-              <li>
-                <button type="button" className={`${styles.stepRow} ${styles[onRun ? "now" : "todo"] ?? ""}`} onClick={() => setStep("run")} aria-current={onRun ? "step" : undefined} aria-label={`The run: ${onRun ? "this step" : "not started"}`}>
-                  <span className={styles.stepMark} aria-hidden="true">
-                    <span>{STEPS.length + 1}</span>
-                  </span>
-                  <span className={styles.stepText}>
-                    <span className={styles.stepName}>The run</span>
-                    <span className={styles.stepVal}>Act I, from the start</span>
-                  </span>
-                </button>
-              </li>
-            )}
           </ol>
           {startState && (
             <div className={`frame ${styles.startPanel}`}>
@@ -290,27 +245,6 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
         </aside>
 
         <main className={styles.main}>
-          {onRun ? (
-            signedIn ? (
-              <RunStep
-                initial={{ name: details.name, line: details.description, place: startData?.place ?? "" }}
-                startQuest={startData?.quest ?? null}
-                pending={pending}
-                error={error}
-                onConfirm={finishCharacter}
-                back={
-                  <button type="button" className="btn" onClick={() => setStep("name")}>
-                    Back: {STEP_NAMES.name}
-                  </button>
-                }
-              />
-            ) : (
-              <span className={styles.signIn}>
-                <span className="muted">Sign in to save it</span>
-                {signIn}
-              </span>
-            )
-          ) : (
           <>
           <GameDataProvider version={plan.gameVersion}>
             {/* The version, the first thing a new build sees (WO-36); the sidebar keeps its line. */}
@@ -349,11 +283,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
                   Skip traits
                 </button>
               )}
-              {step === "name" && kind === "run" ? (
-                <button type="button" className="btn btn-primary" onClick={() => setStep("run")} disabled={!details.name.trim() || !plan.race}>
-                  Next: The run
-                </button>
-              ) : step !== "name" ? (
+              {step !== "name" ? (
                 <button type="button" className="btn btn-primary" onClick={() => setStep(STEPS[stepIndex + 1])} disabled={step === "race" && !plan.race}>
                   Next: {STEP_NAMES[STEPS[stepIndex + 1]]}
                 </button>
@@ -370,68 +300,8 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
             </div>
           </div>
           </>
-          )}
         </main>
       </div>
-    </>
-  );
-}
-
-/**
- * New character's one question (WO-114), as the NewCharacter board: a build and a run, or a build
- * alone. A build alone is Set up exactly as before.
- */
-function KindChoice({ onConfirm }: { onConfirm: (k: "run" | "alone") => void }) {
-  const [k, setK] = useState<"run" | "alone">("run");
-  const opts = [
-    {
-      v: "run" as const,
-      name: "A build and a run",
-      text: "The character, then the run through the game: acts, objectives and a tale, kept as you play.",
-      points: ["Character creation, as for a build", "Act I from where the character starts", "Objectives you or your assistant add", "The build shares on its own, the run when you choose"],
-    },
-    {
-      v: "alone" as const,
-      name: "A build alone",
-      text: "Levels, perks, gear and a guide, to share with other players. No acts or tale.",
-      points: ["Character creation", "Levels, one at a time or Skip ahead", "A guide and a Story if you want them", "A run can be added later"],
-    },
-  ];
-  return (
-    <>
-      <FocusHeader
-        context="New character"
-        actions={
-          <Link href="/" className="btn btn-sm">
-            Cancel
-          </Link>
-        }
-      />
-      <main className={`page ${styles.kindMain}`}>
-        <h1 className={`title ${styles.kindTitle}`}>What are you making?</h1>
-        <div className={styles.kinds} role="radiogroup" aria-label="What are you making?">
-          {opts.map((o) => (
-            <button key={o.v} type="button" role="radio" aria-checked={k === o.v} className={`${styles.kind} ${k === o.v ? styles.kindOn : ""}`} onClick={() => setK(o.v)}>
-              <span className={styles.kindName}>{o.name}</span>
-              <span className={styles.kindText}>{o.text}</span>
-              <ul className={styles.kindPoints}>
-                {o.points.map((pt) => (
-                  <li key={pt}>{pt}</li>
-                ))}
-              </ul>
-              <span className={styles.kindPick}>
-                <span className={styles.kindDot} aria-hidden="true" />
-                <span className={k === o.v ? undefined : "muted"}>{k === o.v ? "Chosen" : "Choose"}</span>
-              </span>
-            </button>
-          ))}
-        </div>
-        <span>
-          <button type="button" className="btn btn-primary" onClick={() => onConfirm(k)}>
-            Confirm
-          </button>
-        </span>
-      </main>
     </>
   );
 }

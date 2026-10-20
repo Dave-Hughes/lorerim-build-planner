@@ -7,9 +7,6 @@ import type { BuildVisibility } from "@/lib/builds/validate";
 import { playthroughsOn } from "@/lib/features";
 import { BOT_MESSAGE, looksLikeBot } from "@/lib/moderation/bot";
 import { currentVersion } from "@/lib/rules/server";
-import { checkNewBuild } from "@/lib/builds/new-build";
-import { insertBuild } from "@/lib/builds/writes";
-import type { BuildDetails } from "@/lib/builds/validate";
 import type { ActInput, ObjectiveInput, SnapshotInput } from "./validate";
 import type { ChapterKind, ObjectiveStatus } from "./types";
 import * as w from "./writes";
@@ -75,35 +72,6 @@ export const readEarly = async (id: string, chapterId: number) => run(null, (u) 
 
 /** A chapter's text from the Story editor, autosaved (the same checks as the Story, WO-79). */
 export const saveChapterDoc = async (id: string, chapterId: number, doc: unknown) => run(id, (u) => w.setChapter(u, id, chapterId, { doc }));
-
-/**
- * New character with a run (WO-114): Set up's build and The run step's run, written together in one
- * transaction, and nothing when either is refused. Opens the run's Play view.
- */
-export async function newCharacter(input: { details: BuildDetails; plan: unknown; run: w.RunInput }): Promise<ActionResult<{ id: string; buildId: string }>> {
-  if (!playthroughsOn()) return { ok: false, error: "Not found." };
-  const session = await auth();
-  const userId = session?.user?.id;
-  if (!userId) return { ok: false, error: "Sign in with Discord to save a build." };
-  const checked = await checkNewBuild(userId, input);
-  if (!checked.ok) return checked;
-  let run: w.PreparedRun;
-  try {
-    run = w.prepareRun(input.run);
-  } catch (e) {
-    if (e instanceof w.PlaythroughError) return { ok: false, error: e.message };
-    throw e;
-  }
-  let id = "";
-  const buildId = await insertBuild(userId, checked.details, checked.plan, null, (b) => {
-    const r = w.runStatements(userId, b, checked.plan.gameVersion, run, null);
-    id = r.id;
-    return r.statements;
-  });
-  revalidatePath("/");
-  revalidatePath("/me");
-  return { ok: true, value: { id, buildId } };
-}
 
 /** Add a run to a build alone (WO-114), from the same step. */
 export const addRun = async (buildId: string, input: w.RunInput) =>
