@@ -76,3 +76,23 @@ test("Wyrmstooth: level and main quest ticked, Rise in the East crossed, journal
   await expect(opening.getByRole("button", { name: /^Show the next \d+ entr/ })).toBeVisible();
   await expect(opening.getByText("These give the story away")).toBeVisible();
 });
+
+test("Blood on the Ice: How it can end stays closed until asked for, then gives both endings", async ({ page }) => {
+  await page.goto("/quests/blood-on-the-ice");
+  const quest = page.locator("#q-MS11");
+  await quest.getByRole("button", { name: "Journal ›" }).click();
+  const ends = quest.locator("details", { hasText: "How it can end" });
+  await expect(ends).not.toHaveAttribute("open", "");
+  await expect(quest.getByText("Calixto Corrium was the Butcher of Windhelm")).toBeHidden();
+  await ends.getByText("How it can end").click();
+  await expect(quest.getByText("Wuunferth the Unliving was the Butcher of Windhelm")).toBeVisible();
+  await expect(quest.getByText("Calixto Corrium was the Butcher of Windhelm")).toBeVisible();
+});
+
+test("a link to #end-<quest> opens its row with How it can end still closed", async ({ page }) => {
+  await page.goto("/quests/dark-brotherhood#end-DB01");
+  const ends = page.locator("#end-DB01");
+  await expect(ends).toBeVisible();
+  await expect(ends).not.toHaveAttribute("open", "");
+  await expect(page.getByText("I killed Grelod the Kind")).toBeHidden();
+});

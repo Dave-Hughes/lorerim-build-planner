@@ -4755,7 +4755,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - A quest's page (`/quests/<line>/<quest>` or the line page's quest rows): How it starts (from the per-quest check, as the story page shows it), How it can end (Part 1), both marked checked or not. The line page's Where you are reads `openFor`.
 
 ### Done when
-- [ ] Every quest in `quests.json` has `endings`; Blood on the Ice lists two with their when; the page shows them closed by default.
+- [x] Every quest in `quests.json` has `endings`; Blood on the Ice lists two with their when; the page shows them closed by default. (Mac, 20 Oct: done except the when itself. `quests.py` now keeps each log entry's flags and CTDA conditions in plain words, tested on a built plugin, but this Mac has no LoreRim install to re-run it; until `python3 scripts/gamedata/quests.py` runs on the PC and `build.py` after it, `quest_pages.py` reads the endings from the stage flags already in `quests_raw.json`, with no when. Blood on the Ice's two endings, stages 100 and 250, show today. 181 of the 1,240 quests flag no ending, Caught Red Handed among them, and say so.)
 - [ ] `story_check_all.py` runs a batch on Dave's PC and resumes after a stop; the `stories` batch is committed and the Companions, College, Thieves Guild, Dark Brotherhood and Dawnguard results match the 19 Oct crawl.
 - [ ] `get_quest` answers open for you / locked, because / unknown, and `suggest_quests` never offers an unknown quest.
 - [ ] The style guide carries the two rules; a quest with an unchecked start is answered "unknown" through the door, checked by the WO-108 e2e.

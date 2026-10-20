@@ -5,7 +5,7 @@ import { getBuild as readableBuild } from "@/lib/builds/queries";
 import { signedIn, whoami, type PlannerAuth } from "@/lib/oauth/mcp-auth";
 import { creationFields, gearRow, levelFields } from "./build-tools";
 import { versionData } from "./errors";
-import { DEFAULT_VERSION, FACT_KINDS, FactsError, checkPlan, checkProgression, getPerk, getQuestStart, getSpell, searchFacts, styleGuide } from "./facts";
+import { DEFAULT_VERSION, FACT_KINDS, FactsError, checkPlan, checkProgression, getPerk, getQuest, getSpell, searchFacts, styleGuide } from "./facts";
 
 /**
  * The facts tools (WO-108), open with no sign-in, and whoami and get_style_guide. Out of the route so
@@ -57,18 +57,29 @@ export function registerFactTools(server: Server, guarded: Guarded) {
     },
     async ({ id, name, version: v }) => guarded(() => getSpell({ id, name }, v)),
   );
+  const questInput = {
+    id: z.string().min(1).max(120).optional().describe("A quest line or story id from search_facts, or a quest's EDID."),
+    name: z.string().min(1).max(120).optional().describe("A quest's, quest line's or story's name."),
+    version,
+  };
+  server.registerTool(
+    "get_quest",
+    {
+      title: "A quest",
+      description:
+        "Get a LoreRim quest, quest line or story by id or name: how it starts (who, where, how, its level gate and what else it needs, with where each fact was checked; unchecked lines say so and give no instructions), and the quest's objectives and the endings its records list, each with when it shows. A line or story answers for its opening quest.",
+      inputSchema: z.object(questInput),
+    },
+    async ({ id, name, version: v }) => guarded(() => getQuest({ id, name }, v)),
+  );
   server.registerTool(
     "get_quest_start",
     {
       title: "How a quest line starts",
-      description:
-        "Get how a LoreRim quest line or story starts: who, where, how, its level gate and what else it needs, with where each fact was checked; unchecked lines say so and give no instructions.",
-      inputSchema: z.object({
-        id: z.string().min(1).max(120).describe("A quest line or story id, from search_facts."),
-        version,
-      }),
+      description: "The same as get_quest, kept for assistants that still call it by this name. Use get_quest.",
+      inputSchema: z.object(questInput),
     },
-    async ({ id, version: v }) => guarded(() => getQuestStart(id, v)),
+    async ({ id, name, version: v }) => guarded(() => getQuest({ id, name }, v)),
   );
   server.registerTool(
     "check_progression",

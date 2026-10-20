@@ -1,4 +1,5 @@
 """quest_pages.py: the Quests pages' data rules (WO-100)."""
+import json
 import os
 import sys
 import unittest
@@ -84,6 +85,63 @@ class QuestPagesTest(unittest.TestCase):
         self.assertEqual(out["after"], ["main-quest"])
         self.assertEqual((out["size"], out["note"]), ("1 hour", "Trapped."))
         self.assertEqual(out["checked"], {"size": "mod page", "note": "files"})
+
+
+
+RAW = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "gamedata", "5.0.4.8", "quests_raw.json")
+
+
+class EndingsTest(unittest.TestCase):
+    """WO-115: each quest's stages and how it can end, on three quests from the records and the shape quests.py now writes."""
+
+    @classmethod
+    def setUpClass(cls):
+        with open(RAW, encoding="utf-8") as f:
+            cls.raw = {q["edid"]: q for q in json.load(f)["quests"]}
+
+    def endings(self, edid):
+        return qp.endings_of(qp.stages_of(self.raw[edid]))
+
+    def test_blood_on_the_ice_ends_two_ways(self):
+        ends = self.endings("MS11")
+        self.assertEqual([(e["stage"], e.get("completes")) for e in ends], [(100, True), (250, True)])
+        self.assertIn("Wuunferth the Unliving was the Butcher of Windhelm", ends[0]["text"])
+        self.assertIn("Calixto Corrium was the Butcher of Windhelm", ends[1]["text"])
+
+    def test_innocence_lost_ends_with_grelod_dead_either_way(self):
+        ends = self.endings("DB01")
+        self.assertEqual([e["stage"] for e in ends], [199, 200])
+        self.assertTrue(ends[1]["text"].startswith("I killed Grelod the Kind"))
+        # Stage 201 repeats 199's words but doesn't end the quest.
+        stages = {st["index"]: st for st in qp.stages_of(self.raw["DB01"])}
+        self.assertEqual(stages[201]["log"], [{"text": stages[199]["log"][0]["text"]}])
+
+    def test_a_quest_with_no_ending_in_its_records(self):
+        self.assertEqual(self.endings("FreeformRiften11"), [])
+        self.assertEqual(qp.stages_of(self.raw["FreeformRiften11"]), [])
+
+    def test_entries_from_quests_py_keep_their_own_flags_and_when(self):
+        q = {"stages": [
+            {"index": 200, "log": ["Kept.", "Refused."], "completes": True, "fails": True,
+             "entries": [{"text": "Kept.", "completes": True}, {"text": "Refused.", "fails": True, "conditions": [{"fn": "GetStageDone"}], "when": "Stage 20 of this quest done"}]},
+            {"index": 10, "log": ["Begun."], "entries": [{"text": "Begun."}]},
+            {"index": 255, "entries": [{"text": "", "completes": True}]},
+        ]}
+        stages = qp.stages_of(q)
+        self.assertEqual([st["index"] for st in stages], [10, 200, 255])
+        self.assertEqual(stages[1]["log"][1], {"text": "Refused.", "fails": True, "when": "Stage 20 of this quest done"})
+        self.assertEqual(qp.endings_of(stages), [
+            {"stage": 200, "text": "Kept.", "completes": True},
+            {"stage": 200, "text": "Refused.", "fails": True, "when": "Stage 20 of this quest done"},
+            {"stage": 255, "text": "", "completes": True},
+        ])
+
+    def test_every_quest_on_the_pages_has_endings(self):
+        line = {"id": "l", "name": "L", "category": "lands", "sources": [{"name": "Skyrim"}], "opening": "MS11",
+                "quests": [{"id": self.raw[e]["id"]} for e in ("MS11", "DB01", "FreeformRiften11")], "checked": {}}
+        out = qp.build_quests([line], list(self.raw.values()), [])[0]["quests"]
+        self.assertEqual([len(q["endings"]) for q in out], [2, 2, 0])
+        self.assertEqual(out[0]["journal"], qp.journal(self.raw["MS11"]))
 
 
 if __name__ == "__main__":

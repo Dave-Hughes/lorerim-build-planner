@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
 import sample from "@/lib/rules/__fixtures__/sample-build.json";
 import { mcpOn } from "@/lib/features";
+import { questsData } from "@/lib/quests/data";
 import { answer, MAX_BYTES } from "./answer";
-import { FactsError, checkProgression, getPerk, getQuestStart, getSpell, searchFacts, styleGuide, versionData } from "./facts";
+import { FactsError, checkProgression, getPerk, getQuest, getQuestStart, getSpell, searchFacts, styleGuide, versionData } from "./facts";
 import { plainOf } from "./plan";
 import type { BuildPlan } from "@/lib/rules/types";
 
@@ -77,7 +78,9 @@ describe("the facts tools (WO-108)", () => {
 
   it("get_style_guide is the planner's writing rules", () => {
     expect(styleGuide()).toMatch(/^# How to write for LoreRim Build Planner/);
+    expect(styleGuide()).toContain("Never say how a quest ends unless the planner lists that ending.");
   });
+
 
   it("cuts an answer at 64 KB and says so", () => {
     const big = answer("x".repeat(MAX_BYTES * 2)).content[0].text;
@@ -90,5 +93,44 @@ describe("the facts tools (WO-108)", () => {
     expect(mcpOn({ NODE_ENV: "production", VERCEL_ENV: "preview" })).toBe(true);
     expect(mcpOn({ NODE_ENV: "production", VERCEL_ENV: "production" })).toBe(false);
     expect(mcpOn({ NODE_ENV: "production", VERCEL_ENV: "production", FEATURE_MCP: "on" })).toBe(true);
+  });
+});
+
+describe("get_quest (WO-115)", () => {
+  it("gives Blood on the Ice's two endings, by name or EDID, with its objectives", () => {
+    for (const q of [getQuest({ name: "Blood on the Ice" }), getQuest({ id: "MS11" }), getQuest({ id: "blood-on-the-ice" })]) {
+      expect(q.quest).toMatchObject({ edid: "MS11", name: "Blood on the Ice" });
+      expect(q.quest.endings.map((e) => [e.stage, e.ends])).toEqual([
+        [100, "completes"],
+        [250, "completes"],
+      ]);
+      expect(q.quest.endings[0].text).toContain("Wuunferth the Unliving was the Butcher of Windhelm");
+      expect(q.quest.endings[1].text).toContain("Calixto Corrium was the Butcher of Windhelm");
+      expect(q.quest.objectives.length).toBeGreaterThan(0);
+      expect(q.quest).not.toHaveProperty("note");
+    }
+  });
+
+  it("gives Innocence Lost's endings with the Dark Brotherhood's start", () => {
+    const q = getQuest({ id: "DB01" });
+    expect(q).toMatchObject({ kind: "story", line: { id: "dark-brotherhood" } });
+    expect(q.quest).toMatchObject({ edid: "DB01", name: "Innocence Lost" });
+    expect(q.quest.objectives).toContain("Talk to Aventus Aretino");
+    expect(q.quest.endings.map((e) => e.stage)).toEqual([199, 200]);
+    expect(q.quest.endings[1].text).toMatch(/^I killed Grelod the Kind/);
+  });
+
+  it("says so when a quest's records list no ending", () => {
+    const q = getQuest({ name: "Caught Red Handed" });
+    expect(q.quest).toMatchObject({ edid: "FreeformRiften11", endings: [] });
+    expect(q.quest.note).toMatch(/no ending/);
+  });
+
+  it("a line answers for its opening quest; get_quest_start is the same answer", () => {
+    expect(getQuest({ id: "gravewind" }).quest.edid).toBe(questsData().byId.get("gravewind")!.opening);
+    expect(getQuestStart("become-the-dragonborn")).toEqual(getQuest({ id: "become-the-dragonborn" }));
+    expect(getQuest({ name: "Become the Dragonborn" }).quest.name).toBe("Unbound");
+    expect(() => getQuest({ name: "No Such Quest" })).toThrow(FactsError);
+    expect(() => getQuest({})).toThrow(FactsError);
   });
 });

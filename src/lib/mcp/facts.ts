@@ -5,8 +5,9 @@ import { perkText, rankCount, type GameData, type Perk } from "@/lib/rules/data"
 import type { BuildPlan } from "@/lib/rules/types";
 import { currentVersion } from "@/lib/rules/versions";
 import { categories, homeName, questsData } from "@/lib/quests/data";
-import { storyById, storyOfLine } from "@/lib/quests/stories-data";
-import { storyOrder } from "@/lib/quests/story";
+import { stories, storyById, storyOfLine } from "@/lib/quests/stories-data";
+import { storyOrder, type Story } from "@/lib/quests/story";
+import type { Quest, QuestLine } from "@/lib/quests/types";
 
 /**
  * The planner's facts for assistants (WO-108): read-only answers from src/data/lorerim-<version>/,
@@ -144,11 +145,8 @@ export function getSpell(args: { id?: string; name?: string }, version = DEFAULT
  * A quest line's or story's start. Only lines that have passed the start check (those written up as
  * a story) are answered in full; for the rest, the name and category with checked: "not yet".
  */
-export function getQuestStart(id: string, version = DEFAULT_VERSION) {
-  const { byId } = questsFor(version);
-  const story = storyById(id) ?? storyOfLine(id);
-  const line = byId.get(story?.line ?? id);
-  if (!line) throw new FactsError(`No quest line or story with the id ${id}. search_facts finds them by name.`);
+/** How a line or story starts, with where each fact was checked; an unchecked line gives no instructions. */
+function questStart(line: QuestLine, story: Story | undefined) {
   const category = homeName(line.category);
   if (!story)
     return {
@@ -179,6 +177,55 @@ export function getQuestStart(id: string, version = DEFAULT_VERSION) {
       ...(o.or ? { or: o.or } : {}),
     })),
   };
+}
+
+/** One quest's objectives and the endings its records flag, each with its journal line and when it shows. */
+function questFacts(q: Quest) {
+  return {
+    edid: q.edid,
+    name: q.name,
+    objectives: q.objectives,
+    endings: q.endings.map((e) => ({ stage: e.stage, ends: e.fails ? ("fails" as const) : ("completes" as const), ...(e.text ? { text: e.text } : {}), ...(e.when ? { when: e.when } : {}) })),
+    ...(q.endings.length ? {} : { note: "The records flag no ending for this quest. Don't say how it ends." }),
+  };
+}
+
+/**
+ * get_quest (WO-115): a story, quest line or one quest, by id (a line or story id from search_facts, or
+ * a quest's EDID) or by name. Answers how it starts, as get_quest_start did, and the quest's objectives
+ * and endings: the named quest, or the line's opening quest.
+ */
+export function getQuest({ id, name }: { id?: string; name?: string }, version = DEFAULT_VERSION) {
+  const { byId, lines } = questsFor(version);
+  if (!id && !name) throw new FactsError("Give the quest's id or name. search_facts finds quest lines and stories by name.");
+  const quests = lines.flatMap((line) => line.quests.map((quest) => ({ line, quest })));
+  let line: QuestLine | undefined;
+  let story: Story | undefined;
+  let quest: Quest | undefined;
+  if (id) {
+    story = storyById(id);
+    line = byId.get(story?.line ?? id);
+    const hit = line ? undefined : quests.find((x) => norm(x.quest.edid) === norm(id));
+    if (hit) ({ line, quest } = hit);
+  } else {
+    const want = norm(name!);
+    story = stories().find((s) => norm(s.name) === want);
+    line = story ? byId.get(story.line) : lines.find((l) => norm(l.name) === want);
+    if (!line) {
+      const hits = quests.filter((x) => norm(x.quest.name) === want);
+      if (hits.length > 1) throw new FactsError(`${hits.length} quests are named ${name}: ${hits.map((x) => `${x.quest.edid} in ${x.line.name}`).join(", ")}. Ask again with the EDID as id.`);
+      if (hits[0]) ({ line, quest } = hits[0]);
+    }
+  }
+  if (!line) throw new FactsError(`No quest, quest line or story ${id ? `with the id ${id}` : `named ${name}`}. search_facts finds them by name.`);
+  story ??= storyOfLine(line.id);
+  quest ??= line.quests.find((q) => q.edid === (story ? storyOrder(story)[0].edid : line.opening)) ?? line.quests[0];
+  return { ...questStart(line, story), quest: questFacts(quest) };
+}
+
+/** get_quest_start, kept as an alias of get_quest for a release (WO-115). */
+export function getQuestStart(id: string, version = DEFAULT_VERSION) {
+  return getQuest({ id }, version);
 }
 
 /** A plan run through the planner's rules: its issues by level, where it stands at its last level, and the perks it can take there. */

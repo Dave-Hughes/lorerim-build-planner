@@ -8,12 +8,27 @@ export interface QuestSource {
   base?: true;
 }
 
+/** A log entry (WO-115): its journal line, whether it completes or fails the quest, and when it shows, in plain words. */
+export interface LogEntry {
+  text: string;
+  completes?: true;
+  fails?: true;
+  when?: string;
+}
+
+export interface QuestEnding extends LogEntry {
+  stage: number;
+}
+
 export interface Quest {
   edid: string;
   name: string;
   type: string | null;
   xp: number;
   journal: string[];
+  stages: { index: number; log: LogEntry[] }[];
+  /** The log entries that complete or fail it, in stage order; empty when the records flag none. */
+  endings: QuestEnding[];
   objectives: string[];
   rewards?: { gold?: "small" | "medium" | "large"; items?: string[] };
 }

@@ -807,6 +807,52 @@ a.mod:hover {
   align-items: center;
   font-size: 14px;
 }
+/* How it can end (WO-115): closed by default, under the journal. */
+.ends {
+  border-top: 1px solid var(--rule-soft);
+  padding-top: 10px;
+  scroll-margin-top: 96px;
+}
+.ends > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--ember);
+}
+.ends > summary::-webkit-details-marker {
+  display: none;
+}
+.ends > summary::before {
+  content: "\203A";
+  font-weight: 700;
+  transition: transform 0.15s;
+}
+.ends[open] > summary::before {
+  transform: rotate(90deg);
+}
+.ends[open] > summary {
+  margin-bottom: 10px;
+}
+.ends > p {
+  margin: 0 0 10px;
+}
+.endLink {
+  font-size: 14px;
+  color: var(--ember);
+  align-self: flex-start;
+}
+.endLink:hover {
+  color: var(--ember-hover);
+}
+.ending {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
 .first {
   display: inline-flex;
   align-items: center;

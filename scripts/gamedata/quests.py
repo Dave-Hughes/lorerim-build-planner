@@ -16,6 +16,10 @@ For each kept quest: id, EDID, name, the plugin that made it and the ones that e
 (DNAM), its stages in order (index, log entries, whether one completes or fails the quest), its
 objectives, and the MO2 mod folder its plugin loads from with that folder's Nexus modid (recipes.py's
 lookup). Text is the game's own words, from the plugins' string tables when they're localized.
+Each stage also lists its log entries one by one (`entries`, WO-115): the text, whether that entry
+completes or fails the quest (QSDT), and the conditions it shows under (the CTDA subrecords after its
+QSDT), kept as quest_starts.ctda reads them and in plain words (`when`): "Stage 160 of this quest done",
+"global X is 1", "the player is in faction Y". The names come from a second pass over the load order.
 
 Who gives a quest, and where, sits in its aliases and dialogue conditions; those aren't plain facts
 in the records and are left out.
@@ -43,6 +47,7 @@ from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from esp import header, iter_group, rec_data, resolve, subrecs  # noqa: E402
+from quest_starts import ctda, describe_condition  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -53,6 +58,9 @@ TYPES = {0: None, 1: "Main Quest", 2: "Mages Guild", 3: "Thieves Guild", 4: "Dar
          7: "Daedric", 8: "Side Quest", 9: "Civil War", 10: "Dawnguard", 11: "Dragonborn"}
 # Log entry flags (QSDT).
 COMPLETES, FAILS = 0x01, 0x02
+RUN_ON_ALIAS = 5  # CTDA run-on type (offset 20): the condition is checked on one of the quest's aliases
+# The records a log entry's conditions name, read in the second pass for their names (and globals' values).
+NAMED = ("QUST", "GLOB", "FACT", "NPC_", "LCTN", "KEYM", "MISC", "BOOK", "WEAP", "ARMO", "RACE")
 BASE = {"skyrim.esm", "update.esm", "dawnguard.esm", "hearthfires.esm", "dragonborn.esm"}
 # The base game's story lines, by quest type, and what a player calls each.
 STORY_LINES = {"Main Quest": "Main Quest", "Mages Guild": "College of Winterhold", "Companions": "Companions",
@@ -95,8 +103,8 @@ def read_plugin(buf, name, strings=None):
     for o in iter_group(buf, "QUST"):
         _, flags, fid, d = rec_data(buf, o)
         rec = {"plugin": name, "key": list(resolve(fid, masters, name)), "flags": flags, "edid": "", "name": "", "type": None,
-               "stages": [], "objectives": []}
-        stage = entry = objective = None
+               "stages": [], "objectives": [], "aliases": {}}
+        stage = entry = objective = alias = None
         part = "head"  # head, stages, objectives, aliases: subrecord names repeat across the parts
         for s, v in subrecs(d):
             if s == "EDID":
@@ -111,8 +119,13 @@ def read_plugin(buf, name, strings=None):
                 rec["stages"].append(stage)
                 entry = None
             elif s == "QSDT" and stage is not None and part == "stages":
-                entry = {"text": "", "flags": v[0]}
+                entry = {"text": "", "flags": v[0], "conditions": []}
                 stage["log"].append(entry)
+            elif s == "CTDA" and entry is not None and part == "stages" and len(v) >= 24:
+                c = ctda(v, masters, name)
+                if len(v) >= 32 and struct.unpack_from("<I", v, 20)[0] == RUN_ON_ALIAS:
+                    c["alias"] = struct.unpack_from("<i", v, 28)[0]  # parameter 3 holds the alias id
+                entry["conditions"].append(c)
             elif s == "CNAM" and entry is not None and part == "stages":
                 entry["text"] = txt(v).strip()
             elif s == "QOBJ":
@@ -123,6 +136,10 @@ def read_plugin(buf, name, strings=None):
                 objective["text"] = txt(v).strip()
             elif s in ("ANAM", "ALST", "ALLS"):
                 part = "aliases"
+                if s != "ANAM":
+                    alias = struct.unpack_from("<I", v)[0]
+            elif s == "ALID" and part == "aliases":
+                rec["aliases"][alias] = _text(v)
         out.append(rec)
     return out
 
@@ -139,6 +156,19 @@ def describe(rec, editors):
             row["completes"] = True
         if any(e["flags"] & FAILS for e in st["log"]):
             row["fails"] = True
+        entries = []
+        for e in st["log"]:
+            one = {"text": e["text"]}
+            if e["flags"] & COMPLETES:
+                one["completes"] = True
+            if e["flags"] & FAILS:
+                one["fails"] = True
+            if e.get("conditions"):
+                one["conditions"] = e["conditions"]
+            if one["text"] or len(one) > 1:
+                entries.append(one)
+        if entries:
+            row["entries"] = entries
         stages.append(row)
     objectives = [{"index": o["index"], "text": o["text"]} for o in sorted(rec["objectives"], key=lambda o: o["index"]) if o["text"]]
     out = {"id": form_id(rec["key"]), "edid": rec["edid"], "name": rec["name"], "type": rec["type"], "plugin": rec["key"][0]}
@@ -147,7 +177,109 @@ def describe(rec, editors):
         out["editedBy"] = others
     out["stages"] = stages
     out["objectives"] = objectives
+    if rec.get("aliases"):
+        out["aliases"] = {str(k): v for k, v in sorted(rec["aliases"].items())}
     return out
+
+
+def _num(v):
+    return int(v) if isinstance(v, float) and v == int(v) else v
+
+
+def condition_words(c, own, names, aliases):
+    """
+    One log entry condition in plain words. `own` is the quest's id, `names` the named records
+    (form id -> {edid, name, value}) and `aliases` the quest's alias names by id. The subject of a log
+    entry's condition is the player unless it runs on an alias.
+    """
+    def nm(fid):
+        n = names.get(fid, {})
+        return n.get("name") or n.get("edid") or fid
+    who = aliases.get(str(c["alias"]), f"alias {c['alias']}") if "alias" in c else "the player"
+    yes = (c["value"] == 1) == (c["cmp"] == "==") if c.get("value") in (0, 1) and c["cmp"] in ("==", "!=") else None
+    fn = c["fn"]
+    if fn == "GetStageDone" and c.get("param") == own and yes is not None:
+        return f"Stage {c.get('stage')} of this quest {'done' if yes else 'not done'}"
+    if fn == "GetGlobalValue" and "value" in c:
+        cmp = {"==": "is", "!=": "is not"}.get(c["cmp"], c["cmp"])
+        return f"global {nm(c['param'])} {cmp} {_num(c['value'])}"
+    if fn == "GetInFaction" and yes is not None:
+        return f"{who} is {'in' if yes else 'not in'} faction {nm(c['param'])}"
+    if fn == "GetIsID" and yes is not None:
+        return f"{who} is {'' if yes else 'not '}{nm(c['param'])}"
+    if fn == "GetDead" and yes is not None:
+        return f"{who} is {'dead' if yes else 'alive'}"
+    if fn == "GetStageDone" and yes is not None:
+        return f"Stage {c.get('stage')} of {nm(c['param'])} {'done' if yes else 'not done'}"
+    words = describe_condition({**c, **({"value": _num(c["value"])} if "value" in c else {})}, names,
+                               {k: {"value": _num(n["value"])} for k, n in names.items() if "value" in n})
+    return f"{who}: {words}" if "alias" in c else words
+
+
+def when_words(conditions, own, names, aliases):
+    """A log entry's conditions as one line: each in plain words, joined by and, or where the record says or."""
+    out = []
+    for i, c in enumerate(conditions):
+        if i:
+            out.append("or" if conditions[i - 1]["or"] else "and")
+        out.append(condition_words(c, own, names, aliases))
+    return " ".join(out)
+
+
+def named_forms(quests):
+    """Every record a kept quest's log entry conditions name: their params and the globals they compare with."""
+    out = set()
+    for q in quests:
+        for st in q["stages"]:
+            for e in st.get("entries", []):
+                for c in e.get("conditions", []):
+                    for k in ("param", "global"):
+                        if isinstance(c.get(k), str):
+                            out.add(c[k])
+    return out
+
+
+def read_names(buf, name, wanted, strings=None):
+    """
+    The records in `wanted` that this plugin holds: {form id: {edid, name, value (globals)}}.
+    `strings` is called for the plugin's string table the first time a localized name needs it.
+    """
+    masters = header(buf)
+    loc = bool(struct.unpack_from("<I", buf, 8)[0] & 0x80)
+    table = None
+    out = {}
+    for grp in NAMED:
+        if grp.encode() not in buf:
+            continue
+        for o in iter_group(buf, grp):
+            t, _, fid, d = rec_data(buf, o)
+            key = form_id(resolve(fid, masters, name))
+            if t != grp or key not in wanted:
+                continue
+            row = {}
+            for s, v in subrecs(d):
+                if s == "EDID":
+                    row["edid"] = _text(v)
+                elif s == "FULL" and "name" not in row:
+                    if loc and len(v) == 4:
+                        if table is None:
+                            table = (strings() if strings else None) or {}
+                        row["name"] = table.get(struct.unpack_from("<I", v)[0], "").strip()
+                    else:
+                        row["name"] = _text(v).strip()
+                elif s == "FLTV" and grp == "GLOB" and len(v) >= 4:
+                    row["value"] = round(struct.unpack_from("<f", v)[0], 4)
+            out[key] = row
+    return out
+
+
+def describe_when(quests, names):
+    """Fills each conditioned log entry's `when`, in plain words."""
+    for q in quests:
+        for st in q["stages"]:
+            for e in st.get("entries", []):
+                if e.get("conditions"):
+                    e["when"] = when_words(e["conditions"], q["id"], names, q.get("aliases", {}))
 
 
 def has_text(q):
@@ -319,6 +451,15 @@ def main():
             winners.pop(key, None)  # keep load order: the winner goes to the end
             winners[key] = r
     quests, counts = index_quests(list(winners.values()), editors)
+    # Second pass: the names of what the log entries' conditions read, the winning version of each.
+    wanted, names = named_forms(quests), {}
+    for n in lo:
+        p = pp.get(n.lower())
+        if p and wanted:
+            names.update(read_names(open(p, "rb").read(), n, wanted, lambda p=p, n=n: localized_strings(p, n) or vanilla_strings(n, ROOT)))
+    for q in quests:
+        names.setdefault(q["id"], {"edid": q["edid"], "name": q["name"]})
+    describe_when(quests, names)
     folders = plugin_folders(ROOT)
     spelling = {n.lower(): n for n in lo}
     for q in quests:

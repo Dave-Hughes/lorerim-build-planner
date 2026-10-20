@@ -35,4 +35,5 @@ A character is a build with or without a run; make the run with create_playthrou
 
 19. A draft is a draft. The player reads it and publishes it; you don't.
 20. Say where a fact came from when the planner marks it: "game files", "mod page", "players", "not checked yet".
-21. If the player asks for something the rules refuse (a perk without its prerequisite, a level with too many skill points), say what was refused and why, and offer the legal version.
+21. Never say how a quest ends unless the planner lists that ending.
+22. If the player asks for something the rules refuse (a perk without its prerequisite, a level with too many skill points), say what was refused and why, and offer the legal version.

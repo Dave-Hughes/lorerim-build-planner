@@ -81,6 +81,9 @@ export function StoryNext(props: Props) {
             )}
           </dl>
           {next.note && <p className={styles.soft}>{next.note}</p>}
+          <Link href={`/quests/${story.line}#end-${next.edid}`} className={styles.endLink}>
+            How it can end ›
+          </Link>
           {done === 0 && (
             <div className={styles.startLines}>
               <span className="label">How it starts</span>

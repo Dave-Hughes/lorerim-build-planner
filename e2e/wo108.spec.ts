@@ -21,7 +21,7 @@ test("initialize, tools/list and one call of each tool", async ({ baseURL }) => 
   const client = await connect(baseURL!, fakeIp());
   expect(client.getServerVersion()?.name).toBe("LoreRim Build Planner");
   const { tools } = await client.listTools();
-  expect(tools.map((t) => t.name).sort()).toEqual(["add_act", "add_level", "add_objective", "check_progression", "create_build", "create_playthrough", "finish_draft", "finish_draft_playthrough", "get_build", "get_perk", "get_playthrough", "get_quest_start", "get_spell", "get_style_guide", "list_my_builds", "list_my_playthroughs", "move_act", "move_objective", "remove_act", "remove_chapter", "remove_last_level", "remove_objective", "search_facts", "set_act", "set_chapter", "set_details", "set_gear", "set_level", "set_objective", "set_playthrough", "set_snapshot", "set_status", "suggest_objective", "suggest_quests", "whoami", "write_chapter"]);
+  expect(tools.map((t) => t.name).sort()).toEqual(["add_act", "add_level", "add_objective", "check_progression", "create_build", "create_playthrough", "finish_draft", "finish_draft_playthrough", "get_build", "get_perk", "get_playthrough", "get_quest", "get_quest_start", "get_spell", "get_style_guide", "list_my_builds", "list_my_playthroughs", "move_act", "move_objective", "remove_act", "remove_chapter", "remove_last_level", "remove_objective", "search_facts", "set_act", "set_chapter", "set_details", "set_gear", "set_level", "set_objective", "set_playthrough", "set_snapshot", "set_status", "suggest_objective", "suggest_quests", "whoami", "write_chapter"]);
 
   // No unions in any tool's input (WO-111b): no anyOf or oneOf, and no field of two types.
   for (const t of tools) expect(JSON.stringify(t.inputSchema), t.name).not.toMatch(/"(anyOf|oneOf)"|"type":\[/);
@@ -32,6 +32,8 @@ test("initialize, tools/list and one call of each tool", async ({ baseURL }) => 
   expect(spell).toMatchObject({ school: "Destruction", tier: "Apprentice", soldBy: { checked: "not yet" } });
   expect(JSON.parse(textOf(await client.callTool({ name: "get_quest_start", arguments: { id: "gravewind" } })))).toMatchObject({ checked: "not yet" });
   expect(JSON.parse(textOf(await client.callTool({ name: "get_quest_start", arguments: { id: "become-the-dragonborn" } })))).toMatchObject({ checked: "files", firstQuest: { name: "Unbound" } });
+  const ice = JSON.parse(textOf(await client.callTool({ name: "get_quest", arguments: { name: "Blood on the Ice" } })));
+  expect(ice.quest.endings.map((e: { stage: number }) => e.stage)).toEqual([100, 250]);
   expect(JSON.parse(textOf(await client.callTool({ name: "check_progression", arguments: { build: plan } })))).toMatchObject({ levels: 6 });
   expect(textOf(await client.callTool({ name: "get_style_guide", arguments: {} }))).toContain("How to write for LoreRim Build Planner");
 

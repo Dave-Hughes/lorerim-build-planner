@@ -210,7 +210,7 @@ export default async function QuestLinePage({ params }: { params: Params }) {
                 </div>
                 <ul className={styles.qlist}>
                   {story.map((q) => (
-                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening} journal={q.journal} />
+                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening} journal={q.journal} endings={q.endings} />
                   ))}
                 </ul>
               </div>
@@ -225,7 +225,7 @@ export default async function QuestLinePage({ params }: { params: Params }) {
                 </div>
                 <ul className={styles.qlist}>
                   {jobs.map((q) => (
-                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening} journal={q.journal} />
+                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening} journal={q.journal} endings={q.endings} />
                   ))}
                 </ul>
               </div>

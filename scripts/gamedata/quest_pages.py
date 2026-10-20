@@ -8,7 +8,10 @@ Each line keeps the curation's facts and gains:
   giver          the opening quest's named giver, { name, place }, when it's a person, not a role
   firstObjective the opening quest's first objective, when it names who or where
   quests         each quest's edid, name, type, XP, journal (log entries in stage order),
-                 objectives and rewards (gold tier, weapons and armour)
+                 stages (WO-115: each stage's log entries with whether it completes or fails the
+                 quest and when it shows, in plain words), endings (the entries that complete or
+                 fail it, in stage order; [] when the records flag none), objectives and rewards
+                 (gold tier, weapons and armour)
   xpTotal        the line's quest XP
 """
 import re
@@ -123,6 +126,36 @@ def journal(q):
     return [t for s in sorted(q.get("stages", []), key=lambda s: s.get("index", 0)) for t in s.get("log", []) if t]
 
 
+def entries_of(stage):
+    """
+    A raw stage's log entries, one by one. quests.py writes `entries` (WO-115); a quests_raw.json from
+    before it has only the stage's texts and whether any entry completes or fails it, so each text
+    takes the stage's flags, and a flagged stage with no text is one entry with none.
+    """
+    if "entries" in stage:
+        return stage["entries"]
+    flags = {k: True for k in ("completes", "fails") if stage.get(k)}
+    texts = [t for t in stage.get("log", []) if t]
+    if not texts:
+        return [{"text": "", **flags}] if flags else []
+    return [{"text": t, **flags} for t in texts]
+
+
+def stages_of(q):
+    """A quest's stages with log entries: [{ index, log: [{ text, completes, fails, when }] }], in order."""
+    out = []
+    for st in sorted(q.get("stages", []), key=lambda s: s.get("index", 0)):
+        log = [{"text": e.get("text", ""), **{k: e[k] for k in ("completes", "fails", "when") if e.get(k)}} for e in entries_of(st)]
+        if log:
+            out.append({"index": st["index"], "log": log})
+    return out
+
+
+def endings_of(stages):
+    """The log entries that complete or fail the quest, in stage order, each with its stage."""
+    return [{"stage": st["index"], **e} for st in stages for e in st["log"] if e.get("completes") or e.get("fails")]
+
+
 def build_quests(lines, quests_raw, givers_raw):
     """The curated lines (questlines.curate) -> the quests.json lines, in curation order."""
     by_id = {q["id"]: q for q in quests_raw}
@@ -166,6 +199,7 @@ def build_quests(lines, quests_raw, givers_raw):
             items = reward_items(rw)
             if items:
                 rewards["items"] = items
+            stages = stages_of(q)
             quests.append(
                 {
                     "edid": q["edid"],
@@ -173,6 +207,8 @@ def build_quests(lines, quests_raw, givers_raw):
                     "type": q.get("type"),
                     "xp": xp_for(q.get("type")),
                     "journal": journal(q),
+                    "stages": stages,
+                    "endings": endings_of(stages),
                     "objectives": [o["text"] for o in sorted(q.get("objectives", []), key=lambda o: o.get("index", 0)) if o.get("text")],
                     **({"rewards": rewards} if rewards else {}),
                 }
