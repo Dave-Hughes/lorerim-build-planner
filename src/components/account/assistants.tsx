@@ -12,12 +12,13 @@ export interface AssistantRow {
   may: string[];
   since: Date;
   lastUsed: Date | null;
-  /** Builds its tools drafted (WO-110). */
+  /** Builds its tools drafted (WO-110), or characters (WO-114). */
   drafted: number;
 }
 
 /** Assistants (WO-109): each connected assistant, what it may do, and Revoke. */
-export function Assistants({ rows }: { rows: AssistantRow[] }) {
+/** `noun`: what its drafts are counted as, "build", or "character" once a build and a run are one (WO-114). */
+export function Assistants({ rows, noun = "build" }: { rows: AssistantRow[]; noun?: "build" | "character" }) {
   const [revoked, setRevoked] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [pending, start] = useTransition();
@@ -37,7 +38,7 @@ export function Assistants({ rows }: { rows: AssistantRow[] }) {
                 <span className={styles.name}>{r.name}</span>
                 <span className={styles.may}>
                   {r.may.join(" | ")}
-                  {r.drafted > 0 && <span className="muted"> | {r.drafted === 1 ? "1 build drafted" : `${r.drafted} builds drafted`}</span>}
+                  {r.drafted > 0 && <span className="muted"> | {r.drafted === 1 ? `1 ${noun} drafted` : `${r.drafted} ${noun}s drafted`}</span>}
                 </span>
                 <span className="muted">
                   Connected <LocalDate date={r.since} />

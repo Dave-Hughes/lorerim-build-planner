@@ -1,5 +1,5 @@
 import "server-only";
-import { and, asc, desc, eq, inArray, sql } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, isNotNull, sql } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { isValidBuildId } from "@/lib/builds/ids";
 import { imageHold } from "@/lib/builds/queries";
@@ -119,6 +119,7 @@ export interface PlaythroughCard {
   currentAct: number;
   author: string;
   updatedAt: Date;
+  run: RunSummary;
 }
 
 /** Cards for a grid: each one's act count and the act the player is in. */
@@ -144,19 +145,47 @@ async function cards(where: ReturnType<typeof eq> | ReturnType<typeof and>, limi
     .limit(limit);
   if (!rows.length) return [];
   // The act the player is in: the first with an objective not done. Worked out as the page does.
-  const full = await Promise.all(rows.map((r) => currentActOf(r.id)));
-  return rows.map((r, i) => ({ ...r, author: r.author ?? "Unknown", currentAct: full[i] }));
+  const full = await Promise.all(rows.map((r) => runOf(r.id)));
+  return rows.map((r, i) => ({ ...r, author: r.author ?? "Unknown", currentAct: full[i].act, run: full[i] }));
 }
 
-async function currentActOf(id: string): Promise<number> {
+/** Where a run stands, for a card (WO-114): its act, place, level and day from the snapshot, and n of m done. */
+export interface RunSummary {
+  id: string;
+  /** The act the player is in, 1 for Act I; 0 with no acts. */
+  act: number;
+  actName: string | null;
+  place: string | null;
+  level: number | null;
+  day: number | null;
+  done: number;
+  total: number;
+}
+
+async function runOf(id: string): Promise<RunSummary> {
   const [acts, snapshots] = await Promise.all([
     db().select().from(schema.playthroughActs).where(eq(schema.playthroughActs.playthroughId, id)),
     db().select().from(schema.playthroughSnapshots).where(eq(schema.playthroughSnapshots.playthroughId, id)).limit(1),
   ]);
-  if (!acts.length) return 0;
+  const snap = (snapshots[0] as SnapshotRow | undefined) ?? null;
+  const none = { id, act: 0, actName: null, place: null, level: snap?.level ?? null, day: snap?.day ?? null, done: 0, total: 0 };
+  if (!acts.length) return none;
   const objectives = await db().select().from(schema.playthroughObjectives).where(inArray(schema.playthroughObjectives.actId, acts.map((a) => a.id)));
-  const v = assemble({ acts, objectives, chapters: [], snapshot: (snapshots[0] as SnapshotRow | undefined) ?? null, link: () => null });
-  return v.current ? v.acts.indexOf(v.current) + 1 : 0;
+  const v = assemble({ acts, objectives, chapters: [], snapshot: snap, link: () => null });
+  const cur = v.current;
+  return { ...none, act: cur ? v.acts.indexOf(cur) + 1 : 0, actName: cur?.name ?? null, place: snap?.place || cur?.place || null, done: v.done, total: v.total };
+}
+
+/** Each of the player's builds with a run (WO-114): the build's id to its latest run's summary. */
+export async function runsByBuild(userId: string): Promise<Map<string, RunSummary & { name: string }>> {
+  const rows = await db()
+    .select({ id: schema.playthroughs.id, buildId: schema.playthroughs.buildId, name: schema.playthroughs.name })
+    .from(schema.playthroughs)
+    .where(and(eq(schema.playthroughs.ownerId, userId), isNotNull(schema.playthroughs.buildId)))
+    .orderBy(desc(schema.playthroughs.updatedAt));
+  const out = new Map<string, RunSummary & { name: string }>();
+  for (const r of rows) if (r.buildId && !out.has(r.buildId)) out.set(r.buildId, { ...(await runOf(r.id)), name: r.name });
+  return out;
 }
 
 export const listMyPlaythroughs = (userId: string) => cards(eq(schema.playthroughs.ownerId, userId), 100);

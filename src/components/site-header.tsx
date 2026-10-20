@@ -3,6 +3,7 @@ import { auth, signIn, signOut } from "@/auth";
 import { Brand } from "@/components/ui/brand";
 import { handleFor } from "@/lib/builds/queries";
 import { isAdmin } from "@/lib/users/admin";
+import { playthroughsOn } from "@/lib/features";
 import { looksLikeBot } from "@/lib/moderation/bot";
 import { countOpenReview } from "@/lib/moderation/review";
 import { AccountMenu } from "./account-menu";
@@ -19,6 +20,7 @@ export async function SiteHeader() {
   const handle = user?.id ? await handleFor(user.id).catch(() => null) : null;
   // Admins see how much waits on the review list (WO-40).
   const review = user?.id && (await isAdmin(user.id).catch(() => false)) ? await countOpenReview().catch(() => 0) : null;
+  const newLabel = playthroughsOn() ? "New character" : "New build";
 
   return (
     <header className={styles.header}>
@@ -28,11 +30,12 @@ export async function SiteHeader() {
           <SiteNav />
         </span>
         <div className={styles.actions}>
-          <Link href="/new" className={`btn btn-primary ${styles.newBuild}`} aria-label="New build">
+          {/* A build and a playthrough are one character (WO-114): New character, while playthroughs are on. */}
+          <Link href="/new" className={`btn btn-primary ${styles.newBuild}`} aria-label={newLabel}>
             <span className={styles.newIcon} aria-hidden="true">
               +
             </span>
-            <span className={styles.newLabel}>New build</span>
+            <span className={styles.newLabel}>{newLabel}</span>
           </Link>
           {user ? (
             <AccountMenu

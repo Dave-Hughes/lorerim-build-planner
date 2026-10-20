@@ -337,3 +337,55 @@
   margin: 0;
   font-size: 14px;
 }
+
+/* A character's run on its build's card (WO-114): where it stands, or the way to add one. */
+.run {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 12px;
+  align-items: center;
+  margin-top: 6px;
+  padding: 12px 14px;
+  border: 1px solid var(--rule);
+  background: var(--ground);
+}
+.run b {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.run > span:not(.runCount):not(.runBar) {
+  grid-column: 1 / -1;
+  font-size: 15px;
+  color: var(--text);
+}
+.runLink {
+  justify-self: end;
+  font-size: 14px;
+}
+.runBar {
+  grid-column: 1 / -1;
+  height: 3px;
+  background: var(--rule-soft);
+}
+.runBar i {
+  display: block;
+  height: 100%;
+  background: var(--ember);
+}
+.runCount {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  color: var(--muted);
+}
+.runNone {
+  border-style: dashed;
+}
+.runNone > span:not(.runCount):not(.runBar) {
+  color: var(--muted);
+}

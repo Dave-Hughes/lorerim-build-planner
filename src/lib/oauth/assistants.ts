@@ -6,7 +6,7 @@ import { db, schema } from "@/db";
  * The player's connected assistants (WO-109), for /me: each client with a live refresh token, when it
  * first connected, when it was last used, and what it may do.
  */
-export async function connectedAssistants(userId: string) {
+export async function connectedAssistants(userId: string, characters = false) {
   const now = new Date();
   const live = await db()
     .select({
@@ -30,11 +30,20 @@ export async function connectedAssistants(userId: string) {
     .from(schema.builds)
     .where(and(eq(schema.builds.ownerId, userId), isNotNull(schema.builds.draftedBy)))
     .groupBy(schema.builds.draftedBy);
+  // Characters (WO-114): its builds, and its runs on a build it didn't draft (or on none), counted once.
+  const runs = characters
+    ? await db()
+        .select({ by: schema.playthroughs.draftedBy, n: count() })
+        .from(schema.playthroughs)
+        .leftJoin(schema.builds, eq(schema.builds.id, schema.playthroughs.buildId))
+        .where(and(eq(schema.playthroughs.ownerId, userId), isNotNull(schema.playthroughs.draftedBy), sql`(${schema.builds.draftedBy} is null or ${schema.builds.draftedBy} <> ${schema.playthroughs.draftedBy})`))
+        .groupBy(schema.playthroughs.draftedBy)
+    : [];
   return live
     .map((l) => ({
       clientId: l.clientId,
       name: clients.find((c) => c.id === l.clientId)?.name ?? "An assistant",
-      drafted: drafted.find((x) => x.by === (clients.find((c) => c.id === l.clientId)?.name ?? ""))?.n ?? 0,
+      drafted: [...drafted, ...runs].filter((x) => x.by === (clients.find((c) => c.id === l.clientId)?.name ?? "")).reduce((n, x) => n + x.n, 0),
       scopes: l.scopes ?? [],
       since: used.find((u) => u.clientId === l.clientId)?.first ?? l.since ?? now,
       lastUsed: used.find((u) => u.clientId === l.clientId)?.at ?? null,
