@@ -4707,6 +4707,46 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-115  Quests an assistant can trust: endings, starts for every quest, and "open for you" (20 Oct 2026)
+
+**Why.** Dave: assistants recommend quests he can't take on, call a quest available when it isn't, and tell him a quest ends one way when it ended another. Bob's look (backlog, "Why quest advice goes wrong"): the planner holds 1,240 quests by shape and checked starts for six stories; nobody holds each quest's endings, each quest's start conditions in plain words, or the player's quest state. Both the planner and the Book chat's own index answer those from memory. This order gives the planner the three, in the order they pay off, and makes the door say "open for you" or "unknown" instead of leaving the gap for the assistant to fill.
+
+**Where.** Part 1 on the Mac (data and tools, no PC). Part 2 on the PC in batches (the start check across every line), with Bob merging the results. Parts 3 to 5 on the Mac once Part 2 has its first batch. Behind `FEATURE_QUESTS` where it touches pages.
+
+### Part 1. Endings (Mac)
+- `scripts/gamedata/quests.py` already reads each stage's log entries with their QSDT flags (completes, fails) but drops the CTDA conditions on a log entry and the flags never reach `quests.json`. Keep the conditions (the CTDA subrecords before each QSDT, described in plain words with the describer `quest_starts.py` uses: "Stage 160 of this quest done", "global X is 1", "the player is in faction Y"), and in `quest_pages.py` give each quest `stages: [{ index, log: [{ text, completes, fails, when }] }]` in place of the flat `journal`. Keep `journal` for the pages that read it.
+- `endings` per quest: the log entries flagged completes or fails, with their `when`, in stage order. Blood on the Ice lists two; Caught Red Handed its own; a quest with none says so.
+- Quest pages: a collapsed "How it can end" after the objectives, each ending as its journal line with its when in muted text, closed by default (no spoilers, backlog rule 3). The line page and the story page link to it.
+- The door: `get_quest_start` becomes `get_quest({ name | id, version? })` and answers with what it does now plus `endings` and `objectives`; `get_quest_start` stays as an alias for a release. The style guide gains: "Never say how a quest ends unless the planner lists that ending."
+- Unit tests on three quests (MS11's two endings, DB01, a quest with none); the Quests e2e opens How it can end.
+
+### Part 2. Starts for every quest (PC, in batches)
+- First the five tool gaps in `gamedata/5.0.4.8/story_checks/crawl-2026-10-19.md`: story manager nodes for helper quests, `GetIsID` speakers in other plugins, globals from other plugins, the dialogue that moves a quest to its second objective, and the resumable `SC_PHASE` mode folded into `story_check.py` from the PC's patched copy.
+- A batch runner, `scripts/gamedata/story_check_all.py`: runs the check for every line in `questlines.json` in a given order, one line at a time, writing `gamedata/5.0.4.8/story_checks/<line>.json` and `.md` as today and a checkpoint file so it resumes where it stopped. It runs on Windows (`python story_check_all.py --root C:\LoreRim --batch guilds`) and in the PC's Linux shell in three-minute slices (`--slice 150`), whichever Dave prefers. Batches: `stories` (the 20 story candidates from the backlog), `main`, `guilds`, `daedric`, `lands`, `side`, `followers`.
+- Per quest, the check's answer in plain words goes into `quests.json` through `quest_pages.py`: `start: { needs: ["Level 20", "The House of Horrors done", "Ask Kleppr or Frabbi about the Hall of the Dead"], who, where, task, checked: "files" | "not yet" }`. A need the tool traced is `checked: files`; a quest the tool couldn't trace keeps `not yet` and the page says so. `questlines.json`'s line-level `start`, `gate` and `minLevel` are kept and, where a checked quest start disagrees with the field guide's line text, the checked one wins and the disagreement is listed in `questlines_report.md`.
+- Bob runs the batches and merges; Jeff on PC fixes the tool gaps and writes the runner. A batch is done when its lines' JSON is committed and `build.py` passes.
+
+### Part 3. "Open for you" (Mac, after the first batch)
+- `src/lib/quests/open.ts` gains per-quest needs: `openFor(quest, where)` returns `{ state: "open" | "locked" | "unknown", because: string[] }` from the quest's checked needs against `where` (level, place, finished lines, and quest stages when the snapshot has them). A quest with any need `not yet` is `unknown`, never `open`.
+- `get_quest` and `suggest_quests` take the player's state (level, place, done lines, or a playthrough id whose snapshot carries quest stages) and answer `openFor` for each quest: "open for you", "locked: needs level 20", or "unknown: the start isn't checked". `suggest_quests` offers only `open` quests and never `unknown` ones.
+- The Quests pages' Where you are uses the same function for one-off quests, not only lines.
+
+### Part 4. The rule for assistants
+- `content/mcp/style.md`: "Never call a quest available, open or possible unless the planner answers open for you. Unknown means say unknown. Never say how a quest ends unless the planner lists that ending." Tests on the style guide text.
+- The Book chat's questsense lenses stay a shortlist tool on Dave's PC; the planner is the referee. Dave tells that chat to ask `get_quest` before recommending.
+
+### Part 5. Pages
+- A quest's page (`/quests/<line>/<quest>` or the line page's quest rows): How it starts (from the per-quest check, as the story page shows it), How it can end (Part 1), both marked checked or not. The line page's Where you are reads `openFor`.
+
+### Done when
+- [ ] Every quest in `quests.json` has `endings`; Blood on the Ice lists two with their when; the page shows them closed by default.
+- [ ] `story_check_all.py` runs a batch on Dave's PC and resumes after a stop; the `stories` batch is committed and the Companions, College, Thieves Guild, Dark Brotherhood and Dawnguard results match the 19 Oct crawl.
+- [ ] `get_quest` answers open for you / locked, because / unknown, and `suggest_quests` never offers an unknown quest.
+- [ ] The style guide carries the two rules; a quest with an unchecked start is answered "unknown" through the door, checked by the WO-108 e2e.
+- [ ] Every check in CLAUDE.md passes. Commit on `staging` per part, push, and stop: Dave asks his Claude what Kyria can do in Riften at level 6 and gets only open quests, with their endings behind a click.
+
+---
+
 ## WO-112 and WO-113  (to write when WO-111 is checked)
 
 - **WO-113 Merchants (PC).** `get_spell` can't say where a spell is sold: the planner has no merchant data. Read vendor containers and their leveled lists from the game files, per spell tome and item, and mark random stock as such. Until then the tool says so and tells the assistant not to name one from memory.
