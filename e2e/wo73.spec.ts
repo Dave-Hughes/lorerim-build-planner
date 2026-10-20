@@ -155,10 +155,10 @@ test.describe("at 1440", () => {
 
   test("point 11: the wizard's preview shows the build page's tabs", async ({ page, context }) => {
     await signIn(context);
-    await page.goto("/new");
+    await page.goto("/new?kind=alone");
     await page.getByRole("article").filter({ hasText: "Altmer" }).getByRole("button", { name: /^Choose/ }).click();
     await expect(page.getByText("Draft saved")).toBeVisible();
-    await page.goto("/new?step=name");
+    await page.goto("/new?kind=alone&step=name");
     const preview = page.getByRole("img", { name: /^Preview in / }).first();
     await expect(preview.locator('[class*="tabOn"]')).toHaveText("Levels");
     await expect(preview).toContainText("Guide");

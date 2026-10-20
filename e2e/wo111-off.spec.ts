@@ -9,3 +9,11 @@ test("with FEATURE_PLAYTHROUGHS off, its pages are not found and the header has 
   await page.goto("/");
   await expect(page.getByRole("navigation", { name: "Site" }).getByRole("link", { name: "Playthroughs" })).toHaveCount(0);
 });
+
+// WO-114: with the switch off, a new build is a build: no question first, and the header says New build.
+test("with FEATURE_PLAYTHROUGHS off, /new opens Set up and the header says New build", async ({ page }) => {
+  await page.goto("/new");
+  await expect(page.getByLabel("Setup steps")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "What are you making?" })).toHaveCount(0);
+  await expect(page.getByRole("banner").getByRole("link", { name: "New character" })).toHaveCount(0);
+});

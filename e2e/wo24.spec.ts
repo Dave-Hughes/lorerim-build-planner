@@ -4,13 +4,13 @@ import { LINK_ONLY_BUILD_ID, TEST_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1440, height: 900 } });
 
-test("the header's nav is Builds, Quests, Playthroughs, Gear and Guide (WO-66, WO-92, WO-100, WO-111); New build is a button; the avatar menu works by keyboard", async ({ page, context }) => {
+test("the header's nav is Builds, Quests, Playthroughs, Gear and Guide (WO-66, WO-92, WO-100, WO-111); New character is a button (WO-114); the avatar menu works by keyboard", async ({ page, context }) => {
   await signIn(context);
   await page.goto("/me");
   const header = page.getByRole("banner");
   await expect(header.getByRole("navigation", { name: "Site" }).getByRole("link")).toHaveText(["Builds", "Quests", "Playthroughs", "Gear", "Guide"]);
   await expect(header.getByRole("link", { name: "Browse builds" })).toHaveCount(0);
-  await expect(header.getByRole("link", { name: "New build" })).toHaveClass(/btn-primary/);
+  await expect(header.getByRole("link", { name: "New character" })).toHaveClass(/btn-primary/);
 
   const account = header.getByRole("button", { name: /account menu/ });
   await expect(account).toHaveAttribute("aria-haspopup", "menu");
@@ -19,7 +19,7 @@ test("the header's nav is Builds, Quests, Playthroughs, Gear and Guide (WO-66, W
   const menu = page.getByRole("menu", { name: "Account" });
   await expect(menu.getByRole("menuitem", { name: "My page" })).toBeFocused();
   await page.keyboard.press("ArrowDown");
-  const myBuilds = menu.getByRole("menuitem", { name: "My builds" });
+  const myBuilds = menu.getByRole("menuitem", { name: "My characters" });
   await expect(myBuilds).toBeFocused();
   await expect(myBuilds).toHaveAttribute("aria-current", "page");
   // The test author is an admin (WO-40): the review list comes next.
@@ -44,11 +44,11 @@ test("the header's nav is Builds, Quests, Playthroughs, Gear and Guide (WO-66, W
   await expect(page).toHaveURL(/\/u\/e2e-test-author$/);
 });
 
-test("signed out, the header offers Sign in and New build", async ({ page }) => {
+test("signed out, the header offers Sign in and New character", async ({ page }) => {
   await page.goto("/");
   const header = page.getByRole("banner");
   await expect(header.getByRole("button", { name: /Sign in/ })).toBeVisible();
-  await expect(header.getByRole("link", { name: "New build" })).toBeVisible();
+  await expect(header.getByRole("link", { name: "New character" })).toBeVisible();
 });
 
 test("a player's Liked shows only the Listed builds they liked", async ({ page, context }) => {

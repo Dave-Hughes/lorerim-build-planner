@@ -526,6 +526,9 @@ export async function seed() {
       ],
     );
     await seedKyria(db);
+    // The test author's seeded builds were all made two days ago, so the day's limit of 10 new builds
+    // (WO-40) is left for the tests that make builds. The limit's own tests use Busy Builder.
+    await db.update(schema.builds).set({ createdAt: new Date(Date.now() - 2 * 86_400_000) }).where(eq(schema.builds.ownerId, TEST_USER_ID));
   } finally {
     await pool.end();
   }
@@ -533,6 +536,8 @@ export async function seed() {
 
 /** WO-111: Kyria's playthrough, from the Playthrough boards on canvas row 23, on the test author's build. */
 export const KYRIA_PLAYTHROUGH_ID = "e2ekyrya22";
+/** WO-114: a build alone with a Story, for Add a run (the Story becomes the run's first chapter). */
+export const MENDER_BUILD_ID = "e2estry333";
 /** Kyria's own build (WO-114): the character's cover is the build's, so hers has one. */
 export const KYRIA_BUILD_ID = "e2ekyryb22";
 
@@ -540,6 +545,10 @@ const para = (...texts: string[]): GuideDoc => ({ type: "doc", content: texts.ma
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function seedKyria(db: any) {
+  // Made two days ago, so neither counts toward the test author's 10 new builds a day.
+  const earlier = new Date(Date.now() - 2 * 86_400_000);
+  await db.insert(schema.builds).values({ id: MENDER_BUILD_ID, ownerId: TEST_USER_ID, name: "The Mender", description: "A Breton healer in Whiterun.", visibility: "unlisted", gameVersion: "5.0.4.8", plan: samplePlan(), createdAt: earlier });
+  await db.insert(schema.buildGuides).values(Object.entries(HEALER_STORY).map(([key, doc]) => ({ buildId: MENDER_BUILD_ID, key, doc, textLength: textLength(doc) })));
   await db.insert(schema.builds).values({
     id: KYRIA_BUILD_ID,
     ownerId: TEST_USER_ID,
@@ -549,6 +558,7 @@ async function seedKyria(db: any) {
     visibility: "unlisted",
     gameVersion: "5.0.4.8",
     plan: samplePlan(),
+    createdAt: earlier,
   });
   await db.insert(schema.playthroughs).values({
     id: KYRIA_PLAYTHROUGH_ID,

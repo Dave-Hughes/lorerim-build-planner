@@ -4699,11 +4699,11 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - Screenshots: My characters, New character's first question and The run step, the Play view with the cover, the Build tab, the Tale page at the top and mid-scroll, the build's page with the run line. Compare with rows 23 and 24.
 
 ### Done when
-- [ ] A player makes a character with a run in one pass and lands on her Play view; a build alone is unchanged.
-- [ ] `/me` is one list; the Build tab is the build; the build's own page still shares alone and says it belongs to a run.
-- [ ] The character leads with the build's cover on every view; the Tale page is the plate, the bar and the column, with Contents in a drawer.
-- [ ] `create_playthrough` makes both through the door.
-- [ ] Every check in CLAUDE.md passes; migration additive; behind the flag. Commit on `staging`, push, and stop: Dave makes Kyria again as one character and reads her tale.
+- [x] A player makes a character with a run in one pass and lands on her Play view; a build alone is unchanged.
+- [x] `/me` is one list; the Build tab is the build; the build's own page still shares alone and says it belongs to a run.
+- [x] The character leads with the build's cover on every view; the Tale page is the plate, the bar and the column, with Contents in a drawer.
+- [x] `create_playthrough` makes both through the door.
+- [x] Every check in CLAUDE.md passes; migration additive; behind the flag. Commit on `staging`, push, and stop: Dave makes Kyria again as one character and reads her tale.
 
 ---
 

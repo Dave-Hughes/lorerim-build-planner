@@ -66,13 +66,14 @@ test("an assistant drafts a build: create, three levels with one refused and fix
   expect(listed.json().find((b: { build: string }) => b.build === buildId)).toMatchObject({ name: "E2E Drafted Nord", visibility: "private", levels: 20, draftedByAnAssistant: true });
 });
 
-test("the draft is private under My builds, marked as drafted, and opens in the editor with every level", async ({ page, context }) => {
+test("the draft is private under My characters, marked as drafted, and opens in the editor with every level", async ({ page, context }) => {
   await signIn(context, "other");
   await page.goto("/me");
   const card = page.getByRole("article").filter({ has: page.getByRole("link", { name: "E2E Drafted Nord" }) });
   await expect(card.getByText("Drafted with E2E Claude")).toBeVisible();
   await expect(card.getByText("Only you")).toBeVisible();
-  await expect(page.getByRole("list", { name: "Assistants" })).toContainText(/\d+ builds? drafted/);
+  // A build and a run are one character (WO-114): drafts are counted as characters.
+  await expect(page.getByRole("list", { name: "Assistants" })).toContainText(/\d+ characters? drafted/);
 
   await page.goto(`/b/${buildId}`);
   await expect(page.getByText("Drafted with E2E Claude")).toBeVisible();

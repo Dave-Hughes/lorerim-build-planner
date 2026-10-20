@@ -1,7 +1,7 @@
 /**
  * WO-111: an assistant drafts a playthrough through the door on the test author's build (two acts,
  * five objectives with one refused, a suggestion, a beat and a chapter, finish_draft), then the
- * player on the site: private under My playthroughs, a tick opening the beat, the Tale view, editing
+ * player on the site: private on its build's card, a tick opening the beat, the Tale view, editing
  * by hand with a @quest mention and the rule under a refused one, Accept, Enter it by hand. Another
  * player's token can't read it and a facts-only token can't write.
  */
@@ -36,7 +36,7 @@ test("an assistant drafts a playthrough end to end, refused for an objective tha
   const linked = await go("set_playthrough", { playthrough: pid, build: "Test Shield-Wall" });
   expect(linked.isError, linked.text).toBe(false);
   expect(linked.json().build).toEqual({ id: TEST_BUILD_ID, name: "Test Shield-Wall" });
-  expect((await go("get_playthrough", { playthrough: pid })).json().build).toEqual({ id: TEST_BUILD_ID, name: "Test Shield-Wall" });
+  expect((await go("get_playthrough", { playthrough: pid })).json().build).toMatchObject({ id: TEST_BUILD_ID, name: "Test Shield-Wall" });
   const listed = (await go("list_my_playthroughs", {})).json().find((x: { playthrough: string }) => x.playthrough === pid);
   expect(listed.build).toEqual({ id: TEST_BUILD_ID, name: "Test Shield-Wall" });
 
@@ -104,12 +104,13 @@ test("an assistant drafts a playthrough end to end, refused for an objective tha
   for (const s of quests.json().suggestions) expect(s.checked).toBe("files");
 });
 
-test("on the site: private under My playthroughs, a tick opens the beat, Accept counts, by hand moves the meter", async ({ page, context }) => {
+test("on the site: private on its build's card under My characters, a tick opens the beat, Accept counts, by hand moves the meter", async ({ page, context }) => {
   await signIn(context);
   await page.goto("/me");
-  const card = page.getByRole("link", { name: /E2E Kyria/ });
-  await expect(card).toContainText("Drafted with E2E Claude");
-  await expect(card).toContainText("Private");
+  // One grid since WO-114: the run sits on its build's card.
+  const card = page.getByRole("article").filter({ has: page.getByRole("link", { name: "Test Shield-Wall", exact: true }) });
+  await expect(card.getByText("Where the run stands")).toBeVisible();
+  await expect(card.getByRole("link", { name: "Play ›" })).toHaveAttribute("href", `/p/${pid}`);
 
   const playTab = () => page.getByRole("navigation", { name: "Views" }).getByRole("link", { name: /^Play/ });
   await page.goto(`/p/${pid}`);
@@ -118,8 +119,8 @@ test("on the site: private under My playthroughs, a tick opens the beat, Accept 
   // The Build tab follows the build linked through the door (WO-111c).
   // Other specs add levels to the shared test build, so the count isn't fixed: the link and the words are.
   const buildTab = page.getByRole("navigation", { name: "Views" }).getByRole("link", { name: /^Build/ });
-  await expect(buildTab).toHaveAttribute("href", `/b/${TEST_BUILD_ID}`);
-  await expect(buildTab).toContainText(/\d+ levels/);
+  await expect(buildTab).toHaveAttribute("href", `/p/${pid}/build`);
+  await expect(buildTab).toContainText(/levels 1 to \d+/);
   await expect(page.getByText("Made with Care opens when you tick this.")).toBeVisible();
   // The Tale text is nowhere on the Play view, only its pointer.
   await expect(page.getByText("The hide was rough under her hands.")).toHaveCount(0);

@@ -51,10 +51,10 @@ test("a build without a guide has no Guide stop", async ({ page }) => {
 test("a new build lands on level 1 with the author's welcome; Later asks again, Skip doesn't", async ({ page, context }) => {
   // One of WO-40's reporters: the test author is at the day's build limit by now.
   await context.addCookies([{ name: "authjs.session-token", value: REPORTER_TOKENS[1], domain: "localhost", path: "/" }]);
-  await page.goto("/new");
+  await page.goto("/new?kind=alone");
   await page.getByRole("article").filter({ hasText: "Nord" }).getByRole("button", { name: /^Choose/ }).click();
   await expect(page.getByText("Draft saved")).toBeVisible();
-  await page.goto("/new?step=name");
+  await page.goto("/new?kind=alone&step=name");
   await page.getByLabel("Build name").fill("Tapps' Test");
   await page.getByRole("button", { name: "Create build" }).click();
   await page.waitForURL(/\/b\/\w{10}\/edit/);
