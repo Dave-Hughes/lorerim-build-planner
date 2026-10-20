@@ -37,11 +37,11 @@ export function TaleView({ p, isOwner, from }: { p: PlaythroughRecord; isOwner: 
         <PlaythroughTabs p={p} current="tale" backTo={back} />
       </div>
 
-      <header className={`${s.opening} ${p.coverImageUrl ? "" : s.openingPlain}`}>
-        {p.coverImageUrl && (
+      <header className={`${s.opening} ${p.build?.coverImageUrl ? "" : s.openingPlain}`}>
+        {p.build?.coverImageUrl && (
           <>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={p.coverImageUrl} alt="" className={s.openingImage} />
+            <img src={p.build?.coverImageUrl} alt="" className={s.openingImage} />
             <div className={s.fade} aria-hidden="true" />
           </>
         )}

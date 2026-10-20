@@ -344,7 +344,10 @@ export const playthroughs = pgTable(
     /** The assistant's name when one of its tools made it; null when made on the site. */
     draftedBy: text("drafted_by"),
     showDrafted: boolean("show_drafted").notNull().default(true),
-    /** The author's opening image, uploaded through the site (never the tools). */
+    /**
+     * No longer read (WO-114): the character's one cover is the build's. Kept, empty, so no migration
+     * drops a column.
+     */
     coverImageUrl: text("cover_image_url"),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true })

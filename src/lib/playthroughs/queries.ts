@@ -2,6 +2,7 @@ import "server-only";
 import { and, asc, desc, eq, inArray, sql } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { isValidBuildId } from "@/lib/builds/ids";
+import { imageHold } from "@/lib/builds/queries";
 import { readPlan } from "@/lib/rules/convert";
 import { currentVersion, isKnownVersion, requireGameData } from "@/lib/rules/server";
 import { resolveLink } from "./links";
@@ -16,7 +17,20 @@ export type PlaythroughRow = typeof schema.playthroughs.$inferSelect;
 
 export interface PlaythroughRecord extends PlaythroughRow {
   author: { name: string; handle: string | null };
-  build: { id: string; name: string; levels: number; race: string; birthsign: string; deity: string | null; start: string; traits: string[] } | null;
+  build: {
+    id: string;
+    name: string;
+    levels: number;
+    race: string;
+    birthsign: string;
+    deity: string | null;
+    start: string;
+    traits: string[];
+    visibility: PlaythroughRow["visibility"];
+    /** The character's one cover (WO-114): the build's, unless an admin holds it back. */
+    coverImageUrl: string | null;
+    coverFocus: { x: number; y: number } | null;
+  } | null;
   snapshot: SnapshotRow | null;
   view: PlaythroughView;
 }
@@ -38,7 +52,7 @@ export async function getPlaythrough(id: string, viewerId: string | null): Promi
     db().select().from(schema.playthroughSnapshots).where(eq(schema.playthroughSnapshots.playthroughId, p.id)).limit(1),
     p.buildId
       ? db()
-          .select({ id: schema.builds.id, name: schema.builds.name, plan: schema.builds.plan, visibility: schema.builds.visibility, ownerId: schema.builds.ownerId })
+          .select({ id: schema.builds.id, name: schema.builds.name, plan: schema.builds.plan, visibility: schema.builds.visibility, ownerId: schema.builds.ownerId, coverImageUrl: schema.builds.coverImageUrl })
           .from(schema.builds)
           .where(eq(schema.builds.id, p.buildId))
           .limit(1)
@@ -56,6 +70,9 @@ export async function getPlaythrough(id: string, viewerId: string | null): Promi
   // The build shows only when the reader could open it too.
   const b = build[0];
   const plan = b && (b.visibility !== "private" || b.ownerId === viewerId) ? readPlan(b.plan) : null;
+  // A cover waiting on an admin (WO-40) never reaches the page: the plain band instead.
+  const held = b?.coverImageUrl && plan ? await imageHold(b.id, [b.coverImageUrl]) : null;
+  const coverShown = b?.coverImageUrl && plan && !(held && (held.all || held.hidden.has(b.coverImageUrl))) ? b.coverImageUrl : null;
   return {
     ...p,
     author: { name: row.authorName ?? "Unknown", handle: row.authorHandle ?? null },
@@ -70,6 +87,9 @@ export async function getPlaythrough(id: string, viewerId: string | null): Promi
             deity: plan.deity ?? null,
             start: [plan.start, plan.startOption].filter(Boolean).join(", "),
             traits: plan.traits ?? [],
+            visibility: b.visibility,
+            coverImageUrl: coverShown,
+            coverFocus: plan.coverFocus ?? null,
           }
         : null,
     snapshot,

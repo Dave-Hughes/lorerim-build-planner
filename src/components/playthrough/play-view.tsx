@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { CopyLinkButton } from "@/components/ui/copy-link-button";
 import { formatDate } from "@/lib/format/date";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
 import { skillsMoved, type ActView, type ObjectiveView } from "@/lib/playthroughs/view";
 import { Answer, HandEntry, StatusPick, TickBox, Visibility } from "./play-controls";
-import { Byline, PlaythroughTabs } from "./tabs";
+import { PlaythroughTabs, RunHero } from "./tabs";
 import s from "./play.module.css";
 
 /**
@@ -32,21 +31,7 @@ export function PlayView({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
         </Link>
       )}
 
-      <div className={`frame ${s.band}`}>
-        <div className={s.bandHead}>
-          <h1 className={s.name}>{p.name}</h1>
-          <span className={s.bandActions}>
-            {isOwner && (
-              <Link href={`/p/${p.id}/edit`} className="btn">
-                Edit
-              </Link>
-            )}
-            <CopyLinkButton path={`/p/${p.id}`} className="btn" />
-          </span>
-        </div>
-        {p.line && <span className={s.lineText}>{p.line}</span>}
-        <Byline p={p} />
-      </div>
+      <RunHero p={p} isOwner={isOwner} />
 
       <PlaythroughTabs p={p} current="play" />
 

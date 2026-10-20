@@ -533,15 +533,27 @@ export async function seed() {
 
 /** WO-111: Kyria's playthrough, from the Playthrough boards on canvas row 23, on the test author's build. */
 export const KYRIA_PLAYTHROUGH_ID = "e2ekyrya22";
+/** Kyria's own build (WO-114): the character's cover is the build's, so hers has one. */
+export const KYRIA_BUILD_ID = "e2ekyryb22";
 
 const para = (...texts: string[]): GuideDoc => ({ type: "doc", content: texts.map((text) => ({ type: "paragraph", content: [{ type: "text", text }] })) });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function seedKyria(db: any) {
+  await db.insert(schema.builds).values({
+    id: KYRIA_BUILD_ID,
+    ownerId: TEST_USER_ID,
+    name: "Kyria, Knight of Stendarr",
+    description: "A Nord in heavy armor with a greatsword, hiding as a bard.",
+    coverImageUrl: azrem.coverImageUrl,
+    visibility: "unlisted",
+    gameVersion: "5.0.4.8",
+    plan: samplePlan(),
+  });
   await db.insert(schema.playthroughs).values({
     id: KYRIA_PLAYTHROUGH_ID,
     ownerId: TEST_USER_ID,
-    buildId: TEST_BUILD_ID,
+    buildId: KYRIA_BUILD_ID,
     name: "Kyria Severa",
     line: "A knight of Stendarr, raised in Dibella's chapel in Anvil, hiding as a bard in Riften.",
     gameVersion: "5.0.4.8",

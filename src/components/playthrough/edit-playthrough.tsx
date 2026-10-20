@@ -60,6 +60,7 @@ export interface EditData {
   visibility: BuildVisibility;
   draftedBy: string | null;
   showDrafted: boolean;
+  /** The build's cover (WO-114), the character's one. */
   coverImageUrl: string | null;
   acts: EditAct[];
   chapters: EditChapter[];
@@ -836,35 +837,40 @@ function Details({ data, onSaved }: { data: EditData; onSaved: () => void }) {
           ))}
         </select>
       </label>
+      {/* The character's one cover is the build's (WO-114), uploaded as Set up uploads it. */}
       <span className={s.field}>
-        <span className={s.lbl}>Opening image</span>
-        <span className={s.actions} style={{ alignItems: "center" }}>
-          <label className="btn btn-sm" style={{ cursor: "pointer" }}>
-            {uploading ? "Uploading" : data.coverImageUrl ? "Change it" : "Add one"}
-            <input
-              type="file"
-              accept="image/png,image/jpeg,image/webp,image/gif"
-              className="sr-only"
-              onChange={async (e) => {
-                const file = e.target.files?.[0];
-                if (!file) return;
-                setUploading(true);
-                const form = new FormData();
-                form.append("file", file);
-                const res = await fetch(`/api/playthroughs/${data.id}/images`, { method: "POST", body: form }).catch(() => null);
-                const body = (await res?.json().catch(() => ({}))) as { url?: string; error?: string } | undefined;
-                setUploading(false);
-                if (body?.url) save(() => act.saveDetails(data.id, { coverImageUrl: body.url }), true);
-                else setError(body?.error ?? "The upload didn't finish. Try again.");
-              }}
-            />
-          </label>
-          {data.coverImageUrl && (
-            <button type="button" className="btn btn-sm" onClick={() => save(() => act.saveDetails(data.id, { coverImageUrl: null }), true)}>
-              Remove
-            </button>
-          )}
-        </span>
+        <span className={s.lbl}>Cover</span>
+        {data.buildId ? (
+          <span className={s.actions} style={{ alignItems: "center" }}>
+            <label className="btn btn-sm" style={{ cursor: "pointer" }}>
+              {uploading ? "Uploading" : data.coverImageUrl ? "Change it" : "Add one"}
+              <input
+                type="file"
+                accept="image/png,image/jpeg,image/webp,image/gif"
+                className="sr-only"
+                onChange={async (e) => {
+                  const file = e.target.files?.[0];
+                  if (!file) return;
+                  setUploading(true);
+                  const form = new FormData();
+                  form.append("file", file);
+                  const res = await fetch("/api/covers", { method: "POST", body: form }).catch(() => null);
+                  const body = (await res?.json().catch(() => ({}))) as { url?: string; error?: string } | undefined;
+                  setUploading(false);
+                  if (body?.url) save(() => act.saveCover(data.id, body.url!), true);
+                  else setError(body?.error ?? "The upload didn't finish. Try again.");
+                }}
+              />
+            </label>
+            {data.coverImageUrl && (
+              <button type="button" className="btn btn-sm" onClick={() => save(() => act.saveCover(data.id, null), true)}>
+                Remove
+              </button>
+            )}
+          </span>
+        ) : (
+          <span className={s.note}>The cover is the build&apos;s. Link a build to add one.</span>
+        )}
       </span>
       {data.draftedBy && (
         <label style={{ display: "flex", gap: 10, alignItems: "center", fontSize: 15 }}>

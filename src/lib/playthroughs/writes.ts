@@ -69,7 +69,7 @@ export async function createPlaythrough(userId: string, input: { name: string; l
 export async function setDetails(
   userId: string,
   id: string,
-  input: { name?: string; line?: string; buildId?: string | null; visibility?: BuildVisibility; showDrafted?: boolean; coverImageUrl?: string | null },
+  input: { name?: string; line?: string; buildId?: string | null; visibility?: BuildVisibility; showDrafted?: boolean },
 ) {
   const p = await ownedPlaythrough(userId, id);
   const d = detailsSchema.safeParse({ name: input.name ?? p.name, line: input.line ?? p.line });
@@ -79,7 +79,6 @@ export async function setDetails(
     const hold = await newAccountHold(userId);
     if (hold) fail(hold);
   }
-  if (input.coverImageUrl && !isOurImage(input.coverImageUrl)) fail("Images must be uploaded to the site.");
   await db()
     .update(schema.playthroughs)
     .set({
@@ -88,9 +87,23 @@ export async function setDetails(
       ...(build === undefined ? {} : { buildId: build?.id ?? null, ...(build ? { gameVersion: build.gameVersion } : {}) }),
       ...(input.visibility ? { visibility: input.visibility } : {}),
       ...(input.showDrafted === undefined ? {} : { showDrafted: input.showDrafted }),
-      ...(input.coverImageUrl === undefined ? {} : { coverImageUrl: input.coverImageUrl }),
     })
     .where(eq(schema.playthroughs.id, p.id));
+}
+
+/**
+ * The character's cover (WO-114) is the build's: the run's edit page sets it on the build it follows,
+ * as Set up does, from an image uploaded through /api/covers. A run with no build has none.
+ */
+export async function setCover(userId: string, id: string, url: string | null) {
+  const p = await ownedPlaythrough(userId, id);
+  if (!p.buildId) fail("The cover is the build's. Link a build first.");
+  if (url && !isOurImage(url)) fail("Images must be uploaded to the site.");
+  await db()
+    .update(schema.builds)
+    .set({ coverImageUrl: url })
+    .where(and(eq(schema.builds.id, p.buildId!), eq(schema.builds.ownerId, userId)));
+  await touch(p.id);
 }
 
 export async function deletePlaythrough(userId: string, id: string) {
