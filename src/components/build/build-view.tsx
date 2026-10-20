@@ -42,7 +42,7 @@ import { computeBuild } from "@/lib/rules/engine";
 import { Avatar } from "@/components/ui/avatar";
 import { InfoTip } from "@/components/ui/info-tip";
 import { AttributeIcon, DeityIcon, GameIcon, IconLabel, SignIcon, SkillIcon, SkillLabel, MarkIcon, SlotIcon, TagIcon } from "@/components/ui/skill-icon";
-import { ArrowTip, LevelBars, LevelLegend, LevelStepper, useArrowTip, useHoldInPlace } from "./level-nav";
+import { ArrowTip, LevelBars, LevelLegend, LevelStepper, RunHere, useArrowTip, useHoldInPlace } from "./level-nav";
 import { levelsLine, skips, stretchAt, stretches, writtenLevels } from "@/lib/rules/stretches";
 import { BottomSheet, PerkDetails, Tree, ViewToggle, type TreeView } from "./tree";
 import styles from "./build-view.module.css";
@@ -74,6 +74,15 @@ interface Props {
    * an import (WO-90), what the import left out.
    */
   admin?: { featured: boolean; imported?: { skipped: number; dropped: string[] } | null } | null;
+  /**
+   * The build as a character's Build tab (WO-114): under the run's cover, with no edit bar, cover,
+   * intro or about bar of its own; `here` is the run's level from the snapshot, "You are here".
+   */
+  inRun?: { here: number | null } | null;
+  /** The run this build belongs to, when the viewer may see it (WO-114): "Part of a run" under the byline; no name: the owner's "Add a run". */
+  run?: { name: string; act: string | null; href: string } | null;
+  /** The character's tale is the run's (WO-114): the Story tab points there. */
+  taleInRun?: string | null;
 }
 
 export type BuildTab = "levels" | "guide" | "story";
@@ -108,7 +117,7 @@ function useNarrower(px: number): boolean {
  * navigation, then the level card (what to do, in the order the game asks, with the author's
  * note), then the reference (attributes, skills, perks).
  */
-export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab = "levels", signInToCopy, signInToLike, autoCopy, guide = {}, admin = null }: Props) {
+export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab = "levels", signInToCopy, signInToLike, autoCopy, guide = {}, admin = null, inRun = null, run = null, taleInRun = null }: Props) {
   const d = useGameData();
   const noted = useMemo(() => notedLevels(guide), [guide]);
   const { plan } = build;
@@ -121,7 +130,8 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   // The Guide tab holds the guide and the video guide (WO-39), either or both.
   // The Story (WO-79): once it has a title and some text.
   const story = useMemo(() => storyOf(guide), [guide]);
-  const tabs: BuildTab[] = ["levels", ...(overview || plan.videoId ? (["guide"] as const) : []), ...(story ? (["story"] as const) : [])];
+  // One tale per character (WO-114): with a run, the Story tab points to the run's tale.
+  const tabs: BuildTab[] = ["levels", ...(overview || plan.videoId ? (["guide"] as const) : []), ...(story || taleInRun ? (["story"] as const) : [])];
   // "Watch the video guide" in the hero: opens the Guide tab at the video and starts it.
   const [play, setPlay] = useState(0);
   const [tabState, setTabState] = useState<BuildTab>(initialTab);
@@ -188,7 +198,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   const TAB_SUB: Record<BuildTab, string> = {
     levels: `Levels 1 to ${total}`,
     guide: overview ? `${minutes} min read${plan.videoId ? " | Video" : ""}` : "Video",
-    story: story ? storySub(story.doc) : "",
+    story: taleInRun ? "In the run" : story ? storySub(story.doc) : "",
   };
 
   const hasGuideTab = tabs.includes("guide");
@@ -280,13 +290,16 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
   };
 
   return (
+    <RunHere.Provider value={inRun?.here ?? null}>
     <GuideFactsProvider plan={plan} states={states}>
       <main className={styles.main}>
         {/* The owner's edit bar: one click to edit, as View build is one click back. */}
-        {isOwner && !build.isSample && <EditBar buildId={build.id} name={build.name} current={null} visibility={build.visibility} />}
+        {isOwner && !build.isSample && !inRun && <EditBar buildId={build.id} name={build.name} current={null} visibility={build.visibility} />}
         {/* The build's guide theme (WO-37): everything below the edit bar takes its colours. */}
         <div className={styles.themed} data-theme={themeOf(plan.theme).id} style={themeStyle(plan.theme)}>
+        {!inRun && (
         <Cover
+          run={run}
           build={build}
           isOwner={isOwner}
           signedIn={signedIn}
@@ -299,6 +312,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
             setPlay((n) => n + 1);
           }}
         />
+        )}
 
         <div className={`page ${styles.body}`}>
           <OldVersionNotice buildId={build.id} signedIn={signedIn} />
@@ -309,7 +323,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
               {admin.imported.dropped.length > 0 && ` Tags this planner doesn't have were dropped: ${admin.imported.dropped.join(", ")}.`}
             </p>
           )}
-          {intro && (
+          {intro && !inRun && (
             <section aria-label="Intro" className={styles.intro}>
               <Ornament />
               {/* Opens like the game's books: a large framed first letter, the first line in small caps. */}
@@ -324,7 +338,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
               )}
             </section>
           )}
-          <AboutBar plan={plan} />
+          {!inRun && <AboutBar plan={plan} />}
 
           {tabs.length > 1 && (
             <div ref={setTabRow} role="tablist" aria-label="Build sections" data-tour="build-tabs" className={styles.tabs} onKeyDown={onTabKey}>
@@ -391,7 +405,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           )}
 
           {/* The reader's first-time tour (WO-61), on the Levels tab where its stops are. */}
-          {tab === "levels" && <Tour kind="reader" script={readerTour} firstStop={build.example ? <ExampleTag small /> : undefined} />}
+          {tab === "levels" && !inRun && <Tour kind="reader" script={readerTour} firstStop={build.example ? <ExampleTag small /> : undefined} />}
           <div className={styles.withRail}>
           <ContentsRail items={railItems} />
           <div className={styles.railMain}>
@@ -421,7 +435,12 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           )}
           </div>
           </div>
-          {tab === "story" && story && (
+          {tab === "story" && taleInRun && (
+            <div id="panel-story" role="tabpanel" aria-labelledby="tab-story" className={styles.taleInRun}>
+              <Link href={taleInRun}>The tale is in the run ›</Link>
+            </div>
+          )}
+          {tab === "story" && story && !taleInRun && (
             <div id="panel-story" role="tabpanel" aria-labelledby="tab-story">
               <StoryView
                 doc={story.doc}
@@ -437,11 +456,12 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
             </div>
           )}
           {/* Report, quietly, at the foot (WO-40): signed-in players, not the owner. */}
-          {signedIn && !isOwner && !build.isSample && <ReportBuild buildId={build.id} />}
+          {signedIn && !isOwner && !build.isSample && !inRun && <ReportBuild buildId={build.id} />}
         </div>
         </div>
       </main>
     </GuideFactsProvider>
+    </RunHere.Provider>
   );
 }
 
@@ -1459,6 +1479,7 @@ function Ornament() {
 }
 
 function Cover({
+  run,
   build,
   isOwner,
   signedIn,
@@ -1476,6 +1497,7 @@ function Cover({
   autoCopy: boolean;
   admin: { featured: boolean } | null;
   onWatch: () => void;
+  run?: Props["run"];
 }) {
   const router = useRouter();
   const [copied, setCopied] = useState(false);
@@ -1595,6 +1617,21 @@ function Cover({
           </div>
           {/* Drafted by an assistant's tools (WO-110), while the author shows it. */}
           {build.draftedBy && build.showDrafted !== false && <p className={`${styles.drafted} ${styles.heroIn} ${styles.heroIn3}`}>Drafted with {build.draftedBy}</p>}
+          {/* The character's run (WO-114): to the owner always, to others while the run is Listed or Link only. */}
+          {run && (
+            <p className={`${styles.runLine} ${styles.heroIn} ${styles.heroIn3}`}>
+              {run.name ? (
+                <>
+                  Part of a run: <Link href={run.href}>{run.act ? `${run.name}, ${run.act}` : run.name} ›</Link>
+                </>
+              ) : (
+                // The owner's build alone: the way to give it a run.
+                <>
+                  Build alone: <Link href={run.href}>Add a run ›</Link>
+                </>
+              )}
+            </p>
+          )}
           {build.tags.length > 0 && (
             <ul className={`${styles.tagLine} ${styles.heroIn} ${styles.heroIn3}`} aria-label="Tags">
               {build.tags.map((t) => (

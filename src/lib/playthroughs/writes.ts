@@ -3,7 +3,7 @@ import { and, asc, count, eq, inArray, isNotNull, max, sql } from "drizzle-orm";
 import type { BatchItem } from "drizzle-orm/batch";
 import { db, schema } from "@/db";
 import { newBuildId } from "@/lib/builds/ids";
-import { checkGuideDoc, imageUrls, lineDoc, type GuideDoc } from "@/lib/guide/doc";
+import { checkGuideDoc, docText, imageUrls, isEmptyDoc, lineDoc, type GuideDoc } from "@/lib/guide/doc";
 import { isOurImage } from "@/lib/guide/images";
 import type { BuildVisibility } from "@/lib/builds/validate";
 import { newAccountHold } from "@/lib/moderation/limits";
@@ -60,10 +60,17 @@ export async function createPlaythrough(userId: string, input: { name: string; l
   if (!d.success) fail(firstIssue(d.error!));
   const build = await ownBuild(userId, input.buildId);
   if (draftedBy && (await draftCount(userId)) >= PLAYTHROUGH_LIMITS.drafts) fail(DRAFT_CAP_MESSAGE);
+  if (build) {
+    const [other] = await db().select({ id: schema.playthroughs.id }).from(schema.playthroughs).where(eq(schema.playthroughs.buildId, build.id)).limit(1);
+    if (other) fail("That build has a run already.");
+  }
   const id = newBuildId();
-  await db()
+  const insert = db()
     .insert(schema.playthroughs)
     .values({ id, ownerId: userId, buildId: build?.id ?? null, name: d.data!.name, line: d.data!.line, gameVersion: build?.gameVersion ?? input.gameVersion, visibility: "private", draftedBy });
+  const moved = build ? await storyMoveStatements(build.id, id) : [];
+  if (moved.length) await db().batch([insert, ...moved]);
+  else await insert;
   return id;
 }
 
@@ -80,7 +87,17 @@ export async function setDetails(
     const hold = await newAccountHold(userId);
     if (hold) fail(hold);
   }
-  await db()
+  // One run per character (WO-114): a build that has another run can't take this one too.
+  const attaching = build && build.id !== p.buildId ? build : null;
+  if (attaching) {
+    const [other] = await db()
+      .select({ id: schema.playthroughs.id })
+      .from(schema.playthroughs)
+      .where(and(eq(schema.playthroughs.buildId, attaching.id), sql`${schema.playthroughs.id} <> ${p.id}`))
+      .limit(1);
+    if (other) fail("That build has a run already.");
+  }
+  const update = db()
     .update(schema.playthroughs)
     .set({
       name: d.data!.name,
@@ -90,6 +107,10 @@ export async function setDetails(
       ...(input.showDrafted === undefined ? {} : { showDrafted: input.showDrafted }),
     })
     .where(eq(schema.playthroughs.id, p.id));
+  // Attaching moves the build's Story into the run, in the same transaction; detaching leaves the chapters.
+  const moved = attaching ? await storyMoveStatements(attaching.id, p.id) : [];
+  if (moved.length) await db().batch([update, ...moved]);
+  else await update;
 }
 
 /**
@@ -154,6 +175,36 @@ export function runStatements(userId: string, buildId: string, gameVersion: stri
   };
 }
 
+const STORY_KEYS = ["story", "story:title", "story:line"];
+
+/**
+ * One tale per character (WO-114): when a run is attached to a build with a Story (WO-79), the Story
+ * becomes the run's first chapter before the game, its images and captions with it, and the build's
+ * Story rows go, in the same transaction as the attach. A build with no Story gives nothing.
+ */
+export async function storyMoveStatements(buildId: string, playthroughId: string): Promise<BatchItem<"pg">[]> {
+  const rows = await db()
+    .select({ key: schema.buildGuides.key, doc: schema.buildGuides.doc })
+    .from(schema.buildGuides)
+    .where(and(eq(schema.buildGuides.buildId, buildId), inArray(schema.buildGuides.key, STORY_KEYS)));
+  const by = Object.fromEntries(rows.map((r) => [r.key, r.doc])) as Record<string, GuideDoc | undefined>;
+  const story = by.story;
+  if (!story || isEmptyDoc(story)) return [];
+  const title = (docText(by["story:title"]) || "The Story").slice(0, PLAYTHROUGH_LIMITS.chapterTitle);
+  const line = docText(by["story:line"]).slice(0, PLAYTHROUGH_LIMITS.line);
+  const { doc, length } = chapterDoc(story);
+  return [
+    // Position 0: before every chapter the run already has.
+    db().insert(schema.playthroughChapters).values({ playthroughId, kind: "chapter", position: 0, title, doc, textLength: length, actId: null }),
+    // The Story's title and opening line become the Tale's (section 5), when the run has none yet.
+    db()
+      .update(schema.playthroughs)
+      .set({ taleTitle: sql`coalesce(${schema.playthroughs.taleTitle}, ${title})`, taleLine: sql`coalesce(${schema.playthroughs.taleLine}, ${line || null})` })
+      .where(eq(schema.playthroughs.id, playthroughId)),
+    db().delete(schema.buildGuides).where(and(eq(schema.buildGuides.buildId, buildId), inArray(schema.buildGuides.key, STORY_KEYS))),
+  ];
+}
+
 /** Add a run (WO-114): a run on one of the player's builds that has none, from the same step. */
 export async function attachRun(userId: string, buildId: string, input: RunInput, draftedBy: string | null = null): Promise<string> {
   const [b] = await db()
@@ -166,7 +217,8 @@ export async function attachRun(userId: string, buildId: string, input: RunInput
   if (has) fail("This build has a run already.");
   if (draftedBy && (await draftCount(userId)) >= PLAYTHROUGH_LIMITS.drafts) fail(DRAFT_CAP_MESSAGE);
   const { id, statements } = runStatements(userId, b!.id, b!.gameVersion, prepareRun(input), draftedBy);
-  await db().batch(statements as [BatchItem<"pg">, ...BatchItem<"pg">[]]);
+  const moved = await storyMoveStatements(b!.id, id);
+  await db().batch([...statements, ...moved] as [BatchItem<"pg">, ...BatchItem<"pg">[]]);
   return id;
 }
 

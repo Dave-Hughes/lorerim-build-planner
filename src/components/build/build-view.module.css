@@ -1605,3 +1605,14 @@
   color: var(--muted);
   font-size: 14px;
 }
+
+/* The character's run (WO-114): one line under the byline, and the Story tab's pointer to its tale. */
+.runLine {
+  margin: 0;
+  font-size: 15px;
+  color: var(--soft);
+}
+.taleInRun {
+  padding: 40px 0 72px;
+  font-size: 17px;
+}

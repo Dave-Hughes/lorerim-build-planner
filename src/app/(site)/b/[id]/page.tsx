@@ -12,7 +12,8 @@ import { getBuild, imageHold } from "@/lib/builds/queries";
 import { imageUrls, withHiddenImages } from "@/lib/guide/doc";
 import { buildMetadata } from "@/lib/og/metadata";
 import { getGuide } from "@/lib/guide/queries";
-import { storyOn } from "@/lib/features";
+import { playthroughsOn, storyOn } from "@/lib/features";
+import { runLineOf } from "@/lib/playthroughs/queries";
 import { clientVersion, isKnownVersion } from "@/lib/rules/server";
 
 type Params = Promise<{ id: string }>;
@@ -32,7 +33,12 @@ export default async function BuildPage({ params, searchParams }: { params: Para
   const { createdAt: _createdAt, updatedAt, featuredAt, ...rest } = build;
   void _createdAt;
   const isOwner = !!viewerId && viewerId === build.ownerId;
-  const [guide, admin] = await Promise.all([getGuide(build.id, build.plan, !build.isSample), build.isSample ? false : isAdmin(viewerId)]);
+  const [guide, admin, runLine] = await Promise.all([
+    getGuide(build.id, build.plan, !build.isSample),
+    build.isSample ? false : isAdmin(viewerId),
+    // The character's run (WO-114): the owner always sees it, others while it's Listed or Link only.
+    playthroughsOn() && !build.isSample ? runLineOf(build.id, viewerId) : Promise.resolve(null),
+  ]);
   // Images waiting on an admin (WO-40) never reach the page: the cover becomes a plain hero, guide images a panel.
   // The Story is held back for launch (WO-81): its sections stay saved, but never reach the page.
   const story = storyOn();
@@ -72,6 +78,8 @@ export default async function BuildPage({ params, searchParams }: { params: Para
               }
             : null
         }
+        run={runLine ? { name: runLine.name, act: runLine.act, href: `/p/${runLine.id}` } : isOwner && playthroughsOn() && !build.isSample ? { name: "", act: null, href: `/b/${build.id}/run` } : null}
+        taleInRun={runLine ? `/p/${runLine.id}/tale` : null}
         guide={hold ? Object.fromEntries(Object.entries(docs).map(([k, d]) => [k, withHiddenImages(d, held)])) : docs}
       />
     </GameDataProvider>

@@ -177,6 +177,17 @@
   color: var(--ember-hover);
 }
 
+.buildSide {
+  margin-left: auto;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+  padding-bottom: 4px;
+  flex-wrap: wrap;
+}
+
 /* Where you stand. */
 .stand {
   display: flex;

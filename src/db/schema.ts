@@ -349,6 +349,9 @@ export const playthroughs = pgTable(
      * drops a column.
      */
     coverImageUrl: text("cover_image_url"),
+    /** The Tale page's title and epigraph over its opening plate (WO-114): 60 and 140 at most. */
+    taleTitle: text("tale_title"),
+    taleLine: text("tale_line"),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .notNull()

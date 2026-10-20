@@ -1,7 +1,7 @@
 "use client";
 
 import type { Stretch } from "@/lib/rules/stretches";
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { levelCellLabel, type LevelMark } from "@/lib/rules/derive";
 import { Tooltip } from "@/components/ui/tooltip";
 import styles from "./level-nav.module.css";
@@ -143,6 +143,9 @@ export function LevelStepper({
 
 /** A Destiny diamond's width on the ruler (9px turned 45°) and a hair between two. */
 const DIAMOND_ROOM = 14;
+
+/** Where the character stands in their run (WO-114): the snapshot's level, marked "You are here" on the ruler. */
+export const RunHere = createContext<number | null>(null);
 
 /** The whole build on one line. Only marks that matter: Destiny, stones, Skill 100 perks, notes. */
 export function LevelRuler({ marks, level, onChange, spans, win }: { marks: LevelMark[]; level: number; onChange: (level: number) => void; spans?: Stretch[]; win?: Stretch }) {
@@ -302,6 +305,7 @@ export function LevelRow({
   spellsToChoose?: Map<number, number>;
 }) {
   const { shown, size } = shownStops(levelStops(marks, spans), level);
+  const here = useContext(RunHere);
   // On phones the row scrolls sideways: keep the current level in view (moving the row, never
   // the page) and fade the edge that has more.
   const scroller = useRef<HTMLDivElement>(null);
@@ -323,7 +327,7 @@ export function LevelRow({
   }, [level]);
   return (
     <div className={`${styles.rowWrap} ${edges.start ? styles.moreBefore : ""} ${edges.end ? styles.moreAfter : ""}`}>
-      <div ref={scroller} data-row-frame="" className={styles.rowScroller}>
+      <div ref={scroller} data-row-frame="" className={`${styles.rowScroller} ${here !== null ? styles.rowHere : ""}`}>
       <div className={styles.row} style={{ ["--cols" as string]: size }}>
         {shown.map((m) => {
           const on = level >= m.from && level <= m.level;
@@ -340,6 +344,8 @@ export function LevelRow({
               aria-current={on ? "true" : undefined}
               onClick={() => onChange(m.level)}
             >
+              {/* The run's level, from the snapshot (WO-114). */}
+              {here !== null && here >= m.from && here <= m.level && <span className={styles.here}>You are here</span>}
               <span className={`${styles.cellNum} ${m.from < m.level ? styles.cellSpan : ""}`}>{name}</span>
               <span className={styles.cellMarks}>
                 {Array.from({ length: Math.min(4, m.perks) }, (_, i) => (

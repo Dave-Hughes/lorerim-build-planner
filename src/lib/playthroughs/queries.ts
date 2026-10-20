@@ -6,7 +6,7 @@ import { imageHold } from "@/lib/builds/queries";
 import { readPlan } from "@/lib/rules/convert";
 import { currentVersion, isKnownVersion, requireGameData } from "@/lib/rules/server";
 import { resolveLink } from "./links";
-import { assemble, type PlaythroughView, type SnapshotRow } from "./view";
+import { assemble, roman, type PlaythroughView, type SnapshotRow } from "./view";
 
 /**
  * Reading playthroughs (WO-111). A private one is only its owner's: anyone else gets null, as for
@@ -217,4 +217,12 @@ export async function runOfBuild(buildId: string, viewerId: string | null) {
   if (!r) return null;
   if (r.visibility === "private" && r.ownerId !== viewerId) return null;
   return r;
+}
+
+/** "Part of a run: Kyria Severa, Act I The Sister's House ›" (WO-114), when the viewer may see the run. */
+export async function runLineOf(buildId: string, viewerId: string | null): Promise<{ id: string; name: string; act: string | null } | null> {
+  const r = await runOfBuild(buildId, viewerId);
+  if (!r) return null;
+  const sum = await runOf(r.id);
+  return { id: r.id, name: r.name, act: sum.act ? `Act ${roman(sum.act)} ${sum.actName ?? ""}`.trim() : null };
 }

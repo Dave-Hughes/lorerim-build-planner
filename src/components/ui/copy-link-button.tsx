@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 /** Copies this site's `path` as a full link; says "Copied" for two seconds. */
-export function CopyLinkButton({ path, className = "btn btn-sm" }: { path: string; className?: string }) {
+export function CopyLinkButton({ path, className = "btn btn-sm", label = "Copy link" }: { path: string; className?: string; label?: string }) {
   const [copied, setCopied] = useState(false);
   const copy = async () => {
     try {
@@ -16,7 +16,7 @@ export function CopyLinkButton({ path, className = "btn btn-sm" }: { path: strin
   };
   return (
     <button type="button" className={className} onClick={() => void copy()}>
-      {copied ? "Copied" : "Copy link"}
+      {copied ? "Copied" : label}
     </button>
   );
 }

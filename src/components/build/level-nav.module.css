@@ -235,11 +235,43 @@
   box-shadow: 0 0 0 3px var(--ground);
 }
 
+/* "You are here" (WO-114): the run's level, from the snapshot, over the ruler. */
+.here {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  padding: 0 6px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--rule-strong);
+  background: var(--ground);
+  color: var(--text);
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.here::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 1px;
+  height: 6px;
+  background: var(--rule-strong);
+}
+
 .rowWrap {
   position: relative;
 }
 .rowScroller {
   overflow-x: auto;
+}
+/* Room above the cells for "You are here" (WO-114). */
+.rowHere {
+  padding-top: 26px;
 }
 .row {
   display: grid;

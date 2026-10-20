@@ -4,11 +4,14 @@ import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
 import { taleCount } from "@/lib/playthroughs/view";
 import s from "./play.module.css";
 
+const VIS = { private: "Only you", unlisted: "Link only", public: "Listed" } as const;
+
 /**
- * The playthrough's three views (WO-111): Play with "3 of 16 done", Tale with "4 chapters, 2 entries",
- * and Build, to the build's page, or "No build yet". The Tale view puts the way back beside them.
+ * The character's three views (WO-111, WO-114): Play with "3 of 16 done", Tale with "4 chapters, 2
+ * entries", and Build, the build itself under the run's cover, or "No build yet". On the Build tab,
+ * the right side says how the build shares on its own, with its link and Edit for the owner.
  */
-export function PlaythroughTabs({ p, current, backTo }: { p: PlaythroughRecord; current: "play" | "tale"; backTo?: { href: string; label: string } }) {
+export function PlaythroughTabs({ p, current, backTo, isOwner = false }: { p: PlaythroughRecord; current: "play" | "tale" | "build"; backTo?: { href: string; label: string }; isOwner?: boolean }) {
   const v = p.view;
   return (
     <nav className={s.tabs} aria-label="Views">
@@ -19,12 +22,23 @@ export function PlaythroughTabs({ p, current, backTo }: { p: PlaythroughRecord; 
         Tale<span className={s.cnt}>{taleCount(v.counts)}</span>
       </Link>
       {p.build ? (
-        <Link href={`/b/${p.build.id}`}>
-          Build<span className={s.cnt}>{p.snapshot ? `level ${p.snapshot.level} of ${p.build.levels}` : `${p.build.levels} levels`}</span>
+        <Link href={`/p/${p.id}/build`} aria-current={current === "build" ? "page" : undefined}>
+          Build<span className={s.cnt}>{p.snapshot ? `level ${p.snapshot.level} of ${p.build.levels}` : `levels 1 to ${p.build.levels}`}</span>
         </Link>
       ) : (
         <span className={s.cnt} style={{ display: "inline-flex", alignItems: "center", padding: "0 20px", height: 46 }}>
           No build yet
+        </span>
+      )}
+      {current === "build" && p.build && (
+        <span className={s.buildSide}>
+          <span className="muted">The build on its own: {VIS[p.build.visibility]}</span>
+          <CopyLinkButton path={`/b/${p.build.id}`} label="Copy the build's link" />
+          {isOwner && (
+            <Link href={`/b/${p.build.id}/edit`} className="btn btn-sm">
+              Edit the build
+            </Link>
+          )}
         </span>
       )}
       {backTo && (
@@ -41,11 +55,6 @@ export function Byline({ p }: { p: PlaythroughRecord }) {
   return (
     <span className={s.byline}>
       <span>Made by {p.author.handle ? <Link href={`/u/${p.author.handle}`}>{p.author.name}</Link> : p.author.name}</span>
-      {p.build && (
-        <span>
-          Build: <Link href={`/b/${p.build.id}`}>{p.build.name}</Link>
-        </span>
-      )}
       {p.draftedBy && p.showDrafted && <span className="muted">Drafted with {p.draftedBy}</span>}
       <span className="muted">LoreRim {p.gameVersion}</span>
     </span>

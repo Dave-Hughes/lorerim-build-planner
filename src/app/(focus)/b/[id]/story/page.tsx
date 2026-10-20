@@ -8,7 +8,8 @@ import { clientVersion, isKnownVersion } from "@/lib/rules/server";
 import { getBuild } from "@/lib/builds/queries";
 import { docText, emptyDoc } from "@/lib/guide/doc";
 import { getGuide } from "@/lib/guide/queries";
-import { storyOn } from "@/lib/features";
+import { playthroughsOn, storyOn } from "@/lib/features";
+import { runOfBuild } from "@/lib/playthroughs/queries";
 
 type Params = Promise<{ id: string }>;
 
@@ -25,6 +26,9 @@ export default async function StoryEditPage({ params }: { params: Params }) {
   if (!build) notFound();
   if (build.isSample || build.ownerId !== userId) redirect(`/b/${id}`);
   if (!isKnownVersion(build.gameVersion)) redirect(`/b/${id}`);
+  // One tale per character (WO-114): with a run, the tale is the run's, and this editor is off.
+  const run = playthroughsOn() ? await runOfBuild(id, userId) : null;
+  if (run) redirect(`/p/${run.id}/tale`);
   const guide = await getGuide(id, build.plan);
   return (
     <>
