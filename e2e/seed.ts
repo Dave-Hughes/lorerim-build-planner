@@ -525,9 +525,90 @@ export async function seed() {
         ...Object.entries(HEALER_STORY).map(([key, doc]) => ({ buildId: HEALER_BUILD_ID, key, doc, textLength: textLength(doc) })),
       ],
     );
+    await seedKyria(db);
   } finally {
     await pool.end();
   }
+}
+
+/** WO-111: Kyria's playthrough, from the Playthrough boards on canvas row 23, on the test author's build. */
+export const KYRIA_PLAYTHROUGH_ID = "e2ekyrya22";
+
+const para = (...texts: string[]): GuideDoc => ({ type: "doc", content: texts.map((text) => ({ type: "paragraph", content: [{ type: "text", text }] })) });
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function seedKyria(db: any) {
+  await db.insert(schema.playthroughs).values({
+    id: KYRIA_PLAYTHROUGH_ID,
+    ownerId: TEST_USER_ID,
+    buildId: TEST_BUILD_ID,
+    name: "Kyria Severa",
+    line: "A knight of Stendarr, raised in Dibella's chapel in Anvil, hiding as a bard in Riften.",
+    gameVersion: "5.0.4.8",
+    visibility: "private",
+    draftedBy: "Claude",
+  });
+  const acts: { id: number }[] = await db
+    .insert(schema.playthroughActs)
+    .values([
+      { playthroughId: KYRIA_PLAYTHROUGH_ID, position: 1, name: "The Sister's House", levelFrom: 1, levelTo: 6, place: "Riften", goal: "Earn a bed and coin in Riften as a bard and a worker. Keep the sword wrapped until Act III.", standingRule: "Play the Bee and Barb most nights; read the books you find." },
+      { playthroughId: KYRIA_PLAYTHROUGH_ID, position: 2, name: "The Bard's Road", levelFrom: 6, levelTo: 8, place: "Ivarstead and Whiterun", goal: "On foot, a song at every inn." },
+      { playthroughId: KYRIA_PLAYTHROUGH_ID, position: 3, name: "The Winking Skeever", levelFrom: 8, levelTo: 20, place: "Solitude", goal: "Join the Bards College and take the sword out." },
+      { playthroughId: KYRIA_PLAYTHROUGH_ID, position: 4, name: "The Knight Returns", levelFrom: 20, levelTo: 35, place: "The Reach and Riften", goal: "Take Stendarr's work to the Reach." },
+      { playthroughId: KYRIA_PLAYTHROUGH_ID, position: 5, name: "King Olaf's Verse", levelFrom: 40, levelTo: null, place: "Dead Men's Respite", goal: "Finish the verse." },
+    ])
+    .returning({ id: schema.playthroughActs.id });
+  const [a1, a2, a3, a4, a5] = acts.map((a) => a.id);
+  const o = (actId: number, position: number, v: Record<string, unknown>) => ({ actId, position, kind: "once", doneBy: "hand", status: "todo", accepted: true, ...v });
+  const objs: { id: number }[] = await db
+    .insert(schema.playthroughObjectives)
+    .values([
+      o(a1, 1, { text: "Walk out of the Temple of Mara", why: "The start quest. 200 XP.", status: "done" }),
+      o(a1, 2, { text: "Warn Haelga, or expose her", link: { kind: "quest", id: "FreeformRiften11" }, doneBy: "save", detect: { quest: "FreeformRiften11", stage: 12 }, why: "Caught Red Handed, from Svana at the bunkhouse. Stage 12: Haelga was warned." }),
+      o(a1, 3, { text: "Take a room at the Bee and Barb", status: "done" }),
+      o(a1, 4, { text: "Get a lute, then a spare", status: "doing", why: "Riften's general goods merchant stocks instruments some of the time. Not checked yet." }),
+      o(a1, 5, { text: "Play the Bee and Barb until Speech 40", kind: "reach", doneBy: "save", reach: { key: "skill:Speech", target: 40 }, why: "Tips start at Speech 40. Playing most nights is the act's standing rule, not a box to tick." }),
+      o(a1, 6, { text: "Reach level 6", kind: "reach", doneBy: "save", reach: { key: "level", target: 6 } }),
+      o(a1, 7, { text: "Bring bread to the cells and meet Inigo", link: { kind: "follower", id: "inigo" }, why: "Her first companion. The Khajiit in Riften's jail talks his way into her service." }),
+      o(a1, 8, { text: "Hunt and tan her first hides", why: "Deer or elk around Lake Honrich, tanned at a tanning rack." }),
+      o(a1, 9, { text: "Sing for the children at Honorhall", why: "Maramal asked her to. Grelod the Kind runs the place." }),
+      o(a1, 10, { text: "Spread the Love", link: { kind: "quest", id: "FreeformRiften05" }, doneBy: "save", detect: { quest: "FreeformRiften05" }, why: "Mara's errand, from Dinya Balu at the temple. No fighting." }),
+      o(a1, 11, { text: "The Book of Love", link: { kind: "line", id: "the-book-of-love" }, why: "Mara's temple sends her to Fastred in Ivarstead, on the road Act II takes.", suggestedBy: "Claude", accepted: false }),
+      o(a1, 12, { text: "Hire Marcurio for the road", status: "later", why: "Not needed. Inigo doesn't use the follower slot." }),
+      o(a2, 1, { text: "Sing at the Vilemyr Inn" }),
+      o(a2, 2, { text: "Reach level 8", kind: "reach", doneBy: "save", reach: { key: "level", target: 8 } }),
+      o(a3, 1, { text: "Join the Bards College" }),
+      o(a4, 1, { text: "Reach level 35", kind: "reach", doneBy: "save", reach: { key: "level", target: 35 } }),
+      o(a5, 1, { text: "Reach level 40", kind: "reach", doneBy: "save", reach: { key: "level", target: 40 } }),
+    ])
+    .returning({ id: schema.playthroughObjectives.id });
+  const id = (n: number) => objs[n - 1].id;
+  const c = (position: number, v: Record<string, unknown> & { doc: GuideDoc }) => ({ playthroughId: KYRIA_PLAYTHROUGH_ID, position, kind: "chapter", textLength: textLength(v.doc), ...v });
+  await db.insert(schema.playthroughChapters).values([
+    c(1, { title: "Chapter One: The Chapel by the Sea", doc: para("The chapel bells in Anvil rang the hours for the girl who swept its floors.", "She learned the songs before she learned her letters.") }),
+    c(2, { title: "Chapter Two: The Night of Lanterns", doc: para("On the night of lanterns the priests let her carry the brass one at the front.") }),
+    c(3, { title: "Chapter Three: The Shield and the Sword", doc: para("The Vigilants came through in autumn and one of them stayed to teach her the sword.") }),
+    c(4, { title: "Chapter Four: The Sister's House", doc: para("The road north ended at a temple in Riften, where a sister of Mara took her in without a question.", "She wrapped the sword in sackcloth and put it under the bed.") }),
+    c(5, { kind: "entry", actId: a1, title: "The first set", opensAfter: id(5), fromSave: "Save 5", writtenBy: "Claude", doc: para("The Bee and Barb was half empty and the lute was out of tune, and she played anyway.") }),
+    c(6, { kind: "entry", actId: a1, title: "The Mark of Dibella", opensAfter: id(2), fromSave: "Save 7", writtenBy: "Claude", doc: para("She told Haelga what Svana knew, and Haelga thanked her with a look she did not like.") }),
+    c(7, { kind: "beat", actId: a1, title: "Made with Care", opensAfter: id(8), writtenBy: "Claude", doc: para("The hide was rough under her hands, and she thought of the chapel's leather prayer books.") }),
+    c(8, { kind: "beat", actId: a1, title: "The Note Under the Door", opensAfter: id(5), writtenBy: "Claude", doc: para("Someone had slid a folded note under her door while she slept.") }),
+  ]);
+  await db.insert(schema.playthroughSnapshots).values({
+    playthroughId: KYRIA_PLAYTHROUGH_ID,
+    source: "save",
+    label: "Save 7",
+    level: 6,
+    xp: 112,
+    day: 7,
+    place: "Riften",
+    skills: { Speech: 30, "Two-Handed": 36 },
+    questStages: { FreeformRiften11: 12 },
+    readBy: "Claude",
+    prevLabel: "Save 5",
+    prevLevel: 4,
+    prevSkills: { Speech: 22, "Two-Handed": 30 },
+  });
 }
 
 /** Images the tests uploaded (dev/builds/e2e…). */

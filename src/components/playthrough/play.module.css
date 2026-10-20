@@ -1,0 +1,594 @@
+/* The playthrough's Play view (WO-111), as the Playthrough board on canvas row 23. */
+.main {
+  padding-top: 32px;
+  padding-bottom: 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.back {
+  font-size: 15px;
+  align-self: flex-start;
+}
+
+/* The title band: plain and dark, no cover (design rule 12). */
+.band {
+  border: 1px solid var(--rule);
+  background: #121922;
+  padding: 30px 32px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.bandHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.name {
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  overflow-wrap: anywhere;
+}
+.bandActions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.lineText {
+  font-size: 18px;
+  color: var(--text);
+}
+.byline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+  font-size: 15px;
+  color: var(--soft);
+}
+
+/* The three views. */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--rule);
+  flex-wrap: wrap;
+}
+.tabs a {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  height: 46px;
+  padding: 0 20px;
+  margin-bottom: -1px;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--muted);
+  border-bottom: 2px solid transparent;
+}
+.tabs a[aria-current] {
+  color: var(--ember);
+  border-bottom-color: var(--ember);
+}
+.tabs .cnt {
+  margin-left: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.tabs .backTo {
+  margin-left: auto;
+  color: var(--ember);
+  font-family: var(--font-body);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.h2 {
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1;
+}
+.h2s {
+  font-size: 22px;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.headRule {
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.note {
+  font-size: 14px;
+  color: var(--muted);
+}
+.linkButton {
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--ember);
+  font: inherit;
+  cursor: pointer;
+}
+.linkButton:hover {
+  color: var(--ember-hover);
+}
+
+/* Where you stand. */
+.stand {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.cells {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid var(--rule);
+}
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  border-right: 1px solid var(--rule);
+}
+.cell:last-child {
+  border-right: 0;
+}
+.cell b {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.cell span {
+  font-size: 19px;
+  font-variant-numeric: tabular-nums;
+}
+.cell small {
+  color: var(--muted);
+  font-size: 13px;
+}
+.empty {
+  border: 1px solid var(--rule);
+  padding: 16px 18px;
+  color: var(--soft);
+}
+
+/* The hand-entry form. */
+.form {
+  border: 1px solid var(--rule);
+  background: #121922;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px 16px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.formActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.error {
+  color: var(--health);
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr) 360px;
+  gap: 32px;
+  align-items: start;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+
+/* The acts down the left. */
+.acts {
+  display: flex;
+  flex-direction: column;
+}
+.act {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  gap: 4px 14px;
+  align-items: start;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  color: inherit;
+  text-decoration: none;
+}
+.actN {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  border: 1px solid var(--rule-strong);
+  color: var(--muted);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 16px;
+}
+.actNow .actN {
+  border-color: var(--ember);
+  color: var(--ember);
+}
+.actDone .actN {
+  background: var(--stamina);
+  border-color: var(--stamina);
+  color: var(--on-ember);
+}
+.act h3 {
+  margin: 3px 0 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+}
+.actLater h3 {
+  color: var(--muted);
+  font-weight: 500;
+}
+.actWhere {
+  grid-column: 2;
+  font-size: 14px;
+  color: var(--muted);
+}
+.actCnt {
+  padding-top: 5px;
+  font-size: 14px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.bar {
+  grid-column: 2 / -1;
+  height: 3px;
+  background: var(--rule-soft);
+  margin-top: 4px;
+}
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--ember);
+}
+.actDone .bar i {
+  background: var(--stamina);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 26px;
+  border: 1px solid var(--rule);
+  background: #121922;
+}
+.goal {
+  font-size: 17px;
+}
+.rule {
+  font-size: 15px;
+  color: var(--soft);
+}
+
+/* Objectives. */
+.objs {
+  display: flex;
+  flex-direction: column;
+}
+.obj {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  gap: 4px 16px;
+  align-items: start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  scroll-margin-top: 80px;
+}
+.box {
+  width: 22px;
+  height: 22px;
+  box-sizing: border-box;
+  border: 1px solid var(--rule-strong);
+  margin-top: 2px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  background: none;
+  color: var(--on-ember);
+  padding: 0;
+}
+button.box {
+  cursor: pointer;
+}
+button.box:hover {
+  border-color: var(--ember);
+}
+.objDone .box {
+  background: var(--stamina);
+  border-color: var(--stamina);
+}
+.t {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+}
+.objDone .t {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--rule-strong);
+}
+.st {
+  font-size: 14px;
+  color: var(--muted);
+  white-space: nowrap;
+  padding-top: 3px;
+}
+.stNow {
+  color: var(--ember);
+}
+.stSave {
+  color: var(--stamina);
+}
+.why {
+  grid-column: 2 / -1;
+  font-size: 15px;
+  color: var(--soft);
+  line-height: 1.45;
+}
+.meter {
+  grid-column: 2 / -1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.meter i {
+  display: block;
+  width: 180px;
+  height: 4px;
+  background: var(--rule-soft);
+  position: relative;
+}
+.meter i::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--w);
+  background: var(--ember);
+}
+.sug {
+  border: 1px solid var(--rule-strong);
+  padding: 14px 16px;
+  margin: 8px 0;
+  background: #121922;
+}
+.sug .box {
+  border-style: dashed;
+  border-color: var(--muted);
+}
+.answer {
+  grid-column: 2 / -1;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.kind {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 7px;
+  margin-left: 10px;
+  border: 1px solid var(--rule-strong);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  vertical-align: 3px;
+}
+.btnP {
+  background: var(--ember);
+  color: var(--on-ember);
+  border-color: var(--ember);
+}
+
+/* The one-line pointers to the tale: never its text (rule 12). */
+.tale {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 44px;
+  padding: 9px 16px;
+  border-left: 2px solid var(--brass);
+  background: var(--sunk);
+  font-size: 14px;
+  color: var(--muted);
+}
+.taleTitle {
+  font-family: var(--font-flavor);
+  font-size: 18px;
+  color: #ddd5c6;
+  margin-right: 4px;
+}
+.taleWait {
+  border-left-color: var(--rule-strong);
+  background: transparent;
+}
+.taleWait .taleTitle {
+  color: var(--muted);
+}
+
+.add {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding-top: 16px;
+  flex-wrap: wrap;
+}
+
+/* The right column. */
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.who {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 10px 20px;
+  margin: 0;
+}
+.who dt {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  padding-top: 2px;
+}
+.who dd {
+  margin: 0;
+  font-size: 16px;
+}
+.vis {
+  display: flex;
+  border: 1px solid var(--rule-strong);
+}
+.vis button {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  height: 36px;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  border-right: 1px solid var(--rule-strong);
+  cursor: pointer;
+}
+.vis button:last-child {
+  border-right: 0;
+}
+.vis button[aria-pressed="true"] {
+  background: var(--ember);
+  color: var(--on-ember);
+}
+
+/* My playthroughs and /playthroughs: cards. */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 22px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+  color: inherit;
+  text-decoration: none;
+}
+.card:hover {
+  border-color: var(--rule-strong);
+}
+.cardName {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text);
+}
+.cardLine {
+  color: var(--soft);
+  font-size: 15px;
+}
+.cardMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+@media (max-width: 1180px) {
+  .grid {
+    grid-template-columns: 260px minmax(0, 1fr);
+  }
+  .side {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cells {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cell:nth-child(2) {
+    border-right: 0;
+  }
+  .cell:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--rule);
+  }
+  .name {
+    font-size: 38px;
+  }
+  .bandHead {
+    flex-direction: column;
+  }
+  .band {
+    padding: 22px 18px;
+  }
+  .tale {
+    margin-left: 0;
+  }
+}
