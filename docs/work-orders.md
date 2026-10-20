@@ -4709,6 +4709,8 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ## WO-114a  No question at New character; a run is added from the build (Mac, 20 Oct 2026)
 
+**Superseded by WO-116, which carries everything below. Don't build this order.**
+
 **Why.** Dave, after reading how it works: the "a build and a run / a build alone" question at New character is for us, not for the player. Every character is a build; a run is something you add. A player sharing a build should never see the word run; a player wanting the story loses one click.
 
 - `/new` opens Set up directly, as New build did. No first question; `?kind=` goes.
@@ -4720,6 +4722,52 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 ### Done when
 - [ ] New character is Set up; a run is started from the build page or its card; a build without a run looks as it did before WO-114.
 - [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
+
+---
+
+## WO-116  Play is the page; the story opens in a reader (Mac, 20 Oct 2026)
+
+**Why.** Dave, reviewing WO-114 on staging: the Tale was a page of its own below a tab row, so clicking it threw away the hero and the tabs and broke the page's order; the Build tab nested a second row of tabs; and the question at New character was for us, not the player. His idea, boarded and approved ("Love it"): Play is the page, and the story relevant to where the player is opens in a full-screen reader, one tap away. The story supports the run; a player can ignore it and lose nothing.
+
+**The boards.** Canvas row 26: `CharacterReader.dc.html` (interactive: Play with the act's story card and Story markers; the reader over the page) and `CharacterReaderPhone.dc.html`. Row 25's full-bleed hero and single tab row stay; its Story tab does not. Rows 23 and 24's Tale page, Build tab and New character question are superseded.
+
+**Where:** on `staging`, behind `FEATURE_PLAYTHROUGHS` for the run parts, small commits in the order below. This order includes all of WO-114a.
+
+### 1. One page for a build and a character
+- `/b/<id>` and `/p/<id>` become the same page: the build page's full-bleed hero exactly as today (cover, name, line, byline, Edit and Copy link), then one row of folder tabs in the build page's style. A build alone: **Levels, Guide**. A character with a run: **Play, Levels, Guide**, Play first and the default. `/p/<id>` stays the run's address and opens Play; `/b/<id>` opens Levels. No nested tabs anywhere; the Story tab goes (its content opens in the reader, section 3).
+- The tab row pins under the site header as you scroll, as a thin bar: the character's name and the tabs. Same on every tab.
+- Owner only, beside Edit: **Start a run** on a build without one (WO-114's The run step, as a step of its own), and **Read the story from the beginning** under the byline on every character or build that has a story.
+- `/me` (My characters) keeps one grid; the card's "Add a run" becomes "Start a run".
+
+### 2. New character
+- `/new` opens Set up directly, as New build did. No first question; `?kind=` goes. The door is unchanged: `create_playthrough` with creation fields still makes both in one call.
+
+### 3. The reader
+- One reader for every story: a run's chapters, entries and beats, and a build alone's Story (WO-79). It opens at `/p/<id>/story/<chapter>` (or `/b/<id>/story` for a build's Story) over the page, full screen: the chapter's plate image (its first image, else the act's picture, else the character's cover) full width, 640 tall on desktop and 380 on a phone, the kicker (Before Skyrim, Act I) and title and epigraph or sub line over it, then the 680px Alegreya column as WO-111 renders it, "In the game: <objective>" at the end of an entry linking back to its row, and previous / Back to the quest log / next at the foot.
+- A thin top bar over the plate: "‹ Back to the quest log" (or "‹ Back to the build"), the chapter's place, previous and next by name. It fades as you read and returns on scroll up.
+- Previous and next walk the whole tale in reading order: chapters before the game, then each act's chapter, entries and beats. A beat not yet open is a stop that shows its title, what opens it and "Read it anyway".
+- Closing (Back, Esc, the browser's back, a phone's back gesture) returns to the page at the same scroll position. It has its own address so a scene can be linked and the browser's history works; opened from the page it is drawn over it, opened from a link it loads with the page behind it.
+- The owner's Edit is in the top bar, faint, and opens the Story editor on that chapter.
+
+### 4. Story in Play
+- **Act story card:** at the top of each act on Play, before the goal line and objectives, a wide card: the act's picture (new `playthrough_act.imageUrl`, nullable, uploaded on the run's edit page through the guide images path; else the first image of the act's chapter; else the cover), "Act I", the act's name, the first two lines of the act's chapter, **Read Act I** and its length ("3 min | a chapter and 2 entries"). Once the player has opened it, the card shrinks to one line ("Act I's story ›"); a toggle on the line expands it again. Read state per player in `playthrough_chapter.readAt` (the owner) and localStorage for other readers.
+- An act's chapter is new: `playthrough_chapter` rows with `kind: "act"` and `actId`, one per act, written in the Story editor or by `write_chapter({ kind: "act", act })`. An act with no chapter shows no card; the goal line leads.
+- **Story markers:** an objective that a chapter hangs off (a beat's `opensAfter`, an entry's linked objective) carries a marker under its why line: "Story" and the chapter's title in italic, opening the reader there. A beat not yet open shows a dashed marker, "opens when you tick this" (or "at Speech 40"), not a link. The WO-111 one-line pointers go.
+- The acts list on the left and everything else on Play are unchanged.
+
+### 5. Tools and the style guide
+- `write_chapter` takes `kind: "act"` with `act`. `get_playthrough` lists each act's chapter and each objective's chapters. The style guide gains under Playthroughs: "Each act can open with its own chapter: the story of that stretch, written before the player plays it. Beats and entries hang off objectives."
+
+### 6. Tests and screenshots
+- e2e: a build alone has Levels and Guide and Read the story; a character with a run opens on Play; the tab row pins; Read Act I opens the reader at `/p/<id>/story/<chapter>`, Back returns to the same scroll position and the card is now one line; a Story marker opens its entry and "In the game" comes back to the row; previous and next walk the tale and stop at a waiting beat with Read it anyway; New character lands in Set up; Start a run from the hero and from the card; the browser's back button closes the reader.
+- Screenshots at 1440 and 390: a build alone, Play with an act card and markers, the reader at an act and at an entry, the reader's foot, My characters. Compare with row 26.
+
+### Done when
+- [ ] The build page and the character page are one page: full-bleed hero, one row of tabs, no Story tab, no nested tabs, the row pinned on scroll.
+- [ ] Every story opens in the reader, with its own address, from the act card, a marker or the hero, and closes to the same spot.
+- [ ] Each act can open with its own chapter and card; objectives carry their Story markers.
+- [ ] New character is Set up; a run is started from the build.
+- [ ] Every check in CLAUDE.md passes; migration additive; behind the flag. Commit on `staging`, push, and stop: Dave opens Kyria, reads Act I from its card, ticks a hunt and reads Made with Care from its marker.
 
 ---
 
