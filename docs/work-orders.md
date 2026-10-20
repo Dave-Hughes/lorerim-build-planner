@@ -4654,6 +4654,59 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-114  One character, two views (Mac, 20 Oct 2026)
+
+**Why.** A build and a playthrough are two records, two pages, two lists and two tool families, and the player who wants the immersive run has to make both and join them (Claude drafted Kyria's run, then her build, and couldn't link them). Dave, 19 Oct: keep two records underneath, one container on top. A playthrough is a character and her run. Two more things from his review of the boards: the character leads with the big cover the build page has, and the Tale is a reading page with the least UI in the way.
+
+**The boards.** Canvas row 24: `Characters.dc.html` (My characters), `NewCharacter.dc.html` (one question, then Set up with one more step), `CharacterBuildTab.dc.html` (the Build tab is the build; the build's own page says it belongs to a run). Row 23, revised: `Playthrough.dc.html` (the cover on the Play view) and `PlaythroughTale.dc.html` (the Tale as a reading page). Build what they show.
+
+**Where:** on `staging`, behind `FEATURE_PLAYTHROUGHS` as WO-111, small commits in the order below. Nothing moves in the data except two columns; the pages and the entry points change.
+
+### 1. The cover
+- A character has one cover: the build's (`builds.coverImageUrl`). `playthroughs.coverImageUrl` goes; the run's edit page uploads to the build's cover through the same path, and the run's pages read it from the build.
+- The Play view and the Build tab lead with it as the build page does (rule 12): full width, 440 tall, name, line and byline over the dark fade, Edit and Copy link top right. No cover: the plain dark band, as the build page.
+- A run with no build yet (made through the door before WO-114, or an older one) keeps the band until a build is attached.
+
+### 2. My characters
+- `/me` shows one grid, "My characters", in place of My builds and My playthroughs: every build the player owns, one card each, the build's card as today. A build with a run adds the run box (Where she stands: act, place, level and day from the snapshot, "n of m done", a bar, Play ›) and a Run tag on the cover; a build alone adds "Build alone: Add a run ›", which opens The run step from section 3 on that build. The Story tag and "Drafted with Claude" stay. The count line: "4 characters: 2 with a run, 2 builds alone".
+- Assistants stays under the grid; its row counts characters drafted (builds and runs together).
+- "New build" becomes "New character" in the header and on `/me`. `/playthroughs` (Listed runs) and Browse (Listed builds) stay as they are; the header keeps Builds and Playthroughs.
+
+### 3. New character
+- `/b/new` (the creation wizard) opens with one question before Set up: "A build and a run" or "A build alone", two cards as the board, Confirm. A build alone is Set up exactly as today.
+- A build and a run: Set up as today, then a seventh step, The run: name and one line (prefilled from the build's name and description), Act I's name (prefilled "The first days"), levels (prefilled "1 to 5"), place (prefilled from the start when `starts.json` names one, else empty), the goal line (empty), and the objectives list with the start's own quest as its first row when the planner knows it (`doneBy: save`, its edid; see the note below), then Add an objective. Confirm makes the build and the run in one transaction and opens `/p/<id>`.
+- The same step runs from "Add a run" on a build-only card and from the build page's Edit for the owner.
+- Note for Bob: `starts.json` carries no place or start quest today. The start-check reports' `starts` tables name each Alternate Perspective start's quest (`APS_InnWhiterun` and the rest). Bob adds `place` and `quest` to the starts through `gamedata/5.0.4.8/overrides.json` in a follow-up; until then the step prefills what it has and leaves the rest empty.
+
+### 4. The character page and the build's page
+- `/p/<id>` keeps Play and Tale; the Build tab shows the build itself under the run's cover: the build page's level ruler, level card, and its Levels, Guide and Story row as a second row of folder tabs in the build's own style. The ruler marks the run's level with "You are here" from the snapshot. The tab row's right side: "The build on its own: <visibility>", Copy the build's link, Edit the build. The band's "Build: <name>" link goes; the tab is the link.
+- One tale per character. When a run is attached to a build, the build's Story tab shows "Her tale is in the run ›" and its Story editor is off; an existing Story (WO-79) becomes the run's first chapter before the game, images and captions carried over, in the same transaction as the attach, and the Story's rows are removed. Detaching a run (set_playthrough with "none", or the edit page) leaves the chapters with the run.
+- `/b/<id>` for a build with a run: under the byline, "Part of a run: <run name>, <Act n> ›", to the owner always, to others while the run is Listed or Link only. A private run shows nothing to others.
+
+### 5. The Tale page
+- `/p/<id>/tale` is a reading page: no site header, no band, no tabs row, no rail. The opening plate is the first chapter's first image when there is one, else the character's cover, full width, 720 tall, with the Tale's title and epigraph over its lower edge (both from the first chapter's `story:title` and `story:line` equivalents on the run: new nullable `playthroughs.taleTitle` (60) and `taleLine` (140), set on the run's edit page). Over the plate, a thin bar: the character's name, Play / Tale / Build in small type, "‹ Quest log, Act n"; it fades out after the first 200px of scroll and comes back on scroll up.
+- Then the 680px column as WO-111 renders it, with: a chapter's sub line in the dimmer grey (`#6f7c8c`); an entry's "In the game: <objective>" as a small italic at the end, right-aligned; a waiting beat as its title in italic and one line ("After her first hunt. Read it anyway"), no box; the owner's Edit and "written by Claude" in `#3a4658` until the pointer is on that chapter, then the muted grey. Nothing else on the page.
+- Contents: a tab on the left edge, "Contents", vertical, at 200px from the top; it opens a 320px drawer over the page with the WO-111 contents (chapters before the game, each act's entries and beats, the one being read in ember, waiting ones dim), Add a chapter at the foot. The chapter editor opens from the drawer and from Edit. Escape or a click outside closes it.
+- The build page's Story tab (WO-79) keeps its own rendering; this page is the run's.
+
+### 6. The tools
+- `create_playthrough` takes the character creation fields (`creationFields` from WO-110: race, birthsign, mode, deity, start, startOption, majors, minors, traits) with the run's `name` and `line`, makes the build and the run in one transaction, Act I prefilled as section 3, and answers with both ids and both links. The old shape (`build` by id or name) still works for a run on an existing build. `create_build` stays for a build alone.
+- `get_playthrough` answers with the build's id, name, cover and level count; `list_my_builds` says which builds have a run and `list_my_playthroughs` which build each run is on. `get_style_guide` gains one line under Builds: "A character is a build with or without a run; make the run with create_playthrough when the player wants the story, not a build and a run separately."
+
+### 7. Tests
+- Unit: create both in one transaction and nothing when the run's step fails; a Story moved to the run's first chapter on attach, images kept; the build page's run line by visibility; the tale title and line.
+- e2e: New character with a run end to end, landing on the Play view with Act I and the start's objective when known; "Add a run" on a build-only card; the Build tab shows the build's levels with "You are here"; `/b/<id>` shows the run line to the owner and hides it from another player while the run is private; the Tale page has no header and the Contents drawer opens and closes; `/me` shows one grid with both kinds; through the door, `create_playthrough` with creation fields makes both.
+- Screenshots: My characters, New character's first question and The run step, the Play view with the cover, the Build tab, the Tale page at the top and mid-scroll, the build's page with the run line. Compare with rows 23 and 24.
+
+### Done when
+- [ ] A player makes a character with a run in one pass and lands on her Play view; a build alone is unchanged.
+- [ ] `/me` is one list; the Build tab is the build; the build's own page still shares alone and says it belongs to a run.
+- [ ] The character leads with the build's cover on every view; the Tale page is the plate, the bar and the column, with Contents in a drawer.
+- [ ] `create_playthrough` makes both through the door.
+- [ ] Every check in CLAUDE.md passes; migration additive; behind the flag. Commit on `staging`, push, and stop: Dave makes Kyria again as one character and reads her tale.
+
+---
+
 ## WO-112 and WO-113  (to write when WO-111 is checked)
 
 - **WO-113 Merchants (PC).** `get_spell` can't say where a spell is sold: the planner has no merchant data. Read vendor containers and their leveled lists from the game files, per spell tome and item, and mark random stock as such. Until then the tool says so and tells the assistant not to name one from memory.
