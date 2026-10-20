@@ -23,6 +23,9 @@ test("initialize, tools/list and one call of each tool", async ({ baseURL }) => 
   const { tools } = await client.listTools();
   expect(tools.map((t) => t.name).sort()).toEqual(["add_act", "add_level", "add_objective", "check_progression", "create_build", "create_playthrough", "finish_draft", "finish_draft_playthrough", "get_build", "get_perk", "get_playthrough", "get_quest_start", "get_spell", "get_style_guide", "list_my_builds", "list_my_playthroughs", "move_act", "move_objective", "remove_act", "remove_chapter", "remove_last_level", "remove_objective", "search_facts", "set_act", "set_chapter", "set_details", "set_gear", "set_level", "set_objective", "set_snapshot", "set_status", "suggest_objective", "suggest_quests", "whoami", "write_chapter"]);
 
+  // No unions in any tool's input (WO-111b): no anyOf or oneOf, and no field of two types.
+  for (const t of tools) expect(JSON.stringify(t.inputSchema), t.name).not.toMatch(/"(anyOf|oneOf)"|"type":\[/);
+
   expect(JSON.parse(textOf(await client.callTool({ name: "search_facts", arguments: { query: "Haggling" } }))).hits[0]).toMatchObject({ id: "Speech:Haggling" });
   expect(JSON.parse(textOf(await client.callTool({ name: "get_perk", arguments: { name: "Haggling" } })))).toMatchObject({ tree: "Speech", ranks: 1 });
   const spell = JSON.parse(textOf(await client.callTool({ name: "get_spell", arguments: { name: "Holy Fire" } })));

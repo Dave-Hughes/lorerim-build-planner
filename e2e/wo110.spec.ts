@@ -54,6 +54,11 @@ test("an assistant drafts a build: create, three levels with one refused and fix
   }
   expect((await call(baseURL!, from, token, "get_build", { build: buildId })).json().levels).toHaveLength(20);
 
+  // check_progression takes the build by id as its own field (WO-111b), not a union with the plain shape.
+  const checked = await call(baseURL!, from, token, "check_progression", { buildId });
+  expect(checked.isError, checked.text).toBe(false);
+  expect(checked.json()).toMatchObject({ levels: 20, issues: [] });
+
   const done = await call(baseURL!, from, token, "finish_draft", { build: buildId });
   expect(done.json()).toMatchObject({ ready: true, link: `${baseURL!.replace(/\/$/, "")}/b/${buildId}` });
 

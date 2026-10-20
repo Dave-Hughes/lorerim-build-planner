@@ -4636,7 +4636,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 ### Done when
 - [ ] `tools/list` on staging shows no `anyOf` or `oneOf` in any input schema.
 - [ ] Dave's Claude adds a reach objective ("Lute to 66") through the door and it saves with its meter.
-- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
+- [x] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
 
 ---
 

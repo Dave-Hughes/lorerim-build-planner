@@ -14,23 +14,27 @@ type Guarded = (run: () => unknown | Promise<unknown>) => Promise<{ content: { t
 type Ctx = { http?: { authInfo?: unknown } };
 
 const playthrough = z.string().min(1).max(80).describe("The playthrough's id, from create_playthrough or list_my_playthroughs, or its name.");
-const act = z.union([z.number().int().min(1), z.string().min(1).max(60)]).describe("The act: its number (1 is Act I) or its name.");
-const objective = z.union([z.number().int().min(1), z.string().min(1).max(160)]).describe("The objective: its id from get_playthrough, or its words.");
+// Plain fields only, one level deep, no unions (WO-111b): some connectors check arguments against the
+// JSON schema before sending and don't always get an anyOf right.
+const act = z.string().min(1).max(60).describe('The act: its number as a string ("2"), "Act II", or its name.');
+const objective = z.string().min(1).max(160).describe("The objective: its id from get_playthrough, as a string, or its words.");
+const chapter = z.string().min(1).max(60).describe("The chapter, entry or beat: its id from get_playthrough, as a string, or its title.");
 const linkSchema = z.object({ kind: z.enum(LINK_KINDS), name: z.string().min(1).max(160) }).describe('What it links to in the planner, by name: a quest ("Name (Line)" when two lines have one of that name), a quest line, a spell, an item or a follower. Leave it out for the player\'s own aims; never invent a quest.');
-const doneWhen = z
-  .union([
-    z.object({ quest: z.string().min(1).max(160).describe("The quest, by name or its id, whose stage the save shows."), stage: z.number().int().min(0).optional().describe("The stage that means done; any stage when left out.") }),
-    z.object({ reach: z.object({ key: z.string().min(1).max(60).describe('"Level", a skill\'s name, or a count\'s label ("books read").'), target: z.number().int().min(1) }) }),
-    z.literal("hand"),
-  ])
-  .describe('How the planner knows it\'s done: a quest stage the save shows, a number to reach, or "hand" for one the player ticks.');
+/** How the planner knows it's done, as flat fields: give one of quest (and stage), reachKey and reachTarget, or byHand. */
+const doneFields = {
+  quest: z.string().min(1).max(160).optional().describe("For a done-once objective the save shows: the quest, by name or its id."),
+  stage: z.number().int().min(0).optional().describe("With quest: the stage that means done; any stage when left out."),
+  reachKey: z.string().min(1).max(60).optional().describe('For kind "reach": "Level", a skill\'s name, or a count\'s label ("books read").'),
+  reachTarget: z.number().int().min(1).optional().describe('For kind "reach": the number to reach.'),
+  byHand: z.boolean().optional().describe("true for a done-once objective the player ticks."),
+};
 const objectiveFields = {
   playthrough,
   act,
   text: z.string().min(1).max(160).describe("One thing the player can know is done, in plain instructions (rule 14). Not every, each, always or whenever: that's the act's standing rule."),
   link: linkSchema.optional(),
   kind: z.enum(["once", "reach"]).describe("once: done once. reach: a number to reach."),
-  doneWhen: doneWhen.optional(),
+  ...doneFields,
   why: z.string().max(300).optional().describe("One line, Play only: why, or where it starts. Quest facts from the planner; say \"not checked yet\" when it does."),
   after: objective.optional().describe("Put it right after this objective in the act; at the end when left out."),
 };
@@ -69,7 +73,7 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     "set_act",
     "Change an act",
     "Change an act's name, levels, place, goal or standing rule.",
-    z.object({ playthrough, act, name: actFields.name.optional(), levels: actFields.levels.optional(), place: actFields.place.optional(), goal: actFields.goal.optional(), standingRule: z.string().max(200).nullable().optional() }),
+    z.object({ playthrough, act, name: actFields.name.optional(), levels: actFields.levels.optional(), place: actFields.place.optional(), goal: actFields.goal.optional(), standingRule: z.string().max(200).optional().describe("The standing rule; an empty string takes it away.") }),
     (p, a: Parameters<typeof t.setAct>[1]) => t.setAct(p, a),
   );
   tool("remove_act", "Remove an act", "Remove an act, its objectives, entries and beats; the last act stays.", z.object({ playthrough, act }), (p, a: Parameters<typeof t.removeAct>[1]) => t.removeAct(p, a));
@@ -77,7 +81,7 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
   tool(
     "add_objective",
     "Add an objective",
-    "Add an objective to an act: one thing the player can know is done (rule 14). Refused, with the rule's words, when it can't be known done: a done-once objective with no doneWhen, or words like every, each, always, whenever, or starting Keep, Always or Never.",
+    "Add an objective to an act: one thing the player can know is done (rule 14). Say how it's done with quest (and stage), reachKey and reachTarget (kind reach), or byHand. Refused, with the rule's words, when it can't be known done: a done-once objective with none of them, or words like every, each, always, whenever, or starting Keep, Always or Never.",
     z.object(objectiveFields),
     (p, a: t.ObjectiveToolInput) => t.addObjective(p, a),
   );
@@ -91,8 +95,8 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
   tool(
     "set_objective",
     "Change an objective",
-    "Change an objective's words, link, kind, doneWhen or why line; checked by rule 14 again.",
-    z.object({ playthrough, objective, text: objectiveFields.text.optional(), link: linkSchema.nullable().optional(), kind: objectiveFields.kind.optional(), doneWhen: doneWhen.optional(), why: objectiveFields.why }),
+    "Change an objective's words, link, kind, how it's done (quest and stage, reachKey and reachTarget, or byHand) or why line; checked by rule 14 again.",
+    z.object({ playthrough, objective, text: objectiveFields.text.optional(), link: linkSchema.optional(), unlink: z.boolean().optional().describe("true to take the link away."), kind: objectiveFields.kind.optional(), ...doneFields, why: objectiveFields.why }),
     (p, a: Parameters<typeof t.setObjective>[1]) => t.setObjective(p, a),
   );
   tool("remove_objective", "Remove an objective", "Remove an objective.", z.object({ playthrough, objective }), (p, a: Parameters<typeof t.removeObjective>[1]) => t.removeObjective(p, a));
@@ -129,10 +133,10 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     "set_chapter",
     "Change a piece of the tale",
     "Change a chapter, entry or beat's title, its text (Markdown, as write_chapter), the objective a beat opens after, or an entry's save.",
-    z.object({ playthrough, chapter: z.union([z.number().int().min(1), z.string().min(1).max(60)]), title: z.string().min(1).max(60).optional(), text: z.string().min(1).max(60_000).optional(), after: objective.optional(), fromSave: z.string().max(60).optional() }),
+    z.object({ playthrough, chapter, title: z.string().min(1).max(60).optional(), text: z.string().min(1).max(60_000).optional(), after: objective.optional(), fromSave: z.string().max(60).optional() }),
     (p, a: Parameters<typeof t.setChapter>[1]) => t.setChapter(p, a),
   );
-  tool("remove_chapter", "Remove a piece of the tale", "Remove a chapter, entry or beat.", z.object({ playthrough, chapter: z.union([z.number().int().min(1), z.string().min(1).max(60)]) }), (p, a: Parameters<typeof t.removeChapter>[1]) => t.removeChapter(p, a));
+  tool("remove_chapter", "Remove a piece of the tale", "Remove a chapter, entry or beat.", z.object({ playthrough, chapter }), (p, a: Parameters<typeof t.removeChapter>[1]) => t.removeChapter(p, a));
   tool(
     "set_snapshot",
     "Where the player stands, from the save",

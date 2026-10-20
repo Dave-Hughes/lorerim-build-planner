@@ -65,9 +65,9 @@ async function mine(p: Player, ref: string): Promise<PlaythroughRecord> {
 }
 
 /** An act by its number (1 is Act I) or its name. */
-function actOf(pt: PlaythroughRecord, ref: string | number) {
+function actOf(pt: PlaythroughRecord, ref: string) {
   const acts = pt.view.acts;
-  const n = typeof ref === "number" ? ref : /^\d+$/.test(String(ref).trim()) ? Number(ref) : romanNumber(String(ref));
+  const n = /^\d+$/.test(ref.trim()) ? Number(ref) : romanNumber(ref);
   const hit = n ? acts[n - 1] : acts.find((a) => norm(a.name) === norm(String(ref)));
   if (!hit) throw new FactsError(`The playthrough has no act ${ref}. Its acts are: ${acts.map((a, i) => `${i + 1} ${a.name}`).join(", ") || "none yet"}.`);
   return hit;
@@ -82,9 +82,9 @@ function romanNumber(s: string): number | null {
 }
 
 /** An objective by its id or its own words (in one act when given). */
-function objectiveOf(pt: PlaythroughRecord, ref: string | number, act?: ReturnType<typeof actOf>) {
+function objectiveOf(pt: PlaythroughRecord, ref: string, act?: ReturnType<typeof actOf>) {
   const pool = (act ? [act] : pt.view.acts).flatMap((a) => a.objectives);
-  const id = typeof ref === "number" ? ref : /^\d+$/.test(String(ref).trim()) ? Number(ref) : null;
+  const id = /^\d+$/.test(String(ref).trim()) ? Number(ref) : null;
   const hit = id !== null ? pool.filter((o) => o.id === id) : pool.filter((o) => norm(o.text) === norm(String(ref)));
   if (hit.length === 1) return hit[0];
   if (hit.length > 1) throw new FactsError(`More than one objective says ${ref}. Use its id: ${hit.map((o) => o.id).join(", ")}.`);
@@ -92,8 +92,8 @@ function objectiveOf(pt: PlaythroughRecord, ref: string | number, act?: ReturnTy
 }
 
 /** A chapter, entry or beat by its id or title. */
-function chapterOf(pt: PlaythroughRecord, ref: string | number) {
-  const id = typeof ref === "number" ? ref : /^\d+$/.test(String(ref).trim()) ? Number(ref) : null;
+function chapterOf(pt: PlaythroughRecord, ref: string) {
+  const id = /^\d+$/.test(String(ref).trim()) ? Number(ref) : null;
   const hit = id !== null ? pt.view.chapters.filter((c) => c.id === id) : pt.view.chapters.filter((c) => norm(c.title) === norm(String(ref)));
   if (hit.length === 1) return hit[0];
   if (hit.length > 1) throw new FactsError(`More than one piece of the tale is called ${ref}. Use its id: ${hit.map((c) => c.id).join(", ")}.`);
@@ -127,19 +127,38 @@ export function resolveLinkName(version: string, input: { kind: LinkKind; name: 
   throw new FactsError(`No ${kindName} called ${want}. The closest: ${names.closest(want, pool.map((x) => x.name)).join(", ")}. Never invent a quest: leave the link out and use the player's own words.`);
 }
 
-type DoneWhen = { quest: string; stage?: number } | { reach: { key: string; target: number } } | "hand";
+/**
+ * How the planner knows an objective is done, as flat fields (WO-111b: no unions in tool inputs): a
+ * quest (name or id) and stage the save shows, a number to reach, or byHand for one the player ticks.
+ */
+export interface DoneWhen {
+  quest?: string;
+  stage?: number;
+  reachKey?: string;
+  reachTarget?: number;
+  byHand?: boolean;
+}
 
-/** done-when in plain words to the stored shape: a quest by its name (or edid) and stage, a number, or the player's tick. */
-function doneWhenOf(version: string, kind: "once" | "reach", dw: DoneWhen | undefined, linkTo: ObjectiveLink | null): { doneBy: DoneBy | null; detect: Detect | null; reach: Reach | null } {
+const HOW_DONE = 'Say how it\'s done: quest (and stage) for one the save shows, or byHand: true for one the player ticks.';
+export const SAY_THE_NUMBER = "Say the number to reach: reachKey and reachTarget.";
+
+const saysDone = (f: DoneWhen) => f.quest !== undefined || f.stage !== undefined || f.reachKey !== undefined || f.reachTarget !== undefined || f.byHand !== undefined;
+
+/** The flat fields to the stored shape. `keep` is the objective's own reach, for a change that doesn't name a new one. */
+function doneWhenOf(version: string, kind: "once" | "reach", f: DoneWhen, keep: Reach | null = null): { doneBy: DoneBy | null; detect: Detect | null; reach: Reach | null } {
   if (kind === "reach") {
-    if (!dw || typeof dw !== "object" || !("reach" in dw)) return { doneBy: "save", detect: null, reach: null };
-    return { doneBy: "save", detect: null, reach: { key: reachKey(version, dw.reach.key), target: dw.reach.target } };
+    if (f.quest !== undefined || f.byHand) throw new FactsError('A number to reach is done when the save shows it: give reachKey and reachTarget, not quest or byHand.');
+    if (f.reachKey === undefined && f.reachTarget === undefined && keep) return { doneBy: "save", detect: null, reach: keep };
+    if (!f.reachKey?.trim() || f.reachTarget === undefined) throw new FactsError(SAY_THE_NUMBER);
+    return { doneBy: "save", detect: null, reach: { key: reachKey(version, f.reachKey), target: f.reachTarget } };
   }
-  if (!dw) return { doneBy: null, detect: null, reach: null };
-  if (dw === "hand") return { doneBy: "hand", detect: null, reach: null };
-  if ("reach" in dw) throw new FactsError('A done-once objective is done when a quest stage is reached or when the player ticks it; a number goes with kind "reach".');
-  const edid = questsData().lines.some((l) => l.quests.some((q) => q.edid === dw.quest)) ? dw.quest : linkTo?.kind === "quest" && norm(dw.quest) === "linked" ? linkTo.id : resolveLinkName(version, { kind: "quest", name: dw.quest }).link.id;
-  return { doneBy: "save", detect: { quest: edid, ...(dw.stage !== undefined ? { stage: dw.stage } : {}) }, reach: null };
+  if (f.reachKey !== undefined || f.reachTarget !== undefined) throw new FactsError('A number goes with kind "reach"; a done-once objective takes quest (and stage) or byHand.');
+  if (f.quest && f.byHand) throw new FactsError("Give quest (and stage) or byHand, not both.");
+  if (f.byHand) return { doneBy: "hand", detect: null, reach: null };
+  if (!f.quest) return { doneBy: null, detect: null, reach: null };
+  const q = f.quest;
+  const edid = questsData().lines.some((l) => l.quests.some((x) => x.edid === q)) ? q : resolveLinkName(version, { kind: "quest", name: q }).link.id;
+  return { doneBy: "save", detect: { quest: edid, ...(f.stage !== undefined ? { stage: f.stage } : {}) }, reach: null };
 }
 
 /** "Level", a skill's name, or a count's label ("books read", or "count:books read"). */
@@ -152,22 +171,21 @@ function reachKey(version: string, key: string): string {
   return skill ? `skill:${skill}` : `count:${k}`;
 }
 
-export interface ObjectiveToolInput {
+export interface ObjectiveToolInput extends DoneWhen {
   playthrough: string;
-  act: string | number;
+  act: string;
   text: string;
   link?: { kind: LinkKind; name: string };
   kind: "once" | "reach";
-  doneWhen?: DoneWhen;
   why?: string;
-  after?: string | number;
+  after?: string;
 }
 
 async function objectiveValues(pt: PlaythroughRecord, input: Omit<ObjectiveToolInput, "playthrough" | "act" | "after">) {
   const linked = input.link ? resolveLinkName(pt.gameVersion, input.link) : null;
-  const dw = doneWhenOf(pt.gameVersion, input.kind, input.doneWhen, linked?.link ?? null);
+  const dw = doneWhenOf(pt.gameVersion, input.kind, input);
   // Rule 14, in its own words, when the objective can't be known done.
-  if (input.kind === "once" && !dw.doneBy) throw new FactsError(`${RULE_14} Say how it's done: doneWhen a quest and stage the save shows, or "hand" for one the player ticks.`);
+  if (input.kind === "once" && !dw.doneBy) throw new FactsError(`${RULE_14} ${HOW_DONE}`);
   return { text: input.text, kind: input.kind, link: linked?.link ?? null, ...dw, why: input.why ?? null };
 }
 
@@ -195,10 +213,10 @@ export async function addAct(p: Player, input: { playthrough: string; name: stri
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const id = await writes(() => w.addAct(p.userId, pt.id, { name: input.name, levels: input.levels, place: input.place, goal: input.goal, standingRule: input.standingRule ?? null }));
-  return { playthrough: pt.id, act: pt.view.acts.length + 1, actId: id, link: link(p, pt.id) };
+  return { playthrough: pt.id, act: String(pt.view.acts.length + 1), actId: String(id), link: link(p, pt.id) };
 }
 
-export async function setAct(p: Player, input: { playthrough: string; act: string | number; name?: string; levels?: string; place?: string; goal?: string; standingRule?: string | null }) {
+export async function setAct(p: Player, input: { playthrough: string; act: string; name?: string; levels?: string; place?: string; goal?: string; standingRule?: string | null }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const a = actOf(pt, input.act);
@@ -206,7 +224,7 @@ export async function setAct(p: Player, input: { playthrough: string; act: strin
   return { playthrough: pt.id, act: pt.view.acts.indexOf(a) + 1, saved: true };
 }
 
-export async function removeAct(p: Player, input: { playthrough: string; act: string | number }) {
+export async function removeAct(p: Player, input: { playthrough: string; act: string }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const a = actOf(pt, input.act);
@@ -214,7 +232,7 @@ export async function removeAct(p: Player, input: { playthrough: string; act: st
   return { playthrough: pt.id, removed: `Act ${a.n} ${a.name}`, acts: pt.view.acts.length - 1 };
 }
 
-export async function moveAct(p: Player, input: { playthrough: string; act: string | number; to: number }) {
+export async function moveAct(p: Player, input: { playthrough: string; act: string; to: number }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const a = actOf(pt, input.act);
@@ -229,19 +247,20 @@ export async function addObjective(p: Player, input: ObjectiveToolInput, suggest
   const after = input.after !== undefined ? objectiveOf(pt, input.after, a).id : null;
   const values = await writes(() => objectiveValues(pt, input));
   const id = await writes(() => w.addObjective(p.userId, pt.id, a.id, values, { after, suggestedBy }));
-  return { playthrough: pt.id, act: pt.view.acts.indexOf(a) + 1, objective: id, ...(suggestedBy ? { suggested: true, note: "It shows as suggested with Accept and Skip, and counts for nothing until the player accepts it." } : {}) };
+  return { playthrough: pt.id, act: String(pt.view.acts.indexOf(a) + 1), objective: String(id), ...(suggestedBy ? { suggested: true, note: "It shows as suggested with Accept and Skip, and counts for nothing until the player accepts it." } : {}) };
 }
 
 export const suggestObjective = (p: Player, input: ObjectiveToolInput) => addObjective(p, input, p.clientName.slice(0, 80));
 
-export async function setObjective(p: Player, input: Partial<Omit<ObjectiveToolInput, "playthrough" | "after">> & { playthrough: string; objective: string | number }) {
+export async function setObjective(p: Player, input: Partial<Omit<ObjectiveToolInput, "playthrough" | "after">> & { playthrough: string; objective: string; unlink?: boolean }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const o = objectiveOf(pt, input.objective);
-  const linked = input.link === undefined ? undefined : input.link ? resolveLinkName(pt.gameVersion, input.link).link : null;
+  if (input.unlink && input.link) throw new FactsError("Give link or unlink, not both.");
+  const linked = input.unlink ? null : input.link ? resolveLinkName(pt.gameVersion, input.link).link : undefined;
   const kind = input.kind ?? o.kind;
-  const dw = input.doneWhen !== undefined || input.kind !== undefined ? doneWhenOf(pt.gameVersion, kind, input.doneWhen, linked ?? o.link) : null;
-  if (dw && kind === "once" && !dw.doneBy) throw new FactsError(`${RULE_14} Say how it's done: doneWhen a quest and stage the save shows, or "hand" for one the player ticks.`);
+  const dw = saysDone(input) || (input.kind !== undefined && input.kind !== o.kind) ? doneWhenOf(pt.gameVersion, kind, input, kind === o.kind ? o.reach : null) : null;
+  if (dw && kind === "once" && !dw.doneBy) throw new FactsError(`${RULE_14} ${HOW_DONE}`);
   await writes(() =>
     w.setObjective(p.userId, pt.id, o.id, {
       ...(input.text !== undefined ? { text: input.text } : {}),
@@ -254,7 +273,7 @@ export async function setObjective(p: Player, input: Partial<Omit<ObjectiveToolI
   return { playthrough: pt.id, objective: o.id, saved: true };
 }
 
-export async function removeObjective(p: Player, input: { playthrough: string; objective: string | number }) {
+export async function removeObjective(p: Player, input: { playthrough: string; objective: string }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const o = objectiveOf(pt, input.objective);
@@ -262,7 +281,7 @@ export async function removeObjective(p: Player, input: { playthrough: string; o
   return { playthrough: pt.id, removed: o.text };
 }
 
-export async function moveObjective(p: Player, input: { playthrough: string; objective: string | number; to?: number; act?: string | number }) {
+export async function moveObjective(p: Player, input: { playthrough: string; objective: string; to?: number; act?: string }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const o = objectiveOf(pt, input.objective);
@@ -272,7 +291,7 @@ export async function moveObjective(p: Player, input: { playthrough: string; obj
 }
 
 /** For `hand` objectives only: the save decides the rest. */
-export async function setStatus(p: Player, input: { playthrough: string; objective: string | number; status: ObjectiveStatus }) {
+export async function setStatus(p: Player, input: { playthrough: string; objective: string; status: ObjectiveStatus }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const o = objectiveOf(pt, input.objective);
@@ -281,7 +300,7 @@ export async function setStatus(p: Player, input: { playthrough: string; objecti
   return { playthrough: pt.id, objective: o.id, status: input.status };
 }
 
-export async function writeChapter(p: Player, input: { playthrough: string; kind: "chapter" | "entry" | "beat"; title: string; text: string; act?: string | number; after?: string | number; fromSave?: string }) {
+export async function writeChapter(p: Player, input: { playthrough: string; kind: "chapter" | "entry" | "beat"; title: string; text: string; act?: string; after?: string; fromSave?: string }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   if (input.kind === "beat" && input.after === undefined) throw new FactsError("A beat opens when an objective is done: give `after`, the objective.");
@@ -289,10 +308,10 @@ export async function writeChapter(p: Player, input: { playthrough: string; kind
   const after = input.after !== undefined ? objectiveOf(pt, input.after, a ?? undefined).id : null;
   const doc = await writes(async () => markdownToDoc(input.text));
   const id = await writes(() => w.addChapter(p.userId, pt.id, { kind: input.kind, title: input.title, doc, actId: input.kind === "chapter" ? null : (a?.id ?? null), opensAfter: input.kind === "chapter" ? null : after, fromSave: input.fromSave ?? null }, p.clientName.slice(0, 80)));
-  return { playthrough: pt.id, chapter: id, kind: input.kind, link: link(p, pt.id, `/tale#c${id}`) };
+  return { playthrough: pt.id, chapter: String(id), kind: input.kind, link: link(p, pt.id, `/tale#c${id}`) };
 }
 
-export async function setChapter(p: Player, input: { playthrough: string; chapter: string | number; title?: string; text?: string; after?: string | number; fromSave?: string }) {
+export async function setChapter(p: Player, input: { playthrough: string; chapter: string; title?: string; text?: string; after?: string; fromSave?: string }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const c = chapterOf(pt, input.chapter);
@@ -302,7 +321,7 @@ export async function setChapter(p: Player, input: { playthrough: string; chapte
   return { playthrough: pt.id, chapter: c.id, saved: true };
 }
 
-export async function removeChapter(p: Player, input: { playthrough: string; chapter: string | number }) {
+export async function removeChapter(p: Player, input: { playthrough: string; chapter: string }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const c = chapterOf(pt, input.chapter);
@@ -339,24 +358,25 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
       ? { from: pt.snapshot.source === "save" ? pt.snapshot.label : "the player, by hand", level: pt.snapshot.level, day: pt.snapshot.day, place: pt.snapshot.place, skills: pt.snapshot.skills }
       : null,
     acts: v.acts.map((a, i) => ({
-      act: i + 1,
+      act: String(i + 1),
       name: a.name,
       levels: levelsInput(a.levelFrom, a.levelTo),
       place: a.place,
       goal: a.goal,
       ...(a.standingRule ? { standingRule: a.standingRule } : {}),
       objectives: a.objectives.map((o) => ({
-        objective: o.id,
+        objective: String(o.id),
         text: o.text,
         kind: o.kind,
         ...(o.linkShown ? { link: { kind: o.link!.kind, name: o.linkShown.name } } : {}),
-        doneWhen: o.kind === "reach" && o.reach ? { reach: { key: reachLabel(o.reach.key), target: o.reach.target } } : o.doneBy === "save" && o.detect ? { quest: o.detect.quest, ...(o.detect.stage !== undefined ? { stage: o.detect.stage } : {}) } : "hand",
+        // The same flat fields add_objective takes, so an objective can go back unchanged (WO-111b).
+        ...(o.kind === "reach" && o.reach ? { reachKey: reachLabel(o.reach.key), reachTarget: o.reach.target } : o.doneBy === "save" && o.detect ? { quest: o.detect.quest, ...(o.detect.stage !== undefined ? { stage: o.detect.stage } : {}) } : { byHand: true }),
         ...(o.why ? { why: o.why } : {}),
         status: shown[o.worked.shown],
       })),
     })),
     tale: v.chapters.map((c) => ({
-      chapter: c.id,
+      chapter: String(c.id),
       kind: c.kind,
       title: c.title,
       ...(c.act ? { act: c.act } : {}),
