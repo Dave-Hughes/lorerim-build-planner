@@ -14,7 +14,7 @@ const PAGES: { key: EditPage; label: string; path: string }[] = [
   { key: "levels", label: "Levels", path: "edit" },
   { key: "setup", label: "Set up", path: "setup" },
   { key: "guide", label: "Guide", path: "guide" },
-  { key: "story", label: "Story", path: "story" },
+  { key: "story", label: "Story", path: "story/edit" },
 ];
 
 const VIS_ORDER: BuildVisibility[] = ["public", "unlisted", "private"];

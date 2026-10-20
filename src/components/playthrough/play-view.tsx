@@ -3,6 +3,8 @@ import { formatDate } from "@/lib/format/date";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
 import { skillsMoved, type ActView, type ObjectiveView } from "@/lib/playthroughs/view";
 import { Answer, HandEntry, StatusPick, TickBox, Visibility } from "./play-controls";
+import { ReaderProvider, ReaderLink } from "@/components/reader/reader";
+import { runStops } from "@/lib/playthroughs/reader";
 import { RunHero } from "./tabs";
 import s from "./play.module.css";
 
@@ -11,16 +13,19 @@ import s from "./play.module.css";
  * view, with no tabs (WO-116; with a build, Play is a tab of the build's page).
  */
 export function PlayView({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwner: boolean; actIndex: number | null }) {
+  const stops = runStops({ id: p.id, taleLine: p.taleLine, view: p.view, cover: p.build?.coverImageUrl ?? null, isOwner });
   return (
-    <main className={`page ${s.main}`}>
-      {isOwner && (
-        <Link href="/me" className={s.back}>
-          ‹ My characters
-        </Link>
-      )}
-      <RunHero p={p} isOwner={isOwner} />
-      <PlayBody p={p} isOwner={isOwner} actIndex={actIndex} />
-    </main>
+    <ReaderProvider stops={stops} back={{ href: `/p/${p.id}`, label: "Back to the quest log" }} runId={p.id}>
+      <main className={`page ${s.main}`}>
+        {isOwner && (
+          <Link href="/me" className={s.back}>
+            ‹ My characters
+          </Link>
+        )}
+        <RunHero p={p} isOwner={isOwner} storyHref={stops[0]?.href ?? null} />
+        <PlayBody p={p} isOwner={isOwner} actIndex={actIndex} />
+      </main>
+    </ReaderProvider>
   );
 }
 
@@ -163,13 +168,13 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
                       <div key={cid} className={s.tale}>
                         <span>
                           <span className={s.taleTitle}>{c.title}</span> is open in the tale.{" "}
-                          <Link href={`/p/${p.id}/tale?from=${v.acts.indexOf(act) + 1}#c${c.id}`}>Read it ›</Link>
+                          <ReaderLink href={`/p/${p.id}/story/${c.id}`}>Read it ›</ReaderLink>
                         </span>
                       </div>
                     );
                   })}
                 {act.objectives.map((o) => (
-                  <Objective key={o.id} o={o} p={p} isOwner={isOwner} actN={v.acts.indexOf(act) + 1} />
+                  <Objective key={o.id} o={o} p={p} isOwner={isOwner} />
                 ))}
                 {act.objectives.length === 0 && <p className="muted">No objectives in this act yet.</p>}
                 {isOwner && (
@@ -280,7 +285,7 @@ function nextUp(a: ActView): { game: string | null; tale: string | null } {
 
 const SHOWN: Record<string, string> = { save: "Done, from your save", hand: "Done, ticked by you", doing: "Under way", todo: "To do", later: "Later" };
 
-function Objective({ o, p, isOwner, actN }: { o: ObjectiveView; p: PlaythroughRecord; isOwner: boolean; actN: number }) {
+function Objective({ o, p, isOwner }: { o: ObjectiveView; p: PlaythroughRecord; isOwner: boolean }) {
   const w = o.worked;
   const suggested = w.shown === "suggested";
   const cls = [s.obj, w.done ? s.objDone : "", suggested ? s.sug : ""].join(" ");
@@ -316,7 +321,7 @@ function Objective({ o, p, isOwner, actN }: { o: ObjectiveView; p: PlaythroughRe
           <div key={t.id} className={s.tale}>
             <span>
               <span className={s.taleTitle}>{t.title}</span> opened from this.{" "}
-              <Link href={`/p/${p.id}/tale?from=${actN}#c${t.id}`}>Read it ›</Link>
+              <ReaderLink href={`/p/${p.id}/story/${t.id}`}>Read it ›</ReaderLink>
             </span>
           </div>
         ) : (

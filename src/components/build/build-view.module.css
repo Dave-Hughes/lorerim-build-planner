@@ -859,6 +859,19 @@
   border-bottom: 1px solid var(--rule);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
+/* The way into the story (WO-116): under the byline, in the Story's brass. */
+.readStory {
+  display: block;
+  padding-top: 8px;
+}
+.readStoryButton {
+  color: #e8d3a4;
+  border-color: var(--brass);
+}
+.readStoryButton:hover {
+  color: var(--text);
+  border-color: #e8d3a4;
+}
 /* The pinned bar's first row (WO-116): the name, then the tabs, thin. */
 .pinnedTabs {
   display: flex;
@@ -1670,11 +1683,6 @@
 }
 
 /* The character's run (WO-114): one line under the byline, and the Story tab's pointer to its tale. */
-.runLine {
-  margin: 0;
-  font-size: 15px;
-  color: var(--soft);
-}
 .taleInRun {
   padding: 40px 0 72px;
   font-size: 17px;

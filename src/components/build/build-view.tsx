@@ -31,6 +31,7 @@ import { GuideSection } from "@/components/guide/guide-section";
 import { LevelNote } from "@/components/guide/level-note";
 import { docText, docWords, firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import { GuideView } from "@/components/guide/guide-view";
+import { ReaderLink, useReading } from "@/components/reader/reader";
 import { currentVersion, isOlderThanCurrent } from "@/lib/rules/versions";
 import { ATTRIBUTE_NAMES, levelChanges, levelFacts, levelMarks, nextDestinyLevel, perksByLevel, stoneShare, stretchPerkOrder, stretchPerkRequirement, type PerkListGroup } from "@/lib/rules/derive";
 import { gearAt, gearChangeText, replacedName } from "@/lib/rules/gear";
@@ -80,6 +81,8 @@ interface Props {
   playTab?: { node: React.ReactNode; sub: string; here: number | null } | null;
   /** The owner's Start a run, on a build without one (WO-116). */
   startRun?: string | null;
+  /** The reader's first page (WO-116): "Read the story from the beginning" under the byline. */
+  storyHref?: string | null;
 }
 
 export type BuildTab = "play" | "levels" | "guide";
@@ -114,8 +117,9 @@ function useNarrower(px: number): boolean {
  * navigation, then the level card (what to do, in the order the game asks, with the author's
  * note), then the reference (attributes, skills, perks).
  */
-export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab = "levels", signInToCopy, signInToLike, autoCopy, guide = {}, admin = null, playTab = null, startRun = null }: Props) {
+export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab = "levels", signInToCopy, signInToLike, autoCopy, guide = {}, admin = null, playTab = null, startRun = null, storyHref = null }: Props) {
   const d = useGameData();
+  const reading = useReading();
   const noted = useMemo(() => notedLevels(guide), [guide]);
   const { plan } = build;
   const total = plan.levels.length;
@@ -294,6 +298,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
         <div className={styles.themed} data-theme={themeOf(plan.theme).id} style={themeStyle(plan.theme)}>
         <Cover
           startRun={startRun}
+          storyHref={storyHref}
           build={build}
           isOwner={isOwner}
           signedIn={signedIn}
@@ -414,7 +419,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           )}
 
           {/* The reader's first-time tour (WO-61), on the Levels tab where its stops are. */}
-          {tab === "levels" && !playTab && <Tour kind="reader" script={readerTour} firstStop={build.example ? <ExampleTag small /> : undefined} />}
+          {tab === "levels" && !playTab && !reading && <Tour kind="reader" script={readerTour} firstStop={build.example ? <ExampleTag small /> : undefined} />}
           <div className={styles.withRail}>
           <ContentsRail items={railItems} />
           <div className={styles.railMain}>
@@ -1475,6 +1480,7 @@ function Ornament() {
 
 function Cover({
   startRun,
+  storyHref,
   build,
   isOwner,
   signedIn,
@@ -1493,6 +1499,7 @@ function Cover({
   admin: { featured: boolean } | null;
   onWatch: () => void;
   startRun?: string | null;
+  storyHref?: string | null;
 }) {
   const router = useRouter();
   const [copied, setCopied] = useState(false);
@@ -1612,6 +1619,13 @@ function Cover({
           </div>
           {/* Drafted by an assistant's tools (WO-110), while the author shows it. */}
           {build.draftedBy && build.showDrafted !== false && <p className={`${styles.drafted} ${styles.heroIn} ${styles.heroIn3}`}>Drafted with {build.draftedBy}</p>}
+          {storyHref && (
+            <span className={`${styles.readStory} ${styles.heroIn} ${styles.heroIn3}`}>
+              <ReaderLink href={storyHref} className={`btn ${styles.readStoryButton}`}>
+                Read the story from the beginning
+              </ReaderLink>
+            </span>
+          )}
           {build.tags.length > 0 && (
             <ul className={`${styles.tagLine} ${styles.heroIn} ${styles.heroIn3}`} aria-label="Tags">
               {build.tags.map((t) => (

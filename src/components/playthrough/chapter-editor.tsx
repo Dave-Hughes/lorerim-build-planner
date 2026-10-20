@@ -7,6 +7,7 @@ import { saveKeptGuides, type GuideSaveStatus } from "@/components/guide/use-gui
 import { Brand } from "@/components/ui/brand";
 import { STORY_IMAGES, STORY_IMAGE_ERROR, type GuideDoc } from "@/lib/guide/doc";
 import { saveChapter } from "@/lib/playthroughs/actions";
+import type { ChapterKind } from "@/lib/playthroughs/types";
 import page from "@/components/guide/guide-page.module.css";
 import s from "./edit.module.css";
 
@@ -14,7 +15,7 @@ import s from "./edit.module.css";
  * A chapter, entry or beat in the Story editor (WO-111): its title, and its text with up to 5 of the
  * author's images, saved as typed under the Story's own rules (WO-79).
  */
-export function ChapterEditor({ pid, playthrough, chapter, back }: { pid: string; playthrough: string; chapter: { id: number; kind: "chapter" | "entry" | "beat"; title: string; fromSave: string | null; doc: GuideDoc }; back: string }) {
+export function ChapterEditor({ pid, playthrough, chapter, back }: { pid: string; playthrough: string; chapter: { id: number; kind: ChapterKind; title: string; fromSave: string | null; doc: GuideDoc }; back: string }) {
   const target = `p:${pid}`;
   const key = `chapter:${chapter.id}`;
   const [save, setSave] = useState<{ status: GuideSaveStatus; error: string | null }>({ status: "idle", error: null });

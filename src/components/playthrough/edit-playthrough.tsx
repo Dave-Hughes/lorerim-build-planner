@@ -10,7 +10,7 @@ import { useItems } from "@/lib/items/items";
 import * as act from "@/lib/playthroughs/actions";
 import { objectiveRefusal } from "@/lib/playthroughs/status";
 import type { BuildVisibility } from "@/lib/builds/validate";
-import type { Detect, DoneBy, ObjectiveKind, ObjectiveLink, Reach } from "@/lib/playthroughs/types";
+import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveLink, Reach } from "@/lib/playthroughs/types";
 import { levelsInput } from "@/lib/playthroughs/validate";
 import s from "./edit.module.css";
 
@@ -46,7 +46,7 @@ export interface EditAct {
 }
 export interface EditChapter {
   id: number;
-  kind: "chapter" | "entry" | "beat";
+  kind: ChapterKind;
   title: string;
   actId: number | null;
   opensAfter: number | null;
@@ -735,7 +735,7 @@ function Suggested({ a }: { a: EditAct }) {
   );
 }
 
-const KIND_LABEL = { chapter: "Before the game", entry: "Entry", beat: "Beat" } as const;
+const KIND_LABEL: Record<ChapterKind, string> = { chapter: "Before the game", act: "The act's chapter", entry: "Entry", beat: "Beat" };
 
 function Chapters({ data, onSaved }: { data: EditData; onSaved: () => void }) {
   const router = useRouter();

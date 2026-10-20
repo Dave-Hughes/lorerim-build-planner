@@ -19,7 +19,7 @@ export default async function ChapterEditPage({ params }: { params: Params }) {
   const userId = session?.user?.id ?? null;
   const p = await getPlaythrough(id, userId);
   if (!p) notFound();
-  if (p.ownerId !== userId) redirect(`/p/${id}/tale`);
+  if (p.ownerId !== userId) redirect(`/p/${id}/story/${cid}`);
   const c = p.view.chapters.find((x) => x.id === Number(cid));
   if (!c) notFound();
   const version = isKnownVersion(p.gameVersion) ? p.gameVersion : currentVersion().id;

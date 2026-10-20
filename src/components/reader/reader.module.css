@@ -1,0 +1,275 @@
+/*
+ * The reader (WO-116), as the CharacterReader boards on canvas row 26: full screen over the page, the
+ * Story's darker ground and warm ink. The plate 640 tall (380 on a phone) with the kicker, title and
+ * line over its lower edge, a thin bar over it that fades as you read, then the 680px column.
+ */
+.reader {
+  --story-ink: #ddd5c6;
+  --story-ground: #0b0f14;
+  --story-muted: #8e9bab;
+  --story-line: #cbbfa8;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--story-ground);
+  color: var(--story-ink);
+  outline: none;
+}
+
+.reader a {
+  text-decoration: none;
+}
+.reader a:hover {
+  text-decoration: underline;
+}
+/* The bar over the plate: back, the place, previous and next by name; gone as you read, back on the way up. */
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  height: 56px;
+  margin-bottom: -56px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  padding: 0 32px;
+  background: linear-gradient(to bottom, rgba(11, 15, 20, 0.9), rgba(11, 15, 20, 0));
+  transition: opacity 240ms, transform 240ms;
+}
+.barHidden {
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+}
+.barBack {
+  font-size: 15px;
+  justify-self: start;
+}
+.barPlace {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.barSide {
+  justify-self: end;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  min-width: 0;
+}
+.barStep {
+  font-size: 15px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 260px;
+}
+.barStep:hover,
+.footStep:hover {
+  color: var(--text);
+}
+/* The owner's Edit: there, but faint. */
+.barEdit {
+  font-size: 13px;
+  color: #6f7c8c;
+}
+.barEdit:hover {
+  color: var(--soft);
+}
+
+/* The plate. */
+.plate {
+  position: relative;
+  height: 640px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.plateNone {
+  height: auto;
+  padding-top: 160px;
+}
+.plateImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 40%;
+}
+.plateFade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 380px;
+  background: linear-gradient(to bottom, rgba(11, 15, 20, 0) 0%, rgba(11, 15, 20, 0.82) 62%, #0b0f14 100%);
+}
+.plateNone .plateFade {
+  display: none;
+}
+.words {
+  position: relative;
+  margin-bottom: 52px;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+.plateNone .words {
+  margin-bottom: 0;
+}
+.kicker {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--brass);
+}
+.title {
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  font-size: 68px;
+  line-height: 1;
+  color: var(--text);
+}
+.line {
+  margin: 0;
+  max-width: 680px;
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 21px;
+  color: var(--story-line);
+}
+
+/* The column, and the foot. */
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 48px 16px 72px;
+}
+.col {
+  width: 680px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.col > div,
+.col > p {
+  max-width: 100% !important;
+}
+.entry {
+  border-left: 2px solid var(--brass);
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+}
+.entry > * {
+  width: auto !important;
+  max-width: 100% !important;
+}
+/* "In the game": a small italic at the end, to the right, back to its row. */
+.game {
+  align-self: flex-end;
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 16px;
+  color: #6f7c8c;
+}
+.wait {
+  margin: 0;
+  font-size: 16px;
+  color: var(--muted);
+}
+.linkButton {
+  font: inherit;
+  color: var(--ember);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.linkButton:hover {
+  color: var(--ember-hover);
+}
+.foot {
+  width: 680px;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule-soft);
+  font-size: 15px;
+}
+.footStep {
+  color: var(--muted);
+}
+.footNext {
+  justify-self: end;
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .bar {
+    padding: 0 16px;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .barPlace,
+  .barStep {
+    display: none;
+  }
+  .plate {
+    height: 380px;
+  }
+  .words {
+    margin-bottom: 20px;
+    gap: 8px;
+  }
+  .kicker {
+    font-size: 13px;
+  }
+  .title {
+    font-size: 36px;
+  }
+  .line {
+    font-size: 16px;
+  }
+  .body {
+    padding: 24px 18px 0;
+    gap: 16px;
+  }
+  /* Previous and next at the foot, held to the bottom of the screen. */
+  .foot {
+    position: sticky;
+    bottom: 0;
+    width: auto;
+    align-self: stretch;
+    margin: 0 -18px;
+    padding: 0 16px;
+    height: 56px;
+    align-items: center;
+    background: var(--story-ground);
+    font-size: 14px;
+  }
+  .footBack {
+    display: none;
+  }
+}

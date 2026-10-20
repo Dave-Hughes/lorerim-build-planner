@@ -4,14 +4,16 @@ import { BuildView, type BuildTab } from "@/components/build/build-view";
 import { RetiredBuild } from "@/components/build/retired-build";
 import { GameDataProvider } from "@/components/game-data";
 import { PlayBody, playSub } from "@/components/playthrough/play-view";
+import { ReaderProvider } from "@/components/reader/reader";
 import { SignInButton } from "@/components/site-header";
 import { isAdmin } from "@/lib/users/admin";
 import { imageHold } from "@/lib/builds/queries";
 import type { BuildRecord } from "@/lib/builds/types";
-import { imageUrls, withHiddenImages } from "@/lib/guide/doc";
+import { imageUrls, storyOf, withHiddenImages } from "@/lib/guide/doc";
 import { getGuide } from "@/lib/guide/queries";
 import { playthroughsOn, storyOn } from "@/lib/features";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
+import { runStops, storyStop } from "@/lib/playthroughs/reader";
 import { clientVersion, isKnownVersion } from "@/lib/rules/server";
 
 /**
@@ -53,7 +55,18 @@ export async function CharacterPage({
   const coverHeld = !!build.coverImageUrl && held(build.coverImageUrl);
   if (!isKnownVersion(build.gameVersion)) return <RetiredBuild build={{ ...rest, updatedAt: updatedAt.toISOString() }} isOwner={isOwner} />;
   const id = build.id;
+  const shownDocs = hold ? Object.fromEntries(Object.entries(docs).map(([k, d]) => [k, withHiddenImages(d, held)])) : docs;
+  const cover = coverHeld ? null : build.coverImageUrl;
+  // The reader (WO-116): a character's tale is its run's; a build alone's, its Story.
+  const told = run ? null : storyOf(shownDocs);
+  const stops = run
+    ? runStops({ id: run.id, taleLine: run.taleLine, view: run.view, cover, isOwner: viewerId === run.ownerId })
+    : told
+      ? [storyStop({ id, title: told.title, line: told.line, doc: told.doc, cover, isOwner })]
+      : [];
+  const back = run ? { href: `/p/${run.id}`, label: "Back to the quest log" } : { href: `/b/${id}`, label: "Back to the build" };
   return (
+    <ReaderProvider stops={stops} back={back} runId={run?.id ?? null}>
     <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
       <BuildView
         // A character's hero carries the run's name and line (WO-116); the build's own page, its own.
@@ -78,9 +91,11 @@ export async function CharacterPage({
         admin={admin ? { featured: !!featuredAt, imported } : null}
         playTab={run ? { node: <PlayBody p={run} isOwner={viewerId === run.ownerId} actIndex={actIndex} />, sub: playSub(run), here: run.snapshot?.level ?? null } : null}
         startRun={!run && isOwner && playthroughsOn() && !build.isSample ? `/b/${id}/run` : null}
-        guide={hold ? Object.fromEntries(Object.entries(docs).map(([k, d]) => [k, withHiddenImages(d, held)])) : docs}
+        storyHref={stops[0]?.href ?? null}
+        guide={shownDocs}
       />
     </GameDataProvider>
+    </ReaderProvider>
   );
 }
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ReaderLink } from "@/components/reader/reader";
 import { CopyLinkButton } from "@/components/ui/copy-link-button";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
 import s from "./play.module.css";
@@ -19,7 +20,7 @@ export function Byline({ p }: { p: PlaythroughRecord }) {
  * byline over its dark fade and Edit and Copy link top right, as the build page leads (design rule
  * 12). No cover, or no build yet: the plain dark band.
  */
-export function RunHero({ p, isOwner }: { p: PlaythroughRecord; isOwner: boolean }) {
+export function RunHero({ p, isOwner, storyHref = null }: { p: PlaythroughRecord; isOwner: boolean; storyHref?: string | null }) {
   const cover = p.build?.coverImageUrl ?? null;
   const focus = p.build?.coverFocus;
   const actions = (
@@ -32,6 +33,11 @@ export function RunHero({ p, isOwner }: { p: PlaythroughRecord; isOwner: boolean
       <CopyLinkButton path={`/p/${p.id}`} className="btn" />
     </span>
   );
+  const read = storyHref && (
+    <ReaderLink href={storyHref} className="btn" style={{ alignSelf: "flex-start" }}>
+      Read the story from the beginning
+    </ReaderLink>
+  );
   if (!cover)
     return (
       <div className={`frame ${s.band}`}>
@@ -41,6 +47,7 @@ export function RunHero({ p, isOwner }: { p: PlaythroughRecord; isOwner: boolean
         </div>
         {p.line && <span className={s.lineText}>{p.line}</span>}
         <Byline p={p} />
+        {read}
       </div>
     );
   return (
@@ -51,6 +58,7 @@ export function RunHero({ p, isOwner }: { p: PlaythroughRecord; isOwner: boolean
         <h1 className={s.name}>{p.name}</h1>
         {p.line && <span className={s.lineText}>{p.line}</span>}
         <Byline p={p} />
+        {read}
       </div>
       <span className={s.heroActions}>{actions}</span>
     </div>

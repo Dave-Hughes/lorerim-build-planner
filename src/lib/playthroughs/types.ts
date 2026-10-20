@@ -27,7 +27,8 @@ export interface Reach {
 export type ObjectiveKind = "once" | "reach";
 export type DoneBy = "save" | "hand";
 export type ObjectiveStatus = "todo" | "doing" | "done" | "later";
-export type ChapterKind = "chapter" | "entry" | "beat";
+/** `act`: an act's own chapter, the story of that stretch (WO-116), one per act. */
+export type ChapterKind = "chapter" | "act" | "entry" | "beat";
 export type SnapshotSource = "save" | "hand";
 
 export const PLAYTHROUGH_LIMITS = {
