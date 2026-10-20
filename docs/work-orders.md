@@ -4771,6 +4771,19 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-116a  One pinned bar, not two (Mac, 20 Oct 2026)
+
+**Why.** Bob's check of WO-116: scrolled down a character's page, two bars pin at the top, one under the other. The build page's old bar (name | Levels, Set up, Guide, Story | visibility, Copy link, Edit) and WO-116's new one (name | Play, Levels, Guide). The old one still offers a Story tab that no longer exists.
+
+- One pinned bar on every build and character page: the name, the page's tabs (a build alone: Levels, Guide; a character: Play, Levels, Guide), and on the right the owner's controls the old bar had (visibility, Copy link, Edit; Set up stays under Edit's menu or beside it, as the old bar had it). The old bar goes.
+- e2e: scrolled, exactly one bar is pinned and it has no Story tab, on a build alone and on a character.
+
+### Done when
+- [ ] Scrolled on a build alone and on a character, one bar pins, with the page's own tabs and the owner's controls.
+- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
+
+---
+
 ## WO-115  Quests an assistant can trust: endings, starts for every quest, and "open for you" (20 Oct 2026)
 
 **Why.** Dave: assistants recommend quests he can't take on, call a quest available when it isn't, and tell him a quest ends one way when it ended another. Bob's look (backlog, "Why quest advice goes wrong"): the planner holds 1,240 quests by shape and checked starts for six stories; nobody holds each quest's endings, each quest's start conditions in plain words, or the player's quest state. Both the planner and the Book chat's own index answer those from memory. This order gives the planner the three, in the order they pay off, and makes the door say "open for you" or "unknown" instead of leaving the gap for the assistant to fill.
