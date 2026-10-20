@@ -12,11 +12,17 @@
     {
      "by": "dialogue",
      "speaker": "Brynjolf",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Riften"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:0352E5",
+     "prompt": "Break the law? Are you kidding?",
+     "reply": [
+      "Sorry... I usually have a nose for this kind of thing.",
+      "Never mind then, lad. If you change your mind, come find me."
+     ],
      "conditions": "the speaker is Brynjolf; A Chance Arrangement stage < 5; fn70 == 1",
      "source": "TIF__000352E5.Fragment_0 on INFO Skyrim.esm:0352E5 (Skyrim.esm)",
      "verdict": "script"
@@ -24,11 +30,17 @@
     {
      "by": "dialogue",
      "speaker": "Brynjolf",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Riften"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:020ADC",
+     "prompt": "Break the law? Are you kidding?",
+     "reply": [
+      "Sorry... I usually have a nose for this kind of thing.",
+      "Never mind then, lass. If you change your mind, come find me."
+     ],
      "conditions": "the speaker is Brynjolf; A Chance Arrangement stage < 5; fn70 == 1",
      "source": "TIF__00020ADC.Fragment_0 on INFO Skyrim.esm:020ADC (Skyrim.esm)",
      "verdict": "script"
@@ -36,11 +48,17 @@
     {
      "by": "dialogue",
      "speaker": "Brynjolf",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Riften"
      ],
      "call": "SetStage 8",
      "info": "Skyrim.esm:038AB3",
+     "prompt": "Why plant the ring on Brand-Shei?",
+     "reply": [
+      "There's someone that wants to see him put out of business permanently. That's all you need to know.",
+      "Now, you tell me when you're ready and we'll get started."
+     ],
      "conditions": "fn67 == 0; the speaker is Brynjolf",
      "source": "TIF__00038AB3.Fragment_0 on INFO Skyrim.esm:038AB3 (Skyrim.esm)",
      "verdict": "script"
@@ -48,11 +66,18 @@
     {
      "by": "dialogue",
      "speaker": "Brynjolf",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Riften"
      ],
      "call": "SetStage 8",
      "info": "Skyrim.esm:020BD9",
+     "prompt": "Why plant the ring on Brand-Shei?",
+     "reply": [
+      "There's someone that wants to see him put out of business permanently. That's all you need to know.",
+      "I'll be out in the market all day, from eight in the morning until eight in the evening.",
+      "Meet me then if you've still got the stomach for it."
+     ],
      "conditions": "the speaker is Brynjolf; fn67 == 1",
      "source": "TIF__00020BD9.Fragment_0 on INFO Skyrim.esm:020BD9 (Skyrim.esm)",
      "verdict": "script"
@@ -60,11 +85,17 @@
     {
      "by": "dialogue",
      "speaker": "Brynjolf",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Riften"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:097FCB",
+     "prompt": null,
+     "reply": [
+      "Your guy's hiding out in the Ratway Warrens and paying us good coin for nobody to know about it. Well, until now that is.",
+      "Tell you what. Go ahead and deal with your business for now. When you're done, find me and we'll deal with mine."
+     ],
      "conditions": "the speaker is Brynjolf; A Cornered Rat stage 5 done; A Cornered Rat stage 20 not done; fn629 == 1",
      "source": "TIF__00097FCB.Fragment_0 on INFO Skyrim.esm:097FCB (Skyrim.esm)",
      "verdict": "script"
@@ -72,11 +103,16 @@
     {
      "by": "dialogue",
      "speaker": "Brynjolf",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Riften"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:0C99E8",
+     "prompt": null,
+     "reply": [
+      "I can take a hint, lad. You want to make some coin, come find me."
+     ],
      "conditions": "the speaker is Brynjolf; A Chance Arrangement stage < 5; fn70 == 1",
      "source": "TIF__000C99E8.Fragment_0 on INFO Skyrim.esm:0C99E8 (Skyrim.esm)",
      "verdict": "script"
@@ -84,11 +120,16 @@
     {
      "by": "dialogue",
      "speaker": "Brynjolf",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Riften"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:0C99E9",
+     "prompt": null,
+     "reply": [
+      "I can take a hint, lass. You want to make some coin, come find me."
+     ],
      "conditions": "the speaker is Brynjolf; A Chance Arrangement stage < 5; fn70 == 1",
      "source": "TIF__000C99E9.Fragment_0 on INFO Skyrim.esm:0C99E9 (Skyrim.esm)",
      "verdict": "script"
@@ -156,7 +197,35 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Steal Madesi's Ring",
+     "index": 10,
+     "source": "Skyrim.esm:021556 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Brynjolf",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Riften"
+      ],
+      "call": "SetStage 10",
+      "info": "Skyrim.esm:0C0BC2",
+      "prompt": "I'm ready. Let's get this started.",
+      "reply": [
+       "Good. Wait until I start the distraction, then show me what you're made of."
+      ],
+      "conditions": "the speaker is Brynjolf; A Chance Arrangement stage == 8; fn67 == 0",
+      "source": "TIF__000C0BC2.Fragment_0 on INFO Skyrim.esm:0C0BC2 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:01F326",
@@ -182,7 +251,13 @@
      "call": "SetStage 10",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -192,7 +267,13 @@
      "call": "SetStage 10",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -202,7 +283,13 @@
      "call": "SetStage 10",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -212,7 +299,13 @@
      "call": "SetStage 10",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -222,7 +315,13 @@
      "call": "SetStage 10",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -232,7 +331,13 @@
      "call": "SetStage 10",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -242,7 +347,13 @@
      "call": "SetStage 10",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -252,7 +363,13 @@
      "call": "SetStage 10",
      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -262,7 +379,13 @@
      "call": "SetStage 10",
      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -272,7 +395,13 @@
      "call": "SetStage 10",
      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -282,7 +411,13 @@
      "call": "SetStage 10",
      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -292,7 +427,13 @@
      "call": "SetStage 10",
      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -302,7 +443,13 @@
      "call": "SetStage 10",
      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -312,7 +459,13 @@
      "call": "SetStage 10",
      "source": "USKPRetroactive130Script.Process on Unofficial Skyrim Special Edition Patch.esp:012F33 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:012F33 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -322,7 +475,13 @@
      "call": "SetStage 10",
      "source": "USKPRetroactive130Script.Process on Unofficial Skyrim Special Edition Patch.esp:012F33 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:012F33 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -332,7 +491,13 @@
      "call": "SetStage 10",
      "source": "USKPRetroactive130Script.Process on Unofficial Skyrim Special Edition Patch.esp:012F33 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:012F33 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -342,7 +507,13 @@
      "call": "SetStage 10",
      "source": "USKPRetroactive130Script.Process on Unofficial Skyrim Special Edition Patch.esp:012F33 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:012F33 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -352,7 +523,13 @@
      "call": "SetStage 10",
      "source": "USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0187DE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -362,7 +539,13 @@
      "call": "SetStage 10",
      "source": "USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0187DE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -372,7 +555,13 @@
      "call": "SetStage 10",
      "source": "USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0187DE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -382,7 +571,13 @@
      "call": "SetStage 10",
      "source": "USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0187DE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -392,7 +587,13 @@
      "call": "SetStage 10",
      "source": "USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0187DE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -402,7 +603,13 @@
      "call": "SetStage 10",
      "source": "USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0187DE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -412,7 +619,13 @@
      "call": "SetStage 10",
      "source": "USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0187DE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -422,7 +635,13 @@
      "call": "SetStage 10",
      "source": "USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0187DE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -432,7 +651,13 @@
      "call": "SetStage 10",
      "source": "USKPRetroactive131Script.Process on Unofficial Skyrim Special Edition Patch.esp:01906F (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01906F DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -442,7 +667,13 @@
      "call": "SetStage 10",
      "source": "USKPRetroactive131Script.Process on Unofficial Skyrim Special Edition Patch.esp:01906F (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive132 (Retroactive fixes for 1.3.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01906F DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -452,7 +683,13 @@
      "call": "SetStage 10",
      "source": "USKPRetroactive132Script.Process on Unofficial Skyrim Special Edition Patch.esp:02C3E7 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:02C3E7 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -533,7 +770,71 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Collect Keerava's debt",
+     "index": 20,
+     "source": "Skyrim.esm:01F326 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Brynjolf",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Riften"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:028EDE",
+      "prompt": "Consider it done.",
+      "reply": [
+       "Good. If you need any details on your marks, I'll be here. Now get going."
+      ],
+      "conditions": "the speaker is Brynjolf; Taking Care of Business stage == 12; fn67 == 1; fn629 == 1",
+      "source": "TIF__00028EDE.Fragment_0 on INFO Skyrim.esm:028EDE (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Brynjolf",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Riften"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:03C6F8",
+      "prompt": "Will I get a cut?",
+      "reply": [
+       "Of course you'll get a cut. We take care of our own.",
+       "Now if you need any details on your marks, I'll be here. Get going."
+      ],
+      "conditions": "the speaker is Brynjolf; Taking Care of Business stage == 12; fn67 == 1; fn629 == 1",
+      "source": "TIF__0003C6F8.Fragment_0 on INFO Skyrim.esm:03C6F8 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Brynjolf",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Riften"
+      ],
+      "call": "SetStage 12",
+      "info": "Skyrim.esm:03C6F9",
+      "prompt": "Don't know why I bothered. This place is a mess.",
+      "reply": [
+       "If you were expecting a palace, then maybe you're not cut out for this line of work. Our methods involve secrecy and discretion.",
+       "Now... if you're done bellyaching like a child, how about handling a few deadbeats for me?"
+      ],
+      "conditions": "the speaker is Brynjolf; Taking Care of Business stage >= 10; fn67 < 20; fn629 == 0",
+      "source": "TIF__0003C6F9.Fragment_0 on INFO Skyrim.esm:03C6F9 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:02154E",
@@ -645,7 +946,45 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Listen to Mercer Frey",
+     "index": 20,
+     "source": "Skyrim.esm:02154E QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "TG02B (Meet the Family)",
+      "questId": "Skyrim.esm:084ABD",
+      "atStage": 0,
+      "call": "SetStage 20",
+      "source": "QF_TG02B_00084ABD.fragment_0 on Skyrim.esm:084ABD (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "TGLarceny (The Litany of Larceny)",
+      "questId": "Skyrim.esm:04C6C2",
+      "atStage": 0,
+      "call": "SetStage 20",
+      "source": "QF_TGLarceny_0004C6C2.fragment_54 on Skyrim.esm:04C6C2 (Update.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "TG02 (Loud and Clear)",
+      "questId": "Skyrim.esm:02154E",
+      "atStage": null,
+      "call": "SetStage 15",
+      "source": "TG02QuestScript.ScenePlay on Skyrim.esm:02154E (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:02154F",
@@ -671,7 +1010,13 @@
      "call": "SetStage 10",
      "source": "QF_Patch1_4_UpdateQuest_01000803.fragment_0 on Update.esm:000803 (Update.esm)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Update.esm:000803 DNAM (Update.esm)",
+       "verdict": "files"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -719,7 +1064,35 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Speak to Mallus Maccius",
+     "index": 20,
+     "source": "Skyrim.esm:02154F QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Maven Black-Briar",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Black-Briar Manor"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:02BA6B",
+      "prompt": "Where do I begin?",
+      "reply": [
+       "Head to the Bannered Mare in Whiterun and look for Mallus Maccius. He'll fill you in on all the details."
+      ],
+      "conditions": "the speaker is Maven Black-Briar; Dampened Spirits stage == 10; fn629 == 1",
+      "source": "TIF__0002BA6B.Fragment_0 on INFO Skyrim.esm:02BA6B (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:021550",
@@ -776,7 +1149,37 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "(Optional) Speak to Brynjolf",
+     "index": 20,
+     "source": "Skyrim.esm:021550 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Mercer Frey",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Ragged Flagon - Cistern, Thieves Guild Headquarters"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:02C2CC",
+      "prompt": "Where do I begin?",
+      "reply": [
+       "Gulum-Ei is our inside man at the East Empire Company in Solitude.",
+       "I'm betting he acted as a go-between for the sale of Goldenglow Estate and that he can finger our buyer.",
+       "Get out there, shake him down and see what you come up with. Talk to Brynjolf before you leave if you have any questions."
+      ],
+      "conditions": "the speaker is Mercer Frey; Scoundrel's Folly stage == 10; fn629 == 1",
+      "source": "TIF__0002C2CC.Fragment_0 on INFO Skyrim.esm:02C2CC (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:021551",
@@ -864,7 +1267,36 @@
      "source": "QF_TG05_00021551.fragment_17",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Enter Snow Veil Sanctum",
+     "index": 20,
+     "source": "Skyrim.esm:021551 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Mercer Frey",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Ragged Flagon - Cistern, Thieves Guild Headquarters"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:02C352",
+      "prompt": "Understood.",
+      "reply": [
+       "Just make certain you keep your eyes open. Karliah is as sharp as a blade.",
+       "The last thing I need is you blundering into a trap and warning her that we're here."
+      ],
+      "conditions": "the speaker is Mercer Frey; Speaking With Silence stage == 10; fn629 == 1",
+      "source": "TIF__0002C352.Fragment_0 on INFO Skyrim.esm:02C352 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:021552",
@@ -928,7 +1360,37 @@
      "source": "QF_TG06_00021552.fragment_20",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Speak with Calcelmo",
+     "index": 20,
+     "source": "Skyrim.esm:021552 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Enthir",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Hall of Attainment, Dormitory"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:032D5A",
+      "prompt": "Can you translate it?",
+      "reply": [
+       "No. However, I know someone who might.",
+       "The court wizard of Markarth, Calcelmo, may have the materials you need to get this journal translated.",
+       "A word of warning. Calcelmo is a fierce guardian of his research. Getting the information won't be easy."
+      ],
+      "conditions": "the speaker is Enthir; Hard Answers stage == 10",
+      "source": "TIF__00032D5A.Fragment_0 on INFO Skyrim.esm:032D5A (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:021553",
@@ -1006,7 +1468,35 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Follow Karliah",
+     "index": 20,
+     "source": "Skyrim.esm:021553 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Karliah",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Snow Veil Sanctum"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:055AA0",
+      "prompt": "I'm ready. Let's go.",
+      "reply": [
+       "Keep your eyes open. I'm not sure what to expect when we enter the cistern."
+      ],
+      "conditions": "the speaker is Karliah; The Pursuit stage == 10; fn629 == 1",
+      "source": "TIF__00055AA0.Fragment_0 on INFO Skyrim.esm:055AA0 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:057F99",
@@ -1063,7 +1553,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Meet Karliah at the standing stone",
+     "index": 20,
+     "source": "Skyrim.esm:057F99 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:021554",
@@ -1127,7 +1628,27 @@
      "source": "QF_TG08_00021554.fragment_20",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Speak to Karliah",
+     "index": 20,
+     "source": "Skyrim.esm:021554 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "TG08B (Blindsighted)",
+      "questId": "Skyrim.esm:021554",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "TG08BQuestScript.OnUpdate on Skyrim.esm:021554 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:021555",
@@ -1184,7 +1705,27 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Speak to the Nightingale Sentinel",
+     "index": 20,
+     "source": "Skyrim.esm:021555 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "TG09 (Darkness Returns)",
+      "questId": "Skyrim.esm:021555",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "TG09QuestScript.OnUpdate on Skyrim.esm:021555 (Wintersun - Faiths of Skyrim.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0B03A2",
@@ -1196,36 +1737,57 @@
     {
      "by": "dialogue",
      "speaker": "Mercer Frey",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "The Ragged Flagon - Cistern, Thieves Guild Headquarters"
      ],
      "call": "SetStage 20",
      "info": "Skyrim.esm:0B0396",
-     "conditions": "the speaker is Mercer Frey; global TGBanToggle == 1 (now ?); Reparations stage == 10",
+     "prompt": "What have I done wrong?",
+     "reply": [
+      "The Guild will not tolerate the kind of behavior you've been displaying. Too much is at stake.",
+      "I'm taking you out of the game for now. No jobs will be offered and you won't be able to fence your goods.",
+      "Speak to Vex to make the proper reparations if you want back in. Now get out of my sight."
+     ],
+     "conditions": "the speaker is Mercer Frey; global TGBanToggle == 1 (now 0); Reparations stage == 10",
      "source": "TIF__000B0396.Fragment_0 on INFO Skyrim.esm:0B0396 (Skyrim.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": "Brynjolf",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Riften"
      ],
      "call": "SetStage 20",
      "info": "Skyrim.esm:0B0398",
-     "conditions": "the speaker is Brynjolf; global TGBanToggle == 1 (now ?); Reparations stage == 10",
+     "prompt": "What have I done wrong?",
+     "reply": [
+      "You've done it now, whelp. You broke the rules and now you're knee deep in it.",
+      "That means you're out. No jobs, no payouts... no nothing.",
+      "You want to get back into our graces, you need to talk to Vex. She'll set you straight."
+     ],
+     "conditions": "the speaker is Brynjolf; global TGBanToggle == 1 (now 0); Reparations stage == 10",
      "source": "TIF__000B0398.Fragment_0 on INFO Skyrim.esm:0B0398 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": "Delvin Mallory",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "The Ragged Flagon"
      ],
      "call": "SetStage 20",
      "info": "Skyrim.esm:0B039A",
-     "conditions": "the speaker is Delvin Mallory; global TGBanToggle == 1 (now ?); Reparations stage == 10",
+     "prompt": "What have I done wrong?",
+     "reply": [
+      "Are you crazy? What were you thinkin'? You can't just go around doin' things the way you please!",
+      "Now we have to kick you out until things cool down. Can't give you any jobs or payouts for goods.",
+      "Go talk to Vex. She'll tell you the whys and hows if you want to get back in."
+     ],
+     "conditions": "the speaker is Delvin Mallory; global TGBanToggle == 1 (now 0); Reparations stage == 10",
      "source": "TIF__000B039A.Fragment_0 on INFO Skyrim.esm:0B039A (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     }
@@ -1268,7 +1830,37 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Bring gold to Vex  (<Global=TGBanGoldTotal>)",
+     "index": 20,
+     "source": "Skyrim.esm:0B03A2 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Vex",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Ragged Flagon"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:0B038C",
+      "prompt": "I'll get it.",
+      "reply": [
+       "You'd better. Because until you do, you don't get a single coin from us... and you won't be able to use our fences.",
+       "Anything you steal, you bring it straight to me.",
+       "Now get out of here and don't come back until your pockets are full."
+      ],
+      "conditions": "the speaker is Vex; global TGBanToggle == 1 (now 0); Reparations stage < 30",
+      "source": "TIF__000B038C.Fragment_0 on INFO Skyrim.esm:0B038C (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:09DD77",
@@ -1280,11 +1872,17 @@
     {
      "by": "dialogue",
      "speaker": "Maul",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Riften"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:06D481",
+     "prompt": "Tell me what this gem's worth.",
+     "reply": [
+      "Do I look like a merchant to you? You're going to have to take that up with Vex in the Thieves Guild.",
+      "Get in good with them and you'll find her."
+     ],
      "conditions": "the speaker is Maul; No Stone Unturned stage 5 not done; No Stone Unturned stage 20 not done; Riften Maul Dialogue stage 30 done; GetItemCount Unusual Gem >= 1",
      "source": "TIF__0006D481.Fragment_0 on INFO Skyrim.esm:06D481 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
@@ -1317,7 +1915,53 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Bring the Unusual Gem to Vex in the Thieves Guild",
+     "index": 10,
+     "source": "Skyrim.esm:09DD77 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "TG02B (Meet the Family)",
+      "questId": "Skyrim.esm:084ABD",
+      "atStage": 40,
+      "call": "SetStage 10",
+      "source": "QF_TG02B_00084ABD.fragment_9 on Skyrim.esm:084ABD (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "TGCrown (No Stone Unturned)",
+      "questId": "Skyrim.esm:09DD77",
+      "atStage": null,
+      "call": "SetStage 10",
+      "source": "TGCrownQuestScript.GemCheck on Skyrim.esm:09DD77 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Ri'saad",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Salvius Farm"
+      ],
+      "call": "SetStage 10",
+      "info": "Sell Stones of Barenziah.esp:000813",
+      "prompt": "Buy unusual gem for 400 gold.",
+      "reply": [
+       "Was there anything else, or is our transaction complete?"
+      ],
+      "conditions": "GetItemCount Unusual Gem >= 1; the player has at least 400 gold; Thieves Guild Caravan Fence Quest stage 30 done; the speaker is Ri'saad",
+      "source": "TIF__01002DDC.Fragment_2 on INFO Sell Stones of Barenziah.esp:000813 (Sell Stones of Barenziah.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0D7D69",
@@ -1375,7 +2019,36 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Proceed to center of Cistern",
+     "index": 20,
+     "source": "Skyrim.esm:0D7D69 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Brynjolf",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Riften"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0E3F4B",
+      "prompt": null,
+      "reply": [
+       "Well, my friend... the time's come to make it official. It's time to become our Guild Master.",
+       "Don't worry, I promise this will be short and sweet. If you'll just meet us in the center of the cistern room, we can begin."
+      ],
+      "conditions": "the speaker is Brynjolf; Under New Management stage == 10",
+      "source": "TIF__000E3F4B.Fragment_0 on INFO Skyrim.esm:0E3F4B (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:02893B",
@@ -1427,7 +2100,27 @@
      "source": "QF_TGRBE_0002893B.fragment_4",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Return the <Alias=ItemtoGet> to Vex",
+     "index": 20,
+     "source": "Skyrim.esm:02893B QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 50,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "TGRBE (The Burglary Job)",
+      "questId": "Skyrim.esm:02893B",
+      "atStage": null,
+      "call": "SetStage 50",
+      "source": "TGRBEItemToGetScript.OnActivate on Skyrim.esm:02893B (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:015D24",
@@ -1479,7 +2172,18 @@
      "source": "QF_TGRDU_00015D24.fragment_5",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Vex",
+     "index": 20,
+     "source": "Skyrim.esm:015D24 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
   },
   {
    "id": "Skyrim.esm:06098E",
@@ -1531,7 +2235,27 @@
      "source": "QF_TGRFO_0006098E.fragment_2",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Delvin",
+     "index": 20,
+     "source": "Skyrim.esm:06098E QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 50,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "TGRFO (The Numbers Job)",
+      "questId": "Skyrim.esm:06098E",
+      "atStage": null,
+      "call": "SetStage 50",
+      "source": "tgrfoledgerscript.OnActivate on Skyrim.esm:06098E (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:028922",
@@ -1583,7 +2307,27 @@
      "source": "QF_TGRGF_00028922.fragment_3",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Return <Alias=ItemToGet> to Delvin",
+     "index": 20,
+     "source": "Skyrim.esm:028922 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 50,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "TGRGF (The Fishing Job)",
+      "questId": "Skyrim.esm:028922",
+      "atStage": null,
+      "call": "SetStage 50",
+      "source": "TGRGFItemToGetScript.OnContainerchanged on Skyrim.esm:028922 (CFTO.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:028936",
@@ -1647,7 +2391,54 @@
      "source": "QF_TGRHC_00028936.fragment_4",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Return the valuables to Vex",
+     "index": 20,
+     "source": "Skyrim.esm:028936 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 50,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "TGRHC (The Sweep Job)",
+      "questId": "Skyrim.esm:028936",
+      "atStage": null,
+      "call": "SetStage 50",
+      "source": "TGRHCQuestScript.VCount on Skyrim.esm:028936 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "TGRHC (The Sweep Job)",
+      "questId": "Skyrim.esm:028936",
+      "atStage": null,
+      "call": "SetStage 50",
+      "source": "TGRHCWealthItemScript.OnActivate on Skyrim.esm:028936 (Skyrim.esm), through TGRHC (The Sweep Job)'s vcount",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "TGRHC (The Sweep Job)",
+      "questId": "Skyrim.esm:028936",
+      "atStage": null,
+      "call": "SetStage 50",
+      "source": "TGRHCWealthItemScript02.OnActivate on Skyrim.esm:028936 (Skyrim.esm), through TGRHC (The Sweep Job)'s vcount",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "TGRHC (The Sweep Job)",
+      "questId": "Skyrim.esm:028936",
+      "atStage": null,
+      "call": "SetStage 50",
+      "source": "TGRHCWealthItemScript03.OnActivate on Skyrim.esm:028936 (Skyrim.esm), through TGRHC (The Sweep Job)'s vcount",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:060990",
@@ -1692,7 +2483,36 @@
      "source": "QF_TGRNT_00060990.fragment_4",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Delvin",
+     "index": 20,
+     "source": "Skyrim.esm:060990 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 50,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "TGRNT (The Bedlam Job)",
+      "questId": "Skyrim.esm:060990",
+      "atStage": null,
+      "call": "SetStage 50",
+      "source": "TGRNTQuestScript.SCount on Skyrim.esm:060990 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "TGRNT (The Bedlam Job)",
+      "questId": "Skyrim.esm:060990",
+      "atStage": null,
+      "call": "SetStage 50",
+      "source": "TGRNTPlayer.OnItemAdded on Skyrim.esm:060990 (Unofficial Skyrim Special Edition Patch.esp), through TGRNT (The Bedlam Job)'s scount",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:02893E",
@@ -1750,7 +2570,27 @@
      "source": "QF_TGRSL_0002893E.fragment_0",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Return the <Alias=ItemtoGet> to Vex",
+     "index": 20,
+     "source": "Skyrim.esm:02893E QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 50,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "TGRSL (The Heist Job)",
+      "questId": "Skyrim.esm:02893E",
+      "atStage": null,
+      "call": "SetStage 50",
+      "source": "TGRSLItemToGetScript.OnContainerchanged on Skyrim.esm:02893E (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0799DF",
@@ -1815,7 +2655,36 @@
      "source": "QF_TGTQ01_000799DF.fragment_0",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Enter Pinewatch",
+     "index": 20,
+     "source": "Skyrim.esm:0799DF QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Endon",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Endon's House"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0799D4",
+      "prompt": "No time to lose then.",
+      "reply": [
+       "Yes, indeed. The only thing I can tell you is that the mold was taken to the bandit's hideout... a small cottage called Pinewatch.",
+       "I'm not sure how many men they have inside, but I trust that won't be an issue for you. Good luck."
+      ],
+      "conditions": "the speaker is Endon; Silver Lining stage == 10",
+      "source": "TIF__000799D4.Fragment_0 on INFO Skyrim.esm:0799D4 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0799E0",
@@ -1880,7 +2749,36 @@
      "source": "QF_TGTQ02_000799E0.fragment_9",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Acquire Balmora Blue",
+     "index": 20,
+     "source": "Skyrim.esm:0799E0 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Erikur",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Erikur's House"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:07CD33",
+      "prompt": "Consider it done.",
+      "reply": [
+       "Captain Volf is ashore right now and I want the authorities waiting for him when he gets back.",
+       "Now get going... I don't want to see your face until the job's done."
+      ],
+      "conditions": "the speaker is Erikur; The Dainty Sload stage == 10",
+      "source": "TIF__0007CD33.Fragment_0 on INFO Skyrim.esm:07CD33 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0799E1",
@@ -1945,7 +2843,37 @@
      "source": "QF_TGTQ03_000799E1.fragment_12",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Steal the letter incriminating Arn",
+     "index": 20,
+     "source": "Skyrim.esm:0799E1 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Olfrid Battle-Born",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "House of Clan Battle-Born"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:07D024",
+      "prompt": "Sounds easy.",
+      "reply": [
+       "If it was easy, I would have hired a local thug instead of a professional.",
+       "You see, both of these items are kept inside Dragonsreach, and they don't allow visitors inside the jarl's or the steward's chambers.",
+       "One more thing. If you get caught, I can't afford to be connected to you. Remember that before you do anything stupid."
+      ],
+      "conditions": "the speaker is Olfrid Battle-Born; Imitation Amnesty stage == 10",
+      "source": "TIF__0007D024.Fragment_0 on INFO Skyrim.esm:07D024 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0799E2",
@@ -2010,7 +2938,35 @@
      "source": "QF_TGTQ04_000799E2.fragment_0",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Speak to Niranye",
+     "index": 20,
+     "source": "Skyrim.esm:0799E2 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Torsten Cruel-Sea",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "House of Clan Cruel-Sea"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:07D671",
+      "prompt": "Deal. Where do I begin?",
+      "reply": [
+       "The only name I have is Niranye. Has a house right here in Windhelm. That's where you should begin looking."
+      ],
+      "conditions": "the speaker is Torsten Cruel-Sea; Summerset Shadows stage == 10",
+      "source": "TIF__0007D671.Fragment_0 on INFO Skyrim.esm:07D671 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:064A14",
@@ -2022,11 +2978,18 @@
     {
      "by": "dialogue",
      "speaker": "Maul",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Riften"
      ],
      "call": "Start",
      "info": "Skyrim.esm:0649F7",
+     "prompt": "Know anything about the Thieves Guild?",
+     "reply": [
+      "You kiddin'? My brother Dirge works in their hideout.",
+      "I used to run with them myself, but took a job with Maven after they started hittin' a rough patch.",
+      "If you want to get in on that action, find Brynjolf in the marketplace. I'm sure he could use someone like you."
+     ],
      "conditions": "the speaker is Maul; Riften Maul Dialogue stage 30 done; GetInFaction Thieves' Guild == 0",
      "source": "TIF__000649F7.Fragment_1 on INFO Skyrim.esm:0649F7 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
@@ -2204,7 +3167,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Learn more about the Thieves Guild from Delvin",
+     "index": 20,
+     "source": "Skyrim.esm:084ABD QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:0549F3",
@@ -2238,7 +3212,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Speak to Mallus Maccius.",
+     "index": 20,
+     "source": "Skyrim.esm:0549F3 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
   },
   {
    "id": "Skyrim.esm:1007FC",
@@ -2250,12 +3235,18 @@
     {
      "by": "dialogue",
      "speaker": "",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Solitude"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:1007EC",
-     "conditions": "global TG04EECCheck == 1 (now ?); Rise in the East stage < 10; fn1 < 512; the speaker is Skyrim.esm:1007FA or the speaker is Skyrim.esm:1007FB",
+     "prompt": "What kind of problems is the East Empire Company having?",
+     "reply": [
+      "How should I know? I don't work for them.",
+      "If you want to help, I suppose you could head to Windhelm and talk to Orthus Endario. He's in charge over there."
+     ],
+     "conditions": "global TG04EECCheck == 1 (now 0); Rise in the East stage < 10; fn1 < 512; the speaker is Skyrim.esm:1007FA or the speaker is Skyrim.esm:1007FB",
      "source": "TIF__001007EC.Fragment_0 on INFO Skyrim.esm:1007EC (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -2381,11 +3372,16 @@
     {
      "by": "dialogue",
      "speaker": "Ri'saad",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Salvius Farm"
      ],
      "call": "SetStage 10",
      "info": "Sell Stones of Barenziah.esp:00080B",
+     "prompt": "Buy unusual gem for 1000 gold.",
+     "reply": [
+      "Was there anything else, or is our transaction complete?"
+     ],
      "conditions": "GetItemCount Unusual Gem >= 1; the player has at least 1000 gold; Thieves Guild Caravan Fence Quest stage 30 not done; the speaker is Ri'saad",
      "source": "TIF__01002DD2.Fragment_2 on INFO Sell Stones of Barenziah.esp:00080B (Sell Stones of Barenziah.esp)",
      "verdict": "script"
@@ -2434,7 +3430,43 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Find someone who can identify the Unusual Gem",
+     "index": 20,
+     "source": "Skyrim.esm:06D585 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DialogueRiftenMaul (named \"Riften Maul Dialogue\" in its record), a helper quest with DRMSMaulAlias",
+      "questId": "Skyrim.esm:0649FC",
+      "atStage": 35,
+      "call": "SetStage 20",
+      "source": "QF_DialogueRiftenMaulScene_000649FC.fragment_10 on Skyrim.esm:0649FC (Skyrim.esm)",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "start game",
+        "source": "Skyrim.esm:0649FC DNAM (Skyrim.esm)",
+        "verdict": "files"
+       }
+      ]
+     },
+     {
+      "by": "quest script",
+      "quest": "TGCrown (No Stone Unturned)",
+      "questId": "Skyrim.esm:09DD77",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "TGCrownQuestScript.GemCheck on Skyrim.esm:09DD77 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0D8E40",
@@ -2466,11 +3498,17 @@
     {
      "by": "dialogue",
      "speaker": "Tonilia",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "The Ragged Flagon"
      ],
      "call": "SetStage 20",
      "info": "Skyrim.esm:0D8E31",
+     "prompt": "You want me to go talk to Ri'saad?",
+     "reply": [
+      "Actually, I want you to bring him something. You see, the caravans are notorious for transporting illegal substances.",
+      "Present Ri'saad with this satchel of moon sugar, and I bet my last septim he'll make a deal."
+     ],
      "conditions": "the speaker is Tonilia; Thieves Guild Caravan Fence Quest stage == 10",
      "source": "TIF__000D8E31.Fragment_0 on INFO Skyrim.esm:0D8E31 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
@@ -2525,7 +3563,37 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Tonilia",
+     "index": 20,
+     "source": "Skyrim.esm:0D8E40 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Ri'saad",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Salvius Farm"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:0D8E34",
+      "prompt": "Perhaps this will sweeten the deal? (Give satchel)",
+      "reply": [
+       "Ah, moon sugar. I could smell it on you. I am pleased with this offer, and accept.",
+       "Take my word to the leaders of your guild and tell them we look forward to a prosperous and profitable future.",
+       "If you happen upon any of our caravans in your travels, we'd also be more than willing to pay you a fair sum for any of your stolen goods."
+      ],
+      "conditions": "the speaker is Ri'saad; Thieves Guild Caravan Fence Quest stage == 20",
+      "source": "TIF__000D8E34.Fragment_0 on INFO Skyrim.esm:0D8E34 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:04C6C2",
@@ -2591,7 +3659,44 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return the Honningbrew Decanter to Delvin",
+     "index": 30,
+     "source": "Skyrim.esm:04C6C2 QOBJ 30",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "TGLarceny (The Litany of Larceny)",
+      "questId": "Skyrim.esm:04C6C2",
+      "atStage": null,
+      "call": "SetStage 30",
+      "source": "TGLarcenyItemScript.OnContainerChanged on Skyrim.esm:04C6C2 (Update.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Delvin Mallory",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Ragged Flagon"
+      ],
+      "call": "SetStage 25",
+      "info": "Skyrim.esm:027923",
+      "prompt": null,
+      "reply": [
+       "Here you go. This should cover it."
+      ],
+      "conditions": "the speaker is Delvin Mallory; The Litany of Larceny stage 20 done",
+      "source": "TIF__00027923.Fragment_0 on INFO Skyrim.esm:027923 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dragonborn.esm:02AD26",
@@ -2608,28 +3713,45 @@
      "call": "Start",
      "source": "DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Dragonborn.esm:016E02 DNAM (Fozars_Dragonborn_-_Requiem_Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "dialogue",
      "speaker": "Glover Mallory",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Glover Mallory's House"
      ],
      "call": "SetStage 10",
      "info": "Dragonborn.esm:02AD1E",
-     "conditions": "the speaker is Glover Mallory; Meet the Family stage 200 done; Paid in Full stage == 5; global DLC2TGGlobal01 == 0 (now ?)",
+     "prompt": "I'll get that formula back for you.",
+     "reply": [
+      "You do that, and I'll make sure you're set up right. You won't be disappointed."
+     ],
+     "conditions": "the speaker is Glover Mallory; Meet the Family stage 200 done; Paid in Full stage == 5; global DLC2TGGlobal01 == 0 (now 0)",
      "source": "DLC2_TIF__0202AD1E.Fragment_0 on INFO Dragonborn.esm:02AD1E (Dragonborn.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": "Glover Mallory",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Glover Mallory's House"
      ],
      "call": "SetStage 5",
      "info": "Dragonborn.esm:02AD23",
+     "prompt": "Nothing at all?",
+     "reply": [
+      "Eager to make some coin, eh? That's the spirit.",
+      "I'll tell you what. The Guild's got a problem out here that I've been trying to deal with for years, but haven't been able to handle."
+     ],
      "conditions": "the speaker is Glover Mallory; Meet the Family stage 200 done; Paid in Full hasn't started",
      "source": "DLC2_TIF__0202AD23.Fragment_1 on INFO Dragonborn.esm:02AD23 (Dragonborn.esm)",
      "verdict": "script"
@@ -2686,7 +3808,27 @@
      "source": "DLC2_QF_DLC2TGQuest_0202AD26.fragment_5",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Bring the Bonemold Formula to Glover Mallory",
+     "index": 20,
+     "source": "Dragonborn.esm:02AD26 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DLC2TGQuest (Paid in Full)",
+      "questId": "Dragonborn.esm:02AD26",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "DLC2TGPlayerScript.OnItemAdded on Dragonborn.esm:02AD26 (Dragonborn.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   }
  ],
  "notInRawQuests": [],
@@ -3804,7 +4946,7 @@
    ]
   }
  ],
- "otherStarts": "To get into the main quest: talk to Brynjolf in Riften: A Chance Arrangement is running from the start (Meet Brynjolf during daytime); or No Stone Unturned is running from the start: Become a full member of the Thieves Guild; or ask Brynjolf in Riften \"Break the law? Are you kidding?\" (the speaker is Brynjolf; A Chance Arrangement stage < 5; fn70 == 1), which starts A Chance Arrangement; or ask Brynjolf in Riften \"Break the law? Are you kidding?\" (the speaker is Brynjolf; A Chance Arrangement stage < 5; fn70 == 1), which starts A Chance Arrangement; or ask Brynjolf in Riften \"Why plant the ring on Brand-Shei?\" (fn67 == 0; the speaker is Brynjolf), which starts A Chance Arrangement; or ask Brynjolf in Riften \"Why plant the ring on Brand-Shei?\" (the speaker is Brynjolf; fn67 == 1), which starts A Chance Arrangement; or ask Brynjolf in Riften \"\" (the speaker is Brynjolf; A Cornered Rat stage 5 done; A Cornered Rat stage 20 not done; fn629 == 1), which starts A Chance Arrangement; or ask Brynjolf in Riften \"\" (the speaker is Brynjolf; A Chance Arrangement stage < 5; fn70 == 1), which starts A Chance Arrangement; or ask Brynjolf in Riften \"\" (the speaker is Brynjolf; A Chance Arrangement stage < 5; fn70 == 1), which starts A Chance Arrangement.",
+ "otherStarts": "To get into The Thieves Guild: talk to Brynjolf in Riften: A Chance Arrangement is running from the start (Meet Brynjolf during daytime); or No Stone Unturned is running from the start: Become a full member of the Thieves Guild; or ask Brynjolf in Riften \"Break the law? Are you kidding?\" (the speaker is Brynjolf; A Chance Arrangement stage < 5; fn70 == 1), which starts A Chance Arrangement; or ask Brynjolf in Riften \"Break the law? Are you kidding?\" (the speaker is Brynjolf; A Chance Arrangement stage < 5; fn70 == 1), which starts A Chance Arrangement; or ask Brynjolf in Riften \"Why plant the ring on Brand-Shei?\" (fn67 == 0; the speaker is Brynjolf), which starts A Chance Arrangement; or ask Brynjolf in Riften \"Why plant the ring on Brand-Shei?\" (the speaker is Brynjolf; fn67 == 1), which starts A Chance Arrangement; or ask Brynjolf in Riften \"\" (the speaker is Brynjolf; A Cornered Rat stage 5 done; A Cornered Rat stage 20 not done; fn629 == 1), which starts A Chance Arrangement; or ask Brynjolf in Riften \"\" (the speaker is Brynjolf; A Chance Arrangement stage < 5; fn70 == 1), which starts A Chance Arrangement; or ask Brynjolf in Riften \"\" (the speaker is Brynjolf; A Chance Arrangement stage < 5; fn70 == 1), which starts A Chance Arrangement.",
  "routes": [
   {
    "route": "dialogue INFO Skyrim.esm:0352E5",
@@ -3943,14 +5085,14 @@
   "Wyrmstooth": {
    "quest": "Wyrmstooth.esp:AC1487",
    "script": "WT_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/Wyrmstooth - Settings Loader/Scripts/WT_MCMScript.pex",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
    "winnerParent": "MCM_ConfigBase",
    "readsSettings": true
   },
   "TimingIsEverything": {
    "quest": "TimingIsEverything.esp:005E3B",
    "script": "TIE_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
    "winnerParent": "SKI_ConfigBase",
    "readsSettings": false
   }
@@ -4013,7 +5155,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4031,14 +5173,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4079,7 +5221,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4106,7 +5248,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4124,14 +5266,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4172,7 +5314,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4199,7 +5341,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4217,14 +5359,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4265,7 +5407,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4292,7 +5434,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4310,14 +5452,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4358,7 +5500,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4385,7 +5527,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4403,14 +5545,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4451,7 +5593,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4478,7 +5620,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4496,14 +5638,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4544,7 +5686,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4571,7 +5713,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4589,14 +5731,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4637,7 +5779,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4664,7 +5806,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4682,14 +5824,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4730,7 +5872,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4757,7 +5899,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4775,14 +5917,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4823,7 +5965,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4846,7 +5988,7 @@
   "script": {
    "quest": "TimingIsEverything.esp:005E3B",
    "script": "TIE_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
    "winnerParent": "SKI_ConfigBase",
    "readsSettings": false
   },
@@ -4867,7 +6009,7 @@
        "key": "iTIE_MinimumLevel:Dragonborn",
        "value": "25",
        "from": "settings.ini in Timing is Everything SE - Settings Loader",
-       "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+       "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
       }
      ],
      "value": 25.0,
@@ -4906,7 +6048,7 @@
   "loaderQuest": {
    "quest": "Wyrmstooth.esp:AC1487",
    "script": "WT_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/Wyrmstooth - Settings Loader/Scripts/WT_MCMScript.pex",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
    "winnerParent": "MCM_ConfigBase",
    "readsSettings": true
   },

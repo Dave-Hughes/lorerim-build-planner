@@ -1,0 +1,4696 @@
+{
+ "line": "katana",
+ "name": "Katana and Megara",
+ "quests": [
+  {
+   "id": "Katana.esp:E02209",
+   "edid": "AK69CarrotQuest",
+   "name": "The Sweetest Carrot",
+   "plugin": "Katana.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Megara",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Drunken Huntsman, Drunken Huntsman"
+     ],
+     "call": "SetStage 10",
+     "info": "Katana.esp:E2AA86",
+     "prompt": "We'll make sure Cappy gets that carrot.",
+     "reply": [
+      "You're such a great friend, you know that? Cappy will be so thrilled when I give him this special treat."
+     ],
+     "conditions": "the speaker is Megara",
+     "source": "AK69_TIF__05E2AA86.Fragment_0 on INFO Katana.esp:E2AA86 (Katana.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Megara",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Drunken Huntsman, Drunken Huntsman"
+     ],
+     "call": "SetStage 10",
+     "info": "Katana.esp:E2AA87",
+     "prompt": "I didn't say I would help.",
+     "reply": [
+      "Don't be like that. We can find the carrot whenever you have a spare moment. Just think about it, please."
+     ],
+     "conditions": "the speaker is Megara",
+     "source": "AK69_TIF__05E2AA87.Fragment_0 on INFO Katana.esp:E2AA87 (Katana.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "AK69EasterEggsQuest (Honey Nuts and the Chin of Fate)",
+     "atStage": null,
+     "call": "Start",
+     "source": "AK69EasterEggsScript.Setup (Katana.esp)"
+    },
+    {
+     "by": "AK69EasterEggsQuest (Honey Nuts and the Chin of Fate)",
+     "atStage": 0,
+     "call": "Start",
+     "source": "AK69_QF_AK69EasterEggsQuest_05B74A58.fragment_2 (Katana.esp)"
+    }
+   ],
+   "advancedBy": 18,
+   "firstObjective": {
+    "text": "Head to the Chillfurrow Farm area and then talk to Megara",
+    "index": 10,
+    "source": "Katana.esp:E02209 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Chillfurrow",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Chillfurrow Farm"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:009618"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": "global AK69KatanaPQCompleted == 1 (now 0)",
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Chillfurrow Farm",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [
+    {
+     "id": "Katana.esp:422E21",
+     "edid": "AK69KatanaPQCompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "QF_AK69KatanaPersonalQuest_058E1B19",
+       "function": "fragment_35",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057FFB87",
+       "function": "Fragment_0",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    }
+   ],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "With Megara, steal the carrot",
+     "index": 20,
+     "source": "Katana.esp:E02209 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Megara",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Drunken Huntsman, Drunken Huntsman"
+      ],
+      "call": "SetStage 20",
+      "info": "Katana.esp:E34CA0",
+      "prompt": "Don't worry about that. No one will catch us.",
+      "reply": [
+       "Love that confidence! And I know we can pull this off."
+      ],
+      "conditions": "the speaker is Megara",
+      "source": "AK69_TIF__05E34CA0.Fragment_0 on INFO Katana.esp:E34CA0 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Megara",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Drunken Huntsman, Drunken Huntsman"
+      ],
+      "call": "SetStage 20",
+      "info": "Katana.esp:E34CA3",
+      "prompt": "No.",
+      "reply": [
+       "(chuckles) That's what I thought. Time to be a bandit... bane of the law, instead of, well, you know."
+      ],
+      "conditions": "the speaker is Megara",
+      "source": "AK69_TIF__05E34CA3.Fragment_0 on INFO Katana.esp:E34CA3 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Megara",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Drunken Huntsman, Drunken Huntsman"
+      ],
+      "call": "SetStage 20",
+      "info": "Katana.esp:E34CA5",
+      "prompt": "Then, let's start swooping.",
+      "reply": [
+       "That's the spirit!"
+      ],
+      "conditions": "the speaker is Megara",
+      "source": "AK69_TIF__05E34CA5.Fragment_0 on INFO Katana.esp:E34CA5 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Megara",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Drunken Huntsman, Drunken Huntsman"
+      ],
+      "call": "SetStage 20",
+      "info": "Katana.esp:E34CA6",
+      "prompt": "If you say so.",
+      "reply": [
+       "That's the spirit!"
+      ],
+      "conditions": "the speaker is Megara",
+      "source": "AK69_TIF__05E34CA6.Fragment_0 on INFO Katana.esp:E34CA6 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Megara",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Drunken Huntsman, Drunken Huntsman"
+      ],
+      "call": "SetStage 20",
+      "info": "Katana.esp:E34CA8",
+      "prompt": "I can buy my way out.",
+      "reply": [
+       "Spoken like someone with pockets lined with gold. You're right, though. So, let's find that carrot."
+      ],
+      "conditions": "the speaker is Megara",
+      "source": "AK69_TIF__05E34CA8.Fragment_0 on INFO Katana.esp:E34CA8 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Megara",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Drunken Huntsman, Drunken Huntsman"
+      ],
+      "call": "SetStage 20",
+      "info": "Katana.esp:E34CA9",
+      "prompt": "A few words can make that trouble disappear.",
+      "reply": [
+       "Your silver tongue is truly a gift, my friend. Now, let's find that carrot."
+      ],
+      "conditions": "the speaker is Megara",
+      "source": "AK69_TIF__05E34CA9.Fragment_0 on INFO Katana.esp:E34CA9 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Megara",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Drunken Huntsman, Drunken Huntsman"
+      ],
+      "call": "SetStage 20",
+      "info": "Katana.esp:E34CAA",
+      "prompt": "A jail's cell can't hold me.",
+      "reply": [
+       "(chuckles) Right. I don't know why I was worried. Now, let's find that carrot."
+      ],
+      "conditions": "the speaker is Megara",
+      "source": "AK69_TIF__05E34CAA.Fragment_0 on INFO Katana.esp:E34CAA (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Megara",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Drunken Huntsman, Drunken Huntsman"
+      ],
+      "call": "SetStage 20",
+      "info": "Katana.esp:E34CAB",
+      "prompt": "Okay. It is just a carrot.",
+      "reply": [
+       "That's the spirit!"
+      ],
+      "conditions": "the speaker is Megara",
+      "source": "AK69_TIF__05E34CAB.Fragment_0 on INFO Katana.esp:E34CAB (Katana.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Katana.esp:B74A58",
+   "edid": "AK69EasterEggsQuest",
+   "name": "Honey Nuts and the Chin of Fate",
+   "plugin": "Katana.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Megara",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Drunken Huntsman, Drunken Huntsman"
+     ],
+     "call": "Start",
+     "info": "Katana.esp:1CD744",
+     "prompt": "It really does.",
+     "reply": [
+      "Oh, I wanted to let you know... If you ever feel like having more company, I'm here.",
+      "I'm not so much a fighter, but I can keep you alive.",
+      "If you have other friends with you, I'll protect them, too.",
+      "Anyway, again, it's so nice to see you. I'll be here if you need me."
+     ],
+     "conditions": "the speaker is Megara; global AK69PQSkipSuccessVar == 0 (now 0)",
+     "source": "AK69_TIF__041CD744.Fragment_0 on INFO Katana.esp:1CD744 (Katana.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Megara",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Drunken Huntsman, Drunken Huntsman"
+     ],
+     "call": "Start",
+     "info": "Katana.esp:804C8E",
+     "prompt": "Sorry. I had a few stops to make on the way.",
+     "reply": [
+      "Well, if you feel like easing my worries and having some company, I'd love to join you on your travels.",
+      "I'd feel better if I could be there to heal you when you're hurting.",
+      "And that goes for any friends you bring along, too.",
+      "Anyway, thanks for coming to see me. If you need me, I'll be here."
+     ],
+     "conditions": "the speaker is Megara; global AK69PQSkipSuccessVar == 1 (now 0); global AK69SkipEveryQuestVar == 0 (now 0)",
+     "source": "AK69_TIF__05804C8E.Fragment_0 on INFO Katana.esp:804C8E (Katana.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Megara",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Drunken Huntsman, Drunken Huntsman"
+     ],
+     "call": "SetStage 10",
+     "info": "Katana.esp:D8D824",
+     "prompt": null,
+     "reply": [
+      "Or ever."
+     ],
+     "conditions": "the speaker is Megara",
+     "source": "AK69_TIF__05D8D824.Fragment_0 on INFO Katana.esp:D8D824 (Katana.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Head to Solitude with Katana and Megara",
+    "index": 10,
+    "source": "Katana.esp:B74A58 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "SolitudeMarker",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Solitude"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:037EE9"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": "global AK69KatanaPQCompleted == 1 (now 0)",
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Solitude",
+      "ways": 12,
+      "locked": 5
+     }
+    ]
+   },
+   "globals": [
+    {
+     "id": "Katana.esp:422E21",
+     "edid": "AK69KatanaPQCompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "QF_AK69KatanaPersonalQuest_058E1B19",
+       "function": "fragment_35",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057FFB87",
+       "function": "Fragment_0",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    }
+   ],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Stop by the Honningbrew Meadery with Katana and Megara",
+     "index": 11,
+     "source": "Katana.esp:B74A58 QOBJ 11",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
+  },
+  {
+   "id": "Katana.esp:8E1B19",
+   "edid": "AK69KatanaPersonalQuest",
+   "name": "Chasing the Current",
+   "plugin": "Katana.esp",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Katana",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Winking Skeever"
+     ],
+     "call": "Start",
+     "info": "Katana.esp:7D55E4",
+     "prompt": "Hmm?",
+     "reply": [
+      "Before we get carried away, I have something for you."
+     ],
+     "conditions": "the speaker is Katana; fn286 == 0; Katana Tracker hasn't started; global AK69PQSkipSuccessVar == 0 (now 0)",
+     "source": "AK69KatanaFeatherFrag.Fragment_1 on INFO Katana.esp:7D55E4 (Katana.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 44,
+   "firstObjective": {
+    "text": "Talk to Katana when you have a moment",
+    "index": 1,
+    "source": "Katana.esp:8E1B19 QOBJ 1",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Katana",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Katana",
+       "kind": "unique actor",
+       "where": [
+        "The Winking Skeever"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016A0E"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": "global AK69KatanaRecruited == 1 (now 0); Meeting Katana stage >= 15; Katana Tracker stage >= 5",
+    "doors": [],
+    "ways": [
+     {
+      "cell": "The Winking Skeever",
+      "ways": 4,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [
+    {
+     "id": "Katana.esp:617D76",
+     "edid": "AK69KatanaRecruited",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69SerenataQuest_058BB421",
+       "function": "fragment_33",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69SerenataQuest_058BB421",
+       "function": "fragment_7",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69SerenataQuestScript",
+       "function": "QuestReadyTime",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69SerenataQuestScript",
+       "function": "EndQuest",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69KatanaBountyHuntQ_05F13CD8",
+       "function": "fragment_2",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69KatanaBountyHuntQ_05F13CD8",
+       "function": "fragment_5",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69KatanaController",
+       "function": "DismissFollower",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69KatanaController",
+       "function": "SetFollower",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69KatanaDialogueQuestAliasScript",
+       "function": "OnCombatStateChanged",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69TIF__0503D7BB",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__04552B47",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__04552B48",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__04552B49",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__05A9AC61",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroEndA",
+       "function": "Fragment_4",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroEndB",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6ED",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6EE",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F0",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F2",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F5",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F6",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroEndC",
+       "function": "Fragment_1",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0496ADFF",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__05DE3B0A",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69KatanaDismissResponse1",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__044ED6E4",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69KatanaDismissResponse2",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69KatanaDismissResponse3",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69TIF__05F68CDD",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0476B79F",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0495BAFE",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057F821F",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057F8220",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69KatanaDismissResponse4",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__05A9AC5E",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__05A9AC5F",
+       "function": "Fragment_0",
+       "value": 0
+      },
+      {
+       "by": "script",
+       "script": "AK69KatanaFollowResponse1",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69TIF__05F68CDE",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69KatanaFollowResponse2",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69KatanaFollowResponse3",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__05DFD096",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__05DFD0C3",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__05DFD0C4",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__05DFD0C5",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__05DFD0C6",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__05DFD0C7",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057FAA74",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057FAA76",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057FAA7B",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057FAA7C",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057FFB83",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057FFB84",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057FFB87",
+       "function": "Fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057FFB85",
+       "function": "Fragment_0",
+       "value": 1
+      }
+     ],
+     "verdict": "conflict",
+     "value": 0.0
+    }
+   ],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Check in with Katana",
+     "index": 2,
+     "source": "Katana.esp:8E1B19 QOBJ 2",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
+  },
+  {
+   "id": "Katana.esp:BEE373",
+   "edid": "AK69MegaraBanditQuest",
+   "name": "Megara's Radiant Quests",
+   "plugin": "Katana.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Megara",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Drunken Huntsman, Drunken Huntsman"
+     ],
+     "call": "SetStage 10",
+     "info": "Katana.esp:01A090",
+     "prompt": "Any work available?",
+     "reply": [
+      "Here, take a look.",
+      "When you're done, let me know."
+     ],
+     "conditions": "the speaker is Megara; fn67 == 0; global AK69KatanaPQCompleted == 1 (now 0); global AK69MegaraRecruited == 1 (now 0); global AK69MegaraRelax == 0 (now 0); fn562 == 0; fn562 == 0; fn286 == 0; Megara's Radiant Quests stage < 10; Serenata stage != 80; Serenata stage != 90; Serenata stage != 100; Serenata stage != 110; Serenata stage != 120; Serenata stage != 130; Serenata stage != 140; Serenata stage != 150; Serenata stage != 160; Serenata stage != 170; Serenata stage != 180",
+     "source": "AK69_TIF_AK69MegaraGive1_0501A090.Fragment_3 on INFO Katana.esp:01A090 (Katana.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Megara",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Drunken Huntsman, Drunken Huntsman"
+     ],
+     "call": "SetStage 10",
+     "info": "Katana.esp:DC03A6",
+     "prompt": "Any work available?",
+     "reply": [
+      "Yes. I'll always have work available.",
+      "Just come back to me when you're done!"
+     ],
+     "conditions": "the speaker is Megara; fn67 == 0; global AK69KatanaPQCompleted == 1 (now 0); global AK69MegaraRecruited == 1 (now 0); global AK69MegaraRelax == 0 (now 0); fn562 == 0; fn562 == 0; fn286 == 0; Megara's Radiant Quests stage < 10; Serenata stage != 80; Serenata stage != 90; Serenata stage != 100; Serenata stage != 110; Serenata stage != 120; Serenata stage != 130; Serenata stage != 140; Serenata stage != 150; Serenata stage != 160; Serenata stage != 170; Serenata stage != 180",
+     "source": "AK69_TIF_AK69MegaraGiveDUPLIC_05DC03A6.Fragment_3 on INFO Katana.esp:DC03A6 (Katana.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Megara",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Drunken Huntsman, Drunken Huntsman"
+     ],
+     "call": "SetStage 10",
+     "info": "Katana.esp:DC03A7",
+     "prompt": "Any work available?",
+     "reply": [
+      "Here. What do you think of this?",
+      "Should be pretty easy, right? Just come talk to me when you're done."
+     ],
+     "conditions": "the speaker is Megara; fn67 == 0; global AK69KatanaPQCompleted == 1 (now 0); global AK69MegaraRecruited == 1 (now 0); global AK69MegaraRelax == 0 (now 0); fn562 == 0; fn562 == 0; fn286 == 0; Megara's Radiant Quests stage < 10; Serenata stage != 80; Serenata stage != 90; Serenata stage != 100; Serenata stage != 110; Serenata stage != 120; Serenata stage != 130; Serenata stage != 140; Serenata stage != 150; Serenata stage != 160; Serenata stage != 170; Serenata stage != 180",
+     "source": "AK69_TIF_AK69MegaraGiveDUPLIC_05DC03A7.Fragment_3 on INFO Katana.esp:DC03A7 (Katana.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Megara",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Drunken Huntsman, Drunken Huntsman"
+     ],
+     "call": "SetStage 10",
+     "info": "Katana.esp:DC03A8",
+     "prompt": "Any work available?",
+     "reply": [
+      "Gotta make a living, right? Here, take a look.",
+      "What do you think? Just let me know when you're done, alright?"
+     ],
+     "conditions": "the speaker is Megara; fn67 == 0; global AK69KatanaPQCompleted == 1 (now 0); global AK69MegaraRecruited == 1 (now 0); global AK69MegaraRelax == 0 (now 0); fn562 == 0; fn562 == 0; fn286 == 0; Megara's Radiant Quests stage < 10; Serenata stage != 80; Serenata stage != 90; Serenata stage != 100; Serenata stage != 110; Serenata stage != 120; Serenata stage != 130; Serenata stage != 140; Serenata stage != 150; Serenata stage != 160; Serenata stage != 170; Serenata stage != 180",
+     "source": "AK69_TIF_AK69MegaraGiveDUPLIC_05DC03A8.Fragment_3 on INFO Katana.esp:DC03A8 (Katana.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 5,
+   "firstObjective": {
+    "text": "Kill the leader of the bandits at <Alias=BanditLocation>",
+    "index": 10,
+    "source": "Katana.esp:BEE373 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Bandit",
+     "fill": "from alias",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": "global AK69KatanaPQCompleted == 1 (now 0)",
+    "doors": [],
+    "ways": []
+   },
+   "globals": [
+    {
+     "id": "Katana.esp:422E21",
+     "edid": "AK69KatanaPQCompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "QF_AK69KatanaPersonalQuest_058E1B19",
+       "function": "fragment_35",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057FFB87",
+       "function": "Fragment_0",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    }
+   ],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Collect reward from Megara",
+     "index": 20,
+     "source": "Katana.esp:BEE373 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "AK69MegaraBanditQuest (Megara's Radiant Quests)",
+      "questId": "Katana.esp:BEE373",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "AK69MegaraBanditSetStageScript.OnDeath on Katana.esp:BEE373 (Katana.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Katana.esp:8BB421",
+   "edid": "AK69SerenataQuest",
+   "name": "Serenata",
+   "plugin": "Katana.esp",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [
+    {
+     "by": "AK69TheRavensLamentQuest (The Ravens' Lament)",
+     "atStage": 310,
+     "call": "Start",
+     "source": "AK69_QF_AK69TheRavensLamentQu_058BB420.fragment_68 (Katana.esp)"
+    }
+   ],
+   "advancedBy": 17,
+   "firstObjective": {
+    "text": "With Katana and Shale, talk to Megara in a city during the day",
+    "index": 1,
+    "source": "Katana.esp:8BB421 QOBJ 1",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Megara",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Megara",
+       "kind": "unique actor",
+       "where": [
+        "The Drunken Huntsman, Drunken Huntsman"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0165B7"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": "global AK69KatanaPQCompleted == 1 (now 0); global AK69TRLCompleted == 1 (now 0); global AK69EECompleted == 1 (now 0); global AK69KECompleted == 1 (now 0); global AK69SaSCompleted == 1 (now 0); global AK69CQCompleted == 1 (now 0)",
+    "doors": [],
+    "ways": [
+     {
+      "cell": "The Drunken Huntsman, Drunken Huntsman",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [
+    {
+     "id": "Katana.esp:0A5EEC",
+     "edid": "AK69TRLCompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69TheRavensLamentQu_058BB420",
+       "function": "fragment_68",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    },
+    {
+     "id": "Katana.esp:0DDA36",
+     "edid": "AK69EECompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69EasterEggsQuest_05B74A58",
+       "function": "fragment_17",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69EasterEggsQuest_05B74A58",
+       "function": "fragment_18",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    },
+    {
+     "id": "Katana.esp:0DDA37",
+     "edid": "AK69KECompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69TheKhatsEyeQuest_05C5896B",
+       "function": "fragment_12",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    },
+    {
+     "id": "Katana.esp:0DDA38",
+     "edid": "AK69SaSCompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69SugarandSpiceQues_05E39DE4",
+       "function": "fragment_1",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69SugarandSpiceQues_05E39DE4",
+       "function": "fragment_20",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69SugarandSpiceQues_05E39DE4",
+       "function": "fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    },
+    {
+     "id": "Katana.esp:0DDA39",
+     "edid": "AK69CQCompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69CarrotQuest_05E02209",
+       "function": "fragment_10",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69CarrotQuest_05E02209",
+       "function": "fragment_12",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    },
+    {
+     "id": "Katana.esp:422E21",
+     "edid": "AK69KatanaPQCompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "QF_AK69KatanaPersonalQuest_058E1B19",
+       "function": "fragment_35",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057FFB87",
+       "function": "Fragment_0",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    }
+   ],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Journey with Shale for about a day",
+     "index": 40,
+     "source": "Katana.esp:8BB421 QOBJ 40",
+     "verdict": "files"
+    },
+    "stage": 40,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Megara",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Drunken Huntsman, Drunken Huntsman"
+      ],
+      "call": "SetStage 10",
+      "info": "Katana.esp:0DDA41",
+      "prompt": "I'm listening.",
+      "reply": [
+       "Katana and I have been wanting to tell you... something quite important."
+      ],
+      "conditions": "the speaker is Megara",
+      "source": "AK69_TIF__050DDA41.Fragment_0 on INFO Katana.esp:0DDA41 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Megara",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Drunken Huntsman, Drunken Huntsman"
+      ],
+      "call": "SetStage 10",
+      "info": "Katana.esp:0DDA42",
+      "prompt": "Should I be worried?",
+      "reply": [
+       "Katana and I have been wanting to tell you... something quite important."
+      ],
+      "conditions": "the speaker is Megara",
+      "source": "AK69_TIF__050DDA42.Fragment_0 on INFO Katana.esp:0DDA42 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Megara",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Drunken Huntsman, Drunken Huntsman"
+      ],
+      "call": "SetStage 20",
+      "info": "Katana.esp:0E2B51",
+      "prompt": null,
+      "reply": [
+       "I was hoping you'd say that!"
+      ],
+      "conditions": "the speaker is Megara",
+      "source": "AK69_TIF__050E2B51.Fragment_0 on INFO Katana.esp:0E2B51 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Megara",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Drunken Huntsman, Drunken Huntsman"
+      ],
+      "call": "SetStage 30",
+      "info": "Katana.esp:0E2B61",
+      "prompt": "So, what do I have to do?",
+      "reply": [
+       "You've already done so much for us! This time, we'll take care of things, but that does mean we'll have to leave for a bit... probably only a day.",
+       "We don't want to go, but the arrangements won't make themselves!",
+       "We'll miss you, but the fun we'll have will be worth it!",
+       "Oh, and we'll reach out as soon as everything is taken care of!"
+      ],
+      "conditions": "the speaker is Megara",
+      "source": "AK69_TIF__050E2B61.Fragment_0 on INFO Katana.esp:0E2B61 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Megara",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Drunken Huntsman, Drunken Huntsman"
+      ],
+      "call": "SetStage 30",
+      "info": "Katana.esp:0E2B62",
+      "prompt": "Okay, Megara. What's the plan?",
+      "reply": [
+       "You've already done so much for us! This time, we'll take care of things, but that does mean we'll have to leave for a bit... probably only a day.",
+       "We don't want to go, but the arrangements won't make themselves!",
+       "We'll miss you, but the fun we'll have will be worth it!",
+       "Oh, and we'll reach out as soon as everything is taken care of!"
+      ],
+      "conditions": "the speaker is Megara",
+      "source": "AK69_TIF__050E2B62.Fragment_0 on INFO Katana.esp:0E2B62 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Shale",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Marker Storage Unit"
+      ],
+      "call": "SetStage 40",
+      "info": "Katana.esp:0E2B67",
+      "prompt": null,
+      "reply": [
+       "Oh, by all means, keep an eye on me."
+      ],
+      "conditions": "the speaker is Shale",
+      "source": "AK69_TIF__050E2B67.Fragment_0 on INFO Katana.esp:0E2B67 (Katana.esp)",
+      "verdict": "script"
+     }
+    ]
+   },
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Katana.esp:E39DE4",
+   "edid": "AK69SugarandSpiceQuest",
+   "name": "Sugar and Spice",
+   "plugin": "Katana.esp",
+   "firstObjectiveStage": 30,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "AK69CarrotQuest (The Sweetest Carrot)",
+     "questId": "Katana.esp:E02209",
+     "atStage": 10,
+     "call": "Start",
+     "source": "AK69_QF_AK69CarrotQuest_05E02209.fragment_0 on Katana.esp:E02209 (Katana.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Katana",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Winking Skeever"
+     ],
+     "call": "SetStage 10",
+     "info": "Katana.esp:E4E275",
+     "prompt": "Do it.",
+     "reply": [
+      "She's right here, so no problem."
+     ],
+     "conditions": "the speaker is Katana; global AK69MegaraRecruited == 1 (now 0)",
+     "source": "AK69_TIF__05E4E275.Fragment_0 on INFO Katana.esp:E4E275 (Katana.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Katana",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Winking Skeever"
+     ],
+     "call": "SetStage 20",
+     "info": "Katana.esp:E5D5E2",
+     "prompt": null,
+     "reply": [
+      "Of course. I don't want to lose you completely."
+     ],
+     "conditions": "the speaker is Katana",
+     "source": "AK69_TIF__05E5D5E2.Fragment_0 on INFO Katana.esp:E5D5E2 (Katana.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Katana",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Winking Skeever"
+     ],
+     "call": "SetStage 30",
+     "info": "Katana.esp:E5D5EA",
+     "prompt": "But why there?",
+     "reply": [
+      "Because no one wants to climb that mountain. But you'll do it for love, right? I know you will.",
+      "After you've stretched, let's go."
+     ],
+     "conditions": "the speaker is Katana",
+     "source": "AK69_TIF__05E5D5EA.Fragment_0 on INFO Katana.esp:E5D5EA (Katana.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 30,
+   "firstObjective": {
+    "text": "Head to Kilerth's Rest with Katana",
+    "index": 30,
+    "source": "Katana.esp:E39DE4 QOBJ 30",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "MarkerJustInCase",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Kilerth's Rest"
+       ]
+      }
+     ],
+     "cells": [
+      "Katana.esp:ADC254"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": "global AK69KatanaPQCompleted == 1 (now 0)",
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Kilerth's Rest",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [
+    {
+     "id": "Katana.esp:422E21",
+     "edid": "AK69KatanaPQCompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "QF_AK69KatanaPersonalQuest_058E1B19",
+       "function": "fragment_35",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057FFB87",
+       "function": "Fragment_0",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    }
+   ],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Get comfortable and close your eyes",
+     "index": 40,
+     "source": "Katana.esp:E39DE4 QOBJ 40",
+     "verdict": "files"
+    },
+    "stage": 40,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Katana",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Winking Skeever"
+      ],
+      "call": "SetStage 31",
+      "info": "Katana.esp:E67826",
+      "prompt": "Do it.",
+      "reply": [
+       "That won't be a problem.",
+       "But uh... Let's go to Kilerth's Rest."
+      ],
+      "conditions": "the speaker is Katana; global AK69MegaraRecruited == 0 (now 0)",
+      "source": "AK69_TIF__05E67826.Fragment_0 on INFO Katana.esp:E67826 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Megara",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Drunken Huntsman, Drunken Huntsman"
+      ],
+      "call": "SetStage 35",
+      "info": "Katana.esp:E626F4",
+      "prompt": null,
+      "reply": [
+       "I don't. My calves are burning! Let me just take a break while you two do... whatever it is you're here for."
+      ],
+      "conditions": "the speaker is Megara",
+      "source": "AK69_TIF__05E626F4.Fragment_0 on INFO Katana.esp:E626F4 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Katana",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Winking Skeever"
+      ],
+      "call": "SetStage 40",
+      "info": "Katana.esp:E626FA",
+      "prompt": "I think you know.",
+      "reply": [
+       "Well, we won't be doing it on this dusty floor. There's a bed in the next room. Lay down.",
+       "And close your eyes. I'm... nervous."
+      ],
+      "conditions": "the speaker is Katana",
+      "source": "AK69_TIF__05E626FA.Fragment_0 on INFO Katana.esp:E626FA (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Katana",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Winking Skeever"
+      ],
+      "call": "SetStage 40",
+      "info": "Katana.esp:E62701",
+      "prompt": "The real question is can you handle me?",
+      "reply": [
+       "Big talk. Show me you mean it.",
+       "But not on the floor. There's a bed in the next room. Lay down.",
+       "And we'll see if you're more than just talk."
+      ],
+      "conditions": "the speaker is Katana; fn70 == 1",
+      "source": "AK69_TIF__05E62701.Fragment_0 on INFO Katana.esp:E62701 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Katana",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Winking Skeever"
+      ],
+      "call": "SetStage 40",
+      "info": "Katana.esp:E62702",
+      "prompt": "The real question is can you handle me?",
+      "reply": [
+       "Ha... ha. Good question. Let's find out in the next room.",
+       "There's a bed there where you can lay down.",
+       "When you do, close your eyes. I'm... nervous."
+      ],
+      "conditions": "the speaker is Katana; fn70 == 1",
+      "source": "AK69_TIF__05E62702.Fragment_0 on INFO Katana.esp:E62702 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Katana",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Winking Skeever"
+      ],
+      "call": "SetStage 40",
+      "info": "Katana.esp:E62703",
+      "prompt": "We'll find out, but I'm feeling... unsure.",
+      "reply": [
+       "There's no backing out now. I scaled a mountain for you.",
+       "There's a bed in the next room. Lay down.",
+       "And close your eyes. I'm... nervous."
+      ],
+      "conditions": "the speaker is Katana",
+      "source": "AK69_TIF__05E62703.Fragment_0 on INFO Katana.esp:E62703 (Katana.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Katana.esp:C5896B",
+   "edid": "AK69TheKhatsEyeQuest",
+   "name": "The Khat's Eye",
+   "plugin": "Katana.esp",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Megara",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Drunken Huntsman, Drunken Huntsman"
+     ],
+     "call": "Start",
+     "info": "Katana.esp:47CB27",
+     "prompt": null,
+     "reply": [
+      "I hear the Moorside Inn is practically knee-deep in cheese but starving for customers! We should fix that."
+     ],
+     "conditions": "the speaker is Megara; fn629 == 0; The Khat's Eye hasn't started; global AK69KECompleted == 0 (now 0); global AK69SaSCompleted == 1 (now 0); fn67 != 1; fn67 != 1",
+     "source": "AK69_TIF__0547CB27.Fragment_5 on INFO Katana.esp:47CB27 (Katana.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 10,
+   "firstObjective": {
+    "text": "Relax at Moorside Inn with Katana and Megara",
+    "index": 5,
+    "source": "Katana.esp:C5896B QOBJ 5",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "AlTharo",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Al'Tharo",
+       "kind": "unique actor",
+       "where": [
+        "Marker Storage Unit"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:05EAC7"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": "global AK69KatanaPQCompleted == 1 (now 0)",
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Marker Storage Unit",
+      "ways": 0,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [
+    {
+     "id": "Katana.esp:422E21",
+     "edid": "AK69KatanaPQCompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "QF_AK69KatanaPersonalQuest_058E1B19",
+       "function": "fragment_35",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057FFB87",
+       "function": "Fragment_0",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    }
+   ],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Look for Al'Tharo's spectacles",
+     "index": 40,
+     "source": "Katana.esp:C5896B QOBJ 40",
+     "verdict": "files"
+    },
+    "stage": 40,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Megara",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Drunken Huntsman, Drunken Huntsman"
+      ],
+      "call": "SetStage 10",
+      "info": "Katana.esp:C58987",
+      "prompt": null,
+      "reply": [
+       "Quite a helpful friend."
+      ],
+      "conditions": "the speaker is Megara",
+      "source": "AK69_TIF__05C58987.Fragment_0 on INFO Katana.esp:C58987 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Al'Tharo",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Marker Storage Unit"
+      ],
+      "call": "SetStage 20",
+      "info": "Katana.esp:C5899B",
+      "prompt": "Why not pick them up?",
+      "reply": [
+       "Do not look upon Al'Tharo with such an expression.",
+       "His spectacles became lost, blending with the grass or maybe sinking into the waters. He could not see to know."
+      ],
+      "conditions": "the speaker is Al'Tharo; The Khat's Eye stage == 10; global AK69KatanaRecruited == 1 (now 0); global AK69MegaraRecruited == 1 (now 0)",
+      "source": "AK69_TIF__05C5899B.Fragment_0 on INFO Katana.esp:C5899B (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Al'Tharo",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Marker Storage Unit"
+      ],
+      "call": "SetStage 20",
+      "info": "Katana.esp:C5899F",
+      "prompt": "How did you get away?",
+      "reply": [
+       "Al'Tharo can handle any Thalmor mibek. He has done so so many times, though he admits this encounter was not an easy one with his foes blurring into the surroundings.",
+       "Khajiit still managed to slay three of the five, and the others scattered, as all vermin do.",
+       "He did not wait for them to realize his sight fails and return for him. He fled the swamp.",
+       "The trees were sad to see this one go, bumping him many times to keep him with them, but the scent of a meal was a trusty guide.",
+       "Even with soggy boots and no spectacles, Al'Tharo made it here."
+      ],
+      "conditions": "the speaker is Al'Tharo; The Khat's Eye stage == 10; global AK69KatanaRecruited == 1 (now 0); global AK69MegaraRecruited == 1 (now 0)",
+      "source": "AK69_TIF__05C5899F.Fragment_0 on INFO Katana.esp:C5899F (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Al'Tharo",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Marker Storage Unit"
+      ],
+      "call": "SetStage 20",
+      "info": "Katana.esp:C589A3",
+      "prompt": "We need to go. Can you tell us the story later?",
+      "reply": [
+       "This one understands. Until our next meeting, if such is fated."
+      ],
+      "conditions": "the speaker is Al'Tharo; The Khat's Eye stage == 10; global AK69KatanaRecruited == 1 (now 0); global AK69MegaraRecruited == 1 (now 0)",
+      "source": "AK69_TIF__05C589A3.Fragment_0 on INFO Katana.esp:C589A3 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Al'Tharo",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Marker Storage Unit"
+      ],
+      "call": "SetStage 30",
+      "info": "Katana.esp:C589B0",
+      "prompt": null,
+      "reply": [
+       "Many thanks, but this one is skilled only because he must be."
+      ],
+      "conditions": "the speaker is Al'Tharo",
+      "source": "AK69_TIF__05C589B0.Fragment_0 on INFO Katana.esp:C589B0 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Al'Tharo",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Marker Storage Unit"
+      ],
+      "call": "SetStage 40",
+      "info": "Katana.esp:C589BE",
+      "prompt": "I'd like to help find your spectacles.",
+      "reply": [
+       "Kha'jay krimir iso jer, trevan; Moons smile upon you, friend.",
+       "This one remembers being near Movarth's Lair when the Thalmor ambushed him.",
+       "Swift hunting."
+      ],
+      "conditions": "the speaker is Al'Tharo; The Khat's Eye stage == 30; global AK69KatanaRecruited == 1 (now 0); global AK69MegaraRecruited == 1 (now 0)",
+      "source": "AK69_TIF__05C589BE.Fragment_0 on INFO Katana.esp:C589BE (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Al'Tharo",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Marker Storage Unit"
+      ],
+      "call": "SetStage 40",
+      "info": "Katana.esp:C589BD",
+      "prompt": "We'll help. Do you know where you dropped them?",
+      "reply": [
+       "Kha'jay krimir iso jer, trevan; Moons smile upon you, friend.",
+       "This one remembers being near Movarth's Lair when the Thalmor ambushed him.",
+       "Swift hunting."
+      ],
+      "conditions": "the speaker is Al'Tharo; The Khat's Eye stage == 30; global AK69KatanaRecruited == 1 (now 0); global AK69MegaraRecruited == 1 (now 0)",
+      "source": "AK69_TIF__05C589BD.Fragment_0 on INFO Katana.esp:C589BD (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Al'Tharo",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Marker Storage Unit"
+      ],
+      "call": "SetStage 40",
+      "info": "Katana.esp:C589BF",
+      "prompt": "I'm here to help you find your spectacles.",
+      "reply": [
+       "Kha'jay krimir iso jer, trevan; Moons smile upon you, friend.",
+       "This one remembers being near Movarth's Lair when the Thalmor ambushed him.",
+       "Swift hunting."
+      ],
+      "conditions": "the speaker is Al'Tharo; global AK69Altharo4Var == 1 (now 0); The Khat's Eye stage == 30; global AK69KatanaRecruited == 1 (now 0); global AK69MegaraRecruited == 1 (now 0); global AK69KatanaRelax == 0 (now 0); global AK69MegaraRelax == 0 (now 0)",
+      "source": "AK69_TIF__05C589BF.Fragment_0 on INFO Katana.esp:C589BF (Katana.esp)",
+      "verdict": "script"
+     }
+    ],
+    "scenesStarted": [
+     {
+      "by": "dialogue",
+      "speaker": "Al'Tharo",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Marker Storage Unit"
+      ],
+      "call": "StartScene",
+      "info": "Katana.esp:C5899F",
+      "prompt": "How did you get away?",
+      "reply": [
+       "Al'Tharo can handle any Thalmor mibek. He has done so so many times, though he admits this encounter was not an easy one with his foes blurring into the surroundings.",
+       "Khajiit still managed to slay three of the five, and the others scattered, as all vermin do.",
+       "He did not wait for them to realize his sight fails and return for him. He fled the swamp.",
+       "The trees were sad to see this one go, bumping him many times to keep him with them, but the scent of a meal was a trusty guide.",
+       "Even with soggy boots and no spectacles, Al'Tharo made it here."
+      ],
+      "conditions": "the speaker is Al'Tharo; The Khat's Eye stage == 10; global AK69KatanaRecruited == 1 (now 0); global AK69MegaraRecruited == 1 (now 0)",
+      "source": "AK69_TIF__05C5899F.Fragment_0 on INFO Katana.esp:C5899F (Katana.esp)",
+      "verdict": "script",
+      "startsScene": "Katana.esp:C589A6"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Katana.esp:8BB420",
+   "edid": "AK69TheRavensLamentQuest",
+   "name": "The Ravens' Lament",
+   "plugin": "Katana.esp",
+   "firstObjectiveStage": 30,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "AK69SugarandSpiceQuest (Sugar and Spice)",
+     "questId": "Katana.esp:E39DE4",
+     "atStage": null,
+     "call": "Start",
+     "source": "AK69SugarandSpiceScript.DeleteStuff on Katana.esp:E39DE4 (Katana.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "AK69SugarandSpiceQuest (Sugar and Spice)",
+     "questId": "Katana.esp:E39DE4",
+     "atStage": 60,
+     "call": "Start",
+     "source": "AK69_QF_AK69SugarandSpiceQues_05E39DE4.fragment_1 on Katana.esp:E39DE4 (Katana.esp), through AK69SugarandSpiceQuest (Sugar and Spice)'s deletestuff",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "AK69SugarandSpiceQuest (Sugar and Spice)",
+     "questId": "Katana.esp:E39DE4",
+     "atStage": 70,
+     "call": "Start",
+     "source": "AK69_QF_AK69SugarandSpiceQues_05E39DE4.fragment_20 on Katana.esp:E39DE4 (Katana.esp), through AK69SugarandSpiceQuest (Sugar and Spice)'s deletestuff",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "AK69SugarandSpiceQuest (Sugar and Spice)",
+     "questId": "Katana.esp:E39DE4",
+     "atStage": 69,
+     "call": "Start",
+     "source": "AK69_QF_AK69SugarandSpiceQues_05E39DE4.fragment_0 on Katana.esp:E39DE4 (Katana.esp), through AK69SugarandSpiceQuest (Sugar and Spice)'s deletestuff",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Katana",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Winking Skeever"
+     ],
+     "call": "SetStage 10",
+     "info": "Katana.esp:8FD165",
+     "prompt": null,
+     "reply": [
+      "Nothing. Never mind."
+     ],
+     "conditions": "the speaker is Katana",
+     "source": "AK69_TIF__058FD165.Fragment_0 on INFO Katana.esp:8FD165 (Katana.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Katana",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Winking Skeever"
+     ],
+     "call": "SetStage 20",
+     "info": "Katana.esp:925971",
+     "prompt": null,
+     "reply": [
+      "It's River. You heard her this time. That makes it all feel more real.",
+      "But... she's quiet now. Let's not linger here."
+     ],
+     "conditions": "the speaker is Katana",
+     "source": "AK69_TIF__05925971.Fragment_0 on INFO Katana.esp:925971 (Katana.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Megara",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Drunken Huntsman, Drunken Huntsman"
+     ],
+     "call": "SetStage 30",
+     "info": "Katana.esp:92597A",
+     "prompt": null,
+     "reply": [
+      "Don't we, friend?"
+     ],
+     "conditions": "the speaker is Megara",
+     "source": "AK69_TIF__0592597A.Fragment_0 on INFO Katana.esp:92597A (Katana.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 32,
+   "firstObjective": {
+    "text": "Talk to Katana",
+    "index": 30,
+    "source": "Katana.esp:8BB420 QOBJ 30",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Katana",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Katana",
+       "kind": "unique actor",
+       "where": [
+        "The Winking Skeever"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016A0E"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": "global AK69KatanaPQCompleted == 1 (now 0); global AK69EECompleted == 1 (now 0); global AK69KECompleted == 1 (now 0); global AK69SaSCompleted == 1 (now 0); global AK69CQCompleted == 1 (now 0)",
+    "doors": [],
+    "ways": [
+     {
+      "cell": "The Winking Skeever",
+      "ways": 4,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [
+    {
+     "id": "Katana.esp:0DDA36",
+     "edid": "AK69EECompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69EasterEggsQuest_05B74A58",
+       "function": "fragment_17",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69EasterEggsQuest_05B74A58",
+       "function": "fragment_18",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    },
+    {
+     "id": "Katana.esp:0DDA37",
+     "edid": "AK69KECompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69TheKhatsEyeQuest_05C5896B",
+       "function": "fragment_12",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    },
+    {
+     "id": "Katana.esp:0DDA38",
+     "edid": "AK69SaSCompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69SugarandSpiceQues_05E39DE4",
+       "function": "fragment_1",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69SugarandSpiceQues_05E39DE4",
+       "function": "fragment_20",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69SugarandSpiceQues_05E39DE4",
+       "function": "fragment_0",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    },
+    {
+     "id": "Katana.esp:0DDA39",
+     "edid": "AK69CQCompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69CarrotQuest_05E02209",
+       "function": "fragment_10",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_QF_AK69CarrotQuest_05E02209",
+       "function": "fragment_12",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    },
+    {
+     "id": "Katana.esp:422E21",
+     "edid": "AK69KatanaPQCompleted",
+     "record": 0.0,
+     "recordFrom": "Katana.esp",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "AK69KatanaIntroScript",
+       "function": "SkipAll",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "QF_AK69KatanaPersonalQuest_058E1B19",
+       "function": "fragment_35",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__0537F6F3",
+       "function": "Fragment_1",
+       "value": 1
+      },
+      {
+       "by": "script",
+       "script": "AK69_TIF__057FFB87",
+       "function": "Fragment_0",
+       "value": 1
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    }
+   ],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Head to the Bee and Barb with Katana and Megara",
+     "index": 40,
+     "source": "Katana.esp:8BB420 QOBJ 40",
+     "verdict": "files"
+    },
+    "stage": 40,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Katana",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Winking Skeever"
+      ],
+      "call": "SetStage 40",
+      "info": "Katana.esp:925982",
+      "prompt": "Then, we won't go.",
+      "reply": [
+       "Hold on. I didn't say we shouldn't go, just that I don't want to see her.",
+       "The problem is, if I don't see her, I'll be stuck hearing her.",
+       "So, how about you, me, and Megara head to the Bee and Barb?",
+       "We can end this once and for all."
+      ],
+      "conditions": "the speaker is Katana",
+      "source": "AK69_TIF__05925982.Fragment_0 on INFO Katana.esp:925982 (Katana.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Katana",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Winking Skeever"
+      ],
+      "call": "SetStage 40",
+      "info": "Katana.esp:925983",
+      "prompt": "Then, you should tell her in person.",
+      "reply": [
+       "I hate to say it, but you're right.",
+       "Unless I go, she'll keep bothering me.",
+       "So, how about you, me, and Megara head to the Bee and Barb?",
+       "We can end this once and for all."
+      ],
+      "conditions": "the speaker is Katana",
+      "source": "AK69_TIF__05925983.Fragment_0 on INFO Katana.esp:925983 (Katana.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  }
+ ],
+ "notInRawQuests": [],
+ "starts": [
+  {
+   "start": "Regular (Inn)",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "The Bannered Mare",
+     "quest": "AlternatePerspective.esp:3271C8",
+     "questEdid": "APS_InnWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnWhiterun scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Bee and Barb",
+     "quest": "AlternatePerspective.esp:3457D0",
+     "questEdid": "APS_InnRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Winking Skeever",
+     "quest": "AlternatePerspective.esp:3457D2",
+     "questEdid": "APS_InnSolitude",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnSolitude scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Silver-Blood Inn",
+     "quest": "AlternatePerspective.esp:3457D4",
+     "questEdid": "APS_InnMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnMarkarth scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Candlehearth Hall",
+     "quest": "AlternatePerspective.esp:3457D6",
+     "questEdid": "APS_InnWindhelm",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnWindhelm scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dead Man's Drink",
+     "quest": "AlternatePerspective.esp:3457D9",
+     "questEdid": "APS_InnFalkreath",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnFalkreath scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Moorside Inn",
+     "quest": "AlternatePerspective.esp:3457DD",
+     "questEdid": "APS_InnMorthal",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnMorthal scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Frozen Hearth",
+     "quest": "AlternatePerspective.esp:3457DF",
+     "questEdid": "APS_InnWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnWinterhold scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Windpeak Inn",
+     "quest": "AlternatePerspective.esp:3457E0",
+     "questEdid": "APS_InnDawnstar",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Retching Netch",
+     "quest": "AlternatePerspective.esp:34A8E2",
+     "questEdid": "APS_InnRavenRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRavenRock scripts (Alternate Perspective - Gate to Sovngarde Edition.esp)"
+    },
+    {
+     "option": "The Sleeping Giant Inn",
+     "quest": "AlternatePerspective.esp:34A8E3",
+     "questEdid": "APS_InnRiverwood",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRiverwood scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Frostfruit Inn",
+     "quest": "AlternatePerspective.esp:34A8E4",
+     "questEdid": "APS_InnRorikstead",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRorikstead scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Vilemyr Inn",
+     "quest": "AlternatePerspective.esp:34A8E5",
+     "questEdid": "APS_InnIvarstead",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnIvarstead scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Old Hroldan Inn",
+     "quest": "AlternatePerspective.esp:34A8E6",
+     "questEdid": "APS_InnOldHroldan",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnOldHroldan scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Four Shields Tavern",
+     "quest": "AlternatePerspective.esp:34A8E7",
+     "questEdid": "APS_InnDragonbridge",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnDragonbridge scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Nightgate Inn",
+     "quest": "AlternatePerspective.esp:34A8E8",
+     "questEdid": "APS_InnNightgate",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnNightgate scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Braidwood Inn",
+     "quest": "AlternatePerspective.esp:34A8E9",
+     "questEdid": "APS_InnKynesgrove",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnKynesgrove scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "From Overseas",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "East Empire Trading Company",
+     "quest": "AlternatePerspective.esp:34F9EC",
+     "questEdid": "APS_DocksSolitude",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksSolitude scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Windhelm Docks",
+     "quest": "AlternatePerspective.esp:34F9EE",
+     "questEdid": "APS_DocksWindhelm",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksWindhelm scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dawnstar's Shore",
+     "quest": "AlternatePerspective.esp:34F9ED",
+     "questEdid": "APS_DocksDawnstar",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Raven Rock Docks",
+     "quest": "AlternatePerspective.esp:34F9F0",
+     "questEdid": "APS_DocksRavenRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksRavenRock scripts (Alternate Perspective - Gate to Sovngarde Edition.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Wanted Criminal",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Whiterun",
+     "quest": "AlternatePerspective.esp:34FA14",
+     "questEdid": "APS_WantedTPWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPWhiterun scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AlternatePerspective.esp:34FA15",
+     "questEdid": "APS_WantedTPRRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPRRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AlternatePerspective.esp:34FA1B",
+     "questEdid": "APS_WantedTPRDawnstar",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPRDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AlternatePerspective.esp:34FA25",
+     "questEdid": "APS_WantedTPWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPWinterhold scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Left for Dead",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "The Rift",
+     "quest": "AlternatePerspective.esp:34FA27",
+     "questEdid": "APS_LeftForDeadRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_LeftForDeadRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AlternatePerspective.esp:34FA29",
+     "questEdid": "APS_LeftForDeadMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_LeftForDeadMarkarth scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AlternatePerspective.esp:34FA20",
+     "questEdid": "APS_LeftForDeadWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_LeftForDeadWinterhold scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Forsworn",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Forsworn",
+     "quest": "AlternatePerspective.esp:46649F",
+     "questEdid": "APS_Forsworn",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_Forsworn scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Guilds",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "College of Winterhold",
+     "quest": "AlternatePerspective.esp:3D36E6",
+     "questEdid": "APS_GuildMages",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildMages scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Thieves Guild",
+     "quest": "AlternatePerspective.esp:3CE5E5",
+     "questEdid": "APS_GuildThievesguild",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildThievesguild scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dark Brotherhood",
+     "quest": "AlternatePerspective.esp:3D36E7",
+     "questEdid": "APS_GuildBrotherhood",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildBrotherhood scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Companions",
+     "quest": "AlternatePerspective.esp:3D36E8",
+     "questEdid": "APS_GuildCompanions",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildCompanions scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Dragonborn",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Helgen Keep (Start)",
+     "quest": "AlternatePerspective.esp:47F943",
+     "questEdid": "APS_MQSkipKeep",
+     "mainQuestRuns": "no",
+     "moves": [
+      "MQ101 SetStage 6",
+      "MQ101 SetStage 7"
+     ],
+     "source": "APS_MQSkipKeep scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Helgen Keep (End)",
+     "quest": "AlternatePerspective.esp:484A45",
+     "questEdid": "APS_MQSkipKeepEnd",
+     "mainQuestRuns": "no",
+     "moves": [
+      "MQ101 SetStage 250",
+      "MQ101 SetStage 550",
+      "MQ101 SetStage 700",
+      "MQ101 SetStage 710",
+      "MQ101 SetStage 720",
+      "MQ101 SetStage 725"
+     ],
+     "source": "APS_MQSkipKeepEnd scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Addict",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Addict",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000800",
+     "questEdid": "AFLOLALAddictQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAddictQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Dwemer Ruin",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Dwemer Ruin",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00081C",
+     "questEdid": "AFLOLALAdventureQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAdventureQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Alchemist",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Alchemist",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00080A",
+     "questEdid": "AFLOLALAlchemistQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAlchemistQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "At Angis Camp",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "At Angis Camp",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000858",
+     "questEdid": "AFLOLALAngiQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAngiQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Beggar",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Riften",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00085F",
+     "questEdid": "AFLOAP_BeggarRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BeggarRiften scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Markarth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000860",
+     "questEdid": "AFLOAP_BeggarMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BeggarMarkarth scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Jailed",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000861",
+     "questEdid": "AFLOAP_JailWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailWhiterun scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000869",
+     "questEdid": "AFLOAP_JailRift",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailRift scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Eastmarch",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000862",
+     "questEdid": "AFLOAP_JailEastmarch",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailEastmarch scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Haarfinger",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000864",
+     "questEdid": "AFLOAP_JailHaarfinger",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailHaarfinger scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000868",
+     "questEdid": "AFLOAP_JailReach",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailReach scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000863",
+     "questEdid": "AFLOAP_JailFalkreath",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailFalkreath scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hjaalmach",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000865",
+     "questEdid": "AFLOAP_JailHjaalmach",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailHjaalmach scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000866",
+     "questEdid": "AFLOAP_JailPale",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailPale scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086A",
+     "questEdid": "AFLOAP_JailWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailWinterhold scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Raven Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000867",
+     "questEdid": "AFLOAP_JailRavenRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailRavenRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Mercenary",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Cyrodiil",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086B",
+     "questEdid": "AFLOAP_BorderMercenaryCyrodill",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryCyrodill scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hammerfell",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086C",
+     "questEdid": "AFLOAP_BorderMercenaryHammerfell",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryHammerfell scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "High Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086D",
+     "questEdid": "AFLOAP_BorderMercenaryHighRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryHighRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Northern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086E",
+     "questEdid": "AFLOAP_BorderMercenaryNorthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryNorthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Southern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086F",
+     "questEdid": "AFLOAP_BorderMercenarySouthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenarySouthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Merchant",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Cyrodiil",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000870",
+     "questEdid": "AFLOAP_BorderMerchantCyrodill",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantCyrodill scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hammerfell",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000871",
+     "questEdid": "AFLOAP_BorderMerchantHammerfell",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantHammerfell scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "High Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000872",
+     "questEdid": "AFLOAP_BorderMerchantHighRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantHighRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Northern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000873",
+     "questEdid": "AFLOAP_BorderMerchantNorthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantNorthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Southern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000874",
+     "questEdid": "AFLOAP_BorderMerchantSouthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantSouthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Pilgrim (Shrine)",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Shrine of Azura",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083C",
+     "questEdid": "AFLOLALAzuraQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAzuraQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Boethiah",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083A",
+     "questEdid": "AFLOLALBoethiahQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALBoethiahQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Mehrunes Dagon",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000842",
+     "questEdid": "AFLOLALDagonQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALDagonQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Eldergleam Sanctuary",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000838",
+     "questEdid": "AFLOLALEldergleamQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALEldergleamQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Statue of Meridia",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000840",
+     "questEdid": "AFLOLALMeridiaQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALMeridiaQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Peryite",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083E",
+     "questEdid": "AFLOLALPeryiteQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALPeryiteQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Stendarr's Beacon",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000835",
+     "questEdid": "AFLOLALStendarrQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALStendarrQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hall of the Vigilant",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000881",
+     "questEdid": "AFLOAP_StendarrHall",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_StendarrHall scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Pilgrim (Temple)",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Temple of the Divines",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000876",
+     "questEdid": "AFLOAP_TempleDivine",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleDivine scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Dibella",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000875",
+     "questEdid": "AFLOAP_TempleDibella",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleDibella scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Kynareth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000877",
+     "questEdid": "AFLOAP_TempleKynareth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleKynareth scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Mara",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000878",
+     "questEdid": "AFLOAP_TempleMara",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleMara scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Talos",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000879",
+     "questEdid": "AFLOAP_TempleTalos",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleTalos scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Thalmor Prisoner",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Thalmor Prisoner",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000829",
+     "questEdid": "AFLOLALThalmorQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALThalmorQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Vampire",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Solitude",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087D",
+     "questEdid": "AFLOAP_VampireSolitude",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireSolitude scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087A",
+     "questEdid": "AFLOAP_VampireFalkreath",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireFalkreath scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087E",
+     "questEdid": "AFLOAP_VampireWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireWhiterun scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Riften",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087C",
+     "questEdid": "AFLOAP_VampireRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireRiften scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Windhelm",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087F",
+     "questEdid": "AFLOAP_VampireWindhelm",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireWindhelm scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Markarth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087B",
+     "questEdid": "AFLOAP_VampireMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireMarkarth scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Werewolf",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Werewolf",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00081F",
+     "questEdid": "AFLOLALWerewolfQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALWerewolfQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Roadside Ambush",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:000018",
+     "questEdid": "MissileAPAmbushStartEastmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartEastmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:000021",
+     "questEdid": "MissileAPAmbushStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:00001B",
+     "questEdid": "MissileAPAmbushStartHjaalmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:00001A",
+     "questEdid": "MissileAPAmbushStartFalkreathQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:00002D",
+     "questEdid": "MissileAPAmbushStartPaleQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:000033",
+     "questEdid": "MissileAPAmbushStartReachQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000027",
+     "questEdid": "MissileAPAmbushStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:000019",
+     "questEdid": "MissileAPAmbushStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Fell in a Spike Pit",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Fell in a Spike Pit",
+     "quest": "AP - Missile Additional Starts.esp:000039",
+     "questEdid": "MissileAPFellInAPitQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPFellInAPitQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Bounty Hunter",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:00004C",
+     "questEdid": "MissileAPBountyHunterStartEastmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartEastmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:000058",
+     "questEdid": "MissileAPBountyHunterStartFalkreathQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:00005C",
+     "questEdid": "MissileAPBountyHunterStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:000048",
+     "questEdid": "MissileAPBountyHunterStartHjaalmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000050",
+     "questEdid": "MissileAPBountyHunterStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:00003F",
+     "questEdid": "MissileAPBountyHunterStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AP - Missile Additional Starts.esp:000054",
+     "questEdid": "MissileAPBountyHunterStartWinterholdQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartWinterholdQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Prisoner in a Bandit Fort",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:000086",
+     "questEdid": "MissileAPBanditPrisonerStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:00007B",
+     "questEdid": "MissileAPBanditPrisonerStartPaleQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:00008D",
+     "questEdid": "MissileAPBanditPrisonerStartReachQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000081",
+     "questEdid": "MissileAPBanditPrisonerStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:000073",
+     "questEdid": "MissileAPBanditPrisonerStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Out in the Wilderness",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:0000D8",
+     "questEdid": "MissileAPOutInTheWildernessStartEastmarchQuestDUPLICATE001",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartEastmarchQuestDUPLICATE001 scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:0000CE",
+     "questEdid": "MissileAPOutInTheWildernessStartFalkreathQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:0000D2",
+     "questEdid": "MissileAPOutInTheWildernessStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:0000D4",
+     "questEdid": "MissileAPOutInTheWildernessStartHjaalmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:0000DA",
+     "questEdid": "MissileAPOutInTheWildernessStartPaleQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:0000D0",
+     "questEdid": "MissileAPOutInTheWildernessStartReachQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:0000CB",
+     "questEdid": "MissileAPOutInTheWildernessStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:0000C8",
+     "questEdid": "MissileAPOutInTheWildernessStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AP - Missile Additional Starts.esp:0000D6",
+     "questEdid": "MissileAPOutInTheWildernessStartWinterholdQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartWinterholdQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  }
+ ],
+ "otherStarts": "To get into Katana and Megara: ask Megara in The Drunken Huntsman, Drunken Huntsman \"We'll make sure Cappy gets that carrot.\" (the speaker is Megara), which starts The Sweetest Carrot; or ask Megara in The Drunken Huntsman, Drunken Huntsman \"I didn't say I would help.\" (the speaker is Megara), which starts The Sweetest Carrot.",
+ "routes": [
+  {
+   "route": "dialogue INFO Katana.esp:E2AA86",
+   "kind": "dialogue",
+   "speaker": "Megara",
+   "speakerNamed": "GetIsID",
+   "race": "Nord",
+   "placed": [
+    "The Drunken Huntsman, Drunken Huntsman"
+   ],
+   "prompt": "We'll make sure Cappy gets that carrot.",
+   "reply": [
+    "You're such a great friend, you know that? Cappy will be so thrilled when I give him this special treat."
+   ],
+   "conditions": "the speaker is Megara",
+   "does": "SetStage 10 on AK69CarrotQuest (The Sweetest Carrot)",
+   "source": "AK69_TIF__05E2AA86.Fragment_0 on INFO Katana.esp:E2AA86 (Katana.esp); topic AK69CarrotQuestD1",
+   "sentence": "Talk to Megara (Nord) in The Drunken Huntsman, Drunken Huntsman and choose \"We'll make sure Cappy gets that carrot.\", when the speaker is Megara: SetStage 10 on AK69CarrotQuest (The Sweetest Carrot)."
+  },
+  {
+   "route": "dialogue INFO Katana.esp:E2AA87",
+   "kind": "dialogue",
+   "speaker": "Megara",
+   "speakerNamed": "GetIsID",
+   "race": "Nord",
+   "placed": [
+    "The Drunken Huntsman, Drunken Huntsman"
+   ],
+   "prompt": "I didn't say I would help.",
+   "reply": [
+    "Don't be like that. We can find the carrot whenever you have a spare moment. Just think about it, please."
+   ],
+   "conditions": "the speaker is Megara",
+   "does": "SetStage 10 on AK69CarrotQuest (The Sweetest Carrot)",
+   "source": "AK69_TIF__05E2AA87.Fragment_0 on INFO Katana.esp:E2AA87 (Katana.esp); topic AK69CarrotQuestD2",
+   "sentence": "Talk to Megara (Nord) in The Drunken Huntsman, Drunken Huntsman and choose \"I didn't say I would help.\", when the speaker is Megara: SetStage 10 on AK69CarrotQuest (The Sweetest Carrot)."
+  }
+ ],
+ "loaders": {
+  "Wyrmstooth": {
+   "quest": "Wyrmstooth.esp:AC1487",
+   "script": "WT_MCMScript",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
+   "winnerParent": "MCM_ConfigBase",
+   "readsSettings": true
+  },
+  "TimingIsEverything": {
+   "quest": "TimingIsEverything.esp:005E3B",
+   "script": "TIE_MCMScript",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
+   "winnerParent": "SKI_ConfigBase",
+   "readsSettings": false
+  }
+ },
+ "payoff": [
+  {
+   "quest": "Dragonslayer",
+   "edid": "MQ305",
+   "completingStages": [
+    200
+   ],
+   "gives": []
+  },
+  {
+   "quest": "Paarthurnax",
+   "edid": "MQPaarthurnax",
+   "completingStages": [
+    99,
+    100
+   ],
+   "gives": []
+  }
+ ],
+ "questions": [
+  {
+   "question": "Is Skyrim.esm:0242BA MQ105, and is stage 160 the one that completes it?",
+   "edid": "MQ105",
+   "name": "The Way of the Voice",
+   "completingStages": [
+    160
+   ],
+   "answer": "Yes: Skyrim.esm:0242BA is MQ105 (The Way of the Voice), and stage 160 is its only completing stage."
+  },
+  {
+   "question": "Who starts The Horn of Jurgen Windcaller, and where?",
+   "quest": null,
+   "startedBy": [],
+   "target": null,
+   "firstObjective": null
+  },
+  {
+   "question": "Does Dragonborn's cultist node read Timing is Everything's level (25 in its settings.ini), or something else?",
+   "quest": "DLC2CultistAmbush (Dragonborn.esm:03546D)",
+   "nodes": [
+    {
+     "node": "DLC2CultistAmbushNode001",
+     "id": "Dragonborn.esm:035472",
+     "plugin": "LoreRim - Global Modifiers.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode002",
+     "id": "TimingIsEverything.esp:00E53C",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode003",
+     "id": "TimingIsEverything.esp:00E53D",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode004",
+     "id": "TimingIsEverything.esp:00E53E",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode005",
+     "id": "TimingIsEverything.esp:00E53F",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode006",
+     "id": "TimingIsEverything.esp:00E540",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode007",
+     "id": "TimingIsEverything.esp:00E541",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode008",
+     "id": "TimingIsEverything.esp:00E542",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode000",
+     "id": "TimingIsEverything.esp:00E543",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    }
+   ],
+   "tieSetting": {
+    "key": "iTIE_MinimumLevel:Dragonborn",
+    "value": "25",
+    "from": "settings.ini in Timing is Everything SE - Settings Loader"
+   }
+  }
+ ],
+ "timingIsEverything": {
+  "loaderInstalled": true,
+  "loaderFolder": "Timing is Everything SE - Settings Loader",
+  "script": {
+   "quest": "TimingIsEverything.esp:005E3B",
+   "script": "TIE_MCMScript",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
+   "winnerParent": "SKI_ConfigBase",
+   "readsSettings": false
+  },
+  "dragonbornLevel": {
+   "key": "iTIE_MinimumLevel:Dragonborn",
+   "value": "25",
+   "from": "settings.ini in Timing is Everything SE - Settings Loader",
+   "globals": [
+    {
+     "id": "TimingIsEverything.esp:00E53B",
+     "edid": "DLC2CultistAttackMinLevel_KRY",
+     "record": 25.0,
+     "recordFrom": "TimingIsEverything.esp",
+     "runtime": [],
+     "settingsNotRead": [
+      {
+       "mod": "TimingIsEverything",
+       "key": "iTIE_MinimumLevel:Dragonborn",
+       "value": "25",
+       "from": "settings.ini in Timing is Everything SE - Settings Loader",
+       "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+      }
+     ],
+     "value": 25.0,
+     "verdict": "files",
+     "global": "TimingIsEverything.esp:00E53B"
+    }
+   ]
+  }
+ },
+ "wyrmstooth": {
+  "loaderInstalled": true,
+  "loaderFolder": "Wyrmstooth - Settings Loader",
+  "global": "Wyrmstooth.esp:AC356A",
+  "fact": {
+   "id": "Wyrmstooth.esp:AC356A",
+   "edid": "WTStartLevel",
+   "record": 20.0,
+   "recordFrom": "Requiem - Wyrmstooth.esp",
+   "recordWas": {
+    "value": 10.0,
+    "from": "Wyrmstooth.esp"
+   },
+   "runtime": [
+    {
+     "by": "settings loader",
+     "mod": "Wyrmstooth",
+     "key": "iWTGeneralRequirementsMinimalLevel:Requirements",
+     "value": "10",
+     "from": "settings.ini in Wyrmstooth - Settings Loader",
+     "script": "WT_MCMScript.OnSettingChange"
+    }
+   ],
+   "verdict": "run time",
+   "value": "10"
+  },
+  "loaderQuest": {
+   "quest": "Wyrmstooth.esp:AC1487",
+   "script": "WT_MCMScript",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
+   "winnerParent": "MCM_ConfigBase",
+   "readsSettings": true
+  },
+  "newGame": {
+   "value": 10,
+   "why": [
+    "OnConfigInit runs once when the menu registers in a new game; it sets `migrated` and calls LoadSettings, which goes on only while bEnabled:Maintenance is set (it is 1) and then calls Load, which reads iWTGeneralRequirementsMinimalLevel:Requirements (10, settings.ini in Wyrmstooth - Settings Loader) and sets WTStartLevel to it",
+    "MigrateToMCMHelper, which would copy the global's record value (20.0) into that setting, runs only from OnGameReload or OnConfigOpen while `migrated` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would)",
+    "OnGameReload reloads the settings only when bLoadSettingsonReload:Maintenance is set; it is 0, so later loads keep whatever the global holds"
+   ],
+   "verdict": "run time"
+  }
+ },
+ "missingScripts": [
+  "AAS_PlayerScript",
+  "ACFH_TIF__03000B2B",
+  "ACFH_TIF__03000B6B",
+  "BGSSSE010_OnReadSetStageAlias",
+  "BaanMalurCarriageScript",
+  "HLIO_TIF__0598299C",
+  "JR0_QF_JRLucienCCSaintsAndSed_07000800",
+  "JR_TIF__05172482",
+  "JR_TIF__05172488",
+  "ParryManagerQuestScript",
+  "QF_DLCDwarvenPuzzleDungeonQu_050038D9",
+  "QF_HRI_Events_Quest_WEWerebe_0402904A",
+  "QF_SOMRRumoursQuest_0721AE15",
+  "QF_ccBGSSSE001_Crab_MQ1_050009D4",
+  "QF_ccBGSSSE001_Crab_MQ2_050009DA",
+  "QF_ccBGSSSE001_Crab_MQ3_050009D6",
+  "QF_ccBGSSSE001_Fish_MQ1_050009DE",
+  "QF_ccBGSSSE001_Fish_MQ2_050009EB",
+  "QF_ccBGSSSE001_Fish_MQ3_050009E8",
+  "QF_ccBGSSSE001_Fish_MQ4_050009DD",
+  "QF_ccBGSSSE001_Fish_MQ5_050009DC",
+  "QF_ccBGSSSE001_MiscQuests_050009E6",
+  "QF_ccBGSSSE001_Misc_Falkreat_050009EC",
+  "QF_ccBGSSSE001_Misc_Khajiit_050009E2",
+  "QF_ccBGSSSE001_Misc_Markarth_050009DF",
+  "QF_ccBGSSSE001_Misc_Morthal_050009E4",
+  "QF_ccBGSSSE001_Misc_Solitude_050009E3",
+  "QF_ccBGSSSE001_Misc_Whiterun_050009D7",
+  "QF_ccBGSSSE001_Misc_Whiterun_05000E5D",
+  "QF_ccBGSSSE001_Misc_Windhelm_050009D5",
+  "QF_ccBGSSSE001_Radiant_1_05000B98",
+  "QF_ccBGSSSE001_Radiant_2_05000C2F",
+  "QF_ccBGSSSE001_Radiant_3_05000C8C",
+  "QF_ccBGSSSE001_Start_MQ1_050009D3",
+  "QF_ccBGSSSE001_Start_MQ2_050009DB",
+  "QF_ccBGSSSE010_PetPurchaseQu_02000808",
+  "QF_ccBGSSSE025_ElytraPetAcqu_050010C3",
+  "QF_ccBGSSSE025_RareCuriosInt_050010C1",
+  "QF_ccBGSSSE035_PetAcquireQue_0400080A",
+  "SSE_TIF__020008AA",
+  "SSE_ccBGSSSE037_RareCurios_0100084D",
+  "SilgradCarriageScript",
+  "SkyInteract_PlayerLoadGameAlias",
+  "Survival_PlayerHitInfo",
+  "Survival_PlayerLocationInfo",
+  "Survival_ThirstPlayerAlias",
+  "Survival_VampirismLycanthropy",
+  "TIF__020458BA",
+  "TIF__023943AB",
+  "TIF__03000976",
+  "TIF__03000D75",
+  "TIF__04138034",
+  "TIF__08005903",
+  "TIF_ccBGSSSE025_StaadaFrag",
+  "TIF_ccBGSSSE025_StaadaFrag2",
+  "TIF_ccBGSSSE025_StaadaFrag3",
+  "TIF_ccBGSSSE025_StaadaFragA",
+  "TIF_ccBGSSSE025_StaadaFrgF",
+  "Traits_ElementalistPlayerScript",
+  "VS02_QF_ccVSVSSE002_MainQuest_050008C8",
+  "aaCi_TIF__0501F5BC",
+  "aaEl_QF_aaElisifUpdate0108_05014EF5",
+  "aaaVampireFeedingContractScriptB",
+  "aaaVampireFeedingRemoveAlias",
+  "ccASVSSE001_KillFollowerCheck",
+  "ccASVSSE001_OnHitStageSetScript",
+  "ccASVSSE001_SetStageonActivateScript",
+  "ccASVSSE001_TIF__05000DFC",
+  "ccASVSSE001_TIF__05000E04",
+  "ccASVSSE001_TIF__05000E07",
+  "ccASVSSE001_TIF__05000E09",
+  "ccASVSSE001_TIF__05000EAB",
+  "ccASVSSE001_TIF__0500114D",
+  "ccASVSSE001_TIF__0500115F",
+  "ccASVSSE001_TIF__05001160",
+  "ccASVSSE001_TIF__0500116A",
+  "ccASVSSE001_TIF__05001178",
+  "ccASVSSE001_TIF__05048064",
+  "ccASVSSE001_TIF__05048065",
+  "ccASVSSE001_TIF__0504806D",
+  "ccASVSSE001_TIF__05219F5B",
+  "ccASVSSE001_TaskChecklilst",
+  "ccBGSSSE001_AdvanceStageOnUpdate",
+  "ccBGSSSE001_CatapultMonitor",
+  "ccBGSSSE001_CrabEncMonitor",
+  "ccBGSSSE001_CrabMQ2EncAlias",
+  "ccBGSSSE001_CrabMQ3_Quest",
+  "ccBGSSSE001_CrabMQ4BodyCleanup",
+  "ccBGSSSE001_CrabMQ4Reinforcements",
+  "ccBGSSSE001_DeleteOnQuestDone",
+  "ccBGSSSE001_GuardPanicScript",
+  "ccBGSSSE001_ItemCollectObjectiveScript",
+  "ccBGSSSE001_MiscDwarPlayScript",
+  "ccBGSSSE001_MiscKhajPlayScript",
+  "ccBGSSSE001_MiscMarkarthScript",
+  "ccBGSSSE001_MiscQuestScript",
+  "ccBGSSSE001_MiscSol_DinnerGuestScript",
+  "ccBGSSSE001_MiscWhiterunCourier",
+  "ccBGSSSE001_OnDeathCallReinforce",
+  "ccBGSSSE001_OnReadSetStage",
+  "ccBGSSSE001_PlayerHitScript",
+  "ccBGSSSE001_Quest_SetStageAfterTimer",
+  "ccBGSSSE001_RadiantFishQuest",
+  "ccBGSSSE001_RadiantItemPlayerScript",
+  "ccBGSSSE001_RadiantJunkQuest",
+  "ccBGSSSE001_RadiantQuest3Listener",
+  "ccBGSSSE001_SandboxFollowerScript",
+  "ccBGSSSE001_SetStageOnActivate",
+  "ccBGSSSE001_SetStageOnPickup",
+  "ccBGSSSE001_StartMQ1PlayerScript",
+  "ccBGSSSE001_SwapOutfitOnCellAttach",
+  "ccBGSSSE001_TIF__0500099D",
+  "ccBGSSSE001_TIF__050009A7",
+  "ccBGSSSE001_TIF__050009BC",
+  "ccBGSSSE001_TIF__050009D1",
+  "ccBGSSSE001_TIF__05000A63",
+  "ccBGSSSE001_TIF__05000A68",
+  "ccBGSSSE001_TIF__05000B1E",
+  "ccBGSSSE001_TIF__05000B5C",
+  "ccBGSSSE001_TIF__05000B60",
+  "ccBGSSSE001_TIF__05000B64",
+  "ccBGSSSE001_TIF__05000B79",
+  "ccBGSSSE001_TIF__05000BAF",
+  "ccBGSSSE001_TIF__05000BB0",
+  "ccBGSSSE001_TIF__05000BB1",
+  "ccBGSSSE001_TIF__05000BB2",
+  "ccBGSSSE001_TIF__05000BB3",
+  "ccBGSSSE001_TIF__05000BB4",
+  "ccBGSSSE001_TIF__05000BB5",
+  "ccBGSSSE001_TIF__05000BB6",
+  "ccBGSSSE001_TIF__05000BDE",
+  "ccBGSSSE001_TIF__05000C28",
+  "ccBGSSSE001_TIF__05000C29",
+  "ccBGSSSE001_TIF__05000C49",
+  "ccBGSSSE001_TIF__05000C5C",
+  "ccBGSSSE001_TIF__05000C5E",
+  "ccBGSSSE001_TIF__05000C70",
+  "ccBGSSSE001_TIF__05000E5B",
+  "ccBGSSSE001_TIF__05000E5C",
+  "ccBGSSSE001_TIF__05000E5E",
+  "ccBGSSSE001_TIF__05000E7B",
+  "ccBGSSSE001_TIF__05000EA4",
+  "ccBGSSSE001_TIF__05000EA9",
+  "ccBGSSSE001_TIF__05000EAC",
+  "ccBGSSSE001_TIF__05000EAF",
+  "ccBGSSSE001_TIF__05000EB4",
+  "ccBGSSSE001_TIF__05000EC3",
+  "ccBGSSSE001_TIF__05000ECE",
+  "ccBGSSSE001_TIF__05000EE5",
+  "ccBGSSSE001_TIF__050C1D0F",
+  "ccBGSSSE001_WhiterunChestScript",
+  "ccBGSSSE002_TKArrowsQuestScript",
+  "ccBGSSSE010_ContainerSetStage",
+  "ccBGSSSE010_SetStageOnActivate",
+  "ccBGSSSE013_BattleScript",
+  "ccBGSSSE014_SetStageContainerOpen",
+  "ccBGSSSE018_QF_ShadowQuest_0100081C",
+  "ccBGSSSE018_ShadowrendPlaceScript",
+  "ccBGSSSE018_ShadowrendPlayerScript",
+  "ccBGSSSE025_ElytraCollectItemScript",
+  "ccBGSSSE025_RCIntegrationScript",
+  "ccBGSSSE034_MapContainerChangeAlias",
+  "ccBGSSSE034_TIF__02000837",
+  "ccBGSSSE034_TIF__02000838",
+  "ccBGSSSE034_TIF__02000839",
+  "ccBGSSSE034_TIF__0200083A",
+  "ccBGSSSE034_TIF__0200083C",
+  "ccBGSSSE034_TIF__0200084A",
+  "ccBGSSSE034_WildHorseRefAliasScript",
+  "ccBGSSSE034_WildHorsesQuestScript",
+  "ccBGSSSE034_tif__02000d6c",
+  "ccBGSSSE034_tif__02000d6d",
+  "ccBGSSSE035_MerchantAlias",
+  "ccBGSSSE035_OnActStageRefAlias",
+  "ccBGSSSE036_SetStageOnRead",
+  "ccBGSSSE051_TIF__05000833",
+  "ccBGSSSE051_TIF__05000838",
+  "ccBGSSSE051_TIF__05000839",
+  "ccBGSSSE051__TIF__0500083D",
+  "ccBGSSSE051__TIF__05000841",
+  "ccBGSSSE067_ContentAwareScript",
+  "ccBGSSSE067_QuestFunctionsScript",
+  "ccBGSSSE067_Quest_0506BFC1",
+  "ccBGSSSE067_SetStageOnActivateConfirm",
+  "ccBGSSSE067_SetStageOnOpenRefAlias",
+  "ccBGSSSE067_SetStageTriggerScript",
+  "ccEDHSSE003_TIF__02000860",
+  "ccEDHSSE003_TIF__02000862",
+  "ccEDHSSE003_TIF__0200086B",
+  "ccEDHSSE003_TIF__02000871",
+  "ccEDHSSE003_TIF__02000875",
+  "ccEDHSSE003_TIF__0200088B",
+  "ccEDHSSE003_TIF__020008B0",
+  "ccEEJSSE004__05000C54",
+  "ccEEJSSE004__05000C58",
+  "ccEEJSSE004__05000C72",
+  "ccEEJSSE005_DeathCount",
+  "ccEEJSSE005_Quest_050B7AED",
+  "ccEEJSSE005_SetGlobalOnPickup",
+  "ccEEJSSE005_TIF__050DB2AD",
+  "ccEEJSSE005_TIF__050DB2C5",
+  "ccFFBSSE001_SoldierDeadCountScript",
+  "ccKRTSSE001_DoorActivateScript",
+  "ccKRTSSE001_FerrySyste_05000A7B",
+  "ccKRTSSE001_GTScript",
+  "ccKRTSSE001_GameTimeScript",
+  "ccKRTSSE001_QuestFortu_05000A90",
+  "ccKRTSSE001_SetStageOnLoadScript",
+  "ccKRTSSE001_SleepSetStageScript",
+  "ccKRTSSE001_StageSetonActivate",
+  "ccKRTSSE001_TIF__05000A7E",
+  "ccQDRSSE002_FollowerIdleOnSitScript",
+  "ccRMSSSE001_AltarActivateScript",
+  "ccRMSSSE001_GhostTrapScript",
+  "ccRMSSSE001_SleepSetStageScript",
+  "ccRMSSSE001_TorchCountScript",
+  "ccRMSSSE001_TradeWithSkeletonScript",
+  "ccVSVSSE002_MainQuestScript",
+  "ccVSVSSE003_QF_MainQuest",
+  "ccVSVSSE004_AnimalAliasEggScript",
+  "ccVSVSSE004_AnimalAliasMilkScript",
+  "ccVSVSSE004_F_MainQuestManager",
+  "ccVSVSSE004_F_OverseerAliasScript",
+  "ccVSVSSE004_GuardDogAliasScript",
+  "ccVSVSSE004_HorseAliasScript",
+  "ccVSVSSE004_TIF_BuyChickens",
+  "ccVSVSSE004_TIF_BuyChickensSpouse",
+  "ccVSVSSE004_TIF_BuyCow",
+  "ccVSVSSE004_TIF_BuyCowSpouse",
+  "ccVSVSSE004_TIF_BuyGoat",
+  "ccVSVSSE004_TIF_BuyGoatSpouse",
+  "ccVSVSSE004_TIF_BuyHorse",
+  "ccVSVSSE004_TIF_BuyHorseSpouse",
+  "ccVSVSSE004_TIF_CollectProfitF",
+  "ccVSVSSE004_TIF_CollectProfitM",
+  "ccVSVSSE004_TIF_CollectProfitSpouse",
+  "ccVSVSSE004_TIF_FarmhandDismiss2",
+  "ccVSVSSE004_TIF_FarmhandHire",
+  "ccVSVSSE004_TIF_OverseerHire",
+  "ccVSVSSE004_TIF_OverseerHireSpouse",
+  "ccVSVSSE004_TIF_SpawnFarmhand1",
+  "ccVSVSSE004_TIF_SpawnFarmhand1Spouse",
+  "ccVSVSSE004_TIF_UpgradeAltKidRoom",
+  "ccVSVSSE004_TIF_UpgradeBedroom",
+  "ccVSVSSE004_TIF_UpgradeBedroomSpouse",
+  "ccVSVSSE004_TIF_UpgradeDining",
+  "ccVSVSSE004_TIF_UpgradeDiningSpouse",
+  "ccVSVSSE004_TIF_UpgradeKidRoom",
+  "ccVSVSSE004_TIF_UpgradeKidRoomAltS",
+  "ccVSVSSE004_TIF_UpgradeKidRoomRepS",
+  "ccVSVSSE004_TIF_UpgradeKidRoomReplace",
+  "ccVSVSSE004_TIF_UpgradeKidRoomSpouse",
+  "ccVSVSSE004_TIF_UpgradeKitchen",
+  "ccVSVSSE004_TIF_UpgradeKitchenSpouse",
+  "ccVSVSSE004_TIF_UpgradeLab",
+  "ccVSVSSE004_TIF_UpgradeLabSpouse",
+  "ccVSVSSE004_TIF_UpgradeLoft",
+  "ccVSVSSE004_TIF_UpgradeLoftSpouse",
+  "urshug_TIF__0200183E"
+ ]
+}

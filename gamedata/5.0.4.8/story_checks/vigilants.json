@@ -1,0 +1,6326 @@
+{
+ "line": "vigilants",
+ "name": "Vigilant",
+ "quests": [
+  {
+   "id": "Vigilant.esm:4E1318",
+   "edid": "zzzAomBountyBook",
+   "name": "Bounty: Book",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Take the erotic book from <Alias=Target> in <Alias=BookLocation>",
+    "index": 0,
+    "source": "Vigilant.esm:4E1318 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "PornBook",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Mazoga the Hardened",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "zzzAoMLvlBQRewardPornBook (levelled: gold and an item)",
+     "stage": 20,
+     "source": "QF_zzzAomBoutyBook_024E1318.fragment_4",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Put the erotic book in the Collection Chest",
+     "index": 10,
+     "source": "Vigilant.esm:4E1318 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "zzzAomBountyBook (Bounty: Book)",
+      "questId": "Vigilant.esm:4E1318",
+      "atStage": null,
+      "call": "SetStage 10",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on Vigilant.esm:4E1318 (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   },
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:4E372E",
+   "edid": "zzzAomBountyChickTrader",
+   "name": "Bounty: Chick Trader",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill the Chick Trader or buy an orphan in <Alias=TownLocation>",
+    "index": 0,
+    "source": "Vigilant.esm:4E372E QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "ChickTrader",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Chick Trader",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "zzzAoMLvlBQRewardChickTrader (levelled: gold and an item)",
+     "stage": 20,
+     "source": "QF_zzzAomBountyChickTrader_024E372E.fragment_10",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Take the orphan to the Temple of Stendarr",
+     "index": 10,
+     "source": "Vigilant.esm:4E372E QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "zzzAomBountyChickTrader (Bounty: Chick Trader)",
+      "questId": "Vigilant.esm:4E372E",
+      "atStage": null,
+      "call": "SetStage 10",
+      "source": "defaultaliasondeathscript.onDeath on Vigilant.esm:4E372E (Vigilant.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": null,
+      "speakerNamed": "alias ChickTrader of zzzAomBountyChickTrader (Bounty: Chick Trader) (created)",
+      "speakerPlaced": [],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:4E3745",
+      "prompt": "Fine. I'll buy the orphan. (500 gold)",
+      "reply": [
+       "Ah, you did a very good deed today. You saved a poor orphan, yes?",
+       "Khajiit is sure that the Eight Divines will happily welcome you to Aetherius for that alone."
+      ],
+      "conditions": "fn48 >= 500; Bounty: Chick Trader stage < 10; the speaker is the one in alias ChickTrader",
+      "source": "AomBq_TIF__024E3745.Fragment_0 on INFO Vigilant.esm:4E3745 (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   },
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:4E0116",
+   "edid": "zzzAoMBountyPiper",
+   "name": "Bounty: Piper",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Defeat the Piper in <Alias=PiperLocation>",
+    "index": 0,
+    "source": "Vigilant.esm:4E0116 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Piper",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Holy Piper",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "zzzAoMLvlBQRewardPiper (levelled: gold and an item)",
+     "stage": 10,
+     "source": "QF_zzzAoMBountyPiper_024E0116.fragment_2",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:4E011B",
+   "edid": "zzzAomBountyRelic",
+   "name": "Bounty: Daedric Relic",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Find the relic of Meridia in <Alias=RelicLocation>",
+    "index": 0,
+    "source": "Vigilant.esm:4E011B QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Relic",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Beacon: Praise Meridia",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "zzzAoMLvlBQRewardMeridia (levelled: gold and an item)",
+     "stage": 20,
+     "source": "QF_zzzAomBountyRelic_024E011B.fragment_7",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Put the Beacon in the Collection Chest",
+     "index": 10,
+     "source": "Vigilant.esm:4E011B QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "zzzAomBountyRelic (Bounty: Daedric Relic)",
+      "questId": "Vigilant.esm:4E011B",
+      "atStage": null,
+      "call": "SetStage 10",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on Vigilant.esm:4E011B (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   },
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:4E0121",
+   "edid": "zzzAoMBountyRelicHorn",
+   "name": "Bounty: Horn",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Find the lost Horn of Stendarr in <Alias=HornLocation>",
+    "index": 0,
+    "source": "Vigilant.esm:4E0121 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Horn",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Golden Horn of Stendarr",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "zzzAoMLvlBQRewardHorn (levelled: gold and an item)",
+     "stage": 20,
+     "source": "QF_zzzAoMBountyRelicHorn_024E0121.fragment_6",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Put the Horn in the Collection Chest",
+     "index": 10,
+     "source": "Vigilant.esm:4E0121 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "zzzAoMBountyRelicHorn (Bounty: Horn)",
+      "questId": "Vigilant.esm:4E0121",
+      "atStage": null,
+      "call": "SetStage 10",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on Vigilant.esm:4E0121 (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   },
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:4E0102",
+   "edid": "zzzAomBountySummoner",
+   "name": "Bounty: Summoner",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Defeath the summoner in <Alias=TargetLocation>",
+    "index": 0,
+    "source": "Vigilant.esm:4E0102 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target",
+     "fill": "from alias",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "zzzAoMLvlBQRewardSummoner (levelled: gold and an item)",
+     "stage": 10,
+     "source": "QF_zzzAomBountySummoner_024E0102.fragment_2",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:4E0108",
+   "edid": "zzzAomBountyVampire",
+   "name": "Bounty: Vampire",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Find and eliminate the vampire in <Alias=TownLocation>",
+    "index": 0,
+    "source": "Vigilant.esm:4E0108 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "CenterMarker",
+     "fill": "from alias",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "zzzAoMLvlBQRewardVampire (levelled: gold and an item)",
+     "stage": 10,
+     "source": "QF_zzzAomBountyVampire_024E0108.fragment_2",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:4E010E",
+   "edid": "zzzAomBountyWitch",
+   "name": "Bounty: Witch",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Kill the witch in <Alias=WitchLocation>",
+    "index": 0,
+    "source": "Vigilant.esm:4E010E QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Witch",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Vigilant.esm:4E0110",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "zzzAoMLvlBQRewardWitch (levelled: gold and an item)",
+     "stage": 10,
+     "source": "QF_zzzAomBountyWitch_024E010E.fragment_2",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:005CE2",
+   "edid": "zzzAoMMq00",
+   "name": "Vigilant of Stendarr",
+   "plugin": "Vigilant - Delayed Start.esp",
+   "firstObjectiveStage": 5,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Altano",
+     "speakerNamed": "alias Altano of zzzAoMMq00 (Vigilant of Stendarr) (unique)",
+     "speakerPlaced": [
+      "Temple of Stendarr"
+     ],
+     "call": "SetStage 5",
+     "info": "Vigilant.esm:005CEB",
+     "prompt": "No, thanks. I'm not interested.",
+     "reply": [
+      "I see... Well, I'll be here if you change your mind."
+     ],
+     "conditions": "the speaker is the one in alias Altano",
+     "source": "AoM00_TIF__01005CEB.Fragment_0 on INFO Vigilant.esm:005CEB (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "change location",
+     "node": "VigilantDelayedStart",
+     "parents": [
+      "Skyrim.esm:01320E",
+      "Root"
+     ],
+     "source": "VigilantDelayedStart Vigilant - Delayed Start.esp:000801 (Vigilant - Delayed Start.esp)",
+     "verdict": "files",
+     "conditions": "level >= zzzVigilantMinLevel (now 25); The House of Horrors completed; Kindred Judgment completed"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Join the Vigilants of Stendarr",
+    "index": 5,
+    "source": "Vigilant.esm:005CE2 QOBJ 5",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Altano",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Altano",
+       "kind": "unique actor",
+       "where": [
+        "Temple of Stendarr"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:025091"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Temple of Stendarr",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [
+    {
+     "id": "Vigilant - Delayed Start.esp:000800",
+     "edid": "zzzVigilantMinLevel",
+     "record": 25.0,
+     "recordFrom": "Vigilant - Delayed Start.esp",
+     "runtime": [],
+     "verdict": "files",
+     "value": 25.0
+    }
+   ],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Follow Altano or meet him in the Temple of Stendarr",
+     "index": 10,
+     "source": "Vigilant.esm:005CE2 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Altano",
+      "speakerNamed": "alias Altano of zzzAoMMq00 (Vigilant of Stendarr) (unique)",
+      "speakerPlaced": [
+       "Temple of Stendarr"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:005CE9",
+      "prompt": "Yes, I'll join you.",
+      "reply": [
+       "I'm glad to hear this. I look forward to working with you from now on. Stendarr's blessing be with you.",
+       "Follow me. I will guide you to the Temple of Stendarr."
+      ],
+      "conditions": "the speaker is the one in alias Altano",
+      "source": "AoM00_TIF__01005CE9.Fragment_0 on INFO Vigilant.esm:005CE9 (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:005CE3",
+   "edid": "zzzAoMMq01",
+   "name": "Bloodsucker",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq00 (Vigilant of Stendarr)",
+     "questId": "Vigilant.esm:005CE2",
+     "atStage": 40,
+     "call": "Start",
+     "source": "QF_zzAoMMq00_01005CE2.fragment_15 on Vigilant.esm:005CE2 (Vigilant - Delayed Start.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq00 (Vigilant of Stendarr)",
+     "questId": "Vigilant.esm:005CE2",
+     "atStage": 40,
+     "call": "SetStage 0",
+     "source": "QF_zzAoMMq00_01005CE2.fragment_15 on Vigilant.esm:005CE2 (Vigilant - Delayed Start.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Talk to Altano",
+    "index": 0,
+    "source": "Vigilant.esm:005CE3 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Altano",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Altano",
+       "kind": "unique actor",
+       "where": [
+        "Temple of Stendarr"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:025091"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Temple of Stendarr",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Follow Altano or meet him in Whiterun's Hall of the Dead",
+     "index": 10,
+     "source": "Vigilant.esm:005CE3 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Altano",
+      "speakerNamed": "alias Altano of zzzAoMMq01 (Bloodsucker) (unique)",
+      "speakerPlaced": [
+       "Temple of Stendarr"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:006259",
+      "prompt": "Is there any work I can help with?",
+      "reply": [
+       "A priest of Arkay in Whiterun has requested our assistance. It seems they have some problems with a vampire.",
+       "I want you to accompany me. Hurry up and prepare for the journey, that vampire won't wait for us."
+      ],
+      "conditions": "Bloodsucker stage < 10; the speaker is the one in alias Altano",
+      "source": "AoM01_TIF__01006259.Fragment_0 on INFO Vigilant.esm:006259 (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:006271",
+   "edid": "zzzAoMMq02",
+   "name": "He Who Cannot Be Touched",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq01 (Bloodsucker)",
+     "questId": "Vigilant.esm:005CE3",
+     "atStage": 50,
+     "call": "Start",
+     "source": "QF_zzAoMMq01_01005CE3.fragment_8 on Vigilant.esm:005CE3 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq01 (Bloodsucker)",
+     "questId": "Vigilant.esm:005CE3",
+     "atStage": 50,
+     "call": "SetStage 0",
+     "source": "QF_zzAoMMq01_01005CE3.fragment_8 on Vigilant.esm:005CE3 (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Talk to Altano in the Bannered Mare",
+    "index": 0,
+    "source": "Vigilant.esm:006271 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Altano",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Altano",
+       "kind": "unique actor",
+       "where": [
+        "Temple of Stendarr"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:025091"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Temple of Stendarr",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Defeat the Daedra",
+     "index": 10,
+     "source": "Vigilant.esm:006271 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Altano",
+      "speakerNamed": "alias Altano of zzzAoMMq02 (He Who Cannot Be Touched) (unique)",
+      "speakerPlaced": [
+       "Temple of Stendarr"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:006275",
+      "prompt": "Did you notice anything unusual happening?",
+      "reply": [
+       "A Daedra destroyed a house outside the city walls a few hours ago. People heard it laughing and apparently it's still in the house.",
+       "They also saw a woman who could be its summoner. Our mission now is to banish that Daedra and seize its summoner. Let's go."
+      ],
+      "conditions": "fn67 == 1; He Who Cannot Be Touched stage < 10; the speaker is the one in alias Altano",
+      "source": "AoM02_TIF__01006275.Fragment_0 on INFO Vigilant.esm:006275 (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:00627F",
+   "edid": "zzzAoMMq03",
+   "name": "Lazy Afternoon",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq02 (He Who Cannot Be Touched)",
+     "questId": "Vigilant.esm:006271",
+     "atStage": 30,
+     "call": "Start",
+     "source": "QF_zzAoMMq02_01006271.fragment_0 on Vigilant.esm:006271 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq02 (He Who Cannot Be Touched)",
+     "questId": "Vigilant.esm:006271",
+     "atStage": 30,
+     "call": "SetStage 0",
+     "source": "QF_zzAoMMq02_01006271.fragment_0 on Vigilant.esm:006271 (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Talk to Altano in the Bannered Mare",
+    "index": 0,
+    "source": "Vigilant.esm:00627F QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Altano",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Altano",
+       "kind": "unique actor",
+       "where": [
+        "Temple of Stendarr"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:025091"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Temple of Stendarr",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Follow Altano or meet him in Candlehearth Hall",
+     "index": 10,
+     "source": "Vigilant.esm:00627F QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Altano",
+      "speakerNamed": "alias Altano of zzzAoMMq03 (Lazy Afternoon) (unique)",
+      "speakerPlaced": [
+       "Temple of Stendarr"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:008850",
+      "prompt": "Have you found out where the summoner is now?",
+      "reply": [
+       "I heard they're having trouble with a Daedra in one of the WIndhelm's inns. This might be related... Let's go check it out."
+      ],
+      "conditions": "fn67 == 1; Lazy Afternoon stage < 10; the speaker is the one in alias Altano",
+      "source": "AoM03_TIF__01008850.Fragment_0 on INFO Vigilant.esm:008850 (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:0082EA",
+   "edid": "zzzAoMMq04",
+   "name": "The Eye of Madness",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq03 (Lazy Afternoon)",
+     "questId": "Vigilant.esm:00627F",
+     "atStage": 40,
+     "call": "Start",
+     "source": "QF_zzAoMMq03_0100627F.fragment_9 on Vigilant.esm:00627F (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq03 (Lazy Afternoon)",
+     "questId": "Vigilant.esm:00627F",
+     "atStage": 40,
+     "call": "SetStage 0",
+     "source": "QF_zzAoMMq03_0100627F.fragment_9 on Vigilant.esm:00627F (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 7,
+   "firstObjective": {
+    "text": "Talk to Altano in Candlehearth Hall",
+    "index": 0,
+    "source": "Vigilant.esm:0082EA QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Altano",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Altano",
+       "kind": "unique actor",
+       "where": [
+        "Temple of Stendarr"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:025091"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Temple of Stendarr",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "Nord Mead",
+     "stage": 50,
+     "source": "QF_zzAoMMq04_010082EA.fragment_10",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Investigate the rumors about the Eye of Madness",
+     "index": 10,
+     "source": "Vigilant.esm:0082EA QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Altano",
+      "speakerNamed": "alias Altano of zzzAoMMq04 (The Eye of Madness) (unique)",
+      "speakerPlaced": [
+       "Temple of Stendarr"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:00934C",
+      "prompt": "You look troubled. What's wrong?",
+      "reply": [
+       "I overheard a strange rumor from the guards. Apparently, there's a sinister man in Kynesgrove... They say that anyone who makes eye contact with him goes insane.",
+       "As Vigilants of Stendarr, we can't overlook something like that. Go to Kynesgrove and check out this rumor."
+      ],
+      "conditions": "fn67 == 1; The Eye of Madness stage < 10; the speaker is the one in alias Altano",
+      "source": "AoM04_TIF__0100934C.Fragment_0 on INFO Vigilant.esm:00934C (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:0098C9",
+   "edid": "zzzAoMMq05",
+   "name": "Dine and Dash",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq04 (The Eye of Madness)",
+     "questId": "Vigilant.esm:0082EA",
+     "atStage": 50,
+     "call": "Start",
+     "source": "QF_zzAoMMq04_010082EA.fragment_10 on Vigilant.esm:0082EA (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq04 (The Eye of Madness)",
+     "questId": "Vigilant.esm:0082EA",
+     "atStage": 50,
+     "call": "SetStage 0",
+     "source": "QF_zzAoMMq04_010082EA.fragment_10 on Vigilant.esm:0082EA (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 5,
+   "firstObjective": {
+    "text": "Talk to Altano in Candlehearth Hall",
+    "index": 0,
+    "source": "Vigilant.esm:0098C9 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Altano",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Altano",
+       "kind": "unique actor",
+       "where": [
+        "Temple of Stendarr"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:025091"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Temple of Stendarr",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Follow Altano or meet him at Stendarr's Beacon",
+     "index": 10,
+     "source": "Vigilant.esm:0098C9 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Altano",
+      "speakerNamed": "alias Altano of zzzAoMMq05 (Dine and Dash) (unique)",
+      "speakerPlaced": [
+       "Temple of Stendarr"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:009E31",
+      "prompt": "Any clues on the summoner yet?",
+      "reply": [
+       "Apparently, she's been seen in Riften. My old mentor summoned us to Stendarr's Beacon, so let's go talk to him."
+      ],
+      "conditions": "fn67 == 1; Dine and Dash stage < 10; the speaker is the one in alias Altano",
+      "source": "AoM05_TIF__01009E31.Fragment_0 on INFO Vigilant.esm:009E31 (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:009E68",
+   "edid": "zzzAoMMq06",
+   "name": "Thus Spoke Khajiit",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq05 (Dine and Dash)",
+     "questId": "Vigilant.esm:0098C9",
+     "atStage": 60,
+     "call": "Start",
+     "source": "QF_zzAoMMq05_010098C9.fragment_12 on Vigilant.esm:0098C9 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq05 (Dine and Dash)",
+     "questId": "Vigilant.esm:0098C9",
+     "atStage": 60,
+     "call": "SetStage 0",
+     "source": "QF_zzAoMMq05_010098C9.fragment_12 on Vigilant.esm:0098C9 (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 9,
+   "firstObjective": {
+    "text": "Talk to Altano",
+    "index": 0,
+    "source": "Vigilant.esm:009E68 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Altano",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Altano",
+       "kind": "unique actor",
+       "where": [
+        "Temple of Stendarr"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:025091"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Temple of Stendarr",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Meet Altano in the Ragged Flagon",
+     "index": 10,
+     "source": "Vigilant.esm:009E68 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Altano",
+      "speakerNamed": "alias Altano of zzzAoMMq06 (Thus Spoke Khajiit) (unique)",
+      "speakerPlaced": [
+       "Temple of Stendarr"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:00A3D7",
+      "prompt": "Jacob says someone summoned a Daedra in the Ratway.",
+      "reply": [
+       "In the Ratway? Hm, I have friends in the Ragged Flagon. I'll try to get some information from them.",
+       "I'll go on ahead. Meet me there as soon as you're ready."
+      ],
+      "conditions": "Thus Spoke Khajiit stage < 10; the speaker is the one in alias Altano",
+      "source": "AoM06_TIF__0100A3D7.Fragment_0 on INFO Vigilant.esm:00A3D7 (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:00A3FE",
+   "edid": "zzzAoMMq07",
+   "name": "Old Regrets",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq06 (Thus Spoke Khajiit)",
+     "questId": "Vigilant.esm:009E68",
+     "atStage": 90,
+     "call": "Start",
+     "source": "QF_zzAoMMq06_01009E68.fragment_18 on Vigilant.esm:009E68 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq06 (Thus Spoke Khajiit)",
+     "questId": "Vigilant.esm:009E68",
+     "atStage": 90,
+     "call": "SetStage 0",
+     "source": "QF_zzAoMMq06_01009E68.fragment_18 on Vigilant.esm:009E68 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq06 (Thus Spoke Khajiit)",
+     "questId": "Vigilant.esm:009E68",
+     "atStage": 90,
+     "call": "Start",
+     "source": "QF_zzAoMMq06_01009E68.fragment_41 on Vigilant.esm:009E68 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq06 (Thus Spoke Khajiit)",
+     "questId": "Vigilant.esm:009E68",
+     "atStage": 90,
+     "call": "SetStage 0",
+     "source": "QF_zzAoMMq06_01009E68.fragment_41 on Vigilant.esm:009E68 (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 7,
+   "firstObjective": {
+    "text": "Talk to Jacob",
+    "index": 0,
+    "source": "Vigilant.esm:00A3FE QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Jacob",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Jacob",
+       "kind": "unique actor",
+       "where": [
+        "Actor Room"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:001845"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Actor Room",
+      "ways": 0,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "Stendarr's Beacon Underground Key",
+     "stage": 9999,
+     "source": "QF_zzAoMMq07_0100A3FE.fragment_28",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Defeat Summoner's Mercenary",
+     "index": 10,
+     "source": "Vigilant.esm:00A3FE QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Taranis",
+      "speakerNamed": "alias Umbra of zzzAoMMq07 (Old Regrets) (unique)",
+      "speakerPlaced": [
+       "Pond House"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:00EA72",
+      "prompt": null,
+      "reply": [
+       "Stop. Not a step further."
+      ],
+      "conditions": "Old Regrets stage < 10; the speaker is the one in alias Umbra",
+      "source": "AoM07_TIF__0100EA72.Fragment_0 on INFO Vigilant.esm:00EA72 (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:00EA8A",
+   "edid": "zzzAoMMq08",
+   "name": "No Mercy",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq07 (Old Regrets)",
+     "questId": "Vigilant.esm:00A3FE",
+     "atStage": 80,
+     "call": "Start",
+     "source": "QF_zzAoMMq07_0100A3FE.fragment_10 on Vigilant.esm:00A3FE (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq07 (Old Regrets)",
+     "questId": "Vigilant.esm:00A3FE",
+     "atStage": 80,
+     "call": "SetStage 0",
+     "source": "QF_zzAoMMq07_0100A3FE.fragment_10 on Vigilant.esm:00A3FE (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Hunt down the witches",
+    "index": 0,
+    "source": "Vigilant.esm:00EA8A QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Mom",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Carene",
+       "kind": "unique actor",
+       "where": [
+        "Pond House"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:16E303"
+     ]
+    },
+    {
+     "alias": "Daughter",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Lilian",
+       "kind": "unique actor",
+       "where": [
+        "Pond House"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:16E303"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Pond House",
+      "ways": 1,
+      "locked": 0
+     },
+     {
+      "cell": "Pond House",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "(Optional) Negotiate with Altano",
+     "index": 200,
+     "source": "Vigilant.esm:00EA8A QOBJ 200",
+     "verdict": "files"
+    },
+    "stage": 200,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "zzzAoMMq08 (No Mercy)",
+      "questId": "Vigilant.esm:00EA8A",
+      "atStage": null,
+      "call": "SetStage 15",
+      "source": "defaultaliasondeathscript.onDeath on Vigilant.esm:00EA8A (Vigilant.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "zzzAoMMq08 (No Mercy)",
+      "questId": "Vigilant.esm:00EA8A",
+      "atStage": null,
+      "call": "SetStage 18",
+      "source": "defaultaliasondeathscript.onDeath on Vigilant.esm:00EA8A (Vigilant.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Carene",
+      "speakerNamed": "alias Mom of zzzAoMMq08 (No Mercy) (unique)",
+      "speakerPlaced": [
+       "Pond House"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:00EFF5",
+      "prompt": "I am a Vigilant of Stendarr. I'm looking for the witch living here.",
+      "reply": [
+       "...Lillian, run! We have to run!"
+      ],
+      "conditions": "No Mercy stage < 200; the speaker is the one in alias Mom",
+      "source": "AoM08_TIF__0100EFF5.Fragment_2 on INFO Vigilant.esm:00EFF5 (Vigilant.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Carene",
+      "speakerNamed": "alias Mom of zzzAoMMq08 (No Mercy) (unique)",
+      "speakerPlaced": [
+       "Pond House"
+      ],
+      "call": "SetStage 200",
+      "info": "Vigilant.esm:0423C2",
+      "prompt": "All right, I don't see a problem here, then. But this place isn't safe. You should leave, quickly.",
+      "reply": [
+       "But if you're here, then that means... yes. Yes, I understand.",
+       "My daughter and I will leave as soon as we can. Stendarr bless you."
+      ],
+      "conditions": "the speaker is the one in alias Mom",
+      "source": "AoM08_TIF__010423C2.Fragment_0 on INFO Vigilant.esm:0423C2 (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:00EFF7",
+   "edid": "zzzAoMMq09",
+   "name": "The Endless Fall",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq08 (No Mercy)",
+     "questId": "Vigilant.esm:00EA8A",
+     "atStage": 30,
+     "call": "Start",
+     "source": "QF_zzAoMMq08_0100EA8A.fragment_9 on Vigilant.esm:00EA8A (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq08 (No Mercy)",
+     "questId": "Vigilant.esm:00EA8A",
+     "atStage": 30,
+     "call": "SetStage 0",
+     "source": "QF_zzAoMMq08_0100EA8A.fragment_9 on Vigilant.esm:00EA8A (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq08 (No Mercy)",
+     "questId": "Vigilant.esm:00EA8A",
+     "atStage": 230,
+     "call": "Start",
+     "source": "QF_zzAoMMq08_0100EA8A.fragment_24 on Vigilant.esm:00EA8A (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq08 (No Mercy)",
+     "questId": "Vigilant.esm:00EA8A",
+     "atStage": 230,
+     "call": "SetStage 0",
+     "source": "QF_zzAoMMq08_0100EA8A.fragment_24 on Vigilant.esm:00EA8A (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 12,
+   "firstObjective": {
+    "text": "Talk to Altano",
+    "index": 0,
+    "source": "Vigilant.esm:00EFF7 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Altano",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Altano",
+       "kind": "unique actor",
+       "where": [
+        "Temple of Stendarr"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:025091"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Temple of Stendarr",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "Spell Tome (Master): Conjure Molag Bal",
+     "stage": 50,
+     "source": "QF_zzAoMMq09_0100EFF7.fragment_8",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Defeat the Daedra",
+     "index": 10,
+     "source": "Vigilant.esm:00EFF7 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "zzzAoMMq09 (The Endless Fall)",
+      "questId": "Vigilant.esm:00EFF7",
+      "atStage": null,
+      "call": "SetStage 10",
+      "source": "defaultsetStageOnHitAliasScript.testForTrigger on Vigilant.esm:00EFF7 (Vigilant.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Altano",
+      "speakerNamed": "alias Altano of zzzAoMMq09 (The Endless Fall) (unique)",
+      "speakerPlaced": [
+       "Temple of Stendarr"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:011B3E",
+      "prompt": "Why in Oblivion are you doing this, Altano?",
+      "reply": [
+       "I have nothing more to say to the dying.",
+       "Genghis, send this soul to Molag Bal. I must return to the altar and continue with the ritual."
+      ],
+      "conditions": "the speaker is the one in alias Altano",
+      "source": "AoM09_TIF__01011B3E.Fragment_0 on INFO Vigilant.esm:011B3E (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:011B75",
+   "edid": "zzzAoMMq10",
+   "name": "The Landing",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq09 (The Endless Fall)",
+     "questId": "Vigilant.esm:00EFF7",
+     "atStage": 50,
+     "call": "Start",
+     "source": "QF_zzAoMMq09_0100EFF7.fragment_8 on Vigilant.esm:00EFF7 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq09 (The Endless Fall)",
+     "questId": "Vigilant.esm:00EFF7",
+     "atStage": 50,
+     "call": "SetStage 0",
+     "source": "QF_zzAoMMq09_0100EFF7.fragment_8 on Vigilant.esm:00EFF7 (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 5,
+   "firstObjective": {
+    "text": "Talk to Altano",
+    "index": 0,
+    "source": "Vigilant.esm:011B75 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Altano",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Altano",
+       "kind": "unique actor",
+       "where": [
+        "Temple of Stendarr"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:025091"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Temple of Stendarr",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "[*] Horn of Stendarr",
+     "stage": 9999,
+     "source": "QF_zzAoMMq10_01011B75.fragment_18",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Destroy the Mace of Molag Bal",
+     "index": 10,
+     "source": "Vigilant.esm:011B75 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "zzzAoMMq10 (The Landing)",
+      "questId": "Vigilant.esm:011B75",
+      "atStage": null,
+      "call": "SetStage 10",
+      "source": "defaultaliasondeathscript.onDeath on Vigilant.esm:011B75 (Vigilant.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Altano",
+      "speakerNamed": "alias Altano of zzzAoMMq10 (The Landing) (unique)",
+      "speakerPlaced": [
+       "Temple of Stendarr"
+      ],
+      "call": "SetStage 5",
+      "info": "Vigilant.esm:01367B",
+      "prompt": "Rest in peace, Altano... Stendarr be with you.",
+      "reply": [
+       "I'm so sorry... I..."
+      ],
+      "conditions": "the speaker is the one in alias Altano",
+      "source": "AoM10_TIF__0101367B.Fragment_0 on INFO Vigilant.esm:01367B (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:4D0376",
+   "edid": "zzzAoMMqGoodEnd",
+   "name": "Art of Mercy",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq08 (No Mercy)",
+     "questId": "Vigilant.esm:00EA8A",
+     "atStage": 310,
+     "call": "Start",
+     "source": "QF_zzAoMMq08_0100EA8A.fragment_34 on Vigilant.esm:00EA8A (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq08 (No Mercy)",
+     "questId": "Vigilant.esm:00EA8A",
+     "atStage": 310,
+     "call": "SetStage 0",
+     "source": "QF_zzAoMMq08_0100EA8A.fragment_34 on Vigilant.esm:00EA8A (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 9,
+   "firstObjective": {
+    "text": "Talk to Carene",
+    "index": 0,
+    "source": "Vigilant.esm:4D0376 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Mother",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Carene",
+       "kind": "unique actor",
+       "where": [
+        "Pond House"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:16E303"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Pond House",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "[*] Horn of Stendarr",
+     "stage": 120,
+     "source": "QF_zzzAoMMqGoodEnd_024D0376.fragment_25",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Stop Carene",
+     "index": 10,
+     "source": "Vigilant.esm:4D0376 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Carene",
+      "speakerNamed": "alias Mother of zzzAoMMqGoodEnd (Art of Mercy) (unique)",
+      "speakerPlaced": [
+       "Pond House"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:4D0386",
+      "prompt": "I killed him in self-defense. Neither of us could give up, and we couldn't come to an agreement.",
+      "reply": [
+       "Oh, I'm sure that's true. Perhaps you really had a reason. But I still can't forgive you.",
+       "Draw your weapon. I will avenge my husband's death here and now."
+      ],
+      "conditions": "Art of Mercy stage < 10; the speaker is the one in alias Mother",
+      "source": "AoMqGE_TIF__024D0386.Fragment_0 on INFO Vigilant.esm:4D0386 (Vigilant.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Carene",
+      "speakerNamed": "alias Mother of zzzAoMMqGoodEnd (Art of Mercy) (unique)",
+      "speakerPlaced": [
+       "Pond House"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:4D0388",
+      "prompt": "Don't even think about revenge. You'll just make your daughter an orphan.",
+      "reply": [
+       "Are you trying to scare me? Do you really think you won't be the one to die here? How dare a rogue like you call yourself a Vigilant!",
+       "I'm... I'm going to kill you, right here. I won't spend the rest of my days mourning over my husband's murder!"
+      ],
+      "conditions": "Art of Mercy stage < 10; the speaker is the one in alias Mother",
+      "source": "AoMqGE_TIF__024D0388.Fragment_0 on INFO Vigilant.esm:4D0388 (Vigilant.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Carene",
+      "speakerNamed": "alias Mother of zzzAoMMqGoodEnd (Art of Mercy) (unique)",
+      "speakerPlaced": [
+       "Pond House"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:4D038A",
+      "prompt": "No. I don't want to see any more blood today.",
+      "reply": [
+       "Oh, I'm sure you don't. You've killed so many and spilled so much blood already, you're tired of looking at it!",
+       "But I'll show you the color of your own blood for a change. Let that be your atonement!"
+      ],
+      "conditions": "Art of Mercy stage < 10; the speaker is the one in alias Mother",
+      "source": "AoMqGE_TIF__024D038A.Fragment_0 on INFO Vigilant.esm:4D038A (Vigilant.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Carene",
+      "speakerNamed": "alias Mother of zzzAoMMqGoodEnd (Art of Mercy) (unique)",
+      "speakerPlaced": [
+       "Pond House"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:4D038C",
+      "prompt": "Everything the Vigil does is just. Taranis' death was therefore justified as well.",
+      "reply": [
+       "You crazy bastard! I'll kill you!"
+      ],
+      "conditions": "Art of Mercy stage < 10; the speaker is the one in alias Mother",
+      "source": "AoMqGE_TIF__024D038C.Fragment_0 on INFO Vigilant.esm:4D038C (Vigilant.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Carene",
+      "speakerNamed": "alias Mother of zzzAoMMqGoodEnd (Art of Mercy) (unique)",
+      "speakerPlaced": [
+       "Pond House"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:4D038E",
+      "prompt": "Vengeance... Fine, have it your way. Come on, then.",
+      "reply": [
+       "You don't have to tell me what to do! Now, prepare yourself!"
+      ],
+      "conditions": "Art of Mercy stage < 10; the speaker is the one in alias Mother",
+      "source": "AoMqGE_TIF__024D038E.Fragment_0 on INFO Vigilant.esm:4D038E (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:4EA3A8",
+   "edid": "zzzAoMRadDead",
+   "name": "Radiance in the Dead",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Slay the <Alias=Boss> in <Alias=TargetLocation>",
+    "index": 0,
+    "source": "Vigilant.esm:4EA3A8 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Boss",
+     "fill": "from alias",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "zzzAoMLvlRQRewardUndead (levelled: gold and an item)",
+     "stage": 10,
+     "source": "QF_zzzAoMRadDead_024EA3A8.fragment_2",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:4EA3D1",
+   "edid": "zzzAoMRadDoppler",
+   "name": "Radiance in the Duplicate",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Slay <Alias=Target> in <Alias=TargetLocation>",
+    "index": 0,
+    "source": "Vigilant.esm:4EA3D1 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Duplicate",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    },
+    {
+     "alias": "Target2",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Duplicate",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "zzzAoMLvlRQRewardDoppler (levelled: gold and an item)",
+     "stage": 10,
+     "source": "QF_zzzAoMRadDoppler_024EA3D1.fragment_2",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:4EA3AC",
+   "edid": "zzzAoMRadMolag",
+   "name": "Radiance in the Spawn",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Slay <Alias=Target> in <Alias=TargetLocation>",
+    "index": 0,
+    "source": "Vigilant.esm:4EA3AC QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Spawn of Molag Bal",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "zzzAoMLvlRQRewardMolag (levelled: an item)",
+     "stage": 10,
+     "source": "QF_zzzAoMRadMolag_024EA3AC.fragment_2",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:4E91B0",
+   "edid": "zzzAoMRadVampire",
+   "name": "Radiance in the Vampire",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Slay the <Alias=Boss> in <Alias=TargetLocation>",
+    "index": 0,
+    "source": "Vigilant.esm:4E91B0 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Boss",
+     "fill": "from alias",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "zzzAoMLvlRQRewardVamp (levelled: gold and an item)",
+     "stage": 10,
+     "source": "QF_zzzAoMRadVampire_024E91B0.fragment_2",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:4EA3C8",
+   "edid": "zzzAoMRadWitchHunter",
+   "name": "Radiance in the Witch Hunter",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Slay the witch hunter in <Alias=TargetLocation>",
+    "index": 0,
+    "source": "Vigilant.esm:4EA3C8 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Witch Hunter",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "zzzAoMLvlRQRewardHunter (levelled: gold and an item)",
+     "stage": 10,
+     "source": "QF_zzzAoMRadWitchHunter_024EA3C8.fragment_1",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:4D4C3D",
+   "edid": "zzzAoMSubQ02",
+   "name": "Sacred Anatomancer",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Gwyneth",
+     "speakerNamed": "alias Libra of zzzAoMRumor (Rumor) (unique)",
+     "speakerPlaced": [
+      "Temple of Stendarr"
+     ],
+     "call": "Start",
+     "info": "Vigilant.esm:4D952F",
+     "prompt": "Any interesting rumors to share?",
+     "reply": [
+      "There's a rumor that a strange fortune teller named \"Pale Feet\" showed up in Riften.",
+      "I also heard that more and more children are going missing there... And bloody roots seem to be growing in the canals...",
+      "This is all very similar to a series of murders that once happened in Bravil. Could you look into this when you have a moment?"
+     ],
+     "conditions": "Aetherius stage 255 done; GetQuestRunning Sacred Anatomancer == 0; Sacred Anatomancer not completed; the speaker is the one in alias Libra",
+     "source": "AoMRumor_TIF__024D952F.Fragment_1 on INFO Vigilant.esm:4D952F (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Gwyneth",
+     "speakerNamed": "alias Libra of zzzAoMRumor (Rumor) (unique)",
+     "speakerPlaced": [
+      "Temple of Stendarr"
+     ],
+     "call": "SetStage 0",
+     "info": "Vigilant.esm:4D952F",
+     "prompt": "Any interesting rumors to share?",
+     "reply": [
+      "There's a rumor that a strange fortune teller named \"Pale Feet\" showed up in Riften.",
+      "I also heard that more and more children are going missing there... And bloody roots seem to be growing in the canals...",
+      "This is all very similar to a series of murders that once happened in Bravil. Could you look into this when you have a moment?"
+     ],
+     "conditions": "Aetherius stage 255 done; GetQuestRunning Sacred Anatomancer == 0; Sacred Anatomancer not completed; the speaker is the one in alias Libra",
+     "source": "AoMRumor_TIF__024D952F.Fragment_1 on INFO Vigilant.esm:4D952F (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 8,
+   "firstObjective": {
+    "text": "Find the Anatomancer",
+    "index": 0,
+    "source": "Vigilant.esm:4D4C3D QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "TA01",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Anatomancer",
+       "kind": "forced reference",
+       "where": [
+        "Anatomancer's Room"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:4D3987"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Anatomancer's Room",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Prove yourself to the Anatomancer",
+     "index": 1,
+     "source": "Vigilant.esm:4D4C3D QOBJ 1",
+     "verdict": "files"
+    },
+    "stage": 1,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 1 or one before it"
+   }
+  },
+  {
+   "id": "Vigilant.esm:51EAC1",
+   "edid": "zzzAoMSubQ03",
+   "name": "Legacy of Belharza",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 1,
+   "startedBy": [],
+   "caughtUpBy": [
+    {
+     "by": "zzzCHSubQuest13 (Broken Horns)",
+     "atStage": 60,
+     "call": "Start",
+     "source": "QF_zzzCHSubQuest13_0251ADBF.fragment_25 (Vigilant.esm)"
+    },
+    {
+     "by": "zzzCHSubQuest13 (Broken Horns)",
+     "atStage": 60,
+     "call": "SetStage 0",
+     "source": "QF_zzzCHSubQuest13_0251ADBF.fragment_25 (Vigilant.esm)"
+    }
+   ],
+   "advancedBy": 6,
+   "firstObjective": {
+    "text": "Talk to <Alias=Mntr>",
+    "index": 1,
+    "source": "Vigilant.esm:51EAC1 QOBJ 1",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Mntr",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Mordog the Man-Bull",
+       "kind": "unique actor",
+       "where": [
+        "Hidden Minotaur Village"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:51D6B2"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Hidden Minotaur Village",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Meet the Chief of Minotaurs",
+     "index": 10,
+     "source": "Vigilant.esm:51EAC1 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Mordog the Man-Bull",
+      "speakerNamed": "alias Mntr of zzzAoMSubQ03 (Legacy of Belharza) (unique)",
+      "speakerPlaced": [
+       "Hidden Minotaur Village"
+      ],
+      "call": "SetStage 5",
+      "info": "Vigilant.esm:51EAD0",
+      "prompt": "What do you need of me?",
+      "reply": [
+       "Per Emperor Belharza's will, there is something we want to show you. Will you come with me to our village?"
+      ],
+      "conditions": "Legacy of Belharza stage < 5; the speaker is the one in alias Mntr",
+      "source": "AomSq03_TIF__0251EAD0.Fragment_1 on INFO Vigilant.esm:51EAD0 (Vigilant.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Mordog the Man-Bull",
+      "speakerNamed": "alias Mntr of zzzAoMSubQ03 (Legacy of Belharza) (unique)",
+      "speakerPlaced": [
+       "Hidden Minotaur Village"
+      ],
+      "call": "SetStage 5",
+      "info": "Vigilant.esm:51EAD0",
+      "prompt": "What do you need of me?",
+      "reply": [
+       "Per Emperor Belharza's will, there is something we want to show you. Will you come with me to our village?"
+      ],
+      "conditions": "Legacy of Belharza stage < 5; the speaker is the one in alias Mntr",
+      "source": "AomSq03_TIF__0251EAD0.Fragment_0 on INFO Vigilant.esm:51EAD0 (Vigilant.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Mordog the Man-Bull",
+      "speakerNamed": "alias Mntr of zzzAoMSubQ03 (Legacy of Belharza) (unique)",
+      "speakerPlaced": [
+       "Hidden Minotaur Village"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:51EAD3",
+      "prompt": "All right, let's go.",
+      "reply": [
+       "The Minotaur Village is a hidden place. Close your eyes for a moment, please."
+      ],
+      "conditions": "Legacy of Belharza stage == 5; the speaker is the one in alias Mntr",
+      "source": "AomSq03_TIF__0251EAD3.Fragment_0 on INFO Vigilant.esm:51EAD3 (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   },
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:43B81F",
+   "edid": "zzzBMGuide",
+   "name": "Stendarr Guide",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [
+    {
+     "by": "zzzBMMq03 (The Blood Matron)",
+     "atStage": 20,
+     "call": "SetStage 20",
+     "source": "QF_zzzBMMq03_01038526.fragment_2 (Vigilant.esm)"
+    },
+    {
+     "by": "zzzBMMq02 (Remnants)",
+     "atStage": 80,
+     "call": "SetStage 10",
+     "source": "QF_zzzBMMq02_01038525.fragment_16 (Vigilant.esm)"
+    }
+   ],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Trace the blood",
+    "index": 0,
+    "source": "Vigilant.esm:43B81F QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "GuideThingol",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Asylum"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:03289E"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Asylum",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Trace the elder blood",
+     "index": 10,
+     "source": "Vigilant.esm:43B81F QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "zzzBMMq02 (Remnants)",
+      "questId": "Vigilant.esm:038525",
+      "atStage": 80,
+      "call": "SetStage 10",
+      "source": "QF_zzzBMMq02_01038525.fragment_16 on Vigilant.esm:038525 (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   },
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:038524",
+   "edid": "zzzBMMq01",
+   "name": "Empty Cells",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq10 (The Landing)",
+     "questId": "Vigilant.esm:011B75",
+     "atStage": 50,
+     "call": "Start",
+     "source": "QF_zzAoMMq10_01011B75.fragment_11 on Vigilant.esm:011B75 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMq10 (The Landing)",
+     "questId": "Vigilant.esm:011B75",
+     "atStage": 50,
+     "call": "SetStage 0",
+     "source": "QF_zzAoMMq10_01011B75.fragment_11 on Vigilant.esm:011B75 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMqGoodEnd (Art of Mercy)",
+     "questId": "Vigilant.esm:4D0376",
+     "atStage": 130,
+     "call": "Start",
+     "source": "QF_zzzAoMMqGoodEnd_024D0376.fragment_26 on Vigilant.esm:4D0376 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzAoMMqGoodEnd (Art of Mercy)",
+     "questId": "Vigilant.esm:4D0376",
+     "atStage": 130,
+     "call": "SetStage 0",
+     "source": "QF_zzzAoMMqGoodEnd_024D0376.fragment_26 on Vigilant.esm:4D0376 (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "zzzBMMq03 (The Blood Matron)",
+     "atStage": 220,
+     "call": "SetStage 255",
+     "source": "QF_zzzBMMq03_01038526.fragment_30 (Vigilant.esm)"
+    },
+    {
+     "by": "zzzBMMq03 (The Blood Matron)",
+     "atStage": 100,
+     "call": "SetStage 100",
+     "source": "QF_zzzBMMq03_01038526.fragment_28 (Vigilant.esm)"
+    }
+   ],
+   "advancedBy": 5,
+   "firstObjective": {
+    "text": "Talk to the <Alias=Courier>",
+    "index": 0,
+    "source": "Vigilant.esm:038524 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Courier",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Windhelm Guard",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": "The Landing stage 999 not done; The Landing completed; Empty Cells not completed; GetQuestRunning Empty Cells == 0; fn576 == 1; fn576 == 1",
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "2000 gold",
+     "stage": 110,
+     "source": "QF_zzzBMMq01_01038524.fragment_17",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to <Alias=Steward>",
+     "index": 10,
+     "source": "Vigilant.esm:038524 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": null,
+      "speakerNamed": "alias Courier of zzzBMMq01 (Empty Cells) (created)",
+      "speakerPlaced": [],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:038ABA",
+      "prompt": "What do you need our help with?",
+      "reply": [
+       "The steward will tell you all the details, I only know the basics. But please treat this matter as confidential."
+      ],
+      "conditions": "the speaker is the one in alias Courier",
+      "source": "BM01_TIF__01038ABA.Fragment_0 on INFO Vigilant.esm:038ABA (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:038525",
+   "edid": "zzzBMMq02",
+   "name": "Remnants",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzBMMq01 (Empty Cells)",
+     "questId": "Vigilant.esm:038524",
+     "atStage": 60,
+     "call": "Start",
+     "source": "QF_zzzBMMq01_01038524.fragment_13 on Vigilant.esm:038524 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzBMMq01 (Empty Cells)",
+     "questId": "Vigilant.esm:038524",
+     "atStage": 60,
+     "call": "SetStage 0",
+     "source": "QF_zzzBMMq01_01038524.fragment_13 on Vigilant.esm:038524 (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Defeat <Alias=Vamp01>",
+    "index": 10,
+    "source": "Vigilant.esm:038525 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Vamp01",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Gwaji gro-Agnam",
+       "kind": "unique actor",
+       "where": [
+        "Hidden Passage, Old Sewers"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:0302D8"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Hidden Passage, Old Sewers",
+      "ways": 2,
+      "locked": 1
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Defeat <Alias=Vamp02>",
+     "index": 30,
+     "source": "Vigilant.esm:038525 QOBJ 30",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "zzzBMMq02 (Remnants)",
+      "questId": "Vigilant.esm:038525",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageondeathrefalias.onDeath on Vigilant.esm:038525 (Vigilant.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Paulo",
+      "speakerNamed": "alias Vamp02 of zzzBMMq02 (Remnants) (unique)",
+      "speakerPlaced": [
+       "Bloody Well"
+      ],
+      "call": "SetStage 30",
+      "info": "Vigilant.esm:039B3D",
+      "prompt": "Are you a Vigilant? Are you all right?",
+      "reply": [
+       "You... You're not Gwaji! Who are you? Where is Gwaji? What did you do to him?"
+      ],
+      "conditions": "the speaker is the one in alias Vamp02",
+      "source": "BM02_TIF__01039B3D.Fragment_0 on INFO Vigilant.esm:039B3D (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:038526",
+   "edid": "zzzBMMq03",
+   "name": "The Blood Matron",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 60,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzBMMq02 (Remnants)",
+     "questId": "Vigilant.esm:038525",
+     "atStage": 100,
+     "call": "Start",
+     "source": "QF_zzzBMMq02_01038525.fragment_20 on Vigilant.esm:038525 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzBMMq02 (Remnants)",
+     "questId": "Vigilant.esm:038525",
+     "atStage": 100,
+     "call": "SetStage 0",
+     "source": "QF_zzzBMMq02_01038525.fragment_20 on Vigilant.esm:038525 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Lamae Bal",
+     "speakerNamed": "alias LamaeBal of zzzBMMq03 (The Blood Matron) (unique)",
+     "speakerPlaced": [
+      "Lamae's Dream"
+     ],
+     "call": "SetStage 60",
+     "info": "Vigilant.esm:03C193",
+     "prompt": "Begone, monster.",
+     "reply": [
+      "Your eyes... So cold. You're just like him. Will you answer my love with a dagger to the heart, too?",
+      "You can't run from me. I won't let you. You will come with me even if I have to tear you to pieces first."
+     ],
+     "conditions": "the speaker is the one in alias LamaeBal",
+     "source": "BM03_TIF__0103C193.Fragment_0 on INFO Vigilant.esm:03C193 (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Defeat <Alias=LamaeBal>",
+    "index": 60,
+    "source": "Vigilant.esm:038526 QOBJ 60",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "LamaeBal",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Lamae Bal",
+       "kind": "unique actor",
+       "where": [
+        "Lamae's Dream"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:03545D"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Lamae's Dream",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Free <Alias=LamaeBal> from the curse of Molag Bal",
+     "index": 90,
+     "source": "Vigilant.esm:038526 QOBJ 90",
+     "verdict": "files"
+    },
+    "stage": 90,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "zzzBMMq03 (The Blood Matron)",
+      "questId": "Vigilant.esm:038526",
+      "atStage": null,
+      "call": "SetStage 70",
+      "source": "defaultsetstageondeathrefalias.onDeath on Vigilant.esm:038526 (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:42E0B1",
+   "edid": "zzzCHMemoryGuide",
+   "name": "Memory Guide",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [],
+   "caughtUpBy": [
+    {
+     "by": "zzzCHMemoryQuest08 (The Nameless Bard)",
+     "atStage": 999,
+     "call": "SetStage 80",
+     "source": "QF_zzzCHMemoryQuest08_02080E91.fragment_46 (Vigilant.esm)"
+    },
+    {
+     "by": "zzzCHMemoryQuest09 (Beyond the Shores of Madness)",
+     "atStage": 999,
+     "call": "SetStage 90",
+     "source": "QF_zzzCHMemoryQuest09_022CAE30.fragment_29 (Vigilant.esm)"
+    },
+    {
+     "by": "zzzCHMemoryQuest04 (Johan the Fool)",
+     "atStage": 999,
+     "call": "SetStage 40",
+     "source": "QF_zzzCHMemoryQuest04_02140225.fragment_25 (Vigilant.esm)"
+    },
+    {
+     "by": "zzzCHMemoryQuest05 (Adabal)",
+     "atStage": 999,
+     "call": "SetStage 50",
+     "source": "QF_zzzCHMemoryQuest05_0205AE03.fragment_25 (Vigilant.esm)"
+    },
+    {
+     "by": "zzzCHMemoryQuest06 (Remains of the Miracle)",
+     "atStage": 999,
+     "call": "SetStage 60",
+     "source": "QF_zzzCHMemoryQuest06_0206A23B.fragment_8 (Vigilant.esm)"
+    },
+    {
+     "by": "zzzCHMemoryQuest02 (The Mad King)",
+     "atStage": 999,
+     "call": "SetStage 20",
+     "source": "QF_zzzCHMemoryQuest02_0213712B.fragment_21 (Vigilant.esm)"
+    },
+    {
+     "by": "zzzCHMemoryQuest07 (Temptation of Marukh)",
+     "atStage": 999,
+     "call": "SetStage 70",
+     "source": "QF_zzzCHMemoryQuest07_0206F53C.fragment_22 (Vigilant.esm)"
+    },
+    {
+     "by": "zzzCHMemoryQuest01 (The Grand Inquisitor)",
+     "atStage": 999,
+     "call": "SetStage 10",
+     "source": "QF_zzzCHMemoryQuest01_0212C4F4.fragment_9 (Vigilant.esm)"
+    },
+    {
+     "by": "zzzCHMemoryQuest03 (Knight of Hounds)",
+     "atStage": 999,
+     "call": "SetStage 30",
+     "source": "QF_zzzCHMemoryQuest03_0213965A.fragment_24 (Vigilant.esm)"
+    }
+   ],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Like when the dream no longer needs its dreamer",
+    "index": 100,
+    "source": "Vigilant.esm:42E0B1 QOBJ 100",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DreamPelinal",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Barrier Tower of Agea"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:06DEDD"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Against the dying of the light",
+     "index": 110,
+     "source": "Vigilant.esm:42E0B1 QOBJ 110",
+     "verdict": "files"
+    },
+    "stage": 0,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 0 or one before it"
+   },
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:12C4F4",
+   "edid": "zzzCHMemoryQuest01",
+   "name": "The Grand Inquisitor",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzCHMemoryGuide (Memory Guide)",
+     "questId": "Vigilant.esm:42E0B1",
+     "atStage": 0,
+     "call": "SetStage 0",
+     "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Unfulfilled dreams drown in silence",
+    "index": 0,
+    "source": "Vigilant.esm:12C4F4 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Mara",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Mary the Dark Maiden",
+       "kind": "unique actor",
+       "where": [
+        "Bed of Corruption"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:0F86C4"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Bed of Corruption",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Vigilant.esm:13712B",
+   "edid": "zzzCHMemoryQuest02",
+   "name": "The Mad King",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzCHMemoryGuide (Memory Guide)",
+     "questId": "Vigilant.esm:42E0B1",
+     "atStage": 0,
+     "call": "SetStage 0",
+     "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 5,
+   "firstObjective": {
+    "text": "Madness sets with the moons",
+    "index": 0,
+    "source": "Vigilant.esm:13712B QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "GuideMarker",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Malatar Mansion"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:1038CB"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Malatar Mansion",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Vigilant.esm:13965A",
+   "edid": "zzzCHMemoryQuest03",
+   "name": "Knight of Hounds",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzCHMemoryGuide (Memory Guide)",
+     "questId": "Vigilant.esm:42E0B1",
+     "atStage": 0,
+     "call": "SetStage 0",
+     "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzCHBossQuestVarla (named \"VS Varla\" in its record), a helper quest with Boss, Sub01, Sub02",
+     "questId": "Vigilant.esm:4F69C2",
+     "atStage": 0,
+     "call": "Start",
+     "source": "QF_zzzCHBossQuestVarla_024F69C2.fragment_0 on Vigilant.esm:4F69C2 (Vigilant.esm)",
+     "verdict": "script",
+     "throughStartedBy": []
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 6,
+   "firstObjective": {
+    "text": "Blood is thicker than water",
+    "index": 0,
+    "source": "Vigilant.esm:13965A QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "EnolaSkull",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Enola's Skull",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Vigilant.esm:140225",
+   "edid": "zzzCHMemoryQuest04",
+   "name": "Johan the Fool",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzCHMemoryGuide (Memory Guide)",
+     "questId": "Vigilant.esm:42E0B1",
+     "atStage": 0,
+     "call": "SetStage 0",
+     "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "The dead dream beneath the soil",
+    "index": 0,
+    "source": "Vigilant.esm:140225 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "GuideMarker",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Chapel of Arkay Cemetery"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:0C8FCF"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Chapel of Arkay Cemetery",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Vigilant.esm:05AE03",
+   "edid": "zzzCHMemoryQuest05",
+   "name": "Adabal",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzCHMemoryGuide (Memory Guide)",
+     "questId": "Vigilant.esm:42E0B1",
+     "atStage": 0,
+     "call": "SetStage 0",
+     "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Dance on the dead under the moons",
+    "index": 0,
+    "source": "Vigilant.esm:05AE03 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "GuideMarker",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "St. Dulsa's Charnel"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:04C45B"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "St. Dulsa's Charnel",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Vigilant.esm:06A23B",
+   "edid": "zzzCHMemoryQuest06",
+   "name": "Remains of the Miracle",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzCHMemoryGuide (Memory Guide)",
+     "questId": "Vigilant.esm:42E0B1",
+     "atStage": 0,
+     "call": "SetStage 0",
+     "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "A priest laughs in the broken Tower",
+    "index": 0,
+    "source": "Vigilant.esm:06A23B QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "GuideMarker",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Abyss of Molag Bal"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:064F28"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Abyss of Molag Bal",
+      "ways": 0,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Vigilant.esm:06F53C",
+   "edid": "zzzCHMemoryQuest07",
+   "name": "Temptation of Marukh",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzCHMemoryGuide (Memory Guide)",
+     "questId": "Vigilant.esm:42E0B1",
+     "atStage": 0,
+     "call": "SetStage 0",
+     "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Where does the man-ape sleep?",
+    "index": 0,
+    "source": "Vigilant.esm:06F53C QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "GuideKey",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Golden Sanctuary"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:224E78"
+     ]
+    },
+    {
+     "alias": "GuideMarker01",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Malada Abasel"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:11C93B"
+     ]
+    },
+    {
+     "alias": "GuideMarker02",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Abyss of Molag Bal"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:064F28"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Golden Sanctuary",
+      "ways": 1,
+      "locked": 0
+     },
+     {
+      "cell": "Malada Abasel",
+      "ways": 1,
+      "locked": 0
+     },
+     {
+      "cell": "Abyss of Molag Bal",
+      "ways": 0,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Vigilant.esm:080E91",
+   "edid": "zzzCHMemoryQuest08",
+   "name": "The Nameless Bard",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzCHMemoryGuide (Memory Guide)",
+     "questId": "Vigilant.esm:42E0B1",
+     "atStage": 0,
+     "call": "SetStage 0",
+     "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "zzzCHMemoryQuest09 (Beyond the Shores of Madness)",
+     "atStage": 10,
+     "call": "SetStage 25",
+     "source": "QF_zzzCHMemoryQuest09_022CAE30.fragment_2 (Vigilant.esm)"
+    },
+    {
+     "by": "zzzCHMemoryQuest09 (Beyond the Shores of Madness)",
+     "atStage": 200,
+     "call": "SetStage 300",
+     "source": "QF_zzzCHMemoryQuest09_022CAE30.fragment_19 (Vigilant.esm)"
+    }
+   ],
+   "advancedBy": 11,
+   "firstObjective": {
+    "text": "The rolling Stone dwells in the fire, waiting to be picked up",
+    "index": 0,
+    "source": "Vigilant.esm:080E91 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "GuideTower",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Sancremor Angasel"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:121AA2"
+     ]
+    },
+    {
+     "alias": "GuideStatue",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Aetherius"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:1353E4"
+     ]
+    },
+    {
+     "alias": "GuideBard",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Abyss of Molag Bal"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:064F28"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Sancremor Angasel",
+      "ways": 2,
+      "locked": 1
+     },
+     {
+      "cell": "Aetherius",
+      "ways": 1,
+      "locked": 0
+     },
+     {
+      "cell": "Abyss of Molag Bal",
+      "ways": 0,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Vigilant.esm:2CAE30",
+   "edid": "zzzCHMemoryQuest09",
+   "name": "Beyond the Shores of Madness",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzCHMemoryGuide (Memory Guide)",
+     "questId": "Vigilant.esm:42E0B1",
+     "atStage": 0,
+     "call": "SetStage 0",
+     "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Ah, fetus, alas, fetus...",
+    "index": 0,
+    "source": "Vigilant.esm:2CAE30 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "GuideMarker",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Elder Field"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:07877B"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Vigilant.esm:4EC7F3",
+   "edid": "zzzCHqSAExile",
+   "name": "Maggot",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Sacred Anatomancer",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Old Well"
+     ],
+     "call": "Start",
+     "info": "Vigilant.esm:4EC7F2",
+     "prompt": "Fine. I, <Alias=Player>, swear this by the multiples of three. I shall henceforth renounce this name.",
+     "reply": [
+      "Love, I and We. True God, play the pipe for this one."
+     ],
+     "conditions": "the speaker is Sacred Anatomancer",
+     "source": "AoMgdSA_TIF__024EC7F2.Fragment_0 on INFO Vigilant.esm:4EC7F2 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Sacred Anatomancer",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Old Well"
+     ],
+     "call": "SetStage 0",
+     "info": "Vigilant.esm:4EC7F2",
+     "prompt": "Fine. I, <Alias=Player>, swear this by the multiples of three. I shall henceforth renounce this name.",
+     "reply": [
+      "Love, I and We. True God, play the pipe for this one."
+     ],
+     "conditions": "the speaker is Sacred Anatomancer",
+     "source": "AoMgdSA_TIF__024EC7F2.Fragment_0 on INFO Vigilant.esm:4EC7F2 (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Take back your name from <Alias=Owner> in <Alias=TargetLocation>",
+    "index": 0,
+    "source": "Vigilant.esm:4EC7F3 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Identity",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Radiance of Life",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "<Alias=Victim01> has been dazzled by the Radiance of Life",
+     "index": 1,
+     "source": "Vigilant.esm:4EC7F3 QOBJ 1",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
+  },
+  {
+   "id": "Vigilant.esm:51532C",
+   "edid": "zzzCHrqSoulShriven",
+   "name": "Feral Soul-Shriven",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 1,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Defeat <Alias=Enemy>",
+    "index": 0,
+    "source": "Vigilant.esm:51532C QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Enemy",
+     "fill": "run time",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:51ADBF",
+   "edid": "zzzCHSubQuest13",
+   "name": "Broken Horns",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzCHMemoryQuest13 (named \"Paravania the Man-Bull\" in its record), a helper quest with Paravania",
+     "questId": "Vigilant.esm:51C038",
+     "atStage": 30,
+     "call": "SetStage 10",
+     "source": "QF_zzzCHMemoryQuest13_0251C038.fragment_7 on Vigilant.esm:51C038 (Vigilant.esm)",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "quest script",
+       "quest": "zzzCHSubQuest13 (Broken Horns)",
+       "questId": "Vigilant.esm:51ADBF",
+       "atStage": 5,
+       "call": "Start",
+       "source": "QF_zzzCHSubQuest13_0251ADBF.fragment_7 on Vigilant.esm:51ADBF (Vigilant.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "quest script",
+       "quest": "zzzCHSubQuest13 (Broken Horns)",
+       "questId": "Vigilant.esm:51ADBF",
+       "atStage": 5,
+       "call": "SetStage 0",
+       "source": "QF_zzzCHSubQuest13_0251ADBF.fragment_7 on Vigilant.esm:51ADBF (Vigilant.esm)",
+       "verdict": "script"
+      }
+     ]
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzCHMemoryGuide (Memory Guide)",
+     "questId": "Vigilant.esm:42E0B1",
+     "atStage": 0,
+     "call": "SetStage 0",
+     "source": "QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzCHBossQuestMorihaus (named \"VS Morihaus\" in its record), a helper quest with Boss",
+     "questId": "Vigilant.esm:4F69B7",
+     "atStage": 10,
+     "call": "SetStage 2",
+     "source": "QF_zzzCHBossQuestMorihaus_024F69B7.fragment_4 on Vigilant.esm:4F69B7 (Vigilant.esm)",
+     "verdict": "script",
+     "throughStartedBy": []
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Broken horns, sky incarnate",
+    "index": 0,
+    "source": "Vigilant.esm:51ADBF QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "BelharzaMan",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Emperor Belharza",
+       "kind": "unique actor",
+       "where": [
+        "Fort Welkynd"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:0E2693"
+     ]
+    },
+    {
+     "alias": "Morihaus",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Morihaus",
+       "kind": "unique actor",
+       "where": [
+        "Barrier Tower of Bala"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:06DDF5"
+     ]
+    },
+    {
+     "alias": "MarkerMem",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Inquisition Court District"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:06E59A"
+     ]
+    },
+    {
+     "alias": "MarkerQuiz",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "First Inquisition Court"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:21AFA1"
+     ]
+    },
+    {
+     "alias": "MarkerES",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Concealed Charnel of Belharza, Belharza's Hidden Charnel"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:51C043"
+     ]
+    },
+    {
+     "alias": "BelharzaBull",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Belharza the Bull",
+       "kind": "unique actor",
+       "where": [
+        "???"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:51D5D5"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Fort Welkynd",
+      "ways": 3,
+      "locked": 0
+     },
+     {
+      "cell": "First Inquisition Court",
+      "ways": 6,
+      "locked": 0
+     },
+     {
+      "cell": "Concealed Charnel of Belharza, Belharza's Hidden Charnel",
+      "ways": 2,
+      "locked": 0
+     },
+     {
+      "cell": "???",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Vigilant.esm:43CBAE",
+   "edid": "zzzCOGuide",
+   "name": "Stendarr Guide",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [
+    {
+     "by": "zzzCOMq01 (Child of Oblivion)",
+     "atStage": 60,
+     "call": "SetStage 70",
+     "source": "QF_zzzCOMq01_01065932.fragment_13 (Vigilant.esm)"
+    }
+   ],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Break the Blood Curse of Shivers",
+    "index": 10,
+    "source": "Vigilant.esm:43CBAE QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "GuideCurse01",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Blood Curse of Shivers"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:0523E7"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Blood Curse of Shivers",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Break the Blood Curse of Corruption",
+     "index": 20,
+     "source": "Vigilant.esm:43CBAE QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   },
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Vigilant.esm:065932",
+   "edid": "zzzCOMq01",
+   "name": "Child of Oblivion",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 0,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzBMMq01 (Empty Cells)",
+     "questId": "Vigilant.esm:038524",
+     "atStage": 110,
+     "call": "Start",
+     "source": "QF_zzzBMMq01_01038524.fragment_17 on Vigilant.esm:038524 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzBMMq01 (Empty Cells)",
+     "questId": "Vigilant.esm:038524",
+     "atStage": 110,
+     "call": "SetStage 0",
+     "source": "QF_zzzBMMq01_01038524.fragment_17 on Vigilant.esm:038524 (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Talk to Gwyneth",
+    "index": 0,
+    "source": "Vigilant.esm:065932 QOBJ 0",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Librarian",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Gwyneth",
+       "kind": "unique actor",
+       "where": [
+        "Temple of Stendarr"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:025091"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": "Empty Cells stage 255 not done; Empty Cells completed; Child of Oblivion not completed; GetQuestRunning Child of Oblivion == 0; fn576 == 1; fn576 == 1",
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Temple of Stendarr",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Travel to the Bruiant Mansion",
+     "index": 20,
+     "source": "Vigilant.esm:065932 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Gwyneth",
+      "speakerNamed": "alias Librarian of zzzCOMq01 (Child of Oblivion) (unique)",
+      "speakerPlaced": [
+       "Temple of Stendarr"
+      ],
+      "call": "SetStage 20",
+      "info": "Vigilant.esm:0669F0",
+      "prompt": "I'll go ahead to check. If I'm not back within a week, send some Vigilants after me.",
+      "reply": [
+       "All right. Please, be careful. I will prepare a carriage in front of the temple to take you to the mansion."
+      ],
+      "conditions": "Child of Oblivion stage == 10; the speaker is the one in alias Librarian",
+      "source": "CO_TIF__010669F0.Fragment_0 on INFO Vigilant.esm:0669F0 (Vigilant.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Gwyneth",
+      "speakerNamed": "alias Librarian of zzzCOMq01 (Child of Oblivion) (unique)",
+      "speakerPlaced": [
+       "Temple of Stendarr"
+      ],
+      "call": "SetStage 10",
+      "info": "Vigilant.esm:06C21F",
+      "prompt": "Do you think something went wrong with his mission?",
+      "reply": [
+       "The civil war must have delayed this letter... It's several months old now...",
+       "Also, the Vigilant hasn't returned yet and I fear it may already be too late.",
+       "I want to leave this decision to you. What should we do?"
+      ],
+      "conditions": "the speaker is the one in alias Librarian",
+      "source": "CO_TIF__0106C21F.Fragment_0 on INFO Vigilant.esm:06C21F (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Vigilant.esm:324E7E",
+   "edid": "zzzCOSubQ01",
+   "name": "Successor",
+   "plugin": "Vigilant.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "zzzCOMq01 (Child of Oblivion)",
+     "questId": "Vigilant.esm:065932",
+     "atStage": 200,
+     "call": "Start",
+     "source": "QF_zzzCOMq01_01065932.fragment_14 on Vigilant.esm:065932 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzCOMq01 (Child of Oblivion)",
+     "questId": "Vigilant.esm:065932",
+     "atStage": 200,
+     "call": "SetStage 0",
+     "source": "QF_zzzCOMq01_01065932.fragment_14 on Vigilant.esm:065932 (Vigilant.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Talk to Gwyneth",
+    "index": 20,
+    "source": "Vigilant.esm:324E7E QOBJ 20",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Libra",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Gwyneth",
+       "kind": "unique actor",
+       "where": [
+        "Temple of Stendarr"
+       ]
+      }
+     ],
+     "cells": [
+      "Vigilant.esm:025091"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Temple of Stendarr",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Investigate the Keeper's whereabouts",
+     "index": 30,
+     "source": "Vigilant.esm:324E7E QOBJ 30",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Gwyneth",
+      "speakerNamed": "alias Libra of zzzCOSubQ01 (Successor) (unique)",
+      "speakerPlaced": [
+       "Temple of Stendarr"
+      ],
+      "call": "SetStage 30",
+      "info": "Vigilant.esm:3288F1",
+      "prompt": "Yes, I prayed enough. Remind me about my mission, please.",
+      "reply": [
+       "The Keeper of this temple went to the Bruiant mansion and still hasn't returned. I want you to find out what happened.",
+       "I have no idea what could be going on there. So please, be careful."
+      ],
+      "conditions": "the speaker is the one in alias Libra",
+      "source": "COSq01_TIF__023288F1.Fragment_0 on INFO Vigilant.esm:3288F1 (Vigilant.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  }
+ ],
+ "notInRawQuests": [],
+ "starts": [
+  {
+   "start": "Regular (Inn)",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "The Bannered Mare",
+     "quest": "AlternatePerspective.esp:3271C8",
+     "questEdid": "APS_InnWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnWhiterun scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Bee and Barb",
+     "quest": "AlternatePerspective.esp:3457D0",
+     "questEdid": "APS_InnRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Winking Skeever",
+     "quest": "AlternatePerspective.esp:3457D2",
+     "questEdid": "APS_InnSolitude",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnSolitude scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Silver-Blood Inn",
+     "quest": "AlternatePerspective.esp:3457D4",
+     "questEdid": "APS_InnMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnMarkarth scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Candlehearth Hall",
+     "quest": "AlternatePerspective.esp:3457D6",
+     "questEdid": "APS_InnWindhelm",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnWindhelm scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dead Man's Drink",
+     "quest": "AlternatePerspective.esp:3457D9",
+     "questEdid": "APS_InnFalkreath",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnFalkreath scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Moorside Inn",
+     "quest": "AlternatePerspective.esp:3457DD",
+     "questEdid": "APS_InnMorthal",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnMorthal scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Frozen Hearth",
+     "quest": "AlternatePerspective.esp:3457DF",
+     "questEdid": "APS_InnWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnWinterhold scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Windpeak Inn",
+     "quest": "AlternatePerspective.esp:3457E0",
+     "questEdid": "APS_InnDawnstar",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Retching Netch",
+     "quest": "AlternatePerspective.esp:34A8E2",
+     "questEdid": "APS_InnRavenRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRavenRock scripts (Alternate Perspective - Gate to Sovngarde Edition.esp)"
+    },
+    {
+     "option": "The Sleeping Giant Inn",
+     "quest": "AlternatePerspective.esp:34A8E3",
+     "questEdid": "APS_InnRiverwood",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRiverwood scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Frostfruit Inn",
+     "quest": "AlternatePerspective.esp:34A8E4",
+     "questEdid": "APS_InnRorikstead",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRorikstead scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Vilemyr Inn",
+     "quest": "AlternatePerspective.esp:34A8E5",
+     "questEdid": "APS_InnIvarstead",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnIvarstead scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Old Hroldan Inn",
+     "quest": "AlternatePerspective.esp:34A8E6",
+     "questEdid": "APS_InnOldHroldan",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnOldHroldan scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Four Shields Tavern",
+     "quest": "AlternatePerspective.esp:34A8E7",
+     "questEdid": "APS_InnDragonbridge",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnDragonbridge scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Nightgate Inn",
+     "quest": "AlternatePerspective.esp:34A8E8",
+     "questEdid": "APS_InnNightgate",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnNightgate scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Braidwood Inn",
+     "quest": "AlternatePerspective.esp:34A8E9",
+     "questEdid": "APS_InnKynesgrove",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnKynesgrove scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "From Overseas",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "East Empire Trading Company",
+     "quest": "AlternatePerspective.esp:34F9EC",
+     "questEdid": "APS_DocksSolitude",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksSolitude scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Windhelm Docks",
+     "quest": "AlternatePerspective.esp:34F9EE",
+     "questEdid": "APS_DocksWindhelm",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksWindhelm scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dawnstar's Shore",
+     "quest": "AlternatePerspective.esp:34F9ED",
+     "questEdid": "APS_DocksDawnstar",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Raven Rock Docks",
+     "quest": "AlternatePerspective.esp:34F9F0",
+     "questEdid": "APS_DocksRavenRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksRavenRock scripts (Alternate Perspective - Gate to Sovngarde Edition.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Wanted Criminal",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Whiterun",
+     "quest": "AlternatePerspective.esp:34FA14",
+     "questEdid": "APS_WantedTPWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPWhiterun scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AlternatePerspective.esp:34FA15",
+     "questEdid": "APS_WantedTPRRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPRRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AlternatePerspective.esp:34FA1B",
+     "questEdid": "APS_WantedTPRDawnstar",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPRDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AlternatePerspective.esp:34FA25",
+     "questEdid": "APS_WantedTPWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPWinterhold scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Left for Dead",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "The Rift",
+     "quest": "AlternatePerspective.esp:34FA27",
+     "questEdid": "APS_LeftForDeadRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_LeftForDeadRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AlternatePerspective.esp:34FA29",
+     "questEdid": "APS_LeftForDeadMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_LeftForDeadMarkarth scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AlternatePerspective.esp:34FA20",
+     "questEdid": "APS_LeftForDeadWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_LeftForDeadWinterhold scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Forsworn",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Forsworn",
+     "quest": "AlternatePerspective.esp:46649F",
+     "questEdid": "APS_Forsworn",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_Forsworn scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Guilds",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "College of Winterhold",
+     "quest": "AlternatePerspective.esp:3D36E6",
+     "questEdid": "APS_GuildMages",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildMages scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Thieves Guild",
+     "quest": "AlternatePerspective.esp:3CE5E5",
+     "questEdid": "APS_GuildThievesguild",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildThievesguild scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dark Brotherhood",
+     "quest": "AlternatePerspective.esp:3D36E7",
+     "questEdid": "APS_GuildBrotherhood",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildBrotherhood scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Companions",
+     "quest": "AlternatePerspective.esp:3D36E8",
+     "questEdid": "APS_GuildCompanions",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildCompanions scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Dragonborn",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Helgen Keep (Start)",
+     "quest": "AlternatePerspective.esp:47F943",
+     "questEdid": "APS_MQSkipKeep",
+     "mainQuestRuns": "no",
+     "moves": [
+      "MQ101 SetStage 6",
+      "MQ101 SetStage 7"
+     ],
+     "source": "APS_MQSkipKeep scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Helgen Keep (End)",
+     "quest": "AlternatePerspective.esp:484A45",
+     "questEdid": "APS_MQSkipKeepEnd",
+     "mainQuestRuns": "no",
+     "moves": [
+      "MQ101 SetStage 250",
+      "MQ101 SetStage 550",
+      "MQ101 SetStage 700",
+      "MQ101 SetStage 710",
+      "MQ101 SetStage 720",
+      "MQ101 SetStage 725"
+     ],
+     "source": "APS_MQSkipKeepEnd scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Addict",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Addict",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000800",
+     "questEdid": "AFLOLALAddictQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAddictQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Dwemer Ruin",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Dwemer Ruin",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00081C",
+     "questEdid": "AFLOLALAdventureQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAdventureQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Alchemist",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Alchemist",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00080A",
+     "questEdid": "AFLOLALAlchemistQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAlchemistQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "At Angis Camp",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "At Angis Camp",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000858",
+     "questEdid": "AFLOLALAngiQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAngiQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Beggar",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Riften",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00085F",
+     "questEdid": "AFLOAP_BeggarRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BeggarRiften scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Markarth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000860",
+     "questEdid": "AFLOAP_BeggarMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BeggarMarkarth scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Jailed",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000861",
+     "questEdid": "AFLOAP_JailWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailWhiterun scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000869",
+     "questEdid": "AFLOAP_JailRift",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailRift scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Eastmarch",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000862",
+     "questEdid": "AFLOAP_JailEastmarch",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailEastmarch scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Haarfinger",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000864",
+     "questEdid": "AFLOAP_JailHaarfinger",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailHaarfinger scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000868",
+     "questEdid": "AFLOAP_JailReach",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailReach scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000863",
+     "questEdid": "AFLOAP_JailFalkreath",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailFalkreath scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hjaalmach",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000865",
+     "questEdid": "AFLOAP_JailHjaalmach",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailHjaalmach scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000866",
+     "questEdid": "AFLOAP_JailPale",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailPale scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086A",
+     "questEdid": "AFLOAP_JailWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailWinterhold scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Raven Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000867",
+     "questEdid": "AFLOAP_JailRavenRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailRavenRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Mercenary",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Cyrodiil",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086B",
+     "questEdid": "AFLOAP_BorderMercenaryCyrodill",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryCyrodill scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hammerfell",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086C",
+     "questEdid": "AFLOAP_BorderMercenaryHammerfell",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryHammerfell scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "High Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086D",
+     "questEdid": "AFLOAP_BorderMercenaryHighRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryHighRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Northern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086E",
+     "questEdid": "AFLOAP_BorderMercenaryNorthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryNorthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Southern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086F",
+     "questEdid": "AFLOAP_BorderMercenarySouthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenarySouthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Merchant",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Cyrodiil",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000870",
+     "questEdid": "AFLOAP_BorderMerchantCyrodill",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantCyrodill scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hammerfell",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000871",
+     "questEdid": "AFLOAP_BorderMerchantHammerfell",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantHammerfell scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "High Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000872",
+     "questEdid": "AFLOAP_BorderMerchantHighRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantHighRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Northern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000873",
+     "questEdid": "AFLOAP_BorderMerchantNorthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantNorthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Southern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000874",
+     "questEdid": "AFLOAP_BorderMerchantSouthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantSouthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Pilgrim (Shrine)",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Shrine of Azura",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083C",
+     "questEdid": "AFLOLALAzuraQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAzuraQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Boethiah",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083A",
+     "questEdid": "AFLOLALBoethiahQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALBoethiahQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Mehrunes Dagon",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000842",
+     "questEdid": "AFLOLALDagonQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALDagonQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Eldergleam Sanctuary",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000838",
+     "questEdid": "AFLOLALEldergleamQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALEldergleamQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Statue of Meridia",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000840",
+     "questEdid": "AFLOLALMeridiaQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALMeridiaQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Peryite",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083E",
+     "questEdid": "AFLOLALPeryiteQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALPeryiteQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Stendarr's Beacon",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000835",
+     "questEdid": "AFLOLALStendarrQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALStendarrQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hall of the Vigilant",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000881",
+     "questEdid": "AFLOAP_StendarrHall",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_StendarrHall scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Pilgrim (Temple)",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Temple of the Divines",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000876",
+     "questEdid": "AFLOAP_TempleDivine",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleDivine scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Dibella",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000875",
+     "questEdid": "AFLOAP_TempleDibella",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleDibella scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Kynareth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000877",
+     "questEdid": "AFLOAP_TempleKynareth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleKynareth scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Mara",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000878",
+     "questEdid": "AFLOAP_TempleMara",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleMara scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Talos",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000879",
+     "questEdid": "AFLOAP_TempleTalos",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleTalos scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Thalmor Prisoner",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Thalmor Prisoner",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000829",
+     "questEdid": "AFLOLALThalmorQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALThalmorQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Vampire",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Solitude",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087D",
+     "questEdid": "AFLOAP_VampireSolitude",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireSolitude scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087A",
+     "questEdid": "AFLOAP_VampireFalkreath",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireFalkreath scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087E",
+     "questEdid": "AFLOAP_VampireWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireWhiterun scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Riften",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087C",
+     "questEdid": "AFLOAP_VampireRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireRiften scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Windhelm",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087F",
+     "questEdid": "AFLOAP_VampireWindhelm",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireWindhelm scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Markarth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087B",
+     "questEdid": "AFLOAP_VampireMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireMarkarth scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Werewolf",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Werewolf",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00081F",
+     "questEdid": "AFLOLALWerewolfQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALWerewolfQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Roadside Ambush",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:000018",
+     "questEdid": "MissileAPAmbushStartEastmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartEastmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:000021",
+     "questEdid": "MissileAPAmbushStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:00001B",
+     "questEdid": "MissileAPAmbushStartHjaalmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:00001A",
+     "questEdid": "MissileAPAmbushStartFalkreathQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:00002D",
+     "questEdid": "MissileAPAmbushStartPaleQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:000033",
+     "questEdid": "MissileAPAmbushStartReachQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000027",
+     "questEdid": "MissileAPAmbushStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:000019",
+     "questEdid": "MissileAPAmbushStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Fell in a Spike Pit",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Fell in a Spike Pit",
+     "quest": "AP - Missile Additional Starts.esp:000039",
+     "questEdid": "MissileAPFellInAPitQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPFellInAPitQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Bounty Hunter",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:00004C",
+     "questEdid": "MissileAPBountyHunterStartEastmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartEastmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:000058",
+     "questEdid": "MissileAPBountyHunterStartFalkreathQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:00005C",
+     "questEdid": "MissileAPBountyHunterStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:000048",
+     "questEdid": "MissileAPBountyHunterStartHjaalmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000050",
+     "questEdid": "MissileAPBountyHunterStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:00003F",
+     "questEdid": "MissileAPBountyHunterStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AP - Missile Additional Starts.esp:000054",
+     "questEdid": "MissileAPBountyHunterStartWinterholdQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartWinterholdQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Prisoner in a Bandit Fort",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:000086",
+     "questEdid": "MissileAPBanditPrisonerStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:00007B",
+     "questEdid": "MissileAPBanditPrisonerStartPaleQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:00008D",
+     "questEdid": "MissileAPBanditPrisonerStartReachQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000081",
+     "questEdid": "MissileAPBanditPrisonerStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:000073",
+     "questEdid": "MissileAPBanditPrisonerStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Out in the Wilderness",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:0000D8",
+     "questEdid": "MissileAPOutInTheWildernessStartEastmarchQuestDUPLICATE001",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartEastmarchQuestDUPLICATE001 scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:0000CE",
+     "questEdid": "MissileAPOutInTheWildernessStartFalkreathQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:0000D2",
+     "questEdid": "MissileAPOutInTheWildernessStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:0000D4",
+     "questEdid": "MissileAPOutInTheWildernessStartHjaalmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:0000DA",
+     "questEdid": "MissileAPOutInTheWildernessStartPaleQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:0000D0",
+     "questEdid": "MissileAPOutInTheWildernessStartReachQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:0000CB",
+     "questEdid": "MissileAPOutInTheWildernessStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:0000C8",
+     "questEdid": "MissileAPOutInTheWildernessStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AP - Missile Additional Starts.esp:0000D6",
+     "questEdid": "MissileAPOutInTheWildernessStartWinterholdQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartWinterholdQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  }
+ ],
+ "otherStarts": "The reader found no way into Vigilant from it.",
+ "routes": [],
+ "loaders": {
+  "Wyrmstooth": {
+   "quest": "Wyrmstooth.esp:AC1487",
+   "script": "WT_MCMScript",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
+   "winnerParent": "MCM_ConfigBase",
+   "readsSettings": true
+  },
+  "TimingIsEverything": {
+   "quest": "TimingIsEverything.esp:005E3B",
+   "script": "TIE_MCMScript",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
+   "winnerParent": "SKI_ConfigBase",
+   "readsSettings": false
+  }
+ },
+ "payoff": [
+  {
+   "quest": "Dragonslayer",
+   "edid": "MQ305",
+   "completingStages": [
+    200
+   ],
+   "gives": []
+  },
+  {
+   "quest": "Paarthurnax",
+   "edid": "MQPaarthurnax",
+   "completingStages": [
+    99,
+    100
+   ],
+   "gives": []
+  }
+ ],
+ "questions": [
+  {
+   "question": "Is Skyrim.esm:0242BA MQ105, and is stage 160 the one that completes it?",
+   "edid": "MQ105",
+   "name": "The Way of the Voice",
+   "completingStages": [
+    160
+   ],
+   "answer": "Yes: Skyrim.esm:0242BA is MQ105 (The Way of the Voice), and stage 160 is its only completing stage."
+  },
+  {
+   "question": "Who starts The Horn of Jurgen Windcaller, and where?",
+   "quest": null,
+   "startedBy": [],
+   "target": null,
+   "firstObjective": null
+  },
+  {
+   "question": "Does Dragonborn's cultist node read Timing is Everything's level (25 in its settings.ini), or something else?",
+   "quest": "DLC2CultistAmbush (Dragonborn.esm:03546D)",
+   "nodes": [
+    {
+     "node": "DLC2CultistAmbushNode001",
+     "id": "Dragonborn.esm:035472",
+     "plugin": "LoreRim - Global Modifiers.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode002",
+     "id": "TimingIsEverything.esp:00E53C",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode003",
+     "id": "TimingIsEverything.esp:00E53D",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode004",
+     "id": "TimingIsEverything.esp:00E53E",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode005",
+     "id": "TimingIsEverything.esp:00E53F",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode006",
+     "id": "TimingIsEverything.esp:00E540",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode007",
+     "id": "TimingIsEverything.esp:00E541",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode008",
+     "id": "TimingIsEverything.esp:00E542",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode000",
+     "id": "TimingIsEverything.esp:00E543",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    }
+   ],
+   "tieSetting": {
+    "key": "iTIE_MinimumLevel:Dragonborn",
+    "value": "25",
+    "from": "settings.ini in Timing is Everything SE - Settings Loader"
+   }
+  }
+ ],
+ "timingIsEverything": {
+  "loaderInstalled": true,
+  "loaderFolder": "Timing is Everything SE - Settings Loader",
+  "script": {
+   "quest": "TimingIsEverything.esp:005E3B",
+   "script": "TIE_MCMScript",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
+   "winnerParent": "SKI_ConfigBase",
+   "readsSettings": false
+  },
+  "dragonbornLevel": {
+   "key": "iTIE_MinimumLevel:Dragonborn",
+   "value": "25",
+   "from": "settings.ini in Timing is Everything SE - Settings Loader",
+   "globals": [
+    {
+     "id": "TimingIsEverything.esp:00E53B",
+     "edid": "DLC2CultistAttackMinLevel_KRY",
+     "record": 25.0,
+     "recordFrom": "TimingIsEverything.esp",
+     "runtime": [],
+     "settingsNotRead": [
+      {
+       "mod": "TimingIsEverything",
+       "key": "iTIE_MinimumLevel:Dragonborn",
+       "value": "25",
+       "from": "settings.ini in Timing is Everything SE - Settings Loader",
+       "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+      }
+     ],
+     "value": 25.0,
+     "verdict": "files",
+     "global": "TimingIsEverything.esp:00E53B"
+    }
+   ]
+  }
+ },
+ "wyrmstooth": {
+  "loaderInstalled": true,
+  "loaderFolder": "Wyrmstooth - Settings Loader",
+  "global": "Wyrmstooth.esp:AC356A",
+  "fact": {
+   "id": "Wyrmstooth.esp:AC356A",
+   "edid": "WTStartLevel",
+   "record": 20.0,
+   "recordFrom": "Requiem - Wyrmstooth.esp",
+   "recordWas": {
+    "value": 10.0,
+    "from": "Wyrmstooth.esp"
+   },
+   "runtime": [
+    {
+     "by": "settings loader",
+     "mod": "Wyrmstooth",
+     "key": "iWTGeneralRequirementsMinimalLevel:Requirements",
+     "value": "10",
+     "from": "settings.ini in Wyrmstooth - Settings Loader",
+     "script": "WT_MCMScript.OnSettingChange"
+    }
+   ],
+   "verdict": "run time",
+   "value": "10"
+  },
+  "loaderQuest": {
+   "quest": "Wyrmstooth.esp:AC1487",
+   "script": "WT_MCMScript",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
+   "winnerParent": "MCM_ConfigBase",
+   "readsSettings": true
+  },
+  "newGame": {
+   "value": 10,
+   "why": [
+    "OnConfigInit runs once when the menu registers in a new game; it sets `migrated` and calls LoadSettings, which goes on only while bEnabled:Maintenance is set (it is 1) and then calls Load, which reads iWTGeneralRequirementsMinimalLevel:Requirements (10, settings.ini in Wyrmstooth - Settings Loader) and sets WTStartLevel to it",
+    "MigrateToMCMHelper, which would copy the global's record value (20.0) into that setting, runs only from OnGameReload or OnConfigOpen while `migrated` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would)",
+    "OnGameReload reloads the settings only when bLoadSettingsonReload:Maintenance is set; it is 0, so later loads keep whatever the global holds"
+   ],
+   "verdict": "run time"
+  }
+ },
+ "missingScripts": [
+  "AAS_PlayerScript",
+  "ACFH_TIF__03000B2B",
+  "ACFH_TIF__03000B6B",
+  "BGSSSE010_OnReadSetStageAlias",
+  "BaanMalurCarriageScript",
+  "HLIO_TIF__0598299C",
+  "JR0_QF_JRLucienCCSaintsAndSed_07000800",
+  "JR_TIF__05172482",
+  "JR_TIF__05172488",
+  "ParryManagerQuestScript",
+  "QF_DLCDwarvenPuzzleDungeonQu_050038D9",
+  "QF_HRI_Events_Quest_WEWerebe_0402904A",
+  "QF_SOMRRumoursQuest_0721AE15",
+  "QF_ccBGSSSE001_Crab_MQ1_050009D4",
+  "QF_ccBGSSSE001_Crab_MQ2_050009DA",
+  "QF_ccBGSSSE001_Crab_MQ3_050009D6",
+  "QF_ccBGSSSE001_Fish_MQ1_050009DE",
+  "QF_ccBGSSSE001_Fish_MQ2_050009EB",
+  "QF_ccBGSSSE001_Fish_MQ3_050009E8",
+  "QF_ccBGSSSE001_Fish_MQ4_050009DD",
+  "QF_ccBGSSSE001_Fish_MQ5_050009DC",
+  "QF_ccBGSSSE001_MiscQuests_050009E6",
+  "QF_ccBGSSSE001_Misc_Falkreat_050009EC",
+  "QF_ccBGSSSE001_Misc_Khajiit_050009E2",
+  "QF_ccBGSSSE001_Misc_Markarth_050009DF",
+  "QF_ccBGSSSE001_Misc_Morthal_050009E4",
+  "QF_ccBGSSSE001_Misc_Solitude_050009E3",
+  "QF_ccBGSSSE001_Misc_Whiterun_050009D7",
+  "QF_ccBGSSSE001_Misc_Whiterun_05000E5D",
+  "QF_ccBGSSSE001_Misc_Windhelm_050009D5",
+  "QF_ccBGSSSE001_Radiant_1_05000B98",
+  "QF_ccBGSSSE001_Radiant_2_05000C2F",
+  "QF_ccBGSSSE001_Radiant_3_05000C8C",
+  "QF_ccBGSSSE001_Start_MQ1_050009D3",
+  "QF_ccBGSSSE001_Start_MQ2_050009DB",
+  "QF_ccBGSSSE010_PetPurchaseQu_02000808",
+  "QF_ccBGSSSE025_ElytraPetAcqu_050010C3",
+  "QF_ccBGSSSE025_RareCuriosInt_050010C1",
+  "QF_ccBGSSSE035_PetAcquireQue_0400080A",
+  "SSE_TIF__020008AA",
+  "SSE_ccBGSSSE037_RareCurios_0100084D",
+  "SilgradCarriageScript",
+  "SkyInteract_PlayerLoadGameAlias",
+  "Survival_PlayerHitInfo",
+  "Survival_PlayerLocationInfo",
+  "Survival_ThirstPlayerAlias",
+  "Survival_VampirismLycanthropy",
+  "TIF__020458BA",
+  "TIF__023943AB",
+  "TIF__03000976",
+  "TIF__03000D75",
+  "TIF__04138034",
+  "TIF__08005903",
+  "TIF_ccBGSSSE025_StaadaFrag",
+  "TIF_ccBGSSSE025_StaadaFrag2",
+  "TIF_ccBGSSSE025_StaadaFrag3",
+  "TIF_ccBGSSSE025_StaadaFragA",
+  "TIF_ccBGSSSE025_StaadaFrgF",
+  "Traits_ElementalistPlayerScript",
+  "VS02_QF_ccVSVSSE002_MainQuest_050008C8",
+  "aaCi_TIF__0501F5BC",
+  "aaEl_QF_aaElisifUpdate0108_05014EF5",
+  "aaaVampireFeedingContractScriptB",
+  "aaaVampireFeedingRemoveAlias",
+  "ccASVSSE001_KillFollowerCheck",
+  "ccASVSSE001_OnHitStageSetScript",
+  "ccASVSSE001_SetStageonActivateScript",
+  "ccASVSSE001_TIF__05000DFC",
+  "ccASVSSE001_TIF__05000E04",
+  "ccASVSSE001_TIF__05000E07",
+  "ccASVSSE001_TIF__05000E09",
+  "ccASVSSE001_TIF__05000EAB",
+  "ccASVSSE001_TIF__0500114D",
+  "ccASVSSE001_TIF__0500115F",
+  "ccASVSSE001_TIF__05001160",
+  "ccASVSSE001_TIF__0500116A",
+  "ccASVSSE001_TIF__05001178",
+  "ccASVSSE001_TIF__05048064",
+  "ccASVSSE001_TIF__05048065",
+  "ccASVSSE001_TIF__0504806D",
+  "ccASVSSE001_TIF__05219F5B",
+  "ccASVSSE001_TaskChecklilst",
+  "ccBGSSSE001_AdvanceStageOnUpdate",
+  "ccBGSSSE001_CatapultMonitor",
+  "ccBGSSSE001_CrabEncMonitor",
+  "ccBGSSSE001_CrabMQ2EncAlias",
+  "ccBGSSSE001_CrabMQ3_Quest",
+  "ccBGSSSE001_CrabMQ4BodyCleanup",
+  "ccBGSSSE001_CrabMQ4Reinforcements",
+  "ccBGSSSE001_DeleteOnQuestDone",
+  "ccBGSSSE001_GuardPanicScript",
+  "ccBGSSSE001_ItemCollectObjectiveScript",
+  "ccBGSSSE001_MiscDwarPlayScript",
+  "ccBGSSSE001_MiscKhajPlayScript",
+  "ccBGSSSE001_MiscMarkarthScript",
+  "ccBGSSSE001_MiscQuestScript",
+  "ccBGSSSE001_MiscSol_DinnerGuestScript",
+  "ccBGSSSE001_MiscWhiterunCourier",
+  "ccBGSSSE001_OnDeathCallReinforce",
+  "ccBGSSSE001_OnReadSetStage",
+  "ccBGSSSE001_PlayerHitScript",
+  "ccBGSSSE001_Quest_SetStageAfterTimer",
+  "ccBGSSSE001_RadiantFishQuest",
+  "ccBGSSSE001_RadiantItemPlayerScript",
+  "ccBGSSSE001_RadiantJunkQuest",
+  "ccBGSSSE001_RadiantQuest3Listener",
+  "ccBGSSSE001_SandboxFollowerScript",
+  "ccBGSSSE001_SetStageOnActivate",
+  "ccBGSSSE001_SetStageOnPickup",
+  "ccBGSSSE001_StartMQ1PlayerScript",
+  "ccBGSSSE001_SwapOutfitOnCellAttach",
+  "ccBGSSSE001_TIF__0500099D",
+  "ccBGSSSE001_TIF__050009A7",
+  "ccBGSSSE001_TIF__050009BC",
+  "ccBGSSSE001_TIF__050009D1",
+  "ccBGSSSE001_TIF__05000A63",
+  "ccBGSSSE001_TIF__05000A68",
+  "ccBGSSSE001_TIF__05000B1E",
+  "ccBGSSSE001_TIF__05000B5C",
+  "ccBGSSSE001_TIF__05000B60",
+  "ccBGSSSE001_TIF__05000B64",
+  "ccBGSSSE001_TIF__05000B79",
+  "ccBGSSSE001_TIF__05000BAF",
+  "ccBGSSSE001_TIF__05000BB0",
+  "ccBGSSSE001_TIF__05000BB1",
+  "ccBGSSSE001_TIF__05000BB2",
+  "ccBGSSSE001_TIF__05000BB3",
+  "ccBGSSSE001_TIF__05000BB4",
+  "ccBGSSSE001_TIF__05000BB5",
+  "ccBGSSSE001_TIF__05000BB6",
+  "ccBGSSSE001_TIF__05000BDE",
+  "ccBGSSSE001_TIF__05000C28",
+  "ccBGSSSE001_TIF__05000C29",
+  "ccBGSSSE001_TIF__05000C49",
+  "ccBGSSSE001_TIF__05000C5C",
+  "ccBGSSSE001_TIF__05000C5E",
+  "ccBGSSSE001_TIF__05000C70",
+  "ccBGSSSE001_TIF__05000E5B",
+  "ccBGSSSE001_TIF__05000E5C",
+  "ccBGSSSE001_TIF__05000E5E",
+  "ccBGSSSE001_TIF__05000E7B",
+  "ccBGSSSE001_TIF__05000EA4",
+  "ccBGSSSE001_TIF__05000EA9",
+  "ccBGSSSE001_TIF__05000EAC",
+  "ccBGSSSE001_TIF__05000EAF",
+  "ccBGSSSE001_TIF__05000EB4",
+  "ccBGSSSE001_TIF__05000EC3",
+  "ccBGSSSE001_TIF__05000ECE",
+  "ccBGSSSE001_TIF__05000EE5",
+  "ccBGSSSE001_TIF__050C1D0F",
+  "ccBGSSSE001_WhiterunChestScript",
+  "ccBGSSSE002_TKArrowsQuestScript",
+  "ccBGSSSE010_ContainerSetStage",
+  "ccBGSSSE010_SetStageOnActivate",
+  "ccBGSSSE013_BattleScript",
+  "ccBGSSSE014_SetStageContainerOpen",
+  "ccBGSSSE018_QF_ShadowQuest_0100081C",
+  "ccBGSSSE018_ShadowrendPlaceScript",
+  "ccBGSSSE018_ShadowrendPlayerScript",
+  "ccBGSSSE025_ElytraCollectItemScript",
+  "ccBGSSSE025_RCIntegrationScript",
+  "ccBGSSSE034_MapContainerChangeAlias",
+  "ccBGSSSE034_TIF__02000837",
+  "ccBGSSSE034_TIF__02000838",
+  "ccBGSSSE034_TIF__02000839",
+  "ccBGSSSE034_TIF__0200083A",
+  "ccBGSSSE034_TIF__0200083C",
+  "ccBGSSSE034_TIF__0200084A",
+  "ccBGSSSE034_WildHorseRefAliasScript",
+  "ccBGSSSE034_WildHorsesQuestScript",
+  "ccBGSSSE034_tif__02000d6c",
+  "ccBGSSSE034_tif__02000d6d",
+  "ccBGSSSE035_MerchantAlias",
+  "ccBGSSSE035_OnActStageRefAlias",
+  "ccBGSSSE036_SetStageOnRead",
+  "ccBGSSSE051_TIF__05000833",
+  "ccBGSSSE051_TIF__05000838",
+  "ccBGSSSE051_TIF__05000839",
+  "ccBGSSSE051__TIF__0500083D",
+  "ccBGSSSE051__TIF__05000841",
+  "ccBGSSSE067_ContentAwareScript",
+  "ccBGSSSE067_QuestFunctionsScript",
+  "ccBGSSSE067_Quest_0506BFC1",
+  "ccBGSSSE067_SetStageOnActivateConfirm",
+  "ccBGSSSE067_SetStageOnOpenRefAlias",
+  "ccBGSSSE067_SetStageTriggerScript",
+  "ccEDHSSE003_TIF__02000860",
+  "ccEDHSSE003_TIF__02000862",
+  "ccEDHSSE003_TIF__0200086B",
+  "ccEDHSSE003_TIF__02000871",
+  "ccEDHSSE003_TIF__02000875",
+  "ccEDHSSE003_TIF__0200088B",
+  "ccEDHSSE003_TIF__020008B0",
+  "ccEEJSSE004__05000C54",
+  "ccEEJSSE004__05000C58",
+  "ccEEJSSE004__05000C72",
+  "ccEEJSSE005_DeathCount",
+  "ccEEJSSE005_Quest_050B7AED",
+  "ccEEJSSE005_SetGlobalOnPickup",
+  "ccEEJSSE005_TIF__050DB2AD",
+  "ccEEJSSE005_TIF__050DB2C5",
+  "ccFFBSSE001_SoldierDeadCountScript",
+  "ccKRTSSE001_DoorActivateScript",
+  "ccKRTSSE001_FerrySyste_05000A7B",
+  "ccKRTSSE001_GTScript",
+  "ccKRTSSE001_GameTimeScript",
+  "ccKRTSSE001_QuestFortu_05000A90",
+  "ccKRTSSE001_SetStageOnLoadScript",
+  "ccKRTSSE001_SleepSetStageScript",
+  "ccKRTSSE001_StageSetonActivate",
+  "ccKRTSSE001_TIF__05000A7E",
+  "ccQDRSSE002_FollowerIdleOnSitScript",
+  "ccRMSSSE001_AltarActivateScript",
+  "ccRMSSSE001_GhostTrapScript",
+  "ccRMSSSE001_SleepSetStageScript",
+  "ccRMSSSE001_TorchCountScript",
+  "ccRMSSSE001_TradeWithSkeletonScript",
+  "ccVSVSSE002_MainQuestScript",
+  "ccVSVSSE003_QF_MainQuest",
+  "ccVSVSSE004_AnimalAliasEggScript",
+  "ccVSVSSE004_AnimalAliasMilkScript",
+  "ccVSVSSE004_F_MainQuestManager",
+  "ccVSVSSE004_F_OverseerAliasScript",
+  "ccVSVSSE004_GuardDogAliasScript",
+  "ccVSVSSE004_HorseAliasScript",
+  "ccVSVSSE004_TIF_BuyChickens",
+  "ccVSVSSE004_TIF_BuyChickensSpouse",
+  "ccVSVSSE004_TIF_BuyCow",
+  "ccVSVSSE004_TIF_BuyCowSpouse",
+  "ccVSVSSE004_TIF_BuyGoat",
+  "ccVSVSSE004_TIF_BuyGoatSpouse",
+  "ccVSVSSE004_TIF_BuyHorse",
+  "ccVSVSSE004_TIF_BuyHorseSpouse",
+  "ccVSVSSE004_TIF_CollectProfitF",
+  "ccVSVSSE004_TIF_CollectProfitM",
+  "ccVSVSSE004_TIF_CollectProfitSpouse",
+  "ccVSVSSE004_TIF_FarmhandDismiss2",
+  "ccVSVSSE004_TIF_FarmhandHire",
+  "ccVSVSSE004_TIF_OverseerHire",
+  "ccVSVSSE004_TIF_OverseerHireSpouse",
+  "ccVSVSSE004_TIF_SpawnFarmhand1",
+  "ccVSVSSE004_TIF_SpawnFarmhand1Spouse",
+  "ccVSVSSE004_TIF_UpgradeAltKidRoom",
+  "ccVSVSSE004_TIF_UpgradeBedroom",
+  "ccVSVSSE004_TIF_UpgradeBedroomSpouse",
+  "ccVSVSSE004_TIF_UpgradeDining",
+  "ccVSVSSE004_TIF_UpgradeDiningSpouse",
+  "ccVSVSSE004_TIF_UpgradeKidRoom",
+  "ccVSVSSE004_TIF_UpgradeKidRoomAltS",
+  "ccVSVSSE004_TIF_UpgradeKidRoomRepS",
+  "ccVSVSSE004_TIF_UpgradeKidRoomReplace",
+  "ccVSVSSE004_TIF_UpgradeKidRoomSpouse",
+  "ccVSVSSE004_TIF_UpgradeKitchen",
+  "ccVSVSSE004_TIF_UpgradeKitchenSpouse",
+  "ccVSVSSE004_TIF_UpgradeLab",
+  "ccVSVSSE004_TIF_UpgradeLabSpouse",
+  "ccVSVSSE004_TIF_UpgradeLoft",
+  "ccVSVSSE004_TIF_UpgradeLoftSpouse",
+  "urshug_TIF__0200183E"
+ ]
+}

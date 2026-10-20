@@ -6,7 +6,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with someone the line does not name: SetStage 10 (when: First Lessons stage < 30; the speaker is the one in alias alias 1). Source: TIF__000DF034.Fragment_0 on INFO Skyrim.esm:0DF034 (Skyrim.esm). **script**
+- Dialogue with Nirya (named by alias MG01NiryaAlias of MG01 (First Lessons) (unique)), placed in Hall of Attainment, Dormitory, "What are you doing out here?": SetStage 10 (when: First Lessons stage < 30; the speaker is the one in alias MG01NiryaAlias). Source: TIF__000DF034.Fragment_0 on INFO Skyrim.esm:0DF034 (Skyrim.esm). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:01F251 DNAM (LoreRim - Dialogue Patch.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -18,6 +18,12 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - MG04 (Good Intentions) at stage 0 calls SetStage 200. Source: QF_MG04_0001F254.fragment_0 (Unofficial Skyrim Special Edition Patch.esp).
 - MG03 (Hitting the Books) at stage 0 calls SetStage 200. Source: QF_MG03_0001F253.fragment_0 (Unofficial Skyrim Special Edition Patch.esp).
 - MG02 (Under Saarthal) at stage 0 calls SetStage 200. Source: QF_MG02_0001F252.fragment_0 (CollegeEntry.esp).
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Cast a Magelight spell", shown at stage 20. Source: Skyrim.esm:01F251 QOBJ 20. **files**
+- Dialogue with Faralda (named by alias MG01FaraldaAlias of MG01 (First Lessons) (unique)), placed in Hall of Countenance, Dormitory, "Okay, this is for the spell. (Give 30 gold)": SetStage 20 (when: the speaker is the one in alias MG01FaraldaAlias; fn264 == 0; the player has at least 30 gold; fn629 == 1). Reply: "Here you are. Now I'm anxious to see you cast it." Source: TIF__0001F814.Fragment_0 on INFO Skyrim.esm:01F814 (Skyrim.esm). **script**
+- Dialogue with Faralda (named by alias MG01FaraldaAlias of MG01 (First Lessons) (unique)), placed in Hall of Countenance, Dormitory, "Okay, I can do that.": SetStage 20 (when: the speaker is the one in alias MG01FaraldaAlias; First Lessons stage < 20; fn629 > 0). Reply: "I look forward to it." Source: TIF__00021E5D.Fragment_0 on INFO Skyrim.esm:021E5D (Skyrim.esm). **script**
 
 **Who and where**
 
@@ -47,6 +53,11 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - MG03 (Hitting the Books) at stage 0 calls SetStage 200. Source: QF_MG03_0001F253.fragment_0 (Unofficial Skyrim Special Edition Patch.esp).
 - COW_CentralQuest (College Curriculum) at stage 50 calls Start. Source: QF_COW_CentralQuest_05014C23.fragment_4 (College Of Winterhold - Quest Expansion.esp).
 
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Follow Tolfdir", shown at stage 20. Source: Skyrim.esm:01F252 QOBJ 20. **files**
+- Dialogue with Tolfdir, placed in Hall of Attainment, Dormitory, "I'm ready. Let's go.": SetStage 20 (when: fn359 == 1; Under Saarthal stage < 20; Under Saarthal stage >= 10; the speaker is Tolfdir). Reply: "All right, please stay close to me while we're inside. It should be safe, but it's always better to be cautious." Source: TIF__000233CA.Fragment_0 on INFO Skyrim.esm:0233CA (Skyrim.esm). **script**
+
 **Who and where**
 
 - First objective: "Meet Tolfdir outside Saarthal". Source: Skyrim.esm:01F252 QOBJ 10. **files**
@@ -74,6 +85,11 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - mg06 (Revealing the Unseen) at stage 0 calls SetStage 200. Source: QF_MG06_0001F256.fragment_16 (Unofficial Skyrim Special Edition Patch.esp).
 - MG04 (Good Intentions) at stage 0 calls SetStage 200. Source: QF_MG04_0001F254.fragment_0 (Unofficial Skyrim Special Edition Patch.esp).
 
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Speak with Urag gro-Shub", shown at stage 20. Source: Skyrim.esm:01F253 QOBJ 20. **files**
+- Dialogue with Mirabelle Ervine, placed in Hall of Attainment, Dormitory, "What should I do if there's no class?": SetStage 20 (when: Hitting the Books stage == 10; the speaker is Mirabelle Ervine). Reply: "Well, perhaps it's time for some independent study." Source: TIF__0002ABBA.Fragment_0 on INFO Skyrim.esm:02ABBA (Skyrim.esm). **script**
+
 **Who and where**
 
 - First objective: "Speak with Mirabelle Ervine". Source: Skyrim.esm:01F253 QOBJ 10. **files**
@@ -99,6 +115,11 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - MG07 (The Staff of Magnus) at stage 0 calls SetStage 200. Source: QF_MG07_0001F257.fragment_0 (College of Winterhold Quest Start Fixes.esp).
 - mg06 (Revealing the Unseen) at stage 0 calls SetStage 200. Source: QF_MG06_0001F256.fragment_16 (Unofficial Skyrim Special Edition Patch.esp).
 
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Listen to Tolfdir", shown at stage 15. Source: Skyrim.esm:01F254 QOBJ 15. **files**
+- Dialogue with Tolfdir (named by alias MG04TolfdirAlias of MG04 (Good Intentions) (unique)), placed in Hall of Attainment, Dormitory: SetStage 15 (when: Good Intentions stage == 10; the speaker is the one in alias MG04TolfdirAlias). Reply: "I just can't seem to tear myself away. Whatever this is, its beauty is like nothing I've ever seen before." Source: TIF__00082A12.Fragment_0 on INFO Skyrim.esm:082A12 (Skyrim.esm). **script**
+
 **Who and where**
 
 - First objective: "Speak with Tolfdir". Source: Skyrim.esm:01F254 QOBJ 10. **files**
@@ -115,11 +136,11 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start. Sources: USKP_VersionTrackingScript.ProcessRetroScripts, USKP_VersionTrackingScript.OnInit, USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9. **script**
-- USKPRetroactive202 (named "Retroactive fixes for 2.0.2" in its record), a helper quest calls Start; Start; Start; Start; Start; Start; Start; Start. Sources: USKPRetroactive202Script.Process on Unofficial Skyrim Special Edition Patch.esp:00E025. **script**
-- USKPRetroactive203 (named "Retroactive fixes for 2.0.3" in its record), a helper quest calls Start; Start; Start; Start. Sources: uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A. **script**
-- USKPRetroactive204 (named "Retroactive fixes for 2.0.4" in its record), a helper quest with Gabriella, Erikur, Susanna calls Start; Start. Sources: USKPRetroactive204Script.Process on Unofficial Skyrim Special Edition Patch.esp:012C3A. **script**
-- USKPRetroactive205 (named "Retroactive fixes for 2.0.5" in its record), a helper quest with Keerava calls Start. Source: USKPRetroactive205Script.Process on Unofficial Skyrim Special Edition Patch.esp:040578 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; USKPVersionTracking is started by the start-game flag. Sources: USKP_VersionTrackingScript.ProcessRetroScripts, USKP_VersionTrackingScript.OnInit, USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9. **script**
+- USKPRetroactive202 (named "Retroactive fixes for 2.0.2" in its record), a helper quest calls Start; Start; Start; Start; Start; Start; Start; Start; USKPRetroactive202 is started by the start-game flag. Sources: USKPRetroactive202Script.Process on Unofficial Skyrim Special Edition Patch.esp:00E025. **script**
+- USKPRetroactive203 (named "Retroactive fixes for 2.0.3" in its record), a helper quest calls Start; Start; Start; Start; USKPRetroactive203 is started by the start-game flag. Sources: uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A. **script**
+- USKPRetroactive204 (named "Retroactive fixes for 2.0.4" in its record), a helper quest with Gabriella, Erikur, Susanna calls Start; Start; USKPRetroactive204 is started by the start-game flag. Sources: USKPRetroactive204Script.Process on Unofficial Skyrim Special Edition Patch.esp:012C3A. **script**
+- USKPRetroactive205 (named "Retroactive fixes for 2.0.5" in its record), a helper quest with Keerava calls Start; USKPRetroactive205 is started by the start-game flag. Source: USKPRetroactive205Script.Process on Unofficial Skyrim Special Edition Patch.esp:040578 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
@@ -128,6 +149,11 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - MG07 (The Staff of Magnus) at stage 0 calls SetStage 200. Source: QF_MG07_0001F257.fragment_0 (College of Winterhold Quest Start Fixes.esp).
 - mg06 (Revealing the Unseen) at stage 200 calls Start. Source: QF_MG06_0001F256.fragment_14 (Unofficial Skyrim Special Edition Patch.esp).
 - mg06 (Revealing the Unseen) at stage 200 calls SetStage 0. Source: QF_MG06_0001F256.fragment_14 (Unofficial Skyrim Special Edition Patch.esp).
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Find the Arch-Mage", shown at stage 20. Source: Skyrim.esm:01F255 QOBJ 20. **files**
+- **unread**: nothing outside its own stage fragments sets stage 20 or one before it.
 
 **Who and where**
 
@@ -145,17 +171,22 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - MG04 (Good Intentions) at stage 200 calls Start. Source: QF_MG04_0001F254.fragment_14 on Skyrim.esm:01F254 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start. Sources: USKP_VersionTrackingScript.ProcessRetroScripts, USKP_VersionTrackingScript.OnInit, USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9. **script**
-- USKPRetroactive206 (named "Retroactive fixes for 2.0.6" in its record), a helper quest with Vekel, Oengul calls Start; Start; Start; Start; Start; Start; Start; Start. Sources: USKPRetroactive206Script.Process on Unofficial Skyrim Special Edition Patch.esp:04C7DF. **script**
-- USKPRetroactive207 (named "Retroactive fixes for 2.0.7" in its record), a helper quest calls Start; Start; Start; Start. Sources: USKPRetroactive207Script.Process on Unofficial Skyrim Special Edition Patch.esp:056430. **script**
-- USKPRetroactive208 (named "Retroactive fixes for 2.0.8" in its record), a helper quest with Sinding calls Start; Start. Sources: USKPRetroactive208Script.Process on Unofficial Skyrim Special Edition Patch.esp:062C72. **script**
-- USKPRetroactive209 (named "Retroactive fixes for 2.0.9" in its record), a helper quest with Sergius, Zaria calls Start. Source: USKPRetroactive209Script.Process on Unofficial Skyrim Special Edition Patch.esp:06D3A0 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; USKPVersionTracking is started by the start-game flag. Sources: USKP_VersionTrackingScript.ProcessRetroScripts, USKP_VersionTrackingScript.OnInit, USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9. **script**
+- USKPRetroactive206 (named "Retroactive fixes for 2.0.6" in its record), a helper quest with Vekel, Oengul calls Start; Start; Start; Start; Start; Start; Start; Start; USKPRetroactive206 is started by the start-game flag. Sources: USKPRetroactive206Script.Process on Unofficial Skyrim Special Edition Patch.esp:04C7DF. **script**
+- USKPRetroactive207 (named "Retroactive fixes for 2.0.7" in its record), a helper quest calls Start; Start; Start; Start; USKPRetroactive207 is started by the start-game flag. Sources: USKPRetroactive207Script.Process on Unofficial Skyrim Special Edition Patch.esp:056430. **script**
+- USKPRetroactive208 (named "Retroactive fixes for 2.0.8" in its record), a helper quest with Sinding calls Start; Start; USKPRetroactive208 is started by the start-game flag. Sources: USKPRetroactive208Script.Process on Unofficial Skyrim Special Edition Patch.esp:062C72. **script**
+- USKPRetroactive209 (named "Retroactive fixes for 2.0.9" in its record), a helper quest with Sergius, Zaria calls Start; USKPRetroactive209 is started by the start-game flag. Source: USKPRetroactive209Script.Process on Unofficial Skyrim Special Edition Patch.esp:06D3A0 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
 
 - MG08 (The Eye of Magnus) at stage 0 calls SetStage 200. Source: QF_MG08_0001F258.fragment_0 (College of Winterhold Quest Start Fixes.esp).
 - MG07 (The Staff of Magnus) at stage 0 calls SetStage 200. Source: QF_MG07_0001F257.fragment_0 (College of Winterhold Quest Start Fixes.esp).
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Find the ruins of Mzulft", shown at stage 20. Source: Skyrim.esm:01F256 QOBJ 20. **files**
+- Dialogue with Mirabelle Ervine (named by alias MG06MirabelleAlias of mg06 (Revealing the Unseen) (unique)), placed in Hall of Attainment, Dormitory, "So no one knows the staff's location?": SetStage 20 (when: the speaker is the one in alias MG06MirabelleAlias; Revealing the Unseen stage == 10). Reply: "No one here does." Source: TIF__00027567.Fragment_0 on INFO Skyrim.esm:027567 (Unofficial Skyrim Special Edition Patch.esp). **script**
 
 **Who and where**
 
@@ -180,6 +211,11 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - MG08 (The Eye of Magnus) at stage 0 calls SetStage 200. Source: QF_MG08_0001F258.fragment_0 (College of Winterhold Quest Start Fixes.esp).
 
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Find the Staff of Magnus", shown at stage 20. Source: Skyrim.esm:01F257 QOBJ 20. **files**
+- **unread**: nothing outside its own stage fragments sets stage 20 or one before it.
+
 **Who and where**
 
 - First objective: "Enter Labyrinthian". Source: Skyrim.esm:01F257 QOBJ 10. **files**
@@ -199,6 +235,11 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - MG07 (The Staff of Magnus) calls at stage 200 Start; at stage 200 SetStage 0. Sources: QF_MG07_0001F257.fragment_17 on Skyrim.esm:01F257. **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Reach the Hall of the Elements", shown at stage 20. Source: Skyrim.esm:01F258 QOBJ 20. **files**
+- **unread**: nothing outside its own stage fragments sets stage 20 or one before it.
+
 **Who and where**
 
 - First objective: "Use the Staff of Magnus to enter the College of Winterhold". Source: Skyrim.esm:01F258 QOBJ 10. **files**
@@ -216,13 +257,18 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - MGR22 (named "Shalidor's Insights Rewards" in its record), a helper quest with Urag at stage 200 calls Start; MGR22 is started by MGR21 (Shalidor's Insights) at stage 200 (Start). Source: QF_MGR22_000E0E0C.fragment_0 on Skyrim.esm:0E0E0C (Requiem.esp). **script**
 - MG01 (First Lessons) at stage 30 calls Start. Source: QF_MG01_0001F251.fragment_13 on Skyrim.esm:01F251 (LoreRim - Dialogue Patch.esp). **script**
-- USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start. Sources: USKP_VersionTrackingScript.ProcessRetroScripts, USKP_VersionTrackingScript.OnInit, USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9. **script**
-- USKPRetroactive131 (named "Retroactive fixes for 1.3.1" in its record), a helper quest with Varnius, Gloth calls Start; Start; Start; Start; Start; Start; Start; Start. Sources: USKPRetroactive131Script.Process on Unofficial Skyrim Special Edition Patch.esp:01906F. **script**
-- USKPRetroactive132 (named "Retroactive fixes for 1.3.2" in its record), a helper quest with SindingGhost, SindingHuman calls Start; Start; Start; Start. Sources: USKPRetroactive132Script.Process on Unofficial Skyrim Special Edition Patch.esp:02C3E7. **script**
-- USKPRetroactive133 (named "Retroactive fixes for 1.3.3" in its record), a helper quest with Nurelion, WoundedSoldier, Froki calls Start; Start. Sources: uskpretroactive133script.Process on Unofficial Skyrim Special Edition Patch.esp:03F7B8. **script**
-- USKPRetroactive200 (named "Retroactive fixes for 2.0.0" in its record), a helper quest with Sanguine, Embry, Proventus calls Start. Source: USKPRetroactive200Script.Process on Unofficial Skyrim Special Edition Patch.esp:051CB5 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: Shalidor's Insights stage < 10; the speaker is the one in alias alias None). Source: TIF__000F6270.Fragment_0 on INFO Skyrim.esm:0F6270 (Skyrim.esm). **script**
+- USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; Start; USKPVersionTracking is started by the start-game flag. Sources: USKP_VersionTrackingScript.ProcessRetroScripts, USKP_VersionTrackingScript.OnInit, USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9. **script**
+- USKPRetroactive131 (named "Retroactive fixes for 1.3.1" in its record), a helper quest with Varnius, Gloth calls Start; Start; Start; Start; Start; Start; Start; Start; USKPRetroactive131 is started by the start-game flag. Sources: USKPRetroactive131Script.Process on Unofficial Skyrim Special Edition Patch.esp:01906F. **script**
+- USKPRetroactive132 (named "Retroactive fixes for 1.3.2" in its record), a helper quest with SindingGhost, SindingHuman calls Start; Start; Start; Start; USKPRetroactive132 is started by the start-game flag. Sources: USKPRetroactive132Script.Process on Unofficial Skyrim Special Edition Patch.esp:02C3E7. **script**
+- USKPRetroactive133 (named "Retroactive fixes for 1.3.3" in its record), a helper quest with Nurelion, WoundedSoldier, Froki calls Start; Start; USKPRetroactive133 is started by the start-game flag. Sources: uskpretroactive133script.Process on Unofficial Skyrim Special Edition Patch.esp:03F7B8. **script**
+- USKPRetroactive200 (named "Retroactive fixes for 2.0.0" in its record), a helper quest with Sanguine, Embry, Proventus calls Start; USKPRetroactive200 is started by the start-game flag. Source: USKPRetroactive200Script.Process on Unofficial Skyrim Special Edition Patch.esp:051CB5 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Urag gro-Shub (named by alias QuestGiver of MGR21 (Shalidor's Insights) (unique)), placed in The Arcanaeum: SetStage 10 (when: Shalidor's Insights stage < 10; the speaker is the one in alias QuestGiver). Source: TIF__000F6270.Fragment_0 on INFO Skyrim.esm:0F6270 (Skyrim.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Talk to Urag", shown at stage 20. Source: Skyrim.esm:0E0E04 QOBJ 20. **files**
+- MGR21 (Shalidor's Insights) calls SetStage 20. Source: defaultsetstageonplayeracquire.OnContainerChanged on Skyrim.esm:0E0E04 (CollegeEntry.esp). **script**
 
 **Who and where**
 
@@ -239,11 +285,16 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DialogueWinterholdCollege (named "Winterhold College Dialogue" in its record), a helper quest with Onmund, Jzargo, Tolfdir calls Start. Source: DialogueWinterholdCollegeQuestScript.OnUpdateGameTime on Skyrim.esm:03618F (Skyrim.esm). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: the speaker is the one in alias alias None). Source: TIF__000C1E50.Fragment_0 on INFO Skyrim.esm:0C1E50 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: the speaker is the one in alias alias None; fn136 == 1 or fn136 == 1 or fn136 == 1). Source: TIF__000C1E51.Fragment_0 on INFO Skyrim.esm:0C1E51 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: the speaker is the one in alias alias None). Source: TIF__000C1E52.Fragment_0 on INFO Skyrim.esm:0C1E52 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- DialogueWinterholdCollege (named "Winterhold College Dialogue" in its record), a helper quest with Onmund, Jzargo, Tolfdir calls Start; DialogueWinterholdCollege is started by the start-game flag. Source: DialogueWinterholdCollegeQuestScript.OnUpdateGameTime on Skyrim.esm:03618F (Skyrim.esm). **script**
+- Dialogue with Tolfdir (named by alias Tolfdir of MGR30 (Aftershock) (unique)), placed in Hall of Attainment, Dormitory: SetStage 10 (when: the speaker is the one in alias Tolfdir). Source: TIF__000C1E50.Fragment_0 on INFO Skyrim.esm:0C1E50 (Skyrim.esm). **script**
+- Dialogue with Tolfdir (named by alias Tolfdir of MGR30 (Aftershock) (unique)), placed in Hall of Attainment, Dormitory: SetStage 10 (when: the speaker is the one in alias Tolfdir; fn136 == 1 or fn136 == 1 or fn136 == 1). Source: TIF__000C1E51.Fragment_0 on INFO Skyrim.esm:0C1E51 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Tolfdir (named by alias Tolfdir of MGR30 (Aftershock) (unique)), placed in Hall of Attainment, Dormitory: SetStage 10 (when: the speaker is the one in alias Tolfdir). Source: TIF__000C1E52.Fragment_0 on INFO Skyrim.esm:0C1E52 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Return to Tolfdir", shown at stage 20. Source: Skyrim.esm:0C1E72 QOBJ 20. **files**
+- **unread**: nothing outside its own stage fragments sets stage 20 or one before it.
 
 **Who and where**
 
@@ -261,12 +312,17 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - MG02 (Under Saarthal) at stage 200 calls Start. Source: QF_MG02_0001F252.fragment_16 on Skyrim.esm:01F252 (CollegeEntry.esp). **script**
-- Dialogue with someone the line does not name: SetStage 20 (when: fn629 == 1; the speaker is the one in alias alias None; Brelyna's Practice stage == 10). Source: TIF__000C04F5.Fragment_0 on INFO Skyrim.esm:0C04F5 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name: SetStage 20 (when: fn629 == 1; the speaker is the one in alias alias None; Brelyna's Practice stage == 10). Source: TIF__000C04F7.Fragment_0 on INFO Skyrim.esm:0C04F7 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: fn46 == 0; the speaker is the one in alias alias None). Source: TIF__000C04FF.Fragment_0 on INFO Skyrim.esm:0C04FF (Skyrim.esm). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: fn46 == 0; the speaker is the one in alias alias None). Source: TIF__000C0500.Fragment_0 on INFO Skyrim.esm:0C0500 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: the speaker is the one in alias alias None). Source: TIF__000C0501.Fragment_0 on INFO Skyrim.esm:0C0501 (Skyrim.esm). **script**
+- Dialogue with Brelyna Maryon (named by alias QuestGiver of MGRAppBrelyna01 (Brelyna's Practice) (unique)), placed in Hall of Attainment, Dormitory, "What did you do?": SetStage 20 (when: fn629 == 1; the speaker is the one in alias QuestGiver; Brelyna's Practice stage == 10). Source: TIF__000C04F5.Fragment_0 on INFO Skyrim.esm:0C04F5 (Skyrim.esm). **script**
+- Dialogue with Brelyna Maryon (named by alias QuestGiver of MGRAppBrelyna01 (Brelyna's Practice) (unique)), placed in Hall of Attainment, Dormitory, "Tell me this isn't permanent.": SetStage 20 (when: fn629 == 1; the speaker is the one in alias QuestGiver; Brelyna's Practice stage == 10). Source: TIF__000C04F7.Fragment_0 on INFO Skyrim.esm:0C04F7 (Skyrim.esm). **script**
+- Dialogue with Brelyna Maryon (named by alias QuestGiver of MGRAppBrelyna01 (Brelyna's Practice) (unique)), placed in Hall of Attainment, Dormitory, "Okay, I'll help.": SetStage 10 (when: fn46 == 0; the speaker is the one in alias QuestGiver). Source: TIF__000C04FF.Fragment_0 on INFO Skyrim.esm:0C04FF (Skyrim.esm). **script**
+- Dialogue with Brelyna Maryon (named by alias QuestGiver of MGRAppBrelyna01 (Brelyna's Practice) (unique)), placed in Hall of Attainment, Dormitory, "Okay, I'll help.": SetStage 10 (when: fn46 == 0; the speaker is the one in alias QuestGiver). Source: TIF__000C0500.Fragment_0 on INFO Skyrim.esm:0C0500 (Skyrim.esm). **script**
+- Dialogue with Brelyna Maryon (named by alias QuestGiver of MGRAppBrelyna01 (Brelyna's Practice) (unique)), placed in Hall of Attainment, Dormitory, "Okay, I'll help.": SetStage 10 (when: the speaker is the one in alias QuestGiver). Source: TIF__000C0501.Fragment_0 on INFO Skyrim.esm:0C0501 (Skyrim.esm). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Speak to Brelyna", shown at stage 30. Source: Skyrim.esm:0C0416 QOBJ 30. **files**
+- **unread**: nothing outside its own stage fragments sets stage 30 or one before it.
 
 **Who and where**
 
@@ -284,8 +340,13 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - MG02 (Under Saarthal) at stage 200 calls Start. Source: QF_MG02_0001F252.fragment_16 on Skyrim.esm:01F252 (CollegeEntry.esp). **script**
-- Dialogue with J'zargo, placed in Hall of Attainment, Dormitory: SetStage 20 (when: fn629 == 2; the speaker is J'zargo). Source: TIF__000967E2.Fragment_0 on INFO Skyrim.esm:0967E2 (Skyrim.esm). **script**
+- Dialogue with J'zargo, placed in Hall of Attainment, Dormitory, "All right, I'll help you. Give me the scrolls.": SetStage 20 (when: fn629 == 2; the speaker is J'zargo). Source: TIF__000967E2.Fragment_0 on INFO Skyrim.esm:0967E2 (Skyrim.esm). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Speak to J'zargo", shown at stage 30. Source: Skyrim.esm:0958B3 QOBJ 30. **files**
+- MGRAppJzargo01 (J'zargo's Experiment) calls SetStage 30. Source: MGRJzargoSpell01QuestScript.VCount on Skyrim.esm:0958B3 (Skyrim.esm). **script**
 
 **Who and where**
 
@@ -303,8 +364,13 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - MG02 (Under Saarthal) at stage 200 calls Start. Source: QF_MG02_0001F252.fragment_16 on Skyrim.esm:01F252 (CollegeEntry.esp). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: fn249 == 1; Onmund's Request stage < 10; fn629 == 1; the speaker is the one in alias alias None). Source: TIF__000C084A.Fragment_0 on INFO Skyrim.esm:0C084A (Skyrim.esm). **script**
+- Dialogue with Onmund (named by alias Onmund of MGRAppOnmund01 (Onmund's Request) (unique)), placed in Hall of Attainment, Dormitory, "Is something wrong?": SetStage 10 (when: fn249 == 1; Onmund's Request stage < 10; fn629 == 1; the speaker is the one in alias Onmund). Source: TIF__000C084A.Fragment_0 on INFO Skyrim.esm:0C084A (Skyrim.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Find the staff for Enthir", shown at stage 20. Source: Skyrim.esm:06BC33 QOBJ 20. **files**
+- Dialogue with Enthir (named by alias Enthir of MGRAppOnmund01 (Onmund's Request) (unique)), placed in Hall of Attainment, Dormitory, "I'll get the staff for you.": SetStage 20 (when: Onmund's Request stage == 10; the speaker is the one in alias Enthir). Reply: "Finally, we have an agreement." Source: TIF__000C1E44.Fragment_0 on INFO Skyrim.esm:0C1E44 (Skyrim.esm). **script**
 
 **Who and where**
 
@@ -322,7 +388,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with someone the line does not name: SetStage 10 (when: the speaker is the one in alias alias None). Source: TIF__0006A04B.Fragment_0 on INFO Skyrim.esm:06A04B (Skyrim.esm). **script**
+- Dialogue with Arniel Gane (named by alias ArnielGane of MGRArniel01 (Arniel's Endeavor) (forced)), placed in Hall of Attainment, Dormitory: SetStage 10 (when: the speaker is the one in alias ArnielGane). Source: TIF__0006A04B.Fragment_0 on INFO Skyrim.esm:06A04B (Skyrim.esm). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:06A086 DNAM (LoreRim - Economy Overhaul.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -343,8 +409,13 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - MGRArniel01 (Arniel's Endeavor) at stage 200 calls Start. Source: QF_MGRArniel01_0006A086.fragment_0 on Skyrim.esm:06A086 (LoreRim - Economy Overhaul.esp). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: the speaker is the one in alias alias None). Source: TIF__0006A03E.Fragment_0 on INFO Skyrim.esm:06A03E (Skyrim.esm). **script**
+- Dialogue with Arniel Gane (named by alias Arniel of MGRArniel02 (Arniel's Endeavor) (unique)), placed in Hall of Attainment, Dormitory: SetStage 10 (when: the speaker is the one in alias Arniel). Source: TIF__0006A03E.Fragment_0 on INFO Skyrim.esm:06A03E (Skyrim.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Acquire the Staff", shown at stage 20. Source: Skyrim.esm:06A08D QOBJ 20. **files**
+- Dialogue with Enthir (named by alias Enthir of MGRArniel02 (Arniel's Endeavor) (unique)), placed in Hall of Attainment, Dormitory, "What is it that you want?": SetStage 20 (when: Arniel's Endeavor stage == 10; fn629 == 1; the speaker is the one in alias Enthir). Reply: "I have a... friend, let's say, who's interested in a staff. A particular one." Source: TIF__0006A058.Fragment_0 on INFO Skyrim.esm:06A058 (Skyrim.esm). **script**
 
 **Who and where**
 
@@ -364,8 +435,13 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - MGRArniel02 (Arniel's Endeavor) at stage 200 calls Start. Source: QF_MGRArniel02_0006A08D.fragment_10 on Skyrim.esm:06A08D (Skyrim.esm). **script**
 - MG08 (The Eye of Magnus) at stage 200 calls Start. Source: QF_MG08_0001F258.fragment_12 on Skyrim.esm:01F258 (College of Winterhold Quest Start Fixes.esp). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: Arniel's Endeavor stage < 10; fn629 == 3; the speaker is the one in alias alias None). Source: TIF__0006A04E.Fragment_0 on INFO Skyrim.esm:06A04E (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Arniel Gane (named by alias Arniel of MGRArniel03 (Arniel's Endeavor) (unique)), placed in Hall of Attainment, Dormitory, "Teach me your spell, and I'll see what I can do.": SetStage 10 (when: Arniel's Endeavor stage < 10; fn629 == 3; the speaker is the one in alias Arniel). Source: TIF__0006A04E.Fragment_0 on INFO Skyrim.esm:06A04E (Unofficial Skyrim Special Edition Patch.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Place the warped soul gem into another Convector". Source: Skyrim.esm:06A097 QOBJ 13. **files**
+- **unread**: no fragment of its own shows the second objective, so the stage that moves it isn't traced.
 
 **Who and where**
 
@@ -389,8 +465,13 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - MGRArniel03 (Arniel's Endeavor) at stage 255 calls Start. Source: QF_MGRArniel03_0006A097.fragment_10 on Skyrim.esm:06A097 (College of Winterhold Quest Start Fixes.esp). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: Arniel's Endeavor stage < 10; the speaker is the one in alias alias None). Source: TIF__0006A046.Fragment_0 on INFO Skyrim.esm:06A046 (Skyrim.esm). **script**
+- Dialogue with Arniel Gane (named by alias Arniel of MGRArniel04 (Arniel's Endeavor) (unique)), placed in Hall of Attainment, Dormitory, "Have you unraveled the mystery of the dwarves yet?": SetStage 10 (when: Arniel's Endeavor stage < 10; the speaker is the one in alias Arniel). Source: TIF__0006A046.Fragment_0 on INFO Skyrim.esm:06A046 (Skyrim.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Find the courier", shown at stage 20. Source: Skyrim.esm:06A119 QOBJ 20. **files**
+- Dialogue with Enthir (named by alias Enthir of MGRArniel04 (Arniel's Endeavor) (unique)), placed in Hall of Attainment, Dormitory: SetStage 20 (when: fn629 == 1; Arniel's Endeavor stage == 10; the speaker is the one in alias Enthir). Reply: "If you're getting involved in this, that would be where you'd start looking." Source: TIF__0006A034.Fragment_0 on INFO Skyrim.esm:06A034 (Unofficial Skyrim Special Edition Patch.esp). **script**
 
 **Who and where**
 
@@ -408,9 +489,14 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- MGSuspensionQuest (named "College Suspension" in its record), a helper quest at stage 0 calls Start. Source: QF_MGSuspensionQuest_0005B5DC.fragment_0 on Skyrim.esm:05B5DC (Unofficial Skyrim Special Edition Patch.esp). **script**
+- MGSuspensionQuest (named "College Suspension" in its record), a helper quest at stage 0 calls Start; MGSuspensionQuest is started by story manager node MGSuspension (event: kill; GetIsRace Skyrim.esm:0CDD84 == 0; the speaker is Prisoner; GetInFaction College of Winterhold == 1; GetInFaction College of Winterhold == 1; GetQuestRunning College Suspension == 0). Source: QF_MGSuspensionQuest_0005B5DC.fragment_0 on Skyrim.esm:05B5DC (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with someone the line does not name: SetStage 5 (when: Rejoining the College stage < 5; the speaker isn't Tolfdir; the speaker isn't Savos Aren; GetInFaction College of Winterhold == 1). Source: TIF__0005CA16.Fragment_0 on INFO Skyrim.esm:05CA16 (Skyrim.esm). **script**
 - (First objective shown at stage 5; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Give Tolfdir 250 gold to lift your suspension", shown at stage 10. Source: Skyrim.esm:0C9A0E QOBJ 10. **files**
+- Dialogue with Tolfdir (named by alias MGRejoinTolfdir of MGRejoinQuest (Rejoining the College) (unique)), placed in Hall of Attainment, Dormitory, "I'd like to clear up the matter of my suspension.": SetStage 10 (when: fn249 == 1; global MGRejoinVar == 0 (now 0); Rejoining the College stage <= 5; the speaker is the one in alias MGRejoinTolfdir). Reply: "Ah, yes. There was an incident, wasn't there?" Source: TIF__000C9A04.Fragment_0 on INFO Skyrim.esm:0C9A04 (Skyrim.esm). **script**
 
 **Who and where**
 
@@ -428,7 +514,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with someone the line does not name: SetStage 10 (when: the speaker is the one in alias alias None). Source: TIF__000A4E81.Fragment_0 on INFO Skyrim.esm:0A4E81 (Skyrim.esm). **script**
+- Dialogue with Faralda (named by alias Faralda of MGRitual01 (Destruction Ritual Spell) (unique)), placed in Hall of Countenance, Dormitory, "What do you mean?": SetStage 10 (when: the speaker is the one in alias Faralda). Source: TIF__000A4E81.Fragment_0 on INFO Skyrim.esm:0A4E81 (Skyrim.esm). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:0A4E82 DNAM (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -447,7 +533,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with someone the line does not name: SetStage 10 (when: the speaker is the one in alias alias None). Source: TIF__000B3227.Fragment_0 on INFO Skyrim.esm:0B3227 (Skyrim.esm). **script**
+- Dialogue with Drevis Neloren (named by alias Drevis of MGRitual02 (Illusion Ritual Spell) (unique)), placed in Hall of Countenance, Dormitory, "What's the next step?": SetStage 10 (when: the speaker is the one in alias Drevis). Source: TIF__000B3227.Fragment_0 on INFO Skyrim.esm:0B3227 (Skyrim.esm). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:0B3233 DNAM (Unofficial Skyrim Special Edition Patch.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -467,9 +553,21 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with someone the line does not name: SetStage 10 (when: the speaker is the one in alias alias None). Source: TIF__000DB36A.Fragment_0 on INFO Skyrim.esm:0DB36A (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Phinis Gestor (named by alias Phinis of MGRitual03 (Conjuration Ritual Spell) (unique)), placed in Hall of Countenance, Dormitory: SetStage 10 (when: the speaker is the one in alias Phinis). Source: TIF__000DB36A.Fragment_0 on INFO Skyrim.esm:0DB36A (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:099F27 DNAM (Unofficial Skyrim Special Edition Patch.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Deliver the stone to Phinis", shown at stage 70. Source: Skyrim.esm:099F27 QOBJ 20. **files**
+- Dialogue with Unbound Dremora, "I summoned you. I control you now.": SetStage 20 (when: the speaker is Unbound Dremora). Reply: "You control nothing, mortal!" Source: TIF__000DB368.Fragment_0 on INFO Skyrim.esm:0DB368 (Skyrim.esm). **script**
+- Dialogue with Unbound Dremora, "You will do as I say!": SetStage 20 (when: the speaker is Unbound Dremora). Reply: "I serve no mortal!" Source: TIF__000DB369.Fragment_0 on INFO Skyrim.esm:0DB369 (Skyrim.esm). **script**
+- Dialogue with Unbound Dremora, "Admit that I control you.": SetStage 40 (when: the speaker is Unbound Dremora). Reply: "I'll tear your heart out first!" Source: TIF__000DBA4C.Fragment_0 on INFO Skyrim.esm:0DBA4C (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Unbound Dremora, "Are you ready to submit?": SetStage 40 (when: the speaker is Unbound Dremora). Reply: "Never!" Source: TIF__000DBA4A.Fragment_0 on INFO Skyrim.esm:0DBA4A (Skyrim.esm). **script**
+- Dialogue with Unbound Dremora: SetStage 70 (when: fn629 == 10; the speaker is Unbound Dremora). Reply: "Your sigil stone. Lord Dagon... is less than pleased at its loss." Source: TIF__000DD653.Fragment_0 on INFO Skyrim.esm:0DD653 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Unbound Dremora, "Bring me a Sigil Stone. Now.": SetStage 60 (when: fn131 == 1; the speaker is Unbound Dremora). Reply: "Yes, my lord. Summon me again, and I shall have your stone." Source: TIF__000DD64E.Fragment_0 on INFO Skyrim.esm:0DD64E (Skyrim.esm). **script**
+- Dialogue with Unbound Dremora, "Bring me a Sigil Stone. Now.": SetStage 60 (when: fn131 == 1; the speaker is Unbound Dremora). Reply: "Yes, my mistress. Summon me again, and I shall have your stone." Source: TIF__000DD64F.Fragment_0 on INFO Skyrim.esm:0DD64F (Skyrim.esm). **script**
+- On the way, a line of its own starts a scene while it is at its first objective: Dialogue with Phinis Gestor (named by alias Phinis of MGRitual03 (Conjuration Ritual Spell) (unique)), placed in Hall of Countenance, Dormitory, "I have your sigil stone.": StartScene (when: Conjuration Ritual Spell stage == 70; the speaker is the one in alias Phinis) (scene Skyrim.esm:0DE448). Source: TIF__000DE43C.Fragment_1 on INFO Skyrim.esm:0DE43C (Unofficial Skyrim Special Edition Patch.esp). **script**
 
 **Who and where**
 
@@ -488,7 +586,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - MG04 (Good Intentions) at stage 200 calls Start. Source: QF_MG04_0001F254.fragment_14 on Skyrim.esm:01F254 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: the speaker is the one in alias alias None). Source: TIF__000CD981.Fragment_0 on INFO Skyrim.esm:0CD981 (Skyrim.esm). **script**
+- Dialogue with Colette Marence (named by alias Colette of MGRitual04 (Restoration Ritual Spell) (unique)), placed in Hall of Countenance, Dormitory: SetStage 10 (when: the speaker is the one in alias Colette). Source: TIF__000CD981.Fragment_0 on INFO Skyrim.esm:0CD981 (Skyrim.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -507,10 +605,15 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with someone the line does not name: SetStage 10 (when: the speaker is the one in alias alias None). Source: TIF__000D2B44.Fragment_0 on INFO Skyrim.esm:0D2B44 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: the speaker is the one in alias alias None). Source: TIF__000D2B48.Fragment_0 on INFO Skyrim.esm:0D2B48 (Skyrim.esm). **script**
+- Dialogue with Tolfdir (named by alias Tolfdir of MGRitual05 (Alteration Ritual Spell) (unique)), placed in Hall of Attainment, Dormitory, "I was just asking. I didn't really want to be involved.": SetStage 10 (when: the speaker is the one in alias Tolfdir). Source: TIF__000D2B44.Fragment_0 on INFO Skyrim.esm:0D2B44 (Skyrim.esm). **script**
+- Dialogue with Tolfdir (named by alias Tolfdir of MGRitual05 (Alteration Ritual Spell) (unique)), placed in Hall of Attainment, Dormitory, "I'll return shortly with the dragon scales.": SetStage 10 (when: the speaker is the one in alias Tolfdir). Source: TIF__000D2B48.Fragment_0 on INFO Skyrim.esm:0D2B48 (Skyrim.esm). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:0D0755 DNAM (DragonHunting.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Bring the Dragon Heartscales to Tolfdir", shown at stage 20. Source: Skyrim.esm:0D0755 QOBJ 20. **files**
+- **unread**: nothing outside its own stage fragments sets stage 20 or one before it.
 
 **Who and where**
 
@@ -529,6 +632,11 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Tolfdir, placed in Hall of Attainment, Dormitory: SetStage 10 (when: the speaker is Tolfdir). Source: TIF__0005CA18.Fragment_0 on INFO Skyrim.esm:05CA18 (Skyrim.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Return to Tolfdir", shown at stage 20. Source: Skyrim.esm:05A609 QOBJ 20. **files**
+- MGRRogue (Rogue Wizard) calls SetStage 20. Source: MGRejoinTargetScript.OnDeath on Skyrim.esm:05A609 (Skyrim.esm). **script**
 
 **Who and where**
 
@@ -553,6 +661,11 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - COW_CentralQuest (College Curriculum) calls Start. Source: COW_PlayerKnowsSpell.Fragment_0 (College Of Winterhold - Quest Expansion.esp).
 - COW_CentralQuest (College Curriculum) calls Start. Source: Cow_WaterLearned.Fragment_0 (College Of Winterhold - Quest Expansion.esp).
 
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Speak with Arniel Gane when ready to depart", shown at stage 5. Source: College Of Winterhold - Quest Expansion.esp:000801 QOBJ 5. **files**
+- Dialogue with Arniel Gane (named by alias ArnielGane of Cow_Breathing (Rapture of the Deep) (unique)), placed in Hall of Attainment, Dormitory, "I need some time to prepare.": SetStage 5 (when: the speaker is the one in alias ArnielGane). Reply: "Fine. Just let me know when you're ready to leave, alright?" Source: Cow_ArnielMustWait.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000837 (College Of Winterhold - Quest Expansion.esp). **script**
+
 **Who and where**
 
 - First objective: "Talk to Arniel Gane". Source: College Of Winterhold - Quest Expansion.esp:000801 QOBJ 1. **files**
@@ -572,6 +685,11 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - MG01 (First Lessons) at stage 200 calls Start. Source: QF_MG01_0001F251.fragment_18 on Skyrim.esm:01F251 (LoreRim - Dialogue Patch.esp). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Learn Waterbreathing and talk to Tolfdir", shown at stage 5. Source: College Of Winterhold - Quest Expansion.esp:00081D QOBJ 15. **files**
+- Dialogue with Tolfdir (named by alias Tolfdir of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Attainment, Dormitory, "Interesting. What do I need to do?": SetStage 5 (when: College Curriculum hasn't started; fn264 == 0; the speaker is the one in alias Tolfdir). Reply: "Here, take a look at this. Just let me know when you're ready to practice the spell, alright?" Source: Cow_GiveBookSpell.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000822 (College Of Winterhold - Quest Expansion.esp). **script**
+
 **Who and where**
 
 - First objective: "Talk to Tolfdir for more lessons". Source: College Of Winterhold - Quest Expansion.esp:00081D QOBJ 10. **files**
@@ -588,11 +706,17 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with someone the line does not name: Start (when: the speaker is the one in alias alias 10). Source: Cow_ConjuBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009B1 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: SetStage 5 (when: the speaker is the one in alias alias 10). Source: Cow_ConjuBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009B1 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: Start (when: the speaker is the one in alias alias 10; fn264 == 1). Source: Cow_CentralConjuFollow.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009B3 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: Start (when: the speaker is the one in alias alias 10). Source: Cow_ConjurationSkip.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009B5 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Phinis Gestor (named by alias Phinis of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Understood. I won't scare the locals.": Start (when: the speaker is the one in alias Phinis). Source: Cow_ConjuBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009B1 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Phinis Gestor (named by alias Phinis of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Understood. I won't scare the locals.": SetStage 5 (when: the speaker is the one in alias Phinis). Source: Cow_ConjuBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009B1 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Phinis Gestor (named by alias Phinis of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Of course. I know some conjuration spells already.": Start (when: the speaker is the one in alias Phinis; fn264 == 1). Source: Cow_CentralConjuFollow.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009B3 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Phinis Gestor (named by alias Phinis of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Actually, I'm not interested. (Skip Quest)": Start (when: the speaker is the one in alias Phinis). Source: Cow_ConjurationSkip.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009B5 (College Of Winterhold - Quest Expansion.esp). **script**
 - (First objective shown at stage 5; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Follow Phinis", shown at stage 10. Source: College Of Winterhold - Quest Expansion.esp:00086F QOBJ 10. **files**
+- Dialogue with Phinis Gestor (named by alias Phinis of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Of course. I know some conjuration spells already.": SetStage 10 (when: the speaker is the one in alias Phinis; fn264 == 1). Reply: "Oh, really? Good! Follow me, I think it's time to test your knowledge against mine. Exciting, isn't it?" Source: Cow_CentralConjuFollow.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009B3 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Phinis Gestor (named by alias Phinis of Cow_Conjuration (I Choose You, Familiar) (unique)), placed in Hall of Countenance, Dormitory, "I've studied the tome and can now cast the spell.": SetStage 10 (when: I Choose You, Familiar stage == 5; the speaker is the one in alias Phinis). Reply: "Excellent! Follow me. I think it's time to test your knowledge against mine." Source: Cow_FollowMeConju.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009B8 (College Of Winterhold - Quest Expansion.esp). **script**
 
 **Who and where**
 
@@ -610,11 +734,17 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with someone the line does not name: Start (when: fn264 == 0; the speaker is the one in alias alias 7). Source: Cow_Destruction_SpellBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000897 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: SetStage 5 (when: fn264 == 0; the speaker is the one in alias alias 7). Source: Cow_Destruction_SpellBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000897 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: Start (when: fn264 == 1; the speaker is the one in alias alias 7). Source: Destruction_SkipBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000899 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: Start (when: the speaker is the one in alias alias 7). Source: Cow_Faralda_refuse.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009EC (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Faralda (named by alias Faralda of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "I'm not familiar with that spell, I'm afraid.": Start (when: fn264 == 0; the speaker is the one in alias Faralda). Source: Cow_Destruction_SpellBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000897 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Faralda (named by alias Faralda of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "I'm not familiar with that spell, I'm afraid.": SetStage 5 (when: fn264 == 0; the speaker is the one in alias Faralda). Source: Cow_Destruction_SpellBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000897 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Faralda (named by alias Faralda of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "I'm familiar with the firebolt spell.": Start (when: fn264 == 1; the speaker is the one in alias Faralda). Source: Destruction_SkipBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000899 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Faralda (named by alias Faralda of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Actually, I've changed my mind. I don't want to learn from you. (Skip Quest)": Start (when: the speaker is the one in alias Faralda). Source: Cow_Faralda_refuse.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009EC (College Of Winterhold - Quest Expansion.esp). **script**
 - (First objective shown at stage 5; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Pass Faralda's test using Firebolt", shown at stage 10. Source: College Of Winterhold - Quest Expansion.esp:000873 QOBJ 10. **files**
+- Dialogue with Faralda (named by alias Faralda of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "I'm familiar with the firebolt spell.": SetStage 10 (when: fn264 == 1; the speaker is the one in alias Faralda). Reply: "Oh, I see. Well... A small test, if you will." Source: Destruction_SkipBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000899 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Faralda (named by alias Faralda of Cow_Destruction (A Test of Ice and Fire) (unique)), placed in Hall of Countenance, Dormitory, "I studied the tome you gave me. I can now cast Firebolt.": SetStage 10 (when: fn264 == 1; A Test of Ice and Fire stage == 5; the speaker is the one in alias Faralda). Reply: "Ah, good. So... A small test, if you will." Source: Cow_Destruction_BookLearned.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008A1 (College Of Winterhold - Quest Expansion.esp). **script**
 
 **Who and where**
 
@@ -632,11 +762,16 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with someone the line does not name: Start (when: the speaker is the one in alias alias 11). Source: Cow_StartEnchantment.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000903 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: Start (when: the speaker is the one in alias alias 11). Source: Cow_Sergius_refuse.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000905 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: the speaker is the one in alias alias 11; fn493 == 0). Source: Cow_enchantment_nodagger.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:00090C (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: fn493 == 1; the speaker is the one in alias alias 11). Source: Cow_enchantment_NoDagger2.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000913 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Sergius Turrianus (named by alias Sergius of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Perhaps I can help?": Start (when: the speaker is the one in alias Sergius). Source: Cow_StartEnchantment.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000903 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Sergius Turrianus (named by alias Sergius of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "I don't like your attitude. Good luck with that. (Skip Quest)": Start (when: the speaker is the one in alias Sergius). Source: Cow_Sergius_refuse.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000905 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Sergius Turrianus (named by alias Sergius of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "I'm not too familiar with Enchanting, I'm afraid.": SetStage 10 (when: the speaker is the one in alias Sergius; fn493 == 0). Source: Cow_enchantment_nodagger.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:00090C (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Sergius Turrianus (named by alias Sergius of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Sure. It's not the first time I've used an Arcane Enchanter.": SetStage 10 (when: fn493 == 1; the speaker is the one in alias Sergius). Source: Cow_enchantment_NoDagger2.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000913 (College Of Winterhold - Quest Expansion.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Disenchant the old dagger", shown at stage 15. Source: College Of Winterhold - Quest Expansion.esp:000871 QOBJ 15. **files**
+- Cow_enchantment (Enchanted To Meet You) calls SetStage 15. Source: Cow_CraftingfunTimes.OnSit on College Of Winterhold - Quest Expansion.esp:000871 (College Of Winterhold - Quest Expansion.esp). **script**
 
 **Who and where**
 
@@ -653,11 +788,17 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with someone the line does not name: Start (when: fn264 == 0; the speaker is the one in alias alias 9). Source: Cow_IllusionTome.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008E7 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: fn264 == 0; the speaker is the one in alias alias 9). Source: Cow_IllusionTome.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008E7 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: Start (when: fn264 == 1; the speaker is the one in alias alias 9). Source: Cow_Skeevers.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008E9 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: Start (when: the speaker is the one in alias alias 9). Source: Cow_Drevis_refuse.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009EE (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Drevis Neloren (named by alias Drevis of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Yes. Sounds very useful indeed. Can you teach me an Illusion spell then?": Start (when: fn264 == 0; the speaker is the one in alias Drevis). Source: Cow_IllusionTome.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008E7 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Drevis Neloren (named by alias Drevis of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Yes. Sounds very useful indeed. Can you teach me an Illusion spell then?": SetStage 10 (when: fn264 == 0; the speaker is the one in alias Drevis). Source: Cow_IllusionTome.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008E7 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Drevis Neloren (named by alias Drevis of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Yes. I'm somewhat familiar with Illusion. I know some spells myself.": Start (when: fn264 == 1; the speaker is the one in alias Drevis). Source: Cow_Skeevers.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008E9 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Drevis Neloren (named by alias Drevis of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Actually, I've changed my mind. I don't want to learn from you. (Skip Quest)": Start (when: the speaker is the one in alias Drevis). Source: Cow_Drevis_refuse.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009EE (College Of Winterhold - Quest Expansion.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Use the spell on the skeevers and deal with them", shown at stage 15. Source: College Of Winterhold - Quest Expansion.esp:000872 QOBJ 15. **files**
+- Dialogue with Drevis Neloren (named by alias Drevis of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Yes. I'm somewhat familiar with Illusion. I know some spells myself.": SetStage 15 (when: fn264 == 1; the speaker is the one in alias Drevis). Reply: "Oh, I see... Wonderful! Let's see what you can do." Source: Cow_Skeevers.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008E9 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Drevis Neloren (named by alias Drevis of Cow_illusion (Back-Stabbing Rodents) (unique)), placed in Hall of Countenance, Dormitory, "I'm eager to test the spell. Any suggestions?": SetStage 15 (when: Back-Stabbing Rodents stage == 10; the speaker is the one in alias Drevis). Reply: "Now that I think on it... Skeevers. Perfect target. Your assistance would be most useful." Source: Cow_EnableSkeeverParty.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008EE (College Of Winterhold - Quest Expansion.esp). **script**
 
 **Who and where**
 
@@ -675,10 +816,22 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with someone the line does not name: Start (when: the speaker is the one in alias alias 8). Source: Cow_UragGivesBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008B2 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: SetStage 10 (when: the speaker is the one in alias alias 8). Source: Cow_UragGivesBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008B2 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: Start (when: the speaker is the one in alias alias 8). Source: Cow_Urag_RefuseBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008D2 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Urag gro-Shub (named by alias Urag of COW_CentralQuest (College Curriculum) (unique)), placed in The Arcanaeum, "I see. Anything interesting I should read?": Start (when: the speaker is the one in alias Urag). Source: Cow_UragGivesBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008B2 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Urag gro-Shub (named by alias Urag of COW_CentralQuest (College Curriculum) (unique)), placed in The Arcanaeum, "I see. Anything interesting I should read?": SetStage 10 (when: the speaker is the one in alias Urag). Source: Cow_UragGivesBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008B2 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Urag gro-Shub (named by alias Urag of COW_CentralQuest (College Curriculum) (unique)), placed in The Arcanaeum, "Sounds like a waste of time. (Skip Quest)": Start (when: the speaker is the one in alias Urag). Source: Cow_Urag_RefuseBook.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008D2 (College Of Winterhold - Quest Expansion.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Actually read the book and try again", shown at stage 15. Source: College Of Winterhold - Quest Expansion.esp:000870 QOBJ 15. **files**
+- Dialogue with Urag gro-Shub (named by alias Urag of Cow_Reading (Reading Comprehension 101) (unique)), placed in The Arcanaeum, "A dragon called Murinex was ravaging Skyrim back in the Second Age.": SetStage 15 (when: the speaker is the one in alias Urag). Reply: "What?! No! Go away. Now!" Source: TIF__050059BA.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008BA (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Urag gro-Shub (named by alias Urag of Cow_Reading (Reading Comprehension 101) (unique)), placed in The Arcanaeum, "High King Olaf declared war against the dragons back in the Second Age.": SetStage 15 (when: the speaker is the one in alias Urag). Reply: "What?! No! Go away. Now!" Source: TIF__050059BB.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008BB (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Urag gro-Shub (named by alias Urag of Cow_Reading (Reading Comprehension 101) (unique)), placed in The Arcanaeum, "Olaf burned Solitude while riding a dragon. He then took the throne for himself.": SetStage 15 (when: the speaker is the one in alias Urag). Reply: "What?! No! Go away. Now!" Source: TIF__050059BD.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008BD (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Urag gro-Shub (named by alias Urag of Cow_Reading (Reading Comprehension 101) (unique)), placed in The Arcanaeum, "The dragon ate High King Olaf with one single bite, which led to a civil war.": SetStage 15 (when: the speaker is the one in alias Urag). Reply: "What in the world?! No!" Source: TIF__050059C4.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008C4 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Urag gro-Shub (named by alias Urag of Cow_Reading (Reading Comprehension 101) (unique)), placed in The Arcanaeum, "High King Olaf shouted a bard called Svaknir apart, then killed a dragon.": SetStage 15 (when: the speaker is the one in alias Urag). Reply: "What in the world?! No!" Source: TIF__050059C3.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008C3 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Urag gro-Shub (named by alias Urag of Cow_Reading (Reading Comprehension 101) (unique)), placed in The Arcanaeum, "Olaf and Numinex became friends in what is called the Second Dragon Alliance.": SetStage 15 (when: the speaker is the one in alias Urag). Reply: "What in the world?! No!" Source: TIF__050059C2.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008C2 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Urag gro-Shub (named by alias Urag of Cow_Reading (Reading Comprehension 101) (unique)), placed in The Arcanaeum, "Olaf fell in love with his court bard Svaknir, who then stole the throne.": SetStage 15 (when: the speaker is the one in alias Urag). Reply: "Oh... oh by the Gods. Why are we bothering with this. Get out of my sight!" Source: TIF__050059CB.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008CB (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Urag gro-Shub (named by alias Urag of Cow_Reading (Reading Comprehension 101) (unique)), placed in The Arcanaeum, "It turns out Olaf was the dragon's son. He killed his father yet he didn't know.": SetStage 15 (when: the speaker is the one in alias Urag). Reply: "Oh... oh by the Gods. Why are we bothering with this. Get out of my sight!" Source: TIF__050059CC.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0008CC (College Of Winterhold - Quest Expansion.esp). **script**
 
 **Who and where**
 
@@ -696,14 +849,21 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with someone the line does not name: Start (when: the speaker is the one in alias alias 6; fn264 == 0; fn264 == 0; fn264 == 0; fn264 == 0). Source: Cow_RestoGiveSpell.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000882 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: SetStage 5 (when: the speaker is the one in alias alias 6; fn264 == 0; fn264 == 0; fn264 == 0; fn264 == 0). Source: Cow_RestoGiveSpell.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000882 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: Start (when: the speaker is the one in alias alias 6; fn264 == 1 or fn264 == 1 or fn264 == 1 or fn264 == 1). Source: Cow_Resto_NoBook2.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:00087F (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: Start (when: the speaker is the one in alias alias 6; fn264 == 0; fn264 == 0; fn264 == 0; fn264 == 0). Source: Restoration_LearnSpell1.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000880 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: SetStage 5 (when: the speaker is the one in alias alias 6; fn264 == 0; fn264 == 0; fn264 == 0; fn264 == 0). Source: Restoration_LearnSpell1.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000880 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: Start (when: the speaker is the one in alias alias 6; fn264 == 1 or fn264 == 1 or fn264 == 1 or fn264 == 1). Source: Cow_Resto_NoBook1.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000881 (College Of Winterhold - Quest Expansion.esp). **script**
-- Dialogue with someone the line does not name: Start (when: the speaker is the one in alias alias 6). Source: Cow_RestorationRefuse.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009EA (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Colette Marence (named by alias Colette of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Yes, I've fought plenty of draugr. That spell sounds useful though.": Start (when: the speaker is the one in alias Colette; fn264 == 0; fn264 == 0; fn264 == 0; fn264 == 0). Source: Cow_RestoGiveSpell.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000882 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Colette Marence (named by alias Colette of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Yes, I've fought plenty of draugr. That spell sounds useful though.": SetStage 5 (when: the speaker is the one in alias Colette; fn264 == 0; fn264 == 0; fn264 == 0; fn264 == 0). Source: Cow_RestoGiveSpell.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000882 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Colette Marence (named by alias Colette of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "I have. I know a spell that should work against them too.": Start (when: the speaker is the one in alias Colette; fn264 == 1 or fn264 == 1 or fn264 == 1 or fn264 == 1). Source: Cow_Resto_NoBook2.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:00087F (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Colette Marence (named by alias Colette of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "I haven't. I don't know any restoration spells to fight them off either.": Start (when: the speaker is the one in alias Colette; fn264 == 0; fn264 == 0; fn264 == 0; fn264 == 0). Source: Restoration_LearnSpell1.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000880 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Colette Marence (named by alias Colette of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "I haven't. I don't know any restoration spells to fight them off either.": SetStage 5 (when: the speaker is the one in alias Colette; fn264 == 0; fn264 == 0; fn264 == 0; fn264 == 0). Source: Restoration_LearnSpell1.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000880 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Colette Marence (named by alias Colette of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "No, but I know a restoration spell that should keep them off me.": Start (when: the speaker is the one in alias Colette; fn264 == 1 or fn264 == 1 or fn264 == 1 or fn264 == 1). Source: Cow_Resto_NoBook1.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000881 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Colette Marence (named by alias Colette of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "Actually, I've changed my mind. I'm not interested in Restoration. (Skip Quest)": Start (when: the speaker is the one in alias Colette). Source: Cow_RestorationRefuse.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009EA (College Of Winterhold - Quest Expansion.esp). **script**
 - (First objective shown at stage 5; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Talk to Tolfdir", shown at stage 10. Source: College Of Winterhold - Quest Expansion.esp:00086E QOBJ 10. **files**
+- Dialogue with Colette Marence (named by alias Colette of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "I have. I know a spell that should work against them too.": SetStage 10 (when: the speaker is the one in alias Colette; fn264 == 1 or fn264 == 1 or fn264 == 1 or fn264 == 1). Reply: "Ah, good! You should give it a try, right?" Source: Cow_Resto_NoBook2.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:00087F (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Colette Marence (named by alias Colette of COW_CentralQuest (College Curriculum) (unique)), placed in Hall of Countenance, Dormitory, "No, but I know a restoration spell that should keep them off me.": SetStage 10 (when: the speaker is the one in alias Colette; fn264 == 1 or fn264 == 1 or fn264 == 1 or fn264 == 1). Reply: "Ah, good! You should give it a try, right?" Source: Cow_Resto_NoBook1.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000881 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with Colette Marence (named by alias Colette of Cow_restoration (None Escape The Light) (unique)), placed in Hall of Countenance, Dormitory, "I studied the tome you gave me and learned the spell. What now?": SetStage 10 (when: the speaker is the one in alias Colette; None Escape The Light stage == 5; fn264 == 1 or fn264 == 1 or fn264 == 1 or fn264 == 1). Reply: "Excellent! You should give it a try, right?" Source: Cow_Resto_TalkToTolfdir.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000885 (College Of Winterhold - Quest Expansion.esp). **script**
 
 **Who and where**
 
@@ -722,13 +882,13 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - MG01 (First Lessons) calls Start. Source: MG01QuestScript.StartPointer on Skyrim.esm:01F251 (LoreRim - Dialogue Patch.esp). **script**
-- Dialogue with Faida, placed in Four Shields Tavern: Start (when: the speaker is Faida). Source: TIF__0008EC35.Fragment_0 on INFO Skyrim.esm:08EC35 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Dialogue with Ambarys Rendar, placed in New Gnisis Cornerclub: Start (when: the speaker is Ambarys Rendar). Source: TIF__0008EC36.Fragment_0 on INFO Skyrim.esm:08EC36 (Skyrim.esm). **script**
-- Dialogue with Elda Early-Dawn, placed in Candlehearth Hall: Start (when: the speaker is Elda Early-Dawn). Source: TIF__0008EC37.Fragment_0 on INFO Skyrim.esm:08EC37 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Dialogue with Hulda, placed in The Bannered Mare: Start (when: the speaker is Hulda; fn130 == 0; fn130 == 0; fn130 == 0; fn130 == 0; fn130 == 0; fn130 == 0). Source: TIF__0008EC38.Fragment_0 on INFO Skyrim.esm:08EC38 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Dialogue with Hulda, placed in The Bannered Mare: Start (when: the speaker is Hulda; fn130 == 1 or fn130 == 1 or fn130 == 1 or fn130 == 1 or fn130 == 1 or fn130 == 1). Source: TIF__0008EC39.Fragment_0 on INFO Skyrim.esm:08EC39 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Dialogue with Haelga, placed in Haelga's Bunkhouse: Start (when: the speaker is Haelga). Source: TIF__0008EC3A.Fragment_0 on INFO Skyrim.esm:08EC3A (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Dialogue with Skuli, placed in Old Hroldan Inn: Start (when: fn73 < 0; the speaker is Skuli). Source: TIF__0008EC3B.Fragment_0 on INFO Skyrim.esm:08EC3B (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Faida, placed in Four Shields Tavern, "Where can I learn more about magic?": Start (when: the speaker is Faida). Source: TIF__0008EC35.Fragment_0 on INFO Skyrim.esm:08EC35 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Ambarys Rendar, placed in New Gnisis Cornerclub, "Where can I learn more about magic?": Start (when: the speaker is Ambarys Rendar). Source: TIF__0008EC36.Fragment_0 on INFO Skyrim.esm:08EC36 (Skyrim.esm). **script**
+- Dialogue with Elda Early-Dawn, placed in Candlehearth Hall, "Where can I learn more about magic?": Start (when: the speaker is Elda Early-Dawn). Source: TIF__0008EC37.Fragment_0 on INFO Skyrim.esm:08EC37 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Hulda, placed in The Bannered Mare, "Where can I learn more about magic?": Start (when: the speaker is Hulda; fn130 == 0; fn130 == 0; fn130 == 0; fn130 == 0; fn130 == 0; fn130 == 0). Source: TIF__0008EC38.Fragment_0 on INFO Skyrim.esm:08EC38 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Hulda, placed in The Bannered Mare, "Where can I learn more about magic?": Start (when: the speaker is Hulda; fn130 == 1 or fn130 == 1 or fn130 == 1 or fn130 == 1 or fn130 == 1 or fn130 == 1). Source: TIF__0008EC39.Fragment_0 on INFO Skyrim.esm:08EC39 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Haelga, placed in Haelga's Bunkhouse, "Where can I learn more about magic?": Start (when: the speaker is Haelga). Source: TIF__0008EC3A.Fragment_0 on INFO Skyrim.esm:08EC3A (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Skuli, placed in Old Hroldan Inn, "Where can I learn more about magic?": Start (when: fn73 < 0; the speaker is Skuli). Source: TIF__0008EC3B.Fragment_0 on INFO Skyrim.esm:08EC3B (Unofficial Skyrim Special Edition Patch.esp). **script**
 - and 20 more in the JSON
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -753,6 +913,11 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Story manager node MGRTolfdirNode1, event: script event; conditions up its parents: fn576 == 1. Source: MGRTolfdirNode1 Skyrim.esm:028A4D (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Return to Tolfdir". Source: Skyrim.esm:0266F1 QOBJ 20. **files**
+- **unread**: no fragment of its own shows the second objective, so the stage that moves it isn't traced.
+
 **Who and where**
 
 - First objective: "Find Tolfdir's missing Alembic". Source: Skyrim.esm:0266F1 QOBJ 10. **files**
@@ -768,9 +933,15 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with Drevis Neloren, placed in Hall of Countenance, Dormitory: SetStage 10 (when: Out of Balance stage < 10; the speaker is Drevis Neloren). Source: TIF__00026C2A.Fragment_0 on INFO Skyrim.esm:026C2A (Skyrim.esm). **script**
+- Dialogue with Drevis Neloren, placed in Hall of Countenance, Dormitory, "All right, I'll help.": SetStage 10 (when: Out of Balance stage < 10; the speaker is Drevis Neloren). Source: TIF__00026C2A.Fragment_0 on INFO Skyrim.esm:026C2A (Skyrim.esm). **script**
 - Story manager node MGRDrevisNode, event: script event; conditions up its parents: fn576 == 1. Source: MGRDrevisNode Skyrim.esm:028A4E (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Return to Drevis Neloren", shown at stage 20. Source: Skyrim.esm:0266F2 QOBJ 20. **files**
+- MGR02 (Out of Balance) calls SetStage 20. Source: MGR02QuestScript.FocusPointActivate on Skyrim.esm:0266F2 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- MGR02 (Out of Balance) calls SetStage 20. Source: MGR02FocusPointScript.OnActivate on Skyrim.esm:0266F2 (Unofficial Skyrim Special Edition Patch.esp), through MGR02 (Out of Balance)'s focuspointactivate. **script**
 
 **Who and where**
 
@@ -790,9 +961,19 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory: SetStage 10 (when: Enchanting Pick-Up stage < 10; the speaker is Sergius Turrianus). Source: TIF__00028A12.Fragment_0 on INFO Skyrim.esm:028A12 (Skyrim.esm). **script**
+- Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory, "Okay, I can do that for you.": SetStage 10 (when: Enchanting Pick-Up stage < 10; the speaker is Sergius Turrianus). Source: TIF__00028A12.Fragment_0 on INFO Skyrim.esm:028A12 (Skyrim.esm). **script**
 - Story manager node MGRSergiusNode, event: script event; conditions up its parents: fn576 == 1. Source: MGRSergiusNode Skyrim.esm:028A4F (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Return the item to Sergius Turrianus", shown at stage 20. Source: Skyrim.esm:028A13 QOBJ 20. **files**
+- Dialogue with someone the line does not name (named by alias Client of MGR10 (Enchanting Pick-Up) (run time)), "You wanted something enchanted at the College?": SetStage 20 (when: Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; fn426 == 1). Reply: "Yes, yes I did. I've already sent instructions, you just need to make sure this arrives in one piece." Source: TIF__00028A10.Fragment_0 on INFO Skyrim.esm:028A10 (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias Client of MGR10 (Enchanting Pick-Up) (run time)), "You wanted something enchanted at the College?": SetStage 20 (when: Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; fn426 == 1). Reply: "Ah, you're from the College? I've been waiting for you." Source: TIF__0003D29B.Fragment_0 on INFO Skyrim.esm:03D29B (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias Client of MGR10 (Enchanting Pick-Up) (run time)), "You wanted something enchanted at the College?": SetStage 20 (when: Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; fn426 == 1 or fn426 == 1 or fn426 == 1). Reply: "Oh, good. I've been waiting for you. Here you go, it's all ready." Source: TIF__0003D29C.Fragment_0 on INFO Skyrim.esm:03D29C (LoreRim - Skyrim Revoiced Patch.esp). **script**
+- Dialogue with someone the line does not name (named by alias Client of MGR10 (Enchanting Pick-Up) (run time)), "You wanted something enchanted at the College?": SetStage 20 (when: Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; fn426 == 1). Reply: "It's about time someone arrived. Here, make sure this is handled properly." Source: TIF__0003DD2D.Fragment_0 on INFO Skyrim.esm:03DD2D (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias Client of MGR10 (Enchanting Pick-Up) (run time)), "You wanted something enchanted at the College?": SetStage 20 (when: Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; fn426 == 1 or fn426 == 1). Reply: "Oh yes, that. Here you go. I hope this can be ready soon." Source: TIF__0003DD2E.Fragment_0 on INFO Skyrim.esm:03DD2E (LoreRim - Skyrim Revoiced Patch.esp). **script**
+- Dialogue with someone the line does not name (named by alias Client of MGR10 (Enchanting Pick-Up) (run time)), "You wanted something enchanted at the College?": SetStage 20 (when: Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; fn426 == 1 or fn426 == 1 or fn426 == 1). Reply: "Yes, yes. Let's keep our voices down, all right? Just make sure this gets there." Source: TIF__0003DD2F.Fragment_0 on INFO Skyrim.esm:03DD2F (LoreRim - Skyrim Revoiced Patch.esp). **script**
 
 **Who and where**
 
@@ -809,10 +990,10 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory: SetStage 10 (when: Restocking Soul Gems stage <= 10; the speaker is Sergius Turrianus; global MGR11Amount == 0 (now ?) or global MGR11Amount == 3 (now ?)). Source: TIF__00028A05.Fragment_0 on INFO Skyrim.esm:028A05 (Skyrim.esm). **script**
-- Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory: SetStage 10 (when: Restocking Soul Gems stage <= 10; the speaker is Sergius Turrianus; global MGR11Amount == 0 (now ?) or global MGR11Amount == 5 (now ?)). Source: TIF__0001FE8C.Fragment_0 on INFO Skyrim.esm:01FE8C (Skyrim.esm). **script**
-- Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory: SetStage 10 (when: Restocking Soul Gems stage <= 10; the speaker is Sergius Turrianus; global MGR11Amount == 0 (now ?) or global MGR11Amount == 7 (now ?)). Source: TIF__0001FE8D.Fragment_0 on INFO Skyrim.esm:01FE8D (Skyrim.esm). **script**
-- Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory: SetStage 10 (when: Restocking Soul Gems stage <= 10; the speaker is Sergius Turrianus; global MGR11Amount == 0 (now ?) or global MGR11Amount == 10 (now ?)). Source: TIF__0001FE8E.Fragment_0 on INFO Skyrim.esm:01FE8E (Skyrim.esm). **script**
+- Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory: SetStage 10 (when: Restocking Soul Gems stage <= 10; the speaker is Sergius Turrianus; global MGR11Amount == 0 (now 0) or global MGR11Amount == 3 (now 0)). Source: TIF__00028A05.Fragment_0 on INFO Skyrim.esm:028A05 (Skyrim.esm). **script**
+- Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory: SetStage 10 (when: Restocking Soul Gems stage <= 10; the speaker is Sergius Turrianus; global MGR11Amount == 0 (now 0) or global MGR11Amount == 5 (now 0)). Source: TIF__0001FE8C.Fragment_0 on INFO Skyrim.esm:01FE8C (Skyrim.esm). **script**
+- Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory: SetStage 10 (when: Restocking Soul Gems stage <= 10; the speaker is Sergius Turrianus; global MGR11Amount == 0 (now 0) or global MGR11Amount == 7 (now 0)). Source: TIF__0001FE8D.Fragment_0 on INFO Skyrim.esm:01FE8D (Skyrim.esm). **script**
+- Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory: SetStage 10 (when: Restocking Soul Gems stage <= 10; the speaker is Sergius Turrianus; global MGR11Amount == 0 (now 0) or global MGR11Amount == 10 (now 0)). Source: TIF__0001FE8E.Fragment_0 on INFO Skyrim.esm:01FE8E (Skyrim.esm). **script**
 - Story manager node MGRSergiusNode, event: script event; conditions up its parents: fn576 == 1. Source: MGRSergiusNode Skyrim.esm:028A4F (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -830,7 +1011,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory: SetStage 10 (when: the speaker is Sergius Turrianus). Source: TIF__00028A0E.Fragment_0 on INFO Skyrim.esm:028A0E (Skyrim.esm). **script**
+- Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory, "I can take care of that for you.": SetStage 10 (when: the speaker is Sergius Turrianus). Source: TIF__00028A0E.Fragment_0 on INFO Skyrim.esm:028A0E (Skyrim.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -849,9 +1030,14 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with Urag gro-Shub, placed in The Arcanaeum: SetStage 10 (when: Fetch me that Book! stage < 10; the speaker is Urag gro-Shub). Source: TIF__00028A06.Fragment_0 on INFO Skyrim.esm:028A06 (Skyrim.esm). **script**
+- Dialogue with Urag gro-Shub, placed in The Arcanaeum, "I'm ready for some adventure.": SetStage 10 (when: Fetch me that Book! stage < 10; the speaker is Urag gro-Shub). Source: TIF__00028A06.Fragment_0 on INFO Skyrim.esm:028A06 (Skyrim.esm). **script**
 - Story manager node MGRUragNode, event: script event; conditions up its parents: fn576 == 1. Source: MGRUragNode Skyrim.esm:028A50 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Return the book to Urag gro-Shub", shown at stage 20. Source: Skyrim.esm:028A24 QOBJ 20. **files**
+- MGR20 (Fetch me that Book!) calls SetStage 20. Source: MGR20BookScript.OnContainerChanged on Skyrim.esm:028A24 (Update.esm). **script**
 
 **Who and where**
 
@@ -868,9 +1054,21 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with Urag gro-Shub, placed in The Arcanaeum: SetStage 10 (when: Fetch me that Book! stage < 10; the speaker is Urag gro-Shub). Source: TIF__000BC092.Fragment_0 on INFO Skyrim.esm:0BC092 (Skyrim.esm). **script**
+- Dialogue with Urag gro-Shub, placed in The Arcanaeum, "I'm ready for some adventure.": SetStage 10 (when: Fetch me that Book! stage < 10; the speaker is Urag gro-Shub). Source: TIF__000BC092.Fragment_0 on INFO Skyrim.esm:0BC092 (Skyrim.esm). **script**
 - Story manager node MGRUragNode, event: script event; conditions up its parents: fn576 == 1. Source: MGRUragNode Skyrim.esm:028A50 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Return the book to Urag gro-Shub", shown at stage 20. Source: Skyrim.esm:0BC096 QOBJ 20. **files**
+- MGR20B (Fetch me that Book!) calls SetStage 20. Source: MGR20BookScript.OnContainerChanged on Skyrim.esm:0BC096 (LoreRim - Economy Overhaul.esp). **script**
+- USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls SetStage 20; USKPVersionTracking is started by the start-game flag. Source: USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive200 (Retroactive fixes for 2.0.0)'s process. **script**
+- USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls SetStage 20; USKPVersionTracking is started by the start-game flag. Source: USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive200 (Retroactive fixes for 2.0.0)'s process. **script**
+- USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls SetStage 20; USKPVersionTracking is started by the start-game flag. Source: USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive200 (Retroactive fixes for 2.0.0)'s process. **script**
+- USKPRetroactive131 (named "Retroactive fixes for 1.3.1" in its record), a helper quest with Varnius, Gloth calls SetStage 20; USKPRetroactive131 is started by the start-game flag. Source: USKPRetroactive131Script.Process on Unofficial Skyrim Special Edition Patch.esp:01906F (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive200 (Retroactive fixes for 2.0.0)'s process. **script**
+- USKPRetroactive132 (named "Retroactive fixes for 1.3.2" in its record), a helper quest with SindingGhost, SindingHuman calls SetStage 20; USKPRetroactive132 is started by the start-game flag. Source: USKPRetroactive132Script.Process on Unofficial Skyrim Special Edition Patch.esp:02C3E7 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive200 (Retroactive fixes for 2.0.0)'s process. **script**
+- USKPRetroactive133 (named "Retroactive fixes for 1.3.3" in its record), a helper quest with Nurelion, WoundedSoldier, Froki calls SetStage 20; USKPRetroactive133 is started by the start-game flag. Source: uskpretroactive133script.Process on Unofficial Skyrim Special Edition Patch.esp:03F7B8 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive200 (Retroactive fixes for 2.0.0)'s process. **script**
+- USKPRetroactive200 (named "Retroactive fixes for 2.0.0" in its record), a helper quest with Sanguine, Embry, Proventus calls SetStage 20; USKPRetroactive200 is started by the start-game flag. Source: USKPRetroactive200Script.Process on Unofficial Skyrim Special Edition Patch.esp:051CB5 (Unofficial Skyrim Special Edition Patch.esp). **script**
 
 **Who and where**
 
@@ -887,10 +1085,15 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with Nirya, placed in Hall of Attainment, Dormitory: SetStage 10 (when: the speaker is Nirya). Source: TIF__0005D2E7.Fragment_0 on INFO Skyrim.esm:05D2E7 (Skyrim.esm). **script**
-- Dialogue with Nirya, placed in Hall of Attainment, Dormitory: SetStage 10 (when: the speaker is Nirya). Source: TIF__0005D2E5.Fragment_0 on INFO Skyrim.esm:05D2E5 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name: SetStage 1. Source: aaFa_TIF__0503333D.Fragment_0 on INFO FDE Faralda.esp:000860 (FDE Faralda.esp). **script**
+- Dialogue with Nirya, placed in Hall of Attainment, Dormitory, "What's in it for me?": SetStage 10 (when: the speaker is Nirya). Source: TIF__0005D2E7.Fragment_0 on INFO Skyrim.esm:05D2E7 (Skyrim.esm). **script**
+- Dialogue with Nirya, placed in Hall of Attainment, Dormitory, "Isn't that stealing?": SetStage 10 (when: the speaker is Nirya). Source: TIF__0005D2E5.Fragment_0 on INFO Skyrim.esm:05D2E5 (Skyrim.esm). **script**
+- Dialogue with someone the line does not name, "Yes, Professor.": SetStage 1. Source: aaFa_TIF__0503333D.Fragment_0 on INFO FDE Faralda.esp:000860 (FDE Faralda.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Second step** (what moves it to its second objective, often the real test)
+
+- Second objective: "Help Nirya steal the notes or tell Faralda the plot". Source: Skyrim.esm:05D2E9 QOBJ 20. **files**
+- **unread**: no fragment of its own shows the second objective, so the stage that moves it isn't traced.
 
 **Who and where**
 
@@ -1055,50 +1258,50 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 **Does Dragonborn's cultist node read Timing is Everything's level (25 in its settings.ini), or something else?** Timing is Everything's setting iTIE_MinimumLevel:Dragonborn = 25 (settings.ini in Timing is Everything SE - Settings Loader).
 
 - Node DLC2CultistAmbushNode001 (LoreRim - Global Modifiers.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
-  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
-  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
-  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
+  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
+  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
+  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
 - Node DLC2CultistAmbushNode002 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
-  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
-  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
-  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
+  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
+  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
+  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
 - Node DLC2CultistAmbushNode003 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
-  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
-  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
-  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
+  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
+  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
+  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
 - Node DLC2CultistAmbushNode004 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
-  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
-  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
-  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
+  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
+  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
+  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
 - Node DLC2CultistAmbushNode005 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
-  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
-  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
-  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
+  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
+  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
+  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
 - Node DLC2CultistAmbushNode006 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
-  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
-  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
-  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
+  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
+  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
+  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
 - Node DLC2CultistAmbushNode007 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
-  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
-  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
-  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
+  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
+  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
+  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
 - Node DLC2CultistAmbushNode008 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
-  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
-  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
-  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
+  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
+  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
+  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
 - Node DLC2CultistAmbushNode000 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
-  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
-  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
-  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
+  - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
+  - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
+  - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
 
 ## Run-time values
 
 Settings loaders the story's globals touch, and whether the script the game runs reads their settings.ini:
 
-- TimingIsEverything: script TIE_MCMScript on TimingIsEverything.esp:005E3B; the copy that wins is /sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex (extends SKI_ConfigBase); it carries no settings.ini value into a global, so the globals keep their record values unless the player changes them in the menu.
-- Wyrmstooth: script WT_MCMScript on Wyrmstooth.esp:AC1487; the copy that wins is /sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/Wyrmstooth - Settings Loader/Scripts/WT_MCMScript.pex (extends MCM_ConfigBase); it reads its MCM Helper settings and sets globals from them.
+- TimingIsEverything: script TIE_MCMScript on TimingIsEverything.esp:005E3B; the copy that wins is C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex (extends SKI_ConfigBase); it carries no settings.ini value into a global, so the globals keep their record values unless the player changes them in the menu.
+- Wyrmstooth: script WT_MCMScript on Wyrmstooth.esp:AC1487; the copy that wins is C:/LoreRim\mods\Wyrmstooth - Settings Loader\Scripts\WT_MCMScript.pex (extends MCM_ConfigBase); it reads its MCM Helper settings and sets globals from them.
 
 - Timing is Everything: Dragonborn level setting 25 (settings.ini in Timing is Everything SE - Settings Loader), meant for DLC2CultistAttackMinLevel_KRY (record 25.0 from TimingIsEverything.esp; in game 25.0; **files**).
-- Wyrmstooth: WTStartLevel is 10 in a new game (record 20.0 in Requiem - Wyrmstooth.esp). Why: OnConfigInit runs once when the menu registers in a new game; it sets `migrated` and calls LoadSettings, which goes on only while bEnabled:Maintenance is set (it is 1) and then calls Load, which reads iWTGeneralRequirementsMinimalLevel:Requirements (10, settings.ini in Wyrmstooth - Settings Loader) and sets WTStartLevel to it; MigrateToMCMHelper, which would copy the global's record value (20.0) into that setting, runs only from OnGameReload or OnConfigOpen while `migrated` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would); OnGameReload reloads the settings only when bLoadSettingsonReload:Maintenance is set; it is 0, so later loads keep whatever the global holds. Source: WT_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/Wyrmstooth - Settings Loader/Scripts/WT_MCMScript.pex). **run time**
+- Wyrmstooth: WTStartLevel is 10 in a new game (record 20.0 in Requiem - Wyrmstooth.esp). Why: OnConfigInit runs once when the menu registers in a new game; it sets `migrated` and calls LoadSettings, which goes on only while bEnabled:Maintenance is set (it is 1) and then calls Load, which reads iWTGeneralRequirementsMinimalLevel:Requirements (10, settings.ini in Wyrmstooth - Settings Loader) and sets WTStartLevel to it; MigrateToMCMHelper, which would copy the global's record value (20.0) into that setting, runs only from OnGameReload or OnConfigOpen while `migrated` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would); OnGameReload reloads the settings only when bLoadSettingsonReload:Maintenance is set; it is 0, so later loads keep whatever the global holds. Source: WT_MCMScript (C:/LoreRim\mods\Wyrmstooth - Settings Loader\Scripts\WT_MCMScript.pex). **run time**
 
 Scripts the records name that aren't in the install (259); calls inside them can't be read. Full list in the JSON.

@@ -99,22 +99,34 @@
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Matlara",
+     "speakerNamed": "alias RestingPilgrimOwner of AP_DialogueHelgen (unique)",
+     "speakerPlaced": [
+      "Helgen"
+     ],
      "call": "SetStage 1",
      "info": "AlternatePerspective.esp:075139",
-     "conditions": "Unbound hasn't started; the speaker is the one in alias alias 2; the player has at least RoomCost (?) gold",
+     "prompt": "I'd like to rent a room. (Start Intro (<Global=RoomCost> gold))",
+     "reply": [
+      "Sure thing. It's yours for a day."
+     ],
+     "conditions": "Unbound hasn't started; the speaker is the one in alias RestingPilgrimOwner; the player has at least RoomCost (25) gold",
      "source": "TIF_AP_05075139.Fragment_0 on INFO AlternatePerspective.esp:075139 (AlternatePerspective.esp)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": "Shazdehviir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Helgen"
      ],
      "call": "SetStage 6",
      "info": "AlternatePerspective.esp:38C6E9",
+     "prompt": "Skip to Helgen Keep",
+     "reply": [
+      "Of course."
+     ],
      "conditions": "the speaker is Shazdehviir",
      "source": "TIF_AP_0638C6E9.Fragment_1 on INFO AlternatePerspective.esp:38C6E9 (AlternatePerspective.esp)",
      "verdict": "script"
@@ -122,11 +134,16 @@
     {
      "by": "dialogue",
      "speaker": "Shazdehviir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Helgen"
      ],
      "call": "SetStage 7",
      "info": "AlternatePerspective.esp:38C6E9",
+     "prompt": "Skip to Helgen Keep",
+     "reply": [
+      "Of course."
+     ],
      "conditions": "the speaker is Shazdehviir",
      "source": "TIF_AP_0638C6E9.Fragment_1 on INFO AlternatePerspective.esp:38C6E9 (AlternatePerspective.esp)",
      "verdict": "script"
@@ -246,7 +263,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Enter the Keep with Hadvar or Ralof",
+     "index": 50,
+     "source": "Skyrim.esm:03372B QOBJ 50",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
   },
   {
    "id": "Skyrim.esm:04E50D",
@@ -535,7 +563,18 @@
      "source": "QF_MQ102_0004E50D.fragment_45",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "(Optional) Travel to Riverwood with <Alias=FactionFriend>",
+     "index": 20,
+     "source": "Skyrim.esm:04E50D QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
   },
   {
    "id": "Skyrim.esm:0D0800",
@@ -679,7 +718,129 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Retrieve the Dragonstone",
+     "index": 50,
+     "source": "Skyrim.esm:0D0800 QOBJ 50",
+     "verdict": "files"
+    },
+    "stage": 50,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "e3demo, a helper quest with Arvel",
+      "questId": "Skyrim.esm:093637",
+      "atStage": 0,
+      "call": "SetStage 50",
+      "source": "QF_E3demo_00093637.fragment_0 on Skyrim.esm:093637 (Skyrim.esm)",
+      "verdict": "script",
+      "throughStartedBy": []
+     },
+     {
+      "by": "quest script",
+      "quest": "MQ104 (Dragon Rising)",
+      "questId": "Skyrim.esm:02610C",
+      "atStage": 1,
+      "call": "SetStage 20",
+      "source": "QF_MQ104B_0002610C.fragment_6 on Skyrim.esm:02610C (LoreRim - Weapons.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "MQ104 (Dragon Rising)",
+      "questId": "Skyrim.esm:02610C",
+      "atStage": 1,
+      "call": "SetStage 50",
+      "source": "QF_MQ104B_0002610C.fragment_6 on Skyrim.esm:02610C (LoreRim - Weapons.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Balgruuf the Greater",
+      "speakerNamed": "scene MQ103IntroScene, alias Balgruuf of MQ103 (Bleak Falls Barrow) (unique)",
+      "speakerPlaced": [
+       "Dragonsreach"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0D50F1",
+      "prompt": null,
+      "reply": [
+       "Farengar, I think I've found someone who can help you with your dragon project."
+      ],
+      "conditions": "",
+      "scene": "Skyrim.esm:0D50F6",
+      "sceneStartedBy": [
+       {
+        "by": "quest script",
+        "quest": "MQ103 (Bleak Falls Barrow)",
+        "questId": "Skyrim.esm:0D0800",
+        "atStage": 10,
+        "call": "StartScene",
+        "source": "QF_MQ103_000D0800.fragment_69 on Skyrim.esm:0D0800 (LoreRim - Dialogue Patch.esp)",
+        "verdict": "script"
+       }
+      ],
+      "source": "TIF__000D50F1.Fragment_0 on INFO Skyrim.esm:0D50F1 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Farengar Secret-Fire",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Dragonsreach"
+      ],
+      "call": "SetStage 50",
+      "info": "Skyrim.esm:0D50E1",
+      "prompt": "So what do you need me to do?",
+      "reply": [
+       "I, uh, learned of a certain stone tablet said to be housed in Bleak Falls Barrow - a \"Dragonstone,\" said to contain a map of dragon burial sites.",
+       "Go to Bleak Falls Barrow, find this tablet - no doubt interred in the main chamber - and bring it to me. Simplicity itself."
+      ],
+      "conditions": "the speaker is Farengar Secret-Fire; GetItemCount Dragonstone >= 1",
+      "source": "TIF__000D50E1.Fragment_0 on INFO Skyrim.esm:0D50E1 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Farengar Secret-Fire",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Dragonsreach"
+      ],
+      "call": "SetStage 50",
+      "info": "Skyrim.esm:0E0EBA",
+      "prompt": "So what do you need me to do?",
+      "reply": [
+       "I, uh, learned of a certain stone tablet said to be housed in Bleak Falls Barrow - a \"Dragonstone,\" said to contain a map of dragon burial sites.",
+       "Go to Bleak Falls Barrow, find this tablet - no doubt interred in the main chamber - and bring it to me. Simplicity itself."
+      ],
+      "conditions": "the speaker is Farengar Secret-Fire",
+      "source": "TIF__000E0EBA.Fragment_0 on INFO Skyrim.esm:0E0EBA (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Farengar Secret-Fire",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Dragonsreach"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0D50D3",
+      "prompt": null,
+      "reply": [
+       "Please forgive my earlier rudeness. I am so often interrupted by visitors wandering in, I can occasionally become quite savage.",
+       "Now... what did you say you wanted?"
+      ],
+      "conditions": "the speaker is Farengar Secret-Fire",
+      "source": "TIF__000D50D3.Fragment_0 on INFO Skyrim.esm:0D50D3 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:02610C",
@@ -810,7 +971,80 @@
      "source": "QF_MQ104B_0002610C.fragment_45",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Meet Irileth near the Western Watchtower",
+     "index": 15,
+     "source": "Skyrim.esm:02610C QOBJ 15",
+     "verdict": "files"
+    },
+    "stage": 40,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "MQ105 (The Way of the Voice)",
+      "questId": "Skyrim.esm:0242BA",
+      "atStage": 1,
+      "call": "SetStage 30",
+      "source": "QF_MQ105_000242BA.fragment_1 on Skyrim.esm:0242BA (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Irileth",
+      "speakerNamed": "alias Irileth of MQ104 (Dragon Rising) (unique)",
+      "speakerPlaced": [
+       "Dragonsreach"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:05DD4E",
+      "prompt": "I'd rather scout ahead.",
+      "reply": [
+       "Good enough. We'll meet up near the watchtower. Don't take any chances until we get there."
+      ],
+      "conditions": "the speaker is the one in alias Irileth",
+      "source": "TIF__0005DD4E.Fragment_0 on INFO Skyrim.esm:05DD4E (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Irileth",
+      "speakerNamed": "alias Irileth of MQ104 (Dragon Rising) (unique)",
+      "speakerPlaced": [
+       "Dragonsreach"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:05DD48",
+      "prompt": "I'll come along with you.",
+      "reply": [
+       "Follow me. We're assembling near the main gate."
+      ],
+      "conditions": "the speaker is the one in alias Irileth",
+      "source": "TIF__0005DD48.Fragment_0 on INFO Skyrim.esm:05DD48 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Balgruuf the Greater",
+      "speakerNamed": "alias Balgruuf of MQ104 (Dragon Rising) (unique)",
+      "speakerPlaced": [
+       "Dragonsreach"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:0DF1F8",
+      "prompt": "What about my reward?",
+      "reply": [
+       "But I haven't forgotten the service you did for me in retrieving the Dragonstone for Farengar.",
+       "As a token of my esteem, I have instructed Avenicci that you are now permitted to purchase property in the city.",
+       "And please accept this gift from my personal armory."
+      ],
+      "conditions": "the speaker is the one in alias Balgruuf; Dragon Rising stage 15 done; Dragon Rising stage 40 not done",
+      "source": "TIF__000DF1F8.Fragment_1 on INFO Skyrim.esm:0DF1F8 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0242BA",
@@ -827,7 +1061,13 @@
      "call": "SetStage 0",
      "source": "QF_DA08_0004A37B.fragment_32 on Skyrim.esm:04A37B (TWDQE - Wintersun patch.esp)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Skyrim.esm:04A37B DNAM (TWDQE - Wintersun patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1014,7 +1254,97 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Demonstrate your \"Unrelenting Force\" Shout",
+     "index": 20,
+     "source": "Skyrim.esm:0242BA QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "MQ106 (A Blade in the Dark)",
+      "questId": "Skyrim.esm:032926",
+      "atStage": 1,
+      "call": "SetStage 30",
+      "source": "QF_MQ106_00032926.fragment_2 on Skyrim.esm:032926 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "MQ104 (Dragon Rising)",
+      "questId": "Skyrim.esm:02610C",
+      "atStage": 150,
+      "call": "SetStage 10",
+      "source": "QF_MQ104B_0002610C.fragment_43 on Skyrim.esm:02610C (LoreRim - Weapons.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "MQ105 (The Way of the Voice)",
+      "questId": "Skyrim.esm:0242BA",
+      "atStage": null,
+      "call": "SetStage 25",
+      "source": "MQ105ShoutTargetScript.OnMagicEffectApplyEx on Skyrim.esm:0242BA (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Arngeir",
+      "speakerNamed": "alias Arngeir of MQ105 (The Way of the Voice) (unique)",
+      "speakerPlaced": [
+       "High Hrothgar"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:02F2C4",
+      "prompt": "I am answering your summons.",
+      "reply": [
+       "So... a Dragonborn appears, at this moment in the turning of the age."
+      ],
+      "conditions": "The Way of the Voice stage < 50; The Way of the Voice stage 25 done; the speaker is the one in alias Arngeir",
+      "source": "TIF__0002F2C4.Fragment_0 on INFO Skyrim.esm:02F2C4 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Arngeir",
+      "speakerNamed": "alias Arngeir of MQ105 (The Way of the Voice) (unique)",
+      "speakerPlaced": [
+       "High Hrothgar"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:02F2C5",
+      "prompt": "I'm answering your summons.",
+      "reply": [
+       "We will see if you truly have the gift.",
+       "Show us, Dragonborn. Let us taste of your Voice."
+      ],
+      "conditions": "The Way of the Voice stage < 50; the speaker is the one in alias Arngeir",
+      "source": "TIF__0002F2C5.Fragment_0 on INFO Skyrim.esm:02F2C5 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Arngeir",
+      "speakerNamed": "alias Arngeir of MQ105 (The Way of the Voice) (unique)",
+      "speakerPlaced": [
+       "High Hrothgar"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:02F7AA",
+      "prompt": "You call me Dragonborn. What does that mean?",
+      "reply": [
+       "First, let us see if you truly are Dragonborn. Let us taste of your Voice."
+      ],
+      "conditions": "The Way of the Voice stage < 50; the speaker is the one in alias Arngeir",
+      "source": "TIF__0002F7AA.Fragment_0 on INFO Skyrim.esm:02F7AA (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0713DC",
@@ -1055,7 +1385,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Read the note",
+     "index": 15,
+     "source": "Skyrim.esm:0713DC QOBJ 15",
+     "verdict": "files"
+    },
+    "stage": 15,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "MQ105 (The Way of the Voice)",
+      "questId": "Skyrim.esm:0242BA",
+      "atStage": 190,
+      "call": "SetStage 15",
+      "source": "QF_MQ105_000242BA.fragment_119 on Skyrim.esm:0242BA (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:032926",
@@ -1076,11 +1426,17 @@
     {
      "by": "dialogue",
      "speaker": "Delphine",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Sleeping Giant Inn"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0453EE",
+     "prompt": "I'd like to rent the attic room. (<Global=RoomCost> gold)",
+     "reply": [
+      "Oh, you wanted the attic room? Why didn't you say so the first time?",
+      "The thing is... we don't actually have an attic room. But I think I know what you mean. Go ahead and make yourself at home."
+     ],
      "conditions": "the speaker is Delphine; A Blade in the Dark stage >= 5; A Blade in the Dark stage < 10; fn67 == 1; GetActorValue == 1",
      "source": "TIF__000453EE.Fragment_0 on INFO Skyrim.esm:0453EE (Skyrim.esm)",
      "verdict": "script"
@@ -1088,11 +1444,16 @@
     {
      "by": "dialogue",
      "speaker": "Delphine",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Sleeping Giant Inn"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0A56D4",
+     "prompt": "I'd like to rent the attic room. (<Global=RoomCost> gold)",
+     "reply": [
+      "Attic room, eh? Well... we don't have an attic room, but you can have the one on the left. Make yourself at home."
+     ],
      "conditions": "the speaker is Delphine; A Blade in the Dark stage >= 5; A Blade in the Dark stage < 10; fn67 == 1",
      "source": "TIF__000A56D4.Fragment_0 on INFO Skyrim.esm:0A56D4 (Skyrim.esm)",
      "verdict": "script"
@@ -1100,11 +1461,18 @@
     {
      "by": "dialogue",
      "speaker": "Delphine",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Sleeping Giant Inn"
      ],
      "call": "SetStage 30",
      "info": "Skyrim.esm:083055",
+     "prompt": "I just came here for the horn.",
+     "reply": [
+      "And now you have it. No harm done.",
+      "I knew the Greybeards would send you for the horn if they thought you were Dragonborn.",
+      "Taking it was the only way I could be sure this wasn't a Thalmor trap."
+     ],
      "conditions": "the speaker is Delphine",
      "source": "TIF__00083055.Fragment_0 on INFO Skyrim.esm:083055 (Skyrim.esm)",
      "verdict": "script"
@@ -1112,11 +1480,16 @@
     {
      "by": "dialogue",
      "speaker": "Delphine",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Sleeping Giant Inn"
      ],
      "call": "SetStage 30",
      "info": "Skyrim.esm:0C65A2",
+     "prompt": "What of it?",
+     "reply": [
+      "I think you're looking for this."
+     ],
      "conditions": "the speaker is Delphine",
      "source": "TIF__000C65A2.Fragment_0 on INFO Skyrim.esm:0C65A2 (Skyrim.esm)",
      "verdict": "script"
@@ -1222,7 +1595,153 @@
      "source": "QF_MQ106_00032926.fragment_6",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Locate the dragon burial site",
+     "index": 20,
+     "source": "Skyrim.esm:032926 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 50,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "MQ201 (Diplomatic Immunity)",
+      "questId": "Skyrim.esm:035D5F",
+      "atStage": 1,
+      "call": "SetStage 50",
+      "source": "QF_MQ201_00035D5F.fragment_12 on Skyrim.esm:035D5F (Storm the Thalmor Embassy.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Delphine",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Sleeping Giant Inn"
+      ],
+      "call": "SetStage 50",
+      "info": "Skyrim.esm:032906",
+      "prompt": "So where are we headed?",
+      "reply": [
+       "Kynesgrove. There's an ancient dragon burial near there. If we can get there before it happens, maybe we'll learn how to stop it."
+      ],
+      "conditions": "the speaker is Delphine; A Blade in the Dark stage 47 done",
+      "source": "TIF__00032906.Fragment_0 on INFO Skyrim.esm:032906 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Delphine",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Sleeping Giant Inn"
+      ],
+      "call": "SetStage 47",
+      "info": "Skyrim.esm:08649C",
+      "prompt": "What makes you think dragons are coming back to life?",
+      "reply": [
+       "I know they are. I've visited their ancient burial mounds and found them empty.",
+       "And I've figured out where the next one will come back to life.",
+       "We're going to go there, and you're going to kill that dragon. If we succeed, I'll tell you anything you want to know."
+      ],
+      "conditions": "the speaker is Delphine",
+      "source": "TIF__0008649C.Fragment_0 on INFO Skyrim.esm:08649C (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Delphine",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Sleeping Giant Inn"
+      ],
+      "call": "SetStage 45",
+      "info": "Skyrim.esm:03290A",
+      "prompt": "Why are you looking for a Dragonborn?",
+      "reply": [
+       "We remember what most don't - that the Dragonborn is the ultimate dragonslayer.",
+       "You're the only one that can kill a dragon permanently by devouring its soul."
+      ],
+      "conditions": "the speaker is Delphine",
+      "source": "TIF__0003290A.Fragment_0 on INFO Skyrim.esm:03290A (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Delphine",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Sleeping Giant Inn"
+      ],
+      "call": "SetStage 45",
+      "info": "Skyrim.esm:021144",
+      "prompt": "Why are you looking for a Dragonborn?",
+      "reply": [
+       "We remember what most don't - that the Dragonborn is the ultimate dragonslayer.",
+       "You're the only one that can kill a dragon permanently by devouring its soul."
+      ],
+      "conditions": "the speaker is Delphine",
+      "source": "TIF__00021144.Fragment_0 on INFO Skyrim.esm:021144 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Delphine",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Sleeping Giant Inn"
+      ],
+      "call": "SetStage 40",
+      "info": "Skyrim.esm:032908",
+      "prompt": "I don't have time for this.",
+      "reply": [
+       "I shouldn't let you walk out of here, knowing what you know. But I guess even my paranoia has its limits.",
+       "You know where to find me when you change your mind. Because you will. You have to."
+      ],
+      "conditions": "the speaker is Delphine",
+      "source": "TIF__00032908.Fragment_0 on INFO Skyrim.esm:032908 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Delphine",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Sleeping Giant Inn"
+      ],
+      "call": "SetStage 35",
+      "info": "Skyrim.esm:03290B",
+      "prompt": "I just came here for the horn.",
+      "reply": [
+       "I am not your enemy. I already gave you the horn. I'm actually trying to help you. I just need you to hear me out."
+      ],
+      "conditions": "the speaker is Delphine; A Blade in the Dark stage 35 not done",
+      "source": "TIF__0003290B.Fragment_0 on INFO Skyrim.esm:03290B (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Delphine",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Sleeping Giant Inn"
+      ],
+      "call": "SetStage 42",
+      "info": "Skyrim.esm:083055",
+      "prompt": "I just came here for the horn.",
+      "reply": [
+       "And now you have it. No harm done.",
+       "I knew the Greybeards would send you for the horn if they thought you were Dragonborn.",
+       "Taking it was the only way I could be sure this wasn't a Thalmor trap."
+      ],
+      "conditions": "the speaker is Delphine",
+      "source": "TIF__00083055.Fragment_0 on INFO Skyrim.esm:083055 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:035D5F",
@@ -1243,11 +1762,18 @@
     {
      "by": "dialogue",
      "speaker": "Delphine",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Sleeping Giant Inn"
      ],
      "call": "SetStage 30",
      "info": "Skyrim.esm:03B495",
+     "prompt": "So how do we get into the Thalmor Embassy?",
+     "reply": [
+      "Hmm, I'm not sure yet. I have a few ideas, but I'll need some time to pull things together...",
+      "Meet me back in Riverwood. If I'm not back when you get there, wait for me. I shouldn't be long.",
+      "Keep an eye on the sky. This is only going to get worse."
+     ],
      "conditions": "the speaker is Delphine",
      "source": "TIF__01162FB9.Fragment_0 on INFO Skyrim.esm:03B495 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
@@ -1255,11 +1781,19 @@
     {
      "by": "dialogue",
      "speaker": "Delphine",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Sleeping Giant Inn"
      ],
      "call": "SetStage 20",
      "info": "Skyrim.esm:03B499",
+     "prompt": "What makes you think the Thalmor are bringing dragons back?",
+     "reply": [
+      "Nothing solid. Yet. But my gut tells me it can't be anybody else.",
+      "The Empire had captured Ulfric. The war was basically over. Then a dragon attacks, Ulfric escapes, and the war is back on.",
+      "And now the dragons are attacking everywhere, indiscriminately. Skyrim is weakened, the Empire is weakened.",
+      "Who else gains from that but the Thalmor?"
+     ],
      "conditions": "the speaker is Delphine",
      "source": "TIF__0003B499.Fragment_0 on INFO Skyrim.esm:03B499 (Skyrim.esm)",
      "verdict": "script"
@@ -1267,11 +1801,19 @@
     {
      "by": "dialogue",
      "speaker": "Delphine",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Sleeping Giant Inn"
      ],
      "call": "SetStage 15",
      "info": "Skyrim.esm:03B492",
+     "prompt": "Who are you and what do you want with me?",
+     "reply": [
+      "I'm one of the last members of the Blades.",
+      "A very long time ago, the Blades were dragonslayers, and we served the Dragonborn, the greatest dragonslayer.",
+      "For the last two hundred years, since the last Dragonborn emperor, the Blades have been searching for a purpose.",
+      "Now that dragons are coming back, our purpose is clear again. We need to stop them."
+     ],
      "conditions": "the speaker is Delphine",
      "source": "TIF__01162FAA.Fragment_0 on INFO Skyrim.esm:03B492 (Skyrim.esm)",
      "verdict": "script"
@@ -1406,7 +1948,41 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Meet Malborn in Solitude",
+     "index": 10,
+     "source": "Skyrim.esm:035D5F QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 40,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Delphine",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Sleeping Giant Inn"
+      ],
+      "call": "SetStage 40",
+      "info": "Skyrim.esm:05F702",
+      "prompt": "So what's your plan? How do I infiltrate the Thalmor Embassy?",
+      "reply": [
+       "The Thalmor ambassador, Elenwen, regularly throws parties where the rich and connected cozy up to the Thalmor.",
+       "I can get you into one of those parties. Once you're inside the embassy, you can get away and find Elenwen's secret files.",
+       "I have a contact inside the embassy. He's not up for this kind of high-risk mission, but he can help you.",
+       "His name is Malborn. Wood Elf - plenty of reason to hate the Thalmor. You can trust him.",
+       "I'll get word for him to meet you in Solitude, at the Winking Skeever -- you know it?",
+       "While you're doing that, I'll work on getting you an invitation to Elenwen's little party.",
+       "Meet me at the Solitude stables after you've arranged things with Malborn. Any questions?"
+      ],
+      "conditions": "the speaker is Delphine",
+      "source": "TIF__0005F702.Fragment_0 on INFO Skyrim.esm:05F702 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:036191",
@@ -1441,7 +2017,13 @@
      "call": "SetStage 5",
      "source": "QF_Patch1_5_UpdateQuest_0100083F.fragment_0 on Update.esm:00083F (Update.esm)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Update.esm:00083F DNAM (Update.esm)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1451,7 +2033,13 @@
      "call": "SetStage 10",
      "source": "QF_Patch1_5_UpdateQuest_0100083F.fragment_0 on Update.esm:00083F (Update.esm)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Update.esm:00083F DNAM (Update.esm)",
+       "verdict": "files"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -1547,7 +2135,46 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Search the Ratway for Esbern's hideout",
+     "index": 20,
+     "source": "Skyrim.esm:036191 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "MQ202 (A Cornered Rat)",
+      "questId": "Skyrim.esm:036191",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "MQ202QuestScript.OnUpdate on Skyrim.esm:036191 (Requiem.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Keerava",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Bee and Barb, Bee and Barb"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:06C863",
+      "prompt": "I'm looking for an old guy, hiding out somewhere in Riften.",
+      "reply": [
+       "Never heard of anybody like that. But if you want to hide out in Riften, the Ratway's where you'd be.",
+       "There's a sort of tavern down there, the Ragged Flagon. Where all the lowlifes in Riften get drunk and knife each other.",
+       "You might try there, if you can get through the Ratway alive."
+      ],
+      "conditions": "A Cornered Rat stage 50 not done; GetInFaction JobInnkeeperFaction == 1; the speaker is Keerava or the speaker is Talen-Jei",
+      "source": "TIF__0006C863.Fragment_0 on INFO Skyrim.esm:06C863 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:036192",
@@ -1692,7 +2319,79 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Esbern",
+     "index": 20,
+     "source": "Skyrim.esm:036192 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 50,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "MQ203 (Alduin's Wall)",
+      "questId": "Skyrim.esm:036192",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "MQ203EsbernScript.OnLocationChange on Skyrim.esm:036192 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "MQ203 (Alduin's Wall)",
+      "questId": "Skyrim.esm:036192",
+      "atStage": null,
+      "call": "SetStage 30",
+      "source": "MQ203EsbernScript.OnLocationChange on Skyrim.esm:036192 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "MQ204 (The Throat of the World)",
+      "questId": "Skyrim.esm:02D515",
+      "atStage": 1,
+      "call": "SetStage 20",
+      "source": "QF_MQ204_0002D515.fragment_7 on Skyrim.esm:02D515 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Delphine",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Sleeping Giant Inn"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:06EBDF",
+      "prompt": "He's here in Riverwood. Right outside.",
+      "reply": [
+       "Mara's mercy, then he's safe! Come on, we have a lot to discuss."
+      ],
+      "conditions": "the speaker is Delphine; Alduin's Wall stage 20 done; fn300 == 1",
+      "source": "TIF__0006EBDF.Fragment_0 on INFO Skyrim.esm:06EBDF (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Delphine",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Sleeping Giant Inn"
+      ],
+      "call": "SetStage 25",
+      "info": "Skyrim.esm:06EBDE",
+      "prompt": "He's on his way.",
+      "reply": [
+       "What? You left him on his own? With the Thalmor after him? Go make sure he's safe and bring him here!"
+      ],
+      "conditions": "the speaker is Delphine; Alduin's Wall stage 10 done; Alduin's Wall stage < 20",
+      "source": "TIF__0006EBDE.Fragment_0 on INFO Skyrim.esm:06EBDE (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:02D515",
@@ -1864,7 +2563,156 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Learn the \"Clear Skies\" Shout",
+     "index": 20,
+     "source": "Skyrim.esm:02D515 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 70,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Arngeir",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "High Hrothgar"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:03C1A9",
+      "prompt": "It was recorded on Alduin's Wall.",
+      "reply": [
+       "The Blades! Of course. They specialize in meddling in matters they barely understand. Their reckless arrogance knows no bounds."
+      ],
+      "conditions": "the speaker is Arngeir",
+      "source": "TIF__0003C1A9.Fragment_0 on INFO Skyrim.esm:03C1A9 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Arngeir",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "High Hrothgar"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:03C1A7",
+      "prompt": "I need to learn the Shout used to defeat Alduin.",
+      "reply": [
+       "Where did you learn of that? Who have you been talking to?"
+      ],
+      "conditions": "the speaker is Arngeir; The Throat of the World stage < 50",
+      "source": "TIF__0003C1A7.Fragment_0 on INFO Skyrim.esm:03C1A7 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Arngeir",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "High Hrothgar"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:03F891",
+      "prompt": "I need to learn the Shout used to defeat Alduin.",
+      "reply": [
+       "Where did you learn of a Shout used to defeat Alduin?"
+      ],
+      "conditions": "the speaker is Arngeir; The Throat of the World stage < 30",
+      "source": "TIF__0003F891.Fragment_0 on INFO Skyrim.esm:03F891 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Arngeir",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "High Hrothgar"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:03F883",
+      "prompt": "I have nothing to hide. The Blades helped me find out about it.",
+      "reply": [
+       "The Blades! Of course. They specialize in meddling in matters they barely understand. Their reckless arrogance knows no bounds."
+      ],
+      "conditions": "the speaker is Arngeir",
+      "source": "TIF__0003F883.Fragment_0 on INFO Skyrim.esm:03F883 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Arngeir",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "High Hrothgar"
+      ],
+      "call": "SetStage 50",
+      "info": "Skyrim.esm:0B397C",
+      "prompt": "I need to learn the Shout used to defeat Alduin.",
+      "reply": [
+       "Forgive me. I was... intemperate. I allowed my emotions to cloud my judgment. Master Einarth reminded me of my duty.",
+       "The decision whether or not to help you is not mine to make."
+      ],
+      "conditions": "the speaker is Arngeir; The Throat of the World stage 40 done",
+      "source": "TIF__000B397C.Fragment_0 on INFO Skyrim.esm:0B397C (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Arngeir",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "High Hrothgar"
+      ],
+      "call": "SetStage 60",
+      "info": "Skyrim.esm:0483D8",
+      "prompt": "How do I get to the top of the mountain to see him?",
+      "reply": [
+       "Only those whose Voice is strong can find the path. We will teach you a Shout to open the way to Paarthurnax."
+      ],
+      "conditions": "the speaker is Arngeir; The Throat of the World stage 55 done",
+      "source": "TIF__000483D8.Fragment_0 on INFO Skyrim.esm:0483D8 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Arngeir",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "High Hrothgar"
+      ],
+      "call": "SetStage 55",
+      "info": "Skyrim.esm:04826B",
+      "prompt": "Why haven't I met Paarthurnax yet?",
+      "reply": [
+       "He lives in seclusion on the very peak of the mountain.",
+       "He speaks to us only rarely, and never to outsiders. Being allowed to see him is a great privilege."
+      ],
+      "conditions": "the speaker is Arngeir",
+      "source": "TIF__0004826B.Fragment_0 on INFO Skyrim.esm:04826B (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Arngeir",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "High Hrothgar"
+      ],
+      "call": "SetStage 35",
+      "info": "Skyrim.esm:0B394E",
+      "prompt": "So you won't help me?",
+      "reply": [
+       "No. Not now. Not until you return to the path of wisdom."
+      ],
+      "conditions": "the speaker is Arngeir",
+      "source": "TIF__000B394E.Fragment_0 on INFO Skyrim.esm:0B394E (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:02D516",
@@ -1980,7 +2828,53 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "(Optional) Talk to Esbern",
+     "index": 20,
+     "source": "Skyrim.esm:02D516 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Paarthurnax",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Skyrim"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:03FA45",
+      "prompt": "Hmm. Esbern or Arngeir might have some idea.",
+      "reply": [
+       "Trust your instincts, Dovahkiin. Your blood will show you the way."
+      ],
+      "conditions": "the speaker is Paarthurnax",
+      "source": "TIF__0003FA45.Fragment_0 on INFO Skyrim.esm:03FA45 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Delphine",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Sleeping Giant Inn"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:041F13",
+      "prompt": "No, but I know how to find out. I need an Elder Scroll.",
+      "reply": [
+       "An Elder Scroll? That's not going to be easy to come by.",
+       "Esbern's your man for that kind of thing. He may be able to at least point you in the right direction."
+      ],
+      "conditions": "the speaker is Delphine",
+      "source": "TIF__00041F13.Fragment_0 on INFO Skyrim.esm:041F13 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:036193",
@@ -2062,7 +2956,47 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Learn the \"Dragonrend\" Shout from the Nord heroes",
+     "index": 20,
+     "source": "Skyrim.esm:036193 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "MQ206 (Alduin's Bane)",
+      "questId": "Skyrim.esm:036193",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "MQ206Script.OnUpdate on Skyrim.esm:036193 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Paarthurnax",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Skyrim"
+      ],
+      "call": "SetStage 15",
+      "info": "Skyrim.esm:0C64EC",
+      "prompt": "I have the Elder Scroll.",
+      "reply": [
+       "You have it. The Kel - the Elder Scroll. Tiid kreh... qalos. Time shudders at its touch.",
+       "There is no question. You are doom-driven. Kogaan Akatosh. The very bones of the earth are at your disposal.",
+       "Go then. Fulfill your destiny. Take the Scroll to the Time-Wound.",
+       "Do not delay. Alduin will be coming. He cannot miss the signs."
+      ],
+      "conditions": "the speaker is Paarthurnax; Alduin's Bane stage < 20",
+      "source": "TIF__000C64EC.Fragment_1 on INFO Skyrim.esm:0C64EC (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:044C56",
@@ -2192,7 +3126,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Arngeir",
+     "index": 11,
+     "source": "Skyrim.esm:044C56 QOBJ 11",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:045923",
@@ -2249,7 +3194,38 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to General Tullius",
+     "index": 20,
+     "source": "Skyrim.esm:045923 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 15,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Arngeir",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "High Hrothgar"
+      ],
+      "call": "SetStage 15",
+      "info": "Skyrim.esm:026732",
+      "prompt": "Both sides respect the Greybeards. They will listen.",
+      "reply": [
+       "Paarthurnax has made the decision to help you. This is the road we have to walk.",
+       "Even the Greybeards must bend to the winds of change, it seems.",
+       "So be it. Tell Ulfric and General Tullius that the Greybeards wish to speak to them.",
+       "We will see if they still remember us."
+      ],
+      "conditions": "the speaker is Arngeir",
+      "source": "TIF__00026732.Fragment_0 on INFO Skyrim.esm:026732 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:046EF0",
@@ -2324,7 +3300,80 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Odahviing",
+     "index": 20,
+     "source": "Skyrim.esm:046EF0 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 40,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "MQ301 (The Fallen)",
+      "questId": "Skyrim.esm:044C56",
+      "atStage": 230,
+      "call": "SetStage 20",
+      "source": "QF_MQ301_00044C56.fragment_43 on Skyrim.esm:044C56 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": null,
+      "speakerNamed": "alias Gatekeeper of MQ303 (The World-Eater's Eyrie) (run time)",
+      "speakerPlaced": [],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:04DE3B",
+      "prompt": "Yes, I'm sure.",
+      "reply": [
+       "Your funeral. Someone else is gonna have to help you get him back in there again."
+      ],
+      "conditions": "the speaker is the one in alias Gatekeeper",
+      "source": "TIF__0004DE3B.Fragment_0 on INFO Skyrim.esm:04DE3B (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Odahviing",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Dragonsreach, Great Porch"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:04DE33",
+      "prompt": "I guess I'll have to trust you.",
+      "reply": [
+       "Onikaan koraav gein miraad. It is wise to recognize when you only have one choice.",
+       "And you can trust me. Zu'u ni tahrodiis. Alduin has proven himself unworthy to rule. I go my own way now.",
+       "Free me, and I will carry you to Skuldafn."
+      ],
+      "conditions": "the speaker is Odahviing",
+      "source": "TIF__0004DE33.Fragment_0 on INFO Skyrim.esm:04DE33 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Odahviing",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Dragonsreach, Great Porch"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:04DE34",
+      "prompt": "Yes. I'll set you free if you promise to take me to Skuldafn.",
+      "reply": [
+       "Onikaan koraav gein miraad. It is wise to recognize when you only have one choice.",
+       "And you can trust me. Zu'u ni tahrodiis. Alduin has proven himself unworthy to rule. I go my own way now.",
+       "Free me, and I will carry you to Skuldafn."
+      ],
+      "conditions": "the speaker is Odahviing",
+      "source": "TIF__0004DE34.Fragment_0 on INFO Skyrim.esm:04DE34 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:046EF1",
@@ -2433,7 +3482,117 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Gain admittance to the Hall of Valor",
+     "index": 20,
+     "source": "Skyrim.esm:046EF1 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 50,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "MQ305 (Dragonslayer)",
+      "questId": "Skyrim.esm:046EF2",
+      "atStage": 1,
+      "call": "SetStage 30",
+      "source": "QF_MQ305_00046EF2.fragment_8 on Skyrim.esm:046EF2 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "",
+      "speakerNamed": "alias LostSoul of MQ304 (Sovngarde) (forced)",
+      "speakerPlaced": [
+       "Sovngarde"
+      ],
+      "call": "SetStage 50",
+      "info": "Skyrim.esm:04E9B5",
+      "prompt": "Invisible Walk Away",
+      "reply": [
+       "The World-Eater waits within the mist! Bring word to Shor's hall of our hard fate!"
+      ],
+      "conditions": "the speaker is the one in alias LostSoul",
+      "source": "TIF__0004E9B5.Fragment_0 on INFO Skyrim.esm:04E9B5 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "",
+      "speakerNamed": "alias LostSoul of MQ304 (Sovngarde) (forced)",
+      "speakerPlaced": [
+       "Sovngarde"
+      ],
+      "call": "SetStage 50",
+      "info": "Skyrim.esm:04E9BB",
+      "prompt": "Yes, it's at the far end of the valley from here.",
+      "reply": [
+       "I saw it fair when first I trod this long-sought path. The pain and fear vanished, dreamlike, and a vision beckoned...",
+       "Shor's hall, shimmering across the clouded vale. But quenched was hope by the shrouding mist - my mind is darkened. ",
+       "I've lost the way and wander blindly.",
+       "Hurry! Before Alduin your life devours bring word to Shor's hall of our hard fate!"
+      ],
+      "conditions": "the speaker is the one in alias LostSoul",
+      "source": "TIF__0004E9BB.Fragment_0 on INFO Skyrim.esm:04E9BB (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "",
+      "speakerNamed": "alias LostSoul of MQ304 (Sovngarde) (forced)",
+      "speakerPlaced": [
+       "Sovngarde"
+      ],
+      "call": "SetStage 50",
+      "info": "Skyrim.esm:04F74E",
+      "prompt": "Shor's hall? What's that?",
+      "reply": [
+       "Don't you know? What drew you here? Surely your dreams showed you the way?",
+       "The Hall of Valor, where heroes wait to follow Shor to the final battle."
+      ],
+      "conditions": "the speaker is the one in alias LostSoul",
+      "source": "TIF__0004F74E.Fragment_0 on INFO Skyrim.esm:04F74E (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Tsun",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Sovngarde"
+      ],
+      "call": "SetStage 50",
+      "info": "Skyrim.esm:04FA20",
+      "prompt": null,
+      "reply": [
+       "What brings you, wayfarer grim, to wander here, in Sovngarde, souls-end, Shor's gift to honored dead?"
+      ],
+      "conditions": "the speaker is Tsun; Sovngarde stage 135 not done",
+      "source": "TIF__0004FA20.Fragment_0 on INFO Skyrim.esm:04FA20 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Tsun",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Sovngarde"
+      ],
+      "call": "SetStage 50",
+      "info": "Skyrim.esm:0946F1",
+      "prompt": "I seek entrance to the Hall of Valor.",
+      "reply": [
+       "No shade are you, as usually here passes, but living, you dare the land of the dead.",
+       "By what right do you request entry?"
+      ],
+      "conditions": "the speaker is Tsun; Sovngarde stage < 140",
+      "source": "TIF__000946F1.Fragment_0 on INFO Skyrim.esm:0946F1 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:046EF2",
@@ -2490,7 +3649,27 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Defeat Alduin",
+     "index": 20,
+     "source": "Skyrim.esm:046EF2 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "MQ305 (Dragonslayer)",
+      "questId": "Skyrim.esm:046EF2",
+      "atStage": null,
+      "call": "SetStage 30",
+      "source": "MQ305Script.OnUpdate on Skyrim.esm:046EF2 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:03FA16",
@@ -2538,11 +3717,17 @@
     {
      "by": "dialogue",
      "speaker": "Delphine",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Sleeping Giant Inn"
      ],
      "call": "SetStage 20",
      "info": "Skyrim.esm:042841",
+     "prompt": null,
+     "reply": [
+      "He needs to die. He deserves to die. And it falls to you to kill him.",
+      "Until he's dead... well, I'm sorry, but we would dishonor our oaths as Blades if we continued to help you."
+     ],
      "conditions": "the speaker is Delphine",
      "source": "TIF__00042841.Fragment_0 on INFO Skyrim.esm:042841 (Skyrim.esm)",
      "verdict": "script"
@@ -2550,11 +3735,17 @@
     {
      "by": "dialogue",
      "speaker": "Esbern",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "The Ratway Warrens, Esbern's Vault"
      ],
      "call": "SetStage 20",
      "info": "Skyrim.esm:0428DC",
+     "prompt": null,
+     "reply": [
+      "The Blades have been hunting him for centuries, but he was protected by the Greybeards and then the emperors.",
+      "Justice demands that he die for his crimes. Until he is dead, I'm afraid my oath as a Blade prevents me from offering you aid and comfort."
+     ],
      "conditions": "the speaker is Esbern",
      "source": "TIF__000428DC.Fragment_0 on INFO Skyrim.esm:0428DC (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
@@ -2592,7 +3783,35 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Delphine",
+     "index": 20,
+     "source": "Skyrim.esm:03FA16 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 50,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Arngeir",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "High Hrothgar"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:077358",
+      "prompt": "The Blades want me to kill Paarthurnax.",
+      "reply": [
+       "Now you see why I've warned you against them! Bloodthirsty barbarians!"
+      ],
+      "conditions": "the speaker is Arngeir; Paarthurnax stage 50 not done; Paarthurnax stage 99 not done; Paarthurnax stage 100 not done; Paarthurnax stage 20 done",
+      "source": "TIF__00077358.Fragment_0 on INFO Skyrim.esm:077358 (PaarthurnaxQuestExpansion.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0E76DE",
@@ -2604,11 +3823,16 @@
     {
      "by": "dialogue",
      "speaker": "Arngeir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "High Hrothgar"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0E76D9",
+     "prompt": "Have you located any Words of Power?",
+     "reply": [
+      "We have felt the whisper of a Word. Give me your map, and I will show you where its echo can be found."
+     ],
      "conditions": "DialogueHighHrothgar stage 10 done; The Words of Power stage 10 not done; the speaker is Arngeir",
      "source": "TIF__000E76D9.Fragment_0 on INFO Skyrim.esm:0E76D9 (Skyrim.esm)",
      "verdict": "script"
@@ -2661,11 +3885,17 @@
     {
      "by": "dialogue",
      "speaker": "Delphine",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Sleeping Giant Inn"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0E38C5",
+     "prompt": "Maybe I can help you find new recruits.",
+     "reply": [
+      "If you find anyone you think would make a good recruit, I can certainly take a look at them.",
+      "Remember though, being a Blade is a lifelong commitment. Their loyalty has to be with us once they're in."
+     ],
      "conditions": "the speaker is Delphine; GetInFaction CurrentFollowerFaction == 0; fn359 == 1",
      "source": "TIF__000E38C5.Fragment_0 on INFO Skyrim.esm:0E38C5 (Missing Follower Dialogue Fix.esp)",
      "verdict": "script"
@@ -2721,7 +3951,75 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Bring a follower to Delphine",
+     "index": 20,
+     "source": "Skyrim.esm:0E38C9 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "FreeformSkyhavenTempleA (Rebuilding the Blades)",
+      "questId": "Skyrim.esm:0E38C9",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "FreeformSkyHavenTempleAScript.RecruitBlade on Skyrim.esm:0E38C9 (PaarthurnaxQuestExpansion.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "DialogueFollower, a helper quest",
+      "questId": "Skyrim.esm:0750BA",
+      "atStage": 10,
+      "call": "SetStage 20",
+      "source": "QF_DialogueFollower_000750BA.fragment_0 on Skyrim.esm:0750BA (Simple Follower Framework Patch.esp), through FreeformSkyhavenTempleA (Rebuilding the Blades)'s recruitblade",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "start game",
+        "source": "Skyrim.esm:0750BA DNAM (Simple Follower Framework Patch.esp)",
+        "verdict": "files"
+       }
+      ]
+     },
+     {
+      "by": "quest script",
+      "quest": "DialogueFollower, a helper quest",
+      "questId": "Skyrim.esm:0750BA",
+      "atStage": 15,
+      "call": "SetStage 20",
+      "source": "QF_DialogueFollower_000750BA.fragment_3 on Skyrim.esm:0750BA (Simple Follower Framework Patch.esp), through FreeformSkyhavenTempleA (Rebuilding the Blades)'s recruitblade",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "start game",
+        "source": "Skyrim.esm:0750BA DNAM (Simple Follower Framework Patch.esp)",
+        "verdict": "files"
+       }
+      ]
+     },
+     {
+      "by": "quest script",
+      "quest": "DialogueFollower, a helper quest",
+      "questId": "Skyrim.esm:0750BA",
+      "atStage": 20,
+      "call": "SetStage 20",
+      "source": "QF_DialogueFollower_000750BA.fragment_4 on Skyrim.esm:0750BA (Simple Follower Framework Patch.esp), through FreeformSkyhavenTempleA (Rebuilding the Blades)'s recruitblade",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "start game",
+        "source": "Skyrim.esm:0750BA DNAM (Simple Follower Framework Patch.esp)",
+        "verdict": "files"
+       }
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0E3E67",
@@ -2733,11 +4031,16 @@
     {
      "by": "dialogue",
      "speaker": "Esbern",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "The Ratway Warrens, Esbern's Vault"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0E67EC",
+     "prompt": "Tell them to meet me there.",
+     "reply": [
+      "Good luck, Dragonborn."
+     ],
      "conditions": "the speaker is Esbern; GetInFaction CurrentFollowerFaction == 0; fn359 == 1",
      "source": "TIF__000E67EC.Fragment_0 on INFO Skyrim.esm:0E67EC (Missing Follower Dialogue Fix.esp)",
      "verdict": "script"
@@ -2778,7 +4081,36 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Esbern",
+     "index": 20,
+     "source": "Skyrim.esm:0E3E67 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "FreeformSkyHavenTempleB (Dragon Hunting)",
+      "questId": "Skyrim.esm:0E3E67",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "FreeformSkyHavenTempleAScript.RecruitBlade on Skyrim.esm:0E3E67 (PaarthurnaxQuestExpansion.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "FreeformSkyHavenTempleB (Dragon Hunting)",
+      "questId": "Skyrim.esm:0E3E67",
+      "atStage": null,
+      "call": "SetStage 15",
+      "source": "BladesOnUnloadScript.OnUnload on Skyrim.esm:0E3E67 (PaarthurnaxQuestExpansion.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0E6DF1",
@@ -2790,11 +4122,17 @@
     {
      "by": "dialogue",
      "speaker": "Esbern",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "The Ratway Warrens, Esbern's Vault"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0E67EB",
+     "prompt": "The dragon of <Alias=DragonLair> is dead.",
+     "reply": [
+      "It's good to see the Blades fighting alongside the Dragonborn once again. To think we're treading in the footsteps of thousands of years past.",
+      "While you're out hunting, keep a sharp eye open for any dragon parts you might find. I'd be interested in looking at them."
+     ],
      "conditions": "fn264 == 0; Dragon Research stage 100 not done; Dragon Hunting stage 20 done; the speaker is Esbern; GetInFaction CurrentFollowerFaction == 0; fn359 == 1",
      "source": "TIF__000E67EB.Fragment_0 on INFO Skyrim.esm:0E67EB (LoreRim - Dialogue Patch.esp)",
      "verdict": "script"
@@ -3961,7 +5299,7 @@
    ]
   }
  ],
- "otherStarts": "To get into the main quest: talk to Farengar Secret-Fire in Dragonsreach: Bleak Falls Barrow is running from the start (Talk to Farengar); or ask Matlara in Helgen \"I'd like to rent a room. (Start Intro (<Global=RoomCost> gold))\" (Unbound hasn't started; the speaker is the one in alias RestingPilgrimOwner; the player has at least RoomCost (25) gold), which starts Unbound; or ask Shazdehviir in Helgen \"Skip to Helgen Keep\" (the speaker is Shazdehviir), which starts Unbound.",
+ "otherStarts": "To get into The Dragonborn: talk to Farengar Secret-Fire in Dragonsreach: Bleak Falls Barrow is running from the start (Talk to Farengar); or ask Matlara in Helgen \"I'd like to rent a room. (Start Intro (<Global=RoomCost> gold))\" (Unbound hasn't started; the speaker is the one in alias RestingPilgrimOwner; the player has at least RoomCost (25) gold), which starts Unbound; or ask Shazdehviir in Helgen \"Skip to Helgen Keep\" (the speaker is Shazdehviir), which starts Unbound.",
  "routes": [
   {
    "route": "AP_DialogueHelgen, its script's skipkeepentrance",

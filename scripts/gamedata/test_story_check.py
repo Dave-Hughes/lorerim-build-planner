@@ -229,5 +229,66 @@ class ConditionsTest(unittest.TestCase):
                          "the speaker is Shazdehviir; the speaker is the one in alias Innkeeper; the player has at least 25 gold")
 
 
+    def test_alias_zero(self):
+        """The record's reading leaves param out for alias 0 (WO-115): it is still alias 0, not 'alias None'."""
+        conds = [{"fn": "GetIsAliasRef", "cmp": "==", "value": 1.0, "or": False}]
+        self.assertEqual(sc.format_conditions(conds, {}, alias_names={0: "Agmaer"}), "the speaker is the one in alias Agmaer")
+
+
+def plugin(*groups):
+    return record("TES4", 0, [sub("HEDR", struct.pack("<fII", 1.7, 0, 0x800))]) + b"".join(groups)
+
+
+class SpeakersTest(unittest.TestCase):
+    """WO-115 gap 2: a line with no GetIsID is spoken by a scene's actor alias, a package's alias, or the line before it."""
+
+    def test_scene_actor_and_its_quest(self):
+        scen = record("SCEN", 0x900, [
+            sub("EDID", zs("FXAgmaerScene")),
+            sub("ALID", u32(9)), sub("LNAM", u32(1)), sub("DNAM", u32(0)),              # the actor list
+            sub("ANAM", struct.pack("<H", 0)), sub("ALID", u32(9)), sub("INAM", u32(1)), sub("DATA", u32(0x810)), sub("ANAM", b""),
+            sub("ANAM", struct.pack("<H", 1)), sub("ALID", u32(9)), sub("PNAM", u32(0x820)), sub("ANAM", b""),  # a package action's own PNAM
+            sub("ANAM", struct.pack("<H", 3)), sub("ALID", u32(4)), sub("PTOP", u32(0x811)), sub("ANAM", b""),  # a player dialogue choice
+            sub("PNAM", u32(0x800)),                                                      # the scene's quest
+        ])
+        got = sc.read_scenes(plugin(group("SCEN", [scen])), PLUGIN)
+        self.assertEqual(got["Fixture.esp:000810"], [{"scene": "FXAgmaerScene", "id": "Fixture.esp:000900", "quest": QUEST, "alias": 9}])
+        self.assertEqual(got["Fixture.esp:000811"][0]["alias"], 4)
+
+    def test_line_that_leads_on(self):
+        dial = record("DIAL", 0x910, [sub("EDID", zs("FXTopic")), sub("QNAM", u32(0x800))])
+        info = record("INFO", 0x911, [ctda(72, 1.0, cmp=0, param=0x830), sub("TCLT", u32(0x812))])
+        other = record("INFO", 0x912, [sub("TCLT", u32(0x813))])
+        got = sc.read_links(plugin(group("DIAL", [dial, info, other])), PLUGIN, {"Fixture.esp:000812"})
+        (ln,) = got["Fixture.esp:000812"]
+        self.assertEqual((ln["info"], ln["topic"], ln["quest"]), ("Fixture.esp:000911", "Fixture.esp:000910", QUEST))
+        self.assertEqual((ln["conditions"][0]["fn"], ln["conditions"][0]["param"]), ("GetIsID", "Fixture.esp:000830"))
+
+    def test_package_says_the_topic(self):
+        pack = record("PACK", 0x920, [sub("EDID", zs("FXForcegreet")), sub("PDTO", u32(0) + u32(0x814))])
+        qust = record("QUST", 0x800, [sub("EDID", zs("FXQuest")), sub("ALST", u32(2)), sub("ALID", zs("Vilkas")), sub("ALPC", u32(0x920)), sub("ALED", b""),
+                                      sub("ALST", u32(3)), sub("ALID", zs("Other")), sub("ALED", b"")])
+        topics, runs = sc.read_packages(plugin(group("PACK", [pack]), group("QUST", [qust])), PLUGIN)
+        self.assertEqual(topics, {"Fixture.esp:000814": ["Fixture.esp:000920"]})
+        self.assertEqual(runs, {"Fixture.esp:000920": [(QUEST, 2)]})
+
+
+class SecondStepTest(unittest.TestCase):
+    """WO-115 gap 4: what moves a quest from its first objective to its second, not its own stage fragments."""
+
+    def test_moves_between_the_objectives(self):
+        quest = {"objectives": [{"index": 10}, {"index": 20}]}
+        shows = lambda obj, at: ({"kind": "quest", "quest": "C00", "stage": at, "fragment": True, "script": "QF"},  # noqa: E731
+                                 {"call": "SetObjectiveDisplayed", "quest": "C00", "objective": obj, "function": "Fragment_1"})
+        talk = ({"kind": "dialogue", "info": "Kodlak", "quest": "C00", "script": "TIF"}, {"call": "SetStage", "quest": "C00", "stage": 20, "function": "Fragment_0"})
+        own = ({"kind": "quest", "quest": "C00", "stage": 15, "fragment": True, "script": "QF"}, {"call": "SetStage", "quest": "C00", "stage": 20, "function": "Fragment_2"})
+        later = ({"kind": "dialogue", "info": "Late", "quest": "C00", "script": "TIF"}, {"call": "SetStage", "quest": "C00", "stage": 30, "function": "Fragment_0"})
+        events = [shows(10, 10), shows(20, 20), talk, own, later]
+        self.assertEqual(sc.first_objective_stage("C00", quest, events), 10)
+        objective, stage, moves = sc.second_step("C00", quest, 10, events)
+        self.assertEqual((objective, stage, [c["info"] for c, _ in moves]), (20, 20, ["Kodlak"]))
+        self.assertEqual(sc.second_step("C00", {"objectives": [{"index": 10}]}, 10, events), (None, None, []))
+
+
 if __name__ == "__main__":
     unittest.main()

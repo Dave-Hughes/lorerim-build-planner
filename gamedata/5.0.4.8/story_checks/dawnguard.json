@@ -17,7 +17,23 @@
      "call": "SetStage 5",
      "source": "DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B.fragment_1 on Dawnguard.esm:00D90B (TheChoiceIsYours.esp)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "story manager",
+       "event": "change location",
+       "node": "DLC1VQ00Node",
+       "parents": [
+        "Skyrim.esm:01320E",
+        "Root"
+       ],
+       "conditions": "Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; Dragonborn stage >= 5 or The Way of the Voice stage < 160; fn576 == 1; fn576 == 0; fn576 == 0; fn576 == 0; fn359 == 0; fn359 == 0",
+       "globals": [
+        "Dawnguard.esm:00D912"
+       ],
+       "source": "DLC1VQ00Node Dawnguard.esm:00D911 (DawnguardQuestPrerequisite.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -36,16 +52,40 @@
        "call": "Start",
        "source": "DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B.fragment_1 on Dawnguard.esm:00D90B (TheChoiceIsYours.esp)",
        "verdict": "script"
+      },
+      {
+       "by": "start game",
+       "source": "Dawnguard.esm:00D90E DNAM (Dawnguard.esm)",
+       "verdict": "files"
       }
      ]
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Agmaer",
+     "speakerNamed": "scene DLC1VQ01AgmaerScene, alias Agmaer of DLC1VQ01MiscObjective (Dawnguard) (unique)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:00D8D8",
+     "prompt": null,
+     "reply": [
+      "Oh, hey there! You here to join the Dawnguard too?"
+     ],
      "conditions": "",
+     "scene": "Dawnguard.esm:00D91A",
+     "sceneStartedBy": [
+      {
+       "by": "quest script",
+       "quest": "DLC1VQ01MiscObjective (Dawnguard)",
+       "questId": "Dawnguard.esm:00D06C",
+       "atStage": 50,
+       "call": "StartScene",
+       "source": "DLC1_QF_DLC1VQ01MiscObjective_0100D06C.fragment_9 on Dawnguard.esm:00D06C (Requiem.esp)",
+       "verdict": "script"
+      }
+     ],
      "source": "DLC1_TIF__0100D8D8.Fragment_0 on INFO Dawnguard.esm:00D8D8 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     }
@@ -183,6 +223,17 @@
    },
    "globals": [],
    "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Speak with Isran",
+     "index": 20,
+     "source": "Dawnguard.esm:004E24 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   },
    "unread": "no starter in its records or scripts"
   },
   {
@@ -194,11 +245,20 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Sorine Jurard",
+     "speakerNamed": "alias SorineAlias of DLC1HunterBaseStage2 (Bolstering the Ranks) (unique)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:014362",
-     "conditions": "the speaker is the one in alias alias 1",
+     "prompt": "Where can I find him?",
+     "reply": [
+      "Well, that's the thing. We don't know where he is. Haven't seen him in years.",
+      "I think he had regular contact with the Vigilants, and I know Isran kept track of them...",
+      "So maybe you could ask Isran if he knows anything? Just keep in mind that he... well, he might not like the idea."
+     ],
+     "conditions": "the speaker is the one in alias SorineAlias",
      "source": "DLC1_TIF__01014362.Fragment_0 on INFO Dawnguard.esm:014362 (Dawnguard.esm)",
      "verdict": "script"
     }
@@ -248,7 +308,56 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Find Florentius",
+     "index": 20,
+     "source": "Dawnguard.esm:013F1F QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Isran",
+      "speakerNamed": "alias IsranAlias of DLC1HunterBaseStage2 (Bolstering the Ranks) (unique)",
+      "speakerPlaced": [
+       "Fort Dawnguard"
+      ],
+      "call": "SetStage 20",
+      "info": "Dawnguard.esm:011A92",
+      "prompt": "Sorine thought we'd need his help.",
+      "reply": [
+       "I suppose she's right. I shouldn't let my personal feelings get in the way.",
+       "Last I'd heard of him, he was aiding the Vigilants of Stendarr at Ruunvald. He may still be there.",
+       "If he can maintain some appearance of normalcy, I'll allow him to stay."
+      ],
+      "conditions": "the speaker is the one in alias IsranAlias",
+      "source": "DLC1_TIF__02011A92.Fragment_0 on INFO Dawnguard.esm:011A92 (Dawnguard.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Vigilant Tolan",
+      "speakerNamed": "alias TolanAlias of DLC1HunterBaseStage2 (Bolstering the Ranks) (unique)",
+      "speakerPlaced": [
+       "Fort Dawnguard"
+      ],
+      "call": "SetStage 20",
+      "info": "Dawnguard.esm:0163A0",
+      "prompt": "Do you know where I can find him?",
+      "reply": [
+       "Florentius still worked with the Order from time to time.",
+       "Last I knew, he was headed to Ruunvald. But then, we hadn't heard from anyone there in a few weeks.",
+       "If he's moved on, perhaps the Vigilants there can tell you where he's gone."
+      ],
+      "conditions": "the speaker is the one in alias TolanAlias",
+      "source": "DLC1_TIF__010163A0.Fragment_0 on INFO Dawnguard.esm:0163A0 (Dawnguard.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:005E4A",
@@ -259,11 +368,20 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Gunmar",
+     "speakerNamed": "alias QuestGiver of DLC1RH01 (Hide and Seek) (run time)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:005E41",
-     "conditions": "fn67 == 1; the speaker is the one in alias alias None; Hide and Seek stage < 10",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "I've located the whereabouts of a vampire masquerading as a common citizen.",
+      "Track him down and dispose of him. ",
+      "Tread lightly. The law is unaware of the danger and will treat you as a criminal if you are caught."
+     ],
+     "conditions": "fn67 == 1; the speaker is the one in alias QuestGiver; Hide and Seek stage < 10",
      "source": "DLC1_TIF__01005E41.Fragment_0 on INFO Dawnguard.esm:005E41 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -303,7 +421,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias=QuestGiver>",
+     "index": 100,
+     "source": "Dawnguard.esm:005E4A QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DLC1RH01 (Hide and Seek)",
+      "questId": "Dawnguard.esm:005E4A",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "DLC1RH01TargetScript.OnDeath on Dawnguard.esm:005E4A (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:005E53",
@@ -314,11 +452,19 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Gunmar",
+     "speakerNamed": "alias QuestGiver of DLC1RH02 (Cleansing Light) (run time)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:005E48",
-     "conditions": "fn67 == 1; Cleansing Light stage < 10; the speaker is the one in alias alias None",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "I've discovered the whereabouts of a vampire lair.",
+      "Destroying the head vampire is usually sufficient to scatter its minions, though it's best to destroy every last one of them."
+     ],
+     "conditions": "fn67 == 1; Cleansing Light stage < 10; the speaker is the one in alias QuestGiver",
      "source": "DLC1_TIF__01005E48.Fragment_0 on INFO Dawnguard.esm:005E48 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -358,7 +504,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias=QuestGiver>",
+     "index": 100,
+     "source": "Dawnguard.esm:005E53 QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DLC1RH02 (Cleansing Light)",
+      "questId": "Dawnguard.esm:005E53",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "DLC1RH02BossScript.OnDeath on Dawnguard.esm:005E53 (Dawnguard.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:005E58",
@@ -369,11 +535,18 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Gunmar",
+     "speakerNamed": "alias Questgiver of DLC1RH03 (Preemptive Strike) (run time)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:005E43",
-     "conditions": "the speaker is the one in alias alias None",
+     "prompt": "...",
+     "reply": [
+      "We need to destroy him before he turns his comrades into a brood of vampires."
+     ],
+     "conditions": "the speaker is the one in alias Questgiver",
      "source": "DLC1_TIF__01005E43.Fragment_0 on INFO Dawnguard.esm:005E43 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -419,7 +592,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias=QuestGiver>",
+     "index": 100,
+     "source": "Dawnguard.esm:005E58 QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DLC1RH03 (Preemptive Strike)",
+      "questId": "Dawnguard.esm:005E58",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "DLC1RH03VampireScript.OnDeath on Dawnguard.esm:005E58 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:006952",
@@ -430,11 +623,21 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Gunmar",
+     "speakerNamed": "alias Questgiver of DLC1RH04 (Hunting the Monster) (run time)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:006950",
-     "conditions": "fn67 == 1; Hunting the Monster stage < 10; the speaker is the one in alias alias None",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "I've learned of a possible monster. ",
+      "And while I do not know its exact whereabouts, I do have information suggesting someone who does.",
+      "Pay a visit to the beast's last known contact. Do what you must to find where it's hiding now.",
+      "Then root out the monster, and destroy it."
+     ],
+     "conditions": "fn67 == 1; Hunting the Monster stage < 10; the speaker is the one in alias Questgiver",
      "source": "DLC1_TIF__01006950.Fragment_0 on INFO Dawnguard.esm:006950 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -486,7 +689,72 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Kill the <Alias=Vampire> at <Alias=Dungeon>",
+     "index": 50,
+     "source": "Dawnguard.esm:006952 QOBJ 50",
+     "verdict": "files"
+    },
+    "stage": 50,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DLC1RH04 (Hunting the Monster)",
+      "questId": "Dawnguard.esm:006952",
+      "atStage": null,
+      "call": "SetStage 50",
+      "source": "DLC1RH04LetterScript.OnContainerChanged on Dawnguard.esm:006952 (Dawnguard.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": null,
+      "speakerNamed": "alias Friend of DLC1RH04 (Hunting the Monster) (run time)",
+      "speakerPlaced": [],
+      "call": "SetStage 50",
+      "info": "Dawnguard.esm:006948",
+      "prompt": "If I find them myself, you'll meet the same fate as theirs. (Intimidate)",
+      "reply": [
+       "All right, calm down... Here, take this."
+      ],
+      "conditions": "the speaker is the one in alias Friend; fn655 == 1; GetActorValue <= GameDaysPassed (now 1)",
+      "source": "DLC1_TIF__01006948.Fragment_1 on INFO Dawnguard.esm:006948 (Immersive Speech Dialogues.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": null,
+      "speakerNamed": "alias Friend of DLC1RH04 (Hunting the Monster) (run time)",
+      "speakerPlaced": [],
+      "call": "SetStage 50",
+      "info": "Dawnguard.esm:006946",
+      "prompt": "Perhaps some coin will jog your memory? (<BribeCost> gold)",
+      "reply": [
+       "Well... we weren't the closest of friends... Here, take this."
+      ],
+      "conditions": "the speaker is the one in alias Friend; fn654 == 1",
+      "source": "DLC1_TIF__01006946.Fragment_1 on INFO Dawnguard.esm:006946 (Dawnguard.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": null,
+      "speakerNamed": "alias Friend of DLC1RH04 (Hunting the Monster) (run time)",
+      "speakerPlaced": [],
+      "call": "SetStage 50",
+      "info": "Dawnguard.esm:00694B",
+      "prompt": "Make this easier for you, tell me what I want to know. (Persuade)",
+      "reply": [
+       "All right... Here, take this."
+      ],
+      "conditions": "the speaker is the one in alias Friend; GetActorValue >= SpeechAverage (now 50) or fn182 == 1",
+      "source": "DLC1_TIF__0100694B.Fragment_1 on INFO Dawnguard.esm:00694B (Dawnguard.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:006BAC",
@@ -497,71 +765,130 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Sorine Jurard",
+     "speakerNamed": "alias QuestGiver of DLC1RH05 (Ancient Technology) (run time)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:002F1B",
-     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias alias None; global DLC1RH05RunCount == 0 (now ?)",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "I want to add some punch to our crossbow capabilities; done all I can on my own. I need a little inspiration.",
+      "I've always been fascinated with Dwemer artifacts. I take them apart, poke around in their guts, and try to figure things out - with mixed results.",
+      "But as luck would have it, I've tracked down the location of some actual Dwemer diagram drawings!",
+      "So, if you'd be a dear and collect those plans for me?"
+     ],
+     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 0 (now 0)",
      "source": "DLC1_TIF__01002F1B.Fragment_0 on INFO Dawnguard.esm:002F1B (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Sorine Jurard",
+     "speakerNamed": "alias QuestGiver of DLC1RH05 (Ancient Technology) (run time)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:006BAB",
-     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias alias None; global DLC1RH05RunCount == 1 (now ?)",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "I've got more leads on additional Dwemer plans.",
+      "Those last ones helped me immensely. If you could collect this one for me, it's sure to result in extraordinary success!"
+     ],
+     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 1 (now 0)",
      "source": "DLC1_TIF__01006BAB.Fragment_0 on INFO Dawnguard.esm:006BAB (Dawnguard.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Sorine Jurard",
+     "speakerNamed": "alias QuestGiver of DLC1RH05 (Ancient Technology) (run time)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:002F1C",
-     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias alias None; global DLC1RH05RunCount == 2 (now ?)",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "Ready for more? I certainly am.",
+      "Be a dear and fetch me another set of Dwemer diagrams?"
+     ],
+     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 2 (now 0)",
      "source": "DLC1_TIF__01002F1C.Fragment_0 on INFO Dawnguard.esm:002F1C (Dawnguard.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Sorine Jurard",
+     "speakerNamed": "alias QuestGiver of DLC1RH05 (Ancient Technology) (run time)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:002F1D",
-     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias alias None; global DLC1RH05RunCount == 3 (now ?)",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "It's amazing what I'm able to learn from studying these Dwemer plans.",
+      "Want to head out there and collect some more?"
+     ],
+     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 3 (now 0)",
      "source": "DLC1_TIF__01002F1D.Fragment_0 on INFO Dawnguard.esm:002F1D (Dawnguard.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Sorine Jurard",
+     "speakerNamed": "alias QuestGiver of DLC1RH05 (Ancient Technology) (run time)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:002F1E",
-     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias alias None; global DLC1RH05RunCount == 4 (now ?)",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "I'm starting to think you like this as much as I do!",
+      "Here's the location of the next set of Dwemer diagrams. Thanks!"
+     ],
+     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 4 (now 0)",
      "source": "DLC1_TIF__01002F1E.Fragment_0 on INFO Dawnguard.esm:002F1E (Dawnguard.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Sorine Jurard",
+     "speakerNamed": "alias QuestGiver of DLC1RH05 (Ancient Technology) (run time)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:002F1F",
-     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias alias None; global DLC1RH05RunCount == 5 (now ?)",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "Alright! One more set of dwemer plans to go.",
+      "Think I'll be sad when we're done collecting these. Who knows though, maybe more plans will turn up in the future.",
+      "But I can't wait to see these drawings. Go on, get out of here!"
+     ],
+     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 5 (now 0)",
      "source": "DLC1_TIF__01002F1F.Fragment_0 on INFO Dawnguard.esm:002F1F (Dawnguard.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Sorine Jurard",
+     "speakerNamed": "alias QuestGiver of DLC1RH05 (Ancient Technology) (run time)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:002F20",
-     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias alias None",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "I've located more dwemer plans.",
+      "Be a dear and collect these diagrams for me?"
+     ],
+     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver",
      "source": "DLC1_TIF__01002F20.Fragment_0 on INFO Dawnguard.esm:002F20 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -618,7 +945,27 @@
      "value": 0.0
     }
    ],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias=QuestGiver>",
+     "index": 100,
+     "source": "Dawnguard.esm:006BAC QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DLC1RH05 (Ancient Technology)",
+      "questId": "Dawnguard.esm:006BAC",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "DLC1RH05ItemScript.OnContainerChanged on Dawnguard.esm:006BAC (Dawnguard.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:007201",
@@ -629,21 +976,35 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Florentius Baenius",
+     "speakerNamed": "alias QuestGiver of DLC1RH06 (Rescue) (run time)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:007C30",
-     "conditions": "the speaker is the one in alias alias None; fn70 == 1",
+     "prompt": "...",
+     "reply": [
+      "Arkay's never clear on life and death. Is she still alive? There's always hope..."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver; fn70 == 1",
      "source": "DLC1_TIF__01007C30.Fragment_0 on INFO Dawnguard.esm:007C30 (Dawnguard.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Florentius Baenius",
+     "speakerNamed": "alias QuestGiver of DLC1RH06 (Rescue) (run time)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:007C31",
-     "conditions": "the speaker is the one in alias alias None; fn70 == 1",
+     "prompt": "...",
+     "reply": [
+      "Arkay is so hard to understand when it comes to life and death. Is he still alive? There's always hope..."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver; fn70 == 1",
      "source": "DLC1_TIF__01007C31.Fragment_0 on INFO Dawnguard.esm:007C31 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -683,7 +1044,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Kill the <Alias=Vampire>",
+     "index": 11,
+     "source": "Dawnguard.esm:007201 QOBJ 11",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
   },
   {
    "id": "Dawnguard.esm:007EC5",
@@ -694,11 +1066,21 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Isran",
+     "speakerNamed": "alias QuestGiver of DLC1RH07 (A Jarl's Justice) (run time)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:007EC2",
-     "conditions": "fn67 == 1; the speaker is the one in alias alias 1; A Jarl's Justice stage < 10",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "The jarl's in danger. A vampire plays as a visiting \"advisor\" to the court. Destroy it before it's able to complete its foul business.",
+      "But be warned. The jarl's guards are unaware of the threat, and will treat violence against this \"advisor\" as a crime.",
+      "Convince the jarl of the threat and he'll let you destroy the creature. If not, then do your best not to get caught.",
+      "Quickly now! The longer you delay, the more danger the jarl is in."
+     ],
+     "conditions": "fn67 == 1; the speaker is the one in alias QuestGiver; A Jarl's Justice stage < 10",
      "source": "DLC1_TIF__01007EC2.Fragment_0 on INFO Dawnguard.esm:007EC2 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -712,7 +1094,7 @@
       "Root"
      ],
      "source": "DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm)",
-     "verdict": "files",
+     "verdict": "run time",
      "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1"
     }
    ],
@@ -733,11 +1115,27 @@
     }
    ],
    "needs": {
-    "conditions": "global DLC1RH07NextAllowed <= GameDaysPassed (now 1) (now ?)",
+    "conditions": "global DLC1RH07NextAllowed <= GameDaysPassed (now 1) (now 0)",
     "doors": [],
     "ways": []
    },
    "globals": [
+    {
+     "id": "Dawnguard.esm:014CE8",
+     "edid": "DLC1RH07NextAllowed",
+     "record": 0.0,
+     "recordFrom": "Dawnguard.esm",
+     "runtime": [
+      {
+       "by": "script",
+       "script": "DLC1_QF_DLC1RH07_01007EC5",
+       "function": "fragment_2",
+       "value": 12
+      }
+     ],
+     "verdict": "run time",
+     "value": 0.0
+    },
     {
      "id": "Skyrim.esm:000039",
      "edid": "GameDaysPassed",
@@ -748,7 +1146,33 @@
      "value": 1.0
     }
    ],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Find evidence linked to the vampire",
+     "index": 20,
+     "source": "Dawnguard.esm:007EC5 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": null,
+      "speakerNamed": "alias Jarl of DLC1RH07 (A Jarl's Justice) (run time)",
+      "speakerPlaced": [],
+      "call": "SetStage 20",
+      "info": "Dawnguard.esm:007EC3",
+      "prompt": "You are in danger. A vampire has infiltrated your court.",
+      "reply": [
+       "That's quite a bold claim. I'd need proof before I could possibly accept it."
+      ],
+      "conditions": "A Jarl's Justice stage >= 10; A Jarl's Justice stage < 30; the speaker is the one in alias Jarl",
+      "source": "DLC1_TIF__01007EC3.Fragment_0 on INFO Dawnguard.esm:007EC3 (Dawnguard.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:015017",
@@ -759,11 +1183,20 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Florentius Baenius",
+     "speakerNamed": "alias QuestGiver of DLC1RH08 (Lost Relic) (run time)",
+     "speakerPlaced": [
+      "Fort Dawnguard"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:01500F",
-     "conditions": "fn67 == 1; Lost Relic stage < 10; the speaker is the one in alias alias None",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "I've been poring over some of the tomes left here in the keep. Interesting stories, indeed.",
+      "Seems the previous incarnation of the Dawnguard had, at one time, some interesting toys.",
+      "Arkay and I think it could be a great advantage for us. You should look into retrieving it."
+     ],
+     "conditions": "fn67 == 1; Lost Relic stage < 10; the speaker is the one in alias QuestGiver",
      "source": "DLC1_TIF__0101500F.Fragment_0 on INFO Dawnguard.esm:01500F (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -820,7 +1253,18 @@
      "value": 0.0
     }
    ],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias=QuestGiver>",
+     "index": 100,
+     "source": "Dawnguard.esm:015017 QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 100 or one before it"
+   }
   },
   {
    "id": "Dawnguard.esm:004C1B",
@@ -832,24 +1276,37 @@
     {
      "by": "dialogue",
      "speaker": "Fura Bloodmouth",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Volkihar Keep"
      ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:004C1A",
-     "conditions": "the speaker is the one in alias alias 1; The Hunt stage < 10; the speaker is Fura Bloodmouth",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "You're going to go kill a Dawnguard spy.",
+      "But don't draw attention. Some kills are for fun, some for profit. And others are for sending messages. This one is a message.",
+      "With any luck he'll bleed to death before anyone notices. A cold corpse will say what we want better than a warm one."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver; The Hunt stage < 10; the speaker is Fura Bloodmouth",
      "source": "DLC1_TIF__01004C1A.Fragment_0 on INFO Dawnguard.esm:004C1A (Dawnguard.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": "Garan Marethi",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Volkihar Keep"
      ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:015E0C",
-     "conditions": "the speaker is the one in alias alias 1; The Hunt stage < 10; the speaker is Garan Marethi",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "I've learned the whereabouts of a troublesome Dawnguard member. You will track him down and dispose of him.",
+      "But please, do be discreet. Our aim isn't to stir the nest, just to skin a rat, reminding them that they are the prey."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver; The Hunt stage < 10; the speaker is Garan Marethi",
      "source": "DLC1_TIF__01015E0C.Fragment_0 on INFO Dawnguard.esm:015E0C (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -889,7 +1346,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "(Optional) Make it a discreet kill",
+     "index": 11,
+     "source": "Dawnguard.esm:004C1B QOBJ 11",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
   },
   {
    "id": "Dawnguard.esm:0050B9",
@@ -901,24 +1369,38 @@
     {
      "by": "dialogue",
      "speaker": "Fura Bloodmouth",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Volkihar Keep"
      ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:0050B5",
-     "conditions": "the speaker is the one in alias alias None; Culling the Beast stage < 10; the speaker is Fura Bloodmouth",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "A bunch of feral vampires are running wild, upsetting the mortals.",
+      "When the prey is riled, it makes things difficult for us.",
+      "Go cull the brutish beasts before the problem gets out of hand."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver; Culling the Beast stage < 10; the speaker is Fura Bloodmouth",
      "source": "DLC1_TIF__010050B5.Fragment_0 on INFO Dawnguard.esm:0050B5 (Dawnguard.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": "Garan Marethi",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Volkihar Keep"
      ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:015E11",
-     "conditions": "the speaker is the one in alias alias None; Culling the Beast stage < 10; the speaker is Garan Marethi",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "A cadre of lesser beasts has become a nuisance, taking too bold an approach to their feeding.",
+      "The herd is becoming distressed, which makes it more difficult for us to slip in and out undetected.",
+      "It is time to cull the weak."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver; Culling the Beast stage < 10; the speaker is Garan Marethi",
      "source": "DLC1_TIF__01015E11.Fragment_0 on INFO Dawnguard.esm:015E11 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -958,7 +1440,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias=QuestGiver>",
+     "index": 100,
+     "source": "Dawnguard.esm:0050B9 QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DLC1RV02 (Culling the Beast)",
+      "questId": "Dawnguard.esm:0050B9",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "DLC1RV02BossScript.OnDeath on Dawnguard.esm:0050B9 (Dawnguard.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:0050BD",
@@ -969,11 +1471,21 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Feran Sadri",
+     "speakerNamed": "alias QuestGiver of DLC1RV03 (Deceiving the Herd) (run time)",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:0050B3",
-     "conditions": "Deceiving the Herd stage < 10; the speaker is the one in alias alias None",
+     "prompt": "I heard you might need help.",
+     "reply": [
+      "The Dawnguard have increased their operations and have been aggressively recruiting.",
+      "We need to put a damper on their efforts and give those troublemakers something to worry about other than harassing our interests.",
+      "You are to make a public show of murdering someone. Do it in the streets for all to see. The higher the profile the better.",
+      "Make it seem you are a member of the Dawnguard, thus sowing confusion among the herd. Wear this armor and plant this note on the victim."
+     ],
+     "conditions": "Deceiving the Herd stage < 10; the speaker is the one in alias QuestGiver",
      "source": "DLC1_TIF__010050B3.Fragment_0 on INFO Dawnguard.esm:0050B3 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -1013,7 +1525,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "(Optional) Make it a public kill while wearing Dawnguard armor",
+     "index": 110,
+     "source": "Dawnguard.esm:0050BD QOBJ 110",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
   },
   {
    "id": "Dawnguard.esm:0056FD",
@@ -1025,24 +1548,36 @@
     {
      "by": "dialogue",
      "speaker": "Fura Bloodmouth",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Volkihar Keep"
      ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:015E12",
-     "conditions": "the speaker is the one in alias alias None; the speaker is Fura Bloodmouth",
+     "prompt": "...",
+     "reply": [
+      "We don't need competition for blood, and we don't want the mortals getting up in arms making things difficult for us.",
+      "Go destroy the feral beast before this becomes a problem."
+     ],
+     "conditions": "the speaker is the one in alias Questgiver; the speaker is Fura Bloodmouth",
      "source": "DLC1_TIF__01015E12.Fragment_0 on INFO Dawnguard.esm:015E12 (Dawnguard.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": "Garan Marethi",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Volkihar Keep"
      ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:015E13",
-     "conditions": "the speaker is the one in alias alias None; the speaker is Garan Marethi",
+     "prompt": "...",
+     "reply": [
+      "Needless to say, we can't abide that, as it would raise general alarm amongst the herd, to say nothing of the increased feeding competition.",
+      "You are to destroy the feral creature before this small problem becomes a larger one."
+     ],
+     "conditions": "the speaker is the one in alias Questgiver; the speaker is Garan Marethi",
      "source": "DLC1_TIF__01015E13.Fragment_0 on INFO Dawnguard.esm:015E13 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -1088,7 +1623,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias=QuestGiver>",
+     "index": 100,
+     "source": "Dawnguard.esm:0056FD QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DLC1RV04 (Protecting the Bloodline)",
+      "questId": "Dawnguard.esm:0056FD",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "DLC1RV04VampireScript.OnDeath on Dawnguard.esm:0056FD (Dawnguard.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:005702",
@@ -1099,21 +1654,35 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Feran Sadri",
+     "speakerNamed": "alias QuestGiver of DLC1RV05 (Ancient Power) (run time)",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:0056F9",
-     "conditions": "the speaker is the one in alias alias None; Ancient Power stage < 10; global DLC1VampireChaliceLevel == 0 (now ?)",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "I've located the petrified remains of an elder vampire. Bring them to me, and I should be able to extend the effects granted by the Blood Chalice."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver; Ancient Power stage < 10; global DLC1VampireChaliceLevel == 0 (now 0)",
      "source": "DLC1_TIF__010056F9.Fragment_0 on INFO Dawnguard.esm:0056F9 (Dawnguard.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Feran Sadri",
+     "speakerNamed": "alias QuestGiver of DLC1RV05 (Ancient Power) (run time)",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:01473D",
-     "conditions": "the speaker is the one in alias alias None; Ancient Power stage < 10",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "I've located additional petrified remains of an elder vampire. Bring them to me, and I'll extend the effects granted by the Blood Chalice."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver; Ancient Power stage < 10",
      "source": "DLC1_TIF__0101473D.Fragment_0 on INFO Dawnguard.esm:01473D (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -1159,7 +1728,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias=QuestGiver>",
+     "index": 100,
+     "source": "Dawnguard.esm:005702 QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DLC1RV05 (Ancient Power)",
+      "questId": "Dawnguard.esm:005702",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "DLC1RV05RemainsScript.OnContainerChanged on Dawnguard.esm:005702 (Dawnguard.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:0058CA",
@@ -1170,21 +1759,41 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Vingalmo",
+     "speakerNamed": "alias QuestGiver of DLC1RV06 (The Gift) (run time)",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:0058BD",
-     "conditions": "the speaker is the one in alias alias None; fn70 == 1",
+     "prompt": "...",
+     "reply": [
+      "May I strongly suggest that you make a visit to this spouse of yours and \"invite\" her to the family by offering her Harkon's Gift.",
+      "It is the greatest token we can bestow upon those we love and wish to see... protected.",
+      "Put her mind at rest, allay her fear through vampiric seduction and when she is in a pliant condition, embrace her and bite her on the neck.",
+      "Nature will take care of the rest."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver; fn70 == 1",
      "source": "DLC1_TIF__010058BD.Fragment_0 on INFO Dawnguard.esm:0058BD (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Vingalmo",
+     "speakerNamed": "alias QuestGiver of DLC1RV06 (The Gift) (run time)",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:0058BE",
-     "conditions": "the speaker is the one in alias alias None; fn70 == 1",
+     "prompt": "...",
+     "reply": [
+      "May I strongly suggest that you make a visit to this spouse of yours and \"invite\" him to the family by offering him Harkon's Gift.",
+      "It is the greatest token we can bestow upon those we love and wish to see... protected.",
+      "Put his mind to rest, allay his fear through vampiric seduction and when he is in a pliant condition, embrace him and bite him on the neck.",
+      "Nature will do the rest."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver; fn70 == 1",
      "source": "DLC1_TIF__010058BE.Fragment_0 on INFO Dawnguard.esm:0058BE (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -1273,7 +1882,35 @@
      "value": 0.0
     }
    ],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias=QuestGiver>",
+     "index": 100,
+     "source": "Dawnguard.esm:0058CA QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Aela the Huntress",
+      "speakerNamed": "alias Spouse of DLC1RV06 (The Gift) (run time)",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 70",
+      "info": "Dawnguard.esm:0058C5",
+      "prompt": "You'll need to trust me. The family is safer this way.",
+      "reply": [
+       "I see... I... I understand. Thank you."
+      ],
+      "conditions": "the speaker is the one in alias Spouse; GetInFaction PotentialMarriageFaction == 1",
+      "source": "DLC1_TIF__010058C5.Fragment_0 on INFO Dawnguard.esm:0058C5 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:00A29C",
@@ -1284,21 +1921,37 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Vingalmo",
+     "speakerNamed": "alias QuestGiver of DLC1RV07 (New Allegiances) (run time)",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:00A299",
-     "conditions": "the speaker is the one in alias alias None; fn70 == 1",
+     "prompt": "Understood.",
+     "reply": [
+      "When you offer the embrace, do so away from prying eyes. Our new sibling will then likely require rest while his blood undergoes the change.",
+      "Return to me when your part is done."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver; fn70 == 1",
      "source": "DLC1_TIF__0100A299.Fragment_0 on INFO Dawnguard.esm:00A299 (Dawnguard.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Vingalmo",
+     "speakerNamed": "alias QuestGiver of DLC1RV07 (New Allegiances) (run time)",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:00A29A",
-     "conditions": "the speaker is the one in alias alias None; fn70 == 1",
+     "prompt": "Understood.",
+     "reply": [
+      "When you offer the embrace, do so away from prying eyes. Our new sibling will then likely require rest while her blood undergoes the change.",
+      "Return to me when your part is done."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver; fn70 == 1",
      "source": "DLC1_TIF__0100A29A.Fragment_0 on INFO Dawnguard.esm:00A29A (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -1380,7 +2033,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias=QuestGiver>",
+     "index": 100,
+     "source": "Dawnguard.esm:00A29C QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 100 or one before it"
+   }
   },
   {
    "id": "Dawnguard.esm:00CE06",
@@ -1391,11 +2055,18 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Feran Sadri",
+     "speakerNamed": "alias QuestGiver of DLC1RV08 (Rings of Blood Magic) (run time)",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:003992",
-     "conditions": "the speaker is the one in alias alias None",
+     "prompt": "Understood.",
+     "reply": [
+      "Best of luck to you."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver",
      "source": "DLC1_TIF__01003992.Fragment_0 on INFO Dawnguard.esm:003992 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -1458,7 +2129,18 @@
      "value": 0.0
     }
    ],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Retrieve the <Alias=Item2> from <Alias=Location2>",
+     "index": 120,
+     "source": "Dawnguard.esm:00CE06 QOBJ 120",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
   },
   {
    "id": "Dawnguard.esm:00CE0B",
@@ -1469,11 +2151,18 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Feran Sadri",
+     "speakerNamed": "alias QuestGiver of DLC1RV09 (Amulets of Night Power) (run time)",
+     "speakerPlaced": [
+      "Volkihar Keep"
+     ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:003997",
-     "conditions": "the speaker is the one in alias alias None",
+     "prompt": "Understood.",
+     "reply": [
+      "Good luck."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver",
      "source": "DLC1_TIF__01003997.Fragment_0 on INFO Dawnguard.esm:003997 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -1536,7 +2225,18 @@
      "value": 0.0
     }
    ],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Retrieve the <Alias=Item2> from <Alias=Location2>",
+     "index": 120,
+     "source": "Dawnguard.esm:00CE0B QOBJ 120",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
   },
   {
    "id": "Dawnguard.esm:019938",
@@ -1548,24 +2248,36 @@
     {
      "by": "dialogue",
      "speaker": "Garan Marethi",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Volkihar Keep"
      ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:019932",
-     "conditions": "the speaker is the one in alias alias None; the speaker is Garan Marethi; Destroying the Dawnguard stage < 10",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "The Dawnguard will, no doubt, soon become even more of a nuisance now that Auriel's Bow has been recovered.",
+      "We need to strike a crippling blow against them before they muster more men against us."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver; the speaker is Garan Marethi; Destroying the Dawnguard stage < 10",
      "source": "DLC1_TIF__01019932.Fragment_0 on INFO Dawnguard.esm:019932 (Dawnguard.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": "Fura Bloodmouth",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Volkihar Keep"
      ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:019933",
-     "conditions": "the speaker is the one in alias alias None; the speaker is Fura Bloodmouth; Destroying the Dawnguard stage < 10",
+     "prompt": "What can I do to help?",
+     "reply": [
+      "The Dawnguard will want the Bow, and they will fight us, hard, to get it.",
+      "We should strike them first before they can muster a larger force."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver; the speaker is Fura Bloodmouth; Destroying the Dawnguard stage < 10",
      "source": "DLC1_TIF__01019933.Fragment_0 on INFO Dawnguard.esm:019933 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -1807,7 +2519,45 @@
      "value": 0.0
     }
    ],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias=QuestGiver>",
+     "index": 100,
+     "source": "Dawnguard.esm:019938 QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DLC1RV10 (Destroying the Dawnguard)",
+      "questId": "Dawnguard.esm:019938",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "DLC1RV10Script.CheckDead on Dawnguard.esm:019938 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "DLC1RV10 (Destroying the Dawnguard)",
+      "questId": "Dawnguard.esm:019938",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "DLC1RV10AliasScript.OnDeath on Dawnguard.esm:019938 (Unofficial Skyrim Special Edition Patch.esp), through DLC1RV10 (Destroying the Dawnguard)'s checkdead",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "DLC1RV10 (Destroying the Dawnguard)",
+      "questId": "Dawnguard.esm:019938",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "DLC1RV10AliasScript.OnDying on Dawnguard.esm:019938 (Unofficial Skyrim Special Edition Patch.esp), through DLC1RV10 (Destroying the Dawnguard)'s checkdead",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:00594C",
@@ -1862,6 +2612,36 @@
    },
    "globals": [],
    "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Follow Garan",
+     "index": 15,
+     "source": "Dawnguard.esm:00594C QOBJ 15",
+     "verdict": "files"
+    },
+    "stage": 15,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Garan Marethi",
+      "speakerNamed": "alias GaranAlias of DLC1VampireBaseIntro (The Bloodstone Chalice) (unique)",
+      "speakerPlaced": [
+       "Volkihar Keep"
+      ],
+      "call": "SetStage 15",
+      "info": "Dawnguard.esm:018B65",
+      "prompt": null,
+      "reply": [
+       "The Chalice has been in Lord Harkon's possession for quite some time now. It is, when used properly, able to increase the potency of our powers.",
+       "He has neglected using it for ages. If he wants it filled now, then grander things are afoot. This is good.",
+       "Follow me. I'll take you to it."
+      ],
+      "conditions": "the speaker is the one in alias GaranAlias",
+      "source": "DLC1_TIF__01018B65.Fragment_0 on INFO Dawnguard.esm:018B65 (Dawnguard.esm)",
+      "verdict": "script"
+     }
+    ]
+   },
    "unread": "no starter in its records or scripts"
   },
   {
@@ -1883,11 +2663,18 @@
     {
      "by": "dialogue",
      "speaker": "Vigilant Tolan",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Fort Dawnguard"
      ],
      "call": "SetStage 10",
      "info": "Dawnguard.esm:019AAB",
+     "prompt": null,
+     "reply": [
+      "North, I think, then they turned west and that's the last I saw of them.",
+      "They mentioned some place called Dimhollow Crypt, but I don't know where that is.",
+      "While you're looking for the vampires, I'll try to get us some help. Come find me at Dead Drop Falls when you've learned more."
+     ],
      "conditions": "the speaker is Vigilant Tolan",
      "source": "DLC1_TIF_DLC1VQ01TolanDirecti_01019AAB.Fragment_0 on INFO Dawnguard.esm:019AAB (Dawnguard.esm)",
      "verdict": "script"
@@ -1895,11 +2682,16 @@
     {
      "by": "dialogue",
      "speaker": "Vigilant Tolan",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Fort Dawnguard"
      ],
      "call": "SetStage 5",
      "info": "Dawnguard.esm:01A1B4",
+     "prompt": "You said something happened to the Hall of Vigilants?",
+     "reply": [
+      "Yes. By destroying it, the vampires hoped to cripple our order's activities in Skyrim."
+     ],
      "conditions": "the speaker is Vigilant Tolan; Awakening stage 10 done; Awakening stage 5 not done",
      "source": "DLC1_TIF__0101A1B4.Fragment_0 on INFO Dawnguard.esm:01A1B4 (Dawnguard.esm)",
      "verdict": "script"
@@ -1971,7 +2763,45 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Speak to the mysterious woman",
+     "index": 40,
+     "source": "Dawnguard.esm:00352A QOBJ 40",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DLC1VQ01 (Awakening)",
+      "questId": "Dawnguard.esm:00352A",
+      "atStage": null,
+      "call": "SetStage 12",
+      "source": "DLC1VQ01TolanScript.OnUnload on Dawnguard.esm:00352A (Dawnguard.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "DLC1VQ01 (Awakening)",
+      "questId": "Dawnguard.esm:00352A",
+      "atStage": null,
+      "call": "SetStage 17",
+      "source": "DLC1VQ01BookScript.onRead on Dawnguard.esm:00352A (Dawnguard.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "DLC1VQ01 (Awakening)",
+      "questId": "Dawnguard.esm:00352A",
+      "atStage": null,
+      "call": "SetStage 17",
+      "source": "DLC1VQ01BookScript.OnContainerChanged on Dawnguard.esm:00352A (Dawnguard.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:002F65",
@@ -2083,7 +2913,74 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Speak to Harkon",
+     "index": 20,
+     "source": "Dawnguard.esm:002F65 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Isran",
+      "speakerNamed": "alias IsranAlias of DLC1HunterBaseIntro (A New Order) (unique)",
+      "speakerPlaced": [
+       "Fort Dawnguard"
+      ],
+      "call": "SetStage 6",
+      "info": "Dawnguard.esm:005946",
+      "prompt": null,
+      "reply": [
+       "And I suppose you're the one Tolan says is actually doing something about this mess.",
+       "These Vigilants are nothing but talk."
+      ],
+      "conditions": "A New Order stage < 20; fn629 == 0; fn249 == 1; the speaker is the one in alias IsranAlias",
+      "source": "DLC1_TIF__01005946.Fragment_0 on INFO Dawnguard.esm:005946 (Dawnguard.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Isran",
+      "speakerNamed": "alias IsranAlias of DLC1HunterBaseIntro (A New Order) (unique)",
+      "speakerPlaced": [
+       "Fort Dawnguard"
+      ],
+      "call": "SetStage 7",
+      "info": "Dawnguard.esm:017FEA",
+      "prompt": null,
+      "reply": [
+       "Well, it seems the Dawnguard really is needed again.",
+       "While I ready things here, you find out what this woman means to the vampires. She must be important somehow.",
+       "I'll admit, I don't know that I can trust you, but I know I can't rely on the Vigilants for anything. So we'll have to work together for now.",
+       "If you can prove you're reliable, maybe you can join the Dawnguard. We have ways of dealing with vampires."
+      ],
+      "conditions": "the speaker is the one in alias IsranAlias",
+      "source": "DLC1_TIF__01017FEA.Fragment_0 on INFO Dawnguard.esm:017FEA (Dawnguard.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Isran",
+      "speakerNamed": "alias Isran of DLC1VQ02 (Bloodline) (unique)",
+      "speakerPlaced": [
+       "Fort Dawnguard"
+      ],
+      "call": "SetStage 7",
+      "info": "Dawnguard.esm:019812",
+      "prompt": "She's asking me to take her home, to some castle.",
+      "reply": [
+       "I won't lie - if this were any other situation, I'd put her down just on the chance she might be a vampire.",
+       "But this is something different. I'd say do what she wants. Take her home, and see who else is in this castle."
+      ],
+      "conditions": "the speaker is the one in alias Isran",
+      "source": "DLC1_TIF__01019812.Fragment_0 on INFO Dawnguard.esm:019812 (Dawnguard.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:0098CB",
@@ -2140,7 +3037,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Speak to Serana",
+     "index": 10,
+     "source": "Dawnguard.esm:0098CB QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 7,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 7 or one before it"
+   }
   },
   {
    "id": "Dawnguard.esm:004C3D",
@@ -2197,7 +3105,36 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Listen to Harkon's speech",
+     "index": 20,
+     "source": "Dawnguard.esm:004C3D QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Lord Harkon",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Volkihar Keep"
+      ],
+      "call": "SetStage 10",
+      "info": "Dawnguard.esm:0069AF",
+      "prompt": null,
+      "reply": [
+       "I have ordered the court to assemble. I have a new task for us all to carry out, and that includes you.",
+       "Come now, and hear my proclamation."
+      ],
+      "conditions": "the speaker is Lord Harkon",
+      "source": "DLC1_TIF__010069AF.Fragment_0 on INFO Dawnguard.esm:0069AF (Dawnguard.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:00284F",
@@ -2247,7 +3184,52 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Explore Castle Volkihar's Courtyard",
+     "index": 20,
+     "source": "Dawnguard.esm:00284F QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Serana",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Dimhollow Cavern, Dimhollow Crypt"
+      ],
+      "call": "SetStage 20",
+      "info": "Dawnguard.esm:012192",
+      "prompt": "Let's go to the castle's secret entrance.",
+      "reply": [
+       "Come on. It's just around the side."
+      ],
+      "conditions": "the speaker is Serana; fn359 == 1",
+      "source": "DLC1_TIF__02012192.Fragment_1 on INFO Dawnguard.esm:012192 (Dawnguard.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Serana",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Dimhollow Cavern, Dimhollow Crypt"
+      ],
+      "call": "SetStage 20",
+      "info": "Dawnguard.esm:012E82",
+      "prompt": "Let's go to the castle's secret entrance.",
+      "reply": [
+       "It's around the side of the castle. Let's move."
+      ],
+      "conditions": "the speaker is Serana",
+      "source": "DLC1_TIF__02012E82.Fragment_1 on INFO Dawnguard.esm:012E82 (Dawnguard.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:002850",
@@ -2298,7 +3280,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Speak to Valerica",
+     "index": 20,
+     "source": "Dawnguard.esm:002850 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 25,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 25 or one before it"
+   }
   },
   {
    "id": "Dawnguard.esm:002852",
@@ -2353,6 +3346,26 @@
    },
    "globals": [],
    "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Gather bark from a Canticle Tree",
+     "index": 20,
+     "source": "Dawnguard.esm:002852 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DLC1VQ06 (Unseen Visions)",
+      "questId": "Dawnguard.esm:002852",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "DLC1VQ06DrawKnifeAliasScript.OnContainerChanged on Dawnguard.esm:002852 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   },
    "unread": "no starter in its records or scripts"
   },
   {
@@ -2432,7 +3445,18 @@
      "source": "DLC1_QF_DLC1VQ07_01002853.fragment_22",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Speak to Gelebor",
+     "index": 30,
+     "source": "Dawnguard.esm:002853 QOBJ 30",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 30 or one before it"
+   }
   },
   {
    "id": "Dawnguard.esm:007C25",
@@ -2473,7 +3497,49 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Speak to Isran",
+     "index": 20,
+     "source": "Dawnguard.esm:007C25 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": null,
+      "speakerNamed": "alias DLC1VQ08RNPCAlias of DLC1VQ08 (Kindred Judgment) (run time)",
+      "speakerPlaced": [],
+      "call": "SetStage 20",
+      "info": "Dawnguard.esm:019FA9",
+      "prompt": "Then let's face him, together.",
+      "reply": [
+       "Thank you. Somehow I knew you'd understand."
+      ],
+      "conditions": "the speaker is the one in alias DLC1VQ08RNPCAlias; Kindred Judgment stage == 10; global DLC1PlayingVampireLine == 1 (now 0); global DLC1VQ08DLink01 == 1 (now 0)",
+      "source": "DLC1_TIF__01019FA9.Fragment_0 on INFO Dawnguard.esm:019FA9 (Dawnguard.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": null,
+      "speakerNamed": "alias DLC1VQ08RNPCAlias of DLC1VQ08 (Kindred Judgment) (run time)",
+      "speakerPlaced": [],
+      "call": "SetStage 20",
+      "info": "Dawnguard.esm:019F97",
+      "prompt": "Then let's face him, together.",
+      "reply": [
+       "If we head back to the castle and kick the front door in, we're going to be knee-deep in his friends.",
+       "Let's head back to Isran and let him see what we've got first. I'm betting he'll lend us a sword or two."
+      ],
+      "conditions": "the speaker is the one in alias DLC1VQ08RNPCAlias; Kindred Judgment stage == 10; global DLC1PlayingVampireLine == 0 (now 0); global DLC1VQ08DLink01 == 1 (now 0)",
+      "source": "DLC1_TIF__01019F97.Fragment_0 on INFO Dawnguard.esm:019F97 (Dawnguard.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:005DA9",
@@ -2529,7 +3595,18 @@
      "source": "DLC1_QF_DLC1VQElder_01005DA9.fragment_13",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Find The Elder Scroll (Blood)",
+     "index": 20,
+     "source": "Dawnguard.esm:005DA9 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
   },
   {
    "id": "Dawnguard.esm:0181BF",
@@ -2550,11 +3627,17 @@
     {
      "by": "dialogue",
      "speaker": "Dexion Evicus",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Forebears' Holdout"
      ],
      "call": "SetStage 20",
      "info": "Dawnguard.esm:0181BC",
+     "prompt": "Why is that?",
+     "reply": [
+      "The Elder Scrolls vanished from the Imperial City around 175 of this era and have been scattered across Tamriel by forces unknown.",
+      "If you want to find the remaining scroll, you'll have to consult with someone versed in magical knowledge. Perhaps at the College of Winterhold?"
+     ],
      "conditions": "the speaker is Dexion Evicus; Seeking Disclosure stage 20 not done; Elder Knowledge hasn't started; Discerning the Transmundane stage < 10; fn629 == 0",
      "source": "DLC1_TIF__010181BC.Fragment_0 on INFO Dawnguard.esm:0181BC (Dawnguard.esm)",
      "verdict": "script"
@@ -2562,10 +3645,16 @@
     {
      "by": "dialogue",
      "speaker": null,
+     "speakerNamed": "alias DLC1VQElderRNPCAlias of DLC1VQElderHandler (Scroll Scouting) (run time)",
      "speakerPlaced": [],
      "call": "SetStage 20",
      "info": "Dawnguard.esm:0181BE",
-     "conditions": "the speaker is the one in alias alias None; Seeking Disclosure stage 20 not done; Elder Knowledge hasn't started; Discerning the Transmundane stage < 10; fn629 == 0",
+     "prompt": "Any clues about the other Elder Scroll?",
+     "reply": [
+      "Dexion said something about that scroll. What was it... something to do with dragons I think?",
+      "Maybe we should try asking at the College of Winterhold. Sounds like something they'd know about."
+     ],
+     "conditions": "the speaker is the one in alias DLC1VQElderRNPCAlias; Seeking Disclosure stage 20 not done; Elder Knowledge hasn't started; Discerning the Transmundane stage < 10; fn629 == 0",
      "source": "DLC1_TIF__010181BE.Fragment_0 on INFO Dawnguard.esm:0181BE (Dawnguard.esm)",
      "verdict": "script"
     }
@@ -2608,7 +3697,27 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Buy back the Elder Scroll (Dragon) from Urag gro-Shub",
+     "index": 20,
+     "source": "Dawnguard.esm:0181BF QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DLC1VQElder (Seeking Disclosure)",
+      "questId": "Dawnguard.esm:005DA9",
+      "atStage": 10,
+      "call": "SetStage 30",
+      "source": "DLC1_QF_DLC1VQElder_01005DA9.fragment_2 on Dawnguard.esm:005DA9 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Dawnguard.esm:01400B",
@@ -2620,12 +3729,18 @@
     {
      "by": "dialogue",
      "speaker": "Jiub",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Soul Cairn"
      ],
      "call": "SetStage 20",
      "info": "Dawnguard.esm:01417B",
-     "conditions": "the speaker is Jiub; Impatience of a Saint stage == 10; global DLC1VQSaintDLink01 == 2 (now ?)",
+     "prompt": "How many pages did you lose?",
+     "reply": [
+      "When I was tossed in here I felt myself falling... and I dropped the pages I had been holding.",
+      "There were ten of them in all. Find them for me, please, I beg you!"
+     ],
+     "conditions": "the speaker is Jiub; Impatience of a Saint stage == 10; global DLC1VQSaintDLink01 == 2 (now 0)",
      "source": "DLC1_TIF__0101417B.Fragment_0 on INFO Dawnguard.esm:01417B (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -2663,7 +3778,18 @@
      "source": "DLC1_QF_DLC1VQSaint_0101400B.fragment_3",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Jiub",
+     "index": 20,
+     "source": "Dawnguard.esm:01400B QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 30 or one before it"
+   }
   },
   {
    "id": "Dawnguard.esm:0163CD",
@@ -2674,21 +3800,37 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Soul",
+     "speakerNamed": "alias RiderSoul of DLC01SoulCairnHorseQuest2 (Soul Cairn Horse Quest) (forced)",
+     "speakerPlaced": [
+      "Soul Cairn",
+      "Soul Cairn"
+     ],
      "call": "SetStage 15",
      "info": "Dawnguard.esm:002B0B",
-     "conditions": "the speaker is the one in alias alias 41",
+     "prompt": "How can I help him?",
+     "reply": [
+      "Arvak! Arvak, where are you? Arvak, please come back! Come back!"
+     ],
+     "conditions": "the speaker is the one in alias RiderSoul",
      "source": "DLC1_TIF__01002B0B.Fragment_0 on INFO Dawnguard.esm:002B0B (Dawnguard.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Soul",
+     "speakerNamed": "alias RiderSoul of DLC01SoulCairnHorseQuest2 (Soul Cairn Horse Quest) (forced)",
+     "speakerPlaced": [
+      "Soul Cairn",
+      "Soul Cairn"
+     ],
      "call": "SetStage 20",
      "info": "Dawnguard.esm:002B0B",
-     "conditions": "the speaker is the one in alias alias 41",
+     "prompt": "How can I help him?",
+     "reply": [
+      "Arvak! Arvak, where are you? Arvak, please come back! Come back!"
+     ],
+     "conditions": "the speaker is the one in alias RiderSoul",
      "source": "DLC1_TIF__01002B0B.Fragment_1 on INFO Dawnguard.esm:002B0B (Dawnguard.esm)",
      "verdict": "script"
     }
@@ -2708,7 +3850,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Retrieve Arvak's skull",
+     "index": 100,
+     "source": "Dawnguard.esm:0163CD QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 100 or one before it"
+   }
   },
   {
    "id": "Dawnguard.esm:004C1C",
@@ -2848,7 +4001,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Help Sorine with her project to improve the crossbow",
+     "index": 20,
+     "source": "Dawnguard.esm:004C1C QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
   },
   {
    "id": "Dawnguard.esm:00EA41",
@@ -2878,12 +4042,18 @@
     {
      "by": "dialogue",
      "speaker": "Valerica",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Soul Cairn"
      ],
      "call": "SetStage 20",
      "info": "Dawnguard.esm:00E9DD",
-     "conditions": "the speaker is Valerica; Beyond Death stage == 130; Beyond Death Soul Gem Handler stage 30 not done; global DLC1VQ04SoulTrapped == 1 (now ?)",
+     "prompt": "Any idea where it could be?",
+     "reply": [
+      "There's an offering altar not terribly far from here. I'm willing to bet that the gem you're looking for is there.",
+      "Is there anything else? Could be your last chance."
+     ],
+     "conditions": "the speaker is Valerica; Beyond Death stage == 130; Beyond Death Soul Gem Handler stage 30 not done; global DLC1VQ04SoulTrapped == 1 (now 0)",
      "source": "DLC1_TIF__0200E9DD.Fragment_0 on INFO Dawnguard.esm:00E9DD (Dawnguard.esm)",
      "verdict": "script"
     }
@@ -2932,30 +4102,46 @@
     {
      "by": "dialogue",
      "speaker": null,
+     "speakerNamed": "alias DLC1VQDragonAlias of DLC1VQDragon (Durnehviir) (from alias)",
      "speakerPlaced": [],
      "call": "SetStage 30",
      "info": "Dawnguard.esm:01157B",
-     "conditions": "the speaker is the one in alias alias 1; Durnehviir stage == 20; global DLC1VQDragonDLink01 == 1 (now ?)",
+     "prompt": "Just call your name in Tamriel? That's it?",
+     "reply": [
+      "Trivial in your mind, perhaps. For me, it would mean a great deal.",
+      "I don't require an answer, Qahnaarin. Simply speak my name to the heavens when you feel the time is right."
+     ],
+     "conditions": "the speaker is the one in alias DLC1VQDragonAlias; Durnehviir stage == 20; global DLC1VQDragonDLink01 == 1 (now 0)",
      "source": "DLC1_TIF__0101157B.Fragment_0 on INFO Dawnguard.esm:01157B (Dawnguard.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": null,
+     "speakerNamed": "alias DLC1VQDragonAlias of DLC1VQDragon (Durnehviir) (from alias)",
      "speakerPlaced": [],
      "call": "SetStage 20",
      "info": "Dawnguard.esm:01157E",
-     "conditions": "the speaker is the one in alias alias 1; Durnehviir stage == 10; global DLC1VQDragonDLink01 == 0 (now ?)",
+     "prompt": "I have more pressing matters at the moment.",
+     "reply": [
+      "Forgive me, Qahnaarin. We will continue this when time releases you from its relentless grasp."
+     ],
+     "conditions": "the speaker is the one in alias DLC1VQDragonAlias; Durnehviir stage == 10; global DLC1VQDragonDLink01 == 0 (now 0)",
      "source": "DLC1_TIF__0101157E.Fragment_0 on INFO Dawnguard.esm:01157E (Dawnguard.esm)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": null,
+     "speakerNamed": "alias DLC1VQDragonAlias of DLC1VQDragon (Durnehviir) (from alias)",
      "speakerPlaced": [],
      "call": "SetStage 20",
      "info": "Dawnguard.esm:011570",
-     "conditions": "the speaker is the one in alias alias 1; Durnehviir stage == 10; global DLC1VQDragonDLink01 == 0 (now ?)",
+     "prompt": "Why are we speaking?",
+     "reply": [
+      "I believe in civility among seasoned warriors, and I find your ear worthy of my words."
+     ],
+     "conditions": "the speaker is the one in alias DLC1VQDragonAlias; Durnehviir stage == 10; global DLC1VQDragonDLink01 == 0 (now 0)",
      "source": "DLC1_TIF__01011570.Fragment_0 on INFO Dawnguard.esm:011570 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -2980,7 +4166,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Learn the first word of the Soul Tear shout",
+     "index": 20,
+     "source": "Dawnguard.esm:00C73A QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 30 or one before it"
+   }
   },
   {
    "id": "Dawnguard.esm:01119F",
@@ -3099,7 +4296,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Enter melee mode",
+     "index": 20,
+     "source": "Dawnguard.esm:01909F QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
   }
  ],
  "notInRawQuests": [],
@@ -4217,35 +5425,40 @@
    ]
   }
  ],
- "otherStarts": "To get into the main quest: Impatience of a Saint is running from the start: Find pages from Saint Jiub's Opus (<Global=DLC1VQSaintCount>/<Global=DLC1VQSaintTotal>).",
+ "otherStarts": "To get into Dawnguard: Impatience of a Saint is running from the start: Find pages from Saint Jiub's Opus (<Global=DLC1VQSaintCount>/<Global=DLC1VQSaintTotal>); or ask Agmaer in Fort Dawnguard \"\" (), which starts Dawnguard.",
  "routes": [
   {
    "route": "DLC1VQ00ChangeLocation",
    "kind": "quest script",
    "does": "stage 0: SetStage 5",
-   "startedBy": [],
+   "startedBy": [
+    "story manager node DLC1VQ00Node (change location; Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; Dragonborn stage >= 5 or The Way of the Voice stage < 160; fn576 == 1; fn576 == 0; fn576 == 0; fn576 == 0; fn359 == 0; fn359 == 0; DLC1VQ00Node Dawnguard.esm:00D911 (DawnguardQuestPrerequisite.esp))"
+   ],
    "inStartMenu": false,
    "source": "DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B on Dawnguard.esm:00D90B (TheChoiceIsYours.esp)",
-   "sentence": "DLC1VQ00ChangeLocation stage 0: SetStage 5 on DLC1VQ01MiscObjective (Dawnguard); it is started by ."
+   "sentence": "DLC1VQ00ChangeLocation stage 0: SetStage 5 on DLC1VQ01MiscObjective (Dawnguard); it is started by story manager node DLC1VQ00Node (change location; Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; Dragonborn stage >= 5 or The Way of the Voice stage < 160; fn576 == 1; fn576 == 0; fn576 == 0; fn576 == 0; fn359 == 0; fn359 == 0; DLC1VQ00Node Dawnguard.esm:00D911 (DawnguardQuestPrerequisite.esp))."
   },
   {
    "route": "DLC1VQ00",
    "kind": "quest script",
    "does": "stage 50: SetStage 10",
    "startedBy": [
-    "DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B.fragment_1 on Dawnguard.esm:00D90B (TheChoiceIsYours.esp)"
+    "DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B.fragment_1 on Dawnguard.esm:00D90B (TheChoiceIsYours.esp)",
+    "the start-game flag (Dawnguard.esm:00D90E DNAM, Dawnguard.esm)"
    ],
    "inStartMenu": false,
    "source": "DLC1_QF_DLC1VQ00_0100D90E on Dawnguard.esm:00D90E (Dawnguard.esm)",
-   "sentence": "DLC1VQ00 stage 50: SetStage 10 on DLC1VQ01MiscObjective (Dawnguard); it is started by DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B.fragment_1 on Dawnguard.esm:00D90B (TheChoiceIsYours.esp)."
+   "sentence": "DLC1VQ00 stage 50: SetStage 10 on DLC1VQ01MiscObjective (Dawnguard); it is started by DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B.fragment_1 on Dawnguard.esm:00D90B (TheChoiceIsYours.esp); the start-game flag (Dawnguard.esm:00D90E DNAM, Dawnguard.esm)."
   },
   {
    "route": "dialogue INFO Dawnguard.esm:00D8D8",
    "kind": "dialogue",
-   "speaker": null,
-   "speakerNamed": "GetIsID",
-   "race": null,
-   "placed": [],
+   "speaker": "Agmaer",
+   "speakerNamed": "scene DLC1VQ01AgmaerScene, alias Agmaer of DLC1VQ01MiscObjective (Dawnguard) (unique)",
+   "race": "Nord",
+   "placed": [
+    "Fort Dawnguard"
+   ],
    "prompt": "",
    "reply": [
     "Oh, hey there! You here to join the Dawnguard too?"
@@ -4253,22 +5466,21 @@
    "conditions": "",
    "does": "SetStage 10 on DLC1VQ01MiscObjective (Dawnguard)",
    "source": "DLC1_TIF__0100D8D8.Fragment_0 on INFO Dawnguard.esm:00D8D8 (Unofficial Skyrim Special Edition Patch.esp); topic ",
-   "sentence": "Talk to the speaker the line's conditions name: SetStage 10 on DLC1VQ01MiscObjective (Dawnguard).",
-   "stops": "the speaker isn't named by an NPC: GetIsID"
+   "sentence": "Talk to Agmaer (Nord) in Fort Dawnguard: SetStage 10 on DLC1VQ01MiscObjective (Dawnguard)."
   }
  ],
  "loaders": {
   "Wyrmstooth": {
    "quest": "Wyrmstooth.esp:AC1487",
    "script": "WT_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/Wyrmstooth - Settings Loader/Scripts/WT_MCMScript.pex",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
    "winnerParent": "MCM_ConfigBase",
    "readsSettings": true
   },
   "TimingIsEverything": {
    "quest": "TimingIsEverything.esp:005E3B",
    "script": "TIE_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
    "winnerParent": "SKI_ConfigBase",
    "readsSettings": false
   }
@@ -4331,7 +5543,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4349,14 +5561,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4397,7 +5609,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4424,7 +5636,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4442,14 +5654,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4490,7 +5702,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4517,7 +5729,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4535,14 +5747,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4583,7 +5795,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4610,7 +5822,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4628,14 +5840,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4676,7 +5888,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4703,7 +5915,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4721,14 +5933,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4769,7 +5981,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4796,7 +6008,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4814,14 +6026,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4862,7 +6074,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4889,7 +6101,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4907,14 +6119,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4955,7 +6167,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4982,7 +6194,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -5000,14 +6212,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -5048,7 +6260,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -5075,7 +6287,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -5093,14 +6305,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -5141,7 +6353,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -5164,7 +6376,7 @@
   "script": {
    "quest": "TimingIsEverything.esp:005E3B",
    "script": "TIE_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
    "winnerParent": "SKI_ConfigBase",
    "readsSettings": false
   },
@@ -5185,7 +6397,7 @@
        "key": "iTIE_MinimumLevel:Dragonborn",
        "value": "25",
        "from": "settings.ini in Timing is Everything SE - Settings Loader",
-       "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+       "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
       }
      ],
      "value": 25.0,
@@ -5224,7 +6436,7 @@
   "loaderQuest": {
    "quest": "Wyrmstooth.esp:AC1487",
    "script": "WT_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/Wyrmstooth - Settings Loader/Scripts/WT_MCMScript.pex",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
    "winnerParent": "MCM_ConfigBase",
    "readsSettings": true
   },

@@ -120,7 +120,37 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Kill Grelod the Kind or find an alternative way to deal with her",
+     "index": 20,
+     "source": "Skyrim.esm:01EA50 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Aventus Aretino",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Aretino Residence"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:01F339",
+      "prompt": "Contract?",
+      "reply": [
+       "My mother, she... she died. I... I'm all alone now. So they sent me to that terrible orphanage in Riften. Honorhall.",
+       "The headmistress is an evil, cruel woman. They call her Grelod the Kind. But she's not kind. She's terrible. To all of us.",
+       "So I ran away, and came home. And performed the Black Sacrament. Now you're here! And you can kill Grelod the Kind!"
+      ],
+      "conditions": "the speaker is Aventus Aretino",
+      "source": "TIF__0001F339.Fragment_0 on INFO Skyrim.esm:01F339 (Innocence Lost - Quest Expansion.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:087BA2",
@@ -187,11 +217,18 @@
     {
      "by": "dialogue",
      "speaker": "Cicero",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Loreius Farm"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0550E0",
+     "prompt": "Is there some way I can help?",
+     "reply": [
+      "Oh. Oh yes! Yes, the kindly stranger can certainly help!",
+      "Go to the farm - the Loreius Farm. Just over there, off the road. Talk to Loreius. He has tools! He can help me! But he won't! He refuses!",
+      "Convince Loreius to fix my wheel! Do that, and poor Cicero will reward you."
+     ],
      "conditions": "the speaker is Cicero",
      "source": "TIF__000550E0.Fragment_0 on INFO Skyrim.esm:0550E0 (Escapeweave.esp)",
      "verdict": "script"
@@ -199,11 +236,18 @@
     {
      "by": "dialogue",
      "speaker": "Vantus Loreius",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Loreius Farm, Loreius Farmhouse"
      ],
      "call": "SetStage 20",
      "info": "Skyrim.esm:0550E6",
+     "prompt": "I'll do it. I'll report Cicero to the guard.",
+     "reply": [
+      "Ha! Wonderful!",
+      "Like I said, the guard is down by the road. You really can't miss him.",
+      "You tell him that jester is up to no good, and he'll deal with it. Then come back here, and I'll toss a few coins your way, yeah?"
+     ],
      "conditions": "the speaker is Vantus Loreius",
      "source": "TIF__000550E6.Fragment_0 on INFO Skyrim.esm:0550E6 (Skyrim.esm)",
      "verdict": "script"
@@ -283,7 +327,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Convince Loreius to fix the wheel",
+     "index": 10,
+     "source": "Skyrim.esm:01EA4F QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01EA51",
@@ -305,11 +360,17 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:020BE0",
+     "prompt": "(Remain silent)",
+     "reply": [
+      "Am I to take your silence as acceptance?",
+      "Then you know where we stand. Make your kill, and we're square. Repayment of your debt is but a discreet knife thrust away."
+     ],
      "conditions": "the speaker is Astrid",
      "source": "TIF__00020BE0.Fragment_0 on INFO Skyrim.esm:020BE0 (Skyrim.esm)",
      "verdict": "script"
@@ -317,11 +378,17 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:020BE1",
+     "prompt": "All right, I'll do it. I'll kill one of them.",
+     "reply": [
+      "See, I knew we could resolve this civilly. A debt owed must be repaid. You understand that.",
+      "Well, get to it then. Pick your guest, and send the poor fool to the Void.  I'll give you the key to this shack, and you'll be on your way.  "
+     ],
      "conditions": "the speaker is Astrid",
      "source": "TIF__00020BE1.Fragment_0 on INFO Skyrim.esm:020BE1 (Skyrim.esm)",
      "verdict": "script"
@@ -329,11 +396,18 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:020BE2",
+     "prompt": "I'll have no part of this insanity.",
+     "reply": [
+      "Now that is a shame.",
+      "But what you fail to realize is that you involved yourself in this \"insanity\" when you took Grelod's life. You made your choice.",
+      "Now it's time to face the consequences of your actions. You don't leave this shack until someone dies."
+     ],
      "conditions": "Innocence Lost stage != 201; the speaker is Astrid",
      "source": "TIF__00020BE2.Fragment_0 on INFO Skyrim.esm:020BE2 (Destroy the Dark Brotherhood - Quest Expansion.esp)",
      "verdict": "script"
@@ -341,11 +415,17 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0CEFB9",
+     "prompt": "DB02AstridWalkAwayTopic",
+     "reply": [
+      "I'll cut right to it. You murdered the old woman in the orphanage. You owe the Dark Brotherhood a kill. I've come to collect.  ",
+      "One of these poor sods has a contract out on their life. Which one is it? Any idea? Make your choice. Make your kill. And you get to walk away."
+     ],
      "conditions": "Innocence Lost stage != 201; the speaker is Astrid",
      "source": "TIF__000CEFB9.Fragment_1 on INFO Skyrim.esm:0CEFB9 (Destroy the Dark Brotherhood - Quest Expansion.esp)",
      "verdict": "script"
@@ -353,11 +433,16 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Destroy the Dark Brotherhood - Quest Expansion.esp:0008B0",
+     "prompt": "I'll have no part of this insanity.",
+     "reply": [
+      "Oh no, no, no. Don't you understand? You don't leave this shack until someone dies."
+     ],
      "conditions": "Innocence Lost stage == 201; the speaker is Astrid",
      "source": "DB_GrelodAlt_2.Fragment_0 on INFO Destroy the Dark Brotherhood - Quest Expansion.esp:0008B0 (Destroy the Dark Brotherhood - Quest Expansion.esp)",
      "verdict": "script"
@@ -365,11 +450,17 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Destroy the Dark Brotherhood - Quest Expansion.esp:0008A7",
+     "prompt": "DB02AstridWalkAwayTopic",
+     "reply": [
+      "I'll cut right to it. You owe the Dark Brotherhood a kill. I've come to collect.",
+      "One of these poor sods has a contract out on their life. Which one is it? Any idea? Make your choice. Make your kill. And you get to walk away."
+     ],
      "conditions": "Innocence Lost stage == 201; the speaker is Astrid",
      "source": "DBGrelod_Alt1.Fragment_0 on INFO Destroy the Dark Brotherhood - Quest Expansion.esp:0008A7 (Destroy the Dark Brotherhood - Quest Expansion.esp)",
      "verdict": "script"
@@ -457,7 +548,63 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Speak with Astrid",
+     "index": 30,
+     "source": "Skyrim.esm:01EA51 QOBJ 30",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DarkSideContractDialogue, a helper quest",
+      "questId": "Skyrim.esm:024151",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "QF_DarkSideContractDialogue_00024151.Fragment_0 on Skyrim.esm:024151 (Skyrim.esm)",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "dialogue",
+        "speaker": "Nazir",
+        "speakerNamed": "GetIsID",
+        "speakerPlaced": [
+         "Dark Brotherhood Sanctuary"
+        ],
+        "call": "Start",
+        "info": "Skyrim.esm:020015",
+        "prompt": "Sounds simple enough.",
+        "reply": [
+         "It is. These aren't particularly glamorous assassinations, I'll be honest. Don't pay much, either.  ",
+         "But they'll keep you busy. Just do them as you're able. There's no real time limit - the targets aren't going anywhere.",
+         "You can turn each one in as it's completed, or wait and turn in the whole group when all the targets have been eliminated. Whichever works for you."
+        ],
+        "conditions": "the speaker is Nazir",
+        "source": "TIF__00020015.Fragment_0 on INFO Skyrim.esm:020015 (Skyrim.esm)",
+        "verdict": "script"
+       },
+       {
+        "by": "start game",
+        "source": "Skyrim.esm:024151 DNAM (Skyrim.esm)",
+        "verdict": "files"
+       }
+      ]
+     },
+     {
+      "by": "quest script",
+      "quest": "APS_GuildBrotherhood, a helper quest with Astrid",
+      "questId": "AlternatePerspective.esp:3D36E7",
+      "atStage": 0,
+      "call": "SetStage 30",
+      "source": "QF_APS_GuildBrotherhood_063D36E7.fragment_0 on AlternatePerspective.esp:3D36E7 (AlternatePerspective.esp)",
+      "verdict": "script",
+      "throughStartedBy": []
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:022F47",
@@ -469,11 +616,19 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:020BDF",
+     "prompt": "(Remain silent)",
+     "reply": [
+      "Hmm... Yes, the silence suits you. Gives you an air of mystery. ",
+      "Now, down to business. I'm arranging a job for you. But in the meantime, go talk to Nazir. He may have some smaller contracts to tide you over.",
+      "Soon, the Night Mother will arrive. And things around here are sure to get even more interesting.",
+      "Ah, but one last thing. A welcome home present. The armor of the Dark Brotherhood. May it serve you well in all your... endeavors."
+     ],
      "conditions": "the speaker is Astrid",
      "source": "TIF__00020BDF.Fragment_0 on INFO Skyrim.esm:020BDF (Skyrim.esm)",
      "verdict": "script"
@@ -481,11 +636,19 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:020BDE",
+     "prompt": "When do I get to kill someone?",
+     "reply": [
+      "Soon, my dearest. Soon.",
+      "I'm arranging a job for you, but I need some more time. For now, go talk to Nazir. He may have some smaller contracts to tide you over.",
+      "Soon, the Night Mother will arrive. And things around here are sure to get even more interesting.",
+      "Ah, but one last thing. A welcome home present. The armor of the Dark Brotherhood. May it serve you well in all your... endeavors."
+     ],
      "conditions": "the speaker is Astrid",
      "source": "TIF__00020BDE.Fragment_0 on INFO Skyrim.esm:020BDE (Skyrim.esm)",
      "verdict": "script"
@@ -493,11 +656,19 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:020BDD",
+     "prompt": "I am honored to be a part of your Family, Astrid.",
+     "reply": [
+      "Our Family, my dearest. Our Family. Together, united as one, the Dark Brotherhood can accomplish anything.",
+      "But you must be anxious to get to work. I'm arranging a job, but need a bit more time. For now, go see Nazir. He's got several smaller contracts.",
+      "Soon, the Night Mother will arrive. And things around here are sure to get even more interesting.",
+      "Ah, but one last thing. A welcome home present. The armor of the Dark Brotherhood. May it serve you well in all your... endeavors."
+     ],
      "conditions": "With Friends Like These... stage == 50; the speaker is Astrid",
      "source": "TIF__00020BDD.Fragment_0 on INFO Skyrim.esm:020BDD (Skyrim.esm)",
      "verdict": "script"
@@ -620,7 +791,73 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Receive the first set of contracts from Nazir",
+     "index": 20,
+     "source": "Skyrim.esm:022F47 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DBSideContract11 (Contract: Kill Helvard)",
+      "questId": "Skyrim.esm:01EA67",
+      "atStage": 0,
+      "call": "SetStage 20",
+      "source": "QF_DBSideContract11_0001EA67.fragment_0 on Skyrim.esm:01EA67 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "DBSideContract08 (Contract: Kill Anoriath)",
+      "questId": "Skyrim.esm:01EA64",
+      "atStage": 0,
+      "call": "SetStage 20",
+      "source": "QF_DBSideContract08_0001EA64.fragment_0 on Skyrim.esm:01EA64 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "DBSideContract07 (Contract: Kill Ma'randru-jo)",
+      "questId": "Skyrim.esm:01EA63",
+      "atStage": 0,
+      "call": "SetStage 20",
+      "source": "QF_DBSideContract07_0001EA63.fragment_10 on Skyrim.esm:01EA63 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "DBSideContract05 (Contract: Kill Lurbuk)",
+      "questId": "Skyrim.esm:01EA61",
+      "atStage": 0,
+      "call": "SetStage 20",
+      "source": "QF_DBSideContract05_0001EA61.fragment_0 on Skyrim.esm:01EA61 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Nazir",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Dark Brotherhood Sanctuary"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:020015",
+      "prompt": "Sounds simple enough.",
+      "reply": [
+       "It is. These aren't particularly glamorous assassinations, I'll be honest. Don't pay much, either.  ",
+       "But they'll keep you busy. Just do them as you're able. There's no real time limit - the targets aren't going anywhere.",
+       "You can turn each one in as it's completed, or wait and turn in the whole group when all the targets have been eliminated. Whichever works for you."
+      ],
+      "conditions": "the speaker is Nazir",
+      "source": "TIF__00020015.Fragment_0 on INFO Skyrim.esm:020015 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:01EA52",
@@ -632,11 +869,16 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:0AAAC9",
+     "prompt": null,
+     "reply": [
+      "Haven't you talked to Astrid? She's by the pool, greeting the Night Mother and her little jester. She has a contract for you. Come see me afterward."
+     ],
      "conditions": "the speaker is Nazir; fn629 >= 1; fn629 <= 3; Mourning Never Comes stage < 10",
      "source": "TIF__000AAAC9.Fragment_0 on INFO Skyrim.esm:0AAAC9 (Skyrim.esm)",
      "verdict": "script"
@@ -753,7 +995,36 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Muiri",
+     "index": 10,
+     "source": "Skyrim.esm:01EA52 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Astrid",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Abandoned Shack"
+      ],
+      "call": "SetStage 10",
+      "info": "Skyrim.esm:01FED8",
+      "prompt": "Anything else?",
+      "reply": [
+       "Just do whatever the contact wishes. Be professional, represent us well, and get the job done.",
+       "Since it's your first contract, I'll let you keep whatever Muiri pays. She'll be generous, I'm sure. They always are."
+      ],
+      "conditions": "the speaker is Astrid",
+      "source": "TIF__0001FED8.Fragment_0 on INFO Skyrim.esm:01FED8 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:01EA53",
@@ -783,11 +1054,16 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0403F6",
+     "prompt": "(Remain silent)",
+     "reply": [
+      "No objections, then? Good. Go now. Before they meet. And report back to me with whatever you learn."
+     ],
      "conditions": "the speaker is Astrid",
      "source": "TIF__000403F6.Fragment_0 on INFO Skyrim.esm:0403F6 (Skyrim.esm)",
      "verdict": "script"
@@ -795,11 +1071,16 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0403F7",
+     "prompt": "Yes, the coffin. It's perfect.",
+     "reply": [
+      "They'll never think to check it. Who in their right mind would hide inside? Now go. Before they meet. And report back to me with whatever you learn."
+     ],
      "conditions": "the speaker is Astrid",
      "source": "TIF__000403F7.Fragment_0 on INFO Skyrim.esm:0403F7 (Skyrim.esm)",
      "verdict": "script"
@@ -807,11 +1088,16 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:040361",
+     "prompt": "But that seems so... disrespectful.",
+     "reply": [
+      "Be that as it may, we have no other choice. You need to remain unseen! Now go! Before they meet. And report back to me with whatever you learn."
+     ],
      "conditions": "the speaker is Astrid",
      "source": "TIF__00040361.Fragment_0 on INFO Skyrim.esm:040361 (Skyrim.esm)",
      "verdict": "script"
@@ -819,11 +1105,16 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:0A34FD",
+     "prompt": null,
+     "reply": [
+      "Have you seen Astrid? She needs to speak with you. It seemed urgent. Come talk to me afterward."
+     ],
      "conditions": "fn629 == 4; the speaker is Nazir",
      "source": "TIF__000A34FD.Fragment_0 on INFO Skyrim.esm:0A34FD (Skyrim.esm)",
      "verdict": "script"
@@ -922,7 +1213,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Eavesdrop on Cicero",
+     "index": 20,
+     "source": "Skyrim.esm:01EA53 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:02AD16",
@@ -1034,7 +1336,98 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Speak with Amaund Motierre",
+     "index": 10,
+     "source": "Skyrim.esm:02AD16 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Astrid",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Abandoned Shack"
+      ],
+      "call": "SetStage 10",
+      "info": "Skyrim.esm:02AD0A",
+      "prompt": null,
+      "reply": [
+       "Look. Something is happening here. I'm not sure entirely what that something is, but... Well, we need to find out.",
+       "If the Night Mother really did give you an order to talk to a contact, we'd be mad to ignore it.",
+       "And I think we'd both agree, Cicero's brought quite enough madness to this Sanctuary.",
+       "So go. Go to Volunruud. It's a crypt, pretty far to the northeast. Talk to this Amaund Motierre. And let's see where all this leads. Hmm?"
+      ],
+      "conditions": "the speaker is Astrid",
+      "source": "TIF_DB04aAstridBeginTopic_0002AD0A.Fragment_0 on INFO Skyrim.esm:02AD0A (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Astrid",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Abandoned Shack"
+      ],
+      "call": "SetStage 10",
+      "info": "Skyrim.esm:02AD07",
+      "prompt": "(Remain silent)",
+      "reply": [
+       "Look. Something is happening here. I'm not sure entirely what that something is, but... Well, we need to find out.",
+       "If the Night Mother really did give you an order to talk to a contact, we'd be mad to ignore it.",
+       "And I think we'd both agree, Cicero's brought quite enough madness to this Sanctuary.",
+       "So go. Go to Volunruud. It's a crypt, pretty far to the northeast. Talk to this Amaund Motierre. And let's see where all this leads. Hmm?"
+      ],
+      "conditions": "the speaker is Astrid",
+      "source": "TIF__0002AD07.Fragment_0 on INFO Skyrim.esm:02AD07 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Astrid",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Abandoned Shack"
+      ],
+      "call": "SetStage 10",
+      "info": "Skyrim.esm:02AD06",
+      "prompt": "Has the time come? Will I now serve the Night Mother?",
+      "reply": [
+       "Look. Something is happening here. I'm not sure entirely what that something is, but... Well, we need to find out.",
+       "If the Night Mother really did give you an order to talk to a contact, we'd be mad to ignore it.",
+       "And I think we'd both agree, Cicero's brought quite enough madness to this Sanctuary.",
+       "So go. Go to Volunruud. It's a crypt, pretty far to the northeast. Talk to this Amaund Motierre. And let's see where all this leads. Hmm?"
+      ],
+      "conditions": "the speaker is Astrid",
+      "source": "TIF__0002AD06.Fragment_0 on INFO Skyrim.esm:02AD06 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Astrid",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Abandoned Shack"
+      ],
+      "call": "SetStage 10",
+      "info": "Skyrim.esm:02AD05",
+      "prompt": "Of course, Astrid. What is it?",
+      "reply": [
+       "Look. Something is happening here. I'm not sure entirely what that something is, but... Well, we need to find out.",
+       "If the Night Mother really did give you an order to talk to a contact, we'd be mad to ignore it.",
+       "And I think we'd both agree, Cicero's brought quite enough madness to this Sanctuary.",
+       "So go. Go to Volunruud. It's a crypt, pretty far to the northeast. Talk to this Amaund Motierre. And let's see where all this leads. Hmm?"
+      ],
+      "conditions": "the speaker is Astrid",
+      "source": "TIF__0002AD05.Fragment_0 on INFO Skyrim.esm:02AD05 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:01EA54",
@@ -1046,11 +1439,19 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:037B5A",
+     "prompt": "Who's the target?",
+     "reply": [
+      "Her name is Vittoria Vici. She oversees the East Empire Company's business holdings in Solitude.",
+      "The wedding is being held in that city, at the Temple of the Divines. Her death will cause an uproar, which is exactly what we want.  ",
+      "Vici is likely to address her guests frequently, as is the wedding custom. Kill her when she does that, and I promise you a significant bonus.",
+      "Now go. And give my best to the bride."
+     ],
      "conditions": "the speaker is Astrid",
      "source": "TIF__00037B5A.Fragment_0 on INFO Skyrim.esm:037B5A (Skyrim.esm)",
      "verdict": "script"
@@ -1058,11 +1459,19 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0E0E54",
+     "prompt": "(Remain silent)",
+     "reply": [
+      "Your target's name is Vittoria Vici. She oversees the East Empire Company's business holdings in Solitude.",
+      "The wedding is being held in that city, at the Temple of the Divines. Her death will cause an uproar, which is exactly what we want.",
+      "Vici is likely to address her guests frequently, as is the wedding custom. Kill her when she does that, and I promise you a significant bonus.",
+      "Now go. And give the city of Solitude a celebration they're not likely to forget."
+     ],
      "conditions": "the speaker is Astrid",
      "source": "TIF__000E0E54.Fragment_0 on INFO Skyrim.esm:0E0E54 (Skyrim.esm)",
      "verdict": "script"
@@ -1070,11 +1479,20 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0E0E55",
+     "prompt": "Enough talk. Just tell me who to kill.",
+     "reply": [
+      "Very well.",
+      "The target's name is Vittoria Vici. She oversees the East Empire Company's business holdings in Solitude.",
+      "The wedding is being held in that city, at the Temple of the Divines. Her death will cause an uproar, which is exactly what we want.  ",
+      "Remember, we want people to notice. Kill Vici while she's addressing her guests, as is the custom, and I can promise a bonus.",
+      "Now go. And give the bride a special kiss, from me."
+     ],
      "conditions": "the speaker is Astrid",
      "source": "TIF__000E0E55.Fragment_0 on INFO Skyrim.esm:0E0E55 (Skyrim.esm)",
      "verdict": "script"
@@ -1155,7 +1573,27 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Report back to Astrid",
+     "index": 20,
+     "source": "Skyrim.esm:01EA54 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DB06 (Breaching Security)",
+      "questId": "Skyrim.esm:01EA55",
+      "atStage": 0,
+      "call": "SetStage 20",
+      "source": "QF_DB06_0001EA55.fragment_0 on Skyrim.esm:01EA55 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:01EA55",
@@ -1167,11 +1605,19 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:037B52",
+     "prompt": "(Remain silent)",
+     "reply": [
+      "With Vici's murder, you've started us down a path the Dark Brotherhood hasn't traveled in centuries. The assassination of an emperor.",
+      "And now, your reward. A unique spell to summon a legend of the Dark Brotherhood. His soul serves us now in death, as his body once did in life.",
+      "Ah, and of course, a bonus, for killing Vici while she addressed her guests, as instructed. Gold... simple and pure. Spend it as you will.",
+      "Now, then. Time to proceed to the next stage of the plan. Go and speak with Gabriella. She's been helping me arrange your next contract."
+     ],
      "conditions": "fn629 == 1; the speaker is Astrid",
      "source": "TIF__00037B52.Fragment_0 on INFO Skyrim.esm:037B52 (Skyrim.esm)",
      "verdict": "script"
@@ -1179,11 +1625,19 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:0618A6",
+     "prompt": "(Remain silent)",
+     "reply": [
+      "With Vici's murder, you've started us down a path the Dark Brotherhood hasn't traveled in centuries. The assassination of an emperor.",
+      "And now, your reward. A unique spell to summon a legend of the Dark Brotherhood. His soul serves us now in death, as his body once did in life.",
+      "Unfortunately, in your zeal, you failed to eliminate Vici while she addressed her guests, as directed. I'm sorry, but your bonus is forfeit.",
+      "Now, then. Time to proceed to the next stage of the plan. Go and speak with Gabriella. She's been helping me arrange your next contract."
+     ],
      "conditions": "fn629 == 0; the speaker is Astrid",
      "source": "TIF__000618A6.Fragment_0 on INFO Skyrim.esm:0618A6 (Skyrim.esm)",
      "verdict": "script"
@@ -1191,11 +1645,19 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:037B43",
+     "prompt": "Yes, the blushing bride now serves Sithis in the Void.",
+     "reply": [
+      "With Vici's murder, you've started us down a path the Dark Brotherhood hasn't traveled in centuries. The assassination of an emperor.",
+      "And now, your reward. A unique spell to summon a legend of the Dark Brotherhood. His soul serves us now in death, as his body once did in life.",
+      "Ah, and of course, a bonus, for killing Vici while she addressed her guests, as instructed. Gold... simple and pure. Spend it as you will.",
+      "Now, then. Time to proceed to the next stage of the plan. Go and speak with Gabriella. She's been helping me arrange your next contract."
+     ],
      "conditions": "fn629 == 1; the speaker is Astrid",
      "source": "TIF__00037B43.Fragment_0 on INFO Skyrim.esm:037B43 (Skyrim.esm)",
      "verdict": "script"
@@ -1203,11 +1665,19 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:0618A7",
+     "prompt": "Yes, the blushing bride now serves Sithis in the Void.",
+     "reply": [
+      "With Vici's murder, you've started us down a path the Dark Brotherhood hasn't traveled in centuries. The assassination of an emperor.",
+      "And now, your reward. A unique spell to summon a legend of the Dark Brotherhood. His soul serves us now in death, as his body once did in life.",
+      "Unfortunately, in your zeal, you failed to eliminate Vici while she addressed her guests, as directed. I'm sorry, but your bonus is forfeit.",
+      "Now, then. Time to proceed to the next stage of the plan. Go and speak with Gabriella. She's been helping me arrange your next contract."
+     ],
      "conditions": "fn629 == 0; the speaker is Astrid",
      "source": "TIF__000618A7.Fragment_0 on INFO Skyrim.esm:0618A7 (Skyrim.esm)",
      "verdict": "script"
@@ -1215,11 +1685,19 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:037B4B",
+     "prompt": "She bled like a stuck pig.",
+     "reply": [
+      "With Vici's murder, you've started us down a path the Dark Brotherhood hasn't traveled in centuries. The assassination of an emperor.",
+      "And now, your reward. A unique spell to summon a legend of the Dark Brotherhood. His soul serves us now in death, as his body once did in life.",
+      "Ah, and of course, a bonus, for killing Vici while she addressed her guests, as instructed. Gold... simple and pure. Spend it as you will.",
+      "Now, then. Time to proceed to the next stage of the plan. Go and speak with Gabriella. She's been helping me arrange your next contract."
+     ],
      "conditions": "fn629 == 1; the speaker is Astrid",
      "source": "TIF__00037B4B.Fragment_0 on INFO Skyrim.esm:037B4B (Skyrim.esm)",
      "verdict": "script"
@@ -1227,11 +1705,19 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:0618A8",
+     "prompt": "She bled like a stuck pig.",
+     "reply": [
+      "With Vici's murder, you've started us down a path the Dark Brotherhood hasn't traveled in centuries. The assassination of an emperor.",
+      "And now, your reward. A unique spell to summon a legend of the Dark Brotherhood. His soul serves us now in death, as his body once did in life.",
+      "Unfortunately, in your zeal, you failed to eliminate Vici while she addressed her guests, as directed. I'm sorry, but your bonus is forfeit.",
+      "Now, then. Time to proceed to the next stage of the plan. Go and speak with Gabriella. She's been helping me arrange your next contract."
+     ],
      "conditions": "fn629 == 0; the speaker is Astrid",
      "source": "TIF__000618A8.Fragment_0 on INFO Skyrim.esm:0618A8 (Skyrim.esm)",
      "verdict": "script"
@@ -1306,7 +1792,57 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "(Optional) Steal Gaius Maro's travel schedule",
+     "index": 8,
+     "source": "Skyrim.esm:01EA55 QOBJ 8",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Astrid",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Abandoned Shack"
+      ],
+      "call": "SetStage 10",
+      "info": "Skyrim.esm:01546B",
+      "prompt": "What else do I need to know?",
+      "reply": [
+       "Agallon is an efficient man, and will certainly already have begun his tour of Skyrim. Unfortunately, we don't have his schedule.",
+       "So, you've got two options. Try to find Agallon yourself, somewhere on his route between the major cities. Or... find and steal his schedule.",
+       "You'll find that in his office, in the Legion stronghold of Dragon Bridge. It's your choice. Now go, and may Sithis speed you. "
+      ],
+      "conditions": "the speaker is Astrid",
+      "source": "TIF__0001546B.Fragment_0 on INFO Skyrim.esm:01546B (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Gabriella",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Dark Brotherhood Sanctuary"
+      ],
+      "call": "SetStage 10",
+      "info": "Skyrim.esm:02392F",
+      "prompt": "Yes?",
+      "reply": [
+       "To earn your bonus, do not kill Gaius Maro in Dragon Bridge, or on the road. Kill him in one of the other major cities he'll be visiting.",
+       "There, the body will be discovered quickly, as will the letter implicating Gaius Maro in the plot to assassinate the Emperor.",
+       "Do that, and Astrid has authorized me to grant you a rather unique bonus. It is a special token, to be given to Olava the Feeble, in Whiterun.",
+       "Olava is an old and dear friend, and a powerful seer. The token entitles you to a reading of your future. It's an opportunity one should not pass up."
+      ],
+      "conditions": "the speaker is Gabriella",
+      "source": "TIF__0002392F.Fragment_0 on INFO Skyrim.esm:02392F (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:01EA56",
@@ -1318,11 +1854,18 @@
     {
      "by": "dialogue",
      "speaker": "Gabriella",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:059636",
+     "prompt": "Gaius Maro is dead.",
+     "reply": [
+      "Yes, I know. As does Astrid. You have done well, and have earned both your reward, and a bonus, as I have mentioned.",
+      "But you should know that we have a more pressing matter to deal with.",
+      "It's... Cicero. There's been an incident. You should proceed into the Sanctuary. I'll let Astrid explain."
+     ],
      "conditions": "fn629 == 1; the speaker is Gabriella",
      "source": "TIF__00059636.Fragment_1 on INFO Skyrim.esm:059636 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
@@ -1330,11 +1873,18 @@
     {
      "by": "dialogue",
      "speaker": "Gabriella",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:059643",
+     "prompt": "Gaius Maro is dead.",
+     "reply": [
+      "Yes, I know. As does Astrid. And you've earned your payment, though the bonus is forfeit, as I'm sure you're aware.",
+      "But you should know that we have a more pressing matter to deal with.",
+      "It's... Cicero. There's been an incident. You should proceed into the Sanctuary. I'll let Astrid explain."
+     ],
      "conditions": "fn629 == 0; the speaker is Gabriella",
      "source": "TIF__00059643.Fragment_1 on INFO Skyrim.esm:059643 (Skyrim.esm)",
      "verdict": "script"
@@ -1409,7 +1959,39 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Search Cicero's room",
+     "index": 15,
+     "source": "Skyrim.esm:01EA56 QOBJ 15",
+     "verdict": "files"
+    },
+    "stage": 15,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Astrid",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Abandoned Shack"
+      ],
+      "call": "SetStage 15",
+      "info": "Skyrim.esm:028C80",
+      "prompt": "What do you want me to do?",
+      "reply": [
+       "I want you to find that miserable little fool and end his life!",
+       "But first... find my husband. Make sure he's all right.",
+       "After the attack, Arnbjorn flew into a rage. When Cicero left... Arnbjorn went after him. They disappeared into the wild.",
+       "Search Cicero's room. Maybe there's something in there that sheds some light on where he might have gone.",
+       "Let me know the minute you find something. I've got to see to Veezara, and calm everyone down."
+      ],
+      "conditions": "the speaker is Astrid",
+      "source": "TIF__00028C80.Fragment_0 on INFO Skyrim.esm:028C80 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:01EA57",
@@ -1421,11 +2003,19 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 2",
      "info": "Skyrim.esm:038C6D",
+     "prompt": "Right. So what's my next task?",
+     "reply": [
+      "There's just one more target before we strike out at the Emperor.",
+      "Have you by chance heard of the \"Gourmet\"? Read his cookbook? It's become quite a phenomenon.",
+      "The Gourmet is scheduled to cook for the Emperor at a special dinner. You'll kill him, steal his Writ of Passage, and assume the role of master chef.",
+      "Festus has been spearheading this part of the assassination plan. He's close to uncovering the identity of the Gourmet. You should report to him."
+     ],
      "conditions": "the speaker is Astrid",
      "source": "TIF__00038C6D.Fragment_0 on INFO Skyrim.esm:038C6D (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
@@ -1488,7 +2078,78 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Question Anton Virane",
+     "index": 4,
+     "source": "Skyrim.esm:01EA57 QOBJ 4",
+     "verdict": "files"
+    },
+    "stage": 4,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Festus Krex",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Dark Brotherhood Sanctuary"
+      ],
+      "call": "SetStage 4",
+      "info": "Skyrim.esm:0681B7",
+      "prompt": "(Remain silent)",
+      "reply": [
+       "Hmph.",
+       "As I was saying... You'll need to kill the Gourmet, of course. But what's more, you'll need to get his Writ of Passage, so you can take his place.",
+       "Oh, and if you can, hide his body. The longer it takes for anyone else to determine his real identity, the better. ",
+       "Now off with you! "
+      ],
+      "conditions": "the speaker is Festus Krex",
+      "source": "TIF__000681B7.Fragment_0 on INFO Skyrim.esm:0681B7 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Festus Krex",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Dark Brotherhood Sanctuary"
+      ],
+      "call": "SetStage 4",
+      "info": "Skyrim.esm:0681B5",
+      "prompt": "Oh, I'm waiting with bated breath...",
+      "reply": [
+       "Hmph.",
+       "As I was saying... You'll need to kill the Gourmet, of course. But what's more, you'll need to get his Writ of Passage, so you can take his place.",
+       "Oh, and if you can, hide his body. The longer it takes for anyone else to determine his real identity, the better. ",
+       "Now off with you! "
+      ],
+      "conditions": "the speaker is Festus Krex",
+      "source": "TIF__000681B5.Fragment_0 on INFO Skyrim.esm:0681B5 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Festus Krex",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Dark Brotherhood Sanctuary"
+      ],
+      "call": "SetStage 4",
+      "info": "Skyrim.esm:0681B6",
+      "prompt": "Of course, Festus. Please continue.",
+      "reply": [
+       "Hmph.",
+       "As I was saying... You'll need to kill the Gourmet, of course. But what's more, you'll need to get his Writ of Passage, so you can take his place.",
+       "Oh, and if you can, hide his body. The longer it takes for anyone else to determine his real identity, the better. ",
+       "Now off with you! "
+      ],
+      "conditions": "the speaker is Festus Krex",
+      "source": "TIF__000681B6.Fragment_0 on INFO Skyrim.esm:0681B6 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:01EA58",
@@ -1500,11 +2161,19 @@
     {
      "by": "dialogue",
      "speaker": "Festus Krex",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:068B6D",
+     "prompt": "(Remain silent)",
+     "reply": [
+      "Hmph. I was wrong about you. I see that now. Maybe we all were.",
+      "Here's your payment. And... a little something else, as well. From me. Consider it my way of apologizing. For being so damned curmudgeonly!",
+      "It's called the Nightweaver's Band. I wore this for years. I want you to have it now. It'll give your magic and sneakiness some much needed \"oomph.\"",
+      "Now, you'd better get a move on and see Astrid. It's time! Time for the final stage of this grand and glorious operation."
+     ],
      "conditions": "the speaker is Festus Krex",
      "source": "TIF__00068B6D.Fragment_1 on INFO Skyrim.esm:068B6D (Skyrim.esm)",
      "verdict": "script"
@@ -1512,11 +2181,19 @@
     {
      "by": "dialogue",
      "speaker": "Festus Krex",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:068B6C",
+     "prompt": "You would expect any less from the Listener?",
+     "reply": [
+      "Hmph. I was wrong about you. I see that now. Maybe we all were.",
+      "Here's your payment. And... a little something else, as well. From me. Consider it my way of apologizing. For being so damned curmudgeonly!",
+      "It's called the Nightweaver's Band. I wore this for years. I want you to have it now. It'll give your magic and sneakiness some much needed \"oomph.\"",
+      "Now, you'd better get a move on and see Astrid. It's time! Time for the final stage of this grand and glorious operation."
+     ],
      "conditions": "the speaker is Festus Krex",
      "source": "TIF__00068B6C.Fragment_1 on INFO Skyrim.esm:068B6C (Skyrim.esm)",
      "verdict": "script"
@@ -1524,11 +2201,19 @@
     {
      "by": "dialogue",
      "speaker": "Festus Krex",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:068B75",
+     "prompt": "All I've ever wanted to do is serve this Sanctuary.",
+     "reply": [
+      "Hmph. I was wrong about you. I see that now. Maybe we all were.",
+      "Here's your payment. And... a little something else, as well. From me. Consider it my way of apologizing. For being so damned curmudgeonly!",
+      "It's called the Nightweaver's Band. I wore this for years. I want you to have it now. It'll give your magic and sneakiness some much needed \"oomph.\"",
+      "Now, you'd better get a move on and see Astrid. It's time! Time for the final stage of this grand and glorious operation."
+     ],
      "conditions": "the speaker is Festus Krex",
      "source": "TIF__00068B75.Fragment_1 on INFO Skyrim.esm:068B75 (Skyrim.esm)",
      "verdict": "script"
@@ -1536,11 +2221,19 @@
     {
      "by": "dialogue",
      "speaker": "Festus Krex",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:068B78",
+     "prompt": "Dead.",
+     "reply": [
+      "Right, which we had already established. And you managed to hide the body as well? Good.",
+      "You've got the Writ of Passage, too, I see. So there's that. And Anton Virane has suffered an untimely fate as well. Good.",
+      "Well. Looks like you completed the contract as directed. Finally. A little sloppy, but, well... done is done.",
+      "Here's your gold, with a little extra for hiding the body. Now go see Astrid. The final stage of the contract has come. The Emperor must fall."
+     ],
      "conditions": "fn629 == 1; fn629 == 1; fn629 == 1; fn629 == 1; the speaker is Festus Krex",
      "source": "TIF__00068B78.Fragment_1 on INFO Skyrim.esm:068B78 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
@@ -1548,11 +2241,19 @@
     {
      "by": "dialogue",
      "speaker": "Festus Krex",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:068B7B",
+     "prompt": "Dead.",
+     "reply": [
+      "Good, good. And you've got the Writ of Passage, too, I see. So there's that.",
+      "I also received word from Markarth. It would seem Anton Virane has suffered an untimely fate as well. Good.",
+      "But unfortunately, that inn is abuzz with the news of somebody killing one of their guests! What, hiding the body was too much for you to handle?",
+      "Bah! Useless. Here's your gold. Now go see Astrid. The time to move against the Emperor has finally come. Sithis help us all."
+     ],
      "conditions": "fn629 == 1; fn629 == 1; fn629 == 0; the speaker is Festus Krex",
      "source": "TIF__00068B7B.Fragment_1 on INFO Skyrim.esm:068B7B (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
@@ -1615,7 +2316,38 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Report to Commander Maro",
+     "index": 10,
+     "source": "Skyrim.esm:01EA58 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Astrid",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Abandoned Shack"
+      ],
+      "call": "SetStage 10",
+      "info": "Skyrim.esm:04BCB0",
+      "prompt": "Which poison I should use?",
+      "reply": [
+       "Here, take this - it's called jarrin root.",
+       "All it takes is one taste, and the effects are quite immediate. The Emperor will be serving Sithis before he even knows he's dead.",
+       "Once Mede has been killed, escape through the upper door, and across the bridge. I've \"arranged\" for it to be unguarded once the alarm is sounded.",
+       "Now go, my friend. Go, and fulfill your destiny as Listener."
+      ],
+      "conditions": "the speaker is Astrid",
+      "source": "TIF__0004BCB0.Fragment_0 on INFO Skyrim.esm:04BCB0 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:03CEDA",
@@ -1632,7 +2364,13 @@
      "call": "SetStage 10",
      "source": "pSancSoldierScript.OnUpdate on Skyrim.esm:01EA5C (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Skyrim.esm:01EA5C DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1689,7 +2427,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Search for survivors",
+     "index": 15,
+     "source": "Skyrim.esm:03CEDA QOBJ 15",
+     "verdict": "files"
+    },
+    "stage": 15,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 15 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01EA59",
@@ -1744,6 +2493,37 @@
    },
    "globals": [],
    "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Amaund Motierre",
+     "index": 10,
+     "source": "Skyrim.esm:01EA59 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Nazir",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Dark Brotherhood Sanctuary"
+      ],
+      "call": "SetStage 10",
+      "info": "Skyrim.esm:0769D3",
+      "prompt": "Our Family lives on, Nazir. You have to trust me.",
+      "reply": [
+       "Hmph. All right, then. Go. Go, my Listener. Find out what that slimy bastard Motierre has to say, then send the Emperor to Sithis.",
+       "Ah, but when you're done, there's no use returning here, is there? I was thinking... the Dawnstar Sanctuary. We could make a proper home there.",
+       "Listen, when you're finished with this Emperor business, meet Babette and me there. I'll find some way to move the Night Mother. Don't worry. Now go!",
+       "And come back with a barrel full of gold, hmm?"
+      ],
+      "conditions": "the speaker is Nazir",
+      "source": "TIF__000769D3.Fragment_0 on INFO Skyrim.esm:0769D3 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   },
    "unread": "no starter in its records or scripts"
   },
   {
@@ -1761,7 +2541,13 @@
      "call": "SetStage 10",
      "source": "pAstridScript.OnDeath on Skyrim.esm:01EA5C (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Skyrim.esm:01EA5C DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -1786,7 +2572,34 @@
      "source": "QF_DBDestroy_000934FB.fragment_2",
      "verdict": "script"
     }
-   ]
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Speak with Commander Maro",
+     "index": 20,
+     "source": "Skyrim.esm:0934FB QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": null,
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:094E3A",
+      "prompt": "I think I just killed the leader of the Dark Brotherhood.",
+      "reply": [
+       "You did what?",
+       "By the gods, you're serious. You'd better report this to Commander Maro right away. He's at the Penitus Oculatus outpost, up in Dragon Bridge."
+      ],
+      "conditions": "Destroy the Dark Brotherhood! stage == 10; GetInFaction Guard Faction (for dialogue) == 1",
+      "source": "TIF__00094E3A.Fragment_0 on INFO Skyrim.esm:094E3A (Destroy the Dark Brotherhood - Quest Expansion.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:06F9A5",
@@ -1803,16 +2616,35 @@
      "call": "Start",
      "source": "QF_DBSuspensionQuest_000A2490.fragment_0 on Skyrim.esm:0A2490 (Skyrim.esm)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "story manager",
+       "event": "ASSU",
+       "node": "DBSuspensionAssault",
+       "parents": [
+        "AssaultActorEvent",
+        "Root"
+       ],
+       "conditions": "GetInFaction The Dark Brotherhood == 1; the speaker is Prisoner; GetQuestRunning Dark Brotherhood Suspension == 0; GetQuestRunning Death Incarnate == 0; With Friends Like These... stage >= 50",
+       "globals": [],
+       "source": "DBSuspensionAssault Skyrim.esm:02E3FF (Skyrim.esm)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:06F99D",
+     "prompt": "DBNazirEvictionBranchTopic",
+     "reply": [
+      "You disrespected the Brotherhood. And it'll cost you. You want back into the Family, you pay the price. 500 gold, and all is forgiven."
+     ],
      "conditions": "fn629 == 1; Hail Sithis! stage <= 80; the speaker is Nazir",
      "source": "TIF__0006F99D.Fragment_0 on INFO Skyrim.esm:06F99D (Skyrim.esm)",
      "verdict": "script"
@@ -1820,11 +2652,16 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:06F99E",
+     "prompt": "DBNazirEvictionBranchTopic",
+     "reply": [
+      "You may be Listener, and head of the Sanctuary, but your recent behavior sets a bad example. I must insist you pay a fine of 300 gold."
+     ],
      "conditions": "fn629 == 1; Hail Sithis! stage > 80; the speaker is Nazir",
      "source": "TIF__0006F99E.Fragment_0 on INFO Skyrim.esm:06F99E (Skyrim.esm)",
      "verdict": "script"
@@ -1832,11 +2669,16 @@
     {
      "by": "dialogue",
      "speaker": "Gabriella",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:06F99F",
+     "prompt": "DBNazirEvictionBranchTopic",
+     "reply": [
+      "If the Tenets were still in place, you would be required to defeat the Wrath of Sithis. Now you just need to pay a fine to Nazir. Ah, the Old Ways..."
+     ],
      "conditions": "fn629 == 1; the speaker is Gabriella; Destroy the Dark Brotherhood! stage <= 10",
      "source": "TIF__0006F99F.Fragment_0 on INFO Skyrim.esm:06F99F (Destroy the Dark Brotherhood - Quest Expansion.esp)",
      "verdict": "script"
@@ -1844,11 +2686,16 @@
     {
      "by": "dialogue",
      "speaker": "Babette",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:06F9A0",
+     "prompt": "DBNazirEvictionBranchTopic",
+     "reply": [
+      "When you disrespect your Family, you disrespect yourself. Don't you care for anything at all? Prove that you do - speak with Nazir, make reparations."
+     ],
      "conditions": "fn629 == 1; the speaker is Babette",
      "source": "TIF__0006F9A0.Fragment_0 on INFO Skyrim.esm:06F9A0 (Skyrim.esm)",
      "verdict": "script"
@@ -1856,11 +2703,16 @@
     {
      "by": "dialogue",
      "speaker": "Festus Krex",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:06F9A1",
+     "prompt": "DBNazirEvictionBranchTopic",
+     "reply": [
+      "Bah. If it were up to me, we'd cut off your hands and never let you back in this Sanctuary. But no. All you have to do is pay Nazir a fine. Pathetic."
+     ],
      "conditions": "fn629 == 1; the speaker is Festus Krex",
      "source": "TIF__0006F9A1.Fragment_0 on INFO Skyrim.esm:06F9A1 (Skyrim.esm)",
      "verdict": "script"
@@ -1868,11 +2720,16 @@
     {
      "by": "dialogue",
      "speaker": "Arnbjorn",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:06F9A2",
+     "prompt": "DBNazirEvictionBranchTopic",
+     "reply": [
+      "Ah, don't worry, we all like to break the rules sometimes. Just see Nazir and pay the fine. Seems I do that at least once a month..."
+     ],
      "conditions": "fn629 == 1; the speaker is Arnbjorn",
      "source": "TIF__0006F9A2.Fragment_0 on INFO Skyrim.esm:06F9A2 (Skyrim.esm)",
      "verdict": "script"
@@ -1880,11 +2737,16 @@
     {
      "by": "dialogue",
      "speaker": "Veezara",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:06F9A3",
+     "prompt": "DBNazirEvictionBranchTopic",
+     "reply": [
+      "There are so few rules here. All we ask is that you don't disrespect your Family. But for some reason, you have. Best talk to Nazir and pay the fine."
+     ],
      "conditions": "fn629 == 1; the speaker is Veezara; Destroy the Dark Brotherhood! stage <= 10",
      "source": "TIF__0006F9A3.Fragment_0 on INFO Skyrim.esm:06F9A3 (Destroy the Dark Brotherhood - Quest Expansion.esp)",
      "verdict": "script"
@@ -1892,11 +2754,16 @@
     {
      "by": "dialogue",
      "speaker": "Astrid",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Abandoned Shack"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:06F9A4",
+     "prompt": "DBNazirEvictionBranchTopic",
+     "reply": [
+      "Idiot. I may not have a lot of rules, but that doesn't give you free rein to do as you please. You want to resume your duties? Go talk to Nazir."
+     ],
      "conditions": "fn629 == 1; the speaker is Astrid",
      "source": "TIF__0006F9A4.Fragment_0 on INFO Skyrim.esm:06F9A4 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
@@ -1904,11 +2771,16 @@
     {
      "by": "dialogue",
      "speaker": "Cicero",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0D5C3A",
+     "prompt": "DBNazirEvictionBranchTopic",
+     "reply": [
+      "Oh, but Cicero can't talk to you. You've been naughty, naughty. I think you need to clear this whole mess up with Nazir."
+     ],
      "conditions": "fn629 == 1; the speaker is Cicero",
      "source": "TIF__000D5C3A.Fragment_0 on INFO Skyrim.esm:0D5C3A (Skyrim.esm)",
      "verdict": "script"
@@ -1916,11 +2788,16 @@
     {
      "by": "dialogue",
      "speaker": "Cicero",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dawnstar"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0D5C3B",
+     "prompt": "DBNazirEvictionBranchTopic",
+     "reply": [
+      "Looks like Cicero's not the only one to go a little crazy from time to time. Eh, Listener? You should talk to Nazir, work this whole mess out."
+     ],
      "conditions": "fn629 == 1; the speaker is Cicero",
      "source": "TIF__000D5C3B.Fragment_0 on INFO Skyrim.esm:0D5C3B (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
@@ -1928,11 +2805,16 @@
     {
      "by": "dialogue",
      "speaker": "Dark Brotherhood Initiate",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dawnstar Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0D5C3C",
+     "prompt": "DBNazirEvictionBranchTopic",
+     "reply": [
+      "With all due respect, Listener, you broke what few rules we seem to have. Nazir insists you talk to him and work this issue out."
+     ],
      "conditions": "fn629 == 1; the speaker is Dark Brotherhood Initiate",
      "source": "TIF__000D5C3C.Fragment_0 on INFO Skyrim.esm:0D5C3C (Skyrim.esm)",
      "verdict": "script"
@@ -1940,11 +2822,16 @@
     {
      "by": "dialogue",
      "speaker": "Adelinda",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dawnstar Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0D5C3D",
+     "prompt": "DBNazirEvictionBranchTopic",
+     "reply": [
+      "I do apologize, Listener, but Nazir made it clear the initiates are not to speak with you until you first deal with him, and atone for your actions."
+     ],
      "conditions": "fn629 == 1; the speaker is Adelinda",
      "source": "TIF__000D5C3D.Fragment_0 on INFO Skyrim.esm:0D5C3D (Skyrim.esm)",
      "verdict": "script"
@@ -2000,11 +2887,18 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:020017",
+     "prompt": "I'm ready for the first set of contracts.",
+     "reply": [
+      "Well then, let's get started. I've got three available right now.",
+      "Your targets are the beggar Narfi, an ex-miller named Ennodius Papius, and Beitild, a mine boss.",
+      "When you've completed all those, we'll see if I might have some more."
+     ],
      "conditions": "Sanctuary stage < 200; fn629 == 1; the speaker is Nazir; GetInFaction ccvsvsse004-beafarmer.esl:00086C == 0",
      "source": "TIF__00020017.Fragment_0 on INFO Skyrim.esm:020017 (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
@@ -2054,7 +2948,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Report back to Nazir",
+     "index": 20,
+     "source": "Skyrim.esm:01EA5B QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01EA5E",
@@ -2066,11 +2971,18 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:020017",
+     "prompt": "I'm ready for the first set of contracts.",
+     "reply": [
+      "Well then, let's get started. I've got three available right now.",
+      "Your targets are the beggar Narfi, an ex-miller named Ennodius Papius, and Beitild, a mine boss.",
+      "When you've completed all those, we'll see if I might have some more."
+     ],
      "conditions": "Sanctuary stage < 200; fn629 == 1; the speaker is Nazir; GetInFaction ccvsvsse004-beafarmer.esl:00086C == 0",
      "source": "TIF__00020017.Fragment_0 on INFO Skyrim.esm:020017 (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
@@ -2078,11 +2990,18 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "CC Farming - Tweaks and Enhancements.esp:000800",
+     "prompt": "I'm ready for the first set of contracts.",
+     "reply": [
+      "Well then, let's get started.",
+      "Your targets are an ex-miller named Ennodius Papius and Beitild, a mine boss.",
+      "When you've completed all those, we'll see if I might have some more."
+     ],
      "conditions": "Sanctuary stage < 200; fn629 == 1; the speaker is Nazir; GetInFaction ccvsvsse004-beafarmer.esl:00086C == 1",
      "source": "DBNazir_ContractSet1Ready_Alternate.Fragment_0 on INFO CC Farming - Tweaks and Enhancements.esp:000800 (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
@@ -2120,7 +3039,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Report back to Nazir",
+     "index": 20,
+     "source": "Skyrim.esm:01EA5E QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01EA5F",
@@ -2132,11 +3062,18 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:020017",
+     "prompt": "I'm ready for the first set of contracts.",
+     "reply": [
+      "Well then, let's get started. I've got three available right now.",
+      "Your targets are the beggar Narfi, an ex-miller named Ennodius Papius, and Beitild, a mine boss.",
+      "When you've completed all those, we'll see if I might have some more."
+     ],
      "conditions": "Sanctuary stage < 200; fn629 == 1; the speaker is Nazir; GetInFaction ccvsvsse004-beafarmer.esl:00086C == 0",
      "source": "TIF__00020017.Fragment_0 on INFO Skyrim.esm:020017 (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
@@ -2144,11 +3081,18 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "CC Farming - Tweaks and Enhancements.esp:000800",
+     "prompt": "I'm ready for the first set of contracts.",
+     "reply": [
+      "Well then, let's get started.",
+      "Your targets are an ex-miller named Ennodius Papius and Beitild, a mine boss.",
+      "When you've completed all those, we'll see if I might have some more."
+     ],
      "conditions": "Sanctuary stage < 200; fn629 == 1; the speaker is Nazir; GetInFaction ccvsvsse004-beafarmer.esl:00086C == 1",
      "source": "DBNazir_ContractSet1Ready_Alternate.Fragment_0 on INFO CC Farming - Tweaks and Enhancements.esp:000800 (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
@@ -2192,7 +3136,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Report back to Nazir",
+     "index": 20,
+     "source": "Skyrim.esm:01EA5F QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01EA60",
@@ -2204,11 +3159,18 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:02AD12",
+     "prompt": "Do you have any more contracts?",
+     "reply": [
+      "As a matter of fact, I do. Two of them. One rather easy assignment, and another that should prove quite a challenge.",
+      "Your first target is an Orc bard named Lurbuk. The other is a vampire by the name of Hern.",
+      "Happy hunting."
+     ],
      "conditions": "Whispers in the Dark stage > 50; fn629 == 3; fn629 == 0; the speaker is Nazir",
      "source": "TIF__0002AD12.Fragment_0 on INFO Skyrim.esm:02AD12 (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
@@ -2216,11 +3178,19 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0205BE",
+     "prompt": "Astrid wanted me to see you about some more work.",
+     "reply": [
+      "Well then, your timing couldn't be better.",
+      "As it turns out, I've got two new contracts. One rather easy assignment, and another that should prove quite a challenge.",
+      "Your first target is an Orc bard named Lurbuk. The other is a vampire by the name of Hern.",
+      "Happy hunting."
+     ],
      "conditions": "Whispers in the Dark stage == 50; fn629 == 3; fn629 == 0; the speaker is Nazir",
      "source": "TIF__000205BE.Fragment_0 on INFO Skyrim.esm:0205BE (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
@@ -2264,7 +3234,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Report back to Nazir",
+     "index": 20,
+     "source": "Skyrim.esm:01EA60 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01EA61",
@@ -2276,11 +3257,18 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:02AD12",
+     "prompt": "Do you have any more contracts?",
+     "reply": [
+      "As a matter of fact, I do. Two of them. One rather easy assignment, and another that should prove quite a challenge.",
+      "Your first target is an Orc bard named Lurbuk. The other is a vampire by the name of Hern.",
+      "Happy hunting."
+     ],
      "conditions": "Whispers in the Dark stage > 50; fn629 == 3; fn629 == 0; the speaker is Nazir",
      "source": "TIF__0002AD12.Fragment_0 on INFO Skyrim.esm:02AD12 (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
@@ -2288,11 +3276,19 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0205BE",
+     "prompt": "Astrid wanted me to see you about some more work.",
+     "reply": [
+      "Well then, your timing couldn't be better.",
+      "As it turns out, I've got two new contracts. One rather easy assignment, and another that should prove quite a challenge.",
+      "Your first target is an Orc bard named Lurbuk. The other is a vampire by the name of Hern.",
+      "Happy hunting."
+     ],
      "conditions": "Whispers in the Dark stage == 50; fn629 == 3; fn629 == 0; the speaker is Nazir",
      "source": "TIF__000205BE.Fragment_0 on INFO Skyrim.esm:0205BE (CC Farming - Tweaks and Enhancements.esp)",
      "verdict": "script"
@@ -2336,7 +3332,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Report back to Nazir",
+     "index": 20,
+     "source": "Skyrim.esm:01EA61 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01EA62",
@@ -2348,11 +3355,17 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:02AD00",
+     "prompt": "Are there any more contracts available?",
+     "reply": [
+      "There are indeed. Three, to be exact.",
+      "There's Deekus, a shipwreck scavenger. Ma'randru-jo, a traveling caravaner. And Anoriath, a hunter."
+     ],
      "conditions": "The Silence Has Been Broken stage >= 30; fn629 == 5; fn629 == 1; the speaker is Nazir",
      "source": "TIF__0002AD00.Fragment_0 on INFO Skyrim.esm:02AD00 (Skyrim.esm)",
      "verdict": "script"
@@ -2390,7 +3403,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Report back to Nazir",
+     "index": 20,
+     "source": "Skyrim.esm:01EA62 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01EA63",
@@ -2402,11 +3426,17 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:02AD00",
+     "prompt": "Are there any more contracts available?",
+     "reply": [
+      "There are indeed. Three, to be exact.",
+      "There's Deekus, a shipwreck scavenger. Ma'randru-jo, a traveling caravaner. And Anoriath, a hunter."
+     ],
      "conditions": "The Silence Has Been Broken stage >= 30; fn629 == 5; fn629 == 1; the speaker is Nazir",
      "source": "TIF__0002AD00.Fragment_0 on INFO Skyrim.esm:02AD00 (Skyrim.esm)",
      "verdict": "script"
@@ -2461,7 +3491,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Report back to Nazir",
+     "index": 20,
+     "source": "Skyrim.esm:01EA63 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01EA64",
@@ -2473,11 +3514,17 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:02AD00",
+     "prompt": "Are there any more contracts available?",
+     "reply": [
+      "There are indeed. Three, to be exact.",
+      "There's Deekus, a shipwreck scavenger. Ma'randru-jo, a traveling caravaner. And Anoriath, a hunter."
+     ],
      "conditions": "The Silence Has Been Broken stage >= 30; fn629 == 5; fn629 == 1; the speaker is Nazir",
      "source": "TIF__0002AD00.Fragment_0 on INFO Skyrim.esm:02AD00 (Skyrim.esm)",
      "verdict": "script"
@@ -2521,7 +3568,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Report back to Nazir",
+     "index": 20,
+     "source": "Skyrim.esm:01EA64 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01EA65",
@@ -2533,11 +3591,17 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0205C1",
+     "prompt": "Are there any more contracts, Nazir?",
+     "reply": [
+      "Just one right now, actually. ",
+      "I need you to eliminate an old woman named Agnis, a servant in Fort Greymoor."
+     ],
      "conditions": "fn629 == 8; fn629 == 2; the speaker is Nazir",
      "source": "TIF__000205C1.Fragment_0 on INFO Skyrim.esm:0205C1 (Skyrim.esm)",
      "verdict": "script"
@@ -2581,7 +3645,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Report back to Nazir",
+     "index": 20,
+     "source": "Skyrim.esm:01EA65 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01EA66",
@@ -2593,11 +3668,18 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0205C0",
+     "prompt": "Are there any more contracts available?",
+     "reply": [
+      "Well, yes. Two of them. But you're reaching the end of what I have available.",
+      "Your targets are a Dark Elf wizard named Maluril, in the dwarven ruin of Mzinchaleft. And Helvard, the Housecarl of Falkreath.",
+      "Kill these two, and I'll have one last contract to give you. I'm just finalizing some details now."
+     ],
      "conditions": "fn629 == 9; fn629 == 3; the speaker is Nazir",
      "source": "TIF__000205C0.Fragment_0 on INFO Skyrim.esm:0205C0 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
@@ -2641,7 +3723,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Report back to Nazir",
+     "index": 20,
+     "source": "Skyrim.esm:01EA66 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01EA67",
@@ -2653,11 +3746,18 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0205C0",
+     "prompt": "Are there any more contracts available?",
+     "reply": [
+      "Well, yes. Two of them. But you're reaching the end of what I have available.",
+      "Your targets are a Dark Elf wizard named Maluril, in the dwarven ruin of Mzinchaleft. And Helvard, the Housecarl of Falkreath.",
+      "Kill these two, and I'll have one last contract to give you. I'm just finalizing some details now."
+     ],
      "conditions": "fn629 == 9; fn629 == 3; the speaker is Nazir",
      "source": "TIF__000205C0.Fragment_0 on INFO Skyrim.esm:0205C0 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
@@ -2701,7 +3801,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Report back to Nazir",
+     "index": 20,
+     "source": "Skyrim.esm:01EA67 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01EA68",
@@ -2713,11 +3824,18 @@
     {
      "by": "dialogue",
      "speaker": "Nazir",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Dark Brotherhood Sanctuary"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0205BD",
+     "prompt": "I'm ready for the last contract.",
+     "reply": [
+      "Hmph. Yes. Yes, I believe you are. Very well, then.",
+      "You need to find and kill Safia, the captain of the pirate ship Red Wave.",
+      "The ship travels the northern coast, and sometimes isn't even in Skyrim at all. So you'll have to be patient. Good luck."
+     ],
      "conditions": "fn629 == 11; fn629 == 4; the speaker is Nazir",
      "source": "TIF__000205BD.Fragment_0 on INFO Skyrim.esm:0205BD (Skyrim.esm)",
      "verdict": "script"
@@ -2761,7 +3879,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Report back to Nazir",
+     "index": 20,
+     "source": "Skyrim.esm:01EA68 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
   },
   {
    "id": "Innocence Lost - Quest Expansion.esp:000836",
@@ -2791,7 +3920,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Witness Grelod's arrest",
+     "index": 20,
+     "source": "Innocence Lost - Quest Expansion.esp:000836 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
   },
   {
    "id": "Additional Contracts For the Dark Brotherhood.esp:000822",
@@ -2846,6 +3986,26 @@
      "verdict": "script"
     }
    ],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Nazir",
+     "index": 100,
+     "source": "Additional Contracts For the Dark Brotherhood.esp:000822 QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "ExtraContracts_KillBraith_Quest (Contract: Kill Braith)",
+      "questId": "Additional Contracts For the Dark Brotherhood.esp:000822",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "defaultsetstageondeathrefalias.onDeath on Additional Contracts For the Dark Brotherhood.esp:000822 (Additional Contracts For the Dark Brotherhood.esp)",
+      "verdict": "script"
+     }
+    ]
+   },
    "unread": "no starter in its records or scripts"
   },
   {
@@ -2901,6 +4061,26 @@
      "verdict": "script"
     }
    ],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Nazir",
+     "index": 100,
+     "source": "Additional Contracts For the Dark Brotherhood.esp:000FE8 QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "ExtraContracts_KillElenwen_Quest (Contract: Kill Elenwen)",
+      "questId": "Additional Contracts For the Dark Brotherhood.esp:000FE8",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "defaultsetstageondeathrefalias.onDeath on Additional Contracts For the Dark Brotherhood.esp:000FE8 (Additional Contracts For the Dark Brotherhood.esp)",
+      "verdict": "script"
+     }
+    ]
+   },
    "unread": "no starter in its records or scripts"
   },
   {
@@ -2956,6 +4136,26 @@
      "verdict": "script"
     }
    ],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Nazir",
+     "index": 100,
+     "source": "Additional Contracts For the Dark Brotherhood.esp:000E51 QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "ExtraContracts_KillErikur_Quest (Contract: Kill Erikur)",
+      "questId": "Additional Contracts For the Dark Brotherhood.esp:000E51",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "defaultsetstageondeathrefalias.onDeath on Additional Contracts For the Dark Brotherhood.esp:000E51 (Additional Contracts For the Dark Brotherhood.esp)",
+      "verdict": "script"
+     }
+    ]
+   },
    "unread": "no starter in its records or scripts"
   },
   {
@@ -3011,6 +4211,26 @@
      "verdict": "script"
     }
    ],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Nazir",
+     "index": 100,
+     "source": "Additional Contracts For the Dark Brotherhood.esp:000DCA QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "ExtraContracts_KillLemkil_Quest (Contract: Kill Lemkil)",
+      "questId": "Additional Contracts For the Dark Brotherhood.esp:000DCA",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "defaultsetstageondeathrefalias.onDeath on Additional Contracts For the Dark Brotherhood.esp:000DCA (Additional Contracts For the Dark Brotherhood.esp)",
+      "verdict": "script"
+     }
+    ]
+   },
    "unread": "no starter in its records or scripts"
   },
   {
@@ -3066,6 +4286,26 @@
      "verdict": "script"
     }
    ],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Nazir",
+     "index": 100,
+     "source": "Additional Contracts For the Dark Brotherhood.esp:00081B QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "ExtraContracts_KillNazeem_Quest (Contract: Kill Nazeem)",
+      "questId": "Additional Contracts For the Dark Brotherhood.esp:00081B",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "defaultsetstageondeathrefalias.onDeath on Additional Contracts For the Dark Brotherhood.esp:00081B (Additional Contracts For the Dark Brotherhood.esp)",
+      "verdict": "script"
+     }
+    ]
+   },
    "unread": "no starter in its records or scripts"
   },
   {
@@ -3121,6 +4361,26 @@
      "verdict": "script"
     }
    ],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Nazir",
+     "index": 100,
+     "source": "Additional Contracts For the Dark Brotherhood.esp:000858 QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "ExtraContracts_KillRolff_Quest (Contract: Kill Rolff Stone-Fist)",
+      "questId": "Additional Contracts For the Dark Brotherhood.esp:000858",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "defaultsetstageondeathrefalias.onDeath on Additional Contracts For the Dark Brotherhood.esp:000858 (Additional Contracts For the Dark Brotherhood.esp)",
+      "verdict": "script"
+     }
+    ]
+   },
    "unread": "no starter in its records or scripts"
   },
   {
@@ -3176,6 +4436,26 @@
      "verdict": "script"
     }
    ],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Nazir",
+     "index": 100,
+     "source": "Additional Contracts For the Dark Brotherhood.esp:000E3C QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "ExtraContracts_KillSerana_Quest (Contract: Kill Serana)",
+      "questId": "Additional Contracts For the Dark Brotherhood.esp:000E3C",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "defaultsetstageondeathrefalias.onDeath on Additional Contracts For the Dark Brotherhood.esp:000E3C (Additional Contracts For the Dark Brotherhood.esp)",
+      "verdict": "script"
+     }
+    ]
+   },
    "unread": "no starter in its records or scripts"
   },
   {
@@ -3252,6 +4532,26 @@
      "verdict": "script"
     }
    ],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Nazir",
+     "index": 100,
+     "source": "Additional Contracts For the Dark Brotherhood.esp:00082B QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "ExtraContracts_KillTaarieEndarie_Quest (Contract: Kill Taarie and Endarie)",
+      "questId": "Additional Contracts For the Dark Brotherhood.esp:00082B",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "ExtraContracts_SetStageDeath.OnDeath on Additional Contracts For the Dark Brotherhood.esp:00082B (Additional Contracts For the Dark Brotherhood.esp)",
+      "verdict": "script"
+     }
+    ]
+   },
    "unread": "no starter in its records or scripts"
   },
   {
@@ -3307,6 +4607,26 @@
      "verdict": "script"
     }
    ],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Nazir",
+     "index": 100,
+     "source": "Additional Contracts For the Dark Brotherhood.esp:000FDA QOBJ 100",
+     "verdict": "files"
+    },
+    "stage": 100,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "ExtraContracts_KillThonarSilverblood_Quest (Contract: Kill Thonar Silver-Blood)",
+      "questId": "Additional Contracts For the Dark Brotherhood.esp:000FDA",
+      "atStage": null,
+      "call": "SetStage 100",
+      "source": "defaultsetstageondeathrefalias.onDeath on Additional Contracts For the Dark Brotherhood.esp:000FDA (Additional Contracts For the Dark Brotherhood.esp)",
+      "verdict": "script"
+     }
+    ]
+   },
    "unread": "no starter in its records or scripts"
   },
   {
@@ -3400,7 +4720,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Retrieve payment from the Markarth Dead Drop.",
+     "index": 20,
+     "source": "Listen.esp:000828 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
   },
   {
    "id": "Listen.esp:00081A",
@@ -3468,7 +4799,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Retrieve payment from the Dead Drop outside of Riften.",
+     "index": 20,
+     "source": "Listen.esp:00081A QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
   },
   {
    "id": "Listen.esp:000820",
@@ -3536,7 +4878,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Retrieve payment from the Solitude Dead Drop.",
+     "index": 20,
+     "source": "Listen.esp:000820 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
   },
   {
    "id": "Listen.esp:000802",
@@ -3604,7 +4957,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Retrieve payment from the Whiterun Hold Dead Drop.",
+     "index": 20,
+     "source": "Listen.esp:000802 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
   },
   {
    "id": "Listen.esp:000819",
@@ -3672,7 +5036,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Retrieve payment from the Dead Drop in Eastmarch.",
+     "index": 20,
+     "source": "Listen.esp:000819 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01EA5A",
@@ -3740,7 +5115,170 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Speak with the contact",
+     "index": 20,
+     "source": "Skyrim.esm:01EA5A QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Night Mother",
+      "speakerNamed": "scene DBRecurringNightMotherScene2, alias NightMotherAlias of DBrecurring (The Dark Brotherhood Forever) (forced)",
+      "speakerPlaced": [
+       "Dark Brotherhood Sanctuary"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:097250",
+      "prompt": null,
+      "reply": [
+       "Speak with the Nervous Patron at Candlehearth Hall, in Windhelm. Accept his gold, then kill the target. So begins a contract, bound in blood."
+      ],
+      "conditions": "",
+      "scene": "Skyrim.esm:097261",
+      "sceneStartedBy": [],
+      "source": "TIF__00097250.Fragment_0 on INFO Skyrim.esm:097250 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Night Mother",
+      "speakerNamed": "scene DBRecurringNightMotherScene2, alias NightMotherAlias of DBrecurring (The Dark Brotherhood Forever) (forced)",
+      "speakerPlaced": [
+       "Dark Brotherhood Sanctuary"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:097251",
+      "prompt": null,
+      "reply": [
+       "Speak with the Wary Outlaw at the Bee and Barb, in Riften. Accept his gold, and then eliminate the target. So begins a contract, bound in blood."
+      ],
+      "conditions": "",
+      "scene": "Skyrim.esm:097261",
+      "sceneStartedBy": [],
+      "source": "TIF__00097251.Fragment_0 on INFO Skyrim.esm:097251 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Night Mother",
+      "speakerNamed": "scene DBRecurringNightMotherScene2, alias NightMotherAlias of DBrecurring (The Dark Brotherhood Forever) (forced)",
+      "speakerPlaced": [
+       "Dark Brotherhood Sanctuary"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0A0307",
+      "prompt": null,
+      "reply": [
+       "Speak with the Corrupt Agent at the Penitus Oculatus Outpost, in Dragon Bridge. Accept his gold, then kill the target. Hail Sithis!  "
+      ],
+      "conditions": "",
+      "scene": "Skyrim.esm:097261",
+      "sceneStartedBy": [],
+      "source": "TIF__000A0307.Fragment_0 on INFO Skyrim.esm:0A0307 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Night Mother",
+      "speakerNamed": "scene DBRecurringNightMotherScene2, alias NightMotherAlias of DBrecurring (The Dark Brotherhood Forever) (forced)",
+      "speakerPlaced": [
+       "Dark Brotherhood Sanctuary"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0A0308",
+      "prompt": null,
+      "reply": [
+       "Speak with the Scheming Servant at the Keep in Markarth. Accept his gold, then eliminate the target. So begins a contract, bound in blood."
+      ],
+      "conditions": "",
+      "scene": "Skyrim.esm:097261",
+      "sceneStartedBy": [],
+      "source": "TIF__000A0308.Fragment_0 on INFO Skyrim.esm:0A0308 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Night Mother",
+      "speakerNamed": "scene DBRecurringNightMotherScene2, alias NightMotherAlias of DBrecurring (The Dark Brotherhood Forever) (forced)",
+      "speakerPlaced": [
+       "Dark Brotherhood Sanctuary"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0A0309",
+      "prompt": null,
+      "reply": [
+       "Speak with the Desperate Gambler at the Barracks, in Windhelm. Accept his gold, then eliminate the target. So begins a contract, bound in blood."
+      ],
+      "conditions": "",
+      "scene": "Skyrim.esm:097261",
+      "sceneStartedBy": [],
+      "source": "TIF__000A0309.Fragment_0 on INFO Skyrim.esm:0A0309 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Night Mother",
+      "speakerNamed": "scene DBRecurringNightMotherScene2, alias NightMotherAlias of DBrecurring (The Dark Brotherhood Forever) (forced)",
+      "speakerPlaced": [
+       "Dark Brotherhood Sanctuary"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0A030A",
+      "prompt": null,
+      "reply": [
+       "Speak with the Blasphemous Priest at the Temple of Kynareth, in Whiterun. Accept his gold, then kill the target. Hail Sithis!"
+      ],
+      "conditions": "",
+      "scene": "Skyrim.esm:097261",
+      "sceneStartedBy": [],
+      "source": "TIF__000A030A.Fragment_0 on INFO Skyrim.esm:0A030A (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Night Mother",
+      "speakerNamed": "scene DBRecurringNightMotherScene2, alias NightMotherAlias of DBrecurring (The Dark Brotherhood Forever) (forced)",
+      "speakerPlaced": [
+       "Dark Brotherhood Sanctuary"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0A030B",
+      "prompt": null,
+      "reply": [
+       "Speak with the Dishonored Skald at the Bards College, in Solitude. Accept his gold, then eliminate the target. So begins a contract, bound in blood."
+      ],
+      "conditions": "",
+      "scene": "Skyrim.esm:097261",
+      "sceneStartedBy": [],
+      "source": "TIF__000A030B.Fragment_0 on INFO Skyrim.esm:0A030B (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Night Mother",
+      "speakerNamed": "scene DBRecurringNightMotherScene2, alias NightMotherAlias of DBrecurring (The Dark Brotherhood Forever) (forced)",
+      "speakerPlaced": [
+       "Dark Brotherhood Sanctuary"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0A030C",
+      "prompt": null,
+      "reply": [
+       "Speak with the Indolent Farmer at the Vilemyr Inn, in Ivarstead. Accept his gold, then kill the target. So begins a contract, bound in blood."
+      ],
+      "conditions": "",
+      "scene": "Skyrim.esm:097261",
+      "sceneStartedBy": [],
+      "source": "TIF__000A030C.Fragment_0 on INFO Skyrim.esm:0A030C (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   }
  ],
  "notInRawQuests": [],
@@ -4858,20 +6396,20 @@
    ]
   }
  ],
- "otherStarts": "To get into the main quest: talk to Aventus Aretino in Aretino Residence: Innocence Lost is running from the start (Talk to Aventus Aretino); or talk to Cicero in Loreius Farm: Delayed Burial is running from the start (Talk to the strange jester).",
+ "otherStarts": "To get into The Dark Brotherhood: talk to Aventus Aretino in Aretino Residence: Innocence Lost is running from the start (Talk to Aventus Aretino); or talk to Cicero in Loreius Farm: Delayed Burial is running from the start (Talk to the strange jester).",
  "routes": [],
  "loaders": {
   "Wyrmstooth": {
    "quest": "Wyrmstooth.esp:AC1487",
    "script": "WT_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/Wyrmstooth - Settings Loader/Scripts/WT_MCMScript.pex",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
    "winnerParent": "MCM_ConfigBase",
    "readsSettings": true
   },
   "TimingIsEverything": {
    "quest": "TimingIsEverything.esp:005E3B",
    "script": "TIE_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
    "winnerParent": "SKI_ConfigBase",
    "readsSettings": false
   }
@@ -4934,7 +6472,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4952,14 +6490,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -5000,7 +6538,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -5027,7 +6565,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -5045,14 +6583,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -5093,7 +6631,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -5120,7 +6658,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -5138,14 +6676,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -5186,7 +6724,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -5213,7 +6751,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -5231,14 +6769,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -5279,7 +6817,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -5306,7 +6844,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -5324,14 +6862,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -5372,7 +6910,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -5399,7 +6937,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -5417,14 +6955,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -5465,7 +7003,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -5492,7 +7030,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -5510,14 +7048,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -5558,7 +7096,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -5585,7 +7123,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -5603,14 +7141,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -5651,7 +7189,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -5678,7 +7216,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -5696,14 +7234,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -5744,7 +7282,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -5767,7 +7305,7 @@
   "script": {
    "quest": "TimingIsEverything.esp:005E3B",
    "script": "TIE_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
    "winnerParent": "SKI_ConfigBase",
    "readsSettings": false
   },
@@ -5788,7 +7326,7 @@
        "key": "iTIE_MinimumLevel:Dragonborn",
        "value": "25",
        "from": "settings.ini in Timing is Everything SE - Settings Loader",
-       "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+       "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
       }
      ],
      "value": 25.0,
@@ -5827,7 +7365,7 @@
   "loaderQuest": {
    "quest": "Wyrmstooth.esp:AC1487",
    "script": "WT_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/Wyrmstooth - Settings Loader/Scripts/WT_MCMScript.pex",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
    "winnerParent": "MCM_ConfigBase",
    "readsSettings": true
   },

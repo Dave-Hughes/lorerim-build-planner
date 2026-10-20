@@ -12,72 +12,105 @@
     {
      "by": "dialogue",
      "speaker": "Aela the Huntress",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Jorrvaskr Living Quarters, Jorrvaskr"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0231C8",
-     "conditions": "the speaker is Aela the Huntress; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now ?); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now ?)",
+     "prompt": "Can I join the Companions?",
+     "reply": [
+      "We don't just take in any milk drinker who stumbles in. Talk to Kodlak if you think you have what it takes to be a Companion."
+     ],
+     "conditions": "the speaker is Aela the Huntress; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now 0)",
      "source": "TIF__000231C8.Fragment_0 on INFO Skyrim.esm:0231C8 (LoreRim - Dialogue Patch.esp)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": "Vilkas",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Jorrvaskr Living Quarters, Jorrvaskr"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:05477B",
-     "conditions": "the speaker is Vilkas; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now ?); Take Up Arms stage <= 10",
+     "prompt": "Can I join the Companions?",
+     "reply": [
+      "I don't know if you're capable, and I don't have time to find out. If Kodlak will vouch for you, I might have some work you could do."
+     ],
+     "conditions": "the speaker is Vilkas; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10",
      "source": "TIF__0005477B.Fragment_0 on INFO Skyrim.esm:05477B (LoreRim - Dialogue Patch.esp)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": "Farkas",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Jorrvaskr Living Quarters, Jorrvaskr"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:05477C",
-     "conditions": "the speaker is Farkas; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now ?); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now ?)",
+     "prompt": "Can I join the Companions?",
+     "reply": [
+      "Kodlak is the one who figures out who can be a Companion. So talk to him. It's out of my hands."
+     ],
+     "conditions": "the speaker is Farkas; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now 0)",
      "source": "TIF__0005477C.Fragment_0 on INFO Skyrim.esm:05477C (LoreRim - Dialogue Patch.esp)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": "Skjor",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Jorrvaskr Living Quarters, Jorrvaskr"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:05477D",
-     "conditions": "the speaker is Skjor; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now ?) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now ?); Take Up Arms stage <= 10",
+     "prompt": "Can I join the Companions?",
+     "reply": [
+      "So you think you have what it takes? Huh. Lucky for you, I'm not the one who makes that decision. Talk to Kodlak.",
+      "Who knows, maybe he's in a generous mood."
+     ],
+     "conditions": "the speaker is Skjor; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10",
      "source": "TIF__0005477D.Fragment_0 on INFO Skyrim.esm:05477D (LoreRim - Dialogue Patch.esp)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": "Njada Stonearm",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Jorrvaskr Living Quarters, Jorrvaskr"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0DAB4F",
-     "conditions": "the speaker isn't the one in alias alias 1; the speaker isn't the one in alias alias 2; the speaker isn't the one in alias alias 3; the speaker isn't the one in alias alias 4; the speaker is Njada Stonearm; Take Up Arms stage 100 not done; fn359 == 1 or fn359 == 1",
+     "prompt": "Who's in charge around here?",
+     "reply": [
+      "You don't just waddle in here and get to speak to the boss. Who do you think you are?",
+      "If you want to embarrass yourself, I won't stop you. Kodlak is the Harbinger. He's the closest thing you'll find to a leader around here."
+     ],
+     "conditions": "the speaker isn't the one in alias GenericDialogueSuppressor1; the speaker isn't the one in alias GenericDialogueSuppressor2; the speaker isn't the one in alias GenericDialogueSuppressor3; the speaker isn't the one in alias GenericDialogueSuppressor4; the speaker is Njada Stonearm; Take Up Arms stage 100 not done; fn359 == 1 or fn359 == 1",
      "source": "TIF__000DAB4F.Fragment_0 on INFO Skyrim.esm:0DAB4F (Companions at Mirmulnir.esp)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": "Torvar",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Jorrvaskr Living Quarters, Jorrvaskr"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0DAB51",
-     "conditions": "the speaker isn't the one in alias alias 1; the speaker isn't the one in alias alias 2; the speaker isn't the one in alias alias 3; the speaker isn't the one in alias alias 4; the speaker is Torvar; Take Up Arms stage 100 not done; fn359 == 1 or fn359 == 1",
+     "prompt": "Who's in charge around here?",
+     "reply": [
+      "In charge of what? I'm in charge of me, and you're in charge of you.",
+      "If you're looking to join up, Kodlak's the one to be talking to."
+     ],
+     "conditions": "the speaker isn't the one in alias GenericDialogueSuppressor1; the speaker isn't the one in alias GenericDialogueSuppressor2; the speaker isn't the one in alias GenericDialogueSuppressor3; the speaker isn't the one in alias GenericDialogueSuppressor4; the speaker is Torvar; Take Up Arms stage 100 not done; fn359 == 1 or fn359 == 1",
      "source": "TIF__000DAB51.Fragment_0 on INFO Skyrim.esm:0DAB51 (Companions at Mirmulnir.esp)",
      "verdict": "script"
     },
@@ -125,7 +158,80 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Spar with Vilkas in the training yard behind Jorrvaskr",
+     "index": 20,
+     "source": "Skyrim.esm:04B2D9 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "APS_GuildCompanions, a helper quest",
+      "questId": "AlternatePerspective.esp:3D36E8",
+      "atStage": 0,
+      "call": "SetStage 20",
+      "source": "QF_APS_GuildCompanions_063D36E8.fragment_0 on AlternatePerspective.esp:3D36E8 (AlternatePerspective.esp)",
+      "verdict": "script",
+      "throughStartedBy": []
+     },
+     {
+      "by": "dialogue",
+      "speaker": null,
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0A3E99",
+      "prompt": "So you're supposed to train me?",
+      "reply": [],
+      "conditions": "",
+      "source": "TIF__000A3E99.Fragment_0 on INFO Skyrim.esm:0A3E99 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Vilkas",
+      "speakerNamed": "alias Vilkas of C00 (Take Up Arms) (forced)",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 20",
+      "info": "Vilkas Spar Skip.esp:000003",
+      "prompt": "So you're supposed to train me?",
+      "reply": [
+       "No, don't worry about that.",
+       "Here's my sword. Go take it up to Eorlund to have it sharpened. And be careful, it's probably worth more than you are."
+      ],
+      "conditions": "the speaker is the one in alias Vilkas; Take Up Arms stage == 20",
+      "source": "VilkasSparSkip_Scripts.Fragment_0 on INFO Vilkas Spar Skip.esp:000003 (Vilkas Spar Skip.esp)",
+      "verdict": "script"
+     }
+    ],
+    "scenesStarted": [
+     {
+      "by": "dialogue",
+      "speaker": "Kodlak Whitemane",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "StartScene",
+      "info": "Skyrim.esm:0A3E7A",
+      "prompt": "I would like to join the Companions.",
+      "reply": [
+       "Would you now? Here, let me have a look at you.",
+       "Hm. Yes, perhaps. A certain strength of spirit."
+      ],
+      "conditions": "GetInFaction The Companions == 0; the speaker is Kodlak Whitemane; Take Up Arms stage <= 10; fn1 <= 500; fn359 == 1; fn1 <= 500; fn359 == 1",
+      "source": "TIF__000A3E7A.Fragment_0 on INFO Skyrim.esm:0A3E7A (Companions at Mirmulnir.esp)",
+      "verdict": "script",
+      "startsScene": "Skyrim.esm:0A3EB7"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:06E803",
@@ -146,11 +252,17 @@
     {
      "by": "dialogue",
      "speaker": "Farkas",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Jorrvaskr Living Quarters, Jorrvaskr"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:06F6BD",
+     "prompt": "What does he want?",
+     "reply": [
+      "Don't know. He just said he needed to talk to you before you do anything else.",
+      "I don't like making him angry, but there is some work for you if you want it."
+     ],
      "conditions": "the speaker is Farkas; Proving Honor stage < 10",
      "source": "TIF__0006F6BD.Fragment_0 on INFO Skyrim.esm:06F6BD (Skyrim.esm)",
      "verdict": "script"
@@ -158,11 +270,17 @@
     {
      "by": "dialogue",
      "speaker": "Aela the Huntress",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Jorrvaskr Living Quarters, Jorrvaskr"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:06F6BE",
+     "prompt": "What does he want?",
+     "reply": [
+      "He didn't say, but you'd better move fast.",
+      "There's probably something I could find for you to do, but best to check with him."
+     ],
      "conditions": "the speaker is Aela the Huntress; Proving Honor stage < 10",
      "source": "TIF__0006F6BE.Fragment_0 on INFO Skyrim.esm:06F6BE (Skyrim.esm)",
      "verdict": "script"
@@ -170,11 +288,16 @@
     {
      "by": "dialogue",
      "speaker": "Vilkas",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Jorrvaskr Living Quarters, Jorrvaskr"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:06F6BF",
+     "prompt": "What does he want?",
+     "reply": [
+      "I don't know, but he sounded impatient."
+     ],
      "conditions": "the speaker is Vilkas; Proving Honor stage < 10",
      "source": "TIF__0006F6BF.Fragment_0 on INFO Skyrim.esm:06F6BF (Skyrim.esm)",
      "verdict": "script"
@@ -225,7 +348,54 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Speak to <Alias=Observer>",
+     "index": 20,
+     "source": "Skyrim.esm:06E803 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Skjor",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:071DE3",
+      "prompt": null,
+      "reply": [
+       "He'll answer any questions you have.",
+       "Try not to disappoint. Or to get him killed."
+      ],
+      "conditions": "the speaker is Skjor; fn70 == 1",
+      "source": "TIF__00071DE3.Fragment_0 on INFO Skyrim.esm:071DE3 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Skjor",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:071DE4",
+      "prompt": null,
+      "reply": [
+       "She'll answer any questions you have.",
+       "Try not to disappoint. Or to get her killed."
+      ],
+      "conditions": "the speaker is Skjor; fn70 == 1",
+      "source": "TIF__00071DE4.Fragment_0 on INFO Skyrim.esm:071DE4 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:06E804",
@@ -257,10 +427,15 @@
     {
      "by": "dialogue",
      "speaker": null,
+     "speakerNamed": "alias QuestGiver of C02 (Brotherhood) (run time)",
      "speakerPlaced": [],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0C07ED",
-     "conditions": "the speaker is the one in alias alias 2",
+     "prompt": "Why were you waiting for me?",
+     "reply": [
+      "Come, follow me."
+     ],
+     "conditions": "the speaker is the one in alias QuestGiver",
      "source": "TIF__000C07ED.Fragment_0 on INFO Skyrim.esm:0C07ED (Skyrim.esm)",
      "verdict": "script"
     }
@@ -315,22 +490,35 @@
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Aela the Huntress",
+     "speakerNamed": "alias Aela of C03 (The Silver Hand) (unique)",
+     "speakerPlaced": [
+      "Jorrvaskr Living Quarters, Jorrvaskr"
+     ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:0C5C16",
-     "conditions": "the speaker is the one in alias alias 5; The Silver Hand stage < 5",
+     "prompt": "I'm looking for work.",
+     "reply": [
+      "Still eager to please. This is good. Skjor might be right about you.",
+      "He has something special planned for you. Better talk to him."
+     ],
+     "conditions": "the speaker is the one in alias Aela; The Silver Hand stage < 5",
      "source": "TIF__000C5C16.Fragment_0 on INFO Skyrim.esm:0C5C16 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
     {
      "by": "dialogue",
      "speaker": "Farkas",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Jorrvaskr Living Quarters, Jorrvaskr"
      ],
      "call": "SetStage 5",
      "info": "Skyrim.esm:0A7052",
+     "prompt": "I'm looking for work.",
+     "reply": [
+      "Skjor was looking for you before. Talk to him before doing anything else."
+     ],
      "conditions": "The Silver Hand stage < 10; the speaker is Farkas or the speaker is Vilkas",
      "source": "TIF__000A7052.Fragment_0 on INFO Skyrim.esm:0A7052 (Skyrim.esm)",
      "verdict": "script"
@@ -374,7 +562,56 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Meet with Skjor at night",
+     "index": 10,
+     "source": "Skyrim.esm:01CEF4 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Skjor",
+      "speakerNamed": "alias Skjor of C03 (The Silver Hand) (unique)",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 10",
+      "info": "Skyrim.esm:06767A",
+      "prompt": "You wanted to see me?",
+      "reply": [
+       "Yes. I have something a little different planned this time.",
+       "But it's not for everyone to hear. Meet me in the Underforge tonight.",
+       "We will speak more."
+      ],
+      "conditions": "the speaker is the one in alias Skjor; The Silver Hand stage == 5",
+      "source": "TIF__0006767A.Fragment_0 on INFO Skyrim.esm:06767A (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Skjor",
+      "speakerNamed": "alias Skjor of C03 (The Silver Hand) (unique)",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 10",
+      "info": "Skyrim.esm:0C5C15",
+      "prompt": "I'm looking for work.",
+      "reply": [
+       "Yes, I have something special for you. ",
+       "But it's not for everyone to hear. Meet me in the Underforge tonight.",
+       "We will speak more."
+      ],
+      "conditions": "the speaker is the one in alias Skjor; The Silver Hand stage < 10",
+      "source": "TIF__000C5C15.Fragment_0 on INFO Skyrim.esm:0C5C15 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:01CEF5",
@@ -400,7 +637,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -410,7 +653,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -420,7 +669,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -430,7 +685,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -440,7 +701,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -450,7 +717,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -460,7 +733,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -470,7 +749,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -480,7 +765,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -490,7 +781,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -500,7 +797,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -510,7 +813,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -520,7 +829,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -530,7 +845,13 @@
      "call": "Start",
      "source": "USKPOnLoad04aScript.Process on Unofficial Skyrim Special Edition Patch.esp:02EE20 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:02EE20 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -540,7 +861,13 @@
      "call": "Start",
      "source": "USKPOnLoad04aScript.Process on Unofficial Skyrim Special Edition Patch.esp:02EE20 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:02EE20 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -550,7 +877,13 @@
      "call": "Start",
      "source": "USKPOnLoad04aScript.Process on Unofficial Skyrim Special Edition Patch.esp:02EE20 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:02EE20 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -560,7 +893,13 @@
      "call": "Start",
      "source": "USKPOnLoad04aScript.Process on Unofficial Skyrim Special Edition Patch.esp:02EE20 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:02EE20 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -570,7 +909,13 @@
      "call": "Start",
      "source": "USKPOnLoad04aScript.Process on Unofficial Skyrim Special Edition Patch.esp:02EE20 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:02EE20 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -580,7 +925,13 @@
      "call": "Start",
      "source": "USKPOnLoad04aScript.Process on Unofficial Skyrim Special Edition Patch.esp:02EE20 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:02EE20 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -590,7 +941,13 @@
      "call": "Start",
      "source": "USKPOnLoad04aScript.Process on Unofficial Skyrim Special Edition Patch.esp:02EE20 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:02EE20 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -600,7 +957,13 @@
      "call": "Start",
      "source": "USKPOnLoad04aScript.Process on Unofficial Skyrim Special Edition Patch.esp:02EE20 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:02EE20 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -610,7 +973,13 @@
      "call": "Start",
      "source": "USKPOnLoad05Script.Process on Unofficial Skyrim Special Edition Patch.esp:0339CE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0339CE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -620,7 +989,13 @@
      "call": "Start",
      "source": "USKPOnLoad05Script.Process on Unofficial Skyrim Special Edition Patch.esp:0339CE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0339CE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -630,7 +1005,13 @@
      "call": "Start",
      "source": "USKPOnLoad05Script.Process on Unofficial Skyrim Special Edition Patch.esp:0339CE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0339CE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -640,7 +1021,13 @@
      "call": "Start",
      "source": "USKPOnLoad05Script.Process on Unofficial Skyrim Special Edition Patch.esp:0339CE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0339CE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -650,7 +1037,13 @@
      "call": "Start",
      "source": "USKPRetroactive121Script.Process on Unofficial Skyrim Special Edition Patch.esp:03B601 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:03B601 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -660,7 +1053,13 @@
      "call": "Start",
      "source": "USKPRetroactive121Script.Process on Unofficial Skyrim Special Edition Patch.esp:03B601 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive122 (Retroactive fixes for 1.2.2)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:03B601 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -670,15 +1069,29 @@
      "call": "Start",
      "source": "USKPRetroactive122Script.Process on Unofficial Skyrim Special Edition Patch.esp:03F6A2 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:03F6A2 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerPlaced": [],
+     "speaker": "Aela the Huntress",
+     "speakerNamed": "alias Aela of C04 (Blood's Honor) (unique)",
+     "speakerPlaced": [
+      "Jorrvaskr Living Quarters, Jorrvaskr"
+     ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0582A0",
-     "conditions": "the speaker is the one in alias alias 8; Blood's Honor stage < 10",
+     "prompt": "I'm looking for work.",
+     "reply": [
+      "And there is more work to be done, but I fear that Kodlak's gotten wind of our recent efforts. He's asked to see you. ",
+      "My advice? Always be honest with the old man, but don't tell him anything he doesn't need to know. "
+     ],
+     "conditions": "the speaker is the one in alias Aela; Blood's Honor stage < 10",
      "source": "TIF__000582A0.Fragment_0 on INFO Skyrim.esm:0582A0 (Skyrim.esm)",
      "verdict": "script"
     }
@@ -721,7 +1134,73 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Collect a Glenmoril Witch's head",
+     "index": 20,
+     "source": "Skyrim.esm:01CEF5 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Kodlak Whitemane",
+      "speakerNamed": "alias Kodlak of C04 (Blood's Honor) (unique)",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0177FF",
+      "prompt": "It will be done.",
+      "reply": [
+       "Talos guide you, lad."
+      ],
+      "conditions": "the speaker is the one in alias Kodlak; fn131 == 1",
+      "source": "TIF__000177FF.Fragment_0 on INFO Skyrim.esm:0177FF (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Kodlak Whitemane",
+      "speakerNamed": "alias Kodlak of C04 (Blood's Honor) (unique)",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 15",
+      "info": "Skyrim.esm:017800",
+      "prompt": "It will be done.",
+      "reply": [
+       "Talos guide you, lass."
+      ],
+      "conditions": "the speaker is the one in alias Kodlak; fn131 == 1",
+      "source": "TIF__00017800.Fragment_0 on INFO Skyrim.esm:017800 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Kodlak Whitemane",
+      "speakerNamed": "alias Kodlak of C04 (Blood's Honor) (unique)",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0582D9",
+      "prompt": "Is there a way to cure yourself?",
+      "reply": [
+       "That's what I've spent my twilight years trying to find out.",
+       "And now I've found the answer. The witches' magic ensnared us, and only their magic can release us. ",
+       "They won't give it willingly, but we can extract their foul powers by force. ",
+       "I want you to seek them out. Go to their coven in the wilderness. Strike them down as a true warrior of the wild. ",
+       "And bring me their heads. The seat of their abilities. From there, we may begin to undo centuries of impurity."
+      ],
+      "conditions": "the speaker is the one in alias Kodlak",
+      "source": "TIF__000582D9.Fragment_0 on INFO Skyrim.esm:0582D9 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:06E805",
@@ -738,7 +1217,13 @@
      "call": "SetStage 1",
      "source": "QF_Patch1_9_UpdateQuest_010009A3.fragment_0 on Update.esm:0009A3 (Update.esm), through C00 (Take Up Arms)'s startstoryquest",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Update.esm:0009A3 DNAM (Update.esm)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -748,7 +1233,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -758,7 +1249,13 @@
      "call": "SetStage 1",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -768,7 +1265,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -778,7 +1281,13 @@
      "call": "SetStage 1",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -788,7 +1297,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -798,7 +1313,13 @@
      "call": "SetStage 1",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -808,7 +1329,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -818,7 +1345,13 @@
      "call": "SetStage 1",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -828,7 +1361,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -838,7 +1377,13 @@
      "call": "SetStage 1",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -848,7 +1393,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -858,7 +1409,13 @@
      "call": "SetStage 1",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -868,7 +1425,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -878,7 +1441,13 @@
      "call": "SetStage 1",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -888,7 +1457,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -898,7 +1473,13 @@
      "call": "SetStage 1",
      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -908,7 +1489,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -918,7 +1505,13 @@
      "call": "SetStage 1",
      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -928,7 +1521,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -938,7 +1537,13 @@
      "call": "SetStage 1",
      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -948,7 +1553,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -958,7 +1569,13 @@
      "call": "SetStage 1",
      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -968,7 +1585,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -978,7 +1601,13 @@
      "call": "SetStage 1",
      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -988,7 +1617,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -998,7 +1633,13 @@
      "call": "SetStage 1",
      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1008,7 +1649,13 @@
      "call": "Start",
      "source": "USKPRetroactive130Script.Process on Unofficial Skyrim Special Edition Patch.esp:012F33 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:012F33 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1018,7 +1665,13 @@
      "call": "SetStage 1",
      "source": "USKPRetroactive130Script.Process on Unofficial Skyrim Special Edition Patch.esp:012F33 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:012F33 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1028,7 +1681,13 @@
      "call": "Start",
      "source": "USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0187DE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1038,7 +1697,13 @@
      "call": "SetStage 1",
      "source": "USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0187DE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1048,7 +1713,13 @@
      "call": "Start",
      "source": "USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0187DE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1058,7 +1729,13 @@
      "call": "SetStage 1",
      "source": "USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:0187DE DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1068,7 +1745,13 @@
      "call": "Start",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1078,7 +1761,13 @@
      "call": "SetStage 1",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1088,7 +1777,13 @@
      "call": "Start",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1098,7 +1793,13 @@
      "call": "SetStage 1",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1108,7 +1809,13 @@
      "call": "Start",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1118,7 +1825,13 @@
      "call": "SetStage 1",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1128,7 +1841,13 @@
      "call": "Start",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1138,7 +1857,13 @@
      "call": "SetStage 1",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1148,7 +1873,13 @@
      "call": "Start",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1158,7 +1889,13 @@
      "call": "SetStage 1",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1168,7 +1905,13 @@
      "call": "Start",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1178,7 +1921,13 @@
      "call": "SetStage 1",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1188,7 +1937,13 @@
      "call": "Start",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1198,7 +1953,13 @@
      "call": "SetStage 1",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1208,7 +1969,13 @@
      "call": "Start",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1218,7 +1985,13 @@
      "call": "SetStage 1",
      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1228,7 +2001,13 @@
      "call": "Start",
      "source": "USKPRetroactive126Script.Process on Unofficial Skyrim Special Edition Patch.esp:025354 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:025354 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1238,7 +2017,13 @@
      "call": "SetStage 1",
      "source": "USKPRetroactive126Script.Process on Unofficial Skyrim Special Edition Patch.esp:025354 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:025354 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1248,7 +2033,13 @@
      "call": "Start",
      "source": "USKPRetroactive126Script.Process on Unofficial Skyrim Special Edition Patch.esp:025354 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:025354 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1258,7 +2049,13 @@
      "call": "SetStage 1",
      "source": "USKPRetroactive126Script.Process on Unofficial Skyrim Special Edition Patch.esp:025354 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:025354 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1268,7 +2065,13 @@
      "call": "Start",
      "source": "USKPRetroactive126Script.Process on Unofficial Skyrim Special Edition Patch.esp:025354 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:025354 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1278,7 +2081,13 @@
      "call": "SetStage 1",
      "source": "USKPRetroactive126Script.Process on Unofficial Skyrim Special Edition Patch.esp:025354 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:025354 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1288,7 +2097,13 @@
      "call": "Start",
      "source": "USKPRetroactive126Script.Process on Unofficial Skyrim Special Edition Patch.esp:025354 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:025354 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1298,7 +2113,13 @@
      "call": "SetStage 1",
      "source": "USKPRetroactive126Script.Process on Unofficial Skyrim Special Edition Patch.esp:025354 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:025354 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -1402,7 +2223,18 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "(Optional) Wipe out the Silver Hand",
+     "index": 11,
+     "source": "Skyrim.esm:06E805 QOBJ 11",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01CEF6",
@@ -1419,7 +2251,13 @@
      "call": "SetStage 1",
      "source": "QF_Patch1_9_UpdateQuest_010009A3.fragment_0 on Update.esm:0009A3 (Update.esm), through C00 (Take Up Arms)'s startstoryquest",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Update.esm:0009A3 DNAM (Update.esm)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1429,7 +2267,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1439,7 +2283,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1449,7 +2299,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1459,7 +2315,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1469,7 +2331,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1479,7 +2347,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1489,7 +2363,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1499,7 +2379,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1509,7 +2395,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1519,7 +2411,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1529,7 +2427,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1539,7 +2443,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1549,7 +2459,13 @@
      "call": "Start",
      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1559,7 +2475,13 @@
      "call": "Start",
      "source": "uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01068A DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1569,7 +2491,13 @@
      "call": "Start",
      "source": "uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01068A DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1579,7 +2507,13 @@
      "call": "Start",
      "source": "uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01068A DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1589,7 +2523,13 @@
      "call": "Start",
      "source": "uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01068A DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1599,7 +2539,13 @@
      "call": "Start",
      "source": "uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01068A DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1609,7 +2555,13 @@
      "call": "Start",
      "source": "uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01068A DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1619,7 +2571,13 @@
      "call": "Start",
      "source": "uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01068A DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1629,7 +2587,13 @@
      "call": "Start",
      "source": "uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:01068A DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1639,7 +2603,13 @@
      "call": "Start",
      "source": "USKPRetroactive204Script.Process on Unofficial Skyrim Special Edition Patch.esp:012C3A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:012C3A DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1649,7 +2619,13 @@
      "call": "Start",
      "source": "USKPRetroactive204Script.Process on Unofficial Skyrim Special Edition Patch.esp:012C3A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:012C3A DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1659,7 +2635,13 @@
      "call": "Start",
      "source": "USKPRetroactive204Script.Process on Unofficial Skyrim Special Edition Patch.esp:012C3A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:012C3A DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1669,7 +2651,13 @@
      "call": "Start",
      "source": "USKPRetroactive204Script.Process on Unofficial Skyrim Special Edition Patch.esp:012C3A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:012C3A DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1679,7 +2667,13 @@
      "call": "Start",
      "source": "USKPRetroactive205Script.Process on Unofficial Skyrim Special Edition Patch.esp:040578 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:040578 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1689,7 +2683,13 @@
      "call": "Start",
      "source": "USKPRetroactive205Script.Process on Unofficial Skyrim Special Edition Patch.esp:040578 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:040578 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1699,7 +2699,13 @@
      "call": "Start",
      "source": "USKPRetroactive206Script.Process on Unofficial Skyrim Special Edition Patch.esp:04C7DF (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Unofficial Skyrim Special Edition Patch.esp:04C7DF DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -1734,7 +2740,18 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Give the fragments of Wuuthrad to Eorlund",
+     "index": 15,
+     "source": "Skyrim.esm:01CEF6 QOBJ 15",
+     "verdict": "files"
+    },
+    "stage": 15,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 15 or one before it"
+   }
   },
   {
    "id": "Skyrim.esm:01CEEE",
@@ -1785,7 +2802,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias.ShortName=Questgiver>",
+     "index": 20,
+     "source": "Skyrim.esm:01CEEE QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "CR01 (Animal Extermination)",
+      "questId": "Skyrim.esm:01CEEE",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "CR01BeastScript.OnDeath on Skyrim.esm:01CEEE (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:025185",
@@ -1830,7 +2867,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias.ShortName=Questgiver>",
+     "index": 20,
+     "source": "Skyrim.esm:025185 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "CR02 (Animal Extermination)",
+      "questId": "Skyrim.esm:025185",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "CR02BeastBossScript.OnDeath on Skyrim.esm:025185 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:025230",
@@ -1855,6 +2912,26 @@
    },
    "globals": [],
    "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias.ShortName=Questgiver>",
+     "index": 20,
+     "source": "Skyrim.esm:025230 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "CR03 (Animal Pelt Collection)",
+      "questId": "Skyrim.esm:025230",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "CR03QuestScript.OnUpdate on Skyrim.esm:025230 (Companions Radiant Expansion.esp)",
+      "verdict": "script"
+     }
+    ]
+   },
    "unread": "no starter in its records or scripts"
   },
   {
@@ -1901,7 +2978,187 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias.ShortName=Questgiver>",
+     "index": 20,
+     "source": "Skyrim.esm:025231 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DialogueFavorGeneric (named \"Generic dialogue\" in its record), a helper quest",
+      "questId": "Skyrim.esm:05A6DC",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "FavorDialogueScript.Intimidate on Skyrim.esm:05A6DC (Meridia.esp), through CR04 (Hired Muscle)'s checkintimidate",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "start game",
+        "source": "Skyrim.esm:05A6DC DNAM (Meridia.esp)",
+        "verdict": "files"
+       }
+      ]
+     },
+     {
+      "by": "quest script",
+      "quest": "DGIntimidateQuest, a helper quest",
+      "questId": "Skyrim.esm:047AE6",
+      "atStage": 100,
+      "call": "SetStage 20",
+      "source": "QF_DGIntimidateQuest_00047AE6.fragment_5 on Skyrim.esm:047AE6 (Skyrim.esm), through CR04 (Hired Muscle)'s checkintimidate",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "story manager",
+        "event": "script event",
+        "node": "DGIntimidateQuestNode",
+        "parents": [
+         "Skyrim.esm:01379A",
+         "Root"
+        ],
+        "conditions": "fn576 == 1",
+        "globals": [],
+        "source": "DGIntimidateQuestNode Skyrim.esm:047AE9 (Skyrim.esm)",
+        "verdict": "files"
+       }
+      ]
+     },
+     {
+      "by": "quest script",
+      "quest": "CR04 (Hired Muscle)",
+      "questId": "Skyrim.esm:025231",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "CR04QuestScript.CheckIntimidate on Skyrim.esm:025231 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "CW, a helper quest with Tullius, Ulfric, Rikke",
+      "questId": "Skyrim.esm:019E53",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "CWScript.Intimidate on Skyrim.esm:019E53 (LoreRim - Dialogue Patch.esp), through CR04 (Hired Muscle)'s checkintimidate",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "quest script",
+        "quest": "CWMissionQuickStart, a helper quest",
+        "questId": "Skyrim.esm:107987",
+        "atStage": 200,
+        "call": "SetStage 2",
+        "source": "QF_CWMissionQuickStart_00107987.fragment_2 on Skyrim.esm:107987 (Skyrim.esm)",
+        "verdict": "script"
+       },
+       {
+        "by": "quest script",
+        "quest": "CWMissionQuickStart, a helper quest",
+        "questId": "Skyrim.esm:107987",
+        "atStage": 42,
+        "call": "SetStage 2",
+        "source": "QF_CWMissionQuickStart_00107987.fragment_1 on Skyrim.esm:107987 (Skyrim.esm)",
+        "verdict": "script"
+       },
+       {
+        "by": "quest script",
+        "quest": "CWMissionQuickStart, a helper quest",
+        "questId": "Skyrim.esm:107987",
+        "atStage": 600,
+        "call": "SetStage 1",
+        "source": "QF_CWMissionQuickStart_00107987.fragment_5 on Skyrim.esm:107987 (Skyrim.esm)",
+        "verdict": "script"
+       },
+       {
+        "by": "quest script",
+        "quest": "CWMissionQuickStart, a helper quest",
+        "questId": "Skyrim.esm:107987",
+        "atStage": 71,
+        "call": "SetStage 1",
+        "source": "QF_CWMissionQuickStart_00107987.fragment_4 on Skyrim.esm:107987 (Skyrim.esm)",
+        "verdict": "script"
+       },
+       {
+        "by": "start game",
+        "source": "Skyrim.esm:019E53 DNAM (LoreRim - Dialogue Patch.esp)",
+        "verdict": "files"
+       }
+      ]
+     },
+     {
+      "by": "quest script",
+      "quest": "DLC1RadiantDisguised, a helper quest",
+      "questId": "Dawnguard.esm:01574C",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "DLC1RadiantDisguisedScript.Intimidate on Dawnguard.esm:01574C (Dawnguard.esm), through CR04 (Hired Muscle)'s checkintimidate",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "start game",
+        "source": "Dawnguard.esm:01574C DNAM (Dawnguard.esm)",
+        "verdict": "files"
+       }
+      ]
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Nelacar",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Frozen Hearth"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:024663",
+      "prompt": "I didn't agree to anything. Talk. (Intimidate)",
+      "reply": [
+       "Just calm down. I'll tell you everything."
+      ],
+      "conditions": "the speaker is Nelacar; fn655 == 1",
+      "source": "TIF__00024663.Fragment_0 on INFO Skyrim.esm:024663 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Captain Aldis",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Castle Dour"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:034B3E",
+      "prompt": "Well, I'm making it \"need to know.\" (Intimidate)",
+      "reply": [
+       "If you want to know that bad then fine."
+      ],
+      "conditions": "No News is Good News stage == 10; the speaker is Captain Aldis",
+      "source": "TIF__00034B3E.Fragment_1 on INFO Skyrim.esm:034B3E (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Lynly Star-Sung",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Vilemyr Inn, Ivarstead Vilemyr Inn"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:03C4DA",
+      "prompt": "Stop lying or I'll beat it out of you! (Intimidate)",
+      "reply": [
+       "Please, I beg you, don't tell Sibbi where I am. He'll kill me!",
+       "Sibbi's been spreading lies about me, you must hear me out."
+      ],
+      "conditions": "the speaker is Lynly Star-Sung; fn655 == 1; global FFRiften02Solved == 0 (now 0)",
+      "source": "TIF__0003C4DA.Fragment_0 on INFO Skyrim.esm:03C4DA (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:02522F",
@@ -1947,7 +3204,139 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias=Questgiver>",
+     "index": 20,
+     "source": "Skyrim.esm:02522F QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "CR05 (Trouble in Skyrim)",
+      "questId": "Skyrim.esm:02522F",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "CR05BossScript.OnDeath on Skyrim.esm:02522F (Companions Radiant Expansion.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "USKPVersionTracking (named \"Version tracking for USKP retroactive fixes\" in its record), a helper quest with Player",
+      "questId": "Unofficial Skyrim Special Edition Patch.esp:00D8B9",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive126 (Retroactive fixes for 1.2.6)'s process",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "start game",
+        "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+        "verdict": "files"
+       }
+      ]
+     },
+     {
+      "by": "quest script",
+      "quest": "USKPVersionTracking (named \"Version tracking for USKP retroactive fixes\" in its record), a helper quest with Player",
+      "questId": "Unofficial Skyrim Special Edition Patch.esp:00D8B9",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive126 (Retroactive fixes for 1.2.6)'s process",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "start game",
+        "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+        "verdict": "files"
+       }
+      ]
+     },
+     {
+      "by": "quest script",
+      "quest": "USKPVersionTracking (named \"Version tracking for USKP retroactive fixes\" in its record), a helper quest with Player",
+      "questId": "Unofficial Skyrim Special Edition Patch.esp:00D8B9",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive126 (Retroactive fixes for 1.2.6)'s process",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "start game",
+        "source": "Unofficial Skyrim Special Edition Patch.esp:00D8B9 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+        "verdict": "files"
+       }
+      ]
+     },
+     {
+      "by": "quest script",
+      "quest": "USKPRetroactive124 (named \"Retroactive fixes for 1.2.4\" in its record), a helper quest",
+      "questId": "Unofficial Skyrim Special Edition Patch.esp:017224",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "USKPRetroactive124Script.Process on Unofficial Skyrim Special Edition Patch.esp:017224 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive126 (Retroactive fixes for 1.2.6)'s process",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "start game",
+        "source": "Unofficial Skyrim Special Edition Patch.esp:017224 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+        "verdict": "files"
+       }
+      ]
+     },
+     {
+      "by": "quest script",
+      "quest": "USKPRetroactive125 (named \"Retroactive fixes for 1.2.5\" in its record), a helper quest with Garakh, Atub, Addvar",
+      "questId": "Unofficial Skyrim Special Edition Patch.esp:01E696",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive126 (Retroactive fixes for 1.2.6)'s process",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "start game",
+        "source": "Unofficial Skyrim Special Edition Patch.esp:01E696 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+        "verdict": "files"
+       }
+      ]
+     },
+     {
+      "by": "quest script",
+      "quest": "USKPRetroactive126 (named \"Retroactive fixes for 1.2.6\" in its record), a helper quest with Niranye, Arivanya, Ysolda",
+      "questId": "Unofficial Skyrim Special Edition Patch.esp:025354",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "USKPRetroactive126Script.Process on Unofficial Skyrim Special Edition Patch.esp:025354 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "start game",
+        "source": "Unofficial Skyrim Special Edition Patch.esp:025354 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+        "verdict": "files"
+       }
+      ]
+     },
+     {
+      "by": "quest script",
+      "quest": "USKPRetroactive123 (named \"Retroactive fixes for 1.2.3\" in its record), a helper quest",
+      "questId": "Unofficial Skyrim Special Edition Patch.esp:0406DC",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "USKPRetroactive123Script.Process on Unofficial Skyrim Special Edition Patch.esp:0406DC (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive126 (Retroactive fixes for 1.2.6)'s process",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "start game",
+        "source": "Unofficial Skyrim Special Edition Patch.esp:0406DC DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+        "verdict": "files"
+       }
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0C18E1",
@@ -2012,7 +3401,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias=Questgiver>",
+     "index": 20,
+     "source": "Skyrim.esm:0C18E1 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "CR06 (Family Heirloom)",
+      "questId": "Skyrim.esm:0C18E1",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on Skyrim.esm:0C18E1 (Companions Radiant Expansion.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:025250",
@@ -2077,7 +3486,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Speak to <Alias=Questgiver>",
+     "index": 20,
+     "source": "Skyrim.esm:025250 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "CR07 (Escaped Criminal)",
+      "questId": "Skyrim.esm:025250",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageondeathrefalias.onDeath on Skyrim.esm:025250 (Companions Radiant Expansion.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:025251",
@@ -2137,7 +3566,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to <Alias=Victim>",
+     "index": 20,
+     "source": "Skyrim.esm:025251 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "CR08 (Rescue Mission)",
+      "questId": "Skyrim.esm:025251",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "CR08BossScript.OnDeath on Skyrim.esm:025251 (Companions Radiant Expansion.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:025252",
@@ -2182,7 +3631,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to <Alias.ShortName=Questgiver>",
+     "index": 20,
+     "source": "Skyrim.esm:025252 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "CR09 (Striking the Heart)",
+      "questId": "Skyrim.esm:025252",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "CR09BossScript.OnDeath on Skyrim.esm:025252 (Companions Radiant Expansion.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:09D6FC",
@@ -2233,7 +3702,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Aela",
+     "index": 20,
+     "source": "Skyrim.esm:09D6FC QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "CR10 (Stealing Plans)",
+      "questId": "Skyrim.esm:09D6FC",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on Skyrim.esm:09D6FC (Companions Radiant Expansion.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:09D700",
@@ -2284,7 +3773,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Aela",
+     "index": 20,
+     "source": "Skyrim.esm:09D700 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "CR11 (Retrieval)",
+      "questId": "Skyrim.esm:09D700",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on Skyrim.esm:09D700 (Companions Radiant Expansion.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0E3145",
@@ -2329,7 +3838,69 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Take the Totem to the Underforge",
+     "index": 20,
+     "source": "Skyrim.esm:0E3145 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Aela the Huntress",
+      "speakerNamed": "alias QuestGiver of CR12 (Totems of Hircine) (unique)",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0E3080",
+      "prompt": "Is this what we're looking for?",
+      "reply": [
+       "That definitely matches the description of the totem from Skjor's old book. Let's get it to the Underforge."
+      ],
+      "conditions": "the speaker is the one in alias QuestGiver; fn629 == 0",
+      "source": "TIF__000E3080.Fragment_0 on INFO Skyrim.esm:0E3080 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Aela the Huntress",
+      "speakerNamed": "alias QuestGiver of CR12 (Totems of Hircine) (unique)",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0E3082",
+      "prompt": "Is this what we're looking for?",
+      "reply": [
+       "That's it! That's the second Totem. Quickly, let's put it back with the other one."
+      ],
+      "conditions": "the speaker is the one in alias QuestGiver; fn629 == 1",
+      "source": "TIF__000E3082.Fragment_0 on INFO Skyrim.esm:0E3082 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Aela the Huntress",
+      "speakerNamed": "alias QuestGiver of CR12 (Totems of Hircine) (unique)",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0E3083",
+      "prompt": "Is this what we're looking for?",
+      "reply": [
+       "At last... the final Totem is ours. Let's go complete our set."
+      ],
+      "conditions": "the speaker is the one in alias QuestGiver; fn629 == 2",
+      "source": "TIF__000E3083.Fragment_0 on INFO Skyrim.esm:0E3083 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0E3163",
@@ -2341,11 +3912,17 @@
     {
      "by": "dialogue",
      "speaker": "Vilkas",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Jorrvaskr Living Quarters, Jorrvaskr"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0E3075",
+     "prompt": null,
+     "reply": [
+      "Aela said that the cleansing used a head from one of the witches of Glenmoril, yes?",
+      "A strange kind of ritual, but I won't mind killing those wretched things."
+     ],
      "conditions": "the speaker is Vilkas",
      "source": "TIF__000E3075.Fragment_0 on INFO Skyrim.esm:0E3075 (Companions Radiant Expansion.esp)",
      "verdict": "script"
@@ -2353,11 +3930,17 @@
     {
      "by": "dialogue",
      "speaker": "Farkas",
+     "speakerNamed": "GetIsID",
      "speakerPlaced": [
       "Jorrvaskr Living Quarters, Jorrvaskr"
      ],
      "call": "SetStage 10",
      "info": "Skyrim.esm:0E3076",
+     "prompt": null,
+     "reply": [
+      "Aela said we would need a hagraven's head. I already have one of them, but she said it was a special kind.",
+      "And that you knew where to get more. Let's go find one!"
+     ],
      "conditions": "the speaker is Farkas",
      "source": "TIF__000E3076.Fragment_0 on INFO Skyrim.esm:0E3076 (Companions Radiant Expansion.esp)",
      "verdict": "script"
@@ -2437,7 +4020,88 @@
     ]
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Cleanse <Alias=Questgiver> of beastblood",
+     "index": 15,
+     "source": "Skyrim.esm:0E3163 QOBJ 15",
+     "verdict": "files"
+    },
+    "stage": 15,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Vilkas",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 15",
+      "info": "Skyrim.esm:0E2FE7",
+      "prompt": "I have it.",
+      "reply": [
+       "Lead on, to Ysgramor and glory."
+      ],
+      "conditions": "the speaker is Vilkas",
+      "source": "TIF__000E2FE7.Fragment_0 on INFO Skyrim.esm:0E2FE7 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Farkas",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 15",
+      "info": "Skyrim.esm:0E2FE8",
+      "prompt": "I have it.",
+      "reply": [
+       "This is good. Could you show the way to the tomb again?"
+      ],
+      "conditions": "the speaker is Farkas",
+      "source": "TIF__000E2FE8.Fragment_0 on INFO Skyrim.esm:0E2FE8 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Vilkas",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 15",
+      "info": "Skyrim.esm:0E306E",
+      "prompt": null,
+      "reply": [
+       "You still bear a head of the Glenmoril betrayers, yes? Then lead on, back to the Tomb of Ysgramor.",
+       "My soul is now prepared."
+      ],
+      "conditions": "the speaker is Vilkas; GetItemCount Glenmoril Witch Head > 0",
+      "source": "TIF__000E306E.Fragment_0 on INFO Skyrim.esm:0E306E (Companions Radiant Expansion.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Farkas",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Jorrvaskr Living Quarters, Jorrvaskr"
+      ],
+      "call": "SetStage 15",
+      "info": "Skyrim.esm:0E306F",
+      "prompt": null,
+      "reply": [
+       "You still have one of the witch's heads. This is good.",
+       "Let's go to the Tomb. We can do the cleansing there."
+      ],
+      "conditions": "the speaker is Farkas; GetItemCount Glenmoril Witch Head > 0",
+      "source": "TIF__000E306F.Fragment_0 on INFO Skyrim.esm:0E306F (Companions Radiant Expansion.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "Skyrim.esm:0E3156",
@@ -2497,7 +4161,27 @@
     "ways": []
    },
    "globals": [],
-   "gives": []
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to <Alias.ShortName=Questgiver>",
+     "index": 20,
+     "source": "Skyrim.esm:0E3156 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "CR14 (Dragon Seekers)",
+      "questId": "Skyrim.esm:0E3156",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "CR02BeastBossScript.OnDeath on Skyrim.esm:0E3156 (Companions Radiant Expansion.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   }
  ],
  "notInRawQuests": [],
@@ -3615,7 +5299,7 @@
    ]
   }
  ],
- "otherStarts": "To get into the main quest: talk to Kodlak Whitemane in Jorrvaskr Living Quarters, Jorrvaskr: Take Up Arms is running from the start (Speak to Kodlak Whitemane); or ask Aela the Huntress in Jorrvaskr Living Quarters, Jorrvaskr \"Can I join the Companions?\" (the speaker is Aela the Huntress; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now ?)), which starts Take Up Arms; or ask Vilkas in Jorrvaskr Living Quarters, Jorrvaskr \"Can I join the Companions?\" (the speaker is Vilkas; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10), which starts Take Up Arms; or ask Farkas in Jorrvaskr Living Quarters, Jorrvaskr \"Can I join the Companions?\" (the speaker is Farkas; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now ?)), which starts Take Up Arms; or ask Skjor in Jorrvaskr Living Quarters, Jorrvaskr \"Can I join the Companions?\" (the speaker is Skjor; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10), which starts Take Up Arms; or ask Njada Stonearm in Jorrvaskr Living Quarters, Jorrvaskr \"Who's in charge around here?\" (the speaker isn't the one in alias GenericDialogueSuppressor1; the speaker isn't the one in alias GenericDialogueSuppressor2; the speaker isn't the one in alias GenericDialogueSuppressor3; the speaker isn't the one in alias GenericDialogueSuppressor4; the speaker is Njada Stonearm; Take Up Arms stage 100 not done; fn359 == 1 or fn359 == 1), which starts Take Up Arms; or ask Torvar in Jorrvaskr Living Quarters, Jorrvaskr \"Who's in charge around here?\" (the speaker isn't the one in alias GenericDialogueSuppressor1; the speaker isn't the one in alias GenericDialogueSuppressor2; the speaker isn't the one in alias GenericDialogueSuppressor3; the speaker isn't the one in alias GenericDialogueSuppressor4; the speaker is Torvar; Take Up Arms stage 100 not done; fn359 == 1 or fn359 == 1), which starts Take Up Arms.",
+ "otherStarts": "To get into The Companions: talk to Kodlak Whitemane in Jorrvaskr Living Quarters, Jorrvaskr: Take Up Arms is running from the start (Speak to Kodlak Whitemane); or ask Aela the Huntress in Jorrvaskr Living Quarters, Jorrvaskr \"Can I join the Companions?\" (the speaker is Aela the Huntress; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now 0)), which starts Take Up Arms; or ask Vilkas in Jorrvaskr Living Quarters, Jorrvaskr \"Can I join the Companions?\" (the speaker is Vilkas; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10), which starts Take Up Arms; or ask Farkas in Jorrvaskr Living Quarters, Jorrvaskr \"Can I join the Companions?\" (the speaker is Farkas; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now 0)), which starts Take Up Arms; or ask Skjor in Jorrvaskr Living Quarters, Jorrvaskr \"Can I join the Companions?\" (the speaker is Skjor; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10), which starts Take Up Arms; or ask Njada Stonearm in Jorrvaskr Living Quarters, Jorrvaskr \"Who's in charge around here?\" (the speaker isn't the one in alias GenericDialogueSuppressor1; the speaker isn't the one in alias GenericDialogueSuppressor2; the speaker isn't the one in alias GenericDialogueSuppressor3; the speaker isn't the one in alias GenericDialogueSuppressor4; the speaker is Njada Stonearm; Take Up Arms stage 100 not done; fn359 == 1 or fn359 == 1), which starts Take Up Arms; or ask Torvar in Jorrvaskr Living Quarters, Jorrvaskr \"Who's in charge around here?\" (the speaker isn't the one in alias GenericDialogueSuppressor1; the speaker isn't the one in alias GenericDialogueSuppressor2; the speaker isn't the one in alias GenericDialogueSuppressor3; the speaker isn't the one in alias GenericDialogueSuppressor4; the speaker is Torvar; Take Up Arms stage 100 not done; fn359 == 1 or fn359 == 1), which starts Take Up Arms.",
  "routes": [
   {
    "route": "dialogue INFO Skyrim.esm:0231C8",
@@ -3630,10 +5314,10 @@
    "reply": [
     "We don't just take in any milk drinker who stumbles in. Talk to Kodlak if you think you have what it takes to be a Companion."
    ],
-   "conditions": "the speaker is Aela the Huntress; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now ?)",
+   "conditions": "the speaker is Aela the Huntress; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now 0)",
    "does": "SetStage 10 on C00 (Take Up Arms)",
    "source": "TIF__000231C8.Fragment_0 on INFO Skyrim.esm:0231C8 (LoreRim - Dialogue Patch.esp); topic CRNoWorkBranchTopic",
-   "sentence": "Talk to Aela the Huntress (Nord) in Jorrvaskr Living Quarters, Jorrvaskr and choose \"Can I join the Companions?\", when the speaker is Aela the Huntress; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now ?): SetStage 10 on C00 (Take Up Arms)."
+   "sentence": "Talk to Aela the Huntress (Nord) in Jorrvaskr Living Quarters, Jorrvaskr and choose \"Can I join the Companions?\", when the speaker is Aela the Huntress; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now 0): SetStage 10 on C00 (Take Up Arms)."
   },
   {
    "route": "dialogue INFO Skyrim.esm:05477B",
@@ -3666,10 +5350,10 @@
    "reply": [
     "Kodlak is the one who figures out who can be a Companion. So talk to him. It's out of my hands."
    ],
-   "conditions": "the speaker is Farkas; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now ?)",
+   "conditions": "the speaker is Farkas; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now 0)",
    "does": "SetStage 10 on C00 (Take Up Arms)",
    "source": "TIF__0005477C.Fragment_0 on INFO Skyrim.esm:05477C (LoreRim - Dialogue Patch.esp); topic CRNoWorkBranchTopic",
-   "sentence": "Talk to Farkas (Nord) in Jorrvaskr Living Quarters, Jorrvaskr and choose \"Can I join the Companions?\", when the speaker is Farkas; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now ?): SetStage 10 on C00 (Take Up Arms)."
+   "sentence": "Talk to Farkas (Nord) in Jorrvaskr Living Quarters, Jorrvaskr and choose \"Can I join the Companions?\", when the speaker is Farkas; GetInFaction The Companions == 0; GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_AVMin (now 30) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150) or GetActorValue >= NGCDT_GLOB_Aela_HMSMin (now 150); Take Up Arms stage <= 10; global NGCDT_GLOB_AelaGreetingDone != 2 (now 0): SetStage 10 on C00 (Take Up Arms)."
   },
   {
    "route": "dialogue INFO Skyrim.esm:05477D",
@@ -3733,14 +5417,14 @@
   "Wyrmstooth": {
    "quest": "Wyrmstooth.esp:AC1487",
    "script": "WT_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/Wyrmstooth - Settings Loader/Scripts/WT_MCMScript.pex",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
    "winnerParent": "MCM_ConfigBase",
    "readsSettings": true
   },
   "TimingIsEverything": {
    "quest": "TimingIsEverything.esp:005E3B",
    "script": "TIE_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
    "winnerParent": "SKI_ConfigBase",
    "readsSettings": false
   }
@@ -3803,7 +5487,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -3821,14 +5505,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -3869,7 +5553,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -3896,7 +5580,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -3914,14 +5598,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -3962,7 +5646,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -3989,7 +5673,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4007,14 +5691,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4055,7 +5739,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4082,7 +5766,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4100,14 +5784,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4148,7 +5832,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4175,7 +5859,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4193,14 +5877,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4241,7 +5925,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4268,7 +5952,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4286,14 +5970,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4334,7 +6018,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4361,7 +6045,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4379,14 +6063,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4427,7 +6111,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4454,7 +6138,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4472,14 +6156,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4520,7 +6204,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4547,7 +6231,7 @@
          "key": "iTIE_MinimumLevel:Dragonborn",
          "value": "25",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 25.0,
@@ -4565,14 +6249,14 @@
          "key": "iStartingQuest:Dragonborn",
          "value": "1",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         },
         {
          "mod": "TimingIsEverything",
          "key": "iStartingQuestRandomID:Dragonborn",
          "value": "0",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "value": 1.0,
@@ -4613,7 +6297,7 @@
          "key": "iTIE_CultistAttackChance:Dragonborn",
          "value": "5",
          "from": "settings.ini in Timing is Everything SE - Settings Loader",
-         "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
         }
        ],
        "verdict": "run time",
@@ -4636,7 +6320,7 @@
   "script": {
    "quest": "TimingIsEverything.esp:005E3B",
    "script": "TIE_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
    "winnerParent": "SKI_ConfigBase",
    "readsSettings": false
   },
@@ -4657,7 +6341,7 @@
        "key": "iTIE_MinimumLevel:Dragonborn",
        "value": "25",
        "from": "settings.ini in Timing is Everything SE - Settings Loader",
-       "why": "the winning TIE_MCMScript (/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/[LoreRim] - SPID Files and Script Overwrites/scripts/tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+       "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
       }
      ],
      "value": 25.0,
@@ -4696,7 +6380,7 @@
   "loaderQuest": {
    "quest": "Wyrmstooth.esp:AC1487",
    "script": "WT_MCMScript",
-   "winner": "/sessions/rcw-01rljfmmykuy5htdzjdqi4v9/mnt/LoreRim/mods/Wyrmstooth - Settings Loader/Scripts/WT_MCMScript.pex",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
    "winnerParent": "MCM_ConfigBase",
    "readsSettings": true
   },

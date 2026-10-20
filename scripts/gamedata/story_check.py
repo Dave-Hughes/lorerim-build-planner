@@ -23,7 +23,16 @@ For each quest:
   gives        AddItem on the player on its own completing stages, and items its aliases create in the player;
                a reward list named by what it holds.
   run time     every global those read: its record value, and what an MCM Helper settings loader or a script's
-               SetValue makes it.
+               SetValue makes it, wherever the global's record is.
+  second step  what moves it from its first objective to its second (Kodlak's join line, Faralda's spell), with
+               the speaker, prompt, reply and conditions.
+A helper quest with no script starting it is followed to its story manager node or start-game flag. A dialogue
+line's speaker is its GetIsID NPC, else the alias GetIsAliasRef names, else the actor alias of the scene that
+speaks its topic (Agmaer at Fort Dawnguard), else whoever speaks the line that leads on to it; a line spoken in a
+scene says what starts the scene (Kodlak's join line starts the one where Vilkas takes you outside).
+
+SC_PHASE=A, B, C runs the check in three steps (plugins, scripts, report), each cached for the next, so a step
+fits a three-minute window; story_check_all.py runs lines in batches.
 Then: every way a game begins (starts_raw.json), each route into the line's first quest in player terms
 (speaker, race, placed cell, prompt and reply, conditions, what the script does), the payoff, the WO's three
 questions and Wyrmstooth's start level in a new game.
@@ -35,6 +44,7 @@ import configparser
 import glob
 import json
 import os
+import pickle
 import struct
 import sys
 
@@ -105,7 +115,7 @@ def cond_text(c, names, gvals=None, alias_names=None):
         who = names.get(c["param"], {}).get("name") or c["param"]
         return f"the speaker is {who}" if yes else f"the speaker isn't {who}"
     if fn == "GetIsAliasRef":
-        al = alias_names.get(c.get("param"), f"alias {c.get('param')}")
+        al = alias_names.get(c.get("param") or 0, str(c.get("param") or 0))
         return f"the speaker is the one in alias {al}" if yes else f"the speaker isn't the one in alias {al}"
     if fn == "GetStage" and isinstance(c.get("param"), str) and val == 0 and cmp in ("==", "<="):
         return f"{names.get(c['param'], {}).get('name') or c['param']} hasn't started"
@@ -291,18 +301,138 @@ def read_races(buf, name, npcs, strings=None):
     return race_of, race_names
 
 
+SCENE_TOPICS = ("DATA", "PTOP", "NTOP", "NETO", "QTOP")  # a dialogue action's topic; a player dialogue action's choices
+
+
+def read_scenes(buf, name):
+    """
+    Every scene's dialogue: {topic: [{scene, id, quest, alias}]}, the scene action that speaks the topic and the alias
+    of the scene's quest that acts it. A scene's lines carry no GetIsID; the speaker is the actor in that alias.
+    """
+    masters = header(buf)
+    out = {}
+    if b"SCEN" not in buf:
+        return out
+    for o in iter_group(buf, "SCEN"):
+        t, flags, fid, d = rec_data(buf, o)
+        if t != "SCEN":
+            continue
+        edid, quest, said, action = "", None, [], None
+        for s, v in subrecs(d):
+            if s == "EDID":
+                edid = v.rstrip(b"\0").decode("latin1")
+            elif s == "PNAM" and action is None and len(v) >= 4:  # a package action has a PNAM of its own
+                quest = form_id(resolve(struct.unpack_from("<I", v)[0], masters, name))
+            elif s == "ANAM":
+                action = {"type": struct.unpack_from("<H", v)[0], "alias": None} if len(v) >= 2 else None
+            elif action is not None and s == "ALID" and len(v) >= 4:
+                action["alias"] = struct.unpack_from("<i", v)[0]
+            elif action is not None and action["type"] in (0, 3) and s in SCENE_TOPICS and len(v) == 4 and struct.unpack_from("<I", v)[0]:
+                said.append((form_id(resolve(struct.unpack_from("<I", v)[0], masters, name)), action["alias"]))
+        sid = form_id(resolve(fid, masters, name))
+        for topic, alias in said:
+            out.setdefault(topic, []).append({"scene": edid or sid, "id": sid, "quest": quest, "alias": alias})
+    return out
+
+
+def read_links(buf, name, topics):
+    """
+    The dialogue lines that lead on to a topic in `topics` (TCLT): {topic: [{info, topic, quest, conditions}]}. The
+    player's reply in a linked topic is answered by whoever spoke the line before it.
+    """
+    masters = header(buf)
+    out = {}
+    if b"DIAL" not in buf or not topics:
+        return out
+    topic = None
+    for o in iter_group(buf, "DIAL"):
+        t = buf[o:o + 4]
+        if t not in (b"DIAL", b"INFO"):
+            continue
+        if t == b"INFO" and b"TCLT" not in buf[o + 24:o + 24 + struct.unpack_from("<I", buf, o + 4)[0]] and not struct.unpack_from("<I", buf, o + 8)[0] & 0x40000:
+            continue  # no link, and not compressed (a compressed record is read to look)
+        tt, flags, fid, d = rec_data(buf, o)
+        subs = subrecs(d)
+        if tt == "DIAL":
+            q = [form_id(resolve(struct.unpack_from("<I", v)[0], masters, name)) for s, v in subs if s == "QNAM" and len(v) >= 4]
+            topic = {"id": form_id(resolve(fid, masters, name)), "quest": q[0] if q else None}
+            continue
+        for s, v in subs:
+            if s == "TCLT" and len(v) >= 4 and topic:
+                to = form_id(resolve(struct.unpack_from("<I", v)[0], masters, name))
+                if to in topics:
+                    out.setdefault(to, []).append({"info": form_id(resolve(fid, masters, name)), "topic": topic["id"], "quest": topic["quest"], "plugin": name,
+                                                   "conditions": [qst.ctda(c, masters, name) for k, c in subs if k == "CTDA" and len(c) >= 24]})
+    return out
+
+
+def read_packages(buf, name):
+    """
+    ({topic: [package]}, {package: [(quest, alias)]}): the packages whose dialogue procedure says a topic (PDTO, a
+    forcegreet), and the quest aliases that run each package (ALPC). The speaker is whoever fills that alias.
+    """
+    masters = header(buf)
+    topics, runs = {}, {}
+    if b"PACK" in buf:
+        for o in iter_group(buf, "PACK"):
+            t, flags, fid, d = rec_data(buf, o)
+            if t != "PACK":
+                continue
+            for s, v in subrecs(d):
+                if s == "PDTO" and len(v) >= 8 and struct.unpack_from("<I", v)[0] == 0 and struct.unpack_from("<I", v, 4)[0]:
+                    topics.setdefault(form_id(resolve(struct.unpack_from("<I", v, 4)[0], masters, name)), []).append(form_id(resolve(fid, masters, name)))
+    if b"QUST" in buf:
+        for o in iter_group(buf, "QUST"):
+            t, flags, fid, d = rec_data(buf, o)
+            if t != "QUST" or b"ALPC" not in d:
+                continue
+            quest, alias = form_id(resolve(fid, masters, name)), None
+            for s, v in subrecs(d):
+                if s in ("ALST", "ALLS") and len(v) >= 4:
+                    alias = struct.unpack_from("<I", v)[0]
+                elif s == "ALED":
+                    alias = None
+                elif s == "ALPC" and alias is not None and len(v) >= 4:
+                    runs.setdefault(form_id(resolve(struct.unpack_from("<I", v)[0], masters, name)), []).append((quest, alias))
+    return topics, runs
+
+
 # ---- starters ------------------------------------------------------------------------------------
+
+def objective_stage(qid, objective, events):
+    """The lowest stage whose own fragment shows `objective` (SetObjectiveDisplayed), or None."""
+    shown = [c["stage"] for c, e in events if c.get("quest") == qid and c["kind"] == "quest" and c.get("stage") is not None
+             and e["call"] == "SetObjectiveDisplayed" and e.get("objective") == objective and e.get("via") in (None, qid)]
+    return min(shown) if shown else None
+
 
 def first_objective_stage(qid, quest, events):
     """The stage that shows a quest's first objective (its own fragment calling SetObjectiveDisplayed), else its first journal stage."""
     objectives = sorted(o["index"] for o in quest.get("objectives", []))
     if objectives:
-        shown = [c["stage"] for c, e in events if c.get("quest") == qid and c["kind"] == "quest" and c.get("stage") is not None
-                 and e["call"] == "SetObjectiveDisplayed" and e.get("objective") == objectives[0] and e.get("via") in (None, qid)]
-        if shown:
-            return min(shown)
+        shown = objective_stage(qid, objectives[0], events)
+        if shown is not None:
+            return shown
     logged = [s["index"] for s in quest.get("stages", []) if s.get("log")]
     return min(logged) if logged else 10
+
+
+def second_step(qid, quest, first_stage, events):
+    """
+    The calls that move a quest from its first objective to its second: SetStage past the first objective's stage, up
+    to the stage that shows the second objective, from dialogue, an alias's or the quest's own script outside its
+    stage fragments, or another quest's script. Often the real test (Kodlak's join line, Faralda's spell at the
+    bridge). Returns (second objective, its stage, [(ctx, ev)]).
+    """
+    objectives = sorted(o["index"] for o in quest.get("objectives", []))
+    if len(objectives) < 2:
+        return None, None, []
+    stage = objective_stage(qid, objectives[1], events)
+    if stage is None or stage <= first_stage:
+        return objectives[1], stage, []
+    moves = [(c, e) for c, e in events if e.get("quest") == qid and e["call"] == "SetStage" and e.get("stage") is not None
+             and first_stage < e["stage"] <= stage and not (c["kind"] == "quest" and c.get("fragment") and c.get("quest") == qid and e.get("via") in (None, qid))]
+    return objectives[1], stage, moves
 
 
 def classify_starts(qid, order, events, threshold, here=None):
@@ -466,6 +596,8 @@ class StoryAnalyzer(qsc.Analyzer):
             return {"call": "AddShout", "item": rest[0] if rest else None}
         if target and fl == "setobjectivedisplayed" and target.get("self") and owner.get("quest") and not owner.get("info") and rest and rest[0] and "int" in rest[0]:
             return {"call": "SetObjectiveDisplayed", "quest": owner["quest"], "objective": int(rest[0]["int"])}
+        if target and fl == "start" and target.get("form") and "quest" not in target and self.names.get(target["form"], {}).get("type") != "QUST":
+            return {"call": "StartScene", "scene": target["form"]}  # matched to a SCEN later; other forms never match
         return super().event(fl, fn, target, rest, owner)
 
     def static_event(self, cls, fn, rest, owner):
@@ -551,6 +683,38 @@ def item_text(ev, names):
     return text + (f" x{it['count']}" if isinstance(it.get("count"), int) and it["count"] != 1 else "")
 
 
+def read_events(quests, infos, names, scripts):
+    """Every call the quests' and dialogue lines' scripts make, read from the winning .pex files."""
+    quest_props = {q: {k: v for sc in (x.get("vmad") or {}).get("scripts", []) for k, v in sc["props"].items()} for q, x in quests.items()}
+    quest_script_list = {q: [(sc["name"], sc["props"]) for sc in (x.get("vmad") or {}).get("scripts", [])] for q, x in quests.items()}
+    an = StoryAnalyzer(scripts, names, {q: v["aliases"] for q, v in quests.items()}, quest_props, quest_script_list)
+    events = []
+    for qid, q in quests.items():
+        vm = q.get("vmad")
+        if not vm:
+            continue
+        frag = {}
+        for fr in vm.get("fragments", []):
+            frag.setdefault(fr["script"].lower(), {})[fr["function"].lower()] = fr["stage"]
+        for sc in vm["scripts"]:
+            fm = frag.get(sc["name"].lower())
+            for ev in an.run(sc["name"], sc["props"], {"quest": qid}, list(fm) if fm else None):
+                events.append(({"kind": "quest", "quest": qid, "script": sc["name"], "stage": fm.get(ev["function"].lower()) if fm else None,
+                                "fragment": bool(fm)}, ev))
+        for asc in vm.get("aliasScripts", []):
+            a = q["aliases"].get(asc["alias"], {})
+            for sc in asc["scripts"]:
+                for ev in an.run(sc["name"], sc["props"], {"alias": a.get("name"), "quest": qid}):
+                    events.append(({"kind": "alias", "quest": qid, "alias": a.get("name"), "script": sc["name"]}, ev))
+    for iid, info in infos.items():
+        vm = info["vmad"]
+        for fr in vm.get("fragments", []):
+            props = next((s["props"] for s in vm["scripts"] if s["name"].lower() == fr["script"].lower()), {})
+            for ev in an.run(fr["script"], props, {"info": iid, "quest": info["quest"]}, [fr["function"]]):
+                events.append(({"kind": "dialogue", "info": iid, "quest": info["quest"], "speaker": info["speaker"], "script": fr["script"]}, ev))
+    return events, scripts, an, quest_props, quest_script_list
+
+
 # ---- the check -----------------------------------------------------------------------------------
 
 def main():
@@ -576,7 +740,18 @@ def main():
     inventories, alias_items, script_targets, objective_targets = {}, {}, {}, {}
     quest_plugin, info_plugin = {}, {}
     plugins = []
-    for n in lo:
+    # SC_PHASE=A reads the plugins and stops, B reads the scripts and stops, C writes the report; each picks up the
+    # one before from a cache, so a run fits a short window (the PC bridge's three minutes). Unset runs all three.
+    phase = os.environ.get("SC_PHASE")
+    cache = os.path.join(base, "story_checks", f".{line_id}.cache.pkl")
+    pass1 = ("quests", "infos", "names", "nodes", "qv", "iv", "gv", "inventories", "alias_items", "script_targets", "objective_targets",
+             "quest_plugin", "info_plugin", "plugins")
+    if phase in ("B", "C"):
+        with open(cache, "rb") as f:
+            c = pickle.load(f)
+        (quests, infos, names, nodes, qv, iv, gv, inventories, alias_items, script_targets, objective_targets,
+         quest_plugin, info_plugin, plugins) = (c[k] for k in pass1)
+    for n in (lo if phase not in ("B", "C") else []):
         p = pp.get(n.lower())
         if not p:
             continue
@@ -612,34 +787,26 @@ def main():
         plugins.append((n, p, loc))
     print(f"read {len(quests)} quests, {len(infos)} scripted dialogue lines, {len(nodes)} story manager nodes", flush=True)
 
-    scripts = Scripts(ROOT, lo)
-    quest_props = {q: {k: v for sc in (x.get("vmad") or {}).get("scripts", []) for k, v in sc["props"].items()} for q, x in quests.items()}
-    quest_script_list = {q: [(sc["name"], sc["props"]) for sc in (x.get("vmad") or {}).get("scripts", [])] for q, x in quests.items()}
-    an = StoryAnalyzer(scripts, names, {q: v["aliases"] for q, v in quests.items()}, quest_props, quest_script_list)
-    events = []
-    for qid, q in quests.items():
-        vm = q.get("vmad")
-        if not vm:
-            continue
-        frag = {}
-        for fr in vm.get("fragments", []):
-            frag.setdefault(fr["script"].lower(), {})[fr["function"].lower()] = fr["stage"]
-        for sc in vm["scripts"]:
-            fm = frag.get(sc["name"].lower())
-            for ev in an.run(sc["name"], sc["props"], {"quest": qid}, list(fm) if fm else None):
-                events.append(({"kind": "quest", "quest": qid, "script": sc["name"], "stage": fm.get(ev["function"].lower()) if fm else None,
-                                "fragment": bool(fm)}, ev))
-        for asc in vm.get("aliasScripts", []):
-            a = q["aliases"].get(asc["alias"], {})
-            for sc in asc["scripts"]:
-                for ev in an.run(sc["name"], sc["props"], {"alias": a.get("name"), "quest": qid}):
-                    events.append(({"kind": "alias", "quest": qid, "alias": a.get("name"), "script": sc["name"]}, ev))
-    for iid, info in infos.items():
-        vm = info["vmad"]
-        for fr in vm.get("fragments", []):
-            props = next((s["props"] for s in vm["scripts"] if s["name"].lower() == fr["script"].lower()), {})
-            for ev in an.run(fr["script"], props, {"info": iid, "quest": info["quest"]}, [fr["function"]]):
-                events.append(({"kind": "dialogue", "info": iid, "quest": info["quest"], "speaker": info["speaker"], "script": fr["script"]}, ev))
+    if phase == "A":
+        os.makedirs(os.path.dirname(cache), exist_ok=True)
+        with open(cache, "wb") as f:
+            pickle.dump(dict(zip(pass1, (quests, infos, names, nodes, qv, iv, gv, inventories, alias_items, script_targets, objective_targets,
+                                         quest_plugin, info_plugin, plugins))), f)
+        print("phase A cached", flush=True)
+        return
+
+    pass2 = ("events", "scripts", "an", "quest_props", "quest_script_list")
+    if phase == "C":
+        with open(cache + ".b", "rb") as f:
+            c = pickle.load(f)
+        events, scripts, an, quest_props, quest_script_list = (c[k] for k in pass2)
+    else:
+        events, scripts, an, quest_props, quest_script_list = read_events(quests, infos, names, Scripts(ROOT, lo))
+    if phase == "B":
+        with open(cache + ".b", "wb") as f:
+            pickle.dump(dict(zip(pass2, (events, scripts, an, quest_props, quest_script_list))), f)
+        print("phase B cached", flush=True)
+        return
     print(f"{len(events)} script calls read", flush=True)
 
     # Settings loaders: MCM Helper mods, and which global each setting lands in.
@@ -735,10 +902,12 @@ def main():
     for ctx, ev in sorted_starts.get(first_q, {}).get("started", []):
         if ctx["kind"] == "dialogue":
             route_infos.add(ctx["info"])
+    seconds = {q["id"]: second_step(q["id"], q, thresholds[q["id"]], events) for q in story}
     for q in story:
-        for ctx, ev in sorted_starts[q["id"]]["started"]:
+        for ctx, ev in sorted_starts[q["id"]]["started"] + seconds[q["id"]][2]:
             if ctx["kind"] == "dialogue":
                 route_infos.add(ctx["info"])
+    route_infos |= {c["info"] for c, e in events if e["call"] == "StartScene" and c["kind"] == "dialogue" and c.get("quest") in story_ids}
     for iid in route_infos:
         if infos.get(iid, {}).get("speaker"):
             npcs.add(infos[iid]["speaker"])
@@ -748,16 +917,90 @@ def main():
             if a.get("ref"):
                 refs.add(a["ref"])
 
-    # Pass 2: dialogue, races, and references (doors, people, targets).
+    # Pass 2: the dialogue lines and the scenes and lines that name their speakers, then races and references
+    # (doors, people, targets).
+    dialogue, scenes, links, placed, package_topics, alias_packages = {}, {}, {}, {}, {}, {}
+
+    def alias_holder(qid, al):
+        """An alias of a quest and who it holds: (alias, npc, reference)."""
+        a = quests.get(qid, {}).get("aliases", {}).get(al)
+        if not a:
+            return None, None, None
+        return a, a.get("actor") or (placed.get(a.get("ref"), {}) or {}).get("base") or next(iter(a.get("isID", [])), None), a.get("ref")
+
+    def speaker_of(iid, d=None, ctx_quest=None, depth=0):
+        """
+        Who speaks a dialogue line: (npc, how named, the scene it's spoken in, reference). GetIsID on an NPC, else the
+        alias GetIsAliasRef names, else the actor alias of the scene that speaks its topic, else whoever speaks the line
+        that leads on to its topic (a player's reply is answered by the one who spoke before it).
+        """
+        d = dialogue.get(iid, {}) if d is None else d
+        conds = d.get("conditions", [])
+        spk = infos.get(iid, {}).get("speaker") or next((c["param"] for c in conds if c["fn"] == "GetIsID" and isinstance(c.get("param"), str)
+                                                         and c["cmp"] == "==" and c.get("value") == 1), None)
+        if spk:
+            return spk, "GetIsID", None, None
+        topic = d.get("topic") or {}
+        tq = topic.get("quest") or ctx_quest
+        al = next((c.get("param") or 0 for c in conds if c["fn"] == "GetIsAliasRef"), None)
+        if al is not None:
+            a, who, ref = alias_holder(tq, al)
+            if a:
+                return who, f"alias {a['name']} of {quest_label(tq, names)} ({a['fill']})", None, ref
+        for sc in scenes.get(topic.get("id"), []):
+            a, who, ref = alias_holder(sc["quest"], sc["alias"])
+            if a:
+                return who, f"scene {sc['scene']}, alias {a['name']} of {quest_label(sc['quest'], names)} ({a['fill']})", sc["id"], ref
+        for pk in package_topics.get(topic.get("id"), []):
+            for q, al in alias_packages.get(pk, []):
+                a, who, ref = alias_holder(q, al)
+                if a:
+                    return who, f"package {pk} (it says the topic), run by alias {a['name']} of {quest_label(q, names)} ({a['fill']})", None, ref
+        if depth == 0:
+            for ln in links.get(topic.get("id"), []):
+                who, how, scene, ref = speaker_of(ln["info"], dict(ln, topic={"id": ln["topic"], "quest": ln["quest"]}), depth=1)
+                if who or ref:
+                    return who, f"the line before it ({ln['info']}), {how}", scene, ref
+        return None, "GetIsID", None, None
+
+    for n, p, loc in plugins:
+        try:
+            dialogue.update(read_dialogue(open(p, "rb").read(), n, route_infos, all_strings(p, n, loc, ROOT)))
+        except Exception as e:  # noqa: BLE001
+            print("skip dialogue", n, e, file=sys.stderr)
+    # Shared lines: an INFO can take its response from another (DNAM).
+    shared = {d["shared"] for d in dialogue.values() if d.get("shared") and not d["lines"]}
+    link_topics = {d["topic"]["id"] for d in dialogue.values() if d.get("topic")}
+    for n, p, loc in plugins:
+        buf = open(p, "rb").read()
+        try:
+            if shared:
+                dialogue.update(read_dialogue(buf, n, shared, all_strings(p, n, loc, ROOT)))
+            scenes.update(read_scenes(buf, n))  # the last plugin to carry a scene wins
+            pt, ap = read_packages(buf, n)
+            package_topics.update(pt)
+            for pk, rows in ap.items():
+                alias_packages[pk] = rows  # the quest record that wins
+            for t, rows in read_links(buf, n, link_topics).items():
+                kept = {r["info"]: r for r in links.get(t, [])}
+                kept.update({r["info"]: r for r in rows})  # a later plugin's copy of a line wins
+                links[t] = list(kept.values())
+        except Exception as e:  # noqa: BLE001
+            print("skip scenes", n, e, file=sys.stderr)
+    for iid in list(dialogue):
+        who, _, _, ref = speaker_of(iid)
+        if who:
+            npcs.add(who)
+        if ref:
+            refs.add(ref)
     keys = {k for k, v in names.items() if v["type"] == "KEYM"}
-    dialogue, race_of, race_names = {}, {}, {}
-    dv, placed, cells, tied, wanted_cells = {}, {}, {}, {}, {}
+    race_of, race_names = {}, {}
+    dv, cells, tied, wanted_cells = {}, {}, {}, {}
     wanted = {t for ts in script_targets.values() for t in ts} | refs
     for n, p, loc in plugins:
         buf = open(p, "rb").read()
         tables = all_strings(p, n, loc, ROOT)
         try:
-            dialogue.update(read_dialogue(buf, n, route_infos, tables))
             ro, rn = read_races(buf, n, npcs, tables["STRINGS"] if tables else None)
             race_of.update(ro)
             race_names.update(rn)
@@ -772,12 +1015,6 @@ def main():
                 wanted_cells.update(wc)
         except Exception as e:  # noqa: BLE001
             print("skip pass 2", n, e, file=sys.stderr)
-    # Shared lines: an INFO can take its response from another (DNAM).
-    shared = {d["shared"] for d in dialogue.values() if d.get("shared") and not d["lines"]}
-    if shared:
-        for n, p, loc in plugins:
-            buf = open(p, "rb").read()
-            dialogue.update({k: v for k, v in read_dialogue(buf, n, shared, all_strings(p, n, loc, ROOT)).items()})
     grid = {(c["world"], c["grid"][0], c["grid"][1]): cid for cid, c in cells.items() if c.get("world") and "grid" in c and not c.get("persistent")}
     for versions_d in dv.values():
         for _, d in versions_d:
@@ -906,15 +1143,47 @@ def main():
                 out.append({"what": names.get(a["creates"], {}).get("name") or a["creates"], "stage": None, "source": f"alias {a['name']} (created in the player)", "verdict": "files"})
         return out
 
+    def gvals_of(conds):
+        """The values the globals in these conditions hold in play, wherever their records are (compared with one, or GetGlobalValue)."""
+        out = {}
+        for c in conds:
+            for g in (c.get("global"), c.get("param") if c["fn"] == "GetGlobalValue" else None):
+                if g and g not in out:
+                    out[g] = {"value": global_fact(g, gv, loaders, setters, names)["value"]}
+        return out
+
+    def dialogue_conditions(iid, ctx_quest=None):
+        """A dialogue line's conditions in words, globals resolved and aliases named."""
+        conds = iv[iid][-1][1]["conditions"] if iv.get(iid) else dialogue.get(iid, {}).get("conditions")
+        if conds is None:
+            return None
+        tq = ((dialogue.get(iid) or {}).get("topic") or {}).get("quest") or ctx_quest
+        alias_names = {i: a["name"] for i, a in quests.get(tq, {}).get("aliases", {}).items()}
+        return format_conditions(conds, names, gvals_of(conds), alias_names)
+
+    def node_rows(qid):
+        """The story manager nodes that start a quest, as starter rows."""
+        out = []
+        for ns in node_starts(qid, nodes):
+            gvals = gvals_of(ns["conditions"])
+            out.append({"by": "story manager", "event": ns["event"], "node": ns["node"], "parents": ns["parents"],
+                        "conditions": format_conditions(ns["conditions"], names, gvals), "globals": sorted(gvals),
+                        "source": f"{ns['node']} {ns['id']} ({ns['plugin']})", "verdict": "files"})
+        return out
+
     def starter_row(ctx, ev, depth=0):
-        """One starter in words, with its source; a helper quest is followed back one step."""
+        """One starter in words, with its source; a helper quest is followed back one step, and so is a line's scene."""
         stage = f" {ev['stage']}" if ev.get("stage") is not None else ""
         if ctx["kind"] == "dialogue":
-            spk = infos.get(ctx["info"], {}).get("speaker")
-            return {"by": "dialogue", "speaker": names.get(spk, {}).get("name") if spk else None, "speakerPlaced": npc_where(spk) if spk else [],
-                    "call": ev["call"] + stage, "info": ctx["info"],
-                    "conditions": format_conditions(iv[ctx["info"]][-1][1]["conditions"], names) if iv.get(ctx["info"]) else
-                    (format_conditions(dialogue[ctx["info"]]["conditions"], names) if ctx["info"] in dialogue else None),
+            spk, how, scene, _ = speaker_of(ctx["info"], ctx_quest=ctx.get("quest"))
+            d = dialogue.get(ctx["info"], {})
+            started = [starter_row(c, e, 1) for c, e in events if scene and depth == 0 and e["call"] == "StartScene" and e.get("scene") == scene][:4]
+            return {"by": "dialogue", "speaker": names.get(spk, {}).get("name") if spk else None, "speakerNamed": how,
+                    "speakerPlaced": npc_where(spk) if spk else [], "call": ev["call"] + stage, "info": ctx["info"],
+                    "prompt": d.get("prompt") or (d.get("topic") or {}).get("prompt") or None,
+                    "reply": d.get("lines") or dialogue.get(d.get("shared") or "", {}).get("lines") or [],
+                    "conditions": dialogue_conditions(ctx["info"], ctx.get("quest")),
+                    **({"scene": scene, "sceneStartedBy": started} if scene else {}),
                     "source": f"{ctx['script']}.{ev['function']} on INFO {ctx['info']} ({info_plugin.get(ctx['info'], '?')})", "verdict": "script"}
         caller = ctx.get("quest")
         via = f", through {quest_label(ev['via'], names)}'s {ev.get('viaFunction')}" if ev.get("via") else ""
@@ -929,6 +1198,10 @@ def main():
             # The story quests before the one it serves; the quest itself calling its helper back isn't a start.
             from_story = [x for x in up if order.get(x[0].get("quest"), here) < here]
             row["throughStartedBy"] = [starter_row(c, e, 1) for c, e in (from_story or up)][:4]
+            # A helper no script starts: its story manager node, or the start-game flag (DLC1VQ00ChangeLocation).
+            row["throughStartedBy"] += node_rows(caller)[:4]
+            if quests.get(caller, {}).get("flags", 0) & qst.START_GAME:
+                row["throughStartedBy"].append({"by": "start game", "source": f"{caller} DNAM ({quest_plugin.get(caller, '?')})", "verdict": "files"})
         return row
 
     report_quests = []
@@ -947,9 +1220,7 @@ def main():
         own_conds = winner["dialogue"] + winner["event"]
         gl = set()
         for c in own_conds + [c for s in starts for c in s.get("conditionsRaw", [])]:
-            g = c.get("global") or (c["param"] if c["fn"] == "GetGlobalValue" else None)
-            if g:
-                gl.add(g)
+            gl |= {g for g in (c.get("global"), c.get("param") if c["fn"] == "GetGlobalValue" else None) if g}
         facts = {g: global_fact(g, gv, loaders, setters, names) for g in sorted(gl)}
         all_globals.update(facts)
         gvals = {k: {"value": v["value"]} for k, v in facts.items()}
@@ -968,6 +1239,27 @@ def main():
                "target": ww, "needs": {"conditions": format_conditions(own_conds, names, gvals) if own_conds else None, "doors": door_needs(qid, ww),
                                        "ways": door_ways(ww)},
                "globals": list(facts.values()), "gives": gives(q)}
+        so, so_stage, so_moves = seconds[qid]
+        if so is not None:
+            so_text = next((o.get("text") for o in q.get("objectives", []) if o.get("index") == so), None)
+            moved = [starter_row(c, e) for c, e in so_moves]
+            row["secondStep"] = {"objective": {"text": so_text, "index": so, "source": f"{qid} QOBJ {so}", "verdict": "files"}, "stage": so_stage,
+                                 "movedBy": list({json.dumps(m, sort_keys=True): m for m in moved}.values())[:8]}
+            scened = []
+            for c, e in events:
+                if e["call"] != "StartScene" or c["kind"] != "dialogue" or c.get("quest") != qid:
+                    continue
+                conds = (dialogue.get(c["info"]) or {}).get("conditions") or (iv[c["info"]][-1][1]["conditions"] if iv.get(c["info"]) else [])
+                at_first = any(x.get("param") == qid and ((x["fn"] == "GetStage" and thresholds[qid] <= (x.get("value") or 0) <= (so_stage or thresholds[qid]))
+                                                         or (x["fn"] == "GetStageDone" and x.get("stage") == thresholds[qid])) for x in conds)
+                if at_first:
+                    scened.append(dict(starter_row(c, e), startsScene=e["scene"]))
+            if scened:
+                row["secondStep"]["scenesStarted"] = scened[:4]
+            if so_stage is None:
+                row["secondStep"]["unread"] = "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+            elif not moved:
+                row["secondStep"]["unread"] = f"nothing outside its own stage fragments sets stage {so_stage} or one before it"
         if not starts:
             own = [s["name"] for s in (quests.get(qid, {}).get("vmad") or {}).get("scripts", [])]
             miss = [s for s in own if s in an.missing]
@@ -1022,26 +1314,12 @@ def main():
         if ctx["kind"] == "dialogue":
             d = dialogue.get(ctx["info"], {})
             lines_ = d.get("lines") or dialogue.get(d.get("shared") or "", {}).get("lines") or []
-            spk = infos.get(ctx["info"], {}).get("speaker")
+            spk, how_named, _, _ = speaker_of(ctx["info"], ctx_quest=ctx.get("quest"))
             speaker = names.get(spk, {}).get("name") if spk else None
-            how_named = "GetIsID"
-            if not spk:
-                # Spoken by whoever fills an alias of the topic's quest (GetIsAliasRef).
-                tq = (d.get("topic") or {}).get("quest") or ctx.get("quest")
-                al = next((c["param"] for c in d.get("conditions", []) if c["fn"] == "GetIsAliasRef"), None)
-                a = quests.get(tq, {}).get("aliases", {}).get(al) if al is not None else None
-                if a:
-                    who = a.get("actor") or (placed.get(a.get("ref"), {}) or {}).get("base")
-                    speaker = names.get(who, {}).get("name") if who else None
-                    how_named = f"alias {a['name']} of {quest_label(tq, names)} ({a['fill']})"
-                    spk = who
             race = race_names.get(race_of.get(spk)) if spk else None
             where = npc_where(spk) if spk else []
             prompt = d.get("prompt") or (d.get("topic") or {}).get("prompt")
-            tq = (d.get("topic") or {}).get("quest") or ctx.get("quest")
-            alias_names = {i: a["name"] for i, a in quests.get(tq, {}).get("aliases", {}).items()}
-            conds = format_conditions(d.get("conditions", []), names, {g: {"value": global_fact(g, gv, loaders, setters, names)["value"]}
-                                                                         for g in {c.get("global") for c in d.get("conditions", []) if c.get("global")}}, alias_names)
+            conds = dialogue_conditions(ctx["info"], ctx.get("quest")) or ""
             route = {"route": f"dialogue INFO {ctx['info']}", "kind": "dialogue", "speaker": speaker, "speakerNamed": how_named, "race": race, "placed": where,
                      "prompt": prompt, "reply": lines_, "conditions": conds, "does": f"{ev['call']}{(' ' + str(ev['stage'])) if ev.get('stage') is not None else ''} on {quest_label(first_q, names)}",
                      "source": f"{ctx['script']}.{ev['function']} on INFO {ctx['info']} ({d.get('plugin') or info_plugin.get(ctx['info'], '?')}); topic {(d.get('topic') or {}).get('edid')}"}
@@ -1076,9 +1354,12 @@ def main():
         else:
             up = classify_starts(caller, order, events, 10)["started"]
             route = {"route": quest_label(caller, names), "kind": "quest script", "does": f"stage {ctx.get('stage')}: {ev['call']}{(' ' + str(ev['stage'])) if ev.get('stage') is not None else ''}",
-                     "startedBy": [starter_row(c, e)["source"] for c, e in up if c.get("quest") != caller][:4],
+                     "startedBy": ([starter_row(c, e)["source"] for c, e in up if c.get("quest") != caller][:4]
+                                   + [f"story manager node {r['node']} ({r['event'] or 'no event'}; {r['conditions'] or 'no conditions'}; {r['source']})" for r in node_rows(caller)[:4]]),
                      "inStartMenu": caller.split(":")[1].lstrip("0") in ap_configs if caller else False, "source": f"{ctx['script']} on {caller} ({quest_plugin.get(caller, '?')})"}
-            if not route["startedBy"] and not node_starts(caller, nodes) and not (quests.get(caller, {}).get("flags", 0) & qst.START_GAME):
+            if quests.get(caller, {}).get("flags", 0) & qst.START_GAME:
+                route["startedBy"].append(f"the start-game flag ({caller} DNAM, {quest_plugin.get(caller, '?')})")
+            if not route["startedBy"]:
                 route["stops"] = (f"nothing in the records or scripts starts {quest_label(caller, names)}"
                                   + ("" if route["inStartMenu"] else ", and Alternate Perspective's start menu in LoreRim doesn't offer it"))
                 route["sentence"] = f"The trail stops at {quest_label(caller, names)}: {route['stops']}."
@@ -1099,7 +1380,7 @@ def main():
     for r in routes:
         if r["kind"] == "dialogue" and not r.get("stops") and r.get("speaker"):
             talk.append(f"ask {r['speaker']}" + (f" in {r['placed'][0]}" if r.get("placed") else "") + f" \"{r['prompt']}\" ({r['conditions']}), which starts {quest_label(first_q, names).split(' (')[-1].rstrip(')')}")
-    other_start_sentence = ("To get into the main quest: " + "; or ".join(open_now + talk) + ".") if (open_now or talk) else "The reader found no way into the main quest from it."
+    other_start_sentence = (f"To get into {line['name']}: " + "; or ".join(open_now + talk) + ".") if (open_now or talk) else f"The reader found no way into {line['name']} from it."
 
     # The payoff: what the stages that complete the last quests give.
     payoff = []
@@ -1191,14 +1472,28 @@ def main():
 def starter_line(s):
     if s["by"] == "dialogue":
         where = f", placed in {'; '.join(s['speakerPlaced'][:2])}" if s.get("speakerPlaced") else ""
+        named = f" (named by {s['speakerNamed']})" if s.get("speakerNamed", "GetIsID") != "GetIsID" else ""
+        prompt = f", \"{s['prompt']}\"" if s.get("prompt") else ""
         when = f" (when: {s['conditions']})" if s.get("conditions") else ""
-        return f"Dialogue with {s.get('speaker') or 'someone the line does not name'}{where}: {s['call']}{when}"
+        scene = ""
+        if s.get("sceneStartedBy"):
+            scene = "; its scene is started by " + "; ".join(
+                (f"dialogue with {u.get('speaker') or 'someone'}" + (f", \"{u['prompt']}\"" if u.get("prompt") else "") + (f" (when: {u['conditions']})" if u.get("conditions") else ""))
+                if u["by"] == "dialogue" else f"{u.get('quest')}" + (f" at stage {u['atStage']}" if u.get("atStage") is not None else "") for u in s["sceneStartedBy"])
+        return f"Dialogue with {s.get('speaker') or 'someone the line does not name'}{named}{where}{prompt}: {s['call']}{when}{scene}"
     if s["by"] == "quest script":
         text = f"{s['quest']}{(' at stage ' + str(s['atStage'])) if s.get('atStage') is not None else ''} calls {s['call']}"
-        if s.get("throughStartedBy"):
-            text += "; " + s["quest"].split(" ")[0] + " is started by " + "; ".join(
-                (f"{u['quest']}" + (f" at stage {u['atStage']}" if u.get("atStage") is not None else "") + f" ({u['call']})") if u["by"] == "quest script"
-                else f"dialogue with {u.get('speaker') or 'someone'} ({u['call']})" for u in s["throughStartedBy"])
+        if "throughStartedBy" in s:
+            def up(u):
+                if u["by"] == "quest script":
+                    return f"{u['quest']}" + (f" at stage {u['atStage']}" if u.get("atStage") is not None else "") + f" ({u['call']})"
+                if u["by"] == "dialogue":
+                    return f"dialogue with {u.get('speaker') or 'someone'} ({u['call']})"
+                if u["by"] == "story manager":
+                    return f"story manager node {u['node']} (event: {u['event'] or 'none'}; {u['conditions'] or 'no conditions'})"
+                return "the start-game flag"
+            text += "; " + s["quest"].split(",")[0].split(" ")[0] + " is started by " + ("; ".join(up(u) for u in s["throughStartedBy"])
+                                                                                         or "nothing in the records or scripts (**unread**)")
         return text
     if s["by"] == "story manager":
         return f"Story manager node {s['node']}, event: {s['event'] or 'none'}; conditions up its parents: {s.get('conditions') or 'none'}"
@@ -1243,6 +1538,19 @@ def markdown(out):
                 md.append(f"- {c['by']}" + (f" at stage {c['atStage']}" if c.get("atStage") is not None else "") + f" calls {c['call']}. Source: {c['source']}.")
             if len(q["caughtUpBy"]) > 6:
                 md.append(f"- and {len(q['caughtUpBy']) - 6} more in the JSON")
+        ss = q.get("secondStep")
+        if ss:
+            md += ["", "**Second step** (what moves it to its second objective, often the real test)", ""]
+            if ss["objective"].get("text"):
+                md.append(f"- Second objective: \"{ss['objective']['text']}\"" + (f", shown at stage {ss['stage']}" if ss.get("stage") is not None else "")
+                          + f". Source: {ss['objective']['source']}. **files**")
+            for x in ss["movedBy"]:
+                reply = f" Reply: \"{x['reply'][0]}\"" if x.get("reply") else ""
+                md.append(f"- {starter_line(x)}.{reply} Source: {x['source']}. **{x['verdict']}**")
+            for x in ss.get("scenesStarted", []):
+                md.append(f"- On the way, a line of its own starts a scene while it is at its first objective: {starter_line(x)} (scene {x['startsScene']}). Source: {x['source']}. **script**")
+            if ss.get("unread"):
+                md.append(f"- **unread**: {ss['unread']}.")
         md += ["", "**Who and where**", ""]
         if q.get("firstObjective") and q["firstObjective"].get("text"):
             md.append(f"- First objective: \"{q['firstObjective']['text']}\". Source: {q['firstObjective']['source']}. **files**")

@@ -1,0 +1,5522 @@
+{
+ "line": "gray-cowl",
+ "name": "The Gray Cowl of Nocturnal",
+ "quests": [
+  {
+   "id": "Gray Fox Cowl.esm:0026F4",
+   "edid": "manny_GF_Books",
+   "name": "Memories of the Umbranox",
+   "plugin": "Gray Fox Cowl.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "Gray Fox Cowl.esm:0026F4 DNAM (Gray Fox Cowl.esm)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Find all the journals (<Global=manny_GF_Global_BooksCount>/<Global=manny_GF_Global_BooksTotal>)",
+    "index": 10,
+    "source": "Gray Fox Cowl.esm:0026F4 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Deliver the journals to Seviana",
+     "index": 20,
+     "source": "Gray Fox Cowl.esm:0026F4 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
+  },
+  {
+   "id": "Gray Fox Cowl.esm:01E072",
+   "edid": "manny_GF_BuryValenDreth",
+   "name": "Bury Valen Dreth",
+   "plugin": "Gray Fox Cowl.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Bury the rests of Valen Dreth at Falkreath",
+    "index": 10,
+    "source": "Gray Fox Cowl.esm:01E072 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "myDestination",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Falkreath"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:009C60"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Falkreath",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "Left Eye of Coldharbour",
+     "stage": 30,
+     "source": "manny_GF_ValenQuestScript.fragment_4",
+     "verdict": "script"
+    }
+   ],
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Gray Fox Cowl.esm:01F56B",
+   "edid": "manny_GF_ColdharbourQuest",
+   "name": "Reward of Coldharbour",
+   "plugin": "Gray Fox Cowl.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [
+    {
+     "by": "manny_GF_MQ (The Call of Gray Cowl of Nocturnal)",
+     "atStage": 150,
+     "call": "SetStage 10",
+     "source": "manny_GF_MainQuestScript.fragment_17 (Gray Fox Cowl.esm)"
+    }
+   ],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Escape from Coldharbour",
+    "index": 5,
+    "source": "Gray Fox Cowl.esm:01F56B QOBJ 5",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "(Optional) Do not kill the Guardians of Coldharbour",
+     "index": 10,
+     "source": "Gray Fox Cowl.esm:01F56B QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   },
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Gray Fox Cowl.esm:01CFA7",
+   "edid": "manny_GF_Farewell",
+   "name": "Time for the Farewells",
+   "plugin": "Gray Fox Cowl.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Seviana Umbranox",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Seviana's House"
+     ],
+     "call": "SetStage 10",
+     "info": "Gray Fox Cowl.esm:01CFB2",
+     "prompt": "It's an honor.",
+     "reply": [
+      "Thank you. We're leaving this house, it's yours now, here is the key. Luvien, we shall get ready to go home."
+     ],
+     "conditions": "Time for the Farewells stage < 10; GetQuestRunning Time for the Farewells == 1; the speaker is Seviana Umbranox",
+     "source": "manny_GF_FarewellLeaveHomeScript.Fragment_1 on INFO Gray Fox Cowl.esm:01CFB2 (Gray Fox Cowl.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "manny_GF_MQ (The Call of Gray Cowl of Nocturnal)",
+     "atStage": 999,
+     "call": "Start",
+     "source": "manny_GF_MainQuestScript.fragment_28 (Gray Fox Cowl.esm)"
+    }
+   ],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Escort Seviana and Luvien to the docks of Solitude",
+    "index": 10,
+    "source": "Gray Fox Cowl.esm:01CFA7 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Arrival",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Solitude"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0092BC"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Gray Fox Cowl.esm:03039F",
+   "edid": "manny_GF_IrlavExperiment",
+   "name": "The Experiment",
+   "plugin": "Gray Fox Cowl.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Ilrav Baenius",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Three Peaks Staff and Magic"
+     ],
+     "call": "SetStage 10",
+     "info": "Gray Fox Cowl.esm:0303BF",
+     "prompt": "Is there something else I can do for you?",
+     "reply": [
+      "Well, actually, yes! Yes indeed. I'm working on a magic experiment but it would require me to leave the store unattended and can't really do that.",
+      "Could you perform it for me? You have to head to Skyrim in order to place these 4 magical artifacts on the ground and observe the effects.",
+      "I am going to mark the locations on your map; those being Markarth, Windhelm, Falkreath and Dawnstar.",
+      "As soon as you're done, get back to me for further instructions."
+     ],
+     "conditions": "manny_GF_MiscQUestIrlavFavour stage >= 10; the speaker is Ilrav Baenius",
+     "source": "manny_GF_IrlavExperimentStart.Fragment_0 on INFO Gray Fox Cowl.esm:0303BF (Gray Fox Cowl.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Gray Fox Cowl.esm:03039F DNAM (Gray Fox Cowl.esm)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 5,
+   "firstObjective": {
+    "text": "Place the artifact near Markarth",
+    "index": 1,
+    "source": "Gray Fox Cowl.esm:03039F QOBJ 1",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Holder1",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Holder",
+       "kind": "forced reference",
+       "where": [
+        "Skyrim"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:007157"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "Irlav's Penitence",
+     "stage": 300,
+     "source": "QF_manny_GF_IrlavExperiment_0203039F.fragment_6",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Place the artifact near Falkreath",
+     "index": 2,
+     "source": "Gray Fox Cowl.esm:03039F QOBJ 2",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
+   }
+  },
+  {
+   "id": "Gray Fox Cowl.esm:050159",
+   "edid": "manny_GF_MiscQuestShantaFilibb",
+   "name": "Claim Shanta Filibb",
+   "plugin": "Synthesis - Gameplay Overwrite.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "Gray Fox Cowl.esm:050159 DNAM (Synthesis - Gameplay Overwrite.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Kill all the unknown attackers",
+    "index": 10,
+    "source": "Gray Fox Cowl.esm:050159 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "ShantaFilibb",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Shanta Filibb"
+       ]
+      }
+     ],
+     "cells": [
+      "Gray Fox Cowl.esm:200337"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Check for a reward",
+     "index": 15,
+     "source": "Gray Fox Cowl.esm:050159 QOBJ 15",
+     "verdict": "files"
+    },
+    "stage": 50,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "manny_GF_MiscQuestShantaFilibb (Claim Shanta Filibb)",
+      "questId": "Gray Fox Cowl.esm:050159",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "manny_GF_QuestNoteShantaFilibbScript.onRead on Gray Fox Cowl.esm:050159 (Synthesis - Gameplay Overwrite.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Gray Fox Cowl.esm:001E61",
+   "edid": "manny_GF_MQ",
+   "name": "The Call of Gray Cowl of Nocturnal",
+   "plugin": "Gray Fox Cowl.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "manny_GF_PrepareMQ, a helper quest",
+     "questId": "Gray Fox Cowl.esm:001F3B",
+     "atStage": 10,
+     "call": "SetStage 10",
+     "source": "manny_GF_PrepareMQScript.fragment_3 on Gray Fox Cowl.esm:001F3B (Gray Fox Cowl.esm)",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "story manager",
+       "event": "change location",
+       "node": "manny_GF_Steal",
+       "parents": [
+        "Skyrim.esm:01320E",
+        "Root"
+       ],
+       "conditions": "Under New Management stage == 200",
+       "globals": [],
+       "source": "manny_GF_Steal Gray Fox Cowl.esm:0236BC (Gray Fox Cowl - Under New Management Start.esp)",
+       "verdict": "files"
+      }
+     ]
+    },
+    {
+     "by": "start game",
+     "source": "Gray Fox Cowl.esm:001E61 DNAM (Gray Fox Cowl.esm)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 14,
+   "firstObjective": {
+    "text": "Reach the place",
+    "index": 10,
+    "source": "Gray Fox Cowl.esm:001E61 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Seviana",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Seviana Umbranox",
+       "kind": "unique actor",
+       "where": [
+        "Seviana's House"
+       ]
+      }
+     ],
+     "cells": [
+      "Gray Fox Cowl.esm:001AA2"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [
+     {
+      "door": "Gray Fox Cowl.esm:001A88",
+      "plugin": "Gray Fox Cowl.esm",
+      "text": "The door from Skyrim into Seviana's House needs the Key to Seviana's House."
+     }
+    ],
+    "ways": [
+     {
+      "cell": "Seviana's House",
+      "ways": 1,
+      "locked": 1
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Find the Hall of the Initiation",
+     "index": 20,
+     "source": "Gray Fox Cowl.esm:001E61 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 25,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Seviana Umbranox",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Seviana's House"
+      ],
+      "call": "SetStage 22",
+      "info": "Gray Fox Cowl.esm:00328D",
+      "prompt": "Keepers?",
+      "reply": [
+       "Please, Make yourself comfortable. I will tell you the whole story."
+      ],
+      "conditions": "The Call of Gray Cowl of Nocturnal stage == 21; the speaker is Seviana Umbranox",
+      "source": "manny_GF_SevianaSitScript.Fragment_1 on INFO Gray Fox Cowl.esm:00328D (Gray Fox Cowl.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Seviana Umbranox",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Seviana's House"
+      ],
+      "call": "SetStage 25",
+      "info": "Gray Fox Cowl.esm:0032E7",
+      "prompt": "What do I have to do?",
+      "reply": [
+       "My mission is to give you the Arrow and to show you where to start your quest. You will need this key as well. Take it, it will open the gate of the place where you're headed.",
+       "The Champion said that you will understand everything during your mission. And now go, The Gray Cowl is waiting for you, hidden!",
+       "One last thing. Nobody is to go with you. This is something that you have to do alone! Whoever should go with you on this journey will not know to step over the threshold of the place I showed you.",
+       "Good luck and may Nocturnal guide you!"
+      ],
+      "conditions": "The Call of Gray Cowl of Nocturnal stage == 22; the speaker is Seviana Umbranox; fn644 == 1",
+      "source": "manny_GF_SevianaExplainQuestScript.Fragment_1 on INFO Gray Fox Cowl.esm:0032E7 (Gray Fox Cowl.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Seviana Umbranox",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Seviana's House"
+      ],
+      "call": "SetStage 21",
+      "info": "Gray Fox Cowl.esm:034C04",
+      "prompt": "What?",
+      "reply": [
+       "You're here! Finally you're here! My family has been waiting for generations, Dragonborn."
+      ],
+      "conditions": "the speaker is Seviana Umbranox; The Call of Gray Cowl of Nocturnal stage == 20",
+      "source": "manny_GF_SevianaAfterFGScript.Fragment_0 on INFO Gray Fox Cowl.esm:034C04 (Gray Fox Cowl.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Gray Fox Cowl.esm:026AE8",
+   "edid": "manny_GF_Sadraaka",
+   "name": "The Curse of Sadraaka",
+   "plugin": "Gray Fox Cowl.esm",
+   "firstObjectiveStage": 5,
+   "startedBy": [],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Find information about the Forgotten City",
+    "index": 10,
+    "source": "Gray Fox Cowl.esm:026AE8 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "myTriggerBook",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "We were Yokudans",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Kill Sadraaka and free the Forgotten City from the curse",
+     "index": 20,
+     "source": "Gray Fox Cowl.esm:026AE8 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "manny_GF_Sadraaka (The Curse of Sadraaka)",
+      "questId": "Gray Fox Cowl.esm:026AE8",
+      "atStage": null,
+      "call": "SetStage 10",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on Gray Fox Cowl.esm:026AE8 (Gray Fox Cowl.esm)",
+      "verdict": "script"
+     }
+    ]
+   },
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:0017A1",
+   "edid": "ASHGAndynQuest",
+   "name": "Helping the Enemy",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Honai",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Ash'abah Hideout"
+     ],
+     "call": "SetStage 10",
+     "info": "BetalillesHammerfellQuestBundle.esp:0017D1",
+     "prompt": "Anything new about Andyn Pamarc?",
+     "reply": [
+      "No. But a necromancer has been spotted in the desert, accompanied by a wizard.",
+      "I think we have to check on them, see if they are up to no good. Let's go."
+     ],
+     "conditions": "Helping the Enemy stage < 10; Is There a Necromancer in Town? completed; The Library Lost to the Ages completed; The Ash'abah completed; the speaker is Honai",
+     "source": "ASHG_TIF__06000DB2.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:0017D1 (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:0017A1 DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Talk to Andyn Pamarc",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:0017A1 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Andyn01",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Andyn Pamarc",
+       "kind": "forced reference",
+       "where": [
+        "Alik'r Desert"
+       ]
+      }
+     ],
+     "cells": [
+      "Gray Fox Cowl.esm:2005DB"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "1500 gold",
+     "stage": 200,
+     "source": "ASHG_QF_ASHGAndynQuest_06000CF9.fragment_5",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Defeat Andyn Pamarc",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:0017A1 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Andyn Pamarc",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Alik'r Desert"
+      ],
+      "call": "SetStage 20",
+      "info": "BetalillesHammerfellQuestBundle.esp:0017DC",
+      "prompt": "You're Andyn Pamarc.",
+      "reply": [
+       "You know my name? Interesting... Remember it...",
+       "Remember it as the name of the one who killed you!"
+      ],
+      "conditions": "the speaker is Andyn Pamarc",
+      "source": "ASHG_TIF__06000DBD.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:0017DC (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:0017A0",
+   "edid": "ASHGAshabahQuest",
+   "name": "The Ash'abah",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Honai",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Ash'abah Hideout"
+     ],
+     "call": "SetStage 10",
+     "info": "BetalillesHammerfellQuestBundle.esp:001549",
+     "prompt": "Do you need help?",
+     "reply": [
+      "Help is always appreciated, but be careful."
+     ],
+     "conditions": "the speaker is Honai",
+     "source": "ASHG_TIF__06000A9F.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:001549 (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:0017A0 DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Clear the ancient ruins in the Alik'r Desert",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:0017A0 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Mummy1",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "The Silent Sword",
+       "kind": "unique actor",
+       "where": [
+        "Ancient Ruins"
+       ]
+      }
+     ],
+     "cells": [
+      "BetalillesHammerfellQuestBundle.esp:001318"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Ancient Ruins",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "1000 gold",
+     "stage": 200,
+     "source": "ASHG_QF_ASHGAshabahQuest_06000CF8.fragment_2",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Honai of the Ash'abah",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:0017A0 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "ASHGAshabahQuest (The Ash'abah)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:0017A0",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultaliasondeathscript.onDeath on BetalillesHammerfellQuestBundle.esp:0017A0 (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:00179F",
+   "edid": "ASHGMageQuest",
+   "name": "The Library Lost to the Ages",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Dorian Masterhart",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Dorian's House, Ben Erai"
+     ],
+     "call": "SetStage 10",
+     "info": "BetalillesHammerfellQuestBundle.esp:000D20",
+     "prompt": "Do you need any help to locate this library?",
+     "reply": [
+      "Eh... At this point, I'll take anything.",
+      "I was told there is a tower in the desert that is linked to a bigger library through a teleporting stone.",
+      "And that's all I have. So good luck!"
+     ],
+     "conditions": "the speaker is Dorian Masterhart",
+     "source": "ASHG_TIF__06000D20.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:000D20 (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:00179F DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Find the ancient library in the Alik'r Desert",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:00179F QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "1500 gold",
+     "stage": 200,
+     "source": "ASHG_QF_ASHGMageQuest_06000CF7.fragment_5",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Go back to Dorian in Ben Erai",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:00179F QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:001545",
+   "edid": "ASHGNecroQuest",
+   "name": "Is There a Necromancer in Town?",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Thaik",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Thaik's House, Salas Kazas"
+     ],
+     "call": "SetStage 10",
+     "info": "BetalillesHammerfellQuestBundle.esp:0017B4",
+     "prompt": "I will deal with it.",
+     "reply": [
+      "You will? Thank you. But be safe out there."
+     ],
+     "conditions": "the speaker is Thaik",
+     "source": "ASHG_TIF__06000D75.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:0017B4 (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:001545 DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Find the necromancer camp in the desert and deal with the necromancers",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:001545 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Necro01",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Agryval Stemuseph",
+       "kind": "forced reference",
+       "where": [
+        "Alik'r Desert"
+       ]
+      }
+     ],
+     "cells": [
+      "Gray Fox Cowl.esm:2002EB"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "1000 gold",
+     "stage": 200,
+     "source": "ASHG_QF_ASHGNecroQuest_06000A9B.fragment_2",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Go back to Thaik in Salas Kazas",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:001545 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "ASHGNecroQuest (Is There a Necromancer in Town?)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:001545",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultaliasondeathscript.onDeath on BetalillesHammerfellQuestBundle.esp:001545 (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:001781",
+   "edid": "ASHGPoetryQuest",
+   "name": "Weltan the Poet",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Sharza",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Sharza's House, Salas Kazas"
+     ],
+     "call": "SetStage 10",
+     "info": "BetalillesHammerfellQuestBundle.esp:00178B",
+     "prompt": "Alright... I guess I can do that.",
+     "reply": [
+      "Great! I can't wait!"
+     ],
+     "conditions": "the speaker is Sharza",
+     "source": "ASHG_TIF__06000CE3.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:00178B (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:001781 DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Find the two books written by Weltan in the Alik'r Desert and bring them back to Sharza in Kazas Salas",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:001781 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "1000 gold",
+     "stage": 200,
+     "source": "ASHG_QF_ASHGPoetryQuest_06000CD9.fragment_2",
+     "verdict": "script"
+    }
+   ]
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:00179E",
+   "edid": "ASHGSolstheimQuest",
+   "name": "From Solstheim to Hammerfell",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Lloros Reynel",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Reynel's House, Ben Erai"
+     ],
+     "call": "SetStage 10",
+     "info": "BetalillesHammerfellQuestBundle.esp:000D32",
+     "prompt": "Alright, let's go.",
+     "reply": [
+      "Hehe... I knew you would accept."
+     ],
+     "conditions": "the speaker is Lloros Reynel",
+     "source": "ASHG_TIF__06000D32.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:000D32 (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:00179E DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Get Lloros Reynel to Hammerfell",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:00179E QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "3000 gold",
+     "stage": 200,
+     "source": "ASHG_QF_ASHGSolstheimQuest_06000CF6.fragment_2",
+     "verdict": "script"
+    }
+   ]
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:00117E",
+   "edid": "CYCOHQuest01",
+   "name": "Black Marsh Maps",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Jukka",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Cyrodilic Collections, Alik'r Desert"
+     ],
+     "call": "SetStage 10",
+     "info": "BetalillesHammerfellQuestBundle.esp:00118F",
+     "prompt": "Yes. I am ready.",
+     "reply": [
+      "Great. We will start with something simple.",
+      "There are maps that were taken from our ancestors. They are now located in some dungeons here.",
+      "Pick them up on your way and bring them back here."
+     ],
+     "conditions": "the speaker is Jukka",
+     "source": "CYCO_TIF__070008A5.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:00118F (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:00117E DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Find the first map in Khenzedum",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:00117E QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Shadowfen",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Map of Shadowfen",
+       "kind": "forced reference",
+       "where": [
+        "Khenzedum"
+       ]
+      }
+     ],
+     "cells": [
+      "Gray Fox Cowl.esm:00CF6E"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Khenzedum",
+      "ways": 6,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "750 gold",
+     "stage": 200,
+     "source": "CYCO_QF_CYCOHQuest01_07000893.fragment_6",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Find the second map in the Alik'r Desert",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:00117E QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:00117F",
+   "edid": "CYCOHQuest02",
+   "name": "Cyrodilic Collections are Recruiting",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "CYCOHQuest01 (Black Marsh Maps)",
+     "questId": "BetalillesHammerfellQuestBundle.esp:00117E",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "CYCO_QF_CYCOHQuest01_07000893.fragment_6 on BetalillesHammerfellQuestBundle.esp:00117E (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:00117F DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Place the first sign in Ben Erai",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:00117F QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Activator01",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Sign",
+       "kind": "forced reference",
+       "where": [
+        "Ben Erai"
+       ]
+      }
+     ],
+     "cells": [
+      "Gray Fox Cowl.esm:200297"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Ben Erai",
+      "ways": 7,
+      "locked": 6
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "500 gold",
+     "stage": 200,
+     "source": "CYCO_QF_CYCOHQuest02_07000894.fragment_1",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Place the second sign in Ben Erai",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:00117F QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:001180",
+   "edid": "CYCOHQuest03",
+   "name": "Ancient Pottery",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "CYCOHQuest02 (Cyrodilic Collections are Recruiting)",
+     "questId": "BetalillesHammerfellQuestBundle.esp:00117F",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "CYCO_QF_CYCOHQuest02_07000894.fragment_1 on BetalillesHammerfellQuestBundle.esp:00117F (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:001180 DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Find the artifact Jukka was talking about in Sadraaka",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:001180 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Container01",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Chest",
+       "kind": "forced reference",
+       "where": [
+        "Tomb of the Forgotten Draugr"
+       ]
+      }
+     ],
+     "cells": [
+      "Gray Fox Cowl.esm:038A60"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Tomb of the Forgotten Draugr",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "950 gold",
+     "stage": 200,
+     "source": "CYCO_QF_CYCOHQuest03_07000895.fragment_5",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Go back to Jukka in the Cyrodilic Collections",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:001180 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "CYCOHQuest03 (Ancient Pottery)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:001180",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on BetalillesHammerfellQuestBundle.esp:001180 (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:001181",
+   "edid": "CYCOHQuest04",
+   "name": "A Special Smell",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "CYCOHQuest03 (Ancient Pottery)",
+     "questId": "BetalillesHammerfellQuestBundle.esp:001180",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "CYCO_QF_CYCOHQuest03_07000895.fragment_5 on BetalillesHammerfellQuestBundle.esp:001180 (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:001181 DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Find an artifact for the Cyrodilic Collections in Al Shedim",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:001181 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Container02",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Chest",
+       "kind": "forced reference",
+       "where": [
+        "Al Shedim"
+       ]
+      }
+     ],
+     "cells": [
+      "Gray Fox Cowl.esm:0445FA"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Al Shedim",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "1000 gold",
+     "stage": 200,
+     "source": "CYCO_QF_CYCOHQuest04_07000896.fragment_4",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Go back to Jukka in the Cyrodilic Collections",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:001181 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "CYCOHQuest04 (A Special Smell)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:001181",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on BetalillesHammerfellQuestBundle.esp:001181 (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000ECA",
+   "edid": "DDBIntroQuest",
+   "name": "The Dark Brotherhood in Hammerfell",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Unknown Initiate",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Skyrim"
+     ],
+     "call": "SetStage 10",
+     "info": "BetalillesHammerfellQuestBundle.esp:000E71",
+     "prompt": "Who are you?",
+     "reply": [
+      "Listener! Hammerfell needs you!",
+      "There is a temple in the Alik'r Desert, someone is waiting for you."
+     ],
+     "conditions": "Hail Sithis! completed; The Dark Brotherhood in Hammerfell stage < 10; the speaker is Unknown Initiate",
+     "source": "DDB_TIF__03000E71.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:000E71 (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000ECA DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Head to the Alik'r Desert Sanctuary",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000ECA QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "TheDoor",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Black Door",
+       "kind": "forced reference",
+       "where": [
+        "Alik'r Desert"
+       ]
+      }
+     ],
+     "cells": [
+      "Gray Fox Cowl.esm:200321"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Alik'r Desert",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Tenerio",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000ECA QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:001076",
+   "edid": "DDBPenitusOculatusQuest",
+   "name": "Ending the Dark Brotherhood in Hammerfell again",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Leollus",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Penitus Oculatus Outpost, Ben Erai"
+     ],
+     "call": "SetStage 10",
+     "info": "BetalillesHammerfellQuestBundle.esp:001085",
+     "prompt": "I will not miss an opportunity to destroy the Dark Brotherhood.",
+     "reply": [
+      "Thank you and good luck, you will need it."
+     ],
+     "conditions": "the speaker is Leollus",
+     "source": "DDB_TIF__040009CB.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:001085 (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:001076 DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Defeat the Dark Brotherhood leader in Hammerfell",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:001076 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Tenerio01",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Tenerio",
+       "kind": "unique actor",
+       "where": [
+        "Alik'r Desert Sanctuary, Alik'r Desert"
+       ]
+      }
+     ],
+     "cells": [
+      "BetalillesHammerfellQuestBundle.esp:0010BA"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Alik'r Desert Sanctuary, Alik'r Desert",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "1500 gold",
+     "stage": 200,
+     "source": "DDB_QF_DDBPenitusOculatusQues_040009BC.fragment_3",
+     "verdict": "script"
+    },
+    {
+     "what": "Crimson Eviscerator",
+     "stage": 200,
+     "source": "DDB_QF_DDBPenitusOculatusQues_040009BC.fragment_3",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Go back to the Penitus Oculatus Outpost in Hammerfell",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:001076 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DDBPenitusOculatusQuest (Ending the Dark Brotherhood in Hammerfell again)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:001076",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultaliasondeathscript.onDeath on BetalillesHammerfellQuestBundle.esp:001076 (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000ECD",
+   "edid": "DDBQuest01",
+   "name": "Merchant Problem",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DDBIntroQuest (The Dark Brotherhood in Hammerfell)",
+     "questId": "BetalillesHammerfellQuestBundle.esp:000ECA",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DDB_QF_DDBIntroQuest_0300082D.fragment_3 on BetalillesHammerfellQuestBundle.esp:000ECA (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000ECD DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill the merchant at the Ben Erai Outpost",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000ECD QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target01000",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Elona",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "500 gold",
+     "stage": 200,
+     "source": "DDB_QF_DDBQuest01_0300082E.fragment_3",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Go back to Tenerio",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000ECD QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DDBQuest01 (Merchant Problem)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:000ECD",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageondeathrefalias.onDeath on BetalillesHammerfellQuestBundle.esp:000ECD (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000ECE",
+   "edid": "DDBQuest02",
+   "name": "Argonian Hero",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DDBQuest01 (Merchant Problem)",
+     "questId": "BetalillesHammerfellQuestBundle.esp:000ECD",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DDB_QF_DDBQuest01_0300082E.fragment_3 on BetalillesHammerfellQuestBundle.esp:000ECD (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000ECE DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill the Argonian at the Lantern of the North",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000ECE QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target02000",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Faster-Than-Storm",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "600 gold",
+     "stage": 200,
+     "source": "DDB_QF_DDBQuest02_0300082F.fragment_2",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Tenerio",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000ECE QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DDBQuest02 (Argonian Hero)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:000ECE",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageondeathrefalias.onDeath on BetalillesHammerfellQuestBundle.esp:000ECE (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000ECF",
+   "edid": "DDBQuest03",
+   "name": "Wandering Monk",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DDBQuest02 (Argonian Hero)",
+     "questId": "BetalillesHammerfellQuestBundle.esp:000ECE",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DDB_QF_DDBQuest02_0300082F.fragment_2 on BetalillesHammerfellQuestBundle.esp:000ECE (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000ECF DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill the monk at the Lucky Lantern",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000ECF QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target03000",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Lavond",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "700 gold",
+     "stage": 200,
+     "source": "DDB_QF_DDBQuest03_03000830.fragment_2",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Go back to Tenerio",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000ECF QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DDBQuest03 (Wandering Monk)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:000ECF",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageondeathrefalias.onDeath on BetalillesHammerfellQuestBundle.esp:000ECF (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000ED0",
+   "edid": "DDBQuest04",
+   "name": "Alik'r No More",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DDBQuest03 (Wandering Monk)",
+     "questId": "BetalillesHammerfellQuestBundle.esp:000ECF",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DDB_QF_DDBQuest03_03000830.fragment_2 on BetalillesHammerfellQuestBundle.esp:000ECF (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000ED0 DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Defeat the Alik'r warrior in Ben Erai",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000ED0 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target04000",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Orryn",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "850 gold",
+     "stage": 200,
+     "source": "DDB_QF_DDBQuest04_03000831.fragment_2",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Tenerio",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000ED0 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DDBQuest04 (Alik'r No More)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:000ED0",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageondeathrefalias.onDeath on BetalillesHammerfellQuestBundle.esp:000ED0 (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000ED1",
+   "edid": "DDBQuest05",
+   "name": "No Guard Is Safe",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DDBQuest04 (Alik'r No More)",
+     "questId": "BetalillesHammerfellQuestBundle.esp:000ED0",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DDB_QF_DDBQuest04_03000831.fragment_2 on BetalillesHammerfellQuestBundle.esp:000ED0 (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000ED1 DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Kill Laurentina inside the Fortress of Ben Erai",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000ED1 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Target05000",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Laurentina",
+       "kind": "forced reference",
+       "where": [
+        "Fortress of Ben Erai"
+       ]
+      }
+     ],
+     "cells": [
+      "Gray Fox Cowl.esm:02E5A7"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Fortress of Ben Erai",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "1000 gold",
+     "stage": 200,
+     "source": "DDB_QF_DDBQuest05_03000832.fragment_4",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Go back to Tenerio",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000ED1 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DDBQuest05 (No Guard Is Safe)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:000ED1",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageondeathrefalias.onDeath on BetalillesHammerfellQuestBundle.esp:000ED1 (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000FCA",
+   "edid": "DDBQuest06",
+   "name": "Disappearing in the Dark",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000FCA DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Talk to Tenerio in the Dark Brotherhood Sanctuary in the Alik'r Desert",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000FCA QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "TenerioQ06",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Tenerio",
+       "kind": "unique actor",
+       "where": [
+        "Alik'r Desert Sanctuary, Alik'r Desert"
+       ]
+      }
+     ],
+     "cells": [
+      "BetalillesHammerfellQuestBundle.esp:0010BA"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Alik'r Desert Sanctuary, Alik'r Desert",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Investigate the village where Lucya was supposed to be",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000FCA QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Tenerio",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Alik'r Desert Sanctuary, Alik'r Desert"
+      ],
+      "call": "SetStage 20",
+      "info": "BetalillesHammerfellQuestBundle.esp:000FF4",
+      "prompt": "Alright, I'll look into it.",
+      "reply": [
+       "Great. She was investigating a small village in the desert. That's the last place she's been sent to."
+      ],
+      "conditions": "the speaker is Tenerio",
+      "source": "DDB_TIF__04000939.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:000FF4 (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000FCE",
+   "edid": "DDBQuest07",
+   "name": "The Crimson Eviscerator",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DDBQuest06 (Disappearing in the Dark)",
+     "questId": "BetalillesHammerfellQuestBundle.esp:000FCA",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DDB_QF_DDBQuest06_0400090F.fragment_14 on BetalillesHammerfellQuestBundle.esp:000FCA (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000FCE DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Find the soul of Lucya in the Soul Cairn",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000FCE QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "LucyaQ07",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Lucya",
+       "kind": "unique actor",
+       "where": [
+        "Soul Cairn Tower, Soul Cairn"
+       ]
+      }
+     ],
+     "cells": [
+      "BetalillesHammerfellQuestBundle.esp:000F96"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Soul Cairn Tower, Soul Cairn",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Enter the Soul Cavern in the Alik'r Desert",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000FCE QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Lucya",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Soul Cairn Tower, Soul Cairn"
+      ],
+      "call": "SetStage 20",
+      "info": "BetalillesHammerfellQuestBundle.esp:001008",
+      "prompt": "Yes, I will.",
+      "reply": [
+       "Then go, Listener. The artifact is located in a cave in the Alik'r Desert. Use my soul gem to open the way to the artifact.",
+       "And don't worry about me, I'll be fine. The Dark Brotherhood counts on you."
+      ],
+      "conditions": "the speaker is Lucya",
+      "source": "DDB_TIF__0400094D.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:001008 (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000FCF",
+   "edid": "DDBQuest08",
+   "name": "Crimson Scar Believers",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DDBQuest07 (The Crimson Eviscerator)",
+     "questId": "BetalillesHammerfellQuestBundle.esp:000FCE",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "DDB_QF_DDBQuest07_04000913.fragment_6 on BetalillesHammerfellQuestBundle.esp:000FCE (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000FCF DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Head to the Vampire Hideout",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000FCF QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Door02",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Vampire Hideout, Alik'r Desert"
+       ]
+      }
+     ],
+     "cells": [
+      "BetalillesHammerfellQuestBundle.esp:000F3A"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Vampire Hideout, Alik'r Desert",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "1000 gold",
+     "stage": 200,
+     "source": "DDB_QF_DDBQuest08_04000914.fragment_3",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Defeat the hostile vampires",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000FCF QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000B6B",
+   "edid": "HABLBladesQuest01",
+   "name": "Protecting What Was Lost",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Azita",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Alik'r Desert"
+     ],
+     "call": "SetStage 10",
+     "info": "BetalillesHammerfellQuestBundle.esp:000B7C",
+     "prompt": "How do you know all of this?",
+     "reply": [
+      "My grandpa told me everything. He's so cool!"
+     ],
+     "conditions": "the speaker is Azita",
+     "source": "HABL_TIF__06000B7C.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:000B7C (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000B6B DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Interact with the pillar to begin the trials",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000B6B QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Activator01",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Lantern of the Trials",
+       "kind": "forced reference",
+       "where": [
+        "Azzin's Hideout, Alik'r Desert"
+       ]
+      }
+     ],
+     "cells": [
+      "BetalillesHammerfellQuestBundle.esp:000ACF"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Azzin's Hideout, Alik'r Desert",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "Boneshaver Replica",
+     "stage": 200,
+     "source": "HABL_QF_HABLBladesQuest01_06000B6B.fragment_14",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Kill the Fire Dragon",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000B6B QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000C5C",
+   "edid": "HABLBladesQuest02",
+   "name": "In need of Scouts",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Loremaster Za'kir",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Common House, Alik'r Desert"
+     ],
+     "call": "SetStage 10",
+     "info": "BetalillesHammerfellQuestBundle.esp:000C71",
+     "prompt": "Alright. I will come back to you once I have the two new recruits.",
+     "reply": [
+      "Very well, don't keep this one waiting, yes?"
+     ],
+     "conditions": "the speaker is Loremaster Za'kir",
+     "source": "HABL_TIF__06000C71.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:000C71 (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000C5C DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Find a follower and ask them to join the Blades in Hammerfell",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000C5C QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Find a second follower to ask them to join the Blades in Hammerfell",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000C5C QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": null,
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [],
+      "call": "SetStage 20",
+      "info": "BetalillesHammerfellQuestBundle.esp:000C74",
+      "prompt": "I want you to join the Blades. Do you agree to join the Wind Scour Temple?",
+      "reply": [
+       "I do."
+      ],
+      "conditions": "GetInFaction PetFramework_PetFollowingFaction == 0; GetInFaction PetFramework_PetFaction == 0; GetInFaction CompanionsCirclePlusKodlak == 0; GetInFaction The Dark Brotherhood == 0; GetInFaction Blades == 0; GetInFaction PotentialFollowerFaction == 1; In need of Scouts stage == 10",
+      "source": "HABL_TIF__06000C74.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:000C74 (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000C5D",
+   "edid": "HABLBladesQuest03",
+   "name": "Sands of the Past",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "HABLBladesQuest02 (In need of Scouts)",
+     "questId": "BetalillesHammerfellQuestBundle.esp:000C5C",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "HABL_QF_HABLBladesQuest02_06000C5C.fragment_3 on BetalillesHammerfellQuestBundle.esp:000C5C (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000C5D DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Head to the first location given by Za'kir and defeat the ghost haunting the place",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000C5D QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Blade01",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Blade",
+       "kind": "forced reference",
+       "where": [
+        "Akaviri Ruins, Alik'r Desert"
+       ]
+      }
+     ],
+     "cells": [
+      "BetalillesHammerfellQuestBundle.esp:000BD4"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Akaviri Ruins, Alik'r Desert",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "1000 gold",
+     "stage": 200,
+     "source": "HABL_QF_HABLBladesQuest03_06000C5D.fragment_10",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Head to the second location given by Za'kir and defeat the ghost haunting the place",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000C5D QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "HABLBladesQuest03 (Sands of the Past)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:000C5D",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultaliasondeathscript.onDeath on BetalillesHammerfellQuestBundle.esp:000C5D (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000A8E",
+   "edid": "HABLQuest01",
+   "name": "A Lost Temple in Hammerfell",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Duraelm",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Alik'r Desert"
+     ],
+     "call": "SetStage 10",
+     "info": "BetalillesHammerfellQuestBundle.esp:000A7B",
+     "prompt": "I can do it for you if you want.",
+     "reply": [
+      "Are you sure? Alright but be careful.",
+      "There are three places where the entrance to the temple could be, come back to me if you think you've found it."
+     ],
+     "conditions": "the speaker is Duraelm",
+     "source": "HABL_TIF__03000A7B.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:000A7B (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000A8E DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Search the first location",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000A8E QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Zone01",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Alik'r Desert"
+       ]
+      }
+     ],
+     "cells": [
+      "Gray Fox Cowl.esm:200723"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "1000 gold",
+     "stage": 200,
+     "source": "HABL_QF_HABLQuest01_03000A8E.fragment_15",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "You didn't find anything there, search the second location",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000A8E QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000A8F",
+   "edid": "HABLQuest02",
+   "name": "Dragonguard Archives",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Duraelm",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Alik'r Desert"
+     ],
+     "call": "SetStage 10",
+     "info": "BetalillesHammerfellQuestBundle.esp:000A8B",
+     "prompt": "Can I do anything to help you?",
+     "reply": [
+      "I heard of a Dragonguard book hidden at this location. If you could bring it to me, you would greatly help rebuilding the archives."
+     ],
+     "conditions": "Dragonguard Archives stage < 10; A Lost Temple in Hammerfell completed; the speaker is Duraelm",
+     "source": "HABL_TIF__03000A8B.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:000A8B (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000A8F DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Find the Dragonguard book in <Alias=Location> and bring it back to Duarelm",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000A8F QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Container",
+     "fill": "from alias",
+     "holds": [],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "500 gold",
+     "stage": 200,
+     "source": "HABL_QF_HABLQuest02_03000A8F.fragment_4",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Go back to Duarelm",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000A8F QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "HABLQuest02 (Dragonguard Archives)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:000A8F",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on BetalillesHammerfellQuestBundle.esp:000A8F (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000AB8",
+   "edid": "HABLRaQuest01",
+   "name": "Dragonguard Archives: Book 1",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000AB8 DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Get the Dragonguard book from Vulstad",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000AB8 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Book",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Crafting Motif 76: Dragonguard Style",
+       "kind": "forced reference",
+       "where": [
+        "Terinen's House, Alik'r Desert"
+       ]
+      }
+     ],
+     "cells": [
+      "BetalillesHammerfellQuestBundle.esp:000B20"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Terinen's House, Alik'r Desert",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "300 gold",
+     "stage": 200,
+     "source": "HABL_QF_HABLRaQuest01_03000AB8.fragment_3",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Put the Dragonguard book in the chest in the Wind Scour Temple",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000AB8 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "HABLRaQuest01 (Dragonguard Archives: Book 1)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:000AB8",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on BetalillesHammerfellQuestBundle.esp:000AB8 (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000AB9",
+   "edid": "HABLRaQuest02",
+   "name": "Dragonguard Archives: Book 2",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000AB9 DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Get the Blades book from the Ben Erai Barracks",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000AB9 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Book",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "The Warp in the West, Part 1",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "300 gold",
+     "stage": 200,
+     "source": "HABL_QF_HABLRaQuest02_03000AB9.fragment_3",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Put the Blades book in the chest in the Wind Scour Temple",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000AB9 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "HABLRaQuest02 (Dragonguard Archives: Book 2)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:000AB9",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on BetalillesHammerfellQuestBundle.esp:000AB9 (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000AB7",
+   "edid": "HABLRaQuest03",
+   "name": "Dragonguard Archives: Book 3",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000AB7 DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Get the Blades book from Ben Erai",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000AB7 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Book",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "The Warp in the West, Part 2",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "300 gold",
+     "stage": 200,
+     "source": "HABL_QF_HABLRaQuest03_03000AB7.fragment_4",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Put the Blades book in the chest in the Wind Scour Temple",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000AB7 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "HABLRaQuest03 (Dragonguard Archives: Book 3)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:000AB7",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on BetalillesHammerfellQuestBundle.esp:000AB7 (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000ABB",
+   "edid": "HABLRaQuest04",
+   "name": "Dragonguard Archives: Book 4",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000ABB DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Get the Dragonguard book from the Fortress of Ben Erai",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000ABB QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "BookJadarri1",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Searching for the Horn of Ja'darri, Part 1",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "300 gold",
+     "stage": 200,
+     "source": "HABL_QF_HABLRaQuest04_03000ABB.fragment_3",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Put the Dragonguard book in the chest in the Wind Scour Temple",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000ABB QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "HABLRaQuest04 (Dragonguard Archives: Book 4)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:000ABB",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on BetalillesHammerfellQuestBundle.esp:000ABB (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000ABA",
+   "edid": "HABLRaQuest05",
+   "name": "Dragonguard Archives: Book 5",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000ABA DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Get Dragonguard book from Arenar's Camp",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000ABA QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Book",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Searching for the Horn of Ja'darri, Part 2",
+       "kind": "forced reference",
+       "where": [
+        "Alik'r Desert"
+       ]
+      }
+     ],
+     "cells": [
+      "Gray Fox Cowl.esm:2003D1"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "300 gold",
+     "stage": 200,
+     "source": "HABL_QF_HABLRaQuest05_03000ABA.fragment_3",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Put the Dragonguard book in the chest in the Wind Scour Temple",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000ABA QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "HABLRaQuest05 (Dragonguard Archives: Book 5)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:000ABA",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on BetalillesHammerfellQuestBundle.esp:000ABA (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:000ABC",
+   "edid": "HABLRaQuest06",
+   "name": "Dragonguard Archives: Book 6",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:000ABC DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Get the Dragonguard book from Khenzedum",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:000ABC QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Book",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Searching for the Horn of Ja'darri, Part 3",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "300 gold",
+     "stage": 200,
+     "source": "HABL_QF_HABLRaQuest06_03000ABC.fragment_3",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Put the Dragonguard book in the chest in the Wind Scour Temple",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:000ABC QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "HABLRaQuest06 (Dragonguard Archives: Book 6)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:000ABC",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultsetstageonplayeracquire.OnContainerChanged on BetalillesHammerfellQuestBundle.esp:000ABC (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "BetalillesHammerfellQuestBundle.esp:001252",
+   "edid": "LAMIDesertLamiaQuest",
+   "name": "Spectral Lamias in the Desert",
+   "plugin": "BetalillesHammerfellQuestBundle.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Oziriana",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Alik'r Desert"
+     ],
+     "call": "SetStage 10",
+     "info": "BetalillesHammerfellQuestBundle.esp:001275",
+     "prompt": "I want to help you out.",
+     "reply": [
+      "Indeed, you seem like the adventurer type, outsider.",
+      "Let me accompany you to the camp. But be careful, Lamia magic is powerful."
+     ],
+     "conditions": "the speaker is Oziriana",
+     "source": "HNHT_TIF__06000885.Fragment_1 on INFO BetalillesHammerfellQuestBundle.esp:001275 (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "BetalillesHammerfellQuestBundle.esp:001252 DNAM (BetalillesHammerfellQuestBundle.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Defeat Feiria the Matriarch",
+    "index": 10,
+    "source": "BetalillesHammerfellQuestBundle.esp:001252 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Feiria",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Feiria the Matriarch",
+       "kind": "forced reference",
+       "where": [
+        "Alik'r Desert"
+       ]
+      }
+     ],
+     "cells": [
+      "Gray Fox Cowl.esm:2005DD"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "500 gold",
+     "stage": 200,
+     "source": "LAMI_QF_LAMIDesertLamiaQuest_06000862.fragment_6",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Talk to Oziriana",
+     "index": 20,
+     "source": "BetalillesHammerfellQuestBundle.esp:001252 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "LAMIDesertLamiaQuest (Spectral Lamias in the Desert)",
+      "questId": "BetalillesHammerfellQuestBundle.esp:001252",
+      "atStage": null,
+      "call": "SetStage 20",
+      "source": "defaultaliasondeathscript.onDeath on BetalillesHammerfellQuestBundle.esp:001252 (BetalillesHammerfellQuestBundle.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  }
+ ],
+ "notInRawQuests": [],
+ "starts": [
+  {
+   "start": "Regular (Inn)",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "The Bannered Mare",
+     "quest": "AlternatePerspective.esp:3271C8",
+     "questEdid": "APS_InnWhiterun",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnWhiterun scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Bee and Barb",
+     "quest": "AlternatePerspective.esp:3457D0",
+     "questEdid": "APS_InnRiften",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Winking Skeever",
+     "quest": "AlternatePerspective.esp:3457D2",
+     "questEdid": "APS_InnSolitude",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnSolitude scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Silver-Blood Inn",
+     "quest": "AlternatePerspective.esp:3457D4",
+     "questEdid": "APS_InnMarkarth",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnMarkarth scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Candlehearth Hall",
+     "quest": "AlternatePerspective.esp:3457D6",
+     "questEdid": "APS_InnWindhelm",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnWindhelm scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dead Man's Drink",
+     "quest": "AlternatePerspective.esp:3457D9",
+     "questEdid": "APS_InnFalkreath",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnFalkreath scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Moorside Inn",
+     "quest": "AlternatePerspective.esp:3457DD",
+     "questEdid": "APS_InnMorthal",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnMorthal scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Frozen Hearth",
+     "quest": "AlternatePerspective.esp:3457DF",
+     "questEdid": "APS_InnWinterhold",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnWinterhold scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Windpeak Inn",
+     "quest": "AlternatePerspective.esp:3457E0",
+     "questEdid": "APS_InnDawnstar",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Retching Netch",
+     "quest": "AlternatePerspective.esp:34A8E2",
+     "questEdid": "APS_InnRavenRock",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnRavenRock scripts (Alternate Perspective - Gate to Sovngarde Edition.esp)"
+    },
+    {
+     "option": "The Sleeping Giant Inn",
+     "quest": "AlternatePerspective.esp:34A8E3",
+     "questEdid": "APS_InnRiverwood",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnRiverwood scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Frostfruit Inn",
+     "quest": "AlternatePerspective.esp:34A8E4",
+     "questEdid": "APS_InnRorikstead",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnRorikstead scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Vilemyr Inn",
+     "quest": "AlternatePerspective.esp:34A8E5",
+     "questEdid": "APS_InnIvarstead",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnIvarstead scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Old Hroldan Inn",
+     "quest": "AlternatePerspective.esp:34A8E6",
+     "questEdid": "APS_InnOldHroldan",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnOldHroldan scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Four Shields Tavern",
+     "quest": "AlternatePerspective.esp:34A8E7",
+     "questEdid": "APS_InnDragonbridge",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnDragonbridge scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Nightgate Inn",
+     "quest": "AlternatePerspective.esp:34A8E8",
+     "questEdid": "APS_InnNightgate",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnNightgate scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Braidwood Inn",
+     "quest": "AlternatePerspective.esp:34A8E9",
+     "questEdid": "APS_InnKynesgrove",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_InnKynesgrove scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "From Overseas",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "East Empire Trading Company",
+     "quest": "AlternatePerspective.esp:34F9EC",
+     "questEdid": "APS_DocksSolitude",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_DocksSolitude scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Windhelm Docks",
+     "quest": "AlternatePerspective.esp:34F9EE",
+     "questEdid": "APS_DocksWindhelm",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_DocksWindhelm scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dawnstar's Shore",
+     "quest": "AlternatePerspective.esp:34F9ED",
+     "questEdid": "APS_DocksDawnstar",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_DocksDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Raven Rock Docks",
+     "quest": "AlternatePerspective.esp:34F9F0",
+     "questEdid": "APS_DocksRavenRock",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_DocksRavenRock scripts (Alternate Perspective - Gate to Sovngarde Edition.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Wanted Criminal",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Whiterun",
+     "quest": "AlternatePerspective.esp:34FA14",
+     "questEdid": "APS_WantedTPWhiterun",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_WantedTPWhiterun scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AlternatePerspective.esp:34FA15",
+     "questEdid": "APS_WantedTPRRiften",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_WantedTPRRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AlternatePerspective.esp:34FA1B",
+     "questEdid": "APS_WantedTPRDawnstar",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_WantedTPRDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AlternatePerspective.esp:34FA25",
+     "questEdid": "APS_WantedTPWinterhold",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_WantedTPWinterhold scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Left for Dead",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "The Rift",
+     "quest": "AlternatePerspective.esp:34FA27",
+     "questEdid": "APS_LeftForDeadRiften",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_LeftForDeadRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AlternatePerspective.esp:34FA29",
+     "questEdid": "APS_LeftForDeadMarkarth",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_LeftForDeadMarkarth scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AlternatePerspective.esp:34FA20",
+     "questEdid": "APS_LeftForDeadWinterhold",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_LeftForDeadWinterhold scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Forsworn",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Forsworn",
+     "quest": "AlternatePerspective.esp:46649F",
+     "questEdid": "APS_Forsworn",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_Forsworn scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Guilds",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "College of Winterhold",
+     "quest": "AlternatePerspective.esp:3D36E6",
+     "questEdid": "APS_GuildMages",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_GuildMages scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Thieves Guild",
+     "quest": "AlternatePerspective.esp:3CE5E5",
+     "questEdid": "APS_GuildThievesguild",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_GuildThievesguild scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dark Brotherhood",
+     "quest": "AlternatePerspective.esp:3D36E7",
+     "questEdid": "APS_GuildBrotherhood",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_GuildBrotherhood scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Companions",
+     "quest": "AlternatePerspective.esp:3D36E8",
+     "questEdid": "APS_GuildCompanions",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "APS_GuildCompanions scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Dragonborn",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Helgen Keep (Start)",
+     "quest": "AlternatePerspective.esp:47F943",
+     "questEdid": "APS_MQSkipKeep",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [
+      "MQ101 SetStage 6",
+      "MQ101 SetStage 7"
+     ],
+     "source": "APS_MQSkipKeep scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Helgen Keep (End)",
+     "quest": "AlternatePerspective.esp:484A45",
+     "questEdid": "APS_MQSkipKeepEnd",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [
+      "MQ101 SetStage 250",
+      "MQ101 SetStage 550",
+      "MQ101 SetStage 700",
+      "MQ101 SetStage 710",
+      "MQ101 SetStage 720",
+      "MQ101 SetStage 725"
+     ],
+     "source": "APS_MQSkipKeepEnd scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Addict",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Addict",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000800",
+     "questEdid": "AFLOLALAddictQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALAddictQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Dwemer Ruin",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Dwemer Ruin",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00081C",
+     "questEdid": "AFLOLALAdventureQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALAdventureQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Alchemist",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Alchemist",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00080A",
+     "questEdid": "AFLOLALAlchemistQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALAlchemistQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "At Angis Camp",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "At Angis Camp",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000858",
+     "questEdid": "AFLOLALAngiQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALAngiQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Beggar",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Riften",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00085F",
+     "questEdid": "AFLOAP_BeggarRiften",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BeggarRiften scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Markarth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000860",
+     "questEdid": "AFLOAP_BeggarMarkarth",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BeggarMarkarth scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Jailed",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000861",
+     "questEdid": "AFLOAP_JailWhiterun",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailWhiterun scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000869",
+     "questEdid": "AFLOAP_JailRift",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailRift scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Eastmarch",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000862",
+     "questEdid": "AFLOAP_JailEastmarch",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailEastmarch scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Haarfinger",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000864",
+     "questEdid": "AFLOAP_JailHaarfinger",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailHaarfinger scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000868",
+     "questEdid": "AFLOAP_JailReach",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailReach scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000863",
+     "questEdid": "AFLOAP_JailFalkreath",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailFalkreath scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hjaalmach",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000865",
+     "questEdid": "AFLOAP_JailHjaalmach",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailHjaalmach scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000866",
+     "questEdid": "AFLOAP_JailPale",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailPale scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086A",
+     "questEdid": "AFLOAP_JailWinterhold",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailWinterhold scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Raven Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000867",
+     "questEdid": "AFLOAP_JailRavenRock",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_JailRavenRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Mercenary",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Cyrodiil",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086B",
+     "questEdid": "AFLOAP_BorderMercenaryCyrodill",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryCyrodill scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hammerfell",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086C",
+     "questEdid": "AFLOAP_BorderMercenaryHammerfell",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryHammerfell scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "High Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086D",
+     "questEdid": "AFLOAP_BorderMercenaryHighRock",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryHighRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Northern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086E",
+     "questEdid": "AFLOAP_BorderMercenaryNorthernMorrorwind",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryNorthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Southern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086F",
+     "questEdid": "AFLOAP_BorderMercenarySouthernMorrorwind",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenarySouthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Merchant",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Cyrodiil",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000870",
+     "questEdid": "AFLOAP_BorderMerchantCyrodill",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantCyrodill scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hammerfell",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000871",
+     "questEdid": "AFLOAP_BorderMerchantHammerfell",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantHammerfell scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "High Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000872",
+     "questEdid": "AFLOAP_BorderMerchantHighRock",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantHighRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Northern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000873",
+     "questEdid": "AFLOAP_BorderMerchantNorthernMorrorwind",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantNorthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Southern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000874",
+     "questEdid": "AFLOAP_BorderMerchantSouthernMorrorwind",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantSouthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Pilgrim (Shrine)",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Shrine of Azura",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083C",
+     "questEdid": "AFLOLALAzuraQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALAzuraQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Boethiah",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083A",
+     "questEdid": "AFLOLALBoethiahQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALBoethiahQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Mehrunes Dagon",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000842",
+     "questEdid": "AFLOLALDagonQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALDagonQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Eldergleam Sanctuary",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000838",
+     "questEdid": "AFLOLALEldergleamQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALEldergleamQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Statue of Meridia",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000840",
+     "questEdid": "AFLOLALMeridiaQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALMeridiaQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Peryite",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083E",
+     "questEdid": "AFLOLALPeryiteQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALPeryiteQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Stendarr's Beacon",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000835",
+     "questEdid": "AFLOLALStendarrQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALStendarrQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hall of the Vigilant",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000881",
+     "questEdid": "AFLOAP_StendarrHall",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_StendarrHall scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Pilgrim (Temple)",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Temple of the Divines",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000876",
+     "questEdid": "AFLOAP_TempleDivine",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_TempleDivine scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Dibella",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000875",
+     "questEdid": "AFLOAP_TempleDibella",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_TempleDibella scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Kynareth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000877",
+     "questEdid": "AFLOAP_TempleKynareth",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_TempleKynareth scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Mara",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000878",
+     "questEdid": "AFLOAP_TempleMara",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_TempleMara scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Talos",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000879",
+     "questEdid": "AFLOAP_TempleTalos",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_TempleTalos scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Thalmor Prisoner",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Thalmor Prisoner",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000829",
+     "questEdid": "AFLOLALThalmorQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALThalmorQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Vampire",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Solitude",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087D",
+     "questEdid": "AFLOAP_VampireSolitude",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_VampireSolitude scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087A",
+     "questEdid": "AFLOAP_VampireFalkreath",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_VampireFalkreath scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087E",
+     "questEdid": "AFLOAP_VampireWhiterun",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_VampireWhiterun scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Riften",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087C",
+     "questEdid": "AFLOAP_VampireRiften",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_VampireRiften scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Windhelm",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087F",
+     "questEdid": "AFLOAP_VampireWindhelm",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_VampireWindhelm scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Markarth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087B",
+     "questEdid": "AFLOAP_VampireMarkarth",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOAP_VampireMarkarth scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Werewolf",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Werewolf",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00081F",
+     "questEdid": "AFLOLALWerewolfQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "AFLOLALWerewolfQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Roadside Ambush",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:000018",
+     "questEdid": "MissileAPAmbushStartEastmarchQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartEastmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:000021",
+     "questEdid": "MissileAPAmbushStartHaafingarQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:00001B",
+     "questEdid": "MissileAPAmbushStartHjaalmarchQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:00001A",
+     "questEdid": "MissileAPAmbushStartFalkreathQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:00002D",
+     "questEdid": "MissileAPAmbushStartPaleQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:000033",
+     "questEdid": "MissileAPAmbushStartReachQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000027",
+     "questEdid": "MissileAPAmbushStartRiftQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:000019",
+     "questEdid": "MissileAPAmbushStartWhiterunQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPAmbushStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Fell in a Spike Pit",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Fell in a Spike Pit",
+     "quest": "AP - Missile Additional Starts.esp:000039",
+     "questEdid": "MissileAPFellInAPitQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPFellInAPitQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Bounty Hunter",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:00004C",
+     "questEdid": "MissileAPBountyHunterStartEastmarchQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartEastmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:000058",
+     "questEdid": "MissileAPBountyHunterStartFalkreathQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:00005C",
+     "questEdid": "MissileAPBountyHunterStartHaafingarQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:000048",
+     "questEdid": "MissileAPBountyHunterStartHjaalmarchQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000050",
+     "questEdid": "MissileAPBountyHunterStartRiftQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:00003F",
+     "questEdid": "MissileAPBountyHunterStartWhiterunQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AP - Missile Additional Starts.esp:000054",
+     "questEdid": "MissileAPBountyHunterStartWinterholdQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartWinterholdQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Prisoner in a Bandit Fort",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:000086",
+     "questEdid": "MissileAPBanditPrisonerStartHaafingarQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:00007B",
+     "questEdid": "MissileAPBanditPrisonerStartPaleQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:00008D",
+     "questEdid": "MissileAPBanditPrisonerStartReachQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000081",
+     "questEdid": "MissileAPBanditPrisonerStartRiftQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:000073",
+     "questEdid": "MissileAPBanditPrisonerStartWhiterunQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Out in the Wilderness",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:0000D8",
+     "questEdid": "MissileAPOutInTheWildernessStartEastmarchQuestDUPLICATE001",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartEastmarchQuestDUPLICATE001 scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:0000CE",
+     "questEdid": "MissileAPOutInTheWildernessStartFalkreathQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:0000D2",
+     "questEdid": "MissileAPOutInTheWildernessStartHaafingarQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:0000D4",
+     "questEdid": "MissileAPOutInTheWildernessStartHjaalmarchQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:0000DA",
+     "questEdid": "MissileAPOutInTheWildernessStartPaleQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:0000D0",
+     "questEdid": "MissileAPOutInTheWildernessStartReachQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:0000CB",
+     "questEdid": "MissileAPOutInTheWildernessStartRiftQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:0000C8",
+     "questEdid": "MissileAPOutInTheWildernessStartWhiterunQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AP - Missile Additional Starts.esp:0000D6",
+     "questEdid": "MissileAPOutInTheWildernessStartWinterholdQuest",
+     "mainQuestRuns": "yes: it is start-game enabled",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartWinterholdQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  }
+ ],
+ "otherStarts": "To get into The Gray Cowl of Nocturnal: Memories of the Umbranox is running from the start: Find all the journals (<Global=manny_GF_Global_BooksCount>/<Global=manny_GF_Global_BooksTotal>); or talk to Holder in Skyrim: The Experiment is running from the start (Place the artifact near Markarth); or talk to a marker in Shanta Filibb: Claim Shanta Filibb is running from the start (Kill all the unknown attackers); or talk to Seviana Umbranox in Seviana's House: The Call of Gray Cowl of Nocturnal is running from the start (Reach the place); or talk to Andyn Pamarc in Alik'r Desert: Helping the Enemy is running from the start (Talk to Andyn Pamarc); or talk to The Silent Sword in Ancient Ruins: The Ash'abah is running from the start (Clear the ancient ruins in the Alik'r Desert); or talk to Agryval Stemuseph in Alik'r Desert: Is There a Necromancer in Town? is running from the start (Find the necromancer camp in the desert and deal with the necromancers); or Weltan the Poet is running from the start: Find the two books written by Weltan in the Alik'r Desert and bring them back to Sharza in Kazas Salas; or From Solstheim to Hammerfell is running from the start: Get Lloros Reynel to Hammerfell; or talk to Map of Shadowfen in Khenzedum: Black Marsh Maps is running from the start (Find the first map in Khenzedum); or talk to Sign in Ben Erai: Cyrodilic Collections are Recruiting is running from the start (Place the first sign in Ben Erai); or talk to Chest in Tomb of the Forgotten Draugr: Ancient Pottery is running from the start (Find the artifact Jukka was talking about in Sadraaka); or talk to Chest in Al Shedim: A Special Smell is running from the start (Find an artifact for the Cyrodilic Collections in Al Shedim); or talk to Lantern of the Trials in Azzin's Hideout, Alik'r Desert: Protecting What Was Lost is running from the start (Interact with the pillar to begin the trials); or In need of Scouts is running from the start: Find a follower and ask them to join the Blades in Hammerfell; or talk to Blade in Akaviri Ruins, Alik'r Desert: Sands of the Past is running from the start (Head to the first location given by Za'kir and defeat the ghost haunting the place); or talk to Feiria the Matriarch in Alik'r Desert: Spectral Lamias in the Desert is running from the start (Defeat Feiria the Matriarch).",
+ "routes": [],
+ "loaders": {
+  "Wyrmstooth": {
+   "quest": "Wyrmstooth.esp:AC1487",
+   "script": "WT_MCMScript",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
+   "winnerParent": "MCM_ConfigBase",
+   "readsSettings": true
+  },
+  "TimingIsEverything": {
+   "quest": "TimingIsEverything.esp:005E3B",
+   "script": "TIE_MCMScript",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
+   "winnerParent": "SKI_ConfigBase",
+   "readsSettings": false
+  }
+ },
+ "payoff": [
+  {
+   "quest": "Dragonslayer",
+   "edid": "MQ305",
+   "completingStages": [
+    200
+   ],
+   "gives": []
+  },
+  {
+   "quest": "Paarthurnax",
+   "edid": "MQPaarthurnax",
+   "completingStages": [
+    99,
+    100
+   ],
+   "gives": []
+  }
+ ],
+ "questions": [
+  {
+   "question": "Is Skyrim.esm:0242BA MQ105, and is stage 160 the one that completes it?",
+   "edid": "MQ105",
+   "name": "The Way of the Voice",
+   "completingStages": [
+    160
+   ],
+   "answer": "Yes: Skyrim.esm:0242BA is MQ105 (The Way of the Voice), and stage 160 is its only completing stage."
+  },
+  {
+   "question": "Who starts The Horn of Jurgen Windcaller, and where?",
+   "quest": null,
+   "startedBy": [],
+   "target": null,
+   "firstObjective": null
+  },
+  {
+   "question": "Does Dragonborn's cultist node read Timing is Everything's level (25 in its settings.ini), or something else?",
+   "quest": "DLC2CultistAmbush (Dragonborn.esm:03546D)",
+   "nodes": [
+    {
+     "node": "DLC2CultistAmbushNode001",
+     "id": "Dragonborn.esm:035472",
+     "plugin": "LoreRim - Global Modifiers.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode002",
+     "id": "TimingIsEverything.esp:00E53C",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode003",
+     "id": "TimingIsEverything.esp:00E53D",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode004",
+     "id": "TimingIsEverything.esp:00E53E",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode005",
+     "id": "TimingIsEverything.esp:00E53F",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode006",
+     "id": "TimingIsEverything.esp:00E540",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode007",
+     "id": "TimingIsEverything.esp:00E541",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode008",
+     "id": "TimingIsEverything.esp:00E542",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode000",
+     "id": "TimingIsEverything.esp:00E543",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    }
+   ],
+   "tieSetting": {
+    "key": "iTIE_MinimumLevel:Dragonborn",
+    "value": "25",
+    "from": "settings.ini in Timing is Everything SE - Settings Loader"
+   }
+  }
+ ],
+ "timingIsEverything": {
+  "loaderInstalled": true,
+  "loaderFolder": "Timing is Everything SE - Settings Loader",
+  "script": {
+   "quest": "TimingIsEverything.esp:005E3B",
+   "script": "TIE_MCMScript",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
+   "winnerParent": "SKI_ConfigBase",
+   "readsSettings": false
+  },
+  "dragonbornLevel": {
+   "key": "iTIE_MinimumLevel:Dragonborn",
+   "value": "25",
+   "from": "settings.ini in Timing is Everything SE - Settings Loader",
+   "globals": [
+    {
+     "id": "TimingIsEverything.esp:00E53B",
+     "edid": "DLC2CultistAttackMinLevel_KRY",
+     "record": 25.0,
+     "recordFrom": "TimingIsEverything.esp",
+     "runtime": [],
+     "settingsNotRead": [
+      {
+       "mod": "TimingIsEverything",
+       "key": "iTIE_MinimumLevel:Dragonborn",
+       "value": "25",
+       "from": "settings.ini in Timing is Everything SE - Settings Loader",
+       "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+      }
+     ],
+     "value": 25.0,
+     "verdict": "files",
+     "global": "TimingIsEverything.esp:00E53B"
+    }
+   ]
+  }
+ },
+ "wyrmstooth": {
+  "loaderInstalled": true,
+  "loaderFolder": "Wyrmstooth - Settings Loader",
+  "global": "Wyrmstooth.esp:AC356A",
+  "fact": {
+   "id": "Wyrmstooth.esp:AC356A",
+   "edid": "WTStartLevel",
+   "record": 20.0,
+   "recordFrom": "Requiem - Wyrmstooth.esp",
+   "recordWas": {
+    "value": 10.0,
+    "from": "Wyrmstooth.esp"
+   },
+   "runtime": [
+    {
+     "by": "settings loader",
+     "mod": "Wyrmstooth",
+     "key": "iWTGeneralRequirementsMinimalLevel:Requirements",
+     "value": "10",
+     "from": "settings.ini in Wyrmstooth - Settings Loader",
+     "script": "WT_MCMScript.OnSettingChange"
+    }
+   ],
+   "verdict": "run time",
+   "value": "10"
+  },
+  "loaderQuest": {
+   "quest": "Wyrmstooth.esp:AC1487",
+   "script": "WT_MCMScript",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
+   "winnerParent": "MCM_ConfigBase",
+   "readsSettings": true
+  },
+  "newGame": {
+   "value": 10,
+   "why": [
+    "OnConfigInit runs once when the menu registers in a new game; it sets `migrated` and calls LoadSettings, which goes on only while bEnabled:Maintenance is set (it is 1) and then calls Load, which reads iWTGeneralRequirementsMinimalLevel:Requirements (10, settings.ini in Wyrmstooth - Settings Loader) and sets WTStartLevel to it",
+    "MigrateToMCMHelper, which would copy the global's record value (20.0) into that setting, runs only from OnGameReload or OnConfigOpen while `migrated` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would)",
+    "OnGameReload reloads the settings only when bLoadSettingsonReload:Maintenance is set; it is 0, so later loads keep whatever the global holds"
+   ],
+   "verdict": "run time"
+  }
+ },
+ "missingScripts": [
+  "AAS_PlayerScript",
+  "ACFH_TIF__03000B2B",
+  "ACFH_TIF__03000B6B",
+  "BGSSSE010_OnReadSetStageAlias",
+  "BaanMalurCarriageScript",
+  "HLIO_TIF__0598299C",
+  "JR0_QF_JRLucienCCSaintsAndSed_07000800",
+  "JR_TIF__05172482",
+  "JR_TIF__05172488",
+  "ParryManagerQuestScript",
+  "QF_DLCDwarvenPuzzleDungeonQu_050038D9",
+  "QF_HRI_Events_Quest_WEWerebe_0402904A",
+  "QF_SOMRRumoursQuest_0721AE15",
+  "QF_ccBGSSSE001_Crab_MQ1_050009D4",
+  "QF_ccBGSSSE001_Crab_MQ2_050009DA",
+  "QF_ccBGSSSE001_Crab_MQ3_050009D6",
+  "QF_ccBGSSSE001_Fish_MQ1_050009DE",
+  "QF_ccBGSSSE001_Fish_MQ2_050009EB",
+  "QF_ccBGSSSE001_Fish_MQ3_050009E8",
+  "QF_ccBGSSSE001_Fish_MQ4_050009DD",
+  "QF_ccBGSSSE001_Fish_MQ5_050009DC",
+  "QF_ccBGSSSE001_MiscQuests_050009E6",
+  "QF_ccBGSSSE001_Misc_Falkreat_050009EC",
+  "QF_ccBGSSSE001_Misc_Khajiit_050009E2",
+  "QF_ccBGSSSE001_Misc_Markarth_050009DF",
+  "QF_ccBGSSSE001_Misc_Morthal_050009E4",
+  "QF_ccBGSSSE001_Misc_Solitude_050009E3",
+  "QF_ccBGSSSE001_Misc_Whiterun_050009D7",
+  "QF_ccBGSSSE001_Misc_Whiterun_05000E5D",
+  "QF_ccBGSSSE001_Misc_Windhelm_050009D5",
+  "QF_ccBGSSSE001_Radiant_1_05000B98",
+  "QF_ccBGSSSE001_Radiant_2_05000C2F",
+  "QF_ccBGSSSE001_Radiant_3_05000C8C",
+  "QF_ccBGSSSE001_Start_MQ1_050009D3",
+  "QF_ccBGSSSE001_Start_MQ2_050009DB",
+  "QF_ccBGSSSE010_PetPurchaseQu_02000808",
+  "QF_ccBGSSSE025_ElytraPetAcqu_050010C3",
+  "QF_ccBGSSSE025_RareCuriosInt_050010C1",
+  "QF_ccBGSSSE035_PetAcquireQue_0400080A",
+  "SSE_TIF__020008AA",
+  "SSE_ccBGSSSE037_RareCurios_0100084D",
+  "SilgradCarriageScript",
+  "SkyInteract_PlayerLoadGameAlias",
+  "Survival_PlayerHitInfo",
+  "Survival_PlayerLocationInfo",
+  "Survival_ThirstPlayerAlias",
+  "Survival_VampirismLycanthropy",
+  "TIF__020458BA",
+  "TIF__023943AB",
+  "TIF__03000976",
+  "TIF__03000D75",
+  "TIF__04138034",
+  "TIF__08005903",
+  "TIF_ccBGSSSE025_StaadaFrag",
+  "TIF_ccBGSSSE025_StaadaFrag2",
+  "TIF_ccBGSSSE025_StaadaFrag3",
+  "TIF_ccBGSSSE025_StaadaFragA",
+  "TIF_ccBGSSSE025_StaadaFrgF",
+  "Traits_ElementalistPlayerScript",
+  "VS02_QF_ccVSVSSE002_MainQuest_050008C8",
+  "aaCi_TIF__0501F5BC",
+  "aaEl_QF_aaElisifUpdate0108_05014EF5",
+  "aaaVampireFeedingContractScriptB",
+  "aaaVampireFeedingRemoveAlias",
+  "ccASVSSE001_KillFollowerCheck",
+  "ccASVSSE001_OnHitStageSetScript",
+  "ccASVSSE001_SetStageonActivateScript",
+  "ccASVSSE001_TIF__05000DFC",
+  "ccASVSSE001_TIF__05000E04",
+  "ccASVSSE001_TIF__05000E07",
+  "ccASVSSE001_TIF__05000E09",
+  "ccASVSSE001_TIF__05000EAB",
+  "ccASVSSE001_TIF__0500114D",
+  "ccASVSSE001_TIF__0500115F",
+  "ccASVSSE001_TIF__05001160",
+  "ccASVSSE001_TIF__0500116A",
+  "ccASVSSE001_TIF__05001178",
+  "ccASVSSE001_TIF__05048064",
+  "ccASVSSE001_TIF__05048065",
+  "ccASVSSE001_TIF__0504806D",
+  "ccASVSSE001_TIF__05219F5B",
+  "ccASVSSE001_TaskChecklilst",
+  "ccBGSSSE001_AdvanceStageOnUpdate",
+  "ccBGSSSE001_CatapultMonitor",
+  "ccBGSSSE001_CrabEncMonitor",
+  "ccBGSSSE001_CrabMQ2EncAlias",
+  "ccBGSSSE001_CrabMQ3_Quest",
+  "ccBGSSSE001_CrabMQ4BodyCleanup",
+  "ccBGSSSE001_CrabMQ4Reinforcements",
+  "ccBGSSSE001_DeleteOnQuestDone",
+  "ccBGSSSE001_GuardPanicScript",
+  "ccBGSSSE001_ItemCollectObjectiveScript",
+  "ccBGSSSE001_MiscDwarPlayScript",
+  "ccBGSSSE001_MiscKhajPlayScript",
+  "ccBGSSSE001_MiscMarkarthScript",
+  "ccBGSSSE001_MiscQuestScript",
+  "ccBGSSSE001_MiscSol_DinnerGuestScript",
+  "ccBGSSSE001_MiscWhiterunCourier",
+  "ccBGSSSE001_OnDeathCallReinforce",
+  "ccBGSSSE001_OnReadSetStage",
+  "ccBGSSSE001_PlayerHitScript",
+  "ccBGSSSE001_Quest_SetStageAfterTimer",
+  "ccBGSSSE001_RadiantFishQuest",
+  "ccBGSSSE001_RadiantItemPlayerScript",
+  "ccBGSSSE001_RadiantJunkQuest",
+  "ccBGSSSE001_RadiantQuest3Listener",
+  "ccBGSSSE001_SandboxFollowerScript",
+  "ccBGSSSE001_SetStageOnActivate",
+  "ccBGSSSE001_SetStageOnPickup",
+  "ccBGSSSE001_StartMQ1PlayerScript",
+  "ccBGSSSE001_SwapOutfitOnCellAttach",
+  "ccBGSSSE001_TIF__0500099D",
+  "ccBGSSSE001_TIF__050009A7",
+  "ccBGSSSE001_TIF__050009BC",
+  "ccBGSSSE001_TIF__050009D1",
+  "ccBGSSSE001_TIF__05000A63",
+  "ccBGSSSE001_TIF__05000A68",
+  "ccBGSSSE001_TIF__05000B1E",
+  "ccBGSSSE001_TIF__05000B5C",
+  "ccBGSSSE001_TIF__05000B60",
+  "ccBGSSSE001_TIF__05000B64",
+  "ccBGSSSE001_TIF__05000B79",
+  "ccBGSSSE001_TIF__05000BAF",
+  "ccBGSSSE001_TIF__05000BB0",
+  "ccBGSSSE001_TIF__05000BB1",
+  "ccBGSSSE001_TIF__05000BB2",
+  "ccBGSSSE001_TIF__05000BB3",
+  "ccBGSSSE001_TIF__05000BB4",
+  "ccBGSSSE001_TIF__05000BB5",
+  "ccBGSSSE001_TIF__05000BB6",
+  "ccBGSSSE001_TIF__05000BDE",
+  "ccBGSSSE001_TIF__05000C28",
+  "ccBGSSSE001_TIF__05000C29",
+  "ccBGSSSE001_TIF__05000C49",
+  "ccBGSSSE001_TIF__05000C5C",
+  "ccBGSSSE001_TIF__05000C5E",
+  "ccBGSSSE001_TIF__05000C70",
+  "ccBGSSSE001_TIF__05000E5B",
+  "ccBGSSSE001_TIF__05000E5C",
+  "ccBGSSSE001_TIF__05000E5E",
+  "ccBGSSSE001_TIF__05000E7B",
+  "ccBGSSSE001_TIF__05000EA4",
+  "ccBGSSSE001_TIF__05000EA9",
+  "ccBGSSSE001_TIF__05000EAC",
+  "ccBGSSSE001_TIF__05000EAF",
+  "ccBGSSSE001_TIF__05000EB4",
+  "ccBGSSSE001_TIF__05000EC3",
+  "ccBGSSSE001_TIF__05000ECE",
+  "ccBGSSSE001_TIF__05000EE5",
+  "ccBGSSSE001_TIF__050C1D0F",
+  "ccBGSSSE001_WhiterunChestScript",
+  "ccBGSSSE002_TKArrowsQuestScript",
+  "ccBGSSSE010_ContainerSetStage",
+  "ccBGSSSE010_SetStageOnActivate",
+  "ccBGSSSE013_BattleScript",
+  "ccBGSSSE014_SetStageContainerOpen",
+  "ccBGSSSE018_QF_ShadowQuest_0100081C",
+  "ccBGSSSE018_ShadowrendPlaceScript",
+  "ccBGSSSE018_ShadowrendPlayerScript",
+  "ccBGSSSE025_ElytraCollectItemScript",
+  "ccBGSSSE025_RCIntegrationScript",
+  "ccBGSSSE034_MapContainerChangeAlias",
+  "ccBGSSSE034_TIF__02000837",
+  "ccBGSSSE034_TIF__02000838",
+  "ccBGSSSE034_TIF__02000839",
+  "ccBGSSSE034_TIF__0200083A",
+  "ccBGSSSE034_TIF__0200083C",
+  "ccBGSSSE034_TIF__0200084A",
+  "ccBGSSSE034_WildHorseRefAliasScript",
+  "ccBGSSSE034_WildHorsesQuestScript",
+  "ccBGSSSE034_tif__02000d6c",
+  "ccBGSSSE034_tif__02000d6d",
+  "ccBGSSSE035_MerchantAlias",
+  "ccBGSSSE035_OnActStageRefAlias",
+  "ccBGSSSE036_SetStageOnRead",
+  "ccBGSSSE051_TIF__05000833",
+  "ccBGSSSE051_TIF__05000838",
+  "ccBGSSSE051_TIF__05000839",
+  "ccBGSSSE051__TIF__0500083D",
+  "ccBGSSSE051__TIF__05000841",
+  "ccBGSSSE067_ContentAwareScript",
+  "ccBGSSSE067_QuestFunctionsScript",
+  "ccBGSSSE067_Quest_0506BFC1",
+  "ccBGSSSE067_SetStageOnActivateConfirm",
+  "ccBGSSSE067_SetStageOnOpenRefAlias",
+  "ccBGSSSE067_SetStageTriggerScript",
+  "ccEDHSSE003_TIF__02000860",
+  "ccEDHSSE003_TIF__02000862",
+  "ccEDHSSE003_TIF__0200086B",
+  "ccEDHSSE003_TIF__02000871",
+  "ccEDHSSE003_TIF__02000875",
+  "ccEDHSSE003_TIF__0200088B",
+  "ccEDHSSE003_TIF__020008B0",
+  "ccEEJSSE004__05000C54",
+  "ccEEJSSE004__05000C58",
+  "ccEEJSSE004__05000C72",
+  "ccEEJSSE005_DeathCount",
+  "ccEEJSSE005_Quest_050B7AED",
+  "ccEEJSSE005_SetGlobalOnPickup",
+  "ccEEJSSE005_TIF__050DB2AD",
+  "ccEEJSSE005_TIF__050DB2C5",
+  "ccFFBSSE001_SoldierDeadCountScript",
+  "ccKRTSSE001_DoorActivateScript",
+  "ccKRTSSE001_FerrySyste_05000A7B",
+  "ccKRTSSE001_GTScript",
+  "ccKRTSSE001_GameTimeScript",
+  "ccKRTSSE001_QuestFortu_05000A90",
+  "ccKRTSSE001_SetStageOnLoadScript",
+  "ccKRTSSE001_SleepSetStageScript",
+  "ccKRTSSE001_StageSetonActivate",
+  "ccKRTSSE001_TIF__05000A7E",
+  "ccQDRSSE002_FollowerIdleOnSitScript",
+  "ccRMSSSE001_AltarActivateScript",
+  "ccRMSSSE001_GhostTrapScript",
+  "ccRMSSSE001_SleepSetStageScript",
+  "ccRMSSSE001_TorchCountScript",
+  "ccRMSSSE001_TradeWithSkeletonScript",
+  "ccVSVSSE002_MainQuestScript",
+  "ccVSVSSE003_QF_MainQuest",
+  "ccVSVSSE004_AnimalAliasEggScript",
+  "ccVSVSSE004_AnimalAliasMilkScript",
+  "ccVSVSSE004_F_MainQuestManager",
+  "ccVSVSSE004_F_OverseerAliasScript",
+  "ccVSVSSE004_GuardDogAliasScript",
+  "ccVSVSSE004_HorseAliasScript",
+  "ccVSVSSE004_TIF_BuyChickens",
+  "ccVSVSSE004_TIF_BuyChickensSpouse",
+  "ccVSVSSE004_TIF_BuyCow",
+  "ccVSVSSE004_TIF_BuyCowSpouse",
+  "ccVSVSSE004_TIF_BuyGoat",
+  "ccVSVSSE004_TIF_BuyGoatSpouse",
+  "ccVSVSSE004_TIF_BuyHorse",
+  "ccVSVSSE004_TIF_BuyHorseSpouse",
+  "ccVSVSSE004_TIF_CollectProfitF",
+  "ccVSVSSE004_TIF_CollectProfitM",
+  "ccVSVSSE004_TIF_CollectProfitSpouse",
+  "ccVSVSSE004_TIF_FarmhandDismiss2",
+  "ccVSVSSE004_TIF_FarmhandHire",
+  "ccVSVSSE004_TIF_OverseerHire",
+  "ccVSVSSE004_TIF_OverseerHireSpouse",
+  "ccVSVSSE004_TIF_SpawnFarmhand1",
+  "ccVSVSSE004_TIF_SpawnFarmhand1Spouse",
+  "ccVSVSSE004_TIF_UpgradeAltKidRoom",
+  "ccVSVSSE004_TIF_UpgradeBedroom",
+  "ccVSVSSE004_TIF_UpgradeBedroomSpouse",
+  "ccVSVSSE004_TIF_UpgradeDining",
+  "ccVSVSSE004_TIF_UpgradeDiningSpouse",
+  "ccVSVSSE004_TIF_UpgradeKidRoom",
+  "ccVSVSSE004_TIF_UpgradeKidRoomAltS",
+  "ccVSVSSE004_TIF_UpgradeKidRoomRepS",
+  "ccVSVSSE004_TIF_UpgradeKidRoomReplace",
+  "ccVSVSSE004_TIF_UpgradeKidRoomSpouse",
+  "ccVSVSSE004_TIF_UpgradeKitchen",
+  "ccVSVSSE004_TIF_UpgradeKitchenSpouse",
+  "ccVSVSSE004_TIF_UpgradeLab",
+  "ccVSVSSE004_TIF_UpgradeLabSpouse",
+  "ccVSVSSE004_TIF_UpgradeLoft",
+  "ccVSVSSE004_TIF_UpgradeLoftSpouse",
+  "urshug_TIF__0200183E"
+ ]
+}

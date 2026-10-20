@@ -45,3 +45,6 @@ next-env.d.ts
 /test-results/
 /playwright-report/
 __pycache__/
+
+# story check caches and batch checkpoints (scripts/gamedata/story_check_all.py)
+gamedata/*/story_checks/.*
