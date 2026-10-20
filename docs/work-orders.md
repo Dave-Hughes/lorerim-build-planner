@@ -4634,7 +4634,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - The WO-110 and WO-111 e2e send the new shapes.
 
 ### Done when
-- [ ] `tools/list` on staging shows no `anyOf` or `oneOf` in any input schema.
+- [x] `tools/list` on staging shows no `anyOf` or `oneOf` in any input schema.
 - [ ] Dave's Claude adds a reach objective ("Lute to 66") through the door and it saves with its meter.
 - [x] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
 
