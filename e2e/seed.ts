@@ -610,7 +610,8 @@ async function seedKyria(db: any) {
     c(1, { title: "Chapter One: The Chapel by the Sea", doc: para("The chapel bells in Anvil rang the hours for the girl who swept its floors.", "She learned the songs before she learned her letters.") }),
     c(2, { title: "Chapter Two: The Night of Lanterns", doc: para("On the night of lanterns the priests let her carry the brass one at the front.") }),
     c(3, { title: "Chapter Three: The Shield and the Sword", doc: para("The Vigilants came through in autumn and one of them stayed to teach her the sword.") }),
-    c(4, { title: "Chapter Four: The Sister's House", doc: para("The road north ended at a temple in Riften, where a sister of Mara took her in without a question.", "She wrapped the sword in sackcloth and put it under the bed.") }),
+    // Act I's own chapter (WO-116): the story of that stretch, on the act's card.
+    c(4, { kind: "act", actId: a1, title: "The Sister's House", doc: para("The road north ended at a temple in Riften, where a sister of Mara took her in without a question.", "She wrapped the sword in sackcloth and put it under the bed.") }),
     c(5, { kind: "entry", actId: a1, title: "The first set", opensAfter: id(5), fromSave: "Save 5", writtenBy: "Claude", doc: para("The Bee and Barb was half empty and the lute was out of tune, and she played anyway.") }),
     c(6, { kind: "entry", actId: a1, title: "The Mark of Dibella", opensAfter: id(2), fromSave: "Save 7", writtenBy: "Claude", doc: para("She told Haelga what Svana knew, and Haelga thanked her with a look she did not like.") }),
     c(7, { kind: "beat", actId: a1, title: "Made with Care", opensAfter: id(8), writtenBy: "Claude", doc: para("The hide was rough under her hands, and she thought of the chapel's leather prayer books.") }),

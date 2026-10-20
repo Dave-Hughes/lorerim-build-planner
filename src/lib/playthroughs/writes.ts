@@ -275,6 +275,14 @@ export async function setAct(userId: string, pid: string, actId: number, input: 
   await touch(p.id);
 }
 
+/** The act's picture (WO-116): an image uploaded through the run's guide images path, or none. */
+export async function setActImage(userId: string, pid: string, actId: number, url: string | null) {
+  const { p, act } = await ownedAct(userId, pid, actId);
+  if (url && !isOurImage(url)) fail("Images must be uploaded to the site.");
+  await db().update(schema.playthroughActs).set({ imageUrl: url }).where(eq(schema.playthroughActs.id, act.id));
+  await touch(p.id);
+}
+
 export async function removeAct(userId: string, pid: string, actId: number) {
   const { p, act } = await ownedAct(userId, pid, actId);
   const acts = await actsOf(p.id);
@@ -458,12 +466,22 @@ export async function addChapter(userId: string, pid: string, input: ChapterInpu
   const p = await ownedPlaythrough(userId, pid);
   const title = chapterTitleSchema.safeParse(input.title);
   if (!title.success) fail(firstIssue(title.error));
-  if (!["chapter", "entry", "beat"].includes(input.kind)) fail("A piece of the tale is a chapter, an entry or a beat.");
+  if (!["chapter", "act", "entry", "beat"].includes(input.kind)) fail("A piece of the tale is a chapter, an act's chapter, an entry or a beat.");
   const { doc, length } = chapterDoc(input.doc ?? lineDoc(""));
   let actId: number | null = null;
   let opensAfter: number | null = null;
   if (input.kind === "chapter") actId = null;
-  else if (input.opensAfter) {
+  else if (input.kind === "act") {
+    // One per act (WO-116): the story of that stretch, before the player plays it.
+    if (!input.actId) fail("Say which act the chapter opens.");
+    actId = (await ownedAct(userId, p.id, input.actId!)).act.id;
+    const [had] = await db()
+      .select({ id: schema.playthroughChapters.id })
+      .from(schema.playthroughChapters)
+      .where(and(eq(schema.playthroughChapters.actId, actId), eq(schema.playthroughChapters.kind, "act")))
+      .limit(1);
+    if (had) fail("This act has its chapter already. Edit that one.");
+  } else if (input.opensAfter) {
     opensAfter = Number(input.opensAfter);
     actId = await objectiveAct(p.id, opensAfter);
   } else if (input.actId) actId = (await ownedAct(userId, p.id, input.actId)).act.id;

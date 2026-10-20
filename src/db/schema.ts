@@ -376,6 +376,8 @@ export const playthroughActs = pgTable(
     place: text("place").notNull().default(""),
     goal: text("goal").notNull().default(""),
     standingRule: text("standing_rule"),
+    /** The act's picture on its story card and in the reader (WO-116), uploaded as a guide image; null: its chapter's first image, else the cover. */
+    imageUrl: text("image_url"),
   },
   (t) => [index("playthrough_act_idx").on(t.playthroughId, t.position)],
 );

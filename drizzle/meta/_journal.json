@@ -120,6 +120,13 @@
       "when": 1792493581878,
       "tag": "0016_tale_title",
       "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "7",
+      "when": 1792521310333,
+      "tag": "0017_act_image",
+      "breakpoints": true
     }
   ]
 }

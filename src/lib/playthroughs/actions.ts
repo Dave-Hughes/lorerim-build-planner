@@ -49,6 +49,7 @@ export const removePlaythrough = async (id: string) => run(null, (u) => w.delete
 
 export const newAct = async (id: string, input: ActInput) => run(id, (u) => w.addAct(u, id, input));
 export const saveAct = async (id: string, actId: number, input: Partial<ActInput>) => run(id, (u) => w.setAct(u, id, actId, input));
+export const saveActImage = async (id: string, actId: number, url: string | null) => run(id, (u) => w.setActImage(u, id, actId, url));
 export const removeAct = async (id: string, actId: number) => run(id, (u) => w.removeAct(u, id, actId));
 export const moveAct = async (id: string, actId: number, to: "up" | "down") => run(id, (u) => w.moveAct(u, id, actId, to));
 

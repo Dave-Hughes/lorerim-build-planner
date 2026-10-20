@@ -420,6 +420,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
 
           {/* The reader's first-time tour (WO-61), on the Levels tab where its stops are. */}
           {tab === "levels" && !playTab && !reading && <Tour kind="reader" script={readerTour} firstStop={build.example ? <ExampleTag small /> : undefined} />}
+          {tab !== "play" && (
           <div className={styles.withRail}>
           <ContentsRail items={railItems} />
           <div className={styles.railMain}>
@@ -450,6 +451,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           )}
           </div>
           </div>
+          )}
           {tab === "play" && playTab && (
             <div id="panel-play" role="tabpanel" aria-labelledby="tab-play">
               {playTab.node}

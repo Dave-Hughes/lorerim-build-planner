@@ -18,6 +18,8 @@ export interface ActRow {
   place: string;
   goal: string;
   standingRule: string | null;
+  /** The act's picture (WO-116); none: its chapter's first image, else the cover. */
+  imageUrl?: string | null;
 }
 export interface ObjectiveRow {
   id: number;
@@ -44,6 +46,8 @@ export interface ChapterRow {
   fromSave: string | null;
   writtenBy: string | null;
   createdAt: Date | string;
+  /** When the owner opened it (Read it anyway, or an act's story card, WO-116). */
+  readAt?: Date | string | null;
   doc: GuideDoc;
 }
 export interface SnapshotRow extends SnapshotValues {
@@ -79,6 +83,8 @@ export interface ActView extends ActRow {
   total: number;
   /** Beats in this act with no objective to wait for: open from the start. */
   openBeats: number[];
+  /** The act's own chapter (WO-116), if it has one. */
+  chapter: number | null;
 }
 export interface ChapterView extends ChapterRow {
   open: boolean;
@@ -137,7 +143,7 @@ export function assemble(rows: { acts: ActRow[]; objectives: ObjectiveRow[]; cha
       ...o,
       worked: worked.get(o.id)!,
       linkShown: o.link ? rows.link(o.link) : null,
-      tale: chapters.filter((c) => c.kind !== "chapter" && c.opensAfter === o.id).map((c) => ({ id: c.id, title: c.title, open: isOpen(c, doneIds), opens: opensText(o) })),
+      tale: chapters.filter((c) => (c.kind === "entry" || c.kind === "beat") && c.opensAfter === o.id).map((c) => ({ id: c.id, title: c.title, open: isOpen(c, doneIds), opens: opensText(o) })),
     }));
     const counted = views.filter((o) => o.accepted);
     return {
@@ -147,7 +153,8 @@ export function assemble(rows: { acts: ActRow[]; objectives: ObjectiveRow[]; cha
       objectives: views,
       done: counted.filter((o) => o.worked.done).length,
       total: counted.length,
-      openBeats: chapters.filter((c) => c.actId === a.id && c.opensAfter === null && c.kind !== "chapter").map((c) => c.id),
+      openBeats: chapters.filter((c) => c.actId === a.id && c.opensAfter === null && (c.kind === "entry" || c.kind === "beat")).map((c) => c.id),
+      chapter: chapters.find((c) => c.actId === a.id && c.kind === "act")?.id ?? null,
     };
   });
 
@@ -163,9 +170,10 @@ export function assemble(rows: { acts: ActRow[]; objectives: ObjectiveRow[]; cha
       inGame: o ? { id: o.id, text: o.text, act: actName.get(o.actId) ?? "" } : null,
     };
   });
-  // The tale reads in order: chapters before the game, then each act's entries and beats.
+  // The tale reads in order: chapters before the game, then each act's chapter, entries and beats.
   const actOrder = new Map(acts.map((a, i) => [a.id, i]));
-  chapterViews.sort((x, y) => (x.actId === null ? -1 : actOrder.get(x.actId)!) - (y.actId === null ? -1 : actOrder.get(y.actId)!) || x.position - y.position);
+  const actFirst = (c: ChapterView) => (c.kind === "act" ? 0 : 1);
+  chapterViews.sort((x, y) => (x.actId === null ? -1 : actOrder.get(x.actId)!) - (y.actId === null ? -1 : actOrder.get(y.actId)!) || actFirst(x) - actFirst(y) || x.position - y.position);
 
   const done = actViews.reduce((n, a) => n + a.done, 0);
   const total = actViews.reduce((n, a) => n + a.total, 0);

@@ -42,8 +42,8 @@ export interface ReaderBack {
   label: string;
 }
 
-/** A run's tale, in reading order. `cover` is the character's cover; `acts` may carry a picture each. */
-export function runStops(p: { id: string; taleLine: string | null; view: PlaythroughView; cover: string | null; isOwner: boolean; actImages?: Map<number, string | null> }): ReaderStop[] {
+/** A run's tale, in reading order. `cover` is the character's cover. */
+export function runStops(p: { id: string; taleLine: string | null; view: PlaythroughView; cover: string | null; isOwner: boolean }): ReaderStop[] {
   const v = p.view;
   const actOf = new Map(v.acts.map((a, i) => [a.id, { a, n: i + 1 }]));
   const rowHref = (oid: number) => {
@@ -53,7 +53,7 @@ export function runStops(p: { id: string; taleLine: string | null; view: Playthr
   return v.chapters.map((c, i) => {
     const act = c.actId !== null ? actOf.get(c.actId) : undefined;
     const fromText = c.open ? firstPlate(c.doc) : null;
-    const actPicture = act ? (p.actImages?.get(act.a.id) ?? actFirstImage(v, act.a)) : null;
+    const actPicture = act ? actPictureOf(v, act.a) : null;
     return {
       key: String(c.id),
       href: `/p/${p.id}/story/${c.id}`,
@@ -96,8 +96,9 @@ export function storyStop(b: { id: string; title: string; line: string; doc: Gui
   };
 }
 
-/** The first image of an act's own chapter, for the act's picture when it has none of its own. */
-function actFirstImage(v: PlaythroughView, a: ActView): string | null {
+/** An act's picture (WO-116): its own, else the first image of its chapter. The cover comes after. */
+export function actPictureOf(v: PlaythroughView, a: ActView): string | null {
+  if (a.imageUrl) return a.imageUrl;
   const c = v.chapters.find((x) => x.kind === "act" && x.actId === a.id);
   return c ? firstPlate(c.doc) : null;
 }

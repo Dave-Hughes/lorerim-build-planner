@@ -46,6 +46,8 @@ export default async function EditPlaythroughPage({ params, searchParams }: { pa
       place: a.place,
       goal: a.goal,
       standingRule: a.standingRule,
+      imageUrl: a.imageUrl ?? null,
+      chapterId: a.chapter,
       objectives: a.objectives.map((o) => ({
         id: o.id,
         text: o.text,

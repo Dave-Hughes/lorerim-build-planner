@@ -4,7 +4,9 @@ import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
 import { skillsMoved, type ActView, type ObjectiveView } from "@/lib/playthroughs/view";
 import { Answer, HandEntry, StatusPick, TickBox, Visibility } from "./play-controls";
 import { ReaderProvider, ReaderLink } from "@/components/reader/reader";
-import { runStops } from "@/lib/playthroughs/reader";
+import { actPictureOf, runStops } from "@/lib/playthroughs/reader";
+import { docText, docWords } from "@/lib/guide/doc";
+import { ActCard } from "./act-card";
 import { RunHero } from "./tabs";
 import s from "./play.module.css";
 
@@ -52,6 +54,7 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
   const curIdx = v.current ? v.acts.indexOf(v.current) : -1;
   const next = v.current ? nextUp(v.current) : null;
   const nextAct = curIdx >= 0 ? v.acts[curIdx + 1] : undefined;
+  const card = act ? actCard(p, act) : null;
 
   return (
     <div className={s.body}>
@@ -143,16 +146,25 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
         <div className={s.col}>
           {act ? (
             <>
-              <section className={`frame ${s.panel}`} aria-labelledby="act-head">
-                <span className={s.head}>
-                  <h2 id="act-head" className={s.h2}>
-                    Act {act.n} {act.name}
-                  </h2>
-                  <span className={s.note}>{[act.levels, act.place].filter(Boolean).join(" | ")}</span>
-                </span>
-                {act.goal && <span className={s.goal}>{act.goal}</span>}
-                {act.standingRule && <span className={s.rule}>Standing rule: {act.standingRule}</span>}
-              </section>
+              {card ? (
+                // The act opens with its story (WO-116): the card, then the goal line leads the objectives.
+                <section aria-label={`Act ${act.n} ${act.name}`} className={s.actOpen}>
+                  <ActCard key={card.chapterId} runId={p.id} isOwner={isOwner} {...card} />
+                  {act.goal && <span className={s.goal}>{act.goal}</span>}
+                  {act.standingRule && <span className={s.rule}>Standing rule: {act.standingRule}</span>}
+                </section>
+              ) : (
+                <section className={`frame ${s.panel}`} aria-labelledby="act-head">
+                  <span className={s.head}>
+                    <h2 id="act-head" className={s.h2}>
+                      Act {act.n} {act.name}
+                    </h2>
+                    <span className={s.note}>{[act.levels, act.place].filter(Boolean).join(" | ")}</span>
+                  </span>
+                  {act.goal && <span className={s.goal}>{act.goal}</span>}
+                  {act.standingRule && <span className={s.rule}>Standing rule: {act.standingRule}</span>}
+                </section>
+              )}
 
               <section aria-labelledby="objs" className={s.objs}>
                 <span className={`${s.head} ${s.headRule}`}>
@@ -161,18 +173,6 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
                   </h2>
                   <span className={s.note}>Ticked from your save where it can tell; the rest by you</span>
                 </span>
-                {act.openBeats.length > 0 &&
-                  act.openBeats.map((cid) => {
-                    const c = v.chapters.find((x) => x.id === cid)!;
-                    return (
-                      <div key={cid} className={s.tale}>
-                        <span>
-                          <span className={s.taleTitle}>{c.title}</span> is open in the tale.{" "}
-                          <ReaderLink href={`/p/${p.id}/story/${c.id}`}>Read it ›</ReaderLink>
-                        </span>
-                      </div>
-                    );
-                  })}
                 {act.objectives.map((o) => (
                   <Objective key={o.id} o={o} p={p} isOwner={isOwner} />
                 ))}
@@ -269,6 +269,29 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
   );
 }
 
+/** An act's story card (WO-116): its chapter, picture, first lines and length; none without a chapter. */
+function actCard(p: PlaythroughRecord, act: ActView) {
+  const v = p.view;
+  const c = act.chapter !== null ? v.chapters.find((x) => x.id === act.chapter) : undefined;
+  if (!c) return null;
+  const pieces = v.chapters.filter((x) => x.actId === act.id && (x.kind === "act" || x.open));
+  const entries = pieces.filter((x) => x.kind === "entry").length;
+  const beats = pieces.filter((x) => x.kind === "beat").length;
+  const minutes = Math.max(1, Math.ceil(pieces.reduce((n, x) => n + docWords(x.doc), 0) / 200));
+  const parts = ["a chapter", ...(entries ? [`${entries === 1 ? "an entry" : `${entries} entries`}`] : []), ...(beats ? [`${beats === 1 ? "a beat" : `${beats} beats`}`] : [])];
+  const said = parts.length > 1 ? `${parts.slice(0, -1).join(", ")} and ${parts.at(-1)}` : parts[0];
+  const paras = c.doc.content.filter((n) => n.type === "paragraph").map((n) => docText(n).trim()).filter(Boolean);
+  return {
+    chapterId: c.id,
+    n: act.n,
+    name: act.name,
+    picture: actPictureOf(v, act) ?? p.build?.coverImageUrl ?? null,
+    lines: paras.slice(0, 2).join(" "),
+    length: `${minutes} min | ${said}`,
+    read: !!c.readAt,
+  };
+}
+
 /** What's next in the act: the first objective not done, and the first beat still waiting. */
 function nextUp(a: ActView): { game: string | null; tale: string | null } {
   const game = a.objectives.find((o) => o.accepted && !o.worked.done) ?? null;
@@ -315,23 +338,23 @@ function Objective({ o, p, isOwner }: { o: ObjectiveView; p: PlaythroughRecord; 
           </span>
         )}
         {suggested && isOwner && <Answer id={p.id} objectiveId={o.id} />}
+        {/* Story markers (WO-116): the entries and beats that hang off this objective. */}
+        {o.tale.map((t) =>
+          t.open ? (
+            <ReaderLink key={t.id} href={`/p/${p.id}/story/${t.id}`} className={s.mark}>
+              <span className={s.markKind}>Story</span>
+              <b>{t.title}</b>
+              <span aria-hidden="true">›</span>
+            </ReaderLink>
+          ) : (
+            <span key={t.id} className={`${s.mark} ${s.markWait}`}>
+              <span className={s.markKind}>Story</span>
+              <b>{t.title}</b>
+              <span>{t.opens}</span>
+            </span>
+          ),
+        )}
       </div>
-      {o.tale.map((t) =>
-        t.open ? (
-          <div key={t.id} className={s.tale}>
-            <span>
-              <span className={s.taleTitle}>{t.title}</span> opened from this.{" "}
-              <ReaderLink href={`/p/${p.id}/story/${t.id}`}>Read it ›</ReaderLink>
-            </span>
-          </div>
-        ) : (
-          <div key={t.id} className={`${s.tale} ${s.taleWait}`}>
-            <span>
-              <span className={s.taleTitle}>{t.title}</span> {t.opens}.
-            </span>
-          </div>
-        ),
-      )}
     </>
   );
 }

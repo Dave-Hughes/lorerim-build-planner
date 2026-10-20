@@ -42,6 +42,10 @@ export interface EditAct {
   place: string;
   goal: string;
   standingRule: string | null;
+  /** The act's picture on its story card (WO-116). */
+  imageUrl: string | null;
+  /** The act's own chapter (WO-116), if written. */
+  chapterId: number | null;
   objectives: EditObjective[];
 }
 export interface EditChapter {
@@ -246,6 +250,7 @@ function ActFields({ pid, a, onSaved }: { pid: string; a: EditAct; onSaved: () =
         {input("place", "Place", 80)}
       </div>
       {input("goal", "The goal, in one line", 200)}
+      <ActStory pid={pid} a={a} save={save} />
       <label className={s.field}>
         <span className={s.lbl}>Standing rule for the act, if any</span>
         <input
@@ -263,6 +268,82 @@ function ActFields({ pid, a, onSaved }: { pid: string; a: EditAct; onSaved: () =
         </span>
       )}
     </section>
+  );
+}
+
+/**
+ * The act's story (WO-116): its own chapter, the story of that stretch, written in the Story editor,
+ * and its picture on the act's card, uploaded as the tale's images are.
+ */
+function ActStory({ pid, a, save }: { pid: string; a: EditAct; save: ReturnType<typeof useSave>["save"] }) {
+  const router = useRouter();
+  const [uploading, setUploading] = useState(false);
+  const [upError, setUpError] = useState<string | null>(null);
+  return (
+    <div className={`${s.row} ${s.three}`}>
+      <span className={s.field}>
+        <span className={s.lbl}>The act&apos;s chapter</span>
+        {a.chapterId ? (
+          <Link href={`/p/${pid}/edit/tale/${a.chapterId}`} className="btn btn-sm" style={{ alignSelf: "flex-start" }}>
+            Edit it
+          </Link>
+        ) : (
+          <button
+            type="button"
+            className="btn btn-sm"
+            style={{ alignSelf: "flex-start" }}
+            onClick={() =>
+              save(async () => {
+                const r = await act.newChapter(pid, { kind: "act", title: a.name, actId: a.id });
+                if (r.ok) router.push(`/p/${pid}/edit/tale/${r.value}`);
+                return r;
+              })
+            }
+          >
+            Write it
+          </button>
+        )}
+      </span>
+      <span className={s.field}>
+        <span className={s.lbl}>The act&apos;s picture</span>
+        <span className={s.actions} style={{ alignItems: "center" }}>
+          <label className="btn btn-sm" style={{ cursor: "pointer" }}>
+            {uploading ? "Uploading" : a.imageUrl ? "Change it" : "Add one"}
+            <input
+              type="file"
+              accept="image/png,image/jpeg,image/webp,image/gif"
+              className="sr-only"
+              onChange={async (e) => {
+                const file = e.target.files?.[0];
+                if (!file) return;
+                setUploading(true);
+                setUpError(null);
+                const form = new FormData();
+                form.append("file", file);
+                const res = await fetch(`/api/playthroughs/${pid}/images`, { method: "POST", body: form }).catch(() => null);
+                const body = (await res?.json().catch(() => ({}))) as { url?: string; error?: string } | undefined;
+                setUploading(false);
+                if (body?.url) save(() => act.saveActImage(pid, a.id, body.url!), true);
+                else setUpError(body?.error ?? "The upload didn't finish. Try again.");
+              }}
+            />
+          </label>
+          {a.imageUrl && (
+            <button type="button" className="btn btn-sm" onClick={() => save(() => act.saveActImage(pid, a.id, null), true)}>
+              Remove
+            </button>
+          )}
+        </span>
+        {upError && (
+          <span role="alert" className={s.error}>
+            {upError}
+          </span>
+        )}
+      </span>
+      <span className={s.note} style={{ alignSelf: "end" }}>
+        {a.imageUrl ? "On the act's card and over its chapter." : "None: the chapter's first image, else the cover."}
+      </span>
+    </div>
   );
 }
 

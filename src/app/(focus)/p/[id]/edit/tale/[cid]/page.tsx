@@ -23,7 +23,7 @@ export default async function ChapterEditPage({ params }: { params: Params }) {
   const c = p.view.chapters.find((x) => x.id === Number(cid));
   if (!c) notFound();
   const version = isKnownVersion(p.gameVersion) ? p.gameVersion : currentVersion().id;
-  const back = c.kind === "beat" && c.actId ? `/p/${id}/edit?act=${c.actId}` : `/p/${id}/edit?tale=1`;
+  const back = (c.kind === "beat" || c.kind === "act") && c.actId ? `/p/${id}/edit?act=${c.actId}` : `/p/${id}/edit?tale=1`;
   return (
     <GameDataProvider version={version} serverVersion={clientVersion(version)}>
       <ChapterEditor pid={id} playthrough={p.name} chapter={{ id: c.id, kind: c.kind, title: c.title, fromSave: c.fromSave, doc: c.doc }} back={back} />

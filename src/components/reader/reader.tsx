@@ -55,7 +55,7 @@ export function ReaderProvider({ stops, back, runId, children }: { stops: Reader
 }
 
 /** A way into the reader: opens it over the page; a new tab or no reader on the page follows the link. */
-export function ReaderLink({ href, className, children, ...rest }: { href: string; className?: string; children: React.ReactNode } & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href">) {
+export function ReaderLink({ href, className, children, onClick, ...rest }: { href: string; className?: string; children: React.ReactNode } & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href">) {
   const ctx = useContext(ReaderContext);
   return (
     <a
@@ -63,6 +63,7 @@ export function ReaderLink({ href, className, children, ...rest }: { href: strin
       href={href}
       className={className}
       onClick={(e) => {
+        onClick?.(e);
         if (!ctx || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
         if (ctx.open(href)) e.preventDefault();
       }}
