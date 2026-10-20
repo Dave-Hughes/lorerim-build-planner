@@ -1,0 +1,335 @@
+/*
+ * The Story written in the reader (WO-117), as the EditStory board: Contents on the left; on the right
+ * the reader's own plate and column on its dark ground, typed in place. The reader's type comes from
+ * reader.module.css; this adds the dashes, the slots and the controls Write shows and Preview hides.
+ */
+.main {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 40px;
+  padding-top: 24px;
+  padding-bottom: 72px;
+  align-items: start;
+}
+
+/* Contents. */
+.contents {
+  display: flex;
+  flex-direction: column;
+  transition: opacity 200ms;
+}
+.dimmed {
+  opacity: 0.35;
+}
+.contentsHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.head,
+.groupHead {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--soft);
+}
+.group {
+  display: flex;
+  flex-direction: column;
+}
+.groupHead {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  color: var(--brass);
+  padding: 18px 0 6px;
+}
+.groupEmpty {
+  color: #6f7c8c;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 10px;
+  border-left: 2px solid transparent;
+  font-size: 15px;
+  color: var(--soft);
+  text-decoration: none;
+}
+.item:hover {
+  color: var(--text);
+}
+.item[aria-current="page"] {
+  border-left-color: var(--ember);
+  background: var(--panel);
+  color: var(--ember);
+}
+.item[draggable="true"] {
+  cursor: grab;
+}
+.itemDashed {
+  align-items: center;
+  min-height: 40px;
+  margin: 4px 0;
+  border: 1px dashed var(--rule-strong);
+}
+.itemDashed[aria-current="page"] {
+  border: 1px dashed var(--ember);
+}
+.tag {
+  font-size: 13px;
+  color: #6f7c8c;
+}
+.nothing {
+  padding: 2px 10px;
+  font-size: 14px;
+  color: #6f7c8c;
+}
+.addRow {
+  padding: 8px 10px;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  color: var(--muted);
+  text-align: left;
+  cursor: pointer;
+}
+.addRow:hover {
+  color: var(--text);
+}
+.addTwo {
+  display: flex;
+  gap: 8px;
+  padding: 6px 10px;
+}
+.error {
+  padding: 4px 10px;
+  font-size: 14px;
+  color: var(--health);
+}
+
+/* The sheet: the reader's own ground. */
+.sheet {
+  --story-ink: #ddd5c6;
+  --story-ground: #0b0f14;
+  --story-muted: #8e9bab;
+  --story-line: #cbbfa8;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--story-ground);
+  border: 1px solid var(--rule-soft);
+  color: var(--story-ink);
+}
+.strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 14px;
+}
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--rule-strong);
+}
+.seg button {
+  height: 34px;
+  padding: 0 14px;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  color: var(--muted);
+  cursor: pointer;
+}
+.seg button + button {
+  border-left: 1px solid var(--rule-strong);
+}
+.seg button[aria-pressed="true"] {
+  background: #263040;
+  color: var(--text);
+  box-shadow: inset 0 -2px 0 var(--text);
+}
+
+.plate {
+  position: relative;
+  height: 440px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.plateImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 40%;
+}
+.plateFade {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 300px;
+  background: linear-gradient(to bottom, rgba(11, 15, 20, 0) 0%, rgba(11, 15, 20, 0.82) 62%, #0b0f14 100%);
+}
+.plateTools {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 10px;
+  z-index: 1;
+}
+/* An empty plate is a dashed slot for its picture (Write only). */
+.plateSlot {
+  position: absolute;
+  inset: 16px 16px 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 70px;
+  border: 1px dashed var(--rule-strong);
+  border-bottom: 0;
+}
+.previewing .plateEmpty {
+  height: auto;
+  padding-top: 120px;
+}
+.words {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-bottom: 40px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+/* The title and line are inputs in the reader's own type, with a dashed line under them in Write. */
+.titleInput,
+.lineInput {
+  width: 100%;
+  max-width: 900px;
+  padding: 0 0 4px;
+  border: 0;
+  border-bottom: 1px dashed var(--rule-strong);
+  background: none;
+  text-align: center;
+}
+.titleInput {
+  font-size: 60px;
+}
+.titleInput:focus,
+.lineInput:focus {
+  outline: none;
+  border-bottom-color: var(--brass);
+}
+.titleInput::placeholder,
+.lineInput::placeholder {
+  color: #6f7c8c;
+}
+.lineInput {
+  max-width: 680px;
+}
+.opens {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px 0;
+  font-size: 14px;
+}
+.opensSelect {
+  width: auto;
+  max-width: 420px;
+  min-height: 32px;
+  font-size: 14px;
+}
+
+.col {
+  gap: 16px;
+}
+.insert {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.insertRule {
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+/* The guide editor, set as the reader's column. */
+.editor :global(.ProseMirror) {
+  font-family: var(--font-flavor);
+  font-size: 20px;
+  line-height: 1.75;
+  color: var(--story-ink);
+  min-height: 160px;
+}
+.editor :global(.ProseMirror p) {
+  margin: 0 0 26px;
+}
+.editorEntry {
+  border-left: 2px solid var(--brass);
+  padding-left: 22px;
+}
+.foot {
+  width: 680px;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule-soft);
+  font-size: 15px;
+}
+.foot > :last-child {
+  justify-self: end;
+  text-align: right;
+}
+.footLink {
+  color: var(--soft);
+  text-decoration: none;
+}
+.footLink:hover {
+  color: var(--text);
+}
+.remove {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  color: var(--health);
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .contents {
+    order: 2;
+  }
+  .plate {
+    height: 300px;
+  }
+  .titleInput {
+    font-size: 34px;
+  }
+}

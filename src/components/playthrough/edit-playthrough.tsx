@@ -1,12 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { EditBar, type SaveState } from "@/components/editor/edit-bar";
 import type { ExtraMention } from "@/lib/guide/mention";
 import * as act from "@/lib/playthroughs/actions";
-import type { ChapterKind } from "@/lib/playthroughs/types";
 import { Report, useSave, type EditData } from "./edit-parts";
 import { PlayEdit } from "./play-edit";
 import s from "./edit.module.css";
@@ -19,110 +17,14 @@ export type { EditAct, EditChapter, EditData, EditObjective } from "./edit-parts
  * writes the assistants' tools use, and shows their refusal where it was made.
  */
 
-export function EditPlaythrough({ data, actId, tale, linkables }: { data: EditData; actId: number | null; tale: boolean; linkables: ExtraMention[] }) {
+export function EditPlaythrough({ data, actId, linkables }: { data: EditData; actId: number | null; linkables: ExtraMention[] }) {
   const [band, setBand] = useState<SaveState>({ state: "idle" });
-  const onSaved = () => {};
   const current = data.acts.find((a) => a.id === actId) ?? data.acts[0] ?? null;
   return (
     <Report.Provider value={setBand}>
-      <EditBar buildId={data.buildId ?? ""} name={data.name} current={tale ? "story" : "play"} visibility={data.visibility} save={band} />
-      {tale ? (
-        <main className={`page ${s.main}`} style={{ gridTemplateColumns: "minmax(0, 1fr)" }}>
-          <div className={s.col}>
-            <Chapters data={data} onSaved={onSaved} />
-          </div>
-        </main>
-      ) : (
-      <PlayEdit data={data} current={current} linkables={linkables} details={<Details data={data} onSaved={onSaved} />} />
-      )}
+      <EditBar buildId={data.buildId ?? ""} name={data.name} current="play" visibility={data.visibility} save={band} />
+      <PlayEdit data={data} current={current} linkables={linkables} details={<Details data={data} onSaved={() => {}} />} />
     </Report.Provider>
-  );
-}
-
-function Moves({ onMove, first, last, label }: { onMove: (to: "up" | "down") => void; first: boolean; last: boolean; label: string }) {
-  return (
-    <span className={s.moves}>
-      <button type="button" className={s.move} disabled={first} aria-label={`Move ${label} up`} onClick={() => onMove("up")}>
-        ▲
-      </button>
-      <button type="button" className={s.move} disabled={last} aria-label={`Move ${label} down`} onClick={() => onMove("down")}>
-        ▼
-      </button>
-    </span>
-  );
-}
-
-const KIND_LABEL: Record<ChapterKind, string> = { chapter: "Before the game", act: "The act's chapter", entry: "Entry", beat: "Beat" };
-
-function Chapters({ data, onSaved }: { data: EditData; onSaved: () => void }) {
-  const router = useRouter();
-  const [title, setTitle] = useState("");
-  const { error, save } = useSave(onSaved);
-  const actName = (id: number | null) => {
-    const a = data.acts.find((x) => x.id === id);
-    return a ? `Act ${a.n}` : "";
-  };
-  const groups = [{ id: null as number | null, name: "Before Skyrim" }, ...data.acts.map((a) => ({ id: a.id as number | null, name: `Act ${a.n} ${a.name}` }))];
-  return (
-    <section aria-labelledby="chapters" style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-      <span className={s.headRule}>
-        <h2 id="chapters" className={`${s.h2} ${s.h2s}`}>
-          The tale
-        </h2>
-        <Link href={`/p/${data.id}/tale`} className={s.note}>
-          Read it ›
-        </Link>
-      </span>
-      {groups.map((g) => {
-        const mine = data.chapters.filter((c) => c.actId === g.id);
-        if (!mine.length && g.id !== null) return null;
-        return (
-          <div key={String(g.id)}>
-            <span className={s.lbl}>{g.name}</span>
-            {mine.map((c, i) => (
-              <div key={c.id} className={s.chapter}>
-                <span style={{ display: "flex", flexDirection: "column", gap: 4, minWidth: 0 }}>
-                  <span className={s.chapterTitle}>{c.title}</span>
-                  <span className={s.note}>{[KIND_LABEL[c.kind], actName(c.actId)].filter(Boolean).join(" | ")}</span>
-                </span>
-                <span className={s.actions}>
-                  <Moves label={c.title} first={i === 0} last={i === mine.length - 1} onMove={(to) => save(() => act.moveChapter(data.id, c.id, to), true)} />
-                  <Link href={`/p/${data.id}/edit/story/${c.id}`} className="btn btn-sm">
-                    Edit
-                  </Link>
-                  <button type="button" className="btn btn-sm" onClick={() => window.confirm(`Remove ${c.title}?`) && save(() => act.removeChapter(data.id, c.id), true)}>
-                    Remove
-                  </button>
-                </span>
-              </div>
-            ))}
-            {g.id === null && !mine.length && <p className="muted">No chapters before the game yet.</p>}
-          </div>
-        );
-      })}
-      <form
-        className={s.add}
-        onSubmit={(e) => {
-          e.preventDefault();
-          save(async () => {
-            const r = await act.newChapter(data.id, { kind: "chapter", title });
-            if (r.ok) router.push(`/p/${data.id}/edit/story/${r.value}`);
-            return r;
-          });
-        }}
-      >
-        <input className={`input ${s.sm}`} style={{ flex: "1 1 260px" }} aria-label="New chapter's title" placeholder="[Chapter Five: The Road North]" maxLength={60} value={title} onChange={(e) => setTitle(e.target.value)} />
-        <button type="submit" className="btn btn-sm">
-          Add a chapter
-        </button>
-        <span className={s.note}>Up to 5 images a chapter, your own. Captions under each.</span>
-        {error && (
-          <span role="alert" className={s.error}>
-            {error}
-          </span>
-        )}
-      </form>
-    </section>
   );
 }
 
@@ -132,8 +34,6 @@ function Details({ data, onSaved }: { data: EditData; onSaved: () => void }) {
   const { error, save, setError } = useSave(onSaved);
   const [name, setName] = useState(data.name);
   const [line, setLine] = useState(data.line);
-  const [taleTitle, setTaleTitle] = useState(data.taleTitle);
-  const [taleLine, setTaleLine] = useState(data.taleLine);
   const [uploading, setUploading] = useState(false);
   return (
     <section className={s.panel} aria-labelledby="details" style={{ gap: 14 }}>
@@ -147,14 +47,6 @@ function Details({ data, onSaved }: { data: EditData; onSaved: () => void }) {
       <label className={s.field}>
         <span className={s.lbl}>One line</span>
         <textarea className={`textarea ${s.in}`} rows={3} value={line} maxLength={140} onChange={(e) => setLine(e.target.value)} onBlur={() => line !== data.line && save(() => act.saveDetails(data.id, { line }), true)} />
-      </label>
-      <label className={s.field}>
-        <span className={s.lbl}>The tale&apos;s title</span>
-        <input className={`input ${s.in}`} value={taleTitle} maxLength={60} placeholder={data.name} onChange={(e) => setTaleTitle(e.target.value)} onBlur={() => taleTitle !== data.taleTitle && save(() => act.saveDetails(data.id, { taleTitle }), true)} />
-      </label>
-      <label className={s.field}>
-        <span className={s.lbl}>Its epigraph</span>
-        <input className={`input ${s.in}`} value={taleLine} maxLength={140} placeholder="[A line under the title, if any]" onChange={(e) => setTaleLine(e.target.value)} onBlur={() => taleLine !== data.taleLine && save(() => act.saveDetails(data.id, { taleLine }), true)} />
       </label>
       <label className={s.field}>
         <span className={s.lbl}>Build</span>

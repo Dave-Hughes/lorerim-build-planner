@@ -48,6 +48,8 @@ export interface ChapterRow {
   createdAt: Date | string;
   /** When the owner opened it (Read it anyway, or an act's story card, WO-116). */
   readAt?: Date | string | null;
+  /** Its own plate (WO-117), set where it shows in the Story. */
+  imageUrl?: string | null;
   doc: GuideDoc;
 }
 export interface SnapshotRow extends SnapshotValues {

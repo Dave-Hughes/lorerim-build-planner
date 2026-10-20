@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { saveGuideSection } from "@/lib/builds/actions";
-import { saveChapterDoc } from "@/lib/playthroughs/actions";
+import { saveChapterDoc, writeActChapter } from "@/lib/playthroughs/actions";
 import type { GuideDoc } from "@/lib/guide/doc";
 import { withoutUnfinishedImages } from "./image-upload";
 
@@ -13,12 +13,14 @@ const RETRY = 5000;
 
 /**
  * What a section belongs to: a build's id, or `p:<id>` for a playthrough's chapter (WO-111), whose
- * key is `chapter:<n>`. Both save through the same checks (checkGuideDoc, as the Story).
+ * key is `chapter:<n>`, or `act:<n>` for an act's chapter not written yet (WO-117: its first word
+ * makes it). All save through the same checks (checkGuideDoc, as the Story).
  */
 const playthroughOf = (target: string) => (target.startsWith("p:") ? target.slice(2) : null);
 
 function saveSection(target: string, key: string, doc: GuideDoc) {
   const pid = playthroughOf(target);
+  if (pid && key.startsWith("act:")) return writeActChapter(pid, Number(key.slice(4)), { doc });
   return pid ? saveChapterDoc(pid, Number(key.replace(/^chapter:/, "")), doc) : saveGuideSection(target, key, doc);
 }
 

@@ -10,5 +10,5 @@ type Search = Promise<{ act?: string }>;
 /** The Play tab in edit mode (WO-117). */
 export default async function EditPlayPage({ params, searchParams }: { params: Params; searchParams: Search }) {
   const [{ id }, { act }] = await Promise.all([params, searchParams]);
-  return RunEdit({ id, act, tale: false });
+  return RunEdit({ id, act });
 }

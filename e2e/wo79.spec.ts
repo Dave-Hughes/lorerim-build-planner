@@ -25,10 +25,11 @@ test("point 2: an author writes a Story with a title, three paragraphs, a quote 
   // The old address is the Story tab in edit mode (WO-117).
   await expect(page).toHaveURL(new RegExp(`/b/${STORY_BUILD_ID}/edit/story$`));
   await expect(editTab(page, "Story")).toHaveAttribute("aria-current", "page");
-  await page.getByLabel("Title").fill("The Writ");
-  await page.getByLabel("Opening line (optional)").fill("Mephala's work is done where no one is watching.");
+  // Written in the reader's own layout (WO-117): the title and line over the plate, the text in the column.
+  await page.getByLabel("Title", { exact: true }).fill("The Writ");
+  await page.getByLabel("A line under the title").fill("Mephala's work is done where no one is watching.");
 
-  const story = page.getByRole("textbox", { name: "Story" });
+  const story = page.getByRole("textbox", { name: "Text" });
   await story.click();
   await page.keyboard.type(P1);
   await page.keyboard.press("Enter");
@@ -62,7 +63,6 @@ test("point 2: an author writes a Story with a title, three paragraphs, a quote 
   await page.getByLabel("Add images").setInputFiles(ART.slice(5));
   await expect(page.getByRole("alert").filter({ hasText: "A story can have 5 images." })).toBeVisible();
   await expect(story.locator("img")).toHaveCount(5);
-  await expect(page.getByText("Readers open it from the build page, in the reader.")).toBeVisible();
   // Saved: after a reload the five images keep their captions.
   const saved = page.getByRole("region", { name: "Edit bar" }).getByRole("status");
   await expect(saved).toHaveText(/✓ Saved/, { timeout: 15_000 });
@@ -71,7 +71,8 @@ test("point 2: an author writes a Story with a title, three paragraphs, a quote 
   await page.reload();
   await expect(page.getByRole("textbox", { name: "Caption" })).toHaveCount(5);
   for (let i = 0; i < 5; i++) await expect(page.getByRole("textbox", { name: "Caption" }).nth(i)).toHaveValue(CAPTIONS[i]);
-  await expect(page.getByLabel("Title")).toHaveValue("The Writ");
+  await expect(page.getByLabel("Title", { exact: true })).toHaveValue("The Writ");
+  await expect(page.getByLabel("A line under the title")).toHaveValue("Mephala's work is done where no one is watching.");
 });
 
 test("point 3: the Story in the reader (WO-116): the plate, the drop cap, the pair side by side, the quote, the viewer and the way back", async ({ page }) => {

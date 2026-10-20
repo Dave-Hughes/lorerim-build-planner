@@ -345,8 +345,8 @@ export const playthroughs = pgTable(
     draftedBy: text("drafted_by"),
     showDrafted: boolean("show_drafted").notNull().default(true),
     /**
-     * No longer read (WO-114): the character's one cover is the build's. Kept, empty, so no migration
-     * drops a column.
+     * The title page's picture (WO-117), set on the Story's title page. (WO-114 left it empty when the
+     * character's cover became the build's.)
      */
     coverImageUrl: text("cover_image_url"),
     /** The Tale page's title and epigraph over its opening plate (WO-114): 60 and 140 at most. */
@@ -425,6 +425,8 @@ export const playthroughChapters = pgTable(
     fromSave: text("from_save"),
     writtenBy: text("written_by"),
     readAt: timestamp("read_at", { withTimezone: true }),
+    /** Its plate in the reader (WO-117), set where it shows in the Story; none: its text's first image, else the act's picture, else the cover. */
+    imageUrl: text("image_url"),
     /** The guide document, validated as the Story is, its limit the same. */
     doc: jsonb("doc").$type<GuideDoc>().notNull(),
     textLength: integer("text_length").notNull(),

@@ -60,7 +60,7 @@ export async function CharacterPage({
   // The reader (WO-116): a character's tale is its run's; a build alone's, its Story.
   const told = run ? null : storyOf(shownDocs);
   const stops = run
-    ? runStops({ id: run.id, taleLine: run.taleLine, view: run.view, cover, isOwner: viewerId === run.ownerId })
+    ? runStops({ id: run.id, taleLine: run.taleLine, view: run.view, cover, isOwner: viewerId === run.ownerId, titlePicture: run.coverImageUrl })
     : told
       ? [storyStop({ id, title: told.title, line: told.line, doc: told.doc, cover, isOwner })]
       : [];

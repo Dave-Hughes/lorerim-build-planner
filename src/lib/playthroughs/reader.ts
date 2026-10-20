@@ -19,7 +19,7 @@ export interface ReaderStop {
   line: string | null;
   /** The top bar's middle: "Before Skyrim", "Act I | from save 5". */
   place: string;
-  /** The plate: the chapter's first image, else the act's picture, else the character's cover. */
+  /** The plate: the chapter's own picture, else its text's first image, else the act's picture, else the character's cover. */
   plate: string | null;
   /** The plate is the text's own first image, so the text doesn't show it twice. */
   plateFromText: boolean;
@@ -43,7 +43,7 @@ export interface ReaderBack {
 }
 
 /** A run's tale, in reading order. `cover` is the character's cover. */
-export function runStops(p: { id: string; taleLine: string | null; view: PlaythroughView; cover: string | null; isOwner: boolean }): ReaderStop[] {
+export function runStops(p: { id: string; taleLine: string | null; view: PlaythroughView; cover: string | null; isOwner: boolean; titlePicture?: string | null }): ReaderStop[] {
   const v = p.view;
   const actOf = new Map(v.acts.map((a, i) => [a.id, { a, n: i + 1 }]));
   const rowHref = (oid: number) => {
@@ -52,7 +52,9 @@ export function runStops(p: { id: string; taleLine: string | null; view: Playthr
   };
   return v.chapters.map((c, i) => {
     const act = c.actId !== null ? actOf.get(c.actId) : undefined;
-    const fromText = c.open ? firstPlate(c.doc) : null;
+    // Its own picture (WO-117); an act's chapter shows the act's picture; else the text's first image.
+    const own = c.imageUrl ?? (c.kind === "act" && act ? (act.a.imageUrl ?? null) : null);
+    const fromText = own ? null : c.open ? firstPlate(c.doc) : null;
     const actPicture = act ? actPictureOf(v, act.a) : null;
     return {
       key: String(c.id),
@@ -61,7 +63,7 @@ export function runStops(p: { id: string; taleLine: string | null; view: Playthr
       title: c.title,
       line: i === 0 && p.taleLine ? p.taleLine : c.fromSave ? `From ${c.fromSave.toLowerCase()}` : null,
       place: placeOf(c, act?.a),
-      plate: fromText ?? actPicture ?? p.cover,
+      plate: own ?? fromText ?? actPicture ?? (i === 0 ? (p.titlePicture ?? null) : null) ?? p.cover,
       plateFromText: !!fromText,
       doc: c.doc,
       cap: c.kind === "chapter" || c.kind === "act",

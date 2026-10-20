@@ -70,9 +70,9 @@ test("the old edit addresses go to their tabs", async ({ page, context }) => {
   await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/play$`));
   await expect(editTab(page, "Play")).toHaveAttribute("aria-current", "page");
   await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit?tale=1`);
-  await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story$`));
+  await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story/title$`));
   await expect(editTab(page, "Story")).toHaveAttribute("aria-current", "page");
-  const chapter = page.getByRole("link", { name: "Edit" }).first();
+  const chapter = page.getByRole("complementary", { name: "Contents" }).getByRole("link", { name: /The Mark of Dibella/ });
   const href = (await chapter.getAttribute("href"))!;
   const cid = href.split("/").pop();
   await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/tale/${cid}`);
@@ -110,8 +110,62 @@ test("the act card's Write it in the Story opens that act's chapter", async ({ p
   await expect(card).toContainText("No chapter for this act yet.");
   await expect(card.getByText("Add the act's picture")).toBeVisible();
   await card.getByRole("link", { name: "Write it in the Story ›" }).click();
-  await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story/\\d+$`));
+  // Its place in the Story; the chapter is made by its first word (Part 4).
+  await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story/act-\\d+$`));
   await expect(editTab(page, "Story")).toHaveAttribute("aria-current", "page");
   await expect(page.getByLabel("Title")).toHaveValue("The Bard's Road");
+});
+
+test("the Story in edit: the act's chapter is made by its first word, a chapter is added from Contents, Preview hides the controls", async ({ page, context }) => {
+  await signIn(context);
+  await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story`);
+  await expect(page).toHaveURL(new RegExp(`/edit/story/title$`));
+  const contents = page.getByRole("complementary", { name: "Contents" });
+  await expect(contents.getByRole("link", { name: "The title page" })).toHaveAttribute("aria-current", "page");
+  // Act III has nothing: opening its chapter makes nothing until its first word.
+  await contents.getByText("Act III The Winking Skeever").scrollIntoViewIfNeeded();
+  const act3 = contents.locator("div").filter({ has: page.getByText("Act III The Winking Skeever", { exact: true }) }).last();
+  await act3.getByRole("link", { name: "Write the act's chapter ›" }).click();
+  await expect(page).toHaveURL(/\/edit\/story\/act-\d+$/);
+  await page.reload();
+  await expect(page).toHaveURL(/\/edit\/story\/act-\d+$/);
+  await page.getByRole("textbox", { name: "Text" }).click();
+  await page.keyboard.type("Solitude had a college for bards and a hall for the dead, and she wanted the first.");
+  await savedInBand(page);
+  await page.goto(page.url());
+  await expect(page).toHaveURL(/\/edit\/story\/\d+$/);
+  await expect(page.getByText("Solitude had a college for bards")).toBeVisible();
+
+  // A chapter before Skyrim, from Contents.
+  await page.getByRole("button", { name: "+ Add a chapter" }).click();
+  await expect(page).toHaveURL(/\/edit\/story\/\d+$/);
+  await expect(page.getByLabel("Title")).toHaveValue("A new chapter");
+  await expect(contents.getByRole("link", { name: "A new chapter" })).toHaveAttribute("aria-current", "page");
+
+  // Preview: no inputs, no picture slot, no insert row, Contents dimmed.
+  await page.getByRole("button", { name: "Preview" }).click();
+  await expect(page.getByLabel("Title")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Add a picture" })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "+ Image" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { level: 1, name: "A new chapter" })).toBeVisible();
+  await page.getByRole("button", { name: "Write" }).click();
+  page.once("dialog", (d) => void d.accept());
+  await page.getByRole("button", { name: "Remove this chapter" }).click();
+  await expect(page).toHaveURL(/\/edit\/story\/title$/);
+});
+
+test("an entry's Opens when changes its objective", async ({ page, context }) => {
+  await signIn(context);
+  await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story`);
+  await page.getByRole("complementary", { name: "Contents" }).getByRole("link", { name: /The Mark of Dibella/ }).click();
+  const opens = page.getByLabel("Opens when this is done:");
+  await expect(opens).toHaveValue(/\d+/);
+  const was = await opens.inputValue();
+  await opens.selectOption({ label: "Take a room at the Bee and Barb" });
+  await savedInBand(page);
+  await page.reload();
+  await expect(page.getByLabel("Opens when this is done:")).not.toHaveValue(was);
+  await page.getByLabel("Opens when this is done:").selectOption(was);
+  await savedInBand(page);
 });
 

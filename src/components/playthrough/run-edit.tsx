@@ -13,10 +13,9 @@ import { clientVersion, currentVersion, isKnownVersion } from "@/lib/rules/serve
 
 /**
  * The Play tab in edit mode (WO-117): the run editor (WO-111) under the edit band, hero and tabs.
- * Only its owner; anyone else goes to the Play view. `tale` is the Story tab's list (Part 2's
- * stand-in until the Story is written in the reader).
+ * Only its owner; anyone else goes to the Play view.
  */
-export async function RunEdit({ id, act, tale }: { id: string; act?: string; tale: boolean }) {
+export async function RunEdit({ id, act }: { id: string; act?: string }) {
   if (!playthroughsOn()) notFound();
   const session = await auth();
   const userId = session?.user?.id ?? null;
@@ -69,7 +68,7 @@ export async function RunEdit({ id, act, tale }: { id: string; act?: string; tal
   return (
     <EditFrameProvider data={frame}>
       <GameDataProvider version={version} serverVersion={clientVersion(version)}>
-        <EditPlaythrough data={data} actId={Number(act) || null} tale={tale} linkables={linkables} />
+        <EditPlaythrough data={data} actId={Number(act) || null} linkables={linkables} />
       </GameDataProvider>
     </EditFrameProvider>
   );

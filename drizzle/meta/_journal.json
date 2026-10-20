@@ -127,6 +127,13 @@
       "when": 1792521310333,
       "tag": "0017_act_image",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1792538702799,
+      "tag": "0018_chapter_image",
+      "breakpoints": true
     }
   ]
 }

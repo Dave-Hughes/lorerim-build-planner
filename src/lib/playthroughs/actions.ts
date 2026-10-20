@@ -62,9 +62,13 @@ export const tick = async (id: string, objectiveId: number, status: ObjectiveSta
 export const answer = async (id: string, objectiveId: number, accept: boolean) => run(id, (u) => w.answerSuggestion(u, id, objectiveId, accept));
 
 export const newChapter = async (id: string, input: { kind: ChapterKind; title: string; actId?: number | null; opensAfter?: number | null }) => run(id, (u) => w.addChapter(u, id, input));
-export const saveChapter = async (id: string, chapterId: number, input: { title?: string; doc?: unknown; opensAfter?: number | null }) => run(id, (u) => w.setChapter(u, id, chapterId, input));
+export const saveChapter = async (id: string, chapterId: number, input: { title?: string; doc?: unknown; opensAfter?: number | null; fromSave?: string | null }) => run(id, (u) => w.setChapter(u, id, chapterId, input));
 export const removeChapter = async (id: string, chapterId: number) => run(id, (u) => w.removeChapter(u, id, chapterId));
-export const moveChapter = async (id: string, chapterId: number, to: "up" | "down") => run(id, (u) => w.moveChapter(u, id, chapterId, to));
+export const moveChapter = async (id: string, chapterId: number, to: "up" | "down" | number) => run(id, (u) => w.moveChapter(u, id, chapterId, to));
+export const saveChapterImage = async (id: string, chapterId: number, url: string | null) => run(id, (u) => w.setChapterImage(u, id, chapterId, url));
+export const saveTalePicture = async (id: string, url: string | null) => run(id, (u) => w.setTalePicture(u, id, url));
+/** An act's chapter, made on its first word (WO-117). */
+export const writeActChapter = async (id: string, actId: number, input: { title?: string; doc?: unknown }) => run(id, (u) => w.writeActChapter(u, id, actId, input));
 
 /** Enter it by hand: level, day, place and the skills the objectives name. */
 export const enterByHand = async (id: string, input: Omit<SnapshotInput, "source" | "readBy">) => run(id, (u) => w.setSnapshot(u, id, { ...input, source: "hand", readBy: null }));

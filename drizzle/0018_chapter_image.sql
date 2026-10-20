@@ -1,0 +1,1 @@
+ALTER TABLE "playthrough_chapter" ADD COLUMN "image_url" text;

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { RunEdit } from "@/components/playthrough/run-edit";
+import { RunStoryEdit } from "@/components/playthrough/story-edit";
 
 export const metadata: Metadata = { title: "Editing the story" };
 export const dynamic = "force-dynamic";
 
 type Params = Promise<{ id: string }>;
 
-/** The Story tab in edit mode (WO-117): every chapter, entry and beat, each opening in the Story editor. */
+/** The Story tab in edit mode (WO-117): it opens on the title page. */
 export default async function EditStoryPage({ params }: { params: Params }) {
-  return RunEdit({ id: (await params).id, tale: true });
+  return RunStoryEdit({ id: (await params).id, page: null });
 }

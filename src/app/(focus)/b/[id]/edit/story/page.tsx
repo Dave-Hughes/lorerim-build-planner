@@ -3,12 +3,12 @@ import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { GameDataProvider } from "@/components/game-data";
 import { SiteHeader } from "@/components/site-header";
-import { StoryPage } from "@/components/guide/story-page";
+import { StoryWriter } from "@/components/playthrough/story-writer";
 import { EditFrameProvider } from "@/components/editor/edit-bar";
 import { editFrameForBuild } from "@/lib/edit/frame";
 import { clientVersion, isKnownVersion } from "@/lib/rules/server";
 import { getBuild } from "@/lib/builds/queries";
-import { docText, emptyDoc } from "@/lib/guide/doc";
+import { docText, emptyDoc, firstPlate } from "@/lib/guide/doc";
 import { getGuide } from "@/lib/guide/queries";
 import { playthroughsOn, storyOn } from "@/lib/features";
 import { runOfBuild } from "@/lib/playthroughs/queries";
@@ -18,7 +18,7 @@ type Params = Promise<{ id: string }>;
 export const metadata: Metadata = { title: "Story" };
 export const dynamic = "force-dynamic";
 
-/** The owner's page for the build's Story (WO-79): the Story tab in edit mode (WO-117). */
+/** The build's Story (WO-79) in edit mode (WO-117): written in the reader's own layout, as a run's is. */
 export default async function StoryEditPage({ params }: { params: Params }) {
   // Held back for launch (WO-81).
   if (!storyOn()) notFound();
@@ -32,18 +32,19 @@ export default async function StoryEditPage({ params }: { params: Params }) {
   const run = playthroughsOn() ? await runOfBuild(id, userId) : null;
   if (run) redirect(`/p/${run.id}/edit/story`);
   const [guide, frame] = await Promise.all([getGuide(id, build.plan), editFrameForBuild(build, userId)]);
+  const doc = guide.story?.doc ?? emptyDoc();
+  const title = docText(guide["story:title"]?.doc);
+  const line = docText(guide["story:line"]?.doc);
   return (
     <EditFrameProvider data={frame}>
       <SiteHeader />
       <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
-        <StoryPage
-          buildId={id}
-          name={build.name}
-          visibility={build.visibility}
-          plan={build.plan}
-          initial={guide.story?.doc ?? emptyDoc()}
-          title={docText(guide["story:title"]?.doc)}
-          line={docText(guide["story:line"]?.doc)}
+        <StoryWriter
+          owner={{ kind: "build", id, name: build.name, visibility: build.visibility }}
+          groups={[{ label: null, actId: null, reorder: false, items: [{ key: "story", href: `/b/${id}/edit/story`, title: title || "The story" }], adds: [] }]}
+          page={{ key: "story", kind: "story", where: "The story", kicker: null, title, titlePlaceholder: "[The story's title]", line, lineLabel: "A line under the title", plate: null, fromText: firstPlate(doc), doc, chapterId: null, actId: null, opens: null }}
+          prev={null}
+          next={null}
         />
       </GameDataProvider>
     </EditFrameProvider>

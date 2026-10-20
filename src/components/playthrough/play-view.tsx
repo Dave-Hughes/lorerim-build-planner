@@ -15,7 +15,7 @@ import s from "./play.module.css";
  * view, with no tabs (WO-116; with a build, Play is a tab of the build's page).
  */
 export function PlayView({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwner: boolean; actIndex: number | null }) {
-  const stops = runStops({ id: p.id, taleLine: p.taleLine, view: p.view, cover: p.build?.coverImageUrl ?? null, isOwner });
+  const stops = runStops({ id: p.id, taleLine: p.taleLine, view: p.view, cover: p.build?.coverImageUrl ?? null, isOwner, titlePicture: p.coverImageUrl });
   return (
     <ReaderProvider stops={stops} back={{ href: `/p/${p.id}`, label: "Back to the quest log" }} runId={p.id} title={p.taleTitle || p.name}>
       <main className={`page ${s.main}`}>

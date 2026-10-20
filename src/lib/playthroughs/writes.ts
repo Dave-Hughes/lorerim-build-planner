@@ -513,7 +513,8 @@ export async function setChapter(userId: string, pid: string, chapterId: number,
     set.doc = doc;
     set.textLength = length;
   }
-  if (input.opensAfter !== undefined && c.kind === "beat") {
+  // A beat opens after its objective; an entry tells one (WO-117: both set where they're written).
+  if (input.opensAfter !== undefined && (c.kind === "beat" || c.kind === "entry")) {
     set.opensAfter = input.opensAfter ? Number(input.opensAfter) : null;
     if (set.opensAfter) set.actId = await objectiveAct(p.id, set.opensAfter);
   }
@@ -523,13 +524,48 @@ export async function setChapter(userId: string, pid: string, chapterId: number,
   await touch(p.id);
 }
 
+/** A chapter's plate (WO-117): an image uploaded through the run's guide images path, or none. */
+export async function setChapterImage(userId: string, pid: string, chapterId: number, url: string | null) {
+  const { p, c } = await ownedChapter(userId, pid, chapterId);
+  if (url && !isOurImage(url)) fail("Images must be uploaded to the site.");
+  await db().update(schema.playthroughChapters).set({ imageUrl: url }).where(eq(schema.playthroughChapters.id, c.id));
+  await touch(p.id);
+}
+
+/** The title page's picture (WO-117), on the run itself. */
+export async function setTalePicture(userId: string, pid: string, url: string | null) {
+  const p = await ownedPlaythrough(userId, pid);
+  if (url && !isOurImage(url)) fail("Images must be uploaded to the site.");
+  await db().update(schema.playthroughs).set({ coverImageUrl: url }).where(eq(schema.playthroughs.id, p.id));
+  await touch(p.id);
+}
+
+/**
+ * An act's chapter, written in the Story (WO-117): made on its first word, not when its place is
+ * opened, then changed like any chapter. Returns its id.
+ */
+export async function writeActChapter(userId: string, pid: string, actId: number, input: { title?: string; doc?: unknown }, writtenBy: string | null = null): Promise<number> {
+  const p = await ownedPlaythrough(userId, pid);
+  const { act } = await ownedAct(userId, p.id, actId);
+  const [had] = await db()
+    .select({ id: schema.playthroughChapters.id })
+    .from(schema.playthroughChapters)
+    .where(and(eq(schema.playthroughChapters.actId, act.id), eq(schema.playthroughChapters.kind, "act")))
+    .limit(1);
+  if (had) {
+    await setChapter(userId, p.id, had.id, input, writtenBy);
+    return had.id;
+  }
+  return addChapter(userId, p.id, { kind: "act", actId: act.id, title: input.title?.trim() || act.name.slice(0, PLAYTHROUGH_LIMITS.chapterTitle), doc: input.doc }, writtenBy);
+}
+
 export async function removeChapter(userId: string, pid: string, chapterId: number) {
   const { p, c } = await ownedChapter(userId, pid, chapterId);
   await db().delete(schema.playthroughChapters).where(eq(schema.playthroughChapters.id, c.id));
   await touch(p.id);
 }
 
-export async function moveChapter(userId: string, pid: string, chapterId: number, to: "up" | "down") {
+export async function moveChapter(userId: string, pid: string, chapterId: number, to: "up" | "down" | number) {
   const { p, c } = await ownedChapter(userId, pid, chapterId);
   // Among its own kind of neighbours: the chapters before the game, or the act's entries and beats.
   const rows = await db()
@@ -540,11 +576,15 @@ export async function moveChapter(userId: string, pid: string, chapterId: number
   const all = rows.map((r) => r.id);
   const peers = rows.filter((r) => r.actId === c.actId).map((r) => r.id);
   const i = peers.indexOf(c.id);
-  const j = to === "up" ? i - 1 : i + 1;
-  if (j < 0 || j >= peers.length) return;
-  const a = all.indexOf(c.id);
-  const b = all.indexOf(peers[j]);
-  [all[a], all[b]] = [all[b], all[a]];
+  // Up, down, or to a place among its neighbours, 1-based (a drag in the Story's Contents, WO-117).
+  const j = Math.max(0, Math.min(peers.length - 1, to === "up" ? i - 1 : to === "down" ? i + 1 : Math.round(to) - 1));
+  if (j === i) return;
+  // The neighbours' places in the whole list stay theirs; only the order among them changes.
+  const slots = peers.map((id) => all.indexOf(id));
+  const order = [...peers];
+  order.splice(i, 1);
+  order.splice(j, 0, c.id);
+  slots.forEach((slot, k) => (all[slot] = order[k]));
   await Promise.all(all.map((id, k) => db().update(schema.playthroughChapters).set({ position: k + 1 }).where(eq(schema.playthroughChapters.id, id))));
   await touch(p.id);
 }
