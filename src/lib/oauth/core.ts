@@ -18,10 +18,10 @@ export const SCOPES = {
 export type Scope = keyof typeof SCOPES;
 export const SCOPE_LIST = Object.keys(SCOPES) as Scope[];
 /**
- * The scopes that have tools today (WO-110): what the metadata offers and what's granted when a
- * client asks for none. playthroughs:write joins when WO-111's tools ship.
+ * The scopes that have tools today: what the metadata offers and what's granted when a client asks
+ * for none. builds:write since WO-110, playthroughs:write since WO-111.
  */
-export const GRANTABLE: Scope[] = ["facts", "builds:write"];
+export const GRANTABLE: Scope[] = ["facts", "builds:write", "playthroughs:write"];
 
 export const newSecret = () => randomBytes(32).toString("base64url");
 export const sha256 = (s: string) => createHash("sha256").update(s).digest("hex");

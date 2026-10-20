@@ -1,18 +1,19 @@
 import { createMcpHandler, getPublicOrigin, withMcpAuth } from "mcp-handler";
 import { z } from "zod";
-import { mcpOn } from "@/lib/features";
+import { mcpOn, playthroughsOn } from "@/lib/features";
 import { DEFAULT_VERSION, FACT_KINDS, FactsError, checkProgression, getPerk, getQuestStart, getSpell, searchFacts, styleGuide } from "@/lib/mcp/facts";
 import { answer, type Answer } from "@/lib/mcp/answer";
 import { mcpCall } from "@/lib/moderation/limits";
 import { creationFields, gearRow, levelFields, registerBuildTools } from "@/lib/mcp/build-tools";
+import { registerPlaythroughTools } from "@/lib/mcp/playthrough-tools";
 import { checkPlan } from "@/lib/mcp/facts";
 import { getBuild as readableBuild } from "@/lib/builds/queries";
 import { versionData } from "@/lib/mcp/errors";
 import { signedIn, verifyBearer, whoami, type PlannerAuth } from "@/lib/oauth/mcp-auth";
 
 /**
- * The planner's MCP route (WO-108, WO-110): facts for assistants with no sign-in, and, signed in with
- * builds:write, drafts in the player's account. Each tool answers from the planner's data for a
+ * The planner's MCP route (WO-108, WO-110, WO-111): facts for assistants with no sign-in, and, signed in with
+ * builds:write or playthroughs:write, drafts in the player's account. Each tool answers from the planner's data for a
  * LoreRim version, 60 calls a minute per IP, 64 KB an answer at most.
  * Off unless mcpOn() (on in dev and on staging): then it's not found.
  */
@@ -128,6 +129,8 @@ function handlerFor(ip: string, origin: string) {
         async () => guarded(ip, () => styleGuide()),
       );
       registerBuildTools(server, (run) => guarded(ip, run), origin);
+      // Playthroughs (WO-111), while their switch is on.
+      if (playthroughsOn()) registerPlaythroughTools(server, (run) => guarded(ip, run), origin);
     },
     { serverInfo: { name: "LoreRim Build Planner", version: "1.0.0" } },
   );

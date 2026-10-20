@@ -92,7 +92,7 @@ describe("limits and scopes (WO-110)", () => {
   });
 
   it("grants facts and builds:write when a client asks for no scopes", () => {
-    expect(parseScopes("")).toEqual(["facts", "builds:write"]);
+    expect(parseScopes("")).toEqual(["facts", "builds:write", "playthroughs:write"]);
   });
 });
 

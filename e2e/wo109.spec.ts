@@ -72,7 +72,7 @@ test("the metadata routes answer as the spec asks", async ({ baseURL }) => {
     token_endpoint: expect.stringMatching(/\/oauth\/token$/),
     registration_endpoint: expect.stringMatching(/\/oauth\/register$/),
     revocation_endpoint: expect.stringMatching(/\/oauth\/revoke$/),
-    scopes_supported: ["facts", "builds:write"],
+    scopes_supported: ["facts", "builds:write", "playthroughs:write"],
     response_types_supported: ["code"],
     grant_types_supported: ["authorization_code", "refresh_token"],
     code_challenge_methods_supported: ["S256"],
