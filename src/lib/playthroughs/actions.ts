@@ -64,3 +64,6 @@ export const moveChapter = async (id: string, chapterId: number, to: "up" | "dow
 
 /** Enter it by hand: level, day, place and the skills the objectives name. */
 export const enterByHand = async (id: string, input: Omit<SnapshotInput, "source" | "readBy">) => run(id, (u) => w.setSnapshot(u, id, { ...input, source: "hand", readBy: null }));
+
+/** The owner read a beat before it opened; kept, and nothing is ticked. */
+export const readEarly = async (id: string, chapterId: number) => run(null, (u) => w.markRead(u, id, [chapterId]));

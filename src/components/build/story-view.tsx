@@ -51,16 +51,57 @@ function Ornament({ filled = false, wide = false }: { filled?: boolean; wide?: b
  * the author marks sits large between two ornaments; at the end, the character and the way to the levels.
  */
 export function StoryView({ doc, title, line, character, onFollow }: { doc: GuideDoc; title: string; line: string; character: string; onFollow: () => void }) {
+  const plates = platesOf(doc);
+  const open = plates[0] ?? null;
+  const [view, setView] = useState<number | null>(null);
+  return (
+    <section aria-label="Story" className={styles.story}>
+      <header className={`${styles.opening} ${open ? "" : styles.openingPlain}`}>
+        {open && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={open.src} alt={open.alt} className={styles.openingImage} />
+        )}
+        <div className={styles.openingFade} aria-hidden="true" />
+        <div className={styles.openingWords}>
+          <h2 className={styles.title}>{title}</h2>
+          {line && <p className={styles.line}>{line}</p>}
+        </div>
+        {open && (
+          <button type="button" className={styles.openingButton} aria-label={`Open image 1 of ${plates.length}`} onClick={() => setView(0)} />
+        )}
+      </header>
+      <div className={styles.body}>{storyBlocks(doc, { skipOpening: true, onOpen: setView, idPrefix: "story" })}</div>
+      <footer className={styles.end}>
+        <Ornament filled wide />
+        <p className={styles.character}>{character}</p>
+        <button type="button" className={styles.follow} onClick={onFollow}>
+          Follow the build level by level ›
+        </button>
+      </footer>
+      {view !== null && <Viewer plates={plates} at={view} onAt={setView} onClose={() => setView(null)} />}
+    </section>
+  );
+}
+
+function platesOf(doc: GuideDoc): Plate[] {
+  return doc.content.map(plateOf).filter((p): p is Plate => !!p);
+}
+
+/**
+ * A story document's text, set as the Story tab sets it: a brass drop cap on the first paragraph,
+ * images as 1000px plates (two in a row side by side), a marked quote between ornaments. The
+ * playthrough's Tale view (WO-111) sets each chapter with it too.
+ */
+function storyBlocks(doc: GuideDoc, { skipOpening, onOpen, idPrefix, cap = true }: { skipOpening: boolean; onOpen: (n: number) => void; idPrefix: string; cap?: boolean }): React.ReactNode[] {
   const plates: Plate[] = [];
   const top = doc.content.map((n) => {
     const p = plateOf(n);
     if (p) plates.push(p);
     return p ? plates.length - 1 : -1;
   });
-  const opening = plates.length ? 0 : -1;
-  const [view, setView] = useState<number | null>(null);
+  const opening = skipOpening && plates.length ? 0 : -1;
   const ids = new Map<number, string>();
-  const headings = guideHeadings(doc, "story");
+  const headings = guideHeadings(doc, idPrefix);
   let h = 0;
   doc.content.forEach((n, i) => {
     if (n.type === "heading" && n.attrs?.level === 2) ids.set(i, headings[h++].id);
@@ -68,7 +109,7 @@ export function StoryView({ doc, title, line, character, onFollow }: { doc: Guid
 
   // The blocks after the opening plate: runs of images become rows of two.
   const blocks: React.ReactNode[] = [];
-  let capped = false;
+  let capped = !cap;
   for (let i = 0; i < doc.content.length; i++) {
     const n = doc.content[i];
     const at = top[i];
@@ -79,7 +120,7 @@ export function StoryView({ doc, title, line, character, onFollow }: { doc: Guid
       blocks.push(
         <div key={`plates-${at}`} className={run.length > 1 ? styles.pair : styles.single}>
           {run.map((k) => (
-            <PlateFigure key={k} plate={plates[k]} n={k + 1} of={plates.length} onOpen={() => setView(k)} />
+            <PlateFigure key={k} plate={plates[k]} n={k + 1} of={plates.length} onOpen={() => onOpen(k)} />
           ))}
         </div>,
       );
@@ -110,36 +151,22 @@ export function StoryView({ doc, title, line, character, onFollow }: { doc: Guid
       </div>,
     );
   }
+  return blocks;
+}
 
-  const open = opening !== -1 ? plates[opening] : null;
+/** One story document's text and images, with its own image viewer (a playthrough's chapter). */
+export function StoryText({ doc, idPrefix, cap = true }: { doc: GuideDoc; idPrefix: string; cap?: boolean }) {
+  const [view, setView] = useState<number | null>(null);
+  const plates = platesOf(doc);
   return (
-    <section aria-label="Story" className={styles.story}>
-      <header className={`${styles.opening} ${open ? "" : styles.openingPlain}`}>
-        {open && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={open.src} alt={open.alt} className={styles.openingImage} />
-        )}
-        <div className={styles.openingFade} aria-hidden="true" />
-        <div className={styles.openingWords}>
-          <h2 className={styles.title}>{title}</h2>
-          {line && <p className={styles.line}>{line}</p>}
-        </div>
-        {open && (
-          <button type="button" className={styles.openingButton} aria-label={`Open image 1 of ${plates.length}`} onClick={() => setView(0)} />
-        )}
-      </header>
-      <div className={styles.body}>{blocks}</div>
-      <footer className={styles.end}>
-        <Ornament filled wide />
-        <p className={styles.character}>{character}</p>
-        <button type="button" className={styles.follow} onClick={onFollow}>
-          Follow the build level by level ›
-        </button>
-      </footer>
+    <>
+      {storyBlocks(doc, { skipOpening: false, onOpen: setView, idPrefix, cap })}
       {view !== null && <Viewer plates={plates} at={view} onAt={setView} onClose={() => setView(null)} />}
-    </section>
+    </>
   );
 }
+
+export { Ornament };
 
 function PlateFigure({ plate, n, of, onOpen }: { plate: Plate; n: number; of: number; onOpen: () => void }) {
   return (

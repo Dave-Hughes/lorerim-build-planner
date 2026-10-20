@@ -1,0 +1,282 @@
+/*
+ * The playthrough's Tale view (WO-111), as the PlaythroughTale board: the Story tab's book page
+ * (WO-79) with a contents rail, on the Story's own darker ground, the full window wide.
+ */
+.tale {
+  width: calc(100vw / var(--page-zoom));
+  margin-left: calc(50% - 50vw / var(--page-zoom));
+  background: #0b0f14;
+  color: #ddd5c6;
+  padding-bottom: 120px;
+}
+.head {
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.who {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.name {
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 34px;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+.by {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+/* The opening plate: the author's image, or the title on the dark ground. */
+.opening {
+  position: relative;
+  height: 560px;
+  overflow: hidden;
+  margin-top: 22px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.openingPlain {
+  height: auto;
+  padding-top: 56px;
+}
+.openingImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+.fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 340px;
+  background: linear-gradient(to bottom, rgba(11, 15, 20, 0) 0%, rgba(11, 15, 20, 0.82) 62%, #0b0f14 100%);
+}
+.words {
+  position: relative;
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  padding: 0 16px;
+}
+.openingPlain .words {
+  margin-bottom: 0;
+}
+.title {
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 64px;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  color: var(--text);
+}
+.line {
+  margin: 0;
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 22px;
+  color: #cbbfa8;
+  max-width: 640px;
+}
+
+.grid {
+  padding-top: 40px;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 60px;
+  align-items: start;
+}
+
+/* Contents: the chapters before the game, then each act's entries and beats. */
+.toc {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 24px;
+}
+.part {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  padding: 18px 0 8px;
+  border-bottom: 1px solid var(--rule);
+}
+.toc > a,
+.tocEmpty {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-family: var(--font-flavor);
+  font-size: 17px;
+  color: #ddd5c6;
+  text-decoration: none;
+}
+.toc > a:hover {
+  color: var(--ember-hover);
+}
+.toc > .locked,
+.tocEmpty {
+  color: var(--dim);
+}
+.toc small {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--muted);
+  white-space: nowrap;
+  padding-top: 3px;
+}
+.tocAdd {
+  padding-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.pieces {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  min-width: 0;
+}
+.piece {
+  width: 680px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  scroll-margin-top: 24px;
+}
+/* The Story's text blocks keep their 680px inside the piece; plates may run wider. */
+.piece > div,
+.piece > p {
+  margin-bottom: 0 !important;
+}
+.ch {
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--text);
+  text-align: center;
+}
+.sub {
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: -16px;
+}
+.entry {
+  border-left: 2px solid var(--brass);
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.entry > * {
+  width: auto !important;
+  max-width: 100% !important;
+  margin-bottom: 0 !important;
+}
+.meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+  flex-wrap: wrap;
+}
+
+/* A beat not reached yet: its title, what opens it, and Read it anyway. */
+.wait {
+  width: 680px;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 26px 28px;
+  border: 1px solid var(--rule);
+  background: #10161e;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--soft);
+  scroll-margin-top: 24px;
+}
+.waitTitle {
+  font-family: var(--font-flavor);
+  font-size: 24px;
+  color: var(--muted);
+}
+.waitRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.end {
+  width: 680px;
+  max-width: 100%;
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+.character {
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-align: center;
+}
+.empty {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .toc {
+    position: static;
+  }
+  .title {
+    font-size: 42px;
+  }
+  .opening {
+    height: 380px;
+  }
+}
