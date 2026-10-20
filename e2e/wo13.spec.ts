@@ -44,7 +44,7 @@ test.describe("nothing moves under you", () => {
   });
 
   test("trait cards keep their order while the step is open", async ({ page }) => {
-    await page.goto("/new?kind=alone");
+    await page.goto("/new");
     await page.getByRole("article").filter({ hasText: "Nord" }).getByRole("heading", { name: "Nord" }).click();
     await page.getByRole("button", { name: "Next: Birthsign" }).click();
     await page.getByRole("article").filter({ hasText: "The Lord" }).getByRole("heading", { name: "The Lord" }).click();

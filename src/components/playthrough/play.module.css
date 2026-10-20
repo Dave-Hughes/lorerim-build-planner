@@ -584,6 +584,10 @@ button.box:hover {
   font-family: var(--font-flavor);
   font-size: 18px;
   color: #e8d3a4;
+  text-decoration: none;
+}
+.actLineLink:hover {
+  color: var(--text);
 }
 .actToggle {
   font: inherit;
@@ -754,6 +758,10 @@ a.mark:hover {
 @media (max-width: 760px) {
   .grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+  /* On a phone the act comes first, its story card at the top, as the CharacterReaderPhone board (WO-116). */
+  .actCol {
+    order: -1;
   }
   .cells {
     grid-template-columns: repeat(2, minmax(0, 1fr));

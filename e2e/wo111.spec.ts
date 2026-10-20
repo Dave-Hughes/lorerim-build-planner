@@ -1,7 +1,7 @@
 /**
  * WO-111: an assistant drafts a playthrough through the door on the test author's build (two acts,
  * five objectives with one refused, a suggestion, a beat and a chapter, finish_draft), then the
- * player on the site: private on its build's card, a tick opening the beat, the Tale view, editing
+ * player on the site: private on its build's card, a tick opening the beat, the reader (WO-116), editing
  * by hand with a @quest mention and the rule under a refused one, Accept, Enter it by hand. Another
  * player's token can't read it and a facts-only token can't write.
  */
@@ -112,21 +112,20 @@ test("on the site: private on its build's card under My characters, a tick opens
   await expect(card.getByText("Where the run stands")).toBeVisible();
   await expect(card.getByRole("link", { name: "Play ›" })).toHaveAttribute("href", `/p/${pid}`);
 
-  const playTab = () => page.getByRole("navigation", { name: "Views" }).getByRole("link", { name: /^Play/ });
+  // Play is the first tab of the build's page (WO-116).
+  const playTab = () => page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Play/ });
   await page.goto(`/p/${pid}`);
-  await expect(page.getByRole("heading", { name: "E2E Kyria" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "E2E Kyria" })).toBeVisible();
   await expect(playTab()).toContainText("0 of 6 done");
-  // The Build tab follows the build linked through the door (WO-111c).
-  // Other specs add levels to the shared test build, so the count isn't fixed: the link and the words are.
-  const buildTab = page.getByRole("navigation", { name: "Views" }).getByRole("link", { name: /^Build/ });
-  await expect(buildTab).toHaveAttribute("href", `/p/${pid}/build`);
-  await expect(buildTab).toContainText(/levels 1 to \d+/);
-  await expect(page.getByText("Made with Care opens when you tick this.")).toBeVisible();
-  // The Tale text is nowhere on the Play view, only its pointer.
+  // The Levels tab is the build linked through the door (WO-111c).
+  // Other specs add levels to the shared test build, so the count isn't fixed: the words are.
+  await expect(page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Levels/ })).toContainText(/Levels 1 to \d+/);
+  // A waiting beat is a dashed Story marker, never its text (WO-116).
+  await expect(page.getByText("opens when you tick this")).toBeVisible();
   await expect(page.getByText("The hide was rough under her hands.")).toHaveCount(0);
 
   await page.getByRole("checkbox", { name: "Hunt and tan her first hides" }).click();
-  await expect(page.getByText(/Made with Care\s*opened from this/)).toBeVisible();
+  await expect(page.getByRole("link", { name: /^Story Made with Care/ })).toBeVisible();
   await expect(playTab()).toContainText("1 of 6 done");
 
   await page.getByRole("button", { name: "Accept" }).click();
@@ -141,13 +140,15 @@ test("on the site: private on its build's card under My characters, a tick opens
   await expect(playTab()).toContainText("2 of 7 done");
 });
 
-test("the Tale view shows the chapter, the opened beat and its way back to the game", async ({ page, context }) => {
+test("the reader shows the chapter, the opened beat and its way back to the game", async ({ page, context }) => {
   await signIn(context);
-  await page.goto(`/p/${pid}/tale?from=1`);
-  await expect(page.getByRole("heading", { name: "Chapter One: The Chapel by the Sea" })).toBeVisible();
-  await expect(page.getByText("The chapel bells in Anvil rang the hours.")).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Made with Care" })).toBeVisible();
-  const back = page.getByRole("link", { name: "Hunt and tan her first hides" });
+  await page.goto(`/p/${pid}/tale`);
+  const reader = page.getByRole("dialog");
+  await expect(reader.getByRole("heading", { name: "Chapter One: The Chapel by the Sea" })).toBeVisible();
+  await expect(reader.getByText("The chapel bells in Anvil rang the hours.")).toBeVisible();
+  await reader.getByRole("navigation", { name: "The story" }).getByRole("link", { name: "Made with Care ›" }).click();
+  await expect(reader.getByRole("heading", { name: "Made with Care" })).toBeVisible();
+  const back = reader.getByRole("link", { name: "Hunt and tan her first hides" });
   await expect(back).toBeVisible();
   await back.click();
   await expect(page).toHaveURL(new RegExp(`/p/${pid}\\?act=1#o\\d+`));

@@ -4763,11 +4763,11 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - Screenshots at 1440 and 390: a build alone, Play with an act card and markers, the reader at an act and at an entry, the reader's foot, My characters. Compare with row 26.
 
 ### Done when
-- [ ] The build page and the character page are one page: full-bleed hero, one row of tabs, no Story tab, no nested tabs, the row pinned on scroll.
-- [ ] Every story opens in the reader, with its own address, from the act card, a marker or the hero, and closes to the same spot.
-- [ ] Each act can open with its own chapter and card; objectives carry their Story markers.
-- [ ] New character is Set up; a run is started from the build.
-- [ ] Every check in CLAUDE.md passes; migration additive; behind the flag. Commit on `staging`, push, and stop: Dave opens Kyria, reads Act I from its card, ticks a hunt and reads Made with Care from its marker.
+- [x] The build page and the character page are one page: full-bleed hero, one row of tabs, no Story tab, no nested tabs, the row pinned on scroll.
+- [x] Every story opens in the reader, with its own address, from the act card, a marker or the hero, and closes to the same spot.
+- [x] Each act can open with its own chapter and card; objectives carry their Story markers.
+- [x] New character is Set up; a run is started from the build.
+- [x] Every check in CLAUDE.md passes; migration additive; behind the flag. Commit on `staging`, push, and stop: Dave opens Kyria, reads Act I from its card, ticks a hunt and reads Made with Care from its marker.
 
 ---
 

@@ -45,16 +45,19 @@ test.describe("at 1440", () => {
     await expect(panel.getByRole("button", { name: "Fit", exact: true })).toBeDisabled();
   });
 
-  test("point 2: the pinned bar has no tabs, and shows on the Levels tab only", async ({ page }) => {
+  // WO-116 changed this: the pinned bar is the name and the tabs, thin, on every tab; the level stepper only on Levels.
+  test("point 2: the pinned bar holds the name and the tabs on every tab, and the level stepper on Levels", async ({ page }) => {
     await page.goto(`/b/${AZREM_BUILD_ID}?level=6`);
     await page.getByRole("region", { name: "Perks at level 6" }).scrollIntoViewIfNeeded();
     const bar = page.getByRole("region", { name: "Pinned bar" });
     await expect(bar).toBeVisible();
-    await expect(bar.getByRole("button", { name: /^(Levels|Guide|Story)$/ })).toHaveCount(0);
+    await expect(bar.getByRole("button", { name: "Levels", exact: true })).toHaveAttribute("aria-pressed", "true");
+    await expect(bar.getByRole("button", { name: /^Next level/ })).toBeVisible();
     await expect(bar.getByRole("tab")).toHaveCount(0);
-    await page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Guide/ }).click();
-    await page.mouse.wheel(0, 2000);
-    await expect(bar).toHaveCount(0);
+    // Guide, picked there, opens at its top with the tab row back in view.
+    await bar.getByRole("button", { name: "Guide", exact: true }).click();
+    await expect(page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Guide/ })).toHaveAttribute("aria-selected", "true");
+    await expect(page.getByRole("tablist", { name: "Build sections" })).toBeInViewport();
   });
 
   test("point 3: the note's heading on the build page, a single level and a stretch", async ({ page }) => {

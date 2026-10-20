@@ -4,7 +4,7 @@ import { OLD_BUILD_ID, OLD_VERSION, RETIRED_BUILD_ID, TEST_BUILD_ID } from "./se
 
 test.describe("LoreRim versions", () => {
   test("creation says which version it is for on the first step, and Change opens the list", async ({ page }) => {
-    await page.goto("/new?kind=alone&step=race");
+    await page.goto("/new?step=race");
     const band = page.getByRole("region", { name: "LoreRim version" });
     await expect(band).toContainText("Building for LoreRim 5.0.4.8");
     await expect(band).toContainText("Latest");
@@ -16,7 +16,7 @@ test.describe("LoreRim versions", () => {
     await expect(list.getByRole("listitem").first()).toContainText("Chosen");
 
     // WO-36: the band is on the Race step only; the sidebar and the Details step still say the version.
-    await page.goto("/new?kind=alone&step=name");
+    await page.goto("/new?step=name");
     await expect(page.getByRole("region", { name: "LoreRim version" })).toHaveCount(0);
     await expect(page.getByRole("complementary", { name: "Setup steps" })).toContainText("LoreRim 5.0.4.8");
     await expect(page.getByRole("main")).toContainText("LoreRim 5.0.4.8");

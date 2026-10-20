@@ -7,7 +7,7 @@ test.use({ viewport: { width: 1440, height: 900 } });
 test("a build through all 7 steps: Mephala on the Deity step saves, and the rail shows every step done", async ({ page, context }) => {
   // One of WO-40's reporters: by now the test author is at the day's build limit.
   await context.addCookies([{ name: "authjs.session-token", value: REPORTER_TOKENS[0], domain: "localhost", path: "/" }]);
-  await page.goto("/new?kind=alone");
+  await page.goto("/new");
   const rail = page.getByRole("complementary", { name: "Setup steps" });
   await expect(rail.getByRole("button", { name: /^Race: this step/ })).toBeVisible();
   await expect(rail.getByRole("button", { name: /^Birthsign: not started/ })).toBeVisible();

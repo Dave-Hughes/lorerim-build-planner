@@ -1,6 +1,6 @@
 /**
  * WO-79: the Story. One author writes it (title, opening line, three paragraphs, a quote, five
- * captioned images, a sixth refused); then a reader opens the Story tab.
+ * captioned images, a sixth refused); then a reader opens it in the reader (WO-116).
  */
 import { readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
@@ -21,7 +21,7 @@ const CAPTIONS = ["Windhelm, the night the ship came in.", "The road south, the 
 test("point 2: an author writes a Story with a title, three paragraphs, a quote and 5 captioned images; a sixth is refused", async ({ page, context }) => {
   test.setTimeout(120_000);
   await signIn(context);
-  await page.goto(`/b/${STORY_BUILD_ID}/story`);
+  await page.goto(`/b/${STORY_BUILD_ID}/story/edit`);
   await expect(page.getByRole("link", { name: "Story", exact: true }).first()).toHaveAttribute("aria-current", "page");
   await page.getByLabel("Title").fill("The Writ");
   await page.getByLabel("Opening line (optional)").fill("Mephala's work is done where no one is watching.");
@@ -60,7 +60,7 @@ test("point 2: an author writes a Story with a title, three paragraphs, a quote 
   await page.getByLabel("Add images").setInputFiles(ART.slice(5));
   await expect(page.getByRole("alert").filter({ hasText: "A story can have 5 images." })).toBeVisible();
   await expect(story.locator("img")).toHaveCount(5);
-  await expect(page.getByText("Readers see it on the build page's Story tab.")).toBeVisible();
+  await expect(page.getByText("Readers open it from the build page, in the reader.")).toBeVisible();
   // Saved: after a reload the five images keep their captions.
   const saved = page.getByRole("region", { name: "Edit bar" }).getByRole("status");
   await expect(saved).toHaveText("Saved", { timeout: 15_000 });
@@ -72,13 +72,12 @@ test("point 2: an author writes a Story with a title, three paragraphs, a quote 
   await expect(page.getByLabel("Title")).toHaveValue("The Writ");
 });
 
-test("point 3: the build page's Story tab: the plate, the drop cap, the pair side by side, the quote, the viewer and the end", async ({ page }) => {
+test("point 3: the Story in the reader (WO-116): the plate, the drop cap, the pair side by side, the quote, the viewer and the way back", async ({ page }) => {
   await page.goto(`/b/${STORY_BUILD_ID}`);
-  const tab = page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Story/ });
-  await expect(tab).toContainText("5 images, 1 min read");
-  await tab.click();
-  await expect(page).toHaveURL(/tab=story/);
-  const story = page.getByRole("region", { name: "Story" });
+  await expect(page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Story/ })).toHaveCount(0);
+  await page.getByRole("link", { name: "Read the story from the beginning" }).click();
+  await expect(page).toHaveURL(new RegExp(`/b/${STORY_BUILD_ID}/story$`));
+  const story = page.getByRole("dialog", { name: "The Writ" });
 
   // The opening plate: the first image, about 640px tall, the title and the opening line over it.
   const opening = story.locator("header");
@@ -121,11 +120,12 @@ test("point 3: the build page's Story tab: the plate, the drop cap, the pair sid
   await page.keyboard.press("Escape");
   await expect(viewer).toHaveCount(0);
 
-  // The end: the character in one line, and the way to the levels at level 1.
-  await expect(story.locator("footer")).toContainText(/Dunmer \| The \w+ \| .+ \| Levels 1 to 100/);
-  await story.getByRole("button", { name: "Follow the build level by level ›" }).click();
-  await expect(page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Levels/ })).toHaveAttribute("aria-selected", "true");
-  await expect(page.getByRole("region", { name: "Level 1", exact: true })).toBeVisible();
+  // Esc closed the viewer, not the reader; the way back is to the build, on Levels.
+  await expect(story).toBeVisible();
+  await story.getByRole("navigation", { name: "The story" }).getByRole("link", { name: "Back to the build" }).click();
+  await expect(story).toHaveCount(0);
+  await expect(page).toHaveURL(new RegExp(`/b/${STORY_BUILD_ID}$`));
+  await expect(page.locator("#level-card")).toBeVisible();
 });
 
 test("point 5: the author's builds show a small Story tag on its card", async ({ page, context }) => {
@@ -135,7 +135,7 @@ test("point 5: the author's builds show a small Story tag on its card", async ({
   await expect(card.getByText("Story", { exact: true })).toBeVisible();
 });
 
-test("point 1: a build without a Story shows no Story tab", async ({ page }) => {
+test("point 1: a build without a Story has no way into the reader", async ({ page }) => {
   await page.goto(`/b/${SEVARI_BUILD_ID}`);
-  await expect(page.getByRole("tab", { name: /^Story/ })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: "Read the story from the beginning" })).toHaveCount(0);
 });

@@ -279,6 +279,19 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
       }),
     );
   };
+  // A tab picked in the pinned bar opens at its top: the tab row comes back under the bars (WO-116).
+  const openFromBar = (t: BuildTab) => {
+    setTab(t);
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        if (!tabRow) return;
+        const z = pageZoom();
+        const sticky = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--sticky-top")) || 0) * z;
+        const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top: window.scrollY + tabRow.getBoundingClientRect().top - sticky - 12 * z, behavior: still ? "instant" : "smooth" });
+      }),
+    );
+  };
   const onTabKey = (e: React.KeyboardEvent) => {
     const i = tabs.indexOf(tab);
     const next = e.key === "ArrowRight" ? tabs[(i + 1) % tabs.length] : e.key === "ArrowLeft" ? tabs[(i - 1 + tabs.length) % tabs.length] : null;
@@ -376,7 +389,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
                   <span className={styles.pinnedName}>{build.name}</span>
                   <span className={styles.pinnedTabRow} role="group" aria-label="Sections">
                     {tabs.map((t) => (
-                      <button key={t} type="button" aria-pressed={tab === t} className={styles.pinnedTab} onClick={() => setTab(t)}>
+                      <button key={t} type="button" aria-pressed={tab === t} className={styles.pinnedTab} onClick={() => openFromBar(t)}>
                         {TAB_NAMES[t]}
                       </button>
                     ))}

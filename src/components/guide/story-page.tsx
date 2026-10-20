@@ -13,7 +13,7 @@ import styles from "./guide-page.module.css";
 
 /**
  * The owner's page for the build's Story (WO-79): a title, an opening line, and the tale itself in the
- * Guide's editor, with at most 5 images. The build page shows a Story tab once it has a title and text.
+ * Guide's editor, with at most 5 images. Once it has a title and text, readers open it in the reader from the build page (WO-116).
  */
 export function StoryPage({ buildId, name, visibility, plan, initial, title, line }: { buildId: string; name: string; visibility: BuildVisibility; plan: BuildPlan; initial: GuideDoc; title: string; line: string }) {
   const [save, setSave] = useState<{ status: GuideSaveStatus; error: string | null; retry: () => void }>({ status: "idle", error: null, retry: () => {} });
@@ -50,13 +50,13 @@ export function StoryPage({ buildId, name, visibility, plan, initial, title, lin
         <p className={`muted ${styles.storyLead}`}>
           {hasTitle && hasText ? (
             <>
-              Readers see it on the build page&apos;s Story tab.{" "}
-              <a href={`/b/${buildId}?tab=story`} target="_blank" rel="noopener">
-                See it there
+              Readers open it from the build page, in the reader.{" "}
+              <a href={`/b/${buildId}/story`} target="_blank" rel="noopener">
+                Read it there
               </a>
             </>
           ) : (
-            "The character's tale, told your way. The build page shows a Story tab once it has a title and some text."
+            "The character's tale, told your way. Readers can open it from the build page once it has a title and some text."
           )}
         </p>
         <div className={styles.fields}>

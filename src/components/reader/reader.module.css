@@ -265,6 +265,7 @@
     margin: 0 -18px;
     padding: 0 16px;
     height: 56px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: center;
     background: var(--story-ground);
     font-size: 14px;

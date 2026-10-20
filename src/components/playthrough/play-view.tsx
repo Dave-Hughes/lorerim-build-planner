@@ -143,7 +143,7 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
           </section>
         </aside>
 
-        <div className={s.col}>
+        <div className={`${s.col} ${s.actCol}`}>
           {act ? (
             <>
               {card ? (

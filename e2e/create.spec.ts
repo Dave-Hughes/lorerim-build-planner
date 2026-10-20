@@ -3,7 +3,7 @@ import { signIn } from "./helpers";
 
 test.describe("creating a build", () => {
   test("walks the steps, keeps a draft, and saves once signed in", async ({ page, context }) => {
-    await page.goto("/new?kind=alone");
+    await page.goto("/new");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Choose a race");
     await expect(page.getByRole("button", { name: "Next: Birthsign" })).toBeDisabled();
     // Clicking anywhere on a card chooses it, not just its button.
@@ -73,7 +73,7 @@ test.describe("creating a build", () => {
 
     // Signing in (as Discord would) and coming back finishes the build.
     await signIn(context);
-    await page.goto("/new?kind=alone&step=name");
+    await page.goto("/new?step=name");
     await page.getByRole("button", { name: "Create build" }).click();
     await page.waitForURL(/\/b\/[23456789abcdefghjkmnpqrstuvwxyz]{10}\/edit/);
     await expect(page.getByRole("region", { name: "Edit bar" }).getByText("Playwright Shield-Wall")).toBeVisible();
@@ -83,12 +83,12 @@ test.describe("creating a build", () => {
     await page.goto("/me");
     await expect(page.getByRole("heading", { name: "Playwright Shield-Wall" })).toBeVisible();
     await expect(page.getByRole("article").filter({ hasText: "Playwright Shield-Wall" }).getByText("Link only")).toBeVisible();
-    await page.goto("/new?kind=alone");
+    await page.goto("/new");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Choose a race");
   });
 
   test("the Master of One skill select works inside its card without toggling it", async ({ page }) => {
-    await page.goto("/new?kind=alone&step=traits");
+    await page.goto("/new?step=traits");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Choose up to two traits");
     const card = page.getByRole("article").filter({ has: page.getByRole("heading", { name: "Master of One", exact: true }) });
     await card.getByRole("heading", { name: "Master of One", exact: true }).click();

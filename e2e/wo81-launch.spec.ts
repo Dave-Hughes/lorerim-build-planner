@@ -8,7 +8,7 @@ import { AZREM_BUILD_ID, HEALER_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1440, height: 900 } });
 
-test("point 2: Story off: no Story tab, page, edit-bar link or card tag, though the healer has one saved", async ({ page, context }) => {
+test("point 2: Story off: no way into the reader, no Story page, edit-bar link or card tag, though the healer has one saved", async ({ page, context }) => {
   // The healer is the test author's private build.
   await signIn(context);
   await page.goto(`/b/${HEALER_BUILD_ID}?tab=story`);
@@ -17,9 +17,9 @@ test("point 2: Story off: no Story tab, page, edit-bar link or card tag, though 
   await expect(page.getByRole("tab", { name: /^Story/ })).toHaveCount(0);
   await expect(page.getByRole("region", { name: "Story" })).toHaveCount(0);
   await expect(page.getByText("The Mender")).toHaveCount(0);
+  await expect(page.getByRole("link", { name: "Read the story from the beginning" })).toHaveCount(0);
 
-  const res = await page.goto(`/b/${HEALER_BUILD_ID}/story`);
-  expect(res?.status()).toBe(404);
+  for (const path of [`/b/${HEALER_BUILD_ID}/story`, `/b/${HEALER_BUILD_ID}/story/edit`]) expect((await page.goto(path))?.status(), path).toBe(404);
   await page.goto(`/b/${HEALER_BUILD_ID}/edit`);
   const bar = page.getByRole("region", { name: "Edit bar" });
   await expect(bar.getByRole("link", { name: "Guide", exact: true })).toBeVisible();
