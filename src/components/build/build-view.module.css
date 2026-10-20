@@ -923,12 +923,19 @@
   border-bottom-color: var(--ember);
 }
 @media (max-width: 640px) {
+  /* Phones: the name and the owner's controls, then the tabs on a line of their own. */
   .pinnedTabs {
     gap: 8px;
+    flex-wrap: wrap;
+    row-gap: 2px;
+  }
+  .pinnedName {
+    flex: 1 1 0;
   }
   .pinnedTabRow {
-    flex: 1 1 auto;
-    justify-content: flex-end;
+    order: 3;
+    flex: 1 1 100%;
+    justify-content: space-between;
   }
   .pinnedTab {
     padding: 0 8px;

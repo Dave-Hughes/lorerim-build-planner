@@ -4779,8 +4779,8 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - e2e: scrolled, exactly one bar is pinned and it has no Story tab, on a build alone and on a character.
 
 ### Done when
-- [ ] Scrolled on a build alone and on a character, one bar pins, with the page's own tabs and the owner's controls.
-- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
+- [x] Scrolled on a build alone and on a character, one bar pins, with the page's own tabs and the owner's controls.
+- [x] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
 
 ---
 

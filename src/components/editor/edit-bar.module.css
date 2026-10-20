@@ -173,6 +173,10 @@
 .narrow {
   display: none;
 }
+.views {
+  display: inline-flex;
+  gap: 8px;
+}
 .moreButton {
   font-size: 18px;
 }

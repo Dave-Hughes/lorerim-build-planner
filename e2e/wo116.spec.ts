@@ -207,3 +207,27 @@ test("through the door: an act's own chapter, one per act, and the chapters get_
   const removed = await go("remove_chapter", { playthrough: KYRIA_PLAYTHROUGH_ID, chapter: made.json().chapter });
   expect(removed.isError, removed.text).toBe(false);
 });
+
+// WO-116a: one pinned bar, not two: the name, the page's own tabs, and the owner's controls.
+for (const [what, path, tabNames, owner] of [
+  ["a build alone", `/b/${AZREM_BUILD_ID}`, ["Levels", "Guide"], "other"],
+  ["a character", KYRIA, ["Play", "Levels", "Guide"], "author"],
+] as const) {
+  test(`scrolled on ${what}, exactly one bar pins, with its own tabs, no Story tab, and the owner's controls`, async ({ page, context }) => {
+    await signIn(context, owner);
+    await page.goto(path);
+    await expect(page.getByRole("region", { name: "Edit bar" })).toHaveCount(0);
+    await page.evaluate(() => window.scrollTo(0, 1600));
+    const pinned = page.getByRole("region", { name: "Pinned bar" });
+    await expect(pinned).toHaveCount(1);
+    // Nothing else is pinned to the top of the window.
+    const stuck = await page.evaluate(() => [...document.querySelectorAll("body *")].filter((el) => { const s = getComputedStyle(el); return (s.position === "fixed" || s.position === "sticky") && el.getBoundingClientRect().top <= 1 && el.getBoundingClientRect().height > 20 && el.getBoundingClientRect().bottom > 0; }).length);
+    expect(stuck).toBe(1);
+    await expect(pinned.getByRole("group", { name: "Sections" }).getByRole("button")).toHaveText([...tabNames]);
+    await expect(pinned.getByText(/^Story$/)).toHaveCount(0);
+    await expect(pinned.getByRole("button", { name: /^Who can see it/ })).toBeVisible();
+    await expect(pinned.getByRole("button", { name: "Copy link" })).toBeVisible();
+    await expect(pinned.getByRole("link", { name: "Set up", exact: true })).toBeVisible();
+    await expect(pinned.getByRole("link", { name: "Edit", exact: true })).toHaveAttribute("href", new RegExp("/b/[a-z0-9]{10}/edit$"));
+  });
+}

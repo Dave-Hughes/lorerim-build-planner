@@ -36,16 +36,19 @@ test("the visibility button changes Link only to Listed, and Set up shows it", a
   await expect(page.getByLabel("Anyone with the link")).toBeChecked();
 });
 
-test("the owner sees Edit on the shared page; a visitor sees no edit bar", async ({ page, context, browser }) => {
+// WO-116a: the shared page has no edit bar; the owner's controls are in the hero (and the pinned bar).
+test("the owner sees Set up and Edit on the shared page; a visitor sees neither", async ({ page, context, browser }) => {
   await signIn(context);
   await page.goto(`/b/${TEST_BUILD_ID}`);
-  const bar = page.getByRole("region", { name: "Edit bar" });
-  await expect(bar.getByRole("link", { name: "Edit", exact: true })).toBeVisible();
-  await expect(bar.getByRole("link", { name: "Levels" })).not.toHaveAttribute("aria-current", "page");
+  await expect(page.getByRole("region", { name: "Edit bar" })).toHaveCount(0);
+  const hero = page.getByRole("region", { name: "Build" });
+  await expect(hero.getByRole("link", { name: "Edit", exact: true })).toHaveAttribute("href", `/b/${TEST_BUILD_ID}/edit`);
+  await expect(hero.getByRole("link", { name: "Set up", exact: true })).toHaveAttribute("href", `/b/${TEST_BUILD_ID}/setup`);
   const visitor = await browser.newPage();
   await visitor.goto(`/b/${TEST_BUILD_ID}`);
   await expect(visitor.getByRole("heading", { level: 1 })).toHaveText("Test Shield-Wall");
-  await expect(visitor.getByRole("region", { name: "Edit bar" })).toHaveCount(0);
+  await expect(visitor.getByRole("button", { name: /^Who can see it/ })).toHaveCount(0);
+  await expect(visitor.getByRole("link", { name: "Set up", exact: true })).toHaveCount(0);
   await visitor.close();
 });
 

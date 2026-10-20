@@ -55,7 +55,8 @@ test("the 11th build in a day is refused; an account 2 days old can't set Listed
 
   await signInAs(context, NEW_ACCOUNT_TOKEN);
   await page.goto(`/b/${NEW_ACCOUNT_BUILD_ID}`);
-  const bar = page.getByRole("region", { name: "Edit bar" });
+  // The owner's controls are in the hero (WO-116a).
+  const bar = page.getByRole("region", { name: "Build" });
   await bar.getByRole("button", { name: "Who can see it: Link only" }).click();
   await page.getByRole("menuitemradio", { name: /^Listed/ }).click();
   await expect(bar.getByText(/Your Discord account is new\. You can list builds and upload images from \d{1,2} \w{3} \d{4}\./)).toBeVisible();

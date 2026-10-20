@@ -10,6 +10,7 @@ test("with both on: the healer's Story in the reader, the Story page and the sit
   await page.goto(`/b/${HEALER_BUILD_ID}/story`);
   await expect(page.getByRole("dialog").getByRole("heading", { name: "The Mender" })).toBeVisible();
   await page.keyboard.press("Escape");
+  await page.goto(`/b/${HEALER_BUILD_ID}/edit`);
   await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("link", { name: "Story", exact: true })).toBeVisible();
   expect((await page.goto("/guide"))?.status()).toBe(200);
   await expect(page.getByRole("navigation", { name: "Site" }).getByRole("link", { name: "Guide" })).toBeVisible();

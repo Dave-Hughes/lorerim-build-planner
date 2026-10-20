@@ -12,7 +12,7 @@ import type { BuildRecord } from "@/lib/builds/types";
 import { useGameData } from "@/components/game-data";
 import { GuideFactsProvider } from "@/components/guide/guide-facts";
 import { SkillGains, type SkillGain } from "./skill-gains";
-import { EditBar, MenuButton } from "@/components/editor/edit-bar";
+import { MenuButton, OwnerControls } from "@/components/editor/edit-bar";
 import menuStyles from "@/components/editor/edit-bar.module.css";
 import { PlayMark } from "./play-mark";
 import { Tour } from "@/components/tour/tour";
@@ -279,6 +279,9 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
       }),
     );
   };
+  // The owner's controls (WO-116a), in the hero and the pinned bar; one visibility between them.
+  const [visibility, setVisibility] = useState(build.visibility);
+  const ownerControls = isOwner && !build.isSample ? <OwnerControls key={visibility} buildId={build.id} current={null} visibility={visibility} onVisibility={setVisibility} /> : null;
   // A tab picked in the pinned bar opens at its top: the tab row comes back under the bars (WO-116).
   const openFromBar = (t: BuildTab) => {
     setTab(t);
@@ -305,11 +308,10 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
     <RunHere.Provider value={playTab?.here ?? null}>
     <GuideFactsProvider plan={plan} states={states}>
       <main className={styles.main}>
-        {/* The owner's edit bar: one click to edit, as View build is one click back. */}
-        {isOwner && !build.isSample && <EditBar buildId={build.id} name={build.name} current={null} visibility={build.visibility} />}
         {/* The build's guide theme (WO-37): everything below the edit bar takes its colours. */}
         <div className={styles.themed} data-theme={themeOf(plan.theme).id} style={themeStyle(plan.theme)}>
         <Cover
+          ownerControls={ownerControls}
           startRun={startRun}
           storyHref={storyHref}
           build={build}
@@ -382,18 +384,22 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           )}
           {/* Pinned once the tab row scrolls off (WO-116): the name and the tabs, thin, on every tab; on
               Levels, the level stepper and what the level changed under them. */}
-          {pinned && (tabs.length > 1 || tab === "levels") && (
+          {/* The one pinned bar (WO-116a): the name, the page's tabs, the owner's controls. */}
+          {pinned && (tabs.length > 1 || tab === "levels" || ownerControls) && (
             <div className={styles.pinnedBar} role="region" aria-label="Pinned bar" data-pinned-bar="" data-tour="pinned-bar">
-              {tabs.length > 1 && (
+              {(tabs.length > 1 || ownerControls) && (
                 <div className={`page ${styles.pinnedTabs}`}>
                   <span className={styles.pinnedName}>{build.name}</span>
-                  <span className={styles.pinnedTabRow} role="group" aria-label="Sections">
-                    {tabs.map((t) => (
-                      <button key={t} type="button" aria-pressed={tab === t} className={styles.pinnedTab} onClick={() => openFromBar(t)}>
-                        {TAB_NAMES[t]}
-                      </button>
-                    ))}
-                  </span>
+                  {tabs.length > 1 && (
+                    <span className={styles.pinnedTabRow} role="group" aria-label="Sections">
+                      {tabs.map((t) => (
+                        <button key={t} type="button" aria-pressed={tab === t} className={styles.pinnedTab} onClick={() => openFromBar(t)}>
+                          {TAB_NAMES[t]}
+                        </button>
+                      ))}
+                    </span>
+                  )}
+                  {ownerControls}
                 </div>
               )}
               {tab === "levels" && (
@@ -1494,6 +1500,7 @@ function Ornament() {
 }
 
 function Cover({
+  ownerControls,
   startRun,
   storyHref,
   build,
@@ -1513,6 +1520,7 @@ function Cover({
   autoCopy: boolean;
   admin: { featured: boolean } | null;
   onWatch: () => void;
+  ownerControls?: React.ReactNode;
   startRun?: string | null;
   storyHref?: string | null;
 }) {
@@ -1660,7 +1668,7 @@ function Cover({
               <PlayMark size={18} /> Watch the video guide
             </button>
           )}
-          {/* The owner has Copy link and Edit in the edit bar; the hero doesn't repeat them. */}
+          {/* The owner has Copy link and Edit in their controls; the hero doesn't repeat them. */}
           {!ownerBar && (
             <button type="button" className="btn" onClick={copyLink}>
               {copied ? "Copied" : "Copy link"}
@@ -1671,7 +1679,8 @@ function Cover({
               {writeupLabel}
             </a>
           )}
-          {/* The owner's way to give the build a run (WO-116), beside the edit bar's Edit. */}
+          {/* The owner's controls (WO-116a): who can see it, Copy link, Set up, Edit; then Start a run (WO-116). */}
+          {ownerControls}
           {startRun && (
             <Link className="btn" href={startRun}>
               Start a run

@@ -70,8 +70,9 @@ test.describe("shared build page", () => {
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Nothing here");
     await page.goto(`/b/${TEST_BUILD_ID}`);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Test Shield-Wall");
-    // The owner edits from the edit bar (WO-31: the hero doesn't repeat it).
-    await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("link", { name: "Edit", exact: true })).toBeVisible();
+    // The owner edits from their controls in the hero (WO-116a: no edit bar on the build's own page).
+    await expect(page.getByRole("region", { name: "Edit bar" })).toHaveCount(0);
+    await expect(page.getByRole("region", { name: "Build" }).getByRole("link", { name: "Edit", exact: true })).toBeVisible();
     await expect(page.getByRole("link", { name: "Edit build" })).toHaveCount(0);
   });
 

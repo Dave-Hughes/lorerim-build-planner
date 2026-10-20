@@ -136,35 +136,30 @@ export function MenuButton({
 }
 
 /**
- * The owner's bar on every editing page (Levels, Set up, Guide) and on their shared page: the
- * build's name, the three pages, the save status, who can see it, Copy link, and View build (or
- * Edit on the shared page). Sticky under the site header. Phones: the name, who can see it, and a
- * ⋯ menu with the rest.
+ * The owner's controls (WO-116a): who can see it, Copy link, and View build (or, on the build's own
+ * page, Set up and Edit). The edit bar's right side on the editing pages, and the build page's hero
+ * and pinned bar. Phones: who can see it, and a ⋯ menu with the rest.
  */
-export function EditBar({
+export function OwnerControls({
   buildId,
-  name,
   current,
   status,
   visibility: initial,
   onVisibility,
   todo,
+  pages = [],
 }: {
   buildId: string;
-  name: string;
-  /** The editing page you're on; null on the shared page. */
+  /** The editing page you're on; null on the build's own page. */
   current: EditPage | null;
   status?: React.ReactNode;
   visibility: BuildVisibility;
-  /** Told when the visibility changes here (Set up keeps its own copy). */
   onVisibility?: (v: BuildVisibility) => void;
-  /** The author's to-do across the build (WO-76: spells to choose), before the save status. */
   todo?: React.ReactNode;
+  /** The editing pages, for the ⋯ menu on phones. */
+  pages?: typeof PAGES;
 }) {
   const [visibility, setVisibility] = useState(initial);
-  // The Story page is held back for launch (WO-81).
-  const { story } = useFeatures();
-  const pages = PAGES.filter((p) => p.key !== "story" || story);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
@@ -198,11 +193,109 @@ export function EditBar({
       View build
     </Link>
   ) : (
-    <Link href={`/b/${buildId}/edit`} className="btn btn-sm btn-primary">
-      Edit
-    </Link>
+    <>
+      <Link href={`/b/${buildId}/setup`} className="btn btn-sm">
+        Set up
+      </Link>
+      <Link href={`/b/${buildId}/edit`} className="btn btn-sm btn-primary">
+        Edit
+      </Link>
+    </>
   );
+  const menuPages = current ? pages : pages.filter((p) => p.key !== "setup");
+  return (
+    <span className={styles.right}>
+      {todo && <span className={styles.todo}>{todo}</span>}
+      {(status || saving || error) && (
+        <span className={styles.status} role="status">
+          {error ? <span className="bad">{error}</span> : saving ? "Saving…" : status}
+        </span>
+      )}
+      <MenuButton
+        buttonClassName={styles.visButton}
+        buttonLabel={`Who can see it: ${VISIBILITY[visibility].label}`}
+        menuLabel="Who can see it"
+        startAt={Math.max(0, VIS_ORDER.indexOf(visibility))}
+        button={
+          <>
+            <VisibilityIcon v={visibility} />
+            <span>{VISIBILITY[visibility].label}</span>
+            <span className={styles.caret} aria-hidden="true">
+              ▾
+            </span>
+          </>
+        }
+      >
+        {(close) =>
+          VIS_ORDER.map((v) => (
+            <button key={v} type="button" role="menuitemradio" aria-checked={visibility === v} tabIndex={-1} className={styles.menuItem} onClick={() => void choose(v, close)}>
+              <VisibilityIcon v={v} />
+              <span className={styles.menuText}>
+                <span className={styles.menuLabel}>{VISIBILITY[v].label}</span>
+                <span className={styles.menuSub}>{VISIBILITY[v].text}</span>
+              </span>
+            </button>
+          ))
+        }
+      </MenuButton>
+      <button type="button" className={`btn btn-sm ${styles.wide}`} onClick={copy}>
+        {copied ? "Copied" : "Copy link"}
+      </button>
+      <span className={`${styles.wide} ${styles.views}`}>{view}</span>
+      <MenuButton className={styles.narrow} buttonClassName={`btn btn-sm btn-icon ${styles.moreButton}`} buttonLabel="More" menuLabel="More" button="⋯">
+        {(close) => (
+          <>
+            {menuPages.map((p) => (
+              <Link key={p.key} href={`/b/${buildId}/${p.path}`} role="menuitem" tabIndex={-1} className={styles.menuItem} aria-current={current === p.key ? "page" : undefined} onClick={() => close()}>
+                {p.label}
+              </Link>
+            ))}
+            {!current && (
+              <Link href={`/b/${buildId}/setup`} role="menuitem" tabIndex={-1} className={styles.menuItem} onClick={() => close()}>
+                Set up
+              </Link>
+            )}
+            <button type="button" role="menuitem" tabIndex={-1} className={styles.menuItem} onClick={copy}>
+              {copied ? "Copied" : "Copy link"}
+            </button>
+            <Link href={current ? `/b/${buildId}` : `/b/${buildId}/edit`} role="menuitem" tabIndex={-1} className={styles.menuItem} onClick={() => close()}>
+              {current ? "View build" : "Edit"}
+            </Link>
+          </>
+        )}
+      </MenuButton>
+    </span>
+  );
+}
 
+/**
+ * The owner's bar on every editing page (Levels, Set up, Guide, Story): the build's name, the
+ * pages, the save status, and the owner's controls. Sticky under the site header. The build's own
+ * page has none since WO-116a: its one pinned bar holds the owner's controls.
+ */
+export function EditBar({
+  buildId,
+  name,
+  current,
+  status,
+  visibility,
+  onVisibility,
+  todo,
+}: {
+  buildId: string;
+  name: string;
+  /** The editing page you're on. */
+  current: EditPage;
+  status?: React.ReactNode;
+  visibility: BuildVisibility;
+  /** Told when the visibility changes here (Set up keeps its own copy). */
+  onVisibility?: (v: BuildVisibility) => void;
+  /** The author's to-do across the build (WO-76: spells to choose), before the save status. */
+  todo?: React.ReactNode;
+}) {
+  // The Story page is held back for launch (WO-81).
+  const { story } = useFeatures();
+  const pages = PAGES.filter((p) => p.key !== "story" || story);
   return (
     <div className={styles.bar} role="region" aria-label="Edit bar" data-edit-bar="">
       <div className={`page ${styles.inner}`}>
@@ -216,62 +309,7 @@ export function EditBar({
             </Link>
           ))}
         </nav>
-        <span className={styles.right}>
-          {todo && <span className={styles.todo}>{todo}</span>}
-          {(status || saving || error) && (
-            <span className={styles.status} role="status">
-              {error ? <span className="bad">{error}</span> : saving ? "Saving…" : status}
-            </span>
-          )}
-          <MenuButton
-            buttonClassName={styles.visButton}
-            buttonLabel={`Who can see it: ${VISIBILITY[visibility].label}`}
-            menuLabel="Who can see it"
-            startAt={Math.max(0, VIS_ORDER.indexOf(visibility))}
-            button={
-              <>
-                <VisibilityIcon v={visibility} />
-                <span>{VISIBILITY[visibility].label}</span>
-                <span className={styles.caret} aria-hidden="true">
-                  ▾
-                </span>
-              </>
-            }
-          >
-            {(close) =>
-              VIS_ORDER.map((v) => (
-                <button key={v} type="button" role="menuitemradio" aria-checked={visibility === v} tabIndex={-1} className={styles.menuItem} onClick={() => void choose(v, close)}>
-                  <VisibilityIcon v={v} />
-                  <span className={styles.menuText}>
-                    <span className={styles.menuLabel}>{VISIBILITY[v].label}</span>
-                    <span className={styles.menuSub}>{VISIBILITY[v].text}</span>
-                  </span>
-                </button>
-              ))
-            }
-          </MenuButton>
-          <button type="button" className={`btn btn-sm ${styles.wide}`} onClick={copy}>
-            {copied ? "Copied" : "Copy link"}
-          </button>
-          <span className={styles.wide}>{view}</span>
-          <MenuButton className={styles.narrow} buttonClassName={`btn btn-sm btn-icon ${styles.moreButton}`} buttonLabel="More" menuLabel="More" button="⋯">
-            {(close) => (
-              <>
-                {pages.map((p) => (
-                  <Link key={p.key} href={`/b/${buildId}/${p.path}`} role="menuitem" tabIndex={-1} className={styles.menuItem} aria-current={current === p.key ? "page" : undefined} onClick={() => close()}>
-                    {p.label}
-                  </Link>
-                ))}
-                <button type="button" role="menuitem" tabIndex={-1} className={styles.menuItem} onClick={copy}>
-                  {copied ? "Copied" : "Copy link"}
-                </button>
-                <Link href={current ? `/b/${buildId}` : `/b/${buildId}/edit`} role="menuitem" tabIndex={-1} className={styles.menuItem} onClick={() => close()}>
-                  {current ? "View build" : "Edit"}
-                </Link>
-              </>
-            )}
-          </MenuButton>
-        </span>
+        <OwnerControls buildId={buildId} current={current} status={status} visibility={visibility} onVisibility={onVisibility} todo={todo} pages={pages} />
       </div>
     </div>
   );
