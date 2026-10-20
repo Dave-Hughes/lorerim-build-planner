@@ -4538,11 +4538,79 @@ All take `version` (default 5.0.4.8) and act only on builds the signed-in player
 
 ---
 
-## WO-111 and WO-112  (to write when WO-110 is checked)
+## WO-111  Playthroughs (Mac, 19 Oct 2026)
+
+**Why.** Dave's idea for the planner beyond builds: a character's whole run, from race and deity to what to do with her, written as a story and a quest log and kept current as he plays. The way he sees it working: a player connects an assistant to the planner, describes the character and works out the story with it, the assistant drafts the playthrough through the door, the player reads and edits it by hand or with the assistant, the two keep it accurate through the game, and (WO-112) the assistant can read the local save to bring it up to date.
+
+**The reference.** Dave's Book of Kyria on his PC (`C:\LoreRim\_fieldguide\tools\kyria-book\`, `kyria.playthrough.json` and the built page), made in another session. The planner takes its structure: acts with a level range and a place, objectives with a why line and a status, some proved by the save, story beats that open when something happens, "where you stand" from the save. It leaves out the book styling, the novel as a novel, stats from one mod, and the follower table.
+
+**The boards.** Canvas row 23: `Playthrough.dc.html` (the Play view), `PlaythroughTale.dc.html` (the Tale view, in the Story tab's format), `PlaythroughEdit.dc.html` (editing an act by hand). Build what they show.
+
+**Where:** on `staging`, behind `FEATURE_PLAYTHROUGHS` (on in dev and preview, off on production), small commits, in the order below. Reuse: the guide document (`src/lib/guide/doc.ts`, its validator, images and limits), the Story editor and the Story tab's rendering (WO-79), the @-mention extension, the builds' writes and limits pattern, and the WO-110 tool pattern (`src/lib/mcp/builds.ts`, names, refusals).
+
+### 1. The rules, first
+Replace rules 12 to 16 in `content/mcp/style.md` with these, word for word, and add them to `docs/design-rules.md` as a "Playthroughs" section:
+
+12. Two kinds of text, kept apart. **Tale** is the story: what the character sees, wants and does, as a story, with no numbers or instructions in it. **Play** is the game: what the player does, where, with which quest or item, in plain instructions. A chapter, an entry and a beat are Tale only. An act's goal, an objective and its why line are Play only.
+13. An act is a stretch of the game with a goal and a place: a name, a level range, a place, the goal in one line ("Earn a bed and coin in Riften as a bard and a worker"), and, if there is one, a standing rule for what the player keeps doing through the act ("Play the Bee and Barb most nights"). A standing rule is not an objective.
+14. An objective is one thing the player can know is done. Either **done once** (a quest or one of its stages, a person met, a place reached, an item in hand, one act they will tick: "Sing for the children at Honorhall") or **reach a number** (a level, a skill at a number, a count the save or the player can give: "Read 10 books"). "Read every new book", "keep playing", anything with every, each, always or whenever, is a standing rule, and the planner refuses it as an objective. Each objective has one why line.
+15. An objective links to a planner quest, quest line, spell, item or follower when one exists; the rest is the player's own words. Never invent a quest. Quest facts in a why line come from the planner (the checked start, the giver, the place) and say "not checked yet" when the planner does.
+16. A beat is a short Tale scene that opens when an objective is done or a number is reached; until then the page shows its title and what opens it. An entry is a Tale scene written after play, from the save and what the player said. A chapter is Tale from before the game.
+17. Suggestions are proposals: an assistant's suggested objective shows as suggested with Accept and Skip, and nothing counts until the player accepts it.
+18. Where you stand (level, day, place, skills) comes from the player's save through the helper, or from the player by hand. Never from an estimate.
+
+(The old rules 17 to 19, honesty, become 19 to 21.)
+
+### 2. Data
+Five tables, migration additive, `npm run db:generate`:
+- `playthrough`: id (the builds' id shape), ownerId, buildId (nullable, the player's own build), name, line (one sentence, 140), gameVersion, visibility (as builds), draftedBy, showDrafted, coverImageUrl (nullable, the Story tab's upload path), createdAt, updatedAt.
+- `playthrough_act`: id, playthroughId, position, name (60), levelFrom, levelTo (nullable: "and up"), place (80), goal (200), standingRule (200, nullable).
+- `playthrough_objective`: id, actId, position, text (160), kind `once` | `reach`, link (nullable jsonb `{ kind: "quest" | "line" | "spell" | "item" | "follower", id }`), doneBy `save` | `hand`, detect (nullable jsonb `{ quest: <edid>, stage?: n }` for `save`), reach (nullable jsonb `{ key: "level" | "skill:<Skill>" | "count:<label>", target: n }`), why (300, nullable), status `todo` | `doing` | `done` | `later`, doneAt (nullable), suggestedBy (nullable, the client's name), accepted (bool, true unless suggested).
+- `playthrough_chapter`: id, playthroughId, actId (nullable: before the game), kind `chapter` | `entry` | `beat`, position, title (60), opensAfter (nullable objectiveId: a beat opens when that objective is done), fromSave (nullable label, "Save 7, 19 Oct 2026"), writtenBy (nullable client name), readAt (nullable), doc (the guide document, limit as `story`), textLength.
+- `playthrough_snapshot`: playthroughId, source `save` | `hand`, label (60, "Save 7"), level, xp (nullable), day (nullable), place (80, nullable), skills (jsonb, name to value), questStages (jsonb, edid to highest stage, nullable), readBy (nullable client name), at. One row per playthrough, replaced on each update; the previous one kept as `playthrough_snapshot_prev` columns on the same row (level, skills) so "skills that moved since save 5" can be shown.
+
+Status is worked out, not only stored: an objective with `doneBy: save` is done when the snapshot's `questStages[detect.quest] >= detect.stage` (or the quest is present when no stage is given); a `reach` objective is done when the snapshot's value meets the target, with the meter from the snapshot; `hand` objectives are done when the player ticks them. A beat is open when its `opensAfter` objective is done or when it has none.
+
+### 3. Pages
+- `/p/<id>`: the Play view, as the board. The title band (name, line, byline, build link, "Drafted with Claude" while shown, version), the three tabs (Play with "n of m done", Tale with "n chapters, n entries", Build linking to the build page or "No build yet"), Where you stand (from the snapshot, with "Read the latest save" when WO-112's helper is connected, else "Enter it by hand" opening a small form: level, day, place, and the skills the objectives name), the acts down the left with counts and bars, the current act (first act with an objective not done), its objectives with a checkbox, a kind tag only when linked (Quest, Quest line, Spell, Item, Follower), the status (Done, from your save | Done, ticked by you | Under way | To do | Later | Suggested by <name> with Accept and Skip), the why line, a meter for `reach`, and under an objective one muted line per chapter that hangs off it: "<Title> opened from this. Read it ›" or "<Title> opens when you tick this" / "opens at Speech 40". On the right: Next (in the game, in the tale, next act), Who she is (from the build when linked), Keeping it current (assistant and save), visibility.
+- `/p/<id>/tale`: the Tale view, in the Story tab's rendering: contents rail (chapters before the game, then each act's entries and beats in order), the author's opening image when uploaded, the 680px Alegreya column, each piece with its heading and a sub line ("Act I | from save 5, level 4, day 3 | written by Claude, 19 Oct 2026"), entries with a brass rule, a beat not yet open as its title, what opens it ("Opens when you tick <objective>", linked) and "Read it anyway"; under every entry and beat, "In the game: <objective>, Act n" linking back to the row; "‹ Back to the quest log, Act n" beside the tabs, returning to the act the reader came from.
+- `/p/<id>/edit`: editing by hand, as the board: acts on the left with Add an act and Move up/down; the act's fields; objectives in place, each with Done once | Reach a number, Done when (the save says so: a quest and stage picker from the planner's quests | you tick it), the number (Level | a skill | a count with a label, and the target), the why line, Remove, Move up/down; `@` in the text opens the mention menu with the new kinds `quest`, `line` and `follower` (a follower is a line in the Followers category) beside the existing ones; the rule shown in red under an objective the planner refuses; Add an objective and Add a beat here between rows; a beat's "opens when" (the objective above is done | right away) and Edit the scene, which opens the Story editor on that chapter. Chapters: a list with Add a chapter, each in the Story editor (text, up to 5 of the author's images, captions, the `story` limits).
+- `/me`: a My playthroughs grid under My builds, cards with name, line, act n of m, "Drafted with Claude", visibility; New playthrough. Nav: "Playthroughs" after Quests while the flag is on, going to `/playthroughs`, a grid of Listed playthroughs newest first (nothing more for now).
+- Visibility, Copy link, reports and the moderation holds work as for builds; a private playthrough 404s to anyone else.
+
+### 4. The tools
+Scope `playthroughs:write`; add it to `GRANTABLE` so a client asking for no scopes gets it too. Same shape as WO-110: plain inputs, names not ids, every write through the same code the pages use, nothing saved on a refusal, 30 writes a minute, at most 10 private drafted playthroughs per player. In `src/lib/mcp/playthroughs.ts`:
+- `create_playthrough({ name, line, build?, version? })`: private, `draftedBy` the client; `build` is one of the player's own builds by id or name.
+- `add_act({ playthrough, name, levels: "1 to 6" | "40 and up", place, goal, standingRule? })`, `set_act`, `remove_act` (not the last), `move_act`.
+- `add_objective({ playthrough, act, text, link?: { kind, name }, kind: "once" | "reach", doneWhen: { quest, stage? } | { reach: { key, target } } | "hand", why?, after?: objective })`: refused with rule 14's words when `kind` is `once` with no `doneWhen`, when the text begins with Keep, Always or Never, or contains every, each, always or whenever; `link` names resolved as WO-110 does (a quest by its name in a line, with the line named when two share it); a `reach` key is Level, a skill name, or a count label.
+- `set_objective`, `remove_objective`, `move_objective`, `set_status({ playthrough, objective, status })` for `hand` objectives only (a `save` one answers "the save decides this").
+- `suggest_objective(...)`: as `add_objective` with `suggestedBy` and `accepted: false`; counts for nothing until the player accepts it on the site.
+- `write_chapter({ playthrough, kind: "chapter" | "entry" | "beat", title, text, act?, after?: objective, fromSave? })`: `text` is Markdown (paragraphs, a heading, a quote, no images), converted to the guide document and checked by its validator and limits; a beat needs `after`; an entry may carry `fromSave`. `set_chapter`, `remove_chapter`.
+- `set_snapshot({ playthrough, source: "save", label, level, xp?, day?, place?, skills, questStages? })`: only `source: "save"`, for WO-112's helper; a value the assistant made up is what rule 18 forbids, so the description says so.
+- `get_playthrough`, `list_my_playthroughs`, `finish_draft` (the review link when every act has at least one objective and every beat has an `after`; the issues otherwise).
+- `suggest_quests({ playthrough?, level, where?, done?: [line ids] })`: from `stories.json` and the checked lines only (`checked.start === "files"`), those open at the level and not done, each with its checked start line and the planner link; never a line whose start isn't checked. Read-only, scope `facts`.
+
+### 5. Limits and moderation
+Names, lines, goals, why lines and chapter text go through the same checks as builds and guides; images only through the site's upload path, never the tools. Rate kinds: `mcp-write` as WO-110.
+
+### 6. Tests
+- Unit: the objective refusals (no done-when; "Read every new book"; "Keep playing the Bee and Barb"); done worked out from a snapshot (quest stage, reach, hand); a beat open only after its objective; a suggestion not counted; Markdown to guide document within limits; `suggest_quests` never returns an unchecked line; scopes granted when none are asked for are facts, builds:write and playthroughs:write.
+- e2e, through the door with a WO-109 token: create a playthrough on the test author's build, two acts, five objectives (one refused), one suggestion, a beat and a chapter, `finish_draft` returns the link. On the site: the Play view shows it private under My playthroughs; ticking a hand objective opens the beat's line; the Tale view shows the chapter and the "In the game" link; editing an act by hand adds an objective with a `@quest` mention and shows the rule under a refused one; Accept on the suggestion makes it count; Enter it by hand sets level 6 and the `reach` meter moves; another player's token can't read it; a facts-only token can't write.
+- Screenshots: the Play view, the Tale view, editing an act, My playthroughs. Compare with row 23 on the canvas.
+
+### Done when
+- [ ] An assistant with a token can draft a playthrough end to end with plain inputs, is refused for an objective the player can't know is done, and gets the review link from `finish_draft`.
+- [ ] The Play view, Tale view and edit page match the three boards; the Tale text appears nowhere on the Play view but its one-line pointers.
+- [ ] Done is worked out from the snapshot or the player's tick, never stored by the assistant; a suggestion counts only once accepted.
+- [ ] The rules are in `content/mcp/style.md` and `docs/design-rules.md` as written here.
+- [ ] Every check in CLAUDE.md passes; migration additive; behind the flag. Commit on `staging`, push, and stop: Dave asks Claude to draft Kyria's playthrough and reads it.
+
+---
+
+## WO-112 and WO-113  (to write when WO-111 is checked)
 
 - **WO-113 Merchants (PC).** `get_spell` can't say where a spell is sold: the planner has no merchant data. Read vendor containers and their leveled lists from the game files, per spell tome and item, and mark random stock as such. Until then the tool says so and tells the assistant not to name one from memory.
-- **WO-111 Playthroughs.** The full walkthrough: tables for playthrough, act, objective, chapter, beat and snapshot; the tools; `suggest_quests` over checked stories only; the page, designed on the canvas first.
-- **WO-112 The helper.** A local MCP (Claude Desktop extension or a Claude Code server) wrapping the save reader from the Kyria work, sending only the snapshot fields.
+- **WO-112 The helper.** Dave's step 6: a local MCP (Claude Desktop extension or a Claude Code server) wrapping the save reader from the Kyria work (`ess.py`, `questscan.py`), sending only the snapshot fields to `set_snapshot`: level, XP, day, place, skills, quest stages. Never the save itself.
 
 ---
 
