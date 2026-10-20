@@ -4,6 +4,10 @@ import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveStatus, Reach
  * Done is worked out, not only stored (WO-111): a `save` objective is done when the snapshot's quest
  * stages show it, a `reach` one when the snapshot's number meets the target, a `hand` one when the
  * player ticked it. A suggestion counts for nothing until the player accepts it.
+ *
+ * WO-111a: a done-once `save` objective (a quest stage) can be ticked by the player too, until a
+ * snapshot shows the stage; then the save's word takes over. A snapshot that doesn't show it yet
+ * leaves the tick alone, since the save may be older than the tick.
  */
 
 export interface SnapshotValues {
@@ -49,6 +53,11 @@ export interface Worked {
   meter?: { value: number | null; target: number; label: string };
 }
 
+/** Objectives the player can tick: their own, and a quest stage the save hasn't shown yet (WO-111a). Never a number. */
+export function canTickByHand(o: Pick<ObjectiveFacts, "kind" | "doneBy">): boolean {
+  return o.kind === "once";
+}
+
 export function workOut(o: ObjectiveFacts, snap: SnapshotValues | null | undefined): Worked {
   const meter = o.kind === "reach" && o.reach ? { value: reachValue(snap, o.reach.key), target: o.reach.target, label: reachLabel(o.reach.key) } : undefined;
   if (!o.accepted) return { done: false, shown: "suggested", meter };
@@ -59,7 +68,7 @@ export function workOut(o: ObjectiveFacts, snap: SnapshotValues | null | undefin
     done = stage !== undefined && (o.detect.stage === undefined || stage >= o.detect.stage);
   }
   if (done) return { done, shown: "save", meter };
-  if (o.doneBy === "hand" && o.status === "done") return { done: true, shown: "hand", meter };
+  if (o.status === "done" && canTickByHand(o)) return { done: true, shown: "hand", meter };
   const shown: Shown = o.status === "later" ? "later" : o.status === "doing" || (meter?.value ?? 0) > 0 ? "doing" : "todo";
   return { done: false, shown, meter };
 }

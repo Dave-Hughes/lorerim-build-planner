@@ -4617,8 +4617,8 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - Unit test for the three cases; the WO-111 e2e ticks "Spread the Love" by hand and sees it done.
 
 ### Done when
-- [ ] On the seeded Kyria, "Spread the Love" can be ticked and reads "Done, ticked by you"; a snapshot with its stage changes it to "Done, from your save".
-- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
+- [x] On the seeded Kyria, "Spread the Love" can be ticked and reads "Done, ticked by you"; a snapshot with its stage changes it to "Done, from your save".
+- [x] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
 
 ---
 

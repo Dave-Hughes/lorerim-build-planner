@@ -53,15 +53,35 @@ describe("done, worked out", () => {
     expect(workOut({ ...base, kind: "reach", doneBy: "save", reach: { key: "level", target: 6 } }, snap).done).toBe(true);
     expect(workOut({ ...base, kind: "reach", doneBy: "save", reach: { key: "skill:Speech", target: 30 } }, { ...snap, skills: { Speech: 30 } }).done).toBe(true);
   });
-  it("from the player's tick, and never a save objective from a stored status", () => {
+  it("from the player's tick", () => {
     expect(workOut({ ...base, status: "done" }, null).shown).toBe("hand");
-    expect(workOut({ ...base, doneBy: "save", detect: { quest: "X" }, status: "done" }, snap).done).toBe(false);
   });
 });
 
 const row = (id: number, v: Partial<ObjectiveRow> = {}): ObjectiveRow => ({ id, actId: 1, position: id, text: `o${id}`, kind: "once", link: null, doneBy: "hand", detect: null, reach: null, why: null, status: "todo", suggestedBy: null, accepted: true, ...v });
 const act = { id: 1, position: 1, name: "The Sister's House", levelFrom: 1, levelTo: 6, place: "Riften", goal: "", standingRule: null };
 const beat = { id: 9, actId: 1, kind: "beat" as const, position: 1, title: "Made with Care", opensAfter: 2, fromSave: null, writtenBy: null, createdAt: new Date(), doc: { type: "doc" as const, content: [] } };
+
+describe("a quest objective the player ticks before the save shows it (WO-111a)", () => {
+  const quest: ObjectiveFacts = { ...base, doneBy: "save", detect: { quest: "FreeformRiften05", stage: 10 } };
+  it("is done, ticked by you, while no snapshot shows the stage", () => {
+    expect(workOut({ ...quest, status: "done" }, null)).toMatchObject({ done: true, shown: "hand" });
+    expect(workOut({ ...quest, status: "todo" }, null).done).toBe(false);
+  });
+  it("is the save's once a snapshot shows the stage", () => {
+    expect(workOut({ ...quest, status: "done" }, { ...snap, questStages: { FreeformRiften05: 10 } }).shown).toBe("save");
+  });
+  it("keeps the tick when a snapshot shows the quest not there yet", () => {
+    expect(workOut({ ...quest, status: "done" }, { ...snap, questStages: { FreeformRiften05: 5 } })).toMatchObject({ done: true, shown: "hand" });
+  });
+  it("never lets a number be ticked", () => {
+    expect(workOut({ ...base, kind: "reach", doneBy: "save", reach: { key: "level", target: 9 }, status: "done" }, snap).done).toBe(false);
+  });
+  it("opens the beat it hangs off", () => {
+    const v = assemble({ acts: [act], objectives: [row(1), row(2, { doneBy: "save", detect: { quest: "FreeformRiften05" }, status: "done" })], chapters: [beat], snapshot: null, link: () => null });
+    expect(v.chapters[0].open).toBe(true);
+  });
+});
 
 describe("beats and suggestions", () => {
   it("a beat opens only once its objective is done", () => {

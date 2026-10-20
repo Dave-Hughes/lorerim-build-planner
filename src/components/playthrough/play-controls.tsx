@@ -55,20 +55,27 @@ export function TickBox({ id, objectiveId, done, label }: { id: string; objectiv
 }
 
 /** Under way and Later, beside To do, for the owner's own objectives. */
-export function StatusPick({ id, objectiveId, status }: { id: string; objectiveId: number; status: ObjectiveStatus }) {
+/** To do, Under way, Later; for a quest the save decides, To do and Done only (WO-111a). */
+export function StatusPick({ id, objectiveId, status, save = false }: { id: string; objectiveId: number; status: ObjectiveStatus; save?: boolean }) {
   const { pending, go } = useAction();
   return (
     <select
       className={s.st}
       aria-label="Status"
-      value={status === "done" ? "todo" : status}
+      value={save || status === "done" ? "todo" : status}
       disabled={pending}
       onChange={(e) => go(() => tick(id, objectiveId, e.target.value as ObjectiveStatus))}
       style={{ background: "none", border: 0, color: "inherit", font: "inherit", cursor: "pointer" }}
     >
       <option value="todo">To do</option>
-      <option value="doing">Under way</option>
-      <option value="later">Later</option>
+      {save ? (
+        <option value="done">Done</option>
+      ) : (
+        <>
+          <option value="doing">Under way</option>
+          <option value="later">Later</option>
+        </>
+      )}
     </select>
   );
 }

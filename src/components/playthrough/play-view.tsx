@@ -284,7 +284,8 @@ function Objective({ o, p, isOwner, actN }: { o: ObjectiveView; p: PlaythroughRe
   const w = o.worked;
   const suggested = w.shown === "suggested";
   const cls = [s.obj, w.done ? s.objDone : "", suggested ? s.sug : ""].join(" ");
-  const canTick = isOwner && !suggested && o.kind === "once" && o.doneBy === "hand";
+  // The save's word, once it shows the stage, can't be ticked away (WO-111a).
+  const canTick = isOwner && !suggested && o.kind === "once" && w.shown !== "save";
   const stCls = w.shown === "save" ? `${s.st} ${s.stSave}` : w.shown === "doing" ? `${s.st} ${s.stNow}` : s.st;
   return (
     <>
@@ -296,8 +297,8 @@ function Objective({ o, p, isOwner, actN }: { o: ObjectiveView; p: PlaythroughRe
         </span>
         {suggested ? (
           <span className={s.st}>Suggested by {o.suggestedBy}</span>
-        ) : isOwner && !w.done && o.doneBy === "hand" ? (
-          <StatusPick id={p.id} objectiveId={o.id} status={o.status} />
+        ) : isOwner && !w.done && o.kind === "once" ? (
+          <StatusPick id={p.id} objectiveId={o.id} status={o.status} save={o.doneBy === "save"} />
         ) : (
           <span className={stCls}>{SHOWN[w.shown]}</span>
         )}

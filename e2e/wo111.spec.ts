@@ -156,3 +156,24 @@ test("another player's token can't read it, and a facts-only token can't write",
   expect(write.isError).toBe(true);
   expect(write.text).toMatch(/doesn't allow this/);
 });
+
+// WO-111a: a quest the save decides can be ticked by the player until a snapshot shows its stage.
+test("a quest objective the save decides: ticked by the player, then the save's word once it shows the stage", async ({ page, context, baseURL }) => {
+  await signIn(context);
+  const go = (name: string, args: object) => call(baseURL!, from, token, name, args);
+  const added = await go("add_objective", { playthrough: pid, act: 2, text: "Spread the Love", kind: "once", link: { kind: "quest", name: "Spread the Love" }, doneWhen: { quest: "Spread the Love", stage: 10 } });
+  expect(added.isError, added.text).toBe(false);
+  // The door still can't tick it: the save is the assistant's only source.
+  expect((await go("set_status", { playthrough: pid, objective: added.json().objective, status: "done" })).text).toMatch(/save decides/);
+
+  await page.goto(`/p/${pid}?act=2`);
+  const row = page.locator(`#o${added.json().objective}`);
+  await row.getByRole("checkbox", { name: "Spread the Love" }).click();
+  await expect(row.getByText("Done, ticked by you")).toBeVisible();
+
+  const snap = await go("set_snapshot", { playthrough: pid, source: "save", label: "Save 8", level: 7, skills: {}, questStages: { FreeformRiften05: 10 } });
+  expect(snap.isError, snap.text).toBe(false);
+  await page.reload();
+  await expect(row.getByText("Done, from your save")).toBeVisible();
+  await expect(row.getByRole("checkbox")).toHaveCount(0);
+});
