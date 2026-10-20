@@ -4622,6 +4622,24 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-111b  No unions in tool inputs (Mac, 19 Oct 2026)
+
+**Why.** Dave's Claude drafted Kyria's playthrough through the door (33 objectives, five acts, the chapters) and reported that every `doneWhen: { reach: ... }` call failed input validation. Bob called the same tool on the local door with a token and all three reach shapes saved, so the planner is fine: Claude's connector checks arguments against the tool's JSON schema before sending, and `doneWhen` is a union of three shapes (`anyOf`), which it doesn't always get right. Keep every tool input to plain fields, one level deep, no unions.
+
+- `add_objective` and `set_objective`: `doneWhen` goes. In its place, all optional and flat: `quest` (name or id) and `stage` for one the save shows; `reachKey` ("Level", a skill, or a count's label) and `reachTarget` for a number; `byHand: true` for one the player ticks. The same rule 14 refusals; a `kind: "reach"` with no `reachKey` answers "Say the number to reach: reachKey and reachTarget", not the generic rule.
+- `act` and `objective` take a string only ("2", "Act II", or the name; an objective's id as a string or its words). Numbers still work when sent as strings.
+- `check_progression`: `build` (the plain shape) and `buildId` (a string) as two optional fields, one required.
+- `get_playthrough` answers in the same flat shape so an assistant can send a level back unchanged.
+- Grep every `z.union` in `src/lib/mcp/*` and `src/app/api/mcp/route.ts`; none remain in an input schema. Unit test that the registered input schemas contain no `anyOf` or `oneOf`.
+- The WO-110 and WO-111 e2e send the new shapes.
+
+### Done when
+- [ ] `tools/list` on staging shows no `anyOf` or `oneOf` in any input schema.
+- [ ] Dave's Claude adds a reach objective ("Lute to 66") through the door and it saves with its meter.
+- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
+
+---
+
 ## WO-112 and WO-113  (to write when WO-111 is checked)
 
 - **WO-113 Merchants (PC).** `get_spell` can't say where a spell is sold: the planner has no merchant data. Read vendor containers and their leveled lists from the game files, per spell tome and item, and mark random stock as such. Until then the tool says so and tells the assistant not to name one from memory.
