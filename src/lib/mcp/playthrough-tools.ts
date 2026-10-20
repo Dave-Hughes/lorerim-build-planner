@@ -132,13 +132,13 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
   tool(
     "write_chapter",
     "Write a piece of the tale",
-    "Write Tale only (rule 12): a chapter from before the game, an entry written after play (from the save and what the player said), or a beat that opens when an objective is done (rule 16). Text in Markdown: paragraphs, a heading, a quote, bold and italic; no images, which the author adds on the site. The Story's limits hold.",
+    "Write Tale only (rule 12): a chapter from before the game, an act's own chapter (kind act, with `act`: the story of that stretch, written before the player plays it, one per act), an entry written after play (from the save and what the player said), or a beat that opens when an objective is done (rule 16). Text in Markdown: paragraphs, a heading, a quote, bold and italic; no images, which the author adds on the site. The Story's limits hold.",
     z.object({
       playthrough,
-      kind: z.enum(["chapter", "entry", "beat"]),
+      kind: z.enum(["chapter", "act", "entry", "beat"]),
       title: z.string().min(1).max(60),
       text: z.string().min(1).max(60_000),
-      act: act.optional().describe("The act an entry belongs to."),
+      act: act.optional().describe("The act an act's chapter opens (required for kind act), or the act an entry belongs to."),
       after: objective.optional().describe("For a beat, the objective that opens it (required); for an entry, the objective it tells."),
       fromSave: z.string().max(60).optional().describe('For an entry: the save it was written from, "Save 7, 19 Oct 2026".'),
     }),
@@ -170,7 +170,7 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     }),
     (p, a: Parameters<typeof t.setSnapshot>[1]) => t.setSnapshot(p, a),
   );
-  tool("get_playthrough", "Read a playthrough", "Get one of the player's playthroughs in the plain shape the inputs use: its acts, objectives with how each stands (done is the save's or the player's), the tale, and where the player stands.", z.object({ playthrough }), (p, a: { playthrough: string }) => t.getPlaythroughTool(p, a));
+  tool("get_playthrough", "Read a playthrough", "Get one of the player's playthroughs in the plain shape the inputs use: its acts, each with its own chapter if written, objectives with how each stands (done is the save's or the player's) and the chapters that hang off each, the tale, and where the player stands.", z.object({ playthrough }), (p, a: { playthrough: string }) => t.getPlaythroughTool(p, a));
   tool("list_my_playthroughs", "List the player's playthroughs", "List the signed-in player's playthroughs: id, name, who can see it, acts, last change, and whether an assistant drafted it.", z.object({}), (p) => t.listMine(p));
   tool(
     "finish_draft_playthrough",

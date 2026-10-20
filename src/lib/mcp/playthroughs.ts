@@ -353,15 +353,18 @@ export async function setStatus(p: Player, input: { playthrough: string; objecti
   return { playthrough: pt.id, objective: o.id, status: input.status };
 }
 
-export async function writeChapter(p: Player, input: { playthrough: string; kind: "chapter" | "entry" | "beat"; title: string; text: string; act?: string; after?: string; fromSave?: string }) {
+export async function writeChapter(p: Player, input: { playthrough: string; kind: "chapter" | "act" | "entry" | "beat"; title: string; text: string; act?: string; after?: string; fromSave?: string }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   if (input.kind === "beat" && input.after === undefined) throw new FactsError("A beat opens when an objective is done: give `after`, the objective.");
+  if (input.kind === "act" && input.act === undefined) throw new FactsError("An act's chapter opens an act: give `act`.");
   const a = input.act !== undefined ? actOf(pt, input.act) : null;
   const after = input.after !== undefined ? objectiveOf(pt, input.after, a ?? undefined).id : null;
   const doc = await writes(async () => markdownToDoc(input.text));
-  const id = await writes(() => w.addChapter(p.userId, pt.id, { kind: input.kind, title: input.title, doc, actId: input.kind === "chapter" ? null : (a?.id ?? null), opensAfter: input.kind === "chapter" ? null : after, fromSave: input.fromSave ?? null }, p.clientName.slice(0, 80)));
-  return { playthrough: pt.id, chapter: String(id), kind: input.kind, link: link(p, pt.id, `/tale#c${id}`) };
+  const id = await writes(() =>
+    w.addChapter(p.userId, pt.id, { kind: input.kind, title: input.title, doc, actId: input.kind === "chapter" ? null : (a?.id ?? null), opensAfter: input.kind === "chapter" || input.kind === "act" ? null : after, fromSave: input.fromSave ?? null }, p.clientName.slice(0, 80)),
+  );
+  return { playthrough: pt.id, chapter: String(id), kind: input.kind, link: link(p, pt.id, `/story/${id}`) };
 }
 
 export async function setChapter(p: Player, input: { playthrough: string; chapter: string; title?: string; text?: string; after?: string; fromSave?: string }) {
@@ -418,6 +421,8 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
       place: a.place,
       goal: a.goal,
       ...(a.standingRule ? { standingRule: a.standingRule } : {}),
+      // The act's own chapter (WO-116): the story of that stretch.
+      chapter: a.chapter !== null ? chapterLine(v.chapters.find((c) => c.id === a.chapter)!) : null,
       objectives: a.objectives.map((o) => ({
         objective: String(o.id),
         text: o.text,
@@ -427,6 +432,8 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
         ...(o.kind === "reach" && o.reach ? { reachKey: reachLabel(o.reach.key), reachTarget: o.reach.target } : o.doneBy === "save" && o.detect ? { quest: o.detect.quest, ...(o.detect.stage !== undefined ? { stage: o.detect.stage } : {}) } : { byHand: true }),
         ...(o.why ? { why: o.why } : {}),
         status: shown[o.worked.shown],
+        // The entries and beats that hang off it: its Story markers (WO-116).
+        chapters: o.tale.map((t) => ({ chapter: String(t.id), title: t.title, open: t.open })),
       })),
     })),
     tale: v.chapters.map((c) => ({
@@ -441,6 +448,9 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
     })),
   };
 }
+
+/** A chapter as get_playthrough names it: its id and title. */
+const chapterLine = (c: { id: number; title: string }) => ({ chapter: String(c.id), title: c.title });
 
 export async function listMine(p: Player) {
   const rows = await listMyPlaythroughs(p.userId);
