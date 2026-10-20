@@ -3,7 +3,7 @@ import { checkGuideDoc } from "@/lib/guide/doc";
 import { parseScopes } from "@/lib/oauth/core";
 import { questsData } from "@/lib/quests/data";
 import { stories } from "@/lib/quests/stories-data";
-import { suggestQuests } from "@/lib/mcp/playthroughs";
+import { pickBuild, suggestQuests } from "@/lib/mcp/playthroughs";
 import { markdownToDoc, MarkdownError } from "./markdown";
 import { isOpen, RULE_14, workOut, type ObjectiveFacts } from "./status";
 import { objectiveSchema, parseLevels } from "./validate";
@@ -129,5 +129,25 @@ describe("suggest_quests", () => {
 describe("scopes (WO-111)", () => {
   it("grants facts, builds:write and playthroughs:write when none are asked for", () => {
     expect(parseScopes("")).toEqual(["facts", "builds:write", "playthroughs:write"]);
+  });
+});
+
+describe("set_playthrough's build (WO-111c)", () => {
+  const mine = [
+    { id: "aaaaaaaaaa", name: "Kyria, Knight of Stendarr" },
+    { id: "bbbbbbbbbb", name: "Twin" },
+    { id: "cccccccccc", name: "Twin" },
+  ];
+  it("links one of the player's builds by id or by name", () => {
+    expect(pickBuild(mine, "aaaaaaaaaa")).toBe("aaaaaaaaaa");
+    expect(pickBuild(mine, "kyria, knight of stendarr")).toBe("aaaaaaaaaa");
+  });
+  it("unlinks with none", () => {
+    expect(pickBuild(mine, "none")).toBeNull();
+    expect(pickBuild(mine, " None ")).toBeNull();
+  });
+  it("refuses a build that isn't the player's, and a name two builds share", () => {
+    expect(() => pickBuild(mine, "zzzzzzzzzz")).toThrow(/No build of yours has the id or name zzzzzzzzzz/);
+    expect(() => pickBuild(mine, "Twin")).toThrow(/more than one build called Twin/);
   });
 });

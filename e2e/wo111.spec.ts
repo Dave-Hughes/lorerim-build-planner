@@ -7,7 +7,7 @@
  */
 import { expect, test } from "@playwright/test";
 import { call, ip, signIn, tokenFor } from "./helpers";
-import { TEST_BUILD_ID } from "./seed";
+import { OTHER_BUILD_ID, TEST_BUILD_ID } from "./seed";
 
 test.describe.configure({ mode: "serial" });
 
@@ -23,10 +23,22 @@ test("an assistant drafts a playthrough end to end, refused for an objective tha
   token = t.access_token;
   const go = (name: string, args: object) => call(baseURL!, from, token, name, args);
 
-  const made = await go("create_playthrough", { name: "E2E Kyria", line: "A knight of Stendarr hiding as a bard in Riften.", build: TEST_BUILD_ID });
+  const made = await go("create_playthrough", { name: "E2E Kyria", line: "A knight of Stendarr hiding as a bard in Riften." });
   expect(made.isError, made.text).toBe(false);
   pid = made.json().playthrough;
   expect(made.json()).toMatchObject({ visibility: "private" });
+
+  // WO-111c: the build drafted after the playthrough, linked through the door; another player's is refused.
+  expect((await go("get_playthrough", { playthrough: pid })).json().build).toBeNull();
+  const theirs = await go("set_playthrough", { playthrough: pid, build: OTHER_BUILD_ID });
+  expect(theirs.isError).toBe(true);
+  expect(theirs.text).toContain(`No build of yours has the id or name ${OTHER_BUILD_ID}`);
+  const linked = await go("set_playthrough", { playthrough: pid, build: "Test Shield-Wall" });
+  expect(linked.isError, linked.text).toBe(false);
+  expect(linked.json().build).toEqual({ id: TEST_BUILD_ID, name: "Test Shield-Wall" });
+  expect((await go("get_playthrough", { playthrough: pid })).json().build).toEqual({ id: TEST_BUILD_ID, name: "Test Shield-Wall" });
+  const listed = (await go("list_my_playthroughs", {})).json().find((x: { playthrough: string }) => x.playthrough === pid);
+  expect(listed.build).toEqual({ id: TEST_BUILD_ID, name: "Test Shield-Wall" });
 
   const one = await go("add_act", { playthrough: pid, name: "The Sister's House", levels: "1 to 6", place: "Riften", goal: "Earn a bed and coin in Riften as a bard and a worker.", standingRule: "Play the Bee and Barb most nights." });
   expect(one.isError, one.text).toBe(false);
@@ -103,6 +115,11 @@ test("on the site: private under My playthroughs, a tick opens the beat, Accept 
   await page.goto(`/p/${pid}`);
   await expect(page.getByRole("heading", { name: "E2E Kyria" })).toBeVisible();
   await expect(playTab()).toContainText("0 of 6 done");
+  // The Build tab follows the build linked through the door (WO-111c).
+  // Other specs add levels to the shared test build, so the count isn't fixed: the link and the words are.
+  const buildTab = page.getByRole("navigation", { name: "Views" }).getByRole("link", { name: /^Build/ });
+  await expect(buildTab).toHaveAttribute("href", `/b/${TEST_BUILD_ID}`);
+  await expect(buildTab).toContainText(/\d+ levels/);
   await expect(page.getByText("Made with Care opens when you tick this.")).toBeVisible();
   // The Tale text is nowhere on the Play view, only its pointer.
   await expect(page.getByText("The hide was rough under her hands.")).toHaveCount(0);

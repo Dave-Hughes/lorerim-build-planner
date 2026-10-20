@@ -4650,7 +4650,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ### Done when
 - [ ] Dave's Claude links Kyria's playthrough to her build through the door and the Build tab shows "level 23 of 23".
-- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
+- [x] Every check in CLAUDE.md passes. Commit on `staging`, push, stop.
 
 ---
 

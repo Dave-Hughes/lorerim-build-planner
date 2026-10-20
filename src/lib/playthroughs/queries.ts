@@ -89,6 +89,8 @@ export async function getPlaythrough(id: string, viewerId: string | null): Promi
 export interface PlaythroughCard {
   id: string;
   name: string;
+  buildId: string | null;
+  buildName: string | null;
   line: string;
   visibility: PlaythroughRow["visibility"];
   draftedBy: string | null;
@@ -111,6 +113,8 @@ async function cards(where: ReturnType<typeof eq> | ReturnType<typeof and>, limi
       showDrafted: schema.playthroughs.showDrafted,
       updatedAt: schema.playthroughs.updatedAt,
       author: schema.users.name,
+      buildId: schema.playthroughs.buildId,
+      buildName: sql<string | null>`(select b.name from ${schema.builds} b where b.id = ${schema.playthroughs.buildId})`,
       acts: sql<number>`(select count(*)::int from ${schema.playthroughActs} a where a.playthrough_id = ${schema.playthroughs.id})`,
     })
     .from(schema.playthroughs)

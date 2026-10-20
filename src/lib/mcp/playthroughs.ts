@@ -189,24 +189,41 @@ async function objectiveValues(pt: PlaythroughRecord, input: Omit<ObjectiveToolI
   return { text: input.text, kind: input.kind, link: linked?.link ?? null, ...dw, why: input.why ?? null };
 }
 
+/**
+ * One of the player's builds by id or name, or "none" for no build (WO-111c). Pure: `rows` are the
+ * player's own builds, so a build that isn't theirs is never found.
+ */
+export function pickBuild(rows: readonly { id: string; name: string }[], ref: string): string | null {
+  const want = ref.trim();
+  if (norm(want) === "none") return null;
+  const hit = rows.filter((b) => b.id === want || norm(b.name) === norm(want));
+  if (hit.length === 1) return hit[0].id;
+  throw new FactsError(hit.length ? `You have more than one build called ${want}. Use its id: ${hit.map((b) => b.id).join(", ")}.` : `No build of yours has the id or name ${want}. list_my_builds shows yours.`);
+}
+
+const myBuilds = (p: Player) => db().select({ id: schema.builds.id, name: schema.builds.name }).from(schema.builds).where(eq(schema.builds.ownerId, p.userId));
+
 /* ---------- The tools ---------- */
 
 export async function createPlaythrough(p: Player, input: { name: string; line?: string; build?: string; version?: string }) {
   await writeGuard(p);
-  let buildId: string | null = null;
-  if (input.build) {
-    const rows = await db()
-      .select({ id: schema.builds.id, name: schema.builds.name })
-      .from(schema.builds)
-      .where(eq(schema.builds.ownerId, p.userId));
-    const hit = rows.filter((b) => b.id === input.build || norm(b.name) === norm(input.build!));
-    if (hit.length !== 1) throw new FactsError(hit.length ? `You have more than one build called ${input.build}. Use its id.` : `No build of yours has the id or name ${input.build}. list_my_builds shows yours.`);
-    buildId = hit[0].id;
-  }
+  const buildId = input.build ? pickBuild(await myBuilds(p), input.build) : null;
   versionData(input.version ?? DEFAULT_VERSION);
   const id = await writes(() => w.createPlaythrough(p.userId, { name: input.name, line: input.line, buildId, gameVersion: input.version ?? DEFAULT_VERSION }, p.clientName.slice(0, 80)));
   revalidatePath("/me");
   return { playthrough: id, link: link(p, id), visibility: "private", next: "Add its acts with add_act, then their objectives." };
+}
+
+/** set_playthrough (WO-111c): name, line, and the build it follows, through the edit page's own write. */
+export async function setPlaythrough(p: Player, input: { playthrough: string; name?: string; line?: string; build?: string }) {
+  await writeGuard(p);
+  const pt = await mine(p, input.playthrough);
+  const buildId = input.build === undefined ? undefined : pickBuild(await myBuilds(p), input.build);
+  await writes(() => w.setDetails(p.userId, pt.id, { name: input.name, line: input.line, ...(buildId === undefined ? {} : { buildId }) }));
+  revalidatePath(`/p/${pt.id}`);
+  revalidatePath("/me");
+  const now = (await getPlaythrough(pt.id, p.userId))!;
+  return { playthrough: pt.id, name: now.name, line: now.line, build: now.build ? { id: now.build.id, name: now.build.name } : null, link: link(p, pt.id) };
 }
 
 export async function addAct(p: Player, input: { playthrough: string; name: string; levels: string; place: string; goal: string; standingRule?: string }) {
@@ -390,7 +407,7 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
 
 export async function listMine(p: Player) {
   const rows = await listMyPlaythroughs(p.userId);
-  return rows.map((r) => ({ playthrough: r.id, name: r.name, visibility: r.visibility, acts: r.acts, updated: r.updatedAt.toISOString(), draftedByAnAssistant: !!r.draftedBy, link: link(p, r.id) }));
+  return rows.map((r) => ({ playthrough: r.id, name: r.name, visibility: r.visibility, build: r.buildId ? { id: r.buildId, name: r.buildName } : null, acts: r.acts, updated: r.updatedAt.toISOString(), draftedByAnAssistant: !!r.draftedBy, link: link(p, r.id) }));
 }
 
 /** The full check once more. It changes nothing; publishing is the player's, on the site. */

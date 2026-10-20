@@ -61,6 +61,18 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     }),
     (p, a: Parameters<typeof t.createPlaythrough>[1]) => t.createPlaythrough(p, a),
   );
+  tool(
+    "set_playthrough",
+    "Change a playthrough's details",
+    'Change one of the player\'s playthroughs: its name, its one line, or the build it follows (one of the player\'s builds by id or name, or "none" to unlink).',
+    z.object({
+      playthrough,
+      name: z.string().min(1).max(80).optional(),
+      line: z.string().max(140).optional().describe("One sentence: who the character is."),
+      build: z.string().min(1).max(80).optional().describe('One of the player\'s own builds, by id or name, or "none" for no build.'),
+    }),
+    (p, a: Parameters<typeof t.setPlaythrough>[1]) => t.setPlaythrough(p, a),
+  );
   const actFields = {
     name: z.string().min(1).max(60),
     levels: z.string().max(30).describe('"1 to 6", or "40 and up".'),
