@@ -890,7 +890,7 @@ function Chapters({ data, onSaved }: { data: EditData; onSaved: () => void }) {
   );
 }
 
-/** The playthrough's own details: name, line, build, the opening image, "Drafted with", delete. */
+/** The playthrough's own details: name, line, build, the opening image, the AI assisted mark, delete. */
 function Details({ data, onSaved }: { data: EditData; onSaved: () => void }) {
   const router = useRouter();
   const { error, save, setError } = useSave(onSaved);
@@ -969,7 +969,7 @@ function Details({ data, onSaved }: { data: EditData; onSaved: () => void }) {
       {data.draftedBy && (
         <label style={{ display: "flex", gap: 10, alignItems: "center", fontSize: 15 }}>
           <input type="checkbox" defaultChecked={data.showDrafted} onChange={(e) => save(() => act.saveDetails(data.id, { showDrafted: e.target.checked }), true)} />
-          Show &quot;Drafted with {data.draftedBy}&quot;
+          AI assisted mark: Show it
         </label>
       )}
       <button

@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return buildMetadata(await getBuild(id, null));
 }
 
-/** The build's page (WO-116): with a run the viewer may see, the character's page, opened on Levels. */
+/** The build's page (WO-116): with a run the viewer may see, the character's page, opened on Play (WO-117). */
 export default async function BuildPage({ params, searchParams }: { params: Params; searchParams: Search }) {
   const [{ id }, { level, copy, tab, act, imported, skipped, dropped }, session] = await Promise.all([params, searchParams, auth()]);
   const viewerId = session?.user?.id ?? null;
@@ -30,7 +30,7 @@ export default async function BuildPage({ params, searchParams }: { params: Para
       build={build}
       viewerId={viewerId}
       run={run}
-      tab={tabParam(tab, !!run, "levels")}
+      tab={tabParam(tab, !!run, "play", level)}
       level={Number(level) || 0}
       actIndex={Number.isInteger(n) && n >= 1 ? n - 1 : null}
       copy={copy === "1"}

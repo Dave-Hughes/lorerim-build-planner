@@ -1248,6 +1248,21 @@ def tab_guide():
     return i.outline()
 
 
+def ai_assisted():
+    # The AI assisted mark (WO-117): a Dwemer sphere's head in brass, an ember light in its eye slit.
+    i = Icon()
+    i.rect(4, 1, 11, 1, "Y")                                   # crown
+    i.rect(2, 2, 13, 12, "b")                                  # the head
+    i.rect(2, 2, 13, 3, "Y"); i.rect(2, 2, 3, 6, "Y")          # lit from the top left
+    i.rect(12, 4, 13, 12, "B"); i.rect(3, 11, 13, 12, "B")     # shade, lower right
+    i.rect(4, 13, 11, 14, "d")                                 # the jaw
+    i.rect(3, 6, 12, 8, "k")                                   # the eye slit
+    i.rect(5, 7, 6, 7, "o"); i.rect(9, 7, 10, 7, "o"); i.px(5, 7, "y")  # its light
+    i.rect(7, 10, 8, 12, "d")                                  # the seam to the jaw
+    i.px(4, 4, "W")                                            # a glint
+    return i.outline()
+
+
 def tab_play():
     # A quest scroll (WO-116): parchment between two wooden rods, lines of writing, a red wax seal.
     i = Icon()
@@ -2531,7 +2546,7 @@ RACES = {
     "Orsimer": race_orsimer, "Redguard": race_redguard,
 }
 
-MARKS = {"Trainer": trainer, "Skill book": skill_book, "Banked": banked, "Perk points": perk_point, "Note": note, "Power": power, "Shout": tag_shouts}
+MARKS = {"AI assisted": ai_assisted, "Trainer": trainer, "Skill book": skill_book, "Banked": banked, "Perk points": perk_point, "Note": note, "Power": power, "Shout": tag_shouts}
 SLOTS = {
     "Main hand": slot_main_hand, "Off hand": slot_off_hand, "Head": slot_head, "Body": slot_body,
     "Hands": slot_hands, "Feet": slot_feet, "Ring": slot_ring, "Amulet": slot_amulet, "Ammo": slot_ammo,

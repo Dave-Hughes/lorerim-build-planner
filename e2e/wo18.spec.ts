@@ -8,7 +8,7 @@ test.describe("tags", () => {
     await page.goto(`/b/${LONG_BUILD_ID}/setup?step=name`);
     const tags = page.getByRole("group", { name: "Tags" });
     // Suggested from the majors (Heavy Armor, Block, One-Handed), shown chosen and said to be suggestions.
-    await expect(page.getByText(/Suggested from your majors/)).toBeVisible();
+    await expect(page.getByRole("button", { name: "About the suggested tags" })).toBeVisible();
     await expect(tags.getByRole("button", { name: "Heavy Armor" })).toHaveAttribute("aria-pressed", "true");
     await expect(tags.getByRole("button", { name: "Shield" })).toHaveAttribute("aria-pressed", "true");
     await tags.getByRole("button", { name: "Shield" }).click();

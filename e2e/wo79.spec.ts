@@ -122,7 +122,7 @@ test("point 3: the Story in the reader (WO-116): the plate, the drop cap, the pa
 
   // Esc closed the viewer, not the reader; the way back is to the build, on Levels.
   await expect(story).toBeVisible();
-  await story.getByRole("navigation", { name: "The story" }).getByRole("link", { name: "Back to the build" }).click();
+  await story.getByRole("navigation", { name: "The story" }).getByRole("link").filter({ hasText: "Back to the build" }).click();
   await expect(story).toHaveCount(0);
   await expect(page).toHaveURL(new RegExp(`/b/${STORY_BUILD_ID}$`));
   await expect(page.locator("#level-card")).toBeVisible();

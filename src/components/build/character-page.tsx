@@ -66,11 +66,11 @@ export async function CharacterPage({
       : [];
   const back = run ? { href: `/p/${run.id}`, label: "Back to the quest log" } : { href: `/b/${id}`, label: "Back to the build" };
   return (
-    <ReaderProvider stops={stops} back={back} runId={run?.id ?? null}>
+    <ReaderProvider stops={stops} back={back} runId={run?.id ?? null} title={run ? run.taleTitle || run.name : (told?.title ?? build.name)}>
     <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
       <BuildView
         // A character's hero carries the run's name and line (WO-116); the build's own page, its own.
-        build={{ ...rest, ...(run ? { name: run.name, description: run.line || rest.description } : {}), coverImageUrl: coverHeld ? null : rest.coverImageUrl, coverHeld, updatedAt: updatedAt.toISOString() }}
+        build={{ ...rest, ...(run ? { name: run.name, description: run.line || rest.description, ...(run.draftedBy ? { draftedBy: run.draftedBy, showDrafted: run.showDrafted } : {}) } : {}), coverImageUrl: coverHeld ? null : rest.coverImageUrl, coverHeld, updatedAt: updatedAt.toISOString() }}
         isOwner={isOwner}
         signedIn={!!viewerId}
         initialLevel={level || run?.snapshot?.level || 1}
@@ -99,9 +99,10 @@ export async function CharacterPage({
   );
 }
 
-/** The `tab` a URL asks for, if the page has it. */
-export function tabParam(tab: string | undefined, hasRun: boolean, home: BuildTab): BuildTab {
+/** The `tab` a URL asks for, if the page has it. A `level` (or the old `tab=gear`) is the Levels tab's. */
+export function tabParam(tab: string | undefined, hasRun: boolean, home: BuildTab, level?: string): BuildTab {
   if (tab === "levels" || tab === "guide") return tab;
+  if (tab === "gear" || (!tab && level)) return "levels";
   if (tab === "play" && hasRun) return "play";
   return hasRun ? home : "levels";
 }

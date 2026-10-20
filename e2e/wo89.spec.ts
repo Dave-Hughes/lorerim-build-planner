@@ -13,7 +13,8 @@ const hero = (page: Page) => page.getByRole("region", { name: "Build", exact: tr
 async function pickAndSave(page: Page, id: string, theme: string) {
   await page.goto(`/b/${id}/setup?step=name`);
   const picker = page.getByRole("group", { name: "Theme" });
-  await expect(picker.getByRole("button")).toHaveCount(6);
+  // The six theme cards (the legend's "i" is a button too, WO-117).
+  await expect(picker.getByRole("button", { name: /^(Ember|Parchment|Frost|Daedric|Dwemer|Aurora)/ })).toHaveCount(6);
   const card = picker.getByRole("button", { name: new RegExp(`^${theme}`) });
   await card.click();
   await expect(card).toHaveAttribute("aria-pressed", "true");

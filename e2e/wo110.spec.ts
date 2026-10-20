@@ -70,13 +70,19 @@ test("the draft is private under My characters, marked as drafted, and opens in 
   await signIn(context, "other");
   await page.goto("/me");
   const card = page.getByRole("article").filter({ has: page.getByRole("link", { name: "E2E Drafted Nord" }) });
-  await expect(card.getByText("Drafted with E2E Claude")).toBeVisible();
+  // The AI assisted mark (WO-117): the assistant's name is printed nowhere.
+  await expect(card.getByText("AI assisted")).toBeVisible();
+  await expect(card.getByText("E2E Claude")).toHaveCount(0);
   await expect(card.getByText("Only you")).toBeVisible();
   // A build and a run are one character (WO-114): drafts are counted as characters.
   await expect(page.getByRole("list", { name: "Assistants" })).toContainText(/\d+ characters? drafted/);
 
-  await page.goto(`/b/${buildId}`);
-  await expect(page.getByText("Drafted with E2E Claude")).toBeVisible();
+  await page.goto(`/b/${buildId}?tab=levels`);
+  const hero = page.getByRole("region", { name: "Build" });
+  await expect(hero.getByText("AI assisted")).toBeVisible();
+  await hero.getByRole("button", { name: "What AI assisted means" }).hover();
+  await expect(page.getByRole("tooltip")).toContainText("made this with an AI assistant through the planner. The planner checked every level and perk against the game's rules");
+  await expect(page.getByText("E2E Claude")).toHaveCount(0);
   // In the editor, every level as sent: level 4 follows every rule, and level 2 has its note.
   await page.goto(`/b/${buildId}/edit?level=4`);
   await expect(page.getByRole("region", { name: "Edit bar" }).getByText("E2E Drafted Nord")).toBeVisible();
@@ -89,14 +95,14 @@ test("the draft is private under My characters, marked as drafted, and opens in 
 test("the Details checkbox hides the drafted line", async ({ page, context }) => {
   await signIn(context, "other");
   await page.goto(`/b/${buildId}/setup?step=name`);
-  const box = page.getByLabel("Show that an assistant drafted it");
+  const box = page.getByLabel("Show it");
   await expect(box).toBeChecked();
   await box.uncheck();
   await page.getByRole("button", { name: "Save changes" }).click();
   await page.waitForURL(new RegExp(`/b/${buildId}/edit`));
   await page.goto(`/b/${buildId}`);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("E2E Drafted Nord");
-  await expect(page.getByText("Drafted with E2E Claude")).toHaveCount(0);
+  await expect(page.getByText("AI assisted")).toHaveCount(0);
 });
 
 test("another player's token can't read it, and a token without builds:write can't write", async ({ page, context, baseURL }) => {

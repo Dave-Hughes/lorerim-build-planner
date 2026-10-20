@@ -32,21 +32,21 @@ test("a build alone has Levels and Guide, no Story tab, and Read the story opens
   await expect(page).toHaveURL(new RegExp(`/b/${HEALER_BUILD_ID}/story$`));
   await expect(reader(page).getByRole("heading", { level: 1, name: "The Mender" })).toBeVisible();
   await expect(reader(page).getByText("She came north with a satchel of herbs")).toBeVisible();
-  await reader(page).getByRole("link", { name: "‹ Back to the build" }).click();
+  await reader(page).getByRole("button", { name: "× Close" }).click();
   await expect(page).toHaveURL(new RegExp(`/b/${HEALER_BUILD_ID}$`));
   await expect(reader(page)).toHaveCount(0);
 });
 
-test("a character with a run opens on Play; its build's page opens on Levels; another player sees no Play", async ({ page, context }) => {
+test("a character with a run opens on Play, from its build's address too; another player sees no Play", async ({ page, context }) => {
   await signIn(context);
   await page.goto(KYRIA);
   await expect(page.getByRole("heading", { level: 1, name: "Kyria Severa" })).toBeVisible();
   await expect(tabs(page).getByRole("tab", { name: /^Play/ })).toHaveAttribute("aria-selected", "true");
   await expect(tabs(page).getByRole("tab")).toHaveCount(3);
   await expect(page.getByRole("heading", { name: "Where you stand" })).toBeVisible();
+  // A character opens on Play from every way in (WO-117), its build's own address too.
   await page.goto(`/b/${KYRIA_BUILD_ID}`);
-  await expect(tabs(page).getByRole("tab", { name: /^Levels/ })).toHaveAttribute("aria-selected", "true");
-  await expect(tabs(page).getByRole("tab", { name: /^Play/ })).toBeVisible();
+  await expect(tabs(page).getByRole("tab", { name: /^Play/ })).toHaveAttribute("aria-selected", "true");
   // No nested tabs: the old Build tab's address is the Levels tab.
   await page.goto(`${KYRIA}/build`);
   await expect(page).toHaveURL(new RegExp(`${KYRIA}\\?tab=levels$`));
@@ -87,7 +87,7 @@ test("Read Act I opens the reader at its address; Back returns to the same spot,
   await expect(page).toHaveURL(new RegExp(`${KYRIA}/story/\\d+$`));
   await expect(reader(page).getByRole("heading", { level: 1, name: "The Sister's House" })).toBeVisible();
   await expect(reader(page).getByText("Act I", { exact: true }).first()).toBeVisible();
-  await reader(page).getByRole("link", { name: "‹ Back to the quest log" }).click();
+  await reader(page).getByRole("button", { name: "× Close" }).click();
   await expect(page).toHaveURL(new RegExp(`${KYRIA}$`));
   await expect(reader(page)).toHaveCount(0);
   expect(await scrollY(page)).toBe(y);
@@ -124,13 +124,13 @@ test("previous and next walk the tale in reading order and stop at a waiting bea
   const titles = ["Chapter One: The Chapel by the Sea", "Chapter Two: The Night of Lanterns", "Chapter Three: The Shield and the Sword", "The Sister's House", "The first set", "The Mark of Dibella", "Made with Care"];
   for (const [i, t] of titles.entries()) {
     await expect(reader(page).getByRole("heading", { level: 1, name: t })).toBeVisible();
-    if (i < titles.length - 1) await foot.getByRole("link", { name: `${titles[i + 1]} ›` }).click();
+    if (i < titles.length - 1) await foot.getByRole("link").filter({ hasText: `Next ›${titles[i + 1]}` }).click();
   }
   await expect(reader(page).getByText("Opens when you tick Hunt and tan her first hides.")).toBeVisible();
   await expect(reader(page).getByText("The hide was rough")).toHaveCount(0);
   await reader(page).getByRole("button", { name: "Read it anyway" }).click();
   await expect(reader(page).getByText("The hide was rough under her hands")).toBeVisible();
-  await foot.getByRole("link", { name: "‹ The Mark of Dibella" }).click();
+  await foot.getByRole("link").filter({ hasText: "‹ PreviousThe Mark of Dibella" }).click();
   await expect(reader(page).getByRole("heading", { level: 1, name: "The Mark of Dibella" })).toBeVisible();
   // Opened from a link, Back is the page under it.
   await page.keyboard.press("Escape");

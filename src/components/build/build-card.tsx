@@ -2,6 +2,7 @@ import Link from "next/link";
 import { roman } from "@/lib/playthroughs/view";
 import { levelsLine } from "@/lib/rules/stretches";
 import { Heart, likesLabel } from "./heart";
+import { AiAssisted } from "@/components/ui/ai-assisted";
 import { AuthorLink } from "@/components/ui/author-link";
 import { Avatar } from "@/components/ui/avatar";
 import { IconLabel, RaceIcon } from "@/components/ui/skill-icon";
@@ -73,8 +74,12 @@ export function BuildCard({ build, mine, likedAt, featured, run }: { build: Buil
             <span className="muted">{likedAt ? <LocalDate date={likedAt} short prefix="Liked " /> : <LocalDate date={build.updatedAt} />}</span>
           </span>
         </div>
-        {/* Made by an assistant's tools (WO-110), on the author's own cards. */}
-        {mine && build.draftedBy && <p className={`muted ${styles.drafted}`}>Drafted with {build.draftedBy}</p>}
+        {/* Made by an assistant's tools (WO-110), on the author's own cards: the AI assisted mark (WO-117). */}
+        {mine && build.draftedBy && (
+          <p className={`muted ${styles.drafted}`}>
+            <AiAssisted author={build.author.name} />
+          </p>
+        )}
         {mine && (
           <div className={styles.mine}>
             <span className={styles.tags}>

@@ -4831,7 +4831,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - Screenshots at 1440 and 390 of each edit tab, the Pictures panel, the nudge, and the reader open (mid-slide is not needed). Compare with row 27.
 
 ### Done when
-- [ ] Part 1: Play is first everywhere; AI assisted with its icon and tooltip replaces "Drafted with"; the reader slides and has Close with Esc, Previous, Next and Edit as buttons; Set up's steps slide, with one title and one label style. Pushed for Dave to test.
+- [x] Part 1: Play is first everywhere; AI assisted with its icon and tooltip replaces "Drafted with"; the reader slides and has Close with Esc, Previous, Next and Edit as buttons; Set up's steps slide, with one title and one label style. Pushed for Dave to test.
 - [ ] Part 2: one edit band, hero and tab row on every edit page; Edit opens Details; everything autosaves, no Save buttons, Done is the one ember button; old addresses redirect.
 - [ ] Part 3: Play in edit as the board: the act card with its picture slot, objectives as rows that open one at a time, quiet buttons.
 - [ ] Part 4: the Story written in the reader, with Contents, pictures in place, Opens when, and Preview; the old Tale box and chapter page gone.

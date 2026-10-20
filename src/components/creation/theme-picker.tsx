@@ -8,6 +8,7 @@ import { gearChangeText, gearChanges } from "@/lib/rules/gear";
 import { THEMES, themeOf, themeStyle, type ThemeId } from "@/lib/themes";
 import type { BuildPlan } from "@/lib/rules/types";
 import { GameIcon } from "@/components/ui/skill-icon";
+import { InfoTip } from "@/components/ui/info-tip";
 import styles from "./theme-picker.module.css";
 
 /**
@@ -32,8 +33,9 @@ export function ThemePicker({
   const current = themeOf(plan.theme).id;
   return (
     <fieldset className={styles.fieldset}>
-      <legend className="label">Theme</legend>
-      <span className="field-hint">The look of this build&apos;s page. Layout stays the same.</span>
+      <legend className="label">
+        Theme <InfoTip label="About the theme" text="The look of this build's page. Layout stays the same." />
+      </legend>
       <div className={styles.cards}>
         {THEMES.map((t) => (
           <button key={t.id} type="button" className={styles.card} aria-pressed={t.id === current} onClick={() => onPick(t.id)}>

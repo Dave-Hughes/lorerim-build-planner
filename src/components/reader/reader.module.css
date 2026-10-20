@@ -16,6 +16,38 @@
   background: var(--story-ground);
   color: var(--story-ink);
   outline: none;
+  box-shadow: 0 -30px 60px rgba(0, 0, 0, 0.5);
+  transform: translateY(0);
+  transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+/* Opened from the page it slides up over it, and down to close (WO-117). */
+.readerOff {
+  transform: translateY(101%);
+}
+/* The page behind dims as the reader comes up. */
+.dim {
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  background: #06080b;
+  opacity: 0.6;
+  transition: opacity 350ms ease;
+  pointer-events: none;
+}
+.dimOff {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reader {
+    transition: opacity 200ms ease;
+  }
+  .readerOff {
+    transform: none;
+    opacity: 0;
+  }
+  .dim {
+    transition: opacity 200ms ease;
+  }
 }
 
 .reader a {
@@ -24,65 +56,64 @@
 .reader a:hover {
   text-decoration: underline;
 }
-/* The bar over the plate: back, the place, previous and next by name; gone as you read, back on the way up. */
+/* The bar (WO-117): solid, with a rule; Close and its Esc key, the story's title, Previous, Next, Edit. */
 .bar {
   position: sticky;
   top: 0;
   z-index: 2;
-  height: 56px;
-  margin-bottom: -56px;
+  height: 64px;
+  margin-bottom: -64px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: 16px;
   padding: 0 32px;
-  background: linear-gradient(to bottom, rgba(11, 15, 20, 0.9), rgba(11, 15, 20, 0));
-  transition: opacity 240ms, transform 240ms;
+  background: rgba(11, 15, 20, 0.92);
+  border-bottom: 1px solid var(--rule-soft);
 }
-.barHidden {
-  opacity: 0;
-  transform: translateY(-12px);
-  pointer-events: none;
-}
-.barBack {
-  font-size: 15px;
+.barLeft {
   justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.barPlace {
+.close {
+  color: var(--text);
+}
+.key {
+  display: inline-grid;
+  place-items: center;
+  height: 22px;
+  padding: 0 6px;
+  border: 1px solid var(--rule-strong);
+  border-bottom-width: 2px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--muted);
+}
+.barTitle {
   font-family: var(--font-title);
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 14px;
-  color: var(--muted);
+  color: var(--brass);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 40vw;
 }
 .barSide {
   justify-self: end;
   display: flex;
-  gap: 22px;
+  gap: 10px;
   align-items: center;
-  min-width: 0;
 }
-.barStep {
-  font-size: 15px;
-  color: var(--muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 260px;
-}
-.barStep:hover,
-.footStep:hover {
-  color: var(--text);
-}
-/* The owner's Edit: there, but faint. */
-.barEdit {
-  font-size: 13px;
-  color: #6f7c8c;
-}
-.barEdit:hover {
-  color: var(--soft);
+.barRule {
+  width: 1px;
+  height: 24px;
+  background: var(--rule);
+  margin: 0 4px;
 }
 
 /* The plate. */
@@ -213,28 +244,50 @@
   width: 680px;
   max-width: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
-  padding-top: 24px;
-  border-top: 1px solid var(--rule-soft);
-  font-size: 15px;
+  padding-top: 8px;
 }
-.footStep {
+/* Previous and next as two cards (WO-117), each with the chapter's name. */
+.footCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px;
+  border: 1px solid var(--rule);
+  color: var(--text);
+}
+.reader a.footCard:hover {
+  border-color: var(--muted);
+  text-decoration: none;
+}
+.footCard small {
+  font-size: 13px;
   color: var(--muted);
 }
+.footCard span {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+}
 .footNext {
-  justify-self: end;
   text-align: right;
 }
 
 @media (max-width: 640px) {
   .bar {
-    padding: 0 16px;
-    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 0 12px;
+    grid-template-columns: auto minmax(0, 1fr);
   }
-  .barPlace,
-  .barStep {
+  .key,
+  .barTitle {
     display: none;
+  }
+  .barSide {
+    gap: 6px;
   }
   .plate {
     height: 380px;
@@ -253,24 +306,16 @@
     font-size: 16px;
   }
   .body {
-    padding: 24px 18px 0;
+    padding: 24px 18px 40px;
     gap: 16px;
   }
-  /* Previous and next at the foot, held to the bottom of the screen. */
   .foot {
-    position: sticky;
-    bottom: 0;
-    width: auto;
-    align-self: stretch;
-    margin: 0 -18px;
-    padding: 0 16px;
-    height: 56px;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    align-items: center;
-    background: var(--story-ground);
-    font-size: 14px;
+    gap: 10px;
   }
-  .footBack {
-    display: none;
+  .footCard {
+    padding: 12px 14px;
+  }
+  .footCard span {
+    font-size: 16px;
   }
 }

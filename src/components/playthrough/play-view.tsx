@@ -17,7 +17,7 @@ import s from "./play.module.css";
 export function PlayView({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwner: boolean; actIndex: number | null }) {
   const stops = runStops({ id: p.id, taleLine: p.taleLine, view: p.view, cover: p.build?.coverImageUrl ?? null, isOwner });
   return (
-    <ReaderProvider stops={stops} back={{ href: `/p/${p.id}`, label: "Back to the quest log" }} runId={p.id}>
+    <ReaderProvider stops={stops} back={{ href: `/p/${p.id}`, label: "Back to the quest log" }} runId={p.id} title={p.taleTitle || p.name}>
       <main className={`page ${s.main}`}>
         {isOwner && (
           <Link href="/me" className={s.back}>
@@ -247,9 +247,9 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
               </h2>
               <dl className={s.who}>
                 <dt>Assistant</dt>
-                <dd>{p.draftedBy ? `${p.draftedBy}, through the planner's door. Last change ${formatDate(p.updatedAt)}.` : "None. You made it on the site."}</dd>
+                <dd>{p.draftedBy ? `An AI assistant, through the planner's door. Last change ${formatDate(p.updatedAt)}.` : "None. You made it on the site."}</dd>
                 <dt>Save</dt>
-                <dd>{snap ? (snap.source === "save" ? `${snap.label}, read ${formatDate(snap.at)} by the helper${snap.readBy ? ` for ${snap.readBy}` : ""}.` : `Entered by hand, ${formatDate(snap.at)}.`) : "None read yet."}</dd>
+                <dd>{snap ? (snap.source === "save" ? `${snap.label}, read ${formatDate(snap.at)} by the helper.` : `Entered by hand, ${formatDate(snap.at)}.`) : "None read yet."}</dd>
               </dl>
               <span className={s.note}>The assistant drafts and suggests. You tick, accept, and publish.</span>
             </section>

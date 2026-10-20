@@ -1097,3 +1097,40 @@
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
 }
+
+/* A step comes in from the side it sits on (WO-117): 280ms, a 48px shift and a fade; reduced motion fades. */
+.stepIn {
+  display: flex;
+  flex-direction: column;
+  gap: inherit;
+  animation: 280ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.stepFromRight {
+  animation-name: step-from-right;
+}
+.stepFromLeft {
+  animation-name: step-from-left;
+}
+@keyframes step-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(48px);
+  }
+}
+@keyframes step-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-48px);
+  }
+}
+@keyframes step-fade {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stepFromRight,
+  .stepFromLeft {
+    animation-name: step-fade;
+  }
+}

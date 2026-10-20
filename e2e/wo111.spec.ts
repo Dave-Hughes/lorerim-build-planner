@@ -146,7 +146,7 @@ test("the reader shows the chapter, the opened beat and its way back to the game
   const reader = page.getByRole("dialog");
   await expect(reader.getByRole("heading", { name: "Chapter One: The Chapel by the Sea" })).toBeVisible();
   await expect(reader.getByText("The chapel bells in Anvil rang the hours.")).toBeVisible();
-  await reader.getByRole("navigation", { name: "The story" }).getByRole("link", { name: "Made with Care ›" }).click();
+  await reader.getByRole("navigation", { name: "The story" }).getByRole("link").filter({ hasText: "Next ›Made with Care" }).click();
   await expect(reader.getByRole("heading", { name: "Made with Care" })).toBeVisible();
   const back = reader.getByRole("link", { name: "Hunt and tan her first hides" });
   await expect(back).toBeVisible();

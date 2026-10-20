@@ -437,6 +437,20 @@ textarea:focus-visible {
   color: var(--health);
 }
 
+/* The AI assisted mark (WO-117): the Dwemer head, the words, its "i". */
+.ai-assisted {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.ai-assisted > img {
+  flex: none;
+  image-rendering: pixelated;
+}
+.ai-assisted .tip {
+  margin-left: 2px;
+}
+
 /* "i" after a value: hover, focus or tap shows the explanation */
 .tip {
   position: relative;

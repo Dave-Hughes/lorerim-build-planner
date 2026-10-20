@@ -21,16 +21,22 @@ const ReaderContext = createContext<{ open: (href: string) => boolean; reading: 
 /** Whether the reader is open over the page: the page holds back what would pop up over it (Tapps). */
 export const useReading = () => !!useContext(ReaderContext)?.reading;
 
-export function ReaderProvider({ stops, back, runId, children }: { stops: ReaderStop[]; back: ReaderBack; runId: string | null; children: React.ReactNode }) {
+/** How long the reader takes to slide up or down (WO-117), as reader.module.css has it. */
+const SLIDE_MS = 420;
+
+export function ReaderProvider({ stops, back, runId, title, children }: { stops: ReaderStop[]; back: ReaderBack; runId: string | null; title: string; children: React.ReactNode }) {
   const pathname = usePathname();
   const at = stopAt(stops, pathname);
   // Whether this browser entry is one the page pushed: then Back is the browser's back.
   const pushed = useRef(false);
+  // Opened from the page, it slides up over it (WO-117); opened from a link, it simply loads.
+  const [slideIn, setSlideIn] = useState(false);
   const open = useCallback(
     (href: string) => {
       if (stopAt(stops, href) < 0) return false;
       if (stopAt(stops, window.location.pathname) >= 0) window.history.replaceState(null, "", href);
       else {
+        setSlideIn(true);
         window.history.pushState(null, "", href);
         pushed.current = true;
       }
@@ -42,14 +48,28 @@ export function ReaderProvider({ stops, back, runId, children }: { stops: Reader
     if (pushed.current) window.history.back();
     else window.history.replaceState(null, "", back.href);
   }, [back.href]);
+  // Closed by any way (Close, Esc, the browser's back), the last stop stays a moment to slide down.
+  const [shown, setShown] = useState(at);
+  if (at >= 0 && at !== shown) setShown(at);
+  const leaving = at < 0 && shown >= 0;
   useEffect(() => {
-    if (at < 0) pushed.current = false;
-  }, [at]);
+    if (at >= 0) return;
+    pushed.current = false;
+    if (!leaving) return;
+    const t = setTimeout(() => {
+      setShown(-1);
+      setSlideIn(false);
+    }, SLIDE_MS);
+    return () => clearTimeout(t);
+  }, [at, leaving]);
   const value = useMemo(() => ({ open, reading: at >= 0 }), [open, at]);
+  const showing = at >= 0 ? at : shown;
   return (
     <ReaderContext.Provider value={value}>
       {children}
-      {at >= 0 && <Reader stops={stops} at={at} back={back} runId={runId} onClose={close} onGo={(i) => window.history.replaceState(null, "", stops[i].href)} />}
+      {showing >= 0 && showing < stops.length && (
+        <Reader stops={stops} at={showing} back={back} runId={runId} title={title} slideIn={slideIn} leaving={leaving} onClose={close} onGo={(i) => window.history.replaceState(null, "", stops[i].href)} />
+      )}
     </ReaderContext.Provider>
   );
 }
@@ -73,147 +93,159 @@ export function ReaderLink({ href, className, children, onClick, ...rest }: { hr
   );
 }
 
-function Reader({ stops, at, back, runId, onClose, onGo }: { stops: ReaderStop[]; at: number; back: ReaderBack; runId: string | null; onClose: () => void; onGo: (i: number) => void }) {
+function Reader({ stops, at, back, runId, title, slideIn, leaving, onClose, onGo }: { stops: ReaderStop[]; at: number; back: ReaderBack; runId: string | null; title: string; slideIn: boolean; leaving: boolean; onClose: () => void; onGo: (i: number) => void }) {
   const router = useRouter();
   const stop = stops[at];
   const prev = at > 0 ? stops[at - 1] : null;
   const next = at < stops.length - 1 ? stops[at + 1] : null;
   const root = useRef<HTMLDivElement>(null);
-  const [hidden, setHidden] = useState(false);
-  const last = useRef(0);
+  // Up from below on the way in (when opened from the page), down on the way out.
+  const [arrived, setArrived] = useState(!slideIn);
+  useEffect(() => {
+    if (arrived) return;
+    const f = requestAnimationFrame(() => requestAnimationFrame(() => setArrived(true)));
+    return () => cancelAnimationFrame(f);
+  }, [arrived]);
+  const off = leaving || !arrived;
 
   // The page under it stays where it was: nothing behind scrolls while the reader is open.
+  // Its scroll is put back on close: the browser's own restore can land while the page is still held.
   useEffect(() => {
     const html = document.documentElement;
     const was = html.style.overflow;
+    const y = window.scrollY;
     html.style.overflow = "hidden";
     const focus = document.activeElement as HTMLElement | null;
     root.current?.focus({ preventScroll: true });
     return () => {
       html.style.overflow = was;
+      window.scrollTo({ top: y, behavior: "instant" });
       focus?.focus({ preventScroll: true });
     };
   }, []);
-  // A new stop starts at its top; the scroll brings the bar back.
+  // A new stop starts at its top.
   useEffect(() => {
     root.current?.scrollTo({ top: 0 });
   }, [at]);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       // The image viewer's Esc is its own.
-      if (e.key !== "Escape" || document.querySelector('[aria-label="Image viewer"]')) return;
+      if (e.key !== "Escape" || leaving || document.querySelector('[aria-label="Image viewer"]')) return;
       e.preventDefault();
       onClose();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [onClose]);
+  }, [onClose, leaving]);
 
   const toRow = (href: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     router.replace(href);
   };
-  const go = (i: number) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    onGo(i);
-  };
-  const backLink = (label: string, className?: string) => (
-    <a
-      href={back.href}
-      className={className}
-      onClick={(e) => {
-        e.preventDefault();
-        onClose();
-      }}
-    >
-      {label}
-    </a>
-  );
+  const go = (i: number) => () => onGo(i);
 
   return (
-    <div
-      ref={root}
-      className={s.reader}
-      role="dialog"
-      aria-modal="true"
-      aria-label={stop.title}
-      tabIndex={-1}
-      onScroll={(e) => {
-        const y = e.currentTarget.scrollTop;
-        setHidden(y > 160 && y > last.current);
-        last.current = y;
-      }}
-    >
-      <div className={`${s.bar} ${hidden ? s.barHidden : ""}`}>
-        {backLink(`‹ ${back.label}`, s.barBack)}
-        <span className={s.barPlace}>{stop.place}</span>
-        <span className={s.barSide}>
-          {stop.edit && (
-            <Link href={stop.edit} className={s.barEdit}>
-              Edit
-            </Link>
-          )}
-          {prev && (
-            <a href={prev.href} className={s.barStep} onClick={go(at - 1)}>
-              ‹ {prev.title}
-            </a>
-          )}
-          {next && (
-            <a href={next.href} className={s.barStep} onClick={go(at + 1)}>
-              {next.title} ›
-            </a>
-          )}
-        </span>
-      </div>
-
-      <header className={`${s.plate} ${stop.plate ? "" : s.plateNone}`}>
-        {stop.plate && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={stop.plate} alt="" className={s.plateImage} />
-        )}
-        <div className={s.plateFade} aria-hidden="true" />
-        <div className={s.words}>
-          {stop.kicker && <span className={s.kicker}>{stop.kicker}</span>}
-          <h1 className={s.title}>{stop.title}</h1>
-          {stop.line && <p className={s.line}>{stop.line}</p>}
+    <>
+      <div className={`${s.dim} ${off ? s.dimOff : ""}`} aria-hidden="true" />
+      <div ref={root} className={`${s.reader} ${off ? s.readerOff : ""}`} role="dialog" aria-modal="true" aria-label={stop.title} tabIndex={-1}>
+        {/* The bar (WO-117): solid, with Close and its Esc key, the story's title, and Previous, Next and Edit as buttons. */}
+        <div className={s.bar}>
+          <span className={s.barLeft}>
+            <button type="button" className={`btn btn-sm ${s.close}`} onClick={onClose}>
+              × Close
+            </button>
+            <kbd className={s.key}>Esc</kbd>
+          </span>
+          <span className={s.barTitle}>{title}</span>
+          <span className={s.barSide}>
+            <button type="button" className="btn btn-sm" onClick={prev ? go(at - 1) : undefined} disabled={!prev} aria-label={prev ? `Previous: ${prev.title}` : "Previous"}>
+              ‹ Previous
+            </button>
+            <button type="button" className="btn btn-sm" onClick={next ? go(at + 1) : undefined} disabled={!next} aria-label={next ? `Next: ${next.title}` : "Next"}>
+              Next ›
+            </button>
+            {stop.edit && (
+              <>
+                <span className={s.barRule} aria-hidden="true" />
+                <Link href={stop.edit} className="btn btn-sm">
+                  Edit
+                </Link>
+              </>
+            )}
+          </span>
         </div>
-      </header>
 
-      <div className={s.body}>
-        <article key={stop.key} className={s.col}>
-          {stop.waiting && runId && stop.chapterId !== null ? (
-            <Waiting stop={stop} runId={runId} isOwner={!!stop.edit} />
-          ) : (
-            <Text stop={stop} />
+        <header className={`${s.plate} ${stop.plate ? "" : s.plateNone}`}>
+          {stop.plate && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={stop.plate} alt="" className={s.plateImage} />
           )}
-          {stop.game && (
-            <span className={s.game}>
-              In the game:{" "}
-              <a href={stop.game.href} onClick={toRow(stop.game.href)}>
-                {stop.game.text}
+          <div className={s.plateFade} aria-hidden="true" />
+          <div className={s.words}>
+            {stop.kicker && <span className={s.kicker}>{stop.kicker}</span>}
+            <h1 className={s.title}>{stop.title}</h1>
+            {stop.line && <p className={s.line}>{stop.line}</p>}
+          </div>
+        </header>
+
+        <div className={s.body}>
+          <article key={stop.key} className={s.col}>
+            {stop.waiting && runId && stop.chapterId !== null ? <Waiting stop={stop} runId={runId} isOwner={!!stop.edit} /> : <Text stop={stop} />}
+            {stop.game && (
+              <span className={s.game}>
+                In the game:{" "}
+                <a href={stop.game.href} onClick={toRow(stop.game.href)}>
+                  {stop.game.text}
+                </a>
+              </span>
+            )}
+          </article>
+          {/* The foot (WO-117): previous and next as two cards, each with the chapter's name. */}
+          <nav className={s.foot} aria-label="The story">
+            {prev ? (
+              <a
+                href={prev.href}
+                className={s.footCard}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onGo(at - 1);
+                }}
+              >
+                <small>‹ Previous</small>
+                <span>{prev.title}</span>
               </a>
-            </span>
-          )}
-        </article>
-        <nav className={s.foot} aria-label="The story">
-          {prev ? (
-            <a href={prev.href} onClick={go(at - 1)} className={s.footStep}>
-              ‹ {prev.title}
-            </a>
-          ) : (
-            <span />
-          )}
-          {backLink(back.label, s.footBack)}
-          {next ? (
-            <a href={next.href} onClick={go(at + 1)} className={`${s.footStep} ${s.footNext}`}>
-              {next.title} ›
-            </a>
-          ) : (
-            <span />
-          )}
-        </nav>
+            ) : (
+              <span />
+            )}
+            {next ? (
+              <a
+                href={next.href}
+                className={`${s.footCard} ${s.footNext}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onGo(at + 1);
+                }}
+              >
+                <small>Next ›</small>
+                <span>{next.title}</span>
+              </a>
+            ) : (
+              <a
+                href={back.href}
+                className={`${s.footCard} ${s.footNext}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onClose();
+                }}
+              >
+                <small>The end, for now</small>
+                <span>{back.label}</span>
+              </a>
+            )}
+          </nav>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

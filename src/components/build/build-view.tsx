@@ -32,6 +32,7 @@ import { LevelNote } from "@/components/guide/level-note";
 import { docText, docWords, firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import { GuideView } from "@/components/guide/guide-view";
 import { ReaderLink, useReading } from "@/components/reader/reader";
+import { AiAssisted } from "@/components/ui/ai-assisted";
 import { currentVersion, isOlderThanCurrent } from "@/lib/rules/versions";
 import { ATTRIBUTE_NAMES, levelChanges, levelFacts, levelMarks, nextDestinyLevel, perksByLevel, stoneShare, stretchPerkOrder, stretchPerkRequirement, type PerkListGroup } from "@/lib/rules/derive";
 import { gearAt, gearChangeText, replacedName } from "@/lib/rules/gear";
@@ -1641,7 +1642,12 @@ function Cover({
             </span>
           </div>
           {/* Drafted by an assistant's tools (WO-110), while the author shows it. */}
-          {build.draftedBy && build.showDrafted !== false && <p className={`${styles.drafted} ${styles.heroIn} ${styles.heroIn3}`}>Drafted with {build.draftedBy}</p>}
+          {/* An assistant drafted it (WO-110): the AI assisted mark, while the author shows it (WO-117). */}
+          {build.draftedBy && build.showDrafted !== false && (
+            <p className={`${styles.drafted} ${styles.heroIn} ${styles.heroIn3}`}>
+              <AiAssisted author={build.author.name} />
+            </p>
+          )}
           {storyHref && (
             <span className={`${styles.readStory} ${styles.heroIn} ${styles.heroIn3}`}>
               <ReaderLink href={storyHref} className={`btn ${styles.readStoryButton}`}>

@@ -35,5 +35,5 @@ export default async function PlaythroughPage({ params, searchParams }: { params
   const actIndex = Number.isInteger(n) && n >= 1 ? n - 1 : null;
   const build = p.build ? await getBuild(p.build.id, viewerId) : null;
   if (!build || !isKnownVersion(build.gameVersion)) return <PlayView p={p} isOwner={viewerId === p.ownerId} actIndex={actIndex} />;
-  return <CharacterPage build={build} viewerId={viewerId} run={p} tab={tabParam(tab, true, "play")} level={Number(level) || 0} actIndex={actIndex} />;
+  return <CharacterPage build={build} viewerId={viewerId} run={p} tab={tabParam(tab, true, "play", level)} level={Number(level) || 0} actIndex={actIndex} />;
 }

@@ -1,15 +1,16 @@
 import Link from "next/link";
 import { ReaderLink } from "@/components/reader/reader";
+import { AiAssisted } from "@/components/ui/ai-assisted";
 import { CopyLinkButton } from "@/components/ui/copy-link-button";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
 import s from "./play.module.css";
 
-/** "Made by Tapps", "Drafted with Claude" while shown, the version. */
+/** "Made by Tapps", the AI assisted mark while shown (WO-117), the version. */
 export function Byline({ p }: { p: PlaythroughRecord }) {
   return (
     <span className={s.byline}>
       <span>Made by {p.author.handle ? <Link href={`/u/${p.author.handle}`}>{p.author.name}</Link> : p.author.name}</span>
-      {p.draftedBy && p.showDrafted && <span className="muted">Drafted with {p.draftedBy}</span>}
+      {p.draftedBy && p.showDrafted && <AiAssisted author={p.author.name} className="muted" />}
       <span className="muted">LoreRim {p.gameVersion}</span>
     </span>
   );

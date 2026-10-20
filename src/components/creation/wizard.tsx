@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { InfoTip } from "@/components/ui/info-tip";
 import { MAX_TAGS, TAGS, TAG_GROUPS, suggestedTags } from "@/lib/builds/tags";
 import { useRouter } from "next/navigation";
 import { TRAIT_CHOICES, keptTraitChoices } from "@/lib/rules/trait-choices";
@@ -95,8 +96,13 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
     },
     [touch],
   );
+  // Which side the step comes in from: -1 from the left (an earlier step), 1 from the right.
+  const [stepFrom, setStepFrom] = useState(1);
+  const stepNow = useRef(step);
   const setStep = useCallback((s: Step) => {
     touch();
+    setStepFrom(STEPS.indexOf(s) < STEPS.indexOf(stepNow.current) ? -1 : 1);
+    stepNow.current = s;
     setStepState(s);
     const url = new URL(window.location.href);
     url.searchParams.set("step", s);
@@ -247,9 +253,11 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
         <main className={styles.main}>
           <>
           <GameDataProvider version={plan.gameVersion}>
-            {/* The version, the first thing a new build sees (WO-36); the sidebar keeps its line. */}
-            {step === "race" && <VersionBand plan={plan} update={update} mode={mode} buildId={buildId} />}
+            {/* Each step slides in from the side it sits on (WO-117); reduced motion fades it in. */}
+            <div key={step} className={`${styles.stepIn} ${stepFrom < 0 ? styles.stepFromLeft : styles.stepFromRight}`}>
             {step === "race" && <RaceStep plan={plan} update={update} />}
+            {/* The version (WO-36), under the races since WO-117 so nothing sits above the step's title; the sidebar keeps its line. */}
+            {step === "race" && <VersionBand plan={plan} update={update} mode={mode} buildId={buildId} />}
             {step === "birthsign" && <BirthsignStep plan={plan} update={update} />}
             {step === "skills" && <SkillsStep plan={plan} update={update} />}
             {step === "traits" && <TraitsStep plan={plan} update={update} />}
@@ -266,6 +274,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
                 drafted={drafted ? { show: showDrafted, onChange: (v) => (touch(), setShowDrafted(v)) } : null}
               />
             )}
+            </div>
           </GameDataProvider>
 
           <div className={styles.nav}>
@@ -691,7 +700,7 @@ function TraitsStep({ plan, update }: StepProps) {
               </p>
               {on && t.name === "Master of One" && (
                 <label className={`field ${styles.over}`}>
-                  <span className="field-hint">Which skill?</span>
+                  <span className="label">Which skill?</span>
                   <select className="select" value={plan.masterOfOneSkill ?? ""} onChange={(e) => update((p) => ({ ...p, masterOfOneSkill: e.target.value || undefined }))}>
                     <option value="">Choose a skill</option>
                     {d.skills.map((s) => (
@@ -704,7 +713,7 @@ function TraitsStep({ plan, update }: StepProps) {
               )}
               {on && TRAIT_CHOICES[t.name] && (
                 <label className={`field ${styles.over}`}>
-                  <span className="field-hint">{TRAIT_CHOICES[t.name].question}</span>
+                  <span className="label">{TRAIT_CHOICES[t.name].question}</span>
                   <select
                     className="select"
                     value={plan.traitChoices?.[t.name] ?? ""}
@@ -994,11 +1003,13 @@ function NameStep({
             })
           }
         />
-        <label className="field">
-          <span className="label">Write-up link</span>
-          <input className="input" type="url" value={details.writeupUrl} maxLength={500} onChange={(e) => updateDetails({ writeupUrl: e.target.value })} placeholder="https://discord.com/channels/…" />
-          <span className="field-hint">Your Discord post or guide.</span>
-        </label>
+        {/* The "i" sits outside the <label>: a button inside one would take its name from the input. */}
+        <div className="field">
+          <span className="label">
+            <label htmlFor="writeup-link">Write-up link</label> <InfoTip label="About the write-up link" text="Your Discord post or guide." />
+          </span>
+          <input id="writeup-link" className="input" type="url" value={details.writeupUrl} maxLength={500} onChange={(e) => updateDetails({ writeupUrl: e.target.value })} placeholder="https://discord.com/channels/…" />
+        </div>
         <fieldset className={styles.radios}>
           <legend className="label">Who can see it</legend>
           {(
@@ -1015,10 +1026,15 @@ function NameStep({
           ))}
         </fieldset>
         {drafted && (
-          <label className={styles.radio}>
-            <input type="checkbox" checked={drafted.show} onChange={(e) => drafted.onChange(e.target.checked)} />
-            <span>Show that an assistant drafted it</span>
-          </label>
+          <div className="field">
+            <span className="label">
+              AI assisted mark <InfoTip label="About the AI assisted mark" text="Shown on the page because an assistant drafted this character. You can hide it." />
+            </span>
+            <label className={styles.radio}>
+              <input type="checkbox" checked={drafted.show} onChange={(e) => drafted.onChange(e.target.checked)} />
+              <span>Show it</span>
+            </label>
+          </div>
         )}
       </div>
       <ThemePicker
@@ -1041,31 +1057,30 @@ function VideoField({ videoId, onChange }: { videoId: string | undefined; onChan
   const [text, setText] = useState(() => (videoId ? `https://youtu.be/${videoId}` : ""));
   const bad = text.trim() !== "" && !youtubeVideoId(text);
   return (
-    <label className="field">
-      <span className="label">Video guide (optional)</span>
+    <div className="field">
+      <span className="label">
+        <label htmlFor="video-guide">Video guide (optional)</label> <InfoTip label="About the video guide" text="A YouTube video. It opens the build page and the Guide tab." />
+      </span>
       <input
+        id="video-guide"
         className="input"
         type="url"
         value={text}
         maxLength={300}
         placeholder="https://www.youtube.com/watch?v=…"
         aria-invalid={bad || undefined}
-        aria-describedby="video-guide-hint"
+        aria-describedby={bad ? "video-guide-hint" : undefined}
         onChange={(e) => {
           setText(e.target.value);
           onChange(youtubeVideoId(e.target.value) ?? undefined);
         }}
       />
-      {bad ? (
+      {bad && (
         <span id="video-guide-hint" className="field-error" role="alert">
           {YOUTUBE_ERROR}
         </span>
-      ) : (
-        <span id="video-guide-hint" className="field-hint">
-          A YouTube video. It opens the build page and the Guide tab.
-        </span>
       )}
-    </label>
+    </div>
   );
 }
 
@@ -1104,7 +1119,9 @@ function CoverField({
   };
   return (
     <div className={`field ${styles.cover}`}>
-      <span className="label">Cover image</span>
+      <span className="label">
+        Cover image <InfoTip label="About the cover image" text="Shown full width above the build. Click the image to choose the part that stays in view. PNG, JPEG, WebP or GIF, up to 4 MB." />
+      </span>
       {url && (
         <>
           {/* The whole image: click where the hero should centre it (a face, say). */}
@@ -1140,7 +1157,7 @@ function CoverField({
             <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" className="sr-only" disabled={busy} onChange={(e) => void upload(e.target.files?.[0])} />
           </label>
         ) : (
-          <span className="field-hint">Sign in to upload one, or paste a link below.</span>
+          <span className="muted">Sign in to upload one, or paste a link below.</span>
         )}
         {url && (
           <button type="button" className="btn btn-sm btn-quiet" onClick={() => onChange("")}>
@@ -1154,10 +1171,9 @@ function CoverField({
         </span>
       )}
       <label className={styles.coverLink}>
-        <span className="field-hint">Or a link to a screenshot you have already posted</span>
+        <span className="label">Or a link to a screenshot you have already posted</span>
         <input className="input" type="url" aria-label="Cover image link" value={url} maxLength={500} onChange={(e) => onChange(e.target.value)} />
       </label>
-      <span className="field-hint">Shown full width above the build. PNG, JPEG, WebP or GIF, up to 4 MB.</span>
     </div>
   );
 }
@@ -1171,15 +1187,10 @@ function TagPicker({ chosen, suggested, onChange }: { chosen: string[]; suggeste
   return (
     <fieldset className={styles.tagPicker} aria-label="Tags">
       {/* A heading with the count beside it, under a rule, so the chips read as their own section (WO-57). */}
-      <legend className={styles.tagsLegend}>
-        <h2 className="section-title">
-          Tags{" "}
-          <span className="section-title-at">
-            {chosen.length} of {MAX_TAGS} chosen
-          </span>
-        </h2>
+      <legend className={`label ${styles.tagsLegend}`}>
+        Tags <span className="muted">{chosen.length} of {MAX_TAGS} chosen</span>
+        {suggested && chosen.length > 0 && <InfoTip label="About the suggested tags" text="Suggested from your majors. Remove any that don't fit." />}
       </legend>
-      {suggested && chosen.length > 0 && <span className="field-hint">Suggested from your majors. Remove any that don&apos;t fit.</span>}
       {TAG_GROUPS.map((g) => (
         <div key={g} className={styles.tagGroup}>
           <span className="sub-label">{g}</span>
