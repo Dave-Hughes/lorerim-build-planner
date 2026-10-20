@@ -3,7 +3,7 @@
  * scene in its hero; one with a cover keeps it. The build's title is set in Jersey 10 in Aurora only.
  */
 import { expect, test, type Page } from "@playwright/test";
-import { signIn } from "./helpers";
+import { signIn, savedInBand } from "./helpers";
 import { AURORA_BUILD_ID, IRIEL_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1440, height: 900 } });
@@ -18,8 +18,8 @@ async function pickAndSave(page: Page, id: string, theme: string) {
   const card = picker.getByRole("button", { name: new RegExp(`^${theme}`) });
   await card.click();
   await expect(card).toHaveAttribute("aria-pressed", "true");
-  await page.getByRole("button", { name: "Save changes" }).click();
-  await page.waitForURL(new RegExp(`/b/${id}/edit`));
+  // Every change saves as it is made (WO-117).
+  await savedInBand(page);
 }
 
 test("Aurora on a build with no cover: the pixel scene in the hero, crisp, and the title in Jersey 10", async ({ page, context }) => {

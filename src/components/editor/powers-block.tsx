@@ -322,7 +322,7 @@ function AddPower<T extends Ability | Shout>({
       {withWords && <WordsControl label="the shout" words={words} onChange={setWords} />}
       <input className="input" aria-label="Where (optional)" placeholder="Where (optional)" maxLength={80} value={where} onChange={(e) => setWhere(e.target.value)} />
       <span className={styles.addActions}>
-        <button type="submit" className="btn btn-sm btn-primary" disabled={!picked}>
+        <button type="submit" className="btn btn-sm" disabled={!picked}>
           Add
         </button>
         <button type="button" className="btn btn-sm btn-quiet" onClick={onCancel}>

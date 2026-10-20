@@ -157,7 +157,7 @@ test("the reader shows the chapter, the opened beat and its way back to the game
 test("editing by hand: a @quest mention, and the rule under a refused objective", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/p/${pid}/edit`);
-  await expect(page.getByText("Editing E2E Kyria")).toBeVisible();
+  await expect(page.getByRole("region", { name: "Edit bar" })).toContainText("EditingE2E Kyria");
   await page.getByRole("button", { name: "Add an objective" }).click();
   const box = page.getByRole("combobox", { name: "Objective" }).last();
   await box.fill("@Spread the");

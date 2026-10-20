@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useId, useMemo, useRef, useState, useTransition } from "react";
+import { createContext, useContext, useId, useMemo, useRef, useState, useTransition } from "react";
+import { EditBar, type SaveState } from "@/components/editor/edit-bar";
 import { useGameData } from "@/components/game-data";
-import { Brand } from "@/components/ui/brand";
 import { searchWithExtras, type ExtraMention } from "@/lib/guide/mention";
 import { useItems } from "@/lib/items/items";
 import * as act from "@/lib/playthroughs/actions";
@@ -76,47 +76,46 @@ export interface EditData {
 
 type Result = { ok: true } | { ok: false; error: string };
 
+/** Every save on the page tells the edit band how it went (WO-117). */
+const Report = createContext<(s: SaveState) => void>(() => {});
+
 function useSave(onSaved: () => void) {
   const router = useRouter();
+  const report = useContext(Report);
   const [pending, start] = useTransition();
   const [error, setError] = useState<string | null>(null);
   const save = (fn: () => Promise<Result | { ok: boolean; error?: string }>, refresh = false, then?: (r: { ok: boolean }) => void) =>
     start(async () => {
+      report({ state: "saving" });
       const r = (await fn()) as { ok: boolean; error?: string };
       if (r.ok) {
         setError(null);
+        report({ state: "saved" });
         onSaved();
         if (refresh) router.refresh();
-      } else setError(r.error ?? "That didn't save. Try again.");
+      } else {
+        setError(r.error ?? "That didn't save. Try again.");
+        report({ state: "failed", error: r.error ?? "That didn't save." });
+      }
       then?.(r);
     });
   return { pending, error, save, setError };
 }
 
 export function EditPlaythrough({ data, actId, tale, linkables }: { data: EditData; actId: number | null; tale: boolean; linkables: ExtraMention[] }) {
-  const [savedAt, setSavedAt] = useState<Date | null>(null);
-  const onSaved = () => setSavedAt(new Date());
+  const [band, setBand] = useState<SaveState>({ state: "idle" });
+  const onSaved = () => {};
   const current = data.acts.find((a) => a.id === actId) ?? data.acts[0] ?? null;
   return (
-    <>
-      <header className={s.bar}>
-        <div className={`page ${s.barIn}`}>
-          <span className={s.barLeft}>
-            <Brand />
-            <span className={s.editing}>Editing {data.name}</span>
-          </span>
-          <span className={s.barRight}>
-            {savedAt && (
-              <span className={s.saved} role="status">
-                Saved {savedAt.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}
-              </span>
-            )}
-            <Link href={current ? `/p/${data.id}?act=${data.acts.indexOf(current) + 1}` : `/p/${data.id}`} className="btn btn-primary">
-              Done
-            </Link>
-          </span>
-        </div>
-      </header>
+    <Report.Provider value={setBand}>
+      <EditBar buildId={data.buildId ?? ""} name={data.name} current={tale ? "story" : "play"} visibility={data.visibility} save={band} />
+      {tale ? (
+        <main className={`page ${s.main}`} style={{ gridTemplateColumns: "minmax(0, 1fr)" }}>
+          <div className={s.col}>
+            <Chapters data={data} onSaved={onSaved} />
+          </div>
+        </main>
+      ) : (
       <main className={`page ${s.main}`}>
         <aside className={s.aside}>
           <Acts data={data} current={current} onSaved={onSaved} />
@@ -127,14 +126,12 @@ export function EditPlaythrough({ data, actId, tale, linkables }: { data: EditDa
             <span style={{ fontSize: 15, color: "var(--soft)" }}>
               Chapters from before the game, and the entries and beats in each act, open in the Story editor: text, up to 5 of your images a piece, captions.
             </span>
-            <Link href={`/p/${data.id}/edit?tale=1`}>Edit the chapters ›</Link>
+            <Link href={`/p/${data.id}/edit/story`}>Edit the chapters in the Story ›</Link>
           </section>
           <Details data={data} onSaved={onSaved} />
         </aside>
         <div className={s.col}>
-          {tale ? (
-            <Chapters data={data} onSaved={onSaved} />
-          ) : current ? (
+          {current ? (
             <>
               <ActFields key={current.id} pid={data.id} a={current} onSaved={onSaved} />
               <Objectives key={`o${current.id}`} data={data} a={current} linkables={linkables} onSaved={onSaved} />
@@ -145,7 +142,8 @@ export function EditPlaythrough({ data, actId, tale, linkables }: { data: EditDa
           )}
         </div>
       </main>
-    </>
+      )}
+    </Report.Provider>
   );
 }
 
@@ -284,7 +282,7 @@ function ActStory({ pid, a, save }: { pid: string; a: EditAct; save: ReturnType<
       <span className={s.field}>
         <span className={s.lbl}>The act&apos;s chapter</span>
         {a.chapterId ? (
-          <Link href={`/p/${pid}/edit/tale/${a.chapterId}`} className="btn btn-sm" style={{ alignSelf: "flex-start" }}>
+          <Link href={`/p/${pid}/edit/story/${a.chapterId}`} className="btn btn-sm" style={{ alignSelf: "flex-start" }}>
             Edit it
           </Link>
         ) : (
@@ -295,7 +293,7 @@ function ActStory({ pid, a, save }: { pid: string; a: EditAct; save: ReturnType<
             onClick={() =>
               save(async () => {
                 const r = await act.newChapter(pid, { kind: "act", title: a.name, actId: a.id });
-                if (r.ok) router.push(`/p/${pid}/edit/tale/${r.value}`);
+                if (r.ok) router.push(`/p/${pid}/edit/story/${r.value}`);
                 return r;
               })
             }
@@ -357,7 +355,7 @@ function Objectives({ data, a, linkables, onSaved }: { data: EditData; a: EditAc
   const addBeat = (after: number | null) =>
     save(async () => {
       const r = await act.newChapter(data.id, { kind: "beat", title: "A new beat", actId: a.id, opensAfter: after });
-      if (r.ok) router.push(`/p/${data.id}/edit/tale/${r.value}`);
+      if (r.ok) router.push(`/p/${data.id}/edit/story/${r.value}`);
       return r;
     });
   return (
@@ -771,7 +769,7 @@ function Beat({ pid, c, lastObjective, onSaved }: { pid: string; c: EditChapter;
       <span className={s.beatHead}>
         <span className={s.beatTitle}>{c.title}</span>
         <span className={s.actions}>
-          <Link href={`/p/${pid}/edit/tale/${c.id}`} className="btn btn-sm">
+          <Link href={`/p/${pid}/edit/story/${c.id}`} className="btn btn-sm">
             Edit the scene
           </Link>
           <button type="button" className="btn btn-sm" onClick={() => window.confirm(`Remove the beat ${c.title}?`) && save(() => act.removeChapter(pid, c.id), true)}>
@@ -851,7 +849,7 @@ function Chapters({ data, onSaved }: { data: EditData; onSaved: () => void }) {
                 </span>
                 <span className={s.actions}>
                   <Moves label={c.title} first={i === 0} last={i === mine.length - 1} onMove={(to) => save(() => act.moveChapter(data.id, c.id, to), true)} />
-                  <Link href={`/p/${data.id}/edit/tale/${c.id}`} className="btn btn-sm">
+                  <Link href={`/p/${data.id}/edit/story/${c.id}`} className="btn btn-sm">
                     Edit
                   </Link>
                   <button type="button" className="btn btn-sm" onClick={() => window.confirm(`Remove ${c.title}?`) && save(() => act.removeChapter(data.id, c.id), true)}>
@@ -870,7 +868,7 @@ function Chapters({ data, onSaved }: { data: EditData; onSaved: () => void }) {
           e.preventDefault();
           save(async () => {
             const r = await act.newChapter(data.id, { kind: "chapter", title });
-            if (r.ok) router.push(`/p/${data.id}/edit/tale/${r.value}`);
+            if (r.ok) router.push(`/p/${data.id}/edit/story/${r.value}`);
             return r;
           });
         }}

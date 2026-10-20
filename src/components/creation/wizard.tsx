@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { InfoTip } from "@/components/ui/info-tip";
 import { MAX_TAGS, TAGS, TAG_GROUPS, suggestedTags } from "@/lib/builds/tags";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { TRAIT_CHOICES, keptTraitChoices } from "@/lib/rules/trait-choices";
 import { TraitText } from "@/components/ui/trait-text";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { FocusHeader } from "@/components/ui/focus-header";
 import { Tooltip } from "@/components/ui/tooltip";
-import { EditBar } from "@/components/editor/edit-bar";
+import { EditBar, type SaveState } from "@/components/editor/edit-bar";
 import { authorTourPending } from "@/lib/tour";
 import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel, ModeIcon, TagIcon, DeityIcon } from "@/components/ui/skill-icon";
 import { copyBuildForVersion, createBuild, saveBuildDetails, saveBuildPlan } from "@/lib/builds/actions";
@@ -60,8 +60,10 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
   const d = requireGameData(plan.gameVersion);
   const [details, setDetails] = useState<BuildDetails>(() => initialDetails ?? draft?.details ?? emptyDetails());
   const [showDrafted, setShowDrafted] = useState(drafted?.show ?? true);
+  const search = useSearchParams();
   const [step, setStepState] = useState<Step>(() => {
-    const fromUrl = new URLSearchParams(window.location.search).get("step") as Step | null;
+    // From the router, not window.location: on a client-side link the address changes after this first render.
+    const fromUrl = search.get("step") as Step | null;
     if (fromUrl && STEPS.includes(fromUrl)) return fromUrl;
     return draft?.step ?? "race";
   });
@@ -82,20 +84,54 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
     dirty.current = true;
     setDraftStatus((st) => (st === "failed" ? st : "saving"));
   }, []);
+  // Editing a build, every change saves as it's made (WO-117): the band says Saving, then Saved.
+  const [editSave, setEditSave] = useState<SaveState>({ state: "idle" });
+  const changed = useRef(false);
+  const touchSave = useCallback(() => {
+    if (mode !== "edit") return;
+    changed.current = true;
+    setEditSave({ state: "saving" });
+  }, [mode]);
   const update = useCallback(
     (fn: (p: BuildPlan) => BuildPlan) => {
       touch();
+      touchSave();
       setPlan((p) => fn(p));
     },
-    [touch],
+    [touch, touchSave],
   );
   const updateDetails = useCallback(
     (patch: Partial<BuildDetails>) => {
       touch();
+      touchSave();
       setDetails((d) => ({ ...d, ...patch }));
     },
-    [touch],
+    [touch, touchSave],
   );
+  const lastSaved = useRef({ details: JSON.stringify(initialDetails ?? null), plan: JSON.stringify(initialPlan ?? null), shown: drafted?.show ?? true });
+  const [saveTry, setSaveTry] = useState(0);
+  useEffect(() => {
+    if (mode !== "edit" || !buildId || !changed.current) return;
+    const t = setTimeout(async () => {
+      const d = { ...details, tags: details.tags ?? suggestedTags(plan.majors) };
+      const dj = JSON.stringify(details);
+      const pj = JSON.stringify(plan);
+      // The same server checks as before: the band says what failed.
+      if (dj !== lastSaved.current.details || showDrafted !== lastSaved.current.shown) {
+        const a = await saveBuildDetails(buildId, d, drafted ? { showDrafted } : undefined);
+        if (!a.ok) return setEditSave({ state: "failed", error: a.error, retry: () => setSaveTry((n) => n + 1) });
+        lastSaved.current.details = dj;
+        lastSaved.current.shown = showDrafted;
+      }
+      if (pj !== lastSaved.current.plan) {
+        const b = await saveBuildPlan(buildId, plan);
+        if (!b.ok) return setEditSave({ state: "failed", error: b.error, retry: () => setSaveTry((n) => n + 1) });
+        lastSaved.current.plan = pj;
+      }
+      setEditSave({ state: "saved" });
+    }, 700);
+    return () => clearTimeout(t);
+  }, [mode, buildId, plan, details, showDrafted, drafted, saveTry]);
   // Which side the step comes in from: -1 from the left (an earlier step), 1 from the right.
   const [stepFrom, setStepFrom] = useState(1);
   const stepNow = useRef(step);
@@ -140,12 +176,6 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
         // Tapps shows the author round level 1, once (WO-61).
         authorTourPending();
         router.push(`/b/${r.value.id}/edit`);
-      } else if (buildId) {
-        const a = await saveBuildDetails(buildId, { ...details, tags: details.tags ?? suggestedTags(plan.majors) }, drafted ? { showDrafted } : undefined);
-        if (!a.ok) return setError(a.error);
-        const b = await saveBuildPlan(buildId, plan);
-        if (!b.ok) return setError(b.error);
-        router.push(`/b/${buildId}/edit`);
       }
     });
 
@@ -164,7 +194,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
   return (
     <>
       {mode === "edit" && buildId ? (
-        <EditBar buildId={buildId} name={details.name || "This build"} current="setup" visibility={details.visibility} onVisibility={(visibility) => updateDetails({ visibility })} />
+        <EditBar buildId={buildId} name={details.name || "This build"} current="setup" visibility={details.visibility} onVisibility={(visibility) => setDetails((d) => ({ ...d, visibility }))} save={editSave} />
       ) : (
         <FocusHeader
           context={characters ? "New character" : "New build"}
@@ -271,7 +301,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
                 update={update}
                 signedIn={signedIn}
                 introStart={introStart}
-                drafted={drafted ? { show: showDrafted, onChange: (v) => (touch(), setShowDrafted(v)) } : null}
+                drafted={drafted ? { show: showDrafted, onChange: (v) => (touch(), touchSave(), setShowDrafted(v)) } : null}
               />
             )}
             </div>
@@ -292,13 +322,14 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
                   Skip traits
                 </button>
               )}
+              {/* Editing, every change saves as it's made and Done is the one ember button (WO-117). */}
               {step !== "name" ? (
-                <button type="button" className="btn btn-primary" onClick={() => setStep(STEPS[stepIndex + 1])} disabled={step === "race" && !plan.race}>
+                <button type="button" className={mode === "edit" ? "btn" : "btn btn-primary"} onClick={() => setStep(STEPS[stepIndex + 1])} disabled={step === "race" && !plan.race}>
                   Next: {STEP_NAMES[STEPS[stepIndex + 1]]}
                 </button>
-              ) : signedIn ? (
+              ) : mode === "edit" ? null : signedIn ? (
                 <button type="button" className="btn btn-primary" onClick={finish} disabled={pending || !details.name.trim() || !plan.race}>
-                  {pending ? "Saving…" : mode === "create" ? "Create build" : "Save changes"}
+                  {pending ? "Saving…" : characters ? "Create character" : "Create build"}
                 </button>
               ) : (
                 <span className={styles.signIn}>
@@ -423,7 +454,7 @@ function VersionBand({ plan, update, mode, buildId }: StepProps & { mode: "creat
                 </button>
                 <button
                   type="button"
-                  className="btn btn-primary btn-sm"
+                  className={mode === "edit" ? "btn btn-sm" : "btn btn-primary btn-sm"}
                   onClick={() => {
                     update((p) => convertPlan(target, p).plan);
                     setPending(null);
@@ -1117,8 +1148,13 @@ function CoverField({
       setBusy(false);
     }
   };
+  // The hero's Change the cover (WO-117) lands here: /b/<id>/setup?step=name#cover.
+  const box = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (window.location.hash === "#cover") box.current?.scrollIntoView({ block: "center" });
+  }, []);
   return (
-    <div className={`field ${styles.cover}`}>
+    <div ref={box} id="cover" className={`field ${styles.cover}`}>
       <span className="label">
         Cover image <InfoTip label="About the cover image" text="Shown full width above the build. Click the image to choose the part that stays in view. PNG, JPEG, WebP or GIF, up to 4 MB." />
       </span>

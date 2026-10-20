@@ -4,7 +4,7 @@
  * the draft on the site, the Details checkbox, and another player's token turned away.
  */
 import { expect, test } from "@playwright/test";
-import { call, ip, signIn, tokenFor } from "./helpers";
+import { call, ip, signIn, tokenFor, savedInBand } from "./helpers";
 
 test.describe.configure({ mode: "serial" });
 
@@ -98,8 +98,8 @@ test("the Details checkbox hides the drafted line", async ({ page, context }) =>
   const box = page.getByLabel("Show it");
   await expect(box).toBeChecked();
   await box.uncheck();
-  await page.getByRole("button", { name: "Save changes" }).click();
-  await page.waitForURL(new RegExp(`/b/${buildId}/edit`));
+  // Every change saves as it is made (WO-117).
+  await savedInBand(page);
   await page.goto(`/b/${buildId}`);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("E2E Drafted Nord");
   await expect(page.getByText("AI assisted")).toHaveCount(0);

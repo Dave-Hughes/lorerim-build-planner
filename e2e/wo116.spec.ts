@@ -227,7 +227,6 @@ for (const [what, path, tabNames, owner] of [
     await expect(pinned.getByText(/^Story$/)).toHaveCount(0);
     await expect(pinned.getByRole("button", { name: /^Who can see it/ })).toBeVisible();
     await expect(pinned.getByRole("button", { name: "Copy link" })).toBeVisible();
-    await expect(pinned.getByRole("link", { name: "Set up", exact: true })).toBeVisible();
-    await expect(pinned.getByRole("link", { name: "Edit", exact: true })).toHaveAttribute("href", new RegExp("/b/[a-z0-9]{10}/edit$"));
+    await expect(pinned.getByRole("link", { name: "Edit", exact: true })).toHaveAttribute("href", new RegExp("/b/[a-z0-9]{10}/setup\\?step=name$"));
   });
 }

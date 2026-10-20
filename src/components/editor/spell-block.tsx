@@ -326,7 +326,7 @@ function AddSpell({ start, onAdd, onCancel }: { start: { list: Spell[]; more: bo
       </span>
       <input className="input" aria-label="Where (optional)" placeholder="Where (optional)" maxLength={80} value={where} onChange={(e) => setWhere(e.target.value)} />
       <span className={styles.addActions}>
-        <button type="submit" className="btn btn-sm btn-primary" disabled={!picked}>
+        <button type="submit" className="btn btn-sm" disabled={!picked}>
           Add
         </button>
         <button type="button" className="btn btn-sm btn-quiet" onClick={onCancel}>

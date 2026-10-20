@@ -1,21 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useId, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useId, useRef, useState } from "react";
 import { useDismiss } from "@/lib/use-dismiss";
 import { setBuildVisibility } from "@/lib/builds/actions";
 import type { BuildVisibility } from "@/lib/builds/validate";
-import { useFeatures } from "@/components/features";
+import { AiAssisted } from "@/components/ui/ai-assisted";
+import { InfoTip } from "@/components/ui/info-tip";
+import { GameIcon } from "@/components/ui/skill-icon";
+import type { EditFrameData } from "@/lib/edit/frame";
+import { saveDetails } from "@/lib/playthroughs/actions";
 import styles from "./edit-bar.module.css";
+import f from "./edit-frame.module.css";
 
-export type EditPage = "levels" | "setup" | "guide" | "story";
-
-const PAGES: { key: EditPage; label: string; path: string }[] = [
-  { key: "levels", label: "Levels", path: "edit" },
-  { key: "setup", label: "Set up", path: "setup" },
-  { key: "guide", label: "Guide", path: "guide" },
-  { key: "story", label: "Story", path: "story/edit" },
-];
+export type EditPage = "setup" | "levels" | "play" | "guide" | "story";
 
 const VIS_ORDER: BuildVisibility[] = ["public", "unlisted", "private"];
 
@@ -136,49 +134,12 @@ export function MenuButton({
 }
 
 /**
- * The owner's controls (WO-116a): who can see it, Copy link, and View build (or, on the build's own
- * page, Set up and Edit). The edit bar's right side on the editing pages, and the build page's hero
- * and pinned bar. Phones: who can see it, and a ⋯ menu with the rest.
+ * The owner's controls on the build's own page (WO-116a): who can see it, Copy link, and Edit, which
+ * opens Set up at Details (WO-117). Phones: who can see it, and a ⋯ menu with the rest.
  */
-export function OwnerControls({
-  buildId,
-  current,
-  status,
-  visibility: initial,
-  onVisibility,
-  todo,
-  pages = [],
-}: {
-  buildId: string;
-  /** The editing page you're on; null on the build's own page. */
-  current: EditPage | null;
-  status?: React.ReactNode;
-  visibility: BuildVisibility;
-  onVisibility?: (v: BuildVisibility) => void;
-  todo?: React.ReactNode;
-  /** The editing pages, for the ⋯ menu on phones. */
-  pages?: typeof PAGES;
-}) {
-  const [visibility, setVisibility] = useState(initial);
-  const [saving, setSaving] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+export function OwnerControls({ buildId, visibility, onVisibility }: { buildId: string; current?: null; visibility: BuildVisibility; onVisibility?: (v: BuildVisibility) => void }) {
   const [copied, setCopied] = useState(false);
-
-  const choose = async (v: BuildVisibility, close: (refocus?: boolean) => void) => {
-    close(true);
-    if (v === visibility) return;
-    const before = visibility;
-    setVisibility(v);
-    setSaving(true);
-    setError(null);
-    const r = await setBuildVisibility(buildId, v);
-    setSaving(false);
-    if (r.ok) onVisibility?.(v);
-    else {
-      setVisibility(before);
-      setError(r.error);
-    }
-  };
+  const [error, setError] = useState<string | null>(null);
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(`${window.location.origin}/b/${buildId}`);
@@ -188,27 +149,232 @@ export function OwnerControls({
       setError("Couldn't copy. The link is the build page's address.");
     }
   };
-  const view = current ? (
-    <Link href={`/b/${buildId}`} className="btn btn-sm btn-primary">
-      View build
-    </Link>
-  ) : (
-    <>
-      <Link href={`/b/${buildId}/setup`} className="btn btn-sm">
-        Set up
-      </Link>
-      <Link href={`/b/${buildId}/edit`} className="btn btn-sm btn-primary">
-        Edit
-      </Link>
-    </>
-  );
-  const menuPages = current ? pages : pages.filter((p) => p.key !== "setup");
+  const edit = `/b/${buildId}/setup?step=name`;
   return (
     <span className={styles.right}>
-      {todo && <span className={styles.todo}>{todo}</span>}
-      {(status || saving || error) && (
+      {error && (
         <span className={styles.status} role="status">
-          {error ? <span className="bad">{error}</span> : saving ? "Saving…" : status}
+          <span className="bad">{error}</span>
+        </span>
+      )}
+      <VisibilityMenu initial={visibility} choose={(v) => setBuildVisibility(buildId, v)} onChange={onVisibility} />
+      <button type="button" className={`btn btn-sm ${styles.wide}`} onClick={copy}>
+        {copied ? "Copied" : "Copy link"}
+      </button>
+      <Link href={edit} className={`btn btn-sm btn-primary ${styles.wide}`}>
+        Edit
+      </Link>
+      <MenuButton className={styles.narrow} buttonClassName={`btn btn-sm btn-icon ${styles.moreButton}`} buttonLabel="More" menuLabel="More" button="⋯">
+        {(close) => (
+          <>
+            <button type="button" role="menuitem" tabIndex={-1} className={styles.menuItem} onClick={copy}>
+              {copied ? "Copied" : "Copy link"}
+            </button>
+            <Link href={edit} role="menuitem" tabIndex={-1} className={styles.menuItem} onClick={() => close()}>
+              Edit
+            </Link>
+          </>
+        )}
+      </MenuButton>
+    </span>
+  );
+}
+
+/** How the edit page's saving stands (WO-117): the band says it, and Done asks before leaving a failed one. */
+export interface SaveState {
+  state: "idle" | "saving" | "saved" | "failed";
+  error?: string | null;
+  retry?: () => void;
+}
+
+const FrameContext = createContext<EditFrameData | null>(null);
+
+/** The edit frame's data (WO-117), from the route's server component: the hero and the tabs. */
+export function EditFrameProvider({ data, children }: { data: EditFrameData; children: React.ReactNode }) {
+  return <FrameContext.Provider value={data}>{children}</FrameContext.Provider>;
+}
+
+type Tab = { key: EditPage; label: string; sub: string; href: string; icon: string };
+
+function tabsOf(f: EditFrameData | null, buildId: string): Tab[] {
+  const b = f?.build;
+  const r = f?.run;
+  const out: Tab[] = [];
+  if (b || !f) {
+    const id = b?.id ?? buildId;
+    out.push({ key: "setup", label: "Set up", sub: b?.setup ?? "", href: `/b/${id}/setup?step=name`, icon: "tab-set-up" });
+    out.push({ key: "levels", label: "Levels", sub: b ? `Levels 1 to ${b.levels}` : "", href: `/b/${id}/edit`, icon: "tab-levels" });
+  }
+  if (r) out.push({ key: "play", label: "Play", sub: `${r.acts} act${r.acts === 1 ? "" : "s"}, ${r.objectives} objective${r.objectives === 1 ? "" : "s"}`, href: `/p/${r.id}/edit/play`, icon: "tab-play" });
+  if (b || !f) out.push({ key: "guide", label: "Guide", sub: b?.guideMinutes ? `${b.guideMinutes} min read` : "Not written yet", href: `/b/${b?.id ?? buildId}/guide`, icon: "tab-guide" });
+  if (r)
+    out.push({ key: "story", label: "Story", sub: `${r.chapters} chapter${r.chapters === 1 ? "" : "s"}, ${r.pieces} ${r.pieces === 1 ? "entry or beat" : "entries and beats"}`, href: `/p/${r.id}/edit/story`, icon: "tab-story" });
+  else if (f?.storyOn && b) out.push({ key: "story", label: "Story", sub: b.hasStory ? "Written" : "Not written yet", href: `/b/${b.id}/edit/story`, icon: "tab-story" });
+  return out;
+}
+
+/** "Saving…", "✓ Saved" with its "i", or what failed, in health red. */
+function SaveLine({ save }: { save: SaveState }) {
+  if (save.state === "saving")
+    return (
+      <span className={f.save} role="status">
+        Saving…
+      </span>
+    );
+  if (save.state === "failed")
+    return (
+      <span className={`${f.save} ${f.saveBad}`} role="alert">
+        {save.error || "That didn't save."}
+        {save.retry && (
+          <button type="button" className={f.linkButton} onClick={save.retry}>
+            Try again
+          </button>
+        )}
+      </span>
+    );
+  return (
+    <span className={f.save} role="status">
+      <span className={f.saveOk}>✓ Saved</span>
+      <InfoTip label="About saving" text="Every change saves as you make it. Done takes you back to the page as others see it." />
+    </span>
+  );
+}
+
+/**
+ * The top of every edit page (WO-117): the edit band ("Editing" and the name; the save line, who can
+ * see it, Copy link, and Done, the one ember button), the page's own hero at 300px with Change the
+ * cover, and one tab row: a build alone Set up, Levels, Guide (and Story); a character Set up, Levels,
+ * Play, Guide, Story. A run's tabs (Play, Story) set the run's visibility; the build's, the build's.
+ */
+export function EditBar({
+  buildId,
+  name,
+  current,
+  visibility,
+  onVisibility,
+  todo,
+  save = { state: "idle" },
+}: {
+  buildId: string;
+  name: string;
+  /** The edit tab you're on. */
+  current: EditPage;
+  visibility: BuildVisibility;
+  /** Told when the visibility changes here (Set up keeps its own copy). */
+  onVisibility?: (v: BuildVisibility) => void;
+  /** The author's to-do across the build (WO-76: spells to choose), before the save line. */
+  todo?: React.ReactNode;
+  save?: SaveState;
+}) {
+  const frame = useContext(FrameContext);
+  const tabs = tabsOf(frame, buildId);
+  const run = frame?.run;
+  const onRun = !!run && (current === "play" || current === "story" || !frame?.build);
+  const done = run ? `/p/${run.id}` : `/b/${buildId}?tab=levels`;
+  const cover = frame?.build?.coverImageUrl;
+  const focus = frame?.build?.coverFocus;
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(`${window.location.origin}${run ? `/p/${run.id}` : `/b/${buildId}`}`);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // The address is the page's; nothing else to do.
+    }
+  };
+  return (
+    <>
+      <div className={f.band} role="region" aria-label="Edit bar" data-edit-bar="">
+        <div className={`page ${f.bandIn}`}>
+          <span className={f.editing}>
+            <span className={f.editingWord}>Editing</span>
+            <span className={f.editingName} title={frame?.name || name}>
+              {frame?.name || name}
+            </span>
+          </span>
+          <span className={f.bandRight}>
+            {todo && <span className={styles.todo}>{todo}</span>}
+            <SaveLine save={save} />
+            <VisibilityMenu
+              key={onRun ? `r${run!.visibility}` : `b${visibility}`}
+              initial={onRun ? run!.visibility : visibility}
+              choose={(v) => (onRun ? saveDetails(run!.id, { visibility: v }) : setBuildVisibility(buildId, v))}
+              onChange={onRun ? undefined : onVisibility}
+            />
+            <button type="button" className="btn btn-sm" onClick={copy}>
+              {copied ? "Copied" : "Copy link"}
+            </button>
+            <Link
+              href={done}
+              className="btn btn-sm btn-primary"
+              onClick={(e) => {
+                if (save.state === "failed" && !window.confirm("A change didn't save. Leave anyway?")) e.preventDefault();
+              }}
+            >
+              Done
+            </Link>
+          </span>
+        </div>
+      </div>
+      {frame && (
+        <div className={f.hero}>
+          {cover && <div className={f.heroImage} style={{ backgroundImage: `url("${cover}")`, backgroundPosition: focus ? `${focus.x}% ${focus.y}%` : undefined }} aria-hidden="true" />}
+          <span className={f.heroFade} aria-hidden="true" />
+          <div className={`page ${f.heroIn}`}>
+            <p className={f.heroName}>{frame.name}</p>
+            <span className={f.heroBy}>
+              <span>Made by {frame.author}</span>
+              {frame.traits && <span className="muted">{frame.traits}</span>}
+              {frame.aiAssisted && <AiAssisted author={frame.author} />}
+            </span>
+            {frame.build && (
+              <Link href={`/b/${frame.build.id}/setup?step=name#cover`} className={`btn btn-sm ${f.heroCover}`}>
+                {cover ? "Change the cover" : "Add a cover"}
+              </Link>
+            )}
+          </div>
+        </div>
+      )}
+      <div className={`page ${f.tabsWrap}`}>
+        <nav className={f.tabs} aria-label="Edit tabs">
+          {tabs.map((t) => (
+            <Link key={t.key} href={t.href} className={f.tab} aria-current={t.key === current ? "page" : undefined}>
+              <GameIcon file={t.icon} size={32} className={f.tabIcon} />
+              <span className={f.tabText}>
+                <span className={f.tabName}>{t.label}</span>
+                {t.sub && <span className={f.tabSub}>{t.sub}</span>}
+              </span>
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </>
+  );
+}
+
+/** Who can see it: the menu button, saving through `choose`. */
+function VisibilityMenu({ initial, choose: send, onChange }: { initial: BuildVisibility; choose: (v: BuildVisibility) => Promise<{ ok: boolean; error?: string }>; onChange?: (v: BuildVisibility) => void }) {
+  const [visibility, setVisibility] = useState(initial);
+  const [error, setError] = useState<string | null>(null);
+  const choose = async (v: BuildVisibility, close: (refocus?: boolean) => void) => {
+    close(true);
+    if (v === visibility) return;
+    const before = visibility;
+    setVisibility(v);
+    setError(null);
+    const r = await send(v);
+    if (r.ok) onChange?.(v);
+    else {
+      setVisibility(before);
+      setError(r.error ?? "That didn't save.");
+    }
+  };
+  return (
+    <>
+      {error && (
+        <span className={`${f.save} ${f.saveBad}`} role="alert">
+          {error}
         </span>
       )}
       <MenuButton
@@ -238,79 +404,6 @@ export function OwnerControls({
           ))
         }
       </MenuButton>
-      <button type="button" className={`btn btn-sm ${styles.wide}`} onClick={copy}>
-        {copied ? "Copied" : "Copy link"}
-      </button>
-      <span className={`${styles.wide} ${styles.views}`}>{view}</span>
-      <MenuButton className={styles.narrow} buttonClassName={`btn btn-sm btn-icon ${styles.moreButton}`} buttonLabel="More" menuLabel="More" button="⋯">
-        {(close) => (
-          <>
-            {menuPages.map((p) => (
-              <Link key={p.key} href={`/b/${buildId}/${p.path}`} role="menuitem" tabIndex={-1} className={styles.menuItem} aria-current={current === p.key ? "page" : undefined} onClick={() => close()}>
-                {p.label}
-              </Link>
-            ))}
-            {!current && (
-              <Link href={`/b/${buildId}/setup`} role="menuitem" tabIndex={-1} className={styles.menuItem} onClick={() => close()}>
-                Set up
-              </Link>
-            )}
-            <button type="button" role="menuitem" tabIndex={-1} className={styles.menuItem} onClick={copy}>
-              {copied ? "Copied" : "Copy link"}
-            </button>
-            <Link href={current ? `/b/${buildId}` : `/b/${buildId}/edit`} role="menuitem" tabIndex={-1} className={styles.menuItem} onClick={() => close()}>
-              {current ? "View build" : "Edit"}
-            </Link>
-          </>
-        )}
-      </MenuButton>
-    </span>
-  );
-}
-
-/**
- * The owner's bar on every editing page (Levels, Set up, Guide, Story): the build's name, the
- * pages, the save status, and the owner's controls. Sticky under the site header. The build's own
- * page has none since WO-116a: its one pinned bar holds the owner's controls.
- */
-export function EditBar({
-  buildId,
-  name,
-  current,
-  status,
-  visibility,
-  onVisibility,
-  todo,
-}: {
-  buildId: string;
-  name: string;
-  /** The editing page you're on. */
-  current: EditPage;
-  status?: React.ReactNode;
-  visibility: BuildVisibility;
-  /** Told when the visibility changes here (Set up keeps its own copy). */
-  onVisibility?: (v: BuildVisibility) => void;
-  /** The author's to-do across the build (WO-76: spells to choose), before the save status. */
-  todo?: React.ReactNode;
-}) {
-  // The Story page is held back for launch (WO-81).
-  const { story } = useFeatures();
-  const pages = PAGES.filter((p) => p.key !== "story" || story);
-  return (
-    <div className={styles.bar} role="region" aria-label="Edit bar" data-edit-bar="">
-      <div className={`page ${styles.inner}`}>
-        <span className={styles.name} title={name}>
-          {name}
-        </span>
-        <nav aria-label="Editing pages" className={styles.pages}>
-          {pages.map((p) => (
-            <Link key={p.key} href={`/b/${buildId}/${p.path}`} className={styles.page} aria-current={current === p.key ? "page" : undefined}>
-              {p.label}
-            </Link>
-          ))}
-        </nav>
-        <OwnerControls buildId={buildId} current={current} status={status} visibility={visibility} onVisibility={onVisibility} todo={todo} pages={pages} />
-      </div>
-    </div>
+    </>
   );
 }

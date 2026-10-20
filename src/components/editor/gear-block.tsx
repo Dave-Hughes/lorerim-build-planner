@@ -385,7 +385,7 @@ function GearForm({
           ))}
       </span>
       <span className={styles.gearFormActions}>
-        <button type="submit" className="btn btn-sm btn-primary" disabled={!name.trim() || (made && isStaff && !spell)}>
+        <button type="submit" className="btn btn-sm" disabled={!name.trim() || (made && isStaff && !spell)}>
           {submit}
         </button>
         <button type="button" className="btn btn-sm btn-quiet" onClick={onCancel}>

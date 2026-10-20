@@ -39,7 +39,7 @@ test("tier perks give spell picks; a spell learned elsewhere, starred, shows on 
   await conjuration.getByRole("button", { name: "Choose Bound Sword" }).click();
   await expect(conjuration).toContainText("2 of 2 chosen");
 
-  await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByText("✓ Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
 
   // Level 4: Eldritch Blast, learned from Wuunferth, starred.
   await page.goto(`/b/${SPELLS_BUILD_ID}/edit?level=4`);
@@ -51,7 +51,7 @@ test("tier perks give spell picks; a spell learned elsewhere, starred, shows on 
   await spells.getByRole("button", { name: "Add", exact: true }).click();
   await spells.getByRole("button", { name: "Main spell: Eldritch Blast" }).click();
   await expect(spells.getByRole("button", { name: "Main spell: Eldritch Blast" })).toHaveAttribute("aria-pressed", "true");
-  await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByText("✓ Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
 
   // The shared page.
   await page.goto(`/b/${SPELLS_BUILD_ID}?level=1`);

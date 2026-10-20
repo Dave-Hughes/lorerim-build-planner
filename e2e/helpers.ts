@@ -49,3 +49,16 @@ export async function call(base: string, from: string, token: string, name: stri
   return { text: r.content[0].text, isError: !!r.isError, json: () => JSON.parse(r.content[0].text) };
 }
 
+
+/* ---------- Edit mode (WO-117) ---------- */
+
+/**
+ * Every change saves as it's made: the band says Saving the moment something changes, then ✓ Saved
+ * once it's on the server, so ✓ Saved after a change means that change is saved.
+ */
+export async function savedInBand(page: Page) {
+  await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("status")).toHaveText(/✓ Saved/, { timeout: 15_000 });
+}
+
+/** The edit tabs: Set up, Levels, Play, Guide, Story. */
+export const editTab = (page: Page, name: string) => page.getByRole("navigation", { name: "Edit tabs" }).getByRole("link", { name: new RegExp(`^${name}`) });

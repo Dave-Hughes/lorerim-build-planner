@@ -69,7 +69,7 @@ export function runStops(p: { id: string; taleLine: string | null; view: Playthr
       waiting: c.open ? null : waitingText(v, c),
       chapterId: c.id,
       game: c.inGame ? { text: c.inGame.text, href: rowHref(c.inGame.id) } : null,
-      edit: p.isOwner ? `/p/${p.id}/edit/tale/${c.id}` : null,
+      edit: p.isOwner ? `/p/${p.id}/edit/story/${c.id}` : null,
     };
   });
 }
@@ -92,7 +92,7 @@ export function storyStop(b: { id: string; title: string; line: string; doc: Gui
     waiting: null,
     chapterId: null,
     game: null,
-    edit: b.isOwner ? `/b/${b.id}/story/edit` : null,
+    edit: b.isOwner ? `/b/${b.id}/edit/story` : null,
   };
 }
 

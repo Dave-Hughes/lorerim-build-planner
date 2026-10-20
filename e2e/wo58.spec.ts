@@ -39,7 +39,7 @@ test("a build through all 7 steps: Mephala on the Deity step saves, and the rail
   await page.getByLabel("Build name").fill("Seven Steps");
 
   for (const s of ["Race", "Birthsign", "Skills", "Traits", "Deity", "Mode and start"]) await expect(rail.getByRole("button", { name: `${s}: done` })).toBeVisible();
-  await page.getByRole("button", { name: "Create build" }).click();
+  await page.getByRole("button", { name: "Create character" }).click();
   await page.waitForURL(/\/b\/([23456789abcdefghjkmnpqrstuvwxyz]{10})\/edit/);
   const id = page.url().match(/\/b\/(\w{10})\//)![1];
   await page.goto(`/b/${id}/setup?step=deity`);

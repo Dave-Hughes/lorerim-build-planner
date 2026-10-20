@@ -68,7 +68,8 @@ test("an intro written on the Guide page leads the shared page", async ({ page, 
   await expect(page.getByRole("region", { name: "Intro" }).getByText(/\d+ \/ 1,200/)).toHaveText("44 / 1,200");
   // Only Bold, Italic and Link here.
   await expect(page.getByRole("region", { name: "Intro" }).getByRole("toolbar", { name: "Format" }).getByRole("button")).toHaveCount(3);
-  await expect(page.getByRole("region", { name: "Intro" }).getByRole("status")).toHaveText("Saved", { timeout: 15_000 });
+  // The band says how the intro saved (WO-117).
+  await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("status")).toHaveText(/✓ Saved/, { timeout: 15_000 });
   await page.goto(`/b/${SCRATCH_BUILD_ID}`);
   const shown = page.getByRole("region", { name: "Intro" });
   await expect(shown).toContainText("A shield wall that never moves. Block first.");

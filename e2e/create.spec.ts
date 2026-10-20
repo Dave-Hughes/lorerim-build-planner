@@ -74,7 +74,7 @@ test.describe("creating a build", () => {
     // Signing in (as Discord would) and coming back finishes the build.
     await signIn(context);
     await page.goto("/new?step=name");
-    await page.getByRole("button", { name: "Create build" }).click();
+    await page.getByRole("button", { name: "Create character" }).click();
     await page.waitForURL(/\/b\/[23456789abcdefghjkmnpqrstuvwxyz]{10}\/edit/);
     await expect(page.getByRole("region", { name: "Edit bar" }).getByText("Playwright Shield-Wall")).toBeVisible();
     await expect(page.getByText("Level", { exact: true })).toBeVisible();

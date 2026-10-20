@@ -22,8 +22,8 @@ test("a made ring with Fortify Magicka (Rank I) picked from the game's list: the
   await options.getByRole("option", { name: /^Fortify Magicka \(Rank I\)/ }).click();
   await expect(line).toHaveValue("Fortify Magicka (Rank I)");
   await form.getByRole("button", { name: "Add", exact: true }).click();
-  await expect(page.getByText("Saved", { exact: true })).toHaveCount(0);
-  await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByText("✓ Saved", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("✓ Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
 
   await page.goto(`/b/${POWERS_BUILD_ID}?level=36`);
   await page.getByRole("region", { name: "Gear at level 36" }).getByRole("button", { name: /^Gold Ring, level/ }).click();

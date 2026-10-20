@@ -24,7 +24,7 @@ test("gear set at one level carries on, and a later change shows from its own le
   await gear.getByRole("textbox", { name: "Note (optional)" }).fill("Bought in Whiterun");
   await gear.getByRole("button", { name: "Save" }).click();
   await expect(gear).toContainText("Steel spear");
-  await expect(page.getByText("Saved", { exact: true })).toBeVisible();
+  await expect(page.getByText("✓ Saved", { exact: true })).toBeVisible();
 
   await page.goto(`/b/${GEAR_BUILD_ID}?level=3`);
   await expect(page.getByRole("region", { name: "Gear at level 3" })).toContainText("Iron sword");

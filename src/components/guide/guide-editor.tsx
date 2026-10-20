@@ -299,7 +299,7 @@ function LinkForm({ editor, onDone }: { editor: Editor; onDone: () => void }) {
           }}
         />
       </label>
-      <button type="button" className="btn btn-sm btn-primary" onMouseDown={(e) => e.preventDefault()} onClick={apply}>
+      <button type="button" className="btn btn-sm" onMouseDown={(e) => e.preventDefault()} onClick={apply}>
         Apply
       </button>
       {editor.isActive("link") && (
@@ -362,7 +362,7 @@ function YoutubePrompt({ editor, rect, onDone }: { editor: Editor; rect: Rect; o
             }}
           />
         </label>
-        <button type="button" className="btn btn-sm btn-primary" onClick={apply}>
+        <button type="button" className="btn btn-sm" onClick={apply}>
           Add
         </button>
         {error && (

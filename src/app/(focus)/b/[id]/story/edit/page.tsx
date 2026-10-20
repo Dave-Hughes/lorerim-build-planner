@@ -1,49 +1,8 @@
-import type { Metadata } from "next";
-import { notFound, redirect } from "next/navigation";
-import { auth } from "@/auth";
-import { GameDataProvider } from "@/components/game-data";
-import { SiteHeader } from "@/components/site-header";
-import { StoryPage } from "@/components/guide/story-page";
-import { clientVersion, isKnownVersion } from "@/lib/rules/server";
-import { getBuild } from "@/lib/builds/queries";
-import { docText, emptyDoc } from "@/lib/guide/doc";
-import { getGuide } from "@/lib/guide/queries";
-import { playthroughsOn, storyOn } from "@/lib/features";
-import { runOfBuild } from "@/lib/playthroughs/queries";
+import { redirect } from "next/navigation";
 
 type Params = Promise<{ id: string }>;
 
-export const metadata: Metadata = { title: "Story" };
-export const dynamic = "force-dynamic";
-
-/** The owner's page for the build's Story (WO-79). */
-export default async function StoryEditPage({ params }: { params: Params }) {
-  // Held back for launch (WO-81).
-  if (!storyOn()) notFound();
-  const [{ id }, session] = await Promise.all([params, auth()]);
-  const userId = session?.user?.id ?? null;
-  const build = await getBuild(id, userId);
-  if (!build) notFound();
-  if (build.isSample || build.ownerId !== userId) redirect(`/b/${id}`);
-  if (!isKnownVersion(build.gameVersion)) redirect(`/b/${id}`);
-  // One tale per character (WO-114): with a run, the tale is the run's, and this editor is off.
-  const run = playthroughsOn() ? await runOfBuild(id, userId) : null;
-  if (run) redirect(`/p/${run.id}/edit?tale=1`);
-  const guide = await getGuide(id, build.plan);
-  return (
-    <>
-      <SiteHeader />
-      <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
-        <StoryPage
-          buildId={id}
-          name={build.name}
-          visibility={build.visibility}
-          plan={build.plan}
-          initial={guide.story?.doc ?? emptyDoc()}
-          title={docText(guide["story:title"]?.doc)}
-          line={docText(guide["story:line"]?.doc)}
-        />
-      </GameDataProvider>
-    </>
-  );
+/** The build's old Story editor address (WO-116) goes to the Story tab in edit mode (WO-117). */
+export default async function OldStoryEditPage({ params }: { params: Params }) {
+  redirect(`/b/${(await params).id}/edit/story`);
 }

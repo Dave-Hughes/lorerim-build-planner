@@ -68,12 +68,12 @@ describe("the reader's stops (WO-116)", () => {
   it("send an entry's In the game back to its row, and the owner's Edit to the Story editor", () => {
     expect(stops[2].game).toEqual({ text: "Warn Haelga, or expose her", href: "/p/e2ekyrya22?act=1#o10" });
     expect(stops[1].game).toBeNull();
-    expect(stops[2].edit).toBe("/p/e2ekyrya22/edit/tale/5");
+    expect(stops[2].edit).toBe("/p/e2ekyrya22/edit/story/5");
     expect(runStops({ id: "e2ekyrya22", taleLine: null, view, cover: null, isOwner: false })[2].edit).toBeNull();
   });
   it("give a build alone's Story one stop at /b/<id>/story", () => {
     const s = storyStop({ id: "e2estry222", title: "The Writ", line: "", doc: withImage, cover: null, isOwner: true });
-    expect(s).toMatchObject({ href: "/b/e2estry222/story", title: "The Writ", line: null, plate: IMG, plateFromText: true, edit: "/b/e2estry222/story/edit", kicker: null });
+    expect(s).toMatchObject({ href: "/b/e2estry222/story", title: "The Writ", line: null, plate: IMG, plateFromText: true, edit: "/b/e2estry222/edit/story", kicker: null });
   });
 });
 

@@ -46,7 +46,7 @@ test.describe("level-up editor", () => {
     await expect(panel.getByRole("button", { name: "Remove" })).toBeVisible();
     await expect(page.getByText("Level 7 follows every rule.")).toBeVisible();
 
-    await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText("✓ Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
 
     // The visitor view shows the saved level.
     await page.goto(`/b/${TEST_BUILD_ID}?level=7`);

@@ -18,7 +18,6 @@ import styles from "./guide-page.module.css";
 export function StoryPage({ buildId, name, visibility, plan, initial, title, line }: { buildId: string; name: string; visibility: BuildVisibility; plan: BuildPlan; initial: GuideDoc; title: string; line: string }) {
   const [save, setSave] = useState<{ status: GuideSaveStatus; error: string | null; retry: () => void }>({ status: "idle", error: null, retry: () => {} });
   const onStatus = useCallback((status: GuideSaveStatus, error: string | null, retry: () => void) => setSave({ status, error, retry }), []);
-  const label = guideSaveLabel(save.status, save.error);
   useEffect(() => saveKeptGuides(buildId), [buildId]);
   const [hasTitle, setHasTitle] = useState(!!title.trim());
   const [hasText, setHasText] = useState(!isEmptyDoc(initial));
@@ -29,21 +28,7 @@ export function StoryPage({ buildId, name, visibility, plan, initial, title, lin
         name={name}
         current="story"
         visibility={visibility}
-        status={
-          label && (
-            <span className={save.status === "failed" ? styles.failed : undefined}>
-              {label}
-              {save.status === "failed" && !save.error?.startsWith("Too long") && (
-                <>
-                  {" "}
-                  <button type="button" className={styles.linkButton} onClick={save.retry}>
-                    Try again
-                  </button>
-                </>
-              )}
-            </span>
-          )
-        }
+        save={{ state: save.status === "failed" ? "failed" : save.status === "saving" ? "saving" : "saved", error: save.error, retry: save.error?.startsWith("Too long") ? undefined : save.retry }}
       />
       <main className={`page ${styles.main}`}>
         <h1 className={`title ${styles.h1}`}>Story</h1>

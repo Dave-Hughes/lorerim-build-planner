@@ -4,6 +4,8 @@ import { auth } from "@/auth";
 import { WizardLoader as Wizard } from "@/components/creation/wizard-loader";
 import { SignInButton, SiteHeader } from "@/components/site-header";
 import { GameDataProvider } from "@/components/game-data";
+import { EditFrameProvider } from "@/components/editor/edit-bar";
+import { editFrameForBuild } from "@/lib/edit/frame";
 import { getBuild } from "@/lib/builds/queries";
 import { getGuide } from "@/lib/guide/queries";
 import { docText, firstParagraph, isEmptyDoc } from "@/lib/guide/doc";
@@ -22,10 +24,10 @@ export default async function SetupPage({ params }: { params: Params }) {
   if (build.isSample || build.ownerId !== userId) redirect(`/b/${id}`);
   if (!isKnownVersion(build.gameVersion)) redirect(`/b/${id}`);
   // The theme preview opens with the build's intro, as the page does (the intro, else the guide's first paragraph).
-  const guide = await getGuide(id, build.plan);
+  const [guide, frame] = await Promise.all([getGuide(id, build.plan), editFrameForBuild(build, userId)]);
   const intro = guide.intro && !isEmptyDoc(guide.intro.doc) ? guide.intro.doc : firstParagraph(guide.overview?.doc);
   return (
-    <>
+    <EditFrameProvider data={frame}>
       <SiteHeader />
       <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
         <Wizard
@@ -47,6 +49,6 @@ export default async function SetupPage({ params }: { params: Params }) {
           signIn={<SignInButton redirectTo={`/b/${id}/setup`} className="btn btn-primary" />}
         />
       </GameDataProvider>
-    </>
+    </EditFrameProvider>
   );
 }

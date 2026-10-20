@@ -4,7 +4,7 @@
  */
 import { readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
-import { signIn } from "./helpers";
+import { signIn, editTab } from "./helpers";
 import { SEVARI_BUILD_ID, STORY_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1440, height: 900 } });
@@ -22,7 +22,9 @@ test("point 2: an author writes a Story with a title, three paragraphs, a quote 
   test.setTimeout(120_000);
   await signIn(context);
   await page.goto(`/b/${STORY_BUILD_ID}/story/edit`);
-  await expect(page.getByRole("link", { name: "Story", exact: true }).first()).toHaveAttribute("aria-current", "page");
+  // The old address is the Story tab in edit mode (WO-117).
+  await expect(page).toHaveURL(new RegExp(`/b/${STORY_BUILD_ID}/edit/story$`));
+  await expect(editTab(page, "Story")).toHaveAttribute("aria-current", "page");
   await page.getByLabel("Title").fill("The Writ");
   await page.getByLabel("Opening line (optional)").fill("Mephala's work is done where no one is watching.");
 
@@ -63,9 +65,9 @@ test("point 2: an author writes a Story with a title, three paragraphs, a quote 
   await expect(page.getByText("Readers open it from the build page, in the reader.")).toBeVisible();
   // Saved: after a reload the five images keep their captions.
   const saved = page.getByRole("region", { name: "Edit bar" }).getByRole("status");
-  await expect(saved).toHaveText("Saved", { timeout: 15_000 });
+  await expect(saved).toHaveText(/✓ Saved/, { timeout: 15_000 });
   await page.waitForTimeout(1500);
-  await expect(saved).toHaveText("Saved", { timeout: 15_000 });
+  await expect(saved).toHaveText(/✓ Saved/, { timeout: 15_000 });
   await page.reload();
   await expect(page.getByRole("textbox", { name: "Caption" })).toHaveCount(5);
   for (let i = 0; i < 5; i++) await expect(page.getByRole("textbox", { name: "Caption" }).nth(i)).toHaveValue(CAPTIONS[i]);

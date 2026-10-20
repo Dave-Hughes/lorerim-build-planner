@@ -1263,6 +1263,19 @@ def ai_assisted():
     return i.outline()
 
 
+def tab_setup():
+    # Set up (WO-117): a Nord's horned helmet, the character as they're made.
+    i = Icon()
+    i.rect(4, 4, 11, 11, "w"); i.rect(9, 4, 11, 11, "g")      # the steel bowl, its right in shade
+    i.rect(5, 3, 10, 3, "w"); i.rect(4, 4, 6, 6, "W")         # its crown, lit top left
+    i.rect(3, 9, 12, 10, "b"); i.rect(9, 9, 12, 10, "B")      # the brass band
+    i.rect(7, 11, 8, 13, "g"); i.px(7, 11, "w")               # the nose guard
+    i.rect(4, 11, 5, 13, "G"); i.rect(10, 11, 11, 13, "G")    # the cheek guards
+    i.line(3, 7, 1, 3, "Y"); i.px(1, 2, "Y"); i.px(2, 4, "b")   # the left horn
+    i.line(12, 7, 14, 3, "b"); i.px(14, 2, "b"); i.px(13, 4, "B")  # the right horn
+    return i.outline()
+
+
 def tab_play():
     # A quest scroll (WO-116): parchment between two wooden rods, lines of writing, a red wax seal.
     i = Icon()
@@ -2830,7 +2843,7 @@ CHAPTERS = {
 }
 NEEDS = {"Hunger": need_hunger, "Thirst": need_thirst, "Fatigue": need_fatigue, "Cold": need_cold}
 
-TABS = {"Levels": tab_levels, "Guide": tab_guide, "Play": tab_play}
+TABS = {"Levels": tab_levels, "Guide": tab_guide, "Play": tab_play, "Set up": tab_setup}
 GUIDE = {"Tapps": tapps, "Tapps point": tapps_point, **{k: (lambda r=r: Sprite(r)) for k, r in TAPPS_FRAMES.items()}}
 from weapons import WEAPONS as _WEAPON_DRAWS  # noqa: E402  (weapon types and ammunition, after WO-92)
 

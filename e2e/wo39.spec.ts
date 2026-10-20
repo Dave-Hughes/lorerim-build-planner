@@ -1,5 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
-import { signIn } from "./helpers";
+import { signIn, savedInBand } from "./helpers";
 import { IRIEL_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1440, height: 900 } });
@@ -10,8 +10,8 @@ async function setVideo(page: Page, link: string) {
   await page.goto(`/b/${IRIEL_BUILD_ID}/setup?step=name`);
   const field = page.getByLabel("Video guide (optional)");
   await field.fill(link);
-  await page.getByRole("button", { name: "Save changes" }).click();
-  await page.waitForURL(new RegExp(`/b/${IRIEL_BUILD_ID}/edit`));
+  // Every change saves as it is made (WO-117).
+  await savedInBand(page);
 }
 
 test("a video guide: the hero button opens the Guide tab with the player, and nothing loads from YouTube before", async ({ page, context }) => {

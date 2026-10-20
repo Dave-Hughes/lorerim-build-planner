@@ -1,0 +1,51 @@
+import type { Metadata } from "next";
+import { notFound, redirect } from "next/navigation";
+import { auth } from "@/auth";
+import { GameDataProvider } from "@/components/game-data";
+import { SiteHeader } from "@/components/site-header";
+import { StoryPage } from "@/components/guide/story-page";
+import { EditFrameProvider } from "@/components/editor/edit-bar";
+import { editFrameForBuild } from "@/lib/edit/frame";
+import { clientVersion, isKnownVersion } from "@/lib/rules/server";
+import { getBuild } from "@/lib/builds/queries";
+import { docText, emptyDoc } from "@/lib/guide/doc";
+import { getGuide } from "@/lib/guide/queries";
+import { playthroughsOn, storyOn } from "@/lib/features";
+import { runOfBuild } from "@/lib/playthroughs/queries";
+
+type Params = Promise<{ id: string }>;
+
+export const metadata: Metadata = { title: "Story" };
+export const dynamic = "force-dynamic";
+
+/** The owner's page for the build's Story (WO-79): the Story tab in edit mode (WO-117). */
+export default async function StoryEditPage({ params }: { params: Params }) {
+  // Held back for launch (WO-81).
+  if (!storyOn()) notFound();
+  const [{ id }, session] = await Promise.all([params, auth()]);
+  const userId = session?.user?.id ?? null;
+  const build = await getBuild(id, userId);
+  if (!build) notFound();
+  if (build.isSample || build.ownerId !== userId) redirect(`/b/${id}`);
+  if (!isKnownVersion(build.gameVersion)) redirect(`/b/${id}`);
+  // One tale per character (WO-114): with a run, the tale is the run's, and this editor is off.
+  const run = playthroughsOn() ? await runOfBuild(id, userId) : null;
+  if (run) redirect(`/p/${run.id}/edit/story`);
+  const [guide, frame] = await Promise.all([getGuide(id, build.plan), editFrameForBuild(build, userId)]);
+  return (
+    <EditFrameProvider data={frame}>
+      <SiteHeader />
+      <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
+        <StoryPage
+          buildId={id}
+          name={build.name}
+          visibility={build.visibility}
+          plan={build.plan}
+          initial={guide.story?.doc ?? emptyDoc()}
+          title={docText(guide["story:title"]?.doc)}
+          line={docText(guide["story:line"]?.doc)}
+        />
+      </GameDataProvider>
+    </EditFrameProvider>
+  );
+}

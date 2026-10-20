@@ -135,7 +135,7 @@ function PerkPanelFor({ plan, states, level, selectedId, onTake, onRemove, onGoT
             {listWithLevels(asking.map((x) => `${perkName(d, x.id)} (level ${x.level})`))} {asking.length === 1 ? "needs" : "need"} this.
           </p>
           <div ref={actions} className={styles.panelActions}>
-            <button type="button" className="btn btn-primary" onClick={() => act(() => (setAsking(null), onRemove(p.id, asking)))}>
+            <button type="button" className="btn" onClick={() => act(() => (setAsking(null), onRemove(p.id, asking)))}>
               Remove {COUNT[asking.length + 1] ?? `all ${asking.length + 1}`}
             </button>
             <button type="button" className="btn" onClick={() => act(() => setAsking(null))}>
@@ -146,7 +146,7 @@ function PerkPanelFor({ plan, states, level, selectedId, onTake, onRemove, onGoT
       ) : (
         <div ref={actions} className={styles.panelActions}>
           {(st.state === "open" || canChain) && (
-            <button type="button" className="btn btn-primary" disabled={!canChain && !!st.noPoint} onClick={() => act(() => onTake(p.id))}>
+            <button type="button" className="btn" disabled={!canChain && !!st.noPoint} onClick={() => act(() => onTake(p.id))}>
               Confirm
             </button>
           )}

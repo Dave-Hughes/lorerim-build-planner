@@ -3,7 +3,7 @@
  * FEATURE_SITE_GUIDE off). With both on, the Story and guide tests (wo79, wo66 to wo70) run as before.
  */
 import { expect, test } from "@playwright/test";
-import { signIn } from "./helpers";
+import { signIn, editTab } from "./helpers";
 import { AZREM_BUILD_ID, HEALER_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1440, height: 900 } });
@@ -21,9 +21,8 @@ test("point 2: Story off: no way into the reader, no Story page, edit-bar link o
 
   for (const path of [`/b/${HEALER_BUILD_ID}/story`, `/b/${HEALER_BUILD_ID}/story/edit`]) expect((await page.goto(path))?.status(), path).toBe(404);
   await page.goto(`/b/${HEALER_BUILD_ID}/edit`);
-  const bar = page.getByRole("region", { name: "Edit bar" });
-  await expect(bar.getByRole("link", { name: "Guide", exact: true })).toBeVisible();
-  await expect(bar.getByRole("link", { name: "Story", exact: true })).toHaveCount(0);
+  await expect(editTab(page, "Guide")).toBeVisible();
+  await expect(editTab(page, "Story")).toHaveCount(0);
   // The author's builds: the healer's card (and every other) has no Story tag.
   await page.goto("/me");
   await expect(page.locator("article").first()).toBeVisible();

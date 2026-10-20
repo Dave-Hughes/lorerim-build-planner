@@ -16,7 +16,7 @@ test("the editor's Destiny control counts the points left at level 5, and taking
   await page.getByRole("complementary", { name: "Perk details" }).getByRole("button", { name: "Confirm" }).click();
   // No points left: the row says nothing (WO-62).
   await expect(destiny).not.toContainText("left");
-  await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByText("✓ Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
 });
 
 test("Azrem's level 5 card has its own Destiny row, and the page a Destiny section", async ({ page }) => {

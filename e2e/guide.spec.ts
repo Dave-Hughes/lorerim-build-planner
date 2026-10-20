@@ -1,11 +1,11 @@
 import { expect, test, type Page } from "@playwright/test";
 import { head } from "@vercel/blob";
-import { signIn } from "./helpers";
+import { signIn, editTab } from "./helpers";
 import { TEST_BUILD_ID } from "./seed";
 
 async function openGuide(page: Page) {
   await page.goto(`/b/${TEST_BUILD_ID}/edit`);
-  await page.getByRole("region", { name: "Edit bar" }).getByRole("link", { name: "Guide" }).click();
+  await editTab(page, "Guide").click();
   await page.waitForURL(`**/b/${TEST_BUILD_ID}/guide`);
   const editor = page.getByRole("textbox", { name: "Guide" });
   await expect(editor).toBeVisible();
@@ -34,7 +34,7 @@ test.describe("the written guide", () => {
     await expect(page.getByRole("listbox", { name: "Blocks" }).getByRole("option")).toHaveText(["Tip"]);
     await page.keyboard.press("Enter");
     await page.keyboard.type("Keep the shield up.");
-    await expect(page.getByRole("status")).toHaveText("Saved");
+    await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("status")).toHaveText(/✓ Saved/);
 
     await page.reload();
     await expect(editor.getByRole("heading", { level: 2, name: "Where to go" })).toBeVisible();
@@ -72,7 +72,7 @@ test.describe("the written guide", () => {
     await expect(editor.locator('a[href^="javascript"]')).toHaveCount(0);
     await expect(editor.locator("[style], font, table, span[style]")).toHaveCount(0);
     await expect(editor).toContainText("Cell text");
-    await expect(page.getByRole("status")).toHaveText("Saved");
+    await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("status")).toHaveText(/✓ Saved/);
   });
 
   test("a javascript: link is refused", async ({ page, context }) => {
@@ -130,7 +130,7 @@ test.describe("the written guide", () => {
     await expect(img).toHaveCount(1, { timeout: 20_000 });
     await page.getByRole("textbox", { name: "Alt text" }).fill("A wooden mill by a river");
     await page.getByRole("textbox", { name: "Caption" }).fill("The mill at Riverwood");
-    await expect(page.getByRole("status")).toHaveText("Saved");
+    await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("status")).toHaveText(/✓ Saved/);
     const url = (await img.getAttribute("src"))!;
 
     await page.goto(`/b/${TEST_BUILD_ID}?tab=guide`);
@@ -142,7 +142,7 @@ test.describe("the written guide", () => {
     // Taken out of the guide: deleted from the store on the next save.
     await openGuide(page);
     await page.getByRole("textbox", { name: "Guide" }).getByRole("button", { name: "Remove" }).click();
-    await expect(page.getByRole("status")).toHaveText("Saved");
+    await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("status")).toHaveText(/✓ Saved/);
     await expect
       .poll(async () => head(url).then(() => "there", () => "gone"), { timeout: 15_000 })
       .toBe("gone");
@@ -185,7 +185,7 @@ test.describe("the written guide", () => {
     await page.keyboard.press("Enter");
     await expect(editor.getByRole("button", { name: "Powerful Bashes" })).toBeVisible();
     await expect(editor.getByRole("button", { name: "Bulwark" })).toBeVisible();
-    await expect(page.getByRole("status")).toHaveText("Saved");
+    await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("status")).toHaveText(/✓ Saved/);
 
     await page.goto(`/b/${TEST_BUILD_ID}?tab=guide`);
     const guide = page.getByRole("region", { name: "Guide" });

@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useEffect, useState, useTransition } from "react";
-import { GuideEditor, guideSaveLabel } from "@/components/guide/guide-editor";
+import { EditBar } from "@/components/editor/edit-bar";
+import { GuideEditor } from "@/components/guide/guide-editor";
 import { saveKeptGuides, type GuideSaveStatus } from "@/components/guide/use-guide-autosave";
-import { Brand } from "@/components/ui/brand";
+import type { BuildVisibility } from "@/lib/builds/validate";
 import { STORY_IMAGES, STORY_IMAGE_ERROR, type GuideDoc } from "@/lib/guide/doc";
 import { saveChapter } from "@/lib/playthroughs/actions";
 import type { ChapterKind } from "@/lib/playthroughs/types";
@@ -15,7 +15,7 @@ import s from "./edit.module.css";
  * A chapter, entry or beat in the Story editor (WO-111): its title, and its text with up to 5 of the
  * author's images, saved as typed under the Story's own rules (WO-79).
  */
-export function ChapterEditor({ pid, playthrough, chapter, back }: { pid: string; playthrough: string; chapter: { id: number; kind: ChapterKind; title: string; fromSave: string | null; doc: GuideDoc }; back: string }) {
+export function ChapterEditor({ pid, playthrough, visibility, chapter }: { pid: string; playthrough: string; visibility: BuildVisibility; chapter: { id: number; kind: ChapterKind; title: string; fromSave: string | null; doc: GuideDoc } }) {
   const target = `p:${pid}`;
   const key = `chapter:${chapter.id}`;
   const [save, setSave] = useState<{ status: GuideSaveStatus; error: string | null }>({ status: "idle", error: null });
@@ -25,7 +25,6 @@ export function ChapterEditor({ pid, playthrough, chapter, back }: { pid: string
   const [fromSave, setFromSave] = useState(chapter.fromSave ?? "");
   const [pending, start] = useTransition();
   const [error, setError] = useState<string | null>(null);
-  const label = guideSaveLabel(save.status, save.error);
   const send = (input: { title?: string; fromSave?: string | null }) =>
     start(async () => {
       const r = await saveChapter(pid, chapter.id, input);
@@ -33,24 +32,13 @@ export function ChapterEditor({ pid, playthrough, chapter, back }: { pid: string
     });
   return (
     <>
-      <header className={s.bar}>
-        <div className={`page ${s.barIn}`}>
-          <span className={s.barLeft}>
-            <Brand />
-            <span className={s.editing}>Editing {playthrough}</span>
-          </span>
-          <span className={s.barRight}>
-            {(label || pending) && (
-              <span className={s.saved} role="status">
-                {pending ? "Saving" : label}
-              </span>
-            )}
-            <Link href={back} className="btn btn-primary">
-              Done
-            </Link>
-          </span>
-        </div>
-      </header>
+      <EditBar
+        buildId=""
+        name={playthrough}
+        current="story"
+        visibility={visibility}
+        save={error ? { state: "failed", error } : save.status === "failed" ? { state: "failed", error: save.error } : pending || save.status === "saving" ? { state: "saving" } : { state: "saved" }}
+      />
       <main className={`page ${page.main}`}>
         <h1 className={`title ${page.h1}`}>{chapter.kind === "chapter" ? "Chapter" : chapter.kind === "entry" ? "Entry" : "Beat"}</h1>
         <div className={page.fields}>

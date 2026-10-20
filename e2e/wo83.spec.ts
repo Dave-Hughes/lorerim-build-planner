@@ -37,7 +37,7 @@ test("a Cloak and a Lantern show their own icons in the editor, the level card a
   await gear.getByRole("textbox", { name: "Note (optional)" }).click();
   await gear.getByRole("button", { name: "Add", exact: true }).click();
   await expect(gear).toContainText("Lucky river stone");
-  await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByText("✓ Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
 
   // The editor's gear rows: each type's label with its icon.
   await icon(gear, "slot-cloak", "Cloak");

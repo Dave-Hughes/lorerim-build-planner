@@ -49,7 +49,7 @@ test("point 2 and 3: a Cloak (the search shows cloaks only), a Backpack and a se
   await add(page, gear, "Backpack", "Adventurer Backpack", "Adventurer Backpack");
   await add(page, gear, "Accessory", "Beacon of Magnus", "Beacon of Magnus");
   await add(page, gear, "Accessory", "Histus Flask", "Histus Flask", { keep: true });
-  await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByText("✓ Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
 
   // The next level: all four carried.
   await page.goto(`/b/${GEAR82_BUILD_ID}/edit?level=3`);
@@ -81,7 +81,7 @@ test("point 2: replacing one piece of several, and Empty from here on one", asyn
   await expect(gear).toContainText("Beacon of Magnus, since level 2");
   await gear.getByRole("button", { name: "Empty Beacon of Magnus (Accessory) from here" }).click();
   await expect(gear).toContainText("Beacon of Magnus (Accessory) removed");
-  await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByText("✓ Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
 
   await page.goto(`/b/${GEAR82_BUILD_ID}?level=4`);
   const card = page.getByRole("region", { name: "Level 4", exact: true });

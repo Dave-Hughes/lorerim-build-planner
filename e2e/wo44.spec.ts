@@ -18,7 +18,7 @@ test("the Oghma Infinium: six skills at +5 and 3 perk points on the level", asyn
   await expect(oghma.getByRole("button", { name: "Smithing", exact: true })).toBeDisabled();
   await oghma.getByRole("button", { name: "Add" }).click();
   await expect(page.getByRole("button", { name: "Remove the Oghma Infinium" })).toBeVisible();
-  await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByText("✓ Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
 
   await page.goto(`/b/${SPELLS_BUILD_ID}?level=6`);
   const card = page.getByRole("region", { name: "Level 6", exact: true });

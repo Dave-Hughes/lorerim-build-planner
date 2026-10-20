@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { signIn } from "./helpers";
+import { signIn, savedInBand } from "./helpers";
 import { TEST_BUILD_ID } from "./seed";
 
 test.describe("an author's builds", () => {
@@ -24,8 +24,8 @@ test.describe("an author's builds", () => {
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Details");
     await page.getByLabel("Description").fill("Now with a new description.");
     await page.getByLabel("Listed on Browse builds").check();
-    await page.getByRole("button", { name: "Save changes" }).click();
-    await page.waitForURL(new RegExp(`/b/${TEST_BUILD_ID}/edit`));
+    // Every change saves as it is made (WO-117).
+    await savedInBand(page);
     await page.goto(`/b/${TEST_BUILD_ID}`);
     await expect(page.getByText("Now with a new description.")).toBeVisible();
     await page.goto("/");

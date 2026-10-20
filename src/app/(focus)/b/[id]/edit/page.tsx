@@ -3,6 +3,8 @@ import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { Editor } from "@/components/editor/editor";
 import { GameDataProvider } from "@/components/game-data";
+import { EditFrameProvider } from "@/components/editor/edit-bar";
+import { editFrameForBuild } from "@/lib/edit/frame";
 import { SiteHeader } from "@/components/site-header";
 import { getBuild } from "@/lib/builds/queries";
 import { clientVersion, isKnownVersion } from "@/lib/rules/server";
@@ -22,9 +24,9 @@ export default async function EditPage({ params, searchParams }: { params: Param
   if (build.isSample || build.ownerId !== userId) redirect(`/b/${id}`);
   // The editor only works against the build's own version; one the planner no longer has can only be viewed.
   if (!isKnownVersion(build.gameVersion)) redirect(`/b/${id}`);
-  const guide = await getGuide(id, build.plan);
+  const [guide, frame] = await Promise.all([getGuide(id, build.plan), editFrameForBuild(build, userId)]);
   return (
-    <>
+    <EditFrameProvider data={frame}>
       <SiteHeader />
       <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
         <Editor
@@ -37,6 +39,6 @@ export default async function EditPage({ params, searchParams }: { params: Param
           guide={Object.fromEntries(Object.entries(guide).map(([k, v]) => [k, v.doc]))}
         />
       </GameDataProvider>
-    </>
+    </EditFrameProvider>
   );
 }

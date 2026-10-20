@@ -17,7 +17,7 @@ test("a staff made by you from level 40: the hammer mark and its tooltip", async
   await expect(form).toContainText("Staff of Forbidden Sun");
   await form.getByRole("button", { name: "Save" }).click();
   await expect(gear).toContainText("Staff of Forbidden Sun");
-  await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByText("✓ Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
 
   await page.goto(`/b/${FORTY_BUILD_ID}?level=40`);
   const card = page.getByRole("region", { name: "Level 40", exact: true });

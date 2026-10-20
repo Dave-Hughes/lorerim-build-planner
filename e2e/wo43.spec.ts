@@ -9,7 +9,7 @@ test("switching deity at level 3 shows in the top bar, the level and search", as
   await page.goto(`/b/${TEST_BUILD_ID}/edit?level=3`);
   const deity = page.getByRole("combobox", { name: "Deity" });
   await deity.selectOption("The Magna-Ge");
-  await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByText("✓ Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
 
   await page.goto(`/b/${TEST_BUILD_ID}?level=3`);
   const about = page.getByRole("region", { name: "Character", exact: true });
@@ -23,5 +23,5 @@ test("switching deity at level 3 shows in the top bar, the level and search", as
   // Put the build back as seeded.
   await page.goto(`/b/${TEST_BUILD_ID}/edit?level=3`);
   await page.getByRole("combobox", { name: "Deity" }).selectOption("");
-  await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByText("✓ Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
 });

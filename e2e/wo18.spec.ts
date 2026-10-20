@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { signIn } from "./helpers";
+import { signIn, savedInBand } from "./helpers";
 import { LONG_BUILD_ID, SCRATCH_BUILD_ID, TEST_BUILD_ID } from "./seed";
 
 test.describe("tags", () => {
@@ -15,8 +15,8 @@ test.describe("tags", () => {
     await tags.getByRole("button", { name: "One-Handed" }).click();
     await tags.getByRole("button", { name: "Necromancy" }).click();
     await page.getByLabel("Listed on Browse builds").check();
-    await page.getByRole("button", { name: "Save changes" }).click();
-    await page.waitForURL(new RegExp(`/b/${LONG_BUILD_ID}/edit`));
+    // Every change saves as it is made (WO-117).
+    await savedInBand(page);
 
     // The shared page shows them, each linking to Browse filtered by it.
     await page.goto(`/b/${LONG_BUILD_ID}`);

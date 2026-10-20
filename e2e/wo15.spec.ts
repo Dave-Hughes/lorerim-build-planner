@@ -1,5 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
-import { signIn } from "./helpers";
+import { signIn, savedInBand } from "./helpers";
 import { SCRATCH_BUILD_ID } from "./seed";
 
 const typeNote = async (page: Page, level: number, text: string) => {
@@ -18,7 +18,7 @@ test.describe("level notes are never lost", () => {
     await page.getByRole("button", { name: "Continue to level 7" }).click();
     await expect(page.getByText("Level up to").locator("..")).toContainText("7");
     // Let the level itself save, then come back from a fresh page.
-    await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText("✓ Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
     await page.goto(`/b/${SCRATCH_BUILD_ID}?level=6`);
     await expect(page.getByRole("region", { name: "About level 6" })).toContainText("Typed, then straight on to the next level.");
   });
@@ -57,8 +57,8 @@ test("a trait's choice shows on the shared page", async ({ page, context }) => {
   await focused.getByRole("combobox").selectOption("Two-Handed");
   await expect(focused.getByRole("button", { name: "Chosen" })).toHaveAttribute("aria-pressed", "true");
   await page.getByRole("complementary", { name: "Setup steps" }).getByRole("button", { name: /Details/ }).click();
-  await page.getByRole("button", { name: "Save changes" }).click();
-  await page.waitForURL(new RegExp(`/b/${SCRATCH_BUILD_ID}/edit`));
+  // Every change saves as it is made (WO-117).
+  await savedInBand(page);
   await page.goto(`/b/${SCRATCH_BUILD_ID}`);
   await expect(page.getByRole("region", { name: "Character", exact: true })).toContainText("Focused Combat: Two-Handed");
 });

@@ -16,8 +16,8 @@ test("Slow Time, 2 words, from Deepwood Redoubt at level 25: it saves and reload
   await shouts.getByRole("button", { name: "Add", exact: true }).click();
   await expect(shouts.getByRole("listitem")).toContainText("Slow Time");
   // The page opens "Saved"; wait for the change itself to save.
-  await expect(page.getByText("Saved", { exact: true })).toHaveCount(0);
-  await expect(page.getByText("Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByText("✓ Saved", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("✓ Saved", { exact: true })).toBeVisible({ timeout: 15_000 });
 
   await page.reload();
   const after = page.getByRole("region", { name: "Shouts", exact: true });

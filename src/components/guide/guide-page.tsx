@@ -6,7 +6,7 @@ import type { BuildVisibility } from "@/lib/builds/validate";
 import { GUIDE_LIMITS, textLength, type GuideDoc } from "@/lib/guide/doc";
 import type { BuildPlan } from "@/lib/rules/types";
 import { GuideFactsProvider } from "./guide-facts";
-import { GuideEditor, guideSaveLabel } from "./guide-editor";
+import { GuideEditor } from "./guide-editor";
 import { saveKeptGuides } from "./use-guide-autosave";
 import type { GuideSaveStatus } from "./use-guide-autosave";
 import styles from "./guide-page.module.css";
@@ -15,7 +15,10 @@ import styles from "./guide-page.module.css";
 export function GuidePage({ buildId, name, visibility, plan, initial, intro }: { buildId: string; name: string; visibility: BuildVisibility; plan: BuildPlan; initial: GuideDoc; intro: GuideDoc }) {
   const [save, setSave] = useState<{ status: GuideSaveStatus; error: string | null; retry: () => void }>({ status: "idle", error: null, retry: () => {} });
   const onStatus = useCallback((status: GuideSaveStatus, error: string | null, retry: () => void) => setSave({ status, error, retry }), []);
-  const label = guideSaveLabel(save.status, save.error);
+  // The intro saves on its own; the band says how both stand (WO-117).
+  const [introSave, setIntroSave] = useState<{ status: GuideSaveStatus; error: string | null }>({ status: "idle", error: null });
+  const onIntroStatus = useCallback((status: GuideSaveStatus, error: string | null) => setIntroSave({ status, error }), []);
+  const failed = save.status === "failed" ? save : introSave.status === "failed" ? introSave : null;
   useEffect(() => saveKeptGuides(buildId), [buildId]);
   // Which field has focus, so the miniature can show where it lands on the build page.
   const [focus, setFocus] = useState<"intro" | "guide" | null>(null);
@@ -26,20 +29,10 @@ export function GuidePage({ buildId, name, visibility, plan, initial, intro }: {
         name={name}
         current="guide"
         visibility={visibility}
-        status={
-          label && (
-            <span className={save.status === "failed" ? styles.failed : undefined}>
-              {label}
-              {save.status === "failed" && !save.error?.startsWith("Too long") && (
-                <>
-                  {" "}
-                  <button type="button" className={styles.linkButton} onClick={save.retry}>
-                    Try again
-                  </button>
-                </>
-              )}
-            </span>
-          )
+        save={
+          failed
+            ? { state: "failed", error: failed.error, retry: failed === save && !save.error?.startsWith("Too long") ? save.retry : undefined }
+            : { state: save.status === "saving" || introSave.status === "saving" ? "saving" : "saved" }
         }
       />
       <main className={`page ${styles.main}`}>
@@ -48,7 +41,7 @@ export function GuidePage({ buildId, name, visibility, plan, initial, intro }: {
           <div className={styles.fields}>
             <GuideFactsProvider plan={plan}>
               <div onFocus={() => setFocus("intro")} onBlur={() => setFocus(null)}>
-                <IntroField buildId={buildId} initial={intro} />
+                <IntroField buildId={buildId} initial={intro} onStatus={onIntroStatus} />
               </div>
               <section aria-label="Guide" className={styles.guideField} onFocus={() => setFocus("guide")} onBlur={() => setFocus(null)}>
                 <span className="label">Guide</span>
@@ -64,11 +57,8 @@ export function GuidePage({ buildId, name, visibility, plan, initial, intro }: {
 }
 
 /** The short intro shown at the top of the shared page: bold, italic and links, 1,200 characters. */
-function IntroField({ buildId, initial }: { buildId: string; initial: GuideDoc }) {
+function IntroField({ buildId, initial, onStatus }: { buildId: string; initial: GuideDoc; onStatus: (status: GuideSaveStatus, error: string | null) => void }) {
   const [length, setLength] = useState(() => textLength(initial));
-  const [save, setSave] = useState<{ status: GuideSaveStatus; error: string | null }>({ status: "idle", error: null });
-  const onStatus = useCallback((status: GuideSaveStatus, error: string | null) => setSave({ status, error }), []);
-  const label = guideSaveLabel(save.status, save.error);
   const over = length > GUIDE_LIMITS.intro;
   return (
     <section aria-label="Intro" className={styles.intro}>
@@ -77,11 +67,6 @@ function IntroField({ buildId, initial }: { buildId: string; initial: GuideDoc }
         <span className={over ? styles.failed : styles.count}>
           {length.toLocaleString("en-GB")} / {GUIDE_LIMITS.intro.toLocaleString("en-GB")}
         </span>
-        {label && (
-          <span role="status" className={save.status === "failed" ? styles.failed : styles.count}>
-            {label}
-          </span>
-        )}
       </div>
       <GuideEditor buildId={buildId} sectionKey="intro" initial={initial} label="Intro" inline onStatus={onStatus} onChange={(doc) => setLength(textLength(doc))} />
     </section>

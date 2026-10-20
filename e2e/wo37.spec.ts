@@ -1,5 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
-import { signIn } from "./helpers";
+import { signIn, savedInBand } from "./helpers";
 import { IRIEL_BUILD_ID, TEST_BUILD_ID } from "./seed";
 
 test.use({ viewport: { width: 1440, height: 900 } });
@@ -13,8 +13,8 @@ async function pickAndSave(page: Page, theme: string) {
   await card.click();
   await expect(card).toHaveAttribute("aria-pressed", "true");
   await expect(picker.getByRole("button", { pressed: true })).toHaveCount(1);
-  await page.getByRole("button", { name: "Save changes" }).click();
-  await page.waitForURL(new RegExp(`/b/${IRIEL_BUILD_ID}/edit`));
+  // Every change saves as it is made (WO-117).
+  await savedInBand(page);
 }
 
 test("picking Frost and saving shows Iriel's page in Frost", async ({ page, context }) => {

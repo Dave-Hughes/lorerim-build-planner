@@ -424,8 +424,6 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
     </div>
   );
 
-  const saveLabel = status === "saved" ? "Saved" : status === "saving" ? "Saving…" : status === "unsaved" ? "Unsaved" : "Couldn't save";
-
   return (
     <>
       <EditBar
@@ -450,21 +448,8 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
             </span>
           )
         }
-        status={
-          <span className={status === "failed" ? "bad" : undefined}>
-            {saveLabel}
-            {status === "failed" && (
-              <>
-                {" "}
-                <button type="button" className={styles.linkButton} onClick={retry}>
-                  Try again
-                </button>
-              </>
-            )}
-          </span>
-        }
+        save={{ state: status === "failed" ? "failed" : status === "saved" ? "saved" : "saving", error, retry }}
       />
-      {error && status === "failed" && <div className={`page ${styles.errorBar}`}>{error}</div>}
 
       <div className={`page ${styles.layout}`}>
         {converted && (
@@ -1010,13 +995,13 @@ export function Editor({ buildId, name, visibility, initialPlan, initialLevel, c
                   </span>
                 )}
                 {total < MAX_LEVELS && (
-                  <button type="button" className="btn btn-primary" onClick={continueLevel}>
+                  <button type="button" className="btn" onClick={continueLevel}>
                     Continue to level {total + 1}
                   </button>
                 )}
               </>
             ) : (
-              <button type="button" className="btn btn-primary" onClick={() => nextStretch && setLevel(nextStretch.to, total, true)}>
+              <button type="button" className="btn" onClick={() => nextStretch && setLevel(nextStretch.to, total, true)}>
                 Go to {nextStretch ? stretchLabel(nextStretch.to) : ""}
               </button>
             )}
@@ -1154,7 +1139,7 @@ function OghmaForm({ skills, onAdd }: { skills: string[]; onAdd: (skills: string
         ))}
       </span>
       <span className={styles.oghmaActions}>
-        <button type="button" className="btn btn-sm btn-primary" disabled={chosen.length !== 6} onClick={() => onAdd(chosen)}>
+        <button type="button" className="btn btn-sm" disabled={chosen.length !== 6} onClick={() => onAdd(chosen)}>
           Add
         </button>
         <button type="button" className="btn btn-sm btn-quiet" onClick={() => (setOpen(false), setChosen([]))}>
