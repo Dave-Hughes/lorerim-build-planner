@@ -21,6 +21,14 @@ completes or fails the quest (QSDT), and the conditions it shows under (the CTDA
 QSDT), kept as quest_starts.ctda reads them and in plain words (`when`): "Stage 160 of this quest done",
 "global X is 1", "the player is in faction Y". The names come from a second pass over the load order.
 
+Text tags (WO-115): journal entries, objectives and names carry the game's tags, <Alias=Item>,
+<Alias.ShortName=Questgiver>, <Alias.PronounObj=Target>, <Global=RoomCost>. Each quest gets `fills`, the
+tags its own text uses mapped to what the records say they stand for: an alias's unique actor (ALUA),
+the base of its forced reference (ALFR), its location (ALFL) or the item it creates (ALCO); the short
+name (SHRT) for ShortName; he, she, him, her and so on from the actor's sex (ACBS) for the pronoun tags.
+`globals` holds each named global's value (FLTV) by EDID, for the tags in quest text and in the start
+check's results. quest_pages.py fills the text; a tag the records can't answer becomes plain words there.
+
 Who gives a quest, and where, sits in its aliases and dialogue conditions; those aren't plain facts
 in the records and are left out.
 
@@ -60,7 +68,12 @@ TYPES = {0: None, 1: "Main Quest", 2: "Mages Guild", 3: "Thieves Guild", 4: "Dar
 COMPLETES, FAILS = 0x01, 0x02
 RUN_ON_ALIAS = 5  # CTDA run-on type (offset 20): the condition is checked on one of the quest's aliases
 # The records a log entry's conditions name, read in the second pass for their names (and globals' values).
-NAMED = ("QUST", "GLOB", "FACT", "NPC_", "LCTN", "KEYM", "MISC", "BOOK", "WEAP", "ARMO", "RACE")
+NAMED = ("QUST", "GLOB", "FACT", "NPC_", "LCTN", "KEYM", "MISC", "BOOK", "WEAP", "ARMO", "RACE", "ALCH", "INGR", "AMMO", "SLGM",
+         "SCRL", "CONT", "ACTI", "FURN", "DOOR", "LIGH", "FLOR")
+# A text tag: <Alias=Item>, <Alias.PronounObj=Target>, <Global=RoomCost>, <Global.Day=Deadline>.
+TAG = re.compile(r"<(Alias|Global)(?:\.(\w+))?=([^<>]+)>", re.IGNORECASE)
+PRONOUNS = {"pronoun": ("he", "she"), "pronouncap": ("He", "She"), "pronounobj": ("him", "her"), "pronounobjcap": ("Him", "Her"),
+            "pronounpos": ("his", "her"), "pronounposcap": ("His", "Her"), "pronounposobj": ("his", "hers"), "pronounposobjcap": ("His", "Hers")}
 BASE = {"skyrim.esm", "update.esm", "dawnguard.esm", "hearthfires.esm", "dragonborn.esm"}
 # The base game's story lines, by quest type, and what a player calls each.
 STORY_LINES = {"Main Quest": "Main Quest", "Mages Guild": "College of Winterhold", "Companions": "Companions",
@@ -104,6 +117,7 @@ def read_plugin(buf, name, strings=None):
         _, flags, fid, d = rec_data(buf, o)
         rec = {"plugin": name, "key": list(resolve(fid, masters, name)), "flags": flags, "edid": "", "name": "", "type": None,
                "stages": [], "objectives": [], "aliases": {}}
+        rec["aliasFills"] = {}
         stage = entry = objective = alias = None
         part = "head"  # head, stages, objectives, aliases: subrecord names repeat across the parts
         for s, v in subrecs(d):
@@ -138,8 +152,12 @@ def read_plugin(buf, name, strings=None):
                 part = "aliases"
                 if s != "ANAM":
                     alias = struct.unpack_from("<I", v)[0]
+                    rec["aliasFills"][alias] = {}
             elif s == "ALID" and part == "aliases":
                 rec["aliases"][alias] = _text(v)
+            elif s in ("ALUA", "ALFR", "ALFL", "ALCO") and part == "aliases" and alias is not None and len(v) >= 4 and struct.unpack_from("<I", v)[0]:
+                kind = {"ALUA": "actor", "ALFR": "ref", "ALFL": "location", "ALCO": "creates"}[s]
+                rec["aliasFills"][alias][kind] = form_id(resolve(struct.unpack_from("<I", v)[0], masters, name))
         out.append(rec)
     return out
 
@@ -179,6 +197,9 @@ def describe(rec, editors):
     out["objectives"] = objectives
     if rec.get("aliases"):
         out["aliases"] = {str(k): v for k, v in sorted(rec["aliases"].items())}
+    fills = {str(k): v for k, v in sorted(rec.get("aliasFills", {}).items()) if v}
+    if fills:
+        out["aliasFills"] = fills
     return out
 
 
@@ -269,7 +290,109 @@ def read_names(buf, name, wanted, strings=None):
                         row["name"] = _text(v).strip()
                 elif s == "FLTV" and grp == "GLOB" and len(v) >= 4:
                     row["value"] = round(struct.unpack_from("<f", v)[0], 4)
+                elif s == "SHRT" and grp == "NPC_":
+                    if loc and len(v) == 4:
+                        if table is None:
+                            table = (strings() if strings else None) or {}
+                        row["short"] = table.get(struct.unpack_from("<I", v)[0], "").strip()
+                    else:
+                        row["short"] = _text(v).strip()
+                elif s == "ACBS" and grp == "NPC_" and len(v) >= 4:
+                    row["female"] = bool(struct.unpack_from("<I", v)[0] & 1)
             out[key] = row
+    return out
+
+
+def text_tags(q):
+    """The tags in a quest's own text: its name, journal entries and objectives."""
+    texts = [q.get("name", "")] + [o["text"] for o in q.get("objectives", [])]
+    texts += [e.get("text", "") for st in q.get("stages", []) for e in st.get("entries", [])] + [t for st in q.get("stages", []) for t in st.get("log", [])]
+    return {m.group(0): m for t in texts for m in TAG.finditer(t or "")}
+
+
+def tag_forms(quests):
+    """(references, records) that fill the alias tags the quests' text uses: forced references to look up, and the rest to name."""
+    refs, forms = set(), set()
+    for q in quests:
+        by_name = {a.lower(): k for k, a in q.get("aliases", {}).items()}
+        for m in text_tags(q).values():
+            fill = q.get("aliasFills", {}).get(by_name.get(m.group(3).strip().lower()), {}) if m.group(1).lower() == "alias" else {}
+            refs |= {fill["ref"]} if fill.get("ref") else set()
+            forms |= {fill[k] for k in ("actor", "location", "creates") if fill.get(k)}
+    return refs, forms
+
+
+def read_ref_bases(buf, name, wanted):
+    """{reference: its base object} for the placed references in `wanted` (REFR and ACHR, NAME)."""
+    masters = header(buf)
+    out = {}
+    for grp in ("CELL", "WRLD"):
+        if grp.encode() not in buf:
+            continue
+        for o in iter_group(buf, grp):
+            if buf[o:o + 4] not in (b"REFR", b"ACHR"):
+                continue
+            key = form_id(resolve(struct.unpack_from("<I", buf, o + 12)[0], masters, name))
+            if key not in wanted:
+                continue
+            _, _, _, d = rec_data(buf, o)
+            for s, v in subrecs(d):
+                if s == "NAME" and len(v) >= 4:
+                    out[key] = form_id(resolve(struct.unpack_from("<I", v)[0], masters, name))
+                    break
+    return out
+
+
+def read_globals(buf, wanted):
+    """{edid (lower case): value} for the globals in `wanted`, by EDID."""
+    out = {}
+    if b"GLOB" not in buf:
+        return out
+    for o in iter_group(buf, "GLOB"):
+        t, _, _, d = rec_data(buf, o)
+        if t != "GLOB":
+            continue
+        edid, value = None, None
+        for s, v in subrecs(d):
+            if s == "EDID":
+                edid = _text(v).lower()
+            elif s == "FLTV" and len(v) >= 4:
+                value = round(struct.unpack_from("<f", v)[0], 4)
+        if edid in wanted and value is not None:
+            out[edid] = value
+    return out
+
+
+def tag_fills(q, names, bases):
+    """A quest's alias tags mapped to what its records say they stand for; a tag they don't answer is left out."""
+    by_name = {a.lower(): k for k, a in q.get("aliases", {}).items()}
+    out = {}
+    for tag, m in text_tags(q).items():
+        if m.group(1).lower() != "alias":
+            continue
+        fill = q.get("aliasFills", {}).get(by_name.get(m.group(3).strip().lower()), {})
+        who = fill.get("actor") or bases.get(fill.get("ref"))
+        person = names.get(who, {}) if who else {}
+        thing = names.get(fill.get("location") or fill.get("creates") or "", {})
+        part = (m.group(2) or "").lower()
+        if part in PRONOUNS:
+            if "female" in person:
+                out[tag] = PRONOUNS[part][person["female"]]
+        elif part == "shortname" and (person.get("short") or person.get("name")):
+            out[tag] = person.get("short") or person["name"]
+        elif person.get("name") or thing.get("name"):
+            out[tag] = person.get("name") or thing["name"]
+    return out
+
+
+def global_edids(quests, story_checks):
+    """The EDIDs (lower case) of the globals the tags name, in quest text and in the start check's results."""
+    out = {m.group(3).strip().lower() for q in quests for m in text_tags(q).values() if m.group(1).lower() == "global"}
+    if os.path.isdir(story_checks):
+        for f in os.listdir(story_checks):
+            if f.endswith(".json") and not f.startswith("."):
+                out |= {m.group(3).strip().lower() for m in TAG.finditer(open(os.path.join(story_checks, f), encoding="utf-8").read())
+                        if m.group(1).lower() == "global"}
     return out
 
 
@@ -460,15 +583,39 @@ def main():
     for q in quests:
         names.setdefault(q["id"], {"edid": q["edid"], "name": q["name"]})
     describe_when(quests, names)
+    # The text tags: forced references' bases, then the names of what fills each alias, and the globals' values.
+    base = os.path.join(REPO, "gamedata", VERSION)
+    refs, forms = tag_forms(quests)
+    gl_wanted = global_edids(quests, os.path.join(base, "story_checks"))
+    bases, gvalues = {}, {}
+    for n in lo:
+        p = pp.get(n.lower())
+        if p:
+            buf = open(p, "rb").read()
+            if refs:
+                bases.update(read_ref_bases(buf, n, refs))
+            gvalues.update(read_globals(buf, gl_wanted))
+    tag_names = {}
+    for n in lo:
+        p = pp.get(n.lower())
+        if p:
+            tag_names.update(read_names(open(p, "rb").read(), n, forms | set(bases.values()), lambda p=p, n=n: localized_strings(p, n) or vanilla_strings(n, ROOT)))
+    for q in quests:
+        fills = tag_fills(q, tag_names, bases)
+        if fills:
+            q["fills"] = fills
+        q.pop("aliasFills", None)
+    filled = sum(len(q.get("fills", {})) for q in quests)
+    print(f"text tags: {sum(len(text_tags(q)) for q in quests)} in quest text, {filled} alias tags filled from the records, "
+          f"{len(gvalues)} of {len(gl_wanted)} named globals found")
     folders = plugin_folders(ROOT)
     spelling = {n.lower(): n for n in lo}
     for q in quests:
         q["plugin"] = spelling.get(q["plugin"].lower(), q["plugin"])
         q.update(source_of(q["plugin"], folders, ROOT))
     lines = quest_lines(quests)
-    base = os.path.join(REPO, "gamedata", VERSION)
     with open(os.path.join(base, "quests_raw.json"), "w", encoding="utf-8", newline="\n") as f:
-        json.dump({"counts": counts, "quests": quests}, f, indent=1, ensure_ascii=False)
+        json.dump({"counts": counts, "quests": quests, "globals": dict(sorted(gvalues.items()))}, f, indent=1, ensure_ascii=False)
         f.write("\n")
     with open(os.path.join(base, "questlines_raw.json"), "w", encoding="utf-8", newline="\n") as f:
         json.dump({"lines": lines}, f, indent=1, ensure_ascii=False)

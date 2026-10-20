@@ -107,6 +107,8 @@ class EndingsTest(unittest.TestCase):
         self.assertEqual([(e["stage"], e.get("completes")) for e in ends], [(100, True), (250, True)])
         self.assertIn("Wuunferth the Unliving was the Butcher of Windhelm", ends[0]["text"])
         self.assertIn("Calixto Corrium was the Butcher of Windhelm", ends[1]["text"])
+        # Each says when it happens: stage 100 has no condition in the records; 250's shows only if 100 isn't done.
+        self.assertEqual([e["when"] for e in ends], ["the quest reaches stage 100", "the quest reaches stage 250, if stage 100 of this quest not done"])
 
     def test_innocence_lost_ends_with_grelod_dead_either_way(self):
         ends = self.endings("DB01")
@@ -131,9 +133,9 @@ class EndingsTest(unittest.TestCase):
         self.assertEqual([st["index"] for st in stages], [10, 200, 255])
         self.assertEqual(stages[1]["log"][1], {"text": "Refused.", "fails": True, "when": "Stage 20 of this quest done"})
         self.assertEqual(qp.endings_of(stages), [
-            {"stage": 200, "text": "Kept.", "completes": True},
-            {"stage": 200, "text": "Refused.", "fails": True, "when": "Stage 20 of this quest done"},
-            {"stage": 255, "text": "", "completes": True},
+            {"stage": 200, "text": "Kept.", "completes": True, "when": "the quest reaches stage 200"},
+            {"stage": 200, "text": "Refused.", "fails": True, "when": "the quest reaches stage 200, if stage 20 of this quest done"},
+            {"stage": 255, "text": "", "completes": True, "when": "the quest reaches stage 255"},
         ])
 
     def test_every_quest_on_the_pages_has_endings(self):
@@ -141,7 +143,27 @@ class EndingsTest(unittest.TestCase):
                 "quests": [{"id": self.raw[e]["id"]} for e in ("MS11", "DB01", "FreeformRiften11")], "checked": {}}
         out = qp.build_quests([line], list(self.raw.values()), [])[0]["quests"]
         self.assertEqual([len(q["endings"]) for q in out], [2, 2, 0])
-        self.assertEqual(out[0]["journal"], qp.journal(self.raw["MS11"]))
+        self.assertEqual(out[0]["journal"], qp.fill_all(qp.journal(self.raw["MS11"]), self.raw["MS11"].get("fills", {}), {}))
+
+
+class TagsTest(unittest.TestCase):
+    """WO-115: the game's text tags filled from the records, or plain words where the records don't say."""
+
+    def test_fills_globals_dates_and_plain_words(self):
+        fills = {"<Alias=Questgiver>": "Commander Maro", "<Alias.PronounObj=Target>": "her"}
+        g = {"roomcost": 25.0}
+        self.assertEqual(qp.fill_text("Return to <Alias=Questgiver>", fills, g), "Return to Commander Maro")
+        self.assertEqual(qp.fill_text("Kill <Alias.PronounObj=Target> and <Alias.Pronoun=Other>", fills, g), "Kill her and they")
+        self.assertEqual(qp.fill_text("Rent a room (<Global=RoomCost> gold)", fills, g), "Rent a room (25 gold)")
+        self.assertEqual(qp.fill_text("Deliver <Alias=Item> by <Global.Day=D> of <Global.MonthWord=D>", {}, g), "Deliver the item by the set date")
+        self.assertEqual(qp.fill_text("<alias=item>", {}, g), "The item")
+        self.assertEqual(qp.fill_text("Kill the <Alias=Beast>", {}, g), "Kill the beast")
+        self.assertEqual(qp.fill_text("Deliver <Alias=Item by noon", {}, g), "Deliver the item by noon")  # never closed in the record
+        self.assertEqual(qp.fill_text("Find <Alias=MS11TargetLocation>", {}, g), "Find the target location")
+
+    def test_every_string_in_a_quest(self):
+        out = qp.fill_all({"objectives": ["Find <Alias=Item>"], "start": {"needs": ["Pay <Global=Cost> gold"]}, "xp": 100}, {}, {"cost": 10})
+        self.assertEqual(out, {"objectives": ["Find the item"], "start": {"needs": ["Pay 10 gold"]}, "xp": 100})
 
 
 class StartTest(unittest.TestCase):

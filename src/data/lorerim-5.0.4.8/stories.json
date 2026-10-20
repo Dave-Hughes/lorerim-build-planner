@@ -1528,35 +1528,35 @@
      "edid": "LTNQuestMarkarth",
      "task": "A contract in Markarth",
      "checked": "files",
-     "name": "Contract: Kill <Alias=Target>",
+     "name": "Contract: Kill the target",
      "xp": 100
     },
     {
      "edid": "LTNQuestRiften",
      "task": "A contract in Riften",
      "checked": "files",
-     "name": "Contract: Kill <Alias=Target>",
+     "name": "Contract: Kill the target",
      "xp": 100
     },
     {
      "edid": "LTNQuestSolitude",
      "task": "A contract in Solitude",
      "checked": "files",
-     "name": "Contract: Kill <Alias=Target>",
+     "name": "Contract: Kill the target",
      "xp": 100
     },
     {
      "edid": "LTNQuestWhiterun",
      "task": "A contract in Whiterun",
      "checked": "files",
-     "name": "Contract: Kill <Alias=Target>",
+     "name": "Contract: Kill the target",
      "xp": 100
     },
     {
      "edid": "LTNQuestWindhelm",
      "task": "A contract in Windhelm",
      "checked": "files",
-     "name": "Contract: Kill <Alias=Target>",
+     "name": "Contract: Kill the target",
      "xp": 100
     },
     {

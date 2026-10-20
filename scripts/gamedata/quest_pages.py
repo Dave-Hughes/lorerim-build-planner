@@ -14,6 +14,9 @@ Each line keeps the curation's facts and gains:
                  (gold tier, weapons and armour), and start (WO-115: from the start check's results in
                  gamedata/<version>/story_checks, { needs, who, where, task, ways, checked: "files" | "not
                  yet" }; a line not checked yet, or a quest the check couldn't trace, is "not yet")
+Every text has the game's tags filled (WO-115): <Alias=...> from the quest's `fills` (quests.py, from the
+records), <Global=...> from the globals' values, a run-time date as "the set date", and an alias the records
+don't fill in plain words ("the item").
   xpTotal        the line's quest XP
 """
 import json
@@ -155,9 +158,72 @@ def stages_of(q):
     return out
 
 
+def ending_when(stage, conditions):
+    """
+    When an ending happens, as the page reads it after "When": the stage that writes it, and the conditions its log
+    entry shows under where the record has any. Most endings have none (1,746 of 1,800 in the 20 Oct crawl): the
+    entry shows whenever its stage is set.
+    """
+    text = f"the quest reaches stage {stage}"
+    return text + (f", if {conditions[0].lower()}{conditions[1:]}" if conditions else "")
+
+
 def endings_of(stages):
-    """The log entries that complete or fail the quest, in stage order, each with its stage."""
-    return [{"stage": st["index"], **e} for st in stages for e in st["log"] if e.get("completes") or e.get("fails")]
+    """The log entries that complete or fail the quest, in stage order, each with its stage and when it happens."""
+    return [{"stage": st["index"], **e, "when": ending_when(st["index"], e.get("when"))}
+            for st in stages for e in st["log"] if e.get("completes") or e.get("fails")]
+
+
+# The game's text tags (WO-115): <Alias=Item>, <Alias.PronounObj=Target>, <Global=RoomCost>, <Global.Day=Deadline>.
+TAG = re.compile(r"<(Alias|Global)(?:\.(\w+))?=([^<>]+)>", re.IGNORECASE)
+_OPEN = re.compile(r"<((?:Alias|Global)(?:\.\w+)?=\w+)(?=[\s,.;:!?)]|$)", re.IGNORECASE)
+_DATE = re.compile(r"<Global\.Day=[^<>]+>\s*(?:of\s+)?<Global\.MonthWord=[^<>]+>", re.IGNORECASE)
+_NEUTRAL = {"pronoun": "they", "pronouncap": "They", "pronounobj": "them", "pronounobjcap": "Them", "pronounpos": "their",
+            "pronounposcap": "Their", "pronounposobj": "theirs", "pronounposobjcap": "Theirs"}
+
+
+def plain_alias(name):
+    """An alias the records fill only at run time, in plain words: Item -> "the item", TargetLocation -> "the target location"."""
+    name = re.sub(r"^[A-Za-z]{0,6}\d+", "", name)  # an EDID-like prefix: MS11TargetLocation -> TargetLocation
+    words = [w for w in re.findall(r"[A-Z]+(?![a-z])|[A-Z]?[a-z]+|\d+", name.replace("_", " ")) if not any(ch.isdigit() for ch in w)]
+    words = [w.lower() for w in words if w.lower() not in ("alias", "ref", "quest")] or ["one"]
+    return "the " + " ".join(words)
+
+
+def fill_text(text, fills, globals_):
+    """
+    A text with its tags filled: the quest's own fills (quests.py, from the records), a global's value by its EDID, a
+    date the game sets at run time as "the set date", and an alias the records don't fill in plain words.
+    """
+    if not isinstance(text, str) or "<" not in text:
+        return text
+    text = _OPEN.sub(r"<\1>", text)  # a tag the record never closes: "Deliver <Alias=Item by ..."
+    text = _DATE.sub("the set date", text)
+
+    def sub(m):
+        tag, kind, part, name = m.group(0), m.group(1).lower(), (m.group(2) or "").lower(), m.group(3).strip()
+        if tag in fills:
+            out = fills[tag]
+        elif kind == "global":
+            value = globals_.get(name.lower())
+            out = {"day": "the set day", "monthword": "the set month"}.get(part) or (f"{value:g}" if isinstance(value, (int, float)) else "the amount the game sets")
+        else:
+            out = _NEUTRAL.get(part) or plain_alias(name)
+        before = m.string[:m.start()].rstrip()
+        if out.startswith("the ") and re.search(r"\b(the|a|an|your|my)$", before, re.IGNORECASE):
+            out = out[4:]  # "Kill the <Alias=Beast>": the text has its own article
+        return out[0].upper() + out[1:] if (not before or before.endswith((".", "!", "?", ":", '"'))) and out[:1].islower() else out
+
+    return TAG.sub(sub, text)
+
+
+def fill_all(obj, fills, globals_):
+    """Every string in a quest's data with its tags filled."""
+    if isinstance(obj, dict):
+        return {k: fill_all(v, fills, globals_) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [fill_all(v, fills, globals_) for v in obj]
+    return fill_text(obj, fills, globals_)
 
 
 def load_checks(folder):
@@ -281,9 +347,9 @@ def start_disagreements(pages):
             for l in pages if "guideMinLevel" in l]
 
 
-def build_quests(lines, quests_raw, givers_raw, checks=None):
-    """The curated lines (questlines.curate) -> the quests.json lines, in curation order."""
-    checks = checks or {}
+def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None):
+    """The curated lines (questlines.curate) -> the quests.json lines, in curation order, tags filled."""
+    checks, globals_ = checks or {}, globals_ or {}
     by_id = {q["id"]: q for q in quests_raw}
     givers = {g["id"]: g for g in givers_raw}
     by_edid = {q["edid"]: q["id"] for q in quests_raw}
@@ -313,7 +379,7 @@ def build_quests(lines, quests_raw, givers_raw, checks=None):
             item["giver"] = giver
         fo = (opening or {}).get("firstObjective")
         if fo and fo.get("namesWhoOrWhere") and fo.get("filled"):
-            item["firstObjective"] = fo["filled"]
+            item["firstObjective"] = fill_text(fo["filled"], (by_id.get(by_edid.get(line["opening"])) or {}).get("fills", {}), globals_)
         quests = []
         checked_rows = checks.get(line["id"], {})
         line_quests = {by_id[lq["id"]]["edid"]: by_id[lq["id"]]["name"] for lq in line["quests"]}
@@ -328,7 +394,7 @@ def build_quests(lines, quests_raw, givers_raw, checks=None):
             if items:
                 rewards["items"] = items
             stages = stages_of(q)
-            quests.append(
+            quests.append(fill_all(
                 {
                     "edid": q["edid"],
                     "name": q["name"],
@@ -340,7 +406,7 @@ def build_quests(lines, quests_raw, givers_raw, checks=None):
                     "objectives": [o["text"] for o in sorted(q.get("objectives", []), key=lambda o: o.get("index", 0)) if o.get("text")],
                     "start": start_of(checked_rows.get(q["edid"]), line_quests),
                     **({"rewards": rewards} if rewards else {}),
-                }
+                }, q.get("fills", {}), globals_)
             )
         item["quests"] = quests
         # A checked level beats the field guide's (WO-115); start_disagreements lists each for questlines_report.md.

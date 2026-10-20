@@ -199,5 +199,33 @@ class LineTest(unittest.TestCase):
         self.assertEqual(quests.quest_lines(qs)[0]["name"], "Big Mod")  # biggest first
 
 
+class TagFillsTest(unittest.TestCase):
+    """WO-115: what an alias tag stands for, from the alias's fill and the records it names."""
+
+    def plugin(self):
+        tes4 = record("TES4", 0, [sub("HEDR", struct.pack("<fII", 1.7, 0, 0x800))])
+        qust = record("QUST", 0x800, [sub("EDID", zs("FXCourier")), sub("FULL", zs("Deliver <Alias=Item>")), dnam(8),
+                                      sub("QOBJ", struct.pack("<H", 10)), sub("NNAM", zs("Take <Alias=Item> to <Alias.ShortName=Giver> and tell <Alias.PronounObj=Giver>")),
+                                      sub("ANAM", sid(2)), sub("ALST", sid(0)), sub("ALID", zs("Item")), sub("ALCO", sid(0x810)), sub("ALED", b""),
+                                      sub("ALST", sid(1)), sub("ALID", zs("Giver")), sub("ALFR", sid(0x830)), sub("ALED", b"")])
+        npc = record("NPC_", 0x820, [sub("EDID", zs("FXMaro")), sub("ACBS", struct.pack("<I", 0) + bytes(20)), sub("FULL", zs("Commander Maro")), sub("SHRT", zs("Maro"))])
+        misc = record("MISC", 0x810, [sub("EDID", zs("FXLetter")), sub("FULL", zs("Letter"))])
+        glob = record("GLOB", 0x840, [sub("EDID", zs("FXRoomCost")), sub("FNAM", b"s"), sub("FLTV", struct.pack("<f", 25.0))])
+        refr = record("REFR", 0x830, [sub("NAME", sid(0x820))])
+        return tes4 + group("QUST", [qust]) + group("NPC_", [npc]) + group("MISC", [misc]) + group("GLOB", [glob]) + group("CELL", [refr])
+
+    def test_alias_tags_from_the_records(self):
+        buf = self.plugin()
+        (rec,) = quests.read_plugin(buf, "Fixture.esp")
+        q = quests.describe(rec, ["Fixture.esp"])
+        refs, forms = quests.tag_forms([q])
+        self.assertEqual((refs, forms), ({"Fixture.esp:000830"}, {"Fixture.esp:000810"}))
+        bases = quests.read_ref_bases(buf, "Fixture.esp", refs)
+        self.assertEqual(bases, {"Fixture.esp:000830": "Fixture.esp:000820"})
+        names = quests.read_names(buf, "Fixture.esp", forms | set(bases.values()))
+        self.assertEqual(quests.tag_fills(q, names, bases), {"<Alias=Item>": "Letter", "<Alias.ShortName=Giver>": "Maro", "<Alias.PronounObj=Giver>": "him"})
+        self.assertEqual(quests.read_globals(buf, {"fxroomcost"}), {"fxroomcost": 25.0})
+
+
 if __name__ == "__main__":
     unittest.main()
