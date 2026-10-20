@@ -162,8 +162,12 @@ test("editing by hand: a @quest mention, and the rule under a refused objective"
   const box = page.getByRole("combobox", { name: "Objective" }).last();
   await box.fill("@Spread the");
   await page.getByRole("option", { name: /^Spread the Love/ }).first().click();
+  // Saved, it's a row like Play's (WO-117); opened, its quest link shows.
+  const row = page.getByRole("button", { name: "Edit Spread the Love" });
+  await expect(row).toBeVisible();
+  await expect.poll(async () => (await page.reload(), await page.getByRole("button", { name: "Edit Spread the Love" }).count())).toBeGreaterThan(0);
+  await page.getByRole("button", { name: "Edit Spread the Love" }).click();
   await expect(page.getByText("Quest: Spread the Love")).toBeVisible();
-  await expect.poll(async () => (await page.reload(), await page.getByText("Quest: Spread the Love").count())).toBeGreaterThan(0);
 
   await page.getByRole("button", { name: "Add an objective" }).click();
   await page.getByRole("combobox", { name: "Objective" }).last().fill("Read every new book");

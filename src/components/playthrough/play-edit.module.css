@@ -1,0 +1,414 @@
+/*
+ * Play in edit (WO-117), as the EditPlay board: Play's own layout, the act's card with its picture
+ * slot, quiet buttons, dashed rows to add, and objectives as rows that open one at a time.
+ */
+.main {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 40px;
+  padding-top: 32px;
+  padding-bottom: 72px;
+  align-items: start;
+}
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+.head {
+  margin: 0;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--soft);
+}
+.headRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 12px 0 8px;
+  border-bottom: 1px solid var(--rule-strong);
+  font-size: 14px;
+}
+
+/* A dashed row to add one: an act, an objective. */
+.add {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 14px;
+  padding: 0 14px;
+  border: 1px dashed var(--rule-strong);
+  background: none;
+  color: var(--soft);
+  font: inherit;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+}
+.add:hover {
+  border-color: var(--muted);
+  color: var(--text);
+}
+.handle {
+  flex: none;
+  width: 22px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  letter-spacing: -2px;
+  font-size: 14px;
+  cursor: grab;
+}
+.handle:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+/* Where a dragged row lands. */
+.actRow[data-over],
+.ob[data-over] {
+  box-shadow: inset 0 2px 0 var(--brass);
+}
+
+/* The acts. */
+.acts {
+  display: flex;
+  flex-direction: column;
+}
+.acts .head {
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.actRow {
+  display: flex;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.actLink {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+}
+.actName {
+  font-weight: 600;
+  color: var(--soft);
+}
+.actRow[aria-current="true"] .actName {
+  color: var(--ember);
+}
+.actWhere {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* The act's card, as readers see it: its picture, or the slot for one. */
+.card {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: var(--sunk);
+}
+.cardEmpty {
+  border-style: dashed;
+  border-color: var(--rule-strong);
+  background: #0b0f14;
+}
+.cardImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cardFade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(11, 15, 20, 0.96) 0%, rgba(11, 15, 20, 0.82) 45%, rgba(11, 15, 20, 0.1) 100%);
+}
+.cardIn {
+  position: relative;
+  max-width: 620px;
+  padding: 44px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.kicker {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--brass);
+}
+/* The name, edited in place: the card's own type with a dashed line under it. */
+.cardName {
+  width: 100%;
+  padding: 0 0 4px;
+  border: 0;
+  border-bottom: 1px dashed var(--rule-strong);
+  background: none;
+  color: var(--text);
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1;
+}
+.cardName:focus {
+  outline: none;
+  border-bottom-color: var(--brass);
+}
+.cardLines {
+  font-size: 15px;
+  color: var(--soft);
+}
+.firstLine {
+  font-family: var(--font-flavor);
+  font-size: 18px;
+  color: #ddd5c6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.cardNone {
+  font-size: 15px;
+  color: var(--muted);
+}
+.cardPicture {
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 10px;
+}
+.card:not(.cardEmpty) .cardPicture {
+  top: 20px;
+  right: 20px;
+  transform: none;
+}
+
+/* The act's fields. */
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.row3 {
+  display: grid;
+  grid-template-columns: 120px 120px minmax(0, 1fr);
+  gap: 16px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.fieldsFoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-height: 20px;
+}
+.remove {
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  color: var(--health);
+  cursor: pointer;
+}
+.remove:hover {
+  text-decoration: underline;
+}
+
+/* Objectives: one row each until opened. */
+.objs {
+  display: flex;
+  flex-direction: column;
+}
+.ob {
+  border-bottom: 1px solid var(--rule-soft);
+}
+.obRow {
+  display: grid;
+  grid-template-columns: 22px 22px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 0;
+}
+.box {
+  width: 22px;
+  height: 22px;
+  box-sizing: border-box;
+  border: 1px solid var(--rule-strong);
+}
+.obWords {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.obText {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+}
+.obWhy {
+  font-size: 14px;
+  color: var(--muted);
+}
+.obSide {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 14px;
+}
+.obStory {
+  color: var(--brass);
+  text-decoration: none;
+}
+.obStory:hover {
+  color: #e8d3a4;
+  text-decoration: underline;
+}
+.obSug .obText {
+  color: var(--soft);
+}
+.obSug .box {
+  border-style: dashed;
+}
+.obBody {
+  margin: 0 0 18px 72px;
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.ob:not(:has(.obRow)) .obBody {
+  margin: 14px 0 0;
+}
+.segs {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+/* Segments: the chosen one light, with a light line under it; never ember. */
+.seg {
+  display: inline-flex;
+  width: max-content;
+  border: 1px solid var(--rule-strong);
+}
+.seg button {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 14px;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  color: var(--muted);
+  cursor: pointer;
+}
+.seg button + button {
+  border-left: 1px solid var(--rule-strong);
+}
+.seg button[aria-pressed="true"] {
+  background: #263040;
+  color: var(--text);
+  box-shadow: inset 0 -2px 0 var(--text);
+}
+.storyLine {
+  font-size: 15px;
+}
+.linkButton {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--ember);
+  cursor: pointer;
+}
+.obFoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.moveTo {
+  width: auto;
+  min-height: 32px;
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+  .col {
+    order: -1;
+  }
+  .row3 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .row3 > :last-child {
+    grid-column: 1 / -1;
+  }
+  .cardIn {
+    padding: 28px 20px 72px;
+  }
+  .cardName {
+    font-size: 30px;
+  }
+  .cardPicture,
+  .card:not(.cardEmpty) .cardPicture {
+    top: auto;
+    bottom: 16px;
+    left: 20px;
+    right: auto;
+    transform: none;
+  }
+  .obRow {
+    grid-template-columns: 22px 22px minmax(0, 1fr);
+  }
+  .obSide {
+    grid-column: 3;
+    flex-wrap: wrap;
+  }
+  .obBody {
+    margin-left: 0;
+  }
+}

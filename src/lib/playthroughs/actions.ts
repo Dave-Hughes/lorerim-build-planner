@@ -51,12 +51,13 @@ export const newAct = async (id: string, input: ActInput) => run(id, (u) => w.ad
 export const saveAct = async (id: string, actId: number, input: Partial<ActInput>) => run(id, (u) => w.setAct(u, id, actId, input));
 export const saveActImage = async (id: string, actId: number, url: string | null) => run(id, (u) => w.setActImage(u, id, actId, url));
 export const removeAct = async (id: string, actId: number) => run(id, (u) => w.removeAct(u, id, actId));
-export const moveAct = async (id: string, actId: number, to: "up" | "down") => run(id, (u) => w.moveAct(u, id, actId, to));
+export const moveAct = async (id: string, actId: number, to: "up" | "down" | number) => run(id, (u) => w.moveAct(u, id, actId, to));
 
 export const newObjective = async (id: string, actId: number, input: ObjectiveInput, after?: number | null) => run(id, (u) => w.addObjective(u, id, actId, input, { after }));
 export const saveObjective = async (id: string, objectiveId: number, input: Partial<ObjectiveInput>) => run(id, (u) => w.setObjective(u, id, objectiveId, input));
 export const removeObjective = async (id: string, objectiveId: number) => run(id, (u) => w.removeObjective(u, id, objectiveId));
-export const moveObjective = async (id: string, objectiveId: number, to: "up" | "down") => run(id, (u) => w.moveObjective(u, id, objectiveId, to));
+/** Up, down, to a place (1-based), or with `toAct` to the end of another act (WO-117). */
+export const moveObjective = async (id: string, objectiveId: number, to: "up" | "down" | number, toAct?: number) => run(id, (u) => w.moveObjective(u, id, objectiveId, to, toAct));
 export const tick = async (id: string, objectiveId: number, status: ObjectiveStatus) => run(id, (u) => w.setStatus(u, id, objectiveId, status));
 export const answer = async (id: string, objectiveId: number, accept: boolean) => run(id, (u) => w.answerSuggestion(u, id, objectiveId, accept));
 

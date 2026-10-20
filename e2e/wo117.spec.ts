@@ -81,3 +81,37 @@ test("the old edit addresses go to their tabs", async ({ page, context }) => {
   await page.goto(`/b/${FRESH_BUILD_ID}/story/edit`);
   await expect(page).toHaveURL(new RegExp(`/b/${FRESH_BUILD_ID}/edit/story$`));
 });
+
+test("Play in edit: an objective row opens and closes, one at a time, and its buttons are quiet", async ({ page, context }) => {
+  await signIn(context);
+  await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/play`);
+  await expect(page.getByRole("region", { name: "Act I's card" }).getByRole("textbox", { name: "The act's name" })).toHaveValue("The Sister's House");
+  const what = page.getByRole("combobox", { name: "Objective" });
+  await expect(what).toHaveCount(0);
+  await page.getByRole("button", { name: "Edit Warn Haelga, or expose her" }).click();
+  await expect(what).toHaveCount(1);
+  await expect(what).toHaveValue("Warn Haelga, or expose her");
+  await expect(page.getByRole("group", { name: "Done when" }).getByRole("button", { name: "The save says so" })).toHaveAttribute("aria-pressed", "true");
+  // Another opens in its place.
+  await page.getByRole("button", { name: "Edit Hunt and tan her first hides" }).click();
+  await expect(what).toHaveCount(1);
+  await expect(what).toHaveValue("Hunt and tan her first hides");
+  await page.getByRole("button", { name: "Close Hunt and tan her first hides" }).click();
+  await expect(what).toHaveCount(0);
+  await expect(page.locator("main .btn-primary")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "+ Add an objective" })).toBeVisible();
+});
+
+test("the act card's Write it in the Story opens that act's chapter", async ({ page, context }) => {
+  await signIn(context);
+  await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/play`);
+  await page.getByRole("link", { name: /The Bard's Road/ }).click();
+  const card = page.getByRole("region", { name: "Act II's card" });
+  await expect(card).toContainText("No chapter for this act yet.");
+  await expect(card.getByText("Add the act's picture")).toBeVisible();
+  await card.getByRole("link", { name: "Write it in the Story ›" }).click();
+  await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story/\\d+$`));
+  await expect(editTab(page, "Story")).toHaveAttribute("aria-current", "page");
+  await expect(page.getByLabel("Title")).toHaveValue("The Bard's Road");
+});
+

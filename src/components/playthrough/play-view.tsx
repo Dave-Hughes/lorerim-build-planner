@@ -324,7 +324,7 @@ function Objective({ o, p, isOwner }: { o: ObjectiveView; p: PlaythroughRecord; 
           {o.linkShown && <span className={s.kind}>{o.linkShown.tag}</span>}
         </span>
         {suggested ? (
-          <span className={s.st}>Suggested by {o.suggestedBy}</span>
+          <span className={s.st}>Suggested by your assistant</span>
         ) : isOwner && !w.done && o.kind === "once" ? (
           <StatusPick id={p.id} objectiveId={o.id} status={o.status} save={o.doneBy === "save"} />
         ) : (
