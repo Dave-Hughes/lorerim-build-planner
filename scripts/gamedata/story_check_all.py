@@ -11,7 +11,8 @@ story quests), and main, guilds, daedric, lands, side, followers (every line in 
 --slice N runs each line in story_check.py's three phases (SC_PHASE A, B, C, each cached for the next) and stops
 before a phase that wouldn't finish inside N seconds, judged by how long that phase took last; run it again to go
 on. Without --slice each line runs whole. A line that fails is listed in the checkpoint and skipped on the next run
-(--retry runs failed lines again); --fresh forgets the checkpoint.
+(--retry runs failed lines again); --fresh forgets the checkpoint. A line another batch's checkpoint has done counts
+as done here (--again runs it anyway).
 """
 import argparse
 import glob
@@ -91,6 +92,7 @@ def main():
     ap.add_argument("--slice", type=float, help="stop before a phase that wouldn't finish inside this many seconds")
     ap.add_argument("--retry", action="store_true", help="run the lines that failed last time again")
     ap.add_argument("--fresh", action="store_true", help="forget the checkpoint and start the batch again")
+    ap.add_argument("--again", action="store_true", help="also run lines another batch has already checked")
     ap.add_argument("--list", action="store_true", help="print the batch's lines and stop")
     args = ap.parse_args()
 
@@ -115,6 +117,13 @@ def main():
     cp.setdefault("timing", {})  # phase -> seconds it took last
     if args.retry:
         cp["failed"] = {}
+    if not args.again:
+        # A line another batch has already checked (the stories batch holds lines from every category) counts as done.
+        for other in glob.glob(os.path.join(base, "story_checks", ".checkpoint-*.json")):
+            if os.path.normpath(other) != os.path.normpath(cp_path):
+                for line_id, said in load_checkpoint(other).get("done", {}).items():
+                    if line_id in lines and line_id not in cp["done"]:
+                        cp["done"][line_id] = f"checked in the {os.path.basename(other)[12:-5]} batch: {said}"
     save_checkpoint(cp_path, cp)
 
     start = time.time()
