@@ -658,7 +658,8 @@ export async function setSnapshot(userId: string, pid: string, input: SnapshotIn
     xp: v.xp ?? null,
     day: v.day ?? null,
     place: v.place ? v.place : null,
-    skills: v.skills,
+    // A save the reader can't take skills from (WO-112) keeps the last ones rather than clearing them.
+    skills: v.source === "save" && !Object.keys(v.skills).length ? (prev?.skills ?? {}) : v.skills,
     // By hand, the save's quest stages and counts stay as the save last gave them, unless given.
     questStages: v.questStages ?? (v.source === "hand" ? (prev?.questStages ?? null) : null),
     counts: v.counts ?? (v.source === "hand" ? (prev?.counts ?? null) : null),

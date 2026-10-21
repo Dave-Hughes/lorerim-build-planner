@@ -48,3 +48,6 @@ __pycache__/
 
 # story check caches and batch checkpoints (scripts/gamedata/story_check_all.py)
 gamedata/*/story_checks/.*
+
+# the save connector's build (node tools/save-connector/build.mjs)
+tools/save-connector/dist/

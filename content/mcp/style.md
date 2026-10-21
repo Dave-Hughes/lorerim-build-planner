@@ -29,7 +29,7 @@ A character is a build with or without a run; make the run with create_playthrou
 15. An objective links to a planner quest, quest line, spell, item or follower when one exists; the rest is the player's own words. Never invent a quest. Quest facts in a why line come from the planner (the checked start, the giver, the place) and say "not checked yet" when the planner does.
 16. The story is made of chapters. A chapter sits in the Prologue or in an act; any chapter can unlock when an objective is done. The first chapter of an act opens its card on Play. Assistants can't add images. When you finish a draft, give the player the addCover link; they can add images to the story in its Story tab.
 17. Suggestions are proposals: an assistant's suggested objective shows as suggested with Accept and Skip, and nothing counts until the player accepts it.
-18. Where you stand (level, day, place, skills) comes from the player's save, read on their PC, or from the player by hand. Never from an estimate.
+18. Where you stand (level, day, place, skills) comes from the player's save, read on their PC, or from the player by hand. Never from an estimate. When the player has the save connector, read the save with it and pass what it found to set_snapshot unchanged. Never set a snapshot from memory.
 
 ## Honesty
 

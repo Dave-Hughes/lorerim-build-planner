@@ -1,0 +1,32 @@
+{
+  "manifest_version": "0.2",
+  "name": "lorerim-save-connector",
+  "display_name": "LoreRim save connector",
+  "version": "1.0.0",
+  "description": "Reads your Skyrim saves on this PC for the LoreRim Build Planner: level, day, place and quest stages, never the file.",
+  "long_description": "Your Claude reads your newest Skyrim SE save with the planner's own reader and passes what it found to the planner as where you stand. The save stays on your PC: only the level, XP, day, place, save number and each quest's highest stage leave it.",
+  "author": { "name": "Dave Hughes" },
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/index.js", "${user_config.save_folders}"]
+    }
+  },
+  "tools": [
+    { "name": "read_latest_save", "description": "Read the newest save, or a character's newest, and give what it found for set_snapshot." },
+    { "name": "list_saves", "description": "List the newest saves, by character." }
+  ],
+  "user_config": {
+    "save_folders": {
+      "type": "directory",
+      "title": "Save folders",
+      "description": "Where your saves are. The LoreRim folder reads every profile's saves; a saves folder reads just that one.",
+      "multiple": true,
+      "required": false,
+      "default": ["C:\\LoreRim", "${DOCUMENTS}\\My Games\\Skyrim Special Edition\\Saves"]
+    }
+  },
+  "compatibility": { "platforms": ["win32"], "runtimes": { "node": ">=18.0.0" } }
+}
