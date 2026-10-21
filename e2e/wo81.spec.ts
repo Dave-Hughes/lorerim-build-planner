@@ -8,8 +8,7 @@ test.use({ viewport: { width: 1440, height: 900 } });
 test("with both on: the healer's Story in the reader, the Story page and the site guide are there", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${HEALER_BUILD_ID}/story`);
-  await expect(page.getByRole("dialog").getByRole("heading", { name: "The Mender" })).toBeVisible();
-  await page.keyboard.press("Escape");
+  await expect(page.getByRole("region", { name: /^Reading: / }).getByRole("heading", { name: "The Mender" })).toBeVisible();
   await page.goto(`/b/${HEALER_BUILD_ID}/edit`);
   await expect(editTab(page, "Story")).toHaveAttribute("href", `/b/${HEALER_BUILD_ID}/edit/story`);
   expect((await page.goto("/guide"))?.status()).toBe(200);

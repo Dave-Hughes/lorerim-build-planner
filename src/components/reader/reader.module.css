@@ -1,125 +1,78 @@
 /*
- * The reader (WO-116), as the CharacterReader boards on canvas row 26: full screen over the page, the
- * Story's darker ground and warm ink. The plate 640 tall (380 on a phone) with the kicker, title and
- * line over its lower edge, a thin bar over it that fades as you read, then the 680px column.
+ * The reader (WO-116), a page in the site since WO-124 (the ReaderInPage board): under the site header, a slim bar with
+ * the way back, the story's title, Previous, Next and Edit; the contents down the left, 300px, the act headings and their
+ * chapters, the one you're on lit, locked ones greyed; then the story's darker ground and warm ink, the chapter's picture
+ * 420 tall over its title, and the 680px column.
  */
 .reader {
   --story-ink: #ddd5c6;
   --story-ground: #0b0f14;
   --story-muted: #8e9bab;
   --story-line: #cbbfa8;
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  background: var(--story-ground);
   color: var(--story-ink);
-  outline: none;
-  box-shadow: 0 -30px 60px rgba(0, 0, 0, 0.5);
-  transform: translateY(0);
-  transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-/* Opened from the page it slides up over it, and down to close (WO-117). */
-.readerOff {
-  transform: translateY(101%);
-}
-/* The page behind dims as the reader comes up. */
-.dim {
-  position: fixed;
-  inset: 0;
-  z-index: 199;
-  background: #06080b;
-  opacity: 0.6;
-  transition: opacity 350ms ease;
-  pointer-events: none;
-}
-.dimOff {
-  opacity: 0;
-}
-@media (prefers-reduced-motion: reduce) {
-  .reader {
-    transition: opacity 200ms ease;
-  }
-  .readerOff {
-    transform: none;
-    opacity: 0;
-  }
-  .dim {
-    transition: opacity 200ms ease;
-  }
-}
-
 .reader a {
   text-decoration: none;
 }
 .reader a:hover {
   text-decoration: underline;
 }
-/* The bar (WO-117): solid, with a rule; Close and its Esc key, the story's title, Previous, Next, Edit. */
 .bar {
   position: sticky;
   top: 0;
-  z-index: 2;
-  height: 64px;
-  margin-bottom: -64px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: center;
-  gap: 16px;
-  padding: 0 32px;
-  background: rgba(11, 15, 20, 0.92);
-  border-bottom: 1px solid var(--rule-soft);
-}
-.barLeft {
-  justify-self: start;
+  z-index: 5;
+  height: 56px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 40px;
+  background: var(--ground);
+  border-bottom: 1px solid var(--rule);
 }
-.close {
-  color: var(--text);
+.barLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
 }
-.key {
-  display: inline-grid;
-  place-items: center;
-  height: 22px;
-  padding: 0 6px;
-  border: 1px solid var(--rule-strong);
-  border-bottom-width: 2px;
-  font-family: var(--font-body);
-  font-size: 12px;
-  color: var(--muted);
+.back {
+  font-size: 15px;
+  color: var(--ember);
+  white-space: nowrap;
 }
 .barTitle {
-  font-family: var(--font-title);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-weight: 700;
-  font-size: 14px;
-  color: var(--brass);
+  font-family: var(--font-flavor);
+  font-style: italic;
+  color: var(--story-ink);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 40vw;
 }
 .barSide {
-  justify-self: end;
   display: flex;
   gap: 10px;
   align-items: center;
 }
 .barRule {
   width: 1px;
-  height: 24px;
-  background: var(--rule);
-  margin: 0 4px;
+  height: 20px;
+  background: var(--rule-strong);
+}
+.layout {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  min-height: calc(100vh - 56px);
+}
+.page {
+  background: var(--story-ground);
+  min-width: 0;
 }
 
 /* The plate. */
 .plate {
   position: relative;
-  height: 640px;
+  height: 420px;
   overflow: hidden;
   display: flex;
   align-items: flex-end;
@@ -127,7 +80,7 @@
 }
 .plateNone {
   height: auto;
-  padding-top: 160px;
+  padding-top: 64px;
 }
 .plateImage {
   position: absolute;
@@ -175,7 +128,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 700;
-  font-size: 68px;
+  font-size: 56px;
   line-height: 1;
   color: var(--text);
 }
@@ -280,17 +233,16 @@
 @media (max-width: 640px) {
   .bar {
     padding: 0 12px;
-    grid-template-columns: auto minmax(0, 1fr);
   }
-  .key,
-  .barTitle {
+  .barTitle,
+  .barRule {
     display: none;
   }
   .barSide {
     gap: 6px;
   }
   .plate {
-    height: 380px;
+    height: 260px;
   }
   .words {
     margin-bottom: 20px;
@@ -320,32 +272,46 @@
   }
 }
 
-/* Contents (WO-118): every chapter in reading order, under the bar on the left. */
+/* Contents (WO-124): down the left, the acts as headings and their chapters under them. */
 .contents {
-  position: fixed;
-  top: 72px;
-  left: 32px;
-  z-index: 3;
-  width: 380px;
-  max-width: calc(100vw - 32px);
-  max-height: calc(100vh - 96px);
-  overflow-y: auto;
-  padding: 8px 0;
-  background: var(--panel-raised);
-  border: 1px solid var(--rule-strong);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+  padding: 24px 28px;
+  border-right: 1px solid var(--rule-soft);
+  background: var(--ground);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
-.contents ol {
+.contentsButton {
+  display: none;
+}
+.contentsHead {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--soft);
+  padding-bottom: 10px;
+}
+.contentsGroup ol {
   margin: 0;
   padding: 0;
   list-style: none;
 }
+.contentsKicker {
+  display: block;
+  padding: 12px 0 4px;
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--brass);
+}
 .contentsItem {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+  display: block;
   width: 100%;
-  padding: 9px 16px;
+  padding: 6px 10px;
   border: 0;
   border-left: 2px solid transparent;
   background: none;
@@ -355,29 +321,28 @@
   cursor: pointer;
 }
 .contentsItem:hover {
-  background: var(--panel);
   color: var(--text);
 }
 .contentsItem[aria-current="page"] {
+  background: var(--panel);
   border-left-color: var(--ember);
   color: var(--ember);
 }
-.contentsKicker {
-  font-family: var(--font-title);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 12px;
-  color: var(--brass);
-}
-.contentsTitle {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 15px;
-}
-.contentsWait {
-  font-size: 13px;
-  color: var(--muted);
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .contentsButton {
+    display: inline-flex;
+  }
+  .contents {
+    display: none;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .contentsOpen {
+    display: flex;
+  }
 }
 
 /* Read the story (WO-118): at the right of the tab row, Continue reading above it. */
@@ -407,10 +372,71 @@
   border-color: #e8d3a4;
 }
 @media (max-width: 760px) {
-  .contents {
-    left: 16px;
-  }
   .readStoryAt {
     display: none;
   }
+}
+
+/* Her story's card at the top of Play's rail (WO-124, the PlayRail board). */
+.storyCard {
+  position: relative;
+  display: block;
+  height: 180px;
+  overflow: hidden;
+  border: 1px solid var(--brass);
+  background: var(--sunk);
+  text-decoration: none;
+  color: inherit;
+}
+.storyCard:hover,
+.storyCard:focus-visible {
+  border-color: var(--ember);
+}
+.storyCardImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.storyCardFade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(11, 15, 20, 0.2), rgba(11, 15, 20, 0.92));
+}
+.storyCardWords {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.storyCardLabel {
+  font-family: var(--font-title);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+.storyCardTitle {
+  font-family: var(--font-flavor);
+  font-size: 18px;
+  color: #ddd5c6;
+}
+.storyCardGo {
+  font-size: 13px;
+  color: var(--soft);
+}
+.storyCardGo i {
+  font-family: var(--font-flavor);
+}
+/* A locked chapter in the contents: greyed, "(locked)" (WO-124). */
+.contentsLocked {
+  color: var(--dim);
+}
+.lockedWord {
+  font-size: 12px;
 }

@@ -8,7 +8,8 @@ import { savedInBand, signIn } from "./helpers";
 import { AURORA_BUILD_ID, KYRIA_BUILD_ID, KYRIA_PLAYTHROUGH_ID } from "./seed";
 
 const KYRIA = `/p/${KYRIA_PLAYTHROUGH_ID}`;
-const reader = (page: Page) => page.getByRole("dialog");
+// The reader is a page in the site (WO-124).
+const reader = (page: Page) => page.getByRole("region", { name: /^Reading: / });
 const readTheStory = (page: Page) => page.getByRole("link", { name: /^Read the story/ }).first();
 
 test("Read the story sits at the right of the tab row; the reader's Contents jumps to a chapter; Continue reading names it", async ({ page, context }) => {
@@ -17,29 +18,26 @@ test("Read the story sits at the right of the tab row; the reader's Contents jum
   // In the tab row, on every tab; the hero's old button is gone.
   await expect(page.getByRole("link", { name: "Read the story from the beginning" })).toHaveCount(0);
   await expect(readTheStory(page)).toBeVisible();
-  await page.getByRole("tab", { name: /^Levels/ }).click();
+  await page.getByRole("tab", { name: /^Build/ }).click();
   await expect(readTheStory(page)).toBeVisible();
   await readTheStory(page).click();
   await expect(reader(page)).toBeVisible();
 
-  // Contents: every chapter in reading order, the locked ones with their lock and what unlocks them.
-  await reader(page).getByRole("button", { name: "Contents" }).click();
+  // Contents (WO-124): down the left, every chapter in reading order under its act; the locked ones greyed with "(locked)".
   const contents = reader(page).getByRole("navigation", { name: "Contents" });
   await expect(contents.getByRole("button", { name: /Chapter One: The Chapel by the Sea/ })).toBeVisible();
-  const locked = contents.getByRole("button", { name: /Made with Care/ });
-  await expect(locked.getByRole("img", { name: "Locked" })).toBeVisible();
-  await expect(locked).toContainText("Unlocks when you tick Hunt and tan her first hides.");
+  await expect(contents.getByText("Act I", { exact: true })).toBeVisible();
+  await expect(contents.getByRole("button", { name: "Made with Care (locked)" })).toBeVisible();
+  await expect(contents.getByRole("button", { name: "The first set (locked)" })).toBeVisible();
   await contents.getByRole("button", { name: /The Mark of Dibella/ }).click();
   await expect(reader(page).getByRole("heading", { level: 1, name: "The Mark of Dibella" })).toBeVisible();
+  await expect(contents.getByRole("button", { name: /The Mark of Dibella/ })).toHaveAttribute("aria-current", "page");
   await expect(page).toHaveURL(new RegExp(`${KYRIA}/story/\\d+$`));
 
-  // Esc closes the list first, then the reader.
-  await reader(page).getByRole("button", { name: "Contents" }).click();
-  await expect(contents).toBeVisible();
+  // Esc closes nothing now; the bar's way back does.
   await page.keyboard.press("Escape");
-  await expect(contents).toHaveCount(0);
   await expect(reader(page)).toBeVisible();
-  await page.keyboard.press("Escape");
+  await reader(page).getByRole("link", { name: "‹ Kyria Severa's playthrough" }).click();
   await expect(reader(page)).toHaveCount(0);
 
   // Continue reading, with the chapter's name, then and after a reload (the owner's readAt).
@@ -120,17 +118,24 @@ for (const [w, h] of [
     }
     await page.goto(`${KYRIA}/edit/play`);
     const band = page.getByRole("region", { name: "Edit bar" });
-    await band.getByRole("button", { name: /^Who can see it/ }).click();
-    await onScreen(page, page.getByRole("menu", { name: "Who can see it" }));
+    // On a phone the bar keeps the tab you're on as a menu, and Done (WO-124); at 1440, who can see it.
+    if (w < 900) {
+      await band.getByRole("button", { name: /^Playthrough: the edit tabs/ }).click();
+      await onScreen(page, page.getByRole("menu", { name: "Edit tabs" }));
+    } else {
+      await band.getByRole("button", { name: /^Who can see it/ }).click();
+      await onScreen(page, page.getByRole("menu", { name: "Who can see it" }));
+    }
   });
 
 test("the AI assisted mark is its own tooltip's trigger, with no separate i, in the byline", async ({ page, context }) => {
   await signIn(context);
-  await page.goto(`${KYRIA}/edit/play`);
+  // WO-124: the edit page's hero is gone; the mark is in the character page's byline.
+  await page.goto(KYRIA);
   await expect(page.getByRole("button", { name: "What AI assisted means" })).toHaveCount(0);
   const mark = page.getByRole("button", { name: "AI assisted" });
   await mark.hover();
-  await expect(page.getByRole("tooltip")).toContainText("made this with an AI assistant through the planner");
+  await expect(page.getByRole("tooltip")).toContainText("made this with an AI assistant, like Claude, connected to the planner");
   await mark.blur();
   await page.mouse.move(0, 0);
   await mark.focus();
@@ -189,7 +194,7 @@ test("Position on a chapter's image saves where it sits, and the reader shows it
   await savedInBand(page);
   const url = page.url().replace("/edit/story/", "/story/");
   await page.goto(url);
-  await expect(page.getByRole("dialog").locator("header img")).toHaveCSS("object-position", "40% 50%");
+  await expect(reader(page).locator("header img")).toHaveCSS("object-position", "40% 50%");
 });
 
 test("the words door, helper, entry, beat, picture and Before Skyrim appear nowhere a player reads", async ({ page, context }) => {

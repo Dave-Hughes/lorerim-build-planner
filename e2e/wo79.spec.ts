@@ -80,13 +80,14 @@ test("point 3: the Story in the reader (WO-116): the plate, the drop cap, the pa
   await expect(page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Story/ })).toHaveCount(0);
   await page.getByRole("link", { name: /^Read the story/ }).first().click();
   await expect(page).toHaveURL(new RegExp(`/b/${STORY_BUILD_ID}/story$`));
-  const story = page.getByRole("dialog", { name: "The Writ" });
+  // The reader is a page in the site (WO-124).
+  const story = page.getByRole("region", { name: "Reading: The Writ" });
 
-  // The opening plate: the first image, about 640px tall, the title and the opening line over it.
+  // The opening plate: the first image, 420px tall (WO-124), the title and the opening line over it.
   const opening = story.locator("header");
   await expect(opening.getByRole("heading", { name: "The Writ" })).toBeVisible();
   await expect(opening).toContainText("Mephala's work is done where no one is watching.");
-  expect(Math.round((await opening.boundingBox())!.height)).toBe(640);
+  expect(Math.round((await opening.boundingBox())!.height)).toBe(420);
 
   // The first paragraph's drop cap: brass, 78px, floated.
   const cap = await story.locator("p", { hasText: "The ship from Ebonheart" }).evaluate((p) => {
@@ -125,7 +126,7 @@ test("point 3: the Story in the reader (WO-116): the plate, the drop cap, the pa
 
   // Esc closed the viewer, not the reader; the way back is to the build, on Levels.
   await expect(story).toBeVisible();
-  await story.getByRole("navigation", { name: "The story" }).getByRole("link").filter({ hasText: "Back to the build" }).click();
+  await story.getByRole("navigation", { name: "The story" }).getByRole("link").filter({ hasText: "'s build" }).click();
   await expect(story).toHaveCount(0);
   await expect(page).toHaveURL(new RegExp(`/b/${STORY_BUILD_ID}$`));
   await expect(page.locator("#level-card")).toBeVisible();

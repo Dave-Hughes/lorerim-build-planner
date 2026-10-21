@@ -32,22 +32,19 @@ function storedLast(runId: string | null): string | null {
 /** Whether the reader is open over the page: the page holds back what would pop up over it (Tapps). */
 export const useReading = () => !!useContext(ReaderContext)?.reading;
 
-/** How long the reader takes to slide up or down (WO-117), as reader.module.css has it. */
-const SLIDE_MS = 420;
-
 export function ReaderProvider({ stops, back, runId, title, children }: { stops: ReaderStop[]; back: ReaderBack; runId: string | null; title: string; children: React.ReactNode }) {
   const pathname = usePathname();
   const at = stopAt(stops, pathname);
   // Whether this browser entry is one the page pushed: then Back is the browser's back.
   const pushed = useRef(false);
-  // Opened from the page, it slides up over it (WO-117); opened from a link, it simply loads.
-  const [slideIn, setSlideIn] = useState(false);
+  // Where the page was when the reader opened over it, to come back to (WO-124: the page stays, hidden, under it).
+  const pageY = useRef(0);
   const open = useCallback(
     (href: string) => {
       if (stopAt(stops, href) < 0) return false;
       if (stopAt(stops, window.location.pathname) >= 0) window.history.replaceState(null, "", href);
       else {
-        setSlideIn(true);
+        pageY.current = window.scrollY;
         window.history.pushState(null, "", href);
         pushed.current = true;
       }
@@ -59,20 +56,14 @@ export function ReaderProvider({ stops, back, runId, title, children }: { stops:
     if (pushed.current) window.history.back();
     else window.history.replaceState(null, "", back.href);
   }, [back.href]);
-  // Closed by any way (Close, Esc, the browser's back), the last stop stays a moment to slide down.
-  const [shown, setShown] = useState(at);
-  if (at >= 0 && at !== shown) setShown(at);
-  const leaving = at < 0 && shown >= 0;
+  // Closed by any way (the back link, the browser's back), the page comes back where it was.
+  const wasReading = useRef(at >= 0);
   useEffect(() => {
-    if (at >= 0) return;
-    pushed.current = false;
-    if (!leaving) return;
-    const t = setTimeout(() => {
-      setShown(-1);
-      setSlideIn(false);
-    }, SLIDE_MS);
-    return () => clearTimeout(t);
-  }, [at, leaving]);
+    if (at >= 0) window.scrollTo({ top: 0, behavior: "instant" });
+    else if (wasReading.current) window.scrollTo({ top: pageY.current, behavior: "instant" });
+    if (at < 0) pushed.current = false;
+    wasReading.current = at >= 0;
+  }, [at]);
   // The chapter read last (WO-118): the owner's newest readAt, else this browser's; then each stop opened.
   const [last, setLast] = useState<string | null>(() => {
     const owned = stops.filter((x) => x.readAt !== null).sort((a, b) => b.readAt! - a.readAt!)[0];
@@ -100,13 +91,12 @@ export function ReaderProvider({ stops, back, runId, title, children }: { stops:
     }
   }, [reached, runId]);
   const value = useMemo(() => ({ open, reading: at >= 0, stops, last }), [open, at, stops, last]);
-  const showing = at >= 0 ? at : shown;
   return (
     <ReaderContext.Provider value={value}>
-      {children}
-      {showing >= 0 && showing < stops.length && (
-        <Reader stops={stops} at={showing} back={back} runId={runId} title={title} slideIn={slideIn} leaving={leaving} onClose={close} onGo={(i) => window.history.replaceState(null, "", stops[i].href)} />
-      )}
+      {/* The reader is a page in the site (WO-124, the ReaderInPage board): it takes the page's place under the site
+          header, and the page waits hidden under it, as it was. */}
+      <div hidden={at >= 0}>{children}</div>
+      {at >= 0 && <Reader stops={stops} at={at} back={back} runId={runId} title={title} onClose={close} onGo={(i) => window.history.replaceState(null, "", stops[i].href)} />}
     </ReaderContext.Provider>
   );
 }
@@ -153,197 +143,204 @@ export function ReadTheStory({ className, compact = false }: { className?: strin
   );
 }
 
-function Reader({ stops, at, back, runId, title, slideIn, leaving, onClose, onGo }: { stops: ReaderStop[]; at: number; back: ReaderBack; runId: string | null; title: string; slideIn: boolean; leaving: boolean; onClose: () => void; onGo: (i: number) => void }) {
+/**
+ * Her story's card at the top of Play's rail (WO-124, the PlayRail board): the story's picture, "Her story", its title,
+ * and "Continue: {the next open chapter not read yet} ›", or "Start reading ›" before any is read. Nothing without one.
+ */
+export function StoryCard({ picture, focus, title, label }: { picture: string | null; focus: { x: number; y: number } | null; title: string; label: string }) {
+  const ctx = useContext(ReaderContext);
+  if (!ctx?.stops.length) return null;
+  const stops = ctx.stops;
+  const lastAt = ctx.last ? stops.findIndex((x) => x.key === ctx.last) : -1;
+  const read = (i: number) => stops[i].readAt !== null || i <= lastAt;
+  const started = lastAt >= 0 || stops.some((x) => x.readAt !== null);
+  const next = started ? (stops.find((x, i) => !x.waiting && !read(i)) ?? null) : null;
+  const go = started ? next : stops[0];
+  return (
+    <ReaderLink href={(go ?? stops[lastAt] ?? stops[0]).href} className={s.storyCard} aria-label={`${label}: ${title}. ${go ? (started ? `Continue: ${go.title}` : "Start reading") : "Read it again"}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      {picture && <img src={picture} alt="" className={s.storyCardImage} style={focus ? { objectPosition: `${focus.x}% ${focus.y}%` } : undefined} />}
+      <span className={s.storyCardFade} aria-hidden="true" />
+      <span className={s.storyCardWords}>
+        <span className={s.storyCardLabel}>{label}</span>
+        <span className={s.storyCardTitle}>{title}</span>
+        <span className={s.storyCardGo}>
+          {go ? (
+            started ? (
+              <>
+                Continue: <i>{go.title}</i> ›
+              </>
+            ) : (
+              "Start reading ›"
+            )
+          ) : (
+            "Read it again ›"
+          )}
+        </span>
+      </span>
+    </ReaderLink>
+  );
+}
+
+/** A stop's act or "Prologue", as the contents' heading: the kicker before any " | from …". */
+const groupOf = (x: ReaderStop) => (x.kicker ?? "").split(" | ")[0] || null;
+
+function Reader({ stops, at, back, runId, title, onClose, onGo }: { stops: ReaderStop[]; at: number; back: ReaderBack; runId: string | null; title: string; onClose: () => void; onGo: (i: number) => void }) {
   const router = useRouter();
   const stop = stops[at];
   const prev = at > 0 ? stops[at - 1] : null;
   const next = at < stops.length - 1 ? stops[at + 1] : null;
-  const root = useRef<HTMLDivElement>(null);
-  // Up from below on the way in (when opened from the page), down on the way out.
-  const [arrived, setArrived] = useState(!slideIn);
-  useEffect(() => {
-    if (arrived) return;
-    const f = requestAnimationFrame(() => requestAnimationFrame(() => setArrived(true)));
-    return () => cancelAnimationFrame(f);
-  }, [arrived]);
-  const off = leaving || !arrived;
-
-  // The page under it stays where it was: nothing behind scrolls while the reader is open.
-  // Its scroll is put back on close: the browser's own restore can land while the page is still held.
-  useEffect(() => {
-    const html = document.documentElement;
-    const was = html.style.overflow;
-    const y = window.scrollY;
-    html.style.overflow = "hidden";
-    const focus = document.activeElement as HTMLElement | null;
-    root.current?.focus({ preventScroll: true });
-    return () => {
-      html.style.overflow = was;
-      window.scrollTo({ top: y, behavior: "instant" });
-      focus?.focus({ preventScroll: true });
-    };
-  }, []);
-  // A new stop starts at its top.
-  useEffect(() => {
-    root.current?.scrollTo({ top: 0 });
-  }, [at]);
-  // Contents (WO-118): every chapter in reading order; Esc closes it before the reader.
+  // On a phone the contents fold into a button in the bar (WO-124).
   const [contents, setContents] = useState(false);
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      // The image viewer's Esc is its own.
-      if (e.key !== "Escape" || leaving || document.querySelector('[aria-label="Image viewer"]')) return;
-      e.preventDefault();
-      if (contents) setContents(false);
-      else onClose();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [onClose, leaving, contents]);
-
   const toRow = (href: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     router.replace(href);
   };
-  const go = (i: number) => () => onGo(i);
+  const go = (i: number) => () => {
+    setContents(false);
+    onGo(i);
+  };
+  // The contents in reading order, under each act's heading (the Prologue's first).
+  const groups: { label: string | null; items: { x: ReaderStop; i: number }[] }[] = [];
+  stops.forEach((x, i) => {
+    const label = groupOf(x);
+    if (!groups.length || groups[groups.length - 1].label !== label) groups.push({ label, items: [] });
+    groups[groups.length - 1].items.push({ x, i });
+  });
 
   return (
-    <>
-      <div className={`${s.dim} ${off ? s.dimOff : ""}`} aria-hidden="true" />
-      <div ref={root} className={`${s.reader} ${off ? s.readerOff : ""}`} role="dialog" aria-modal="true" aria-label={stop.title} tabIndex={-1}>
-        {/* The bar (WO-117): solid, with Close and its Esc key, the story's title, and Previous, Next and Edit as buttons. */}
-        <div className={s.bar}>
-          <span className={s.barLeft}>
-            <button type="button" className={`btn btn-sm ${s.close}`} onClick={onClose}>
-              × Close
-            </button>
-            <kbd className={s.key}>Esc</kbd>
-            {stops.length > 1 && (
-              <button type="button" className="btn btn-sm" aria-expanded={contents} aria-controls="reader-contents" onClick={() => setContents(!contents)}>
-                Contents
-              </button>
-            )}
-          </span>
+    <div className={s.reader} role="region" aria-label={`Reading: ${stop.title}`}>
+      {/* The bar (WO-124): the way back to the page, the story's title, and Previous, Next and the owner's Edit. */}
+      <div className={s.bar}>
+        <span className={s.barLeft}>
+          <a
+            href={back.href}
+            className={s.back}
+            onClick={(e) => {
+              e.preventDefault();
+              onClose();
+            }}
+          >
+            ‹ {back.label}
+          </a>
+          <span className={s.barRule} aria-hidden="true" />
           <span className={s.barTitle}>{title}</span>
-          <span className={s.barSide}>
-            <button type="button" className="btn btn-sm" onClick={prev ? go(at - 1) : undefined} disabled={!prev} aria-label={prev ? `Previous: ${prev.title}` : "Previous"}>
-              ‹ Previous
+        </span>
+        <span className={s.barSide}>
+          {stops.length > 1 && (
+            <button type="button" className={`btn btn-sm ${s.contentsButton}`} aria-expanded={contents} aria-controls="reader-contents" onClick={() => setContents(!contents)}>
+              Contents
             </button>
-            <button type="button" className="btn btn-sm" onClick={next ? go(at + 1) : undefined} disabled={!next} aria-label={next ? `Next: ${next.title}` : "Next"}>
-              Next ›
-            </button>
-            {stop.edit && (
-              <>
-                <span className={s.barRule} aria-hidden="true" />
-                <Link href={stop.edit} className="btn btn-sm">
-                  Edit
-                </Link>
-              </>
-            )}
-          </span>
-        </div>
+          )}
+          <button type="button" className="btn btn-sm" onClick={prev ? go(at - 1) : undefined} disabled={!prev} aria-label={prev ? `Previous: ${prev.title}` : "Previous"}>
+            ‹ Previous
+          </button>
+          <button type="button" className="btn btn-sm" onClick={next ? go(at + 1) : undefined} disabled={!next} aria-label={next ? `Next: ${next.title}` : "Next"}>
+            Next ›
+          </button>
+          {stop.edit && (
+            <Link href={stop.edit} className="btn btn-sm">
+              Edit
+            </Link>
+          )}
+        </span>
+      </div>
 
-        {contents && (
-          <nav id="reader-contents" className={s.contents} aria-label="Contents">
-            <ol>
-              {stops.map((x, i) => (
-                <li key={x.key}>
-                  <button
-                    type="button"
-                    className={s.contentsItem}
-                    aria-current={i === at ? "page" : undefined}
-                    onClick={() => {
-                      setContents(false);
-                      onGo(i);
-                    }}
-                  >
-                    <span className={s.contentsKicker}>{x.kicker}</span>
-                    <span className={s.contentsTitle}>
-                      {x.waiting && (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src="/icons/mark-lock.svg" alt="Locked" width={16} height={16} className="px" />
-                      )}
-                      {x.title}
-                    </span>
-                    {x.waiting && <span className={s.contentsWait}>{x.waiting}</span>}
-                  </button>
-                </li>
-              ))}
-            </ol>
+      <div className={s.layout}>
+        {stops.length > 1 && (
+          <nav id="reader-contents" className={`${s.contents} ${contents ? s.contentsOpen : ""}`} aria-label="Contents">
+            <span className={s.contentsHead}>Contents</span>
+            {groups.map((g, gi) => (
+              <div key={gi} className={s.contentsGroup}>
+                {g.label && <span className={s.contentsKicker}>{g.label}</span>}
+                <ol>
+                  {g.items.map(({ x, i }) => (
+                    <li key={x.key}>
+                      <button type="button" className={`${s.contentsItem} ${x.waiting ? s.contentsLocked : ""}`} aria-current={i === at ? "page" : undefined} onClick={go(i)}>
+                        {x.title}
+                        {x.waiting && <span className={s.lockedWord}> (locked)</span>}
+                      </button>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ))}
           </nav>
         )}
 
-        <header className={`${s.plate} ${stop.plate ? "" : s.plateNone}`}>
-          {stop.plate && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={stop.plate} alt="" className={s.plateImage} style={stop.plateFocus ? { objectPosition: `${stop.plateFocus.x}% ${stop.plateFocus.y}%` } : undefined} />
-          )}
-          <div className={s.plateFade} aria-hidden="true" />
-          <div className={s.words}>
-            {stop.kicker && <span className={s.kicker}>{stop.kicker}</span>}
-            <h1 className={s.title}>{stop.title}</h1>
-            {stop.line && <p className={s.line}>{stop.line}</p>}
-          </div>
-        </header>
+        <div className={s.page}>
+          <header className={`${s.plate} ${stop.plate ? "" : s.plateNone}`}>
+            {stop.plate && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={stop.plate} alt="" className={s.plateImage} style={stop.plateFocus ? { objectPosition: `${stop.plateFocus.x}% ${stop.plateFocus.y}%` } : undefined} />
+            )}
+            <div className={s.plateFade} aria-hidden="true" />
+            <div className={s.words}>
+              {stop.kicker && <span className={s.kicker}>{stop.kicker}</span>}
+              <h1 className={s.title}>{stop.title}</h1>
+              {stop.line && <p className={s.line}>{stop.line}</p>}
+            </div>
+          </header>
 
-        <div className={s.body}>
-          <article key={stop.key} className={s.col}>
-            {stop.waiting && runId && stop.chapterId !== null ? <Waiting stop={stop} runId={runId} isOwner={!!stop.edit} /> : <Text stop={stop} />}
-            {stop.game && (
-              <span className={s.game}>
-                In the game:{" "}
-                <a href={stop.game.href} onClick={toRow(stop.game.href)}>
-                  {stop.game.text}
+          <div className={s.body}>
+            <article key={stop.key} className={s.col}>
+              {stop.waiting && runId && stop.chapterId !== null ? <Waiting stop={stop} runId={runId} isOwner={!!stop.edit} /> : <Text stop={stop} />}
+              {stop.game && (
+                <span className={s.game}>
+                  In the game:{" "}
+                  <a href={stop.game.href} onClick={toRow(stop.game.href)}>
+                    {stop.game.text}
+                  </a>
+                </span>
+              )}
+            </article>
+            {/* The foot (WO-117): previous and next as two cards, each with the chapter's name. */}
+            <nav className={s.foot} aria-label="The story">
+              {prev ? (
+                <a
+                  href={prev.href}
+                  className={s.footCard}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onGo(at - 1);
+                  }}
+                >
+                  <small>‹ Previous</small>
+                  <span>{prev.title}</span>
                 </a>
-              </span>
-            )}
-          </article>
-          {/* The foot (WO-117): previous and next as two cards, each with the chapter's name. */}
-          <nav className={s.foot} aria-label="The story">
-            {prev ? (
-              <a
-                href={prev.href}
-                className={s.footCard}
-                onClick={(e) => {
-                  e.preventDefault();
-                  onGo(at - 1);
-                }}
-              >
-                <small>‹ Previous</small>
-                <span>{prev.title}</span>
-              </a>
-            ) : (
-              <span />
-            )}
-            {next ? (
-              <a
-                href={next.href}
-                className={`${s.footCard} ${s.footNext}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  onGo(at + 1);
-                }}
-              >
-                <small>Next ›</small>
-                <span>{next.title}</span>
-              </a>
-            ) : (
-              <a
-                href={back.href}
-                className={`${s.footCard} ${s.footNext}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  onClose();
-                }}
-              >
-                <small>The end, for now</small>
-                <span>{back.label}</span>
-              </a>
-            )}
-          </nav>
+              ) : (
+                <span />
+              )}
+              {next ? (
+                <a
+                  href={next.href}
+                  className={`${s.footCard} ${s.footNext}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onGo(at + 1);
+                  }}
+                >
+                  <small>Next ›</small>
+                  <span>{next.title}</span>
+                </a>
+              ) : (
+                <a
+                  href={back.href}
+                  className={`${s.footCard} ${s.footNext}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onClose();
+                  }}
+                >
+                  <small>The end, for now</small>
+                  <span>{back.label}</span>
+                </a>
+              )}
+            </nav>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -358,7 +355,7 @@ function Waiting({ stop, runId, isOwner }: { stop: ReaderStop; runId: string; is
   if (shown) return <Text stop={stop} />;
   return (
     <p className={s.wait}>
-      {stop.waiting}{" "}
+      {stop.waiting} <span className="muted">It may spoil what&apos;s ahead.</span>{" "}
       <button
         type="button"
         className={s.linkButton}

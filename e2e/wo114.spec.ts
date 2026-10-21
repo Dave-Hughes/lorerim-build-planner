@@ -22,7 +22,7 @@ test("Start a run on a build alone's card: its Story becomes the run's first cha
 
   // The Story is the run's first chapter, in the reader (WO-116).
   await page.goto(`/p/${pid}/tale`);
-  const reader = page.getByRole("dialog");
+  const reader = page.getByRole("region", { name: /^Reading: / });
   await expect(reader.getByRole("heading", { level: 1, name: "The Mender" })).toBeVisible();
   await expect(reader.getByText("Every wound in Skyrim is somebody's business.")).toBeVisible();
   await expect(reader.getByText("She came north with a satchel of herbs")).toBeVisible();

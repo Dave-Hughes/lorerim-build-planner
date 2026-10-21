@@ -64,7 +64,8 @@ export async function CharacterPage({
     : told
       ? [storyStop({ id, title: told.title, line: told.line, doc: told.doc, cover, isOwner })]
       : [];
-  const back = run ? { href: `/p/${run.id}`, label: "Back to the quest log" } : { href: `/b/${id}`, label: "Back to the build" };
+  // The reader's way back (WO-124): "‹ Kyria Severa's playthrough".
+  const back = run ? { href: `/p/${run.id}`, label: `${run.name}'s playthrough` } : { href: `/b/${id}`, label: `${build.name}'s build` };
   // A draft asks for one thing (WO-118): the owner's box on a drafted character with no cover.
   const nudge = run && isOwner && run.draftedBy && !build.coverImageUrl ? `/b/${id}/setup?step=name#cover` : null;
   return (
