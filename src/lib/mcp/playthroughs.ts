@@ -16,6 +16,7 @@ import { gateOf, mainOrder, questsData } from "@/lib/quests/data";
 import { openState } from "@/lib/quests/open";
 import { stories } from "@/lib/quests/stories-data";
 import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
+import { openForYou, playerState, type Told } from "./facts";
 import * as names from "./names";
 import { prepareBuild, type Player } from "./builds";
 import { insertBuild } from "@/lib/builds/writes";
@@ -469,31 +470,65 @@ export async function finishDraft(p: Player, input: { playthrough: string }) {
 }
 
 /**
- * suggest_quests: stories whose lines' starts are checked in the game files, open at the level and not
- * done, each with its checked start line and the planner's link. Never a line whose start isn't checked.
+ * What the player has told the planner (WO-115 Part 3), from a tool's input and, when one is named and
+ * signed in, a playthrough: its snapshot's level and quest stages, and the quests and lines its
+ * ticked or saved objectives link to. Until the save helper (WO-112) a stage nobody gave is unknown.
+ */
+export async function toldOf(input: { level?: number; done?: string[]; playthrough?: string }, userId: string | null): Promise<Told> {
+  const done = [...(input.done ?? [])];
+  let level = input.level ?? null;
+  let stages: Record<string, number> = {};
+  if (input.playthrough && userId) {
+    const pt = await getPlaythrough(input.playthrough, userId);
+    if (pt) {
+      level ??= pt.snapshot?.level ?? null;
+      stages = { ...(pt.snapshot?.questStages ?? {}) };
+      for (const o of pt.view.acts.flatMap((a) => a.objectives)) {
+        if (!o.worked.done) continue;
+        if (o.link && (o.link.kind === "quest" || o.link.kind === "line" || o.link.kind === "follower")) done.push(o.link.id);
+      }
+    }
+  }
+  return { level, done, stages };
+}
+
+/**
+ * suggest_quests: stories whose starts are checked in the game files and whose first quest is open for
+ * the player (WO-115 Part 3: never one the planner can't judge), not done, each with its checked start,
+ * why it's open, and the planner's link.
  */
 export async function suggestQuests(origin: string, input: { level: number; where?: string; done?: string[]; playthrough?: string }, userId: string | null) {
   const { byId } = questsData();
-  let done = input.done ?? [];
-  if (input.playthrough && userId) {
-    const pt = await getPlaythrough(input.playthrough, userId);
-    if (pt) done = [...done, ...pt.view.acts.flatMap((a) => a.objectives.filter((o) => o.worked.done && o.link && (o.link.kind === "line" || o.link.kind === "follower")).map((o) => o.link!.id))];
-  }
+  const told = await toldOf(input, userId);
+  const player = playerState(told);
   const order = mainOrder().map((q) => q.edid);
   const where = input.where?.trim().toLowerCase();
   const out = stories()
     .map((s) => ({ s, line: byId.get(s.line) }))
-    .filter(({ line }) => line && line.checked.start === "files" && !done.includes(line.id))
-    .filter(({ line }) => openState(gateOf(line!), { level: input.level, mainAt: null, finished: done }, order) === "open")
-    .filter(({ s, line }) => !where || [line!.where, line!.giver?.place, ...s.start.map((x) => x.text)].some((t) => t?.toLowerCase().includes(where)))
+    .filter(({ line }) => line && line.checked.start === "files" && !line.quests.every((q) => player.done.has(q.edid)))
+    .filter(({ line }) => openState(gateOf(line!), { level: input.level, mainAt: null, finished: told.done ?? [] }, order) === "open")
+    .map(({ s, line }) => {
+      const first = line!.quests.find((q) => q.edid === line!.opening) ?? line!.quests[0];
+      return { s, line: line!, first, open: openForYou(line!, first, player) };
+    })
+    .filter(({ open }) => open.state === "open")
+    .filter(({ s, line }) => !where || [line.where, line.giver?.place, ...s.start.map((x) => x.text)].some((t) => t?.toLowerCase().includes(where)))
     .slice(0, 12)
-    .map(({ s, line }) => ({
+    .map(({ s, line, first, open }) => ({
       story: s.id,
       name: s.name,
-      line: line!.name,
-      start: s.start.filter((x) => x.checked === "files").map((x) => x.text)[0] ?? line!.start ?? null,
+      line: line.name,
+      start: s.start.filter((x) => x.checked === "files").map((x) => x.text)[0] ?? line.start ?? null,
       checked: "files",
+      firstQuest: first.name,
+      openForYou: open.says,
       link: `${origin}/quests/s/${s.id}`,
     }));
-  return { level: input.level, suggestions: out, note: out.length ? "Each start is checked in the game files. Offer them to the player as suggestions; nothing is added unless they accept." : "No checked story is open at that level and place." };
+  return {
+    level: input.level,
+    suggestions: out,
+    note: out.length
+      ? "Each is open for the player by the planner's checked starts. Offer them as suggestions; nothing is added unless they accept. Don't offer a quest the planner hasn't answered open for."
+      : "No checked story is open for the player at that level and place.",
+  };
 }

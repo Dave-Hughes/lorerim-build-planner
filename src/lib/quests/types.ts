@@ -31,6 +31,18 @@ export interface Quest {
   endings: QuestEnding[];
   objectives: string[];
   rewards?: { gold?: "small" | "medium" | "large"; items?: string[] };
+  /** How this quest starts (WO-115 Part 2): the start check's answer in plain words, or "not yet". */
+  start?: QuestStart;
+}
+
+/** One quest's start, from the start check: what it needs, who and where, and the ways in. */
+export interface QuestStart {
+  needs?: string[];
+  who?: string;
+  where?: string;
+  task?: string;
+  ways?: { how: string; needs?: string[] }[];
+  checked: "files" | "not yet";
 }
 
 export interface QuestLine {

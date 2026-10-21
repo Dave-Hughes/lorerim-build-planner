@@ -101,7 +101,7 @@ test("an assistant drafts a playthrough end to end, refused for an objective tha
 
   const quests = await call(baseURL!, from, token, "suggest_quests", { level: 10 });
   expect(quests.isError, quests.text).toBe(false);
-  for (const s of quests.json().suggestions) expect(s.checked).toBe("files");
+  for (const s of quests.json().suggestions) expect(s).toMatchObject({ checked: "files", openForYou: "open for you" });
 });
 
 test("on the site: private on its build's card under My characters, a tick opens the beat, Accept counts, by hand moves the meter", async ({ page, context }) => {
@@ -140,7 +140,7 @@ test("on the site: private on its build's card under My characters, a tick opens
   const stand = page.getByRole("region", { name: "Where you stand" });
   await stand.getByRole("button", { name: "Enter it by hand" }).click();
   await stand.getByRole("spinbutton", { name: "Level", exact: true }).fill("6");
-  await stand.getByRole("button", { name: "Save" }).click();
+  await stand.getByRole("button", { name: "Save", exact: true }).click();
   await expect(stand).toContainText("Level 6 | from your own entry");
   await page.goto(`/p/${pid}`);
   await expect(page.getByText("Level 6 | from your own entry", { exact: true })).toBeVisible();

@@ -1,10 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import Link from "next/link";
-import { OpenCount } from "@/components/quests/open-count";
 import { QuestSearch } from "@/components/quests/quest-search";
-import { WherePanel } from "@/components/quests/where-panel";
-import { categories, finishable, gateOf, homeName, linesIn, mainOrder, questsData, searchLines } from "@/lib/quests/data";
+import { categories, homeName, linesIn, questsData, searchLines } from "@/lib/quests/data";
 import { siteMetadata } from "@/lib/og/metadata";
 import styles from "@/components/quests/quests.module.css";
 
@@ -17,7 +15,6 @@ type Search = Promise<{ q?: string }>;
 export default async function QuestsHome({ searchParams }: { searchParams: Search }) {
   const q = ((await searchParams).q ?? "").slice(0, 100).trim();
   const { shelves, lines } = questsData();
-  const main = mainOrder();
   const results = q ? searchLines(q) : [];
   const work = lines.filter((l) => l.category === "work");
   return (
@@ -48,7 +45,6 @@ export default async function QuestsHome({ searchParams }: { searchParams: Searc
         </section>
       )}
 
-      <WherePanel main={main} finishable={finishable()} />
 
       <div className={styles.cats}>
         {categories().map((c) => (
@@ -62,7 +58,9 @@ export default async function QuestsHome({ searchParams }: { searchParams: Searc
               <span className={styles.sub}>{c.subtitle}</span>
               <span className={styles.desc}>{c.more}</span>
               <span className={styles.catFoot}>
-                <OpenCount gates={linesIn(c.key).map(gateOf)} main={main.map((m) => m.edid)} />
+                <span className={styles.count}>
+                  {linesIn(c.key).length} quest line{linesIn(c.key).length === 1 ? "" : "s"}
+                </span>
                 <span className={styles.go}>Browse ›</span>
               </span>
             </span>

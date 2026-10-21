@@ -183,12 +183,12 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     "suggest_quests",
     {
       title: "Quests to suggest",
-      description: "Stories open at a level whose starts the planner has checked in the game files, not done yet, each with its checked start and the planner's link. Never a line whose start isn't checked. Offer them as suggestions (suggest_objective); nothing is added unless the player accepts.",
+      description: "Stories whose starts the planner has checked in the game files and whose first quest is open for the player, not done yet, each with its checked start, why it's open and the planner's link. Never a quest the planner can't judge. Offer them as suggestions (suggest_objective); nothing is added unless the player accepts.",
       inputSchema: z.object({
         level: z.number().int().min(1).max(100),
         where: z.string().max(80).optional().describe("A hold or place to keep to."),
-        done: z.array(z.string().max(80)).max(200).optional().describe("Quest line ids already finished."),
-        playthrough: z.string().max(80).optional().describe("One of the player's playthroughs, to leave out the lines it has done (needs sign-in)."),
+        done: z.array(z.string().max(120)).max(200).optional().describe("Quest lines (ids or names) and quests (EDIDs or names) the player has finished, from what they said."),
+        playthrough: z.string().max(80).optional().describe("One of the player's playthroughs: its save's quest stages and what it has ticked (needs sign-in)."),
       }),
     },
     async (args: { level: number; where?: string; done?: string[]; playthrough?: string }, ctx: Ctx) =>

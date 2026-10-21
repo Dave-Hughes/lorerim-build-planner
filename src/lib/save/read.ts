@@ -257,6 +257,8 @@ const QUEST_COMPLETED = 0x2;
 
 /** The header alone: enough to list saves without reading the body. */
 export function readHeader(bytes: Uint8Array) {
+  // Too short to hold the magic: not a save at all, rather than one cut short.
+  if (bytes.length < MAGIC.length) throw new SaveError("This isn't a Skyrim save (.ess).");
   const r = new Reader(bytes);
   let magic = "";
   for (const c of r.bytes(MAGIC.length)) magic += String.fromCharCode(c);

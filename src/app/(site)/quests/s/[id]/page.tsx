@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { AlongTheWay, StoryNext, StoryOpens, StorySoFar } from "@/components/quests/story-parts";
+import { AlongTheWay, StoryOpens, StorySoFar } from "@/components/quests/story-parts";
 import { categories, mainOrder } from "@/lib/quests/data";
 import { checkedLabel, splitReward, storyOrder } from "@/lib/quests/story";
 import { storyById } from "@/lib/quests/stories-data";
@@ -68,9 +68,6 @@ export default async function StoryPage({ params }: { params: Params }) {
       <div className={styles.storyGrid}>
         <div className={styles.storyMain}>
           <p className={`${styles.pitch} ${styles.oPitch}`}>{story.pitch}</p>
-          <div className={styles.oNext}>
-            <StoryNext story={story} mainOrder={main} />
-          </div>
           <div className={styles.oSoFar}>
             <StorySoFar story={story} mainOrder={main} />
           </div>

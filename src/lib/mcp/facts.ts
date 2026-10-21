@@ -7,6 +7,7 @@ import { currentVersion } from "@/lib/rules/versions";
 import { categories, homeName, questsData } from "@/lib/quests/data";
 import { stories, storyById, storyOfLine } from "@/lib/quests/stories-data";
 import { storyOrder, type Story } from "@/lib/quests/story";
+import { openFor, questNames, type PlayerState } from "@/lib/quests/open";
 import type { Quest, QuestLine } from "@/lib/quests/types";
 
 /**
@@ -145,6 +146,20 @@ export function getSpell(args: { id?: string; name?: string }, version = DEFAULT
  * A quest line's or story's start. Only lines that have passed the start check (those written up as
  * a story) are answered in full; for the rest, the name and category with checked: "not yet".
  */
+/**
+ * One quest's ways in, as the start check words each starter (who to ask and what, and where), with
+ * their needs and the first objective as `then`; who and where are left out until WO-121. A start not
+ * checked yet gives none.
+ */
+function startOf(q: Quest | undefined): { ways?: { way: string; needs?: string[] }[]; then?: string } {
+  const st = q?.start;
+  if (!st || st.checked !== "files") return {};
+  const ways = st.ways?.length
+    ? st.ways.map((w) => ({ way: w.how, ...(w.needs?.length ? { needs: w.needs } : {}) }))
+    : (st.needs ?? []).filter((n) => /^(Ask|Talk to|After|Through|It )/.test(n)).slice(0, 1).map((n) => ({ way: n }));
+  return { ways, ...(st.task ? { then: st.task } : {}) };
+}
+
 /** How a line or story starts, with where each fact was checked; an unchecked line gives no instructions. */
 function questStart(line: QuestLine, story: Story | undefined) {
   const category = homeName(line.category);
@@ -167,7 +182,9 @@ function questStart(line: QuestLine, story: Story | undefined) {
     category,
     checked: "files",
     start: story.start.map((s) => ({ text: s.text, checked: s.checked })),
-    firstQuest: { name: first.name, ...(first.who ? { who: first.who } : {}), ...(first.where ? { where: first.where } : {}), ...(first.task ? { task: first.task } : {}), checked: first.checked },
+    // No who or where (WO-115, 20 Oct): for 175 quests the check's who and where are the first
+    // objective's target, not who starts it. The ways in, as the check words them, and then the task.
+    firstQuest: { name: first.name, ...startOf(line.quests.find((q) => q.edid === first.edid)), ...(first.task ? { then: first.task } : {}), checked: first.checked },
     ...(line.gate ? { gate: { text: line.gate, checked: from(line.checked.gate) } } : {}),
     ...(line.minLevel ? { minLevel: line.minLevel } : {}),
     opens: story.opens.map((o) => ({
@@ -184,6 +201,7 @@ function questFacts(q: Quest) {
   return {
     edid: q.edid,
     name: q.name,
+    start: { checked: q.start?.checked ?? "not yet", ...startOf(q), ...(q.start?.checked === "files" && q.start.needs?.length ? { needs: q.start.needs } : {}) },
     objectives: q.objectives,
     endings: q.endings.map((e) => ({ stage: e.stage, ends: e.fails ? ("fails" as const) : ("completes" as const), ...(e.text ? { text: e.text } : {}), ...(e.when ? { when: e.when } : {}) })),
     ...(q.endings.length ? {} : { note: "The records flag no ending for this quest. Don't say how it ends." }),
@@ -195,7 +213,7 @@ function questFacts(q: Quest) {
  * a quest's EDID) or by name. Answers how it starts, as get_quest_start did, and the quest's objectives
  * and endings: the named quest, or the line's opening quest.
  */
-export function getQuest({ id, name }: { id?: string; name?: string }, version = DEFAULT_VERSION) {
+export function getQuest({ id, name }: { id?: string; name?: string }, version = DEFAULT_VERSION, player: PlayerState | null = null) {
   const { byId, lines } = questsFor(version);
   if (!id && !name) throw new FactsError("Give the quest's id or name. search_facts finds quest lines and stories by name.");
   const quests = lines.flatMap((line) => line.quests.map((quest) => ({ line, quest })));
@@ -220,7 +238,47 @@ export function getQuest({ id, name }: { id?: string; name?: string }, version =
   if (!line) throw new FactsError(`No quest, quest line or story ${id ? `with the id ${id}` : `named ${name}`}. search_facts finds them by name.`);
   story ??= storyOfLine(line.id);
   quest ??= line.quests.find((q) => q.edid === (story ? storyOrder(story)[0].edid : line.opening)) ?? line.quests[0];
-  return { ...questStart(line, story), quest: questFacts(quest) };
+  return {
+    ...questStart(line, story),
+    quest: questFacts(quest),
+    // Open for you (WO-115 Part 3): only when the player said where they are.
+    ...(player ? { openForYou: openForYou(line, quest, player, version) } : {}),
+  };
+}
+
+/** What the player has told the planner (WO-115 Part 3), as tools take it: their level, what they've finished, a save's quest stages. */
+export interface Told {
+  level?: number | null;
+  /** Finished lines (ids or names) or quests (EDIDs or names). */
+  done?: string[];
+  /** A save's quest stages by EDID (WO-112). */
+  stages?: Record<string, number> | null;
+}
+
+/** What the planner knows of the player, from what they told it: finished lines count every quest in them. */
+export function playerState(told: Told, version = DEFAULT_VERSION): PlayerState {
+  const { lines } = questsFor(version);
+  const names = questNames(lines.flatMap((l) => l.quests));
+  const done = new Set<string>();
+  for (const raw of told.done ?? []) {
+    const k = norm(raw);
+    const line = lines.find((l) => norm(l.id) === k || norm(l.name) === k);
+    if (line) for (const q of line.quests) done.add(q.edid);
+    for (const l of lines) for (const q of l.quests) if (norm(q.edid) === k) done.add(q.edid);
+    for (const e of names.get(k) ?? []) done.add(e);
+  }
+  return { level: told.level ?? null, done, stages: told.stages ?? {} };
+}
+
+const SAYS = { open: "open for you", locked: "locked", unknown: "unknown" } as const;
+
+/** One quest of a line, open for the player or not, and why (WO-115 Part 3): what an assistant says about it. */
+export function openForYou(line: QuestLine, quest: Quest, p: PlayerState, version = DEFAULT_VERSION) {
+  const { lines } = questsFor(version);
+  const i = line.quests.indexOf(quest);
+  const prior = i > 0 && quest.edid !== line.opening ? line.quests[i - 1] : null;
+  const r = openFor(quest, p, questNames(lines.flatMap((l) => l.quests)), prior);
+  return { state: r.state, says: r.state === "open" ? SAYS.open : `${SAYS[r.state]}: ${r.because.join("; ")}`, because: r.because };
 }
 
 /** get_quest_start, kept as an alias of get_quest for a release (WO-115). */

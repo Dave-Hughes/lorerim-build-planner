@@ -3,11 +3,8 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { DeityIcon } from "@/components/ui/skill-icon";
-import { openState } from "@/lib/quests/open";
-import { useWhere } from "@/lib/quests/where";
 import { levelChip } from "@/lib/quests/words";
 import type { LineGate, QuestSource } from "@/lib/quests/types";
-import { LevelField } from "./where-panel";
 import styles from "./quests.module.css";
 
 export interface CardLine extends LineGate {
@@ -28,14 +25,12 @@ export interface CardLine extends LineGate {
 }
 
 /**
- * A category's lines (WO-100, QuestCategory): Search (on the server), Your level, Source and Only what
- * I can start; sorted by level, none first, then name. Tell me more opens Start, Needs, Length, Quests
+ * A category's lines (WO-100, QuestCategory): Search (on the server) and Source (WO-115, 20 Oct: no
+ * player context on the Quests pages, so no Your level or Only what I can start); sorted by level, none first, then name. Tell me more opens Start, Needs, Length, Quests
  * and where each was checked. On a phone the filters are in a sheet.
  */
-export function CategoryList({ lines, main, q }: { lines: CardLine[]; main: string[]; q: string }) {
-  const [where] = useWhere();
+export function CategoryList({ lines, q }: { lines: CardLine[]; main?: string[]; q: string }) {
   const [source, setSource] = useState<"" | "base" | "mods">("");
-  const [onlyOpen, setOnlyOpen] = useState(false);
   const [more, setMore] = useState<string | null>(null);
   const [sheet, setSheet] = useState(false);
   const [query, setQuery] = useState(q);
@@ -49,9 +44,8 @@ export function CategoryList({ lines, main, q }: { lines: CardLine[]; main: stri
     () =>
       lines
         .filter((l) => !source || (source === "base" ? l.sources.some((s) => s.base) : l.sources.some((s) => !s.base)))
-        .filter((l) => !onlyOpen || openState(l, where, main) === "open")
         .sort((a, b) => (a.minLevel ?? 0) - (b.minLevel ?? 0) || a.name.localeCompare(b.name)),
-    [lines, source, onlyOpen, where, main],
+    [lines, source],
   );
   const filters = (
     <>
@@ -61,7 +55,6 @@ export function CategoryList({ lines, main, q }: { lines: CardLine[]; main: stri
           <input className="input" type="search" name="q" value={query} placeholder="Name, Prince, or the journal's words" onChange={(e) => setQuery(e.target.value)} />
         </label>
       </form>
-      <LevelField className={styles.levelField} />
       <label className="field">
         <span className="label">Source</span>
         <select className="select" value={source} onChange={(e) => setSource(e.target.value as "" | "base" | "mods")}>
@@ -70,13 +63,9 @@ export function CategoryList({ lines, main, q }: { lines: CardLine[]; main: stri
           <option value="mods">Mods</option>
         </select>
       </label>
-      <label className={styles.toggle}>
-        <input type="checkbox" checked={onlyOpen} onChange={(e) => setOnlyOpen(e.target.checked)} />
-        Only what I can start
-      </label>
     </>
   );
-  const on = [where.level !== null, !!source, onlyOpen].filter(Boolean).length;
+  const on = [!!source].filter(Boolean).length;
   return (
     <>
       <div className={styles.filters}>{filters}</div>
@@ -104,7 +93,7 @@ export function CategoryList({ lines, main, q }: { lines: CardLine[]; main: stri
       {shown.length === 0 && <p className="muted">Nothing matches.</p>}
       <div className={styles.cards}>
         {shown.map((l) => {
-          const chip = levelChip(l.minLevel, where.level);
+          const chip = levelChip(l.minLevel, null);
           const open = more === l.id;
           return (
             <article key={l.id} className={`${styles.card} ${open ? styles.cardOpen : ""} ${chip.above ? styles.later : ""}`} aria-labelledby={`line-${l.id}`}>

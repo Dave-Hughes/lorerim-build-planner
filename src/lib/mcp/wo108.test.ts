@@ -3,7 +3,7 @@ import sample from "@/lib/rules/__fixtures__/sample-build.json";
 import { mcpOn } from "@/lib/features";
 import { questsData } from "@/lib/quests/data";
 import { answer, MAX_BYTES } from "./answer";
-import { FactsError, checkProgression, getPerk, getQuest, getQuestStart, getSpell, searchFacts, styleGuide, versionData } from "./facts";
+import { FactsError, checkProgression, getPerk, getQuest, getQuestStart, getSpell, playerState, searchFacts, styleGuide, versionData } from "./facts";
 import { plainOf } from "./plan";
 import type { BuildPlan } from "@/lib/rules/types";
 
@@ -58,7 +58,10 @@ describe("the facts tools (WO-108)", () => {
       if (s.kind !== "story") throw new Error("not a story");
       expect(s.start[0]).toMatchObject({ checked: "files" });
       expect(s.start.some((x) => x.checked === "not yet")).toBe(true);
-      expect(s.firstQuest).toMatchObject({ name: "Unbound", task: "Make your way to the Keep" });
+      expect(s.firstQuest).toMatchObject({ name: "Unbound", then: "Make your way to the Keep" });
+      // No who or where until WO-121 (the check's names the first objective's target for 175 quests).
+      expect(s.firstQuest).not.toHaveProperty("who");
+      expect(s.firstQuest).not.toHaveProperty("where");
     }
   });
 
@@ -132,5 +135,32 @@ describe("get_quest (WO-115)", () => {
     expect(getQuest({ name: "Become the Dragonborn" }).quest.name).toBe("Unbound");
     expect(() => getQuest({ name: "No Such Quest" })).toThrow(FactsError);
     expect(() => getQuest({})).toThrow(FactsError);
+  });
+});
+
+describe("get_quest, open for you (WO-115 Part 3)", () => {
+  it("gives a quest's ways in and its first objective as then, never who or where", () => {
+    const love = getQuest({ name: "The Book of Love" });
+    expect(love.quest.start).toMatchObject({ checked: "files", then: "Talk to Fastred" });
+    expect(love.quest.start).not.toHaveProperty("who");
+    expect(love.quest.start).not.toHaveProperty("where");
+    expect(JSON.stringify(love)).not.toMatch(/"who"|"where"/);
+    const unbound = getQuest({ id: "MQ101" });
+    expect(unbound.quest.start.ways?.length).toBeGreaterThan(0);
+    for (const w of unbound.quest.start.ways ?? []) expect(w.way).toEqual(expect.any(String));
+  });
+  it("answers open, locked or unknown only when told where the player is", () => {
+    expect(getQuest({ id: "MS11" })).not.toHaveProperty("openForYou");
+    const companions = getQuest({ name: "Take Up Arms" }, undefined, playerState({ level: 6 }));
+    expect(companions.openForYou).toMatchObject({ state: "open", says: "open for you" });
+    // Mid-line, with nothing told: unknown, never open.
+    const later = getQuest({ name: "Proving Honor" }, undefined, playerState({ level: 6 }));
+    expect(later.openForYou?.state).toBe("unknown");
+    expect(later.openForYou?.says).toMatch(/^unknown: comes after Take Up Arms/);
+    expect(getQuest({ name: "Proving Honor" }, undefined, playerState({ level: 6, done: ["Take Up Arms"] })).openForYou?.state).not.toBe("unknown");
+  });
+  it("finished lines count every quest in them", () => {
+    const p = playerState({ level: 10, done: ["companions"] });
+    expect(p.done.has("C00")).toBe(true);
   });
 });

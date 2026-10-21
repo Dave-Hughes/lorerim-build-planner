@@ -3,9 +3,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { QuestRow } from "@/components/quests/journal";
-import { DoFirst, LineNeeds, type AfterLine } from "@/components/quests/line-start";
-import { WherePanel } from "@/components/quests/where-panel";
-import { categories, categorySlug, finishable, gateOf, homeName, mainOrder, questsData } from "@/lib/quests/data";
+import { LineNeeds, type AfterLine } from "@/components/quests/line-start";
+import { categories, categorySlug, gateOf, homeName, mainOrder, questsData } from "@/lib/quests/data";
 import { MAIN } from "@/lib/quests/open";
 import { storyOfLine } from "@/lib/quests/stories-data";
 import { fromLabel } from "@/lib/quests/words";
@@ -102,7 +101,6 @@ export default async function QuestLinePage({ params }: { params: Params }) {
         </div>
       </div>
 
-      <WherePanel main={main} finishable={finishable()} />
 
       <div className={styles.lineGrid}>
         <div className={styles.lineMain}>
@@ -234,7 +232,6 @@ export default async function QuestLinePage({ params }: { params: Params }) {
         </div>
 
         <aside className={styles.side}>
-          <DoFirst gate={gateOf(line)} after={after} main={main.map((m) => m.edid)} />
           {sibs.length > 0 && (
             <section className={`${styles.panel} ${styles.sidePanel}`} aria-labelledby="jobs-side">
               <h2 id="jobs-side" className={styles.sideTitle}>

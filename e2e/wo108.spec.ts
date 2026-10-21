@@ -34,6 +34,13 @@ test("initialize, tools/list and one call of each tool", async ({ baseURL }) => 
   expect(JSON.parse(textOf(await client.callTool({ name: "get_quest_start", arguments: { id: "become-the-dragonborn" } })))).toMatchObject({ checked: "files", firstQuest: { name: "Unbound" } });
   const ice = JSON.parse(textOf(await client.callTool({ name: "get_quest", arguments: { name: "Blood on the Ice" } })));
   expect(ice.quest.endings.map((e: { stage: number }) => e.stage)).toEqual([100, 250]);
+  // Open for you (WO-115 Part 3): only when told where the player is; a quest the planner can't judge is unknown.
+  expect(ice).not.toHaveProperty("openForYou");
+  const arms = JSON.parse(textOf(await client.callTool({ name: "get_quest", arguments: { name: "Take Up Arms", level: 6 } })));
+  expect(arms.openForYou).toMatchObject({ state: "open", says: "open for you" });
+  const honor = JSON.parse(textOf(await client.callTool({ name: "get_quest", arguments: { name: "Proving Honor", level: 6 } })));
+  expect(honor.openForYou.state).toBe("unknown");
+  expect(honor.openForYou.says).toMatch(/^unknown: /);
   expect(JSON.parse(textOf(await client.callTool({ name: "check_progression", arguments: { build: plan } })))).toMatchObject({ levels: 6 });
   expect(textOf(await client.callTool({ name: "get_style_guide", arguments: {} }))).toContain("How to write for LoreRim Build Planner");
 
