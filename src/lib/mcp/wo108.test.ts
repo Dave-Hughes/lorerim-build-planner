@@ -82,6 +82,8 @@ describe("the facts tools (WO-108)", () => {
   it("get_style_guide is the planner's writing rules", () => {
     expect(styleGuide()).toMatch(/^# How to write for LoreRim Build Planner/);
     expect(styleGuide()).toContain("Never say how a quest ends unless the planner lists that ending.");
+    // WO-115 Part 4: open only when the planner says so.
+    expect(styleGuide()).toContain("Never call a quest available, open or possible unless the planner answers open for you. Unknown means say unknown.");
   });
 
 
