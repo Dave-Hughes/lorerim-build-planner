@@ -4840,6 +4840,71 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-118  Calmer: Dave's first test of WO-117 (Mac, 20 Oct 2026)
+
+**Why.** Dave tested WO-117 on Kyria. Editing is clearer, but: adding images felt overwhelming ("if the user had no idea this was waiting for them it still feels like a lot"), rows in the Pictures list jumped to the bottom as he filled them, "entry", "beat" and "the act's chapter" were three words for one thing, the image buttons over pictures can't be seen, "Before Skyrim" assumes where a story starts, the only way into the story was one button in the hero, Play's read view is "WILDLY busy" (the right rail is pointless, "Keeping it current" and "the door" mean nothing to players, "Standing rule" means nothing to him), Details is still chaotic, the chosen theme only paints some pages, the Like button doesn't look or work like the one he loved, the hero's ⋯ menu is cut off, and the AI assisted mark's "i" sits apart from it on its own row.
+
+**The boards.** Canvas row 28: `PlayCalm.dc.html` (Play, read view) and `DetailsCalm.dc.html` (interactive: click Position). Row 27's boards are updated for the tooltip and the tab order; where row 27 and this order differ, this order wins.
+
+**Where:** on `staging`, run parts behind `FEATURE_PLAYTHROUGHS`, small commits in the order below, **push after each part**.
+
+### 1. Small fixes
+- **Edit tab order:** Set up, Levels, Guide, Story, Play (a build alone: Set up, Levels, Guide, and Story when it's on). The view's tabs stay Play, Levels, Guide.
+- **AI assisted:** the whole mark (icon and words, with a dotted underline) is the tooltip's trigger on hover, focus and tap; no separate "i". It sits in the byline row with Made by and the rest, never on its own row; it wraps with them on a phone. The tooltip opens above the mark when there is no room below.
+- **Menus aren't cut off:** the hero's ⋯ menu, its visibility menu and every menu in the edit band open in a layer above the page (a portal, or the hero no longer clipping its children), at every width. e2e: open each one and check it is fully on screen.
+- **The Like button is the one from WO-36 everywhere:** the pixel heart, the burst and the rolling count, on the character page as on a build page. The owner of a private build or character can like it too (setLike stops refusing a private build for its owner; nobody else can see it to like it). e2e: like and unlike on a private character as its owner, and see the burst.
+- **Image buttons that can be seen:** every button over a picture (Change the cover in the edit hero, Change, Position and Remove on story images and act cards, Edit, Copy link and ⋯ in the view hero) has a dark backing (the ground at 88%), a light border and light text, as on the boards. Check them over Kyria's cover, which is pale.
+- **"Picture" becomes "image"** in every label, button and message ("Change the image", "Add an image").
+
+### 2. One word for story text: chapter
+- To the player there is one kind of story text, a **chapter**. A chapter sits either in the **Prologue** (the story before the first act, wherever it happens; "Before Skyrim" goes everywhere) or in an act. Any chapter can **unlock when** an objective is done or a number is reached; until then readers see its title and what unlocks it, as beats do now. "Entry", "beat" and "the act's chapter" go from the site, the reader, the style guide, the design rules and the tools.
+- **An act's card reads from the act's first chapter** (its image, title and first lines), so an act needs no special chapter.
+- **The Story tab's Contents:** The title page; Prologue with its chapters and + Add a chapter; each act with its chapters (a locked one shows a small lock and "Unlocks when: <objective>") and + Add a chapter. Each chapter has one setting under its plate, **Unlocks when** (None, or one of the act's objectives), with its "i".
+- **Data and tools:** no column is dropped. `kind` stays and is set from where the chapter sits and whether it unlocks (an act's first chapter written before play is `act`, one unlocking is `beat`, one written after play from a save is `entry`) so old rows read as before. `write_chapter` takes `act` (optional) and `unlocksWhen` (optional) in place of `kind`; `get_playthrough` returns each chapter's act and unlocksWhen. The style guide's rule 16 and design rule 27 become: "The story is made of chapters. A chapter sits in the Prologue or in an act; any chapter can unlock when an objective is done. The first chapter of an act opens its card on Play." Keep the "from save 7" line on chapters written from a save.
+
+### 3. Images, lighter
+- **"Images", on the Story tab only.** The Pictures button leaves the edit band. The Story tab's top bar gets **Images ▾** with no count; it opens the same panel, titled "Images", with a "What's this" "i": "Every place in this character's story that can show an image. All of them are optional; an empty one uses the act's image or the cover." The list keeps story order and **rows never move** when filled. The cover stays in Details; act images stay on the act cards in Play.
+- **Position:** every image slot (the cover in Details, each chapter's plate, each act's card) has **Change, Position, Remove**. Position lets the owner drag the image to choose what stays in view, as the cover's focus works today, and Done ends it. New nullable columns for the focus on `playthrough_chapter` and `playthrough_act` (additive migration). The reader and the act cards use it.
+- **A draft asks for one thing:** the owner's box on a drafted character with no cover reads "No cover yet" / "Assistants can't add images. Add a cover from the planner." with **Add a cover** (Details, at the cover). The door's replies carry `addCover` (that link) in place of `addPictures`, and the style guide line becomes: "Assistants can't add images. When you finish a draft, give the player the addCover link; they can add images to the story in its Story tab."
+
+### 4. Play, calmer (`PlayCalm.dc.html`)
+- **No right rail.** Next, The character, Keeping it current and Who can see it go from Play. The acts list and the act take the width (acts 240 px, the act up to 900 px).
+- **Acts:** the act being read is open (number and name in ember, its count, levels and place, a thin bar); every other act is one line, its number, name and count. Add an act goes from the read view (Edit has it).
+- **Where you stand** is one quiet line over the act, only when there is a save read or the owner's own entry ("Level 6 | Day 7 | Riften | Speech 30, Two-Handed 36 | from Save 7"). With neither, nothing shows. The owner's "Enter it by hand" moves to Edit's Play tab, above the acts.
+- **"Standing rule" becomes "Throughout the act"** everywhere: the read view's line ("Throughout the act: ..."), Edit's field label and its "i" ("What she keeps doing all through this act, like playing the inn every night. It isn't something to tick."), the style guide and design rule 24, the tools' descriptions. The data field keeps its name.
+- **Objectives:** the header loses its note. A row is its box, its words, its why line, its progress if it has one, and its Story marker; the status on the right shows only "Under way". The owner ticks the box in place; the status menus and Add an objective go from the read view (Edit has them). A suggested objective shows only to the owner, with Accept and Skip as quiet buttons.
+- **No "door" or "helper" anywhere a player reads.** Where the site needs to name it, it is "the planner's connector" (the word Claude and other assistants use for it). Sweep the site's text for both words.
+
+### 5. The story, one click away
+- **Read the story** sits at the right end of the view's tab row on every tab, and in the pinned bar, with "Continue reading" and the chapter's name above it once the reader has opened one (the owner's `readAt`, other readers' localStorage). It opens the reader at that chapter, or at the title page the first time. The hero's "Read the story from the beginning" goes.
+- **The reader gets Contents:** a button in its top bar opens a list of every chapter in reading order, the locked ones with their lock and what unlocks them, the current one marked; choosing one opens it. Esc closes the list first, then the reader.
+- An act's card shows for every act that has at least one chapter.
+
+### 6. Details, with less in it (`DetailsCalm.dc.html`)
+- Details holds **Name** (the label "Build name" goes), **Description**, **Cover**, **Tags**, **Video** and **Write-up** side by side, and **Show the AI assisted mark** (drafted characters only), in that order.
+- **Gone from Details:** the Race, Birthsign and LoreRim version row (the steps on the left say them); Who can see it (the edit band has it); the second cover preview "On the build page"; the cover's raw link field (Change offers Upload or Use a link); and the theme picker and its preview (part 7).
+- **The cover shows once,** cropped as the hero crops it, with Change, Position and Remove on it.
+- **Tags** show the chosen ones as chips with ×, then **+ Add a tag**, which opens the full list (grouped as now) in a popover; the limit and "Suggested from your majors" go in the label's "i".
+
+### 7. Themes off for now
+- The theme picker goes from Details and every page draws in Ember, whatever theme a build has stored. The stored value stays, so a theme can come back. Backlog: "Themes across every page" (the reader, Play, the edit pages and the cards would all need to follow the theme, and Parchment would need its own pass).
+
+### 8. Tests and screenshots
+- e2e: edit tabs in the new order; the AI assisted tooltip opens from the mark with no "i"; each hero and band menu fully on screen; Like and its burst on a private character as its owner; the Story tab's Contents shows Prologue and chapters with Unlocks when and no "entry" or "beat"; `write_chapter` with `unlocksWhen`; Images only on the Story tab, no count, rows stay put after Add; Position on a chapter image saves its focus and the reader uses it; the draft box asks for a cover and the door replies with `addCover`; Play has no right rail, Where you stand hides with no save, "Throughout the act" shows, the read view has no Add buttons or status menus; Read the story and Continue reading in the tab row; the reader's Contents jumps to a chapter; Details shows the six things only; a build stored with Parchment draws in Ember; the words door, helper, entry, beat, picture and Before Skyrim appear nowhere a player reads.
+- Screenshots at 1440 and 390 of Play, Details, the Story tab with Contents and Images, the reader with Contents open, and the hero with its ⋯ menu open over Kyria's cover. Compare with rows 27 and 28.
+
+### Done when
+- [ ] Part 1: tab order, the AI assisted tooltip on the mark, menus on screen, the WO-36 Like everywhere, image buttons that can be seen, "image" throughout.
+- [ ] Part 2: one word, chapter, with Prologue and Unlocks when, in the site, the reader, the tools and the rules.
+- [ ] Part 3: Images on the Story tab only, rows that stay put, Position on every image, a draft that asks for a cover.
+- [ ] Part 4: Play as PlayCalm: no right rail, compact acts, Where you stand only with a save, Throughout the act, no door or helper.
+- [ ] Part 5: Read the story with Continue reading beside the tabs, and Contents in the reader.
+- [ ] Part 6: Details as DetailsCalm.
+- [ ] Part 7: themes off, Ember everywhere, the stored value kept.
+- [ ] Every check in CLAUDE.md passes; migrations additive; behind the flag. Commit on `staging`, push, and stop: Dave opens Kyria, reads from Continue reading, jumps chapters from Contents, positions Act I's image, and finds Play calm.
+
+---
+
 ## WO-115  Quests an assistant can trust: endings, starts for every quest, and "open for you" (20 Oct 2026)
 
 **Why.** Dave: assistants recommend quests he can't take on, call a quest available when it isn't, and tell him a quest ends one way when it ended another. Bob's look (backlog, "Why quest advice goes wrong"): the planner holds 1,240 quests by shape and checked starts for six stories; nobody holds each quest's endings, each quest's start conditions in plain words, or the player's quest state. Both the planner and the Book chat's own index answer those from memory. This order gives the planner the three, in the order they pay off, and makes the door say "open for you" or "unknown" instead of leaving the gap for the assistant to fill.
