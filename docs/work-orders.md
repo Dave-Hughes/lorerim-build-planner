@@ -4905,6 +4905,38 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-126  Quest starts in players' words (Mac, 22 Oct 2026)
+
+**Why.** Checking Part 4 of WO-121b, Bob read what the quest pages actually show under how a quest starts. Of 1,243 quests with a start, 309 show raw record text to players: condition functions (`GetEventData` 380 times, `GetInFaction` 87, `GetItemCount` 51, `GetActorValue` 35, `GetDead` 23), stage tests ("Skirmish at Whitewatch stage == 10", 250 of them), and editor ids for helper quests ("Through AP_DialogueHelgen", "Through aaaHOTRDialogue", 269). Bleak Falls Barrow shows "GetItemCount Dragonstone >= 1"; Unbound shows "Through APS_MQSkipKeep". A player can't read these, and the community will call it out. The answers are right underneath; they need saying in the game's words.
+
+### Part 1. Say each condition the way a player would (Mac, `quest_pages.py`)
+- **Items:** `GetItemCount X >= 1` is "You have <the item's name>"; `== 0` is "You don't have <item>".
+- **Skills and values:** `GetActorValue Skill >= n` is "<Skill> <n>"; level as "Level <n>".
+- **Factions:** `GetInFaction X == 1` is "You're in <the faction's full name>" (from the faction record; a faction with no player-facing name, like a crime or dialogue faction, is left out).
+- **People:** `GetDead == 0` is "<Name> is alive"; on the speaker it's left out (a dead person doesn't talk).
+- **Race:** `GetIsRace` is "You're a <race>" (one of, when several).
+- **Quest stages:** a stage test on another quest is "After <that quest's objective or journal line at that stage>" or "While <quest> is under way"; a test on the quest's own stage that only guards a repeat is left out.
+- **Story manager events (`GetEventData`):** said as the event ("When you enter <place>", "When you kill <who>"), or left out when it only filters plumbing.
+- **Random:** "Sometimes".
+- **Anything else** is left out, and the way gets "and a condition the planner can't put in words yet". Never the raw function.
+
+### Part 2. No editor ids (Mac)
+- "Through <helper quest>" names what the helper is in the game: its giver's line ("Talk to Ralforn at Green-Tip Cabin"), its own start ("When you arrive in Helgen"), or the record's full name when it has one. An id like `APS_MQSkipKeep` or `aaaHOTRDialogue` is never shown.
+- **A way that declines isn't a way in:** a line like "No, thanks. I'm not interested." or "I can't do that right now." is dropped from the ways (Vigilant of Stendarr, I Choose You Familiar, None Escape The Light and two more).
+- **Vigilant of Stendarr:** "Altano comes to find you" is wrong; the patch has him and Orlando appear in Dawnstar's Windpeak Inn for you to find. Say "Altano and Orlando, in Dawnstar".
+
+### Part 3. Keep the raw text for assistants (Mac)
+- The door's `get_quest` keeps each condition's record form in a separate `raw` field beside the words, so an assistant can still reason on it. Pages show only the words.
+
+### Done when
+- [ ] Part 1: every condition kind above in words, tested on Bleak Falls Barrow, Unbound, Skirmish at Whitewatch, The Lunatic's Treasure and Knight of Hounds.
+- [ ] Part 2: no editor id and no declining line in any start; Vigilant fixed.
+- [ ] Part 3: `raw` on the door.
+- [ ] A check in `test_quest_pages.py` that fails if any page's start text matches a raw function name, "==", ">=", "<", or an id in the form of "Through <word with no spaces and a capital inside>". It passes on all 1,243.
+- [ ] Every check in CLAUDE.md passes. Screenshots of those five quest pages at 1440 and 390. Commit on `staging`, push, and stop for Dave.
+
+---
+
 ## WO-125  Pages for the two connectors (design first, 21 Oct 2026)
 
 **Why.** Dave (21 Oct): players need to learn what the planner connector and the save connector are, how to install them and how to use them, on pages that sell them, not a README. Bob boards them on canvas row 30 first; this order is written in full from the boards.
