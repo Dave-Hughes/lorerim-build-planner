@@ -4915,6 +4915,9 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - A **How points work** section in the style guide, written from the planner's own rules at build time (not by hand), so it never goes stale: skill points per level (30), the most one skill can rise in a level (5), what a point costs at each band (1 below 25, 2 below 50, 3 below 75, 6 from 75), max skill at a level (50 plus the level, up to 100), perk points (3 at the start, 3 more for Naaktiid, 1 a level, and the traits and Oghma Infinium that change it, as the engine counts them), Destiny points (when they come), attribute points and trainer sessions per level. A unit test fails if a number in the section and the rules disagree.
 - A **How to build** section (Bob's words, plain): spend every level's points; when the skills a build is about reach max skill, the rest go to the next skills its perks will need, then to skills it uses (Smithing for its armor, Restoration for its healing); take a perk point when there is a perk to take, and when a planned perk isn't open yet, raise its skill toward it rather than holding the point; spend Destiny points as they come; ask `get_perk` for a perk's requirements instead of guessing; check the build with `get_build` before `finish_draft`.
 
+- **A whole tree at once:** a new facts tool, `get_tree({ skill })`, answers with every perk in that skill's tree, each with its ranks, skill level, prerequisite perks and the perks it rules out, in tree order, so an assistant can plan a skill's perks without asking for them one by one. `search_facts` stays at 20 results.
+- **The rules as a tool too:** `get_rules` answers with the same numbers as How points work, for assistants that don't read the style guide first. `create_build`'s description says to call it.
+
 ### 2. Warnings while drafting
 - `add_level`, `set_level` and `get_build` answers gain `warnings`: plain sentences about things the rules allow but a good build wouldn't do, computed by one function, `reviewBuild(plan)`, from the same `computeBuild` state the editor uses. A warning saves nothing differently; it is advice for the assistant.
 - The warnings, each with the numbers and what to do:
@@ -4931,7 +4934,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - An e2e that drafts a 12-level two-handed build through the door the way Kyria's was drafted (four skills, Speech at 5 a level), gets the skill points warning back, then spends the points the warning names and gets none.
 
 ### Done when
-- [ ] The style guide has How points work (generated and tested) and How to build.
+- [ ] The style guide has How points work (generated and tested) and How to build; `get_rules` and `get_tree` answer.
 - [ ] `add_level`, `set_level`, `get_build` and `finish_draft` carry warnings from `reviewBuild`; Kyria's plan as drafted gets its three warnings, the sample none.
 - [ ] `door_event` records every call's outcome and the admin page shows the Connector counts.
 - [ ] Every check in CLAUDE.md passes; migration additive; behind the flag. Commit on `staging`, push, and stop: Dave asks his Claude to fix Kyria's levels, it reads the warnings and spends the points, and the admin page shows the warnings fall to none.
