@@ -1,42 +1,447 @@
 {
  "about": "How well-known quests start, from UESP, to test the planner's start data (WO-121). startsWith lists every way UESP describes; the planner's giver must be one of them and its first step must match firstObjective. Vanilla and DLC as UESP writes them; where LoreRim changes a quest (a level gate, a mod's own start), the planner's checked data wins and the row's loreRim note says so. Checked by Bob from UESP's pages, 20 Oct 2026.",
  "quests": [
-  {"quest": "The Book of Love", "editorId": "T02", "startsWith": ["Dinya Balu"], "where": "Temple of Mara, Riften", "firstObjective": "Talk to Fastred", "url": "https://en.uesp.net/wiki/Skyrim:The_Book_of_Love"},
-  {"quest": "Take Up Arms", "editorId": "C00", "startsWith": ["Aela the Huntress", "Kodlak Whitemane"], "where": "Jorrvaskr, Whiterun", "firstObjective": "Speak to Kodlak Whitemane", "notes": "Aela (after the giant at Pelagia Farm) or people in Whiterun send you to Kodlak.", "url": "https://en.uesp.net/wiki/Skyrim:Take_Up_Arms"},
-  {"quest": "First Lessons", "editorId": "MG01", "startsWith": ["Faralda"], "where": "The bridge to the College of Winterhold", "firstObjective": "Join the College of Winterhold", "url": "https://en.uesp.net/wiki/Skyrim:First_Lessons"},
-  {"quest": "Taking Care of Business", "editorId": "TG01", "startsWith": ["Brynjolf"], "where": "Riften", "firstObjective": "Locate Brynjolf at the Ragged Flagon", "notes": "Follows A Chance Arrangement.", "url": "https://en.uesp.net/wiki/Skyrim:Taking_Care_of_Business"},
-  {"quest": "Waking Nightmare", "editorId": "DA16", "startsWith": ["Erandur"], "where": "Windpeak Inn, Dawnstar", "firstObjective": "Speak to Erandur", "notes": "The journal starts when you overhear Dawnstar's people complain of nightmares; they are not the giver.", "url": "https://en.uesp.net/wiki/Skyrim:Waking_Nightmare"},
-  {"quest": "The Taste of Death", "editorId": "DA11", "startsWith": ["Kleppr", "Frabbi", "Brother Verulus", "Eola"], "where": "Silver-Blood Inn and the Hall of the Dead, Markarth", "firstObjective": "Speak to Verulus about the Hall of the Dead", "url": "https://en.uesp.net/wiki/Skyrim:The_Taste_of_Death"},
-  {"quest": "The Whispering Door", "editorId": "DA08", "startsWith": ["Hulda", "Balgruuf the Greater"], "where": "The Bannered Mare and Dragonsreach, Whiterun", "firstObjective": "Ask about Balgruuf's strange children", "notes": "Level 20 and Dragon Rising.", "url": "https://en.uesp.net/wiki/Skyrim:The_Whispering_Door"},
-  {"quest": "A Night To Remember", "editorId": "DA14", "startsWith": ["Sam Guevenne"], "where": "Any inn", "firstObjective": "Participate in a drinking contest with Sam Guevenne", "notes": "Level 14. The main quest begins when you wake in the Temple of Dibella.", "url": "https://en.uesp.net/wiki/Skyrim:A_Night_To_Remember"},
-  {"quest": "Ill Met By Moonlight", "editorId": "DA05", "startsWith": ["Mathies", "Sinding"], "where": "Corpselight Farm or Falkreath Jail, Falkreath", "firstObjective": "Speak to Sinding", "url": "https://en.uesp.net/wiki/Skyrim:Ill_Met_By_Moonlight"},
-  {"quest": "Laid to Rest", "editorId": "MS14", "startsWith": ["Idgrod Ravencrone", "a Morthal guard", "Jonna", "Sorli the Builder"], "where": "Morthal", "firstObjective": "Talk to the Jarl", "url": "https://en.uesp.net/wiki/Skyrim:Laid_to_Rest"},
-  {"quest": "The Golden Claw", "editorId": "MS13", "startsWith": ["Lucan Valerius", "Camilla Valerius"], "where": "Riverwood Trader, Riverwood", "firstObjective": "Retrieve the Golden Claw", "url": "https://en.uesp.net/wiki/Skyrim:The_Golden_Claw"},
-  {"quest": "Pieces of the Past", "editorId": "DA07", "startsWith": ["Silus Vesuius"], "where": "Silus Vesuius' House, Dawnstar", "firstObjective": "Speak to Silus inside his house", "notes": "Level 20; a courier's pamphlet points to him.", "url": "https://en.uesp.net/wiki/Skyrim:Pieces_of_the_Past"},
-  {"quest": "The Cursed Tribe", "editorId": "DA06", "startsWith": ["Atub"], "where": "Largashbur, The Rift", "firstObjective": "Bring Troll Fat and a Daedra Heart to Atub", "url": "https://en.uesp.net/wiki/Skyrim:The_Cursed_Tribe"},
-  {"quest": "The House of Horrors", "editorId": "DA10", "startsWith": ["Vigilant Tyranus"], "where": "Outside the Abandoned House, Markarth", "firstObjective": "Search the abandoned house", "url": "https://en.uesp.net/wiki/Skyrim:The_House_of_Horrors"},
-  {"quest": "The Mind of Madness", "editorId": "DA15", "startsWith": ["Dervenin"], "where": "The streets of Solitude", "firstObjective": "Gain access to the Pelagius Wing of the Blue Palace", "url": "https://en.uesp.net/wiki/Skyrim:The_Mind_of_Madness"},
-  {"quest": "The Only Cure", "editorId": "DA13", "startsWith": ["Kesh the Clean", "an Afflicted Refugee"], "where": "Shrine to Peryite, The Reach", "firstObjective": "Find Kesh at the Peryite Shrine", "url": "https://en.uesp.net/wiki/Skyrim:The_Only_Cure"},
-  {"quest": "Promises to Keep", "editorId": "MS03", "startsWith": ["Louis Letrush"], "where": "The Bee and Barb, Riften", "firstObjective": "Listen to Louis Letrush's offer", "url": "https://en.uesp.net/wiki/Skyrim:Promises_to_Keep"},
-  {"quest": "The Wolf Queen Awakened", "editorId": "MS06", "startsWith": ["Falk Firebeard"], "where": "The Blue Palace, Solitude", "firstObjective": "Speak to Styrr", "notes": "A courier's letter from Falk points to him; the journal starts when you speak to Falk.", "url": "https://en.uesp.net/wiki/Skyrim:The_Wolf_Queen_Awakened"},
-  {"quest": "In My Time Of Need", "editorId": "MS08", "startsWith": ["Alik'r Warrior"], "where": "Whiterun", "firstObjective": "Find the Redguard woman", "url": "https://en.uesp.net/wiki/Skyrim:In_My_Time_Of_Need"},
-  {"quest": "Blood on the Ice", "editorId": "MS11", "startsWith": ["a Windhelm guard"], "where": "Windhelm's graveyard", "firstObjective": "Question the witnesses", "notes": "Triggered at night after entering Windhelm four times; not offered by anyone.", "url": "https://en.uesp.net/wiki/Skyrim:Blood_on_the_Ice"},
-  {"quest": "The White Phial", "editorId": "MS12", "startsWith": ["Nurelion"], "where": "The White Phial, Windhelm", "firstObjective": "Retrieve the White Phial", "url": "https://en.uesp.net/wiki/Skyrim:The_White_Phial_(quest)"},
-  {"quest": "Kyne's Sacred Trials", "editorId": "dunHunterQST", "startsWith": ["Froki Whetted-Blade"], "where": "Froki's Shack", "firstObjective": "Defeat the Guardian Mudcrab", "url": "https://en.uesp.net/wiki/Skyrim:Kyne's_Sacred_Trials"},
-  {"quest": "Lights Out!", "editorId": "MS07", "startsWith": ["Jaree-Ra"], "where": "Solitude docks", "firstObjective": "Listen to Jaree-Ra's offer in Solitude", "url": "https://en.uesp.net/wiki/Skyrim:Lights_Out!"},
-  {"quest": "The Man Who Cried Wolf", "editorId": "MS06Start", "startsWith": ["Varnius Junius", "Elisif the Fair", "Sybille Stentor", "Falk Firebeard"], "where": "The Blue Palace, Solitude", "firstObjective": "Ask Falk Firebeard about Wolfskull Cave", "url": "https://en.uesp.net/wiki/Skyrim:The_Man_Who_Cried_Wolf"},
-  {"quest": "Rise in the East", "editorId": "MS10", "startsWith": ["Orthus Endario"], "where": "East Empire Company office, Windhelm", "firstObjective": "Steal Suvaris Atheron's logbook", "url": "https://en.uesp.net/wiki/Skyrim:Rise_in_the_East"},
-  {"quest": "Missing In Action", "editorId": "MS09", "startsWith": ["Fralia Gray-Mane", "Avulstein Gray-Mane"], "where": "Whiterun", "firstObjective": "Meet Fralia in her home", "url": "https://en.uesp.net/wiki/Skyrim:Missing_In_Action"},
-  {"quest": "The Heart of Dibella", "editorId": "T01", "startsWith": ["Hamal"], "where": "Inner Sanctum, Temple of Dibella, Markarth", "firstObjective": "Find the future Sybil of Dibella", "url": "https://en.uesp.net/wiki/Skyrim:The_Heart_of_Dibella"},
-  {"quest": "Evil in Waiting", "editorId": "dunValthumeQST", "startsWith": ["Valdar"], "where": "Valthume Vestibule", "firstObjective": "Collect the Vessels", "url": "https://en.uesp.net/wiki/Skyrim:Evil_in_Waiting"},
-  {"quest": "Ancestral Worship", "editorId": "dunHillgrundsTombQST", "startsWith": ["Golldir"], "where": "Hillgrund's Tomb", "firstObjective": "Defeat Vals Veran", "url": "https://en.uesp.net/wiki/Skyrim:Ancestral_Worship"},
-  {"quest": "Extracting an Argonian", "editorId": "DarkwaterCrossingDerkeethusRescueQuest", "startsWith": ["Sondas Drenim"], "where": "Darkwater Crossing", "firstObjective": "Find Derkeethus", "url": "https://en.uesp.net/wiki/Skyrim:Extracting_an_Argonian"},
-  {"quest": "Dark Ancestor", "editorId": "FreeformFalkreathQuest03", "startsWith": ["Dengeir of Stuhn"], "where": "Falkreath", "firstObjective": "Destroy the vampire Vighar", "url": "https://en.uesp.net/wiki/Skyrim:Dark_Ancestor"},
-  {"quest": "Unearthed", "editorId": "DLC2dunKolbjornQST", "startsWith": ["Ralis Sedarys"], "where": "Kolbjorn Barrow, Solstheim", "firstObjective": "Speak to Ralis Sedarys at Kolbjorn Barrow", "url": "https://en.uesp.net/wiki/Skyrim:Unearthed"},
-  {"quest": "Deathbrand", "editorId": "DLC2dunHaknirTreasureQST", "startsWith": ["the book Deathbrand", "Geldis Sadri"], "where": "The Retching Netch, Raven Rock, or wherever the book is found", "firstObjective": "Search for the treasure of Haknir Death-Brand", "url": "https://en.uesp.net/wiki/Skyrim:Deathbrand_(quest)"},
-  {"quest": "Filial Bonds", "editorId": "DLC2WB01", "startsWith": ["Wulf Wild-Blood"], "where": "Skaal Village, Solstheim", "firstObjective": "Look for Wulf's brother Torkild", "url": "https://en.uesp.net/wiki/Skyrim:Filial_Bonds"},
-  {"quest": "Dawnguard", "editorId": "DLC1VQ01", "startsWith": ["Durak", "a city guard", "Agmaer"], "where": "Dayspring Canyon, east of Riften", "firstObjective": "Speak with the leader of the Dawnguard", "loreRim": "LoreRim holds Dawnguard until level 30.", "url": "https://en.uesp.net/wiki/Skyrim:Dawnguard_(quest)"},
-  {"quest": "Caught Red Handed", "editorId": "FreeformRiften11", "startsWith": ["Svana Far-Shield"], "where": "Haelga's Bunkhouse, Riften", "firstObjective": "Obtain a Mark of Dibella", "url": "https://en.uesp.net/wiki/Skyrim:Caught_Red_Handed"},
-  {"quest": "Spread the Love", "editorId": "FreeformRiften05", "startsWith": ["Dinya Balu"], "where": "Riften", "firstObjective": "Distribute the Warmth of Mara within Riften", "url": "https://en.uesp.net/wiki/Skyrim:Spread_the_Love"}
+  {
+   "quest": "The Book of Love",
+   "editorId": "T02",
+   "startsWith": [
+    "Dinya Balu"
+   ],
+   "where": "Temple of Mara, Riften",
+   "firstObjective": "Talk to Fastred",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Book_of_Love"
+  },
+  {
+   "quest": "Take Up Arms",
+   "editorId": "C00",
+   "startsWith": [
+    "Aela the Huntress",
+    "Kodlak Whitemane"
+   ],
+   "where": "Jorrvaskr, Whiterun",
+   "firstObjective": "Speak to Kodlak Whitemane",
+   "notes": "Aela (after the giant at Pelagia Farm) or people in Whiterun send you to Kodlak.",
+   "url": "https://en.uesp.net/wiki/Skyrim:Take_Up_Arms"
+  },
+  {
+   "quest": "First Lessons",
+   "editorId": "MG01",
+   "startsWith": [
+    "Faralda"
+   ],
+   "where": "The bridge to the College of Winterhold",
+   "firstObjective": "Join the College of Winterhold",
+   "url": "https://en.uesp.net/wiki/Skyrim:First_Lessons"
+  },
+  {
+   "quest": "Taking Care of Business",
+   "editorId": "TG01",
+   "startsWith": [
+    "Brynjolf"
+   ],
+   "where": "Riften",
+   "firstObjective": "Locate Brynjolf at the Ragged Flagon",
+   "notes": "Follows A Chance Arrangement.",
+   "url": "https://en.uesp.net/wiki/Skyrim:Taking_Care_of_Business"
+  },
+  {
+   "quest": "Waking Nightmare",
+   "editorId": "DA16",
+   "startsWith": [
+    "Erandur"
+   ],
+   "where": "Windpeak Inn, Dawnstar",
+   "firstObjective": "Speak to Erandur",
+   "notes": "The journal starts when you overhear Dawnstar's people complain of nightmares; they are not the giver.",
+   "url": "https://en.uesp.net/wiki/Skyrim:Waking_Nightmare"
+  },
+  {
+   "quest": "The Taste of Death",
+   "editorId": "DA11",
+   "startsWith": [
+    "Kleppr",
+    "Frabbi",
+    "Brother Verulus",
+    "Eola"
+   ],
+   "where": "Silver-Blood Inn and the Hall of the Dead, Markarth",
+   "firstObjective": "Speak to Verulus about the Hall of the Dead",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Taste_of_Death"
+  },
+  {
+   "quest": "The Whispering Door",
+   "editorId": "DA08",
+   "startsWith": [
+    "Hulda",
+    "Balgruuf the Greater"
+   ],
+   "where": "The Bannered Mare and Dragonsreach, Whiterun",
+   "firstObjective": "Ask about Balgruuf's strange children",
+   "notes": "Level 20 and Dragon Rising.",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Whispering_Door"
+  },
+  {
+   "quest": "A Night To Remember",
+   "editorId": "DA14",
+   "startsWith": [
+    "Sam Guevenne"
+   ],
+   "where": "Any inn",
+   "firstObjective": "Participate in a drinking contest with Sam Guevenne",
+   "notes": "Level 14. The main quest begins when you wake in the Temple of Dibella.",
+   "url": "https://en.uesp.net/wiki/Skyrim:A_Night_To_Remember"
+  },
+  {
+   "quest": "Ill Met By Moonlight",
+   "editorId": "DA05",
+   "startsWith": [
+    "Mathies",
+    "Sinding"
+   ],
+   "where": "Corpselight Farm or Falkreath Jail, Falkreath",
+   "firstObjective": "Speak to Sinding",
+   "url": "https://en.uesp.net/wiki/Skyrim:Ill_Met_By_Moonlight"
+  },
+  {
+   "quest": "Laid to Rest",
+   "editorId": "MS14",
+   "startsWith": [
+    "Idgrod Ravencrone",
+    "a Morthal guard",
+    "Jonna",
+    "Sorli the Builder"
+   ],
+   "where": "Morthal",
+   "firstObjective": "Talk to the Jarl",
+   "url": "https://en.uesp.net/wiki/Skyrim:Laid_to_Rest"
+  },
+  {
+   "quest": "The Golden Claw",
+   "editorId": "MS13",
+   "startsWith": [
+    "Lucan Valerius",
+    "Camilla Valerius"
+   ],
+   "where": "Riverwood Trader, Riverwood",
+   "firstObjective": "Retrieve the Golden Claw",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Golden_Claw"
+  },
+  {
+   "quest": "Pieces of the Past",
+   "editorId": "DA07",
+   "startsWith": [
+    "Silus Vesuius"
+   ],
+   "where": "Silus Vesuius' House, Dawnstar",
+   "firstObjective": "Speak to Silus inside his house",
+   "notes": "Level 20; a courier's pamphlet points to him.",
+   "url": "https://en.uesp.net/wiki/Skyrim:Pieces_of_the_Past"
+  },
+  {
+   "quest": "The Cursed Tribe",
+   "editorId": "DA06",
+   "startsWith": [
+    "Atub"
+   ],
+   "where": "Largashbur, The Rift",
+   "firstObjective": "Bring Troll Fat and a Daedra Heart to Atub",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Cursed_Tribe"
+  },
+  {
+   "quest": "The House of Horrors",
+   "editorId": "DA10",
+   "startsWith": [
+    "Vigilant Tyranus"
+   ],
+   "where": "Outside the Abandoned House, Markarth",
+   "firstObjective": "Search the abandoned house",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_House_of_Horrors"
+  },
+  {
+   "quest": "The Mind of Madness",
+   "editorId": "DA15",
+   "startsWith": [
+    "Dervenin"
+   ],
+   "where": "The streets of Solitude",
+   "firstObjective": "Gain access to the Pelagius Wing of the Blue Palace",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Mind_of_Madness"
+  },
+  {
+   "quest": "The Only Cure",
+   "editorId": "DA13",
+   "startsWith": [
+    "Kesh the Clean",
+    "an Afflicted Refugee"
+   ],
+   "where": "Shrine to Peryite, The Reach",
+   "firstObjective": "Find Kesh at the Peryite Shrine",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Only_Cure"
+  },
+  {
+   "quest": "Promises to Keep",
+   "editorId": "MS03",
+   "startsWith": [
+    "Louis Letrush"
+   ],
+   "where": "The Bee and Barb, Riften",
+   "firstObjective": "Listen to Louis Letrush's offer",
+   "url": "https://en.uesp.net/wiki/Skyrim:Promises_to_Keep"
+  },
+  {
+   "quest": "The Wolf Queen Awakened",
+   "editorId": "MS06",
+   "startsWith": [
+    "Falk Firebeard"
+   ],
+   "where": "The Blue Palace, Solitude",
+   "firstObjective": "Speak to Styrr",
+   "notes": "A courier's letter from Falk points to him; the journal starts when you speak to Falk.",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Wolf_Queen_Awakened"
+  },
+  {
+   "quest": "In My Time Of Need",
+   "editorId": "MS08",
+   "startsWith": [
+    "Alik'r Warrior"
+   ],
+   "where": "Whiterun",
+   "firstObjective": "Find the Redguard woman",
+   "url": "https://en.uesp.net/wiki/Skyrim:In_My_Time_Of_Need"
+  },
+  {
+   "quest": "Blood on the Ice",
+   "editorId": "MS11",
+   "startsWith": [
+    "a Windhelm guard"
+   ],
+   "where": "Windhelm's graveyard",
+   "firstObjective": "Question the witnesses",
+   "notes": "Triggered at night after entering Windhelm four times; not offered by anyone.",
+   "url": "https://en.uesp.net/wiki/Skyrim:Blood_on_the_Ice"
+  },
+  {
+   "quest": "The White Phial",
+   "editorId": "MS12",
+   "startsWith": [
+    "Nurelion"
+   ],
+   "where": "The White Phial, Windhelm",
+   "firstObjective": "Retrieve the White Phial",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_White_Phial_(quest)"
+  },
+  {
+   "quest": "Kyne's Sacred Trials",
+   "editorId": "dunHunterQST",
+   "startsWith": [
+    "Froki Whetted-Blade"
+   ],
+   "where": "Froki's Shack",
+   "firstObjective": "Defeat the Guardian Mudcrab",
+   "url": "https://en.uesp.net/wiki/Skyrim:Kyne's_Sacred_Trials"
+  },
+  {
+   "quest": "Lights Out!",
+   "editorId": "MS07",
+   "startsWith": [
+    "Jaree-Ra"
+   ],
+   "where": "Solitude docks",
+   "firstObjective": "Listen to Jaree-Ra's offer in Solitude",
+   "url": "https://en.uesp.net/wiki/Skyrim:Lights_Out!"
+  },
+  {
+   "quest": "The Man Who Cried Wolf",
+   "editorId": "MS06Start",
+   "startsWith": [
+    "Varnius Junius",
+    "Elisif the Fair",
+    "Sybille Stentor",
+    "Falk Firebeard"
+   ],
+   "where": "The Blue Palace, Solitude",
+   "firstObjective": "Ask Falk Firebeard about Wolfskull Cave",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Man_Who_Cried_Wolf"
+  },
+  {
+   "quest": "Rise in the East",
+   "editorId": "MS10",
+   "startsWith": [
+    "Orthus Endario"
+   ],
+   "where": "East Empire Company office, Windhelm",
+   "firstObjective": "Steal Suvaris Atheron's logbook",
+   "url": "https://en.uesp.net/wiki/Skyrim:Rise_in_the_East"
+  },
+  {
+   "quest": "Missing In Action",
+   "editorId": "MS09",
+   "startsWith": [
+    "Fralia Gray-Mane",
+    "Avulstein Gray-Mane"
+   ],
+   "where": "Whiterun",
+   "firstObjective": "Meet Fralia in her home",
+   "url": "https://en.uesp.net/wiki/Skyrim:Missing_In_Action"
+  },
+  {
+   "quest": "The Heart of Dibella",
+   "editorId": "T01",
+   "startsWith": [
+    "Hamal"
+   ],
+   "where": "Inner Sanctum, Temple of Dibella, Markarth",
+   "firstObjective": "Find the future Sybil of Dibella",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Heart_of_Dibella"
+  },
+  {
+   "quest": "Evil in Waiting",
+   "editorId": "dunValthumeQST",
+   "startsWith": [
+    "Valdar"
+   ],
+   "where": "Valthume Vestibule",
+   "firstObjective": "Collect the Vessels",
+   "url": "https://en.uesp.net/wiki/Skyrim:Evil_in_Waiting"
+  },
+  {
+   "quest": "Ancestral Worship",
+   "editorId": "dunHillgrundsTombQST",
+   "startsWith": [
+    "Golldir"
+   ],
+   "where": "Hillgrund's Tomb",
+   "firstObjective": "Defeat Vals Veran",
+   "url": "https://en.uesp.net/wiki/Skyrim:Ancestral_Worship"
+  },
+  {
+   "quest": "Extracting an Argonian",
+   "editorId": "DarkwaterCrossingDerkeethusRescueQuest",
+   "startsWith": [
+    "Sondas Drenim"
+   ],
+   "where": "Darkwater Crossing",
+   "firstObjective": "Find Derkeethus",
+   "url": "https://en.uesp.net/wiki/Skyrim:Extracting_an_Argonian"
+  },
+  {
+   "quest": "Dark Ancestor",
+   "editorId": "FreeformFalkreathQuest03",
+   "startsWith": [
+    "Dengeir of Stuhn"
+   ],
+   "where": "Falkreath",
+   "firstObjective": "Destroy the vampire Vighar",
+   "url": "https://en.uesp.net/wiki/Skyrim:Dark_Ancestor"
+  },
+  {
+   "quest": "Unearthed",
+   "editorId": "DLC2dunKolbjornQST",
+   "startsWith": [
+    "Ralis Sedarys"
+   ],
+   "where": "Kolbjorn Barrow, Solstheim",
+   "firstObjective": "Speak to Ralis Sedarys at Kolbjorn Barrow",
+   "url": "https://en.uesp.net/wiki/Skyrim:Unearthed"
+  },
+  {
+   "quest": "Deathbrand",
+   "editorId": "DLC2dunHaknirTreasureQST",
+   "startsWith": [
+    "the book Deathbrand",
+    "Geldis Sadri"
+   ],
+   "where": "The Retching Netch, Raven Rock, or wherever the book is found",
+   "firstObjective": "Search for the treasure of Haknir Death-Brand",
+   "url": "https://en.uesp.net/wiki/Skyrim:Deathbrand_(quest)"
+  },
+  {
+   "quest": "Filial Bonds",
+   "editorId": "DLC2WB01",
+   "startsWith": [
+    "Wulf Wild-Blood"
+   ],
+   "where": "Skaal Village, Solstheim",
+   "firstObjective": "Look for Wulf's brother Torkild",
+   "url": "https://en.uesp.net/wiki/Skyrim:Filial_Bonds"
+  },
+  {
+   "quest": "Dawnguard",
+   "editorId": "DLC1VQ01MiscObjective",
+   "startsWith": [
+    "Durak",
+    "a city guard",
+    "Agmaer"
+   ],
+   "where": "Dayspring Canyon, east of Riften",
+   "firstObjective": "Speak with the leader of the Dawnguard",
+   "loreRim": "LoreRim holds Dawnguard until level 30.",
+   "url": "https://en.uesp.net/wiki/Skyrim:Dawnguard_(quest)",
+   "notes": "The line's opening is the misc objective Durak, the guards' rumour and Agmaer start; DLC1VQ01 itself is the quest Vigilant Tolan's talk moves."
+  },
+  {
+   "quest": "Caught Red Handed",
+   "editorId": "FreeformRiften11",
+   "startsWith": [
+    "Svana Far-Shield"
+   ],
+   "where": "Haelga's Bunkhouse, Riften",
+   "firstObjective": "Obtain a Mark of Dibella",
+   "url": "https://en.uesp.net/wiki/Skyrim:Caught_Red_Handed"
+  },
+  {
+   "quest": "Spread the Love",
+   "editorId": "FreeformRiften05",
+   "startsWith": [
+    "Dinya Balu"
+   ],
+   "where": "Riften",
+   "firstObjective": "Distribute the Warmth of Mara within Riften",
+   "url": "https://en.uesp.net/wiki/Skyrim:Spread_the_Love"
+  },
+  {
+   "quest": "Infiltration",
+   "editorId": "dunTrevasWatchQST",
+   "startsWith": [
+    "Brurid"
+   ],
+   "where": "Treva's Watch",
+   "firstObjective": "Join with Stalleo or deal with him",
+   "source": "records",
+   "notes": "LoreRim's Infiltration - Quest Expansion.esp: Brurid's \"I'll get rid of him for you.\" (Infiltration - Quest Expansion.esp:000D79) sets the first stage. Judged by Bob, 21 Oct."
+  },
+  {
+   "quest": "Seeking A Cure",
+   "editorId": "VC01",
+   "startsWith": [
+    "Urag gro-Shub"
+   ],
+   "where": "The Arcanaeum",
+   "firstObjective": "Speak to Urag",
+   "source": "records",
+   "notes": "LoreRim's Rising at Dawn - Quest Overhaul: talk with Urag in the Arcanaeum opens it (RisingAtDawnQuestOverhaul.esp:00F5EE); the journal's first step is Speak to Urag. Judged by Bob, 21 Oct."
+  },
+  {
+   "quest": "A Forgotten Blade",
+   "editorId": "madFultheimQuest",
+   "startsWith": [
+    "Fultheim"
+   ],
+   "where": "Nightgate Inn",
+   "firstObjective": "Speak to Delphine about Fultheim",
+   "source": "records",
+   "notes": "Redeeming Fultheim - Blades Quest Addon: Fultheim's \"I'm the one the Blades have been searching for.\" (000D8E) sets stage 5; Delphine is where it sends you. Judged by Bob, 21 Oct."
+  },
+  {
+   "quest": "Raven's Flight",
+   "editorId": "HD1GoreMeet",
+   "startsWith": [
+    "Eden"
+   ],
+   "where": "Dead Man's Drink, Falkreath",
+   "firstObjective": "Head to Peak's Shade Tower outside of Falkreath.",
+   "source": "records",
+   "notes": "GORE.esp: Eden's rumour (4B0CAE) starts it; Gore is who you find at the tower. Judged by Bob, 21 Oct."
+  }
  ]
 }
