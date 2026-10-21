@@ -4977,6 +4977,12 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
   - **Spread the Love:** Dinya Balu, "I'll distribute them.". Its first step carries its count, "(0/20)", as Evil in Waiting's does.
   - These two are favours on the work shelf, which no batch checked. `story_check_all.py` now has a `work` batch, and every batch has run again: 152 lines, 760 of the 1,240 quests checked from the files.
 - [ ] Part 3: the six givers read into `givers-2026-10-21.md`; Bob has judged each.
+- PC, 21 Oct: read, and waiting on Bob's judgement. For each line, `givers-2026-10-21.md` gives the line that sets the opening quest's first stage, who says it, where they stand, the reply and the INFO:
+  - **College:** Faralda, "Okay, I can do that.", from Part 2.
+  - **The Wolf Queen Awakened:** both readings hold, for different quests. Elisif's line sets the opening quest's (MS06Start) first stage, 15, "Ask Falk Firebeard about Wolfskull Cave". After his letter (a story manager node), Falk's "I'll talk to Styrr." sets The Wolf Queen Awakened's (MS06) first stage, 50.
+  - **The other six:** Brurid, Fultheim, Eden and Adimmisaru each set their opening's first stage; Urag gro-Shub and Wujeeta come with a question each for Bob:
+    - Urag's lines set stages 1 to 5, before Seeking A Cure's first objective at stage 7.
+    - Wujeeta's line is conditioned on stage 20.
 - [ ] Part 4: all 152 openings in `openings-2026-10-21.md`; Bob has judged each, the confirmed ones are in the answer key, the rest say not checked.
 - [ ] Part 5: reports need sign-in; `report_quest` through the door; the source on `/admin`.
 - [ ] `WAITING_ON_BOB` is empty; the door sends `who` and `where` again.
