@@ -124,7 +124,8 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
         lastSaved.current.shown = showDrafted;
       }
       if (pj !== lastSaved.current.plan) {
-        const b = await saveBuildPlan(buildId, plan);
+        // Only what changed since this page last saved (WO-122): a change made elsewhere meanwhile stays.
+        const b = await saveBuildPlan(buildId, plan, { by: "setup", base: JSON.parse(lastSaved.current.plan) });
         if (!b.ok) return setEditSave({ state: "failed", error: b.error, retry: () => setSaveTry((n) => n + 1) });
         lastSaved.current.plan = pj;
       }

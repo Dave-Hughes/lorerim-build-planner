@@ -480,3 +480,23 @@ export const doorEvents = pgTable(
   },
   (t) => [index("door_event_at_idx").on(t.at)],
 );
+
+/**
+ * A build's saves (WO-122): the plan as saved, who saved it and when, the last 50 per build, so a change
+ * nobody meant can be found on /admin. `by` is where it came from: Set up, the Levels editor, or the
+ * connector, with the assistant's name in `client`.
+ */
+export const buildRevisions = pgTable(
+  "build_revision",
+  {
+    id: serial("id").primaryKey(),
+    buildId: text("build_id")
+      .notNull()
+      .references(() => builds.id, { onDelete: "cascade" }),
+    at: timestamp("at", { withTimezone: true }).notNull().defaultNow(),
+    by: text("by").$type<"setup" | "levels" | "connector">().notNull(),
+    client: text("client"),
+    plan: jsonb("plan").$type<BuildPlan>().notNull(),
+  },
+  (t) => [index("build_revision_build_idx").on(t.buildId, t.id)],
+);

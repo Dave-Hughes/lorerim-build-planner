@@ -3,7 +3,7 @@
  * still ask about is refused with the choices named, and nothing is saved.
  */
 import { expect, test } from "@playwright/test";
-import { call, ip, signIn, tokenFor } from "./helpers";
+import { call, ip, savedInBand, signIn, tokenFor } from "./helpers";
 
 const from = ip();
 const nord = { race: "Nord", birthsign: "Warrior", majors: ["Two-Handed", "Heavy Armor", "Smithing"], minors: ["Block", "Restoration", "Speech", "One-Handed", "Alchemy", "Wayfarer"] };
@@ -58,4 +58,43 @@ test("get_creation answers through the door with the choices Set up offers", asy
   expect(c.counts).toMatchObject({ majors: { count: 3 }, minors: { count: 6 }, traits: { upTo: 2 } });
   expect(c.starts.find((s: { name: string }) => s.name === "Dragonborn").option).toEqual({ label: "Helgen Keep", options: ["Helgen Keep (Start)", "Helgen Keep (End)"] });
   expect(c.traits.find((x: { name: string }) => x.name === "Focused Combat").choice).toMatchObject({ options: ["One-Handed", "Two-Handed", "Marksman"], send: "traitChoices" });
+});
+
+test("Set up keeps the start: a mode and Details change saves only what changed, even after the door moved the start", async ({ page, context, baseURL }) => {
+  test.setTimeout(90_000);
+  await signIn(context);
+  const t = await tokenFor(page, context, baseURL!, from);
+  const go = (name: string, args: object) => call(baseURL!, from, t.access_token, name, args);
+  const made = await go("create_build", { name: "E2E Pilgrim", ...nord, start: "Pilgrim (Temple)", startOption: "Temple of Mara" });
+  expect(made.isError, made.text).toBe(false);
+  const build = made.json().build;
+
+  // The mode and Details changed in Set up: the start reads back as it was.
+  await page.goto(`/b/${build}/setup?step=mode`);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Game mode and start");
+  await page.getByRole("article").filter({ hasText: "Konahrik" }).getByRole("heading", { name: "Konahrik" }).click();
+  await savedInBand(page);
+  await page.goto(`/b/${build}/setup?step=name`);
+  await page.getByRole("main").getByLabel("Description", { exact: true }).fill("A pilgrim of Mara.");
+  await savedInBand(page);
+  expect((await go("get_build", { build })).json()).toMatchObject({ mode: "Konahrik", start: "Pilgrim (Temple)", startOption: "Temple of Mara", description: "A pilgrim of Mara." });
+
+  // Kyria's case: Set up open while the connector changes the start, then the mode changed there. The connector's start stays.
+  await page.goto(`/b/${build}/setup?step=mode`);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Game mode and start");
+  const moved = await go("set_creation", { build, start: "Dragonborn", startOption: "Helgen Keep (End)" });
+  expect(moved.isError, moved.text).toBe(false);
+  await page.getByRole("article").filter({ hasText: "Naaktiid" }).getByRole("heading", { name: "Naaktiid" }).click();
+  await savedInBand(page);
+  expect((await go("get_build", { build })).json()).toMatchObject({ mode: "Naaktiid", start: "Dragonborn", startOption: "Helgen Keep (End)" });
+
+  // /admin shows the build's saves, who made each, and what changed.
+  await page.goto(`/admin?build=${build}`);
+  const saves = page.getByRole("list", { name: "Saves of E2E Pilgrim" });
+  await expect(saves).toBeVisible();
+  await expect(saves.getByRole("listitem").first()).toContainText("Set up");
+  await expect(saves.getByRole("listitem").first()).toContainText("Mode: Konahrik to Naaktiid");
+  await expect(saves).toContainText("Start: Pilgrim (Temple), Temple of Mara to Dragonborn, Helgen Keep (End)");
+  await expect(saves).toContainText("Connector (");
+  await expect(saves).toContainText("Mode: Naaktiid to Konahrik");
 });

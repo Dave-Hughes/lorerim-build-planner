@@ -6,10 +6,11 @@ import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { db, schema } from "@/db";
 import { newBuildId, isValidBuildId } from "./ids";
+import { mergeChanged } from "./merge";
 import { insertBuild, writeDetails, writePlan } from "./writes";
 import { getBuild } from "./queries";
 import { buildDetailsSchema, buildVisibilitySchema, parseBuildPlan, type BuildDetails } from "./validate";
-import { convertPlan, droppedSentence } from "@/lib/rules/convert";
+import { convertPlan, droppedSentence, readPlan } from "@/lib/rules/convert";
 import { checkNewBuild } from "./new-build";
 import { checkGuideDoc, imageUrls, isGuideKey, levelOfKey } from "@/lib/guide/doc";
 import { deleteBuildImages, deleteImagesIfUnused, isOurImage } from "@/lib/guide/images";
@@ -79,8 +80,19 @@ export async function createBuild(input: { details: BuildDetails; plan: unknown 
   return { ok: true, value: { id } };
 }
 
-/** Saves the level-by-level choices. Only the owner can. */
-export async function saveBuildPlan(id: string, input: unknown): Promise<ActionResult<{ updatedAt: string }>> {
+function planOrNull(input: unknown) {
+  try {
+    return parseBuildPlan(input);
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Saves the build's choices. Only the owner can. `from` says which page saved (WO-122), for the build's history; with
+ * `base`, the plan that page last saved, only what changed since is written over the build as it is now (mergeChanged).
+ */
+export async function saveBuildPlan(id: string, input: unknown, from?: { by?: unknown; base?: unknown }): Promise<ActionResult<{ updatedAt: string }>> {
   const userId = await requireUser();
   if (!userId) return { ok: false, error: "Your sign-in expired. Sign in again to keep saving." };
   if (!isValidBuildId(id)) return { ok: false, error: "Unknown build." };
@@ -92,7 +104,18 @@ export async function saveBuildPlan(id: string, input: unknown): Promise<ActionR
   } catch {
     return { ok: false, error: "The build's choices didn't pass validation." };
   }
-  const updatedAt = await writePlan(userId, id, plan);
+  // A base that doesn't read as a plan (a page from before a change to the shape) saves the whole plan, as before.
+  const base = from?.base ? planOrNull(from.base) : null;
+  if (base) {
+    const [row] = await db().select({ plan: schema.builds.plan }).from(schema.builds).where(and(eq(schema.builds.id, id), eq(schema.builds.ownerId, userId))).limit(1);
+    if (!row) return { ok: false, error: "Only the build's author can change it." };
+    try {
+      plan = parseBuildPlan(mergeChanged(readPlan(row.plan), base, plan));
+    } catch {
+      return { ok: false, error: "The build's choices didn't pass validation." };
+    }
+  }
+  const updatedAt = await writePlan(userId, id, plan, { by: from?.by === "setup" ? "setup" : "levels" });
   if (!updatedAt) return { ok: false, error: "Only the build's author can change it." };
   revalidatePath(`/b/${id}`);
   return { ok: true, value: { updatedAt: updatedAt.toISOString() } };

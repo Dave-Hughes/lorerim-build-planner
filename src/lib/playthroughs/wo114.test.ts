@@ -62,7 +62,7 @@ const details = { name: "Kyria", description: "A knight.", coverImageUrl: "", wr
 const plan = { gameVersion: "5.0.4.8" } as never;
 
 describe("a character made in one pass", () => {
-  it("writes the build, the run, Act I and its objectives in one batch", async () => {
+  it("writes the build, the run, Act I, its objectives and the first save in one batch", async () => {
     const run = prepareRun({ name: "Kyria Severa", line: "A knight.", act: { name: "The first days", levels: "1 to 5", place: "Riften", goal: "" }, objectives: [{ text: "Unbound", kind: "once", doneBy: "save", detect: { quest: "MQ101" } }] });
     let runId = "";
     const buildId = await insertBuild("u1", details, plan, null, (b) => {
@@ -73,7 +73,8 @@ describe("a character made in one pass", () => {
     expect(singles).toHaveLength(0);
     expect(batches).toHaveLength(1);
     const tables = batches[0].map((o) => o.table);
-    expect(tables).toEqual([schema.builds, schema.playthroughs, schema.playthroughActs, schema.playthroughObjectives]);
+    // The build's first save goes in its history in the same batch (WO-122).
+    expect(tables).toEqual([schema.builds, schema.playthroughs, schema.playthroughActs, schema.playthroughObjectives, schema.buildRevisions]);
     expect(batches[0][1].values).toMatchObject({ id: runId, buildId, name: "Kyria Severa" });
     expect(batches[0][2].values).toMatchObject({ playthroughId: runId, position: 1, name: "The first days", levelFrom: 1, levelTo: 5 });
   });

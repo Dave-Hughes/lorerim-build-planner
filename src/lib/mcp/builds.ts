@@ -51,7 +51,7 @@ async function save(p: Player, id: string, plan: BuildPlan, level: number, first
   const d = versionData(plan.gameVersion);
   const { plan: parsed, states, issues } = issuesOf(d, plan);
   if (issues.length) throw refusal(firstOnly ? issues.slice(0, 1) : issues);
-  await writePlan(p.userId, id, parsed);
+  await writePlan(p.userId, id, parsed, { by: "connector", client: p.clientName });
   revalidatePath(`/b/${id}`);
   // Advice the rules allow but a good build wouldn't leave (WO-119): it saves the same either way.
   const warnings = reviewBuild(d, parsed, states).map(({ code, message }) => ({ code, message }));
@@ -164,7 +164,7 @@ export async function setDetails(p: Player, input: { build: string; name?: strin
     plan = { ...plan, ...(input.notes !== undefined ? { notes: input.notes } : {}), ...(input.mainSpells ? { mainSpells: input.mainSpells.map((s) => names.spell(d, s)) } : {}) };
     const { issues, plan: parsed } = issuesOf(d, plan);
     if (issues.length) throw refusal(issues);
-    await writePlan(p.userId, b.id, parsed);
+    await writePlan(p.userId, b.id, parsed, { by: "connector", client: p.clientName });
   }
   await writeDetails(p.userId, b.id, ok.data);
   revalidatePath(`/b/${b.id}`);

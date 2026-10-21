@@ -148,6 +148,13 @@
       "when": 1792560621583,
       "tag": "0020_door_event",
       "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "7",
+      "when": 1792589500678,
+      "tag": "0021_build_revision",
+      "breakpoints": true
     }
   ]
 }

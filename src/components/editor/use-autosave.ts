@@ -25,7 +25,7 @@ export function useAutosave(buildId: string, plan: BuildPlan, initial: BuildPlan
       if (toSave === last.current) return;
       setStatus("saving");
       inFlight.current = (async () => {
-        const r = await saveBuildPlan(buildId, toSave);
+        const r = await saveBuildPlan(buildId, toSave, { by: "levels", base: last.current });
         if (r.ok) {
           last.current = toSave;
           setError(null);
