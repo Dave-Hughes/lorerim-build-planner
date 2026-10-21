@@ -15,7 +15,9 @@ test.use({ viewport: { width: 1440, height: 900 } });
 
 const KYRIA = `/p/${KYRIA_PLAYTHROUGH_ID}`;
 const tabs = (page: Page) => page.getByRole("tablist", { name: "Build sections" });
-const reader = (page: Page) => page.getByRole("dialog");
+// The reader is a page in the site (WO-124), its way back the bar's "‹ {name}'s playthrough".
+const reader = (page: Page) => page.getByRole("region", { name: /^Reading: / });
+const backOut = (page: Page) => reader(page).getByRole("link", { name: /^‹ .*'s (playthrough|build)$/ }).click();
 const scrollY = (page: Page) => page.evaluate(() => Math.round(window.scrollY));
 
 test("a build alone has Levels and Guide, no Story tab, and Read the story opens the reader", async ({ page, context }) => {
@@ -26,13 +28,13 @@ test("a build alone has Levels and Guide, no Story tab, and Read the story opens
   await expect(page.getByRole("tab", { name: /^(Play|Story)/ })).toHaveCount(0);
   // One with a guide: Levels and Guide.
   await page.goto(`/b/${AZREM_BUILD_ID}`);
-  await expect(tabs(page).getByRole("tab")).toHaveText([/^Levels/, /^Guide/]);
+  await expect(tabs(page).getByRole("tab")).toHaveText([/^Build/, /^Guide/]);
   await page.goto(`/b/${HEALER_BUILD_ID}`);
   await page.getByRole("link", { name: /^Read the story/ }).first().click();
   await expect(page).toHaveURL(new RegExp(`/b/${HEALER_BUILD_ID}/story$`));
   await expect(reader(page).getByRole("heading", { level: 1, name: "The Mender" })).toBeVisible();
   await expect(reader(page).getByText("She came north with a satchel of herbs")).toBeVisible();
-  await reader(page).getByRole("button", { name: "× Close" }).click();
+  await backOut(page);
   await expect(page).toHaveURL(new RegExp(`/b/${HEALER_BUILD_ID}$`));
   await expect(reader(page)).toHaveCount(0);
 });
@@ -43,15 +45,15 @@ test("a character with a run opens on Play, from its build's address too; anothe
   await expect(page.getByRole("heading", { level: 1, name: "Kyria Severa" })).toBeVisible();
   await expect(tabs(page).getByRole("tab", { name: /^Play/ })).toHaveAttribute("aria-selected", "true");
   await expect(tabs(page).getByRole("tab")).toHaveCount(3);
-  // Where you stand is one quiet line over the act (WO-118).
-  await expect(page.getByText("Level 6 | Day 7 | Riften | Speech 30, Two-Handed 36 | from Save 7", { exact: true })).toBeVisible();
+  // Where she is: one line over the act for the owner, with Update (WO-124).
+  await expect(page.getByLabel("Where she is")).toContainText(/^Level 6, day 7, Riften\. From Save 7, \d+ \w+\. Update ›$/);
   // A character opens on Play from every way in (WO-117), its build's own address too.
   await page.goto(`/b/${KYRIA_BUILD_ID}`);
   await expect(tabs(page).getByRole("tab", { name: /^Play/ })).toHaveAttribute("aria-selected", "true");
   // No nested tabs: the old Build tab's address is the Levels tab.
   await page.goto(`${KYRIA}/build`);
   await expect(page).toHaveURL(new RegExp(`${KYRIA}\\?tab=levels$`));
-  await expect(tabs(page).getByRole("tab", { name: /^Levels/ })).toHaveAttribute("aria-selected", "true");
+  await expect(tabs(page).getByRole("tab", { name: /^Build/ })).toHaveAttribute("aria-selected", "true");
 
   await context.clearCookies();
   await signIn(context, "other");
@@ -67,14 +69,14 @@ test("the tab row pins as a thin bar with the name and the tabs, on every tab", 
   await expect(pinned).toHaveCount(0);
   await page.getByRole("heading", { name: "Objectives" }).scrollIntoViewIfNeeded();
   await expect(pinned.getByText("Kyria Severa")).toBeVisible();
-  await expect(pinned.getByRole("button", { name: "Play" })).toHaveAttribute("aria-pressed", "true");
+  await expect(pinned.getByRole("button", { name: "Playthrough" })).toHaveAttribute("aria-pressed", "true");
   // A tab picked there opens at its top, the tab row back in view; scrolled down again, the bar is the same.
-  await pinned.getByRole("button", { name: "Levels" }).click();
-  await expect(tabs(page).getByRole("tab", { name: /^Levels/ })).toHaveAttribute("aria-selected", "true");
+  await pinned.getByRole("button", { name: "Build" }).click();
+  await expect(tabs(page).getByRole("tab", { name: /^Build/ })).toHaveAttribute("aria-selected", "true");
   await expect(tabs(page)).toBeInViewport();
   await page.getByRole("region", { name: /^Perks at level/ }).scrollIntoViewIfNeeded();
   await expect(pinned.getByText("Kyria Severa")).toBeVisible();
-  await expect(pinned.getByRole("button", { name: "Levels" })).toHaveAttribute("aria-pressed", "true");
+  await expect(pinned.getByRole("button", { name: "Build" })).toHaveAttribute("aria-pressed", "true");
 });
 
 test("Read Act I opens the reader at its address; Back returns to the same spot, the card now one line", async ({ page, context }) => {
@@ -88,7 +90,7 @@ test("Read Act I opens the reader at its address; Back returns to the same spot,
   await expect(page).toHaveURL(new RegExp(`${KYRIA}/story/\\d+$`));
   await expect(reader(page).getByRole("heading", { level: 1, name: "The Sister's House" })).toBeVisible();
   await expect(reader(page).getByText("Act I", { exact: true }).first()).toBeVisible();
-  await reader(page).getByRole("button", { name: "× Close" }).click();
+  await backOut(page);
   await expect(page).toHaveURL(new RegExp(`${KYRIA}$`));
   await expect(reader(page)).toHaveCount(0);
   expect(await scrollY(page)).toBe(y);
@@ -101,9 +103,11 @@ test("Read Act I opens the reader at its address; Back returns to the same spot,
   await expect(page.getByRole("link", { name: "Read Act I" })).toBeVisible();
 });
 
-test("a Story marker opens its entry, and In the game comes back to the row", async ({ page, context }) => {
+test("a Story marker opens its entry, and In the game comes back to the row; a locked chapter is a dashed marker", async ({ page, context }) => {
   await signIn(context);
   await page.goto(KYRIA);
+  // Warn Haelga is done, from the save: folded under the list (WO-124).
+  await page.getByText(/^✓\d+ done/).click();
   await page.getByRole("link", { name: /^Story The Mark of Dibella/ }).click();
   await expect(page).toHaveURL(new RegExp(`${KYRIA}/story/\\d+$`));
   await expect(reader(page).getByRole("heading", { level: 1, name: "The Mark of Dibella" })).toBeVisible();
@@ -112,9 +116,9 @@ test("a Story marker opens its entry, and In the game comes back to the row", as
   await expect(page).toHaveURL(new RegExp(`${KYRIA}\\?act=1#o\\d+$`));
   await expect(reader(page)).toHaveCount(0);
   await expect(page.locator(`#${new URL(page.url()).hash.slice(1)}`)).toBeInViewport();
-  // A chapter not unlocked yet is a dashed marker, not a link.
-  await expect(page.getByText("unlocks when you tick this")).toBeVisible();
-  await expect(page.getByRole("link", { name: /^Story Made with Care/ })).toHaveCount(0);
+  // WO-124: a chapter tied to an objective stays locked until it's done, an entry too (The first set waits on Speech 40).
+  await expect(page.getByText(/^Locked\s*The first set\s*unlocks at Speech 40$/)).toBeVisible();
+  await expect(page.getByRole("link", { name: /^Story The first set/ })).toHaveCount(0);
 });
 
 test("previous and next walk the tale in reading order and stop at a waiting beat with Read it anyway", async ({ page, context }) => {
@@ -127,14 +131,16 @@ test("previous and next walk the tale in reading order and stop at a waiting bea
     await expect(reader(page).getByRole("heading", { level: 1, name: t })).toBeVisible();
     if (i < titles.length - 1) await foot.getByRole("link").filter({ hasText: `Next ›${titles[i + 1]}` }).click();
   }
-  await expect(reader(page).getByText("Unlocks when you tick Hunt and tan her first hides.")).toBeVisible();
+  await expect(reader(page).getByText("This chapter opens when Hunt and tan her first hides is done.")).toBeVisible();
   await expect(reader(page).getByText("The hide was rough")).toHaveCount(0);
   await reader(page).getByRole("button", { name: "Read it anyway" }).click();
   await expect(reader(page).getByText("The hide was rough under her hands")).toBeVisible();
   await foot.getByRole("link").filter({ hasText: "‹ PreviousThe Mark of Dibella" }).click();
   await expect(reader(page).getByRole("heading", { level: 1, name: "The Mark of Dibella" })).toBeVisible();
-  // Opened from a link, Back is the page under it.
+  // Opened from a link, the way back is the page under it (WO-124: Esc no longer closes anything).
   await page.keyboard.press("Escape");
+  await expect(reader(page)).toBeVisible();
+  await backOut(page);
   await expect(page).toHaveURL(new RegExp(`${KYRIA}$`));
   await expect(reader(page)).toHaveCount(0);
 });
@@ -142,11 +148,12 @@ test("previous and next walk the tale in reading order and stop at a waiting bea
 test("the browser's back button closes the reader to the same spot", async ({ page, context }) => {
   await signIn(context);
   await page.goto(KYRIA);
-  const marker = page.getByRole("link", { name: /^Story The first set/ });
+  await page.getByText(/^✓\d+ done/).click();
+  const marker = page.getByRole("link", { name: /^Story The Mark of Dibella/ });
   await marker.scrollIntoViewIfNeeded();
   const y = await scrollY(page);
   await marker.click();
-  await expect(reader(page).getByRole("heading", { level: 1, name: "The first set" })).toBeVisible();
+  await expect(reader(page).getByRole("heading", { level: 1, name: "The Mark of Dibella" })).toBeVisible();
   await page.goBack();
   await expect(reader(page)).toHaveCount(0);
   await expect(page).toHaveURL(new RegExp(`${KYRIA}$`));
@@ -158,12 +165,14 @@ test("ticking the hunt opens Made with Care, read from its marker", async ({ pag
   await page.goto(KYRIA);
   const hunt = page.getByRole("checkbox", { name: "Hunt and tan her first hides" });
   await hunt.click();
+  // Done, it folds away under the list (WO-124): open the fold to see it and its chapter.
+  await page.getByText(/^✓\d+ done/).click();
   const marker = page.getByRole("link", { name: /^Story Made with Care/ });
   await expect(marker).toBeVisible();
   await marker.click();
   await expect(reader(page).getByText("The hide was rough under her hands")).toBeVisible();
   await expect(reader(page).getByText("Read it anyway")).toHaveCount(0);
-  await page.keyboard.press("Escape");
+  await backOut(page);
   // Back as it was, for the other specs.
   await page.getByRole("checkbox", { name: "Hunt and tan her first hides" }).click();
   await expect(page.getByRole("link", { name: /^Story Made with Care/ })).toHaveCount(0);
@@ -214,8 +223,8 @@ test("through the connector: an act's first chapter opens its card, and the chap
 
 // WO-116a: one pinned bar, not two: the name, the page's own tabs, and the owner's controls.
 for (const [what, path, tabNames, owner] of [
-  ["a build alone", `/b/${AZREM_BUILD_ID}`, ["Levels", "Guide"], "other"],
-  ["a character", KYRIA, ["Play", "Levels", "Guide"], "author"],
+  ["a build alone", `/b/${AZREM_BUILD_ID}`, ["Build", "Guide"], "other"],
+  ["a character", KYRIA, ["Playthrough", "Build", "Guide"], "author"],
 ] as const) {
   test(`scrolled on ${what}, exactly one bar pins, with its own tabs, no Story tab, and the owner's controls`, async ({ page, context }) => {
     await signIn(context, owner);

@@ -11,10 +11,14 @@ test("a number to reach has a box on Play, and the tick holds", async ({ page, c
   await signIn(context);
   await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}`);
   const box = page.getByRole("checkbox", { name: "Play the Bee and Barb until Speech 40" });
+  const fold = page.getByText(/^✓\d+ done/);
   await expect(box).toHaveAttribute("aria-checked", "false");
   await box.click();
+  // Done, it folds away under the list (WO-124): open the fold to see it ticked, then and after a reload.
+  await fold.click();
   await expect(box).toHaveAttribute("aria-checked", "true");
   await page.reload();
+  await fold.click();
   await expect(box).toHaveAttribute("aria-checked", "true");
   // Back as it was, for the tests after.
   await box.click();

@@ -127,11 +127,10 @@ export function roman(n: number): string {
   return out || String(n);
 }
 
-/** "unlocks at Speech 40" for a reach objective, else "unlocks when you tick this". */
+/** Under its objective, a locked chapter "unlocks when this is done" (WO-124: ticked or from the save, either does it). */
 function opensText(o: ObjectiveRow): string {
   if (o.kind === "reach" && o.reach) return `unlocks at ${reachLabel(o.reach.key)} ${o.reach.target}`;
-  if (o.doneBy === "save") return "unlocks when your save shows this done";
-  return "unlocks when you tick this";
+  return "unlocks when this is done";
 }
 
 /** Reading order (WO-118): the Prologue, then each act in turn; in an act its kind-act chapter first, then by place. */
@@ -203,6 +202,14 @@ export function assemble(rows: { acts: ActRow[]; objectives: ObjectiveRow[]; cha
 }
 
 /** Where you stand (WO-118), one quiet line: "Level 6 | Day 7 | Riften | Speech 30, Two-Handed 36 | from Save 7". */
+/** Where she is, in one line (WO-124): "Level 10, day 15, Ivarstead. From Save 70, 21 Oct." */
+export function whereLine(snap: Pick<SnapshotRow, "source" | "label" | "level" | "day" | "place" | "at"> | null): string | null {
+  if (!snap) return null;
+  const when = new Date(snap.at).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
+  const where = [`Level ${snap.level}`, snap.day !== null ? `day ${snap.day}` : null, snap.place || null].filter(Boolean).join(", ");
+  return `${where}. ${snap.source === "save" ? `From ${snap.label}` : "From your own entry"}, ${when}.`;
+}
+
 export function standLine(snap: Pick<SnapshotRow, "source" | "label" | "level" | "day" | "place" | "skills"> | null): string | null {
   if (!snap) return null;
   const skills = Object.entries(snap.skills)

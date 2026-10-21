@@ -35,8 +35,9 @@ describe("the act's own chapter (WO-116)", () => {
   });
   it("is never a Story marker; chapters with an objective hang off it (WO-118)", () => {
     const [haelga, hunt] = view.acts[0].objectives;
-    expect(haelga.tale).toEqual([expect.objectContaining({ id: 5, title: "The Mark of Dibella", open: true })]);
-    expect(hunt.tale).toEqual([expect.objectContaining({ id: 6, open: false, opens: "unlocks when you tick this" })]);
+    // WO-124: a chapter tied to an objective is locked until it's done, not only a beat.
+    expect(haelga.tale).toEqual([expect.objectContaining({ id: 5, title: "The Mark of Dibella", open: false, opens: "unlocks when this is done" })]);
+    expect(hunt.tale).toEqual([expect.objectContaining({ id: 6, open: false, opens: "unlocks when this is done" })]);
     expect(view.acts[0].openBeats).toEqual([]);
   });
 });
@@ -60,10 +61,11 @@ describe("the reader's stops (WO-116)", () => {
     expect(stops[2]).toMatchObject({ plate: "https://cover", plateFromText: false });
     expect(stops[5]).toMatchObject({ plate: ACT_IMG, plateFromText: false });
   });
-  it("stop at a locked chapter with what unlocks it", () => {
-    expect(stops[3].waiting).toBe("Unlocks when you tick Hunt and tan her first hides.");
-    expect(stops[4].waiting).toBe("Unlocks at Speech 40. Speech 30 now.");
-    expect(stops[2].waiting).toBeNull();
+  it("stop at a locked chapter with what unlocks it (WO-124: chapters and entries too, not only beats)", () => {
+    expect(stops[3].waiting).toBe("This chapter opens when Hunt and tan her first hides is done.");
+    expect(stops[4].waiting).toMatch(/^This chapter opens when .+ is done\. Speech 30 now\.$/);
+    expect(stops[2].waiting).toMatch(/^This chapter opens when .+ is done\.$/);
+    expect(stops[1].waiting).toBeNull();
   });
   it("send an entry's In the game back to its row, and the owner's Edit to the Story editor", () => {
     expect(stops[2].game).toEqual({ text: "Warn Haelga, or expose her", href: "/p/e2ekyrya22?act=1#o10" });

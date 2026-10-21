@@ -13,8 +13,10 @@ import s from "./play.module.css";
  * this and Cancel; Use this saves it as the snapshot, labelled from the save's number. A save of
  * someone else is said plainly, and Use this asks first.
  */
-export function ReadSave({ id, characters, objectives, skills }: {
+export function ReadSave({ id, characters, objectives, skills, buttonClassName }: {
   id: string;
+  /** The button's look: a link in edit's Where you stand, a small button in Play's Where is she in your game? (WO-124). */
+  buttonClassName?: string;
   /** The character's names: the run's, which is the one said, and the build's. */
   characters: string[];
   /** The run's quest objectives the save can tick. */
@@ -67,7 +69,7 @@ export function ReadSave({ id, characters, objectives, skills }: {
 
   return (
     <>
-      <button type="button" className={s.linkButton} onClick={() => input.current?.click()} disabled={reading}>
+      <button type="button" className={buttonClassName ?? s.linkButton} onClick={() => input.current?.click()} disabled={reading}>
         {reading ? "Reading the save" : "Read a save"}
       </button>
       <input ref={input} type="file" accept=".ess" hidden aria-label="A save file (.ess)" onChange={(e) => pick(e.target.files?.[0])} />

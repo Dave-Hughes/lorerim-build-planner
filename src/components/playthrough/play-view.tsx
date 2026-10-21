@@ -1,10 +1,10 @@
 import Link from "next/link";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
-import { standLine, type ActView, type ObjectiveView } from "@/lib/playthroughs/view";
-import { Answer, TickBox } from "./play-controls";
-import { ReaderProvider, ReaderLink } from "@/components/reader/reader";
+import { standLine, whereLine, type ActView, type ObjectiveView } from "@/lib/playthroughs/view";
+import { Answer, TickBox, WhereIsShe } from "./play-controls";
+import { ReaderProvider, ReaderLink, StoryCard } from "@/components/reader/reader";
 import { actImageOf, runStops } from "@/lib/playthroughs/reader";
-import { docText, docWords } from "@/lib/guide/doc";
+import { docText, docWords, firstPlate } from "@/lib/guide/doc";
 import { ActCard } from "./act-card";
 import { RunHero } from "./tabs";
 import s from "./play.module.css";
@@ -16,7 +16,7 @@ import s from "./play.module.css";
 export function PlayView({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwner: boolean; actIndex: number | null }) {
   const stops = runStops({ id: p.id, taleLine: p.taleLine, view: p.view, cover: p.build?.coverImageUrl ?? null, coverFocus: p.build?.coverFocus ?? null, isOwner, titlePicture: p.coverImageUrl });
   return (
-    <ReaderProvider stops={stops} back={{ href: `/p/${p.id}`, label: "Back to the quest log" }} runId={p.id} title={p.taleTitle || p.name}>
+    <ReaderProvider stops={stops} back={{ href: `/p/${p.id}`, label: `${p.name}'s playthrough` }} runId={p.id} title={p.taleTitle || p.name}>
       <main className={`page ${s.main}`}>
         {isOwner && (
           <Link href="/me" className={s.back}>
@@ -49,11 +49,17 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
   const stand = standLine(p.snapshot);
   const card = act ? actCard(p, act) : null;
   const shown = act ? act.objectives.filter((o) => isOwner || o.worked.shown !== "suggested") : [];
+  // Done objectives fold into one line at the end (WO-124), so the list is what's left to do.
+  const left = shown.filter((o) => !o.worked.done);
+  const done = shown.filter((o) => o.worked.done);
+  const story = storyPicture(p);
 
   return (
     <div className={s.body}>
       <div className={s.grid}>
         <aside className={s.col}>
+          {/* Her story, always on show (WO-124, the PlayRail board). */}
+          <StoryCard picture={story.url} focus={story.focus} title={p.taleTitle || p.name} label="Her story" />
           <section aria-labelledby="acts">
             <span className={`${s.head} ${s.headRule}`}>
               <h2 id="acts" className={`${s.h2} ${s.h2s}`}>
@@ -88,10 +94,20 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
         <div className={`${s.col} ${s.actCol}`}>
           {act ? (
             <>
-              {stand && (
-                <span className={s.standLine} aria-label="Where you stand">
-                  {stand}
-                </span>
+              {isOwner ? (
+                <WhereIsShe
+                  id={p.id}
+                  line={whereLine(p.snapshot)}
+                  characters={[...new Set([p.name, p.build?.name].filter((n): n is string => !!n))]}
+                  objectives={v.acts.flatMap((a) => a.objectives.flatMap((o) => (o.kind === "once" && o.doneBy === "save" && o.detect && o.accepted ? [{ detect: o.detect }] : [])))}
+                  skills={p.snapshot?.skills ?? {}}
+                />
+              ) : (
+                stand && (
+                  <span className={s.standLine} aria-label="Where you stand">
+                    {stand}
+                  </span>
+                )
               )}
               {card ? (
                 // The act opens with its story (WO-116): the card, then the goal line leads the objectives.
@@ -118,10 +134,24 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
                   <h2 id="objs" className={`${s.h2} ${s.h2s}`}>
                     Objectives
                   </h2>
+                  {shown.length > 0 && <span className={s.note}>{left.length ? `${left.length} to do` : "All done"}</span>}
                 </span>
-                {shown.map((o) => (
+                {left.map((o) => (
                   <Objective key={o.id} o={o} p={p} isOwner={isOwner} />
                 ))}
+                {done.length > 0 && (
+                  <details className={s.doneFold}>
+                    <summary>
+                      <span className={s.doneMark} aria-hidden="true">
+                        ✓
+                      </span>
+                      {done.length} done <span aria-hidden="true">▾</span>
+                    </summary>
+                    {done.map((o) => (
+                      <Objective key={o.id} o={o} p={p} isOwner={isOwner} />
+                    ))}
+                  </details>
+                )}
                 {shown.length === 0 && <p className="muted">No objectives in this act yet.</p>}
               </section>
             </>
@@ -132,6 +162,15 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
       </div>
     </div>
   );
+}
+
+/** Her story's picture (WO-124): the story's own, else its first chapter's, else the cover. */
+function storyPicture(p: PlaythroughRecord): { url: string | null; focus: { x: number; y: number } | null } {
+  if (p.coverImageUrl) return { url: p.coverImageUrl, focus: null };
+  const first = p.view.chapters.find((c) => c.open);
+  const plate = first ? firstPlate(first.doc) : null;
+  if (plate) return { url: plate, focus: null };
+  return { url: p.build?.coverImageUrl ?? null, focus: p.build?.coverFocus ?? null };
 }
 
 /** What she keeps doing all through the act (WO-118: "Standing rule" was the old word). */
@@ -200,9 +239,7 @@ function Objective({ o, p, isOwner }: { o: ObjectiveView; p: PlaythroughRecord; 
             </ReaderLink>
           ) : (
             <span key={t.id} className={`${s.mark} ${s.markWait}`}>
-              <span className={s.markKind}>Story</span>
-              <b>{t.title}</b>
-              <span>{t.opens}</span>
+              <span className={s.markKind}>Locked</span> <i className={s.markTitle}>{t.title}</i> <span>{t.opens}</span>
             </span>
           ),
         )}

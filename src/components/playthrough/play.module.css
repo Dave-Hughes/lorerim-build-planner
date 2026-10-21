@@ -714,3 +714,77 @@ a.mark:hover {
 .heroRead {
   align-self: flex-start;
 }
+
+/* WO-124, the PlayRail board. A locked chapter's title under its objective, in the story's own type. */
+.markTitle {
+  font-family: var(--font-flavor);
+  font-size: 16px;
+}
+/* Done objectives, folded into one line at the end of the act's list. */
+.doneFold {
+  border-bottom: 1px solid var(--rule-soft);
+}
+.doneFold > summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 10px 0;
+  color: var(--muted);
+  font-size: 15px;
+  cursor: pointer;
+  list-style: none;
+}
+.doneFold > summary::-webkit-details-marker {
+  display: none;
+}
+.doneFold > summary:hover {
+  color: var(--soft);
+}
+.doneMark {
+  width: 22px;
+  height: 22px;
+  display: inline-grid;
+  place-items: center;
+  background: var(--rule);
+  color: var(--stamina);
+  font-size: 13px;
+  font-weight: 700;
+}
+/* Where is she in your game? for the owner, until there's a save or an entry; then one line with Update. */
+.where {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 16px;
+  padding: 16px 20px;
+  border: 1px solid var(--rule);
+  background: var(--panel);
+}
+.whereWords {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.whereTitle {
+  font-weight: 600;
+}
+.whereHelp {
+  font-size: 14px;
+  color: var(--muted);
+}
+.whereDo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.whereDo > form,
+.whereDo > div {
+  flex-basis: 100%;
+}
+.whereLine {
+  font-size: 14px;
+  color: var(--muted);
+}

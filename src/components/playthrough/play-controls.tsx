@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { answer, enterByHand, tick } from "@/lib/playthroughs/actions";
+import type { Detect } from "@/lib/playthroughs/types";
+import { ReadSave } from "./read-save";
 import type { ObjectiveStatus } from "@/lib/playthroughs/types";
 import s from "./play.module.css";
 
@@ -75,13 +77,27 @@ export function Answer({ id, objectiveId }: { id: string; objectiveId: number })
 }
 
 /** Enter it by hand: level, day, place, and the skills and counts the objectives name. */
-export function HandEntry({ id, initial, skills, counts }: { id: string; initial: { level: number | null; day: number | null; place: string; skills: Record<string, number>; counts: Record<string, number> }; skills: string[]; counts: string[] }) {
+export function HandEntry({
+  id,
+  initial,
+  skills,
+  counts,
+  label = "Enter it by hand",
+  buttonClassName,
+}: {
+  id: string;
+  initial: { level: number | null; day: number | null; place: string; skills: Record<string, number>; counts: Record<string, number> };
+  skills: string[];
+  counts: string[];
+  label?: string;
+  buttonClassName?: string;
+}) {
   const [open, setOpen] = useState(false);
   const { pending, error, go } = useAction();
   if (!open)
     return (
-      <button type="button" className={s.linkButton} onClick={() => setOpen(true)}>
-        Enter it by hand
+      <button type="button" className={buttonClassName ?? s.linkButton} onClick={() => setOpen(true)}>
+        {label}
       </button>
     );
   const num = (v: FormDataEntryValue | null) => (v === null || String(v).trim() === "" ? null : Number(v));
@@ -149,5 +165,37 @@ export function HandEntry({ id, initial, skills, counts }: { id: string; initial
         )}
       </div>
     </form>
+  );
+}
+
+/**
+ * Where is she in your game? (WO-124, the PlayRail board), for the owner over the act's card. With no save or entry yet:
+ * Read a save, the same reader as edit's, or Enter by hand, level, day and where she is. Once there's one: the line that
+ * says where she is, and Update to read another.
+ */
+export function WhereIsShe({ id, line, characters, objectives, skills }: { id: string; line: string | null; characters: string[]; objectives: { detect: Detect }[]; skills: Record<string, number> }) {
+  const [open, setOpen] = useState(!line);
+  if (line && !open)
+    return (
+      <span className={s.whereLine} aria-label="Where she is">
+        {line}{" "}
+        <button type="button" className={s.linkButton} onClick={() => setOpen(true)}>
+          Update ›
+        </button>
+      </span>
+    );
+  return (
+    <section className={s.where} aria-labelledby="where-title">
+      <span className={s.whereWords}>
+        <span id="where-title" className={s.whereTitle}>
+          Where is she in your game?
+        </span>
+        <span className={s.whereHelp}>Fill it in from a save, or by hand. The save ticks her quests for you.</span>
+      </span>
+      <span className={s.whereDo}>
+        <ReadSave id={id} characters={characters} objectives={objectives} skills={skills} buttonClassName="btn btn-sm" />
+        <HandEntry id={id} initial={{ level: null, day: null, place: "", skills: {}, counts: {} }} skills={[]} counts={[]} label="Enter by hand" buttonClassName="btn btn-sm" />
+      </span>
+    </section>
   );
 }

@@ -123,12 +123,14 @@ test("on the site: private on its build's card under My characters, a tick opens
   await expect(playTab()).toContainText("0 of 6 done");
   // The Levels tab is the build linked through the door (WO-111c).
   // Other specs add levels to the shared test build, so the count isn't fixed: the words are.
-  await expect(page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Levels/ })).toContainText(/Levels 1 to \d+/);
+  await expect(page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Build/ })).toContainText(/Levels 1 to \d+/);
   // A locked chapter is a dashed Story marker, never its text (WO-116).
-  await expect(page.getByText("unlocks when you tick this")).toBeVisible();
+  await expect(page.getByText("unlocks when this is done").first()).toBeVisible();
   await expect(page.getByText("The hide was rough under her hands.")).toHaveCount(0);
 
   await page.getByRole("checkbox", { name: "Hunt and tan her first hides" }).click();
+  // Done, it folds under the list (WO-124); open the fold to see its chapter open.
+  await page.getByText(/^✓\d+ done/).click();
   await expect(page.getByRole("link", { name: /^Story Made with Care/ })).toBeVisible();
   await expect(playTab()).toContainText("1 of 6 done");
 
@@ -137,9 +139,11 @@ test("on the site: private on its build's card under My characters, a tick opens
   await expect(playTab()).toContainText("1 of 7 done");
 
   await expect(page.getByText("Level 6: not read yet")).toBeVisible();
-  // No save yet: no Where you stand line (WO-118); Enter it by hand is in Edit's Play tab.
-  await expect(page.getByText(/^Level \d+ \| .*from/)).toHaveCount(0);
-  await expect(page.getByRole("button", { name: "Enter it by hand" })).toHaveCount(0);
+  // No save yet: Where is she in your game? asks the owner, with Read a save and Enter by hand (WO-124).
+  const where = page.getByRole("region", { name: "Where is she in your game?" });
+  await expect(where).toContainText("Fill it in from a save, or by hand. The save ticks her quests for you.");
+  await expect(where.getByRole("button", { name: "Read a save" })).toBeVisible();
+  await expect(where.getByRole("button", { name: "Enter by hand" })).toBeVisible();
   await page.goto(`/p/${pid}/edit/play`);
   const stand = page.getByRole("region", { name: "Where you stand" });
   await stand.getByRole("button", { name: "Enter it by hand" }).click();
@@ -147,7 +151,11 @@ test("on the site: private on its build's card under My characters, a tick opens
   await stand.getByRole("button", { name: "Save", exact: true }).click();
   await expect(stand).toContainText("Level 6 | from your own entry");
   await page.goto(`/p/${pid}`);
-  await expect(page.getByText("Level 6 | from your own entry", { exact: true })).toBeVisible();
+  // Once there's an entry, one line says where she is, with Update (WO-124).
+  await expect(page.getByLabel("Where she is")).toContainText(/^Level 6\. From your own entry, \d+ \w+\. Update ›$/);
+  await expect(where).toHaveCount(0);
+  // Reach level 6 is done now, so folded away with the rest of the done ones.
+  await page.getByText(/^✓\d+ done/).click();
   await expect(page.getByText("Level 6 of 6", { exact: true })).toBeVisible();
   await expect(playTab()).toContainText("2 of 7 done");
 });
@@ -155,7 +163,7 @@ test("on the site: private on its build's card under My characters, a tick opens
 test("the reader shows the chapter, the opened beat and its way back to the game", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/p/${pid}/tale`);
-  const reader = page.getByRole("dialog");
+  const reader = page.getByRole("region", { name: /^Reading: / });
   await expect(reader.getByRole("heading", { name: "Chapter One: The Chapel by the Sea" })).toBeVisible();
   await expect(reader.getByText("The chapel bells in Anvil rang the hours.")).toBeVisible();
   await reader.getByRole("navigation", { name: "The story" }).getByRole("link").filter({ hasText: "Next ›Made with Care" }).click();
@@ -217,13 +225,17 @@ test("a quest objective the save decides: ticked by the player, then the save's 
   await page.goto(`/p/${pid}?act=2`);
   const row = page.locator(`#o${added.json().objective}`);
   await row.getByRole("checkbox", { name: "Spread the Love" }).click();
-  // The box says it (WO-118: the status on the right says only Under way).
+  // The box says it (WO-118: the status on the right says only Under way), in the fold of done ones (WO-124).
+  const fold = page.getByText(/^✓\d+ done/);
+  await fold.click();
   await expect(row.getByRole("checkbox", { name: "Spread the Love" })).toHaveAttribute("aria-checked", "true");
 
   const snap = await go("set_snapshot", { playthrough: pid, source: "save", label: "Save 8", level: 7, skills: {}, questStages: { FreeformRiften05: 10 } });
   expect(snap.isError, snap.text).toBe(false);
   await page.reload();
-  // The save's word can't be ticked away: a done box, not a checkbox.
+  await fold.click();
+  // The save's word can't be ticked away: a done box, not a checkbox, and From your save.
+  await expect(row.getByText("From your save")).toBeVisible();
   await expect(row.getByRole("checkbox")).toHaveCount(0);
   await expect(row.getByText("✓", { exact: true })).toBeVisible();
 });

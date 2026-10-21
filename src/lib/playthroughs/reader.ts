@@ -121,17 +121,13 @@ function placeOf(c: ChapterView, a: ActView | undefined): string {
   return [`Act ${a.n}`, c.fromSave ? `from ${c.fromSave.toLowerCase()}` : null].filter(Boolean).join(" | ");
 }
 
-/** "Unlocks at Speech 40. Speech 30 now." or "Unlocks when you tick Hunt and tan her first hides." */
+/** "This chapter opens when Hunt and tan her first hides is done." (WO-124), with the number so far for one to reach. */
 function waitingText(v: PlaythroughView, c: ChapterView): string {
   const w = c.waitsOn;
   if (!w) return "Not unlocked yet.";
   const o = v.acts.flatMap((a) => a.objectives).find((x) => x.id === w.id);
-  if (w.reach) {
-    const now = o?.worked.meter?.value;
-    return `Unlocks at ${w.reach}.${now !== undefined && now !== null ? ` ${w.reach.replace(/\s\d+$/, "")} ${now} now.` : ""}`;
-  }
-  if (o?.doneBy === "save") return `Unlocks when your save shows ${w.text} done.`;
-  return `Unlocks when you tick ${w.text}.`;
+  const now = w.reach ? o?.worked.meter?.value : null;
+  return `This chapter opens when ${w.text} is done.${now !== undefined && now !== null && w.reach ? ` ${w.reach.replace(/\s\d+$/, "")} ${now} now.` : ""}`;
 }
 
 /** The stop a path opens, if it's one of these. */

@@ -97,9 +97,12 @@ export function workOut(o: ObjectiveFacts, snap: SnapshotValues | null | undefin
   return { done: false, shown, meter };
 }
 
-/** Whether a piece of the tale is open: a beat once its objective is done; chapters and entries always. */
+/**
+ * Whether a piece of the tale is open: one tied to an objective once that objective is done, chapters and entries as well
+ * as beats (WO-124: a chapter could be read before what it tells had happened); one tied to none, always.
+ */
 export function isOpen(c: { kind: ChapterKind; opensAfter: number | null }, doneIds: ReadonlySet<number>): boolean {
-  if (c.kind !== "beat" || c.opensAfter === null) return true;
+  if (c.opensAfter === null) return true;
   return doneIds.has(c.opensAfter);
 }
 
