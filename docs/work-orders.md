@@ -4905,6 +4905,39 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-119  Assistants that build well: the rules, warnings while drafting, and a way to tell (Mac, 20 Oct 2026)
+
+**Why.** Kyria's build, drafted by Dave's Claude through the door, follows every rule and still isn't a good build: by level 23 it carries 169 skill points never spent, one perk point unspent from level 5 and all five Destiny points unspent. It raised four skills to max skill and then put 1 point a level into each, while Smithing, Restoration and Block sat at 20 to 25. The door never told the assistant how points work, and its answers carry `skillPointsCarriedOver` without saying it's a problem. Dave: the site doesn't need warnings, a player knows to spend their points; the question is whether the agent knows how to build and whether we can tell. So this order is for assistants only; nothing on the site changes.
+
+**Where:** `src/lib/mcp/`, `content/mcp/style.md`, behind `FEATURE_MCP`. Small commits, push after each part.
+
+### 1. Tell it the rules
+- A **How points work** section in the style guide, written from the planner's own rules at build time (not by hand), so it never goes stale: skill points per level (30), the most one skill can rise in a level (5), what a point costs at each band (1 below 25, 2 below 50, 3 below 75, 6 from 75), max skill at a level (50 plus the level, up to 100), perk points (3 at the start, 3 more for Naaktiid, 1 a level, and the traits and Oghma Infinium that change it, as the engine counts them), Destiny points (when they come), attribute points and trainer sessions per level. A unit test fails if a number in the section and the rules disagree.
+- A **How to build** section (Bob's words, plain): spend every level's points; when the skills a build is about reach max skill, the rest go to the next skills its perks will need, then to skills it uses (Smithing for its armor, Restoration for its healing); take a perk point when there is a perk to take, and when a planned perk isn't open yet, raise its skill toward it rather than holding the point; spend Destiny points as they come; ask `get_perk` for a perk's requirements instead of guessing; check the build with `get_build` before `finish_draft`.
+
+### 2. Warnings while drafting
+- `add_level`, `set_level` and `get_build` answers gain `warnings`: plain sentences about things the rules allow but a good build wouldn't do, computed by one function, `reviewBuild(plan)`, from the same `computeBuild` state the editor uses. A warning saves nothing differently; it is advice for the assistant.
+- The warnings, each with the numbers and what to do:
+  - Skill points piling up: more than one level's worth carried over. "142 skill points unspent since level 9. Speech, Two-Handed and Heavy Armor are at max skill for level 18 (68); Smithing 25, Restoration 25 and Block 20 can take them."
+  - A perk point unspent for three levels or more: "1 perk point unspent since level 5." with up to five perks open at that level in the build's skills, by name.
+  - Destiny points unspent for five levels or more, with how many.
+  - A planned perk whose skill can't reach its requirement by the level it's planned at, if the points were spent toward it.
+- `finish_draft` answers with every warning still standing and the line "Fix these or tell the player why you left them." It never refuses because of a warning.
+- Unit tests on Kyria's plan as drafted (copy it into a fixture from staging's `fsxh33upak` through `get_build`): the skill points, perk point and Destiny warnings fire with the right levels and skills; on the WO-80 sample build none fire.
+
+### 3. A way to tell
+- A small additive table, `door_event`: when, the tool, the outcome (ok, refused, warned), the refusal or warning's code, and the build or playthrough id. No user id, no text.
+- The admin page gains a **Connector** section: per week, calls per tool, refusals by code, warnings by code, and drafts finished with warnings still standing. That is how Bob and Dave see whether assistants get better after a change to the instructions.
+- An e2e that drafts a 12-level two-handed build through the door the way Kyria's was drafted (four skills, Speech at 5 a level), gets the skill points warning back, then spends the points the warning names and gets none.
+
+### Done when
+- [ ] The style guide has How points work (generated and tested) and How to build.
+- [ ] `add_level`, `set_level`, `get_build` and `finish_draft` carry warnings from `reviewBuild`; Kyria's plan as drafted gets its three warnings, the sample none.
+- [ ] `door_event` records every call's outcome and the admin page shows the Connector counts.
+- [ ] Every check in CLAUDE.md passes; migration additive; behind the flag. Commit on `staging`, push, and stop: Dave asks his Claude to fix Kyria's levels, it reads the warnings and spends the points, and the admin page shows the warnings fall to none.
+
+---
+
 ## WO-115  Quests an assistant can trust: endings, starts for every quest, and "open for you" (20 Oct 2026)
 
 **Why.** Dave: assistants recommend quests he can't take on, call a quest available when it isn't, and tell him a quest ends one way when it ended another. Bob's look (backlog, "Why quest advice goes wrong"): the planner holds 1,240 quests by shape and checked starts for six stories; nobody holds each quest's endings, each quest's start conditions in plain words, or the player's quest state. Both the planner and the Book chat's own index answer those from memory. This order gives the planner the three, in the order they pay off, and makes the door say "open for you" or "unknown" instead of leaving the gap for the assistant to fill.
