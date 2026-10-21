@@ -322,6 +322,16 @@ export const THEMES: Theme[] = [
 export const DEFAULT_THEME: ThemeId = "ember";
 export const THEME_IDS = THEMES.map((t) => t.id) as [ThemeId, ...ThemeId[]];
 
+/**
+ * Themes are off for now (WO-118): every page draws in Ember, whatever theme a build has stored. The
+ * stored value stays, so a theme can come back once the reader, Play, the edit pages and the cards all
+ * follow it (the backlog's "Themes across every page").
+ */
+export const THEMES_ON = false;
+
+/** The theme a page draws in: the stored one while themes are on, else Ember. */
+export const drawnTheme = (id: string | undefined): ThemeId => (THEMES_ON ? themeOf(id).id : DEFAULT_THEME);
+
 export function themeOf(id: string | undefined): Theme {
   return THEMES.find((t) => t.id === id) ?? THEMES[0];
 }

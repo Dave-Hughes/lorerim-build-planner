@@ -48,7 +48,7 @@ import { levelsLine, skips, stretchAt, stretches, writtenLevels } from "@/lib/ru
 import { BottomSheet, PerkDetails, Tree, ViewToggle, type TreeView } from "./tree";
 import styles from "./build-view.module.css";
 import { pageZoom } from "@/lib/zoom";
-import { themeOf, themeStyle } from "@/lib/themes";
+import { drawnTheme, themeOf, themeStyle } from "@/lib/themes";
 import { useDismiss } from "@/lib/use-dismiss";
 import { HIDDEN_IMAGE_TEXT } from "@/lib/moderation/reports";
 import { ExampleTag } from "./example-tag";
@@ -310,7 +310,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
     <GuideFactsProvider plan={plan} states={states}>
       <main className={styles.main}>
         {/* The build's guide theme (WO-37): everything below the edit bar takes its colours. */}
-        <div className={styles.themed} data-theme={themeOf(plan.theme).id} style={themeStyle(plan.theme)}>
+        <div className={styles.themed} data-theme={drawnTheme(plan.theme)} style={themeStyle(drawnTheme(plan.theme))}>
         <Cover
           ownerControls={ownerControls}
           startRun={startRun}
@@ -1627,7 +1627,7 @@ function Cover({
     <section
       ref={hero}
       aria-label="Build"
-      className={`${styles.cover} ${build.coverImageUrl ? "" : styles.coverPlain} ${!build.coverImageUrl && themeOf(build.plan.theme).vars["hero-art"] !== "none" ? styles.coverArt : ""}`}
+      className={`${styles.cover} ${build.coverImageUrl ? "" : styles.coverPlain} ${!build.coverImageUrl && themeOf(drawnTheme(build.plan.theme)).vars["hero-art"] !== "none" ? styles.coverArt : ""}`}
     >
       {build.coverImageUrl && (
         <div ref={layer} className={styles.coverLayer} aria-hidden="true">

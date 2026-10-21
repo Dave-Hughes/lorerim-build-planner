@@ -4,7 +4,7 @@
  */
 import { expect, test, type Page } from "@playwright/test";
 import { signIn } from "./helpers";
-import { KYRIA_BUILD_ID, KYRIA_PLAYTHROUGH_ID } from "./seed";
+import { AURORA_BUILD_ID, KYRIA_BUILD_ID, KYRIA_PLAYTHROUGH_ID } from "./seed";
 
 const KYRIA = `/p/${KYRIA_PLAYTHROUGH_ID}`;
 const reader = (page: Page) => page.getByRole("dialog");
@@ -76,3 +76,14 @@ test("Details holds the six things and nothing else; the cover's Change offers U
   await main.getByRole("button", { name: "+ Add a tag" }).click();
   await expect(page.getByRole("group", { name: "Tags" })).toBeVisible();
 });
+
+test("a build stored with Parchment draws in Ember, and no page offers a theme", async ({ page, context }) => {
+  await page.goto(`/b/${AURORA_BUILD_ID}`);
+  await expect(page.locator("[data-theme]").first()).toHaveAttribute("data-theme", "ember");
+  await expect(page.locator("[data-theme]").first()).toHaveCSS("background-color", "rgb(14, 19, 25)");
+  await signIn(context);
+  await page.goto(`/b/${AURORA_BUILD_ID}/setup?step=name`);
+  await expect(page.getByRole("group", { name: "Theme" })).toHaveCount(0);
+  await expect(page.getByText("Parchment theme")).toHaveCount(0);
+});
+

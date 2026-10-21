@@ -25,7 +25,6 @@ import { shippedVersions } from "@/lib/rules/versions";
 import { emptyLevel } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
 import type { BuildPlan } from "@/lib/rules/types";
-import { themeOf } from "@/lib/themes";
 import { useDismiss } from "@/lib/use-dismiss";
 import { YOUTUBE_ERROR, youtubeVideoId } from "@/lib/builds/youtube";
 import styles from "./wizard.module.css";
@@ -167,7 +166,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
     traits: `${plan.traits.length} of ${d.rules.maxTraits} chosen`,
     deity: plan.deity ? d.deities.includes(plan.deity) ? <IconLabel icon={<DeityIcon name={plan.deity} />}>{plan.deity}</IconLabel> : plan.deity : "None",
     mode: `${plan.mode}${plan.start ? `, ${plan.start}${plan.startOption && plan.startOption !== "Random" ? `, ${plan.startOption}` : ""}` : ""}`,
-    name: `${themeOf(plan.theme).name} theme`,
+    name: details.name || "Not named yet",
   };
 
   const finish = () =>

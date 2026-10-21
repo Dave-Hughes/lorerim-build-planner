@@ -230,10 +230,11 @@ export async function seed() {
         ownerId: TEST_USER_ID,
         createdAt: new Date(Date.now() - 2 * 24 * 3600 * 1000),
         name: "Under the Aurora",
-        description: "No cover, for the Aurora theme.",
+        // Stored with Parchment: themes are off for now (WO-118), so it draws in Ember.
+        description: "No cover, stored with a theme.",
         visibility: "unlisted",
         gameVersion: "5.0.4.8",
-        plan: { ...samplePlan(), gear: [] },
+        plan: { ...samplePlan(), gear: [], theme: "parchment" },
       },
       {
         id: GEAR83_BUILD_ID,

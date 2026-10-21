@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { drawnTheme } from "@/lib/themes";
 import { standLine } from "./view";
 
 describe("Where you stand (WO-118)", () => {
@@ -10,5 +11,13 @@ describe("Where you stand (WO-118)", () => {
   });
   it("is nothing with no save and no entry", () => {
     expect(standLine(null)).toBeNull();
+  });
+});
+
+describe("themes, off for now (WO-118)", () => {
+  it("draw every page in Ember, whatever is stored", () => {
+    expect(drawnTheme("parchment")).toBe("ember");
+    expect(drawnTheme("aurora")).toBe("ember");
+    expect(drawnTheme(undefined)).toBe("ember");
   });
 });
