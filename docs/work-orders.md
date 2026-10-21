@@ -4466,7 +4466,7 @@ On `/me`, a section **Assistants**: one row per client with a live token: its na
 ### Done when
 - [x] `https://<staging>/api/mcp/signed-in` answers `tools/list`, and its path-form metadata names it as the resource. (Mac, night of 20 Oct: the route is `src/app/api/mcp/[[...rest]]/route.ts`; the metadata route takes the same path form through the rewrite; `/oauth/authorize` and `/oauth/token` accept `/api/mcp` and any path under it on this host, no query or fragment.)
 - [x] `whoami` without a token is a 401 with the challenge; with a token, the player. (The sign-in tools are read from the tools' own registration: whoami needs any token, the build tools `builds:write`, the playthrough tools `playthroughs:write`; a token without the scope is a 403 with `error="insufficient_scope"` and the scope. initialize, tools/list and the facts tools stay open.)
-- [ ] The WO-109 e2e passes through the new path; every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Dave adds `/api/mcp/signed-in` as a new connector with Sign in now.
+- [x] The WO-109 e2e passes through the new path; every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Dave adds `/api/mcp/signed-in` as a new connector with Sign in now.
 
 ---
 
@@ -4962,8 +4962,8 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - [x] WO-115 Parts 3 to 5 done. (Part 5 on WO-121; see both orders' Done when.)
 - [x] WO-119 done. (One warning blocked; see its Done when.)
 - [ ] WO-121 done, and WO-115 Part 5 on it.
-- [ ] WO-109b done.
-- [ ] `docs/night-2026-10-20.md` lists each order, what to try and what's blocked. Every check in CLAUDE.md passes on the last commit. Push to `staging` and stop: Bob checks the night's work in the morning, then Dave.
+- [x] WO-109b done.
+- [x] `docs/night-2026-10-20.md` lists each order, what to try and what's blocked. Every check in CLAUDE.md passes on the last commit. Push to `staging` and stop: Bob checks the night's work in the morning, then Dave.
 
 ---
 
