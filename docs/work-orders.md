@@ -4984,6 +4984,16 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
     - Urag's lines set stages 1 to 5, before Seeking A Cure's first objective at stage 7.
     - Wujeeta's line is conditioned on stage 20.
 - [ ] Part 4: all 152 openings in `openings-2026-10-21.md`; Bob has judged each, the confirmed ones are in the answer key, the rest say not checked.
+- PC, 21 Oct: all 152 written, waiting on Bob's judgement. Each opening quest has every start the check found, with its record, the first step and what the page says now; `scripts/gamedata/openings.py` writes the file again. Of the 152:
+  - 81 have one giver on the page
+  - 52 have ways in but no one giver
+  - 19 aren't traced yet ("not yet")
+  - 18 have an unread note (no starter found in the records or scripts)
+
+  Three asks from Bob, with their notes in the file:
+  - **A Night To Remember** opens on DA14Start, Sam Guevenne's drinking contest. `quests.py` keeps a named quest's unnamed lead-in, which also brings in DA03Start for A Daedra's Best Friend and MS05Start for The Bards College. The key's row still names DA14.
+  - **Deluge of Deceit**'s Black-Briar job line (evgSIRENROOT.esm:0A25DD) is Frissa Black-Briar's: its one condition is a voice type only she has, and the check now names a speaker that way. Wujeeta's line needs Deluge of Deceit at stage 20.
+  - **Journey to Baan Malur** has no single opening quest. A Grand Venture is an empty placeholder, the rest are side quests in Baan Malur, and Hlervan's Ashes most likely starts when you pick the ashes up. The way in stays the line's start text, with no single giver.
 - [ ] Part 5: reports need sign-in; `report_quest` through the door; the source on `/admin`.
 - [ ] `WAITING_ON_BOB` is empty; the door sends `who` and `where` again.
 - [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Bob checks ten more quests against UESP, then Dave checks five he knows.
