@@ -8,7 +8,6 @@ import { ipCall } from "@/lib/moderation/limits";
 import { SCOPES } from "@/lib/oauth/core";
 import { checkRequest, consentToken } from "@/lib/oauth/consent";
 import { decide } from "@/lib/oauth/consent-actions";
-import { resourceOf } from "@/lib/oauth/store";
 import styles from "./consent.module.css";
 
 export const metadata: Metadata = { title: "Allow an assistant", robots: { index: false } };
@@ -33,7 +32,7 @@ export default async function AuthorizePage({ searchParams }: { searchParams: Se
     redirect(`/signin?next=${encodeURIComponent(self)}`);
   }
   const origin = getPublicOrigin(new Request(`${h.get("x-forwarded-proto") ?? "http"}://${h.get("host") ?? "localhost"}/`, { headers: h }));
-  const checked = await checkRequest(q, resourceOf(origin));
+  const checked = await checkRequest(q, origin);
   if (!checked.ok) {
     if ("back" in checked) redirect(checked.back);
     return <Problem text={checked.show} />;

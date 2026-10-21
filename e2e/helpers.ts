@@ -44,9 +44,11 @@ export async function call(base: string, from: string, token: string, name: stri
     body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "tools/call", params: { name, arguments: args } }),
   });
   const text = await res.text();
+  // Refused before the tool runs (WO-109b: a 401 or 403 that starts sign-in): the status and the challenge.
+  if (res.status === 401 || res.status === 403) return { status: res.status, text: res.headers.get("www-authenticate") ?? "", isError: true, json: () => ({}) };
   const data = JSON.parse(text.startsWith("{") ? text : (text.split("\n").find((l) => l.startsWith("data: "))?.slice(6) ?? "{}"));
   const r = data.result as { content: { text: string }[]; isError?: boolean };
-  return { text: r.content[0].text, isError: !!r.isError, json: () => JSON.parse(r.content[0].text) };
+  return { status: res.status, text: r.content[0].text, isError: !!r.isError, json: () => JSON.parse(r.content[0].text) };
 }
 
 

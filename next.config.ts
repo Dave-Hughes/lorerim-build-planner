@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
       { source: "/.well-known/oauth-authorization-server", destination: "/oauth/metadata/authorization-server" },
       { source: "/.well-known/oauth-authorization-server/:path*", destination: "/oauth/metadata/authorization-server" },
       { source: "/.well-known/oauth-protected-resource", destination: "/oauth/metadata/protected-resource" },
-      { source: "/.well-known/oauth-protected-resource/:path*", destination: "/oauth/metadata/protected-resource" },
+      { source: "/.well-known/oauth-protected-resource/:path*", destination: "/oauth/metadata/protected-resource/:path*" },
     ];
   },
   async redirects() {

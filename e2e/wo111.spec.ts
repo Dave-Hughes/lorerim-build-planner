@@ -196,8 +196,9 @@ test("another player's token can't read it, and a facts-only token can't write",
   await signIn(context);
   const facts = await tokenFor(page, context, baseURL!, other, "facts");
   const write = await call(baseURL!, other, facts.access_token, "add_act", { playthrough: pid, name: "Act Three", levels: "8 to 20", place: "Solitude", goal: "Join the College." });
-  expect(write.isError).toBe(true);
-  expect(write.text).toMatch(/doesn't allow this/);
+  // A 403 naming the scope it lacks (WO-109b).
+  expect(write.status).toBe(403);
+  expect(write.text).toContain("playthroughs:write");
 });
 
 // WO-111a: a quest the save decides can be ticked by the player until a snapshot shows its stage.

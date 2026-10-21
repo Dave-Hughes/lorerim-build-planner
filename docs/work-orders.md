@@ -4464,8 +4464,8 @@ On `/me`, a section **Assistants**: one row per client with a live token: its na
 3. **Tests.** Unit: the path check (accepts `/api/mcp/signed-in`, refuses `/api/mcp?x=1` and another host); the body check (a `tools/call` of `whoami` without a token is 401, `search_facts` without one is 200, `whoami` with a token missing nothing is 200). e2e: the WO-109 flow through `/api/mcp/signed-in`, and the metadata at its path form.
 
 ### Done when
-- [ ] `https://<staging>/api/mcp/signed-in` answers `tools/list`, and its path-form metadata names it as the resource.
-- [ ] `whoami` without a token is a 401 with the challenge; with a token, the player.
+- [x] `https://<staging>/api/mcp/signed-in` answers `tools/list`, and its path-form metadata names it as the resource. (Mac, night of 20 Oct: the route is `src/app/api/mcp/[[...rest]]/route.ts`; the metadata route takes the same path form through the rewrite; `/oauth/authorize` and `/oauth/token` accept `/api/mcp` and any path under it on this host, no query or fragment.)
+- [x] `whoami` without a token is a 401 with the challenge; with a token, the player. (The sign-in tools are read from the tools' own registration: whoami needs any token, the build tools `builds:write`, the playthrough tools `playthroughs:write`; a token without the scope is a 403 with `error="insufficient_scope"` and the scope. initialize, tools/list and the facts tools stay open.)
 - [ ] The WO-109 e2e passes through the new path; every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Dave adds `/api/mcp/signed-in` as a new connector with Sign in now.
 
 ---

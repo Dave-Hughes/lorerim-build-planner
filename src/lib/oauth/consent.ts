@@ -1,6 +1,7 @@
 import "server-only";
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { OAuthFailure, parseScopes, redirectAllowed, type Scope } from "./core";
+import { isMcpResource } from "./resource";
 import { resolveClient, type Client } from "./store";
 
 /** An authorization request (WO-109), as the consent page reads it from the query. */
@@ -29,8 +30,8 @@ export function errorRedirect(redirectUri: string, error: string, state: string 
   return u.toString();
 }
 
-/** Checks an authorization request: the client, its redirect, PKCE (S256, required), the scopes and the resource. */
-export async function checkRequest(q: Record<string, string | undefined>, resource: string): Promise<Checked> {
+/** Checks an authorization request: the client, its redirect, PKCE (S256, required), the scopes and the resource (the door on any path under /api/mcp, WO-109b). */
+export async function checkRequest(q: Record<string, string | undefined>, origin: string): Promise<Checked> {
   const clientId = q.client_id ?? "";
   const redirectUri = q.redirect_uri ?? "";
   let client: Client;
@@ -46,7 +47,7 @@ export async function checkRequest(q: Record<string, string | undefined>, resour
   if (q.response_type !== "code") return back("unsupported_response_type", "response_type must be code.");
   if (!q.code_challenge || !/^[A-Za-z0-9_-]{43}$/.test(q.code_challenge)) return back("invalid_request", "PKCE is required: send code_challenge.");
   if (q.code_challenge_method !== "S256") return back("invalid_request", "code_challenge_method must be S256.");
-  if (q.resource && q.resource !== resource) return back("invalid_target", "The resource must be this planner's MCP URL.");
+  if (q.resource && !isMcpResource(origin, q.resource)) return back("invalid_target", "The resource must be this planner's MCP URL.");
   const scopes = parseScopes(q.scope);
   if (!scopes) return back("invalid_scope", "Unknown scope.");
   return { ok: true, client, scopes, req: { clientId, redirectUri, codeChallenge: q.code_challenge, state, scope: q.scope || null, resource: q.resource || null } };

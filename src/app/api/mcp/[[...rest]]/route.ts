@@ -8,6 +8,8 @@ import { recordDoorEvent } from "@/lib/mcp/door-events";
 import { registerBuildTools } from "@/lib/mcp/build-tools";
 import { registerPlaythroughTools } from "@/lib/mcp/playthrough-tools";
 import { verifyBearer } from "@/lib/oauth/mcp-auth";
+import { gateOf } from "@/lib/mcp/sign-in-tools";
+import { OAuthError, OAuthErrorCode, bearerAuthChallengeResponse } from "@modelcontextprotocol/server";
 
 /**
  * The planner's MCP route (WO-108, WO-110, WO-111): facts for assistants with no sign-in, and, signed in with
@@ -55,13 +57,39 @@ function handlerFor(ip: string, origin: string) {
   );
 }
 
+/** The bearer token sent, if any. */
+function bearerOf(req: Request): string | undefined {
+  const [type, token] = req.headers.get("authorization")?.split(" ") ?? [];
+  return type?.toLowerCase() === "bearer" && token ? token : undefined;
+}
+
 /**
  * A bearer token, when sent, must be live (WO-109): a bad one gets 401 with the challenge pointing at
- * /.well-known/oauth-protected-resource. No token passes through to the open facts tools.
+ * the protected resource metadata. No token passes through to the open facts tools. On any path under
+ * /api/mcp (WO-109b), the challenge names that path's metadata, and a call to a tool that needs sign-in
+ * with no token is a 401 that starts sign-in; with a token missing the tool's scope, a 403 naming it.
  */
 async function handle(req: Request): Promise<Response> {
   if (!mcpOn()) return new Response("Not found", { status: 404 });
-  return withMcpAuth(handlerFor(callerIp(req), getPublicOrigin(req)), verifyBearer, { required: false, resourceMetadataPath: "/.well-known/oauth-protected-resource" })(req);
+  const origin = getPublicOrigin(req);
+  const path = new URL(req.url).pathname.replace(/\/+$/, "");
+  const metadataPath = `/.well-known/oauth-protected-resource${path === "/api/mcp" ? "" : path}`;
+  if (req.method === "POST") {
+    const body = await req
+      .clone()
+      .json()
+      .catch(() => null);
+    const bearer = bearerOf(req);
+    // A token that doesn't verify is withMcpAuth's to refuse, as before.
+    const token = bearer ? await verifyBearer(req, bearer).catch(() => undefined) : null;
+    if (!bearer || token) {
+      const gate = gateOf(body, token ?? null);
+      const challenge = { resourceMetadataUrl: `${origin}${metadataPath}` };
+      if (gate?.refuse === "sign-in") return bearerAuthChallengeResponse(new OAuthError(OAuthErrorCode.InvalidToken, "Sign in to use this tool."), challenge);
+      if (gate?.refuse === "scope") return bearerAuthChallengeResponse(new OAuthError(OAuthErrorCode.InsufficientScope, `This tool needs ${gate.scope}.`), { ...challenge, requiredScopes: [gate.scope] });
+    }
+  }
+  return withMcpAuth(handlerFor(callerIp(req), origin), verifyBearer, { required: false, resourceMetadataPath: metadataPath })(req);
 }
 
 export { handle as GET, handle as POST };

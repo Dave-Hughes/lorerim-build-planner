@@ -19,29 +19,29 @@ const pkce = () => {
 };
 
 /** A JSON-RPC call to the MCP route, the 2025 way: initialize first isn't needed for a stateless tools/call. */
-async function mcp(base: string, from: string, body: object, token?: string) {
-  return fetch(new URL("/api/mcp", base), {
+async function mcp(base: string, from: string, body: object, token?: string, path = "/api/mcp") {
+  return fetch(new URL(path, base), {
     method: "POST",
     headers: { "content-type": "application/json", accept: "application/json, text/event-stream", "mcp-protocol-version": "2025-06-18", "x-forwarded-for": from, ...(token ? { authorization: `Bearer ${token}` } : {}) },
     body: JSON.stringify({ jsonrpc: "2.0", id: 1, ...body }),
   });
 }
-async function whoami(base: string, from: string, token?: string) {
-  const res = await mcp(base, from, { method: "tools/call", params: { name: "whoami", arguments: {} } }, token);
+async function whoami(base: string, from: string, token?: string, path = "/api/mcp") {
+  const res = await mcp(base, from, { method: "tools/call", params: { name: "whoami", arguments: {} } }, token, path);
   const text = await res.text();
   const data = text.startsWith("{") ? text : (text.split("\n").find((l) => l.startsWith("data: "))?.slice(6) ?? "{}");
   return { res, result: JSON.parse(data).result as { content: { text: string }[]; isError?: boolean } | undefined };
 }
 
 /** Consent as the signed-in test author: open authorize, Allow, and catch the redirect's code. */
-async function approve(page: Page, base: string, clientId: string, challenge: string, state: string, full = true) {
+async function approve(page: Page, base: string, clientId: string, challenge: string, state: string, full = true, resource = "/api/mcp") {
   let landed = "";
   await page.route("http://127.0.0.1:59999/**", async (route) => {
     landed = route.request().url();
     await route.fulfill({ status: 200, body: "ok" });
   });
   // `full: false` leaves out scope and resource, as a client may: then every scope is asked for.
-  const q = new URLSearchParams({ response_type: "code", client_id: clientId, redirect_uri: REDIRECT, code_challenge: challenge, code_challenge_method: "S256", state, ...(full ? { scope: "facts builds:write", resource: new URL("/api/mcp", base).toString() } : {}) });
+  const q = new URLSearchParams({ response_type: "code", client_id: clientId, redirect_uri: REDIRECT, code_challenge: challenge, code_challenge_method: "S256", state, ...(full ? { scope: "facts builds:write", resource: new URL(resource, base).toString() } : {}) });
   await page.goto(`/oauth/authorize?${q}`);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("to use your LoreRim Planner account?");
   await expect(page.getByText("Look up perks, spells and quests")).toBeVisible();
@@ -84,11 +84,13 @@ test("the metadata routes answer as the spec asks", async ({ baseURL }) => {
   expect(pr).toMatchObject({ resource: new URL("/api/mcp", baseURL).toString(), authorization_servers: [baseURL!.replace(/\/$/, "")] });
 });
 
-test("whoami: no token gives the plain message; a bad token gets 401 and the challenge", async ({ baseURL }) => {
+test("whoami: no token is a 401 that starts sign-in (WO-109b); a bad token gets 401 and the challenge", async ({ baseURL }) => {
   const from = ip();
   const none = await whoami(baseURL!, from);
-  expect(none.result?.isError).toBe(true);
-  expect(none.result?.content[0].text).toBe("This connector was added without sign-in. Remove it in Claude and add it again with Sign in now.");
+  expect(none.res.status).toBe(401);
+  expect(none.res.headers.get("www-authenticate")).toContain("/.well-known/oauth-protected-resource");
+  // The facts tools stay open with no token.
+  expect((await mcp(baseURL!, from, { method: "tools/call", params: { name: "search_facts", arguments: { query: "Haggling" } } })).status).toBe(200);
   const bad = await whoami(baseURL!, from, "not-a-real-token");
   expect(bad.res.status).toBe(401);
   expect(bad.res.headers.get("www-authenticate")).toContain("/.well-known/oauth-protected-resource");
@@ -172,3 +174,34 @@ test("without PKCE, or with a redirect the client doesn't have, the request is r
   await page.goto(`/oauth/authorize?${new URLSearchParams({ response_type: "code", client_id, redirect_uri: REDIRECT + "/", code_challenge: pkce().challenge, code_challenge_method: "S256" })}`);
   await expect(page.getByText("The assistant's redirect address isn't one it registered.")).toBeVisible();
 });
+
+test("the door on another path: /api/mcp/signed-in lists its tools, names itself in its metadata, and signs in (WO-109b)", async ({ baseURL, page, context }) => {
+  const from = ip();
+  const path = "/api/mcp/signed-in";
+  expect((await mcp(baseURL!, from, { method: "tools/list" }, undefined, path)).status).toBe(200);
+  const pr = await (await fetch(new URL(`/.well-known/oauth-protected-resource${path}`, baseURL), { headers: { "x-forwarded-for": from } })).json();
+  expect(pr).toMatchObject({ resource: new URL(path, baseURL).toString() });
+  // No token: the challenge points at this path's metadata.
+  const none = await whoami(baseURL!, from, undefined, path);
+  expect(none.res.status).toBe(401);
+  expect(none.res.headers.get("www-authenticate")).toContain(`/.well-known/oauth-protected-resource${path}`);
+
+  await signedInContext(context, from);
+  const reg = await fetch(new URL("/oauth/register", baseURL), { method: "POST", headers: { "content-type": "application/json", "x-forwarded-for": from }, body: JSON.stringify({ client_name: "E2E Signed-in Path", redirect_uris: [REDIRECT], token_endpoint_auth_method: "none" }) });
+  const { client_id } = await reg.json();
+  const { verifier, challenge } = pkce();
+  const code = await approve(page, baseURL!, client_id, challenge, "p-1", true, path);
+  const t = await (await token(baseURL!, from, { grant_type: "authorization_code", code, code_verifier: verifier, client_id, redirect_uri: REDIRECT, resource: new URL(path, baseURL).toString() })).json();
+  const who = await whoami(baseURL!, from, t.access_token, path);
+  expect(who.res.status).toBe(200);
+  expect(JSON.parse(who.result!.content[0].text)).toMatchObject({ name: TEST_USER_NAME });
+  // This token has no playthroughs:write: a playthrough tool is a 403 naming it.
+  const write = await mcp(baseURL!, from, { method: "tools/call", params: { name: "list_my_playthroughs", arguments: {} } }, t.access_token, path);
+  expect(write.status).toBe(403);
+  expect(write.headers.get("www-authenticate")).toContain('error="insufficient_scope"');
+  expect(write.headers.get("www-authenticate")).toContain("playthroughs:write");
+  // A resource on another host, or with a query, is refused at the token endpoint.
+  const bad = await token(baseURL!, from, { grant_type: "authorization_code", code: "x", code_verifier: verifier, client_id, redirect_uri: REDIRECT, resource: `${new URL(path, baseURL)}?x=1` });
+  expect(bad.status).toBe(400);
+});
+

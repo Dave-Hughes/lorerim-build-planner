@@ -116,5 +116,8 @@ test("another player's token can't read it, and a token without builds:write can
   const factsOnly = await tokenFor(page, context, baseURL!, other, "facts");
   expect(factsOnly.scope).toBe("facts");
   const refused = await call(baseURL!, other, factsOnly.access_token, "create_build", { name: "No", race: "Nord", majors: [], minors: [] });
-  expect(refused.text).toBe("Your sign-in doesn't allow this. Reconnect and allow draft builds in your account.");
+  // A 403 naming the scope (WO-109b), so the client asks the player to allow it.
+  expect(refused.status).toBe(403);
+  expect(refused.text).toContain('error="insufficient_scope"');
+  expect(refused.text).toContain("builds:write");
 });
