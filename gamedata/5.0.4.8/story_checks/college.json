@@ -6137,7 +6137,7 @@
       "reply": [
        "Yes, yes I did. I've already sent instructions, you just need to make sure this arrives in one piece."
       ],
-      "conditions": "Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; fn426 == 1",
+      "conditions": "Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; the speaker has the voice FemaleDarkElf",
       "source": "TIF__00028A10.Fragment_0 on INFO Skyrim.esm:028A10 (Skyrim.esm)",
       "verdict": "script"
      },
@@ -6153,7 +6153,7 @@
        "Ah, you're from the College? I've been waiting for you.",
        "Please make sure this arrives in a timely manner. And don't scratch it up."
       ],
-      "conditions": "Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; fn426 == 1",
+      "conditions": "Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; the speaker has the voice FemaleElfHaughty",
       "source": "TIF__0003D29B.Fragment_0 on INFO Skyrim.esm:03D29B (Skyrim.esm)",
       "verdict": "script"
      },
@@ -6169,7 +6169,7 @@
        "Oh, good. I've been waiting for you. Here you go, it's all ready.",
        "Now, Sergius knows what I want. I'm hoping he can get it done quickly."
       ],
-      "conditions": "Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; fn426 == 1 or fn426 == 1 or fn426 == 1",
+      "conditions": "Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; the speaker has the voice FemaleEvenToned or the speaker has the voice FemaleEvenTonedAltTwo or the speaker has the voice FemaleEvenTonedAlt",
       "source": "TIF__0003D29C.Fragment_0 on INFO Skyrim.esm:03D29C (LoreRim - Skyrim Revoiced Patch.esp)",
       "verdict": "script"
      },
@@ -6184,7 +6184,7 @@
       "reply": [
        "It's about time someone arrived. Here, make sure this is handled properly."
       ],
-      "conditions": "Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; fn426 == 1",
+      "conditions": "Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; the speaker has the voice MaleElfHaughty",
       "source": "TIF__0003DD2D.Fragment_0 on INFO Skyrim.esm:03DD2D (Skyrim.esm)",
       "verdict": "script"
      },
@@ -6199,7 +6199,7 @@
       "reply": [
        "Oh yes, that. Here you go. I hope this can be ready soon."
       ],
-      "conditions": "Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; fn426 == 1 or fn426 == 1",
+      "conditions": "Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; the speaker has the voice MaleDarkElf or the speaker has the voice MaleDarkElfAlt",
       "source": "TIF__0003DD2E.Fragment_0 on INFO Skyrim.esm:03DD2E (LoreRim - Skyrim Revoiced Patch.esp)",
       "verdict": "script"
      },
@@ -6214,7 +6214,7 @@
       "reply": [
        "Yes, yes. Let's keep our voices down, all right? Just make sure this gets there."
       ],
-      "conditions": "Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; fn426 == 1 or fn426 == 1 or fn426 == 1",
+      "conditions": "Enchanting Pick-Up stage == 10; the speaker is the one in alias Client; the speaker has the voice MaleEvenToned or the speaker has the voice MaleEvenTonedAlt or the speaker has the voice MaleRedguardAlt",
       "source": "TIF__0003DD2F.Fragment_0 on INFO Skyrim.esm:03DD2F (LoreRim - Skyrim Revoiced Patch.esp)",
       "verdict": "script"
      }

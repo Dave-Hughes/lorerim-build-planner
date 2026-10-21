@@ -1,6 +1,6 @@
 # Quest lines, curated
 
-152 lines from 1240 quests. Written by `scripts/gamedata/questlines.py` from `questlines.json` (hand-kept) and the raw crawl. Begins is the game's own text: the line's opening journal entry.
+152 lines from 1243 quests. Written by `scripts/gamedata/questlines.py` from `questlines.json` (hand-kept) and the raw crawl. Begins is the game's own text: the line's opening journal entry.
 
 Six categories, each line in one (its home) and maybe others (also). Repeatable work is a shelf of its own, not a category.
 
@@ -24,7 +24,9 @@ Six categories, each line in one (its home) and maybe others (also). Repeatable 
 
 ## Needs a look
 
+- **The Bards College**: the opening quest has no plain journal entry; shows its first objective.
 - **Vigilant**: the opening quest has no plain journal entry; shows its first objective.
+- **A Night To Remember**: the opening quest has no plain journal entry; shows its first objective.
 - **The Ebony Warrior**: the opening quest has no plain journal entry; shows its first objective.
 - **The Kagrumez Gauntlet**: the opening quest has no plain journal entry; shows its first objective.
 - **Destroy the Acolyte Priests**: the opening quest has no plain journal entry; shows its first objective.
@@ -139,11 +141,11 @@ Also here: The Gray Cowl of Nocturnal, The Tools of Kagrenac, Revealing Rune.
 
 ### The Bards College
 
-7 quests | Skyrim, Bards College Excavation (Nexus 36950)
+8 quests | Skyrim, Bards College Excavation (Nexus 36950)
 
-> I have applied at the Bards College. As part of the application, Headmaster Viarmo wants me to find and bring to him King Olaf's Verse.
+> Investigate the Bards College
 
-- Quests: Tending the Flames; Collecting the Edda; Rjorn's Drum; Pantea's Flute; Finn's Lute; The Lost Verse; Clear Dead Men's Respite
+- Quests: Investigate the Bards College; Tending the Flames; Collecting the Edda; Rjorn's Drum; Pantea's Flute; Finn's Lute; The Lost Verse; Clear Dead Men's Respite
 
 ### Vigilant
 
@@ -187,21 +189,21 @@ Also here: Vigilant, Meridia's Order, The Black Books.
 
 ### A Daedra's Best Friend
 
-1 quest | Skyrim | Clavicus Vile
+2 quests | Skyrim | Clavicus Vile
 
-> I ran in to a talking dog named Barbas who said he wanted my help. He's waiting outside Haemar's Shame.
+> A guard outside Falkreath mentioned the Blacksmith Lod is looking for a Dog and offering a reward.
 
 - Gate: No level found. *(files)*
-- Quests: A Daedra's Best Friend
+- Quests: Speak to Lod, Falkreath's blacksmith, about a dog he's looking for; A Daedra's Best Friend
 
 ### A Night To Remember
 
-1 quest | Skyrim | Sanguine
+2 quests | Skyrim | Sanguine
 
-> I have awoken in the Temple Of Dibella in Markarth. Sam and the staff he promised me have disappeared.
+> Participate in a drinking contest with Sam Guevenne
 
 - Gate: Level 20. *(files)*
-- Quests: A Night To Remember
+- Quests: Participate in a drinking contest with Sam Guevenne; A Night To Remember
 
 ### Boethiah's Calling
 

@@ -61,7 +61,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Needs**
 
-- Its own conditions: JRLucienFollower stage 15 done; fn426 == 1 or fn359 == 1. **files**
+- Its own conditions: JRLucienFollower stage 15 done; the speaker has the voice JRLucienVoice or fn359 == 1. **files**
 - Ways in: Dead Man's Drink: 1 door, 0 locked; Windhelm: 4 doors, 3 locked; Dumzbthar: 3 doors, 0 locked. A door is a need only when every way in is locked. **files**
 
 **Gives**: nothing on its completing stages.

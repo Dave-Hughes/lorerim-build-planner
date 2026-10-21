@@ -7,7 +7,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Wujeeta, placed in Haelga's Bunkhouse, "Find anything interesting recently?": SetStage 1 (when: Deluge of Deceit stage == 20; the speaker is Wujeeta). Source: evgSRWujeetaStart.Fragment_0 on INFO evgSIRENROOT.esm:026BC9 (evgSIRENROOT.esm). **script**
-- Dialogue with someone the line does not name: SetStage 1 (when: fn426 == 1). Source: evgSRblackbriarstart.Fragment_0 on INFO evgSIRENROOT.esm:0A25DD (evgSIRENROOT.esm). **script**
+- Dialogue with Frissa Black-Briar (named by the only NPC with voice type evgSirenBlackBriar), placed in Elgrim's Elixirs: SetStage 1 (when: the speaker has the voice evgSirenBlackBriar). Source: evgSRblackbriarstart.Fragment_0 on INFO evgSIRENROOT.esm:0A25DD (evgSIRENROOT.esm). **script**
 - Start-game flag: the quest runs from the start of the game. Source: evgSIRENROOT.esm:026BC5 DNAM (evgSIRENROOT.esm). **files**
 - (First objective shown at stage 1; a call to a later stage advances the quest instead.)
 
@@ -167,13 +167,12 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 
 ### dialogue INFO evgSIRENROOT.esm:0A25DD
 
-- Speaker: not named by an NPC. Named by: GetIsID.
+- Speaker: Frissa Black-Briar (Nord), placed in Elgrim's Elixirs. Named by: the only NPC with voice type evgSirenBlackBriar.
 - The player's prompt: "".
 - The reply: "Regardless, here. As I said, it's diving work. Do take a look. Feel free to ask questions.".
-- When it's offered: fn426 == 1.
+- When it's offered: the speaker has the voice evgSirenBlackBriar.
 - What it does: SetStage 1 on EVGSirenrootQuest (Deluge of Deceit). Source: evgSRblackbriarstart.Fragment_0 on INFO evgSIRENROOT.esm:0A25DD (evgSIRENROOT.esm); topic EVGSirenrootQuestBB3. **script**
-- **unread**: the trail stops here: the speaker isn't named by an NPC: GetIsID.
-- In one sentence: Talk to the speaker the line's conditions name, when fn426 == 1: SetStage 1 on EVGSirenrootQuest (Deluge of Deceit).
+- In one sentence: Talk to Frissa Black-Briar (Nord) in Elgrim's Elixirs, when the speaker has the voice evgSirenBlackBriar: SetStage 1 on EVGSirenrootQuest (Deluge of Deceit).
 
 ## The payoff
 

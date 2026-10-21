@@ -286,10 +286,10 @@
    "name": "Miscellaneous",
    "kind": "bucket",
    "source": "Skyrim",
-   "count": 176,
-   "journal": 16,
+   "count": 179,
+   "journal": 17,
    "types": {
-    "Misc": 176
+    "Misc": 179
    },
    "opening": "Skyrim.esm:0D944F",
    "begins": "Giraud Gemane of the Bards College has found a clue to the location of the legendary drum of Rjorn. He's asked me to go to Halldir's Cairn and retrieve it.",
@@ -304,7 +304,9 @@
     "Skyrim.esm:0D3C5F",
     "Skyrim.esm:0E1B5A",
     "Skyrim.esm:0C349B",
+    "Skyrim.esm:0D7939",
     "Skyrim.esm:07D949",
+    "Skyrim.esm:03FA17",
     "Skyrim.esm:01EA5A",
     "Skyrim.esm:0362AC",
     "Skyrim.esm:034B58",
@@ -436,6 +438,7 @@
     "Skyrim.esm:028A1E",
     "Skyrim.esm:028A24",
     "Skyrim.esm:0BC096",
+    "Skyrim.esm:042868",
     "Skyrim.esm:074793",
     "Skyrim.esm:0E8BD7",
     "Skyrim.esm:0C7D1C",

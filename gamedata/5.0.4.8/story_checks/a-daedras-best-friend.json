@@ -3,12 +3,187 @@
  "name": "A Daedra's Best Friend",
  "quests": [
   {
+   "id": "Skyrim.esm:0D7939",
+   "edid": "DA03Start",
+   "name": "Speak to Lod, Falkreath's blacksmith, about a dog he's looking for",
+   "plugin": "Wintersun - Reqtificated.esp",
+   "firstObjectiveStage": 5,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "",
+     "speakerNamed": "alias ImperialGateGuard1 of DA03Start (forced)",
+     "speakerPlaced": [
+      "Falkreath",
+      "Falkreath"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:0E0D49",
+     "prompt": "What sort of dog?",
+     "reply": [
+      "I don't know really. The blacksmith is offering a reward for a dog he saw on the road. I was hoping you'd seen it."
+     ],
+     "conditions": "level >= 10; DA03Start stage < 5; the speaker is the one in alias ImperialGateGuard1 or the speaker is the one in alias ImperialGateGuard2 or the speaker is the one in alias SonsGateGuard1 or the speaker is the one in alias SonsGateGuard2",
+     "source": "TIF__000E0D49.Fragment_0 on INFO Skyrim.esm:0E0D49 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "",
+     "speakerNamed": "alias ImperialGateGuard1 of DA03Start (forced)",
+     "speakerPlaced": [
+      "Falkreath",
+      "Falkreath"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:0E0D4C",
+     "prompt": "I've seen whole packs of dogs.",
+     "reply": [
+      "No, this was a specific one. The blacksmith is offering a reward for a dog he saw on the road. I was hoping you'd seen it."
+     ],
+     "conditions": "level >= 10; DA03Start stage < 5; the speaker is the one in alias ImperialGateGuard1 or the speaker is the one in alias ImperialGateGuard2 or the speaker is the one in alias SonsGateGuard1 or the speaker is the one in alias SonsGateGuard2",
+     "source": "TIF__000E0D4C.Fragment_0 on INFO Skyrim.esm:0E0D4C (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "",
+     "speakerNamed": "alias ImperialGateGuard1 of DA03Start (forced)",
+     "speakerPlaced": [
+      "Falkreath",
+      "Falkreath"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:0E0D4B",
+     "prompt": "No. Some wolves, but no dogs.",
+     "reply": [
+      "Ah, well. The blacksmith is offering a reward for a dog he saw on the road. I was hoping you'd seen it."
+     ],
+     "conditions": "level >= 10; DA03Start stage < 5; fn84 < 1; the speaker is the one in alias ImperialGateGuard1 or the speaker is the one in alias ImperialGateGuard2 or the speaker is the one in alias SonsGateGuard1 or the speaker is the one in alias SonsGateGuard2",
+     "source": "TIF__000E0D4B.Fragment_0 on INFO Skyrim.esm:0E0D4B (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:0D7939 DNAM (Wintersun - Reqtificated.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [
+    {
+     "by": "DA03 (A Daedra's Best Friend)",
+     "atStage": 10,
+     "call": "SetStage 15",
+     "source": "QF_DA03_0001BFC4.fragment_6 (Wintersun - Faiths of Skyrim.esp)"
+    }
+   ],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Speak to Lod, Falkreath's blacksmith, about a dog he's looking for",
+    "index": 5,
+    "source": "Skyrim.esm:0D7939 QOBJ 5",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Lod",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Lod",
+       "kind": "unique actor",
+       "where": [
+        "Lod's House"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:013A73"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": "level >= 25; level >= 25",
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Lod's House",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "25 gold",
+     "stage": 20,
+     "source": "QF_DA03Start_000D7939.fragment_29",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Look around on the road outside Falkreath for Lod's dog",
+     "index": 10,
+     "source": "Skyrim.esm:0D7939 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Lod",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Lod's House"
+      ],
+      "call": "SetStage 10",
+      "info": "Skyrim.esm:0D7933",
+      "prompt": "I could be convinced to catch him. (Persuade)",
+      "reply": [
+       "Oh, it's smart to demand something up front. Some gold now and some when I have my dog. Here's the meat."
+      ],
+      "conditions": "level >= 10; DA03Start stage < 10; the speaker is Lod",
+      "source": "TIF__000D7933.Fragment_0 on INFO Skyrim.esm:0D7933 (Bring Meeko to Lod.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Lod",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Lod's House"
+      ],
+      "call": "SetStage 10",
+      "info": "Skyrim.esm:0E0D47",
+      "prompt": "Sure, I can catch him.",
+      "reply": [
+       "Good! There's some gold in it for you if you succeed. Here's the meat - check the road just outside of town."
+      ],
+      "conditions": "level >= 10; DA03Start stage < 10; the speaker is Lod",
+      "source": "TIF__000E0D47.Fragment_0 on INFO Skyrim.esm:0E0D47 (Bring Meeko to Lod.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
    "id": "Skyrim.esm:01BFC4",
    "edid": "DA03",
    "name": "A Daedra's Best Friend",
    "plugin": "Wintersun - Faiths of Skyrim.esp",
    "firstObjectiveStage": 25,
    "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DA03Start",
+     "questId": "Skyrim.esm:0D7939",
+     "atStage": 10,
+     "call": "SetStage 5",
+     "source": "QF_DA03Start_000D7939.fragment_27 on Skyrim.esm:0D7939 (Wintersun - Reqtificated.esp)",
+     "verdict": "script"
+    },
     {
      "by": "dialogue",
      "speaker": "Barbas",
@@ -59,22 +234,6 @@
      "conditions": "A Daedra's Best Friend stage < 20; the speaker is Barbas",
      "source": "TIF__000E0D48.Fragment_0 on INFO Skyrim.esm:0E0D48 (Skyrim.esm)",
      "verdict": "script"
-    },
-    {
-     "by": "quest script",
-     "quest": "DA03Start, a helper quest with Lod",
-     "questId": "Skyrim.esm:0D7939",
-     "atStage": 10,
-     "call": "SetStage 5",
-     "source": "QF_DA03Start_000D7939.fragment_27 on Skyrim.esm:0D7939 (Wintersun - Reqtificated.esp)",
-     "verdict": "script",
-     "throughStartedBy": [
-      {
-       "by": "start game",
-       "source": "Skyrim.esm:0D7939 DNAM (Wintersun - Reqtificated.esp)",
-       "verdict": "files"
-      }
-     ]
     }
    ],
    "caughtUpBy": [],
@@ -146,7 +305,7 @@
      "option": "The Bannered Mare",
      "quest": "AlternatePerspective.esp:3271C8",
      "questEdid": "APS_InnWhiterun",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnWhiterun scripts (AlternatePerspective.esp)"
     },
@@ -154,7 +313,7 @@
      "option": "The Bee and Barb",
      "quest": "AlternatePerspective.esp:3457D0",
      "questEdid": "APS_InnRiften",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnRiften scripts (AlternatePerspective.esp)"
     },
@@ -162,7 +321,7 @@
      "option": "The Winking Skeever",
      "quest": "AlternatePerspective.esp:3457D2",
      "questEdid": "APS_InnSolitude",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnSolitude scripts (AlternatePerspective.esp)"
     },
@@ -170,7 +329,7 @@
      "option": "Silver-Blood Inn",
      "quest": "AlternatePerspective.esp:3457D4",
      "questEdid": "APS_InnMarkarth",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnMarkarth scripts (AlternatePerspective.esp)"
     },
@@ -178,7 +337,7 @@
      "option": "Candlehearth Hall",
      "quest": "AlternatePerspective.esp:3457D6",
      "questEdid": "APS_InnWindhelm",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnWindhelm scripts (AlternatePerspective.esp)"
     },
@@ -186,7 +345,7 @@
      "option": "Dead Man's Drink",
      "quest": "AlternatePerspective.esp:3457D9",
      "questEdid": "APS_InnFalkreath",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnFalkreath scripts (AlternatePerspective.esp)"
     },
@@ -194,7 +353,7 @@
      "option": "Moorside Inn",
      "quest": "AlternatePerspective.esp:3457DD",
      "questEdid": "APS_InnMorthal",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnMorthal scripts (AlternatePerspective.esp)"
     },
@@ -202,7 +361,7 @@
      "option": "The Frozen Hearth",
      "quest": "AlternatePerspective.esp:3457DF",
      "questEdid": "APS_InnWinterhold",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnWinterhold scripts (AlternatePerspective.esp)"
     },
@@ -210,7 +369,7 @@
      "option": "Windpeak Inn",
      "quest": "AlternatePerspective.esp:3457E0",
      "questEdid": "APS_InnDawnstar",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnDawnstar scripts (AlternatePerspective.esp)"
     },
@@ -218,7 +377,7 @@
      "option": "The Retching Netch",
      "quest": "AlternatePerspective.esp:34A8E2",
      "questEdid": "APS_InnRavenRock",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnRavenRock scripts (Alternate Perspective - Gate to Sovngarde Edition.esp)"
     },
@@ -226,7 +385,7 @@
      "option": "The Sleeping Giant Inn",
      "quest": "AlternatePerspective.esp:34A8E3",
      "questEdid": "APS_InnRiverwood",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnRiverwood scripts (AlternatePerspective.esp)"
     },
@@ -234,7 +393,7 @@
      "option": "Frostfruit Inn",
      "quest": "AlternatePerspective.esp:34A8E4",
      "questEdid": "APS_InnRorikstead",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnRorikstead scripts (AlternatePerspective.esp)"
     },
@@ -242,7 +401,7 @@
      "option": "Vilemyr Inn",
      "quest": "AlternatePerspective.esp:34A8E5",
      "questEdid": "APS_InnIvarstead",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnIvarstead scripts (AlternatePerspective.esp)"
     },
@@ -250,7 +409,7 @@
      "option": "Old Hroldan Inn",
      "quest": "AlternatePerspective.esp:34A8E6",
      "questEdid": "APS_InnOldHroldan",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnOldHroldan scripts (AlternatePerspective.esp)"
     },
@@ -258,7 +417,7 @@
      "option": "Four Shields Tavern",
      "quest": "AlternatePerspective.esp:34A8E7",
      "questEdid": "APS_InnDragonbridge",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnDragonbridge scripts (AlternatePerspective.esp)"
     },
@@ -266,7 +425,7 @@
      "option": "Nightgate Inn",
      "quest": "AlternatePerspective.esp:34A8E8",
      "questEdid": "APS_InnNightgate",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnNightgate scripts (AlternatePerspective.esp)"
     },
@@ -274,7 +433,7 @@
      "option": "Braidwood Inn",
      "quest": "AlternatePerspective.esp:34A8E9",
      "questEdid": "APS_InnKynesgrove",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_InnKynesgrove scripts (AlternatePerspective.esp)"
     }
@@ -288,7 +447,7 @@
      "option": "East Empire Trading Company",
      "quest": "AlternatePerspective.esp:34F9EC",
      "questEdid": "APS_DocksSolitude",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_DocksSolitude scripts (AlternatePerspective.esp)"
     },
@@ -296,7 +455,7 @@
      "option": "Windhelm Docks",
      "quest": "AlternatePerspective.esp:34F9EE",
      "questEdid": "APS_DocksWindhelm",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_DocksWindhelm scripts (AlternatePerspective.esp)"
     },
@@ -304,7 +463,7 @@
      "option": "Dawnstar's Shore",
      "quest": "AlternatePerspective.esp:34F9ED",
      "questEdid": "APS_DocksDawnstar",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_DocksDawnstar scripts (AlternatePerspective.esp)"
     },
@@ -312,7 +471,7 @@
      "option": "Raven Rock Docks",
      "quest": "AlternatePerspective.esp:34F9F0",
      "questEdid": "APS_DocksRavenRock",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_DocksRavenRock scripts (Alternate Perspective - Gate to Sovngarde Edition.esp)"
     }
@@ -326,7 +485,7 @@
      "option": "Whiterun",
      "quest": "AlternatePerspective.esp:34FA14",
      "questEdid": "APS_WantedTPWhiterun",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_WantedTPWhiterun scripts (AlternatePerspective.esp)"
     },
@@ -334,7 +493,7 @@
      "option": "The Rift",
      "quest": "AlternatePerspective.esp:34FA15",
      "questEdid": "APS_WantedTPRRiften",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_WantedTPRRiften scripts (AlternatePerspective.esp)"
     },
@@ -342,7 +501,7 @@
      "option": "The Pale",
      "quest": "AlternatePerspective.esp:34FA1B",
      "questEdid": "APS_WantedTPRDawnstar",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_WantedTPRDawnstar scripts (AlternatePerspective.esp)"
     },
@@ -350,7 +509,7 @@
      "option": "Winterhold",
      "quest": "AlternatePerspective.esp:34FA25",
      "questEdid": "APS_WantedTPWinterhold",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_WantedTPWinterhold scripts (AlternatePerspective.esp)"
     }
@@ -364,7 +523,7 @@
      "option": "The Rift",
      "quest": "AlternatePerspective.esp:34FA27",
      "questEdid": "APS_LeftForDeadRiften",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_LeftForDeadRiften scripts (AlternatePerspective.esp)"
     },
@@ -372,7 +531,7 @@
      "option": "The Reach",
      "quest": "AlternatePerspective.esp:34FA29",
      "questEdid": "APS_LeftForDeadMarkarth",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_LeftForDeadMarkarth scripts (AlternatePerspective.esp)"
     },
@@ -380,7 +539,7 @@
      "option": "Winterhold",
      "quest": "AlternatePerspective.esp:34FA20",
      "questEdid": "APS_LeftForDeadWinterhold",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_LeftForDeadWinterhold scripts (AlternatePerspective.esp)"
     }
@@ -394,7 +553,7 @@
      "option": "Forsworn",
      "quest": "AlternatePerspective.esp:46649F",
      "questEdid": "APS_Forsworn",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_Forsworn scripts (AlternatePerspective.esp)"
     }
@@ -408,7 +567,7 @@
      "option": "College of Winterhold",
      "quest": "AlternatePerspective.esp:3D36E6",
      "questEdid": "APS_GuildMages",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_GuildMages scripts (AlternatePerspective.esp)"
     },
@@ -416,7 +575,7 @@
      "option": "Thieves Guild",
      "quest": "AlternatePerspective.esp:3CE5E5",
      "questEdid": "APS_GuildThievesguild",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_GuildThievesguild scripts (AlternatePerspective.esp)"
     },
@@ -424,7 +583,7 @@
      "option": "Dark Brotherhood",
      "quest": "AlternatePerspective.esp:3D36E7",
      "questEdid": "APS_GuildBrotherhood",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_GuildBrotherhood scripts (AlternatePerspective.esp)"
     },
@@ -432,7 +591,7 @@
      "option": "Companions",
      "quest": "AlternatePerspective.esp:3D36E8",
      "questEdid": "APS_GuildCompanions",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "APS_GuildCompanions scripts (AlternatePerspective.esp)"
     }
@@ -446,7 +605,7 @@
      "option": "Helgen Keep (Start)",
      "quest": "AlternatePerspective.esp:47F943",
      "questEdid": "APS_MQSkipKeep",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [
       "MQ101 SetStage 6",
       "MQ101 SetStage 7"
@@ -457,7 +616,7 @@
      "option": "Helgen Keep (End)",
      "quest": "AlternatePerspective.esp:484A45",
      "questEdid": "APS_MQSkipKeepEnd",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [
       "MQ101 SetStage 250",
       "MQ101 SetStage 550",
@@ -478,7 +637,7 @@
      "option": "Addict",
      "quest": "Alternate Perspective -- New Beginnings.esp:000800",
      "questEdid": "AFLOLALAddictQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOLALAddictQuest scripts (Alternate Perspective -- New Beginnings.esp)"
     }
@@ -492,7 +651,7 @@
      "option": "Dwemer Ruin",
      "quest": "Alternate Perspective -- New Beginnings.esp:00081C",
      "questEdid": "AFLOLALAdventureQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOLALAdventureQuest scripts (Alternate Perspective -- New Beginnings.esp)"
     }
@@ -506,7 +665,7 @@
      "option": "Alchemist",
      "quest": "Alternate Perspective -- New Beginnings.esp:00080A",
      "questEdid": "AFLOLALAlchemistQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOLALAlchemistQuest scripts (Alternate Perspective -- New Beginnings.esp)"
     }
@@ -520,7 +679,7 @@
      "option": "At Angis Camp",
      "quest": "Alternate Perspective -- New Beginnings.esp:000858",
      "questEdid": "AFLOLALAngiQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOLALAngiQuest scripts (Alternate Perspective -- New Beginnings.esp)"
     }
@@ -534,7 +693,7 @@
      "option": "Random",
      "quest": "Alternate Perspective -- New Beginnings.esp:000000",
      "questEdid": null,
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
     },
@@ -542,7 +701,7 @@
      "option": "Riften",
      "quest": "Alternate Perspective -- New Beginnings.esp:00085F",
      "questEdid": "AFLOAP_BeggarRiften",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_BeggarRiften scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -550,7 +709,7 @@
      "option": "Markarth",
      "quest": "Alternate Perspective -- New Beginnings.esp:000860",
      "questEdid": "AFLOAP_BeggarMarkarth",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_BeggarMarkarth scripts (Alternate Perspective -- New Beginnings.esp)"
     }
@@ -564,7 +723,7 @@
      "option": "Random",
      "quest": "Alternate Perspective -- New Beginnings.esp:000000",
      "questEdid": null,
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
     },
@@ -572,7 +731,7 @@
      "option": "Whiterun",
      "quest": "Alternate Perspective -- New Beginnings.esp:000861",
      "questEdid": "AFLOAP_JailWhiterun",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_JailWhiterun scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -580,7 +739,7 @@
      "option": "The Rift",
      "quest": "Alternate Perspective -- New Beginnings.esp:000869",
      "questEdid": "AFLOAP_JailRift",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_JailRift scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -588,7 +747,7 @@
      "option": "Eastmarch",
      "quest": "Alternate Perspective -- New Beginnings.esp:000862",
      "questEdid": "AFLOAP_JailEastmarch",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_JailEastmarch scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -596,7 +755,7 @@
      "option": "Haarfinger",
      "quest": "Alternate Perspective -- New Beginnings.esp:000864",
      "questEdid": "AFLOAP_JailHaarfinger",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_JailHaarfinger scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -604,7 +763,7 @@
      "option": "The Reach",
      "quest": "Alternate Perspective -- New Beginnings.esp:000868",
      "questEdid": "AFLOAP_JailReach",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_JailReach scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -612,7 +771,7 @@
      "option": "Falkreath",
      "quest": "Alternate Perspective -- New Beginnings.esp:000863",
      "questEdid": "AFLOAP_JailFalkreath",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_JailFalkreath scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -620,7 +779,7 @@
      "option": "Hjaalmach",
      "quest": "Alternate Perspective -- New Beginnings.esp:000865",
      "questEdid": "AFLOAP_JailHjaalmach",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_JailHjaalmach scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -628,7 +787,7 @@
      "option": "The Pale",
      "quest": "Alternate Perspective -- New Beginnings.esp:000866",
      "questEdid": "AFLOAP_JailPale",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_JailPale scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -636,7 +795,7 @@
      "option": "Winterhold",
      "quest": "Alternate Perspective -- New Beginnings.esp:00086A",
      "questEdid": "AFLOAP_JailWinterhold",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_JailWinterhold scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -644,7 +803,7 @@
      "option": "Raven Rock",
      "quest": "Alternate Perspective -- New Beginnings.esp:000867",
      "questEdid": "AFLOAP_JailRavenRock",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_JailRavenRock scripts (Alternate Perspective -- New Beginnings.esp)"
     }
@@ -658,7 +817,7 @@
      "option": "Random",
      "quest": "Alternate Perspective -- New Beginnings.esp:000000",
      "questEdid": null,
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
     },
@@ -666,7 +825,7 @@
      "option": "Cyrodiil",
      "quest": "Alternate Perspective -- New Beginnings.esp:00086B",
      "questEdid": "AFLOAP_BorderMercenaryCyrodill",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_BorderMercenaryCyrodill scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -674,7 +833,7 @@
      "option": "Hammerfell",
      "quest": "Alternate Perspective -- New Beginnings.esp:00086C",
      "questEdid": "AFLOAP_BorderMercenaryHammerfell",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_BorderMercenaryHammerfell scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -682,7 +841,7 @@
      "option": "High Rock",
      "quest": "Alternate Perspective -- New Beginnings.esp:00086D",
      "questEdid": "AFLOAP_BorderMercenaryHighRock",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_BorderMercenaryHighRock scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -690,7 +849,7 @@
      "option": "Northern Morrowind",
      "quest": "Alternate Perspective -- New Beginnings.esp:00086E",
      "questEdid": "AFLOAP_BorderMercenaryNorthernMorrorwind",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_BorderMercenaryNorthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -698,7 +857,7 @@
      "option": "Southern Morrowind",
      "quest": "Alternate Perspective -- New Beginnings.esp:00086F",
      "questEdid": "AFLOAP_BorderMercenarySouthernMorrorwind",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_BorderMercenarySouthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
     }
@@ -712,7 +871,7 @@
      "option": "Random",
      "quest": "Alternate Perspective -- New Beginnings.esp:000000",
      "questEdid": null,
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
     },
@@ -720,7 +879,7 @@
      "option": "Cyrodiil",
      "quest": "Alternate Perspective -- New Beginnings.esp:000870",
      "questEdid": "AFLOAP_BorderMerchantCyrodill",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_BorderMerchantCyrodill scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -728,7 +887,7 @@
      "option": "Hammerfell",
      "quest": "Alternate Perspective -- New Beginnings.esp:000871",
      "questEdid": "AFLOAP_BorderMerchantHammerfell",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_BorderMerchantHammerfell scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -736,7 +895,7 @@
      "option": "High Rock",
      "quest": "Alternate Perspective -- New Beginnings.esp:000872",
      "questEdid": "AFLOAP_BorderMerchantHighRock",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_BorderMerchantHighRock scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -744,7 +903,7 @@
      "option": "Northern Morrowind",
      "quest": "Alternate Perspective -- New Beginnings.esp:000873",
      "questEdid": "AFLOAP_BorderMerchantNorthernMorrorwind",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_BorderMerchantNorthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -752,7 +911,7 @@
      "option": "Southern Morrowind",
      "quest": "Alternate Perspective -- New Beginnings.esp:000874",
      "questEdid": "AFLOAP_BorderMerchantSouthernMorrorwind",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_BorderMerchantSouthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
     }
@@ -766,7 +925,7 @@
      "option": "Random",
      "quest": "Alternate Perspective -- New Beginnings.esp:000000",
      "questEdid": null,
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
     },
@@ -774,7 +933,7 @@
      "option": "Shrine of Azura",
      "quest": "Alternate Perspective -- New Beginnings.esp:00083C",
      "questEdid": "AFLOLALAzuraQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOLALAzuraQuest scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -782,7 +941,7 @@
      "option": "Shrine of Boethiah",
      "quest": "Alternate Perspective -- New Beginnings.esp:00083A",
      "questEdid": "AFLOLALBoethiahQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOLALBoethiahQuest scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -790,7 +949,7 @@
      "option": "Shrine of Mehrunes Dagon",
      "quest": "Alternate Perspective -- New Beginnings.esp:000842",
      "questEdid": "AFLOLALDagonQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOLALDagonQuest scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -798,7 +957,7 @@
      "option": "The Eldergleam Sanctuary",
      "quest": "Alternate Perspective -- New Beginnings.esp:000838",
      "questEdid": "AFLOLALEldergleamQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOLALEldergleamQuest scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -806,7 +965,7 @@
      "option": "Statue of Meridia",
      "quest": "Alternate Perspective -- New Beginnings.esp:000840",
      "questEdid": "AFLOLALMeridiaQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOLALMeridiaQuest scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -814,7 +973,7 @@
      "option": "Shrine of Peryite",
      "quest": "Alternate Perspective -- New Beginnings.esp:00083E",
      "questEdid": "AFLOLALPeryiteQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOLALPeryiteQuest scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -822,7 +981,7 @@
      "option": "Stendarr's Beacon",
      "quest": "Alternate Perspective -- New Beginnings.esp:000835",
      "questEdid": "AFLOLALStendarrQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOLALStendarrQuest scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -830,7 +989,7 @@
      "option": "Hall of the Vigilant",
      "quest": "Alternate Perspective -- New Beginnings.esp:000881",
      "questEdid": "AFLOAP_StendarrHall",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_StendarrHall scripts (Alternate Perspective -- New Beginnings.esp)"
     }
@@ -844,7 +1003,7 @@
      "option": "Random",
      "quest": "Alternate Perspective -- New Beginnings.esp:000000",
      "questEdid": null,
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
     },
@@ -852,7 +1011,7 @@
      "option": "Temple of the Divines",
      "quest": "Alternate Perspective -- New Beginnings.esp:000876",
      "questEdid": "AFLOAP_TempleDivine",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_TempleDivine scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -860,7 +1019,7 @@
      "option": "Temple of Dibella",
      "quest": "Alternate Perspective -- New Beginnings.esp:000875",
      "questEdid": "AFLOAP_TempleDibella",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_TempleDibella scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -868,7 +1027,7 @@
      "option": "Temple of Kynareth",
      "quest": "Alternate Perspective -- New Beginnings.esp:000877",
      "questEdid": "AFLOAP_TempleKynareth",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_TempleKynareth scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -876,7 +1035,7 @@
      "option": "Temple of Mara",
      "quest": "Alternate Perspective -- New Beginnings.esp:000878",
      "questEdid": "AFLOAP_TempleMara",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_TempleMara scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -884,7 +1043,7 @@
      "option": "Temple of Talos",
      "quest": "Alternate Perspective -- New Beginnings.esp:000879",
      "questEdid": "AFLOAP_TempleTalos",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_TempleTalos scripts (Alternate Perspective -- New Beginnings.esp)"
     }
@@ -898,7 +1057,7 @@
      "option": "Thalmor Prisoner",
      "quest": "Alternate Perspective -- New Beginnings.esp:000829",
      "questEdid": "AFLOLALThalmorQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOLALThalmorQuest scripts (Alternate Perspective -- New Beginnings.esp)"
     }
@@ -912,7 +1071,7 @@
      "option": "Random",
      "quest": "Alternate Perspective -- New Beginnings.esp:000000",
      "questEdid": null,
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
     },
@@ -920,7 +1079,7 @@
      "option": "Solitude",
      "quest": "Alternate Perspective -- New Beginnings.esp:00087D",
      "questEdid": "AFLOAP_VampireSolitude",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_VampireSolitude scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -928,7 +1087,7 @@
      "option": "Falkreath",
      "quest": "Alternate Perspective -- New Beginnings.esp:00087A",
      "questEdid": "AFLOAP_VampireFalkreath",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_VampireFalkreath scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -936,7 +1095,7 @@
      "option": "Whiterun",
      "quest": "Alternate Perspective -- New Beginnings.esp:00087E",
      "questEdid": "AFLOAP_VampireWhiterun",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_VampireWhiterun scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -944,7 +1103,7 @@
      "option": "Riften",
      "quest": "Alternate Perspective -- New Beginnings.esp:00087C",
      "questEdid": "AFLOAP_VampireRiften",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_VampireRiften scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -952,7 +1111,7 @@
      "option": "Windhelm",
      "quest": "Alternate Perspective -- New Beginnings.esp:00087F",
      "questEdid": "AFLOAP_VampireWindhelm",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_VampireWindhelm scripts (Alternate Perspective -- New Beginnings.esp)"
     },
@@ -960,7 +1119,7 @@
      "option": "Markarth",
      "quest": "Alternate Perspective -- New Beginnings.esp:00087B",
      "questEdid": "AFLOAP_VampireMarkarth",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOAP_VampireMarkarth scripts (Alternate Perspective -- New Beginnings.esp)"
     }
@@ -974,7 +1133,7 @@
      "option": "Werewolf",
      "quest": "Alternate Perspective -- New Beginnings.esp:00081F",
      "questEdid": "AFLOLALWerewolfQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "AFLOLALWerewolfQuest scripts (Alternate Perspective -- New Beginnings.esp)"
     }
@@ -988,7 +1147,7 @@
      "option": "Eastmarch",
      "quest": "AP - Missile Additional Starts.esp:000018",
      "questEdid": "MissileAPAmbushStartEastmarchQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPAmbushStartEastmarchQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -996,7 +1155,7 @@
      "option": "Haafingar",
      "quest": "AP - Missile Additional Starts.esp:000021",
      "questEdid": "MissileAPAmbushStartHaafingarQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPAmbushStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1004,7 +1163,7 @@
      "option": "Hjaalmarch",
      "quest": "AP - Missile Additional Starts.esp:00001B",
      "questEdid": "MissileAPAmbushStartHjaalmarchQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPAmbushStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1012,7 +1171,7 @@
      "option": "Falkreath",
      "quest": "AP - Missile Additional Starts.esp:00001A",
      "questEdid": "MissileAPAmbushStartFalkreathQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPAmbushStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1020,7 +1179,7 @@
      "option": "The Pale",
      "quest": "AP - Missile Additional Starts.esp:00002D",
      "questEdid": "MissileAPAmbushStartPaleQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPAmbushStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1028,7 +1187,7 @@
      "option": "The Reach",
      "quest": "AP - Missile Additional Starts.esp:000033",
      "questEdid": "MissileAPAmbushStartReachQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPAmbushStartReachQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1036,7 +1195,7 @@
      "option": "The Rift",
      "quest": "AP - Missile Additional Starts.esp:000027",
      "questEdid": "MissileAPAmbushStartRiftQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPAmbushStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1044,7 +1203,7 @@
      "option": "Whiterun",
      "quest": "AP - Missile Additional Starts.esp:000019",
      "questEdid": "MissileAPAmbushStartWhiterunQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPAmbushStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
     }
@@ -1058,7 +1217,7 @@
      "option": "Fell in a Spike Pit",
      "quest": "AP - Missile Additional Starts.esp:000039",
      "questEdid": "MissileAPFellInAPitQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPFellInAPitQuest scripts (AP - Missile Additional Starts.esp)"
     }
@@ -1072,7 +1231,7 @@
      "option": "Eastmarch",
      "quest": "AP - Missile Additional Starts.esp:00004C",
      "questEdid": "MissileAPBountyHunterStartEastmarchQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPBountyHunterStartEastmarchQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1080,7 +1239,7 @@
      "option": "Falkreath",
      "quest": "AP - Missile Additional Starts.esp:000058",
      "questEdid": "MissileAPBountyHunterStartFalkreathQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPBountyHunterStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1088,7 +1247,7 @@
      "option": "Haafingar",
      "quest": "AP - Missile Additional Starts.esp:00005C",
      "questEdid": "MissileAPBountyHunterStartHaafingarQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPBountyHunterStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1096,7 +1255,7 @@
      "option": "Hjaalmarch",
      "quest": "AP - Missile Additional Starts.esp:000048",
      "questEdid": "MissileAPBountyHunterStartHjaalmarchQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPBountyHunterStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1104,7 +1263,7 @@
      "option": "The Rift",
      "quest": "AP - Missile Additional Starts.esp:000050",
      "questEdid": "MissileAPBountyHunterStartRiftQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPBountyHunterStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1112,7 +1271,7 @@
      "option": "Whiterun",
      "quest": "AP - Missile Additional Starts.esp:00003F",
      "questEdid": "MissileAPBountyHunterStartWhiterunQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPBountyHunterStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1120,7 +1279,7 @@
      "option": "Winterhold",
      "quest": "AP - Missile Additional Starts.esp:000054",
      "questEdid": "MissileAPBountyHunterStartWinterholdQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPBountyHunterStartWinterholdQuest scripts (AP - Missile Additional Starts.esp)"
     }
@@ -1134,7 +1293,7 @@
      "option": "Haafingar",
      "quest": "AP - Missile Additional Starts.esp:000086",
      "questEdid": "MissileAPBanditPrisonerStartHaafingarQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPBanditPrisonerStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1142,7 +1301,7 @@
      "option": "The Pale",
      "quest": "AP - Missile Additional Starts.esp:00007B",
      "questEdid": "MissileAPBanditPrisonerStartPaleQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPBanditPrisonerStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1150,7 +1309,7 @@
      "option": "The Reach",
      "quest": "AP - Missile Additional Starts.esp:00008D",
      "questEdid": "MissileAPBanditPrisonerStartReachQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPBanditPrisonerStartReachQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1158,7 +1317,7 @@
      "option": "The Rift",
      "quest": "AP - Missile Additional Starts.esp:000081",
      "questEdid": "MissileAPBanditPrisonerStartRiftQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPBanditPrisonerStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1166,7 +1325,7 @@
      "option": "Whiterun",
      "quest": "AP - Missile Additional Starts.esp:000073",
      "questEdid": "MissileAPBanditPrisonerStartWhiterunQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPBanditPrisonerStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
     }
@@ -1180,7 +1339,7 @@
      "option": "Eastmarch",
      "quest": "AP - Missile Additional Starts.esp:0000D8",
      "questEdid": "MissileAPOutInTheWildernessStartEastmarchQuestDUPLICATE001",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPOutInTheWildernessStartEastmarchQuestDUPLICATE001 scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1188,7 +1347,7 @@
      "option": "Falkreath",
      "quest": "AP - Missile Additional Starts.esp:0000CE",
      "questEdid": "MissileAPOutInTheWildernessStartFalkreathQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPOutInTheWildernessStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1196,7 +1355,7 @@
      "option": "Haafingar",
      "quest": "AP - Missile Additional Starts.esp:0000D2",
      "questEdid": "MissileAPOutInTheWildernessStartHaafingarQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPOutInTheWildernessStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1204,7 +1363,7 @@
      "option": "Hjaalmarch",
      "quest": "AP - Missile Additional Starts.esp:0000D4",
      "questEdid": "MissileAPOutInTheWildernessStartHjaalmarchQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPOutInTheWildernessStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1212,7 +1371,7 @@
      "option": "The Pale",
      "quest": "AP - Missile Additional Starts.esp:0000DA",
      "questEdid": "MissileAPOutInTheWildernessStartPaleQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPOutInTheWildernessStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1220,7 +1379,7 @@
      "option": "The Reach",
      "quest": "AP - Missile Additional Starts.esp:0000D0",
      "questEdid": "MissileAPOutInTheWildernessStartReachQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPOutInTheWildernessStartReachQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1228,7 +1387,7 @@
      "option": "The Rift",
      "quest": "AP - Missile Additional Starts.esp:0000CB",
      "questEdid": "MissileAPOutInTheWildernessStartRiftQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPOutInTheWildernessStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1236,7 +1395,7 @@
      "option": "Whiterun",
      "quest": "AP - Missile Additional Starts.esp:0000C8",
      "questEdid": "MissileAPOutInTheWildernessStartWhiterunQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPOutInTheWildernessStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
     },
@@ -1244,79 +1403,74 @@
      "option": "Winterhold",
      "quest": "AP - Missile Additional Starts.esp:0000D6",
      "questEdid": "MissileAPOutInTheWildernessStartWinterholdQuest",
-     "mainQuestRuns": "no",
+     "mainQuestRuns": "yes: it is start-game enabled",
      "moves": [],
      "source": "MissileAPOutInTheWildernessStartWinterholdQuest scripts (AP - Missile Additional Starts.esp)"
     }
    ]
   }
  ],
- "otherStarts": "To get into A Daedra's Best Friend: ask Barbas in Haemar's Shame \"\" (A Daedra's Best Friend stage < 10; the speaker is Barbas), which starts A Daedra's Best Friend; or ask Barbas in Haemar's Shame \"\" (A Daedra's Best Friend stage < 20; the speaker is Barbas), which starts A Daedra's Best Friend; or ask Barbas in Haemar's Shame \"\" (A Daedra's Best Friend stage < 20; the speaker is Barbas), which starts A Daedra's Best Friend.",
+ "otherStarts": "To get into A Daedra's Best Friend: talk to Lod in Lod's House: Speak to Lod, Falkreath's blacksmith, about a dog he's looking for is running from the start (Speak to Lod, Falkreath's blacksmith, about a dog he's looking for).",
  "routes": [
   {
-   "route": "DA03Start",
-   "kind": "quest script",
-   "does": "stage 10: SetStage 5",
-   "startedBy": [
-    "the start-game flag (Skyrim.esm:0D7939 DNAM, Wintersun - Reqtificated.esp)"
+   "route": "dialogue INFO Skyrim.esm:0E0D49",
+   "kind": "dialogue",
+   "speaker": "",
+   "speakerNamed": "alias ImperialGateGuard1 of DA03Start (forced)",
+   "race": null,
+   "placed": [
+    "Falkreath",
+    "Falkreath"
    ],
-   "inStartMenu": false,
-   "source": "QF_DA03Start_000D7939 on Skyrim.esm:0D7939 (Wintersun - Reqtificated.esp)",
-   "sentence": "DA03Start stage 10: SetStage 5 on DA03 (A Daedra's Best Friend); it is started by the start-game flag (Skyrim.esm:0D7939 DNAM, Wintersun - Reqtificated.esp)."
+   "prompt": "What sort of dog?",
+   "reply": [
+    "I don't know really. The blacksmith is offering a reward for a dog he saw on the road. I was hoping you'd seen it."
+   ],
+   "conditions": "level >= 10; DA03Start stage < 5; the speaker is the one in alias ImperialGateGuard1 or the speaker is the one in alias ImperialGateGuard2 or the speaker is the one in alias SonsGateGuard1 or the speaker is the one in alias SonsGateGuard2",
+   "does": "SetStage 5 on DA03Start",
+   "source": "TIF__000E0D49.Fragment_0 on INFO Skyrim.esm:0E0D49 (Unofficial Skyrim Special Edition Patch.esp); topic DA03StartGuardResponseBranchTopic3",
+   "sentence": "Talk to the speaker the line's conditions name in Falkreath and choose \"What sort of dog?\", when level >= 10; DA03Start stage < 5; the speaker is the one in alias ImperialGateGuard1 or the speaker is the one in alias ImperialGateGuard2 or the speaker is the one in alias SonsGateGuard1 or the speaker is the one in alias SonsGateGuard2: SetStage 5 on DA03Start.",
+   "stops": "the speaker isn't named by an NPC: alias ImperialGateGuard1 of DA03Start (forced)"
   },
   {
-   "route": "dialogue INFO Skyrim.esm:07EAE0",
+   "route": "dialogue INFO Skyrim.esm:0E0D4C",
    "kind": "dialogue",
-   "speaker": "Barbas",
-   "speakerNamed": "GetIsID",
-   "race": "Dog",
+   "speaker": "",
+   "speakerNamed": "alias ImperialGateGuard1 of DA03Start (forced)",
+   "race": null,
    "placed": [
-    "Haemar's Shame"
+    "Falkreath",
+    "Falkreath"
    ],
-   "prompt": "",
+   "prompt": "I've seen whole packs of dogs.",
    "reply": [
-    "You are exactly what I was looking for."
+    "No, this was a specific one. The blacksmith is offering a reward for a dog he saw on the road. I was hoping you'd seen it."
    ],
-   "conditions": "A Daedra's Best Friend stage < 10; the speaker is Barbas",
-   "does": "SetStage 10 on DA03 (A Daedra's Best Friend)",
-   "source": "TIF__0007EAE0.Fragment_1 on INFO Skyrim.esm:07EAE0 (Skyrim.esm); topic DA03BarbasForcegreetTopic",
-   "sentence": "Talk to Barbas (Dog) in Haemar's Shame, when A Daedra's Best Friend stage < 10; the speaker is Barbas: SetStage 10 on DA03 (A Daedra's Best Friend)."
+   "conditions": "level >= 10; DA03Start stage < 5; the speaker is the one in alias ImperialGateGuard1 or the speaker is the one in alias ImperialGateGuard2 or the speaker is the one in alias SonsGateGuard1 or the speaker is the one in alias SonsGateGuard2",
+   "does": "SetStage 5 on DA03Start",
+   "source": "TIF__000E0D4C.Fragment_0 on INFO Skyrim.esm:0E0D4C (Skyrim.esm); topic DA03StartGuardResponseBranchTopic2",
+   "sentence": "Talk to the speaker the line's conditions name in Falkreath and choose \"I've seen whole packs of dogs.\", when level >= 10; DA03Start stage < 5; the speaker is the one in alias ImperialGateGuard1 or the speaker is the one in alias ImperialGateGuard2 or the speaker is the one in alias SonsGateGuard1 or the speaker is the one in alias SonsGateGuard2: SetStage 5 on DA03Start.",
+   "stops": "the speaker isn't named by an NPC: alias ImperialGateGuard1 of DA03Start (forced)"
   },
   {
-   "route": "dialogue INFO Skyrim.esm:0896A7",
+   "route": "dialogue INFO Skyrim.esm:0E0D4B",
    "kind": "dialogue",
-   "speaker": "Barbas",
-   "speakerNamed": "GetIsID",
-   "race": "Dog",
+   "speaker": "",
+   "speakerNamed": "alias ImperialGateGuard1 of DA03Start (forced)",
+   "race": null,
    "placed": [
-    "Haemar's Shame"
+    "Falkreath",
+    "Falkreath"
    ],
-   "prompt": "",
+   "prompt": "No. Some wolves, but no dogs.",
    "reply": [
-    "Listen, when you're ready to do something useful, find me outside Haemar's Shame, in Falkreath."
+    "Ah, well. The blacksmith is offering a reward for a dog he saw on the road. I was hoping you'd seen it."
    ],
-   "conditions": "A Daedra's Best Friend stage < 20; the speaker is Barbas",
-   "does": "SetStage 20 on DA03 (A Daedra's Best Friend)",
-   "source": "TIF__000896A7.Fragment_0 on INFO Skyrim.esm:0896A7 (Skyrim.esm); topic DA03BarbasWalkaway",
-   "sentence": "Talk to Barbas (Dog) in Haemar's Shame, when A Daedra's Best Friend stage < 20; the speaker is Barbas: SetStage 20 on DA03 (A Daedra's Best Friend)."
-  },
-  {
-   "route": "dialogue INFO Skyrim.esm:0E0D48",
-   "kind": "dialogue",
-   "speaker": "Barbas",
-   "speakerNamed": "GetIsID",
-   "race": "Dog",
-   "placed": [
-    "Haemar's Shame"
-   ],
-   "prompt": "",
-   "reply": [
-    "You see, my name is Barbas. And I have a problem I think you can help sort out."
-   ],
-   "conditions": "A Daedra's Best Friend stage < 20; the speaker is Barbas",
-   "does": "SetStage 15 on DA03 (A Daedra's Best Friend)",
-   "source": "TIF__000E0D48.Fragment_0 on INFO Skyrim.esm:0E0D48 (Skyrim.esm); topic DA03BarbasGreetContinue",
-   "sentence": "Talk to Barbas (Dog) in Haemar's Shame, when A Daedra's Best Friend stage < 20; the speaker is Barbas: SetStage 15 on DA03 (A Daedra's Best Friend)."
+   "conditions": "level >= 10; DA03Start stage < 5; fn84 < 1; the speaker is the one in alias ImperialGateGuard1 or the speaker is the one in alias ImperialGateGuard2 or the speaker is the one in alias SonsGateGuard1 or the speaker is the one in alias SonsGateGuard2",
+   "does": "SetStage 5 on DA03Start",
+   "source": "TIF__000E0D4B.Fragment_0 on INFO Skyrim.esm:0E0D4B (Unofficial Skyrim Special Edition Patch.esp); topic DA03StartGuardResponseBranchTopic",
+   "sentence": "Talk to the speaker the line's conditions name in Falkreath and choose \"No. Some wolves, but no dogs.\", when level >= 10; DA03Start stage < 5; fn84 < 1; the speaker is the one in alias ImperialGateGuard1 or the speaker is the one in alias ImperialGateGuard2 or the speaker is the one in alias SonsGateGuard1 or the speaker is the one in alias SonsGateGuard2: SetStage 5 on DA03Start.",
+   "stops": "the speaker isn't named by an NPC: alias ImperialGateGuard1 of DA03Start (forced)"
   }
  ],
  "loaders": {

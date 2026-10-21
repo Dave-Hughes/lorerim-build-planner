@@ -4,14 +4,14 @@ Written by `scripts/gamedata/quests.py` from the winning QUST records in the Ult
 
 ## Counts
 
-read 5852 -> named 3729 -> with text 1520 -> kept 1340
+read 5852 -> named 3729 -> with text 1520 -> lead-ins 3 -> kept 1343
 
 ## Kept by type
 
 | Type | Quests |
 | --- | --- |
 | Side Quest | 634 |
-| Misc | 339 |
+| Misc | 342 |
 | None | 82 |
 | Dark Brotherhood | 72 |
 | Main Quest | 44 |
@@ -27,7 +27,7 @@ read 5852 -> named 3729 -> with text 1520 -> kept 1340
 
 | Plugin | Quests |
 | --- | --- |
-| Skyrim.esm | 344 |
+| Skyrim.esm | 347 |
 | Missives.esp | 264 |
 | Favor Quests Seperated.esp | 68 |
 | Dragonborn.esm | 57 |
@@ -157,7 +157,7 @@ radiant work (Missives, bounties) or a mod that uses objectives alone (Vigilant)
 | Line | Kind | Source | Quests | Journal | Types | How it begins |
 | --- | --- | --- | --- | --- | --- | --- |
 | Missives | mod | Missives (Nexus 17576) | 264 | 0 | Side Quest 264 | Collect <Alias=Item> |
-| Miscellaneous | bucket | Skyrim | 176 | 16 | Misc 176 | Giraud Gemane of the Bards College has found a clue to the location of the legendary drum of Rjorn. He's asked me to go to Halldir's Cairn and retrieve it. |
+| Miscellaneous | bucket | Skyrim | 179 | 17 | Misc 179 | Giraud Gemane of the Bards College has found a clue to the location of the legendary drum of Rjorn. He's asked me to go to Halldir's Cairn and retrieve it. |
 | Side quests | bucket | Skyrim | 76 | 74 | Side Quest 57, None 19 | Dummy entry to end this quest. |
 | Favor Quests Separated | mod | Favor Quests Separated (Nexus 73903) | 68 | 0 | Misc 68 | Kill the bandit leader located at <Alias=BountyLocation> |
 | VIGILANT - English Translation (Plus Voiced Addon) | mod | VIGILANT - English Translation (Plus Voiced Addon) (Nexus 11894) | 47 | 2 | Misc 28, Side Quest 19 | Join the Vigilants of Stendarr |

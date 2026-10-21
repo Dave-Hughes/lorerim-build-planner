@@ -6,16 +6,15 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with Maramal, placed in Temple of Mara, "I'll buy an amulet of Mara. (200 gold)": SetStage 15 (when: GetItemCount Amulet of Mara == 0; the player has at least 200 gold; The Bonds of Matrimony stage 15 not done; The Bonds of Matrimony stage 10 done; the speaker is Maramal). Source: TIF__00026B5C.Fragment_1 on INFO Skyrim.esm:026B5C (Skyrim.esm). **script**
-- Dialogue with Maramal (named by alias TemplePriest of RelationshipMarriage (The Bonds of Matrimony) (unique)), placed in Temple of Mara, "I might. Why don't you remind me?": SetStage 10 (when: the speaker is the one in alias TemplePriest). Source: TIF__00074DE5.Fragment_0 on INFO Skyrim.esm:074DE5 (Skyrim.esm). **script**
-- Dialogue with Maramal (named by alias TemplePriest of RelationshipMarriage (The Bonds of Matrimony) (unique)), placed in Temple of Mara, "No, not really.": SetStage 10 (when: the speaker is the one in alias TemplePriest). Source: TIF__00074DE4.Fragment_0 on INFO Skyrim.esm:074DE4 (Skyrim.esm). **script**
-- Dialogue with Maramal (named by alias TemplePriest of RelationshipMarriage (The Bonds of Matrimony) (unique)), placed in Temple of Mara, "I wanted to know more about the Temple of Mara.": SetStage 5 (when: fn726 == 1; the speaker is the one in alias TemplePriest). Source: TIF__00074DE2.Fragment_0 on INFO Skyrim.esm:074DE2 (NPCs_Wear_Amulets_Of_Mara.esp). **script**
-- Dialogue with Maramal, placed in Temple of Mara, "I need to cancel the wedding. My betrothed died.": Start (when: the speaker is Maramal; The Bonds of Matrimony stage == 250). Source: GirlfriendDied.Fragment_0 on INFO NPCs_Wear_Amulets_Of_Mara.esp:00080D (NPCs_Wear_Amulets_Of_Mara.esp). **script**
-- Dialogue with Maramal, placed in Temple of Mara, "I need to cancel the wedding. My betrothed died.": SetStage 15 (when: the speaker is Maramal; The Bonds of Matrimony stage == 250). Source: GirlfriendDied.Fragment_0 on INFO NPCs_Wear_Amulets_Of_Mara.esp:00080D (NPCs_Wear_Amulets_Of_Mara.esp). **script**
-- Dialogue with Maramal (named by alias TemplePriest of RelationshipMarriage (The Bonds of Matrimony) (unique)), placed in Temple of Mara, "I made a mistake. I want to go ahead with the ceremony.": SetStage 30 (when: fn403 >= 1; Wedding Ceremony Scene stage 200 done; fn629 == 1; the speaker is the one in alias TemplePriest). Source: TIF__00075CAF.Fragment_0 on INFO Skyrim.esm:075CAF (Skyrim.esm). **script**
 - RelationshipMarriageFIN, a helper quest with Player at stage 200 calls SetStage 10; RelationshipMarriageFIN is started by dialogue with someone (SetStage 5); story manager node MarriageNode (event: script event; no conditions). Source: QF_RelationshipMarriageFIN_00021382.fragment_2 on Skyrim.esm:021382 (AI Overhaul.esp). **script**
 - RelationshipMarriageBreakUp (named "Player Has Broken Up with the Love Interest" in its record), a helper quest at stage 100 calls SetStage 20; RelationshipMarriageBreakUp is started by story manager node RelationshipMarriageNode (event: relationship change; GetInFaction MarriageCourtingFaction == 1 or GetInFaction MarriageCourtingFaction == 1). Source: QF_RelationshipMarriageBreakU_0007431B.fragment_1 on Skyrim.esm:07431B (Skyrim.esm). **script**
-- and 15 more in the JSON
+- USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls SetStage 10; SetStage 10; SetStage 10; SetStage 10; SetStage 10; SetStage 10; SetStage 10; SetStage 10; SetStage 10; SetStage 10; SetStage 10; SetStage 10; SetStage 10; USKPVersionTracking is started by the start-game flag. Sources: USKP_VersionTrackingScript.ProcessRetroScripts, USKP_VersionTrackingScript.OnInit, USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9. **script**
+- USKPRetroactive202 (named "Retroactive fixes for 2.0.2" in its record), a helper quest calls SetStage 10; SetStage 10; SetStage 10; SetStage 10; USKPRetroactive202 is started by the start-game flag. Sources: USKPRetroactive202Script.Process on Unofficial Skyrim Special Edition Patch.esp:00E025. **script**
+- USKPRetroactive203 (named "Retroactive fixes for 2.0.3" in its record), a helper quest calls SetStage 10; SetStage 10; USKPRetroactive203 is started by the start-game flag. Sources: uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A. **script**
+- USKPRetroactive204 (named "Retroactive fixes for 2.0.4" in its record), a helper quest with Gabriella, Erikur, Susanna calls SetStage 10; USKPRetroactive204 is started by the start-game flag. Source: USKPRetroactive204Script.Process on Unofficial Skyrim Special Edition Patch.esp:012C3A (Unofficial Skyrim Special Edition Patch.esp). **script**
+- USKPRetroactive201 (named "Retroactive fixes for 2.0.1" in its record), a helper quest calls SetStage 10; SetStage 10; SetStage 10; SetStage 10; SetStage 10; SetStage 10; SetStage 10; SetStage 10; USKPRetroactive201 is started by the start-game flag. Sources: USKPRetroactive201Script.Process on Unofficial Skyrim Special Edition Patch.esp:0946CF. **script**
+- Dialogue with Maramal, placed in Temple of Mara, "I'll buy an amulet of Mara. (200 gold)": SetStage 15 (when: GetItemCount Amulet of Mara == 0; the player has at least 200 gold; The Bonds of Matrimony stage 15 not done; The Bonds of Matrimony stage 10 done; the speaker is Maramal). Source: TIF__00026B5C.Fragment_1 on INFO Skyrim.esm:026B5C (Skyrim.esm). **script**
+- and 14 more in the JSON
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -196,70 +195,70 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 - Speaker: not named by an NPC. Named by: GetIsID.
 - The player's prompt: "Yes. Yes I am.".
 - The reply: "It's settled then. Brief as life can be in Skyrim, at least we'll have each other.".
-- When it's offered: fn426 == 1; GetInFaction PotentialMarriageFaction == 1.
+- When it's offered: the speaker has the voice Skyrim.esm:0CCD78; GetInFaction PotentialMarriageFaction == 1.
 - What it does: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony). Source: TIF__00074DE3.Fragment_1 on INFO Skyrim.esm:074DE3 (Skyrim.esm); topic RelationshipMarriageIntroDialogueCourtshipYES. **script**
 - **unread**: the trail stops here: the speaker isn't named by an NPC: GetIsID.
-- In one sentence: Talk to the speaker the line's conditions name and choose "Yes. Yes I am.", when fn426 == 1; GetInFaction PotentialMarriageFaction == 1: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony).
+- In one sentence: Talk to the speaker the line's conditions name and choose "Yes. Yes I am.", when the speaker has the voice Skyrim.esm:0CCD78; GetInFaction PotentialMarriageFaction == 1: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony).
 
 ### dialogue INFO Skyrim.esm:0CDA0A
 
 - Speaker: not named by an NPC. Named by: GetIsID.
 - The player's prompt: "I will. Together, then.".
 - The reply: "Together.".
-- When it's offered: fn426 == 1; GetInFaction PotentialMarriageFaction == 1.
+- When it's offered: the speaker has the voice Skyrim.esm:0CCE4E; GetInFaction PotentialMarriageFaction == 1.
 - What it does: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony). Source: TIF__000CDA0A.Fragment_1 on INFO Skyrim.esm:0CDA0A (Skyrim.esm); topic RelationshipMarriageIntroDialogueCourtshipYES. **script**
 - **unread**: the trail stops here: the speaker isn't named by an NPC: GetIsID.
-- In one sentence: Talk to the speaker the line's conditions name and choose "I will. Together, then.", when fn426 == 1; GetInFaction PotentialMarriageFaction == 1: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony).
+- In one sentence: Talk to the speaker the line's conditions name and choose "I will. Together, then.", when the speaker has the voice Skyrim.esm:0CCE4E; GetInFaction PotentialMarriageFaction == 1: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony).
 
 ### dialogue INFO Skyrim.esm:0CDA0B
 
 - Speaker: not named by an NPC. Named by: GetIsID.
 - The player's prompt: "I do. My hand is yours.".
 - The reply: "And mine is yours.".
-- When it's offered: fn426 == 1; GetInFaction PotentialMarriageFaction == 1.
+- When it's offered: the speaker has the voice Skyrim.esm:0CCE4F; GetInFaction PotentialMarriageFaction == 1.
 - What it does: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony). Source: TIF__000CDA0B.Fragment_1 on INFO Skyrim.esm:0CDA0B (Skyrim.esm); topic RelationshipMarriageIntroDialogueCourtshipYES. **script**
 - **unread**: the trail stops here: the speaker isn't named by an NPC: GetIsID.
-- In one sentence: Talk to the speaker the line's conditions name and choose "I do. My hand is yours.", when fn426 == 1; GetInFaction PotentialMarriageFaction == 1: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony).
+- In one sentence: Talk to the speaker the line's conditions name and choose "I do. My hand is yours.", when the speaker has the voice Skyrim.esm:0CCE4F; GetInFaction PotentialMarriageFaction == 1: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony).
 
 ### dialogue INFO Skyrim.esm:0CDA0C
 
 - Speaker: not named by an NPC. Named by: GetIsID.
 - The player's prompt: "Together until the end, then.".
 - The reply: "As short as life can be in this land, we will have each other.".
-- When it's offered: fn426 == 1; GetInFaction PotentialMarriageFaction == 1.
+- When it's offered: the speaker has the voice Skyrim.esm:0CCE50; GetInFaction PotentialMarriageFaction == 1.
 - What it does: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony). Source: TIF__000CDA0C.Fragment_1 on INFO Skyrim.esm:0CDA0C (Skyrim.esm); topic RelationshipMarriageIntroDialogueCourtshipYES. **script**
 - **unread**: the trail stops here: the speaker isn't named by an NPC: GetIsID.
-- In one sentence: Talk to the speaker the line's conditions name and choose "Together until the end, then.", when fn426 == 1; GetInFaction PotentialMarriageFaction == 1: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony).
+- In one sentence: Talk to the speaker the line's conditions name and choose "Together until the end, then.", when the speaker has the voice Skyrim.esm:0CCE50; GetInFaction PotentialMarriageFaction == 1: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony).
 
 ### dialogue INFO Skyrim.esm:0CDA0D
 
 - Speaker: not named by an NPC. Named by: GetIsID.
 - The player's prompt: "I'm game.".
 - The reply: "Well, look at us, getting married. Life in Skyrim ain't all bad, huh?".
-- When it's offered: fn426 == 1; GetInFaction PotentialMarriageFaction == 1.
+- When it's offered: the speaker has the voice MaleDrunk; GetInFaction PotentialMarriageFaction == 1.
 - What it does: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony). Source: TIF__000CDA0D.Fragment_1 on INFO Skyrim.esm:0CDA0D (Skyrim.esm); topic RelationshipMarriageIntroDialogueCourtshipYES. **script**
 - **unread**: the trail stops here: the speaker isn't named by an NPC: GetIsID.
-- In one sentence: Talk to the speaker the line's conditions name and choose "I'm game.", when fn426 == 1; GetInFaction PotentialMarriageFaction == 1: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony).
+- In one sentence: Talk to the speaker the line's conditions name and choose "I'm game.", when the speaker has the voice MaleDrunk; GetInFaction PotentialMarriageFaction == 1: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony).
 
 ### dialogue INFO Skyrim.esm:0CDA0E
 
 - Speaker: not named by an NPC. Named by: GetIsID.
 - The player's prompt: "I'd be more than interested.".
 - The reply: "Good. The two of us then. All of Skyrim should get ready to stand aside.".
-- When it's offered: fn426 == 1; GetInFaction PotentialMarriageFaction == 1.
+- When it's offered: the speaker has the voice Skyrim.esm:0CCE3F; GetInFaction PotentialMarriageFaction == 1.
 - What it does: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony). Source: TIF__000CDA0E.Fragment_1 on INFO Skyrim.esm:0CDA0E (Skyrim.esm); topic RelationshipMarriageIntroDialogueCourtshipYES. **script**
 - **unread**: the trail stops here: the speaker isn't named by an NPC: GetIsID.
-- In one sentence: Talk to the speaker the line's conditions name and choose "I'd be more than interested.", when fn426 == 1; GetInFaction PotentialMarriageFaction == 1: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony).
+- In one sentence: Talk to the speaker the line's conditions name and choose "I'd be more than interested.", when the speaker has the voice Skyrim.esm:0CCE3F; GetInFaction PotentialMarriageFaction == 1: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony).
 
 ### dialogue INFO Skyrim.esm:0CDA0F
 
 - Speaker: not named by an NPC. Named by: GetIsID.
 - The player's prompt: "I won't lie. I am.".
 - The reply: "Then it's settled. You and me.".
-- When it's offered: fn426 == 1; GetInFaction PotentialMarriageFaction == 1.
+- When it's offered: the speaker has the voice Skyrim.esm:0CCE4D; GetInFaction PotentialMarriageFaction == 1.
 - What it does: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony). Source: TIF__000CDA0F.Fragment_1 on INFO Skyrim.esm:0CDA0F (Skyrim.esm); topic RelationshipMarriageIntroDialogueCourtshipYES. **script**
 - **unread**: the trail stops here: the speaker isn't named by an NPC: GetIsID.
-- In one sentence: Talk to the speaker the line's conditions name and choose "I won't lie. I am.", when fn426 == 1; GetInFaction PotentialMarriageFaction == 1: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony).
+- In one sentence: Talk to the speaker the line's conditions name and choose "I won't lie. I am.", when the speaker has the voice Skyrim.esm:0CCE4D; GetInFaction PotentialMarriageFaction == 1: SetStage 20 on RelationshipMarriage (The Bonds of Matrimony).
 
 ### dialogue INFO Skyrim.esm:074DE5
 

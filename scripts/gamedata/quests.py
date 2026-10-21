@@ -417,6 +417,16 @@ def index_quests(winners, editors):
     counts["named"] = len(named)
     counts["with text"] = sum(1 for q in rows if has_text(q))
     kept = [q for q in named if has_text(q)]
+    # A named quest's lead-in has no name of its own (WO-121a): DA14Start, Sam Guevenne's drinking contest, opens A Night
+    # To Remember (DA14) as a Miscellaneous objective. It's kept, named by its first objective, the game's own words.
+    parents = {q["edid"].lower(): q for q in kept}
+    for q in rows:
+        parent = parents.get(q["edid"].lower()[:-5]) if q["edid"].lower().endswith("start") and not q["name"] else None
+        if parent and q["objectives"]:
+            q["name"] = q["objectives"][0]["text"]
+            q["leadsTo"] = parent["id"]
+            kept.append(q)
+    counts["lead-ins"] = sum(1 for q in kept if q.get("leadsTo"))
     counts["kept"] = len(kept)
     kept.sort(key=lambda q: (q["plugin"].lower(), q["edid"].lower()))
     return kept, counts

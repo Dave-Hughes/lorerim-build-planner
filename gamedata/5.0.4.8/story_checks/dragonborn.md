@@ -239,7 +239,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Needs**
 
-- Its own conditions: fn426 == 1; GetRandomPercent < DLC2WE09Chance (now 0); At the Summit of Apocrypha stage < 550; level >= DLC2CultistAttackMinLevel_KRY (now 25). **files**
+- Its own conditions: the speaker has the voice Dragonborn.esm:034E61; GetRandomPercent < DLC2WE09Chance (now 0); At the Summit of Apocrypha stage < 550; level >= DLC2CultistAttackMinLevel_KRY (now 25). **files**
 - Global DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp); at run time script DLC2_QF_DLC2WE09_020331C0:  = 5; script DLC2_QF_DLC2CultistAmbush_0203546D:  = 5; script EE_MCMScript:  = None. **run time**
 - Global WEEnabled: record 1.0 (Skyrim.esm); at run time script QF_E3demo_00093637:  = 0; script CarriageSystemScript:  = None; script CarriageSystemScript:  = None. **run time**
 - Global DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp). **conflict**

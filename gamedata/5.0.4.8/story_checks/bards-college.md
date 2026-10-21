@@ -2,7 +2,32 @@
 
 Written by `scripts/gamedata/story_check.py` from the records, the winning compiled scripts and the settings loaders in the Ultra profile. Verdicts: **files** a record decides it; **script** a script decides it, read; **run time** a settings loader or script sets it at load; **conflict** two sources disagree; **unread** named. Conditions read as the game reads them: "or" joins OR'd conditions, ";" separates what is all needed.
 
-## 1. Tending the Flames (`MS05`, Skyrim.esm:053511, Unofficial Skyrim Special Edition Patch.esp)
+## 1. Investigate the Bards College (`MS05Start`, Skyrim.esm:042868, Skyrim.esm)
+
+**Started by**
+
+- Dialogue with Karita, placed in Windpeak Inn, "What do you do around here?": SetStage 10 (when: GetQuestRunning Bound Until Death == 0; GetQuestRunning A Healing Wedding == 0; MS05Start stage < 10; the speaker isn't Karita; the speaker isn't Ogmund; the speaker isn't Viarmo; the speaker isn't Sven; the speaker isn't Giraud Gemane; the speaker isn't Ataf; the speaker isn't Aia Arria; the speaker isn't Jorn; the speaker isn't Talsgar the Wanderer; the speaker isn't Inge Six Fingers; the speaker isn't Pantea Ateia; the speaker isn't Illdi; GetInFaction JobBardFaction == 1). Source: TIF__000534F2.Fragment_0 on INFO Skyrim.esm:0534F2 (Vittorias Alternate Wedding.esp). **script**
+- Dialogue with Viarmo, placed in Bards College, The Bards College, "What do you do around here?": SetStage 10 (when: GetInFaction JobBardFaction == 1; GetQuestRunning Bound Until Death == 0; GetQuestRunning A Healing Wedding == 0; MS05Start stage < 10; the speaker isn't Viarmo; the speaker isn't Talsgar the Wanderer; the speaker is Ataf or the speaker is Jorn or the speaker is Inge Six Fingers or the speaker is Pantea Ateia or the speaker is Illdi). Source: TIF__000534F3.Fragment_0 on INFO Skyrim.esm:0534F3 (Vittorias Alternate Wedding.esp). **script**
+- Dialogue with Sven, placed in Sven and Hilde's House, Sven's House, "Where did you learn to play so well?": SetStage 10 (when: the speaker isn't Talsgar the Wanderer; GetInFaction BardSingerFaction == 1; the speaker is Sven; MS05Start stage < 10). Source: TIF__000BB964.Fragment_0 on INFO Skyrim.esm:0BB964 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Ogmund, placed in Ogmund's House, "The Bards College? What's that?": SetStage 10 (when: MS05Start stage 10 not done; DialogueMarkarth stage 5 done; the speaker is Ogmund). Source: TIF__00084D06.Fragment_0 on INFO Skyrim.esm:084D06 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Karita, placed in Windpeak Inn, "Where'd you learn to play?": SetStage 10 (when: the speaker is Karita). Source: TIF__00090DEB.Fragment_0 on INFO Skyrim.esm:090DEB (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Mikael, placed in The Bannered Mare, "Where'd you learn to play?": SetStage 10 (when: the speaker is Mikael). Source: TIF__000CE6EF.Fragment_0 on INFO Skyrim.esm:0CE6EF (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:042868 DNAM (Skyrim.esm). **files**
+- (First objective shown at stage 10; a call to a later stage advances the quest instead.)
+
+**Who and where**
+
+- First objective: "Investigate the Bards College". Source: Skyrim.esm:042868 QOBJ 10. **files**
+- Target alias Viarmo (unique): Viarmo (unique actor, placed in Bards College, The Bards College). **files**
+
+**Needs**
+
+- Nothing in its own conditions, and no locked-only way into its first objective's place.
+- Ways in: Bards College, The Bards College: 4 doors, 0 locked. A door is a need only when every way in is locked. **files**
+
+**Gives**: nothing on its completing stages.
+
+## 2. Tending the Flames (`MS05`, Skyrim.esm:053511, Unofficial Skyrim Special Edition Patch.esp)
 
 **Started by**
 
@@ -28,7 +53,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: LvlQuestReward04Wow (levelled: gold) (stage 300, QF_MS05DUPLICATE000_00053511.fragment_12); LvlQuestReward03Large (levelled: gold) (stage 300, QF_MS05DUPLICATE000_00053511.fragment_12); LvlQuestReward02Medium (levelled: gold) (stage 300, QF_MS05DUPLICATE000_00053511.fragment_12); LvlQuestReward01Small (levelled: gold) (stage 300, QF_MS05DUPLICATE000_00053511.fragment_12).
 
-## 2. Collecting the Edda (`BardsCollegePoeticEdda`, Skyrim.esm:0E7814, dvEdda.esp)
+## 3. Collecting the Edda (`BardsCollegePoeticEdda`, Skyrim.esm:0E7814, dvEdda.esp)
 
 **Started by**
 
@@ -52,7 +77,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 3. Rjorn's Drum (`BardsCollegeDrum`, Skyrim.esm:0D944F, JS Instruments of Skyrim SE - Uniques.esp)
+## 4. Rjorn's Drum (`BardsCollegeDrum`, Skyrim.esm:0D944F, JS Instruments of Skyrim SE - Uniques.esp)
 
 **Started by**
 
@@ -76,7 +101,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 4. Pantea's Flute (`BardsCollegeFlute`, Skyrim.esm:0D9431, JS Instruments of Skyrim SE - Uniques.esp)
+## 5. Pantea's Flute (`BardsCollegeFlute`, Skyrim.esm:0D9431, JS Instruments of Skyrim SE - Uniques.esp)
 
 **Started by**
 
@@ -100,7 +125,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 5. Finn's Lute (`BardsCollegeLute`, Skyrim.esm:0D93FA, JS Instruments of Skyrim SE - Uniques.esp)
+## 6. Finn's Lute (`BardsCollegeLute`, Skyrim.esm:0D93FA, JS Instruments of Skyrim SE - Uniques.esp)
 
 **Started by**
 
@@ -124,7 +149,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 6. The Lost Verse (`dunBardsLeapSummitQST`, Skyrim.esm:0AE014, dvEdda.esp)
+## 7. The Lost Verse (`dunBardsLeapSummitQST`, Skyrim.esm:0AE014, dvEdda.esp)
 
 **Started by**
 
@@ -143,7 +168,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 7. Clear Dead Men's Respite (`DMRClearQ`, BardExcavation.esp:00085E, BardExcavation.esp)
+## 8. Clear Dead Men's Respite (`DMRClearQ`, BardExcavation.esp:00085E, BardExcavation.esp)
 
 **Started by**
 
@@ -297,23 +322,59 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 
 ## Routes into the first quest from outside the starts
 
-### dialogue INFO Skyrim.esm:06035D
+### dialogue INFO Skyrim.esm:0534F2
+
+- Speaker: Karita (Nord), placed in Windpeak Inn. Named by: GetIsID.
+- The player's prompt: "What do you do around here?".
+- The reply: "I'm a bard, trained at the Bards College in Solitude. Wanderers like you should think about applying.".
+- When it's offered: GetQuestRunning Bound Until Death == 0; GetQuestRunning A Healing Wedding == 0; MS05Start stage < 10; the speaker isn't Karita; the speaker isn't Ogmund; the speaker isn't Viarmo; the speaker isn't Sven; the speaker isn't Giraud Gemane; the speaker isn't Ataf; the speaker isn't Aia Arria; the speaker isn't Jorn; the speaker isn't Talsgar the Wanderer; the speaker isn't Inge Six Fingers; the speaker isn't Pantea Ateia; the speaker isn't Illdi; GetInFaction JobBardFaction == 1.
+- What it does: SetStage 10 on MS05Start. Source: TIF__000534F2.Fragment_0 on INFO Skyrim.esm:0534F2 (Vittorias Alternate Wedding.esp); topic MS05GenericJoinTopic. **script**
+- In one sentence: Talk to Karita (Nord) in Windpeak Inn and choose "What do you do around here?", when GetQuestRunning Bound Until Death == 0; GetQuestRunning A Healing Wedding == 0; MS05Start stage < 10; the speaker isn't Karita; the speaker isn't Ogmund; the speaker isn't Viarmo; the speaker isn't Sven; the speaker isn't Giraud Gemane; the speaker isn't Ataf; the speaker isn't Aia Arria; the speaker isn't Jorn; the speaker isn't Talsgar the Wanderer; the speaker isn't Inge Six Fingers; the speaker isn't Pantea Ateia; the speaker isn't Illdi; GetInFaction JobBardFaction == 1: SetStage 10 on MS05Start.
+
+### dialogue INFO Skyrim.esm:0534F3
 
 - Speaker: Viarmo (Altmer), placed in Bards College, The Bards College. Named by: GetIsID.
-- The player's prompt: "And that's where I come in?".
-- The reply: "Yes. According to Giraud, our histories keeper, the portion of the Edda dealing with King Olaf might still exist in Dead Man's Respite." / "I need you to retrieve the poem.".
-- When it's offered: GetItemCount King Olaf's Verse == 0; Tending the Flames stage < 75; the speaker is Viarmo.
-- What it does: SetStage 75 on MS05 (Tending the Flames). Source: TIF__0006035D.Fragment_0 on INFO Skyrim.esm:06035D (Skyrim.esm); topic MS05ViarmoApplicationTopic2. **script**
-- In one sentence: Talk to Viarmo (Altmer) in Bards College, The Bards College and choose "And that's where I come in?", when GetItemCount King Olaf's Verse == 0; Tending the Flames stage < 75; the speaker is Viarmo: SetStage 75 on MS05 (Tending the Flames).
+- The player's prompt: "What do you do around here?".
+- The reply: "I'm a bard, from the Bards College here in Solitude. Wanderers like you should think about applying.".
+- When it's offered: GetInFaction JobBardFaction == 1; GetQuestRunning Bound Until Death == 0; GetQuestRunning A Healing Wedding == 0; MS05Start stage < 10; the speaker isn't Viarmo; the speaker isn't Talsgar the Wanderer; the speaker is Ataf or the speaker is Jorn or the speaker is Inge Six Fingers or the speaker is Pantea Ateia or the speaker is Illdi.
+- What it does: SetStage 10 on MS05Start. Source: TIF__000534F3.Fragment_0 on INFO Skyrim.esm:0534F3 (Vittorias Alternate Wedding.esp); topic MS05GenericJoinTopic. **script**
+- In one sentence: Talk to Viarmo (Altmer) in Bards College, The Bards College and choose "What do you do around here?", when GetInFaction JobBardFaction == 1; GetQuestRunning Bound Until Death == 0; GetQuestRunning A Healing Wedding == 0; MS05Start stage < 10; the speaker isn't Viarmo; the speaker isn't Talsgar the Wanderer; the speaker is Ataf or the speaker is Jorn or the speaker is Inge Six Fingers or the speaker is Pantea Ateia or the speaker is Illdi: SetStage 10 on MS05Start.
 
-### dialogue INFO Skyrim.esm:0534EB
+### dialogue INFO Skyrim.esm:0BB964
 
-- Speaker: Viarmo (Altmer), placed in Bards College, The Bards College. Named by: GetIsID.
-- The player's prompt: "".
-- The reply: "Welcome to the Bards College. I am the headmaster here. How may I help you?".
-- When it's offered: fn249 == 1; Tending the Flames stage <= 10; the speaker is Viarmo.
-- What it does: SetStage 10 on MS05 (Tending the Flames). Source: TIF__000534EB.Fragment_1 on INFO Skyrim.esm:0534EB (Skyrim.esm); topic . **script**
-- In one sentence: Talk to Viarmo (Altmer) in Bards College, The Bards College, when fn249 == 1; Tending the Flames stage <= 10; the speaker is Viarmo: SetStage 10 on MS05 (Tending the Flames).
+- Speaker: Sven (Nord), placed in Sven and Hilde's House, Sven's House. Named by: GetIsID.
+- The player's prompt: "Where did you learn to play so well?".
+- The reply: "At the Bards College in Solitude. They train bards and skalds like myself." / "If you go there, talk to Viarmo. He's the headmaster.".
+- When it's offered: the speaker isn't Talsgar the Wanderer; GetInFaction BardSingerFaction == 1; the speaker is Sven; MS05Start stage < 10.
+- What it does: SetStage 10 on MS05Start. Source: TIF__000BB964.Fragment_0 on INFO Skyrim.esm:0BB964 (Unofficial Skyrim Special Edition Patch.esp); topic MS05GenericJoinTopic. **script**
+- In one sentence: Talk to Sven (Nord) in Sven and Hilde's House, Sven's House and choose "Where did you learn to play so well?", when the speaker isn't Talsgar the Wanderer; GetInFaction BardSingerFaction == 1; the speaker is Sven; MS05Start stage < 10: SetStage 10 on MS05Start.
+
+### dialogue INFO Skyrim.esm:084D06
+
+- Speaker: Ogmund (Nord), placed in Ogmund's House. Named by: GetIsID.
+- The player's prompt: "The Bards College? What's that?".
+- The reply: "It's a school that teaches music, poetry, that sort of thing. Most bards in Skyrim have been to the college at some point." / "If you're thinking of applying, talk to Viarmo in Solitude.".
+- When it's offered: MS05Start stage 10 not done; DialogueMarkarth stage 5 done; the speaker is Ogmund.
+- What it does: SetStage 10 on MS05Start. Source: TIF__00084D06.Fragment_0 on INFO Skyrim.esm:084D06 (Unofficial Skyrim Special Edition Patch.esp); topic DialogueMarkarthOgmundBardsCollegeTopic. **script**
+- In one sentence: Talk to Ogmund (Nord) in Ogmund's House and choose "The Bards College? What's that?", when MS05Start stage 10 not done; DialogueMarkarth stage 5 done; the speaker is Ogmund: SetStage 10 on MS05Start.
+
+### dialogue INFO Skyrim.esm:090DEB
+
+- Speaker: Karita (Nord), placed in Windpeak Inn. Named by: GetIsID.
+- The player's prompt: "Where'd you learn to play?".
+- The reply: "My mother taught me. She was a bard, from the college in Solitude." / "I hear they accept most people who apply, if you're ever interested.".
+- When it's offered: the speaker is Karita.
+- What it does: SetStage 10 on MS05Start. Source: TIF__00090DEB.Fragment_0 on INFO Skyrim.esm:090DEB (Unofficial Skyrim Special Edition Patch.esp); topic DialogueDawnstarKaritaMotherTopic. **script**
+- In one sentence: Talk to Karita (Nord) in Windpeak Inn and choose "Where'd you learn to play?", when the speaker is Karita: SetStage 10 on MS05Start.
+
+### dialogue INFO Skyrim.esm:0CE6EF
+
+- Speaker: Mikael (Nord), placed in The Bannered Mare. Named by: GetIsID.
+- The player's prompt: "Where'd you learn to play?".
+- The reply: "There's a whole college up in Solitude where they teach the arts. Song. Lute-playing. Poetry." / "I studied there myself. Had to leave over a misunderstanding with a headmistress. Well, more a misunderstanding with her husband.".
+- When it's offered: the speaker is Mikael.
+- What it does: SetStage 10 on MS05Start. Source: TIF__000CE6EF.Fragment_0 on INFO Skyrim.esm:0CE6EF (Unofficial Skyrim Special Edition Patch.esp); topic DialogueWhiterunMikaelBardTopicTopic. **script**
+- In one sentence: Talk to Mikael (Nord) in The Bannered Mare and choose "Where'd you learn to play?", when the speaker is Mikael: SetStage 10 on MS05Start.
 
 ## The payoff
 

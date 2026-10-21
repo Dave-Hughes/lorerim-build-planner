@@ -224,6 +224,7 @@
         "Bards College Excavation"
       ],
       "quests": [
+        "MS05Start",
         "MS05",
         "BardsCollegePoeticEdda",
         "BardsCollegeDrum",
@@ -231,7 +232,7 @@
         "BardsCollegeLute",
         "dunBardsLeapSummitQST"
       ],
-      "opening": "MS05"
+      "opening": "MS05Start"
     },
     {
       "id": "vigilants",
@@ -302,6 +303,11 @@
       "lines": [
         "A Daedra's Best Friend"
       ],
+      "questsFirst": true,
+      "quests": [
+        "DA03Start"
+      ],
+      "opening": "DA03Start",
       "gate": "No level found.",
       "checked": {
         "gate": "files"
@@ -315,6 +321,11 @@
       "lines": [
         "A Night To Remember"
       ],
+      "questsFirst": true,
+      "quests": [
+        "DA14Start"
+      ],
+      "opening": "DA14Start",
       "gate": "Level 20.",
       "minLevel": 20,
       "checked": {

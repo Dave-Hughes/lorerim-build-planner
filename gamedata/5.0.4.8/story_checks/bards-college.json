@@ -3,6 +3,165 @@
  "name": "The Bards College",
  "quests": [
   {
+   "id": "Skyrim.esm:042868",
+   "edid": "MS05Start",
+   "name": "Investigate the Bards College",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Karita",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Windpeak Inn"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0534F2",
+     "prompt": "What do you do around here?",
+     "reply": [
+      "I'm a bard, trained at the Bards College in Solitude. Wanderers like you should think about applying."
+     ],
+     "conditions": "GetQuestRunning Bound Until Death == 0; GetQuestRunning A Healing Wedding == 0; MS05Start stage < 10; the speaker isn't Karita; the speaker isn't Ogmund; the speaker isn't Viarmo; the speaker isn't Sven; the speaker isn't Giraud Gemane; the speaker isn't Ataf; the speaker isn't Aia Arria; the speaker isn't Jorn; the speaker isn't Talsgar the Wanderer; the speaker isn't Inge Six Fingers; the speaker isn't Pantea Ateia; the speaker isn't Illdi; GetInFaction JobBardFaction == 1",
+     "source": "TIF__000534F2.Fragment_0 on INFO Skyrim.esm:0534F2 (Vittorias Alternate Wedding.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Viarmo",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Bards College, The Bards College"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0534F3",
+     "prompt": "What do you do around here?",
+     "reply": [
+      "I'm a bard, from the Bards College here in Solitude. Wanderers like you should think about applying."
+     ],
+     "conditions": "GetInFaction JobBardFaction == 1; GetQuestRunning Bound Until Death == 0; GetQuestRunning A Healing Wedding == 0; MS05Start stage < 10; the speaker isn't Viarmo; the speaker isn't Talsgar the Wanderer; the speaker is Ataf or the speaker is Jorn or the speaker is Inge Six Fingers or the speaker is Pantea Ateia or the speaker is Illdi",
+     "source": "TIF__000534F3.Fragment_0 on INFO Skyrim.esm:0534F3 (Vittorias Alternate Wedding.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Sven",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Sven and Hilde's House, Sven's House"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0BB964",
+     "prompt": "Where did you learn to play so well?",
+     "reply": [
+      "At the Bards College in Solitude. They train bards and skalds like myself.",
+      "If you go there, talk to Viarmo. He's the headmaster."
+     ],
+     "conditions": "the speaker isn't Talsgar the Wanderer; GetInFaction BardSingerFaction == 1; the speaker is Sven; MS05Start stage < 10",
+     "source": "TIF__000BB964.Fragment_0 on INFO Skyrim.esm:0BB964 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Ogmund",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Ogmund's House"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:084D06",
+     "prompt": "The Bards College? What's that?",
+     "reply": [
+      "It's a school that teaches music, poetry, that sort of thing. Most bards in Skyrim have been to the college at some point.",
+      "If you're thinking of applying, talk to Viarmo in Solitude."
+     ],
+     "conditions": "MS05Start stage 10 not done; DialogueMarkarth stage 5 done; the speaker is Ogmund",
+     "source": "TIF__00084D06.Fragment_0 on INFO Skyrim.esm:084D06 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Karita",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Windpeak Inn"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:090DEB",
+     "prompt": "Where'd you learn to play?",
+     "reply": [
+      "My mother taught me. She was a bard, from the college in Solitude.",
+      "I hear they accept most people who apply, if you're ever interested."
+     ],
+     "conditions": "the speaker is Karita",
+     "source": "TIF__00090DEB.Fragment_0 on INFO Skyrim.esm:090DEB (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Mikael",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Bannered Mare"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:0CE6EF",
+     "prompt": "Where'd you learn to play?",
+     "reply": [
+      "There's a whole college up in Solitude where they teach the arts. Song. Lute-playing. Poetry.",
+      "I studied there myself. Had to leave over a misunderstanding with a headmistress. Well, more a misunderstanding with her husband."
+     ],
+     "conditions": "the speaker is Mikael",
+     "source": "TIF__000CE6EF.Fragment_0 on INFO Skyrim.esm:0CE6EF (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:042868 DNAM (Skyrim.esm)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 0,
+   "firstObjective": {
+    "text": "Investigate the Bards College",
+    "index": 10,
+    "source": "Skyrim.esm:042868 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Viarmo",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Viarmo",
+       "kind": "unique actor",
+       "where": [
+        "Bards College, The Bards College"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016A0C"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Bards College, The Bards College",
+      "ways": 4,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
    "id": "Skyrim.esm:053511",
    "edid": "MS05",
    "name": "Tending the Flames",
@@ -1720,29 +1879,28 @@
    ]
   }
  ],
- "otherStarts": "To get into The Bards College: talk to King Olaf's Verse in Dead Men's Respite: Tending the Flames is running from the start (Find King Olaf's Verse); or ask Viarmo in Bards College, The Bards College \"And that's where I come in?\" (GetItemCount King Olaf's Verse == 0; Tending the Flames stage < 75; the speaker is Viarmo), which starts Tending the Flames; or ask Viarmo in Bards College, The Bards College \"\" (fn249 == 1; Tending the Flames stage <= 10; the speaker is Viarmo), which starts Tending the Flames.",
+ "otherStarts": "To get into The Bards College: talk to Viarmo in Bards College, The Bards College: Investigate the Bards College is running from the start (Investigate the Bards College); or talk to Rjorn's Drum: Rjorn's Drum is running from the start (Find Rjorn's Drum); or talk to Pantea's Flute: Pantea's Flute is running from the start (Find Pantea's Flute); or talk to Finn's Lute: Finn's Lute is running from the start (Find Finn's Lute); or ask Karita in Windpeak Inn \"What do you do around here?\" (GetQuestRunning Bound Until Death == 0; GetQuestRunning A Healing Wedding == 0; MS05Start stage < 10; the speaker isn't Karita; the speaker isn't Ogmund; the speaker isn't Viarmo; the speaker isn't Sven; the speaker isn't Giraud Gemane; the speaker isn't Ataf; the speaker isn't Aia Arria; the speaker isn't Jorn; the speaker isn't Talsgar the Wanderer; the speaker isn't Inge Six Fingers; the speaker isn't Pantea Ateia; the speaker isn't Illdi; GetInFaction JobBardFaction == 1), which starts MS05Start; or ask Viarmo in Bards College, The Bards College \"What do you do around here?\" (GetInFaction JobBardFaction == 1; GetQuestRunning Bound Until Death == 0; GetQuestRunning A Healing Wedding == 0; MS05Start stage < 10; the speaker isn't Viarmo; the speaker isn't Talsgar the Wanderer; the speaker is Ataf or the speaker is Jorn or the speaker is Inge Six Fingers or the speaker is Pantea Ateia or the speaker is Illdi), which starts MS05Start; or ask Sven in Sven and Hilde's House, Sven's House \"Where did you learn to play so well?\" (the speaker isn't Talsgar the Wanderer; GetInFaction BardSingerFaction == 1; the speaker is Sven; MS05Start stage < 10), which starts MS05Start; or ask Ogmund in Ogmund's House \"The Bards College? What's that?\" (MS05Start stage 10 not done; DialogueMarkarth stage 5 done; the speaker is Ogmund), which starts MS05Start; or ask Karita in Windpeak Inn \"Where'd you learn to play?\" (the speaker is Karita), which starts MS05Start; or ask Mikael in The Bannered Mare \"Where'd you learn to play?\" (the speaker is Mikael), which starts MS05Start.",
  "routes": [
   {
-   "route": "dialogue INFO Skyrim.esm:06035D",
+   "route": "dialogue INFO Skyrim.esm:0534F2",
    "kind": "dialogue",
-   "speaker": "Viarmo",
+   "speaker": "Karita",
    "speakerNamed": "GetIsID",
-   "race": "Altmer",
+   "race": "Nord",
    "placed": [
-    "Bards College, The Bards College"
+    "Windpeak Inn"
    ],
-   "prompt": "And that's where I come in?",
+   "prompt": "What do you do around here?",
    "reply": [
-    "Yes. According to Giraud, our histories keeper, the portion of the Edda dealing with King Olaf might still exist in Dead Man's Respite.",
-    "I need you to retrieve the poem."
+    "I'm a bard, trained at the Bards College in Solitude. Wanderers like you should think about applying."
    ],
-   "conditions": "GetItemCount King Olaf's Verse == 0; Tending the Flames stage < 75; the speaker is Viarmo",
-   "does": "SetStage 75 on MS05 (Tending the Flames)",
-   "source": "TIF__0006035D.Fragment_0 on INFO Skyrim.esm:06035D (Skyrim.esm); topic MS05ViarmoApplicationTopic2",
-   "sentence": "Talk to Viarmo (Altmer) in Bards College, The Bards College and choose \"And that's where I come in?\", when GetItemCount King Olaf's Verse == 0; Tending the Flames stage < 75; the speaker is Viarmo: SetStage 75 on MS05 (Tending the Flames)."
+   "conditions": "GetQuestRunning Bound Until Death == 0; GetQuestRunning A Healing Wedding == 0; MS05Start stage < 10; the speaker isn't Karita; the speaker isn't Ogmund; the speaker isn't Viarmo; the speaker isn't Sven; the speaker isn't Giraud Gemane; the speaker isn't Ataf; the speaker isn't Aia Arria; the speaker isn't Jorn; the speaker isn't Talsgar the Wanderer; the speaker isn't Inge Six Fingers; the speaker isn't Pantea Ateia; the speaker isn't Illdi; GetInFaction JobBardFaction == 1",
+   "does": "SetStage 10 on MS05Start",
+   "source": "TIF__000534F2.Fragment_0 on INFO Skyrim.esm:0534F2 (Vittorias Alternate Wedding.esp); topic MS05GenericJoinTopic",
+   "sentence": "Talk to Karita (Nord) in Windpeak Inn and choose \"What do you do around here?\", when GetQuestRunning Bound Until Death == 0; GetQuestRunning A Healing Wedding == 0; MS05Start stage < 10; the speaker isn't Karita; the speaker isn't Ogmund; the speaker isn't Viarmo; the speaker isn't Sven; the speaker isn't Giraud Gemane; the speaker isn't Ataf; the speaker isn't Aia Arria; the speaker isn't Jorn; the speaker isn't Talsgar the Wanderer; the speaker isn't Inge Six Fingers; the speaker isn't Pantea Ateia; the speaker isn't Illdi; GetInFaction JobBardFaction == 1: SetStage 10 on MS05Start."
   },
   {
-   "route": "dialogue INFO Skyrim.esm:0534EB",
+   "route": "dialogue INFO Skyrim.esm:0534F3",
    "kind": "dialogue",
    "speaker": "Viarmo",
    "speakerNamed": "GetIsID",
@@ -1750,14 +1908,90 @@
    "placed": [
     "Bards College, The Bards College"
    ],
-   "prompt": "",
+   "prompt": "What do you do around here?",
    "reply": [
-    "Welcome to the Bards College. I am the headmaster here. How may I help you?"
+    "I'm a bard, from the Bards College here in Solitude. Wanderers like you should think about applying."
    ],
-   "conditions": "fn249 == 1; Tending the Flames stage <= 10; the speaker is Viarmo",
-   "does": "SetStage 10 on MS05 (Tending the Flames)",
-   "source": "TIF__000534EB.Fragment_1 on INFO Skyrim.esm:0534EB (Skyrim.esm); topic ",
-   "sentence": "Talk to Viarmo (Altmer) in Bards College, The Bards College, when fn249 == 1; Tending the Flames stage <= 10; the speaker is Viarmo: SetStage 10 on MS05 (Tending the Flames)."
+   "conditions": "GetInFaction JobBardFaction == 1; GetQuestRunning Bound Until Death == 0; GetQuestRunning A Healing Wedding == 0; MS05Start stage < 10; the speaker isn't Viarmo; the speaker isn't Talsgar the Wanderer; the speaker is Ataf or the speaker is Jorn or the speaker is Inge Six Fingers or the speaker is Pantea Ateia or the speaker is Illdi",
+   "does": "SetStage 10 on MS05Start",
+   "source": "TIF__000534F3.Fragment_0 on INFO Skyrim.esm:0534F3 (Vittorias Alternate Wedding.esp); topic MS05GenericJoinTopic",
+   "sentence": "Talk to Viarmo (Altmer) in Bards College, The Bards College and choose \"What do you do around here?\", when GetInFaction JobBardFaction == 1; GetQuestRunning Bound Until Death == 0; GetQuestRunning A Healing Wedding == 0; MS05Start stage < 10; the speaker isn't Viarmo; the speaker isn't Talsgar the Wanderer; the speaker is Ataf or the speaker is Jorn or the speaker is Inge Six Fingers or the speaker is Pantea Ateia or the speaker is Illdi: SetStage 10 on MS05Start."
+  },
+  {
+   "route": "dialogue INFO Skyrim.esm:0BB964",
+   "kind": "dialogue",
+   "speaker": "Sven",
+   "speakerNamed": "GetIsID",
+   "race": "Nord",
+   "placed": [
+    "Sven and Hilde's House, Sven's House"
+   ],
+   "prompt": "Where did you learn to play so well?",
+   "reply": [
+    "At the Bards College in Solitude. They train bards and skalds like myself.",
+    "If you go there, talk to Viarmo. He's the headmaster."
+   ],
+   "conditions": "the speaker isn't Talsgar the Wanderer; GetInFaction BardSingerFaction == 1; the speaker is Sven; MS05Start stage < 10",
+   "does": "SetStage 10 on MS05Start",
+   "source": "TIF__000BB964.Fragment_0 on INFO Skyrim.esm:0BB964 (Unofficial Skyrim Special Edition Patch.esp); topic MS05GenericJoinTopic",
+   "sentence": "Talk to Sven (Nord) in Sven and Hilde's House, Sven's House and choose \"Where did you learn to play so well?\", when the speaker isn't Talsgar the Wanderer; GetInFaction BardSingerFaction == 1; the speaker is Sven; MS05Start stage < 10: SetStage 10 on MS05Start."
+  },
+  {
+   "route": "dialogue INFO Skyrim.esm:084D06",
+   "kind": "dialogue",
+   "speaker": "Ogmund",
+   "speakerNamed": "GetIsID",
+   "race": "Nord",
+   "placed": [
+    "Ogmund's House"
+   ],
+   "prompt": "The Bards College? What's that?",
+   "reply": [
+    "It's a school that teaches music, poetry, that sort of thing. Most bards in Skyrim have been to the college at some point.",
+    "If you're thinking of applying, talk to Viarmo in Solitude."
+   ],
+   "conditions": "MS05Start stage 10 not done; DialogueMarkarth stage 5 done; the speaker is Ogmund",
+   "does": "SetStage 10 on MS05Start",
+   "source": "TIF__00084D06.Fragment_0 on INFO Skyrim.esm:084D06 (Unofficial Skyrim Special Edition Patch.esp); topic DialogueMarkarthOgmundBardsCollegeTopic",
+   "sentence": "Talk to Ogmund (Nord) in Ogmund's House and choose \"The Bards College? What's that?\", when MS05Start stage 10 not done; DialogueMarkarth stage 5 done; the speaker is Ogmund: SetStage 10 on MS05Start."
+  },
+  {
+   "route": "dialogue INFO Skyrim.esm:090DEB",
+   "kind": "dialogue",
+   "speaker": "Karita",
+   "speakerNamed": "GetIsID",
+   "race": "Nord",
+   "placed": [
+    "Windpeak Inn"
+   ],
+   "prompt": "Where'd you learn to play?",
+   "reply": [
+    "My mother taught me. She was a bard, from the college in Solitude.",
+    "I hear they accept most people who apply, if you're ever interested."
+   ],
+   "conditions": "the speaker is Karita",
+   "does": "SetStage 10 on MS05Start",
+   "source": "TIF__00090DEB.Fragment_0 on INFO Skyrim.esm:090DEB (Unofficial Skyrim Special Edition Patch.esp); topic DialogueDawnstarKaritaMotherTopic",
+   "sentence": "Talk to Karita (Nord) in Windpeak Inn and choose \"Where'd you learn to play?\", when the speaker is Karita: SetStage 10 on MS05Start."
+  },
+  {
+   "route": "dialogue INFO Skyrim.esm:0CE6EF",
+   "kind": "dialogue",
+   "speaker": "Mikael",
+   "speakerNamed": "GetIsID",
+   "race": "Nord",
+   "placed": [
+    "The Bannered Mare"
+   ],
+   "prompt": "Where'd you learn to play?",
+   "reply": [
+    "There's a whole college up in Solitude where they teach the arts. Song. Lute-playing. Poetry.",
+    "I studied there myself. Had to leave over a misunderstanding with a headmistress. Well, more a misunderstanding with her husband."
+   ],
+   "conditions": "the speaker is Mikael",
+   "does": "SetStage 10 on MS05Start",
+   "source": "TIF__000CE6EF.Fragment_0 on INFO Skyrim.esm:0CE6EF (Unofficial Skyrim Special Edition Patch.esp); topic DialogueWhiterunMikaelBardTopicTopic",
+   "sentence": "Talk to Mikael (Nord) in The Bannered Mare and choose \"Where'd you learn to play?\", when the speaker is Mikael: SetStage 10 on MS05Start."
   }
  ],
  "loaders": {

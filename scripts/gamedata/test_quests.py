@@ -117,8 +117,19 @@ class QuestTest(unittest.TestCase):
         self.q = self.quests[0]
 
     def test_player_facing_filter(self):
-        self.assertEqual(self.counts, {"read": 4, "named": 2, "with text": 2, "kept": 1})
+        self.assertEqual(self.counts, {"read": 4, "named": 2, "with text": 2, "lead-ins": 0, "kept": 1})
         self.assertEqual([q["edid"] for q in self.quests], ["FXDA01"])
+
+    def test_a_named_quests_lead_in(self):
+        """WO-121a: DA14Start has no name; it's kept as DA14's lead-in, named by its first objective."""
+        rec = lambda edid, name, objs, fid: {"plugin": "Fixture.esp", "key": ["Fixture.esp", fid], "flags": 0, "edid": edid, "name": name, "type": None,  # noqa: E731
+                                            "stages": [], "objectives": [{"index": 10, "text": t} for t in objs], "aliases": {}}
+        winners = [rec("DA14", "A Night To Remember", ["Find Sam Guevenne"], 0x800), rec("DA14Start", "", ["Participate in a drinking contest with Sam Guevenne"], 0x801),
+                   rec("FXOtherStart", "", ["Nothing it leads to"], 0x802)]
+        kept, counts = quests.index_quests(winners, {})
+        lead = next(q for q in kept if q["edid"] == "DA14Start")
+        self.assertEqual((lead["name"], lead["leadsTo"]), ("Participate in a drinking contest with Sam Guevenne", "Fixture.esp:000800"))
+        self.assertEqual((counts["lead-ins"], counts["kept"]), (1, 2))
 
     def test_name_and_type_from_the_records(self):
         self.assertEqual((self.q["id"], self.q["name"], self.q["type"], self.q["plugin"]), ("Fixture.esp:000800", "The Fixture Prince", "Daedric", PLUGIN))

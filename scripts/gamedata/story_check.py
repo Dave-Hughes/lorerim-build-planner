@@ -36,7 +36,7 @@ stage 0) is started, to the player, by the first talk of its own that can be sai
 the first objective's stage, as far as its next step (Faralda's "Okay, I can do that." sets 20). A talk still offered
 past the next step (Nirya's, until stage 30) is a catch-up line; those talks count only when no other talk opens the
 quest (Dinya Balu opens The Book of Love). The openers come first, then those talks, then catch-ups.
-A helper's start reads its fragment's guards in words ("It starts by itself at night in
+A voice type only one NPC has names that NPC as the speaker (Frissa Black-Briar's evgSirenBlackBriar). A helper's start reads its fragment's guards in words ("It starts by itself at night in
 Windhelm, after you've come in four times."), and a speaker the records fill at run time from a place and a role is
 named that way ("a Windhelm guard").
 
@@ -129,6 +129,9 @@ def cond_text(c, names, gvals=None, alias_names=None):
     if fn == "GetIsID" and isinstance(c.get("param"), str):
         who = names.get(c["param"], {}).get("name") or c["param"]
         return f"the speaker is {who}" if yes else f"the speaker isn't {who}"
+    if fn == "GetIsVoiceType" and isinstance(c.get("param"), str):
+        voice = names.get(c["param"], {}).get("edid") or c["param"]
+        return f"the speaker has the voice {voice}" if yes else f"the speaker hasn't the voice {voice}"
     if fn == "GetIsAliasRef":
         al = alias_names.get(c.get("param") or 0, str(c.get("param") or 0))
         return f"the speaker is the one in alias {al}" if yes else f"the speaker isn't the one in alias {al}"
@@ -415,6 +418,25 @@ def read_scenes(buf, name):
         sid = form_id(resolve(fid, masters, name))
         for topic, alias in said:
             out.setdefault(topic, []).append({"scene": edid or sid, "id": sid, "quest": quest, "alias": alias})
+    return out
+
+
+def read_voices(buf, name, voices):
+    """{voice type: {npc}} for the voice types in `voices` (NPC_ VTCK), from one plugin."""
+    masters = header(buf)
+    out = {}
+    if b"NPC_" not in buf or not voices:
+        return out
+    for o in iter_group(buf, "NPC_"):
+        t, flags, fid, d = rec_data(buf, o)
+        if t != "NPC_":
+            continue
+        for s, v in subrecs(d):
+            if s == "VTCK" and len(v) >= 4:
+                vt = form_id(resolve(struct.unpack_from("<I", v)[0], masters, name))
+                if vt in voices:
+                    out.setdefault(vt, set()).add(form_id(resolve(fid, masters, name)))
+                break
     return out
 
 
@@ -1026,7 +1048,7 @@ def main():
 
     # Pass 2: the dialogue lines and the scenes and lines that name their speakers, then races and references
     # (doors, people, targets).
-    dialogue, scenes, links, placed, package_topics, alias_packages = {}, {}, {}, {}, {}, {}
+    dialogue, scenes, links, placed, package_topics, alias_packages, voiced = {}, {}, {}, {}, {}, {}, {}
 
     words_of = {}  # a dialogue line's speaker the records fill at run time, in words: "a Windhelm guard"
 
@@ -1058,6 +1080,9 @@ def main():
                                                          and c["cmp"] == "==" and c.get("value") == 1), None)
         if spk:
             return spk, "GetIsID", None, None
+        voice = next((c["param"] for c in conds if c["fn"] == "GetIsVoiceType" and isinstance(c.get("param"), str) and c["cmp"] == "==" and c.get("value") == 1), None)
+        if voice and len(voiced.get(voice, ())) == 1:  # a voice only one NPC has names them (WO-121a: Frissa Black-Briar)
+            return next(iter(voiced[voice])), f"the only NPC with voice type {names.get(voice, {}).get('edid') or voice}", None, None
         topic = d.get("topic") or {}
         tq = topic.get("quest") or ctx_quest
         al = next((c.get("param") or 0 for c in conds if c["fn"] == "GetIsAliasRef"), None)
@@ -1091,12 +1116,15 @@ def main():
     # Shared lines: an INFO can take its response from another (DNAM).
     shared = {d["shared"] for d in dialogue.values() if d.get("shared") and not d["lines"]}
     link_topics = {d["topic"]["id"] for d in dialogue.values() if d.get("topic")}
+    voices = {c["param"] for d in dialogue.values() for c in d.get("conditions", []) if c["fn"] == "GetIsVoiceType" and isinstance(c.get("param"), str)}
     for n, p, loc in plugins:
         buf = open(p, "rb").read()
         try:
             if shared:
                 dialogue.update(read_dialogue(buf, n, shared, all_strings(p, n, loc, ROOT)))
             scenes.update(read_scenes(buf, n))  # the last plugin to carry a scene wins
+            for vt, npcs_ in read_voices(buf, n, voices).items():
+                voiced.setdefault(vt, set()).update(npcs_)
             pt, ap = read_packages(buf, n)
             package_topics.update(pt)
             for pk, rows in ap.items():

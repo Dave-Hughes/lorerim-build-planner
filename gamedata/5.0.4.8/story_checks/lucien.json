@@ -283,7 +283,7 @@
     }
    ],
    "needs": {
-    "conditions": "JRLucienFollower stage 15 done; fn426 == 1 or fn359 == 1",
+    "conditions": "JRLucienFollower stage 15 done; the speaker has the voice JRLucienVoice or fn359 == 1",
     "doors": [],
     "ways": [
      {

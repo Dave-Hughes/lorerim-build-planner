@@ -28,16 +28,18 @@
     },
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Frissa Black-Briar",
+     "speakerNamed": "the only NPC with voice type evgSirenBlackBriar",
+     "speakerPlaced": [
+      "Elgrim's Elixirs"
+     ],
      "call": "SetStage 1",
      "info": "evgSIRENROOT.esm:0A25DD",
      "prompt": null,
      "reply": [
       "Regardless, here. As I said, it's diving work. Do take a look. Feel free to ask questions."
      ],
-     "conditions": "fn426 == 1",
+     "conditions": "the speaker has the voice evgSirenBlackBriar",
      "source": "evgSRblackbriarstart.Fragment_0 on INFO evgSIRENROOT.esm:0A25DD (evgSIRENROOT.esm)",
      "verdict": "script"
     },
@@ -1214,7 +1216,7 @@
    ]
   }
  ],
- "otherStarts": "To get into Deluge of Deceit: talk to Frissa Black-Briar in Elgrim's Elixirs: Deluge of Deceit is running from the start (Accept the job from the Black-Briars); or ask Wujeeta in Haelga's Bunkhouse \"Find anything interesting recently?\" (Deluge of Deceit stage == 20; the speaker is Wujeeta), which starts Deluge of Deceit.",
+ "otherStarts": "To get into Deluge of Deceit: talk to Frissa Black-Briar in Elgrim's Elixirs: Deluge of Deceit is running from the start (Accept the job from the Black-Briars); or ask Wujeeta in Haelga's Bunkhouse \"Find anything interesting recently?\" (Deluge of Deceit stage == 20; the speaker is Wujeeta), which starts Deluge of Deceit; or ask Frissa Black-Briar in Elgrim's Elixirs \"\" (the speaker has the voice evgSirenBlackBriar), which starts Deluge of Deceit.",
  "routes": [
   {
    "route": "dialogue INFO evgSIRENROOT.esm:026BC9",
@@ -1237,19 +1239,20 @@
   {
    "route": "dialogue INFO evgSIRENROOT.esm:0A25DD",
    "kind": "dialogue",
-   "speaker": null,
-   "speakerNamed": "GetIsID",
-   "race": null,
-   "placed": [],
+   "speaker": "Frissa Black-Briar",
+   "speakerNamed": "the only NPC with voice type evgSirenBlackBriar",
+   "race": "Nord",
+   "placed": [
+    "Elgrim's Elixirs"
+   ],
    "prompt": "",
    "reply": [
     "Regardless, here. As I said, it's diving work. Do take a look. Feel free to ask questions."
    ],
-   "conditions": "fn426 == 1",
+   "conditions": "the speaker has the voice evgSirenBlackBriar",
    "does": "SetStage 1 on EVGSirenrootQuest (Deluge of Deceit)",
    "source": "evgSRblackbriarstart.Fragment_0 on INFO evgSIRENROOT.esm:0A25DD (evgSIRENROOT.esm); topic EVGSirenrootQuestBB3",
-   "sentence": "Talk to the speaker the line's conditions name, when fn426 == 1: SetStage 1 on EVGSirenrootQuest (Deluge of Deceit).",
-   "stops": "the speaker isn't named by an NPC: GetIsID"
+   "sentence": "Talk to Frissa Black-Briar (Nord) in Elgrim's Elixirs, when the speaker has the voice evgSirenBlackBriar: SetStage 1 on EVGSirenrootQuest (Deluge of Deceit)."
   }
  ],
  "loaders": {

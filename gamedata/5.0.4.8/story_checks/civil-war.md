@@ -11,9 +11,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Alvor, placed in Alvor and Sigrid's House, "What do you think about the war?": SetStage 1 (when: the speaker is Alvor). Source: TIF__00056B24.Fragment_1 on INFO Skyrim.esm:056B24 (Skyrim.esm). **script**
 - Dialogue with Alvor (named by alias Alvor of MQ102A (Season Unending) (unique)), placed in Alvor and Sigrid's House, "You support the Empire, then?": SetStage 1 (when: the speaker is the one in alias Alvor). Source: TIF__000D39AF.Fragment_0 on INFO Skyrim.esm:0D39AF (Skyrim.esm). **script**
 - Dialogue with Hadvar, placed in Helgen: SetStage 1 (when: fn359 == 0; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker isn't Hadvar). Source: TIF__000D3C58.Fragment_0 on INFO Skyrim.esm:0D3C58 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name, "...": SetStage 2 (when: fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; fn426 == 0; fn426 == 0). Source: TIF__000D3C57.Fragment_0 on INFO Skyrim.esm:0D3C57 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Dialogue with someone the line does not name, "...": SetStage 2 (when: fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; fn426 == 0; fn426 == 0). Source: TIF__000FBA68.Fragment_0 on INFO Skyrim.esm:0FBA68 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Dialogue with someone the line does not name, "How does one join the Imperial Legion?": SetStage 1 (when: Unbound completed; fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; fn426 == 0; fn426 == 0). Source: TIF__000D3C5A.Fragment_0 on INFO Skyrim.esm:0D3C5A (AlternatePerspective.esp). **script**
+- Dialogue with someone the line does not name, "...": SetStage 2 (when: fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar). Source: TIF__000D3C57.Fragment_0 on INFO Skyrim.esm:0D3C57 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with someone the line does not name, "...": SetStage 2 (when: fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar). Source: TIF__000FBA68.Fragment_0 on INFO Skyrim.esm:0FBA68 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with someone the line does not name, "How does one join the Imperial Legion?": SetStage 1 (when: Unbound completed; fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar). Source: TIF__000D3C5A.Fragment_0 on INFO Skyrim.esm:0D3C5A (AlternatePerspective.esp). **script**
 - and 6 more in the JSON
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -41,7 +41,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - WEDL14 (named "Looking to join Stormcloaks" in its record), a helper quest at stage 10 calls SetStage 2; WEDL14 is started by story manager node WERoadQuestNode (event: script event; GetEventData WERoadStart == 1; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1). Source: QF_WEDL14_000BD758.fragment_12 on Skyrim.esm:0BD758 (Skyrim.esm). **script**
 - MQ102B (named "Season Unending" in its record), a helper quest with Gerdur, Hod, Frodnar at stage 22 calls SetStage 2; MQ102B is started by MQ102 (named "Before the Storm" in its record), a helper quest with Balgruuf, Irileth, Proventus at stage 1 (SetStage 5); MQ102 (named "Before the Storm" in its record), a helper quest with Balgruuf, Irileth, Proventus at stage 2 (SetStage 1); MQ102 (named "Before the Storm" in its record), a helper quest with Balgruuf, Irileth, Proventus at stage 15 (SetStage 10); MQ101 (named "Unbound" in its record), a helper quest with Hadvar, Ralof, Alduin at stage 0 (SetStage 1). Source: QF_MQ102B_010A4C68.fragment_51 on Skyrim.esm:02610A (Skyrim.esm). **script**
-- Dialogue with someone the line does not name, placed in Windhelm; Windhelm, "Placeholder For Remarks Culled From Other Topics": SetStage 2 (when: fn426 == 0; fn426 == 1). Source: TIF__0003ED51.Fragment_0 on INFO Skyrim.esm:03ED51 (Skyrim.esm). **script**
+- Dialogue with someone the line does not name, placed in Windhelm; Windhelm, "Placeholder For Remarks Culled From Other Topics": SetStage 2 (when: the speaker hasn't the voice Skyrim.esm:0B3E4E; the speaker has the voice Skyrim.esm:0B3E4E). Source: TIF__0003ED51.Fragment_0 on INFO Skyrim.esm:03ED51 (Skyrim.esm). **script**
 - Dialogue with Gerdur, placed in Hod and Gerdur's House, "What do you think about the war?": SetStage 2 (when: the speaker is Gerdur; Season Unending stage 50 done). Source: TIF__00056AB1.Fragment_0 on INFO Skyrim.esm:056AB1 (Skyrim.esm). **script**
 - Dialogue with Gerdur, placed in Hod and Gerdur's House, "You support the Stormcloaks, then?": SetStage 2 (when: the speaker is Gerdur). Source: TIF__000DF1F3.Fragment_0 on INFO Skyrim.esm:0DF1F3 (Skyrim.esm). **script**
 - Dialogue with Galmar Stone-Fist, placed in Palace of the Kings: SetStage 7 (when: Stormcloak Introductions stage 20 not done; Stormcloak Introductions stage 10 not done; fn249 == 1; the speaker is Galmar Stone-Fist). Source: TIF__000E1B06.Fragment_0 on INFO Skyrim.esm:0E1B06 (Skyrim.esm). **script**
@@ -354,14 +354,14 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6B6.Fragment_0 on INFO Skyrim.esm:05B6B6 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6B7.Fragment_0 on INFO Skyrim.esm:05B6B7 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6B8.Fragment_0 on INFO Skyrim.esm:05B6B8 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6B9.Fragment_0 on INFO Skyrim.esm:05B6B9 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6BA.Fragment_0 on INFO Skyrim.esm:05B6BA (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6BB.Fragment_0 on INFO Skyrim.esm:05B6BB (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6BC.Fragment_0 on INFO Skyrim.esm:05B6BC (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6BD.Fragment_0 on INFO Skyrim.esm:05B6BD (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6B6.Fragment_0 on INFO Skyrim.esm:05B6B6 (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6B7.Fragment_0 on INFO Skyrim.esm:05B6B7 (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6B8.Fragment_0 on INFO Skyrim.esm:05B6B8 (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6B9.Fragment_0 on INFO Skyrim.esm:05B6B9 (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6BA.Fragment_0 on INFO Skyrim.esm:05B6BA (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6BB.Fragment_0 on INFO Skyrim.esm:05B6BB (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6BC.Fragment_0 on INFO Skyrim.esm:05B6BC (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission03 (A False Front) (from event)), "Consider it done.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005B6BD.Fragment_0 on INFO Skyrim.esm:05B6BD (Skyrim.esm). **script**
 - and 15 more in the JSON
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -396,14 +396,14 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C614.Fragment_0 on INFO Skyrim.esm:05C614 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C615.Fragment_0 on INFO Skyrim.esm:05C615 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C6D2.Fragment_0 on INFO Skyrim.esm:05C6D2 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C78F.Fragment_0 on INFO Skyrim.esm:05C78F (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C791.Fragment_0 on INFO Skyrim.esm:05C791 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C793.Fragment_0 on INFO Skyrim.esm:05C793 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C796.Fragment_0 on INFO Skyrim.esm:05C796 (Skyrim.esm). **script**
-- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C799.Fragment_0 on INFO Skyrim.esm:05C799 (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C614.Fragment_0 on INFO Skyrim.esm:05C614 (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C615.Fragment_0 on INFO Skyrim.esm:05C615 (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C6D2.Fragment_0 on INFO Skyrim.esm:05C6D2 (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C78F.Fragment_0 on INFO Skyrim.esm:05C78F (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C791.Fragment_0 on INFO Skyrim.esm:05C791 (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C793.Fragment_0 on INFO Skyrim.esm:05C793 (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C796.Fragment_0 on INFO Skyrim.esm:05C796 (Skyrim.esm). **script**
+- Dialogue with someone the line does not name (named by alias FieldCO of CWMission04 (Rescue from <Alias=AttackPoint>) (from event)), "Nothing I can't handle.": SetStage 10 (when: the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1). Source: TIF__0005C799.Fragment_0 on INFO Skyrim.esm:05C799 (Skyrim.esm). **script**
 - and 15 more in the JSON
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -511,7 +511,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Needs**
 
-- Its own conditions: fn426 == 1. **files**
+- Its own conditions: the speaker has the voice Skyrim.esm:03B4E2. **files**
 
 **Gives**: nothing on its completing stages.
 
@@ -536,7 +536,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Needs**
 
-- Its own conditions: fn426 == 1. **files**
+- Its own conditions: the speaker has the voice Skyrim.esm:03B4E2. **files**
 
 **Gives**: nothing on its completing stages.
 
@@ -824,40 +824,40 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 - Speaker: not named by an NPC. Named by: GetIsID.
 - The player's prompt: "...".
 - The reply: "If you are, then you make your way to Windhelm and talk to the man himself. If you're not, well, friend, you'd best walk away before this gets ugly.".
-- When it's offered: fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; fn426 == 0; fn426 == 0.
+- When it's offered: fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar.
 - What it does: SetStage 2 on CW00A (Imperial Introductions). Source: TIF__000D3C57.Fragment_0 on INFO Skyrim.esm:0D3C57 (Unofficial Skyrim Special Edition Patch.esp); topic CW00JoinTopicContinue. **script**
 - **unread**: the trail stops here: the speaker isn't named by an NPC: GetIsID.
-- In one sentence: Talk to the speaker the line's conditions name and choose "...", when fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; fn426 == 0; fn426 == 0: SetStage 2 on CW00A (Imperial Introductions).
+- In one sentence: Talk to the speaker the line's conditions name and choose "...", when fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 2 on CW00A (Imperial Introductions).
 
 ### dialogue INFO Skyrim.esm:0FBA68
 
 - Speaker: not named by an NPC. Named by: GetIsID.
 - The player's prompt: "...".
 - The reply: "If you are, then you talk to the man himself. If you're not, well, friend, you'd best walk away before this gets ugly.".
-- When it's offered: fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; fn426 == 0; fn426 == 0.
+- When it's offered: fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar.
 - What it does: SetStage 2 on CW00A (Imperial Introductions). Source: TIF__000FBA68.Fragment_0 on INFO Skyrim.esm:0FBA68 (Unofficial Skyrim Special Edition Patch.esp); topic CW00JoinTopicContinue. **script**
 - **unread**: the trail stops here: the speaker isn't named by an NPC: GetIsID.
-- In one sentence: Talk to the speaker the line's conditions name and choose "...", when fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; fn426 == 0; fn426 == 0: SetStage 2 on CW00A (Imperial Introductions).
+- In one sentence: Talk to the speaker the line's conditions name and choose "...", when fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 2 on CW00A (Imperial Introductions).
 
 ### dialogue INFO Skyrim.esm:0D3C5A
 
 - Speaker: not named by an NPC. Named by: GetIsID.
 - The player's prompt: "How does one join the Imperial Legion?".
 - The reply: "Think you've got the mettle, eh?" / "Honestly, the Legion can use all the able bodies it can muster. We have our hands full. A dead king, a rebellion, and now dragons? Skyrim's a mess." / "If you're serious, make your way to Solitude. Our headquarters is Castle Dour. You'll find General Tullius there, commanding our forces in Skyrim." / "But talk to Legate Rikke. She handles the local recruiting.".
-- When it's offered: Unbound completed; fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; fn426 == 0; fn426 == 0.
+- When it's offered: Unbound completed; fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar.
 - What it does: SetStage 1 on CW00A (Imperial Introductions). Source: TIF__000D3C5A.Fragment_0 on INFO Skyrim.esm:0D3C5A (AlternatePerspective.esp); topic CW00JoinTopic. **script**
 - **unread**: the trail stops here: the speaker isn't named by an NPC: GetIsID.
-- In one sentence: Talk to the speaker the line's conditions name and choose "How does one join the Imperial Legion?", when Unbound completed; fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; fn426 == 0; fn426 == 0: SetStage 1 on CW00A (Imperial Introductions).
+- In one sentence: Talk to the speaker the line's conditions name and choose "How does one join the Imperial Legion?", when Unbound completed; fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 1 on CW00A (Imperial Introductions).
 
 ### dialogue INFO Skyrim.esm:0FBA67
 
 - Speaker: not named by an NPC. Named by: GetIsID.
 - The player's prompt: "How does one join the Imperial Legion?".
 - The reply: "Think you've got the mettle, eh?" / "Honestly, the Legion can use all the able bodies it can muster. We have our hands full. A dead king, a rebellion, and now dragons? Skyrim's a mess." / "If you're serious, you're in the right place. Our headquarters is in Castle Dour. Here you'll find General Tullius, commanding our forces in Skyrim." / "But talk to Legate Rikke. She handles the local recruiting.".
-- When it's offered: Unbound completed; fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; fn426 == 0; fn426 == 0.
+- When it's offered: Unbound completed; fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar.
 - What it does: SetStage 1 on CW00A (Imperial Introductions). Source: TIF__000FBA67.Fragment_0 on INFO Skyrim.esm:0FBA67 (AlternatePerspective.esp); topic CW00JoinTopic. **script**
 - **unread**: the trail stops here: the speaker isn't named by an NPC: GetIsID.
-- In one sentence: Talk to the speaker the line's conditions name and choose "How does one join the Imperial Legion?", when Unbound completed; fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; fn426 == 0; fn426 == 0: SetStage 1 on CW00A (Imperial Introductions).
+- In one sentence: Talk to the speaker the line's conditions name and choose "How does one join the Imperial Legion?", when Unbound completed; fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 1 on CW00A (Imperial Introductions).
 
 ### dialogue INFO Skyrim.esm:0D514D
 

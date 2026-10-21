@@ -45,11 +45,11 @@ CELL_SIZE = 4096
 CMP = {0: "==", 1: "!=", 2: ">", 3: ">=", 4: "<", 5: "<="}
 FUNCTIONS = {14: "GetActorValue", 46: "GetDead", 47: "GetItemCount", 77: "GetRandomPercent", 56: "GetQuestRunning", 58: "GetStage", 59: "GetStageDone", 69: "GetIsRace",
              71: "GetInFaction", 72: "GetIsID", 74: "GetGlobalValue", 80: "GetLevel", 448: "HasPerk", 543: "GetQuestCompleted",
-             566: "GetIsAliasRef", 576: "GetEventData"}
-FORM_PARAM = {47, 56, 58, 59, 69, 71, 72, 74, 448, 543}
+             426: "GetIsVoiceType", 566: "GetIsAliasRef", 576: "GetEventData"}
+FORM_PARAM = {47, 56, 58, 59, 69, 71, 72, 74, 426, 448, 543}
 LOCK_LEVELS = {1: "Novice", 25: "Apprentice", 50: "Adept", 75: "Expert", 100: "Master", 255: "needs a key"}
 BASE = {"skyrim.esm", "update.esm", "dawnguard.esm", "hearthfires.esm", "dragonborn.esm"}
-NAMED = ("NPC_", "LCTN", "KEYM", "QUST", "GLOB", "DOOR", "CONT", "WRLD", "KYWD", "LCRT")
+NAMED = ("NPC_", "LCTN", "KEYM", "QUST", "GLOB", "DOOR", "CONT", "WRLD", "KYWD", "LCRT", "VTYP")
 
 
 def _text(v):

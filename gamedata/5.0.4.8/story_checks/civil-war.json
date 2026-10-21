@@ -150,7 +150,7 @@
      "reply": [
       "If you are, then you make your way to Windhelm and talk to the man himself. If you're not, well, friend, you'd best walk away before this gets ugly."
      ],
-     "conditions": "fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; fn426 == 0; fn426 == 0",
+     "conditions": "fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
      "source": "TIF__000D3C57.Fragment_0 on INFO Skyrim.esm:0D3C57 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -165,7 +165,7 @@
      "reply": [
       "If you are, then you talk to the man himself. If you're not, well, friend, you'd best walk away before this gets ugly."
      ],
-     "conditions": "fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; fn426 == 0; fn426 == 0",
+     "conditions": "fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
      "source": "TIF__000FBA68.Fragment_0 on INFO Skyrim.esm:0FBA68 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -183,7 +183,7 @@
       "If you're serious, make your way to Solitude. Our headquarters is Castle Dour. You'll find General Tullius there, commanding our forces in Skyrim.",
       "But talk to Legate Rikke. She handles the local recruiting."
      ],
-     "conditions": "Unbound completed; fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; fn426 == 0; fn426 == 0",
+     "conditions": "Unbound completed; fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
      "source": "TIF__000D3C5A.Fragment_0 on INFO Skyrim.esm:0D3C5A (AlternatePerspective.esp)",
      "verdict": "script"
     },
@@ -201,7 +201,7 @@
       "If you're serious, you're in the right place. Our headquarters is in Castle Dour. Here you'll find General Tullius, commanding our forces in Skyrim.",
       "But talk to Legate Rikke. She handles the local recruiting."
      ],
-     "conditions": "Unbound completed; fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; fn426 == 0; fn426 == 0",
+     "conditions": "Unbound completed; fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
      "source": "TIF__000FBA67.Fragment_0 on INFO Skyrim.esm:0FBA67 (AlternatePerspective.esp)",
      "verdict": "script"
     },
@@ -451,7 +451,7 @@
      "reply": [
       "If you're here to join the Stormcloaks, the palace is inside. "
      ],
-     "conditions": "fn426 == 0; fn426 == 1",
+     "conditions": "the speaker hasn't the voice Skyrim.esm:0B3E4E; the speaker has the voice Skyrim.esm:0B3E4E",
      "source": "TIF__0003ED51.Fragment_0 on INFO Skyrim.esm:03ED51 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1751,7 +1751,7 @@
      "reply": [
       "I knew I could count on you, soldier."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__000A1F94.Fragment_0 on INFO Skyrim.esm:0A1F94 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1766,7 +1766,7 @@
      "reply": [
       "Good luck out there."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__000A1F95.Fragment_0 on INFO Skyrim.esm:0A1F95 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1781,7 +1781,7 @@
      "reply": [
       "We do this for the good of Skyrim and her people. Never forget that."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__000A1F96.Fragment_0 on INFO Skyrim.esm:0A1F96 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1796,7 +1796,7 @@
      "reply": [
       "Make me proud."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__000A1F97.Fragment_0 on INFO Skyrim.esm:0A1F97 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1811,7 +1811,7 @@
      "reply": [
       "May the gods keep you."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__000A1F98.Fragment_0 on INFO Skyrim.esm:0A1F98 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1826,7 +1826,7 @@
      "reply": [
       "Stay sharp out there."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__000A1F99.Fragment_0 on INFO Skyrim.esm:0A1F99 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1841,7 +1841,7 @@
      "reply": [
       "Good. Make it happen, soldier."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__000A1F9A.Fragment_0 on INFO Skyrim.esm:0A1F9A (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1856,7 +1856,7 @@
      "reply": [
       "Show the rebels the futility of their cause."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__000A1F9B.Fragment_0 on INFO Skyrim.esm:0A1F9B (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1871,7 +1871,7 @@
      "reply": [
       "As long as the rebels are willing to die fighting the Empire, we must be willing to oblige them."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__000A1F9C.Fragment_0 on INFO Skyrim.esm:0A1F9C (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1886,7 +1886,7 @@
      "reply": [
       "Peace may yet return to Skyrim. But until then, we fight."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__000A1F9D.Fragment_0 on INFO Skyrim.esm:0A1F9D (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2165,7 +2165,7 @@
      "reply": [
       "I knew I could count on you, soldier."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005B6B6.Fragment_0 on INFO Skyrim.esm:05B6B6 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2180,7 +2180,7 @@
      "reply": [
       "Good luck out there."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005B6B7.Fragment_0 on INFO Skyrim.esm:05B6B7 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2195,7 +2195,7 @@
      "reply": [
       "We do this for the good of Skyrim and her people. Never forget that."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005B6B8.Fragment_0 on INFO Skyrim.esm:05B6B8 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2210,7 +2210,7 @@
      "reply": [
       "Make me proud."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005B6B9.Fragment_0 on INFO Skyrim.esm:05B6B9 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2225,7 +2225,7 @@
      "reply": [
       "May the gods keep you."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005B6BA.Fragment_0 on INFO Skyrim.esm:05B6BA (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2240,7 +2240,7 @@
      "reply": [
       "Stay sharp out there."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005B6BB.Fragment_0 on INFO Skyrim.esm:05B6BB (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2255,7 +2255,7 @@
      "reply": [
       "Good. Make it happen, soldier."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005B6BC.Fragment_0 on INFO Skyrim.esm:05B6BC (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2270,7 +2270,7 @@
      "reply": [
       "Show the rebels the futility of their cause."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005B6BD.Fragment_0 on INFO Skyrim.esm:05B6BD (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2285,7 +2285,7 @@
      "reply": [
       "As long as the rebels are willing to die fighting the Empire, we must be willing to oblige them."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005B6BE.Fragment_0 on INFO Skyrim.esm:05B6BE (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2300,7 +2300,7 @@
      "reply": [
       "Peace may yet return to Skyrim. But until then, we fight."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005B6BF.Fragment_0 on INFO Skyrim.esm:05B6BF (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2695,7 +2695,7 @@
      "reply": [
       "I knew I could count on you, soldier."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005C614.Fragment_0 on INFO Skyrim.esm:05C614 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2710,7 +2710,7 @@
      "reply": [
       "Good luck out there."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005C615.Fragment_0 on INFO Skyrim.esm:05C615 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2725,7 +2725,7 @@
      "reply": [
       "We do this for the good of Skyrim and her people. Never forget that."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005C6D2.Fragment_0 on INFO Skyrim.esm:05C6D2 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2740,7 +2740,7 @@
      "reply": [
       "Make me proud."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005C78F.Fragment_0 on INFO Skyrim.esm:05C78F (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2755,7 +2755,7 @@
      "reply": [
       "May the gods keep you."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005C791.Fragment_0 on INFO Skyrim.esm:05C791 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2770,7 +2770,7 @@
      "reply": [
       "Stay sharp out there."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005C793.Fragment_0 on INFO Skyrim.esm:05C793 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2785,7 +2785,7 @@
      "reply": [
       "Good. Make it happen, soldier."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005C796.Fragment_0 on INFO Skyrim.esm:05C796 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2800,7 +2800,7 @@
      "reply": [
       "Show the rebels the futility of their cause."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005C799.Fragment_0 on INFO Skyrim.esm:05C799 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2815,7 +2815,7 @@
      "reply": [
       "As long as the rebels are willing to die fighting the Empire, we must be willing to oblige them."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005C79C.Fragment_0 on INFO Skyrim.esm:05C79C (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2830,7 +2830,7 @@
      "reply": [
       "Peace may yet return to Skyrim. But until then, we fight."
      ],
-     "conditions": "fn426 == 1; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
+     "conditions": "the speaker has the voice Skyrim.esm:0D9378; the speaker is the one in alias FieldCO; GetInFaction Imperial Legion == 1",
      "source": "TIF__0005C7A0.Fragment_0 on INFO Skyrim.esm:05C7A0 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -5928,7 +5928,7 @@
     }
    ],
    "needs": {
-    "conditions": "fn426 == 1",
+    "conditions": "the speaker has the voice Skyrim.esm:03B4E2",
     "doors": [],
     "ways": []
    },
@@ -6017,7 +6017,7 @@
     }
    ],
    "needs": {
-    "conditions": "fn426 == 1",
+    "conditions": "the speaker has the voice Skyrim.esm:03B4E2",
     "doors": [],
     "ways": []
    },
@@ -7620,10 +7620,10 @@
    "reply": [
     "If you are, then you make your way to Windhelm and talk to the man himself. If you're not, well, friend, you'd best walk away before this gets ugly."
    ],
-   "conditions": "fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; fn426 == 0; fn426 == 0",
+   "conditions": "fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
    "does": "SetStage 2 on CW00A (Imperial Introductions)",
    "source": "TIF__000D3C57.Fragment_0 on INFO Skyrim.esm:0D3C57 (Unofficial Skyrim Special Edition Patch.esp); topic CW00JoinTopicContinue",
-   "sentence": "Talk to the speaker the line's conditions name and choose \"...\", when fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; fn426 == 0; fn426 == 0: SetStage 2 on CW00A (Imperial Introductions).",
+   "sentence": "Talk to the speaker the line's conditions name and choose \"...\", when fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 2 on CW00A (Imperial Introductions).",
    "stops": "the speaker isn't named by an NPC: GetIsID"
   },
   {
@@ -7637,10 +7637,10 @@
    "reply": [
     "If you are, then you talk to the man himself. If you're not, well, friend, you'd best walk away before this gets ugly."
    ],
-   "conditions": "fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; fn426 == 0; fn426 == 0",
+   "conditions": "fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
    "does": "SetStage 2 on CW00A (Imperial Introductions)",
    "source": "TIF__000FBA68.Fragment_0 on INFO Skyrim.esm:0FBA68 (Unofficial Skyrim Special Edition Patch.esp); topic CW00JoinTopicContinue",
-   "sentence": "Talk to the speaker the line's conditions name and choose \"...\", when fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; fn426 == 0; fn426 == 0: SetStage 2 on CW00A (Imperial Introductions).",
+   "sentence": "Talk to the speaker the line's conditions name and choose \"...\", when fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 2 on CW00A (Imperial Introductions).",
    "stops": "the speaker isn't named by an NPC: GetIsID"
   },
   {
@@ -7657,10 +7657,10 @@
     "If you're serious, make your way to Solitude. Our headquarters is Castle Dour. You'll find General Tullius there, commanding our forces in Skyrim.",
     "But talk to Legate Rikke. She handles the local recruiting."
    ],
-   "conditions": "Unbound completed; fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; fn426 == 0; fn426 == 0",
+   "conditions": "Unbound completed; fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
    "does": "SetStage 1 on CW00A (Imperial Introductions)",
    "source": "TIF__000D3C5A.Fragment_0 on INFO Skyrim.esm:0D3C5A (AlternatePerspective.esp); topic CW00JoinTopic",
-   "sentence": "Talk to the speaker the line's conditions name and choose \"How does one join the Imperial Legion?\", when Unbound completed; fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; fn426 == 0; fn426 == 0: SetStage 1 on CW00A (Imperial Introductions).",
+   "sentence": "Talk to the speaker the line's conditions name and choose \"How does one join the Imperial Legion?\", when Unbound completed; fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 1 on CW00A (Imperial Introductions).",
    "stops": "the speaker isn't named by an NPC: GetIsID"
   },
   {
@@ -7677,10 +7677,10 @@
     "If you're serious, you're in the right place. Our headquarters is in Castle Dour. Here you'll find General Tullius, commanding our forces in Skyrim.",
     "But talk to Legate Rikke. She handles the local recruiting."
    ],
-   "conditions": "Unbound completed; fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; fn426 == 0; fn426 == 0",
+   "conditions": "Unbound completed; fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
    "does": "SetStage 1 on CW00A (Imperial Introductions)",
    "source": "TIF__000FBA67.Fragment_0 on INFO Skyrim.esm:0FBA67 (AlternatePerspective.esp); topic CW00JoinTopic",
-   "sentence": "Talk to the speaker the line's conditions name and choose \"How does one join the Imperial Legion?\", when Unbound completed; fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; fn426 == 0; fn426 == 0: SetStage 1 on CW00A (Imperial Introductions).",
+   "sentence": "Talk to the speaker the line's conditions name and choose \"How does one join the Imperial Legion?\", when Unbound completed; fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 1 on CW00A (Imperial Introductions).",
    "stops": "the speaker isn't named by an NPC: GetIsID"
   },
   {

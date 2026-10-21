@@ -335,6 +335,11 @@ class WO121aTest(unittest.TestCase):
         self.assertFalse(sc.admits([{"fn": "GetStageDone", "cmp": "==", "value": 1.0, "param": "MG01", "stage": 10}], "MG01", 0))
         self.assertTrue(sc.admits([{"fn": "GetStage", "cmp": "==", "value": 10.0, "param": "Other"}], "MG01", 0))
 
+    def test_a_voice_only_one_npc_has(self):
+        npc = record("NPC_", 0x830, [sub("EDID", zs("BlackBriarNPC")), sub("VTCK", u32(0x840))])
+        other = record("NPC_", 0x831, [sub("EDID", zs("Someone")), sub("VTCK", u32(0x841))])
+        self.assertEqual(sc.read_voices(plugin(group("NPC_", [npc, other])), PLUGIN, {"Fixture.esp:000840"}), {"Fixture.esp:000840": {"Fixture.esp:000830"}})
+
     def test_the_start_up_stage(self):
         qust = record("QUST", 0x800, [sub("EDID", zs("FXQuest")), sub("INDX", struct.pack("<HBB", 0, 2, 0)), sub("INDX", struct.pack("<HBB", 10, 0, 0))])
         self.assertEqual(sc.read_startup(plugin(group("QUST", [qust])), PLUGIN, {QUEST}), {QUEST: 0})

@@ -3,7 +3,8 @@
   "read": 5852,
   "named": 3729,
   "with text": 1520,
-  "kept": 1340
+  "lead-ins": 3,
+  "kept": 1343
  },
  "quests": [
   {
@@ -86299,6 +86300,75 @@
    "source": "Skyrim"
   },
   {
+   "id": "Skyrim.esm:0D7939",
+   "edid": "DA03Start",
+   "name": "Speak to Lod, Falkreath's blacksmith, about a dog he's looking for",
+   "type": "Misc",
+   "plugin": "Skyrim.esm",
+   "editedBy": [
+    "Unofficial Skyrim Special Edition Patch.esp",
+    "Requiem.esp",
+    "Wintersun - Faiths of Skyrim.esp",
+    "Wintersun - Reqtificated.esp"
+   ],
+   "stages": [
+    {
+     "index": 0
+    },
+    {
+     "index": 5,
+     "log": [
+      "A guard outside Falkreath mentioned the Blacksmith Lod is looking for a Dog and offering a reward."
+     ],
+     "entries": [
+      {
+       "text": "A guard outside Falkreath mentioned the Blacksmith Lod is looking for a Dog and offering a reward."
+      }
+     ]
+    },
+    {
+     "index": 10
+    },
+    {
+     "index": 15
+    },
+    {
+     "index": 20,
+     "completes": true,
+     "entries": [
+      {
+       "text": "",
+       "completes": true
+      }
+     ]
+    },
+    {
+     "index": 200
+    }
+   ],
+   "objectives": [
+    {
+     "index": 5,
+     "text": "Speak to Lod, Falkreath's blacksmith, about a dog he's looking for"
+    },
+    {
+     "index": 10,
+     "text": "Look around on the road outside Falkreath for Lod's dog"
+    }
+   ],
+   "aliases": {
+    "6": "Lod",
+    "7": "ImperialGateGuard1",
+    "8": "ImperialGateGuard2",
+    "9": "SonsGateGuard1",
+    "10": "SonsGateGuard2",
+    "11": "DA03Meat",
+    "12": "DA03StartBarbasMeetMarker"
+   },
+   "leadsTo": "Skyrim.esm:01BFC4",
+   "source": "Skyrim"
+  },
+  {
    "id": "Skyrim.esm:02D512",
    "edid": "DA04",
    "name": "Discerning the Transmundane",
@@ -88624,6 +88694,62 @@
     "40": "DA14WitchmistGroveMapMarker",
     "41": "DA14MorvunskarEntrance"
    },
+   "source": "Skyrim"
+  },
+  {
+   "id": "Skyrim.esm:03FA17",
+   "edid": "DA14Start",
+   "name": "Participate in a drinking contest with Sam Guevenne",
+   "type": "Misc",
+   "plugin": "Skyrim.esm",
+   "editedBy": [
+    "Unofficial Skyrim Special Edition Patch.esp"
+   ],
+   "stages": [
+    {
+     "index": 10
+    },
+    {
+     "index": 20
+    },
+    {
+     "index": 30
+    },
+    {
+     "index": 40
+    },
+    {
+     "index": 50
+    },
+    {
+     "index": 60
+    },
+    {
+     "index": 70,
+     "completes": true,
+     "entries": [
+      {
+       "text": "",
+       "completes": true
+      }
+     ]
+    }
+   ],
+   "objectives": [
+    {
+     "index": 20,
+     "text": "Participate in a drinking contest with Sam Guevenne"
+    }
+   ],
+   "aliases": {
+    "0": "EventLocation",
+    "1": "TownCenterMarker",
+    "2": "InnMarker",
+    "4": "InnLocation",
+    "5": "DA14StartSamwellPackageMarker",
+    "6": "DA14StartSamwell"
+   },
+   "leadsTo": "Skyrim.esm:01BB9B",
    "source": "Skyrim"
   },
   {
@@ -108779,6 +108905,35 @@
    "source": "Skyrim"
   },
   {
+   "id": "Skyrim.esm:042868",
+   "edid": "MS05Start",
+   "name": "Investigate the Bards College",
+   "type": "Misc",
+   "plugin": "Skyrim.esm",
+   "stages": [
+    {
+     "index": 0
+    },
+    {
+     "index": 10
+    },
+    {
+     "index": 20
+    }
+   ],
+   "objectives": [
+    {
+     "index": 10,
+     "text": "Investigate the Bards College"
+    }
+   ],
+   "aliases": {
+    "0": "Viarmo"
+   },
+   "leadsTo": "Skyrim.esm:053511",
+   "source": "Skyrim"
+  },
+  {
    "id": "Skyrim.esm:026C4D",
    "edid": "MS06",
    "name": "The Wolf Queen Awakened",
@@ -128348,6 +128503,7 @@
   "hliorpcwoodtotal": 3.0,
   "hliorpllockspickedcount": 0.0,
   "hliorplockspickedtotal": 5.0,
+  "hmadg": 10.0,
   "jrvalvecount": 0.0,
   "jrvalvetotal": 3.0,
   "ksws07armorquestorecount": 0.0,

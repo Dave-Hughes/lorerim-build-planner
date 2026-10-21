@@ -1041,7 +1041,7 @@
     }
    ],
    "needs": {
-    "conditions": "fn426 == 1; GetRandomPercent < DLC2WE09Chance (now 0); At the Summit of Apocrypha stage < 550; level >= DLC2CultistAttackMinLevel_KRY (now 25)",
+    "conditions": "the speaker has the voice Dragonborn.esm:034E61; GetRandomPercent < DLC2WE09Chance (now 0); At the Summit of Apocrypha stage < 550; level >= DLC2CultistAttackMinLevel_KRY (now 25)",
     "doors": [],
     "ways": []
    },

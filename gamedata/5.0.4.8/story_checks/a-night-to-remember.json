@@ -3,6 +3,124 @@
  "name": "A Night To Remember",
  "quests": [
   {
+   "id": "Skyrim.esm:03FA17",
+   "edid": "DA14Start",
+   "name": "Participate in a drinking contest with Sam Guevenne",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Sam Guevenne",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Bee and Barb, Bee and Barb"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0A95BE",
+     "prompt": "I'm done now.",
+     "reply": [
+      "Awww, well, maybe next time."
+     ],
+     "conditions": "DA14Start stage == 60; the speaker is Sam Guevenne",
+     "source": "TIF__000A95BE.Fragment_0 on INFO Skyrim.esm:0A95BE (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Sam Guevenne",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Bee and Barb, Bee and Barb"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0A95C6",
+     "prompt": "This was a bad idea.",
+     "reply": [
+      "Sorry to hear that."
+     ],
+     "conditions": "DA14Start stage > 30; DA14Start stage <= 40; the speaker is Sam Guevenne",
+     "source": "TIF__000A95C6.Fragment_0 on INFO Skyrim.esm:0A95C6 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "change location",
+     "node": "DA14QuestStartNode",
+     "parents": [
+      "QuestNode",
+      "Skyrim.esm:01320E",
+      "Root"
+     ],
+     "source": "DA14QuestStartNode Skyrim.esm:03FA1A (TimingIsEverything.esp)",
+     "verdict": "run time",
+     "conditions": "level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; the place you enter is a habitation"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Participate in a drinking contest with Sam Guevenne",
+    "index": 20,
+    "source": "Skyrim.esm:03FA17 QOBJ 20",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "DA14StartSamwell",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Sam Guevenne",
+       "kind": "unique actor",
+       "where": [
+        "The Bee and Barb, Bee and Barb"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016BDF"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "The Bee and Barb, Bee and Barb",
+      "ways": 5,
+      "locked": 1
+     }
+    ]
+   },
+   "globals": [
+    {
+     "id": "TimingIsEverything.esp:009437",
+     "edid": "DA14MinLevel_KRY",
+     "record": 20.0,
+     "recordFrom": "LoreRim - Global Modifiers.esp",
+     "recordWas": {
+      "value": 14.0,
+      "from": "TimingIsEverything.esp"
+     },
+     "runtime": [],
+     "settingsNotRead": [
+      {
+       "mod": "TimingIsEverything",
+       "key": "iTIE_ANighttoRemember:DaedricQuests",
+       "value": "14",
+       "from": "settings.ini in Timing is Everything SE - Settings Loader",
+       "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+      }
+     ],
+     "value": 20.0,
+     "verdict": "conflict"
+    }
+   ],
+   "gives": []
+  },
+  {
    "id": "Skyrim.esm:01BB9B",
    "edid": "DA14",
    "name": "A Night To Remember",
@@ -11,31 +129,12 @@
    "startedBy": [
     {
      "by": "quest script",
-     "quest": "DA14Start, a helper quest with DA14StartSamwell",
+     "quest": "DA14Start",
      "questId": "Skyrim.esm:03FA17",
      "atStage": 70,
      "call": "SetStage 5",
      "source": "QF_DA14Start_0003FA17.fragment_2 on Skyrim.esm:03FA17 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script",
-     "throughStartedBy": [
-      {
-       "by": "story manager",
-       "event": "change location",
-       "node": "DA14QuestStartNode",
-       "parents": [
-        "QuestNode",
-        "Skyrim.esm:01320E",
-        "Root"
-       ],
-       "conditions": "level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; the place you enter is a habitation",
-       "globals": [
-        "TimingIsEverything.esp:009437"
-       ],
-       "source": "DA14QuestStartNode Skyrim.esm:03FA1A (TimingIsEverything.esp)",
-       "verdict": "files"
-      }
-     ],
-     "plain": "It starts by itself on change location."
+     "verdict": "script"
     },
     {
      "by": "dialogue",
@@ -1233,72 +1332,43 @@
    ]
   }
  ],
- "otherStarts": "To get into A Night To Remember: ask Senna in Temple of Dibella \"Where am I?\" (A Night To Remember stage == 5; the speaker is Senna), which starts A Night To Remember; or ask Senna in Temple of Dibella \"Unh, my head.\" (A Night To Remember stage == 5; the speaker is Senna), which starts A Night To Remember; or ask Senna in Temple of Dibella \"Blasphemer?\" (A Night To Remember stage == 5; the speaker is Senna), which starts A Night To Remember.",
+ "otherStarts": "To get into A Night To Remember: ask Sam Guevenne in The Bee and Barb, Bee and Barb \"I'm done now.\" (DA14Start stage == 60; the speaker is Sam Guevenne), which starts DA14Start; or ask Sam Guevenne in The Bee and Barb, Bee and Barb \"This was a bad idea.\" (DA14Start stage > 30; DA14Start stage <= 40; the speaker is Sam Guevenne), which starts DA14Start.",
  "routes": [
   {
-   "route": "DA14Start",
-   "kind": "quest script",
-   "does": "stage 70: SetStage 5",
-   "startedBy": [
-    "story manager node DA14QuestStartNode (change location; level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; the place you enter is a habitation; DA14QuestStartNode Skyrim.esm:03FA1A (TimingIsEverything.esp))"
-   ],
-   "inStartMenu": false,
-   "source": "QF_DA14Start_0003FA17 on Skyrim.esm:03FA17 (Unofficial Skyrim Special Edition Patch.esp)",
-   "sentence": "DA14Start stage 70: SetStage 5 on DA14 (A Night To Remember); it is started by story manager node DA14QuestStartNode (change location; level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; the place you enter is a habitation; DA14QuestStartNode Skyrim.esm:03FA1A (TimingIsEverything.esp))."
-  },
-  {
-   "route": "dialogue INFO Skyrim.esm:01F387",
+   "route": "dialogue INFO Skyrim.esm:0A95BE",
    "kind": "dialogue",
-   "speaker": "Senna",
+   "speaker": "Sam Guevenne",
    "speakerNamed": "GetIsID",
    "race": "Breton",
    "placed": [
-    "Temple of Dibella"
+    "The Bee and Barb, Bee and Barb"
    ],
-   "prompt": "Where am I?",
+   "prompt": "I'm done now.",
    "reply": [
-    "Of course! You don't remember getting here."
+    "Awww, well, maybe next time."
    ],
-   "conditions": "A Night To Remember stage == 5; the speaker is Senna",
-   "does": "SetStage 10 on DA14 (A Night To Remember)",
-   "source": "TIF__0001F387.Fragment_3 on INFO Skyrim.esm:01F387 (Skyrim.esm); topic DA14PriestessIntroTopic",
-   "sentence": "Talk to Senna (Breton) in Temple of Dibella and choose \"Where am I?\", when A Night To Remember stage == 5; the speaker is Senna: SetStage 10 on DA14 (A Night To Remember)."
+   "conditions": "DA14Start stage == 60; the speaker is Sam Guevenne",
+   "does": "SetStage 20 on DA14Start",
+   "source": "TIF__000A95BE.Fragment_0 on INFO Skyrim.esm:0A95BE (Skyrim.esm); topic DA14StartPostDrink2RefusalTopic",
+   "sentence": "Talk to Sam Guevenne (Breton) in The Bee and Barb, Bee and Barb and choose \"I'm done now.\", when DA14Start stage == 60; the speaker is Sam Guevenne: SetStage 20 on DA14Start."
   },
   {
-   "route": "dialogue INFO Skyrim.esm:0A95D5",
+   "route": "dialogue INFO Skyrim.esm:0A95C6",
    "kind": "dialogue",
-   "speaker": "Senna",
+   "speaker": "Sam Guevenne",
    "speakerNamed": "GetIsID",
    "race": "Breton",
    "placed": [
-    "Temple of Dibella"
+    "The Bee and Barb, Bee and Barb"
    ],
-   "prompt": "Unh, my head.",
+   "prompt": "This was a bad idea.",
    "reply": [
-    "Yes, your head hurts and you don't remember where you are."
+    "Sorry to hear that."
    ],
-   "conditions": "A Night To Remember stage == 5; the speaker is Senna",
-   "does": "SetStage 10 on DA14 (A Night To Remember)",
-   "source": "TIF__000A95D5.Fragment_1 on INFO Skyrim.esm:0A95D5 (Skyrim.esm); topic DA14IntroTopic3",
-   "sentence": "Talk to Senna (Breton) in Temple of Dibella and choose \"Unh, my head.\", when A Night To Remember stage == 5; the speaker is Senna: SetStage 10 on DA14 (A Night To Remember)."
-  },
-  {
-   "route": "dialogue INFO Skyrim.esm:0A95CB",
-   "kind": "dialogue",
-   "speaker": "Senna",
-   "speakerNamed": "GetIsID",
-   "race": "Breton",
-   "placed": [
-    "Temple of Dibella"
-   ],
-   "prompt": "Blasphemer?",
-   "reply": [
-    "I see. So you don't remember fondling the statuary, then?"
-   ],
-   "conditions": "A Night To Remember stage == 5; the speaker is Senna",
-   "does": "SetStage 10 on DA14 (A Night To Remember)",
-   "source": "TIF__000A95CB.Fragment_1 on INFO Skyrim.esm:0A95CB (Skyrim.esm); topic DA14IntroTopic2",
-   "sentence": "Talk to Senna (Breton) in Temple of Dibella and choose \"Blasphemer?\", when A Night To Remember stage == 5; the speaker is Senna: SetStage 10 on DA14 (A Night To Remember)."
+   "conditions": "DA14Start stage > 30; DA14Start stage <= 40; the speaker is Sam Guevenne",
+   "does": "SetStage 20 on DA14Start",
+   "source": "TIF__000A95C6.Fragment_0 on INFO Skyrim.esm:0A95C6 (Skyrim.esm); topic DA14StartPostDrink1RefusalTopic",
+   "sentence": "Talk to Sam Guevenne (Breton) in The Bee and Barb, Bee and Barb and choose \"This was a bad idea.\", when DA14Start stage > 30; DA14Start stage <= 40; the speaker is Sam Guevenne: SetStage 20 on DA14Start."
   }
  ],
  "loaders": {
