@@ -5,7 +5,7 @@ import { getBuild as readableBuild } from "@/lib/builds/queries";
 import { signedIn, whoami, type PlannerAuth } from "@/lib/oauth/mcp-auth";
 import { creationFields, gearRow, levelFields } from "./build-tools";
 import { versionData } from "./errors";
-import { DEFAULT_VERSION, FACT_KINDS, FactsError, checkPlan, checkProgression, getPerk, getQuest, getRules, getSpell, getTree, playerState, searchFacts, styleGuide } from "./facts";
+import { DEFAULT_VERSION, FACT_KINDS, FactsError, checkPlan, checkProgression, getPerk, getQuest, getCreation, getRules, getSpell, getTree, playerState, searchFacts, styleGuide } from "./facts";
 import { toldOf } from "./playthroughs";
 
 /**
@@ -66,6 +66,16 @@ export function registerFactTools(server: Server, guarded: Guarded) {
       inputSchema: z.object({ skill: z.string().min(1).max(40).describe('The skill or tree: "Two-Handed", "Restoration", "Destiny".'), version }),
     },
     async ({ skill, version: v }) => guarded(() => getTree({ skill }, v)),
+  );
+  server.registerTool(
+    "get_creation",
+    {
+      title: "Character creation",
+      description:
+        "Everything character creation asks for, as the site's Set up shows it: how many majors, minors and traits and what each adds, the starting perk points, every race with its skills, powers and the gods it's offered at the start, every birthsign, the two modes, every start with its options, and every trait with its game text and the choice it asks (send it as traitChoices, or masterOfOneSkill). Read it before create_build.",
+      inputSchema: z.object({ version }),
+    },
+    async ({ version: v }) => guarded(() => getCreation(v)),
   );
   server.registerTool(
     "get_rules",

@@ -9,6 +9,7 @@ import { stories, storyById, storyOfLine } from "@/lib/quests/stories-data";
 import { storyOrder, type Story } from "@/lib/quests/story";
 import { openFor, questNames, type PlayerState } from "@/lib/quests/open";
 import type { Quest, QuestLine } from "@/lib/quests/types";
+import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
 
 /**
  * The planner's facts for assistants (WO-108): read-only answers from src/data/lorerim-<version>/,
@@ -332,6 +333,50 @@ export function getTree({ skill }: { skill: string }, version = DEFAULT_VERSION)
       return { id: full.id, name: full.name, ranks: full.ranks, needs: full.needs, rankDetails: full.rankDetails.map(({ rank, skill: s, level }) => ({ rank, ...(s ? { skill: s } : {}), ...(level ? { level } : {}) })), rulesOut: full.rulesOut, cost: full.cost };
     }),
     source: "game files",
+  };
+}
+
+/** A game text with its highlight marks taken off: "<25%>" -> "25%". */
+const plainText = (t: string) => t.replace(/<([^<>]*)>/g, "$1");
+
+/**
+ * get_creation (WO-122): everything character creation asks for, from the same data as Set up: the counts, every race
+ * with its skills and powers, every birthsign, the gods each race is offered at the start, the two modes, every start
+ * with its options, and every trait with its game text, whether the planner's numbers count it, and its choice.
+ */
+export function getCreation(version = DEFAULT_VERSION) {
+  const d = versionData(version);
+  const r = d.rules;
+  const ability = (id: string) => d.abilityById.get(id)?.name ?? id;
+  return {
+    version,
+    counts: {
+      majors: { count: r.majorCount, bonus: r.majorBonus },
+      minors: { count: r.minorCount, bonus: r.minorBonus },
+      traits: { upTo: r.maxTraits },
+      race: { primaryBonus: r.racePrimaryBonus, secondaryBonus: r.raceSecondaryBonus },
+      perkPoints: { atStart: r.startingPerkPoints, naaktiid: r.naaktiidBonusPerkPoints },
+    },
+    races: d.races.map((x) => ({
+      name: x.name,
+      primary: x.primary,
+      secondary: x.secondary,
+      health: x.health,
+      magicka: x.magicka,
+      stamina: x.stamina,
+      powers: (d.abilityFromRaces[x.name]?.powers ?? []).map(ability),
+      passives: (d.abilityFromRaces[x.name]?.passives ?? []).map((p) => ({ name: p.name, text: plainText(p.text) })),
+      godsAtTheStart: d.startingDeities[x.name] ?? [],
+    })),
+    birthsigns: d.birthsigns.map((b) => ({ name: b.name, text: plainText(b.text) })),
+    modes: d.gameModes.map((m) => ({ name: m.name, text: plainText(m.text) })),
+    starts: d.starts.map((s) => ({ name: s.name, source: s.source, text: plainText(s.text), ...(s.options.length ? { option: { label: s.optionLabel ?? "Choice", options: s.options } } : {}) })),
+    traits: d.traits.map((t) => {
+      const c = TRAIT_CHOICES[t.name];
+      const choice = c ? { asks: c.question, options: c.options, send: "traitChoices" } : t.name === "Master of One" ? { asks: "Which skill?", options: d.skills, send: "masterOfOneSkill" } : null;
+      return { name: t.name, text: plainText(t.text), plannerCountsIt: t.simulated, ...(choice ? { choice } : {}) };
+    }),
+    source: "game files, as the planner's Set up shows them",
   };
 }
 

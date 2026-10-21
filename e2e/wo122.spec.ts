@@ -50,3 +50,12 @@ test("traitChoices go in, and set_creation changes creation, refused until every
   // Only what's sent changes: the minors and the mode stay.
   expect((await go("get_build", { build })).json()).toMatchObject({ minors: nord.minors, mode: "Naaktiid", start: "Pilgrim (Temple)", startOption: "Temple of Mara" });
 });
+
+test("get_creation answers through the door with the choices Set up offers", async ({ page, context, baseURL }) => {
+  await signIn(context);
+  const t = await tokenFor(page, context, baseURL!, from);
+  const c = (await call(baseURL!, from, t.access_token, "get_creation", {})).json();
+  expect(c.counts).toMatchObject({ majors: { count: 3 }, minors: { count: 6 }, traits: { upTo: 2 } });
+  expect(c.starts.find((s: { name: string }) => s.name === "Dragonborn").option).toEqual({ label: "Helgen Keep", options: ["Helgen Keep (Start)", "Helgen Keep (End)"] });
+  expect(c.traits.find((x: { name: string }) => x.name === "Focused Combat").choice).toMatchObject({ options: ["One-Handed", "Two-Handed", "Marksman"], send: "traitChoices" });
+});

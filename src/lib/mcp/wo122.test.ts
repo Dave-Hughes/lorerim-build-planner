@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { versionData } from "./errors";
+import { getCreation, styleGuide } from "./facts";
 import { checkedCreation, creationProblems, levelFromInput, plainOf, planFromCreate, withCreation } from "./plan";
 
 const d = versionData("5.0.4.8");
@@ -70,5 +71,41 @@ describe("traitChoices, masterOfOneSkill and set_creation's change (WO-122)", ()
   it("comes back from get_build in the same shape", () => {
     const plain = plainOf(d, planFromCreate(d, { ...nord, traits: ["Focused Magic"], traitChoices: { "Focused Magic": "Destruction" } }));
     expect(plain).toMatchObject({ traits: ["Focused Magic"], traitChoices: { "Focused Magic": "Destruction" } });
+  });
+});
+
+describe("get_creation (WO-122)", () => {
+  const c = getCreation();
+  it("gives the counts from the rules", () => {
+    expect(c.counts).toEqual({
+      majors: { count: d.rules.majorCount, bonus: d.rules.majorBonus },
+      minors: { count: d.rules.minorCount, bonus: d.rules.minorBonus },
+      traits: { upTo: d.rules.maxTraits },
+      race: { primaryBonus: d.rules.racePrimaryBonus, secondaryBonus: d.rules.raceSecondaryBonus },
+      perkPoints: { atStart: d.rules.startingPerkPoints, naaktiid: d.rules.naaktiidBonusPerkPoints },
+    });
+    expect(c.counts.majors.count).toBe(3);
+    expect(c.counts.minors.count).toBe(6);
+  });
+  it("names every race, birthsign, mode, start and trait Set up offers", () => {
+    expect(c.races.map((r) => r.name)).toEqual(d.races.map((r) => r.name));
+    expect(c.birthsigns).toHaveLength(d.birthsigns.length);
+    expect(c.modes.map((m) => m.name)).toEqual(["Naaktiid", "Konahrik"].filter((m) => d.gameModes.some((g) => g.name === m)));
+    expect(c.starts).toHaveLength(25);
+    expect(c.traits).toHaveLength(d.traits.length);
+    const nord = c.races.find((r) => r.name === "Nord")!;
+    expect(nord).toMatchObject({ primary: d.raceByName.get("Nord")!.primary, godsAtTheStart: d.startingDeities.Nord ?? [] });
+    expect(nord.passives.length).toBeGreaterThan(0);
+    expect(nord.passives[0]).toEqual({ name: expect.any(String), text: expect.any(String) });
+  });
+  it("gives each start's options and each trait's choice, with how to send it", () => {
+    expect(c.starts.find((s) => s.name === "Pilgrim (Temple)")!.option).toEqual({ label: "Temple", options: d.startByName.get("Pilgrim (Temple)")!.options });
+    expect(c.starts.find((s) => s.name === "Forsworn")).not.toHaveProperty("option");
+    expect(c.traits.find((t) => t.name === "Fatal Attraction")!.choice).toEqual({ asks: "Which gender?", options: ["Male", "Female"], send: "traitChoices" });
+    expect(c.traits.find((t) => t.name === "Master of One")!.choice).toMatchObject({ send: "masterOfOneSkill", options: d.skills });
+    for (const t of c.traits) expect(t.text).not.toMatch(/[<>]/);
+  });
+  it("is in the style guide's How to build, to read first", () => {
+    expect(styleGuide()).toMatch(/## How to build[\s\S]*Read get_creation before create_build/);
   });
 });

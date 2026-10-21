@@ -40,7 +40,7 @@ export const creationFields = {
   traitChoices: z
     .record(z.string().max(80), z.string().max(40))
     .optional()
-    .describe('The choice a trait asks, by trait, in the game\'s option names: { "Fatal Attraction": "Female", "Focused Combat": "Two-Handed", "Focused Magic": "Destruction" }.'),
+    .describe('The choice a trait asks, by trait, in the game\'s option names: { "Fatal Attraction": "Female", "Focused Combat": "Two-Handed", "Focused Magic": "Destruction" }. get_creation lists them.'),
   masterOfOneSkill: z.string().max(40).optional().describe("Master of One's skill, by name, when it's one of traits."),
   notes: z.string().max(6000).optional().describe("The build's overall notes."),
 };
@@ -67,7 +67,7 @@ export function registerBuildTools(server: Server, guarded: Guarded, origin: str
   tool(
     "create_build",
     "Start a build",
-    "Make a new private build in the player's account at level 1 from character creation's choices, by the game's names, checked as the site's Set up checks them: 3 majors, 6 minors, a birthsign, a start and its option, each trait's choice. Refused with every choice still to make, and the options. Call get_rules first for how points work, and get_tree to plan a skill's perks.",
+    "Make a new private build in the player's account at level 1 from character creation's choices, by the game's names, checked as the site's Set up checks them: 3 majors, 6 minors, a birthsign, a start and its option, each trait's choice. Refused with every choice still to make, and the options. Call get_creation first for the choices, get_rules for how points work, and get_tree to plan a skill's perks.",
     z.object({ name: name("The build's name."), description: z.string().max(300).optional(), version: z.string().max(20).optional().describe(`The LoreRim version, ${DEFAULT_VERSION} if left out.`), ...creationFields }),
     (p, a: Parameters<typeof createBuild>[1]) => createBuild(p, a),
   );

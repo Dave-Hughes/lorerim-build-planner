@@ -27,6 +27,7 @@ A character is a build with or without a run; make the run with create_playthrou
 
 The rules say what a build may do; a good build also does these.
 
+- Read get_creation before create_build. Character creation is whole when it has 3 majors, 6 minors, a birthsign, a start and its option, and every trait's choice: the site's Set up asks for each, and so does create_build. To change creation later, use set_creation.
 - Spend every level's points. Skill points left over carry on, but a build that piles them up isn't one a player would follow.
 - When the skills a build is about reach max skill, put the rest into the next skills its perks will need, then into skills it uses: Smithing for its armor, Restoration for its healing, Block for its shield.
 - Take a perk point's perk when there is one to take. When a planned perk isn't open yet, raise its skill toward it rather than holding the point.
