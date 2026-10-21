@@ -4905,6 +4905,28 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-127  A reason to travel: one more thing assistants weigh when they design a character (22 Oct 2026)
+
+**Why.** Dave (21 Oct), from playing Kyria: a player who wants to get out into the world needs a reason to go from town to town, and the reason has to come from the character. Kyria's came from the road. On her first walk to Ivarstead she buried a pilgrim the wolves had killed, and since then she goes everywhere on foot and clears what is waiting on the road. Without a reason like that, a run drifts between quest markers and the long way between towns gets skipped. This is not a field and nothing changes on screen. It is a question the assistant settles while designing the character, and it shapes the playthrough it writes.
+
+### Part 1. The rule (`content/mcp/style.md`)
+- At the end of **Playthroughs**, after rule 18, a new rule 19; the Honesty rules move to 20 to 24:
+  > 19. Give the character a reason to travel: why they leave one town for the next and take the road between on foot. It comes from their past or from something that happens early in the run (a duty, a debt, someone she is looking for, a promise, something she saw on the road). Ask the player for it, or offer two or three that grow out of her story and let them choose. Write it once in the Tale, as the chapter where the character finds it, and in Play as what she keeps doing throughout an act (rule 13), never as an objective. Let it choose the route between quests and the places the character stops. Use the character's own pronoun in the draft.
+- Under **How to build**, one line: "Before writing a playthrough, settle the character's reason to travel (rule 19) with the player."
+- No tool description or code comment references rules 19 to 23 today (checked 22 Oct with `git grep`; only finished orders mention 21 and 23), so no tool text changes. If one does by build time, it follows the new numbers.
+
+### Part 2. The tools mention it
+- `create_playthrough`'s description gains one sentence: "Settle the character's reason to travel with the player first (style guide rule 19)."
+- `suggest_objective` and `suggest_quests` don't change.
+
+### Done when
+- [ ] Part 1: rule 19 and the How to build line in `style.md`; the Honesty rules renumbered 20 to 24.
+- [ ] Part 2: the sentence in `create_playthrough`'s description.
+- [ ] A test that `get_style_guide` returns the new rule, and that no "rule N" reference in `src/lib/mcp` points past the last rule.
+- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Dave: he asks an assistant to design a new character through the connector and it asks him why she travels.
+
+---
+
 ## WO-126  Quest starts in players' words (Mac, 22 Oct 2026)
 
 **Why.** Checking Part 4 of WO-121b, Bob read what the quest pages actually show under how a quest starts. Of 1,243 quests with a start, 309 show raw record text to players: condition functions (`GetEventData` 380 times, `GetInFaction` 87, `GetItemCount` 51, `GetActorValue` 35, `GetDead` 23), stage tests ("Skirmish at Whitewatch stage == 10", 250 of them), and editor ids for helper quests ("Through AP_DialogueHelgen", "Through aaaHOTRDialogue", 269). Bleak Falls Barrow shows "GetItemCount Dragonstone >= 1"; Unbound shows "Through APS_MQSkipKeep". A player can't read these, and the community will call it out. The answers are right underneath; they need saying in the game's words.
