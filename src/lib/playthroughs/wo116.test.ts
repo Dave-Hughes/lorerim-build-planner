@@ -80,5 +80,7 @@ describe("the reader's stops (WO-116)", () => {
 describe("the style guide (WO-116)", () => {
   it("says an act can open with its own chapter, and beats and entries hang off objectives", () => {
     expect(styleGuide()).toContain("Each act can open with its own chapter: the story of that stretch, written before the player plays it. Beats and entries hang off objectives.");
+    // WO-117: the pictures are the player's.
+    expect(styleGuide()).toContain("Assistants can't add pictures. When you finish a draft, give the player the addPictures link so they can add the cover and the story's pictures.");
   });
 });

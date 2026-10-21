@@ -12,6 +12,7 @@ import type { EditFrameData } from "@/lib/edit/frame";
 import { saveDetails } from "@/lib/playthroughs/actions";
 import styles from "./edit-bar.module.css";
 import f from "./edit-frame.module.css";
+import { Pictures } from "./pictures-panel";
 
 export type EditPage = "setup" | "levels" | "play" | "guide" | "story";
 
@@ -296,6 +297,7 @@ export function EditBar({
           <span className={f.bandRight}>
             {todo && <span className={styles.todo}>{todo}</span>}
             <SaveLine save={save} />
+            {run && <Pictures runId={run.id} groups={run.pictures} />}
             <VisibilityMenu
               key={onRun ? `r${run!.visibility}` : `b${visibility}`}
               initial={onRun ? run!.visibility : visibility}

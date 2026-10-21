@@ -66,6 +66,77 @@
   cursor: pointer;
 }
 
+/* Pictures (WO-117): the band's button, and the panel on the right listing every place one can go. */
+.picturesButton {
+  white-space: nowrap;
+}
+.pictures {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  width: 380px;
+  max-width: 100vw;
+  overflow-y: auto;
+  padding: 20px;
+  background: var(--panel);
+  border-left: 1px solid var(--rule-strong);
+  box-shadow: -20px 0 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.picturesHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.picturesTitle,
+.picturesGroupHead {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 18px;
+}
+.picturesGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.picturesGroupHead {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  color: var(--brass);
+}
+.pictureRow {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+}
+.pictureThumb,
+.pictureEmpty {
+  width: 64px;
+  height: 40px;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+.pictureEmpty {
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--rule-strong);
+  color: var(--muted);
+}
+.pictureName {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 15px;
+  min-width: 0;
+}
+
 /* The page's own hero, 300 tall. */
 .hero {
   position: relative;

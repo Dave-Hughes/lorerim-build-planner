@@ -4835,7 +4835,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - [x] Part 2: one edit band, hero and tab row on every edit page; Edit opens Details; everything autosaves, no Save buttons, Done is the one ember button; old addresses redirect.
 - [x] Part 3: Play in edit as the board: the act card with its picture slot, objectives as rows that open one at a time, quiet buttons.
 - [x] Part 4: the Story written in the reader, with Contents, pictures in place, Opens when, and Preview; the old Tale box and chapter page gone.
-- [ ] Part 5: the Pictures panel, the owner's nudge, and `addPictures` in the door with its style guide line.
+- [x] Part 5: the Pictures panel, the owner's nudge, and `addPictures` in the door with its style guide line.
 - [ ] Every check in CLAUDE.md passes; migration additive if one is needed; behind the flag. Commit on `staging`, push, and stop: Dave opens Kyria, clicks Edit, adds Act I's picture from the Pictures panel, writes a line of Act I's chapter in the Story tab, previews it, clicks Done, and reads it from Act I's card.
 
 ---

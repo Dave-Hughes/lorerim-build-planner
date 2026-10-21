@@ -65,6 +65,9 @@ export async function CharacterPage({
       ? [storyStop({ id, title: told.title, line: told.line, doc: told.doc, cover, isOwner })]
       : [];
   const back = run ? { href: `/p/${run.id}`, label: "Back to the quest log" } : { href: `/b/${id}`, label: "Back to the build" };
+  // The owner's nudge (WO-117): a character with no cover and no story pictures, often one an assistant drafted.
+  const storyPictures = run ? !!run.coverImageUrl || run.view.acts.some((a) => a.imageUrl) || run.view.chapters.some((c) => c.imageUrl || imageUrls(c.doc).size > 0) : true;
+  const nudge = run && isOwner && !build.coverImageUrl && !storyPictures ? `/b/${id}/setup?step=name&pictures=1` : null;
   return (
     <ReaderProvider stops={stops} back={back} runId={run?.id ?? null} title={run ? run.taleTitle || run.name : (told?.title ?? build.name)}>
     <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
@@ -92,6 +95,7 @@ export async function CharacterPage({
         playTab={run ? { node: <PlayBody p={run} isOwner={viewerId === run.ownerId} actIndex={actIndex} />, sub: playSub(run), here: run.snapshot?.level ?? null } : null}
         startRun={!run && isOwner && playthroughsOn() && !build.isSample ? `/b/${id}/run` : null}
         storyHref={stops[0]?.href ?? null}
+        nudge={nudge}
         guide={shownDocs}
       />
     </GameDataProvider>

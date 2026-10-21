@@ -464,8 +464,10 @@ export async function finishDraft(p: Player, input: { playthrough: string }) {
   if (!pt.view.acts.length) issues.push("The playthrough has no acts yet.");
   for (const a of pt.view.acts) if (!a.objectives.length) issues.push(`Act ${a.n} ${a.name} has no objective.`);
   for (const c of pt.view.chapters) if (c.kind === "beat" && c.opensAfter === null) issues.push(`The beat ${c.title} has no objective to open after.`);
-  if (issues.length) return { ready: false, issues };
-  return { ready: true, link: link(p, pt.id), message: `Ready: open ${link(p, pt.id)} to read it, tick what's done and publish.` };
+  // Assistants can't add pictures (WO-117): the player adds them from this link.
+  const addPictures = pt.buildId ? `${p.origin}/b/${pt.buildId}/setup?step=name&pictures=1` : link(p, pt.id, "/edit/play?pictures=1");
+  if (issues.length) return { ready: false, issues, addPictures };
+  return { ready: true, link: link(p, pt.id), addPictures, message: `Ready: open ${link(p, pt.id)} to read it, tick what's done and publish. Pictures are the player's to add: ${addPictures}` };
 }
 
 /**

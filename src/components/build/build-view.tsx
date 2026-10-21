@@ -84,6 +84,8 @@ interface Props {
   startRun?: string | null;
   /** The reader's first page (WO-116): "Read the story from the beginning" under the byline. */
   storyHref?: string | null;
+  /** The owner's nudge to add pictures (WO-117): the edit page with the Pictures panel open. */
+  nudge?: string | null;
 }
 
 export type BuildTab = "play" | "levels" | "guide";
@@ -118,7 +120,7 @@ function useNarrower(px: number): boolean {
  * navigation, then the level card (what to do, in the order the game asks, with the author's
  * note), then the reference (attributes, skills, perks).
  */
-export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab = "levels", signInToCopy, signInToLike, autoCopy, guide = {}, admin = null, playTab = null, startRun = null, storyHref = null }: Props) {
+export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab = "levels", signInToCopy, signInToLike, autoCopy, guide = {}, admin = null, playTab = null, startRun = null, storyHref = null, nudge = null }: Props) {
   const d = useGameData();
   const reading = useReading();
   const noted = useMemo(() => notedLevels(guide), [guide]);
@@ -329,6 +331,22 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
         />
 
         <div className={`page ${styles.body}`}>
+          {nudge && (
+            <section className={styles.nudge} aria-labelledby="nudge-title">
+              <span className={styles.nudgeText}>
+                <h2 id="nudge-title" className={styles.nudgeTitle}>
+                  No pictures yet
+                </h2>
+                <span>Assistants can&apos;t add pictures. Add a cover, and pictures for the story and the acts, from the planner.</span>
+              </span>
+              <span className={styles.nudgeSide}>
+                <Link href={nudge} className="btn">
+                  Add pictures
+                </Link>
+                <span className="muted">Only you see this.</span>
+              </span>
+            </section>
+          )}
           <OldVersionNotice buildId={build.id} signedIn={signedIn} />
           {admin?.imported && (
             <p role="status" className={styles.importNote}>
