@@ -4905,6 +4905,38 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-122  Character creation through the connector, complete (Mac, 21 Oct 2026)
+
+**Why.** Kyria's Set up shows three problems the assistant left: "Choose 4 more minors", "Fatal Attraction needs a choice", and "Choose a Helgen keep". Bob's look at the door:
+- `create_build` and `create_playthrough` take race, birthsign, mode, deity, start and its option, majors, minors, traits by name, and notes. They **don't take a trait's choice** (Fatal Attraction's Male or Female, Focused Combat's weapon type, Focused Magic's school, Master of One's skill), so the assistant couldn't send it.
+- Level 1 is checked with `checkCreation`, which refuses **too many** majors, minors or traits but not **too few**, and never asks for a trait's choice or a start's option. The site's Set up checks all of those (`checkStep`), so the two disagree: the door saved 2 minors where Set up wants 6.
+- **No tool can change creation** once a build exists, so the assistant can't fix any of it.
+- **No tool describes creation:** there's no way to get a trait's full text and choice, a race's skills and powers, the gods a race is offered, or a start's options, except one line each through `search_facts`.
+- Kyria's start: the assistant sent Pilgrim (Temple) with Temple of Mara and read it back right after; on 20 Oct afternoon the build read Dragonborn with no option. The door didn't change it, so a save from the site did (the site's Set up saves a whole plan). There's no history of a build's saves to show which.
+
+### 1. One set of rules for creation
+- The door checks a new or changed creation with the same checks Set up uses, step by step (`checkStep` for race, birthsign, skills, traits, deity, mode and start), and refuses with the step's own words and the choices: "Choose 4 more minor skills (6 in all).", "Fatal Attraction needs a choice: Male or Female.", "Pilgrim (Temple) needs a temple: Random, Temple of the Divines, Temple of Dibella, Temple of Kynareth, Temple of Mara or Temple of Talos." `checkCreation` stays for the engine; the door adds the step checks on top.
+
+### 2. Everything creation asks for, as inputs
+- `create_build`, `create_playthrough` and a new `set_creation` take `traitChoices: { [trait]: choice }` (from `TRAIT_CHOICES`, by the game's option names) and `masterOfOneSkill`, beside what they take now.
+- **`set_creation({ build, ... })`** changes any of creation's choices on an existing build (race, birthsign, mode, deity, start and option, majors, minors, traits and their choices). The whole build is checked again; the first rule a later level breaks stops the save, as `set_level` does.
+
+### 3. Creation, described
+- **`get_creation({ version? })`**: the counts (3 majors at +10, 6 minors at +5, up to 2 traits, the starting perk points and Naaktiid's 3 more), every race with its skills and powers, every birthsign, the gods each race is offered at the start, the two modes with their text, every start with its source, text and options, and every trait with its game text, what it changes, and its choice if it asks one. Generated from the same data as Set up. `create_build`'s description says to call it first.
+
+### 4. A history of saves
+- An additive `build_revision` table: the build, the plan as saved, who saved it (the site's Set up, the Levels editor, or the connector with the client's name) and when. The last 50 per build. `/admin` gets a build's history (the change between two saves in plain words, "Start: Pilgrim (Temple), Temple of Mara to Dragonborn"), so a change nobody meant can be found.
+- An e2e that opens a build with Pilgrim (Temple) and Temple of Mara in Set up, changes the mode and Details, lets it save, and reads the start back unchanged. If it doesn't hold, fix the save so only what changed is written.
+
+### Done when
+- [ ] A creation with 2 minors, a trait without its choice or a start without its option is refused through the door with the choices named.
+- [ ] `traitChoices` and `masterOfOneSkill` go in; `set_creation` changes creation and rechecks the levels.
+- [ ] `get_creation` answers; the style guide's How to build says to read it first.
+- [ ] `build_revision` records every save with who made it; `/admin` shows a build's changes; the Set up e2e keeps the start.
+- [ ] Every check in CLAUDE.md passes; migration additive; behind the flag. Commit on `staging`, push, and stop: Dave asks his Claude to fix Kyria's creation, and her Set up shows no problems.
+
+---
+
 ## WO-121a  The quest starts Bob sent back (21 Oct 2026)
 
 **Why.** Bob read WO-121's 21 waiting rows and its giver table, item by item. Thirteen rows are the records being right (the planner's quest is the main one where UESP's first line is its pointer or misc quest, or the game's own wording, or LoreRim's mod changes it); they are in `DIFFERS` with the reason and the record. Eight are real gaps, and the giver table has six wrong givers and some useless places. Until this is done, the door leaves out `who` and `where`.
