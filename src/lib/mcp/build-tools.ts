@@ -62,7 +62,7 @@ export function registerBuildTools(server: Server, guarded: Guarded, origin: str
   tool(
     "create_build",
     "Start a build",
-    "Make a new private build in the player's account at level 1 from character creation's choices, by the game's names; refused with the rule when a choice breaks one.",
+    "Make a new private build in the player's account at level 1 from character creation's choices, by the game's names; refused with the rule when a choice breaks one. Call get_rules first for how points work, and get_tree to plan a skill's perks.",
     z.object({ name: name("The build's name."), description: z.string().max(300).optional(), version: z.string().max(20).optional().describe(`The LoreRim version, ${DEFAULT_VERSION} if left out.`), ...creationFields }),
     (p, a: Parameters<typeof createBuild>[1]) => createBuild(p, a),
   );

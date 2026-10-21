@@ -5,7 +5,7 @@ import { getBuild as readableBuild } from "@/lib/builds/queries";
 import { signedIn, whoami, type PlannerAuth } from "@/lib/oauth/mcp-auth";
 import { creationFields, gearRow, levelFields } from "./build-tools";
 import { versionData } from "./errors";
-import { DEFAULT_VERSION, FACT_KINDS, FactsError, checkPlan, checkProgression, getPerk, getQuest, getSpell, playerState, searchFacts, styleGuide } from "./facts";
+import { DEFAULT_VERSION, FACT_KINDS, FactsError, checkPlan, checkProgression, getPerk, getQuest, getRules, getSpell, getTree, playerState, searchFacts, styleGuide } from "./facts";
 import { toldOf } from "./playthroughs";
 
 /**
@@ -57,6 +57,24 @@ export function registerFactTools(server: Server, guarded: Guarded) {
       }),
     },
     async ({ id, name, version: v }) => guarded(() => getSpell({ id, name }, v)),
+  );
+  server.registerTool(
+    "get_tree",
+    {
+      title: "A whole perk tree",
+      description: "Get every perk in one skill's tree at once (or Destiny), each with its ranks, the skill each rank needs, its prerequisite perks and what it rules out, by the skill it first needs. Plan a skill's perks from this instead of asking get_perk one by one.",
+      inputSchema: z.object({ skill: z.string().min(1).max(40).describe('The skill or tree: "Two-Handed", "Restoration", "Destiny".'), version }),
+    },
+    async ({ skill, version: v }) => guarded(() => getTree({ skill }, v)),
+  );
+  server.registerTool(
+    "get_rules",
+    {
+      title: "How points work",
+      description: "The planner's progression rules as its checks count them: skill points a level, the most a skill can rise in one, what a point costs at each band, max skill at a level, perk points, Destiny points, attributes and trainers. The same numbers as the style guide's How points work.",
+      inputSchema: z.object({ version }),
+    },
+    async ({ version: v }) => guarded(() => getRules(v)),
   );
   const questInput = {
     id: z.string().min(1).max(120).optional().describe("A quest line or story id from search_facts, or a quest's EDID."),

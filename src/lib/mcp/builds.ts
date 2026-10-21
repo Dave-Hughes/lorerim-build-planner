@@ -11,6 +11,7 @@ import { readPlan } from "@/lib/rules/convert";
 import type { BuildPlan } from "@/lib/rules/types";
 import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import * as names from "./names";
+import { reviewBuild } from "./review";
 import { canTakeAt, draftCapRefusal, gearFromInput, issuesOf, levelFromInput, plainOf, planFromCreate, refusal, stateAt, type CreateInput, type GearInput, type LevelInput } from "./plan";
 
 /**
@@ -52,7 +53,9 @@ async function save(p: Player, id: string, plan: BuildPlan, level: number, first
   if (issues.length) throw refusal(firstOnly ? issues.slice(0, 1) : issues);
   await writePlan(p.userId, id, parsed);
   revalidatePath(`/b/${id}`);
-  return { build: id, link: link(p, id), levels: parsed.levels.length, level: stateAt(d, states, level), canTakeNext: canTakeAt(d, states, level) };
+  // Advice the rules allow but a good build wouldn't leave (WO-119): it saves the same either way.
+  const warnings = reviewBuild(d, parsed, states).map(({ code, message }) => ({ code, message }));
+  return { build: id, link: link(p, id), levels: parsed.levels.length, level: stateAt(d, states, level), canTakeNext: canTakeAt(d, states, level), ...(warnings.length ? { warnings } : {}) };
 }
 
 /**
@@ -156,7 +159,9 @@ export async function setDetails(p: Player, input: { build: string; name?: strin
 export async function getBuild(p: Player, input: { build: string }) {
   const b = await owned(p, input.build);
   const d = versionData(b.plan.gameVersion);
-  return { build: b.id, name: b.name, description: b.description, visibility: b.visibility, link: link(p, b.id), draftedByAnAssistant: !!b.draftedBy, ...plainOf(d, b.plan) };
+  const { plan, states, issues } = issuesOf(d, b.plan);
+  const warnings = issues.length ? [] : reviewBuild(d, plan, states);
+  return { build: b.id, name: b.name, description: b.description, visibility: b.visibility, link: link(p, b.id), draftedByAnAssistant: !!b.draftedBy, ...plainOf(d, b.plan), ...(warnings.length ? { warnings } : {}) };
 }
 
 /** list_my_builds: the player's builds, newest first, each with its run when it has one (WO-114). */
@@ -181,9 +186,17 @@ export async function listMyBuilds(p: Player) {
 export async function finishDraft(p: Player, input: { build: string }) {
   const b = await owned(p, input.build);
   const d = versionData(b.plan.gameVersion);
-  const { issues } = issuesOf(d, b.plan);
+  const { plan, states, issues } = issuesOf(d, b.plan);
   // Assistants can't add images (WO-118): the player adds a cover from this link, at the cover in Details.
   const addCover = `${p.origin}/b/${b.id}/setup?step=name#cover`;
   if (issues.length) return { ready: false, issues, addCover };
-  return { ready: true, link: link(p, b.id), addCover, message: `Ready: open ${link(p, b.id)} to read it and publish. The cover is the player's to add: ${addCover}` };
+  // Warnings still standing (WO-119): never a refusal, but the assistant answers for them.
+  const warnings = reviewBuild(d, plan, states);
+  return {
+    ready: true,
+    link: link(p, b.id),
+    addCover,
+    ...(warnings.length ? { warnings, warningsNote: "Fix these or tell the player why you left them." } : {}),
+    message: `Ready: open ${link(p, b.id)} to read it and publish. The cover is the player's to add: ${addCover}`,
+  };
 }

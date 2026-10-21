@@ -17,6 +17,7 @@ import type { Quest, QuestLine } from "@/lib/quests/types";
 
 export { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
+import { howPointsWork, pointRules } from "./rules-text";
 import { canTakeAt, issuesOf, planFromPlain, stateAt, type PlainBuild } from "./plan";
 
 /** The quest data is for the current version only. */
@@ -301,9 +302,35 @@ export function checkProgression(plain: PlainBuild) {
 
 let style: string | null = null;
 /** The planner's writing and layout rules for assistants (content/mcp/style.md). */
+/** The style guide (WO-108), with How points work written in from the rules (WO-119), never by hand. */
 export function styleGuide(): string {
-  if (style === null) style = readFileSync(path.join(process.cwd(), "content", "mcp", "style.md"), "utf8");
+  if (style === null) style = readFileSync(path.join(process.cwd(), "content", "mcp", "style.md"), "utf8").replace("{{how-points-work}}", howPointsWork());
   return style;
+}
+
+/** get_rules (WO-119): the numbers How points work says, for an assistant that hasn't read the style guide. */
+export function getRules(version = DEFAULT_VERSION) {
+  return { version, ...pointRules(versionData(version).rules), source: "the planner's rules, as its checks count" };
+}
+
+/**
+ * get_tree (WO-119): every perk in one skill's tree, each with its ranks, the skill each rank needs,
+ * its prerequisite perks and what it rules out, by the skill it first needs, so an assistant can plan a
+ * skill's perks in one call.
+ */
+export function getTree({ skill }: { skill: string }, version = DEFAULT_VERSION) {
+  const d = versionData(version);
+  const tree = [...d.perksByTree.keys()].find((t) => norm(t) === norm(skill));
+  if (!tree) throw new FactsError(`No perk tree called ${skill}. The trees: ${[...d.perksByTree.keys()].join(", ")}.`);
+  const perks = [...d.perksByTree.get(tree)!].sort((a, b) => (a.rankSkills?.[0] ?? a.skill ?? 0) - (b.rankSkills?.[0] ?? b.skill ?? 0));
+  return {
+    tree,
+    perks: perks.map((p) => {
+      const full = getPerk({ id: p.id }, version);
+      return { id: full.id, name: full.name, ranks: full.ranks, needs: full.needs, rankDetails: full.rankDetails.map(({ rank, skill: s, level }) => ({ rank, ...(s ? { skill: s } : {}), ...(level ? { level } : {}) })), rulesOut: full.rulesOut, cost: full.cost };
+    }),
+    source: "game files",
+  };
 }
 
 /** The six categories, for a tool's description. */
