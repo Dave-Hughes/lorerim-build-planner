@@ -4929,7 +4929,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - An e2e that opens a build with Pilgrim (Temple) and Temple of Mara in Set up, changes the mode and Details, lets it save, and reads the start back unchanged. If it doesn't hold, fix the save so only what changed is written.
 
 ### Done when
-- [ ] A creation with 2 minors, a trait without its choice or a start without its option is refused through the door with the choices named.
+- [x] A creation with 2 minors, a trait without its choice or a start without its option is refused through the door with the choices named. (Mac, 22 Oct: `creationProblems` in `src/lib/mcp/plan.ts` runs Set up's `checkStep` for each step and words what it still asks for, with the choices; `create_build` and `create_playthrough` refuse with it, and `checkCreation` still refuses too many. A missing birthsign or start is refused too, as Set up asks for both. Tested in `wo122.test.ts` and `e2e/wo122.spec.ts`; the door e2es now draft whole creations, 6 minors and a start.)
 - [ ] `traitChoices` and `masterOfOneSkill` go in; `set_creation` changes creation and rechecks the levels.
 - [ ] `get_creation` answers; the style guide's How to build says to read it first.
 - [ ] `build_revision` records every save with who made it; `/admin` shows a build's changes; the Set up e2e keeps the start.

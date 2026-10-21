@@ -12,7 +12,7 @@ import type { BuildPlan } from "@/lib/rules/types";
 import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import * as names from "./names";
 import { reviewBuild } from "./review";
-import { canTakeAt, draftCapRefusal, gearFromInput, issuesOf, levelFromInput, plainOf, planFromCreate, refusal, stateAt, type CreateInput, type GearInput, type LevelInput } from "./plan";
+import { canTakeAt, checkedCreation, draftCapRefusal, gearFromInput, issuesOf, levelFromInput, plainOf, planFromCreate, refusal, stateAt, type CreateInput, type GearInput, type LevelInput } from "./plan";
 
 /**
  * The build tools (WO-110): an assistant drafts a build for the signed-in player, level by level,
@@ -76,7 +76,7 @@ export async function prepareBuild(p: Player, input: CreateInput & { version?: s
   if (capped) throw new FactsError(capped);
   const details = buildDetailsSchema.safeParse({ name: input.name, description: input.description ?? "", coverImageUrl: "", writeupUrl: "", visibility: "private", tags: null });
   if (!details.success) throw new FactsError(details.error.issues[0]?.message ?? "Check the build's name and description.");
-  const { plan, states, issues } = issuesOf(d, planFromCreate(d, input));
+  const { plan, states, issues } = checkedCreation(d, planFromCreate(d, input));
   if (issues.length) throw refusal(issues);
   return { d, details: details.data, plan, states };
 }

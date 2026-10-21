@@ -69,16 +69,23 @@ function bearerOf(req: Request): string | undefined {
  * /api/mcp (WO-109b), the challenge names that path's metadata, and a call to a tool that needs sign-in
  * with no token is a 401 that starts sign-in; with a token missing the tool's scope, a 403 naming it.
  */
-async function handle(req: Request): Promise<Response> {
+async function handle(request: Request): Promise<Response> {
+  let req = request;
   if (!mcpOn()) return new Response("Not found", { status: 404 });
   const origin = getPublicOrigin(req);
   const path = new URL(req.url).pathname.replace(/\/+$/, "");
   const metadataPath = `/.well-known/oauth-protected-resource${path === "/api/mcp" ? "" : path}`;
   if (req.method === "POST") {
-    const body = await req
-      .clone()
-      .json()
-      .catch(() => null);
+    // The body read once, and the handler given a fresh request with it (WO-122): reading a clone first sometimes
+    // left the original unusable, and the call failed with a 500 ("TypeError: unusable").
+    const text = await req.text();
+    req = new Request(req.url, { method: req.method, headers: req.headers, body: text });
+    let body: unknown = null;
+    try {
+      body = JSON.parse(text);
+    } catch {
+      // Not JSON: the handler answers it.
+    }
     const bearer = bearerOf(req);
     // A token that doesn't verify is withMcpAuth's to refuse, as before.
     const token = bearer ? await verifyBearer(req, bearer).catch(() => undefined) : null;

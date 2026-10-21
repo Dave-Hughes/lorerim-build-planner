@@ -46,7 +46,7 @@ test("through the door, create_playthrough with creation fields makes the build 
   const from = ip();
   await signIn(context, "other");
   const t = await tokenFor(page, context, baseURL!, from);
-  const made = await call(baseURL!, from, t.access_token, "create_playthrough", { name: "E2E Door Kyria", line: "Made in one call.", race: "Nord", birthsign: "Warrior", majors: ["Two-Handed", "Heavy Armor", "Smithing"], minors: ["Block", "Restoration", "Speech"] });
+  const made = await call(baseURL!, from, t.access_token, "create_playthrough", { name: "E2E Door Kyria", line: "Made in one call.", race: "Nord", birthsign: "Warrior", majors: ["Two-Handed", "Heavy Armor", "Smithing"], minors: ["Block", "Restoration", "Speech", "One-Handed", "Alchemy", "Wayfarer"], start: "Regular (Inn)", startOption: "Random" });
   expect(made.isError, made.text).toBe(false);
   const r = made.json();
   expect(r).toMatchObject({ visibility: "private", act: { name: "The first days", levels: "1 to 5" } });

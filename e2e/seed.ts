@@ -635,15 +635,17 @@ async function seedKyria(db: any) {
   });
 }
 
-/** Images the tests uploaded (dev/builds/e2e…). */
+/** Images the tests uploaded (dev/builds/e2e…, and the seeded runs' dev/playthroughs/e2e…, which count to a run's 40). */
 async function cleanupImages() {
   if (!process.env.BLOB_READ_WRITE_TOKEN) return;
-  let cursor: string | undefined;
-  do {
-    const page = await list({ prefix: "dev/builds/e2e", cursor, limit: 1000 });
-    if (page.blobs.length) await del(page.blobs.map((b) => b.url));
-    cursor = page.hasMore ? page.cursor : undefined;
-  } while (cursor);
+  for (const prefix of ["dev/builds/e2e", "dev/playthroughs/e2e"]) {
+    let cursor: string | undefined;
+    do {
+      const page = await list({ prefix, cursor, limit: 1000 });
+      if (page.blobs.length) await del(page.blobs.map((b) => b.url));
+      cursor = page.hasMore ? page.cursor : undefined;
+    } while (cursor);
+  }
 }
 
 /** Removes one build a test made (WO-90's import), so it doesn't sit in other tests' lists. */

@@ -1,12 +1,14 @@
 import "server-only";
 import { ZodError } from "zod";
 import { emptyPlan } from "@/lib/builds/draft";
+import { checkStep } from "@/lib/builds/steps";
 import { readPlan } from "@/lib/rules/convert";
 import { parseBuildPlan } from "@/lib/builds/validate";
 import { fitsSlot, type GameItem } from "@/lib/items/search";
 import { emptyLevel, perkName, perkStatus } from "@/lib/rules/derive";
 import { checkCreation, computeBuild } from "@/lib/rules/engine";
 import { GEAR_TYPES, gearAt } from "@/lib/rules/gear";
+import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
 import type { GameData } from "@/lib/rules/data";
 import type { Attribute, BuildPlan, GearItem, LevelPlan, LevelState } from "@/lib/rules/types";
 import { FactsError } from "./errors";
@@ -160,6 +162,56 @@ export function issuesOf(d: GameData, plan: BuildPlan): { plan: BuildPlan; state
   const states = computeBuild(parsed, d);
   const issues = states.flatMap((s) => s.issues.map((i) => ({ level: s.level, message: i.message })));
   return { plan: parsed, states, issues };
+}
+
+/** "Male or Female", "Random, Temple of the Divines, ... or Temple of Talos". */
+const either = (xs: string[]) => (xs.length < 2 ? xs.join("") : `${xs.slice(0, -1).join(", ")} or ${xs[xs.length - 1]}`);
+
+/**
+ * Character creation as Set up checks it (WO-122), step by step with its own checkStep, in the door's words with
+ * the choices named: "Choose 4 more minor skills (6 in all).", "Fatal Attraction needs a choice: Male or Female."
+ * checkCreation (in issuesOf) still refuses too many; this refuses what Set up would still ask for.
+ */
+export function creationProblems(d: GameData, plan: BuildPlan): PlannerIssue[] {
+  const out: string[] = [];
+  const r = d.rules;
+  const skills = (n: number, had: number, kind: string, all: number) => `Choose ${n}${had ? " more" : ""} ${kind} skill${n === 1 ? "" : "s"}${had ? ` (${all} in all)` : ""}.`;
+  for (const step of ["race", "birthsign", "skills", "traits", "deity", "mode"] as const) {
+    if (checkStep(d, plan, "", step).state === "done") continue;
+    if (step === "race") out.push(`Choose a race: ${either(d.races.map((x) => x.name))}.`);
+    if (step === "birthsign") out.push(`Choose a birthsign: ${either(d.birthsigns.map((x) => x.name))}.`);
+    if (step === "skills") {
+      if (plan.majors.length < r.majorCount) out.push(skills(r.majorCount - plan.majors.length, plan.majors.length, "major", r.majorCount));
+      if (plan.minors.length < r.minorCount) out.push(skills(r.minorCount - plan.minors.length, plan.minors.length, "minor", r.minorCount));
+    }
+    if (step === "traits")
+      for (const t of plan.traits) {
+        if (t === "Master of One" && !plan.masterOfOneSkill) out.push(`Master of One needs a skill: ${either(d.skills)}.`);
+        const c = TRAIT_CHOICES[t];
+        if (c && !c.options.includes(plan.traitChoices?.[t] ?? "")) out.push(`${t} needs ${t === "Focused Combat" || t === "Focused Magic" ? "a skill" : "a choice"}: ${either(c.options)}.`);
+      }
+    if (step === "mode") {
+      const start = d.startByName.get(plan.start);
+      if (!start) out.push(`Choose a start: ${either(d.starts.map((x) => x.name))}.`);
+      else {
+        // "a temple", "a Helgen keep": the place keeps its capital.
+        const label = (start.optionLabel ?? "choice").replace(/\b[A-Z][a-z]+/g, (w) => (w === "Helgen" ? w : w.toLowerCase()));
+        out.push(`${start.name} needs ${/^[aeiou]/.test(label) ? "an" : "a"} ${label}: ${either(start.options)}.`);
+      }
+    }
+  }
+  return out.map((message) => ({ level: 0, message }));
+}
+
+/**
+ * A new or changed creation's whole check (WO-122): Set up's steps, then every level as issuesOf checks it. A creation
+ * rule checkCreation also says ("Choose the Master of One skill.") is said once, in the step's words.
+ */
+export function checkedCreation(d: GameData, plan: BuildPlan) {
+  const steps = creationProblems(d, plan);
+  const r = issuesOf(d, plan);
+  const issues = [...steps, ...r.issues.filter((i) => !(steps.length && i.level === 0 && i.message === "Choose the Master of One skill."))];
+  return { ...r, issues };
 }
 
 /** "Nothing was saved. Level 3: Needs Destruction 75. It is 10 at level 3." */

@@ -20,7 +20,7 @@ test("an assistant drafts a build: create, three levels with one refused and fix
   expect(t.scope).toBe("facts builds:write playthroughs:write");
   token = t.access_token;
 
-  const made = await call(baseURL!, from, token, "create_build", { name: "E2E Drafted Nord", race: "Nord", birthsign: "Warrior", majors: ["Two-Handed", "Heavy Armor", "Smithing"], minors: ["Block", "Restoration", "Speech"] });
+  const made = await call(baseURL!, from, token, "create_build", { name: "E2E Drafted Nord", race: "Nord", birthsign: "Warrior", majors: ["Two-Handed", "Heavy Armor", "Smithing"], minors: ["Block", "Restoration", "Speech", "One-Handed", "Alchemy", "Wayfarer"], start: "Regular (Inn)", startOption: "Random" });
   expect(made.isError, made.text).toBe(false);
   const created = made.json();
   expect(created).toMatchObject({ visibility: "private", level: { level: 1 } });

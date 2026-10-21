@@ -197,7 +197,7 @@ test("a drafted character with no cover asks for one, not for a reader; the conn
   await signIn(context, "other");
   const t = await tokenFor(page, context, baseURL!, from);
   const go = (name: string, args: object) => call(baseURL!, from, t.access_token, name, args);
-  const made = (await go("create_playthrough", { name: "E2E Coverless", line: "Drafted with no images.", race: "Nord", birthsign: "Warrior", majors: ["Two-Handed", "Heavy Armor", "Smithing"], minors: ["Block", "Restoration", "Speech"] })).json();
+  const made = (await go("create_playthrough", { name: "E2E Coverless", line: "Drafted with no images.", race: "Nord", birthsign: "Warrior", majors: ["Two-Handed", "Heavy Armor", "Smithing"], minors: ["Block", "Restoration", "Speech", "One-Handed", "Alchemy", "Wayfarer"], start: "Regular (Inn)", startOption: "Random" })).json();
   const done = (await go("finish_draft_playthrough", { playthrough: made.playthrough })).json();
   expect(done.addCover).toBe(`${baseURL!.replace(/\/$/, "")}/b/${made.build}/setup?step=name#cover`);
   expect(done).not.toHaveProperty("addPictures");

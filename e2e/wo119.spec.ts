@@ -14,7 +14,7 @@ test("skill points piling up come back as a warning, and spending them clears it
   const t = await tokenFor(page, context, baseURL!, from);
   const go = (name: string, args: object) => call(baseURL!, from, t.access_token, name, args);
 
-  const made = await go("create_build", { name: "E2E Piled Points", race: "Nord", birthsign: "Warrior", majors: ["Two-Handed", "Heavy Armor", "Speech"], minors: ["Smithing", "Restoration", "Block"] });
+  const made = await go("create_build", { name: "E2E Piled Points", race: "Nord", birthsign: "Warrior", majors: ["Two-Handed", "Heavy Armor", "Speech"], minors: ["Smithing", "Restoration", "Block", "One-Handed", "Evasion", "Wayfarer"], start: "Regular (Inn)", startOption: "Random" });
   expect(made.isError, made.text).toBe(false);
   const build = made.json().build;
 
