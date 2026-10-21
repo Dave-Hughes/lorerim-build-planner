@@ -28,7 +28,7 @@ test("a build alone has Levels and Guide, no Story tab, and Read the story opens
   await page.goto(`/b/${AZREM_BUILD_ID}`);
   await expect(tabs(page).getByRole("tab")).toHaveText([/^Levels/, /^Guide/]);
   await page.goto(`/b/${HEALER_BUILD_ID}`);
-  await page.getByRole("link", { name: "Read the story from the beginning" }).click();
+  await page.getByRole("link", { name: /^Read the story/ }).first().click();
   await expect(page).toHaveURL(new RegExp(`/b/${HEALER_BUILD_ID}/story$`));
   await expect(reader(page).getByRole("heading", { level: 1, name: "The Mender" })).toBeVisible();
   await expect(reader(page).getByText("She came north with a satchel of herbs")).toBeVisible();

@@ -28,7 +28,7 @@ test("Start a run on a build alone's card: its Story becomes the run's first cha
   await expect(reader.getByText("She came north with a satchel of herbs")).toBeVisible();
   // The build's own page reads the run's tale from the beginning.
   await page.goto(`/b/${MENDER_BUILD_ID}`);
-  await expect(page.getByRole("link", { name: "Read the story from the beginning" })).toHaveAttribute("href", new RegExp(`/p/${pid}/story/\\d+$`));
+  await expect(page.getByRole("link", { name: /^Read the story/ }).first()).toHaveAttribute("href", new RegExp(`/p/${pid}/story/\\d+$`));
 });
 
 test("/me is one grid: characters with a run and builds alone", async ({ page, context }) => {

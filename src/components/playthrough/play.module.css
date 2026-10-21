@@ -710,3 +710,7 @@ a.mark:hover {
     padding: 4px 10px;
   }
 }
+
+.heroRead {
+  align-self: flex-start;
+}

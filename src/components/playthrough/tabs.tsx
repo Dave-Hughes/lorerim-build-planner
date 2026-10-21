@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ReaderLink } from "@/components/reader/reader";
+import { ReadTheStory } from "@/components/reader/reader";
 import { AiAssisted } from "@/components/ui/ai-assisted";
 import { CopyLinkButton } from "@/components/ui/copy-link-button";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
@@ -21,7 +21,7 @@ export function Byline({ p }: { p: PlaythroughRecord }) {
  * byline over its dark fade and Edit and Copy link top right, as the build page leads (design rule
  * 12). No cover, or no build yet: the plain dark band.
  */
-export function RunHero({ p, isOwner, storyHref = null }: { p: PlaythroughRecord; isOwner: boolean; storyHref?: string | null }) {
+export function RunHero({ p, isOwner }: { p: PlaythroughRecord; isOwner: boolean }) {
   const cover = p.build?.coverImageUrl ?? null;
   const focus = p.build?.coverFocus;
   const actions = (
@@ -34,11 +34,8 @@ export function RunHero({ p, isOwner, storyHref = null }: { p: PlaythroughRecord
       <CopyLinkButton path={`/p/${p.id}`} className="btn" />
     </span>
   );
-  const read = storyHref && (
-    <ReaderLink href={storyHref} className="btn" style={{ alignSelf: "flex-start" }}>
-      Read the story from the beginning
-    </ReaderLink>
-  );
+  // The story, one click away (WO-118), where a build's page has its tab row.
+  const read = <ReadTheStory className={s.heroRead} />;
   if (!cover)
     return (
       <div className={`frame ${s.band}`}>

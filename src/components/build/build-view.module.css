@@ -624,8 +624,29 @@
 /* Folder tabs (WO-60, canvas TabsIcons): the open one joins the panel below with an ember top line. */
 .tabs {
   display: flex;
-  border-bottom: 1px solid var(--rule-strong);
   margin-top: 4px;
+}
+/* The tab row and, at its right, Read the story (WO-118). */
+.tabsRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.tabsRead {
+  padding-bottom: 12px;
+}
+.readAlone {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 0 16px;
+}
+.readAlone:empty {
+  display: none;
+}
+.pinnedRead {
+  margin-left: auto;
 }
 .tab {
   position: relative;
@@ -900,19 +921,6 @@
   .nudgeSide {
     align-items: flex-start;
   }
-}
-/* The way into the story (WO-116): under the byline, in the Story's brass. */
-.readStory {
-  display: block;
-  padding-top: 8px;
-}
-.readStoryButton {
-  color: #e8d3a4;
-  border-color: var(--brass);
-}
-.readStoryButton:hover {
-  color: var(--text);
-  border-color: #e8d3a4;
 }
 /* The pinned bar's first row (WO-116): the name, then the tabs, thin. */
 .pinnedTabs {

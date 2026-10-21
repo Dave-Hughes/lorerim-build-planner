@@ -36,6 +36,8 @@ export interface ReaderStop {
   game: { text: string; href: string } | null;
   /** The owner's Edit: the Story editor on this chapter. */
   edit: string | null;
+  /** When the owner last opened it (WO-118: Continue reading), as ms; none for anyone else. */
+  readAt: number | null;
 }
 
 export interface ReaderBack {
@@ -75,6 +77,7 @@ export function runStops(p: { id: string; taleLine: string | null; view: Playthr
       chapterId: c.id,
       game: c.inGame ? { text: c.inGame.text, href: rowHref(c.inGame.id) } : null,
       edit: p.isOwner ? `/p/${p.id}/edit/story/${c.id}` : null,
+      readAt: p.isOwner && c.readAt ? new Date(c.readAt).getTime() : null,
     };
   });
 }
@@ -99,6 +102,7 @@ export function storyStop(b: { id: string; title: string; line: string; doc: Gui
     chapterId: null,
     game: null,
     edit: b.isOwner ? `/b/${b.id}/edit/story` : null,
+    readAt: null,
   };
 }
 

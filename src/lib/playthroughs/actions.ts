@@ -78,6 +78,17 @@ export const enterByHand = async (id: string, input: Omit<SnapshotInput, "source
 /** The owner read a beat before it opened; kept, and nothing is ticked. */
 export const readEarly = async (id: string, chapterId: number) => run(null, (u) => w.markRead(u, id, [chapterId]));
 
+/**
+ * The owner read a chapter in the reader (WO-118: Continue reading). Nothing is revalidated: the page
+ * under the reader keeps its place, and the reader holds where you are for the visit.
+ */
+export async function noteRead(id: string, chapterId: number): Promise<void> {
+  if (!playthroughsOn()) return;
+  const userId = (await auth())?.user?.id;
+  if (!userId) return;
+  await w.markRead(userId, id, [chapterId]).catch(() => {});
+}
+
 /** A chapter's text from the Story editor, autosaved (the same checks as the Story, WO-79). */
 export const saveChapterDoc = async (id: string, chapterId: number, doc: unknown) => run(id, (u) => w.setChapter(u, id, chapterId, { doc }));
 

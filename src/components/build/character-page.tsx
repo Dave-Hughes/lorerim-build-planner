@@ -93,7 +93,6 @@ export async function CharacterPage({
         admin={admin ? { featured: !!featuredAt, imported } : null}
         playTab={run ? { node: <PlayBody p={run} isOwner={viewerId === run.ownerId} actIndex={actIndex} />, sub: playSub(run), here: run.snapshot?.level ?? null } : null}
         startRun={!run && isOwner && playthroughsOn() && !build.isSample ? `/b/${id}/run` : null}
-        storyHref={stops[0]?.href ?? null}
         nudge={nudge}
         guide={shownDocs}
       />

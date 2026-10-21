@@ -78,7 +78,7 @@ test("point 2: an author writes a Story with a title, three paragraphs, a quote 
 test("point 3: the Story in the reader (WO-116): the plate, the drop cap, the pair side by side, the quote, the viewer and the way back", async ({ page }) => {
   await page.goto(`/b/${STORY_BUILD_ID}`);
   await expect(page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Story/ })).toHaveCount(0);
-  await page.getByRole("link", { name: "Read the story from the beginning" }).click();
+  await page.getByRole("link", { name: /^Read the story/ }).first().click();
   await expect(page).toHaveURL(new RegExp(`/b/${STORY_BUILD_ID}/story$`));
   const story = page.getByRole("dialog", { name: "The Writ" });
 
@@ -140,5 +140,5 @@ test("point 5: the author's builds show a small Story tag on its card", async ({
 
 test("point 1: a build without a Story has no way into the reader", async ({ page }) => {
   await page.goto(`/b/${SEVARI_BUILD_ID}`);
-  await expect(page.getByRole("link", { name: "Read the story from the beginning" })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: /^Read the story/ }).first()).toHaveCount(0);
 });

@@ -17,7 +17,7 @@ test("point 2: Story off: no way into the reader, no Story page, edit-bar link o
   await expect(page.getByRole("tab", { name: /^Story/ })).toHaveCount(0);
   await expect(page.getByRole("region", { name: "Story" })).toHaveCount(0);
   await expect(page.getByText("The Mender")).toHaveCount(0);
-  await expect(page.getByRole("link", { name: "Read the story from the beginning" })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: /^Read the story/ }).first()).toHaveCount(0);
 
   for (const path of [`/b/${HEALER_BUILD_ID}/story`, `/b/${HEALER_BUILD_ID}/story/edit`]) expect((await page.goto(path))?.status(), path).toBe(404);
   await page.goto(`/b/${HEALER_BUILD_ID}/edit`);

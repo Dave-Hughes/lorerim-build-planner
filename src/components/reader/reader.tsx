@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { StoryText } from "@/components/build/story-view";
-import { readEarly } from "@/lib/playthroughs/actions";
+import { noteRead, readEarly } from "@/lib/playthroughs/actions";
 import { stopAt, type ReaderBack, type ReaderStop } from "@/lib/playthroughs/reader";
 import s from "./reader.module.css";
 
@@ -16,7 +16,18 @@ import s from "./reader.module.css";
  * address. Opened from a link, the page renders with the reader already open, and Back goes to the page.
  */
 
-const ReaderContext = createContext<{ open: (href: string) => boolean; reading: boolean } | null>(null);
+const ReaderContext = createContext<{ open: (href: string) => boolean; reading: boolean; stops: ReaderStop[]; last: string | null } | null>(null);
+
+/** Where this browser last read a run (WO-118: Continue reading for anyone but the owner). */
+const lastKey = (runId: string) => `lorerim-last-read:${runId}`;
+function storedLast(runId: string | null): string | null {
+  if (!runId) return null;
+  try {
+    return localStorage.getItem(lastKey(runId));
+  } catch {
+    return null;
+  }
+}
 
 /** Whether the reader is open over the page: the page holds back what would pop up over it (Tapps). */
 export const useReading = () => !!useContext(ReaderContext)?.reading;
@@ -62,7 +73,33 @@ export function ReaderProvider({ stops, back, runId, title, children }: { stops:
     }, SLIDE_MS);
     return () => clearTimeout(t);
   }, [at, leaving]);
-  const value = useMemo(() => ({ open, reading: at >= 0 }), [open, at]);
+  // The chapter read last (WO-118): the owner's newest readAt, else this browser's; then each stop opened.
+  const [last, setLast] = useState<string | null>(() => {
+    const owned = stops.filter((x) => x.readAt !== null).sort((a, b) => b.readAt! - a.readAt!)[0];
+    return owned?.key ?? null;
+  });
+  useEffect(() => {
+    if (!stops.some((x) => x.edit)) {
+      const kept = storedLast(runId);
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage is only readable after mount.
+      if (kept && stops.some((x) => x.key === kept)) setLast(kept);
+    }
+  }, [runId, stops]);
+  const reached = at >= 0 ? stops[at] : null;
+  useEffect(() => {
+    if (!reached || reached.waiting || reached.chapterId === null) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- the stop the address opened is the one read.
+    setLast(reached.key);
+    if (runId) {
+      try {
+        localStorage.setItem(lastKey(runId), reached.key);
+      } catch {
+        // Private windows: Continue reading lasts for the visit.
+      }
+      if (reached.edit) void noteRead(runId, reached.chapterId);
+    }
+  }, [reached, runId]);
+  const value = useMemo(() => ({ open, reading: at >= 0, stops, last }), [open, at, stops, last]);
   const showing = at >= 0 ? at : shown;
   return (
     <ReaderContext.Provider value={value}>
@@ -90,6 +127,29 @@ export function ReaderLink({ href, className, children, onClick, ...rest }: { hr
     >
       {children}
     </a>
+  );
+}
+
+/**
+ * Read the story (WO-118), one click away: at the right of the tab row and in the pinned bar, with
+ * "Continue reading" and the chapter's name above it once the reader has opened one. It opens the
+ * reader there, or at the beginning the first time. Nothing without a story.
+ */
+export function ReadTheStory({ className, compact = false }: { className?: string; compact?: boolean }) {
+  const ctx = useContext(ReaderContext);
+  if (!ctx?.stops.length) return null;
+  const at = ctx.last ? ctx.stops.find((x) => x.key === ctx.last) : undefined;
+  return (
+    <span className={`${s.readStory} ${className ?? ""}`}>
+      {at && !compact && (
+        <span className={s.readStoryAt}>
+          Continue reading<i>{at.title}</i>
+        </span>
+      )}
+      <ReaderLink href={(at ?? ctx.stops[0]).href} className={`btn ${compact ? "btn-sm" : ""} ${s.readStoryButton}`} aria-label={at ? `Read the story: continue at ${at.title}` : "Read the story"}>
+        Read the story
+      </ReaderLink>
+    </span>
   );
 }
 
@@ -127,16 +187,19 @@ function Reader({ stops, at, back, runId, title, slideIn, leaving, onClose, onGo
   useEffect(() => {
     root.current?.scrollTo({ top: 0 });
   }, [at]);
+  // Contents (WO-118): every chapter in reading order; Esc closes it before the reader.
+  const [contents, setContents] = useState(false);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       // The image viewer's Esc is its own.
       if (e.key !== "Escape" || leaving || document.querySelector('[aria-label="Image viewer"]')) return;
       e.preventDefault();
-      onClose();
+      if (contents) setContents(false);
+      else onClose();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [onClose, leaving]);
+  }, [onClose, leaving, contents]);
 
   const toRow = (href: string) => (e: React.MouseEvent) => {
     e.preventDefault();
@@ -155,6 +218,11 @@ function Reader({ stops, at, back, runId, title, slideIn, leaving, onClose, onGo
               × Close
             </button>
             <kbd className={s.key}>Esc</kbd>
+            {stops.length > 1 && (
+              <button type="button" className="btn btn-sm" aria-expanded={contents} aria-controls="reader-contents" onClick={() => setContents(!contents)}>
+                Contents
+              </button>
+            )}
           </span>
           <span className={s.barTitle}>{title}</span>
           <span className={s.barSide}>
@@ -174,6 +242,36 @@ function Reader({ stops, at, back, runId, title, slideIn, leaving, onClose, onGo
             )}
           </span>
         </div>
+
+        {contents && (
+          <nav id="reader-contents" className={s.contents} aria-label="Contents">
+            <ol>
+              {stops.map((x, i) => (
+                <li key={x.key}>
+                  <button
+                    type="button"
+                    className={s.contentsItem}
+                    aria-current={i === at ? "page" : undefined}
+                    onClick={() => {
+                      setContents(false);
+                      onGo(i);
+                    }}
+                  >
+                    <span className={s.contentsKicker}>{x.kicker}</span>
+                    <span className={s.contentsTitle}>
+                      {x.waiting && (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src="/icons/mark-lock.svg" alt="Locked" width={16} height={16} className="px" />
+                      )}
+                      {x.title}
+                    </span>
+                    {x.waiting && <span className={s.contentsWait}>{x.waiting}</span>}
+                  </button>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )}
 
         <header className={`${s.plate} ${stop.plate ? "" : s.plateNone}`}>
           {stop.plate && (

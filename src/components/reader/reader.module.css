@@ -319,3 +319,98 @@
     font-size: 16px;
   }
 }
+
+/* Contents (WO-118): every chapter in reading order, under the bar on the left. */
+.contents {
+  position: fixed;
+  top: 72px;
+  left: 32px;
+  z-index: 3;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+  padding: 8px 0;
+  background: var(--panel-raised);
+  border: 1px solid var(--rule-strong);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+}
+.contents ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.contentsItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  padding: 9px 16px;
+  border: 0;
+  border-left: 2px solid transparent;
+  background: none;
+  font: inherit;
+  color: var(--soft);
+  text-align: left;
+  cursor: pointer;
+}
+.contentsItem:hover {
+  background: var(--panel);
+  color: var(--text);
+}
+.contentsItem[aria-current="page"] {
+  border-left-color: var(--ember);
+  color: var(--ember);
+}
+.contentsKicker {
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  color: var(--brass);
+}
+.contentsTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+.contentsWait {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Read the story (WO-118): at the right of the tab row, Continue reading above it. */
+.readStory {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.readStoryAt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 13px;
+  color: var(--muted);
+}
+.readStoryAt i {
+  font-family: var(--font-flavor);
+  font-size: 16px;
+  color: #ddd5c6;
+}
+.readStoryButton {
+  color: #e8d3a4;
+  border-color: var(--brass);
+}
+.readStoryButton:hover {
+  color: var(--text);
+  border-color: #e8d3a4;
+}
+@media (max-width: 760px) {
+  .contents {
+    left: 16px;
+  }
+  .readStoryAt {
+    display: none;
+  }
+}

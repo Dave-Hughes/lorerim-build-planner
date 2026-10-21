@@ -23,7 +23,7 @@ export function PlayView({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
             ‹ My characters
           </Link>
         )}
-        <RunHero p={p} isOwner={isOwner} storyHref={stops[0]?.href ?? null} />
+        <RunHero p={p} isOwner={isOwner} />
         <PlayBody p={p} isOwner={isOwner} actIndex={actIndex} />
       </main>
     </ReaderProvider>

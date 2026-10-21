@@ -31,7 +31,7 @@ import { GuideSection } from "@/components/guide/guide-section";
 import { LevelNote } from "@/components/guide/level-note";
 import { docText, docWords, firstParagraph, isEmptyDoc, notedLevels, type GuideDoc } from "@/lib/guide/doc";
 import { GuideView } from "@/components/guide/guide-view";
-import { ReaderLink, useReading } from "@/components/reader/reader";
+import { ReadTheStory, useReading } from "@/components/reader/reader";
 import { AiAssisted } from "@/components/ui/ai-assisted";
 import { currentVersion, isOlderThanCurrent } from "@/lib/rules/versions";
 import { ATTRIBUTE_NAMES, levelChanges, levelFacts, levelMarks, nextDestinyLevel, perksByLevel, stoneShare, stretchPerkOrder, stretchPerkRequirement, type PerkListGroup } from "@/lib/rules/derive";
@@ -82,9 +82,7 @@ interface Props {
   playTab?: { node: React.ReactNode; sub: string; here: number | null } | null;
   /** The owner's Start a run, on a build without one (WO-116). */
   startRun?: string | null;
-  /** The reader's first page (WO-116): "Read the story from the beginning" under the byline. */
-  storyHref?: string | null;
-  /** The owner's nudge to add pictures (WO-117): the edit page with the Pictures panel open. */
+  /** The owner's nudge on a draft with no cover (WO-118): Details, at the cover. */
   nudge?: string | null;
 }
 
@@ -120,7 +118,7 @@ function useNarrower(px: number): boolean {
  * navigation, then the level card (what to do, in the order the game asks, with the author's
  * note), then the reference (attributes, skills, perks).
  */
-export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab = "levels", signInToCopy, signInToLike, autoCopy, guide = {}, admin = null, playTab = null, startRun = null, storyHref = null, nudge = null }: Props) {
+export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab = "levels", signInToCopy, signInToLike, autoCopy, guide = {}, admin = null, playTab = null, startRun = null, nudge = null }: Props) {
   const d = useGameData();
   const reading = useReading();
   const noted = useMemo(() => notedLevels(guide), [guide]);
@@ -316,7 +314,6 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
         <Cover
           ownerControls={ownerControls}
           startRun={startRun}
-          storyHref={storyHref}
           build={build}
           isOwner={isOwner}
           signedIn={signedIn}
@@ -374,31 +371,40 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
           {!playTab && <AboutBar plan={plan} />}
 
           {tabs.length > 1 && (
-            <div ref={setTabRow} role="tablist" aria-label="Build sections" data-tour="build-tabs" className={styles.tabs} onKeyDown={onTabKey}>
-              {tabs.map((t) => (
-                <button
-                  key={t}
-                  ref={(el) => {
-                    tabRefs.current[t] = el;
-                  }}
-                  type="button"
-                  role="tab"
-                  id={`tab-${t}`}
-                  data-tour={`${t}-tab`}
-                  aria-selected={tab === t}
-                  aria-controls={`panel-${t}`}
-                  tabIndex={tab === t ? 0 : -1}
-                  className={styles.tab}
-                  onClick={() => setTab(t)}
-                >
-                  {/* Folder tabs (WO-60): the 32px icon, the name, what's inside. */}
-                  <GameIcon file={`tab-${t}`} size={32} className={styles.tabIcon} />
-                  <span className={styles.tabText}>
-                    <span className={styles.tabName}>{TAB_NAMES[t]}</span>
-                    <span className={styles.tabSub}>{TAB_SUB[t]}</span>
-                  </span>
-                </button>
-              ))}
+            <div className={styles.tabsRow}>
+              <div ref={setTabRow} role="tablist" aria-label="Build sections" data-tour="build-tabs" className={styles.tabs} onKeyDown={onTabKey}>
+                {tabs.map((t) => (
+                  <button
+                    key={t}
+                    ref={(el) => {
+                      tabRefs.current[t] = el;
+                    }}
+                    type="button"
+                    role="tab"
+                    id={`tab-${t}`}
+                    data-tour={`${t}-tab`}
+                    aria-selected={tab === t}
+                    aria-controls={`panel-${t}`}
+                    tabIndex={tab === t ? 0 : -1}
+                    className={styles.tab}
+                    onClick={() => setTab(t)}
+                  >
+                    {/* Folder tabs (WO-60): the 32px icon, the name, what's inside. */}
+                    <GameIcon file={`tab-${t}`} size={32} className={styles.tabIcon} />
+                    <span className={styles.tabText}>
+                      <span className={styles.tabName}>{TAB_NAMES[t]}</span>
+                      <span className={styles.tabSub}>{TAB_SUB[t]}</span>
+                    </span>
+                  </button>
+                ))}
+              </div>
+              {/* The story, one click away on every tab (WO-118). */}
+              <ReadTheStory className={styles.tabsRead} />
+            </div>
+          )}
+          {tabs.length <= 1 && (
+            <div className={styles.readAlone}>
+              <ReadTheStory />
             </div>
           )}
           {/* Pinned once the tab row scrolls off (WO-116): the name and the tabs, thin, on every tab; on
@@ -418,6 +424,7 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
                       ))}
                     </span>
                   )}
+                  <ReadTheStory compact className={styles.pinnedRead} />
                   {ownerControls}
                 </div>
               )}
@@ -1521,7 +1528,6 @@ function Ornament() {
 function Cover({
   ownerControls,
   startRun,
-  storyHref,
   build,
   isOwner,
   signedIn,
@@ -1541,7 +1547,6 @@ function Cover({
   onWatch: () => void;
   ownerControls?: React.ReactNode;
   startRun?: string | null;
-  storyHref?: string | null;
 }) {
   const router = useRouter();
   const [copied, setCopied] = useState(false);
@@ -1661,13 +1666,6 @@ function Cover({
               </span>
             </span>
           </div>
-          {storyHref && (
-            <span className={`${styles.readStory} ${styles.heroIn} ${styles.heroIn3}`}>
-              <ReaderLink href={storyHref} className={`btn ${styles.readStoryButton}`}>
-                Read the story from the beginning
-              </ReaderLink>
-            </span>
-          )}
           {build.tags.length > 0 && (
             <ul className={`${styles.tagLine} ${styles.heroIn} ${styles.heroIn3}`} aria-label="Tags">
               {build.tags.map((t) => (
