@@ -4958,7 +4958,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 ### Done when
 - [x] WO-118 done.
 - [ ] WO-115 Parts 3 to 5 done.
-- [ ] WO-119 done.
+- [x] WO-119 done. (One warning blocked; see its Done when.)
 - [ ] WO-121 done, and WO-115 Part 5 on it.
 - [ ] WO-109b done.
 - [ ] `docs/night-2026-10-20.md` lists each order, what to try and what's blocked. Every check in CLAUDE.md passes on the last commit. Push to `staging` and stop: Bob checks the night's work in the morning, then Dave.
