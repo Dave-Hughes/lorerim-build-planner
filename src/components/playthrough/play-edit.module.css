@@ -430,3 +430,7 @@
 .fromSave input {
   accent-color: var(--ember);
 }
+/* The label's 10px gap is the checkbox's; its "i" sits 6px after the words like every other. */
+.fromSave :global(.tip) {
+  margin-left: -4px;
+}

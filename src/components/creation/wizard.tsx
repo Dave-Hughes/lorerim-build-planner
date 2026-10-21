@@ -1032,7 +1032,7 @@ function NameStep({
           {/* The "i" sits outside the <label>: a button inside one would take its name from the input. */}
           <div className="field">
             <span className="label">
-              <label htmlFor="writeup-link">Write-up</label> <InfoTip label="About the write-up" text="Your Discord post or guide." />
+              <label htmlFor="writeup-link">Write-up</label><InfoTip label="About the write-up" text="Your Discord post or guide." />
             </span>
             <input id="writeup-link" className="input" type="url" value={details.writeupUrl} maxLength={500} onChange={(e) => updateDetails({ writeupUrl: e.target.value })} placeholder="[Discord or guide link]" />
           </div>
@@ -1078,7 +1078,7 @@ function TagField({ chosen, suggested, onChange }: { chosen: string[]; suggested
   return (
     <div ref={wrap} className={`field ${styles.tagField}`}>
       <span className="label">
-        Tags{" "}
+        Tags
         <InfoTip
           label="About tags"
           text={`Up to ${MAX_TAGS}. They help people find it on Browse builds.${suggested && chosen.length ? " These are suggested from your majors: remove any that don't fit." : ""}`}
@@ -1113,7 +1113,7 @@ function VideoField({ videoId, onChange }: { videoId: string | undefined; onChan
   return (
     <div className="field">
       <span className="label">
-        <label htmlFor="video-guide">Video</label> <InfoTip label="About the video" text="A YouTube link. It opens the build page and the Guide tab." />
+        <label htmlFor="video-guide">Video</label><InfoTip label="About the video" text="A YouTube link. It opens the build page and the Guide tab." />
       </span>
       <input
         id="video-guide"
@@ -1179,7 +1179,7 @@ function CoverField({
   return (
     <div ref={box} id="cover" className={`field ${styles.cover}`}>
       <span className="label">
-        Cover <InfoTip label="About the cover" text="The image across the top of the page. PNG, JPEG, WebP or GIF, up to 4 MB." />
+        Cover<InfoTip label="About the cover" text="The image across the top of the page. PNG, JPEG, WebP or GIF, up to 4 MB." />
       </span>
       {/* Shown once, cropped as the hero crops it, with Change, Position and Remove on it (WO-118). Change
           offers Upload or Use a link: a screenshot already posted. Signed out, only the link. */}

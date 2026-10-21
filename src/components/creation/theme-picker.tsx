@@ -34,7 +34,7 @@ export function ThemePicker({
   return (
     <fieldset className={styles.fieldset}>
       <legend className="label">
-        Theme <InfoTip label="About the theme" text="The look of this build's page. Layout stays the same." />
+        Theme<InfoTip label="About the theme" text="The look of this build's page. Layout stays the same." />
       </legend>
       <div className={styles.cards}>
         {THEMES.map((t) => (

@@ -248,13 +248,13 @@ function ActFields({ pid, a, last }: { pid: string; a: EditAct; last: boolean })
       </div>
       <div className={s.field}>
         <span className="label">
-          <label htmlFor={`goal-${a.id}`}>Goal</label> <InfoTip label="About the goal" text="What the act is for, in one line. It shows under the act's card." />
+          <label htmlFor={`goal-${a.id}`}>Goal</label><InfoTip label="About the goal" text="What the act is for, in one line. It shows under the act's card." />
         </span>
         <input id={`goal-${a.id}`} className={`input ${e.in}`} value={goal} maxLength={200} onChange={(ev) => setGoal(ev.target.value)} onBlur={() => goal !== a.goal && save(() => act.saveAct(pid, a.id, { goal }), true)} />
       </div>
       <div className={s.field}>
         <span className="label">
-          <label htmlFor={`rule-${a.id}`}>Throughout the act</label>{" "}
+          <label htmlFor={`rule-${a.id}`}>Throughout the act</label>
           <InfoTip label="About throughout the act" text="What she keeps doing all through this act, like playing the inn every night. It isn't something to tick." />
         </span>
         <input
@@ -499,7 +499,7 @@ function ObjectiveRow({
           <div className={s.segs}>
             <div className={s.field}>
               <span className="label">
-                Kind{" "}
+                Kind
                 <InfoTip label="About the kind" text="Done once: a quest, a stage, a person, a place, an item, or one thing she does. Reach a number: a level, a skill, or a count." />
               </span>
               <span className={s.seg} role="group" aria-label="Kind">
@@ -522,7 +522,7 @@ function ObjectiveRow({
           {kind === "once" ? (
             <div className={s.field}>
               <span className="label">
-                Quest <InfoTip label="About the quest" text="Link a planner quest and the save can tick it. Leave it empty for something of her own." />
+                Quest<InfoTip label="About the quest" text="Link a planner quest and the save can tick it. Leave it empty for something of her own." />
               </span>
               <QuestStage quests={quests} detect={detect ?? (link?.link.kind === "quest" ? { quest: link.link.id } : null)} onChange={(det) => (setDetect(det), commit({ detect: det }))} />
             </div>
@@ -544,7 +544,7 @@ function ObjectiveRow({
                   commit({ doneBy: v });
                 }}
               />
-              Ticks from your save <InfoTip label="About ticking from your save" text="The save ticks this when it shows it done. You can always tick it yourself." />
+              Ticks from your save<InfoTip label="About ticking from your save" text="The save ticks this when it shows it done. You can always tick it yourself." />
             </label>
           )}
           <label className={s.field}>

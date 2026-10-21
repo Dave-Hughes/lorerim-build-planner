@@ -468,23 +468,28 @@ textarea:focus-visible {
   border-bottom: 1px dotted var(--faint);
 }
 
-/* "i" after a value: hover, focus or tap shows the explanation */
+/*
+ * "i" after a label or value: hover, focus or tap shows the explanation. The circle sits 6px after the text it follows
+ * (WO-124), set here once: no space before it in the markup. Its hit area runs on past the circle.
+ */
 .tip {
   position: relative;
   display: inline-flex;
   align-items: center;
+  margin-left: 6px;
+  vertical-align: middle;
 }
 .tip > button {
   font: inherit;
   font-size: 11px;
   font-weight: 600;
-  width: 32px;
+  width: 28px;
   height: 32px;
   padding: 0;
-  margin: -8px -8px -8px 0;
+  margin: -8px -12px -8px 0;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background: transparent;
   border: 0;
   color: var(--muted);

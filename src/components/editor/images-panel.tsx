@@ -33,7 +33,7 @@ export function Images({ runId, groups }: { runId: string; groups: PictureGroup[
         <aside className={f.pictures} role="dialog" aria-label="Images">
           <span className={f.picturesHead}>
             <span className={f.picturesTitle}>
-              Images{" "}
+              Images
               <InfoTip label="What's this" text="Every place in this character's story that can show an image. All of them are optional; an empty one uses the act's image or the cover." />
             </span>
             <button type="button" className="btn btn-sm" onClick={() => setOpen(false)}>

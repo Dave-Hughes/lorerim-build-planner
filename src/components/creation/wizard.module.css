@@ -33,70 +33,79 @@
   display: flex;
   flex-direction: column;
 }
+/*
+ * The step rail (WO-124, the EditCompact board). The step you're on is lit: its row on the rule-soft panel with a 3px
+ * ember bar on its left, its number in an ember square, its name in the text colour. A step that needs you is brass with
+ * "!", never red (red is for errors). Done steps have a green check; the rest stay quiet.
+ */
 .stepRow {
   width: 100%;
   display: flex;
-  gap: 14px;
+  gap: 12px;
   align-items: flex-start;
-  padding: 14px 0;
+  padding: 12px 0;
   border: 0;
-  border-bottom: 1px solid #1c2430;
+  border-bottom: 1px solid var(--rule-soft);
   background: transparent;
   font: inherit;
   color: var(--text);
   text-align: left;
   cursor: pointer;
 }
-.next {
-  color: var(--muted);
-}
 .stepMark {
   flex: none;
-  width: 22px;
-  height: 22px;
-  margin: 4px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transform: rotate(45deg);
-  font-family: var(--font-title);
+  width: 24px;
+  height: 24px;
+  display: inline-grid;
+  place-items: center;
+  font-size: 13px;
   font-weight: 700;
-  font-size: 15px;
   box-sizing: border-box;
   border: 1px solid var(--rule-strong);
   color: var(--muted);
 }
 .stepMark > span {
-  transform: rotate(-45deg);
   display: inline-flex;
 }
-/* The done check: pixels, sat a touch high so it reads centred in the diamond. */
+/* The done check: pixels. */
 .check {
   display: block;
-  margin-top: -1px;
+}
+.done .stepMark {
+  background: var(--rule);
+  border-color: var(--rule);
+  color: var(--stamina);
+}
+.problem .stepMark {
+  border-color: var(--brass);
+  color: var(--brass);
+}
+.problem .stepVal {
+  color: var(--brass);
+}
+.now {
+  padding: 12px 14px;
+  margin: 0 -14px;
+  width: calc(100% + 28px);
+  background: var(--rule-soft);
+  box-shadow: inset 3px 0 0 var(--ember);
+  border-bottom-color: transparent;
 }
 .now .stepMark {
   background: var(--ember);
   border-color: var(--ember);
   color: var(--on-ember);
 }
-/* Done and valid (WO-58): a filled Stamina-green diamond with a check, the name in body white. */
-.done .stepMark {
-  background: var(--stamina);
-  border-color: var(--stamina);
-  color: var(--bg, #0e1319);
-}
-/* A problem: a Health-red diamond with "!", the problem as its line. */
-.problem .stepMark {
-  border: 2px solid var(--health);
-  color: color-mix(in srgb, var(--health) 60%, #fff);
-}
-.problem .stepName,
-.problem .stepVal {
-  color: color-mix(in srgb, var(--health) 60%, #fff);
-}
 .now .stepName {
-  color: var(--ember);
+  font-weight: 700;
+  color: var(--text);
+}
+.now .stepVal {
+  color: var(--soft);
+}
+.stepRow:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: -2px;
 }
 .stepText {
   display: flex;
@@ -105,11 +114,11 @@
   min-width: 0;
 }
 .stepName {
-  font-family: var(--font-title);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 17px;
   font-weight: 600;
+  color: var(--soft);
+}
+.next .stepName {
+  color: var(--muted);
 }
 .stepVal {
   font-size: 14px;
