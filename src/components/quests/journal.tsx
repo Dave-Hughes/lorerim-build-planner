@@ -1,15 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { QuestEnding } from "@/lib/quests/types";
+import { checkedLabel } from "@/lib/quests/story";
+import type { QuestEnding, QuestStart } from "@/lib/quests/types";
 import styles from "./quests.module.css";
 
 /**
  * A quest's journal (WO-100): hidden until opened, then the first entry, then the rest on request,
- * then How it can end (WO-115), closed until asked for. A link to #q-<edid> (a story's next step,
- * WO-106) or #end-<edid> opens the row; How it can end stays closed either way.
+ * then How it starts and How it can end (WO-115 Part 5), each closed until asked for and marked
+ * checked or not. A link to #q-<edid> (a story's next step, WO-106) or #end-<edid> opens the row; How
+ * it can end stays closed either way.
  */
-export function QuestRow({ edid, name, xp, first, journal, endings }: { edid: string; name: string; xp: number; first: boolean; journal: string[]; endings: QuestEnding[] }) {
+export function QuestRow({ edid, name, xp, first, journal, endings, start }: { edid: string; name: string; xp: number; first: boolean; journal: string[]; endings: QuestEnding[]; start?: QuestStart }) {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     const check = () => {
@@ -29,7 +31,7 @@ export function QuestRow({ edid, name, xp, first, journal, endings }: { edid: st
       </span>
       <span className={`${styles.xp} ${xp ? "" : styles.zero}`}>{xp ? `${xp} XP` : "No XP"}</span>
       <span className={styles.j}>
-        {journal.length > 0 && (
+        {(journal.length > 0 || start) && (
           <button type="button" className={styles.link} aria-expanded={open} onClick={() => setOpen(!open)}>
             {open ? "Hide journal" : "Journal ›"}
           </button>
@@ -50,10 +52,49 @@ export function QuestRow({ edid, name, xp, first, journal, endings }: { edid: st
               <span className="muted">These give the story away</span>
             </span>
           )}
+          {start && <Starts start={start} />}
           <Endings edid={edid} endings={endings} />
         </span>
       )}
     </li>
+  );
+}
+
+/**
+ * How it starts (WO-115 Part 5, on WO-121): each way in as the start check words it (who to ask and
+ * what, and where), then the first step and where it is. No who above the ways: for a quest with many
+ * ways in, one name would be a guess.
+ */
+function Starts({ start }: { start: QuestStart }) {
+  return (
+    <details className={styles.ends}>
+      <summary>How it starts</summary>
+      {start.checked !== "files" ? (
+        <p className="muted">Its start isn&apos;t checked yet.</p>
+      ) : (
+        <>
+          {start.ways?.length ? (
+            <ul className={styles.waysList}>
+              {start.ways.map((w, i) => (
+                <li key={i}>
+                  {w.how}
+                  {w.needs?.length ? <span className="muted"> ({w.needs.join("; ")})</span> : null}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            !start.needs?.length && <p className="muted">It runs from the start of the game.</p>
+          )}
+          {start.then && (
+            <p className={styles.soft}>
+              Then: {start.then}
+              {start.thenWhere ? ` at ${start.thenWhere}` : ""}
+            </p>
+          )}
+          <span className={styles.src}>{checkedLabel(start.checked)}</span>
+        </>
+      )}
+    </details>
   );
 }
 

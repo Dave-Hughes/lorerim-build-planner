@@ -1303,3 +1303,14 @@ a.mod:hover {
     margin-left: 0;
   }
 }
+
+/* How it starts (WO-115 Part 5): the ways in, one a line. */
+.waysList {
+  margin: 8px 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 15px;
+  color: var(--soft);
+}

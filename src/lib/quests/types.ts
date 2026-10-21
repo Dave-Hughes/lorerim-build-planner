@@ -35,13 +35,19 @@ export interface Quest {
   start?: QuestStart;
 }
 
-/** One quest's start, from the start check: what it needs, who and where, and the ways in. */
+/**
+ * One quest's start, from the start check (WO-121): what it needs, the ways in (each talk with its
+ * speaker and place), then the first step and where it is, and who and where only when one person
+ * starts it.
+ */
 export interface QuestStart {
   needs?: string[];
+  ways?: { how: string; needs?: string[]; who?: string; where?: string }[];
+  then?: string;
+  thenWhere?: string;
+  thenWho?: string;
   who?: string;
   where?: string;
-  task?: string;
-  ways?: { how: string; needs?: string[] }[];
   checked: "files" | "not yet";
 }
 

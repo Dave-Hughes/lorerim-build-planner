@@ -79,3 +79,15 @@ test("a link to #end-<quest> opens its row with How it can end still closed", as
   await expect(ends).not.toHaveAttribute("open", "");
   await expect(page.getByText("I killed Grelod the Kind")).toBeHidden();
 });
+
+test("The Book of Love: Ask Dinya Balu in the Temple of Mara, then Talk to Fastred at Fellstar Farm (WO-121)", async ({ page }) => {
+  await page.goto("/quests/the-book-of-love");
+  const start = page.getByRole("region", { name: "How to start it" });
+  await expect(start).toContainText("Dinya Balu");
+  await expect(start).not.toContainText("Fastred");
+  const quest = page.locator("li", { hasText: "Starts here" });
+  await quest.getByRole("button", { name: "Journal ›" }).click();
+  await quest.getByText("How it starts").click();
+  await expect(quest).toContainText('Ask Dinya Balu "Just tell me what to do." in Temple of Mara');
+  await expect(quest).toContainText("Then: Talk to Fastred at Fellstar Farm");
+});

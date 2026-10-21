@@ -296,11 +296,15 @@ def way_of(s, own_name, line_quests):
     return "It runs from the start of the game", []
 
 
-def start_of(row, line_quests):
+def start_of(row, line_quests, giver=None):
     """
-    A quest's checked start in plain words: { needs, who, where, task, ways, checked }. needs are all needed; when
-    there is more than one way in they are one need ("One of: ..."). checked is "files" when the start check traced
-    what starts it, else "not yet".
+    A quest's checked start in plain words (WO-121): { needs, ways, then, thenWhere, who, where, checked }.
+    needs are all needed; when there is more than one way in they are one need ("One of: ..."). ways are
+    every starter the check found, in way_of's words, each with its speaker and place when it's a talk.
+    then is the first objective, and thenWhere its target's place. who and where only when one person
+    starts it: exactly one speaker, or several where the records' named giver (WO-99, `giver`) is one of
+    them; never an item, a door, a marker or a cell. checked is "files" when the start check traced what
+    starts it, else "not yet".
     """
     if not row:
         return {"checked": "not yet"}
@@ -318,23 +322,41 @@ def start_of(row, line_quests):
         elif ways:
             needs.append("One of: " + "; or ".join(t + (f" ({', '.join(n)})" if n else "") for t, n in ways))
     needs += [d["text"] for d in (row.get("needs") or {}).get("doors", [])]
-    holder = next((h for t in row.get("target", []) for h in t.get("holds", []) if h.get("name")), None)
-    if holder:
-        holder = dict(holder, where=[w for w in holder.get("where", []) if not _HOLDING.search(w)])
-    talk = next((s for s in starters if s["by"] == "dialogue" and s.get("speaker")), None)
     out = {"needs": list(dict.fromkeys(needs))}
-    if holder:
-        out["who"] = holder["name"]
-        if holder.get("where"):
-            out["where"] = holder["where"][0]
-    elif talk:
-        out["who"] = talk["speaker"]
-        if talk.get("speakerPlaced"):
-            out["where"] = talk["speakerPlaced"][0]
+    # Every way in the check found, a quest that also runs from the game's start included (The Book of
+    # Love runs from the start, and Dinya Balu sets it going): those are how a player starts it.
+    shown = []
+    for s in starters:
+        if s["by"] == "start game":
+            continue
+        text, n = way_of(s, own, line_quests)
+        if any(w["how"] == text for w in shown):
+            continue
+        w = {"how": text, **({"needs": n} if n else {})}
+        if s["by"] == "dialogue" and s.get("speaker"):
+            w["who"] = s["speaker"]
+            if s.get("speakerPlaced"):
+                w["where"] = s["speakerPlaced"][0]
+        shown.append(w)
+    if shown:
+        out["ways"] = shown
+    speakers = list(dict.fromkeys(w["who"] for w in shown if w.get("who")))
+    one = speakers[0] if len(speakers) == 1 else (giver["name"] if giver and giver.get("name") in speakers else None)
+    if one:
+        out["who"] = one
+        # The records' named giver's place names its hold too ("Temple of Mara, Riften"): use it when it's them.
+        place = (giver or {}).get("place") if (giver or {}).get("name") == one else None
+        place = place or next((w.get("where") for w in shown if w.get("who") == one and w.get("where")), None)
+        if place:
+            out["where"] = place
     if (row.get("firstObjective") or {}).get("text"):
-        out["task"] = row["firstObjective"]["text"]
-    if len(ways) > 1:
-        out["ways"] = [{"how": t, **({"needs": n} if n else {})} for t, n in ways]
+        out["then"] = row["firstObjective"]["text"]
+        holder = next((h for t in row.get("target", []) for h in t.get("holds", []) if h.get("name") and "actor" in (h.get("kind") or "")), None)
+        place = next((w for w in (holder or {}).get("where", []) if not _HOLDING.search(w)), None)
+        if place:
+            out["thenWhere"] = place
+        if holder:
+            out["thenWho"] = holder["name"]
     traced = starters and not row.get("unread") and not all(s["by"] == "quest script" and not s.get("throughStartedBy") and
                                                                 (s.get("quest") or "").split(" ")[0].rstrip(",") not in line_quests for s in starters)
     out["checked"] = "files" if traced else "not yet"
@@ -374,9 +396,6 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None):
             for s in line["sources"]
         ]
         opening = givers.get(by_edid.get(line["opening"]))
-        giver = giver_of(opening)
-        if giver:
-            item["giver"] = giver
         fo = (opening or {}).get("firstObjective")
         if fo and fo.get("namesWhoOrWhere") and fo.get("filled"):
             item["firstObjective"] = fill_text(fo["filled"], (by_id.get(by_edid.get(line["opening"])) or {}).get("fills", {}), globals_)
@@ -404,11 +423,20 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None):
                     "stages": stages,
                     "endings": endings_of(stages),
                     "objectives": [o["text"] for o in sorted(q.get("objectives", []), key=lambda o: o.get("index", 0)) if o.get("text")],
-                    "start": start_of(checked_rows.get(q["edid"]), line_quests),
+                    "start": start_of(checked_rows.get(q["edid"]), line_quests, giver_of(givers.get(q["id"]))),
                     **({"rewards": rewards} if rewards else {}),
                 }, q.get("fills", {}), globals_)
             )
         item["quests"] = quests
+        # The line's giver (WO-121): its opening quest's who; else the records' named giver, only when the
+        # check found no one to talk to; else none, and the line page shows the opening quest's ways.
+        first_start = next((q["start"] for q in quests if q["edid"] == line["opening"]), {})
+        if first_start.get("who"):
+            item["giver"] = {"name": first_start["who"], **({"place": first_start["where"]} if first_start.get("where") else {})}
+        elif not any(w.get("who") for w in first_start.get("ways", [])):
+            giver = giver_of(opening)
+            if giver:
+                item["giver"] = giver
         # A checked level beats the field guide's (WO-115); start_disagreements lists each for questlines_report.md.
         first = quests[0]["start"] if quests else {}
         levels = [int(n.split(" ")[1]) for n in first.get("needs", []) if re.fullmatch(r"Level \d+", n)]

@@ -143,7 +143,8 @@ describe("get_quest (WO-115)", () => {
 describe("get_quest, open for you (WO-115 Part 3)", () => {
   it("gives a quest's ways in and its first objective as then, never who or where", () => {
     const love = getQuest({ name: "The Book of Love" });
-    expect(love.quest.start).toMatchObject({ checked: "files", then: "Talk to Fastred" });
+    expect(love.quest.start).toMatchObject({ checked: "files", then: "Talk to Fastred at Fellstar Farm" });
+    expect(love.quest.start.ways?.[0].way).toMatch(/^Ask Dinya Balu "Just tell me what to do." in Temple of Mara/);
     expect(love.quest.start).not.toHaveProperty("who");
     expect(love.quest.start).not.toHaveProperty("where");
     expect(JSON.stringify(love)).not.toMatch(/"who"|"where"/);

@@ -169,11 +169,29 @@ class TagsTest(unittest.TestCase):
 class StartTest(unittest.TestCase):
     """WO-115 Part 2: a quest's checked start from its story_check row, in plain words."""
 
-    def test_start_game_quest_points_at_its_giver(self):
-        row = {"name": "Take Up Arms", "startedBy": [{"by": "start game"}, {"by": "dialogue", "speaker": "Aela", "prompt": "Can I join?"}],
-               "target": [{"holds": [{"name": "Kodlak Whitemane", "where": ["Jorrvaskr"]}]}], "firstObjective": {"text": "Speak to Kodlak Whitemane"},
+    def test_a_quest_running_from_the_start_keeps_its_ways_and_one_speaker_is_who(self):
+        # WO-121: The Book of Love runs from the game's start and Dinya Balu sets it going; the first
+        # objective's target (Fastred) is where it sends you, not who starts it.
+        row = {"name": "The Book of Love", "startedBy": [{"by": "dialogue", "speaker": "Dinya Balu", "speakerPlaced": ["Temple of Mara"], "prompt": "Just tell me what to do."}, {"by": "start game"}],
+               "target": [{"holds": [{"name": "Fastred", "kind": "unique actor", "where": ["Fellstar Farm"]}]}], "firstObjective": {"text": "Talk to Fastred"},
                "needs": {"conditions": None, "doors": []}}
-        self.assertEqual(qp.start_of(row, {}), {"needs": [], "who": "Kodlak Whitemane", "where": "Jorrvaskr", "task": "Speak to Kodlak Whitemane", "checked": "files"})
+        self.assertEqual(qp.start_of(row, {}), {
+            "needs": [],
+            "ways": [{"how": 'Ask Dinya Balu "Just tell me what to do." in Temple of Mara', "who": "Dinya Balu", "where": "Temple of Mara"}],
+            "who": "Dinya Balu", "where": "Temple of Mara",
+            "then": "Talk to Fastred", "thenWhere": "Fellstar Farm", "thenWho": "Fastred",
+            "checked": "files",
+        })
+
+    def test_who_among_several_only_the_named_giver_never_a_thing(self):
+        talks = [{"by": "dialogue", "speaker": n} for n in ("Aela the Huntress", "Vilkas", "Kodlak Whitemane")]
+        row = {"name": "Take Up Arms", "startedBy": talks, "target": [{"holds": [{"name": "Golden Claw", "kind": "item", "where": ["Riverwood Trader"]}]}],
+               "firstObjective": {"text": "Speak to Kodlak Whitemane"}, "needs": {"conditions": None, "doors": []}}
+        self.assertNotIn("who", qp.start_of(row, {}))
+        self.assertEqual(qp.start_of(row, {}, {"name": "Kodlak Whitemane", "place": "Jorrvaskr, Whiterun"})["who"], "Kodlak Whitemane")
+        self.assertEqual(qp.start_of(row, {}, {"name": "Kodlak Whitemane", "place": "Jorrvaskr, Whiterun"})["where"], "Jorrvaskr, Whiterun")
+        # An item as the first objective's target is never a who.
+        self.assertNotIn("thenWho", qp.start_of(row, {}))
 
     def test_ways_in_with_their_needs(self):
         node = {"by": "story manager", "event": "change location", "conditions": "Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; fn576 == 1"}
@@ -183,7 +201,7 @@ class StartTest(unittest.TestCase):
         start = qp.start_of(row, {})
         self.assertEqual(start["ways"][0], {"how": "Through DLC1VQ00ChangeLocation, which starts from: It starts by itself on change location",
                                             "needs": ["Laid to Rest completed", "Level 30", "a condition the start check can't name yet (fn576 == 1)"]})
-        self.assertEqual(start["ways"][1], {"how": "Talk to Agmaer in Fort Dawnguard"})
+        self.assertEqual(start["ways"][1], {"how": "Talk to Agmaer in Fort Dawnguard", "who": "Agmaer", "where": "Fort Dawnguard"})
         self.assertEqual((start["who"], start["checked"]), ("Agmaer", "files"))
 
     def test_earlier_quest_and_untraced(self):

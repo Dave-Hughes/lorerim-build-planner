@@ -481,6 +481,15 @@ def main():
         print(f"{len(pages)} quest lines, {sum(len(l['quests']) for l in pages)} quests, {sum(1 for l in pages if 'giver' in l)} with a giver -> quests.json")
         starts = [q["start"]["checked"] for l in pages for q in l["quests"]]
         print(f"{len(checks)} lines checked: {starts.count('files')} quest starts checked from the files, {starts.count('not yet')} not yet")
+        # Who starts a quest, against Bob's answer key (WO-121): a row that fails stops the build.
+        if os.path.exists(os.path.join(RAW, "quest_truth.json")):
+            import unittest
+
+            import test_quest_truth
+
+            result = unittest.TextTestRunner(verbosity=0).run(unittest.defaultTestLoader.loadTestsFromModule(test_quest_truth))
+            if not result.wasSuccessful():
+                sys.exit("quest_truth.json: the quest starts don't match the answer key (above).")
         # Stories (WO-106): Bob's hand-kept stories, checked against the lines; a broken one stops the build.
         if os.path.exists(os.path.join(RAW, "stories.json")):
             from stories import StoryError, build_stories

@@ -155,10 +155,12 @@ export function getSpell(args: { id?: string; name?: string }, version = DEFAULT
 function startOf(q: Quest | undefined): { ways?: { way: string; needs?: string[] }[]; then?: string } {
   const st = q?.start;
   if (!st || st.checked !== "files") return {};
+  // The ways as the check words them, which carry their own speaker and place in the words; the
+  // speaker as `who` waits for WO-121's answer key to pass.
   const ways = st.ways?.length
     ? st.ways.map((w) => ({ way: w.how, ...(w.needs?.length ? { needs: w.needs } : {}) }))
     : (st.needs ?? []).filter((n) => /^(Ask|Talk to|After|Through|It )/.test(n)).slice(0, 1).map((n) => ({ way: n }));
-  return { ways, ...(st.task ? { then: st.task } : {}) };
+  return { ways, ...(st.then ? { then: st.thenWhere ? `${st.then} at ${st.thenWhere}` : st.then } : {}) };
 }
 
 /** How a line or story starts, with where each fact was checked; an unchecked line gives no instructions. */

@@ -129,6 +129,20 @@ export default async function QuestLinePage({ params }: { params: Params }) {
                   </dd>
                 </>
               )}
+              {/* No one giver (WO-121): the opening quest's ways in, as the start check words them. */}
+              {!line.giver && opening?.start?.checked === "files" && !!opening.start.ways?.length && (
+                <>
+                  <dt>Ways in</dt>
+                  <dd>
+                    <ul className={styles.waysList}>
+                      {opening.start.ways.map((w, i) => (
+                        <li key={i}>{w.how}</li>
+                      ))}
+                    </ul>
+                    <span className={styles.src}>game files</span>
+                  </dd>
+                </>
+              )}
               {!line.giver && line.firstObjective && (
                 <>
                   <dt>First step</dt>
@@ -208,7 +222,7 @@ export default async function QuestLinePage({ params }: { params: Params }) {
                 </div>
                 <ul className={styles.qlist}>
                   {story.map((q) => (
-                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening} journal={q.journal} endings={q.endings} />
+                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening} journal={q.journal} endings={q.endings} start={q.start} />
                   ))}
                 </ul>
               </div>
@@ -223,7 +237,7 @@ export default async function QuestLinePage({ params }: { params: Params }) {
                 </div>
                 <ul className={styles.qlist}>
                   {jobs.map((q) => (
-                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening} journal={q.journal} endings={q.endings} />
+                    <QuestRow key={q.edid} edid={q.edid} name={q.name} xp={q.xp} first={q === opening} journal={q.journal} endings={q.endings} start={q.start} />
                   ))}
                 </ul>
               </div>
