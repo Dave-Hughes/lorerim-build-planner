@@ -4962,6 +4962,35 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-121b  Every opening judged: the fixes (21 Oct 2026)
+
+**Why.** Bob judged all 152 openings from Part 4's sheet (`story_checks/openings-judged-2026-10-21.json`): base-game and DLC ones against UESP, mod ones from the records' own evidence, the records winning where a LoreRim mod changes a start. **68 are right, 38 rightly name no single giver, 23 are wrong, 23 can't be settled from the files.** The wrong ones aren't misread files; the files hold the right answer and the step that writes the page picks the wrong piece of it. Six rules fix most of them. Three reverse Bob's own earlier calls (Blood on the Ice, Ancestral Worship, The Cursed Tribe), now back in `WAITING_ON_BOB`.
+
+### Part 1. The rules (Mac, `quest_pages.py`)
+1. **The first step is the starting line's stage.** `then` is the objective that shows at the stage the starting line sets, not the lowest-numbered objective. Blood on the Ice: the guard's line sets 10, "Question the witnesses". The Blessings of Nature: Danica's line sets 20, "Retrieve Nettlebane".
+2. **A required objective beats an optional one** shown at the same stage. Ancestral Worship: "Defeat Vals Veran", not "(Optional) Protect Golldir".
+3. **When the quest finds you, say so.** A start by a story manager node or a messenger is the first way, and its person "comes to find you" with its level and needs (Dawnguard: Durak, level 30, after Laid to Rest; Wyrmstooth: Theodyn Bienne, level 10; The Ebony Warrior: in a major city, level 40). Then no single giver unless that's the only way. Never the person's holding cell or editor spot as where. A start on entering any habitation is "in any inn" (A Night To Remember).
+4. **A rumour that a giver's line depends on comes first.** When the giver's starting line needs another quest's stage (The Whispering Door: Balgruuf's line needs Hulda's rumour, DA08RumorPointer), the rumour is the first way and the giver the second.
+5. **A conditional starter is a way, with its condition.** The Cursed Tribe: Chief Larak's letter only for an Orc or Blood-Kin; otherwise it starts by itself and Atub asks. Never the giver.
+6. **A line's opening that's already running isn't its start.** A line that only shows once the quest is past its first stage (Battle of the Champions: the Legate's line needs stage 20) isn't a starter; and Lost to the Ages starts from The Aetherium Wars or entering Arkngthamz, before Katria.
+
+### Part 2. The data (PC)
+- **The speaker the records don't tag** (Fura, Faralda, Jenassa, Erik): when a starting line has no named speaker and belongs to a follower's own quest (its aliases hold one follower), name that follower. Gift of Saturalia: Niklas (the forced alias). Siege on the Dragon Cult: the "Grifter" alias is Captain Valmir; name the NPC that fills it.
+- **Openings to change:** Townsfolk favours opens with the separate delivery quests Favor Quests Seperated.esp adds (its Favor001 lines need TRUEGlobal 0, which is 1); The Civil War shows both sides' openings, Joining the Legion (Legate Rikke, Castle Dour) and Joining the Stormcloaks; Raven Rock names Captain Veleth at Old Attius Farm; Drowned Sorrows names Dagur at the Frozen Hearth (Haran's lines only call Start); Deathbrand leads with reading the book.
+- **Thane:** the first step is "Assist the people of <the hold>" for the jarl's own hold, not The Reach alone.
+- **The 23 unsure** (mostly Creation Club quests whose scripts aren't in the install): their pages and the door say "How it starts isn't checked yet". Nothing to guess.
+
+### Part 3. The answer key takes every judged opening (Mac)
+- `quest_truth.json` takes the 106 right rows from the judged file (CONFIRMED and NO_GIVER_OK), each with its source (`uesp` with the url, or `records`). A no-giver row carries `noGiver: true`, and `test_quest_truth.py` checks that the page names no single giver for it and that its first step matches. The 23 wrong rows go in once Parts 1 and 2 fix them; `WAITING_ON_BOB` empties.
+
+### Done when
+- [ ] Part 1's six rules, with tests from the rows above.
+- [ ] Part 2's speakers and openings; the unsure say not checked.
+- [ ] The answer key holds every judged opening and passes; `WAITING_ON_BOB` is empty; the door sends `who` and `where` again.
+- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Dave checks five quests he knows.
+
+---
+
 ## WO-121a  The quest starts Bob sent back (21 Oct 2026)
 
 **Why.** Bob read WO-121's 21 waiting rows and its giver table, item by item. Thirteen rows are the records being right (the planner's quest is the main one where UESP's first line is its pointer or misc quest, or the game's own wording, or LoreRim's mod changes it); they are in `DIFFERS` with the reason and the record. Eight are real gaps, and the giver table has six wrong givers and some useless places. Until this is done, the door leaves out `who` and `where`.
@@ -5008,7 +5037,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
   - **The other six:** Brurid, Fultheim, Eden and Adimmisaru each set their opening's first stage; Urag gro-Shub and Wujeeta come with a question each for Bob:
     - Urag's lines set stages 1 to 5, before Seeking A Cure's first objective at stage 7.
     - Wujeeta's line is conditioned on stage 20.
-- [ ] Part 4: all 152 openings in `openings-2026-10-21.md`; Bob has judged each, the confirmed ones are in the answer key, the rest say not checked.
+- [x] Part 4: all 152 openings in `openings-2026-10-21.md`; Bob has judged each, the confirmed ones are in the answer key, the rest say not checked. (PC, 21 Oct: the sheet, in four batches. Bob, 21 Oct: every row judged in `openings-judged-2026-10-21.json`; the fixes and the key's new rows are WO-121b.)
 - PC, 21 Oct: all 152 written, waiting on Bob's judgement. Each opening quest has every start the check found, with its record, the first step and what the page says now; `scripts/gamedata/openings.py` writes the file again. Of the 152:
   - 81 have one giver on the page
   - 52 have ways in but no one giver

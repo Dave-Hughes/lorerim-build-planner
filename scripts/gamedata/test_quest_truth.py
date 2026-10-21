@@ -19,7 +19,6 @@ QUESTS = os.path.join(ROOT, "src", "data", f"lorerim-{VERSION}", "quests.json")
 
 # Rows the LoreRim records answer differently, each with why and the record that shows it.
 DIFFERS: dict[str, str] = {
-    'Blood on the Ice': "Bob, 21 Oct: who passes (a Windhelm guard, after it starts by itself at night in Windhelm). The records show 'Get assistance from the authority figure' (Skyrim.esm:01F7A3 QOBJ 1) and UESP's 'Question the witnesses' (QOBJ 10) at the same stage; either is the first step.",
     'Caught Red Handed': "Bob, 21 Oct: who passes (Svana Far-Shield, INFO Skyrim.esm:041E0C). The first step is LoreRim's wording, 'Obtain a Mark of Dibella from Bolli, a Riften fisherman' (Skyrim.esm:041F91 through LoreRim - Dialogue Patch.esp and Caught Red Handed - Quest Expansion.esp).",
     'Spread the Love': "Bob, 21 Oct: who passes (Dinya Balu, INFO Skyrim.esm:053278). The first step carries the game's count, '(0/20)' (Skyrim.esm:053309).",
     'Dawnguard': "Bob, 21 Oct: the key now points at the line's opening, DLC1VQ01MiscObjective; Agmaer is one of UESP's ways in (LoreRim: level 30). Its first step is the game's full wording, 'Speak with the leader of the Dawnguard, located within Fort Dawnguard, which is southeast of Riften and inside of Dayspring Canyon.'",
@@ -31,8 +30,6 @@ DIFFERS: dict[str, str] = {
     'Rise in the East': "Bob, 21 Oct: the game's own words, with the office named (Skyrim.esm:01DBFC QOBJ 10).",
     'Missing In Action': "Bob, 21 Oct: the game's own words, 'Meet Fralia at her home in the evening.' (Skyrim.esm:01CF26 QOBJ 10).",
     'Evil in Waiting': "Bob, 21 Oct: the game's own words with its count, 'Collect the Vessels (0/3)' (Skyrim.esm:03ED82 QOBJ 5).",
-    'Ancestral Worship': "Bob, 21 Oct: the records show '(Optional) Protect Golldir' (QOBJ 5) and 'Defeat Vals Veran' at the same stage; either is the first step.",
-    'The Cursed Tribe': "Bob, 21 Oct: LoreRim's The Cursed Tribe - Quest Expansion.esp adds a letter from Largashbur as the first step and Chief Larak's talk (The Cursed Tribe - Quest Expansion.esp:000089); the records win over vanilla UESP.",
     'The Heart of Dibella': "Bob, 21 Oct: the records hold the early stages UESP's table lacks: 'Enter the Temple of Dibella' (Skyrim.esm:023B6C QOBJ 10), from the innkeeper's rumour, before Hamal catches you.",
     'Unearthed': "Bob, 21 Oct: the planner's quest is DLC2dunKolbjornQST, whose first objective is 'Fund the excavation' (Dragonborn.esm:01810B QOBJ 40); 'Speak to Ralis' belongs to its misc quest.",
     'Deathbrand': "Bob, 21 Oct: the planner's quest is DLC2dunHaknirTreasureQST, first objective 'Learn more about the buried treasure' (Dragonborn.esm:024002 QOBJ 29); UESP's first line is the misc quest's.",
@@ -41,6 +38,9 @@ DIFFERS: dict[str, str] = {
 # Rows that don't match yet, each sent back for a fix in WO-121a (Bob read them on 21 Oct), with what the records show. Each must still fail,
 # so a fix that makes one pass says to take it out of here.
 WAITING_ON_BOB: dict[str, str] = {
+    'Blood on the Ice': "Bob, 21 Oct (reversed): the first step is wrong, not the records' wording. The guard's line sets stage 10, whose objective is 'Question the witnesses'; 'Get assistance from the authority figure' (QOBJ 1) is the stage-110 one. WO-121b's rule: then is the objective the starting line's stage shows.",
+    'Ancestral Worship': "Bob, 21 Oct (reversed): the first step should be the quest's goal at stage 10, 'Defeat Vals Veran', not the optional side objective (QOBJ 5). WO-121b's rule: an optional objective is never the first step when a required one shows at the same stage.",
+    'The Cursed Tribe': "Bob, 21 Oct (reversed): Chief Larak's letter line (The Cursed Tribe - Quest Expansion.esp) only fires for an Orc or Blood-Kin; for everyone else the level-up node starts it by itself and Atub asks at Largashbur. WO-121b's rule: a conditional starter is a way with its condition, not the giver.",
     "A Night To Remember": "who: the start check's talks are Senna (Skyrim.esm:01F387), Senna (Skyrim.esm:0A95D5), Senna (Skyrim.esm:0A95CB); then: the records' first objective is 'Find Sam Guevenne' (Skyrim.esm:01BB9B QOBJ 10). WO-121a Part 1: the opening should be DA14Start, Sam Guevenne's drinking contest, but DA14Start isn't in quests_raw.json (the Mac has only the crawl), so the PC adds it to quests.py's crawl and then questlines.json's opening",
 }
 
