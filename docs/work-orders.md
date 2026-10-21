@@ -5037,7 +5037,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - A README in the folder: how to add it to Claude Desktop, in five steps Dave can follow.
 
 ### Done when
-- [ ] Part 1: `readSave` reads Kyria's and Azrem's newest saves; the results are in `scripts/save/checked-2026-10-20.md`; skills read or the reason they aren't.
+- [x] Part 1: `readSave` reads Kyria's and Azrem's newest saves; the results are in `scripts/save/checked-2026-10-20.md`; skills read or the reason they aren't. (PC, night of 20 Oct: Kyria's Save 62 reads level 10, XP 197 of 525, The Rift and day 15, and 178 quests the planner knows. Azrem's Save 243 reads level 21, Falkreath, day 40, 298 quests; his Save 161 reads level 15, Ivarstead, day 29, 222 quests. The field guide's Python reader agrees on five of Kyria's stages on Save 62, and on all 174 quests on Save 51. The header's "game date" is play time, so the day comes from GameDaysPassed alone. Skills aren't read: the player's change forms hold no plain list of skill values, and nothing on the PC records what the game shows to check against; the file says what was tried.)
 - [ ] Part 2: Read a save on Play's edit tab, run in the browser, with the wrong-character check.
 - [ ] Part 3: the save connector with `read_latest_save` and `list_saves`, its README, and the style guide line.
 - [ ] Every check in CLAUDE.md passes; behind the flag. Commit on `staging` per part, push, and stop: Dave adds the save connector, asks his Claude to update Kyria from her latest save, and sees Where you stand and her quest objectives fill in.

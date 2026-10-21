@@ -463,6 +463,12 @@ def main():
 
         raw_file = load("quests_raw.json")
         quests_raw = raw_file["quests"]
+        # The save reader's names for quests (WO-112): plugin and local form id, lower case, to the editor id.
+        forms = {f"{q['id'].rsplit(':', 1)[0].lower()}:{q['id'].rsplit(':', 1)[1].lower()}": q["edid"] for q in quests_raw}
+        with open(os.path.join(OUT, "quest_forms.json"), "w", encoding="utf-8") as f:
+            json.dump(dict(sorted(forms.items())), f, indent=0, ensure_ascii=False)
+            f.write("\n")
+        print(f"{len(forms)} quests -> quest_forms.json")
         lines = curate(quests_raw, load("questlines_raw.json")["lines"], load("questlines.json"))
         checks = load_checks(os.path.join(RAW, "story_checks"))  # WO-115: each quest's checked start
         pages = build_quests(lines, quests_raw, load("quest_givers_raw.json")["quests"], checks, raw_file.get("globals", {}))
