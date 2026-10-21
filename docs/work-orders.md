@@ -4905,6 +4905,49 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-128  Places with a reason: hooks that bring a character to caves, mines, forts and landmarks (21 Oct 2026)
+
+**Why.** Dave (21 Oct), from playing Kyria: Skyrim is full of places players want to see (Embershard Mine is the example), and many have no quest pointing at them. A role-player won't run to a mine for no reason, so a playthrough that only follows quests sends them past most of the world. Kyria's guide sent her to Ivarstead and gave her nothing to do on the way or around it. The fix is a hook: the story already brings her to a town, someone there mentions a place nearby, and the reason fits who she is. Dave's example: the playthrough takes her to Riverwood, the blacksmith there talks about the bandits who took Embershard Mine, the village needs the mine's iron, and Kyria feels she has to step in.
+
+Three things Dave was clear about:
+- **Missing things is fine.** He has turned down quests that didn't fit Kyria, knowing they won't come back, and he skips places she has no reason to visit. A good playthrough leaves most of the map alone, on purpose.
+- **Visiting a town doesn't mean clearing its surroundings.** It isn't an MMO. A hook can be planted on one visit and paid off on a later one, and a place above the character's level should be.
+- **It has to vary.** Not every town gets a hook, and the hooks shouldn't all be "the innkeeper mentions bandits". This is where assistants tend to get repetitive, so the tool and the rule have to push against it.
+
+The game has already planted many of these hooks. Counted on Dave's PC (21 Oct, the five base game masters only, from the dialogue index in `C:\LoreRim\_fieldguide\tools\questsense\out\`): of 314 locations carrying a dungeon, cave, mine, fort, ruin, camp, barrow, tower, lair or shrine keyword, 157 are named somewhere in NPC dialogue. Wilhelm warns you off Geirmund's Hall; a traveller on the Ivarstead road says to hold your breath past Shroud Hearth Barrow; on the way out of Helgen someone says Old Embershard Mine "collapsed and was taken over by criminals". The rough count is a starting point, not a spec.
+
+### Part 1. A places index (PC, `scripts/gamedata/`)
+- Every location a player can visit that isn't a city or a house: caves, mines, forts, barrows, Dwemer and Ayleid ruins, bandit and giant camps, lairs, towers, shrines, and named landmarks. From the LCTN records and their `LocType` keywords, across the whole load order, not just the base game.
+- For each: name, type, hold, the nearest town or village (by world position, not by parent location alone), the levels of what is placed there and the boss (the field guide's world scan already does this on the PC: `achr_x.py` then `bossrefs.py`, and `scratch/world/site2.py` for level odds, in `C:\LoreRim\_fieldguide\tools\`), and the XP for clearing it (LoreRim's Experience settings).
+- **What points at it**, with the source of each: NPC lines that name it (speaker, where the speaker lives, the words), notes and books that name it, and quests whose aliases or targets sit inside it. LoreRim's own plugins carry their text inline, so the same extraction works on them without string tables. Keep the speaker's place: that is what ties a place to a town the story visits.
+- A place a quest already covers says which quest, so an assistant never invents a hook for somewhere a quest goes.
+- Output `gamedata/5.0.4.8/places_raw.json` and `src/data/lorerim-5.0.4.8/places.json`, with a report like the quest reports (counts per type and hold, how many have a pointer, how many have none).
+
+### Part 2. `suggest_places` (the door)
+- Input: a playthrough and an act. The tool works out where the act goes (the act's place, the towns of its linked quests, and earlier acts' places) and returns places near those towns.
+- Each place comes back with: type, hold, nearest town, levels and boss, clear XP, its pointers (who says what, where, or the note), any quest that already goes there, and a **when** field against the act's level range: "fits now", "plant now, pay off later (levels X to Y)", or "too high for this act".
+- It also says what the playthrough already uses (places linked by other objectives, and places marked passed by), so an assistant doesn't hand the same kind of hook to every town.
+- Never a place inside a city or a player home. Read-only.
+
+### Part 3. The rule (`content/mcp/style.md`)
+- A new rule 20 under **Playthroughs**, after rule 19 (the reason to travel, WO-127); the Honesty rules move to 21 to 25:
+  > 20. Bring the character to places as well as quests. When an act visits a town, call suggest_places and pick a few places that fit what the character cares about and their reason to travel; most of the map should stay unvisited. Tie each one to a person in a town the story already goes to. Use the game's own words when a place has a pointer (the person who mentions it, or the note), and when it has none, write the player's own hook and say it is theirs, never a quest. A place above the act's levels is planted now and paid off on a later visit. Vary the people and the kinds of place; don't give every town a hook, and never send a character to clear an area just because they passed through. Name the places the character deliberately leaves alone, with one line on why (passed by).
+- Under **How to build**, after WO-127's line: "When an act visits a town, call suggest_places before writing its objectives (rule 20)."
+
+### Part 4. Places in a playthrough
+- **A place objective:** `link` gains the kind `place`, by name. The objective is "Reach <place>" or "Clear <place>", and its why line carries the hook (Play only, rule 12). The story can tell it as a chapter.
+- **Ticking from the save:** find out whether the save records a location as cleared (the location's change form, as the save reader already reads quests). If it does, a Clear objective ticks itself (fromSave); if not, the player ticks it, and the order says so.
+- **Passed by:** an act gets a list of places the character leaves alone on purpose, each with its why line (`set_act` gains `passedBy`). Play shows them in one muted line under the act's goal: "Passed by: Embershard Mine (not her fight yet)". Nothing to tick.
+
+### Done when
+- [ ] Part 1: `places_raw.json`, `places.json` and the report, built across the load order; every place's pointers carry their source and the speaker's place; places a quest covers name the quest.
+- [ ] Part 2: `suggest_places` on the door, with `when` against the act's levels and what the playthrough already uses; tests on an act set in Riverwood (Embershard Mine with its pointer, Bleak Falls Barrow named as the Golden Claw's) and one in Ivarstead (Geirmund's Hall marked "plant now, pay off later").
+- [ ] Part 3: rule 20 and the How to build line; Honesty rules renumbered; no "rule N" reference past the last rule.
+- [ ] Part 4: `place` links, the save check written up (with fromSave if the save has it), and `passedBy` on acts and in Play.
+- [ ] Every check in CLAUDE.md passes. Screenshots of Play with a place objective and a passed-by line at 1440 and 390. Commit on `staging`, push, and stop for Dave: he asks an assistant to plan a new act through the connector and gets two to four places tied to people in the act's towns, at least one in the game's own words, one planted for later, and a passed-by line.
+
+---
+
 ## WO-127  A reason to travel: one more thing assistants weigh when they design a character (22 Oct 2026)
 
 **Why.** Dave (21 Oct), from playing Kyria: a player who wants to get out into the world needs a reason to go from town to town, and the reason has to come from the character. Kyria's came from the road. On her first walk to Ivarstead she buried a pilgrim the wolves had killed, and since then she goes everywhere on foot and clears what is waiting on the road. Without a reason like that, a run drifts between quest markers and the long way between towns gets skipped. This is not a field and nothing changes on screen. It is a question the assistant settles while designing the character, and it shapes the playthrough it writes.
