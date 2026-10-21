@@ -4959,7 +4959,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ### Done when
 - [x] WO-118 done.
-- [ ] WO-115 Parts 3 to 5 done.
+- [x] WO-115 Parts 3 to 5 done. (Part 5 on WO-121; see both orders' Done when.)
 - [x] WO-119 done. (One warning blocked; see its Done when.)
 - [ ] WO-121 done, and WO-115 Part 5 on it.
 - [ ] WO-109b done.
