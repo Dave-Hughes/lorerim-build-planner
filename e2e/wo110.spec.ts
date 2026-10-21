@@ -81,7 +81,7 @@ test("the draft is private under My characters, marked as drafted, and opens in 
   const hero = page.getByRole("region", { name: "Build" });
   await expect(hero.getByText("AI assisted")).toBeVisible();
   await hero.getByRole("button", { name: "AI assisted" }).hover();
-  await expect(page.getByRole("tooltip")).toContainText("made this with an AI assistant through the planner. The planner checked every level and perk against the game's rules");
+  await expect(page.getByRole("tooltip")).toContainText("made this with an AI assistant, like Claude, connected to the planner. The planner checks every level and perk against LoreRim's rules");
   await expect(page.getByText("E2E Claude")).toHaveCount(0);
   // In the editor, every level as sent: level 4 follows every rule, and level 2 has its note.
   await page.goto(`/b/${buildId}/edit?level=4`);
