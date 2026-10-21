@@ -4905,6 +4905,35 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-121a  The quest starts Bob sent back (21 Oct 2026)
+
+**Why.** Bob read WO-121's 21 waiting rows and its giver table, item by item. Thirteen rows are the records being right (the planner's quest is the main one where UESP's first line is its pointer or misc quest, or the game's own wording, or LoreRim's mod changes it); they are in `DIFFERS` with the reason and the record. Eight are real gaps, and the giver table has six wrong givers and some useless places. Until this is done, the door leaves out `who` and `where`.
+
+### Part 1. The rules (Mac, `quest_pages.py`)
+- **A rumour is a way, not a giver.** When three or more different people in one town start a quest by talk (Waking Nightmare: Brina Merilis, Skald, Madena, Rustleif, Leigelf, Frida, Beitild in Dawnstar), they are one way, "Hear people in Dawnstar talk about it", and the page's person is the first step's (Erandur at the Windpeak Inn).
+- **A role is never a giver:** "Courier" (Whiterun, expanded) and the rest of `ROLES` are left out of `who` and the line's giver, as `giver_of` already does.
+- **A place is a place a player can find:** never a holding cell (Wyrmstooth: Theodyn Bienne in the Wyrmstooth Holder Cell), never a worldspace alone ("Skyrim" for Markarth Side), and a name said once ("Blue Palace, The Blue Palace").
+- **The line's opening quest is the one the player starts first.** A Night To Remember's opening is DA14Start (Sam Guevenne's drinking contest), not DA14 (waking in the Temple of Dibella, where Senna talks); Dawnguard's is the quest Durak, the guards' rumour and Agmaer start (LoreRim: level 30), not the one Vigilant Tolan's talk moves. Fix the opening in `questlines.json` through the curation script, not by hand.
+- **The first step is the one shown first:** `then` is the objective the quest's first shown stage displays, not the lowest-numbered objective with text (Dark Ancestor shows "Tell Dengeir that Vighar is dead", QOBJ 20, where UESP has "Destroy the vampire Vighar").
+
+### Part 2. What the start check misses (PC)
+- **First Lessons:** the check finds only Nirya's talk (Skyrim.esm:0DF034). Find what starts MG01 when you meet Faralda at the bridge (her dialogue, a scene, or a trigger on the bridge) and teach `story_check.py` to read it.
+- **Blood on the Ice:** no starter found. It starts by itself at night once you've entered Windhelm four times (UESP: the MS11EnteringWindhelmCount global). Read that trigger and word it: "It starts by itself at night in Windhelm, after you've come in four times."
+- **Caught Red Handed, Spread the Love:** no starter and no first objective found. They are favours; find how Svana Far-Shield's and Dinya Balu's talk starts them (a favour script, `Start()` on the quest, or the favour system's dialogue) and teach the check.
+
+### Part 3. Six givers in the table to fix or prove (PC reads, Bob judges)
+- **The College of Winterhold:** Faralda (Part 2). **The Wolf Queen Awakened:** UESP says the journal starts when you speak to Falk Firebeard after his letter; the check shows Elisif's talk. Read both and say which one sets the first stage.
+- **Infiltration** (Brurid, was Stalleo), **Seeking A Cure** (Urag gro-Shub, was Falion), **A Forgotten Blade** (Fultheim, was Delphine), **Deluge of Deceit** (Wujeeta, was Frissa Black-Briar), **Gore** (Eden, was Gore), **Journey to Baan Malur** (Adimmisaru, was Varanie): for each, the dialogue line that starts the opening quest, who says it, where they stand, and the line itself, in `gamedata/5.0.4.8/story_checks/givers-2026-10-21.md`. Bob adds the ones that check out to `quest_truth.json`.
+
+### Done when
+- [ ] Part 1's five rules, with tests; Waking Nightmare shows the people of Dawnstar, then Erandur at the Windpeak Inn.
+- [ ] Part 2: First Lessons, Blood on the Ice, Caught Red Handed and Spread the Love pass the answer key.
+- [ ] Part 3: the six givers read into `givers-2026-10-21.md`; Bob has judged each.
+- [ ] `WAITING_ON_BOB` is empty; the door sends `who` and `where` again.
+- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Bob checks ten more quests against UESP, then Dave checks five he knows.
+
+---
+
 ## WO-121  Who starts a quest, tested against an answer key (Mac, 21 Oct 2026)
 
 **Why.** Dave checked one quest page, The Book of Love, and it named Fastred at Fellstar Farm as who starts it. Dinya Balu in the Temple of Mara starts it; Fastred is where she sends you. Bob's look: the start check reads the files right (its report names Dinya Balu, "Just tell me what to do."), but `quest_pages.start_of` takes who and where from the first objective's target, so for 175 quests the page names where the quest sends you, sometimes an object ("Golden Claw", "Door", "Passage"). Nobody tested the answers against quests whose answer is known. Bob scored the planner against 38 quests from UESP: the quest's who is right for 17, wrong for 19; the line's giver (from WO-99's named giver) is right more often but still wrong for about 8. Swapping in the dialogue starter alone (Bob tried) fixes some and breaks others, because rumours start many quests (Dawnstar's people for Waking Nightmare, Erandur is the giver).
@@ -4986,7 +5015,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
   - Skill points piling up: more than one level's worth carried over. "142 skill points unspent since level 9. Speech, Two-Handed and Heavy Armor are at max skill for level 18 (68); Smithing 25, Restoration 25 and Block 20 can take them."
   - A perk point unspent for three levels or more: "1 perk point unspent since level 5." with up to five perks open at that level in the build's skills, by name.
   - Destiny points unspent for five levels or more, with how many.
-  - A planned perk whose skill can't reach its requirement by the level it's planned at, if the points were spent toward it.
+  - ~~A planned perk whose skill can't reach its requirement.~~ Dropped (Bob, 21 Oct): a build holds only taken perks, and the rules already refuse a taken perk whose skill is short. Jeff was right to stop.
 - `finish_draft` answers with every warning still standing and the line "Fix these or tell the player why you left them." It never refuses because of a warning.
 - Unit tests on Kyria's plan as drafted (copy it into a fixture from staging's `fsxh33upak` through `get_build`): the skill points, perk point and Destiny warnings fire with the right levels and skills; on the WO-80 sample build none fire.
 
