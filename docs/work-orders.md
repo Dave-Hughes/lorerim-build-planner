@@ -4905,6 +4905,31 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-123  Objectives you can tick and the save can tick, and skills from the save (21 Oct 2026)
+
+**Why.** Dave's first save sync worked (Save 70: level 10, day 15, Ivarstead, 178 quest stages), but nothing ticked itself: every objective in the drafted Kyria is "you tick it" with no planner quest linked, so the save's quest stages had nothing to match. Dave (21 Oct): an objective shouldn't be save **or** tick, it should be both. The save ticks it on its own when it can, so the list stays clean, and there's always a box to tick by hand. And the save gave no skills, so a skill goal ("Lute 66") can't be checked from it.
+
+### Part 1. Every objective has a box; the save can tick it too (Mac)
+- **One rule:** every objective, done once or reach a number, can be ticked by hand. When it's linked to something the save can read (a quest or one of its stages, a level, a skill once Part 3 reads them, a count the save gives), it also ticks itself from the save. Done from the save shows "From your save"; done by hand shows the tick; either counts.
+- **In Edit's Play tab:** the "Done when: The save says so / You tick it" control goes. When an objective is linked to something the save can read, one switch shows under the link, **Ticks from your save**, on by default, with an "i": "The save ticks this when it shows it done. You can always tick it yourself." With nothing linkable, no switch.
+- **Data:** no column is dropped. `done_by` reads as the switch (`save` is on, `hand` is off); a reach objective is now tickable by hand, and `canTickByHand` is true for every kind. A hand tick stays when a later save doesn't show it done; a save that shows it done ticks it whatever the switch said before.
+- **The door:** `add_objective` and `set_objective` take `fromSave` (true by default when the objective is linked to something the save reads); `byHand` is kept for a release as the opposite of `fromSave`. The style guide's rule 14 says both are always on offer.
+
+### Part 2. Warnings while drafting a playthrough (Mac)
+- `reviewPlaythrough`, like WO-119's `reviewBuild`: `add_objective`, `get_playthrough` and `finish_draft_playthrough` answer with warnings for an objective whose words name a planner quest, quest line or follower but which isn't linked ("'Get a Mark of Dibella from Haelga at the bunkhouse' is Caught Red Handed (FreeformRiften11); link it so the save can tick it."), found through the same name search as `search_facts`, and for a reach objective on something the save can't read yet ("Lute 66 can't be read from a save; the player ticks it."). Counted in `door_event` as warnings.
+
+### Part 3. Skills from the save (PC)
+- Read the player's skill levels from the save (the player's actor values in its change form) with `readSave`, and check them against the game. Dave gives a screenshot of Kyria's skills menu at the save you check (ask him for it in your first message; Save 70 or her newest). Include `skills` only if every skill matches; else write under Done when what was tried.
+- Skyrim's Got Talent's lute skill ("Lute 66"): find where that mod keeps it (a global, an actor value, a quest variable). If the save holds it in a form the reader can read, add it to the snapshot's `counts` as "lute"; if not, say so.
+
+### Done when
+- [ ] Part 1: every objective tickable by hand; Ticks from your save on linked ones; the door takes `fromSave`.
+- [ ] Part 2: the drafting warnings, counted.
+- [ ] Part 3: skills (and the lute, if it can be read) from the save, matched against Dave's screenshot, or the reason they can't.
+- [ ] Every check in CLAUDE.md passes; behind the flag. Commit on `staging` per part, push, and stop: Dave's Claude drafts a character from scratch, its quest objectives come linked, and a save sync ticks them.
+
+---
+
 ## WO-122  Character creation through the connector, complete (Mac, 21 Oct 2026)
 
 **Why.** Kyria's Set up shows three problems the assistant left: "Choose 4 more minors", "Fatal Attraction needs a choice", and "Choose a Helgen keep". Bob's look at the door:
