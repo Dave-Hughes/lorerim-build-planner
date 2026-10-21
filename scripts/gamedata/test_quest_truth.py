@@ -34,15 +34,13 @@ DIFFERS: dict[str, str] = {
     'Deathbrand': "Bob, 21 Oct: the planner's quest is DLC2dunHaknirTreasureQST, first objective 'Learn more about the buried treasure' (Dragonborn.esm:024002 QOBJ 29); UESP's first line is the misc quest's.",
 }
 
-# Rows that don't match yet, each sent back for a fix in WO-121a (Bob read them on 21 Oct). What the records show: Each must still fail,
+# Rows that don't match yet, each sent back for a fix in WO-121a (Bob read them on 21 Oct), with what the records show. Each must still fail,
 # so a fix that makes one pass says to take it out of here.
 WAITING_ON_BOB: dict[str, str] = {
     "First Lessons": "who: the start check's talks are Nirya (Skyrim.esm:0DF034)",
-    "Waking Nightmare": "who: the start check's talks are Brina Merilis (Skyrim.esm:087906), Skald the Elder (Skyrim.esm:087907), Madena (Skyrim.esm:087909), Rustleif (Skyrim.esm:08790A), Leigelf (Skyrim.esm:08790B), Frida (Skyrim.esm:08790D), Beitild (Skyrim.esm:08790E)",
-    "A Night To Remember": "who: the start check's talks are Senna (Skyrim.esm:01F387), Senna (Skyrim.esm:0A95D5), Senna (Skyrim.esm:0A95CB); then: the records' first objective is 'Find Sam Guevenne' (Skyrim.esm:01BB9B QOBJ 10); UESP's is not one of this quest’s objectives",
+    "A Night To Remember": "who: the start check's talks are Senna (Skyrim.esm:01F387), Senna (Skyrim.esm:0A95D5), Senna (Skyrim.esm:0A95CB); then: the records' first objective is 'Find Sam Guevenne' (Skyrim.esm:01BB9B QOBJ 10). WO-121a Part 1: the opening should be DA14Start, Sam Guevenne's drinking contest, but DA14Start isn't in quests_raw.json (the Mac has only the crawl), so the PC adds it to quests.py's crawl and then questlines.json's opening",
     "Blood on the Ice": "who: the start check's talks are none (no dialogue starter found); then: the records' first objective is 'Get assistance from the authority figure' (Skyrim.esm:01F7A3 QOBJ 1); UESP's is a later one of its objectives",
-    "Dark Ancestor": "then: the records' first objective is 'Tell Dengeir that Vighar is dead' (Skyrim.esm:0B83C3 QOBJ 20); UESP's is not one of this quest’s objectives",
-    "Dawnguard": "who: the start check's talks are Vigilant Tolan (Dawnguard.esm:019AAB), Vigilant Tolan (Dawnguard.esm:01A1B4); then: the records' first objective is 'Find out what the vampires are seeking' (Dawnguard.esm:00352A QOBJ 30); UESP's is not one of this quest’s objectives",
+    "Dawnguard": "who: the key's DLC1VQ01 is the quest Vigilant Tolan's talk moves (Dawnguard.esm:019AAB, Dawnguard.esm:01A1B4). WO-121a Part 1: the line's opening is already DLC1VQ01MiscObjective, the one Durak, the guards' rumour and Agmaer start, and it names Agmaer; its first objective is 'Speak with the leader of the Dawnguard, located within Fort Dawnguard, which is southeast of Riften and inside of Dayspring Canyon.' (Dawnguard.esm:00D06C QOBJ 10). Bob: point the key at DLC1VQ01MiscObjective and list that wording in DIFFERS, or say what else",
     "Caught Red Handed": "who: the start check's talks are none (no dialogue starter found); then: the records' first objective is None; UESP's is not one of this quest’s objectives",
     "Spread the Love": "who: the start check's talks are none (no dialogue starter found); then: the records' first objective is None; UESP's is not one of this quest’s objectives",
 }

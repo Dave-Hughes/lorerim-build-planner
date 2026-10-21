@@ -62,6 +62,27 @@ def source_name(folder):
     return name.strip(" -") or folder
 
 
+_HOLDING = re.compile(r"\b(holder|holding|storage|dummy|test)\b", re.IGNORECASE)  # a cell a script keeps someone in
+# A whole worldspace isn't a place a player can find ("Skyrim" for Markarth Side's Grit-dar).
+_WORLDS = {"skyrim", "tamriel"}
+
+
+def clean_place(text):
+    """
+    A place a player can find (WO-121a), from "cell, location": no holding cell, no worldspace, and each name
+    once ("Blue Palace, The Blue Palace" -> "Blue Palace"); None when nothing is left.
+    """
+    out, seen = [], set()
+    for p in (text or "").split(", "):
+        p = p.strip()
+        key = re.sub(r"^the ", "", p.lower())
+        if not p or _HOLDING.search(p) or key in _WORLDS or key in seen:
+            continue
+        seen.add(key)
+        out.append(p)
+    return ", ".join(out) or None
+
+
 def place_of(where):
     """ "Riverwood Trader, Riverwood" from a giver's first placed reference; None when it has no names."""
     if not where:
@@ -69,15 +90,45 @@ def place_of(where):
     w = where[0]
     # A holding cell is where a script keeps someone until it moves them in (Lurius Liore sits in
     # the Wyrmstooth Holder Cell, but you meet him at the Bannered Mare): no place is better.
-    if re.search(r"holder|holding|storage|dummy|test", w.get("cellName") or "", re.IGNORECASE):
+    if _HOLDING.search(w.get("cellName") or ""):
         return None
-    parts = [p for p in (w.get("cellName"), w.get("location")) if p]
-    # The same name twice ("Riften, Riften") says it once.
-    out = []
-    for p in parts:
-        if p not in out:
-            out.append(p)
-    return ", ".join(out) or None
+    return clean_place(", ".join(p for p in (w.get("cellName"), w.get("location")) if p))
+
+
+def is_role(name):
+    """A role, not a person (WO-121a): "Courier", "Windhelm Guard"."""
+    words = (name or "").lower().split()
+    return bool(words) and (" ".join(words) in ROLES or words[-1] in ROLES)
+
+
+def towns_of(givers_raw, starts_raw=None):
+    """
+    Each cell's town, for telling a town's rumour (WO-121a): {cell name: location} from every placed person in
+    quest_givers_raw.json, then a house's key ("Key to Brina's House" on a door into Dawnstar) from quest_starts_raw.json.
+    """
+    towns = {}
+
+    def walk(o, f):
+        if isinstance(o, dict):
+            f(o)
+            for v in o.values():
+                walk(v, f)
+        elif isinstance(o, list):
+            for v in o:
+                walk(v, f)
+
+    def placed(o):
+        if isinstance(o.get("cellName"), str) and isinstance(o.get("location"), str) and o["cellName"] != o["location"]:
+            towns.setdefault(o["cellName"], o["location"])
+
+    def door(o):
+        key = ((o.get("lock") or {}).get("keyName") or "")
+        if key.startswith("Key to ") and isinstance(o.get("intoName"), str) and o["intoName"] != key[7:]:
+            towns.setdefault(re.sub(r"^the ", "The ", key[7:]), o["intoName"])
+
+    walk(givers_raw, placed)
+    walk(starts_raw or {}, door)
+    return towns
 
 
 def giver_of(entry):
@@ -86,7 +137,7 @@ def giver_of(entry):
     if not g or not g.get("name"):
         return None
     name = g["name"].strip()
-    if name.lower() in ROLES:
+    if is_role(name):
         return None
     # Not "a name that's the same as its alias": most quests name a person's alias after them
     # (Meridia, Serana, Neloth, Delphine), so that rule would take 39 of the 114 openings' real
@@ -241,7 +292,6 @@ def load_checks(folder):
 
 _LEVEL = re.compile(r"\blevel >= (?:[^;()]*?\(now )?(\d+)", re.IGNORECASE)
 _UNNAMED = re.compile(r"\bfn\d+\b")
-_HOLDING = re.compile(r"holder|holding|storage|dummy|test", re.IGNORECASE)  # a cell a script keeps someone in (as place_of)
 
 
 def level_of(text):
@@ -277,7 +327,8 @@ def way_of(s, own_name, line_quests):
     """One starter row in player words, and the needs that go with it."""
     if s["by"] == "dialogue":
         who = s.get("speaker") or "someone the records don't name"
-        text = (f"Ask {who} \"{s['prompt']}\"" if s.get("prompt") else f"Talk to {who}") + (f" in {s['speakerPlaced'][0]}" if s.get("speakerPlaced") else "")
+        place = clean_place((s.get("speakerPlaced") or [None])[0])
+        text = (f"Ask {who} \"{s['prompt']}\"" if s.get("prompt") else f"Talk to {who}") + (f" in {place}" if place else "")
         return text, plain_needs(s.get("conditions"), own_name)
     if s["by"] == "story manager":
         return f"It starts by itself on {s.get('event') or 'a story event'}", plain_needs(s.get("conditions"), own_name)
@@ -296,33 +347,76 @@ def way_of(s, own_name, line_quests):
     return "It runs from the start of the game", []
 
 
-def start_of(row, line_quests, giver=None):
+def town_of(place, towns):
+    """The town a speaker stands in: their cell's town, else the place's own location ("Windpeak Inn, Dawnstar")."""
+    if not place:
+        return None
+    cell, _, location = place.partition(", ")
+    return towns.get(cell) or location or None
+
+
+def rumours(shown, towns):
     """
-    A quest's checked start in plain words (WO-121): { needs, ways, then, thenWhere, who, where, checked }.
+    Talks by three or more people in three or more places in one town are a rumour (WO-121a): one way, "Hear people
+    in Dawnstar talk about it", with the needs they all share and no one person, in the place of the first of them.
+    """
+    by_town = {}
+    for w in shown:
+        if w.get("who"):
+            town = town_of(w.get("where"), towns)
+            if town:
+                by_town.setdefault(town, []).append(w)
+    out = []
+    for w in shown:
+        # Around the town, not one hall: the Companions asked in Jorrvaskr are six ways to join, not a rumour.
+        town = next((t for t, ws in by_town.items() if w in ws and len({x["who"] for x in ws}) >= 3 and len({x["where"] for x in ws}) >= 3), None)
+        if not town:
+            out.append(w)
+        elif not any(x.get("rumour") == town for x in out):
+            ws = by_town[town]
+            common = [n for n in ws[0].get("needs", []) if all(n in x.get("needs", []) for x in ws)]
+            out.append({"how": f"Hear people in {town} talk about it", **({"needs": common} if common else {}), "where": town, "rumour": town})
+    return out
+
+
+def first_step(row, siblings):
+    """
+    The row whose first objective the player sees first (WO-121a): when the talk that starts a quest sets a stage
+    before the quest shows anything, and the same talk starts one of the line's other quests at a stage that shows its
+    objective (Dengeir's "I will see that Vighar is destroyed." sets Dark Ancestor's stage 10, which shows nothing, and
+    starts FreeformFalkreathQuest03B, whose stage 10 shows "Destroy the vampire Vighar"), that quest's; else the row's own.
+    """
+    shows_at = row.get("firstObjectiveStage")
+    for s in row.get("startedBy", []):
+        m = re.fullmatch(r"SetStage (\d+)", s.get("call") or "")
+        if s["by"] != "dialogue" or not m or shows_at is None or int(m.group(1)) >= shows_at:
+            continue
+        for other in (siblings or {}).values():
+            if other is row or not (other.get("firstObjective") or {}).get("text"):
+                continue
+            for t in other.get("startedBy", []):
+                n = re.fullmatch(r"SetStage (\d+)", t.get("call") or "")
+                if t.get("info") == s.get("info") and n and other.get("firstObjectiveStage") is not None and other["firstObjectiveStage"] <= int(n.group(1)):
+                    return other
+    return row
+
+
+def start_of(row, line_quests, giver=None, towns=None, siblings=None):
+    """
+    A quest's checked start in plain words (WO-121, WO-121a): { needs, ways, then, thenWhere, who, where, checked }.
     needs are all needed; when there is more than one way in they are one need ("One of: ..."). ways are
-    every starter the check found, in way_of's words, each with its speaker and place when it's a talk.
-    then is the first objective, and thenWhere its target's place. who and where only when one person
-    starts it: exactly one speaker, or several where the records' named giver (WO-99, `giver`) is one of
-    them; never an item, a door, a marker or a cell. checked is "files" when the start check traced what
-    starts it, else "not yet".
+    every starter the check found, in way_of's words, each with its speaker and place when it's a talk; three
+    or more people in one town are one rumour way (`towns`, from towns_of). then is the first objective the
+    player sees (first_step, over the line's other rows in `siblings`), and thenWhere its target's place. who
+    and where only when one person starts it: exactly one speaker, or several where the records' named giver
+    (WO-99, `giver`) is one of them; never a role, an item, a door, a marker or a cell, and a place only one a
+    player can find (clean_place). checked is "files" when the start check traced what starts it, else "not yet".
     """
     if not row:
         return {"checked": "not yet"}
     own = row.get("name")
     starters = row.get("startedBy", [])
     needs = plain_needs((row.get("needs") or {}).get("conditions"), own)
-    ways = []
-    if not any(s["by"] == "start game" for s in starters):
-        for s in starters:
-            w = way_of(s, own, line_quests)
-            if w not in ways:
-                ways.append(w)
-        if len(ways) == 1:
-            needs = [ways[0][0]] + needs + ways[0][1]
-        elif ways:
-            needs.append("One of: " + "; or ".join(t + (f" ({', '.join(n)})" if n else "") for t, n in ways))
-    needs += [d["text"] for d in (row.get("needs") or {}).get("doors", [])]
-    out = {"needs": list(dict.fromkeys(needs))}
     # Every way in the check found, a quest that also runs from the game's start included (The Book of
     # Love runs from the start, and Dinya Balu sets it going): those are how a player starts it.
     shown = []
@@ -334,10 +428,22 @@ def start_of(row, line_quests, giver=None):
             continue
         w = {"how": text, **({"needs": n} if n else {})}
         if s["by"] == "dialogue" and s.get("speaker"):
-            w["who"] = s["speaker"]
-            if s.get("speakerPlaced"):
-                w["where"] = s["speakerPlaced"][0]
+            w["talk"] = True
+            if not is_role(s["speaker"]):
+                w["who"] = s["speaker"]
+            place = clean_place((s.get("speakerPlaced") or [None])[0])
+            if place:
+                w["where"] = place
         shown.append(w)
+    shown = rumours(shown, towns or {})
+    if not any(s["by"] == "start game" for s in starters):
+        if len(shown) == 1:
+            needs = [shown[0]["how"]] + needs + shown[0].get("needs", [])
+        elif shown:
+            needs.append("One of: " + "; or ".join(w["how"] + (f" ({', '.join(w['needs'])})" if w.get("needs") else "") for w in shown))
+    needs += [d["text"] for d in (row.get("needs") or {}).get("doors", [])]
+    out = {"needs": list(dict.fromkeys(needs))}
+    shown = [{k: v for k, v in w.items() if k not in ("talk", "rumour")} for w in shown]
     if shown:
         out["ways"] = shown
     speakers = list(dict.fromkeys(w["who"] for w in shown if w.get("who")))
@@ -349,13 +455,14 @@ def start_of(row, line_quests, giver=None):
         place = place or next((w.get("where") for w in shown if w.get("who") == one and w.get("where")), None)
         if place:
             out["where"] = place
-    if (row.get("firstObjective") or {}).get("text"):
-        out["then"] = row["firstObjective"]["text"]
-        holder = next((h for t in row.get("target", []) for h in t.get("holds", []) if h.get("name") and "actor" in (h.get("kind") or "")), None)
-        place = next((w for w in (holder or {}).get("where", []) if not _HOLDING.search(w)), None)
+    step = first_step(row, siblings)
+    if (step.get("firstObjective") or {}).get("text"):
+        out["then"] = step["firstObjective"]["text"]
+        holder = next((h for t in step.get("target", []) for h in t.get("holds", []) if h.get("name") and "actor" in (h.get("kind") or "")), None)
+        place = next((p for p in map(clean_place, (holder or {}).get("where", [])) if p), None)
         if place:
             out["thenWhere"] = place
-        if holder:
+        if holder and not is_role(holder["name"]):
             out["thenWho"] = holder["name"]
     traced = starters and not row.get("unread") and not all(s["by"] == "quest script" and not s.get("throughStartedBy") and
                                                                 (s.get("quest") or "").split(" ")[0].rstrip(",") not in line_quests for s in starters)
@@ -369,9 +476,10 @@ def start_disagreements(pages):
             for l in pages if "guideMinLevel" in l]
 
 
-def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None):
+def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, towns=None):
     """The curated lines (questlines.curate) -> the quests.json lines, in curation order, tags filled."""
     checks, globals_ = checks or {}, globals_ or {}
+    towns = towns if towns is not None else towns_of(givers_raw)
     by_id = {q["id"]: q for q in quests_raw}
     givers = {g["id"]: g for g in givers_raw}
     by_edid = {q["edid"]: q["id"] for q in quests_raw}
@@ -423,7 +531,7 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None):
                     "stages": stages,
                     "endings": endings_of(stages),
                     "objectives": [o["text"] for o in sorted(q.get("objectives", []), key=lambda o: o.get("index", 0)) if o.get("text")],
-                    "start": start_of(checked_rows.get(q["edid"]), line_quests, giver_of(givers.get(q["id"]))),
+                    "start": start_of(checked_rows.get(q["edid"]), line_quests, giver_of(givers.get(q["id"])), towns, checked_rows),
                     **({"rewards": rewards} if rewards else {}),
                 }, q.get("fills", {}), globals_)
             )

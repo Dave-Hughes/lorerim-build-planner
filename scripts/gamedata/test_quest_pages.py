@@ -213,5 +213,64 @@ class StartTest(unittest.TestCase):
         self.assertEqual(qp.start_of(stuck, {})["checked"], "not yet")
 
 
+class SentBackTest(unittest.TestCase):
+    """WO-121a Part 1: the five rules Bob sent back."""
+
+    TOWNS = {"Brina's House": "Dawnstar", "The White Hall": "Dawnstar", "Rustleif's House": "Dawnstar", "Windpeak Inn": "Dawnstar"}
+
+    def test_a_rumour_is_a_way_and_the_first_step_is_the_person(self):
+        talk = lambda who, cell, cond=None: {"by": "dialogue", "speaker": who, "speakerPlaced": [cell], "prompt": "Nightmares?", **({"conditions": cond} if cond else {})}
+        row = {"name": "Waking Nightmare",
+               "startedBy": [talk("Brina Merilis", "Brina's House"), talk("Skald the Elder", "The White Hall"), talk("Madena", "The White Hall", "fn67 == 1"), talk("Rustleif", "Rustleif's House")],
+               "target": [{"holds": [{"name": "Erandur", "kind": "unique actor", "where": ["Windpeak Inn"]}]}], "firstObjective": {"text": "Speak to Erandur"},
+               "needs": {"conditions": None, "doors": []}}
+        start = qp.start_of(row, {}, None, self.TOWNS)
+        self.assertEqual(start["ways"], [{"how": "Hear people in Dawnstar talk about it", "where": "Dawnstar"}])
+        self.assertEqual(start["needs"], ["Hear people in Dawnstar talk about it"])
+        self.assertNotIn("who", start)
+        self.assertEqual((start["then"], start["thenWho"], start["thenWhere"]), ("Speak to Erandur", "Erandur", "Windpeak Inn"))
+
+    def test_several_people_in_one_hall_are_not_a_rumour(self):
+        talks = [{"by": "dialogue", "speaker": n, "speakerPlaced": ["Jorrvaskr Living Quarters, Jorrvaskr"]} for n in ("Aela the Huntress", "Vilkas", "Farkas")]
+        start = qp.start_of({"name": "Take Up Arms", "startedBy": talks, "target": [], "needs": {}}, {}, None, {})
+        self.assertEqual([w.get("who") for w in start["ways"]], ["Aela the Huntress", "Vilkas", "Farkas"])
+
+    def test_a_role_is_never_who(self):
+        row = {"name": "Thane of Whiterun", "startedBy": [{"by": "dialogue", "speaker": "Courier", "speakerPlaced": ["Whiterun Messenger Tower"]}], "target": [], "needs": {}}
+        start = qp.start_of(row, {})
+        self.assertNotIn("who", start)
+        self.assertNotIn("who", start["ways"][0])
+        self.assertTrue(qp.is_role("Windhelm Guard"))
+        self.assertFalse(qp.is_role("Vigilant Tolan"))
+        self.assertIsNone(qp.giver_of({"namedGiver": {"name": "Courier", "where": [{"cellName": "Whiterun Messenger Tower", "location": "Guard Tower"}]}}))
+
+    def test_a_place_a_player_can_find(self):
+        self.assertEqual(qp.clean_place("Blue Palace, The Blue Palace"), "Blue Palace")
+        self.assertEqual(qp.clean_place("Hulgard And Svenja's House, Hulgard and Svenja's House"), "Hulgard And Svenja's House")
+        self.assertEqual(qp.clean_place("Wyrmstooth Holder Cell, Wyrmstooth"), "Wyrmstooth")
+        self.assertIsNone(qp.clean_place("Skyrim"))
+        self.assertEqual(qp.clean_place("Temple of Mara, Riften"), "Temple of Mara, Riften")
+        row = {"name": "Markarth Side", "startedBy": [{"by": "dialogue", "speaker": "Grit-dar", "speakerPlaced": ["Skyrim"], "prompt": "Fight?"}], "target": [], "needs": {}}
+        start = qp.start_of(row, {})
+        self.assertEqual((start["who"], start.get("where"), start["ways"][0]["how"]), ("Grit-dar", None, 'Ask Grit-dar "Fight?"'))
+
+    def test_the_first_step_is_the_one_shown_first(self):
+        accept = {"by": "dialogue", "speaker": "Dengeir of Stuhn", "info": "Skyrim.esm:0B83BB", "call": "SetStage 10", "prompt": "I will see that Vighar is destroyed."}
+        main = {"name": "Dark Ancestor", "startedBy": [accept, {"by": "start game"}], "firstObjectiveStage": 20, "firstObjective": {"text": "Tell Dengeir that Vighar is dead"},
+                "target": [{"holds": [{"name": "Dengeir of Stuhn", "kind": "unique actor", "where": ["Dengeir's House"]}]}], "needs": {}}
+        hunt = {"name": "Dark Ancestor", "startedBy": [accept], "firstObjectiveStage": 10, "firstObjective": {"text": "Destroy the vampire Vighar"},
+                "target": [{"holds": [{"name": "a marker", "kind": "forced reference", "where": ["Bloodlet Throne"]}]}], "needs": {}}
+        siblings = {"FreeformFalkreathQuest03": main, "FreeformFalkreathQuest03B": hunt}
+        self.assertEqual(qp.start_of(main, {}, None, {}, siblings)["then"], "Destroy the vampire Vighar")
+        # Alone, or when the talk's stage already shows the quest's own objective, it keeps its own.
+        self.assertEqual(qp.start_of(main, {})["then"], "Tell Dengeir that Vighar is dead")
+        self.assertEqual(qp.start_of(hunt, {}, None, {}, siblings)["then"], "Destroy the vampire Vighar")
+
+    def test_towns_from_placed_people_and_house_keys(self):
+        givers = [{"where": [{"cellName": "The White Hall", "location": "Dawnstar"}, {"cellName": "Riften", "location": "Riften"}]}]
+        starts = {"lines": [{"doors": [{"intoName": "Dawnstar", "lock": {"keyName": "Key to Brina's House"}}, {"intoName": "Honeyside", "lock": {"keyName": "Key to Honeyside"}}]}]}
+        self.assertEqual(qp.towns_of(givers, starts), {"The White Hall": "Dawnstar", "Brina's House": "Dawnstar"})
+
+
 if __name__ == "__main__":
     unittest.main()

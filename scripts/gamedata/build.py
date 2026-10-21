@@ -458,7 +458,7 @@ def main():
     # The Quests pages (WO-100): the curated lines, with their givers, journals, XP and rewards.
     if all(os.path.exists(os.path.join(RAW, n)) for n in ("questlines.json", "quests_raw.json", "questlines_raw.json", "quest_givers_raw.json")):
         from questlines import curate
-        from quest_pages import build_quests, load_checks, start_disagreements
+        from quest_pages import build_quests, load_checks, start_disagreements, towns_of
         from questlines import report as questlines_report
 
         raw_file = load("quests_raw.json")
@@ -471,7 +471,10 @@ def main():
         print(f"{len(forms)} quests -> quest_forms.json")
         lines = curate(quests_raw, load("questlines_raw.json")["lines"], load("questlines.json"))
         checks = load_checks(os.path.join(RAW, "story_checks"))  # WO-115: each quest's checked start
-        pages = build_quests(lines, quests_raw, load("quest_givers_raw.json")["quests"], checks, raw_file.get("globals", {}))
+        givers_raw = load("quest_givers_raw.json")["quests"]
+        # WO-121a: each cell's town, from the givers' places and the house keys, for telling a town's rumour.
+        towns = towns_of(givers_raw, load("quest_starts_raw.json") if os.path.exists(os.path.join(RAW, "quest_starts_raw.json")) else None)
+        pages = build_quests(lines, quests_raw, givers_raw, checks, raw_file.get("globals", {}), towns)
         cur = load("questlines.json")
         with open(os.path.join(RAW, "questlines_report.md"), "w", encoding="utf-8") as f:
             f.write(questlines_report(lines, cur, cur.get("notInRecords", []), start_disagreements(pages)))
