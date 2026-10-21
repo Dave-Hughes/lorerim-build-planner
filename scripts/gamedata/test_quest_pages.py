@@ -272,5 +272,78 @@ class SentBackTest(unittest.TestCase):
         self.assertEqual(qp.towns_of(givers, starts), {"The White Hall": "Dawnstar", "Brina's House": "Dawnstar"})
 
 
+class JudgedTest(unittest.TestCase):
+    """WO-121b Part 1: the rules from Bob's judged openings."""
+
+    def test_the_first_step_is_what_the_starting_lines_stage_shows(self):
+        objectives = [{"index": 10, "text": "Inspect the Temple of Kynareth"}, {"index": 20, "text": "Retrieve Nettlebane"}]
+        talk = {"by": "dialogue", "speaker": "Danica Pure-Spring", "speakerPlaced": ["Temple of Kynareth"], "call": "SetStage 20", "prompt": "I'll get Nettlebane for you."}
+        row = {"name": "The Blessings of Nature", "startedBy": [talk], "firstObjectiveStage": 20, "firstObjective": {"text": "Inspect the Temple of Kynareth", "index": 10},
+               "objectivesShown": {"20": 20}, "target": [], "needs": {}}
+        self.assertEqual(qp.start_of(row, {}, objectives=objectives)["then"], "Retrieve Nettlebane")
+        # Spread the Love's talk sets 20, which shows objective 10: the check's stays.
+        favour = {**row, "objectivesShown": {"10": 20, "20": 30}}
+        self.assertEqual(qp.start_of(favour, {}, objectives=objectives)["then"], "Inspect the Temple of Kynareth")
+        # A check from before objectivesShown keeps its first objective.
+        self.assertEqual(qp.start_of({k: v for k, v in row.items() if k != "objectivesShown"}, {}, objectives=objectives)["then"], "Inspect the Temple of Kynareth")
+
+    def test_a_required_objective_beats_an_optional_one(self):
+        objectives = [{"index": 5, "text": "(Optional) Protect Golldir"}, {"index": 10, "text": "Defeat Vals Veran"}]
+        talk = {"by": "dialogue", "speaker": "Golldir", "speakerPlaced": ["Hillgrund's Tomb"], "call": "SetStage 10", "prompt": "Let's go."}
+        row = {"name": "Ancestral Worship", "startedBy": [talk], "firstObjectiveStage": 10, "firstObjective": {"text": "(Optional) Protect Golldir", "index": 5}, "target": [], "needs": {}}
+        self.assertEqual(qp.start_of(row, {}, objectives=objectives)["then"], "Defeat Vals Veran")
+        self.assertEqual(qp.start_of({**row, "objectivesShown": {"5": 10, "10": 10}}, {}, objectives=objectives)["then"], "Defeat Vals Veran")
+
+    def test_when_the_quest_finds_you_say_so(self):
+        node = {"by": "story manager", "event": "change location", "conditions": "level >= DLC2EbonyWarriorMinLevel_KRY (now 40); the place you leave isn't Solstheim; the place you enter is Whiterun or the place you enter is Riften or the place you enter is Solitude"}
+        talk = {"by": "dialogue", "speaker": "Ebony Warrior", "speakerPlaced": ["Ebony Warrior's Camp"], "call": "SetStage 10", "prompt": "What were you saying before?"}
+        start = qp.start_of({"name": "The Ebony Warrior", "startedBy": [talk, node], "firstObjectiveStage": 10, "target": [], "needs": {}}, {})
+        self.assertEqual(start["ways"][0], {"how": "Ebony Warrior comes to find you in Whiterun, Riften or Solitude", "needs": ["Level 40"], "who": "Ebony Warrior", "where": "Whiterun, Riften or Solitude"})
+        self.assertEqual((start["who"], start["where"]), ("Ebony Warrior", "Whiterun, Riften or Solitude"))
+        self.assertEqual(start["ways"][1]["how"], 'Ask Ebony Warrior "What were you saying before?"')
+        # Kept in a holding cell: no place, never the cell.
+        held = {"by": "dialogue", "speaker": "Theodyn Bienne", "speakerPlaced": ["Wyrmstooth Holder Cell, Wyrmstooth"], "call": "SetStage 10", "conditions": "level >= WTStartLevel (now 10)"}
+        helper = {"by": "quest script", "quest": "WTWyrmstoothStarter, a helper quest", "call": "Start", "throughStartedBy": [{"by": "story manager", "event": "change location"}]}
+        start = qp.start_of({"name": "Wyrmstooth", "startedBy": [helper, helper, held], "firstObjectiveStage": 10, "target": [], "needs": {}}, {})
+        self.assertEqual((start["ways"][0]["how"], start["who"], start.get("where")), ("Theodyn Bienne comes to find you", "Theodyn Bienne", None))
+        # A messenger with no name, among other ways: no single giver.
+        messenger = {"by": "quest script", "quest": "DLC1VQ00ChangeLocation, a helper quest with Messenger", "call": "SetStage 5",
+                     "throughStartedBy": [{"by": "story manager", "event": "change location", "conditions": "Laid to Rest completed; level >= DLC1VQMinLevel (now 30); the place you enter is a habitation"}]}
+        agmaer = {"by": "dialogue", "speaker": "Agmaer", "speakerPlaced": ["Fort Dawnguard"], "call": "SetStage 10"}
+        start = qp.start_of({"name": "Dawnguard", "startedBy": [messenger, agmaer], "firstObjectiveStage": 10, "target": [], "needs": {}}, {})
+        self.assertEqual(start["ways"][0]["how"], "A messenger comes to find you in any inn")
+        self.assertEqual(start["ways"][0]["needs"], ["Laid to Rest completed", "Level 30"])
+        self.assertNotIn("who", start)
+        # A bounty that fires on entering the giver's own town isn't one.
+        bounty = {"by": "story manager", "event": "change location", "conditions": "the place you enter is Falkreath"}
+        dengeir = {"by": "dialogue", "speaker": "Dengeir of Stuhn", "speakerPlaced": ["Dengeir's House, Falkreath"], "call": "SetStage 10"}
+        self.assertIsNone(qp.finds_you([bounty, dengeir], "Bounty", "Favor001", 10, {}))
+
+    def test_a_conditional_starter_is_a_way_never_the_giver(self):
+        larak = {"by": "dialogue", "speaker": "Chief Larak", "speakerPlaced": ["Larak's Longhouse"], "call": "SetStage 5", "prompt": "Is anything happening at the other Strongholds?",
+                 "conditions": "the speaker is Chief Larak; GetInFaction Blood-Kin of the Orcs == 1 or GetIsRace Skyrim.esm:013747 == 1"}
+        node = {"by": "story manager", "event": "level up", "conditions": "level >= DA06MinLevel (now 20)"}
+        start = qp.start_of({"name": "The Cursed Tribe", "startedBy": [larak, node], "firstObjectiveStage": 5, "target": [], "needs": {}}, {})
+        self.assertNotIn("who", start)
+        self.assertNotIn("who", start["ways"][0])
+        # A faction condition can be the speaker's own: Mralki the innkeeper stays the giver.
+        mralki = {"by": "dialogue", "speaker": "Mralki", "speakerPlaced": ["Frostfruit Inn"], "call": "SetStage 10", "conditions": "GetInFaction JobInnkeeperFaction == 1; the speaker is Mralki"}
+        self.assertEqual(qp.start_of({"name": "The Unquiet Dead", "startedBy": [mralki], "firstObjectiveStage": 15, "target": [], "needs": {}}, {})["who"], "Mralki")
+
+    def test_a_line_that_needs_the_quest_under_way_isnt_its_start(self):
+        legate = {"by": "dialogue", "speaker": "Legate Adventus Caesennius", "speakerPlaced": ["Solitude"], "call": "SetStage 2", "conditions": "Battle of the Champions stage 20 done"}
+        start = qp.start_of({"name": "Battle of the Champions", "startedBy": [legate], "firstObjectiveStage": 10, "target": [], "needs": {}}, {})
+        self.assertNotIn("who", start)
+        self.assertNotIn("ways", start)
+        self.assertEqual(start["checked"], "files")
+        # Falk Firebeard's line needs stage 10, which the letter sets before anything shows (the first objective is at 50).
+        falk = {"by": "dialogue", "speaker": "Falk Firebeard", "speakerPlaced": ["Blue Palace"], "call": "SetStage 50", "conditions": "The Wolf Queen Awakened stage == 10"}
+        self.assertEqual(qp.start_of({"name": "The Wolf Queen Awakened", "startedBy": [falk], "firstObjectiveStage": 50, "target": [], "needs": {}}, {})["who"], "Falk Firebeard")
+        # A named person alongside a guard, each starting it, isn't the one giver.
+        jonna = {"by": "dialogue", "speaker": "Jonna", "speakerPlaced": ["Moorside Inn"], "call": "SetStage 20", "conditions": "Laid to Rest stage == 10"}
+        guard = {"by": "dialogue", "speaker": None, "call": "SetStage 20", "conditions": "GetInFaction Guard Faction (for dialogue) == 1"}
+        self.assertNotIn("who", qp.start_of({"name": "Laid to Rest", "startedBy": [jonna, guard], "firstObjectiveStage": 20, "target": [], "needs": {}}, {}))
+
+
 if __name__ == "__main__":
     unittest.main()

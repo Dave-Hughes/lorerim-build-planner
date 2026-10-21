@@ -4984,7 +4984,18 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - `quest_truth.json` takes the 106 right rows from the judged file (CONFIRMED and NO_GIVER_OK), each with its source (`uesp` with the url, or `records`). A no-giver row carries `noGiver: true`, and `test_quest_truth.py` checks that the page names no single giver for it and that its first step matches. The 23 wrong rows go in once Parts 1 and 2 fix them; `WAITING_ON_BOB` empties.
 
 ### Done when
-- [ ] Part 1's six rules, with tests from the rows above.
+- [x] Part 1's six rules, with tests from the rows above. (Mac, 21 Oct: in `quest_pages.py`, tested in `test_quest_pages.py`'s `JudgedTest`. Every page that changed is one of the lines Bob judged wrong, put right, plus Heart of the Reach's optional step (unsure):
+  - **Rule 1:** rule 1 takes the objective shown at the stage the starting line sets. That's read from `objectivesShown`, which `story_check.py` now writes for each objective: the stage whose own fragment calls SetObjectiveDisplayed for it. Judging from objective numbers broke Toying with the Dead, Spread the Love and Serana, so it doesn't guess. It takes effect when the PC reruns the check (Blood on the Ice, The Blessings of Nature).
+  - **Rule 2:** a required objective beats an optional one shown at the same stage. Ancestral Worship is out of `WAITING_ON_BOB`.
+  - **Rule 3:** the quest finds you when a node or a messenger starts it and its person comes to you. That's when they wait in a holding cell (Theodyn Bienne), when the node fires in places they aren't in (the Ebony Warrior's five cities), when it fires "in any inn" and their every line comes after the start (Sam Guevenne), or when the helper has a Messenger (Dawnguard). They're the giver only when every way is theirs, and never at their cell or editor spot. A node that fires on entering the giver's own town (a jarl's bounty) isn't one.
+  - **Rule 5:** a talk only for players of some races is a way with its condition, never the giver or the line's giver. The Cursed Tribe names no one now. A faction condition can be the speaker's own (Mralki's innkeeper faction), so it doesn't count.
+  - **Rule 6:** a talk that needs its own quest past the stage where its first objective shows is a later step, not a way in (Battle of the Champions). Falk Firebeard's needs stage 10, before The Wolf Queen Awakened's first objective at 50, so he stays.
+  - **Laid to Rest:** a named person alongside a guard, each starting it, isn't the one giver, as Bob judged.)
+- Blocked (Mac), rule 4 and Lost to the Ages:
+  - The Whispering Door's rumour quest, DA08RumorPointer, isn't in `quests_raw.json`, and Balgruuf's line names it only as an unread condition (`fn629`). PC: crawl the pointer and name the condition; then it can be the first way.
+  - Lost to the Ages' book and Arkngthamz starts come through a helper whose conditions are unread (`fn359`, `fn562`). That's the same shape as Ancestral Worship, where Golldir is the giver, so Katria can't be told apart from the files here.
+  - Dawnguard's messenger is "A messenger": the helper's Messenger alias isn't filled in the data (Durak).
+  - The Cursed Tribe's key wants Atub, whose talk isn't a starter in the check.
 - [ ] Part 2's speakers and openings; the unsure say not checked.
 - [ ] The answer key holds every judged opening and passes; `WAITING_ON_BOB` is empty; the door sends `who` and `where` again.
 - [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Dave checks five quests he knows.

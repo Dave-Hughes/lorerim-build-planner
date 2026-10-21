@@ -1430,6 +1430,9 @@ def main():
         row = {"id": qid, "edid": q["edid"], "name": names.get(qid, {}).get("name") or q["name"], "plugin": versions[-1][0] if versions else quest_plugin.get(qid),
                "firstObjectiveStage": thresholds[qid], "startedBy": starts, "caughtUpBy": caught, "advancedBy": len(srt["advanced"]),
                "firstObjective": {"text": fo.get("text"), "index": fo.get("index"), "source": f"{qid} QOBJ {fo.get('index')}", "verdict": "files"} if fo else None,
+               # WO-121b rule 1: the stage whose own fragment shows each objective, for the first step as the starting
+               # line's stage shows it (quest_pages.stage_step).
+               "objectivesShown": {str(o["index"]): st for o in q.get("objectives") or [] for st in [objective_stage(qid, o["index"], events)] if st is not None},
                "target": ww, "needs": {"conditions": format_conditions(own_conds, names, gvals) if own_conds else None, "doors": door_needs(qid, ww),
                                        "ways": door_ways(ww)},
                "globals": list(facts.values()), "gives": gives(q)}
