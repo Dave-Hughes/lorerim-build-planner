@@ -12,7 +12,7 @@ import type { BuildPlan } from "@/lib/rules/types";
 import { DEFAULT_VERSION, FactsError, versionData } from "./errors";
 import * as names from "./names";
 import { reviewBuild } from "./review";
-import { canTakeAt, checkedCreation, draftCapRefusal, gearFromInput, issuesOf, levelFromInput, plainOf, planFromCreate, refusal, stateAt, type CreateInput, type GearInput, type LevelInput } from "./plan";
+import { canTakeAt, checkedCreation, draftCapRefusal, gearFromInput, issuesOf, levelFromInput, plainOf, planFromCreate, refusal, stateAt, withCreation, type CreateInput, type CreationChange, type GearInput, type LevelInput } from "./plan";
 
 /**
  * The build tools (WO-110): an assistant drafts a build for the signed-in player, level by level,
@@ -107,6 +107,23 @@ export async function setLevel(p: Player, input: LevelInput & { build: string; l
   if (!Number.isInteger(input.level) || input.level < 1 || input.level > b.plan.levels.length) throw new FactsError(`The build has levels 1 to ${b.plan.levels.length}.`);
   const levels = b.plan.levels.map((lv, i) => (i === input.level - 1 ? levelFromInput(d, input, input.level) : lv));
   return save(p, b.id, { ...b.plan, levels }, input.level, true);
+}
+
+/**
+ * set_creation (WO-122): changes creation's choices on one of the player's builds. Creation is checked as Set up checks
+ * it, every problem named; then the levels, and the first rule a later level breaks stops the save, as set_level does.
+ */
+export async function setCreation(p: Player, input: CreationChange & { build: string }) {
+  await writeGuard(p);
+  const b = await owned(p, input.build);
+  const d = versionData(b.plan.gameVersion);
+  const plan = withCreation(d, b.plan, input);
+  const { issues } = checkedCreation(d, plan);
+  const atCreation = issues.filter((i) => i.level === 0);
+  if (issues.length) throw refusal(atCreation.length ? atCreation : issues.slice(0, 1));
+  const r = await save(p, b.id, plan, 1);
+  const plain = plainOf(d, plan);
+  return { ...r, creation: { race: plain.race, birthsign: plain.birthsign, mode: plain.mode, deity: plain.deity, start: plain.start, startOption: plain.startOption, majors: plain.majors, minors: plain.minors, traits: plain.traits, traitChoices: plain.traitChoices, masterOfOneSkill: plain.masterOfOneSkill } };
 }
 
 /** remove_last_level: drops the last level, never level 1. */

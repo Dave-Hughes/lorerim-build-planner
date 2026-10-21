@@ -4930,7 +4930,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ### Done when
 - [x] A creation with 2 minors, a trait without its choice or a start without its option is refused through the door with the choices named. (Mac, 22 Oct: `creationProblems` in `src/lib/mcp/plan.ts` runs Set up's `checkStep` for each step and words what it still asks for, with the choices; `create_build` and `create_playthrough` refuse with it, and `checkCreation` still refuses too many. A missing birthsign or start is refused too, as Set up asks for both. Tested in `wo122.test.ts` and `e2e/wo122.spec.ts`; the door e2es now draft whole creations, 6 minors and a start.)
-- [ ] `traitChoices` and `masterOfOneSkill` go in; `set_creation` changes creation and rechecks the levels.
+- [x] `traitChoices` and `masterOfOneSkill` go in; `set_creation` changes creation and rechecks the levels. (Mac, 22 Oct: on `create_build`, `create_playthrough` and `set_creation`, by the game's option names, and back out of `get_build`. `set_creation` changes only the fields sent; a choice goes with its trait, a new start drops the old option, and Master of Destiny takes the birthsign's place, as in Set up. Creation is refused with every problem; a later level, with the first it breaks.)
 - [ ] `get_creation` answers; the style guide's How to build says to read it first.
 - [ ] `build_revision` records every save with who made it; `/admin` shows a build's changes; the Set up e2e keeps the start.
 - [ ] Every check in CLAUDE.md passes; migration additive; behind the flag. Commit on `staging`, push, and stop: Dave asks his Claude to fix Kyria's creation, and her Set up shows no problems.

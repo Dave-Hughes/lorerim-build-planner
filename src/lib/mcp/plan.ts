@@ -32,6 +32,10 @@ export interface CreateInput {
   majors: string[];
   minors: string[];
   traits?: string[];
+  /** A trait's choice by trait (WO-122): { "Fatal Attraction": "Female" }. */
+  traitChoices?: Record<string, string>;
+  /** Master of One's skill (WO-122). */
+  masterOfOneSkill?: string;
   notes?: string;
 }
 
@@ -85,8 +89,64 @@ export function planFromCreate(d: GameData, input: Omit<CreateInput, "name" | "d
   plan.majors = input.majors.map((s) => names.skill(d, s));
   plan.minors = input.minors.map((s) => names.skill(d, s));
   plan.traits = (input.traits ?? []).map((t) => names.trait(d, t));
+  const choices = Object.entries(input.traitChoices ?? {}).map(([t, c]) => {
+    const trait = names.trait(d, t);
+    if (!plan.traits.includes(trait)) throw new FactsError(`A choice for ${trait} needs the trait: it isn't one of traits.`);
+    return [trait, names.traitChoice(trait, c)];
+  });
+  if (choices.length) plan.traitChoices = Object.fromEntries(choices);
+  if (input.masterOfOneSkill) {
+    if (!plan.traits.includes("Master of One")) throw new FactsError("masterOfOneSkill needs the trait Master of One: it isn't one of traits.");
+    plan.masterOfOneSkill = names.skill(d, input.masterOfOneSkill);
+  }
   plan.notes = input.notes ?? "";
   return plan;
+}
+
+/** The choices creation is made of (WO-122): what set_creation can change, in the plain shape. */
+export type CreationChange = Partial<Omit<CreateInput, "name" | "description" | "notes">>;
+
+/**
+ * A build with its creation changed (set_creation, WO-122): the fields given replace the plan's, the rest stay. Choices
+ * for traits it no longer holds go, as in Set up (Master of Destiny takes the birthsign's place), and a new start
+ * without an option takes none. Levels and gear stay.
+ */
+export function withCreation(d: GameData, plan: BuildPlan, change: CreationChange): BuildPlan {
+  // Only the fields given are read by name; the rest stay as saved.
+  const next: BuildPlan = { ...plan };
+  if (change.race !== undefined) next.race = names.race(d, change.race);
+  if (change.birthsign !== undefined) next.birthsign = change.birthsign ? names.birthsign(d, change.birthsign) : "";
+  if (change.mode !== undefined) next.mode = names.mode(d, change.mode);
+  if (change.deity !== undefined) next.deity = change.deity ? names.deity(d, change.deity) : "";
+  if (change.start !== undefined) {
+    const start = names.start(d, change.start);
+    if (start !== plan.start) delete next.startOption;
+    next.start = start;
+    delete next.startWas;
+  }
+  if (change.startOption !== undefined) {
+    if (!next.start) throw new FactsError("A start option needs a start: say which start first.");
+    next.startOption = names.startOption(d, next.start, change.startOption);
+  }
+  if (change.majors) next.majors = change.majors.map((x) => names.skill(d, x));
+  if (change.minors) next.minors = change.minors.map((x) => names.skill(d, x));
+  if (change.traits) next.traits = change.traits.map((t) => names.trait(d, t));
+  // Choices for traits no longer held go, as in Set up; then the ones given.
+  const choices = Object.fromEntries(Object.entries(plan.traitChoices ?? {}).filter(([t]) => next.traits.includes(t)));
+  for (const [t, c] of Object.entries(change.traitChoices ?? {})) {
+    const trait = names.trait(d, t);
+    if (!next.traits.includes(trait)) throw new FactsError(`A choice for ${trait} needs the trait: it isn't one of traits.`);
+    choices[trait] = names.traitChoice(trait, c);
+  }
+  if (Object.keys(choices).length) next.traitChoices = choices;
+  else delete next.traitChoices;
+  if (change.masterOfOneSkill !== undefined) {
+    if (!next.traits.includes("Master of One")) throw new FactsError("masterOfOneSkill needs the trait Master of One: it isn't one of traits.");
+    next.masterOfOneSkill = names.skill(d, change.masterOfOneSkill);
+  }
+  if (!next.traits.includes("Master of One")) delete next.masterOfOneSkill;
+  if (next.traits.includes("Master of Destiny")) next.birthsign = "";
+  return next;
 }
 
 /** One level's choices from names. */
@@ -275,6 +335,8 @@ export function plainOf(d: GameData, saved: BuildPlan) {
     majors: plan.majors,
     minors: plan.minors,
     traits: plan.traits,
+    ...(plan.traitChoices ? { traitChoices: plan.traitChoices } : {}),
+    ...(plan.masterOfOneSkill ? { masterOfOneSkill: plan.masterOfOneSkill } : {}),
     notes: plan.notes,
     levels: plan.levels.map((lv, i) => ({
       level: i + 1,

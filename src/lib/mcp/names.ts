@@ -1,6 +1,7 @@
 import "server-only";
 import { rankCount, type GameData } from "@/lib/rules/data";
 import type { GameItem } from "@/lib/items/search";
+import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
 import { FactsError } from "./errors";
 
 /**
@@ -60,6 +61,15 @@ export const mode = (d: GameData, name: string) => oneOf("mode", name, d.gameMod
 export const stone = (d: GameData, name: string) => (norm(name) === "none" ? "none" : oneOf("standing stone", name, d.stones.map((s) => s.name)));
 export const trait = (d: GameData, name: string) => oneOfMany("trait", name, d.traits.map((t) => t.name));
 export const start = (d: GameData, name: string) => oneOfMany("start", name, d.starts.map((s) => s.name));
+
+/** A trait's choice (WO-122), by the game's option names: Fatal Attraction's Male or Female. A trait that asks none refuses one. */
+export function traitChoice(trait: string, choice: string): string {
+  const c = TRAIT_CHOICES[trait];
+  if (!c) throw new FactsError(`${trait} asks no choice. The traits that do: ${Object.keys(TRAIT_CHOICES).join(", ")}; Master of One takes masterOfOneSkill.`);
+  const hit = c.options.find((o) => norm(o) === norm(choice));
+  if (hit) return hit;
+  throw new FactsError(`${choice} isn't a choice for ${trait}. Its choices are: ${c.options.join(", ")}.`);
+}
 
 /** A start's one choice (an inn, a hold): one of its options; a start without a choice refuses one. */
 export function startOption(d: GameData, startName: string, option: string): string {

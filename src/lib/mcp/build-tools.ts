@@ -3,7 +3,7 @@ import type { createMcpHandler } from "mcp-handler";
 import { z } from "zod";
 import { writer, type PlannerAuth } from "@/lib/oauth/mcp-auth";
 import { DEFAULT_VERSION, FactsError } from "./errors";
-import { addLevel, createBuild, finishDraft, getBuild, listMyBuilds, removeLastLevel, setDetails, setGear, setLevel, type Player } from "./builds";
+import { addLevel, createBuild, finishDraft, getBuild, listMyBuilds, removeLastLevel, setCreation, setDetails, setGear, setLevel, type Player } from "./builds";
 
 /** The build tools' registration on the MCP server (WO-110), each needing a sign-in with builds:write. */
 
@@ -37,6 +37,11 @@ export const creationFields = {
   majors: z.array(z.string().max(40)).max(10).describe("Major skills, by name."),
   minors: z.array(z.string().max(40)).max(10).describe("Minor skills, by name."),
   traits: z.array(z.string().max(80)).max(5).optional().describe("Traits, by name."),
+  traitChoices: z
+    .record(z.string().max(80), z.string().max(40))
+    .optional()
+    .describe('The choice a trait asks, by trait, in the game\'s option names: { "Fatal Attraction": "Female", "Focused Combat": "Two-Handed", "Focused Magic": "Destruction" }.'),
+  masterOfOneSkill: z.string().max(40).optional().describe("Master of One's skill, by name, when it's one of traits."),
   notes: z.string().max(6000).optional().describe("The build's overall notes."),
 };
 
@@ -62,7 +67,7 @@ export function registerBuildTools(server: Server, guarded: Guarded, origin: str
   tool(
     "create_build",
     "Start a build",
-    "Make a new private build in the player's account at level 1 from character creation's choices, by the game's names; refused with the rule when a choice breaks one. Call get_rules first for how points work, and get_tree to plan a skill's perks.",
+    "Make a new private build in the player's account at level 1 from character creation's choices, by the game's names, checked as the site's Set up checks them: 3 majors, 6 minors, a birthsign, a start and its option, each trait's choice. Refused with every choice still to make, and the options. Call get_rules first for how points work, and get_tree to plan a skill's perks.",
     z.object({ name: name("The build's name."), description: z.string().max(300).optional(), version: z.string().max(20).optional().describe(`The LoreRim version, ${DEFAULT_VERSION} if left out.`), ...creationFields }),
     (p, a: Parameters<typeof createBuild>[1]) => createBuild(p, a),
   );
@@ -79,6 +84,13 @@ export function registerBuildTools(server: Server, guarded: Guarded, origin: str
     "Replace one level's choices in one of the player's builds; levels after it are checked again and the first rule broken stops the save.",
     z.object({ build, level: z.number().int().min(1).max(100), ...levelFields }),
     (p, a: Parameters<typeof setLevel>[1]) => setLevel(p, a),
+  );
+  tool(
+    "set_creation",
+    "Change character creation",
+    "Change character creation's choices on one of the player's builds: race, birthsign, mode, deity, start and its option, majors, minors, traits and their choices. Only the fields sent change. Creation is checked as the site's Set up checks it, and every level again; nothing is saved if a rule breaks, and the answer names it.",
+    z.object({ build, ...Object.fromEntries(Object.entries(creationFields).filter(([k]) => k !== "notes").map(([k, v]) => [k, v.optional()])) }),
+    (p, a: Parameters<typeof setCreation>[1]) => setCreation(p, a),
   );
   tool("remove_last_level", "Remove the last level", "Drop the last level of one of the player's builds; level 1 always stays.", z.object({ build }), (p, a: { build: string }) => removeLastLevel(p, a));
   tool(
