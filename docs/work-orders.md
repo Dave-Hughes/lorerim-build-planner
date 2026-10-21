@@ -4354,7 +4354,7 @@ The spec is Dave's "LoreRim Planner MCP — Spec" doc. In one line: a second doo
 | WO-109 | Sign-in for assistants: the planner as an OAuth server over the Discord session, with tokens a player can see and revoke | WO-108 |
 | WO-110 | Build drafts from an assistant, checked by the editor's own rules, with a review link | WO-109 |
 | WO-111 | Playthroughs: the full walkthrough (acts, objectives, chapters, beats, the page) | WO-110, the stories work |
-| WO-112 | The helper on the player's PC: a local MCP that reads the save and sends a snapshot | WO-111 |
+| WO-112 | The save reader: one reader, on the site and as a local connector | WO-111 |
 
 Facts about the ground, checked 19 Oct: Vercel's `mcp-handler` turns a Next.js route into an MCP server (Streamable HTTP, stateless, no Redis, Node 20+, the MCP SDK v2 with zod 4, which the site already uses). Claude adds a remote server by URL on every plan (Free gets one), with "No sign-in", or OAuth where the server reads Claude's published client identity (CIMD) or registers itself (DCR). `withMcpAuth` in the same package verifies bearer tokens and serves the RFC 9728 metadata; the authorization server itself is ours to build.
 
@@ -5010,12 +5010,43 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
-## WO-112 and WO-113  (to write when WO-111 is checked)
+## WO-112  The save reader (PC tonight, 20 Oct 2026)
 
-- **WO-113 Merchants (PC).** `get_spell` can't say where a spell is sold: the planner has no merchant data. Read vendor containers and their leveled lists from the game files, per spell tome and item, and mark random stock as such. Until then the tool says so and tells the assistant not to name one from memory.
-- **WO-112 The helper.** Dave's step 6: a local MCP (Claude Desktop extension or a Claude Code server) wrapping the save reader from the Kyria work (`ess.py`, `questscan.py`), sending only the snapshot fields to `set_snapshot`: level, XP, day, place, skills, quest stages. Never the save itself.
+**Why.** Dave's step 6 for playthroughs: the planner should know where the player really is, from their save, not from an estimate. Today "Where you stand" is typed by hand and quest objectives can't tick themselves, and WO-115's "open for you" can't know which quests are finished. Dave chose (20 Oct): **one reader, two ways in**, the site and a local connector; and **the newest save, but ask when it's a different character**.
+
+**What it reads, and what it never does.** From a Skyrim SE save (`.ess`): the character's name, level, XP toward the next level, the in-game day (the GameDaysPassed global), the place in the save's header, and the highest stage reached and whether it's completed for every quest the planner knows. Skills if they can be read reliably (Part 1 says). It never uploads the save file, never keeps it, and sends only those fields to the planner as a snapshot (`source: "save"`, rule 18).
+
+**Where:** Jeff on PC tonight, because the saves are on this PC. Pull with rebase before every push: Jeff on Mac is pushing to `staging` tonight too (WO-120); stay out of the files his orders touch. Behind `FEATURE_PLAYTHROUGHS`. If the PC can't run the app's checks (`npm run typecheck`, `lint`, `test`), do Part 1 and write that under Done when; Jeff on Mac does Parts 2 and 3.
+
+### Part 1. One reader, in TypeScript
+- `src/lib/save/read.ts`: `readSave(bytes: Uint8Array)` returns `{ name, level, xp, xpToNext, day, place, quests: Record<editorId, { stage: number, completed: boolean }>, skills?: Record<skill, number> }`. A port of `C:\LoreRim\_fieldguide\tools\kyria-book\ess.py` and `questscan.py` (read them; they work on Kyria's saves): the header, the LZ4 block body (a small decompressor in the file, no native module, so it runs in a browser and in Node), the plugin and light plugin lists, the globals, and the quest change forms (stage list and the Completed runtime flag).
+- **Which quest is which:** a generated `src/data/lorerim-5.0.4.8/quest_forms.json` mapping each quest's plugin and local form id to its editor id, from `quests_raw.json`'s `id` (`"00Taliesin.esp:5487A2"`), written by `scripts/gamedata/build.py`. The reader resolves a save's form ids through the save's own plugin and light plugin lists. Quests the planner doesn't know are left out.
+- **Skills:** try the player's actor values (the player's change form). If they read true against what the game shows on Kyria's newest save, include them; if not, leave `skills` out and write under Done when what was tried. Don't guess.
+- **Tests:** unit tests on a small synthetic save built in the test (header and body), and a check script, `scripts/save/check.mjs <file.ess>`, that prints what the reader found. Run it on the newest save of each character in `C:\LoreRim\profiles\*\saves` (Kyria Severa in "Extreme DLSS5", Azrem Shieldbreaker in "Extreme" and "Ultra") and commit the printed results (not the saves) as `scripts/save/checked-2026-10-20.md`, with Kyria's level, day and place next to what her save's header says and five quest stages you can confirm.
+
+### Part 2. On the site: Read a save
+- On Play's edit tab, above the acts, the owner's **Read a save**: pick a `.ess` file; the reader runs in the browser (the file never leaves the PC; it's also far over the server's upload limit); the page shows what it found (name, level, day, place, skills if any, and how many of this playthrough's quest objectives it would tick) with **Use this** and **Cancel**. Use this saves it as the snapshot (`source: "save"`, labelled "Save 62" from the header's save number).
+- If the save's character name isn't the character's name, it says so plainly ("This save is Azrem Shieldbreaker, not Kyria Severa.") and Use this asks first.
+- "Enter it by hand" stays beside it.
+
+### Part 3. The local connector
+- `tools/save-connector/`: a small local MCP server in Node using the same `readSave`, packaged as a Claude Desktop extension, with one setting, the save folders (default: every `profiles\*\saves` under the LoreRim folder, and `Documents\My Games\Skyrim Special Edition\Saves`). Two tools:
+  - `read_latest_save({ character? })`: the newest `.ess` across the folders. With `character`, and the newest save is someone else, it answers with that character's newest save instead and says so; with no save for that character, it lists the five newest saves (file, character, level, when) and asks the player to choose.
+  - `list_saves({ character?, limit? })`: the newest saves, by character.
+  Each answers with the reader's fields only, never the file. The planner's style guide gains: "When the player has the save connector, read the save with it and pass what it found to set_snapshot unchanged. Never set a snapshot from memory."
+- A README in the folder: how to add it to Claude Desktop, in five steps Dave can follow.
+
+### Done when
+- [ ] Part 1: `readSave` reads Kyria's and Azrem's newest saves; the results are in `scripts/save/checked-2026-10-20.md`; skills read or the reason they aren't.
+- [ ] Part 2: Read a save on Play's edit tab, run in the browser, with the wrong-character check.
+- [ ] Part 3: the save connector with `read_latest_save` and `list_saves`, its README, and the style guide line.
+- [ ] Every check in CLAUDE.md passes; behind the flag. Commit on `staging` per part, push, and stop: Dave adds the save connector, asks his Claude to update Kyria from her latest save, and sees Where you stand and her quest objectives fill in.
 
 ---
+
+## WO-113  (to write)
+
+- **WO-113 Merchants (PC).** `get_spell` can't say where a spell is sold: the planner has no merchant data. Read vendor containers and their leveled lists from the game files, per spell tome and item, and mark random stock as such. Until then the tool says so and tells the assistant not to name one from memory.
 
 ## Parked (not ordered yet)
 
