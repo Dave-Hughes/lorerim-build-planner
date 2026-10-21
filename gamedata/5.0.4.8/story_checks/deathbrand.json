@@ -49,7 +49,8 @@
        "source": "DLC2dunHaknirTreasureNodeSHARES Dragonborn.esm:024003 (Dragonborn.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on level up."
     },
     {
      "by": "dialogue",

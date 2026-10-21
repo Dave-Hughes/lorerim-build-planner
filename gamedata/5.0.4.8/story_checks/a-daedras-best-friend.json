@@ -10,22 +10,6 @@
    "firstObjectiveStage": 25,
    "startedBy": [
     {
-     "by": "quest script",
-     "quest": "DA03Start, a helper quest with Lod",
-     "questId": "Skyrim.esm:0D7939",
-     "atStage": 10,
-     "call": "SetStage 5",
-     "source": "QF_DA03Start_000D7939.fragment_27 on Skyrim.esm:0D7939 (Wintersun - Reqtificated.esp)",
-     "verdict": "script",
-     "throughStartedBy": [
-      {
-       "by": "start game",
-       "source": "Skyrim.esm:0D7939 DNAM (Wintersun - Reqtificated.esp)",
-       "verdict": "files"
-      }
-     ]
-    },
-    {
      "by": "dialogue",
      "speaker": "Barbas",
      "speakerNamed": "GetIsID",
@@ -75,6 +59,22 @@
      "conditions": "A Daedra's Best Friend stage < 20; the speaker is Barbas",
      "source": "TIF__000E0D48.Fragment_0 on INFO Skyrim.esm:0E0D48 (Skyrim.esm)",
      "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "DA03Start, a helper quest with Lod",
+     "questId": "Skyrim.esm:0D7939",
+     "atStage": 10,
+     "call": "SetStage 5",
+     "source": "QF_DA03Start_000D7939.fragment_27 on Skyrim.esm:0D7939 (Wintersun - Reqtificated.esp)",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Skyrim.esm:0D7939 DNAM (Wintersun - Reqtificated.esp)",
+       "verdict": "files"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],

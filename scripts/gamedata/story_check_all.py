@@ -6,7 +6,8 @@ story_check.py does, and gamedata/<version>/story_checks/.checkpoint-<batch>.jso
   python3 scripts/gamedata/story_check_all.py --batch guilds --slice 150     (the PC's Linux shell, three-minute window)
 
 Batches: stories (the backlog's draft list of story lines: the eleven it names and the mod lines with four or more
-story quests), and main, guilds, daedric, lands, side, followers (every line in that category, in quests.json order).
+story quests), and main, guilds, daedric, lands, side, followers and work (every line in that category or shelf, in
+quests.json order).
 
 --slice N runs each line in story_check.py's three phases (SC_PHASE A, B, C, each cached for the next) and stops
 before a phase that wouldn't finish inside N seconds, judged by how long that phase took last; run it again to go
@@ -24,7 +25,7 @@ import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
-CATEGORIES = ("main", "guilds", "daedric", "lands", "side", "followers")
+CATEGORIES = ("main", "guilds", "daedric", "lands", "side", "followers", "work")  # work: the shelf of repeatable jobs and favours (WO-121a)
 # The backlog's draft list ("Pick it"): the lines it names, in story order. "Vigilant" is the vigilants line.
 NAMED_STORIES = ("main-quest", "companions", "college", "thieves-guild", "dark-brotherhood", "civil-war", "dawnguard", "dragonborn",
                  "vigilants", "wyrmstooth", "undeath")

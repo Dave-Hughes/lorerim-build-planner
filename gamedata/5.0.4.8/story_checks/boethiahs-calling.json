@@ -275,7 +275,7 @@
      ],
      "source": "WEPriorityQuests Skyrim.esm:0896A9 (LoreRim - World Fixes.esp)",
      "verdict": "run time",
-     "conditions": "global WEDebug == 0 (now 0); global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1"
+     "conditions": "global WEDebug == 0 (now 0); global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1"
     }
    ],
    "caughtUpBy": [],

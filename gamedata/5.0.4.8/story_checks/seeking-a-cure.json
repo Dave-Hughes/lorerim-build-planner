@@ -337,7 +337,8 @@
        "source": "OK_FH_Node Forlorn Hope.esp:000804 (Forlorn Hope.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on level up."
     }
    ],
    "caughtUpBy": [],

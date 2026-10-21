@@ -11,6 +11,41 @@
    "startedBy": [
     {
      "by": "dialogue",
+     "speaker": "Erandur",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Windpeak Inn"
+     ],
+     "call": "SetStage 25",
+     "info": "Skyrim.esm:02371D",
+     "prompt": "I trust you. How can I help?",
+     "reply": [
+      "Wonderful! My lady Mara will be quite pleased!",
+      "Nightcaller Temple is only a short walk from Dawnstar. Come, we must hurry."
+     ],
+     "conditions": "the speaker is Erandur; Waking Nightmare stage < 22",
+     "source": "TIF__0002371D.Fragment_0 on INFO Skyrim.esm:02371D (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Erandur",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Windpeak Inn"
+     ],
+     "call": "SetStage 22",
+     "info": "Skyrim.esm:066649",
+     "prompt": "Sorry, I can't.",
+     "reply": [
+      "I understand. If you should change your mind, I'll be here."
+     ],
+     "conditions": "the speaker is Erandur; Waking Nightmare stage < 22",
+     "source": "TIF__00066649.Fragment_0 on INFO Skyrim.esm:066649 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
      "speaker": "Brina Merilis",
      "speakerNamed": "GetIsID",
      "speakerPlaced": [

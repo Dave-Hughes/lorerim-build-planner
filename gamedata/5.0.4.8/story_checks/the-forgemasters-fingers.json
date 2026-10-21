@@ -19,7 +19,7 @@
      ],
      "source": "FavorOrcsIntroNode Skyrim.esm:0763EC (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData FavorOrcsIntroKeyword == 1"
     }
    ],
    "caughtUpBy": [],

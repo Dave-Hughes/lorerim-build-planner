@@ -175,6 +175,10 @@ def read_aliases(subs, masters, name):
             cur[{"ALUA": "actor", "ALFR": "ref", "ALFL": "location", "ALCO": "creates"}[s]] = form_id(resolve(struct.unpack_from("<I", v)[0], masters, name))
         elif s == "ALFA":
             cur["fromAlias"] = True
+            if len(v) >= 4:
+                cur["fromAliasId"] = struct.unpack_from("<i", v)[0]
+        elif s == "ALRT" and len(v) >= 4:
+            cur["refType"] = form_id(resolve(struct.unpack_from("<I", v)[0], masters, name))
         elif s == "ALCA" and len(v) >= 4:
             # Create the item at (0) or in (0x8000) another alias: "in" the player alias means it ends up with the player.
             target, how = struct.unpack_from("<hH", v)

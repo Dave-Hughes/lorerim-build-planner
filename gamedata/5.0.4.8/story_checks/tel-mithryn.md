@@ -6,9 +6,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Dialogue with Varona Nelas, placed in Tel Mithryn Steward's House, Tel Mithryn Steward: SetStage 90 (when: the speaker is Varona Nelas; the speaker is Prisoner). Source: DLC2_TIF__02017E7F.Fragment_0 on INFO Dragonborn.esm:017E7F (Dragonborn.esm). **script**
 - DLC2Init (named "Init quest" in its record), a helper quest with DremoraButler, DremoraMerchant at stage 100 calls Start; DLC2Init is started by the start-game flag. Source: DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp). **script**
 - Dialogue with Neloth (named by alias Neloth of DLC2TT1 (Reluctant Steward) (unique)), placed in Tel Mithryn, Tel Mithryn Tower, "No, I haven't seen Varona.": SetStage 150 (when: the speaker is the one in alias Neloth; Reluctant Steward stage == 100; fn359 == 1). Source: DLC2_TIF__02017E6D.Fragment_0 on INFO Dragonborn.esm:017E6D (Dragonborn.esm). **script**
-- Dialogue with Varona Nelas, placed in Tel Mithryn Steward's House, Tel Mithryn Steward: SetStage 90 (when: the speaker is Varona Nelas; the speaker is Prisoner). Source: DLC2_TIF__02017E7F.Fragment_0 on INFO Dragonborn.esm:017E7F (Dragonborn.esm). **script**
 - (First objective shown at stage 150; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
@@ -146,7 +146,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Neloth (named by alias Neloth of DLC2TTR1 (Lost Knowledge) (unique)), placed in Tel Mithryn, Tel Mithryn Tower, "Have you found any other black books?": SetStage 100 (when: the speaker is the one in alias Neloth; Lost Knowledge stage < 100; fn67 == 1). Source: DLC2_TIF__0201B635.Fragment_0 on INFO Dragonborn.esm:01B635 (Dragonborn.esm). **script**
 - Dialogue with Neloth, placed in Tel Mithryn, Tel Mithryn Tower, "Is there anything else?": SetStage 100 (when: the speaker is Neloth; GetQuestRunning Lost Knowledge == 1; Lost Knowledge stage < 100). Source: DLC2_TIF__02038A73.Fragment_0 on INFO Dragonborn.esm:038A73 (Dragonborn.esm). **script**
-- Story manager node DLC2BlackBookQuestNode, event: change location; conditions up its parents: fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC2BlackBookQuestNode Dragonborn.esm:020689 (Dragonborn.esm). **files**
+- Story manager node DLC2BlackBookQuestNode, event: change location; conditions up its parents: the place you enter is Tel Mithryn Apothecary or the place you enter is Tel Mithryn Kitchen or the place you enter is Tel Mithryn Steward or the place you enter is Tel Mithryn Tower. Source: DLC2BlackBookQuestNode Dragonborn.esm:020689 (Dragonborn.esm). **files**
 - (First objective shown at stage 100; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -171,7 +171,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Neloth (named by alias Neloth of DLC2TTR2 (Heart Stones) (unique)), placed in Tel Mithryn, Tel Mithryn Tower, "Can I help with your research?": SetStage 100 (when: the speaker is the one in alias Neloth; fn67 == 1; Heart Stones stage < 100; GetQuestRunning Briarheart Necropsy == 0 or Briarheart Necropsy stage >= 100). Source: DLC2_TIF__0201C053.Fragment_0 on INFO Dragonborn.esm:01C053 (Dragonborn.esm). **script**
-- Story manager node DLC2NelothQuestNode, event: change location; conditions up its parents: fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm). **files**
+- Story manager node DLC2NelothQuestNode, event: change location; conditions up its parents: the place you enter is Tel Mithryn Apothecary or the place you enter is Tel Mithryn Kitchen or the place you enter is Tel Mithryn Steward or the place you enter is Tel Mithryn Tower. Source: DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm). **files**
 - (First objective shown at stage 100; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -196,7 +196,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Neloth (named by alias Neloth of DLC2TTR3a (Telvanni Research) (unique)), placed in Tel Mithryn, Tel Mithryn Tower, "Can I help with your research?": SetStage 100 (when: the speaker is the one in alias Neloth; fn359 == 1; Telvanni Research stage < 100; GetQuestRunning Briarheart Necropsy == 0 or Briarheart Necropsy stage >= 100). Source: DLC2_TIF__0201CDCD.Fragment_0 on INFO Dragonborn.esm:01CDCD (Dragonborn.esm). **script**
-- Story manager node DLC2NelothQuestNode, event: change location; conditions up its parents: fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm). **run time**
+- Story manager node DLC2NelothQuestNode, event: change location; conditions up its parents: the place you enter is Tel Mithryn Apothecary or the place you enter is Tel Mithryn Kitchen or the place you enter is Tel Mithryn Steward or the place you enter is Tel Mithryn Tower. Source: DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm). **run time**
 - (First objective shown at stage 100; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -223,7 +223,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Neloth (named by alias Neloth of DLC2TTR3b (Wind and Sand) (unique)), placed in Tel Mithryn, Tel Mithryn Tower, "Can I help with your research?": SetStage 100 (when: the speaker is the one in alias Neloth; fn67 == 1; Wind and Sand stage < 100; GetQuestRunning Briarheart Necropsy == 0 or Briarheart Necropsy stage >= 100). Source: DLC2_TIF__0201D8CF.Fragment_0 on INFO Dragonborn.esm:01D8CF (Dragonborn.esm). **script**
-- Story manager node DLC2NelothQuestNode, event: change location; conditions up its parents: fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm). **run time**
+- Story manager node DLC2NelothQuestNode, event: change location; conditions up its parents: the place you enter is Tel Mithryn Apothecary or the place you enter is Tel Mithryn Kitchen or the place you enter is Tel Mithryn Steward or the place you enter is Tel Mithryn Tower. Source: DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm). **run time**
 - (First objective shown at stage 100; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -251,7 +251,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node DLC2NelothQuestNode, event: change location; conditions up its parents: fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm). **run time**
+- Story manager node DLC2NelothQuestNode, event: change location; conditions up its parents: the place you enter is Tel Mithryn Apothecary or the place you enter is Tel Mithryn Kitchen or the place you enter is Tel Mithryn Steward or the place you enter is Tel Mithryn Tower. Source: DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm). **run time**
 - (First objective shown at stage 100; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -278,7 +278,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Neloth (named by alias Neloth of DLC2TTR4b (Experimental Subject) (unique)), placed in Tel Mithryn, Tel Mithryn Tower, "I suppose so.": SetStage 100 (when: the speaker is the one in alias Neloth). Source: DLC2_TIF__0201CDD0.Fragment_1 on INFO Dragonborn.esm:01CDD0 (Dragonborn.esm). **script**
-- Story manager node DLC2NelothQuestNode, event: change location; conditions up its parents: fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm). **run time**
+- Story manager node DLC2NelothQuestNode, event: change location; conditions up its parents: the place you enter is Tel Mithryn Apothecary or the place you enter is Tel Mithryn Kitchen or the place you enter is Tel Mithryn Steward or the place you enter is Tel Mithryn Tower. Source: DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm). **run time**
 - (First objective shown at stage 100; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -326,7 +326,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Neloth (named by alias Neloth of DLC2TTR7 (Azra's Staffs) (unique)), placed in Tel Mithryn, Tel Mithryn Tower, "Can I help with your research?": SetStage 100 (when: the speaker is the one in alias Neloth; fn67 == 1; Azra's Staffs stage < 100; GetQuestRunning Briarheart Necropsy == 0 or Briarheart Necropsy stage >= 100). Source: DLC2_TIF__0201BCF7.Fragment_0 on INFO Dragonborn.esm:01BCF7 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Story manager node DLC2NelothQuestNode, event: change location; conditions up its parents: fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm). **files**
+- Story manager node DLC2NelothQuestNode, event: change location; conditions up its parents: the place you enter is Tel Mithryn Apothecary or the place you enter is Tel Mithryn Kitchen or the place you enter is Tel Mithryn Steward or the place you enter is Tel Mithryn Tower. Source: DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm). **files**
 - (First objective shown at stage 100; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

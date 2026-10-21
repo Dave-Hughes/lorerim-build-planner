@@ -290,5 +290,62 @@ class SecondStepTest(unittest.TestCase):
         self.assertEqual(sc.second_step("C00", {"objectives": [{"index": 10}]}, 10, events), (None, None, []))
 
 
+def kicker():
+    """MS11Kicker's Fragment_0 as the compiled script has it: count Windhelm entries, start Blood on the Ice at night after four."""
+    i, v = (lambda n: (3, n)), (lambda s: (1, s))
+    code = [
+        ("callmethod", [v("GetStageDone"), v("::MS11_var"), v("::temp0"), i(1)]),
+        ("callmethod", [v("GetValueInt"), v("::EnterWindhelmCount_var"), v("::temp1")]),
+        ("iadd", [v("::temp1"), v("::temp1"), i(1)]),
+        ("callmethod", [v("SetValueInt"), v("::EnterWindhelmCount_var"), v("::NoneVar"), v("::temp1")]),
+        ("callmethod", [v("GetValueInt"), v("::EnterWindhelmCount_var"), v("::temp1")]),
+        ("cmp_ge", [v("::temp2"), v("::temp1"), i(4)]),
+        ("callmethod", [v("GetValueInt"), v("::GameHour_var"), v("::temp1")]),
+        ("cmp_ge", [v("::temp3"), v("::temp1"), i(19)]),
+        ("callmethod", [v("GetValueInt"), v("::GameHour_var"), v("::temp1")]),
+        ("cmp_lt", [v("::temp4"), v("::temp1"), i(7)]),
+        ("callmethod", [v("Start"), v("::MS11_var"), v("::temp4")]),
+        ("callmethod", [v("GetValueInt"), v("::FollowupStartDay_var"), v("::temp5")]),
+        ("cmp_gt", [v("::temp3"), v("::temp5"), i(3)]),  # after the start: not a guard on it
+    ]
+    return {"objects": [{"states": [{"name": "", "functions": [{"name": "Fragment_0", "code": code}]}]}]}
+
+
+class WO121aTest(unittest.TestCase):
+    """WO-121a Part 2: what the start check missed, in words."""
+
+    def test_a_helper_fragment_guards_in_words(self):
+        global_of = {"::enterwindhelmcount_var": "MS11EnteringWindhelmCount", "::gamehour_var": "GameHour", "::followupstartday_var": "MS11FollowupDay"}
+        counters, compares = sc.fragment_guards(kicker(), "Fragment_0", global_of, "::ms11_var")
+        self.assertEqual(counters, {"MS11EnteringWindhelmCount"})
+        self.assertEqual(compares, [("MS11EnteringWindhelmCount", "ge", 4), ("GameHour", "ge", 19), ("GameHour", "lt", 7)])
+        self.assertEqual(sc.guards_words(counters, compares, "Windhelm", "change location"),
+                         "It starts by itself at night in Windhelm, after you've come in four times.")
+        self.assertEqual(sc.guards_words(set(), [("FXChance", "lt", 25)], None, "kill"), "It starts by itself on kill, when FXChance < 25.")
+
+    def test_the_place_you_enter(self):
+        names = {"Skyrim.esm:018A57": {"type": "LCTN", "edid": "WindhelmLocation", "name": "Windhelm"}, "Skyrim.esm:0130DC": {"type": "KYWD", "edid": "LocTypeDwelling", "name": ""}}
+        conds = [{"fn": "GetEventData", "cmp": "==", "value": 1.0, "or": False, "member": "L2", "test": 0, "param": "Skyrim.esm:018A57"},
+                 {"fn": "GetEventData", "cmp": "==", "value": 0.0, "or": False, "member": "L1", "test": 3, "param": "Skyrim.esm:0130DC"}]
+        self.assertEqual(sc.format_conditions(conds, names), "the place you enter is Windhelm; the place you leave isn't a dwelling")
+
+    def test_a_talk_said_from_the_start(self):
+        self.assertTrue(sc.admits([{"fn": "GetStage", "cmp": "<", "value": 20.0, "param": "MG01"}], "MG01", 0))
+        self.assertFalse(sc.admits([{"fn": "GetStage", "cmp": "==", "value": 10.0, "param": "MG01"}], "MG01", 0))
+        self.assertFalse(sc.admits([{"fn": "GetStageDone", "cmp": "==", "value": 1.0, "param": "MG01", "stage": 10}], "MG01", 0))
+        self.assertTrue(sc.admits([{"fn": "GetStage", "cmp": "==", "value": 10.0, "param": "Other"}], "MG01", 0))
+
+    def test_the_start_up_stage(self):
+        qust = record("QUST", 0x800, [sub("EDID", zs("FXQuest")), sub("INDX", struct.pack("<HBB", 0, 2, 0)), sub("INDX", struct.pack("<HBB", 10, 0, 0))])
+        self.assertEqual(sc.read_startup(plugin(group("QUST", [qust])), PLUGIN, {QUEST}), {QUEST: 0})
+
+    def test_an_alias_filled_from_a_place_and_a_role(self):
+        qust = record("QUST", 0x800, [sub("EDID", zs("FXQuest")), sub("ANAM", u32(2)),
+                                      sub("ALLS", u32(26)), sub("ALID", zs("Windhelm")), sub("ALFL", u32(0x810)), sub("ALED", b""),
+                                      sub("ALST", u32(3)), sub("ALID", zs("CrimeSceneInvestigator")), sub("ALFA", u32(26)), sub("ALRT", u32(0x820)), sub("ALED", b"")])
+        (q,) = qsc.read_plugin(plugin(group("QUST", [qust])), PLUGIN)["quests"].values()
+        self.assertEqual({k: q["aliases"][3][k] for k in ("fill", "fromAliasId", "refType")}, {"fill": "from alias", "fromAliasId": 26, "refType": "Fixture.esp:000820"})
+
+
 if __name__ == "__main__":
     unittest.main()

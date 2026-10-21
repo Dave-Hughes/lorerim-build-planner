@@ -63,6 +63,40 @@
      "verdict": "script"
     },
     {
+     "by": "dialogue",
+     "speaker": "Arvel the Swift",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Bleak Falls Temple, Bleak Falls Barrow"
+     ],
+     "call": "SetStage 13",
+     "info": "Skyrim.esm:03A16F",
+     "prompt": "Fine. Let me see if I can cut you down.",
+     "reply": [
+      "Sweet breath of Arkay, thank you."
+     ],
+     "conditions": "the speaker is Arvel the Swift",
+     "source": "TIF__0003A16F.Fragment_1 on INFO Skyrim.esm:03A16F (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Arvel the Swift",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Bleak Falls Temple, Bleak Falls Barrow"
+     ],
+     "call": "SetStage 13",
+     "info": "Skyrim.esm:03A170",
+     "prompt": "Hand over the claw first!",
+     "reply": [
+      "Does it look like I can move? You have to cut me down, first."
+     ],
+     "conditions": "the speaker is Arvel the Swift",
+     "source": "TIF__0003A170.Fragment_0 on INFO Skyrim.esm:03A170 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
      "by": "start game",
      "source": "Skyrim.esm:039645 DNAM (GoldenLie.esp)",
      "verdict": "files"

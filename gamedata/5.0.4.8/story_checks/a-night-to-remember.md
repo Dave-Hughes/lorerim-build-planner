@@ -6,7 +6,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DA14Start, a helper quest with DA14StartSamwell at stage 70 calls SetStage 5; DA14Start is started by story manager node DA14QuestStartNode (event: change location; level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; fn576 == 1). Source: QF_DA14Start_0003FA17.fragment_2 on Skyrim.esm:03FA17 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- DA14Start, a helper quest with DA14StartSamwell at stage 70 calls SetStage 5; DA14Start is started by story manager node DA14QuestStartNode (event: change location; level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; the place you enter is a habitation). Source: QF_DA14Start_0003FA17.fragment_2 on Skyrim.esm:03FA17 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with Senna, placed in Temple of Dibella, "Where am I?": SetStage 10 (when: A Night To Remember stage == 5; the speaker is Senna). Source: TIF__0001F387.Fragment_3 on INFO Skyrim.esm:01F387 (Skyrim.esm). **script**
 - Dialogue with Senna, placed in Temple of Dibella, "Unh, my head.": SetStage 10 (when: A Night To Remember stage == 5; the speaker is Senna). Source: TIF__000A95D5.Fragment_1 on INFO Skyrim.esm:0A95D5 (Skyrim.esm). **script**
 - Dialogue with Senna, placed in Temple of Dibella, "Blasphemer?": SetStage 10 (when: A Night To Remember stage == 5; the speaker is Senna). Source: TIF__000A95CB.Fragment_1 on INFO Skyrim.esm:0A95CB (Skyrim.esm). **script**
@@ -159,8 +159,8 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 ### DA14Start
 
 - What it does: stage 70: SetStage 5. Source: QF_DA14Start_0003FA17 on Skyrim.esm:03FA17 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Started by: story manager node DA14QuestStartNode (change location; level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; fn576 == 1; DA14QuestStartNode Skyrim.esm:03FA1A (TimingIsEverything.esp)).
-- In one sentence: DA14Start stage 70: SetStage 5 on DA14 (A Night To Remember); it is started by story manager node DA14QuestStartNode (change location; level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; fn576 == 1; DA14QuestStartNode Skyrim.esm:03FA1A (TimingIsEverything.esp)).
+- Started by: story manager node DA14QuestStartNode (change location; level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; the place you enter is a habitation; DA14QuestStartNode Skyrim.esm:03FA1A (TimingIsEverything.esp)).
+- In one sentence: DA14Start stage 70: SetStage 5 on DA14 (A Night To Remember); it is started by story manager node DA14QuestStartNode (change location; level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; the place you enter is a habitation; DA14QuestStartNode Skyrim.esm:03FA1A (TimingIsEverything.esp)).
 
 ### dialogue INFO Skyrim.esm:01F387
 

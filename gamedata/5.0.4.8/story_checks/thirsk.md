@@ -26,8 +26,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DLC2Init (named "Init quest" in its record), a helper quest with DremoraButler, DremoraMerchant at stage 100 calls Start; DLC2Init is started by the start-game flag. Source: DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp). **script**
 - Dialogue with Bujold the Intrepid, placed in Bujold's Retreat, "I don't think I can help you right now.": SetStage 10 (when: the speaker is Bujold the Intrepid; Retaking Thirsk stage < 10). Source: DLC2_TIF__0201A4E6.Fragment_0 on INFO Dragonborn.esm:01A4E6 (Dragonborn.esm). **script**
+- DLC2Init (named "Init quest" in its record), a helper quest with DremoraButler, DremoraMerchant at stage 100 calls Start; DLC2Init is started by the start-game flag. Source: DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
@@ -79,8 +79,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DLC2Init (named "Init quest" in its record), a helper quest with DremoraButler, DremoraMerchant at stage 100 calls Start; DLC2Init is started by the start-game flag. Source: DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp). **script**
 - Dialogue with Elmus (named by alias Elmus of DLC2ThirskFFElmus (Elmus Favor Quest) (unique)), placed in Bujold's Retreat, "Is there anything that would make being down here more bearable?": SetStage 10 (when: the speaker is the one in alias Elmus; Elmus Favor Quest stage < 10). Source: TIF__02038EBC.Fragment_0 on INFO Dragonborn.esm:038EBC (Dragonborn.esm). **script**
+- DLC2Init (named "Init quest" in its record), a helper quest with DremoraButler, DremoraMerchant at stage 100 calls Start; DLC2Init is started by the start-game flag. Source: DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -100,8 +100,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DLC2MH01 (Retaking Thirsk) at stage 30 calls Start. Source: DLC2_QF_DLC2MH01_0201A50B.fragment_2 on Dragonborn.esm:01A50B (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with Elmus (named by alias Elmus of DLC2ThirskFFElmusBack (Elmus Favor Quest) (unique)), placed in Bujold's Retreat, "How is the mead?": SetStage 10 (when: the speaker is the one in alias Elmus; Elmus Favor Quest stage < 10). Source: TIF__02038EBE.Fragment_0 on INFO Dragonborn.esm:038EBE (Dragonborn.esm). **script**
+- DLC2MH01 (Retaking Thirsk) at stage 30 calls Start. Source: DLC2_QF_DLC2MH01_0201A50B.fragment_2 on Dragonborn.esm:01A50B (Unofficial Skyrim Special Edition Patch.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -119,8 +119,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DLC2MH01 (Retaking Thirsk) at stage 30 calls Start. Source: DLC2_QF_DLC2MH01_0201A50B.fragment_2 on Dragonborn.esm:01A50B (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with Halbarn Iron-Fur (named by alias Halbarn of DLC2ThirskFFHalbarn (Halbarn Favor Quest) (unique)), placed in Thirsk Mead Hall, "Are you getting back to work?": SetStage 10 (when: the speaker is the one in alias Halbarn; Halbarn Favor Quest stage < 10). Source: TIF__02038FB9.Fragment_0 on INFO Dragonborn.esm:038FB9 (Dragonborn.esm). **script**
+- DLC2MH01 (Retaking Thirsk) at stage 30 calls Start. Source: DLC2_QF_DLC2MH01_0201A50B.fragment_2 on Dragonborn.esm:01A50B (Unofficial Skyrim Special Edition Patch.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -139,8 +139,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DLC2MH01 (Retaking Thirsk) at stage 30 calls Start. Source: DLC2_QF_DLC2MH01_0201A50B.fragment_2 on Dragonborn.esm:01A50B (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with Hilund (named by alias Hilund of DLC2ThirskFFHilund (Hilund Favor Quest) (unique)), placed in Thirsk Mead Hall, "How is the hunting going?": SetStage 10 (when: the speaker is the one in alias Hilund; Hilund Favor Quest stage < 10). Source: TIF__02038FB7.Fragment_0 on INFO Dragonborn.esm:038FB7 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- DLC2MH01 (Retaking Thirsk) at stage 30 calls Start. Source: DLC2_QF_DLC2MH01_0201A50B.fragment_2 on Dragonborn.esm:01A50B (Unofficial Skyrim Special Edition Patch.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**

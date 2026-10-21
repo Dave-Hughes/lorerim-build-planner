@@ -278,7 +278,7 @@
      ],
      "source": "TOK_SMQN_QuestStart Tools of Kagrenac.esp:AA0E7D (Tools of Kagrenac.esp)",
      "verdict": "run time",
-     "conditions": "fn576 == 1; Arniel's Endeavor completed; The Way of the Voice completed; GetQuestRunning Kagrenac's Tools == 0"
+     "conditions": "GetEventData TOK_KYWD_KeeningSMQuestStart == 1; Arniel's Endeavor completed; The Way of the Voice completed; GetQuestRunning Kagrenac's Tools == 0"
     },
     {
      "by": "story manager",

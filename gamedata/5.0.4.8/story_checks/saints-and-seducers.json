@@ -32,7 +32,8 @@
        "source": "EC_SS_ChangeLocationNode Skyrim Extended Cut - Saints and Seducers.esp:440192 (ECSS - Staff of Sheogorath Patch.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "dialogue",
@@ -179,7 +180,7 @@
     }
    ],
    "needs": {
-    "conditions": "the speaker is Staada; fn576 == 1; fn629 == 1; level >= EC_SS_StartLevel (now 20)",
+    "conditions": "the speaker is Staada; the place you enter is Solitude; fn629 == 1; level >= EC_SS_StartLevel (now 20)",
     "doors": [],
     "ways": [
      {
@@ -356,7 +357,8 @@
        "source": "EC_SS_ChangeLocationNode Skyrim Extended Cut - Saints and Seducers.esp:440192 (ECSS - Staff of Sheogorath Patch.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "dialogue",

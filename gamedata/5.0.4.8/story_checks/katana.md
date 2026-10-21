@@ -227,9 +227,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- AK69SugarandSpiceQuest (Sugar and Spice) calls Start; at stage 60 Start; at stage 70 Start; at stage 69 Start. Sources: AK69SugarandSpiceScript.DeleteStuff, AK69_QF_AK69SugarandSpiceQues_05E39DE4.fragment_1, AK69_QF_AK69SugarandSpiceQues_05E39DE4.fragment_20, AK69_QF_AK69SugarandSpiceQues_05E39DE4.fragment_0 on Katana.esp:E39DE4. **script**
 - Dialogue with Katana, placed in The Winking Skeever: SetStage 10 (when: the speaker is Katana). Source: AK69_TIF__058FD165.Fragment_0 on INFO Katana.esp:8FD165 (Katana.esp). **script**
 - Dialogue with Katana, placed in The Winking Skeever: SetStage 20 (when: the speaker is Katana). Source: AK69_TIF__05925971.Fragment_0 on INFO Katana.esp:925971 (Katana.esp). **script**
+- AK69SugarandSpiceQuest (Sugar and Spice) calls Start; at stage 60 Start; at stage 70 Start; at stage 69 Start. Sources: AK69SugarandSpiceScript.DeleteStuff, AK69_QF_AK69SugarandSpiceQues_05E39DE4.fragment_1, AK69_QF_AK69SugarandSpiceQues_05E39DE4.fragment_20, AK69_QF_AK69SugarandSpiceQues_05E39DE4.fragment_0 on Katana.esp:E39DE4. **script**
 - Dialogue with Megara, placed in The Drunken Huntsman, Drunken Huntsman: SetStage 30 (when: the speaker is Megara). Source: AK69_TIF__0592597A.Fragment_0 on INFO Katana.esp:92597A (Katana.esp). **script**
 - (First objective shown at stage 30; a call to a later stage advances the quest instead.)
 

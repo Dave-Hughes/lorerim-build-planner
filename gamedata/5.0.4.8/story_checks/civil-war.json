@@ -28,14 +28,15 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1",
+       "conditions": "GetEventData WERoadStart == 1; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1",
        "globals": [
         "Skyrim.esm:0B8EC1"
        ],
        "source": "WERoadQuestNode Skyrim.esm:102D65 (Dawnguard.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -379,14 +380,15 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1",
+       "conditions": "GetEventData WERoadStart == 1; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1",
        "globals": [
         "Skyrim.esm:0B8EC1"
        ],
        "source": "WERoadQuestNode Skyrim.esm:102D65 (Dawnguard.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -1530,7 +1532,7 @@
      ],
      "source": "CWCapitalTownFortSiegeNode Skyrim.esm:0CA841 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData CWFortSiegeMinorCapitalStart == 1"
     },
     {
      "by": "story manager",
@@ -1543,7 +1545,7 @@
      ],
      "source": "CWNonFortFortSiegeNode Skyrim.esm:018387 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData CWFortSiegeSpecialStart == 1"
     }
    ],
    "caughtUpBy": [],
@@ -2079,7 +2081,7 @@
      ],
      "source": "CWMissionNode Skyrim.esm:0216A8 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "global TRUEGlobal == 0 (now 1); fn576 == 1"
+     "conditions": "global TRUEGlobal == 0 (now 1); GetEventData CWMissionStart == 1"
     }
    ],
    "caughtUpBy": [],
@@ -2493,7 +2495,7 @@
      ],
      "source": "CWMissionNode Skyrim.esm:0216A8 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "global TRUEGlobal == 0 (now 1); fn576 == 1"
+     "conditions": "global TRUEGlobal == 0 (now 1); GetEventData CWMissionStart == 1"
     }
    ],
    "caughtUpBy": [],
@@ -3023,7 +3025,7 @@
      ],
      "source": "CWMissionNode Skyrim.esm:0216A8 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "global TRUEGlobal == 0 (now 1); fn576 == 1"
+     "conditions": "global TRUEGlobal == 0 (now 1); GetEventData CWMissionStart == 1"
     }
    ],
    "caughtUpBy": [],
@@ -3216,7 +3218,7 @@
      ],
      "source": "CWMissionNode Skyrim.esm:0216A8 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "global TRUEGlobal == 0 (now 1); fn576 == 1"
+     "conditions": "global TRUEGlobal == 0 (now 1); GetEventData CWMissionStart == 1"
     }
    ],
    "caughtUpBy": [],
@@ -3415,12 +3417,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3449,12 +3452,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3483,12 +3487,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3517,12 +3522,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3551,12 +3557,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3585,12 +3592,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3619,12 +3627,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3653,12 +3662,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3687,12 +3697,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3721,12 +3732,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3755,12 +3767,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3789,12 +3802,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3823,12 +3837,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3857,12 +3872,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3891,12 +3907,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3925,12 +3942,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3959,12 +3977,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -3993,12 +4012,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -4027,12 +4047,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -4061,12 +4082,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -4095,12 +4117,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -4129,12 +4152,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -4163,12 +4187,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -4197,12 +4222,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -4231,12 +4257,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -5881,7 +5908,7 @@
      ],
      "source": "CWResolutionAttackCaptialSettlementNode Skyrim.esm:02B35B (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData CWResolution01Start == 1"
     }
    ],
    "caughtUpBy": [],
@@ -5970,7 +5997,7 @@
      ],
      "source": "CWResolutionDefendCapitalSettlementNode Skyrim.esm:02111D (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData CWResolution02Start == 1"
     }
    ],
    "caughtUpBy": [],
@@ -6146,12 +6173,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -6180,12 +6208,13 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1",
+       "conditions": "GetEventData CWSiegeStart == 1",
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     }
    ],
    "caughtUpBy": [],
@@ -6245,7 +6274,8 @@
        "source": "CWCRQuestNode Civil War Champions - Reduced Cut.esp:000806 (Civil War Champions - Reduced Cut.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     }
    ],
    "caughtUpBy": [],
@@ -6339,7 +6369,7 @@
      ],
      "source": "CWRepairsQN CWRepairs.esp:000E05 (CWRepairs.esp)",
      "verdict": "files",
-     "conditions": "Repairing the Cities stage < 10; fn46 == 1 or fn46 == 1 or CWFinale stage 500 done; fn576 == 0; fn359 == 0; fn576 == 0; fn359 == 0"
+     "conditions": "Repairing the Cities stage < 10; GetDead == 1 or GetDead == 1 or CWFinale stage 500 done; the place you enter isn't Solitude; fn359 == 0; the place you enter isn't Windhelm; fn359 == 0"
     }
    ],
    "caughtUpBy": [],
@@ -7502,11 +7532,11 @@
    "kind": "quest script",
    "does": "stage 10: SetStage 1",
    "startedBy": [
-    "story manager node WERoadQuestNode (script event; fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1; WERoadQuestNode Skyrim.esm:102D65 (Dawnguard.esm))"
+    "story manager node WERoadQuestNode (script event; GetEventData WERoadStart == 1; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1; WERoadQuestNode Skyrim.esm:102D65 (Dawnguard.esm))"
    ],
    "inStartMenu": false,
    "source": "QF_WEDL13_000BD757 on Skyrim.esm:0BD757 (Skyrim.esm)",
-   "sentence": "WEDL13 (Looking to join Imperials) stage 10: SetStage 1 on CW00A (Imperial Introductions); it is started by story manager node WERoadQuestNode (script event; fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1; WERoadQuestNode Skyrim.esm:102D65 (Dawnguard.esm))."
+   "sentence": "WEDL13 (Looking to join Imperials) stage 10: SetStage 1 on CW00A (Imperial Introductions); it is started by story manager node WERoadQuestNode (script event; GetEventData WERoadStart == 1; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1; WERoadQuestNode Skyrim.esm:102D65 (Dawnguard.esm))."
   },
   {
    "route": "MQ102A (Season Unending)",

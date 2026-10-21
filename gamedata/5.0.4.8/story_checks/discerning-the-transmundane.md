@@ -6,6 +6,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Dialogue with Urag gro-Shub, placed in The Arcanaeum, "Where did he go?": SetStage 10 (when: the speaker is Urag gro-Shub). Source: TIF__0002725E.Fragment_0 on INFO Skyrim.esm:02725E (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Urag gro-Shub, placed in The Arcanaeum, "He's dead?": SetStage 10 (when: the speaker is Urag gro-Shub). Source: TIF__00027260.Fragment_1 on INFO Skyrim.esm:027260 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:02D512 DNAM (Wintersun - Reqtificated.esp). **files**
 - (First objective shown at stage 5; a call to a later stage advances the quest instead.)
 

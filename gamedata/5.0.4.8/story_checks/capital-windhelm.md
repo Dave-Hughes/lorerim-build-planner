@@ -244,6 +244,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Dialogue with Windhelm Guard, placed in Frozen Caverns, "Guards? Could've used your help a bit earlier.": SetStage 110 (when: the speaker is Windhelm Guard). Source: TIF__052C9AFA.Fragment_1 on INFO WindhelmSSE.esp:2C9AFA (WindhelmSSE.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: WindhelmSSE.esp:1066C4 DNAM (WindhelmSSE.esp). **files**
 - (First objective shown at stage 70; a call to a later stage advances the quest instead.)
 

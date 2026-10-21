@@ -197,7 +197,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with someone the line does not name, "Then let's head out.": SetStage 10. Source: HLIO_TIF__070C0FF2.Fragment_0 on INFO HLIORemi.esp:0C0FF2 (HLIORemi.esp). **script**
 - Dialogue with Remiel, placed in Silver-Blood Inn, "It's me, Remi, snap out of it. (Skips Intro Quest)": SetStage 10 (when: The Dwemer Specialist not completed; the speaker is Remiel). Source: HLIO_TIF__05256592.Fragment_0 on INFO HLIORemi.esp:256592 (HLIORemi.esp). **script**
-- Story manager node HLIOUpgradesNode, event: change location; conditions up its parents: GetQuestRunning Upgrades == 0; fn576 == 1. Source: HLIOUpgradesNode HLIORemi.esp:0BBEDA (HLIORemi.esp). **files**
+- Story manager node HLIOUpgradesNode, event: change location; conditions up its parents: GetQuestRunning Upgrades == 0; the place you enter is Silver-Blood Inn. Source: HLIOUpgradesNode HLIORemi.esp:0BBEDA (HLIORemi.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

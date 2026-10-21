@@ -36,23 +36,6 @@
      "speakerPlaced": [
       "Shrine of Peryite"
      ],
-     "call": "SetStage 10",
-     "info": "Skyrim.esm:089982",
-     "prompt": "Tell me about this incense.",
-     "reply": [
-      "Yes, the incense. Fetch for me a deathbell flower, one silver ingot, a flawless ruby, and some vampire dust. Then I will show you how."
-     ],
-     "conditions": "the speaker is Kesh the Clean; The Only Cure stage < 20; The Only Cure stage >= 5; The Only Cure stage 10 not done or GetItemCount Silver Ingot < 1 or GetItemCount Deathbell < 1 or GetItemCount Vampire Dust < 1 or GetItemCount Flawless Ruby < 1",
-     "source": "TIF__00089982.Fragment_0 on INFO Skyrim.esm:089982 (Skyrim.esm)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Kesh the Clean",
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [
-      "Shrine of Peryite"
-     ],
      "call": "SetStage 1",
      "info": "Skyrim.esm:089983",
      "prompt": null,
@@ -79,6 +62,23 @@
      ],
      "conditions": "level >= 10; The Only Cure stage 5 not done; the speaker is Kesh the Clean",
      "source": "TIF__00089985.Fragment_0 on INFO Skyrim.esm:089985 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Kesh the Clean",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Shrine of Peryite"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:089982",
+     "prompt": "Tell me about this incense.",
+     "reply": [
+      "Yes, the incense. Fetch for me a deathbell flower, one silver ingot, a flawless ruby, and some vampire dust. Then I will show you how."
+     ],
+     "conditions": "the speaker is Kesh the Clean; The Only Cure stage < 20; The Only Cure stage >= 5; The Only Cure stage 10 not done or GetItemCount Silver Ingot < 1 or GetItemCount Deathbell < 1 or GetItemCount Vampire Dust < 1 or GetItemCount Flawless Ruby < 1",
+     "source": "TIF__00089982.Fragment_0 on INFO Skyrim.esm:089982 (Skyrim.esm)",
      "verdict": "script"
     },
     {

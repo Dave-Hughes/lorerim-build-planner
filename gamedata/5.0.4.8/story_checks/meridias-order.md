@@ -59,6 +59,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - NMeridia02 (Our Lady) at stage 60 calls SetStage 10. Source: QF_NMeridia02_02003B23.fragment_6 on Meridia.esp:003B23 (Meridia.esp). **script**
+- Dialogue with High Priestess Alara, placed in Meridia's Sanctum, "How can I find it?": SetStage 20 (when: the speaker is High Priestess Alara). Source: TIF__02004E35.Fragment_0 on INFO Meridia.esp:004E35 (Meridia.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Meridia.esp:0046DA DNAM (Meridia.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -84,6 +85,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - NMeridia03 (Prisoner) at stage 100 calls SetStage 10. Source: QF_NMeridia03_020046DA.fragment_16 on Meridia.esp:0046DA (Meridia.esp). **script**
+- Dialogue with Arch-Paladin Laracin, placed in Meridia's Sanctum, "How do I infiltrate them?": SetStage 20 (when: the speaker is Arch-Paladin Laracin). Source: TIF__02008172.Fragment_0 on INFO Meridia.esp:008172 (Meridia.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Meridia.esp:00816C DNAM (Meridia.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -138,6 +140,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - NMeridia04 (Infiltration) at stage 70 calls SetStage 10. Source: QF_NMeridia04_0200816C.fragment_10 on Meridia.esp:00816C (Meridia.esp). **script**
+- Dialogue with Initiate Velteth, placed in Meridia's Sanctum: SetStage 20 (when: the speaker is Initiate Velteth). Source: TIF__0200C750.Fragment_0 on INFO Meridia.esp:00C750 (Meridia.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Meridia.esp:00BC5D DNAM (Meridia.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -187,6 +190,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - NMeridia06 (A New Day) at stage 100 calls SetStage 10. Source: QF_NMeridia06_02007CFC.fragment_24 on Meridia.esp:007CFC (Meridia.esp). **script**
+- Dialogue with Initiate Garin, placed in Meridia's Sanctum, "So, how do we do it?": SetStage 20 (when: the speaker is Initiate Garin). Source: TIF__02012EEB.Fragment_0 on INFO Meridia.esp:012EEB (Meridia.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Meridia.esp:0103B4 DNAM (Meridia.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -290,6 +294,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - NMeridia08 (The Pocket Realm) at stage 40 calls SetStage 10. Source: QF_NMeridia08_02019A81.fragment_5 on Meridia.esp:019A81 (Meridia.esp). **script**
+- Dialogue with High Priestess Alara, placed in Meridia's Sanctum: SetStage 20 (when: the speaker is High Priestess Alara). Source: TIF__02024DE9.Fragment_0 on INFO Meridia.esp:024DE9 (Meridia.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Meridia.esp:01F41F DNAM (Meridia.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 

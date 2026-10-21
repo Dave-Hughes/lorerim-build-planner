@@ -83,8 +83,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DLC2Init (named "Init quest" in its record), a helper quest with DremoraButler, DremoraMerchant at stage 100 calls Start; DLC2Init is started by the start-game flag. Source: DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp). **script**
 - Dialogue with Crescius Caerellius, placed in Caerellius House: SetStage 15 (when: the speaker is Crescius Caerellius; The Final Descent stage == 10; global DLC2RR03Dia01 == 0 (now 0)). Source: DLC2_TIF__020209F8.Fragment_1 on INFO Dragonborn.esm:0209F8 (Dragonborn.esm). **script**
+- DLC2Init (named "Init quest" in its record), a helper quest with DremoraButler, DremoraMerchant at stage 100 calls Start; DLC2Init is started by the start-game flag. Source: DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp). **script**
 - (First objective shown at stage 15; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -233,9 +233,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DLC2Init (named "Init quest" in its record), a helper quest with DremoraButler, DremoraMerchant at stage 100 calls Start; DLC2Init is started by the start-game flag. Source: DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp). **script**
 - Dialogue with Fethis Alor, placed in Alor House, "I'll sell you some of mine. (Give East Empire Pendants)": SetStage 20 (when: the speaker is Fethis Alor; Pain in the Necklace stage == 10; GetItemCount East Empire Pendant >= 1). Source: DLC2_TIF__02024F96.Fragment_0 on INFO Dragonborn.esm:024F96 (Dragonborn.esm). **script**
 - Dialogue with Fethis Alor, placed in Alor House, "Where can you find them?": SetStage 20 (when: the speaker is Fethis Alor; Pain in the Necklace stage == 10; GetItemCount East Empire Pendant == 0). Source: DLC2_TIF__02024F97.Fragment_0 on INFO Dragonborn.esm:024F97 (Dragonborn.esm). **script**
+- DLC2Init (named "Init quest" in its record), a helper quest with DremoraButler, DremoraMerchant at stage 100 calls Start; DLC2Init is started by the start-game flag. Source: DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Who and where**

@@ -2771,7 +2771,7 @@
      ],
      "source": "CompanionsAelaNode Skyrim.esm:0BFC77 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetEventData CRAela == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     }
    ],
    "caughtUpBy": [],
@@ -2842,7 +2842,7 @@
      ],
      "source": "CompanionsAelaNode Skyrim.esm:0BFC77 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetEventData CRAela == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     }
    ],
    "caughtUpBy": [],
@@ -2953,7 +2953,7 @@
      ],
      "source": "CompanionsFarkasNode Skyrim.esm:0BFC78 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetEventData CRFarkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     }
    ],
    "caughtUpBy": [],
@@ -3021,12 +3021,13 @@
          "Skyrim.esm:01379A",
          "Root"
         ],
-        "conditions": "fn576 == 1",
+        "conditions": "GetEventData FavorBrawlEvent == 1",
         "globals": [],
         "source": "DGIntimidateQuestNode Skyrim.esm:047AE9 (Skyrim.esm)",
         "verdict": "files"
        }
-      ]
+      ],
+      "plain": "It starts by itself on script event."
      },
      {
       "by": "quest script",
@@ -3179,7 +3180,7 @@
      ],
      "source": "CompanionsFarkasNode Skyrim.esm:0BFC78 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetEventData CRFarkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     }
    ],
    "caughtUpBy": [],
@@ -3357,7 +3358,7 @@
      ],
      "source": "CompanionsVilkasSkjorDeadNode Skyrim.esm:0EC1A8 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "files",
-     "conditions": "fn46 == 1; fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetDead == 1; GetEventData CRVilkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     },
     {
      "by": "story manager",
@@ -3370,7 +3371,7 @@
      ],
      "source": "CompanionsSkjorNode Skyrim.esm:0BFC79 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1; fn46 == 0; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetEventData CRSkjor == 1; GetDead == 0; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     }
    ],
    "caughtUpBy": [],
@@ -3442,7 +3443,7 @@
      ],
      "source": "CompanionsVilkasSkjorDeadNode Skyrim.esm:0EC1A8 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "files",
-     "conditions": "fn46 == 1; fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetDead == 1; GetEventData CRVilkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     },
     {
      "by": "story manager",
@@ -3455,7 +3456,7 @@
      ],
      "source": "CompanionsSkjorNode Skyrim.esm:0BFC79 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1; fn46 == 0; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetEventData CRSkjor == 1; GetDead == 0; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     }
    ],
    "caughtUpBy": [],
@@ -3527,7 +3528,7 @@
      ],
      "source": "CompanionsVilkasSkjorDeadNode Skyrim.esm:0EC1A8 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "files",
-     "conditions": "fn46 == 1; fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetDead == 1; GetEventData CRVilkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     },
     {
      "by": "story manager",
@@ -3541,7 +3542,7 @@
      ],
      "source": "CompanionsVilkasAlwaysNode Skyrim.esm:0BFC7A (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "files",
-     "conditions": "fn46 == 0; fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetDead == 0; GetEventData CRVilkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     }
    ],
    "caughtUpBy": [],
@@ -3606,7 +3607,7 @@
      ],
      "source": "CompanionsReconNode Skyrim.esm:0BFC7B (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "files",
-     "conditions": "fn576 == 1; Purity of Revenge stage < 10; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetEventData CRRecon == 1; Purity of Revenge stage < 10; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     }
    ],
    "caughtUpBy": [],
@@ -3671,7 +3672,7 @@
      ],
      "source": "CompanionsReconNode Skyrim.esm:0BFC7B (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "files",
-     "conditions": "fn576 == 1; Purity of Revenge stage < 10; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetEventData CRRecon == 1; Purity of Revenge stage < 10; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     }
    ],
    "caughtUpBy": [],
@@ -3742,7 +3743,7 @@
      ],
      "source": "CompanionsReconNode Skyrim.esm:0BFC7B (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "files",
-     "conditions": "fn576 == 1; Purity of Revenge stage < 10; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetEventData CRRecon == 1; Purity of Revenge stage < 10; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     }
    ],
    "caughtUpBy": [],
@@ -3813,7 +3814,7 @@
      ],
      "source": "CompanionsAelaNode Skyrim.esm:0BFC77 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetEventData CRAela == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     }
    ],
    "caughtUpBy": [],
@@ -3957,7 +3958,7 @@
      ],
      "source": "CompanionsFarkasPostQuestlineNode Skyrim.esm:0F6086 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "Glory of the Dead completed; fn629 == 1; fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "Glory of the Dead completed; fn629 == 1; GetEventData CRFarkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     },
     {
      "by": "story manager",
@@ -3971,7 +3972,7 @@
      ],
      "source": "VilkasPostQuestlineNode Skyrim.esm:0F6084 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "Glory of the Dead completed; fn629 == 1; fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "Glory of the Dead completed; fn629 == 1; GetEventData CRVilkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     }
    ],
    "caughtUpBy": [],
@@ -4122,7 +4123,7 @@
      ],
      "source": "CompanionsVilkasSkjorDeadNode Skyrim.esm:0EC1A8 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "files",
-     "conditions": "fn46 == 1; fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetDead == 1; GetEventData CRVilkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     },
     {
      "by": "story manager",
@@ -4136,7 +4137,7 @@
      ],
      "source": "CompanionsFarkasNode Skyrim.esm:0BFC78 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "GetEventData CRFarkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1"
     }
    ],
    "caughtUpBy": [],

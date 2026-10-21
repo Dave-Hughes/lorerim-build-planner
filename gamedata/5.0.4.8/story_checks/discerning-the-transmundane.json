@@ -10,6 +10,44 @@
    "firstObjectiveStage": 5,
    "startedBy": [
     {
+     "by": "dialogue",
+     "speaker": "Urag gro-Shub",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Arcanaeum"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:02725E",
+     "prompt": "Where did he go?",
+     "reply": [
+      "Somewhere up north, in the ice fields.",
+      "He said he found some old Dwemer artifact, but... well, that was years ago.",
+      "Haven't heard from him since. "
+     ],
+     "conditions": "the speaker is Urag gro-Shub",
+     "source": "TIF__0002725E.Fragment_0 on INFO Skyrim.esm:02725E (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Urag gro-Shub",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Arcanaeum"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:027260",
+     "prompt": "He's dead?",
+     "reply": [
+      "Oh no. I hope not. But even I haven't seen him in years, and we were close.",
+      "Became obsessed with the Dwemer. Took off north saying he had found some old artifact. Haven't seen him since. ",
+      "Somewhere in the ice fields, if you want to try to find him. "
+     ],
+     "conditions": "the speaker is Urag gro-Shub",
+     "source": "TIF__00027260.Fragment_1 on INFO Skyrim.esm:027260 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
      "by": "start game",
      "source": "Skyrim.esm:02D512 DNAM (Wintersun - Reqtificated.esp)",
      "verdict": "files"

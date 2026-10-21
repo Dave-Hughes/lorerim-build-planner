@@ -9,7 +9,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Brother Verulus, placed in Hall of the Dead, "Would some coin help? (<BribeCost> gold)": SetStage 10 (when: fn654 == 1; the speaker is Brother Verulus). Source: TIF__00060647.Fragment_0 on INFO Skyrim.esm:060647 (Skyrim.esm). **script**
 - Dialogue with Brother Verulus, placed in Hall of the Dead, "(Invisible Continue)": SetStage 10 (when: the speaker is Brother Verulus). Source: TIF__0006064F.Fragment_0 on INFO Skyrim.esm:06064F (Skyrim.esm). **script**
 - Dialogue with Brother Verulus, placed in Hall of the Dead, "I could help if you tell me. (Persuade)": SetStage 10 (when: the speaker is Brother Verulus). Source: TIF__00060652.Fragment_1 on INFO Skyrim.esm:060652 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Story manager node DA11IntroSceneNode, event: change location; conditions up its parents: fn576 == 1. Source: DA11IntroSceneNode Skyrim.esm:09E0D6 (Skyrim.esm). **files**
+- Story manager node DA11IntroSceneNode, event: change location; conditions up its parents: the place you enter is Markarth. Source: DA11IntroSceneNode Skyrim.esm:09E0D6 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
@@ -41,7 +41,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DA11HallScene, a helper quest with Glooredhel, Player at stage 10 calls SetStage 5; DA11HallScene is started by story manager node DA11HalloftheDeadSceneNode (event: change location; Investigate the Hall of the Dead stage == 10; fn576 == 1). Source: QF_DA11HalloftheDeadSceneQues_0007D950.fragment_1 on Skyrim.esm:07D950 (Skyrim.esm). **script**
+- DA11HallScene, a helper quest with Glooredhel, Player at stage 10 calls SetStage 5; DA11HallScene is started by story manager node DA11HalloftheDeadSceneNode (event: change location; Investigate the Hall of the Dead stage == 10; the place you enter is Hall of the Dead). Source: QF_DA11HalloftheDeadSceneQues_0007D950.fragment_1 on Skyrim.esm:07D950 (Skyrim.esm). **script**
 - Dialogue with Eola, placed in Hall of the Dead, "I want no part of this.": SetStage 10 (when: the speaker is Eola). Source: TIF__000819D4.Fragment_0 on INFO Skyrim.esm:0819D4 (Skyrim.esm). **script**
 - Dialogue with Eola, placed in Hall of the Dead, "Where is this place?": SetStage 10 (when: the speaker is Eola). Source: TIF__000819D8.Fragment_0 on INFO Skyrim.esm:0819D8 (Skyrim.esm). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:02C358 DNAM (Wintersun - Reqtificated.esp). **files**

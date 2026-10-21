@@ -6,7 +6,6 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with Geldis Sadri, placed in The Retching Netch: SetStage 10 (when: the speaker is Geldis Sadri; Unearthed stage < 100; Kolbjorn Barrow Misc Objectives stage <= 10). Source: DLC2_TIF__0202BBB9.Fragment_0 on INFO Dragonborn.esm:02BBB9 (TheChoiceIsYours.esp). **script**
 - Dialogue with Ralis Sedarys, placed in Kolbjorn Barrow, "I've got some money. Are you looking for a partner?": SetStage 15 (when: Unearthed stage 15 not done; Unearthed stage == 40; the speaker is Ralis Sedarys). Source: DLC2_TIF__020275B1.Fragment_0 on INFO Dragonborn.esm:0275B1 (Dragonborn.esm). **script**
 - Dialogue with Ralis Sedarys, placed in Kolbjorn Barrow, "Why not hire some of the miners out of Raven Rock?": SetStage 40 (when: Unearthed stage 14 done; Unearthed stage < 40; the speaker is Ralis Sedarys). Source: DLC2_TIF__0202757C.Fragment_0 on INFO Dragonborn.esm:02757C (Dragonborn.esm). **script**
 - Dialogue with Ralis Sedarys, placed in Kolbjorn Barrow, "Here's a little gold for your tale. (<BribeCost> gold)": SetStage 13 (when: Unearthed stage 14 not done; Unearthed stage 13 not done; Unearthed stage == 20; the speaker is Ralis Sedarys). Source: DLC2_TIF__02027596.Fragment_0 on INFO Dragonborn.esm:027596 (Unofficial Skyrim Special Edition Patch.esp). **script**
@@ -14,6 +13,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Ralis Sedarys, placed in Kolbjorn Barrow, "What's the matter with you?": SetStage 11 (when: Unearthed hasn't started; the speaker is Ralis Sedarys). Source: DLC2_TIF__02027587.Fragment_0 on INFO Dragonborn.esm:027587 (Dragonborn.esm). **script**
 - Dialogue with Ralis Sedarys, placed in Kolbjorn Barrow, "I heard you were starting an expedition?": SetStage 11 (when: Unearthed stage == 10; the speaker is Ralis Sedarys). Source: DLC2_TIF__02027588.Fragment_0 on INFO Dragonborn.esm:027588 (Dragonborn.esm). **script**
 - Dialogue with Ralis Sedarys, placed in Kolbjorn Barrow: SetStage 14 (when: the speaker is Ralis Sedarys). Source: DLC2_TIF__0203409E.Fragment_0 on INFO Dragonborn.esm:03409E (Dragonborn.esm). **script**
+- Dialogue with Geldis Sadri, placed in The Retching Netch: SetStage 10 (when: the speaker is Geldis Sadri; Unearthed stage < 100; Kolbjorn Barrow Misc Objectives stage <= 10). Source: DLC2_TIF__0202BBB9.Fragment_0 on INFO Dragonborn.esm:02BBB9 (TheChoiceIsYours.esp). **script**
 - and 1 more in the JSON
 - (First objective shown at stage 40; a call to a later stage advances the quest instead.)
 

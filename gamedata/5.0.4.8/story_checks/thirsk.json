@@ -91,22 +91,6 @@
    "firstObjectiveStage": 10,
    "startedBy": [
     {
-     "by": "quest script",
-     "quest": "DLC2Init (named \"Init quest\" in its record), a helper quest with DremoraButler, DremoraMerchant",
-     "questId": "Dragonborn.esm:016E02",
-     "atStage": 100,
-     "call": "Start",
-     "source": "DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp)",
-     "verdict": "script",
-     "throughStartedBy": [
-      {
-       "by": "start game",
-       "source": "Dragonborn.esm:016E02 DNAM (Fozars_Dragonborn_-_Requiem_Patch.esp)",
-       "verdict": "files"
-      }
-     ]
-    },
-    {
      "by": "dialogue",
      "speaker": "Bujold the Intrepid",
      "speakerNamed": "GetIsID",
@@ -122,6 +106,22 @@
      "conditions": "the speaker is Bujold the Intrepid; Retaking Thirsk stage < 10",
      "source": "DLC2_TIF__0201A4E6.Fragment_0 on INFO Dragonborn.esm:01A4E6 (Dragonborn.esm)",
      "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "DLC2Init (named \"Init quest\" in its record), a helper quest with DremoraButler, DremoraMerchant",
+     "questId": "Dragonborn.esm:016E02",
+     "atStage": 100,
+     "call": "Start",
+     "source": "DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp)",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Dragonborn.esm:016E02 DNAM (Fozars_Dragonborn_-_Requiem_Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -296,22 +296,6 @@
    "firstObjectiveStage": 10,
    "startedBy": [
     {
-     "by": "quest script",
-     "quest": "DLC2Init (named \"Init quest\" in its record), a helper quest with DremoraButler, DremoraMerchant",
-     "questId": "Dragonborn.esm:016E02",
-     "atStage": 100,
-     "call": "Start",
-     "source": "DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp)",
-     "verdict": "script",
-     "throughStartedBy": [
-      {
-       "by": "start game",
-       "source": "Dragonborn.esm:016E02 DNAM (Fozars_Dragonborn_-_Requiem_Patch.esp)",
-       "verdict": "files"
-      }
-     ]
-    },
-    {
      "by": "dialogue",
      "speaker": "Elmus",
      "speakerNamed": "alias Elmus of DLC2ThirskFFElmus (Elmus Favor Quest) (unique)",
@@ -329,6 +313,22 @@
      "conditions": "the speaker is the one in alias Elmus; Elmus Favor Quest stage < 10",
      "source": "TIF__02038EBC.Fragment_0 on INFO Dragonborn.esm:038EBC (Dragonborn.esm)",
      "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "DLC2Init (named \"Init quest\" in its record), a helper quest with DremoraButler, DremoraMerchant",
+     "questId": "Dragonborn.esm:016E02",
+     "atStage": 100,
+     "call": "Start",
+     "source": "DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp)",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Dragonborn.esm:016E02 DNAM (Fozars_Dragonborn_-_Requiem_Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -402,15 +402,6 @@
    "firstObjectiveStage": 10,
    "startedBy": [
     {
-     "by": "quest script",
-     "quest": "DLC2MH01 (Retaking Thirsk)",
-     "questId": "Dragonborn.esm:01A50B",
-     "atStage": 30,
-     "call": "Start",
-     "source": "DLC2_QF_DLC2MH01_0201A50B.fragment_2 on Dragonborn.esm:01A50B (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
-    },
-    {
      "by": "dialogue",
      "speaker": "Elmus",
      "speakerNamed": "alias Elmus of DLC2ThirskFFElmusBack (Elmus Favor Quest) (unique)",
@@ -428,6 +419,15 @@
      ],
      "conditions": "the speaker is the one in alias Elmus; Elmus Favor Quest stage < 10",
      "source": "TIF__02038EBE.Fragment_0 on INFO Dragonborn.esm:038EBE (Dragonborn.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "DLC2MH01 (Retaking Thirsk)",
+     "questId": "Dragonborn.esm:01A50B",
+     "atStage": 30,
+     "call": "Start",
+     "source": "DLC2_QF_DLC2MH01_0201A50B.fragment_2 on Dragonborn.esm:01A50B (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     }
    ],
@@ -486,15 +486,6 @@
    "firstObjectiveStage": 10,
    "startedBy": [
     {
-     "by": "quest script",
-     "quest": "DLC2MH01 (Retaking Thirsk)",
-     "questId": "Dragonborn.esm:01A50B",
-     "atStage": 30,
-     "call": "Start",
-     "source": "DLC2_QF_DLC2MH01_0201A50B.fragment_2 on Dragonborn.esm:01A50B (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
-    },
-    {
      "by": "dialogue",
      "speaker": "Halbarn Iron-Fur",
      "speakerNamed": "alias Halbarn of DLC2ThirskFFHalbarn (Halbarn Favor Quest) (unique)",
@@ -511,6 +502,15 @@
      ],
      "conditions": "the speaker is the one in alias Halbarn; Halbarn Favor Quest stage < 10",
      "source": "TIF__02038FB9.Fragment_0 on INFO Dragonborn.esm:038FB9 (Dragonborn.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "DLC2MH01 (Retaking Thirsk)",
+     "questId": "Dragonborn.esm:01A50B",
+     "atStage": 30,
+     "call": "Start",
+     "source": "DLC2_QF_DLC2MH01_0201A50B.fragment_2 on Dragonborn.esm:01A50B (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     }
    ],
@@ -569,15 +569,6 @@
    "firstObjectiveStage": 10,
    "startedBy": [
     {
-     "by": "quest script",
-     "quest": "DLC2MH01 (Retaking Thirsk)",
-     "questId": "Dragonborn.esm:01A50B",
-     "atStage": 30,
-     "call": "Start",
-     "source": "DLC2_QF_DLC2MH01_0201A50B.fragment_2 on Dragonborn.esm:01A50B (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
-    },
-    {
      "by": "dialogue",
      "speaker": "Hilund",
      "speakerNamed": "alias Hilund of DLC2ThirskFFHilund (Hilund Favor Quest) (unique)",
@@ -595,6 +586,15 @@
      ],
      "conditions": "the speaker is the one in alias Hilund; Hilund Favor Quest stage < 10",
      "source": "TIF__02038FB7.Fragment_0 on INFO Dragonborn.esm:038FB7 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "DLC2MH01 (Retaking Thirsk)",
+     "questId": "Dragonborn.esm:01A50B",
+     "atStage": 30,
+     "call": "Start",
+     "source": "DLC2_QF_DLC2MH01_0201A50B.fragment_2 on Dragonborn.esm:01A50B (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     }
    ],

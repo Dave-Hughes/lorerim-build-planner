@@ -60,7 +60,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node WEPriorityQuests, event: script event; conditions up its parents: global WEDebug == 0 (now 0); global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1. Source: WEPriorityQuests Skyrim.esm:0896A9 (LoreRim - World Fixes.esp). **run time**
+- Story manager node WEPriorityQuests, event: script event; conditions up its parents: global WEDebug == 0 (now 0); global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1. Source: WEPriorityQuests Skyrim.esm:0896A9 (LoreRim - World Fixes.esp). **run time**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**

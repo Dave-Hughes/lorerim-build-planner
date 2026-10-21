@@ -6,8 +6,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- MS11Kicker, a helper quest at stage 0 calls Start; MS11Kicker is started by story manager node MS11WindhelmEntranceCounting (event: change location; fn576 == 1; fn576 == 0; fn576 == 0). Source: QF_MS11Kicker_000BAC24.fragment_0 on Skyrim.esm:0BAC24 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Dialogue with someone the line does not name (named by alias CrimeSceneInvestigator of MS11 (Blood on the Ice) (from alias)), "Could you use some help?": SetStage 10 (when: the speaker is the one in alias CrimeSceneInvestigator; Blood on the Ice stage < 10; fn629 == 1). Source: TIF__00025E57.Fragment_0 on INFO Skyrim.esm:025E57 (Skyrim.esm). **script**
+- MS11Kicker, a helper quest at stage 0 calls Start; MS11Kicker is started by story manager node MS11WindhelmEntranceCounting (event: change location; the place you enter is Windhelm; the place you leave isn't Windhelm; the place you leave isn't a dwelling). Source: QF_MS11Kicker_000BAC24.fragment_0 on Skyrim.esm:0BAC24 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with a Windhelm guard (named by alias CrimeSceneInvestigator of MS11 (Blood on the Ice) (from alias)), "Could you use some help?": SetStage 10 (when: the speaker is the one in alias CrimeSceneInvestigator; Blood on the Ice stage < 10; fn629 == 1). Source: TIF__00025E57.Fragment_0 on INFO Skyrim.esm:025E57 (Skyrim.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
@@ -184,8 +184,8 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 ### MS11Kicker
 
 - What it does: stage 0: Start. Source: QF_MS11Kicker_000BAC24 on Skyrim.esm:0BAC24 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Started by: story manager node MS11WindhelmEntranceCounting (change location; fn576 == 1; fn576 == 0; fn576 == 0; MS11WindhelmEntranceCounting Skyrim.esm:0BAC26 (Skyrim.esm)).
-- In one sentence: MS11Kicker stage 0: Start on MS11 (Blood on the Ice); it is started by story manager node MS11WindhelmEntranceCounting (change location; fn576 == 1; fn576 == 0; fn576 == 0; MS11WindhelmEntranceCounting Skyrim.esm:0BAC26 (Skyrim.esm)).
+- Started by: story manager node MS11WindhelmEntranceCounting (change location; the place you enter is Windhelm; the place you leave isn't Windhelm; the place you leave isn't a dwelling; MS11WindhelmEntranceCounting Skyrim.esm:0BAC26 (Skyrim.esm)).
+- In one sentence: MS11Kicker stage 0: Start on MS11 (Blood on the Ice); it is started by story manager node MS11WindhelmEntranceCounting (change location; the place you enter is Windhelm; the place you leave isn't Windhelm; the place you leave isn't a dwelling; MS11WindhelmEntranceCounting Skyrim.esm:0BAC26 (Skyrim.esm)).
 
 ### dialogue INFO Skyrim.esm:025E57
 

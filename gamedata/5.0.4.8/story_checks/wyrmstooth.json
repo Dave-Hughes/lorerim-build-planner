@@ -574,7 +574,8 @@
        "source": "WT_WyrmstoothStarterNode Wyrmstooth.esp:AC9831 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -598,7 +599,8 @@
        "source": "WT_WyrmstoothStarterNode Wyrmstooth.esp:AC9831 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -622,7 +624,8 @@
        "source": "WT_WyrmstoothStarterNode Wyrmstooth.esp:AC9831 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -646,7 +649,8 @@
        "source": "WT_WyrmstoothStarterNode Wyrmstooth.esp:AC9831 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -670,7 +674,8 @@
        "source": "WT_WyrmstoothStarterNode Wyrmstooth.esp:AC9831 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -694,7 +699,8 @@
        "source": "WT_WyrmstoothStarterNode Wyrmstooth.esp:AC9831 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -718,7 +724,8 @@
        "source": "WT_WyrmstoothStarterNode Wyrmstooth.esp:AC9831 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -742,7 +749,8 @@
        "source": "WT_WyrmstoothStarterNode Wyrmstooth.esp:AC9831 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -766,7 +774,8 @@
        "source": "WT_WyrmstoothStarterNode Wyrmstooth.esp:AC9831 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -790,7 +799,8 @@
        "source": "WT_WyrmstoothStarterNode Wyrmstooth.esp:AC9831 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -814,7 +824,8 @@
        "source": "WT_WyrmstoothStarterNode Wyrmstooth.esp:AC9831 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -838,7 +849,8 @@
        "source": "WT_WyrmstoothStarterNode Wyrmstooth.esp:AC9831 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -862,7 +874,8 @@
        "source": "WT_WyrmstoothStarterNode Wyrmstooth.esp:AC9831 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -886,7 +899,8 @@
        "source": "WT_WyrmstoothStarterNode Wyrmstooth.esp:AC9831 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -910,7 +924,8 @@
        "source": "WT_WyrmstoothStarterNode Wyrmstooth.esp:AC9831 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "dialogue",
@@ -1241,6 +1256,23 @@
    "firstObjectiveStage": 1,
    "startedBy": [
     {
+     "by": "dialogue",
+     "speaker": "Bolmar",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Gronndal Grove"
+     ],
+     "call": "SetStage 10",
+     "info": "Wyrmstooth.esp:48F99D",
+     "prompt": "Maybe I can help.",
+     "reply": [
+      "Truly? I appreciate the assistance, but do be wary. They are known to bend the will of animals against the unsuspecting and their magic is deadly."
+     ],
+     "conditions": "the speaker is Bolmar; A Priceless Commodity stage <= 1",
+     "source": "WT_TIF__0248F99D.Fragment_0 on INFO Wyrmstooth.esp:48F99D (Wyrmstooth.esp)",
+     "verdict": "script"
+    },
+    {
      "by": "start game",
      "source": "Wyrmstooth.esp:48F992 DNAM (Wyrmstooth.esp)",
      "verdict": "files"
@@ -1526,7 +1558,7 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1; fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1",
+       "conditions": "GetEventData WTWEStart == 1; GetEventData WTWEStart == 1; global WEEnabled == 1 (now 1); GetEventData WTWEStart == 1 or GetEventData WTWERoadStart == 1 or GetEventData WEStart == 1 or GetEventData WERoadStart == 1",
        "globals": [
         "Skyrim.esm:0B8EC1"
        ],
@@ -1543,14 +1575,15 @@
         "Skyrim.esm:01379A",
         "Root"
        ],
-       "conditions": "fn576 == 1; fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1",
+       "conditions": "GetEventData WTWERoadStart == 1; GetEventData WTWERoadStart == 1; global WEEnabled == 1 (now 1); GetEventData WTWEStart == 1 or GetEventData WTWERoadStart == 1 or GetEventData WEStart == 1 or GetEventData WERoadStart == 1",
        "globals": [
         "Skyrim.esm:0B8EC1"
        ],
        "source": "WTRoadQuestNode Wyrmstooth.esp:52E654 (Wyrmstooth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     }
    ],
    "caughtUpBy": [],
@@ -1605,6 +1638,25 @@
    "plugin": "Wyrmstooth.esp",
    "firstObjectiveStage": 5,
    "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Vulom",
+     "speakerNamed": "scene WTVulomGreet, alias VulomTalkActivator of WTUberEncounter (Someone with Backbone) (forced)",
+     "speakerPlaced": [
+      "Tomb of Vulom"
+     ],
+     "call": "SetStage 10",
+     "info": "Wyrmstooth.esp:2F1B15",
+     "prompt": null,
+     "reply": [
+      "Long has it been since someone last set foot in my tomb. Approach my sarcophagus, mortal. I wish to speak with you."
+     ],
+     "conditions": "",
+     "scene": "Wyrmstooth.esp:2F1A7A",
+     "sceneStartedBy": [],
+     "source": "WT_TIF__012F1B15.Fragment_0 on INFO Wyrmstooth.esp:2F1B15 (Wyrmstooth.esp)",
+     "verdict": "script"
+    },
     {
      "by": "start game",
      "source": "Wyrmstooth.esp:2F1A74 DNAM (Wyrmstooth.esp)",
@@ -1688,6 +1740,45 @@
    "plugin": "Wyrmstooth.esp",
    "firstObjectiveStage": 1,
    "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Dunyick",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Wyrmstooth",
+      "Wyrmstooth"
+     ],
+     "call": "SetStage 10",
+     "info": "Wyrmstooth.esp:2E6C77",
+     "prompt": "Which direction did your wolf go?",
+     "reply": [
+      "She headed down the hill, past the town and off towards the mountains. I've tried calling for her, but maybe she's too scared to return.",
+      "With these injuries I can't track her myself but she'll follow you now that you have my scent.",
+      "Just keep an eye out for a wolf with a rust colored pelt. She shouldn't be too hard to spot against the white snow. Hurry, before hunters catch her!"
+     ],
+     "conditions": "A Howl Load of Trouble stage <= 1; the speaker is Dunyick",
+     "source": "WT_TIF__012E6C77.Fragment_1 on INFO Wyrmstooth.esp:2E6C77 (Wyrmstooth.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Dunyick",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Wyrmstooth",
+      "Wyrmstooth"
+     ],
+     "call": "SetStage 5",
+     "info": "Wyrmstooth.esp:2E6C79",
+     "prompt": "I don't have the time for this.",
+     "reply": [
+      "Oh well, how fortunate for you that you have more pressing matters to attend to.",
+      "If ever you change your mind, you'll know where to find me. It's not like I'll be going anywhere with these injuries any time soon."
+     ],
+     "conditions": "A Howl Load of Trouble stage <= 1; the speaker is Dunyick",
+     "source": "WT_TIF__012E6C79.Fragment_0 on INFO Wyrmstooth.esp:2E6C79 (Wyrmstooth.esp)",
+     "verdict": "script"
+    },
     {
      "by": "start game",
      "source": "Wyrmstooth.esp:2E49AF DNAM (Wyrmstooth.esp)",

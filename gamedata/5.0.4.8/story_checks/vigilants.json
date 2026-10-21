@@ -2424,7 +2424,7 @@
     }
    ],
    "needs": {
-    "conditions": "The Landing stage 999 not done; The Landing completed; Empty Cells not completed; GetQuestRunning Empty Cells == 0; fn576 == 1; fn576 == 1",
+    "conditions": "The Landing stage 999 not done; The Landing completed; Empty Cells not completed; GetQuestRunning Empty Cells == 0; the place you enter is Stuhn Ravine; the place you leave is Temple of Stendarr",
     "doors": [],
     "ways": []
    },
@@ -2575,24 +2575,6 @@
    "firstObjectiveStage": 60,
    "startedBy": [
     {
-     "by": "quest script",
-     "quest": "zzzBMMq02 (Remnants)",
-     "questId": "Vigilant.esm:038525",
-     "atStage": 100,
-     "call": "Start",
-     "source": "QF_zzzBMMq02_01038525.fragment_20 on Vigilant.esm:038525 (Vigilant.esm)",
-     "verdict": "script"
-    },
-    {
-     "by": "quest script",
-     "quest": "zzzBMMq02 (Remnants)",
-     "questId": "Vigilant.esm:038525",
-     "atStage": 100,
-     "call": "SetStage 0",
-     "source": "QF_zzzBMMq02_01038525.fragment_20 on Vigilant.esm:038525 (Vigilant.esm)",
-     "verdict": "script"
-    },
-    {
      "by": "dialogue",
      "speaker": "Lamae Bal",
      "speakerNamed": "alias LamaeBal of zzzBMMq03 (The Blood Matron) (unique)",
@@ -2608,6 +2590,24 @@
      ],
      "conditions": "the speaker is the one in alias LamaeBal",
      "source": "BM03_TIF__0103C193.Fragment_0 on INFO Vigilant.esm:03C193 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzBMMq02 (Remnants)",
+     "questId": "Vigilant.esm:038525",
+     "atStage": 100,
+     "call": "Start",
+     "source": "QF_zzzBMMq02_01038525.fragment_20 on Vigilant.esm:038525 (Vigilant.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "zzzBMMq02 (Remnants)",
+     "questId": "Vigilant.esm:038525",
+     "atStage": 100,
+     "call": "SetStage 0",
+     "source": "QF_zzzBMMq02_01038525.fragment_20 on Vigilant.esm:038525 (Vigilant.esm)",
      "verdict": "script"
     }
    ],
@@ -3808,7 +3808,7 @@
     }
    ],
    "needs": {
-    "conditions": "Empty Cells stage 255 not done; Empty Cells completed; Child of Oblivion not completed; GetQuestRunning Child of Oblivion == 0; fn576 == 1; fn576 == 1",
+    "conditions": "Empty Cells stage 255 not done; Empty Cells completed; Child of Oblivion not completed; GetQuestRunning Child of Oblivion == 0; the place you enter is Stuhn Ravine; the place you leave is Temple of Stendarr",
     "doors": [],
     "ways": [
      {

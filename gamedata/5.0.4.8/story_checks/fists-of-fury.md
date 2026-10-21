@@ -6,8 +6,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- FOFQuestControl, a helper quest with PlayerAlias, MaulAlias, FalionRef calls at stage 50 SetStage 5; at stage 55 SetStage 5; FOFQuestControl is started by the start-game flag. Sources: QF_FOFQuestControl_05089602.fragment_5, QF_FOFQuestControl_05089602.fragment_11 on Fists of Fury - Skyrim.esp:089602. **script**
 - Dialogue with Falion, placed in Falion's House, "Well... who do I have to fight?": SetStage 10 (when: Fists of Fury - Hjaalmarch stage == 5; the speaker is Falion). Source: TIF_FOFMorthal_05158FC4.Fragment_2 on INFO Fists of Fury - Skyrim.esp:158FC4 (Fists of Fury - Skyrim.esp). **script**
+- FOFQuestControl, a helper quest with PlayerAlias, MaulAlias, FalionRef calls at stage 50 SetStage 5; at stage 55 SetStage 5; FOFQuestControl is started by the start-game flag. Sources: QF_FOFQuestControl_05089602.fragment_5, QF_FOFQuestControl_05089602.fragment_11 on Fists of Fury - Skyrim.esp:089602. **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

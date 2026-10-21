@@ -10,6 +10,23 @@
    "firstObjectiveStage": 150,
    "startedBy": [
     {
+     "by": "dialogue",
+     "speaker": "Varona Nelas",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Tel Mithryn Steward's House, Tel Mithryn Steward"
+     ],
+     "call": "SetStage 90",
+     "info": "Dragonborn.esm:017E7F",
+     "prompt": null,
+     "reply": [
+      "We don't get many visitors. Is there something you need?"
+     ],
+     "conditions": "the speaker is Varona Nelas; the speaker is Prisoner",
+     "source": "DLC2_TIF__02017E7F.Fragment_0 on INFO Dragonborn.esm:017E7F (Dragonborn.esm)",
+     "verdict": "script"
+    },
+    {
      "by": "quest script",
      "quest": "DLC2Init (named \"Init quest\" in its record), a helper quest with DremoraButler, DremoraMerchant",
      "questId": "Dragonborn.esm:016E02",
@@ -40,23 +57,6 @@
      ],
      "conditions": "the speaker is the one in alias Neloth; Reluctant Steward stage == 100; fn359 == 1",
      "source": "DLC2_TIF__02017E6D.Fragment_0 on INFO Dragonborn.esm:017E6D (Dragonborn.esm)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Varona Nelas",
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [
-      "Tel Mithryn Steward's House, Tel Mithryn Steward"
-     ],
-     "call": "SetStage 90",
-     "info": "Dragonborn.esm:017E7F",
-     "prompt": null,
-     "reply": [
-      "We don't get many visitors. Is there something you need?"
-     ],
-     "conditions": "the speaker is Varona Nelas; the speaker is Prisoner",
-     "source": "DLC2_TIF__02017E7F.Fragment_0 on INFO Dragonborn.esm:017E7F (Dragonborn.esm)",
      "verdict": "script"
     }
    ],
@@ -699,7 +699,7 @@
      ],
      "source": "DLC2BlackBookQuestNode Dragonborn.esm:020689 (Dragonborn.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "the place you enter is Tel Mithryn Apothecary or the place you enter is Tel Mithryn Kitchen or the place you enter is Tel Mithryn Steward or the place you enter is Tel Mithryn Tower"
     }
    ],
    "caughtUpBy": [],
@@ -790,7 +790,7 @@
      ],
      "source": "DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "the place you enter is Tel Mithryn Apothecary or the place you enter is Tel Mithryn Kitchen or the place you enter is Tel Mithryn Steward or the place you enter is Tel Mithryn Tower"
     }
    ],
    "caughtUpBy": [],
@@ -892,7 +892,7 @@
      ],
      "source": "DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm)",
      "verdict": "run time",
-     "conditions": "fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "the place you enter is Tel Mithryn Apothecary or the place you enter is Tel Mithryn Kitchen or the place you enter is Tel Mithryn Steward or the place you enter is Tel Mithryn Tower"
     }
    ],
    "caughtUpBy": [],
@@ -1011,7 +1011,7 @@
      ],
      "source": "DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm)",
      "verdict": "run time",
-     "conditions": "fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "the place you enter is Tel Mithryn Apothecary or the place you enter is Tel Mithryn Kitchen or the place you enter is Tel Mithryn Steward or the place you enter is Tel Mithryn Tower"
     }
    ],
    "caughtUpBy": [],
@@ -1144,7 +1144,7 @@
      ],
      "source": "DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm)",
      "verdict": "run time",
-     "conditions": "fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "the place you enter is Tel Mithryn Apothecary or the place you enter is Tel Mithryn Kitchen or the place you enter is Tel Mithryn Steward or the place you enter is Tel Mithryn Tower"
     }
    ],
    "caughtUpBy": [],
@@ -1267,7 +1267,7 @@
      ],
      "source": "DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm)",
      "verdict": "run time",
-     "conditions": "fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "the place you enter is Tel Mithryn Apothecary or the place you enter is Tel Mithryn Kitchen or the place you enter is Tel Mithryn Steward or the place you enter is Tel Mithryn Tower"
     }
    ],
    "caughtUpBy": [],
@@ -1497,7 +1497,7 @@
      ],
      "source": "DLC2NelothQuestNode Dragonborn.esm:020687 (Dragonborn.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "the place you enter is Tel Mithryn Apothecary or the place you enter is Tel Mithryn Kitchen or the place you enter is Tel Mithryn Steward or the place you enter is Tel Mithryn Tower"
     }
    ],
    "caughtUpBy": [],
@@ -1802,7 +1802,7 @@
      ],
      "source": "DLC2ElyneaQuestNode Dragonborn.esm:020688 (Dragonborn.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "the place you enter is Tel Mithryn Apothecary or the place you enter is Tel Mithryn Kitchen or the place you enter is Tel Mithryn Steward or the place you enter is Tel Mithryn Tower"
     }
    ],
    "caughtUpBy": [],

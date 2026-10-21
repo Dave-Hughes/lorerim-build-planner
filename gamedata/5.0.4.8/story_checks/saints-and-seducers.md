@@ -48,7 +48,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Needs**
 
-- Its own conditions: the speaker is Staada; fn576 == 1; fn629 == 1; level >= EC_SS_StartLevel (now 20). **files**
+- Its own conditions: the speaker is Staada; the place you enter is Solitude; fn629 == 1; level >= EC_SS_StartLevel (now 20). **files**
 - Ways in: Solitude Sewers: 4 doors, 0 locked. A door is a need only when every way in is locked. **files**
 - Global EC_SS_StartLevel: record 20.0 (Skyrim Extended Cut - Saints and Seducers.esp). **files**
 

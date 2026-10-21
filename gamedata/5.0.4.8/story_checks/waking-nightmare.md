@@ -6,14 +6,15 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Dialogue with Erandur, placed in Windpeak Inn, "I trust you. How can I help?": SetStage 25 (when: the speaker is Erandur; Waking Nightmare stage < 22). Source: TIF__0002371D.Fragment_0 on INFO Skyrim.esm:02371D (Skyrim.esm). **script**
+- Dialogue with Erandur, placed in Windpeak Inn, "Sorry, I can't.": SetStage 22 (when: the speaker is Erandur; Waking Nightmare stage < 22). Source: TIF__00066649.Fragment_0 on INFO Skyrim.esm:066649 (Skyrim.esm). **script**
 - Dialogue with Brina Merilis, placed in Brina's House, "I came at a bad time? What's wrong?": SetStage 10 (when: Waking Nightmare stage 10 not done; the speaker is Brina Merilis). Source: TIF__00087906.Fragment_0 on INFO Skyrim.esm:087906 (Skyrim.esm). **script**
 - Dialogue with Skald the Elder, placed in The White Hall, "Nightmare problem?": SetStage 10 (when: Waking Nightmare stage 10 not done; the speaker is Skald the Elder). Source: TIF__00087907.Fragment_0 on INFO Skyrim.esm:087907 (Skyrim.esm). **script**
 - Dialogue with Madena, placed in The White Hall, "What's this about nightmares?": SetStage 10 (when: fn67 == 1; Waking Nightmare stage 10 not done; the speaker is Madena). Source: TIF__00087909.Fragment_0 on INFO Skyrim.esm:087909 (Skyrim.esm). **script**
 - Dialogue with Rustleif, placed in Rustleif's House, "No one's getting any rest? Why not?": SetStage 10 (when: Waking Nightmare stage 10 not done; the speaker is Rustleif). Source: TIF__0008790A.Fragment_0 on INFO Skyrim.esm:08790A (Skyrim.esm). **script**
 - Dialogue with Leigelf, placed in Leigelf's House, "Why aren't you getting much sleep?": SetStage 10 (when: Waking Nightmare stage 10 not done; the speaker is Leigelf). Source: TIF__0008790B.Fragment_0 on INFO Skyrim.esm:08790B (Skyrim.esm). **script**
 - Dialogue with Frida, placed in The Mortar and Pestle, "Something for bad dreams?": SetStage 10 (when: Waking Nightmare stage 10 not done; the speaker is Frida). Source: TIF__0008790D.Fragment_0 on INFO Skyrim.esm:08790D (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Dialogue with Beitild, placed in Beitild's House, ""No rest in Dawnstar"?": SetStage 10 (when: Waking Nightmare stage 10 not done; the speaker is Beitild). Source: TIF__0008790E.Fragment_0 on INFO Skyrim.esm:08790E (Skyrim.esm). **script**
-- Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:0242AF DNAM (Wintersun - Reqtificated.esp). **files**
+- and 2 more in the JSON
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

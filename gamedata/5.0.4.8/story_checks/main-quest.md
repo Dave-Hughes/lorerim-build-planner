@@ -78,6 +78,10 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - MQ102 (Before the Storm) calls at stage 160 SetStage 10; at stage 150 SetStage 8. Sources: QF_MQ102_0004E50D.fragment_45, QF_MQ102_0004E50D.fragment_115 on Skyrim.esm:04E50D. **script**
+- Dialogue with Balgruuf the Greater (named by scene MQ103IntroScene, alias Balgruuf of MQ103 (Bleak Falls Barrow) (unique)), placed in Dragonsreach: SetStage 20; its scene is started by MQ103 (Bleak Falls Barrow) at stage 10. Source: TIF__000D50F1.Fragment_0 on INFO Skyrim.esm:0D50F1 (Skyrim.esm). **script**
+- Dialogue with Farengar Secret-Fire, placed in Dragonsreach, "So what do you need me to do?": SetStage 50 (when: the speaker is Farengar Secret-Fire; GetItemCount Dragonstone >= 1). Source: TIF__000D50E1.Fragment_0 on INFO Skyrim.esm:0D50E1 (Skyrim.esm). **script**
+- Dialogue with Farengar Secret-Fire, placed in Dragonsreach, "So what do you need me to do?": SetStage 50 (when: the speaker is Farengar Secret-Fire). Source: TIF__000E0EBA.Fragment_0 on INFO Skyrim.esm:0E0EBA (Skyrim.esm). **script**
+- Dialogue with Farengar Secret-Fire, placed in Dragonsreach: SetStage 20 (when: the speaker is Farengar Secret-Fire). Source: TIF__000D50D3.Fragment_0 on INFO Skyrim.esm:0D50D3 (Skyrim.esm). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:0D0800 DNAM (LoreRim - Dialogue Patch.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -664,7 +668,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Arngeir, placed in High Hrothgar, "Have you located any Words of Power?": SetStage 10 (when: DialogueHighHrothgar stage 10 done; The Words of Power stage 10 not done; the speaker is Arngeir). Source: TIF__000E76D9.Fragment_0 on INFO Skyrim.esm:0E76D9 (Skyrim.esm). **script**
-- Story manager node HighHrothgarNode, event: change location; conditions up its parents: fn576 == 1. Source: HighHrothgarNode Skyrim.esm:0E76E4 (Skyrim.esm). **files**
+- Story manager node HighHrothgarNode, event: change location; conditions up its parents: the place you enter is High Hrothgar. Source: HighHrothgarNode Skyrim.esm:0E76E4 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**

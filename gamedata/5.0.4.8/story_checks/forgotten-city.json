@@ -87,7 +87,8 @@
         "source": "000FCBeginQuest ForgottenCity.esp:0DCA3A (LoreRim - World Fixes.esp)",
         "verdict": "files"
        }
-      ]
+      ],
+      "plain": "It starts by itself on change location."
      }
     ]
    }

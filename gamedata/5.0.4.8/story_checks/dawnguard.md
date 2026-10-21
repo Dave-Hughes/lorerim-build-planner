@@ -6,7 +6,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DLC1VQ00ChangeLocation, a helper quest with Messenger at stage 0 calls SetStage 5; DLC1VQ00ChangeLocation is started by story manager node DLC1VQ00Node (event: change location; Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; Dragonborn stage >= 5 or The Way of the Voice stage < 160; fn576 == 1; fn576 == 0; fn576 == 0; fn576 == 0; fn359 == 0; fn359 == 0). Source: DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B.fragment_1 on Dawnguard.esm:00D90B (TheChoiceIsYours.esp). **script**
+- DLC1VQ00ChangeLocation, a helper quest with Messenger at stage 0 calls SetStage 5; DLC1VQ00ChangeLocation is started by story manager node DLC1VQ00Node (event: change location; Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; Dragonborn stage >= 5 or The Way of the Voice stage < 160; the place you enter is a habitation; the place you enter isn't a orcstronghold; the place you leave isn't a dwelling; the place you enter isn't Winterhold College; fn359 == 0; fn359 == 0). Source: DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B.fragment_1 on Dawnguard.esm:00D90B (TheChoiceIsYours.esp). **script**
 - DLC1VQ00, a helper quest at stage 50 calls SetStage 10; DLC1VQ00 is started by DLC1VQ00ChangeLocation, a helper quest with Messenger at stage 0 (Start); the start-game flag. Source: DLC1_QF_DLC1VQ00_0100D90E.fragment_7 on Dawnguard.esm:00D90E (Dawnguard.esm). **script**
 - Dialogue with Agmaer (named by scene DLC1VQ01AgmaerScene, alias Agmaer of DLC1VQ01MiscObjective (Dawnguard) (unique)), placed in Fort Dawnguard: SetStage 10; its scene is started by DLC1VQ01MiscObjective (Dawnguard) at stage 50. Source: DLC1_TIF__0100D8D8.Fragment_0 on INFO Dawnguard.esm:00D8D8 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
@@ -92,7 +92,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Gunmar (named by alias QuestGiver of DLC1RH01 (Hide and Seek) (run time)), placed in Fort Dawnguard, "What can I do to help?": SetStage 10 (when: fn67 == 1; the speaker is the one in alias QuestGiver; Hide and Seek stage < 10). Source: DLC1_TIF__01005E41.Fragment_0 on INFO Dawnguard.esm:005E41 (Dawnguard.esm). **script**
-- Story manager node DLC1RadiantHunterQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm). **files**
+- Story manager node DLC1RadiantHunterQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantHunterStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -116,7 +116,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Gunmar (named by alias QuestGiver of DLC1RH02 (Cleansing Light) (run time)), placed in Fort Dawnguard, "What can I do to help?": SetStage 10 (when: fn67 == 1; Cleansing Light stage < 10; the speaker is the one in alias QuestGiver). Source: DLC1_TIF__01005E48.Fragment_0 on INFO Dawnguard.esm:005E48 (Dawnguard.esm). **script**
-- Story manager node DLC1RadiantHunterQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm). **files**
+- Story manager node DLC1RadiantHunterQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantHunterStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -140,7 +140,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Gunmar (named by alias Questgiver of DLC1RH03 (Preemptive Strike) (run time)), placed in Fort Dawnguard, "...": SetStage 10 (when: the speaker is the one in alias Questgiver). Source: DLC1_TIF__01005E43.Fragment_0 on INFO Dawnguard.esm:005E43 (Dawnguard.esm). **script**
-- Story manager node DLC1RadiantHunterQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm). **files**
+- Story manager node DLC1RadiantHunterQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantHunterStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -164,7 +164,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Gunmar (named by alias Questgiver of DLC1RH04 (Hunting the Monster) (run time)), placed in Fort Dawnguard, "What can I do to help?": SetStage 10 (when: fn67 == 1; Hunting the Monster stage < 10; the speaker is the one in alias Questgiver). Source: DLC1_TIF__01006950.Fragment_0 on INFO Dawnguard.esm:006950 (Dawnguard.esm). **script**
-- Story manager node DLC1RadiantHunterQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm). **files**
+- Story manager node DLC1RadiantHunterQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantHunterStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -198,7 +198,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Sorine Jurard (named by alias QuestGiver of DLC1RH05 (Ancient Technology) (run time)), placed in Fort Dawnguard, "What can I do to help?": SetStage 10 (when: fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 4 (now 0)). Source: DLC1_TIF__01002F1E.Fragment_0 on INFO Dawnguard.esm:002F1E (Dawnguard.esm). **script**
 - Dialogue with Sorine Jurard (named by alias QuestGiver of DLC1RH05 (Ancient Technology) (run time)), placed in Fort Dawnguard, "What can I do to help?": SetStage 10 (when: fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 5 (now 0)). Source: DLC1_TIF__01002F1F.Fragment_0 on INFO Dawnguard.esm:002F1F (Dawnguard.esm). **script**
 - Dialogue with Sorine Jurard (named by alias QuestGiver of DLC1RH05 (Ancient Technology) (run time)), placed in Fort Dawnguard, "What can I do to help?": SetStage 10 (when: fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver). Source: DLC1_TIF__01002F20.Fragment_0 on INFO Dawnguard.esm:002F20 (Dawnguard.esm). **script**
-- Story manager node DLC1RH05QuestNode, event: script event; conditions up its parents: fn576 == 1; global DLC1RH05FinishedAllQuests == 0 (now 0); fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RH05QuestNode Dawnguard.esm:002F21 (Unofficial Skyrim Special Edition Patch.esp). **run time**
+- Story manager node DLC1RH05QuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantHunterTechStart == 1; global DLC1RH05FinishedAllQuests == 0 (now 0); GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RH05QuestNode Dawnguard.esm:002F21 (Unofficial Skyrim Special Edition Patch.esp). **run time**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -224,7 +224,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Florentius Baenius (named by alias QuestGiver of DLC1RH06 (Rescue) (run time)), placed in Fort Dawnguard, "...": SetStage 10 (when: the speaker is the one in alias QuestGiver; fn70 == 1). Source: DLC1_TIF__01007C30.Fragment_0 on INFO Dawnguard.esm:007C30 (Dawnguard.esm). **script**
 - Dialogue with Florentius Baenius (named by alias QuestGiver of DLC1RH06 (Rescue) (run time)), placed in Fort Dawnguard, "...": SetStage 10 (when: the speaker is the one in alias QuestGiver; fn70 == 1). Source: DLC1_TIF__01007C31.Fragment_0 on INFO Dawnguard.esm:007C31 (Dawnguard.esm). **script**
-- Story manager node DLC1RadiantHunterQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm). **files**
+- Story manager node DLC1RadiantHunterQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantHunterStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -248,7 +248,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Isran (named by alias QuestGiver of DLC1RH07 (A Jarl's Justice) (run time)), placed in Fort Dawnguard, "What can I do to help?": SetStage 10 (when: fn67 == 1; the speaker is the one in alias QuestGiver; A Jarl's Justice stage < 10). Source: DLC1_TIF__01007EC2.Fragment_0 on INFO Dawnguard.esm:007EC2 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Story manager node DLC1RadiantHunterQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm). **run time**
+- Story manager node DLC1RadiantHunterQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantHunterStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm). **run time**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -274,7 +274,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Florentius Baenius (named by alias QuestGiver of DLC1RH08 (Lost Relic) (run time)), placed in Fort Dawnguard, "What can I do to help?": SetStage 10 (when: fn67 == 1; Lost Relic stage < 10; the speaker is the one in alias QuestGiver). Source: DLC1_TIF__0101500F.Fragment_0 on INFO Dawnguard.esm:01500F (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Story manager node DLC1RadiantHunterQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm). **run time**
+- Story manager node DLC1RadiantHunterQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantHunterStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantHunterQuestNode Dawnguard.esm:005E52 (Dawnguard.esm). **run time**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -300,7 +300,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Fura Bloodmouth, placed in Volkihar Keep, "What can I do to help?": SetStage 10 (when: the speaker is the one in alias QuestGiver; The Hunt stage < 10; the speaker is Fura Bloodmouth). Source: DLC1_TIF__01004C1A.Fragment_0 on INFO Dawnguard.esm:004C1A (Dawnguard.esm). **script**
 - Dialogue with Garan Marethi, placed in Volkihar Keep, "What can I do to help?": SetStage 10 (when: the speaker is the one in alias QuestGiver; The Hunt stage < 10; the speaker is Garan Marethi). Source: DLC1_TIF__01015E0C.Fragment_0 on INFO Dawnguard.esm:015E0C (Dawnguard.esm). **script**
-- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **files**
+- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantVampireStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -325,7 +325,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Fura Bloodmouth, placed in Volkihar Keep, "What can I do to help?": SetStage 10 (when: the speaker is the one in alias QuestGiver; Culling the Beast stage < 10; the speaker is Fura Bloodmouth). Source: DLC1_TIF__010050B5.Fragment_0 on INFO Dawnguard.esm:0050B5 (Dawnguard.esm). **script**
 - Dialogue with Garan Marethi, placed in Volkihar Keep, "What can I do to help?": SetStage 10 (when: the speaker is the one in alias QuestGiver; Culling the Beast stage < 10; the speaker is Garan Marethi). Source: DLC1_TIF__01015E11.Fragment_0 on INFO Dawnguard.esm:015E11 (Dawnguard.esm). **script**
-- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **files**
+- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantVampireStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -349,7 +349,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Feran Sadri (named by alias QuestGiver of DLC1RV03 (Deceiving the Herd) (run time)), placed in Volkihar Keep, "I heard you might need help.": SetStage 10 (when: Deceiving the Herd stage < 10; the speaker is the one in alias QuestGiver). Source: DLC1_TIF__010050B3.Fragment_0 on INFO Dawnguard.esm:0050B3 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **files**
+- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantVampireStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -374,7 +374,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Fura Bloodmouth, placed in Volkihar Keep, "...": SetStage 10 (when: the speaker is the one in alias Questgiver; the speaker is Fura Bloodmouth). Source: DLC1_TIF__01015E12.Fragment_0 on INFO Dawnguard.esm:015E12 (Dawnguard.esm). **script**
 - Dialogue with Garan Marethi, placed in Volkihar Keep, "...": SetStage 10 (when: the speaker is the one in alias Questgiver; the speaker is Garan Marethi). Source: DLC1_TIF__01015E13.Fragment_0 on INFO Dawnguard.esm:015E13 (Dawnguard.esm). **script**
-- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **files**
+- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantVampireStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -399,7 +399,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Feran Sadri (named by alias QuestGiver of DLC1RV05 (Ancient Power) (run time)), placed in Volkihar Keep, "What can I do to help?": SetStage 10 (when: the speaker is the one in alias QuestGiver; Ancient Power stage < 10; global DLC1VampireChaliceLevel == 0 (now 0)). Source: DLC1_TIF__010056F9.Fragment_0 on INFO Dawnguard.esm:0056F9 (Dawnguard.esm). **script**
 - Dialogue with Feran Sadri (named by alias QuestGiver of DLC1RV05 (Ancient Power) (run time)), placed in Volkihar Keep, "What can I do to help?": SetStage 10 (when: the speaker is the one in alias QuestGiver; Ancient Power stage < 10). Source: DLC1_TIF__0101473D.Fragment_0 on INFO Dawnguard.esm:01473D (Dawnguard.esm). **script**
-- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **files**
+- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantVampireStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -424,7 +424,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Vingalmo (named by alias QuestGiver of DLC1RV06 (The Gift) (run time)), placed in Volkihar Keep, "...": SetStage 10 (when: the speaker is the one in alias QuestGiver; fn70 == 1). Source: DLC1_TIF__010058BD.Fragment_0 on INFO Dawnguard.esm:0058BD (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with Vingalmo (named by alias QuestGiver of DLC1RV06 (The Gift) (run time)), placed in Volkihar Keep, "...": SetStage 10 (when: the speaker is the one in alias QuestGiver; fn70 == 1). Source: DLC1_TIF__010058BE.Fragment_0 on INFO Dawnguard.esm:0058BE (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **run time**
+- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantVampireStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **run time**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -451,7 +451,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Vingalmo (named by alias QuestGiver of DLC1RV07 (New Allegiances) (run time)), placed in Volkihar Keep, "Understood.": SetStage 10 (when: the speaker is the one in alias QuestGiver; fn70 == 1). Source: DLC1_TIF__0100A299.Fragment_0 on INFO Dawnguard.esm:00A299 (Dawnguard.esm). **script**
 - Dialogue with Vingalmo (named by alias QuestGiver of DLC1RV07 (New Allegiances) (run time)), placed in Volkihar Keep, "Understood.": SetStage 10 (when: the speaker is the one in alias QuestGiver; fn70 == 1). Source: DLC1_TIF__0100A29A.Fragment_0 on INFO Dawnguard.esm:00A29A (Dawnguard.esm). **script**
-- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **files**
+- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantVampireStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -476,7 +476,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Feran Sadri (named by alias QuestGiver of DLC1RV08 (Rings of Blood Magic) (run time)), placed in Volkihar Keep, "Understood.": SetStage 10 (when: the speaker is the one in alias QuestGiver). Source: DLC1_TIF__01003992.Fragment_0 on INFO Dawnguard.esm:003992 (Dawnguard.esm). **script**
-- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **run time**
+- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantVampireStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **run time**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -501,7 +501,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Feran Sadri (named by alias QuestGiver of DLC1RV09 (Amulets of Night Power) (run time)), placed in Volkihar Keep, "Understood.": SetStage 10 (when: the speaker is the one in alias QuestGiver). Source: DLC1_TIF__01003997.Fragment_0 on INFO Dawnguard.esm:003997 (Dawnguard.esm). **script**
-- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **run time**
+- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantVampireStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **run time**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -527,7 +527,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Garan Marethi, placed in Volkihar Keep, "What can I do to help?": SetStage 10 (when: the speaker is the one in alias QuestGiver; the speaker is Garan Marethi; Destroying the Dawnguard stage < 10). Source: DLC1_TIF__01019932.Fragment_0 on INFO Dawnguard.esm:019932 (Dawnguard.esm). **script**
 - Dialogue with Fura Bloodmouth, placed in Volkihar Keep, "What can I do to help?": SetStage 10 (when: the speaker is the one in alias QuestGiver; the speaker is Fura Bloodmouth; Destroying the Dawnguard stage < 10). Source: DLC1_TIF__01019933.Fragment_0 on INFO Dawnguard.esm:019933 (Dawnguard.esm). **script**
-- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **run time**
+- Story manager node DLC1RadiantVampireQuestNode, event: script event; conditions up its parents: GetEventData DLC1RadiantVampireStart == 1; GetEventData DLC1RadiantHunterStart == 1 or GetEventData DLC1RadiantVampireStart == 1 or GetEventData DLC1RadiantHunterTechStart == 1. Source: DLC1RadiantVampireQuestNode Dawnguard.esm:004C22 (Dawnguard.esm). **run time**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1184,8 +1184,8 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 ### DLC1VQ00ChangeLocation
 
 - What it does: stage 0: SetStage 5. Source: DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B on Dawnguard.esm:00D90B (TheChoiceIsYours.esp). **script**
-- Started by: story manager node DLC1VQ00Node (change location; Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; Dragonborn stage >= 5 or The Way of the Voice stage < 160; fn576 == 1; fn576 == 0; fn576 == 0; fn576 == 0; fn359 == 0; fn359 == 0; DLC1VQ00Node Dawnguard.esm:00D911 (DawnguardQuestPrerequisite.esp)).
-- In one sentence: DLC1VQ00ChangeLocation stage 0: SetStage 5 on DLC1VQ01MiscObjective (Dawnguard); it is started by story manager node DLC1VQ00Node (change location; Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; Dragonborn stage >= 5 or The Way of the Voice stage < 160; fn576 == 1; fn576 == 0; fn576 == 0; fn576 == 0; fn359 == 0; fn359 == 0; DLC1VQ00Node Dawnguard.esm:00D911 (DawnguardQuestPrerequisite.esp)).
+- Started by: story manager node DLC1VQ00Node (change location; Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; Dragonborn stage >= 5 or The Way of the Voice stage < 160; the place you enter is a habitation; the place you enter isn't a orcstronghold; the place you leave isn't a dwelling; the place you enter isn't Winterhold College; fn359 == 0; fn359 == 0; DLC1VQ00Node Dawnguard.esm:00D911 (DawnguardQuestPrerequisite.esp)).
+- In one sentence: DLC1VQ00ChangeLocation stage 0: SetStage 5 on DLC1VQ01MiscObjective (Dawnguard); it is started by story manager node DLC1VQ00Node (change location; Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; Dragonborn stage >= 5 or The Way of the Voice stage < 160; the place you enter is a habitation; the place you enter isn't a orcstronghold; the place you leave isn't a dwelling; the place you enter isn't Winterhold College; fn359 == 0; fn359 == 0; DLC1VQ00Node Dawnguard.esm:00D911 (DawnguardQuestPrerequisite.esp)).
 
 ### DLC1VQ00
 

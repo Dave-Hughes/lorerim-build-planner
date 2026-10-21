@@ -37,12 +37,11 @@ DIFFERS: dict[str, str] = {
 # Rows that don't match yet, each sent back for a fix in WO-121a (Bob read them on 21 Oct), with what the records show. Each must still fail,
 # so a fix that makes one pass says to take it out of here.
 WAITING_ON_BOB: dict[str, str] = {
-    "First Lessons": "who: the start check's talks are Nirya (Skyrim.esm:0DF034)",
     "A Night To Remember": "who: the start check's talks are Senna (Skyrim.esm:01F387), Senna (Skyrim.esm:0A95D5), Senna (Skyrim.esm:0A95CB); then: the records' first objective is 'Find Sam Guevenne' (Skyrim.esm:01BB9B QOBJ 10). WO-121a Part 1: the opening should be DA14Start, Sam Guevenne's drinking contest, but DA14Start isn't in quests_raw.json (the Mac has only the crawl), so the PC adds it to quests.py's crawl and then questlines.json's opening",
-    "Blood on the Ice": "who: the start check's talks are none (no dialogue starter found); then: the records' first objective is 'Get assistance from the authority figure' (Skyrim.esm:01F7A3 QOBJ 1); UESP's is a later one of its objectives",
+    "Blood on the Ice": "who passes since WO-121a Part 2 (a Windhelm guard, after 'It starts by itself at night in Windhelm, after you've come in four times.'); then: the records' first objective is 'Get assistance from the authority figure' (Skyrim.esm:01F7A3 QOBJ 1), shown at stage 10 with UESP's 'Question the witnesses' (QOBJ 10)",
     "Dawnguard": "who: the key's DLC1VQ01 is the quest Vigilant Tolan's talk moves (Dawnguard.esm:019AAB, Dawnguard.esm:01A1B4). WO-121a Part 1: the line's opening is already DLC1VQ01MiscObjective, the one Durak, the guards' rumour and Agmaer start, and it names Agmaer; its first objective is 'Speak with the leader of the Dawnguard, located within Fort Dawnguard, which is southeast of Riften and inside of Dayspring Canyon.' (Dawnguard.esm:00D06C QOBJ 10). Bob: point the key at DLC1VQ01MiscObjective and list that wording in DIFFERS, or say what else",
-    "Caught Red Handed": "who: the start check's talks are none (no dialogue starter found); then: the records' first objective is None; UESP's is not one of this quest’s objectives",
-    "Spread the Love": "who: the start check's talks are none (no dialogue starter found); then: the records' first objective is None; UESP's is not one of this quest’s objectives",
+    "Caught Red Handed": "who passes since WO-121a Part 2 (Svana Far-Shield, \"Sure, I'll help you.\", INFO Skyrim.esm:041E0C); then: the records' first objective is 'Obtain a Mark of Dibella from Bolli, a Riften fisherman' (Skyrim.esm:041F91, LoreRim - Dialogue Patch.esp and Caught Red Handed - Quest Expansion.esp), UESP's 'Obtain a Mark of Dibella'",
+    "Spread the Love": "who passes since WO-121a Part 2 (Dinya Balu, \"I'll distribute them.\", INFO Skyrim.esm:053278); then: the records' first objective carries its count, 'Distribute the Warmth of Mara within Riften (0/20)' (Skyrim.esm:053309), as Evil in Waiting's does",
 }
 
 

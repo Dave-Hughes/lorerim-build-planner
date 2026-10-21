@@ -667,7 +667,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Needs**
 
-- Its own conditions: The Landing stage 999 not done; The Landing completed; Empty Cells not completed; GetQuestRunning Empty Cells == 0; fn576 == 1; fn576 == 1. **files**
+- Its own conditions: The Landing stage 999 not done; The Landing completed; Empty Cells not completed; GetQuestRunning Empty Cells == 0; the place you enter is Stuhn Ravine; the place you leave is Temple of Stendarr. **files**
 
 **Gives**: 2000 gold (stage 110, QF_zzzBMMq01_01038524.fragment_17).
 
@@ -700,8 +700,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- zzzBMMq02 (Remnants) calls at stage 100 Start; at stage 100 SetStage 0. Sources: QF_zzzBMMq02_01038525.fragment_20 on Vigilant.esm:038525. **script**
 - Dialogue with Lamae Bal (named by alias LamaeBal of zzzBMMq03 (The Blood Matron) (unique)), placed in Lamae's Dream, "Begone, monster.": SetStage 60 (when: the speaker is the one in alias LamaeBal). Source: BM03_TIF__0103C193.Fragment_0 on INFO Vigilant.esm:03C193 (Vigilant.esm). **script**
+- zzzBMMq02 (Remnants) calls at stage 100 Start; at stage 100 SetStage 0. Sources: QF_zzzBMMq02_01038525.fragment_20 on Vigilant.esm:038525. **script**
 - (First objective shown at stage 60; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1048,7 +1048,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Needs**
 
-- Its own conditions: Empty Cells stage 255 not done; Empty Cells completed; Child of Oblivion not completed; GetQuestRunning Child of Oblivion == 0; fn576 == 1; fn576 == 1. **files**
+- Its own conditions: Empty Cells stage 255 not done; Empty Cells completed; Child of Oblivion not completed; GetQuestRunning Child of Oblivion == 0; the place you enter is Stuhn Ravine; the place you leave is Temple of Stendarr. **files**
 - Ways in: Temple of Stendarr: 3 doors, 0 locked. A door is a need only when every way in is locked. **files**
 
 **Gives**: nothing on its completing stages.

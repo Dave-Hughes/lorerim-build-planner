@@ -51,7 +51,7 @@
      ],
      "source": "DLC2WERegionNorthQuestNode Dragonborn.esm:01E7E1 (Dragonborn.esm)",
      "verdict": "run time",
-     "conditions": "fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1"
+     "conditions": "the place you leave is Ashland; global WEEnabled == 1 (now 1); GetEventData DLC2WEStart == 1 or GetEventData DLC2WERoadStart == 1"
     },
     {
      "by": "story manager",
@@ -65,7 +65,7 @@
      ],
      "source": "DLC2RegionGlacierQuestNode Dragonborn.esm:01E7E2 (Dragonborn.esm)",
      "verdict": "run time",
-     "conditions": "fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1"
+     "conditions": "the place you leave is Ashland; global WEEnabled == 1 (now 1); GetEventData DLC2WEStart == 1 or GetEventData DLC2WERoadStart == 1"
     },
     {
      "by": "story manager",
@@ -79,7 +79,7 @@
      ],
      "source": "DLC2WERegionAshlandQuestNode Dragonborn.esm:01E7E3 (Dragonborn.esm)",
      "verdict": "run time",
-     "conditions": "fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1"
+     "conditions": "the place you leave is Ashland; global WEEnabled == 1 (now 1); GetEventData DLC2WEStart == 1 or GetEventData DLC2WERoadStart == 1"
     }
    ],
    "caughtUpBy": [],

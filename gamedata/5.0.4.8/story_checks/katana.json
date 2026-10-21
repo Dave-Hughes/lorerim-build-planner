@@ -1946,6 +1946,41 @@
    "firstObjectiveStage": 30,
    "startedBy": [
     {
+     "by": "dialogue",
+     "speaker": "Katana",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Winking Skeever"
+     ],
+     "call": "SetStage 10",
+     "info": "Katana.esp:8FD165",
+     "prompt": null,
+     "reply": [
+      "Nothing. Never mind."
+     ],
+     "conditions": "the speaker is Katana",
+     "source": "AK69_TIF__058FD165.Fragment_0 on INFO Katana.esp:8FD165 (Katana.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Katana",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Winking Skeever"
+     ],
+     "call": "SetStage 20",
+     "info": "Katana.esp:925971",
+     "prompt": null,
+     "reply": [
+      "It's River. You heard her this time. That makes it all feel more real.",
+      "But... she's quiet now. Let's not linger here."
+     ],
+     "conditions": "the speaker is Katana",
+     "source": "AK69_TIF__05925971.Fragment_0 on INFO Katana.esp:925971 (Katana.esp)",
+     "verdict": "script"
+    },
+    {
      "by": "quest script",
      "quest": "AK69SugarandSpiceQuest (Sugar and Spice)",
      "questId": "Katana.esp:E39DE4",
@@ -1979,41 +2014,6 @@
      "atStage": 69,
      "call": "Start",
      "source": "AK69_QF_AK69SugarandSpiceQues_05E39DE4.fragment_0 on Katana.esp:E39DE4 (Katana.esp), through AK69SugarandSpiceQuest (Sugar and Spice)'s deletestuff",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Katana",
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [
-      "The Winking Skeever"
-     ],
-     "call": "SetStage 10",
-     "info": "Katana.esp:8FD165",
-     "prompt": null,
-     "reply": [
-      "Nothing. Never mind."
-     ],
-     "conditions": "the speaker is Katana",
-     "source": "AK69_TIF__058FD165.Fragment_0 on INFO Katana.esp:8FD165 (Katana.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Katana",
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [
-      "The Winking Skeever"
-     ],
-     "call": "SetStage 20",
-     "info": "Katana.esp:925971",
-     "prompt": null,
-     "reply": [
-      "It's River. You heard her this time. That makes it all feel more real.",
-      "But... she's quiet now. Let's not linger here."
-     ],
-     "conditions": "the speaker is Katana",
-     "source": "AK69_TIF__05925971.Fragment_0 on INFO Katana.esp:925971 (Katana.esp)",
      "verdict": "script"
     },
     {

@@ -209,7 +209,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node CompanionsAelaNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsAelaNode Skyrim.esm:0BFC77 (Skyrim.esm). **files**
+- Story manager node CompanionsAelaNode, event: script event; conditions up its parents: GetEventData CRAela == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsAelaNode Skyrim.esm:0BFC77 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -232,7 +232,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node CompanionsAelaNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsAelaNode Skyrim.esm:0BFC77 (Skyrim.esm). **files**
+- Story manager node CompanionsAelaNode, event: script event; conditions up its parents: GetEventData CRAela == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsAelaNode Skyrim.esm:0BFC77 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -278,14 +278,14 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node CompanionsFarkasNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsFarkasNode Skyrim.esm:0BFC78 (Skyrim.esm). **files**
+- Story manager node CompanionsFarkasNode, event: script event; conditions up its parents: GetEventData CRFarkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsFarkasNode Skyrim.esm:0BFC78 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Return to <Alias.ShortName=Questgiver>", shown at stage 20. Source: Skyrim.esm:025231 QOBJ 20. **files**
 - DialogueFavorGeneric (named "Generic dialogue" in its record), a helper quest calls SetStage 20; DialogueFavorGeneric is started by the start-game flag. Source: FavorDialogueScript.Intimidate on Skyrim.esm:05A6DC (Meridia.esp), through CR04 (Hired Muscle)'s checkintimidate. **script**
-- DGIntimidateQuest, a helper quest at stage 100 calls SetStage 20; DGIntimidateQuest is started by story manager node DGIntimidateQuestNode (event: script event; fn576 == 1). Source: QF_DGIntimidateQuest_00047AE6.fragment_5 on Skyrim.esm:047AE6 (Skyrim.esm), through CR04 (Hired Muscle)'s checkintimidate. **script**
+- DGIntimidateQuest, a helper quest at stage 100 calls SetStage 20; DGIntimidateQuest is started by story manager node DGIntimidateQuestNode (event: script event; GetEventData FavorBrawlEvent == 1). Source: QF_DGIntimidateQuest_00047AE6.fragment_5 on Skyrim.esm:047AE6 (Skyrim.esm), through CR04 (Hired Muscle)'s checkintimidate. **script**
 - CR04 (Hired Muscle) calls SetStage 20. Source: CR04QuestScript.CheckIntimidate on Skyrim.esm:025231 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - CW, a helper quest with Tullius, Ulfric, Rikke calls SetStage 20; CW is started by CWMissionQuickStart, a helper quest at stage 200 (SetStage 2); CWMissionQuickStart, a helper quest at stage 42 (SetStage 2); CWMissionQuickStart, a helper quest at stage 600 (SetStage 1); CWMissionQuickStart, a helper quest at stage 71 (SetStage 1); the start-game flag. Source: CWScript.Intimidate on Skyrim.esm:019E53 (LoreRim - Dialogue Patch.esp), through CR04 (Hired Muscle)'s checkintimidate. **script**
 - DLC1RadiantDisguised, a helper quest calls SetStage 20; DLC1RadiantDisguised is started by the start-game flag. Source: DLC1RadiantDisguisedScript.Intimidate on Dawnguard.esm:01574C (Dawnguard.esm), through CR04 (Hired Muscle)'s checkintimidate. **script**
@@ -308,7 +308,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node CompanionsFarkasNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsFarkasNode Skyrim.esm:0BFC78 (Skyrim.esm). **files**
+- Story manager node CompanionsFarkasNode, event: script event; conditions up its parents: GetEventData CRFarkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsFarkasNode Skyrim.esm:0BFC78 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -338,8 +338,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node CompanionsVilkasSkjorDeadNode, event: script event; conditions up its parents: fn46 == 1; fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsVilkasSkjorDeadNode Skyrim.esm:0EC1A8 (Unofficial Skyrim Special Edition Patch.esp). **files**
-- Story manager node CompanionsSkjorNode, event: script event; conditions up its parents: fn576 == 1; fn46 == 0; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsSkjorNode Skyrim.esm:0BFC79 (Skyrim.esm). **files**
+- Story manager node CompanionsVilkasSkjorDeadNode, event: script event; conditions up its parents: GetDead == 1; GetEventData CRVilkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsVilkasSkjorDeadNode Skyrim.esm:0EC1A8 (Unofficial Skyrim Special Edition Patch.esp). **files**
+- Story manager node CompanionsSkjorNode, event: script event; conditions up its parents: GetEventData CRSkjor == 1; GetDead == 0; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsSkjorNode Skyrim.esm:0BFC79 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -362,8 +362,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node CompanionsVilkasSkjorDeadNode, event: script event; conditions up its parents: fn46 == 1; fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsVilkasSkjorDeadNode Skyrim.esm:0EC1A8 (Unofficial Skyrim Special Edition Patch.esp). **files**
-- Story manager node CompanionsSkjorNode, event: script event; conditions up its parents: fn576 == 1; fn46 == 0; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsSkjorNode Skyrim.esm:0BFC79 (Skyrim.esm). **files**
+- Story manager node CompanionsVilkasSkjorDeadNode, event: script event; conditions up its parents: GetDead == 1; GetEventData CRVilkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsVilkasSkjorDeadNode Skyrim.esm:0EC1A8 (Unofficial Skyrim Special Edition Patch.esp). **files**
+- Story manager node CompanionsSkjorNode, event: script event; conditions up its parents: GetEventData CRSkjor == 1; GetDead == 0; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsSkjorNode Skyrim.esm:0BFC79 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -386,8 +386,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node CompanionsVilkasSkjorDeadNode, event: script event; conditions up its parents: fn46 == 1; fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsVilkasSkjorDeadNode Skyrim.esm:0EC1A8 (Unofficial Skyrim Special Edition Patch.esp). **files**
-- Story manager node CompanionsVilkasAlwaysNode, event: script event; conditions up its parents: fn46 == 0; fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsVilkasAlwaysNode Skyrim.esm:0BFC7A (Unofficial Skyrim Special Edition Patch.esp). **files**
+- Story manager node CompanionsVilkasSkjorDeadNode, event: script event; conditions up its parents: GetDead == 1; GetEventData CRVilkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsVilkasSkjorDeadNode Skyrim.esm:0EC1A8 (Unofficial Skyrim Special Edition Patch.esp). **files**
+- Story manager node CompanionsVilkasAlwaysNode, event: script event; conditions up its parents: GetDead == 0; GetEventData CRVilkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsVilkasAlwaysNode Skyrim.esm:0BFC7A (Unofficial Skyrim Special Edition Patch.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -410,7 +410,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node CompanionsReconNode, event: script event; conditions up its parents: fn576 == 1; Purity of Revenge stage < 10; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsReconNode Skyrim.esm:0BFC7B (Unofficial Skyrim Special Edition Patch.esp). **files**
+- Story manager node CompanionsReconNode, event: script event; conditions up its parents: GetEventData CRRecon == 1; Purity of Revenge stage < 10; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsReconNode Skyrim.esm:0BFC7B (Unofficial Skyrim Special Edition Patch.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -433,7 +433,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node CompanionsReconNode, event: script event; conditions up its parents: fn576 == 1; Purity of Revenge stage < 10; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsReconNode Skyrim.esm:0BFC7B (Unofficial Skyrim Special Edition Patch.esp). **files**
+- Story manager node CompanionsReconNode, event: script event; conditions up its parents: GetEventData CRRecon == 1; Purity of Revenge stage < 10; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsReconNode Skyrim.esm:0BFC7B (Unofficial Skyrim Special Edition Patch.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -456,7 +456,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node CompanionsReconNode, event: script event; conditions up its parents: fn576 == 1; Purity of Revenge stage < 10; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsReconNode Skyrim.esm:0BFC7B (Unofficial Skyrim Special Edition Patch.esp). **files**
+- Story manager node CompanionsReconNode, event: script event; conditions up its parents: GetEventData CRRecon == 1; Purity of Revenge stage < 10; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsReconNode Skyrim.esm:0BFC7B (Unofficial Skyrim Special Edition Patch.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -479,7 +479,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node CompanionsAelaNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsAelaNode Skyrim.esm:0BFC77 (Skyrim.esm). **files**
+- Story manager node CompanionsAelaNode, event: script event; conditions up its parents: GetEventData CRAela == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsAelaNode Skyrim.esm:0BFC77 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -506,8 +506,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Vilkas, placed in Jorrvaskr Living Quarters, Jorrvaskr: SetStage 10 (when: the speaker is Vilkas). Source: TIF__000E3075.Fragment_0 on INFO Skyrim.esm:0E3075 (Companions Radiant Expansion.esp). **script**
 - Dialogue with Farkas, placed in Jorrvaskr Living Quarters, Jorrvaskr: SetStage 10 (when: the speaker is Farkas). Source: TIF__000E3076.Fragment_0 on INFO Skyrim.esm:0E3076 (Companions Radiant Expansion.esp). **script**
-- Story manager node CompanionsFarkasPostQuestlineNode, event: script event; conditions up its parents: Glory of the Dead completed; fn629 == 1; fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsFarkasPostQuestlineNode Skyrim.esm:0F6086 (Skyrim.esm). **files**
-- Story manager node VilkasPostQuestlineNode, event: script event; conditions up its parents: Glory of the Dead completed; fn629 == 1; fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: VilkasPostQuestlineNode Skyrim.esm:0F6084 (Skyrim.esm). **files**
+- Story manager node CompanionsFarkasPostQuestlineNode, event: script event; conditions up its parents: Glory of the Dead completed; fn629 == 1; GetEventData CRFarkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsFarkasPostQuestlineNode Skyrim.esm:0F6086 (Skyrim.esm). **files**
+- Story manager node VilkasPostQuestlineNode, event: script event; conditions up its parents: Glory of the Dead completed; fn629 == 1; GetEventData CRVilkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: VilkasPostQuestlineNode Skyrim.esm:0F6084 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -534,8 +534,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node CompanionsVilkasSkjorDeadNode, event: script event; conditions up its parents: fn46 == 1; fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsVilkasSkjorDeadNode Skyrim.esm:0EC1A8 (Unofficial Skyrim Special Edition Patch.esp). **files**
-- Story manager node CompanionsFarkasNode, event: script event; conditions up its parents: fn576 == 1; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: CompanionsFarkasNode Skyrim.esm:0BFC78 (Skyrim.esm). **files**
+- Story manager node CompanionsVilkasSkjorDeadNode, event: script event; conditions up its parents: GetDead == 1; GetEventData CRVilkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsVilkasSkjorDeadNode Skyrim.esm:0EC1A8 (Unofficial Skyrim Special Edition Patch.esp). **files**
+- Story manager node CompanionsFarkasNode, event: script event; conditions up its parents: GetEventData CRFarkas == 1; GetEventData CRAela == 1 or GetEventData CRFarkas == 1 or GetEventData CRSkjor == 1 or GetEventData CRVilkas == 1 or GetEventData CRRecon == 1 or GetEventData CRReconKicker == 1. Source: CompanionsFarkasNode Skyrim.esm:0BFC78 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

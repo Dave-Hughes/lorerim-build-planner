@@ -73,7 +73,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Uraccen, placed in Cidhna Mine, "A shiv?": SetStage 10 (when: Shiv stage 10 not done; the speaker is Uraccen). Source: TIF__000DB83C.Fragment_0 on INFO Skyrim.esm:0DB83C (Skyrim.esm). **script**
 - Dialogue with Borkul the Beast, placed in Cidhna Mine, "I don't have a shiv.": SetStage 10 (when: the speaker is Borkul the Beast). Source: TIF__00025D60.Fragment_2 on INFO Skyrim.esm:025D60 (Skyrim.esm). **script**
-- Story manager node FreeformCidhnaMine, event: change location; conditions up its parents: fn576 == 1; fn576 == 1. Source: FreeformCidhnaMine Skyrim.esm:0DB856 (Skyrim.esm). **files**
+- Story manager node FreeformCidhnaMine, event: change location; conditions up its parents: the place you enter is Cidhna Mine; the place you enter is a habitation. Source: FreeformCidhnaMine Skyrim.esm:0DB856 (Skyrim.esm). **files**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:0DB851 DNAM (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 

@@ -6,7 +6,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- WEDL13 (named "Looking to join Imperials" in its record), a helper quest at stage 10 calls SetStage 1; WEDL13 is started by story manager node WERoadQuestNode (event: script event; fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1). Source: QF_WEDL13_000BD757.fragment_12 on Skyrim.esm:0BD757 (Skyrim.esm). **script**
+- WEDL13 (named "Looking to join Imperials" in its record), a helper quest at stage 10 calls SetStage 1; WEDL13 is started by story manager node WERoadQuestNode (event: script event; GetEventData WERoadStart == 1; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1). Source: QF_WEDL13_000BD757.fragment_12 on Skyrim.esm:0BD757 (Skyrim.esm). **script**
 - MQ102A (named "Season Unending" in its record), a helper quest with Alvor, Sigrid, Dorthe at stage 22 calls SetStage 1; MQ102A is started by MQ102 (named "Before the Storm" in its record), a helper quest with Balgruuf, Irileth, Proventus at stage 1 (SetStage 1); MQ102 (named "Before the Storm" in its record), a helper quest with Balgruuf, Irileth, Proventus at stage 1 (SetStage 10); MQ102 (named "Before the Storm" in its record), a helper quest with Balgruuf, Irileth, Proventus at stage 2 (SetStage 5); MQ102 (named "Before the Storm" in its record), a helper quest with Balgruuf, Irileth, Proventus at stage 15 (SetStage 10). Source: QF_MQ102_0002BF9C.fragment_47 on Skyrim.esm:02BF9C (Skyrim.esm). **script**
 - Dialogue with Alvor, placed in Alvor and Sigrid's House, "What do you think about the war?": SetStage 1 (when: the speaker is Alvor). Source: TIF__00056B24.Fragment_1 on INFO Skyrim.esm:056B24 (Skyrim.esm). **script**
 - Dialogue with Alvor (named by alias Alvor of MQ102A (Season Unending) (unique)), placed in Alvor and Sigrid's House, "You support the Empire, then?": SetStage 1 (when: the speaker is the one in alias Alvor). Source: TIF__000D39AF.Fragment_0 on INFO Skyrim.esm:0D39AF (Skyrim.esm). **script**
@@ -39,7 +39,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- WEDL14 (named "Looking to join Stormcloaks" in its record), a helper quest at stage 10 calls SetStage 2; WEDL14 is started by story manager node WERoadQuestNode (event: script event; fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1). Source: QF_WEDL14_000BD758.fragment_12 on Skyrim.esm:0BD758 (Skyrim.esm). **script**
+- WEDL14 (named "Looking to join Stormcloaks" in its record), a helper quest at stage 10 calls SetStage 2; WEDL14 is started by story manager node WERoadQuestNode (event: script event; GetEventData WERoadStart == 1; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1). Source: QF_WEDL14_000BD758.fragment_12 on Skyrim.esm:0BD758 (Skyrim.esm). **script**
 - MQ102B (named "Season Unending" in its record), a helper quest with Gerdur, Hod, Frodnar at stage 22 calls SetStage 2; MQ102B is started by MQ102 (named "Before the Storm" in its record), a helper quest with Balgruuf, Irileth, Proventus at stage 1 (SetStage 5); MQ102 (named "Before the Storm" in its record), a helper quest with Balgruuf, Irileth, Proventus at stage 2 (SetStage 1); MQ102 (named "Before the Storm" in its record), a helper quest with Balgruuf, Irileth, Proventus at stage 15 (SetStage 10); MQ101 (named "Unbound" in its record), a helper quest with Hadvar, Ralof, Alduin at stage 0 (SetStage 1). Source: QF_MQ102B_010A4C68.fragment_51 on Skyrim.esm:02610A (Skyrim.esm). **script**
 - Dialogue with someone the line does not name, placed in Windhelm; Windhelm, "Placeholder For Remarks Culled From Other Topics": SetStage 2 (when: fn426 == 0; fn426 == 1). Source: TIF__0003ED51.Fragment_0 on INFO Skyrim.esm:03ED51 (Skyrim.esm). **script**
 - Dialogue with Gerdur, placed in Hod and Gerdur's House, "What do you think about the war?": SetStage 2 (when: the speaker is Gerdur; Season Unending stage 50 done). Source: TIF__00056AB1.Fragment_0 on INFO Skyrim.esm:056AB1 (Skyrim.esm). **script**
@@ -296,8 +296,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Galmar Stone-Fist, placed in Palace of the Kings, "Reporting in.": SetStage 10 (when: the speaker is Galmar Stone-Fist; fn629 == CWSons (now 2); the speaker isn't Captain Yrsarald Thrice-Pierced; GetInFaction CWFieldCOFaction == 1; GetInFaction Sons of Skyrim == 1; GetQuestRunning The Battle for <Alias=Fort> == 1). Source: TIF__000CA74D.Fragment_1 on INFO Skyrim.esm:0CA74D (Skyrim.esm). **script**
 - Dialogue with Galmar Stone-Fist, placed in Palace of the Kings, "Reporting in.": SetStage 10 (when: the speaker is Galmar Stone-Fist; fn629 == CWSons (now 2); the speaker isn't Captain Yrsarald Thrice-Pierced; GetInFaction CWFieldCOFaction == 1; GetInFaction Sons of Skyrim == 1; GetQuestRunning The Battle for <Alias=Fort> == 1). Source: TIF__00065C88.Fragment_1 on INFO Skyrim.esm:065C88 (Skyrim.esm). **script**
 - Dialogue with Galmar Stone-Fist, placed in Palace of the Kings, "Reporting in.": SetStage 10 (when: the speaker is Galmar Stone-Fist; fn629 == CWSons (now 2); the speaker isn't Captain Yrsarald Thrice-Pierced; GetInFaction CWFieldCOFaction == 1; GetInFaction Sons of Skyrim == 1; GetQuestRunning The Battle for <Alias=Fort> == 1). Source: TIF__00065C89.Fragment_1 on INFO Skyrim.esm:065C89 (Skyrim.esm). **script**
-- Story manager node CWCapitalTownFortSiegeNode, event: script event; conditions up its parents: fn576 == 1. Source: CWCapitalTownFortSiegeNode Skyrim.esm:0CA841 (Skyrim.esm). **files**
-- Story manager node CWNonFortFortSiegeNode, event: script event; conditions up its parents: fn576 == 1. Source: CWNonFortFortSiegeNode Skyrim.esm:018387 (Skyrim.esm). **files**
+- Story manager node CWCapitalTownFortSiegeNode, event: script event; conditions up its parents: GetEventData CWFortSiegeMinorCapitalStart == 1. Source: CWCapitalTownFortSiegeNode Skyrim.esm:0CA841 (Skyrim.esm). **files**
+- Story manager node CWNonFortFortSiegeNode, event: script event; conditions up its parents: GetEventData CWFortSiegeSpecialStart == 1. Source: CWNonFortFortSiegeNode Skyrim.esm:018387 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -436,7 +436,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with someone the line does not name (named by alias FieldCO of CWMission07 (Compelling Tribute) (from event)), "I'll get proof... and <Alias=Steward>'s cooperation.": SetStage 10 (when: the speaker is the one in alias FieldCO; GetInFaction Sons of Skyrim == 1). Source: TIF__000504C5.Fragment_0 on INFO Skyrim.esm:0504C5 (Skyrim.esm). **script**
 - Story manager node CWRiftQuestMission07Node, event: script event; conditions up its parents: fn565 == 1; fn629 == 0; fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 != CWImperial (now 1); fn629 == CWImperial (now 1); fn629 == 1. Source: CWRiftQuestMission07Node Skyrim.esm:0CD6D9 (Skyrim.esm). **files**
 - Story manager node CWReachQuestMission07Node, event: script event; conditions up its parents: fn565 == 1; fn629 == 0; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 != CWSons (now 2); fn629 == CWSons (now 2); fn629 == 1. Source: CWReachQuestMission07Node Skyrim.esm:0CD6D2 (Skyrim.esm). **files**
-- Story manager node CWMissionNode, event: script event; conditions up its parents: global TRUEGlobal == 0 (now 1); fn576 == 1. Source: CWMissionNode Skyrim.esm:0216A8 (Skyrim.esm). **files**
+- Story manager node CWMissionNode, event: script event; conditions up its parents: global TRUEGlobal == 0 (now 1); GetEventData CWMissionStart == 1. Source: CWMissionNode Skyrim.esm:0216A8 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -463,7 +463,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - CWFortSiegeFort (The Battle for <Alias=Fort>) calls at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1. Sources: QF_CWFortSiegeFort_00083042.fragment_31, QF_CWFortSiegeFort_00083042.fragment_20 on Skyrim.esm:083042. **script**
-- CWSiege, a helper quest with JarlWhiterun, JarlHaafingar, JarlEastmarch calls SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; CWSiege is started by CW03 (Message to Whiterun) at stage 240 (SetStage 1); story manager node CWSiegeQuestsNode (event: script event; fn576 == 1). Sources: CWSiegeScript.FailAttackQuest, CWSiegeScript.SucceedDefenseQuest, CWSiegeScript.FailDefenseQuest, QF_CWSiege_000954E1.fragment_25 on Skyrim.esm:0954E1. **script**
+- CWSiege, a helper quest with JarlWhiterun, JarlHaafingar, JarlEastmarch calls SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; CWSiege is started by CW03 (Message to Whiterun) at stage 240 (SetStage 1); story manager node CWSiegeQuestsNode (event: script event; GetEventData CWSiegeStart == 1). Sources: CWSiegeScript.FailAttackQuest, CWSiegeScript.SucceedDefenseQuest, CWSiegeScript.FailDefenseQuest, QF_CWSiege_000954E1.fragment_25 on Skyrim.esm:0954E1. **script**
 - CWFortSiegeCapital (The Battle for <Alias=Fort>) calls at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1. Sources: QF_CWFortSiege_00087C21.fragment_31, QF_CWFortSiege_00087C21.fragment_20 on Skyrim.esm:087C21. **script**
 - CW, a helper quest with Tullius, Ulfric, Rikke calls SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; at stage 30 SetStage 1; at stage 30 SetStage 1; at stage 30 SetStage 1; at stage 30 SetStage 1; CW is started by CWMissionQuickStart, a helper quest at stage 200 (SetStage 2); CWMissionQuickStart, a helper quest at stage 42 (SetStage 2); CWMissionQuickStart, a helper quest at stage 600 (SetStage 1); CWMissionQuickStart, a helper quest at stage 71 (SetStage 1); the start-game flag. Sources: CWScript.modObjectiveByEnemySoldierDeath, CWScript.updateObjective, CWScript.displayFactionLeaderObjective, CWScript.modObjectiveByMissionSuccess, CWScript.completeCWObj, CWScript.failCWObj, CWScript.WinHoldOffScreenIfNotDoingCapitalBattles, CWScript.modObjectiveBySabotage, QF_CW_00019E53.fragment_38 on Skyrim.esm:019E53. **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:029940 DNAM (LoreRim - Dialogue Patch.esp). **files**
@@ -495,7 +495,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with someone the line does not name (named by alias FieldCO of CWResolution01 (Attack <Alias=Capital>) (from event)), "(Invisible Continue)(Forced Good bye) Time Limit to Attack": SetStage 10 (when: the speaker is the one in alias FieldCO; fn629 == 1). Source: TIF__0002C151.Fragment_0 on INFO Skyrim.esm:02C151 (Skyrim.esm). **script**
-- Story manager node CWResolutionAttackCaptialSettlementNode, event: script event; conditions up its parents: fn576 == 1. Source: CWResolutionAttackCaptialSettlementNode Skyrim.esm:02B35B (Skyrim.esm). **files**
+- Story manager node CWResolutionAttackCaptialSettlementNode, event: script event; conditions up its parents: GetEventData CWResolution01Start == 1. Source: CWResolutionAttackCaptialSettlementNode Skyrim.esm:02B35B (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -520,7 +520,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with someone the line does not name (named by alias FieldCO of CWResolution02 (Defend <Alias=Capital>) (from event)), "(Invisible Continue)(Forced Goodbye) Time Limit to Attack": SetStage 10 (when: the speaker is the one in alias FieldCO; fn629 == 1). Source: TIF__00021115.Fragment_0 on INFO Skyrim.esm:021115 (Skyrim.esm). **script**
-- Story manager node CWResolutionDefendCapitalSettlementNode, event: script event; conditions up its parents: fn576 == 1. Source: CWResolutionDefendCapitalSettlementNode Skyrim.esm:02111D (Skyrim.esm). **files**
+- Story manager node CWResolutionDefendCapitalSettlementNode, event: script event; conditions up its parents: GetEventData CWResolution02Start == 1. Source: CWResolutionDefendCapitalSettlementNode Skyrim.esm:02111D (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -590,7 +590,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- CWSiege, a helper quest with JarlWhiterun, JarlHaafingar, JarlEastmarch calls at stage 0 Start; at stage 0 SetStage 1; CWSiege is started by CW03 (Message to Whiterun) at stage 240 (SetStage 1); story manager node CWSiegeQuestsNode (event: script event; fn576 == 1). Sources: QF_CWSiege_000954E1.fragment_0 on Skyrim.esm:0954E1. **script**
+- CWSiege, a helper quest with JarlWhiterun, JarlHaafingar, JarlEastmarch calls at stage 0 Start; at stage 0 SetStage 1; CWSiege is started by CW03 (Message to Whiterun) at stage 240 (SetStage 1); story manager node CWSiegeQuestsNode (event: script event; GetEventData CWSiegeStart == 1). Sources: QF_CWSiege_000954E1.fragment_0 on Skyrim.esm:0954E1. **script**
 - (First objective shown at stage 1; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -633,7 +633,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node CWRepairsQN, event: change location; conditions up its parents: Repairing the Cities stage < 10; fn46 == 1 or fn46 == 1 or CWFinale stage 500 done; fn576 == 0; fn359 == 0; fn576 == 0; fn359 == 0. Source: CWRepairsQN CWRepairs.esp:000E05 (CWRepairs.esp). **files**
+- Story manager node CWRepairsQN, event: change location; conditions up its parents: Repairing the Cities stage < 10; GetDead == 1 or GetDead == 1 or CWFinale stage 500 done; the place you enter isn't Solitude; fn359 == 0; the place you enter isn't Windhelm; fn359 == 0. Source: CWRepairsQN CWRepairs.esp:000E05 (CWRepairs.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -783,8 +783,8 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 ### WEDL13 (Looking to join Imperials)
 
 - What it does: stage 10: SetStage 1. Source: QF_WEDL13_000BD757 on Skyrim.esm:0BD757 (Skyrim.esm). **script**
-- Started by: story manager node WERoadQuestNode (script event; fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1; WERoadQuestNode Skyrim.esm:102D65 (Dawnguard.esm)).
-- In one sentence: WEDL13 (Looking to join Imperials) stage 10: SetStage 1 on CW00A (Imperial Introductions); it is started by story manager node WERoadQuestNode (script event; fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1; WERoadQuestNode Skyrim.esm:102D65 (Dawnguard.esm)).
+- Started by: story manager node WERoadQuestNode (script event; GetEventData WERoadStart == 1; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1; WERoadQuestNode Skyrim.esm:102D65 (Dawnguard.esm)).
+- In one sentence: WEDL13 (Looking to join Imperials) stage 10: SetStage 1 on CW00A (Imperial Introductions); it is started by story manager node WERoadQuestNode (script event; GetEventData WERoadStart == 1; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1; WERoadQuestNode Skyrim.esm:102D65 (Dawnguard.esm)).
 
 ### MQ102A (Season Unending)
 

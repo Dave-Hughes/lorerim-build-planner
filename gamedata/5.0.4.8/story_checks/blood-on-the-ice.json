@@ -27,16 +27,17 @@
         "Skyrim.esm:01320E",
         "Root"
        ],
-       "conditions": "fn576 == 1; fn576 == 0; fn576 == 0",
+       "conditions": "the place you enter is Windhelm; the place you leave isn't Windhelm; the place you leave isn't a dwelling",
        "globals": [],
        "source": "MS11WindhelmEntranceCounting Skyrim.esm:0BAC26 (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself at night in Windhelm, after you've come in four times."
     },
     {
      "by": "dialogue",
-     "speaker": null,
+     "speaker": "a Windhelm guard",
      "speakerNamed": "alias CrimeSceneInvestigator of MS11 (Blood on the Ice) (from alias)",
      "speakerPlaced": [],
      "call": "SetStage 10",
@@ -1283,11 +1284,11 @@
    "kind": "quest script",
    "does": "stage 0: Start",
    "startedBy": [
-    "story manager node MS11WindhelmEntranceCounting (change location; fn576 == 1; fn576 == 0; fn576 == 0; MS11WindhelmEntranceCounting Skyrim.esm:0BAC26 (Skyrim.esm))"
+    "story manager node MS11WindhelmEntranceCounting (change location; the place you enter is Windhelm; the place you leave isn't Windhelm; the place you leave isn't a dwelling; MS11WindhelmEntranceCounting Skyrim.esm:0BAC26 (Skyrim.esm))"
    ],
    "inStartMenu": false,
    "source": "QF_MS11Kicker_000BAC24 on Skyrim.esm:0BAC24 (Unofficial Skyrim Special Edition Patch.esp)",
-   "sentence": "MS11Kicker stage 0: Start on MS11 (Blood on the Ice); it is started by story manager node MS11WindhelmEntranceCounting (change location; fn576 == 1; fn576 == 0; fn576 == 0; MS11WindhelmEntranceCounting Skyrim.esm:0BAC26 (Skyrim.esm))."
+   "sentence": "MS11Kicker stage 0: Start on MS11 (Blood on the Ice); it is started by story manager node MS11WindhelmEntranceCounting (change location; the place you enter is Windhelm; the place you leave isn't Windhelm; the place you leave isn't a dwelling; MS11WindhelmEntranceCounting Skyrim.esm:0BAC26 (Skyrim.esm))."
   },
   {
    "route": "dialogue INFO Skyrim.esm:025E57",

@@ -2068,7 +2068,7 @@
      ],
      "source": "TRGBEQuestNode Skyrim.esm:0609AE (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData TGRadiantStartBE == 1"
     }
    ],
    "caughtUpBy": [],
@@ -2140,7 +2140,7 @@
      ],
      "source": "TGRDUQuestNode Skyrim.esm:0609AF (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData TGRadiantStartDU == 1"
     }
    ],
    "caughtUpBy": [],
@@ -2203,7 +2203,7 @@
      ],
      "source": "TGRFOQuestNode Skyrim.esm:0609B0 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData TGRadiantStartFO == 1"
     }
    ],
    "caughtUpBy": [],
@@ -2275,7 +2275,7 @@
      ],
      "source": "TGRGFQuestNode Skyrim.esm:0609B1 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData TGRadiantStartGF == 1"
     }
    ],
    "caughtUpBy": [],
@@ -2347,7 +2347,7 @@
      ],
      "source": "TGRHCQuestNode Skyrim.esm:0609B2 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData TGRadiantStartHC == 1"
     }
    ],
    "caughtUpBy": [],
@@ -2458,7 +2458,7 @@
      ],
      "source": "TGRNTQuestNode Skyrim.esm:0609B4 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData TGRadiantStartNT == 1"
     }
    ],
    "caughtUpBy": [],
@@ -2532,7 +2532,7 @@
      ],
      "source": "TGRSLQuestNode Skyrim.esm:0609B5 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData TGRadiantStartSL == 1"
     }
    ],
    "caughtUpBy": [],

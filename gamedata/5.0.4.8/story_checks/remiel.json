@@ -936,7 +936,7 @@
      ],
      "source": "HLIOUpgradesNode HLIORemi.esp:0BBEDA (HLIORemi.esp)",
      "verdict": "files",
-     "conditions": "GetQuestRunning Upgrades == 0; fn576 == 1"
+     "conditions": "GetQuestRunning Upgrades == 0; the place you enter is Silver-Blood Inn"
     }
    ],
    "caughtUpBy": [],

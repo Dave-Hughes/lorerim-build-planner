@@ -360,22 +360,6 @@
    "firstObjectiveStage": 15,
    "startedBy": [
     {
-     "by": "quest script",
-     "quest": "DLC2Init (named \"Init quest\" in its record), a helper quest with DremoraButler, DremoraMerchant",
-     "questId": "Dragonborn.esm:016E02",
-     "atStage": 100,
-     "call": "Start",
-     "source": "DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp)",
-     "verdict": "script",
-     "throughStartedBy": [
-      {
-       "by": "start game",
-       "source": "Dragonborn.esm:016E02 DNAM (Fozars_Dragonborn_-_Requiem_Patch.esp)",
-       "verdict": "files"
-      }
-     ]
-    },
-    {
      "by": "dialogue",
      "speaker": "Crescius Caerellius",
      "speakerNamed": "GetIsID",
@@ -391,6 +375,22 @@
      "conditions": "the speaker is Crescius Caerellius; The Final Descent stage == 10; global DLC2RR03Dia01 == 0 (now 0)",
      "source": "DLC2_TIF__020209F8.Fragment_1 on INFO Dragonborn.esm:0209F8 (Dragonborn.esm)",
      "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "DLC2Init (named \"Init quest\" in its record), a helper quest with DremoraButler, DremoraMerchant",
+     "questId": "Dragonborn.esm:016E02",
+     "atStage": 100,
+     "call": "Start",
+     "source": "DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp)",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Dragonborn.esm:016E02 DNAM (Fozars_Dragonborn_-_Requiem_Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -1003,22 +1003,6 @@
    "firstObjectiveStage": 20,
    "startedBy": [
     {
-     "by": "quest script",
-     "quest": "DLC2Init (named \"Init quest\" in its record), a helper quest with DremoraButler, DremoraMerchant",
-     "questId": "Dragonborn.esm:016E02",
-     "atStage": 100,
-     "call": "Start",
-     "source": "DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp)",
-     "verdict": "script",
-     "throughStartedBy": [
-      {
-       "by": "start game",
-       "source": "Dragonborn.esm:016E02 DNAM (Fozars_Dragonborn_-_Requiem_Patch.esp)",
-       "verdict": "files"
-      }
-     ]
-    },
-    {
      "by": "dialogue",
      "speaker": "Fethis Alor",
      "speakerNamed": "GetIsID",
@@ -1053,6 +1037,22 @@
      "conditions": "the speaker is Fethis Alor; Pain in the Necklace stage == 10; GetItemCount East Empire Pendant == 0",
      "source": "DLC2_TIF__02024F97.Fragment_0 on INFO Dragonborn.esm:024F97 (Dragonborn.esm)",
      "verdict": "script"
+    },
+    {
+     "by": "quest script",
+     "quest": "DLC2Init (named \"Init quest\" in its record), a helper quest with DremoraButler, DremoraMerchant",
+     "questId": "Dragonborn.esm:016E02",
+     "atStage": 100,
+     "call": "Start",
+     "source": "DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp)",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Dragonborn.esm:016E02 DNAM (Fozars_Dragonborn_-_Requiem_Patch.esp)",
+       "verdict": "files"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],

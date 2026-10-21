@@ -142,7 +142,7 @@
      ],
      "source": "USKPMS06FixNode Unofficial Skyrim Special Edition Patch.esp:01D104 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "run time",
-     "conditions": "fn576 != 1; The Man Who Cried Wolf stage 250 done; The Wolf Queen Awakened stage 5 not done; level >= MS06MinLevel (now 10); global GameDaysPassed >= USLEEPMS06StartDay (now 0) (now 1); global USLEEPMS06StartDay > 0 (now 0)"
+     "conditions": "the place you enter isn't Solitude; The Man Who Cried Wolf stage 250 done; The Wolf Queen Awakened stage 5 not done; level >= MS06MinLevel (now 10); global GameDaysPassed >= USLEEPMS06StartDay (now 0) (now 1); global USLEEPMS06StartDay > 0 (now 0)"
     }
    ],
    "caughtUpBy": [],

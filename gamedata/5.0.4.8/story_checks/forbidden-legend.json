@@ -32,7 +32,8 @@
        "source": "dunGauldursonCLENode Skyrim.esm:0ECEB8 (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     }
    ],
    "caughtUpBy": [],

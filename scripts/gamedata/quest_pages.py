@@ -338,6 +338,8 @@ def way_of(s, own_name, line_quests):
             return f"After {line_quests[edid]}" + (f" (its stage {s['atStage']})" if s.get("atStage") is not None else ""), []
         ups = [way_of(u, own_name, line_quests) for u in s.get("throughStartedBy", []) if u["by"] != "quest script" or u.get("quest")]
         named = (s.get("quest") or edid).split(",")[0]
+        if s.get("plain"):  # the start check's words for a helper with a story manager trigger (WO-121a)
+            return s["plain"], []
         # One way up: its needs are this way's (Dawnguard's helper starts on a node that needs level 30). More than
         # one (Dragonborn's two cultist nodes): each keeps its own needs in the text.
         if len(ups) == 1:

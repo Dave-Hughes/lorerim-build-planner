@@ -32,7 +32,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Falk Firebeard, placed in Blue Palace, The Blue Palace, "I'll talk to Styrr. We'll figure something out.": SetStage 50 (when: The Wolf Queen Awakened stage == 10; the speaker is Falk Firebeard). Source: TIF__0009E00B.Fragment_0 on INFO Skyrim.esm:09E00B (Skyrim.esm). **script**
-- Story manager node USKPMS06FixNode, event: change location; conditions up its parents: fn576 != 1; The Man Who Cried Wolf stage 250 done; The Wolf Queen Awakened stage 5 not done; level >= MS06MinLevel (now 10); global GameDaysPassed >= USLEEPMS06StartDay (now 0) (now 1); global USLEEPMS06StartDay > 0 (now 0). Source: USKPMS06FixNode Unofficial Skyrim Special Edition Patch.esp:01D104 (Unofficial Skyrim Special Edition Patch.esp). **run time**
+- Story manager node USKPMS06FixNode, event: change location; conditions up its parents: the place you enter isn't Solitude; The Man Who Cried Wolf stage 250 done; The Wolf Queen Awakened stage 5 not done; level >= MS06MinLevel (now 10); global GameDaysPassed >= USLEEPMS06StartDay (now 0) (now 1); global USLEEPMS06StartDay > 0 (now 0). Source: USKPMS06FixNode Unofficial Skyrim Special Edition Patch.esp:01D104 (Unofficial Skyrim Special Edition Patch.esp). **run time**
 - (First objective shown at stage 50; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

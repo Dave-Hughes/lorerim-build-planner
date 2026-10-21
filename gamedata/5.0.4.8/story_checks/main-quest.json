@@ -602,6 +602,89 @@
      "verdict": "script"
     },
     {
+     "by": "dialogue",
+     "speaker": "Balgruuf the Greater",
+     "speakerNamed": "scene MQ103IntroScene, alias Balgruuf of MQ103 (Bleak Falls Barrow) (unique)",
+     "speakerPlaced": [
+      "Dragonsreach"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0D50F1",
+     "prompt": null,
+     "reply": [
+      "Farengar, I think I've found someone who can help you with your dragon project."
+     ],
+     "conditions": "",
+     "scene": "Skyrim.esm:0D50F6",
+     "sceneStartedBy": [
+      {
+       "by": "quest script",
+       "quest": "MQ103 (Bleak Falls Barrow)",
+       "questId": "Skyrim.esm:0D0800",
+       "atStage": 10,
+       "call": "StartScene",
+       "source": "QF_MQ103_000D0800.fragment_69 on Skyrim.esm:0D0800 (LoreRim - Dialogue Patch.esp)",
+       "verdict": "script"
+      }
+     ],
+     "source": "TIF__000D50F1.Fragment_0 on INFO Skyrim.esm:0D50F1 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Farengar Secret-Fire",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Dragonsreach"
+     ],
+     "call": "SetStage 50",
+     "info": "Skyrim.esm:0D50E1",
+     "prompt": "So what do you need me to do?",
+     "reply": [
+      "I, uh, learned of a certain stone tablet said to be housed in Bleak Falls Barrow - a \"Dragonstone,\" said to contain a map of dragon burial sites.",
+      "Go to Bleak Falls Barrow, find this tablet - no doubt interred in the main chamber - and bring it to me. Simplicity itself."
+     ],
+     "conditions": "the speaker is Farengar Secret-Fire; GetItemCount Dragonstone >= 1",
+     "source": "TIF__000D50E1.Fragment_0 on INFO Skyrim.esm:0D50E1 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Farengar Secret-Fire",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Dragonsreach"
+     ],
+     "call": "SetStage 50",
+     "info": "Skyrim.esm:0E0EBA",
+     "prompt": "So what do you need me to do?",
+     "reply": [
+      "I, uh, learned of a certain stone tablet said to be housed in Bleak Falls Barrow - a \"Dragonstone,\" said to contain a map of dragon burial sites.",
+      "Go to Bleak Falls Barrow, find this tablet - no doubt interred in the main chamber - and bring it to me. Simplicity itself."
+     ],
+     "conditions": "the speaker is Farengar Secret-Fire",
+     "source": "TIF__000E0EBA.Fragment_0 on INFO Skyrim.esm:0E0EBA (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Farengar Secret-Fire",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Dragonsreach"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0D50D3",
+     "prompt": null,
+     "reply": [
+      "Please forgive my earlier rudeness. I am so often interrupted by visitors wandering in, I can occasionally become quite savage.",
+      "Now... what did you say you wanted?"
+     ],
+     "conditions": "the speaker is Farengar Secret-Fire",
+     "source": "TIF__000D50D3.Fragment_0 on INFO Skyrim.esm:0D50D3 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
      "by": "start game",
      "source": "Skyrim.esm:0D0800 DNAM (LoreRim - Dialogue Patch.esp)",
      "verdict": "files"
@@ -3848,7 +3931,7 @@
      ],
      "source": "HighHrothgarNode Skyrim.esm:0E76E4 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "the place you enter is High Hrothgar"
     }
    ],
    "caughtUpBy": [],

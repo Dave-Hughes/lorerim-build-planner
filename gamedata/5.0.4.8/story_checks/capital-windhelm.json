@@ -862,6 +862,23 @@
    "firstObjectiveStage": 70,
    "startedBy": [
     {
+     "by": "dialogue",
+     "speaker": "Windhelm Guard",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Frozen Caverns"
+     ],
+     "call": "SetStage 110",
+     "info": "WindhelmSSE.esp:2C9AFA",
+     "prompt": "Guards? Could've used your help a bit earlier.",
+     "reply": [
+      "I saw y... What!?"
+     ],
+     "conditions": "the speaker is Windhelm Guard",
+     "source": "TIF__052C9AFA.Fragment_1 on INFO WindhelmSSE.esp:2C9AFA (WindhelmSSE.esp)",
+     "verdict": "script"
+    },
+    {
      "by": "start game",
      "source": "WindhelmSSE.esp:1066C4 DNAM (WindhelmSSE.esp)",
      "verdict": "files"

@@ -89,7 +89,8 @@
        "source": "HYORIcemothCourierStartNode Siege at Icemoth.esp:9AE6A6 (Siege at Icemoth.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "start game",

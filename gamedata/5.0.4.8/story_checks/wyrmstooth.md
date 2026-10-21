@@ -282,6 +282,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Dialogue with Bolmar, placed in Gronndal Grove, "Maybe I can help.": SetStage 10 (when: the speaker is Bolmar; A Priceless Commodity stage <= 1). Source: WT_TIF__0248F99D.Fragment_0 on INFO Wyrmstooth.esp:48F99D (Wyrmstooth.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Wyrmstooth.esp:48F992 DNAM (Wyrmstooth.esp). **files**
 - (First objective shown at stage 1; a call to a later stage advances the quest instead.)
 
@@ -356,7 +357,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- WTRandomEnc42TheNakedNordStarter (named "Spawn in Gjalrunn" in its record), a helper quest at stage 10 calls Start; WTRandomEnc42TheNakedNordStarter is started by story manager node WTWildernessQuestNode (event: script event; fn576 == 1; fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1); story manager node WTRoadQuestNode (event: script event; fn576 == 1; fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1). Source: WT_QF__02C7399C.fragment_12 on Wyrmstooth.esp:C7399C (Wyrmstooth.esp). **script**
+- WTRandomEnc42TheNakedNordStarter (named "Spawn in Gjalrunn" in its record), a helper quest at stage 10 calls Start; WTRandomEnc42TheNakedNordStarter is started by story manager node WTWildernessQuestNode (event: script event; GetEventData WTWEStart == 1; GetEventData WTWEStart == 1; global WEEnabled == 1 (now 1); GetEventData WTWEStart == 1 or GetEventData WTWERoadStart == 1 or GetEventData WEStart == 1 or GetEventData WERoadStart == 1); story manager node WTRoadQuestNode (event: script event; GetEventData WTWERoadStart == 1; GetEventData WTWERoadStart == 1; global WEEnabled == 1 (now 1); GetEventData WTWEStart == 1 or GetEventData WTWERoadStart == 1 or GetEventData WEStart == 1 or GetEventData WERoadStart == 1). Source: WT_QF__02C7399C.fragment_12 on Wyrmstooth.esp:C7399C (Wyrmstooth.esp). **script**
 - (First objective shown at stage 1; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -379,6 +380,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Dialogue with Vulom (named by scene WTVulomGreet, alias VulomTalkActivator of WTUberEncounter (Someone with Backbone) (forced)), placed in Tomb of Vulom: SetStage 10. Source: WT_TIF__012F1B15.Fragment_0 on INFO Wyrmstooth.esp:2F1B15 (Wyrmstooth.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Wyrmstooth.esp:2F1A74 DNAM (Wyrmstooth.esp). **files**
 - (First objective shown at stage 5; a call to a later stage advances the quest instead.)
 
@@ -403,6 +405,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Dialogue with Dunyick, placed in Wyrmstooth; Wyrmstooth, "Which direction did your wolf go?": SetStage 10 (when: A Howl Load of Trouble stage <= 1; the speaker is Dunyick). Source: WT_TIF__012E6C77.Fragment_1 on INFO Wyrmstooth.esp:2E6C77 (Wyrmstooth.esp). **script**
+- Dialogue with Dunyick, placed in Wyrmstooth; Wyrmstooth, "I don't have the time for this.": SetStage 5 (when: A Howl Load of Trouble stage <= 1; the speaker is Dunyick). Source: WT_TIF__012E6C79.Fragment_0 on INFO Wyrmstooth.esp:2E6C79 (Wyrmstooth.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Wyrmstooth.esp:2E49AF DNAM (Wyrmstooth.esp). **files**
 - (First objective shown at stage 1; a call to a later stage advances the quest instead.)
 

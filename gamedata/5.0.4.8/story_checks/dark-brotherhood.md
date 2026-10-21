@@ -6,6 +6,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Dialogue with Aventus Aretino, placed in Aretino Residence, "Contract?": SetStage 20 (when: the speaker is Aventus Aretino). Source: TIF__0001F339.Fragment_0 on INFO Skyrim.esm:01F339 (Innocence Lost - Quest Expansion.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:01EA50 DNAM (Innocence Lost - Quest Expansion.esp). **files**
 - (First objective shown at stage 5; a call to a later stage advances the quest instead.)
 

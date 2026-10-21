@@ -418,7 +418,7 @@
      ],
      "source": "FreeformCidhnaMine Skyrim.esm:0DB856 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1; fn576 == 1"
+     "conditions": "the place you enter is Cidhna Mine; the place you enter is a habitation"
     },
     {
      "by": "start game",

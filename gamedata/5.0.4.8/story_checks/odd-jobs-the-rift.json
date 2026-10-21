@@ -1,0 +1,5512 @@
+{
+ "line": "odd-jobs-the-rift",
+ "name": "Odd jobs in the Rift",
+ "quests": [
+  {
+   "id": "Skyrim.esm:053305",
+   "edid": "FreeformRiften01",
+   "name": "Supply and Demand",
+   "plugin": "TheChoiceIsYours.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [],
+   "caughtUpBy": [
+    {
+     "by": "FreeformRiften20 (The Raid)",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "QF_FreeformRiften20_00085D40.fragment_9 (TheChoiceIsYours.esp)"
+    }
+   ],
+   "advancedBy": 16,
+   "firstObjective": {
+    "text": "Report skooma source to Jarl of Riften",
+    "index": 10,
+    "source": "Skyrim.esm:053305 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFRiften01LailaJarlAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Laila Law-Giver",
+       "kind": "unique actor",
+       "where": [
+        "Mistveil Keep, Riften Mistveil Keep"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016BD2"
+     ]
+    },
+    {
+     "alias": "FFRiften01MavenJarlAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Maven Black-Briar",
+       "kind": "unique actor",
+       "where": [
+        "Black-Briar Manor"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016BD8"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Mistveil Keep, Riften Mistveil Keep",
+      "ways": 3,
+      "locked": 0
+     },
+     {
+      "cell": "Black-Briar Manor",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "LItemEnchWeaponAny (levelled: an item)",
+     "stage": 200,
+     "source": "QF_FreeformRiften01_00053305.fragment_8",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Search the northeastern region of The Rift for Cragslane Cavern and find the skooma dealers within",
+     "index": 20,
+     "source": "Skyrim.esm:053305 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Laila Law-Giver",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Mistveil Keep, Riften Mistveil Keep"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:085DF3",
+      "prompt": "I'll make sure it's done.",
+      "reply": [
+       "Good. Report back to me when your task is complete."
+      ],
+      "conditions": "the speaker is Laila Law-Giver; GetInFaction JobJarlFaction == 1; Supply and Demand stage == 10",
+      "source": "TIF__00085DF3.Fragment_0 on INFO Skyrim.esm:085DF3 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Maven Black-Briar",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Black-Briar Manor"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:085DF4",
+      "prompt": "I'll make sure it's done.",
+      "reply": [
+       "Good. Make sure not one of them escapes alive."
+      ],
+      "conditions": "the speaker is Maven Black-Briar; GetInFaction JobJarlFaction == 1; Supply and Demand stage == 10",
+      "source": "TIF__00085DF4.Fragment_0 on INFO Skyrim.esm:085DF4 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   },
+   "unread": "no starter in its records or scripts"
+  },
+  {
+   "id": "Skyrim.esm:053306",
+   "edid": "FreeformRiften02",
+   "name": "The Lover's Requital",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Sibbi Black-Briar",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Riften Jail"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:03C4C9",
+     "prompt": "I'll help you find her.",
+     "reply": [
+      "That's the spirit. Find her and I promise you'll be well compensated."
+     ],
+     "conditions": "the speaker is Sibbi Black-Briar; The Lover's Requital stage == 10; global FFRiften02LynlyDead == 0 (now 0)",
+     "source": "TIF__0003C4C9.Fragment_0 on INFO Skyrim.esm:03C4C9 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:053306 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Discover Svidi's whereabouts",
+    "index": 10,
+    "source": "Skyrim.esm:053306 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "Sibbi's Chest Key",
+     "stage": 200,
+     "source": "QF_FreeformRiften02_00053306.fragment_6",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Tell Sibbi about Lynly",
+     "index": 20,
+     "source": "Skyrim.esm:053306 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "FreeformRiften02 (The Lover's Requital)",
+      "questId": "Skyrim.esm:053306",
+      "atStage": null,
+      "call": "SetStage 30",
+      "source": "FFRiften02LynlyScript.OnDeath on Skyrim.esm:053306 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Lynly Star-Sung",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Vilemyr Inn, Ivarstead Vilemyr Inn"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:053260",
+      "prompt": "Tell me your side of the story about Sibbi.",
+      "reply": [
+       "Sibbi and I were to be married. We were supposed to be happy together forever.",
+       "Then I found that wretched poetry from Svana. When I confronted Sibbi about it, he threatened to kill me.",
+       "I was scared so I told my brother Wulfur. He went to talk to Sibbi for me and... and... Sibbi killed him. My brother wasn't even armed!",
+       "When I heard what Sibbi did, I fled. Now you've found me, and you're going to tell him where I am."
+      ],
+      "conditions": "the speaker is Lynly Star-Sung; The Lover's Requital stage == 20; global FFRiften02Solved >= 1 (now 0)",
+      "source": "TIF__00053260.Fragment_0 on INFO Skyrim.esm:053260 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:053307",
+   "edid": "FreeformRiften03",
+   "name": "Under the Table",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Romlyn Dreth",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Romlyn Dreth's House"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:041E0E",
+     "prompt": "All right, I'll do it.",
+     "reply": [
+      "Good. Now get going."
+     ],
+     "conditions": "the speaker is Romlyn Dreth; Under the Table stage == 10; fn1 >= ANDR_DialogueDistanceCheck_RomlynIndaryn (now 2048)",
+     "source": "TIF__00041E0E.Fragment_0 on INFO Skyrim.esm:041E0E (NGCDT - Distance Checks.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:053307 DNAM (Skyrim.esm)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Deliver Mead to Wilhelm",
+    "index": 10,
+    "source": "Skyrim.esm:053307 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFRiften03WilhelmAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Wilhelm",
+       "kind": "unique actor",
+       "where": [
+        "Vilemyr Inn, Ivarstead Vilemyr Inn"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:013A5C"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Vilemyr Inn, Ivarstead Vilemyr Inn",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Show Mead to Indaryn",
+     "index": 20,
+     "source": "Skyrim.esm:053307 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
+  },
+  {
+   "id": "Skyrim.esm:053308",
+   "edid": "FreeformRiften04",
+   "name": "Few and Far Between",
+   "plugin": "LoreRim - Dialogue Patch.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Ingun Black-Briar",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Black-Briar Manor"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:03C4C7",
+     "prompt": "Sure, I'll get them for you.",
+     "reply": [
+      "That means more time for my experiments and less time in the field. Much appreciated."
+     ],
+     "conditions": "the speaker is Ingun Black-Briar; Few and Far Between stage == 10",
+     "source": "TIF__0003C4C7.Fragment_0 on INFO Skyrim.esm:03C4C7 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:053308 DNAM (LoreRim - Dialogue Patch.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Find 20 nirnroot for Ingun Black-Briar (<Global=FFR04NirnCount>/<Global=FFR04NirnTotal>)",
+    "index": 10,
+    "source": "Skyrim.esm:053308 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Bring the nirnroot to Ingun Black-Briar",
+     "index": 15,
+     "source": "Skyrim.esm:053308 QOBJ 15",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
+  },
+  {
+   "id": "Skyrim.esm:053309",
+   "edid": "FreeformRiften05",
+   "name": "Spread the Love",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "t02 (named \"The Book of Love\" in its record), a helper quest with Dinya, Maramal, Fastred",
+     "questId": "Skyrim.esm:0211D5",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "QF_T02_000211D5.fragment_27 on Skyrim.esm:0211D5 (Unofficial Skyrim Modders Patch.esp)",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Skyrim.esm:0211D5 DNAM (Unofficial Skyrim Modders Patch.esp)",
+       "verdict": "files"
+      }
+     ]
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Dinya Balu",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Temple of Mara"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:053278",
+     "prompt": "I'll distribute them.",
+     "reply": [
+      "Oh my, how wonderful! Lady Mara will be so pleased!",
+      "Here you are. Now make sure you give out every single one, we can't afford to let even one lost soul stray from Her warmth."
+     ],
+     "conditions": "the speaker is Dinya Balu; Spread the Love stage == 10",
+     "source": "TIF__00053278.Fragment_1 on INFO Skyrim.esm:053278 (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 38,
+   "firstObjective": {
+    "text": "Distribute the Warmth of Mara within Riften (<Global=FFRiften05Served>/<Global=FFRiften05Total>)",
+    "index": 10,
+    "source": "Skyrim.esm:053309 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Dinya",
+     "index": 20,
+     "source": "Skyrim.esm:053309 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Niluva Hlaalu",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Haelga's Bunkhouse"
+      ],
+      "call": "SetStage 25",
+      "info": "Skyrim.esm:05329F",
+      "prompt": "Here, sister. Blessings of Mara upon you.",
+      "reply": [
+       "Mara only helps those who can afford her tithes. This is nonsense."
+      ],
+      "conditions": "the speaker is Niluva Hlaalu; Spread the Love stage 20 done; GetItemCount The Warmth of Mara >= 1",
+      "source": "TIF__0005329F.Fragment_0 on INFO Skyrim.esm:05329F (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Drifa",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Pawned Prawn, The Pawned Prawn"
+      ],
+      "call": "SetStage 25",
+      "info": "Skyrim.esm:0532A0",
+      "prompt": "Here, sister. Blessings of Mara upon you.",
+      "reply": [
+       "Oh, how kind! Thank you."
+      ],
+      "conditions": "the speaker is Drifa; Spread the Love stage 20 done; GetItemCount The Warmth of Mara >= 1",
+      "source": "TIF__000532A0.Fragment_0 on INFO Skyrim.esm:0532A0 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Maven Black-Briar",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Black-Briar Manor"
+      ],
+      "call": "SetStage 25",
+      "info": "Skyrim.esm:0532A1",
+      "prompt": "Here, sister. Blessings of Mara upon you.",
+      "reply": [
+       "Excellent, I needed some more kindling for my kitchen hearth."
+      ],
+      "conditions": "the speaker is Maven Black-Briar; Spread the Love stage 20 done; GetItemCount The Warmth of Mara >= 1",
+      "source": "TIF__000532A1.Fragment_0 on INFO Skyrim.esm:0532A1 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Ingun Black-Briar",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Black-Briar Manor"
+      ],
+      "call": "SetStage 25",
+      "info": "Skyrim.esm:0532A5",
+      "prompt": "Here, sister. Blessings of Mara upon you.",
+      "reply": [
+       "Whatever you're peddling, I'm not buying."
+      ],
+      "conditions": "the speaker is Ingun Black-Briar; Spread the Love stage 20 done; GetItemCount The Warmth of Mara >= 1",
+      "source": "TIF__000532A5.Fragment_0 on INFO Skyrim.esm:0532A5 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Nivenor",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Bolli's House"
+      ],
+      "call": "SetStage 25",
+      "info": "Skyrim.esm:0532A6",
+      "prompt": "Here, sister. Blessings of Mara upon you.",
+      "reply": [
+       "Are you serious? You're as crazy as Maramal."
+      ],
+      "conditions": "the speaker is Nivenor; Spread the Love stage 20 done; GetItemCount The Warmth of Mara >= 1",
+      "source": "TIF__000532A6.Fragment_0 on INFO Skyrim.esm:0532A6 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Keerava",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Bee and Barb, Bee and Barb"
+      ],
+      "call": "SetStage 25",
+      "info": "Skyrim.esm:0532A7",
+      "prompt": "Here, sister. Blessings of Mara upon you.",
+      "reply": [
+       "Look, the only religion I believe in is the good old septim. Everything else is just a waste."
+      ],
+      "conditions": "the speaker is Keerava; Spread the Love stage 20 done; GetItemCount The Warmth of Mara >= 1",
+      "source": "TIF__000532A7.Fragment_0 on INFO Skyrim.esm:0532A7 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Nura Snow-Shod",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Snow-Shod Manor, House of Clan Snow-Shod"
+      ],
+      "call": "SetStage 25",
+      "info": "Skyrim.esm:0532A8",
+      "prompt": "Here, sister. Blessings of Mara upon you.",
+      "reply": [
+       "Ugh. Get this awful paper away from me, by Talos!"
+      ],
+      "conditions": "the speaker is Nura Snow-Shod; Spread the Love stage 20 done; GetItemCount The Warmth of Mara >= 1",
+      "source": "TIF__000532A8.Fragment_0 on INFO Skyrim.esm:0532A8 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Alessandra",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Hall of the Dead, Riften Hall of the Dead"
+      ],
+      "call": "SetStage 25",
+      "info": "Skyrim.esm:0532A9",
+      "prompt": "Here, sister. Blessings of Mara upon you.",
+      "reply": [
+       "Oh, a new pamphlet from Dinya? I'll be glad to read it. Thanks."
+      ],
+      "conditions": "the speaker is Alessandra; Spread the Love stage 20 done; GetItemCount The Warmth of Mara >= 1",
+      "source": "TIF__000532A9.Fragment_0 on INFO Skyrim.esm:0532A9 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:053318",
+   "edid": "FreeformRiften06",
+   "name": "Sealing the Deal",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:053318 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 31,
+   "firstObjective": {
+    "text": "Get 3 flawless amethysts for Talen-Jei (<Global=FFRiften06Found>/<Global=FFRiften06Total>)",
+    "index": 10,
+    "source": "Skyrim.esm:053318 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "FFRiften06Reward100 (levelled: an item)",
+     "stage": 200,
+     "source": "QF_FreeformRiften06_00053318.fragment_2",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Talen-Jei",
+     "index": 20,
+     "source": "Skyrim.esm:053318 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
+  },
+  {
+   "id": "Skyrim.esm:05331A",
+   "edid": "FreeformRiften07",
+   "name": "Ice Cold",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:05331A DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Find 5 Ice Wraith Teeth for Marise (<Global=FFR07TeethCount>/<Global=FFR07TeethTotal>)",
+    "index": 10,
+    "source": "Skyrim.esm:05331A QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Marise",
+     "index": 20,
+     "source": "Skyrim.esm:05331A QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
+  },
+  {
+   "id": "Skyrim.esm:05331B",
+   "edid": "FreeformRiften08",
+   "name": "Distant Memories",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Brand-Shei",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Haelga's Bunkhouse"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0E82B7",
+     "prompt": "I'll keep an eye open.",
+     "reply": [
+      "Thank you."
+     ],
+     "conditions": "the speaker is Brand-Shei; Distant Memories stage == 10; fn629 == 1; GetItemCount Journal - Lymdrenn Telvanni's == 0",
+     "source": "TIF__000E82B7.Fragment_0 on INFO Skyrim.esm:0E82B7 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:05331B DNAM (Skyrim.esm)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Locate a clue about Brand-Shei's past",
+    "index": 10,
+    "source": "Skyrim.esm:05331B QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFRiften08ChestAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Waterlogged Chest",
+       "kind": "forced reference",
+       "where": [
+        "Pride of Tel Vos"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:00B268"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Brand-Shei",
+     "index": 20,
+     "source": "Skyrim.esm:05331B QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "FreeformRiften08 (Distant Memories)",
+      "questId": "Skyrim.esm:05331B",
+      "atStage": null,
+      "call": "SetStage 30",
+      "source": "ffriften08bookscript.OnContainerchanged on Skyrim.esm:05331B (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:05331C",
+   "edid": "FreeformRiften09",
+   "name": "Grimsever's Return",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Mjoll the Lioness",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Aerin's House"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:045311",
+     "prompt": "I could find it for you.",
+     "reply": [
+      "I couldn't ask you to undertake such a treacherous journey, it would be a fool's errand.",
+      "But I see that spark in your eye and I know better than to warn you away.",
+      "Grimsever rests within the Dwemer ruin of Mzinchaleft. Tread carefully, friend... those same ruins almost took my life."
+     ],
+     "conditions": "the speaker is Mjoll the Lioness; Grimsever's Return stage == 10; fn629 == 1",
+     "source": "TIF__00045311.Fragment_0 on INFO Skyrim.esm:045311 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "story manager",
+     "event": "level up",
+     "node": "FFR09KickerNode",
+     "parents": [
+      "Skyrim.esm:05BD79",
+      "Root"
+     ],
+     "source": "FFR09KickerNode Skyrim.esm:10EA41 (Skyrim.esm)",
+     "verdict": "files",
+     "conditions": "level >= FFRiften09Gate (now 14)"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Locate Grimsever",
+    "index": 10,
+    "source": "Skyrim.esm:05331C QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFRiften09Grimsever",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Grimsever",
+       "kind": "forced reference",
+       "where": [
+        "Mzinchaleft Gatehouse, Mzinchaleft"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:058663"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Mzinchaleft Gatehouse, Mzinchaleft",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [
+    {
+     "id": "Skyrim.esm:10EA42",
+     "edid": "FFRiften09Gate",
+     "record": 14.0,
+     "recordFrom": "TimingIsEverything.esp",
+     "runtime": [],
+     "settingsNotRead": [
+      {
+       "mod": "TimingIsEverything",
+       "key": "iTIE_GrimseversReturn:MiscQuests",
+       "value": "14",
+       "from": "settings.ini in Timing is Everything SE - Settings Loader",
+       "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+      }
+     ],
+     "value": 14.0,
+     "verdict": "files"
+    }
+   ],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Mjoll",
+     "index": 20,
+     "source": "Skyrim.esm:05331C QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "FreeformRiften09 (Grimsever's Return)",
+      "questId": "Skyrim.esm:05331C",
+      "atStage": null,
+      "call": "SetStage 30",
+      "source": "DefaultAddItemAliasScript.OnContainerChanged on Skyrim.esm:05331C (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:05331D",
+   "edid": "FreeformRiften10",
+   "name": "Stoking the Flames",
+   "plugin": "Requiem.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:05331D DNAM (Requiem.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Collect 10 fire salts for Balimund (<Global=FFR10SaltCount>/<Global=FFR10SaltTotal>)",
+    "index": 10,
+    "source": "Skyrim.esm:05331D QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "REQ_LI_Reward_Quest_StokingTheFlames (levelled: gold and an item)",
+     "stage": 200,
+     "source": "QF_FreeformRiften10_0005331D.fragment_5",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Bring the 10 fire salts to Balimund, the Riften blacksmith",
+     "index": 20,
+     "source": "Skyrim.esm:05331D QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
+  },
+  {
+   "id": "Skyrim.esm:041F91",
+   "edid": "FreeformRiften11",
+   "name": "Caught Red Handed",
+   "plugin": "LoreRim - Dialogue Patch.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Svana Far-Shield",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Haelga's Bunkhouse"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:041E0C",
+     "prompt": "Sure, I'll help you.",
+     "reply": [
+      "Oh, this is going to be great!",
+      "You need to get the Marks of Dibella from Bolli, Hofgrir and Indaryn. Not sure how you're going to do that, but try your best.",
+      "Then just confront Haelga with them and the rest works itself out."
+     ],
+     "conditions": "the speaker is Svana Far-Shield; Caught Red Handed stage == 10; fn629 == 1; fn230 == 0",
+     "source": "TIF__00041E0C.Fragment_0 on INFO Skyrim.esm:041E0C (NGCDT - Distance Checks.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Haelga",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Haelga's Bunkhouse"
+     ],
+     "call": "SetStage 12",
+     "info": "Caught Red Handed - Quest Expansion.esp:00081D",
+     "prompt": "You mean...? I... Ehh... Y-You... No! That's everything! Take care now! Bye!",
+     "reply": [
+      "Ha ha ha! Fine. Now, please, take this small token of my appreciation. I'll see you around, handsome."
+     ],
+     "conditions": "fn70 == 1; the speaker is Haelga",
+     "source": "Haelga_Stage12_Male.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:00081D (Caught Red Handed - Quest Expansion.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Haelga",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Haelga's Bunkhouse"
+     ],
+     "call": "SetStage 12",
+     "info": "Caught Red Handed - Quest Expansion.esp:00081E",
+     "prompt": "You mean...? I... Ehh... Y-You... No! That's everything! Take care now! Bye!",
+     "reply": [
+      "Ha ha ha! Fine. Now, please, take this small token of my appreciation. I'll see you around, pretty one."
+     ],
+     "conditions": "fn70 == 1; the speaker is Haelga",
+     "source": "Haelga_Stage12_Female.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:00081E (Caught Red Handed - Quest Expansion.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Haelga",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Haelga's Bunkhouse"
+     ],
+     "call": "SetStage 12",
+     "info": "Caught Red Handed - Quest Expansion.esp:000820",
+     "prompt": "I'd be interested in learning more about your \"Dibellan Arts\". (Persuade)",
+     "reply": [
+      "Oh, yes please! You are pleasant company. More than pleasant. I think I can be of service.",
+      "So, I have plenty of room in my bed. Meet me there, handsome."
+     ],
+     "conditions": "Taking Care of Business stage 45 not done; fn70 == 1; the speaker is Haelga; GetActorValue >= 40 or fn182 == 1 or fn264 == 1",
+     "source": "CRH_MaleSleepFirst.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:000820 (Caught Red Handed - Quest Expansion.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Haelga",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Haelga's Bunkhouse"
+     ],
+     "call": "SetStage 13",
+     "info": "Caught Red Handed - Quest Expansion.esp:000820",
+     "prompt": "I'd be interested in learning more about your \"Dibellan Arts\". (Persuade)",
+     "reply": [
+      "Oh, yes please! You are pleasant company. More than pleasant. I think I can be of service.",
+      "So, I have plenty of room in my bed. Meet me there, handsome."
+     ],
+     "conditions": "Taking Care of Business stage 45 not done; fn70 == 1; the speaker is Haelga; GetActorValue >= 40 or fn182 == 1 or fn264 == 1",
+     "source": "CRH_MaleSleepFirst.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:000820 (Caught Red Handed - Quest Expansion.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Haelga",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Haelga's Bunkhouse"
+     ],
+     "call": "SetStage 13",
+     "info": "Caught Red Handed - Quest Expansion.esp:000821",
+     "prompt": "I'd be interested in learning more about your \"Dibellan Arts\". (Persuade)",
+     "reply": [
+      "Oh, yes please! You are pleasant company. More than pleasant. I think I can be of service.",
+      "So, I have plenty of room in my bed. Meet me there, pretty one."
+     ],
+     "conditions": "Taking Care of Business stage 45 not done; fn70 == 1; the speaker is Haelga; GetActorValue >= 40 or fn264 == 1 or fn182 == 1",
+     "source": "CRH_Female_SleepFirstTime.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:000821 (Caught Red Handed - Quest Expansion.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Haelga",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Haelga's Bunkhouse"
+     ],
+     "call": "SetStage 12",
+     "info": "Caught Red Handed - Quest Expansion.esp:000822",
+     "prompt": "I'd be interested in learning more about your \"Dibellan Arts\". (Persuade)",
+     "reply": [
+      "Ha ha ha! No. Can't do that, sorry.",
+      "Oh come now, don't go away mad, take this small token of my appreciation.",
+      "I'll see you around, handsome."
+     ],
+     "conditions": "fn70 == 1; the speaker is Haelga; GetActorValue < 40; fn264 == 0; fn264 == 0",
+     "source": "SorryButNoHandsome.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:000822 (Caught Red Handed - Quest Expansion.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Haelga",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Haelga's Bunkhouse"
+     ],
+     "call": "SetStage 12",
+     "info": "Caught Red Handed - Quest Expansion.esp:000823",
+     "prompt": "I'd be interested in learning more about your \"Dibellan Arts\". (Persuade)",
+     "reply": [
+      "Ha ha ha! No. Can't do that, sorry.",
+      "Oh come now, don't go away mad, take this small token of my appreciation.",
+      "I'll see you around, pretty one."
+     ],
+     "conditions": "fn70 == 1; the speaker is Haelga; GetActorValue < 40; fn264 == 0; fn264 == 0",
+     "source": "SorryButNoPrettyOne.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:000823 (Caught Red Handed - Quest Expansion.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Svana Far-Shield",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Haelga's Bunkhouse"
+     ],
+     "call": "SetStage 11",
+     "info": "Caught Red Handed - Quest Expansion.esp:000800",
+     "prompt": "Let her enjoy herself. Nothing wrong with that. It's perfectly normal, you know.",
+     "reply": [
+      "Uh huh. Sure it is. Fine. Just... forget I said anything."
+     ],
+     "conditions": "Caught Red Handed stage == 10; the speaker is Svana Far-Shield; fn629 == 1",
+     "source": "MoveQuestToStage11.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:000800 (Caught Red Handed - Quest Expansion.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:041F91 DNAM (LoreRim - Dialogue Patch.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 8,
+   "firstObjective": {
+    "text": "Obtain a Mark of Dibella from Bolli, a Riften fisherman",
+    "index": 10,
+    "source": "Skyrim.esm:041F91 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFRiften11BolliAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Bolli",
+       "kind": "unique actor",
+       "where": [
+        "Bolli's House"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016BD6"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Bolli's House",
+      "ways": 2,
+      "locked": 1
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Speak to Haelga",
+     "index": 11,
+     "source": "Skyrim.esm:041F91 QOBJ 11",
+     "verdict": "files"
+    },
+    "stage": 11,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 11 or one before it"
+   }
+  },
+  {
+   "id": "Skyrim.esm:041FD2",
+   "edid": "FreeformRiften12",
+   "name": "Helping Hand",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Wujeeta",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Haelga's Bunkhouse"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:041E35",
+     "prompt": "I'll get one for you.",
+     "reply": [
+      "Thank you, my friend."
+     ],
+     "conditions": "the speaker is Wujeeta; Helping Hand stage == 10",
+     "source": "TIF__00041E35.Fragment_0 on INFO Skyrim.esm:041E35 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:041FD2 DNAM (Skyrim.esm)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 12,
+   "firstObjective": {
+    "text": "Give Wujeeta a healing potion",
+    "index": 10,
+    "source": "Skyrim.esm:041FD2 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:043E1A",
+   "edid": "FreeformRiften13",
+   "name": "Pilgrimage",
+   "plugin": "Requiem.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Alessandra",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Hall of the Dead, Riften Hall of the Dead"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:043D27",
+     "prompt": "I can bring it for you.",
+     "reply": [
+      "I hadn't asked you because I was afraid you'd say no. I appreciate your help.",
+      "Here, I'm entrusting you with the dagger. Bring it to Andurs and he'll take care of the rest."
+     ],
+     "conditions": "the speaker is Alessandra; Pilgrimage stage == 10; fn629 == 1",
+     "source": "TIF__00043D27.Fragment_0 on INFO Skyrim.esm:043D27 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:043E1A DNAM (Requiem.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Bring Alessandra's Dagger to Andurs in Whiterun",
+    "index": 10,
+    "source": "Skyrim.esm:043E1A QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFRiften13Andurs",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Andurs",
+       "kind": "unique actor",
+       "where": [
+        "Hall of the Dead"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0165AA"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Hall of the Dead",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Alessandra, an attendant of Riften's Hall of the Dead",
+     "index": 20,
+     "source": "Skyrim.esm:043E1A QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Andurs",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Hall of the Dead"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:04C485",
+      "prompt": "I have Alessandra's dagger here.",
+      "reply": [
+       "She finally decided to return it to her father. Bless her heart.",
+       "I will make sure this finds its way to his tomb as soon as possible. Thank you for bringing it, my child."
+      ],
+      "conditions": "the speaker is Andurs; Pilgrimage stage == 20; fn629 == 1; GetItemCount Alessandra's Dagger == 1",
+      "source": "TIF__0004C485.Fragment_0 on INFO Skyrim.esm:04C485 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:043E25",
+   "edid": "FreeformRiften14",
+   "name": "Hunt and Gather",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Wylandriah",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Mistveil Keep, Riften Mistveil Keep"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:043DE4",
+     "prompt": "Point the way and I'll get them.",
+     "reply": [
+      "Excellent. I can't wait.",
+      "Well... why are you still standing here? Oh, right. You need to know where they are! That would help."
+     ],
+     "conditions": "the speaker is Wylandriah; Hunt and Gather stage 20 not done",
+     "source": "TIF__00043DE4.Fragment_0 on INFO Skyrim.esm:043DE4 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:043E25 DNAM (Skyrim.esm)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Retrieve Wylandriah's Spoon",
+    "index": 10,
+    "source": "Skyrim.esm:043E25 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFRiften14SpoonAlias",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Wylandriah's Spoon",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Retrieve Wylandriah's Ingot",
+     "index": 20,
+     "source": "Skyrim.esm:043E25 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [],
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
+   }
+  },
+  {
+   "id": "Skyrim.esm:0557E9",
+   "edid": "FreeformRiften15",
+   "name": "Special Delivery",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Bolli",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Bolli's House"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:055698",
+     "prompt": "Okay, I'll do it.",
+     "reply": [
+      "Good. Kleppr will pay you as soon as you arrive with the letter. Here you are."
+     ],
+     "conditions": "the speaker is Bolli; fn629 == 1; Special Delivery stage == 10",
+     "source": "TIF__00055698.Fragment_0 on INFO Skyrim.esm:055698 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:0557E9 DNAM (Skyrim.esm)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Deliver the purchase agreement to Kleppr in Markarth",
+    "index": 10,
+    "source": "Skyrim.esm:0557E9 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFRiften15Kleppr",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Kleppr",
+       "kind": "unique actor",
+       "where": [
+        "Silver-Blood Inn"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016DFE"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Silver-Blood Inn",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:0557F3",
+   "edid": "FreeformRiften16",
+   "name": "Bring It!",
+   "plugin": "Big Tweaks.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Harrald",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Mistveil Keep, Riften Mistveil Keep"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0556B9",
+     "prompt": "I'll get it for you.",
+     "reply": [
+      "Thank you. Do hurry please."
+     ],
+     "conditions": "the speaker is Harrald; Bring It! stage == 10",
+     "source": "TIF__000556B9.Fragment_0 on INFO Skyrim.esm:0556B9 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:0557F3 DNAM (Big Tweaks.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Pick up Harrald's Sword from Balimund",
+    "index": 10,
+    "source": "Skyrim.esm:0557F3 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFRiften16BalimundAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Balimund",
+       "kind": "unique actor",
+       "where": [
+        "The Scorched Hammer, Blacksmith"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:053081"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "The Scorched Hammer, Blacksmith",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Deliver Harrald's Sword",
+     "index": 20,
+     "source": "Skyrim.esm:0557F3 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Balimund",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Scorched Hammer, Blacksmith"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:05569E",
+      "prompt": "I'm here to pick up Harrald's sword.",
+      "reply": [
+       "Lazy good-for-nothing, isn't he? Sent you down here when I'm a stone's throw from the keep?",
+       "Here's the sword. Tell Harrald to stop slaying walls and perhaps his blade will stay in better condition!"
+      ],
+      "conditions": "the speaker is Balimund; Bring It! stage == 20",
+      "source": "TIF__0005569E.Fragment_0 on INFO Skyrim.esm:05569E (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:05B2DE",
+   "edid": "FreeformRiften17",
+   "name": "Truth Ore Consequences",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Hafjorg",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Elgrim's Elixirs"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:05B002",
+     "prompt": "I could get it for you.",
+     "reply": [
+      "You would? Oh, that would be wonderful.",
+      "Speak to Filnjar in Shor's Stone. He's got some sort of ore sample he wants us to identify and was willing to pay us well for it."
+     ],
+     "conditions": "the speaker is Hafjorg; Truth Ore Consequences stage == 10",
+     "source": "TIF__0005B002.Fragment_0 on INFO Skyrim.esm:05B002 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:05B2DE DNAM (Skyrim.esm)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Obtain Ore Sample from Filnjar",
+    "index": 10,
+    "source": "Skyrim.esm:05B2DE QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFRiften17FilnjarAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Filnjar",
+       "kind": "unique actor",
+       "where": [
+        "Filnjar's House"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:013856"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Filnjar's House",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return Ore Sample to Hafjorg",
+     "index": 20,
+     "source": "Skyrim.esm:05B2DE QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Filnjar",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Filnjar's House"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:05B212",
+      "prompt": "I'm here for Elgrim's ore sample.",
+      "reply": [
+       "It's about time; I sent them a letter weeks ago. That Elgrim... he'd forget his own pants if his wife didn't help him dress.",
+       "Here you go. Tell Hafjorg that she can chip off whatever she thinks is a fair trade for their time."
+      ],
+      "conditions": "the speaker is Filnjar; Truth Ore Consequences stage == 20",
+      "source": "TIF__0005B212.Fragment_0 on INFO Skyrim.esm:05B212 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:05B3A5",
+   "edid": "FreeformRiften18",
+   "name": "Ringmaker",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:05B3A5 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 5,
+   "firstObjective": {
+    "text": "Find 2 flawless sapphires for Madesi (<Global=FFR18GemCount>/<Global=FFR18GemTotal>)",
+    "index": 10,
+    "source": "Skyrim.esm:05B3A5 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Bring the flawless sapphires to Madesi",
+     "index": 15,
+     "source": "Skyrim.esm:05B3A5 QOBJ 15",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
+  },
+  {
+   "id": "Skyrim.esm:065C30",
+   "edid": "FreeformRiften19",
+   "name": "Bloody Nose",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:065C30 DNAM (Skyrim.esm)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Defeat Hofgrir in an unarmed brawl",
+    "index": 10,
+    "source": "Skyrim.esm:065C30 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFRiften19HofgrirAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Hofgrir Horse-Crusher",
+       "kind": "unique actor",
+       "where": [
+        "Riften Stables"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:018BE0"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Riften Stables",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": []
+  },
+  {
+   "id": "Skyrim.esm:085D40",
+   "edid": "FreeformRiften20",
+   "name": "The Raid",
+   "plugin": "TheChoiceIsYours.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "FreeformRiften12 (Helping Hand)",
+     "questId": "Skyrim.esm:041FD2",
+     "atStage": 200,
+     "call": "SetStage 10",
+     "source": "QF_FreeformRiften12_00041FD2.fragment_3 on Skyrim.esm:041FD2 (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 3,
+   "firstObjective": {
+    "text": "Identify Riften's skooma dealer",
+    "index": 10,
+    "source": "Skyrim.esm:085D40 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFRiften20Wujeeta",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Wujeeta",
+       "kind": "unique actor",
+       "where": [
+        "Haelga's Bunkhouse"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016BD4"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Haelga's Bunkhouse",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Report Sarthis Idren to the Jarl of Riften",
+     "index": 20,
+     "source": "Skyrim.esm:085D40 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Wujeeta",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Haelga's Bunkhouse"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:085D39",
+      "prompt": "Who has a key to the warehouse?",
+      "reply": [
+       "I overheard Bolli say that only the jarl carries the key to the warehouse.",
+       "When I meet Sarthis there, he's usually waiting for me outside with his bodyguard."
+      ],
+      "conditions": "the speaker is Wujeeta; The Raid stage == 10; fn629 == 1",
+      "source": "TIF__00085D39.Fragment_0 on INFO Skyrim.esm:085D39 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:0C1E07",
+   "edid": "FreeformRiften22",
+   "name": "Stabilized",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "DialogueRiftenSS02 (named \"Riften Scripted Scene Bridge\" in its record), a helper quest with SapphireAlias, ShadrAlias",
+     "questId": "Skyrim.esm:0C19A8",
+     "atStage": 20,
+     "call": "SetStage 10",
+     "source": "QF_DialogueRiftenSS02_000C19A8.fragment_8 on Skyrim.esm:0C19A8 (Skyrim.esm)",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "start game",
+       "source": "Skyrim.esm:0C19A8 DNAM (Skyrim.esm)",
+       "verdict": "files"
+      }
+     ]
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Shadr",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Riften"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0C1DFB",
+     "prompt": "I'll help you pay off your debt.",
+     "reply": [
+      "You will?! Oh, thank you!"
+     ],
+     "conditions": "the speaker is Shadr; Stabilized stage == 10",
+     "source": "TIF__000C1DFB.Fragment_0 on INFO Skyrim.esm:0C1DFB (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:0C1E07 DNAM (Skyrim.esm)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 10,
+   "firstObjective": {
+    "text": "Speak to Sapphire about Shadr's debt",
+    "index": 10,
+    "source": "Skyrim.esm:0C1E07 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFRiften22SapphireAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Sapphire",
+       "kind": "unique actor",
+       "where": [
+        "Riften"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:042247"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Riften",
+      "ways": 23,
+      "locked": 11
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Shadr",
+     "index": 20,
+     "source": "Skyrim.esm:0C1E07 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Sapphire",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Riften"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:0D4FB6",
+      "prompt": "Forget the debt with Shadr or you're out.",
+      "reply": [
+       "I got the message. Consider it forgotten, boss."
+      ],
+      "conditions": "the speaker is Sapphire; Stabilized stage == 20; GetInFaction Thieves' Guild == 1; Under New Management stage 200 done",
+      "source": "TIF__000D4FB6.Fragment_0 on INFO Skyrim.esm:0D4FB6 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Sapphire",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Riften"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:0D4FB7",
+      "prompt": "Cut me into the deal, and I'll forget about it.",
+      "reply": [
+       "Yeah, I figured it would be like that. Here you go."
+      ],
+      "conditions": "the speaker is Sapphire; Stabilized stage == 20; GetInFaction Thieves' Guild == 1; Under New Management stage 200 done",
+      "source": "TIF__000D4FB7.Fragment_0 on INFO Skyrim.esm:0D4FB7 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Sapphire",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Riften"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:0D4FBE",
+      "prompt": "Forget it. I'm going to speak to Brynjolf.",
+      "reply": [
+       "Whoa, whoa. Calm down. Let's just think about this for a moment.",
+       "(Sigh) You win. Tell Shadr he can forget the debt."
+      ],
+      "conditions": "the speaker is Sapphire; Stabilized stage == 20; GetInFaction Thieves' Guild == 1; Under New Management stage 200 not done",
+      "source": "TIF__000D4FBE.Fragment_0 on INFO Skyrim.esm:0D4FBE (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Sapphire",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Riften"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:0D4FC1",
+      "prompt": "You've got a deal.",
+      "reply": [
+       "Now you're talking.",
+       "Oh, if you see Shadr, remind him he still owes me that debt."
+      ],
+      "conditions": "the speaker is Sapphire; Stabilized stage == 20; GetInFaction Thieves' Guild == 1; Under New Management stage 200 not done",
+      "source": "TIF__000D4FC1.Fragment_0 on INFO Skyrim.esm:0D4FC1 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Sapphire",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Riften"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:0D4FB8",
+      "prompt": "You can't milk a dead cow, but I'll enjoy beating a thief to death. (Intimidate)",
+      "reply": [
+       "All right, all right! Take it easy. No idea why you'd care about a stranger so much, but this isn't worth a fight.",
+       "Tell Shadr I'm forgetting about his debt."
+      ],
+      "conditions": "the speaker is Sapphire; Stabilized stage == 20; GetInFaction Thieves' Guild == 0; fn655 == 1",
+      "source": "TIF__000D4FB8.Fragment_0 on INFO Skyrim.esm:0D4FB8 (Immersive Speech Dialogues.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Sapphire",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Riften"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:0D4FBF",
+      "prompt": "I'll just pay it off for him. (<BribeCost> gold)",
+      "reply": [
+       "Don't know why you'd help a stranger like that, but a septim's a septim... don't care where it comes from.",
+       "You can tell Shadr his debt's been paid."
+      ],
+      "conditions": "the speaker is Sapphire; Stabilized stage == 20; GetInFaction Thieves' Guild == 0; fn654 == 1",
+      "source": "TIF__000D4FBF.Fragment_0 on INFO Skyrim.esm:0D4FBF (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Sapphire",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Riften"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:0D4FC2",
+      "prompt": "I can tell the Thieves Guild you're operating without a share for other members.",
+      "reply": [
+       "All right, all right. I guess I made enough from his shipment. No need to waste any more time threatening a stable hand.",
+       "Tell Shadr he doesn't owe me anything."
+      ],
+      "conditions": "the speaker is Sapphire; Stabilized stage == 20; GetInFaction Thieves' Guild == 0; GetActorValue >= SpeechAverage (now 50)",
+      "source": "TIF__000D4FC2.Fragment_0 on INFO Skyrim.esm:0D4FC2 (Immersive Speech Dialogues.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:0C04BA",
+   "edid": "FreeformValdDebt",
+   "name": "Vald's Debt",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "TG07 (named \"The Pursuit\" in its record), a helper quest with BrynjolfAlias, VexAlias, DelvinAlias",
+     "questId": "Skyrim.esm:021553",
+     "atStage": 45,
+     "call": "SetStage 10",
+     "source": "QF_TG07_00021553.fragment_25 on Skyrim.esm:021553 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "quest script",
+       "quest": "TG06 (named \"Hard Answers\" in its record), a helper quest with KarliahAlias, CalcelmoAlias, EnthirAlias",
+       "questId": "Skyrim.esm:021552",
+       "atStage": 200,
+       "call": "SetStage 10",
+       "source": "QF_TG06_00021552.fragment_20 on Skyrim.esm:021552 (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ]
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Vald",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Riften"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:072AFD",
+     "prompt": "I'll make it worth your while. (Bribe)",
+     "reply": [
+      "You ain't got enough coin to make my problems go away unless ya' can talk Maven Black-Briar into letting me outta' my debt.",
+      "You try and set one foot in this yard, and I'll cut it off."
+     ],
+     "conditions": "the speaker is Vald; GetItemCount Vald's Debt == 0; The Pursuit stage 48 not done",
+     "source": "TIF__00072AFD.Fragment_1 on INFO Skyrim.esm:072AFD (Skyrim.esm)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 4,
+   "firstObjective": {
+    "text": "Talk to Maven about Vald's debt",
+    "index": 10,
+    "source": "Skyrim.esm:0C04BA QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FVDMavenAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Maven Black-Briar",
+       "kind": "unique actor",
+       "where": [
+        "Black-Briar Manor"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016BD8"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Black-Briar Manor",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Locate the Quill of Gemination under Lake Honrich",
+     "index": 20,
+     "source": "Skyrim.esm:0C04BA QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Maven Black-Briar",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Black-Briar Manor"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0C04A5",
+      "prompt": "He's in debt because of a quill?",
+      "reply": [
+       "The wizards called it the Quill of Gemination and demanded a tremendous amount of gold to have it made.",
+       "If you can locate the quill and return it to me, something Vald was too stupid to do himself, I'll consider the debt satisfied."
+      ],
+      "conditions": "the speaker is Maven Black-Briar; Vald's Debt stage == 10",
+      "source": "TIF__000C04A5.Fragment_0 on INFO Skyrim.esm:0C04A5 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:0D9B63",
+   "edid": "FreeformIvarstead01",
+   "name": "Lifting the Shroud",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Wilhelm",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Vilemyr Inn, Ivarstead Vilemyr Inn"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0D9B56",
+     "prompt": "I could investigate for you.",
+     "reply": [
+      "If you think there's anything you can do, be my guest."
+     ],
+     "conditions": "the speaker is Wilhelm; Lifting the Shroud stage == 10; GetItemCount Journal - Wyndelius' == 0",
+     "source": "TIF__000D9B56.Fragment_0 on INFO Skyrim.esm:0D9B56 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:0D9B63 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Investigate Shroud Hearth Barrow",
+    "index": 10,
+    "source": "Skyrim.esm:0D9B63 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFI01JournalAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Journal - Wyndelius'",
+       "kind": "forced reference",
+       "where": [
+        "Shroud Hearth Barrow"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:06CCBB"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Shroud Hearth Barrow",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Bring Wyndelius' Journal to Wilhelm",
+     "index": 20,
+     "source": "Skyrim.esm:0D9B63 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "FreeformIvarstead01 (Lifting the Shroud)",
+      "questId": "Skyrim.esm:0D9B63",
+      "atStage": null,
+      "call": "SetStage 30",
+      "source": "FFI01JournalScript.OnContainerChanged on Skyrim.esm:0D9B63 (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     },
+     {
+      "by": "dialogue",
+      "speaker": "Wilhelm",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Vilemyr Inn, Ivarstead Vilemyr Inn"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:0D9B5E",
+      "prompt": "Actually, you need to take a look at this. (Give journal)",
+      "reply": [
+       "Let me see that!",
+       "...I can't believe this...",
+       "It was all just a fabrication of this Wyndelius character? I can't believe we were so stupid."
+      ],
+      "conditions": "the speaker is Wilhelm; Lifting the Shroud stage >= 10; GetItemCount Journal - Wyndelius' >= 1",
+      "source": "TIF__000D9B5E.Fragment_0 on INFO Skyrim.esm:0D9B5E (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:0D9B64",
+   "edid": "FreeformIvarstead02",
+   "name": "The Straw that Broke",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Narfi",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Ivarstead"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0D9B60",
+     "prompt": "Are you okay?",
+     "reply": [
+      "Reyda was here, then gone. Went to gather plants and never came home... nope, nope.",
+      "Everyone looked and no one could find her. Wilhelm said she'll be back... told Narfi not to worry... Reyda will come back."
+     ],
+     "conditions": "the speaker is Narfi; The Straw that Broke stage == 10",
+     "source": "TIF__000D9B60.Fragment_0 on INFO Skyrim.esm:0D9B60 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:0D9B64 DNAM (Skyrim.esm)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 32,
+   "firstObjective": {
+    "text": "Ask Wilhelm about Reyda",
+    "index": 10,
+    "source": "Skyrim.esm:0D9B64 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFI02WilhelmAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Wilhelm",
+       "kind": "unique actor",
+       "where": [
+        "Vilemyr Inn, Ivarstead Vilemyr Inn"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:013A5C"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Vilemyr Inn, Ivarstead Vilemyr Inn",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "LItemIngredientsRare (levelled: an item)",
+     "stage": 200,
+     "source": "QF_FreeformIvarstead02_000D9B64.fragment_5",
+     "verdict": "script"
+    },
+    {
+     "what": "LItemIngredientsRare (levelled: an item)",
+     "stage": 200,
+     "source": "QF_FreeformIvarstead02_000D9B64.fragment_5",
+     "verdict": "script"
+    },
+    {
+     "what": "LItemIngredientsRare (levelled: an item)",
+     "stage": 200,
+     "source": "QF_FreeformIvarstead02_000D9B64.fragment_5",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Locate Reyda's remains",
+     "index": 20,
+     "source": "Skyrim.esm:0D9B64 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Wilhelm",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Vilemyr Inn, Ivarstead Vilemyr Inn"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:0D9B51",
+      "prompt": "You told Narfi she's coming back?",
+      "reply": [
+       "I just said that to make the poor guy feel better. I'm pretty sure she's dead.",
+       "Reyda would gather ingredients from the small island in the river east of here. Then one day, she just vanished.",
+       "I tried to look for her, but she never turned up."
+      ],
+      "conditions": "the speaker is Wilhelm; The Straw that Broke stage == 20",
+      "source": "TIF__000D9B51.Fragment_0 on INFO Skyrim.esm:0D9B51 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:0D9B65",
+   "edid": "FreeformIvarstead03",
+   "name": "Grin and Bear It",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 10,
+   "startedBy": [
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:0D9B65 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Gather 10 bear pelts for Temba Wide-Arm  (<Global=FFI03BearCount>/<Global=FFI03BearTotal>)",
+    "index": 10,
+    "source": "Skyrim.esm:0D9B65 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "LItemEnchWeaponWarAxe (levelled: an item)",
+     "stage": 200,
+     "source": "QF_FreeformIvarstead03_000D9B65.fragment_3",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Temba Wide-Arm",
+     "index": 20,
+     "source": "Skyrim.esm:0D9B65 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
+  },
+  {
+   "id": "Skyrim.esm:0D9B66",
+   "edid": "FreeformIvarstead04",
+   "name": "Climb the Steps",
+   "plugin": "LoreRim - Dialogue Patch.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Klimmek",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Klimmek's House, Ivarstead Klimmek's House"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0DA705",
+     "prompt": "I could do it for you.",
+     "reply": [
+      "Really? Well, that would be kind of you.",
+      "Here, take this bag of supplies. At the top of the steps you'll see the offering chest. Just leave the bag inside and you're done."
+     ],
+     "conditions": "the speaker is Klimmek; Climb the Steps stage == 10",
+     "source": "TIF__000DA705.Fragment_0 on INFO Skyrim.esm:0DA705 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:0D9B66 DNAM (LoreRim - Dialogue Patch.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Bring Klimmek's supplies to High Hrothgar",
+    "index": 10,
+    "source": "Skyrim.esm:0D9B66 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFI04ChestAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "Chest",
+       "kind": "forced reference",
+       "where": [
+        "High Hrothgar"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0096CD"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "High Hrothgar",
+      "ways": 3,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "CoinPurseGoldMedium (levelled: gold and an item)",
+     "stage": 200,
+     "source": "QF_FreeformIvarstead04_000D9B66.fragment_4",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Klimmek in Ivarstead",
+     "index": 20,
+     "source": "Skyrim.esm:0D9B66 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": null,
+    "movedBy": [],
+    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+   }
+  },
+  {
+   "id": "Skyrim.esm:0E49E7",
+   "edid": "FreeformShorsStone01",
+   "name": "Mine or Yours",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Filnjar",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Filnjar's House"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0E49E6",
+     "prompt": "I'll clear them out for you.",
+     "reply": [
+      "Tell you what. Keep to your word, and I'll line your pockets with as much as I can scrape up."
+     ],
+     "conditions": "the speaker is Filnjar; Mine or Yours stage == 10; global FFSS01Cleared == 0 (now 0)",
+     "source": "TIF__000E49E6.Fragment_0 on INFO Skyrim.esm:0E49E6 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:0E49E7 DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Clear Redbelly Mine of spiders",
+    "index": 10,
+    "source": "Skyrim.esm:0E49E7 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFSS01MarkerAlias",
+     "fill": "forced",
+     "holds": [
+      {
+       "name": "a marker",
+       "kind": "forced reference",
+       "where": [
+        "Redbelly Mine"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:01382E"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Redbelly Mine",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "FavorRewardGoldLarge (levelled: gold)",
+     "stage": 200,
+     "source": "QF_FreeformShorsStone01_000E49E7.fragment_4",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Filnjar",
+     "index": 20,
+     "source": "Skyrim.esm:0E49E7 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "DialogueShorsStone (named \"Dialogue Shor's Stone\" in its record), a helper quest",
+      "questId": "Skyrim.esm:02E11B",
+      "atStage": null,
+      "call": "SetStage 30",
+      "source": "DialogueShorsStoneQuestScript.SpiderCheck on Skyrim.esm:02E11B (AI Overhaul.esp)",
+      "verdict": "script",
+      "throughStartedBy": [
+       {
+        "by": "start game",
+        "source": "Skyrim.esm:02E11B DNAM (AI Overhaul.esp)",
+        "verdict": "files"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:0E49E8",
+   "edid": "FreeformShorsStone02",
+   "name": "Special Delivery",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Sylgja",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Sylgja's House"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0E49A8",
+     "prompt": "Sure, I'll deliver it.",
+     "reply": [
+      "You would? Well then, I would insist on rewarding you for your time.",
+      "Here, take my satchel and give it to my father, Verner. He'll likely have something for you to bring back."
+     ],
+     "conditions": "the speaker is Sylgja; Special Delivery stage == 10",
+     "source": "TIF__000E49A8.Fragment_0 on INFO Skyrim.esm:0E49A8 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:0E49E8 DNAM (Skyrim.esm)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Deliver the satchel to Verner in Darkwater Crossing",
+    "index": 10,
+    "source": "Skyrim.esm:0E49E8 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFSS02VernerAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Verner Rock-Chucker",
+       "kind": "unique actor",
+       "where": [
+        "Verner and Annekke's House, Verner's House"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:013A8C"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Verner and Annekke's House, Verner's House",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Return to Sylgja",
+     "index": 20,
+     "source": "Skyrim.esm:0E49E8 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Verner Rock-Chucker",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Verner and Annekke's House, Verner's House"
+      ],
+      "call": "SetStage 30",
+      "info": "Skyrim.esm:0E49AA",
+      "prompt": "I have a package for you from Sylgja.",
+      "reply": [
+       "It's a shame our daughter couldn't make the journey herself, but at least she still thinks of us.",
+       "If you wouldn't mind bringing this back to her for us, I'd appreciate it."
+      ],
+      "conditions": "the speaker is Verner Rock-Chucker; Special Delivery stage == 20",
+      "source": "TIF__000E49AA.Fragment_0 on INFO Skyrim.esm:0E49AA (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:0E3E9B",
+   "edid": "FreeformMerryfairFarm",
+   "name": "Bow to the Master",
+   "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Dravin Llanith",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Merryfair Farm"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0E3E78",
+     "prompt": "I'll see what I can do.",
+     "reply": [
+      "Thanks. It will be nice to have it back... means a lot to me."
+     ],
+     "conditions": "the speaker is Dravin Llanith; Bow to the Master stage == 15; GetItemCount Dravin's Bow == 0",
+     "source": "TIF__000E3E78.Fragment_0 on INFO Skyrim.esm:0E3E78 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Dravin Llanith",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Merryfair Farm"
+     ],
+     "call": "SetStage 15",
+     "info": "Skyrim.esm:0E3E11",
+     "prompt": "You've had trouble with thieves?",
+     "reply": [
+      "Are you kidding me? We're all alone out here except for a few guards who couldn't give a damn about us.",
+      "We make easy pickings for thieves looking to steal everything we worked so hard for.",
+      "Not only did they take my bow, but they took all of our coin as well. Nothing's sacred to these people."
+     ],
+     "conditions": "the speaker is Dravin Llanith; Bow to the Master stage == 10",
+     "source": "USKP_TIF_FFMerryfairFarm_000E3E11.Fragment_0 on INFO Skyrim.esm:0E3E11 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:0E3E9B DNAM (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Retrieve Dravin's Bow",
+    "index": 10,
+    "source": "Skyrim.esm:0E3E9B QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFMF01BowAlias",
+     "fill": "created",
+     "holds": [
+      {
+       "name": "Dravin's Bow",
+       "kind": "created item",
+       "where": []
+      }
+     ],
+     "cells": []
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "LItemGems (levelled: an item) x5",
+     "stage": 200,
+     "source": "QF_FreeformMerryfairFarm_000E3E9B.fragment_3",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Return Dravin's Bow",
+     "index": 20,
+     "source": "Skyrim.esm:0E3E9B QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "FreeformMerryfairFarm (Bow to the Master)",
+      "questId": "Skyrim.esm:0E3E9B",
+      "atStage": null,
+      "call": "SetStage 30",
+      "source": "FFMF01BowScript.OnContainerChanged on Skyrim.esm:0E3E9B (Unofficial Skyrim Special Edition Patch.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:0E3EA5",
+   "edid": "FreeformHeartwoodMill",
+   "name": "Flight or Fight",
+   "plugin": "Big Tweaks.esp",
+   "firstObjectiveStage": 15,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Grosta",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Heartwood Mill"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0E3E70",
+     "prompt": "I'll try and find him.",
+     "reply": [
+      "Good. If you see him, tell him Grosta said he can go straight to Oblivion... he's not welcome here any more."
+     ],
+     "conditions": "the speaker is Grosta; Flight or Fight stage == 10",
+     "source": "TIF__000E3E70.Fragment_0 on INFO Skyrim.esm:0E3E70 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:0E3EA5 DNAM (Big Tweaks.esp)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 2,
+   "firstObjective": {
+    "text": "Report Leifnarr's death to his family",
+    "index": 5,
+    "source": "Skyrim.esm:0E3EA5 QOBJ 5",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "FFHM01GrostaAlias",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Grosta",
+       "kind": "unique actor",
+       "where": [
+        "Heartwood Mill"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:0161FE"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Heartwood Mill",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "LItemEnchWeaponAnySpecial (levelled: an item)",
+     "stage": 200,
+     "source": "QF_FreeformHeartwoodMill_000E3EA5.fragment_3",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Find Leifnarr",
+     "index": 10,
+     "source": "Skyrim.esm:0E3EA5 QOBJ 10",
+     "verdict": "files"
+    },
+    "stage": 20,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Grosta",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Heartwood Mill"
+      ],
+      "call": "SetStage 20",
+      "info": "Skyrim.esm:0E3E70",
+      "prompt": "I'll try and find him.",
+      "reply": [
+       "Good. If you see him, tell him Grosta said he can go straight to Oblivion... he's not welcome here any more."
+      ],
+      "conditions": "the speaker is Grosta; Flight or Fight stage == 10",
+      "source": "TIF__000E3E70.Fragment_0 on INFO Skyrim.esm:0E3E70 (Skyrim.esm)",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Skyrim.esm:0E3308",
+   "edid": "FreeformSarethiFarm",
+   "name": "Smooth Jazbay",
+   "plugin": "Skyrim.esm",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Avrusa Sarethi",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Sarethi Farm, Sarethi Farm Interior"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:0E3E75",
+     "prompt": "I could help you if you like.",
+     "reply": [
+      "Really? That would be a pleasant change.",
+      "One of the ingredients I need to cultivate nirnroot are jazbay grapes... the acidic content of the juice is perfect for the soil.",
+      "I need twenty of them for my current crop."
+     ],
+     "conditions": "the speaker is Avrusa Sarethi; Smooth Jazbay stage == 10",
+     "source": "TIF__000E3E75.Fragment_0 on INFO Skyrim.esm:0E3E75 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "start game",
+     "source": "Skyrim.esm:0E3308 DNAM (Skyrim.esm)",
+     "verdict": "files"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 1,
+   "firstObjective": {
+    "text": "Find 20 Jazbay (<Global=FFSarethi01JazCount>/<Global=FFSarethi01JazTotal>)",
+    "index": 10,
+    "source": "Skyrim.esm:0E3308 QOBJ 10",
+    "verdict": "files"
+   },
+   "target": [],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": []
+   },
+   "globals": [],
+   "gives": [
+    {
+     "what": "LItemPotionAll (levelled: an item)",
+     "stage": 200,
+     "source": "QF_FreeformSarethiFarm_000E3308.fragment_3",
+     "verdict": "script"
+    },
+    {
+     "what": "LItemPotionAll (levelled: an item)",
+     "stage": 200,
+     "source": "QF_FreeformSarethiFarm_000E3308.fragment_3",
+     "verdict": "script"
+    },
+    {
+     "what": "LItemPotionAll (levelled: an item)",
+     "stage": 200,
+     "source": "QF_FreeformSarethiFarm_000E3308.fragment_3",
+     "verdict": "script"
+    },
+    {
+     "what": "LItemPotionAll (levelled: an item)",
+     "stage": 200,
+     "source": "QF_FreeformSarethiFarm_000E3308.fragment_3",
+     "verdict": "script"
+    },
+    {
+     "what": "LItemPotionAll (levelled: an item)",
+     "stage": 200,
+     "source": "QF_FreeformSarethiFarm_000E3308.fragment_3",
+     "verdict": "script"
+    }
+   ],
+   "secondStep": {
+    "objective": {
+     "text": "Bring the Jazbay to Avrusa Sarethi",
+     "index": 20,
+     "source": "Skyrim.esm:0E3308 QOBJ 20",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "FreeformSarethiFarm (Smooth Jazbay)",
+      "questId": "Skyrim.esm:0E3308",
+      "atStage": null,
+      "call": "SetStage 30",
+      "source": "FFSareth01QuestScript.GrapesCounted on Skyrim.esm:0E3308 (Skyrim.esm)",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "FreeformSarethiFarm (Smooth Jazbay)",
+      "questId": "Skyrim.esm:0E3308",
+      "atStage": null,
+      "call": "SetStage 30",
+      "source": "FFS01PlayerScript.OnItemAdded on Skyrim.esm:0E3308 (Skyrim.esm), through FreeformSarethiFarm (Smooth Jazbay)'s grapescounted",
+      "verdict": "script"
+     },
+     {
+      "by": "quest script",
+      "quest": "FreeformSarethiFarm (Smooth Jazbay)",
+      "questId": "Skyrim.esm:0E3308",
+      "atStage": null,
+      "call": "SetStage 30",
+      "source": "FFS01PlayerScript.OnItemRemoved on Skyrim.esm:0E3308 (Skyrim.esm), through FreeformSarethiFarm (Smooth Jazbay)'s grapescounted",
+      "verdict": "script"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Caught Red Handed - Quest Expansion.esp:000802",
+   "edid": "FreeformRiften11b",
+   "name": "A Strong Nord Woman",
+   "plugin": "Caught Red Handed - Quest Expansion.esp",
+   "firstObjectiveStage": 20,
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": "Svana Far-Shield",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Haelga's Bunkhouse"
+     ],
+     "call": "Start",
+     "info": "Skyrim.esm:041E36",
+     "prompt": "Do you work here?",
+     "reply": [
+      "Work? I suppose you can call it that. I call it slavery. I work my fingers to the bone keeping this disgusting place clean.",
+      "Ever since my parents died and Haelga took me in, it's been a nightmare. How was I to know she was such a wretched woman?",
+      "So now I'm stuck living here while those pigs she calls customers grope me and say the most awful things."
+     ],
+     "conditions": "the speaker is Svana Far-Shield; fn230 == 0",
+     "source": "Svana_KickstartQuest.Fragment_0 on INFO Skyrim.esm:041E36 (NGCDT - Caught Red Handed - QE Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Svana Far-Shield",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Haelga's Bunkhouse"
+     ],
+     "call": "SetStage 20",
+     "info": "Caught Red Handed - Quest Expansion.esp:000808",
+     "prompt": "Perhaps I can \"talk\" to them for you...",
+     "reply": [
+      "You would? Well...I-It's Tythis. He... He's the worst! Make it hurt, but not too much. No killing, okay?"
+     ],
+     "conditions": "fn629 == 1; the speaker is Svana Far-Shield",
+     "source": "TalkToSillyTythis.Fragment_0 on INFO Caught Red Handed - Quest Expansion.esp:000808 (Caught Red Handed - Quest Expansion.esp)",
+     "verdict": "script"
+    }
+   ],
+   "caughtUpBy": [],
+   "advancedBy": 7,
+   "firstObjective": {
+    "text": "Talk to Tythis",
+    "index": 20,
+    "source": "Caught Red Handed - Quest Expansion.esp:000802 QOBJ 20",
+    "verdict": "files"
+   },
+   "target": [
+    {
+     "alias": "Tythis11b",
+     "fill": "unique",
+     "holds": [
+      {
+       "name": "Tythis Ulen",
+       "kind": "unique actor",
+       "where": [
+        "Haelga's Bunkhouse"
+       ]
+      }
+     ],
+     "cells": [
+      "Skyrim.esm:016BD4"
+     ]
+    }
+   ],
+   "needs": {
+    "conditions": null,
+    "doors": [],
+    "ways": [
+     {
+      "cell": "Haelga's Bunkhouse",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
+   },
+   "globals": [],
+   "gives": [],
+   "secondStep": {
+    "objective": {
+     "text": "Win the brawl against Tythis",
+     "index": 30,
+     "source": "Caught Red Handed - Quest Expansion.esp:000802 QOBJ 30",
+     "verdict": "files"
+    },
+    "stage": 30,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Tythis Ulen",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "Haelga's Bunkhouse"
+      ],
+      "call": "SetStage 30",
+      "info": "Caught Red Handed - Quest Expansion.esp:000813",
+      "prompt": "You asked for it. Time to teach you a lesson. (Brawl)",
+      "reply": [
+       "I don't have to take that from you!"
+      ],
+      "conditions": "the speaker is Tythis Ulen; A Strong Nord Woman stage == 20 or A Strong Nord Woman stage == 30",
+      "source": "tythis_brawl.Fragment_3 on INFO Caught Red Handed - Quest Expansion.esp:000813 (Caught Red Handed - Quest Expansion.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
+  }
+ ],
+ "notInRawQuests": [],
+ "starts": [
+  {
+   "start": "Regular (Inn)",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "The Bannered Mare",
+     "quest": "AlternatePerspective.esp:3271C8",
+     "questEdid": "APS_InnWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnWhiterun scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Bee and Barb",
+     "quest": "AlternatePerspective.esp:3457D0",
+     "questEdid": "APS_InnRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Winking Skeever",
+     "quest": "AlternatePerspective.esp:3457D2",
+     "questEdid": "APS_InnSolitude",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnSolitude scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Silver-Blood Inn",
+     "quest": "AlternatePerspective.esp:3457D4",
+     "questEdid": "APS_InnMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnMarkarth scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Candlehearth Hall",
+     "quest": "AlternatePerspective.esp:3457D6",
+     "questEdid": "APS_InnWindhelm",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnWindhelm scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dead Man's Drink",
+     "quest": "AlternatePerspective.esp:3457D9",
+     "questEdid": "APS_InnFalkreath",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnFalkreath scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Moorside Inn",
+     "quest": "AlternatePerspective.esp:3457DD",
+     "questEdid": "APS_InnMorthal",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnMorthal scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Frozen Hearth",
+     "quest": "AlternatePerspective.esp:3457DF",
+     "questEdid": "APS_InnWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnWinterhold scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Windpeak Inn",
+     "quest": "AlternatePerspective.esp:3457E0",
+     "questEdid": "APS_InnDawnstar",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Retching Netch",
+     "quest": "AlternatePerspective.esp:34A8E2",
+     "questEdid": "APS_InnRavenRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRavenRock scripts (Alternate Perspective - Gate to Sovngarde Edition.esp)"
+    },
+    {
+     "option": "The Sleeping Giant Inn",
+     "quest": "AlternatePerspective.esp:34A8E3",
+     "questEdid": "APS_InnRiverwood",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRiverwood scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Frostfruit Inn",
+     "quest": "AlternatePerspective.esp:34A8E4",
+     "questEdid": "APS_InnRorikstead",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnRorikstead scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Vilemyr Inn",
+     "quest": "AlternatePerspective.esp:34A8E5",
+     "questEdid": "APS_InnIvarstead",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnIvarstead scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Old Hroldan Inn",
+     "quest": "AlternatePerspective.esp:34A8E6",
+     "questEdid": "APS_InnOldHroldan",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnOldHroldan scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Four Shields Tavern",
+     "quest": "AlternatePerspective.esp:34A8E7",
+     "questEdid": "APS_InnDragonbridge",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnDragonbridge scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Nightgate Inn",
+     "quest": "AlternatePerspective.esp:34A8E8",
+     "questEdid": "APS_InnNightgate",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnNightgate scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Braidwood Inn",
+     "quest": "AlternatePerspective.esp:34A8E9",
+     "questEdid": "APS_InnKynesgrove",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_InnKynesgrove scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "From Overseas",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "East Empire Trading Company",
+     "quest": "AlternatePerspective.esp:34F9EC",
+     "questEdid": "APS_DocksSolitude",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksSolitude scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Windhelm Docks",
+     "quest": "AlternatePerspective.esp:34F9EE",
+     "questEdid": "APS_DocksWindhelm",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksWindhelm scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dawnstar's Shore",
+     "quest": "AlternatePerspective.esp:34F9ED",
+     "questEdid": "APS_DocksDawnstar",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Raven Rock Docks",
+     "quest": "AlternatePerspective.esp:34F9F0",
+     "questEdid": "APS_DocksRavenRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_DocksRavenRock scripts (Alternate Perspective - Gate to Sovngarde Edition.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Wanted Criminal",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Whiterun",
+     "quest": "AlternatePerspective.esp:34FA14",
+     "questEdid": "APS_WantedTPWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPWhiterun scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AlternatePerspective.esp:34FA15",
+     "questEdid": "APS_WantedTPRRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPRRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AlternatePerspective.esp:34FA1B",
+     "questEdid": "APS_WantedTPRDawnstar",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPRDawnstar scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AlternatePerspective.esp:34FA25",
+     "questEdid": "APS_WantedTPWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_WantedTPWinterhold scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Left for Dead",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "The Rift",
+     "quest": "AlternatePerspective.esp:34FA27",
+     "questEdid": "APS_LeftForDeadRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_LeftForDeadRiften scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AlternatePerspective.esp:34FA29",
+     "questEdid": "APS_LeftForDeadMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_LeftForDeadMarkarth scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AlternatePerspective.esp:34FA20",
+     "questEdid": "APS_LeftForDeadWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_LeftForDeadWinterhold scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Forsworn",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Forsworn",
+     "quest": "AlternatePerspective.esp:46649F",
+     "questEdid": "APS_Forsworn",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_Forsworn scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Guilds",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "College of Winterhold",
+     "quest": "AlternatePerspective.esp:3D36E6",
+     "questEdid": "APS_GuildMages",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildMages scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Thieves Guild",
+     "quest": "AlternatePerspective.esp:3CE5E5",
+     "questEdid": "APS_GuildThievesguild",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildThievesguild scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Dark Brotherhood",
+     "quest": "AlternatePerspective.esp:3D36E7",
+     "questEdid": "APS_GuildBrotherhood",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildBrotherhood scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Companions",
+     "quest": "AlternatePerspective.esp:3D36E8",
+     "questEdid": "APS_GuildCompanions",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "APS_GuildCompanions scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Dragonborn",
+   "from": "Alternate Perspective",
+   "options": [
+    {
+     "option": "Helgen Keep (Start)",
+     "quest": "AlternatePerspective.esp:47F943",
+     "questEdid": "APS_MQSkipKeep",
+     "mainQuestRuns": "no",
+     "moves": [
+      "MQ101 SetStage 6",
+      "MQ101 SetStage 7"
+     ],
+     "source": "APS_MQSkipKeep scripts (AlternatePerspective.esp)"
+    },
+    {
+     "option": "Helgen Keep (End)",
+     "quest": "AlternatePerspective.esp:484A45",
+     "questEdid": "APS_MQSkipKeepEnd",
+     "mainQuestRuns": "no",
+     "moves": [
+      "MQ101 SetStage 250",
+      "MQ101 SetStage 550",
+      "MQ101 SetStage 700",
+      "MQ101 SetStage 710",
+      "MQ101 SetStage 720",
+      "MQ101 SetStage 725"
+     ],
+     "source": "APS_MQSkipKeepEnd scripts (AlternatePerspective.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Addict",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Addict",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000800",
+     "questEdid": "AFLOLALAddictQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAddictQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Dwemer Ruin",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Dwemer Ruin",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00081C",
+     "questEdid": "AFLOLALAdventureQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAdventureQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Alchemist",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Alchemist",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00080A",
+     "questEdid": "AFLOLALAlchemistQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAlchemistQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "At Angis Camp",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "At Angis Camp",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000858",
+     "questEdid": "AFLOLALAngiQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAngiQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Beggar",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Riften",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00085F",
+     "questEdid": "AFLOAP_BeggarRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BeggarRiften scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Markarth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000860",
+     "questEdid": "AFLOAP_BeggarMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BeggarMarkarth scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Jailed",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000861",
+     "questEdid": "AFLOAP_JailWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailWhiterun scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000869",
+     "questEdid": "AFLOAP_JailRift",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailRift scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Eastmarch",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000862",
+     "questEdid": "AFLOAP_JailEastmarch",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailEastmarch scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Haarfinger",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000864",
+     "questEdid": "AFLOAP_JailHaarfinger",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailHaarfinger scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000868",
+     "questEdid": "AFLOAP_JailReach",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailReach scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000863",
+     "questEdid": "AFLOAP_JailFalkreath",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailFalkreath scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hjaalmach",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000865",
+     "questEdid": "AFLOAP_JailHjaalmach",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailHjaalmach scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000866",
+     "questEdid": "AFLOAP_JailPale",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailPale scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086A",
+     "questEdid": "AFLOAP_JailWinterhold",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailWinterhold scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Raven Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000867",
+     "questEdid": "AFLOAP_JailRavenRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_JailRavenRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Mercenary",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Cyrodiil",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086B",
+     "questEdid": "AFLOAP_BorderMercenaryCyrodill",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryCyrodill scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hammerfell",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086C",
+     "questEdid": "AFLOAP_BorderMercenaryHammerfell",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryHammerfell scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "High Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086D",
+     "questEdid": "AFLOAP_BorderMercenaryHighRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryHighRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Northern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086E",
+     "questEdid": "AFLOAP_BorderMercenaryNorthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenaryNorthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Southern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00086F",
+     "questEdid": "AFLOAP_BorderMercenarySouthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMercenarySouthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Merchant",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Cyrodiil",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000870",
+     "questEdid": "AFLOAP_BorderMerchantCyrodill",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantCyrodill scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hammerfell",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000871",
+     "questEdid": "AFLOAP_BorderMerchantHammerfell",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantHammerfell scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "High Rock",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000872",
+     "questEdid": "AFLOAP_BorderMerchantHighRock",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantHighRock scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Northern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000873",
+     "questEdid": "AFLOAP_BorderMerchantNorthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantNorthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Southern Morrowind",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000874",
+     "questEdid": "AFLOAP_BorderMerchantSouthernMorrorwind",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_BorderMerchantSouthernMorrorwind scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Pilgrim (Shrine)",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Shrine of Azura",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083C",
+     "questEdid": "AFLOLALAzuraQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALAzuraQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Boethiah",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083A",
+     "questEdid": "AFLOLALBoethiahQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALBoethiahQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Mehrunes Dagon",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000842",
+     "questEdid": "AFLOLALDagonQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALDagonQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "The Eldergleam Sanctuary",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000838",
+     "questEdid": "AFLOLALEldergleamQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALEldergleamQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Statue of Meridia",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000840",
+     "questEdid": "AFLOLALMeridiaQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALMeridiaQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Shrine of Peryite",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00083E",
+     "questEdid": "AFLOLALPeryiteQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALPeryiteQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Stendarr's Beacon",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000835",
+     "questEdid": "AFLOLALStendarrQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALStendarrQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Hall of the Vigilant",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000881",
+     "questEdid": "AFLOAP_StendarrHall",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_StendarrHall scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Pilgrim (Temple)",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Temple of the Divines",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000876",
+     "questEdid": "AFLOAP_TempleDivine",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleDivine scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Dibella",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000875",
+     "questEdid": "AFLOAP_TempleDibella",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleDibella scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Kynareth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000877",
+     "questEdid": "AFLOAP_TempleKynareth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleKynareth scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Mara",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000878",
+     "questEdid": "AFLOAP_TempleMara",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleMara scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Temple of Talos",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000879",
+     "questEdid": "AFLOAP_TempleTalos",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_TempleTalos scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Thalmor Prisoner",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Thalmor Prisoner",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000829",
+     "questEdid": "AFLOLALThalmorQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALThalmorQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Vampire",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Random",
+     "quest": "Alternate Perspective -- New Beginnings.esp:000000",
+     "questEdid": null,
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "Alternate Perspective -- New Beginnings.esp:000000 isn't a quest in the records"
+    },
+    {
+     "option": "Solitude",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087D",
+     "questEdid": "AFLOAP_VampireSolitude",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireSolitude scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087A",
+     "questEdid": "AFLOAP_VampireFalkreath",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireFalkreath scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087E",
+     "questEdid": "AFLOAP_VampireWhiterun",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireWhiterun scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Riften",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087C",
+     "questEdid": "AFLOAP_VampireRiften",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireRiften scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Windhelm",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087F",
+     "questEdid": "AFLOAP_VampireWindhelm",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireWindhelm scripts (Alternate Perspective -- New Beginnings.esp)"
+    },
+    {
+     "option": "Markarth",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00087B",
+     "questEdid": "AFLOAP_VampireMarkarth",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOAP_VampireMarkarth scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Werewolf",
+   "from": "New Beginnings",
+   "options": [
+    {
+     "option": "Werewolf",
+     "quest": "Alternate Perspective -- New Beginnings.esp:00081F",
+     "questEdid": "AFLOLALWerewolfQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "AFLOLALWerewolfQuest scripts (Alternate Perspective -- New Beginnings.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Roadside Ambush",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:000018",
+     "questEdid": "MissileAPAmbushStartEastmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartEastmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:000021",
+     "questEdid": "MissileAPAmbushStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:00001B",
+     "questEdid": "MissileAPAmbushStartHjaalmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:00001A",
+     "questEdid": "MissileAPAmbushStartFalkreathQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:00002D",
+     "questEdid": "MissileAPAmbushStartPaleQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:000033",
+     "questEdid": "MissileAPAmbushStartReachQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000027",
+     "questEdid": "MissileAPAmbushStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:000019",
+     "questEdid": "MissileAPAmbushStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPAmbushStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Fell in a Spike Pit",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Fell in a Spike Pit",
+     "quest": "AP - Missile Additional Starts.esp:000039",
+     "questEdid": "MissileAPFellInAPitQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPFellInAPitQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Bounty Hunter",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:00004C",
+     "questEdid": "MissileAPBountyHunterStartEastmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartEastmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:000058",
+     "questEdid": "MissileAPBountyHunterStartFalkreathQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:00005C",
+     "questEdid": "MissileAPBountyHunterStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:000048",
+     "questEdid": "MissileAPBountyHunterStartHjaalmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000050",
+     "questEdid": "MissileAPBountyHunterStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:00003F",
+     "questEdid": "MissileAPBountyHunterStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AP - Missile Additional Starts.esp:000054",
+     "questEdid": "MissileAPBountyHunterStartWinterholdQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBountyHunterStartWinterholdQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Prisoner in a Bandit Fort",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:000086",
+     "questEdid": "MissileAPBanditPrisonerStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:00007B",
+     "questEdid": "MissileAPBanditPrisonerStartPaleQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:00008D",
+     "questEdid": "MissileAPBanditPrisonerStartReachQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:000081",
+     "questEdid": "MissileAPBanditPrisonerStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:000073",
+     "questEdid": "MissileAPBanditPrisonerStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPBanditPrisonerStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  },
+  {
+   "start": "Out in the Wilderness",
+   "from": "Adventurer's Start",
+   "options": [
+    {
+     "option": "Eastmarch",
+     "quest": "AP - Missile Additional Starts.esp:0000D8",
+     "questEdid": "MissileAPOutInTheWildernessStartEastmarchQuestDUPLICATE001",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartEastmarchQuestDUPLICATE001 scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Falkreath",
+     "quest": "AP - Missile Additional Starts.esp:0000CE",
+     "questEdid": "MissileAPOutInTheWildernessStartFalkreathQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartFalkreathQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Haafingar",
+     "quest": "AP - Missile Additional Starts.esp:0000D2",
+     "questEdid": "MissileAPOutInTheWildernessStartHaafingarQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartHaafingarQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Hjaalmarch",
+     "quest": "AP - Missile Additional Starts.esp:0000D4",
+     "questEdid": "MissileAPOutInTheWildernessStartHjaalmarchQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartHjaalmarchQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Pale",
+     "quest": "AP - Missile Additional Starts.esp:0000DA",
+     "questEdid": "MissileAPOutInTheWildernessStartPaleQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartPaleQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Reach",
+     "quest": "AP - Missile Additional Starts.esp:0000D0",
+     "questEdid": "MissileAPOutInTheWildernessStartReachQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartReachQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "The Rift",
+     "quest": "AP - Missile Additional Starts.esp:0000CB",
+     "questEdid": "MissileAPOutInTheWildernessStartRiftQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartRiftQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Whiterun",
+     "quest": "AP - Missile Additional Starts.esp:0000C8",
+     "questEdid": "MissileAPOutInTheWildernessStartWhiterunQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartWhiterunQuest scripts (AP - Missile Additional Starts.esp)"
+    },
+    {
+     "option": "Winterhold",
+     "quest": "AP - Missile Additional Starts.esp:0000D6",
+     "questEdid": "MissileAPOutInTheWildernessStartWinterholdQuest",
+     "mainQuestRuns": "no",
+     "moves": [],
+     "source": "MissileAPOutInTheWildernessStartWinterholdQuest scripts (AP - Missile Additional Starts.esp)"
+    }
+   ]
+  }
+ ],
+ "otherStarts": "To get into Odd jobs in the Rift: The Lover's Requital is running from the start: Discover Svidi's whereabouts; or talk to Wilhelm in Vilemyr Inn, Ivarstead Vilemyr Inn: Under the Table is running from the start (Deliver Mead to Wilhelm); or Few and Far Between is running from the start: Find 20 nirnroot for Ingun Black-Briar (<Global=FFR04NirnCount>/<Global=FFR04NirnTotal>); or Sealing the Deal is running from the start: Get 3 flawless amethysts for Talen-Jei (<Global=FFRiften06Found>/<Global=FFRiften06Total>); or Ice Cold is running from the start: Find 5 Ice Wraith Teeth for Marise (<Global=FFR07TeethCount>/<Global=FFR07TeethTotal>); or talk to Waterlogged Chest in Pride of Tel Vos: Distant Memories is running from the start (Locate a clue about Brand-Shei's past); or Stoking the Flames is running from the start: Collect 10 fire salts for Balimund (<Global=FFR10SaltCount>/<Global=FFR10SaltTotal>); or talk to Bolli in Bolli's House: Caught Red Handed is running from the start (Obtain a Mark of Dibella from Bolli, a Riften fisherman); or Helping Hand is running from the start: Give Wujeeta a healing potion; or talk to Andurs in Hall of the Dead: Pilgrimage is running from the start (Bring Alessandra's Dagger to Andurs in Whiterun); or talk to Wylandriah's Spoon: Hunt and Gather is running from the start (Retrieve Wylandriah's Spoon); or talk to Kleppr in Silver-Blood Inn: Special Delivery is running from the start (Deliver the purchase agreement to Kleppr in Markarth); or talk to Balimund in The Scorched Hammer, Blacksmith: Bring It! is running from the start (Pick up Harrald's Sword from Balimund); or talk to Filnjar in Filnjar's House: Truth Ore Consequences is running from the start (Obtain Ore Sample from Filnjar); or Ringmaker is running from the start: Find 2 flawless sapphires for Madesi (<Global=FFR18GemCount>/<Global=FFR18GemTotal>); or talk to Hofgrir Horse-Crusher in Riften Stables: Bloody Nose is running from the start (Defeat Hofgrir in an unarmed brawl); or talk to Sapphire in Riften: Stabilized is running from the start (Speak to Sapphire about Shadr's debt); or talk to Journal - Wyndelius' in Shroud Hearth Barrow: Lifting the Shroud is running from the start (Investigate Shroud Hearth Barrow); or talk to Wilhelm in Vilemyr Inn, Ivarstead Vilemyr Inn: The Straw that Broke is running from the start (Ask Wilhelm about Reyda); or Grin and Bear It is running from the start: Gather 10 bear pelts for Temba Wide-Arm  (<Global=FFI03BearCount>/<Global=FFI03BearTotal>); or talk to Chest in High Hrothgar: Climb the Steps is running from the start (Bring Klimmek's supplies to High Hrothgar); or talk to a marker in Redbelly Mine: Mine or Yours is running from the start (Clear Redbelly Mine of spiders); or talk to Verner Rock-Chucker in Verner and Annekke's House, Verner's House: Special Delivery is running from the start (Deliver the satchel to Verner in Darkwater Crossing); or talk to Dravin's Bow: Bow to the Master is running from the start (Retrieve Dravin's Bow); or talk to Grosta in Heartwood Mill: Flight or Fight is running from the start (Report Leifnarr's death to his family); or Smooth Jazbay is running from the start: Find 20 Jazbay (<Global=FFSarethi01JazCount>/<Global=FFSarethi01JazTotal>).",
+ "routes": [],
+ "loaders": {
+  "Wyrmstooth": {
+   "quest": "Wyrmstooth.esp:AC1487",
+   "script": "WT_MCMScript",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
+   "winnerParent": "MCM_ConfigBase",
+   "readsSettings": true
+  },
+  "TimingIsEverything": {
+   "quest": "TimingIsEverything.esp:005E3B",
+   "script": "TIE_MCMScript",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
+   "winnerParent": "SKI_ConfigBase",
+   "readsSettings": false
+  }
+ },
+ "payoff": [
+  {
+   "quest": "Dragonslayer",
+   "edid": "MQ305",
+   "completingStages": [
+    200
+   ],
+   "gives": []
+  },
+  {
+   "quest": "Paarthurnax",
+   "edid": "MQPaarthurnax",
+   "completingStages": [
+    99,
+    100
+   ],
+   "gives": []
+  }
+ ],
+ "questions": [
+  {
+   "question": "Is Skyrim.esm:0242BA MQ105, and is stage 160 the one that completes it?",
+   "edid": "MQ105",
+   "name": "The Way of the Voice",
+   "completingStages": [
+    160
+   ],
+   "answer": "Yes: Skyrim.esm:0242BA is MQ105 (The Way of the Voice), and stage 160 is its only completing stage."
+  },
+  {
+   "question": "Who starts The Horn of Jurgen Windcaller, and where?",
+   "quest": null,
+   "startedBy": [],
+   "target": null,
+   "firstObjective": null
+  },
+  {
+   "question": "Does Dragonborn's cultist node read Timing is Everything's level (25 in its settings.ini), or something else?",
+   "quest": "DLC2CultistAmbush (Dragonborn.esm:03546D)",
+   "nodes": [
+    {
+     "node": "DLC2CultistAmbushNode001",
+     "id": "Dragonborn.esm:035472",
+     "plugin": "LoreRim - Global Modifiers.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode002",
+     "id": "TimingIsEverything.esp:00E53C",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode003",
+     "id": "TimingIsEverything.esp:00E53D",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode004",
+     "id": "TimingIsEverything.esp:00E53E",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode005",
+     "id": "TimingIsEverything.esp:00E53F",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode006",
+     "id": "TimingIsEverything.esp:00E540",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode007",
+     "id": "TimingIsEverything.esp:00E541",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode008",
+     "id": "TimingIsEverything.esp:00E542",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    },
+    {
+     "node": "DLC2CultistAmbushNode000",
+     "id": "TimingIsEverything.esp:00E543",
+     "plugin": "TimingIsEverything.esp",
+     "event": "change location",
+     "globals": [
+      {
+       "id": "TimingIsEverything.esp:00E53B",
+       "edid": "DLC2CultistAttackMinLevel_KRY",
+       "record": 25.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_MinimumLevel:Dragonborn",
+         "value": "25",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 25.0,
+       "verdict": "files"
+      },
+      {
+       "id": "TimingIsEverything.esp:00E53A",
+       "edid": "DLC2QuestStartSelection_KRY",
+       "record": 1.0,
+       "recordFrom": "TimingIsEverything.esp",
+       "runtime": [],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuest:Dragonborn",
+         "value": "1",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        },
+        {
+         "mod": "TimingIsEverything",
+         "key": "iStartingQuestRandomID:Dragonborn",
+         "value": "0",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "value": 1.0,
+       "verdict": "conflict"
+      },
+      {
+       "id": "Dragonborn.esm:033C24",
+       "edid": "DLC2WE09Chance",
+       "record": 0.0,
+       "recordFrom": "LoreRim - Global Modifiers.esp",
+       "recordWas": {
+        "value": 100.0,
+        "from": "Dragonborn.esm"
+       },
+       "runtime": [
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2WE09_020331C0",
+         "function": "fragment_5",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "DLC2_QF_DLC2CultistAmbush_0203546D",
+         "function": "fragment_0",
+         "value": 5
+        },
+        {
+         "by": "script",
+         "script": "EE_MCMScript",
+         "function": "OnOptionSliderAccept",
+         "value": null
+        }
+       ],
+       "settingsNotRead": [
+        {
+         "mod": "TimingIsEverything",
+         "key": "iTIE_CultistAttackChance:Dragonborn",
+         "value": "5",
+         "from": "settings.ini in Timing is Everything SE - Settings Loader",
+         "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+        }
+       ],
+       "verdict": "run time",
+       "value": 0.0
+      }
+     ],
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+    }
+   ],
+   "tieSetting": {
+    "key": "iTIE_MinimumLevel:Dragonborn",
+    "value": "25",
+    "from": "settings.ini in Timing is Everything SE - Settings Loader"
+   }
+  }
+ ],
+ "timingIsEverything": {
+  "loaderInstalled": true,
+  "loaderFolder": "Timing is Everything SE - Settings Loader",
+  "script": {
+   "quest": "TimingIsEverything.esp:005E3B",
+   "script": "TIE_MCMScript",
+   "winner": "C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex",
+   "winnerParent": "SKI_ConfigBase",
+   "readsSettings": false
+  },
+  "dragonbornLevel": {
+   "key": "iTIE_MinimumLevel:Dragonborn",
+   "value": "25",
+   "from": "settings.ini in Timing is Everything SE - Settings Loader",
+   "globals": [
+    {
+     "id": "TimingIsEverything.esp:00E53B",
+     "edid": "DLC2CultistAttackMinLevel_KRY",
+     "record": 25.0,
+     "recordFrom": "TimingIsEverything.esp",
+     "runtime": [],
+     "settingsNotRead": [
+      {
+       "mod": "TimingIsEverything",
+       "key": "iTIE_MinimumLevel:Dragonborn",
+       "value": "25",
+       "from": "settings.ini in Timing is Everything SE - Settings Loader",
+       "why": "the winning TIE_MCMScript (C:/LoreRim\\mods\\[LoreRim] - SPID Files and Script Overwrites\\scripts\\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it"
+      }
+     ],
+     "value": 25.0,
+     "verdict": "files",
+     "global": "TimingIsEverything.esp:00E53B"
+    }
+   ]
+  }
+ },
+ "wyrmstooth": {
+  "loaderInstalled": true,
+  "loaderFolder": "Wyrmstooth - Settings Loader",
+  "global": "Wyrmstooth.esp:AC356A",
+  "fact": {
+   "id": "Wyrmstooth.esp:AC356A",
+   "edid": "WTStartLevel",
+   "record": 20.0,
+   "recordFrom": "Requiem - Wyrmstooth.esp",
+   "recordWas": {
+    "value": 10.0,
+    "from": "Wyrmstooth.esp"
+   },
+   "runtime": [
+    {
+     "by": "settings loader",
+     "mod": "Wyrmstooth",
+     "key": "iWTGeneralRequirementsMinimalLevel:Requirements",
+     "value": "10",
+     "from": "settings.ini in Wyrmstooth - Settings Loader",
+     "script": "WT_MCMScript.OnSettingChange"
+    }
+   ],
+   "verdict": "run time",
+   "value": "10"
+  },
+  "loaderQuest": {
+   "quest": "Wyrmstooth.esp:AC1487",
+   "script": "WT_MCMScript",
+   "winner": "C:/LoreRim\\mods\\Wyrmstooth - Settings Loader\\Scripts\\WT_MCMScript.pex",
+   "winnerParent": "MCM_ConfigBase",
+   "readsSettings": true
+  },
+  "newGame": {
+   "value": 10,
+   "why": [
+    "OnConfigInit runs once when the menu registers in a new game; it sets `migrated` and calls LoadSettings, which goes on only while bEnabled:Maintenance is set (it is 1) and then calls Load, which reads iWTGeneralRequirementsMinimalLevel:Requirements (10, settings.ini in Wyrmstooth - Settings Loader) and sets WTStartLevel to it",
+    "MigrateToMCMHelper, which would copy the global's record value (20.0) into that setting, runs only from OnGameReload or OnConfigOpen while `migrated` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would)",
+    "OnGameReload reloads the settings only when bLoadSettingsonReload:Maintenance is set; it is 0, so later loads keep whatever the global holds"
+   ],
+   "verdict": "run time"
+  }
+ },
+ "missingScripts": [
+  "AAS_PlayerScript",
+  "ACFH_TIF__03000B2B",
+  "ACFH_TIF__03000B6B",
+  "BGSSSE010_OnReadSetStageAlias",
+  "BaanMalurCarriageScript",
+  "HLIO_TIF__0598299C",
+  "JR0_QF_JRLucienCCSaintsAndSed_07000800",
+  "JR_TIF__05172482",
+  "JR_TIF__05172488",
+  "ParryManagerQuestScript",
+  "QF_DLCDwarvenPuzzleDungeonQu_050038D9",
+  "QF_HRI_Events_Quest_WEWerebe_0402904A",
+  "QF_SOMRRumoursQuest_0721AE15",
+  "QF_ccBGSSSE001_Crab_MQ1_050009D4",
+  "QF_ccBGSSSE001_Crab_MQ2_050009DA",
+  "QF_ccBGSSSE001_Crab_MQ3_050009D6",
+  "QF_ccBGSSSE001_Fish_MQ1_050009DE",
+  "QF_ccBGSSSE001_Fish_MQ2_050009EB",
+  "QF_ccBGSSSE001_Fish_MQ3_050009E8",
+  "QF_ccBGSSSE001_Fish_MQ4_050009DD",
+  "QF_ccBGSSSE001_Fish_MQ5_050009DC",
+  "QF_ccBGSSSE001_MiscQuests_050009E6",
+  "QF_ccBGSSSE001_Misc_Falkreat_050009EC",
+  "QF_ccBGSSSE001_Misc_Khajiit_050009E2",
+  "QF_ccBGSSSE001_Misc_Markarth_050009DF",
+  "QF_ccBGSSSE001_Misc_Morthal_050009E4",
+  "QF_ccBGSSSE001_Misc_Solitude_050009E3",
+  "QF_ccBGSSSE001_Misc_Whiterun_050009D7",
+  "QF_ccBGSSSE001_Misc_Whiterun_05000E5D",
+  "QF_ccBGSSSE001_Misc_Windhelm_050009D5",
+  "QF_ccBGSSSE001_Radiant_1_05000B98",
+  "QF_ccBGSSSE001_Radiant_2_05000C2F",
+  "QF_ccBGSSSE001_Radiant_3_05000C8C",
+  "QF_ccBGSSSE001_Start_MQ1_050009D3",
+  "QF_ccBGSSSE001_Start_MQ2_050009DB",
+  "QF_ccBGSSSE010_PetPurchaseQu_02000808",
+  "QF_ccBGSSSE025_ElytraPetAcqu_050010C3",
+  "QF_ccBGSSSE025_RareCuriosInt_050010C1",
+  "QF_ccBGSSSE035_PetAcquireQue_0400080A",
+  "SSE_TIF__020008AA",
+  "SSE_ccBGSSSE037_RareCurios_0100084D",
+  "SilgradCarriageScript",
+  "SkyInteract_PlayerLoadGameAlias",
+  "Survival_PlayerHitInfo",
+  "Survival_PlayerLocationInfo",
+  "Survival_ThirstPlayerAlias",
+  "Survival_VampirismLycanthropy",
+  "TIF__020458BA",
+  "TIF__023943AB",
+  "TIF__03000976",
+  "TIF__03000D75",
+  "TIF__04138034",
+  "TIF__08005903",
+  "TIF_ccBGSSSE025_StaadaFrag",
+  "TIF_ccBGSSSE025_StaadaFrag2",
+  "TIF_ccBGSSSE025_StaadaFrag3",
+  "TIF_ccBGSSSE025_StaadaFragA",
+  "TIF_ccBGSSSE025_StaadaFrgF",
+  "Traits_ElementalistPlayerScript",
+  "VS02_QF_ccVSVSSE002_MainQuest_050008C8",
+  "aaCi_TIF__0501F5BC",
+  "aaEl_QF_aaElisifUpdate0108_05014EF5",
+  "aaaVampireFeedingContractScriptB",
+  "aaaVampireFeedingRemoveAlias",
+  "ccASVSSE001_KillFollowerCheck",
+  "ccASVSSE001_OnHitStageSetScript",
+  "ccASVSSE001_SetStageonActivateScript",
+  "ccASVSSE001_TIF__05000DFC",
+  "ccASVSSE001_TIF__05000E04",
+  "ccASVSSE001_TIF__05000E07",
+  "ccASVSSE001_TIF__05000E09",
+  "ccASVSSE001_TIF__05000EAB",
+  "ccASVSSE001_TIF__0500114D",
+  "ccASVSSE001_TIF__0500115F",
+  "ccASVSSE001_TIF__05001160",
+  "ccASVSSE001_TIF__0500116A",
+  "ccASVSSE001_TIF__05001178",
+  "ccASVSSE001_TIF__05048064",
+  "ccASVSSE001_TIF__05048065",
+  "ccASVSSE001_TIF__0504806D",
+  "ccASVSSE001_TIF__05219F5B",
+  "ccASVSSE001_TaskChecklilst",
+  "ccBGSSSE001_AdvanceStageOnUpdate",
+  "ccBGSSSE001_CatapultMonitor",
+  "ccBGSSSE001_CrabEncMonitor",
+  "ccBGSSSE001_CrabMQ2EncAlias",
+  "ccBGSSSE001_CrabMQ3_Quest",
+  "ccBGSSSE001_CrabMQ4BodyCleanup",
+  "ccBGSSSE001_CrabMQ4Reinforcements",
+  "ccBGSSSE001_DeleteOnQuestDone",
+  "ccBGSSSE001_GuardPanicScript",
+  "ccBGSSSE001_ItemCollectObjectiveScript",
+  "ccBGSSSE001_MiscDwarPlayScript",
+  "ccBGSSSE001_MiscKhajPlayScript",
+  "ccBGSSSE001_MiscMarkarthScript",
+  "ccBGSSSE001_MiscQuestScript",
+  "ccBGSSSE001_MiscSol_DinnerGuestScript",
+  "ccBGSSSE001_MiscWhiterunCourier",
+  "ccBGSSSE001_OnDeathCallReinforce",
+  "ccBGSSSE001_OnReadSetStage",
+  "ccBGSSSE001_PlayerHitScript",
+  "ccBGSSSE001_Quest_SetStageAfterTimer",
+  "ccBGSSSE001_RadiantFishQuest",
+  "ccBGSSSE001_RadiantItemPlayerScript",
+  "ccBGSSSE001_RadiantJunkQuest",
+  "ccBGSSSE001_RadiantQuest3Listener",
+  "ccBGSSSE001_SandboxFollowerScript",
+  "ccBGSSSE001_SetStageOnActivate",
+  "ccBGSSSE001_SetStageOnPickup",
+  "ccBGSSSE001_StartMQ1PlayerScript",
+  "ccBGSSSE001_SwapOutfitOnCellAttach",
+  "ccBGSSSE001_TIF__0500099D",
+  "ccBGSSSE001_TIF__050009A7",
+  "ccBGSSSE001_TIF__050009BC",
+  "ccBGSSSE001_TIF__050009D1",
+  "ccBGSSSE001_TIF__05000A63",
+  "ccBGSSSE001_TIF__05000A68",
+  "ccBGSSSE001_TIF__05000B1E",
+  "ccBGSSSE001_TIF__05000B5C",
+  "ccBGSSSE001_TIF__05000B60",
+  "ccBGSSSE001_TIF__05000B64",
+  "ccBGSSSE001_TIF__05000B79",
+  "ccBGSSSE001_TIF__05000BAF",
+  "ccBGSSSE001_TIF__05000BB0",
+  "ccBGSSSE001_TIF__05000BB1",
+  "ccBGSSSE001_TIF__05000BB2",
+  "ccBGSSSE001_TIF__05000BB3",
+  "ccBGSSSE001_TIF__05000BB4",
+  "ccBGSSSE001_TIF__05000BB5",
+  "ccBGSSSE001_TIF__05000BB6",
+  "ccBGSSSE001_TIF__05000BDE",
+  "ccBGSSSE001_TIF__05000C28",
+  "ccBGSSSE001_TIF__05000C29",
+  "ccBGSSSE001_TIF__05000C49",
+  "ccBGSSSE001_TIF__05000C5C",
+  "ccBGSSSE001_TIF__05000C5E",
+  "ccBGSSSE001_TIF__05000C70",
+  "ccBGSSSE001_TIF__05000E5B",
+  "ccBGSSSE001_TIF__05000E5C",
+  "ccBGSSSE001_TIF__05000E5E",
+  "ccBGSSSE001_TIF__05000E7B",
+  "ccBGSSSE001_TIF__05000EA4",
+  "ccBGSSSE001_TIF__05000EA9",
+  "ccBGSSSE001_TIF__05000EAC",
+  "ccBGSSSE001_TIF__05000EAF",
+  "ccBGSSSE001_TIF__05000EB4",
+  "ccBGSSSE001_TIF__05000EC3",
+  "ccBGSSSE001_TIF__05000ECE",
+  "ccBGSSSE001_TIF__05000EE5",
+  "ccBGSSSE001_TIF__050C1D0F",
+  "ccBGSSSE001_WhiterunChestScript",
+  "ccBGSSSE002_TKArrowsQuestScript",
+  "ccBGSSSE010_ContainerSetStage",
+  "ccBGSSSE010_SetStageOnActivate",
+  "ccBGSSSE013_BattleScript",
+  "ccBGSSSE014_SetStageContainerOpen",
+  "ccBGSSSE018_QF_ShadowQuest_0100081C",
+  "ccBGSSSE018_ShadowrendPlaceScript",
+  "ccBGSSSE018_ShadowrendPlayerScript",
+  "ccBGSSSE025_ElytraCollectItemScript",
+  "ccBGSSSE025_RCIntegrationScript",
+  "ccBGSSSE034_MapContainerChangeAlias",
+  "ccBGSSSE034_TIF__02000837",
+  "ccBGSSSE034_TIF__02000838",
+  "ccBGSSSE034_TIF__02000839",
+  "ccBGSSSE034_TIF__0200083A",
+  "ccBGSSSE034_TIF__0200083C",
+  "ccBGSSSE034_TIF__0200084A",
+  "ccBGSSSE034_WildHorseRefAliasScript",
+  "ccBGSSSE034_WildHorsesQuestScript",
+  "ccBGSSSE034_tif__02000d6c",
+  "ccBGSSSE034_tif__02000d6d",
+  "ccBGSSSE035_MerchantAlias",
+  "ccBGSSSE035_OnActStageRefAlias",
+  "ccBGSSSE036_SetStageOnRead",
+  "ccBGSSSE051_TIF__05000833",
+  "ccBGSSSE051_TIF__05000838",
+  "ccBGSSSE051_TIF__05000839",
+  "ccBGSSSE051__TIF__0500083D",
+  "ccBGSSSE051__TIF__05000841",
+  "ccBGSSSE067_ContentAwareScript",
+  "ccBGSSSE067_QuestFunctionsScript",
+  "ccBGSSSE067_Quest_0506BFC1",
+  "ccBGSSSE067_SetStageOnActivateConfirm",
+  "ccBGSSSE067_SetStageOnOpenRefAlias",
+  "ccBGSSSE067_SetStageTriggerScript",
+  "ccEDHSSE003_TIF__02000860",
+  "ccEDHSSE003_TIF__02000862",
+  "ccEDHSSE003_TIF__0200086B",
+  "ccEDHSSE003_TIF__02000871",
+  "ccEDHSSE003_TIF__02000875",
+  "ccEDHSSE003_TIF__0200088B",
+  "ccEDHSSE003_TIF__020008B0",
+  "ccEEJSSE004__05000C54",
+  "ccEEJSSE004__05000C58",
+  "ccEEJSSE004__05000C72",
+  "ccEEJSSE005_DeathCount",
+  "ccEEJSSE005_Quest_050B7AED",
+  "ccEEJSSE005_SetGlobalOnPickup",
+  "ccEEJSSE005_TIF__050DB2AD",
+  "ccEEJSSE005_TIF__050DB2C5",
+  "ccFFBSSE001_SoldierDeadCountScript",
+  "ccKRTSSE001_DoorActivateScript",
+  "ccKRTSSE001_FerrySyste_05000A7B",
+  "ccKRTSSE001_GTScript",
+  "ccKRTSSE001_GameTimeScript",
+  "ccKRTSSE001_QuestFortu_05000A90",
+  "ccKRTSSE001_SetStageOnLoadScript",
+  "ccKRTSSE001_SleepSetStageScript",
+  "ccKRTSSE001_StageSetonActivate",
+  "ccKRTSSE001_TIF__05000A7E",
+  "ccQDRSSE002_FollowerIdleOnSitScript",
+  "ccRMSSSE001_AltarActivateScript",
+  "ccRMSSSE001_GhostTrapScript",
+  "ccRMSSSE001_SleepSetStageScript",
+  "ccRMSSSE001_TorchCountScript",
+  "ccRMSSSE001_TradeWithSkeletonScript",
+  "ccVSVSSE002_MainQuestScript",
+  "ccVSVSSE003_QF_MainQuest",
+  "ccVSVSSE004_AnimalAliasEggScript",
+  "ccVSVSSE004_AnimalAliasMilkScript",
+  "ccVSVSSE004_F_MainQuestManager",
+  "ccVSVSSE004_F_OverseerAliasScript",
+  "ccVSVSSE004_GuardDogAliasScript",
+  "ccVSVSSE004_HorseAliasScript",
+  "ccVSVSSE004_TIF_BuyChickens",
+  "ccVSVSSE004_TIF_BuyChickensSpouse",
+  "ccVSVSSE004_TIF_BuyCow",
+  "ccVSVSSE004_TIF_BuyCowSpouse",
+  "ccVSVSSE004_TIF_BuyGoat",
+  "ccVSVSSE004_TIF_BuyGoatSpouse",
+  "ccVSVSSE004_TIF_BuyHorse",
+  "ccVSVSSE004_TIF_BuyHorseSpouse",
+  "ccVSVSSE004_TIF_CollectProfitF",
+  "ccVSVSSE004_TIF_CollectProfitM",
+  "ccVSVSSE004_TIF_CollectProfitSpouse",
+  "ccVSVSSE004_TIF_FarmhandDismiss2",
+  "ccVSVSSE004_TIF_FarmhandHire",
+  "ccVSVSSE004_TIF_OverseerHire",
+  "ccVSVSSE004_TIF_OverseerHireSpouse",
+  "ccVSVSSE004_TIF_SpawnFarmhand1",
+  "ccVSVSSE004_TIF_SpawnFarmhand1Spouse",
+  "ccVSVSSE004_TIF_UpgradeAltKidRoom",
+  "ccVSVSSE004_TIF_UpgradeBedroom",
+  "ccVSVSSE004_TIF_UpgradeBedroomSpouse",
+  "ccVSVSSE004_TIF_UpgradeDining",
+  "ccVSVSSE004_TIF_UpgradeDiningSpouse",
+  "ccVSVSSE004_TIF_UpgradeKidRoom",
+  "ccVSVSSE004_TIF_UpgradeKidRoomAltS",
+  "ccVSVSSE004_TIF_UpgradeKidRoomRepS",
+  "ccVSVSSE004_TIF_UpgradeKidRoomReplace",
+  "ccVSVSSE004_TIF_UpgradeKidRoomSpouse",
+  "ccVSVSSE004_TIF_UpgradeKitchen",
+  "ccVSVSSE004_TIF_UpgradeKitchenSpouse",
+  "ccVSVSSE004_TIF_UpgradeLab",
+  "ccVSVSSE004_TIF_UpgradeLabSpouse",
+  "ccVSVSSE004_TIF_UpgradeLoft",
+  "ccVSVSSE004_TIF_UpgradeLoftSpouse",
+  "urshug_TIF__0200183E"
+ ]
+}

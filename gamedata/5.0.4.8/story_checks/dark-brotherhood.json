@@ -10,6 +10,25 @@
    "firstObjectiveStage": 5,
    "startedBy": [
     {
+     "by": "dialogue",
+     "speaker": "Aventus Aretino",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Aretino Residence"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:01F339",
+     "prompt": "Contract?",
+     "reply": [
+      "My mother, she... she died. I... I'm all alone now. So they sent me to that terrible orphanage in Riften. Honorhall.",
+      "The headmistress is an evil, cruel woman. They call her Grelod the Kind. But she's not kind. She's terrible. To all of us.",
+      "So I ran away, and came home. And performed the Black Sacrament. Now you're here! And you can kill Grelod the Kind!"
+     ],
+     "conditions": "the speaker is Aventus Aretino",
+     "source": "TIF__0001F339.Fragment_0 on INFO Skyrim.esm:01F339 (Innocence Lost - Quest Expansion.esp)",
+     "verdict": "script"
+    },
+    {
      "by": "start game",
      "source": "Skyrim.esm:01EA50 DNAM (Innocence Lost - Quest Expansion.esp)",
      "verdict": "files"
@@ -2630,7 +2649,8 @@
        "source": "DBSuspensionAssault Skyrim.esm:02E3FF (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on ASSU."
     },
     {
      "by": "dialogue",

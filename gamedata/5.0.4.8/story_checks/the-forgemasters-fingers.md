@@ -6,7 +6,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node FavorOrcsIntroNode, event: script event; conditions up its parents: fn576 == 1. Source: FavorOrcsIntroNode Skyrim.esm:0763EC (Skyrim.esm). **files**
+- Story manager node FavorOrcsIntroNode, event: script event; conditions up its parents: GetEventData FavorOrcsIntroKeyword == 1. Source: FavorOrcsIntroNode Skyrim.esm:0763EC (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

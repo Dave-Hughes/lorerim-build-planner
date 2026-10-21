@@ -251,6 +251,24 @@
      "verdict": "script"
     },
     {
+     "by": "dialogue",
+     "speaker": "High Priestess Alara",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Meridia's Sanctum"
+     ],
+     "call": "SetStage 20",
+     "info": "Meridia.esp:004E35",
+     "prompt": "How can I find it?",
+     "reply": [
+      "Well, the only person who knows it location now is Findar and I have no idea where he is.",
+      "Try speaking to the others. They might know where he's ended up."
+     ],
+     "conditions": "the speaker is High Priestess Alara",
+     "source": "TIF__02004E35.Fragment_0 on INFO Meridia.esp:004E35 (Meridia.esp)",
+     "verdict": "script"
+    },
+    {
      "by": "start game",
      "source": "Meridia.esp:0046DA DNAM (Meridia.esp)",
      "verdict": "files"
@@ -346,6 +364,29 @@
      "atStage": 100,
      "call": "SetStage 10",
      "source": "QF_NMeridia03_020046DA.fragment_16 on Meridia.esp:0046DA (Meridia.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Arch-Paladin Laracin",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Meridia's Sanctum"
+     ],
+     "call": "SetStage 20",
+     "info": "Meridia.esp:008172",
+     "prompt": "How do I infiltrate them?",
+     "reply": [
+      "Luckily for you, whilst you were dealing with that Findar fool, I arranged for you to meet their recruiter.",
+      "They're openly recruiting. Well, as openly as a group of Necromancers can recruit. I expect they'll want you to prove yourself worthy in some way.",
+      "Whatever it is, I recommend you just do it. Sometimes it is necessary to sacrifice your morals for the greater good.",
+      "Once there, hopefully you will be invited to join them, and given the location of their hideout. Once you're inside, it's all up to you.",
+      "Do whatever you can to find out what they're planning - but let me be clear, this is not a purging mission.",
+      "I expect you'll find them more useful alive. That being said, if you are compromised, I expect you to do what you must.",
+      "You're meeting their recruiter at Deep Moon Lookout. Your name is Remidai. Unless there are any questions, I'd suggest you be on your way."
+     ],
+     "conditions": "the speaker is Arch-Paladin Laracin",
+     "source": "TIF__02008172.Fragment_0 on INFO Meridia.esp:008172 (Meridia.esp)",
      "verdict": "script"
     },
     {
@@ -638,6 +679,23 @@
      "verdict": "script"
     },
     {
+     "by": "dialogue",
+     "speaker": "Initiate Velteth",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Meridia's Sanctum"
+     ],
+     "call": "SetStage 20",
+     "info": "Meridia.esp:00C750",
+     "prompt": null,
+     "reply": [
+      "Champion, when you have the time, I wish to speak with you about a matter of high importance."
+     ],
+     "conditions": "the speaker is Initiate Velteth",
+     "source": "TIF__0200C750.Fragment_0 on INFO Meridia.esp:00C750 (Meridia.esp)",
+     "verdict": "script"
+    },
+    {
      "by": "start game",
      "source": "Meridia.esp:00BC5D DNAM (Meridia.esp)",
      "verdict": "files"
@@ -792,6 +850,25 @@
      "atStage": 100,
      "call": "SetStage 10",
      "source": "QF_NMeridia06_02007CFC.fragment_24 on Meridia.esp:007CFC (Meridia.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Initiate Garin",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Meridia's Sanctum"
+     ],
+     "call": "SetStage 20",
+     "info": "Meridia.esp:012EEB",
+     "prompt": "So, how do we do it?",
+     "reply": [
+      "As for finding someone who has entered the realm, frankly I have no idea.",
+      "However, if you were to bring them back here, I'm certain I could transfer their essence to yours, transporting you to Coldharbour. ",
+      "It's a risk... It would almost certainly cause their mind to permanently collapse, but I'm sure you would be safe."
+     ],
+     "conditions": "the speaker is Initiate Garin",
+     "source": "TIF__02012EEB.Fragment_0 on INFO Meridia.esp:012EEB (Meridia.esp)",
      "verdict": "script"
     },
     {
@@ -1233,6 +1310,24 @@
      "atStage": 40,
      "call": "SetStage 10",
      "source": "QF_NMeridia08_02019A81.fragment_5 on Meridia.esp:019A81 (Meridia.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "High Priestess Alara",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Meridia's Sanctum"
+     ],
+     "call": "SetStage 20",
+     "info": "Meridia.esp:024DE9",
+     "prompt": null,
+     "reply": [
+      "Meridia watch over us all.",
+      "Champion, lead the way to the Ritual Site. We must stop this from going any further."
+     ],
+     "conditions": "the speaker is High Priestess Alara",
+     "source": "TIF__02024DE9.Fragment_0 on INFO Meridia.esp:024DE9 (Meridia.esp)",
      "verdict": "script"
     },
     {

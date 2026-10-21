@@ -7,7 +7,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Ebony Warrior (named by alias EbonyWarrior of DLC2EbonyWarriorQuest (The Ebony Warrior) (unique)), placed in Ebony Warrior's Camp, "What were you saying before?": SetStage 10 (when: the speaker is the one in alias EbonyWarrior; The Ebony Warrior stage <= 100). Source: DLC2_TIF__0202C439.Fragment_0 on INFO Dragonborn.esm:02C439 (EbonyGetLost.esp). **script**
-- Story manager node DLC2EbonyWarriorNode, event: change location; conditions up its parents: level >= DLC2EbonyWarriorMinLevel_KRY (now 40); fn576 == 0; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1. Source: DLC2EbonyWarriorNode Dragonborn.esm:02C49F (LoreRim - Global Modifiers.esp). **run time**
+- Story manager node DLC2EbonyWarriorNode, event: change location; conditions up its parents: level >= DLC2EbonyWarriorMinLevel_KRY (now 40); the place you leave isn't Solstheim; the place you enter is Whiterun or the place you enter is Riften or the place you enter is Windhelm or the place you enter is Markarth or the place you enter is Solitude. Source: DLC2EbonyWarriorNode Dragonborn.esm:02C49F (LoreRim - Global Modifiers.esp). **run time**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

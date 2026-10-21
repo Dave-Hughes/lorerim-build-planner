@@ -45,11 +45,11 @@ CELL_SIZE = 4096
 CMP = {0: "==", 1: "!=", 2: ">", 3: ">=", 4: "<", 5: "<="}
 FUNCTIONS = {14: "GetActorValue", 46: "GetDead", 47: "GetItemCount", 77: "GetRandomPercent", 56: "GetQuestRunning", 58: "GetStage", 59: "GetStageDone", 69: "GetIsRace",
              71: "GetInFaction", 72: "GetIsID", 74: "GetGlobalValue", 80: "GetLevel", 448: "HasPerk", 543: "GetQuestCompleted",
-             566: "GetIsAliasRef"}
+             566: "GetIsAliasRef", 576: "GetEventData"}
 FORM_PARAM = {47, 56, 58, 59, 69, 71, 72, 74, 448, 543}
 LOCK_LEVELS = {1: "Novice", 25: "Apprentice", 50: "Adept", 75: "Expert", 100: "Master", 255: "needs a key"}
 BASE = {"skyrim.esm", "update.esm", "dawnguard.esm", "hearthfires.esm", "dragonborn.esm"}
-NAMED = ("NPC_", "LCTN", "KEYM", "QUST", "GLOB", "DOOR", "CONT", "WRLD")
+NAMED = ("NPC_", "LCTN", "KEYM", "QUST", "GLOB", "DOOR", "CONT", "WRLD", "KYWD", "LCRT")
 
 
 def _text(v):
@@ -70,6 +70,10 @@ def ctda(v, masters, name):
         c["value"] = round(struct.unpack_from("<f", v, 4)[0], 4)
     if fn in FORM_PARAM:
         c["param"] = form_id(resolve(p1, masters, name))
+    elif fn == 576:  # GetEventData: parameter 1 is the event's member ("L2", the new location) and a test; 2 the form
+        c["member"] = bytes([(p1 >> 16) & 255, p1 >> 24]).decode("latin1")
+        c["test"] = p1 & 0xFFFF
+        c["param"] = form_id(resolve(p2, masters, name))
     elif p1:
         c["param"] = p1
     if fn in (58, 59):

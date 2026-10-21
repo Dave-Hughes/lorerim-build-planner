@@ -600,6 +600,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Dialogue with Tenerio, placed in Alik'r Desert Sanctuary, Alik'r Desert, "Alright, I'll look into it.": SetStage 20 (when: the speaker is Tenerio). Source: DDB_TIF__04000939.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:000FF4 (BetalillesHammerfellQuestBundle.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000FCA DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -625,6 +626,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - DDBQuest06 (Disappearing in the Dark) at stage 200 calls SetStage 10. Source: DDB_QF_DDBQuest06_0400090F.fragment_14 on BetalillesHammerfellQuestBundle.esp:000FCA (BetalillesHammerfellQuestBundle.esp). **script**
+- Dialogue with Lucya, placed in Soul Cairn Tower, Soul Cairn, "Yes, I will.": SetStage 20 (when: the speaker is Lucya). Source: DDB_TIF__0400094D.Fragment_0 on INFO BetalillesHammerfellQuestBundle.esp:001008 (BetalillesHammerfellQuestBundle.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: BetalillesHammerfellQuestBundle.esp:000FCE DNAM (BetalillesHammerfellQuestBundle.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 

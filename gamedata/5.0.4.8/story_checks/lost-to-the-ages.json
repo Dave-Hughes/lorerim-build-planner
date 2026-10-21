@@ -32,7 +32,8 @@
        "source": "DLC1LD_MasterNode Dawnguard.esm:004D71 (Dawnguard.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -57,7 +58,8 @@
        "source": "DLC1LD_MasterNode Dawnguard.esm:004D71 (Dawnguard.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -82,7 +84,8 @@
        "source": "DLC1LD_MasterNode Dawnguard.esm:004D71 (Dawnguard.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -107,7 +110,8 @@
        "source": "DLC1LD_MasterNode Dawnguard.esm:004D71 (Dawnguard.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -132,7 +136,8 @@
        "source": "DLC1LD_MasterNode Dawnguard.esm:004D71 (Dawnguard.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -157,7 +162,8 @@
        "source": "DLC1LD_MasterNode Dawnguard.esm:004D71 (Dawnguard.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "dialogue",
@@ -303,7 +309,8 @@
         "source": "DLC1LD_ArkngthamzNode Dawnguard.esm:005827 (Dawnguard.esm)",
         "verdict": "files"
        }
-      ]
+      ],
+      "plain": "It starts by itself on change location."
      }
     ]
    }

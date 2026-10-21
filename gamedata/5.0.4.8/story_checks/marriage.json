@@ -10,6 +10,133 @@
    "firstObjectiveStage": 20,
    "startedBy": [
     {
+     "by": "dialogue",
+     "speaker": "Maramal",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Temple of Mara"
+     ],
+     "call": "SetStage 15",
+     "info": "Skyrim.esm:026B5C",
+     "prompt": "I'll buy an amulet of Mara. (200 gold)",
+     "reply": [
+      "Here you are. Now remember, people in Skyrim respond to deeds. You will find more people interested in your love if you help them.",
+      "Good luck. Mara bless you."
+     ],
+     "conditions": "GetItemCount Amulet of Mara == 0; the player has at least 200 gold; The Bonds of Matrimony stage 15 not done; The Bonds of Matrimony stage 10 done; the speaker is Maramal",
+     "source": "TIF__00026B5C.Fragment_1 on INFO Skyrim.esm:026B5C (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Maramal",
+     "speakerNamed": "alias TemplePriest of RelationshipMarriage (The Bonds of Matrimony) (unique)",
+     "speakerPlaced": [
+      "Temple of Mara"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:074DE5",
+     "prompt": "I might. Why don't you remind me?",
+     "reply": [
+      "Typically, love in Skyrim is as earnest as the people who live here. Life is hard and short, so there is little room for long courtship.",
+      "A person who is looking for a spouse simply wears an Amulet of Mara about the neck, showing they are available.",
+      "When another person shows interest, and the two agree to be together, one of them comes to the Temple and we arrange a ceremony."
+     ],
+     "conditions": "the speaker is the one in alias TemplePriest",
+     "source": "TIF__00074DE5.Fragment_0 on INFO Skyrim.esm:074DE5 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Maramal",
+     "speakerNamed": "alias TemplePriest of RelationshipMarriage (The Bonds of Matrimony) (unique)",
+     "speakerPlaced": [
+      "Temple of Mara"
+     ],
+     "call": "SetStage 10",
+     "info": "Skyrim.esm:074DE4",
+     "prompt": "No, not really.",
+     "reply": [
+      "Typically, love in Skyrim is as earnest as the people who live here. Life is hard and short, so there is little room for long courtship.",
+      "A person who is looking for a spouse simply wears an Amulet of Mara about the neck, showing they are available.",
+      "When another person shows interest, and the two agree to be together, one of them comes to the Temple and we arrange a ceremony."
+     ],
+     "conditions": "the speaker is the one in alias TemplePriest",
+     "source": "TIF__00074DE4.Fragment_0 on INFO Skyrim.esm:074DE4 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Maramal",
+     "speakerNamed": "alias TemplePriest of RelationshipMarriage (The Bonds of Matrimony) (unique)",
+     "speakerPlaced": [
+      "Temple of Mara"
+     ],
+     "call": "SetStage 5",
+     "info": "Skyrim.esm:074DE2",
+     "prompt": "I wanted to know more about the Temple of Mara.",
+     "reply": [
+      "Wonderful. Where to begin?",
+      "Mara is the Goddess of Love. The temple spreads her gifts by tending to the sick, the poor, and the lost.",
+      "We also perform wedding ceremonies for all the loving couples in Skyrim."
+     ],
+     "conditions": "fn726 == 1; the speaker is the one in alias TemplePriest",
+     "source": "TIF__00074DE2.Fragment_0 on INFO Skyrim.esm:074DE2 (NPCs_Wear_Amulets_Of_Mara.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Maramal",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Temple of Mara"
+     ],
+     "call": "Start",
+     "info": "NPCs_Wear_Amulets_Of_Mara.esp:00080D",
+     "prompt": "I need to cancel the wedding. My betrothed died.",
+     "reply": [
+      "Oh no! I... I'm sorry. Take care, friend."
+     ],
+     "conditions": "the speaker is Maramal; The Bonds of Matrimony stage == 250",
+     "source": "GirlfriendDied.Fragment_0 on INFO NPCs_Wear_Amulets_Of_Mara.esp:00080D (NPCs_Wear_Amulets_Of_Mara.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Maramal",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Temple of Mara"
+     ],
+     "call": "SetStage 15",
+     "info": "NPCs_Wear_Amulets_Of_Mara.esp:00080D",
+     "prompt": "I need to cancel the wedding. My betrothed died.",
+     "reply": [
+      "Oh no! I... I'm sorry. Take care, friend."
+     ],
+     "conditions": "the speaker is Maramal; The Bonds of Matrimony stage == 250",
+     "source": "GirlfriendDied.Fragment_0 on INFO NPCs_Wear_Amulets_Of_Mara.esp:00080D (NPCs_Wear_Amulets_Of_Mara.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Maramal",
+     "speakerNamed": "alias TemplePriest of RelationshipMarriage (The Bonds of Matrimony) (unique)",
+     "speakerPlaced": [
+      "Temple of Mara"
+     ],
+     "call": "SetStage 30",
+     "info": "Skyrim.esm:075CAF",
+     "prompt": "I made a mistake. I want to go ahead with the ceremony.",
+     "reply": [
+      "\"Forgiveness is the heart of Mara's blessings.\" Very well. We shall re-arrange your wedding.",
+      "Tomorrow. Same time as before."
+     ],
+     "conditions": "fn403 >= 1; Wedding Ceremony Scene stage 200 done; fn629 == 1; the speaker is the one in alias TemplePriest",
+     "source": "TIF__00075CAF.Fragment_0 on INFO Skyrim.esm:075CAF (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
      "by": "quest script",
      "quest": "RelationshipMarriageFIN, a helper quest with Player",
      "questId": "Skyrim.esm:021382",
@@ -44,7 +171,8 @@
        "source": "MarriageNode Skyrim.esm:047A26 (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on script event."
     },
     {
      "by": "quest script",
@@ -68,7 +196,8 @@
        "source": "RelationshipMarriageNode Skyrim.esm:07431C (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on relationship change."
     },
     {
      "by": "quest script",
@@ -520,24 +649,6 @@
     },
     {
      "by": "dialogue",
-     "speaker": "Maramal",
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [
-      "Temple of Mara"
-     ],
-     "call": "SetStage 15",
-     "info": "Skyrim.esm:026B5C",
-     "prompt": "I'll buy an amulet of Mara. (200 gold)",
-     "reply": [
-      "Here you are. Now remember, people in Skyrim respond to deeds. You will find more people interested in your love if you help them.",
-      "Good luck. Mara bless you."
-     ],
-     "conditions": "GetItemCount Amulet of Mara == 0; the player has at least 200 gold; The Bonds of Matrimony stage 15 not done; The Bonds of Matrimony stage 10 done; the speaker is Maramal",
-     "source": "TIF__00026B5C.Fragment_1 on INFO Skyrim.esm:026B5C (Skyrim.esm)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
      "speaker": null,
      "speakerNamed": "GetIsID",
      "speakerPlaced": [],
@@ -643,63 +754,6 @@
     },
     {
      "by": "dialogue",
-     "speaker": "Maramal",
-     "speakerNamed": "alias TemplePriest of RelationshipMarriage (The Bonds of Matrimony) (unique)",
-     "speakerPlaced": [
-      "Temple of Mara"
-     ],
-     "call": "SetStage 10",
-     "info": "Skyrim.esm:074DE5",
-     "prompt": "I might. Why don't you remind me?",
-     "reply": [
-      "Typically, love in Skyrim is as earnest as the people who live here. Life is hard and short, so there is little room for long courtship.",
-      "A person who is looking for a spouse simply wears an Amulet of Mara about the neck, showing they are available.",
-      "When another person shows interest, and the two agree to be together, one of them comes to the Temple and we arrange a ceremony."
-     ],
-     "conditions": "the speaker is the one in alias TemplePriest",
-     "source": "TIF__00074DE5.Fragment_0 on INFO Skyrim.esm:074DE5 (Skyrim.esm)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Maramal",
-     "speakerNamed": "alias TemplePriest of RelationshipMarriage (The Bonds of Matrimony) (unique)",
-     "speakerPlaced": [
-      "Temple of Mara"
-     ],
-     "call": "SetStage 10",
-     "info": "Skyrim.esm:074DE4",
-     "prompt": "No, not really.",
-     "reply": [
-      "Typically, love in Skyrim is as earnest as the people who live here. Life is hard and short, so there is little room for long courtship.",
-      "A person who is looking for a spouse simply wears an Amulet of Mara about the neck, showing they are available.",
-      "When another person shows interest, and the two agree to be together, one of them comes to the Temple and we arrange a ceremony."
-     ],
-     "conditions": "the speaker is the one in alias TemplePriest",
-     "source": "TIF__00074DE4.Fragment_0 on INFO Skyrim.esm:074DE4 (Skyrim.esm)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Maramal",
-     "speakerNamed": "alias TemplePriest of RelationshipMarriage (The Bonds of Matrimony) (unique)",
-     "speakerPlaced": [
-      "Temple of Mara"
-     ],
-     "call": "SetStage 5",
-     "info": "Skyrim.esm:074DE2",
-     "prompt": "I wanted to know more about the Temple of Mara.",
-     "reply": [
-      "Wonderful. Where to begin?",
-      "Mara is the Goddess of Love. The temple spreads her gifts by tending to the sick, the poor, and the lost.",
-      "We also perform wedding ceremonies for all the loving couples in Skyrim."
-     ],
-     "conditions": "fn726 == 1; the speaker is the one in alias TemplePriest",
-     "source": "TIF__00074DE2.Fragment_0 on INFO Skyrim.esm:074DE2 (NPCs_Wear_Amulets_Of_Mara.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
      "speaker": "Fastred",
      "speakerNamed": "GetIsID",
      "speakerPlaced": [
@@ -713,40 +767,6 @@
      ],
      "conditions": "the speaker is Fastred",
      "source": "TIF__0200005B.Fragment_0 on INFO TT_FastredsAwakening.esp:00005B (TT_FastredsAwakening.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Maramal",
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [
-      "Temple of Mara"
-     ],
-     "call": "Start",
-     "info": "NPCs_Wear_Amulets_Of_Mara.esp:00080D",
-     "prompt": "I need to cancel the wedding. My betrothed died.",
-     "reply": [
-      "Oh no! I... I'm sorry. Take care, friend."
-     ],
-     "conditions": "the speaker is Maramal; The Bonds of Matrimony stage == 250",
-     "source": "GirlfriendDied.Fragment_0 on INFO NPCs_Wear_Amulets_Of_Mara.esp:00080D (NPCs_Wear_Amulets_Of_Mara.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
-     "speaker": "Maramal",
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [
-      "Temple of Mara"
-     ],
-     "call": "SetStage 15",
-     "info": "NPCs_Wear_Amulets_Of_Mara.esp:00080D",
-     "prompt": "I need to cancel the wedding. My betrothed died.",
-     "reply": [
-      "Oh no! I... I'm sorry. Take care, friend."
-     ],
-     "conditions": "the speaker is Maramal; The Bonds of Matrimony stage == 250",
-     "source": "GirlfriendDied.Fragment_0 on INFO NPCs_Wear_Amulets_Of_Mara.esp:00080D (NPCs_Wear_Amulets_Of_Mara.esp)",
      "verdict": "script"
     },
     {

@@ -86,7 +86,8 @@
        "source": "DLC2CultistAmbushNode004 TimingIsEverything.esp:00E53E (TimingIsEverything.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "quest script",
@@ -165,7 +166,8 @@
        "source": "DLC2CultistAmbushNode004 TimingIsEverything.esp:00E53E (TimingIsEverything.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     }
    ],
    "caughtUpBy": [
@@ -917,7 +919,7 @@
      ],
      "source": "DLC2WEPriorityQuests001 Dragonborn.esm:0331C1 (LoreRim - Global Modifiers.esp)",
      "verdict": "run time",
-     "conditions": "global DLC2QuestStartSelection_KRY == 1 (now 1); The Way of the Voice stage >= 160; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "global DLC2QuestStartSelection_KRY == 1 (now 1); The Way of the Voice stage >= 160; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1 or GetEventData DLC2WEStart == 1 or GetEventData DLC2WERoadStart == 1"
     },
     {
      "by": "story manager",
@@ -929,7 +931,7 @@
      ],
      "source": "DLC2WEPriorityQuests002 TimingIsEverything.esp:02CB51 (TimingIsEverything.esp)",
      "verdict": "run time",
-     "conditions": "global DLC2QuestStartSelection_KRY == 2 (now 1); The Horn of Jurgen Windcaller stage >= 60; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "global DLC2QuestStartSelection_KRY == 2 (now 1); The Horn of Jurgen Windcaller stage >= 60; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1 or GetEventData DLC2WEStart == 1 or GetEventData DLC2WERoadStart == 1"
     },
     {
      "by": "story manager",
@@ -941,7 +943,7 @@
      ],
      "source": "DLC2WEPriorityQuests000 TimingIsEverything.esp:02CB52 (TimingIsEverything.esp)",
      "verdict": "run time",
-     "conditions": "global DLC2QuestStartSelection_KRY == 0 (now 1); Dragon Rising stage >= 90; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "global DLC2QuestStartSelection_KRY == 0 (now 1); Dragon Rising stage >= 90; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1 or GetEventData DLC2WEStart == 1 or GetEventData DLC2WERoadStart == 1"
     },
     {
      "by": "story manager",
@@ -953,7 +955,7 @@
      ],
      "source": "DLC2WEPriorityQuests003 TimingIsEverything.esp:02CB53 (TimingIsEverything.esp)",
      "verdict": "run time",
-     "conditions": "global DLC2QuestStartSelection_KRY == 3 (now 1); A Blade in the Dark stage >= 200; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "global DLC2QuestStartSelection_KRY == 3 (now 1); A Blade in the Dark stage >= 200; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1 or GetEventData DLC2WEStart == 1 or GetEventData DLC2WERoadStart == 1"
     },
     {
      "by": "story manager",
@@ -965,7 +967,7 @@
      ],
      "source": "DLC2WEPriorityQuests004 TimingIsEverything.esp:02CB54 (TimingIsEverything.esp)",
      "verdict": "run time",
-     "conditions": "global DLC2QuestStartSelection_KRY == 4 (now 1); Alduin's Wall stage >= 280; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "global DLC2QuestStartSelection_KRY == 4 (now 1); Alduin's Wall stage >= 280; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1 or GetEventData DLC2WEStart == 1 or GetEventData DLC2WERoadStart == 1"
     },
     {
      "by": "story manager",
@@ -977,7 +979,7 @@
      ],
      "source": "DLC2WEPriorityQuests005 TimingIsEverything.esp:02CB55 (TimingIsEverything.esp)",
      "verdict": "run time",
-     "conditions": "global DLC2QuestStartSelection_KRY == 5 (now 1); The Throat of the World stage >= 200; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "global DLC2QuestStartSelection_KRY == 5 (now 1); The Throat of the World stage >= 200; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1 or GetEventData DLC2WEStart == 1 or GetEventData DLC2WERoadStart == 1"
     },
     {
      "by": "story manager",
@@ -989,7 +991,7 @@
      ],
      "source": "DLC2WEPriorityQuests006 TimingIsEverything.esp:02CB56 (TimingIsEverything.esp)",
      "verdict": "run time",
-     "conditions": "global DLC2QuestStartSelection_KRY == 6 (now 1); Elder Knowledge stage >= 100; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "global DLC2QuestStartSelection_KRY == 6 (now 1); Elder Knowledge stage >= 100; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1 or GetEventData DLC2WEStart == 1 or GetEventData DLC2WERoadStart == 1"
     },
     {
      "by": "story manager",
@@ -1001,7 +1003,7 @@
      ],
      "source": "DLC2WEPriorityQuests007 TimingIsEverything.esp:02CB57 (TimingIsEverything.esp)",
      "verdict": "run time",
-     "conditions": "global DLC2QuestStartSelection_KRY == 7 (now 1); Alduin's Bane stage >= 220; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "global DLC2QuestStartSelection_KRY == 7 (now 1); Alduin's Bane stage >= 220; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1 or GetEventData DLC2WEStart == 1 or GetEventData DLC2WERoadStart == 1"
     },
     {
      "by": "story manager",
@@ -1013,7 +1015,7 @@
      ],
      "source": "DLC2WEPriorityQuests008 TimingIsEverything.esp:02CB58 (TimingIsEverything.esp)",
      "verdict": "run time",
-     "conditions": "global DLC2QuestStartSelection_KRY == 8 (now 1); Dragonslayer stage >= 200; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "global DLC2QuestStartSelection_KRY == 8 (now 1); Dragonslayer stage >= 200; global WEEnabled == 1 (now 1); GetEventData WEStart == 1 or GetEventData WERoadStart == 1 or GetEventData DLC2WEStart == 1 or GetEventData DLC2WERoadStart == 1"
     }
    ],
    "caughtUpBy": [],

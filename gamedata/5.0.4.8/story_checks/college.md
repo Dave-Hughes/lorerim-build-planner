@@ -6,6 +6,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Dialogue with Faralda (named by alias MG01FaraldaAlias of MG01 (First Lessons) (unique)), placed in Hall of Countenance, Dormitory, "Okay, this is for the spell. (Give 30 gold)": SetStage 20 (when: the speaker is the one in alias MG01FaraldaAlias; fn264 == 0; the player has at least 30 gold; fn629 == 1). Source: TIF__0001F814.Fragment_0 on INFO Skyrim.esm:01F814 (Skyrim.esm). **script**
+- Dialogue with Faralda (named by alias MG01FaraldaAlias of MG01 (First Lessons) (unique)), placed in Hall of Countenance, Dormitory, "Okay, I can do that.": SetStage 20 (when: the speaker is the one in alias MG01FaraldaAlias; First Lessons stage < 20; fn629 > 0). Source: TIF__00021E5D.Fragment_0 on INFO Skyrim.esm:021E5D (Skyrim.esm). **script**
 - Dialogue with Nirya (named by alias MG01NiryaAlias of MG01 (First Lessons) (unique)), placed in Hall of Attainment, Dormitory, "What are you doing out here?": SetStage 10 (when: First Lessons stage < 30; the speaker is the one in alias MG01NiryaAlias). Source: TIF__000DF034.Fragment_0 on INFO Skyrim.esm:0DF034 (Skyrim.esm). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:01F251 DNAM (LoreRim - Dialogue Patch.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
@@ -314,8 +316,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - MG02 (Under Saarthal) at stage 200 calls Start. Source: QF_MG02_0001F252.fragment_16 on Skyrim.esm:01F252 (CollegeEntry.esp). **script**
 - Dialogue with Brelyna Maryon (named by alias QuestGiver of MGRAppBrelyna01 (Brelyna's Practice) (unique)), placed in Hall of Attainment, Dormitory, "What did you do?": SetStage 20 (when: fn629 == 1; the speaker is the one in alias QuestGiver; Brelyna's Practice stage == 10). Source: TIF__000C04F5.Fragment_0 on INFO Skyrim.esm:0C04F5 (Skyrim.esm). **script**
 - Dialogue with Brelyna Maryon (named by alias QuestGiver of MGRAppBrelyna01 (Brelyna's Practice) (unique)), placed in Hall of Attainment, Dormitory, "Tell me this isn't permanent.": SetStage 20 (when: fn629 == 1; the speaker is the one in alias QuestGiver; Brelyna's Practice stage == 10). Source: TIF__000C04F7.Fragment_0 on INFO Skyrim.esm:0C04F7 (Skyrim.esm). **script**
-- Dialogue with Brelyna Maryon (named by alias QuestGiver of MGRAppBrelyna01 (Brelyna's Practice) (unique)), placed in Hall of Attainment, Dormitory, "Okay, I'll help.": SetStage 10 (when: fn46 == 0; the speaker is the one in alias QuestGiver). Source: TIF__000C04FF.Fragment_0 on INFO Skyrim.esm:0C04FF (Skyrim.esm). **script**
-- Dialogue with Brelyna Maryon (named by alias QuestGiver of MGRAppBrelyna01 (Brelyna's Practice) (unique)), placed in Hall of Attainment, Dormitory, "Okay, I'll help.": SetStage 10 (when: fn46 == 0; the speaker is the one in alias QuestGiver). Source: TIF__000C0500.Fragment_0 on INFO Skyrim.esm:0C0500 (Skyrim.esm). **script**
+- Dialogue with Brelyna Maryon (named by alias QuestGiver of MGRAppBrelyna01 (Brelyna's Practice) (unique)), placed in Hall of Attainment, Dormitory, "Okay, I'll help.": SetStage 10 (when: GetDead == 0; the speaker is the one in alias QuestGiver). Source: TIF__000C04FF.Fragment_0 on INFO Skyrim.esm:0C04FF (Skyrim.esm). **script**
+- Dialogue with Brelyna Maryon (named by alias QuestGiver of MGRAppBrelyna01 (Brelyna's Practice) (unique)), placed in Hall of Attainment, Dormitory, "Okay, I'll help.": SetStage 10 (when: GetDead == 0; the speaker is the one in alias QuestGiver). Source: TIF__000C0500.Fragment_0 on INFO Skyrim.esm:0C0500 (Skyrim.esm). **script**
 - Dialogue with Brelyna Maryon (named by alias QuestGiver of MGRAppBrelyna01 (Brelyna's Practice) (unique)), placed in Hall of Attainment, Dormitory, "Okay, I'll help.": SetStage 10 (when: the speaker is the one in alias QuestGiver). Source: TIF__000C0501.Fragment_0 on INFO Skyrim.esm:0C0501 (Skyrim.esm). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
@@ -910,7 +912,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Tolfdir's Alembic, placed in Wisp Light Crevasse: SetStage 10 (when: the speaker is Tolfdir's Alembic; the speaker is Tolfdir). Source: TIF__000266EE.Fragment_0 on INFO Skyrim.esm:0266EE (Skyrim.esm). **script**
 - Dialogue with Shalidor's Insights: SetStage 10 (when: the speaker is Shalidor's Insights; the speaker is Tolfdir). Source: TIF__00026C30.Fragment_0 on INFO Skyrim.esm:026C30 (Skyrim.esm). **script**
-- Story manager node MGRTolfdirNode1, event: script event; conditions up its parents: fn576 == 1. Source: MGRTolfdirNode1 Skyrim.esm:028A4D (Skyrim.esm). **files**
+- Story manager node MGRTolfdirNode1, event: script event; conditions up its parents: GetEventData MGRTolfdir == 1. Source: MGRTolfdirNode1 Skyrim.esm:028A4D (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -934,7 +936,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Drevis Neloren, placed in Hall of Countenance, Dormitory, "All right, I'll help.": SetStage 10 (when: Out of Balance stage < 10; the speaker is Drevis Neloren). Source: TIF__00026C2A.Fragment_0 on INFO Skyrim.esm:026C2A (Skyrim.esm). **script**
-- Story manager node MGRDrevisNode, event: script event; conditions up its parents: fn576 == 1. Source: MGRDrevisNode Skyrim.esm:028A4E (Skyrim.esm). **files**
+- Story manager node MGRDrevisNode, event: script event; conditions up its parents: GetEventData MGRDrevis == 1. Source: MGRDrevisNode Skyrim.esm:028A4E (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -962,7 +964,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory, "Okay, I can do that for you.": SetStage 10 (when: Enchanting Pick-Up stage < 10; the speaker is Sergius Turrianus). Source: TIF__00028A12.Fragment_0 on INFO Skyrim.esm:028A12 (Skyrim.esm). **script**
-- Story manager node MGRSergiusNode, event: script event; conditions up its parents: fn576 == 1. Source: MGRSergiusNode Skyrim.esm:028A4F (Skyrim.esm). **files**
+- Story manager node MGRSergiusNode, event: script event; conditions up its parents: GetEventData MGRSergius == 1. Source: MGRSergiusNode Skyrim.esm:028A4F (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -994,7 +996,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory: SetStage 10 (when: Restocking Soul Gems stage <= 10; the speaker is Sergius Turrianus; global MGR11Amount == 0 (now 0) or global MGR11Amount == 5 (now 0)). Source: TIF__0001FE8C.Fragment_0 on INFO Skyrim.esm:01FE8C (Skyrim.esm). **script**
 - Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory: SetStage 10 (when: Restocking Soul Gems stage <= 10; the speaker is Sergius Turrianus; global MGR11Amount == 0 (now 0) or global MGR11Amount == 7 (now 0)). Source: TIF__0001FE8D.Fragment_0 on INFO Skyrim.esm:01FE8D (Skyrim.esm). **script**
 - Dialogue with Sergius Turrianus, placed in Hall of Countenance, Dormitory: SetStage 10 (when: Restocking Soul Gems stage <= 10; the speaker is Sergius Turrianus; global MGR11Amount == 0 (now 0) or global MGR11Amount == 10 (now 0)). Source: TIF__0001FE8E.Fragment_0 on INFO Skyrim.esm:01FE8E (Skyrim.esm). **script**
-- Story manager node MGRSergiusNode, event: script event; conditions up its parents: fn576 == 1. Source: MGRSergiusNode Skyrim.esm:028A4F (Skyrim.esm). **files**
+- Story manager node MGRSergiusNode, event: script event; conditions up its parents: GetEventData MGRSergius == 1. Source: MGRSergiusNode Skyrim.esm:028A4F (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -1031,7 +1033,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Urag gro-Shub, placed in The Arcanaeum, "I'm ready for some adventure.": SetStage 10 (when: Fetch me that Book! stage < 10; the speaker is Urag gro-Shub). Source: TIF__00028A06.Fragment_0 on INFO Skyrim.esm:028A06 (Skyrim.esm). **script**
-- Story manager node MGRUragNode, event: script event; conditions up its parents: fn576 == 1. Source: MGRUragNode Skyrim.esm:028A50 (Skyrim.esm). **files**
+- Story manager node MGRUragNode, event: script event; conditions up its parents: GetEventData MGRUrag == 1. Source: MGRUragNode Skyrim.esm:028A50 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1055,7 +1057,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Urag gro-Shub, placed in The Arcanaeum, "I'm ready for some adventure.": SetStage 10 (when: Fetch me that Book! stage < 10; the speaker is Urag gro-Shub). Source: TIF__000BC092.Fragment_0 on INFO Skyrim.esm:0BC092 (Skyrim.esm). **script**
-- Story manager node MGRUragNode, event: script event; conditions up its parents: fn576 == 1. Source: MGRUragNode Skyrim.esm:028A50 (Skyrim.esm). **files**
+- Story manager node MGRUragNode, event: script event; conditions up its parents: GetEventData MGRUrag == 1. Source: MGRUragNode Skyrim.esm:028A50 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

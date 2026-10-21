@@ -7,9 +7,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Da13Intro, a helper quest at stage 100 calls Start; Da13Intro is started by WEJS14 (named "DA13 Hook, Afflicted Refugee Headed to High Rock" in its record), a helper quest at stage 100 (SetStage 1). Source: QF_Da13Intro_000BEDEC.fragment_3 on Skyrim.esm:0BEDEC (Skyrim.esm). **script**
-- Dialogue with Kesh the Clean, placed in Shrine of Peryite, "Tell me about this incense.": SetStage 10 (when: the speaker is Kesh the Clean; The Only Cure stage < 20; The Only Cure stage >= 5; The Only Cure stage 10 not done or GetItemCount Silver Ingot < 1 or GetItemCount Deathbell < 1 or GetItemCount Vampire Dust < 1 or GetItemCount Flawless Ruby < 1). Source: TIF__00089982.Fragment_0 on INFO Skyrim.esm:089982 (Skyrim.esm). **script**
 - Dialogue with Kesh the Clean, placed in Shrine of Peryite: SetStage 1 (when: The Only Cure stage 1 not done; the speaker is Kesh the Clean). Source: TIF__00089983.Fragment_0 on INFO Skyrim.esm:089983 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with Kesh the Clean, placed in Shrine of Peryite, "May I commune with Peryite?": SetStage 5 (when: level >= 10; The Only Cure stage 5 not done; the speaker is Kesh the Clean). Source: TIF__00089985.Fragment_0 on INFO Skyrim.esm:089985 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Kesh the Clean, placed in Shrine of Peryite, "Tell me about this incense.": SetStage 10 (when: the speaker is Kesh the Clean; The Only Cure stage < 20; The Only Cure stage >= 5; The Only Cure stage 10 not done or GetItemCount Silver Ingot < 1 or GetItemCount Deathbell < 1 or GetItemCount Vampire Dust < 1 or GetItemCount Flawless Ruby < 1). Source: TIF__00089982.Fragment_0 on INFO Skyrim.esm:089982 (Skyrim.esm). **script**
 - Story manager node DA13IncreaseLevelNodeSHARES, event: level up; conditions up its parents: level >= DA13MinLevel (now 20). Source: DA13IncreaseLevelNodeSHARES Skyrim.esm:0C4CC5 (Skyrim.esm). **run time**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 

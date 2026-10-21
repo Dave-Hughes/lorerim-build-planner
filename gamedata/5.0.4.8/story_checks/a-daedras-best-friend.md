@@ -6,10 +6,10 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DA03Start, a helper quest with Lod at stage 10 calls SetStage 5; DA03Start is started by the start-game flag. Source: QF_DA03Start_000D7939.fragment_27 on Skyrim.esm:0D7939 (Wintersun - Reqtificated.esp). **script**
 - Dialogue with Barbas, placed in Haemar's Shame: SetStage 10 (when: A Daedra's Best Friend stage < 10; the speaker is Barbas). Source: TIF__0007EAE0.Fragment_1 on INFO Skyrim.esm:07EAE0 (Skyrim.esm). **script**
 - Dialogue with Barbas, placed in Haemar's Shame: SetStage 20 (when: A Daedra's Best Friend stage < 20; the speaker is Barbas). Source: TIF__000896A7.Fragment_0 on INFO Skyrim.esm:0896A7 (Skyrim.esm). **script**
 - Dialogue with Barbas, placed in Haemar's Shame: SetStage 15 (when: A Daedra's Best Friend stage < 20; the speaker is Barbas). Source: TIF__000E0D48.Fragment_0 on INFO Skyrim.esm:0E0D48 (Skyrim.esm). **script**
+- DA03Start, a helper quest with Lod at stage 10 calls SetStage 5; DA03Start is started by the start-game flag. Source: QF_DA03Start_000D7939.fragment_27 on Skyrim.esm:0D7939 (Wintersun - Reqtificated.esp). **script**
 - (First objective shown at stage 25; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

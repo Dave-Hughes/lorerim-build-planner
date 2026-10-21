@@ -395,7 +395,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node TRGBEQuestNode, event: script event; conditions up its parents: fn576 == 1. Source: TRGBEQuestNode Skyrim.esm:0609AE (Skyrim.esm). **files**
+- Story manager node TRGBEQuestNode, event: script event; conditions up its parents: GetEventData TGRadiantStartBE == 1. Source: TRGBEQuestNode Skyrim.esm:0609AE (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -418,7 +418,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node TGRDUQuestNode, event: script event; conditions up its parents: fn576 == 1. Source: TGRDUQuestNode Skyrim.esm:0609AF (Skyrim.esm). **files**
+- Story manager node TGRDUQuestNode, event: script event; conditions up its parents: GetEventData TGRadiantStartDU == 1. Source: TGRDUQuestNode Skyrim.esm:0609AF (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -441,7 +441,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node TGRFOQuestNode, event: script event; conditions up its parents: fn576 == 1. Source: TGRFOQuestNode Skyrim.esm:0609B0 (Skyrim.esm). **files**
+- Story manager node TGRFOQuestNode, event: script event; conditions up its parents: GetEventData TGRadiantStartFO == 1. Source: TGRFOQuestNode Skyrim.esm:0609B0 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -464,7 +464,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node TGRGFQuestNode, event: script event; conditions up its parents: fn576 == 1. Source: TGRGFQuestNode Skyrim.esm:0609B1 (Skyrim.esm). **files**
+- Story manager node TGRGFQuestNode, event: script event; conditions up its parents: GetEventData TGRadiantStartGF == 1. Source: TGRGFQuestNode Skyrim.esm:0609B1 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -487,7 +487,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node TGRHCQuestNode, event: script event; conditions up its parents: fn576 == 1. Source: TGRHCQuestNode Skyrim.esm:0609B2 (Skyrim.esm). **files**
+- Story manager node TGRHCQuestNode, event: script event; conditions up its parents: GetEventData TGRadiantStartHC == 1. Source: TGRHCQuestNode Skyrim.esm:0609B2 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -515,7 +515,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node TGRNTQuestNode, event: script event; conditions up its parents: fn576 == 1. Source: TGRNTQuestNode Skyrim.esm:0609B4 (Skyrim.esm). **files**
+- Story manager node TGRNTQuestNode, event: script event; conditions up its parents: GetEventData TGRadiantStartNT == 1. Source: TGRNTQuestNode Skyrim.esm:0609B4 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -539,7 +539,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node TGRSLQuestNode, event: script event; conditions up its parents: fn576 == 1. Source: TGRSLQuestNode Skyrim.esm:0609B5 (Skyrim.esm). **files**
+- Story manager node TGRSLQuestNode, event: script event; conditions up its parents: GetEventData TGRadiantStartSL == 1. Source: TGRSLQuestNode Skyrim.esm:0609B5 (Skyrim.esm). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

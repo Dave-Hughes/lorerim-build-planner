@@ -73,7 +73,7 @@
      ],
      "source": "DA11IntroSceneNode Skyrim.esm:09E0D6 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "the place you enter is Markarth"
     }
    ],
    "caughtUpBy": [
@@ -189,12 +189,13 @@
         "Skyrim.esm:01320E",
         "Root"
        ],
-       "conditions": "Investigate the Hall of the Dead stage == 10; fn576 == 1",
+       "conditions": "Investigate the Hall of the Dead stage == 10; the place you enter is Hall of the Dead",
        "globals": [],
        "source": "DA11HalloftheDeadSceneNode Skyrim.esm:07D958 (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself in Hall of the Dead."
     },
     {
      "by": "dialogue",

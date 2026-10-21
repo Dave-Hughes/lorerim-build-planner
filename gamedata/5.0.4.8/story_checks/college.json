@@ -11,6 +11,40 @@
    "startedBy": [
     {
      "by": "dialogue",
+     "speaker": "Faralda",
+     "speakerNamed": "alias MG01FaraldaAlias of MG01 (First Lessons) (unique)",
+     "speakerPlaced": [
+      "Hall of Countenance, Dormitory"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:01F814",
+     "prompt": "Okay, this is for the spell. (Give 30 gold)",
+     "reply": [
+      "Here you are. Now I'm anxious to see you cast it."
+     ],
+     "conditions": "the speaker is the one in alias MG01FaraldaAlias; fn264 == 0; the player has at least 30 gold; fn629 == 1",
+     "source": "TIF__0001F814.Fragment_0 on INFO Skyrim.esm:01F814 (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Faralda",
+     "speakerNamed": "alias MG01FaraldaAlias of MG01 (First Lessons) (unique)",
+     "speakerPlaced": [
+      "Hall of Countenance, Dormitory"
+     ],
+     "call": "SetStage 20",
+     "info": "Skyrim.esm:021E5D",
+     "prompt": "Okay, I can do that.",
+     "reply": [
+      "I look forward to it."
+     ],
+     "conditions": "the speaker is the one in alias MG01FaraldaAlias; First Lessons stage < 20; fn629 > 0",
+     "source": "TIF__00021E5D.Fragment_0 on INFO Skyrim.esm:021E5D (Skyrim.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
      "speaker": "Nirya",
      "speakerNamed": "alias MG01NiryaAlias of MG01 (First Lessons) (unique)",
      "speakerPlaced": [
@@ -2495,7 +2529,7 @@
       "Oh, good. I was afraid I'd have to go ask J'zargo.",
       "Now, you just stand there..."
      ],
-     "conditions": "fn46 == 0; the speaker is the one in alias QuestGiver",
+     "conditions": "GetDead == 0; the speaker is the one in alias QuestGiver",
      "source": "TIF__000C04FF.Fragment_0 on INFO Skyrim.esm:0C04FF (Skyrim.esm)",
      "verdict": "script"
     },
@@ -2513,7 +2547,7 @@
       "Oh, good. I was afraid I'd have to rely on Onmund.",
       "Now, you just stand there..."
      ],
-     "conditions": "fn46 == 0; the speaker is the one in alias QuestGiver",
+     "conditions": "GetDead == 0; the speaker is the one in alias QuestGiver",
      "source": "TIF__000C0500.Fragment_0 on INFO Skyrim.esm:0C0500 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -3257,7 +3291,8 @@
        "source": "MGSuspension Skyrim.esm:0B1145 (Skyrim.esm)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on kill."
     },
     {
      "by": "dialogue",
@@ -5804,7 +5839,7 @@
      ],
      "source": "MGRTolfdirNode1 Skyrim.esm:028A4D (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData MGRTolfdir == 1"
     }
    ],
    "caughtUpBy": [],
@@ -5899,7 +5934,7 @@
      ],
      "source": "MGRDrevisNode Skyrim.esm:028A4E (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData MGRDrevis == 1"
     }
    ],
    "caughtUpBy": [],
@@ -6049,7 +6084,7 @@
      ],
      "source": "MGRSergiusNode Skyrim.esm:028A4F (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData MGRSergius == 1"
     }
    ],
    "caughtUpBy": [],
@@ -6272,7 +6307,7 @@
      ],
      "source": "MGRSergiusNode Skyrim.esm:028A4F (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData MGRSergius == 1"
     }
    ],
    "caughtUpBy": [],
@@ -6387,7 +6422,7 @@
      ],
      "source": "MGRUragNode Skyrim.esm:028A50 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData MGRUrag == 1"
     }
    ],
    "caughtUpBy": [],
@@ -6476,7 +6511,7 @@
      ],
      "source": "MGRUragNode Skyrim.esm:028A50 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn576 == 1"
+     "conditions": "GetEventData MGRUrag == 1"
     }
    ],
    "caughtUpBy": [],

@@ -27,14 +27,15 @@
         "Skyrim.esm:01320E",
         "Root"
        ],
-       "conditions": "level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; fn576 == 1",
+       "conditions": "level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; the place you enter is a habitation",
        "globals": [
         "TimingIsEverything.esp:009437"
        ],
        "source": "DA14QuestStartNode Skyrim.esm:03FA1A (TimingIsEverything.esp)",
        "verdict": "files"
       }
-     ]
+     ],
+     "plain": "It starts by itself on change location."
     },
     {
      "by": "dialogue",
@@ -1239,11 +1240,11 @@
    "kind": "quest script",
    "does": "stage 70: SetStage 5",
    "startedBy": [
-    "story manager node DA14QuestStartNode (change location; level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; fn576 == 1; DA14QuestStartNode Skyrim.esm:03FA1A (TimingIsEverything.esp))"
+    "story manager node DA14QuestStartNode (change location; level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; the place you enter is a habitation; DA14QuestStartNode Skyrim.esm:03FA1A (TimingIsEverything.esp))"
    ],
    "inStartMenu": false,
    "source": "QF_DA14Start_0003FA17 on Skyrim.esm:03FA17 (Unofficial Skyrim Special Edition Patch.esp)",
-   "sentence": "DA14Start stage 70: SetStage 5 on DA14 (A Night To Remember); it is started by story manager node DA14QuestStartNode (change location; level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; fn576 == 1; DA14QuestStartNode Skyrim.esm:03FA1A (TimingIsEverything.esp))."
+   "sentence": "DA14Start stage 70: SetStage 5 on DA14 (A Night To Remember); it is started by story manager node DA14QuestStartNode (change location; level >= DA14MinLevel_KRY (now 20); A Night To Remember stage < 5; the place you enter is a habitation; DA14QuestStartNode Skyrim.esm:03FA1A (TimingIsEverything.esp))."
   },
   {
    "route": "dialogue INFO Skyrim.esm:01F387",

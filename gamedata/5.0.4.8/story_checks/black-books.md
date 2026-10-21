@@ -8,9 +8,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with someone the line does not name (named by alias Actor1 of DLC2WE06 (Black Book) (created)), "Where did you find this Black Book?": SetStage 50 (when: the speaker is the one in alias Actor1). Source: DLC2_TIF__02027A0D.Fragment_0 on INFO Dragonborn.esm:027A0D (Dragonborn.esm). **script**
 - Dialogue with someone the line does not name (named by alias Actor1 of DLC2WE06 (Black Book) (created)), "Hello.": SetStage 10 (when: fn249 == 1; the speaker is the one in alias Actor1). Source: DLC2_TIF__02027A12.Fragment_0 on INFO Dragonborn.esm:027A12 (Dragonborn.esm). **script**
-- Story manager node DLC2WERegionNorthQuestNode, event: script event; conditions up its parents: fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1. Source: DLC2WERegionNorthQuestNode Dragonborn.esm:01E7E1 (Dragonborn.esm). **run time**
-- Story manager node DLC2RegionGlacierQuestNode, event: script event; conditions up its parents: fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1. Source: DLC2RegionGlacierQuestNode Dragonborn.esm:01E7E2 (Dragonborn.esm). **run time**
-- Story manager node DLC2WERegionAshlandQuestNode, event: script event; conditions up its parents: fn576 == 1; global WEEnabled == 1 (now 1); fn576 == 1 or fn576 == 1. Source: DLC2WERegionAshlandQuestNode Dragonborn.esm:01E7E3 (Dragonborn.esm). **run time**
+- Story manager node DLC2WERegionNorthQuestNode, event: script event; conditions up its parents: the place you leave is Ashland; global WEEnabled == 1 (now 1); GetEventData DLC2WEStart == 1 or GetEventData DLC2WERoadStart == 1. Source: DLC2WERegionNorthQuestNode Dragonborn.esm:01E7E1 (Dragonborn.esm). **run time**
+- Story manager node DLC2RegionGlacierQuestNode, event: script event; conditions up its parents: the place you leave is Ashland; global WEEnabled == 1 (now 1); GetEventData DLC2WEStart == 1 or GetEventData DLC2WERoadStart == 1. Source: DLC2RegionGlacierQuestNode Dragonborn.esm:01E7E2 (Dragonborn.esm). **run time**
+- Story manager node DLC2WERegionAshlandQuestNode, event: script event; conditions up its parents: the place you leave is Ashland; global WEEnabled == 1 (now 1); GetEventData DLC2WEStart == 1 or GetEventData DLC2WERoadStart == 1. Source: DLC2WERegionAshlandQuestNode Dragonborn.esm:01E7E3 (Dragonborn.esm). **run time**
 - (First objective shown at stage 50; a call to a later stage advances the quest instead.)
 
 **Who and where**

@@ -66,7 +66,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Story manager node TOK_SMQN_QuestStart, event: item added; conditions up its parents: fn576 == 1; Arniel's Endeavor completed; The Way of the Voice completed; GetQuestRunning Kagrenac's Tools == 0. Source: TOK_SMQN_QuestStart Tools of Kagrenac.esp:AA0E7D (Tools of Kagrenac.esp). **run time**
+- Story manager node TOK_SMQN_QuestStart, event: item added; conditions up its parents: GetEventData TOK_KYWD_KeeningSMQuestStart == 1; Arniel's Endeavor completed; The Way of the Voice completed; GetQuestRunning Kagrenac's Tools == 0. Source: TOK_SMQN_QuestStart Tools of Kagrenac.esp:AA0E7D (Tools of Kagrenac.esp). **run time**
 - Story manager node TOK_SMQN_QuestAltStart, event: item added; conditions up its parents: global TOK_GLOB_MCMAltStart_Bool == 1 (now 0); GetQuestRunning Kagrenac's Tools == 0. Source: TOK_SMQN_QuestAltStart Tools of Kagrenac.esp:AA0E7E (Tools of Kagrenac.esp). **run time**
 - (First objective shown at stage 2; a call to a later stage advances the quest instead.)
 

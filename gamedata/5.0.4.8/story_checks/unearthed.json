@@ -11,23 +11,6 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": "Geldis Sadri",
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [
-      "The Retching Netch"
-     ],
-     "call": "SetStage 10",
-     "info": "Dragonborn.esm:02BBB9",
-     "prompt": null,
-     "reply": [
-      "If you've got gold on your hands, you might talk to Ralis, up at Kolbjorn Barrow. I've heard he wants to excavate the place."
-     ],
-     "conditions": "the speaker is Geldis Sadri; Unearthed stage < 100; Kolbjorn Barrow Misc Objectives stage <= 10",
-     "source": "DLC2_TIF__0202BBB9.Fragment_0 on INFO Dragonborn.esm:02BBB9 (TheChoiceIsYours.esp)",
-     "verdict": "script"
-    },
-    {
-     "by": "dialogue",
      "speaker": "Ralis Sedarys",
      "speakerNamed": "GetIsID",
      "speakerPlaced": [
@@ -148,6 +131,23 @@
      ],
      "conditions": "the speaker is Ralis Sedarys",
      "source": "DLC2_TIF__0203409E.Fragment_0 on INFO Dragonborn.esm:03409E (Dragonborn.esm)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": "Geldis Sadri",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "The Retching Netch"
+     ],
+     "call": "SetStage 10",
+     "info": "Dragonborn.esm:02BBB9",
+     "prompt": null,
+     "reply": [
+      "If you've got gold on your hands, you might talk to Ralis, up at Kolbjorn Barrow. I've heard he wants to excavate the place."
+     ],
+     "conditions": "the speaker is Geldis Sadri; Unearthed stage < 100; Kolbjorn Barrow Misc Objectives stage <= 10",
+     "source": "DLC2_TIF__0202BBB9.Fragment_0 on INFO Dragonborn.esm:02BBB9 (TheChoiceIsYours.esp)",
      "verdict": "script"
     },
     {

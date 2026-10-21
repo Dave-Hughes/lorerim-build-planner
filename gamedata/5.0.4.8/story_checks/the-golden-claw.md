@@ -9,6 +9,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Lucan Valerius, placed in Riverwood Trader, Lucan's Dry Goods, "I could help you get the claw back.": SetStage 10 (when: GetItemCount Golden Claw == 0; GetDead == 1; the speaker is Lucan Valerius). Source: TIF__0008AFA1.Fragment_1 on INFO Skyrim.esm:08AFA1 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with Lucan Valerius, placed in Riverwood Trader, Lucan's Dry Goods, "I could help you get the claw back.": SetStage 10 (when: GetItemCount Golden Claw == 0; the speaker is Lucan Valerius). Source: TIF__0008AFA2.Fragment_1 on INFO Skyrim.esm:08AFA2 (Skyrim.esm). **script**
 - Dialogue with Camilla Valerius, placed in Riverwood Trader, Lucan's Dry Goods, "I could help you get the claw back.": SetStage 10 (when: GetDead == 1; the speaker is Camilla Valerius). Source: TIF__00048A7C.Fragment_1 on INFO Skyrim.esm:048A7C (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Arvel the Swift, placed in Bleak Falls Temple, Bleak Falls Barrow, "Fine. Let me see if I can cut you down.": SetStage 13 (when: the speaker is Arvel the Swift). Source: TIF__0003A16F.Fragment_1 on INFO Skyrim.esm:03A16F (Skyrim.esm). **script**
+- Dialogue with Arvel the Swift, placed in Bleak Falls Temple, Bleak Falls Barrow, "Hand over the claw first!": SetStage 13 (when: the speaker is Arvel the Swift). Source: TIF__0003A170.Fragment_0 on INFO Skyrim.esm:03A170 (Skyrim.esm). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:039645 DNAM (GoldenLie.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 

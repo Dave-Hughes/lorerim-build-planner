@@ -36,7 +36,7 @@
      ],
      "source": "DLC2EbonyWarriorNode Dragonborn.esm:02C49F (LoreRim - Global Modifiers.esp)",
      "verdict": "run time",
-     "conditions": "level >= DLC2EbonyWarriorMinLevel_KRY (now 40); fn576 == 0; fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1 or fn576 == 1"
+     "conditions": "level >= DLC2EbonyWarriorMinLevel_KRY (now 40); the place you leave isn't Solstheim; the place you enter is Whiterun or the place you enter is Riften or the place you enter is Windhelm or the place you enter is Markarth or the place you enter is Solitude"
     }
    ],
    "caughtUpBy": [],
