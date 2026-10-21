@@ -6,7 +6,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts ccBGSSSE018_QF_ShadowQuest_0100081C, ccBGSSSE018_ShadowrendPlaceScript aren't in the install
+- Start-game flag: the quest runs from the start of the game. Source: ccBGSSSE018_ShadowrendPlaceScript.ShadowSetup on ccbgssse018-shadowrend.esl:00081C (ECSS - Shadowrend Patch.esp). **script**
+- Start-game flag: the quest runs from the start of the game. Source: ccstartafterchargenscript.OnUpdate on ccbgssse018-shadowrend.esl:00081C (ECSS - Shadowrend Patch.esp). **script**
 - (First objective shown at stage 5; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -154,6 +155,12 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 
 ## Routes into the first quest from outside the starts
 
+### BGSSSE018_ShadowrendQuest (Through a Glass, Darkly), its script's shadowsetup
+
+- What it does: ForceRefTo BGSSSE018_ShadowrendQuest (Through a Glass, Darkly); SetStage BGSSSE018_ShadowrendQuest (Through a Glass, Darkly) 5. Source: ccBGSSSE018_ShadowrendPlaceScript on ccbgssse018-shadowrend.esl:00081C (ECSS - Shadowrend Patch.esp). **script**
+- Called from: BGSSSE018_ShadowrendQuest (Through a Glass, Darkly) stage 0.
+- In one sentence: BGSSSE018_ShadowrendQuest (Through a Glass, Darkly)'s shadowsetup does ForceRefTo BGSSSE018_ShadowrendQuest (Through a Glass, Darkly); SetStage BGSSSE018_ShadowrendQuest (Through a Glass, Darkly) 5; it is called from BGSSSE018_ShadowrendQuest (Through a Glass, Darkly) stage 0.
+
 ## The payoff
 
 - **Dragonslayer** (completes at 200): nothing is given on its completing stages.
@@ -214,4 +221,4 @@ Settings loaders the story's globals touch, and whether the script the game runs
 - Timing is Everything: Dragonborn level setting 25 (settings.ini in Timing is Everything SE - Settings Loader), meant for DLC2CultistAttackMinLevel_KRY (record 25.0 from TimingIsEverything.esp; in game 25.0; **files**).
 - Wyrmstooth: WTStartLevel is 10 in a new game (record 20.0 in Requiem - Wyrmstooth.esp). Why: OnConfigInit runs once when the menu registers in a new game; it sets `migrated` and calls LoadSettings, which goes on only while bEnabled:Maintenance is set (it is 1) and then calls Load, which reads iWTGeneralRequirementsMinimalLevel:Requirements (10, settings.ini in Wyrmstooth - Settings Loader) and sets WTStartLevel to it; MigrateToMCMHelper, which would copy the global's record value (20.0) into that setting, runs only from OnGameReload or OnConfigOpen while `migrated` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would); OnGameReload reloads the settings only when bLoadSettingsonReload:Maintenance is set; it is 0, so later loads keep whatever the global holds. Source: WT_MCMScript (C:/LoreRim\mods\Wyrmstooth - Settings Loader\Scripts\WT_MCMScript.pex). **run time**
 
-Scripts the records name that aren't in the install (259); calls inside them can't be read. Full list in the JSON.
+Scripts the records name that aren't in the install (30); calls inside them can't be read. Full list in the JSON.

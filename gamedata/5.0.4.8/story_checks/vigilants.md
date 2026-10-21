@@ -700,8 +700,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- Dialogue with Lamae Bal (named by alias LamaeBal of zzzBMMq03 (The Blood Matron) (unique)), placed in Lamae's Dream, "Begone, monster.": SetStage 60 (when: the speaker is the one in alias LamaeBal). Source: BM03_TIF__0103C193.Fragment_0 on INFO Vigilant.esm:03C193 (Vigilant.esm). **script**
 - zzzBMMq02 (Remnants) calls at stage 100 Start; at stage 100 SetStage 0. Sources: QF_zzzBMMq02_01038525.fragment_20 on Vigilant.esm:038525. **script**
+- Dialogue with Lamae Bal (named by alias LamaeBal of zzzBMMq03 (The Blood Matron) (unique)), placed in Lamae's Dream, "Begone, monster.": SetStage 60 (when: the speaker is the one in alias LamaeBal). Source: BM03_TIF__0103C193.Fragment_0 on INFO Vigilant.esm:03C193 (Vigilant.esm). **script**
 - (First objective shown at stage 60; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1265,4 +1265,4 @@ Settings loaders the story's globals touch, and whether the script the game runs
 - Timing is Everything: Dragonborn level setting 25 (settings.ini in Timing is Everything SE - Settings Loader), meant for DLC2CultistAttackMinLevel_KRY (record 25.0 from TimingIsEverything.esp; in game 25.0; **files**).
 - Wyrmstooth: WTStartLevel is 10 in a new game (record 20.0 in Requiem - Wyrmstooth.esp). Why: OnConfigInit runs once when the menu registers in a new game; it sets `migrated` and calls LoadSettings, which goes on only while bEnabled:Maintenance is set (it is 1) and then calls Load, which reads iWTGeneralRequirementsMinimalLevel:Requirements (10, settings.ini in Wyrmstooth - Settings Loader) and sets WTStartLevel to it; MigrateToMCMHelper, which would copy the global's record value (20.0) into that setting, runs only from OnGameReload or OnConfigOpen while `migrated` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would); OnGameReload reloads the settings only when bLoadSettingsonReload:Maintenance is set; it is 0, so later loads keep whatever the global holds. Source: WT_MCMScript (C:/LoreRim\mods\Wyrmstooth - Settings Loader\Scripts\WT_MCMScript.pex). **run time**
 
-Scripts the records name that aren't in the install (259); calls inside them can't be read. Full list in the JSON.
+Scripts the records name that aren't in the install (30); calls inside them can't be read. Full list in the JSON.

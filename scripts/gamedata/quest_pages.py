@@ -330,6 +330,8 @@ def way_of(s, own_name, line_quests):
         place = clean_place((s.get("speakerPlaced") or [None])[0])
         text = (f"Ask {who} \"{s['prompt']}\"" if s.get("prompt") else f"Talk to {who}") + (f" in {place}" if place else "")
         return text, plain_needs(s.get("conditions"), own_name)
+    if s["by"] == "by itself":  # its own script starts it once you're a level (WO-121b)
+        return s["plain"], ([f"Level {s['level']}"] if s.get("level") else [])
     if s["by"] == "story manager":
         return f"It starts by itself on {s.get('event') or 'a story event'}", plain_needs(s.get("conditions"), own_name)
     if s["by"] == "quest script":

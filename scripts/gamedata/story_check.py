@@ -291,6 +291,25 @@ def fragment_guards(pex, function, global_of, target_prop):
     return counters, compares
 
 
+def own_level(pex, props):
+    """The player level a script waits for before it starts its quest: GetLevel compared with a number or a property of its quest."""
+    level = None
+    for _, f in functions(pex):
+        temps = set()
+        for op, args in f["code"]:
+            vals = [a[1] for a in args]
+            if op == "callmethod" and len(vals) >= 3 and str(vals[0]).lower() == "getlevel":
+                temps.add(vals[2])
+            elif op in ("cmp_ge", "cmp_gt") and len(vals) >= 3 and vals[1] in temps:
+                v = vals[2]
+                if isinstance(v, str) and v.lower().startswith("::") and v.lower().endswith("_var"):
+                    v = props.get(v[2:-4].lower(), 0)  # a property the quest doesn't set is 0: no level to wait for
+                    v = v.get("int", v.get("value")) if isinstance(v, dict) else v
+                if isinstance(v, (int, float)):
+                    level = int(v) + (1 if op == "cmp_gt" else 0)
+    return level
+
+
 def guards_words(counters, compares, place, event):
     """A helper's start in words: "It starts by itself at night in Windhelm, after you've come in four times."."""
     hours = {op: v for g, op, v in compares if g.lower() == "gamehour"}
@@ -572,8 +591,11 @@ def classify_starts(qid, order, events, threshold, here=None):
         if ev.get("quest") != qid or ev["call"] not in ("Start", "SetStage"):
             continue
         caller = ctx.get("quest")
-        if ctx["kind"] in ("quest", "alias") and caller == qid and ev.get("via") in (None, qid):
-            continue  # its own scripts moving it along
+        own = ctx["kind"] in ("quest", "alias") and caller == qid and ev.get("via") in (None, qid)
+        # Its own scripts move it along, except a quest script outside its stage fragments that starts it: LoreRim's
+        # ccStartAfterChargenScript sets a Creation Club quest's first stage once you're the level it asks (WO-121b).
+        if own and not (ctx["kind"] == "quest" and ctx.get("fragment") is False and (ev["call"] == "Start" or (ev.get("stage") is not None and ev["stage"] <= threshold))):
+            continue
         row = (ctx, ev)
         if caller in order and order[caller] > here and caller != qid:
             out["caughtUp"].append(row)
@@ -858,7 +880,7 @@ def main():
     story_ids = {q["id"] for q in story}
     order = {q["id"]: i for i, q in enumerate(story)}
 
-    pp, lo = plugin_paths(), load_order()
+    pp, lo = plugin_paths(), load_order(cc=True)  # with the Creation Club plugins and their archives (WO-121b)
     quests, infos, names, nodes = {}, {}, {}, {}
     qv, iv, gv = {}, {}, {}
     inventories, alias_items, script_targets, objective_targets = {}, {}, {}, {}
@@ -1360,6 +1382,15 @@ def main():
                     **({"scene": scene, "sceneStartedBy": started} if scene else {}),
                     "source": f"{ctx['script']}.{ev['function']} on INFO {ctx['info']} ({info_plugin.get(ctx['info'], '?')})", "verdict": "script"}
         caller = ctx.get("quest")
+        if caller == ev.get("quest") and ctx["kind"] == "quest" and ctx.get("fragment") is False and not ev.get("via"):
+            # Its own script starts it (WO-121b): by itself, once you're the level it waits for.
+            p = scripts.get(ctx["script"])
+            props = next((sc["props"] for sc in (quests.get(caller, {}).get("vmad") or {}).get("scripts", []) if sc["name"].lower() == ctx["script"].lower()), {})
+            level = own_level(p, {k.lower(): v for k, v in props.items()}) if isinstance(p, dict) else None
+            level = level if level and level > 1 else None
+            return {"by": "by itself", "script": ctx["script"], "call": ev["call"] + stage, **({"level": level} if level else {}),
+                    "plain": "It starts by itself" + (f" once you're level {level}" if level else " from the start of the game") + ".",
+                    "source": f"{ctx['script']}.{ev['function']} on {caller} ({quest_plugin.get(caller, '?')})", "verdict": "script"}
         via = f", through {quest_label(ev['via'], names)}'s {ev.get('viaFunction')}" if ev.get("via") else ""
         row = {"by": "quest script", "quest": quest_label(caller, names), "questId": caller, "atStage": ctx.get("stage"), "call": ev["call"] + stage,
                "source": f"{ctx['script']}.{ev['function']} on {caller} ({quest_plugin.get(caller, '?')}){via}", "verdict": "script"}
@@ -1406,6 +1437,8 @@ def main():
         # a catch-up line, said if you come by later. The talks from the start count only when there's no other opener
         # (Dinya Balu opens The Book of Love, so Fastred's later lines don't); the openers go first, catch-ups last.
         starts = [starter_row(c, e) for c, e in [x for x in started if x not in late] + admitted + late]
+        once = set()  # its own script's several entry points (OnInit, OnUpdate) are one start
+        starts = [s for s in starts if s["by"] != "by itself" or (s["script"] not in once and not once.add(s["script"]))]
         for ns in node_starts(qid, nodes):
             starts.append({"by": "story manager", "event": ns["event"], "node": ns["node"], "conditionsRaw": ns["conditions"], "parents": ns["parents"],
                            "source": f"{ns['node']} {ns['id']} ({ns['plugin']})", "verdict": "files"})

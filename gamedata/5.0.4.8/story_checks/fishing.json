@@ -10,13 +10,28 @@
    "firstObjectiveStage": 10,
    "startedBy": [
     {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "ccBGSSSE001-Fish.esm:000E7B",
+     "prompt": "What's wrong?",
+     "reply": [
+      "Listen, if you want to help... Here, take a look. Don't ask. Just take it. Maybe you can figure it out."
+     ],
+     "conditions": "",
+     "source": "ccBGSSSE001_TIF__05000E7B.Fragment_1 on INFO ccBGSSSE001-Fish.esm:000E7B (Simple Fishing Overhaul.esp)",
+     "verdict": "script"
+    },
+    {
      "by": "start game",
      "source": "ccBGSSSE001-Fish.esm:0009D4 DNAM (Synthesis - Gameplay Overwrite.esp)",
      "verdict": "files"
     }
    ],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 3,
    "firstObjective": {
     "text": "Obtain a juvenile mudcrab for Viriya",
     "index": 0,
@@ -29,12 +44,16 @@
      "fill": "forced",
      "holds": [
       {
-       "name": "ccBGSSSE001-Fish.esm:15A5DB",
+       "name": "a marker",
        "kind": "forced reference",
-       "where": []
+       "where": [
+        "Skyrim"
+       ]
       }
      ],
-     "cells": []
+     "cells": [
+      "Skyrim.esm:009A35"
+     ]
     }
    ],
    "needs": {
@@ -62,9 +81,49 @@
    "name": "Crustacean Extermination",
    "plugin": "Synthesis - Gameplay Overwrite.esp",
    "firstObjectiveStage": 5,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "ccBGSSSE001_MiscQuests (named \"Miscellaneous Quests Handler\" in its record), a helper quest with Viriya",
+     "questId": "ccBGSSSE001-Fish.esm:0009E6",
+     "atStage": 40,
+     "call": "Start",
+     "source": "QF_ccBGSSSE001_MiscQuests_050009E6.fragment_6 on ccBGSSSE001-Fish.esm:0009E6 (Synthesis - Gameplay Overwrite.esp)",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "Start",
+       "info": "ccBGSSSE001-Fish.esm:0009BC",
+       "prompt": null,
+       "reply": [],
+       "conditions": "",
+       "source": "ccBGSSSE001_TIF__050009BC.Fragment_1 on INFO ccBGSSSE001-Fish.esm:0009BC (ccBGSSSE001-Fish.esm)",
+       "verdict": "script"
+      }
+     ]
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
+     "call": "SetStage 5",
+     "info": "ccBGSSSE001-Fish.esm:000AD5",
+     "prompt": null,
+     "reply": [
+      "Good luck out there."
+     ],
+     "conditions": "",
+     "source": "ccBGSSSE001_TIF__05000AD5.Fragment_0 on INFO ccBGSSSE001-Fish.esm:000AD5 (ccBGSSSE001-Fish.esm)",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 2,
    "firstObjective": {
     "text": "Read the letter on mudcrab attacks",
     "index": 0,
@@ -78,7 +137,14 @@
     "ways": []
    },
    "globals": [],
-   "gives": [],
+   "gives": [
+    {
+     "what": "Alik'ri Fishing Rod",
+     "stage": 200,
+     "source": "QF_ccBGSSSE001_Crab_MQ2_050009DA.fragment_3",
+     "verdict": "script"
+    }
+   ],
    "secondStep": {
     "objective": {
      "text": "Investigate the area near the fishing shack west of Dawnstar",
@@ -86,11 +152,19 @@
      "source": "ccBGSSSE001-Fish.esm:0009DA QOBJ 5",
      "verdict": "files"
     },
-    "stage": null,
-    "movedBy": [],
-    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
-   },
-   "unread": "no starter in its records or scripts; scripts ccBGSSSE001_CrabEncMonitor, QF_ccBGSSSE001_Crab_MQ2_050009DA aren't in the install"
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "quest script",
+      "quest": "ccBGSSSE001_Crab_MQ2 (Crustacean Extermination)",
+      "questId": "ccBGSSSE001-Fish.esm:0009DA",
+      "atStage": null,
+      "call": "SetStage 10",
+      "source": "DefaultOnReadSetQuestStage.onRead on ccBGSSSE001-Fish.esm:0009DA (Synthesis - Gameplay Overwrite.esp)",
+      "verdict": "script"
+     }
+    ]
+   }
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009D6",
@@ -98,7 +172,16 @@
    "name": "End of the Line",
    "plugin": "Synthesis - Gameplay Overwrite.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "by itself",
+     "script": "ccBGSSSE001_CrabMQ3_Quest",
+     "call": "SetStage 5",
+     "plain": "It starts by itself from the start of the game.",
+     "source": "ccBGSSSE001_CrabMQ3_Quest.OnUpdateGameTime on ccBGSSSE001-Fish.esm:0009D6 (Synthesis - Gameplay Overwrite.esp)",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [
     {
      "by": "ccBGSSSE001_Crab_MQ4 (Wave Breaker)",
@@ -107,7 +190,7 @@
      "source": "QF_ccBGSSSE001_Crab_MQ4_050009E9.fragment_2 (Synthesis - Gameplay Overwrite.esp)"
     }
    ],
-   "advancedBy": 0,
+   "advancedBy": 3,
    "firstObjective": {
     "text": "Obtain <Global=ccBGSSSE001_MQ3WoodTotal> pieces of firewood (<Global=ccBGSSSE001_MQ3WoodCount>/<Global=ccBGSSSE001_MQ3WoodTotal>)",
     "index": 0,
@@ -132,8 +215,7 @@
     "stage": null,
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
-   },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Crab_MQ3_050009D6, ccBGSSSE001_CrabMQ3_Quest aren't in the install"
+   }
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009E9",
@@ -150,7 +232,7 @@
      "source": "QF_ccBGSSSE001_Misc_Dwarven_05000AD6.fragment_7 (Synthesis - Gameplay Overwrite.esp)"
     }
    ],
-   "advancedBy": 0,
+   "advancedBy": 3,
    "firstObjective": {
     "text": "Read Viriya's hastily written letter",
     "index": 0,
@@ -192,7 +274,7 @@
      }
     ]
    },
-   "unread": "no starter in its records or scripts; scripts ccBGSSSE001_CrabMQ4BodyCleanup, ccBGSSSE001_CatapultMonitor, ccBGSSSE001_AdvanceStageOnUpdate, ccBGSSSE001_CrabMQ4Reinforcements aren't in the install"
+   "unread": "no starter in its records or scripts"
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009DE",
@@ -202,13 +284,28 @@
    "firstObjectiveStage": 10,
    "startedBy": [
     {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "ccBGSSSE001-Fish.esm:00099D",
+     "prompt": "You work here? Can you teach me a few things about fishing?",
+     "reply": [
+      "I do. You've come to the right person. Here, take a look at this."
+     ],
+     "conditions": "Catch of the Day hasn't started",
+     "source": "ccBGSSSE001_TIF__0500099D.Fragment_0 on INFO ccBGSSSE001-Fish.esm:00099D (Simple Fishing Overhaul.esp)",
+     "verdict": "script"
+    },
+    {
      "by": "start game",
      "source": "ccBGSSSE001-Fish.esm:0009DE DNAM (Synthesis - Gameplay Overwrite.esp)",
      "verdict": "files"
     }
    ],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 1,
    "firstObjective": {
     "text": "Obtain a carp",
     "index": 0,
@@ -241,9 +338,34 @@
    "name": "Caught in the Rain",
    "plugin": "Synthesis - Gameplay Overwrite.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "ccBGSSSE001_Fish_MQ1 (Catch of the Day)",
+     "questId": "ccBGSSSE001-Fish.esm:0009DE",
+     "atStage": 200,
+     "call": "Start",
+     "source": "QF_ccBGSSSE001_Fish_MQ1_050009DE.fragment_3 on ccBGSSSE001-Fish.esm:0009DE (Synthesis - Gameplay Overwrite.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "ccBGSSSE001-Fish.esm:000A63",
+     "prompt": "I'm ready for another fishing challenge. Do you have anything for me?",
+     "reply": [
+      "Excellent! Here, take this."
+     ],
+     "conditions": "Caught in the Rain hasn't started",
+     "source": "ccBGSSSE001_TIF__05000A63.Fragment_0 on INFO ccBGSSSE001-Fish.esm:000A63 (Simple Fishing Overhaul.esp)",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 4,
    "firstObjective": {
     "text": "Obtain a catfish",
     "index": 0,
@@ -268,8 +390,7 @@
     "stage": null,
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
-   },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Fish_MQ2_050009EB aren't in the install"
+   }
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009E8",
@@ -277,9 +398,19 @@
    "name": "Frozen Fish",
    "plugin": "Synthesis - Gameplay Overwrite.esp",
    "firstObjectiveStage": 4,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "ccBGSSSE001_Fish_MQ2 (Caught in the Rain)",
+     "questId": "ccBGSSSE001-Fish.esm:0009EB",
+     "atStage": 300,
+     "call": "Start",
+     "source": "QF_ccBGSSSE001_Fish_MQ2_050009EB.fragment_8 on ccBGSSSE001-Fish.esm:0009EB (Synthesis - Gameplay Overwrite.esp)",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 2,
    "firstObjective": {
     "text": "Obtain an angler larvae",
     "index": 0,
@@ -304,8 +435,7 @@
     "stage": null,
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
-   },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Fish_MQ3_050009E8 aren't in the install"
+   }
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009DD",
@@ -313,9 +443,34 @@
    "name": "Darkest Depths",
    "plugin": "Synthesis - Gameplay Overwrite.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "ccBGSSSE001_Fish_MQ3 (Frozen Fish)",
+     "questId": "ccBGSSSE001-Fish.esm:0009E8",
+     "atStage": 200,
+     "call": "Start",
+     "source": "QF_ccBGSSSE001_Fish_MQ3_050009E8.fragment_4 on ccBGSSSE001-Fish.esm:0009E8 (Synthesis - Gameplay Overwrite.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "ccBGSSSE001-Fish.esm:000EB4",
+     "prompt": null,
+     "reply": [
+      "I'm seeking a small list of items to complete my next collection. Here, take it."
+     ],
+     "conditions": "",
+     "source": "ccBGSSSE001_TIF__05000EB4.Fragment_0 on INFO ccBGSSSE001-Fish.esm:000EB4 (Simple Fishing Overhaul.esp)",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 1,
    "firstObjective": {
     "text": "Obtain a direfish",
     "index": 0,
@@ -340,8 +495,7 @@
     "stage": null,
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
-   },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Fish_MQ4_050009DD aren't in the install"
+   }
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009DC",
@@ -349,9 +503,34 @@
    "name": "Fishing Legend",
    "plugin": "Synthesis - Gameplay Overwrite.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "ccBGSSSE001_Fish_MQ4 (Darkest Depths)",
+     "questId": "ccBGSSSE001-Fish.esm:0009DD",
+     "atStage": 200,
+     "call": "Start",
+     "source": "QF_ccBGSSSE001_Fish_MQ4_050009DD.fragment_3 on ccBGSSSE001-Fish.esm:0009DD (Synthesis - Gameplay Overwrite.esp)",
+     "verdict": "script"
+    },
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
+     "call": "SetStage 10",
+     "info": "ccBGSSSE001-Fish.esm:000EE5",
+     "prompt": null,
+     "reply": [
+      "My greatest challenge awaits us. Here, take a look at this."
+     ],
+     "conditions": "",
+     "source": "ccBGSSSE001_TIF__05000EE5.Fragment_0 on INFO ccBGSSSE001-Fish.esm:000EE5 (Simple Fishing Overhaul.esp)",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 1,
    "firstObjective": {
     "text": "Obtain an angelfish",
     "index": 0,
@@ -376,8 +555,7 @@
     "stage": null,
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
-   },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Fish_MQ5_050009DC aren't in the install"
+   }
   },
   {
    "id": "ccBGSSSE001-Fish.esm:000AD6",
@@ -387,7 +565,7 @@
    "firstObjectiveStage": 0,
    "startedBy": [],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 2,
    "firstObjective": {
     "text": "Investigate the entrance of Bronze Water Cave",
     "index": 0,
@@ -400,18 +578,28 @@
      "fill": "forced",
      "holds": [
       {
-       "name": "ccBGSSSE001-Fish.esm:000B14",
+       "name": "a marker",
        "kind": "forced reference",
-       "where": []
+       "where": [
+        "Bronze Water Cave"
+       ]
       }
      ],
-     "cells": []
+     "cells": [
+      "Skyrim.esm:009079"
+     ]
     }
    ],
    "needs": {
     "conditions": "the speaker is the one in alias 13",
     "doors": [],
-    "ways": []
+    "ways": [
+     {
+      "cell": "Bronze Water Cave",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
    },
    "globals": [],
    "gives": [],
@@ -426,7 +614,7 @@
     "movedBy": [],
     "unread": "nothing outside its own stage fragments sets stage 5 or one before it"
    },
-   "unread": "no starter in its records or scripts; scripts ccBGSSSE001_Quest_SetStageAfterTimer aren't in the install"
+   "unread": "no starter in its records or scripts"
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009EC",
@@ -436,7 +624,7 @@
    "firstObjectiveStage": 0,
    "startedBy": [],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 6,
    "firstObjective": {
     "text": "Obtain a glassfish for Zaria in Falkreath",
     "index": 0,
@@ -450,7 +638,20 @@
     "ways": []
    },
    "globals": [],
-   "gives": [],
+   "gives": [
+    {
+     "what": "Ring of Surroundings",
+     "stage": 200,
+     "source": "QF_ccBGSSSE001_Misc_Falkreat_050009EC.fragment_7",
+     "verdict": "script"
+    },
+    {
+     "what": "Ring of Surroundings",
+     "stage": 200,
+     "source": "QF_ccBGSSSE001_Misc_Falkreat_050009EC.fragment_9",
+     "verdict": "script"
+    }
+   ],
    "secondStep": {
     "objective": {
      "text": "Speak to Zaria",
@@ -462,7 +663,7 @@
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
    },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Falkreat_050009EC aren't in the install"
+   "unread": "no starter in its records or scripts"
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009E2",
@@ -472,7 +673,7 @@
    "firstObjectiveStage": 0,
    "startedBy": [],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 1,
    "firstObjective": {
     "text": "Find the Khajiit caravan's overturned cart west of Old Hroldan Inn",
     "index": 0,
@@ -485,12 +686,16 @@
      "fill": "forced",
      "holds": [
       {
-       "name": "ccBGSSSE001-Fish.esm:000B36",
+       "name": "a marker",
        "kind": "forced reference",
-       "where": []
+       "where": [
+        "Skyrim"
+       ]
       }
      ],
-     "cells": []
+     "cells": [
+      "Skyrim.esm:009A04"
+     ]
     }
    ],
    "needs": {
@@ -499,7 +704,14 @@
     "ways": []
    },
    "globals": [],
-   "gives": [],
+   "gives": [
+    {
+     "what": "Replica Ring of Khajiit",
+     "stage": 200,
+     "source": "QF_ccBGSSSE001_Misc_Khajiit_050009E2.fragment_2",
+     "verdict": "script"
+    }
+   ],
    "secondStep": {
     "objective": {
      "text": "Fish up Ri'saad's lost bottles of aged flin (<Global=ccBGSSSE001_MiscKhajiitFlinCount>/<Global=ccBGSSSE001_MiscKhajiitFlinTotal>)",
@@ -507,11 +719,11 @@
      "source": "ccBGSSSE001-Fish.esm:0009E2 QOBJ 10",
      "verdict": "files"
     },
-    "stage": null,
+    "stage": 20,
     "movedBy": [],
-    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+    "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
    },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Khajiit_050009E2 aren't in the install"
+   "unread": "no starter in its records or scripts"
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009DF",
@@ -521,7 +733,7 @@
    "firstObjectiveStage": 0,
    "startedBy": [],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 5,
    "firstObjective": {
     "text": "Speak to Lynea about private fishing lessons",
     "index": 0,
@@ -534,21 +746,38 @@
      "fill": "forced",
      "holds": [
       {
-       "name": "ccBGSSSE001-Fish.esm:000C64",
+       "name": "Lynea",
        "kind": "forced reference",
-       "where": []
+       "where": [
+        "Silver-Blood Inn"
+       ]
       }
      ],
-     "cells": []
+     "cells": [
+      "Skyrim.esm:016DFE"
+     ]
     }
    ],
    "needs": {
     "conditions": "the speaker is the one in alias 0",
     "doors": [],
-    "ways": []
+    "ways": [
+     {
+      "cell": "Silver-Blood Inn",
+      "ways": 1,
+      "locked": 0
+     }
+    ]
    },
    "globals": [],
-   "gives": [],
+   "gives": [
+    {
+     "what": "Lynea's Amulet of Dibella",
+     "stage": 200,
+     "source": "QF_ccBGSSSE001_Misc_Markarth_050009DF.fragment_11",
+     "verdict": "script"
+    }
+   ],
    "secondStep": {
     "objective": {
      "text": "Meet Lynea on the docks near the Warrens",
@@ -556,11 +785,26 @@
      "source": "ccBGSSSE001-Fish.esm:0009DF QOBJ 10",
      "verdict": "files"
     },
-    "stage": null,
-    "movedBy": [],
-    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": null,
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [],
+      "call": "SetStage 10",
+      "info": "ccBGSSSE001-Fish.esm:000B60",
+      "prompt": "Sure. We can fish off the docks near the Warrens.",
+      "reply": [
+       "Of course... I'll see you there soon."
+      ],
+      "conditions": "",
+      "source": "ccBGSSSE001_TIF__05000B60.Fragment_0 on INFO ccBGSSSE001-Fish.esm:000B60 (Simple Fishing Overhaul.esp)",
+      "verdict": "script"
+     }
+    ]
    },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Markarth_050009DF, ccBGSSSE001_MiscMarkarthScript aren't in the install"
+   "unread": "no starter in its records or scripts"
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009E4",
@@ -570,7 +814,7 @@
    "firstObjectiveStage": 0,
    "startedBy": [],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 1,
    "firstObjective": {
     "text": "Talk to Brutius in Morthal about a fishing contest",
     "index": 0,
@@ -583,18 +827,28 @@
      "fill": "forced",
      "holds": [
       {
-       "name": "ccBGSSSE001-Fish.esm:000B33",
+       "name": "Brutius",
        "kind": "forced reference",
-       "where": []
+       "where": [
+        "Morthal"
+       ]
       }
      ],
-     "cells": []
+     "cells": [
+      "Skyrim.esm:00939C"
+     ]
     }
    ],
    "needs": {
     "conditions": "the speaker is the one in alias 1",
     "doors": [],
-    "ways": []
+    "ways": [
+     {
+      "cell": "Morthal",
+      "ways": 2,
+      "locked": 0
+     }
+    ]
    },
    "globals": [],
    "gives": [],
@@ -605,11 +859,26 @@
      "source": "ccBGSSSE001-Fish.esm:0009E4 QOBJ 10",
      "verdict": "files"
     },
-    "stage": null,
-    "movedBy": [],
-    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+    "stage": 10,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": null,
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [],
+      "call": "SetStage 10",
+      "info": "ccBGSSSE001-Fish.esm:000B5C",
+      "prompt": null,
+      "reply": [
+       "Here's where you need to go."
+      ],
+      "conditions": "",
+      "source": "ccBGSSSE001_TIF__05000B5C.Fragment_0 on INFO ccBGSSSE001-Fish.esm:000B5C (ccBGSSSE001-Fish.esm)",
+      "verdict": "script"
+     }
+    ]
    },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Morthal_050009E4 aren't in the install"
+   "unread": "no starter in its records or scripts"
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009E3",
@@ -645,7 +914,7 @@
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
    },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Solitude_050009E3, ccBGSSSE001_Quest_SetStageAfterTimer aren't in the install"
+   "unread": "no starter in its records or scripts"
   },
   {
    "id": "ccBGSSSE001-Fish.esm:000E5D",
@@ -655,7 +924,7 @@
    "firstObjectiveStage": 0,
    "startedBy": [],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 2,
    "firstObjective": {
     "text": "Obtain a goldfish for Mila Valentia in Whiterun",
     "index": 0,
@@ -704,7 +973,7 @@
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
    },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Whiterun_05000E5D aren't in the install"
+   "unread": "no starter in its records or scripts"
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009D7",
@@ -712,9 +981,19 @@
    "name": "Two of a Kind",
    "plugin": "Synthesis - Gameplay Overwrite.esp",
    "firstObjectiveStage": 5,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "ccBGSSSE001_Misc_WhiterunPartOne (Heart of Gold)",
+     "questId": "ccBGSSSE001-Fish.esm:000E5D",
+     "atStage": 200,
+     "call": "Start",
+     "source": "QF_ccBGSSSE001_Misc_Whiterun_05000E5D.fragment_5 on ccBGSSSE001-Fish.esm:000E5D (Synthesis - Gameplay Overwrite.esp)",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 2,
    "firstObjective": {
     "text": "Find another goldfish for Mila Valentia",
     "index": 0,
@@ -762,8 +1041,7 @@
     "stage": null,
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
-   },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Whiterun_050009D7, ccBGSSSE001_MiscWhiterunCourier aren't in the install"
+   }
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009D5",
@@ -771,9 +1049,58 @@
    "name": "Tusked Terror",
    "plugin": "Synthesis - Gameplay Overwrite.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "ccBGSSSE001_MiscQuests (named \"Miscellaneous Quests Handler\" in its record), a helper quest with Viriya",
+     "questId": "ccBGSSSE001-Fish.esm:0009E6",
+     "atStage": 45,
+     "call": "SetStage 10",
+     "source": "QF_ccBGSSSE001_MiscQuests_050009E6.fragment_14 on ccBGSSSE001-Fish.esm:0009E6 (Synthesis - Gameplay Overwrite.esp)",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "Start",
+       "info": "ccBGSSSE001-Fish.esm:0009BC",
+       "prompt": null,
+       "reply": [],
+       "conditions": "",
+       "source": "ccBGSSSE001_TIF__050009BC.Fragment_1 on INFO ccBGSSSE001-Fish.esm:0009BC (ccBGSSSE001-Fish.esm)",
+       "verdict": "script"
+      }
+     ]
+    },
+    {
+     "by": "quest script",
+     "quest": "ccBGSSSE001_MiscQuests (named \"Miscellaneous Quests Handler\" in its record), a helper quest with Viriya",
+     "questId": "ccBGSSSE001-Fish.esm:0009E6",
+     "atStage": 43,
+     "call": "Start",
+     "source": "QF_ccBGSSSE001_MiscQuests_050009E6.fragment_22 on ccBGSSSE001-Fish.esm:0009E6 (Synthesis - Gameplay Overwrite.esp)",
+     "verdict": "script",
+     "throughStartedBy": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "Start",
+       "info": "ccBGSSSE001-Fish.esm:0009BC",
+       "prompt": null,
+       "reply": [],
+       "conditions": "",
+       "source": "ccBGSSSE001_TIF__050009BC.Fragment_1 on INFO ccBGSSSE001-Fish.esm:0009BC (ccBGSSSE001-Fish.esm)",
+       "verdict": "script"
+      }
+     ]
+    }
+   ],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 2,
    "firstObjective": {
     "text": "Obtain an arctic grayling",
     "index": 0,
@@ -798,8 +1125,7 @@
     "stage": null,
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
-   },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Windhelm_050009D5 aren't in the install"
+   }
   },
   {
    "id": "ccBGSSSE001-Fish.esm:000B98",
@@ -807,9 +1133,25 @@
    "name": "Stocking Up",
    "plugin": "Synthesis - Gameplay Overwrite.esp",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
+     "call": "Start",
+     "info": "ccBGSSSE001-Fish.esm:000E5B",
+     "prompt": null,
+     "reply": [
+      "Let's see what we can do. Here, take a look at this."
+     ],
+     "conditions": "",
+     "source": "ccBGSSSE001_TIF__05000E5B.Fragment_1 on INFO ccBGSSSE001-Fish.esm:000E5B (Simple Fishing Overhaul.esp)",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 4,
    "firstObjective": {
     "text": "Obtain <Global=ccBGSSSE001_RadiantObjTotal> brook bass for <Alias.ShortName=Innkeeper> in <Alias=Town> (<Global=ccBGSSSE001_RadiantObjCount>/<Global=ccBGSSSE001_RadiantObjTotal>)",
     "index": 0,
@@ -841,8 +1183,7 @@
     "stage": null,
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
-   },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Radiant_1_05000B98, ccBGSSSE001_RadiantFishQuest aren't in the install"
+   }
   },
   {
    "id": "ccBGSSSE001-Fish.esm:000C2F",
@@ -850,9 +1191,25 @@
    "name": "Further Study",
    "plugin": "Synthesis - Gameplay Overwrite.esp",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
+     "call": "Start",
+     "info": "ccBGSSSE001-Fish.esm:000E5C",
+     "prompt": null,
+     "reply": [
+      "We work where we can get work. Here, this is for you."
+     ],
+     "conditions": "",
+     "source": "ccBGSSSE001_TIF__05000E5C.Fragment_1 on INFO ccBGSSSE001-Fish.esm:000E5C (Simple Fishing Overhaul.esp)",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 4,
    "firstObjective": {
     "text": "Obtain a pygmy sunfish for <Alias=Alchemist> in <Alias=Town> (<Global=ccBGSSSE001_RadiantObjCount>/<Global=ccBGSSSE001_RadiantObjTotal>)",
     "index": 0,
@@ -884,8 +1241,7 @@
     "stage": null,
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
-   },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Radiant_2_05000C2F, ccBGSSSE001_RadiantFishQuest aren't in the install"
+   }
   },
   {
    "id": "ccBGSSSE001-Fish.esm:000C8C",
@@ -893,9 +1249,25 @@
    "name": "Rubbish Retrieval",
    "plugin": "Synthesis - Gameplay Overwrite.esp",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
+     "call": "Start",
+     "info": "ccBGSSSE001-Fish.esm:000E5E",
+     "prompt": null,
+     "reply": [
+      "Here, take this. It's all in this note."
+     ],
+     "conditions": "",
+     "source": "ccBGSSSE001_TIF__05000E5E.Fragment_1 on INFO ccBGSSSE001-Fish.esm:000E5E (Simple Fishing Overhaul.esp)",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
-   "advancedBy": 0,
+   "advancedBy": 2,
    "firstObjective": {
     "text": "Fish up <Global=ccBGSSSE001_RadiantObjTotal> items from the water in <Alias=Town> (<Global=ccBGSSSE001_RadiantObjCount>/<Global=ccBGSSSE001_RadiantObjTotal>)",
     "index": 0,
@@ -927,8 +1299,7 @@
     "stage": null,
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
-   },
-   "unread": "no starter in its records or scripts; scripts ccBGSSSE001_RadiantJunkQuest, QF_ccBGSSSE001_Radiant_3_05000C8C, ccBGSSSE001_RadiantQuest3Listener aren't in the install"
+   }
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009D3",
@@ -951,12 +1322,16 @@
      "fill": "forced",
      "holds": [
       {
-       "name": "ccBGSSSE001-Fish.esm:04D03C",
+       "name": "a marker",
        "kind": "forced reference",
-       "where": []
+       "where": [
+        "Skyrim"
+       ]
       }
      ],
-     "cells": []
+     "cells": [
+      "Skyrim.esm:009B92"
+     ]
     }
    ],
    "needs": {
@@ -973,11 +1348,11 @@
      "source": "ccBGSSSE001-Fish.esm:0009D3 QOBJ 5",
      "verdict": "files"
     },
-    "stage": null,
+    "stage": 15,
     "movedBy": [],
-    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+    "unread": "nothing outside its own stage fragments sets stage 15 or one before it"
    },
-   "unread": "no starter in its records or scripts; scripts QF_ccBGSSSE001_Start_MQ1_050009D3 aren't in the install"
+   "unread": "no starter in its records or scripts"
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009DB",
@@ -1129,10 +1504,19 @@
        "verdict": "files"
       }
      ]
+    },
+    {
+     "by": "quest script",
+     "quest": "ccBGSSSE001_Start_MQ1 (First Catch)",
+     "questId": "ccBGSSSE001-Fish.esm:0009D3",
+     "atStage": 50,
+     "call": "Start",
+     "source": "QF_ccBGSSSE001_Start_MQ1_050009D3.fragment_5 on ccBGSSSE001-Fish.esm:0009D3 (Synthesis - Gameplay Overwrite.esp)",
+     "verdict": "script"
     }
    ],
    "caughtUpBy": [],
-   "advancedBy": 1,
+   "advancedBy": 3,
    "firstObjective": {
     "text": "Gather information on fishing",
     "index": 0,
@@ -1177,9 +1561,26 @@
      "source": "ccBGSSSE001-Fish.esm:0009DB QOBJ 10",
      "verdict": "files"
     },
-    "stage": null,
-    "movedBy": [],
-    "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
+    "stage": 5,
+    "movedBy": [
+     {
+      "by": "dialogue",
+      "speaker": "Keerava",
+      "speakerNamed": "GetIsID",
+      "speakerPlaced": [
+       "The Bee and Barb, Bee and Barb"
+      ],
+      "call": "SetStage 5",
+      "info": "CC Fishing - Delayed Start.esp:000803",
+      "prompt": "I'd like to learn about fishing. Could you help me?",
+      "reply": [
+       "Oh yes. Take a look at the Riften fishery."
+      ],
+      "conditions": "the speaker is Keerava; Angler Acquaintances stage < 5; GetQuestRunning Angler Acquaintances == 1",
+      "source": "ANDR_CCFishDelay_DialogScript.Fragment_1 on INFO CC Fishing - Delayed Start.esp:000803 (CC Fishing - Delayed Start.esp)",
+      "verdict": "script"
+     }
+    ]
    }
   }
  ],
@@ -2298,8 +2699,26 @@
    ]
   }
  ],
- "otherStarts": "To get into Fishing: talk to ccBGSSSE001-Fish.esm:15A5DB: In A Pinch is running from the start (Obtain a juvenile mudcrab for Viriya); or Catch of the Day is running from the start: Obtain a carp.",
- "routes": [],
+ "otherStarts": "To get into Fishing: talk to a marker in Skyrim: In A Pinch is running from the start (Obtain a juvenile mudcrab for Viriya); or Catch of the Day is running from the start: Obtain a carp.",
+ "routes": [
+  {
+   "route": "dialogue INFO ccBGSSSE001-Fish.esm:000E7B",
+   "kind": "dialogue",
+   "speaker": null,
+   "speakerNamed": "GetIsID",
+   "race": null,
+   "placed": [],
+   "prompt": "What's wrong?",
+   "reply": [
+    "Listen, if you want to help... Here, take a look. Don't ask. Just take it. Maybe you can figure it out."
+   ],
+   "conditions": "",
+   "does": "SetStage 10 on ccBGSSSE001_Crab_MQ1 (In A Pinch)",
+   "source": "ccBGSSSE001_TIF__05000E7B.Fragment_1 on INFO ccBGSSSE001-Fish.esm:000E7B (Simple Fishing Overhaul.esp); topic ccBGSSSE001_Crab_MQ1_PreStartTopic",
+   "sentence": "Talk to the speaker the line's conditions name and choose \"What's wrong?\": SetStage 10 on ccBGSSSE001_Crab_MQ1 (In A Pinch).",
+   "stops": "the speaker isn't named by an NPC: GetIsID"
+  }
+ ],
  "loaders": {
   "Wyrmstooth": {
    "quest": "Wyrmstooth.esp:AC1487",
@@ -3285,261 +3704,32 @@
   "AAS_PlayerScript",
   "ACFH_TIF__03000B2B",
   "ACFH_TIF__03000B6B",
-  "BGSSSE010_OnReadSetStageAlias",
   "BaanMalurCarriageScript",
   "HLIO_TIF__0598299C",
   "JR0_QF_JRLucienCCSaintsAndSed_07000800",
   "JR_TIF__05172482",
   "JR_TIF__05172488",
   "ParryManagerQuestScript",
-  "QF_DLCDwarvenPuzzleDungeonQu_050038D9",
   "QF_HRI_Events_Quest_WEWerebe_0402904A",
   "QF_SOMRRumoursQuest_0721AE15",
-  "QF_ccBGSSSE001_Crab_MQ1_050009D4",
-  "QF_ccBGSSSE001_Crab_MQ2_050009DA",
-  "QF_ccBGSSSE001_Crab_MQ3_050009D6",
-  "QF_ccBGSSSE001_Fish_MQ1_050009DE",
-  "QF_ccBGSSSE001_Fish_MQ2_050009EB",
-  "QF_ccBGSSSE001_Fish_MQ3_050009E8",
-  "QF_ccBGSSSE001_Fish_MQ4_050009DD",
-  "QF_ccBGSSSE001_Fish_MQ5_050009DC",
-  "QF_ccBGSSSE001_MiscQuests_050009E6",
-  "QF_ccBGSSSE001_Misc_Falkreat_050009EC",
-  "QF_ccBGSSSE001_Misc_Khajiit_050009E2",
-  "QF_ccBGSSSE001_Misc_Markarth_050009DF",
-  "QF_ccBGSSSE001_Misc_Morthal_050009E4",
-  "QF_ccBGSSSE001_Misc_Solitude_050009E3",
-  "QF_ccBGSSSE001_Misc_Whiterun_050009D7",
-  "QF_ccBGSSSE001_Misc_Whiterun_05000E5D",
-  "QF_ccBGSSSE001_Misc_Windhelm_050009D5",
-  "QF_ccBGSSSE001_Radiant_1_05000B98",
-  "QF_ccBGSSSE001_Radiant_2_05000C2F",
-  "QF_ccBGSSSE001_Radiant_3_05000C8C",
-  "QF_ccBGSSSE001_Start_MQ1_050009D3",
-  "QF_ccBGSSSE001_Start_MQ2_050009DB",
-  "QF_ccBGSSSE010_PetPurchaseQu_02000808",
-  "QF_ccBGSSSE025_ElytraPetAcqu_050010C3",
-  "QF_ccBGSSSE025_RareCuriosInt_050010C1",
-  "QF_ccBGSSSE035_PetAcquireQue_0400080A",
-  "SSE_TIF__020008AA",
-  "SSE_ccBGSSSE037_RareCurios_0100084D",
+  "SSE_TIF__05000FD4",
+  "SSE_TIF__05000FD5",
+  "SSE_TIF__05000FD8",
+  "SSE_TIF__05000FDB",
   "SilgradCarriageScript",
   "SkyInteract_PlayerLoadGameAlias",
-  "Survival_PlayerHitInfo",
-  "Survival_PlayerLocationInfo",
   "Survival_ThirstPlayerAlias",
-  "Survival_VampirismLycanthropy",
   "TIF__020458BA",
   "TIF__023943AB",
   "TIF__03000976",
   "TIF__03000D75",
   "TIF__04138034",
   "TIF__08005903",
-  "TIF_ccBGSSSE025_StaadaFrag",
-  "TIF_ccBGSSSE025_StaadaFrag2",
-  "TIF_ccBGSSSE025_StaadaFrag3",
-  "TIF_ccBGSSSE025_StaadaFragA",
-  "TIF_ccBGSSSE025_StaadaFrgF",
   "Traits_ElementalistPlayerScript",
-  "VS02_QF_ccVSVSSE002_MainQuest_050008C8",
   "aaCi_TIF__0501F5BC",
   "aaEl_QF_aaElisifUpdate0108_05014EF5",
   "aaaVampireFeedingContractScriptB",
   "aaaVampireFeedingRemoveAlias",
-  "ccASVSSE001_KillFollowerCheck",
-  "ccASVSSE001_OnHitStageSetScript",
-  "ccASVSSE001_SetStageonActivateScript",
-  "ccASVSSE001_TIF__05000DFC",
-  "ccASVSSE001_TIF__05000E04",
-  "ccASVSSE001_TIF__05000E07",
-  "ccASVSSE001_TIF__05000E09",
-  "ccASVSSE001_TIF__05000EAB",
-  "ccASVSSE001_TIF__0500114D",
-  "ccASVSSE001_TIF__0500115F",
-  "ccASVSSE001_TIF__05001160",
-  "ccASVSSE001_TIF__0500116A",
-  "ccASVSSE001_TIF__05001178",
-  "ccASVSSE001_TIF__05048064",
-  "ccASVSSE001_TIF__05048065",
-  "ccASVSSE001_TIF__0504806D",
-  "ccASVSSE001_TIF__05219F5B",
-  "ccASVSSE001_TaskChecklilst",
-  "ccBGSSSE001_AdvanceStageOnUpdate",
-  "ccBGSSSE001_CatapultMonitor",
-  "ccBGSSSE001_CrabEncMonitor",
-  "ccBGSSSE001_CrabMQ2EncAlias",
-  "ccBGSSSE001_CrabMQ3_Quest",
-  "ccBGSSSE001_CrabMQ4BodyCleanup",
-  "ccBGSSSE001_CrabMQ4Reinforcements",
-  "ccBGSSSE001_DeleteOnQuestDone",
-  "ccBGSSSE001_GuardPanicScript",
-  "ccBGSSSE001_ItemCollectObjectiveScript",
-  "ccBGSSSE001_MiscDwarPlayScript",
-  "ccBGSSSE001_MiscKhajPlayScript",
-  "ccBGSSSE001_MiscMarkarthScript",
-  "ccBGSSSE001_MiscQuestScript",
-  "ccBGSSSE001_MiscSol_DinnerGuestScript",
-  "ccBGSSSE001_MiscWhiterunCourier",
-  "ccBGSSSE001_OnDeathCallReinforce",
-  "ccBGSSSE001_OnReadSetStage",
-  "ccBGSSSE001_PlayerHitScript",
-  "ccBGSSSE001_Quest_SetStageAfterTimer",
-  "ccBGSSSE001_RadiantFishQuest",
-  "ccBGSSSE001_RadiantItemPlayerScript",
-  "ccBGSSSE001_RadiantJunkQuest",
-  "ccBGSSSE001_RadiantQuest3Listener",
-  "ccBGSSSE001_SandboxFollowerScript",
-  "ccBGSSSE001_SetStageOnActivate",
-  "ccBGSSSE001_SetStageOnPickup",
-  "ccBGSSSE001_StartMQ1PlayerScript",
-  "ccBGSSSE001_SwapOutfitOnCellAttach",
-  "ccBGSSSE001_TIF__0500099D",
-  "ccBGSSSE001_TIF__050009A7",
-  "ccBGSSSE001_TIF__050009BC",
-  "ccBGSSSE001_TIF__050009D1",
-  "ccBGSSSE001_TIF__05000A63",
-  "ccBGSSSE001_TIF__05000A68",
-  "ccBGSSSE001_TIF__05000B1E",
-  "ccBGSSSE001_TIF__05000B5C",
-  "ccBGSSSE001_TIF__05000B60",
-  "ccBGSSSE001_TIF__05000B64",
-  "ccBGSSSE001_TIF__05000B79",
-  "ccBGSSSE001_TIF__05000BAF",
-  "ccBGSSSE001_TIF__05000BB0",
-  "ccBGSSSE001_TIF__05000BB1",
-  "ccBGSSSE001_TIF__05000BB2",
-  "ccBGSSSE001_TIF__05000BB3",
-  "ccBGSSSE001_TIF__05000BB4",
-  "ccBGSSSE001_TIF__05000BB5",
-  "ccBGSSSE001_TIF__05000BB6",
-  "ccBGSSSE001_TIF__05000BDE",
-  "ccBGSSSE001_TIF__05000C28",
-  "ccBGSSSE001_TIF__05000C29",
-  "ccBGSSSE001_TIF__05000C49",
-  "ccBGSSSE001_TIF__05000C5C",
-  "ccBGSSSE001_TIF__05000C5E",
-  "ccBGSSSE001_TIF__05000C70",
-  "ccBGSSSE001_TIF__05000E5B",
-  "ccBGSSSE001_TIF__05000E5C",
-  "ccBGSSSE001_TIF__05000E5E",
-  "ccBGSSSE001_TIF__05000E7B",
-  "ccBGSSSE001_TIF__05000EA4",
-  "ccBGSSSE001_TIF__05000EA9",
-  "ccBGSSSE001_TIF__05000EAC",
-  "ccBGSSSE001_TIF__05000EAF",
-  "ccBGSSSE001_TIF__05000EB4",
-  "ccBGSSSE001_TIF__05000EC3",
-  "ccBGSSSE001_TIF__05000ECE",
-  "ccBGSSSE001_TIF__05000EE5",
-  "ccBGSSSE001_TIF__050C1D0F",
-  "ccBGSSSE001_WhiterunChestScript",
-  "ccBGSSSE002_TKArrowsQuestScript",
-  "ccBGSSSE010_ContainerSetStage",
-  "ccBGSSSE010_SetStageOnActivate",
-  "ccBGSSSE013_BattleScript",
-  "ccBGSSSE014_SetStageContainerOpen",
-  "ccBGSSSE018_QF_ShadowQuest_0100081C",
-  "ccBGSSSE018_ShadowrendPlaceScript",
-  "ccBGSSSE018_ShadowrendPlayerScript",
-  "ccBGSSSE025_ElytraCollectItemScript",
-  "ccBGSSSE025_RCIntegrationScript",
-  "ccBGSSSE034_MapContainerChangeAlias",
-  "ccBGSSSE034_TIF__02000837",
-  "ccBGSSSE034_TIF__02000838",
-  "ccBGSSSE034_TIF__02000839",
-  "ccBGSSSE034_TIF__0200083A",
-  "ccBGSSSE034_TIF__0200083C",
-  "ccBGSSSE034_TIF__0200084A",
-  "ccBGSSSE034_WildHorseRefAliasScript",
-  "ccBGSSSE034_WildHorsesQuestScript",
-  "ccBGSSSE034_tif__02000d6c",
-  "ccBGSSSE034_tif__02000d6d",
-  "ccBGSSSE035_MerchantAlias",
-  "ccBGSSSE035_OnActStageRefAlias",
-  "ccBGSSSE036_SetStageOnRead",
-  "ccBGSSSE051_TIF__05000833",
-  "ccBGSSSE051_TIF__05000838",
-  "ccBGSSSE051_TIF__05000839",
-  "ccBGSSSE051__TIF__0500083D",
-  "ccBGSSSE051__TIF__05000841",
-  "ccBGSSSE067_ContentAwareScript",
-  "ccBGSSSE067_QuestFunctionsScript",
-  "ccBGSSSE067_Quest_0506BFC1",
-  "ccBGSSSE067_SetStageOnActivateConfirm",
-  "ccBGSSSE067_SetStageOnOpenRefAlias",
-  "ccBGSSSE067_SetStageTriggerScript",
-  "ccEDHSSE003_TIF__02000860",
-  "ccEDHSSE003_TIF__02000862",
-  "ccEDHSSE003_TIF__0200086B",
-  "ccEDHSSE003_TIF__02000871",
-  "ccEDHSSE003_TIF__02000875",
-  "ccEDHSSE003_TIF__0200088B",
-  "ccEDHSSE003_TIF__020008B0",
-  "ccEEJSSE004__05000C54",
-  "ccEEJSSE004__05000C58",
-  "ccEEJSSE004__05000C72",
-  "ccEEJSSE005_DeathCount",
-  "ccEEJSSE005_Quest_050B7AED",
-  "ccEEJSSE005_SetGlobalOnPickup",
-  "ccEEJSSE005_TIF__050DB2AD",
-  "ccEEJSSE005_TIF__050DB2C5",
-  "ccFFBSSE001_SoldierDeadCountScript",
-  "ccKRTSSE001_DoorActivateScript",
-  "ccKRTSSE001_FerrySyste_05000A7B",
-  "ccKRTSSE001_GTScript",
-  "ccKRTSSE001_GameTimeScript",
-  "ccKRTSSE001_QuestFortu_05000A90",
-  "ccKRTSSE001_SetStageOnLoadScript",
-  "ccKRTSSE001_SleepSetStageScript",
-  "ccKRTSSE001_StageSetonActivate",
-  "ccKRTSSE001_TIF__05000A7E",
-  "ccQDRSSE002_FollowerIdleOnSitScript",
-  "ccRMSSSE001_AltarActivateScript",
-  "ccRMSSSE001_GhostTrapScript",
-  "ccRMSSSE001_SleepSetStageScript",
-  "ccRMSSSE001_TorchCountScript",
-  "ccRMSSSE001_TradeWithSkeletonScript",
-  "ccVSVSSE002_MainQuestScript",
-  "ccVSVSSE003_QF_MainQuest",
-  "ccVSVSSE004_AnimalAliasEggScript",
-  "ccVSVSSE004_AnimalAliasMilkScript",
-  "ccVSVSSE004_F_MainQuestManager",
-  "ccVSVSSE004_F_OverseerAliasScript",
-  "ccVSVSSE004_GuardDogAliasScript",
-  "ccVSVSSE004_HorseAliasScript",
-  "ccVSVSSE004_TIF_BuyChickens",
-  "ccVSVSSE004_TIF_BuyChickensSpouse",
-  "ccVSVSSE004_TIF_BuyCow",
-  "ccVSVSSE004_TIF_BuyCowSpouse",
-  "ccVSVSSE004_TIF_BuyGoat",
-  "ccVSVSSE004_TIF_BuyGoatSpouse",
-  "ccVSVSSE004_TIF_BuyHorse",
-  "ccVSVSSE004_TIF_BuyHorseSpouse",
-  "ccVSVSSE004_TIF_CollectProfitF",
-  "ccVSVSSE004_TIF_CollectProfitM",
-  "ccVSVSSE004_TIF_CollectProfitSpouse",
-  "ccVSVSSE004_TIF_FarmhandDismiss2",
-  "ccVSVSSE004_TIF_FarmhandHire",
-  "ccVSVSSE004_TIF_OverseerHire",
-  "ccVSVSSE004_TIF_OverseerHireSpouse",
-  "ccVSVSSE004_TIF_SpawnFarmhand1",
-  "ccVSVSSE004_TIF_SpawnFarmhand1Spouse",
-  "ccVSVSSE004_TIF_UpgradeAltKidRoom",
-  "ccVSVSSE004_TIF_UpgradeBedroom",
-  "ccVSVSSE004_TIF_UpgradeBedroomSpouse",
-  "ccVSVSSE004_TIF_UpgradeDining",
-  "ccVSVSSE004_TIF_UpgradeDiningSpouse",
-  "ccVSVSSE004_TIF_UpgradeKidRoom",
-  "ccVSVSSE004_TIF_UpgradeKidRoomAltS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomRepS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomReplace",
-  "ccVSVSSE004_TIF_UpgradeKidRoomSpouse",
-  "ccVSVSSE004_TIF_UpgradeKitchen",
-  "ccVSVSSE004_TIF_UpgradeKitchenSpouse",
-  "ccVSVSSE004_TIF_UpgradeLab",
-  "ccVSVSSE004_TIF_UpgradeLabSpouse",
-  "ccVSVSSE004_TIF_UpgradeLoft",
-  "ccVSVSSE004_TIF_UpgradeLoftSpouse",
   "urshug_TIF__0200183E"
  ]
 }

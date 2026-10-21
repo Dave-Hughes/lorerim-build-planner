@@ -61,6 +61,8 @@ def start_words(s):
         reply = f' Reply: "{s["reply"][0]}"' if s.get("reply") else ""
         when = f" When: {s['conditions']}." if s.get("conditions") else ""
         return f"**{who}**{named}{where}{said}{reply} Does: {s['call']}.{when} Record: {s['source']}."
+    if s["by"] == "by itself":
+        return f"**{s['plain']}** Its own script: {s['call']}. Record: {s['source']}."
     if s["by"] == "story manager":
         return f"**By itself**, story manager node {s['node']}, on {s.get('event') or 'no event'}: {s.get('conditions') or 'no conditions'}. Record: {s['source']}."
     if s["by"] == "quest script":

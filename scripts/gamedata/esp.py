@@ -13,10 +13,20 @@ def plugin_paths():
     for f in os.listdir(sd):
         if f.lower().endswith(('.esp','.esm','.esl')) and f.lower() not in m: m[f.lower()]=sd+'/'+f
     return m
-def load_order():
+def creation_club():
+    """The Creation Club plugins the game loads (Stock Game's Skyrim.ccc, in its order) that the install has, by their file names."""
+    ccc=ROOT+'/Stock Game/Skyrim.ccc'
+    if not os.path.exists(ccc): return []
+    have={k:os.path.basename(v) for k,v in plugin_paths().items()}
+    return [have[l.strip().lower()] for l in open(ccc,encoding='utf-8',errors='ignore') if l.strip().lower() in have]
+def load_order(cc=False):
+    """The enabled plugins in order: the five base masters, then plugins.txt. With cc, the Creation Club plugins
+    plugins.txt doesn't list come after the base masters, where the game loads them (WO-121b: the start check
+    reads their records and their archives' scripts; the data builds don't take them yet)."""
     lo=['Skyrim.esm','Update.esm','Dawnguard.esm','HearthFires.esm','Dragonborn.esm']
+    if cc: lo+=[p for p in creation_club() if p.lower() not in {x.lower() for x in lo}]
     for l in open(ROOT+'/profiles/Ultra/plugins.txt',encoding='utf-8',errors='ignore'):
-        if l.startswith('*'): lo.append(l.strip()[1:])
+        if l.startswith('*') and l.strip()[1:].lower() not in {x.lower() for x in lo}: lo.append(l.strip()[1:])
     return lo
 def subrecs(data):
     i=0;out=[];big=None

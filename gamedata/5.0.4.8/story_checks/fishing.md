@@ -6,6 +6,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Dialogue with someone the line does not name, "What's wrong?": SetStage 10. Source: ccBGSSSE001_TIF__05000E7B.Fragment_1 on INFO ccBGSSSE001-Fish.esm:000E7B (Simple Fishing Overhaul.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: ccBGSSSE001-Fish.esm:0009D4 DNAM (Synthesis - Gameplay Overwrite.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -17,7 +18,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Who and where**
 
 - First objective: "Obtain a juvenile mudcrab for Viriya". Source: ccBGSSSE001-Fish.esm:0009D4 QOBJ 0. **files**
-- Target alias CrabCritter (forced): ccBGSSSE001-Fish.esm:15A5DB (forced reference). **files**
+- Target alias CrabCritter (forced): a marker (forced reference, placed in Skyrim). **files**
 
 **Needs**
 
@@ -29,13 +30,14 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts ccBGSSSE001_CrabEncMonitor, QF_ccBGSSSE001_Crab_MQ2_050009DA aren't in the install
+- ccBGSSSE001_MiscQuests (named "Miscellaneous Quests Handler" in its record), a helper quest with Viriya at stage 40 calls Start; ccBGSSSE001_MiscQuests is started by dialogue with someone (Start). Source: QF_ccBGSSSE001_MiscQuests_050009E6.fragment_6 on ccBGSSSE001-Fish.esm:0009E6 (Synthesis - Gameplay Overwrite.esp). **script**
+- Dialogue with someone the line does not name: SetStage 5. Source: ccBGSSSE001_TIF__05000AD5.Fragment_0 on INFO ccBGSSSE001-Fish.esm:000AD5 (ccBGSSSE001-Fish.esm). **script**
 - (First objective shown at stage 5; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
 
-- Second objective: "Investigate the area near the fishing shack west of Dawnstar". Source: ccBGSSSE001-Fish.esm:0009DA QOBJ 5. **files**
-- **unread**: no fragment of its own shows the second objective, so the stage that moves it isn't traced.
+- Second objective: "Investigate the area near the fishing shack west of Dawnstar", shown at stage 10. Source: ccBGSSSE001-Fish.esm:0009DA QOBJ 5. **files**
+- ccBGSSSE001_Crab_MQ2 (Crustacean Extermination) calls SetStage 10. Source: DefaultOnReadSetQuestStage.onRead on ccBGSSSE001-Fish.esm:0009DA (Synthesis - Gameplay Overwrite.esp). **script**
 
 **Who and where**
 
@@ -46,13 +48,13 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Its own conditions: the speaker is the one in alias 2. **files**
 
-**Gives**: nothing on its completing stages.
+**Gives**: Alik'ri Fishing Rod (stage 200, QF_ccBGSSSE001_Crab_MQ2_050009DA.fragment_3).
 
 ## 3. End of the Line (`ccBGSSSE001_Crab_MQ3`, ccBGSSSE001-Fish.esm:0009D6, Synthesis - Gameplay Overwrite.esp)
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Crab_MQ3_050009D6, ccBGSSSE001_CrabMQ3_Quest aren't in the install
+- Start-game flag: the quest runs from the start of the game. Source: ccBGSSSE001_CrabMQ3_Quest.OnUpdateGameTime on ccBGSSSE001-Fish.esm:0009D6 (Synthesis - Gameplay Overwrite.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
@@ -79,7 +81,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts ccBGSSSE001_CrabMQ4BodyCleanup, ccBGSSSE001_CatapultMonitor, ccBGSSSE001_AdvanceStageOnUpdate, ccBGSSSE001_CrabMQ4Reinforcements aren't in the install
+- **unread**: no starter in its records or scripts
 - (First objective shown at stage 50; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
@@ -106,6 +108,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
+- Dialogue with someone the line does not name, "You work here? Can you teach me a few things about fishing?": SetStage 10 (when: Catch of the Day hasn't started). Source: ccBGSSSE001_TIF__0500099D.Fragment_0 on INFO ccBGSSSE001-Fish.esm:00099D (Simple Fishing Overhaul.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: ccBGSSSE001-Fish.esm:0009DE DNAM (Synthesis - Gameplay Overwrite.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -129,7 +132,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Fish_MQ2_050009EB aren't in the install
+- ccBGSSSE001_Fish_MQ1 (Catch of the Day) at stage 200 calls Start. Source: QF_ccBGSSSE001_Fish_MQ1_050009DE.fragment_3 on ccBGSSSE001-Fish.esm:0009DE (Synthesis - Gameplay Overwrite.esp). **script**
+- Dialogue with someone the line does not name, "I'm ready for another fishing challenge. Do you have anything for me?": SetStage 10 (when: Caught in the Rain hasn't started). Source: ccBGSSSE001_TIF__05000A63.Fragment_0 on INFO ccBGSSSE001-Fish.esm:000A63 (Simple Fishing Overhaul.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -152,7 +156,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Fish_MQ3_050009E8 aren't in the install
+- ccBGSSSE001_Fish_MQ2 (Caught in the Rain) at stage 300 calls Start. Source: QF_ccBGSSSE001_Fish_MQ2_050009EB.fragment_8 on ccBGSSSE001-Fish.esm:0009EB (Synthesis - Gameplay Overwrite.esp). **script**
 - (First objective shown at stage 4; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -175,7 +179,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Fish_MQ4_050009DD aren't in the install
+- ccBGSSSE001_Fish_MQ3 (Frozen Fish) at stage 200 calls Start. Source: QF_ccBGSSSE001_Fish_MQ3_050009E8.fragment_4 on ccBGSSSE001-Fish.esm:0009E8 (Synthesis - Gameplay Overwrite.esp). **script**
+- Dialogue with someone the line does not name: SetStage 10. Source: ccBGSSSE001_TIF__05000EB4.Fragment_0 on INFO ccBGSSSE001-Fish.esm:000EB4 (Simple Fishing Overhaul.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -198,7 +203,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Fish_MQ5_050009DC aren't in the install
+- ccBGSSSE001_Fish_MQ4 (Darkest Depths) at stage 200 calls Start. Source: QF_ccBGSSSE001_Fish_MQ4_050009DD.fragment_3 on ccBGSSSE001-Fish.esm:0009DD (Synthesis - Gameplay Overwrite.esp). **script**
+- Dialogue with someone the line does not name: SetStage 10. Source: ccBGSSSE001_TIF__05000EE5.Fragment_0 on INFO ccBGSSSE001-Fish.esm:000EE5 (Simple Fishing Overhaul.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -221,7 +227,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts ccBGSSSE001_Quest_SetStageAfterTimer aren't in the install
+- **unread**: no starter in its records or scripts
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -232,11 +238,12 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Who and where**
 
 - First objective: "Investigate the entrance of Bronze Water Cave". Source: ccBGSSSE001-Fish.esm:000AD6 QOBJ 0. **files**
-- Target alias CaveInvestigateMarker (forced): ccBGSSSE001-Fish.esm:000B14 (forced reference). **files**
+- Target alias CaveInvestigateMarker (forced): a marker (forced reference, placed in Bronze Water Cave). **files**
 
 **Needs**
 
 - Its own conditions: the speaker is the one in alias 13. **files**
+- Ways in: Bronze Water Cave: 1 door, 0 locked. A door is a need only when every way in is locked. **files**
 
 **Gives**: nothing on its completing stages.
 
@@ -244,7 +251,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Falkreat_050009EC aren't in the install
+- **unread**: no starter in its records or scripts
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -261,74 +268,76 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Its own conditions: the speaker is the one in alias 0 or the speaker is the one in alias 7. **files**
 
-**Gives**: nothing on its completing stages.
+**Gives**: Ring of Surroundings (stage 200, QF_ccBGSSSE001_Misc_Falkreat_050009EC.fragment_7); Ring of Surroundings (stage 200, QF_ccBGSSSE001_Misc_Falkreat_050009EC.fragment_9).
 
 ## 12. Spirits Away (`ccBGSSSE001_Misc_Khajiit`, ccBGSSSE001-Fish.esm:0009E2, Synthesis - Gameplay Overwrite.esp)
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Khajiit_050009E2 aren't in the install
+- **unread**: no starter in its records or scripts
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
 
-- Second objective: "Fish up Ri'saad's lost bottles of aged flin (<Global=ccBGSSSE001_MiscKhajiitFlinCount>/<Global=ccBGSSSE001_MiscKhajiitFlinTotal>)". Source: ccBGSSSE001-Fish.esm:0009E2 QOBJ 10. **files**
-- **unread**: no fragment of its own shows the second objective, so the stage that moves it isn't traced.
+- Second objective: "Fish up Ri'saad's lost bottles of aged flin (<Global=ccBGSSSE001_MiscKhajiitFlinCount>/<Global=ccBGSSSE001_MiscKhajiitFlinTotal>)", shown at stage 20. Source: ccBGSSSE001-Fish.esm:0009E2 QOBJ 10. **files**
+- **unread**: nothing outside its own stage fragments sets stage 20 or one before it.
 
 **Who and where**
 
 - First objective: "Find the Khajiit caravan's overturned cart west of Old Hroldan Inn". Source: ccBGSSSE001-Fish.esm:0009E2 QOBJ 0. **files**
-- Target alias Trigger (forced): ccBGSSSE001-Fish.esm:000B36 (forced reference). **files**
+- Target alias Trigger (forced): a marker (forced reference, placed in Skyrim). **files**
 
 **Needs**
 
 - Its own conditions: the speaker is the one in alias 2. **files**
 
-**Gives**: nothing on its completing stages.
+**Gives**: Replica Ring of Khajiit (stage 200, QF_ccBGSSSE001_Misc_Khajiit_050009E2.fragment_2).
 
 ## 13. Private Lessons (`ccBGSSSE001_Misc_Markarth`, ccBGSSSE001-Fish.esm:0009DF, Synthesis - Gameplay Overwrite.esp)
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Markarth_050009DF, ccBGSSSE001_MiscMarkarthScript aren't in the install
+- **unread**: no starter in its records or scripts
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
 
-- Second objective: "Meet Lynea on the docks near the Warrens". Source: ccBGSSSE001-Fish.esm:0009DF QOBJ 10. **files**
-- **unread**: no fragment of its own shows the second objective, so the stage that moves it isn't traced.
+- Second objective: "Meet Lynea on the docks near the Warrens", shown at stage 10. Source: ccBGSSSE001-Fish.esm:0009DF QOBJ 10. **files**
+- Dialogue with someone the line does not name, "Sure. We can fish off the docks near the Warrens.": SetStage 10. Reply: "Of course... I'll see you there soon." Source: ccBGSSSE001_TIF__05000B60.Fragment_0 on INFO ccBGSSSE001-Fish.esm:000B60 (Simple Fishing Overhaul.esp). **script**
 
 **Who and where**
 
 - First objective: "Speak to Lynea about private fishing lessons". Source: ccBGSSSE001-Fish.esm:0009DF QOBJ 0. **files**
-- Target alias Student (forced): ccBGSSSE001-Fish.esm:000C64 (forced reference). **files**
+- Target alias Student (forced): Lynea (forced reference, placed in Silver-Blood Inn). **files**
 
 **Needs**
 
 - Its own conditions: the speaker is the one in alias 0. **files**
+- Ways in: Silver-Blood Inn: 1 door, 0 locked. A door is a need only when every way in is locked. **files**
 
-**Gives**: nothing on its completing stages.
+**Gives**: Lynea's Amulet of Dibella (stage 200, QF_ccBGSSSE001_Misc_Markarth_050009DF.fragment_11).
 
 ## 14. No Contest (`ccBGSSSE001_Misc_Morthal`, ccBGSSSE001-Fish.esm:0009E4, Synthesis - Gameplay Overwrite.esp)
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Morthal_050009E4 aren't in the install
+- **unread**: no starter in its records or scripts
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
 
-- Second objective: "Meet Brutius at the fishing spot". Source: ccBGSSSE001-Fish.esm:0009E4 QOBJ 10. **files**
-- **unread**: no fragment of its own shows the second objective, so the stage that moves it isn't traced.
+- Second objective: "Meet Brutius at the fishing spot", shown at stage 10. Source: ccBGSSSE001-Fish.esm:0009E4 QOBJ 10. **files**
+- Dialogue with someone the line does not name: SetStage 10. Reply: "Here's where you need to go." Source: ccBGSSSE001_TIF__05000B5C.Fragment_0 on INFO ccBGSSSE001-Fish.esm:000B5C (ccBGSSSE001-Fish.esm). **script**
 
 **Who and where**
 
 - First objective: "Talk to Brutius in Morthal about a fishing contest". Source: ccBGSSSE001-Fish.esm:0009E4 QOBJ 0. **files**
-- Target alias OldMan (forced): ccBGSSSE001-Fish.esm:000B33 (forced reference). **files**
+- Target alias OldMan (forced): Brutius (forced reference, placed in Morthal). **files**
 
 **Needs**
 
 - Its own conditions: the speaker is the one in alias 1. **files**
+- Ways in: Morthal: 2 doors, 0 locked. A door is a need only when every way in is locked. **files**
 
 **Gives**: nothing on its completing stages.
 
@@ -336,7 +345,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Solitude_050009E3, ccBGSSSE001_Quest_SetStageAfterTimer aren't in the install
+- **unread**: no starter in its records or scripts
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -359,7 +368,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Whiterun_05000E5D aren't in the install
+- **unread**: no starter in its records or scripts
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -383,7 +392,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Whiterun_050009D7, ccBGSSSE001_MiscWhiterunCourier aren't in the install
+- ccBGSSSE001_Misc_WhiterunPartOne (Heart of Gold) at stage 200 calls Start. Source: QF_ccBGSSSE001_Misc_Whiterun_05000E5D.fragment_5 on ccBGSSSE001-Fish.esm:000E5D (Synthesis - Gameplay Overwrite.esp). **script**
 - (First objective shown at stage 5; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -407,7 +416,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Misc_Windhelm_050009D5 aren't in the install
+- ccBGSSSE001_MiscQuests (named "Miscellaneous Quests Handler" in its record), a helper quest with Viriya calls at stage 45 SetStage 10; at stage 43 Start; ccBGSSSE001_MiscQuests is started by dialogue with someone (Start). Sources: QF_ccBGSSSE001_MiscQuests_050009E6.fragment_14, QF_ccBGSSSE001_MiscQuests_050009E6.fragment_22 on ccBGSSSE001-Fish.esm:0009E6. **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -430,7 +439,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Radiant_1_05000B98, ccBGSSSE001_RadiantFishQuest aren't in the install
+- Dialogue with someone the line does not name: Start. Source: ccBGSSSE001_TIF__05000E5B.Fragment_1 on INFO ccBGSSSE001-Fish.esm:000E5B (Simple Fishing Overhaul.esp). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -453,7 +462,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Radiant_2_05000C2F, ccBGSSSE001_RadiantFishQuest aren't in the install
+- Dialogue with someone the line does not name: Start. Source: ccBGSSSE001_TIF__05000E5C.Fragment_1 on INFO ccBGSSSE001-Fish.esm:000E5C (Simple Fishing Overhaul.esp). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -476,7 +485,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts ccBGSSSE001_RadiantJunkQuest, QF_ccBGSSSE001_Radiant_3_05000C8C, ccBGSSSE001_RadiantQuest3Listener aren't in the install
+- Dialogue with someone the line does not name: Start. Source: ccBGSSSE001_TIF__05000E5E.Fragment_1 on INFO ccBGSSSE001-Fish.esm:000E5E (Simple Fishing Overhaul.esp). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -499,18 +508,18 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts; scripts QF_ccBGSSSE001_Start_MQ1_050009D3 aren't in the install
+- **unread**: no starter in its records or scripts
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
 
-- Second objective: "Equip a fishing rod". Source: ccBGSSSE001-Fish.esm:0009D3 QOBJ 5. **files**
-- **unread**: no fragment of its own shows the second objective, so the stage that moves it isn't traced.
+- Second objective: "Equip a fishing rod", shown at stage 15. Source: ccBGSSSE001-Fish.esm:0009D3 QOBJ 5. **files**
+- **unread**: nothing outside its own stage fragments sets stage 15 or one before it.
 
 **Who and where**
 
 - First objective: "Visit the fishing camp south of Riverwood". Source: ccBGSSSE001-Fish.esm:0009D3 QOBJ 0. **files**
-- Target alias CampMarker (forced): ccBGSSSE001-Fish.esm:04D03C (forced reference). **files**
+- Target alias CampMarker (forced): a marker (forced reference, placed in Skyrim). **files**
 
 **Needs**
 
@@ -523,12 +532,13 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - ccBGSSSE001_FishingSystemQuest (named "Fishing System Quest" in its record), a helper quest calls Start; Start; Start; Start; Start; Start; Start; Start; Start; ccBGSSSE001_FishingSystemQuest is started by the start-game flag. Sources: ccBGSSSE001_FishingSystemScript.CatchSuccess, ccBGSSSE001_FishingSystemScript.OnFishingTriggerActivated, ccBGSSSE001_FishingSystemScript.TryToStartQuestAfterFirstCatch, ccBGSSSE001_FishingSystemScript.OnUpdate, ccBGSSSE001_FishingSystemScript.reel_line_known_result, ccBGSSSE001_FishingSystemScript.ReelLine on ccBGSSSE001-Fish.esm:033A57. **script**
+- ccBGSSSE001_Start_MQ1 (First Catch) at stage 50 calls Start. Source: QF_ccBGSSSE001_Start_MQ1_050009D3.fragment_5 on ccBGSSSE001-Fish.esm:0009D3 (Synthesis - Gameplay Overwrite.esp). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
 
-- Second objective: "Talk to Viriya". Source: ccBGSSSE001-Fish.esm:0009DB QOBJ 10. **files**
-- **unread**: no fragment of its own shows the second objective, so the stage that moves it isn't traced.
+- Second objective: "Talk to Viriya", shown at stage 5. Source: ccBGSSSE001-Fish.esm:0009DB QOBJ 10. **files**
+- Dialogue with Keerava, placed in The Bee and Barb, Bee and Barb, "I'd like to learn about fishing. Could you help me?": SetStage 5 (when: the speaker is Keerava; Angler Acquaintances stage < 5; GetQuestRunning Angler Acquaintances == 1). Reply: "Oh yes. Take a look at the Riften fishery." Source: ANDR_CCFishDelay_DialogScript.Fragment_1 on INFO CC Fishing - Delayed Start.esp:000803 (CC Fishing - Delayed Start.esp). **script**
 
 **Who and where**
 
@@ -670,6 +680,16 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 
 ## Routes into the first quest from outside the starts
 
+### dialogue INFO ccBGSSSE001-Fish.esm:000E7B
+
+- Speaker: not named by an NPC. Named by: GetIsID.
+- The player's prompt: "What's wrong?".
+- The reply: "Listen, if you want to help... Here, take a look. Don't ask. Just take it. Maybe you can figure it out.".
+- When it's offered: no conditions.
+- What it does: SetStage 10 on ccBGSSSE001_Crab_MQ1 (In A Pinch). Source: ccBGSSSE001_TIF__05000E7B.Fragment_1 on INFO ccBGSSSE001-Fish.esm:000E7B (Simple Fishing Overhaul.esp); topic ccBGSSSE001_Crab_MQ1_PreStartTopic. **script**
+- **unread**: the trail stops here: the speaker isn't named by an NPC: GetIsID.
+- In one sentence: Talk to the speaker the line's conditions name and choose "What's wrong?": SetStage 10 on ccBGSSSE001_Crab_MQ1 (In A Pinch).
+
 ## The payoff
 
 - **Dragonslayer** (completes at 200): nothing is given on its completing stages.
@@ -730,4 +750,4 @@ Settings loaders the story's globals touch, and whether the script the game runs
 - Timing is Everything: Dragonborn level setting 25 (settings.ini in Timing is Everything SE - Settings Loader), meant for DLC2CultistAttackMinLevel_KRY (record 25.0 from TimingIsEverything.esp; in game 25.0; **files**).
 - Wyrmstooth: WTStartLevel is 10 in a new game (record 20.0 in Requiem - Wyrmstooth.esp). Why: OnConfigInit runs once when the menu registers in a new game; it sets `migrated` and calls LoadSettings, which goes on only while bEnabled:Maintenance is set (it is 1) and then calls Load, which reads iWTGeneralRequirementsMinimalLevel:Requirements (10, settings.ini in Wyrmstooth - Settings Loader) and sets WTStartLevel to it; MigrateToMCMHelper, which would copy the global's record value (20.0) into that setting, runs only from OnGameReload or OnConfigOpen while `migrated` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would); OnGameReload reloads the settings only when bLoadSettingsonReload:Maintenance is set; it is 0, so later loads keep whatever the global holds. Source: WT_MCMScript (C:/LoreRim\mods\Wyrmstooth - Settings Loader\Scripts\WT_MCMScript.pex). **run time**
 
-Scripts the records name that aren't in the install (259); calls inside them can't be read. Full list in the JSON.
+Scripts the records name that aren't in the install (30); calls inside them can't be read. Full list in the JSON.

@@ -199,6 +199,31 @@ class Archive:
         return zlib.decompress(data)
 
 
+def archive_order(root, load_order, loose_dirs, profile="Ultra"):
+    """
+    The archives the game loads, first to last: those skyrim.ini names, then each plugin's own (<plugin>.bsa and
+    <plugin> - Textures.bsa) in load order, where the highest-priority mod's copy of a file wins. A Creation Club
+    plugin's archive comes with it when the load order has it (esp.load_order(cc=True), WO-121b).
+    """
+    found = {}
+    for d in reversed(loose_dirs):
+        try:
+            for f in os.listdir(d):
+                if f.lower().endswith(".bsa"):
+                    found[f.lower()] = os.path.join(d, f)
+        except OSError:
+            pass
+    order = []
+    ini = os.path.join(root, "profiles", profile, "skyrim.ini")
+    if os.path.exists(ini):
+        for line in re.findall(r"^sResourceArchiveList2?=(.*)$", open(ini, encoding="utf-8", errors="ignore").read(), re.M):
+            order += [a.strip().lower() for a in line.split(",") if a.strip()]
+    for p in load_order:
+        base = os.path.splitext(p)[0].lower()
+        order += [base + ".bsa", base + " - textures.bsa"]
+    return [found[a] for a in dict.fromkeys(order) if a in found]
+
+
 class Scripts:
     """
     The winning copy of each script: loose files by MO2 priority (highest first, then Stock Game), else the
@@ -224,23 +249,7 @@ class Scripts:
                 except OSError:
                     pass
         if archives is None:
-            found = {}
-            for d in reversed(loose_dirs):
-                try:
-                    for f in os.listdir(d):
-                        if f.lower().endswith(".bsa"):
-                            found[f.lower()] = os.path.join(d, f)
-                except OSError:
-                    pass
-            order = []
-            ini = os.path.join(root, "profiles", profile, "skyrim.ini")
-            if os.path.exists(ini):
-                for line in re.findall(r"^sResourceArchiveList2?=(.*)$", open(ini, encoding="utf-8", errors="ignore").read(), re.M):
-                    order += [a.strip().lower() for a in line.split(",") if a.strip()]
-            for p in load_order:
-                base = os.path.splitext(p)[0].lower()
-                order += [base + ".bsa", base + " - textures.bsa"]
-            archives = [found[a] for a in dict.fromkeys(order) if a in found]
+            archives = archive_order(root, load_order, loose_dirs, profile)
         self.archives = []
         for a in archives:
             try:

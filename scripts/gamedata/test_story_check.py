@@ -335,6 +335,25 @@ class WO121aTest(unittest.TestCase):
         self.assertFalse(sc.admits([{"fn": "GetStageDone", "cmp": "==", "value": 1.0, "param": "MG01", "stage": 10}], "MG01", 0))
         self.assertTrue(sc.admits([{"fn": "GetStage", "cmp": "==", "value": 10.0, "param": "Other"}], "MG01", 0))
 
+    def test_its_own_script_starting_it(self):
+        """WO-121b: LoreRim's ccStartAfterChargenScript sets a Creation Club quest's first stage; its stage fragments don't start it."""
+        own = ({"kind": "quest", "quest": "CC", "script": "ccStartAfterChargenScript", "stage": None, "fragment": False}, {"call": "SetStage", "quest": "CC", "stage": 0, "function": "OnInit"})
+        frag = ({"kind": "quest", "quest": "CC", "script": "QF_CC", "stage": 0, "fragment": True}, {"call": "SetStage", "quest": "CC", "stage": 0, "function": "Fragment_0"})
+        later = ({"kind": "quest", "quest": "CC", "script": "CCTimer", "stage": None, "fragment": False}, {"call": "SetStage", "quest": "CC", "stage": 50, "function": "OnUpdate"})
+        out = sc.classify_starts("CC", {"CC": 0}, [own, frag, later], 0)
+        self.assertEqual([c["script"] for c, _ in out["started"]], ["ccStartAfterChargenScript"])
+
+    def test_the_level_its_script_waits_for(self):
+        i, v = (lambda n: (3, n)), (lambda x: (1, x))
+        code = [("callstatic", [v("game"), v("GetPlayer"), v("::temp0")]), ("callmethod", [v("GetLevel"), v("::temp0"), v("::temp1")]),
+                ("cmp_ge", [v("::temp2"), v("::temp1"), v("::optionalRequiredPlayerLevel_var")]),
+                ("callmethod", [v("SetStage"), v("self"), v("::temp3"), v("::MyQuestStageToSet_var")])]
+        pex_ = {"objects": [{"states": [{"name": "", "functions": [{"name": "CheckStageToStart", "code": code}]}]}]}
+        self.assertEqual(sc.own_level(pex_, {"optionalrequiredplayerlevel": 20}), 20)
+        self.assertEqual(sc.own_level(pex_, {}), 0)  # not set on the quest: no level to wait for
+        code[2] = ("cmp_gt", [v("::temp2"), v("::temp1"), i(9)])
+        self.assertEqual(sc.own_level(pex_, {}), 10)
+
     def test_a_voice_only_one_npc_has(self):
         npc = record("NPC_", 0x830, [sub("EDID", zs("BlackBriarNPC")), sub("VTCK", u32(0x840))])
         other = record("NPC_", 0x831, [sub("EDID", zs("Someone")), sub("VTCK", u32(0x841))])
