@@ -6,7 +6,7 @@ These rules come from Dave's review of those screens (9 Oct 2026). The LoreRim c
 
 ## Copy
 
-1. **No micro labels above titles.** No small uppercase "eyebrow" line above a page or section title ("Build · Rules from…", "Step 4 of 5"). If the information matters, put it somewhere it earns its place (a byline, a step list).
+1. **No micro labels above titles.** No small uppercase "eyebrow" line above a page or section title ("Build · Rules from…", "Step 4 of 5"). If the information matters, put it somewhere it earns its place (a byline, a step list). This holds on every page, the home page and help pages included, and on cards: no "Sound familiar?" over a heading, no "Claude Desktop on your gaming PC" over a card's name. A label that names a box (What it never does) is that box's title, not an eyebrow, and is fine (Dave, 21 Oct).
 2. **No middle-dot dividers.** Never join items with " · ". Give each item its own styling, put items on separate lines, use a tag, or use a plain pipe `|` or hyphen `-` (never an em dash).
 3. **No how-it-works copy.** People using a build planner know how one works. No intro paragraphs explaining a step, no hints like "click a skill to jump to its tree".
 4. **Extra detail goes in a tooltip.** When a value needs explaining (the skill limit, for example), add a small "i" after it with the explanation on hover or tap. Keep the visible text short.
