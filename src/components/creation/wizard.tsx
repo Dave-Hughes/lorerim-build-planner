@@ -113,6 +113,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
   useEffect(() => {
     if (mode !== "edit" || !buildId || !changed.current) return;
     const t = setTimeout(async () => {
+      try {
       const d = { ...details, tags: details.tags ?? suggestedTags(plan.majors) };
       const dj = JSON.stringify(details);
       const pj = JSON.stringify(plan);
@@ -129,6 +130,10 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
         lastSaved.current.plan = pj;
       }
       setEditSave({ state: "saved" });
+      } catch {
+        // No answer from the server at all: the band says so, and Done asks before leaving.
+        setEditSave({ state: "failed", error: "Couldn't reach the server. Your change isn't saved.", retry: () => setSaveTry((n) => n + 1) });
+      }
     }, 700);
     return () => clearTimeout(t);
   }, [mode, buildId, plan, details, showDrafted, drafted, saveTry]);

@@ -224,3 +224,36 @@ test("the owner's nudge shows on a coverless draft and not for a reader; the doo
   await reader.close();
 });
 
+test("a failed save shows in the band in red, and Done asks before leaving", async ({ page, context }) => {
+  await signIn(context);
+  await page.goto(`/b/${FRESH_BUILD_ID}/setup?step=name`);
+  const description = page.getByLabel("Description");
+  await expect(description).toBeVisible();
+  // The server can't be reached for this change.
+  await page.route(`**/b/${FRESH_BUILD_ID}/setup**`, (route) => (route.request().method() === "POST" ? route.abort() : route.continue()));
+  await description.fill("This one won't save.");
+  const band = page.getByRole("region", { name: "Edit bar" });
+  await expect(band.getByRole("alert")).toContainText("Couldn't reach the server.", { timeout: 15_000 });
+  let asked = "";
+  page.once("dialog", (d) => {
+    asked = d.message();
+    void d.dismiss();
+  });
+  await band.getByRole("link", { name: "Done" }).click();
+  await expect.poll(() => asked).toContain("didn't save");
+  await expect(page).toHaveURL(/\/setup\?step=name$/);
+  await page.unroute(`**/b/${FRESH_BUILD_ID}/setup**`);
+});
+
+test("a character opens on Play from every way in: its page, its build's address, and My characters", async ({ page, context }) => {
+  await signIn(context);
+  const play = () => page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Play/ });
+  for (const path of [`/p/${KYRIA_PLAYTHROUGH_ID}`, `/b/${KYRIA_BUILD_ID}`]) {
+    await page.goto(path);
+    await expect(play()).toHaveAttribute("aria-selected", "true");
+  }
+  await page.goto("/me");
+  await page.getByRole("article").filter({ has: page.getByRole("link", { name: "Kyria, Knight of Stendarr" }) }).getByRole("link", { name: "Kyria, Knight of Stendarr" }).click();
+  await expect(play()).toHaveAttribute("aria-selected", "true");
+});
+

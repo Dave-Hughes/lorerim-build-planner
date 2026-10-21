@@ -243,9 +243,11 @@
 }
 .opens {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 8px 10px;
+  white-space: nowrap;
   padding: 6px 16px 0;
   font-size: 14px;
 }
