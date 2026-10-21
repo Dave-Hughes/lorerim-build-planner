@@ -119,10 +119,11 @@
   color: var(--muted);
 }
 .menu {
-  position: absolute;
-  z-index: 70;
-  top: calc(100% + 6px);
-  right: 0;
+  /* In a layer over the page (WO-118); MenuButton sets top and left from its button. */
+  position: fixed;
+  z-index: 90;
+  top: 0;
+  left: 0;
   min-width: 240px;
   display: flex;
   flex-direction: column;

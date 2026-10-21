@@ -467,7 +467,7 @@ export async function finishDraft(p: Player, input: { playthrough: string }) {
   // Assistants can't add pictures (WO-117): the player adds them from this link.
   const addPictures = pt.buildId ? `${p.origin}/b/${pt.buildId}/setup?step=name&pictures=1` : link(p, pt.id, "/edit/play?pictures=1");
   if (issues.length) return { ready: false, issues, addPictures };
-  return { ready: true, link: link(p, pt.id), addPictures, message: `Ready: open ${link(p, pt.id)} to read it, tick what's done and publish. Pictures are the player's to add: ${addPictures}` };
+  return { ready: true, link: link(p, pt.id), addPictures, message: `Ready: open ${link(p, pt.id)} to read it, tick what's done and publish. Images are the player's to add: ${addPictures}` };
 }
 
 /**

@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { createContext, useContext, useEffect, useId, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { pageZoom } from "@/lib/zoom";
 import { useDismiss } from "@/lib/use-dismiss";
 import { setBuildVisibility } from "@/lib/builds/actions";
 import type { BuildVisibility } from "@/lib/builds/validate";
@@ -46,7 +48,9 @@ function VisibilityIcon({ v }: { v: BuildVisibility }) {
 
 /**
  * A menu button: Enter, Space or the arrows open it on an item, arrows move, Esc closes and returns
- * to the button, a click outside or Tab away closes it. `children` gets `close` for its items.
+ * to the button, a click outside or Tab away closes it. `children` gets `close` for its items. The
+ * menu opens in a layer over the page (WO-118), under the button's right edge, above it when there's
+ * no room below, and kept on screen, so a hero that clips its children never cuts it off.
  */
 export function MenuButton({
   className,
@@ -69,8 +73,33 @@ export function MenuButton({
   const [open, setOpen] = useState(false);
   const wrap = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
-  useDismiss({ open, onClose: () => setOpen(false), inside: [wrap], trigger });
-  const items = () => [...(wrap.current?.querySelectorAll<HTMLElement>('[role^="menuitem"]') ?? [])];
+  const menu = useRef<HTMLDivElement>(null);
+  useDismiss({ open, onClose: () => setOpen(false), inside: [wrap, menu], trigger });
+  const items = () => [...(menu.current?.querySelectorAll<HTMLElement>('[role^="menuitem"]') ?? [])];
+  const place = useCallback(() => {
+    const el = menu.current;
+    const b = trigger.current;
+    if (!el || !b) return;
+    const a = b.getBoundingClientRect();
+    const m = el.getBoundingClientRect();
+    const below = a.bottom + 6;
+    const top = below + m.height <= window.innerHeight - 8 || a.top - 6 - m.height < 8 ? below : a.top - 6 - m.height;
+    const left = Math.min(Math.max(8, a.right - m.width), window.innerWidth - m.width - 8);
+    // Measured in screen pixels; set in the page's (WO-35).
+    const z = pageZoom();
+    el.style.top = `${Math.round(top / z)}px`;
+    el.style.left = `${Math.round(left / z)}px`;
+  }, []);
+  useLayoutEffect(() => {
+    if (!open) return;
+    place();
+    window.addEventListener("scroll", place, true);
+    window.addEventListener("resize", place);
+    return () => {
+      window.removeEventListener("scroll", place, true);
+      window.removeEventListener("resize", place);
+    };
+  }, [open, place]);
   const focusAt = (i: number) => {
     const all = items();
     all[(i + all.length) % all.length]?.focus();
@@ -108,28 +137,31 @@ export function MenuButton({
       >
         {button}
       </button>
-      {open && (
-        <div
-          id={id}
-          role="menu"
-          aria-label={menuLabel}
-          className={styles.menu}
-          onKeyDown={(e) => {
-            const all = items();
-            const i = all.indexOf(document.activeElement as HTMLElement);
-            if (e.key === "ArrowDown") focusAt(i + 1);
-            else if (e.key === "ArrowUp") focusAt(i - 1);
-            else if (e.key === "Home") focusAt(0);
-            else if (e.key === "End") focusAt(all.length - 1);
-            else if (e.key === "Escape") close(true);
-            else if (e.key === "Tab") return setOpen(false);
-            else return;
-            e.preventDefault();
-          }}
-        >
-          {children(close)}
-        </div>
-      )}
+      {open &&
+        createPortal(
+          <div
+            ref={menu}
+            id={id}
+            role="menu"
+            aria-label={menuLabel}
+            className={styles.menu}
+            onKeyDown={(e) => {
+              const all = items();
+              const i = all.indexOf(document.activeElement as HTMLElement);
+              if (e.key === "ArrowDown") focusAt(i + 1);
+              else if (e.key === "ArrowUp") focusAt(i - 1);
+              else if (e.key === "Home") focusAt(0);
+              else if (e.key === "End") focusAt(all.length - 1);
+              else if (e.key === "Escape") close(true);
+              else if (e.key === "Tab") return setOpen(false);
+              else return;
+              e.preventDefault();
+            }}
+          >
+            {children(close)}
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }
@@ -201,16 +233,17 @@ function tabsOf(f: EditFrameData | null, buildId: string): Tab[] {
   const b = f?.build;
   const r = f?.run;
   const out: Tab[] = [];
+  // WO-118: Set up, Levels, Guide, Story, Play (a build alone: Set up, Levels, Guide, and Story when it's on).
   if (b || !f) {
     const id = b?.id ?? buildId;
     out.push({ key: "setup", label: "Set up", sub: b?.setup ?? "", href: `/b/${id}/setup?step=name`, icon: "tab-set-up" });
     out.push({ key: "levels", label: "Levels", sub: b ? `Levels 1 to ${b.levels}` : "", href: `/b/${id}/edit`, icon: "tab-levels" });
+    out.push({ key: "guide", label: "Guide", sub: b?.guideMinutes ? `${b.guideMinutes} min read` : "Not written yet", href: `/b/${id}/guide`, icon: "tab-guide" });
   }
-  if (r) out.push({ key: "play", label: "Play", sub: `${r.acts} act${r.acts === 1 ? "" : "s"}, ${r.objectives} objective${r.objectives === 1 ? "" : "s"}`, href: `/p/${r.id}/edit/play`, icon: "tab-play" });
-  if (b || !f) out.push({ key: "guide", label: "Guide", sub: b?.guideMinutes ? `${b.guideMinutes} min read` : "Not written yet", href: `/b/${b?.id ?? buildId}/guide`, icon: "tab-guide" });
   if (r)
     out.push({ key: "story", label: "Story", sub: `${r.chapters} chapter${r.chapters === 1 ? "" : "s"}, ${r.pieces} ${r.pieces === 1 ? "entry or beat" : "entries and beats"}`, href: `/p/${r.id}/edit/story`, icon: "tab-story" });
   else if (f?.storyOn && b) out.push({ key: "story", label: "Story", sub: b.hasStory ? "Written" : "Not written yet", href: `/b/${b.id}/edit/story`, icon: "tab-story" });
+  if (r) out.push({ key: "play", label: "Play", sub: `${r.acts} act${r.acts === 1 ? "" : "s"}, ${r.objectives} objective${r.objectives === 1 ? "" : "s"}`, href: `/p/${r.id}/edit/play`, icon: "tab-play" });
   return out;
 }
 
@@ -245,7 +278,8 @@ function SaveLine({ save }: { save: SaveState }) {
  * The top of every edit page (WO-117): the edit band ("Editing" and the name; the save line, who can
  * see it, Copy link, and Done, the one ember button), the page's own hero at 300px with Change the
  * cover, and one tab row: a build alone Set up, Levels, Guide (and Story); a character Set up, Levels,
- * Play, Guide, Story. A run's tabs (Play, Story) set the run's visibility; the build's, the build's.
+ * Guide, Story, Play (WO-118). A run's tabs (Play, Story) set the run's visibility; the build's, the
+ * build's.
  */
 export function EditBar({
   buildId,
@@ -331,7 +365,7 @@ export function EditBar({
               {frame.aiAssisted && <AiAssisted author={frame.author} />}
             </span>
             {frame.build && (
-              <Link href={`/b/${frame.build.id}/setup?step=name#cover`} className={`btn btn-sm ${f.heroCover}`}>
+              <Link href={`/b/${frame.build.id}/setup?step=name#cover`} className={`btn btn-sm on-image ${f.heroCover}`}>
                 {cover ? "Change the cover" : "Add a cover"}
               </Link>
             )}

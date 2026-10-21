@@ -60,5 +60,5 @@ export async function savedInBand(page: Page) {
   await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("status")).toHaveText(/✓ Saved/, { timeout: 15_000 });
 }
 
-/** The edit tabs: Set up, Levels, Play, Guide, Story. */
+/** The edit tabs: Set up, Levels, Guide, Story, Play (WO-118). */
 export const editTab = (page: Page, name: string) => page.getByRole("navigation", { name: "Edit tabs" }).getByRole("link", { name: new RegExp(`^${name}`) });

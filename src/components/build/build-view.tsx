@@ -335,13 +335,13 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
             <section className={styles.nudge} aria-labelledby="nudge-title">
               <span className={styles.nudgeText}>
                 <h2 id="nudge-title" className={styles.nudgeTitle}>
-                  No pictures yet
+                  No images yet
                 </h2>
-                <span>Assistants can&apos;t add pictures. Add a cover, and pictures for the story and the acts, from the planner.</span>
+                <span>Assistants can&apos;t add images. Add a cover, and images for the story and the acts, from the planner.</span>
               </span>
               <span className={styles.nudgeSide}>
                 <Link href={nudge} className="btn">
-                  Add pictures
+                  Add images
                 </Link>
                 <span className="muted">Only you see this.</span>
               </span>
@@ -1643,7 +1643,9 @@ function Cover({
           {build.description && <p className={`flavor ${styles.description} ${styles.heroIn} ${styles.heroIn2}`}>{build.description}</p>}
           <div className={`${styles.byline} ${styles.heroIn} ${styles.heroIn3}`}>
             <AuthorLink author={build.author} className={styles.author} nameClassName={styles.authorName} avatar={<Avatar name={build.author.name} image={build.author.image} />} />
-            {!build.isSample && <LikeButton buildId={build.id} liked={build.likedByViewer} count={build.likeCount} mode={isOwner && build.visibility === "private" ? "owner" : signedIn ? "can" : "signedOut"} signIn={signInToLike} />}
+            {/* An assistant drafted it (WO-110): the AI assisted mark in the byline, while the author shows it (WO-118). */}
+            {build.draftedBy && build.showDrafted !== false && <AiAssisted author={build.author.name} />}
+            {!build.isSample && <LikeButton buildId={build.id} liked={build.likedByViewer} count={build.likeCount} mode={signedIn ? "can" : "signedOut"} signIn={signInToLike} />}
             <span className="tag">LoreRim {build.gameVersion}</span>
             {build.example && <ExampleTag />}
             {/* A build that skips ahead (WO-69): the levels written, runs collapsed. */}
@@ -1659,13 +1661,6 @@ function Cover({
               </span>
             </span>
           </div>
-          {/* Drafted by an assistant's tools (WO-110), while the author shows it. */}
-          {/* An assistant drafted it (WO-110): the AI assisted mark, while the author shows it (WO-117). */}
-          {build.draftedBy && build.showDrafted !== false && (
-            <p className={`${styles.drafted} ${styles.heroIn} ${styles.heroIn3}`}>
-              <AiAssisted author={build.author.name} />
-            </p>
-          )}
           {storyHref && (
             <span className={`${styles.readStory} ${styles.heroIn} ${styles.heroIn3}`}>
               <ReaderLink href={storyHref} className={`btn ${styles.readStoryButton}`}>
@@ -1685,7 +1680,7 @@ function Cover({
             </ul>
           )}
         </div>
-        <div className={`${styles.actions} ${styles.heroIn} ${styles.heroIn4}`}>
+        <div className={`on-image ${styles.actions} ${styles.heroIn} ${styles.heroIn4}`}>
           {/* A video guide comes first, and largest (WO-39): a creator's video is front and centre. */}
           {video && (
             <button type="button" className={`btn btn-primary ${styles.watch}`} onClick={onWatch}>

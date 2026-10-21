@@ -1,20 +1,28 @@
 /* eslint-disable @next/next/no-img-element */
-import { InfoTip } from "./info-tip";
+import { Tooltip } from "./tooltip";
 
-/** What the AI assisted mark means (WO-117), in the "i". */
+/** What the AI assisted mark means (WO-117), in its tooltip. */
 export const aiAssistedText = (author: string) => `${author} made this with an AI assistant through the planner. The planner checked every level and perk against the game's rules, as it does for any build.`;
 
 /**
- * The AI assisted mark (WO-117), where "Drafted with <assistant>" used to show: the Dwemer head, the
- * words, and an "i" with what it means. The assistant's name isn't printed. Inside a link (a card
- * that is all one link), `tip` is off: a button can't sit in a link, so the words stand alone.
+ * The AI assisted mark (WO-117): the Dwemer head and the words. The whole mark is its tooltip's
+ * trigger on hover, focus and tap (WO-118), with a dotted line under the words; no separate "i". The
+ * assistant's name isn't printed. Inside a link (a card that is all one link), `tip` is off: a button
+ * can't sit in a link, so the mark stands alone.
  */
 export function AiAssisted({ author, tip = true, className }: { author: string; tip?: boolean; className?: string }) {
-  return (
-    <span className={`ai-assisted ${className ?? ""}`}>
+  const mark = (
+    <>
       <img src="/icons/mark-ai-assisted.svg" alt="" width={16} height={16} className="px" />
-      <span>AI assisted</span>
-      {tip && <InfoTip label="What AI assisted means" text={aiAssistedText(author)} />}
-    </span>
+      <span className="ai-assisted-words">AI assisted</span>
+    </>
+  );
+  if (!tip) return <span className={`ai-assisted ${className ?? ""}`}>{mark}</span>;
+  return (
+    <Tooltip content={aiAssistedText(author)}>
+      <button type="button" className={`ai-assisted ai-assisted-tip ${className ?? ""}`}>
+        {mark}
+      </button>
+    </Tooltip>
   );
 }

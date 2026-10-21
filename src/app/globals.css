@@ -447,8 +447,25 @@ textarea:focus-visible {
   flex: none;
   image-rendering: pixelated;
 }
-.ai-assisted .tip {
-  margin-left: 2px;
+/* Buttons over a picture (WO-118): a dark backing, a light border and light text, readable on any image. */
+.on-image .btn:not(.btn-primary),
+.on-image [aria-haspopup="menu"],
+.btn.on-image {
+  background: rgba(11, 15, 20, 0.88);
+  border-color: var(--soft);
+  color: var(--text);
+}
+.ai-assisted-tip {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: help;
+  white-space: nowrap;
+}
+.ai-assisted-tip .ai-assisted-words {
+  border-bottom: 1px dotted var(--faint);
 }
 
 /* "i" after a value: hover, focus or tap shows the explanation */

@@ -28,7 +28,7 @@ test("Edit opens Set up at Details, for a character and a build alone", async ({
 test("five tabs on a character, three on a build alone, and the band's Done is the one ember button", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${KYRIA_BUILD_ID}/setup?step=name`);
-  await expect(tabNames(page)).toHaveText([/^Set up/, /^Levels/, /^Play/, /^Guide/, /^Story/]);
+  await expect(tabNames(page)).toHaveText([/^Set up/, /^Levels/, /^Guide/, /^Story/, /^Play/]);
   await expect(page.getByRole("region", { name: "Edit bar" })).toContainText("EditingKyria Severa");
   await expect(page.getByRole("link", { name: "Change the cover" })).toHaveAttribute("href", `/b/${KYRIA_BUILD_ID}/setup?step=name#cover`);
   await page.goto(`/b/${FRESH_BUILD_ID}/edit`);
@@ -109,7 +109,7 @@ test("the act card's Write it in the Story opens that act's chapter", async ({ p
   await page.getByRole("link", { name: /The Bard's Road/ }).click();
   const card = page.getByRole("region", { name: "Act II's card" });
   await expect(card).toContainText("No chapter for this act yet.");
-  await expect(card.getByText("Add the act's picture")).toBeVisible();
+  await expect(card.getByText("Add an image")).toBeVisible();
   await card.getByRole("link", { name: "Write it in the Story ›" }).click();
   // Its place in the Story; the chapter is made by its first word (Part 4).
   await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story/act-\\d+$`));
@@ -146,7 +146,7 @@ test("the Story in edit: the act's chapter is made by its first word, a chapter 
   // Preview: no inputs, no picture slot, no insert row, Contents dimmed.
   await page.getByRole("button", { name: "Preview" }).click();
   await expect(page.getByLabel("Title")).toHaveCount(0);
-  await expect(page.getByRole("button", { name: "Add a picture" })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Add an image" })).toHaveCount(0);
   await expect(page.getByRole("button", { name: "+ Image" })).toHaveCount(0);
   await expect(page.getByRole("heading", { level: 1, name: "A new chapter" })).toBeVisible();
   await page.getByRole("button", { name: "Write" }).click();
@@ -174,16 +174,16 @@ test("the Pictures panel lists every place a picture can go, and Add uploads int
   test.setTimeout(90_000);
   await signIn(context);
   await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/play?pictures=1`);
-  const panel = page.getByRole("dialog", { name: "Pictures" });
+  const panel = page.getByRole("dialog", { name: "Images" });
   await expect(panel).toBeVisible();
   for (const label of ["The cover", "The title page", "Chapter One: The Chapel by the Sea", "Act I's card", "The Mark of Dibella", "Act V's card"]) await expect(panel.getByText(label, { exact: true })).toBeVisible();
-  const before = Number((await page.getByRole("button", { name: /^Pictures \d+ of \d+/ }).textContent())!.match(/Pictures (\d+)/)![1]);
+  const before = Number((await page.getByRole("button", { name: /^Images \d+ of \d+/ }).textContent())!.match(/Images (\d+)/)![1]);
   await panel.getByLabel("Add Act II's card").setInputFiles({ name: "monk.webp", mimeType: "image/webp", buffer: readFileSync("public/traits/monk.webp") });
-  await expect(page.getByRole("button", { name: new RegExp(`^Pictures ${before + 1} of`) })).toBeVisible({ timeout: 60_000 });
+  await expect(page.getByRole("button", { name: new RegExp(`^Images ${before + 1} of`) })).toBeVisible({ timeout: 60_000 });
   await expect(panel.getByLabel("Change Act II's card")).toBeAttached();
   await panel.getByRole("button", { name: "× Close" }).click();
   await expect(panel).toHaveCount(0);
-  await page.getByRole("button", { name: /^Pictures/ }).click();
+  await page.getByRole("button", { name: /^Images/ }).click();
   await page.keyboard.press("Escape");
   await expect(panel).toHaveCount(0);
   // The act's card now shows it.
@@ -204,13 +204,13 @@ test("the owner's nudge shows on a coverless draft and not for a reader; the doo
   expect(doneBuild.addPictures).toBe(`${baseURL!.replace(/\/$/, "")}/b/${made.build}/setup?step=name&pictures=1`);
 
   await page.goto(`/p/${made.playthrough}`);
-  const nudge = page.getByRole("region", { name: "No pictures yet" });
-  await expect(nudge).toContainText("Assistants can't add pictures.");
+  const nudge = page.getByRole("region", { name: "No images yet" });
+  await expect(nudge).toContainText("Assistants can't add images.");
   await expect(nudge).toContainText("Only you see this.");
-  await nudge.getByRole("link", { name: "Add pictures" }).click();
+  await nudge.getByRole("link", { name: "Add images" }).click();
   await expect(page).toHaveURL(/\/setup\?step=name&pictures=1$/);
-  await expect(page.getByRole("dialog", { name: "Pictures" })).toBeVisible();
-  await expect(page.getByRole("dialog", { name: "Pictures" }).getByText("The cover", { exact: true })).toBeVisible();
+  await expect(page.getByRole("dialog", { name: "Images" })).toBeVisible();
+  await expect(page.getByRole("dialog", { name: "Images" }).getByText("The cover", { exact: true })).toBeVisible();
 
   // Shared by its link, a reader sees no nudge.
   await page.goto(`/p/${made.playthrough}`);
@@ -220,7 +220,7 @@ test("the owner's nudge shows on a coverless draft and not for a reader; the doo
   const reader = await browser.newPage();
   // The button shows the choice at once; the page is shared once the save is in.
   await expect.poll(async () => (await reader.goto(`/p/${made.playthrough}`), await reader.getByRole("heading", { level: 1, name: "E2E Coverless" }).count()), { timeout: 15_000 }).toBe(1);
-  await expect(reader.getByRole("region", { name: "No pictures yet" })).toHaveCount(0);
+  await expect(reader.getByRole("region", { name: "No images yet" })).toHaveCount(0);
   await reader.close();
 });
 

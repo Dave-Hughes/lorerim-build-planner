@@ -25,7 +25,7 @@ export function RunHero({ p, isOwner, storyHref = null }: { p: PlaythroughRecord
   const cover = p.build?.coverImageUrl ?? null;
   const focus = p.build?.coverFocus;
   const actions = (
-    <span className={s.bandActions}>
+    <span className={`on-image ${s.bandActions}`}>
       {isOwner && (
         <Link href={`/p/${p.id}/edit`} className="btn">
           Edit

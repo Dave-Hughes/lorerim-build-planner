@@ -197,16 +197,16 @@ function ActCard({ data, a }: { data: EditData; a: EditAct }) {
           </span>
         )}
       </div>
-      <span className={s.cardPicture}>
+      <span className={`on-image ${s.cardPicture}`}>
         {a.imageUrl ? (
           <>
-            {picker("Change the picture")}
+            {picker("Change the image")}
             <button type="button" className="btn btn-sm" onClick={() => save(() => act.saveActImage(data.id, a.id, null), true)}>
               Remove
             </button>
           </>
         ) : (
-          picker("Add the act's picture")
+          picker("Add an image")
         )}
       </span>
     </section>

@@ -85,11 +85,13 @@ test.describe("likes", () => {
     await expect(page.getByRole("button", { name: /^Like/ })).toHaveText(/Like\s*0/);
   });
 
-  test("on a private build the owner sees the count but no Like button", async ({ page, context }) => {
+  test("on a private build the owner can like it too (WO-118)", async ({ page, context }) => {
     await signIn(context);
     await page.goto(`/b/${SCRATCH_BUILD_ID}`);
-    await expect(page.getByRole("region", { name: "Build" }).getByLabel(/^\d+ likes?$/)).toBeVisible();
-    await expect(page.getByRole("button", { name: /^Like/ })).toHaveCount(0);
+    await page.getByRole("button", { name: /^Like/ }).click();
+    await expect(page.getByRole("button", { name: /^Liked/ })).toHaveAttribute("aria-busy", "false");
+    await page.getByRole("button", { name: /^Liked/ }).click();
+    await expect(page.getByRole("button", { name: /^Like\b/ })).toHaveAttribute("aria-busy", "false");
   });
 
   test("a signed-out click goes to sign-in", async ({ page }) => {

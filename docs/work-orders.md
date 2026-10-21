@@ -4894,7 +4894,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - Screenshots at 1440 and 390 of Play, Details, the Story tab with Contents and Images, the reader with Contents open, and the hero with its ⋯ menu open over Kyria's cover. Compare with rows 27 and 28.
 
 ### Done when
-- [ ] Part 1: tab order, the AI assisted tooltip on the mark, menus on screen, the WO-36 Like everywhere, image buttons that can be seen, "image" throughout.
+- [x] Part 1: tab order, the AI assisted tooltip on the mark, menus on screen, the WO-36 Like everywhere, image buttons that can be seen, "image" throughout.
 - [ ] Part 2: one word, chapter, with Prologue and Unlocks when, in the site, the reader, the tools and the rules.
 - [ ] Part 3: Images on the Story tab only, rows that stay put, Position on every image, a draft that asks for a cover.
 - [ ] Part 4: Play as PlayCalm: no right rail, compact acts, Where you stand only with a save, Throughout the act, no door or helper.

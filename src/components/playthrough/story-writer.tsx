@@ -177,12 +177,12 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
               </>
             )}
             {!preview && run && (
-              <input ref={picker} type="file" accept="image/png,image/jpeg,image/webp,image/gif" className="sr-only" aria-label="The picture" onChange={(ev) => void upload(ev.target.files?.[0])} />
+              <input ref={picker} type="file" accept="image/png,image/jpeg,image/webp,image/gif" className="sr-only" aria-label="The image" onChange={(ev) => void upload(ev.target.files?.[0])} />
             )}
             {!preview && run && plate && (
-              <span className={s.plateTools}>
+              <span className={`on-image ${s.plateTools}`}>
                 <button type="button" className="btn btn-sm" onClick={() => picker.current?.click()}>
-                  {uploading ? "Uploading" : "Change the picture"}
+                  {uploading ? "Uploading" : "Change the image"}
                 </button>
                 <button type="button" className="btn btn-sm" onClick={() => void savePlate(null)}>
                   Remove
@@ -192,7 +192,7 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
             {!preview && run && !plate && (
               <span className={s.plateSlot}>
                 <button type="button" className="btn" onClick={() => picker.current?.click()}>
-                  {uploading ? "Uploading" : "Add a picture"}
+                  {uploading ? "Uploading" : "Add an image"}
                 </button>
               </span>
             )}

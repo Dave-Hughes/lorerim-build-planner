@@ -37,8 +37,8 @@ async function guard(userId: string, kind?: LimitKind): Promise<string | null> {
 
 /**
  * Likes or unlikes a build for the signed-in player, keeping the build's like_count in step in the
- * same statement. Your own build counts too; only builds you can see. updated_at is left alone: a like
- * doesn't make a build newer.
+ * same statement. Your own build counts too; only builds you can see, so a private one only by its
+ * owner (WO-118). updated_at is left alone: a like doesn't make a build newer.
  */
 export async function setLike(buildId: string, liked: boolean): Promise<ActionResult<{ liked: boolean; count: number }>> {
   const userId = await requireUser();
@@ -46,8 +46,8 @@ export async function setLike(buildId: string, liked: boolean): Promise<ActionRe
   if (!isValidBuildId(buildId)) return { ok: false, error: "Unknown build." };
   const stop = await guard(userId, liked ? "like" : undefined);
   if (stop) return { ok: false, error: stop };
-  const [build] = await db().select({ visibility: schema.builds.visibility }).from(schema.builds).where(eq(schema.builds.id, buildId)).limit(1);
-  if (!build || build.visibility === "private") return { ok: false, error: "Unknown build." };
+  const [build] = await db().select({ visibility: schema.builds.visibility, ownerId: schema.builds.ownerId }).from(schema.builds).where(eq(schema.builds.id, buildId)).limit(1);
+  if (!build || (build.visibility === "private" && build.ownerId !== userId)) return { ok: false, error: "Unknown build." };
   const result = liked
     ? await db().execute(sql`
         WITH changed AS (

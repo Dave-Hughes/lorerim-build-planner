@@ -28,13 +28,13 @@ export function Pictures({ runId, groups }: { runId: string; groups: PictureGrou
   return (
     <>
       <button type="button" className={`btn btn-sm ${f.picturesButton}`} aria-expanded={open} onClick={() => setOpen(!open)}>
-        Pictures {filled} of {all.length} ▾
+        Images {filled} of {all.length} ▾
       </button>
       {open && (
-        <aside className={f.pictures} role="dialog" aria-label="Pictures">
+        <aside className={f.pictures} role="dialog" aria-label="Images">
           <span className={f.picturesHead}>
             <span className={f.picturesTitle}>
-              Pictures {filled} of {all.length}
+              Images {filled} of {all.length}
             </span>
             <button type="button" className="btn btn-sm" onClick={() => setOpen(false)}>
               × Close
@@ -49,7 +49,7 @@ export function Pictures({ runId, groups }: { runId: string; groups: PictureGrou
             </div>
           ))}
           <p className="muted" style={{ fontSize: 13 }}>
-            Each picture is checked before it shows.
+            Each image is checked before it shows.
           </p>
         </aside>
       )}

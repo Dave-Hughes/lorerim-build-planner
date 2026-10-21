@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { setLike } from "@/lib/builds/actions";
-import { Heart, likesLabel } from "./heart";
+import { Heart } from "./heart";
 import styles from "./like-button.module.css";
 
 /** The burst's pixel heart: rows of a 7×6 grid, drawn with the icons' dark outline. */
@@ -53,15 +53,15 @@ const PIECES = Array.from({ length: 18 }, (_, i) => {
 
 /**
  * The Like toggle on a shared build. The count changes at once; if the save fails it goes back
- * and a line says why. `signIn` replaces it when signed out. Owners can like their own build; on a private one
- * (which nobody else can see or like) they see only the count.
+ * and a line says why. `signIn` replaces it when signed out. Owners can like their own build, a private
+ * one too (WO-118: nobody else can see it to like it).
  *
  * Liking should feel good (WO-36): the heart pops and turns rose, a burst of pixel hearts and
  * sparks flies out (an overlay that takes no clicks and moves nothing), a ring pulses, and the count
  * rolls up. Unliking is quiet: the fill drains and the count rolls down. Reduced motion: just the
  * fill and the new number.
  */
-export function LikeButton({ buildId, liked: initialLiked, count: initialCount, mode, signIn }: { buildId: string; liked: boolean; count: number; mode: "can" | "owner" | "signedOut"; signIn?: React.ReactNode }) {
+export function LikeButton({ buildId, liked: initialLiked, count: initialCount, mode, signIn }: { buildId: string; liked: boolean; count: number; mode: "can" | "signedOut"; signIn?: React.ReactNode }) {
   const [state, setState] = useState({ liked: initialLiked, count: initialCount });
   const [error, setError] = useState<string | null>(null);
   const [pending, start] = useTransition();
@@ -69,12 +69,6 @@ export function LikeButton({ buildId, liked: initialLiked, count: initialCount, 
   const [burst, setBurst] = useState(0);
   // The count's roll: the number it came from and which way.
   const [roll, setRoll] = useState<{ from: number; dir: "up" | "down"; key: number } | null>(null);
-  if (mode === "owner")
-    return (
-      <span className={styles.count} aria-label={likesLabel(state.count)}>
-        <Heart /> {state.count}
-      </span>
-    );
   if (mode === "signedOut") return <span className={styles.wrap}>{signIn}</span>;
   const toggle = () => {
     const before = state;
