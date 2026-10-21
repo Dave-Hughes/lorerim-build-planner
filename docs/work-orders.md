@@ -5059,6 +5059,18 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 ### Part 3. The answer key takes every judged opening (Mac)
 - `quest_truth.json` takes the 106 right rows from the judged file (CONFIRMED and NO_GIVER_OK), each with its source (`uesp` with the url, or `records`). A no-giver row carries `noGiver: true`, and `test_quest_truth.py` checks that the page names no single giver for it and that its first step matches. The 23 wrong rows go in once Parts 1 and 2 fix them; `WAITING_ON_BOB` empties.
 
+### Part 4. Bob's second look at nine of the unsure (22 Oct)
+The PC's re-check (Part 2) left nine openings with starters for Bob to judge again. Seven are wrong, each with the right answer and its source in `openings-judged-2026-10-21.json` (field `second_look`); two stay unsure.
+- **Vigilant:** Altano and Orlando, Windpeak Inn, Dawnstar, once you're level 25 and have finished The House of Horrors and Kindred Judgment. Not the Temple of Stendarr in Stuhn Ravine: that's where they wait until the start (Nexus, VIGILANT - Delayed Start).
+- **Discerning the Transmundane:** no single giver. It starts by itself during Elder Knowledge (Find Septimus Signus, at his outpost north of Winterhold), or from Septimus's book (Ask Urag about the insane book). Urag's lines only move it on (UESP).
+- **Saints and Seducers:** Staada, with The Route of Madness as the way in (UESP, The Isle of Madness).
+- **Sleepwalking Into A Nightmare:** Ralforn, Green-tip Cabin, northeast of Ivarstead (Nexus).
+- **The Heart of Dibella:** no single giver, two ways: a letter from the Temple of Dibella once you're Thane of the Reach (the expansion's start, stage 55), or Degaine's errand into the Inner Sanctum, where Hamal catches you.
+- **Heart of the Reach:** Gwilym, Silver-Blood Inn, Markarth; then Travel to Ever-Bog (LoreRim's own quest guide).
+- **Whiterun, expanded:** never show the placeholder objective "TEST"; use the stage's journal text or the next real objective. Who waits on the PC (what sets stage 10).
+- Still unsure: **Trius' Trinket** (cut content in the base game; if the PC reads fn359 and fn562 and nothing restores it, take it off the quest lists) and **Mjoll** (what moves the helper to stage 20).
+- **Mac:** make the pages say these, by rule where one fits (a giver's place comes from where the start puts them, never their waiting spot; a placeholder objective is never shown) and by the answer key otherwise: `truth_from_judged.py` adds the seven as rows that must pass. **PC:** the traces named above (Discerning's stage 5 and 10, The Route of Madness's start, the Dibella letter and stage 55, Whiterun's stage 10, Trius's conditions, Mjoll's helper).
+
 ### Done when
 - [x] Part 1's six rules, with tests from the rows above. (Mac, 21 Oct: in `quest_pages.py`, tested in `test_quest_pages.py`'s `JudgedTest`. Every page that changed is one of the lines Bob judged wrong, put right, plus Heart of the Reach's optional step (unsure):
   - **Rule 1:** rule 1 takes the objective shown at the stage the starting line sets. That's read from `objectivesShown`, which `story_check.py` now writes for each objective: the stage whose own fragment calls SetObjectiveDisplayed for it. Judging from objective numbers broke Toying with the Dead, Spread the Love and Serana, so it doesn't guess. It takes effect when the PC reruns the check (Blood on the Ice, The Blessings of Nature).
@@ -5081,6 +5093,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
   The other 129 lines and the data builds don't take the Creation Club plugins until the night run's full rerun. `openings-2026-10-21.md` has the 23 rows updated, and every row's "page says now" is regenerated on Part 1's rules. The speakers and openings above are still to do.
 - [ ] The answer key holds every judged opening and passes; `WAITING_ON_BOB` is empty; the door sends `who` and `where` again.
 - Mac, 21 Oct, Part 3: the key holds 121 rows. That's every one of the 106 openings Bob judged right (77 new; 29 it had), and three of the wrong ones Part 1 put right (Wyrmstooth, The Ebony Warrior, Battle of the Champions), each with its source (`uesp` and the url, or `records`). A Night To Remember's row now points at the line's opening, DA14Start, and passes. A no-giver row carries `noGiver: true`, and `test_quest_truth.py` checks that its page names no single giver and that its first step matches. Every row passes. `scripts/gamedata/truth_from_judged.py` adds the judged rows again when Bob judges more; it never touches his hand-kept rows. Not ticked: two rows wait on the PC (Blood on the Ice needs the check rerun with `objectivesShown`; The Cursed Tribe needs Atub's line), and the other wrong rows on Part 2. So `WAITING_ON_BOB` isn't empty, and the door still holds back `who` and `where`.
+- [ ] Part 4: the seven second-look fixes on the pages and in the key (Mac); the traces they need (PC).
 - [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Dave checks five quests he knows.
 
 ---

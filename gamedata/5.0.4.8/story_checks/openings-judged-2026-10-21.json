@@ -1,5 +1,5 @@
 {
- "about": "Bob's judgment of every line's opening (WO-121a Part 4), 21 Oct 2026. Base-game and DLC openings were compared with UESP's pages (url); mod openings were judged from the start check's own evidence in openings-2026-10-21.md. Where a LoreRim mod changes a start, the records win over UESP. verdict: CONFIRMED, NO_GIVER_OK (no single giver is right), WRONG (reason says what's right), UNSURE (the evidence can't settle it; the page says not checked). Bob read every row and agrees with each verdict; three rows reverse his own earlier calls (Blood on the Ice, Ancestral Worship, The Cursed Tribe), see WO-121b.",
+ "about": "Bob's judgment of every line's opening (WO-121a Part 4), 21 Oct 2026. Base-game and DLC openings were compared with UESP's pages (url); mod openings were judged from the start check's own evidence in openings-2026-10-21.md. Where a LoreRim mod changes a start, the records win over UESP. verdict: CONFIRMED, NO_GIVER_OK (no single giver is right), WRONG (reason says what's right), UNSURE (the evidence can't settle it; the page says not checked). Bob read every row and agrees with each verdict; three rows reverse his own earlier calls (Blood on the Ice, Ancestral Worship, The Cursed Tribe), see WO-121b. Second look, 22 Oct: nine of the 23 unsure rows were judged again after the PC re-checked them with the Creation Club scripts; seven are now WRONG with the right answer, two stay UNSURE.",
  "lines": [
   {
    "line": "main-quest",
@@ -104,12 +104,13 @@
    "line": "vigilants",
    "name": "Vigilant",
    "opening": "Vigilant of Stendarr (zzzAoMMq00)",
-   "verdict": "UNSURE",
+   "verdict": "WRONG",
    "pageSays": "Altano, Temple of Stendarr, Stuhn Ravine; then \"Join the Vigilants of Stendarr\"",
-   "uesp": null,
-   "url": null,
-   "reason": "The sheet's only Altano line is a refusal (\"No, thanks. I'm not interested.\") that sets stage 5, and the quest itself starts by itself through Vigilant - Delayed Start (level 25, after The House of Horrors and Kindred Judgment). So it isn't clear Altano is what starts it, and the page leaves out those conditions.",
-   "bob": "agree"
+   "uesp": "Nexus, VIGILANT - Delayed Start: Altano and Orlando appear in the Windpeak Inn in Dawnstar once you reach level 25; the quest-based options also need The House of Horrors and Kindred Judgment.",
+   "url": "https://www.nexusmods.com/skyrimspecialedition/mods/57961",
+   "reason": "Second look, 22 Oct (PC re-check). The records' delayed-start node asks exactly what the patch says (level 25 in zzzVigilantMinLevel, The House of Horrors, Kindred Judgment). Altano is right, but not at the Temple of Stendarr in Stuhn Ravine: that's where he waits until the start. The page should say Altano and Orlando, Windpeak Inn, Dawnstar, once you're level 25 and have finished The House of Horrors and Kindred Judgment.",
+   "bob": "agree",
+   "second_look": "2026-10-22"
   },
   {
    "line": "meridias-order",
@@ -170,12 +171,13 @@
    "line": "discerning-the-transmundane",
    "name": "Discerning the Transmundane",
    "opening": "Discerning the Transmundane (DA04)",
-   "verdict": "UNSURE",
+   "verdict": "WRONG",
    "pageSays": "Urag gro-Shub, The Arcanaeum; then \"Ask Urag about the insane book\"",
-   "uesp": "Giver Septimus Signus. Stage 5: \"I've been given a book of bizarre ramblings...\" with objective \"Ask Urag about the insane book\". It also starts automatically during Elder Knowledge or Scroll Scouting",
+   "uesp": "UESP: giver Septimus Signus, at his outpost far north of Winterhold. It starts by itself during Elder Knowledge or Scroll Scouting if it hasn't already. Stage 5 (Ask Urag about the insane book) is for having his book; stage 10 is Find Septimus Signus.",
    "url": "https://content1.m.uesp.net/wiki/Skyrim:Discerning_the_Transmundane",
-   "reason": "The quest starts when you're given Septimus's book (stage 5), and Urag only sets stage 10. A first step of \"ask Urag\" means Urag isn't the starter, but neither UESP nor the sheet says who hands you the book.",
-   "bob": "agree"
+   "reason": "Second look, 22 Oct. Urag isn't the giver; his lines only move it from 5 to 10. No single giver: it starts by itself during Elder Knowledge (Find Septimus Signus, at his outpost north of Winterhold), or from Septimus's book (Ask Urag about the insane book). PC: name what sets stage 5 (the book) and the main quest fragment that sets 10.",
+   "bob": "agree",
+   "second_look": "2026-10-22"
   },
   {
    "line": "ill-met-by-moonlight",
@@ -258,12 +260,13 @@
    "line": "saints-and-seducers",
    "name": "Saints and Seducers",
    "opening": "The Isle of Madness (EC_SS_MQ101)",
-   "verdict": "UNSURE",
+   "verdict": "WRONG",
    "pageSays": "no one giver; then \"Enter the Asylum\"",
-   "uesp": null,
-   "url": null,
-   "reason": "The sheet shows this quest starting only at the end of an earlier quest, The Route of Madness (EC_SS_MQ100Int, stage 100), and doesn't trace how that one starts. No single giver is fine for this quest, but the line's real way in may be The Route of Madness, which the page doesn't mention.",
-   "bob": "agree"
+   "uesp": "UESP, The Isle of Madness: giver Staada; stage 0 'Staada told me about a riot in the Shivering Isles' prison'; suggested level 25.",
+   "url": "https://en.uesp.net/wiki/Skyrim_Mod:The_Isle_of_Madness",
+   "reason": "Second look, 22 Oct. Staada brings you in, so the page should name Staada, with the Extended Cut's The Route of Madness (EC_SS_MQ100Int) as the way the quest opens. PC: trace how The Route of Madness starts, so the page can say where Staada finds you.",
+   "bob": "agree",
+   "second_look": "2026-10-22"
   },
   {
    "line": "the-only-cure",
@@ -313,12 +316,13 @@
    "line": "sleepwalking-into-a-nightmare",
    "name": "Sleepwalking Into A Nightmare",
    "opening": "Sleepwalking Into A Nightmare (aaaMBQuest)",
-   "verdict": "UNSURE",
+   "verdict": "WRONG",
    "pageSays": "no one giver; then \"Find a way to escape The Nightmare.\" (checked: not yet)",
-   "uesp": null,
-   "url": null,
-   "reason": "The only start is a helper quest with a RalfornAlias whose own start the records don't show. It may be a Ralforn conversation, but the sheet can't confirm who or what triggers it.",
-   "bob": "agree"
+   "uesp": "Nexus, Sleepwalking Into A Nightmare: speak with Ralforn at Green-tip Cabin, a new location northeast of Ivarstead; his wife Gretska disappeared overnight.",
+   "url": "https://www.nexusmods.com/skyrimspecialedition/mods/141047",
+   "reason": "Second look, 22 Oct. The helper quest's RalfornAlias is the giver: Ralforn, Green-tip Cabin, northeast of Ivarstead. The page says no one giver and not checked; it should name him.",
+   "bob": "agree",
+   "second_look": "2026-10-22"
   },
   {
    "line": "wyrmstooth",
@@ -665,12 +669,13 @@
    "line": "the-heart-of-dibella",
    "name": "The Heart of Dibella",
    "opening": "The Heart of Dibella (T01)",
-   "verdict": "UNSURE",
+   "verdict": "WRONG",
    "pageSays": "no one giver; then Enter the Temple of Dibella",
-   "uesp": "Giver Hamal (after you're caught in the Inner Sanctum); vanilla stages 0-30 are unrecorded; first recorded objective is stage 60 'Find the future Sybil of Dibella'",
-   "url": "https://en.uesp.net/wiki/Skyrim:The_Heart_of_Dibella",
-   "reason": "The Quest Expansion mod wins the record and adds the stage-55 'Enter the Temple of Dibella' step, but the sheet shows nothing that sets stage 55, so I can't tell whether there's a giver (UESP's vanilla giver is Hamal).",
-   "bob": "agree"
+   "uesp": "UESP: vanilla giver Hamal after you're caught in the Inner Sanctum; Degaine's favor sends you there. The Quest Expansion adds another start: a letter from the temple's leader once you're Thane of the Reach.",
+   "url": "https://www.gfinityesports.com/gaming-news/skyrim-mod-dibella-quest-expansion-jayserpa/",
+   "reason": "Second look, 22 Oct. No single giver is right, but the page should give the two ways: a letter from the Temple of Dibella once you're Thane of the Reach (the expansion's start, which sets stage 55, Enter the Temple of Dibella), or Degaine's errand into the Inner Sanctum, where Hamal catches you. PC: name the letter and what sets stage 55.",
+   "bob": "agree",
+   "second_look": "2026-10-22"
   },
   {
    "line": "the-blessings-of-nature",
@@ -810,10 +815,11 @@
    "opening": "Trius' Trinket (dunShipwreck04QST)",
    "verdict": "UNSURE",
    "pageSays": "no one giver; then Search the wreck below for the jewelry box.",
-   "uesp": "Listed under Unfinished Quests: Trius would have asked you outside a shipwreck, but Trius does not appear in-game; objective 10 'Search the wreck below for the jewelry box.'",
-   "url": "https://en.uesp.net/wiki/Skyrim:Unfinished_Quests",
-   "reason": "The records show only a change-location node, which fits 'no giver', but UESP says this is cut vanilla content whose giver doesn't exist, and nothing on the sheet shows it was restored and can actually fire in LoreRim.",
-   "bob": "agree"
+   "uesp": "UESP lists it under unfinished quests, and the Elder Scrolls wiki says it 'is left incomplete in the game files': Trius was to give it at the camp above the wreck and never appears.",
+   "url": "https://elderscrolls.fandom.com/wiki/Pilgrim's_Trench",
+   "reason": "Second look, 22 Oct. Still unsure. The only start is a change-location node whose conditions are unread (fn359, fn562, the same two as Lost to the Ages). If the PC reads them and nothing in LoreRim restores the quest, it should leave the quest lists, not show as one you can do.",
+   "bob": "agree",
+   "second_look": "2026-10-22"
   },
   {
    "line": "infiltration",
@@ -1039,12 +1045,13 @@
    "line": "heart-of-the-reach",
    "name": "Heart of the Reach",
    "opening": "aaaHOTRQuest",
-   "verdict": "UNSURE",
+   "verdict": "WRONG",
    "pageSays": "no one giver; then \"(Optional) Confront Vinillian\"",
-   "uesp": null,
-   "url": null,
-   "reason": "It starts through stage 10 of the helper quest aaaHOTRDialogue, but the sheet doesn't show what sets that stage (the name suggests an NPC line), so there may be a giver.",
-   "bob": "agree"
+   "uesp": "LoreRim's own quest guide: 'To start, speak to Gwilym, a new NPC located at the Silver-Blood Inn in Markarth.' The mod's authors suggest level 10.",
+   "url": "https://lorerim.com/guides/new-quests",
+   "reason": "Second look, 22 Oct. The helper quest's stage 10 is Gwilym's line. The page should say Gwilym, Silver-Blood Inn, Markarth; then Travel to Ever-Bog (Part 1's rule 2 already chose the required step over the optional one).",
+   "bob": "agree",
+   "second_look": "2026-10-22"
   },
   {
    "line": "the-welkynar-knight",
@@ -1171,12 +1178,13 @@
    "line": "capital-whiterun",
    "name": "Whiterun, expanded",
    "opening": "0WRThaneQ01 (Skirmish at Whitewatch)",
-   "verdict": "UNSURE",
+   "verdict": "WRONG",
    "pageSays": "no one giver; then \"TEST\"",
    "uesp": null,
    "url": null,
-   "reason": "The first objective text in the records is the placeholder \"TEST\", which isn't usable for players; the Courier's line needs stage 10 already set, and the sheet doesn't show what sets it.",
-   "bob": "agree"
+   "reason": "Second look, 22 Oct. The first objective in the records is the mod author's placeholder 'TEST', so the page must not show it: use the stage's journal text instead, or the next real objective. The courier's line needs stage 10, which looks like the Thane of Whiterun hook. PC: name what sets stage 10; until then the page says a courier finds you, not checked yet.",
+   "bob": "agree",
+   "second_look": "2026-10-22"
   },
   {
    "line": "markarth-side",
@@ -1516,8 +1524,9 @@
    "pageSays": "no one giver; then \"Clear the dungeon with Aerin and Mjoll\"",
    "uesp": null,
    "url": null,
-   "reason": "A helper quest with Mjoll and Aerin, running from the start of the game, sets stage 10 at its own stage 20, but the sheet doesn't show what pushes the helper to stage 20 (it may be talking to Mjoll and Aerin), so 'no giver' can't be confirmed.",
-   "bob": "agree"
+   "reason": "Second look, 22 Oct. Still unsure. A helper quest with Mjoll and Aerin runs from the start of the game and opens the quest at its stage 20; what moves it to 20 isn't read yet (likely Mjoll as your follower with Aerin near, after Grimsever's Return). PC: trace it. Until then 'no one giver, not checked yet' stands.",
+   "bob": "agree",
+   "second_look": "2026-10-22"
   },
   {
    "line": "erik",
