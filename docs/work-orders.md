@@ -4962,7 +4962,12 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - [ ] Part 1: the slim bar, the tabs renamed in edit and view, a help line on each tab.
 - [ ] Part 2: the active step lit, needs-you in brass, every "i" 6 px from its label.
 - [ ] Part 3: the AI assisted tooltip says what the planner is (the link waits on WO-125).
-- [ ] Part 4: the cause of the Story tab's wait and flicker, the times before and after, and no redraw of the bar.
+- [x] Part 4: the cause of the Story tab's wait and flicker, the times before and after, and no redraw of the bar. (Mac, 21 Oct.)
+  - **The cause:** not the missing `loading.tsx`. The Story tab linked to `/p/<id>/edit/story`, which redirects on the server to `/edit/story/title`. A redirect during a tab change made Next load the whole document again. Sampled every 10 ms, the screen held only Next's streaming scripts from about 360 ms after the click until the new page drew at about 1.17 s: an empty frame, then everything at once, which is the flicker.
+  - **Set up did the same, more briefly.** In edit it loads its wizard in the browser only, and the placeholder while it loaded was New build's header, so for 0.3 s the edit bar was gone and the wrong page showed.
+  - **The fix:** every tab and redirect points at the page's own address (`/edit/story/title`). Set up in edit shows the edit bar, read from the page's frame, while its wizard loads.
+  - **Before** (five runs, Levels to Story): 1,158 to 1,186 ms from the click to the Story tab showing, 0.8 s of it an empty frame.
+  - **After** (`e2e/wo124.spec.ts`, every tab in turn): Story 0.80 to 0.88 s, Guide 0.83 s, Playthrough 0.84 s, Build 0.85 s, Set up 1.33 s while its wizard loads. The edit tabs are on screen in every 10 ms sample, and the test fails if they ever aren't.
 - [ ] Part 5: the story's card on the rail, done objectives folded, chapters locked until done with Read it anyway, Where is she in your game? with Read a save and Enter by hand.
 - [ ] Part 6: the reader inside the page, contents on the left, Contents on a phone.
 - [ ] Every check in CLAUDE.md passes. Screenshots at 1440 and 390 of edit on each tab, Playthrough with and without a snapshot, and a chapter in the reader, compared against row 29. Commit on `staging` per part, push, and stop for Dave.

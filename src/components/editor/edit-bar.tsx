@@ -242,8 +242,10 @@ function tabsOf(f: EditFrameData | null, buildId: string): Tab[] {
     out.push({ key: "levels", label: "Levels", sub: b ? `Levels 1 to ${b.levels}` : "", href: `/b/${id}/edit`, icon: "tab-levels" });
     out.push({ key: "guide", label: "Guide", sub: b?.guideMinutes ? `${b.guideMinutes} min read` : "Not written yet", href: `/b/${id}/guide`, icon: "tab-guide" });
   }
+  // The page's own address, never one that redirects (WO-124 Part 4): a redirect during a tab change made Next load the
+  // whole document again, an empty frame for 0.8 s.
   if (r)
-    out.push({ key: "story", label: "Story", sub: `${r.chapters} chapter${r.chapters === 1 ? "" : "s"}`, href: `/p/${r.id}/edit/story`, icon: "tab-story" });
+    out.push({ key: "story", label: "Story", sub: `${r.chapters} chapter${r.chapters === 1 ? "" : "s"}`, href: `/p/${r.id}/edit/story/title`, icon: "tab-story" });
   else if (f?.storyOn && b) out.push({ key: "story", label: "Story", sub: b.hasStory ? "Written" : "Not written yet", href: `/b/${b.id}/edit/story`, icon: "tab-story" });
   if (r) out.push({ key: "play", label: "Play", sub: `${r.acts} act${r.acts === 1 ? "" : "s"}, ${r.objectives} objective${r.objectives === 1 ? "" : "s"}`, href: `/p/${r.id}/edit/play`, icon: "tab-play" });
   return out;

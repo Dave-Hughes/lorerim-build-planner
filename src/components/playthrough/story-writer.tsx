@@ -324,7 +324,7 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
                   className={s.remove}
                   onClick={() => {
                     if (!window.confirm(`Remove ${page.title}?`)) return;
-                    void send(() => act.removeChapter(owner.id, page.chapterId!)).then((ok) => ok && router.push(`/p/${owner.id}/edit/story`));
+                    void send(() => act.removeChapter(owner.id, page.chapterId!)).then((ok) => ok && router.push(`/p/${owner.id}/edit/story/title`));
                   }}
                 >
                   Remove this chapter

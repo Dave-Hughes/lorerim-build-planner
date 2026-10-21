@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
-import { WizardLoader as Wizard } from "@/components/creation/wizard-loader";
+import { EditWizardLoader as Wizard } from "@/components/creation/wizard-loader";
 import { SignInButton, SiteHeader } from "@/components/site-header";
 import { GameDataProvider } from "@/components/game-data";
 import { EditFrameProvider } from "@/components/editor/edit-bar";
