@@ -16,7 +16,7 @@ test("the edit tabs move between Levels and Guide in one step", async ({ page, c
   await expect(page.getByRole("banner")).toBeVisible();
 });
 
-test("the visibility button changes Link only to Listed, and Set up shows it", async ({ page, context }) => {
+test("the visibility button changes Link only to Listed, and Set up's band shows it", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${LINK_ONLY_BUILD_ID}/edit`);
   const bar = page.getByRole("region", { name: "Edit bar" });
@@ -28,11 +28,12 @@ test("the visibility button changes Link only to Listed, and Set up shows it", a
   await editTab(page, "Set up").click();
   await expect(page).toHaveURL(new RegExp(`/b/${LINK_ONLY_BUILD_ID}/setup`));
   await page.goto(`/b/${LINK_ONLY_BUILD_ID}/setup?step=name`);
-  await expect(page.getByLabel("Listed on Browse builds")).toBeChecked();
+  // Details has no Who can see it of its own (WO-118): the band says it.
+  await expect(page.getByLabel("Listed on Browse builds")).toHaveCount(0);
   // Back to Link only, as seeded.
   await page.getByRole("region", { name: "Edit bar" }).getByRole("button", { name: "Who can see it: Listed" }).click();
   await page.getByRole("menuitemradio", { name: /^Link only/ }).click();
-  await expect(page.getByLabel("Anyone with the link")).toBeChecked();
+  await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("button", { name: "Who can see it: Link only" })).toBeVisible();
 });
 
 // WO-116a: the shared page has no edit bar; the owner's controls are in the hero (and the pinned bar).

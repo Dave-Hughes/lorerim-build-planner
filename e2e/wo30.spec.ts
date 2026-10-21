@@ -57,5 +57,6 @@ test("game modes in the about bar and Set up; tags in Set up, Browse and the bui
   await page.goto(`/b/${TEST_BUILD_ID}/setup?step=mode`);
   await iconWithName(page.getByRole("region", { name: "Game mode" }), "mode-naaktiid", "Naaktiid");
   await page.goto(`/b/${TEST_BUILD_ID}/setup?step=name`);
+  await page.getByRole("button", { name: "+ Add a tag" }).click();
   await iconWithName(page.getByRole("group", { name: "Tags" }), "tag-necromancy", "Necromancy");
 });

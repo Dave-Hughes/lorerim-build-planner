@@ -36,7 +36,7 @@ test("a build through all 7 steps: Mephala on the Deity step saves, and the rail
   await page.getByLabel("Out in the Wilderness").check();
   await page.getByLabel("Hold").selectOption("Falkreath");
   await page.getByRole("button", { name: "Next: Details" }).click();
-  await page.getByLabel("Build name").fill("Seven Steps");
+  await page.getByLabel("Name", { exact: true }).fill("Seven Steps");
 
   for (const s of ["Race", "Birthsign", "Skills", "Traits", "Deity", "Mode and start"]) await expect(rail.getByRole("button", { name: `${s}: done` })).toBeVisible();
   await page.getByRole("button", { name: "Create character" }).click();

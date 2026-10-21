@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ImageSlot } from "@/components/ui/image-slot";
+import { AiAssisted } from "@/components/ui/ai-assisted";
 import { InfoTip } from "@/components/ui/info-tip";
 import { MAX_TAGS, TAGS, TAG_GROUPS, suggestedTags } from "@/lib/builds/tags";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -10,7 +11,7 @@ import { TraitText } from "@/components/ui/trait-text";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { FocusHeader } from "@/components/ui/focus-header";
 import { Tooltip } from "@/components/ui/tooltip";
-import { EditBar, type SaveState } from "@/components/editor/edit-bar";
+import { EditBar, useEditFrame, type SaveState } from "@/components/editor/edit-bar";
 import { authorTourPending } from "@/lib/tour";
 import { AttributeIcon, IconLabel, RaceIcon, SignIcon, SkillLabel, ModeIcon, TagIcon, DeityIcon } from "@/components/ui/skill-icon";
 import { copyBuildForVersion, createBuild, saveBuildDetails, saveBuildPlan } from "@/lib/builds/actions";
@@ -24,7 +25,6 @@ import { shippedVersions } from "@/lib/rules/versions";
 import { emptyLevel } from "@/lib/rules/derive";
 import { computeBuild } from "@/lib/rules/engine";
 import type { BuildPlan } from "@/lib/rules/types";
-import { ThemePicker } from "./theme-picker";
 import { themeOf } from "@/lib/themes";
 import { useDismiss } from "@/lib/use-dismiss";
 import { YOUTUBE_ERROR, youtubeVideoId } from "@/lib/builds/youtube";
@@ -38,8 +38,6 @@ interface WizardProps {
   signedIn: boolean;
   /** Sign-in button for the last step, rendered by the server. */
   signIn: React.ReactNode;
-  /** The start of the build's guide intro, for the theme preview (edit only). */
-  introStart?: string;
   /** An assistant drafted it (WO-110): its name, and whether the page says so. */
   drafted?: { by: string; show: boolean } | null;
   /** Playthroughs are on (WO-114): a new build is a character; a run is started from it (WO-116). */
@@ -50,7 +48,7 @@ function plainTraitText(text: string): string {
   return text.replace(/<([^<>]*)>/g, "$1");
 }
 
-export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, signIn, introStart, drafted, characters = false }: WizardProps) {
+export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, signIn, drafted, characters = false }: WizardProps) {
   const router = useRouter();
   // Rendered on the client only (see wizard-loader.tsx), so the draft in this
   // browser can seed the state directly.
@@ -61,6 +59,7 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
   const d = requireGameData(plan.gameVersion);
   const [details, setDetails] = useState<BuildDetails>(() => initialDetails ?? draft?.details ?? emptyDetails());
   const [showDrafted, setShowDrafted] = useState(drafted?.show ?? true);
+  const frame = useEditFrame();
   const search = useSearchParams();
   const [step, setStepState] = useState<Step>(() => {
     // From the router, not window.location: on a client-side link the address changes after this first render.
@@ -306,8 +305,8 @@ export function Wizard({ mode, buildId, initialPlan, initialDetails, signedIn, s
                 plan={plan}
                 update={update}
                 signedIn={signedIn}
-                introStart={introStart}
-                drafted={drafted ? { show: showDrafted, onChange: (v) => (touch(), touchSave(), setShowDrafted(v)) } : null}
+                creating={mode === "create"}
+                drafted={drafted ? { show: showDrafted, onChange: (v) => (touch(), touchSave(), setShowDrafted(v)), author: frame?.author ?? "The author" } : null}
               />
             )}
             </div>
@@ -972,7 +971,7 @@ function NameStep({
   plan,
   update,
   signedIn,
-  introStart,
+  creating,
   drafted,
 }: {
   details: BuildDetails;
@@ -980,40 +979,28 @@ function NameStep({
   plan: BuildPlan;
   update: StepProps["update"];
   signedIn: boolean;
-  introStart?: string;
+  /** Making a new build: no edit band yet, so who can see it is chosen here. */
+  creating: boolean;
   /** An assistant drafted it (WO-110): whether the page says so. */
-  drafted?: { show: boolean; onChange: (show: boolean) => void } | null;
+  drafted?: { show: boolean; onChange: (show: boolean) => void; author: string } | null;
 }) {
-  const d = useGameData();
-  const noSign = plan.traits.includes("Master of Destiny");
+  // Details, with less in it (WO-118, the DetailsCalm board): name, description, cover, tags, the two
+  // links side by side, and the AI assisted mark. The steps on the left say the race and birthsign;
+  // the edit band has who can see it.
   return (
     <>
       <h1 className={`title ${styles.h1}`}>Details</h1>
-      {/* What is being created. */}
-      <dl className={styles.summary}>
-        <div>
-          <dt className="label">Race</dt>
-          <dd>{plan.race ? <IconLabel icon={<RaceIcon name={plan.race} />}>{plan.race}</IconLabel> : "Not chosen"}</dd>
-        </div>
-        <div>
-          <dt className="label">Birthsign</dt>
-          <dd>{noSign ? "None (Master of Destiny)" : plan.birthsign ? <IconLabel icon={<SignIcon name={plan.birthsign} />}>The {plan.birthsign}</IconLabel> : "Not chosen"}</dd>
-        </div>
-        <div>
-          <dt className="label">LoreRim version</dt>
-          <dd>{d.version.label}</dd>
-        </div>
-      </dl>
-      <div className={styles.fields}>
+      <div className={styles.details}>
         <label className="field">
-          <span className="label">Build name</span>
+          <span className="label">Name</span>
           <input className="input" value={details.name} maxLength={80} onChange={(e) => updateDetails({ name: e.target.value })} autoFocus />
         </label>
-        <label className="field">
-          <span className="label">Description</span>
-          <input className="input" value={details.description} maxLength={300} onChange={(e) => updateDetails({ description: e.target.value })} placeholder="One line under the name" />
-        </label>
-        <TagPicker chosen={details.tags ?? suggestedTags(plan.majors)} suggested={details.tags == null} onChange={(tags) => updateDetails({ tags })} />
+        <div className="field">
+          <label className="label" htmlFor="build-description">
+            Description
+          </label>
+          <textarea id="build-description" className={`input ${styles.description}`} rows={2} value={details.description} maxLength={300} onChange={(e) => updateDetails({ description: e.target.value })} placeholder="One line under the name" />
+        </div>
         <CoverField
           url={details.coverImageUrl}
           signedIn={signedIn}
@@ -1029,60 +1016,90 @@ function NameStep({
           focus={plan.coverFocus}
           onFocus={(coverFocus) => update((p) => ({ ...p, coverFocus }))}
         />
-        <VideoField
-          videoId={plan.videoId}
-          onChange={(videoId) =>
-            update((p) => {
-              const next = { ...p };
-              if (videoId) next.videoId = videoId;
-              else delete next.videoId;
-              return next;
-            })
-          }
-        />
-        {/* The "i" sits outside the <label>: a button inside one would take its name from the input. */}
-        <div className="field">
-          <span className="label">
-            <label htmlFor="writeup-link">Write-up link</label> <InfoTip label="About the write-up link" text="Your Discord post or guide." />
-          </span>
-          <input id="writeup-link" className="input" type="url" value={details.writeupUrl} maxLength={500} onChange={(e) => updateDetails({ writeupUrl: e.target.value })} placeholder="https://discord.com/channels/…" />
-        </div>
-        <fieldset className={styles.radios}>
-          <legend className="label">Who can see it</legend>
-          {(
-            [
-              ["public", "Listed on Browse builds"],
-              ["unlisted", "Anyone with the link"],
-              ["private", "Only you"],
-            ] as const
-          ).map(([v, l]) => (
-            <label key={v} className={styles.radio}>
-              <input type="radio" name="visibility" value={v} checked={details.visibility === v} onChange={() => updateDetails({ visibility: v })} />
-              <span>{l}</span>
-            </label>
-          ))}
-        </fieldset>
-        {drafted && (
+        <TagField chosen={details.tags ?? suggestedTags(plan.majors)} suggested={details.tags == null} onChange={(tags) => updateDetails({ tags })} />
+        <div className={styles.links}>
+          <VideoField
+            videoId={plan.videoId}
+            onChange={(videoId) =>
+              update((p) => {
+                const next = { ...p };
+                if (videoId) next.videoId = videoId;
+                else delete next.videoId;
+                return next;
+              })
+            }
+          />
+          {/* The "i" sits outside the <label>: a button inside one would take its name from the input. */}
           <div className="field">
             <span className="label">
-              AI assisted mark <InfoTip label="About the AI assisted mark" text="Shown on the page because an assistant drafted this character. You can hide it." />
+              <label htmlFor="writeup-link">Write-up</label> <InfoTip label="About the write-up" text="Your Discord post or guide." />
             </span>
-            <label className={styles.radio}>
-              <input type="checkbox" checked={drafted.show} onChange={(e) => drafted.onChange(e.target.checked)} />
-              <span>Show it</span>
-            </label>
+            <input id="writeup-link" className="input" type="url" value={details.writeupUrl} maxLength={500} onChange={(e) => updateDetails({ writeupUrl: e.target.value })} placeholder="[Discord or guide link]" />
           </div>
+        </div>
+        {creating && (
+          <fieldset className={styles.radios}>
+            <legend className="label">Who can see it</legend>
+            {(
+              [
+                ["public", "Listed on Browse builds"],
+                ["unlisted", "Anyone with the link"],
+                ["private", "Only you"],
+              ] as const
+            ).map(([v, l]) => (
+              <label key={v} className={styles.radio}>
+                <input type="radio" name="visibility" value={v} checked={details.visibility === v} onChange={() => updateDetails({ visibility: v })} />
+                <span>{l}</span>
+              </label>
+            ))}
+          </fieldset>
+        )}
+        {drafted && (
+          <span className={styles.showMark}>
+            <input id="show-ai-mark" type="checkbox" checked={drafted.show} onChange={(e) => drafted.onChange(e.target.checked)} />
+            <label htmlFor="show-ai-mark">Show the</label> <AiAssisted author={drafted.author} /> <span aria-hidden="true">mark</span>
+          </span>
         )}
       </div>
-      <ThemePicker
-        plan={plan}
-        onPick={(theme) => update((p) => ({ ...p, theme }))}
-        name={details.name}
-        description={details.description}
-        coverImageUrl={details.coverImageUrl}
-        introStart={introStart}
-      />
     </>
+  );
+}
+
+/**
+ * Tags (WO-118): the chosen ones as chips with ×, then + Add a tag, which opens the full list,
+ * grouped, in a popover. The limit, and that the first ones are suggested from the majors, are in the
+ * label's "i".
+ */
+function TagField({ chosen, suggested, onChange }: { chosen: string[]; suggested: boolean; onChange: (tags: string[]) => void }) {
+  const [open, setOpen] = useState(false);
+  const wrap = useRef<HTMLDivElement>(null);
+  const button = useRef<HTMLButtonElement>(null);
+  useDismiss({ open, onClose: () => setOpen(false), inside: [wrap], trigger: button });
+  return (
+    <div ref={wrap} className={`field ${styles.tagField}`}>
+      <span className="label">
+        Tags{" "}
+        <InfoTip
+          label="About tags"
+          text={`Up to ${MAX_TAGS}. They help people find it on Browse builds.${suggested && chosen.length ? " These are suggested from your majors: remove any that don't fit." : ""}`}
+        />
+      </span>
+      <span className={styles.tagChips}>
+        {chosen.map((slug) => (
+          <button key={slug} type="button" className={styles.tagChosen} aria-label={`Remove ${TAGS.find((t) => t.slug === slug)?.name ?? slug}`} onClick={() => onChange(chosen.filter((x) => x !== slug))}>
+            <IconLabel icon={<TagIcon tag={slug} />}>{TAGS.find((t) => t.slug === slug)?.name ?? slug}</IconLabel> <span aria-hidden="true">×</span>
+          </button>
+        ))}
+        <button ref={button} type="button" className={styles.tagAdd} aria-expanded={open} onClick={() => setOpen(!open)}>
+          + Add a tag
+        </button>
+      </span>
+      {open && (
+        <div className={styles.tagPopover}>
+          <TagPicker chosen={chosen} onChange={onChange} />
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -1096,7 +1113,7 @@ function VideoField({ videoId, onChange }: { videoId: string | undefined; onChan
   return (
     <div className="field">
       <span className="label">
-        <label htmlFor="video-guide">Video guide (optional)</label> <InfoTip label="About the video guide" text="A YouTube video. It opens the build page and the Guide tab." />
+        <label htmlFor="video-guide">Video</label> <InfoTip label="About the video" text="A YouTube link. It opens the build page and the Guide tab." />
       </span>
       <input
         id="video-guide"
@@ -1104,7 +1121,7 @@ function VideoField({ videoId, onChange }: { videoId: string | undefined; onChan
         type="url"
         value={text}
         maxLength={300}
-        placeholder="https://www.youtube.com/watch?v=…"
+        placeholder="[YouTube link]"
         aria-invalid={bad || undefined}
         aria-describedby={bad ? "video-guide-hint" : undefined}
         onChange={(e) => {
@@ -1136,6 +1153,7 @@ function CoverField({
   onFocus: (focus: { x: number; y: number }) => void;
 }) {
   const [busy, setBusy] = useState(false);
+  const [linking, setLinking] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const upload = async (file: File) => {
     setBusy(true);
@@ -1161,10 +1179,11 @@ function CoverField({
   return (
     <div ref={box} id="cover" className={`field ${styles.cover}`}>
       <span className="label">
-        Cover <InfoTip label="About the cover" text="The image across the top of the page. Position chooses the part that stays in view. PNG, JPEG, WebP or GIF, up to 4 MB." />
+        Cover <InfoTip label="About the cover" text="The image across the top of the page. PNG, JPEG, WebP or GIF, up to 4 MB." />
       </span>
-      {/* Shown once, cropped as the hero crops it, with Change, Position and Remove on it (WO-118). */}
-      {signedIn ? (
+      {/* Shown once, cropped as the hero crops it, with Change, Position and Remove on it (WO-118). Change
+          offers Upload or Use a link: a screenshot already posted. Signed out, only the link. */}
+      {(signedIn || url) && (
         <div className={`${styles.coverFrame} ${url ? "" : styles.coverFrameEmpty}`}>
           <ImageSlot
             url={url || null}
@@ -1173,42 +1192,38 @@ function CoverField({
             busy={busy}
             addLabel="Add a cover"
             onFile={(file) => void upload(file)}
+            onUseLink={() => setLinking(true)}
             onRemove={() => onChange("")}
             onFocus={onFocus}
             imageClassName={styles.coverImage}
             toolsClassName={styles.coverTools}
           />
         </div>
-      ) : (
-        <span className="muted">Sign in to upload one, or paste a link below.</span>
       )}
       {url && <span className="muted" style={{ fontSize: 13 }}>Shown as it sits in the page&apos;s hero.</span>}
+      {(linking || !signedIn) && (
+        <label className={styles.coverLink}>
+          <span className="label">A link to a screenshot you have already posted</span>
+          <input className="input" type="url" value={url} maxLength={500} onChange={(e) => onChange(e.target.value)} autoFocus={linking} />
+        </label>
+      )}
       {error && (
         <span role="alert" className="bad">
           {error}
         </span>
       )}
-      <label className={styles.coverLink}>
-        <span className="label">Or a link to a screenshot you have already posted</span>
-        <input className="input" type="url" aria-label="Cover image link" value={url} maxLength={500} onChange={(e) => onChange(e.target.value)} />
-      </label>
     </div>
   );
 }
 
-/**
- * Up to five tags from the set list, grouped. Before the player has touched them, the tags their
- * majors suggest are shown chosen, and said to be suggestions; nothing is saved unseen.
- */
-function TagPicker({ chosen, suggested, onChange }: { chosen: string[]; suggested: boolean; onChange: (tags: string[]) => void }) {
+/** The full list of tags, grouped (WO-118: inside + Add a tag); up to five chosen. */
+function TagPicker({ chosen, onChange }: { chosen: string[]; onChange: (tags: string[]) => void }) {
   const full = chosen.length >= MAX_TAGS;
   return (
     <fieldset className={styles.tagPicker} aria-label="Tags">
-      {/* A heading with the count beside it, under a rule, so the chips read as their own section (WO-57). */}
-      <legend className={`label ${styles.tagsLegend}`}>
-        Tags <span className="muted">{chosen.length} of {MAX_TAGS} chosen</span>
-        {suggested && chosen.length > 0 && <InfoTip label="About the suggested tags" text="Suggested from your majors. Remove any that don't fit." />}
-      </legend>
+      <span className="muted">
+        {chosen.length} of {MAX_TAGS} chosen
+      </span>
       {TAG_GROUPS.map((g) => (
         <div key={g} className={styles.tagGroup}>
           <span className="sub-label">{g}</span>

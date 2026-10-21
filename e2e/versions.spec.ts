@@ -15,11 +15,11 @@ test.describe("LoreRim versions", () => {
     await expect(list.getByRole("listitem").first()).toContainText("LoreRim 5.0.4.8");
     await expect(list.getByRole("listitem").first()).toContainText("Chosen");
 
-    // WO-36: the band is on the Race step only; the sidebar and the Details step still say the version.
+    // WO-36: the band is on the Race step only; the sidebar still says the version (WO-118: Details doesn't repeat it).
     await page.goto("/new?step=name");
     await expect(page.getByRole("region", { name: "LoreRim version" })).toHaveCount(0);
     await expect(page.getByRole("complementary", { name: "Setup steps" })).toContainText("LoreRim 5.0.4.8");
-    await expect(page.getByRole("main")).toContainText("LoreRim 5.0.4.8");
+    await expect(page.getByRole("main")).not.toContainText("LoreRim 5.0.4.8");
   });
 
   test("the setup page shows the band too, and offers a copy rather than a change", async ({ page, context }) => {

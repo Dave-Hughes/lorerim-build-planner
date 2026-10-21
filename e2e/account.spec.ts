@@ -23,7 +23,8 @@ test.describe("an author's builds", () => {
     await page.goto(`/b/${TEST_BUILD_ID}/setup?step=name`);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Details");
     await page.getByLabel("Description").fill("Now with a new description.");
-    await page.getByLabel("Listed on Browse builds").check();
+    await page.getByRole("region", { name: "Edit bar" }).getByRole("button", { name: /^Who can see it/ }).click();
+    await page.getByRole("menu", { name: "Who can see it" }).getByRole("menuitemradio", { name: /^Listed/ }).click();
     // Every change saves as it is made (WO-117).
     await savedInBand(page);
     await page.goto(`/b/${TEST_BUILD_ID}`);

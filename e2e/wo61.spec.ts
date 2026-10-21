@@ -55,7 +55,7 @@ test("a new build lands on level 1 with the author's welcome; Later asks again, 
   await page.getByRole("article").filter({ hasText: "Nord" }).getByRole("button", { name: /^Choose/ }).click();
   await expect(page.getByText("Draft saved")).toBeVisible();
   await page.goto("/new?step=name");
-  await page.getByLabel("Build name").fill("Tapps' Test");
+  await page.getByLabel("Name", { exact: true }).fill("Tapps' Test");
   await page.getByRole("button", { name: "Create character" }).click();
   await page.waitForURL(/\/b\/\w{10}\/edit/);
   const welcome = page.getByRole("dialog", { name: "Build saved" });

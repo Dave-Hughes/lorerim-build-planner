@@ -7,6 +7,7 @@ test.use({ viewport: { width: 1440, height: 900 } });
 test("hovering a chosen tag in Set up keeps its name readable", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${TEST_BUILD_ID}/setup?step=name`);
+  await page.getByRole("button", { name: "+ Add a tag" }).click();
   const tags = page.getByRole("group", { name: "Tags" });
   const chip = tags.getByRole("button", { name: "Roleplay" });
   if ((await chip.getAttribute("aria-pressed")) !== "true") await chip.click();

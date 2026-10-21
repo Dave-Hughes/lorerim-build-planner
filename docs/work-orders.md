@@ -4899,7 +4899,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - [x] Part 3: Images on the Story tab only, rows that stay put, Position on every image, a draft that asks for a cover.
 - [x] Part 4: Play as PlayCalm: no right rail, compact acts, Where you stand only with a save, Throughout the act, no door or helper.
 - [x] Part 5: Read the story with Continue reading beside the tabs, and Contents in the reader.
-- [ ] Part 6: Details as DetailsCalm.
+- [x] Part 6: Details as DetailsCalm.
 - [ ] Part 7: themes off, Ember everywhere, the stored value kept.
 - [ ] Every check in CLAUDE.md passes; migrations additive; behind the flag. Commit on `staging`, push, and stop: Dave opens Kyria, reads from Continue reading, jumps chapters from Contents, positions Act I's image, and finds Play calm.
 

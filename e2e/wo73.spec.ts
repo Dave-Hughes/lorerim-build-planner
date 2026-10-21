@@ -152,17 +152,7 @@ test.describe("at 1440", () => {
     await skills.getByRole("button", { name: "Block", exact: true }).click();
     await expect(legend).toBeVisible();
   });
-
-  test("point 11: the wizard's preview shows the build page's tabs", async ({ page, context }) => {
-    await signIn(context);
-    await page.goto("/new");
-    await page.getByRole("article").filter({ hasText: "Altmer" }).getByRole("button", { name: /^Choose/ }).click();
-    await expect(page.getByText("Draft saved")).toBeVisible();
-    await page.goto("/new?step=name");
-    const preview = page.getByRole("img", { name: /^Preview in / }).first();
-    await expect(preview.locator('[class*="tabOn"]')).toHaveText("Levels");
-    await expect(preview).toContainText("Guide");
-  });
+  // Point 11's theme preview went with the theme picker (WO-118).
 });
 
 test.describe("on a phone", () => {

@@ -2,6 +2,8 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { useRef, useState } from "react";
+import { MenuButton } from "@/components/editor/edit-bar";
+import menu from "@/components/editor/edit-bar.module.css";
 import styles from "./image-slot.module.css";
 
 export type ImageFocus = { x: number; y: number };
@@ -31,6 +33,7 @@ export function ImageSlot({
   addLabel = "Add an image",
   fallbackPosition,
   positionable = true,
+  onUseLink,
   children,
 }: {
   url: string | null;
@@ -47,6 +50,8 @@ export function ImageSlot({
   fallbackPosition?: string;
   /** Position is offered (WO-118: every slot but the title page, which has no place to keep it). */
   positionable?: boolean;
+  /** Change and Add offer Upload or Use a link (WO-118: the cover, which can be a posted screenshot). */
+  onUseLink?: () => void;
   /** Drawn between the image and the buttons: a fade, the words over it. */
   children?: React.ReactNode;
 }) {
@@ -70,14 +75,50 @@ export function ImageSlot({
       }}
     />
   );
+  // Change (or Add): the file picker, or with a link allowed, a menu of the two.
+  const choose = (text: string) =>
+    onUseLink ? (
+      <MenuButton buttonClassName="btn btn-sm" buttonLabel={text} menuLabel={text} button={busy ? "Uploading" : text}>
+        {(close) => (
+          <>
+            <button
+              type="button"
+              role="menuitem"
+              tabIndex={-1}
+              className={menu.menuItem}
+              onClick={() => {
+                close();
+                picker.current?.click();
+              }}
+            >
+              Upload an image
+            </button>
+            <button
+              type="button"
+              role="menuitem"
+              tabIndex={-1}
+              className={menu.menuItem}
+              onClick={() => {
+                close();
+                onUseLink();
+              }}
+            >
+              Use a link
+            </button>
+          </>
+        )}
+      </MenuButton>
+    ) : (
+      <button type="button" className="btn btn-sm" disabled={busy} onClick={() => picker.current?.click()}>
+        {busy ? "Uploading" : text}
+      </button>
+    );
   if (!url)
     return (
       <>
         {children}
         <span className={`on-image ${toolsClassName ?? ""}`} style={{ zIndex: 3 }}>
-          <button type="button" className="btn btn-sm" disabled={busy} onClick={() => picker.current?.click()}>
-            {busy ? "Uploading" : addLabel}
-          </button>
+          {choose(addLabel)}
           {pick}
         </span>
       </>
@@ -113,9 +154,7 @@ export function ImageSlot({
         </span>
       )}
       <span className={`on-image ${toolsClassName ?? ""}`} style={{ zIndex: 3 }}>
-        <button type="button" className="btn btn-sm" disabled={busy || !!placing} onClick={() => picker.current?.click()}>
-          {busy ? "Uploading" : "Change"}
-        </button>
+        {!placing && choose("Change")}
         {positionable && (
           <button
             type="button"

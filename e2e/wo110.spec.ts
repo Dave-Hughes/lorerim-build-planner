@@ -95,7 +95,7 @@ test("the draft is private under My characters, marked as drafted, and opens in 
 test("the Details checkbox hides the drafted line", async ({ page, context }) => {
   await signIn(context, "other");
   await page.goto(`/b/${buildId}/setup?step=name`);
-  const box = page.getByLabel("Show it");
+  const box = page.getByLabel("Show the");
   await expect(box).toBeChecked();
   await box.uncheck();
   // Every change saves as it is made (WO-117).

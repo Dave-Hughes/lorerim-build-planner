@@ -8,7 +8,7 @@ const VIDEO = "https://www.youtube.com/watch?v=jNQXAC9IVRw&t=5s";
 
 async function setVideo(page: Page, link: string) {
   await page.goto(`/b/${IRIEL_BUILD_ID}/setup?step=name`);
-  const field = page.getByLabel("Video guide (optional)");
+  const field = page.getByLabel("Video", { exact: true });
   await field.fill(link);
   // Every change saves as it is made (WO-117).
   await savedInBand(page);
@@ -17,7 +17,7 @@ async function setVideo(page: Page, link: string) {
 test("a video guide: the hero button opens the Guide tab with the player, and nothing loads from YouTube before", async ({ page, context }) => {
   await signIn(context, "other");
   await page.goto(`/b/${IRIEL_BUILD_ID}/setup?step=name`);
-  await page.getByLabel("Video guide (optional)").fill("https://vimeo.com/123456789");
+  await page.getByLabel("Video", { exact: true }).fill("https://vimeo.com/123456789");
   await expect(page.getByRole("alert").filter({ hasText: "That isn't a YouTube link." })).toBeVisible();
   await setVideo(page, VIDEO);
 

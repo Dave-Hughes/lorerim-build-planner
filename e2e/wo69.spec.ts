@@ -20,7 +20,7 @@ test("Skip ahead: write 2 to 10 and 11 to 25 as stretches, reset one, and read t
   await page.getByRole("article").filter({ hasText: "Altmer" }).getByRole("button", { name: /^Choose/ }).click();
   await expect(page.getByText("Draft saved")).toBeVisible();
   await page.goto("/new?step=name");
-  await page.getByLabel("Build name").fill("Skipping Altmer");
+  await page.getByLabel("Name", { exact: true }).fill("Skipping Altmer");
   await page.getByRole("button", { name: "Create character" }).click();
   await page.waitForURL(/\/b\/\w{10}\/edit/);
   const id = page.url().match(/\/b\/(\w{10})\//)![1];

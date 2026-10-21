@@ -4,7 +4,7 @@
  */
 import { expect, test, type Page } from "@playwright/test";
 import { signIn } from "./helpers";
-import { KYRIA_PLAYTHROUGH_ID } from "./seed";
+import { KYRIA_BUILD_ID, KYRIA_PLAYTHROUGH_ID } from "./seed";
 
 const KYRIA = `/p/${KYRIA_PLAYTHROUGH_ID}`;
 const reader = (page: Page) => page.getByRole("dialog");
@@ -48,4 +48,31 @@ test("Read the story sits at the right of the tab row; the reader's Contents jum
   await expect(readTheStory(page)).toHaveAccessibleName("Read the story: continue at The Mark of Dibella");
   await readTheStory(page).click();
   await expect(reader(page).getByRole("heading", { level: 1, name: "The Mark of Dibella" })).toBeVisible();
+});
+
+test("Details holds the six things and nothing else; the cover's Change offers Upload or Use a link", async ({ page, context }) => {
+  await signIn(context);
+  await page.goto(`/b/${KYRIA_BUILD_ID}/setup?step=name`);
+  const main = page.getByRole("main");
+  for (const label of ["Name", "Description", "Video", "Write-up"]) await expect(main.getByLabel(label, { exact: true })).toBeVisible();
+  await expect(main.locator("#cover .label")).toHaveText(/^Cover/);
+  await expect(main.getByRole("button", { name: "About tags" })).toBeVisible();
+  // Gone: the race row, who can see it, the theme, the second cover preview and the raw link field.
+  await expect(main.getByText("LoreRim version")).toHaveCount(0);
+  await expect(main.getByText("Build name")).toHaveCount(0);
+  await expect(main.getByRole("group", { name: "Who can see it" })).toHaveCount(0);
+  await expect(main.getByRole("group", { name: "Theme" })).toHaveCount(0);
+  await expect(main.getByText("On the build page")).toHaveCount(0);
+  await expect(main.getByText("A link to a screenshot you have already posted")).toHaveCount(0);
+  // The cover once, with Change, Position and Remove.
+  const cover = main.locator("#cover");
+  await expect(cover.locator("img")).toHaveCount(1);
+  await cover.getByRole("button", { name: "Change" }).click();
+  await page.getByRole("menuitem", { name: "Use a link" }).click();
+  await expect(main.getByText("A link to a screenshot you have already posted")).toBeVisible();
+  await expect(cover.getByRole("button", { name: "Position" })).toBeVisible();
+  await expect(cover.getByRole("button", { name: "Remove" })).toBeVisible();
+  // Tags: chips with ×, and + Add a tag opens the full list.
+  await main.getByRole("button", { name: "+ Add a tag" }).click();
+  await expect(page.getByRole("group", { name: "Tags" })).toBeVisible();
 });
