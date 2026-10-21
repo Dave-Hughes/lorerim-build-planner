@@ -4994,11 +4994,13 @@ The game has already planted many of these hooks. Counted on Dave's PC (21 Oct, 
 - The door's `get_quest` keeps each condition's record form in a separate `raw` field beside the words, so an assistant can still reason on it. Pages show only the words.
 
 ### Done when
-- [ ] Part 1: every condition kind above in words, tested on Bleak Falls Barrow, Unbound, Skirmish at Whitewatch, The Lunatic's Treasure and Knight of Hounds.
-- [ ] Part 2: no editor id and no declining line in any start; Vigilant fixed.
-- [ ] Part 3: `raw` on the door.
-- [ ] A check in `test_quest_pages.py` that fails if any page's start text matches a raw function name, "==", ">=", "<", or an id in the form of "Through <word with no spaces and a capital inside>". It passes on all 1,243.
-- [ ] Every check in CLAUDE.md passes. Screenshots of those five quest pages at 1440 and 390. Commit on `staging`, push, and stop for Dave.
+- [x] Part 1: every condition kind above in words, tested on Bleak Falls Barrow, Unbound, Skirmish at Whitewatch, The Lunatic's Treasure and Knight of Hounds.
+- [x] Part 2: no editor id and no declining line in any start; Vigilant fixed.
+- [x] Part 3: `raw` on the door.
+- [x] A check in `test_quest_pages.py` that fails if any page's start text matches a raw function name, "==", ">=", "<", or an id in the form of "Through <word with no spaces and a capital inside>". It passes on all 1,243.
+- [x] Every check in CLAUDE.md passes. Screenshots of those five quest pages at 1440 and 390. Commit on `staging`, push, and stop for Dave.
+- Built (Mac, 22 Oct): the words come from the check's text in `quest_pages.py` (the game files weren't mounted, so the check wasn't rerun). A condition the check left unnamed (`fn<index>`) is left out silently when it only says where the speaker is or what they're doing as the line plays (GetInCurrentLoc, IsInDialogueWithPlayer, IsInCombat and the like); anything else it can't word gives its way "a condition the planner can't put in words yet" (358 times, mostly HasSpell, the Civil War side checks and mod globals not yet set). A skill test that doesn't name its skill (GetActorValue with no skill in the check) is one of those. A patch's catch-up helper (USKPRetroactive, DLC2Init) is no way in. "VS Varla", a helper's record name with an editor's label in it, isn't said, so Knight of Hounds shows one way. Vigilant's wording is hand-kept in `overrides.json` questStarts. The open-or-locked judge reads `start.raw`.
+- Checks (22 Oct, rebased on the PC's WO-121b commits): typecheck, lint, 485 unit tests, 182 game-data tests, build, and e2e 349 of 350; the one miss was WO-71's editor timing test under the full run's load, which passes alone (worst 128 ms, target 160).
 
 ---
 

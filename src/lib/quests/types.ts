@@ -49,6 +49,11 @@ export interface QuestStart {
   who?: string;
   where?: string;
   checked: "files" | "not yet";
+  /**
+   * The same needs and ways as the start check writes them, record form and all (WO-126): what the
+   * open-or-locked judge reads, and what get_quest hands an assistant. Pages show only the words.
+   */
+  raw?: { needs: string[]; ways?: { how: string; needs?: string[] }[] };
 }
 
 export interface QuestLine {

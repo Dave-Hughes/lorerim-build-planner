@@ -474,7 +474,14 @@ def main():
         givers_raw = load("quest_givers_raw.json")["quests"]
         # WO-121a: each cell's town, from the givers' places and the house keys, for telling a town's rumour.
         towns = towns_of(givers_raw, load("quest_starts_raw.json") if os.path.exists(os.path.join(RAW, "quest_starts_raw.json")) else None)
-        pages = build_quests(lines, quests_raw, givers_raw, checks, raw_file.get("globals", {}), towns)
+        wording = overrides.get("questStarts", {})
+        pages = build_quests(lines, quests_raw, givers_raw, checks, raw_file.get("globals", {}), towns, wording)
+        # WO-126: hand-kept wording for a start the records get wrong; one whose words have gone is stale.
+        said = {q["edid"]: json.dumps(q["start"].get("ways", []), ensure_ascii=False) for l in pages for q in l["quests"]}
+        for edid, words in wording.items():
+            for k, v in (words.items() if isinstance(words, dict) else []):
+                if not k.startswith("_") and json.dumps(v, ensure_ascii=False)[1:-1] not in said.get(edid, ""):
+                    print(f"overrides.json questStarts: {edid}'s \"{k}\" isn't in its start any more")
         cur = load("questlines.json")
         with open(os.path.join(RAW, "questlines_report.md"), "w", encoding="utf-8") as f:
             f.write(questlines_report(lines, cur, cur.get("notInRecords", []), start_disagreements(pages)))

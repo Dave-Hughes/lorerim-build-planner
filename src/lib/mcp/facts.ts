@@ -8,7 +8,7 @@ import { categories, homeName, questsData } from "@/lib/quests/data";
 import { stories, storyById, storyOfLine } from "@/lib/quests/stories-data";
 import { storyOrder, type Story } from "@/lib/quests/story";
 import { openFor, questNames, type PlayerState } from "@/lib/quests/open";
-import type { Quest, QuestLine } from "@/lib/quests/types";
+import type { Quest, QuestLine, QuestStart } from "@/lib/quests/types";
 import { TRAIT_CHOICES } from "@/lib/rules/trait-choices";
 
 /**
@@ -153,7 +153,7 @@ export function getSpell(args: { id?: string; name?: string }, version = DEFAULT
  * their needs and the first objective as `then`; who and where are left out until WO-121. A start not
  * checked yet gives none.
  */
-function startOf(q: Quest | undefined): { ways?: { way: string; needs?: string[] }[]; then?: string } {
+function startOf(q: Quest | undefined): { ways?: { way: string; needs?: string[] }[]; then?: string; raw?: QuestStart["raw"] } {
   const st = q?.start;
   if (!st || st.checked !== "files") return {};
   // The ways as the check words them, which carry their own speaker and place in the words; the
@@ -161,7 +161,8 @@ function startOf(q: Quest | undefined): { ways?: { way: string; needs?: string[]
   const ways = st.ways?.length
     ? st.ways.map((w) => ({ way: w.how, ...(w.needs?.length ? { needs: w.needs } : {}) }))
     : (st.needs ?? []).filter((n) => /^(Ask|Talk to|After|Through|It )/.test(n)).slice(0, 1).map((n) => ({ way: n }));
-  return { ways, ...(st.then ? { then: st.thenWhere ? `${st.then} at ${st.thenWhere}` : st.then } : {}) };
+  // The words are what a player reads; raw is each need and way as the records have it, for an assistant to reason on.
+  return { ways, ...(st.then ? { then: st.thenWhere ? `${st.then} at ${st.thenWhere}` : st.then } : {}), ...(st.raw ? { raw: st.raw } : {}) };
 }
 
 /** How a line or story starts, with where each fact was checked; an unchecked line gives no instructions. */

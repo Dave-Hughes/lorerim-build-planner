@@ -1,6 +1,7 @@
 """quest_pages.py: the Quests pages' data rules (WO-100)."""
 import json
 import os
+import re
 import sys
 import unittest
 
@@ -421,6 +422,136 @@ class Part2Test(unittest.TestCase):
         start = qp.start_of({"name": "Dawnguard", "startedBy": [messenger, agmaer], "firstObjectiveStage": 10, "target": [], "needs": {}}, {})
         self.assertEqual(start["ways"][0]["how"], "Durak comes to find you in any inn")
         self.assertNotIn("who", start)
+
+
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+QUESTS = os.path.join(ROOT, "src", "data", "lorerim-5.0.4.8", "quests.json")
+# What a player must never read in a start (WO-126): a condition function, a comparison, or a helper quest's editor id.
+LEAK = re.compile(r"\b(Get[A-Z]\w*|Is[A-Z][a-z]\w*|Has[A-Z]\w*|fn\d+)\b|==|>=|<|\bThrough \S+[A-Z]")
+
+
+def start_texts(start):
+    """Every text a page can show from a start: everything but raw."""
+    if isinstance(start, dict):
+        return [t for k, v in start.items() if k != "raw" for t in start_texts(v)]
+    if isinstance(start, list):
+        return [t for v in start for t in start_texts(v)]
+    return [start] if isinstance(start, str) else []
+
+
+class PlayersWordsTest(unittest.TestCase):
+    """WO-126: quest starts in players' words."""
+
+    STEPS = [{"id": "Skyrim.esm:1", "edid": "MQ102", "name": "Before the Storm", "objectives": [{"index": 10, "text": "Talk to Gerdur"}, {"index": 30, "text": "Talk to the Jarl of Whiterun"}],
+              "stages": [{"index": 10, "entries": [{"text": "Gerdur."}]}, {"index": 160, "entries": [{"text": "", "completes": True}]}]}]
+
+    def setUp(self):
+        self.say = qp.Words(self.STEPS)
+
+    def said(self, conditions, own="Own Quest"):
+        return qp.plain_needs(conditions, own, self.say)
+
+    def test_items_skills_and_level(self):
+        self.assertEqual(self.said("GetItemCount Dragonstone >= 1"), ["You have Dragonstone"])
+        self.assertEqual(self.said("GetItemCount Heart of Disorder == 0"), ["You don't have Heart of Disorder"])
+        self.assertEqual(self.said("GetItemCount Void Salts >= 3"), ["You have 3 Void Salts"])
+        self.assertEqual(self.said("the player has at least RoomCost (25) gold"), ["You have 25 gold"])
+        self.assertEqual(self.said("GetActorValue >= SpeechVeryEasy (now 10)"), ["Speech 10"])
+        self.assertEqual(self.said("level >= DLC1VQMinLevel (now 30)"), ["Level 30"])
+        # A skill the check didn't name stays out of the words, and says so.
+        self.assertEqual(self.said("GetActorValue >= 25"), [qp.UNSAID])
+
+    def test_factions_people_race_and_random(self):
+        self.assertEqual(self.said("GetInFaction College of Winterhold == 1"), ["You're in the College of Winterhold"])
+        self.assertEqual(self.said("GetInFaction The Companions == 0"), ["You're not in The Companions"])
+        # A faction with no name a player sees is left out.
+        self.assertEqual(self.said("GetInFaction JobInnkeeperFaction == 1; GetInFaction Guard Faction (for dialogue) == 1"), [])
+        self.assertEqual(self.said("GetDead == 0"), [])  # the speaker: a dead person doesn't talk
+        self.assertEqual(self.said("GetInFaction Blood-Kin of the Orcs == 1 or GetIsRace Skyrim.esm:013747 == 1"), ["You're in the Blood-Kin of the Orcs or an Orc"])
+        self.assertEqual(self.said("GetIsRace Skyrim.esm:013742 == 1 or GetIsRace Skyrim.esm:08883D == 1"), ["You're a Dark Elf"])
+        self.assertEqual(self.said("GetIsRace Skyrim.esm:013743 == 0"), ["You're not a High Elf"])
+        self.assertEqual(self.said("GetRandomPercent < DLC1WE01Chance (now 25)"), ["Sometimes"])
+        self.assertEqual(self.said("fn18 > 22 or fn18 < 5.5"), ["At night"])
+
+    def test_quest_stages(self):
+        self.assertEqual(self.said("Before the Storm stage 160 done"), ["After Before the Storm"])
+        self.assertEqual(self.said("Before the Storm stage >= 50"), ['After "Talk to the Jarl of Whiterun" in Before the Storm'])
+        self.assertEqual(self.said("Before the Storm stage < 10"), ["Before Before the Storm starts"])
+        self.assertEqual(self.said("Laid to Rest completed; Hostile Takeover not completed"), ["After Laid to Rest", "Before you finish Hostile Takeover"])
+        self.assertEqual(self.said("GetQuestRunning Briarheart Necropsy == 1"), ["While Briarheart Necropsy is under way"])
+        # Its own stage only guards a repeat; a helper's editor id is never said.
+        self.assertEqual(self.said("Skirmish at Whitewatch stage == 10", "Skirmish at Whitewatch"), [])
+        self.assertEqual(self.said("MSNStart stage < 10"), [qp.UNSAID])
+
+    def test_events_the_moment_and_anything_else(self):
+        self.assertEqual(self.said("the place you enter is Windhelm; the place you leave isn't a dwelling; GetEventData CWSiegeStart == 1"), ["When you enter Windhelm"])
+        # Where the speaker stands as the line plays is left out; a function it can't word is flagged, never shown.
+        self.assertEqual(self.said("fn359 == 1; fn249 == 1"), [])
+        self.assertEqual(self.said("Level 10 thing; fn264 == 1"), [qp.UNSAID])
+        self.assertEqual(qp.tidy(["Level 10", qp.UNSAID]), ["Level 10", f"and {qp.UNSAID}"])
+        node = {"by": "story manager", "event": "change location", "conditions": "the place you enter is Whiterun or the place you enter is Riften; level >= 20"}
+        self.assertEqual(qp.way_words(node, "X", {}, self.say), [("It starts by itself when you enter Whiterun or Riften", ["Level 20"])])
+        self.assertEqual(self.say.event("It starts by itself on change location."), "It starts by itself as you travel")
+
+    def test_no_editor_id_and_no_declining_line(self):
+        decline = {"by": "dialogue", "speaker": "Altano", "prompt": "No, thanks. I'm not interested."}
+        self.assertEqual(qp.way_words(decline, "Vigilant of Stendarr", {}, self.say), [])
+        # A helper is what starts it, else nothing: never "Through APS_MQSkipKeep".
+        bare = {"by": "quest script", "quest": "APS_MQSkipKeep, a helper quest", "throughStartedBy": []}
+        self.assertEqual(qp.way_words(bare, "Unbound", {}, self.say), [])
+        up = {"by": "quest script", "quest": "AP_DialogueHelgen, a helper quest", "throughStartedBy": [{"by": "story manager", "event": "change location", "conditions": "the place you enter is Helgen"}]}
+        self.assertEqual(qp.way_words(up, "Unbound", {}, self.say), [("It starts by itself when you enter Helgen", [])])
+        ralforn = {"by": "quest script", "quest": "aaaMBRalfornDialogue, a helper quest with RalfornAlias"}
+        self.assertEqual(qp.way_words(ralforn, "S", {}, self.say, {"name": "Ralforn", "place": "Green-Tip Cabin"}), [("Talk to Ralforn in Green-Tip Cabin", [])])
+        named = {"by": "quest script", "quest": 'DA08 (named "The Whispering Door" in its record), a helper quest', "throughStartedBy": [{"by": "start game"}]}
+        self.assertEqual(qp.way_words(named, "X", {}, self.say), [("Through The Whispering Door", [])])
+        # Nothing it can say: one way that says so.
+        start = qp.start_of({"name": "X", "startedBy": [bare], "target": [], "needs": {}}, {}, say=self.say)
+        self.assertEqual(start["ways"], [{"how": "Another quest starts it, one the planner can't name yet"}])
+
+
+class BuiltStartsTest(unittest.TestCase):
+    """WO-126 on the built quests.json: the five quests Bob read, Vigilant, raw, and no leak in any start."""
+
+    @classmethod
+    def setUpClass(cls):
+        with open(QUESTS, encoding="utf-8") as f:
+            cls.quests = [q for line in json.load(f)["lines"] for q in line["quests"]]
+        cls.by = {q["name"]: q for q in cls.quests}
+
+    def ways(self, name):
+        return [(w["how"], w.get("needs", [])) for w in self.by[name]["start"].get("ways", [])]
+
+    def test_bleak_falls_barrow(self):
+        self.assertIn(('Ask Farengar Secret-Fire "So what do you need me to do?" in Dragonsreach', ["You have Dragonstone"]), self.ways("Bleak Falls Barrow"))
+        self.assertIn(("After Before the Storm", []), self.ways("Bleak Falls Barrow"))
+
+    def test_unbound(self):
+        ways = self.ways("Unbound")
+        self.assertEqual([w for w, _ in ways], ['Ask Matlara "I\'d like to rent a room. (Start Intro (25 gold))" in Helgen', 'Ask Shazdehviir "Skip to Helgen Keep" in Helgen'])
+        self.assertEqual(ways[0][1], ["You have 25 gold"])
+
+    def test_skirmish_lunatic_and_knight(self):
+        self.assertEqual(self.ways("Skirmish at Whitewatch"), [("Talk to a courier in Whiterun Messenger Tower, Guard Tower", [])])
+        lunatic = self.ways("The Lunatic's Treasure")
+        self.assertIn(('Ask Sees-the-Moon "I\'ve already been to the ruin." in Sees-the-Moon\'s Shack', ["You have Heart of Disorder", "You have Cast Iron Pot"]), lunatic)
+        self.assertNotIn("I can't do that right now", json.dumps(lunatic))
+        # Its helper's record name is "VS Varla", an editor's label, so it isn't said.
+        self.assertEqual(self.ways("Knight of Hounds"), [("Once Memory Guide has started", [])])
+
+    def test_vigilant_of_stendarr(self):
+        self.assertEqual(self.ways("Vigilant of Stendarr"), [("Altano and Orlando, in Dawnstar", ["Level 25", "After The House of Horrors", "After Kindred Judgment"])])
+
+    def test_raw_keeps_the_record_form_beside_the_words(self):
+        start = self.by["Bleak Falls Barrow"]["start"]
+        self.assertIn({"how": 'Ask Farengar Secret-Fire "So what do you need me to do?" in Dragonsreach', "needs": ["GetItemCount Dragonstone >= 1"]}, start["raw"]["ways"])
+
+    def test_no_start_shows_a_raw_condition_an_editor_id_or_a_declining_line(self):
+        self.assertEqual(len(self.quests), 1243)
+        leaks = [(q["name"], t) for q in self.quests for t in start_texts(q["start"]) if LEAK.search(t)]
+        self.assertEqual(leaks, [])
+        declines = [(q["name"], w["how"]) for q in self.quests for w in q["start"].get("ways", []) if qp._DECLINES.search((re.search(r'"(.*)"', w["how"]) or [None, ""])[1])]
+        self.assertEqual(declines, [])
 
 
 if __name__ == "__main__":

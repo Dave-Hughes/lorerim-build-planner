@@ -161,14 +161,15 @@ function judgeAny(ways: string[], names: QuestNames, p: PlayerState): Verdict {
  * unknown until the planner knows the one before it is done.
  */
 export function openFor(
-  quest: { start?: { needs?: string[]; checked: string } },
+  quest: { start?: { needs?: string[]; checked: string; raw?: { needs: string[] } } },
   p: PlayerState,
   names: QuestNames,
   /** The quest before it in its line, if it isn't the line's first: a talk that opens it can hang on that one, in ways the check can't see. */
   prior: { edid: string; name: string } | null = null,
 ): { state: OpenState; because: string[] } {
   if (!quest.start || quest.start.checked !== "files") return { state: "unknown", because: ["the start isn't checked yet"] };
-  const verdicts = (quest.start.needs ?? []).map((n) => judge(n, names, p));
+  // The record form (WO-126): the words are for players, the stages and counts for judging.
+  const verdicts = (quest.start.raw?.needs ?? quest.start.needs ?? []).map((n) => judge(n, names, p));
   if (prior && !p.done.has(prior.edid)) verdicts.push(unknown(`comes after ${prior.name || prior.edid}, and the planner hasn't been told that's done`));
   const no = verdicts.filter((v): v is { ok: false; why: string } => v.ok === false).map((v) => v.why);
   if (no.length) return { state: "locked", because: no };

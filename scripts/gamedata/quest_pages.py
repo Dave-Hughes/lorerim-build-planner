@@ -315,12 +315,21 @@ def level_of(text):
     return int(m.group(1)) if m else None
 
 
-def plain_needs(conditions, own_name):
+def plain_needs(conditions, own_name, say=None):
     """
     A condition text (groups joined with '; ') as needs: the level as "Level N", the speaker and the quest's own
     "not started yet" left out (the way in says who; a quest that hasn't started is the point), and a condition the
-    reader can't name yet kept and said so.
+    reader can't name yet kept and said so. With `say` (Words, WO-126), each need in a player's words, and anything it
+    can't word as one UNSAID at the end.
     """
+    if say:
+        out, unsaid = [], False
+        for group in (conditions or "").split("; "):
+            w = say.group(group.strip(), own_name)
+            unsaid |= w is UNSAID
+            if w and w is not UNSAID:
+                out.append(w)
+        return list(dict.fromkeys(out)) + ([UNSAID] if unsaid else [])
     out = []
     for group in (conditions or "").split("; "):
         g = group.strip()
@@ -366,6 +375,307 @@ def way_of(s, own_name, line_quests):
         texts = list(dict.fromkeys(t + (f" ({', '.join(n)})" if n else "") for t, n in ups))
         return f"Through {named}" + (f", which starts from: {'; or '.join(texts)}" if texts else ""), []
     return "It runs from the start of the game", []
+
+
+# ---- quest starts in players' words (WO-126) ------------------------------------------------------------------------
+
+# What a way gets for a condition the planner can't word yet: never the record's form, which stays in `raw`.
+UNSAID = "a condition the planner can't put in words yet"
+# The functions the start check couldn't name (it writes fn<index>), by the game's index, that only say where the speaker
+# stands or what they're doing as the line plays (GetInCurrentLoc 359, IsInDialogueWithPlayer 249, IsInCombat 289,
+# GetDistance 1, a persuasion's outcome 654/655...): a player never acts on these, so they're left out, not flagged.
+_MOMENT = {1, 32, 35, 67, 136, 159, 230, 248, 249, 286, 289, 300, 310, 327, 359, 360, 562, 565, 644, 654, 655}
+# The playable races by their Skyrim.esm form, a vampire's with its race.
+_RACES = {"013740": "Argonian", "013741": "Breton", "013742": "Dark Elf", "013743": "High Elf", "013744": "Imperial", "013745": "Khajiit",
+          "013746": "Nord", "013747": "Orc", "013748": "Redguard", "013749": "Wood Elf", "08883D": "Dark Elf", "0A82B9": "Orc"}
+# The story manager's events (story_check.py's EVENTS, and a code it has no word for) as the start reads them.
+_EVENT_WORDS = {"change location": "as you travel", "kill": "when you kill someone", "script event": "when another part of the game sets it off",
+                "level up": "when you level up", "dialogue": "when someone talks to you", "favour": "when you do someone a favour",
+                "quest start": "when another quest starts", "location loaded": "when a place loads around you",
+                "relationship change": "when someone's feelings about you change", "arrest": "when you're arrested",
+                "item added": "when you pick something up", "ASSU": "when someone is attacked"}
+# A line that turns the quest down (WO-126 Part 2): never a way in.
+_DECLINES = re.compile(r"\(Skip Quest\)|not interested|can't do that right now|don't have time|^No way\b|no such thing|not right now|^No, thanks|"
+                       r"waste of time|don't like your attitude|^No\.$|^Sorry\. We don't have time", re.IGNORECASE)
+# An editor id: a word with a capital, digit or underscore inside (APS_MQSkipKeep, aaaHOTRDialogue, DA08, MSNStart).
+_EDID = re.compile(r"^(?=\w*[\d_]|\w+[A-Z])\w+$")
+# A quest's record name that is a helper's, not one a player sees in their journal ("Riften Maul Dialogue", "Katana Tracker").
+_HELPER = re.compile(r"\b(Handler|Controller|Tracker|Quests?|Dialogue|Misc)\b")
+_OPS = {"==": lambda a, b: a == b, "!=": lambda a, b: a != b, ">=": lambda a, b: a >= b, ">": lambda a, b: a > b, "<=": lambda a, b: a <= b, "<": lambda a, b: a < b}
+
+
+def plain_name(name):
+    """A quest's name a player sees in their journal: no editor id in it ("VS Varla", "MSNStart"), no tag, no helper's name."""
+    return bool(name) and "<" not in name and not _HELPER.search(name) and not any(_EDID.match(w) for w in name.split())
+
+
+def _value(v):
+    """A compared value as a number: '25', or a global's 'CWSons (now 2)' -> 2; None for none."""
+    m = re.search(r"\(now ([-\d.]+)\)\s*$", v) or re.fullmatch(r"\s*(-?[\d.]+)\s*", v)
+    return float(m.group(1)) if m else None
+
+
+def _a(word):
+    return ("an " if word[:1] in "AEIOU" else "a ") + word
+
+
+def _the(name):
+    return name if name.lower().startswith("the ") else "the " + name
+
+
+def tidy(needs):
+    """A way's needs once each, with UNSAID last ("and a condition ..." after the others)."""
+    unsaid = any(n in (UNSAID, f"and {UNSAID}") for n in needs)
+    out = list(dict.fromkeys(n for n in needs if n not in (UNSAID, f"and {UNSAID}")))
+    return out + ([f"and {UNSAID}" if out else UNSAID] if unsaid else [])
+
+
+class Words:
+    """
+    The start check's conditions in a player's words (WO-126), with every quest's steps from quests_raw.json for a stage
+    test on another quest. A part is a str, None (left out: the speaker, the moment, plumbing) or UNSAID.
+    """
+
+    def __init__(self, quests_raw=(), globals_=None):
+        self.by_name, self.by_edid = {}, {}
+        for q in quests_raw:
+            self.by_edid[q["edid"].lower()] = q
+            if q.get("name"):
+                self.by_name.setdefault(q["name"].lower(), q)
+        self.globals = globals_ or {}
+
+    # -- another quest's stage --
+    def _quest(self, name):
+        return self.by_name.get((name or "").lower())
+
+    def _first(self, q):
+        at = [o["index"] for o in q.get("objectives", []) if o.get("text")] + [s["index"] for s in q.get("stages", []) if any(e.get("text") for e in entries_of(s))]
+        return min(at) if at else 0
+
+    def step(self, name, n, exact=False):
+        """The step another quest shows at stage n: its objective there, else (unless exact) the last before it, else that stage's short log line."""
+        q = self._quest(name)
+        if not q:
+            return None
+        objs = sorted((o for o in q.get("objectives", []) if o.get("text") and not _PLACEHOLDER.fullmatch(o["text"])), key=lambda o: o.get("index", 0))
+        pick = next((o for o in objs if o.get("index") == n), None) or (None if exact else next((o for o in reversed(objs) if o.get("index", 0) < n), None))
+        text = pick["text"] if pick else next((e["text"] for s in q.get("stages", []) if s["index"] == n for e in entries_of(s) if e.get("text") and len(e["text"]) <= 100), None)
+        return _OPTIONAL.sub("", fill_text(text, q.get("fills", {}), self.globals)).strip() if text else None
+
+    def _completes(self, name, n):
+        q = self._quest(name)
+        return bool(q) and any(e.get("completes") for s in q.get("stages", []) if s["index"] == n for e in entries_of(s))
+
+    def stage(self, name, op, n):
+        """A stage test on another quest: "After "<its step>" in <quest>", "While <quest> is under way", "Before <quest> starts"..."""
+        q = self._quest(name)
+        first = self._first(q) if q else 0
+        if op in (">=", ">", "done"):
+            if self._completes(name, n):
+                return f"After {name}"
+            if n <= first:
+                return f"Once {name} has started"
+            text = self.step(name, n)
+            return f'After "{text}" in {name}' if text else f"Once {name} is under way"
+        if op in ("<", "<=", "not done"):
+            if n <= first:
+                return f"Before {name} starts"
+            text = self.step(name, n, exact=True)
+            return (f'Before you get past "{text}" in {name}' if op == "<=" else f'Before "{text}" in {name}') if text else f"Early in {name}"
+        if op == "==":
+            if n <= 0:
+                return f"Before {name} starts"
+            text = self.step(name, n)
+            return f'While {name} is at "{text}"' if text else f"While {name} is under way"
+        if op == "!=":
+            if n <= 0:
+                return f"Once {name} has started"
+            text = self.step(name, n, exact=True)
+            return f'Unless {name} is at "{text}"' if text else UNSAID
+        return UNSAID
+
+    def after(self, name, at):
+        """A way in from another of the line's quests: after it, or after the step its starting stage shows."""
+        return f"After {name}" if at is None else self.stage(name, ">=", at)
+
+    # -- one condition --
+    def part(self, p, own):
+        if not p or p.startswith("the speaker "):
+            return None
+        lv = level_of(p)
+        if lv is not None:
+            return f"Level {lv}"
+        if p.startswith("level "):
+            return UNSAID
+        m = re.fullmatch(r"fn(\d+) \S+ .+", p)
+        if m:
+            return None if int(m.group(1)) in _MOMENT else UNSAID
+        m = re.fullmatch(r"the player has (at least|more than) (?:.*?\()?(\d+)\)? gold", p)
+        if m:
+            return f"You have {int(m.group(2)) + (m.group(1) == 'more than')} gold"
+        m = re.fullmatch(r"the place you (enter|leave) (is|isn't|is a|isn't a) (.+)", p)
+        if m:
+            return f"When you {m.group(1)} {m.group(3)}" if m.group(2) == "is" else None
+        if p.startswith("GetEventData "):  # a story event's keyword filter: plumbing
+            return None
+        if p.startswith("GetRandomPercent "):
+            return "Sometimes"
+        m = re.fullmatch(r"(Get\w+)(?: (.+?))? (==|!=|>=|>|<=|<) (.+)", p)
+        if m:
+            return self._function(m.group(1), m.group(2), m.group(3), m.group(4))
+        m = re.fullmatch(r"global (\S+) (==|!=|>=|>|<=|<) (.+?) \(now ([-\d.]+)\)", p)
+        if m:
+            if "GameDaysPassed" in p:
+                return "After some days have passed"
+            want = _value(m.group(3))
+            # A setting that already holds (a mod's switch that's on) is plumbing; one that doesn't waits on something unsaid.
+            return None if want is not None and _OPS[m.group(2)](float(m.group(4)), want) else UNSAID
+        m = (re.fullmatch(r"(.+) stage (\d+) (done|not done)", p) or re.fullmatch(r"(.+?) (not completed|completed|hasn't started)", p)
+             or re.fullmatch(r"(.+) stage (==|!=|>=|>|<=|<) (.+)", p))
+        if m:
+            name = m.group(1)
+            if name == own:  # its own stage only guards a repeat or its own flow
+                return None
+            if not plain_name(name):
+                return UNSAID
+            if m.re.pattern.startswith("(.+?) (not completed"):
+                return {"completed": f"After {name}", "not completed": f"Before you finish {name}", "hasn't started": f"Before {name} starts"}[m.group(2)]
+            if m.group(3) in ("done", "not done"):
+                return self.stage(name, m.group(3), int(m.group(2)))
+            n = _value(m.group(3))
+            return UNSAID if n is None else self.stage(name, m.group(2), int(n))
+        return UNSAID
+
+    def _function(self, fn, what, op, val):
+        n = _value(val)
+        yes = (op == "==" and n == 1) or (op == "!=" and n == 0)
+        if fn == "GetItemCount":
+            if not what or n is None or _EDID.match(what) or "<" in what:
+                return UNSAID
+            if (op in ("==", "<=") and n == 0) or (op == "<" and n == 1):
+                return f"You don't have {what}"
+            if op == "<":
+                return f"You have fewer than {n:g} {what}"
+            need = n + (op == ">")
+            return (f"You have {what}" if need <= 1 else f"You have {need:g} {what}") if op in (">=", ">", "==") and need >= 1 else UNSAID
+        if fn == "GetInFaction":
+            # A faction with no name a player sees (a job, a crime or dialogue faction) is the speaker's plumbing.
+            if not what or " " not in what or re.search(r"Faction|[(:]", what):
+                return None
+            return f"You're in {_the(what)}" if yes else f"You're not in {_the(what)}"
+        if fn == "GetDead":
+            if what:
+                return f"{what} is alive" if not yes else f"{what} is dead"
+            return None if not yes else UNSAID  # on the speaker: a dead person doesn't talk
+        if fn == "GetIsRace":
+            race = _RACES.get((what or "").split(":")[-1])
+            return (f"You're {_a(race)}" if yes else f"You're not {_a(race)}") if race else UNSAID
+        if fn == "GetQuestRunning":
+            if not plain_name(what):
+                return UNSAID
+            return f"While {what} is under way" if yes else f"Unless {what} is under way"
+        if fn == "GetActorValue" and op in (">=", ">") and re.match(r"Speech\w+ \(now", val or ""):
+            return f"Speech {n:g}"  # a persuasion's check
+        return UNSAID
+
+    # -- a group of conditions, any one of which will do --
+    def group(self, g, own):
+        if not g:
+            return None
+        parts = [p.strip() for p in g.split(" or ")]
+        if all(p.startswith("fn18 ") for p in parts):  # GetCurrentTime
+            later = [_value(p.split(" ", 2)[2]) for p in parts if " > " in p]
+            return "At night" if later and later[0] >= 18 else UNSAID
+        races = [re.fullmatch(r"GetIsRace \S+:(\w+) (==|!=) (\d)", p) for p in parts]
+        if len(parts) > 1 and all(races):
+            names = [_RACES.get(m.group(1)) for m in races]
+            yes = {(m.group(2) == "==") == (m.group(3) == "1") for m in races}
+            if None in names or len(yes) > 1:
+                return UNSAID
+            said = " or ".join(_a(r) for r in dict.fromkeys(names))
+            return f"You're {said}" if yes.pop() else f"You're not {said}"
+        words = [self.part(p, own) for p in parts]
+        if UNSAID in words or (None in words and any(words)):
+            return UNSAID
+        said = list(dict.fromkeys(w for w in words if w))
+        # "You're in the Blood-Kin of the Orcs or an Orc", not "... or You're an Orc".
+        rest = [w[len("You're "):] if said and said[0].startswith("You're ") and w.startswith("You're ") else w for w in said[1:]]
+        # "Once Dragonborn has started or early in The Way of the Voice".
+        rest = [w[0].lower() + w[1:] if re.match(r"(Once|Early|Before|After|While|Unless|When|Sometimes|At) ", w) else w for w in rest]
+        return " or ".join(said[:1] + rest) if said else None
+
+    # -- a way in --
+    def event(self, text):
+        """ "It starts by itself on change location." -> "It starts by itself as you travel." """
+        text = re.sub(r" on ([\w ]+)\.?$", lambda m: f" {_EVENT_WORDS.get(m.group(1), 'when something in the game sets it off')}", text or "")
+        return text[:-1] if text.endswith(".") else text
+
+    def node(self, s, own):
+        """A story manager node as a way: the place you enter when it names one, else its event, with its needs."""
+        place = _place_you_enter(s.get("conditions"))
+        how = "It starts by itself " + ("when you walk into any inn" if place == "any inn" else f"when you enter {place}" if place else
+                                         _EVENT_WORDS.get(s.get("event"), "when something in the game sets it off"))
+        needs = plain_needs(s.get("conditions"), own, self)
+        return how, [n for n in needs if not (place and n.startswith("When you enter"))]
+
+    def helper(self, s):
+        """A helper quest's name in the game: its record's full name, never an editor id; None for none."""
+        named = re.search(r'named "([^"]+)"', s.get("quest") or "")
+        edid = (s.get("quest") or "").split(" ")[0].rstrip(",")
+        name = named.group(1) if named else (self.by_edid.get(edid.lower()) or {}).get("name")
+        return name if plain_name(name) else None
+
+
+def talks_through(s, line_quests, giver):
+    """
+    A helper that is someone's dialogue ("aaaHOTRDialogue"), or one the check can't open that holds the giver's own alias
+    ("with RalfornAlias") (WO-121b Part 4).
+    """
+    edid = (s.get("quest") or "").split(" ")[0].rstrip(",")
+    first_name = (giver or {}).get("name", "").split(" ")[0]
+    return s["by"] == "quest script" and edid not in line_quests and (
+        edid.endswith("Dialogue") or bool(first_name and not s.get("throughStartedBy") and re.search(rf"\bwith \w*{re.escape(first_name)}\w*", s.get("quest") or "")))
+
+
+def way_words(s, own, line_quests, say, giver=None):
+    """
+    One starter in a player's words (WO-126): [(how, needs)], none for a line that turns the quest down, a helper's own
+    script that starts it from the quest itself, or a helper with no name a player could know (a patch's catch-up quest).
+    A helper is what starts it ("Talk to Ralforn in Green-Tip Cabin", "It starts by itself when you enter Helgen"), or its
+    record's full name.
+    """
+    if s["by"] == "dialogue":
+        prompt = s.get("prompt") or ""
+        if _DECLINES.search(prompt):
+            return []
+        # A line with no words, or one the game never shows ("(Invisible Continue)"), is just talking to them.
+        bare = re.fullmatch(r"[.\s…]*|\(Invisible Continue\)", prompt, re.IGNORECASE)
+        who = s.get("speaker")
+        if who and is_role(who):  # "Talk to a courier", "a Windhelm guard"
+            who = _a(" ".join(who.split()[:-1] + [who.split()[-1].lower()]))
+        text, _ = way_of({**s, "speaker": who, **({"prompt": None} if bare else {"prompt": prompt.replace("<BribeCost>", "some")})}, own, line_quests)
+        return [(text, plain_needs(s.get("conditions"), own, say))]
+    if s["by"] == "by itself":
+        return [(say.event(s["plain"]), [f"Level {s['level']}"] if s.get("level") else [])]
+    if s["by"] == "book":  # reading it starts the quest: the check's own words
+        return [(s["plain"], [])]
+    if s["by"] == "story manager":
+        return [say.node(s, own)]
+    if s["by"] != "quest script":
+        return []
+    edid = (s.get("quest") or "").split(" ")[0].rstrip(",")
+    if edid in line_quests:
+        return [] if line_quests[edid] == own else [(say.after(line_quests[edid], s.get("atStage")), [])]
+    if s.get("plain"):
+        return [(say.event(s["plain"]), [])]
+    if giver and talks_through(s, line_quests, giver):
+        return [(f"Talk to {giver['name']}" + (f" in {giver['place']}" if giver.get("place") else ""), [])]
+    ups = [w for u in s.get("throughStartedBy", []) if u["by"] != "start game" and (u["by"] != "quest script" or u.get("quest"))
+           for w in way_words(u, own, line_quests, say, giver)]
+    if ups:
+        return ups
+    name = say.helper(s)
+    return [(f"Through {name}", [])] if name else []
 
 
 def town_of(place, towns):
@@ -492,7 +802,7 @@ def _place_you_enter(conditions):
     return None
 
 
-def finds_you(starters, own, edid, shows_at, towns, brings=None):
+def finds_you(starters, own, edid, shows_at, towns, brings=None, say=None):
     """
     When the quest finds you (WO-121b rule 3): a node or a messenger starts it, and its person comes to you. The person
     is the one named speaker (never a role), when they wait in a holding cell (Theodyn Bienne), when the node fires on
@@ -529,12 +839,12 @@ def finds_you(starters, own, edid, shows_at, towns, brings=None):
     if not person and not messenger:
         return None
     node = next(n for _, n in nodes)
-    needs = [n for n in plain_needs(node.get("conditions"), own) if not n.startswith(("the place you enter", "the place you leave"))]
+    needs = [n for n in plain_needs(node.get("conditions"), own, say) if not n.startswith(("the place you enter", "the place you leave", "When you enter", "When you leave"))]
     if person:
-        needs += [n for s in talks for n in plain_needs(s.get("conditions"), own) if re.fullmatch(r"Level \d+", n)]
+        needs += [n for s in talks for n in plain_needs(s.get("conditions"), own, say) if re.fullmatch(r"Level \d+", n)]
     person = person or sent
     how = f"{person or 'A messenger'} comes to find you" + (f" in {place}" if place else "")
-    return {"how": how, **({"needs": list(dict.fromkeys(needs))} if needs else {}), **({"who": person} if person else {}), **({"where": place} if place else {}), "node": node}
+    return {"how": how, **({"needs": tidy(needs)} if needs else {}), **({"who": person} if person else {}), **({"where": place} if place else {}), "node": node}
 
 
 HOLDS = ("The Reach", "The Rift", "Haafingar", "Whiterun", "Eastmarch", "Hjaalmarch", "The Pale", "Falkreath", "Winterhold")
@@ -572,7 +882,26 @@ def through(starters):
     return out
 
 
-def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives=None, edid=None, logs=None, brings=None):
+def talk_way(s, text, needs, found, own, line_quests, say=None):
+    """A way in, with its speaker and place when it's a talk."""
+    w = {"how": text, **({"needs": needs} if needs else {})}
+    if s["by"] == "dialogue" and s.get("speaker"):
+        w["talk"] = True
+        # A talk only for some players is a way with its condition, never the giver (rule 5).
+        if not is_role(s["speaker"]) and not asks_who_you_are(s):
+            w["who"] = s["speaker"]
+        place = clean_place((s.get("speakerPlaced") or [None])[0])
+        # The person who comes to find you isn't where the records keep them (rule 3).
+        if found and found.get("who") == s["speaker"]:
+            place = None
+            bare = {**s, "speakerPlaced": []}
+            w["how"] = way_words(bare, own, line_quests, say)[0][0] if say else way_of(bare, own, line_quests)[0]
+        if place:
+            w["where"] = place
+    return w
+
+
+def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives=None, edid=None, logs=None, brings=None, say=None):
     """
     A quest's checked start in plain words (WO-121, WO-121a): { needs, ways, then, thenWhere, who, where, checked }.
     needs are all needed; when there is more than one way in they are one need ("One of: ..."). ways are
@@ -582,6 +911,7 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
     and where only when one person starts it: exactly one speaker, or several where the records' named giver
     (WO-99, `giver`) is one of them; never a role, an item, a door, a marker or a cell, and a place only one a
     player can find (clean_place). checked is "files" when the start check traced what starts it, else "not yet".
+    With `say` (Words), every way and need in a player's words (WO-126, way_words); without it, as the check writes them.
     """
     if not row:
         return {"checked": "not yet"}
@@ -590,8 +920,8 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
     every = row.get("startedBy", [])
     # A talk that needs the quest already under way is a later step, not a way in (rule 6).
     starters = through([s for s in every if not continues(s, own, edid, row.get("firstObjectiveStage"))])
-    found = finds_you(every, own, edid, row.get("firstObjectiveStage"), towns or {}, brings)
-    needs = plain_needs((row.get("needs") or {}).get("conditions"), own)
+    found = finds_you(every, own, edid, row.get("firstObjectiveStage"), towns or {}, brings, say)
+    needs = plain_needs((row.get("needs") or {}).get("conditions"), own, say)
     # Every way in the check found, a quest that also runs from the game's start included (The Book of
     # Love runs from the start, and Dinya Balu sets it going): those are how a player starts it.
     shown = [{k: v for k, v in found.items() if k != "node"}] if found else []
@@ -599,26 +929,15 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
         # Once the quest finds you, every node that starts it is that one way.
         if s["by"] == "start game" or (found and _node_of(s)):
             continue
-        text, n = way_of(s, own, line_quests)
-        if s.get("rumour"):  # a rumour's talk: hear it from them (Hulda), with what the rumour waits for
-            place = clean_place((s.get("speakerPlaced") or [None])[0])
-            text = f"Hear about it from {s.get('speaker') or 'someone'}" + (f" in {place}" if place else "")
-        if any(w["how"] == text for w in shown):
-            continue
-        w = {"how": text, **({"needs": n} if n else {}), **({"book": True} if s["by"] == "book" else {})}
-        if s["by"] == "dialogue" and s.get("speaker"):
-            w["talk"] = True
-            # A talk only for some players is a way with its condition, never the giver (rule 5).
-            if not is_role(s["speaker"]) and not asks_who_you_are(s):
-                w["who"] = s["speaker"]
-            place = clean_place((s.get("speakerPlaced") or [None])[0])
-            # The person who comes to find you isn't where the records keep them (rule 3).
-            if found and found.get("who") == s["speaker"]:
-                place = None
-                w["how"] = way_of({**s, "speakerPlaced": []}, own, line_quests)[0]
-            if place:
-                w["where"] = place
-        shown.append(w)
+        for text, n in (way_words(s, own, line_quests, say, giver) if say else [way_of(s, own, line_quests)]):
+            if s.get("rumour"):  # a rumour's talk: hear it from them (Hulda), with what the rumour waits for
+                place = clean_place((s.get("speakerPlaced") or [None])[0])
+                text = f"Hear about it from {s.get('speaker') or 'someone'}" + (f" in {place}" if place else "")
+            if not any(w["how"] == text for w in shown):
+                shown.append({**talk_way(s, text, tidy(n), found, own, line_quests, say), **({"book": True} if s["by"] == "book" else {})})
+    # Every way the check found has no words yet (a patch's catch-up quest, a helper with no name): say so, never its id.
+    if say and not shown and any(s["by"] != "start game" for s in starters):
+        shown = [{"how": "Another quest starts it, one the planner can't name yet"}]
     shown = rumours(shown, towns or {})
     # A book that starts it is a way no one gives (WO-121b: reading Deathbrand, The Aetherium Wars): it leads, and there's no
     # single giver.
@@ -630,7 +949,7 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
         elif shown:
             needs.append("One of: " + "; or ".join(w["how"] + (f" ({', '.join(w['needs'])})" if w.get("needs") else "") for w in shown))
     needs += [d["text"] for d in (row.get("needs") or {}).get("doors", [])]
-    out = {"needs": list(dict.fromkeys(needs))}
+    out = {"needs": tidy(needs)}
     shown = [{k: v for k, v in w.items() if k not in ("talk", "rumour", "book")} for w in shown]
     if shown:
         out["ways"] = shown
@@ -647,10 +966,7 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
     # giver's own alias ("with RalfornAlias"): the records' named giver is the one (WO-121b Part 4: Gwilym for Heart of the Reach,
     # Ralforn for Sleepwalking Into A Nightmare). Dragonborn's cultist nodes are no one's dialogue.
     helpers = [s for s in starters if s["by"] != "start game"]
-    first_name = (giver or {}).get("name", "").split(" ")[0]
-    talks_through = lambda s: s["by"] == "quest script" and (s.get("quest") or "").split(" ")[0].rstrip(",") not in line_quests and (
-        (s.get("quest") or "").split(" ")[0].rstrip(",").endswith("Dialogue") or (first_name and not s.get("throughStartedBy") and re.search(rf"\bwith \w*{re.escape(first_name)}\w*", s.get("quest") or "")))
-    if not one and not found and giver and helpers and all(talks_through(h) for h in helpers):
+    if not one and not found and giver and helpers and all(talks_through(h, line_quests, giver) for h in helpers):
         one = giver["name"]
     if found and one:
         out["who"] = one
@@ -697,9 +1013,26 @@ def start_disagreements(pages):
             for l in pages if "guideMinLevel" in l]
 
 
-def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, towns=None):
-    """The curated lines (questlines.curate) -> the quests.json lines, in curation order, tags filled."""
-    checks, globals_ = checks or {}, globals_ or {}
+def reword(start, wording):
+    """A start with the hand-kept wording (overrides.json questStarts, WO-126) put in for the words it replaces."""
+    if not wording:
+        return start
+    put = lambda t: next((t.replace(k, v) for k, v in wording.items() if k in t), t)  # noqa: E731
+    out = {**start, "needs": [put(n) for n in start.get("needs", [])]}
+    if start.get("ways"):
+        out["ways"] = [{**w, "how": put(w["how"])} for w in start["ways"]]
+    return out
+
+
+def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, towns=None, wording=None):
+    """
+    The curated lines (questlines.curate) -> the quests.json lines, in curation order, tags filled. Each start is in a
+    player's words (WO-126), with the check's own form kept in start.raw for the open-or-locked judge and assistants;
+    `wording` is overrides.json's questStarts, {quest edid: {words: what the page says instead}}.
+    """
+    checks, globals_, wording = checks or {}, globals_ or {}, wording or {}
+    say = Words(quests_raw, globals_)
+    raws = {}
     towns = towns if towns is not None else towns_of(givers_raw)
     by_id = {q["id"]: q for q in quests_raw}
     givers = {g["id"]: g for g in givers_raw}
@@ -742,6 +1075,13 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
             if items:
                 rewards["items"] = items
             stages = stages_of(q)
+            args = (checked_rows.get(q["edid"]), line_quests, giver_of(givers.get(q["id"])), towns, checked_rows, q.get("objectives"), q["edid"],
+                    {st["index"]: st["log"][0]["text"] for st in stages if st["log"] and st["log"][0].get("text")}, brought_to(givers.get(q["id"]), towns))
+            raw = start_of(*args)
+            start = reword(start_of(*args, say=say), {k: v for k, v in wording.get(q["edid"], {}).items() if not k.startswith("_")})
+            if raw.get("needs") or raw.get("ways"):
+                start["raw"] = {"needs": raw.get("needs", []), **({"ways": [{k: w[k] for k in ("how", "needs") if k in w} for w in raw["ways"]]} if raw.get("ways") else {})}
+            raws[q["edid"]] = raw
             quests.append(fill_all(
                 {
                     "edid": q["edid"],
@@ -752,8 +1092,7 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
                     "stages": stages,
                     "endings": endings_of(stages),
                     "objectives": [o["text"] for o in sorted(q.get("objectives", []), key=lambda o: o.get("index", 0)) if o.get("text")],
-                    "start": start_of(checked_rows.get(q["edid"]), line_quests, giver_of(givers.get(q["id"])), towns, checked_rows, q.get("objectives"), q["edid"],
-                                      {st["index"]: st["log"][0]["text"] for st in stages if st["log"] and st["log"][0].get("text")}, brought_to(givers.get(q["id"]), towns)),
+                    "start": start,
                     **({"rewards": rewards} if rewards else {}),
                 }, q.get("fills", {}), globals_)
             )
@@ -763,7 +1102,8 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
         first_start = next((q["start"] for q in quests if q["edid"] == line["opening"]), {})
         # An opening that starts after another of the line's quests is given by whoever gives that one (WO-121b Part 4:
         # The Isle of Madness opens after The Route of Madness, which Staada gives).
-        before = re.fullmatch(r"After (.+?)(?: \(its stage \d+\))?", (first_start.get("ways") or [{}])[0].get("how", "")) if len(first_start.get("ways") or []) == 1 else None
+        first_raw = raws.get(line["opening"], {})
+        before = re.fullmatch(r"After (.+?)(?: \(its stage \d+\))?", (first_raw.get("ways") or [{}])[0].get("how", "")) if len(first_raw.get("ways") or []) == 1 else None
         lead = next((q for q in quests if before and q["name"] == before.group(1) and q["edid"] != line["opening"]), None)
         # That quest's who, else the records' named giver for it.
         lead_giver = (lead["start"].get("who") and {"name": lead["start"]["who"], "place": lead["start"].get("where")}) if lead else None

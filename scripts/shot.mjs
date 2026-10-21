@@ -17,6 +17,14 @@ page.on("console", (m) => { if (m.type() === "error") errors.push("console: " + 
 page.on("response", (r) => { if (r.status() >= 400) errors.push(`${r.status()} ${r.url()}`); });
 await page.goto(url, { waitUntil: "load" });
 if (click) { await page.getByText(click, { exact: true }).first().click(); await page.waitForTimeout(300); }
+// OPEN_ROW=<quest edid> opens that quest's row on a Quests page and its "How it starts" (WO-126).
+if (process.env.OPEN_ROW) {
+  const row = page.locator(`[id="q-${process.env.OPEN_ROW}"]`);
+  await row.getByRole("button", { name: "Journal ›" }).click();
+  await row.getByText("How it starts", { exact: true }).click();
+  await row.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(300);
+}
 await page.waitForTimeout(400);
 const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
 if (overflow > 0) errors.push(`page overflows horizontally by ${overflow}px`);

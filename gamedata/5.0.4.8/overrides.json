@@ -257,6 +257,12 @@
       "^(Braids|Bun)$"
     ]
   },
+  "questStarts": {
+    "_note": "WO-126: a start the records word wrong, by quest edid: {the planner's words: what the page says instead}. VIGILANT's patch has Altano and Orlando appear in Dawnstar's Windpeak Inn for you to find; the records only show Altano's node.",
+    "zzzAoMMq00": {
+      "Altano comes to find you in Dawnstar": "Altano and Orlando, in Dawnstar"
+    }
+  },
   "starts": {
     "optionLabels": {
       "Regular (Inn)": "Inn",
