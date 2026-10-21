@@ -345,5 +345,43 @@ class JudgedTest(unittest.TestCase):
         self.assertNotIn("who", qp.start_of({"name": "Laid to Rest", "startedBy": [jonna, guard], "firstObjectiveStage": 20, "target": [], "needs": {}}, {}))
 
 
+class SecondLookTest(unittest.TestCase):
+    """WO-121b Part 4: Bob's second look at the openings."""
+
+    def test_a_placeholder_objective_is_never_the_first_step(self):
+        objectives = [{"index": 10, "text": "TEST"}, {"index": 15, "text": "Read the Message"}, {"index": 20, "text": "Speak to Thane Hroa"}]
+        row = {"name": "Skirmish at Whitewatch", "startedBy": [{"by": "start game"}], "firstObjectiveStage": 15, "firstObjective": {"text": "TEST", "index": 10}, "target": [], "needs": {}}
+        self.assertEqual(qp.start_of(row, {}, objectives=objectives)["then"], "Read the Message")
+        # With no real objective after it, the stage's journal text.
+        alone = {**row, "firstObjectiveStage": 10}
+        self.assertEqual(qp.start_of(alone, {}, objectives=objectives[:1], logs={10: "I've received a note."})["then"], "I've received a note.")
+
+    def test_a_giver_is_where_the_start_brings_them_never_their_waiting_spot(self):
+        altano = {"by": "dialogue", "speaker": "Altano", "speakerPlaced": ["Temple of Stendarr"], "call": "SetStage 5"}
+        node = {"by": "story manager", "event": "change location", "conditions": "level >= zzzVigilantMinLevel (now 25)"}
+        row = {"name": "Vigilant of Stendarr", "startedBy": [altano, node], "firstObjectiveStage": 5, "target": [], "needs": {}}
+        start = qp.start_of(row, {}, brings="Dawnstar")
+        self.assertEqual((start["who"], start["where"]), ("Altano", "Dawnstar"))
+        self.assertEqual(start["ways"][0]["how"], "Altano comes to find you in Dawnstar")
+        towns = {"Windpeak Inn": "Dawnstar"}
+        self.assertEqual(qp.brought_to({"people": [{"alias": "DawnstarLocation", "npc": None}, {"alias": "Altano", "npc": "Altano"}]}, towns), "Dawnstar")
+        self.assertIsNone(qp.brought_to({"people": [{"alias": "HometownLoc", "npc": None}]}, towns))
+
+    def test_a_quest_opened_through_its_giver_dialogue_helper_names_them(self):
+        giver = {"name": "Gwilym", "place": "Silver-Blood Inn"}
+        helper = {"by": "quest script", "call": "SetStage 10", "quest": "aaaHOTRDialogue, a helper quest", "throughStartedBy": [{"by": "start game"}]}
+        start = qp.start_of({"name": "Heart Of The Reach", "startedBy": [helper], "firstObjectiveStage": 10, "target": [], "needs": {}}, {}, giver)
+        self.assertEqual((start["who"], start["where"]), ("Gwilym", "Silver-Blood Inn"))
+        # A helper the check can't open, holding the giver's own alias.
+        ralforn = {"by": "quest script", "call": "SetStage 10", "quest": "aaaMBRalfornDialogue, a helper quest with RalfornAlias"}
+        self.assertEqual(qp.start_of({"name": "Sleepwalking", "startedBy": [ralforn], "target": [], "needs": {}}, {}, {"name": "Ralforn"})["who"], "Ralforn")
+        # Cultists' nodes are no one's dialogue: Dragonborn names no one.
+        cult = {"by": "quest script", "quest": "DLC2MQ01Cultists, a helper quest", "throughStartedBy": [{"by": "story manager", "event": "change location"}]}
+        self.assertNotIn("who", qp.start_of({"name": "Dragonborn", "startedBy": [cult], "target": [], "needs": {}}, {}, {"name": "Neloth"}))
+        # A helper traced to the start of the game holding the giver's alias stays unsure (Mjoll).
+        mjoll = {"by": "quest script", "quest": "aaMjollAerinQIntro, a helper quest with MjollAlias", "throughStartedBy": [{"by": "start game"}]}
+        self.assertNotIn("who", qp.start_of({"name": "Aerin the Man", "startedBy": [mjoll], "target": [], "needs": {}}, {}, {"name": "Mjoll the Lioness"}))
+
+
 if __name__ == "__main__":
     unittest.main()

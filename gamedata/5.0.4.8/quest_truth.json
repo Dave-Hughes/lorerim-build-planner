@@ -1366,6 +1366,79 @@
    "noGiver": true,
    "startsWith": [],
    "firstObjective": "Head to a major hold and await news from a courier"
+  },
+  {
+   "quest": "Vigilant of Stendarr",
+   "editorId": "zzzAoMMq00",
+   "line": "vigilants",
+   "source": "uesp",
+   "url": "https://www.nexusmods.com/skyrimspecialedition/mods/57961",
+   "notes": "Bob, 21 Oct, WRONG: Second look, 22 Oct (PC re-check). The records' delayed-start node asks exactly what the patch says (level 25 in zzzVigilantMinLevel, The House of Horrors, Kindred Judgment). Altano is right, but not at the Temple of Stendarr in Stuhn Ravine: that's where he waits until the start. The page should say Altano and Orlando, Windpeak Inn, Dawnstar, once you're level 25 and have finished The House of Horrors and Kindred Judgment.",
+   "startsWith": [
+    "Altano",
+    "Orlando"
+   ],
+   "where": "Windpeak Inn, Dawnstar",
+   "firstObjective": "Join the Vigilants of Stendarr"
+  },
+  {
+   "quest": "Discerning the Transmundane",
+   "editorId": "DA04",
+   "line": "discerning-the-transmundane",
+   "source": "uesp",
+   "url": "https://content1.m.uesp.net/wiki/Skyrim:Discerning_the_Transmundane",
+   "notes": "Bob, 21 Oct, WRONG: Second look, 22 Oct. Urag isn't the giver; his lines only move it from 5 to 10. No single giver: it starts by itself during Elder Knowledge (Find Septimus Signus, at his outpost north of Winterhold), or from Septimus's book (Ask Urag about the insane book). PC: name what sets stage 5 (the book) and the main quest fragment that sets 10.",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Ask Urag about the insane book"
+  },
+  {
+   "quest": "The Isle of Madness",
+   "editorId": "EC_SS_MQ101",
+   "line": "saints-and-seducers",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim_Mod:The_Isle_of_Madness",
+   "notes": "Bob, 21 Oct, WRONG: Second look, 22 Oct. Staada brings you in, so the page should name Staada, with the Extended Cut's The Route of Madness (EC_SS_MQ100Int) as the way the quest opens. PC: trace how The Route of Madness starts, so the page can say where Staada finds you.",
+   "startsWith": [
+    "Staada"
+   ],
+   "firstObjective": "Enter the Asylum"
+  },
+  {
+   "quest": "Sleepwalking Into A Nightmare",
+   "editorId": "aaaMBQuest",
+   "line": "sleepwalking-into-a-nightmare",
+   "source": "uesp",
+   "url": "https://www.nexusmods.com/skyrimspecialedition/mods/141047",
+   "notes": "Bob, 21 Oct, WRONG: Second look, 22 Oct. The helper quest's RalfornAlias is the giver: Ralforn, Green-tip Cabin, northeast of Ivarstead. The page says no one giver and not checked; it should name him.",
+   "startsWith": [
+    "Ralforn"
+   ],
+   "where": "Green-tip Cabin, northeast of Ivarstead",
+   "firstObjective": "Find a way to escape The Nightmare."
+  },
+  {
+   "quest": "Heart Of The Reach",
+   "editorId": "aaaHOTRQuest",
+   "line": "heart-of-the-reach",
+   "source": "uesp",
+   "url": "https://lorerim.com/guides/new-quests",
+   "notes": "Bob, 21 Oct, WRONG: Second look, 22 Oct. The helper quest's stage 10 is Gwilym's line. The page should say Gwilym, Silver-Blood Inn, Markarth; then Travel to Ever-Bog (Part 1's rule 2 already chose the required step over the optional one).",
+   "startsWith": [
+    "Gwilym"
+   ],
+   "where": "Silver-Blood Inn, Markarth",
+   "firstObjective": "Travel to Ever-Bog"
+  },
+  {
+   "quest": "0WRThaneQ01",
+   "editorId": "Skirmish at Whitewatch",
+   "line": "capital-whiterun",
+   "source": "records",
+   "notes": "Bob, 21 Oct, WRONG: Second look, 22 Oct. The first objective in the records is the mod author's placeholder 'TEST', so the page must not show it: use the stage's journal text instead, or the next real objective. The courier's line needs stage 10, which looks like the Thane of Whiterun hook. PC: name what sets stage 10; until then the page says a courier finds you, not checked yet.",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Read the Message"
   }
  ]
 }

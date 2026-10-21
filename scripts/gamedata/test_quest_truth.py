@@ -39,6 +39,7 @@ DIFFERS: dict[str, str] = {
 # Rows that don't match yet, each sent back for a fix in WO-121a (Bob read them on 21 Oct), with what the records show. Each must still fail,
 # so a fix that makes one pass says to take it out of here.
 WAITING_ON_BOB: dict[str, str] = {
+    "Discerning the Transmundane": "Bob, 22 Oct (second look): no single giver. It starts by itself during Elder Knowledge (Find Septimus Signus) or from Septimus's book (Ask Urag about the insane book); Urag's lines only move it from 5 to 10. In the check his lines look like First Lessons' Faralda (a talk setting a stage past the first objective's, in a quest that runs from the start), so no rule tells them apart. PC: name what sets stage 5 (the book) and the main quest's fragment that sets 10.",
     'Blood on the Ice': "Bob, 21 Oct (reversed): the first step is wrong, not the records' wording. The guard's line sets stage 10, whose objective is 'Question the witnesses'; 'Get assistance from the authority figure' (QOBJ 1) is the stage-110 one. WO-121b's rule: then is the objective the starting line's stage shows. WO-121b Part 1 (Mac): rule 1 reads the objective the starting line's stage shows from the check's objectivesShown, which story_check.py now writes; it passes once the PC reruns the check.",
     'The Cursed Tribe': "Bob, 21 Oct (reversed): Chief Larak's letter line (The Cursed Tribe - Quest Expansion.esp) only fires for an Orc or Blood-Kin; for everyone else the level-up node starts it by itself and Atub asks at Largashbur. WO-121b's rule: a conditional starter is a way with its condition, not the giver. WO-121b Part 1 (Mac): Larak's letter line is a way with its race condition now, never the giver, and the page names no single giver; Atub isn't a starter in the check (no dialogue of his starts DA06), so the PC's check needs his line.",
 }
@@ -98,7 +99,8 @@ class QuestTruth(unittest.TestCase):
         for name in WAITING_ON_BOB:
             row = truth[name]
             start = (quests.get(row["editorId"].lower()) or {}).get("start") or {}
-            if norm(person_of(start)) in {norm(s) for s in row["startsWith"]} and norm(start.get("then")) == norm(row["firstObjective"]):
+            person_ok = not start.get("who") if row.get("noGiver") else norm(person_of(start)) in {norm(s) for s in row["startsWith"]}
+            if person_ok and norm(start.get("then")) == norm(row["firstObjective"]):
                 passing.append(name)
         self.assertEqual(passing, [], "These pass now: take them out of WAITING_ON_BOB.")
 

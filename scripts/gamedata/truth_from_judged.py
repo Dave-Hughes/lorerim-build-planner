@@ -29,6 +29,14 @@ FIXED = {
     "wyrmstooth": {"startsWith": ["Theodyn Bienne"], "where": "he comes to find you", "firstObjective": "Speak to Lurius Liore at The Bannered Mare in Whiterun"},
     "the-ebony-warrior": {"startsWith": ["Ebony Warrior"], "where": "Whiterun, Riften, Windhelm, Markarth or Solitude", "firstObjective": "Talk to the Ebony Warrior"},
     "battle-of-the-champions": {"noGiver": True, "startsWith": [], "firstObjective": "Head to a major hold and await news from a courier"},
+    # Bob's second look, 22 Oct (WO-121b Part 4).
+    "vigilants": {"startsWith": ["Altano", "Orlando"], "where": "Windpeak Inn, Dawnstar", "firstObjective": "Join the Vigilants of Stendarr"},
+    "discerning-the-transmundane": {"noGiver": True, "startsWith": [], "firstObjective": "Ask Urag about the insane book"},
+    "saints-and-seducers": {"startsWith": ["Staada"], "firstObjective": "Enter the Asylum"},
+    "sleepwalking-into-a-nightmare": {"startsWith": ["Ralforn"], "where": "Green-tip Cabin, northeast of Ivarstead", "firstObjective": "Find a way to escape The Nightmare."},
+    "the-heart-of-dibella": {"noGiver": True, "startsWith": [], "firstObjective": "Enter the Temple of Dibella"},
+    "heart-of-the-reach": {"startsWith": ["Gwilym"], "where": "Silver-Blood Inn, Markarth", "firstObjective": "Travel to Ever-Bog"},
+    "capital-whiterun": {"noGiver": True, "startsWith": [], "firstObjective": "Read the Message"},
 }
 # A row the key held for a quest the line no longer opens with, pointed at the line's opening (as Dawnguard's was).
 REPOINT = {"DA14": "DA14Start"}

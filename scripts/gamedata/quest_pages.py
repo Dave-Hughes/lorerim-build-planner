@@ -131,6 +131,21 @@ def towns_of(givers_raw, starts_raw=None):
     return towns
 
 
+def brought_to(entry, towns):
+    """
+    The town a quest's own location alias names (WO-121b Part 4): "DawnstarLocation" is Dawnstar, when Dawnstar is a town
+    the planner knows. None for none.
+    """
+    known = set(towns.values())
+    for p in (entry or {}).get("people", []):
+        a = p.get("alias") or ""
+        if p.get("npc") is None and a.endswith("Location"):
+            name = re.sub(r"(?<=[a-z])(?=[A-Z])", " ", a[: -len("Location")]).strip()
+            if name in known:
+                return name
+    return None
+
+
 def giver_of(entry):
     """The opening quest's named giver as { name, place }, or None for no giver or a role (Courier)."""
     g = (entry or {}).get("namedGiver")
@@ -407,6 +422,8 @@ def first_step(row, siblings):
 
 _STAGE_SET = re.compile(r"^SetStage (\d+)$")
 _OPTIONAL = re.compile(r"^\(optional\)", re.IGNORECASE)
+# A mod author's placeholder objective (WO-121b Part 4: Whiterun, expanded's "TEST"), never shown as a step.
+_PLACEHOLDER = re.compile(r"\s*(test|todo|tbd|placeholder|x{3,}|\.+|-+)\s*", re.IGNORECASE)
 # The player's race: a faction condition may be the speaker's (Mralki's JobInnkeeperFaction), a race one is the player's.
 _PLAYER_IS = re.compile(r"\bGetIsRace\b[^;]*== 1")
 
@@ -473,7 +490,7 @@ def _place_you_enter(conditions):
     return None
 
 
-def finds_you(starters, own, edid, shows_at, towns):
+def finds_you(starters, own, edid, shows_at, towns, brings=None):
     """
     When the quest finds you (WO-121b rule 3): a node or a messenger starts it, and its person comes to you. The person
     is the one named speaker (never a role), when they wait in a holding cell (Theodyn Bienne), when the node fires on
@@ -502,6 +519,10 @@ def finds_you(starters, own, edid, shows_at, towns):
         elif place and " or " in place and spots and not any(x in place.replace(" or ", ", ").split(", ") for x in spots):
             # Any of several places they aren't in: they come to you there. One place is where the quest waits.
             person = named[0]
+        elif not place and brings and brings not in spots:
+            # The quest's own location alias names the town the start brings them to (WO-121b Part 4: VIGILANT's Altano
+            # waits at the Temple of Stendarr until the start, then he's in Dawnstar).
+            person, place = named[0], brings
     if not person and not messenger:
         return None
     node = next(n for _, n in nodes)
@@ -512,7 +533,7 @@ def finds_you(starters, own, edid, shows_at, towns):
     return {"how": how, **({"needs": list(dict.fromkeys(needs))} if needs else {}), **({"who": person} if person else {}), **({"where": place} if place else {}), "node": node}
 
 
-def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives=None, edid=None):
+def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives=None, edid=None, logs=None, brings=None):
     """
     A quest's checked start in plain words (WO-121, WO-121a): { needs, ways, then, thenWhere, who, where, checked }.
     needs are all needed; when there is more than one way in they are one need ("One of: ..."). ways are
@@ -530,7 +551,7 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
     every = row.get("startedBy", [])
     # A talk that needs the quest already under way is a later step, not a way in (rule 6).
     starters = [s for s in every if not continues(s, own, edid, row.get("firstObjectiveStage"))]
-    found = finds_you(every, own, edid, row.get("firstObjectiveStage"), towns or {})
+    found = finds_you(every, own, edid, row.get("firstObjectiveStage"), towns or {}, brings)
     needs = plain_needs((row.get("needs") or {}).get("conditions"), own)
     # Every way in the check found, a quest that also runs from the game's start included (The Book of
     # Love runs from the start, and Dinya Balu sets it going): those are how a player starts it.
@@ -576,6 +597,15 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
     # When the quest finds you, its person is the giver only when every way is theirs (rule 3).
     if found and not all(w.get("who") == found.get("who") for w in shown):
         one = None
+    # Started only through someone's dialogue helper ("aaaHOTRDialogue"), or a helper the check can't open that holds the
+    # giver's own alias ("with RalfornAlias"): the records' named giver is the one (WO-121b Part 4: Gwilym for Heart of the Reach,
+    # Ralforn for Sleepwalking Into A Nightmare). Dragonborn's cultist nodes are no one's dialogue.
+    helpers = [s for s in starters if s["by"] != "start game"]
+    first_name = (giver or {}).get("name", "").split(" ")[0]
+    talks_through = lambda s: s["by"] == "quest script" and (s.get("quest") or "").split(" ")[0].rstrip(",") not in line_quests and (
+        (s.get("quest") or "").split(" ")[0].rstrip(",").endswith("Dialogue") or (first_name and not s.get("throughStartedBy") and re.search(rf"\bwith \w*{re.escape(first_name)}\w*", s.get("quest") or "")))
+    if not one and not found and giver and helpers and all(talks_through(h) for h in helpers):
+        one = giver["name"]
     if found and one:
         out["who"] = one
         if found.get("where"):
@@ -592,7 +622,12 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
     sets = {int(m.group(1)) for s in starters if s["by"] == "dialogue" for m in [_STAGE_SET.match(s.get("call") or "")] if m}
     shown_first = stage_step(row, objectives, sets) if step is row else None
     first = (step.get("firstObjective") or {})
-    if shown_first:
+    # A placeholder is never the first step: the real objective the stage shows, else the next one, else its journal.
+    if not shown_first and first.get("text") and _PLACEHOLDER.fullmatch(first["text"]):
+        real = sorted((o for o in objectives or [] if o.get("text") and not _PLACEHOLDER.fullmatch(o["text"]) and o.get("index", 0) > (first.get("index") or 0)), key=lambda o: (o.get("index") != row.get("firstObjectiveStage"), o.get("index", 0)))
+        shown_first = real[0] if real else {"index": None, "text": (logs or {}).get(row.get("firstObjectiveStage")) or ""}
+        first = {}
+    if shown_first and shown_first.get("text"):
         out["then"] = shown_first["text"]
     elif first.get("text"):
         out["then"] = first["text"]
@@ -669,7 +704,8 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
                     "stages": stages,
                     "endings": endings_of(stages),
                     "objectives": [o["text"] for o in sorted(q.get("objectives", []), key=lambda o: o.get("index", 0)) if o.get("text")],
-                    "start": start_of(checked_rows.get(q["edid"]), line_quests, giver_of(givers.get(q["id"])), towns, checked_rows, q.get("objectives"), q["edid"]),
+                    "start": start_of(checked_rows.get(q["edid"]), line_quests, giver_of(givers.get(q["id"])), towns, checked_rows, q.get("objectives"), q["edid"],
+                                      {st["index"]: st["log"][0]["text"] for st in stages if st["log"] and st["log"][0].get("text")}, brought_to(givers.get(q["id"]), towns)),
                     **({"rewards": rewards} if rewards else {}),
                 }, q.get("fills", {}), globals_)
             )
@@ -677,9 +713,22 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
         # The line's giver (WO-121): its opening quest's who; else the records' named giver, only when the
         # check found no one to talk to; else none, and the line page shows the opening quest's ways.
         first_start = next((q["start"] for q in quests if q["edid"] == line["opening"]), {})
+        # An opening that starts after another of the line's quests is given by whoever gives that one (WO-121b Part 4:
+        # The Isle of Madness opens after The Route of Madness, which Staada gives).
+        before = re.fullmatch(r"After (.+?)(?: \(its stage \d+\))?", (first_start.get("ways") or [{}])[0].get("how", "")) if len(first_start.get("ways") or []) == 1 else None
+        lead = next((q for q in quests if before and q["name"] == before.group(1) and q["edid"] != line["opening"]), None)
+        # That quest's who, else the records' named giver for it.
+        lead_giver = (lead["start"].get("who") and {"name": lead["start"]["who"], "place": lead["start"].get("where")}) if lead else None
+        lead_giver = lead_giver or (giver_of(givers.get(by_edid.get(lead["edid"]))) if lead else None)
+        # Their place is where that quest puts them, which isn't traced yet: never the spot they wait in.
+        if lead_giver and not first_start.get("who"):
+            first_start["who"] = lead_giver["name"]
         if first_start.get("who"):
             item["giver"] = {"name": first_start["who"], **({"place": first_start["where"]} if first_start.get("where") else {})}
-        elif not any(w.get("who") for w in first_start.get("ways", [])):
+        # The records' named giver stands in only when the check found a way in with no one to name; a quest that runs
+        # from the start with no way in found has no giver the page can name (WO-121b Part 4: The Heart of Dibella, not
+        # Kleppr).
+        elif first_start.get("ways") and not any(w.get("who") for w in first_start.get("ways", [])):
             giver = giver_of(opening)
             # Not someone whose line is only a way with its condition (WO-121b rule 5: Chief Larak, for an Orc).
             if giver and not any(re.match(rf"(Ask|Talk to) {re.escape(giver['name'])}\b", w["how"]) for w in first_start.get("ways", [])):
