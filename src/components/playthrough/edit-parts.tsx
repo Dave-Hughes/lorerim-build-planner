@@ -69,6 +69,8 @@ export interface EditData {
   chapters: EditChapter[];
   builds: { id: string; name: string }[];
   /** Where you stand (WO-118): its one line on Play, and what Enter it by hand starts from. */
+  /** The character's names, the run's (its own) then the build's, for Read a save's check (WO-112). */
+  characters: string[];
   stand: { line: string | null; initial: { level: number | null; day: number | null; place: string; skills: Record<string, number>; counts: Record<string, number> }; skills: string[]; counts: string[] };
 }
 

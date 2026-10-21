@@ -37,6 +37,7 @@ export async function RunEdit({ id, act }: { id: string; act?: string }) {
     taleTitle: p.taleTitle ?? "",
     taleLine: p.taleLine ?? "",
     builds,
+    characters: [...new Set([p.name, p.build?.name].filter((n): n is string => !!n))],
     stand: (() => {
       const snap = p.snapshot;
       const keys = p.view.acts.flatMap((a) => a.objectives.flatMap((o) => (o.reach ? [o.reach.key] : [])));

@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { useGameData } from "@/components/game-data";
 import { ImageSlot } from "@/components/ui/image-slot";
 import { HandEntry } from "./play-controls";
+import { ReadSave } from "./read-save";
 import { InfoTip } from "@/components/ui/info-tip";
 import type { ExtraMention } from "@/lib/guide/mention";
 import * as act from "@/lib/playthroughs/actions";
@@ -29,6 +30,12 @@ export function PlayEdit({ data, current, linkables, details }: { data: EditData
       <section className={s.stand} aria-label="Where you stand">
         <span className="label">Where you stand</span>
         <span className="muted">{data.stand.line ?? "No save read yet."}</span>
+        <ReadSave
+          id={data.id}
+          characters={data.characters}
+          objectives={data.acts.flatMap((a) => a.objectives.flatMap((o) => (o.kind === "once" && o.doneBy === "save" && o.detect && o.accepted ? [{ detect: o.detect }] : [])))}
+          skills={data.stand.initial.skills}
+        />
         <HandEntry id={data.id} initial={data.stand.initial} skills={data.stand.skills} counts={data.stand.counts} />
       </section>
       <aside className={s.aside}>

@@ -75,6 +75,10 @@ export const writeActChapter = async (id: string, actId: number, input: { title?
 /** Enter it by hand: level, day, place and the skills the objectives name. */
 export const enterByHand = async (id: string, input: Omit<SnapshotInput, "source" | "readBy">) => run(id, (u) => w.setSnapshot(u, id, { ...input, source: "hand", readBy: null }));
 
+/** Read a save (WO-112): what the reader found in the browser, saved as the snapshot. The save itself never comes here. */
+export const readFromSave = async (id: string, input: Omit<SnapshotInput, "source" | "readBy" | "counts">) =>
+  run(id, (u) => w.setSnapshot(u, id, { ...input, source: "save", readBy: "Read a save" }));
+
 /** The owner read a beat before it opened; kept, and nothing is ticked. */
 export const readEarly = async (id: string, chapterId: number) => run(null, (u) => w.markRead(u, id, [chapterId]));
 
