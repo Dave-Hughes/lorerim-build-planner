@@ -8,6 +8,7 @@ import { ipCall } from "@/lib/moderation/limits";
 import { questLinkables, type Linkable } from "@/lib/playthroughs/links";
 import { markdownToDoc, MarkdownError } from "@/lib/playthroughs/markdown";
 import { getPlaythrough, listMyPlaythroughs, type PlaythroughRecord } from "@/lib/playthroughs/queries";
+import { reviewPlaythrough } from "@/lib/playthroughs/review";
 import { reachLabel } from "@/lib/playthroughs/status";
 import type { Detect, DoneBy, LinkKind, ObjectiveLink, ObjectiveStatus, Reach } from "@/lib/playthroughs/types";
 import { FIRST_ACT, levelsInput, startObjective } from "@/lib/playthroughs/validate";
@@ -316,7 +317,15 @@ export async function addObjective(p: Player, input: ObjectiveToolInput, suggest
   const after = input.after !== undefined ? objectiveOf(pt, input.after, a).id : null;
   const values = await writes(() => objectiveValues(pt, input));
   const id = await writes(() => w.addObjective(p.userId, pt.id, a.id, values, { after, suggestedBy }));
-  return { playthrough: pt.id, act: String(pt.view.acts.indexOf(a) + 1), objective: String(id), ...(suggestedBy ? { suggested: true, note: "It shows as suggested with Accept and Skip, and counts for nothing until the player accepts it." } : {}) };
+  // Advice while drafting (WO-123 Part 2): it saves the same either way.
+  const warnings = reviewPlaythrough([{ id, text: values.text, kind: values.kind, link: values.link, reach: values.reach }]);
+  return {
+    playthrough: pt.id,
+    act: String(pt.view.acts.indexOf(a) + 1),
+    objective: String(id),
+    ...(suggestedBy ? { suggested: true, note: "It shows as suggested with Accept and Skip, and counts for nothing until the player accepts it." } : {}),
+    ...(warnings.length ? { warnings: warnings.map(({ code, message }) => ({ code, message })) } : {}),
+  };
 }
 
 export const suggestObjective = (p: Player, input: ObjectiveToolInput) => addObjective(p, input, p.clientName.slice(0, 80));
@@ -416,9 +425,15 @@ export async function setSnapshot(p: Player, input: { playthrough: string; sourc
 }
 
 /** The playthrough in the plain shape the inputs use, each objective with how it stands. */
+/** A playthrough's drafting warnings (WO-123 Part 2), each naming its objective by id. */
+function warningsOf(pt: PlaythroughRecord) {
+  return reviewPlaythrough(pt.view.acts.flatMap((a) => a.objectives).map((o) => ({ id: o.id, text: o.text, kind: o.kind, link: o.link, reach: o.reach })));
+}
+
 export async function getPlaythroughTool(p: Player, input: { playthrough: string }) {
   const pt = await mine(p, input.playthrough);
   const v = pt.view;
+  const warnings = warningsOf(pt);
   const shown = { save: "done, from the save", hand: "done, ticked by the player", doing: "under way", todo: "to do", later: "later", suggested: "suggested, waiting for the player" } as const;
   return {
     playthrough: pt.id,
@@ -467,6 +482,7 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
       ...(c.fromSave ? { fromSave: c.fromSave } : {}),
       text: docText(c.doc),
     })),
+    ...(warnings.length ? { warnings } : {}),
   };
 }
 
@@ -489,7 +505,15 @@ export async function finishDraft(p: Player, input: { playthrough: string }) {
   // the story's images are theirs too, in its Story tab.
   const addCover = pt.buildId ? `${p.origin}/b/${pt.buildId}/setup?step=name#cover` : null;
   if (issues.length) return { ready: false, issues, addCover };
-  return { ready: true, link: link(p, pt.id), addCover, message: `Ready: open ${link(p, pt.id)} to read it, tick what's done and publish.${addCover ? ` The cover is the player's to add: ${addCover}` : ""}` };
+  // Warnings still standing (WO-123 Part 2): never a refusal, but the assistant answers for them.
+  const warnings = warningsOf(pt);
+  return {
+    ready: true,
+    link: link(p, pt.id),
+    addCover,
+    ...(warnings.length ? { warnings, warningsNote: "Fix these or tell the player why you left them." } : {}),
+    message: `Ready: open ${link(p, pt.id)} to read it, tick what's done and publish.${addCover ? ` The cover is the player's to add: ${addCover}` : ""}`,
+  };
 }
 
 /**

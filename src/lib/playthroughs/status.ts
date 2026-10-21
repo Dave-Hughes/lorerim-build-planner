@@ -43,8 +43,22 @@ export function reachValue(snap: SnapshotValues | null | undefined, key: string)
   if (!snap) return null;
   if (key === "level") return snap.level;
   if (key.startsWith("skill:")) return snap.skills[key.slice(6)] ?? null;
-  if (key.startsWith("count:")) return snap.counts?.[key.slice(6)] ?? null;
+  if (key.startsWith("count:")) {
+    // The save's counts are lower case ("lute"); an objective's label may not be ("Lute").
+    const want = key.slice(6).toLowerCase();
+    const hit = Object.entries(snap.counts ?? {}).find(([k]) => k.toLowerCase() === want);
+    return hit ? hit[1] : null;
+  }
   return null;
+}
+
+/** The counts a save gives (WO-123 Part 3): Skyrim's Got Talent's lute skill, as "lute". */
+export const SAVE_COUNTS = ["lute"] as const;
+
+/** Whether a save can give a reach key's number: the level, a skill, or one of SAVE_COUNTS. */
+export function saveGives(key: string): boolean {
+  if (key === "level" || key.startsWith("skill:")) return true;
+  return key.startsWith("count:") && (SAVE_COUNTS as readonly string[]).includes(key.slice(6).toLowerCase());
 }
 
 export type Shown = "save" | "hand" | "doing" | "todo" | "later" | "suggested";
