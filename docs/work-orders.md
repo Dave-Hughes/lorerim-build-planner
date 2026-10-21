@@ -4925,11 +4925,22 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - **The College of Winterhold:** Faralda (Part 2). **The Wolf Queen Awakened:** UESP says the journal starts when you speak to Falk Firebeard after his letter; the check shows Elisif's talk. Read both and say which one sets the first stage.
 - **Infiltration** (Brurid, was Stalleo), **Seeking A Cure** (Urag gro-Shub, was Falion), **A Forgotten Blade** (Fultheim, was Delphine), **Deluge of Deceit** (Wujeeta, was Frissa Black-Briar), **Gore** (Eden, was Gore), **Journey to Baan Malur** (Adimmisaru, was Varanie): for each, the dialogue line that starts the opening quest, who says it, where they stand, and the line itself, in `gamedata/5.0.4.8/story_checks/givers-2026-10-21.md`. Bob adds the ones that check out to `quest_truth.json`.
 
+### Part 4. Every line's opening, checked (PC, then Bob)
+- Only a line's opening quest needs a giver; the rest start when the one before ends, which the files say reliably, and the 579 repeatable jobs need none. So: for each of the 152 lines, `gamedata/5.0.4.8/story_checks/openings-2026-10-21.md` lists its opening quest's every start (who says the line, where they stand, the line itself, or the trigger, book or letter), the first step, and the record ids. One file, grouped by category, in batches of about 40 so Bob can start before it's finished.
+- Bob judges each against UESP (base game and DLC) or the mod's page and the dialogue (mod quests) and adds the confirmed ones to `quest_truth.json`. A line Bob can't confirm shows "How it starts isn't checked yet" on its page and through the door, never a guess.
+
+### Part 5. Reports that reach a fix (Mac)
+- **Sign-in to report** (Dave, 21 Oct: people who aren't anonymous are less likely to lie): This was wrong asks a signed-out player to sign in with Discord first, and comes back to the form after. The 5-an-hour limit stays, per account.
+- **Reports through the assistant:** a door tool, `report_quest({ quest, what, said, saw })`, needing sign-in (`facts` scope is enough): what the planner said and what the player saw in their game, stored as a `quest_report` with `source: "assistant"`. The style guide gains: "When the player says a quest's facts are wrong, file it with report_quest, in their words, and tell them it was sent."
+- `/admin` Quest reports shows the source and the signed-in player's name.
+
 ### Done when
 - [x] Part 1's five rules, with tests; Waking Nightmare shows the people of Dawnstar, then Erandur at the Windpeak Inn. (Mac, 21 Oct: Waking Nightmare and Dark Ancestor pass the key now and are out of `WAITING_ON_BOB`; six left. A rumour is three or more people in three or more places in one town, so the six Companions asked in Jorrvaskr stay six ways to join. A role is never `who` (Courier, Windhelm Guard, Redoran Guard). Places drop holding cells, "Skyrim" and a name said twice (Blue Palace, The Bee and Barb, The Drunken Huntsman). Dark Ancestor's first step is FreeformFalkreathQuest03B's, which Dengeir's same talk starts at the stage that shows it.)
 - Blocked (Mac), rule 4, the opening: Dawnguard's line already opens on DLC1VQ01MiscObjective (Agmaer, the guards' rumour, Durak), so nothing changed there. The key's row names DLC1VQ01, though, and the opening's first objective is the longer "Speak with the leader of the Dawnguard, located within Fort Dawnguard, ..." (Dawnguard.esm:00D06C QOBJ 10). Bob's call: point the row at DLC1VQ01MiscObjective and list the wording in `DIFFERS`. For A Night To Remember, DA14Start isn't in `quests_raw.json`, so its opening can't be set in `questlines.json` yet. PC: add DA14Start to the `quests.py` crawl, then set the line's opening to it through `questlines.json`.
 - [ ] Part 2: First Lessons, Blood on the Ice, Caught Red Handed and Spread the Love pass the answer key.
 - [ ] Part 3: the six givers read into `givers-2026-10-21.md`; Bob has judged each.
+- [ ] Part 4: all 152 openings in `openings-2026-10-21.md`; Bob has judged each, the confirmed ones are in the answer key, the rest say not checked.
+- [ ] Part 5: reports need sign-in; `report_quest` through the door; the source on `/admin`.
 - [ ] `WAITING_ON_BOB` is empty; the door sends `who` and `where` again.
 - [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Bob checks ten more quests against UESP, then Dave checks five he knows.
 
