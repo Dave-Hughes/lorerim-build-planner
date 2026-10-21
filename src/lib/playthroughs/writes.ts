@@ -396,17 +396,13 @@ export async function moveObjective(userId: string, pid: string, objectiveId: nu
   await touch(p.id);
 }
 
-export const SAVE_DECIDES = "The save decides this one: it's done when your save shows it.";
-
 /**
- * The player's tick, and Under way and Later for `hand` objectives. A quest objective the save decides
- * can be ticked or unticked too (WO-111a), nothing more: the assistant's set_status keeps to `hand` ones.
+ * The player's tick, and Under way and Later, on any objective (WO-123): one the save also reads keeps the tick when a
+ * later save doesn't show it done, and is done from the save once one does.
  */
 export async function setStatus(userId: string, pid: string, objectiveId: number, status: ObjectiveStatus) {
   const { p, o } = await ownedObjective(userId, pid, objectiveId);
   if (!["todo", "doing", "done", "later"].includes(status)) fail("A status is todo, doing, done or later.");
-  if (o.kind === "reach" && status === "done") fail(SAVE_DECIDES);
-  if (o.kind === "once" && o.doneBy === "save" && status !== "done" && status !== "todo") fail("A quest the save decides is done or to do: tick it, or take the tick back.");
   if (!o.accepted) fail("Accept the suggestion first.");
   await db()
     .update(schema.playthroughObjectives)

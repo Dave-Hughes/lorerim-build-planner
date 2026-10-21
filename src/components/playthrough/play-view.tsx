@@ -170,8 +170,8 @@ function Objective({ o, p, isOwner }: { o: ObjectiveView; p: PlaythroughRecord; 
   const w = o.worked;
   const suggested = w.shown === "suggested";
   const cls = [s.obj, w.done ? s.objDone : "", suggested ? s.sug : ""].join(" ");
-  // The save's word, once it shows the stage, can't be ticked away (WO-111a).
-  const canTick = isOwner && !suggested && o.kind === "once" && w.shown !== "save";
+  // Every objective has a box (WO-123); the save's word, once it shows it done, can't be ticked away (WO-111a).
+  const canTick = isOwner && !suggested && w.shown !== "save";
   return (
     <>
       <div className={cls} id={`o${o.id}`}>
@@ -181,7 +181,7 @@ function Objective({ o, p, isOwner }: { o: ObjectiveView; p: PlaythroughRecord; 
           {o.linkShown && <span className={s.kind}>{o.linkShown.tag}</span>}
         </span>
         {/* The status on the right says only Under way (WO-118); done shows in the box. */}
-        {w.shown === "doing" ? <span className={`${s.st} ${s.stNow}`}>Under way</span> : <span />}
+        {w.shown === "doing" ? <span className={`${s.st} ${s.stNow}`}>Under way</span> : w.shown === "save" ? <span className={s.st}>From your save</span> : <span />}
         {o.why && <span className={s.why}>{o.why}</span>}
         {w.meter && (
           <span className={s.meter}>

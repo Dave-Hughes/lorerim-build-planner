@@ -420,3 +420,13 @@
     margin-left: 0;
   }
 }
+/* Ticks from your save (WO-123): under the quest or the number, when the save can read it. */
+.fromSave {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+}
+.fromSave input {
+  accent-color: var(--ember);
+}

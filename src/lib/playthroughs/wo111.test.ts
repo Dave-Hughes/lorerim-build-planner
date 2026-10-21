@@ -15,8 +15,8 @@ const refusal = (input: Parameters<typeof objectiveSchema.safeParse>[0]) => {
 };
 
 describe("objectives the player can know are done (rule 14)", () => {
-  it("refuses a done-once objective with no done-when", () => {
-    expect(refusal({ text: "Sing for the children at Honorhall", kind: "once", doneBy: null })).toBe(RULE_14);
+  it("takes a done-once objective with no done-when: the player ticks it (WO-123)", () => {
+    expect(refusal({ text: "Sing for the children at Honorhall", kind: "once", doneBy: null })).toBeNull();
   });
   it("refuses a standing rule: every, each, always, whenever", () => {
     expect(refusal({ text: "Read every new book", kind: "once", doneBy: "hand" })).toBe(RULE_14);
@@ -74,8 +74,12 @@ describe("a quest objective the player ticks before the save shows it (WO-111a)"
   it("keeps the tick when a snapshot shows the quest not there yet", () => {
     expect(workOut({ ...quest, status: "done" }, { ...snap, questStages: { FreeformRiften05: 5 } })).toMatchObject({ done: true, shown: "hand" });
   });
-  it("never lets a number be ticked", () => {
-    expect(workOut({ ...base, kind: "reach", doneBy: "save", reach: { key: "level", target: 9 }, status: "done" }, snap).done).toBe(false);
+  it("lets a number be ticked too, and the save tick it once it shows it (WO-123)", () => {
+    const lvl = { ...base, kind: "reach" as const, doneBy: "save" as const, reach: { key: "level", target: 9 } };
+    expect(workOut({ ...lvl, status: "done" }, { ...snap, level: 3 })).toMatchObject({ done: true, shown: "hand" });
+    expect(workOut({ ...lvl, status: "todo" }, { ...snap, level: 9 })).toMatchObject({ done: true, shown: "save" });
+    // Switched off, the save doesn't tick it; the meter still shows the number.
+    expect(workOut({ ...lvl, doneBy: "hand", status: "todo" }, { ...snap, level: 9 })).toMatchObject({ done: false, meter: { value: 9 } });
   });
   it("opens the beat it hangs off", () => {
     const v = assemble({ acts: [act], objectives: [row(1), row(2, { doneBy: "save", detect: { quest: "FreeformRiften05" }, status: "done" })], chapters: [beat], snapshot: null, link: () => null });

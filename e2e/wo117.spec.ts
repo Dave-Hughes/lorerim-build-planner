@@ -92,7 +92,9 @@ test("Play in edit: an objective row opens and closes, one at a time, and its bu
   await page.getByRole("button", { name: "Edit Warn Haelga, or expose her" }).click();
   await expect(what).toHaveCount(1);
   await expect(what).toHaveValue("Warn Haelga, or expose her");
-  await expect(page.getByRole("group", { name: "Done when" }).getByRole("button", { name: "The save says so" })).toHaveAttribute("aria-pressed", "true");
+  // WO-123: no Done when; a quest objective ticks from the save, on by default.
+  await expect(page.getByRole("group", { name: "Done when" })).toHaveCount(0);
+  await expect(page.getByRole("switch", { name: /Ticks from your save/ })).toBeChecked();
   // Another opens in its place.
   await page.getByRole("button", { name: "Edit Hunt and tan her first hides" }).click();
   await expect(what).toHaveCount(1);

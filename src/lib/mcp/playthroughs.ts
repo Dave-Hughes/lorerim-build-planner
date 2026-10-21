@@ -8,7 +8,7 @@ import { ipCall } from "@/lib/moderation/limits";
 import { questLinkables, type Linkable } from "@/lib/playthroughs/links";
 import { markdownToDoc, MarkdownError } from "@/lib/playthroughs/markdown";
 import { getPlaythrough, listMyPlaythroughs, type PlaythroughRecord } from "@/lib/playthroughs/queries";
-import { reachLabel, RULE_14 } from "@/lib/playthroughs/status";
+import { reachLabel } from "@/lib/playthroughs/status";
 import type { Detect, DoneBy, LinkKind, ObjectiveLink, ObjectiveStatus, Reach } from "@/lib/playthroughs/types";
 import { FIRST_ACT, levelsInput, startObjective } from "@/lib/playthroughs/validate";
 import * as w from "@/lib/playthroughs/writes";
@@ -131,37 +131,53 @@ export function resolveLinkName(version: string, input: { kind: LinkKind; name: 
 }
 
 /**
- * How the planner knows an objective is done, as flat fields (WO-111b: no unions in tool inputs): a
- * quest (name or id) and stage the save shows, a number to reach, or byHand for one the player ticks.
+ * How the planner knows an objective is done, as flat fields (WO-111b: no unions in tool inputs): a quest (name or id)
+ * and stage the save shows, or a number to reach. Every objective can be ticked by the player too (WO-123); fromSave
+ * says whether the save ticks it as well, on by default when there's something to read. byHand is fromSave's
+ * opposite, kept for a release.
  */
 export interface DoneWhen {
   quest?: string;
   stage?: number;
   reachKey?: string;
   reachTarget?: number;
+  fromSave?: boolean;
   byHand?: boolean;
 }
 
-const HOW_DONE = 'Say how it\'s done: quest (and stage) for one the save shows, or byHand: true for one the player ticks.';
+export const NOTHING_TO_READ = "Nothing in it the save can read: give quest (and stage), link it to a quest, or make it a number to reach. Without one, the player ticks it.";
 export const SAY_THE_NUMBER = "Say the number to reach: reachKey and reachTarget.";
 
-const saysDone = (f: DoneWhen) => f.quest !== undefined || f.stage !== undefined || f.reachKey !== undefined || f.reachTarget !== undefined || f.byHand !== undefined;
+const saysDone = (f: DoneWhen) => f.quest !== undefined || f.stage !== undefined || f.reachKey !== undefined || f.reachTarget !== undefined || f.fromSave !== undefined || f.byHand !== undefined;
 
-/** The flat fields to the stored shape. `keep` is the objective's own reach, for a change that doesn't name a new one. */
-function doneWhenOf(version: string, kind: "once" | "reach", f: DoneWhen, keep: Reach | null = null): { doneBy: DoneBy | null; detect: Detect | null; reach: Reach | null } {
+/** The switch as sent: fromSave, or byHand's opposite; undefined when neither is. */
+function saveSwitch(f: DoneWhen): boolean | undefined {
+  if (f.fromSave !== undefined && f.byHand !== undefined && f.fromSave === f.byHand) throw new FactsError("Give fromSave or byHand, not both: byHand is fromSave's opposite.");
+  return f.fromSave ?? (f.byHand === undefined ? undefined : !f.byHand);
+}
+
+/**
+ * The flat fields to the stored shape. `keep` is the objective's own reach, for a change that doesn't name a new one;
+ * `linkQuest` the quest it links to, which the save reads when no quest is given; `was` the switch it had.
+ */
+function doneWhenOf(version: string, kind: "once" | "reach", f: DoneWhen, keep: Reach | null = null, linkQuest: string | null = null, was?: boolean): { doneBy: DoneBy; detect: Detect | null; reach: Reach | null } {
+  const on = saveSwitch(f) ?? was;
   if (kind === "reach") {
-    if (f.quest !== undefined || f.byHand) throw new FactsError('A number to reach is done when the save shows it: give reachKey and reachTarget, not quest or byHand.');
-    if (f.reachKey === undefined && f.reachTarget === undefined && keep) return { doneBy: "save", detect: null, reach: keep };
-    if (!f.reachKey?.trim() || f.reachTarget === undefined) throw new FactsError(SAY_THE_NUMBER);
-    return { doneBy: "save", detect: null, reach: { key: reachKey(version, f.reachKey), target: f.reachTarget } };
+    if (f.quest !== undefined) throw new FactsError("A number to reach takes reachKey and reachTarget, not quest.");
+    let reach = keep;
+    if (f.reachKey !== undefined || f.reachTarget !== undefined || !keep) {
+      if (!f.reachKey?.trim() || f.reachTarget === undefined) throw new FactsError(SAY_THE_NUMBER);
+      reach = { key: reachKey(version, f.reachKey), target: f.reachTarget };
+    }
+    return { doneBy: on === false ? "hand" : "save", detect: null, reach };
   }
-  if (f.reachKey !== undefined || f.reachTarget !== undefined) throw new FactsError('A number goes with kind "reach"; a done-once objective takes quest (and stage) or byHand.');
-  if (f.quest && f.byHand) throw new FactsError("Give quest (and stage) or byHand, not both.");
-  if (f.byHand) return { doneBy: "hand", detect: null, reach: null };
-  if (!f.quest) return { doneBy: null, detect: null, reach: null };
-  const q = f.quest;
-  const edid = questsData().lines.some((l) => l.quests.some((x) => x.edid === q)) ? q : resolveLinkName(version, { kind: "quest", name: q }).link.id;
-  return { doneBy: "save", detect: { quest: edid, ...(f.stage !== undefined ? { stage: f.stage } : {}) }, reach: null };
+  if (f.reachKey !== undefined || f.reachTarget !== undefined) throw new FactsError('A number goes with kind "reach"; a done-once objective takes quest (and stage), or nothing for one the player ticks.');
+  const q = f.quest ? (questsData().lines.some((l) => l.quests.some((x) => x.edid === f.quest)) ? f.quest : resolveLinkName(version, { kind: "quest", name: f.quest }).link.id) : linkQuest;
+  if (!q) {
+    if (on === true && saveSwitch(f) === true) throw new FactsError(NOTHING_TO_READ);
+    return { doneBy: "hand", detect: null, reach: null };
+  }
+  return { doneBy: on === false ? "hand" : "save", detect: { quest: q, ...(f.stage !== undefined ? { stage: f.stage } : {}) }, reach: null };
 }
 
 /** "Level", a skill's name, or a count's label ("books read", or "count:books read"). */
@@ -186,9 +202,8 @@ export interface ObjectiveToolInput extends DoneWhen {
 
 async function objectiveValues(pt: PlaythroughRecord, input: Omit<ObjectiveToolInput, "playthrough" | "act" | "after">) {
   const linked = input.link ? resolveLinkName(pt.gameVersion, input.link) : null;
-  const dw = doneWhenOf(pt.gameVersion, input.kind, input);
-  // Rule 14, in its own words, when the objective can't be known done.
-  if (input.kind === "once" && !dw.doneBy) throw new FactsError(`${RULE_14} ${HOW_DONE}`);
+  // A link to a quest is what the save reads when no quest is given (WO-123).
+  const dw = doneWhenOf(pt.gameVersion, input.kind, input, null, linked?.link.kind === "quest" ? linked.link.id : null);
   return { text: input.text, kind: input.kind, link: linked?.link ?? null, ...dw, why: input.why ?? null };
 }
 
@@ -313,8 +328,15 @@ export async function setObjective(p: Player, input: Partial<Omit<ObjectiveToolI
   if (input.unlink && input.link) throw new FactsError("Give link or unlink, not both.");
   const linked = input.unlink ? null : input.link ? resolveLinkName(pt.gameVersion, input.link).link : undefined;
   const kind = input.kind ?? o.kind;
-  const dw = saysDone(input) || (input.kind !== undefined && input.kind !== o.kind) ? doneWhenOf(pt.gameVersion, kind, input, kind === o.kind ? o.reach : null) : null;
-  if (dw && kind === "once" && !dw.doneBy) throw new FactsError(`${RULE_14} ${HOW_DONE}`);
+  const link = linked === undefined ? o.link : linked;
+  // The switch it had: on when the save reads it, off when it could and doesn't, unset when there was nothing to read.
+  const was = o.doneBy === "save" ? true : o.kind === "reach" || o.detect || o.link?.kind === "quest" ? false : undefined;
+  // The quest and stage the save reads stay unless a new quest or link is given.
+  const kept = linked === undefined && input.quest === undefined ? o.detect : null;
+  const linkQuest = kept?.quest ?? (link?.kind === "quest" ? link.id : null);
+  const fields = kept?.stage !== undefined && input.stage === undefined ? { ...input, stage: kept.stage } : input;
+  const changes = saysDone(input) || linked !== undefined || (input.kind !== undefined && input.kind !== o.kind);
+  const dw = changes ? doneWhenOf(pt.gameVersion, kind, fields, kind === o.kind ? o.reach : null, linkQuest, was) : null;
   await writes(() =>
     w.setObjective(p.userId, pt.id, o.id, {
       ...(input.text !== undefined ? { text: input.text } : {}),
@@ -344,12 +366,11 @@ export async function moveObjective(p: Player, input: { playthrough: string; obj
   return { playthrough: pt.id, moved: o.text };
 }
 
-/** For `hand` objectives only: the save decides the rest. */
+/** Any objective, when the player says (WO-123): one the save reads is done from the save as well, either counts. */
 export async function setStatus(p: Player, input: { playthrough: string; objective: string; status: ObjectiveStatus }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const o = objectiveOf(pt, input.objective);
-  if (o.doneBy === "save" || o.kind === "reach") throw new FactsError(w.SAVE_DECIDES);
   await writes(() => w.setStatus(p.userId, pt.id, o.id, input.status));
   return { playthrough: pt.id, objective: o.id, status: input.status };
 }
@@ -427,7 +448,9 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
         kind: o.kind,
         ...(o.linkShown ? { link: { kind: o.link!.kind, name: o.linkShown.name } } : {}),
         // The same flat fields add_objective takes, so an objective can go back unchanged (WO-111b).
-        ...(o.kind === "reach" && o.reach ? { reachKey: reachLabel(o.reach.key), reachTarget: o.reach.target } : o.doneBy === "save" && o.detect ? { quest: o.detect.quest, ...(o.detect.stage !== undefined ? { stage: o.detect.stage } : {}) } : { byHand: true }),
+        ...(o.kind === "reach" && o.reach ? { reachKey: reachLabel(o.reach.key), reachTarget: o.reach.target } : o.detect ? { quest: o.detect.quest, ...(o.detect.stage !== undefined ? { stage: o.detect.stage } : {}) } : {}),
+        // Ticks from your save (WO-123): every objective can also be ticked by the player.
+        fromSave: o.doneBy === "save",
         ...(o.why ? { why: o.why } : {}),
         status: shown[o.worked.shown],
         // The chapters that hang off it: its Story markers (WO-116).

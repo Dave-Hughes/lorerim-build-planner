@@ -82,7 +82,7 @@ export const objectiveSchema = z
     why: line(L.why).nullable().optional(),
   })
   .superRefine((o, ctx) => {
-    const refused = objectiveRefusal(o.text, o.kind, o.doneBy, o.reach);
+    const refused = objectiveRefusal(o.text, o.kind, o.reach);
     if (refused) ctx.addIssue({ code: "custom", message: refused, path: ["text"] });
     if (o.kind === "once" && o.doneBy === "save" && !o.detect) ctx.addIssue({ code: "custom", message: "Pick the quest (and stage) the save shows, or make it one you tick.", path: ["detect"] });
   })
@@ -90,9 +90,10 @@ export const objectiveSchema = z
     text: o.text,
     kind: o.kind,
     link: o.link ?? null,
-    // A number is read from the save (or the player's own entry); a once objective says.
-    doneBy: o.kind === "reach" ? ("save" as const) : (o.doneBy ?? "hand"),
-    detect: o.kind === "once" && o.doneBy === "save" ? (o.detect ?? null) : null,
+    // Ticks from your save (WO-123): on by default when there's something to read, a quest or a number; else the tick.
+    doneBy: o.doneBy ?? (o.kind === "reach" || o.detect ? ("save" as const) : ("hand" as const)),
+    // The quest it's linked to stays with the switch off, so turning it on again reads the same stage.
+    detect: o.kind === "once" ? (o.detect ?? null) : null,
     reach: o.kind === "reach" ? (o.reach ?? null) : null,
     why: o.why ? o.why : null,
   }));

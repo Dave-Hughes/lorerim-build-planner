@@ -56,13 +56,15 @@ test("an assistant drafts a playthrough end to end, refused for an objective tha
     const r = await go("add_objective", { playthrough: pid, ...o });
     expect(r.isError, `${o.text}: ${r.text}`).toBe(false);
   }
-  // Rule 14: a standing rule, and a done-once objective with no done-when, are refused; nothing saved.
+  // Rule 14: a standing rule is refused; nothing saved.
   const every = await go("add_objective", { playthrough: pid, act: "1", text: "Read every new book", kind: "once", byHand: true });
   expect(every.isError).toBe(true);
   expect(every.text).toContain(RULE);
-  const unknown = await go("add_objective", { playthrough: pid, act: "1", text: "Sing for the children at Honorhall", kind: "once" });
-  expect(unknown.isError).toBe(true);
-  expect(unknown.text).toContain(RULE);
+  // WO-123: a done-once objective with nothing the save reads is one the player ticks; asking the save to tick it says why it can't.
+  const sing = await go("add_objective", { playthrough: pid, act: "1", text: "Sing for the children at Honorhall", kind: "once" });
+  expect(sing.isError, sing.text).toBe(false);
+  expect((await go("add_objective", { playthrough: pid, act: "1", text: "Sing at the Bee and Barb", kind: "once", fromSave: true })).text).toMatch(/^Nothing in it the save can read/);
+  expect((await go("remove_objective", { playthrough: pid, objective: sing.json().objective })).isError).toBe(false);
 
   // WO-111b: a number to reach with no number says so, and a skill's number saves with its meter.
   const noNumber = await go("add_objective", { playthrough: pid, act: "2", text: "Play the lute", kind: "reach" });
@@ -81,16 +83,18 @@ test("an assistant drafts a playthrough end to end, refused for an objective tha
   const chapter = await go("write_chapter", { playthrough: pid, title: "Chapter One: The Chapel by the Sea", text: "The chapel bells in Anvil rang the hours.\n\nShe learned the songs before her letters." });
   expect(chapter.isError, chapter.text).toBe(false);
 
-  // The save decides a save objective, never the assistant; an estimate isn't a snapshot.
-  expect((await go("set_status", { playthrough: pid, objective: "Warn Haelga, or expose her", status: "done" })).text).toMatch(/save decides/);
+  // Every objective can be ticked (WO-123), one the save reads too, when the player says; an estimate isn't a snapshot.
+  expect((await go("set_status", { playthrough: pid, objective: "Warn Haelga, or expose her", status: "done" })).isError).toBe(false);
+  expect((await go("set_status", { playthrough: pid, objective: "Warn Haelga, or expose her", status: "todo" })).isError).toBe(false);
   expect((await go("set_snapshot", { playthrough: pid, source: "hand", label: "Guess", level: 5, skills: {} })).isError).toBe(true);
 
   const got = (await go("get_playthrough", { playthrough: "E2E Kyria" })).json();
   expect(got.acts).toHaveLength(2);
   // The flat shape, the same fields add_objective takes.
   expect(got.acts[0].objectives[2]).toMatchObject({ text: "Reach level 6", kind: "reach", reachKey: "Level", reachTarget: 6 });
-  expect(got.acts[0].objectives[1]).toMatchObject({ quest: "FreeformRiften11", stage: 12 });
-  expect(got.acts[0].objectives[0]).toMatchObject({ byHand: true });
+  expect(got.acts[0].objectives[1]).toMatchObject({ quest: "FreeformRiften11", stage: 12, fromSave: true });
+  expect(got.acts[0].objectives[0]).toMatchObject({ fromSave: false });
+  expect(got.acts[0].objectives[0]).not.toHaveProperty("byHand");
   const back = await go("set_objective", { playthrough: pid, objective: got.acts[0].objectives[2].objective, kind: "reach", reachKey: got.acts[0].objectives[2].reachKey, reachTarget: got.acts[0].objectives[2].reachTarget });
   expect(back.isError, back.text).toBe(false);
   expect(got.acts[0].objectives.map((o: { status: string }) => o.status)).toEqual(["to do", "to do", "to do", "to do", "suggested, waiting for the player"]);
@@ -207,8 +211,8 @@ test("a quest objective the save decides: ticked by the player, then the save's 
   const go = (name: string, args: object) => call(baseURL!, from, token, name, args);
   const added = await go("add_objective", { playthrough: pid, act: "2", text: "Spread the Love", kind: "once", link: { kind: "quest", name: "Spread the Love" }, quest: "Spread the Love", stage: 10 });
   expect(added.isError, added.text).toBe(false);
-  // The door still can't tick it: the save is the assistant's only source.
-  expect((await go("set_status", { playthrough: pid, objective: added.json().objective, status: "done" })).text).toMatch(/save decides/);
+  // Linked to a quest, the save ticks it by default (WO-123).
+  expect((await go("get_playthrough", { playthrough: pid })).json().acts[1].objectives.find((o: { text: string }) => o.text === "Spread the Love")).toMatchObject({ fromSave: true });
 
   await page.goto(`/p/${pid}?act=2`);
   const row = page.locator(`#o${added.json().objective}`);

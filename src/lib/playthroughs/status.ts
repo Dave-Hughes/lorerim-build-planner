@@ -8,6 +8,10 @@ import type { ChapterKind, Detect, DoneBy, ObjectiveKind, ObjectiveStatus, Reach
  * WO-111a: a done-once `save` objective (a quest stage) can be ticked by the player too, until a
  * snapshot shows the stage; then the save's word takes over. A snapshot that doesn't show it yet
  * leaves the tick alone, since the save may be older than the tick.
+ *
+ * WO-123: every objective, done once or reach a number, can be ticked by hand. `doneBy` is the switch
+ * Ticks from your save: `save` reads it from the save too (a quest stage, a level, a skill, a count),
+ * `hand` leaves it to the tick. Either counts.
  */
 
 export interface SnapshotValues {
@@ -53,22 +57,28 @@ export interface Worked {
   meter?: { value: number | null; target: number; label: string };
 }
 
-/** Objectives the player can tick: their own, and a quest stage the save hasn't shown yet (WO-111a). Never a number. */
-export function canTickByHand(o: Pick<ObjectiveFacts, "kind" | "doneBy">): boolean {
-  return o.kind === "once";
+/** Every objective can be ticked by hand (WO-123): its own, a quest stage, a number. */
+export function canTickByHand(): boolean {
+  return true;
+}
+
+/** Whether an objective is linked to something the save can read (WO-123): a quest, or a number to reach. */
+export function readsFromSave(o: Pick<ObjectiveFacts, "kind" | "detect" | "reach">): boolean {
+  return o.kind === "reach" ? !!o.reach : !!o.detect;
 }
 
 export function workOut(o: ObjectiveFacts, snap: SnapshotValues | null | undefined): Worked {
   const meter = o.kind === "reach" && o.reach ? { value: reachValue(snap, o.reach.key), target: o.reach.target, label: reachLabel(o.reach.key) } : undefined;
   if (!o.accepted) return { done: false, shown: "suggested", meter };
   let done = false;
-  if (o.kind === "reach" && o.reach && meter && meter.value !== null) done = meter.value >= o.reach.target;
+  if (o.doneBy !== "save") done = false;
+  else if (o.kind === "reach" && o.reach && meter && meter.value !== null) done = meter.value >= o.reach.target;
   else if (o.kind === "once" && o.doneBy === "save" && o.detect) {
     const stage = snap?.questStages?.[o.detect.quest];
     done = stage !== undefined && (o.detect.stage === undefined || stage >= o.detect.stage);
   }
   if (done) return { done, shown: "save", meter };
-  if (o.status === "done" && canTickByHand(o)) return { done: true, shown: "hand", meter };
+  if (o.status === "done") return { done: true, shown: "hand", meter };
   const shown: Shown = o.status === "later" ? "later" : o.status === "doing" || (meter?.value ?? 0) > 0 ? "doing" : "todo";
   return { done: false, shown, meter };
 }
@@ -86,9 +96,9 @@ const STARTS = /^\s*(keep|always|never)\b/i;
 export const RULE_14 = "An objective is one thing you can know is done. Make it a number (\"Read 10 books\") or put it under the act's Throughout the act.";
 
 /** Rule 14's refusal for an objective, or null when it's one the player can know is done. */
-export function objectiveRefusal(text: string, kind: ObjectiveKind, doneBy: DoneBy | null, reach?: Reach | null): string | null {
+export function objectiveRefusal(text: string, kind: ObjectiveKind, reach?: Reach | null): string | null {
   if (STARTS.test(text) || STANDING.test(text)) return RULE_14;
   if (kind === "reach" && !reach) return RULE_14;
-  if (kind === "once" && !doneBy) return RULE_14;
+  // A done-once objective needs no "done when" (WO-123): the player can always tick it.
   return null;
 }

@@ -34,7 +34,7 @@ describe("tool input schemas (WO-111b)", () => {
   it("take the done-when as flat fields and check_progression's build and buildId as two", () => {
     const tools = registered();
     const props = (name: string) => Object.keys((z.toJSONSchema(tools.get(name)!, { io: "input" }) as { properties: object }).properties);
-    expect(props("add_objective")).toEqual(expect.arrayContaining(["quest", "stage", "reachKey", "reachTarget", "byHand"]));
+    expect(props("add_objective")).toEqual(expect.arrayContaining(["quest", "stage", "reachKey", "reachTarget", "fromSave", "byHand"]));
     expect(props("add_objective")).not.toContain("doneWhen");
     expect(props("check_progression")).toEqual(["build", "buildId"]);
   });

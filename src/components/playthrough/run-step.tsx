@@ -34,7 +34,7 @@ export function RunStep({
   const [withQuest, setWithQuest] = useState(!!startQuest);
   const [mine, setMine] = useState<string[]>([]);
   const [draft, setDraft] = useState("");
-  const refused = draft.trim() ? objectiveRefusal(draft, "once", "hand") : null;
+  const refused = draft.trim() ? objectiveRefusal(draft, "once") : null;
 
   const confirm = () =>
     onConfirm({

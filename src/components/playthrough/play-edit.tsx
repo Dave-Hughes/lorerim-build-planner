@@ -341,8 +341,8 @@ function Objectives({ data, a, linkables }: { data: EditData; a: EditAct; linkab
 
 /**
  * One objective as a row like Play's: its handle, box, words and why line, its Story link and Edit.
- * Open, its fields sit under it: what to do, Kind and Done when, the quest or the number, why, its
- * story, and Move to another act and Remove.
+ * Open, its fields sit under it: what to do, Kind, the quest or the number with Ticks from your save
+ * when the save can read it (WO-123), why, its story, and Move to another act and Remove.
  */
 function ObjectiveRow({
   data,
@@ -370,14 +370,15 @@ function ObjectiveRow({
   const [text, setText] = useState(o?.text ?? "");
   const [link, setLink] = useState<{ link: ObjectiveLink; name: string } | null>(o?.link && o.linkName ? { link: o.link, name: o.linkName } : null);
   const [kind, setKind] = useState<ObjectiveKind>(o?.kind ?? "once");
-  const [doneBy, setDoneBy] = useState<DoneBy>(o?.doneBy ?? "hand");
+  // The switch is on by default once there's something the save reads (WO-123).
+  const [doneBy, setDoneBy] = useState<DoneBy>(o ? (o.doneBy === "save" || !(o.kind === "reach" || o.detect || o.link?.kind === "quest") ? "save" : "hand") : "save");
   const [detect, setDetect] = useState<Detect | null>(o?.detect ?? null);
   const [reach, setReach] = useState<Reach>(o?.reach ?? { key: "level", target: 10 });
   const [why, setWhy] = useState(o?.why ?? "");
   const quests = useMemo(() => linkables.filter((x) => x.kind === "quest"), [linkables]);
   const tale: EditChapter[] = o ? data.chapters.filter((c) => c.opensAfter === o.id) : [];
   // The rule shows as you type, from the same words the save refuses.
-  const refused = text.trim() ? objectiveRefusal(text, kind, kind === "once" ? doneBy : "save", kind === "reach" ? reach : null) : null;
+  const refused = text.trim() ? objectiveRefusal(text, kind, kind === "reach" ? reach : null) : null;
 
   const values = (patch: Partial<{ kind: ObjectiveKind; doneBy: DoneBy; detect: Detect | null; reach: Reach; link: { link: ObjectiveLink; name: string } | null; text: string; why: string }> = {}) => {
     const k = patch.kind ?? kind;
@@ -385,12 +386,14 @@ function ObjectiveRow({
     const l = patch.link === undefined ? link : patch.link;
     const det = patch.detect === undefined ? detect : patch.detect;
     const dflt = l?.link.kind === "quest" ? { quest: l.link.id } : null;
+    const reads = k === "reach" || !!(det ?? dflt);
     return {
       text: (patch.text ?? text).trim(),
       kind: k,
       link: l?.link ?? null,
-      doneBy: k === "reach" ? ("save" as const) : db,
-      detect: k === "once" && db === "save" ? (det ?? dflt) : null,
+      // Ticks from your save (WO-123): only when there's something the save reads; the box is always there.
+      doneBy: reads ? db : ("hand" as const),
+      detect: k === "once" ? (det ?? dflt) : null,
       reach: k === "reach" ? (patch.reach ?? reach) : null,
       why: (patch.why ?? why).trim() || null,
     };
@@ -477,9 +480,8 @@ function ObjectiveRow({
                   const t = rest || m.name;
                   setText(t);
                   if (m.kind === "quest" && kind === "once") {
-                    setDoneBy("save");
                     setDetect({ quest: m.id });
-                    commit({ link: l, text: t, doneBy: "save", detect: { quest: m.id } });
+                    commit({ link: l, text: t, detect: { quest: m.id } });
                   } else commit({ link: l, text: t });
                 }}
                 onBlur={() => {
@@ -516,43 +518,34 @@ function ObjectiveRow({
                 ))}
               </span>
             </div>
-            {kind === "once" && (
-              <div className={s.field}>
-                <span className="label">
-                  Done when <InfoTip label="About done when" text="The save says so: the planner ticks it from your save. You tick it: for things a save can't show." />
-                </span>
-                <span className={s.seg} role="group" aria-label="Done when">
-                  {(["save", "hand"] as const).map((v) => (
-                    <button
-                      key={v}
-                      type="button"
-                      aria-pressed={doneBy === v}
-                      onClick={() => {
-                        setDoneBy(v);
-                        commit({ doneBy: v });
-                      }}
-                    >
-                      {v === "save" ? "The save says so" : "You tick it"}
-                    </button>
-                  ))}
-                </span>
-              </div>
-            )}
           </div>
           {kind === "once" ? (
-            doneBy === "save" && (
-              <div className={s.field}>
-                <span className="label">
-                  Quest <InfoTip label="About the quest" text="Link a planner quest and the save can tick it. Leave it empty for something of her own." />
-                </span>
-                <QuestStage quests={quests} detect={detect ?? (link?.link.kind === "quest" ? { quest: link.link.id } : null)} onChange={(det) => (setDetect(det), commit({ detect: det }))} />
-              </div>
-            )
+            <div className={s.field}>
+              <span className="label">
+                Quest <InfoTip label="About the quest" text="Link a planner quest and the save can tick it. Leave it empty for something of her own." />
+              </span>
+              <QuestStage quests={quests} detect={detect ?? (link?.link.kind === "quest" ? { quest: link.link.id } : null)} onChange={(det) => (setDetect(det), commit({ detect: det }))} />
+            </div>
           ) : (
             <div className={s.field}>
               <span className="label">What, and how many</span>
               <ReachPick d={d.skills} reach={reach} onChange={(r) => (setReach(r), commit({ reach: r }))} />
             </div>
+          )}
+          {(kind === "reach" || detect || link?.link.kind === "quest") && (
+            <label className={s.fromSave}>
+              <input
+                type="checkbox"
+                role="switch"
+                checked={doneBy === "save"}
+                onChange={(ev) => {
+                  const v = ev.target.checked ? "save" : "hand";
+                  setDoneBy(v);
+                  commit({ doneBy: v });
+                }}
+              />
+              Ticks from your save <InfoTip label="About ticking from your save" text="The save ticks this when it shows it done. You can always tick it yourself." />
+            </label>
           )}
           <label className={s.field}>
             <span className="label">Why</span>

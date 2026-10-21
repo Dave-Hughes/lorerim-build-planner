@@ -21,13 +21,17 @@ const act = z.string().min(1).max(60).describe('The act: its number as a string 
 const objective = z.string().min(1).max(160).describe("The objective: its id from get_playthrough, as a string, or its words.");
 const chapter = z.string().min(1).max(60).describe("The chapter: its id from get_playthrough, as a string, or its title.");
 const linkSchema = z.object({ kind: z.enum(LINK_KINDS), name: z.string().min(1).max(160) }).describe('What it links to in the planner, by name: a quest ("Name (Line)" when two lines have one of that name), a quest line, a spell, an item or a follower. Leave it out for the player\'s own aims; never invent a quest.');
-/** How the planner knows it's done, as flat fields: give one of quest (and stage), reachKey and reachTarget, or byHand. */
+/**
+ * What the save reads, as flat fields: quest (and stage), or reachKey and reachTarget. Every objective can also be
+ * ticked by the player (WO-123); fromSave says whether the save ticks it too.
+ */
 const doneFields = {
-  quest: z.string().min(1).max(160).optional().describe("For a done-once objective the save shows: the quest, by name or its id."),
+  quest: z.string().min(1).max(160).optional().describe("For a done-once objective the save can show: the quest, by name or its id. A link to a quest does the same."),
   stage: z.number().int().min(0).optional().describe("With quest: the stage that means done; any stage when left out."),
   reachKey: z.string().min(1).max(60).optional().describe('For kind "reach": "Level", a skill\'s name, or a count\'s label ("books read").'),
   reachTarget: z.number().int().min(1).optional().describe('For kind "reach": the number to reach.'),
-  byHand: z.boolean().optional().describe("true for a done-once objective the player ticks."),
+  fromSave: z.boolean().optional().describe("Whether the save ticks it when it shows it done: true by default when it's linked to a quest or is a number to reach. The player can always tick it too."),
+  byHand: z.boolean().optional().describe("Kept for a release: the opposite of fromSave."),
 };
 const objectiveFields = {
   playthrough,
@@ -96,7 +100,7 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
   tool(
     "add_objective",
     "Add an objective",
-    "Add an objective to an act: one thing the player can know is done (rule 14). Say how it's done with quest (and stage), reachKey and reachTarget (kind reach), or byHand. Refused, with the rule's words, when it can't be known done: a done-once objective with none of them, or words like every, each, always, whenever, or starting Keep, Always or Never.",
+    "Add an objective to an act: one thing the player can know is done (rule 14). The player can always tick it; link it to a quest (link, or quest and stage) or make it a number to reach (reachKey and reachTarget, kind reach) and the save ticks it too (fromSave, on by default then). Refused, with the rule's words, for words like every, each, always, whenever, or starting Keep, Always or Never.",
     z.object(objectiveFields),
     (p, a: t.ObjectiveToolInput) => t.addObjective(p, a),
   );
@@ -110,7 +114,7 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
   tool(
     "set_objective",
     "Change an objective",
-    "Change an objective's words, link, kind, how it's done (quest and stage, reachKey and reachTarget, or byHand) or why line; checked by rule 14 again.",
+    "Change an objective's words, link, kind, what the save reads (quest and stage, or reachKey and reachTarget), whether the save ticks it (fromSave) or why line; checked by rule 14 again.",
     z.object({ playthrough, objective, text: objectiveFields.text.optional(), link: linkSchema.optional(), unlink: z.boolean().optional().describe("true to take the link away."), kind: objectiveFields.kind.optional(), ...doneFields, why: objectiveFields.why }),
     (p, a: Parameters<typeof t.setObjective>[1]) => t.setObjective(p, a),
   );
@@ -125,7 +129,7 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
   tool(
     "set_status",
     "Set an objective's status",
-    'For an objective the player ticks ("hand") only, when the player tells you: todo, doing, done or later. One the save decides answers that the save decides it.',
+    "Any objective's status, when the player tells you: todo, doing, done or later. One the save ticks is done from the save as well; either counts.",
     z.object({ playthrough, objective, status: z.enum(["todo", "doing", "done", "later"]) }),
     (p, a: Parameters<typeof t.setStatus>[1]) => t.setStatus(p, a),
   );
