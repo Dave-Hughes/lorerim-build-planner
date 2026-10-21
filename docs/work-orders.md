@@ -4335,10 +4335,10 @@ One column. The side panels go under The story so far, in this order: Opens othe
 5. **The switch.** All of it sits behind `questsOn()`.
 
 ### Done when
-- [ ] A report sends from the Gravewind page signed in and signed out, and shows in `/admin` with its status changeable.
-- [ ] The sixth report in an hour is refused with "You've sent a few already. Try again later."
-- [ ] Migration committed in `drizzle/`, additive only.
-- [ ] e2e for both; every check in CLAUDE.md passes; screenshots of the open form and the admin list.
+- [x] A report sends from the Gravewind page signed in and signed out, and shows in `/admin` with its status changeable. (Built with WO-121a Part 5, 21 Oct: signed in only, by Dave's call; signed out it asks for Discord first and comes back to the form.)
+- [x] The sixth report in an hour is refused with "You've sent a few already. Try again later."
+- [x] Migration committed in `drizzle/`, additive only. (`0022_quest_report.sql`)
+- [x] e2e for both; every check in CLAUDE.md passes; screenshots of the open form and the admin list. (`e2e/wo121a.spec.ts`)
 
 ---
 
@@ -5019,7 +5019,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
   - **A Night To Remember** opens on DA14Start, Sam Guevenne's drinking contest. `quests.py` keeps a named quest's unnamed lead-in, which also brings in DA03Start for A Daedra's Best Friend and MS05Start for The Bards College. The key's row still names DA14.
   - **Deluge of Deceit**'s Black-Briar job line (evgSIRENROOT.esm:0A25DD) is Frissa Black-Briar's: its one condition is a voice type only she has, and the check now names a speaker that way. Wujeeta's line needs Deluge of Deceit at stage 20.
   - **Journey to Baan Malur** has no single opening quest. A Grand Venture is an empty placeholder, the rest are side quests in Baan Malur, and Hlervan's Ashes most likely starts when you pick the ashes up. The way in stays the line's start text, with no single giver.
-- [ ] Part 5: reports need sign-in; `report_quest` through the door; the source on `/admin`.
+- [x] Part 5: reports need sign-in; `report_quest` through the door; the source on `/admin`. (Mac, 21 Oct: WO-103's form hadn't been built (the story page's This was wrong was still the plain link), so it is built here, with sign-in. This was wrong sits under a line's quests. Signed out, it asks for Discord, and the sign-in comes back to `/quests/<id>?report=1` with the form open. The story page's link goes there too. `quest_report` (`0022_quest_report.sql`, additive) holds the line, the quest, what, the player's words, what the planner said, who, the source and the client. 5 an hour per account, the site and the door counted together. `report_quest({ quest, what, said, saw })` needs sign-in with `facts`, and takes a line's id or name or a quest's EDID or name. The style guide has rule 23. `/admin` lists the reports with "On the quest page" or "Through <assistant>", the player's name and a status. Tested in `wo121a.test.ts` and `e2e/wo121a.spec.ts`.)
 - [ ] `WAITING_ON_BOB` is empty; the door sends `who` and `where` again.
 - [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Bob checks ten more quests against UESP, then Dave checks five he knows.
 

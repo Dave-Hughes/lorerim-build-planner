@@ -23,6 +23,8 @@ initBotId({
     { path: "/admin/*", method: "POST" },
     // An early-access invite's Come in (WO-96).
     { path: "/invite/*", method: "POST" },
+    // This was wrong on a quest line's page (WO-103).
+    { path: "/quests/*", method: "POST" },
     { path: "/api/covers", method: "POST" },
     { path: "/api/builds/*/images", method: "POST" },
   ],

@@ -107,7 +107,7 @@ export default async function StoryPage({ params }: { params: Params }) {
               </span>
             ))}
           </section>
-          <Link href={`/quests/${story.line}`} className={`${styles.wrong} ${styles.oWrong}`}>
+          <Link href={`/quests/${story.line}?report=1#report`} className={`${styles.wrong} ${styles.oWrong}`}>
             This was wrong ›
           </Link>
         </aside>

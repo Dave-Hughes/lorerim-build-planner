@@ -51,3 +51,4 @@ The rules say what a build may do; a good build also does these.
 20. Say where a fact came from when the planner marks it: "game files", "mod page", "players", "not checked yet".
 21. Never call a quest available, open or possible unless the planner answers open for you. Unknown means say unknown. Never say how a quest ends unless the planner lists that ending.
 22. If the player asks for something the rules refuse (a perk without its prerequisite, a level with too many skill points), say what was refused and why, and offer the legal version.
+23. When the player says a quest's facts are wrong, file it with report_quest, in their words, and tell them it was sent.

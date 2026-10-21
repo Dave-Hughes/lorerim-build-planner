@@ -1,0 +1,106 @@
+import "server-only";
+import { and, count, desc, eq, gt, sql } from "drizzle-orm";
+import { db, schema } from "@/db";
+import { questsData } from "./data";
+import { REPORT_TEXT_MAX, REPORT_WHAT, type ReportWhat } from "./report-words";
+
+/**
+ * Quest reports (WO-103, WO-121a Part 5): a signed-in player's word that a quest page was wrong, from the page's This
+ * was wrong or through an assistant's report_quest. Both file the same way, with the same limit.
+ */
+
+/** 5 an hour per account (WO-103). */
+export const QUEST_REPORTS_AN_HOUR = 5;
+export const QUEST_REPORT_LIMIT_MESSAGE = "You've sent a few already. Try again later.";
+
+export class QuestReportError extends Error {}
+
+/** A quest line by its id or name, or the line a quest is in by the quest's EDID or name; null when none is. */
+export function lineFor(quest: string): { lineId: string; edid: string | null } | null {
+  const q = quest.trim().toLowerCase();
+  if (!q) return null;
+  const { lines, byId } = questsData();
+  const line = byId.get(q) ?? lines.find((l) => l.name.toLowerCase() === q);
+  if (line) return { lineId: line.id, edid: null };
+  for (const l of lines) {
+    const hit = l.quests.find((x) => x.edid.toLowerCase() === q) ?? l.quests.find((x) => x.name.toLowerCase() === q);
+    if (hit) return { lineId: l.id, edid: hit.edid };
+  }
+  return null;
+}
+
+export interface QuestReportInput {
+  userId: string;
+  lineId: string;
+  quest?: string | null;
+  what: string;
+  text: string;
+  said?: string;
+  source: "site" | "assistant";
+  client?: string | null;
+}
+
+/** Files a report: the line must exist, `what` be one of REPORT_WHAT and the text say something; refused past the limit. */
+export async function fileQuestReport(input: QuestReportInput): Promise<{ id: number }> {
+  if (!questsData().byId.has(input.lineId)) throw new QuestReportError("No quest line has that id.");
+  const what = REPORT_WHAT.find((w) => w.toLowerCase() === input.what.trim().toLowerCase()) as ReportWhat | undefined;
+  if (!what) throw new QuestReportError(`Say what was wrong: ${REPORT_WHAT.join(", ")}.`);
+  const text = input.text.trim().slice(0, REPORT_TEXT_MAX);
+  if (!text) throw new QuestReportError("Say what happened in your game.");
+  const [r] = await db()
+    .select({ n: count() })
+    .from(schema.questReports)
+    .where(and(eq(schema.questReports.userId, input.userId), gt(schema.questReports.createdAt, sql`now() - interval '1 hour'`)));
+  if (r.n >= QUEST_REPORTS_AN_HOUR) throw new QuestReportError(QUEST_REPORT_LIMIT_MESSAGE);
+  const [row] = await db()
+    .insert(schema.questReports)
+    .values({
+      lineId: input.lineId,
+      quest: input.quest ?? null,
+      what,
+      text,
+      said: (input.said ?? "").trim().slice(0, REPORT_TEXT_MAX),
+      userId: input.userId,
+      source: input.source,
+      client: input.client?.slice(0, 80) ?? null,
+    })
+    .returning({ id: schema.questReports.id });
+  return row;
+}
+
+/** /admin's Quest reports, newest first, with the line's name and the player's. */
+export async function listQuestReports(limit = 100) {
+  const rows = await db()
+    .select({
+      id: schema.questReports.id,
+      lineId: schema.questReports.lineId,
+      quest: schema.questReports.quest,
+      what: schema.questReports.what,
+      text: schema.questReports.text,
+      said: schema.questReports.said,
+      source: schema.questReports.source,
+      client: schema.questReports.client,
+      status: schema.questReports.status,
+      createdAt: schema.questReports.createdAt,
+      name: schema.users.name,
+      handle: schema.users.handle,
+    })
+    .from(schema.questReports)
+    .innerJoin(schema.users, eq(schema.users.id, schema.questReports.userId))
+    .orderBy(desc(schema.questReports.createdAt))
+    .limit(limit);
+  const { byId } = questsData();
+  return rows.map((r) => {
+    const line = byId.get(r.lineId);
+    return { ...r, lineName: line?.name ?? r.lineId, questName: r.quest ? (line?.quests.find((q) => q.edid === r.quest)?.name ?? r.quest) : null };
+  });
+}
+
+export const REPORT_STATUSES = ["new", "fixed", "not a problem"] as const;
+
+export async function setQuestReportStatus(id: number, status: string): Promise<boolean> {
+  const s = REPORT_STATUSES.find((x) => x === status);
+  if (!s) return false;
+  const rows = await db().update(schema.questReports).set({ status: s }).where(eq(schema.questReports.id, id)).returning({ id: schema.questReports.id });
+  return !!rows[0];
+}

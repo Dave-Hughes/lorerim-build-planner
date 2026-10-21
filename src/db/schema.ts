@@ -500,3 +500,31 @@ export const buildRevisions = pgTable(
   },
   (t) => [index("build_revision_build_idx").on(t.buildId, t.id)],
 );
+
+/**
+ * A player's word that a quest page was wrong (WO-103, WO-121a Part 5): the line, the part, what happened in their game,
+ * and, through an assistant, what the planner had said. Signed in always (people who aren't anonymous are less likely
+ * to lie); `source` is the site or an assistant, named in `client`. An admin sets the status on /admin.
+ */
+export const questReports = pgTable(
+  "quest_report",
+  {
+    id: serial("id").primaryKey(),
+    lineId: text("line_id").notNull(),
+    /** The quest's EDID when the report names one quest of the line. */
+    quest: text("quest"),
+    what: text("what").notNull(),
+    /** What happened in the player's game. */
+    text: text("text").notNull(),
+    /** What the planner said, as the assistant put it (empty from the site). */
+    said: text("said").notNull().default(""),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    source: text("source").$type<"site" | "assistant">().notNull().default("site"),
+    client: text("client"),
+    status: text("status").$type<"new" | "fixed" | "not a problem">().notNull().default("new"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("quest_report_user_idx").on(t.userId, t.createdAt), index("quest_report_at_idx").on(t.createdAt)],
+);

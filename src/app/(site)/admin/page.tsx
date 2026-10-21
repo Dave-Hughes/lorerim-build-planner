@@ -5,10 +5,12 @@ import { auth } from "@/auth";
 import { EarlyAccess } from "@/components/admin/early-access";
 import { BuildHistory } from "@/components/admin/build-history";
 import { Connector } from "@/components/admin/connector";
+import { QuestReports } from "@/components/admin/quest-reports";
 import { ImportBuild } from "@/components/admin/import-build";
 import { buildHistory } from "@/lib/builds/revision-queries";
 import { doorCounts } from "@/lib/mcp/door-events";
-import { mcpOn } from "@/lib/features";
+import { mcpOn, questsOn } from "@/lib/features";
+import { listQuestReports } from "@/lib/quests/reports";
 import { isAdmin } from "@/lib/users/admin";
 import { listEarlyAccess, listInvites } from "@/lib/users/invite-queries";
 import { inviteState } from "@/lib/users/invites";
@@ -18,15 +20,21 @@ export const metadata: Metadata = { title: "Admin", robots: { index: false } };
 export const dynamic = "force-dynamic";
 
 /**
- * The admins' page (WO-90, WO-96): the way to the review list, early access, importing a build, a build's saves
- * (WO-122, ?build=<id>) and the connector's counts (WO-119). Everyone else gets a 404.
+ * The admins' page (WO-90, WO-96): the way to the review list, early access, the quest reports (WO-103), importing a
+ * build, a build's saves (WO-122, ?build=<id>) and the connector's counts (WO-119). Everyone else gets a 404.
  */
 export default async function AdminPage({ searchParams }: { searchParams: Promise<{ build?: string | string[] }> }) {
   const userId = (await auth())?.user?.id;
   if (!(await isAdmin(userId))) notFound();
   const asked = (await searchParams).build;
   const buildId = (Array.isArray(asked) ? asked[0] : asked)?.trim().slice(0, 40) ?? "";
-  const [invites, people, door, history] = await Promise.all([listInvites(), listEarlyAccess(), mcpOn() ? doorCounts() : null, buildId ? buildHistory(buildId) : null]);
+  const [invites, people, door, history, reports] = await Promise.all([
+    listInvites(),
+    listEarlyAccess(),
+    mcpOn() ? doorCounts() : null,
+    buildId ? buildHistory(buildId) : null,
+    questsOn() ? listQuestReports() : null,
+  ]);
   return (
     <main className={`page ${styles.main}`}>
       <h1 className="title">Admin</h1>
@@ -37,6 +45,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
         invites={invites.map((i) => ({ id: i.id, label: i.label, createdAt: i.createdAt, state: inviteState(i), usedByName: i.usedByName }))}
         people={people.map((p) => ({ id: p.id, name: p.name ?? "Unknown", image: p.image, at: p.at! }))}
       />
+      {reports && <QuestReports reports={reports.map((r) => ({ ...r, createdAt: r.createdAt.toISOString() }))} />}
       <ImportBuild />
       <BuildHistory id={buildId} history={history} />
       {door && <Connector weeks={door} />}

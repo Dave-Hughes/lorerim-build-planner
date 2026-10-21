@@ -2,6 +2,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { auth } from "@/auth";
+import { SignInButton } from "@/components/site-header";
+import { QuestReport } from "@/components/quests/quest-report";
 import { QuestRow } from "@/components/quests/journal";
 import { LineNeeds, type AfterLine } from "@/components/quests/line-start";
 import { categories, categorySlug, gateOf, homeName, mainOrder, questsData } from "@/lib/quests/data";
@@ -42,8 +45,11 @@ function siblings(line: QuestLine): QuestLine[] {
 }
 
 /** A quest line (WO-100, QuestLine): how to start it, what it gives, and its quests with their journals. */
-export default async function QuestLinePage({ params }: { params: Params }) {
+export default async function QuestLinePage({ params, searchParams }: { params: Params; searchParams: Promise<{ report?: string }> }) {
   const { id } = await params;
+  // Back from signing in to report (WO-121a Part 5): the form opens where it was.
+  const reporting = (await searchParams).report === "1";
+  const signedIn = !!(await auth())?.user?.id;
   const { byId, categories: cats, shelves } = questsData();
   const line = byId.get(id);
   if (!line) notFound();
@@ -243,6 +249,7 @@ export default async function QuestLinePage({ params }: { params: Params }) {
               </div>
             )}
           </section>
+          <QuestReport lineId={line.id} signedIn={signedIn} open={reporting} signIn={<SignInButton redirectTo={`/quests/${line.id}?report=1#report`} className="btn btn-sm btn-primary" label="Sign in with Discord" />} />
         </div>
 
         <aside className={styles.side}>

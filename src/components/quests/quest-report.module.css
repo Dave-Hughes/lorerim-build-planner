@@ -1,0 +1,63 @@
+/* This was wrong (WO-103): under a quest line's quests, quiet until it's opened. */
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 32px;
+  scroll-margin-top: 96px;
+}
+.link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 15px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.link:hover {
+  color: var(--ember);
+}
+.form {
+  width: min(100%, 520px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+}
+.whats {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 16px;
+}
+.whats > legend {
+  margin-bottom: 8px;
+}
+.what {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.what input {
+  accent-color: var(--ember);
+}
+.actions {
+  display: flex;
+  gap: 10px;
+}
+.done {
+  margin: 32px 0 0;
+  color: var(--muted);
+}
+@media (max-width: 520px) {
+  .whats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

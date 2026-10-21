@@ -2,7 +2,10 @@ import "server-only";
 import type { createMcpHandler } from "mcp-handler";
 import { z } from "zod";
 import { getBuild as readableBuild } from "@/lib/builds/queries";
-import { signedIn, whoami, type PlannerAuth } from "@/lib/oauth/mcp-auth";
+import { signedIn, whoami, writer, type PlannerAuth } from "@/lib/oauth/mcp-auth";
+import { questsOn } from "@/lib/features";
+import { QuestReportError, fileQuestReport, lineFor } from "@/lib/quests/reports";
+import { REPORT_TEXT_MAX, REPORT_THANKS, REPORT_WHAT } from "@/lib/quests/report-words";
 import { creationFields, gearRow, levelFields } from "./build-tools";
 import { versionData } from "./errors";
 import { DEFAULT_VERSION, FACT_KINDS, FactsError, checkPlan, checkProgression, getPerk, getQuest, getCreation, getRules, getSpell, getTree, playerState, searchFacts, styleGuide } from "./facts";
@@ -171,6 +174,35 @@ export function registerFactTools(server: Server, guarded: Guarded) {
         const who = signedIn(ctx.http?.authInfo as PlannerAuth | undefined);
         if ("refusal" in who) throw new FactsError(who.refusal);
         return whoami(who.userId, who.scopes);
+      }),
+  );
+  server.registerTool(
+    "report_quest",
+    {
+      title: "Report a quest page wrong",
+      description:
+        "File the player's report that the planner's facts for a quest are wrong: what the planner said and what the player saw in their game, in their words. It goes to the planner's admins, as the quest page's This was wrong does; needs the connector added with sign-in. 5 an hour per player.",
+      inputSchema: z.object({
+        quest: z.string().min(1).max(120).describe("The quest line's id or name, or the quest's EDID or name."),
+        what: z.string().max(40).optional().describe(`What was wrong: ${REPORT_WHAT.join(", ")}. Something else if left out.`),
+        said: z.string().max(REPORT_TEXT_MAX).describe("What the planner said."),
+        saw: z.string().min(1).max(REPORT_TEXT_MAX).describe("What the player saw in their game, in their words."),
+      }),
+    },
+    async ({ quest, what, said, saw }, ctx) =>
+      guarded(async () => {
+        if (!questsOn()) throw new FactsError("The quest pages aren't open yet.");
+        const who = await writer(ctx.http?.authInfo as PlannerAuth | undefined, "facts");
+        if ("refusal" in who) throw new FactsError(who.refusal);
+        const found = lineFor(quest);
+        if (!found) throw new FactsError(`No quest or quest line called ${quest}. search_facts finds its id.`);
+        try {
+          await fileQuestReport({ userId: who.userId, lineId: found.lineId, quest: found.edid, what: what || "Something else", said, text: saw, source: "assistant", client: who.clientName });
+        } catch (e) {
+          if (e instanceof QuestReportError) throw new FactsError(e.message);
+          throw e;
+        }
+        return { sent: true, line: found.lineId, message: `${REPORT_THANKS} Tell the player it was sent.` };
       }),
   );
   server.registerTool(

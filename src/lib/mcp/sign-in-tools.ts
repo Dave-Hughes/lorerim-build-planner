@@ -13,7 +13,8 @@ export function signInNeeds(): Map<string, string | null> {
     return out;
   };
   const noop = async () => ({ content: [] });
-  needs = new Map<string, string | null>([["whoami", null]]);
+  // report_quest files under the player's name (WO-121a Part 5): facts is enough.
+  needs = new Map<string, string | null>([["whoami", null], ["report_quest", "facts"]]);
   for (const n of names((s) => registerBuildTools(s, noop, "https://planner.test"))) needs.set(n, "builds:write");
   // suggest_quests is a facts tool registered with the playthroughs (WO-111): open.
   for (const n of names((s) => registerPlaythroughTools(s, noop, "https://planner.test"))) if (n !== "suggest_quests") needs.set(n, "playthroughs:write");
