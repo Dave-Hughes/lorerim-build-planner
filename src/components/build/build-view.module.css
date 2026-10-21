@@ -1744,3 +1744,19 @@
   padding: 40px 0 72px;
   font-size: 17px;
 }
+
+/* On a phone, Read the story sits above the tabs, on its own line (WO-118). */
+@media (max-width: 760px) {
+  .tabsRow {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 0;
+  }
+  .tabsRead {
+    align-self: flex-end;
+    padding: 0 0 12px;
+  }
+  .tabsRow > .tabs {
+    min-width: 0;
+  }
+}
