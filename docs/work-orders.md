@@ -4948,7 +4948,8 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 1. **WO-118**, whatever is left of it (Part 8, tests and screenshots).
 2. **WO-115 Parts 3 to 5**, open for you. Read the two notes above Part 3 first.
 3. **WO-119**, assistants that build well.
-4. **WO-109b**, the door on any path and a 401 that starts sign-in.
+4. **WO-121**, who starts a quest, tested against the answer key (added 20 Oct, 23:00). Then WO-115 Part 5, which waits for it.
+5. **WO-109b**, the door on any path and a 401 that starts sign-in.
 
 **If something blocks you** (a check that won't pass after a real try, a question only Dave can answer, a design the boards don't cover): don't guess at a design and don't skip a test. Write what blocked you and what you tried under that order's Done when, as "Blocked (night run): ...", commit and push that, and go on to the next order. A blocked part of an order doesn't stop the rest of it if the rest doesn't depend on it.
 
@@ -4958,6 +4959,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - [x] WO-118 done.
 - [ ] WO-115 Parts 3 to 5 done.
 - [ ] WO-119 done.
+- [ ] WO-121 done, and WO-115 Part 5 on it.
 - [ ] WO-109b done.
 - [ ] `docs/night-2026-10-20.md` lists each order, what to try and what's blocked. Every check in CLAUDE.md passes on the last commit. Push to `staging` and stop: Bob checks the night's work in the morning, then Dave.
 
