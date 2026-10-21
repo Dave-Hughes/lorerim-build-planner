@@ -259,7 +259,7 @@ def read_plugin(buf, name, strings=None):
             if t != grp:
                 continue
             edid = full = ""
-            entries = []
+            entries, template = [], None
             for s, v in subrecs(d):
                 if s == "EDID":
                     edid = _text(v)
@@ -269,7 +269,11 @@ def read_plugin(buf, name, strings=None):
                         break
                 elif s == "LVLO" and len(v) >= 8:
                     entries.append(form_id(resolve(struct.unpack_from("<I", v, 4)[0], masters, name)))
+                elif s == "TPLT" and grp == "NPC_" and len(v) >= 4 and struct.unpack_from("<I", v)[0]:
+                    template = form_id(resolve(struct.unpack_from("<I", v)[0], masters, name))
             row = {"type": grp, "edid": edid, "name": full}
+            if grp == "NPC_" and not full and template:  # nameless, named by its template (Captain Valmir's two records)
+                row["template"] = template
             if entries:
                 row["entries"] = entries
             out["names"][form_id(resolve(fid, masters, name))] = row

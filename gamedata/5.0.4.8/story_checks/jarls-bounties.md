@@ -884,127 +884,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 37. Delivery (`Favor001AngasMill`, Favor Quests Seperated.esp:000835, Favor Quests Seperated.esp)
-
-**Started by**
-
-- Dialogue with Aeri, placed in Aeri's House, "Sure. I'd be glad to help.": SetStage 10 (when: the speaker is the one in alias Questgiver; the speaker is Aeri). Source: TIF__0004037F.Fragment_0 on INFO Favor Quests Seperated.esp:000834 (Favor Quests Seperated.esp). **script**
-- Story manager node FavorChangeLocationAngasMill, event: change location; conditions up its parents: the place you enter is Anga's Mill; the place you enter is a habitation; the place you leave isn't a dwelling. Source: FavorChangeLocationAngasMill Skyrim.esm:090E55 (Favor Quests Seperated.esp). **files**
-- (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Who and where**
-
-- First objective: "Deliver <Alias=QuestItem> to <Alias.ShortName=Target>". Source: Favor Quests Seperated.esp:000835 QOBJ 10. **files**
-- Target alias Target (unique): Skald the Elder (unique actor, placed in The White Hall). **files**
-
-**Needs**
-
-- Nothing in its own conditions, and no locked-only way into its first objective's place.
-- Ways in: The White Hall: 2 doors, 0 locked. A door is a need only when every way in is locked. **files**
-
-**Gives**: nothing on its completing stages.
-
-## 38. Delivery (`Favor001DarkwaterCrossing`, Favor Quests Seperated.esp:000842, Favor Quests Seperated.esp)
-
-**Started by**
-
-- Dialogue with Sondas Drenim, placed in Goldenrock Mine, "I could deliver your message for you.": SetStage 10 (when: the speaker is the one in alias Questgiver; the speaker is Sondas Drenim). Source: TIF__00068FE9.Fragment_0 on INFO Favor Quests Seperated.esp:000846 (Favor Quests Seperated.esp). **script**
-- Story manager node FavorChangeLocationDarkwaterCrossing, event: change location; conditions up its parents: the place you enter is Darkwater Crossing; the place you enter is a habitation; the place you leave isn't a dwelling. Source: FavorChangeLocationDarkwaterCrossing Skyrim.esm:068FFC (Favor Quests Seperated.esp). **files**
-- (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Who and where**
-
-- First objective: "Deliver <Alias=QuestItem> to <Alias.ShortName=Target>". Source: Favor Quests Seperated.esp:000842 QOBJ 10. **files**
-- Target alias Target (unique): Quintus Navale (unique actor, placed in The White Phial). **files**
-
-**Needs**
-
-- Nothing in its own conditions, and no locked-only way into its first objective's place.
-- Ways in: The White Phial: 1 door, 0 locked. A door is a need only when every way in is locked. **files**
-
-**Gives**: nothing on its completing stages.
-
-## 39. Delivery (`Favor001Falkreath`, Favor Quests Seperated.esp:000847, Favor Quests Seperated.esp)
-
-**Started by**
-
-- Dialogue with Thadgeir, placed in Dengeir's House, Dengeir's Hall, "I'd be honored.": SetStage 10 (when: the speaker is the one in alias Questgiver; the speaker is Thadgeir). Source: TIF__00090DFB.Fragment_0 on INFO Favor Quests Seperated.esp:00084A (Favor Quests Seperated.esp). **script**
-- Story manager node FavorChangeLocationFalkreath, event: change location; conditions up its parents: the place you enter is Falkreath; the place you enter is a habitation; the place you leave isn't a dwelling. Source: FavorChangeLocationFalkreath Skyrim.esm:0705BC (Favor Quests Seperated.esp). **files**
-- (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Who and where**
-
-- First objective: "Deliver <Alias=QuestItem> to <Alias.ShortName=Target>". Source: Favor Quests Seperated.esp:000847 QOBJ 10. **files**
-- Target alias Target (unique): Runil (unique actor, placed in Hall of the Dead, House of Arkay). **files**
-
-**Needs**
-
-- Nothing in its own conditions, and no locked-only way into its first objective's place.
-- Ways in: Hall of the Dead, House of Arkay: 2 doors, 0 locked. A door is a need only when every way in is locked. **files**
-
-**Gives**: nothing on its completing stages.
-
-## 40. Delivery (`Favor001Markarth`, Favor Quests Seperated.esp:000838, Favor Quests Seperated.esp)
-
-**Started by**
-
-- Dialogue with Banning, placed in Markarth Stables, "I could deliver that for you.": SetStage 10 (when: the speaker is the one in alias Questgiver; the speaker is Banning). Source: TIF__0004444B.Fragment_0 on INFO Favor Quests Seperated.esp:00083A (Favor Quests Seperated.esp). **script**
-- Story manager node FavorChangeLocationMarkarth, event: change location; conditions up its parents: the place you enter is Markarth; the place you enter is a habitation; the place you leave isn't a dwelling. Source: FavorChangeLocationMarkarth Skyrim.esm:0C2B6B (Favor Quests Seperated.esp). **files**
-- (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Who and where**
-
-- First objective: "Deliver <Alias=QuestItem> to <Alias.ShortName=Target>". Source: Favor Quests Seperated.esp:000838 QOBJ 10. **files**
-- Target alias Target (unique): Voada (unique actor, placed in Understone Keep). **files**
-
-**Needs**
-
-- Nothing in its own conditions, and no locked-only way into its first objective's place.
-- Ways in: Understone Keep: 6 doors, 0 locked. A door is a need only when every way in is locked. **files**
-
-**Gives**: nothing on its completing stages.
-
-## 41. Delivery (`Favor001Morthal`, Favor Quests Seperated.esp:00083D, Favor Quests Seperated.esp)
-
-**Started by**
-
-- Dialogue with Idgrod the Younger, placed in Highmoon Hall, "I'd be glad to help.": SetStage 10 (when: the speaker is the one in alias Questgiver; the speaker is Idgrod the Younger). Source: TIF__0009408B.Fragment_0 on INFO Favor Quests Seperated.esp:000840 (Favor Quests Seperated.esp). **script**
-- Story manager node FavorChangeLocationMorthal, event: change location; conditions up its parents: the place you enter is Morthal; the place you enter is a habitation; the place you leave isn't a dwelling. Source: FavorChangeLocationMorthal Skyrim.esm:0940DB (Favor Quests Seperated.esp). **files**
-- (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Who and where**
-
-- First objective: "Deliver <Alias=QuestItem> to <Alias.ShortName=Target>". Source: Favor Quests Seperated.esp:00083D QOBJ 10. **files**
-- Target alias Target (unique): Danica Pure-Spring (unique actor, placed in Temple of Kynareth). **files**
-
-**Needs**
-
-- Nothing in its own conditions, and no locked-only way into its first objective's place.
-- Ways in: Temple of Kynareth: 2 doors, 0 locked. A door is a need only when every way in is locked. **files**
-
-**Gives**: nothing on its completing stages.
-
-## 42. Delivery (`Favor001Windhelm`, Favor Quests Seperated.esp:00082D, Favor Quests Seperated.esp)
-
-**Started by**
-
-- Dialogue with Adonato Leotelli, placed in Candlehearth Hall, "I'll deliver the book for you.": SetStage 10 (when: the speaker is the one in alias Questgiver; the speaker is Adonato Leotelli). Source: TIF__0007043E.Fragment_0 on INFO Favor Quests Seperated.esp:00082F (Favor Quests Seperated.esp). **script**
-- Story manager node FavorChangeLocationWindhelm, event: change location; conditions up its parents: the place you enter is Windhelm; the place you enter is a habitation; the place you leave isn't a dwelling. Source: FavorChangeLocationWindhelm Skyrim.esm:03F4C4 (LoreRim - Dialogue Patch.esp). **files**
-- (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Who and where**
-
-- First objective: "Deliver <Alias=QuestItem> to <Alias.ShortName=Target>". Source: Favor Quests Seperated.esp:00082D QOBJ 10. **files**
-- Target alias Target (forced): Giraud Gemane (forced reference, placed in Bards College, The Bards College). **files**
-
-**Needs**
-
-- Nothing in its own conditions, and no locked-only way into its first objective's place.
-- Ways in: Bards College, The Bards College: 4 doors, 0 locked. A door is a need only when every way in is locked. **files**
-
-**Gives**: nothing on its completing stages.
-
-## 43. A Few Words with You (`Favor013Kynesgrove`, Favor Quests Seperated.esp:000896, Favor Quests Seperated.esp)
+## 37. A Few Words with You (`Favor013Kynesgrove`, Favor Quests Seperated.esp:000896, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1019,7 +899,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Roggi Knot-Beard, placed in Steamscorch Mine, Steamscorch Gully Mine, "Do I need to beat some sense into you? (Intimidate)": SetStage 15 (when: the speaker is Roggi Knot-Beard; the speaker is the one in alias target; fn655 == 1). Reply: "What? No. All right. I won't worry about the coin anymore, just stop giving me that look." Source: TIF__00068FD3.Fragment_1 on INFO Favor Quests Seperated.esp:0008E1 (Favor Quests Seperated.esp). **script**
 - Dialogue with Roggi Knot-Beard, placed in Steamscorch Mine, Steamscorch Gully Mine, "What if I pay it? (<BribeCost> gold)": SetStage 15 (when: fn654 == 1; the speaker is Roggi Knot-Beard; the speaker is the one in alias target). Reply: "A true Nord would settle it himself, but at least this way Iddra gets her coin. Thank you. Tell her I'll be fine." Source: TIF__00068F5C.Fragment_1 on INFO Favor Quests Seperated.esp:0008E3 (Favor Quests Seperated.esp). **script**
 - Dialogue with Roggi Knot-Beard, placed in Steamscorch Mine, Steamscorch Gully Mine, "Iddra wants you to forget about all that coin you owe.": SetStage 15 (when: fn403 >= 1; A Few Words with You stage == 10; the speaker is Roggi Knot-Beard; the speaker is the one in alias target). Reply: "I guess if you're telling me to stop worrying about it, maybe I should just let it go. Thank you, friend." Source: TIF__00068F62.Fragment_0 on INFO Favor Quests Seperated.esp:0008E5 (Favor Quests Seperated.esp). **script**
-- Dialogue with Roggi Knot-Beard, placed in Steamscorch Mine, Steamscorch Gully Mine, "Stop being stubborn. Let it go. (Persuade)": SetStage 15 (when: the speaker is the one in alias target; the speaker is Roggi Knot-Beard; GetActorValue >= SpeechEasy (now 25) or fn182 == 1). Reply: "I guess you're right. A Nord shouldn't be so proud to turn down a kind soul's generosity. Tell Iddra I'll be fine." Source: TIF__0006F82E.Fragment_1 on INFO Favor Quests Seperated.esp:0008EA (Favor Quests Seperated.esp). **script**
+- Dialogue with Roggi Knot-Beard, placed in Steamscorch Mine, Steamscorch Gully Mine, "Stop being stubborn. Let it go. (Persuade)": SetStage 15 (when: the speaker is the one in alias target; the speaker is Roggi Knot-Beard; GetActorValue >= SpeechEasy (now 25) or GetEquipped Skyrim.esm:0F759C == 1). Reply: "I guess you're right. A Nord shouldn't be so proud to turn down a kind soul's generosity. Tell Iddra I'll be fine." Source: TIF__0006F82E.Fragment_1 on INFO Favor Quests Seperated.esp:0008EA (Favor Quests Seperated.esp). **script**
 
 **Who and where**
 
@@ -1033,11 +913,11 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 44. A Few Words with You (`Favor013Markarth`, Favor Quests Seperated.esp:0008B3, Favor Quests Seperated.esp)
+## 38. A Few Words with You (`Favor013Markarth`, Favor Quests Seperated.esp:0008B3, Favor Quests Seperated.esp)
 
 **Started by**
 
-- Dialogue with Omluag, placed in The Warrens, "What if I talk to <Alias.ShortName=Target>?": SetStage 10 (when: the speaker is Omluag; the speaker is the one in alias QuestGiver; fn1 >= ANDR_DialogueDistanceCheck_MulushSmelterWorkers (now 2048)). Source: TIF__00055115.Fragment_0 on INFO Favor Quests Seperated.esp:0008F4 (Narrative Gameplay Consistent Dialogue Tweaks - Favor Quests Separated Patch.esp). **script**
+- Dialogue with Omluag, placed in The Warrens, "What if I talk to <Alias.ShortName=Target>?": SetStage 10 (when: the speaker is Omluag; the speaker is the one in alias QuestGiver; GetDistance Skyrim.esm:0198FF >= ANDR_DialogueDistanceCheck_MulushSmelterWorkers (now 2048)). Source: TIF__00055115.Fragment_0 on INFO Favor Quests Seperated.esp:0008F4 (Narrative Gameplay Consistent Dialogue Tweaks - Favor Quests Separated Patch.esp). **script**
 - Story manager node FavorChangeLocationMarkarth, event: change location; conditions up its parents: the place you enter is Markarth; the place you enter is a habitation; the place you leave isn't a dwelling. Source: FavorChangeLocationMarkarth Skyrim.esm:0C2B6B (Favor Quests Seperated.esp). **files**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -1047,7 +927,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Mulush gro-Shugurz, placed in Smelter Overseer's House, "Leave Omluag alone. This is my final warning.": SetStage 15 (when: the speaker is Mulush gro-Shugurz). Reply: "All right. I'll lay off him. Just leave." Source: TIF__0006FABA.Fragment_0 on INFO Skyrim.esm:06FABA (Favor Quests Seperated.esp). **script**
 - Dialogue with Mulush gro-Shugurz, placed in Smelter Overseer's House, "Then we do this the hard way. (Intimidate)": SetStage 15 (when: the speaker is Mulush gro-Shugurz; the speaker is the one in alias target; fn655 == 1). Reply: "Wait. You win. I'll ease off on the beatings, just leave me alone." Source: TIF__00055512.Fragment_1 on INFO Favor Quests Seperated.esp:0008EE (Favor Quests Seperated.esp). **script**
 - Dialogue with Mulush gro-Shugurz, placed in Smelter Overseer's House, "Maybe we can come to an understanding. (<BribeCost> gold)": SetStage 15 (when: fn654 == 1; the speaker is Mulush gro-Shugurz; the speaker is the one in alias target). Reply: "I guess I can spare him a few beatings. Deal." Source: TIF__000554D9.Fragment_1 on INFO Favor Quests Seperated.esp:0008F0 (Favor Quests Seperated.esp). **script**
-- Dialogue with Mulush gro-Shugurz, placed in Smelter Overseer's House, "You're working him to death. Lay off. (Persuade)": SetStage 15 (when: the speaker is the one in alias target; the speaker is Mulush gro-Shugurz; GetActorValue >= SpeechEasy (now 25) or fn182 == 1). Reply: "All right, all right. You sound like a damn Legion officer, but I get it. I'll give him a break. This better not hurt our quota." Source: TIF__000554DB.Fragment_1 on INFO Favor Quests Seperated.esp:0008F6 (Favor Quests Seperated.esp). **script**
+- Dialogue with Mulush gro-Shugurz, placed in Smelter Overseer's House, "You're working him to death. Lay off. (Persuade)": SetStage 15 (when: the speaker is the one in alias target; the speaker is Mulush gro-Shugurz; GetActorValue >= SpeechEasy (now 25) or GetEquipped Skyrim.esm:0F759C == 1). Reply: "All right, all right. You sound like a damn Legion officer, but I get it. I'll give him a break. This better not hurt our quota." Source: TIF__000554DB.Fragment_1 on INFO Favor Quests Seperated.esp:0008F6 (Favor Quests Seperated.esp). **script**
 
 **Who and where**
 
@@ -1061,7 +941,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 45. A Few Words with You (`Favor013Solitude`, Favor Quests Seperated.esp:0008A5, Favor Quests Seperated.esp)
+## 39. A Few Words with You (`Favor013Solitude`, Favor Quests Seperated.esp:0008A5, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1075,7 +955,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Irnskar Ironhand, placed in Bryling's House, "Final warning. Leave Octieve alone.": SetStage 15 (when: the speaker is Irnskar Ironhand). Reply: "All right. Tell the old man his debts are settled." Source: TIF__000CA203.Fragment_0 on INFO Skyrim.esm:0CA203 (Favor Quests Seperated.esp). **script**
 - Dialogue with Irnskar Ironhand, placed in Bryling's House, "Lay off the old man. Now. (Intimidate)": SetStage 15 (when: the speaker is Irnskar Ironhand; the speaker is the one in alias target; fn655 == 1). Reply: "All right, all right. Have it your way. Tell Octieve to forget about the debt." Source: TIF__0006F955.Fragment_1 on INFO Favor Quests Seperated.esp:0008FB (Favor Quests Seperated.esp). **script**
 - Dialogue with Irnskar Ironhand, placed in Bryling's House, "What if I pay it? (<BribeCost> gold)": SetStage 15 (when: fn654 == 1; the speaker is Irnskar Ironhand; the speaker is the one in alias target). Reply: "Works for me. Tell Octieve the debt's settled." Source: TIF__0006F82A.Fragment_1 on INFO Favor Quests Seperated.esp:0008FD (Favor Quests Seperated.esp). **script**
-- Dialogue with Irnskar Ironhand, placed in Bryling's House, "He's an old man. Let it go. (Persuade)": SetStage 15 (when: the speaker is the one in alias target; the speaker is Irnskar Ironhand; GetActorValue >= SpeechEasy (now 25) or fn182 == 1). Reply: "Fine. You sound like a priest of Mara, but I get your point. Tell him to forget about the gold." Source: TIF__00068F6A.Fragment_1 on INFO Favor Quests Seperated.esp:000903 (Favor Quests Seperated.esp). **script**
+- Dialogue with Irnskar Ironhand, placed in Bryling's House, "He's an old man. Let it go. (Persuade)": SetStage 15 (when: the speaker is the one in alias target; the speaker is Irnskar Ironhand; GetActorValue >= SpeechEasy (now 25) or GetEquipped Skyrim.esm:0F759C == 1). Reply: "Fine. You sound like a priest of Mara, but I get your point. Tell him to forget about the gold." Source: TIF__00068F6A.Fragment_1 on INFO Favor Quests Seperated.esp:000903 (Favor Quests Seperated.esp). **script**
 
 **Who and where**
 
@@ -1089,7 +969,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 46. A Few Words with You (`Favor013Whiterun`, Favor Quests Seperated.esp:000869, Favor Quests Seperated.esp)
+## 40. A Few Words with You (`Favor013Whiterun`, Favor Quests Seperated.esp:000869, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1105,7 +985,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Mikael, placed in The Bannered Mare, "Maybe we can come to an understanding. (<BribeCost> gold)": SetStage 15 (when: fn654 == 1; the speaker is Mikael; the speaker is the one in alias target). Reply: "Bribing me? Well, a bard does need to eat. On my ancestor's honor, I won't trouble sweet Carlotta again." Source: TIF__000CA204.Fragment_1 on INFO Favor Quests Seperated.esp:0008B9 (Favor Quests Seperated.esp). **script**
 - Dialogue with Mikael, placed in The Bannered Mare, "You need to leave <Alias=QuestGiver> alone.": SetStage 15 (when: fn131 == 1; fn403 >= 1; A Few Words with You stage == 10; the speaker is Mikael; the speaker is the one in alias target). Reply: "Anything for my favorite lass." Source: TIF__000CD114.Fragment_0 on INFO Favor Quests Seperated.esp:0008BB (Favor Quests Seperated.esp). **script**
 - Dialogue with Mikael, placed in The Bannered Mare, "You need to leave <Alias=QuestGiver> alone.": SetStage 15 (when: fn131 == 1; fn403 >= 1; A Few Words with You stage == 10; the speaker is Mikael; the speaker is the one in alias target). Reply: "Oh? Were you after her yourself? I won't stand in your way, my friend. You have my word." Source: TIF__000CD116.Fragment_0 on INFO Favor Quests Seperated.esp:0008BC (Favor Quests Seperated.esp). **script**
-- Dialogue with Mikael, placed in The Bannered Mare, "She's not yours. Stop this nonsense. (Persuade)": SetStage 15 (when: the speaker is the one in alias target; the speaker is Mikael; GetActorValue >= SpeechEasy (now 25) or fn182 == 1). Reply: "Maybe you're right. I guess I just didn't want anyone to think I couldn't handle one lass." Source: TIF__000CD119.Fragment_1 on INFO Favor Quests Seperated.esp:0008C1 (Favor Quests Seperated.esp). **script**
+- Dialogue with Mikael, placed in The Bannered Mare, "She's not yours. Stop this nonsense. (Persuade)": SetStage 15 (when: the speaker is the one in alias target; the speaker is Mikael; GetActorValue >= SpeechEasy (now 25) or GetEquipped Skyrim.esm:0F759C == 1). Reply: "Maybe you're right. I guess I just didn't want anyone to think I couldn't handle one lass." Source: TIF__000CD119.Fragment_1 on INFO Favor Quests Seperated.esp:0008C1 (Favor Quests Seperated.esp). **script**
 
 **Who and where**
 
@@ -1119,7 +999,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 47. A Few Words with You (`Favor013Windhelm`, Favor Quests Seperated.esp:000878, Favor Quests Seperated.esp)
+## 41. A Few Words with You (`Favor013Windhelm`, Favor Quests Seperated.esp:000878, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1134,7 +1014,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Torbjorn Shatter-Shield, placed in House of Clan Shatter-Shield, "Pay them, or things will get ugly. (Intimidate)": SetStage 15 (when: the speaker is Torbjorn Shatter-Shield; the speaker is the one in alias target; fn655 == 1). Reply: "Easy. Maybe I was being too harsh on them. By the honor of Clan Shatter-Shield, they will be paid fairly. You have my word." Source: TIF__0003F067.Fragment_1 on INFO Favor Quests Seperated.esp:0008C6 (Favor Quests Seperated.esp). **script**
 - Dialogue with Torbjorn Shatter-Shield, placed in House of Clan Shatter-Shield, "What if I invest in their future? (<BribeCost> gold)": SetStage 15 (when: fn654 == 1; the speaker is Torbjorn Shatter-Shield; the speaker is the one in alias target). Reply: "Paying the wages yourself? Well, I won't say no to gold. By my family's honor, this money will go to the Argonian workers." Source: TIF__0003F160.Fragment_1 on INFO Favor Quests Seperated.esp:0008C8 (Favor Quests Seperated.esp). **script**
 - Dialogue with Torbjorn Shatter-Shield, placed in House of Clan Shatter-Shield, "You need to pay the Argonians a fair wage.": SetStage 15 (when: fn403 >= 1; A Few Words with You stage == 10; the speaker is Torbjorn Shatter-Shield; the speaker is the one in alias target). Reply: "Well, my friend, if you think those boots needs more coin, I'll make it happen. But I'm doing this for you, not them." Source: TIF__0003F07E.Fragment_0 on INFO Favor Quests Seperated.esp:0008CA (Favor Quests Seperated.esp). **script**
-- Dialogue with Torbjorn Shatter-Shield, placed in House of Clan Shatter-Shield, "They'll work harder if you pay them more. (Persuade)": SetStage 15 (when: the speaker is the one in alias target; the speaker is Torbjorn Shatter-Shield; GetActorValue >= SpeechEasy (now 25) or fn182 == 1). Reply: "Bold words, but true. Fine, you win. I'll pay the Argonians more coin." Source: TIF__0003F15A.Fragment_1 on INFO Favor Quests Seperated.esp:0008CF (Favor Quests Seperated.esp). **script**
+- Dialogue with Torbjorn Shatter-Shield, placed in House of Clan Shatter-Shield, "They'll work harder if you pay them more. (Persuade)": SetStage 15 (when: the speaker is the one in alias target; the speaker is Torbjorn Shatter-Shield; GetActorValue >= SpeechEasy (now 25) or GetEquipped Skyrim.esm:0F759C == 1). Reply: "Bold words, but true. Fine, you win. I'll pay the Argonians more coin." Source: TIF__0003F15A.Fragment_1 on INFO Favor Quests Seperated.esp:0008CF (Favor Quests Seperated.esp). **script**
 
 **Who and where**
 
@@ -1148,7 +1028,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 48. A Few Words with You (`Favor013Winterhold`, Favor Quests Seperated.esp:000887, Favor Quests Seperated.esp)
+## 42. A Few Words with You (`Favor013Winterhold`, Favor Quests Seperated.esp:000887, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1162,7 +1042,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Ranmir, placed in Birna's Oddments, Ranmir's House, "You ready to pay up now?": SetStage 15 (when: the speaker is Ranmir). Reply: "You got me, fair and square. Tell Haran I'll pay." Source: TIF__00094089.Fragment_0 on INFO Skyrim.esm:094089 (Favor Quests Seperated.esp). **script**
 - Dialogue with Ranmir, placed in Birna's Oddments, Ranmir's House, "Do it, or things get ugly. (Intimidate)": SetStage 15 (when: the speaker is Ranmir; the speaker is the one in alias target; fn655 == 1). Reply: "Calm down there, friend. I'll pay! Tell Haran that she'll have her gold." Source: TIF__000940CB.Fragment_1 on INFO Favor Quests Seperated.esp:0008D4 (Favor Quests Seperated.esp). **script**
 - Dialogue with Ranmir, placed in Birna's Oddments, Ranmir's House, "What if I pay it? (<BribeCost> gold)": SetStage 15 (when: fn654 == 1; the speaker is Ranmir; the speaker is the one in alias target). Reply: "I won't say no to that." Source: TIF__00094086.Fragment_1 on INFO Favor Quests Seperated.esp:0008D6 (Favor Quests Seperated.esp). **script**
-- Dialogue with Ranmir, placed in Birna's Oddments, Ranmir's House, "You owe her gold. Pay it. (Persuade)": SetStage 15 (when: the speaker is the one in alias target; the speaker is Ranmir; GetActorValue >= SpeechEasy (now 25) or fn182 == 1). Reply: "You're right. What would my forefathers think if they knew I wasn't paying my debts? Tell Haran I'll bring her the gold I owe." Source: TIF__00094041.Fragment_1 on INFO Favor Quests Seperated.esp:0008DC (Favor Quests Seperated.esp). **script**
+- Dialogue with Ranmir, placed in Birna's Oddments, Ranmir's House, "You owe her gold. Pay it. (Persuade)": SetStage 15 (when: the speaker is the one in alias target; the speaker is Ranmir; GetActorValue >= SpeechEasy (now 25) or GetEquipped Skyrim.esm:0F759C == 1). Reply: "You're right. What would my forefathers think if they knew I wasn't paying my debts? Tell Haran I'll bring her the gold I owe." Source: TIF__00094041.Fragment_1 on INFO Favor Quests Seperated.esp:0008DC (Favor Quests Seperated.esp). **script**
 
 **Who and where**
 
@@ -1176,7 +1056,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 49. Some Light Theft (`Favor018Falkreath`, Favor Quests Seperated.esp:000A0C, Favor Quests Seperated.esp)
+## 43. Some Light Theft (`Favor018Falkreath`, Favor Quests Seperated.esp:000A0C, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1200,7 +1080,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 50. Some Light Theft (`Favor018Windhelm`, Favor Quests Seperated.esp:000A1D, Favor Quests Seperated.esp)
+## 44. Some Light Theft (`Favor018Windhelm`, Favor Quests Seperated.esp:000A1D, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1224,7 +1104,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 51. Some Light Theft (`Favor018Winterhold`, Favor Quests Seperated.esp:000A14, Favor Quests Seperated.esp)
+## 45. Some Light Theft (`Favor018Winterhold`, Favor Quests Seperated.esp:000A14, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1248,7 +1128,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 52. Kill the Bandit Leader (`Favor104DarkwaterCrossing`, Favor Quests Seperated.esp:000B3E, Favor Quests Seperated.esp)
+## 46. Kill the Bandit Leader (`Favor104DarkwaterCrossing`, Favor Quests Seperated.esp:000B3E, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1272,7 +1152,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 53. Kill the Bandit Leader (`Favor104SkaalVillage`, Favor Quests Seperated.esp:000B50, Favor Quests Seperated.esp)
+## 47. Kill the Bandit Leader (`Favor104SkaalVillage`, Favor Quests Seperated.esp:000B50, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1296,7 +1176,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 54. Kill the Bandit Leader (`Favor104Solitude`, Favor Quests Seperated.esp:000B34, Favor Quests Seperated.esp)
+## 48. Kill the Bandit Leader (`Favor104Solitude`, Favor Quests Seperated.esp:000B34, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1320,7 +1200,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 55. Kill the Bandit Leader (`Favor104Windhelm`, Favor Quests Seperated.esp:000B47, Favor Quests Seperated.esp)
+## 49. Kill the Bandit Leader (`Favor104Windhelm`, Favor Quests Seperated.esp:000B47, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1344,7 +1224,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 56. Rare Gifts (`Favor110Dawnstar`, Favor Quests Seperated.esp:000D7E, Favor Quests Seperated.esp)
+## 50. Rare Gifts (`Favor110Dawnstar`, Favor Quests Seperated.esp:000D7E, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1364,7 +1244,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 57. Rare Gifts (`Favor110Falkreath`, Favor Quests Seperated.esp:000D86, Favor Quests Seperated.esp)
+## 51. Rare Gifts (`Favor110Falkreath`, Favor Quests Seperated.esp:000D86, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1384,7 +1264,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 58. Rare Gifts (`Favor110Morthal`, Favor Quests Seperated.esp:000D76, Favor Quests Seperated.esp)
+## 52. Rare Gifts (`Favor110Morthal`, Favor Quests Seperated.esp:000D76, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1404,7 +1284,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 59. Rare Gifts (`Favor110Solitude`, Favor Quests Seperated.esp:000D6E, Favor Quests Seperated.esp)
+## 53. Rare Gifts (`Favor110Solitude`, Favor Quests Seperated.esp:000D6E, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1424,7 +1304,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 60. Rare Gifts (`Favor110Whiterun`, Favor Quests Seperated.esp:000D97, Favor Quests Seperated.esp)
+## 54. Rare Gifts (`Favor110Whiterun`, Favor Quests Seperated.esp:000D97, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1444,7 +1324,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 61. Rare Gifts (`Favor110Windhelm`, Favor Quests Seperated.esp:000D8F, Favor Quests Seperated.esp)
+## 55. Rare Gifts (`Favor110Windhelm`, Favor Quests Seperated.esp:000D8F, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1464,7 +1344,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 62. Dungeon Delving (Bandits) (`Favor204Whiterun`, Favor Quests Seperated.esp:000DB9, Favor Quests Seperated.esp)
+## 56. Dungeon Delving (Bandits) (`Favor204Whiterun`, Favor Quests Seperated.esp:000DB9, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1488,7 +1368,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 63. Dungeon Delving (Bandits) (`Favor204Windhelm`, Favor Quests Seperated.esp:000DC2, Favor Quests Seperated.esp)
+## 57. Dungeon Delving (Bandits) (`Favor204Windhelm`, Favor Quests Seperated.esp:000DC2, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1512,7 +1392,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 64. Dungeon Delving (Caves) (`Favor205Dawnstar`, Favor Quests Seperated.esp:000DD5, Favor Quests Seperated.esp)
+## 58. Dungeon Delving (Caves) (`Favor205Dawnstar`, Favor Quests Seperated.esp:000DD5, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1536,7 +1416,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 65. Dungeon Delving (Caves) (`Favor205Falkreath`, Favor Quests Seperated.esp:000DF9, Favor Quests Seperated.esp)
+## 59. Dungeon Delving (Caves) (`Favor205Falkreath`, Favor Quests Seperated.esp:000DF9, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1560,7 +1440,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 66. Dungeon Delving (Caves) (`Favor205Kynesgrove`, Favor Quests Seperated.esp:000DF0, Favor Quests Seperated.esp)
+## 60. Dungeon Delving (Caves) (`Favor205Kynesgrove`, Favor Quests Seperated.esp:000DF0, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1584,7 +1464,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 67. Dungeon Delving (Caves) (`Favor205Solitude`, Favor Quests Seperated.esp:000DDE, Favor Quests Seperated.esp)
+## 61. Dungeon Delving (Caves) (`Favor205Solitude`, Favor Quests Seperated.esp:000DDE, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1608,7 +1488,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 68. Dungeon Delving (Caves) (`Favor205Windhelm`, Favor Quests Seperated.esp:000DE7, Favor Quests Seperated.esp)
+## 62. Dungeon Delving (Caves) (`Favor205Windhelm`, Favor Quests Seperated.esp:000DE7, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1632,18 +1512,18 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 69. Bounty: Bandit Boss (`BQ01`, Skyrim.esm:095125, Requiem.esp)
+## 63. Bounty: Bandit Boss (`BQ01`, Skyrim.esm:095125, Requiem.esp)
 
 **Started by**
 
 - Dialogue with someone the line does not name (named by alias Steward of BQ01 (Bounty: Bandit Boss) (run time)), "I'm looking for work. Got any leads?": SetStage 10 (when: Bounty: Bandit Boss stage 10 not done; the speaker is the one in alias Steward). Source: TIF__00095123.Fragment_0 on INFO Skyrim.esm:095123 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with someone the line does not name (named by alias Innkeeper of BQ01 (Bounty: Bandit Boss) (run time)), "I'm looking for work. Got any leads?": SetStage 10 (when: Bounty: Bandit Boss stage 10 not done; the speaker is the one in alias Innkeeper). Source: TIF__000CBA96.Fragment_0 on INFO Skyrim.esm:0CBA96 (Skyrim.esm). **script**
-- Story manager node BQReachNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQReachNodeSHARES Skyrim.esm:0CBAA9 (Requiem.esp). **files**
-- Story manager node BQRiftNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQRiftNodeSHARES Skyrim.esm:0CBAA7 (Requiem.esp). **files**
-- Story manager node BQEastmarchNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQEastmarchNodeSHARES Skyrim.esm:0CBAA6 (Requiem.esp). **files**
-- Story manager node BQWinterholdNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQWinterholdNodeSHARES Skyrim.esm:0CBAA5 (Requiem.esp). **files**
-- Story manager node BQFalkreathNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQFalkreathNodeSHARES Skyrim.esm:0CBAA4 (Requiem.esp). **files**
-- Story manager node BQPaleNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQPaleNodeSHARES Skyrim.esm:0CBAA3 (Requiem.esp). **files**
+- Story manager node BQReachNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in The Reach; fn606 == 0; the place you enter is a habitation. Source: BQReachNodeSHARES Skyrim.esm:0CBAA9 (Requiem.esp). **files**
+- Story manager node BQRiftNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in The Rift; fn606 == 0; the place you enter is a habitation. Source: BQRiftNodeSHARES Skyrim.esm:0CBAA7 (Requiem.esp). **files**
+- Story manager node BQEastmarchNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in Eastmarch; fn606 == 0; the place you enter is a habitation. Source: BQEastmarchNodeSHARES Skyrim.esm:0CBAA6 (Requiem.esp). **files**
+- Story manager node BQWinterholdNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in Winterhold; fn606 == 0; the place you enter is a habitation. Source: BQWinterholdNodeSHARES Skyrim.esm:0CBAA5 (Requiem.esp). **files**
+- Story manager node BQFalkreathNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in Falkreath; fn606 == 0; the place you enter is a habitation. Source: BQFalkreathNodeSHARES Skyrim.esm:0CBAA4 (Requiem.esp). **files**
+- Story manager node BQPaleNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in The Pale; fn606 == 0; the place you enter is a habitation. Source: BQPaleNodeSHARES Skyrim.esm:0CBAA3 (Requiem.esp). **files**
 - and 3 more in the JSON
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -1663,18 +1543,18 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 70. Bounty: Forsworn (`BQ02`, Skyrim.esm:0BD77F, Requiem.esp)
+## 64. Bounty: Forsworn (`BQ02`, Skyrim.esm:0BD77F, Requiem.esp)
 
 **Started by**
 
 - Dialogue with someone the line does not name (named by alias Steward of BQ02 (Bounty: Forsworn) (run time)), "I'm looking for work. Got any leads?": SetStage 10 (when: Bounty: Forsworn stage 10 not done; the speaker is the one in alias Steward). Source: TIF__000BD752.Fragment_1 on INFO Skyrim.esm:0BD752 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with someone the line does not name (named by alias Innkeeper of BQ02 (Bounty: Forsworn) (run time)), "I'm looking for work. Got any leads?": SetStage 10 (when: Bounty: Forsworn stage 10 not done; the speaker is the one in alias Innkeeper). Source: TIF__000CBA94.Fragment_0 on INFO Skyrim.esm:0CBA94 (Skyrim.esm). **script**
-- Story manager node BQReachNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQReachNodeSHARES Skyrim.esm:0CBAA9 (Requiem.esp). **files**
-- Story manager node BQRiftNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQRiftNodeSHARES Skyrim.esm:0CBAA7 (Requiem.esp). **files**
-- Story manager node BQEastmarchNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQEastmarchNodeSHARES Skyrim.esm:0CBAA6 (Requiem.esp). **files**
-- Story manager node BQWinterholdNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQWinterholdNodeSHARES Skyrim.esm:0CBAA5 (Requiem.esp). **files**
-- Story manager node BQFalkreathNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQFalkreathNodeSHARES Skyrim.esm:0CBAA4 (Requiem.esp). **files**
-- Story manager node BQPaleNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQPaleNodeSHARES Skyrim.esm:0CBAA3 (Requiem.esp). **files**
+- Story manager node BQReachNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in The Reach; fn606 == 0; the place you enter is a habitation. Source: BQReachNodeSHARES Skyrim.esm:0CBAA9 (Requiem.esp). **files**
+- Story manager node BQRiftNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in The Rift; fn606 == 0; the place you enter is a habitation. Source: BQRiftNodeSHARES Skyrim.esm:0CBAA7 (Requiem.esp). **files**
+- Story manager node BQEastmarchNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in Eastmarch; fn606 == 0; the place you enter is a habitation. Source: BQEastmarchNodeSHARES Skyrim.esm:0CBAA6 (Requiem.esp). **files**
+- Story manager node BQWinterholdNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in Winterhold; fn606 == 0; the place you enter is a habitation. Source: BQWinterholdNodeSHARES Skyrim.esm:0CBAA5 (Requiem.esp). **files**
+- Story manager node BQFalkreathNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in Falkreath; fn606 == 0; the place you enter is a habitation. Source: BQFalkreathNodeSHARES Skyrim.esm:0CBAA4 (Requiem.esp). **files**
+- Story manager node BQPaleNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in The Pale; fn606 == 0; the place you enter is a habitation. Source: BQPaleNodeSHARES Skyrim.esm:0CBAA3 (Requiem.esp). **files**
 - and 3 more in the JSON
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -1694,18 +1574,18 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 71. Bounty: Giant (`BQ03`, Skyrim.esm:0BD78C, Requiem.esp)
+## 65. Bounty: Giant (`BQ03`, Skyrim.esm:0BD78C, Requiem.esp)
 
 **Started by**
 
 - Dialogue with someone the line does not name (named by alias Steward of BQ03 (Bounty: Giant) (run time)), "I'm looking for work. Got any leads?": SetStage 10 (when: Bounty: Giant stage 10 not done; the speaker is the one in alias Steward). Source: TIF__000BD734.Fragment_0 on INFO Skyrim.esm:0BD734 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with someone the line does not name (named by alias Innkeeper of BQ03 (Bounty: Giant) (run time)), "I'm looking for work. Got any leads?": SetStage 10 (when: Bounty: Giant stage 10 not done; the speaker is the one in alias Innkeeper). Source: TIF__000CBA92.Fragment_0 on INFO Skyrim.esm:0CBA92 (Skyrim.esm). **script**
-- Story manager node BQReachNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQReachNodeSHARES Skyrim.esm:0CBAA9 (Requiem.esp). **files**
-- Story manager node BQRiftNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQRiftNodeSHARES Skyrim.esm:0CBAA7 (Requiem.esp). **files**
-- Story manager node BQEastmarchNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQEastmarchNodeSHARES Skyrim.esm:0CBAA6 (Requiem.esp). **files**
-- Story manager node BQWinterholdNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQWinterholdNodeSHARES Skyrim.esm:0CBAA5 (Requiem.esp). **files**
-- Story manager node BQFalkreathNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQFalkreathNodeSHARES Skyrim.esm:0CBAA4 (Requiem.esp). **files**
-- Story manager node BQPaleNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQPaleNodeSHARES Skyrim.esm:0CBAA3 (Requiem.esp). **files**
+- Story manager node BQReachNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in The Reach; fn606 == 0; the place you enter is a habitation. Source: BQReachNodeSHARES Skyrim.esm:0CBAA9 (Requiem.esp). **files**
+- Story manager node BQRiftNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in The Rift; fn606 == 0; the place you enter is a habitation. Source: BQRiftNodeSHARES Skyrim.esm:0CBAA7 (Requiem.esp). **files**
+- Story manager node BQEastmarchNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in Eastmarch; fn606 == 0; the place you enter is a habitation. Source: BQEastmarchNodeSHARES Skyrim.esm:0CBAA6 (Requiem.esp). **files**
+- Story manager node BQWinterholdNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in Winterhold; fn606 == 0; the place you enter is a habitation. Source: BQWinterholdNodeSHARES Skyrim.esm:0CBAA5 (Requiem.esp). **files**
+- Story manager node BQFalkreathNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in Falkreath; fn606 == 0; the place you enter is a habitation. Source: BQFalkreathNodeSHARES Skyrim.esm:0CBAA4 (Requiem.esp). **files**
+- Story manager node BQPaleNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in The Pale; fn606 == 0; the place you enter is a habitation. Source: BQPaleNodeSHARES Skyrim.esm:0CBAA3 (Requiem.esp). **files**
 - and 3 more in the JSON
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -1725,18 +1605,18 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 72. Bounty: Dragon (`BQ04`, Skyrim.esm:0CBA9A, Requiem.esp)
+## 66. Bounty: Dragon (`BQ04`, Skyrim.esm:0CBA9A, Requiem.esp)
 
 **Started by**
 
 - Dialogue with someone the line does not name (named by alias Steward of BQ04 (Bounty: Dragon) (run time)), "I'm looking for work. Got any leads?": SetStage 10 (when: Bounty: Dragon stage 10 not done; the speaker is the one in alias Steward). Source: TIF__000CBA97.Fragment_0 on INFO Skyrim.esm:0CBA97 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with someone the line does not name (named by alias Innkeeper of BQ04 (Bounty: Dragon) (run time)), "I'm looking for work. Got any leads?": SetStage 10 (when: Bounty: Dragon stage 10 not done; the speaker is the one in alias Innkeeper). Source: TIF__000CBA98.Fragment_0 on INFO Skyrim.esm:0CBA98 (Skyrim.esm). **script**
-- Story manager node BQReachNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQReachNodeSHARES Skyrim.esm:0CBAA9 (Requiem.esp). **run time**
-- Story manager node BQRiftNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQRiftNodeSHARES Skyrim.esm:0CBAA7 (Requiem.esp). **run time**
-- Story manager node BQEastmarchNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQEastmarchNodeSHARES Skyrim.esm:0CBAA6 (Requiem.esp). **run time**
-- Story manager node BQWinterholdNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQWinterholdNodeSHARES Skyrim.esm:0CBAA5 (Requiem.esp). **run time**
-- Story manager node BQFalkreathNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQFalkreathNodeSHARES Skyrim.esm:0CBAA4 (Requiem.esp). **run time**
-- Story manager node BQPaleNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; fn359 == 1; fn606 == 0; the place you enter is a habitation. Source: BQPaleNodeSHARES Skyrim.esm:0CBAA3 (Requiem.esp). **run time**
+- Story manager node BQReachNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in The Reach; fn606 == 0; the place you enter is a habitation. Source: BQReachNodeSHARES Skyrim.esm:0CBAA9 (Requiem.esp). **run time**
+- Story manager node BQRiftNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in The Rift; fn606 == 0; the place you enter is a habitation. Source: BQRiftNodeSHARES Skyrim.esm:0CBAA7 (Requiem.esp). **run time**
+- Story manager node BQEastmarchNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in Eastmarch; fn606 == 0; the place you enter is a habitation. Source: BQEastmarchNodeSHARES Skyrim.esm:0CBAA6 (Requiem.esp). **run time**
+- Story manager node BQWinterholdNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in Winterhold; fn606 == 0; the place you enter is a habitation. Source: BQWinterholdNodeSHARES Skyrim.esm:0CBAA5 (Requiem.esp). **run time**
+- Story manager node BQFalkreathNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in Falkreath; fn606 == 0; the place you enter is a habitation. Source: BQFalkreathNodeSHARES Skyrim.esm:0CBAA4 (Requiem.esp). **run time**
+- Story manager node BQPaleNodeSHARES, event: change location; conditions up its parents: the place you enter is a habitation; you're in The Pale; fn606 == 0; the place you enter is a habitation. Source: BQPaleNodeSHARES Skyrim.esm:0CBAA3 (Requiem.esp). **run time**
 - and 3 more in the JSON
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
@@ -1758,7 +1638,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 73. Kill the Bandit Leader (`Favor104`, Skyrim.esm:06FD35, Favor Quests Seperated.esp)
+## 67. Kill the Bandit Leader (`Favor104`, Skyrim.esm:06FD35, Favor Quests Seperated.esp)
 
 **Started by**
 
@@ -1785,7 +1665,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 74. Kill the Vampire (`Favor109`, Skyrim.esm:0940E0, TimingIsEverything.esp)
+## 68. Kill the Vampire (`Favor109`, Skyrim.esm:0940E0, TimingIsEverything.esp)
 
 **Started by**
 
@@ -1810,7 +1690,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 75. Kill the Forsworn Leader (Jarl) (`Favor151`, Skyrim.esm:06C824, Skyrim.esm)
+## 69. Kill the Forsworn Leader (Jarl) (`Favor151`, Skyrim.esm:06C824, Skyrim.esm)
 
 **Started by**
 
@@ -1834,7 +1714,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 76. Kill the Giant (Jarl) (`Favor153`, Skyrim.esm:090E36, TimingIsEverything.esp)
+## 70. Kill the Giant (Jarl) (`Favor153`, Skyrim.esm:090E36, TimingIsEverything.esp)
 
 **Started by**
 
@@ -1859,7 +1739,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 77. Kill the Bandit Leader (Jarl) (`Favor154`, Skyrim.esm:07172A, Skyrim.esm)
+## 71. Kill the Bandit Leader (Jarl) (`Favor154`, Skyrim.esm:07172A, Skyrim.esm)
 
 **Started by**
 
@@ -1883,7 +1763,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: nothing on its completing stages.
 
-## 78. Dungeon Delving (Jarl - Hagravens) (`Favor157`, Skyrim.esm:0A3504, Requiem.esp)
+## 72. Dungeon Delving (Jarl - Hagravens) (`Favor157`, Skyrim.esm:0A3504, Requiem.esp)
 
 **Started by**
 
@@ -1907,7 +1787,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Gives**: REQ_LI_Reward_Quest_JarlHagraven (levelled: an item) (stage 20, QF_Favor157_000A3504.fragment_1).
 
-## 79. Dungeon Delving (Jarl - Caves) (`Favor158`, Skyrim.esm:0940D0, Update.esm)
+## 73. Dungeon Delving (Jarl - Caves) (`Favor158`, Skyrim.esm:0940D0, Update.esm)
 
 **Started by**
 
@@ -2093,39 +1973,39 @@ Each start's option is a quest; what its scripts do to the main quest, and how a
 
 **Does Dragonborn's cultist node read Timing is Everything's level (25 in its settings.ini), or something else?** Timing is Everything's setting iTIE_MinimumLevel:Dragonborn = 25 (settings.ini in Timing is Everything SE - Settings Loader).
 
-- Node DLC2CultistAmbushNode001 (LoreRim - Global Modifiers.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode001 (LoreRim - Global Modifiers.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode002 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode002 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode003 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode003 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode004 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode004 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode005 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode005 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode006 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode006 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode007 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode007 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode008 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode008 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
-- Node DLC2CultistAmbushNode000 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
+- Node DLC2CultistAmbushNode000 (TimingIsEverything.esp), event change location: level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0).
   - DLC2CultistAttackMinLevel_KRY: record 25.0 (TimingIsEverything.esp); TimingIsEverything iTIE_MinimumLevel:Dragonborn = 25 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **files**
   - DLC2QuestStartSelection_KRY: record 1.0 (TimingIsEverything.esp); TimingIsEverything iStartingQuest:Dragonborn = 1 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it; TimingIsEverything iStartingQuestRandomID:Dragonborn = 0 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **conflict**
   - DLC2WE09Chance: record 0.0 (LoreRim - Global Modifiers.esp, was 100.0 in Dragonborn.esm); in play: DLC2_QF_DLC2WE09_020331C0.fragment_5 sets it to 5; DLC2_QF_DLC2CultistAmbush_0203546D.fragment_0 sets it to 5; EE_MCMScript.OnOptionSliderAccept sets it to a value it works out; TimingIsEverything iTIE_CultistAttackChance:Dragonborn = 5 in settings.ini in Timing is Everything SE - Settings Loader, but the winning TIE_MCMScript (C:/LoreRim\mods\[LoreRim] - SPID Files and Script Overwrites\scripts\tie_mcmscript.pex, extends SKI_ConfigBase) doesn't read it. **run time**
@@ -2140,4 +2020,4 @@ Settings loaders the story's globals touch, and whether the script the game runs
 - Timing is Everything: Dragonborn level setting 25 (settings.ini in Timing is Everything SE - Settings Loader), meant for DLC2CultistAttackMinLevel_KRY (record 25.0 from TimingIsEverything.esp; in game 25.0; **files**).
 - Wyrmstooth: WTStartLevel is 10 in a new game (record 20.0 in Requiem - Wyrmstooth.esp). Why: OnConfigInit runs once when the menu registers in a new game; it sets `migrated` and calls LoadSettings, which goes on only while bEnabled:Maintenance is set (it is 1) and then calls Load, which reads iWTGeneralRequirementsMinimalLevel:Requirements (10, settings.ini in Wyrmstooth - Settings Loader) and sets WTStartLevel to it; MigrateToMCMHelper, which would copy the global's record value (20.0) into that setting, runs only from OnGameReload or OnConfigOpen while `migrated` is false, and OnConfigInit has already set it, so a new game never migrates (an older save made before the loader would); OnGameReload reloads the settings only when bLoadSettingsonReload:Maintenance is set; it is 0, so later loads keep whatever the global holds. Source: WT_MCMScript (C:/LoreRim\mods\Wyrmstooth - Settings Loader\Scripts\WT_MCMScript.pex). **run time**
 
-Scripts the records name that aren't in the install (259); calls inside them can't be read. Full list in the JSON.
+Scripts the records name that aren't in the install (30); calls inside them can't be read. Full list in the JSON.

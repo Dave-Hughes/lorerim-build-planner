@@ -112,6 +112,12 @@
     "source": "Skyrim Extended Cut - Saints and Seducers.esp:099D1B QOBJ 5",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "5": 10,
+    "10": 10,
+    "20": 20,
+    "40": 40
+   },
    "target": [],
    "needs": {
     "conditions": "the speaker is Sees-the-Moon",
@@ -161,6 +167,10 @@
     "source": "Skyrim Extended Cut - Saints and Seducers.esp:099D18 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 1,
+    "20": 10
+   },
    "target": [
     {
      "alias": "Wastework",
@@ -180,7 +190,7 @@
     }
    ],
    "needs": {
-    "conditions": "the speaker is Staada; the place you enter is Solitude; fn629 == 1; level >= EC_SS_StartLevel (now 20)",
+    "conditions": "the speaker is Staada; the place you enter is Solitude; GetVMQuestVariable EC_SS_Initializer == 1; level >= EC_SS_StartLevel (now 20)",
     "doors": [],
     "ways": [
      {
@@ -228,7 +238,26 @@
      "atStage": 100,
      "call": "SetStage 0",
      "source": "QF_EC_SS_MQ100Int_07099D18.fragment_3 on Skyrim Extended Cut - Saints and Seducers.esp:099D18 (Skyrim Extended Cut - Saints and Seducers.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Staada",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Solitude Wasteworks, Root to Nirn"
+       ],
+       "call": "SetStage 100",
+       "info": "Skyrim Extended Cut - Saints and Seducers.esp:0BD5A7",
+       "prompt": "All right. I'll help you, Staada.",
+       "reply": [
+        "You are about to be given a rare honor, mortal. Follow, then... into the isles."
+       ],
+       "conditions": "the speaker is Staada; The Route of Madness stage == 30 or The Route of Madness stage == 35",
+       "source": "TopicInfoSetStage.EndFragment on INFO Skyrim Extended Cut - Saints and Seducers.esp:0BD5A7 (Skyrim Extended Cut - Saints and Seducers.esp)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -238,6 +267,14 @@
     "index": 0,
     "source": "Skyrim Extended Cut - Saints and Seducers.esp:099D19 QOBJ 0",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "0": 0,
+    "1": 1,
+    "15": 15,
+    "20": 20,
+    "35": 35,
+    "45": 45
    },
    "target": [
     {
@@ -296,7 +333,24 @@
      "atStage": 52,
      "call": "SetStage 52",
      "source": "QF_EC_SS_MQ101_07099D19.fragment_21 on Skyrim Extended Cut - Saints and Seducers.esp:099D19 (Skyrim Extended Cut - Saints and Seducers.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Staada",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Solitude Wasteworks, Root to Nirn"
+       ],
+       "call": "SetStage 52",
+       "info": "Skyrim Extended Cut - Saints and Seducers.esp:0E0D0B",
+       "prompt": null,
+       "reply": [],
+       "conditions": "The Isle of Madness stage == 51; the speaker is Staada",
+       "source": "TopicInfoSetStage.EndFragment on INFO Skyrim Extended Cut - Saints and Seducers.esp:0E0D0B (Skyrim Extended Cut - Saints and Seducers.esp)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -306,6 +360,15 @@
     "index": 49,
     "source": "Skyrim Extended Cut - Saints and Seducers.esp:09EF5F QOBJ 49",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "49": 52,
+    "50": 52,
+    "65": 64,
+    "66": 66,
+    "67": 67,
+    "70": 70,
+    "90": 90
    },
    "target": [],
    "needs": {
@@ -410,6 +473,12 @@
     "source": "Skyrim Extended Cut - Saints and Seducers.esp:099D1A QOBJ 5",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "5": 10,
+    "10": 10,
+    "20": 20,
+    "40": 40
+   },
    "target": [],
    "needs": {
     "conditions": "the speaker is Theodor Gorlash",
@@ -454,6 +523,7 @@
     "source": "ccbgssse025-advdsgs.esm:0010C0 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [
     {
      "alias": "ElytraDementia",
@@ -515,6 +585,9 @@
     "index": 10,
     "source": "ccbgssse025-advdsgs.esm:0010C3 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10
    },
    "target": [
     {
@@ -1902,7 +1975,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode002",
@@ -1995,7 +2068,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode003",
@@ -2088,7 +2161,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode004",
@@ -2181,7 +2254,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode005",
@@ -2274,7 +2347,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode006",
@@ -2367,7 +2440,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode007",
@@ -2460,7 +2533,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode008",
@@ -2553,7 +2626,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode000",
@@ -2646,7 +2719,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     }
    ],
    "tieSetting": {

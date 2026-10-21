@@ -10,6 +10,24 @@
    "firstObjectiveStage": 10,
    "startedBy": [
     {
+     "by": "book",
+     "book": "Deed to Bluesky Hall",
+     "bookId": "SurWR.esp:08B418",
+     "call": "SetStage 10",
+     "plain": "Read Deed to Bluesky Hall",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK SurWR.esp:08B418",
+     "verdict": "script"
+    },
+    {
+     "by": "book",
+     "book": "A reward in gold!",
+     "bookId": "SurWR.esp:0E1E87",
+     "call": "SetStage 10",
+     "plain": "Read A reward in gold!",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK SurWR.esp:0E1E87",
+     "verdict": "script"
+    },
+    {
      "by": "start game",
      "source": "SurWR.esp:09A75A DNAM (SurWR.esp)",
      "verdict": "files"
@@ -22,6 +40,9 @@
     "index": 10,
     "source": "SurWR.esp:09A75A QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10
    },
    "target": [],
    "needs": {
@@ -42,6 +63,7 @@
    "caughtUpBy": [],
    "advancedBy": 9,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -62,6 +84,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -82,6 +105,7 @@
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": null,
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -101,9 +125,11 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
-     "speakerNamed": "GetIsID",
-     "speakerPlaced": [],
+     "speaker": "Giant Chieftain",
+     "speakerNamed": "the one follower in 0WRGiantQuest (Ode To The Tundrastriders)'s aliases",
+     "speakerPlaced": [
+      "Bleakwind Basin"
+     ],
      "call": "SetStage 5",
      "info": "SurWR.esp:2F7028",
      "prompt": "Anything new happening around town?",
@@ -115,18 +141,40 @@
      "verdict": "script"
     },
     {
+     "by": "book",
+     "book": "Jarl's Bounty: Giant",
+     "bookId": "SurWR.esp:2F1F15",
+     "call": "SetStage 10",
+     "plain": "Read Jarl's Bounty: Giant",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK SurWR.esp:2F1F15",
+     "verdict": "script"
+    },
+    {
      "by": "start game",
      "source": "SurWR.esp:2ECDA4 DNAM (SurWR.esp)",
      "verdict": "files"
     }
    ],
    "caughtUpBy": [],
-   "advancedBy": 12,
+   "advancedBy": 13,
    "firstObjective": {
     "text": "Deal with the Giant outside Whiterun",
     "index": 10,
     "source": "SurWR.esp:2ECDA4 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "11": 10,
+    "14": 12,
+    "15": 13,
+    "16": 14,
+    "17": 15,
+    "18": 16,
+    "19": 17,
+    "20": 18,
+    "30": 19,
+    "100": 100
    },
    "target": [
     {
@@ -184,7 +232,17 @@
    "name": "Running Wild",
    "plugin": "SurWR.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "book",
+     "book": "The Palonimo Mare",
+     "bookId": "SurWR.esp:0D2ACB",
+     "call": "SetStage 10",
+     "plain": "Read The Palonimo Mare",
+     "source": "DefaultOnReadSetQuestStageNotAlias.onRead on BOOK SurWR.esp:0D2ACB",
+     "verdict": "script"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 3,
    "firstObjective": {
@@ -192,6 +250,11 @@
     "index": 10,
     "source": "SurWR.esp:0D2AD7 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30
    },
    "target": [
     {
@@ -247,8 +310,7 @@
     "stage": 20,
     "movedBy": [],
     "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "SurWR.esp:31ABC1",
@@ -304,6 +366,10 @@
     "index": 10,
     "source": "SurWR.esp:31ABC1 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -400,12 +466,24 @@
     }
    ],
    "caughtUpBy": [],
-   "advancedBy": 6,
+   "advancedBy": 7,
    "firstObjective": {
     "text": "TEST",
     "index": 10,
     "source": "SurWR.esp:3436A3 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "15": 15,
+    "20": 20,
+    "25": 25,
+    "26": 26,
+    "27": 26,
+    "30": 30,
+    "35": 35,
+    "45": 45,
+    "50": 50,
+    "60": 60
    },
    "target": [],
    "needs": {
@@ -1563,7 +1641,18 @@
   }
  ],
  "otherStarts": "To get into Whiterun, expanded: Bluesky Hall is running from the start: Inspect your new property, the Key seems to be wrapped inside the Deed; or Skirmish at Whitewatch is running from the start: TEST.",
- "routes": [],
+ "routes": [
+  {
+   "route": null,
+   "kind": "quest script",
+   "does": "stage None: SetStage 10",
+   "startedBy": [],
+   "inStartMenu": false,
+   "source": "DefaultOnReadSetQuestStageNotAlias on None (?)",
+   "stops": "nothing in the records or scripts starts None, and Alternate Perspective's start menu in LoreRim doesn't offer it",
+   "sentence": "The trail stops at None: nothing in the records or scripts starts None, and Alternate Perspective's start menu in LoreRim doesn't offer it."
+  }
+ ],
  "loaders": {
   "Wyrmstooth": {
    "quest": "Wyrmstooth.esp:AC1487",
@@ -1711,7 +1800,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode002",
@@ -1804,7 +1893,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode003",
@@ -1897,7 +1986,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode004",
@@ -1990,7 +2079,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode005",
@@ -2083,7 +2172,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode006",
@@ -2176,7 +2265,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode007",
@@ -2269,7 +2358,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode008",
@@ -2362,7 +2451,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode000",
@@ -2455,7 +2544,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     }
    ],
    "tieSetting": {

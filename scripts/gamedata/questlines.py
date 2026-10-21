@@ -14,6 +14,10 @@ questlines.json lists each curated line with
   opening    the quest whose first journal entry says how the line begins. Default: the first raw
              line's opening, else the first quest. "begins": false when the text is no use (a
              modder's note that happens to read as a sentence).
+  alsoOpening other quests that open the line as much as `opening` does (the Civil War's two sides, the
+             townsfolk's six deliveries): the line has no one giver, and its ways in are each opening's.
+  giver      {name, place} a judged source names when the records can't (Raven Rock: Captain Veleth, whom
+             DLC2Init sets fighting at Old Attius Farm); `checked.giver` says which source.
   category   its home: one of the six `categories`, or a `shelves` entry (repeatable work)
   also       other categories it belongs in (Vigilant: guilds, and Daedric for Molag Bal)
   start, gate, minLevel, level, size, note, after: facts the records don't hold, from the field
@@ -185,6 +189,9 @@ def curate(quests, raw_lines, cur):
             opening = by_id[raw[line["lines"][0]]["opening"]]
         else:
             opening = order[0]
+        for e in line.get("alsoOpening", []):
+            if by_edid.get(e) not in order:
+                problems.append(f"{line['id']}: also opens with {e}, which isn't one of its quests")
         if line.get("begins") is False:
             text, how = None, None
         else:
@@ -206,7 +213,7 @@ def curate(quests, raw_lines, cur):
             "after": line.get("after", []),
             "checked": line.get("checked", {}),
         }
-        for k in FACTS:
+        for k in FACTS + ("alsoOpening", "giver"):
             if k in line:
                 item[k] = line[k]
         out.append(item)

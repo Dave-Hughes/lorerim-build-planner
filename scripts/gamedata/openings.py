@@ -60,7 +60,13 @@ def start_words(s):
         said = f': "{s["prompt"]}"' if s.get("prompt") else "."
         reply = f' Reply: "{s["reply"][0]}"' if s.get("reply") else ""
         when = f" When: {s['conditions']}." if s.get("conditions") else ""
-        return f"**{who}**{named}{where}{said}{reply} Does: {s['call']}.{when} Record: {s['source']}."
+        # A rumour first (WO-121b rule 4): the quest whose stage sets the variable the line needs, and what starts it.
+        after = "".join(f" Needs {r['quest']}'s stage {r['atStage']} first (it sets {r['sets']}), which starts from: "
+                        + ("; ".join(start_words(u).rsplit(" Record:", 1)[0] for u in r["startedBy"]) or "nothing in the records or scripts") + "."
+                        for r in s.get("after", []))
+        return f"**{who}**{named}{where}{said}{reply} Does: {s['call']}.{when}{after} Record: {s['source']}."
+    if s["by"] == "book":
+        return f"**{s['plain']}** Its script: {s['call']}. Record: {s['source']}."
     if s["by"] == "by itself":
         return f"**{s['plain']}** Its own script: {s['call']}. Record: {s['source']}."
     if s["by"] == "story manager":
@@ -81,6 +87,10 @@ def start_words(s):
                 ups.append(u.get("quest") or u["by"])
         if "throughStartedBy" in s:
             text += f" That one starts from: {'; '.join(ups) if ups else 'nothing in the records or scripts'}."
+        if s.get("messenger"):
+            text += f" Its Messenger alias holds {s['messenger']}."
+        if s.get("throughStage"):  # the talks that set the stage it starts at (WO-121b: Legate Rikke)
+            text += " That stage is set by: " + "; ".join(start_words(u).rsplit(" Record:", 1)[0] for u in s["throughStage"]) + "."
         return text + f" Record: {s['source']}."
     return f"**It runs from the start of the game** (the start-game flag). Record: {s['source']}."
 
@@ -117,6 +127,11 @@ def line_section(line, row, quest, globals_):
             else f"First step: none in its records (journal stage {row['firstObjectiveStage']})."]
     page = (quest or {}).get("start") or {}
     said = page.get("who") and f"{page['who']}" + (f", {page['where']}" if page.get("where") else "")
+    if line.get("giver") and not said:  # a giver a judged source names (WO-121b: Raven Rock)
+        said = line["giver"]["name"] + (f", {line['giver']['place']}" if line["giver"].get("place") else "") + (f" ({line['giver']['source']})" if line["giver"].get("source") else "")
+    if line.get("ways"):  # more than one opening (WO-121b): the line's ways in, one per opening
+        said = None
+        out.append("The page's ways in: " + "; ".join(w["how"] for w in line["ways"]) + ".")
     out.append(f"The page says now: " + (f"who {said}; " if said else "no one giver; ") + f"then \"{page.get('then')}\"; checked: {page.get('checked', 'not yet')}.")
     if line["id"] in NOTES:
         out += [""] + [f"> {n}" for n in NOTES[line["id"]]]

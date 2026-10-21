@@ -17,6 +17,7 @@
      "call": "SetStage 5",
      "source": "DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B.fragment_1 on Dawnguard.esm:00D90B (TheChoiceIsYours.esp)",
      "verdict": "script",
+     "messenger": "Durak",
      "throughStartedBy": [
       {
        "by": "story manager",
@@ -26,7 +27,7 @@
         "Skyrim.esm:01320E",
         "Root"
        ],
-       "conditions": "Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; Dragonborn stage >= 5 or The Way of the Voice stage < 160; the place you enter is a habitation; the place you enter isn't a orcstronghold; the place you leave isn't a dwelling; the place you enter isn't Winterhold College; fn359 == 0; fn359 == 0",
+       "conditions": "Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; Dragonborn stage >= 5 or The Way of the Voice stage < 160; the place you enter is a habitation; the place you enter isn't a orcstronghold; the place you leave isn't a dwelling; the place you enter isn't Winterhold College; you're not in Winterhold College; you're not in Helgen",
        "globals": [
         "Dawnguard.esm:00D912"
        ],
@@ -52,7 +53,8 @@
        "atStage": 0,
        "call": "Start",
        "source": "DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B.fragment_1 on Dawnguard.esm:00D90B (TheChoiceIsYours.esp)",
-       "verdict": "script"
+       "verdict": "script",
+       "messenger": "Durak"
       },
       {
        "by": "start game",
@@ -105,6 +107,9 @@
     "index": 10,
     "source": "Dawnguard.esm:00D06C QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10
    },
    "target": [
     {
@@ -193,6 +198,13 @@
     "source": "Dawnguard.esm:004E24 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "30": 30,
+    "40": 30,
+    "45": 45,
+    "60": 70
+   },
    "target": [
     {
      "alias": "IsranAlias",
@@ -278,6 +290,10 @@
     "index": 10,
     "source": "Dawnguard.esm:013F1F QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [
     {
@@ -382,7 +398,7 @@
       "Track him down and dispose of him. ",
       "Tread lightly. The law is unaware of the danger and will treat you as a criminal if you are caught."
      ],
-     "conditions": "fn67 == 1; the speaker is the one in alias QuestGiver; Hide and Seek stage < 10",
+     "conditions": "GetInCell Dawnguard.esm:001DBA == 1; the speaker is the one in alias QuestGiver; Hide and Seek stage < 10",
      "source": "DLC1_TIF__01005E41.Fragment_0 on INFO Dawnguard.esm:005E41 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -407,6 +423,10 @@
     "index": 10,
     "source": "Dawnguard.esm:005E4A QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -465,7 +485,7 @@
       "I've discovered the whereabouts of a vampire lair.",
       "Destroying the head vampire is usually sufficient to scatter its minions, though it's best to destroy every last one of them."
      ],
-     "conditions": "fn67 == 1; Cleansing Light stage < 10; the speaker is the one in alias QuestGiver",
+     "conditions": "GetInCell Dawnguard.esm:001DBA == 1; Cleansing Light stage < 10; the speaker is the one in alias QuestGiver",
      "source": "DLC1_TIF__01005E48.Fragment_0 on INFO Dawnguard.esm:005E48 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -490,6 +510,10 @@
     "index": 10,
     "source": "Dawnguard.esm:005E53 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -573,6 +597,10 @@
     "source": "Dawnguard.esm:005E58 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
+   },
    "target": [
     {
      "alias": "Vampire",
@@ -638,7 +666,7 @@
       "Pay a visit to the beast's last known contact. Do what you must to find where it's hiding now.",
       "Then root out the monster, and destroy it."
      ],
-     "conditions": "fn67 == 1; Hunting the Monster stage < 10; the speaker is the one in alias Questgiver",
+     "conditions": "GetInCell Dawnguard.esm:001DBA == 1; Hunting the Monster stage < 10; the speaker is the one in alias Questgiver",
      "source": "DLC1_TIF__01006950.Fragment_0 on INFO Dawnguard.esm:006950 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -663,6 +691,11 @@
     "index": 10,
     "source": "Dawnguard.esm:006952 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "50": 50,
+    "100": 100
    },
    "target": [
     {
@@ -750,7 +783,7 @@
       "reply": [
        "All right... Here, take this."
       ],
-      "conditions": "the speaker is the one in alias Friend; GetActorValue >= SpeechAverage (now 50) or fn182 == 1",
+      "conditions": "the speaker is the one in alias Friend; GetActorValue >= SpeechAverage (now 50) or GetEquipped Skyrim.esm:0F759C == 1",
       "source": "DLC1_TIF__0100694B.Fragment_1 on INFO Dawnguard.esm:00694B (Dawnguard.esm)",
       "verdict": "script"
      }
@@ -780,7 +813,7 @@
       "But as luck would have it, I've tracked down the location of some actual Dwemer diagram drawings!",
       "So, if you'd be a dear and collect those plans for me?"
      ],
-     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 0 (now 0)",
+     "conditions": "GetInCell Dawnguard.esm:001DBA == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 0 (now 0)",
      "source": "DLC1_TIF__01002F1B.Fragment_0 on INFO Dawnguard.esm:002F1B (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -798,7 +831,7 @@
       "I've got more leads on additional Dwemer plans.",
       "Those last ones helped me immensely. If you could collect this one for me, it's sure to result in extraordinary success!"
      ],
-     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 1 (now 0)",
+     "conditions": "GetInCell Dawnguard.esm:001DBA == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 1 (now 0)",
      "source": "DLC1_TIF__01006BAB.Fragment_0 on INFO Dawnguard.esm:006BAB (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -816,7 +849,7 @@
       "Ready for more? I certainly am.",
       "Be a dear and fetch me another set of Dwemer diagrams?"
      ],
-     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 2 (now 0)",
+     "conditions": "GetInCell Dawnguard.esm:001DBA == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 2 (now 0)",
      "source": "DLC1_TIF__01002F1C.Fragment_0 on INFO Dawnguard.esm:002F1C (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -834,7 +867,7 @@
       "It's amazing what I'm able to learn from studying these Dwemer plans.",
       "Want to head out there and collect some more?"
      ],
-     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 3 (now 0)",
+     "conditions": "GetInCell Dawnguard.esm:001DBA == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 3 (now 0)",
      "source": "DLC1_TIF__01002F1D.Fragment_0 on INFO Dawnguard.esm:002F1D (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -852,7 +885,7 @@
       "I'm starting to think you like this as much as I do!",
       "Here's the location of the next set of Dwemer diagrams. Thanks!"
      ],
-     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 4 (now 0)",
+     "conditions": "GetInCell Dawnguard.esm:001DBA == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 4 (now 0)",
      "source": "DLC1_TIF__01002F1E.Fragment_0 on INFO Dawnguard.esm:002F1E (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -871,7 +904,7 @@
       "Think I'll be sad when we're done collecting these. Who knows though, maybe more plans will turn up in the future.",
       "But I can't wait to see these drawings. Go on, get out of here!"
      ],
-     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 5 (now 0)",
+     "conditions": "GetInCell Dawnguard.esm:001DBA == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver; global DLC1RH05RunCount == 5 (now 0)",
      "source": "DLC1_TIF__01002F1F.Fragment_0 on INFO Dawnguard.esm:002F1F (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -889,7 +922,7 @@
       "I've located more dwemer plans.",
       "Be a dear and collect these diagrams for me?"
      ],
-     "conditions": "fn67 == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver",
+     "conditions": "GetInCell Dawnguard.esm:001DBA == 1; Ancient Technology stage < 10; the speaker is the one in alias QuestGiver",
      "source": "DLC1_TIF__01002F20.Fragment_0 on INFO Dawnguard.esm:002F20 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -914,6 +947,10 @@
     "index": 10,
     "source": "Dawnguard.esm:006BAC QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -988,7 +1025,7 @@
      "reply": [
       "Arkay's never clear on life and death. Is she still alive? There's always hope..."
      ],
-     "conditions": "the speaker is the one in alias QuestGiver; fn70 == 1",
+     "conditions": "the speaker is the one in alias QuestGiver; the speaker is female",
      "source": "DLC1_TIF__01007C30.Fragment_0 on INFO Dawnguard.esm:007C30 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -1005,7 +1042,7 @@
      "reply": [
       "Arkay is so hard to understand when it comes to life and death. Is he still alive? There's always hope..."
      ],
-     "conditions": "the speaker is the one in alias QuestGiver; fn70 == 1",
+     "conditions": "the speaker is the one in alias QuestGiver; the speaker is male",
      "source": "DLC1_TIF__01007C31.Fragment_0 on INFO Dawnguard.esm:007C31 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -1030,6 +1067,11 @@
     "index": 10,
     "source": "Dawnguard.esm:007201 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "11": 10,
+    "100": 100
    },
    "target": [
     {
@@ -1081,7 +1123,7 @@
       "Convince the jarl of the threat and he'll let you destroy the creature. If not, then do your best not to get caught.",
       "Quickly now! The longer you delay, the more danger the jarl is in."
      ],
-     "conditions": "fn67 == 1; the speaker is the one in alias QuestGiver; A Jarl's Justice stage < 10",
+     "conditions": "GetInCell Dawnguard.esm:001DBA == 1; the speaker is the one in alias QuestGiver; A Jarl's Justice stage < 10",
      "source": "DLC1_TIF__01007EC2.Fragment_0 on INFO Dawnguard.esm:007EC2 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -1106,6 +1148,13 @@
     "index": 10,
     "source": "Dawnguard.esm:007EC5 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "100": 100
    },
    "target": [
     {
@@ -1197,7 +1246,7 @@
       "Seems the previous incarnation of the Dawnguard had, at one time, some interesting toys.",
       "Arkay and I think it could be a great advantage for us. You should look into retrieving it."
      ],
-     "conditions": "fn67 == 1; Lost Relic stage < 10; the speaker is the one in alias QuestGiver",
+     "conditions": "GetInCell Dawnguard.esm:001DBA == 1; Lost Relic stage < 10; the speaker is the one in alias QuestGiver",
      "source": "DLC1_TIF__0101500F.Fragment_0 on INFO Dawnguard.esm:01500F (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -1222,6 +1271,10 @@
     "index": 10,
     "source": "Dawnguard.esm:015017 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -1333,6 +1386,11 @@
     "source": "Dawnguard.esm:004C1B QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "11": 10,
+    "100": 100
+   },
    "target": [
     {
      "alias": "Target",
@@ -1427,6 +1485,10 @@
     "source": "Dawnguard.esm:0050B9 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
+   },
    "target": [
     {
      "alias": "Boss",
@@ -1511,6 +1573,12 @@
     "index": 100,
     "source": "Dawnguard.esm:0050BD QOBJ 100",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "100": 10,
+    "110": 10,
+    "111": 10,
+    "200": 200
    },
    "target": [
     {
@@ -1603,6 +1671,10 @@
     "index": 10,
     "source": "Dawnguard.esm:0056FD QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -1709,6 +1781,10 @@
     "source": "Dawnguard.esm:005702 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
+   },
    "target": [
     {
      "alias": "Remains",
@@ -1774,7 +1850,7 @@
       "Put her mind at rest, allay her fear through vampiric seduction and when she is in a pliant condition, embrace her and bite her on the neck.",
       "Nature will take care of the rest."
      ],
-     "conditions": "the speaker is the one in alias QuestGiver; fn70 == 1",
+     "conditions": "the speaker is the one in alias QuestGiver; the speaker is female",
      "source": "DLC1_TIF__010058BD.Fragment_0 on INFO Dawnguard.esm:0058BD (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -1794,7 +1870,7 @@
       "Put his mind to rest, allay his fear through vampiric seduction and when he is in a pliant condition, embrace him and bite him on the neck.",
       "Nature will do the rest."
      ],
-     "conditions": "the speaker is the one in alias QuestGiver; fn70 == 1",
+     "conditions": "the speaker is the one in alias QuestGiver; the speaker is male",
      "source": "DLC1_TIF__010058BE.Fragment_0 on INFO Dawnguard.esm:0058BE (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -1819,6 +1895,10 @@
     "index": 10,
     "source": "Dawnguard.esm:0058CA QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -1934,7 +2014,7 @@
       "When you offer the embrace, do so away from prying eyes. Our new sibling will then likely require rest while his blood undergoes the change.",
       "Return to me when your part is done."
      ],
-     "conditions": "the speaker is the one in alias QuestGiver; fn70 == 1",
+     "conditions": "the speaker is the one in alias QuestGiver; the speaker is male",
      "source": "DLC1_TIF__0100A299.Fragment_0 on INFO Dawnguard.esm:00A299 (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -1952,7 +2032,7 @@
       "When you offer the embrace, do so away from prying eyes. Our new sibling will then likely require rest while her blood undergoes the change.",
       "Return to me when your part is done."
      ],
-     "conditions": "the speaker is the one in alias QuestGiver; fn70 == 1",
+     "conditions": "the speaker is the one in alias QuestGiver; the speaker is female",
      "source": "DLC1_TIF__0100A29A.Fragment_0 on INFO Dawnguard.esm:00A29A (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -1977,6 +2057,10 @@
     "index": 10,
     "source": "Dawnguard.esm:00A29C QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -2023,7 +2107,7 @@
      },
      {
       "cell": "The Warrens",
-      "ways": 1,
+      "ways": 2,
       "locked": 0
      },
      {
@@ -2092,6 +2176,11 @@
     "index": 110,
     "source": "Dawnguard.esm:00CE06 QOBJ 110",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "110": 10,
+    "120": 10,
+    "200": 200
    },
    "target": [
     {
@@ -2188,6 +2277,11 @@
     "index": 110,
     "source": "Dawnguard.esm:00CE0B QOBJ 110",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "110": 10,
+    "130": 10,
+    "200": 200
    },
    "target": [
     {
@@ -2303,6 +2397,10 @@
     "index": 10,
     "source": "Dawnguard.esm:019938 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "100": 100
    },
    "target": [
     {
@@ -2531,11 +2629,10 @@
     "stage": 100,
     "movedBy": [
      {
-      "by": "quest script",
-      "quest": "DLC1RV10 (Destroying the Dawnguard)",
-      "questId": "Dawnguard.esm:019938",
-      "atStage": null,
+      "by": "by itself",
+      "script": "DLC1RV10Script",
       "call": "SetStage 100",
+      "plain": "It starts by itself from the start of the game.",
       "source": "DLC1RV10Script.CheckDead on Dawnguard.esm:019938 (Unofficial Skyrim Special Edition Patch.esp)",
       "verdict": "script"
      },
@@ -2581,6 +2678,16 @@
     "index": 10,
     "source": "Dawnguard.esm:00594C QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "15": 15,
+    "20": 20,
+    "30": 30,
+    "35": 40,
+    "40": 40,
+    "50": 50,
+    "60": 60
    },
    "target": [
     {
@@ -2659,7 +2766,24 @@
      "atStage": 180,
      "call": "SetStage 10",
      "source": "DLC1_QF_DLC1VQ01MiscObjective_0100D06C.fragment_16 on Dawnguard.esm:00D06C (Requiem.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Vigilant Tolan",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Fort Dawnguard"
+       ],
+       "call": "SetStage 180",
+       "info": "Dawnguard.esm:00E8A6",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Vigilant Tolan; Dawnguard stage >= 150; Dawnguard stage < 180",
+       "source": "DLC1_TIF__0100E8A6.Fragment_0 on INFO Dawnguard.esm:00E8A6 (Dawnguard.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "dialogue",
@@ -2712,6 +2836,10 @@
     "index": 30,
     "source": "Dawnguard.esm:00352A QOBJ 30",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "30": 10,
+    "40": 20
    },
    "target": [
     {
@@ -2818,7 +2946,54 @@
      "atStage": 200,
      "call": "SetStage 5",
      "source": "QF_DLC01VQ01_0100352A.fragment_1 on Dawnguard.esm:00352A (Dawnguard.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Serana",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dimhollow Cavern, Dimhollow Crypt"
+       ],
+       "call": "SetStage 200",
+       "info": "Dawnguard.esm:00B669",
+       "prompt": null,
+       "reply": [],
+       "conditions": null,
+       "source": "DLC1_TIF__0100B669.Fragment_0 on INFO Dawnguard.esm:00B669 (Dawnguard.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "Agmaer",
+       "speakerNamed": "the one follower in DLC1VQ01 (Awakening)'s aliases",
+       "speakerPlaced": [
+        "Fort Dawnguard"
+       ],
+       "call": "SetStage 200",
+       "info": "Dawnguard.esm:011973",
+       "prompt": null,
+       "reply": [],
+       "conditions": null,
+       "source": "DLC1_TIF__02011973.Fragment_0 on INFO Dawnguard.esm:011973 (Dawnguard.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "Agmaer",
+       "speakerNamed": "the one follower in DLC1VQ01 (Awakening)'s aliases",
+       "speakerPlaced": [
+        "Fort Dawnguard"
+       ],
+       "call": "SetStage 200",
+       "info": "Dawnguard.esm:019F12",
+       "prompt": null,
+       "reply": [],
+       "conditions": null,
+       "source": "DLC1_TIF__01019F12.Fragment_1 on INFO Dawnguard.esm:019F12 (Dawnguard.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -2841,6 +3016,10 @@
     "index": 10,
     "source": "Dawnguard.esm:002F65 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 5,
+    "20": 10
    },
    "target": [
     {
@@ -2938,7 +3117,7 @@
        "And I suppose you're the one Tolan says is actually doing something about this mess.",
        "These Vigilants are nothing but talk."
       ],
-      "conditions": "A New Order stage < 20; fn629 == 0; fn249 == 1; the speaker is the one in alias IsranAlias",
+      "conditions": "A New Order stage < 20; A New Order's VQ02Progress == 0; fn249 == 1; the speaker is the one in alias IsranAlias",
       "source": "DLC1_TIF__01005946.Fragment_0 on INFO Dawnguard.esm:005946 (Dawnguard.esm)",
       "verdict": "script"
      },
@@ -2997,7 +3176,8 @@
      "atStage": 200,
      "call": "SetStage 5",
      "source": "DLC1_QF_DLC1HunterBaseIntro_01004E24.fragment_5 on Dawnguard.esm:004E24 (Requiem.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -3007,6 +3187,25 @@
     "index": 5,
     "source": "Dawnguard.esm:0098CB QOBJ 5",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "5": 5,
+    "10": 7,
+    "15": 10,
+    "20": 20,
+    "24": 20,
+    "25": 30,
+    "26": 20,
+    "27": 45,
+    "30": 50,
+    "32": 52,
+    "35": 55,
+    "37": 57,
+    "40": 60,
+    "42": 66,
+    "45": 70,
+    "50": 80,
+    "60": 100
    },
    "target": [
     {
@@ -3065,7 +3264,22 @@
      "atStage": 200,
      "call": "Start",
      "source": "DLC1_QF_DLC1VampireBaseIntro_0100594C.fragment_14 on Dawnguard.esm:00594C (Dawnguard.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 200",
+       "info": "Dawnguard.esm:005E2E",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias GaranAlias",
+       "source": "DLC1_TIF__01005E2E.Fragment_0 on INFO Dawnguard.esm:005E2E (Dawnguard.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -3075,6 +3289,26 @@
     "index": 10,
     "source": "Dawnguard.esm:004C3D QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 5,
+    "20": 10,
+    "23": 20,
+    "24": 20,
+    "25": 30,
+    "26": 20,
+    "27": 45,
+    "28": 40,
+    "30": 50,
+    "35": 55,
+    "37": 57,
+    "38": 60,
+    "39": 66,
+    "40": 67,
+    "47": 70,
+    "50": 80,
+    "60": 100,
+    "80": 120
    },
    "target": [
     {
@@ -3151,7 +3385,24 @@
      "atStage": 200,
      "call": "SetStage 10",
      "source": "DLC1_QF_DLC1VQ03Vampire_01004C3D.fragment_1 on Dawnguard.esm:004C3D (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Lord Harkon",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Volkihar Keep"
+       ],
+       "call": "SetStage 200",
+       "info": "Dawnguard.esm:008858",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Prophet stage 200 not done; Prophet stage 120 done; the speaker is Lord Harkon",
+       "source": "DLC1_TIF__01008858.Fragment_0 on INFO Dawnguard.esm:008858 (Dawnguard.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -3160,7 +3411,8 @@
      "atStage": 200,
      "call": "SetStage 10",
      "source": "DLC1_QF_DLC1VQ03Hunter_010098CB.fragment_1 on Dawnguard.esm:0098CB (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -3170,6 +3422,24 @@
     "index": 10,
     "source": "Dawnguard.esm:00284F QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 35,
+    "45": 50,
+    "50": 55,
+    "52": 60,
+    "54": 60,
+    "56": 60,
+    "60": 70,
+    "70": 75,
+    "80": 90,
+    "90": 95,
+    "100": 100,
+    "110": 100,
+    "120": 110
    },
    "target": [
     {
@@ -3208,7 +3478,7 @@
       "reply": [
        "Come on. It's just around the side."
       ],
-      "conditions": "the speaker is Serana; fn359 == 1",
+      "conditions": "the speaker is Serana; you're in Castle Volkihar",
       "source": "DLC1_TIF__02012192.Fragment_1 on INFO Dawnguard.esm:012192 (Dawnguard.esm)",
       "verdict": "script"
      },
@@ -3246,7 +3516,8 @@
      "atStage": 200,
      "call": "SetStage 10",
      "source": "DLC1_QF_VQ04Hunter_0100284F.fragment_5 on Dawnguard.esm:00284F (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -3256,6 +3527,19 @@
     "index": 10,
     "source": "Dawnguard.esm:002850 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 25,
+    "30": 30,
+    "40": 40,
+    "50": 50,
+    "70": 70,
+    "90": 80,
+    "95": 110,
+    "100": 120,
+    "110": 130,
+    "120": 140
    },
    "target": [
     {
@@ -3322,6 +3606,13 @@
     "source": "Dawnguard.esm:002852 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 50,
+    "60": 70
+   },
    "target": [
     {
      "alias": "DLC1VQ06DrawKnifeQTAlias",
@@ -3383,7 +3674,22 @@
      "atStage": 200,
      "call": "SetStage 10",
      "source": "DLC1_QF_DLC1VQ06_01002852.fragment_2 on Dawnguard.esm:002852 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 200",
+       "info": "Dawnguard.esm:015FA5",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias DLC1VQ06RNPCAlias; Unseen Visions stage == 70; global DLC1VQ06DLink01 == 1 (now 0)",
+       "source": "DLC1_TIF__01015FA5.Fragment_0 on INFO Dawnguard.esm:015FA5 (Dawnguard.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -3392,7 +3698,22 @@
      "atStage": 200,
      "call": "SetStage 10",
      "source": "DLC1_QF_DLC1VQ06_01002852.fragment_13 on Dawnguard.esm:002852 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 200",
+       "info": "Dawnguard.esm:015FA5",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is the one in alias DLC1VQ06RNPCAlias; Unseen Visions stage == 70; global DLC1VQ06DLink01 == 1 (now 0)",
+       "source": "DLC1_TIF__01015FA5.Fragment_0 on INFO Dawnguard.esm:015FA5 (Dawnguard.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -3402,6 +3723,18 @@
     "index": 20,
     "source": "Dawnguard.esm:002853 QOBJ 20",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "20": 10,
+    "30": 30,
+    "50": 50,
+    "70": 55,
+    "80": 100,
+    "90": 110,
+    "100": 120,
+    "110": 135,
+    "120": 140,
+    "130": 150
    },
    "target": [
     {
@@ -3473,7 +3806,8 @@
      "atStage": 200,
      "call": "SetStage 10",
      "source": "DLC1_QF_DLC1VQ07_01002853.fragment_22 on Dawnguard.esm:002853 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -3483,6 +3817,12 @@
     "index": 10,
     "source": "Dawnguard.esm:007C25 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 20,
+    "40": 60
    },
    "target": [
     {
@@ -3556,7 +3896,24 @@
      "atStage": 200,
      "call": "SetStage 10",
      "source": "DLC1_QF_DLC1VQ03Vampire_01004C3D.fragment_1 on Dawnguard.esm:004C3D (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Lord Harkon",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Volkihar Keep"
+       ],
+       "call": "SetStage 200",
+       "info": "Dawnguard.esm:008858",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Prophet stage 200 not done; Prophet stage 120 done; the speaker is Lord Harkon",
+       "source": "DLC1_TIF__01008858.Fragment_0 on INFO Dawnguard.esm:008858 (Dawnguard.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -3565,7 +3922,8 @@
      "atStage": 200,
      "call": "SetStage 10",
      "source": "DLC1_QF_DLC1VQ03Hunter_010098CB.fragment_1 on Dawnguard.esm:0098CB (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -3575,6 +3933,11 @@
     "index": 10,
     "source": "Dawnguard.esm:005DA9 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 10,
+    "30": 40
    },
    "target": [],
    "needs": {
@@ -3623,7 +3986,8 @@
      "atStage": 10,
      "call": "SetStage 20",
      "source": "DLC1_QF_DLC1VQElder_01005DA9.fragment_2 on Dawnguard.esm:005DA9 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "dialogue",
@@ -3639,7 +4003,7 @@
       "The Elder Scrolls vanished from the Imperial City around 175 of this era and have been scattered across Tamriel by forces unknown.",
       "If you want to find the remaining scroll, you'll have to consult with someone versed in magical knowledge. Perhaps at the College of Winterhold?"
      ],
-     "conditions": "the speaker is Dexion Evicus; Seeking Disclosure stage 20 not done; Elder Knowledge hasn't started; Discerning the Transmundane stage < 10; fn629 == 0",
+     "conditions": "the speaker is Dexion Evicus; Seeking Disclosure stage 20 not done; Elder Knowledge hasn't started; Discerning the Transmundane stage < 10; Discerning the Transmundane's ReadCrazyBook == 0",
      "source": "DLC1_TIF__010181BC.Fragment_0 on INFO Dawnguard.esm:0181BC (Dawnguard.esm)",
      "verdict": "script"
     },
@@ -3655,7 +4019,7 @@
       "Dexion said something about that scroll. What was it... something to do with dragons I think?",
       "Maybe we should try asking at the College of Winterhold. Sounds like something they'd know about."
      ],
-     "conditions": "the speaker is the one in alias DLC1VQElderRNPCAlias; Seeking Disclosure stage 20 not done; Elder Knowledge hasn't started; Discerning the Transmundane stage < 10; fn629 == 0",
+     "conditions": "the speaker is the one in alias DLC1VQElderRNPCAlias; Seeking Disclosure stage 20 not done; Elder Knowledge hasn't started; Discerning the Transmundane stage < 10; Discerning the Transmundane's ReadCrazyBook == 0",
      "source": "DLC1_TIF__010181BE.Fragment_0 on INFO Dawnguard.esm:0181BE (Dawnguard.esm)",
      "verdict": "script"
     }
@@ -3667,6 +4031,10 @@
     "index": 10,
     "source": "Dawnguard.esm:0181BF QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30
    },
    "target": [
     {
@@ -3715,7 +4083,8 @@
       "atStage": 10,
       "call": "SetStage 30",
       "source": "DLC1_QF_DLC1VQElder_01005DA9.fragment_2 on Dawnguard.esm:005DA9 (Unofficial Skyrim Special Edition Patch.esp)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": []
      }
     ]
    }
@@ -3758,6 +4127,10 @@
     "index": 10,
     "source": "Dawnguard.esm:01400B QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20,
+    "20": 30
    },
    "target": [],
    "needs": {
@@ -3844,9 +4217,14 @@
     "source": "Dawnguard.esm:0163CD QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "20": 20,
+    "100": 100,
+    "150": 150
+   },
    "target": [],
    "needs": {
-    "conditions": "fn18 > 22 or fn18 < 5.5",
+    "conditions": "GetCurrentTime > 22 or GetCurrentTime < 5.5",
     "doors": [],
     "ways": []
    },
@@ -3878,7 +4256,8 @@
      "atStage": 0,
      "call": "SetStage 10",
      "source": "DLC1_QF_DLC1VQ06_01002852.fragment_0 on Dawnguard.esm:002852 (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3887,7 +4266,8 @@
      "atStage": 0,
      "call": "SetStage 10",
      "source": "DLC1_QF_DLC1VQ03Vampire_01004C3D.fragment_7 on Dawnguard.esm:004C3D (Unofficial Skyrim Special Edition Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "start game",
@@ -3903,6 +4283,7 @@
     "source": "Dawnguard.esm:004C1C QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [
     {
      "alias": "CurrentQuestGiver",
@@ -4038,7 +4419,8 @@
      "atStage": 115,
      "call": "SetStage 10",
      "source": "DLC1_QF_VQ04Hunter_0100284F.fragment_33 on Dawnguard.esm:00284F (Unofficial Skyrim Special Edition Patch.esp), through DLC1VQ04 (Chasing Echoes)'s soultrapped",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "dialogue",
@@ -4066,6 +4448,9 @@
     "index": 10,
     "source": "Dawnguard.esm:00EA41 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20
    },
    "target": [
     {
@@ -4102,9 +4487,11 @@
    "startedBy": [
     {
      "by": "dialogue",
-     "speaker": null,
+     "speaker": "Durnehviir",
      "speakerNamed": "alias DLC1VQDragonAlias of DLC1VQDragon (Durnehviir) (from alias)",
-     "speakerPlaced": [],
+     "speakerPlaced": [
+      "Boneyard"
+     ],
      "call": "SetStage 30",
      "info": "Dawnguard.esm:01157B",
      "prompt": "Just call your name in Tamriel? That's it?",
@@ -4118,9 +4505,11 @@
     },
     {
      "by": "dialogue",
-     "speaker": null,
+     "speaker": "Durnehviir",
      "speakerNamed": "alias DLC1VQDragonAlias of DLC1VQDragon (Durnehviir) (from alias)",
-     "speakerPlaced": [],
+     "speakerPlaced": [
+      "Boneyard"
+     ],
      "call": "SetStage 20",
      "info": "Dawnguard.esm:01157E",
      "prompt": "I have more pressing matters at the moment.",
@@ -4133,9 +4522,11 @@
     },
     {
      "by": "dialogue",
-     "speaker": null,
+     "speaker": "Durnehviir",
      "speakerNamed": "alias DLC1VQDragonAlias of DLC1VQDragon (Durnehviir) (from alias)",
-     "speakerPlaced": [],
+     "speakerPlaced": [
+      "Boneyard"
+     ],
      "call": "SetStage 20",
      "info": "Dawnguard.esm:011570",
      "prompt": "Why are we speaking?",
@@ -4159,6 +4550,12 @@
     "index": 10,
     "source": "Dawnguard.esm:00C73A QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 30,
+    "20": 30,
+    "30": 40,
+    "40": 50
    },
    "target": [],
    "needs": {
@@ -4194,6 +4591,9 @@
     "index": 10,
     "source": "Dawnguard.esm:01119F QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10
    },
    "target": [
     {
@@ -4232,6 +4632,9 @@
     "index": 10,
     "source": "Dawnguard.esm:01A3E4 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 20
    },
    "target": [
     {
@@ -4279,7 +4682,8 @@
      "atStage": 40,
      "call": "SetStage 10",
      "source": "DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_20 on Dawnguard.esm:002F65 (Dawnguard.esm)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     }
    ],
    "caughtUpBy": [],
@@ -4290,6 +4694,7 @@
     "source": "Dawnguard.esm:01909F QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -5433,11 +5838,11 @@
    "kind": "quest script",
    "does": "stage 0: SetStage 5",
    "startedBy": [
-    "story manager node DLC1VQ00Node (change location; Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; Dragonborn stage >= 5 or The Way of the Voice stage < 160; the place you enter is a habitation; the place you enter isn't a orcstronghold; the place you leave isn't a dwelling; the place you enter isn't Winterhold College; fn359 == 0; fn359 == 0; DLC1VQ00Node Dawnguard.esm:00D911 (DawnguardQuestPrerequisite.esp))"
+    "story manager node DLC1VQ00Node (change location; Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; Dragonborn stage >= 5 or The Way of the Voice stage < 160; the place you enter is a habitation; the place you enter isn't a orcstronghold; the place you leave isn't a dwelling; the place you enter isn't Winterhold College; you're not in Winterhold College; you're not in Helgen; DLC1VQ00Node Dawnguard.esm:00D911 (DawnguardQuestPrerequisite.esp))"
    ],
    "inStartMenu": false,
    "source": "DLC1_QF_DLC1VQ00ChangeLocatio_0100D90B on Dawnguard.esm:00D90B (TheChoiceIsYours.esp)",
-   "sentence": "DLC1VQ00ChangeLocation stage 0: SetStage 5 on DLC1VQ01MiscObjective (Dawnguard); it is started by story manager node DLC1VQ00Node (change location; Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; Dragonborn stage >= 5 or The Way of the Voice stage < 160; the place you enter is a habitation; the place you enter isn't a orcstronghold; the place you leave isn't a dwelling; the place you enter isn't Winterhold College; fn359 == 0; fn359 == 0; DLC1VQ00Node Dawnguard.esm:00D911 (DawnguardQuestPrerequisite.esp))."
+   "sentence": "DLC1VQ00ChangeLocation stage 0: SetStage 5 on DLC1VQ01MiscObjective (Dawnguard); it is started by story manager node DLC1VQ00Node (change location; Laid to Rest completed; level >= DLC1VQMinLevel (now 30); Dawnguard stage < 10; Dragonborn stage >= 5 or The Way of the Voice stage < 160; the place you enter is a habitation; the place you enter isn't a orcstronghold; the place you leave isn't a dwelling; the place you enter isn't Winterhold College; you're not in Winterhold College; you're not in Helgen; DLC1VQ00Node Dawnguard.esm:00D911 (DawnguardQuestPrerequisite.esp))."
   },
   {
    "route": "DLC1VQ00",
@@ -5617,7 +6022,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode002",
@@ -5710,7 +6115,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode003",
@@ -5803,7 +6208,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode004",
@@ -5896,7 +6301,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode005",
@@ -5989,7 +6394,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode006",
@@ -6082,7 +6487,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode007",
@@ -6175,7 +6580,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode008",
@@ -6268,7 +6673,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode000",
@@ -6361,7 +6766,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     }
    ],
    "tieSetting": {
@@ -6455,261 +6860,32 @@
   "AAS_PlayerScript",
   "ACFH_TIF__03000B2B",
   "ACFH_TIF__03000B6B",
-  "BGSSSE010_OnReadSetStageAlias",
   "BaanMalurCarriageScript",
   "HLIO_TIF__0598299C",
   "JR0_QF_JRLucienCCSaintsAndSed_07000800",
   "JR_TIF__05172482",
   "JR_TIF__05172488",
   "ParryManagerQuestScript",
-  "QF_DLCDwarvenPuzzleDungeonQu_050038D9",
   "QF_HRI_Events_Quest_WEWerebe_0402904A",
   "QF_SOMRRumoursQuest_0721AE15",
-  "QF_ccBGSSSE001_Crab_MQ1_050009D4",
-  "QF_ccBGSSSE001_Crab_MQ2_050009DA",
-  "QF_ccBGSSSE001_Crab_MQ3_050009D6",
-  "QF_ccBGSSSE001_Fish_MQ1_050009DE",
-  "QF_ccBGSSSE001_Fish_MQ2_050009EB",
-  "QF_ccBGSSSE001_Fish_MQ3_050009E8",
-  "QF_ccBGSSSE001_Fish_MQ4_050009DD",
-  "QF_ccBGSSSE001_Fish_MQ5_050009DC",
-  "QF_ccBGSSSE001_MiscQuests_050009E6",
-  "QF_ccBGSSSE001_Misc_Falkreat_050009EC",
-  "QF_ccBGSSSE001_Misc_Khajiit_050009E2",
-  "QF_ccBGSSSE001_Misc_Markarth_050009DF",
-  "QF_ccBGSSSE001_Misc_Morthal_050009E4",
-  "QF_ccBGSSSE001_Misc_Solitude_050009E3",
-  "QF_ccBGSSSE001_Misc_Whiterun_050009D7",
-  "QF_ccBGSSSE001_Misc_Whiterun_05000E5D",
-  "QF_ccBGSSSE001_Misc_Windhelm_050009D5",
-  "QF_ccBGSSSE001_Radiant_1_05000B98",
-  "QF_ccBGSSSE001_Radiant_2_05000C2F",
-  "QF_ccBGSSSE001_Radiant_3_05000C8C",
-  "QF_ccBGSSSE001_Start_MQ1_050009D3",
-  "QF_ccBGSSSE001_Start_MQ2_050009DB",
-  "QF_ccBGSSSE010_PetPurchaseQu_02000808",
-  "QF_ccBGSSSE025_ElytraPetAcqu_050010C3",
-  "QF_ccBGSSSE025_RareCuriosInt_050010C1",
-  "QF_ccBGSSSE035_PetAcquireQue_0400080A",
-  "SSE_TIF__020008AA",
-  "SSE_ccBGSSSE037_RareCurios_0100084D",
+  "SSE_TIF__05000FD4",
+  "SSE_TIF__05000FD5",
+  "SSE_TIF__05000FD8",
+  "SSE_TIF__05000FDB",
   "SilgradCarriageScript",
   "SkyInteract_PlayerLoadGameAlias",
-  "Survival_PlayerHitInfo",
-  "Survival_PlayerLocationInfo",
   "Survival_ThirstPlayerAlias",
-  "Survival_VampirismLycanthropy",
   "TIF__020458BA",
   "TIF__023943AB",
   "TIF__03000976",
   "TIF__03000D75",
   "TIF__04138034",
   "TIF__08005903",
-  "TIF_ccBGSSSE025_StaadaFrag",
-  "TIF_ccBGSSSE025_StaadaFrag2",
-  "TIF_ccBGSSSE025_StaadaFrag3",
-  "TIF_ccBGSSSE025_StaadaFragA",
-  "TIF_ccBGSSSE025_StaadaFrgF",
   "Traits_ElementalistPlayerScript",
-  "VS02_QF_ccVSVSSE002_MainQuest_050008C8",
   "aaCi_TIF__0501F5BC",
   "aaEl_QF_aaElisifUpdate0108_05014EF5",
   "aaaVampireFeedingContractScriptB",
   "aaaVampireFeedingRemoveAlias",
-  "ccASVSSE001_KillFollowerCheck",
-  "ccASVSSE001_OnHitStageSetScript",
-  "ccASVSSE001_SetStageonActivateScript",
-  "ccASVSSE001_TIF__05000DFC",
-  "ccASVSSE001_TIF__05000E04",
-  "ccASVSSE001_TIF__05000E07",
-  "ccASVSSE001_TIF__05000E09",
-  "ccASVSSE001_TIF__05000EAB",
-  "ccASVSSE001_TIF__0500114D",
-  "ccASVSSE001_TIF__0500115F",
-  "ccASVSSE001_TIF__05001160",
-  "ccASVSSE001_TIF__0500116A",
-  "ccASVSSE001_TIF__05001178",
-  "ccASVSSE001_TIF__05048064",
-  "ccASVSSE001_TIF__05048065",
-  "ccASVSSE001_TIF__0504806D",
-  "ccASVSSE001_TIF__05219F5B",
-  "ccASVSSE001_TaskChecklilst",
-  "ccBGSSSE001_AdvanceStageOnUpdate",
-  "ccBGSSSE001_CatapultMonitor",
-  "ccBGSSSE001_CrabEncMonitor",
-  "ccBGSSSE001_CrabMQ2EncAlias",
-  "ccBGSSSE001_CrabMQ3_Quest",
-  "ccBGSSSE001_CrabMQ4BodyCleanup",
-  "ccBGSSSE001_CrabMQ4Reinforcements",
-  "ccBGSSSE001_DeleteOnQuestDone",
-  "ccBGSSSE001_GuardPanicScript",
-  "ccBGSSSE001_ItemCollectObjectiveScript",
-  "ccBGSSSE001_MiscDwarPlayScript",
-  "ccBGSSSE001_MiscKhajPlayScript",
-  "ccBGSSSE001_MiscMarkarthScript",
-  "ccBGSSSE001_MiscQuestScript",
-  "ccBGSSSE001_MiscSol_DinnerGuestScript",
-  "ccBGSSSE001_MiscWhiterunCourier",
-  "ccBGSSSE001_OnDeathCallReinforce",
-  "ccBGSSSE001_OnReadSetStage",
-  "ccBGSSSE001_PlayerHitScript",
-  "ccBGSSSE001_Quest_SetStageAfterTimer",
-  "ccBGSSSE001_RadiantFishQuest",
-  "ccBGSSSE001_RadiantItemPlayerScript",
-  "ccBGSSSE001_RadiantJunkQuest",
-  "ccBGSSSE001_RadiantQuest3Listener",
-  "ccBGSSSE001_SandboxFollowerScript",
-  "ccBGSSSE001_SetStageOnActivate",
-  "ccBGSSSE001_SetStageOnPickup",
-  "ccBGSSSE001_StartMQ1PlayerScript",
-  "ccBGSSSE001_SwapOutfitOnCellAttach",
-  "ccBGSSSE001_TIF__0500099D",
-  "ccBGSSSE001_TIF__050009A7",
-  "ccBGSSSE001_TIF__050009BC",
-  "ccBGSSSE001_TIF__050009D1",
-  "ccBGSSSE001_TIF__05000A63",
-  "ccBGSSSE001_TIF__05000A68",
-  "ccBGSSSE001_TIF__05000B1E",
-  "ccBGSSSE001_TIF__05000B5C",
-  "ccBGSSSE001_TIF__05000B60",
-  "ccBGSSSE001_TIF__05000B64",
-  "ccBGSSSE001_TIF__05000B79",
-  "ccBGSSSE001_TIF__05000BAF",
-  "ccBGSSSE001_TIF__05000BB0",
-  "ccBGSSSE001_TIF__05000BB1",
-  "ccBGSSSE001_TIF__05000BB2",
-  "ccBGSSSE001_TIF__05000BB3",
-  "ccBGSSSE001_TIF__05000BB4",
-  "ccBGSSSE001_TIF__05000BB5",
-  "ccBGSSSE001_TIF__05000BB6",
-  "ccBGSSSE001_TIF__05000BDE",
-  "ccBGSSSE001_TIF__05000C28",
-  "ccBGSSSE001_TIF__05000C29",
-  "ccBGSSSE001_TIF__05000C49",
-  "ccBGSSSE001_TIF__05000C5C",
-  "ccBGSSSE001_TIF__05000C5E",
-  "ccBGSSSE001_TIF__05000C70",
-  "ccBGSSSE001_TIF__05000E5B",
-  "ccBGSSSE001_TIF__05000E5C",
-  "ccBGSSSE001_TIF__05000E5E",
-  "ccBGSSSE001_TIF__05000E7B",
-  "ccBGSSSE001_TIF__05000EA4",
-  "ccBGSSSE001_TIF__05000EA9",
-  "ccBGSSSE001_TIF__05000EAC",
-  "ccBGSSSE001_TIF__05000EAF",
-  "ccBGSSSE001_TIF__05000EB4",
-  "ccBGSSSE001_TIF__05000EC3",
-  "ccBGSSSE001_TIF__05000ECE",
-  "ccBGSSSE001_TIF__05000EE5",
-  "ccBGSSSE001_TIF__050C1D0F",
-  "ccBGSSSE001_WhiterunChestScript",
-  "ccBGSSSE002_TKArrowsQuestScript",
-  "ccBGSSSE010_ContainerSetStage",
-  "ccBGSSSE010_SetStageOnActivate",
-  "ccBGSSSE013_BattleScript",
-  "ccBGSSSE014_SetStageContainerOpen",
-  "ccBGSSSE018_QF_ShadowQuest_0100081C",
-  "ccBGSSSE018_ShadowrendPlaceScript",
-  "ccBGSSSE018_ShadowrendPlayerScript",
-  "ccBGSSSE025_ElytraCollectItemScript",
-  "ccBGSSSE025_RCIntegrationScript",
-  "ccBGSSSE034_MapContainerChangeAlias",
-  "ccBGSSSE034_TIF__02000837",
-  "ccBGSSSE034_TIF__02000838",
-  "ccBGSSSE034_TIF__02000839",
-  "ccBGSSSE034_TIF__0200083A",
-  "ccBGSSSE034_TIF__0200083C",
-  "ccBGSSSE034_TIF__0200084A",
-  "ccBGSSSE034_WildHorseRefAliasScript",
-  "ccBGSSSE034_WildHorsesQuestScript",
-  "ccBGSSSE034_tif__02000d6c",
-  "ccBGSSSE034_tif__02000d6d",
-  "ccBGSSSE035_MerchantAlias",
-  "ccBGSSSE035_OnActStageRefAlias",
-  "ccBGSSSE036_SetStageOnRead",
-  "ccBGSSSE051_TIF__05000833",
-  "ccBGSSSE051_TIF__05000838",
-  "ccBGSSSE051_TIF__05000839",
-  "ccBGSSSE051__TIF__0500083D",
-  "ccBGSSSE051__TIF__05000841",
-  "ccBGSSSE067_ContentAwareScript",
-  "ccBGSSSE067_QuestFunctionsScript",
-  "ccBGSSSE067_Quest_0506BFC1",
-  "ccBGSSSE067_SetStageOnActivateConfirm",
-  "ccBGSSSE067_SetStageOnOpenRefAlias",
-  "ccBGSSSE067_SetStageTriggerScript",
-  "ccEDHSSE003_TIF__02000860",
-  "ccEDHSSE003_TIF__02000862",
-  "ccEDHSSE003_TIF__0200086B",
-  "ccEDHSSE003_TIF__02000871",
-  "ccEDHSSE003_TIF__02000875",
-  "ccEDHSSE003_TIF__0200088B",
-  "ccEDHSSE003_TIF__020008B0",
-  "ccEEJSSE004__05000C54",
-  "ccEEJSSE004__05000C58",
-  "ccEEJSSE004__05000C72",
-  "ccEEJSSE005_DeathCount",
-  "ccEEJSSE005_Quest_050B7AED",
-  "ccEEJSSE005_SetGlobalOnPickup",
-  "ccEEJSSE005_TIF__050DB2AD",
-  "ccEEJSSE005_TIF__050DB2C5",
-  "ccFFBSSE001_SoldierDeadCountScript",
-  "ccKRTSSE001_DoorActivateScript",
-  "ccKRTSSE001_FerrySyste_05000A7B",
-  "ccKRTSSE001_GTScript",
-  "ccKRTSSE001_GameTimeScript",
-  "ccKRTSSE001_QuestFortu_05000A90",
-  "ccKRTSSE001_SetStageOnLoadScript",
-  "ccKRTSSE001_SleepSetStageScript",
-  "ccKRTSSE001_StageSetonActivate",
-  "ccKRTSSE001_TIF__05000A7E",
-  "ccQDRSSE002_FollowerIdleOnSitScript",
-  "ccRMSSSE001_AltarActivateScript",
-  "ccRMSSSE001_GhostTrapScript",
-  "ccRMSSSE001_SleepSetStageScript",
-  "ccRMSSSE001_TorchCountScript",
-  "ccRMSSSE001_TradeWithSkeletonScript",
-  "ccVSVSSE002_MainQuestScript",
-  "ccVSVSSE003_QF_MainQuest",
-  "ccVSVSSE004_AnimalAliasEggScript",
-  "ccVSVSSE004_AnimalAliasMilkScript",
-  "ccVSVSSE004_F_MainQuestManager",
-  "ccVSVSSE004_F_OverseerAliasScript",
-  "ccVSVSSE004_GuardDogAliasScript",
-  "ccVSVSSE004_HorseAliasScript",
-  "ccVSVSSE004_TIF_BuyChickens",
-  "ccVSVSSE004_TIF_BuyChickensSpouse",
-  "ccVSVSSE004_TIF_BuyCow",
-  "ccVSVSSE004_TIF_BuyCowSpouse",
-  "ccVSVSSE004_TIF_BuyGoat",
-  "ccVSVSSE004_TIF_BuyGoatSpouse",
-  "ccVSVSSE004_TIF_BuyHorse",
-  "ccVSVSSE004_TIF_BuyHorseSpouse",
-  "ccVSVSSE004_TIF_CollectProfitF",
-  "ccVSVSSE004_TIF_CollectProfitM",
-  "ccVSVSSE004_TIF_CollectProfitSpouse",
-  "ccVSVSSE004_TIF_FarmhandDismiss2",
-  "ccVSVSSE004_TIF_FarmhandHire",
-  "ccVSVSSE004_TIF_OverseerHire",
-  "ccVSVSSE004_TIF_OverseerHireSpouse",
-  "ccVSVSSE004_TIF_SpawnFarmhand1",
-  "ccVSVSSE004_TIF_SpawnFarmhand1Spouse",
-  "ccVSVSSE004_TIF_UpgradeAltKidRoom",
-  "ccVSVSSE004_TIF_UpgradeBedroom",
-  "ccVSVSSE004_TIF_UpgradeBedroomSpouse",
-  "ccVSVSSE004_TIF_UpgradeDining",
-  "ccVSVSSE004_TIF_UpgradeDiningSpouse",
-  "ccVSVSSE004_TIF_UpgradeKidRoom",
-  "ccVSVSSE004_TIF_UpgradeKidRoomAltS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomRepS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomReplace",
-  "ccVSVSSE004_TIF_UpgradeKidRoomSpouse",
-  "ccVSVSSE004_TIF_UpgradeKitchen",
-  "ccVSVSSE004_TIF_UpgradeKitchenSpouse",
-  "ccVSVSSE004_TIF_UpgradeLab",
-  "ccVSVSSE004_TIF_UpgradeLabSpouse",
-  "ccVSVSSE004_TIF_UpgradeLoft",
-  "ccVSVSSE004_TIF_UpgradeLoftSpouse",
   "urshug_TIF__0200183E"
  ]
 }

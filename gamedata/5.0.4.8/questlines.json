@@ -208,6 +208,9 @@
         "CW01AOutfitImperial",
         "DialogueSolitudeGuardIntro"
       ],
+      "alsoOpening": [
+        "CW01B"
+      ],
       "start": "Join the Legion with Legate Rikke at Castle Dour, Solitude, or the Stormcloaks with Galmar Stone-Fist in Windhelm.",
       "gate": "None.",
       "checked": {
@@ -723,6 +726,13 @@
       "name": "Raven Rock",
       "category": "lands",
       "where": "Raven Rock",
+      "giver": {
+        "name": "Captain Veleth",
+        "place": "Old Attius Farm"
+      },
+      "checked": {
+        "giver": "uesp"
+      },
       "quests": [
         "DLC2RR01",
         "DLC2RR02",
@@ -1957,6 +1967,14 @@
       "lines": [
         "Favor Quests Separated"
       ],
+      "skip": [
+        "Favor001AngasMill",
+        "Favor001DarkwaterCrossing",
+        "Favor001Falkreath",
+        "Favor001Markarth",
+        "Favor001Morthal",
+        "Favor001Windhelm"
+      ],
       "quests": [
         "BQ01",
         "BQ02",
@@ -1981,7 +1999,21 @@
       "id": "townsfolk-favours",
       "name": "Favours for townsfolk",
       "category": "work",
+      "opening": "Favor001AngasMill",
+      "alsoOpening": [
+        "Favor001DarkwaterCrossing",
+        "Favor001Falkreath",
+        "Favor001Markarth",
+        "Favor001Morthal",
+        "Favor001Windhelm"
+      ],
       "quests": [
+        "Favor001AngasMill",
+        "Favor001DarkwaterCrossing",
+        "Favor001Falkreath",
+        "Favor001Markarth",
+        "Favor001Morthal",
+        "Favor001Windhelm",
         "Favor001",
         "Favor013",
         "Favor018",

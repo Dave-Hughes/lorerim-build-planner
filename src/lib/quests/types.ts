@@ -71,7 +71,10 @@ export interface QuestLine {
   size?: string;
   note?: string;
   sources: QuestSource[];
-  giver?: { name: string; place?: string };
+  /** source "uesp": a judged source names them when the records can't (WO-121b: Raven Rock's Captain Veleth). */
+  giver?: { name: string; place?: string; source?: "uesp" };
+  /** A line with more than one opening quest (the Civil War's two sides): each opening's way in (WO-121b). */
+  ways?: QuestStart["ways"];
   firstObjective?: string;
   quests: Quest[];
   xpTotal: number;

@@ -371,5 +371,46 @@ class WO121aTest(unittest.TestCase):
         self.assertEqual({k: q["aliases"][3][k] for k in ("fill", "fromAliasId", "refType")}, {"fill": "from alias", "fromAliasId": 26, "refType": "Fixture.esp:000820"})
 
 
+class WO121bPart2Test(unittest.TestCase):
+    """The records the start check couldn't read before Part 2: script variables, a place's references, books, followers."""
+
+    def test_a_script_variable_the_condition_names(self):
+        # Balgruuf's line needs The Whispering Door's PlayerGotRumor, which DA08RumorPointer's stage 10 sets.
+        conds = sc.qst.ctdas([("CTDA", ctda(629, 1.0, cmp=0, param=0x800)[6:]), ("CIS2", zs("::PlayerGotRumor_var")),
+                              ("CTDA", ctda(72, 1.0, cmp=0, param=0x830)[6:])], [], PLUGIN)
+        self.assertEqual((conds[0]["fn"], conds[0]["param"], conds[0]["var"]), ("GetVMQuestVariable", QUEST, "PlayerGotRumor"))
+        self.assertNotIn("var", conds[1])
+        self.assertEqual(sc.cond_text(conds[0], {QUEST: {"name": "The Whispering Door"}}), "The Whispering Door's PlayerGotRumor == 1")
+
+    def test_places_and_kinds_of_place_in_words(self):
+        names = {"Fixture.esp:000850": {"name": "Arkngthamz", "edid": "ArkngthamzLocation"}, "Fixture.esp:000851": {"name": "", "edid": "LocTypeDungeon"}}
+        self.assertEqual(sc.cond_text({"fn": "GetInCurrentLoc", "cmp": "==", "value": 1.0, "param": "Fixture.esp:000850"}, names), "you're in Arkngthamz")
+        self.assertEqual(sc.cond_text({"fn": "LocationHasKeyword", "cmp": "==", "value": 1.0, "param": "Fixture.esp:000851"}, names), "the place is a dungeon")
+
+    def test_the_reference_a_place_keeps_for_a_ref_type(self):
+        # Forelhost's Grifter alias: the reference with dunForelhostGrifterRefType at Forelhost (Captain Valmir).
+        lctn = record("LCTN", 0x850, [sub("EDID", zs("ForelhostLocation")), sub("LCSR", u32(0x820) + u32(0x860) + u32(0x870) + struct.pack("<hh", 0, 0))])
+        self.assertEqual(sc.read_location_refs(plugin(group("LCTN", [lctn])), PLUGIN), {("Fixture.esp:000850", "Fixture.esp:000820"): "Fixture.esp:000860"})
+
+    def test_a_books_scripts(self):
+        # The Heart of Dibella's letter: reading it sets the quest's stage 55.
+        name = b"DefaultOnReadSetQuestStageNotAlias"
+        body = struct.pack("<hhH", 5, 2, 1) + struct.pack("<H", len(name)) + name + b"\0" + struct.pack("<H", 2)
+        body += struct.pack("<H", 7) + b"myQuest" + bytes([1, 1]) + struct.pack("<hhI", 0, -1, 0x800)
+        body += struct.pack("<H", 7) + b"myStage" + bytes([3, 1]) + struct.pack("<i", 55)
+        book = record("BOOK", 0x880, [sub("EDID", zs("THOD_Letter")), sub("VMAD", body)])
+        (vm,) = sc.read_books(plugin(group("BOOK", [book])), PLUGIN).values()
+        self.assertEqual(vm["scripts"][0]["name"], "DefaultOnReadSetQuestStageNotAlias")
+        self.assertEqual(vm["scripts"][0]["props"]["mystage"], 55)
+        self.assertEqual(vm["scripts"][0]["props"]["myquest"]["form"], QUEST)
+
+    def test_a_follower_in_their_faction(self):
+        head = record("TES4", 0, [sub("HEDR", struct.pack("<fII", 1.7, 0, 0x800)), sub("MAST", zs("Skyrim.esm")), sub("DATA", bytes(8))])
+        fura = record("NPC_", 0x01000830, [sub("EDID", zs("Fura")), sub("SNAM", u32(0x05C84D) + bytes(4))])
+        angeline = record("NPC_", 0x01000831, [sub("EDID", zs("Angeline")), sub("SNAM", u32(0x05C84E) + bytes(4))])
+        got = sc.read_followers(head + group("NPC_", [fura, angeline]), PLUGIN, {"Fixture.esp:000830", "Fixture.esp:000831"})
+        self.assertEqual(got, {"Fixture.esp:000830": True, "Fixture.esp:000831": False})
+
+
 if __name__ == "__main__":
     unittest.main()

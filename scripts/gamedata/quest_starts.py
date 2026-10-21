@@ -45,11 +45,13 @@ CELL_SIZE = 4096
 CMP = {0: "==", 1: "!=", 2: ">", 3: ">=", 4: "<", 5: "<="}
 FUNCTIONS = {14: "GetActorValue", 46: "GetDead", 47: "GetItemCount", 77: "GetRandomPercent", 56: "GetQuestRunning", 58: "GetStage", 59: "GetStageDone", 69: "GetIsRace",
              71: "GetInFaction", 72: "GetIsID", 74: "GetGlobalValue", 80: "GetLevel", 448: "HasPerk", 543: "GetQuestCompleted",
-             426: "GetIsVoiceType", 566: "GetIsAliasRef", 576: "GetEventData"}
-FORM_PARAM = {47, 56, 58, 59, 69, 71, 72, 74, 426, 448, 543}
+             426: "GetIsVoiceType", 566: "GetIsAliasRef", 576: "GetEventData", 1: "GetDistance", 18: "GetCurrentTime", 35: "GetDisabled",
+             67: "GetInCell", 70: "GetIsSex", 84: "GetDeadCount", 182: "GetEquipped", 264: "HasSpell", 359: "GetInCurrentLoc", 453: "GetPlayerTeammate",
+             560: "HasKeyword", 561: "HasRefType", 562: "LocationHasKeyword", 629: "GetVMQuestVariable"}
+FORM_PARAM = {47, 56, 58, 59, 69, 71, 72, 74, 426, 448, 543, 1, 67, 84, 182, 264, 359, 560, 561, 562, 629}
 LOCK_LEVELS = {1: "Novice", 25: "Apprentice", 50: "Adept", 75: "Expert", 100: "Master", 255: "needs a key"}
 BASE = {"skyrim.esm", "update.esm", "dawnguard.esm", "hearthfires.esm", "dragonborn.esm"}
-NAMED = ("NPC_", "LCTN", "KEYM", "QUST", "GLOB", "DOOR", "CONT", "WRLD", "KYWD", "LCRT", "VTYP")
+NAMED = ("NPC_", "LCTN", "KEYM", "QUST", "GLOB", "DOOR", "CONT", "WRLD", "KYWD", "LCRT", "VTYP", "RACE")
 
 
 def _text(v):
@@ -79,6 +81,18 @@ def ctda(v, masters, name):
     if fn in (58, 59):
         c["stage"] = p2
     return c
+
+
+def ctdas(subs, masters, name):
+    """A record's conditions, each with the script variable a CIS1/CIS2 right after it names (GetVMQuestVariable's)."""
+    out, last = [], None
+    for s, v in subs:
+        if s == "CTDA" and len(v) >= 24:
+            out.append(ctda(v, masters, name))
+        elif s in ("CIS1", "CIS2") and last == "CTDA" and v.rstrip(b"\0"):
+            out[-1]["var"] = _text(v).lstrip(":").removesuffix("_var")
+        last = s
+    return out
 
 
 def read_quest(subs, masters, name):
@@ -153,7 +167,7 @@ def read_plugin(buf, name, openings, strings=None):
                 q = [form_id(resolve(struct.unpack_from("<I", v)[0], masters, name)) for s, v in subs if s == "QNAM"]
                 topic = q[0] if q and q[0] in openings else None
             elif t == "INFO" and topic:
-                out["infos"][form_id(resolve(fid, masters, name))] = {"quest": topic, "conditions": [ctda(v, masters, name) for s, v in subs if s == "CTDA" and len(v) >= 24]}
+                out["infos"][form_id(resolve(fid, masters, name))] = {"quest": topic, "conditions": ctdas(subs, masters, name)}
     if b"GLOB" in buf:
         for o in iter_group(buf, "GLOB"):
             _, _, fid, d = rec_data(buf, o)
@@ -293,6 +307,8 @@ def describe_condition(c, names, globals_):
         return f"{nm(c['param'])} {'completed' if (c.get('value') == 1) == (c['cmp'] == '==') else 'not completed'}"
     if fn == "GetStage":
         return f"{nm(c['param'])} stage {c['cmp']} {val}"
+    if fn == "GetVMQuestVariable" and c.get("var"):
+        return f"{nm(c['param'])}'s {c['var']} {c['cmp']} {val}"
     if fn == "GetGlobalValue":
         g = c["param"]
         return f"global {nm(g)} {c['cmp']} {val} (now {globals_.get(g, {}).get('value', '?')})"

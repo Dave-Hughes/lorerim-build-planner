@@ -135,7 +135,7 @@
      "reply": [
       "The Legion's always looking for strong, capable warriors. If you think you've got what it takes, our headquarters is in Solitude."
      ],
-     "conditions": "fn359 == 0; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker isn't Hadvar",
+     "conditions": "you're not in Solitude; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker isn't Hadvar",
      "source": "TIF__000D3C58.Fragment_0 on INFO Skyrim.esm:0D3C58 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -150,7 +150,7 @@
      "reply": [
       "If you are, then you make your way to Windhelm and talk to the man himself. If you're not, well, friend, you'd best walk away before this gets ugly."
      ],
-     "conditions": "fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
+     "conditions": "you're not in Windhelm; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
      "source": "TIF__000D3C57.Fragment_0 on INFO Skyrim.esm:0D3C57 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -165,7 +165,7 @@
      "reply": [
       "If you are, then you talk to the man himself. If you're not, well, friend, you'd best walk away before this gets ugly."
      ],
-     "conditions": "fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
+     "conditions": "you're in Windhelm; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
      "source": "TIF__000FBA68.Fragment_0 on INFO Skyrim.esm:0FBA68 (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
     },
@@ -183,7 +183,7 @@
       "If you're serious, make your way to Solitude. Our headquarters is Castle Dour. You'll find General Tullius there, commanding our forces in Skyrim.",
       "But talk to Legate Rikke. She handles the local recruiting."
      ],
-     "conditions": "Unbound completed; fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
+     "conditions": "Unbound completed; you're not in Solitude; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
      "source": "TIF__000D3C5A.Fragment_0 on INFO Skyrim.esm:0D3C5A (AlternatePerspective.esp)",
      "verdict": "script"
     },
@@ -201,7 +201,7 @@
       "If you're serious, you're in the right place. Our headquarters is in Castle Dour. Here you'll find General Tullius, commanding our forces in Skyrim.",
       "But talk to Legate Rikke. She handles the local recruiting."
      ],
-     "conditions": "Unbound completed; fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
+     "conditions": "Unbound completed; you're in Solitude; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
      "source": "TIF__000FBA67.Fragment_0 on INFO Skyrim.esm:0FBA67 (AlternatePerspective.esp)",
      "verdict": "script"
     },
@@ -241,6 +241,152 @@
      "verdict": "script"
     },
     {
+     "after": [
+      {
+       "quest": "CW00B (Stormcloak Introductions)",
+       "questId": "Skyrim.esm:0E1B5A",
+       "edid": "CW00B",
+       "atStage": 10,
+       "sets": "PlayerGotIntro",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "WEDL14 (named \"Looking to join Stormcloaks\" in its record), a helper quest",
+         "questId": "Skyrim.esm:0BD758",
+         "atStage": 10,
+         "call": "SetStage 2",
+         "source": "QF_WEDL14_000BD758.fragment_12 on Skyrim.esm:0BD758 (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102B (named \"Season Unending\" in its record), a helper quest with Gerdur, Hod, Frodnar",
+         "questId": "Skyrim.esm:02610A",
+         "atStage": 22,
+         "call": "SetStage 2",
+         "source": "QF_MQ102B_010A4C68.fragment_51 on Skyrim.esm:02610A (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "dialogue",
+         "speaker": "",
+         "speakerNamed": "GetIsID",
+         "speakerPlaced": [
+          "Windhelm",
+          "Windhelm"
+         ],
+         "call": "SetStage 2",
+         "info": "Skyrim.esm:03ED51",
+         "prompt": "Placeholder For Remarks Culled From Other Topics",
+         "reply": [
+          "If you're here to join the Stormcloaks, the palace is inside. "
+         ],
+         "conditions": "the speaker hasn't the voice Skyrim.esm:0B3E4E; the speaker has the voice Skyrim.esm:0B3E4E",
+         "source": "TIF__0003ED51.Fragment_0 on INFO Skyrim.esm:03ED51 (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "dialogue",
+         "speaker": "Gerdur",
+         "speakerNamed": "GetIsID",
+         "speakerPlaced": [
+          "Hod and Gerdur's House"
+         ],
+         "call": "SetStage 2",
+         "info": "Skyrim.esm:056AB1",
+         "prompt": "What do you think about the war?",
+         "reply": [
+          "The Empire may have been good for Skyrim once upon a time, but those days are long past.",
+          "Banning the worship of Talos was the last straw. Thalmor everywhere, dragging people off for honoring our own gods!",
+          "I'm glad Ralof is helping drive them out of here. If I was a bit younger, I might have joined the fight myself."
+         ],
+         "conditions": "the speaker is Gerdur; Season Unending stage 50 done",
+         "source": "TIF__00056AB1.Fragment_0 on INFO Skyrim.esm:056AB1 (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "start game",
+         "source": "Skyrim.esm:0E1B5A DNAM (LoreRim - Dialogue Patch.esp)",
+         "verdict": "files"
+        }
+       ],
+       "source": "Skyrim.esm:0E1B5A stage 10 fragment (LoreRim - Dialogue Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "CW00A (Imperial Introductions)",
+       "questId": "Skyrim.esm:0D3C5F",
+       "edid": "CW00A",
+       "atStage": 10,
+       "sets": "PlayerGotIntro",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "WEDL13 (named \"Looking to join Imperials\" in its record), a helper quest",
+         "questId": "Skyrim.esm:0BD757",
+         "atStage": 10,
+         "call": "SetStage 1",
+         "source": "QF_WEDL13_000BD757.fragment_12 on Skyrim.esm:0BD757 (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102A (named \"Season Unending\" in its record), a helper quest with Alvor, Sigrid, Dorthe",
+         "questId": "Skyrim.esm:02BF9C",
+         "atStage": 22,
+         "call": "SetStage 1",
+         "source": "QF_MQ102_0002BF9C.fragment_47 on Skyrim.esm:02BF9C (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "dialogue",
+         "speaker": "Alvor",
+         "speakerNamed": "GetIsID",
+         "speakerPlaced": [
+          "Alvor and Sigrid's House"
+         ],
+         "call": "SetStage 1",
+         "info": "Skyrim.esm:056B24",
+         "prompt": "What do you think about the war?",
+         "reply": [
+          "People are rightly stirred up about the damn Thalmor being allowed to roam around arresting people, just for worshipping Talos.",
+          "But was it worth tearing Skyrim apart, and maybe destroying the Empire? No, Ulfric will have a lot to answer for in the end.",
+          "Nords have always supported the Empire, and the Empire has always been good for Skyrim."
+         ],
+         "conditions": "the speaker is Alvor",
+         "source": "TIF__00056B24.Fragment_1 on INFO Skyrim.esm:056B24 (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "dialogue",
+         "speaker": "Alvor",
+         "speakerNamed": "alias Alvor of MQ102A (Season Unending) (unique)",
+         "speakerPlaced": [
+          "Alvor and Sigrid's House"
+         ],
+         "call": "SetStage 1",
+         "info": "Skyrim.esm:0D39AF",
+         "prompt": "You support the Empire, then?",
+         "reply": [
+          "Of course. Skyrim has always been part of the Empire.",
+          "That doesn't mean I support everything the Empire's been doing lately, but Nords have never been fair-weather friends."
+         ],
+         "conditions": "the speaker is the one in alias Alvor",
+         "source": "TIF__000D39AF.Fragment_0 on INFO Skyrim.esm:0D39AF (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "start game",
+         "source": "Skyrim.esm:0D3C5F DNAM (LoreRim - Dialogue Patch.esp)",
+         "verdict": "files"
+        }
+       ],
+       "source": "Skyrim.esm:0D3C5F stage 10 fragment (LoreRim - Dialogue Patch.esp)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "General Tullius",
      "speakerNamed": "GetIsID",
@@ -253,7 +399,7 @@
      "reply": [
       "I remember you, you were at Helgen. Speak to Legate Rikke. I suspect we could use someone like you."
      ],
-     "conditions": "Unbound completed; Imperial Introductions stage 10 not done; fn629 == 2; the speaker is General Tullius",
+     "conditions": "Unbound completed; Imperial Introductions stage 10 not done; CW's PlayerGotIntro == 2; the speaker is General Tullius",
      "source": "TIF__000C348B.Fragment_0 on INFO Skyrim.esm:0C348B (AlternatePerspective.esp)",
      "verdict": "script"
     },
@@ -301,6 +447,7 @@
     "source": "Skyrim.esm:0D3C5F QOBJ 1",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [
     {
      "alias": "Rikke",
@@ -528,6 +675,152 @@
      "verdict": "script"
     },
     {
+     "after": [
+      {
+       "quest": "CW00B (Stormcloak Introductions)",
+       "questId": "Skyrim.esm:0E1B5A",
+       "edid": "CW00B",
+       "atStage": 10,
+       "sets": "PlayerGotIntro",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "WEDL14 (named \"Looking to join Stormcloaks\" in its record), a helper quest",
+         "questId": "Skyrim.esm:0BD758",
+         "atStage": 10,
+         "call": "SetStage 2",
+         "source": "QF_WEDL14_000BD758.fragment_12 on Skyrim.esm:0BD758 (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102B (named \"Season Unending\" in its record), a helper quest with Gerdur, Hod, Frodnar",
+         "questId": "Skyrim.esm:02610A",
+         "atStage": 22,
+         "call": "SetStage 2",
+         "source": "QF_MQ102B_010A4C68.fragment_51 on Skyrim.esm:02610A (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "dialogue",
+         "speaker": "",
+         "speakerNamed": "GetIsID",
+         "speakerPlaced": [
+          "Windhelm",
+          "Windhelm"
+         ],
+         "call": "SetStage 2",
+         "info": "Skyrim.esm:03ED51",
+         "prompt": "Placeholder For Remarks Culled From Other Topics",
+         "reply": [
+          "If you're here to join the Stormcloaks, the palace is inside. "
+         ],
+         "conditions": "the speaker hasn't the voice Skyrim.esm:0B3E4E; the speaker has the voice Skyrim.esm:0B3E4E",
+         "source": "TIF__0003ED51.Fragment_0 on INFO Skyrim.esm:03ED51 (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "dialogue",
+         "speaker": "Gerdur",
+         "speakerNamed": "GetIsID",
+         "speakerPlaced": [
+          "Hod and Gerdur's House"
+         ],
+         "call": "SetStage 2",
+         "info": "Skyrim.esm:056AB1",
+         "prompt": "What do you think about the war?",
+         "reply": [
+          "The Empire may have been good for Skyrim once upon a time, but those days are long past.",
+          "Banning the worship of Talos was the last straw. Thalmor everywhere, dragging people off for honoring our own gods!",
+          "I'm glad Ralof is helping drive them out of here. If I was a bit younger, I might have joined the fight myself."
+         ],
+         "conditions": "the speaker is Gerdur; Season Unending stage 50 done",
+         "source": "TIF__00056AB1.Fragment_0 on INFO Skyrim.esm:056AB1 (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "start game",
+         "source": "Skyrim.esm:0E1B5A DNAM (LoreRim - Dialogue Patch.esp)",
+         "verdict": "files"
+        }
+       ],
+       "source": "Skyrim.esm:0E1B5A stage 10 fragment (LoreRim - Dialogue Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "quest": "CW00A (Imperial Introductions)",
+       "questId": "Skyrim.esm:0D3C5F",
+       "edid": "CW00A",
+       "atStage": 10,
+       "sets": "PlayerGotIntro",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "WEDL13 (named \"Looking to join Imperials\" in its record), a helper quest",
+         "questId": "Skyrim.esm:0BD757",
+         "atStage": 10,
+         "call": "SetStage 1",
+         "source": "QF_WEDL13_000BD757.fragment_12 on Skyrim.esm:0BD757 (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102A (named \"Season Unending\" in its record), a helper quest with Alvor, Sigrid, Dorthe",
+         "questId": "Skyrim.esm:02BF9C",
+         "atStage": 22,
+         "call": "SetStage 1",
+         "source": "QF_MQ102_0002BF9C.fragment_47 on Skyrim.esm:02BF9C (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "dialogue",
+         "speaker": "Alvor",
+         "speakerNamed": "GetIsID",
+         "speakerPlaced": [
+          "Alvor and Sigrid's House"
+         ],
+         "call": "SetStage 1",
+         "info": "Skyrim.esm:056B24",
+         "prompt": "What do you think about the war?",
+         "reply": [
+          "People are rightly stirred up about the damn Thalmor being allowed to roam around arresting people, just for worshipping Talos.",
+          "But was it worth tearing Skyrim apart, and maybe destroying the Empire? No, Ulfric will have a lot to answer for in the end.",
+          "Nords have always supported the Empire, and the Empire has always been good for Skyrim."
+         ],
+         "conditions": "the speaker is Alvor",
+         "source": "TIF__00056B24.Fragment_1 on INFO Skyrim.esm:056B24 (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "dialogue",
+         "speaker": "Alvor",
+         "speakerNamed": "alias Alvor of MQ102A (Season Unending) (unique)",
+         "speakerPlaced": [
+          "Alvor and Sigrid's House"
+         ],
+         "call": "SetStage 1",
+         "info": "Skyrim.esm:0D39AF",
+         "prompt": "You support the Empire, then?",
+         "reply": [
+          "Of course. Skyrim has always been part of the Empire.",
+          "That doesn't mean I support everything the Empire's been doing lately, but Nords have never been fair-weather friends."
+         ],
+         "conditions": "the speaker is the one in alias Alvor",
+         "source": "TIF__000D39AF.Fragment_0 on INFO Skyrim.esm:0D39AF (Skyrim.esm)",
+         "verdict": "script"
+        },
+        {
+         "by": "start game",
+         "source": "Skyrim.esm:0D3C5F DNAM (LoreRim - Dialogue Patch.esp)",
+         "verdict": "files"
+        }
+       ],
+       "source": "Skyrim.esm:0D3C5F stage 10 fragment (LoreRim - Dialogue Patch.esp)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Ulfric Stormcloak",
      "speakerNamed": "GetIsID",
@@ -540,7 +833,7 @@
      "reply": [
       "I remember you... You were at Helgen with us! Come to join the war? Speak with Galmar. He handles the new recruits."
      ],
-     "conditions": "Unbound completed; Stormcloak Introductions stage 10 not done; fn629 == 1; the speaker is Ulfric Stormcloak",
+     "conditions": "Unbound completed; Stormcloak Introductions stage 10 not done; CW's PlayerGotIntro == 1; the speaker is Ulfric Stormcloak",
      "source": "TIF__000C3489.Fragment_0 on INFO Skyrim.esm:0C3489 (AlternatePerspective.esp)",
      "verdict": "script"
     },
@@ -557,7 +850,7 @@
      "reply": [
       "If you know any true sons and daughters of Skyrim, tell them to head to Windhelm. Ulfric Stormcloak wants to see them."
      ],
-     "conditions": "fn359 == 0; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker isn't Ralof",
+     "conditions": "you're not in Windhelm; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker isn't Ralof",
      "source": "TIF__000D3C59.Fragment_0 on INFO Skyrim.esm:0D3C59 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -600,6 +893,7 @@
     "source": "Skyrim.esm:0E1B5A QOBJ 2",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [
     {
      "alias": "Ulfric",
@@ -681,6 +975,9 @@
     "source": "Skyrim.esm:0C349B QOBJ 1",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "1": 1
+   },
    "target": [
     {
      "alias": "Beirand",
@@ -752,6 +1049,7 @@
     "source": "Skyrim.esm:034B58 QOBJ 20",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -775,7 +1073,24 @@
      "atStage": 21,
      "call": "SetStage 1",
      "source": "QF_CW00_000D3C5F.fragment_8 on Skyrim.esm:0D3C5F (LoreRim - Dialogue Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Legate Rikke",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Castle Dour"
+       ],
+       "call": "SetStage 21",
+       "info": "Skyrim.esm:0D5133",
+       "prompt": null,
+       "reply": [],
+       "conditions": "fn592 == 0; the speaker is Legate Rikke",
+       "source": "TIF__000D5133.Fragment_1 on INFO Skyrim.esm:0D5133 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -784,7 +1099,24 @@
      "atStage": 20,
      "call": "SetStage 1",
      "source": "QF_CW00_000D3C5F.fragment_6 on Skyrim.esm:0D3C5F (LoreRim - Dialogue Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Legate Rikke",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Castle Dour"
+       ],
+       "call": "SetStage 20",
+       "info": "Skyrim.esm:0D5153",
+       "prompt": null,
+       "reply": [],
+       "conditions": "fn592 >= 1; the speaker is Legate Rikke",
+       "source": "TIF__000D5153.Fragment_0 on INFO Skyrim.esm:0D5153 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -807,6 +1139,11 @@
     "index": 1,
     "source": "Skyrim.esm:0D517A QOBJ 1",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "1": 1,
+    "100": 100,
+    "160": 160
    },
    "target": [
     {
@@ -983,7 +1320,24 @@
       "atStage": 21,
       "call": "SetStage 100",
       "source": "QF_CW00_000D3C5F.fragment_8 on Skyrim.esm:0D3C5F (LoreRim - Dialogue Patch.esp)",
-      "verdict": "script"
+      "verdict": "script",
+      "throughStage": [
+       {
+        "by": "dialogue",
+        "speaker": "Legate Rikke",
+        "speakerNamed": "GetIsID",
+        "speakerPlaced": [
+         "Castle Dour"
+        ],
+        "call": "SetStage 21",
+        "info": "Skyrim.esm:0D5133",
+        "prompt": null,
+        "reply": [],
+        "conditions": "fn592 == 0; the speaker is Legate Rikke",
+        "source": "TIF__000D5133.Fragment_1 on INFO Skyrim.esm:0D5133 (Skyrim.esm)",
+        "verdict": "script"
+       }
+      ]
      }
     ]
    }
@@ -1002,7 +1356,39 @@
      "atStage": 20,
      "call": "SetStage 1",
      "source": "QF_CW00B_000E1B5A.fragment_6 on Skyrim.esm:0E1B5A (LoreRim - Dialogue Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Galmar Stone-Fist",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Palace of the Kings"
+       ],
+       "call": "SetStage 20",
+       "info": "Skyrim.esm:0E1B04",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Galmar Stone-Fist; level >= CW01BPlayerLevelHelp (now 20)",
+       "source": "TIF__000E1B04.Fragment_0 on INFO Skyrim.esm:0E1B04 (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "Galmar Stone-Fist",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Palace of the Kings"
+       ],
+       "call": "SetStage 20",
+       "info": "Skyrim.esm:0E2D28",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Galmar Stone-Fist",
+       "source": "TIF__000E2D28.Fragment_0 on INFO Skyrim.esm:0E2D28 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [
@@ -1019,6 +1405,11 @@
     "index": 1,
     "source": "Skyrim.esm:0E2D29 QOBJ 1",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "1": 1,
+    "100": 100,
+    "160": 160
    },
    "target": [
     {
@@ -1068,7 +1459,24 @@
      "atStage": 200,
      "call": "SetStage 10",
      "source": "QF_CW01_000D517A.fragment_4 on Skyrim.esm:0D517A (LoreRim - Dialogue Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "General Tullius",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Castle Dour"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:099D18",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is General Tullius",
+       "source": "TIF__00099D18.Fragment_1 on INFO Skyrim.esm:099D18 (JK's Castle Dour.esp)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -1078,6 +1486,13 @@
     "index": 10,
     "source": "Skyrim.esm:02D75C QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 30,
+    "40": 50,
+    "80": 180,
+    "90": 220
    },
    "target": [
     {
@@ -1172,7 +1587,24 @@
      "atStage": 200,
      "call": "SetStage 10",
      "source": "QF_CW01B_000E2D29.fragment_4 on Skyrim.esm:0E2D29 (LoreRim - Dialogue Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Galmar Stone-Fist",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Palace of the Kings"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:099DA7",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Galmar Stone-Fist",
+       "source": "TIF__00099DA7.Fragment_0 on INFO Skyrim.esm:099DA7 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -1182,6 +1614,13 @@
     "index": 10,
     "source": "Skyrim.esm:02610B QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 30,
+    "40": 50,
+    "80": 180,
+    "90": 190
    },
    "target": [
     {
@@ -1288,7 +1727,69 @@
      "atStage": 190,
      "call": "SetStage 10",
      "source": "QF_MQ103B_0002610B.fragment_22 on Skyrim.esm:02610B (LoreRim - Dialogue Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Ulfric Stormcloak",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Palace of the Kings"
+       ],
+       "call": "SetStage 190",
+       "info": "Skyrim.esm:05F3FB",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Ulfric Stormcloak",
+       "source": "TIF__0005F3FB.Fragment_0 on INFO Skyrim.esm:05F3FB (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "Ulfric Stormcloak",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Palace of the Kings"
+       ],
+       "call": "SetStage 190",
+       "info": "Skyrim.esm:05F3FA",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Ulfric Stormcloak",
+       "source": "TIF__0005F3FA.Fragment_0 on INFO Skyrim.esm:05F3FA (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "Ulfric Stormcloak",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Palace of the Kings"
+       ],
+       "call": "SetStage 190",
+       "info": "Skyrim.esm:05F3F9",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Ulfric Stormcloak",
+       "source": "TIF__0005F3F9.Fragment_0 on INFO Skyrim.esm:05F3F9 (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "Ulfric Stormcloak",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Palace of the Kings"
+       ],
+       "call": "SetStage 190",
+       "info": "Skyrim.esm:0E2D14",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Ulfric Stormcloak; GetDeadCount Balgruuf the Greater == 0",
+       "source": "TIF__000E2D14.Fragment_0 on INFO Skyrim.esm:0E2D14 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1297,7 +1798,24 @@
      "atStage": 220,
      "call": "SetStage 10",
      "source": "QF_MQ103B_0002610B.fragment_30 on Skyrim.esm:02610B (LoreRim - Dialogue Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "General Tullius",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Castle Dour"
+       ],
+       "call": "SetStage 220",
+       "info": "Skyrim.esm:05A6A6",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is General Tullius",
+       "source": "TIF__0005A6A6.Fragment_0 on INFO Skyrim.esm:05A6A6 (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1306,7 +1824,39 @@
      "atStage": 190,
      "call": "SetStage 10",
      "source": "QF_MQ103A_0002D75C.fragment_20 on Skyrim.esm:02D75C (LoreRim - Dialogue Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "General Tullius",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Castle Dour"
+       ],
+       "call": "SetStage 190",
+       "info": "Skyrim.esm:0D6615",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is General Tullius; GetDeadCount Balgruuf the Greater == 0",
+       "source": "TIF__000D6615.Fragment_0 on INFO Skyrim.esm:0D6615 (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "General Tullius",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Castle Dour"
+       ],
+       "call": "SetStage 190",
+       "info": "Skyrim.esm:0E2D11",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is General Tullius",
+       "source": "TIF__000E2D11.Fragment_0 on INFO Skyrim.esm:0E2D11 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ]
     },
     {
      "by": "quest script",
@@ -1315,7 +1865,24 @@
      "atStage": 220,
      "call": "SetStage 10",
      "source": "QF_MQ103A_0002D75C.fragment_32 on Skyrim.esm:02D75C (LoreRim - Dialogue Patch.esp)",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Ulfric Stormcloak",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Palace of the Kings"
+       ],
+       "call": "SetStage 220",
+       "info": "Skyrim.esm:05A6B1",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Ulfric Stormcloak",
+       "source": "TIF__0005A6B1.Fragment_0 on INFO Skyrim.esm:05A6B1 (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -1325,6 +1892,16 @@
     "index": 10,
     "source": "Skyrim.esm:0D661C QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "11": 10,
+    "16": 16,
+    "20": 20,
+    "50": 50,
+    "100": 100,
+    "150": 150,
+    "225": 225
    },
    "target": [
     {
@@ -1384,6 +1961,13 @@
     "source": "Skyrim.esm:026F45 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "15": 15,
+    "20": 20,
+    "30": 30,
+    "50": 50
+   },
    "target": [
     {
      "alias": "FieldCO",
@@ -1420,6 +2004,112 @@
    "firstObjectiveStage": 10,
    "startedBy": [
     {
+     "by": "by itself",
+     "script": "CWFortSiegeMissionScript",
+     "call": "SetStage 0",
+     "plain": "It starts by itself from the start of the game.",
+     "source": "CWFortSiegeMissionScript.OnStoryScript on Skyrim.esm:087C21 (LoreRim - Dialogue Patch.esp)",
+     "verdict": "script"
+    },
+    {
+     "after": [
+      {
+       "quest": "MQ102B (Season Unending)",
+       "questId": "Skyrim.esm:02610A",
+       "edid": "MQ102B",
+       "atStage": 10,
+       "sets": "playerAllegiance",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 5",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 2,
+         "call": "SetStage 1",
+         "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 15,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_87 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ101 (named \"Unbound\" in its record), a helper quest with Hadvar, Ralof, Alduin",
+         "questId": "Skyrim.esm:03372B",
+         "atStage": 0,
+         "call": "SetStage 1",
+         "source": "QF_MQ101_0003372B_new.fragment_27 on Skyrim.esm:03372B (Alternate Perspective - Gate to Sovngarde Edition.esp)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02610A stage 10 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "MQ102A (Season Unending)",
+       "questId": "Skyrim.esm:02BF9C",
+       "edid": "MQ102A",
+       "atStage": 10,
+       "sets": "playerAllegiance",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 1",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 2,
+         "call": "SetStage 5",
+         "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 15,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_86 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02BF9C stage 10 fragment (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Legate Rikke",
      "speakerNamed": "GetIsID",
@@ -1432,11 +2122,109 @@
      "reply": [
       "We're taking the capital. Meet the soldiers gathering for the attack. Move it!"
      ],
-     "conditions": "the speaker is Legate Rikke; fn629 == CWImperial (now 1); GetInFaction CWFieldCOFaction == 1; GetInFaction Imperial Legion == 1; GetQuestRunning The Battle for <Alias=Fort> == 1",
+     "conditions": "the speaker is Legate Rikke; CW's playerAllegiance == CWImperial (now 1); GetInFaction CWFieldCOFaction == 1; GetInFaction Imperial Legion == 1; GetQuestRunning The Battle for <Alias=Fort> == 1",
      "source": "TIF__000CA74C.Fragment_1 on INFO Skyrim.esm:0CA74C (Skyrim.esm)",
      "verdict": "script"
     },
     {
+     "after": [
+      {
+       "quest": "MQ102B (Season Unending)",
+       "questId": "Skyrim.esm:02610A",
+       "edid": "MQ102B",
+       "atStage": 10,
+       "sets": "playerAllegiance",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 5",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 2,
+         "call": "SetStage 1",
+         "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 15,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_87 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ101 (named \"Unbound\" in its record), a helper quest with Hadvar, Ralof, Alduin",
+         "questId": "Skyrim.esm:03372B",
+         "atStage": 0,
+         "call": "SetStage 1",
+         "source": "QF_MQ101_0003372B_new.fragment_27 on Skyrim.esm:03372B (Alternate Perspective - Gate to Sovngarde Edition.esp)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02610A stage 10 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "MQ102A (Season Unending)",
+       "questId": "Skyrim.esm:02BF9C",
+       "edid": "MQ102A",
+       "atStage": 10,
+       "sets": "playerAllegiance",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 1",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 2,
+         "call": "SetStage 5",
+         "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 15,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_86 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02BF9C stage 10 fragment (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Legate Rikke",
      "speakerNamed": "GetIsID",
@@ -1449,11 +2237,109 @@
      "reply": [
       "We're taking Dawnstar. Get down there and join the rest of the men gathering for the attack. Now soldier!"
      ],
-     "conditions": "the speaker is Legate Rikke; fn629 == CWImperial (now 1); GetInFaction CWFieldCOFaction == 1; GetInFaction Imperial Legion == 1; GetQuestRunning The Battle for <Alias=Fort> == 1",
+     "conditions": "the speaker is Legate Rikke; CW's playerAllegiance == CWImperial (now 1); GetInFaction CWFieldCOFaction == 1; GetInFaction Imperial Legion == 1; GetQuestRunning The Battle for <Alias=Fort> == 1",
      "source": "TIF__00065C83.Fragment_1 on INFO Skyrim.esm:065C83 (Skyrim.esm)",
      "verdict": "script"
     },
     {
+     "after": [
+      {
+       "quest": "MQ102B (Season Unending)",
+       "questId": "Skyrim.esm:02610A",
+       "edid": "MQ102B",
+       "atStage": 10,
+       "sets": "playerAllegiance",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 5",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 2,
+         "call": "SetStage 1",
+         "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 15,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_87 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ101 (named \"Unbound\" in its record), a helper quest with Hadvar, Ralof, Alduin",
+         "questId": "Skyrim.esm:03372B",
+         "atStage": 0,
+         "call": "SetStage 1",
+         "source": "QF_MQ101_0003372B_new.fragment_27 on Skyrim.esm:03372B (Alternate Perspective - Gate to Sovngarde Edition.esp)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02610A stage 10 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "MQ102A (Season Unending)",
+       "questId": "Skyrim.esm:02BF9C",
+       "edid": "MQ102A",
+       "atStage": 10,
+       "sets": "playerAllegiance",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 1",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 2,
+         "call": "SetStage 5",
+         "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 15,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_86 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02BF9C stage 10 fragment (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Legate Rikke",
      "speakerNamed": "GetIsID",
@@ -1466,11 +2352,109 @@
      "reply": [
       "We're taking Winterhold. Get over there and join the rest of the men gathering for the attack. Now soldier!"
      ],
-     "conditions": "the speaker is Legate Rikke; fn629 == CWImperial (now 1); GetInFaction CWFieldCOFaction == 1; GetInFaction Imperial Legion == 1; GetQuestRunning The Battle for <Alias=Fort> == 1",
+     "conditions": "the speaker is Legate Rikke; CW's playerAllegiance == CWImperial (now 1); GetInFaction CWFieldCOFaction == 1; GetInFaction Imperial Legion == 1; GetQuestRunning The Battle for <Alias=Fort> == 1",
      "source": "TIF__00065C84.Fragment_1 on INFO Skyrim.esm:065C84 (Skyrim.esm)",
      "verdict": "script"
     },
     {
+     "after": [
+      {
+       "quest": "MQ102B (Season Unending)",
+       "questId": "Skyrim.esm:02610A",
+       "edid": "MQ102B",
+       "atStage": 10,
+       "sets": "playerAllegiance",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 5",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 2,
+         "call": "SetStage 1",
+         "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 15,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_87 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ101 (named \"Unbound\" in its record), a helper quest with Hadvar, Ralof, Alduin",
+         "questId": "Skyrim.esm:03372B",
+         "atStage": 0,
+         "call": "SetStage 1",
+         "source": "QF_MQ101_0003372B_new.fragment_27 on Skyrim.esm:03372B (Alternate Perspective - Gate to Sovngarde Edition.esp)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02610A stage 10 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "MQ102A (Season Unending)",
+       "questId": "Skyrim.esm:02BF9C",
+       "edid": "MQ102A",
+       "atStage": 10,
+       "sets": "playerAllegiance",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 1",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 2,
+         "call": "SetStage 5",
+         "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 15,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_86 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02BF9C stage 10 fragment (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Galmar Stone-Fist",
      "speakerNamed": "GetIsID",
@@ -1483,11 +2467,109 @@
      "reply": [
       "We're taking the capital. Meet the brothers gathering for the attack. Fight well or die well. Talos be with you."
      ],
-     "conditions": "the speaker is Galmar Stone-Fist; fn629 == CWSons (now 2); the speaker isn't Captain Yrsarald Thrice-Pierced; GetInFaction CWFieldCOFaction == 1; GetInFaction Sons of Skyrim == 1; GetQuestRunning The Battle for <Alias=Fort> == 1",
+     "conditions": "the speaker is Galmar Stone-Fist; CW's playerAllegiance == CWSons (now 2); the speaker isn't Captain Yrsarald Thrice-Pierced; GetInFaction CWFieldCOFaction == 1; GetInFaction Sons of Skyrim == 1; GetQuestRunning The Battle for <Alias=Fort> == 1",
      "source": "TIF__000CA74D.Fragment_1 on INFO Skyrim.esm:0CA74D (Skyrim.esm)",
      "verdict": "script"
     },
     {
+     "after": [
+      {
+       "quest": "MQ102B (Season Unending)",
+       "questId": "Skyrim.esm:02610A",
+       "edid": "MQ102B",
+       "atStage": 10,
+       "sets": "playerAllegiance",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 5",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 2,
+         "call": "SetStage 1",
+         "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 15,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_87 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ101 (named \"Unbound\" in its record), a helper quest with Hadvar, Ralof, Alduin",
+         "questId": "Skyrim.esm:03372B",
+         "atStage": 0,
+         "call": "SetStage 1",
+         "source": "QF_MQ101_0003372B_new.fragment_27 on Skyrim.esm:03372B (Alternate Perspective - Gate to Sovngarde Edition.esp)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02610A stage 10 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "MQ102A (Season Unending)",
+       "questId": "Skyrim.esm:02BF9C",
+       "edid": "MQ102A",
+       "atStage": 10,
+       "sets": "playerAllegiance",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 1",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 2,
+         "call": "SetStage 5",
+         "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 15,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_86 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02BF9C stage 10 fragment (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Galmar Stone-Fist",
      "speakerNamed": "GetIsID",
@@ -1500,11 +2582,109 @@
      "reply": [
       "We're taking Falkreath. Get over there with the others. Fight well or die well."
      ],
-     "conditions": "the speaker is Galmar Stone-Fist; fn629 == CWSons (now 2); the speaker isn't Captain Yrsarald Thrice-Pierced; GetInFaction CWFieldCOFaction == 1; GetInFaction Sons of Skyrim == 1; GetQuestRunning The Battle for <Alias=Fort> == 1",
+     "conditions": "the speaker is Galmar Stone-Fist; CW's playerAllegiance == CWSons (now 2); the speaker isn't Captain Yrsarald Thrice-Pierced; GetInFaction CWFieldCOFaction == 1; GetInFaction Sons of Skyrim == 1; GetQuestRunning The Battle for <Alias=Fort> == 1",
      "source": "TIF__00065C88.Fragment_1 on INFO Skyrim.esm:065C88 (Skyrim.esm)",
      "verdict": "script"
     },
     {
+     "after": [
+      {
+       "quest": "MQ102B (Season Unending)",
+       "questId": "Skyrim.esm:02610A",
+       "edid": "MQ102B",
+       "atStage": 10,
+       "sets": "playerAllegiance",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 5",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 2,
+         "call": "SetStage 1",
+         "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 15,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_87 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ101 (named \"Unbound\" in its record), a helper quest with Hadvar, Ralof, Alduin",
+         "questId": "Skyrim.esm:03372B",
+         "atStage": 0,
+         "call": "SetStage 1",
+         "source": "QF_MQ101_0003372B_new.fragment_27 on Skyrim.esm:03372B (Alternate Perspective - Gate to Sovngarde Edition.esp)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02610A stage 10 fragment (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "quest": "MQ102A (Season Unending)",
+       "questId": "Skyrim.esm:02BF9C",
+       "edid": "MQ102A",
+       "atStage": 10,
+       "sets": "playerAllegiance",
+       "of": "Skyrim.esm:019E53",
+       "startedBy": [
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 1",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 1,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 2,
+         "call": "SetStage 5",
+         "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        },
+        {
+         "by": "quest script",
+         "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+         "questId": "Skyrim.esm:04E50D",
+         "atStage": 15,
+         "call": "SetStage 10",
+         "source": "QF_MQ102_0004E50D.fragment_86 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+         "verdict": "script"
+        }
+       ],
+       "source": "Skyrim.esm:02BF9C stage 10 fragment (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
      "by": "dialogue",
      "speaker": "Galmar Stone-Fist",
      "speakerNamed": "GetIsID",
@@ -1517,7 +2697,7 @@
      "reply": [
       "We're liberating Morthal. Join the brothers gathering for the attack. Talos be with you."
      ],
-     "conditions": "the speaker is Galmar Stone-Fist; fn629 == CWSons (now 2); the speaker isn't Captain Yrsarald Thrice-Pierced; GetInFaction CWFieldCOFaction == 1; GetInFaction Sons of Skyrim == 1; GetQuestRunning The Battle for <Alias=Fort> == 1",
+     "conditions": "the speaker is Galmar Stone-Fist; CW's playerAllegiance == CWSons (now 2); the speaker isn't Captain Yrsarald Thrice-Pierced; GetInFaction CWFieldCOFaction == 1; GetInFaction Sons of Skyrim == 1; GetQuestRunning The Battle for <Alias=Fort> == 1",
      "source": "TIF__00065C89.Fragment_1 on INFO Skyrim.esm:065C89 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -1556,6 +2736,13 @@
     "source": "Skyrim.esm:087C21 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {
+    "10": 10,
+    "20": 10,
+    "100": 50,
+    "110": 920,
+    "200": 50
+   },
    "target": [
     {
      "alias": "Attacker1",
@@ -1590,6 +2777,14 @@
    "plugin": "LoreRim - Dialogue Patch.esp",
    "firstObjectiveStage": 10,
    "startedBy": [
+    {
+     "by": "by itself",
+     "script": "CWFortSiegeMissionScript",
+     "call": "SetStage 0",
+     "plain": "It starts by itself from the start of the game.",
+     "source": "CWFortSiegeMissionScript.OnStoryScript on Skyrim.esm:083042 (LoreRim - Dialogue Patch.esp)",
+     "verdict": "script"
+    },
     {
      "by": "dialogue",
      "speaker": null,
@@ -1903,7 +3098,7 @@
      ],
      "source": "CWRiftQuestFortSiegeNodeREGAINDUPLICATE000 Skyrim.esm:10C5F7 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 != CWSons (now 2); fn629 == CWSons (now 2); fn629 == 1"
+     "conditions": "fn565 == 1; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 != CWSons (now 2); GetVMQuestVariable CW == CWSons (now 2); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -1918,7 +3113,7 @@
      ],
      "source": "CWWinterholdQuestFortSiegeNodeREGAINDUPLICATE000 Skyrim.esm:10C5F6 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 <= CWSons (now 2); fn606 != CWSons (now 2); fn629 == CWSons (now 2); fn629 == 1"
+     "conditions": "fn565 == 1; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 <= CWSons (now 2); fn606 != CWSons (now 2); GetVMQuestVariable CW == CWSons (now 2); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -1933,7 +3128,7 @@
      ],
      "source": "CWPaleQuestFortSiegeNodeREGAINDUPLICATE000 Skyrim.esm:10C5F5 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 != CWSons (now 2); fn629 == CWSons (now 2); fn629 == 1"
+     "conditions": "fn565 == 1; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 != CWSons (now 2); GetVMQuestVariable CW == CWSons (now 2); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -1948,7 +3143,7 @@
      ],
      "source": "CWReachQuestFortSiegeNodeREGAINDUPLICATE000 Skyrim.esm:10C5F4 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 != CWImperial (now 1); fn629 == CWImperial (now 1); fn629 == 1"
+     "conditions": "fn565 == 1; fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 != CWImperial (now 1); GetVMQuestVariable CW == CWImperial (now 1); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -1963,7 +3158,7 @@
      ],
      "source": "CWFalkreathQuestFortSiegeNodeREGAINDUPLICATE000 Skyrim.esm:10C5F3 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 != CWImperial (now 1); fn629 == CWImperial (now 1); fn629 == 1"
+     "conditions": "fn565 == 1; fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 != CWImperial (now 1); GetVMQuestVariable CW == CWImperial (now 1); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -1978,7 +3173,7 @@
      ],
      "source": "CWHjaalmarchQuestFortSiegeNodeREGAINDUPLICATE000 Skyrim.esm:10C5F2 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 != CWImperial (now 1); fn629 == CWImperial (now 1); fn629 == 1"
+     "conditions": "fn565 == 1; fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 != CWImperial (now 1); GetVMQuestVariable CW == CWImperial (now 1); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -1993,7 +3188,7 @@
      ],
      "source": "CWEastmarchQuestFortSiegeNode Skyrim.esm:0CD6DC (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn629 == CWImperial (now 1); fn629 == 1"
+     "conditions": "fn565 == 1; fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); GetVMQuestVariable CW == CWImperial (now 1); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -2008,7 +3203,7 @@
      ],
      "source": "CWRiftQuestFortSiegeNode Skyrim.esm:0CD6DA (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn629 == 1; fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 != CWImperial (now 1); fn629 == CWImperial (now 1); fn629 == 1"
+     "conditions": "fn565 == 1; GetVMQuestVariable CW == 1; fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 != CWImperial (now 1); GetVMQuestVariable CW == CWImperial (now 1); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -2023,7 +3218,7 @@
      ],
      "source": "CWPaleQuestFortSiegeNode Skyrim.esm:0CD6D8 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn629 == 1; fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 != CWImperial (now 1); fn629 == CWImperial (now 1); fn629 == 1"
+     "conditions": "fn565 == 1; GetVMQuestVariable CW == 1; fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 != CWImperial (now 1); GetVMQuestVariable CW == CWImperial (now 1); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -2038,7 +3233,7 @@
      ],
      "source": "CWHaafingarQuestFortSiegeNode Skyrim.esm:0CD6D6 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn629 == CWSons (now 2); fn629 == 1"
+     "conditions": "fn565 == 1; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); GetVMQuestVariable CW == CWSons (now 2); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -2053,7 +3248,7 @@
      ],
      "source": "CWHjaalmarchQuestFortSiegeNode Skyrim.esm:0CD6D5 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn629 == 1; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 != CWSons (now 2); fn629 == CWSons (now 2); fn629 == 1"
+     "conditions": "fn565 == 1; GetVMQuestVariable CW == 1; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 != CWSons (now 2); GetVMQuestVariable CW == CWSons (now 2); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -2068,7 +3263,7 @@
      ],
      "source": "CWReachQuestFortSiegeNode Skyrim.esm:0CD6D4 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn629 == 1; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 != CWSons (now 2); fn629 == CWSons (now 2); fn629 == 1"
+     "conditions": "fn565 == 1; GetVMQuestVariable CW == 1; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 != CWSons (now 2); GetVMQuestVariable CW == CWSons (now 2); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -2091,6 +3286,13 @@
     "index": 10,
     "source": "Skyrim.esm:083042 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 10,
+    "100": 50,
+    "110": 920,
+    "200": 50
    },
    "target": [
     {
@@ -2467,7 +3669,7 @@
      ],
      "source": "CWPaleQuestMission03Node Skyrim.esm:0CD6D7 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn629 == 0; fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 != CWImperial (now 1); fn629 == CWImperial (now 1); fn629 == 1"
+     "conditions": "fn565 == 1; GetVMQuestVariable CW == 0; fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 != CWImperial (now 1); GetVMQuestVariable CW == CWImperial (now 1); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -2482,7 +3684,7 @@
      ],
      "source": "CWHjaalmarchQuestMission03Node Skyrim.esm:0CD6D3 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn629 == 0; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 != CWSons (now 2); fn629 == CWSons (now 2); fn629 == 1"
+     "conditions": "fn565 == 1; GetVMQuestVariable CW == 0; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 != CWSons (now 2); GetVMQuestVariable CW == CWSons (now 2); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -2505,6 +3707,12 @@
     "index": 10,
     "source": "Skyrim.esm:03BCC4 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40
    },
    "target": [
     {
@@ -2565,11 +3773,10 @@
     "stage": 20,
     "movedBy": [
      {
-      "by": "quest script",
-      "quest": "CWMission03 (A False Front)",
-      "questId": "Skyrim.esm:03BCC4",
-      "atStage": null,
+      "by": "by itself",
+      "script": "CWMission03Script",
       "call": "SetStage 20",
+      "plain": "It starts by itself from the start of the game.",
       "source": "CWMission03Script.OnGainLOS on Skyrim.esm:03BCC4 (LoreRim - Dialogue Patch.esp)",
       "verdict": "script"
      },
@@ -2583,6 +3790,104 @@
       "verdict": "script"
      },
      {
+      "after": [
+       {
+        "quest": "MQ102B (Season Unending)",
+        "questId": "Skyrim.esm:02610A",
+        "edid": "MQ102B",
+        "atStage": 10,
+        "sets": "playerAllegiance",
+        "of": "Skyrim.esm:019E53",
+        "startedBy": [
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 1,
+          "call": "SetStage 5",
+          "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 2,
+          "call": "SetStage 1",
+          "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 15,
+          "call": "SetStage 10",
+          "source": "QF_MQ102_0004E50D.fragment_87 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ101 (named \"Unbound\" in its record), a helper quest with Hadvar, Ralof, Alduin",
+          "questId": "Skyrim.esm:03372B",
+          "atStage": 0,
+          "call": "SetStage 1",
+          "source": "QF_MQ101_0003372B_new.fragment_27 on Skyrim.esm:03372B (Alternate Perspective - Gate to Sovngarde Edition.esp)",
+          "verdict": "script"
+         }
+        ],
+        "source": "Skyrim.esm:02610A stage 10 fragment (Skyrim.esm)",
+        "verdict": "script"
+       },
+       {
+        "quest": "MQ102A (Season Unending)",
+        "questId": "Skyrim.esm:02BF9C",
+        "edid": "MQ102A",
+        "atStage": 10,
+        "sets": "playerAllegiance",
+        "of": "Skyrim.esm:019E53",
+        "startedBy": [
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 1,
+          "call": "SetStage 1",
+          "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 1,
+          "call": "SetStage 10",
+          "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 2,
+          "call": "SetStage 5",
+          "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 15,
+          "call": "SetStage 10",
+          "source": "QF_MQ102_0004E50D.fragment_86 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         }
+        ],
+        "source": "Skyrim.esm:02BF9C stage 10 fragment (Skyrim.esm)",
+        "verdict": "script"
+       }
+      ],
       "by": "dialogue",
       "speaker": null,
       "speakerNamed": "alias InnkeeperA of CWMission03 (A False Front) (run time)",
@@ -2593,11 +3898,109 @@
       "reply": [
        "He's in the inn. Look around. I'm sure you'll find him."
       ],
-      "conditions": "A False Front stage 21 not done; fn629 == CWImperial (now 1); the speaker is the one in alias InnkeeperA; fn360 == 1; fn403 >= 1 or A False Front stage 20 done",
+      "conditions": "A False Front stage 21 not done; CW's playerAllegiance == CWImperial (now 1); the speaker is the one in alias InnkeeperA; fn360 == 1; fn403 >= 1 or A False Front stage 20 done",
       "source": "TIF__0001E3C6.Fragment_0 on INFO Skyrim.esm:01E3C6 (Skyrim.esm)",
       "verdict": "script"
      },
      {
+      "after": [
+       {
+        "quest": "MQ102B (Season Unending)",
+        "questId": "Skyrim.esm:02610A",
+        "edid": "MQ102B",
+        "atStage": 10,
+        "sets": "playerAllegiance",
+        "of": "Skyrim.esm:019E53",
+        "startedBy": [
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 1,
+          "call": "SetStage 5",
+          "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 2,
+          "call": "SetStage 1",
+          "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 15,
+          "call": "SetStage 10",
+          "source": "QF_MQ102_0004E50D.fragment_87 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ101 (named \"Unbound\" in its record), a helper quest with Hadvar, Ralof, Alduin",
+          "questId": "Skyrim.esm:03372B",
+          "atStage": 0,
+          "call": "SetStage 1",
+          "source": "QF_MQ101_0003372B_new.fragment_27 on Skyrim.esm:03372B (Alternate Perspective - Gate to Sovngarde Edition.esp)",
+          "verdict": "script"
+         }
+        ],
+        "source": "Skyrim.esm:02610A stage 10 fragment (Skyrim.esm)",
+        "verdict": "script"
+       },
+       {
+        "quest": "MQ102A (Season Unending)",
+        "questId": "Skyrim.esm:02BF9C",
+        "edid": "MQ102A",
+        "atStage": 10,
+        "sets": "playerAllegiance",
+        "of": "Skyrim.esm:019E53",
+        "startedBy": [
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 1,
+          "call": "SetStage 1",
+          "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 1,
+          "call": "SetStage 10",
+          "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 2,
+          "call": "SetStage 5",
+          "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 15,
+          "call": "SetStage 10",
+          "source": "QF_MQ102_0004E50D.fragment_86 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         }
+        ],
+        "source": "Skyrim.esm:02BF9C stage 10 fragment (Skyrim.esm)",
+        "verdict": "script"
+       }
+      ],
       "by": "dialogue",
       "speaker": null,
       "speakerNamed": "alias InnkeeperA of CWMission03 (A False Front) (run time)",
@@ -2609,11 +4012,109 @@
        "He was here, but he left. If you leave now, you can probably catch him.",
        "Or, you can just wait here. He'll be back soon enough."
       ],
-      "conditions": "A False Front stage 21 not done; fn629 == CWImperial (now 1); the speaker is the one in alias InnkeeperA; fn360 == 0; fn403 >= 1 or A False Front stage 20 done",
+      "conditions": "A False Front stage 21 not done; CW's playerAllegiance == CWImperial (now 1); the speaker is the one in alias InnkeeperA; fn360 == 0; fn403 >= 1 or A False Front stage 20 done",
       "source": "TIF__0001E3C7.Fragment_0 on INFO Skyrim.esm:01E3C7 (Skyrim.esm)",
       "verdict": "script"
      },
      {
+      "after": [
+       {
+        "quest": "MQ102B (Season Unending)",
+        "questId": "Skyrim.esm:02610A",
+        "edid": "MQ102B",
+        "atStage": 10,
+        "sets": "playerAllegiance",
+        "of": "Skyrim.esm:019E53",
+        "startedBy": [
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 1,
+          "call": "SetStage 5",
+          "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 2,
+          "call": "SetStage 1",
+          "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 15,
+          "call": "SetStage 10",
+          "source": "QF_MQ102_0004E50D.fragment_87 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ101 (named \"Unbound\" in its record), a helper quest with Hadvar, Ralof, Alduin",
+          "questId": "Skyrim.esm:03372B",
+          "atStage": 0,
+          "call": "SetStage 1",
+          "source": "QF_MQ101_0003372B_new.fragment_27 on Skyrim.esm:03372B (Alternate Perspective - Gate to Sovngarde Edition.esp)",
+          "verdict": "script"
+         }
+        ],
+        "source": "Skyrim.esm:02610A stage 10 fragment (Skyrim.esm)",
+        "verdict": "script"
+       },
+       {
+        "quest": "MQ102A (Season Unending)",
+        "questId": "Skyrim.esm:02BF9C",
+        "edid": "MQ102A",
+        "atStage": 10,
+        "sets": "playerAllegiance",
+        "of": "Skyrim.esm:019E53",
+        "startedBy": [
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 1,
+          "call": "SetStage 1",
+          "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 1,
+          "call": "SetStage 10",
+          "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 2,
+          "call": "SetStage 5",
+          "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 15,
+          "call": "SetStage 10",
+          "source": "QF_MQ102_0004E50D.fragment_86 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         }
+        ],
+        "source": "Skyrim.esm:02BF9C stage 10 fragment (Skyrim.esm)",
+        "verdict": "script"
+       }
+      ],
       "by": "dialogue",
       "speaker": null,
       "speakerNamed": "alias InnkeeperA of CWMission03 (A False Front) (run time)",
@@ -2624,11 +4125,109 @@
       "reply": [
        "He's in the inn. Look around. I'm sure you'll find him."
       ],
-      "conditions": "A False Front stage 21 not done; fn629 == CWSons (now 2); the speaker is the one in alias InnkeeperA; fn360 == 1; fn403 >= 1 or A False Front stage 20 done",
+      "conditions": "A False Front stage 21 not done; CW's playerAllegiance == CWSons (now 2); the speaker is the one in alias InnkeeperA; fn360 == 1; fn403 >= 1 or A False Front stage 20 done",
       "source": "TIF__000D288F.Fragment_0 on INFO Skyrim.esm:0D288F (Skyrim.esm)",
       "verdict": "script"
      },
      {
+      "after": [
+       {
+        "quest": "MQ102B (Season Unending)",
+        "questId": "Skyrim.esm:02610A",
+        "edid": "MQ102B",
+        "atStage": 10,
+        "sets": "playerAllegiance",
+        "of": "Skyrim.esm:019E53",
+        "startedBy": [
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 1,
+          "call": "SetStage 5",
+          "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 2,
+          "call": "SetStage 1",
+          "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 15,
+          "call": "SetStage 10",
+          "source": "QF_MQ102_0004E50D.fragment_87 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ101 (named \"Unbound\" in its record), a helper quest with Hadvar, Ralof, Alduin",
+          "questId": "Skyrim.esm:03372B",
+          "atStage": 0,
+          "call": "SetStage 1",
+          "source": "QF_MQ101_0003372B_new.fragment_27 on Skyrim.esm:03372B (Alternate Perspective - Gate to Sovngarde Edition.esp)",
+          "verdict": "script"
+         }
+        ],
+        "source": "Skyrim.esm:02610A stage 10 fragment (Skyrim.esm)",
+        "verdict": "script"
+       },
+       {
+        "quest": "MQ102A (Season Unending)",
+        "questId": "Skyrim.esm:02BF9C",
+        "edid": "MQ102A",
+        "atStage": 10,
+        "sets": "playerAllegiance",
+        "of": "Skyrim.esm:019E53",
+        "startedBy": [
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 1,
+          "call": "SetStage 1",
+          "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 1,
+          "call": "SetStage 10",
+          "source": "QF_MQ102_0004E50D.fragment_75 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 2,
+          "call": "SetStage 5",
+          "source": "QF_MQ102_0004E50D.fragment_78 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         },
+         {
+          "by": "quest script",
+          "quest": "MQ102 (named \"Before the Storm\" in its record), a helper quest with Balgruuf, Irileth, Proventus",
+          "questId": "Skyrim.esm:04E50D",
+          "atStage": 15,
+          "call": "SetStage 10",
+          "source": "QF_MQ102_0004E50D.fragment_86 on Skyrim.esm:04E50D (Unofficial Skyrim Special Edition Patch.esp)",
+          "verdict": "script"
+         }
+        ],
+        "source": "Skyrim.esm:02BF9C stage 10 fragment (Skyrim.esm)",
+        "verdict": "script"
+       }
+      ],
       "by": "dialogue",
       "speaker": null,
       "speakerNamed": "alias InnkeeperA of CWMission03 (A False Front) (run time)",
@@ -2640,7 +4239,7 @@
        "He was here, but he left. If you leave now, you can probably catch him.",
        "Or, you can just wait here. He'll be back soon enough."
       ],
-      "conditions": "A False Front stage 21 not done; fn629 == CWSons (now 2); the speaker is the one in alias InnkeeperA; fn360 == 0; fn403 >= 1 or A False Front stage 20 done",
+      "conditions": "A False Front stage 21 not done; CW's playerAllegiance == CWSons (now 2); the speaker is the one in alias InnkeeperA; fn360 == 0; fn403 >= 1 or A False Front stage 20 done",
       "source": "TIF__000D2890.Fragment_0 on INFO Skyrim.esm:0D2890 (Skyrim.esm)",
       "verdict": "script"
      },
@@ -2997,7 +4596,7 @@
      ],
      "source": "CWWinterholdQuestMission04Node Skyrim.esm:0CD6DB (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn629 == 0; fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 != CWImperial (now 1); fn629 == CWImperial (now 1); fn629 == 1"
+     "conditions": "fn565 == 1; GetVMQuestVariable CW == 0; fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 != CWImperial (now 1); GetVMQuestVariable CW == CWImperial (now 1); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -3012,7 +4611,7 @@
      ],
      "source": "CWFalkreathMission04Node Skyrim.esm:0CD6D0 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn629 == 0; fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 != CWSons (now 2); fn629 == CWSons (now 2); fn629 == 1"
+     "conditions": "fn565 == 1; GetVMQuestVariable CW == 0; fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 != CWSons (now 2); GetVMQuestVariable CW == CWSons (now 2); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -3035,6 +4634,13 @@
     "index": 10,
     "source": "Skyrim.esm:035A23 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "12": 12,
+    "15": 15,
+    "40": 20,
+    "50": 50
    },
    "target": [
     {
@@ -3190,7 +4796,7 @@
      ],
      "source": "CWRiftQuestMission07Node Skyrim.esm:0CD6D9 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn629 == 0; fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 != CWImperial (now 1); fn629 == CWImperial (now 1); fn629 == 1"
+     "conditions": "fn565 == 1; GetVMQuestVariable CW == 0; fn606 == CWImperial (now 1); fn606 == CWImperial (now 1); fn606 != CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 >= CWImperial (now 1); fn606 != CWImperial (now 1); GetVMQuestVariable CW == CWImperial (now 1); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -3205,7 +4811,7 @@
      ],
      "source": "CWReachQuestMission07Node Skyrim.esm:0CD6D2 (Skyrim.esm)",
      "verdict": "files",
-     "conditions": "fn565 == 1; fn629 == 0; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 != CWSons (now 2); fn629 == CWSons (now 2); fn629 == 1"
+     "conditions": "fn565 == 1; GetVMQuestVariable CW == 0; fn606 == CWSons (now 2); fn606 == CWSons (now 2); fn606 != CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 <= CWSons (now 2); fn606 != CWSons (now 2); GetVMQuestVariable CW == CWSons (now 2); GetVMQuestVariable CW == 1"
     },
     {
      "by": "story manager",
@@ -3228,6 +4834,15 @@
     "index": 10,
     "source": "Skyrim.esm:0504F0 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40,
+    "50": 50,
+    "60": 60,
+    "90": 90
    },
    "target": [
     {
@@ -3307,7 +4922,8 @@
      "atStage": 950,
      "call": "SetStage 1",
      "source": "QF_CWFortSiegeFort_00083042.fragment_31 on Skyrim.esm:083042 (LoreRim - Dialogue Patch.esp), through CW's completecwobj",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3316,7 +4932,8 @@
      "atStage": 950,
      "call": "SetStage 1",
      "source": "QF_CWFortSiegeFort_00083042.fragment_31 on Skyrim.esm:083042 (LoreRim - Dialogue Patch.esp), through CW's completecwobj",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3325,7 +4942,8 @@
      "atStage": 950,
      "call": "SetStage 1",
      "source": "QF_CWFortSiegeFort_00083042.fragment_31 on Skyrim.esm:083042 (LoreRim - Dialogue Patch.esp), through CW's completecwobj",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3334,7 +4952,8 @@
      "atStage": 950,
      "call": "SetStage 1",
      "source": "QF_CWFortSiegeFort_00083042.fragment_31 on Skyrim.esm:083042 (LoreRim - Dialogue Patch.esp), through CW's completecwobj",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3343,7 +4962,8 @@
      "atStage": 950,
      "call": "SetStage 1",
      "source": "QF_CWFortSiegeFort_00083042.fragment_31 on Skyrim.esm:083042 (LoreRim - Dialogue Patch.esp), through CW's completecwobj",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3352,7 +4972,8 @@
      "atStage": 9000,
      "call": "SetStage 1",
      "source": "QF_CWFortSiegeFort_00083042.fragment_20 on Skyrim.esm:083042 (LoreRim - Dialogue Patch.esp), through CW's winholdoffscreenifnotdoingcapitalbattles",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3361,7 +4982,8 @@
      "atStage": 9000,
      "call": "SetStage 1",
      "source": "QF_CWFortSiegeFort_00083042.fragment_20 on Skyrim.esm:083042 (LoreRim - Dialogue Patch.esp), through CW's winholdoffscreenifnotdoingcapitalbattles",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3370,7 +4992,8 @@
      "atStage": 9000,
      "call": "SetStage 1",
      "source": "QF_CWFortSiegeFort_00083042.fragment_20 on Skyrim.esm:083042 (LoreRim - Dialogue Patch.esp), through CW's winholdoffscreenifnotdoingcapitalbattles",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3379,7 +5002,8 @@
      "atStage": 9000,
      "call": "SetStage 1",
      "source": "QF_CWFortSiegeFort_00083042.fragment_20 on Skyrim.esm:083042 (LoreRim - Dialogue Patch.esp), through CW's winholdoffscreenifnotdoingcapitalbattles",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -3388,7 +5012,8 @@
      "atStage": 9000,
      "call": "SetStage 1",
      "source": "QF_CWFortSiegeFort_00083042.fragment_20 on Skyrim.esm:083042 (LoreRim - Dialogue Patch.esp), through CW's winholdoffscreenifnotdoingcapitalbattles",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -4272,7 +5897,8 @@
      "atStage": 950,
      "call": "SetStage 1",
      "source": "QF_CWFortSiege_00087C21.fragment_31 on Skyrim.esm:087C21 (LoreRim - Dialogue Patch.esp), through CW's completecwobj",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -4281,7 +5907,8 @@
      "atStage": 950,
      "call": "SetStage 1",
      "source": "QF_CWFortSiege_00087C21.fragment_31 on Skyrim.esm:087C21 (LoreRim - Dialogue Patch.esp), through CW's completecwobj",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -4290,7 +5917,8 @@
      "atStage": 950,
      "call": "SetStage 1",
      "source": "QF_CWFortSiege_00087C21.fragment_31 on Skyrim.esm:087C21 (LoreRim - Dialogue Patch.esp), through CW's completecwobj",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -4299,7 +5927,8 @@
      "atStage": 950,
      "call": "SetStage 1",
      "source": "QF_CWFortSiege_00087C21.fragment_31 on Skyrim.esm:087C21 (LoreRim - Dialogue Patch.esp), through CW's completecwobj",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -4308,7 +5937,8 @@
      "atStage": 950,
      "call": "SetStage 1",
      "source": "QF_CWFortSiege_00087C21.fragment_31 on Skyrim.esm:087C21 (LoreRim - Dialogue Patch.esp), through CW's completecwobj",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -4317,7 +5947,8 @@
      "atStage": 9000,
      "call": "SetStage 1",
      "source": "QF_CWFortSiege_00087C21.fragment_20 on Skyrim.esm:087C21 (LoreRim - Dialogue Patch.esp), through CW's winholdoffscreenifnotdoingcapitalbattles",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -4326,7 +5957,8 @@
      "atStage": 9000,
      "call": "SetStage 1",
      "source": "QF_CWFortSiege_00087C21.fragment_20 on Skyrim.esm:087C21 (LoreRim - Dialogue Patch.esp), through CW's winholdoffscreenifnotdoingcapitalbattles",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -4335,7 +5967,8 @@
      "atStage": 9000,
      "call": "SetStage 1",
      "source": "QF_CWFortSiege_00087C21.fragment_20 on Skyrim.esm:087C21 (LoreRim - Dialogue Patch.esp), through CW's winholdoffscreenifnotdoingcapitalbattles",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -4344,7 +5977,8 @@
      "atStage": 9000,
      "call": "SetStage 1",
      "source": "QF_CWFortSiege_00087C21.fragment_20 on Skyrim.esm:087C21 (LoreRim - Dialogue Patch.esp), through CW's winholdoffscreenifnotdoingcapitalbattles",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -4353,7 +5987,8 @@
      "atStage": 9000,
      "call": "SetStage 1",
      "source": "QF_CWFortSiege_00087C21.fragment_20 on Skyrim.esm:087C21 (LoreRim - Dialogue Patch.esp), through CW's winholdoffscreenifnotdoingcapitalbattles",
-     "verdict": "script"
+     "verdict": "script",
+     "throughStage": []
     },
     {
      "by": "quest script",
@@ -5832,6 +7467,7 @@
     "source": "Skyrim.esm:029940 QOBJ 10",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [
     {
      "alias": "WhiterunCapitalImperialFieldCO",
@@ -5893,7 +7529,7 @@
      "reply": [
       "The attack will be launched imminently. Gather your weaponry and get to the front lines... Now, soldier!"
      ],
-     "conditions": "the speaker is the one in alias FieldCO; fn629 == 1",
+     "conditions": "the speaker is the one in alias FieldCO; Attack <Alias=Capital>'s questHookSaid == 1",
      "source": "TIF__0002C151.Fragment_0 on INFO Skyrim.esm:02C151 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -5918,6 +7554,12 @@
     "index": 10,
     "source": "Skyrim.esm:02B272 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30,
+    "40": 40
    },
    "target": [
     {
@@ -5982,7 +7624,7 @@
      "reply": [
       "The attack will be launched imminently. Gather your weaponry and get to the front lines... Now, soldier!"
      ],
-     "conditions": "the speaker is the one in alias FieldCO; fn629 == 1",
+     "conditions": "the speaker is the one in alias FieldCO; Defend <Alias=Capital>'s questHookSaid == 1",
      "source": "TIF__00021115.Fragment_0 on INFO Skyrim.esm:021115 (Skyrim.esm)",
      "verdict": "script"
     },
@@ -6007,6 +7649,11 @@
     "index": 10,
     "source": "Skyrim.esm:01FA52 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20,
+    "30": 30
    },
    "target": [
     {
@@ -6068,6 +7715,7 @@
     "source": "Skyrim.esm:04E857 QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [
     {
      "alias": "General",
@@ -6111,6 +7759,7 @@
     "source": "Skyrim.esm:02FF95 QOBJ 0",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [
     {
      "alias": "General",
@@ -6225,6 +7874,7 @@
     "source": "Skyrim.esm:096E71 QOBJ 1000",
     "verdict": "files"
    },
+   "objectivesShown": {},
    "target": [],
    "needs": {
     "conditions": null,
@@ -6285,6 +7935,9 @@
     "index": 10,
     "source": "Civil War Champions - Reduced Cut.esp:000800 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10
    },
    "target": [
     {
@@ -6369,7 +8022,7 @@
      ],
      "source": "CWRepairsQN CWRepairs.esp:000E05 (CWRepairs.esp)",
      "verdict": "files",
-     "conditions": "Repairing the Cities stage < 10; GetDead == 1 or GetDead == 1 or CWFinale stage 500 done; the place you enter isn't Solitude; fn359 == 0; the place you enter isn't Windhelm; fn359 == 0"
+     "conditions": "Repairing the Cities stage < 10; GetDead == 1 or GetDead == 1 or CWFinale stage 500 done; the place you enter isn't Solitude; you're not in Solitude; the place you enter isn't Windhelm; you're not in Windhelm"
     }
    ],
    "caughtUpBy": [],
@@ -6379,6 +8032,10 @@
     "index": 10,
     "source": "CWRepairs.esp:000803 QOBJ 10",
     "verdict": "files"
+   },
+   "objectivesShown": {
+    "10": 10,
+    "20": 20
    },
    "target": [],
    "needs": {
@@ -6398,11 +8055,10 @@
     "stage": 20,
     "movedBy": [
      {
-      "by": "quest script",
-      "quest": "CWRepairs (Repairing the Cities)",
-      "questId": "CWRepairs.esp:000803",
-      "atStage": null,
+      "by": "by itself",
+      "script": "CWRepairsScript",
       "call": "SetStage 20",
+      "plain": "It starts by itself from the start of the game.",
       "source": "CWRepairsScript.StartRepairs on CWRepairs.esp:000803 (CWRepairs.esp)",
       "verdict": "script"
      }
@@ -7525,7 +9181,7 @@
    ]
   }
  ],
- "otherStarts": "To get into The Civil War: talk to Legate Rikke in Castle Dour: Imperial Introductions is running from the start (Join the Imperial Legion); or talk to Ulfric Stormcloak in Palace of the Kings: Stormcloak Introductions is running from the start (Join the Stormcloak rebellion); or talk to Beirand in Bits and Pieces: Get Outfitted is running from the start (Get Imperial gear from Beirand); or Recruitment Drive is running from the start: Talk to Rikke about joining the Imperial Legion; or ask Alvor in Alvor and Sigrid's House \"What do you think about the war?\" (the speaker is Alvor), which starts Imperial Introductions; or ask Alvor in Alvor and Sigrid's House \"You support the Empire, then?\" (the speaker is the one in alias Alvor), which starts Imperial Introductions; or ask Hadvar in Helgen \"\" (fn359 == 0; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker isn't Hadvar), which starts Imperial Introductions; or ask Legate Rikke in Castle Dour \"\" (Imperial Introductions stage 20 not done; Imperial Introductions stage 10 not done; fn249 == 1; the speaker is Legate Rikke), which starts Imperial Introductions; or ask General Tullius in Castle Dour \"...\" (the speaker is General Tullius), which starts Imperial Introductions; or ask General Tullius in Castle Dour \"Hello.\" (Unbound completed; Imperial Introductions stage 10 not done; fn629 == 2; the speaker is General Tullius), which starts Imperial Introductions; or ask General Tullius in Castle Dour \"I don't want to sit idly by after what I've witnessed. I want to join the Legion!\" (the speaker is General Tullius), which starts Imperial Introductions.",
+ "otherStarts": "To get into The Civil War: talk to Legate Rikke in Castle Dour: Imperial Introductions is running from the start (Join the Imperial Legion); or talk to Ulfric Stormcloak in Palace of the Kings: Stormcloak Introductions is running from the start (Join the Stormcloak rebellion); or talk to Beirand in Bits and Pieces: Get Outfitted is running from the start (Get Imperial gear from Beirand); or Recruitment Drive is running from the start: Talk to Rikke about joining the Imperial Legion; or ask Alvor in Alvor and Sigrid's House \"What do you think about the war?\" (the speaker is Alvor), which starts Imperial Introductions; or ask Alvor in Alvor and Sigrid's House \"You support the Empire, then?\" (the speaker is the one in alias Alvor), which starts Imperial Introductions; or ask Hadvar in Helgen \"\" (you're not in Solitude; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker isn't Hadvar), which starts Imperial Introductions; or ask Legate Rikke in Castle Dour \"\" (Imperial Introductions stage 20 not done; Imperial Introductions stage 10 not done; fn249 == 1; the speaker is Legate Rikke), which starts Imperial Introductions; or ask General Tullius in Castle Dour \"...\" (the speaker is General Tullius), which starts Imperial Introductions; or ask General Tullius in Castle Dour \"Hello.\" (Unbound completed; Imperial Introductions stage 10 not done; CW's PlayerGotIntro == 2; the speaker is General Tullius), which starts Imperial Introductions; or ask General Tullius in Castle Dour \"I don't want to sit idly by after what I've witnessed. I want to join the Legion!\" (the speaker is General Tullius), which starts Imperial Introductions.",
  "routes": [
   {
    "route": "WEDL13 (Looking to join Imperials)",
@@ -7604,10 +9260,10 @@
    "reply": [
     "The Legion's always looking for strong, capable warriors. If you think you've got what it takes, our headquarters is in Solitude."
    ],
-   "conditions": "fn359 == 0; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker isn't Hadvar",
+   "conditions": "you're not in Solitude; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker isn't Hadvar",
    "does": "SetStage 1 on CW00A (Imperial Introductions)",
    "source": "TIF__000D3C58.Fragment_0 on INFO Skyrim.esm:0D3C58 (Skyrim.esm); topic CW00Hello",
-   "sentence": "Talk to Hadvar (Nord) in Helgen, when fn359 == 0; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker isn't Hadvar: SetStage 1 on CW00A (Imperial Introductions)."
+   "sentence": "Talk to Hadvar (Nord) in Helgen, when you're not in Solitude; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker isn't Hadvar: SetStage 1 on CW00A (Imperial Introductions)."
   },
   {
    "route": "dialogue INFO Skyrim.esm:0D3C57",
@@ -7620,10 +9276,10 @@
    "reply": [
     "If you are, then you make your way to Windhelm and talk to the man himself. If you're not, well, friend, you'd best walk away before this gets ugly."
    ],
-   "conditions": "fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
+   "conditions": "you're not in Windhelm; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
    "does": "SetStage 2 on CW00A (Imperial Introductions)",
    "source": "TIF__000D3C57.Fragment_0 on INFO Skyrim.esm:0D3C57 (Unofficial Skyrim Special Edition Patch.esp); topic CW00JoinTopicContinue",
-   "sentence": "Talk to the speaker the line's conditions name and choose \"...\", when fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 2 on CW00A (Imperial Introductions).",
+   "sentence": "Talk to the speaker the line's conditions name and choose \"...\", when you're not in Windhelm; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 2 on CW00A (Imperial Introductions).",
    "stops": "the speaker isn't named by an NPC: GetIsID"
   },
   {
@@ -7637,10 +9293,10 @@
    "reply": [
     "If you are, then you talk to the man himself. If you're not, well, friend, you'd best walk away before this gets ugly."
    ],
-   "conditions": "fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
+   "conditions": "you're in Windhelm; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
    "does": "SetStage 2 on CW00A (Imperial Introductions)",
    "source": "TIF__000FBA68.Fragment_0 on INFO Skyrim.esm:0FBA68 (Unofficial Skyrim Special Edition Patch.esp); topic CW00JoinTopicContinue",
-   "sentence": "Talk to the speaker the line's conditions name and choose \"...\", when fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 2 on CW00A (Imperial Introductions).",
+   "sentence": "Talk to the speaker the line's conditions name and choose \"...\", when you're in Windhelm; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Sons of Skyrim == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 2 on CW00A (Imperial Introductions).",
    "stops": "the speaker isn't named by an NPC: GetIsID"
   },
   {
@@ -7657,10 +9313,10 @@
     "If you're serious, make your way to Solitude. Our headquarters is Castle Dour. You'll find General Tullius there, commanding our forces in Skyrim.",
     "But talk to Legate Rikke. She handles the local recruiting."
    ],
-   "conditions": "Unbound completed; fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
+   "conditions": "Unbound completed; you're not in Solitude; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
    "does": "SetStage 1 on CW00A (Imperial Introductions)",
    "source": "TIF__000D3C5A.Fragment_0 on INFO Skyrim.esm:0D3C5A (AlternatePerspective.esp); topic CW00JoinTopic",
-   "sentence": "Talk to the speaker the line's conditions name and choose \"How does one join the Imperial Legion?\", when Unbound completed; fn359 == 0; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 1 on CW00A (Imperial Introductions).",
+   "sentence": "Talk to the speaker the line's conditions name and choose \"How does one join the Imperial Legion?\", when Unbound completed; you're not in Solitude; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 1 on CW00A (Imperial Introductions).",
    "stops": "the speaker isn't named by an NPC: GetIsID"
   },
   {
@@ -7677,10 +9333,10 @@
     "If you're serious, you're in the right place. Our headquarters is in Castle Dour. Here you'll find General Tullius, commanding our forces in Skyrim.",
     "But talk to Legate Rikke. She handles the local recruiting."
    ],
-   "conditions": "Unbound completed; fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
+   "conditions": "Unbound completed; you're in Solitude; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar",
    "does": "SetStage 1 on CW00A (Imperial Introductions)",
    "source": "TIF__000FBA67.Fragment_0 on INFO Skyrim.esm:0FBA67 (AlternatePerspective.esp); topic CW00JoinTopic",
-   "sentence": "Talk to the speaker the line's conditions name and choose \"How does one join the Imperial Legion?\", when Unbound completed; fn359 == 1; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 1 on CW00A (Imperial Introductions).",
+   "sentence": "Talk to the speaker the line's conditions name and choose \"How does one join the Imperial Legion?\", when Unbound completed; you're in Solitude; GetInFaction CWFieldCOFaction == 1; GetInFaction CWDialogueSoldierFaction == 1; GetInFaction Imperial Legion == 1; the speaker hasn't the voice FemaleCommander; the speaker hasn't the voice MaleUniqueGalmar: SetStage 1 on CW00A (Imperial Introductions).",
    "stops": "the speaker isn't named by an NPC: GetIsID"
   },
   {
@@ -7733,10 +9389,10 @@
    "reply": [
     "I remember you, you were at Helgen. Speak to Legate Rikke. I suspect we could use someone like you."
    ],
-   "conditions": "Unbound completed; Imperial Introductions stage 10 not done; fn629 == 2; the speaker is General Tullius",
+   "conditions": "Unbound completed; Imperial Introductions stage 10 not done; CW's PlayerGotIntro == 2; the speaker is General Tullius",
    "does": "SetStage 10 on CW00A (Imperial Introductions)",
    "source": "TIF__000C348B.Fragment_0 on INFO Skyrim.esm:0C348B (AlternatePerspective.esp); topic CW00TulliusForcegreetTopic",
-   "sentence": "Talk to General Tullius (Imperial) in Castle Dour and choose \"Hello.\", when Unbound completed; Imperial Introductions stage 10 not done; fn629 == 2; the speaker is General Tullius: SetStage 10 on CW00A (Imperial Introductions)."
+   "sentence": "Talk to General Tullius (Imperial) in Castle Dour and choose \"Hello.\", when Unbound completed; Imperial Introductions stage 10 not done; CW's PlayerGotIntro == 2; the speaker is General Tullius: SetStage 10 on CW00A (Imperial Introductions)."
   },
   {
    "route": "dialogue INFO AlternatePerspective.esp:206783",
@@ -7904,7 +9560,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); fn359 == 0; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 1 (now 1); you're not in Solstheim; The Way of the Voice stage >= 160; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode002",
@@ -7997,7 +9653,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); fn359 == 0; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 2 (now 1); you're not in Solstheim; The Horn of Jurgen Windcaller stage >= 60; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode003",
@@ -8090,7 +9746,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); fn359 == 0; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 3 (now 1); you're not in Solstheim; A Blade in the Dark stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode004",
@@ -8183,7 +9839,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); fn359 == 0; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 4 (now 1); you're not in Solstheim; Alduin's Wall stage >= 280; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode005",
@@ -8276,7 +9932,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); fn359 == 0; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 5 (now 1); you're not in Solstheim; The Throat of the World stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode006",
@@ -8369,7 +10025,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); fn359 == 0; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 6 (now 1); you're not in Solstheim; Elder Knowledge stage >= 100; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode007",
@@ -8462,7 +10118,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); fn359 == 0; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 7 (now 1); you're not in Solstheim; Alduin's Bane stage >= 220; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode008",
@@ -8555,7 +10211,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); fn359 == 0; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 8 (now 1); you're not in Solstheim; Dragonslayer stage >= 200; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     },
     {
      "node": "DLC2CultistAmbushNode000",
@@ -8648,7 +10304,7 @@
        "value": 0.0
       }
      ],
-     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); fn359 == 0; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
+     "conditions": "level >= DLC2CultistAttackMinLevel_KRY (now 25); global DLC2QuestStartSelection_KRY == 0 (now 1); you're not in Solstheim; Dragon Rising stage >= 90; Dragonborn stage < 5; Cultists vs Player stage 1 not done; GetRandomPercent < DLC2WE09Chance (now 0)"
     }
    ],
    "tieSetting": {
@@ -8742,261 +10398,32 @@
   "AAS_PlayerScript",
   "ACFH_TIF__03000B2B",
   "ACFH_TIF__03000B6B",
-  "BGSSSE010_OnReadSetStageAlias",
   "BaanMalurCarriageScript",
   "HLIO_TIF__0598299C",
   "JR0_QF_JRLucienCCSaintsAndSed_07000800",
   "JR_TIF__05172482",
   "JR_TIF__05172488",
   "ParryManagerQuestScript",
-  "QF_DLCDwarvenPuzzleDungeonQu_050038D9",
   "QF_HRI_Events_Quest_WEWerebe_0402904A",
   "QF_SOMRRumoursQuest_0721AE15",
-  "QF_ccBGSSSE001_Crab_MQ1_050009D4",
-  "QF_ccBGSSSE001_Crab_MQ2_050009DA",
-  "QF_ccBGSSSE001_Crab_MQ3_050009D6",
-  "QF_ccBGSSSE001_Fish_MQ1_050009DE",
-  "QF_ccBGSSSE001_Fish_MQ2_050009EB",
-  "QF_ccBGSSSE001_Fish_MQ3_050009E8",
-  "QF_ccBGSSSE001_Fish_MQ4_050009DD",
-  "QF_ccBGSSSE001_Fish_MQ5_050009DC",
-  "QF_ccBGSSSE001_MiscQuests_050009E6",
-  "QF_ccBGSSSE001_Misc_Falkreat_050009EC",
-  "QF_ccBGSSSE001_Misc_Khajiit_050009E2",
-  "QF_ccBGSSSE001_Misc_Markarth_050009DF",
-  "QF_ccBGSSSE001_Misc_Morthal_050009E4",
-  "QF_ccBGSSSE001_Misc_Solitude_050009E3",
-  "QF_ccBGSSSE001_Misc_Whiterun_050009D7",
-  "QF_ccBGSSSE001_Misc_Whiterun_05000E5D",
-  "QF_ccBGSSSE001_Misc_Windhelm_050009D5",
-  "QF_ccBGSSSE001_Radiant_1_05000B98",
-  "QF_ccBGSSSE001_Radiant_2_05000C2F",
-  "QF_ccBGSSSE001_Radiant_3_05000C8C",
-  "QF_ccBGSSSE001_Start_MQ1_050009D3",
-  "QF_ccBGSSSE001_Start_MQ2_050009DB",
-  "QF_ccBGSSSE010_PetPurchaseQu_02000808",
-  "QF_ccBGSSSE025_ElytraPetAcqu_050010C3",
-  "QF_ccBGSSSE025_RareCuriosInt_050010C1",
-  "QF_ccBGSSSE035_PetAcquireQue_0400080A",
-  "SSE_TIF__020008AA",
-  "SSE_ccBGSSSE037_RareCurios_0100084D",
+  "SSE_TIF__05000FD4",
+  "SSE_TIF__05000FD5",
+  "SSE_TIF__05000FD8",
+  "SSE_TIF__05000FDB",
   "SilgradCarriageScript",
   "SkyInteract_PlayerLoadGameAlias",
-  "Survival_PlayerHitInfo",
-  "Survival_PlayerLocationInfo",
   "Survival_ThirstPlayerAlias",
-  "Survival_VampirismLycanthropy",
   "TIF__020458BA",
   "TIF__023943AB",
   "TIF__03000976",
   "TIF__03000D75",
   "TIF__04138034",
   "TIF__08005903",
-  "TIF_ccBGSSSE025_StaadaFrag",
-  "TIF_ccBGSSSE025_StaadaFrag2",
-  "TIF_ccBGSSSE025_StaadaFrag3",
-  "TIF_ccBGSSSE025_StaadaFragA",
-  "TIF_ccBGSSSE025_StaadaFrgF",
   "Traits_ElementalistPlayerScript",
-  "VS02_QF_ccVSVSSE002_MainQuest_050008C8",
   "aaCi_TIF__0501F5BC",
   "aaEl_QF_aaElisifUpdate0108_05014EF5",
   "aaaVampireFeedingContractScriptB",
   "aaaVampireFeedingRemoveAlias",
-  "ccASVSSE001_KillFollowerCheck",
-  "ccASVSSE001_OnHitStageSetScript",
-  "ccASVSSE001_SetStageonActivateScript",
-  "ccASVSSE001_TIF__05000DFC",
-  "ccASVSSE001_TIF__05000E04",
-  "ccASVSSE001_TIF__05000E07",
-  "ccASVSSE001_TIF__05000E09",
-  "ccASVSSE001_TIF__05000EAB",
-  "ccASVSSE001_TIF__0500114D",
-  "ccASVSSE001_TIF__0500115F",
-  "ccASVSSE001_TIF__05001160",
-  "ccASVSSE001_TIF__0500116A",
-  "ccASVSSE001_TIF__05001178",
-  "ccASVSSE001_TIF__05048064",
-  "ccASVSSE001_TIF__05048065",
-  "ccASVSSE001_TIF__0504806D",
-  "ccASVSSE001_TIF__05219F5B",
-  "ccASVSSE001_TaskChecklilst",
-  "ccBGSSSE001_AdvanceStageOnUpdate",
-  "ccBGSSSE001_CatapultMonitor",
-  "ccBGSSSE001_CrabEncMonitor",
-  "ccBGSSSE001_CrabMQ2EncAlias",
-  "ccBGSSSE001_CrabMQ3_Quest",
-  "ccBGSSSE001_CrabMQ4BodyCleanup",
-  "ccBGSSSE001_CrabMQ4Reinforcements",
-  "ccBGSSSE001_DeleteOnQuestDone",
-  "ccBGSSSE001_GuardPanicScript",
-  "ccBGSSSE001_ItemCollectObjectiveScript",
-  "ccBGSSSE001_MiscDwarPlayScript",
-  "ccBGSSSE001_MiscKhajPlayScript",
-  "ccBGSSSE001_MiscMarkarthScript",
-  "ccBGSSSE001_MiscQuestScript",
-  "ccBGSSSE001_MiscSol_DinnerGuestScript",
-  "ccBGSSSE001_MiscWhiterunCourier",
-  "ccBGSSSE001_OnDeathCallReinforce",
-  "ccBGSSSE001_OnReadSetStage",
-  "ccBGSSSE001_PlayerHitScript",
-  "ccBGSSSE001_Quest_SetStageAfterTimer",
-  "ccBGSSSE001_RadiantFishQuest",
-  "ccBGSSSE001_RadiantItemPlayerScript",
-  "ccBGSSSE001_RadiantJunkQuest",
-  "ccBGSSSE001_RadiantQuest3Listener",
-  "ccBGSSSE001_SandboxFollowerScript",
-  "ccBGSSSE001_SetStageOnActivate",
-  "ccBGSSSE001_SetStageOnPickup",
-  "ccBGSSSE001_StartMQ1PlayerScript",
-  "ccBGSSSE001_SwapOutfitOnCellAttach",
-  "ccBGSSSE001_TIF__0500099D",
-  "ccBGSSSE001_TIF__050009A7",
-  "ccBGSSSE001_TIF__050009BC",
-  "ccBGSSSE001_TIF__050009D1",
-  "ccBGSSSE001_TIF__05000A63",
-  "ccBGSSSE001_TIF__05000A68",
-  "ccBGSSSE001_TIF__05000B1E",
-  "ccBGSSSE001_TIF__05000B5C",
-  "ccBGSSSE001_TIF__05000B60",
-  "ccBGSSSE001_TIF__05000B64",
-  "ccBGSSSE001_TIF__05000B79",
-  "ccBGSSSE001_TIF__05000BAF",
-  "ccBGSSSE001_TIF__05000BB0",
-  "ccBGSSSE001_TIF__05000BB1",
-  "ccBGSSSE001_TIF__05000BB2",
-  "ccBGSSSE001_TIF__05000BB3",
-  "ccBGSSSE001_TIF__05000BB4",
-  "ccBGSSSE001_TIF__05000BB5",
-  "ccBGSSSE001_TIF__05000BB6",
-  "ccBGSSSE001_TIF__05000BDE",
-  "ccBGSSSE001_TIF__05000C28",
-  "ccBGSSSE001_TIF__05000C29",
-  "ccBGSSSE001_TIF__05000C49",
-  "ccBGSSSE001_TIF__05000C5C",
-  "ccBGSSSE001_TIF__05000C5E",
-  "ccBGSSSE001_TIF__05000C70",
-  "ccBGSSSE001_TIF__05000E5B",
-  "ccBGSSSE001_TIF__05000E5C",
-  "ccBGSSSE001_TIF__05000E5E",
-  "ccBGSSSE001_TIF__05000E7B",
-  "ccBGSSSE001_TIF__05000EA4",
-  "ccBGSSSE001_TIF__05000EA9",
-  "ccBGSSSE001_TIF__05000EAC",
-  "ccBGSSSE001_TIF__05000EAF",
-  "ccBGSSSE001_TIF__05000EB4",
-  "ccBGSSSE001_TIF__05000EC3",
-  "ccBGSSSE001_TIF__05000ECE",
-  "ccBGSSSE001_TIF__05000EE5",
-  "ccBGSSSE001_TIF__050C1D0F",
-  "ccBGSSSE001_WhiterunChestScript",
-  "ccBGSSSE002_TKArrowsQuestScript",
-  "ccBGSSSE010_ContainerSetStage",
-  "ccBGSSSE010_SetStageOnActivate",
-  "ccBGSSSE013_BattleScript",
-  "ccBGSSSE014_SetStageContainerOpen",
-  "ccBGSSSE018_QF_ShadowQuest_0100081C",
-  "ccBGSSSE018_ShadowrendPlaceScript",
-  "ccBGSSSE018_ShadowrendPlayerScript",
-  "ccBGSSSE025_ElytraCollectItemScript",
-  "ccBGSSSE025_RCIntegrationScript",
-  "ccBGSSSE034_MapContainerChangeAlias",
-  "ccBGSSSE034_TIF__02000837",
-  "ccBGSSSE034_TIF__02000838",
-  "ccBGSSSE034_TIF__02000839",
-  "ccBGSSSE034_TIF__0200083A",
-  "ccBGSSSE034_TIF__0200083C",
-  "ccBGSSSE034_TIF__0200084A",
-  "ccBGSSSE034_WildHorseRefAliasScript",
-  "ccBGSSSE034_WildHorsesQuestScript",
-  "ccBGSSSE034_tif__02000d6c",
-  "ccBGSSSE034_tif__02000d6d",
-  "ccBGSSSE035_MerchantAlias",
-  "ccBGSSSE035_OnActStageRefAlias",
-  "ccBGSSSE036_SetStageOnRead",
-  "ccBGSSSE051_TIF__05000833",
-  "ccBGSSSE051_TIF__05000838",
-  "ccBGSSSE051_TIF__05000839",
-  "ccBGSSSE051__TIF__0500083D",
-  "ccBGSSSE051__TIF__05000841",
-  "ccBGSSSE067_ContentAwareScript",
-  "ccBGSSSE067_QuestFunctionsScript",
-  "ccBGSSSE067_Quest_0506BFC1",
-  "ccBGSSSE067_SetStageOnActivateConfirm",
-  "ccBGSSSE067_SetStageOnOpenRefAlias",
-  "ccBGSSSE067_SetStageTriggerScript",
-  "ccEDHSSE003_TIF__02000860",
-  "ccEDHSSE003_TIF__02000862",
-  "ccEDHSSE003_TIF__0200086B",
-  "ccEDHSSE003_TIF__02000871",
-  "ccEDHSSE003_TIF__02000875",
-  "ccEDHSSE003_TIF__0200088B",
-  "ccEDHSSE003_TIF__020008B0",
-  "ccEEJSSE004__05000C54",
-  "ccEEJSSE004__05000C58",
-  "ccEEJSSE004__05000C72",
-  "ccEEJSSE005_DeathCount",
-  "ccEEJSSE005_Quest_050B7AED",
-  "ccEEJSSE005_SetGlobalOnPickup",
-  "ccEEJSSE005_TIF__050DB2AD",
-  "ccEEJSSE005_TIF__050DB2C5",
-  "ccFFBSSE001_SoldierDeadCountScript",
-  "ccKRTSSE001_DoorActivateScript",
-  "ccKRTSSE001_FerrySyste_05000A7B",
-  "ccKRTSSE001_GTScript",
-  "ccKRTSSE001_GameTimeScript",
-  "ccKRTSSE001_QuestFortu_05000A90",
-  "ccKRTSSE001_SetStageOnLoadScript",
-  "ccKRTSSE001_SleepSetStageScript",
-  "ccKRTSSE001_StageSetonActivate",
-  "ccKRTSSE001_TIF__05000A7E",
-  "ccQDRSSE002_FollowerIdleOnSitScript",
-  "ccRMSSSE001_AltarActivateScript",
-  "ccRMSSSE001_GhostTrapScript",
-  "ccRMSSSE001_SleepSetStageScript",
-  "ccRMSSSE001_TorchCountScript",
-  "ccRMSSSE001_TradeWithSkeletonScript",
-  "ccVSVSSE002_MainQuestScript",
-  "ccVSVSSE003_QF_MainQuest",
-  "ccVSVSSE004_AnimalAliasEggScript",
-  "ccVSVSSE004_AnimalAliasMilkScript",
-  "ccVSVSSE004_F_MainQuestManager",
-  "ccVSVSSE004_F_OverseerAliasScript",
-  "ccVSVSSE004_GuardDogAliasScript",
-  "ccVSVSSE004_HorseAliasScript",
-  "ccVSVSSE004_TIF_BuyChickens",
-  "ccVSVSSE004_TIF_BuyChickensSpouse",
-  "ccVSVSSE004_TIF_BuyCow",
-  "ccVSVSSE004_TIF_BuyCowSpouse",
-  "ccVSVSSE004_TIF_BuyGoat",
-  "ccVSVSSE004_TIF_BuyGoatSpouse",
-  "ccVSVSSE004_TIF_BuyHorse",
-  "ccVSVSSE004_TIF_BuyHorseSpouse",
-  "ccVSVSSE004_TIF_CollectProfitF",
-  "ccVSVSSE004_TIF_CollectProfitM",
-  "ccVSVSSE004_TIF_CollectProfitSpouse",
-  "ccVSVSSE004_TIF_FarmhandDismiss2",
-  "ccVSVSSE004_TIF_FarmhandHire",
-  "ccVSVSSE004_TIF_OverseerHire",
-  "ccVSVSSE004_TIF_OverseerHireSpouse",
-  "ccVSVSSE004_TIF_SpawnFarmhand1",
-  "ccVSVSSE004_TIF_SpawnFarmhand1Spouse",
-  "ccVSVSSE004_TIF_UpgradeAltKidRoom",
-  "ccVSVSSE004_TIF_UpgradeBedroom",
-  "ccVSVSSE004_TIF_UpgradeBedroomSpouse",
-  "ccVSVSSE004_TIF_UpgradeDining",
-  "ccVSVSSE004_TIF_UpgradeDiningSpouse",
-  "ccVSVSSE004_TIF_UpgradeKidRoom",
-  "ccVSVSSE004_TIF_UpgradeKidRoomAltS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomRepS",
-  "ccVSVSSE004_TIF_UpgradeKidRoomReplace",
-  "ccVSVSSE004_TIF_UpgradeKidRoomSpouse",
-  "ccVSVSSE004_TIF_UpgradeKitchen",
-  "ccVSVSSE004_TIF_UpgradeKitchenSpouse",
-  "ccVSVSSE004_TIF_UpgradeLab",
-  "ccVSVSSE004_TIF_UpgradeLabSpouse",
-  "ccVSVSSE004_TIF_UpgradeLoft",
-  "ccVSVSSE004_TIF_UpgradeLoftSpouse",
   "urshug_TIF__0200183E"
  ]
 }

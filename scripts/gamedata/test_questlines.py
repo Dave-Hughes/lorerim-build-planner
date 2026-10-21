@@ -113,6 +113,16 @@ class Checks(unittest.TestCase):
         self.assertNotIn("ModMarker", [q["edid"] for q in out["the-mod"]["quests"]])
         self.assertEqual([q["edid"] for q in out["follower"]["quests"]], ["ModMarker"])
 
+    def test_more_than_one_opening_and_a_judged_giver(self):
+        # The Civil War's two sides (WO-121b): each also-opening quest must be one of the line's; a judged giver passes through.
+        cur = copy.deepcopy(CUR)
+        cur["lines"][2].update(alsoOpening=["ModWarrior"], giver={"name": "Lurius Liore", "place": "Solitude"})
+        cur["lines"][2]["checked"]["giver"] = "uesp"
+        out = run(cur)
+        self.assertEqual((out["the-mod"]["alsoOpening"], out["the-mod"]["giver"]["name"]), (["ModWarrior"], "Lurius Liore"))
+        cur["lines"][2]["alsoOpening"] = ["MS10"]
+        self.fails(cur, "also opens with MS10")
+
 
 class Begins(unittest.TestCase):
     def test_the_first_plain_entry_skips_alias_holes(self):

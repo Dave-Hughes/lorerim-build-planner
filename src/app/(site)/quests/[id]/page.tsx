@@ -67,6 +67,8 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
   const rewards = line.quests.filter((q) => q.rewards);
   const sibs = siblings(line);
   const checkedFrom = (k: keyof QuestLine["checked"]) => fromLabel(line.checked[k]);
+  const giverFrom = line.giver?.source === "uesp" ? "UESP" : "game files";
+  const waysIn = line.ways ?? (opening?.start?.checked === "files" ? opening.start.ways : undefined);
   const told = storyOfLine(line.id);
   return (
     <main className={`page ${styles.main} ${styles.inner}`}>
@@ -122,7 +124,7 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                   <dt>Who</dt>
                   <dd>
                     {line.giver.name}
-                    <span className={styles.src}>game files</span>
+                    <span className={styles.src}>{giverFrom}</span>
                   </dd>
                 </>
               )}
@@ -131,17 +133,17 @@ export default async function QuestLinePage({ params, searchParams }: { params: 
                   <dt>Where</dt>
                   <dd>
                     {line.giver.place}
-                    <span className={styles.src}>game files</span>
+                    <span className={styles.src}>{giverFrom}</span>
                   </dd>
                 </>
               )}
-              {/* No one giver (WO-121): the opening quest's ways in, as the start check words them. */}
-              {!line.giver && opening?.start?.checked === "files" && !!opening.start.ways?.length && (
+              {/* No one giver (WO-121): the opening quest's ways in, as the start check words them; every opening's, when the line has more than one (WO-121b). */}
+              {!line.giver && !!waysIn?.length && (
                 <>
                   <dt>Ways in</dt>
                   <dd>
                     <ul className={styles.waysList}>
-                      {opening.start.ways.map((w, i) => (
+                      {waysIn.map((w, i) => (
                         <li key={i}>{w.how}</li>
                       ))}
                     </ul>

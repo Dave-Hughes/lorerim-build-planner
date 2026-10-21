@@ -383,5 +383,45 @@ class SecondLookTest(unittest.TestCase):
         self.assertNotIn("who", qp.start_of({"name": "Aerin the Man", "startedBy": [mjoll], "target": [], "needs": {}}, {}, {"name": "Mjoll the Lioness"}))
 
 
+class Part2Test(unittest.TestCase):
+    """WO-121b Part 2: the starts the records hold once the check reads further."""
+
+    def test_a_rumour_a_givers_line_needs_comes_first(self):
+        hulda = {"by": "dialogue", "speaker": "Hulda", "speakerPlaced": ["The Bannered Mare, Whiterun"], "call": "SetStage 10"}
+        node = {"by": "story manager", "event": "level up", "conditions": "level >= DA08MinLevel (now 20)"}
+        balgruuf = {"by": "dialogue", "speaker": "Balgruuf the Greater", "speakerPlaced": ["Dragonsreach"], "call": "SetStage 10",
+                    "prompt": "I've heard there's trouble with your children.", "after": [{"quest": "DA08RumorPointer", "startedBy": [hulda, node]}]}
+        start = qp.start_of({"name": "The Whispering Door", "startedBy": [balgruuf], "firstObjectiveStage": 10, "target": [], "needs": {}}, {})
+        self.assertEqual([w["how"] for w in start["ways"]], ["Hear about it from Hulda in The Bannered Mare, Whiterun",
+                                                              "Ask Balgruuf the Greater \"I've heard there's trouble with your children.\" in Dragonsreach"])
+        self.assertNotIn("who", start)
+
+    def test_a_quest_another_starts_at_a_stage_names_who_sets_that_stage(self):
+        rikke = {"by": "dialogue", "speaker": "Legate Rikke", "speakerPlaced": ["Castle Dour"], "call": "SetStage 20"}
+        helper = {"by": "quest script", "quest": "CW00A (Imperial Introductions)", "atStage": 20, "call": "SetStage 1", "throughStage": [rikke]}
+        start = qp.start_of({"name": "Joining the Legion", "startedBy": [helper], "firstObjectiveStage": 1, "target": [], "needs": {}}, {"CW00A": "Imperial Introductions"})
+        self.assertEqual((start["who"], start["where"]), ("Legate Rikke", "Castle Dour"))
+
+    def test_reading_a_book(self):
+        book = {"by": "book", "book": "Deathbrand", "call": "SetStage 29", "plain": "Read Deathbrand"}
+        geldis = {"by": "dialogue", "speaker": "Geldis Sadri", "speakerPlaced": ["The Retching Netch"], "call": "SetStage 1"}
+        start = qp.start_of({"name": "Deathbrand", "startedBy": [geldis, book], "firstObjectiveStage": 29, "target": [], "needs": {}}, {})
+        self.assertEqual(start["ways"][0]["how"], "Read Deathbrand")
+        self.assertNotIn("who", start)  # Geldis is only another way
+
+    def test_an_objective_once_per_hold(self):
+        objectives = [{"index": i * 10, "text": f"Assist the people of {h} (0/5)"} for i, h in enumerate(("The Reach", "The Rift", "Haafingar", "Whiterun"), 1)]
+        self.assertEqual(qp.one_per_hold("Assist the people of The Reach (0/5)", objectives), "Assist the people of that jarl's hold")
+        self.assertIsNone(qp.one_per_hold("Bring the letter to The Reach", objectives[:1]))
+
+    def test_the_messenger_by_name(self):
+        messenger = {"by": "quest script", "quest": "DLC1VQ00ChangeLocation, a helper quest with Messenger", "messenger": "Durak", "call": "SetStage 5",
+                     "throughStartedBy": [{"by": "story manager", "event": "change location", "conditions": "level >= DLC1VQMinLevel (now 30); the place you enter is a habitation"}]}
+        agmaer = {"by": "dialogue", "speaker": "Agmaer", "speakerPlaced": ["Fort Dawnguard"], "call": "SetStage 10"}
+        start = qp.start_of({"name": "Dawnguard", "startedBy": [messenger, agmaer], "firstObjectiveStage": 10, "target": [], "needs": {}}, {})
+        self.assertEqual(start["ways"][0]["how"], "Durak comes to find you in any inn")
+        self.assertNotIn("who", start)
+
+
 if __name__ == "__main__":
     unittest.main()

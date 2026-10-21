@@ -347,6 +347,8 @@ def way_of(s, own_name, line_quests):
         return text, plain_needs(s.get("conditions"), own_name)
     if s["by"] == "by itself":  # its own script starts it once you're a level (WO-121b)
         return s["plain"], ([f"Level {s['level']}"] if s.get("level") else [])
+    if s["by"] == "book":  # reading it starts the quest (WO-121b: Deathbrand)
+        return s["plain"], []
     if s["by"] == "story manager":
         return f"It starts by itself on {s.get('event') or 'a story event'}", plain_needs(s.get("conditions"), own_name)
     if s["by"] == "quest script":
@@ -508,6 +510,7 @@ def finds_you(starters, own, edid, shows_at, towns, brings=None):
     place = next((p for _, n in nodes for p in [_place_you_enter(n.get("conditions"))] if p), None)
     held = any(_HOLDING.search(w) for s in talks for w in s.get("speakerPlaced") or [])
     messenger = any("with Messenger" in (s.get("quest") or "") for s, _ in nodes)
+    sent = next((s["messenger"] for s, _ in nodes if s.get("messenger")), None)  # who the Messenger alias holds (Durak)
     person = None
     if len(named) == 1:
         theirs = [s for s in talks if s["speaker"] == named[0]]
@@ -529,8 +532,44 @@ def finds_you(starters, own, edid, shows_at, towns, brings=None):
     needs = [n for n in plain_needs(node.get("conditions"), own) if not n.startswith(("the place you enter", "the place you leave"))]
     if person:
         needs += [n for s in talks for n in plain_needs(s.get("conditions"), own) if re.fullmatch(r"Level \d+", n)]
+    person = person or sent
     how = f"{person or 'A messenger'} comes to find you" + (f" in {place}" if place else "")
     return {"how": how, **({"needs": list(dict.fromkeys(needs))} if needs else {}), **({"who": person} if person else {}), **({"where": place} if place else {}), "node": node}
+
+
+HOLDS = ("The Reach", "The Rift", "Haafingar", "Whiterun", "Eastmarch", "Hjaalmarch", "The Pale", "Falkreath", "Winterhold")
+
+
+def one_per_hold(text, objectives):
+    """
+    An objective the quest has once per hold, the same words but the hold's name, said for the hold you're in (WO-121b:
+    Making Friends and Influencing People's "Assist the people of The Reach (0/5)", from any jarl): its words for that jarl's
+    hold. None when it isn't one.
+    """
+    m = re.match(rf"^(.*?)\b({'|'.join(HOLDS)})\b", text or "")
+    if not m:
+        return None
+    same = {h for o in objectives or [] for h in HOLDS if (o.get("text") or "").startswith(m.group(1) + h)}
+    return f"{m.group(1)}that jarl's hold" if len(same) >= 3 else None
+
+
+def through(starters):
+    """
+    Each quest-script starter that another quest of the line sets off at a stage, swapped for the talks that set that stage
+    (WO-121b: Joining the Legion starts at Imperial Introductions' stage 20, which Legate Rikke's talk sets); a talk that
+    needs a rumour first comes after the rumour's own talks (rule 4: Hulda's, then Balgruuf's).
+    """
+    out = []
+    for s in starters:
+        if s["by"] == "quest script" and s.get("throughStage"):
+            out += [t for t in s["throughStage"] if t not in out]
+            continue
+        for r in s.get("after", []) if s["by"] == "dialogue" else []:
+            for u in r.get("startedBy", []):
+                if u["by"] == "dialogue" and u not in out:
+                    out.append({**u, "rumour": True})
+        out.append(s)
+    return out
 
 
 def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives=None, edid=None, logs=None, brings=None):
@@ -550,7 +589,7 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
     edid = edid or row.get("edid")
     every = row.get("startedBy", [])
     # A talk that needs the quest already under way is a later step, not a way in (rule 6).
-    starters = [s for s in every if not continues(s, own, edid, row.get("firstObjectiveStage"))]
+    starters = through([s for s in every if not continues(s, own, edid, row.get("firstObjectiveStage"))])
     found = finds_you(every, own, edid, row.get("firstObjectiveStage"), towns or {}, brings)
     needs = plain_needs((row.get("needs") or {}).get("conditions"), own)
     # Every way in the check found, a quest that also runs from the game's start included (The Book of
@@ -561,9 +600,12 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
         if s["by"] == "start game" or (found and _node_of(s)):
             continue
         text, n = way_of(s, own, line_quests)
+        if s.get("rumour"):  # a rumour's talk: hear it from them (Hulda), with what the rumour waits for
+            place = clean_place((s.get("speakerPlaced") or [None])[0])
+            text = f"Hear about it from {s.get('speaker') or 'someone'}" + (f" in {place}" if place else "")
         if any(w["how"] == text for w in shown):
             continue
-        w = {"how": text, **({"needs": n} if n else {})}
+        w = {"how": text, **({"needs": n} if n else {}), **({"book": True} if s["by"] == "book" else {})}
         if s["by"] == "dialogue" and s.get("speaker"):
             w["talk"] = True
             # A talk only for some players is a way with its condition, never the giver (rule 5).
@@ -578,6 +620,10 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
                 w["where"] = place
         shown.append(w)
     shown = rumours(shown, towns or {})
+    # A book that starts it is a way no one gives (WO-121b: reading Deathbrand, The Aetherium Wars): it leads, and there's no
+    # single giver.
+    book = [w for w in shown if w.get("book")]
+    shown = book + [w for w in shown if not w.get("book")]
     if not any(s["by"] == "start game" for s in starters):
         if len(shown) == 1:
             needs = [shown[0]["how"]] + needs + shown[0].get("needs", [])
@@ -585,10 +631,10 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
             needs.append("One of: " + "; or ".join(w["how"] + (f" ({', '.join(w['needs'])})" if w.get("needs") else "") for w in shown))
     needs += [d["text"] for d in (row.get("needs") or {}).get("doors", [])]
     out = {"needs": list(dict.fromkeys(needs))}
-    shown = [{k: v for k, v in w.items() if k not in ("talk", "rumour")} for w in shown]
+    shown = [{k: v for k, v in w.items() if k not in ("talk", "rumour", "book")} for w in shown]
     if shown:
         out["ways"] = shown
-    speakers = list(dict.fromkeys(w["who"] for w in shown if w.get("who")))
+    speakers = [] if book else list(dict.fromkeys(w["who"] for w in shown if w.get("who")))
     one = speakers[0] if len(speakers) == 1 else (giver["name"] if giver and giver.get("name") in speakers else None)
     # A named person alongside a guard, each starting it, isn't the one giver (Laid to Rest: Jonna, and a Morthal guard).
     guard = any(s["by"] == "dialogue" and ((s.get("speaker") and is_role(s["speaker"])) or "Guard Faction" in (s.get("conditions") or "")) for s in starters)
@@ -629,6 +675,8 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
         first = {}
     if shown_first and shown_first.get("text"):
         out["then"] = shown_first["text"]
+    elif one_per_hold(first.get("text"), objectives):
+        out["then"] = one_per_hold(first.get("text"), objectives)
     elif first.get("text"):
         out["then"] = first["text"]
         holder = next((h for t in step.get("target", []) for h in t.get("holds", []) if h.get("name") and "actor" in (h.get("kind") or "")), None)
@@ -671,7 +719,7 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
             item[k] = line[k]
         if "gate" in unread:
             item["after"] = [a for a in line.get("after", []) if a == "main-quest"]
-        item["checked"] = {k: v for k, v in checked.items() if k not in unread}
+        item["checked"] = {k: v for k, v in checked.items() if k not in unread and k != "giver"}  # the giver says its own source
         item["sources"] = [
             {"name": source_name(s["name"]), **({"modid": s["modid"]} if s.get("modid") else {}), **({"base": True} if s["name"] == "Skyrim" else {})}
             for s in line["sources"]
@@ -728,11 +776,29 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
         # The records' named giver stands in only when the check found a way in with no one to name; a quest that runs
         # from the start with no way in found has no giver the page can name (WO-121b Part 4: The Heart of Dibella, not
         # Kleppr).
-        elif first_start.get("ways") and not any(w.get("who") for w in first_start.get("ways", [])):
+        elif first_start.get("ways") and not any(w.get("who") for w in first_start.get("ways", [])) and not any(
+                s["by"] == "book" for s in (checked_rows.get(line["opening"]) or {}).get("startedBy", [])):  # a book is no one's (Dibella's letter)
             giver = giver_of(opening)
             # Not someone whose line is only a way with its condition (WO-121b rule 5: Chief Larak, for an Orc).
             if giver and not any(re.match(rf"(Ask|Talk to) {re.escape(giver['name'])}\b", w["how"]) for w in first_start.get("ways", [])):
                 item["giver"] = giver
+        # More than one opening (WO-121b): the Civil War's two sides, the townsfolk's six deliveries. No one giver; the
+        # line's ways in are each opening's, its person and place, named by its quest when their names differ.
+        openers = [q for q in quests if q["edid"] == line["opening"]] + [q for q in quests if q["edid"] in line.get("alsoOpening", [])]
+        if len(openers) > 1:
+            item.pop("giver", None)
+            named = len({q["name"] for q in openers}) > 1
+            ways = []
+            for q in openers:
+                st = q["start"]
+                w = ({"how": f"Talk to {st['who']}" + (f" in {st['where']}" if st.get("where") else ""), "who": st["who"], **({"where": st["where"]} if st.get("where") else {})}
+                     if st.get("who") else next(iter(st.get("ways", [])), None))
+                if w:
+                    ways.append({**w, "how": (f"{q['name']}: " if named else "") + w["how"]})
+            item["ways"] = ways
+        # A giver a judged source names when the records can't (WO-121b: Raven Rock's Captain Veleth, at Old Attius Farm).
+        if line.get("giver") and checked.get("giver"):
+            item["giver"] = {**line["giver"], "source": checked["giver"]}
         # A checked level beats the field guide's (WO-115); start_disagreements lists each for questlines_report.md.
         first = quests[0]["start"] if quests else {}
         levels = [int(n.split(" ")[1]) for n in first.get("needs", []) if re.fullmatch(r"Level \d+", n)]
