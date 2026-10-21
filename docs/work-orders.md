@@ -5174,6 +5174,12 @@ The PC's re-check (Part 2) left nine openings with starters for Bob to judge aga
   - **Whiterun, expanded, stage 10:** 0WRThaneQ01 (Skirmish at Whitewatch, SurWR.esp) runs from the start. A trigger box inside Whiterun (SurWR.esp:38A6DE, `defaultsetStageTrigSCRIPT`, in cell Skyrim.esm:01A274 of the Whiterun worldspace) sets stage 5 when you walk in, and stage 5's fragment sets 10, whose objective is the placeholder "TEST". The note `0WRThaneQuestNoteStart` sets stage 20 when read.
   - **Trius' Trinket:** fn359 and fn562 are GetInCurrentLoc and LocationHasKeyword. dunShipwreck04Node fires on a change of location when you're in Pilgrim's Trench and the place is a dungeon (DungeonNode's LocTypeDungeon); nothing in the load order overrides the node. So the records do start it, on entering Pilgrim's Trench; what UESP calls cut is what follows (no fragment shows the second objective, "Return the box to Trius for the promised reward."). Bob's call whether that's enough to keep it.
   - **Mjoll:** the helper aaMjollAerinQIntro (FDE Mjoll.esp, start-game) reaches stage 20 on the player's "Let's go." (FDE Mjoll.esp:000902, reply "Thanks. I can hardly wait!", no conditions, no speaker tag; the helper's aliases hold Mjoll and Aerin). Its stage 20 fragment sets Aerin the Man to 10.
+- Bob, 22 Oct, on the PC's Part 2 and Part 4 report: every trace holds up against UESP and the mods' own pages. Calls on the four the traces settle (in the judged file, `second_look`):
+  - **Discerning the Transmundane:** no single giver, two ways: read Ruminations on the Elder Scrolls, or ask Urag gro-Shub in the Arcanaeum about Septimus. My "starts during Elder Knowledge" was UESP's, not the records'; drop it.
+  - **Whiterun, expanded:** no single giver; it starts when you walk into Whiterun. Mac's page is right.
+  - **Trius' Trinket:** it starts on entering Pilgrim's Trench but can't be finished. Off the quest lists and out of what assistants suggest.
+  - **Mjoll:** Mjoll the Lioness, with Aerin, in Riften; then Clear the dungeon with Aerin and Mjoll.
+  - **Mac, next:** take the PC's rerun and these four into the pages and the key, check the line page's Ways in screen the PC changed, and run `test_quest_truth.py` until `WAITING_ON_BOB` is empty; then the door sends `who` and `where` again and the last two boxes can be ticked.
 - [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Dave checks five quests he knows.
 
 ---

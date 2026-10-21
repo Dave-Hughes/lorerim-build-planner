@@ -175,9 +175,9 @@
    "pageSays": "Urag gro-Shub, The Arcanaeum; then \"Ask Urag about the insane book\"",
    "uesp": "UESP: giver Septimus Signus, at his outpost far north of Winterhold. It starts by itself during Elder Knowledge or Scroll Scouting if it hasn't already. Stage 5 (Ask Urag about the insane book) is for having his book; stage 10 is Find Septimus Signus.",
    "url": "https://content1.m.uesp.net/wiki/Skyrim:Discerning_the_Transmundane",
-   "reason": "Second look, 22 Oct. Urag isn't the giver; his lines only move it from 5 to 10. No single giver: it starts by itself during Elder Knowledge (Find Septimus Signus, at his outpost north of Winterhold), or from Septimus's book (Ask Urag about the insane book). PC: name what sets stage 5 (the book) and the main quest fragment that sets 10.",
+   "reason": "Third look, 22 Oct, after the PC's trace. The quest runs from the start of the game; reading Septimus's Ruminations on the Elder Scrolls sets it going (Ask Urag about the insane book), and Urag's 'Where did he go?' or 'He's dead?' sets Find Septimus Signus. Urag is one of two ways, not the giver, and 'starts during Elder Knowledge' isn't in the records: in play it's asking Urag about the Elder Scroll. The page should name no single giver and give both ways: read Ruminations on the Elder Scrolls, or ask Urag gro-Shub in the Arcanaeum about Septimus.",
    "bob": "agree",
-   "second_look": "2026-10-22"
+   "second_look": "2026-10-22 (third look)"
   },
   {
    "line": "ill-met-by-moonlight",
@@ -813,13 +813,13 @@
    "line": "trius-trinket",
    "name": "Trius' Trinket",
    "opening": "Trius' Trinket (dunShipwreck04QST)",
-   "verdict": "UNSURE",
+   "verdict": "WRONG",
    "pageSays": "no one giver; then Search the wreck below for the jewelry box.",
    "uesp": "UESP lists it under unfinished quests, and the Elder Scrolls wiki says it 'is left incomplete in the game files': Trius was to give it at the camp above the wreck and never appears.",
    "url": "https://elderscrolls.fandom.com/wiki/Pilgrim's_Trench",
-   "reason": "Second look, 22 Oct. Still unsure. The only start is a change-location node whose conditions are unread (fn359, fn562, the same two as Lost to the Ages). If the PC reads them and nothing in LoreRim restores the quest, it should leave the quest lists, not show as one you can do.",
+   "reason": "Third look, 22 Oct, after the PC's trace. The records do start it, on entering Pilgrim's Trench, but nothing shows its second objective (Return the box to Trius), and Trius never appears, so it can't be finished. Take it off the quest lists and out of what assistants suggest; keep the record.",
    "bob": "agree",
-   "second_look": "2026-10-22"
+   "second_look": "2026-10-22 (third look)"
   },
   {
    "line": "infiltration",
@@ -1178,13 +1178,13 @@
    "line": "capital-whiterun",
    "name": "Whiterun, expanded",
    "opening": "0WRThaneQ01 (Skirmish at Whitewatch)",
-   "verdict": "WRONG",
+   "verdict": "NO_GIVER_OK",
    "pageSays": "no one giver; then \"TEST\"",
    "uesp": null,
    "url": null,
-   "reason": "Second look, 22 Oct. The first objective in the records is the mod author's placeholder 'TEST', so the page must not show it: use the stage's journal text instead, or the next real objective. The courier's line needs stage 10, which looks like the Thane of Whiterun hook. PC: name what sets stage 10; until then the page says a courier finds you, not checked yet.",
+   "reason": "Third look, 22 Oct, after the PC's trace. It starts by itself when you walk into Whiterun (a trigger box sets stage 5, then 10); the note sets 20. No single giver; the first step is the stage's journal text, never 'TEST'. Mac's Part 4 page is right.",
    "bob": "agree",
-   "second_look": "2026-10-22"
+   "second_look": "2026-10-22 (third look)"
   },
   {
    "line": "markarth-side",
@@ -1520,13 +1520,13 @@
    "line": "mjoll",
    "name": "Mjoll the Lioness",
    "opening": "Aerin the Man (aaMjollAerinQ)",
-   "verdict": "UNSURE",
+   "verdict": "WRONG",
    "pageSays": "no one giver; then \"Clear the dungeon with Aerin and Mjoll\"",
    "uesp": null,
    "url": null,
-   "reason": "Second look, 22 Oct. Still unsure. A helper quest with Mjoll and Aerin runs from the start of the game and opens the quest at its stage 20; what moves it to 20 isn't read yet (likely Mjoll as your follower with Aerin near, after Grimsever's Return). PC: trace it. Until then 'no one giver, not checked yet' stands.",
+   "reason": "Third look, 22 Oct, after the PC's trace. The helper reaches stage 20 on the player's 'Let's go.' with Mjoll and Aerin in its aliases, and that opens Aerin the Man. The page should name Mjoll the Lioness (with Aerin) as the giver, Riften, then Clear the dungeon with Aerin and Mjoll.",
    "bob": "agree",
-   "second_look": "2026-10-22"
+   "second_look": "2026-10-22 (third look)"
   },
   {
    "line": "erik",
