@@ -4905,6 +4905,39 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-121  Who starts a quest, tested against an answer key (Mac, 21 Oct 2026)
+
+**Why.** Dave checked one quest page, The Book of Love, and it named Fastred at Fellstar Farm as who starts it. Dinya Balu in the Temple of Mara starts it; Fastred is where she sends you. Bob's look: the start check reads the files right (its report names Dinya Balu, "Just tell me what to do."), but `quest_pages.start_of` takes who and where from the first objective's target, so for 175 quests the page names where the quest sends you, sometimes an object ("Golden Claw", "Door", "Passage"). Nobody tested the answers against quests whose answer is known. Bob scored the planner against 38 quests from UESP: the quest's who is right for 17, wrong for 19; the line's giver (from WO-99's named giver) is right more often but still wrong for about 8. Swapping in the dialogue starter alone (Bob tried) fixes some and breaks others, because rumours start many quests (Dawnstar's people for Waking Nightmare, Erandur is the giver).
+
+**The answer key.** `gamedata/5.0.4.8/quest_truth.json`: 38 quests with every way UESP says each starts, where, the first objective and the page used. Hand-kept by Bob; it grows.
+
+### 1. Who starts it, worked out
+- In `quest_pages.py`, a quest's start says **how it starts** as ways and **then** as the first step:
+  - `ways`: every starter the check found, each in `way_of`'s words with its place and line ("Ask Dinya Balu \"Just tell me what to do.\" in the Temple of Mara").
+  - `then`: the first objective ("Talk to Fastred"), with its target's place when it names a person or place ("at Fellstar Farm").
+  - `who` and `where`: only when one person starts it: exactly one dialogue starter, or several where the records' named giver (WO-99) is one of them. Otherwise none: the page shows the ways.
+  - Never an item, a door, a marker or a cell as `who`: only actors.
+- The line's `giver` comes from its opening quest's `who` when there is one; else WO-99's named giver only if the start check has no dialogue starters for it; else none, and the line page shows the opening quest's ways.
+
+### 2. The test
+- `scripts/gamedata/test_quest_truth.py`, run by `npm run test:gamedata`: for every row in the answer key whose quest is in `quests.json`, the page's person (the quest's `who`, else the first way's person, else the `then`'s person) is one of `startsWith`, and `then` matches `firstObjective` (same words, ignoring case and punctuation). A row the LoreRim records really do differ on is listed in the test with the reason and the record that shows it, never just skipped.
+- The build fails when the test fails.
+- In the commit: a table of every line whose giver changed, before and after. Bob reads it item by item before Dave sees the pages.
+
+### 3. Then the pages and the door
+- WO-115 Part 5 (the quest pages' How it starts and How it can end) is built on this: ways, then the first step; no player context (Dave, 20 Oct).
+- The door's `get_quest` and `get_quest_start` send `who` and `where` again, now from Part 1, with `ways` and `then`.
+
+### Done when
+- [ ] Every row of `quest_truth.json` passes, or is listed with the LoreRim record that differs.
+- [ ] The Book of Love's page: Ask Dinya Balu in the Temple of Mara, then Talk to Fastred at Fellstar Farm.
+- [ ] No quest's who is an item, door, marker or cell.
+- [ ] The giver-change table is in the commit for Bob's read.
+- [ ] WO-115 Part 5 built on it; the door sends who, where, ways and then.
+- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Bob reads the table, then Dave checks five quests he knows.
+
+---
+
 ## WO-120  The night run: everything queued, one after another (Mac, 20 Oct 2026)
 
 **Why.** Dave is asleep and wants Jeff on Mac to work through the queue overnight. Bob checks WO-118 before Dave goes to bed; the rest are built tonight and checked by Bob and Dave in the morning.
