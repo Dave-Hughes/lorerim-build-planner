@@ -4905,6 +4905,31 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-120  The night run: everything queued, one after another (Mac, 20 Oct 2026)
+
+**Why.** Dave is asleep and wants Jeff on Mac to work through the queue overnight. Bob checks WO-118 before Dave goes to bed; the rest are built tonight and checked by Bob and Dave in the morning.
+
+**The rule for tonight.** Each order below says "stop" at its end, for Dave to look. Tonight, don't stop there: finish the order, tick its boxes, run every check in CLAUDE.md, commit and push to `staging`, then go straight on to the next. Everything else in CLAUDE.md holds: `staging` only, never `main`; no destructive database operation; migrations generated and additive; secrets never printed or committed.
+
+**The queue, in order:**
+1. **WO-118**, whatever is left of it (Part 8, tests and screenshots).
+2. **WO-115 Parts 3 to 5**, open for you. Read the two notes above Part 3 first.
+3. **WO-119**, assistants that build well.
+4. **WO-109b**, the door on any path and a 401 that starts sign-in.
+
+**If something blocks you** (a check that won't pass after a real try, a question only Dave can answer, a design the boards don't cover): don't guess at a design and don't skip a test. Write what blocked you and what you tried under that order's Done when, as "Blocked (night run): ...", commit and push that, and go on to the next order. A blocked part of an order doesn't stop the rest of it if the rest doesn't depend on it.
+
+**Morning notes.** As you finish each order, add a line to `docs/night-2026-10-20.md`: the order, its commits, what's on staging to try (with links on `https://lorerim-build-planner-git-staging-daves-projects-a9b7d176.vercel.app`), and anything blocked. Commit it with each order, so it's current if the run stops partway.
+
+### Done when
+- [ ] WO-118 done.
+- [ ] WO-115 Parts 3 to 5 done.
+- [ ] WO-119 done.
+- [ ] WO-109b done.
+- [ ] `docs/night-2026-10-20.md` lists each order, what to try and what's blocked. Every check in CLAUDE.md passes on the last commit. Push to `staging` and stop: Bob checks the night's work in the morning, then Dave.
+
+---
+
 ## WO-119  Assistants that build well: the rules, warnings while drafting, and a way to tell (Mac, 20 Oct 2026)
 
 **Why.** Kyria's build, drafted by Dave's Claude through the door, follows every rule and still isn't a good build: by level 23 it carries 169 skill points never spent, one perk point unspent from level 5 and all five Destiny points unspent. It raised four skills to max skill and then put 1 point a level into each, while Smithing, Restoration and Block sat at 20 to 25. The door never told the assistant how points work, and its answers carry `skillPointsCarriedOver` without saying it's a problem. Dave: the site doesn't need warnings, a player knows to spend their points; the question is whether the agent knows how to build and whether we can tell. So this order is for assistants only; nothing on the site changes.
