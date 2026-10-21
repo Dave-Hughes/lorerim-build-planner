@@ -82,7 +82,7 @@
   },
   {
    "quest": "A Night To Remember",
-   "editorId": "DA14",
+   "editorId": "DA14Start",
    "startsWith": [
     "Sam Guevenne"
    ],
@@ -442,6 +442,930 @@
    "firstObjective": "Head to Peak's Shade Tower outside of Falkreath.",
    "source": "records",
    "notes": "GORE.esp: Eden's rumour (4B0CAE) starts it; Gore is who you find at the tower. Judged by Bob, 21 Oct."
+  },
+  {
+   "quest": "Unbound",
+   "editorId": "MQ101",
+   "line": "main-quest",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Make your way to the Keep",
+   "source": "uesp",
+   "url": "https://content1.uesp.net/wiki/Skyrim:Unbound",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: UESP's \"Ralof\" is the guide through a quest that starts by itself. In LoreRim, Alternate Perspective owns the start: you either rent a room from Matlara at Helgen (25 gold) or take Shazdehviir's skip. So no single giver is right, and the first step matches UESP and the records."
+  },
+  {
+   "quest": "Dragonborn",
+   "editorId": "DLC2MQ01",
+   "line": "dragonborn",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Find out who sent the Cultists",
+   "source": "uesp",
+   "url": "https://content1.uesp.net/wiki/Skyrim:Outlander",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It starts with the cultist ambush, which the sheet shows as a story-manager start (LoreRim: level 25 plus a chosen main-quest point), and the first step matches."
+  },
+  {
+   "quest": "A Chance Arrangement",
+   "editorId": "TG00",
+   "line": "thieves-guild",
+   "startsWith": [
+    "Brynjolf"
+   ],
+   "where": "Riften",
+   "firstObjective": "Meet Brynjolf during daytime",
+   "source": "uesp",
+   "url": "https://pt.uesp.net/wiki/Skyrim:A_Chance_Arrangement",
+   "notes": "Bob, 21 Oct, CONFIRMED: Giver and first objective match UESP exactly."
+  },
+  {
+   "quest": "Innocence Lost",
+   "editorId": "DB01",
+   "line": "dark-brotherhood",
+   "startsWith": [
+    "Aventus Aretino"
+   ],
+   "where": "Aretino Residence, Windhelm",
+   "firstObjective": "Talk to Aventus Aretino",
+   "source": "uesp",
+   "url": "https://content1.uesp.net/wiki/Skyrim:DB01Objective",
+   "notes": "Bob, 21 Oct, CONFIRMED: UESP names Aventus as the giver, and the first objective matches."
+  },
+  {
+   "quest": "Investigate the Bards College",
+   "editorId": "MS05Start",
+   "line": "bards-college",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Investigate the Bards College",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Investigate_the_Bards_College",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: Any bard starts it (Karita, Viarmo, Sven, Ogmund, Mikael in the sheet), so no single giver is right."
+  },
+  {
+   "quest": "Meridia's Order",
+   "editorId": "NMeridia01",
+   "line": "meridias-order",
+   "startsWith": [
+    "Paladin Marith"
+   ],
+   "where": "Meridia's Sanctum",
+   "firstObjective": "Speak with High Priestess Alara at Meridia's Sanctum",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Every Marith answer (\"You lead, I'll follow\", \"Lead the way\", even the refusal) sets stage 10, and the first step sending you to Alara makes sense."
+  },
+  {
+   "quest": "Penitus Oculatus",
+   "editorId": "zzzPO00",
+   "line": "penitus-oculatus",
+   "startsWith": [
+    "Commander Maro"
+   ],
+   "where": "Penitus Oculatus Outpost, Dragon Bridge Garrison",
+   "firstObjective": "Speak to Commander Maro for assignments",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Maro's \"Yes, I want to join\" plainly sets stage 1, and its first step points back to him. It is gated on zzzPOLegionRequirementMet, which the page could mention."
+  },
+  {
+   "quest": "Speak to Lod...",
+   "editorId": "DA03Start",
+   "line": "a-daedras-best-friend",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak to Lod, Falkreath's blacksmith, about a dog he's looking for",
+   "source": "uesp",
+   "url": "https://content2.uesp.net/wiki/Skyrim:DA03Start",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: The starter is any one of four unnamed gate-guard aliases (level 10 or higher), so no named giver is fair, and the first step matches. The page could add \"a Falkreath gate guard\"."
+  },
+  {
+   "quest": "Boethiah's Calling",
+   "editorId": "DA02",
+   "line": "boethiahs-calling",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Find the Sacellum of Boethiah",
+   "source": "uesp",
+   "url": "https://content3.uesp.net/wiki/Skyrim:DA02_Hook",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: Both UESP and the sheet show it starting by itself (level-up node, LoreRim level 20). The objective text \"Sacellum\" comes from the winning record, so it stands."
+  },
+  {
+   "quest": "The Black Star",
+   "editorId": "DA01",
+   "line": "the-black-star",
+   "startsWith": [
+    "Aranea Ienith"
+   ],
+   "where": "Shrine of Azura",
+   "firstObjective": "Find the elven mage from Aranea's vision",
+   "source": "uesp",
+   "url": "https://content2.uesp.net/wiki/Skyrim:DA01Intro",
+   "notes": "Bob, 21 Oct, CONFIRMED: Giver and first objective match."
+  },
+  {
+   "quest": "The Break of Dawn",
+   "editorId": "DA09",
+   "line": "the-break-of-dawn",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Find Meridia's beacon",
+   "source": "uesp",
+   "url": "https://content1.m.uesp.net/wiki/Skyrim:The_Break_of_Dawn",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It starts by itself on level-up (LoreRim: level 20) with no NPC giver, and the first objective matches."
+  },
+  {
+   "quest": "The Amulet of Old",
+   "editorId": "DefunctQuest02",
+   "line": "baan-malur",
+   "startsWith": [
+    "Adimmisaru"
+   ],
+   "where": "Arena Market",
+   "firstObjective": "Solve the dispute.",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: For this quest, Adimmisaru's line plainly sets stage 10 and \"Solve the dispute\" makes sense. The sheet's note that the line itself has no single opening (ferry or Kalbthurz) still applies at line level."
+  },
+  {
+   "quest": "Siege at Icemoth",
+   "editorId": "HYORdunIcemothQST",
+   "line": "siege-at-icemoth",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Travel to Fort Icemoth",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It runs from game start with no speaker, and its first step points to a jetty marker, so no giver is right. The sheet doesn't show what sets stage 10."
+  },
+  {
+   "quest": "The Call of Gray Cowl of Nocturnal",
+   "editorId": "manny_GF_MQ",
+   "line": "gray-cowl",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Reach the place",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It starts by itself on a location change once Under New Management reaches stage 200, and the first step points at Seviana Umbranox. No giver is right, though the page could mention the Thieves Guild requirement."
+  },
+  {
+   "quest": "The Forgotten City",
+   "editorId": "000FCQuest01",
+   "line": "forgotten-city",
+   "startsWith": [
+    "Cassia"
+   ],
+   "where": "Forgotten Ruins",
+   "firstObjective": "Read Cassia's Plea.",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Cassia's greeting (\"That's close enough - who are you?\") plainly starts the quest, and reading her plea is a sensible first step."
+  },
+  {
+   "quest": "In the Pines",
+   "editorId": "GRVEMainQuest01",
+   "line": "gravewind",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Explore the strange homestead.",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It runs from game start with no speaker, so no giver is right, and exploring the homestead is a sensible first step."
+  },
+  {
+   "quest": "Retaking Thirsk",
+   "editorId": "DLC2MH01",
+   "line": "thirsk",
+   "startsWith": [
+    "Bujold the Intrepid"
+   ],
+   "where": "Bujold's Retreat",
+   "firstObjective": "Join the assault on Thirsk Mead Hall",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Thirsk_Rumors",
+   "notes": "Bob, 21 Oct, CONFIRMED: Giver, place and first objective match."
+  },
+  {
+   "quest": "Reluctant Steward",
+   "editorId": "DLC2TT1",
+   "line": "tel-mithryn",
+   "startsWith": [
+    "Neloth"
+   ],
+   "where": "Tel Mithryn",
+   "firstObjective": "Find Varona",
+   "source": "uesp",
+   "url": "https://pt.uesp.net/wiki/Dragonborn:Reluctant_Steward",
+   "notes": "Bob, 21 Oct, CONFIRMED: Giver and first objective match UESP and the sheet."
+  },
+  {
+   "quest": "Lost Legacy",
+   "editorId": "DLC2SV01",
+   "line": "skaal-village",
+   "startsWith": [
+    "Tharstan"
+   ],
+   "where": "Greathall, Skaal Village",
+   "firstObjective": "Travel to Vahlok's Tomb",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Lost_Legacy",
+   "notes": "Bob, 21 Oct, CONFIRMED: The giver and the first objective both match UESP and the records."
+  },
+  {
+   "quest": "Black Book: Untold Legends",
+   "editorId": "DLC2BlackBook03Quest",
+   "line": "black-books",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Learn the Black Book's hidden knowledge",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Black_Book:_Untold_Legends_(quest)",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It starts when you read the book, not from an NPC, and the first objective matches."
+  },
+  {
+   "quest": "The Kagrumez Gauntlet",
+   "editorId": "DLC2KagrumezQST",
+   "line": "the-kagrumez-gauntlet",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Find Resonance Gems across Solstheim to complete the Kagrumez trials",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Kagrumez_Gauntlet",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: UESP names no giver either, and the first objective matches."
+  },
+  {
+   "quest": "Miasma",
+   "editorId": "RE01MiasmaQst, Miasma.esp",
+   "line": "miasma",
+   "startsWith": [
+    "Haj-Xul"
+   ],
+   "where": "The Retching Netch, Solstheim",
+   "firstObjective": "Follow Haj-Xul",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Haj-Xul's 'Lead the way' / 'Follow me. It's not far from here.' plainly sets stage 10, and 'Follow Haj-Xul' fits."
+  },
+  {
+   "quest": "Destroy the Acolyte Priests",
+   "editorId": "EnoAcolyteQuest, mod",
+   "line": "destroy-the-acolyte-priests",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Destroy Ahzidal",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: The only starter is a change-location story node after The Fate of the Skaal, so no NPC gives it, and 'Destroy Ahzidal' at Kolbjorn Barrow makes sense."
+  },
+  {
+   "quest": "The Forsworn Conspiracy",
+   "editorId": "MS01",
+   "line": "forsworn-conspiracy",
+   "startsWith": [
+    "Eltrys"
+   ],
+   "where": "The Warrens, Markarth",
+   "firstObjective": "Go to the Shrine of Talos",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Forsworn_Conspiracy",
+   "notes": "Bob, 21 Oct, CONFIRMED: The giver and the first objective match; Eltrys lives in the Warrens and the first step sends you to the shrine."
+  },
+  {
+   "quest": "Unfathomable Depths",
+   "editorId": "MS04",
+   "line": "unfathomable-depths",
+   "startsWith": [
+    "From-Deepest-Fathoms"
+   ],
+   "where": "Haelga's Bunkhouse, Riften",
+   "firstObjective": "Speak to From-Deepest-Fathoms",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Unfathomable_Depths",
+   "notes": "Bob, 21 Oct, CONFIRMED: The giver, her home and the first objective all match UESP (her NPC page gives Haelga's Bunkhouse)."
+  },
+  {
+   "quest": "A Return To Your Roots",
+   "editorId": "NN01",
+   "line": "a-return-to-your-roots",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Discover the significance of Crimson Nirnroot",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:A_Return_To_Your_Roots",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It starts from an item or journal, not a person, and the first objective matches."
+  },
+  {
+   "quest": "Falion's Secret",
+   "editorId": "FreeformMorthalA",
+   "line": "falions-secret",
+   "startsWith": [
+    "Falion"
+   ],
+   "where": "Falion's House, Morthal",
+   "firstObjective": "Inform the Jarl of Morthal about Falion's activities",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Falion's_Secret",
+   "notes": "Bob, 21 Oct, CONFIRMED: The giver and the report-to-the-Jarl step match; the confrontation itself happens at the summoning circle, not in his house."
+  },
+  {
+   "quest": "Repentance",
+   "editorId": "dunDarklightQST",
+   "line": "repentance",
+   "startsWith": [
+    "Illia"
+   ],
+   "where": "Darklight Tower",
+   "firstObjective": "Help Illia reach the top of Darklight Tower",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Repentance",
+   "notes": "Bob, 21 Oct, CONFIRMED: Matches UESP exactly."
+  },
+  {
+   "quest": "The Pale Lady",
+   "editorId": "dunFrostmereCryptQST",
+   "line": "the-pale-lady",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "(Optional) Learn more about the theft in Frostmere Crypt",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Pale_Lady",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It starts by itself at the crypt, and the first objective matches."
+  },
+  {
+   "quest": "Forbidden Legend",
+   "editorId": "dunGauldursonQST",
+   "line": "forbidden-legend",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Investigate the cryptic message",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Forbidden_Legend",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: There are several ways in and no single giver, and the first objective matches."
+  },
+  {
+   "quest": "A Scroll For Anska",
+   "editorId": "dunHighGateRuinsQST",
+   "line": "a-scroll-for-anska",
+   "startsWith": [
+    "Anska"
+   ],
+   "where": "High Gate Ruins",
+   "firstObjective": "Find And Return Anska's Scroll To Her",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:A_Scroll_For_Anska",
+   "notes": "Bob, 21 Oct, CONFIRMED: Matches UESP exactly."
+  },
+  {
+   "quest": "The Lost Expedition",
+   "editorId": "dunNchuandZelQst",
+   "line": "the-lost-expedition",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Recover Stromm's journal",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Lost_Expedition",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It starts from a dead man's note rather than a living giver, and the first objective matches."
+  },
+  {
+   "quest": "Silenced Tongues",
+   "editorId": "dunVolunruudQST",
+   "line": "silenced-tongues",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Locate The Ceremonial Weapons",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Silenced_Tongues",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: No NPC gives it and the first objective matches UESP; the page could add that reading Heddic's Volunruud Notes in Volunruud is what starts it."
+  },
+  {
+   "quest": "Yngol's Barrow",
+   "editorId": "dunYngolBarrowQST",
+   "line": "yngols-barrow",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Explore Yngol's Barrow",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Yngol%27s_Barrow",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: UESP agrees there is no giver; the objective comes from the USSEP-won record, but UESP says vanilla never shows it, so it may not appear in the journal unless USSEP fixed that."
+  },
+  {
+   "quest": "The Affairs of Hagravens",
+   "editorId": "dunBlindCliffQST",
+   "line": "the-affairs-of-hagravens",
+   "startsWith": [
+    "Melka"
+   ],
+   "where": "Blind Cliff Bastion/Blind Cliff Cave",
+   "firstObjective": "Kill the Hagraven Petra",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Affairs_of_Hagravens",
+   "notes": "Bob, 21 Oct, CONFIRMED: The giver and the first objective both match UESP and the records."
+  },
+  {
+   "quest": "Telrav's Request",
+   "editorId": "dunNilheimQST",
+   "line": "telravs-request",
+   "startsWith": [
+    "Telrav"
+   ],
+   "where": "Nilheim",
+   "firstObjective": "Escort Telrav to his camp.",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Telrav%27s_Request",
+   "notes": "Bob, 21 Oct, CONFIRMED: Matches UESP; the Nilheim mod only adds another accept line for Telrav."
+  },
+  {
+   "quest": "Search and Seizure",
+   "editorId": "FreeformMarkarthM",
+   "line": "search-and-seizure",
+   "startsWith": [
+    "Ondolemar"
+   ],
+   "where": "Understone Keep, Markarth",
+   "firstObjective": "Find evidence of Ogmund's Talos worship",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Search_and_Seizure",
+   "notes": "Bob, 21 Oct, CONFIRMED: The giver and the first objective both match UESP."
+  },
+  {
+   "quest": "Toying With The Dead",
+   "editorId": "FreeformRiften21",
+   "line": "toying-with-the-dead",
+   "startsWith": [
+    "Vekel the Man"
+   ],
+   "where": "The Ragged Flagon, Riften",
+   "firstObjective": "Enter Yngvild Barrow",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Toying_With_The_Dead",
+   "notes": "Bob, 21 Oct, CONFIRMED: The giver and the first objective both match UESP and the records."
+  },
+  {
+   "quest": "The Forgemaster's Fingers",
+   "editorId": "FavorOrcsIntro",
+   "line": "the-forgemasters-fingers",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Find the Forgemaster's Fingers",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Forgemaster%27s_Fingers",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It's a radiant start from a story-manager event with any stronghold member, so no single giver is right, and the objective matches."
+  },
+  {
+   "quest": "Destroy the Dragon Cult",
+   "editorId": "DCQuest",
+   "line": "destroy-the-dragon-cult",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Defeat Hevnoraak",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: Only the start-game flag starts it, with no NPC line, so no giver is right; the sheet doesn't show what moves it to stage 10, where the objective sits."
+  },
+  {
+   "quest": "NecroQuest01",
+   "editorId": "In their Footsteps",
+   "line": "undeath",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Search for the Vigil of Stendarr caravan",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It starts from a start-game helper and a change-location node (after Blood on the Ice and The Wolf Queen Awakened), with no NPC giver."
+  },
+  {
+   "quest": "A Plea From Granite Hill",
+   "editorId": "aaaGraniteHillDungeonQuest",
+   "line": "granite-hill",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Read the courier note",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It starts by itself on change location after Dragon Rising, and the first step is reading the courier's note, which makes sense."
+  },
+  {
+   "quest": "Legends Of Aetherium",
+   "editorId": "aaaLOAQuest",
+   "line": "legends-of-aetherium",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Travel to the Itharzel excavation site",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It starts from the start-game flag with no NPC line; the sheet doesn't show what sets stage 10."
+  },
+  {
+   "quest": "Kagrenac's Tools",
+   "editorId": "TOK_QUST_KagrenacTools",
+   "line": "the-tools-of-kagrenac",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Read the Anonymous Note",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It starts from story-manager item-added nodes (after Arniel's Endeavor and The Way of the Voice, or an MCM alternate start), and the first step is reading the note."
+  },
+  {
+   "quest": "Deluge of Deceit",
+   "editorId": "EVGSirenrootQuest",
+   "line": "deluge-of-deceit",
+   "startsWith": [
+    "Frissa Black-Briar"
+   ],
+   "where": "Elgrim's Elixirs",
+   "firstObjective": "Accept the job from the Black-Briars",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Frissa's job line is the only start a new player can hear (Wujeeta's needs stage 20), and it sets stage 1, whose objective points at her."
+  },
+  {
+   "quest": "The Welkynar Knight",
+   "editorId": "ksws04MainQuest",
+   "line": "the-welkynar-knight",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Meet with the stranger who sent the note.",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It starts by itself on change location after In My Time Of Need and Missing In Action, and opens with a note."
+  },
+  {
+   "quest": "Belethor's Sister",
+   "editorId": "belethorSisterQuest01",
+   "line": "belethors-sister",
+   "startsWith": [
+    "Belethor"
+   ],
+   "where": "Belethor's General Goods",
+   "firstObjective": "Ask Ysolda about Lelaegh.",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Belethor's accept line sets stage 100, which points at Ysolda (the quest appears at level 20+); the name Lelaegh is the page's resolution of <alias=waifu> and isn't in the sheet."
+  },
+  {
+   "quest": "Rune01",
+   "editorId": "Rune's Scope",
+   "line": "revealing-rune",
+   "startsWith": [
+    "Rune"
+   ],
+   "where": "The Ragged Flagon - Cistern, Riften",
+   "firstObjective": "Search along the coast of Solitude for a clue to Rune's past",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Rune's \"I'll keep an eye out for anything.\" sets stage 10, whose objective matches."
+  },
+  {
+   "quest": "Black Soul Cairn Gem",
+   "editorId": "MDSCSoulGemQuest",
+   "line": "more-to-do-in-the-soul-cairn",
+   "startsWith": [
+    "Gavo Antonius"
+   ],
+   "where": "Soul Cairn",
+   "firstObjective": "Find Gavo's black soul gem",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Gavo's \"Fine, I'll get it for you.\" plainly sets stage 10, whose objective matches."
+  },
+  {
+   "quest": "Fists of Fury - The Rift",
+   "editorId": "FOFRiftenBrawlerQuest",
+   "line": "fists-of-fury",
+   "startsWith": [
+    "Maul"
+   ],
+   "where": "Riften",
+   "firstObjective": "Find the Ratway Arena down in the Ratway Vaults",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: The helper only primes stage 5, and Maul's \"Alright, I'll make my way there.\" sets stage 10, the first objective."
+  },
+  {
+   "quest": "The Frozen Heart",
+   "editorId": "ksws07MainQuest",
+   "line": "the-frozen-heart",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Investigate Snow Elf Mirror (Labyrinthine Passages).",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It starts by itself on change location with no NPC; the mirror name is the page's resolution of <alias=MirrorStart>, which the sheet doesn't show."
+  },
+  {
+   "quest": "The Thalmor's Shadow",
+   "editorId": "00TallyMeet",
+   "line": "the-thalmors-shadow",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Find the hidden Statue of Talos.",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: The start-game flag runs it and its stage 0 objective is the first step, so there is no giver."
+  },
+  {
+   "quest": "0WHQuestDeliveryToBro",
+   "editorId": "A Simple Delivery",
+   "line": "capital-windhelm",
+   "startsWith": [
+    "Wilhelm"
+   ],
+   "where": "Wilhelm's Winter Warehouse/Wares",
+   "firstObjective": "Deliver the purchase agreement to Higil's home.",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Wilhelm's \"It's all in this note.\" sets stage 10, whose objective is the delivery."
+  },
+  {
+   "quest": "MarkarthSideGritDarQuest",
+   "editorId": "The Royal Relic",
+   "line": "markarth-side",
+   "startsWith": [
+    "Grit-dar"
+   ],
+   "firstObjective": "Find the missing royal relic in Morvunskar Crypts",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Grit-dar's \"This sounds simple enough\" sets stage 10, whose objective matches (the records give no location beyond Skyrim)."
+  },
+  {
+   "quest": "Hendraheim",
+   "editorId": "ccEEJSSE004_Quest",
+   "line": "hendraheim",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Await news from a courier",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: The sheet shows only a story manager node that starts it by itself on a location change, so naming no giver is right and the courier step fits."
+  },
+  {
+   "quest": "Guests for Dinner",
+   "editorId": "ccEEJSSE005_Quest",
+   "line": "guests-for-dinner",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Await news from a courier",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It starts by itself from a story manager node on a location change, and the first step is the courier wait."
+  },
+  {
+   "quest": "Dreams of the Dead",
+   "editorId": "ccRMSSSE001_Quest",
+   "line": "dreams-of-the-dead",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Investigate the abandoned fort",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: A story manager node starts it by itself on a location change, and the first step points at Gallows Hall."
+  },
+  {
+   "quest": "The Unquiet Dead",
+   "editorId": "ccVSVSSE004_MainQuest",
+   "line": "the-unquiet-dead",
+   "startsWith": [
+    "Mralki"
+   ],
+   "where": "Frostfruit Inn",
+   "firstObjective": "Travel to Goldenhills Plantation",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Mralki's bounty-letter line sets stage 10, but the same line also works for Hulda or Ysolda (any of them must be an innkeeper) and needs level 15 or higher, which the page could add; the sheet's step text reads <Alias=FarmLocation>, so the name 'Goldenhills Plantation' can't be checked from the sheet."
+  },
+  {
+   "quest": "MyrwatchTNE_Quest",
+   "editorId": "MyrwatchTNE_Quest",
+   "line": "myrwatch",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Speak to Tolfdir",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It runs from the start of the game (start-game flag) and the first step points at Tolfdir."
+  },
+  {
+   "quest": "Return Aegisbane",
+   "editorId": "ReturnAegisbaneQuest",
+   "line": "return-aegisbane",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Retrieve the Shatter-Shield family warhammer",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: The starting line belongs to any Windhelm guard (guard and Windhelm-guard dialogue factions), so many people can start it and no single giver is right."
+  },
+  {
+   "quest": "Leaps Of Faith",
+   "editorId": "Leap_MiscQuest",
+   "line": "leaps-of-faith",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Find and complete the remaining 11 Leaps of Faith.",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It runs from the start of the game, and the first objective is the leap count."
+  },
+  {
+   "quest": "The Bonds of Matrimony",
+   "editorId": "RelationshipMarriage",
+   "line": "marriage",
+   "startsWith": [
+    "Maramal"
+   ],
+   "where": "Temple of Mara, Riften",
+   "firstObjective": "Speak to Maramal about arranging your wedding",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Bonds_of_Matrimony",
+   "notes": "Bob, 21 Oct, CONFIRMED: The giver and first objective match UESP and the records (Maramal's TemplePriest lines set stage 10, and the objective comes at stage 20)."
+  },
+  {
+   "quest": "Bad Vibrations",
+   "editorId": "InigoBadVibrations",
+   "line": "inigo",
+   "startsWith": [
+    "Inigo"
+   ],
+   "where": "Riften Jail",
+   "firstObjective": "Get to Snowpoint Beacon and talk to Inigo.",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Inigo's own pain lines start and move it on while he follows you (they need his follower dialogue at stage 30 or later), so he is the right giver; Riften Jail is only where you find him, not where it fires."
+  },
+  {
+   "quest": "The Dwemer Specialist",
+   "editorId": "HLIOStartingQuest",
+   "line": "remiel",
+   "startsWith": [
+    "Remiel"
+   ],
+   "where": "Silver-Blood Inn",
+   "firstObjective": "Speak to Calcelmo about the spider in the excavation site.",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Remiel's 'Fine.' / 'Yes! Alright!' exchange sets stage 10, which is the Calcelmo step."
+  },
+  {
+   "quest": "The Oblivion Engine",
+   "editorId": "JRLucienPersonal1",
+   "line": "lucien",
+   "startsWith": [
+    "Lucien Flavius"
+   ],
+   "where": "Dead Man's Drink",
+   "firstObjective": "Take Lucien to Dumzbthar",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Lucien's lines carry it from stage 5 up to stage 30, where he marks Dumzbthar, so he is the right giver."
+  },
+  {
+   "quest": "From Arena to Oblivion",
+   "editorId": "SDE_TheElderScrolls",
+   "line": "serana",
+   "startsWith": [
+    "Serana"
+   ],
+   "where": "Dimhollow Cavern",
+   "firstObjective": "Ask Urag-gro-Shub for books",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Serana's 'You got a deal!' line sets stage 10 and the first step points at Urag; Dimhollow is just where you first meet her."
+  },
+  {
+   "quest": "Song of the Green",
+   "editorId": "018AuriFriendQuest",
+   "line": "auri",
+   "startsWith": [
+    "Auri"
+   ],
+   "where": "Auri's House, Falkreath",
+   "firstObjective": "Take Auri to Moss Mother Cavern",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Auri's 'miss the forest' line sets stage 10, the Moss Mother Cavern step."
+  },
+  {
+   "quest": "Chasing the Current",
+   "editorId": "AK69KatanaPersonalQuest",
+   "line": "katana",
+   "startsWith": [
+    "Katana"
+   ],
+   "where": "The Winking Skeever",
+   "firstObjective": "Talk to Katana when you have a moment",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Katana's 'I have something for you' line starts the quest, and the first step points back at her."
+  },
+  {
+   "quest": "Bounty: Bandit Boss",
+   "editorId": "BQ01Eastmarch",
+   "line": "jarls-bounties",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Kill the bandit leader located at the bounty location",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: Whoever fills the Steward or Innkeeper alias at run time gives it, so many people can, and the first step is the bandit-leader bounty."
+  },
+  {
+   "quest": "Hunter Marks Animal Den",
+   "editorId": "HMADQ01",
+   "line": "hunters-mark",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Hunt down animals at the animal den location",
+   "source": "records",
+   "notes": "Bob, 21 Oct, NO_GIVER_OK: It starts by itself from a story manager node in each hold, or from an unnamed speaker you pay 10 gold, so no single giver is right."
+  },
+  {
+   "quest": "More to Say Find Angi",
+   "editorId": "ACFMTSAngisCampDialogue",
+   "line": "more-to-say",
+   "startsWith": [
+    "Faendal"
+   ],
+   "where": "Faendal's House, Riverwood",
+   "firstObjective": "Train with the seasoned hunter",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Faendal's line sets stage 20, the training step pointing at Angi; Valdr (Moss Mother Cavern) has the same line, and the quest itself is switched on when you enter Falkreath."
+  },
+  {
+   "quest": "A Strong Nord Woman",
+   "editorId": "FreeformRiften11b",
+   "line": "odd-jobs-the-rift",
+   "startsWith": [
+    "Svana Far-Shield"
+   ],
+   "where": "Haelga's Bunkhouse, Riften",
+   "firstObjective": "Talk to Tythis",
+   "source": "records",
+   "notes": "Bob, 21 Oct, CONFIRMED: Svana's 'Do you work here?' line starts it, and her offer line sets stage 20, the Tythis step."
+  },
+  {
+   "quest": "Delivery to Calcelmo",
+   "editorId": "FreeformMarkarthD",
+   "line": "odd-jobs-the-reach",
+   "startsWith": [
+    "Kerah"
+   ],
+   "where": "Endon's House",
+   "firstObjective": "Deliver the ring to Calcelmo",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Delivery_to_Calcelmo",
+   "notes": "Bob, 21 Oct, CONFIRMED: The giver and first objective match UESP and Kerah's stage-10 line."
+  },
+  {
+   "quest": "No News is Good News",
+   "editorId": "SolitudeFreeform01",
+   "line": "odd-jobs-haafingar",
+   "startsWith": [
+    "Angeline Morrard"
+   ],
+   "where": "Angeline's Aromatics, Solitude",
+   "firstObjective": "Ask Aldis for information about Angeline's daughter.",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:No_News_is_Good_News",
+   "notes": "Bob, 21 Oct, CONFIRMED: Matches UESP and Angeline's stage 5 and stage 10 lines."
+  },
+  {
+   "quest": "Delivery",
+   "editorId": "FreeformWindhelmA",
+   "line": "odd-jobs-eastmarch",
+   "startsWith": [
+    "Hillevi Cruel-Sea"
+   ],
+   "where": "House of Clan Cruel-Sea",
+   "firstObjective": "Deliver the Nightshade Extract to Wuunferth the Unliving",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Delivery_(Hillevi)",
+   "notes": "Bob, 21 Oct, CONFIRMED: The giver and objective match UESP; UESP places her at her Windhelm market stall rather than her house, which is only a minor location difference."
+  },
+  {
+   "quest": "A Lovely Letter",
+   "editorId": "FreeformRiverwood01",
+   "line": "odd-jobs-whiterun",
+   "startsWith": [
+    "Faendal"
+   ],
+   "where": "Faendal's House, Riverwood",
+   "firstObjective": "Deliver Faendal's letter to Camilla in Riverwood",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:A_Lovely_Letter",
+   "notes": "Bob, 21 Oct, CONFIRMED: Faendal is a valid giver in both UESP and the LoreRim records (his lines set stage 10); UESP also lists Sven, but the sheet shows no Sven line that starts it."
+  },
+  {
+   "quest": "A Bad Trade",
+   "editorId": "FreeformWinterholdA",
+   "line": "odd-jobs-the-north",
+   "startsWith": [
+    "Birna"
+   ],
+   "where": "Birna's Oddments, Winterhold",
+   "firstObjective": "Place the burial urn in Yngol Barrow",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Birna",
+   "notes": "Bob, 21 Oct, CONFIRMED: moretosaywinterhold.esp wins the quest and adds Birna's start line, bringing back the cut quest, so the records win and the page matches them."
+  },
+  {
+   "quest": "Wyrmstooth",
+   "editorId": "WTDragonHunt",
+   "line": "wyrmstooth",
+   "source": "records",
+   "notes": "Bob, 21 Oct, WRONG: Theodyn is the right giver, but he is kept in a holding cell and comes to find you (\"I was asked to find you as soon as possible\", level 10 or higher, after the starter fires on a location change). Saying he is at Wyrmstooth sends players to the wrong place.",
+   "startsWith": [
+    "Theodyn Bienne"
+   ],
+   "where": "he comes to find you",
+   "firstObjective": "Speak to Lurius Liore at The Bannered Mare in Whiterun"
+  },
+  {
+   "quest": "The Ebony Warrior",
+   "editorId": "DLC2EbonyWarriorQuest",
+   "line": "the-ebony-warrior",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Ebony_Warrior",
+   "notes": "Bob, 21 Oct, WRONG: The giver is right but the place is wrong: he finds you in Whiterun, Riften, Windhelm, Markarth or Solitude (story node, level 40 in LoreRim per Global Modifiers, not UESP's 80), and the camp is the stage-100 destination.",
+   "startsWith": [
+    "Ebony Warrior"
+   ],
+   "where": "Whiterun, Riften, Windhelm, Markarth or Solitude",
+   "firstObjective": "Talk to the Ebony Warrior"
+  },
+  {
+   "quest": "Battle of the Champions",
+   "editorId": "ccFFBSSE001_Quest",
+   "line": "battle-of-the-champions",
+   "source": "records",
+   "notes": "Bob, 21 Oct, WRONG: The Legate's line only shows once stage 20 is done, so the quest is already running by then and he can't be the one who starts it; the page should name no giver (the real starter wasn't read) and keep the courier step, with the Legate coming later.",
+   "noGiver": true,
+   "startsWith": [],
+   "firstObjective": "Head to a major hold and await news from a courier"
   }
  ]
 }

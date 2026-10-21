@@ -1,8 +1,9 @@
 """
 WO-121: the planner's quest starts against an answer key, gamedata/<version>/quest_truth.json, which Bob
-keeps by hand from UESP. For every row whose quest is in quests.json: the page's person (the quest's who,
-else its first way's person, else its first step's person) is one of the row's startsWith, and its first
-step (then) is the row's firstObjective, ignoring case and punctuation. A row where LoreRim's records really
+keeps by hand from UESP, with every opening he judged right (WO-121b, truth_from_judged.py). For every row
+whose quest is in quests.json: the page's person (the quest's who, else its first way's person, else its
+first step's person) is one of the row's startsWith, or for a noGiver row the page names no single giver;
+and its first step (then) is the row's firstObjective, ignoring case and punctuation. A row where LoreRim's records really
 differ is listed in DIFFERS with the reason and the record that shows it, never skipped silently.
 
 Run:  python3 -m unittest scripts/gamedata/test_quest_truth.py   (or npm run test:gamedata)
@@ -40,7 +41,6 @@ DIFFERS: dict[str, str] = {
 WAITING_ON_BOB: dict[str, str] = {
     'Blood on the Ice': "Bob, 21 Oct (reversed): the first step is wrong, not the records' wording. The guard's line sets stage 10, whose objective is 'Question the witnesses'; 'Get assistance from the authority figure' (QOBJ 1) is the stage-110 one. WO-121b's rule: then is the objective the starting line's stage shows. WO-121b Part 1 (Mac): rule 1 reads the objective the starting line's stage shows from the check's objectivesShown, which story_check.py now writes; it passes once the PC reruns the check.",
     'The Cursed Tribe': "Bob, 21 Oct (reversed): Chief Larak's letter line (The Cursed Tribe - Quest Expansion.esp) only fires for an Orc or Blood-Kin; for everyone else the level-up node starts it by itself and Atub asks at Largashbur. WO-121b's rule: a conditional starter is a way with its condition, not the giver. WO-121b Part 1 (Mac): Larak's letter line is a way with its race condition now, never the giver, and the page names no single giver; Atub isn't a starter in the check (no dialogue of his starts DA06), so the PC's check needs his line.",
-    "A Night To Remember": "who: the start check's talks are Senna (Skyrim.esm:01F387), Senna (Skyrim.esm:0A95D5), Senna (Skyrim.esm:0A95CB); then: the records' first objective is 'Find Sam Guevenne' (Skyrim.esm:01BB9B QOBJ 10). WO-121a Part 1: the opening should be DA14Start, Sam Guevenne's drinking contest, but DA14Start isn't in quests_raw.json (the Mac has only the crawl), so the PC adds it to quests.py's crawl and then questlines.json's opening",
 }
 
 
@@ -80,7 +80,11 @@ class QuestTruth(unittest.TestCase):
                 continue
             start = q.get("start") or {}
             who = person_of(start)
-            if norm(who) not in {norm(s) for s in row["startsWith"]}:
+            # WO-121b: a row Bob judged right with no single giver: the page names none.
+            if row.get("noGiver"):
+                if start.get("who"):
+                    wrong.append(f"{row['quest']}: the page names {start['who']}; the key: no single giver")
+            elif norm(who) not in {norm(s) for s in row["startsWith"]}:
                 wrong.append(f"{row['quest']}: the page names {who or 'no one'}; UESP: {', '.join(row['startsWith'])}")
             if norm(start.get("then")) != norm(row["firstObjective"]):
                 wrong.append(f"{row['quest']}: then is {start.get('then')!r}; UESP: {row['firstObjective']!r}")

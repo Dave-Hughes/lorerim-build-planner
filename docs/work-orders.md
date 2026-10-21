@@ -4998,6 +4998,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
   - The Cursed Tribe's key wants Atub, whose talk isn't a starter in the check.
 - [ ] Part 2's speakers and openings; the unsure say not checked.
 - [ ] The answer key holds every judged opening and passes; `WAITING_ON_BOB` is empty; the door sends `who` and `where` again.
+- Mac, 21 Oct, Part 3: the key holds 121 rows. That's every one of the 106 openings Bob judged right (77 new; 29 it had), and three of the wrong ones Part 1 put right (Wyrmstooth, The Ebony Warrior, Battle of the Champions), each with its source (`uesp` and the url, or `records`). A Night To Remember's row now points at the line's opening, DA14Start, and passes. A no-giver row carries `noGiver: true`, and `test_quest_truth.py` checks that its page names no single giver and that its first step matches. Every row passes. `scripts/gamedata/truth_from_judged.py` adds the judged rows again when Bob judges more; it never touches his hand-kept rows. Not ticked: two rows wait on the PC (Blood on the Ice needs the check rerun with `objectivesShown`; The Cursed Tribe needs Atub's line), and the other wrong rows on Part 2. So `WAITING_ON_BOB` isn't empty, and the door still holds back `who` and `where`.
 - [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop: Dave checks five quests he knows.
 
 ---
