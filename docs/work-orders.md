@@ -4959,7 +4959,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - Esc no longer closes anything; the back link and the browser's back do.
 
 ### Done when
-- [ ] Part 1: the slim bar, the tabs renamed in edit and view, a help line on each tab.
+- [x] Part 1: the slim bar, the tabs renamed in edit and view, a help line on each tab. (Mac, 22 Oct: one 64 px bar, pinned under the site header, which every edit tab now has, the Playthrough tab's pages too. It holds the cover as a 48 px thumbnail (to the cover in Details), Editing and the name, the text tabs Character, Build, Guide, Story and Playthrough, then Saved, who can see it and Done. The hero, the icon tabs and Copy link are gone from edit. One muted help line per tab, "she" for a character and "the build" for a build alone. The view's tabs are Playthrough, Build and Guide. On a phone the bar keeps the thumbnail, the tab you're on as a menu, the save line and Done. Tested in `e2e/wo124.spec.ts`.)
 - [ ] Part 2: the active step lit, needs-you in brass, every "i" 6 px from its label.
 - [ ] Part 3: the AI assisted tooltip says what the planner is (the link waits on WO-125).
 - [x] Part 4: the cause of the Story tab's wait and flicker, the times before and after, and no redraw of the bar. (Mac, 21 Oct.)

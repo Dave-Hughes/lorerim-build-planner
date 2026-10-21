@@ -193,7 +193,8 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
 
   // The intro, else the guide's first paragraph, else nothing.
   const intro = guide.intro && !isEmptyDoc(guide.intro) ? guide.intro : firstParagraph(overview);
-  const TAB_NAMES: Record<BuildTab, string> = { play: "Play", levels: "Levels", guide: "Guide" };
+  // Named as the edit tabs are (WO-124): Playthrough, Build, Guide.
+  const TAB_NAMES: Record<BuildTab, string> = { play: "Playthrough", levels: "Build", guide: "Guide" };
   // Each tab's second line: what's in it.
   const minutes = overview ? Math.max(1, Math.ceil(docWords(overview) / 200)) : 0;
   const TAB_SUB: Record<BuildTab, string> = {

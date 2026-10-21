@@ -7,11 +7,11 @@ test.use({ viewport: { width: 1512, height: 806 } });
 test("the edit tabs move between Levels and Guide in one step", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${TEST_BUILD_ID}/edit?level=2`);
-  await expect(editTab(page, "Levels")).toHaveAttribute("aria-current", "page");
+  await expect(editTab(page, "Build")).toHaveAttribute("aria-current", "page");
   await editTab(page, "Guide").click();
   await expect(page).toHaveURL(new RegExp(`/b/${TEST_BUILD_ID}/guide$`));
   await expect(editTab(page, "Guide")).toHaveAttribute("aria-current", "page");
-  await editTab(page, "Levels").click();
+  await editTab(page, "Build").click();
   await expect(page).toHaveURL(new RegExp(`/b/${TEST_BUILD_ID}/edit$`));
   await expect(page.getByRole("banner")).toBeVisible();
 });
@@ -25,7 +25,7 @@ test("the visibility button changes Link only to Listed, and Set up's band shows
   await page.getByRole("menu", { name: "Who can see it" }).getByRole("menuitemradio", { name: /^Listed/ }).click();
   await expect(bar.getByRole("button", { name: "Who can see it: Listed" })).toBeFocused();
   await expect(bar.getByRole("status")).not.toContainText("Saving");
-  await editTab(page, "Set up").click();
+  await editTab(page, "Character").click();
   await expect(page).toHaveURL(new RegExp(`/b/${LINK_ONLY_BUILD_ID}/setup`));
   await page.goto(`/b/${LINK_ONLY_BUILD_ID}/setup?step=name`);
   // Details has no Who can see it of its own (WO-118): the band says it.

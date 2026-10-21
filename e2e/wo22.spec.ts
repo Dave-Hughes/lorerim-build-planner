@@ -51,7 +51,7 @@ test("the old Gear page goes to the editor, and ?tab=gear opens Levels", async (
   await page.goto(`/b/${TEST_BUILD_ID}/gear`);
   await expect(page).toHaveURL(new RegExp(`/b/${TEST_BUILD_ID}/edit`));
   await page.goto(`/b/${TEST_BUILD_ID}?tab=gear`);
-  await expect(page.getByRole("tab", { name: /^Levels/ })).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByRole("tab", { name: /^Build/ })).toHaveAttribute("aria-selected", "true");
   await expect(page.getByRole("tab", { name: /^Gear/ })).toHaveCount(0);
 });
 

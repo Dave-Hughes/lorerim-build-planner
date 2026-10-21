@@ -7,9 +7,7 @@ import { pageZoom } from "@/lib/zoom";
 import { useDismiss } from "@/lib/use-dismiss";
 import { setBuildVisibility } from "@/lib/builds/actions";
 import type { BuildVisibility } from "@/lib/builds/validate";
-import { AiAssisted } from "@/components/ui/ai-assisted";
 import { InfoTip } from "@/components/ui/info-tip";
-import { GameIcon } from "@/components/ui/skill-icon";
 import type { EditFrameData } from "@/lib/edit/frame";
 import { saveDetails } from "@/lib/playthroughs/actions";
 import styles from "./edit-bar.module.css";
@@ -229,26 +227,43 @@ export function EditFrameProvider({ data, children }: { data: EditFrameData; chi
   return <FrameContext.Provider value={data}>{children}</FrameContext.Provider>;
 }
 
-type Tab = { key: EditPage; label: string; sub: string; href: string; icon: string };
+type Tab = { key: EditPage; label: string; href: string };
 
+/** The edit tabs, named for what's in them (WO-124): Character, Build, Guide, Story, Playthrough. The addresses stay. */
 function tabsOf(f: EditFrameData | null, buildId: string): Tab[] {
   const b = f?.build;
   const r = f?.run;
   const out: Tab[] = [];
-  // WO-118: Set up, Levels, Guide, Story, Play (a build alone: Set up, Levels, Guide, and Story when it's on).
   if (b || !f) {
     const id = b?.id ?? buildId;
-    out.push({ key: "setup", label: "Set up", sub: b?.setup ?? "", href: `/b/${id}/setup?step=name`, icon: "tab-set-up" });
-    out.push({ key: "levels", label: "Levels", sub: b ? `Levels 1 to ${b.levels}` : "", href: `/b/${id}/edit`, icon: "tab-levels" });
-    out.push({ key: "guide", label: "Guide", sub: b?.guideMinutes ? `${b.guideMinutes} min read` : "Not written yet", href: `/b/${id}/guide`, icon: "tab-guide" });
+    out.push({ key: "setup", label: "Character", href: `/b/${id}/setup?step=name` });
+    out.push({ key: "levels", label: "Build", href: `/b/${id}/edit` });
+    out.push({ key: "guide", label: "Guide", href: `/b/${id}/guide` });
   }
   // The page's own address, never one that redirects (WO-124 Part 4): a redirect during a tab change made Next load the
   // whole document again, an empty frame for 0.8 s.
-  if (r)
-    out.push({ key: "story", label: "Story", sub: `${r.chapters} chapter${r.chapters === 1 ? "" : "s"}`, href: `/p/${r.id}/edit/story/title`, icon: "tab-story" });
-  else if (f?.storyOn && b) out.push({ key: "story", label: "Story", sub: b.hasStory ? "Written" : "Not written yet", href: `/b/${b.id}/edit/story`, icon: "tab-story" });
-  if (r) out.push({ key: "play", label: "Play", sub: `${r.acts} act${r.acts === 1 ? "" : "s"}, ${r.objectives} objective${r.objectives === 1 ? "" : "s"}`, href: `/p/${r.id}/edit/play`, icon: "tab-play" });
+  if (r) out.push({ key: "story", label: "Story", href: `/p/${r.id}/edit/story/title` });
+  else if (f?.storyOn && b) out.push({ key: "story", label: "Story", href: `/b/${b.id}/edit/story` });
+  if (r) out.push({ key: "play", label: "Playthrough", href: `/p/${r.id}/edit/play` });
   return out;
+}
+
+/** One line under the bar saying what the tab is for (WO-124), "she" for a character as the page says it, "the build" for a build alone. */
+export function helpLine(tab: EditPage, character: boolean): string {
+  const lines: Record<EditPage, [string, string]> = {
+    setup: [
+      "Who she is at level 1: race, birthsign, traits and starting skills, and the page's name, cover and tags.",
+      "Who the build is at level 1: race, birthsign, traits and starting skills, and the page's name, cover and tags.",
+    ],
+    levels: [
+      "Each level: where the skill points go and which perks she takes. The planner checks every level against the game's rules.",
+      "Each level: where the skill points go and which perks the build takes. The planner checks every level against the game's rules.",
+    ],
+    guide: ["How to play her, in your words. Readers find it under Guide.", "How to play the build, in your words. Readers find it under Guide."],
+    story: ["Her story in chapters. A chapter tied to an objective stays locked until that objective is done.", "The build's story, in your words. Readers find it under Story."],
+    play: ["Her run through the game: acts, and the objectives in each. An objective linked to a quest ticks from your save.", "The build's run through the game: acts, and the objectives in each."],
+  };
+  return lines[tab][character ? 0 : 1];
 }
 
 /** "Saving…", "✓ Saved" with its "i", or what failed, in health red. */
@@ -279,11 +294,11 @@ function SaveLine({ save }: { save: SaveState }) {
 }
 
 /**
- * The top of every edit page (WO-117): the edit band ("Editing" and the name; the save line, who can
- * see it, Copy link, and Done, the one ember button), the page's own hero at 300px with Change the
- * cover, and one tab row: a build alone Set up, Levels, Guide (and Story); a character Set up, Levels,
- * Guide, Story, Play (WO-118). A run's tabs (Play, Story) set the run's visibility; the build's, the
- * build's.
+ * The top of every edit page, one slim bar (WO-124, the EditCompact board): the cover as a 48 px thumbnail (to the cover
+ * in Character's Details), Editing and the name, the tabs as text, then the save line, who can see it and Done, the one
+ * ember button; under it one line saying what the tab is for. Pinned under the site header as you scroll. On a phone the
+ * tabs fold into the tab you're on, as a menu. A run's tabs (Playthrough, Story) set the run's visibility; the build's,
+ * the build's.
  */
 export function EditBar({
   buildId,
@@ -312,38 +327,44 @@ export function EditBar({
   const done = run ? `/p/${run.id}` : `/b/${buildId}?tab=levels`;
   const cover = frame?.build?.coverImageUrl;
   const focus = frame?.build?.coverFocus;
-  const [copied, setCopied] = useState(false);
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(`${window.location.origin}${run ? `/p/${run.id}` : `/b/${buildId}`}`);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // The address is the page's; nothing else to do.
-    }
-  };
+  const here = tabs.find((t) => t.key === current);
   return (
     <>
-      <div className={f.band} role="region" aria-label="Edit bar" data-edit-bar="">
-        <div className={`page ${f.bandIn}`}>
-          <span className={f.editing}>
-            <span className={f.editingWord}>Editing</span>
-            <span className={f.editingName} title={frame?.name || name}>
-              {frame?.name || name}
+      <div className={f.bar} role="region" aria-label="Edit bar" data-edit-bar="">
+        <div className={`page ${f.barIn}`}>
+          <span className={f.who}>
+            {frame?.build && (
+              <Link href={`/b/${frame.build.id}/setup?step=name#cover`} className={f.thumb} aria-label={cover ? "Change the cover" : "Add a cover"} title={cover ? "Change the cover" : "Add a cover"}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                {cover ? <img src={cover} alt="" style={focus ? { objectPosition: `${focus.x}% ${focus.y}%` } : undefined} /> : <span className={f.thumbNone} aria-hidden="true" />}
+              </Link>
+            )}
+            <span className={f.editing}>
+              <span className={f.editingWord}>Editing</span>
+              <span className={f.editingName} title={frame?.name || name}>
+                {frame?.name || name}
+              </span>
             </span>
           </span>
-          <span className={f.bandRight}>
+          <nav className={f.tabs} aria-label="Edit tabs">
+            {tabs.map((t) => (
+              <Link key={t.key} href={t.href} className={f.tab} aria-current={t.key === current ? "page" : undefined}>
+                {t.label}
+              </Link>
+            ))}
+          </nav>
+          {here && <TabMenu tabs={tabs} here={here} />}
+          <span className={f.barRight}>
             {todo && <span className={styles.todo}>{todo}</span>}
             <SaveLine save={save} />
-            <VisibilityMenu
-              key={onRun ? `r${run!.visibility}` : `b${visibility}`}
-              initial={onRun ? run!.visibility : visibility}
-              choose={(v) => (onRun ? saveDetails(run!.id, { visibility: v }) : setBuildVisibility(buildId, v))}
-              onChange={onRun ? undefined : onVisibility}
-            />
-            <button type="button" className="btn btn-sm" onClick={copy}>
-              {copied ? "Copied" : "Copy link"}
-            </button>
+            <span className={f.wideOnly}>
+              <VisibilityMenu
+                key={onRun ? `r${run!.visibility}` : `b${visibility}`}
+                initial={onRun ? run!.visibility : visibility}
+                choose={(v) => (onRun ? saveDetails(run!.id, { visibility: v }) : setBuildVisibility(buildId, v))}
+                onChange={onRun ? undefined : onVisibility}
+              />
+            </span>
             <Link
               href={done}
               className="btn btn-sm btn-primary"
@@ -356,39 +377,23 @@ export function EditBar({
           </span>
         </div>
       </div>
-      {frame && (
-        <div className={f.hero}>
-          {cover && <div className={f.heroImage} style={{ backgroundImage: `url("${cover}")`, backgroundPosition: focus ? `${focus.x}% ${focus.y}%` : undefined }} aria-hidden="true" />}
-          <span className={f.heroFade} aria-hidden="true" />
-          <div className={`page ${f.heroIn}`}>
-            <p className={f.heroName}>{frame.name}</p>
-            <span className={f.heroBy}>
-              <span>Made by {frame.author}</span>
-              {frame.traits && <span className="muted">{frame.traits}</span>}
-              {frame.aiAssisted && <AiAssisted author={frame.author} />}
-            </span>
-            {frame.build && (
-              <Link href={`/b/${frame.build.id}/setup?step=name#cover`} className={`btn btn-sm on-image ${f.heroCover}`}>
-                {cover ? "Change the cover" : "Add a cover"}
-              </Link>
-            )}
-          </div>
-        </div>
-      )}
-      <div className={`page ${f.tabsWrap}`}>
-        <nav className={f.tabs} aria-label="Edit tabs">
-          {tabs.map((t) => (
-            <Link key={t.key} href={t.href} className={f.tab} aria-current={t.key === current ? "page" : undefined}>
-              <GameIcon file={t.icon} size={32} className={f.tabIcon} />
-              <span className={f.tabText}>
-                <span className={f.tabName}>{t.label}</span>
-                {t.sub && <span className={f.tabSub}>{t.sub}</span>}
-              </span>
-            </Link>
-          ))}
-        </nav>
-      </div>
+      <p className={`page ${f.help}`}>{helpLine(current, !!run)}</p>
     </>
+  );
+}
+
+/** On a phone, the tab you're on as a menu of the others (WO-124). */
+function TabMenu({ tabs, here }: { tabs: Tab[]; here: Tab }) {
+  return (
+    <MenuButton className={f.tabMenu} buttonClassName={`btn btn-sm ${f.tabMenuButton}`} buttonLabel={`${here.label}: the edit tabs`} menuLabel="Edit tabs" startAt={tabs.indexOf(here)} button={<>{here.label} <span aria-hidden="true">▾</span></>}>
+      {(close) =>
+        tabs.map((t) => (
+          <Link key={t.key} href={t.href} role="menuitem" tabIndex={-1} className={styles.menuItem} aria-current={t.key === here.key ? "page" : undefined} onClick={() => close()}>
+            {t.label}
+          </Link>
+        ))
+      }
+    </MenuButton>
   );
 }
 

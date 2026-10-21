@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { GameDataProvider } from "@/components/game-data";
 import { EditFrameProvider } from "@/components/editor/edit-bar";
+import { SiteHeader } from "@/components/site-header";
 import { EditPlaythrough, type EditData } from "@/components/playthrough/edit-playthrough";
 import { editFrameForRun } from "@/lib/edit/frame";
 import { docText } from "@/lib/guide/doc";
@@ -80,6 +81,8 @@ export async function RunEdit({ id, act }: { id: string; act?: string }) {
   const linkables = questLinkables().map(({ kind, id: lid, name, where }) => ({ kind, id: lid, name, where }));
   return (
     <EditFrameProvider data={frame}>
+      {/* The site header over the edit bar, as on every edit tab (WO-124). */}
+      <SiteHeader />
       <GameDataProvider version={version} serverVersion={clientVersion(version)}>
         <EditPlaythrough data={data} actId={Number(act) || null} linkables={linkables} />
       </GameDataProvider>

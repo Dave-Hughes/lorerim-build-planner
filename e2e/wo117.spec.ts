@@ -21,18 +21,19 @@ test("Edit opens Set up at Details, for a character and a build alone", async ({
     await page.getByRole("region", { name: "Build" }).getByRole("link", { name: "Edit", exact: true }).click();
     await expect(page).toHaveURL(/\/setup\?step=name$/);
     await expect(page.getByRole("heading", { level: 1, name: "Details" })).toBeVisible();
-    await expect(editTab(page, "Set up")).toHaveAttribute("aria-current", "page");
+    await expect(editTab(page, "Character")).toHaveAttribute("aria-current", "page");
   }
 });
 
 test("five tabs on a character, three on a build alone, and the band's Done is the one ember button", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/b/${KYRIA_BUILD_ID}/setup?step=name`);
-  await expect(tabNames(page)).toHaveText([/^Set up/, /^Levels/, /^Guide/, /^Story/, /^Play/]);
+  // WO-124: named for what's in them.
+  await expect(tabNames(page)).toHaveText(["Character", "Build", "Guide", "Story", "Playthrough"]);
   await expect(page.getByRole("region", { name: "Edit bar" })).toContainText("EditingKyria Severa");
   await expect(page.getByRole("link", { name: "Change the cover" })).toHaveAttribute("href", `/b/${KYRIA_BUILD_ID}/setup?step=name#cover`);
   await page.goto(`/b/${FRESH_BUILD_ID}/edit`);
-  await expect(tabNames(page)).toHaveText([/^Set up/, /^Levels/, /^Guide/, /^Story/]);
+  await expect(tabNames(page)).toHaveText(["Character", "Build", "Guide", "Story"]);
   // Below the site header (its New character is the site's), Done is the one ember button.
   await expect(page.locator(".btn-primary:visible:not(header .btn-primary)")).toHaveCount(1);
   await expect(page.getByRole("region", { name: "Edit bar" }).getByRole("link", { name: "Done" })).toHaveClass(/btn-primary/);
@@ -69,7 +70,7 @@ test("the old edit addresses go to their tabs", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit`);
   await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/play$`));
-  await expect(editTab(page, "Play")).toHaveAttribute("aria-current", "page");
+  await expect(editTab(page, "Playthrough")).toHaveAttribute("aria-current", "page");
   await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit?tale=1`);
   await expect(page).toHaveURL(new RegExp(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story/title$`));
   await expect(editTab(page, "Story")).toHaveAttribute("aria-current", "page");

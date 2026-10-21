@@ -51,7 +51,7 @@ test.describe("at 1440", () => {
     await page.getByRole("region", { name: "Perks at level 6" }).scrollIntoViewIfNeeded();
     const bar = page.getByRole("region", { name: "Pinned bar" });
     await expect(bar).toBeVisible();
-    await expect(bar.getByRole("button", { name: "Levels", exact: true })).toHaveAttribute("aria-pressed", "true");
+    await expect(bar.getByRole("button", { name: "Build", exact: true })).toHaveAttribute("aria-pressed", "true");
     await expect(bar.getByRole("button", { name: /^Next level/ })).toBeVisible();
     await expect(bar.getByRole("tab")).toHaveCount(0);
     // Guide, picked there, opens at its top with the tab row back in view.

@@ -2,6 +2,7 @@ import "server-only";
 import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { EditFrameProvider } from "@/components/editor/edit-bar";
+import { SiteHeader } from "@/components/site-header";
 import { GameDataProvider } from "@/components/game-data";
 import { editFrameForRun } from "@/lib/edit/frame";
 import { emptyDoc, firstPlate } from "@/lib/guide/doc";
@@ -91,6 +92,8 @@ export async function RunStoryEdit({ id, page: key }: { id: string; page: string
   const frame = await editFrameForRun(p, userId);
   return (
     <EditFrameProvider data={frame}>
+      {/* The site header over the edit bar, as on every edit tab (WO-124). */}
+      <SiteHeader />
       <GameDataProvider version={version} serverVersion={clientVersion(version)}>
         <StoryWriter owner={{ kind: "run", id, buildId: p.buildId ?? "", name: p.name, visibility: p.visibility }} groups={groups} page={page} prev={prev} next={next} />
       </GameDataProvider>
