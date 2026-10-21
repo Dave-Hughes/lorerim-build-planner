@@ -68,6 +68,11 @@ describe("the save connector", () => {
     expect(a.saves.map((s) => s.saveNumber)).toEqual([62, 61, 243, 1]);
   });
 
+  it("passes skills and the lute to set_snapshot when the save has them (WO-123)", () => {
+    const s = snapshotOf({ name: "K", level: 10, xp: 0, xpToNext: 525, day: 15, place: "", saveNumber: 70, race: "", quests: {}, skills: { Speech: 45 }, counts: { lute: 199 } });
+    expect(s).toMatchObject({ skills: { Speech: 45 }, counts: { lute: 199 } });
+  });
+
   it("leaves out a stage past what a snapshot holds", () => {
     const s = snapshotOf({ name: "K", level: 1, xp: 0, xpToNext: 75, day: 1, place: "", saveNumber: 1, race: "", quests: { A: { stage: 20, completed: false }, B: { stage: 20000, completed: false } } });
     expect(s.questStages).toEqual({ A: 20 });

@@ -4925,7 +4925,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 ### Done when
 - [ ] Part 1: every objective tickable by hand; Ticks from your save on linked ones; the door takes `fromSave`.
 - [ ] Part 2: the drafting warnings, counted.
-- [ ] Part 3: skills (and the lute, if it can be read) from the save, matched against Dave's screenshot, or the reason they can't.
+- [x] Part 3: skills (and the lute, if it can be read) from the save, matched against Dave's screenshot, or the reason they can't. (PC, 21 Oct: all 18 skills on Kyria's Save 70 match Dave's screenshot of her skills menu; the table is in `scripts/save/checked-2026-10-21.md`. They're the player's base actor values (6 to 23) in her change form, so a fortified skill would read lower than the menu shows. The lute is Skyrim's Got Talent's global `_Talent_Lute`, read through the save's plugin list into the snapshot's count `lute`: 199 at Save 70, past the mod's 66 tier. Read a save and the save connector both pass skills and `lute` on.)
 - [ ] Every check in CLAUDE.md passes; behind the flag. Commit on `staging` per part, push, and stop: Dave's Claude drafts a character from scratch, its quest objectives come linked, and a save sync ticks them.
 
 ---

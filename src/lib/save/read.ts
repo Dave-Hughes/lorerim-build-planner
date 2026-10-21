@@ -7,8 +7,9 @@
  * forms (each stage the game has run, and the Completed runtime flag). Quests are named through
  * quest_forms.json ("Skyrim.esm:0242AF" -> "MS11"); a quest the planner doesn't know is left out.
  *
- * Skills are left out: they sit in the player's change form behind several sections whose layout isn't
- * documented well enough to read without guessing (WO-112's Done when says what was tried).
+ * Skills (WO-123) are the player's base actor values, in the player's change form (0x14): a list of (u32 actor value,
+ * f32 value) entries in actor value order after a vsval count, where 6 to 23 are the 18 skills under LoreRim's names.
+ * Checked against Kyria's skills menu at Save 70, every skill and her base health, magicka and stamina.
  */
 
 export interface SaveQuest {
@@ -32,6 +33,8 @@ export interface SaveRead {
   race: string;
   quests: Record<string, SaveQuest>;
   skills?: Record<string, number>;
+  /** Counts a mod keeps in a global, by the label the snapshot gives them: { lute: 199 } (WO-123). */
+  counts?: Record<string, number>;
 }
 
 export class SaveError extends Error {}
@@ -249,7 +252,17 @@ export function inflate(src: Uint8Array, size: number): Uint8Array {
 
 const MAGIC = "TESV_SAVEGAME";
 const GAME_DAYS_PASSED = 0x39; // Skyrim.esm's GameDaysPassed global
+/**
+ * Counts mods keep in a global, by plugin and form id (WO-123). Skyrim's Got Talent's lute skill is _Talent_Lute: its
+ * fragments add to it as you play, its own tiers are 26, 46, 66 and 86, and its UI shows it capped at 100. The count is
+ * the global as the save holds it.
+ */
+export const COUNT_GLOBALS: Record<string, string> = { lute: "skyrimsgottalent-bards.esp:000d62" };
 const QUEST_TYPE = 8; // change form type for a quest
+const PLAYER_REF = 0x14; // the player's reference, whose change form holds the base actor values
+/** Actor values 6 to 23, by the names LoreRim's skills menu and the planner use (Evasion is Light Armor, Finesse is Pickpocket, Wayfarer is Lockpicking). */
+export const SKILLS = ["One-Handed", "Two-Handed", "Marksman", "Block", "Smithing", "Heavy Armor", "Evasion", "Finesse", "Wayfarer", "Sneak", "Alchemy",
+  "Speech", "Alteration", "Conjuration", "Destruction", "Illusion", "Restoration", "Enchanting"];
 const CF_FORM_FLAGS = 0x1;
 const CF_QUEST_FLAGS = 0x2;
 const CF_QUEST_STAGES = 0x80000000;
@@ -346,6 +359,8 @@ export function readSave(bytes: Uint8Array, questForms: QuestForms = {}): SaveRe
 
   // Global data table 1, right after the file location table: type 3 holds the globals.
   let gameDaysPassed: number | null = null;
+  const countOf = Object.fromEntries(Object.entries(COUNT_GLOBALS).map(([label, key]) => [key, label]));
+  const tallies: Record<string, number> = {};
   for (let i = 0; i < counts[0]; i++) {
     const type = r.u32();
     const len = r.u32();
@@ -355,14 +370,18 @@ export function readSave(bytes: Uint8Array, questForms: QuestForms = {}): SaveRe
       for (let j = 0; j < n; j++) {
         const ref = r.bytes(3);
         const value = r.f32();
-        if (resolve(ref[0], ref[1], ref[2]) === GAME_DAYS_PASSED) gameDaysPassed = value;
+        const full = resolve(ref[0], ref[1], ref[2]);
+        if (full === GAME_DAYS_PASSED) gameDaysPassed = value;
+        const label = full === null ? undefined : countOf[nameOf(full) ?? ""];
+        if (label) tallies[label] = Math.max(0, Math.floor(value));
       }
     }
     r.p = start + len;
   }
 
-  // Change forms: the quests' stages and Completed flag.
+  // Change forms: the quests' stages and Completed flag, and the player's skills.
   const quests: Record<string, SaveQuest> = {};
+  let skills: Record<string, number> | null = null;
   const cf = new Reader(body);
   cf.p = offsets[4] + base;
   for (let i = 0; i < counts[3]; i++) {
@@ -384,6 +403,7 @@ export function readSave(bytes: Uint8Array, questForms: QuestForms = {}): SaveRe
       len2 = cf.u32();
     }
     const data = cf.bytes(len1);
+    if (!skills && resolve(ref[0], ref[1], ref[2]) === PLAYER_REF) skills = parseSkills(len2 ? inflate(data, len2) : data);
     if ((type & 0x3f) !== QUEST_TYPE) continue;
     const full = resolve(ref[0], ref[1], ref[2]);
     const key = full === null ? null : nameOf(full);
@@ -405,7 +425,28 @@ export function readSave(bytes: Uint8Array, questForms: QuestForms = {}): SaveRe
     saveNumber: h.saveNumber,
     race: h.race,
     quests,
+    ...(skills ? { skills } : {}),
+    ...(Object.keys(tallies).length ? { counts: tallies } : {}),
   };
+}
+
+/**
+ * The player's skills from their change form: the base actor value list, (u32 actor value, f32 value) entries in actor
+ * value order, recognised by its first 27 running 0, 1, 2 ... 26 without a gap (the skills are 6 to 23; 24 to 26 are
+ * health, magicka and stamina). Null unless exactly one such list is there.
+ */
+export function parseSkills(data: Uint8Array): Record<string, number> | null {
+  const v = new DataView(data.buffer, data.byteOffset, data.byteLength);
+  const found: Record<string, number>[] = [];
+  for (let o = 0; o + 8 * 27 <= data.length; o++) {
+    let i = 0;
+    while (i < 27 && v.getUint32(o + 8 * i, true) === i && Number.isFinite(v.getFloat32(o + 8 * i + 4, true))) i++;
+    if (i < 27) continue;
+    const skills = Object.fromEntries(SKILLS.map((name, k) => [name, Math.round(v.getFloat32(o + 8 * (6 + k) + 4, true))]));
+    if (Object.values(skills).every((x) => x >= 0 && x <= 200)) found.push(skills);
+    o += 8 * 27 - 1;
+  }
+  return found.length === 1 ? found[0] : null;
 }
 
 /** A quest change form: runtime flags, then the stages the game has run (index, and a done flag). */

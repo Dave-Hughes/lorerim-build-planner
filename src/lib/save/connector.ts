@@ -82,7 +82,8 @@ export function listSaves(folders: string[], opts: { character?: string; limit?:
 /** What the reader found in a save, as set_snapshot takes it (rule 18): source "save", its label, and the fields. */
 export function snapshotOf(s: SaveRead) {
   const questStages = Object.fromEntries(Object.entries(s.quests).flatMap(([k, q]) => (k.length <= 80 && q.stage <= 10_000 ? [[k, q.stage]] : [])));
-  return { source: "save" as const, label: `Save ${s.saveNumber}`, level: s.level, xp: s.xp, day: s.day, ...(s.place ? { place: s.place } : {}), skills: s.skills ?? {}, questStages };
+  return { source: "save" as const, label: `Save ${s.saveNumber}`, level: s.level, xp: s.xp, day: s.day, ...(s.place ? { place: s.place } : {}), skills: s.skills ?? {}, questStages,
+    ...(s.counts ? { counts: s.counts } : {}) };
 }
 
 export type LatestAnswer =

@@ -1,13 +1,13 @@
 # The save connector
 
-A small local connector for Claude Desktop that reads your Skyrim saves on this PC with the planner's own save reader. Your Claude can then update where you stand from your latest save: level, XP, day, place, and each quest's highest stage. The save file never leaves your PC; only those fields go to the planner, and only when your Claude passes them to `set_snapshot`.
+A small local connector for Claude Desktop that reads your Skyrim saves on this PC with the planner's own save reader. Your Claude can then update where you stand from your latest save: level, XP, day, place, skills, the lute, and each quest's highest stage. The save file never leaves your PC; only those fields go to the planner, and only when your Claude passes them to `set_snapshot`.
 
 It has two tools:
 
 - `read_latest_save` reads your newest save. Ask for a character ("Kyria Severa") and, if your newest save is someone else's, it reads that character's newest instead and says so. If there's no save of them, it lists your five newest saves so you can pick one.
 - `list_saves` lists your newest saves by character, with level, place, save number and when.
 
-It reads skills only when it can read them reliably, and it can't yet, so your last skills stay as they were (enter them by hand on Play's edit tab).
+It reads your 18 skills (checked against Kyria's skills menu) and, with Skyrim's Got Talent, your lute skill as the count `lute`.
 
 ## Add it to Claude Desktop
 

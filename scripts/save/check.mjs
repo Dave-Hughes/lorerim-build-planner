@@ -19,7 +19,8 @@ for (const file of files) {
   console.log("");
   console.log(`- Header: ${h.name}, level ${h.level}, ${h.place}, game date ${h.gameDate}, save ${h.saveNumber}, XP ${h.curExp.toFixed(1)} of ${h.lvlUpExp}`);
   console.log(`- Reader: ${s.name}, level ${s.level}, XP ${s.xp} of ${s.xpToNext}, day ${s.day}, ${s.place}, save ${s.saveNumber}`);
-  console.log(`- Skills: ${s.skills ? JSON.stringify(s.skills) : "not read"}`);
+  console.log(`- Skills: ${s.skills ? Object.entries(s.skills).map(([k, v]) => `${k} ${v}`).join(", ") : "not read"}`);
+  console.log(`- Counts: ${s.counts ? Object.entries(s.counts).map(([k, v]) => `${k} ${v}`).join(", ") : "none"}`);
   console.log(`- Quests the planner knows: ${quests.length}, ${quests.filter(([, q]) => q.completed).length} completed`);
   console.log(`- ${quests.slice(0, 400).map(([k, q]) => `${k} ${q.stage}${q.completed ? " done" : ""}`).join("; ")}`);
   console.log("");

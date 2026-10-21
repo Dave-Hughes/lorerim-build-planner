@@ -56,7 +56,7 @@ export function ReadSave({ id, characters, objectives, skills }: {
     start(async () => {
       if (!read) return;
       const questStages = Object.fromEntries(Object.entries(read.quests).flatMap(([k, q]) => (k.length <= 80 && q.stage <= 10_000 ? [[k, q.stage]] : [])));
-      const r = await readFromSave(id, { label: `Save ${read.saveNumber}`, level: read.level, xp: read.xp, day: read.day, place: read.place || null, skills, questStages });
+      const r = await readFromSave(id, { label: `Save ${read.saveNumber}`, level: read.level, xp: read.xp, day: read.day, place: read.place || null, skills: read.skills ?? skills, questStages, ...(read.counts ? { counts: read.counts } : {}) });
       if (!r.ok) setError(r.error ?? "That didn't save. Try again.");
       else {
         setRead(null);
@@ -78,12 +78,13 @@ export function ReadSave({ id, characters, objectives, skills }: {
               <p>
                 <strong>{read.name}</strong>, level {read.level}, day {read.day}
                 {read.place ? `, ${read.place}` : ""}. Save {read.saveNumber}.
+                {read.counts?.lute !== undefined ? ` Lute ${read.counts.lute}.` : ""}
               </p>
               <p className="muted">
                 {objectives.length
                   ? `It would tick ${ticks} of this run's ${objectives.length} quest objective${objectives.length === 1 ? "" : "s"}.`
                   : "This run has no quest objectives for it to tick."}{" "}
-                Skills aren&rsquo;t in what the reader can read yet; your last ones stay.
+                {read.skills ? `It reads ${Object.keys(read.skills).length} skills.` : "It couldn’t read the skills from this save; your last ones stay."}
               </p>
               {someoneElse && (
                 <p role="alert" className={s.error}>

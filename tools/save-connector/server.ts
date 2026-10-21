@@ -24,7 +24,7 @@ const TOOLS = [
     name: "read_latest_save",
     title: "Read the latest save",
     description:
-      "Read the player's newest Skyrim save on this PC: name, level, XP, day, place, save number and each quest's highest stage, never the file. With character, and the newest save is someone else's, it reads that character's newest save instead and says so; with no save of that character, it lists the five newest saves for the player to choose from. Pass `snapshot` to the planner's set_snapshot unchanged.",
+      "Read the player's newest Skyrim save on this PC: name, level, XP, day, place, save number, skills, the lute (Skyrim's Got Talent) and each quest's highest stage, never the file. With character, and the newest save is someone else's, it reads that character's newest save instead and says so; with no save of that character, it lists the five newest saves for the player to choose from. Pass `snapshot` to the planner's set_snapshot unchanged.",
     inputSchema: { type: "object", properties: { character: { type: "string", description: "The character's name, as the save has it: \"Kyria Severa\"." } }, additionalProperties: false },
   },
   {

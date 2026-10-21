@@ -1,7 +1,7 @@
 import { deflateSync } from "node:zlib";
 import { describe, expect, it } from "vitest";
 import { buildSave, enc, questData, STAGES } from "./fixture";
-import { inflate, lz4Block, parseQuest, readHeader, readSave, SaveError } from "./read";
+import { inflate, lz4Block, parseQuest, parseSkills, readHeader, readSave, SaveError, SKILLS } from "./read";
 
 // The reader (WO-112) against a small save built byte for byte as the game writes one (fixture.ts).
 
@@ -42,6 +42,29 @@ describe("readSave", () => {
   it("says plainly when a file isn't a save", () => {
     expect(() => readSave(enc("not a save at all, just text"))).toThrow(SaveError);
     expect(() => readSave(save().subarray(0, 120))).toThrow(SaveError);
+  });
+});
+
+describe("skills and the lute (WO-123)", () => {
+  // Kyria's skills menu at Save 70, in actor value order: One-Handed ... Enchanting.
+  const KYRIA = [10, 50, 5, 10, 15, 50, 10, 1, 15, 0, 6, 45, 15, 0, 25, 0, 40, 5];
+
+  it("reads the 18 skills from the player's base actor values, by LoreRim's names", () => {
+    const s = readSave(save({ skills: KYRIA }), FORMS);
+    expect(s.skills).toEqual({
+      "One-Handed": 10, "Two-Handed": 50, Marksman: 5, Block: 10, Smithing: 15, "Heavy Armor": 50, Evasion: 10, Finesse: 1, Wayfarer: 15,
+      Sneak: 0, Alchemy: 6, Speech: 45, Alteration: 15, Conjuration: 0, Destruction: 25, Illusion: 0, Restoration: 40, Enchanting: 5,
+    });
+    expect(Object.keys(s.skills!)).toEqual(SKILLS);
+  });
+
+  it("reads Skyrim's Got Talent's lute as a count, through the save's plugin list", () => {
+    expect(readSave(save({ lute: 199 }), FORMS).counts).toEqual({ lute: 199 });
+    expect(readSave(save(), FORMS).counts).toBeUndefined();
+  });
+
+  it("leaves skills out when the player's list isn't there, or isn't the only one", () => {
+    expect(parseSkills(new Uint8Array(400))).toBeNull();
   });
 });
 
