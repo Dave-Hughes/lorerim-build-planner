@@ -4897,7 +4897,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 - [x] Part 1: tab order, the AI assisted tooltip on the mark, menus on screen, the WO-36 Like everywhere, image buttons that can be seen, "image" throughout.
 - [x] Part 2: one word, chapter, with Prologue and Unlocks when, in the site, the reader, the tools and the rules.
 - [x] Part 3: Images on the Story tab only, rows that stay put, Position on every image, a draft that asks for a cover.
-- [ ] Part 4: Play as PlayCalm: no right rail, compact acts, Where you stand only with a save, Throughout the act, no door or helper.
+- [x] Part 4: Play as PlayCalm: no right rail, compact acts, Where you stand only with a save, Throughout the act, no door or helper.
 - [ ] Part 5: Read the story with Continue reading beside the tabs, and Contents in the reader.
 - [ ] Part 6: Details as DetailsCalm.
 - [ ] Part 7: themes off, Ember everywhere, the stored value kept.

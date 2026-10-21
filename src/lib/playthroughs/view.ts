@@ -202,6 +202,17 @@ export function assemble(rows: { acts: ActRow[]; objectives: ObjectiveRow[]; cha
   };
 }
 
+/** Where you stand (WO-118), one quiet line: "Level 6 | Day 7 | Riften | Speech 30, Two-Handed 36 | from Save 7". */
+export function standLine(snap: Pick<SnapshotRow, "source" | "label" | "level" | "day" | "place" | "skills"> | null): string | null {
+  if (!snap) return null;
+  const skills = Object.entries(snap.skills)
+    .slice(0, 3)
+    .map(([k, n]) => `${k} ${n}`)
+    .join(", ");
+  const from = snap.source === "save" ? `from ${snap.label}` : "from your own entry";
+  return [`Level ${snap.level}`, snap.day !== null ? `Day ${snap.day}` : null, snap.place || null, skills || null, from].filter(Boolean).join(" | ");
+}
+
 /** Skills that moved since the last snapshot: "Speech 30 | Two-Handed 36". */
 export function skillsMoved(s: Pick<SnapshotRow, "skills" | "prevSkills">): { name: string; value: number }[] {
   if (!s.prevSkills) return [];

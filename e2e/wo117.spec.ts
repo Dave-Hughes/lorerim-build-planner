@@ -213,10 +213,10 @@ test("a drafted character with no cover asks for one, not for a reader; the conn
   await expect(page.getByRole("button", { name: "Add a cover" })).toBeInViewport();
 
   // Shared by its link, a reader sees no nudge.
-  await page.goto(`/p/${made.playthrough}`);
-  const see = page.getByRole("group", { name: "Who can see it" });
-  await see.getByRole("button", { name: /^Link only/ }).click();
-  await expect(see.getByRole("button", { name: /^Link only/ })).toHaveAttribute("aria-pressed", "true");
+  await page.goto(`/p/${made.playthrough}/edit/play`);
+  await page.getByRole("button", { name: /^Who can see it/ }).click();
+  await page.getByRole("menu", { name: "Who can see it" }).getByRole("menuitemradio", { name: /^Link only/ }).click();
+  await expect(page.getByRole("button", { name: "Who can see it: Link only" })).toBeVisible();
   const reader = await browser.newPage();
   // The button shows the choice at once; the page is shared once the save is in.
   await expect.poll(async () => (await reader.goto(`/p/${made.playthrough}`), await reader.getByRole("heading", { level: 1, name: "E2E Coverless" }).count()), { timeout: 15_000 }).toBe(1);

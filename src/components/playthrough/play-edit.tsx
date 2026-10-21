@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useGameData } from "@/components/game-data";
 import { ImageSlot } from "@/components/ui/image-slot";
+import { HandEntry } from "./play-controls";
 import { InfoTip } from "@/components/ui/info-tip";
 import type { ExtraMention } from "@/lib/guide/mention";
 import * as act from "@/lib/playthroughs/actions";
@@ -24,6 +25,12 @@ import s from "./play-edit.module.css";
 export function PlayEdit({ data, current, linkables, details }: { data: EditData; current: EditAct | null; linkables: ExtraMention[]; details: React.ReactNode }) {
   return (
     <main className={`page ${s.main}`}>
+      {/* Where you stand, and Enter it by hand (WO-118: moved here from Play). */}
+      <section className={s.stand} aria-label="Where you stand">
+        <span className="label">Where you stand</span>
+        <span className="muted">{data.stand.line ?? "No save read yet."}</span>
+        <HandEntry id={data.id} initial={data.stand.initial} skills={data.stand.skills} counts={data.stand.counts} />
+      </section>
       <aside className={s.aside}>
         <ActsList data={data} current={current} />
         {details}
@@ -240,8 +247,8 @@ function ActFields({ pid, a, last }: { pid: string; a: EditAct; last: boolean })
       </div>
       <div className={s.field}>
         <span className="label">
-          <label htmlFor={`rule-${a.id}`}>Standing rule</label>{" "}
-          <InfoTip label="About the standing rule" text="Something she keeps doing through the whole act. It has no box to tick, so it is not an objective." />
+          <label htmlFor={`rule-${a.id}`}>Throughout the act</label>{" "}
+          <InfoTip label="About throughout the act" text="What she keeps doing all through this act, like playing the inn every night. It isn't something to tick." />
         </span>
         <input
           id={`rule-${a.id}`}

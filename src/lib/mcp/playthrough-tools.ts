@@ -32,7 +32,7 @@ const doneFields = {
 const objectiveFields = {
   playthrough,
   act,
-  text: z.string().min(1).max(160).describe("One thing the player can know is done, in plain instructions (rule 14). Not every, each, always or whenever: that's the act's standing rule."),
+  text: z.string().min(1).max(160).describe("One thing the player can know is done, in plain instructions (rule 14). Not every, each, always or whenever: that's the act's throughout the act (standingRule)."),
   link: linkSchema.optional(),
   kind: z.enum(["once", "reach"]).describe("once: done once. reach: a number to reach."),
   ...doneFields,
@@ -81,14 +81,14 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     levels: z.string().max(30).describe('"1 to 6", or "40 and up".'),
     place: z.string().max(80).describe("Where the act happens."),
     goal: z.string().max(200).describe("The act's goal in one line, Play only."),
-    standingRule: z.string().max(200).optional().describe("What the player keeps doing through the act, if anything. Not an objective."),
+    standingRule: z.string().max(200).optional().describe("Throughout the act: what the player keeps doing all through it, if anything. Not an objective."),
   };
   tool("add_act", "Add an act", "Add an act at the end of one of the player's playthroughs: a stretch of the game with a goal and a place (rule 13).", z.object({ playthrough, ...actFields }), (p, a: Parameters<typeof t.addAct>[1]) => t.addAct(p, a));
   tool(
     "set_act",
     "Change an act",
-    "Change an act's name, levels, place, goal or standing rule.",
-    z.object({ playthrough, act, name: actFields.name.optional(), levels: actFields.levels.optional(), place: actFields.place.optional(), goal: actFields.goal.optional(), standingRule: z.string().max(200).optional().describe("The standing rule; an empty string takes it away.") }),
+    "Change an act's name, levels, place, goal or what the player keeps doing throughout it (standingRule).",
+    z.object({ playthrough, act, name: actFields.name.optional(), levels: actFields.levels.optional(), place: actFields.place.optional(), goal: actFields.goal.optional(), standingRule: z.string().max(200).optional().describe("Throughout the act: what the player keeps doing all through it; an empty string takes it away.") }),
     (p, a: Parameters<typeof t.setAct>[1]) => t.setAct(p, a),
   );
   tool("remove_act", "Remove an act", "Remove an act, its objectives and chapters; the last act stays.", z.object({ playthrough, act }), (p, a: Parameters<typeof t.removeAct>[1]) => t.removeAct(p, a));
@@ -154,7 +154,7 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
   tool(
     "set_snapshot",
     "Where the player stands, from the save",
-    'Set where the player stands from their save, read by the planner\'s helper on their PC: source "save" only. Never a value you estimated or the player guessed (rule 18): the player enters it by hand on the site.',
+    'Set where the player stands from their save, read from the save on their PC: source "save" only. Never a value you estimated or the player guessed (rule 18): the player enters it by hand on the site.',
     z.object({
       playthrough,
       source: z.literal("save"),

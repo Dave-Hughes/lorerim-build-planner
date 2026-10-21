@@ -83,7 +83,7 @@ export function isOpen(c: { kind: ChapterKind; opensAfter: number | null }, done
 const STANDING = /\b(every|each|always|whenever)\b/i;
 const STARTS = /^\s*(keep|always|never)\b/i;
 
-export const RULE_14 = "An objective is one thing you can know is done. Make it a number (\"Read 10 books\") or put it in the act's standing rule.";
+export const RULE_14 = "An objective is one thing you can know is done. Make it a number (\"Read 10 books\") or put it under the act's Throughout the act.";
 
 /** Rule 14's refusal for an objective, or null when it's one the player can know is done. */
 export function objectiveRefusal(text: string, kind: ObjectiveKind, doneBy: DoneBy | null, reach?: Reach | null): string | null {

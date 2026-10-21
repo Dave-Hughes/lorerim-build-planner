@@ -43,7 +43,8 @@ test("a character with a run opens on Play, from its build's address too; anothe
   await expect(page.getByRole("heading", { level: 1, name: "Kyria Severa" })).toBeVisible();
   await expect(tabs(page).getByRole("tab", { name: /^Play/ })).toHaveAttribute("aria-selected", "true");
   await expect(tabs(page).getByRole("tab")).toHaveCount(3);
-  await expect(page.getByRole("heading", { name: "Where you stand" })).toBeVisible();
+  // Where you stand is one quiet line over the act (WO-118).
+  await expect(page.getByText("Level 6 | Day 7 | Riften | Speech 30, Two-Handed 36 | from Save 7", { exact: true })).toBeVisible();
   // A character opens on Play from every way in (WO-117), its build's own address too.
   await page.goto(`/b/${KYRIA_BUILD_ID}`);
   await expect(tabs(page).getByRole("tab", { name: /^Play/ })).toHaveAttribute("aria-selected", "true");

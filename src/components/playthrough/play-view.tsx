@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { formatDate } from "@/lib/format/date";
 import type { PlaythroughRecord } from "@/lib/playthroughs/queries";
-import { skillsMoved, type ActView, type ObjectiveView } from "@/lib/playthroughs/view";
-import { Answer, HandEntry, StatusPick, TickBox, Visibility } from "./play-controls";
+import { standLine, type ActView, type ObjectiveView } from "@/lib/playthroughs/view";
+import { Answer, TickBox } from "./play-controls";
 import { ReaderProvider, ReaderLink } from "@/components/reader/reader";
 import { actImageOf, runStops } from "@/lib/playthroughs/reader";
 import { docText, docWords } from "@/lib/guide/doc";
@@ -39,119 +38,67 @@ export function playSub(p: PlaythroughRecord): string {
 }
 
 /**
- * The Play view (WO-111), as the Playthrough board on canvas row 23: where you stand from the
- * snapshot, the acts down the left, the act's objectives with their status worked out, one-line
- * pointers to the tale (never its text), and on the right what's next, the character, and who can see it.
+ * The Play view (WO-111), calmer (WO-118, the PlayCalm board): the acts down the left, the one being
+ * read open and the rest one line each; the act takes the width, with where you stand in one quiet
+ * line over it once there's a save or the owner's own entry, its card, its goal, what she keeps doing
+ * throughout it, and its objectives. The owner ticks in place; everything else is in Edit.
  */
 export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwner: boolean; actIndex: number | null }) {
   const v = p.view;
   const act = (actIndex !== null ? v.acts[actIndex] : null) ?? v.current;
-  const snap = p.snapshot;
-  const moved = snap ? skillsMoved(snap) : [];
-  const reachKeys = v.acts.flatMap((a) => a.objectives.flatMap((o) => (o.reach ? [o.reach.key] : [])));
-  const skills = [...new Set(reachKeys.filter((k) => k.startsWith("skill:")).map((k) => k.slice(6)))];
-  const counts = [...new Set(reachKeys.filter((k) => k.startsWith("count:")).map((k) => k.slice(6)))];
-  const curIdx = v.current ? v.acts.indexOf(v.current) : -1;
-  const next = v.current ? nextUp(v.current) : null;
-  const nextAct = curIdx >= 0 ? v.acts[curIdx + 1] : undefined;
+  const stand = standLine(p.snapshot);
   const card = act ? actCard(p, act) : null;
+  const shown = act ? act.objectives.filter((o) => isOwner || o.worked.shown !== "suggested") : [];
 
   return (
     <div className={s.body}>
-      <section aria-labelledby="stand" className={s.stand}>
-        <span className={s.head}>
-          <h2 id="stand" className={s.h2}>
-            Where you stand
-          </h2>
-          <span className={s.note}>
-            {snap ? `From ${snap.label.toLowerCase() === "by hand" ? "your own entry" : snap.label}, ${formatDate(snap.at)}${snap.source === "save" ? ", read by the helper" : ""}` : "No save read yet"}
-            {isOwner && (
-              <>
-                {" | "}
-                <HandEntry
-                  id={p.id}
-                  initial={{ level: snap?.level ?? null, day: snap?.day ?? null, place: snap?.place ?? "", skills: snap?.skills ?? {}, counts: snap?.counts ?? {} }}
-                  skills={skills}
-                  counts={counts}
-                />
-              </>
-            )}
-          </span>
-        </span>
-        {snap ? (
-          <div className={s.cells}>
-            <span className={s.cell}>
-              <b>Act</b>
-              <span>{v.current ? `${v.current.n} ${v.current.name}` : "None yet"}</span>
-              {v.current?.place && <small>{v.current.place}</small>}
-            </span>
-            <span className={s.cell}>
-              <b>Level</b>
-              <span>{snap.level}</span>
-              {snap.xp !== null && <small>{snap.xp} XP</small>}
-            </span>
-            <span className={s.cell}>
-              <b>Day</b>
-              <span>{snap.day ?? "Not given"}</span>
-              {snap.day !== null && <small>in Skyrim</small>}
-            </span>
-            <span className={s.cell}>
-              <b>Skills that moved</b>
-              <span>{moved.length ? moved.map((m) => `${m.name} ${m.value}`).join(" | ") : "None"}</span>
-              {snap.prevLabel && <small>since {snap.prevLabel.toLowerCase() === "by hand" ? "your last entry" : snap.prevLabel}</small>}
-            </span>
-          </div>
-        ) : (
-          <p className={s.empty}>Where you stand comes from your save through the helper, or from you by hand.</p>
-        )}
-      </section>
-
       <div className={s.grid}>
-        <aside className={s.col} style={{ gap: 20 }}>
+        <aside className={s.col}>
           <section aria-labelledby="acts">
             <span className={`${s.head} ${s.headRule}`}>
               <h2 id="acts" className={`${s.h2} ${s.h2s}`}>
                 Acts
               </h2>
-              <span className={s.note}>{v.acts.length}</span>
             </span>
             <div className={s.acts}>
               {v.acts.map((a, i) => {
-                const state = a.total > 0 && a.done === a.total ? s.actDone : a === act ? s.actNow : s.actLater;
+                const open = a === act;
+                const state = a.total > 0 && a.done === a.total ? s.actDone : open ? s.actNow : s.actLater;
                 return (
-                  <Link key={a.id} href={`/p/${p.id}?act=${i + 1}`} scroll={false} className={`${s.act} ${state}`} aria-current={a === act ? "true" : undefined}>
-                    <span className={s.actN}>{a.n}</span>
-                    <h3>{a.name}</h3>
+                  <Link key={a.id} href={`/p/${p.id}?act=${i + 1}`} scroll={false} className={`${s.act} ${state} ${open ? s.actOpenRow : ""}`} aria-current={open ? "true" : undefined}>
+                    <span className={s.actName}>
+                      {a.n} {a.name}
+                    </span>
                     <span className={s.actCnt}>
                       {a.done} of {a.total}
                     </span>
-                    <span className={s.actWhere}>{[a.levels, a.place].filter(Boolean).join(" | ")}</span>
-                    <span className={s.bar}>
-                      <i style={{ width: `${a.total ? Math.round((a.done / a.total) * 100) : 0}%` }} />
-                    </span>
+                    {open && <span className={s.actWhere}>{[a.levels, a.place].filter(Boolean).join(" | ")}</span>}
+                    {open && (
+                      <span className={s.bar}>
+                        <i style={{ width: `${a.total ? Math.round((a.done / a.total) * 100) : 0}%` }} />
+                      </span>
+                    )}
                   </Link>
                 );
               })}
             </div>
-            {isOwner && (
-              <span style={{ display: "block", paddingTop: 14 }}>
-                <Link href={`/p/${p.id}/edit?add=act`} className="btn btn-sm">
-                  Add an act
-                </Link>
-              </span>
-            )}
           </section>
         </aside>
 
         <div className={`${s.col} ${s.actCol}`}>
           {act ? (
             <>
+              {stand && (
+                <span className={s.standLine} aria-label="Where you stand">
+                  {stand}
+                </span>
+              )}
               {card ? (
                 // The act opens with its story (WO-116): the card, then the goal line leads the objectives.
                 <section aria-label={`Act ${act.n} ${act.name}`} className={s.actOpen}>
                   <ActCard key={card.chapterId} runId={p.id} isOwner={isOwner} {...card} />
                   {act.goal && <span className={s.goal}>{act.goal}</span>}
-                  {act.standingRule && <span className={s.rule}>Standing rule: {act.standingRule}</span>}
+                  {act.standingRule && <Throughout text={act.standingRule} />}
                 </section>
               ) : (
                 <section className={`frame ${s.panel}`} aria-labelledby="act-head">
@@ -162,7 +109,7 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
                     <span className={s.note}>{[act.levels, act.place].filter(Boolean).join(" | ")}</span>
                   </span>
                   {act.goal && <span className={s.goal}>{act.goal}</span>}
-                  {act.standingRule && <span className={s.rule}>Standing rule: {act.standingRule}</span>}
+                  {act.standingRule && <Throughout text={act.standingRule} />}
                 </section>
               )}
 
@@ -171,101 +118,28 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
                   <h2 id="objs" className={`${s.h2} ${s.h2s}`}>
                     Objectives
                   </h2>
-                  <span className={s.note}>Ticked from your save where it can tell; the rest by you</span>
                 </span>
-                {act.objectives.map((o) => (
+                {shown.map((o) => (
                   <Objective key={o.id} o={o} p={p} isOwner={isOwner} />
                 ))}
-                {act.objectives.length === 0 && <p className="muted">No objectives in this act yet.</p>}
-                {isOwner && (
-                  <span className={s.add}>
-                    <Link href={`/p/${p.id}/edit?act=${act.id}`} className="btn btn-sm">
-                      Add an objective
-                    </Link>
-                    <span className={s.note}>A quest, a quest line, a spell, an item, or your own words</span>
-                  </span>
-                )}
+                {shown.length === 0 && <p className="muted">No objectives in this act yet.</p>}
               </section>
             </>
           ) : (
-            <p className="muted">No acts yet.{isOwner ? " Add the first on the edit page." : ""}</p>
+            <p className="muted">No acts yet.{isOwner ? " Add the first in Edit." : ""}</p>
           )}
         </div>
-
-        <aside className={s.side}>
-          <section className={`frame ${s.panel}`} aria-labelledby="next">
-            <h2 id="next" className={`${s.h2} ${s.h2s}`}>
-              Next
-            </h2>
-            <dl className={s.who}>
-              <dt>In the game</dt>
-              <dd>{next?.game ?? "Nothing left in this act"}</dd>
-              <dt>In the tale</dt>
-              <dd>{next?.tale ?? "Nothing waiting"}</dd>
-              <dt>Next act</dt>
-              <dd>{nextAct ? `${nextAct.name}, from level ${nextAct.levelFrom}${nextAct.goal ? `: ${nextAct.goal}` : ""}` : "This is the last act"}</dd>
-            </dl>
-          </section>
-
-          {p.build && (
-            <section className={s.panel} aria-labelledby="char">
-              <h2 id="char" className={`${s.h2} ${s.h2s}`}>
-                The character
-              </h2>
-              <dl className={s.who}>
-                <dt>Race</dt>
-                <dd>{p.build.race}</dd>
-                <dt>Birthsign</dt>
-                <dd>The {p.build.birthsign}</dd>
-                {p.build.deity && (
-                  <>
-                    <dt>Deity</dt>
-                    <dd>{p.build.deity}</dd>
-                  </>
-                )}
-                {p.build.start && (
-                  <>
-                    <dt>Start</dt>
-                    <dd>{p.build.start}</dd>
-                  </>
-                )}
-                {p.build.traits.length > 0 && (
-                  <>
-                    <dt>Traits</dt>
-                    <dd>{p.build.traits.join(", ")}</dd>
-                  </>
-                )}
-              </dl>
-              <Link href={`/p/${p.id}?tab=levels`}>The build, level by level ›</Link>
-            </section>
-          )}
-
-          {isOwner && (
-            <section className={s.panel} aria-labelledby="keep">
-              <h2 id="keep" className={`${s.h2} ${s.h2s}`}>
-                Keeping it current
-              </h2>
-              <dl className={s.who}>
-                <dt>Assistant</dt>
-                <dd>{p.draftedBy ? `An AI assistant, through the planner's door. Last change ${formatDate(p.updatedAt)}.` : "None. You made it on the site."}</dd>
-                <dt>Save</dt>
-                <dd>{snap ? (snap.source === "save" ? `${snap.label}, read ${formatDate(snap.at)} by the helper.` : `Entered by hand, ${formatDate(snap.at)}.`) : "None read yet."}</dd>
-              </dl>
-              <span className={s.note}>The assistant drafts and suggests. You tick, accept, and publish.</span>
-            </section>
-          )}
-
-          {isOwner && (
-            <section aria-labelledby="see" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <h2 id="see" className={`${s.h2} ${s.h2s}`}>
-                Who can see it
-              </h2>
-              <Visibility id={p.id} initial={p.visibility} />
-            </section>
-          )}
-        </aside>
       </div>
     </div>
+  );
+}
+
+/** What she keeps doing all through the act (WO-118: "Standing rule" was the old word). */
+function Throughout({ text }: { text: string }) {
+  return (
+    <span className={s.rule}>
+      <b>Throughout the act:</b> {text}
+    </span>
   );
 }
 
@@ -292,29 +166,12 @@ function actCard(p: PlaythroughRecord, act: ActView) {
   };
 }
 
-/** What's next in the act: the first objective not done, and the first beat still waiting. */
-function nextUp(a: ActView): { game: string | null; tale: string | null } {
-  const game = a.objectives.find((o) => o.accepted && !o.worked.done) ?? null;
-  let tale: string | null = null;
-  for (const o of a.objectives) {
-    const t = o.tale.find((x) => !x.open);
-    if (t) {
-      tale = `${t.title}, ${t.opens === "unlocks when you tick this" ? `when you tick ${o.text}` : t.opens.replace(/^unlocks /, "")}`;
-      break;
-    }
-  }
-  return { game: game?.text ?? null, tale };
-}
-
-const SHOWN: Record<string, string> = { save: "Done, from your save", hand: "Done, ticked by you", doing: "Under way", todo: "To do", later: "Later" };
-
 function Objective({ o, p, isOwner }: { o: ObjectiveView; p: PlaythroughRecord; isOwner: boolean }) {
   const w = o.worked;
   const suggested = w.shown === "suggested";
   const cls = [s.obj, w.done ? s.objDone : "", suggested ? s.sug : ""].join(" ");
   // The save's word, once it shows the stage, can't be ticked away (WO-111a).
   const canTick = isOwner && !suggested && o.kind === "once" && w.shown !== "save";
-  const stCls = w.shown === "save" ? `${s.st} ${s.stSave}` : w.shown === "doing" ? `${s.st} ${s.stNow}` : s.st;
   return (
     <>
       <div className={cls} id={`o${o.id}`}>
@@ -323,13 +180,8 @@ function Objective({ o, p, isOwner }: { o: ObjectiveView; p: PlaythroughRecord; 
           {o.linkShown?.href ? <Link href={o.linkShown.href}>{o.text}</Link> : o.text}
           {o.linkShown && <span className={s.kind}>{o.linkShown.tag}</span>}
         </span>
-        {suggested ? (
-          <span className={s.st}>Suggested by your assistant</span>
-        ) : isOwner && !w.done && o.kind === "once" ? (
-          <StatusPick id={p.id} objectiveId={o.id} status={o.status} save={o.doneBy === "save"} />
-        ) : (
-          <span className={stCls}>{SHOWN[w.shown]}</span>
-        )}
+        {/* The status on the right says only Under way (WO-118); done shows in the box. */}
+        {w.shown === "doing" ? <span className={`${s.st} ${s.stNow}`}>Under way</span> : <span />}
         {o.why && <span className={s.why}>{o.why}</span>}
         {w.meter && (
           <span className={s.meter}>
@@ -338,7 +190,7 @@ function Objective({ o, p, isOwner }: { o: ObjectiveView; p: PlaythroughRecord; 
           </span>
         )}
         {suggested && isOwner && <Answer id={p.id} objectiveId={o.id} />}
-        {/* Story markers (WO-116): the entries and beats that hang off this objective. */}
+        {/* Story markers (WO-116): the chapters that hang off this objective. */}
         {o.tale.map((t) =>
           t.open ? (
             <ReaderLink key={t.id} href={`/p/${p.id}/story/${t.id}`} className={s.mark}>

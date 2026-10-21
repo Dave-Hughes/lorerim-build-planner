@@ -385,7 +385,7 @@ export async function removeChapter(p: Player, input: { playthrough: string; cha
 /** Only from the save (WO-112's helper): rule 18 forbids a value the assistant estimated. */
 export async function setSnapshot(p: Player, input: { playthrough: string; source: "save"; label: string; level: number; xp?: number; day?: number; place?: string; skills: Record<string, number>; questStages?: Record<string, number>; counts?: Record<string, number> }) {
   await writeGuard(p);
-  if (input.source !== "save") throw new FactsError("Only a save can set where the player stands: the helper reads it. The player enters it by hand on the site.");
+  if (input.source !== "save") throw new FactsError("Only a save can set where the player stands, read on their PC. The player enters it by hand on the site.");
   const pt = await mine(p, input.playthrough);
   const d = versionData(pt.gameVersion);
   const skills = Object.fromEntries(Object.entries(input.skills ?? {}).map(([k, v]) => [names.skill(d, k), v]));

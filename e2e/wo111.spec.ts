@@ -133,9 +133,17 @@ test("on the site: private on its build's card under My characters, a tick opens
   await expect(playTab()).toContainText("1 of 7 done");
 
   await expect(page.getByText("Level 6: not read yet")).toBeVisible();
-  await page.getByRole("button", { name: "Enter it by hand" }).click();
-  await page.getByLabel("Level").fill("6");
-  await page.getByRole("button", { name: "Save" }).click();
+  // No save yet: no Where you stand line (WO-118); Enter it by hand is in Edit's Play tab.
+  await expect(page.getByText(/^Level \d+ \| .*from/)).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Enter it by hand" })).toHaveCount(0);
+  await page.goto(`/p/${pid}/edit/play`);
+  const stand = page.getByRole("region", { name: "Where you stand" });
+  await stand.getByRole("button", { name: "Enter it by hand" }).click();
+  await stand.getByRole("spinbutton", { name: "Level", exact: true }).fill("6");
+  await stand.getByRole("button", { name: "Save" }).click();
+  await expect(stand).toContainText("Level 6 | from your own entry");
+  await page.goto(`/p/${pid}`);
+  await expect(page.getByText("Level 6 | from your own entry", { exact: true })).toBeVisible();
   await expect(page.getByText("Level 6 of 6", { exact: true })).toBeVisible();
   await expect(playTab()).toContainText("2 of 7 done");
 });
@@ -204,11 +212,13 @@ test("a quest objective the save decides: ticked by the player, then the save's 
   await page.goto(`/p/${pid}?act=2`);
   const row = page.locator(`#o${added.json().objective}`);
   await row.getByRole("checkbox", { name: "Spread the Love" }).click();
-  await expect(row.getByText("Done, ticked by you")).toBeVisible();
+  // The box says it (WO-118: the status on the right says only Under way).
+  await expect(row.getByRole("checkbox", { name: "Spread the Love" })).toHaveAttribute("aria-checked", "true");
 
   const snap = await go("set_snapshot", { playthrough: pid, source: "save", label: "Save 8", level: 7, skills: {}, questStages: { FreeformRiften05: 10 } });
   expect(snap.isError, snap.text).toBe(false);
   await page.reload();
-  await expect(row.getByText("Done, from your save")).toBeVisible();
+  // The save's word can't be ticked away: a done box, not a checkbox.
   await expect(row.getByRole("checkbox")).toHaveCount(0);
+  await expect(row.getByText("✓", { exact: true })).toBeVisible();
 });

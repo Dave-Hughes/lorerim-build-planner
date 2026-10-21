@@ -6,6 +6,7 @@ import { EditFrameProvider } from "@/components/editor/edit-bar";
 import { EditPlaythrough, type EditData } from "@/components/playthrough/edit-playthrough";
 import { editFrameForRun } from "@/lib/edit/frame";
 import { docText } from "@/lib/guide/doc";
+import { standLine } from "@/lib/playthroughs/view";
 import { playthroughsOn } from "@/lib/features";
 import { questLinkables } from "@/lib/playthroughs/links";
 import { getPlaythrough, myBuildChoices } from "@/lib/playthroughs/queries";
@@ -36,6 +37,16 @@ export async function RunEdit({ id, act }: { id: string; act?: string }) {
     taleTitle: p.taleTitle ?? "",
     taleLine: p.taleLine ?? "",
     builds,
+    stand: (() => {
+      const snap = p.snapshot;
+      const keys = p.view.acts.flatMap((a) => a.objectives.flatMap((o) => (o.reach ? [o.reach.key] : [])));
+      return {
+        line: standLine(snap),
+        initial: { level: snap?.level ?? null, day: snap?.day ?? null, place: snap?.place ?? "", skills: snap?.skills ?? {}, counts: snap?.counts ?? {} },
+        skills: [...new Set(keys.filter((k) => k.startsWith("skill:")).map((k) => k.slice(6)))],
+        counts: [...new Set(keys.filter((k) => k.startsWith("count:")).map((k) => k.slice(6)))],
+      };
+    })(),
     acts: p.view.acts.map((a) => ({
       id: a.id,
       n: a.n,

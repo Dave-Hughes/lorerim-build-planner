@@ -2,8 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
-import type { BuildVisibility } from "@/lib/builds/validate";
-import { answer, enterByHand, saveDetails, tick } from "@/lib/playthroughs/actions";
+import { answer, enterByHand, tick } from "@/lib/playthroughs/actions";
 import type { ObjectiveStatus } from "@/lib/playthroughs/types";
 import s from "./play.module.css";
 
@@ -54,37 +53,12 @@ export function TickBox({ id, objectiveId, done, label }: { id: string; objectiv
   );
 }
 
-/** Under way and Later, beside To do, for the owner's own objectives. */
-/** To do, Under way, Later; for a quest the save decides, To do and Done only (WO-111a). */
-export function StatusPick({ id, objectiveId, status, save = false }: { id: string; objectiveId: number; status: ObjectiveStatus; save?: boolean }) {
-  const { pending, go } = useAction();
-  return (
-    <select
-      className={s.st}
-      aria-label="Status"
-      value={save || status === "done" ? "todo" : status}
-      disabled={pending}
-      onChange={(e) => go(() => tick(id, objectiveId, e.target.value as ObjectiveStatus))}
-      style={{ background: "none", border: 0, color: "inherit", font: "inherit", cursor: "pointer" }}
-    >
-      <option value="todo">To do</option>
-      {save ? (
-        <option value="done">Done</option>
-      ) : (
-        <>
-          <option value="doing">Under way</option>
-          <option value="later">Later</option>
-        </>
-      )}
-    </select>
-  );
-}
-
+/** Accept and Skip on a suggested objective, for the owner only, quiet (WO-118). */
 export function Answer({ id, objectiveId }: { id: string; objectiveId: number }) {
   const { pending, error, go } = useAction();
   return (
     <span className={s.answer}>
-      <button type="button" className={`btn btn-sm ${s.btnP}`} disabled={pending} onClick={() => go(() => answer(id, objectiveId, true))}>
+      <button type="button" className="btn btn-sm" disabled={pending} onClick={() => go(() => answer(id, objectiveId, true))}>
         Accept
       </button>
       <button type="button" className="btn btn-sm" disabled={pending} onClick={() => go(() => answer(id, objectiveId, false))}>
@@ -175,46 +149,5 @@ export function HandEntry({ id, initial, skills, counts }: { id: string; initial
         )}
       </div>
     </form>
-  );
-}
-
-const VIS: { v: BuildVisibility; label: string }[] = [
-  { v: "private", label: "Private" },
-  { v: "unlisted", label: "Link only" },
-  { v: "public", label: "Listed" },
-];
-
-export function Visibility({ id, initial }: { id: string; initial: BuildVisibility }) {
-  const [v, setV] = useState(initial);
-  const { pending, error, go } = useAction();
-  return (
-    <>
-      <div className={s.vis} role="group" aria-label="Who can see it">
-        {VIS.map((o) => (
-          <button
-            key={o.v}
-            type="button"
-            aria-pressed={v === o.v}
-            disabled={pending}
-            onClick={() => {
-              const before = v;
-              setV(o.v);
-              go(async () => {
-                const r = await saveDetails(id, { visibility: o.v });
-                if (!r.ok) setV(before);
-                return r;
-              });
-            }}
-          >
-            {o.label}
-          </button>
-        ))}
-      </div>
-      {error && (
-        <span role="alert" className={s.error}>
-          {error}
-        </span>
-      )}
-    </>
   );
 }

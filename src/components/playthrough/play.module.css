@@ -159,7 +159,8 @@
   line-height: 1;
 }
 .h2s {
-  font-size: 22px;
+  font-size: 16px;
+  color: var(--soft);
 }
 .head {
   display: flex;
@@ -200,47 +201,6 @@
 }
 
 /* Where you stand. */
-.stand {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.cells {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  border: 1px solid var(--rule);
-}
-.cell {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 16px 18px;
-  border-right: 1px solid var(--rule);
-}
-.cell:last-child {
-  border-right: 0;
-}
-.cell b {
-  font-family: var(--font-title);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--muted);
-}
-.cell span {
-  font-size: 19px;
-  font-variant-numeric: tabular-nums;
-}
-.cell small {
-  color: var(--muted);
-  font-size: 13px;
-}
-.empty {
-  border: 1px solid var(--rule);
-  padding: 16px 18px;
-  color: var(--soft);
-}
 
 /* The hand-entry form. */
 .form {
@@ -274,8 +234,9 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr) 360px;
-  gap: 32px;
+  /* The PlayCalm board (WO-118): the acts at 240, the act up to 900, nothing on the right. */
+  grid-template-columns: 240px minmax(0, 900px);
+  gap: 56px;
   align-items: start;
 }
 .col {
@@ -292,62 +253,50 @@
 }
 .act {
   display: grid;
-  grid-template-columns: 40px minmax(0, 1fr) auto;
-  gap: 4px 14px;
-  align-items: start;
-  padding: 14px 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 12px;
+  align-items: baseline;
+  padding: 11px 0;
   border-bottom: 1px solid var(--rule-soft);
   color: inherit;
   text-decoration: none;
 }
-.actN {
-  display: inline-grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  box-sizing: border-box;
-  border: 1px solid var(--rule-strong);
-  color: var(--muted);
-  font-family: var(--font-title);
-  font-weight: 700;
-  font-size: 16px;
+/* The act being read is open: its name and number in ember, its levels and place, a thin bar. */
+.actOpenRow {
+  padding: 12px 0 14px;
 }
-.actNow .actN {
-  border-color: var(--ember);
+.actName {
+  color: var(--soft);
+}
+.actNow .actName {
   color: var(--ember);
-}
-.actDone .actN {
-  background: var(--stamina);
-  border-color: var(--stamina);
-  color: var(--on-ember);
-}
-.act h3 {
-  margin: 3px 0 0;
-  font-size: 17px;
   font-weight: 600;
+}
+.act:hover .actName {
   color: var(--text);
 }
-.actLater h3 {
+.actNow:hover .actName {
+  color: var(--ember);
+}
+.actDone .actName {
   color: var(--muted);
-  font-weight: 500;
 }
 .actWhere {
-  grid-column: 2;
+  grid-column: 1 / -1;
   font-size: 14px;
   color: var(--muted);
 }
 .actCnt {
-  padding-top: 5px;
   font-size: 14px;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 .bar {
-  grid-column: 2 / -1;
+  grid-column: 1 / -1;
   height: 3px;
   background: var(--rule-soft);
-  margin-top: 4px;
+  margin-top: 6px;
 }
 .bar i {
   display: block;
@@ -356,6 +305,12 @@
 }
 .actDone .bar i {
   background: var(--stamina);
+}
+
+/* Where you stand (WO-118): one quiet line over the act. */
+.standLine {
+  font-size: 14px;
+  color: var(--muted);
 }
 
 .panel {
@@ -372,6 +327,10 @@
 .rule {
   font-size: 15px;
   color: var(--soft);
+}
+.rule b {
+  font-weight: 600;
+  color: var(--text);
 }
 
 /* Objectives. */
@@ -491,11 +450,6 @@ button.box:hover {
   font-size: 12px;
   font-weight: 600;
   vertical-align: 3px;
-}
-.btnP {
-  background: var(--ember);
-  color: var(--on-ember);
-  border-color: var(--ember);
 }
 
 /* An act's story card (WO-116): the act's picture, its name, the chapter's first lines, Read Act I. */
@@ -656,57 +610,6 @@ a.mark:hover {
 }
 
 /* The right column. */
-.side {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.who {
-  display: grid;
-  grid-template-columns: 110px minmax(0, 1fr);
-  gap: 10px 20px;
-  margin: 0;
-}
-.who dt {
-  font-family: var(--font-title);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--muted);
-  padding-top: 2px;
-}
-.who dd {
-  margin: 0;
-  font-size: 16px;
-}
-.vis {
-  display: flex;
-  border: 1px solid var(--rule-strong);
-}
-.vis button {
-  flex: 1;
-  display: grid;
-  place-items: center;
-  height: 36px;
-  font-family: var(--font-title);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--muted);
-  background: none;
-  border: 0;
-  border-right: 1px solid var(--rule-strong);
-  cursor: pointer;
-}
-.vis button:last-child {
-  border-right: 0;
-}
-.vis button[aria-pressed="true"] {
-  background: var(--ember);
-  color: var(--on-ember);
-}
 
 /* My playthroughs and /playthroughs: cards. */
 .cards {
@@ -749,10 +652,8 @@ a.mark:hover {
 
 @media (max-width: 1180px) {
   .grid {
-    grid-template-columns: 260px minmax(0, 1fr);
-  }
-  .side {
-    grid-column: 1 / -1;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 32px;
   }
 }
 @media (max-width: 760px) {
@@ -762,15 +663,6 @@ a.mark:hover {
   /* On a phone the act comes first, its story card at the top, as the CharacterReaderPhone board (WO-116). */
   .actCol {
     order: -1;
-  }
-  .cells {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .cell:nth-child(2) {
-    border-right: 0;
-  }
-  .cell:nth-child(-n + 2) {
-    border-bottom: 1px solid var(--rule);
   }
   .name {
     font-size: 38px;

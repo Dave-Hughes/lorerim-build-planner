@@ -68,6 +68,8 @@ export interface EditData {
   acts: EditAct[];
   chapters: EditChapter[];
   builds: { id: string; name: string }[];
+  /** Where you stand (WO-118): its one line on Play, and what Enter it by hand starts from. */
+  stand: { line: string | null; initial: { level: number | null; day: number | null; place: string; skills: Record<string, number>; counts: Record<string, number> }; skills: string[]; counts: string[] };
 }
 
 export type Result = { ok: true } | { ok: false; error: string };
