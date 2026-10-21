@@ -66,6 +66,8 @@ export const saveChapter = async (id: string, chapterId: number, input: { title?
 export const removeChapter = async (id: string, chapterId: number) => run(id, (u) => w.removeChapter(u, id, chapterId));
 export const moveChapter = async (id: string, chapterId: number, to: "up" | "down" | number) => run(id, (u) => w.moveChapter(u, id, chapterId, to));
 export const saveChapterImage = async (id: string, chapterId: number, url: string | null) => run(id, (u) => w.setChapterImage(u, id, chapterId, url));
+export const saveChapterFocus = async (id: string, chapterId: number, focus: { x: number; y: number } | null) => run(id, (u) => w.setChapterFocus(u, id, chapterId, focus));
+export const saveActFocus = async (id: string, actId: number, focus: { x: number; y: number } | null) => run(id, (u) => w.setActFocus(u, id, actId, focus));
 export const saveTalePicture = async (id: string, url: string | null) => run(id, (u) => w.setTalePicture(u, id, url));
 /** An act's chapter, made on its first word (WO-117). */
 export const writeActChapter = async (id: string, actId: number, input: { title?: string; doc?: unknown }) => run(id, (u) => w.writeActChapter(u, id, actId, input));

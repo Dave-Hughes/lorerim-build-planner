@@ -178,7 +178,7 @@ function Reader({ stops, at, back, runId, title, slideIn, leaving, onClose, onGo
         <header className={`${s.plate} ${stop.plate ? "" : s.plateNone}`}>
           {stop.plate && (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={stop.plate} alt="" className={s.plateImage} />
+            <img src={stop.plate} alt="" className={s.plateImage} style={stop.plateFocus ? { objectPosition: `${stop.plateFocus.x}% ${stop.plateFocus.y}%` } : undefined} />
           )}
           <div className={s.plateFade} aria-hidden="true" />
           <div className={s.words}>

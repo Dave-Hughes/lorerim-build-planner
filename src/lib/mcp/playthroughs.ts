@@ -461,10 +461,11 @@ export async function finishDraft(p: Player, input: { playthrough: string }) {
   if (!pt.view.acts.length) issues.push("The playthrough has no acts yet.");
   for (const a of pt.view.acts) if (!a.objectives.length) issues.push(`Act ${a.n} ${a.name} has no objective.`);
   for (const c of pt.view.chapters) if (c.kind === "beat" && c.opensAfter === null) issues.push(`The chapter ${c.title} unlocks from an objective that's gone: set unlocksWhen again, or "none".`);
-  // Assistants can't add pictures (WO-117): the player adds them from this link.
-  const addPictures = pt.buildId ? `${p.origin}/b/${pt.buildId}/setup?step=name&pictures=1` : link(p, pt.id, "/edit/play?pictures=1");
-  if (issues.length) return { ready: false, issues, addPictures };
-  return { ready: true, link: link(p, pt.id), addPictures, message: `Ready: open ${link(p, pt.id)} to read it, tick what's done and publish. Images are the player's to add: ${addPictures}` };
+  // Assistants can't add images (WO-118): the player adds a cover from this link, at the cover in Details;
+  // the story's images are theirs too, in its Story tab.
+  const addCover = pt.buildId ? `${p.origin}/b/${pt.buildId}/setup?step=name#cover` : null;
+  if (issues.length) return { ready: false, issues, addCover };
+  return { ready: true, link: link(p, pt.id), addCover, message: `Ready: open ${link(p, pt.id)} to read it, tick what's done and publish.${addCover ? ` The cover is the player's to add: ${addCover}` : ""}` };
 }
 
 /**

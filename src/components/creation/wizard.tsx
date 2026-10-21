@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ImageSlot } from "@/components/ui/image-slot";
 import { InfoTip } from "@/components/ui/info-tip";
 import { MAX_TAGS, TAGS, TAG_GROUPS, suggestedTags } from "@/lib/builds/tags";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -1136,8 +1137,7 @@ function CoverField({
 }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const upload = async (file: File | undefined) => {
-    if (!file) return;
+  const upload = async (file: File) => {
     setBusy(true);
     setError(null);
     try {
@@ -1161,51 +1161,28 @@ function CoverField({
   return (
     <div ref={box} id="cover" className={`field ${styles.cover}`}>
       <span className="label">
-        Cover image <InfoTip label="About the cover image" text="Shown full width above the build. Click the image to choose the part that stays in view. PNG, JPEG, WebP or GIF, up to 4 MB." />
+        Cover <InfoTip label="About the cover" text="The image across the top of the page. Position chooses the part that stays in view. PNG, JPEG, WebP or GIF, up to 4 MB." />
       </span>
-      {url && (
-        <>
-          {/* The whole image: click where the hero should centre it (a face, say). */}
-          <button
-            type="button"
-            className={styles.coverFocusPick}
-            aria-label="Set where the cover centres: click a point on the image"
-            onClick={(e) => {
-              const r = e.currentTarget.getBoundingClientRect();
-              const pct = (v: number) => Math.round(Math.min(100, Math.max(0, v)));
-              onFocus({ x: pct(((e.clientX - r.left) / r.width) * 100), y: pct(((e.clientY - r.top) / r.height) * 100) });
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={url} alt="" className={styles.coverPreview} />
-            <span className={styles.coverFocusMark} style={{ left: `${focus?.x ?? 50}%`, top: `${focus?.y ?? 50}%` }} aria-hidden="true" />
-          </button>
-          {/* The crop the hero shows: its band's proportions, centred on the marker. */}
-          <span className={styles.coverCropWrap}>
-            <span className="sub-label">On the build page</span>
-            <span
-              className={styles.coverCrop}
-              style={{ backgroundImage: `url("${url}")`, backgroundPosition: `${focus?.x ?? 50}% ${focus?.y ?? 50}%` }}
-              aria-hidden="true"
-            />
-          </span>
-        </>
+      {/* Shown once, cropped as the hero crops it, with Change, Position and Remove on it (WO-118). */}
+      {signedIn ? (
+        <div className={`${styles.coverFrame} ${url ? "" : styles.coverFrameEmpty}`}>
+          <ImageSlot
+            url={url || null}
+            focus={focus}
+            label="The cover"
+            busy={busy}
+            addLabel="Add a cover"
+            onFile={(file) => void upload(file)}
+            onRemove={() => onChange("")}
+            onFocus={onFocus}
+            imageClassName={styles.coverImage}
+            toolsClassName={styles.coverTools}
+          />
+        </div>
+      ) : (
+        <span className="muted">Sign in to upload one, or paste a link below.</span>
       )}
-      <div className={styles.coverActions}>
-        {signedIn ? (
-          <label className={`btn btn-sm ${busy ? styles.coverBusy : ""}`}>
-            {busy ? "Uploading…" : url ? "Upload another" : "Upload an image"}
-            <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" className="sr-only" disabled={busy} onChange={(e) => void upload(e.target.files?.[0])} />
-          </label>
-        ) : (
-          <span className="muted">Sign in to upload one, or paste a link below.</span>
-        )}
-        {url && (
-          <button type="button" className="btn btn-sm btn-quiet" onClick={() => onChange("")}>
-            Remove
-          </button>
-        )}
-      </div>
+      {url && <span className="muted" style={{ fontSize: 13 }}>Shown as it sits in the page&apos;s hero.</span>}
       {error && (
         <span role="alert" className="bad">
           {error}

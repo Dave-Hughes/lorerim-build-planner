@@ -3,22 +3,21 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { InfoTip } from "@/components/ui/info-tip";
 import type { PictureGroup, PictureSlot } from "@/lib/edit/frame";
 import * as act from "@/lib/playthroughs/actions";
 import f from "./edit-frame.module.css";
 
 /**
- * Pictures (WO-117), as the EditPictures board: in the edit band on every edit tab, "Pictures 3 of 16
- * ▾" opens a panel on the right listing every place a picture can go, grouped and in story order:
- * the cover, the title page and each chapter, each act's card and its entries and beats. Add uploads
- * straight into that place through the same check as every upload. × or Esc closes it; ?pictures=1
- * opens edit with it open (an assistant's addPictures link).
+ * Images (WO-118), on the Story tab only: "Images ▾" in its top bar opens a panel on the right listing
+ * every place in the story an image can go, in story order: the title page and each chapter, grouped
+ * as the Contents are. A row never moves when it's filled. Add uploads straight into that place
+ * through the same check as every upload. × or Esc closes it; ?images=1 opens the tab with it open.
+ * The cover stays in Details, and act images on the act cards in Play.
  */
-export function Pictures({ runId, groups }: { runId: string; groups: PictureGroup[] }) {
+export function Images({ runId, groups }: { runId: string; groups: PictureGroup[] }) {
   const search = useSearchParams();
-  const [open, setOpen] = useState(() => search.get("pictures") === "1");
-  const all = groups.flatMap((g) => g.slots);
-  const filled = all.filter((x) => x.url).length;
+  const [open, setOpen] = useState(() => search.get("images") === "1");
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
@@ -28,21 +27,22 @@ export function Pictures({ runId, groups }: { runId: string; groups: PictureGrou
   return (
     <>
       <button type="button" className={`btn btn-sm ${f.picturesButton}`} aria-expanded={open} onClick={() => setOpen(!open)}>
-        Images {filled} of {all.length} ▾
+        Images ▾
       </button>
       {open && (
         <aside className={f.pictures} role="dialog" aria-label="Images">
           <span className={f.picturesHead}>
             <span className={f.picturesTitle}>
-              Images {filled} of {all.length}
+              Images{" "}
+              <InfoTip label="What's this" text="Every place in this character's story that can show an image. All of them are optional; an empty one uses the act's image or the cover." />
             </span>
             <button type="button" className="btn btn-sm" onClick={() => setOpen(false)}>
               × Close
             </button>
           </span>
-          {groups.map((g) => (
-            <div key={g.label} className={f.picturesGroup}>
-              <span className={f.picturesGroupHead}>{g.label}</span>
+          {groups.map((g, i) => (
+            <div key={g.label ?? i} className={f.picturesGroup}>
+              {g.label && <span className={f.picturesGroupHead}>{g.label}</span>}
               {g.slots.map((slot) => (
                 <PictureRow key={slot.key} runId={runId} slot={slot} />
               ))}
@@ -67,23 +67,14 @@ function PictureRow({ runId, slot }: { runId: string; slot: PictureSlot }) {
     setError(null);
     const form = new FormData();
     form.append("file", file);
-    // The cover is the build's, uploaded as Set up uploads it; the rest are the run's images.
-    const res = await fetch(slot.to.kind === "cover" ? "/api/covers" : `/api/playthroughs/${runId}/images`, { method: "POST", body: form }).catch(() => null);
+    const res = await fetch(`/api/playthroughs/${runId}/images`, { method: "POST", body: form }).catch(() => null);
     const body = (await res?.json().catch(() => ({}))) as { url?: string; error?: string } | undefined;
     if (!body?.url) {
       setBusy(false);
       return setError(body?.error ?? "The upload didn't finish. Try again.");
     }
-    const url = body.url;
     const to = slot.to;
-    const r =
-      to.kind === "cover"
-        ? await act.saveCover(runId, url)
-        : to.kind === "title"
-          ? await act.saveTalePicture(runId, url)
-          : to.kind === "act"
-            ? await act.saveActImage(runId, to.id, url)
-            : await act.saveChapterImage(runId, to.id, url);
+    const r = to.kind === "title" ? await act.saveTalePicture(runId, body.url) : await act.saveChapterImage(runId, to.id, body.url);
     setBusy(false);
     if (r.ok) router.refresh();
     else setError(r.error);

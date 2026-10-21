@@ -55,10 +55,10 @@ export async function RunStoryEdit({ id, page: key }: { id: string; page: string
 
   let page: WriterPage;
   if (key === "title") {
-    page = { key, kind: "title", where: "The title page", kicker: null, title: p.taleTitle ?? "", titlePlaceholder: p.name, line: p.taleLine ?? "", lineLabel: "A line under the title", plate: p.coverImageUrl, doc: null, chapterId: null, actId: null, unlocks: null, fromText: null };
+    page = { key, kind: "title", where: "The title page", kicker: null, title: p.taleTitle ?? "", titlePlaceholder: p.name, line: p.taleLine ?? "", lineLabel: "A line under the title", plate: p.coverImageUrl, plateFocus: null, doc: null, chapterId: null, actId: null, unlocks: null, fromText: null };
   } else if (actKey) {
     const a = v.acts.find((x) => x.id === Number(actKey[1]))!;
-    page = { key, kind: "chapter", where: `Act ${a.n}`, kicker: `Act ${a.n}`, title: a.name, titlePlaceholder: a.name, line: null, lineLabel: null, plate: null, doc: emptyDoc(), chapterId: null, actId: a.id, unlocks: null, fromText: null };
+    page = { key, kind: "chapter", where: `Act ${a.n}`, kicker: `Act ${a.n}`, title: a.name, titlePlaceholder: a.name, line: null, lineLabel: null, plate: null, plateFocus: null, doc: emptyDoc(), chapterId: null, actId: a.id, unlocks: null, fromText: null };
   } else {
     const c = v.chapters.find((x) => String(x.id) === key)!;
     const a = c.actId !== null ? v.acts.find((x) => x.id === c.actId) : undefined;
@@ -74,6 +74,7 @@ export async function RunStoryEdit({ id, page: key }: { id: string; page: string
       line: c.kind === "entry" && c.fromSave ? c.fromSave : null,
       lineLabel: c.kind === "entry" && c.fromSave ? "The save it was written from" : null,
       plate: c.imageUrl ?? null,
+      plateFocus: c.imageFocus ?? null,
       doc: c.doc,
       chapterId: c.id,
       actId: a?.id ?? null,

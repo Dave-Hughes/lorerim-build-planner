@@ -335,13 +335,13 @@ export function BuildView({ build, isOwner, signedIn, initialLevel, initialTab =
             <section className={styles.nudge} aria-labelledby="nudge-title">
               <span className={styles.nudgeText}>
                 <h2 id="nudge-title" className={styles.nudgeTitle}>
-                  No images yet
+                  No cover yet
                 </h2>
-                <span>Assistants can&apos;t add images. Add a cover, and images for the story and the acts, from the planner.</span>
+                <span>Assistants can&apos;t add images. Add a cover from the planner.</span>
               </span>
               <span className={styles.nudgeSide}>
                 <Link href={nudge} className="btn">
-                  Add images
+                  Add a cover
                 </Link>
                 <span className="muted">Only you see this.</span>
               </span>

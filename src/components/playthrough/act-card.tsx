@@ -29,7 +29,7 @@ const readKey = (key: string) => {
   }
 };
 
-export function ActCard({ runId, chapterId, n, name, picture, lines, length, read, isOwner }: { runId: string; chapterId: number; n: string; name: string; picture: string | null; lines: string; length: string; read: boolean; isOwner: boolean }) {
+export function ActCard({ runId, chapterId, n, name, picture, focus, lines, length, read, isOwner }: { runId: string; chapterId: number; n: string; name: string; picture: string | null; focus?: { x: number; y: number } | null; lines: string; length: string; read: boolean; isOwner: boolean }) {
   const key = `play:act-read:${runId}:${chapterId}`;
   const here = useSyncExternalStore(
     subscribe,
@@ -68,7 +68,7 @@ export function ActCard({ runId, chapterId, n, name, picture, lines, length, rea
     <div className={s.actCard}>
       {picture && (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={picture} alt="" className={s.actCardImage} />
+        <img src={picture} alt="" className={s.actCardImage} style={focus ? { objectPosition: `${focus.x}% ${focus.y}%` } : undefined} />
       )}
       <div className={s.actCardFade} aria-hidden="true" />
       <div className={s.actCardIn}>

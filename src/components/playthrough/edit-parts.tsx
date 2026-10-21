@@ -37,9 +37,10 @@ export interface EditAct {
   place: string;
   goal: string;
   standingRule: string | null;
-  /** The act's picture on its story card (WO-116). */
+  /** The act's image on its story card (WO-116), and what stays in view of it (WO-118). */
   imageUrl: string | null;
-  /** The act's own chapter (WO-116), if written. */
+  imageFocus: { x: number; y: number } | null;
+  /** The act's first chapter (WO-118), if written. */
   chapterId: number | null;
   objectives: EditObjective[];
 }

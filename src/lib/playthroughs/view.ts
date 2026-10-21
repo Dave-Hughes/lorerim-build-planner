@@ -18,8 +18,10 @@ export interface ActRow {
   place: string;
   goal: string;
   standingRule: string | null;
-  /** The act's picture (WO-116); none: its chapter's first image, else the cover. */
+  /** The act's image (WO-116); none: its first chapter's, else the cover. */
   imageUrl?: string | null;
+  /** What stays in view of it (WO-118). */
+  imageFocus?: { x: number; y: number } | null;
 }
 export interface ObjectiveRow {
   id: number;
@@ -50,6 +52,8 @@ export interface ChapterRow {
   readAt?: Date | string | null;
   /** Its own plate (WO-117), set where it shows in the Story. */
   imageUrl?: string | null;
+  /** What stays in view of it (WO-118). */
+  imageFocus?: { x: number; y: number } | null;
   doc: GuideDoc;
 }
 export interface SnapshotRow extends SnapshotValues {

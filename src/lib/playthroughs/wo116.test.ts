@@ -80,7 +80,7 @@ describe("the reader's stops (WO-116)", () => {
 describe("the style guide (WO-116)", () => {
   it("says the story is made of chapters (WO-118)", () => {
     expect(styleGuide()).toContain("The story is made of chapters. A chapter sits in the Prologue or in an act; any chapter can unlock when an objective is done. The first chapter of an act opens its card on Play.");
-    // WO-117: the pictures are the player's.
-    expect(styleGuide()).toContain("Assistants can't add pictures. When you finish a draft, give the player the addPictures link so they can add the cover and the story's pictures.");
+    // WO-118: the images are the player's; a draft asks for a cover.
+    expect(styleGuide()).toContain("Assistants can't add images. When you finish a draft, give the player the addCover link; they can add images to the story in its Story tab.");
   });
 });

@@ -1,10 +1,10 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useGameData } from "@/components/game-data";
+import { ImageSlot } from "@/components/ui/image-slot";
 import { InfoTip } from "@/components/ui/info-tip";
 import type { ExtraMention } from "@/lib/guide/mention";
 import * as act from "@/lib/playthroughs/actions";
@@ -146,8 +146,7 @@ function ActCard({ data, a }: { data: EditData; a: EditAct }) {
   const [upError, setUpError] = useState<string | null>(null);
   const chapter = a.chapterId !== null ? data.chapters.find((c) => c.id === a.chapterId) : undefined;
   const story = `/p/${data.id}/edit/story/${chapter ? chapter.id : `act-${a.id}`}`;
-  const upload = async (file: File | undefined) => {
-    if (!file) return;
+  const upload = async (file: File) => {
     setUploading(true);
     setUpError(null);
     const form = new FormData();
@@ -158,20 +157,22 @@ function ActCard({ data, a }: { data: EditData; a: EditAct }) {
     if (body?.url) save(() => act.saveActImage(data.id, a.id, body.url!), true);
     else setUpError(body?.error ?? "The upload didn't finish. Try again.");
   };
-  const picker = (label: string) => (
-    <label className="btn btn-sm" style={{ cursor: "pointer" }}>
-      {uploading ? "Uploading" : label}
-      <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" className="sr-only" onChange={(ev) => void upload(ev.target.files?.[0])} />
-    </label>
-  );
   return (
     <section aria-label={`Act ${a.n}'s card`} className={`${s.card} ${a.imageUrl ? "" : s.cardEmpty}`}>
-      {a.imageUrl && (
-        <>
-          <img src={a.imageUrl} alt="" className={s.cardImage} />
-          <div className={s.cardFade} aria-hidden="true" />
-        </>
-      )}
+      {/* Change, Position and Remove over its image (WO-118), as on every image. */}
+      <ImageSlot
+        url={a.imageUrl}
+        focus={a.imageFocus}
+        label={`Act ${a.n}'s image`}
+        busy={uploading}
+        onFile={(file) => void upload(file)}
+        onRemove={() => save(() => act.saveActImage(data.id, a.id, null), true)}
+        onFocus={(focus) => save(() => act.saveActFocus(data.id, a.id, focus), true)}
+        imageClassName={s.cardImage}
+        toolsClassName={s.cardPicture}
+      >
+        {a.imageUrl && <div className={s.cardFade} aria-hidden="true" />}
+      </ImageSlot>
       <div className={s.cardIn}>
         <span className={s.kicker}>Act {a.n}</span>
         <input
@@ -197,18 +198,6 @@ function ActCard({ data, a }: { data: EditData; a: EditAct }) {
           </span>
         )}
       </div>
-      <span className={`on-image ${s.cardPicture}`}>
-        {a.imageUrl ? (
-          <>
-            {picker("Change the image")}
-            <button type="button" className="btn btn-sm" onClick={() => save(() => act.saveActImage(data.id, a.id, null), true)}>
-              Remove
-            </button>
-          </>
-        ) : (
-          picker("Add an image")
-        )}
-      </span>
     </section>
   );
 }

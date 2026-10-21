@@ -60,14 +60,13 @@ export async function CharacterPage({
   // The reader (WO-116): a character's tale is its run's; a build alone's, its Story.
   const told = run ? null : storyOf(shownDocs);
   const stops = run
-    ? runStops({ id: run.id, taleLine: run.taleLine, view: run.view, cover, isOwner: viewerId === run.ownerId, titlePicture: run.coverImageUrl })
+    ? runStops({ id: run.id, taleLine: run.taleLine, view: run.view, cover, coverFocus: build.plan.coverFocus ?? null, isOwner: viewerId === run.ownerId, titlePicture: run.coverImageUrl })
     : told
       ? [storyStop({ id, title: told.title, line: told.line, doc: told.doc, cover, isOwner })]
       : [];
   const back = run ? { href: `/p/${run.id}`, label: "Back to the quest log" } : { href: `/b/${id}`, label: "Back to the build" };
-  // The owner's nudge (WO-117): a character with no cover and no story pictures, often one an assistant drafted.
-  const storyPictures = run ? !!run.coverImageUrl || run.view.acts.some((a) => a.imageUrl) || run.view.chapters.some((c) => c.imageUrl || imageUrls(c.doc).size > 0) : true;
-  const nudge = run && isOwner && !build.coverImageUrl && !storyPictures ? `/b/${id}/setup?step=name&pictures=1` : null;
+  // A draft asks for one thing (WO-118): the owner's box on a drafted character with no cover.
+  const nudge = run && isOwner && run.draftedBy && !build.coverImageUrl ? `/b/${id}/setup?step=name#cover` : null;
   return (
     <ReaderProvider stops={stops} back={back} runId={run?.id ?? null} title={run ? run.taleTitle || run.name : (told?.title ?? build.name)}>
     <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>

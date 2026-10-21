@@ -7,15 +7,16 @@ import { docWords, isEmptyDoc, storyOf } from "@/lib/guide/doc";
 import { getGuide } from "@/lib/guide/queries";
 import { getPlaythrough, runOfBuild, type PlaythroughRecord } from "@/lib/playthroughs/queries";
 
-/** A place a picture can go: the cover, the title page, a chapter's plate, an act's card. */
+/** A place in the story an image can go (WO-118): the title page or a chapter's plate. */
 export interface PictureSlot {
   key: string;
   label: string;
   url: string | null;
-  to: { kind: "cover" } | { kind: "title" } | { kind: "chapter"; id: number } | { kind: "act"; id: number };
+  to: { kind: "title" } | { kind: "chapter"; id: number };
 }
 export interface PictureGroup {
-  label: string;
+  /** "Prologue", "Act I The Sister's House"; none for the title page. */
+  label: string | null;
   slots: PictureSlot[];
 }
 
@@ -45,7 +46,7 @@ export interface EditFrameData {
     acts: number;
     objectives: number;
     chapters: number;
-    /** Every place a picture can go (WO-117), in story order, empty ones first in each group. */
+    /** Every place in the story an image can go (WO-118), in story order; filling one never moves it. */
     pictures: PictureGroup[];
   } | null;
   /** The hero's words: the character's (the run's) or the build's. */
@@ -73,24 +74,18 @@ function buildPart(b: BuildRecord, guide: Awaited<ReturnType<typeof getGuide>>):
   };
 }
 
-function picturesOf(p: PlaythroughRecord, cover: string | null, hasBuild: boolean): PictureGroup[] {
+function picturesOf(p: PlaythroughRecord): PictureGroup[] {
   const v = p.view;
-  const empties = (slots: PictureSlot[]) => [...slots.filter((x) => !x.url), ...slots.filter((x) => x.url)];
   const chapter = (c: (typeof v.chapters)[number]): PictureSlot => ({ key: `c${c.id}`, label: c.title, url: c.imageUrl ?? null, to: { kind: "chapter", id: c.id } });
-  return [
-    ...(hasBuild ? [{ label: "The page", slots: [{ key: "cover", label: "The cover", url: cover, to: { kind: "cover" as const } }] }] : []),
-    { label: "The story", slots: empties([{ key: "title", label: "The title page", url: p.coverImageUrl, to: { kind: "title" } }, ...v.chapters.filter((c) => c.actId === null).map(chapter)]) },
-    ...v.acts.map((a) => ({
-      label: `Act ${a.n}`,
-      slots: empties([
-        { key: `a${a.id}`, label: `Act ${a.n}'s card`, url: a.imageUrl ?? null, to: { kind: "act" as const, id: a.id } },
-        ...v.chapters.filter((c) => c.actId === a.id).map(chapter),
-      ]),
-    })),
+  const groups: PictureGroup[] = [
+    { label: null, slots: [{ key: "title", label: "The title page", url: p.coverImageUrl, to: { kind: "title" } }] },
+    { label: "Prologue", slots: v.chapters.filter((c) => c.actId === null).map(chapter) },
+    ...v.acts.map((a) => ({ label: `Act ${a.n} ${a.name}`, slots: v.chapters.filter((c) => c.actId === a.id).map(chapter) })),
   ];
+  return groups.filter((g) => g.slots.length);
 }
 
-function runPart(p: PlaythroughRecord, cover: string | null, hasBuild: boolean): NonNullable<EditFrameData["run"]> {
+function runPart(p: PlaythroughRecord): NonNullable<EditFrameData["run"]> {
   const v = p.view;
   return {
     id: p.id,
@@ -99,14 +94,14 @@ function runPart(p: PlaythroughRecord, cover: string | null, hasBuild: boolean):
     acts: v.acts.length,
     objectives: v.acts.reduce((n, a) => n + a.objectives.length, 0),
     chapters: v.chapters.length,
-    pictures: picturesOf(p, cover, hasBuild),
+    pictures: picturesOf(p),
   };
 }
 
 function frame(b: BuildRecord | null, guide: Awaited<ReturnType<typeof getGuide>> | null, p: PlaythroughRecord | null): EditFrameData {
   return {
     build: b && guide ? buildPart(b, guide) : null,
-    run: p ? runPart(p, b?.coverImageUrl ?? null, !!b) : null,
+    run: p ? runPart(p) : null,
     name: p?.name ?? b?.name ?? "",
     line: p ? p.line || b?.description || "" : (b?.description ?? ""),
     author: p?.author.name ?? b?.author.name ?? "",

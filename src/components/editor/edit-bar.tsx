@@ -14,7 +14,6 @@ import type { EditFrameData } from "@/lib/edit/frame";
 import { saveDetails } from "@/lib/playthroughs/actions";
 import styles from "./edit-bar.module.css";
 import f from "./edit-frame.module.css";
-import { Pictures } from "./pictures-panel";
 
 export type EditPage = "setup" | "levels" | "play" | "guide" | "story";
 
@@ -222,6 +221,9 @@ export interface SaveState {
 
 const FrameContext = createContext<EditFrameData | null>(null);
 
+/** The edit frame's data, from the route's server component (WO-117): the hero, the tabs, the Story's images. */
+export const useEditFrame = () => useContext(FrameContext);
+
 /** The edit frame's data (WO-117), from the route's server component: the hero and the tabs. */
 export function EditFrameProvider({ data, children }: { data: EditFrameData; children: React.ReactNode }) {
   return <FrameContext.Provider value={data}>{children}</FrameContext.Provider>;
@@ -331,7 +333,6 @@ export function EditBar({
           <span className={f.bandRight}>
             {todo && <span className={styles.todo}>{todo}</span>}
             <SaveLine save={save} />
-            {run && <Pictures runId={run.id} groups={run.pictures} />}
             <VisibilityMenu
               key={onRun ? `r${run!.visibility}` : `b${visibility}`}
               initial={onRun ? run!.visibility : visibility}

@@ -280,7 +280,8 @@ export async function setAct(userId: string, pid: string, actId: number, input: 
 export async function setActImage(userId: string, pid: string, actId: number, url: string | null) {
   const { p, act } = await ownedAct(userId, pid, actId);
   if (url && !isOurImage(url)) fail("Images must be uploaded to the site.");
-  await db().update(schema.playthroughActs).set({ imageUrl: url }).where(eq(schema.playthroughActs.id, act.id));
+  // A new image starts centred.
+  await db().update(schema.playthroughActs).set({ imageUrl: url, imageFocus: null }).where(eq(schema.playthroughActs.id, act.id));
   await touch(p.id);
 }
 
@@ -541,7 +542,29 @@ export async function setChapter(userId: string, pid: string, chapterId: number,
 export async function setChapterImage(userId: string, pid: string, chapterId: number, url: string | null) {
   const { p, c } = await ownedChapter(userId, pid, chapterId);
   if (url && !isOurImage(url)) fail("Images must be uploaded to the site.");
-  await db().update(schema.playthroughChapters).set({ imageUrl: url }).where(eq(schema.playthroughChapters.id, c.id));
+  // A new image starts centred.
+  await db().update(schema.playthroughChapters).set({ imageUrl: url, imageFocus: null }).where(eq(schema.playthroughChapters.id, c.id));
+  await touch(p.id);
+}
+
+/** What stays in view of an image (WO-118): percents across and down, kept whole and in range. */
+function focusOf(f: { x: number; y: number } | null): { x: number; y: number } | null {
+  if (!f) return null;
+  const n = (v: unknown) => (typeof v === "number" && Number.isFinite(v) ? Math.round(Math.min(100, Math.max(0, v))) : fail("A position is two numbers from 0 to 100."));
+  return { x: n(f.x), y: n(f.y) };
+}
+
+/** A chapter's plate, positioned (WO-118). */
+export async function setChapterFocus(userId: string, pid: string, chapterId: number, focus: { x: number; y: number } | null) {
+  const { p, c } = await ownedChapter(userId, pid, chapterId);
+  await db().update(schema.playthroughChapters).set({ imageFocus: focusOf(focus) }).where(eq(schema.playthroughChapters.id, c.id));
+  await touch(p.id);
+}
+
+/** An act's image, positioned (WO-118). */
+export async function setActFocus(userId: string, pid: string, actId: number, focus: { x: number; y: number } | null) {
+  const { p, act } = await ownedAct(userId, pid, actId);
+  await db().update(schema.playthroughActs).set({ imageFocus: focusOf(focus) }).where(eq(schema.playthroughActs.id, act.id));
   await touch(p.id);
 }
 

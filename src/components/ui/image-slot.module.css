@@ -1,0 +1,22 @@
+/* Position (WO-118): the frame takes the drag, outlined, with what to do in the middle. */
+.placing {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--soft);
+  cursor: grab;
+  touch-action: none;
+}
+.placing:active {
+  cursor: grabbing;
+}
+.placingNote {
+  padding: 10px 16px;
+  background: rgba(11, 15, 20, 0.88);
+  border: 1px solid var(--soft);
+  color: var(--text);
+  font-size: 15px;
+  pointer-events: none;
+}

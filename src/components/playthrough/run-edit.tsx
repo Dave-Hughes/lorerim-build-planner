@@ -46,6 +46,7 @@ export async function RunEdit({ id, act }: { id: string; act?: string }) {
       goal: a.goal,
       standingRule: a.standingRule,
       imageUrl: a.imageUrl ?? null,
+      imageFocus: a.imageFocus ?? null,
       chapterId: a.chapter,
       objectives: a.objectives.map((o) => ({
         id: o.id,

@@ -134,6 +134,11 @@
   border-bottom: 1px solid var(--rule-soft);
   font-size: 14px;
 }
+.stripRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 .seg {
   display: inline-flex;
   border: 1px solid var(--rule-strong);

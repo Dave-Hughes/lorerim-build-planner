@@ -790,66 +790,37 @@
   flex-direction: column;
   gap: 8px;
 }
-.coverFocusPick {
+/* The cover as the hero crops it (WO-118): the DetailsCalm board's 860 by 250. */
+.coverFrame {
   position: relative;
-  display: inline-block;
-  align-self: flex-start;
-  max-width: 100%;
-  padding: 0;
-  border: 1px solid var(--rule);
-  background: none;
-  cursor: crosshair;
-  line-height: 0;
-}
-.coverFocusPick:focus-visible {
-  outline: 2px solid var(--ember);
-  outline-offset: 2px;
-}
-.coverPreview {
-  display: block;
-  max-width: 100%;
-  max-height: 260px;
-}
-.coverFocusMark {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  margin: -9px 0 0 -9px;
-  border-radius: 50%;
-  border: 2px solid var(--ember);
-  box-shadow: 0 0 0 2px rgba(14, 19, 25, 0.8);
-  pointer-events: none;
-}
-.coverCropWrap {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  max-width: 420px;
-}
-/* The hero's band: about 2.4 wide to 1 tall (the page's width over the hero's 560px). */
-.coverCrop {
-  display: block;
   width: 100%;
-  aspect-ratio: 2.4;
-  background-size: cover;
+  aspect-ratio: 860 / 250;
+  overflow: hidden;
   border: 1px solid var(--rule);
+  background: #0b0f14;
 }
-.coverActions {
+.coverFrameEmpty {
+  border-style: dashed;
+  border-color: var(--rule-strong);
+}
+.coverImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.coverTools {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   gap: 10px;
 }
-.coverActions label {
-  cursor: pointer;
-}
-.coverActions label:focus-within {
-  outline: 2px solid var(--ember);
-  outline-offset: 2px;
-}
-.coverBusy {
-  opacity: 0.7;
-  cursor: progress;
+.coverFrameEmpty .coverTools {
+  inset: 0;
+  justify-content: center;
+  align-items: center;
 }
 .coverLink {
   display: flex;

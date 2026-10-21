@@ -6,10 +6,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { StoryText } from "@/components/build/story-view";
-import { EditBar, type SaveState } from "@/components/editor/edit-bar";
+import { EditBar, useEditFrame, type SaveState } from "@/components/editor/edit-bar";
 import { GuideEditor } from "@/components/guide/guide-editor";
 import { insertImages } from "@/components/guide/image-upload";
 import { saveKeptGuides, type GuideSaveStatus } from "@/components/guide/use-guide-autosave";
+import { Images } from "@/components/editor/images-panel";
+import { ImageSlot, focusPosition, type ImageFocus } from "@/components/ui/image-slot";
 import { InfoTip } from "@/components/ui/info-tip";
 import { saveGuideSection } from "@/lib/builds/actions";
 import type { BuildVisibility } from "@/lib/builds/validate";
@@ -46,6 +48,8 @@ export interface WriterPage {
   line: string | null;
   lineLabel: string | null;
   plate: string | null;
+  /** What stays in view of the plate (WO-118): a chapter's, positioned here. */
+  plateFocus: { x: number; y: number } | null;
   /** The text's first image, the plate readers see when it has none of its own. */
   fromText: string | null;
   doc: GuideDoc | null;
@@ -77,6 +81,8 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
   const [title, setTitle] = useState(page.title);
   const [line, setLine] = useState(page.line ?? "");
   const [plate, setPlate] = useState(page.plate);
+  const [plateFocus, setPlateFocus] = useState(page.plateFocus);
+  const frame = useEditFrame();
   const [unlocks, setUnlocks] = useState(page.unlocks?.value ?? null);
   const [editor, setEditor] = useState<Editor | null>(null);
   const [uploading, setUploading] = useState(false);
@@ -108,7 +114,15 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
   const savePlate = async (url: string | null) => {
     if (!run) return;
     const ok = await send(() => (page.kind === "title" ? act.saveTalePicture(owner.id, url) : act.saveChapterImage(owner.id, page.chapterId!, url)));
-    if (ok) setPlate(url);
+    if (ok) {
+      setPlate(url);
+      setPlateFocus(null);
+    }
+  };
+  const saveFocus = async (focus: ImageFocus) => {
+    if (!run || page.chapterId === null) return;
+    setPlateFocus(focus);
+    await send(() => act.saveChapterFocus(owner.id, page.chapterId!, focus));
   };
   const upload = async (file: File | undefined) => {
     if (!file || !run) return;
@@ -151,35 +165,46 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
         <div className={`${s.sheet} ${preview ? s.previewing : ""}`}>
           <div className={s.strip}>
             <span className="muted">{page.where}</span>
-            <span className={s.seg} role="group" aria-label="Write or preview">
-              <button type="button" aria-pressed={!preview} onClick={() => setPreview(false)}>
-                Write
-              </button>
-              <button type="button" aria-pressed={preview} onClick={() => setPreview(true)}>
-                Preview
-              </button>
+            <span className={s.stripRight}>
+              {run && frame?.run && <Images runId={owner.id} groups={frame.run.pictures} />}
+              <span className={s.seg} role="group" aria-label="Write or preview">
+                <button type="button" aria-pressed={!preview} onClick={() => setPreview(false)}>
+                  Write
+                </button>
+                <button type="button" aria-pressed={preview} onClick={() => setPreview(true)}>
+                  Preview
+                </button>
+              </span>
             </span>
           </div>
 
           <header className={`${s.plate} ${shownPlate ? "" : s.plateEmpty}`}>
-            {shownPlate && (
-              <>
-                <img src={shownPlate} alt="" className={s.plateImage} />
+            {/* Its own image, with Change, Position and Remove over it (WO-118); else the image readers get. */}
+            {!preview && run && plate ? (
+              <ImageSlot
+                url={plate}
+                focus={plateFocus}
+                label="The image"
+                busy={uploading}
+                positionable={page.chapterId !== null}
+                onFile={(file) => void upload(file)}
+                onRemove={() => void savePlate(null)}
+                onFocus={(focus) => void saveFocus(focus)}
+                imageClassName={s.plateImage}
+                toolsClassName={s.plateTools}
+              >
                 <div className={s.plateFade} aria-hidden="true" />
-              </>
+              </ImageSlot>
+            ) : (
+              shownPlate && (
+                <>
+                  <img src={shownPlate} alt="" className={s.plateImage} style={plate && plateFocus ? { objectPosition: focusPosition(plateFocus) } : undefined} />
+                  <div className={s.plateFade} aria-hidden="true" />
+                </>
+              )
             )}
-            {!preview && run && (page.kind === "title" || page.chapterId !== null) && (
+            {!preview && run && !plate && (page.kind === "title" || page.chapterId !== null) && (
               <input ref={picker} type="file" accept="image/png,image/jpeg,image/webp,image/gif" className="sr-only" aria-label="The image" onChange={(ev) => void upload(ev.target.files?.[0])} />
-            )}
-            {!preview && run && plate && (
-              <span className={`on-image ${s.plateTools}`}>
-                <button type="button" className="btn btn-sm" onClick={() => picker.current?.click()}>
-                  {uploading ? "Uploading" : "Change the image"}
-                </button>
-                <button type="button" className="btn btn-sm" onClick={() => void savePlate(null)}>
-                  Remove
-                </button>
-              </span>
             )}
             {!preview && run && !plate && (page.kind === "title" || page.chapterId !== null) && (
               <span className={s.plateSlot}>

@@ -376,8 +376,10 @@ export const playthroughActs = pgTable(
     place: text("place").notNull().default(""),
     goal: text("goal").notNull().default(""),
     standingRule: text("standing_rule"),
-    /** The act's picture on its story card and in the reader (WO-116), uploaded as a guide image; null: its chapter's first image, else the cover. */
+    /** The act's image on its story card and in the reader (WO-116), uploaded as a guide image; null: its first chapter's image, else the cover. */
     imageUrl: text("image_url"),
+    /** What stays in view of its image (WO-118), as the cover's focus; none, the middle. */
+    imageFocus: jsonb("image_focus").$type<{ x: number; y: number }>(),
   },
   (t) => [index("playthrough_act_idx").on(t.playthroughId, t.position)],
 );
@@ -427,6 +429,8 @@ export const playthroughChapters = pgTable(
     readAt: timestamp("read_at", { withTimezone: true }),
     /** Its plate in the reader (WO-117), set where it shows in the Story; none: its text's first image, else the act's picture, else the cover. */
     imageUrl: text("image_url"),
+    /** What stays in view of its image (WO-118), as the cover's focus: percents across and down; none, the middle. */
+    imageFocus: jsonb("image_focus").$type<{ x: number; y: number }>(),
     /** The guide document, validated as the Story is, its limit the same. */
     doc: jsonb("doc").$type<GuideDoc>().notNull(),
     textLength: integer("text_length").notNull(),

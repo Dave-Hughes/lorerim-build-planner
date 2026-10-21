@@ -182,8 +182,8 @@ export async function finishDraft(p: Player, input: { build: string }) {
   const b = await owned(p, input.build);
   const d = versionData(b.plan.gameVersion);
   const { issues } = issuesOf(d, b.plan);
-  // Assistants can't add pictures (WO-117): the player adds them from this link.
-  const addPictures = `${p.origin}/b/${b.id}/setup?step=name&pictures=1`;
-  if (issues.length) return { ready: false, issues, addPictures };
-  return { ready: true, link: link(p, b.id), addPictures, message: `Ready: open ${link(p, b.id)} to read it and publish. Images are the player's to add: ${addPictures}` };
+  // Assistants can't add images (WO-118): the player adds a cover from this link, at the cover in Details.
+  const addCover = `${p.origin}/b/${b.id}/setup?step=name#cover`;
+  if (issues.length) return { ready: false, issues, addCover };
+  return { ready: true, link: link(p, b.id), addCover, message: `Ready: open ${link(p, b.id)} to read it and publish. The cover is the player's to add: ${addCover}` };
 }

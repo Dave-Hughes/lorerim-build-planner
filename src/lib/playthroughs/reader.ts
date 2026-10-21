@@ -20,6 +20,8 @@ export interface ReaderStop {
   place: string;
   /** The plate: the chapter's own picture, else its text's first image, else the act's picture, else the character's cover. */
   plate: string | null;
+  /** What stays in view of the plate (WO-118): its own image's position, the act's, or the cover's. */
+  plateFocus: { x: number; y: number } | null;
   /** The plate is the text's own first image, so the text doesn't show it twice. */
   plateFromText: boolean;
   doc: GuideDoc;
@@ -42,7 +44,7 @@ export interface ReaderBack {
 }
 
 /** A run's tale, in reading order. `cover` is the character's cover. */
-export function runStops(p: { id: string; taleLine: string | null; view: PlaythroughView; cover: string | null; isOwner: boolean; titlePicture?: string | null }): ReaderStop[] {
+export function runStops(p: { id: string; taleLine: string | null; view: PlaythroughView; cover: string | null; coverFocus?: { x: number; y: number } | null; isOwner: boolean; titlePicture?: string | null }): ReaderStop[] {
   const v = p.view;
   const actOf = new Map(v.acts.map((a, i) => [a.id, { a, n: i + 1 }]));
   const rowHref = (oid: number) => {
@@ -54,7 +56,8 @@ export function runStops(p: { id: string; taleLine: string | null; view: Playthr
     // Its own image (WO-117), else the text's first image, else the act's.
     const own = c.imageUrl ?? null;
     const fromText = own ? null : c.open ? firstPlate(c.doc) : null;
-    const actPicture = act ? actPictureOf(v, act.a) : null;
+    const actImage = act ? actImageOf(v, act.a) : null;
+    const title = i === 0 ? (p.titlePicture ?? null) : null;
     return {
       key: String(c.id),
       href: `/p/${p.id}/story/${c.id}`,
@@ -62,7 +65,8 @@ export function runStops(p: { id: string; taleLine: string | null; view: Playthr
       title: c.title,
       line: i === 0 && p.taleLine ? p.taleLine : c.fromSave ? `From ${c.fromSave.toLowerCase()}` : null,
       place: placeOf(c, act?.a),
-      plate: own ?? fromText ?? actPicture ?? (i === 0 ? (p.titlePicture ?? null) : null) ?? p.cover,
+      plate: own ?? fromText ?? actImage?.url ?? title ?? p.cover,
+      plateFocus: own ? (c.imageFocus ?? null) : fromText ? null : actImage ? actImage.focus : title ? null : (p.coverFocus ?? null),
       plateFromText: !!fromText,
       doc: c.doc,
       cap: true,
@@ -86,6 +90,7 @@ export function storyStop(b: { id: string; title: string; line: string; doc: Gui
     line: b.line || null,
     place: "The story",
     plate: fromText ?? b.cover,
+    plateFocus: null,
     plateFromText: !!fromText,
     doc: b.doc,
     cap: true,
@@ -97,12 +102,15 @@ export function storyStop(b: { id: string; title: string; line: string; doc: Gui
   };
 }
 
-/** An act's image (WO-116): its own, else its first chapter's (WO-118: the image, else the text's first). The cover comes after. */
-export function actPictureOf(v: PlaythroughView, a: ActView): string | null {
-  if (a.imageUrl) return a.imageUrl;
+/** An act's image (WO-116): its own, else its first chapter's (WO-118: the image, else the text's first), with what stays in view. The cover comes after. */
+export function actImageOf(v: PlaythroughView, a: ActView): { url: string; focus: { x: number; y: number } | null } | null {
+  if (a.imageUrl) return { url: a.imageUrl, focus: a.imageFocus ?? null };
   const c = v.chapters.find((x) => x.id === a.chapter);
-  return c ? (c.imageUrl ?? (c.open ? firstPlate(c.doc) : null)) : null;
+  if (c?.imageUrl) return { url: c.imageUrl, focus: c.imageFocus ?? null };
+  const fromText = c?.open ? firstPlate(c.doc) : null;
+  return fromText ? { url: fromText, focus: null } : null;
 }
+export const actPictureOf = (v: PlaythroughView, a: ActView): string | null => actImageOf(v, a)?.url ?? null;
 
 function placeOf(c: ChapterView, a: ActView | undefined): string {
   if (!a) return "Prologue";
