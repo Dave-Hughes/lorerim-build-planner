@@ -99,7 +99,7 @@ function chapterOf(pt: PlaythroughRecord, ref: string) {
   const hit = id !== null ? pt.view.chapters.filter((c) => c.id === id) : pt.view.chapters.filter((c) => norm(c.title) === norm(String(ref)));
   if (hit.length === 1) return hit[0];
   if (hit.length > 1) throw new FactsError(`More than one piece of the tale is called ${ref}. Use its id: ${hit.map((c) => c.id).join(", ")}.`);
-  throw new FactsError(`No chapter, entry or beat ${ref}. get_playthrough lists them with their ids.`);
+  throw new FactsError(`No chapter ${ref}. get_playthrough lists them with their ids.`);
 }
 
 /**
@@ -353,27 +353,24 @@ export async function setStatus(p: Player, input: { playthrough: string; objecti
   return { playthrough: pt.id, objective: o.id, status: input.status };
 }
 
-export async function writeChapter(p: Player, input: { playthrough: string; kind: "chapter" | "act" | "entry" | "beat"; title: string; text: string; act?: string; after?: string; fromSave?: string }) {
+/** A chapter (WO-118): in the Prologue or an act, unlocking when an objective is done or not. */
+export async function writeChapter(p: Player, input: { playthrough: string; title: string; text: string; act?: string; unlocksWhen?: string; fromSave?: string }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
-  if (input.kind === "beat" && input.after === undefined) throw new FactsError("A beat opens when an objective is done: give `after`, the objective.");
-  if (input.kind === "act" && input.act === undefined) throw new FactsError("An act's chapter opens an act: give `act`.");
   const a = input.act !== undefined ? actOf(pt, input.act) : null;
-  const after = input.after !== undefined ? objectiveOf(pt, input.after, a ?? undefined).id : null;
+  const after = input.unlocksWhen !== undefined ? objectiveOf(pt, input.unlocksWhen, a ?? undefined).id : null;
   const doc = await writes(async () => markdownToDoc(input.text));
-  const id = await writes(() =>
-    w.addChapter(p.userId, pt.id, { kind: input.kind, title: input.title, doc, actId: input.kind === "chapter" ? null : (a?.id ?? null), opensAfter: input.kind === "chapter" || input.kind === "act" ? null : after, fromSave: input.fromSave ?? null }, p.clientName.slice(0, 80)),
-  );
-  return { playthrough: pt.id, chapter: String(id), kind: input.kind, link: link(p, pt.id, `/story/${id}`) };
+  const id = await writes(() => w.addChapter(p.userId, pt.id, { title: input.title, doc, actId: a?.id ?? null, unlocksWhen: after, fromSave: input.fromSave ?? null }, p.clientName.slice(0, 80)));
+  return { playthrough: pt.id, chapter: String(id), link: link(p, pt.id, `/story/${id}`) };
 }
 
-export async function setChapter(p: Player, input: { playthrough: string; chapter: string; title?: string; text?: string; after?: string; fromSave?: string }) {
+export async function setChapter(p: Player, input: { playthrough: string; chapter: string; title?: string; text?: string; unlocksWhen?: string; fromSave?: string }) {
   await writeGuard(p);
   const pt = await mine(p, input.playthrough);
   const c = chapterOf(pt, input.chapter);
   const doc = input.text !== undefined ? await writes(async () => markdownToDoc(input.text!)) : undefined;
-  const after = input.after !== undefined ? objectiveOf(pt, input.after).id : undefined;
-  await writes(() => w.setChapter(p.userId, pt.id, c.id, { title: input.title, doc, opensAfter: after, fromSave: input.fromSave }, p.clientName.slice(0, 80)));
+  const after = input.unlocksWhen === undefined ? undefined : input.unlocksWhen.toLowerCase() === "none" ? null : objectiveOf(pt, input.unlocksWhen).id;
+  await writes(() => w.setChapter(p.userId, pt.id, c.id, { title: input.title, doc, unlocksWhen: after, fromSave: input.fromSave }, p.clientName.slice(0, 80)));
   return { playthrough: pt.id, chapter: c.id, saved: true };
 }
 
@@ -421,8 +418,8 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
       place: a.place,
       goal: a.goal,
       ...(a.standingRule ? { standingRule: a.standingRule } : {}),
-      // The act's own chapter (WO-116): the story of that stretch.
-      chapter: a.chapter !== null ? chapterLine(v.chapters.find((c) => c.id === a.chapter)!) : null,
+      // The act's first chapter (WO-118): it opens the act's card on Play.
+      firstChapter: a.chapter !== null ? chapterLine(v.chapters.find((c) => c.id === a.chapter)!) : null,
       objectives: a.objectives.map((o) => ({
         objective: String(o.id),
         text: o.text,
@@ -432,18 +429,18 @@ export async function getPlaythroughTool(p: Player, input: { playthrough: string
         ...(o.kind === "reach" && o.reach ? { reachKey: reachLabel(o.reach.key), reachTarget: o.reach.target } : o.doneBy === "save" && o.detect ? { quest: o.detect.quest, ...(o.detect.stage !== undefined ? { stage: o.detect.stage } : {}) } : { byHand: true }),
         ...(o.why ? { why: o.why } : {}),
         status: shown[o.worked.shown],
-        // The entries and beats that hang off it: its Story markers (WO-116).
+        // The chapters that hang off it: its Story markers (WO-116).
         chapters: o.tale.map((t) => ({ chapter: String(t.id), title: t.title, open: t.open })),
       })),
     })),
-    tale: v.chapters.map((c) => ({
+    // The story's chapters in reading order (WO-118): the Prologue's, then each act's.
+    chapters: v.chapters.map((c) => ({
       chapter: String(c.id),
-      kind: c.kind,
       title: c.title,
-      ...(c.act ? { act: c.act } : {}),
-      ...(c.inGame ? { after: c.inGame.text } : {}),
+      act: c.actId === null ? "Prologue" : String(v.acts.findIndex((a) => a.id === c.actId) + 1),
+      ...(c.kind === "beat" && c.inGame ? { unlocksWhen: { objective: String(c.inGame.id), text: c.inGame.text }, unlocked: c.open } : {}),
+      ...(c.kind !== "beat" && c.inGame ? { tells: c.inGame.text } : {}),
       ...(c.fromSave ? { fromSave: c.fromSave } : {}),
-      ...(c.kind === "beat" ? { open: c.open } : {}),
       text: docText(c.doc),
     })),
   };
@@ -463,7 +460,7 @@ export async function finishDraft(p: Player, input: { playthrough: string }) {
   const issues: string[] = [];
   if (!pt.view.acts.length) issues.push("The playthrough has no acts yet.");
   for (const a of pt.view.acts) if (!a.objectives.length) issues.push(`Act ${a.n} ${a.name} has no objective.`);
-  for (const c of pt.view.chapters) if (c.kind === "beat" && c.opensAfter === null) issues.push(`The beat ${c.title} has no objective to open after.`);
+  for (const c of pt.view.chapters) if (c.kind === "beat" && c.opensAfter === null) issues.push(`The chapter ${c.title} unlocks from an objective that's gone: set unlocksWhen again, or "none".`);
   // Assistants can't add pictures (WO-117): the player adds them from this link.
   const addPictures = pt.buildId ? `${p.origin}/b/${pt.buildId}/setup?step=name&pictures=1` : link(p, pt.id, "/edit/play?pictures=1");
   if (issues.length) return { ready: false, issues, addPictures };

@@ -117,33 +117,26 @@ test("the act card's Write it in the Story opens that act's chapter", async ({ p
   await expect(page.getByLabel("Title")).toHaveValue("The Bard's Road");
 });
 
-test("the Story in edit: the act's chapter is made by its first word, a chapter is added from Contents, Preview hides the controls", async ({ page, context }) => {
+test("the Story in edit: a chapter is added in an act from Contents, Preview hides the controls", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story`);
   await expect(page).toHaveURL(new RegExp(`/edit/story/title$`));
   const contents = page.getByRole("complementary", { name: "Contents" });
   await expect(contents.getByRole("link", { name: "The title page" })).toHaveAttribute("aria-current", "page");
-  // Act III has nothing: opening its chapter makes nothing until its first word.
-  await contents.getByText("Act III The Winking Skeever").scrollIntoViewIfNeeded();
-  const act3 = contents.locator("div").filter({ has: page.getByText("Act III The Winking Skeever", { exact: true }) }).last();
-  await act3.getByRole("link", { name: "Write the act's chapter ›" }).click();
-  await expect(page).toHaveURL(/\/edit\/story\/act-\d+$/);
-  await page.reload();
-  await expect(page).toHaveURL(/\/edit\/story\/act-\d+$/);
+  // Act III has nothing yet: + Add a chapter makes one there (WO-118).
+  const act3 = contents.getByRole("group", { name: "Act III The Winking Skeever" });
+  await expect(act3.getByText("Nothing written yet.")).toBeVisible();
+  await act3.getByRole("button", { name: "+ Add a chapter" }).click();
+  await expect(page).toHaveURL(/\/edit\/story\/\d+$/);
+  await expect(page.getByLabel("Title")).toHaveValue("A new chapter");
+  await expect(act3.getByRole("link", { name: "A new chapter" })).toHaveAttribute("aria-current", "page");
   await page.getByRole("textbox", { name: "Text" }).click();
   await page.keyboard.type("Solitude had a college for bards and a hall for the dead, and she wanted the first.");
   await savedInBand(page);
-  await page.goto(page.url());
-  await expect(page).toHaveURL(/\/edit\/story\/\d+$/);
+  await page.reload();
   await expect(page.getByText("Solitude had a college for bards")).toBeVisible();
 
-  // A chapter before Skyrim, from Contents.
-  await page.getByRole("button", { name: "+ Add a chapter" }).click();
-  await expect(page).toHaveURL(/\/edit\/story\/\d+$/);
-  await expect(page.getByLabel("Title")).toHaveValue("A new chapter");
-  await expect(contents.getByRole("link", { name: "A new chapter" })).toHaveAttribute("aria-current", "page");
-
-  // Preview: no inputs, no picture slot, no insert row, Contents dimmed.
+  // Preview: no inputs, no image slot, no insert row, Contents dimmed.
   await page.getByRole("button", { name: "Preview" }).click();
   await expect(page.getByLabel("Title")).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Add an image" })).toHaveCount(0);
@@ -155,19 +148,24 @@ test("the Story in edit: the act's chapter is made by its first word, a chapter 
   await expect(page).toHaveURL(/\/edit\/story\/title$/);
 });
 
-test("an entry's Opens when changes its objective", async ({ page, context }) => {
+test("a chapter's Unlocks when locks it in Contents until its objective is done", async ({ page, context }) => {
   await signIn(context);
   await page.goto(`/p/${KYRIA_PLAYTHROUGH_ID}/edit/story`);
-  await page.getByRole("complementary", { name: "Contents" }).getByRole("link", { name: /The Mark of Dibella/ }).click();
-  const opens = page.getByLabel("Opens when this is done:");
-  await expect(opens).toHaveValue(/\d+/);
-  const was = await opens.inputValue();
-  await opens.selectOption({ label: "Take a room at the Bee and Barb" });
+  const contents = page.getByRole("complementary", { name: "Contents" });
+  const act4 = contents.getByRole("group", { name: "Act IV The Knight Returns" });
+  await act4.getByRole("button", { name: "+ Add a chapter" }).click();
+  await expect(page).toHaveURL(/\/edit\/story\/\d+$/);
+  const unlocks = page.getByRole("combobox", { name: "Unlocks when" });
+  await expect(unlocks).toHaveValue("");
+  await unlocks.selectOption({ label: "Reach level 35" });
   await savedInBand(page);
   await page.reload();
-  await expect(page.getByLabel("Opens when this is done:")).not.toHaveValue(was);
-  await page.getByLabel("Opens when this is done:").selectOption(was);
-  await savedInBand(page);
+  await expect(page.getByRole("combobox", { name: "Unlocks when" })).not.toHaveValue("");
+  await expect(act4.getByRole("link", { name: /A new chapter/ })).toContainText("Unlocks when: Reach level 35");
+  await expect(act4.getByRole("link", { name: /A new chapter/ }).getByRole("img", { name: "Locked" })).toBeVisible();
+  page.once("dialog", (d) => void d.accept());
+  await page.getByRole("button", { name: "Remove this chapter" }).click();
+  await expect(page).toHaveURL(/\/edit\/story\/title$/);
 });
 
 test("the Pictures panel lists every place a picture can go, and Add uploads into one", async ({ page, context }) => {

@@ -241,7 +241,7 @@ function tabsOf(f: EditFrameData | null, buildId: string): Tab[] {
     out.push({ key: "guide", label: "Guide", sub: b?.guideMinutes ? `${b.guideMinutes} min read` : "Not written yet", href: `/b/${id}/guide`, icon: "tab-guide" });
   }
   if (r)
-    out.push({ key: "story", label: "Story", sub: `${r.chapters} chapter${r.chapters === 1 ? "" : "s"}, ${r.pieces} ${r.pieces === 1 ? "entry or beat" : "entries and beats"}`, href: `/p/${r.id}/edit/story`, icon: "tab-story" });
+    out.push({ key: "story", label: "Story", sub: `${r.chapters} chapter${r.chapters === 1 ? "" : "s"}`, href: `/p/${r.id}/edit/story`, icon: "tab-story" });
   else if (f?.storyOn && b) out.push({ key: "story", label: "Story", sub: b.hasStory ? "Written" : "Not written yet", href: `/b/${b.id}/edit/story`, icon: "tab-story" });
   if (r) out.push({ key: "play", label: "Play", sub: `${r.acts} act${r.acts === 1 ? "" : "s"}, ${r.objectives} objective${r.objectives === 1 ? "" : "s"}`, href: `/p/${r.id}/edit/play`, icon: "tab-play" });
   return out;

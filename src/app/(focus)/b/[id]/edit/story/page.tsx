@@ -41,8 +41,8 @@ export default async function StoryEditPage({ params }: { params: Params }) {
       <GameDataProvider version={build.gameVersion} serverVersion={clientVersion(build.gameVersion)}>
         <StoryWriter
           owner={{ kind: "build", id, name: build.name, visibility: build.visibility }}
-          groups={[{ label: null, actId: null, reorder: false, items: [{ key: "story", href: `/b/${id}/edit/story`, title: title || "The story" }], adds: [] }]}
-          page={{ key: "story", kind: "story", where: "The story", kicker: null, title, titlePlaceholder: "[The story's title]", line, lineLabel: "A line under the title", plate: null, fromText: firstPlate(doc), doc, chapterId: null, actId: null, opens: null }}
+          groups={[{ label: null, actId: null, reorder: false, items: [{ key: "story", href: `/b/${id}/edit/story`, title: title || "The story" }], add: false }]}
+          page={{ key: "story", kind: "story", where: "The story", kicker: null, title, titlePlaceholder: "[The story's title]", line, lineLabel: "A line under the title", plate: null, fromText: firstPlate(doc), doc, chapterId: null, actId: null, unlocks: null }}
           prev={null}
           next={null}
         />

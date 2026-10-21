@@ -15,7 +15,6 @@ import { saveGuideSection } from "@/lib/builds/actions";
 import type { BuildVisibility } from "@/lib/builds/validate";
 import { STORY_IMAGES, STORY_IMAGE_ERROR, lineDoc, type GuideDoc } from "@/lib/guide/doc";
 import * as act from "@/lib/playthroughs/actions";
-import type { ChapterKind } from "@/lib/playthroughs/types";
 import r from "@/components/reader/reader.module.css";
 import s from "./story-writer.module.css";
 
@@ -23,32 +22,27 @@ export interface WriterItem {
   key: string;
   href: string;
   title: string;
-  /** "Entry", "Beat": a muted tag on the row. */
-  tag?: string;
-  /** An act's chapter not written yet: a dashed row. */
-  dashed?: boolean;
   chapterId?: number;
+  /** A locked chapter: the objective that unlocks it (WO-118). */
+  unlocks?: string | null;
 }
 export interface WriterGroup {
+  /** "Prologue", "Act I The Sister's House"; none for the title page. */
   label: string | null;
   actId: number | null;
   reorder: boolean;
-  /** An act's own chapter, first in its group. */
-  act?: WriterItem;
   items: WriterItem[];
-  adds: { kind: "chapter" | "entry-or-beat"; label: string }[];
-  /** An act with nothing written. */
-  empty?: boolean;
-  lastObjective?: number | null;
+  /** + Add a chapter. */
+  add: boolean;
 }
 export interface WriterPage {
   key: string;
-  kind: "title" | "story" | ChapterKind;
+  kind: "title" | "story" | "chapter";
   where: string;
   kicker: string | null;
   title: string;
   titlePlaceholder: string;
-  /** Under the title: the tale's line, an entry's save, the build Story's line; null: none here. */
+  /** Under the title: the tale's line, the save a chapter was written from, the build Story's line; null: none here. */
   line: string | null;
   lineLabel: string | null;
   plate: string | null;
@@ -57,16 +51,17 @@ export interface WriterPage {
   doc: GuideDoc | null;
   chapterId: number | null;
   actId: number | null;
-  opens: { value: number | null; options: { id: number; text: string }[] } | null;
+  /** Unlocks when (WO-118): a chapter in an act, none or one of the act's objectives. */
+  unlocks: { value: number | null; options: { id: number; text: string }[] } | null;
 }
 type Owner = { kind: "run"; id: string; buildId: string; name: string; visibility: BuildVisibility } | { kind: "build"; id: string; name: string; visibility: BuildVisibility };
 type Near = { href: string; title: string } | null;
 
 /**
  * The Story written where it's read (WO-117), as the EditStory board: Contents on the left in reading
- * order, and on the right the reader's own plate (picture, kicker, title, line) and 680px column,
- * typed in place. Pictures go where they show; an entry or beat says which objective opens it; Preview
- * hides every control and shows the page as readers get it.
+ * order, and on the right the reader's own plate (image, kicker, title, line) and 680px column,
+ * typed in place. Images go where they show; a chapter in an act can say which objective unlocks it
+ * (WO-118); Preview hides every control and shows the page as readers get it.
  */
 export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner; groups: WriterGroup[]; page: WriterPage; prev: Near; next: Near }) {
   const router = useRouter();
@@ -82,7 +77,7 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
   const [title, setTitle] = useState(page.title);
   const [line, setLine] = useState(page.line ?? "");
   const [plate, setPlate] = useState(page.plate);
-  const [opens, setOpens] = useState(page.opens?.value ?? null);
+  const [unlocks, setUnlocks] = useState(page.unlocks?.value ?? null);
   const [editor, setEditor] = useState<Editor | null>(null);
   const [uploading, setUploading] = useState(false);
   const picker = useRef<HTMLInputElement>(null);
@@ -112,9 +107,7 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
   };
   const savePlate = async (url: string | null) => {
     if (!run) return;
-    const ok = await send(() =>
-      page.kind === "title" ? act.saveTalePicture(owner.id, url) : page.kind === "act" && page.actId !== null ? act.saveActImage(owner.id, page.actId, url) : act.saveChapterImage(owner.id, page.chapterId!, url),
-    );
+    const ok = await send(() => (page.kind === "title" ? act.saveTalePicture(owner.id, url) : act.saveChapterImage(owner.id, page.chapterId!, url)));
     if (ok) setPlate(url);
   };
   const upload = async (file: File | undefined) => {
@@ -138,7 +131,6 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
         : editorStatus?.status === "saving" || band.state === "saving"
           ? { state: "saving" }
           : { state: "saved" };
-  const entryish = page.kind === "entry" || page.kind === "beat";
   const shownPlate = plate ?? (preview || !run ? page.fromText : null);
   const editBuildId = owner.kind === "run" ? owner.buildId : owner.id;
 
@@ -149,7 +141,7 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
         <aside className={`${s.contents} ${preview ? s.dimmed : ""}`} aria-label="Contents">
           <span className={s.contentsHead}>
             <span className={s.head}>Contents</span>
-            {run && <InfoTip label="About the contents" text="Drag a chapter to move it. Entries and beats belong to an act and open from one of its objectives." />}
+            {run && <InfoTip label="About the contents" text="Drag a chapter to move it. A chapter sits in the Prologue or in an act; any chapter in an act can unlock when one of its objectives is done." />}
           </span>
           {groups.map((g, gi) => (
             <ContentsGroup key={gi} owner={owner} g={g} current={page.key} />
@@ -176,7 +168,7 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
                 <div className={s.plateFade} aria-hidden="true" />
               </>
             )}
-            {!preview && run && (
+            {!preview && run && (page.kind === "title" || page.chapterId !== null) && (
               <input ref={picker} type="file" accept="image/png,image/jpeg,image/webp,image/gif" className="sr-only" aria-label="The image" onChange={(ev) => void upload(ev.target.files?.[0])} />
             )}
             {!preview && run && plate && (
@@ -189,7 +181,7 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
                 </button>
               </span>
             )}
-            {!preview && run && !plate && (
+            {!preview && run && !plate && (page.kind === "title" || page.chapterId !== null) && (
               <span className={s.plateSlot}>
                 <button type="button" className="btn" onClick={() => picker.current?.click()}>
                   {uploading ? "Uploading" : "Add an image"}
@@ -205,14 +197,14 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
               )}
               {page.lineLabel &&
                 (preview ? (
-                  line && <p className={r.line}>{page.kind === "entry" ? `From ${line.toLowerCase()}` : line}</p>
+                  line && <p className={r.line}>{page.kind === "chapter" ? `From ${line.toLowerCase()}` : line}</p>
                 ) : (
                   <input
                     className={`${r.line} ${s.lineInput}`}
                     aria-label={page.lineLabel}
                     value={line}
-                    placeholder={page.kind === "entry" ? "[Save 7, 19 Oct 2026]" : "[A line under the title]"}
-                    maxLength={page.kind === "entry" ? 60 : 140}
+                    placeholder={page.kind === "chapter" ? "[Save 7, 19 Oct 2026]" : "[A line under the title]"}
+                    maxLength={page.kind === "chapter" ? 60 : 140}
                     onChange={(ev) => setLine(ev.target.value)}
                     onBlur={saveLine}
                   />
@@ -220,29 +212,29 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
             </div>
           </header>
 
-          {page.opens && run && !preview && (
+          {page.unlocks && page.chapterId !== null && run && !preview && (
             <div className={s.opens}>
-              <label className="muted" htmlFor="opens-after">
-                Opens when this is done:
+              <label className="muted" htmlFor="unlocks-when">
+                Unlocks when
               </label>
               <select
-                id="opens-after"
+                id="unlocks-when"
                 className={`select ${s.opensSelect}`}
-                value={opens ?? ""}
+                value={unlocks ?? ""}
                 onChange={(ev) => {
                   const v = ev.target.value ? Number(ev.target.value) : null;
-                  setOpens(v);
-                  void send(() => act.saveChapter(owner.id, page.chapterId!, { opensAfter: v }));
+                  setUnlocks(v);
+                  void send(() => act.saveChapter(owner.id, page.chapterId!, { unlocksWhen: v }));
                 }}
               >
-                {page.kind === "entry" && <option value="">No objective</option>}
-                {page.opens.options.map((o) => (
+                <option value="">None</option>
+                {page.unlocks.options.map((o) => (
                   <option key={o.id} value={o.id}>
                     {o.text}
                   </option>
                 ))}
               </select>
-              <InfoTip label="About opens when" text="Readers see this once the objective is done. Until then the story shows its title and what opens it." />
+              <InfoTip label="About unlocks when" text="Readers see the chapter once this objective is done. Until then the story shows its title and what unlocks it." />
             </div>
           )}
 
@@ -250,9 +242,7 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
             {page.kind !== "title" && doc && (
               <article className={`${r.col} ${s.col}`}>
                 {preview ? (
-                  <div className={entryish ? r.entry : undefined}>
-                    <StoryText doc={doc} idPrefix={`w${page.key}`} cap={!entryish} skipOpening={!plate && !!page.fromText} />
-                  </div>
+                  <StoryText doc={doc} idPrefix={`w${page.key}`} cap skipOpening={!plate && !!page.fromText} />
                 ) : (
                   <>
                     <span className={s.insert}>
@@ -277,14 +267,14 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
                         }}
                       />
                     </span>
-                    <div className={`${s.editor} ${entryish ? s.editorEntry : ""}`}>
+                    <div className={s.editor}>
                       <GuideEditor
                         key={page.key}
                         buildId={target}
                         sectionKey={sectionKey}
                         initial={doc}
                         label="Text"
-                        placeholder={page.kind === "act" ? "[Write the act's chapter here: the story of this stretch, before she plays it.]" : "[The story goes here.]"}
+                        placeholder="[The story goes here.]"
                         onStatus={onStatus}
                         onChange={setDoc}
                         onEditor={setEditor}
@@ -312,7 +302,7 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
                     void send(() => act.removeChapter(owner.id, page.chapterId!)).then((ok) => ok && router.push(`/p/${owner.id}/edit/story`));
                   }}
                 >
-                  Remove this {page.kind === "act" ? "chapter" : page.kind}
+                  Remove this chapter
                 </button>
               ) : (
                 <span />
@@ -334,18 +324,12 @@ export function StoryWriter({ owner, groups, page, prev, next }: { owner: Owner;
 
 function ContentsGroup({ owner, g, current }: { owner: Owner; g: WriterGroup; current: string }) {
   const router = useRouter();
-  const [adding, setAdding] = useState(false);
   const [dragging, setDragging] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const pid = owner.id;
-  const make = async (kind: "chapter" | "entry" | "beat") => {
+  const make = async () => {
     setError(null);
-    const res = await act.newChapter(pid, {
-      kind,
-      title: kind === "chapter" ? "A new chapter" : kind === "entry" ? "A new entry" : "A new beat",
-      actId: g.actId,
-      opensAfter: kind === "beat" ? (g.lastObjective ?? null) : null,
-    });
+    const res = await act.newChapter(pid, { title: "A new chapter", actId: g.actId });
     if (res.ok) router.push(`/p/${pid}/edit/story/${res.value}`);
     else setError(res.error);
   };
@@ -368,47 +352,25 @@ function ContentsGroup({ owner, g, current }: { owner: Owner; g: WriterGroup; cu
           }
         : {};
     return (
-      <Link key={it.key} href={it.href} className={`${s.item} ${it.dashed ? s.itemDashed : ""}`} aria-current={it.key === current ? "page" : undefined} {...drag}>
-        <span>{it.title}</span>
-        {it.tag && <span className={s.tag}>{it.tag}</span>}
+      <Link key={it.key} href={it.href} className={`${s.item} ${it.unlocks ? s.itemLocked : ""}`} aria-current={it.key === current ? "page" : undefined} {...drag}>
+        <span className={s.itemTitle}>
+          {it.unlocks && <img src="/icons/mark-lock.svg" alt="Locked" width={16} height={16} className="px" />}
+          {it.title}
+        </span>
+        {it.unlocks && <span className={s.tag}>Unlocks when: {it.unlocks}</span>}
       </Link>
     );
   };
   return (
-    <div className={s.group}>
-      {g.label && <span className={`${s.groupHead} ${g.empty ? s.groupEmpty : ""}`}>{g.label}</span>}
-      {g.empty ? (
-        <span className={s.nothing}>
-          Nothing written yet. {g.act && <Link href={g.act.href}>Write the act&apos;s chapter ›</Link>}
-        </span>
-      ) : (
-        <>
-          {g.act && row(g.act, -1)}
-          {g.items.map((it, i) => row(it, i))}
-        </>
+    <div className={s.group} role={g.label ? "group" : undefined} aria-label={g.label ?? undefined}>
+      {g.label && <span className={`${s.groupHead} ${g.items.length ? "" : s.groupEmpty}`}>{g.label}</span>}
+      {g.items.map((it, i) => row(it, i))}
+      {g.label && !g.items.length && <span className={s.nothing}>Nothing written yet.</span>}
+      {owner.kind === "run" && g.add && (
+        <button type="button" className={s.addRow} onClick={() => void make()}>
+          + Add a chapter
+        </button>
       )}
-      {owner.kind === "run" &&
-        !g.empty &&
-        g.adds.map((a) =>
-          a.kind === "chapter" ? (
-            <button key={a.kind} type="button" className={s.addRow} onClick={() => void make("chapter")}>
-              {a.label}
-            </button>
-          ) : adding ? (
-            <span key={a.kind} className={s.addTwo}>
-              <button type="button" className="btn btn-sm" onClick={() => void make("entry")}>
-                An entry
-              </button>
-              <button type="button" className="btn btn-sm" disabled={!g.lastObjective} title={g.lastObjective ? undefined : "A beat opens from an objective: add one on Play first."} onClick={() => void make("beat")}>
-                A beat
-              </button>
-            </span>
-          ) : (
-            <button key={a.kind} type="button" className={s.addRow} onClick={() => setAdding(true)}>
-              {a.label}
-            </button>
-          ),
-        )}
       {error && (
         <span role="alert" className={s.error}>
           {error}

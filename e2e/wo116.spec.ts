@@ -80,7 +80,7 @@ test("Read Act I opens the reader at its address; Back returns to the same spot,
   await signIn(context);
   await page.goto(KYRIA);
   const read = page.getByRole("link", { name: "Read Act I" });
-  await expect(page.getByText("1 min | a chapter and 2 entries")).toBeVisible();
+  await expect(page.getByText("1 min | 5 chapters")).toBeVisible();
   await read.scrollIntoViewIfNeeded();
   const y = await scrollY(page);
   await read.click();
@@ -111,8 +111,8 @@ test("a Story marker opens its entry, and In the game comes back to the row", as
   await expect(page).toHaveURL(new RegExp(`${KYRIA}\\?act=1#o\\d+$`));
   await expect(reader(page)).toHaveCount(0);
   await expect(page.locator(`#${new URL(page.url()).hash.slice(1)}`)).toBeInViewport();
-  // A beat not open yet is a dashed marker, not a link.
-  await expect(page.getByText("opens when you tick this")).toBeVisible();
+  // A chapter not unlocked yet is a dashed marker, not a link.
+  await expect(page.getByText("unlocks when you tick this")).toBeVisible();
   await expect(page.getByRole("link", { name: /^Story Made with Care/ })).toHaveCount(0);
 });
 
@@ -126,7 +126,7 @@ test("previous and next walk the tale in reading order and stop at a waiting bea
     await expect(reader(page).getByRole("heading", { level: 1, name: t })).toBeVisible();
     if (i < titles.length - 1) await foot.getByRole("link").filter({ hasText: `Next ›${titles[i + 1]}` }).click();
   }
-  await expect(reader(page).getByText("Opens when you tick Hunt and tan her first hides.")).toBeVisible();
+  await expect(reader(page).getByText("Unlocks when you tick Hunt and tan her first hides.")).toBeVisible();
   await expect(reader(page).getByText("The hide was rough")).toHaveCount(0);
   await reader(page).getByRole("button", { name: "Read it anyway" }).click();
   await expect(reader(page).getByText("The hide was rough under her hands")).toBeVisible();
@@ -187,25 +187,28 @@ test("Start a run, from the hero and from the card", async ({ page, context }) =
   await expect(page.getByRole("heading", { name: "The run" })).toBeVisible();
 });
 
-test("through the door: an act's own chapter, one per act, and the chapters get_playthrough lists", async ({ page, context, baseURL }) => {
+test("through the connector: an act's first chapter opens its card, and the chapters get_playthrough lists", async ({ page, context, baseURL }) => {
   const from = ip();
   await signIn(context);
   const t = await tokenFor(page, context, baseURL!, from);
   const go = (name: string, args: object) => call(baseURL!, from, t.access_token, name, args);
-  expect((await go("write_chapter", { playthrough: KYRIA_PLAYTHROUGH_ID, kind: "act", title: "The Bard's Road", text: "The road south." })).text).toMatch(/give `act`/);
-  const made = await go("write_chapter", { playthrough: KYRIA_PLAYTHROUGH_ID, kind: "act", act: "2", title: "The Bard's Road", text: "She left Riften at dawn with the lute on her back." });
+  const made = await go("write_chapter", { playthrough: KYRIA_PLAYTHROUGH_ID, act: "2", title: "The Bard's Road", text: "She left Riften at dawn with the lute on her back." });
   expect(made.isError, made.text).toBe(false);
   expect(made.json().link).toMatch(new RegExp(`${KYRIA}/story/\\d+$`));
-  const again = await go("write_chapter", { playthrough: KYRIA_PLAYTHROUGH_ID, kind: "act", act: "2", title: "Again", text: "No." });
-  expect(again.isError).toBe(true);
-  expect(again.text).toContain("This act has its chapter already.");
+  // A second chapter in the act is a chapter like any other (WO-118).
+  const again = await go("write_chapter", { playthrough: KYRIA_PLAYTHROUGH_ID, act: "2", title: "The Vilemyr Inn", text: "The inn at Ivarstead had one table and no songs." });
+  expect(again.isError, again.text).toBe(false);
   const got = (await go("get_playthrough", { playthrough: KYRIA_PLAYTHROUGH_ID })).json();
-  expect(got.acts[0].chapter).toMatchObject({ title: "The Sister's House" });
-  expect(got.acts[1].chapter).toMatchObject({ title: "The Bard's Road" });
+  expect(got.acts[0].firstChapter).toMatchObject({ title: "The Sister's House" });
+  expect(got.acts[1].firstChapter).toMatchObject({ title: "The Bard's Road" });
+  expect(got.chapters.find((c: { title: string }) => c.title === "The Vilemyr Inn")).toMatchObject({ act: "2" });
+  expect(got.chapters[0]).toMatchObject({ act: "Prologue" });
   const haelga = got.acts[0].objectives.find((o: { text: string }) => o.text === "Warn Haelga, or expose her");
   expect(haelga.chapters).toEqual([expect.objectContaining({ title: "The Mark of Dibella", open: true })]);
-  const removed = await go("remove_chapter", { playthrough: KYRIA_PLAYTHROUGH_ID, chapter: made.json().chapter });
-  expect(removed.isError, removed.text).toBe(false);
+  for (const c of [made, again]) {
+    const removed = await go("remove_chapter", { playthrough: KYRIA_PLAYTHROUGH_ID, chapter: c.json().chapter });
+    expect(removed.isError, removed.text).toBe(false);
+  }
 });
 
 // WO-116a: one pinned bar, not two: the name, the page's own tabs, and the owner's controls.

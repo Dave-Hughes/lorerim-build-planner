@@ -33,10 +33,10 @@ describe("the act's own chapter (WO-116)", () => {
     expect(view.chapters.map((c) => c.id)).toEqual([1, 8, 5, 6, 7, 9]);
     expect(view.acts.map((a) => a.chapter)).toEqual([8, 9]);
   });
-  it("is never a Story marker or an open beat; entries and beats hang off their objectives", () => {
+  it("is never a Story marker; chapters with an objective hang off it (WO-118)", () => {
     const [haelga, hunt] = view.acts[0].objectives;
     expect(haelga.tale).toEqual([expect.objectContaining({ id: 5, title: "The Mark of Dibella", open: true })]);
-    expect(hunt.tale).toEqual([expect.objectContaining({ id: 6, open: false, opens: "opens when you tick this" })]);
+    expect(hunt.tale).toEqual([expect.objectContaining({ id: 6, open: false, opens: "unlocks when you tick this" })]);
     expect(view.acts[0].openBeats).toEqual([]);
   });
 });
@@ -51,18 +51,18 @@ describe("the reader's stops (WO-116)", () => {
     expect(stopAt(stops, "/p/e2ekyrya22")).toBe(-1);
   });
   it("say where they are: the kicker, the place, the line", () => {
-    expect(stops[0]).toMatchObject({ kicker: "Before Skyrim", place: "Before Skyrim", line: "What is beautiful?", cap: true, entry: false });
+    expect(stops[0]).toMatchObject({ kicker: "Prologue", place: "Prologue", line: "What is beautiful?", cap: true, entry: false });
     expect(stops[1]).toMatchObject({ kicker: "Act I", place: "Act I", cap: true });
-    expect(stops[2]).toMatchObject({ kicker: "Act I", place: "Act I | from save 7", line: "From save 7", cap: false, entry: true });
+    expect(stops[2]).toMatchObject({ kicker: "Act I", place: "Act I | from save 7", line: "From save 7", cap: true, entry: false });
   });
   it("take the chapter's first image for the plate, else the act's picture, else the cover", () => {
     expect(stops[0]).toMatchObject({ plate: IMG, plateFromText: true });
     expect(stops[2]).toMatchObject({ plate: "https://cover", plateFromText: false });
     expect(stops[5]).toMatchObject({ plate: ACT_IMG, plateFromText: false });
   });
-  it("stop at a waiting beat with what opens it", () => {
-    expect(stops[3].waiting).toBe("Opens when you tick Hunt and tan her first hides.");
-    expect(stops[4].waiting).toBe("Opens at Speech 40. Speech 30 now.");
+  it("stop at a locked chapter with what unlocks it", () => {
+    expect(stops[3].waiting).toBe("Unlocks when you tick Hunt and tan her first hides.");
+    expect(stops[4].waiting).toBe("Unlocks at Speech 40. Speech 30 now.");
     expect(stops[2].waiting).toBeNull();
   });
   it("send an entry's In the game back to its row, and the owner's Edit to the Story editor", () => {
@@ -78,8 +78,8 @@ describe("the reader's stops (WO-116)", () => {
 });
 
 describe("the style guide (WO-116)", () => {
-  it("says an act can open with its own chapter, and beats and entries hang off objectives", () => {
-    expect(styleGuide()).toContain("Each act can open with its own chapter: the story of that stretch, written before the player plays it. Beats and entries hang off objectives.");
+  it("says the story is made of chapters (WO-118)", () => {
+    expect(styleGuide()).toContain("The story is made of chapters. A chapter sits in the Prologue or in an act; any chapter can unlock when an objective is done. The first chapter of an act opens its card on Play.");
     // WO-117: the pictures are the player's.
     expect(styleGuide()).toContain("Assistants can't add pictures. When you finish a draft, give the player the addPictures link so they can add the cover and the story's pictures.");
   });

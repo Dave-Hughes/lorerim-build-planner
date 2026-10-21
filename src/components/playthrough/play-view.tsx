@@ -269,25 +269,22 @@ export function PlayBody({ p, isOwner, actIndex }: { p: PlaythroughRecord; isOwn
   );
 }
 
-/** An act's story card (WO-116): its chapter, picture, first lines and length; none without a chapter. */
+/** An act's story card (WO-116): read from the act's first chapter (WO-118), its image, first lines and length; none without a chapter. */
 function actCard(p: PlaythroughRecord, act: ActView) {
   const v = p.view;
   const c = act.chapter !== null ? v.chapters.find((x) => x.id === act.chapter) : undefined;
   if (!c) return null;
-  const pieces = v.chapters.filter((x) => x.actId === act.id && (x.kind === "act" || x.open));
-  const entries = pieces.filter((x) => x.kind === "entry").length;
-  const beats = pieces.filter((x) => x.kind === "beat").length;
-  const minutes = Math.max(1, Math.ceil(pieces.reduce((n, x) => n + docWords(x.doc), 0) / 200));
-  const parts = ["a chapter", ...(entries ? [`${entries === 1 ? "an entry" : `${entries} entries`}`] : []), ...(beats ? [`${beats === 1 ? "a beat" : `${beats} beats`}`] : [])];
-  const said = parts.length > 1 ? `${parts.slice(0, -1).join(", ")} and ${parts.at(-1)}` : parts[0];
-  const paras = c.doc.content.filter((n) => n.type === "paragraph").map((n) => docText(n).trim()).filter(Boolean);
+  const open = v.chapters.filter((x) => x.actId === act.id && x.open);
+  const minutes = Math.max(1, Math.ceil(open.reduce((n, x) => n + docWords(x.doc), 0) / 200));
+  const all = v.chapters.filter((x) => x.actId === act.id).length;
+  const paras = c.open ? c.doc.content.filter((n) => n.type === "paragraph").map((n) => docText(n).trim()).filter(Boolean) : [];
   return {
     chapterId: c.id,
     n: act.n,
     name: act.name,
     picture: actPictureOf(v, act) ?? p.build?.coverImageUrl ?? null,
     lines: paras.slice(0, 2).join(" "),
-    length: `${minutes} min | ${said}`,
+    length: `${minutes} min | ${all === 1 ? "a chapter" : `${all} chapters`}`,
     read: !!c.readAt,
   };
 }
@@ -299,7 +296,7 @@ function nextUp(a: ActView): { game: string | null; tale: string | null } {
   for (const o of a.objectives) {
     const t = o.tale.find((x) => !x.open);
     if (t) {
-      tale = `${t.title}, ${t.opens === "opens when you tick this" ? `when you tick ${o.text}` : t.opens.replace(/^opens /, "")}`;
+      tale = `${t.title}, ${t.opens === "unlocks when you tick this" ? `when you tick ${o.text}` : t.opens.replace(/^unlocks /, "")}`;
       break;
     }
   }

@@ -71,14 +71,18 @@
 .item[draggable="true"] {
   cursor: grab;
 }
-.itemDashed {
-  align-items: center;
-  min-height: 40px;
-  margin: 4px 0;
-  border: 1px dashed var(--rule-strong);
+/* A locked chapter (WO-118): its lock before the title, and what unlocks it under. */
+.itemLocked {
+  flex-direction: column;
+  gap: 2px;
 }
-.itemDashed[aria-current="page"] {
-  border: 1px dashed var(--ember);
+.itemTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.itemTitle img {
+  flex: none;
 }
 .tag {
   font-size: 13px;
@@ -101,11 +105,6 @@
 }
 .addRow:hover {
   color: var(--text);
-}
-.addTwo {
-  display: flex;
-  gap: 8px;
-  padding: 6px 10px;
 }
 .error {
   padding: 4px 10px;
@@ -283,10 +282,6 @@
 }
 .editor :global(.ProseMirror p) {
   margin: 0 0 26px;
-}
-.editorEntry {
-  border-left: 2px solid var(--brass);
-  padding-left: 22px;
 }
 .foot {
   width: 680px;

@@ -275,7 +275,7 @@ function ActFields({ pid, a, last }: { pid: string; a: EditAct; last: boolean })
             type="button"
             className={s.remove}
             onClick={() => {
-              if (!window.confirm(`Remove Act ${a.n}, its objectives, entries and beats?`)) return;
+              if (!window.confirm(`Remove Act ${a.n}, its objectives and chapters?`)) return;
               save(async () => {
                 const r = await act.removeAct(pid, a.id);
                 if (r.ok) router.push(`/p/${pid}/edit/play`);
@@ -372,7 +372,7 @@ function ObjectiveRow({
   const [reach, setReach] = useState<Reach>(o?.reach ?? { key: "level", target: 10 });
   const [why, setWhy] = useState(o?.why ?? "");
   const quests = useMemo(() => linkables.filter((x) => x.kind === "quest"), [linkables]);
-  const tale: EditChapter[] = o ? data.chapters.filter((c) => (c.kind === "entry" || c.kind === "beat") && c.opensAfter === o.id) : [];
+  const tale: EditChapter[] = o ? data.chapters.filter((c) => c.opensAfter === o.id) : [];
   // The rule shows as you type, from the same words the save refuses.
   const refused = text.trim() ? objectiveRefusal(text, kind, kind === "once" ? doneBy : "save", kind === "reach" ? reach : null) : null;
 
@@ -401,7 +401,7 @@ function ObjectiveRow({
   const addBeat = () =>
     o &&
     save(async () => {
-      const r = await act.newChapter(pid, { kind: "beat", title: "A new beat", actId: a.id, opensAfter: o.id });
+      const r = await act.newChapter(pid, { title: "A new chapter", actId: a.id, unlocksWhen: o.id });
       if (r.ok) router.push(`/p/${pid}/edit/story/${r.value}`);
       return r;
     });
@@ -561,14 +561,14 @@ function ObjectiveRow({
               {tale.length ? (
                 tale.map((c) => (
                   <span key={c.id} className={s.storyLine}>
-                    {c.kind === "entry" ? "Entry" : "Beat"}: {c.title}, opens when this is done. <Link href={`/p/${pid}/edit/story/${c.id}`}>Open it in the Story ›</Link>
+                    {c.title}{c.kind === "beat" ? ", unlocks when this is done" : ""}. <Link href={`/p/${pid}/edit/story/${c.id}`}>Open it in the Story ›</Link>
                   </span>
                 ))
               ) : (
                 <span className={s.storyLine}>
-                  No entry or beat.{" "}
+                  No chapter.{" "}
                   <button type="button" className={s.linkButton} onClick={addBeat}>
-                    Add a beat ›
+                    Add a chapter that unlocks when this is done ›
                   </button>
                 </span>
               )}

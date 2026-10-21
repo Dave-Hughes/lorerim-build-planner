@@ -3,8 +3,7 @@ import type { ActView, ChapterView, PlaythroughView } from "./view";
 
 /**
  * The reader's stops (WO-116): every story as the pages it opens to, in reading order. A run's are
- * its chapters before the game, then each act's chapter, entries and beats; a build alone's is its
- * Story. Pure, so the tests and both pages share it.
+ * its chapters, the Prologue's then each act's (WO-118); a build alone's is its Story. Pure, so the tests and both pages share it.
  */
 
 export interface ReaderStop {
@@ -12,26 +11,26 @@ export interface ReaderStop {
   key: string;
   /** Its own address: /p/<id>/story/<chapter>, or /b/<id>/story. */
   href: string;
-  /** Over the title: "Before Skyrim", "Act I". */
+  /** Over the title: "Prologue", "Act I". */
   kicker: string | null;
   title: string;
-  /** Under the title: the tale's epigraph on its first page, "From save 7" on an entry. */
+  /** Under the title: the tale's epigraph on its first page, "From save 7" on a chapter written from a save. */
   line: string | null;
-  /** The top bar's middle: "Before Skyrim", "Act I | from save 5". */
+  /** The top bar's middle: "Prologue", "Act I | from save 5". */
   place: string;
   /** The plate: the chapter's own picture, else its text's first image, else the act's picture, else the character's cover. */
   plate: string | null;
   /** The plate is the text's own first image, so the text doesn't show it twice. */
   plateFromText: boolean;
   doc: GuideDoc;
-  /** A brass drop cap: chapters, not entries or beats. */
+  /** A brass drop cap. */
   cap: boolean;
-  /** Entries and beats sit behind the brass rule. */
+  /** Behind the brass rule (none since WO-118: one kind of chapter). */
   entry: boolean;
-  /** A beat not open yet: what opens it. The page shows its title, this, and Read it anyway. */
+  /** A chapter not unlocked yet: what unlocks it. The page shows its title, this, and Read it anyway. */
   waiting: string | null;
   chapterId: number | null;
-  /** An entry's or beat's objective: "In the game: <objective>", back to its row. */
+  /** The chapter's objective: "In the game: <objective>", back to its row. */
   game: { text: string; href: string } | null;
   /** The owner's Edit: the Story editor on this chapter. */
   edit: string | null;
@@ -52,22 +51,22 @@ export function runStops(p: { id: string; taleLine: string | null; view: Playthr
   };
   return v.chapters.map((c, i) => {
     const act = c.actId !== null ? actOf.get(c.actId) : undefined;
-    // Its own picture (WO-117); an act's chapter shows the act's picture; else the text's first image.
-    const own = c.imageUrl ?? (c.kind === "act" && act ? (act.a.imageUrl ?? null) : null);
+    // Its own image (WO-117), else the text's first image, else the act's.
+    const own = c.imageUrl ?? null;
     const fromText = own ? null : c.open ? firstPlate(c.doc) : null;
     const actPicture = act ? actPictureOf(v, act.a) : null;
     return {
       key: String(c.id),
       href: `/p/${p.id}/story/${c.id}`,
-      kicker: act ? `Act ${act.a.n}` : "Before Skyrim",
+      kicker: act ? `Act ${act.a.n}` : "Prologue",
       title: c.title,
       line: i === 0 && p.taleLine ? p.taleLine : c.fromSave ? `From ${c.fromSave.toLowerCase()}` : null,
       place: placeOf(c, act?.a),
       plate: own ?? fromText ?? actPicture ?? (i === 0 ? (p.titlePicture ?? null) : null) ?? p.cover,
       plateFromText: !!fromText,
       doc: c.doc,
-      cap: c.kind === "chapter" || c.kind === "act",
-      entry: c.kind === "entry" || c.kind === "beat",
+      cap: true,
+      entry: false,
       waiting: c.open ? null : waitingText(v, c),
       chapterId: c.id,
       game: c.inGame ? { text: c.inGame.text, href: rowHref(c.inGame.id) } : null,
@@ -98,29 +97,29 @@ export function storyStop(b: { id: string; title: string; line: string; doc: Gui
   };
 }
 
-/** An act's picture (WO-116): its own, else the first image of its chapter. The cover comes after. */
+/** An act's image (WO-116): its own, else its first chapter's (WO-118: the image, else the text's first). The cover comes after. */
 export function actPictureOf(v: PlaythroughView, a: ActView): string | null {
   if (a.imageUrl) return a.imageUrl;
-  const c = v.chapters.find((x) => x.kind === "act" && x.actId === a.id);
-  return c ? firstPlate(c.doc) : null;
+  const c = v.chapters.find((x) => x.id === a.chapter);
+  return c ? (c.imageUrl ?? (c.open ? firstPlate(c.doc) : null)) : null;
 }
 
 function placeOf(c: ChapterView, a: ActView | undefined): string {
-  if (!a) return "Before Skyrim";
+  if (!a) return "Prologue";
   return [`Act ${a.n}`, c.fromSave ? `from ${c.fromSave.toLowerCase()}` : null].filter(Boolean).join(" | ");
 }
 
-/** "Opens at Speech 40. Speech 30 now." or "Opens when you tick Hunt and tan her first hides." */
+/** "Unlocks at Speech 40. Speech 30 now." or "Unlocks when you tick Hunt and tan her first hides." */
 function waitingText(v: PlaythroughView, c: ChapterView): string {
   const w = c.waitsOn;
-  if (!w) return "Not open yet.";
+  if (!w) return "Not unlocked yet.";
   const o = v.acts.flatMap((a) => a.objectives).find((x) => x.id === w.id);
   if (w.reach) {
     const now = o?.worked.meter?.value;
-    return `Opens at ${w.reach}.${now !== undefined && now !== null ? ` ${w.reach.replace(/\s\d+$/, "")} ${now} now.` : ""}`;
+    return `Unlocks at ${w.reach}.${now !== undefined && now !== null ? ` ${w.reach.replace(/\s\d+$/, "")} ${now} now.` : ""}`;
   }
-  if (o?.doneBy === "save") return `Opens when your save shows ${w.text} done.`;
-  return `Opens when you tick ${w.text}.`;
+  if (o?.doneBy === "save") return `Unlocks when your save shows ${w.text} done.`;
+  return `Unlocks when you tick ${w.text}.`;
 }
 
 /** The stop a path opens, if it's one of these. */

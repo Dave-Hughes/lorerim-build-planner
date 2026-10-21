@@ -74,11 +74,11 @@ test("an assistant drafts a playthrough end to end, refused for an objective tha
   expect(sug.isError, sug.text).toBe(false);
   expect(sug.json().suggested).toBe(true);
 
-  // A beat needs its objective; then one that opens when the hides are tanned.
-  expect((await go("write_chapter", { playthrough: pid, kind: "beat", title: "Made with Care", text: "The hide was rough under her hands." })).isError).toBe(true);
-  const beat = await go("write_chapter", { playthrough: pid, kind: "beat", title: "Made with Care", text: "The hide was rough under her hands.", act: "1", after: "Hunt and tan her first hides" });
+  // A chapter that unlocks needs a real objective (WO-118); then one that unlocks when the hides are tanned.
+  expect((await go("write_chapter", { playthrough: pid, title: "Made with Care", text: "The hide was rough under her hands.", unlocksWhen: "Tan a dragon" })).isError).toBe(true);
+  const beat = await go("write_chapter", { playthrough: pid, title: "Made with Care", text: "The hide was rough under her hands.", act: "1", unlocksWhen: "Hunt and tan her first hides" });
   expect(beat.isError, beat.text).toBe(false);
-  const chapter = await go("write_chapter", { playthrough: pid, kind: "chapter", title: "Chapter One: The Chapel by the Sea", text: "The chapel bells in Anvil rang the hours.\n\nShe learned the songs before her letters." });
+  const chapter = await go("write_chapter", { playthrough: pid, title: "Chapter One: The Chapel by the Sea", text: "The chapel bells in Anvil rang the hours.\n\nShe learned the songs before her letters." });
   expect(chapter.isError, chapter.text).toBe(false);
 
   // The save decides a save objective, never the assistant; an estimate isn't a snapshot.
@@ -120,8 +120,8 @@ test("on the site: private on its build's card under My characters, a tick opens
   // The Levels tab is the build linked through the door (WO-111c).
   // Other specs add levels to the shared test build, so the count isn't fixed: the words are.
   await expect(page.getByRole("tablist", { name: "Build sections" }).getByRole("tab", { name: /^Levels/ })).toContainText(/Levels 1 to \d+/);
-  // A waiting beat is a dashed Story marker, never its text (WO-116).
-  await expect(page.getByText("opens when you tick this")).toBeVisible();
+  // A locked chapter is a dashed Story marker, never its text (WO-116).
+  await expect(page.getByText("unlocks when you tick this")).toBeVisible();
   await expect(page.getByText("The hide was rough under her hands.")).toHaveCount(0);
 
   await page.getByRole("checkbox", { name: "Hunt and tan her first hides" }).click();

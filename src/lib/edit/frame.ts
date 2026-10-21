@@ -45,7 +45,6 @@ export interface EditFrameData {
     acts: number;
     objectives: number;
     chapters: number;
-    pieces: number;
     /** Every place a picture can go (WO-117), in story order, empty ones first in each group. */
     pictures: PictureGroup[];
   } | null;
@@ -85,7 +84,7 @@ function picturesOf(p: PlaythroughRecord, cover: string | null, hasBuild: boolea
       label: `Act ${a.n}`,
       slots: empties([
         { key: `a${a.id}`, label: `Act ${a.n}'s card`, url: a.imageUrl ?? null, to: { kind: "act" as const, id: a.id } },
-        ...v.chapters.filter((c) => c.actId === a.id && (c.kind === "entry" || c.kind === "beat")).map(chapter),
+        ...v.chapters.filter((c) => c.actId === a.id).map(chapter),
       ]),
     })),
   ];
@@ -99,8 +98,7 @@ function runPart(p: PlaythroughRecord, cover: string | null, hasBuild: boolean):
     visibility: p.visibility,
     acts: v.acts.length,
     objectives: v.acts.reduce((n, a) => n + a.objectives.length, 0),
-    chapters: v.chapters.filter((c) => c.kind === "chapter" || c.kind === "act").length,
-    pieces: v.chapters.filter((c) => c.kind === "entry" || c.kind === "beat").length,
+    chapters: v.chapters.length,
     pictures: picturesOf(p, cover, hasBuild),
   };
 }

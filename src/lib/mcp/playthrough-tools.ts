@@ -19,7 +19,7 @@ const playthrough = z.string().min(1).max(80).describe("The playthrough's id, fr
 // JSON schema before sending and don't always get an anyOf right.
 const act = z.string().min(1).max(60).describe('The act: its number as a string ("2"), "Act II", or its name.');
 const objective = z.string().min(1).max(160).describe("The objective: its id from get_playthrough, as a string, or its words.");
-const chapter = z.string().min(1).max(60).describe("The chapter, entry or beat: its id from get_playthrough, as a string, or its title.");
+const chapter = z.string().min(1).max(60).describe("The chapter: its id from get_playthrough, as a string, or its title.");
 const linkSchema = z.object({ kind: z.enum(LINK_KINDS), name: z.string().min(1).max(160) }).describe('What it links to in the planner, by name: a quest ("Name (Line)" when two lines have one of that name), a quest line, a spell, an item or a follower. Leave it out for the player\'s own aims; never invent a quest.');
 /** How the planner knows it's done, as flat fields: give one of quest (and stage), reachKey and reachTarget, or byHand. */
 const doneFields = {
@@ -91,7 +91,7 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     z.object({ playthrough, act, name: actFields.name.optional(), levels: actFields.levels.optional(), place: actFields.place.optional(), goal: actFields.goal.optional(), standingRule: z.string().max(200).optional().describe("The standing rule; an empty string takes it away.") }),
     (p, a: Parameters<typeof t.setAct>[1]) => t.setAct(p, a),
   );
-  tool("remove_act", "Remove an act", "Remove an act, its objectives, entries and beats; the last act stays.", z.object({ playthrough, act }), (p, a: Parameters<typeof t.removeAct>[1]) => t.removeAct(p, a));
+  tool("remove_act", "Remove an act", "Remove an act, its objectives and chapters; the last act stays.", z.object({ playthrough, act }), (p, a: Parameters<typeof t.removeAct>[1]) => t.removeAct(p, a));
   tool("move_act", "Move an act", "Move an act to a position (1 is first).", z.object({ playthrough, act, to: z.number().int().min(1) }), (p, a: Parameters<typeof t.moveAct>[1]) => t.moveAct(p, a));
   tool(
     "add_objective",
@@ -131,27 +131,26 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
   );
   tool(
     "write_chapter",
-    "Write a piece of the tale",
-    "Write Tale only (rule 12): a chapter from before the game, an act's own chapter (kind act, with `act`: the story of that stretch, written before the player plays it, one per act), an entry written after play (from the save and what the player said), or a beat that opens when an objective is done (rule 16). Text in Markdown: paragraphs, a heading, a quote, bold and italic; no images, which the author adds on the site. The Story's limits hold.",
+    "Write a chapter",
+    "Write a chapter of the story, Tale only (rule 12). A chapter sits in the Prologue (no `act`: the story before the first act) or in an act (`act`); any chapter can unlock when one of its act's objectives is done (`unlocksWhen`, rule 16). The first chapter of an act opens its card on Play. Text in Markdown: paragraphs, a heading, a quote, bold and italic; no images, which the author adds on the site. The Story's limits hold.",
     z.object({
       playthrough,
-      kind: z.enum(["chapter", "act", "entry", "beat"]),
       title: z.string().min(1).max(60),
       text: z.string().min(1).max(60_000),
-      act: act.optional().describe("The act an act's chapter opens (required for kind act), or the act an entry belongs to."),
-      after: objective.optional().describe("For a beat, the objective that opens it (required); for an entry, the objective it tells."),
-      fromSave: z.string().max(60).optional().describe('For an entry: the save it was written from, "Save 7, 19 Oct 2026".'),
+      act: act.optional().describe("The act the chapter sits in; none, the Prologue."),
+      unlocksWhen: objective.optional().describe("The objective that unlocks it; until it's done readers see its title and what unlocks it. It puts the chapter in that objective's act."),
+      fromSave: z.string().max(60).optional().describe('Written after play from a save: the save, "Save 7, 19 Oct 2026".'),
     }),
     (p, a: Parameters<typeof t.writeChapter>[1]) => t.writeChapter(p, a),
   );
   tool(
     "set_chapter",
-    "Change a piece of the tale",
-    "Change a chapter, entry or beat's title, its text (Markdown, as write_chapter), the objective a beat opens after, or an entry's save.",
-    z.object({ playthrough, chapter, title: z.string().min(1).max(60).optional(), text: z.string().min(1).max(60_000).optional(), after: objective.optional(), fromSave: z.string().max(60).optional() }),
+    "Change a chapter",
+    "Change a chapter's title, its text (Markdown, as write_chapter), the objective that unlocks it (unlocksWhen; \"none\" for none), or the save it was written from.",
+    z.object({ playthrough, chapter, title: z.string().min(1).max(60).optional(), text: z.string().min(1).max(60_000).optional(), unlocksWhen: objective.optional(), fromSave: z.string().max(60).optional() }),
     (p, a: Parameters<typeof t.setChapter>[1]) => t.setChapter(p, a),
   );
-  tool("remove_chapter", "Remove a piece of the tale", "Remove a chapter, entry or beat.", z.object({ playthrough, chapter }), (p, a: Parameters<typeof t.removeChapter>[1]) => t.removeChapter(p, a));
+  tool("remove_chapter", "Remove a chapter", "Remove a chapter.", z.object({ playthrough, chapter }), (p, a: Parameters<typeof t.removeChapter>[1]) => t.removeChapter(p, a));
   tool(
     "set_snapshot",
     "Where the player stands, from the save",
@@ -170,12 +169,12 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
     }),
     (p, a: Parameters<typeof t.setSnapshot>[1]) => t.setSnapshot(p, a),
   );
-  tool("get_playthrough", "Read a playthrough", "Get one of the player's playthroughs in the plain shape the inputs use: its acts, each with its own chapter if written, objectives with how each stands (done is the save's or the player's) and the chapters that hang off each, the tale, and where the player stands.", z.object({ playthrough }), (p, a: { playthrough: string }) => t.getPlaythroughTool(p, a));
+  tool("get_playthrough", "Read a playthrough", "Get one of the player's playthroughs in the plain shape the inputs use: its acts, objectives with how each stands (done is the save's or the player's) and the chapters that unlock from each, the story's chapters in reading order (each with its act and unlocksWhen), and where the player stands.", z.object({ playthrough }), (p, a: { playthrough: string }) => t.getPlaythroughTool(p, a));
   tool("list_my_playthroughs", "List the player's playthroughs", "List the signed-in player's playthroughs: id, name, who can see it, acts, last change, and whether an assistant drafted it.", z.object({}), (p) => t.listMine(p));
   tool(
     "finish_draft_playthrough",
     "Check a playthrough is ready",
-    "Check one of the player's playthroughs once more: every act has an objective and every beat an objective to open after. It changes nothing; the answer is the review link, or the issues. Publishing is the player's, on the site.",
+    "Check one of the player's playthroughs once more: every act has an objective and every chapter that unlocks has an objective to unlock after. It changes nothing; the answer is the review link, or the issues. Publishing is the player's, on the site.",
     z.object({ playthrough }),
     (p, a: { playthrough: string }) => t.finishDraft(p, a),
   );

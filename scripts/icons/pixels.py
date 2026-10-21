@@ -1263,6 +1263,17 @@ def ai_assisted():
     return i.outline()
 
 
+def lock():
+    # A locked chapter (WO-118): an iron padlock, its shackle up, a brass keyhole.
+    i = Icon()
+    i.rect(5, 2, 10, 2, "w"); i.rect(4, 3, 5, 7, "w"); i.rect(10, 3, 11, 7, "g")  # the shackle
+    i.rect(3, 7, 12, 14, "g"); i.rect(3, 7, 12, 8, "w"); i.rect(3, 7, 4, 11, "w")  # the body, lit top left
+    i.rect(10, 9, 12, 14, "G"); i.rect(4, 13, 12, 14, "G")     # shade, lower right
+    i.rect(7, 9, 8, 10, "k"); i.rect(7, 11, 8, 12, "k")         # the keyhole
+    i.px(7, 9, "b")                                            # brass at its rim
+    return i.outline()
+
+
 def tab_setup():
     # Set up (WO-117): a Nord's horned helmet, the character as they're made.
     i = Icon()
@@ -2559,7 +2570,7 @@ RACES = {
     "Orsimer": race_orsimer, "Redguard": race_redguard,
 }
 
-MARKS = {"AI assisted": ai_assisted, "Trainer": trainer, "Skill book": skill_book, "Banked": banked, "Perk points": perk_point, "Note": note, "Power": power, "Shout": tag_shouts}
+MARKS = {"AI assisted": ai_assisted, "Lock": lock, "Trainer": trainer, "Skill book": skill_book, "Banked": banked, "Perk points": perk_point, "Note": note, "Power": power, "Shout": tag_shouts}
 SLOTS = {
     "Main hand": slot_main_hand, "Off hand": slot_off_hand, "Head": slot_head, "Body": slot_body,
     "Hands": slot_hands, "Feet": slot_feet, "Ring": slot_ring, "Amulet": slot_amulet, "Ammo": slot_ammo,

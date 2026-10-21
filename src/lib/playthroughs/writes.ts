@@ -9,6 +9,7 @@ import type { BuildVisibility } from "@/lib/builds/validate";
 import { newAccountHold } from "@/lib/moderation/limits";
 import { actSchema, chapterTitleSchema, detailsSchema, firstIssue, taleSchema, objectiveSchema, snapshotSchema, type ActInput, type ObjectiveInput, type SnapshotInput } from "./validate";
 import { PLAYTHROUGH_LIMITS, type ChapterKind, type ObjectiveStatus } from "./types";
+import { storyOrder } from "./view";
 
 /**
  * A playthrough's writes (WO-111), shared by the edit page's actions and the assistants' tools, so
@@ -453,12 +454,18 @@ async function objectiveAct(pid: string, objectiveId: number): Promise<number> {
   return row?.actId ?? fail("The playthrough has no such objective.");
 }
 
+/**
+ * A chapter (WO-118): one kind of story text to the player. It sits in the Prologue (no act) or in an
+ * act, and can unlock when one of the act's objectives is done. `kind` is kept and set from that, so
+ * old rows read as before: the Prologue's are `chapter`; an act's first chapter written before play is
+ * `act`; one that unlocks is `beat`; one written after play from a save, or a later one, is `entry`.
+ */
 export interface ChapterInput {
-  kind: ChapterKind;
   title: string;
   doc?: unknown;
   actId?: number | null;
-  opensAfter?: number | null;
+  /** The objective it unlocks after; it fixes the chapter's act too. */
+  unlocksWhen?: number | null;
   fromSave?: string | null;
 }
 
@@ -466,41 +473,38 @@ export async function addChapter(userId: string, pid: string, input: ChapterInpu
   const p = await ownedPlaythrough(userId, pid);
   const title = chapterTitleSchema.safeParse(input.title);
   if (!title.success) fail(firstIssue(title.error));
-  if (!["chapter", "act", "entry", "beat"].includes(input.kind)) fail("A piece of the tale is a chapter, an act's chapter, an entry or a beat.");
   const { doc, length } = chapterDoc(input.doc ?? lineDoc(""));
   let actId: number | null = null;
   let opensAfter: number | null = null;
-  if (input.kind === "chapter") actId = null;
-  else if (input.kind === "act") {
-    // One per act (WO-116): the story of that stretch, before the player plays it.
-    if (!input.actId) fail("Say which act the chapter opens.");
-    actId = (await ownedAct(userId, p.id, input.actId!)).act.id;
-    const [had] = await db()
-      .select({ id: schema.playthroughChapters.id })
-      .from(schema.playthroughChapters)
-      .where(and(eq(schema.playthroughChapters.actId, actId), eq(schema.playthroughChapters.kind, "act")))
-      .limit(1);
-    if (had) fail("This act has its chapter already. Edit that one.");
-  } else if (input.opensAfter) {
-    opensAfter = Number(input.opensAfter);
+  if (input.unlocksWhen) {
+    opensAfter = Number(input.unlocksWhen);
     actId = await objectiveAct(p.id, opensAfter);
+    if (input.actId && Number(input.actId) !== actId) fail("A chapter unlocks from one of its own act's objectives.");
   } else if (input.actId) actId = (await ownedAct(userId, p.id, input.actId)).act.id;
-  else fail(input.kind === "beat" ? "A beat opens after an objective: say which." : "Say which act the entry belongs to.");
+  const fromSave = actId !== null && input.fromSave ? String(input.fromSave).slice(0, PLAYTHROUGH_LIMITS.label) : null;
   const [{ n, top }] = await db()
     .select({ n: count(), top: max(schema.playthroughChapters.position) })
     .from(schema.playthroughChapters)
     .where(eq(schema.playthroughChapters.playthroughId, p.id));
-  if (n >= PLAYTHROUGH_LIMITS.chapters) fail(`A playthrough can have ${PLAYTHROUGH_LIMITS.chapters} chapters, entries and beats.`);
-  const fromSave = input.kind === "entry" && input.fromSave ? String(input.fromSave).slice(0, PLAYTHROUGH_LIMITS.label) : null;
+  if (n >= PLAYTHROUGH_LIMITS.chapters) fail(`A playthrough can have ${PLAYTHROUGH_LIMITS.chapters} chapters.`);
+  let kind: ChapterKind = "chapter";
+  if (actId !== null) {
+    if (opensAfter) kind = "beat";
+    else if (fromSave) kind = "entry";
+    else {
+      const [had] = await db().select({ id: schema.playthroughChapters.id }).from(schema.playthroughChapters).where(eq(schema.playthroughChapters.actId, actId)).limit(1);
+      kind = had ? "entry" : "act";
+    }
+  }
   const [row] = await db()
     .insert(schema.playthroughChapters)
-    .values({ playthroughId: p.id, kind: input.kind, title: title.data!, doc, textLength: length, actId, opensAfter, fromSave, writtenBy, position: (top ?? 0) + 1 })
+    .values({ playthroughId: p.id, kind, title: title.data!, doc, textLength: length, actId, opensAfter, fromSave, writtenBy, position: (top ?? 0) + 1 })
     .returning({ id: schema.playthroughChapters.id });
   await touch(p.id);
   return row.id;
 }
 
-export async function setChapter(userId: string, pid: string, chapterId: number, input: { title?: string; doc?: unknown; opensAfter?: number | null; fromSave?: string | null }, writtenBy?: string | null) {
+export async function setChapter(userId: string, pid: string, chapterId: number, input: { title?: string; doc?: unknown; unlocksWhen?: number | null; fromSave?: string | null }, writtenBy?: string | null) {
   const { p, c } = await ownedChapter(userId, pid, chapterId);
   const set: Partial<typeof schema.playthroughChapters.$inferInsert> = {};
   if (input.title !== undefined) {
@@ -513,10 +517,19 @@ export async function setChapter(userId: string, pid: string, chapterId: number,
     set.doc = doc;
     set.textLength = length;
   }
-  // A beat opens after its objective; an entry tells one (WO-117: both set where they're written).
-  if (input.opensAfter !== undefined && (c.kind === "beat" || c.kind === "entry")) {
-    set.opensAfter = input.opensAfter ? Number(input.opensAfter) : null;
-    if (set.opensAfter) set.actId = await objectiveAct(p.id, set.opensAfter);
+  // Any chapter in an act can unlock when one of its objectives is done (WO-118); its kind follows.
+  if (input.unlocksWhen !== undefined) {
+    const after = input.unlocksWhen ? Number(input.unlocksWhen) : null;
+    if (after) {
+      const actId = await objectiveAct(p.id, after);
+      if (c.actId !== null && c.actId !== actId) fail("A chapter unlocks from one of its own act's objectives.");
+      set.opensAfter = after;
+      set.actId = actId;
+      set.kind = "beat";
+    } else {
+      set.opensAfter = null;
+      if (c.kind === "beat") set.kind = "entry";
+    }
   }
   if (input.fromSave !== undefined && c.kind === "entry") set.fromSave = input.fromSave ? input.fromSave.slice(0, PLAYTHROUGH_LIMITS.label) : null;
   if (writtenBy !== undefined) set.writtenBy = writtenBy;
@@ -541,7 +554,7 @@ export async function setTalePicture(userId: string, pid: string, url: string | 
 }
 
 /**
- * An act's chapter, written in the Story (WO-117): made on its first word, not when its place is
+ * An act's first chapter, written in the Story (WO-117): made on its first word, not when its place is
  * opened, then changed like any chapter. Returns its id.
  */
 export async function writeActChapter(userId: string, pid: string, actId: number, input: { title?: string; doc?: unknown }, writtenBy: string | null = null): Promise<number> {
@@ -550,13 +563,14 @@ export async function writeActChapter(userId: string, pid: string, actId: number
   const [had] = await db()
     .select({ id: schema.playthroughChapters.id })
     .from(schema.playthroughChapters)
-    .where(and(eq(schema.playthroughChapters.actId, act.id), eq(schema.playthroughChapters.kind, "act")))
+    .where(eq(schema.playthroughChapters.actId, act.id))
+    .orderBy(asc(schema.playthroughChapters.position))
     .limit(1);
   if (had) {
     await setChapter(userId, p.id, had.id, input, writtenBy);
     return had.id;
   }
-  return addChapter(userId, p.id, { kind: "act", actId: act.id, title: input.title?.trim() || act.name.slice(0, PLAYTHROUGH_LIMITS.chapterTitle), doc: input.doc }, writtenBy);
+  return addChapter(userId, p.id, { actId: act.id, title: input.title?.trim() || act.name.slice(0, PLAYTHROUGH_LIMITS.chapterTitle), doc: input.doc }, writtenBy);
 }
 
 export async function removeChapter(userId: string, pid: string, chapterId: number) {
@@ -567,12 +581,13 @@ export async function removeChapter(userId: string, pid: string, chapterId: numb
 
 export async function moveChapter(userId: string, pid: string, chapterId: number, to: "up" | "down" | number) {
   const { p, c } = await ownedChapter(userId, pid, chapterId);
-  // Among its own kind of neighbours: the chapters before the game, or the act's entries and beats.
+  // Among its neighbours as they read: the Prologue's chapters, or the act's (WO-118).
+  const acts = await db().select({ id: schema.playthroughActs.id, position: schema.playthroughActs.position }).from(schema.playthroughActs).where(eq(schema.playthroughActs.playthroughId, p.id));
   const rows = await db()
-    .select({ id: schema.playthroughChapters.id, actId: schema.playthroughChapters.actId })
+    .select({ id: schema.playthroughChapters.id, actId: schema.playthroughChapters.actId, kind: schema.playthroughChapters.kind, position: schema.playthroughChapters.position })
     .from(schema.playthroughChapters)
-    .where(eq(schema.playthroughChapters.playthroughId, p.id))
-    .orderBy(asc(schema.playthroughChapters.position));
+    .where(eq(schema.playthroughChapters.playthroughId, p.id));
+  rows.sort(storyOrder(acts));
   const all = rows.map((r) => r.id);
   const peers = rows.filter((r) => r.actId === c.actId).map((r) => r.id);
   const i = peers.indexOf(c.id);
@@ -585,7 +600,12 @@ export async function moveChapter(userId: string, pid: string, chapterId: number
   order.splice(i, 1);
   order.splice(j, 0, c.id);
   slots.forEach((slot, k) => (all[slot] = order[k]));
-  await Promise.all(all.map((id, k) => db().update(schema.playthroughChapters).set({ position: k + 1 }).where(eq(schema.playthroughChapters.id, id))));
+  // An act's kind-act chapter leads it; moved from the top, it reads as any later chapter.
+  const demote = rows.filter((r) => r.kind === "act" && r.actId === c.actId && order[0] !== r.id).map((r) => r.id);
+  await Promise.all([
+    ...all.map((id, k) => db().update(schema.playthroughChapters).set({ position: k + 1 }).where(eq(schema.playthroughChapters.id, id))),
+    ...(demote.length ? [db().update(schema.playthroughChapters).set({ kind: "entry" }).where(inArray(schema.playthroughChapters.id, demote))] : []),
+  ]);
   await touch(p.id);
 }
 

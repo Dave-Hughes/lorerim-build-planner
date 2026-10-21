@@ -8,7 +8,7 @@ import { playthroughsOn } from "@/lib/features";
 import { BOT_MESSAGE, looksLikeBot } from "@/lib/moderation/bot";
 import { currentVersion } from "@/lib/rules/server";
 import type { ActInput, ObjectiveInput, SnapshotInput } from "./validate";
-import type { ChapterKind, ObjectiveStatus } from "./types";
+import type { ObjectiveStatus } from "./types";
 import * as w from "./writes";
 
 /**
@@ -61,8 +61,8 @@ export const moveObjective = async (id: string, objectiveId: number, to: "up" | 
 export const tick = async (id: string, objectiveId: number, status: ObjectiveStatus) => run(id, (u) => w.setStatus(u, id, objectiveId, status));
 export const answer = async (id: string, objectiveId: number, accept: boolean) => run(id, (u) => w.answerSuggestion(u, id, objectiveId, accept));
 
-export const newChapter = async (id: string, input: { kind: ChapterKind; title: string; actId?: number | null; opensAfter?: number | null }) => run(id, (u) => w.addChapter(u, id, input));
-export const saveChapter = async (id: string, chapterId: number, input: { title?: string; doc?: unknown; opensAfter?: number | null; fromSave?: string | null }) => run(id, (u) => w.setChapter(u, id, chapterId, input));
+export const newChapter = async (id: string, input: { title: string; actId?: number | null; unlocksWhen?: number | null }) => run(id, (u) => w.addChapter(u, id, input));
+export const saveChapter = async (id: string, chapterId: number, input: { title?: string; doc?: unknown; unlocksWhen?: number | null; fromSave?: string | null }) => run(id, (u) => w.setChapter(u, id, chapterId, input));
 export const removeChapter = async (id: string, chapterId: number) => run(id, (u) => w.removeChapter(u, id, chapterId));
 export const moveChapter = async (id: string, chapterId: number, to: "up" | "down" | number) => run(id, (u) => w.moveChapter(u, id, chapterId, to));
 export const saveChapterImage = async (id: string, chapterId: number, url: string | null) => run(id, (u) => w.setChapterImage(u, id, chapterId, url));

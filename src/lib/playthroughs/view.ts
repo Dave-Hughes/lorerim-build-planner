@@ -85,7 +85,7 @@ export interface ActView extends ActRow {
   total: number;
   /** Beats in this act with no objective to wait for: open from the start. */
   openBeats: number[];
-  /** The act's own chapter (WO-116), if it has one. */
+  /** The act's first chapter (WO-118): its card reads from it. */
   chapter: number | null;
 }
 export interface ChapterView extends ChapterRow {
@@ -103,7 +103,7 @@ export interface PlaythroughView {
   done: number;
   total: number;
   chapters: ChapterView[];
-  counts: { chapters: number; entries: number; beats: number };
+  counts: { chapters: number };
 }
 
 const ROMAN: [number, string][] = [
@@ -123,11 +123,19 @@ export function roman(n: number): string {
   return out || String(n);
 }
 
-/** "opens at Speech 40" for a reach objective, else "opens when you tick this". */
+/** "unlocks at Speech 40" for a reach objective, else "unlocks when you tick this". */
 function opensText(o: ObjectiveRow): string {
-  if (o.kind === "reach" && o.reach) return `opens at ${reachLabel(o.reach.key)} ${o.reach.target}`;
-  if (o.doneBy === "save") return "opens when your save shows this done";
-  return "opens when you tick this";
+  if (o.kind === "reach" && o.reach) return `unlocks at ${reachLabel(o.reach.key)} ${o.reach.target}`;
+  if (o.doneBy === "save") return "unlocks when your save shows this done";
+  return "unlocks when you tick this";
+}
+
+/** Reading order (WO-118): the Prologue, then each act in turn; in an act its kind-act chapter first, then by place. */
+export function storyOrder(acts: { id: number; position: number }[]) {
+  const actOrder = new Map([...acts].sort((a, b) => a.position - b.position).map((a, i) => [a.id, i]));
+  const actFirst = (c: { kind: ChapterKind }) => (c.kind === "act" ? 0 : 1);
+  return (x: { actId: number | null; kind: ChapterKind; position: number }, y: { actId: number | null; kind: ChapterKind; position: number }) =>
+    (x.actId === null ? -1 : (actOrder.get(x.actId) ?? 0)) - (y.actId === null ? -1 : (actOrder.get(y.actId) ?? 0)) || actFirst(x) - actFirst(y) || x.position - y.position;
 }
 
 export function assemble(rows: { acts: ActRow[]; objectives: ObjectiveRow[]; chapters: ChapterRow[]; snapshot: SnapshotRow | null; link: (l: ObjectiveLink) => LinkShown | null }): PlaythroughView {
@@ -145,7 +153,7 @@ export function assemble(rows: { acts: ActRow[]; objectives: ObjectiveRow[]; cha
       ...o,
       worked: worked.get(o.id)!,
       linkShown: o.link ? rows.link(o.link) : null,
-      tale: chapters.filter((c) => (c.kind === "entry" || c.kind === "beat") && c.opensAfter === o.id).map((c) => ({ id: c.id, title: c.title, open: isOpen(c, doneIds), opens: opensText(o) })),
+      tale: chapters.filter((c) => c.opensAfter === o.id).map((c) => ({ id: c.id, title: c.title, open: isOpen(c, doneIds), opens: opensText(o) })),
     }));
     const counted = views.filter((o) => o.accepted);
     return {
@@ -156,7 +164,7 @@ export function assemble(rows: { acts: ActRow[]; objectives: ObjectiveRow[]; cha
       done: counted.filter((o) => o.worked.done).length,
       total: counted.length,
       openBeats: chapters.filter((c) => c.actId === a.id && c.opensAfter === null && (c.kind === "entry" || c.kind === "beat")).map((c) => c.id),
-      chapter: chapters.find((c) => c.actId === a.id && c.kind === "act")?.id ?? null,
+      chapter: null,
     };
   });
 
@@ -172,10 +180,11 @@ export function assemble(rows: { acts: ActRow[]; objectives: ObjectiveRow[]; cha
       inGame: o ? { id: o.id, text: o.text, act: actName.get(o.actId) ?? "" } : null,
     };
   });
-  // The tale reads in order: chapters before the game, then each act's chapter, entries and beats.
-  const actOrder = new Map(acts.map((a, i) => [a.id, i]));
-  const actFirst = (c: ChapterView) => (c.kind === "act" ? 0 : 1);
-  chapterViews.sort((x, y) => (x.actId === null ? -1 : actOrder.get(x.actId)!) - (y.actId === null ? -1 : actOrder.get(y.actId)!) || actFirst(x) - actFirst(y) || x.position - y.position);
+  // The story reads in order: the Prologue's chapters, then each act's (WO-118). An act's first
+  // chapter written before play (kind act) leads its act, as it always has.
+  chapterViews.sort(storyOrder(acts));
+  // An act's card reads from its first chapter (WO-118).
+  for (const a of actViews) a.chapter = chapterViews.find((c) => c.actId === a.id)?.id ?? null;
 
   const done = actViews.reduce((n, a) => n + a.done, 0);
   const total = actViews.reduce((n, a) => n + a.total, 0);
@@ -185,7 +194,7 @@ export function assemble(rows: { acts: ActRow[]; objectives: ObjectiveRow[]; cha
     done,
     total,
     chapters: chapterViews,
-    counts: { chapters: chapters.filter((c) => c.kind === "chapter").length, entries: chapters.filter((c) => c.kind === "entry").length, beats: chapters.filter((c) => c.kind === "beat").length },
+    counts: { chapters: chapters.length },
   };
 }
 
