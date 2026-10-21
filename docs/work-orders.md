@@ -4905,6 +4905,70 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-125  Pages for the two connectors (design first, 21 Oct 2026)
+
+**Why.** Dave (21 Oct): players need to learn what the planner connector and the save connector are, how to install them and how to use them, on pages that sell them, not a README. Bob boards them on canvas row 30 first; this order is written in full from the boards.
+
+- **The planner connector:** what an assistant can do with it (draft a build that passes the rules, write a playthrough, check quests), adding it to Claude (the connector's address, sign in with Discord), three things to ask it, and an FAQ at the bottom.
+- **The save connector:** what it reads from a save (level, day, place, quests, skills) and what it never does (it only reads; nothing leaves your PC but what you sync), installing the extension in Claude Desktop, using it, and an FAQ.
+- A short motion piece showing a save becoming ticked objectives, if the boards earn it.
+
+### Done when
+- [ ] Written in full from row 30.
+
+---
+
+## WO-124  Leaner: Dave's second test of the edit model (Mac, 21 Oct 2026)
+
+**Why.** Dave tested WO-117 and WO-118 (21 Oct). Edit still feels cluttered: the hero and the big tabs take half the screen before any work shows. The tab names don't say what's in them, and nothing tells you what each tab is for. The active step on the Character rail is hard to see, and orange and red both mean something there. The "i" sits far from its label. Clicking Story in edit waits, then flickers. On Play, the story is easy to miss, done objectives crowd what's left, a chapter can be read before its objective is done, and there's nowhere to tell the planner where she is in your game. The reader takes over the whole screen and you feel lost in it. The AI assisted mark says "through the planner" without saying what the planner is. Design: canvas row 29 (EditCompact, PlayRail, ReaderInPage).
+
+### Part 1. Edit as one slim bar (Mac)
+- **The bar:** in edit, the hero and the icon tabs go. One bar, 64 px, pinned: the cover as a 48 px thumbnail (click it: Character at Details, the cover), the character's name, then text tabs, and on the right Saved, who can see it, and Done. The site header stays above it as now.
+- **The tabs are named for what's in them:** Set up is **Character**, Levels is **Build**, Play is **Playthrough**. Order: Character, Build, Guide, Story, Playthrough. The view's tabs take the same names (Playthrough, Build, Guide). URLs don't change.
+- **One help line per tab,** under the bar, muted, one sentence:
+  - Character: "Who she is at level 1: race, birthsign, traits and starting skills, and the page's name, cover and tags."
+  - Build: "Each level: where the skill points go and which perks she takes. The planner checks every level against the game's rules."
+  - Guide: "How to play her, in your words. Readers find it under Guide."
+  - Story: "Her story in chapters. A chapter tied to an objective stays locked until that objective is done."
+  - Playthrough: "Her run through the game: acts, and the objectives in each. An objective linked to a quest ticks from your save."
+  - Use the character's pronoun the way the page already does; a build with no character says "the build".
+- **Phones:** the bar keeps the thumbnail, the tab you're on as a menu, and Done; the help line wraps.
+
+### Part 2. The step rail and the "i" (Mac)
+- **The active step is lit:** its row on `#1c2430`, a 3 px ember bar on its left, its number in ember, its label in the text colour. The others stay quiet.
+- **A step that needs you** is brass with a "!" after its label, not orange or red. Red stays for errors only.
+- **The "i" sits 6 px after its label,** on the same line, everywhere a field has one: fix it once in the shared label and tip, not per field.
+
+### Part 3. Say what the planner is (Mac)
+- The AI assisted mark's tooltip: "{author} made this with an AI assistant, like Claude, connected to the planner. The planner checks every level and perk against LoreRim's rules, as it does for any build you make here." Then a link, "Use the planner with your assistant ›", to the planner connector's page (WO-125). Until that page is up, leave the link out.
+
+### Part 4. The Story tab's wait and flicker (Mac)
+- Clicking Story in edit waits, then the screen flickers. Story is the one tab that crosses from `/b/[id]` to `/p/[id]/edit/story`, and no route has a `loading.tsx`, so the guess is the whole frame waits on the story's data and then remounts. Find the real cause first and write it under Done when, with the time from click to the bar showing, before and after.
+- **Done is:** the bar and the tabs never disappear or redraw when you change tab; the tab's own area may show a quiet loading state; no flash of the wrong page or an empty frame.
+
+### Part 5. Playthrough: the story on show, done things folded, chapters locked, where she is (Mac)
+- **Her story's card** tops the left rail, above Acts: the story's picture (the first chapter's, if the story has none), "Her story", its title, and "Continue: {the next open chapter she hasn't read} ›", or "Start reading ›" before any. The act's card and Read Act I stay.
+- **Done objectives fold** into one line at the end of the act's list, "4 done ▾"; open it to see them, ticked. The count beside Objectives says how many are left ("7 to do").
+- **A chapter tied to an objective is locked until that objective is done,** chapters and entries too, not only beats (`isOpen` in `src/lib/playthroughs/status.ts`). Under the objective: "Locked  {chapter} unlocks when this is done", in a quiet dashed box as on the board. In the reader's contents a locked chapter is greyed with "(locked)"; opening one says "This chapter opens when {objective} is done." with **Read it anyway** (it may spoil what's ahead). In edit the owner sees and edits every chapter.
+- **"Where is she in your game?"** shows to the owner when the run has no save or entry yet, above the act's card: "Fill it in from a save, or by hand. The save ticks her quests for you." **Read a save** opens the same reader as Edit's Playthrough tab. **Enter by hand** opens three fields, level, day and where she is, saved as a snapshot the way `set_snapshot` saves one (source `hand`). **Or use the save connector ›** goes to the save connector's page (WO-125); leave it out until that page is up. Once there's a snapshot this box goes and the line "Level 10, day 15, Ivarstead. From Save 70, 21 Oct. Update ›" takes its place.
+
+### Part 6. The reader inside the page (Mac)
+- The reader no longer covers the screen (this replaces WO-116's overlay and row 27's slide-up). `/p/[id]/story/[chapter]` is a page in the site: the site header, then a slim bar with "‹ {name}'s playthrough", the story's title, and Previous, Next and (for the owner) Edit.
+- **Its own reading space stays:** the contents down the left, 300 px, acts as headings and chapters under them, the one you're on lit like the step rail, locked ones greyed; the dark ground; the 680 px column; the chapter's picture, 420 px, over its title.
+- **Phones:** the contents fold into a Contents button in the bar.
+- Esc no longer closes anything; the back link and the browser's back do.
+
+### Done when
+- [ ] Part 1: the slim bar, the tabs renamed in edit and view, a help line on each tab.
+- [ ] Part 2: the active step lit, needs-you in brass, every "i" 6 px from its label.
+- [ ] Part 3: the AI assisted tooltip says what the planner is (the link waits on WO-125).
+- [ ] Part 4: the cause of the Story tab's wait and flicker, the times before and after, and no redraw of the bar.
+- [ ] Part 5: the story's card on the rail, done objectives folded, chapters locked until done with Read it anyway, Where is she in your game? with Read a save and Enter by hand.
+- [ ] Part 6: the reader inside the page, contents on the left, Contents on a phone.
+- [ ] Every check in CLAUDE.md passes. Screenshots at 1440 and 390 of edit on each tab, Playthrough with and without a snapshot, and a chapter in the reader, compared against row 29. Commit on `staging` per part, push, and stop for Dave.
+
+---
+
 ## WO-123  Objectives you can tick and the save can tick, and skills from the save (21 Oct 2026)
 
 **Why.** Dave's first save sync worked (Save 70: level 10, day 15, Ivarstead, 178 quest stages), but nothing ticked itself: every objective in the drafted Kyria is "you tick it" with no planner quest linked, so the save's quest stages had nothing to match. Dave (21 Oct): an objective shouldn't be save **or** tick, it should be both. The save ticks it on its own when it can, so the list stays clean, and there's always a box to tick by hand. And the save gave no skills, so a skill goal ("Lute 66") can't be checked from it.
