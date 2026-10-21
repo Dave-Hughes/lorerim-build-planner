@@ -4922,7 +4922,7 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 **Morning notes.** As you finish each order, add a line to `docs/night-2026-10-20.md`: the order, its commits, what's on staging to try (with links on `https://lorerim-build-planner-git-staging-daves-projects-a9b7d176.vercel.app`), and anything blocked. Commit it with each order, so it's current if the run stops partway.
 
 ### Done when
-- [ ] WO-118 done.
+- [x] WO-118 done.
 - [ ] WO-115 Parts 3 to 5 done.
 - [ ] WO-119 done.
 - [ ] WO-109b done.
