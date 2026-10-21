@@ -8,6 +8,7 @@ import kyria from "./__fixtures__/kyria-drafted.json";
 import { versionData } from "./errors";
 import { getRules, getTree, styleGuide } from "./facts";
 import { issuesOf, planFromPlain, type PlainBuild } from "./plan";
+import { outcomeOf } from "./door-events";
 import { reviewBuild } from "./review";
 import { howPointsWork } from "./rules-text";
 
@@ -72,5 +73,16 @@ describe("reviewBuild (WO-119)", () => {
   });
   it("gives the sample build none", () => {
     expect(review(readPlan(sample as unknown as BuildPlan))).toEqual([]);
+  });
+});
+
+describe("door events (WO-119)", () => {
+  const text = (t: string, isError = false) => ({ content: [{ type: "text" as const, text: t }], ...(isError ? { isError } : {}) });
+  it("say ok, refused with a code, or warned with every warning's code, never the text", () => {
+    expect(outcomeOf(text('{"build":"x"}'))).toEqual({ outcome: "ok", code: null });
+    expect(outcomeOf(text("Nothing was saved. Level 3: Needs Destruction 75.", true))).toEqual({ outcome: "refused", code: "rule" });
+    expect(outcomeOf(text("Too many calls. Try again in a minute.", true))).toEqual({ outcome: "refused", code: "rate-limit" });
+    expect(outcomeOf(text(JSON.stringify({ warnings: [{ code: "skill-points-piling" }, { code: "destiny-unspent" }] })))).toEqual({ outcome: "warned", code: "skill-points-piling,destiny-unspent" });
+    expect(outcomeOf(text("# How to write"))).toEqual({ outcome: "ok", code: null });
   });
 });

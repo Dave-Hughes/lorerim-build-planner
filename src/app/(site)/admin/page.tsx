@@ -3,7 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { auth } from "@/auth";
 import { EarlyAccess } from "@/components/admin/early-access";
+import { Connector } from "@/components/admin/connector";
 import { ImportBuild } from "@/components/admin/import-build";
+import { doorCounts } from "@/lib/mcp/door-events";
+import { mcpOn } from "@/lib/features";
 import { isAdmin } from "@/lib/users/admin";
 import { listEarlyAccess, listInvites } from "@/lib/users/invite-queries";
 import { inviteState } from "@/lib/users/invites";
@@ -12,11 +15,11 @@ import styles from "./admin.module.css";
 export const metadata: Metadata = { title: "Admin", robots: { index: false } };
 export const dynamic = "force-dynamic";
 
-/** The admins' page (WO-90, WO-96): the way to the review list, early access, and importing a build. Everyone else gets a 404. */
+/** The admins' page (WO-90, WO-96): the way to the review list, early access, importing a build, and the connector's counts (WO-119). Everyone else gets a 404. */
 export default async function AdminPage() {
   const userId = (await auth())?.user?.id;
   if (!(await isAdmin(userId))) notFound();
-  const [invites, people] = await Promise.all([listInvites(), listEarlyAccess()]);
+  const [invites, people, door] = await Promise.all([listInvites(), listEarlyAccess(), mcpOn() ? doorCounts() : null]);
   return (
     <main className={`page ${styles.main}`}>
       <h1 className="title">Admin</h1>
@@ -28,6 +31,7 @@ export default async function AdminPage() {
         people={people.map((p) => ({ id: p.id, name: p.name ?? "Unknown", image: p.image, at: p.at! }))}
       />
       <ImportBuild />
+      {door && <Connector weeks={door} />}
     </main>
   );
 }

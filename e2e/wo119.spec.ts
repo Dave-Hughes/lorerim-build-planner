@@ -40,4 +40,13 @@ test("skill points piling up come back as a warning, and spending them clears it
   }
   expect(codes(last)).not.toContain("skill-points-piling");
   expect(codes(await go("get_build", { build }))).not.toContain("skill-points-piling");
+
+  // The admin page counts it (an admin is the test author).
+  await context.clearCookies();
+  await signIn(context);
+  await page.goto("/admin");
+  const connector = page.getByRole("region", { name: "Connector" });
+  await expect(connector).toContainText("add_level");
+  await expect(connector).toContainText("skill-points-piling");
+  await expect(connector).toContainText(/finished with warnings standing/);
 });

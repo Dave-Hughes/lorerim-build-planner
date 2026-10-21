@@ -462,3 +462,21 @@ export const playthroughSnapshots = pgTable("playthrough_snapshot", {
   prevLevel: integer("prev_level"),
   prevSkills: jsonb("prev_skills").$type<Record<string, number> | null>(),
 });
+
+/**
+ * One call through the door (WO-119): when, the tool, how it went (ok, refused, warned), the refusal's
+ * or warning's code, and the build or playthrough it was about. No user and no text: it's for counting
+ * whether assistants build better after a change to the instructions.
+ */
+export const doorEvents = pgTable(
+  "door_event",
+  {
+    id: serial("id").primaryKey(),
+    at: timestamp("at", { withTimezone: true }).notNull().defaultNow(),
+    tool: text("tool").notNull(),
+    outcome: text("outcome").$type<"ok" | "refused" | "warned">().notNull(),
+    code: text("code"),
+    target: text("target"),
+  },
+  (t) => [index("door_event_at_idx").on(t.at)],
+);

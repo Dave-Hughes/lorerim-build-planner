@@ -4,6 +4,7 @@ import { FactsError } from "@/lib/mcp/facts";
 import { registerFactTools } from "@/lib/mcp/fact-tools";
 import { answer, type Answer } from "@/lib/mcp/answer";
 import { mcpCall } from "@/lib/moderation/limits";
+import { recordDoorEvent } from "@/lib/mcp/door-events";
 import { registerBuildTools } from "@/lib/mcp/build-tools";
 import { registerPlaythroughTools } from "@/lib/mcp/playthrough-tools";
 import { verifyBearer } from "@/lib/oauth/mcp-auth";
@@ -37,6 +38,14 @@ async function guarded(ip: string, run: () => unknown | Promise<unknown>): Promi
 function handlerFor(ip: string, origin: string) {
   return createMcpHandler(
     (server) => {
+      // Every call is counted (WO-119): its tool, outcome and code, and what it named; never who or what it said.
+      const register = server.registerTool.bind(server);
+      server.registerTool = ((name: string, config: unknown, cb: (args: unknown, ctx: unknown) => Promise<Answer>) =>
+        register(name, config as never, (async (args: unknown, ctx: unknown) => {
+          const res = await cb(args, ctx);
+          await recordDoorEvent(name, args, res);
+          return res;
+        }) as never)) as typeof server.registerTool;
       registerFactTools(server, (run) => guarded(ip, run));
       registerBuildTools(server, (run) => guarded(ip, run), origin);
       // Playthroughs (WO-111), while their switch is on.
