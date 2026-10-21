@@ -4992,13 +4992,17 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 ### Part 3. "Open for you" (Mac, after the first batch)
 - `src/lib/quests/open.ts` gains per-quest needs: `openFor(quest, where)` returns `{ state: "open" | "locked" | "unknown", because: string[] }` from the quest's checked needs against `where` (level, place, finished lines, and quest stages when the snapshot has them). A quest with any need `not yet` is `unknown`, never `open`.
 - `get_quest` and `suggest_quests` take the player's state (level, place, done lines, or a playthrough id whose snapshot carries quest stages) and answer `openFor` for each quest: "open for you", "locked: needs level 20", or "unknown: the start isn't checked". `suggest_quests` offers only `open` quests and never `unknown` ones.
-- The Quests pages' Where you are uses the same function for one-off quests, not only lines.
+- **Changed 20 Oct, 22:45 (Dave):** the Quests pages carry no player context. They are about the quests themselves; a player's level and progress belong to their playthrough. So: no Where you are, no "open for you" or locked badges, and no main-quest progress on any Quests page; take out what's there now. Facts about a quest ("Opens at level 25", "After the Thieves Guild") stay. `openFor` serves the door, and later Play.
+- **Don't send who and where through the door yet.** Bob found tonight that the start check's who and where name the first objective's target, not the person who starts the quest, for 175 quests (The Book of Love shows Fastred at Fellstar Farm; Dinya Balu in the Temple of Mara starts it). Until WO-121 fixes that, `get_quest` and `get_quest_start` answer with the ways in (each starter as `way_of` words it, with its place and line) and the first objective as `then`, and leave `who` and `where` out.
 
 ### Part 4. The rule for assistants
 - `content/mcp/style.md`: "Never call a quest available, open or possible unless the planner answers open for you. Unknown means say unknown. Never say how a quest ends unless the planner lists that ending." Tests on the style guide text.
 - The Book chat's questsense lenses stay a shortlist tool on Dave's PC; the planner is the referee. Dave tells that chat to ask `get_quest` before recommending.
 
 ### Part 5. Pages
+
+**Don't build Part 5 tonight.** It shows how each quest starts, which is wrong for 175 quests until WO-121. Write "Blocked (night run): waits for WO-121" under Done when and go on.
+
 - A quest's page (`/quests/<line>/<quest>` or the line page's quest rows): How it starts (from the per-quest check, as the story page shows it), How it can end (Part 1), both marked checked or not. The line page's Where you are reads `openFor`.
 
 ### Done when
