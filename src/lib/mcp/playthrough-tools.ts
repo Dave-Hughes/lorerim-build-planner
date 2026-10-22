@@ -57,7 +57,7 @@ export function registerPlaythroughTools(server: Server, guarded: Guarded, origi
   tool(
     "create_playthrough",
     "Start a playthrough",
-    "Make a character with a run in the player's account: with character creation's fields (race, birthsign, majors, minors...), the build and the run together, Act I set from the start; or with build, a run on one of the player's builds. Both private and drafted by you; the player reads and publishes. At most 10 private drafted runs per player.",
+    "Make a character with a run in the player's account: with character creation's fields (race, birthsign, majors, minors...), the build and the run together, Act I set from the start; or with build, a run on one of the player's builds. Both private and drafted by you; the player reads and publishes. At most 10 private drafted runs per player. Settle the character's reason to travel with the player first (style guide rule 19).",
     z.object({
       name: z.string().min(1).max(80).describe("The character's name: the run's, and the new build's."),
       line: z.string().max(140).optional().describe("One sentence: who the character is."),

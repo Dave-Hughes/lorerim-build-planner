@@ -5100,11 +5100,14 @@ The game has already planted many of these hooks. Counted on Dave's PC (21 Oct, 
 - `suggest_objective` and `suggest_quests` don't change.
 
 ### Done when
-- [ ] Part 1: rule 19 and the How to build line in `style.md`; the Honesty rules renumbered 20 to 24.
-- [ ] Part 2: the sentence in `create_playthrough`'s description.
-- [ ] A test that `get_style_guide` returns the new rule, and that no "rule N" reference in `src/lib/mcp` points past the last rule.
-- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Dave: he asks an assistant to design a new character through the connector and it asks him why she travels.
-
+- [x] Part 1: rule 19 and the How to build line in `style.md`; the Honesty rules renumbered 20 to 24.
+- [x] Part 2: the sentence in `create_playthrough`'s description.
+- [x] A test that `get_style_guide` returns the new rule, and that no "rule N" reference in `src/lib/mcp` points past the last rule.
+- [x] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Dave: he asks an assistant to design a new character through the connector and it asks him why she travels.
+- **For Bob, Mac, 22 Oct (night-run order, after WO-130's follow-up):**
+  - **Changed:** `content/mcp/style.md` gains rule 19 at the end of Playthroughs, word for word from Part 1, and the How to build line as its last item. The Honesty rules are 20 to 24, their words unchanged. `create_playthrough`'s description ends "Settle the character's reason to travel with the player first (style guide rule 19)." `src/lib/mcp/wo127.test.ts` checks that `get_style_guide` gives rule 19, the How to build line and Honesty from 20, and that no "rule N" (or "rules N to M") in `src/lib/mcp`'s code points past the last rule (24).
+  - **Checked:** `git grep` finds no reference to rules 19 to 24 in `src`, `content`, `e2e` or `scripts` but the new ones. The tools cite rules 12 to 18, which keep their numbers and meaning. Checks: typecheck, lint, 491 unit tests, 201 game-data tests, build, e2e 350 of 350.
+  - **Not sure:** rule 19 says "she" and "her" in its examples (as Part 1 wrote it) and then "use the character's own pronoun". An assistant may read the examples as assuming a woman. I left your words as they are; "they" in the examples would match the instruction. Also: nothing makes an assistant ask the question, so whether it does is Dave's test, as the last box says.
 ---
 
 ## WO-126  Quest starts in players' words (Mac, 22 Oct 2026)
