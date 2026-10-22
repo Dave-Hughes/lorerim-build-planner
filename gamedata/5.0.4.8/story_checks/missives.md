@@ -6,7 +6,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -29,7 +29,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -52,7 +52,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -75,7 +75,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -98,7 +98,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -121,7 +121,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -144,7 +144,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -167,7 +167,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -190,7 +190,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -213,7 +213,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -236,7 +236,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -259,7 +259,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -282,7 +282,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -305,7 +305,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -328,7 +328,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -351,7 +351,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -374,7 +374,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -397,7 +397,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -420,7 +420,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -443,7 +443,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -466,7 +466,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -489,7 +489,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -512,7 +512,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -535,7 +535,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -558,7 +558,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -581,7 +581,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -604,7 +604,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -627,7 +627,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -650,7 +650,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -673,7 +673,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Windhelm, by the door to Dockmaster's Home. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -696,7 +696,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -719,7 +719,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -742,7 +742,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -765,7 +765,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -788,7 +788,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -811,7 +811,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -834,7 +834,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -857,7 +857,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -880,7 +880,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -903,7 +903,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -926,7 +926,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -949,7 +949,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -972,7 +972,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -995,7 +995,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1018,7 +1018,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1041,7 +1041,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1064,7 +1064,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1087,7 +1087,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1110,7 +1110,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1133,7 +1133,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1156,7 +1156,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1179,7 +1179,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1202,7 +1202,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1225,7 +1225,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1248,7 +1248,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1271,7 +1271,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1294,7 +1294,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1317,7 +1317,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1340,7 +1340,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Falkreath, by the door to Dead Man's Drink. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1363,7 +1363,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1386,7 +1386,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1409,7 +1409,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1432,7 +1432,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1455,7 +1455,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1478,7 +1478,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1501,7 +1501,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1524,7 +1524,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1547,7 +1547,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1570,7 +1570,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1593,7 +1593,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1616,7 +1616,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1639,7 +1639,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1662,7 +1662,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1685,7 +1685,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1708,7 +1708,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1731,7 +1731,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1754,7 +1754,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1777,7 +1777,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1800,7 +1800,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1823,7 +1823,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1846,7 +1846,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1869,7 +1869,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1892,7 +1892,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1915,7 +1915,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1938,7 +1938,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1961,7 +1961,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1984,7 +1984,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2007,7 +2007,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Solitude, by the door to somewhere in Solitude. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2030,7 +2030,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2053,7 +2053,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2076,7 +2076,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2099,7 +2099,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2122,7 +2122,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2145,7 +2145,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2168,7 +2168,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2191,7 +2191,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2214,7 +2214,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2237,7 +2237,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2260,7 +2260,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2283,7 +2283,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2306,7 +2306,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2329,7 +2329,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2352,7 +2352,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2375,7 +2375,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2398,7 +2398,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2421,7 +2421,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2444,7 +2444,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2467,7 +2467,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2490,7 +2490,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2513,7 +2513,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2536,7 +2536,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2559,7 +2559,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2582,7 +2582,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2605,7 +2605,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2628,7 +2628,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2651,7 +2651,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2674,7 +2674,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Morthal, by the door to Moorside Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2697,7 +2697,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2720,7 +2720,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2743,7 +2743,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2766,7 +2766,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2789,7 +2789,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2812,7 +2812,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2835,7 +2835,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2858,7 +2858,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2881,7 +2881,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2904,7 +2904,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2927,7 +2927,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2950,7 +2950,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2973,7 +2973,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -2996,7 +2996,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3019,7 +3019,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3042,7 +3042,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3065,7 +3065,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3088,7 +3088,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3111,7 +3111,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3134,7 +3134,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3157,7 +3157,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3180,7 +3180,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3203,7 +3203,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3226,7 +3226,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3249,7 +3249,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3272,7 +3272,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3295,7 +3295,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3318,7 +3318,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3341,7 +3341,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3364,7 +3364,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, by the door to Windpeak Inn. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3387,7 +3387,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3410,7 +3410,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3433,7 +3433,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3456,7 +3456,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3479,7 +3479,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3502,7 +3502,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3525,7 +3525,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3548,7 +3548,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3571,7 +3571,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3594,7 +3594,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3617,7 +3617,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3640,7 +3640,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3663,7 +3663,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3686,7 +3686,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3709,7 +3709,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3732,7 +3732,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3755,7 +3755,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3778,7 +3778,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3801,7 +3801,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3824,7 +3824,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3847,7 +3847,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3870,7 +3870,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3893,7 +3893,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3916,7 +3916,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3939,7 +3939,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3962,7 +3962,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -3985,7 +3985,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4008,7 +4008,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4031,7 +4031,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Markarth, by the door to somewhere in Markarth. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4054,7 +4054,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4077,7 +4077,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4100,7 +4100,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4123,7 +4123,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4146,7 +4146,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4169,7 +4169,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4192,7 +4192,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4215,7 +4215,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4238,7 +4238,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4261,7 +4261,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4284,7 +4284,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4307,7 +4307,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4330,7 +4330,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4353,7 +4353,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4376,7 +4376,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4399,7 +4399,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4422,7 +4422,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4445,7 +4445,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4468,7 +4468,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4491,7 +4491,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4514,7 +4514,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4537,7 +4537,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4560,7 +4560,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4583,7 +4583,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4606,7 +4606,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4629,7 +4629,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4652,7 +4652,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4675,7 +4675,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4698,7 +4698,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Riften, somewhere in Riften. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4721,7 +4721,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4744,7 +4744,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4767,7 +4767,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4790,7 +4790,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4813,7 +4813,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4836,7 +4836,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4859,7 +4859,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4882,7 +4882,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4905,7 +4905,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4928,7 +4928,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4951,7 +4951,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4974,7 +4974,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -4997,7 +4997,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5020,7 +5020,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5043,7 +5043,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5066,7 +5066,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5089,7 +5089,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5112,7 +5112,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5135,7 +5135,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5158,7 +5158,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5181,7 +5181,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5204,7 +5204,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5227,7 +5227,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5250,7 +5250,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5273,7 +5273,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5296,7 +5296,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5319,7 +5319,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5342,7 +5342,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5365,7 +5365,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5388,7 +5388,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Whiterun, somewhere in Whiterun. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5411,7 +5411,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5434,7 +5434,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5457,7 +5457,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5480,7 +5480,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5503,7 +5503,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5526,7 +5526,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5549,7 +5549,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5572,7 +5572,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5595,7 +5595,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5618,7 +5618,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5641,7 +5641,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5664,7 +5664,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5687,7 +5687,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5710,7 +5710,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5733,7 +5733,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5756,7 +5756,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5779,7 +5779,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5802,7 +5802,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5825,7 +5825,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5848,7 +5848,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5871,7 +5871,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5894,7 +5894,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5917,7 +5917,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5940,7 +5940,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5963,7 +5963,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -5986,7 +5986,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -6009,7 +6009,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -6032,7 +6032,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -6055,7 +6055,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Winterhold, by the door to Winterhold Library. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -6078,7 +6078,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6095,7 +6095,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6112,7 +6112,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6129,7 +6129,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6146,7 +6146,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6163,7 +6163,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6180,7 +6180,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6197,7 +6197,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6214,7 +6214,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6231,7 +6231,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6248,7 +6248,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6265,7 +6265,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6282,7 +6282,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6299,7 +6299,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6316,7 +6316,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6333,7 +6333,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6350,7 +6350,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6367,7 +6367,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6384,7 +6384,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 6 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (12 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6401,7 +6401,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dawnstar, Winterhold, Whiterun, Windhelm and 7 more places. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (14 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -6883,7 +6883,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -6906,7 +6906,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -6929,7 +6929,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -6952,7 +6952,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -6975,7 +6975,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -6998,7 +6998,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7021,7 +7021,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7044,7 +7044,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7067,7 +7067,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7090,7 +7090,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7113,7 +7113,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7136,7 +7136,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7159,7 +7159,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7182,7 +7182,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7205,7 +7205,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7228,7 +7228,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7251,7 +7251,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7274,7 +7274,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7297,7 +7297,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7320,7 +7320,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7343,7 +7343,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7366,7 +7366,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7389,7 +7389,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7412,7 +7412,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7435,7 +7435,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7458,7 +7458,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7481,7 +7481,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Ben Erai, by the door to Ben Erai Sewers. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7504,7 +7504,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7527,7 +7527,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7550,7 +7550,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7573,7 +7573,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7596,7 +7596,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7619,7 +7619,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7642,7 +7642,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7665,7 +7665,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7688,7 +7688,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7711,7 +7711,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7734,7 +7734,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7757,7 +7757,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7780,7 +7780,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7803,7 +7803,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7826,7 +7826,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7849,7 +7849,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7872,7 +7872,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7895,7 +7895,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7918,7 +7918,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7941,7 +7941,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7964,7 +7964,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -7987,7 +7987,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8010,7 +8010,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8033,7 +8033,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8056,7 +8056,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8079,7 +8079,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8102,7 +8102,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Raven Rock, by the door to Caerellius House. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8125,7 +8125,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8148,7 +8148,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8171,7 +8171,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8194,7 +8194,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8217,7 +8217,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8240,7 +8240,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8263,7 +8263,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8286,7 +8286,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8309,7 +8309,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8332,7 +8332,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8355,7 +8355,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8378,7 +8378,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8401,7 +8401,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8424,7 +8424,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8447,7 +8447,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8470,7 +8470,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8493,7 +8493,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8516,7 +8516,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8539,7 +8539,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8562,7 +8562,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8585,7 +8585,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8608,7 +8608,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8631,7 +8631,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8654,7 +8654,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8677,7 +8677,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -8700,7 +8700,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Stonehollow, by the door to The Handsome Hermit. (Start). Source: _M_ActivatorScript on Missives.esp:000D65 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

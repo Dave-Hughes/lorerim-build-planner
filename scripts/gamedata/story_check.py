@@ -54,6 +54,7 @@ import glob
 import json
 import os
 import pickle
+import re
 import struct
 import sys
 
@@ -955,6 +956,8 @@ def main():
     lines = json.load(open(os.path.join(REPO, "src", "data", f"lorerim-{version}", "quests.json"), encoding="utf-8"))["lines"]
     line = next(l for l in lines if l["id"] == line_id)
     raw = {q["edid"].lower(): q for q in load("quests_raw.json")["quests"]}
+    bp = os.path.join(base, "story_checks", "boards.json")  # boards.py: notice boards and radiant dispatchers (WO-136)
+    boards = json.load(open(bp, encoding="utf-8"))["quests"] if os.path.exists(bp) else {}
     story = [raw[q["edid"].lower()] for q in line["quests"] if q["edid"].lower() in raw]
     missing_edids = [q["edid"] for q in line["quests"] if q["edid"].lower() not in raw]
     story_ids = {q["id"] for q in story}
@@ -1575,6 +1578,9 @@ def main():
             row["throughStartedBy"] = [starter_row(c, e, 1) for c, e in (from_story or up)][:4]
             # A helper no script starts: its story manager node, or the start-game flag (DLC1VQ00ChangeLocation).
             row["throughStartedBy"] += node_rows(caller)[:4]
+            # Or a placed object's script (WO-136: DLC2StartSVQuests starts A New Source of Stalhrim's helper when you leave Skaal Village).
+            row["throughStartedBy"] += [{**b, "plain": board_words(b), "source": f"{b['script']} on {b['objectId']} ({len(b['places'])} placed)"}
+                                        for b in boards.get(caller, []) if b["call"] == "Start" or re.match(r"SetStage \d+$", b["call"])][:4]
             plain = helper_words(caller, ctx, ev)
             if plain:
                 row["plain"] = plain
@@ -1630,6 +1636,25 @@ def main():
                            "source": f"{ns['node']} {ns['id']} ({ns['plugin']})", "verdict": "files"})
         if winner["flags"] & qst.START_GAME:
             starts.append({"by": "start game", "source": f"{qid} DNAM ({versions[-1][0] if versions else '?'})", "verdict": "files"})
+        # A notice board or radiant dispatcher (WO-136, boards.py): a placed object whose script starts it, or sets the stage
+        # that shows its first objective. Missives' boards; the Vigilant bounties.
+        for b in boards.get(qid, []):
+            m = re.match(r"SetStage (\d+)$", b["call"])
+            if b["call"] == "Start" or (m and int(m.group(1)) <= thresholds[qid]):
+                starts.append({**b, "plain": board_words(b), "source": f"{b['script']} on {b['objectId']} ({len(b['places'])} placed)"})
+        # WO-136 ruling 1: a later quest's call is a start when it comes from a stage that ends that quest, or when nothing
+        # else starts this one (Bloodline's stage 30 sets A New Order; Seeking Disclosure's end sets Unseen Visions). Helpers
+        # Bob ruled out and the start-game flag alone don't count as something else.
+        other = [x for x in starts if x["by"] != "start game" and not (x["by"] == "quest script" and RULED_OUT.match((x.get("quest") or "").split(" ")[0].rstrip(",")))]
+        kept = []
+        for c, e in srt["caughtUp"]:
+            ender = (raw.get((names.get(c.get("quest"), {}).get("edid") or "").lower(), {}) or {})
+            ends = any(st["index"] == c.get("stage") and st.get("completes") for st in ender.get("stages", []))
+            if (ends or not other) and (e["call"] == "Start" or (e.get("stage") is not None and e["stage"] <= thresholds[qid])):
+                starts.append({**starter_row(c, e), "laterInLine": True})
+            else:
+                kept.append((c, e))
+        srt = {**srt, "caughtUp": kept}
         own_conds = winner["dialogue"] + winner["event"]
         gl = set()
         for c in own_conds + [c for s in starts for c in s.get("conditionsRaw", [])]:
@@ -1885,6 +1910,17 @@ def main():
           f"{report_quests[0]['name'] if report_quests else '?'} -> story_checks/{line_id}.md")
 
 
+RULED_OUT = re.compile(r"^(USKP\w*|Patch\d+_\d+_UpdateQuest|DLC2Init)$")  # helpers Bob ruled aren't ways in (22 Oct)
+
+
+def board_words(b):
+    """A board's start in words: what it is, where its copies stand, and the doors nearest the first ("Erotic Book, in Stuhn Ravine")."""
+    where = list(dict.fromkeys(p["where"] for p in b["places"] if p.get("where")))
+    near = (b["places"][0].get("nearDoors") or [{}])[0].get("door") if b["places"] else None
+    named = b.get("object")  # the object's own name; an editor id never shows
+    return (f"It starts from {named}" if named else "It starts from something placed") + (f" in {', '.join(where[:4])}" + (f" and {len(where) - 4} more places" if len(where) > 4 else "") if where else "") + (f", by the door to {near}" if near and len(where) == 1 else "") + "."
+
+
 def starter_line(s):
     if s["by"] == "dialogue":
         where = f", placed in {'; '.join(s['speakerPlaced'][:2])}" if s.get("speakerPlaced") else ""
@@ -1899,7 +1935,7 @@ def starter_line(s):
         after = "".join(f"; after {r['quest']} stage {r['atStage']} sets its {r['sets']}, and {r['edid'] or r['quest']} is started by "
                         + ("; ".join(starter_line(u) for u in r["startedBy"]) or "nothing in the records or scripts (**unread**)") for r in s.get("after", []))
         return f"Dialogue with {s.get('speaker') or 'someone the line does not name'}{named}{where}{prompt}: {s['call']}{when}{scene}{after}"
-    if s["by"] in ("book", "by itself"):
+    if s["by"] in ("book", "by itself", "board"):
         return f"{s['plain']} ({s['call']})"
     if s["by"] == "quest script":
         text = f"{s['quest']}{(' at stage ' + str(s['atStage'])) if s.get('atStage') is not None else ''} calls {s['call']}"

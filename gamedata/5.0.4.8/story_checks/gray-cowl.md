@@ -51,12 +51,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- manny_GF_MQ (The Call of Gray Cowl of Nocturnal) at stage 150 calls SetStage 10. Source: manny_GF_MainQuestScript.fragment_17 on Gray Fox Cowl.esm:001E61 (Gray Fox Cowl.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- manny_GF_MQ (The Call of Gray Cowl of Nocturnal) at stage 150 calls SetStage 10. Source: manny_GF_MainQuestScript.fragment_17 (Gray Fox Cowl.esm).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -79,11 +75,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Seviana Umbranox, placed in Seviana's House, "It's an honor.": SetStage 10 (when: Time for the Farewells stage < 10; GetQuestRunning Time for the Farewells == 1; the speaker is Seviana Umbranox). Source: manny_GF_FarewellLeaveHomeScript.Fragment_1 on INFO Gray Fox Cowl.esm:01CFB2 (Gray Fox Cowl.esm). **script**
+- manny_GF_MQ (The Call of Gray Cowl of Nocturnal) at stage 999 calls Start; its stage 999 is set by Dialogue with Seviana Umbranox, placed in Seviana's House: SetStage 999. Source: manny_GF_MainQuestScript.fragment_28 on Gray Fox Cowl.esm:001E61 (Gray Fox Cowl.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- manny_GF_MQ (The Call of Gray Cowl of Nocturnal) at stage 999 calls Start. Source: manny_GF_MainQuestScript.fragment_28 (Gray Fox Cowl.esm).
 
 **Who and where**
 
@@ -174,7 +167,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Forgotten City. (SetStage 5). Source: defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (1 placed). **script**
 - (First objective shown at stage 5; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

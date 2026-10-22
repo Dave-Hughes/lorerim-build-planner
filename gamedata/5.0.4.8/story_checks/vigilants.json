@@ -8,7 +8,40 @@
    "name": "Bounty: Book",
    "plugin": "Vigilant.esm",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Erotic Book",
+     "objectEdid": "zzzAoMRQTriggerBook",
+     "objectId": "Vigilant.esm:4E131A",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Storage Room",
+         "metres": 7
+        },
+        {
+         "door": "Dungeon",
+         "metres": 13
+        },
+        {
+         "door": "Temple of Stendarr",
+         "metres": 17
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:4E4945",
+       "where": "somewhere in Stuhn Ravine"
+      }
+     ],
+     "script": "AoMRQTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from Erotic Book in somewhere in Stuhn Ravine, by the door to Storage Room.",
+     "source": "AoMRQTriggerScript on Vigilant.esm:4E131A (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -68,8 +101,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Vigilant.esm:4E372E",
@@ -77,7 +109,40 @@
    "name": "Bounty: Chick Trader",
    "plugin": "Vigilant.esm",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Chick Trader",
+     "objectEdid": "zzzAoMRQTriggerChickTrader",
+     "objectId": "Vigilant.esm:4E374D",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Storage Room",
+         "metres": 7
+        },
+        {
+         "door": "Dungeon",
+         "metres": 13
+        },
+        {
+         "door": "Temple of Stendarr",
+         "metres": 17
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:4E4946",
+       "where": "somewhere in Stuhn Ravine"
+      }
+     ],
+     "script": "AoMRQTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from Chick Trader in somewhere in Stuhn Ravine, by the door to Storage Room.",
+     "source": "AoMRQTriggerScript on Vigilant.esm:4E374D (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 1,
    "firstObjective": {
@@ -153,8 +218,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Vigilant.esm:4E0116",
@@ -162,7 +226,40 @@
    "name": "Bounty: Piper",
    "plugin": "Vigilant.esm",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Piper",
+     "objectEdid": "zzzAoMRQTriggerPiper",
+     "objectId": "Vigilant.esm:4E0119",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Storage Room",
+         "metres": 9
+        },
+        {
+         "door": "Dungeon",
+         "metres": 12
+        },
+        {
+         "door": "Temple of Stendarr",
+         "metres": 17
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:4E4941",
+       "where": "somewhere in Stuhn Ravine"
+      }
+     ],
+     "script": "AoMRQTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from Piper in somewhere in Stuhn Ravine, by the door to Storage Room.",
+     "source": "AoMRQTriggerScript on Vigilant.esm:4E0119 (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -201,8 +298,7 @@
      "source": "QF_zzzAoMBountyPiper_024E0116.fragment_2",
      "verdict": "script"
     }
-   ],
-   "unread": "no starter in its records or scripts"
+   ]
   },
   {
    "id": "Vigilant.esm:4E011B",
@@ -210,7 +306,40 @@
    "name": "Bounty: Daedric Relic",
    "plugin": "Vigilant.esm",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Aspiration of Meridia",
+     "objectEdid": "zzzAoMRQTriggerRelic",
+     "objectId": "Vigilant.esm:4E011E",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Storage Room",
+         "metres": 8
+        },
+        {
+         "door": "Dungeon",
+         "metres": 13
+        },
+        {
+         "door": "Temple of Stendarr",
+         "metres": 17
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:4E4942",
+       "where": "somewhere in Stuhn Ravine"
+      }
+     ],
+     "script": "AoMRQTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from Aspiration of Meridia in somewhere in Stuhn Ravine, by the door to Storage Room.",
+     "source": "AoMRQTriggerScript on Vigilant.esm:4E011E (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -270,8 +399,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Vigilant.esm:4E0121",
@@ -279,7 +407,40 @@
    "name": "Bounty: Horn",
    "plugin": "Vigilant.esm",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Lost Relic",
+     "objectEdid": "zzzAoMRQTriggerRelicHorn",
+     "objectId": "Vigilant.esm:4E0123",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Storage Room",
+         "metres": 7
+        },
+        {
+         "door": "Dungeon",
+         "metres": 13
+        },
+        {
+         "door": "Temple of Stendarr",
+         "metres": 17
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:4E4944",
+       "where": "somewhere in Stuhn Ravine"
+      }
+     ],
+     "script": "AoMRQTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from Lost Relic in somewhere in Stuhn Ravine, by the door to Storage Room.",
+     "source": "AoMRQTriggerScript on Vigilant.esm:4E0123 (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -339,8 +500,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Vigilant.esm:4E0102",
@@ -348,7 +508,40 @@
    "name": "Bounty: Summoner",
    "plugin": "Vigilant.esm",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Daedra Summoner",
+     "objectEdid": "zzzAoMRQTriggerSummoner",
+     "objectId": "Vigilant.esm:4E0105",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Storage Room",
+         "metres": 8
+        },
+        {
+         "door": "Dungeon",
+         "metres": 13
+        },
+        {
+         "door": "Temple of Stendarr",
+         "metres": 17
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:4E4943",
+       "where": "somewhere in Stuhn Ravine"
+      }
+     ],
+     "script": "AoMRQTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from Daedra Summoner in somewhere in Stuhn Ravine, by the door to Storage Room.",
+     "source": "AoMRQTriggerScript on Vigilant.esm:4E0105 (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -381,8 +574,7 @@
      "source": "QF_zzzAomBountySummoner_024E0102.fragment_2",
      "verdict": "script"
     }
-   ],
-   "unread": "no starter in its records or scripts"
+   ]
   },
   {
    "id": "Vigilant.esm:4E0108",
@@ -390,7 +582,40 @@
    "name": "Bounty: Vampire",
    "plugin": "Vigilant.esm",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Vampire",
+     "objectEdid": "zzzAoMRQTriggerVampire",
+     "objectId": "Vigilant.esm:4E010B",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Storage Room",
+         "metres": 9
+        },
+        {
+         "door": "Dungeon",
+         "metres": 12
+        },
+        {
+         "door": "Temple of Stendarr",
+         "metres": 17
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:4E4940",
+       "where": "somewhere in Stuhn Ravine"
+      }
+     ],
+     "script": "AoMRQTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from Vampire in somewhere in Stuhn Ravine, by the door to Storage Room.",
+     "source": "AoMRQTriggerScript on Vigilant.esm:4E010B (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -423,8 +648,7 @@
      "source": "QF_zzzAomBountyVampire_024E0108.fragment_2",
      "verdict": "script"
     }
-   ],
-   "unread": "no starter in its records or scripts"
+   ]
   },
   {
    "id": "Vigilant.esm:4E010E",
@@ -432,7 +656,40 @@
    "name": "Bounty: Witch",
    "plugin": "Vigilant.esm",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Witch",
+     "objectEdid": "zzzAoMRQTriggerWitch",
+     "objectId": "Vigilant.esm:4E0114",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Storage Room",
+         "metres": 8
+        },
+        {
+         "door": "Dungeon",
+         "metres": 13
+        },
+        {
+         "door": "Temple of Stendarr",
+         "metres": 17
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:4E493F",
+       "where": "somewhere in Stuhn Ravine"
+      }
+     ],
+     "script": "AoMRQTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from Witch in somewhere in Stuhn Ravine, by the door to Storage Room.",
+     "source": "AoMRQTriggerScript on Vigilant.esm:4E0114 (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -471,8 +728,7 @@
      "source": "QF_zzzAomBountyWitch_024E010E.fragment_2",
      "verdict": "script"
     }
-   ],
-   "unread": "no starter in its records or scripts"
+   ]
   },
   {
    "id": "Vigilant.esm:005CE2",
@@ -2236,7 +2492,32 @@
    "name": "Radiance in the Dead",
    "plugin": "Vigilant.esm",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Dreamer",
+     "objectEdid": "zzzAoMRadQTriggerDead",
+     "objectId": "Vigilant.esm:4EA3AA",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Stuhn Ravine",
+         "metres": 16
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:4EA3B4",
+       "where": "Dungeon"
+      }
+     ],
+     "script": "AoMRQTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from Dreamer in Dungeon, by the door to somewhere in Stuhn Ravine.",
+     "source": "AoMRQTriggerScript on Vigilant.esm:4EA3AA (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -2269,8 +2550,7 @@
      "source": "QF_zzzAoMRadDead_024EA3A8.fragment_2",
      "verdict": "script"
     }
-   ],
-   "unread": "no starter in its records or scripts"
+   ]
   },
   {
    "id": "Vigilant.esm:4EA3D1",
@@ -2278,7 +2558,32 @@
    "name": "Radiance in the Duplicate",
    "plugin": "Vigilant.esm",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Duplicate",
+     "objectEdid": "zzzAoMRadQTriggerDoppler",
+     "objectId": "Vigilant.esm:4EA3D5",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Stuhn Ravine",
+         "metres": 16
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:4EA3D6",
+       "where": "Dungeon"
+      }
+     ],
+     "script": "AoMRQTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from Duplicate in Dungeon, by the door to somewhere in Stuhn Ravine.",
+     "source": "AoMRQTriggerScript on Vigilant.esm:4EA3D5 (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -2329,8 +2634,7 @@
      "source": "QF_zzzAoMRadDoppler_024EA3D1.fragment_2",
      "verdict": "script"
     }
-   ],
-   "unread": "no starter in its records or scripts"
+   ]
   },
   {
    "id": "Vigilant.esm:4EA3AC",
@@ -2338,7 +2642,32 @@
    "name": "Radiance in the Spawn",
    "plugin": "Vigilant.esm",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Spawn",
+     "objectEdid": "zzzAoMRadQTriggerMolag",
+     "objectId": "Vigilant.esm:4EA3AE",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Stuhn Ravine",
+         "metres": 16
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:4EA3AF",
+       "where": "Dungeon"
+      }
+     ],
+     "script": "AoMRQTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from Spawn in Dungeon, by the door to somewhere in Stuhn Ravine.",
+     "source": "AoMRQTriggerScript on Vigilant.esm:4EA3AE (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -2377,8 +2706,7 @@
      "source": "QF_zzzAoMRadMolag_024EA3AC.fragment_2",
      "verdict": "script"
     }
-   ],
-   "unread": "no starter in its records or scripts"
+   ]
   },
   {
    "id": "Vigilant.esm:4E91B0",
@@ -2386,7 +2714,32 @@
    "name": "Radiance in the Vampire",
    "plugin": "Vigilant.esm",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Bloodsucker",
+     "objectEdid": "zzzAoMRadQTriggerVamp",
+     "objectId": "Vigilant.esm:4E91B7",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Stuhn Ravine",
+         "metres": 16
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:4EA3B0",
+       "where": "Dungeon"
+      }
+     ],
+     "script": "AoMRQTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from Bloodsucker in Dungeon, by the door to somewhere in Stuhn Ravine.",
+     "source": "AoMRQTriggerScript on Vigilant.esm:4E91B7 (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -2419,8 +2772,7 @@
      "source": "QF_zzzAoMRadVampire_024E91B0.fragment_2",
      "verdict": "script"
     }
-   ],
-   "unread": "no starter in its records or scripts"
+   ]
   },
   {
    "id": "Vigilant.esm:4EA3C8",
@@ -2428,7 +2780,32 @@
    "name": "Radiance in the Witch Hunter",
    "plugin": "Vigilant.esm",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Witch Hunter",
+     "objectEdid": "zzzAoMRadQTriggerWitchHunter",
+     "objectId": "Vigilant.esm:4EA3CD",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Stuhn Ravine",
+         "metres": 17
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:4EA3CE",
+       "where": "Dungeon"
+      }
+     ],
+     "script": "AoMRQTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from Witch Hunter in Dungeon, by the door to somewhere in Stuhn Ravine.",
+     "source": "AoMRQTriggerScript on Vigilant.esm:4EA3CD (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -2467,8 +2844,7 @@
      "source": "QF_zzzAoMRadWitchHunter_024EA3C8.fragment_1",
      "verdict": "script"
     }
-   ],
-   "unread": "no starter in its records or scripts"
+   ]
   },
   {
    "id": "Vigilant.esm:4D4C3D",
@@ -2588,21 +2964,31 @@
    "name": "Legacy of Belharza",
    "plugin": "Vigilant.esm",
    "firstObjectiveStage": 1,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "zzzCHSubQuest13 (Broken Horns)",
+     "by": "quest script",
+     "quest": "zzzCHSubQuest13 (Broken Horns)",
+     "questId": "Vigilant.esm:51ADBF",
      "atStage": 60,
      "call": "Start",
-     "source": "QF_zzzCHSubQuest13_0251ADBF.fragment_25 (Vigilant.esm)"
+     "source": "QF_zzzCHSubQuest13_0251ADBF.fragment_25 on Vigilant.esm:51ADBF (Vigilant.esm)",
+     "verdict": "script",
+     "throughStage": [],
+     "laterInLine": true
     },
     {
-     "by": "zzzCHSubQuest13 (Broken Horns)",
+     "by": "quest script",
+     "quest": "zzzCHSubQuest13 (Broken Horns)",
+     "questId": "Vigilant.esm:51ADBF",
      "atStage": 60,
      "call": "SetStage 0",
-     "source": "QF_zzzCHSubQuest13_0251ADBF.fragment_25 (Vigilant.esm)"
+     "source": "QF_zzzCHSubQuest13_0251ADBF.fragment_25 on Vigilant.esm:51ADBF (Vigilant.esm)",
+     "verdict": "script",
+     "throughStage": [],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 6,
    "firstObjective": {
     "text": "Talk to <Alias=Mntr>",
@@ -2706,8 +3092,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Vigilant.esm:43B81F",
@@ -2841,6 +3226,70 @@
      "source": "QF_zzzAoMMqGoodEnd_024D0376.fragment_26 on Vigilant.esm:4D0376 (Vigilant.esm)",
      "verdict": "script",
      "throughStage": []
+    },
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Water Snakes",
+     "objectEdid": "zzzAoMEp02SkipPaiting",
+     "objectId": "Vigilant.esm:363ECF",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Elder Field",
+         "metres": 3
+        },
+        {
+         "door": "Mathmalatu Priory",
+         "metres": 3
+        },
+        {
+         "door": "somewhere in Stuhn Ravine",
+         "metres": 22
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:365227",
+       "where": "Storage Room, Temple of Stendarr"
+      }
+     ],
+     "script": "AoMEp02SkipPaintingScript",
+     "verdict": "script",
+     "plain": "It starts from Water Snakes in Storage Room, Temple of Stendarr, by the door to somewhere in Elder Field.",
+     "source": "AoMEp02SkipPaintingScript on Vigilant.esm:363ECF (1 placed)"
+    },
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Hope",
+     "objectEdid": "zzzAoMEp01SkipPaiting",
+     "objectId": "Vigilant.esm:363ECE",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Elder Field",
+         "metres": 4
+        },
+        {
+         "door": "Mathmalatu Priory",
+         "metres": 4
+        },
+        {
+         "door": "somewhere in Stuhn Ravine",
+         "metres": 21
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:365226",
+       "where": "Storage Room, Temple of Stendarr"
+      }
+     ],
+     "script": "AoMEp01SkipPaintingScript",
+     "verdict": "script",
+     "plain": "It starts from Hope in Storage Room, Temple of Stendarr, by the door to somewhere in Elder Field.",
+     "source": "AoMEp01SkipPaintingScript on Vigilant.esm:363ECE (1 placed)"
     }
    ],
    "caughtUpBy": [
@@ -3114,6 +3563,29 @@
      "conditions": "the speaker is the one in alias LamaeBal",
      "source": "BM03_TIF__0103C193.Fragment_0 on INFO Vigilant.esm:03C193 (Vigilant.esm)",
      "verdict": "script"
+    },
+    {
+     "by": "board",
+     "call": "SetStage 10",
+     "objectEdid": "defaultNpcSetStageTrigScript",
+     "objectId": "Skyrim.esm:078168",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Enchantress' Palace",
+         "metres": 8
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:03B678",
+       "where": "Matron's Chamber"
+      }
+     ],
+     "script": "defaultsetStageTrigSCRIPT",
+     "verdict": "script",
+     "plain": "It starts from something placed in Matron's Chamber, by the door to Enchantress' Palace.",
+     "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:078168 (1 placed)"
     }
    ],
    "caughtUpBy": [],
@@ -3440,7 +3912,31 @@
      "call": "Start",
      "source": "QF_zzzCHBossQuestVarla_024F69C2.fragment_0 on Vigilant.esm:4F69C2 (Vigilant.esm)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "board",
+       "call": "SetStage 0",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "nearDoors": [
+          {
+           "door": "Fort Welkynd",
+           "metres": 13
+          }
+         ],
+         "plugin": "Vigilant.esm",
+         "ref": "Vigilant.esm:4F7BB3",
+         "where": "Varla's Hall"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in Varla's Hall, by the door to Fort Welkynd.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (1 placed)"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -3956,6 +4452,29 @@
      "conditions": "the speaker is Sacred Anatomancer",
      "source": "AoMgdSA_TIF__024EC7F2.Fragment_0 on INFO Vigilant.esm:4EC7F2 (Vigilant.esm)",
      "verdict": "script"
+    },
+    {
+     "by": "board",
+     "call": "Start",
+     "objectEdid": "zzzChqSAExileTrapTrigger",
+     "objectId": "Vigilant.esm:4EEC09",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Stuhn Ravine",
+         "metres": 16
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:4EEC0A",
+       "where": "Dungeon"
+      }
+     ],
+     "script": "CHSAForceStartExileTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from something placed in Dungeon, by the door to somewhere in Stuhn Ravine.",
+     "source": "CHSAForceStartExileTriggerScript on Vigilant.esm:4EEC09 (1 placed)"
     }
    ],
    "caughtUpBy": [],
@@ -4011,7 +4530,221 @@
    "name": "Feral Soul-Shriven",
    "plugin": "Vigilant.esm",
    "firstObjectiveStage": 1,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Soul-Shriven",
+     "objectEdid": "zzzCHRqTriggerSoulShrivenBase",
+     "objectId": "Vigilant.esm:51532D",
+     "places": [
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:517792",
+       "where": "St. Dulsa's Charnel"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:517767",
+       "where": "Silorn's Priory"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:517742",
+       "where": "Old Temple of the Eight Divines"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:51779E",
+       "where": "Golden Sanctuary"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "Silorn's Priory",
+         "metres": 8
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:51775F",
+       "where": "Underground Lake"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:51775B",
+       "where": "Narfin's Inquisition Court"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:517755",
+       "where": "Temple of Mara"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:51776B",
+       "where": "Malada Aldmerisel"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:517762",
+       "where": "Marukh's Underground Priory"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:51778E",
+       "where": "Fort Sepredia"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:5245A2",
+       "where": "Malada"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "Wellspring Cave",
+         "metres": 10
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:517799",
+       "where": "Cave Worm's Lair, Wellspring Cave"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "Malada Burosel",
+         "metres": 22
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:53AE36",
+       "where": "Malada Gandrasel"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:51774A",
+       "where": "Prison Tower"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:51774E",
+       "where": "Prison Tower"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:517796",
+       "where": "First Inquisition Court"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "Varla's Hall",
+         "metres": 7
+        },
+        {
+         "door": "somewhere in Coldharbour",
+         "metres": 26
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:55F41A",
+       "where": "Fort Welkynd"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:5245A0",
+       "where": "Nenyond's Underground Priory"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:517746",
+       "where": "Nenyond's Underground Priory"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:517759",
+       "where": "Imperial Prison Sewers"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Arena",
+         "metres": 24
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:51778B",
+       "where": "Arena District"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:51777F",
+       "where": "Buro Temple"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:53AE33",
+       "where": "Prison District"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:517787",
+       "where": "Curia District"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:517777",
+       "where": "somewhere in Coldharbour"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:516523",
+       "where": "Varla's Territory"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:51652B",
+       "where": "Nenyond's Underground Priory"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:51777C",
+       "where": "Holy Brothers of Marukh Priory"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:517774",
+       "where": "Front Gate"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "Abandoned House",
+         "metres": 23
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:517782",
+       "where": "Mitta Village"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:51776E",
+       "where": "Mitta Village"
+      },
+      {
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:519B87",
+       "where": "Varla's Territory"
+      }
+     ],
+     "script": "CHRqSoulShrivenTRGScript",
+     "verdict": "script",
+     "plain": "It starts from Soul-Shriven in St. Dulsa's Charnel, Silorn's Priory, Old Temple of the Eight Divines, Golden Sanctuary and 23 more places.",
+     "source": "CHRqSoulShrivenTRGScript on Vigilant.esm:51532D (32 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -4037,8 +4770,7 @@
     "ways": []
    },
    "globals": [],
-   "gives": [],
-   "unread": "no starter in its records or scripts"
+   "gives": []
   },
   {
    "id": "Vigilant.esm:51ADBF",
@@ -4073,6 +4805,23 @@
        "call": "SetStage 0",
        "source": "QF_zzzCHSubQuest13_0251ADBF.fragment_7 on Vigilant.esm:51ADBF (Vigilant.esm)",
        "verdict": "script"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 10",
+       "objectEdid": "zzzCHManbullMemoryActTrigger",
+       "objectId": "Vigilant.esm:51C036",
+       "places": [
+        {
+         "plugin": "Vigilant.esm",
+         "ref": "Vigilant.esm:51C037",
+         "where": "somewhere in Coldharbour"
+        }
+       ],
+       "script": "CHPelinalMemoryTriggerScript",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Coldharbour.",
+       "source": "CHPelinalMemoryTriggerScript on Vigilant.esm:51C036 (1 placed)"
       }
      ]
     },
@@ -4094,7 +4843,91 @@
      "call": "SetStage 2",
      "source": "QF_zzzCHBossQuestMorihaus_024F69B7.fragment_4 on Vigilant.esm:4F69B7 (Vigilant.esm)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "board",
+       "call": "Start",
+       "objectEdid": "zzzCHSummonMinosTrigger",
+       "objectId": "Vigilant.esm:19129D",
+       "places": [
+        {
+         "plugin": "Vigilant.esm",
+         "ref": "Vigilant.esm:1925D8",
+         "where": "Barrier Tower of Bala"
+        }
+       ],
+       "script": "CHCallMinosTriggerScript",
+       "verdict": "script",
+       "plain": "It starts from something placed in Barrier Tower of Bala.",
+       "source": "CHCallMinosTriggerScript on Vigilant.esm:19129D (1 placed)"
+      }
+     ]
+    },
+    {
+     "by": "board",
+     "call": "SetStage 0",
+     "objectEdid": "defaultSetStageTRIGPlayerOnly",
+     "objectId": "Skyrim.esm:099312",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "???",
+         "metres": 7
+        },
+        {
+         "door": "Concealed Charnel of Belharza",
+         "metres": 13
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:51EAB9",
+       "where": "First Inquisition Court"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Coldharbour",
+         "metres": 17
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:51FD68",
+       "where": "Fort Welkynd"
+      }
+     ],
+     "script": "defaultsetStageTrigSCRIPT",
+     "verdict": "script",
+     "plain": "It starts from something placed in First Inquisition Court, Fort Welkynd.",
+     "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (2 placed)"
+    },
+    {
+     "by": "board",
+     "call": "SetStage 10",
+     "object": "Monument of Belharza",
+     "objectEdid": "zzzCHBelharzaQuizActTrigger",
+     "objectId": "Vigilant.esm:51ADBE",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "???",
+         "metres": 11
+        },
+        {
+         "door": "Concealed Charnel of Belharza",
+         "metres": 13
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:51C041",
+       "where": "First Inquisition Court"
+      }
+     ],
+     "script": "CHBelharzaQuizTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from Monument of Belharza in First Inquisition Court, by the door to ???.",
+     "source": "CHBelharzaQuizTriggerScript on Vigilant.esm:51ADBE (1 placed)"
     }
    ],
    "caughtUpBy": [],
@@ -4364,6 +5197,70 @@
        "verdict": "script"
       }
      ]
+    },
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Water Spirits",
+     "objectEdid": "zzzAoMEp03SkipPaiting",
+     "objectId": "Vigilant.esm:363ED0",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Mathmalatu Priory",
+         "metres": 3
+        },
+        {
+         "door": "somewhere in Elder Field",
+         "metres": 3
+        },
+        {
+         "door": "somewhere in Stuhn Ravine",
+         "metres": 24
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:365228",
+       "where": "Storage Room, Temple of Stendarr"
+      }
+     ],
+     "script": "AoMEp03SkipPaintingScript",
+     "verdict": "script",
+     "plain": "It starts from Water Spirits in Storage Room, Temple of Stendarr, by the door to Mathmalatu Priory.",
+     "source": "AoMEp03SkipPaintingScript on Vigilant.esm:363ED0 (1 placed)"
+    },
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Water Snakes",
+     "objectEdid": "zzzAoMEp02SkipPaiting",
+     "objectId": "Vigilant.esm:363ECF",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Elder Field",
+         "metres": 3
+        },
+        {
+         "door": "Mathmalatu Priory",
+         "metres": 3
+        },
+        {
+         "door": "somewhere in Stuhn Ravine",
+         "metres": 22
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:365227",
+       "where": "Storage Room, Temple of Stendarr"
+      }
+     ],
+     "script": "AoMEp02SkipPaintingScript",
+     "verdict": "script",
+     "plain": "It starts from Water Snakes in Storage Room, Temple of Stendarr, by the door to somewhere in Elder Field.",
+     "source": "AoMEp02SkipPaintingScript on Vigilant.esm:363ECF (1 placed)"
     }
    ],
    "caughtUpBy": [],
@@ -4487,6 +5384,38 @@
      "source": "QF_zzzCOMq01_01065932.fragment_14 on Vigilant.esm:065932 (Vigilant.esm)",
      "verdict": "script",
      "throughStage": []
+    },
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Death",
+     "objectEdid": "zzzAoMEp04StartPaiting",
+     "objectId": "Vigilant.esm:363ED1",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Mathmalatu Priory",
+         "metres": 3
+        },
+        {
+         "door": "somewhere in Elder Field",
+         "metres": 4
+        },
+        {
+         "door": "somewhere in Stuhn Ravine",
+         "metres": 23
+        }
+       ],
+       "plugin": "Vigilant.esm",
+       "ref": "Vigilant.esm:365229",
+       "where": "Storage Room, Temple of Stendarr"
+      }
+     ],
+     "script": "AoMEp04StartPaintingScript",
+     "verdict": "script",
+     "plain": "It starts from Death in Storage Room, Temple of Stendarr, by the door to Mathmalatu Priory.",
+     "source": "AoMEp04StartPaintingScript on Vigilant.esm:363ED1 (1 placed)"
     }
    ],
    "caughtUpBy": [],

@@ -1017,15 +1017,36 @@
    "name": "Serenata",
    "plugin": "Katana.esp",
    "firstObjectiveStage": 0,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "AK69TheRavensLamentQuest (The Ravens' Lament)",
+     "by": "quest script",
+     "quest": "AK69TheRavensLamentQuest (The Ravens' Lament)",
+     "questId": "Katana.esp:8BB420",
      "atStage": 310,
      "call": "Start",
-     "source": "AK69_QF_AK69TheRavensLamentQu_058BB420.fragment_68 (Katana.esp)"
+     "source": "AK69_QF_AK69TheRavensLamentQu_058BB420.fragment_68 on Katana.esp:8BB420 (Katana.esp)",
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Katana",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "The Winking Skeever"
+       ],
+       "call": "SetStage 310",
+       "info": "Katana.esp:0878A4",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Katana",
+       "source": "AK69_TIF__050878A4.Fragment_0 on INFO Katana.esp:0878A4 (Katana.esp)",
+       "verdict": "script"
+      }
+     ],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 19,
    "firstObjective": {
     "text": "With Katana and Shale, talk to Megara in a city during the day",
@@ -1393,8 +1414,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Katana.esp:E39DE4",

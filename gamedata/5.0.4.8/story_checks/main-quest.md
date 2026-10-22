@@ -12,6 +12,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Matlara (named by alias RestingPilgrimOwner of AP_DialogueHelgen (unique)), placed in Helgen, "I'd like to rent a room. (Start Intro (<Global=RoomCost> gold))": SetStage 1 (when: Unbound hasn't started; the speaker is the one in alias RestingPilgrimOwner; the player has at least RoomCost (25) gold). Source: TIF_AP_05075139.Fragment_0 on INFO AlternatePerspective.esp:075139 (AlternatePerspective.esp). **script**
 - Dialogue with Shazdehviir, placed in Helgen, "Skip to Helgen Keep": SetStage 6 (when: the speaker is Shazdehviir). Source: TIF_AP_0638C6E9.Fragment_1 on INFO AlternatePerspective.esp:38C6E9 (AlternatePerspective.esp). **script**
 - Dialogue with Shazdehviir, placed in Helgen, "Skip to Helgen Keep": SetStage 7 (when: the speaker is Shazdehviir). Source: TIF_AP_0638C6E9.Fragment_1 on INFO AlternatePerspective.esp:38C6E9 (AlternatePerspective.esp). **script**
+- It starts from something placed in somewhere in Skyrim. (SetStage 99). Source: defaultSetStageTRIGSpecificActor on Skyrim.esm:046EFF (1 placed). **script**
 - (First objective shown at stage 160; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
@@ -98,7 +99,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Retrieve the Dragonstone", shown at stage 50. Source: Skyrim.esm:0D0800 QOBJ 50. **files**
-- e3demo, a helper quest with Arvel at stage 0 calls SetStage 50; e3demo is started by nothing in the records or scripts (**unread**). Source: QF_E3demo_00093637.fragment_0 on Skyrim.esm:093637 (Skyrim.esm). **script**
+- e3demo, a helper quest with Arvel at stage 0 calls SetStage 50; e3demo is started by the start-game flag; the start-game flag. Source: QF_E3demo_00093637.fragment_0 on Skyrim.esm:093637 (Skyrim.esm). **script**
 - MQ104 (Dragon Rising) at stage 1 calls SetStage 20. Source: QF_MQ104B_0002610C.fragment_6 on Skyrim.esm:02610C (LoreRim - Weapons.esp). **script**
 - MQ104 (Dragon Rising) at stage 1 calls SetStage 50. Source: QF_MQ104B_0002610C.fragment_6 on Skyrim.esm:02610C (LoreRim - Weapons.esp). **script**
 - Dialogue with Balgruuf the Greater (named by scene MQ103IntroScene, alias Balgruuf of MQ103 (Bleak Falls Barrow) (unique)), placed in Dragonsreach: SetStage 20; its scene is started by MQ103 (Bleak Falls Barrow) at stage 10. Reply: "Farengar, I think I've found someone who can help you with your dragon project." Source: TIF__000D50F1.Fragment_0 on INFO Skyrim.esm:0D50F1 (Skyrim.esm). **script**
@@ -231,6 +232,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Delphine, placed in Sleeping Giant Inn, "I'd like to rent the attic room. (<Global=RoomCost> gold)": SetStage 10 (when: the speaker is Delphine; A Blade in the Dark stage >= 5; A Blade in the Dark stage < 10; GetInCell Skyrim.esm:0133C6 == 1). Source: TIF__000A56D4.Fragment_0 on INFO Skyrim.esm:0A56D4 (Skyrim.esm). **script**
 - Dialogue with Delphine, placed in Sleeping Giant Inn, "I just came here for the horn.": SetStage 30 (when: the speaker is Delphine). Source: TIF__00083055.Fragment_0 on INFO Skyrim.esm:083055 (Skyrim.esm). **script**
 - Dialogue with Delphine, placed in Sleeping Giant Inn, "What of it?": SetStage 30 (when: the speaker is Delphine). Source: TIF__000C65A2.Fragment_0 on INFO Skyrim.esm:0C65A2 (Skyrim.esm). **script**
+- It starts from something placed in Sleeping Giant Inn, by the door to somewhere in Skyrim. (SetStage 25). Source: defaultsetstageonenter on Skyrim.esm:01B06C (1 placed). **script**
 - (First objective shown at stage 30; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)

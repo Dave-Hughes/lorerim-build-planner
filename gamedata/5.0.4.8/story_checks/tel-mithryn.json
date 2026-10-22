@@ -337,16 +337,40 @@
      "conditions": "the speaker is the one in alias Neloth",
      "source": "DLC2_TIF__020279E0.Fragment_1 on INFO Dragonborn.esm:0279E0 (Dragonborn.esm)",
      "verdict": "script"
-    }
-   ],
-   "caughtUpBy": [
+    },
     {
-     "by": "DLC2TTR5 (Briarheart Necropsy)",
+     "by": "quest script",
+     "quest": "DLC2TTR5 (Briarheart Necropsy)",
+     "questId": "Dragonborn.esm:01C05C",
      "atStage": 300,
      "call": "Start",
-     "source": "DLC2_QF_DLC2TTR5_0201C05C.fragment_2 (Dragonborn.esm)"
+     "source": "DLC2_QF_DLC2TTR5_0201C05C.fragment_2 on Dragonborn.esm:01C05C (Dragonborn.esm)",
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Neloth",
+       "speakerNamed": "alias Neloth of DLC2TTR5 (Briarheart Necropsy) (unique)",
+       "speakerPlaced": [
+        "Tel Mithryn, Tel Mithryn Tower"
+       ],
+       "call": "SetStage 300",
+       "info": "Dragonborn.esm:01C04B",
+       "prompt": "I examined the Briarheart warrior.",
+       "reply": [
+        "Oh have you? Well, let me just extract those memories and I'll see if you found anything useful.",
+        "I promise that any unrelated memories I run across will be kept in the strictest of confidences.",
+        "Here, you deserve a bit of a reward for your efforts... that was a lengthy trip for you, I'm sure!"
+       ],
+       "conditions": "the speaker is the one in alias Neloth; Briarheart Necropsy stage == 200",
+       "source": "DLC2_TIF__0201C04B.Fragment_0 on INFO Dragonborn.esm:01C04B (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 5,
    "firstObjective": {
     "text": "Find the source of the attacks",

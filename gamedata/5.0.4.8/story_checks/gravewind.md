@@ -25,6 +25,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Start-game flag: the quest runs from the start of the game. Source: FalkreathShades.esp:4CD9DA DNAM (FalkreathShades.esp). **files**
+- It starts from something placed in Cemetery Homestead, Gravetender's House, somewhere in Gravewind. (SetStage 10). Source: defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (3 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

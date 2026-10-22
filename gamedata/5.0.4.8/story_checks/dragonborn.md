@@ -37,15 +37,14 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- DLC2MQ03 (The Fate of the Skaal) at stage 0 calls SetStage 0. Source: DLC2_QF_DLC2MQ03_02017F90.fragment_15 on Dragonborn.esm:017F90 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Frea (named by the one follower in DLC2MQ02 (The Temple of Miraak)'s aliases), placed in Shaman's Hut, Skaal Village Shaman's Hut: SetStage 5 (when: the speaker is the one in alias Storn). Source: DLC2_TIF__0202A578.Fragment_0 on INFO Dragonborn.esm:02A578 (Dragonborn.esm). **script**
 - (First objective shown at stage 5; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
 
-- DLC2MQ03 (The Fate of the Skaal) at stage 0 calls SetStage 0. Source: DLC2_QF_DLC2MQ03_02017F90.fragment_15 (Unofficial Skyrim Special Edition Patch.esp).
 - DLC2MQ03 (The Fate of the Skaal) at stage 0 calls SetStage 60. Source: DLC2_QF_DLC2MQ03_02017F90.fragment_15 (Unofficial Skyrim Special Edition Patch.esp).
 - DLC2MQ03 (The Fate of the Skaal) at stage 0 calls SetStage 200. Source: DLC2_QF_DLC2MQ03_02017F90.fragment_15 (Unofficial Skyrim Special Edition Patch.esp).
-- DLC2MQ03 (The Fate of the Skaal) calls SetStage 5. Source: DLC2_TIF__0202A578.Fragment_0 (Unofficial Skyrim Special Edition Patch.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -129,6 +128,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - DLC2MQ03 (The Fate of the Skaal) at stage 200 calls SetStage 10; its stage 200 is set by Dialogue with Frea (named by the one follower in DLC2MQ03 (The Fate of the Skaal)'s aliases), placed in Shaman's Hut, Skaal Village Shaman's Hut: SetStage 200 (when: the speaker is the one in alias Storn). Source: DLC2_QF_DLC2MQ03_02017F90.fragment_0 on Dragonborn.esm:017F90 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- It starts from Control Switch in Nchardak Great Chamber, Nchardak, Nchardak Aqueduct, Nchardak, Nchardak Workshop, Nchardak. (SetStage 2). Source: DLC2dunNchardakPedestalScript on Dragonborn.esm:028110 (9 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)

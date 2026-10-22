@@ -9,6 +9,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Froki Whetted-Blade, placed in Froki's Shack, "What do I need to do?": SetStage 21 (when: Kyne's Sacred Trials stage 50 not done; Kyne's Sacred Trials stage 20 done; the speaker is Froki Whetted-Blade). Source: TIF__0001847E.Fragment_0 on INFO Skyrim.esm:01847E (Skyrim.esm). **script**
 - Dialogue with Froki Whetted-Blade, placed in Froki's Shack, "What are the Sacred Trials?": SetStage 15 (when: Kyne's Sacred Trials stage 15 not done; the speaker is Froki Whetted-Blade). Source: TIF__0001846A.Fragment_0 on INFO Skyrim.esm:01846A (Skyrim.esm). **script**
 - Dialogue with Froki Whetted-Blade, placed in Froki's Shack, "Yes. Tell me what to do.": SetStage 20 (when: Kyne's Sacred Trials stage 20 not done; Kyne's Sacred Trials stage 15 done; the speaker is Froki Whetted-Blade). Source: TIF__00018480.Fragment_0 on INFO Skyrim.esm:018480 (Skyrim.esm). **script**
+- It starts from something placed in Froki's Shack, by the door to somewhere in Skyrim. (SetStage 10). Source: defaultSetStageTRIGSpecificActor on Skyrim.esm:046EFF (1 placed). **script**
 - (First objective shown at stage 21; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

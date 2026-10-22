@@ -25,6 +25,63 @@
      "conditions": "The Forgotten City stage <= 20; the speaker is Cassia",
      "source": "TIF__010AE7B3.Fragment_0 on INFO ForgottenCity.esp:0AE7B3 (ForgottenCity.esp)",
      "verdict": "script"
+    },
+    {
+     "by": "board",
+     "call": "Start",
+     "objectEdid": "FCExitLakehouseTrigger",
+     "objectId": "ForgottenCity.esp:0357DD",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Lakehouse",
+         "metres": 2
+        }
+       ],
+       "plugin": "ForgottenCity.esp",
+       "ref": "ForgottenCity.esp:0357DE",
+       "where": "The Forgotten City"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "Lakehouse",
+         "metres": 2
+        }
+       ],
+       "plugin": "ForgottenCity.esp",
+       "ref": "ForgottenCity.esp:0357DF",
+       "where": "The Forgotten City"
+      }
+     ],
+     "script": "FCEnterCityScript",
+     "verdict": "script",
+     "plain": "It starts from something placed in The Forgotten City, by the door to Lakehouse.",
+     "source": "FCEnterCityScript on ForgottenCity.esp:0357DD (2 placed)"
+    },
+    {
+     "by": "board",
+     "call": "Start",
+     "objectEdid": "000FCAutoDoorOpen",
+     "objectId": "ForgottenCity.esp:0499C4",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Skyrim",
+         "metres": 22
+        }
+       ],
+       "plugin": "ForgottenCity.esp",
+       "ref": "ForgottenCity.esp:0499C5",
+       "where": "Forgotten Ruins"
+      }
+     ],
+     "script": "FCAutoOpenDoorScript",
+     "verdict": "script",
+     "plain": "It starts from something placed in Forgotten Ruins, by the door to somewhere in Skyrim.",
+     "source": "FCAutoOpenDoorScript on ForgottenCity.esp:0499C4 (1 placed)"
     }
    ],
    "caughtUpBy": [

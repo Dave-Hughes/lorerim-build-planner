@@ -8,7 +8,31 @@
    "name": "The Cause",
    "plugin": "CauseTweakAlternateStart.esp",
    "firstObjectiveStage": 1,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "SetStage 1",
+     "objectEdid": null,
+     "objectId": "Skyrim.esm:00003B",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Mythic Dawn Temple",
+         "metres": 1
+        }
+       ],
+       "plugin": "ccbgssse067-daedinv.esm",
+       "ref": "ccbgssse067-daedinv.esm:19E696",
+       "where": "somewhere in Deadlands"
+      }
+     ],
+     "script": "defaultSetStageOnLoad",
+     "verdict": "script",
+     "plain": "It starts from something placed in somewhere in Deadlands, by the door to Mythic Dawn Temple.",
+     "source": "defaultSetStageOnLoad on Skyrim.esm:00003B (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 1,
    "firstObjective": {
@@ -61,8 +85,7 @@
     "stage": null,
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
-   },
-   "unread": "no starter in its records or scripts"
+   }
   }
  ],
  "notInRawQuests": [],

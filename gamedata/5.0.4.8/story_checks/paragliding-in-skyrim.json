@@ -8,7 +8,36 @@
    "name": "Paragliding in Skyrim",
    "plugin": "Paragliding.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "object": "Para Intro Gazebo Discover",
+     "objectEdid": "ParaIntroStg3",
+     "objectId": "Paragliding.esp:00802B",
+     "places": [
+      {
+       "plugin": "Paragliding.esp",
+       "ref": "Paragliding.esp:00802D",
+       "where": "somewhere in Skyrim"
+      },
+      {
+       "plugin": "Paragliding.esp",
+       "ref": "Paragliding.esp:008021",
+       "where": "somewhere in Skyrim"
+      },
+      {
+       "plugin": "Paragliding.esp",
+       "ref": "Paragliding.esp:009060",
+       "where": "somewhere in Skyrim"
+      }
+     ],
+     "script": "ParaIntroTrigger",
+     "verdict": "script",
+     "plain": "It starts from Para Intro Gazebo Discover in somewhere in Skyrim.",
+     "source": "ParaIntroTrigger on Paragliding.esp:00802B (3 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 1,
    "firstObjective": {
@@ -71,8 +100,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   }
  ],
  "notInRawQuests": [],

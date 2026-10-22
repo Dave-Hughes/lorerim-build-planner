@@ -6,7 +6,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from Erotic Book in somewhere in Stuhn Ravine, by the door to Storage Room. (Start). Source: AoMRQTriggerScript on Vigilant.esm:4E131A (1 placed). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -29,7 +29,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from Chick Trader in somewhere in Stuhn Ravine, by the door to Storage Room. (Start). Source: AoMRQTriggerScript on Vigilant.esm:4E374D (1 placed). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -53,7 +53,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from Piper in somewhere in Stuhn Ravine, by the door to Storage Room. (Start). Source: AoMRQTriggerScript on Vigilant.esm:4E0119 (1 placed). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -71,7 +71,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from Aspiration of Meridia in somewhere in Stuhn Ravine, by the door to Storage Room. (Start). Source: AoMRQTriggerScript on Vigilant.esm:4E011E (1 placed). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -94,7 +94,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from Lost Relic in somewhere in Stuhn Ravine, by the door to Storage Room. (Start). Source: AoMRQTriggerScript on Vigilant.esm:4E0123 (1 placed). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -117,7 +117,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from Daedra Summoner in somewhere in Stuhn Ravine, by the door to Storage Room. (Start). Source: AoMRQTriggerScript on Vigilant.esm:4E0105 (1 placed). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -135,7 +135,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from Vampire in somewhere in Stuhn Ravine, by the door to Storage Room. (Start). Source: AoMRQTriggerScript on Vigilant.esm:4E010B (1 placed). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -153,7 +153,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from Witch in somewhere in Stuhn Ravine, by the door to Storage Room. (Start). Source: AoMRQTriggerScript on Vigilant.esm:4E0114 (1 placed). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -470,7 +470,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from Dreamer in Dungeon, by the door to somewhere in Stuhn Ravine. (Start). Source: AoMRQTriggerScript on Vigilant.esm:4EA3AA (1 placed). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -488,7 +488,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from Duplicate in Dungeon, by the door to somewhere in Stuhn Ravine. (Start). Source: AoMRQTriggerScript on Vigilant.esm:4EA3D5 (1 placed). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -507,7 +507,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from Spawn in Dungeon, by the door to somewhere in Stuhn Ravine. (Start). Source: AoMRQTriggerScript on Vigilant.esm:4EA3AE (1 placed). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -525,7 +525,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from Bloodsucker in Dungeon, by the door to somewhere in Stuhn Ravine. (Start). Source: AoMRQTriggerScript on Vigilant.esm:4E91B7 (1 placed). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -543,7 +543,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from Witch Hunter in Dungeon, by the door to somewhere in Stuhn Ravine. (Start). Source: AoMRQTriggerScript on Vigilant.esm:4EA3CD (1 placed). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -586,13 +586,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- zzzCHSubQuest13 (Broken Horns) calls at stage 60 Start; at stage 60 SetStage 0. Sources: QF_zzzCHSubQuest13_0251ADBF.fragment_25 on Vigilant.esm:51ADBF. **script**
 - (First objective shown at stage 1; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- zzzCHSubQuest13 (Broken Horns) at stage 60 calls Start. Source: QF_zzzCHSubQuest13_0251ADBF.fragment_25 (Vigilant.esm).
-- zzzCHSubQuest13 (Broken Horns) at stage 60 calls SetStage 0. Source: QF_zzzCHSubQuest13_0251ADBF.fragment_25 (Vigilant.esm).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -648,6 +643,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - zzzAoMMq10 (The Landing) calls at stage 50 Start; at stage 50 SetStage 0. Sources: QF_zzAoMMq10_01011B75.fragment_11 on Vigilant.esm:011B75. **script**
 - zzzAoMMqGoodEnd (Art of Mercy) calls at stage 130 Start; at stage 130 SetStage 0. Sources: QF_zzzAoMMqGoodEnd_024D0376.fragment_26 on Vigilant.esm:4D0376. **script**
+- It starts from Water Snakes in Storage Room, Temple of Stendarr, by the door to somewhere in Elder Field. (Start). Source: AoMEp02SkipPaintingScript on Vigilant.esm:363ECF (1 placed). **script**
+- It starts from Hope in Storage Room, Temple of Stendarr, by the door to somewhere in Elder Field. (Start). Source: AoMEp01SkipPaintingScript on Vigilant.esm:363ECE (1 placed). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
@@ -702,6 +699,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - zzzBMMq02 (Remnants) calls at stage 100 Start; at stage 100 SetStage 0. Sources: QF_zzzBMMq02_01038525.fragment_20 on Vigilant.esm:038525. **script**
 - Dialogue with Lamae Bal (named by alias LamaeBal of zzzBMMq03 (The Blood Matron) (unique)), placed in Lamae's Dream, "Begone, monster.": SetStage 60 (when: the speaker is the one in alias LamaeBal). Source: BM03_TIF__0103C193.Fragment_0 on INFO Vigilant.esm:03C193 (Vigilant.esm). **script**
+- It starts from something placed in Matron's Chamber, by the door to Enchantress' Palace. (SetStage 10). Source: defaultsetStageTrigSCRIPT on Skyrim.esm:078168 (1 placed). **script**
 - (First objective shown at stage 60; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -797,7 +795,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - zzzCHMemoryGuide (Memory Guide) at stage 0 calls SetStage 0. Source: QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon. **script**
-- zzzCHBossQuestVarla (named "VS Varla" in its record), a helper quest with Boss, Sub01, Sub02 at stage 0 calls Start; zzzCHBossQuestVarla is started by nothing in the records or scripts (**unread**). Source: QF_zzzCHBossQuestVarla_024F69C2.fragment_0 on Vigilant.esm:4F69C2 (Vigilant.esm). **script**
+- zzzCHBossQuestVarla (named "VS Varla" in its record), a helper quest with Boss, Sub01, Sub02 at stage 0 calls Start; zzzCHBossQuestVarla is started by the start-game flag. Source: QF_zzzCHBossQuestVarla_024F69C2.fragment_0 on Vigilant.esm:4F69C2 (Vigilant.esm). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -937,6 +935,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Sacred Anatomancer, placed in Old Well, "Fine. I, <Alias=Player>, swear this by the multiples of three. I shall henceforth renounce this name.": SetStage 0 (when: the speaker is Sacred Anatomancer). Source: AoMgdSA_TIF__024EC7F2.Fragment_0 on INFO Vigilant.esm:4EC7F2 (Vigilant.esm). **script**
+- It starts from something placed in Dungeon, by the door to somewhere in Stuhn Ravine. (Start). Source: CHSAForceStartExileTriggerScript on Vigilant.esm:4EEC09 (1 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -959,7 +958,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from Soul-Shriven in St. Dulsa's Charnel, Silorn's Priory, Old Temple of the Eight Divines, Golden Sanctuary and 23 more places. (Start). Source: CHRqSoulShrivenTRGScript on Vigilant.esm:51532D (32 placed). **script**
 - (First objective shown at stage 1; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -977,9 +976,11 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- zzzCHMemoryQuest13 (named "Paravania the Man-Bull" in its record), a helper quest with Paravania at stage 30 calls SetStage 10; zzzCHMemoryQuest13 is started by zzzCHSubQuest13 (Broken Horns) at stage 5 (Start); zzzCHSubQuest13 (Broken Horns) at stage 5 (SetStage 0). Source: QF_zzzCHMemoryQuest13_0251C038.fragment_7 on Vigilant.esm:51C038 (Vigilant.esm). **script**
+- zzzCHMemoryQuest13 (named "Paravania the Man-Bull" in its record), a helper quest with Paravania at stage 30 calls SetStage 10; zzzCHMemoryQuest13 is started by zzzCHSubQuest13 (Broken Horns) at stage 5 (Start); zzzCHSubQuest13 (Broken Horns) at stage 5 (SetStage 0); the start-game flag. Source: QF_zzzCHMemoryQuest13_0251C038.fragment_7 on Vigilant.esm:51C038 (Vigilant.esm). **script**
 - zzzCHMemoryGuide (Memory Guide) at stage 0 calls SetStage 0. Source: QF_zzzCHMemoryGuide_0242E0B1.fragment_0 on Vigilant.esm:42E0B1 (Vigilant.esm), through zzzCHMemoryGuide (Memory Guide)'s traceon. **script**
-- zzzCHBossQuestMorihaus (named "VS Morihaus" in its record), a helper quest with Boss at stage 10 calls SetStage 2; zzzCHBossQuestMorihaus is started by nothing in the records or scripts (**unread**). Source: QF_zzzCHBossQuestMorihaus_024F69B7.fragment_4 on Vigilant.esm:4F69B7 (Vigilant.esm). **script**
+- zzzCHBossQuestMorihaus (named "VS Morihaus" in its record), a helper quest with Boss at stage 10 calls SetStage 2; zzzCHBossQuestMorihaus is started by the start-game flag. Source: QF_zzzCHBossQuestMorihaus_024F69B7.fragment_4 on Vigilant.esm:4F69B7 (Vigilant.esm). **script**
+- It starts from something placed in First Inquisition Court, Fort Welkynd. (SetStage 0). Source: defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (2 placed). **script**
+- It starts from Monument of Belharza in First Inquisition Court, by the door to ???. (SetStage 10). Source: CHBelharzaQuizTriggerScript on Vigilant.esm:51ADBE (1 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -1032,6 +1033,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - zzzBMMq01 (Empty Cells) calls at stage 110 Start; at stage 110 SetStage 0; its stage None is set by Dialogue with someone the line does not name: SetStage 110 (when: Empty Cells stage == 100; the speaker is the one in alias Steward). Sources: QF_zzzBMMq01_01038524.fragment_17 on Vigilant.esm:038524. **script**
+- It starts from Water Spirits in Storage Room, Temple of Stendarr, by the door to Mathmalatu Priory. (Start). Source: AoMEp03SkipPaintingScript on Vigilant.esm:363ED0 (1 placed). **script**
+- It starts from Water Snakes in Storage Room, Temple of Stendarr, by the door to somewhere in Elder Field. (Start). Source: AoMEp02SkipPaintingScript on Vigilant.esm:363ECF (1 placed). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -1057,6 +1060,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - zzzCOMq01 (Child of Oblivion) calls at stage 200 Start; at stage 200 SetStage 0. Sources: QF_zzzCOMq01_01065932.fragment_14 on Vigilant.esm:065932. **script**
+- It starts from Death in Storage Room, Temple of Stendarr, by the door to Mathmalatu Priory. (Start). Source: AoMEp04StartPaintingScript on Vigilant.esm:363ED1 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

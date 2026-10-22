@@ -55,11 +55,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - It starts by itself from the start of the game. (SetStage 5). Source: ccBGSSSE001_CrabMQ3_Quest.OnUpdateGameTime on ccBGSSSE001-Fish.esm:0009D6 (Synthesis - Gameplay Overwrite.esp). **script**
+- ccBGSSSE001_Crab_MQ4 (Wave Breaker) at stage 2000 calls Start; its stage 2000 is set by Dialogue with Viriya (named by the one follower in ccBGSSSE001_Crab_MQ4 (Wave Breaker)'s aliases), placed in Riften Fishery: SetStage 2000 (when: Wave Breaker stage == 600; fn136 == 1); Dialogue with Viriya (named by the one follower in ccBGSSSE001_Crab_MQ4 (Wave Breaker)'s aliases), placed in Riften Fishery: SetStage 2000 (when: Wave Breaker stage == 600; fn136 == 1). Source: QF_ccBGSSSE001_Crab_MQ4_050009E9.fragment_2 on ccBGSSSE001-Fish.esm:0009E9 (Synthesis - Gameplay Overwrite.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- ccBGSSSE001_Crab_MQ4 (Wave Breaker) at stage 2000 calls Start. Source: QF_ccBGSSSE001_Crab_MQ4_050009E9.fragment_2 (Synthesis - Gameplay Overwrite.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -81,12 +78,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- ccBGSSSE001_Misc_Dwarven (Beneath Bronze Waters) at stage 20 calls Start. Source: QF_ccBGSSSE001_Misc_Dwarven_05000AD6.fragment_7 on ccBGSSSE001-Fish.esm:000AD6 (Synthesis - Gameplay Overwrite.esp). **script**
 - (First objective shown at stage 50; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- ccBGSSSE001_Misc_Dwarven (Beneath Bronze Waters) at stage 20 calls Start. Source: QF_ccBGSSSE001_Misc_Dwarven_05000AD6.fragment_7 (Synthesis - Gameplay Overwrite.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 

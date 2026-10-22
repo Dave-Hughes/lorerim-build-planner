@@ -1464,6 +1464,54 @@
    ],
    "where": "Temple of Kynareth, Whiterun",
    "firstObjective": "Retrieve Nettlebane"
+  },
+  {
+   "quest": "The Bloodstone Chalice",
+   "editorId": "DLC1VampireBaseIntro",
+   "line": "dawnguard",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Bloodstone_Chalice",
+   "notes": "PC, WO-136: the start check's trace (ruling 1 or a board) agrees with UESP: Starts automatically after you complete Bloodline and accept Lord Harkon's Gift; no separate giver",
+   "startsWith": [],
+   "noGiver": true,
+   "firstObjective": "Speak with Garan Marethi"
+  },
+  {
+   "quest": "Unseen Visions",
+   "editorId": "DLC1VQ06",
+   "line": "dawnguard",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:Unseen_Visions",
+   "notes": "PC, WO-136: the start check's trace (ruling 1 or a board) agrees with UESP: Dexion Evicus sends you to get a Moth Priest's draw knife from Ancestor Glade; previous quest Seeking Disclosure",
+   "startsWith": [
+    "Dexion Evicus"
+   ],
+   "firstObjective": "Find a Moth Priest's knife"
+  },
+  {
+   "quest": "Containment",
+   "editorId": "MG05",
+   "line": "college",
+   "source": "uesp",
+   "url": "https://en.uesp.net/w/index.php?title=Skyrim:Containment&oldid=3548286",
+   "notes": "PC, WO-136: the start check's trace (ruling 1 or a board) agrees with UESP: After the Ancano and Savos Aren battle you wake at the College and Mirabelle Ervine tells you to get up; saying you feel okay starts it; previous quest Revealing the Unseen",
+   "startsWith": [
+    "Mirabelle Ervine",
+    "Tolfdir"
+   ],
+   "firstObjective": "Assess the damage to the Great Hall"
+  },
+  {
+   "quest": "Where You Hang Your Enemy's Head...",
+   "editorId": "DarkBrotherhoodSanctuaryRepair",
+   "line": "dark-brotherhood",
+   "source": "uesp",
+   "url": "https://en.uesp.net/w/index.php?title=Skyrim:Where_You_Hang_Your_Enemy%27s_Head...&oldid=2917954",
+   "notes": "PC, WO-136: the start check's trace (ruling 1 or a board) agrees with UESP: Begins with Nazir in the Dawnstar Sanctuary after Hail Sithis!; he directs you to Delvin Mallory",
+   "startsWith": [
+    "Nazir"
+   ],
+   "firstObjective": "Employ Delvin Mallory's services"
   }
  ]
 }

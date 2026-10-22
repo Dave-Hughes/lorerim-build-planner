@@ -31,13 +31,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- WTDragonHunt (Wyrmstooth) calls at stage 130 Start; at stage 130 SetStage 10; its stage None is set by Dialogue with Lurius Liore, placed in Wyrmstooth Holder Cell, Wyrmstooth: SetStage 130 (when: Wyrmstooth stage == 120; the speaker is Lurius Liore). Sources: WT_QF_WTTEST_01022528.fragment_16 on Wyrmstooth.esp:022528. **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- WTDragonHunt (Wyrmstooth) at stage 130 calls Start. Source: WT_QF_WTTEST_01022528.fragment_16 (Wyrmstooth.esp).
-- WTDragonHunt (Wyrmstooth) at stage 130 calls SetStage 10. Source: WT_QF_WTTEST_01022528.fragment_16 (Wyrmstooth.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -277,6 +272,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Read Fort Valus Note (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.OnActivate on BOOK Wyrmstooth.esp:BEDB42. **script**
 - Read Fort Valus Note (SetStage 10). Source: defaultSetStageOnCloseBookNotAlias.OnEquipped on BOOK Wyrmstooth.esp:BEDB42. **script**
 - Start-game flag: the quest runs from the start of the game. Source: Wyrmstooth.esp:28D0B5 DNAM (Wyrmstooth.esp). **files**
+- It starts from something placed in Fort Valus Barracks, Fort Valus, Fort Valus Muster, Fort Valus, Fort Valus Common House, Fort Valus. (SetStage 10). Source: defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (3 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

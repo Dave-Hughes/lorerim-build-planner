@@ -25,6 +25,29 @@
      "conditions": "GetQuestRunning Thirsk Rumors == 0; Thirsk Rumors stage 100 not done; the speaker is Geldis Sadri",
      "source": "DLC2_TIF__0203A29B.Fragment_0 on INFO Dragonborn.esm:03A29B (Unofficial Skyrim Special Edition Patch.esp)",
      "verdict": "script"
+    },
+    {
+     "by": "board",
+     "call": "Start",
+     "objectEdid": "DLC2defaultBlankTrigger",
+     "objectId": "Dragonborn.esm:01A526",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Thirsk Mead Hall",
+         "metres": 8
+        }
+       ],
+       "plugin": "Dragonborn.esm",
+       "ref": "Dragonborn.esm:01A527",
+       "where": "Thirsk"
+      }
+     ],
+     "script": "DLC2ThirskAssaultTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from something placed in Thirsk, by the door to Thirsk Mead Hall.",
+     "source": "DLC2ThirskAssaultTriggerScript on Dragonborn.esm:01A526 (1 placed)"
     }
    ],
    "caughtUpBy": [],
@@ -190,7 +213,31 @@
       "call": "SetStage 20",
       "source": "DLC2MHRieklingHandlerQuestScript.ProcessFoundRieklings on Dragonborn.esm:01A523 (Dragonborn.esm)",
       "verdict": "script",
-      "throughStartedBy": []
+      "throughStartedBy": [
+       {
+        "by": "board",
+        "call": "Start",
+        "objectEdid": "DLC2defaultBlankTrigger",
+        "objectId": "Dragonborn.esm:01A526",
+        "places": [
+         {
+          "nearDoors": [
+           {
+            "door": "Thirsk Mead Hall",
+            "metres": 8
+           }
+          ],
+          "plugin": "Dragonborn.esm",
+          "ref": "Dragonborn.esm:01A527",
+          "where": "Thirsk"
+         }
+        ],
+        "script": "DLC2ThirskAssaultTriggerScript",
+        "verdict": "script",
+        "plain": "It starts from something placed in Thirsk, by the door to Thirsk Mead Hall.",
+        "source": "DLC2ThirskAssaultTriggerScript on Dragonborn.esm:01A526 (1 placed)"
+       }
+      ]
      },
      {
       "by": "quest script",
@@ -200,7 +247,31 @@
       "call": "SetStage 20",
       "source": "DLC2_QF_DLC2MHRieklingHandler_0201A523.fragment_0 on Dragonborn.esm:01A523 (Dragonborn.esm), through DLC2MHRieklingHandler's processfoundrieklings",
       "verdict": "script",
-      "throughStartedBy": []
+      "throughStartedBy": [
+       {
+        "by": "board",
+        "call": "Start",
+        "objectEdid": "DLC2defaultBlankTrigger",
+        "objectId": "Dragonborn.esm:01A526",
+        "places": [
+         {
+          "nearDoors": [
+           {
+            "door": "Thirsk Mead Hall",
+            "metres": 8
+           }
+          ],
+          "plugin": "Dragonborn.esm",
+          "ref": "Dragonborn.esm:01A527",
+          "where": "Thirsk"
+         }
+        ],
+        "script": "DLC2ThirskAssaultTriggerScript",
+        "verdict": "script",
+        "plain": "It starts from something placed in Thirsk, by the door to Thirsk Mead Hall.",
+        "source": "DLC2ThirskAssaultTriggerScript on Dragonborn.esm:01A526 (1 placed)"
+       }
+      ]
      }
     ]
    }

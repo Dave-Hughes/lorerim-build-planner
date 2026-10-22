@@ -110,6 +110,51 @@
      "conditions": "Battle of the Champions stage 210 not done; Battle of the Champions stage 130 not done; Battle of the Champions stage 230 not done; Battle of the Champions stage 2 not done; Battle of the Champions stage 20 done; the speaker is Legate Adventus Caesennius; GetInFaction Sons of Skyrim == 0; fn682 == 1; fn682 == 0; fn682 == 0; fn682 == 1; fn682 == 1; fn722 >= 3 or fn722 >= 3 or fn722 >= 3 or fn722 >= 3 or GetInFaction Imperial Legion == 1 or GetActorValue >= SpeechAverage (now 50)",
      "source": "TIF__0E0008A9.Fragment_0 on INFO ccffbsse001-imperialdragon.esl:0008A9 (Trad_AE_CC_Collection_Requiem_Patch.esp)",
      "verdict": "script"
+    },
+    {
+     "by": "board",
+     "call": "SetStage 10",
+     "objectEdid": null,
+     "objectId": "Skyrim.esm:00003B",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Whiterun",
+         "metres": 4
+        }
+       ],
+       "plugin": "Civil War Champions - Reduced Cut.esp",
+       "ref": "ccffbsse001-imperialdragon.esl:000953",
+       "where": "The Drunken Huntsman, Drunken Huntsman"
+      },
+      {
+       "plugin": "Civil War Champions - Reduced Cut.esp",
+       "ref": "ccffbsse001-imperialdragon.esl:00088D",
+       "where": "somewhere in Skyrim"
+      }
+     ],
+     "script": "defaultSetStageOnLoad",
+     "verdict": "script",
+     "plain": "It starts from something placed in The Drunken Huntsman, Drunken Huntsman, somewhere in Skyrim.",
+     "source": "defaultSetStageOnLoad on Skyrim.esm:00003B (2 placed)"
+    },
+    {
+     "by": "board",
+     "call": "SetStage 7",
+     "objectEdid": "defaultSetStageTRIGPlayerOnly",
+     "objectId": "Skyrim.esm:099312",
+     "places": [
+      {
+       "plugin": "Civil War Champions - Reduced Cut.esp",
+       "ref": "ccffbsse001-imperialdragon.esl:00088D",
+       "where": "somewhere in Skyrim"
+      }
+     ],
+     "script": "defaultsetStageTrigSCRIPT",
+     "verdict": "script",
+     "plain": "It starts from something placed in somewhere in Skyrim.",
+     "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (1 placed)"
     }
    ],
    "caughtUpBy": [],

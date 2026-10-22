@@ -65,11 +65,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Neloth (named by alias Neloth of DLC2TT2 (Old Friends) (unique)), placed in Tel Mithryn, Tel Mithryn Tower, "I suppose you want me to kill them.": SetStage 100 (when: the speaker is the one in alias Neloth). Source: DLC2_TIF__0201956D.Fragment_0 on INFO Dragonborn.esm:01956D (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with Neloth (named by alias Neloth of DLC2TT2 (Old Friends) (unique)), placed in Tel Mithryn, Tel Mithryn Tower, "Would I be able to collect a bounty?": SetStage 100 (when: the speaker is the one in alias Neloth). Source: DLC2_TIF__020279E0.Fragment_1 on INFO Dragonborn.esm:0279E0 (Dragonborn.esm). **script**
+- DLC2TTR5 (Briarheart Necropsy) at stage 300 calls Start; its stage 300 is set by Dialogue with Neloth (named by alias Neloth of DLC2TTR5 (Briarheart Necropsy) (unique)), placed in Tel Mithryn, Tel Mithryn Tower, "I examined the Briarheart warrior.": SetStage 300 (when: the speaker is the one in alias Neloth; Briarheart Necropsy stage == 200). Source: DLC2_QF_DLC2TTR5_0201C05C.fragment_2 on Dragonborn.esm:01C05C (Dragonborn.esm). **script**
 - (First objective shown at stage 100; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- DLC2TTR5 (Briarheart Necropsy) at stage 300 calls Start. Source: DLC2_QF_DLC2TTR5_0201C05C.fragment_2 (Dragonborn.esm).
 
 **Second step** (what moves it to its second objective, often the real test)
 

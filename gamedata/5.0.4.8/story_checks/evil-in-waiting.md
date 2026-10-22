@@ -6,7 +6,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- e3demo, a helper quest with Arvel at stage 0 calls SetStage 3; e3demo is started by nothing in the records or scripts (**unread**). Source: QF_E3demo_00093637.fragment_0 on Skyrim.esm:093637 (Skyrim.esm). **script**
+- e3demo, a helper quest with Arvel at stage 0 calls SetStage 3; e3demo is started by the start-game flag; the start-game flag. Source: QF_E3demo_00093637.fragment_0 on Skyrim.esm:093637 (Skyrim.esm). **script**
 - Dialogue with Valdar, placed in Valthume Vestibule, Valthume, "Then I will help you. What must be done?": SetStage 3 (when: Evil in Waiting stage < 3; the speaker is Valdar). Source: TIF__0005DD98.Fragment_0 on INFO Skyrim.esm:05DD98 (Skyrim.esm). **script**
 - Story manager node dunValthumeNode, event: change location; conditions up its parents: you're in Valthume; the place is a dungeon. Source: dunValthumeNode Skyrim.esm:03ED88 (Skyrim.esm). **files**
 - (First objective shown at stage 3; a call to a later stage advances the quest instead.)

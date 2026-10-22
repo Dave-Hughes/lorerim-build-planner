@@ -6,7 +6,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from Para Intro Gazebo Discover in somewhere in Skyrim. (Start). Source: ParaIntroTrigger on Paragliding.esp:00802B (3 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

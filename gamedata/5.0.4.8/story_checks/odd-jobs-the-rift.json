@@ -8,15 +8,20 @@
    "name": "Supply and Demand",
    "plugin": "TheChoiceIsYours.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "FreeformRiften20 (The Raid)",
+     "by": "quest script",
+     "quest": "FreeformRiften20 (The Raid)",
+     "questId": "Skyrim.esm:085D40",
      "atStage": 200,
      "call": "SetStage 10",
-     "source": "QF_FreeformRiften20_00085D40.fragment_9 (TheChoiceIsYours.esp)"
+     "source": "QF_FreeformRiften20_00085D40.fragment_9 on Skyrim.esm:085D40 (TheChoiceIsYours.esp)",
+     "verdict": "script",
+     "throughStage": [],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 16,
    "firstObjective": {
     "text": "Report skooma source to Jarl of Riften",
@@ -133,8 +138,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Skyrim.esm:053306",

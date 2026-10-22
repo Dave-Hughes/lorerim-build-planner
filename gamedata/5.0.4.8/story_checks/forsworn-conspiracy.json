@@ -550,6 +550,29 @@
        "call": "SetStage 10",
        "source": "QF_MS02_00040A5E.fragment_48 on Skyrim.esm:040A5E (Unofficial Skyrim Special Edition Patch.esp), through DialogueCrimeGuards (Generic crime dialogue)'s setupcidhnamine",
        "verdict": "script"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 25",
+       "objectEdid": "defaultSetStageTRIG",
+       "objectId": "Skyrim.esm:033F50",
+       "places": [
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 12
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0CD148",
+         "where": "Cidhna Mine"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in Cidhna Mine, by the door to somewhere in Markarth.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (1 placed)"
       }
      ]
     },

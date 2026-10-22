@@ -7,6 +7,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Cassia, placed in Forgotten Ruins: Start (when: The Forgotten City stage <= 20; the speaker is Cassia). Source: TIF__010AE7B3.Fragment_0 on INFO ForgottenCity.esp:0AE7B3 (ForgottenCity.esp). **script**
+- It starts from something placed in The Forgotten City, by the door to Lakehouse. (Start). Source: FCEnterCityScript on ForgottenCity.esp:0357DD (2 placed). **script**
+- It starts from something placed in Forgotten Ruins, by the door to somewhere in Skyrim. (Start). Source: FCAutoOpenDoorScript on ForgottenCity.esp:0499C4 (1 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)

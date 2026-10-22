@@ -10,6 +10,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Benor (named by the one follower in MS14 (Laid to Rest)'s aliases), placed in Guardhouse, "Is there a story behind that burned down house?": SetStage 20 (when: you're in Morthal; GetInFaction Guard Faction (for dialogue) == 1; Laid to Rest stage >= 10; Laid to Rest stage <= 60). Source: TIF__00076F47.Fragment_0 on INFO Skyrim.esm:076F47 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with Idgrod Ravencrone (named by alias JarlImperial of MS14 (Laid to Rest) (forced)), placed in Highmoon Hall, "Uh... I haven't found anything yet.": SetStage 9 (when: Laid to Rest stage 9 not done; Laid to Rest stage >= 30; Laid to Rest stage <= 95; GetInFaction JobJarlFaction == 1; the speaker is the one in alias JarlImperial or the speaker is the one in alias JarlRebel). Source: TIF__000C82E1.Fragment_0 on INFO Skyrim.esm:0C82E1 (Skyrim.esm). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:025F3E DNAM (TheChoiceIsYours.esp). **files**
+- It starts from something placed in Morthal, by the door to Eisa's House. (SetStage 10). Source: defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

@@ -6,7 +6,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- aaaMBRalfornDialogue, a helper quest with RalfornAlias at stage 14 calls SetStage 10; aaaMBRalfornDialogue is started by nothing in the records or scripts (**unread**). Source: QF_aaaMBRalfornDialogue_05039B8C.fragment_0 on NightmarePlane.esp:039B8C (NightmarePlane.esp). **script**
+- aaaMBRalfornDialogue, a helper quest with RalfornAlias at stage 14 calls SetStage 10; aaaMBRalfornDialogue is started by the start-game flag; the start-game flag. Source: QF_aaaMBRalfornDialogue_05039B8C.fragment_0 on NightmarePlane.esp:039B8C (NightmarePlane.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

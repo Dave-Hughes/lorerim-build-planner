@@ -97,21 +97,63 @@
    "name": "Barrow of the Wyrm",
    "plugin": "Wyrmstooth.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "WTDragonHunt (Wyrmstooth)",
+     "by": "quest script",
+     "quest": "WTDragonHunt (Wyrmstooth)",
+     "questId": "Wyrmstooth.esp:022528",
      "atStage": 130,
      "call": "Start",
-     "source": "WT_QF_WTTEST_01022528.fragment_16 (Wyrmstooth.esp)"
+     "source": "WT_QF_WTTEST_01022528.fragment_16 on Wyrmstooth.esp:022528 (Wyrmstooth.esp)",
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Lurius Liore",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Wyrmstooth Holder Cell, Wyrmstooth"
+       ],
+       "call": "SetStage 130",
+       "info": "Wyrmstooth.esp:597905",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Wyrmstooth stage == 120; the speaker is Lurius Liore",
+       "source": "WT_TIF__02597905.Fragment_1 on INFO Wyrmstooth.esp:597905 (Wyrmstooth.esp)",
+       "verdict": "script"
+      }
+     ],
+     "laterInLine": true
     },
     {
-     "by": "WTDragonHunt (Wyrmstooth)",
+     "by": "quest script",
+     "quest": "WTDragonHunt (Wyrmstooth)",
+     "questId": "Wyrmstooth.esp:022528",
      "atStage": 130,
      "call": "SetStage 10",
-     "source": "WT_QF_WTTEST_01022528.fragment_16 (Wyrmstooth.esp)"
+     "source": "WT_QF_WTTEST_01022528.fragment_16 on Wyrmstooth.esp:022528 (Wyrmstooth.esp)",
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Lurius Liore",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Wyrmstooth Holder Cell, Wyrmstooth"
+       ],
+       "call": "SetStage 130",
+       "info": "Wyrmstooth.esp:597905",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Wyrmstooth stage == 120; the speaker is Lurius Liore",
+       "source": "WT_TIF__02597905.Fragment_1 on INFO Wyrmstooth.esp:597905 (Wyrmstooth.esp)",
+       "verdict": "script"
+      }
+     ],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 18,
    "firstObjective": {
     "text": "Speak to Lurius Liore at the docks in Solitude.",
@@ -212,8 +254,7 @@
       "startsScene": "Wyrmstooth.esp:0E80BB"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Wyrmstooth.esp:46DA2A",
@@ -1517,6 +1558,51 @@
      "by": "start game",
      "source": "Wyrmstooth.esp:28D0B5 DNAM (Wyrmstooth.esp)",
      "verdict": "files"
+    },
+    {
+     "by": "board",
+     "call": "SetStage 10",
+     "objectEdid": "defaultSetStageTRIG",
+     "objectId": "Skyrim.esm:033F50",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Wyrmstooth",
+         "metres": 11
+        }
+       ],
+       "plugin": "Wyrmstooth.esp",
+       "ref": "Wyrmstooth.esp:525A60",
+       "where": "Fort Valus Barracks, Fort Valus"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Wyrmstooth",
+         "metres": 11
+        }
+       ],
+       "plugin": "Wyrmstooth.esp",
+       "ref": "Wyrmstooth.esp:28F3B0",
+       "where": "Fort Valus Muster, Fort Valus"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Wyrmstooth",
+         "metres": 11
+        }
+       ],
+       "plugin": "Wyrmstooth.esp",
+       "ref": "Wyrmstooth.esp:525A5F",
+       "where": "Fort Valus Common House, Fort Valus"
+      }
+     ],
+     "script": "defaultsetStageTrigSCRIPT",
+     "verdict": "script",
+     "plain": "It starts from something placed in Fort Valus Barracks, Fort Valus, Fort Valus Muster, Fort Valus, Fort Valus Common House, Fort Valus.",
+     "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (3 placed)"
     }
    ],
    "caughtUpBy": [],

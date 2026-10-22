@@ -137,6 +137,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Ainethach, placed in Karthwasten Hall, Karhwasten Hall, "What if I convince them to leave?": SetStage 20 (when: the speaker is Ainethach). Source: TIF__00083079.Fragment_0 on INFO Skyrim.esm:083079 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Story manager node FreeformKarthwastenAQuest, event: change location; conditions up its parents: Sanuarach Mine stage 10 not done; the place you enter is Karthwasten; the place you enter is a habitation. Source: FreeformKarthwastenAQuest Skyrim.esm:06383E (Skyrim.esm). **files**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:0622E8 DNAM (Unofficial Skyrim Special Edition Patch.esp). **files**
+- It starts from something placed in Karthwasten, by the door to The Trusty Witch. (SetStage 10). Source: defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

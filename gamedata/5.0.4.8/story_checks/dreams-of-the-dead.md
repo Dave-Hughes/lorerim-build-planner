@@ -7,6 +7,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Story manager node CCHRGallowsHallQuestNode, event: change location; conditions up its parents: none. Source: CCHRGallowsHallQuestNode Creation Club Home Requirements - AIO.esp:000802 (Creation Club Home Requirements - AIO.esp). **files**
+- It starts from something placed in Gallows Hall. (SetStage 10). Source: defaultSetStageOnLoad on Skyrim.esm:00003B (2 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

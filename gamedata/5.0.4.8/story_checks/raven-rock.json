@@ -420,6 +420,23 @@
      "conditions": "the speaker is Crescius Caerellius; The Final Descent stage == 10; global DLC2RR03Dia01 == 0 (now 0)",
      "source": "DLC2_TIF__020209F8.Fragment_1 on INFO Dragonborn.esm:0209F8 (Dragonborn.esm)",
      "verdict": "script"
+    },
+    {
+     "by": "board",
+     "call": "Start",
+     "objectEdid": "DLC2RR03ExitTrigger",
+     "objectId": "Dragonborn.esm:02B10E",
+     "places": [
+      {
+       "plugin": "Dragonborn.esm",
+       "ref": "Dragonborn.esm:02B10F",
+       "where": "Bloodskal Barrow"
+      }
+     ],
+     "script": "DLC2RR03ExitTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from something placed in Bloodskal Barrow.",
+     "source": "DLC2RR03ExitTriggerScript on Dragonborn.esm:02B10E (1 placed)"
     }
    ],
    "caughtUpBy": [],
@@ -511,7 +528,25 @@
    "name": "The Final Descent Priest",
    "plugin": "Dragonborn.esm",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "objectEdid": "DLC2RR03ExitTrigger",
+     "objectId": "Dragonborn.esm:02B10E",
+     "places": [
+      {
+       "plugin": "Dragonborn.esm",
+       "ref": "Dragonborn.esm:02B10F",
+       "where": "Bloodskal Barrow"
+      }
+     ],
+     "script": "DLC2RR03ExitTriggerScript",
+     "verdict": "script",
+     "plain": "It starts from something placed in Bloodskal Barrow.",
+     "source": "DLC2RR03ExitTriggerScript on Dragonborn.esm:02B10E (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -537,8 +572,7 @@
     "ways": []
    },
    "globals": [],
-   "gives": [],
-   "unread": "no starter in its records or scripts"
+   "gives": []
   },
   {
    "id": "Dragonborn.esm:024DDE",

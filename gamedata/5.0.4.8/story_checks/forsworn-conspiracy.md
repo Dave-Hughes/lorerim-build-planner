@@ -98,7 +98,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- CidhnaMineJailEventScene, a helper quest with Urzoga, Player at stage 20 calls SetStage 40; CidhnaMineJailEventScene is started by MS02 (No One Escapes Cidhna Mine) at stage 0 (SetStage 10). Source: QF_CidhnaMineJailEventScene_000CD13F.fragment_2 on Skyrim.esm:0CD13F (Skyrim.esm). **script**
+- CidhnaMineJailEventScene, a helper quest with Urzoga, Player at stage 20 calls SetStage 40; CidhnaMineJailEventScene is started by MS02 (No One Escapes Cidhna Mine) at stage 0 (SetStage 10); the start-game flag. Source: QF_CidhnaMineJailEventScene_000CD13F.fragment_2 on Skyrim.esm:0CD13F (Skyrim.esm). **script**
 - Dialogue with Urzoga gra-Shugurz, placed in Cidhna Mine: SetStage 25 (when: CidhnaMineJailEventScene stage 10 not done; the speaker is Urzoga gra-Shugurz). Source: TIF__000CD11C.Fragment_0 on INFO Skyrim.esm:0CD11C (Skyrim.esm). **script**
 - Dialogue with Duach, placed in Cidhna Mine, "What are you in for?": SetStage 30 (when: the speaker is Duach). Source: TIF__00072BE5.Fragment_0 on INFO Skyrim.esm:072BE5 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with Uraccen, placed in Cidhna Mine, "What are you in for?": SetStage 15 (when: the speaker is Uraccen). Source: TIF__000DB835.Fragment_0 on INFO Skyrim.esm:0DB835 (Skyrim.esm). **script**

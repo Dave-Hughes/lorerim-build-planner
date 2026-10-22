@@ -8,11 +8,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Tharstan, placed in Greathall, Skaal Village Greathall, "A new passage to what?": SetStage 10 (when: the speaker is Tharstan). Source: DLC2_TIF__0201AA7C.Fragment_0 on INFO Dragonborn.esm:01AA7C (Dragonborn.esm). **script**
 - Dialogue with Tharstan, placed in Greathall, Skaal Village Greathall: SetStage 5 (when: fn249 == 1; the speaker is Tharstan; Lost Legacy stage 10 not done). Source: DLC2_TIF__0201AA7B.Fragment_0 on INFO Dragonborn.esm:01AA7B (Dragonborn.esm). **script**
+- DLC2SV02 (A New Source of Stalhrim) at stage 200 calls Start; its stage 200 is set by Dialogue with Baldor Iron-Shaper, placed in Baldor Iron-Shaper's House, Skaal Village Baldor Iron-shaper's House: SetStage 200 (when: the speaker is Baldor Iron-Shaper). Source: DLC2_QF_DLC2SV02_0201CAF1.fragment_4 on Dragonborn.esm:01CAF1 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- DLC2SV02 (A New Source of Stalhrim) at stage 200 calls Start. Source: DLC2_QF_DLC2SV02_0201CAF1.fragment_4 (Unofficial Skyrim Special Edition Patch.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -36,7 +33,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- DLC2SV02Misc, a helper quest with Deor, Fanari, Baldor at stage 200 calls Start; DLC2SV02Misc is started by nothing in the records or scripts (**unread**). Source: DLC2_QF_DLC2SV02Misc_0201E169.fragment_5 on Dragonborn.esm:01E169 (Dragonborn.esm). **script**
+- DLC2SV02Misc, a helper quest with Deor, Fanari, Baldor at stage 200 calls Start; DLC2SV02Misc is started by the start-game flag. Source: DLC2_QF_DLC2SV02Misc_0201E169.fragment_5 on Dragonborn.esm:01E169 (Dragonborn.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -61,6 +58,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Morwen, placed in Morwen's House, Skaal Village Morwen's House, "What do you need?": SetStage 10 (when: the speaker is Morwen). Source: DLC2_TIF__0202C8A8.Fragment_0 on INFO Dragonborn.esm:02C8A8 (Dragonborn.esm). **script**
+- It starts from something placed in Skaal Village, by the door to Baldor Iron-Shaper's House. (Start). Source: DLC2StartSVQuests on Skyrim.esm:04FA25 (1 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

@@ -36,13 +36,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- Dialogue with Gore, placed in Peak's Shade Tower: Start (when: the speaker is Gore). Source: HD1_TIF__036738E8.Fragment_0 on INFO GORE.esp:6738E8 (GORE.esp). **script**
+- Dialogue with Gore, placed in Peak's Shade Tower: SetStage 0 (when: the speaker is Gore). Source: HD1_TIF__036738E8.Fragment_0 on INFO GORE.esp:6738E8 (GORE.esp). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- HD1GoreQuest2 (Blood Ties) calls Start. Source: HD1_TIF__036738E8.Fragment_0 (GORE.esp).
-- HD1GoreQuest2 (Blood Ties) calls SetStage 0. Source: HD1_TIF__036738E8.Fragment_0 (GORE.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -92,12 +88,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- HD1GoreMeet (Raven's Flight) at stage 40 calls SetStage 10; its stage 40 is set by Dialogue with Gore, placed in Peak's Shade Tower, "Alright, fair enough.": SetStage 40 (when: the speaker is Gore). Source: QF_HD1GoreMeet_09066720.fragment_12 on GORE.esp:066720 (GORE.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- HD1GoreMeet (Raven's Flight) at stage 40 calls SetStage 10. Source: QF_HD1GoreMeet_09066720.fragment_12 (GORE.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -195,12 +187,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- Dialogue with Gore, placed in Peak's Shade Tower: Start (when: the speaker is Gore). Source: HD1_TIF__0361307A.Fragment_0 on INFO GORE.esp:61307A (GORE.esp). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- HD1GoreQuest2 (Blood Ties) calls Start. Source: HD1_TIF__0361307A.Fragment_0 (GORE.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -248,13 +236,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- Dialogue with Gore, placed in Peak's Shade Tower: Start (when: the speaker is Gore). Source: HD1_TIF__036738F3.Fragment_0 on INFO GORE.esp:6738F3 (GORE.esp). **script**
+- Dialogue with Gore, placed in Peak's Shade Tower: SetStage 0 (when: the speaker is Gore). Source: HD1_TIF__036738F3.Fragment_0 on INFO GORE.esp:6738F3 (GORE.esp). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- HD1GoreQuest2 (Blood Ties) calls Start. Source: HD1_TIF__036738F3.Fragment_0 (GORE.esp).
-- HD1GoreQuest2 (Blood Ties) calls SetStage 0. Source: HD1_TIF__036738F3.Fragment_0 (GORE.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 

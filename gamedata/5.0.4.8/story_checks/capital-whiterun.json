@@ -59,7 +59,145 @@
    "name": "Victory Celebrations",
    "plugin": "SurWR.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "SetStage 10",
+     "objectEdid": "defaultSetStageTRIGPlayerOnly",
+     "objectId": "Skyrim.esm:099312",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Whiterun",
+         "metres": 10
+        }
+       ],
+       "plugin": "SurWR.esp",
+       "ref": "SurWR.esp:1FE46B",
+       "where": "Dragonsreach"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "Titus House",
+         "metres": 10
+        },
+        {
+         "door": "Happy Homestead General Goods",
+         "metres": 13
+        },
+        {
+         "door": "Hearth-Healer's Hall",
+         "metres": 22
+        }
+       ],
+       "plugin": "SurWR.esp",
+       "ref": "SurWR.esp:2035A7",
+       "where": "somewhere in Whiterun"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "The Bannered Mare",
+         "metres": 17
+        },
+        {
+         "door": "Severio Pelagia's House",
+         "metres": 21
+        },
+        {
+         "door": "Heimskr's House",
+         "metres": 23
+        }
+       ],
+       "plugin": "SurWR.esp",
+       "ref": "SurWR.esp:2035A6",
+       "where": "Whiterun"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "The Bannered Mare",
+         "metres": 17
+        },
+        {
+         "door": "Erundil's Shack",
+         "metres": 19
+        },
+        {
+         "door": "Arcadia's Cauldron",
+         "metres": 26
+        }
+       ],
+       "plugin": "SurWR.esp",
+       "ref": "SurWR.esp:2035A8",
+       "where": "somewhere in Whiterun"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "Guard Tower",
+         "metres": 4
+        },
+        {
+         "door": "Storehouse",
+         "metres": 8
+        },
+        {
+         "door": "Uthgerd's House",
+         "metres": 15
+        }
+       ],
+       "plugin": "SurWR.esp",
+       "ref": "SurWR.esp:2035A5",
+       "where": "somewhere in Whiterun"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "Igna's House",
+         "metres": 11
+        },
+        {
+         "door": "Fine-Hair's Home",
+         "metres": 11
+        },
+        {
+         "door": "Igna's Basement",
+         "metres": 16
+        }
+       ],
+       "plugin": "SurWR.esp",
+       "ref": "SurWR.esp:2035A4",
+       "where": "somewhere in Whiterun"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "Guard Barracks",
+         "metres": 8
+        },
+        {
+         "door": "somewhere in Skyrim",
+         "metres": 10
+        },
+        {
+         "door": "Warmaiden's",
+         "metres": 15
+        }
+       ],
+       "plugin": "SurWR.esp",
+       "ref": "SurWR.esp:2035A9",
+       "where": "somewhere in Whiterun"
+      }
+     ],
+     "script": "defaultsetStageTrigSCRIPT",
+     "verdict": "script",
+     "plain": "It starts from something placed in Dragonsreach, somewhere in Whiterun, Whiterun.",
+     "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (7 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 9,
    "firstObjective": null,
@@ -71,8 +209,7 @@
     "ways": []
    },
    "globals": [],
-   "gives": [],
-   "unread": "no starter in its records or scripts"
+   "gives": []
   },
   {
    "id": "SurWR.esp:0C8496",
@@ -463,6 +600,37 @@
      "by": "start game",
      "source": "SurWR.esp:3436A3 DNAM (SurWR.esp)",
      "verdict": "files"
+    },
+    {
+     "by": "board",
+     "call": "SetStage 5",
+     "objectEdid": "defaultSetStageTRIGPlayerOnly",
+     "objectId": "Skyrim.esm:099312",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Dragonsreach Dungeon",
+         "metres": 9
+        },
+        {
+         "door": "Dragonsreach",
+         "metres": 9
+        },
+        {
+         "door": "Witch's Wisdoms",
+         "metres": 28
+        }
+       ],
+       "plugin": "SurWR.esp",
+       "ref": "SurWR.esp:38A6DE",
+       "where": "somewhere in Whiterun"
+      }
+     ],
+     "script": "defaultsetStageTrigSCRIPT",
+     "verdict": "script",
+     "plain": "It starts from something placed in somewhere in Whiterun, by the door to Dragonsreach Dungeon.",
+     "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (1 placed)"
     }
    ],
    "caughtUpBy": [],

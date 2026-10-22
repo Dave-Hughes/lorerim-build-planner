@@ -72,11 +72,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:0C349B DNAM (LoreRim - Dialogue Patch.esp). **files**
+- CW01A (Joining the Legion) at stage 200 calls SetStage 1; its stage 200 is set by Dialogue with General Tullius, placed in Castle Dour: SetStage 200 (when: the speaker is General Tullius). Source: QF_CW01_000D517A.fragment_4 on Skyrim.esm:0D517A (LoreRim - Dialogue Patch.esp). **script**
 - (First objective shown at stage 1; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- CW01A (Joining the Legion) at stage 200 calls SetStage 1. Source: QF_CW01_000D517A.fragment_4 (LoreRim - Dialogue Patch.esp).
 
 **Who and where**
 
@@ -464,15 +461,12 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - CWFortSiegeFort (The Battle for <Alias=Fort>) calls at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1. Sources: QF_CWFortSiegeFort_00083042.fragment_31, QF_CWFortSiegeFort_00083042.fragment_20 on Skyrim.esm:083042. **script**
-- CWSiege, a helper quest with JarlWhiterun, JarlHaafingar, JarlEastmarch calls SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; CWSiege is started by CW03 (Message to Whiterun) at stage 240 (SetStage 1); story manager node CWSiegeQuestsNode (event: script event; GetEventData CWSiegeStart == 1). Sources: CWSiegeScript.FailAttackQuest, CWSiegeScript.SucceedDefenseQuest, CWSiegeScript.FailDefenseQuest, QF_CWSiege_000954E1.fragment_25 on Skyrim.esm:0954E1. **script**
+- CWSiege, a helper quest with JarlWhiterun, JarlHaafingar, JarlEastmarch calls SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; at stage 200 SetStage 1; CWSiege is started by CW03 (Message to Whiterun) at stage 240 (SetStage 1); story manager node CWSiegeQuestsNode (event: script event; GetEventData CWSiegeStart == 1); the start-game flag. Sources: CWSiegeScript.FailAttackQuest, CWSiegeScript.SucceedDefenseQuest, CWSiegeScript.FailDefenseQuest, QF_CWSiege_000954E1.fragment_25 on Skyrim.esm:0954E1. **script**
 - CWFortSiegeCapital (The Battle for <Alias=Fort>) calls at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 950 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1; at stage 9000 SetStage 1. Sources: QF_CWFortSiege_00087C21.fragment_31, QF_CWFortSiege_00087C21.fragment_20 on Skyrim.esm:087C21. **script**
 - CW, a helper quest with Tullius, Ulfric, Rikke calls SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; SetStage 1; at stage 30 SetStage 1; at stage 30 SetStage 1; at stage 30 SetStage 1; at stage 30 SetStage 1; CW is started by CWMissionQuickStart, a helper quest at stage 200 (SetStage 2); CWMissionQuickStart, a helper quest at stage 42 (SetStage 2); CWMissionQuickStart, a helper quest at stage 600 (SetStage 1); CWMissionQuickStart, a helper quest at stage 71 (SetStage 1); the start-game flag. Sources: CWScript.modObjectiveByEnemySoldierDeath, CWScript.updateObjective, CWScript.displayFactionLeaderObjective, CWScript.modObjectiveByMissionSuccess, CWScript.completeCWObj, CWScript.failCWObj, CWScript.WinHoldOffScreenIfNotDoingCapitalBattles, CWScript.modObjectiveBySabotage, QF_CW_00019E53.fragment_38 on Skyrim.esm:019E53. **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:029940 DNAM (LoreRim - Dialogue Patch.esp). **files**
+- CWSiegeObj (Battle for <Alias=City>) at stage 9000 calls SetStage 1. Source: QF_CWSiegeObj_00096E71.fragment_1 on Skyrim.esm:096E71 (LoreRim - Dialogue Patch.esp), through CW's displayfactionleaderobjective. **script**
 - (First objective shown at stage 1; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- CWSiegeObj (Battle for <Alias=City>) at stage 9000 calls SetStage 1. Source: QF_CWSiegeObj_00096E71.fragment_1 (LoreRim - Dialogue Patch.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -591,7 +585,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- CWSiege, a helper quest with JarlWhiterun, JarlHaafingar, JarlEastmarch calls at stage 0 Start; at stage 0 SetStage 1; CWSiege is started by CW03 (Message to Whiterun) at stage 240 (SetStage 1); story manager node CWSiegeQuestsNode (event: script event; GetEventData CWSiegeStart == 1). Sources: QF_CWSiege_000954E1.fragment_0 on Skyrim.esm:0954E1. **script**
+- CWSiege, a helper quest with JarlWhiterun, JarlHaafingar, JarlEastmarch calls at stage 0 Start; at stage 0 SetStage 1; CWSiege is started by CW03 (Message to Whiterun) at stage 240 (SetStage 1); story manager node CWSiegeQuestsNode (event: script event; GetEventData CWSiegeStart == 1); the start-game flag. Sources: QF_CWSiege_000954E1.fragment_0 on Skyrim.esm:0954E1. **script**
 - (First objective shown at stage 1; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

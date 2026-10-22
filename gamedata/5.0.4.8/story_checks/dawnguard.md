@@ -32,13 +32,11 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- DLC1VQ02 (Bloodline) calls at stage 190 SetStage 20; at stage 30 SetStage 20. Sources: DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_13, DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_9 on Dawnguard.esm:002F65. **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
 
-- DLC1VQ02 (Bloodline) at stage 190 calls SetStage 20. Source: DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_13 (Dawnguard.esm).
-- DLC1VQ02 (Bloodline) at stage 30 calls SetStage 20. Source: DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_9 (Dawnguard.esm).
 - DLC1VQ03Hunter (Prophet) at stage 0 calls SetStage 200. Source: DLC1_QF_DLC1VQ03Hunter_010098CB.fragment_7 (Unofficial Skyrim Special Edition Patch.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -562,12 +560,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- DLC1VQ02 (Bloodline) at stage 180 calls SetStage 10. Source: DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_14 on Dawnguard.esm:002F65 (Dawnguard.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- DLC1VQ02 (Bloodline) at stage 180 calls SetStage 10. Source: DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_14 (Dawnguard.esm).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -752,13 +746,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- DLC1VQElder (Seeking Disclosure) calls at stage 200 SetStage 10; at stage 200 SetStage 10; its stage None is set by Dialogue with Dexion Evicus, placed in Forebears' Holdout: SetStage 200 (when: the speaker is Dexion Evicus; Seeking Disclosure stage == 40; global DLC1PlayingVampireLine == 1 (now 0)); Dialogue with Dexion Evicus, placed in Forebears' Holdout: SetStage 200 (when: the speaker is Dexion Evicus; Seeking Disclosure stage == 40; global DLC1PlayingVampireLine == 0 (now 0)). Sources: DLC1_QF_DLC1VQElder_01005DA9.fragment_0, DLC1_QF_DLC1VQElder_01005DA9.fragment_13 on Dawnguard.esm:005DA9. **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- DLC1VQElder (Seeking Disclosure) at stage 200 calls SetStage 10. Source: DLC1_QF_DLC1VQElder_01005DA9.fragment_0 (Unofficial Skyrim Special Edition Patch.esp).
-- DLC1VQElder (Seeking Disclosure) at stage 200 calls SetStage 10. Source: DLC1_QF_DLC1VQElder_01005DA9.fragment_13 (Unofficial Skyrim Special Edition Patch.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -904,6 +893,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Soul (named by alias RiderSoul of DLC01SoulCairnHorseQuest2 (Soul Cairn Horse Quest) (forced)), placed in Soul Cairn; Soul Cairn, "How can I help him?": SetStage 15 (when: the speaker is the one in alias RiderSoul). Source: DLC1_TIF__01002B0B.Fragment_0 on INFO Dawnguard.esm:002B0B (Dawnguard.esm). **script**
 - Dialogue with Soul (named by alias RiderSoul of DLC01SoulCairnHorseQuest2 (Soul Cairn Horse Quest) (forced)), placed in Soul Cairn; Soul Cairn, "How can I help him?": SetStage 20 (when: the speaker is the one in alias RiderSoul). Source: DLC1_TIF__01002B0B.Fragment_1 on INFO Dawnguard.esm:002B0B (Dawnguard.esm). **script**
+- It starts from something placed in somewhere in Soul Cairn. (SetStage 10). Source: defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (2 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

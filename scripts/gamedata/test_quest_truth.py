@@ -110,10 +110,11 @@ class QuestTruth(unittest.TestCase):
         quests = by_edid()
         unchecked = [r["quest"] for r in truth if r["editorId"].lower() in quests and (quests[r["editorId"].lower()].get("start") or {}).get("checked", "not yet") == "not yet"]
         self.assertEqual(unchecked, [])
-        yngol = quests["dunyngolbarrowqst"]["start"]
-        self.assertEqual((yngol["checked"], yngol["source"], yngol["ways"], yngol["then"]), ("uesp", "UESP", [{"how": "No one gives it"}], "Explore Yngol's Barrow"))
-        ralforn = quests["aaambquest"]["start"]
-        self.assertEqual((ralforn["checked"], ralforn["source"], ralforn["who"]), ("uesp", "Nexus", "Ralforn"))
+        # The PC's board reader (WO-136) now traces Yngol's Barrow and Sleepwalking from the files; the key alone settles these two.
+        book = quests["dlc2blackbook03quest"]["start"]
+        self.assertEqual((book["checked"], book["source"], book["ways"], book["then"]), ("uesp", "UESP", [{"how": "No one gives it"}], "Learn the Black Book's hidden knowledge"))
+        self.assertEqual(quests["dlc2kagrumezqst"]["start"]["checked"], "uesp")
+        self.assertEqual(quests["aaambquest"]["start"]["who"], "Ralforn")
 
     def test_no_who_is_a_thing(self):
         things = re.compile(r"\b(claw|door|passage|marker|chest|book|note|letter|cell|xmarker|trigger)\b", re.IGNORECASE)

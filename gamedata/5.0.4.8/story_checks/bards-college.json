@@ -737,6 +737,29 @@
      "conditions": "the speaker is Birinna",
      "source": "TIF__05246FB7.Fragment_0 on INFO BardExcavation.esp:000872 (BardExcavation.esp)",
      "verdict": "script"
+    },
+    {
+     "by": "board",
+     "call": "Start",
+     "objectEdid": null,
+     "objectId": "Skyrim.esm:00003B",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Dead Men's Respite",
+         "metres": 13
+        }
+       ],
+       "plugin": "BardExcavation.esp",
+       "ref": "BardExcavation.esp:000800",
+       "where": "somewhere in Skyrim"
+      }
+     ],
+     "script": "QuestStartIfClear",
+     "verdict": "script",
+     "plain": "It starts from something placed in somewhere in Skyrim, by the door to Dead Men's Respite.",
+     "source": "QuestStartIfClear on Skyrim.esm:00003B (1 placed)"
     }
    ],
    "caughtUpBy": [],

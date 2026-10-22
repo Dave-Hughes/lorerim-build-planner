@@ -223,21 +223,41 @@
    "name": "Come, the Crows",
    "plugin": "GORE.esp",
    "firstObjectiveStage": 0,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "HD1GoreQuest2 (Blood Ties)",
-     "atStage": null,
+     "by": "dialogue",
+     "speaker": "Gore",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Peak's Shade Tower"
+     ],
      "call": "Start",
-     "source": "HD1_TIF__036738E8.Fragment_0 (GORE.esp)"
+     "info": "GORE.esp:6738E8",
+     "prompt": null,
+     "reply": [],
+     "conditions": "the speaker is Gore",
+     "source": "HD1_TIF__036738E8.Fragment_0 on INFO GORE.esp:6738E8 (GORE.esp)",
+     "verdict": "script",
+     "laterInLine": true
     },
     {
-     "by": "HD1GoreQuest2 (Blood Ties)",
-     "atStage": null,
+     "by": "dialogue",
+     "speaker": "Gore",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Peak's Shade Tower"
+     ],
      "call": "SetStage 0",
-     "source": "HD1_TIF__036738E8.Fragment_0 (GORE.esp)"
+     "info": "GORE.esp:6738E8",
+     "prompt": null,
+     "reply": [],
+     "conditions": "the speaker is Gore",
+     "source": "HD1_TIF__036738E8.Fragment_0 on INFO GORE.esp:6738E8 (GORE.esp)",
+     "verdict": "script",
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 2,
    "firstObjective": {
     "text": "Speak to Gore",
@@ -350,8 +370,7 @@
     "stage": null,
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "GORE.esp:3E8DC9",
@@ -494,15 +513,38 @@
    "name": "Wanted",
    "plugin": "GORE.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "HD1GoreMeet (Raven's Flight)",
+     "by": "quest script",
+     "quest": "HD1GoreMeet (Raven's Flight)",
+     "questId": "GORE.esp:066720",
      "atStage": 40,
      "call": "SetStage 10",
-     "source": "QF_HD1GoreMeet_09066720.fragment_12 (GORE.esp)"
+     "source": "QF_HD1GoreMeet_09066720.fragment_12 on GORE.esp:066720 (GORE.esp)",
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Gore",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Peak's Shade Tower"
+       ],
+       "call": "SetStage 40",
+       "info": "GORE.esp:094061",
+       "prompt": "Alright, fair enough.",
+       "reply": [
+        "Right, well... Let me know when you're ready. Going to put some pressure on this..."
+       ],
+       "conditions": "the speaker is Gore",
+       "source": "TIF__06094061.Fragment_0 on INFO GORE.esp:094061 (GORE.esp)",
+       "verdict": "script"
+      }
+     ],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 2,
    "firstObjective": {
     "text": "Defeat the Thalmor Envoy.",
@@ -650,8 +692,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "GORE.esp:AFF592",
@@ -938,15 +979,25 @@
    "name": "To Free a Raven",
    "plugin": "GORE.esp",
    "firstObjectiveStage": 0,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "HD1GoreQuest2 (Blood Ties)",
-     "atStage": null,
+     "by": "dialogue",
+     "speaker": "Gore",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Peak's Shade Tower"
+     ],
      "call": "Start",
-     "source": "HD1_TIF__0361307A.Fragment_0 (GORE.esp)"
+     "info": "GORE.esp:61307A",
+     "prompt": null,
+     "reply": [],
+     "conditions": "the speaker is Gore",
+     "source": "HD1_TIF__0361307A.Fragment_0 on INFO GORE.esp:61307A (GORE.esp)",
+     "verdict": "script",
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 6,
    "firstObjective": {
     "text": "Wait for Gore to turn himself in.",
@@ -1041,8 +1092,7 @@
     "stage": 10,
     "movedBy": [],
     "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "GORE.esp:066720",
@@ -1161,21 +1211,41 @@
    "name": "The Apple from the Tree",
    "plugin": "GORE.esp",
    "firstObjectiveStage": 0,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "HD1GoreQuest2 (Blood Ties)",
-     "atStage": null,
+     "by": "dialogue",
+     "speaker": "Gore",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Peak's Shade Tower"
+     ],
      "call": "Start",
-     "source": "HD1_TIF__036738F3.Fragment_0 (GORE.esp)"
+     "info": "GORE.esp:6738F3",
+     "prompt": null,
+     "reply": [],
+     "conditions": "the speaker is Gore",
+     "source": "HD1_TIF__036738F3.Fragment_0 on INFO GORE.esp:6738F3 (GORE.esp)",
+     "verdict": "script",
+     "laterInLine": true
     },
     {
-     "by": "HD1GoreQuest2 (Blood Ties)",
-     "atStage": null,
+     "by": "dialogue",
+     "speaker": "Gore",
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [
+      "Peak's Shade Tower"
+     ],
      "call": "SetStage 0",
-     "source": "HD1_TIF__036738F3.Fragment_0 (GORE.esp)"
+     "info": "GORE.esp:6738F3",
+     "prompt": null,
+     "reply": [],
+     "conditions": "the speaker is Gore",
+     "source": "HD1_TIF__036738F3.Fragment_0 on INFO GORE.esp:6738F3 (GORE.esp)",
+     "verdict": "script",
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 2,
    "firstObjective": {
     "text": "Speak to Gore",
@@ -1265,8 +1335,7 @@
     "stage": null,
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "GORE.esp:5A610A",

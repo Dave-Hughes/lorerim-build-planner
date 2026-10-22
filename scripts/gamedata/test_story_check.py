@@ -412,5 +412,21 @@ class WO121bPart2Test(unittest.TestCase):
         self.assertEqual(got, {"Fixture.esp:000830": True, "Fixture.esp:000831": False})
 
 
+
+class BoardsTest(unittest.TestCase):
+    """WO-136: a notice board or radiant dispatcher in words, never an editor id."""
+
+    def test_a_named_object_and_its_place(self):
+        b = {"object": "Erotic Book", "places": [{"where": "somewhere in Stuhn Ravine", "nearDoors": [{"door": "Storage Room", "metres": 7}]}], "call": "Start"}
+        self.assertEqual(sc.board_words(b), "It starts from Erotic Book in somewhere in Stuhn Ravine, by the door to Storage Room.")
+
+    def test_an_unnamed_object_in_several_places(self):
+        b = {"objectEdid": "_M_ActivatorBoard", "places": [{"where": "Windhelm"}, {"where": "Windhelm"}, {"where": "Riften"}], "call": "Start"}
+        self.assertEqual(sc.board_words(b), "It starts from something placed in Windhelm, Riften.")
+
+    def test_helpers_bob_ruled_out(self):
+        self.assertTrue(sc.RULED_OUT.match("USKPRetroactive130") and sc.RULED_OUT.match("DLC2Init"))
+        self.assertIsNone(sc.RULED_OUT.match("DLC1VQ02"))
+
 if __name__ == "__main__":
     unittest.main()

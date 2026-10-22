@@ -205,7 +205,33 @@
    "name": "Under Saarthal",
    "plugin": "CollegeEntry.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "quest script",
+     "quest": "COW_CentralQuest (College Curriculum)",
+     "questId": "College Of Winterhold - Quest Expansion.esp:00081D",
+     "atStage": 50,
+     "call": "Start",
+     "source": "QF_COW_CentralQuest_05014C23.fragment_4 on College Of Winterhold - Quest Expansion.esp:00081D (College Of Winterhold - Quest Expansion.esp)",
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": null,
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [],
+       "call": "SetStage 50",
+       "info": "College Of Winterhold - Quest Expansion.esp:0009DE",
+       "prompt": null,
+       "reply": [],
+       "conditions": "College Curriculum stage == 27; the speaker is the one in alias Tolfdir",
+       "source": "Cow_FinishTolfdir.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:0009DE (College Of Winterhold - Quest Expansion.esp)",
+       "verdict": "script"
+      }
+     ],
+     "laterInLine": true
+    }
+   ],
    "caughtUpBy": [
     {
      "by": "MG08 (The Eye of Magnus)",
@@ -236,12 +262,6 @@
      "atStage": 0,
      "call": "SetStage 200",
      "source": "QF_MG03_0001F253.fragment_0 (Unofficial Skyrim Special Edition Patch.esp)"
-    },
-    {
-     "by": "COW_CentralQuest (College Curriculum)",
-     "atStage": 50,
-     "call": "Start",
-     "source": "QF_COW_CentralQuest_05014C23.fragment_4 (College Of Winterhold - Quest Expansion.esp)"
     }
    ],
    "advancedBy": 6,
@@ -346,8 +366,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Skyrim.esm:01F253",
@@ -1113,6 +1132,60 @@
        "verdict": "files"
       }
      ]
+    },
+    {
+     "by": "quest script",
+     "quest": "mg06 (Revealing the Unseen)",
+     "questId": "Skyrim.esm:01F256",
+     "atStage": 200,
+     "call": "Start",
+     "source": "QF_MG06_0001F256.fragment_14 on Skyrim.esm:01F256 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Mirabelle Ervine",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Hall of Attainment, Dormitory"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:04D886",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Revealing the Unseen stage == 99; the speaker is Mirabelle Ervine",
+       "source": "TIF__0004D886.Fragment_1 on INFO Skyrim.esm:04D886 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
+     "laterInLine": true
+    },
+    {
+     "by": "quest script",
+     "quest": "mg06 (Revealing the Unseen)",
+     "questId": "Skyrim.esm:01F256",
+     "atStage": 200,
+     "call": "SetStage 0",
+     "source": "QF_MG06_0001F256.fragment_14 on Skyrim.esm:01F256 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Mirabelle Ervine",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Hall of Attainment, Dormitory"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:04D886",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Revealing the Unseen stage == 99; the speaker is Mirabelle Ervine",
+       "source": "TIF__0004D886.Fragment_1 on INFO Skyrim.esm:04D886 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
+     "laterInLine": true
     }
    ],
    "caughtUpBy": [
@@ -1127,18 +1200,6 @@
      "atStage": 0,
      "call": "SetStage 200",
      "source": "QF_MG07_0001F257.fragment_0 (College of Winterhold Quest Start Fixes.esp)"
-    },
-    {
-     "by": "mg06 (Revealing the Unseen)",
-     "atStage": 200,
-     "call": "Start",
-     "source": "QF_MG06_0001F256.fragment_14 (Unofficial Skyrim Special Edition Patch.esp)"
-    },
-    {
-     "by": "mg06 (Revealing the Unseen)",
-     "atStage": 200,
-     "call": "SetStage 0",
-     "source": "QF_MG06_0001F256.fragment_14 (Unofficial Skyrim Special Edition Patch.esp)"
     }
    ],
    "advancedBy": 3,
@@ -4353,21 +4414,37 @@
    "name": "Rapture of the Deep",
    "plugin": "College Of Winterhold - Quest Expansion.esp",
    "firstObjectiveStage": 1,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "COW_CentralQuest (College Curriculum)",
-     "atStage": null,
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
      "call": "Start",
-     "source": "COW_PlayerKnowsSpell.Fragment_0 (College Of Winterhold - Quest Expansion.esp)"
+     "info": "College Of Winterhold - Quest Expansion.esp:000829",
+     "prompt": null,
+     "reply": [],
+     "conditions": "College Curriculum hasn't started; has the spell Waterbreathing; the speaker is the one in alias Tolfdir",
+     "source": "COW_PlayerKnowsSpell.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000829 (College Of Winterhold - Quest Expansion.esp)",
+     "verdict": "script",
+     "laterInLine": true
     },
     {
-     "by": "COW_CentralQuest (College Curriculum)",
-     "atStage": null,
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
      "call": "Start",
-     "source": "Cow_WaterLearned.Fragment_0 (College Of Winterhold - Quest Expansion.esp)"
+     "info": "College Of Winterhold - Quest Expansion.esp:00082C",
+     "prompt": null,
+     "reply": [],
+     "conditions": "College Curriculum stage == 5; has the spell Waterbreathing; the speaker is the one in alias Tolfdir",
+     "source": "Cow_WaterLearned.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:00082C (College Of Winterhold - Quest Expansion.esp)",
+     "verdict": "script",
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 8,
    "firstObjective": {
     "text": "Talk to Arniel Gane",
@@ -4441,8 +4518,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "College Of Winterhold - Quest Expansion.esp:00081D",
@@ -5395,6 +5471,83 @@
      "verdict": "script",
      "throughStartedBy": [
       {
+       "by": "board",
+       "call": "SetStage 740",
+       "objectEdid": "ccBGSSSE005ActOfferingBowl3",
+       "objectId": "ccbgssse005-goldbrand.esl:000806",
+       "places": [
+        {
+         "plugin": "ccbgssse005-goldbrand.esl",
+         "ref": "ccbgssse005-goldbrand.esl:00081B",
+         "where": "Sivdur's Respite"
+        },
+        {
+         "plugin": "ccbgssse005-goldbrand.esl",
+         "ref": "ccbgssse005-goldbrand.esl:00081A",
+         "where": "Sivdur's Respite"
+        }
+       ],
+       "script": "ccBGSSSE005_OfferingBowlScript",
+       "verdict": "script",
+       "plain": "It starts from something placed in Sivdur's Respite.",
+       "source": "ccBGSSSE005_OfferingBowlScript on ccbgssse005-goldbrand.esl:000806 (2 placed)"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 900",
+       "objectEdid": "defaultSetStageTRIG",
+       "objectId": "Skyrim.esm:033F50",
+       "places": [
+        {
+         "plugin": "ccbgssse005-goldbrand.esl",
+         "ref": "ccbgssse005-goldbrand.esl:00080B",
+         "where": "Sivdur's Respite"
+        },
+        {
+         "plugin": "ccbgssse005-goldbrand.esl",
+         "ref": "ccbgssse005-goldbrand.esl:000EA4",
+         "where": "Sivdur's Respite"
+        },
+        {
+         "plugin": "unofficial skyrim creation club content patch.esl",
+         "ref": "ccbgssse005-goldbrand.esl:000805",
+         "where": "Shroud Hearth Barrow"
+        },
+        {
+         "plugin": "ccbgssse005-goldbrand.esl",
+         "ref": "ccbgssse005-goldbrand.esl:000837",
+         "where": "Shrine of Boethiah"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in Sivdur's Respite, Shroud Hearth Barrow, Shrine of Boethiah.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (4 placed)"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 700",
+       "object": "Etched Tablet",
+       "objectEdid": "MQpathToHHShrineTablet",
+       "objectId": "Skyrim.esm:023DD0",
+       "places": [
+        {
+         "plugin": "ccbgssse005-goldbrand.esl",
+         "ref": "ccbgssse005-goldbrand.esl:000860",
+         "where": "Sivdur's Respite"
+        },
+        {
+         "plugin": "ccbgssse005-goldbrand.esl",
+         "ref": "ccbgssse005-goldbrand.esl:000861",
+         "where": "Sivdur's Respite"
+        }
+       ],
+       "script": "ccBGSSSE005_InscriptionScript",
+       "verdict": "script",
+       "plain": "It starts from Etched Tablet in Sivdur's Respite.",
+       "source": "ccBGSSSE005_InscriptionScript on Skyrim.esm:023DD0 (2 placed)"
+      },
+      {
        "by": "start game",
        "source": "ccbgssse005-goldbrand.esl:000838 DNAM (ccbgssse005-goldbrand.esl)",
        "verdict": "files"
@@ -5410,6 +5563,83 @@
      "source": "QF_ccBGSSSE005_MainQuest_02000838.fragment_31 on ccbgssse005-goldbrand.esl:000838 (ccbgssse005-goldbrand.esl), through MG01 (First Lessons)'s startpointer",
      "verdict": "script",
      "throughStartedBy": [
+      {
+       "by": "board",
+       "call": "SetStage 740",
+       "objectEdid": "ccBGSSSE005ActOfferingBowl3",
+       "objectId": "ccbgssse005-goldbrand.esl:000806",
+       "places": [
+        {
+         "plugin": "ccbgssse005-goldbrand.esl",
+         "ref": "ccbgssse005-goldbrand.esl:00081B",
+         "where": "Sivdur's Respite"
+        },
+        {
+         "plugin": "ccbgssse005-goldbrand.esl",
+         "ref": "ccbgssse005-goldbrand.esl:00081A",
+         "where": "Sivdur's Respite"
+        }
+       ],
+       "script": "ccBGSSSE005_OfferingBowlScript",
+       "verdict": "script",
+       "plain": "It starts from something placed in Sivdur's Respite.",
+       "source": "ccBGSSSE005_OfferingBowlScript on ccbgssse005-goldbrand.esl:000806 (2 placed)"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 900",
+       "objectEdid": "defaultSetStageTRIG",
+       "objectId": "Skyrim.esm:033F50",
+       "places": [
+        {
+         "plugin": "ccbgssse005-goldbrand.esl",
+         "ref": "ccbgssse005-goldbrand.esl:00080B",
+         "where": "Sivdur's Respite"
+        },
+        {
+         "plugin": "ccbgssse005-goldbrand.esl",
+         "ref": "ccbgssse005-goldbrand.esl:000EA4",
+         "where": "Sivdur's Respite"
+        },
+        {
+         "plugin": "unofficial skyrim creation club content patch.esl",
+         "ref": "ccbgssse005-goldbrand.esl:000805",
+         "where": "Shroud Hearth Barrow"
+        },
+        {
+         "plugin": "ccbgssse005-goldbrand.esl",
+         "ref": "ccbgssse005-goldbrand.esl:000837",
+         "where": "Shrine of Boethiah"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in Sivdur's Respite, Shroud Hearth Barrow, Shrine of Boethiah.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (4 placed)"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 700",
+       "object": "Etched Tablet",
+       "objectEdid": "MQpathToHHShrineTablet",
+       "objectId": "Skyrim.esm:023DD0",
+       "places": [
+        {
+         "plugin": "ccbgssse005-goldbrand.esl",
+         "ref": "ccbgssse005-goldbrand.esl:000860",
+         "where": "Sivdur's Respite"
+        },
+        {
+         "plugin": "ccbgssse005-goldbrand.esl",
+         "ref": "ccbgssse005-goldbrand.esl:000861",
+         "where": "Sivdur's Respite"
+        }
+       ],
+       "script": "ccBGSSSE005_InscriptionScript",
+       "verdict": "script",
+       "plain": "It starts from Etched Tablet in Sivdur's Respite.",
+       "source": "ccBGSSSE005_InscriptionScript on Skyrim.esm:023DD0 (2 placed)"
+      },
       {
        "by": "start game",
        "source": "ccbgssse005-goldbrand.esl:000838 DNAM (ccbgssse005-goldbrand.esl)",

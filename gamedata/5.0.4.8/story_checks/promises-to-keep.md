@@ -6,7 +6,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- e3demo, a helper quest with Arvel at stage 0 calls SetStage 5; e3demo is started by nothing in the records or scripts (**unread**). Source: QF_E3demo_00093637.fragment_0 on Skyrim.esm:093637 (Skyrim.esm). **script**
+- e3demo, a helper quest with Arvel at stage 0 calls SetStage 5; e3demo is started by the start-game flag; the start-game flag. Source: QF_E3demo_00093637.fragment_0 on Skyrim.esm:093637 (Skyrim.esm). **script**
 - Dialogue with Louis Letrush, placed in The Bee and Barb, Bee and Barb, "I'm not interested right now, thanks.": SetStage 5 (when: the speaker is Louis Letrush). Source: TIF__0001DA33.Fragment_0 on INFO Skyrim.esm:01DA33 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with Louis Letrush, placed in The Bee and Barb, Bee and Barb, "What sort of message?": SetStage 5 (when: Promises to Keep stage < 10; the speaker is Louis Letrush). Source: TIF__0001DA31.Fragment_0 on INFO Skyrim.esm:01DA31 (TheChoiceIsYours.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:01DA3C DNAM (Skyrim.esm). **files**

@@ -8,7 +8,31 @@
    "name": "Yngol's Barrow",
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "Start",
+     "objectEdid": "dunYngolBossLogicTrigger",
+     "objectId": "Skyrim.esm:0B7986",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Skyrim",
+         "metres": 27
+        }
+       ],
+       "plugin": "Skyrim.esm",
+       "ref": "Skyrim.esm:0B7987",
+       "where": "Yngol Barrow"
+      }
+     ],
+     "script": "dunYngolBarrowBossScript",
+     "verdict": "script",
+     "plain": "It starts from something placed in Yngol Barrow, by the door to somewhere in Skyrim.",
+     "source": "dunYngolBarrowBossScript on Skyrim.esm:0B7986 (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -36,8 +60,7 @@
     "stage": null,
     "movedBy": [],
     "unread": "no fragment of its own shows the second objective, so the stage that moves it isn't traced"
-   },
-   "unread": "no starter in its records or scripts"
+   }
   }
  ],
  "notInRawQuests": [],

@@ -198,16 +198,51 @@
      "plain": "It starts by itself from the start of the game.",
      "source": "ccBGSSSE001_CrabMQ3_Quest.OnUpdateGameTime on ccBGSSSE001-Fish.esm:0009D6 (Synthesis - Gameplay Overwrite.esp)",
      "verdict": "script"
-    }
-   ],
-   "caughtUpBy": [
+    },
     {
-     "by": "ccBGSSSE001_Crab_MQ4 (Wave Breaker)",
+     "by": "quest script",
+     "quest": "ccBGSSSE001_Crab_MQ4 (Wave Breaker)",
+     "questId": "ccBGSSSE001-Fish.esm:0009E9",
      "atStage": 2000,
      "call": "Start",
-     "source": "QF_ccBGSSSE001_Crab_MQ4_050009E9.fragment_2 (Synthesis - Gameplay Overwrite.esp)"
+     "source": "QF_ccBGSSSE001_Crab_MQ4_050009E9.fragment_2 on ccBGSSSE001-Fish.esm:0009E9 (Synthesis - Gameplay Overwrite.esp)",
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Viriya",
+       "speakerNamed": "the one follower in ccBGSSSE001_Crab_MQ4 (Wave Breaker)'s aliases",
+       "speakerPlaced": [
+        "Riften Fishery"
+       ],
+       "call": "SetStage 2000",
+       "info": "ccBGSSSE001-Fish.esm:1223E4",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Wave Breaker stage == 600; fn136 == 1",
+       "source": "ccBGSSSE001_TIF__051223E4.Fragment_0 on INFO ccBGSSSE001-Fish.esm:1223E4 (ccBGSSSE001-Fish.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "Viriya",
+       "speakerNamed": "the one follower in ccBGSSSE001_Crab_MQ4 (Wave Breaker)'s aliases",
+       "speakerPlaced": [
+        "Riften Fishery"
+       ],
+       "call": "SetStage 2000",
+       "info": "ccBGSSSE001-Fish.esm:1223E5",
+       "prompt": null,
+       "reply": [],
+       "conditions": "Wave Breaker stage == 600; fn136 == 1",
+       "source": "ccBGSSSE001_TIF__051223E5.Fragment_0 on INFO ccBGSSSE001-Fish.esm:1223E5 (ccBGSSSE001-Fish.esm)",
+       "verdict": "script"
+      }
+     ],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 3,
    "firstObjective": {
     "text": "Obtain <Global=ccBGSSSE001_MQ3WoodTotal> pieces of firewood (<Global=ccBGSSSE001_MQ3WoodCount>/<Global=ccBGSSSE001_MQ3WoodTotal>)",
@@ -246,15 +281,20 @@
    "name": "Wave Breaker",
    "plugin": "Synthesis - Gameplay Overwrite.esp",
    "firstObjectiveStage": 50,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "ccBGSSSE001_Misc_Dwarven (Beneath Bronze Waters)",
+     "by": "quest script",
+     "quest": "ccBGSSSE001_Misc_Dwarven (Beneath Bronze Waters)",
+     "questId": "ccBGSSSE001-Fish.esm:000AD6",
      "atStage": 20,
      "call": "Start",
-     "source": "QF_ccBGSSSE001_Misc_Dwarven_05000AD6.fragment_7 (Synthesis - Gameplay Overwrite.esp)"
+     "source": "QF_ccBGSSSE001_Misc_Dwarven_05000AD6.fragment_7 on ccBGSSSE001-Fish.esm:000AD6 (Synthesis - Gameplay Overwrite.esp)",
+     "verdict": "script",
+     "throughStage": [],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 3,
    "firstObjective": {
     "text": "Read Viriya's hastily written letter",
@@ -307,8 +347,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "ccBGSSSE001-Fish.esm:0009DE",

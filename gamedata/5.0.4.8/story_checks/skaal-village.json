@@ -44,16 +44,36 @@
      "conditions": "fn249 == 1; the speaker is Tharstan; Lost Legacy stage 10 not done",
      "source": "DLC2_TIF__0201AA7B.Fragment_0 on INFO Dragonborn.esm:01AA7B (Dragonborn.esm)",
      "verdict": "script"
-    }
-   ],
-   "caughtUpBy": [
+    },
     {
-     "by": "DLC2SV02 (A New Source of Stalhrim)",
+     "by": "quest script",
+     "quest": "DLC2SV02 (A New Source of Stalhrim)",
+     "questId": "Dragonborn.esm:01CAF1",
      "atStage": 200,
      "call": "Start",
-     "source": "DLC2_QF_DLC2SV02_0201CAF1.fragment_4 (Unofficial Skyrim Special Edition Patch.esp)"
+     "source": "DLC2_QF_DLC2SV02_0201CAF1.fragment_4 on Dragonborn.esm:01CAF1 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Baldor Iron-Shaper",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Baldor Iron-Shaper's House, Skaal Village Baldor Iron-shaper's House"
+       ],
+       "call": "SetStage 200",
+       "info": "Dragonborn.esm:01E8C2",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Baldor Iron-Shaper",
+       "source": "DLC2_TIF__0201E8C2.Fragment_0 on INFO Dragonborn.esm:01E8C2 (Unofficial Skyrim Special Edition Patch.esp)",
+       "verdict": "script"
+      }
+     ],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 1,
    "firstObjective": {
     "text": "Travel to Vahlok's Tomb",
@@ -155,7 +175,39 @@
      "call": "Start",
      "source": "DLC2_QF_DLC2SV02Misc_0201E169.fragment_5 on Dragonborn.esm:01E169 (Dragonborn.esm)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "board",
+       "call": "Start",
+       "objectEdid": "defaultSceneStartTrigger",
+       "objectId": "Skyrim.esm:04FA25",
+       "places": [
+        {
+         "nearDoors": [
+          {
+           "door": "Baldor Iron-Shaper's House",
+           "metres": 7
+          },
+          {
+           "door": "Deor Woodcutter's House",
+           "metres": 19
+          },
+          {
+           "door": "Greathall",
+           "metres": 21
+          }
+         ],
+         "plugin": "Dragonborn.esm",
+         "ref": "Dragonborn.esm:0248DA",
+         "where": "Skaal Village"
+        }
+       ],
+       "script": "DLC2StartSVQuests",
+       "verdict": "script",
+       "plain": "It starts from something placed in Skaal Village, by the door to Baldor Iron-Shaper's House.",
+       "source": "DLC2StartSVQuests on Skyrim.esm:04FA25 (1 placed)"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],
@@ -240,6 +292,37 @@
      "conditions": "the speaker is Morwen",
      "source": "DLC2_TIF__0202C8A8.Fragment_0 on INFO Dragonborn.esm:02C8A8 (Dragonborn.esm)",
      "verdict": "script"
+    },
+    {
+     "by": "board",
+     "call": "Start",
+     "objectEdid": "defaultSceneStartTrigger",
+     "objectId": "Skyrim.esm:04FA25",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Baldor Iron-Shaper's House",
+         "metres": 7
+        },
+        {
+         "door": "Deor Woodcutter's House",
+         "metres": 19
+        },
+        {
+         "door": "Greathall",
+         "metres": 21
+        }
+       ],
+       "plugin": "Dragonborn.esm",
+       "ref": "Dragonborn.esm:0248DA",
+       "where": "Skaal Village"
+      }
+     ],
+     "script": "DLC2StartSVQuests",
+     "verdict": "script",
+     "plain": "It starts from something placed in Skaal Village, by the door to Baldor Iron-Shaper's House.",
+     "source": "DLC2StartSVQuests on Skyrim.esm:04FA25 (1 placed)"
     }
    ],
    "caughtUpBy": [],

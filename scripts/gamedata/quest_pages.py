@@ -371,6 +371,26 @@ def plain_needs(conditions, own_name, say=None):
     return list(dict.fromkeys(out))
 
 
+def board_way(s):
+    """
+    A board's start in words, from its places (WO-136): what it is when it has a name, where its copies stand, and the door
+    nearest the first when it leads somewhere named ("It starts from Erotic Book in Stuhn Ravine, by the door to Storage
+    Room"); never a door "to somewhere in Skyrim", never an editor id. The check's own `plain` when it has no places.
+    """
+    places = s.get("places") or []
+    if not places:
+        return s.get("plain") or "It starts from something placed"
+    where = list(dict.fromkeys(clean_place(p["where"]) or p["where"] for p in places if p.get("where")))
+    doors = [d["door"] for d in (places[0].get("nearDoors") or []) if not d["door"].startswith("somewhere")]
+    named = s.get("object")
+    text = f"It starts from {named}" if named else "It starts from something placed"
+    if where:
+        text += f" in {', '.join(where[:4])}" + (f" and {len(where) - 4} more places" if len(where) > 4 else "")
+    if doors and len(where) == 1:
+        text += f", by the door to {doors[0]}"
+    return text
+
+
 def way_of(s, own_name, line_quests):
     """One starter row in player words, and the needs that go with it."""
     if s["by"] == "dialogue":
@@ -382,6 +402,8 @@ def way_of(s, own_name, line_quests):
         return s["plain"], ([f"Level {s['level']}"] if s.get("level") else [])
     if s["by"] == "book":  # reading it starts the quest (WO-121b: Deathbrand)
         return s["plain"], []
+    if s["by"] == "board":  # a notice board or radiant dispatcher starts it (WO-136), in words from its places
+        return board_way(s), []
     if s["by"] == "story manager":
         return f"It starts by itself on {s.get('event') or 'a story event'}", plain_needs(s.get("conditions"), own_name)
     if s["by"] == "quest script":
@@ -709,6 +731,8 @@ def way_words(s, own, line_quests, say, giver=None):
         return [(say.event(s["plain"]), [f"Level {s['level']}"] if s.get("level") else [])]
     if s["by"] == "book":  # reading it starts the quest: the check's own words
         return [(s["plain"], [])]
+    if s["by"] == "board":  # a notice board or radiant dispatcher (WO-136), in words from its places
+        return [(board_way(s), [])]
     if s["by"] == "story manager":
         return [say.node(s, own)]
     if s["by"] != "quest script" or patch_helper(s):
@@ -981,6 +1005,13 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
     # A line that turns the job down or ends the talk is no way in, in the words or the record form (WO-130 follow-up).
     starters = through([s for s in every if not continues(s, own, edid, row.get("firstObjectiveStage"))
                         and not (s["by"] == "dialogue" and _DECLINES.search(s.get("prompt") or ""))])
+    # A placed trigger with no name of its own is a way in only when nothing else starts the quest (WO-136): Missives' boards,
+    # never a generic stage trigger beside Matlara's talk in Unbound.
+    if any(x["by"] not in ("board", "start game") and not patch_helper(x) for x in starters):
+        starters = [x for x in starters if x["by"] != "board" or x.get("object")]
+        # Behind a helper too (Knight of Hounds: VS Varla's helper, from a trigger in Varla's Hall, beside Memory Guide).
+        starters = [{**x, "throughStartedBy": [u for u in x["throughStartedBy"] if u["by"] != "board" or u.get("object")]}
+                    if x.get("throughStartedBy") else x for x in starters]
     found = finds_you(every, own, edid, row.get("firstObjectiveStage"), towns or {}, brings, say)
     needs = plain_needs((row.get("needs") or {}).get("conditions"), own, say)
     # Every way in the check found, a quest that also runs from the game's start included (The Book of
@@ -1048,7 +1079,8 @@ def start_of(row, line_quests, giver=None, towns=None, siblings=None, objectives
     # The first step is what the starting line's stage shows (rules 1 and 2).
     # A talk only for some players (rule 5) sets it for them, not for everyone, when anything else starts it (The Cursed
     # Tribe: Larak's letter line is an Orc's; Atub's sets 20). A book that starts it counts like a talk (Discerning).
-    opener = lambda s: s["by"] == "book" or (s["by"] == "dialogue" and not asks_who_you_are(s))  # noqa: E731
+    # So does a later quest's call that WO-136's ruling 1 counts as the start (A New Order: Bloodline sets 20, "Speak with Isran").
+    opener = lambda s: s["by"] == "book" or s.get("laterInLine") or (s["by"] == "dialogue" and not asks_who_you_are(s))  # noqa: E731
     pick = [s for s in starters if opener(s)] if any(opener(s) for s in starters) else [s for s in starters if s["by"] == "dialogue"]
     sets = {int(m.group(1)) for s in pick for m in [_STAGE_SET.match(s.get("call") or "")] if m}
     shown_first = stage_step(row, objectives, sets) if step is row else None
@@ -1285,12 +1317,15 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
             start = from_key(start, keyed.get(q["edid"].lower()))
             # A job from a board (WO-136 ruling 3): one the check hasn't traced is checked as its class, in the class's words.
             kind = classes.get(line["id"])
-            if kind and start.get("checked") == "not yet":
+            # So is one whose every start is a board (WO-136: the PC's boards.py traces each Missives job to its hold's board).
+            only_boards = bool((checked_rows.get(q["edid"]) or {}).get("startedBy")) and all(s["by"] == "board" for s in checked_rows[q["edid"]]["startedBy"])
+            if kind and (start.get("checked") == "not yet" or only_boards):
                 start = {"needs": [], "ways": [{"how": kind["says"]}], "checked": "files", "board": True, **({"then": start["then"]} if start.get("then") else {})}
             if q["edid"] in FIRST_STEPS:
                 start = {k: v for k, v in start.items() if k not in ("thenWhere", "thenWho")}
                 start["then"] = FIRST_STEPS[q["edid"]][0]
-            if raw.get("needs") or raw.get("ways"):
+            # A job from a board needs nothing past its class's sentence: the board's own words aren't a need for the judge (WO-136).
+            if (raw.get("needs") or raw.get("ways")) and not start.get("board"):
                 start["raw"] = {"needs": raw.get("needs", []), **({"ways": [{k: w[k] for k in ("how", "needs") if k in w} for w in raw["ways"]]} if raw.get("ways") else {})}
             raws[q["edid"]] = raw
             quests.append(fill_all(
@@ -1316,7 +1351,10 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
         # The class's sentence once for the line, with how many of its quests it covers (WO-136 ruling 3).
         if classes.get(line["id"]):
             kind = classes[line["id"]]
-            item["board"] = {"name": kind["name"], "says": kind["says"], "boards": kind.get("boards"), "jobs": sum(1 for q in quests if q["start"].get("board"))}
+            # The boards the records place (boards.py, through the start check), when the class doesn't name them by hand.
+            placed = sorted({p["where"] for r in checked_rows.values() for s in r.get("startedBy", []) if s["by"] == "board" for p in s.get("places", [])
+                             if p.get("where") and not p["where"].startswith("somewhere in ")})
+            item["board"] = {"name": kind["name"], "says": kind["says"], "boards": kind.get("boards") or placed or None, "jobs": sum(1 for q in quests if q["start"].get("board"))}
         # The line's giver (WO-121): its opening quest's who; else the records' named giver, only when the
         # check found no one to talk to; else none, and the line page shows the opening quest's ways.
         first_start = next((q["start"] for q in quests if q["edid"] == line["opening"]), {})

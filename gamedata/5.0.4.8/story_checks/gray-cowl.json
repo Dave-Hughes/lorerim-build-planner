@@ -165,15 +165,20 @@
    "name": "Reward of Coldharbour",
    "plugin": "Gray Fox Cowl.esm",
    "firstObjectiveStage": 10,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "manny_GF_MQ (The Call of Gray Cowl of Nocturnal)",
+     "by": "quest script",
+     "quest": "manny_GF_MQ (The Call of Gray Cowl of Nocturnal)",
+     "questId": "Gray Fox Cowl.esm:001E61",
      "atStage": 150,
      "call": "SetStage 10",
-     "source": "manny_GF_MainQuestScript.fragment_17 (Gray Fox Cowl.esm)"
+     "source": "manny_GF_MainQuestScript.fragment_17 on Gray Fox Cowl.esm:001E61 (Gray Fox Cowl.esm)",
+     "verdict": "script",
+     "throughStage": [],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
     "text": "Escape from Coldharbour",
@@ -203,8 +208,7 @@
     "stage": 10,
     "movedBy": [],
     "unread": "nothing outside its own stage fragments sets stage 10 or one before it"
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Gray Fox Cowl.esm:01CFA7",
@@ -229,16 +233,36 @@
      "conditions": "Time for the Farewells stage < 10; GetQuestRunning Time for the Farewells == 1; the speaker is Seviana Umbranox",
      "source": "manny_GF_FarewellLeaveHomeScript.Fragment_1 on INFO Gray Fox Cowl.esm:01CFB2 (Gray Fox Cowl.esm)",
      "verdict": "script"
-    }
-   ],
-   "caughtUpBy": [
+    },
     {
-     "by": "manny_GF_MQ (The Call of Gray Cowl of Nocturnal)",
+     "by": "quest script",
+     "quest": "manny_GF_MQ (The Call of Gray Cowl of Nocturnal)",
+     "questId": "Gray Fox Cowl.esm:001E61",
      "atStage": 999,
      "call": "Start",
-     "source": "manny_GF_MainQuestScript.fragment_28 (Gray Fox Cowl.esm)"
+     "source": "manny_GF_MainQuestScript.fragment_28 on Gray Fox Cowl.esm:001E61 (Gray Fox Cowl.esm)",
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Seviana Umbranox",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Seviana's House"
+       ],
+       "call": "SetStage 999",
+       "info": "Gray Fox Cowl.esm:034C0A",
+       "prompt": null,
+       "reply": [],
+       "conditions": null,
+       "source": "manny_GF_SevianaBackScript.Fragment_1 on INFO Gray Fox Cowl.esm:034C0A (Gray Fox Cowl.esm)",
+       "verdict": "script"
+      }
+     ],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 1,
    "firstObjective": {
     "text": "Escort Seviana and Luvien to the docks of Solitude",
@@ -607,7 +631,25 @@
    "name": "The Curse of Sadraaka",
    "plugin": "Gray Fox Cowl.esm",
    "firstObjectiveStage": 5,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "SetStage 5",
+     "objectEdid": "defaultSetStageTRIG",
+     "objectId": "Skyrim.esm:033F50",
+     "places": [
+      {
+       "plugin": "Gray Fox Cowl.esm",
+       "ref": "Gray Fox Cowl.esm:02F52E",
+       "where": "Forgotten City"
+      }
+     ],
+     "script": "defaultsetStageTrigSCRIPT",
+     "verdict": "script",
+     "plain": "It starts from something placed in Forgotten City.",
+     "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -660,8 +702,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "BetalillesHammerfellQuestBundle.esp:0017A1",

@@ -121,12 +121,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- AK69TheRavensLamentQuest (The Ravens' Lament) at stage 310 calls Start; its stage 310 is set by Dialogue with Katana, placed in The Winking Skeever: SetStage 310 (when: the speaker is Katana). Source: AK69_QF_AK69TheRavensLamentQu_058BB420.fragment_68 on Katana.esp:8BB420 (Katana.esp). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- AK69TheRavensLamentQuest (The Ravens' Lament) at stage 310 calls Start. Source: AK69_QF_AK69TheRavensLamentQu_058BB420.fragment_68 (Katana.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 

@@ -6,7 +6,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in somewhere in Deadlands, by the door to Mythic Dawn Temple. (SetStage 1). Source: defaultSetStageOnLoad on Skyrim.esm:00003B (1 placed). **script**
 - (First objective shown at stage 1; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

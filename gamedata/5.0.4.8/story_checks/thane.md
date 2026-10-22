@@ -7,6 +7,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:087E24 DNAM (Unofficial Skyrim Special Edition Patch.esp). **files**
+- Favor250 (Thane of the Reach) at stage 10 calls SetStage 10; its stage 10 is set by Dialogue with someone the line does not name (named by alias QuestGiver of Favor250 (Thane of the Reach) (run time)), "It will be my honor.": SetStage 10 (when: the speaker is the one in alias QuestGiver). Source: QF_Favor250_000A2C86.fragment_0 on Skyrim.esm:0A2C86 (LoreRim - Dialogue Patch.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
@@ -17,7 +18,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Favor255 (Thane of Hjaalmarch) at stage 10 calls SetStage 60. Source: QF_Favor255_000A34CE.fragment_0 (LoreRim - Dialogue Patch.esp).
 - Favor254 (Thane of Eastmarch) at stage 10 calls SetStage 50. Source: QF_Favor254_000A2CA6.fragment_0 (LoreRim - Dialogue Patch.esp).
 - Favor253 (Thane of Whiterun) at stage 10 calls SetStage 40. Source: QF_Favor253_000A2C9E.fragment_0 (LoreRim - Dialogue Patch.esp).
-- and 2 more in the JSON
+- and 1 more in the JSON
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -242,8 +243,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - FavorJarlsMakeFriends (Making Friends and Influencing People) at stage 25 calls SetStage 20. Source: QF_FavorJarlsMakeFriends_00087E24.fragment_5 on Skyrim.esm:087E24 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - HousePurchase, a helper quest with WhiterunJarl, WhiterunSonsJarl, WindhelmEmpireJarl at stage 10 calls SetStage 15; HousePurchase is started by MQ101 (named "Unbound" in its record), a helper quest with Hadvar, Ralof, Alduin (SetStage 5); MQ101 (named "Unbound" in its record), a helper quest with Hadvar, Ralof, Alduin at stage 0 (SetStage 5); MQ00 (named "MQ Always On" in its record), a helper quest with Esbern, Delphine at stage 5 (Start). Source: QF_HousePurchase_000A7B33.fragment_5 on Skyrim.esm:0A7B33 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - APS_HouseRiften, a helper quest with Housecarl at stage 0 calls SetStage 15; APS_HouseRiften is started by nothing in the records or scripts (**unread**). Source: QF_APS_HouseRiften_063A5DD9.fragment_0 on AlternatePerspective.esp:3A5DD9 (AlternatePerspective.esp). **script**
-- Dialogue with Laila Law-Giver, placed in Mistveil Keep, Riften Mistveil Keep, "I would be honored to accept.": SetStage 20 (when: the speaker is Laila Law-Giver; GetInFaction JobJarlFaction == 1; I Done Got Thaned! stage == 10; HousePurchase's RiftenHouseVar == 0; I Done Got Thaned!'s pFFDia == 1); after APS_HouseRiften stage 0 sets its RiftenHouseVar, and APS_HouseRiften is started by nothing in the records or scripts (**unread**). Reply: "Before I can present you with the title, there's but a single requirement you must fulfill." Source: TIF__00065AF6.Fragment_0 on INFO Skyrim.esm:065AF6 (Unofficial Skyrim Special Edition Patch.esp). **script**
-- Dialogue with Maven Black-Briar, placed in Black-Briar Manor, "I would be honored to accept.": SetStage 20 (when: the speaker is Maven Black-Briar; GetInFaction JobJarlFaction == 1; I Done Got Thaned! stage == 10; HousePurchase's RiftenHouseVar == 0; I Done Got Thaned!'s pFFDia == 1); after APS_HouseRiften stage 0 sets its RiftenHouseVar, and APS_HouseRiften is started by nothing in the records or scripts (**unread**). Reply: "Ah ah ah. Not so fast, there's a matter of residence to be discussed." Source: TIF__00065AF7.Fragment_0 on INFO Skyrim.esm:065AF7 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Laila Law-Giver, placed in Mistveil Keep, Riften Mistveil Keep, "I would be honored to accept.": SetStage 20 (when: the speaker is Laila Law-Giver; GetInFaction JobJarlFaction == 1; I Done Got Thaned! stage == 10; HousePurchase's RiftenHouseVar == 0; I Done Got Thaned!'s pFFDia == 1). Reply: "Before I can present you with the title, there's but a single requirement you must fulfill." Source: TIF__00065AF6.Fragment_0 on INFO Skyrim.esm:065AF6 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- Dialogue with Maven Black-Briar, placed in Black-Briar Manor, "I would be honored to accept.": SetStage 20 (when: the speaker is Maven Black-Briar; GetInFaction JobJarlFaction == 1; I Done Got Thaned! stage == 10; HousePurchase's RiftenHouseVar == 0; I Done Got Thaned!'s pFFDia == 1). Reply: "Ah ah ah. Not so fast, there's a matter of residence to be discussed." Source: TIF__00065AF7.Fragment_0 on INFO Skyrim.esm:065AF7 (Unofficial Skyrim Special Edition Patch.esp). **script**
 
 **Who and where**
 

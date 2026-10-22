@@ -185,15 +185,51 @@
    "name": "Where You Hang Your Enemy's Head...",
    "plugin": "Skyrim.esm",
    "firstObjectiveStage": 10,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "DB11 (Hail Sithis!)",
+     "by": "quest script",
+     "quest": "DB11 (Hail Sithis!)",
+     "questId": "Skyrim.esm:01EA59",
      "atStage": 200,
      "call": "SetStage 10",
-     "source": "QF_DB11_0001EA59.fragment_24 (Skyrim.esm)"
+     "source": "QF_DB11_0001EA59.fragment_24 on Skyrim.esm:01EA59 (Skyrim.esm)",
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Nazir",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dark Brotherhood Sanctuary"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:050733",
+       "prompt": null,
+       "reply": [],
+       "conditions": null,
+       "source": "TIF__00050733.Fragment_0 on INFO Skyrim.esm:050733 (Skyrim.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "Nazir",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Dark Brotherhood Sanctuary"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:098B65",
+       "prompt": null,
+       "reply": [],
+       "conditions": null,
+       "source": "TIF__00098B65.Fragment_0 on INFO Skyrim.esm:098B65 (Skyrim.esm)",
+       "verdict": "script"
+      }
+     ],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 1,
    "firstObjective": {
     "text": "Employ Delvin Mallory's services",
@@ -234,8 +270,7 @@
     ]
    },
    "globals": [],
-   "gives": [],
-   "unread": "no starter in its records or scripts"
+   "gives": []
   },
   {
    "id": "Skyrim.esm:01EA4F",
@@ -2657,6 +2692,24 @@
      "source": "QF_DB09_0001EA58.fragment_59 on Skyrim.esm:01EA58 (Skyrim.esm)",
      "verdict": "script",
      "throughStage": []
+    },
+    {
+     "by": "board",
+     "call": "SetStage 4",
+     "object": "Trap Linker",
+     "objectEdid": "TrapLinker",
+     "objectId": "Skyrim.esm:079986",
+     "places": [
+      {
+       "plugin": "Unofficial Skyrim Special Edition Patch.esp",
+       "ref": "Skyrim.esm:101BFB",
+       "where": "Dark Brotherhood Sanctuary"
+      }
+     ],
+     "script": "defaultCounter",
+     "verdict": "script",
+     "plain": "It starts from Trap Linker in Dark Brotherhood Sanctuary.",
+     "source": "defaultCounter on Skyrim.esm:079986 (1 placed)"
     }
    ],
    "caughtUpBy": [
@@ -2735,7 +2788,35 @@
    "name": "Hail Sithis!",
    "plugin": "Skyrim.esm",
    "firstObjectiveStage": 5,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "SetStage 2",
+     "objectEdid": "defaultSetStageTRIG",
+     "objectId": "Skyrim.esm:033F50",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "The Katariah",
+         "metres": 2
+        },
+        {
+         "door": "somewhere in Skyrim",
+         "metres": 10
+        }
+       ],
+       "plugin": "Skyrim.esm",
+       "ref": "Skyrim.esm:0C62A2",
+       "where": "somewhere in Emperor's Quarters"
+      }
+     ],
+     "script": "defaultsetStageTrigSCRIPT",
+     "verdict": "script",
+     "plain": "It starts from something placed in somewhere in Emperor's Quarters, by the door to The Katariah.",
+     "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (1 placed)"
+    }
+   ],
    "caughtUpBy": [
     {
      "by": "DBrecurring (The Dark Brotherhood Forever)",
@@ -2823,8 +2904,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Skyrim.esm:0934FB",

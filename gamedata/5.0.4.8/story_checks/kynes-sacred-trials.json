@@ -60,6 +60,29 @@
      "conditions": "Kyne's Sacred Trials stage 20 not done; Kyne's Sacred Trials stage 15 done; the speaker is Froki Whetted-Blade",
      "source": "TIF__00018480.Fragment_0 on INFO Skyrim.esm:018480 (Skyrim.esm)",
      "verdict": "script"
+    },
+    {
+     "by": "board",
+     "call": "SetStage 10",
+     "objectEdid": "defaultSetStageTRIGSpecificActor",
+     "objectId": "Skyrim.esm:046EFF",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Skyrim",
+         "metres": 1
+        }
+       ],
+       "plugin": "Skyrim.esm",
+       "ref": "Skyrim.esm:08356C",
+       "where": "Froki's Shack"
+      }
+     ],
+     "script": "defaultSetStageTRIGSpecificActor",
+     "verdict": "script",
+     "plain": "It starts from something placed in Froki's Shack, by the door to somewhere in Skyrim.",
+     "source": "defaultSetStageTRIGSpecificActor on Skyrim.esm:046EFF (1 placed)"
     }
    ],
    "caughtUpBy": [],

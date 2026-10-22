@@ -42,6 +42,62 @@
      "conditions": "The Affairs of Hagravens stage 20 not done; the speaker is Melka",
      "source": "TIF__00077C23.Fragment_4 on INFO Skyrim.esm:077C23 (Skyrim.esm)",
      "verdict": "script"
+    },
+    {
+     "by": "board",
+     "call": "Start",
+     "objectEdid": "dunBlindCliffKickoffTRIG",
+     "objectId": "Skyrim.esm:077C5C",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Skyrim",
+         "metres": 25
+        }
+       ],
+       "plugin": "Skyrim.esm",
+       "ref": "Skyrim.esm:077C5D",
+       "where": "Blind Cliff Bastion, Blind Cliff Cave"
+      }
+     ],
+     "script": "dunBlindCliffKickoffSCRIPT",
+     "verdict": "script",
+     "plain": "It starts from something placed in Blind Cliff Bastion, Blind Cliff Cave, by the door to somewhere in Skyrim.",
+     "source": "dunBlindCliffKickoffSCRIPT on Skyrim.esm:077C5C (1 placed)"
+    },
+    {
+     "by": "board",
+     "call": "SetStage 10",
+     "objectEdid": "defaultSetStageTRIG",
+     "objectId": "Skyrim.esm:033F50",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Skyrim",
+         "metres": 15
+        }
+       ],
+       "plugin": "Skyrim.esm",
+       "ref": "Skyrim.esm:077C5E",
+       "where": "Blind Cliff Bastion, Blind Cliff Cave"
+      },
+      {
+       "plugin": "Skyrim.esm",
+       "ref": "Skyrim.esm:09439A",
+       "where": "Blind Cliff Bastion, Blind Cliff Cave"
+      },
+      {
+       "plugin": "Skyrim.esm",
+       "ref": "Skyrim.esm:09439B",
+       "where": "Blind Cliff Bastion, Blind Cliff Cave"
+      }
+     ],
+     "script": "defaultsetStageTrigSCRIPT",
+     "verdict": "script",
+     "plain": "It starts from something placed in Blind Cliff Bastion, Blind Cliff Cave, by the door to somewhere in Skyrim.",
+     "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (3 placed)"
     }
    ],
    "caughtUpBy": [],

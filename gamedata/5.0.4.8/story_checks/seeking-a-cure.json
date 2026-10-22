@@ -189,6 +189,42 @@
         "call": "SetStage 10",
         "source": "DLC1_QF_DLC1VQ03Hunter_010098CB.fragment_1 on Dawnguard.esm:0098CB (Unofficial Skyrim Special Edition Patch.esp)",
         "verdict": "script"
+       },
+       {
+        "by": "board",
+        "call": "SetStage 25",
+        "objectEdid": "CasSecEntrance01",
+        "objectId": "Dawnguard.esm:00F9D4",
+        "places": [
+         {
+          "plugin": "Dawnguard.esm",
+          "ref": "Dawnguard.esm:00F9E4",
+          "where": "Quick Test Cell"
+         },
+         {
+          "nearDoors": [
+           {
+            "door": "Volkihar Ruins",
+            "metres": 5
+           },
+           {
+            "door": "Volkihar North Tower",
+            "metres": 21
+           },
+           {
+            "door": "Volkihar East Tower",
+            "metres": 21
+           }
+          ],
+          "plugin": "Dawnguard.esm",
+          "ref": "Dawnguard.esm:0116CC",
+          "where": "somewhere in Volkihar Courtyard"
+         }
+        ],
+        "script": "DLC1VCMoondialScript",
+        "verdict": "script",
+        "plain": "It starts from something placed in Quick Test Cell, somewhere in Volkihar Courtyard.",
+        "source": "DLC1VCMoondialScript on Dawnguard.esm:00F9D4 (2 placed)"
        }
       ]
      },

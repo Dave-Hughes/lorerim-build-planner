@@ -6,13 +6,12 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- Dialogue with someone the line does not name: Start (when: Windhelm By The Sea hasn't started; the speaker is the one in alias Niklas). Source: Sat_StartAdoption.Fragment_0 on INFO TheGiftofSaturalia.esp:00084E (TheGiftofSaturalia.esp). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
 
 - Sat_TheGiftofSaturalia (The Gift of Saturalia) calls SetStage 10. Source: Sat_Adoption_Finish.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp).
-- Sat_TheGiftofSaturalia (The Gift of Saturalia) calls Start. Source: Sat_StartAdoption.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -35,13 +34,12 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- Dialogue with someone the line does not name: Start (when: Lending a Paw hasn't started; the speaker is the one in alias Niklas). Source: Sat_DogStart.Fragment_0 on INFO TheGiftofSaturalia.esp:00084C (TheGiftofSaturalia.esp). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
 
 - Sat_TheGiftofSaturalia (The Gift of Saturalia) calls SetStage 10. Source: Sat_Dog_Stage10.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp).
-- Sat_TheGiftofSaturalia (The Gift of Saturalia) calls Start. Source: Sat_DogStart.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -64,14 +62,13 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- Dialogue with someone the line does not name: Start (when: the speaker is the one in alias Niklas; The Joy of Dawnstar hasn't started). Source: Sat_LaughStart.Fragment_0 on INFO TheGiftofSaturalia.esp:00084D (TheGiftofSaturalia.esp). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
 
 - Sat_TheGiftofSaturalia (The Gift of Saturalia) calls SetStage 8. Source: Sat_LaughEnd2.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp).
 - Sat_TheGiftofSaturalia (The Gift of Saturalia) calls SetStage 8. Source: Sat_LaughEnd1.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp).
-- Sat_TheGiftofSaturalia (The Gift of Saturalia) calls Start. Source: Sat_LaughStart.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -93,13 +90,12 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- Dialogue with someone the line does not name: Start (when: A Song in the Dark hasn't started; the speaker is the one in alias Niklas). Source: Sat_MusicStart.Fragment_0 on INFO TheGiftofSaturalia.esp:00084F (TheGiftofSaturalia.esp). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
 
 - Sat_TheGiftofSaturalia (The Gift of Saturalia) calls SetStage 30. Source: Sat_FinishLaugh2.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp).
-- Sat_TheGiftofSaturalia (The Gift of Saturalia) calls Start. Source: Sat_MusicStart.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -123,14 +119,13 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- Dialogue with someone the line does not name: Start (when: Three Wise Men hasn't started; the speaker is the one in alias Niklas). Source: Sat_OrphanageStart.Fragment_0 on INFO TheGiftofSaturalia.esp:00084B (TheGiftofSaturalia.esp). **script**
 - (First objective shown at stage 0; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
 
 - Sat_TheGiftofSaturalia (The Gift of Saturalia) calls SetStage 20. Source: Sat_FinishOrphanage2.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp).
 - Sat_TheGiftofSaturalia (The Gift of Saturalia) calls SetStage 20. Source: Sat_FinishOrphanage1.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp).
-- Sat_TheGiftofSaturalia (The Gift of Saturalia) calls Start. Source: Sat_OrphanageStart.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 

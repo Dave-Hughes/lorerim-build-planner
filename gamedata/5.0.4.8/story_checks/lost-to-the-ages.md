@@ -17,7 +17,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Solve the Tonal Lock", shown at stage 110. Source: Dawnguard.esm:005817 QOBJ 110. **files**
-- DLC1LD_Arkngthamz, a helper quest with Katria, KatriaCorpse at stage 85 calls SetStage 110; DLC1LD_Arkngthamz is started by story manager node DLC1LD_ArkngthamzNode (event: change location; you're in Arkngthamz; the place is a dungeon). Source: DLC1_QF_DLC1LD_01004D6B.fragment_34 on Dawnguard.esm:004D6B (Dawnguard.esm). **script**
+- DLC1LD_Arkngthamz, a helper quest with Katria, KatriaCorpse at stage 85 calls SetStage 110; DLC1LD_Arkngthamz is started by story manager node DLC1LD_ArkngthamzNode (event: change location; you're in Arkngthamz; the place is a dungeon); the start-game flag; the start-game flag. Source: DLC1_QF_DLC1LD_01004D6B.fragment_34 on Dawnguard.esm:004D6B (Dawnguard.esm). **script**
 
 **Who and where**
 

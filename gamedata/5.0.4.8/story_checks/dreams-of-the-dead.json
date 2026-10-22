@@ -20,6 +20,28 @@
      "source": "CCHRGallowsHallQuestNode Creation Club Home Requirements - AIO.esp:000802 (Creation Club Home Requirements - AIO.esp)",
      "verdict": "files",
      "conditions": ""
+    },
+    {
+     "by": "board",
+     "call": "SetStage 10",
+     "objectEdid": null,
+     "objectId": "Skyrim.esm:00003B",
+     "places": [
+      {
+       "plugin": "ccrmssse001-necrohouse.esl",
+       "ref": "ccrmssse001-necrohouse.esl:000CD9",
+       "where": "Gallows Hall"
+      },
+      {
+       "plugin": "ccrmssse001-necrohouse.esl",
+       "ref": "ccrmssse001-necrohouse.esl:000CDA",
+       "where": "Gallows Hall"
+      }
+     ],
+     "script": "defaultSetStageOnLoad",
+     "verdict": "script",
+     "plain": "It starts from something placed in Gallows Hall.",
+     "source": "defaultSetStageOnLoad on Skyrim.esm:00003B (2 placed)"
     }
    ],
    "caughtUpBy": [],

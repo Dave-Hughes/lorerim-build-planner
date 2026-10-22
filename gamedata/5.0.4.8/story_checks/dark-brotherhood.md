@@ -41,12 +41,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- DB11 (Hail Sithis!) at stage 200 calls SetStage 10; its stage 200 is set by Dialogue with Nazir, placed in Dark Brotherhood Sanctuary: SetStage 200; Dialogue with Nazir, placed in Dark Brotherhood Sanctuary: SetStage 200. Source: QF_DB11_0001EA59.fragment_24 on Skyrim.esm:01EA59 (Skyrim.esm). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- DB11 (Hail Sithis!) at stage 200 calls SetStage 10. Source: QF_DB11_0001EA59.fragment_24 (Skyrim.esm).
 
 **Who and where**
 
@@ -459,6 +455,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - DarkBrotherhood (named "Dark Brotherhood" in its record), a helper quest with AmaundAlias, AventusAlias, MuiriAlias calls SetStage 10; DarkBrotherhood is started by the start-game flag. Source: pSancSoldierScript.OnUpdate on Skyrim.esm:01EA5C (Unofficial Skyrim Special Edition Patch.esp). **script**
 - DB09 (To Kill an Empire) at stage 75 calls SetStage 1. Source: QF_DB09_0001EA58.fragment_59 on Skyrim.esm:01EA58 (Skyrim.esm). **script**
+- It starts from Trap Linker in Dark Brotherhood Sanctuary. (SetStage 4). Source: defaultCounter on Skyrim.esm:079986 (1 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
@@ -486,7 +483,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in somewhere in Emperor's Quarters, by the door to The Katariah. (SetStage 2). Source: defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (1 placed). **script**
 - (First objective shown at stage 5; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)

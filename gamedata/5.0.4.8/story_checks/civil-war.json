@@ -812,16 +812,36 @@
      "by": "start game",
      "source": "Skyrim.esm:0C349B DNAM (LoreRim - Dialogue Patch.esp)",
      "verdict": "files"
-    }
-   ],
-   "caughtUpBy": [
+    },
     {
-     "by": "CW01A (Joining the Legion)",
+     "by": "quest script",
+     "quest": "CW01A (Joining the Legion)",
+     "questId": "Skyrim.esm:0D517A",
      "atStage": 200,
      "call": "SetStage 1",
-     "source": "QF_CW01_000D517A.fragment_4 (LoreRim - Dialogue Patch.esp)"
+     "source": "QF_CW01_000D517A.fragment_4 on Skyrim.esm:0D517A (LoreRim - Dialogue Patch.esp)",
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "General Tullius",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Castle Dour"
+       ],
+       "call": "SetStage 200",
+       "info": "Skyrim.esm:099D18",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is General Tullius",
+       "source": "TIF__00099D18.Fragment_1 on INFO Skyrim.esm:099D18 (JK's Castle Dour.esp)",
+       "verdict": "script"
+      }
+     ],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 4,
    "firstObjective": {
     "text": "Get Imperial gear from Beirand",
@@ -3920,6 +3940,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -3955,6 +4226,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -3990,6 +4512,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4025,6 +4798,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4060,6 +5084,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4095,6 +5370,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4130,6 +5656,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4165,6 +5942,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4200,6 +6228,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4235,6 +6514,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4270,6 +6800,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4305,6 +7086,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4340,6 +7372,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4375,6 +7658,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4410,6 +7944,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4445,6 +8230,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4480,6 +8516,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4515,6 +8802,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4550,6 +9088,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4585,6 +9374,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4620,6 +9660,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4655,6 +9946,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4690,6 +10232,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4725,6 +10518,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -4760,6 +10804,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -6324,16 +12619,20 @@
      "by": "start game",
      "source": "Skyrim.esm:029940 DNAM (LoreRim - Dialogue Patch.esp)",
      "verdict": "files"
-    }
-   ],
-   "caughtUpBy": [
+    },
     {
-     "by": "CWSiegeObj (Battle for <Alias=City>)",
+     "by": "quest script",
+     "quest": "CWSiegeObj (Battle for <Alias=City>)",
+     "questId": "Skyrim.esm:096E71",
      "atStage": 9000,
      "call": "SetStage 1",
-     "source": "QF_CWSiegeObj_00096E71.fragment_1 (LoreRim - Dialogue Patch.esp)"
+     "source": "QF_CWSiegeObj_00096E71.fragment_1 on Skyrim.esm:096E71 (LoreRim - Dialogue Patch.esp), through CW's displayfactionleaderobjective",
+     "verdict": "script",
+     "throughStage": [],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 1,
    "firstObjective": {
     "text": "Report to <Alias=WhiterunCapitalImperialFieldCO>",
@@ -6700,6 +12999,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."
@@ -6735,6 +13285,257 @@
        "globals": [],
        "source": "CWSiegeQuestsNode Skyrim.esm:07E32D (Skyrim.esm)",
        "verdict": "files"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 8",
+       "objectEdid": "defaultSetStageTRIGPlayerOnly",
+       "objectId": "Skyrim.esm:099312",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C0F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B969",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C8",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 3
+          }
+         ],
+         "plugin": "NoBrokenWhiterunTower.esp",
+         "ref": "Skyrim.esm:07B920",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Whiterun",
+           "metres": 16
+          },
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 25
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786E0",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 14
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0786DF",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF150",
+         "where": "Whiterun"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 24
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:078097",
+         "where": "Whiterun"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09B95F",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C9",
+         "where": "Riften"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0918C7",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Riften",
+           "metres": 0
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D61",
+         "where": "Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 11
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 24
+          },
+          {
+           "door": "Markarth Waste Collector",
+           "metres": 28
+          }
+         ],
+         "plugin": "AI Overhaul.esp",
+         "ref": "Skyrim.esm:0805F1",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Markarth East Empire Dormitory",
+           "metres": 16
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0805F0",
+         "where": "Markarth Outskirts"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 2
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E7",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Markarth",
+           "metres": 1
+          },
+          {
+           "door": "Markarth East Empire Goods",
+           "metres": 23
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E5",
+         "where": "Markarth"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Old Dam",
+           "metres": 20
+          }
+         ],
+         "plugin": "Lux Via - Markarth Entrance and Farm Overhaul.esp",
+         "ref": "Skyrim.esm:09B96A",
+         "where": "Left Hand Mine"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D8C10",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0FF151",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Hjoldan's House",
+           "metres": 23
+          },
+          {
+           "door": "Digitus Quintus' House",
+           "metres": 27
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0ED37A",
+         "where": "Solitude"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Mistveil Keep",
+           "metres": 1
+          },
+          {
+           "door": "Riften Jail",
+           "metres": 9
+          },
+          {
+           "door": "Mistveil Keep Jarl's Chambers",
+           "metres": 10
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:098D62",
+         "where": "somewhere in Riften"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "Calcelmo's Laboratory",
+           "metres": 2
+          },
+          {
+           "door": "Understone Keep",
+           "metres": 2
+          },
+          {
+           "door": "Calcelmo's Tower",
+           "metres": 22
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0981E6",
+         "where": "somewhere in Markarth"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, Whiterun, Riften, Markarth Outskirts and 5 more places.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (23 placed)"
       }
      ],
      "plain": "It starts by itself on script event."

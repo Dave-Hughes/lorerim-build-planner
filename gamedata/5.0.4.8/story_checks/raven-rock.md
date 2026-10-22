@@ -85,6 +85,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - DLC2Init (named "Init quest" in its record), a helper quest with DremoraButler, DremoraMerchant at stage 100 calls Start; DLC2Init is started by the start-game flag. Source: DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp). **script**
 - Dialogue with Crescius Caerellius, placed in Caerellius House: SetStage 15 (when: the speaker is Crescius Caerellius; The Final Descent stage == 10; global DLC2RR03Dia01 == 0 (now 0)). Source: DLC2_TIF__020209F8.Fragment_1 on INFO Dragonborn.esm:0209F8 (Dragonborn.esm). **script**
+- It starts from something placed in Bloodskal Barrow. (Start). Source: DLC2RR03ExitTriggerScript on Dragonborn.esm:02B10E (1 placed). **script**
 - (First objective shown at stage 15; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
@@ -108,7 +109,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Bloodskal Barrow. (Start). Source: DLC2RR03ExitTriggerScript on Dragonborn.esm:02B10E (1 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**

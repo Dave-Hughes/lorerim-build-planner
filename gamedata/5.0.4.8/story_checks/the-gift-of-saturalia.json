@@ -8,19 +8,28 @@
    "name": "Windhelm By The Sea",
    "plugin": "TheGiftofSaturalia.esp",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
+     "call": "Start",
+     "info": "TheGiftofSaturalia.esp:00084E",
+     "prompt": null,
+     "reply": [],
+     "conditions": "Windhelm By The Sea hasn't started; the speaker is the one in alias Niklas",
+     "source": "Sat_StartAdoption.Fragment_0 on INFO TheGiftofSaturalia.esp:00084E (TheGiftofSaturalia.esp)",
+     "verdict": "script",
+     "laterInLine": true
+    }
+   ],
    "caughtUpBy": [
     {
      "by": "Sat_TheGiftofSaturalia (The Gift of Saturalia)",
      "atStage": null,
      "call": "SetStage 10",
      "source": "Sat_Adoption_Finish.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)"
-    },
-    {
-     "by": "Sat_TheGiftofSaturalia (The Gift of Saturalia)",
-     "atStage": null,
-     "call": "Start",
-     "source": "Sat_StartAdoption.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)"
     }
    ],
    "advancedBy": 1,
@@ -92,8 +101,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "TheGiftofSaturalia.esp:0009A4",
@@ -101,19 +109,28 @@
    "name": "Lending a Paw",
    "plugin": "TheGiftofSaturalia.esp",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
+     "call": "Start",
+     "info": "TheGiftofSaturalia.esp:00084C",
+     "prompt": null,
+     "reply": [],
+     "conditions": "Lending a Paw hasn't started; the speaker is the one in alias Niklas",
+     "source": "Sat_DogStart.Fragment_0 on INFO TheGiftofSaturalia.esp:00084C (TheGiftofSaturalia.esp)",
+     "verdict": "script",
+     "laterInLine": true
+    }
+   ],
    "caughtUpBy": [
     {
      "by": "Sat_TheGiftofSaturalia (The Gift of Saturalia)",
      "atStage": null,
      "call": "SetStage 10",
      "source": "Sat_Dog_Stage10.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)"
-    },
-    {
-     "by": "Sat_TheGiftofSaturalia (The Gift of Saturalia)",
-     "atStage": null,
-     "call": "Start",
-     "source": "Sat_DogStart.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)"
     }
    ],
    "advancedBy": 1,
@@ -186,8 +203,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "TheGiftofSaturalia.esp:0008D3",
@@ -195,7 +211,22 @@
    "name": "The Joy of Dawnstar",
    "plugin": "TheGiftofSaturalia.esp",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
+     "call": "Start",
+     "info": "TheGiftofSaturalia.esp:00084D",
+     "prompt": null,
+     "reply": [],
+     "conditions": "the speaker is the one in alias Niklas; The Joy of Dawnstar hasn't started",
+     "source": "Sat_LaughStart.Fragment_0 on INFO TheGiftofSaturalia.esp:00084D (TheGiftofSaturalia.esp)",
+     "verdict": "script",
+     "laterInLine": true
+    }
+   ],
    "caughtUpBy": [
     {
      "by": "Sat_TheGiftofSaturalia (The Gift of Saturalia)",
@@ -208,12 +239,6 @@
      "atStage": null,
      "call": "SetStage 8",
      "source": "Sat_LaughEnd1.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)"
-    },
-    {
-     "by": "Sat_TheGiftofSaturalia (The Gift of Saturalia)",
-     "atStage": null,
-     "call": "Start",
-     "source": "Sat_LaughStart.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)"
     }
    ],
    "advancedBy": 0,
@@ -251,8 +276,7 @@
     "stage": 1,
     "movedBy": [],
     "unread": "nothing outside its own stage fragments sets stage 1 or one before it"
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "TheGiftofSaturalia.esp:0009D2",
@@ -260,19 +284,28 @@
    "name": "A Song in the Dark",
    "plugin": "TheGiftofSaturalia.esp",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
+     "call": "Start",
+     "info": "TheGiftofSaturalia.esp:00084F",
+     "prompt": null,
+     "reply": [],
+     "conditions": "A Song in the Dark hasn't started; the speaker is the one in alias Niklas",
+     "source": "Sat_MusicStart.Fragment_0 on INFO TheGiftofSaturalia.esp:00084F (TheGiftofSaturalia.esp)",
+     "verdict": "script",
+     "laterInLine": true
+    }
+   ],
    "caughtUpBy": [
     {
      "by": "Sat_TheGiftofSaturalia (The Gift of Saturalia)",
      "atStage": null,
      "call": "SetStage 30",
      "source": "Sat_FinishLaugh2.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)"
-    },
-    {
-     "by": "Sat_TheGiftofSaturalia (The Gift of Saturalia)",
-     "atStage": null,
-     "call": "Start",
-     "source": "Sat_MusicStart.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)"
     }
    ],
    "advancedBy": 6,
@@ -368,8 +401,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "TheGiftofSaturalia.esp:0008AA",
@@ -377,7 +409,22 @@
    "name": "Three Wise Men",
    "plugin": "TheGiftofSaturalia.esp",
    "firstObjectiveStage": 0,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "dialogue",
+     "speaker": null,
+     "speakerNamed": "GetIsID",
+     "speakerPlaced": [],
+     "call": "Start",
+     "info": "TheGiftofSaturalia.esp:00084B",
+     "prompt": null,
+     "reply": [],
+     "conditions": "Three Wise Men hasn't started; the speaker is the one in alias Niklas",
+     "source": "Sat_OrphanageStart.Fragment_0 on INFO TheGiftofSaturalia.esp:00084B (TheGiftofSaturalia.esp)",
+     "verdict": "script",
+     "laterInLine": true
+    }
+   ],
    "caughtUpBy": [
     {
      "by": "Sat_TheGiftofSaturalia (The Gift of Saturalia)",
@@ -390,12 +437,6 @@
      "atStage": null,
      "call": "SetStage 20",
      "source": "Sat_FinishOrphanage1.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)"
-    },
-    {
-     "by": "Sat_TheGiftofSaturalia (The Gift of Saturalia)",
-     "atStage": null,
-     "call": "Start",
-     "source": "Sat_OrphanageStart.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)"
     }
    ],
    "advancedBy": 9,
@@ -488,8 +529,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "TheGiftofSaturalia.esp:000D61",

@@ -8,6 +8,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Melka, placed in Blind Cliff Bastion, Blind Cliff Cave, "What do I get if I free you?": SetStage 15 (when: The Affairs of Hagravens stage 20 not done; the speaker is Melka). Source: TIF__00077C23.Fragment_1 on INFO Skyrim.esm:077C23 (Skyrim.esm). **script**
 - Dialogue with Melka, placed in Blind Cliff Bastion, Blind Cliff Cave, "What do I get if I free you?": SetStage 15 (when: The Affairs of Hagravens stage 20 not done; the speaker is Melka). Source: TIF__00077C23.Fragment_4 on INFO Skyrim.esm:077C23 (Skyrim.esm). **script**
+- It starts from something placed in Blind Cliff Bastion, Blind Cliff Cave, by the door to somewhere in Skyrim. (Start). Source: dunBlindCliffKickoffSCRIPT on Skyrim.esm:077C5C (1 placed). **script**
+- It starts from something placed in Blind Cliff Bastion, Blind Cliff Cave, by the door to somewhere in Skyrim. (SetStage 10). Source: defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (3 placed). **script**
 - (First objective shown at stage 15; a call to a later stage advances the quest instead.)
 
 **Who and where**

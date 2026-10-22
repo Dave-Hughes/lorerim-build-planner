@@ -249,14 +249,36 @@
    "name": "The Temple of Miraak",
    "plugin": "Dragonborn.esm",
    "firstObjectiveStage": 5,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "DLC2MQ03 (The Fate of the Skaal)",
+     "by": "quest script",
+     "quest": "DLC2MQ03 (The Fate of the Skaal)",
+     "questId": "Dragonborn.esm:017F90",
      "atStage": 0,
      "call": "SetStage 0",
-     "source": "DLC2_QF_DLC2MQ03_02017F90.fragment_15 (Unofficial Skyrim Special Edition Patch.esp)"
+     "source": "DLC2_QF_DLC2MQ03_02017F90.fragment_15 on Dragonborn.esm:017F90 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script",
+     "throughStage": [],
+     "laterInLine": true
     },
+    {
+     "by": "dialogue",
+     "speaker": "Frea",
+     "speakerNamed": "the one follower in DLC2MQ02 (The Temple of Miraak)'s aliases",
+     "speakerPlaced": [
+      "Shaman's Hut, Skaal Village Shaman's Hut"
+     ],
+     "call": "SetStage 5",
+     "info": "Dragonborn.esm:02A578",
+     "prompt": null,
+     "reply": [],
+     "conditions": "the speaker is the one in alias Storn",
+     "source": "DLC2_TIF__0202A578.Fragment_0 on INFO Dragonborn.esm:02A578 (Dragonborn.esm)",
+     "verdict": "script",
+     "laterInLine": true
+    }
+   ],
+   "caughtUpBy": [
     {
      "by": "DLC2MQ03 (The Fate of the Skaal)",
      "atStage": 0,
@@ -268,12 +290,6 @@
      "atStage": 0,
      "call": "SetStage 200",
      "source": "DLC2_QF_DLC2MQ03_02017F90.fragment_15 (Unofficial Skyrim Special Edition Patch.esp)"
-    },
-    {
-     "by": "DLC2MQ03 (The Fate of the Skaal)",
-     "atStage": null,
-     "call": "SetStage 5",
-     "source": "DLC2_TIF__0202A578.Fragment_0 (Unofficial Skyrim Special Edition Patch.esp)"
     }
    ],
    "advancedBy": 5,
@@ -343,8 +359,7 @@
       "throughStage": []
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Dragonborn.esm:017F90",
@@ -593,6 +608,76 @@
        "verdict": "script"
       }
      ]
+    },
+    {
+     "by": "board",
+     "call": "SetStage 2",
+     "object": "Control Switch",
+     "objectEdid": "DLC2dunNchardakExtrudePedestal",
+     "objectId": "Dragonborn.esm:028110",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "Nchardak Aqueduct",
+         "metres": 4
+        }
+       ],
+       "plugin": "Dragonborn.esm",
+       "ref": "Dragonborn.esm:01793A",
+       "where": "Nchardak Great Chamber, Nchardak"
+      },
+      {
+       "plugin": "Dragonborn.esm",
+       "ref": "Dragonborn.esm:017907",
+       "where": "Nchardak Aqueduct, Nchardak"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "Nchardak Great Chamber",
+         "metres": 16
+        }
+       ],
+       "plugin": "Dragonborn.esm",
+       "ref": "Dragonborn.esm:017641",
+       "where": "Nchardak Workshop, Nchardak"
+      },
+      {
+       "plugin": "Dragonborn.esm",
+       "ref": "Dragonborn.esm:01C83A",
+       "where": "Nchardak Workshop, Nchardak"
+      },
+      {
+       "plugin": "Dragonborn.esm",
+       "ref": "Dragonborn.esm:017673",
+       "where": "Nchardak Workshop, Nchardak"
+      },
+      {
+       "plugin": "Dragonborn.esm",
+       "ref": "Dragonborn.esm:01D4C7",
+       "where": "Nchardak Workshop, Nchardak"
+      },
+      {
+       "plugin": "Dragonborn.esm",
+       "ref": "Dragonborn.esm:01C83E",
+       "where": "Nchardak Workshop, Nchardak"
+      },
+      {
+       "plugin": "Dragonborn.esm",
+       "ref": "Dragonborn.esm:01C7D3",
+       "where": "Nchardak Workshop, Nchardak"
+      },
+      {
+       "plugin": "Dragonborn.esm",
+       "ref": "Dragonborn.esm:01C7A2",
+       "where": "Nchardak Workshop, Nchardak"
+      }
+     ],
+     "script": "DLC2dunNchardakPedestalScript",
+     "verdict": "script",
+     "plain": "It starts from Control Switch in Nchardak Great Chamber, Nchardak, Nchardak Aqueduct, Nchardak, Nchardak Workshop, Nchardak.",
+     "source": "DLC2dunNchardakPedestalScript on Dragonborn.esm:028110 (9 placed)"
     }
    ],
    "caughtUpBy": [

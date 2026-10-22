@@ -6,12 +6,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- FreeformRiften20 (The Raid) at stage 200 calls SetStage 10. Source: QF_FreeformRiften20_00085D40.fragment_9 on Skyrim.esm:085D40 (TheChoiceIsYours.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- FreeformRiften20 (The Raid) at stage 200 calls SetStage 10. Source: QF_FreeformRiften20_00085D40.fragment_9 (TheChoiceIsYours.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 

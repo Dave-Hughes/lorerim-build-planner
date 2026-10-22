@@ -8,7 +8,31 @@
    "name": "Silenced Tongues",
    "plugin": "Skyrim.esm",
    "firstObjectiveStage": 10,
-   "startedBy": [],
+   "startedBy": [
+    {
+     "by": "board",
+     "call": "SetStage 0",
+     "objectEdid": "defaultSetStageTRIG",
+     "objectId": "Skyrim.esm:033F50",
+     "places": [
+      {
+       "nearDoors": [
+        {
+         "door": "somewhere in Skyrim",
+         "metres": 4
+        }
+       ],
+       "plugin": "Skyrim.esm",
+       "ref": "Skyrim.esm:08AF30",
+       "where": "Volunruud"
+      }
+     ],
+     "script": "defaultsetStageTrigSCRIPT",
+     "verdict": "script",
+     "plain": "It starts from something placed in Volunruud, by the door to somewhere in Skyrim.",
+     "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (1 placed)"
+    }
+   ],
    "caughtUpBy": [],
    "advancedBy": 0,
    "firstObjective": {
@@ -102,8 +126,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   }
  ],
  "notInRawQuests": [],

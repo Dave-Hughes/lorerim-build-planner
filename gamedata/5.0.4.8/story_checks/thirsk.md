@@ -7,6 +7,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - Dialogue with Geldis Sadri, placed in The Retching Netch: Start (when: GetQuestRunning Thirsk Rumors == 0; Thirsk Rumors stage 100 not done; the speaker is Geldis Sadri). Source: DLC2_TIF__0203A29B.Fragment_0 on INFO Dragonborn.esm:03A29B (Unofficial Skyrim Special Edition Patch.esp). **script**
+- It starts from something placed in Thirsk, by the door to Thirsk Mead Hall. (Start). Source: DLC2ThirskAssaultTriggerScript on Dragonborn.esm:01A526 (1 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -37,8 +38,8 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Second step** (what moves it to its second objective, often the real test)
 
 - Second objective: "Approach Thirsk Mead Hall", shown at stage 20. Source: Dragonborn.esm:01A50B QOBJ 20. **files**
-- DLC2MHRieklingHandler, a helper quest with Riekling001 calls SetStage 20; DLC2MHRieklingHandler is started by nothing in the records or scripts (**unread**). Source: DLC2MHRieklingHandlerQuestScript.ProcessFoundRieklings on Dragonborn.esm:01A523 (Dragonborn.esm). **script**
-- DLC2MHRieklingHandler, a helper quest with Riekling001 at stage 0 calls SetStage 20; DLC2MHRieklingHandler is started by nothing in the records or scripts (**unread**). Source: DLC2_QF_DLC2MHRieklingHandler_0201A523.fragment_0 on Dragonborn.esm:01A523 (Dragonborn.esm), through DLC2MHRieklingHandler's processfoundrieklings. **script**
+- DLC2MHRieklingHandler, a helper quest with Riekling001 calls SetStage 20; DLC2MHRieklingHandler is started by the start-game flag. Source: DLC2MHRieklingHandlerQuestScript.ProcessFoundRieklings on Dragonborn.esm:01A523 (Dragonborn.esm). **script**
+- DLC2MHRieklingHandler, a helper quest with Riekling001 at stage 0 calls SetStage 20; DLC2MHRieklingHandler is started by the start-game flag. Source: DLC2_QF_DLC2MHRieklingHandler_0201A523.fragment_0 on Dragonborn.esm:01A523 (Dragonborn.esm), through DLC2MHRieklingHandler's processfoundrieklings. **script**
 
 **Who and where**
 

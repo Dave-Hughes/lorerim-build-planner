@@ -170,20 +170,31 @@
    "name": "A New Order",
    "plugin": "Requiem.esp",
    "firstObjectiveStage": 20,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "DLC1VQ02 (Bloodline)",
+     "by": "quest script",
+     "quest": "DLC1VQ02 (Bloodline)",
+     "questId": "Dawnguard.esm:002F65",
      "atStage": 190,
      "call": "SetStage 20",
-     "source": "DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_13 (Dawnguard.esm)"
+     "source": "DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_13 on Dawnguard.esm:002F65 (Dawnguard.esm)",
+     "verdict": "script",
+     "throughStage": [],
+     "laterInLine": true
     },
     {
-     "by": "DLC1VQ02 (Bloodline)",
+     "by": "quest script",
+     "quest": "DLC1VQ02 (Bloodline)",
+     "questId": "Dawnguard.esm:002F65",
      "atStage": 30,
      "call": "SetStage 20",
-     "source": "DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_9 (Dawnguard.esm)"
-    },
+     "source": "DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_9 on Dawnguard.esm:002F65 (Dawnguard.esm)",
+     "verdict": "script",
+     "throughStage": [],
+     "laterInLine": true
+    }
+   ],
+   "caughtUpBy": [
     {
      "by": "DLC1VQ03Hunter (Prophet)",
      "atStage": 0,
@@ -246,8 +257,7 @@
     "stage": 20,
     "movedBy": [],
     "unread": "nothing outside its own stage fragments sets stage 20 or one before it"
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Dawnguard.esm:013F1F",
@@ -2663,15 +2673,20 @@
    "name": "The Bloodstone Chalice",
    "plugin": "Dawnguard.esm",
    "firstObjectiveStage": 10,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "DLC1VQ02 (Bloodline)",
+     "by": "quest script",
+     "quest": "DLC1VQ02 (Bloodline)",
+     "questId": "Dawnguard.esm:002F65",
      "atStage": 180,
      "call": "SetStage 10",
-     "source": "DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_14 (Dawnguard.esm)"
+     "source": "DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_14 on Dawnguard.esm:002F65 (Dawnguard.esm)",
+     "verdict": "script",
+     "throughStage": [],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 3,
    "firstObjective": {
     "text": "Speak with Garan Marethi",
@@ -2749,8 +2764,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Dawnguard.esm:00352A",
@@ -3584,21 +3598,93 @@
    "name": "Unseen Visions",
    "plugin": "Unofficial Skyrim Special Edition Patch.esp",
    "firstObjectiveStage": 10,
-   "startedBy": [],
-   "caughtUpBy": [
+   "startedBy": [
     {
-     "by": "DLC1VQElder (Seeking Disclosure)",
+     "by": "quest script",
+     "quest": "DLC1VQElder (Seeking Disclosure)",
+     "questId": "Dawnguard.esm:005DA9",
      "atStage": 200,
      "call": "SetStage 10",
-     "source": "DLC1_QF_DLC1VQElder_01005DA9.fragment_0 (Unofficial Skyrim Special Edition Patch.esp)"
+     "source": "DLC1_QF_DLC1VQElder_01005DA9.fragment_0 on Dawnguard.esm:005DA9 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Dexion Evicus",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Forebears' Holdout"
+       ],
+       "call": "SetStage 200",
+       "info": "Dawnguard.esm:0137BD",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Dexion Evicus; Seeking Disclosure stage == 40; global DLC1PlayingVampireLine == 1 (now 0)",
+       "source": "DLC1_TIF__020137BD.Fragment_0 on INFO Dawnguard.esm:0137BD (Dawnguard.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "Dexion Evicus",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Forebears' Holdout"
+       ],
+       "call": "SetStage 200",
+       "info": "Dawnguard.esm:0137BE",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Dexion Evicus; Seeking Disclosure stage == 40; global DLC1PlayingVampireLine == 0 (now 0)",
+       "source": "DLC1_TIF__020137BE.Fragment_0 on INFO Dawnguard.esm:0137BE (Dawnguard.esm)",
+       "verdict": "script"
+      }
+     ],
+     "laterInLine": true
     },
     {
-     "by": "DLC1VQElder (Seeking Disclosure)",
+     "by": "quest script",
+     "quest": "DLC1VQElder (Seeking Disclosure)",
+     "questId": "Dawnguard.esm:005DA9",
      "atStage": 200,
      "call": "SetStage 10",
-     "source": "DLC1_QF_DLC1VQElder_01005DA9.fragment_13 (Unofficial Skyrim Special Edition Patch.esp)"
+     "source": "DLC1_QF_DLC1VQElder_01005DA9.fragment_13 on Dawnguard.esm:005DA9 (Unofficial Skyrim Special Edition Patch.esp)",
+     "verdict": "script",
+     "throughStage": [
+      {
+       "by": "dialogue",
+       "speaker": "Dexion Evicus",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Forebears' Holdout"
+       ],
+       "call": "SetStage 200",
+       "info": "Dawnguard.esm:0137BD",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Dexion Evicus; Seeking Disclosure stage == 40; global DLC1PlayingVampireLine == 1 (now 0)",
+       "source": "DLC1_TIF__020137BD.Fragment_0 on INFO Dawnguard.esm:0137BD (Dawnguard.esm)",
+       "verdict": "script"
+      },
+      {
+       "by": "dialogue",
+       "speaker": "Dexion Evicus",
+       "speakerNamed": "GetIsID",
+       "speakerPlaced": [
+        "Forebears' Holdout"
+       ],
+       "call": "SetStage 200",
+       "info": "Dawnguard.esm:0137BE",
+       "prompt": null,
+       "reply": [],
+       "conditions": "the speaker is Dexion Evicus; Seeking Disclosure stage == 40; global DLC1PlayingVampireLine == 0 (now 0)",
+       "source": "DLC1_TIF__020137BE.Fragment_0 on INFO Dawnguard.esm:0137BE (Dawnguard.esm)",
+       "verdict": "script"
+      }
+     ],
+     "laterInLine": true
     }
    ],
+   "caughtUpBy": [],
    "advancedBy": 1,
    "firstObjective": {
     "text": "Find a Moth Priest's knife",
@@ -3657,8 +3743,7 @@
       "verdict": "script"
      }
     ]
-   },
-   "unread": "no starter in its records or scripts"
+   }
   },
   {
    "id": "Dawnguard.esm:002853",
@@ -4207,6 +4292,34 @@
      "conditions": "the speaker is the one in alias RiderSoul",
      "source": "DLC1_TIF__01002B0B.Fragment_1 on INFO Dawnguard.esm:002B0B (Dawnguard.esm)",
      "verdict": "script"
+    },
+    {
+     "by": "board",
+     "call": "SetStage 10",
+     "objectEdid": "defaultSetStageTRIGPlayerOnly",
+     "objectId": "Skyrim.esm:099312",
+     "places": [
+      {
+       "plugin": "Dawnguard.esm",
+       "ref": "Dawnguard.esm:002B0F",
+       "where": "somewhere in Soul Cairn"
+      },
+      {
+       "nearDoors": [
+        {
+         "door": "Volkihar Ruins",
+         "metres": 20
+        }
+       ],
+       "plugin": "Dawnguard.esm",
+       "ref": "Dawnguard.esm:003A1F",
+       "where": "somewhere in Soul Cairn"
+      }
+     ],
+     "script": "defaultsetStageTrigSCRIPT",
+     "verdict": "script",
+     "plain": "It starts from something placed in somewhere in Soul Cairn.",
+     "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (2 placed)"
     }
    ],
    "caughtUpBy": [],

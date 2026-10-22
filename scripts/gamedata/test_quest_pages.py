@@ -748,5 +748,14 @@ class LoopRulingsTest(unittest.TestCase):
         self.assertEqual(qp.fill_text("Distribute it (<Global=Done>/<Global=Need>)", {}, {"done": 0, "need": 20}), "Distribute it (0/20)")
 
 
+class BoardWayTest(unittest.TestCase):
+    """WO-136: a board's start is the check's own words."""
+
+    def test_a_board_is_a_way_in(self):
+        board = {"by": "board", "plain": "It starts from something placed in Windhelm.", "call": "Start"}
+        start = qp.start_of({"name": "Deliver a Letter Near", "startedBy": [board], "firstObjectiveStage": 20, "target": [], "needs": {}}, {})
+        self.assertEqual(start["ways"][0]["how"], "It starts from something placed in Windhelm.")
+        self.assertEqual(start["checked"], "files")
+
 if __name__ == "__main__":
     unittest.main()

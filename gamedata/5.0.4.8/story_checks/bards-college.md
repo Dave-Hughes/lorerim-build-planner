@@ -175,6 +175,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Rothen Adlvel, placed in Dead Men's Respite, "Sorry, I've been through that tomb once, don't want to do it again right now. ": SetStage 5 (when: the speaker is Rothen Adlvel). Source: TIF__05246FAC.Fragment_0 on INFO BardExcavation.esp:000867 (BardExcavation.esp). **script**
 - Dialogue with Birinna, placed in Dead Men's Respite, "Sorry, I don't have the time to help you right now. ": SetStage 5 (when: the speaker is Birinna). Source: TIF__05246FB5.Fragment_0 on INFO BardExcavation.esp:000870 (BardExcavation.esp). **script**
 - Dialogue with Birinna, placed in Dead Men's Respite, "Sure, shouldn't be a problem. I'll make sure to kill them all this time. ": SetStage 10 (when: the speaker is Birinna). Source: TIF__05246FB7.Fragment_0 on INFO BardExcavation.esp:000872 (BardExcavation.esp). **script**
+- It starts from something placed in somewhere in Skyrim, by the door to Dead Men's Respite. (Start). Source: QuestStartIfClear on Skyrim.esm:00003B (1 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

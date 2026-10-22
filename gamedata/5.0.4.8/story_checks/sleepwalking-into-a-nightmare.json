@@ -17,7 +17,54 @@
      "call": "SetStage 10",
      "source": "QF_aaaMBRalfornDialogue_05039B8C.fragment_0 on NightmarePlane.esp:039B8C (NightmarePlane.esp)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "board",
+       "call": "SetStage 11",
+       "objectEdid": "aaaMBRalfornSetForcegreetPackage",
+       "objectId": "NightmarePlane.esp:144135",
+       "places": [
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 1
+          }
+         ],
+         "plugin": "NightmarePlane.esp",
+         "ref": "NightmarePlane.esp:144136",
+         "where": "Green-Tip Cabin"
+        }
+       ],
+       "script": "aaaMBRalfornForcegreetPackageScript",
+       "verdict": "script",
+       "plain": "It starts from something placed in Green-Tip Cabin, by the door to somewhere in Skyrim.",
+       "source": "aaaMBRalfornForcegreetPackageScript on NightmarePlane.esp:144135 (1 placed)"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 10",
+       "objectEdid": "aaaMBQuestStartTrigger",
+       "objectId": "NightmarePlane.esp:039BA0",
+       "places": [
+        {
+         "nearDoors": [
+          {
+           "door": "Green-Tip Cabin",
+           "metres": 1
+          }
+         ],
+         "plugin": "NightmarePlane.esp",
+         "ref": "NightmarePlane.esp:039BA1",
+         "where": "somewhere in Skyrim"
+        }
+       ],
+       "script": "aaaMBQuestStartTriggerScript",
+       "verdict": "script",
+       "plain": "It starts from something placed in somewhere in Skyrim, by the door to Green-Tip Cabin.",
+       "source": "aaaMBQuestStartTriggerScript on NightmarePlane.esp:039BA0 (1 placed)"
+      }
+     ]
     }
    ],
    "caughtUpBy": [],

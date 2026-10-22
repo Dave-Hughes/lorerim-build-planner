@@ -10,6 +10,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - Dialogue with Lucan Valerius, placed in Riverwood Trader, Lucan's Dry Goods, "I could help you get the claw back.": SetStage 10 (when: GetItemCount Golden Claw == 0; the speaker is Lucan Valerius). Source: TIF__0008AFA2.Fragment_1 on INFO Skyrim.esm:08AFA2 (Skyrim.esm). **script**
 - Dialogue with Camilla Valerius, placed in Riverwood Trader, Lucan's Dry Goods, "I could help you get the claw back.": SetStage 10 (when: GetDead == 1; the speaker is Camilla Valerius). Source: TIF__00048A7C.Fragment_1 on INFO Skyrim.esm:048A7C (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: Skyrim.esm:039645 DNAM (GoldenLie.esp). **files**
+- It starts from something placed in Bleak Falls Barrow, E3 Bleak Falls Barrow. (SetStage 10). Source: defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (1 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

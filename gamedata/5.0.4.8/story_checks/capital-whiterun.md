@@ -26,7 +26,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- It starts from something placed in Dragonsreach, somewhere in Whiterun, Whiterun. (SetStage 10). Source: defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (7 placed). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Who and where**
@@ -153,6 +153,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Courier, placed in Whiterun Messenger Tower, Guard Tower, "...": SetStage 15 (when: Skirmish at Whitewatch stage == 10; the speaker is Courier). Source: TIF__053436A6.Fragment_0 on INFO SurWR.esp:3436A6 (SurWR.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: SurWR.esp:3436A3 DNAM (SurWR.esp). **files**
+- It starts from something placed in somewhere in Whiterun, by the door to Dragonsreach Dungeon. (SetStage 5). Source: defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (1 placed). **script**
 - (First objective shown at stage 15; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)

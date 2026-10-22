@@ -17,7 +17,114 @@
      "call": "SetStage 5",
      "source": "QF_E3demo_00093637.fragment_0 on Skyrim.esm:093637 (Skyrim.esm)",
      "verdict": "script",
-     "throughStartedBy": []
+     "throughStartedBy": [
+      {
+       "by": "board",
+       "call": "SetStage 150",
+       "objectEdid": "E3DemoFXspiderWebKitDestructible",
+       "objectId": "Skyrim.esm:0999E6",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0847B0",
+         "where": "Bleak Falls Barrow, E3 Bleak Falls Barrow"
+        }
+       ],
+       "script": "MS13WebDestructibleSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in Bleak Falls Barrow, E3 Bleak Falls Barrow.",
+       "source": "MS13WebDestructibleSCRIPT on Skyrim.esm:0999E6 (1 placed)"
+      },
+      {
+       "by": "board",
+       "call": "SetStage 155",
+       "objectEdid": "defaultSetStageTRIG",
+       "objectId": "Skyrim.esm:033F50",
+       "places": [
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0EB61C",
+         "where": "Bleak Falls Barrow, E3 Bleak Falls Barrow"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 2
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0C650A",
+         "where": "Bleak Falls Barrow, E3 Bleak Falls Barrow"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0AD070",
+         "where": "Bleak Falls Barrow, E3 Bleak Falls Barrow"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:08479C",
+         "where": "Bleak Falls Barrow, E3 Bleak Falls Barrow"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0847B6",
+         "where": "Bleak Falls Barrow, E3 Bleak Falls Barrow"
+        },
+        {
+         "nearDoors": [
+          {
+           "door": "somewhere in Skyrim",
+           "metres": 11
+          }
+         ],
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0998C1",
+         "where": "Bleak Falls Barrow, E3 Bleak Falls Barrow"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09999A",
+         "where": "Bleak Falls Barrow, E3 Bleak Falls Barrow"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0E8E8F",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:09A74D",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0E8E91",
+         "where": "Bleak Falls Barrow"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0A309B",
+         "where": "somewhere in Skyrim"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0D7777",
+         "where": "Western Watchtower"
+        },
+        {
+         "plugin": "Skyrim.esm",
+         "ref": "Skyrim.esm:0936B1",
+         "where": "Western Watchtower"
+        }
+       ],
+       "script": "defaultsetStageTrigSCRIPT",
+       "verdict": "script",
+       "plain": "It starts from something placed in Bleak Falls Barrow, E3 Bleak Falls Barrow, somewhere in Skyrim, Bleak Falls Barrow, Western Watchtower.",
+       "source": "defaultsetStageTrigSCRIPT on Skyrim.esm:033F50 (13 placed)"
+      }
+     ]
     },
     {
      "by": "dialogue",

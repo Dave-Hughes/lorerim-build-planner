@@ -43,7 +43,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- COW_CentralQuest (College Curriculum) at stage 50 calls Start; its stage 50 is set by Dialogue with someone the line does not name: SetStage 50 (when: College Curriculum stage == 27; the speaker is the one in alias Tolfdir). Source: QF_COW_CentralQuest_05014C23.fragment_4 on College Of Winterhold - Quest Expansion.esp:00081D (College Of Winterhold - Quest Expansion.esp). **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
@@ -53,7 +53,6 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - mg06 (Revealing the Unseen) at stage 0 calls SetStage 200. Source: QF_MG06_0001F256.fragment_16 (Unofficial Skyrim Special Edition Patch.esp).
 - MG04 (Good Intentions) at stage 0 calls SetStage 200. Source: QF_MG04_0001F254.fragment_0 (Unofficial Skyrim Special Edition Patch.esp).
 - MG03 (Hitting the Books) at stage 0 calls SetStage 200. Source: QF_MG03_0001F253.fragment_0 (Unofficial Skyrim Special Edition Patch.esp).
-- COW_CentralQuest (College Curriculum) at stage 50 calls Start. Source: QF_COW_CentralQuest_05014C23.fragment_4 (College Of Winterhold - Quest Expansion.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -143,14 +142,13 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 - USKPRetroactive203 (named "Retroactive fixes for 2.0.3" in its record), a helper quest calls Start; Start; Start; Start; USKPRetroactive203 is started by the start-game flag. Sources: uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A. **script**
 - USKPRetroactive204 (named "Retroactive fixes for 2.0.4" in its record), a helper quest with Gabriella, Erikur, Susanna calls Start; Start; USKPRetroactive204 is started by the start-game flag. Sources: USKPRetroactive204Script.Process on Unofficial Skyrim Special Edition Patch.esp:012C3A. **script**
 - USKPRetroactive205 (named "Retroactive fixes for 2.0.5" in its record), a helper quest with Keerava calls Start; USKPRetroactive205 is started by the start-game flag. Source: USKPRetroactive205Script.Process on Unofficial Skyrim Special Edition Patch.esp:040578 (Unofficial Skyrim Special Edition Patch.esp). **script**
+- mg06 (Revealing the Unseen) calls at stage 200 Start; at stage 200 SetStage 0; its stage None is set by Dialogue with Mirabelle Ervine, placed in Hall of Attainment, Dormitory: SetStage 200 (when: Revealing the Unseen stage == 99; the speaker is Mirabelle Ervine). Sources: QF_MG06_0001F256.fragment_14 on Skyrim.esm:01F256. **script**
 - (First objective shown at stage 10; a call to a later stage advances the quest instead.)
 
 **Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
 
 - MG08 (The Eye of Magnus) at stage 0 calls SetStage 200. Source: QF_MG08_0001F258.fragment_0 (College of Winterhold Quest Start Fixes.esp).
 - MG07 (The Staff of Magnus) at stage 0 calls SetStage 200. Source: QF_MG07_0001F257.fragment_0 (College of Winterhold Quest Start Fixes.esp).
-- mg06 (Revealing the Unseen) at stage 200 calls Start. Source: QF_MG06_0001F256.fragment_14 (Unofficial Skyrim Special Edition Patch.esp).
-- mg06 (Revealing the Unseen) at stage 200 calls SetStage 0. Source: QF_MG06_0001F256.fragment_14 (Unofficial Skyrim Special Edition Patch.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -655,13 +653,9 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 **Started by**
 
-- **unread**: no starter in its records or scripts
+- Dialogue with someone the line does not name: Start (when: College Curriculum hasn't started; has the spell Waterbreathing; the speaker is the one in alias Tolfdir). Source: COW_PlayerKnowsSpell.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:000829 (College Of Winterhold - Quest Expansion.esp). **script**
+- Dialogue with someone the line does not name: Start (when: College Curriculum stage == 5; has the spell Waterbreathing; the speaker is the one in alias Tolfdir). Source: Cow_WaterLearned.Fragment_0 on INFO College Of Winterhold - Quest Expansion.esp:00082C (College Of Winterhold - Quest Expansion.esp). **script**
 - (First objective shown at stage 1; a call to a later stage advances the quest instead.)
-
-**Caught up by** (a later quest setting this one's stage, as the game does when you skip ahead)
-
-- COW_CentralQuest (College Curriculum) calls Start. Source: COW_PlayerKnowsSpell.Fragment_0 (College Of Winterhold - Quest Expansion.esp).
-- COW_CentralQuest (College Curriculum) calls Start. Source: Cow_WaterLearned.Fragment_0 (College Of Winterhold - Quest Expansion.esp).
 
 **Second step** (what moves it to its second objective, often the real test)
 
@@ -866,7 +860,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 **Started by**
 
 - MG01 (First Lessons) calls Start. Source: MG01QuestScript.StartPointer on Skyrim.esm:01F251 (LoreRim - Dialogue Patch.esp). **script**
-- ccBGSSSE005_MainQuest, a helper quest with lars calls at stage 450 Start; at stage 450 Start; ccBGSSSE005_MainQuest is started by the start-game flag. Sources: QF_ccBGSSSE005_MainQuest_02000838.fragment_18, QF_ccBGSSSE005_MainQuest_02000838.fragment_31 on ccbgssse005-goldbrand.esl:000838. **script**
+- ccBGSSSE005_MainQuest, a helper quest with lars calls at stage 450 Start; at stage 450 Start; ccBGSSSE005_MainQuest is started by the start-game flag; the start-game flag; the start-game flag; the start-game flag. Sources: QF_ccBGSSSE005_MainQuest_02000838.fragment_18, QF_ccBGSSSE005_MainQuest_02000838.fragment_31 on ccbgssse005-goldbrand.esl:000838. **script**
 - Dialogue with Faida, placed in Four Shields Tavern, "Where can I learn more about magic?": Start (when: the speaker is Faida). Source: TIF__0008EC35.Fragment_0 on INFO Skyrim.esm:08EC35 (Unofficial Skyrim Special Edition Patch.esp). **script**
 - Dialogue with Ambarys Rendar, placed in New Gnisis Cornerclub, "Where can I learn more about magic?": Start (when: the speaker is Ambarys Rendar). Source: TIF__0008EC36.Fragment_0 on INFO Skyrim.esm:08EC36 (Skyrim.esm). **script**
 - Dialogue with Elda Early-Dawn, placed in Candlehearth Hall, "Where can I learn more about magic?": Start (when: the speaker is Elda Early-Dawn). Source: TIF__0008EC37.Fragment_0 on INFO Skyrim.esm:08EC37 (Unofficial Skyrim Special Edition Patch.esp). **script**

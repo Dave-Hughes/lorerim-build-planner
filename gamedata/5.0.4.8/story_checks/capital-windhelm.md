@@ -172,6 +172,7 @@ Written by `scripts/gamedata/story_check.py` from the records, the winning compi
 
 - Dialogue with Higil Hammer-Shield, placed in Clan Hammer-Shield, Home of Clan Hammer-Shield: SetStage 20 (when: fn606 == CWSons (now 2); the speaker is Higil Hammer-Shield). Source: TIF__051F86F8.Fragment_0 on INFO WindhelmSSE.esp:1F86F8 (WindhelmSSE.esp). **script**
 - Start-game flag: the quest runs from the start of the game. Source: WindhelmSSE.esp:1F355A DNAM (WindhelmSSE.esp). **files**
+- It starts from something placed in Clan Hammer-Shield, Home of Clan Hammer-Shield, by the door to somewhere in Windhelm. (SetStage 10). Source: defaultsetStageTrigSCRIPT on Skyrim.esm:099312 (1 placed). **script**
 - (First objective shown at stage 20; a call to a later stage advances the quest instead.)
 
 **Second step** (what moves it to its second objective, often the real test)
