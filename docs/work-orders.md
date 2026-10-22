@@ -3123,13 +3123,14 @@ That is the one launch blocker: a long build is exactly what the best authors wi
 7. **WO-73's editor screens:** compare points 2, 3 (the skills header), 6, 8 and 11 with `EditorSticky`, `EditorStickyPhone`, `Spells` and `DetailsThemes` on the canvas. Fix what differs, or note why the build is right. Tick WO-73's screenshot box when done.
 
 ### Done when
-- [ ] e2e: `perf.spec.ts` passes at under 120 ms for level nav, editor and build page; the before and after numbers are in the commit message.
-- [ ] e2e at 390: on One-Handed and Destiny at levels 30 and 100, every taken and can-take star has a label. None overlap, none are cut, and no label is closer to another star than to its own.
-- [ ] e2e at 1440: point 3 is checked by bounding boxes: no link line crosses a label's text box, and labels on one row are at least 10 px apart.
+- [x] e2e: `perf.spec.ts` passes at under 120 ms for level nav, editor and build page; the before and after numbers are in the commit message. *As WO-75 settled it.*
+- [x] e2e at 390: on One-Handed and Destiny at levels 30 and 100, every taken and can-take star has a label. None overlap, none are cut, and no label is closer to another star than to its own. *As WO-75 settled it.*
+- [x] e2e at 1440: point 3 is checked by bounding boxes: no link line crosses a label's text box, and labels on one row are at least 10 px apart. *As WO-75 settled it.*
 - [x] Screenshots at 1512×806, 1440 and 390 for each point, compared with the canvas where a board exists.
-- [ ] All checks in CLAUDE.md pass.
+- [x] All checks in CLAUDE.md pass.
 
 *Chat session, 14 Oct: the three open boxes above are settled in WO-75.*
+*Mac, 22 Oct: typecheck, lint, 549 unit tests, the 11 player questions, 229 game-data tests and the build pass on this tree; e2e 357 of 357 ran on the same code with WO-129 (4b70d6f), including perf.spec.ts and the tree-label tests at 390 and 1440. The three e2e boxes are ticked as WO-75 rewrote them: the median level-nav test, the rule at 390 and the halo at 1440, all in the full run.*
 
 ---
 
