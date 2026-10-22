@@ -4966,6 +4966,9 @@ Quests checked before and after; rows added to the key; the needs-Bob list group
 
 Nine starts in `story_checks/` are a book today: The Palonimo Mare (Running Wild), Deed to Bluesky Hall and A reward in gold! (Bluesky Hall), Jarl's Bounty: Giant (Ode To The Tundrastriders), Deathbrand, The Aetherium Wars (Lost to the Ages), Letter from Largashbur (The Cursed Tribe) and Letter from Mother Hamal (The Heart of Dibella, two records). The PC's full rerun finds more, and the eleven untraced Creation Club quests are likely to start this way.
 
+### Part 0. Running Wild first, from Dave (Mac, right away)
+Dave found it in the game (22 Oct): the start is a note pinned to a board right outside Joslin's house, which is hidden behind the Bannered Mare in Whiterun. Put that in now, by hand, through `overrides.json` (`questStarts`, the way WO-126's wording works), with `source: "Dave, found in game, 22 Oct 2026"`. Running Wild's way reads: "Read the note pinned to the board outside Joslin's house, behind the Bannered Mare in Whiterun." Mark it as a player report, not a file check, wherever the planner shows where a fact was checked. When Part 1 lands for it, the file's place replaces Dave's (and Bob checks they agree). Test: `get_quest` for Running Wild says the board and the house, and says it's from a player.
+
 ### Part 1. Where each one is (PC)
 For every start that is a book, note, letter or item (a `by: book` start, or a pickup the rerun finds), find every place the item exists in the load order and write them to `gamedata/5.0.4.8/story_checks/readables-2026-10-21.json` (and a `.md` for reading):
 1. **A placed copy in the world:** the reference, its cell, and the nearest named place. "Pinned note, Whiterun, outside Joslin's house" is the answer to find, not the editor id.
@@ -4984,6 +4987,7 @@ Each row: the item name and id, the quest it starts, the place(s) in the game's 
 4. Tests: Running Wild shows the board outside Joslin's house; a read-this way with no placement shows "isn't checked yet" and never "open for you" instructions; the other eight pass with their places or the same sentence.
 
 ### Done when
+- [ ] Part 0: Running Wild says where the note is, from Dave, marked as a player report. (Mac)
 - [ ] Part 1: `readables-2026-10-21.json` has a row for every read-this start, nine at least, each with its place or "nowhere found". (PC)
 - [ ] Running Wild's row says the board outside Joslin's house, and Bob has checked it against what Dave found in game.
 - [ ] Part 2: places on the quest pages and in `get_quest`; read-this ways with no place say so and give no instruction. Tests as above. (Mac)
