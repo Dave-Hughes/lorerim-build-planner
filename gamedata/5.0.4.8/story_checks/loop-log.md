@@ -64,3 +64,54 @@ Pushed on its own (7f01832), as Dave asked. `readables.py` now also covers reads
 - Rex (fresh, on Silver Lining, No Contest, Battle of the city, Memory Guide): placement right for all four; Silver Lining and Battle of the city pass. Fixed once, in the generator, for every entry: Creation Club quests are compared with UESP (No Contest had none); every catch-up caller is listed (Memory Guide had nine, the list showed eight); and each entry in the line's-order group says why rule 1 wasn't applied.
 - Rex's re-check: No Contest and Memory Guide pass.
 - **Stop:** no unchecked quest is left that the loop hasn't taken. Every one of the 1,242 is checked or on the needs-Bob list with both readings. That's a stop other than "the rules are wrong".
+
+## WO-137: the PC check (22 Oct)
+
+**Item 1, Deathbrand: which are ways in and which are catch-ups.** Read from the records and scripts, then checked against UESP's Deathbrand page.
+- **The start is silent.** Deathbrand reaches stage 10 one of two ways, and neither shows anything in the journal:
+  - when you arrive on Solstheim (DLC2Init stage 100), if your level is at least `DLC2dunHaknirTreasureQSTMinLevel`;
+  - otherwise, on the first level-up that reaches that level (`DLC2dunHaknirTreasureNodeSHARES` starts the helper `DLC2dunHaknirQSTIncreaseLevel`, which sets 10).
+  - The global is **20** in LoreRim. UESP says 36 (vanilla).
+  - The DLC2Init check is inside its script, so the start check didn't record it: its row reads only "SetStage 10".
+- **Stage 20 means "the pirates are at Haknir's Shoal".** Stage 10's fragment polls. As soon as you are neither at Haknir's Shoal nor near its boss, the quest sets 20, and that stage puts the pirates there, with the map and a copy of the book on the boss. For a player, "stage 20 done" means the level gate has passed. It doesn't mean they've been to the shoal.
+- **Reading Deathbrand is a way in.** The book's script (`DLC2dunHaknirBookScript`) sets stage 1 only when `myPrereqStage` 20 is done. Stage 1 gives the "Search for the treasure of Haknir Death-Brand" objective and the map marker. So: a way in at level 20, which matches UESP's "once you have reached level 36, reading the book will start" (with LoreRim's 20). Our row and the page show "Read Deathbrand" with no level.
+- **Geldis Sadri's rumour:**
+  - **Dragonborn.esm:** a second way in under the same gate. It needs stage 20 done and stage 1 not done, then sets 1. UESP agrees ("also possible to initiate the quest by asking about the latest rumors").
+  - **TheChoiceIsYours.esp wins this line.** It swaps "stage 1 not done" for "stage <= 1". That can't be true while stage 20 is done (the quest is at 20 until something sets 1). So in this load order Geldis's line only shows after you've already read the book: a **catch-up**, not a way in. The planner shouldn't offer it as a start. Dave could check it in game: at level 20+, with the book unread, Geldis shouldn't have the line.
+- **Walking into Haknir's Shoal is a third way in.** Taking the map from the pirate boss sets 30 ("Use the Deathbrand Treasure Map"), and opening the chest first sets 29 ("Learn more about the buried treasure"). Both need the pirates there (stage 20). The check lists taking the map only as the second step.
+- **What the page says now:** "Read Deathbrand; It starts by itself when you level up; Talk to Geldis Sadri". It should read: at level 20 (Solstheim), read Deathbrand, or find the pirates at Haknir's Shoal. "When you level up" is the gate, not a way, and Geldis is a catch-up in LoreRim. That wording is Mac's.
+
+**The sweep: ways that need the quest's own later stage, or a level held in a global.**
+- Read every checked start (`checked` files or uesp) with its helpers followed back, and matched each talk to the page's way by its prompt.
+- Counted:
+  - a condition naming the quest's own stage at a stage above 0 (`done`, `==`, `>=`, `>`), leaving out the not-started tests (`<`, `<=`, `not done`);
+  - `level >= <global>`;
+  - and, new, a book whose script checks a prerequisite stage before it sets one.
+- 138 ways; 70 quests show at least one without the condition. Full list: `story_checks/wo137-sweep-2026-10-22.md`.
+
+| | shown with it | shown as "a condition the planner can't put in words yet" | shown without it | not a way on the page |
+|---|---|---|---|---|
+| the quest's own later stage | 0 | 29 | 69 | 16 |
+| a level held in a global | 8 | 0 | 6 | 5 |
+| a book's prerequisite stage | 0 | 0 | 5 | 0 |
+
+- **Own later stage (98 shown):** nearly all are the giver's "I'll do it" line in a quest a script or the story manager already started at 5 or 10: the Rift's odd jobs, Raven Rock's and Tel Mithryn's favours, Meridia's Order, the Fists of Fury, Reparations, Unearthed (Ralis's lines at 10, 14, 20 and 40). The talk moves the quest to its first objective, so by Bob's rule it's the step, not the start. The page shows it as a start with no condition (69) or an unworded one (29). Battle of the Champions (stage 20 done), Kyne's Sacred Trials (15 and 20 done) and Awakening (10 done) are the ones that need a later stage the player reaches by playing, like Deathbrand's Geldis.
+- **Level in a global, shown without it (6):** Deathbrand (20), Dragonborn's four cultist ambush nodes (level 25, shown as "It starts by itself as you travel"), and I Done Got Thaned! (14, through FFR09KickerNode; Grimsever's Return shows the same node with "Level 14").
+- **Books with a prerequisite stage (5):** Deathbrand (stage 20), Letter to Lucien (The Oblivion Engine stage 5), and Wyrmstooth's Miner's Warning, Ja'Shavi-Dar's Note and Dunyick's Request (stage 0 done, so the quest must already be running). The start check doesn't read the prerequisite at all; it's in the book's script properties.
+- **Not read:** a level or stage check inside a script fragment, like DLC2Init's level check above. The sweep reads conditions and script properties, not branches in code.
+
+**Item 6, the nearest named place for "somewhere in" triggers (fix (a)).**
+- `boards.py` now reads every map marker. For a placed trigger in an unnamed open-air cell, `readables.near_place` writes the nearest named marker (`nearPlace`) and the nearest town (`nearTown`, a City or Town marker as in `places.py`), each with its distance in metres.
+- `boards.json` gained only those two fields; nothing else changed. They reach the line files on the next start-check rerun; the site data is untouched.
+- **Paragliding's three triggers:**
+  - Paragliding.esp:00802D is 2 m from the mod's own **Flight Platform** marker.
+  - :008021 and :009060 are 31 m and 32 m from **Peak's Shade Tower**; the nearest town marker is Lakeview Manor, about 260 m away.
+  - The paraglider itself (:008032) is 7 m from Flight Platform.
+  - The places index puts Flight Platform's and Peak's Shade Tower's neighbours in Falkreath hold, which matches Dave's "near Falkreath".
+  - Flight Platform's marker uses a town icon, so it also comes out as the "nearest town". Mac's wording should say the hold or the place, not "town".
+- **Every other trigger that says "somewhere in":**
+  - 973 distinct triggers say "somewhere in Skyrim" (79 quests, mostly the Missives boards' trigger boxes). 944 now have a nearest place.
+  - The 29 without one are MQ204's sky-fog triggers, in a worldspace with no named marker.
+  - On the pages, Paragliding is the only start worded with nothing but "somewhere in Skyrim". The others already have a door ("by the door to Storage Room") or a named cell. The Stuhn Ravine bounties are 5 m from the Temple of Stendarr marker, and Victory Celebrations' Whiterun triggers are 41 to 60 m from Jorrvaskr.
+- Readables (a book "in a chest somewhere in Whiterun") aren't triggers and don't get the field yet. The same helper fits them if Bob wants it.
+- Tests: `BoardsTest` covers the helper on made-up markers (nearest named place, nearest town, nothing for a named cell or an interior) and Paragliding's three triggers in the built file.

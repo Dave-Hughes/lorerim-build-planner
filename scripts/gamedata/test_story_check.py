@@ -16,6 +16,7 @@ import story_check as sc  # noqa: E402
 from test_quest_scripts import OTHER, QUEST, Pex, bsa, fragment_script, vmad_qust  # noqa: E402
 
 PLUGIN = "Fixture.esp"
+BOARDS = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "gamedata", "5.0.4.8", "story_checks", "boards.json")
 GLOBAL = "Fixture.esp:000830"
 
 
@@ -427,6 +428,29 @@ class BoardsTest(unittest.TestCase):
     def test_helpers_bob_ruled_out(self):
         self.assertTrue(sc.RULED_OUT.match("USKPRetroactive130") and sc.RULED_OUT.match("DLC2Init"))
         self.assertIsNone(sc.RULED_OUT.match("DLC1VQ02"))
+
+    def test_the_nearest_named_place_out_in_the_open(self):
+        """WO-137 item 6: a trigger "somewhere in Skyrim" gets the nearest named map marker and town, with the distance."""
+        from readables import near_place
+        cells = {"open": {"world": "W"}, "named": {"world": "W", "name": "Riverwood"}, "inside": {}, "other": {"world": "X"}}
+        markers = {"m1": {"cell": "open", "pos": [700, 0, 0], "name": "Peak's Shade Tower", "type": "Fort"},
+                   "m2": {"cell": "open", "pos": [7000, 0, 0], "name": "Falkreath", "type": "Town"},
+                   "m3": {"cell": "open", "pos": [100, 0, 0], "name": "Gone", "type": "Town", "deleted": True},
+                   "m4": {"cell": "other", "pos": [0, 0, 0], "name": "Elsewhere", "type": "City"}}
+        self.assertEqual(near_place({"cell": "open", "pos": [0, 0, 0]}, cells, markers),
+                         {"nearPlace": {"place": "Peak's Shade Tower", "metres": 10}, "nearTown": {"town": "Falkreath", "metres": 100}})
+        self.assertEqual(near_place({"cell": "named", "pos": [0, 0, 0]}, cells, markers), {})
+        self.assertEqual(near_place({"cell": "inside", "pos": [0, 0, 0]}, cells, markers), {})
+
+    @unittest.skipUnless(os.path.exists(BOARDS), "boards.json not built")
+    def test_paraglidings_triggers_are_placed(self):
+        import json
+        rows = json.load(open(BOARDS, encoding="utf-8"))["quests"]["Paragliding.esp:00801F"]
+        intro = next(r for r in rows if r["objectEdid"] == "ParaIntroStg3")
+        self.assertEqual({p["ref"]: p["nearPlace"]["place"] for p in intro["places"]},
+                         {"Paragliding.esp:00802D": "Flight Platform", "Paragliding.esp:008021": "Peak's Shade Tower",
+                          "Paragliding.esp:009060": "Peak's Shade Tower"})
+
 
 if __name__ == "__main__":
     unittest.main()

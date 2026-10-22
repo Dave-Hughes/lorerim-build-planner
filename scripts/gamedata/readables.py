@@ -224,6 +224,30 @@ def near_doors(r, cells, doors, names):
     return [{"door": k, "metres": round(v * 0.01428)} for k, v in sorted(found.items(), key=lambda kv: kv[1])[:3]]
 
 
+TOWNS = ("City", "Town")  # map marker types a player knows as a town (places.py's MARKER)
+
+
+def near_place(r, cells, markers):
+    """
+    For a copy out in the open (an unnamed cell in a worldspace), the nearest named map marker in the same worldspace and
+    the nearest town's, each with its distance (WO-137: Paragliding's trigger, "somewhere in Skyrim", is by Falkreath).
+    markers: {ref: {cell, pos, name, type, deleted}}. Nothing for an interior, or a cell with a name or a location of its
+    own: place_of names those.
+    """
+    c = cells.get(r.get("cell")) or {}
+    if not r.get("pos") or not c.get("world") or c.get("name") or c.get("location"):
+        return {}
+    best = {}
+    for m in markers.values():
+        if m.get("deleted") or not m.get("name") or not m.get("pos") or (cells.get(m["cell"]) or {}).get("world") != c["world"]:
+            continue
+        dist = sum((a - b) ** 2 for a, b in zip(m["pos"][:2], r["pos"][:2])) ** 0.5
+        for k in ("place",) + (("town",) if m.get("type") in TOWNS else ()):
+            if k not in best or dist < best[k][0]:
+                best[k] = (dist, m["name"])
+    return {f"near{k.title()}": {k: name, "metres": round(dist * 0.01428)} for k, (dist, name) in best.items()}
+
+
 def place_of(cell, names, cells):
     """The nearest named place: the cell's name and its location's, else the location's, else the worldspace's."""
     c = cells.get(cell) or {}

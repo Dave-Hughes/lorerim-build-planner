@@ -4929,6 +4929,13 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 ### PC (one check)
 For item 1, read both Deathbrand lines (the level-up node and Geldis's talk) against UESP and the records, and write which are ways in and which are catch-ups to `loop-log.md`. Then Mac applies the rule to every quest. One more look across all the checked starts: how many ways have a condition naming the quest's own stage, or a level held in a global, and are being shown without it. List them for Bob.
 
+- PC, 22 Oct. Details in `story_checks/loop-log.md` ("WO-137: the PC check"):
+  - **Deathbrand.** The level-up node is the gate (level 20 in LoreRim, 36 in vanilla per UESP), not a way. Arriving on Solstheim at level 20 checks the same global inside DLC2Init's script.
+  - The ways in are reading Deathbrand (its script needs stage 20, which is set once the gate has passed) and finding the pirates at Haknir's Shoal.
+  - Geldis is a way in under Dragonborn.esm's condition. TheChoiceIsYours.esp's "stage <= 1" can't hold while stage 20 is done, so in LoreRim his line only comes after the book: a catch-up.
+  - **The sweep:** 138 ways need the quest's own later stage, a level held in a global, or a book's prerequisite stage. 80 are shown without it, 29 as an unworded condition, 8 with it, and 21 aren't ways on the page. 70 quests are affected. The list is `story_checks/wo137-sweep-2026-10-22.md`.
+  - **Item 6 (a):** `boards.json` places in the open now carry `nearPlace` and `nearTown` with metres. Paragliding's triggers are by its Flight Platform marker (2 m) and Peak's Shade Tower (31 m), in Falkreath hold. (b) to (d) are Mac's.
+
 ### Done when
 - [x] Deathbrand's level-up way shows level 20; Geldis is dropped or shown with his condition. The same rule holds for every checked quest, with a test, and the PC's list of other cases is in the log. *The Mac's list is below; the PC's reading of both Deathbrand lines against UESP isn't in `loop-log.md` yet.*
 - [x] Places: eight at most, grouped, and a way to ask for all.

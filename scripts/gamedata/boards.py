@@ -20,7 +20,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from esp import ROOT, header, iter_group, load_order, plugin_paths, rec_data, resolve, subrecs  # noqa: E402
 import quest_scripts as qsc  # noqa: E402
 from pex import Scripts, functions  # noqa: E402
-from readables import near_doors, place_of  # noqa: E402
+from places import MARKER  # noqa: E402
+from readables import near_doors, near_place, place_of  # noqa: E402
 from story_check import name_strings  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -135,8 +136,8 @@ def scan():
     for k, scs in objects.items():
         read(k, scs)
     bases = {k for k in starters}
-    placed, cells, doors = {}, {}, {}
-    for n in lo:  # pass 2: references with such a script, or placed from such an object, and every door, with their cells
+    placed, cells, doors, markers = {}, {}, {}, {}
+    for n in lo:  # pass 2: references with such a script, or placed from such an object, every door and map marker, with their cells
         p = pp.get(n.lower())
         if not p:
             continue
@@ -155,7 +156,7 @@ def scan():
                 if t == b"REFR":
                     size = struct.unpack_from("<I", buf, o + 4)[0]
                     body = buf[o + 24:o + 24 + size]
-                    if b"VMAD" not in body and b"XTEL" not in body and not any(r in body for r in raws):
+                    if b"VMAD" not in body and b"XTEL" not in body and b"XMRK" not in body and not any(r in body for r in raws):
                         continue
                 elif t not in (b"CELL", b"WRLD"):
                     continue
@@ -180,6 +181,11 @@ def scan():
                 to = next((form_id(resolve(struct.unpack_from("<I", v)[0], masters, n)) for s, v in subs if s == "XTEL" and len(v) >= 4), None)
                 if to:
                     doors[key] = {"cell": cell, "pos": pos, "to": to}
+                if any(s == "XMRK" for s, _ in subs):  # a map marker: the named places near_place measures from (WO-137)
+                    full = next((v for s, v in subs if s == "FULL"), b"")
+                    markers[key] = {"cell": cell, "pos": pos, "type": MARKER.get(next((v[0] for s, v in subs if s == "TNAM" and v), None)),
+                                    "deleted": bool(flags & DELETED),
+                                    "name": (strings.get(struct.unpack_from("<I", full)[0], "") if loc and len(full) == 4 else full.rstrip(b"\0").decode("utf-8", "replace")).strip()}
                 vm = next((v for s, v in subs if s == "VMAD"), None)
                 own = None
                 if vm is not None:
@@ -193,11 +199,11 @@ def scan():
                     placed[key] = {"base": base, "cell": cell, "pos": pos, "deleted": bool(flags & DELETED), "plugin": n}
                 else:
                     placed.pop(key, None)
-    return names, cells, doors, starters, placed
+    return names, cells, doors, starters, placed, markers
 
 
 def build():
-    names, cells, doors, starters, placed = scan()
+    names, cells, doors, starters, placed, markers = scan()
     out = {}
     for ref, r in placed.items():
         if r["deleted"]:
@@ -205,13 +211,14 @@ def build():
         rows = starters.get(ref) or starters.get(r["base"]) or []
         where = place_of(r["cell"], names, cells)
         near = near_doors(r, cells, doors, names)
+        open_air = near_place(r, cells, markers)  # out in the open: the nearest named place and town, with the distance
         obj = names.get(r["base"], {})
         for script, qs, stage, calls in rows:
             # A script with a stage property sets that stage (a default trigger, even one that starts the quest first); one with
             # none that calls Start is a Start (Missives' board, whose SetStage 110 is a reset when the job is already taken).
             call = f"SetStage {stage}" if stage is not None and "SetStage" in calls else ("Start" if "Start" in calls else "SetStage")
             for q in qs:
-                place = {"ref": ref, "where": where, **({"nearDoors": near} if near else {}), "plugin": r["plugin"]}
+                place = {"ref": ref, "where": where, **({"nearDoors": near} if near else {}), **open_air, "plugin": r["plugin"]}
                 row = out.setdefault(q, {}).setdefault(script, {"by": "board", "script": script, **({"object": obj["name"]} if obj.get("name") else {}),
                                                                 "objectEdid": obj.get("edid"), "objectId": r["base"], "call": call, "places": [], "verdict": "script"})
                 if place not in row["places"]:
