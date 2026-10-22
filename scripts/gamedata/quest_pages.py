@@ -1268,7 +1268,7 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
     by_edid = {q["edid"]: q["id"] for q in quests_raw}
     out = []
     for line in lines:
-        item = {k: line[k] for k in ("id", "name", "category", "also", "prince", "where", "opening", "begins", "beginsFrom", "after", "checked") if k in line}
+        item = {k: line[k] for k in ("id", "name", "category", "also", "prince", "where", "opening", "begins", "beginsFrom", "after", "checked", "destinationInName") if k in line}
         # Instructions a player acts on (how it starts, what it needs) show only when they were read
         # from the files in this load order. Gravewind's mod-page "walk in" was wrong in LoreRim (a
         # LoreRim patch locks the door), so mod-page and player starts and gates stay out until WO-101

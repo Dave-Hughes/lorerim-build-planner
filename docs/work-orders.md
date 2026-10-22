@@ -5232,7 +5232,17 @@ The common fault: an act has a goal and a place, but no thread. Its objectives a
 - [ ] Part 2 and Part 5: the rule and the How to build line; Honesty rules renumbered; no "rule N" reference past the last rule.
 - [ ] Part 3: the three warnings, with tests on a copy of Kyria's Act II: Under the Table flagged as a backtrack, the missive flagged as a promise, objectives with no stop flagged.
 - [ ] Part 6: `rewards` from stage text and endings (Running Wild shows its horse and saddle ending), in the quest page and `get_quest`; a test that Running Wild returns them.
-- [ ] Part 4: the missive and board notes checked on the PC and written into the order's log; `destinationInName` on those quest families.
+- [x] Part 4: the missive and board notes checked on the PC and written into the order's log; `destinationInName` on those quest families.
+- PC, 22 Oct, Part 4. Read in Missives.esp (26 notes), the quests' aliases, and the board's script:
+  - **A courier missive's note does name where it goes, through the quest's Destination alias, filled when the job starts.** The note (`_M_MissiveCourierLetter`, Missives.esp:00BA9C) is called "Missive: Deliver Letter to <Destination>". Its text reads: "I'm looking for a courier to deliver a letter to <Recipient> of <Destination>. You will receive an up front payment from me and payment on delivery..." The weapon and potion notes say the same.
+  - **The note is made inside the board** (the quest's Missive alias is created in its MissiveBoard alias), so a player reads the destination on the board, item by item, before taking a job. The quest's own name never carries it ("Deliver a Letter Near", "Medium", "Distant"), and neither does its objective ("Deliver <Item> by <date>").
+  - **Where the Destination can be,** from its alias conditions (Whiterun's three letter jobs):
+    - Never a location in Missives' `_M_ListLocationsForbidden` (fn444 on that form list).
+    - Near: a city, town or settlement, not a farm (LocationHasKeyword LocTypeCity, LocTypeTown or LocTypeSettlement, and not LocTypeFarm), with fn360 == 1 on the quest's Hold alias. Medium: a city (LocTypeCity), with fn360 != 1 on the Hold alias. Distant: the same keyword set as Near, outside the hold.
+    - fn360 and fn444 aren't named by the start check yet. The reading that Near stays in the hold and Medium and Distant leave it comes from fn360 sitting on the Hold alias with == for Near and != for the others; it isn't confirmed.
+  - **A board job's note names the place, not a town:** "Missive: Kill the Leader of <Dungeon>": "By order of <Jarl>: To all able bodied men and women of <Hold>. The bandits located in <Dungeon> have been harassing, robbing, and attacking citizens... --<Steward>" (`_M_MissiveKillBandit`). The gathering and retrieving notes name the item, the dungeon and the court wizard's hold.
+  - **So the rule stands, with one thing it can now say:** never name a destination for a particular missive. But a player can read on the board which deliveries are bound where, so "check the board for a delivery bound for Markarth before you leave" is a real thing to do.
+  - **Data:** `questlines.json` marks the Missives line `destinationInName: false`; `questlines.py` and `quest_pages.py` carry it to the line in `quests.json`, for Part 3's promise check. Tested in `test_quest_pages.py`. No other family is marked: the jarls' bounty letters name their place in the objective ("Bounty: Bandit Boss").
 - [ ] Every check in CLAUDE.md passes. Screenshots of Play with a routed act at 1440 and 390. Commit on `staging`, push, and stop for Dave: he asks an assistant through the connector to replan an act, and can say in one sentence why each objective is there and why it comes where it does.
 
 ---

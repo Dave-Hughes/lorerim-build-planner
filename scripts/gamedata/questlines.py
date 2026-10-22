@@ -16,6 +16,8 @@ questlines.json lists each curated line with
              modder's note that happens to read as a sentence).
   alsoOpening other quests that open the line as much as `opening` does (the Civil War's two sides, the
              townsfolk's six deliveries): the line has no one giver, and its ways in are each opening's.
+  destinationInName  false for a family of radiant jobs whose quest names and objectives never say where
+             the job goes (Missives: "Deliver a Letter Distant"; WO-129 Part 3's promise check reads it)
   giver      {name, place} a judged source names when the records can't (Raven Rock: Captain Veleth, whom
              DLC2Init sets fighting at Old Attius Farm); `checked.giver` says which source.
   category   its home: one of the six `categories`, or a `shelves` entry (repeatable work)
@@ -213,7 +215,7 @@ def curate(quests, raw_lines, cur):
             "after": line.get("after", []),
             "checked": line.get("checked", {}),
         }
-        for k in FACTS + ("alsoOpening", "giver"):
+        for k in FACTS + ("alsoOpening", "giver", "destinationInName"):
             if k in line:
                 item[k] = line[k]
         out.append(item)

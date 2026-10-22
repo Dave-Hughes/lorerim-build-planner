@@ -597,6 +597,15 @@ class BuiltStartsTest(unittest.TestCase):
     def ways(self, name):
         return [(w["how"], w.get("needs", [])) for w in self.by[name]["start"].get("ways", [])]
 
+    def test_missives_never_name_their_destination_in_the_quest(self):
+        # WO-129 Part 4: a courier missive's note names its town at run time; the quest's name and objective never do.
+        with open(QUESTS, encoding="utf-8") as f:
+            lines = {l["id"]: l for l in json.load(f)["lines"]}
+        self.assertIs(lines["missives"]["destinationInName"], False)
+        towns = ("Whiterun", "Solitude", "Windhelm", "Riften", "Markarth", "Falkreath", "Morthal", "Dawnstar", "Winterhold")
+        self.assertEqual([q["name"] for q in lines["missives"]["quests"] if any(t in q["name"] for t in towns)], [])
+        self.assertNotIn("destinationInName", lines["main-quest"])
+
     def test_wo136_ruling_1_and_the_boards(self):
         # A later quest's call is the start when nothing else starts it: Bloodline's stages 30 and 190 set A New Order's 20.
         order = self.by["A New Order"]["start"]

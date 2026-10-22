@@ -1936,6 +1936,7 @@
       "id": "missives",
       "name": "Missives",
       "category": "work",
+      "destinationInName": false,
       "lines": [
         "Missives",
         "Missives - Voice and Quest Expansion",
