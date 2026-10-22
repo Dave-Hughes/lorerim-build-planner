@@ -2,88 +2,178 @@
 
 Quests the loop can't settle from the records and UESP, each with both readings and its record ids. They stay "not yet checked"; nothing here was guessed or picked to keep the loop going. Written from each batch by the PC; grouped by reason.
 
-40 quests from batches 1.
+80 quests from batches 1, 2.
 
-## Only a quest the line puts after it sets its stage (the line's order, or a real catch-up?) (13)
+## Only a quest the line puts after it sets its stage (the line's order, or a real catch-up?) (25)
 
 - **A New Order** (`DLC1HunterBaseIntro`, Dawnguard.esm:004E24, Dawnguard.esm; winning record: Requiem.esp; line `dawnguard`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias IsranAlias (unique): Isran, placed in Fort Dawnguard.
   - Objectives in the records: "Meet Tolan at Stendarr's Beacon" (QOBJ 10); 'Speak with Isran' (QOBJ 20, shown at stage 20).
   - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): DLC1VQ02 (Bloodline) at stage 190 calls SetStage 20 (DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_13 (Dawnguard.esm)); DLC1VQ02 (Bloodline) at stage 30 calls SetStage 20 (DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_9 (Dawnguard.esm)); DLC1VQ03Hunter (Prophet) at stage 0 calls SetStage 200 (DLC1_QF_DLC1VQ03Hunter_010098CB.fragment_7 (Unofficial Skyrim Special Edition Patch.esp)).
   - UESP (https://en.uesp.net/wiki/Skyrim:A_New_Order): Starts after you decline Lord Harkon's offer at Castle Volkihar during Bloodline; you are sent back to Isran at Fort Dawnguard to report on Serana. Page notes a bug where it may fail to start. Givers: Isran. First objective: 'Speak with Isran'. Note: Page tags stage entries as Unknown (stages 10, 47, 50 incl. 'Meet Tolan at Stendarr's Beacon') and says needs verification.
 - **The Bloodstone Chalice** (`DLC1VampireBaseIntro`, Dawnguard.esm:00594C, Dawnguard.esm; line `dawnguard`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias GaranAlias (unique): Garan Marethi, placed in Volkihar Keep.
   - Objectives in the records: 'Speak with Garan Marethi' (QOBJ 10, shown at stage 10); 'Follow Garan' (QOBJ 15, shown at stage 15).
   - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): DLC1VQ02 (Bloodline) at stage 180 calls SetStage 10 (DLC1_QF_DLC1VQ01COPY0000_01002F65.fragment_14 (Dawnguard.esm)).
   - UESP (https://en.uesp.net/wiki/Skyrim:The_Bloodstone_Chalice): Starts automatically after you complete Bloodline and accept Lord Harkon's Gift; no separate giver. First objective: 'Speak with Garan Marethi'. Note: A vampire-race issue can block starting it.
 - **Unseen Visions** (`DLC1VQ06`, Dawnguard.esm:002852, Dawnguard.esm; winning record: Unofficial Skyrim Special Edition Patch.esp; line `dawnguard`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias DLC1VQ06DrawKnifeQTAlias (forced): a marker, placed in Ancestor Glade.
   - Objectives in the records: "Find a Moth Priest's knife" (QOBJ 10, shown at stage 10); 'Gather bark from a Canticle Tree' (QOBJ 20, shown at stage 20).
   - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): DLC1VQElder (Seeking Disclosure) at stage 200 calls SetStage 10 (DLC1_QF_DLC1VQElder_01005DA9.fragment_0 (Unofficial Skyrim Special Edition Patch.esp)); DLC1VQElder (Seeking Disclosure) at stage 200 calls SetStage 10 (DLC1_QF_DLC1VQElder_01005DA9.fragment_13 (Unofficial Skyrim Special Edition Patch.esp)).
   - UESP (https://en.uesp.net/wiki/Skyrim:Unseen_Visions): Dexion Evicus sends you to get a Moth Priest's draw knife from Ancestor Glade; previous quest Seeking Disclosure. Givers: Dexion Evicus. First objective: "Find a Moth Priest's knife".
 - **The Temple of Miraak** (`DLC2MQ02`, Dragonborn.esm:017F8F, Dragonborn.esm; line `dragonborn`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Frea (unique): Frea, placed in Shaman's Hut, Skaal Village Shaman's Hut.
   - Objectives in the records: 'Find Frea' (QOBJ 5, shown at stage 5); 'Talk to Frea' (QOBJ 10, shown at stage 10).
-  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): DLC2MQ03 (The Fate of the Skaal) at stage 0 calls SetStage 0 (DLC2_QF_DLC2MQ03_02017F90.fragment_15 (Unofficial Skyrim Special Edition Patch.esp)); DLC2MQ03 (The Fate of the Skaal) at stage 0 calls SetStage 60 (DLC2_QF_DLC2MQ03_02017F90.fragment_15 (Unofficial Skyrim Special Edition Patch.esp)); DLC2MQ03 (The Fate of the Skaal) at stage 0 calls SetStage 200 (DLC2_QF_DLC2MQ03_02017F90.fragment_15 (Unofficial Skyrim Special Edition Patch.esp)); DLC2MQ03 (The Fate of the Skaal) at stage None calls SetStage 5 (DLC2_TIF__0202A578.Fragment_0 (Unofficial Skyrim Special Edition Patch.esp)).
+  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): DLC2MQ03 (The Fate of the Skaal) at stage 0 calls SetStage 0 (DLC2_QF_DLC2MQ03_02017F90.fragment_15 (Unofficial Skyrim Special Edition Patch.esp)); DLC2MQ03 (The Fate of the Skaal) at stage 0 calls SetStage 60 (DLC2_QF_DLC2MQ03_02017F90.fragment_15 (Unofficial Skyrim Special Edition Patch.esp)); DLC2MQ03 (The Fate of the Skaal) at stage 0 calls SetStage 200 (DLC2_QF_DLC2MQ03_02017F90.fragment_15 (Unofficial Skyrim Special Edition Patch.esp)); DLC2MQ03 (The Fate of the Skaal) (stage not given in the records) calls SetStage 5 (DLC2_TIF__0202A578.Fragment_0 (Unofficial Skyrim Special Edition Patch.esp)).
   - UESP (https://en.uesp.net/wiki/Skyrim:The_Temple_of_Miraak): Starts automatically after completing Dragonborn; alternatively after cleansing the Wind Stone and talking to Storn. First objective: 'Find Frea'. Note: Page tagged Unknown Objectives / Requires Final Review.
 - **Under Saarthal** (`MG02`, Skyrim.esm:01F252, Skyrim.esm; winning record: CollegeEntry.esp; line `college`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias MG02TolfdirStartMarker (forced): a marker, placed in Saarthal.
+  - First objective's target in the records: alias MG02TolfdirAlias (unique): Tolfdir, placed in Hall of Attainment, Dormitory.
   - Objectives in the records: 'Meet Tolfdir outside Saarthal' (QOBJ 10, shown at stage 10); 'Follow Tolfdir' (QOBJ 20, shown at stage 20).
   - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): MG08 (The Eye of Magnus) at stage 0 calls SetStage 200 (QF_MG08_0001F258.fragment_0 (College of Winterhold Quest Start Fixes.esp)); MG07 (The Staff of Magnus) at stage 0 calls SetStage 200 (QF_MG07_0001F257.fragment_0 (College of Winterhold Quest Start Fixes.esp)); mg06 (Revealing the Unseen) at stage 0 calls SetStage 200 (QF_MG06_0001F256.fragment_16 (Unofficial Skyrim Special Edition Patch.esp)); MG04 (Good Intentions) at stage 0 calls SetStage 200 (QF_MG04_0001F254.fragment_0 (Unofficial Skyrim Special Edition Patch.esp)); MG03 (Hitting the Books) at stage 0 calls SetStage 200 (QF_MG03_0001F253.fragment_0 (Unofficial Skyrim Special Edition Patch.esp)); COW_CentralQuest (College Curriculum) at stage 50 calls Start (QF_COW_CentralQuest_05014C23.fragment_4 (College Of Winterhold - Quest Expansion.esp)).
   - UESP (https://en.uesp.net/wiki/Skyrim:Under_Saarthal): Starts automatically at the end of First Lessons when Tolfdir suggests visiting Saarthal. Givers: Tolfdir. First objective: 'Meet Tolfdir outside Saarthal'.
 - **Containment** (`MG05`, Skyrim.esm:01F255, Skyrim.esm; winning record: College of Winterhold Quest Start Fixes.esp; line `college`, batch 1)
-  - Also: Only the Unofficial Patch's update helpers start it (not a way in, Bob 22 Oct).
+  - Also: Only helpers Bob ruled aren't ways in start it (the Unofficial Patch's update helpers; Dragonborn's DLC2Init) (Bob 22 Oct).
   - Records, how it starts: only these starters.
-    - quest script: USKPRetroactive202 (named "Retroactive fixes for 2.0.2" in its record), a helper quest Start (USKPRetroactive202Script.Process on Unofficial Skyrim Special Edition Patch.esp:00E025 (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive203 (named "Retroactive fixes for 2.0.3" in its record), a helper quest Start (uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive204 (named "Retroactive fixes for 2.0.4" in its record), a helper quest with Gabriella, Erikur, Susanna Start (USKPRetroactive204Script.Process on Unofficial Skyrim Special Edition Patch.esp:012C3A (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive205 (named "Retroactive fixes for 2.0.5" in its record), a helper quest with Keerava Start (USKPRetroactive205Script.Process on Unofficial Skyrim Special Edition Patch.esp:040578 (Unofficial Skyrim Special Edition Patch.esp)) (not a way in, Bob 22 Oct)
-    - quest script: USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player Start (USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player Start (USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player Start (USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
+    - quest script: USKPRetroactive202 (named "Retroactive fixes for 2.0.2" in its record), a helper quest calls Start (USKPRetroactive202Script.Process on Unofficial Skyrim Special Edition Patch.esp:00E025 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive205 (Retroactive fixes for 2.0.5)'s process); USKPRetroactive202 is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPRetroactive203 (named "Retroactive fixes for 2.0.3" in its record), a helper quest calls Start (uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive205 (Retroactive fixes for 2.0.5)'s process); USKPRetroactive203 is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPRetroactive204 (named "Retroactive fixes for 2.0.4" in its record), a helper quest with Gabriella, Erikur, Susanna calls Start (USKPRetroactive204Script.Process on Unofficial Skyrim Special Edition Patch.esp:012C3A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive205 (Retroactive fixes for 2.0.5)'s process); USKPRetroactive204 is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPRetroactive205 (named "Retroactive fixes for 2.0.5" in its record), a helper quest with Keerava calls Start (USKPRetroactive205Script.Process on Unofficial Skyrim Special Edition Patch.esp:040578 (Unofficial Skyrim Special Edition Patch.esp)); USKPRetroactive205 is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls Start (USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive205 (Retroactive fixes for 2.0.5)'s process); USKPVersionTracking is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls Start (USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive205 (Retroactive fixes for 2.0.5)'s process); USKPVersionTracking is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls Start (USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive205 (Retroactive fixes for 2.0.5)'s process); USKPVersionTracking is started by the start-game flag (not a way in, Bob 22 Oct)
   - Objectives in the records: 'Assess the damage to the Great Hall' (QOBJ 10, shown at stage 10); 'Find the Arch-Mage' (QOBJ 20, shown at stage 20).
   - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): MG08 (The Eye of Magnus) at stage 0 calls SetStage 200 (QF_MG08_0001F258.fragment_0 (College of Winterhold Quest Start Fixes.esp)); MG07 (The Staff of Magnus) at stage 0 calls SetStage 200 (QF_MG07_0001F257.fragment_0 (College of Winterhold Quest Start Fixes.esp)); mg06 (Revealing the Unseen) at stage 200 calls Start (QF_MG06_0001F256.fragment_14 (Unofficial Skyrim Special Edition Patch.esp)); mg06 (Revealing the Unseen) at stage 200 calls SetStage 0 (QF_MG06_0001F256.fragment_14 (Unofficial Skyrim Special Edition Patch.esp)).
   - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Containment&oldid=3548286): After the Ancano and Savos Aren battle you wake at the College and Mirabelle Ervine tells you to get up; saying you feel okay starts it; previous quest Revealing the Unseen. Givers: Mirabelle Ervine, Tolfdir. First objective: 'Assess the damage to the Great Hall'.
 - **Rapture of the Deep** (`Cow_Breathing`, College Of Winterhold - Quest Expansion.esp:000801, College Of Winterhold - Quest Expansion.esp; line `college`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias ArnielGane (unique): Arniel Gane, placed in Hall of Attainment, Dormitory.
   - Objectives in the records: 'Talk to Arniel Gane' (QOBJ 1, shown at stage 1); 'Speak with Arniel Gane when ready to depart' (QOBJ 5, shown at stage 5).
-  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): COW_CentralQuest (College Curriculum) at stage None calls Start (COW_PlayerKnowsSpell.Fragment_0 (College Of Winterhold - Quest Expansion.esp)); COW_CentralQuest (College Curriculum) at stage None calls Start (Cow_WaterLearned.Fragment_0 (College Of Winterhold - Quest Expansion.esp)).
-  - A mod's quest: the records are the only source, and they hold no way in.
+  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): COW_CentralQuest (College Curriculum) (stage not given in the records) calls Start (COW_PlayerKnowsSpell.Fragment_0 (College Of Winterhold - Quest Expansion.esp)); COW_CentralQuest (College Curriculum) (stage not given in the records) calls Start (Cow_WaterLearned.Fragment_0 (College Of Winterhold - Quest Expansion.esp)).
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
 - **Where You Hang Your Enemy's Head...** (`DarkBrotherhoodSanctuaryRepair`, Skyrim.esm:087BA2, Skyrim.esm; line `dark-brotherhood`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias DelvinMalloryAlias (unique): Delvin Mallory, placed in The Ragged Flagon.
   - Objectives in the records: "Employ Delvin Mallory's services" (QOBJ 10, shown at stage 10).
   - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): DB11 (Hail Sithis!) at stage 200 calls SetStage 10 (QF_DB11_0001EA59.fragment_24 (Skyrim.esm)).
   - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Where_You_Hang_Your_Enemy%27s_Head...&oldid=2917954): Begins with Nazir in the Dawnstar Sanctuary after Hail Sithis!; he directs you to Delvin Mallory. Givers: Nazir. First objective: "Employ Delvin Mallory's services".
 - **Hail Sithis!** (`DB11`, Skyrim.esm:01EA59, Skyrim.esm; line `dark-brotherhood`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias NazirAlias (forced): Nazir, placed in Dark Brotherhood Sanctuary.
   - Objectives in the records: 'Talk to Nazir' (QOBJ 5, shown at stage 5); 'Talk to Amaund Motierre' (QOBJ 10, shown at stage 10).
   - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): DBrecurring (The Dark Brotherhood Forever) at stage 0 calls SetStage 80 (QF_DBRecurring_0001EA5A.fragment_5 (LoreRim - Global Modifiers.esp)).
   - UESP (https://en.uesp.net/wiki/Skyrim:Hail_Sithis!): No formal start conditions on the page; previous quest Death Incarnate. Givers: Night Mother. First objective: 'Talk to Nazir'.
 - **Legacy of Belharza** (`zzzAoMSubQ03`, Vigilant.esm:51EAC1, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Mntr (unique): Mordog the Man-Bull, placed in Hidden Minotaur Village.
   - Objectives in the records: 'Talk to <Alias=Mntr>' (QOBJ 1, shown at stage 1); 'Meet the Chief of Minotaurs' (QOBJ 10, shown at stage 10).
   - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): zzzCHSubQuest13 (Broken Horns) at stage 60 calls Start (QF_zzzCHSubQuest13_0251ADBF.fragment_25 (Vigilant.esm)); zzzCHSubQuest13 (Broken Horns) at stage 60 calls SetStage 0 (QF_zzzCHSubQuest13_0251ADBF.fragment_25 (Vigilant.esm)).
-  - A mod's quest: the records are the only source, and they hold no way in.
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
 - **Stendarr Guide** (`zzzBMGuide`, Vigilant.esm:43B81F, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias GuideThingol (forced): a marker, placed in Asylum.
   - Objectives in the records: 'Trace the blood' (QOBJ 0, shown at stage 0); 'Trace the elder blood' (QOBJ 10, shown at stage 10).
   - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): zzzBMMq03 (The Blood Matron) at stage 20 calls SetStage 20 (QF_zzzBMMq03_01038526.fragment_2 (Vigilant.esm)); zzzBMMq02 (Remnants) at stage 80 calls SetStage 10 (QF_zzzBMMq02_01038525.fragment_16 (Vigilant.esm)).
-  - A mod's quest: the records are the only source, and they hold no way in.
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
 - **Memory Guide** (`zzzCHMemoryGuide`, Vigilant.esm:42E0B1, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias DreamPelinal (forced): a marker, placed in Barrier Tower of Agea.
   - Objectives in the records: 'Like when the dream no longer needs its dreamer' (QOBJ 100, shown at stage 0); 'Against the dying of the light' (QOBJ 110, shown at stage 0).
   - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): zzzCHMemoryQuest08 (The Nameless Bard) at stage 999 calls SetStage 80 (QF_zzzCHMemoryQuest08_02080E91.fragment_46 (Vigilant.esm)); zzzCHMemoryQuest09 (Beyond the Shores of Madness) at stage 999 calls SetStage 90 (QF_zzzCHMemoryQuest09_022CAE30.fragment_29 (Vigilant.esm)); zzzCHMemoryQuest04 (Johan the Fool) at stage 999 calls SetStage 40 (QF_zzzCHMemoryQuest04_02140225.fragment_25 (Vigilant.esm)); zzzCHMemoryQuest05 (Adabal) at stage 999 calls SetStage 50 (QF_zzzCHMemoryQuest05_0205AE03.fragment_25 (Vigilant.esm)); zzzCHMemoryQuest06 (Remains of the Miracle) at stage 999 calls SetStage 60 (QF_zzzCHMemoryQuest06_0206A23B.fragment_8 (Vigilant.esm)); zzzCHMemoryQuest02 (The Mad King) at stage 999 calls SetStage 20 (QF_zzzCHMemoryQuest02_0213712B.fragment_21 (Vigilant.esm)); zzzCHMemoryQuest07 (Temptation of Marukh) at stage 999 calls SetStage 70 (QF_zzzCHMemoryQuest07_0206F53C.fragment_22 (Vigilant.esm)); zzzCHMemoryQuest01 (The Grand Inquisitor) at stage 999 calls SetStage 10 (QF_zzzCHMemoryQuest01_0212C4F4.fragment_9 (Vigilant.esm)).
-  - A mod's quest: the records are the only source, and they hold no way in.
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
 - **Stendarr Guide** (`zzzCOGuide`, Vigilant.esm:43CBAE, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias GuideCurse01 (forced): a marker, placed in Blood Curse of Shivers.
   - Objectives in the records: 'Break the Blood Curse of Shivers' (QOBJ 10, shown at stage 10); 'Break the Blood Curse of Corruption' (QOBJ 20, shown at stage 20).
   - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): zzzCOMq01 (Child of Oblivion) at stage 60 calls SetStage 70 (QF_zzzCOMq01_01065932.fragment_13 (Vigilant.esm)).
-  - A mod's quest: the records are the only source, and they hold no way in.
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
+- **Barrow of the Wyrm** (`WTBarrowOfTheWyrm`, Wyrmstooth.esp:028F01, Wyrmstooth.esp; line `wyrmstooth`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias LuriusLiore (forced): Lurius Liore, placed in Wyrmstooth Holder Cell, Wyrmstooth.
+  - Objectives in the records: 'Speak to Lurius Liore at the docks in Solitude.' (QOBJ 10, shown at stage 10); 'Follow Lurius Liore.' (QOBJ 50, shown at stage 50).
+  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): WTDragonHunt (Wyrmstooth) at stage 130 calls Start (WT_QF_WTTEST_01022528.fragment_16 (Wyrmstooth.esp)); WTDragonHunt (Wyrmstooth) at stage 130 calls SetStage 10 (WT_QF_WTTEST_01022528.fragment_16 (Wyrmstooth.esp)).
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
+- **Reward of Coldharbour** (`manny_GF_ColdharbourQuest`, Gray Fox Cowl.esm:01F56B, Gray Fox Cowl.esm; line `gray-cowl`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Escape from Coldharbour' (QOBJ 5, shown at stage 10); '(Optional) Do not kill the Guardians of Coldharbour' (QOBJ 10, shown at stage 10).
+  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): manny_GF_MQ (The Call of Gray Cowl of Nocturnal) at stage 150 calls SetStage 10 (manny_GF_MainQuestScript.fragment_17 (Gray Fox Cowl.esm)).
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
+- **Windhelm By The Sea** (`Sat_Adoption`, TheGiftofSaturalia.esp:000963, TheGiftofSaturalia.esp; line `the-gift-of-saturalia`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias CaptainLonelyGale (unique): Captain Lonely-Gale, placed in Palace of the Kings.
+  - Objectives in the records: 'Speak to Captain Lonely-Gale' (QOBJ 0, shown at stage 0); 'Return to Niklas' (QOBJ 5, shown at stage 5).
+  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): Sat_TheGiftofSaturalia (The Gift of Saturalia) (stage not given in the records) calls SetStage 10 (Sat_Adoption_Finish.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)); Sat_TheGiftofSaturalia (The Gift of Saturalia) (stage not given in the records) calls Start (Sat_StartAdoption.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)).
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
+- **Lending a Paw** (`Sat_Dog`, TheGiftofSaturalia.esp:0009A4, TheGiftofSaturalia.esp; line `the-gift-of-saturalia`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Olava (forced): Olava the Feeble, placed in Olava the Feeble's House, Olava the Feebles House.
+  - Objectives in the records: 'Bring Santus to Olava the Feeble' (QOBJ 0, shown at stage 0); 'Return to Niklas' (QOBJ 5, shown at stage 5).
+  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): Sat_TheGiftofSaturalia (The Gift of Saturalia) (stage not given in the records) calls SetStage 10 (Sat_Dog_Stage10.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)); Sat_TheGiftofSaturalia (The Gift of Saturalia) (stage not given in the records) calls Start (Sat_DogStart.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)).
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
+- **The Joy of Dawnstar** (`Sat_Laugh`, TheGiftofSaturalia.esp:0008D3, TheGiftofSaturalia.esp; line `the-gift-of-saturalia`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Make 7 people laugh in Dawnstar (1/7)' (QOBJ 0, shown at stage 0); 'Make 7 people laugh in Dawnstar (2/7)' (QOBJ 1, shown at stage 1).
+  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): Sat_TheGiftofSaturalia (The Gift of Saturalia) (stage not given in the records) calls SetStage 8 (Sat_LaughEnd2.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)); Sat_TheGiftofSaturalia (The Gift of Saturalia) (stage not given in the records) calls SetStage 8 (Sat_LaughEnd1.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)); Sat_TheGiftofSaturalia (The Gift of Saturalia) (stage not given in the records) calls Start (Sat_LaughStart.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)).
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
+- **A Song in the Dark** (`Sat_Music`, TheGiftofSaturalia.esp:0009D2, TheGiftofSaturalia.esp; line `the-gift-of-saturalia`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Diane (forced): Diane, placed in Solitude.
+  - Objectives in the records: 'Speak to Diane the Blind in Solitude' (QOBJ 0, shown at stage 0); 'Speak to Viarmo' (QOBJ 10, shown at stage 10).
+  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): Sat_TheGiftofSaturalia (The Gift of Saturalia) (stage not given in the records) calls SetStage 30 (Sat_FinishLaugh2.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)); Sat_TheGiftofSaturalia (The Gift of Saturalia) (stage not given in the records) calls Start (Sat_MusicStart.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)).
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
+- **Three Wise Men** (`Sat_Orphanage`, TheGiftofSaturalia.esp:0008AA, TheGiftofSaturalia.esp; line `the-gift-of-saturalia`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Bersi (unique): Bersi Honey-Hand, placed in Pawned Prawn, The Pawned Prawn.
+  - Objectives in the records: 'Get toys from Bersi Honey-Hand in Riften' (QOBJ 0, shown at stage 0); 'Get food from Talen-Jei' (QOBJ 5, shown at stage 5).
+  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): Sat_TheGiftofSaturalia (The Gift of Saturalia) (stage not given in the records) calls SetStage 20 (Sat_FinishOrphanage2.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)); Sat_TheGiftofSaturalia (The Gift of Saturalia) (stage not given in the records) calls SetStage 20 (Sat_FinishOrphanage1.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)); Sat_TheGiftofSaturalia (The Gift of Saturalia) (stage not given in the records) calls Start (Sat_OrphanageStart.Fragment_0 (TheGiftOfSaturalia_CC_Patch.esp)).
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
+- **Come, the Crows** (`HD1GoreComeTheCrows`, GORE.esp:6EA61E, GORE.esp; line `gore`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Its own conditions: global HD1PermanentDismiss != 1 (now 0); global HD1PostJuneVar == 1 (now 0).
+  - First objective's target in the records: alias Gore (run time): Gore, placed in Peak's Shade Tower.
+  - Objectives in the records: 'Speak to Gore' (QOBJ 0); 'Head to an Inn away from Dawnstar' (QOBJ 10).
+  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): HD1GoreQuest2 (Blood Ties) (stage not given in the records) calls Start (HD1_TIF__036738E8.Fragment_0 (GORE.esp)); HD1GoreQuest2 (Blood Ties) (stage not given in the records) calls SetStage 0 (HD1_TIF__036738E8.Fragment_0 (GORE.esp)).
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
+- **Wanted** (`HD1GoreEscort`, GORE.esp:1517F2, GORE.esp; line `gore`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Its own conditions: global HD1PermanentDismiss != 1 (now 0); Raven's Flight stage 30 done; the speaker is Gore.
+  - First objective's target in the records: alias HD1GoreThalmor1 (forced): a marker, placed in Peak's Shade Tower; GORE.esp:1517F9, placed in Peak's Shade Tower.
+  - First objective's target in the records: alias HD1GoreThalmor2 (forced): a marker, placed in Peak's Shade Tower; GORE.esp:1517FC, placed in Peak's Shade Tower.
+  - First objective's target in the records: alias HD1GoreThalmor3 (forced): a marker, placed in Peak's Shade Tower; GORE.esp:1517FC, placed in Peak's Shade Tower.
+  - Objectives in the records: 'Defeat the Thalmor Envoy.' (QOBJ 10, shown at stage 10); 'Speak with Gore.' (QOBJ 20, shown at stage 20).
+  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): HD1GoreMeet (Raven's Flight) at stage 40 calls SetStage 10 (QF_HD1GoreMeet_09066720.fragment_12 (GORE.esp)).
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
+- **To Free a Raven** (`HD1GoreJailtime`, GORE.esp:6245B4, GORE.esp; line `gore`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Its own conditions: global HD1PermanentDismiss != 1 (now 0).
+  - First objective's target in the records: alias Trigger (forced): a marker, placed in Dawnstar Jail, Dawnstar Barracks; Skyrim.esm:033F50, placed in Dawnstar Jail, Dawnstar Barracks.
+  - Objectives in the records: 'Wait for Gore to turn himself in.' (QOBJ 0); 'See how Gore is doing.' (QOBJ 10, shown at stage 10).
+  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): HD1GoreQuest2 (Blood Ties) (stage not given in the records) calls Start (HD1_TIF__0361307A.Fragment_0 (GORE.esp)).
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
+- **The Apple from the Tree** (`HD1GoreMurderer`, GORE.esp:6738F7, GORE.esp; line `gore`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Its own conditions: global HD1PermanentDismiss != 1 (now 0); the speaker is Gore; global HD1GoreMurdererVar == 1 (now 0).
+  - Objectives in the records: 'Speak to Gore' (QOBJ 0); 'Kill Gore' (QOBJ 20).
+  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): HD1GoreQuest2 (Blood Ties) (stage not given in the records) calls Start (HD1_TIF__036738F3.Fragment_0 (GORE.esp)); HD1GoreQuest2 (Blood Ties) (stage not given in the records) calls SetStage 0 (HD1_TIF__036738F3.Fragment_0 (GORE.esp)).
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
+- **Serenata** (`AK69SerenataQuest`, Katana.esp:8BB421, Katana.esp; line `katana`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Its own conditions: global AK69KatanaPQCompleted == 1 (now 0); global AK69TRLCompleted == 1 (now 0); global AK69EECompleted == 1 (now 0); global AK69KECompleted == 1 (now 0); global AK69SaSCompleted == 1 (now 0); global AK69CQCompleted == 1 (now 0).
+  - First objective's target in the records: alias Megara (unique): Megara, placed in The Drunken Huntsman, Drunken Huntsman.
+  - Objectives in the records: 'With Katana and Shale, talk to Megara in a city during the day' (QOBJ 1); 'Journey with Shale for about a day' (QOBJ 40, shown at stage 40).
+  - Set by a quest the line puts after it (the check counts these as catch-ups, not starts): AK69TheRavensLamentQuest (The Ravens' Lament) at stage 310 calls Start (AK69_QF_AK69TheRavensLamentQu_058BB420.fragment_68 (Katana.esp)).
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
 
-## The records hold no starter (20)
+## The records hold no starter (45)
 
 - **Durnehviir Misc Objective Handler** (`DLC1VQDragonMisc`, Dawnguard.esm:01119F, Dawnguard.esm; line `dawnguard`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias DLC1VQDragonMiscAlias (from alias): nothing the records name.
   - Objectives in the records: 'Speak to Durnehviir at his lair in the Soul Cairn' (QOBJ 10, shown at stage 10).
   - UESP (https://en.uesp.net/wiki/Skyrim:Durnehviir_(quest)): UESP gives no start for this handler itself; it is a stage table inside the Durnehviir quest page (DLC1VQDragon), which begins after you defeat Durnehviir in the Boneyard. Givers: Durnehviir. First objective: 'Speak to Durnehviir at his lair in the Soul Cairn'. Note: Listed as 'Durnehviir Misc Objective Handler (DLC1VQDragonMisc)'.
 - **Animal Pelt Collection** (`CR03`, Skyrim.esm:025230, Skyrim.esm; winning record: Companions Radiant Expansion.esp; line `companions`, batch 1)
@@ -93,129 +183,300 @@ Quests the loop can't settle from the records and UESP, each with both readings 
   - UESP: no page found: no UESP page found under the name or editor ID.
 - **Campaign for the campaign hold** (`CWCampaignObj`, Skyrim.esm:026F45, Skyrim.esm; winning record: LoreRim - Dialogue Patch.esp; line `civil-war`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias FieldCO (run time): nothing the records name.
   - Objectives in the records: 'Report to <Alias=FieldCO>.' (QOBJ 10, shown at stage 10); 'Help conquer <Alias=CampaignHold>.' (QOBJ 15, shown at stage 15).
   - UESP: no page found: UESP doesn't document this editor ID on any page reached.
 - **Battle of the city** (`CWSiegeAttackObj`, Skyrim.esm:04E857, Skyrim.esm; winning record: LoreRim - Dialogue Patch.esp; line `civil-war`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias General (run time): nothing the records name.
   - Objectives in the records: 'Meet with the <Alias=General>' (QOBJ 0); 'Break through the enemy Barricade' (QOBJ 5).
   - UESP: no page found: UESP doesn't document this editor ID on any page reached.
 - **Defense of the city** (`CWSiegeDefendObj`, Skyrim.esm:02FF95, Skyrim.esm; winning record: LoreRim - Dialogue Patch.esp; line `civil-war`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias General (run time): nothing the records name.
   - Objectives in the records: 'Meet with the <Alias=General> on the Front Line.' (QOBJ 0); 'Join the General on the Front Line.' (QOBJ 10).
   - UESP: no page found: UESP doesn't document this editor ID on any page reached.
 - **The Lost Verse** (`dunBardsLeapSummitQST`, Skyrim.esm:0AE014, Skyrim.esm; winning record: dvEdda.esp; line `bards-college`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Giraud (forced): Giraud Gemane, placed in Bards College, The Bards College.
   - Objectives in the records: 'Show the ancient Edda fragment to someone' (QOBJ 200, shown at stage 200).
   - UESP: no page found: no quest page; the Bard's Leap Summit location page mentions no quest.
 - **Bounty: Book** (`zzzAomBountyBook`, Vigilant.esm:4E1318, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias PornBook (created): Mazoga the Hardened.
   - Objectives in the records: 'Take the erotic book from <Alias=Target> in <Alias=BookLocation>' (QOBJ 0, shown at stage 0); 'Put the erotic book in the Collection Chest' (QOBJ 10, shown at stage 10).
   - A mod's quest: the records are the only source, and they hold no way in.
 - **Bounty: Chick Trader** (`zzzAomBountyChickTrader`, Vigilant.esm:4E372E, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias ChickTrader (created): Chick Trader.
   - Objectives in the records: 'Kill the Chick Trader or buy an orphan in <Alias=TownLocation>' (QOBJ 0, shown at stage 0); 'Take the orphan to the Temple of Stendarr' (QOBJ 10, shown at stage 10).
   - A mod's quest: the records are the only source, and they hold no way in.
 - **Bounty: Piper** (`zzzAoMBountyPiper`, Vigilant.esm:4E0116, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Piper (created): Holy Piper.
   - Objectives in the records: 'Defeat the Piper in <Alias=PiperLocation>' (QOBJ 0, shown at stage 0).
   - A mod's quest: the records are the only source, and they hold no way in.
 - **Bounty: Daedric Relic** (`zzzAomBountyRelic`, Vigilant.esm:4E011B, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Relic (created): Beacon: Praise Meridia.
   - Objectives in the records: 'Find the relic of Meridia in <Alias=RelicLocation>' (QOBJ 0, shown at stage 0); 'Put the Beacon in the Collection Chest' (QOBJ 10, shown at stage 10).
   - A mod's quest: the records are the only source, and they hold no way in.
 - **Bounty: Horn** (`zzzAoMBountyRelicHorn`, Vigilant.esm:4E0121, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Horn (created): Golden Horn of Stendarr.
   - Objectives in the records: 'Find the lost Horn of Stendarr in <Alias=HornLocation>' (QOBJ 0, shown at stage 0); 'Put the Horn in the Collection Chest' (QOBJ 10, shown at stage 10).
   - A mod's quest: the records are the only source, and they hold no way in.
 - **Bounty: Summoner** (`zzzAomBountySummoner`, Vigilant.esm:4E0102, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Target (from alias): nothing the records name.
   - Objectives in the records: 'Defeath the summoner in <Alias=TargetLocation>' (QOBJ 0, shown at stage 0).
   - A mod's quest: the records are the only source, and they hold no way in.
 - **Bounty: Vampire** (`zzzAomBountyVampire`, Vigilant.esm:4E0108, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias CenterMarker (from alias): nothing the records name.
   - Objectives in the records: 'Find and eliminate the vampire in <Alias=TownLocation>' (QOBJ 0, shown at stage 0).
   - A mod's quest: the records are the only source, and they hold no way in.
 - **Bounty: Witch** (`zzzAomBountyWitch`, Vigilant.esm:4E010E, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Witch (created): Vigilant.esm:4E0110.
   - Objectives in the records: 'Kill the witch in <Alias=WitchLocation>' (QOBJ 0, shown at stage 0).
   - A mod's quest: the records are the only source, and they hold no way in.
 - **Radiance in the Dead** (`zzzAoMRadDead`, Vigilant.esm:4EA3A8, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Boss (from alias): nothing the records name.
   - Objectives in the records: 'Slay the <Alias=Boss> in <Alias=TargetLocation>' (QOBJ 0, shown at stage 0).
   - A mod's quest: the records are the only source, and they hold no way in.
 - **Radiance in the Duplicate** (`zzzAoMRadDoppler`, Vigilant.esm:4EA3D1, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Target (created): Duplicate.
+  - First objective's target in the records: alias Target2 (created): Duplicate.
   - Objectives in the records: 'Slay <Alias=Target> in <Alias=TargetLocation>' (QOBJ 0, shown at stage 0).
   - A mod's quest: the records are the only source, and they hold no way in.
 - **Radiance in the Spawn** (`zzzAoMRadMolag`, Vigilant.esm:4EA3AC, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Target (created): Spawn of Molag Bal.
   - Objectives in the records: 'Slay <Alias=Target> in <Alias=TargetLocation>' (QOBJ 0, shown at stage 0).
   - A mod's quest: the records are the only source, and they hold no way in.
 - **Radiance in the Vampire** (`zzzAoMRadVampire`, Vigilant.esm:4E91B0, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Boss (from alias): nothing the records name.
   - Objectives in the records: 'Slay the <Alias=Boss> in <Alias=TargetLocation>' (QOBJ 0, shown at stage 0).
   - A mod's quest: the records are the only source, and they hold no way in.
 - **Radiance in the Witch Hunter** (`zzzAoMRadWitchHunter`, Vigilant.esm:4EA3C8, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Target (created): Witch Hunter.
   - Objectives in the records: 'Slay the witch hunter in <Alias=TargetLocation>' (QOBJ 0, shown at stage 0).
   - A mod's quest: the records are the only source, and they hold no way in.
 - **Feral Soul-Shriven** (`zzzCHrqSoulShriven`, Vigilant.esm:51532C, Vigilant.esm; line `vigilants`, batch 1)
   - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Enemy (run time): nothing the records name.
   - Objectives in the records: 'Defeat <Alias=Enemy>' (QOBJ 0, shown at stage 1).
   - A mod's quest: the records are the only source, and they hold no way in.
+- **Boethiah's Bidding** (`DA02KillObj`, Skyrim.esm:052795, Skyrim.esm; line `boethiahs-calling`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Elisif (unique): Elisif the Fair, placed in Blue Palace, The Blue Palace.
+  - Objectives in the records: 'Assassinate the Jarl of Solitude' (QOBJ 50, shown at stage 50).
+  - UESP (https://en.uesp.net/wiki/Skyrim:Unfinished_Quests): Begins right after Boethiah's Calling ends, once you kill her previous champion and equip the Ebony Mail. Givers: Boethiah. First objective: 'Assassinate the Jarl of Solitude'. Note: Only on the Unfinished Quests page: never fully implemented.
+- **A Grand Venture** (`DefunctQuest01`, Journey to Baan Malur.esp:2B52A7, Journey to Baan Malur.esp; line `baan-malur`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: none.
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Black Book: The Font of Memory** (`HYORBlackBook08Quest`, Siege at Icemoth.esp:59F97E, Siege at Icemoth.esp; line `siege-at-icemoth`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias BookTarget (forced): Black Book: The Font of Memory, placed in Apocrypha.
+  - Objectives in the records: "Learn the Black Book's hidden knowledge" (QOBJ 10, shown at stage 10).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Bury Valen Dreth** (`manny_GF_BuryValenDreth`, Gray Fox Cowl.esm:01E072, Gray Fox Cowl.esm; line `gray-cowl`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias myDestination (forced): a marker, placed in Falkreath.
+  - Objectives in the records: 'Bury the rests of Valen Dreth at Falkreath' (QOBJ 10, shown at stage 10).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **The Curse of Sadraaka** (`manny_GF_Sadraaka`, Gray Fox Cowl.esm:026AE8, Gray Fox Cowl.esm; line `gray-cowl`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias myTriggerBook (created): We were Yokudans.
+  - Objectives in the records: 'Find information about the Forgotten City' (QOBJ 10, shown at stage 5); 'Kill Sadraaka and free the Forgotten City from the curse' (QOBJ 20, shown at stage 10).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **The Final Descent Priest** (`DLC2RR03Priest`, Dragonborn.esm:03332A, Dragonborn.esm; line `raven-rock`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias DLC2RR03Priest (from alias): nothing the records name.
+  - Objectives in the records: 'Slay the Seeker in Bloodskal Barrow' (QOBJ 10, shown at stage 10).
+  - UESP (https://en.uesp.net/w/index.php?title=Skyrim:The_Final_Descent&oldid=3602106): Only a second stage table on The Final Descent's page, with no start of its own; the main quest starts by speaking to Crescius Caerellius. Givers: Crescius Caerellius. First objective: 'Slay the Seeker in Bloodskal Barrow'.
+- **Black Book: Untold Legends** (`DLC2BlackBook03Quest`, Dragonborn.esm:03216C, Dragonborn.esm; line `black-books`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Book03Target (forced): Black Book: Untold Legends, placed in Apocrypha.
+  - Already in the answer key: Black Book: Untold Legends, starts with no single giver, then "Learn the Black Book's hidden knowledge" (uesp, https://en.uesp.net/wiki/Skyrim:Black_Book:_Untold_Legends_(quest); Bob, 21 Oct, NO_GIVER_OK: It starts when you read the book, not from an NPC, and the first objective matches.). Yet the planner says not yet checked.
+  - Objectives in the records: "Learn the Black Book's hidden knowledge" (QOBJ 10, shown at stage 10).
+  - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Black_Book:_Untold_Legends_(quest)&oldid=3378790): Starts when you read the Black Book Untold Legends in Benkongerike Great Hall. First objective: "Learn the Black Book's hidden knowledge".
+- **Black Book: The Winds of Change** (`DLC2BlackBook04Quest`, Dragonborn.esm:03216E, Dragonborn.esm; line `black-books`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias BookTarget (forced): Black Book: The Winds of Change, placed in Apocrypha.
+  - Objectives in the records: "Learn the Black Book's hidden knowledge" (QOBJ 10, shown at stage 10).
+  - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Black_Book:_The_Winds_of_Change_(quest)&oldid=3125187): Starts when you read the Black Book The Winds of Change in Raven Rock Mine. First objective: "Learn the Black Book's hidden knowledge".
+- **Black Book: The Sallow Regent** (`DLC2BlackBook05Quest`, Dragonborn.esm:03216D, Dragonborn.esm; line `black-books`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias BookTarget (forced): Black Book: The Sallow Regent, placed in Apocrypha.
+  - Objectives in the records: "Learn the Black Book's hidden knowledge" (QOBJ 10, shown at stage 10).
+  - UESP (https://en.uesp.net/wiki/Skyrim:Black_Book:_The_Sallow_Regent_(quest)): Starts when you read the Black Book The Sallow Regent in White Ridge Barrow. First objective: "Learn the Black Book's hidden knowledge".
+- **Black Book: Filament and Filigree** (`DLC2BlackBook06Quest`, Dragonborn.esm:03216F, Dragonborn.esm; line `black-books`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias BookTarget (forced): Black Book: Filament and Filigree, placed in Apocrypha.
+  - Objectives in the records: "Learn the Black Book's hidden knowledge" (QOBJ 10, shown at stage 10).
+  - UESP (https://en.uesp.net/wiki/Skyrim:Black_Book:_Filament_and_Filigree_(quest)): Reading the Black Book Filament and Filigree, found in Kolbjorn Barrow, starts it. First objective: "Learn the Black Book's hidden knowledge".
+- **Black Book: The Hidden Twilight** (`DLC2BlackBook07Quest`, Dragonborn.esm:032170, Dragonborn.esm; line `black-books`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias BookTarget (forced): Black Book: The Hidden Twilight, placed in Apocrypha.
+  - Objectives in the records: "Learn the Black Book's hidden knowledge" (QOBJ 10, shown at stage 10).
+  - UESP (https://en.uesp.net/wiki/Skyrim:Black_Book:_The_Hidden_Twilight_(quest)): Starts when you read the Black Book The Hidden Twilight in Tel Mithryn. First objective: "Learn the Black Book's hidden knowledge".
+- **The Kagrumez Gauntlet** (`DLC2KagrumezQST`, Dragonborn.esm:03166D, Dragonborn.esm; line `the-kagrumez-gauntlet`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Already in the answer key: The Kagrumez Gauntlet, starts with no single giver, then 'Find Resonance Gems across Solstheim to complete the Kagrumez trials' (uesp, https://en.uesp.net/wiki/Skyrim:The_Kagrumez_Gauntlet; Bob, 21 Oct, NO_GIVER_OK: UESP names no giver either, and the first objective matches.). Yet the planner says not yet checked.
+  - Objectives in the records: 'Find Resonance Gems across Solstheim to complete the Kagrumez trials' (QOBJ 10, shown at stage 10).
+  - UESP (https://en.uesp.net/w/index.php?title=Skyrim:The_Kagrumez_Gauntlet&oldid=3154879): The page doesn't say how it starts or name a giver. First objective: 'Find Resonance Gems across Solstheim to complete the Kagrumez trials'. Note: Page being rewritten.
+- **Silenced Tongues** (`dunVolunruudQST`, Skyrim.esm:08ADFA, Skyrim.esm; line `silenced-tongues`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Relic01 (forced): Ceremonial Axe, placed in Volunruud.
+  - First objective's target in the records: alias Relic02 (forced): Ceremonial Sword, placed in Volunruud.
+  - Already in the answer key: Silenced Tongues, starts with no single giver, then 'Locate The Ceremonial Weapons' (uesp, https://en.uesp.net/wiki/Skyrim:Silenced_Tongues; Bob, 21 Oct, NO_GIVER_OK: No NPC gives it and the first objective matches UESP; the page could add that reading Heddic's Volunruud Notes in Volunruud is what starts it.). Yet the planner says not yet checked.
+  - Objectives in the records: 'Locate The Ceremonial Weapons' (QOBJ 10, shown at stage 10); "Open the Elder's Cairn" (QOBJ 20, shown at stage 20).
+  - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Silenced_Tongues&oldid=3107721): Reading Heddic's Volunruud Notes starts it, as does trying the puzzle door deeper in the dungeon. First objective: 'Locate The Ceremonial Weapons'.
+- **Yngol's Barrow** (`dunYngolBarrowQST`, Skyrim.esm:0434A3, Skyrim.esm; winning record: Unofficial Skyrim Special Edition Patch.esp; line `yngols-barrow`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Already in the answer key: Yngol's Barrow, starts with no single giver, then "Explore Yngol's Barrow" (uesp, https://en.uesp.net/wiki/Skyrim:Yngol%27s_Barrow; Bob, 21 Oct, NO_GIVER_OK: UESP agrees there is no giver; the objective comes from the USSEP-won record, but UESP says vanilla never shows it, so it may not appear in the journal unless USSEP fixed tha). Yet the planner says not yet checked.
+  - Objectives in the records: "Explore Yngol's Barrow" (QOBJ 0); "Escape Yngol's Barrow" (QOBJ 50).
+  - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Yngol%27s_Barrow&oldid=3476298): Birna in Winterhold sells you the Coral Dragon Claw; alternatively find the claw inside the Barrow first. Givers: Birna. First objective: "Explore Yngol's Barrow". Note: UESP says Objective 0 is never set to display.
+- **Black Book: Whispers of the Veil** (`NecroBlackBookQuest01`, Undeath.esp:125089, Undeath.esp; line `undeath`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias BookTarget (forced): Black Book: Whispers of the Veil, placed in Apocrypha.
+  - Objectives in the records: "Learn the Black Book's hidden knowledge" (QOBJ 10, shown at stage 10).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Victory Celebrations** (`0WRDragonKillerScene`, SurWR.esp:1DFD0B, SurWR.esp; line `capital-whiterun`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: none.
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Grace of Kynareth** (`0WREnableSapling`, SurWR.esp:0C8496, SurWR.esp; line `capital-whiterun`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: none.
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Farmland Saga** (`0WRFarmlandQuest`, SurWR.esp:37116B, SurWR.esp; line `capital-whiterun`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: none.
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **On Hogithum** (`REQ_HOGITHUM`, Requiem.esp:AD383D, Requiem.esp; line `on-hogithum`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Find more information about the missing fragment' (QOBJ 10, shown at stage 10); 'Find all six missing fragments' (QOBJ 50, shown at stage 50).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **In the Shadows** (`ccBGSSSE038_Quest`, ccbgssse038-bowofshadows.esl:00080E, ccbgssse038-bowofshadows.esl; winning record: Bow of Shadows - Reduced Cut.esp; line `in-the-shadows`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Proventus (run time): nothing the records name.
+  - First objective's target in the records: alias Brill (run time): nothing the records name.
+  - Objectives in the records: "Speak to the Jarl's Steward" (QOBJ 10, shown at stage 0); "Read the Steward's Note" (QOBJ 20, shown at stage 10).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **The Cause** (`ccBGSSSE067_Quest`, ccbgssse067-daedinv.esm:06BFC1, ccbgssse067-daedinv.esm; winning record: CauseTweakAlternateStart.esp; line `the-cause`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Objectives in the records: 'Watch for any news' (QOBJ 10); "Read the Stranger's Plea" (QOBJ 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Paragliding in Skyrim** (`ParaIntro`, Paragliding.esp:00801F, Paragliding.esp; line `paragliding-in-skyrim`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias FredBook (created): Fredrick's Journal.
+  - Objectives in the records: 'Inspect the body' (QOBJ 10, shown at stage 10); "Investigate Flying Fred's flight platform" (QOBJ 20, shown at stage 20).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Fear and Loathing** (`HD1GoreFearAndLoathing`, GORE.esp:AFF592, GORE.esp; line `gore`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - Its own conditions: global HD1PermanentDismiss != 1 (now 0); the speaker is Gore.
+  - Objectives in the records: 'Investigate the house with Gore' (QOBJ 0, shown at stage 0); 'Speak with Gore outside' (QOBJ 5).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **With Love, Eilonwy, Part 2** (`aaFaraldaQ2`, FDE Faralda.esp:000A40, FDE Faralda.esp; line `faralda`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias Faralda (unique): Faralda, placed in Hall of Countenance, Dormitory.
+  - Objectives in the records: 'Talk to Faralda' (QOBJ 1, shown at stage 1); "Meet Faralda's aunt at Lost Prospect Mine" (QOBJ 10, shown at stage 10).
+  - A mod's quest: the records are the only source, and they hold no way in.
+- **Deliver a Letter Distant** (`_M_QuestEastmarchCourierLetterHigh`, Missives.esp:00F64E, Missives.esp; winning record: Synthesis - Gameplay Overwrite.esp; line `missives`, batch 2)
+  - Records, how it starts: no starter in its records or scripts.
+  - First objective's target in the records: alias QuestGiver (run time): nothing the records name.
+  - Objectives in the records: 'Collect <Alias=Item>' (QOBJ 20, shown at stage 20); 'Recover <Alias=Item>' (QOBJ 30).
+  - A mod's quest: the records are the only source, and they hold no way in.
 
-## Only the Unofficial Patch's update helpers start it (not a way in, Bob 22 Oct) (2)
+## Only helpers Bob ruled aren't ways in start it (the Unofficial Patch's update helpers; Dragonborn's DLC2Init) (Bob 22 Oct) (3)
 
 - **Purity of Revenge** (`C05`, Skyrim.esm:06E805, Skyrim.esm; winning record: Update.esm; line `companions`, batch 1)
   - Records, how it starts: only these starters.
-    - quest script: Patch1_9_UpdateQuest, a helper quest SetStage 1 (QF_Patch1_9_UpdateQuest_010009A3.fragment_0 on Update.esm:0009A3 (Update.esm); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive125 (named "Retroactive fixes for 1.2.5" in its record), a helper quest with Garakh, Atub, Addvar SetStage 1 (USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive125 (named "Retroactive fixes for 1.2.5" in its record), a helper quest with Garakh, Atub, Addvar Start (USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive126 (named "Retroactive fixes for 1.2.6" in its record), a helper quest with Niranye, Arivanya, Ysolda SetStage 1 (USKPRetroactive126Script.Process on Unofficial Skyrim Special Edition Patch.esp:025354 (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive126 (named "Retroactive fixes for 1.2.6" in its record), a helper quest with Niranye, Arivanya, Ysolda Start (USKPRetroactive126Script.Process on Unofficial Skyrim Special Edition Patch.esp:025354 (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive127 (named "Retroactive fixes for 1.2.7" in its record), a helper quest with Odfel SetStage 1 (USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive127 (named "Retroactive fixes for 1.2.7" in its record), a helper quest with Odfel Start (USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive130 (named "Retroactive fixes for 1.3.0" in its record), a helper quest SetStage 1 (USKPRetroactive130Script.Process on Unofficial Skyrim Special Edition Patch.esp:012F33 (Unofficial Skyrim Special Edition Patch.esp)) (not a way in, Bob 22 Oct)
+    - quest script: Patch1_9_UpdateQuest, a helper quest at stage 10 calls SetStage 1 (QF_Patch1_9_UpdateQuest_010009A3.fragment_0 on Update.esm:0009A3 (Update.esm), through C00 (Take Up Arms)'s startstoryquest); Patch1_9_UpdateQuest is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPRetroactive125 (named "Retroactive fixes for 1.2.5" in its record), a helper quest with Garakh, Atub, Addvar calls SetStage 1 (USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process); USKPRetroactive125 is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPRetroactive125 (named "Retroactive fixes for 1.2.5" in its record), a helper quest with Garakh, Atub, Addvar calls Start (USKPRetroactive125Script.Process on Unofficial Skyrim Special Edition Patch.esp:01E696 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process); USKPRetroactive125 is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPRetroactive126 (named "Retroactive fixes for 1.2.6" in its record), a helper quest with Niranye, Arivanya, Ysolda calls SetStage 1 (USKPRetroactive126Script.Process on Unofficial Skyrim Special Edition Patch.esp:025354 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process); USKPRetroactive126 is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPRetroactive126 (named "Retroactive fixes for 1.2.6" in its record), a helper quest with Niranye, Arivanya, Ysolda calls Start (USKPRetroactive126Script.Process on Unofficial Skyrim Special Edition Patch.esp:025354 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process); USKPRetroactive126 is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPRetroactive127 (named "Retroactive fixes for 1.2.7" in its record), a helper quest with Odfel calls SetStage 1 (USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process); USKPRetroactive127 is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPRetroactive127 (named "Retroactive fixes for 1.2.7" in its record), a helper quest with Odfel calls Start (USKPRetroactive127Script.Process on Unofficial Skyrim Special Edition Patch.esp:0187DE (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive130 (Retroactive fixes for 1.3.0)'s process); USKPRetroactive127 is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPRetroactive130 (named "Retroactive fixes for 1.3.0" in its record), a helper quest calls SetStage 1 (USKPRetroactive130Script.Process on Unofficial Skyrim Special Edition Patch.esp:012F33 (Unofficial Skyrim Special Edition Patch.esp)); USKPRetroactive130 is started by the start-game flag (not a way in, Bob 22 Oct)
     - and 7 more like these
+  - First objective's target in the records: alias Fragments (forced): Fragments of Wuuthrad, placed in Driftshade Refuge, Driftshade Sanctuary.
+  - First objective's target in the records: alias Fragments (forced): Fragments of Wuuthrad, placed in Driftshade Refuge, Driftshade Sanctuary.
+  - First objective's target in the records: alias DriftShadeInteriorDoor (forced): Wooden Door, placed in Driftshade Refuge, Driftshade Sanctuary.
   - Objectives in the records: 'Retrieve the fragments of Wuuthrad' (QOBJ 10, shown at stage 10); '(Optional) Wipe out the Silver Hand' (QOBJ 11, shown at stage 10).
   - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Purity_of_Revenge&oldid=3572434): After Kodlak dies, Vilkas seeks revenge on the Silver Hand and follows you to Driftshade Refuge; previous quest Blood's Honor. Givers: Vilkas. First objective: 'Retrieve the fragments of Wuuthrad'.
 - **Glory of the Dead** (`C06`, Skyrim.esm:01CEF6, Skyrim.esm; winning record: Unofficial Skyrim Special Edition Patch.esp; line `companions`, batch 1)
   - Records, how it starts: only these starters.
-    - quest script: Patch1_9_UpdateQuest, a helper quest SetStage 1 (QF_Patch1_9_UpdateQuest_010009A3.fragment_0 on Update.esm:0009A3 (Update.esm); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive203 (named "Retroactive fixes for 2.0.3" in its record), a helper quest Start (uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive204 (named "Retroactive fixes for 2.0.4" in its record), a helper quest with Gabriella, Erikur, Susanna Start (USKPRetroactive204Script.Process on Unofficial Skyrim Special Edition Patch.esp:012C3A (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive205 (named "Retroactive fixes for 2.0.5" in its record), a helper quest with Keerava Start (USKPRetroactive205Script.Process on Unofficial Skyrim Special Edition Patch.esp:040578 (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPRetroactive206 (named "Retroactive fixes for 2.0.6" in its record), a helper quest with Vekel, Oengul Start (USKPRetroactive206Script.Process on Unofficial Skyrim Special Edition Patch.esp:04C7DF (Unofficial Skyrim Special Edition Patch.esp)) (not a way in, Bob 22 Oct)
-    - quest script: USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player Start (USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player Start (USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
-    - quest script: USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player Start (USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp); the call itself sits in 's  function, which this script calls) (not a way in, Bob 22 Oct)
+    - quest script: Patch1_9_UpdateQuest, a helper quest at stage 10 calls SetStage 1 (QF_Patch1_9_UpdateQuest_010009A3.fragment_0 on Update.esm:0009A3 (Update.esm), through C00 (Take Up Arms)'s startstoryquest); Patch1_9_UpdateQuest is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPRetroactive203 (named "Retroactive fixes for 2.0.3" in its record), a helper quest calls Start (uskpretroactive203script.Process on Unofficial Skyrim Special Edition Patch.esp:01068A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process); USKPRetroactive203 is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPRetroactive204 (named "Retroactive fixes for 2.0.4" in its record), a helper quest with Gabriella, Erikur, Susanna calls Start (USKPRetroactive204Script.Process on Unofficial Skyrim Special Edition Patch.esp:012C3A (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process); USKPRetroactive204 is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPRetroactive205 (named "Retroactive fixes for 2.0.5" in its record), a helper quest with Keerava calls Start (USKPRetroactive205Script.Process on Unofficial Skyrim Special Edition Patch.esp:040578 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process); USKPRetroactive205 is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPRetroactive206 (named "Retroactive fixes for 2.0.6" in its record), a helper quest with Vekel, Oengul calls Start (USKPRetroactive206Script.Process on Unofficial Skyrim Special Edition Patch.esp:04C7DF (Unofficial Skyrim Special Edition Patch.esp)); USKPRetroactive206 is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls Start (USKP_VersionTrackingPlayerAliasScript.OnPlayerLoadGame on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process); USKPVersionTracking is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls Start (USKP_VersionTrackingScript.OnInit on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process); USKPVersionTracking is started by the start-game flag (not a way in, Bob 22 Oct)
+    - quest script: USKPVersionTracking (named "Version tracking for USKP retroactive fixes" in its record), a helper quest with Player calls Start (USKP_VersionTrackingScript.ProcessRetroScripts on Unofficial Skyrim Special Edition Patch.esp:00D8B9 (Unofficial Skyrim Special Edition Patch.esp), through USKPRetroactive206 (Retroactive fixes for 2.0.6)'s process); USKPVersionTracking is started by the start-game flag (not a way in, Bob 22 Oct)
+  - First objective's target in the records: alias FuneralLocationMarker (forced): a marker, placed in Whiterun.
   - Objectives in the records: "Attend Kodlak's funeral" (QOBJ 10, shown at stage 10); 'Give the fragments of Wuuthrad to Eorlund' (QOBJ 15, shown at stage 15).
   - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Glory_of_the_Dead&oldid=3555956): Follows Purity of Revenge; Vilkas runs to the Skyforge for Kodlak's funeral. Givers: Vilkas. First objective: "Attend Kodlak's funeral".
+- **March of the Dead** (`DLC2RR01`, Dragonborn.esm:018B13, Dragonborn.esm; winning record: Unofficial Skyrim Special Edition Patch.esp; line `raven-rock`, batch 2)
+  - Records, how it starts: only these starters.
+    - quest script: DLC2Init (named "Init quest" in its record), a helper quest with DremoraButler, DremoraMerchant at stage 100 calls Start (DLC2_QF_DLC2_MQ04_02016E02.fragment_4 on Dragonborn.esm:016E02 (Fozars_Dragonborn_-_Requiem_Patch.esp)); DLC2Init is started by the start-game flag (not a way in, Bob 22 Oct)
+  - First objective's target in the records: alias DLC2RR01Ghoul01Alias (from alias): nothing the records name.
+  - First objective's target in the records: alias DLC2RR01Ghoul02Alias (from alias): nothing the records name.
+  - First objective's target in the records: alias DLC2RR01Ghoul03Alias (from alias): nothing the records name.
+  - Objectives in the records: 'Kill the ash spawn attacking Captain Veleth' (QOBJ 10); 'Speak to Captain Veleth' (QOBJ 20).
+  - UESP (https://pt.uesp.net/wiki/Dragonborn:March_of_the_Dead): Giver Captain Veleth. You find him fighting ash spawn at Old Attius Farm, south of Raven Rock, and helping him starts it. Stage 30, obj 10: "Kill the ash spawn attacking Captain Veleth". Givers: Captain Veleth. First objective: 'Kill the ash spawn attacking Captain Veleth'. Note: UESP reading as Bob recorded it in openings-judged-2026-10-21.json
 
-## The check found starters it can't name (5)
+## The check found starters it can't name (7)
 
 - **Under New Management** (`TGLeadership`, Skyrim.esm:0D7D69, Skyrim.esm; winning record: Unofficial Skyrim Special Edition Patch.esp; line `thieves-guild`, batch 1)
   - Records, how it starts: only these starters.
-    - quest script: TGRShell (named "Thieves Guild Radiant Shell" in its record), a helper quest SetStage 10 (QF_TGRShell_00028923.fragment_65 on Skyrim.esm:028923 (Skyrim.esm))
+    - quest script: TGRShell (named "Thieves Guild Radiant Shell" in its record), a helper quest at stage 197 calls SetStage 10 (QF_TGRShell_00028923.fragment_65 on Skyrim.esm:028923 (Skyrim.esm)); TGRShell is started by nothing in the records or scripts (unread)
+  - First objective's target in the records: alias TGLeadershipBrynjolf (unique): Brynjolf, placed in Riften.
   - Objectives in the records: 'Speak to Brynjolf about becoming the Guild Master' (QOBJ 10, shown at stage 10); 'Proceed to center of Cistern' (QOBJ 20, shown at stage 20).
   - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Under_New_Management&oldid=3652078): After the four reputation quests and Darkness Returns you are told to talk to Brynjolf; if Darkness Returns finished earlier it starts automatically after the last reputation quest. Givers: Brynjolf. First objective: 'Speak to Brynjolf about becoming the Guild Master'.
 - **Silver Lining** (`TGTQ01`, Skyrim.esm:0799DF, Skyrim.esm; line `thieves-guild`, batch 1)
   - Records, how it starts: only these starters.
-    - quest script: TGRShell (named "Thieves Guild Radiant Shell" in its record), a helper quest SetStage 10 (QF_TGRShell_00028923.fragment_64 on Skyrim.esm:028923 (Skyrim.esm))
+    - quest script: TGRShell (named "Thieves Guild Radiant Shell" in its record), a helper quest at stage 192 calls SetStage 10 (QF_TGRShell_00028923.fragment_64 on Skyrim.esm:028923 (Skyrim.esm)); TGRShell is started by nothing in the records or scripts (unread)
+  - First objective's target in the records: alias TGTQ01EndonAlias (unique): Endon, placed in Endon's House.
   - Objectives in the records: 'Speak to Endon the Silversmith' (QOBJ 10, shown at stage 10); 'Enter Pinewatch' (QOBJ 20, shown at stage 20).
   - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Silver_Lining&oldid=3514599): After five Thieves Guild special jobs in Markarth, speak to Delvin Mallory. Givers: Delvin Mallory. First objective: 'Speak to Endon the Silversmith'.
 - **The Dainty Sload** (`TGTQ02`, Skyrim.esm:0799E0, Skyrim.esm; winning record: Vittorias Alternate Wedding.esp; line `thieves-guild`, batch 1)
   - Records, how it starts: only these starters.
-    - quest script: TGRShell (named "Thieves Guild Radiant Shell" in its record), a helper quest SetStage 10 (QF_TGRShell_00028923.fragment_60 on Skyrim.esm:028923 (Skyrim.esm))
+    - quest script: TGRShell (named "Thieves Guild Radiant Shell" in its record), a helper quest at stage 172 calls SetStage 10 (QF_TGRShell_00028923.fragment_60 on Skyrim.esm:028923 (Skyrim.esm)); TGRShell is started by nothing in the records or scripts (unread)
+  - First objective's target in the records: alias TGTQ02ErikurAlias (unique): Erikur, placed in Erikur's House.
   - Objectives in the records: 'Speak to Erikur' (QOBJ 10, shown at stage 10); 'Acquire Balmora Blue' (QOBJ 20, shown at stage 20).
   - UESP (https://en.uesp.net/w/index.php?title=Skyrim:The_Dainty_Sload&oldid=3578415): After five Thieves Guild special jobs in Solitude, speak to Delvin Mallory at the Ragged Flagon. Givers: Delvin Mallory. First objective: 'Speak to Erikur'.
 - **Imitation Amnesty** (`TGTQ03`, Skyrim.esm:0799E1, Skyrim.esm; winning record: Unofficial Skyrim Special Edition Patch.esp; line `thieves-guild`, batch 1)
   - Records, how it starts: only these starters.
-    - quest script: TGRShell (named "Thieves Guild Radiant Shell" in its record), a helper quest SetStage 10 (QF_TGRShell_00028923.fragment_59 on Skyrim.esm:028923 (Skyrim.esm))
+    - quest script: TGRShell (named "Thieves Guild Radiant Shell" in its record), a helper quest at stage 162 calls SetStage 10 (QF_TGRShell_00028923.fragment_59 on Skyrim.esm:028923 (Skyrim.esm)); TGRShell is started by nothing in the records or scripts (unread)
+  - First objective's target in the records: alias TGTQ03OlfridAlias (unique): Olfrid Battle-Born, placed in House of Clan Battle-Born.
   - Objectives in the records: 'Speak to Olfrid Battle-Born' (QOBJ 10, shown at stage 10); 'Steal the letter incriminating Arn' (QOBJ 20, shown at stage 20).
   - UESP (https://en.uesp.net/w/index.php?title=Skyrim:Imitation_Amnesty&oldid=3496199): After five Thieves Guild jobs in Whiterun, Delvin Mallory offers the special job at the Ragged Flagon. Givers: Delvin Mallory. First objective: 'Speak to Olfrid Battle-Born'.
 - **Summerset Shadows** (`TGTQ04`, Skyrim.esm:0799E2, Skyrim.esm; winning record: Unofficial Skyrim Special Edition Patch.esp; line `thieves-guild`, batch 1)
   - Records, how it starts: only these starters.
-    - quest script: TGRShell (named "Thieves Guild Radiant Shell" in its record), a helper quest SetStage 10 (QF_TGRShell_00028923.fragment_62 on Skyrim.esm:028923 (Skyrim.esm))
+    - quest script: TGRShell (named "Thieves Guild Radiant Shell" in its record), a helper quest at stage 182 calls SetStage 10 (QF_TGRShell_00028923.fragment_62 on Skyrim.esm:028923 (Skyrim.esm)); TGRShell is started by nothing in the records or scripts (unread)
+  - First objective's target in the records: alias TGTQ04TorstenAlias (unique): Torsten Cruel-Sea, placed in House of Clan Cruel-Sea.
   - Objectives in the records: 'Speak to Torsten Cruel-Sea' (QOBJ 10, shown at stage 10); 'Speak to Niranye' (QOBJ 20, shown at stage 20).
   - UESP (https://en.uesp.net/wiki/Skyrim:Summerset_Shadows): Delvin gives it at the Ragged Flagon after five jobs in Windhelm. Givers: Delvin Mallory. First objective: 'Speak to Torsten Cruel-Sea'.
+- **Sleepwalking Into A Nightmare** (`aaaMBQuest`, NightmarePlane.esp:0348DA, NightmarePlane.esp; line `sleepwalking-into-a-nightmare`, batch 2)
+  - Records, how it starts: only these starters.
+    - quest script: aaaMBRalfornDialogue, a helper quest with RalfornAlias at stage 14 calls SetStage 10 (QF_aaaMBRalfornDialogue_05039B8C.fragment_0 on NightmarePlane.esp:039B8C (NightmarePlane.esp)); aaaMBRalfornDialogue is started by nothing in the records or scripts (unread)
+  - Already in the answer key: Sleepwalking Into A Nightmare, starts with Ralforn, then 'Find a way to escape The Nightmare.' (uesp, https://www.nexusmods.com/skyrimspecialedition/mods/141047; Bob, 21 Oct, WRONG: Second look, 22 Oct. The helper quest's RalfornAlias is the giver: Ralforn, Green-tip Cabin, northeast of Ivarstead. The page says no one giver and not checked; it should name him.). Yet the planner says not yet checked.
+  - Objectives in the records: 'Find a way to escape The Nightmare.' (QOBJ 1); 'Find Gretska' (QOBJ 10, shown at stage 10).
+  - A mod's quest, records only: the readings above are all the records hold. Bob to rule whether any of them is the way in.
+- **A New Source of Stalhrim** (`DLC2SV02`, Dragonborn.esm:01CAF1, Dragonborn.esm; winning record: Unofficial Skyrim Special Edition Patch.esp; line `skaal-village`, batch 2)
+  - Records, how it starts: only these starters.
+    - quest script: DLC2SV02Misc, a helper quest with Deor, Fanari, Baldor at stage 200 calls Start (DLC2_QF_DLC2SV02Misc_0201E169.fragment_5 on Dragonborn.esm:01E169 (Dragonborn.esm)); DLC2SV02Misc is started by nothing in the records or scripts (unread)
+  - First objective's target in the records: alias Baldor (unique): Baldor Iron-Shaper, placed in Baldor Iron-Shaper's House, Skaal Village Baldor Iron-shaper's House.
+  - Objectives in the records: 'Search for Baldor Iron-Shaper' (QOBJ 10, shown at stage 10); 'Talk to Baldor Iron-Shaper' (QOBJ 20).
+  - UESP (https://en.uesp.net/wiki/Skyrim:A_New_Source_of_Stalhrim): In Skaal Village after The Fate of the Skaal: overhear Fanari and Deor arguing, then talk to Deor, which sets stage 10. Givers: Deor Woodcutter. First objective: 'Search for Baldor Iron-Shaper'.
