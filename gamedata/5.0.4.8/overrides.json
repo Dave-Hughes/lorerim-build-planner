@@ -265,8 +265,17 @@
     "DA04": {
       "_note": "WO-121b, the PC's trace (21 Oct): reading Septimus's book sets Discerning the Transmundane's stage 1 (DA04RuminationsScript.OnRead on the forced alias RuminationsBook, Skyrim.esm:032787), and stage 1's fragment sets 5. The check reads BOOK records' scripts, not an alias's, so it doesn't list it yet. Bob, 22 Oct: two ways, no single giver.",
       "_starters": [
-        {"by": "book", "book": "Ruminations on the Elder Scrolls", "call": "SetStage 1", "plain": "Read Ruminations on the Elder Scrolls"}
+        {
+          "by": "book",
+          "book": "Ruminations on the Elder Scrolls",
+          "call": "SetStage 1",
+          "plain": "Read Ruminations on the Elder Scrolls"
+        }
       ]
+    },
+    "ccBGSSSE002_SoulStealerQuest": {
+      "_note": "WO-121b, Bob's judgement of the night run (22 Oct): the note (ccbgssse002-exoticarrows.esl:00081F) has no name in the files, so the page showed its editor id. Its script sets stage 5 when you get it (defaultsetstageonplayeracquireitem); the first step names it the Letter from Calcelmo.",
+      "Read ccBGSSSE002_NoteFromCalcelmo": "Get a note from Calcelmo"
     }
   },
   "starts": {

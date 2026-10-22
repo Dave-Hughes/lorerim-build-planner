@@ -633,5 +633,80 @@ class BuiltStartsTest(unittest.TestCase):
         self.assertEqual(declines, [])
 
 
+# An editor id or form id a page could show (WO-121b, Bob's judgement of the night run): "ccBGSSSE002_NoteFromCalcelmo".
+RECORD_ID = re.compile(r"[A-Za-z]+_[A-Za-z]|^cc|esp:|esm:|esl:")
+
+
+def page_texts(o, key=None):
+    """Every text a quest page or the door shows a player: everything but the ids, raw and a journal entry's record condition (its ending says when)."""
+    if isinstance(o, dict):
+        return [t for k, v in o.items() if k not in ("id", "edid", "opening", "alsoOpening", "after", "raw") and not (k == "when" and "stage" not in o)
+                for t in page_texts(v, k)]
+    if isinstance(o, list):
+        return [t for v in o for t in page_texts(v, key)]
+    return [o] if isinstance(o, str) else []
+
+
+class NightRunTest(unittest.TestCase):
+    """Bob's judgement of the PC's night run (WO-121b, 22 Oct): seven things."""
+
+    @classmethod
+    def setUpClass(cls):
+        with open(QUESTS, encoding="utf-8") as f:
+            cls.lines = json.load(f)["lines"]
+        cls.by = {q["edid"]: q for line in cls.lines for q in line["quests"]}
+
+    def test_the_blessings_of_nature_takes_bobs_first_step(self):
+        start = self.by["T03"]["start"]
+        self.assertEqual((start["who"], start["then"]), ("Danica Pure-Spring", "Retrieve Nettlebane"))
+        self.assertNotIn("thenWho", start)
+        # Innocence Lost has the same shape and keeps its own row's step.
+        self.assertEqual(self.by["DB01"]["start"]["then"], "Talk to Aventus Aretino")
+
+    def test_no_page_shows_an_editor_id(self):
+        leaks = [(line["id"], t) for line in self.lines for t in page_texts(line) if RECORD_ID.search(t)]
+        self.assertEqual(leaks, [])
+        self.assertEqual(self.by["ccBGSSSE002_SoulStealerQuest"]["start"]["ways"], [{"how": "Get a note from Calcelmo"}])
+        self.assertEqual(self.by["MyrwatchTNE_Quest"]["name"], "Myrwatch")
+
+    def test_an_ending_says_no_record_condition(self):
+        self.assertEqual(qp.ending_when(90, "global TTFA_FastredRomance is 1"), "the quest reaches stage 90")
+        self.assertEqual(qp.ending_when(215, "fn629 >= 1"), "the quest reaches stage 215")
+        self.assertEqual(qp.ending_when(100, "Lucan is alive"), "the quest reaches stage 100, if lucan is alive")
+
+    def test_a_condition_says_the_same_thing_once(self):
+        self.assertEqual(qp.once("GetIsRace Dark Elf == 1 or GetIsRace Dark Elf == 1"), "GetIsRace Dark Elf == 1")
+        self.assertEqual(qp.plain_needs("GetInFaction Blood-Kin of the Orcs == 1 or GetIsRace Orc == 1 or GetIsRace Orc == 1", "X"),
+                         ["GetInFaction Blood-Kin of the Orcs == 1 or GetIsRace Orc == 1"])
+        golldir = self.by["dunHillgrundsTombQST"]["start"]
+        self.assertEqual(golldir["ways"][0]["needs"], ["You're a Dark Elf"])
+        self.assertEqual(golldir["raw"]["ways"][0]["needs"], ["GetIsRace Dark Elf == 1"])
+        twice = re.compile(r"(GetIsRace [\w ]+? [!=]= \d) (?:or|and) \1\b|\b(an? [A-Z][\w-]*(?: [A-Z][\w-]*)*) or \2\b")
+        self.assertEqual([t for q in self.by.values() for t in json.dumps(q["start"]).split('"') if twice.search(t)], [])
+
+    def test_dragonborns_init_quest_is_no_way_in(self):
+        init = {"by": "quest script", "quest": 'DLC2Init (named "Init quest" in its record), a helper quest', "call": "Start", "throughStartedBy": [{"by": "start game"}]}
+        self.assertTrue(qp.patch_helper(init))
+        for edid in ("DLC2MH01", "DLC2TT1", "DLC2dunHaknirTreasureQST"):
+            self.assertNotIn("Init quest", json.dumps(start_texts(self.by[edid]["start"])), edid)
+        self.assertEqual(self.by["DLC2MH01"]["start"]["who"], "Bujold the Intrepid")
+        self.assertEqual([w.get("who") for w in self.by["DLC2TT1"]["start"]["ways"]], ["Neloth", "Varona Nelas"])
+
+    def test_no_page_doubles_a_place(self):
+        self.assertEqual(qp.clean_place("Temple, Temple Location"), "Temple")
+        places = [p for line in self.lines for q in line["quests"] for p in [q["start"].get("where"), q["start"].get("thenWhere"),
+                  *(w.get("where") for w in q["start"].get("ways", []))] if p]
+        self.assertEqual([p for p in places if qp.clean_place(p) != p], [])
+        self.assertEqual(self.by["DA06"]["start"]["where"], "Largashbur Longhouse")
+
+    def test_the_cursed_tribe_keeps_yamarz(self):
+        # Larak's letter is a way only for an Orc or Blood-Kin (rule 5), so it doesn't set everyone's first step.
+        start = self.by["DA06"]["start"]
+        self.assertEqual((start["who"], start["then"]), ("Atub", "Speak with Yamarz"))
+        larak = start["ways"][0]
+        self.assertEqual(larak["needs"], ["You're in the Blood-Kin of the Orcs or an Orc"])
+        self.assertNotIn("who", larak)
+
+
 if __name__ == "__main__":
     unittest.main()

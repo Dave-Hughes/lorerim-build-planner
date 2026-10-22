@@ -75,7 +75,8 @@ def clean_place(text):
     out, seen = [], set()
     for p in (text or "").split(", "):
         p = p.strip()
-        key = re.sub(r"'s\b", "", re.sub(r"^the ", "", p.lower()))  # "Largashbur's Longhouse" is "Largashbur Longhouse"
+        # "Largashbur's Longhouse" is "Largashbur Longhouse"; "Temple Location" is "Temple".
+        key = re.sub(r" location$", "", re.sub(r"'s\b", "", re.sub(r"^the ", "", p.lower())))
         if not p or _HOLDING.search(p) or key in _WORLDS or key in seen:
             continue
         seen.add(key)
@@ -231,7 +232,24 @@ def ending_when(stage, conditions):
     entry shows whenever its stage is set.
     """
     text = f"the quest reaches stage {stage}"
-    return text + (f", if {conditions[0].lower()}{conditions[1:]}" if conditions else "")
+    # A condition named by its editor id, form id, unnamed function or a global's id ("global TTFA_FastredRomance is 1")
+    # isn't something a player can read (WO-126): the stage alone. A condition said twice in a row is said once.
+    if not conditions or _RECORD_FORM.search(conditions):
+        return text
+    conditions = once(conditions)
+    return text + f", if {conditions[0].lower()}{conditions[1:]}"
+
+
+# Record text a player can't read: an editor id with an underscore or a Creation Club prefix, a form id, an unnamed
+# condition function, a global (WO-121b, Bob's night-run judgement).
+_RECORD_FORM = re.compile(r"[A-Za-z]+_[A-Za-z]|\bcc[A-Z]\w*|\.es[mpl]:|\bfn\d+\b|\bglobal ")
+
+
+def once(text):
+    """A condition naming the same thing twice in a row says it once: "GetIsRace Dark Elf == 1 or GetIsRace Dark Elf == 1"."""
+    for sep in (" or ", " and "):
+        text = sep.join(dict.fromkeys(text.split(sep)))
+    return text
 
 
 def endings_of(stages):
@@ -332,7 +350,7 @@ def plain_needs(conditions, own_name, say=None):
         return list(dict.fromkeys(out)) + ([UNSAID] if unsaid else [])
     out = []
     for group in (conditions or "").split("; "):
-        g = group.strip()
+        g = once(group.strip())
         if not g or g.startswith(("the speaker is", "the speaker isn't")):
             continue
         if own_name and g.startswith(own_name) and re.search(r"(stage <=? \d+|hasn't started|stage \d+ not done|stage == 0)$", g):
@@ -409,7 +427,7 @@ _OPS = {"==": lambda a, b: a == b, "!=": lambda a, b: a != b, ">=": lambda a, b:
 
 def plain_name(name):
     """A quest's name a player sees in their journal: no editor id in it ("VS Varla", "MSNStart"), no tag, no helper's name."""
-    return bool(name) and "<" not in name and not _HELPER.search(name) and not any(_EDID.match(w) for w in name.split())
+    return bool(name) and "<" not in name and not _HELPER.search(name) and not _RECORD_FORM.search(name) and not any(_EDID.match(w) for w in name.split())
 
 
 def _value(v):
@@ -640,8 +658,9 @@ class Words:
 
 
 # The Unofficial Patch's quests that bring an old save up to date (USKPRetroactive130, USKPVersionTracking,
-# Patch1_9_UpdateQuest): they set a quest's stage for a save made before a fix, never a way a player starts it.
-_PATCH = re.compile(r"^(USKP\w*|Patch\d+_\d+_UpdateQuest)$")
+# Patch1_9_UpdateQuest): they set a quest's stage for a save made before a fix, never a way a player starts it. Nor is
+# Dragonborn's "Init quest" (DLC2Init), which gets Solstheim's quests running (Bob, 22 Oct: Thirsk Mead Hall, Neloth).
+_PATCH = re.compile(r"^(USKP\w*|Patch\d+_\d+_UpdateQuest|DLC2Init)$")
 
 
 def patch_helper(s):
@@ -1058,6 +1077,15 @@ def start_disagreements(pages):
             for l in pages if "guideMinLevel" in l]
 
 
+# A first step Bob judged where no rule tells it apart (WO-121b, 22 Oct), by quest edid, like the answer key's DIFFERS:
+# the step, and why. The Blessings of Nature has Innocence Lost's shape exactly (start-game, a first objective no fragment
+# of its own shows, a giver's talk that sets the next stage), and the two want opposite answers.
+FIRST_STEPS = {
+    "T03": ("Retrieve Nettlebane", "Bob, 22 Oct: Danica's \"I'll get Nettlebane for you.\" sets stage 20, which is the step; "
+                                   "the stage-10 temple inspection happens by itself (UESP)."),
+}
+
+
 def reword(start, wording):
     """A start with the hand-kept wording (overrides.json questStarts, WO-126) put in for the words it replaces."""
     if not wording:
@@ -1127,13 +1155,17 @@ def build_quests(lines, quests_raw, givers_raw, checks=None, globals_=None, town
                 args = (dict(args[0], startedBy=ov["_starters"] + args[0].get("startedBy", [])),) + args[1:]
             raw = start_of(*args)
             start = reword(start_of(*args, say=say), {k: v for k, v in wording.get(q["edid"], {}).items() if not k.startswith("_")})
+            if q["edid"] in FIRST_STEPS:
+                start = {k: v for k, v in start.items() if k not in ("thenWhere", "thenWho")}
+                start["then"] = FIRST_STEPS[q["edid"]][0]
             if raw.get("needs") or raw.get("ways"):
                 start["raw"] = {"needs": raw.get("needs", []), **({"ways": [{k: w[k] for k in ("how", "needs") if k in w} for w in raw["ways"]]} if raw.get("ways") else {})}
             raws[q["edid"]] = raw
             quests.append(fill_all(
                 {
                     "edid": q["edid"],
-                    "name": q["name"],
+                    # A record whose name is its editor id ("MyrwatchTNE_Quest") opens its line under the line's name.
+                    "name": line["name"] if q["edid"] == line["opening"] and _RECORD_FORM.search(q["name"] or "") else q["name"],
                     "type": q.get("type"),
                     "xp": xp_for(q.get("type")),
                     "journal": journal(q),

@@ -1451,6 +1451,19 @@
    ],
    "where": "with Aerin, Riften",
    "firstObjective": "Clear the dungeon with Aerin and Mjoll"
+  },
+  {
+   "quest": "The Blessings of Nature",
+   "editorId": "T03",
+   "line": "the-blessings-of-nature",
+   "source": "uesp",
+   "url": "https://en.uesp.net/wiki/Skyrim:The_Blessings_of_Nature",
+   "notes": "Bob, 21 Oct, WRONG: The giver is right, but Danica's 'I'll get Nettlebane for you' sets stage 20, whose objective on UESP is 'Retrieve Nettlebane'; the page shows the unused QOBJ 10 text instead.",
+   "startsWith": [
+    "Danica Pure-Spring"
+   ],
+   "where": "Temple of Kynareth, Whiterun",
+   "firstObjective": "Retrieve Nettlebane"
   }
  ]
 }

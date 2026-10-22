@@ -39,6 +39,9 @@ FIXED = {
     "capital-whiterun": {"noGiver": True, "startsWith": [], "firstObjective": "Read the Message"},
     # Bob's third look, 22 Oct, on the PC's traces.
     "mjoll": {"startsWith": ["Mjoll the Lioness"], "where": "with Aerin, Riften", "firstObjective": "Clear the dungeon with Aerin and Mjoll"},
+    # Bob, 22 Oct, on the night run: Danica's "I'll get Nettlebane for you." sets stage 20, which is the step; the
+    # temple inspection at 10 happens by itself. The page takes it from quest_pages.FIRST_STEPS, not a rule.
+    "the-blessings-of-nature": {"startsWith": ["Danica Pure-Spring"], "where": "Temple of Kynareth, Whiterun", "firstObjective": "Retrieve Nettlebane"},
 }
 # A row the key held for a quest the line no longer opens with, pointed at the line's opening (as Dawnguard's was).
 REPOINT = {"DA14": "DA14Start"}
