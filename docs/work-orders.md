@@ -4905,6 +4905,22 @@ Names, lines, goals, why lines and chapter text go through the same checks as bu
 
 ---
 
+## WO-130  Three things Dave's test of WO-115 showed (Mac, 21 Oct 2026)
+
+**Why.** Dave asked his Claude what Kyria can do in Riften at level 6. It behaved: it offered only quests the planner called open, said unknown with the reason, and noticed her save is ahead of the plan. But the answers it was given had three faults.
+
+1. **A false gate from a line's order.** `get_quest` says Caught Red Handed is "unknown: comes after Stoking the Flames". Both sit in "Odd jobs in the Rift", a shelf of unrelated jobs, and nothing in the records ties one to the other. Lines on the work shelf (odd jobs, favours, bounties) are not a sequence: `openForYou` never gates one of their quests on another unless the records do.
+2. **`suggest_quests` ignores `where`.** Asked for Riften, it returned Join the Dark Brotherhood, which starts in Windhelm. A story whose start is outside the hold or place asked for is left out (or listed under "elsewhere", never mixed in).
+3. **Lines that aren't a way in.** Caught Red Handed's ways still include Haelga's flustered "You mean...? No! That's everything! Take care now! Bye!" and Svana's "Let her enjoy herself. Nothing wrong with that." These end or decline the talk. WO-126's declining-line rule catches "No, thanks"; widen it to a reply that turns the job down or ends the talk, and test on these two. (The "condition the planner can't put in words yet" on its ways should go when the PC's full rerun names fn629, fn230 and fn70; check after it lands.)
+
+### Done when
+- [ ] Work-shelf lines never gate one quest on another without the records; Caught Red Handed is open at level 6 with no quests done.
+- [ ] `suggest_quests` keeps to `where`; tested with Riften (no Dark Brotherhood) and Windhelm (it's there).
+- [ ] The two declining lines are gone from Caught Red Handed's ways, and the wider rule is tested.
+- [ ] Every check in CLAUDE.md passes. Commit on `staging`, push, and stop for Bob.
+
+---
+
 ## WO-129  An act with a thread: objectives that follow the road and say why they're on it (21 Oct 2026)
 
 **Why.** Dave (21 Oct), playing Kyria's Act II (The Bard's Road), made four points:
@@ -5491,7 +5507,7 @@ The PC's re-check (Part 2) left nine openings with starters for Bob to judge aga
 - [x] `get_quest` answers open for you / locked, because / unknown, and `suggest_quests` never offers an unknown quest. (Mac, night of 20 Oct: `openFor` in `open.ts` judges each checked need against what the player told the planner, their level, finished lines or quests, a playthrough's ticked quest links and a save's quest stages; a need it can't judge (a global, a faction, a condition the check can't name, another quest's stage nobody gave) makes the quest unknown, and so does a quest past its line's first until the one before it is done, since a talk that opens it can hang on that in ways the check doesn't see. At level 6 with nothing told: 100 quests open, all line openers, 5 locked, the rest unknown. `get_quest` takes `level`, `done` and `playthrough` and answers `openForYou`; `suggest_quests` offers only stories whose first quest is open. Who and where are out of `get_quest` and `get_quest_start`: each quest's `start` gives its ways in as the check words them and its first objective as `then`. The Quests pages lost Where you are, the open counts, Only what I can start, Do this first, Your next step and Mark done, and the needs lists lost their marks; the story page's chapters are a plain list. Also fixed for WO-112's e2e: a file too short to hold a save's header says "This isn't a Skyrim save (.ess).")
 - Part 5 (night run): built on WO-121's ways and then, with no player context; see WO-121's Done when.
 - [x] The style guide carries the two rules; a quest with an unchecked start is answered "unknown" through the door, checked by the WO-108 e2e. (Mac, night of 20 Oct: rule 21. The Book chat's side is Dave's to tell it.)
-- [ ] Every check in CLAUDE.md passes. Commit on `staging` per part, push, and stop: Dave asks his Claude what Kyria can do in Riften at level 6 and gets only open quests, with their endings behind a click.
+- [x] Every check in CLAUDE.md passes. Commit on `staging` per part, push, and stop: Dave asks his Claude what Kyria can do in Riften at level 6 and gets only open quests, with their endings behind a click. (Dave, 21 Oct: his Claude offered only what the planner said was open, said unknown with the reason, and flagged the save being ahead. The bugs it showed are WO-130.)
 
 ---
 
